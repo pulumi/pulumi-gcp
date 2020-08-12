@@ -19,6 +19,7 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
         public readonly string Branch;
         /// <summary>
         /// Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
+        /// Possible values are `COMMENTS_DISABLED` and `COMMENTS_ENABLED`.
         /// </summary>
         public readonly string? CommentControl;
         /// <summary>

@@ -22,7 +22,8 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         private InputList<Inputs.PatchDeploymentInstanceFilterGroupLabelGetArgs>? _groupLabels;
 
         /// <summary>
-        /// Targets VM instances matching ANY of these GroupLabels. This allows targeting of disparate groups of VM instances.  Structure is documented below.
+        /// Targets VM instances matching ANY of these GroupLabels. This allows targeting of disparate groups of VM instances.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.PatchDeploymentInstanceFilterGroupLabelGetArgs> GroupLabels
         {

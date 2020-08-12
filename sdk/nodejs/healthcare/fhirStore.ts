@@ -104,7 +104,8 @@ export class FhirStore extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * A nested object resource  Structure is documented below.
+     * A nested object resource
+     * Structure is documented below.
      */
     public readonly notificationConfig!: pulumi.Output<outputs.healthcare.FhirStoreNotificationConfig | undefined>;
     /**
@@ -117,11 +118,14 @@ export class FhirStore extends pulumi.CustomResource {
      * resource mutation is streamed to the new location in addition to the existing ones. When a location is removed
      * from the list, the server stops streaming to that location. Before adding a new config, you must add the required
      * bigquery.dataEditor role to your project's Cloud Healthcare Service Agent service account. Some lag (typically on
-     * the order of dozens of seconds) is expected before the results show up in the streaming destination.  Structure is documented below.
+     * the order of dozens of seconds) is expected before the results show up in the streaming destination.
+     * Structure is documented below.
      */
     public readonly streamConfigs!: pulumi.Output<outputs.healthcare.FhirStoreStreamConfig[] | undefined>;
     /**
      * The FHIR specification version.
+     * Default value is `STU3`.
+     * Possible values are `DSTU2`, `STU3`, and `R4`.
      */
     public readonly version!: pulumi.Output<string | undefined>;
 
@@ -238,7 +242,8 @@ export interface FhirStoreState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * A nested object resource  Structure is documented below.
+     * A nested object resource
+     * Structure is documented below.
      */
     readonly notificationConfig?: pulumi.Input<inputs.healthcare.FhirStoreNotificationConfig>;
     /**
@@ -251,11 +256,14 @@ export interface FhirStoreState {
      * resource mutation is streamed to the new location in addition to the existing ones. When a location is removed
      * from the list, the server stops streaming to that location. Before adding a new config, you must add the required
      * bigquery.dataEditor role to your project's Cloud Healthcare Service Agent service account. Some lag (typically on
-     * the order of dozens of seconds) is expected before the results show up in the streaming destination.  Structure is documented below.
+     * the order of dozens of seconds) is expected before the results show up in the streaming destination.
+     * Structure is documented below.
      */
     readonly streamConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.FhirStoreStreamConfig>[]>;
     /**
      * The FHIR specification version.
+     * Default value is `STU3`.
+     * Possible values are `DSTU2`, `STU3`, and `R4`.
      */
     readonly version?: pulumi.Input<string>;
 }
@@ -322,7 +330,8 @@ export interface FhirStoreArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * A nested object resource  Structure is documented below.
+     * A nested object resource
+     * Structure is documented below.
      */
     readonly notificationConfig?: pulumi.Input<inputs.healthcare.FhirStoreNotificationConfig>;
     /**
@@ -331,11 +340,14 @@ export interface FhirStoreArgs {
      * resource mutation is streamed to the new location in addition to the existing ones. When a location is removed
      * from the list, the server stops streaming to that location. Before adding a new config, you must add the required
      * bigquery.dataEditor role to your project's Cloud Healthcare Service Agent service account. Some lag (typically on
-     * the order of dozens of seconds) is expected before the results show up in the streaming destination.  Structure is documented below.
+     * the order of dozens of seconds) is expected before the results show up in the streaming destination.
+     * Structure is documented below.
      */
     readonly streamConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.FhirStoreStreamConfig>[]>;
     /**
      * The FHIR specification version.
+     * Default value is `STU3`.
+     * Possible values are `DSTU2`, `STU3`, and `R4`.
      */
     readonly version?: pulumi.Input<string>;
 }

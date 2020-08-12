@@ -46,7 +46,8 @@ export class Attestor extends pulumi.CustomResource {
     }
 
     /**
-     * A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.  Structure is documented below.
+     * A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
+     * Structure is documented below.
      */
     public readonly attestationAuthorityNote!: pulumi.Output<outputs.binaryauthorization.AttestorAttestationAuthorityNote>;
     /**
@@ -106,7 +107,8 @@ export class Attestor extends pulumi.CustomResource {
  */
 export interface AttestorState {
     /**
-     * A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.  Structure is documented below.
+     * A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
+     * Structure is documented below.
      */
     readonly attestationAuthorityNote?: pulumi.Input<inputs.binaryauthorization.AttestorAttestationAuthorityNote>;
     /**
@@ -130,7 +132,8 @@ export interface AttestorState {
  */
 export interface AttestorArgs {
     /**
-     * A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.  Structure is documented below.
+     * A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
+     * Structure is documented below.
      */
     readonly attestationAuthorityNote: pulumi.Input<inputs.binaryauthorization.AttestorAttestationAuthorityNote>;
     /**

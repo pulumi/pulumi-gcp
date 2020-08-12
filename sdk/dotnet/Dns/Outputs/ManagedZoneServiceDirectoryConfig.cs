@@ -14,7 +14,8 @@ namespace Pulumi.Gcp.Dns.Outputs
     public sealed class ManagedZoneServiceDirectoryConfig
     {
         /// <summary>
-        /// The namespace associated with the zone.  Structure is documented below.
+        /// The namespace associated with the zone.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.ManagedZoneServiceDirectoryConfigNamespace Namespace;
 

@@ -26,13 +26,17 @@ type MetricDescriptor struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.  Structure is documented below.
+	// The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
+	// Structure is documented below.
 	Labels MetricDescriptorLabelArrayOutput `pulumi:"labels"`
 	// The launch stage of the metric definition.
+	// Possible values are `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
 	LaunchStage pulumi.StringPtrOutput `pulumi:"launchStage"`
-	// Metadata which can be used to guide usage of the metric.  Structure is documented below.
+	// Metadata which can be used to guide usage of the metric.
+	// Structure is documented below.
 	Metadata MetricDescriptorMetadataPtrOutput `pulumi:"metadata"`
 	// Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
+	// Possible values are `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, and `CUMULATIVE`.
 	MetricKind pulumi.StringOutput `pulumi:"metricKind"`
 	// If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that
 	// is associated with this metric type can only be associated with one of the monitored resource types listed here. This
@@ -65,6 +69,8 @@ type MetricDescriptor struct {
 	// (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
 	Unit pulumi.StringPtrOutput `pulumi:"unit"`
 	// The type of data that can be assigned to the label.
+	// Default value is `STRING`.
+	// Possible values are `STRING`, `BOOL`, and `INT64`.
 	ValueType pulumi.StringOutput `pulumi:"valueType"`
 }
 
@@ -115,13 +121,17 @@ type metricDescriptorState struct {
 	Description *string `pulumi:"description"`
 	// A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
 	DisplayName *string `pulumi:"displayName"`
-	// The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.  Structure is documented below.
+	// The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
+	// Structure is documented below.
 	Labels []MetricDescriptorLabel `pulumi:"labels"`
 	// The launch stage of the metric definition.
+	// Possible values are `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
 	LaunchStage *string `pulumi:"launchStage"`
-	// Metadata which can be used to guide usage of the metric.  Structure is documented below.
+	// Metadata which can be used to guide usage of the metric.
+	// Structure is documented below.
 	Metadata *MetricDescriptorMetadata `pulumi:"metadata"`
 	// Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
+	// Possible values are `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, and `CUMULATIVE`.
 	MetricKind *string `pulumi:"metricKind"`
 	// If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that
 	// is associated with this metric type can only be associated with one of the monitored resource types listed here. This
@@ -154,6 +164,8 @@ type metricDescriptorState struct {
 	// (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
 	Unit *string `pulumi:"unit"`
 	// The type of data that can be assigned to the label.
+	// Default value is `STRING`.
+	// Possible values are `STRING`, `BOOL`, and `INT64`.
 	ValueType *string `pulumi:"valueType"`
 }
 
@@ -162,13 +174,17 @@ type MetricDescriptorState struct {
 	Description pulumi.StringPtrInput
 	// A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
 	DisplayName pulumi.StringPtrInput
-	// The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.  Structure is documented below.
+	// The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
+	// Structure is documented below.
 	Labels MetricDescriptorLabelArrayInput
 	// The launch stage of the metric definition.
+	// Possible values are `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
 	LaunchStage pulumi.StringPtrInput
-	// Metadata which can be used to guide usage of the metric.  Structure is documented below.
+	// Metadata which can be used to guide usage of the metric.
+	// Structure is documented below.
 	Metadata MetricDescriptorMetadataPtrInput
 	// Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
+	// Possible values are `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, and `CUMULATIVE`.
 	MetricKind pulumi.StringPtrInput
 	// If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that
 	// is associated with this metric type can only be associated with one of the monitored resource types listed here. This
@@ -201,6 +217,8 @@ type MetricDescriptorState struct {
 	// (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
 	Unit pulumi.StringPtrInput
 	// The type of data that can be assigned to the label.
+	// Default value is `STRING`.
+	// Possible values are `STRING`, `BOOL`, and `INT64`.
 	ValueType pulumi.StringPtrInput
 }
 
@@ -213,13 +231,17 @@ type metricDescriptorArgs struct {
 	Description string `pulumi:"description"`
 	// A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
 	DisplayName string `pulumi:"displayName"`
-	// The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.  Structure is documented below.
+	// The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
+	// Structure is documented below.
 	Labels []MetricDescriptorLabel `pulumi:"labels"`
 	// The launch stage of the metric definition.
+	// Possible values are `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
 	LaunchStage *string `pulumi:"launchStage"`
-	// Metadata which can be used to guide usage of the metric.  Structure is documented below.
+	// Metadata which can be used to guide usage of the metric.
+	// Structure is documented below.
 	Metadata *MetricDescriptorMetadata `pulumi:"metadata"`
 	// Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
+	// Possible values are `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, and `CUMULATIVE`.
 	MetricKind string `pulumi:"metricKind"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -245,6 +267,8 @@ type metricDescriptorArgs struct {
 	// (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
 	Unit *string `pulumi:"unit"`
 	// The type of data that can be assigned to the label.
+	// Default value is `STRING`.
+	// Possible values are `STRING`, `BOOL`, and `INT64`.
 	ValueType string `pulumi:"valueType"`
 }
 
@@ -254,13 +278,17 @@ type MetricDescriptorArgs struct {
 	Description pulumi.StringInput
 	// A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
 	DisplayName pulumi.StringInput
-	// The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.  Structure is documented below.
+	// The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
+	// Structure is documented below.
 	Labels MetricDescriptorLabelArrayInput
 	// The launch stage of the metric definition.
+	// Possible values are `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
 	LaunchStage pulumi.StringPtrInput
-	// Metadata which can be used to guide usage of the metric.  Structure is documented below.
+	// Metadata which can be used to guide usage of the metric.
+	// Structure is documented below.
 	Metadata MetricDescriptorMetadataPtrInput
 	// Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
+	// Possible values are `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, and `CUMULATIVE`.
 	MetricKind pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -286,6 +314,8 @@ type MetricDescriptorArgs struct {
 	// (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
 	Unit pulumi.StringPtrInput
 	// The type of data that can be assigned to the label.
+	// Default value is `STRING`.
+	// Possible values are `STRING`, `BOOL`, and `INT64`.
 	ValueType pulumi.StringInput
 }
 

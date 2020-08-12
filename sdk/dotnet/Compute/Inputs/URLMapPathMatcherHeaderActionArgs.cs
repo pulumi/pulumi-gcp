@@ -16,7 +16,8 @@ namespace Pulumi.Gcp.Compute.Inputs
         private InputList<Inputs.URLMapPathMatcherHeaderActionRequestHeadersToAddArgs>? _requestHeadersToAdds;
 
         /// <summary>
-        /// Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+        /// Headers to add to a matching request prior to forwarding the request to the backendService.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.URLMapPathMatcherHeaderActionRequestHeadersToAddArgs> RequestHeadersToAdds
         {
@@ -41,7 +42,8 @@ namespace Pulumi.Gcp.Compute.Inputs
         private InputList<Inputs.URLMapPathMatcherHeaderActionResponseHeadersToAddArgs>? _responseHeadersToAdds;
 
         /// <summary>
-        /// Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+        /// Headers to add the response prior to sending the response back to the client.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.URLMapPathMatcherHeaderActionResponseHeadersToAddArgs> ResponseHeadersToAdds
         {

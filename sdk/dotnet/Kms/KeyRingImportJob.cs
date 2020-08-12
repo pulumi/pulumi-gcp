@@ -33,6 +33,7 @@ namespace Pulumi.Gcp.Kms
 
         /// <summary>
         /// The wrapping method to be used for incoming key material.
+        /// Possible values are `RSA_OAEP_3072_SHA1_AES_256` and `RSA_OAEP_4096_SHA1_AES_256`.
         /// </summary>
         [Output("importMethod")]
         public Output<string> ImportMethod { get; private set; } = null!;
@@ -53,6 +54,7 @@ namespace Pulumi.Gcp.Kms
         /// <summary>
         /// The protection level of the ImportJob. This must match the protectionLevel of the
         /// versionTemplate on the CryptoKey you attempt to import into.
+        /// Possible values are `SOFTWARE`, `HSM`, and `EXTERNAL`.
         /// </summary>
         [Output("protectionLevel")]
         public Output<string> ProtectionLevel { get; private set; } = null!;
@@ -123,6 +125,7 @@ namespace Pulumi.Gcp.Kms
 
         /// <summary>
         /// The wrapping method to be used for incoming key material.
+        /// Possible values are `RSA_OAEP_3072_SHA1_AES_256` and `RSA_OAEP_4096_SHA1_AES_256`.
         /// </summary>
         [Input("importMethod", required: true)]
         public Input<string> ImportMethod { get; set; } = null!;
@@ -137,6 +140,7 @@ namespace Pulumi.Gcp.Kms
         /// <summary>
         /// The protection level of the ImportJob. This must match the protectionLevel of the
         /// versionTemplate on the CryptoKey you attempt to import into.
+        /// Possible values are `SOFTWARE`, `HSM`, and `EXTERNAL`.
         /// </summary>
         [Input("protectionLevel", required: true)]
         public Input<string> ProtectionLevel { get; set; } = null!;
@@ -170,6 +174,7 @@ namespace Pulumi.Gcp.Kms
 
         /// <summary>
         /// The wrapping method to be used for incoming key material.
+        /// Possible values are `RSA_OAEP_3072_SHA1_AES_256` and `RSA_OAEP_4096_SHA1_AES_256`.
         /// </summary>
         [Input("importMethod")]
         public Input<string>? ImportMethod { get; set; }
@@ -190,6 +195,7 @@ namespace Pulumi.Gcp.Kms
         /// <summary>
         /// The protection level of the ImportJob. This must match the protectionLevel of the
         /// versionTemplate on the CryptoKey you attempt to import into.
+        /// Possible values are `SOFTWARE`, `HSM`, and `EXTERNAL`.
         /// </summary>
         [Input("protectionLevel")]
         public Input<string>? ProtectionLevel { get; set; }

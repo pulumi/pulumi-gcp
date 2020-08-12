@@ -26,7 +26,8 @@ type SecurityScanConfig struct {
 	pulumi.CustomResourceState
 
 	// The authentication configuration.
-	// If specified, service will use the authentication configuration during scanning.  Structure is documented below.
+	// If specified, service will use the authentication configuration during scanning.
+	// Structure is documented below.
 	Authentication SecurityScanConfigAuthenticationPtrOutput `pulumi:"authentication"`
 	// The blacklist URL patterns as described in
 	// https://cloud.google.com/security-scanner/docs/excluded-urls
@@ -34,6 +35,8 @@ type SecurityScanConfig struct {
 	// The user provider display name of the ScanConfig.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Controls export of scan configurations and results to Cloud Security Command Center.
+	// Default value is `ENABLED`.
+	// Possible values are `ENABLED` and `DISABLED`.
 	ExportToSecurityCommandCenter pulumi.StringPtrOutput `pulumi:"exportToSecurityCommandCenter"`
 	// The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
 	// Defaults to 15.
@@ -43,13 +46,16 @@ type SecurityScanConfig struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The schedule of the ScanConfig  Structure is documented below.
+	// The schedule of the ScanConfig
+	// Structure is documented below.
 	Schedule SecurityScanConfigSchedulePtrOutput `pulumi:"schedule"`
 	// The starting URLs from which the scanner finds site pages.
 	StartingUrls pulumi.StringArrayOutput `pulumi:"startingUrls"`
 	// Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
 	TargetPlatforms pulumi.StringArrayOutput `pulumi:"targetPlatforms"`
 	// Type of the user agents used for scanning
+	// Default value is `CHROME_LINUX`.
+	// Possible values are `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, and `SAFARI_IPHONE`.
 	UserAgent pulumi.StringPtrOutput `pulumi:"userAgent"`
 }
 
@@ -88,7 +94,8 @@ func GetSecurityScanConfig(ctx *pulumi.Context,
 // Input properties used for looking up and filtering SecurityScanConfig resources.
 type securityScanConfigState struct {
 	// The authentication configuration.
-	// If specified, service will use the authentication configuration during scanning.  Structure is documented below.
+	// If specified, service will use the authentication configuration during scanning.
+	// Structure is documented below.
 	Authentication *SecurityScanConfigAuthentication `pulumi:"authentication"`
 	// The blacklist URL patterns as described in
 	// https://cloud.google.com/security-scanner/docs/excluded-urls
@@ -96,6 +103,8 @@ type securityScanConfigState struct {
 	// The user provider display name of the ScanConfig.
 	DisplayName *string `pulumi:"displayName"`
 	// Controls export of scan configurations and results to Cloud Security Command Center.
+	// Default value is `ENABLED`.
+	// Possible values are `ENABLED` and `DISABLED`.
 	ExportToSecurityCommandCenter *string `pulumi:"exportToSecurityCommandCenter"`
 	// The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
 	// Defaults to 15.
@@ -105,19 +114,23 @@ type securityScanConfigState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The schedule of the ScanConfig  Structure is documented below.
+	// The schedule of the ScanConfig
+	// Structure is documented below.
 	Schedule *SecurityScanConfigSchedule `pulumi:"schedule"`
 	// The starting URLs from which the scanner finds site pages.
 	StartingUrls []string `pulumi:"startingUrls"`
 	// Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
 	TargetPlatforms []string `pulumi:"targetPlatforms"`
 	// Type of the user agents used for scanning
+	// Default value is `CHROME_LINUX`.
+	// Possible values are `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, and `SAFARI_IPHONE`.
 	UserAgent *string `pulumi:"userAgent"`
 }
 
 type SecurityScanConfigState struct {
 	// The authentication configuration.
-	// If specified, service will use the authentication configuration during scanning.  Structure is documented below.
+	// If specified, service will use the authentication configuration during scanning.
+	// Structure is documented below.
 	Authentication SecurityScanConfigAuthenticationPtrInput
 	// The blacklist URL patterns as described in
 	// https://cloud.google.com/security-scanner/docs/excluded-urls
@@ -125,6 +138,8 @@ type SecurityScanConfigState struct {
 	// The user provider display name of the ScanConfig.
 	DisplayName pulumi.StringPtrInput
 	// Controls export of scan configurations and results to Cloud Security Command Center.
+	// Default value is `ENABLED`.
+	// Possible values are `ENABLED` and `DISABLED`.
 	ExportToSecurityCommandCenter pulumi.StringPtrInput
 	// The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
 	// Defaults to 15.
@@ -134,13 +149,16 @@ type SecurityScanConfigState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The schedule of the ScanConfig  Structure is documented below.
+	// The schedule of the ScanConfig
+	// Structure is documented below.
 	Schedule SecurityScanConfigSchedulePtrInput
 	// The starting URLs from which the scanner finds site pages.
 	StartingUrls pulumi.StringArrayInput
 	// Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
 	TargetPlatforms pulumi.StringArrayInput
 	// Type of the user agents used for scanning
+	// Default value is `CHROME_LINUX`.
+	// Possible values are `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, and `SAFARI_IPHONE`.
 	UserAgent pulumi.StringPtrInput
 }
 
@@ -150,7 +168,8 @@ func (SecurityScanConfigState) ElementType() reflect.Type {
 
 type securityScanConfigArgs struct {
 	// The authentication configuration.
-	// If specified, service will use the authentication configuration during scanning.  Structure is documented below.
+	// If specified, service will use the authentication configuration during scanning.
+	// Structure is documented below.
 	Authentication *SecurityScanConfigAuthentication `pulumi:"authentication"`
 	// The blacklist URL patterns as described in
 	// https://cloud.google.com/security-scanner/docs/excluded-urls
@@ -158,6 +177,8 @@ type securityScanConfigArgs struct {
 	// The user provider display name of the ScanConfig.
 	DisplayName string `pulumi:"displayName"`
 	// Controls export of scan configurations and results to Cloud Security Command Center.
+	// Default value is `ENABLED`.
+	// Possible values are `ENABLED` and `DISABLED`.
 	ExportToSecurityCommandCenter *string `pulumi:"exportToSecurityCommandCenter"`
 	// The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
 	// Defaults to 15.
@@ -165,20 +186,24 @@ type securityScanConfigArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The schedule of the ScanConfig  Structure is documented below.
+	// The schedule of the ScanConfig
+	// Structure is documented below.
 	Schedule *SecurityScanConfigSchedule `pulumi:"schedule"`
 	// The starting URLs from which the scanner finds site pages.
 	StartingUrls []string `pulumi:"startingUrls"`
 	// Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
 	TargetPlatforms []string `pulumi:"targetPlatforms"`
 	// Type of the user agents used for scanning
+	// Default value is `CHROME_LINUX`.
+	// Possible values are `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, and `SAFARI_IPHONE`.
 	UserAgent *string `pulumi:"userAgent"`
 }
 
 // The set of arguments for constructing a SecurityScanConfig resource.
 type SecurityScanConfigArgs struct {
 	// The authentication configuration.
-	// If specified, service will use the authentication configuration during scanning.  Structure is documented below.
+	// If specified, service will use the authentication configuration during scanning.
+	// Structure is documented below.
 	Authentication SecurityScanConfigAuthenticationPtrInput
 	// The blacklist URL patterns as described in
 	// https://cloud.google.com/security-scanner/docs/excluded-urls
@@ -186,6 +211,8 @@ type SecurityScanConfigArgs struct {
 	// The user provider display name of the ScanConfig.
 	DisplayName pulumi.StringInput
 	// Controls export of scan configurations and results to Cloud Security Command Center.
+	// Default value is `ENABLED`.
+	// Possible values are `ENABLED` and `DISABLED`.
 	ExportToSecurityCommandCenter pulumi.StringPtrInput
 	// The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
 	// Defaults to 15.
@@ -193,13 +220,16 @@ type SecurityScanConfigArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The schedule of the ScanConfig  Structure is documented below.
+	// The schedule of the ScanConfig
+	// Structure is documented below.
 	Schedule SecurityScanConfigSchedulePtrInput
 	// The starting URLs from which the scanner finds site pages.
 	StartingUrls pulumi.StringArrayInput
 	// Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
 	TargetPlatforms pulumi.StringArrayInput
 	// Type of the user agents used for scanning
+	// Default value is `CHROME_LINUX`.
+	// Possible values are `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, and `SAFARI_IPHONE`.
 	UserAgent pulumi.StringPtrInput
 }
 

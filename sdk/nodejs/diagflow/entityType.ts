@@ -54,7 +54,8 @@ export class EntityType extends pulumi.CustomResource {
      */
     public readonly enableFuzzyExtraction!: pulumi.Output<boolean | undefined>;
     /**
-     * The collection of entity entries associated with the entity type.  Structure is documented below.
+     * The collection of entity entries associated with the entity type.
+     * Structure is documented below.
      */
     public readonly entities!: pulumi.Output<outputs.diagflow.EntityTypeEntity[] | undefined>;
     /**
@@ -63,6 +64,7 @@ export class EntityType extends pulumi.CustomResource {
      * * KIND_LIST: List entity types contain a set of entries that do not map to reference values. However, list entity
      * types can contain references to other entity types (with or without aliases).
      * * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
+     * Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
      */
     public readonly kind!: pulumi.Output<string>;
     /**
@@ -132,7 +134,8 @@ export interface EntityTypeState {
      */
     readonly enableFuzzyExtraction?: pulumi.Input<boolean>;
     /**
-     * The collection of entity entries associated with the entity type.  Structure is documented below.
+     * The collection of entity entries associated with the entity type.
+     * Structure is documented below.
      */
     readonly entities?: pulumi.Input<pulumi.Input<inputs.diagflow.EntityTypeEntity>[]>;
     /**
@@ -141,6 +144,7 @@ export interface EntityTypeState {
      * * KIND_LIST: List entity types contain a set of entries that do not map to reference values. However, list entity
      * types can contain references to other entity types (with or without aliases).
      * * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
+     * Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
      */
     readonly kind?: pulumi.Input<string>;
     /**
@@ -167,7 +171,8 @@ export interface EntityTypeArgs {
      */
     readonly enableFuzzyExtraction?: pulumi.Input<boolean>;
     /**
-     * The collection of entity entries associated with the entity type.  Structure is documented below.
+     * The collection of entity entries associated with the entity type.
+     * Structure is documented below.
      */
     readonly entities?: pulumi.Input<pulumi.Input<inputs.diagflow.EntityTypeEntity>[]>;
     /**
@@ -176,6 +181,7 @@ export interface EntityTypeArgs {
      * * KIND_LIST: List entity types contain a set of entries that do not map to reference values. However, list entity
      * types can contain references to other entity types (with or without aliases).
      * * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
+     * Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
      */
     readonly kind: pulumi.Input<string>;
     /**

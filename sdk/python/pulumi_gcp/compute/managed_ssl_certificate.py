@@ -29,7 +29,8 @@ class ManagedSslCertificate(pulumi.CustomResource):
     managed: pulumi.Output[dict]
     """
     Properties relevant to a managed certificate.  These will be used if the
-    certificate is managed (as indicated by a value of `MANAGED` in `type`).  Structure is documented below.
+    certificate is managed (as indicated by a value of `MANAGED` in `type`).
+    Structure is documented below.
 
       * `domains` (`list`) - Domains for which a managed SSL certificate will be valid.  Currently,
         there can be up to 100 domains in this list.
@@ -61,6 +62,8 @@ class ManagedSslCertificate(pulumi.CustomResource):
     """
     Enum field whose value is always `MANAGED` - used to signal to the API
     which type this is.
+    Default value is `MANAGED`.
+    Possible values are `MANAGED`.
     """
     def __init__(__self__, resource_name, opts=None, certificate_id=None, description=None, managed=None, name=None, project=None, type=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -97,7 +100,8 @@ class ManagedSslCertificate(pulumi.CustomResource):
         :param pulumi.Input[float] certificate_id: The unique identifier for the resource.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[dict] managed: Properties relevant to a managed certificate.  These will be used if the
-               certificate is managed (as indicated by a value of `MANAGED` in `type`).  Structure is documented below.
+               certificate is managed (as indicated by a value of `MANAGED` in `type`).
+               Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -109,6 +113,8 @@ class ManagedSslCertificate(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] type: Enum field whose value is always `MANAGED` - used to signal to the API
                which type this is.
+               Default value is `MANAGED`.
+               Possible values are `MANAGED`.
 
         The **managed** object supports the following:
 
@@ -164,7 +170,8 @@ class ManagedSslCertificate(pulumi.CustomResource):
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] expire_time: Expire time of the certificate.
         :param pulumi.Input[dict] managed: Properties relevant to a managed certificate.  These will be used if the
-               certificate is managed (as indicated by a value of `MANAGED` in `type`).  Structure is documented below.
+               certificate is managed (as indicated by a value of `MANAGED` in `type`).
+               Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -178,6 +185,8 @@ class ManagedSslCertificate(pulumi.CustomResource):
         :param pulumi.Input[list] subject_alternative_names: Domains associated with the certificate via Subject Alternative Name.
         :param pulumi.Input[str] type: Enum field whose value is always `MANAGED` - used to signal to the API
                which type this is.
+               Default value is `MANAGED`.
+               Possible values are `MANAGED`.
 
         The **managed** object supports the following:
 

@@ -42,7 +42,8 @@ namespace Pulumi.Gcp.GameServices
 
         /// <summary>
         /// The fleet config contains list of fleet specs. In the Single Cloud, there
-        /// will be only one.  Structure is documented below.
+        /// will be only one.
+        /// Structure is documented below.
         /// </summary>
         [Output("fleetConfigs")]
         public Output<ImmutableArray<Outputs.GameServerConfigFleetConfig>> FleetConfigs { get; private set; } = null!;
@@ -73,7 +74,8 @@ namespace Pulumi.Gcp.GameServices
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. This contains the autoscaling settings.  Structure is documented below.
+        /// Optional. This contains the autoscaling settings.
+        /// Structure is documented below.
         /// </summary>
         [Output("scalingConfigs")]
         public Output<ImmutableArray<Outputs.GameServerConfigScalingConfig>> ScalingConfigs { get; private set; } = null!;
@@ -147,7 +149,8 @@ namespace Pulumi.Gcp.GameServices
 
         /// <summary>
         /// The fleet config contains list of fleet specs. In the Single Cloud, there
-        /// will be only one.  Structure is documented below.
+        /// will be only one.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.GameServerConfigFleetConfigArgs> FleetConfigs
         {
@@ -184,7 +187,8 @@ namespace Pulumi.Gcp.GameServices
         private InputList<Inputs.GameServerConfigScalingConfigArgs>? _scalingConfigs;
 
         /// <summary>
-        /// Optional. This contains the autoscaling settings.  Structure is documented below.
+        /// Optional. This contains the autoscaling settings.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.GameServerConfigScalingConfigArgs> ScalingConfigs
         {
@@ -222,7 +226,8 @@ namespace Pulumi.Gcp.GameServices
 
         /// <summary>
         /// The fleet config contains list of fleet specs. In the Single Cloud, there
-        /// will be only one.  Structure is documented below.
+        /// will be only one.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.GameServerConfigFleetConfigGetArgs> FleetConfigs
         {
@@ -265,7 +270,8 @@ namespace Pulumi.Gcp.GameServices
         private InputList<Inputs.GameServerConfigScalingConfigGetArgs>? _scalingConfigs;
 
         /// <summary>
-        /// Optional. This contains the autoscaling settings.  Structure is documented below.
+        /// Optional. This contains the autoscaling settings.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.GameServerConfigScalingConfigGetArgs> ScalingConfigs
         {

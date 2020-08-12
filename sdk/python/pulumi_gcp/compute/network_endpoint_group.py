@@ -38,6 +38,8 @@ class NetworkEndpointGroup(pulumi.CustomResource):
     network_endpoint_type: pulumi.Output[str]
     """
     Type of network endpoints in this network endpoint group.
+    Default value is `GCE_VM_IP_PORT`.
+    Possible values are `GCE_VM_IP_PORT`.
     """
     project: pulumi.Output[str]
     """
@@ -97,6 +99,8 @@ class NetworkEndpointGroup(pulumi.CustomResource):
         :param pulumi.Input[str] network: The network to which all network endpoints in the NEG belong.
                Uses "default" project network if unspecified.
         :param pulumi.Input[str] network_endpoint_type: Type of network endpoints in this network endpoint group.
+               Default value is `GCE_VM_IP_PORT`.
+               Possible values are `GCE_VM_IP_PORT`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] subnetwork: Optional subnetwork to which all network endpoints in the NEG belong.
@@ -160,6 +164,8 @@ class NetworkEndpointGroup(pulumi.CustomResource):
         :param pulumi.Input[str] network: The network to which all network endpoints in the NEG belong.
                Uses "default" project network if unspecified.
         :param pulumi.Input[str] network_endpoint_type: Type of network endpoints in this network endpoint group.
+               Default value is `GCE_VM_IP_PORT`.
+               Possible values are `GCE_VM_IP_PORT`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.

@@ -67,6 +67,9 @@ class GetFunctionResult:
         if max_instances and not isinstance(max_instances, float):
             raise TypeError("Expected argument 'max_instances' to be a float")
         __self__.max_instances = max_instances
+        """
+        The limit on the maximum number of function instances that may coexist at a given time.
+        """
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
@@ -106,6 +109,9 @@ class GetFunctionResult:
         if source_repositories and not isinstance(source_repositories, list):
             raise TypeError("Expected argument 'source_repositories' to be a list")
         __self__.source_repositories = source_repositories
+        """
+        The URL of the Cloud Source Repository that the function is deployed from. Structure is documented below.
+        """
         if timeout and not isinstance(timeout, float):
             raise TypeError("Expected argument 'timeout' to be a float")
         __self__.timeout = timeout

@@ -35,6 +35,8 @@ namespace Pulumi.Gcp.Compute
         /// The type of the address to reserve.
         /// * EXTERNAL indicates public/external single IP address.
         /// * INTERNAL indicates internal IP ranges belonging to some network.
+        /// Default value is `EXTERNAL`.
+        /// Possible values are `EXTERNAL` and `INTERNAL`.
         /// </summary>
         [Output("addressType")]
         public Output<string?> AddressType { get; private set; } = null!;
@@ -53,6 +55,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The IP Version that will be used by this address. The default value is `IPV4`.
+        /// Possible values are `IPV4` and `IPV6`.
         /// </summary>
         [Output("ipVersion")]
         public Output<string?> IpVersion { get; private set; } = null!;
@@ -109,6 +112,7 @@ namespace Pulumi.Gcp.Compute
         /// The purpose of the resource. For global internal addresses it can be
         /// * VPC_PEERING - for peer networks
         /// This should only be set when using an Internal address.
+        /// Possible values are `VPC_PEERING`.
         /// </summary>
         [Output("purpose")]
         public Output<string?> Purpose { get; private set; } = null!;
@@ -177,6 +181,8 @@ namespace Pulumi.Gcp.Compute
         /// The type of the address to reserve.
         /// * EXTERNAL indicates public/external single IP address.
         /// * INTERNAL indicates internal IP ranges belonging to some network.
+        /// Default value is `EXTERNAL`.
+        /// Possible values are `EXTERNAL` and `INTERNAL`.
         /// </summary>
         [Input("addressType")]
         public Input<string>? AddressType { get; set; }
@@ -189,6 +195,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The IP Version that will be used by this address. The default value is `IPV4`.
+        /// Possible values are `IPV4` and `IPV6`.
         /// </summary>
         [Input("ipVersion")]
         public Input<string>? IpVersion { get; set; }
@@ -245,6 +252,7 @@ namespace Pulumi.Gcp.Compute
         /// The purpose of the resource. For global internal addresses it can be
         /// * VPC_PEERING - for peer networks
         /// This should only be set when using an Internal address.
+        /// Possible values are `VPC_PEERING`.
         /// </summary>
         [Input("purpose")]
         public Input<string>? Purpose { get; set; }
@@ -268,6 +276,8 @@ namespace Pulumi.Gcp.Compute
         /// The type of the address to reserve.
         /// * EXTERNAL indicates public/external single IP address.
         /// * INTERNAL indicates internal IP ranges belonging to some network.
+        /// Default value is `EXTERNAL`.
+        /// Possible values are `EXTERNAL` and `INTERNAL`.
         /// </summary>
         [Input("addressType")]
         public Input<string>? AddressType { get; set; }
@@ -286,6 +296,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The IP Version that will be used by this address. The default value is `IPV4`.
+        /// Possible values are `IPV4` and `IPV6`.
         /// </summary>
         [Input("ipVersion")]
         public Input<string>? IpVersion { get; set; }
@@ -348,6 +359,7 @@ namespace Pulumi.Gcp.Compute
         /// The purpose of the resource. For global internal addresses it can be
         /// * VPC_PEERING - for peer networks
         /// This should only be set when using an Internal address.
+        /// Possible values are `VPC_PEERING`.
         /// </summary>
         [Input("purpose")]
         public Input<string>? Purpose { get; set; }

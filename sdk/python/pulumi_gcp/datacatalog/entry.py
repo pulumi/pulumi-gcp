@@ -49,7 +49,8 @@ class Entry(pulumi.CustomResource):
     """
     gcs_fileset_spec: pulumi.Output[dict]
     """
-    Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.  Structure is documented below.
+    Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
+    Structure is documented below.
 
       * `filePatterns` (`list`) - Patterns to identify a set of files in Google Cloud Storage.
         See [Cloud Storage documentation](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames)
@@ -63,7 +64,8 @@ class Entry(pulumi.CustomResource):
         * gs://bucket_name/a/*/b: matches all files in bucket_name that match a/*/b pattern, such as a/c/b, a/d/b
         * gs://another_bucket/a.txt: matches gs://another_bucket/a.txt
       * `sampleGcsFileSpecs` (`list`) - -
-        Sample files contained in this fileset, not all files contained in this fileset are represented here.  Structure is documented below.
+        Sample files contained in this fileset, not all files contained in this fileset are represented here.
+        Structure is documented below.
         * `filePath` (`str`) - -
           The full file path
         * `sizeBytes` (`float`) - -
@@ -99,6 +101,7 @@ class Entry(pulumi.CustomResource):
     """
     The type of the entry. Only used for Entries with types in the EntryType enum.
     Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use userSpecifiedType.
+    Possible values are `FILESET`.
     """
     user_specified_system: pulumi.Output[str]
     """
@@ -138,7 +141,8 @@ class Entry(pulumi.CustomResource):
                for example, "Analytics Data - Jan 2011".
         :param pulumi.Input[str] entry_group: The name of the entry group this entry is in.
         :param pulumi.Input[str] entry_id: The id of the entry to create.
-        :param pulumi.Input[dict] gcs_fileset_spec: Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.  Structure is documented below.
+        :param pulumi.Input[dict] gcs_fileset_spec: Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
+               Structure is documented below.
         :param pulumi.Input[str] linked_resource: The resource this metadata entry refers to.
                For Google Cloud Platform resources, linkedResource is the full name of the resource.
                For example, the linkedResource for a table resource from BigQuery is:
@@ -151,6 +155,7 @@ class Entry(pulumi.CustomResource):
                for what fields this schema can contain.
         :param pulumi.Input[str] type: The type of the entry. Only used for Entries with types in the EntryType enum.
                Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use userSpecifiedType.
+               Possible values are `FILESET`.
         :param pulumi.Input[str] user_specified_system: This field indicates the entry's source system that Data Catalog does not integrate with.
                userSpecifiedSystem strings must begin with a letter or underscore and can only contain letters, numbers,
                and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
@@ -174,7 +179,8 @@ class Entry(pulumi.CustomResource):
             * gs://bucket_name/a/*/b: matches all files in bucket_name that match a/*/b pattern, such as a/c/b, a/d/b
             * gs://another_bucket/a.txt: matches gs://another_bucket/a.txt
           * `sampleGcsFileSpecs` (`pulumi.Input[list]`) - -
-            Sample files contained in this fileset, not all files contained in this fileset are represented here.  Structure is documented below.
+            Sample files contained in this fileset, not all files contained in this fileset are represented here.
+            Structure is documented below.
             * `filePath` (`pulumi.Input[str]`) - -
               The full file path
             * `sizeBytes` (`pulumi.Input[float]`) - -
@@ -238,7 +244,8 @@ class Entry(pulumi.CustomResource):
                for example, "Analytics Data - Jan 2011".
         :param pulumi.Input[str] entry_group: The name of the entry group this entry is in.
         :param pulumi.Input[str] entry_id: The id of the entry to create.
-        :param pulumi.Input[dict] gcs_fileset_spec: Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.  Structure is documented below.
+        :param pulumi.Input[dict] gcs_fileset_spec: Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
+               Structure is documented below.
         :param pulumi.Input[str] integrated_system: This field indicates the entry's source system that Data Catalog integrates with, such as BigQuery or Pub/Sub.
         :param pulumi.Input[str] linked_resource: The resource this metadata entry refers to.
                For Google Cloud Platform resources, linkedResource is the full name of the resource.
@@ -255,6 +262,7 @@ class Entry(pulumi.CustomResource):
                for what fields this schema can contain.
         :param pulumi.Input[str] type: The type of the entry. Only used for Entries with types in the EntryType enum.
                Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use userSpecifiedType.
+               Possible values are `FILESET`.
         :param pulumi.Input[str] user_specified_system: This field indicates the entry's source system that Data Catalog does not integrate with.
                userSpecifiedSystem strings must begin with a letter or underscore and can only contain letters, numbers,
                and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
@@ -293,7 +301,8 @@ class Entry(pulumi.CustomResource):
             * gs://bucket_name/a/*/b: matches all files in bucket_name that match a/*/b pattern, such as a/c/b, a/d/b
             * gs://another_bucket/a.txt: matches gs://another_bucket/a.txt
           * `sampleGcsFileSpecs` (`pulumi.Input[list]`) - -
-            Sample files contained in this fileset, not all files contained in this fileset are represented here.  Structure is documented below.
+            Sample files contained in this fileset, not all files contained in this fileset are represented here.
+            Structure is documented below.
             * `filePath` (`pulumi.Input[str]`) - -
               The full file path
             * `sizeBytes` (`pulumi.Input[float]`) - -

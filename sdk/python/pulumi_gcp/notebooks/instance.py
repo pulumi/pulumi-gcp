@@ -14,10 +14,12 @@ class Instance(pulumi.CustomResource):
     """
     The hardware accelerator used on this instance. If you use accelerators,
     make sure that your configuration has enough vCPUs and memory to support the
-    machineType you have selected.  Structure is documented below.
+    machineType you have selected.
+    Structure is documented below.
 
       * `coreCount` (`float`) - Count of cores of this accelerator.
       * `type` (`str`) - Type of this accelerator.
+        Possible values are `ACCELERATOR_TYPE_UNSPECIFIED`, `NVIDIA_TESLA_K80`, `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`, `TPU_V2`, and `TPU_V3`.
     """
     boot_disk_size_gb: pulumi.Output[float]
     """
@@ -28,10 +30,12 @@ class Instance(pulumi.CustomResource):
     boot_disk_type: pulumi.Output[str]
     """
     Possible disk types for notebook instances.
+    Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
     """
     container_image: pulumi.Output[dict]
     """
-    Use a container image to start the notebook instance.  Structure is documented below.
+    Use a container image to start the notebook instance.
+    Structure is documented below.
 
       * `repository` (`str`) - The path to the container image repository.
         For example: gcr.io/{project_id}/{imageName}
@@ -56,10 +60,12 @@ class Instance(pulumi.CustomResource):
     data_disk_type: pulumi.Output[str]
     """
     Possible disk types for notebook instances.
+    Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
     """
     disk_encryption: pulumi.Output[str]
     """
     Disk encryption method used on the boot and data disks, defaults to GMEK.
+    Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
     """
     install_gpu_driver: pulumi.Output[bool]
     """
@@ -156,7 +162,8 @@ class Instance(pulumi.CustomResource):
     """
     vm_image: pulumi.Output[dict]
     """
-    Use a Compute Engine VM image to start the notebook instance.  Structure is documented below.
+    Use a Compute Engine VM image to start the notebook instance.
+    Structure is documented below.
 
       * `imageFamily` (`str`) - Use this VM image family to find the image; the newest image in this family will be used.
       * `imageName` (`str`) - Use VM image name to find the image.
@@ -170,12 +177,15 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] accelerator_config: The hardware accelerator used on this instance. If you use accelerators,
                make sure that your configuration has enough vCPUs and memory to support the
-               machineType you have selected.  Structure is documented below.
+               machineType you have selected.
+               Structure is documented below.
         :param pulumi.Input[float] boot_disk_size_gb: The size of the boot disk in GB attached to this instance,
                up to a maximum of 64000 GB (64 TB). The minimum recommended value is 100 GB.
                If not specified, this defaults to 100.
         :param pulumi.Input[str] boot_disk_type: Possible disk types for notebook instances.
-        :param pulumi.Input[dict] container_image: Use a container image to start the notebook instance.  Structure is documented below.
+               Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
+        :param pulumi.Input[dict] container_image: Use a container image to start the notebook instance.
+               Structure is documented below.
         :param pulumi.Input[str] create_time: Instance creation time
         :param pulumi.Input[str] custom_gpu_driver_path: Specify a custom Cloud Storage path where the GPU driver is stored.
                If not specified, we'll automatically choose from official GPU drivers.
@@ -184,7 +194,9 @@ class Instance(pulumi.CustomResource):
                You can choose the size of the data disk based on how big your notebooks and data are.
                If not specified, this defaults to 100.
         :param pulumi.Input[str] data_disk_type: Possible disk types for notebook instances.
+               Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
         :param pulumi.Input[str] disk_encryption: Disk encryption method used on the boot and data disks, defaults to GMEK.
+               Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
         :param pulumi.Input[bool] install_gpu_driver: Indicates that this is a boot disk. The virtual machine will
                use the first partition of the disk for its root filesystem.
         :param pulumi.Input[str] instance_owners: The owner of this instance after creation.
@@ -219,12 +231,14 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] subnet: The name of the subnet that this instance is in.
                Format: projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}
         :param pulumi.Input[str] update_time: Instance update time.
-        :param pulumi.Input[dict] vm_image: Use a Compute Engine VM image to start the notebook instance.  Structure is documented below.
+        :param pulumi.Input[dict] vm_image: Use a Compute Engine VM image to start the notebook instance.
+               Structure is documented below.
 
         The **accelerator_config** object supports the following:
 
           * `coreCount` (`pulumi.Input[float]`) - Count of cores of this accelerator.
           * `type` (`pulumi.Input[str]`) - Type of this accelerator.
+            Possible values are `ACCELERATOR_TYPE_UNSPECIFIED`, `NVIDIA_TESLA_K80`, `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`, `TPU_V2`, and `TPU_V3`.
 
         The **container_image** object supports the following:
 
@@ -306,12 +320,15 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] accelerator_config: The hardware accelerator used on this instance. If you use accelerators,
                make sure that your configuration has enough vCPUs and memory to support the
-               machineType you have selected.  Structure is documented below.
+               machineType you have selected.
+               Structure is documented below.
         :param pulumi.Input[float] boot_disk_size_gb: The size of the boot disk in GB attached to this instance,
                up to a maximum of 64000 GB (64 TB). The minimum recommended value is 100 GB.
                If not specified, this defaults to 100.
         :param pulumi.Input[str] boot_disk_type: Possible disk types for notebook instances.
-        :param pulumi.Input[dict] container_image: Use a container image to start the notebook instance.  Structure is documented below.
+               Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
+        :param pulumi.Input[dict] container_image: Use a container image to start the notebook instance.
+               Structure is documented below.
         :param pulumi.Input[str] create_time: Instance creation time
         :param pulumi.Input[str] custom_gpu_driver_path: Specify a custom Cloud Storage path where the GPU driver is stored.
                If not specified, we'll automatically choose from official GPU drivers.
@@ -320,7 +337,9 @@ class Instance(pulumi.CustomResource):
                You can choose the size of the data disk based on how big your notebooks and data are.
                If not specified, this defaults to 100.
         :param pulumi.Input[str] data_disk_type: Possible disk types for notebook instances.
+               Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
         :param pulumi.Input[str] disk_encryption: Disk encryption method used on the boot and data disks, defaults to GMEK.
+               Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
         :param pulumi.Input[bool] install_gpu_driver: Indicates that this is a boot disk. The virtual machine will
                use the first partition of the disk for its root filesystem.
         :param pulumi.Input[str] instance_owners: The owner of this instance after creation.
@@ -357,12 +376,14 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] subnet: The name of the subnet that this instance is in.
                Format: projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}
         :param pulumi.Input[str] update_time: Instance update time.
-        :param pulumi.Input[dict] vm_image: Use a Compute Engine VM image to start the notebook instance.  Structure is documented below.
+        :param pulumi.Input[dict] vm_image: Use a Compute Engine VM image to start the notebook instance.
+               Structure is documented below.
 
         The **accelerator_config** object supports the following:
 
           * `coreCount` (`pulumi.Input[float]`) - Count of cores of this accelerator.
           * `type` (`pulumi.Input[str]`) - Type of this accelerator.
+            Possible values are `ACCELERATOR_TYPE_UNSPECIFIED`, `NVIDIA_TESLA_K80`, `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`, `TPU_V2`, and `TPU_V3`.
 
         The **container_image** object supports the following:
 

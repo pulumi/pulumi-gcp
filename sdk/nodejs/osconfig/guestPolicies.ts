@@ -41,7 +41,8 @@ export class GuestPolicies extends pulumi.CustomResource {
      * At the same level in the resource hierarchy (that is within a project), the service prevents
      * the creation of multiple policies that conflict with each other.
      * For more information, see how the service
-     * [handles assignment conflicts](https://cloud.google.com/compute/docs/os-config-management/create-guest-policy#handle-conflicts).  Structure is documented below.
+     * [handles assignment conflicts](https://cloud.google.com/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
+     * Structure is documented below.
      */
     public readonly assignment!: pulumi.Output<outputs.osconfig.GuestPoliciesAssignment>;
     /**
@@ -76,11 +77,13 @@ export class GuestPolicies extends pulumi.CustomResource {
     /**
      * A list of package repositories to configure on the VM instance.
      * This is done before any other configs are applied so they can use these repos.
-     * Package repositories are only configured if the corresponding package manager(s) are available.  Structure is documented below.
+     * Package repositories are only configured if the corresponding package manager(s) are available.
+     * Structure is documented below.
      */
     public readonly packageRepositories!: pulumi.Output<outputs.osconfig.GuestPoliciesPackageRepository[] | undefined>;
     /**
-     * The software packages to be managed by this policy.  Structure is documented below.
+     * The software packages to be managed by this policy.
+     * Structure is documented below.
      */
     public readonly packages!: pulumi.Output<outputs.osconfig.GuestPoliciesPackage[] | undefined>;
     /**
@@ -89,7 +92,8 @@ export class GuestPolicies extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * A list of Recipes to install on the VM instance.  Structure is documented below.
+     * A list of Recipes to install on the VM instance.
+     * Structure is documented below.
      */
     public readonly recipes!: pulumi.Output<outputs.osconfig.GuestPoliciesRecipe[] | undefined>;
     /**
@@ -163,7 +167,8 @@ export interface GuestPoliciesState {
      * At the same level in the resource hierarchy (that is within a project), the service prevents
      * the creation of multiple policies that conflict with each other.
      * For more information, see how the service
-     * [handles assignment conflicts](https://cloud.google.com/compute/docs/os-config-management/create-guest-policy#handle-conflicts).  Structure is documented below.
+     * [handles assignment conflicts](https://cloud.google.com/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
+     * Structure is documented below.
      */
     readonly assignment?: pulumi.Input<inputs.osconfig.GuestPoliciesAssignment>;
     /**
@@ -198,11 +203,13 @@ export interface GuestPoliciesState {
     /**
      * A list of package repositories to configure on the VM instance.
      * This is done before any other configs are applied so they can use these repos.
-     * Package repositories are only configured if the corresponding package manager(s) are available.  Structure is documented below.
+     * Package repositories are only configured if the corresponding package manager(s) are available.
+     * Structure is documented below.
      */
     readonly packageRepositories?: pulumi.Input<pulumi.Input<inputs.osconfig.GuestPoliciesPackageRepository>[]>;
     /**
-     * The software packages to be managed by this policy.  Structure is documented below.
+     * The software packages to be managed by this policy.
+     * Structure is documented below.
      */
     readonly packages?: pulumi.Input<pulumi.Input<inputs.osconfig.GuestPoliciesPackage>[]>;
     /**
@@ -211,7 +218,8 @@ export interface GuestPoliciesState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * A list of Recipes to install on the VM instance.  Structure is documented below.
+     * A list of Recipes to install on the VM instance.
+     * Structure is documented below.
      */
     readonly recipes?: pulumi.Input<pulumi.Input<inputs.osconfig.GuestPoliciesRecipe>[]>;
     /**
@@ -232,7 +240,8 @@ export interface GuestPoliciesArgs {
      * At the same level in the resource hierarchy (that is within a project), the service prevents
      * the creation of multiple policies that conflict with each other.
      * For more information, see how the service
-     * [handles assignment conflicts](https://cloud.google.com/compute/docs/os-config-management/create-guest-policy#handle-conflicts).  Structure is documented below.
+     * [handles assignment conflicts](https://cloud.google.com/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
+     * Structure is documented below.
      */
     readonly assignment: pulumi.Input<inputs.osconfig.GuestPoliciesAssignment>;
     /**
@@ -255,11 +264,13 @@ export interface GuestPoliciesArgs {
     /**
      * A list of package repositories to configure on the VM instance.
      * This is done before any other configs are applied so they can use these repos.
-     * Package repositories are only configured if the corresponding package manager(s) are available.  Structure is documented below.
+     * Package repositories are only configured if the corresponding package manager(s) are available.
+     * Structure is documented below.
      */
     readonly packageRepositories?: pulumi.Input<pulumi.Input<inputs.osconfig.GuestPoliciesPackageRepository>[]>;
     /**
-     * The software packages to be managed by this policy.  Structure is documented below.
+     * The software packages to be managed by this policy.
+     * Structure is documented below.
      */
     readonly packages?: pulumi.Input<pulumi.Input<inputs.osconfig.GuestPoliciesPackage>[]>;
     /**
@@ -268,7 +279,8 @@ export interface GuestPoliciesArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * A list of Recipes to install on the VM instance.  Structure is documented below.
+     * A list of Recipes to install on the VM instance.
+     * Structure is documented below.
      */
     readonly recipes?: pulumi.Input<pulumi.Input<inputs.osconfig.GuestPoliciesRecipe>[]>;
 }

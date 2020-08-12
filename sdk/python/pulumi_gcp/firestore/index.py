@@ -25,13 +25,16 @@ class Index(pulumi.CustomResource):
     specified as the last field, it will be added automatically with the
     same direction as that of the last field defined. If the final field
     in a composite index is not directional, the `__name__` will be
-    ordered `"ASCENDING"` (unless explicitly specified otherwise).  Structure is documented below.
+    ordered `"ASCENDING"` (unless explicitly specified otherwise).
+    Structure is documented below.
 
       * `arrayConfig` (`str`) - Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
         be specified.
+        Possible values are `CONTAINS`.
       * `fieldPath` (`str`) - Name of the field.
       * `order` (`str`) - Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=.
         Only one of `order` and `arrayConfig` can be specified.
+        Possible values are `ASCENDING` and `DESCENDING`.
     """
     name: pulumi.Output[str]
     """
@@ -46,6 +49,8 @@ class Index(pulumi.CustomResource):
     query_scope: pulumi.Output[str]
     """
     The scope at which a query is run.
+    Default value is `COLLECTION`.
+    Possible values are `COLLECTION` and `COLLECTION_GROUP`.
     """
     def __init__(__self__, resource_name, opts=None, collection=None, database=None, fields=None, project=None, query_scope=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -70,18 +75,23 @@ class Index(pulumi.CustomResource):
                specified as the last field, it will be added automatically with the
                same direction as that of the last field defined. If the final field
                in a composite index is not directional, the `__name__` will be
-               ordered `"ASCENDING"` (unless explicitly specified otherwise).  Structure is documented below.
+               ordered `"ASCENDING"` (unless explicitly specified otherwise).
+               Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] query_scope: The scope at which a query is run.
+               Default value is `COLLECTION`.
+               Possible values are `COLLECTION` and `COLLECTION_GROUP`.
 
         The **fields** object supports the following:
 
           * `arrayConfig` (`pulumi.Input[str]`) - Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
             be specified.
+            Possible values are `CONTAINS`.
           * `fieldPath` (`pulumi.Input[str]`) - Name of the field.
           * `order` (`pulumi.Input[str]`) - Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=.
             Only one of `order` and `arrayConfig` can be specified.
+            Possible values are `ASCENDING` and `DESCENDING`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -132,20 +142,25 @@ class Index(pulumi.CustomResource):
                specified as the last field, it will be added automatically with the
                same direction as that of the last field defined. If the final field
                in a composite index is not directional, the `__name__` will be
-               ordered `"ASCENDING"` (unless explicitly specified otherwise).  Structure is documented below.
+               ordered `"ASCENDING"` (unless explicitly specified otherwise).
+               Structure is documented below.
         :param pulumi.Input[str] name: A server defined name for this index. Format:
                'projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}'
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] query_scope: The scope at which a query is run.
+               Default value is `COLLECTION`.
+               Possible values are `COLLECTION` and `COLLECTION_GROUP`.
 
         The **fields** object supports the following:
 
           * `arrayConfig` (`pulumi.Input[str]`) - Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
             be specified.
+            Possible values are `CONTAINS`.
           * `fieldPath` (`pulumi.Input[str]`) - Name of the field.
           * `order` (`pulumi.Input[str]`) - Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=.
             Only one of `order` and `arrayConfig` can be specified.
+            Possible values are `ASCENDING` and `DESCENDING`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

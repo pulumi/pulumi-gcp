@@ -34,7 +34,8 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         private InputList<Inputs.FlexibleAppVersionResourcesVolumeGetArgs>? _volumes;
 
         /// <summary>
-        /// List of ports, or port pairs, to forward from the virtual machine to the application container.  Structure is documented below.
+        /// List of ports, or port pairs, to forward from the virtual machine to the application container.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.FlexibleAppVersionResourcesVolumeGetArgs> Volumes
         {

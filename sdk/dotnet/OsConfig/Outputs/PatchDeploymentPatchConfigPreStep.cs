@@ -14,11 +14,13 @@ namespace Pulumi.Gcp.OsConfig.Outputs
     public sealed class PatchDeploymentPatchConfigPreStep
     {
         /// <summary>
-        /// The ExecStepConfig for all Linux VMs targeted by the PatchJob.  Structure is documented below.
+        /// The ExecStepConfig for all Linux VMs targeted by the PatchJob.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.PatchDeploymentPatchConfigPreStepLinuxExecStepConfig? LinuxExecStepConfig;
         /// <summary>
-        /// The ExecStepConfig for all Windows VMs targeted by the PatchJob.  Structure is documented below.
+        /// The ExecStepConfig for all Windows VMs targeted by the PatchJob.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.PatchDeploymentPatchConfigPreStepWindowsExecStepConfig? WindowsExecStepConfig;
 

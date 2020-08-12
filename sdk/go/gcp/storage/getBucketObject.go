@@ -49,7 +49,9 @@ type LookupBucketObjectResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Base 64 MD5 hash of the uploaded data.
-	Md5hash    string            `pulumi:"md5hash"`
+	Md5hash string `pulumi:"md5hash"`
+	// (Computed) A url reference to download this object.
+	MediaLink  string            `pulumi:"mediaLink"`
 	Metadata   map[string]string `pulumi:"metadata"`
 	Name       *string           `pulumi:"name"`
 	OutputName string            `pulumi:"outputName"`

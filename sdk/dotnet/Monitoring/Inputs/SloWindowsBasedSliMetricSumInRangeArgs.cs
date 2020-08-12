@@ -18,7 +18,8 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         /// that range.min &lt;= x &lt; range.max. inclusive of min and
         /// exclusive of max. Open ranges can be defined by setting
         /// just one of min or max. Summed value `X` should satisfy
-        /// `range.min &lt;= X &lt; range.max` for a good window.  Structure is documented below.
+        /// `range.min &lt;= X &lt; range.max` for a good window.
+        /// Structure is documented below.
         /// </summary>
         [Input("range", required: true)]
         public Input<Inputs.SloWindowsBasedSliMetricSumInRangeRangeArgs> Range { get; set; } = null!;

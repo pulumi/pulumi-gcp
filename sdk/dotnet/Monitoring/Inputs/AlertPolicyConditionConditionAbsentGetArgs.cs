@@ -28,7 +28,8 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         /// one in the MetricService.ListTimeSeries
         /// request. It is advisable to use the
         /// ListTimeSeries method when debugging this
-        /// field.  Structure is documented below.
+        /// field.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.AlertPolicyConditionConditionAbsentAggregationGetArgs> Aggregations
         {
@@ -81,7 +82,8 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         /// is true for any of the time series that have
         /// been identified by filter and aggregations,
         /// or by the ratio, if denominator_filter and
-        /// denominator_aggregations are specified.  Structure is documented below.
+        /// denominator_aggregations are specified.
+        /// Structure is documented below.
         /// </summary>
         [Input("trigger")]
         public Input<Inputs.AlertPolicyConditionConditionAbsentTriggerGetArgs>? Trigger { get; set; }

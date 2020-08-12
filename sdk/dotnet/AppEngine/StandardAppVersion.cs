@@ -26,13 +26,15 @@ namespace Pulumi.Gcp.AppEngine
     public partial class StandardAppVersion : Pulumi.CustomResource
     {
         /// <summary>
-        /// Automatic scaling is based on request rate, response latencies, and other application metrics.  Structure is documented below.
+        /// Automatic scaling is based on request rate, response latencies, and other application metrics.
+        /// Structure is documented below.
         /// </summary>
         [Output("automaticScaling")]
         public Output<Outputs.StandardAppVersionAutomaticScaling?> AutomaticScaling { get; private set; } = null!;
 
         /// <summary>
-        /// Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.  Structure is documented below.
+        /// Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
+        /// Structure is documented below.
         /// </summary>
         [Output("basicScaling")]
         public Output<Outputs.StandardAppVersionBasicScaling?> BasicScaling { get; private set; } = null!;
@@ -44,13 +46,15 @@ namespace Pulumi.Gcp.AppEngine
         public Output<bool?> DeleteServiceOnDestroy { get; private set; } = null!;
 
         /// <summary>
-        /// Code and application artifacts that make up this version.  Structure is documented below.
+        /// Code and application artifacts that make up this version.
+        /// Structure is documented below.
         /// </summary>
         [Output("deployment")]
         public Output<Outputs.StandardAppVersionDeployment> Deployment { get; private set; } = null!;
 
         /// <summary>
-        /// The entrypoint for the application.  Structure is documented below.
+        /// The entrypoint for the application.
+        /// Structure is documented below.
         /// </summary>
         [Output("entrypoint")]
         public Output<Outputs.StandardAppVersionEntrypoint?> Entrypoint { get; private set; } = null!;
@@ -63,7 +67,8 @@ namespace Pulumi.Gcp.AppEngine
 
         /// <summary>
         /// An ordered list of URL-matching patterns that should be applied to incoming requests.
-        /// The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
+        /// The first matching URL handles the request and other request handlers are not attempted.
+        /// Structure is documented below.
         /// </summary>
         [Output("handlers")]
         public Output<ImmutableArray<Outputs.StandardAppVersionHandler>> Handlers { get; private set; } = null!;
@@ -84,13 +89,15 @@ namespace Pulumi.Gcp.AppEngine
         public Output<string> InstanceClass { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration for third-party Python runtime libraries that are required by the application.  Structure is documented below.
+        /// Configuration for third-party Python runtime libraries that are required by the application.
+        /// Structure is documented below.
         /// </summary>
         [Output("libraries")]
         public Output<ImmutableArray<Outputs.StandardAppVersionLibrary>> Libraries { get; private set; } = null!;
 
         /// <summary>
-        /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.  Structure is documented below.
+        /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+        /// Structure is documented below.
         /// </summary>
         [Output("manualScaling")]
         public Output<Outputs.StandardAppVersionManualScaling?> ManualScaling { get; private set; } = null!;
@@ -192,13 +199,15 @@ namespace Pulumi.Gcp.AppEngine
     public sealed class StandardAppVersionArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Automatic scaling is based on request rate, response latencies, and other application metrics.  Structure is documented below.
+        /// Automatic scaling is based on request rate, response latencies, and other application metrics.
+        /// Structure is documented below.
         /// </summary>
         [Input("automaticScaling")]
         public Input<Inputs.StandardAppVersionAutomaticScalingArgs>? AutomaticScaling { get; set; }
 
         /// <summary>
-        /// Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.  Structure is documented below.
+        /// Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
+        /// Structure is documented below.
         /// </summary>
         [Input("basicScaling")]
         public Input<Inputs.StandardAppVersionBasicScalingArgs>? BasicScaling { get; set; }
@@ -210,13 +219,15 @@ namespace Pulumi.Gcp.AppEngine
         public Input<bool>? DeleteServiceOnDestroy { get; set; }
 
         /// <summary>
-        /// Code and application artifacts that make up this version.  Structure is documented below.
+        /// Code and application artifacts that make up this version.
+        /// Structure is documented below.
         /// </summary>
         [Input("deployment", required: true)]
         public Input<Inputs.StandardAppVersionDeploymentArgs> Deployment { get; set; } = null!;
 
         /// <summary>
-        /// The entrypoint for the application.  Structure is documented below.
+        /// The entrypoint for the application.
+        /// Structure is documented below.
         /// </summary>
         [Input("entrypoint")]
         public Input<Inputs.StandardAppVersionEntrypointArgs>? Entrypoint { get; set; }
@@ -238,7 +249,8 @@ namespace Pulumi.Gcp.AppEngine
 
         /// <summary>
         /// An ordered list of URL-matching patterns that should be applied to incoming requests.
-        /// The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
+        /// The first matching URL handles the request and other request handlers are not attempted.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.StandardAppVersionHandlerArgs> Handlers
         {
@@ -271,7 +283,8 @@ namespace Pulumi.Gcp.AppEngine
         private InputList<Inputs.StandardAppVersionLibraryArgs>? _libraries;
 
         /// <summary>
-        /// Configuration for third-party Python runtime libraries that are required by the application.  Structure is documented below.
+        /// Configuration for third-party Python runtime libraries that are required by the application.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.StandardAppVersionLibraryArgs> Libraries
         {
@@ -280,7 +293,8 @@ namespace Pulumi.Gcp.AppEngine
         }
 
         /// <summary>
-        /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.  Structure is documented below.
+        /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+        /// Structure is documented below.
         /// </summary>
         [Input("manualScaling")]
         public Input<Inputs.StandardAppVersionManualScalingArgs>? ManualScaling { get; set; }
@@ -337,13 +351,15 @@ namespace Pulumi.Gcp.AppEngine
     public sealed class StandardAppVersionState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Automatic scaling is based on request rate, response latencies, and other application metrics.  Structure is documented below.
+        /// Automatic scaling is based on request rate, response latencies, and other application metrics.
+        /// Structure is documented below.
         /// </summary>
         [Input("automaticScaling")]
         public Input<Inputs.StandardAppVersionAutomaticScalingGetArgs>? AutomaticScaling { get; set; }
 
         /// <summary>
-        /// Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.  Structure is documented below.
+        /// Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
+        /// Structure is documented below.
         /// </summary>
         [Input("basicScaling")]
         public Input<Inputs.StandardAppVersionBasicScalingGetArgs>? BasicScaling { get; set; }
@@ -355,13 +371,15 @@ namespace Pulumi.Gcp.AppEngine
         public Input<bool>? DeleteServiceOnDestroy { get; set; }
 
         /// <summary>
-        /// Code and application artifacts that make up this version.  Structure is documented below.
+        /// Code and application artifacts that make up this version.
+        /// Structure is documented below.
         /// </summary>
         [Input("deployment")]
         public Input<Inputs.StandardAppVersionDeploymentGetArgs>? Deployment { get; set; }
 
         /// <summary>
-        /// The entrypoint for the application.  Structure is documented below.
+        /// The entrypoint for the application.
+        /// Structure is documented below.
         /// </summary>
         [Input("entrypoint")]
         public Input<Inputs.StandardAppVersionEntrypointGetArgs>? Entrypoint { get; set; }
@@ -383,7 +401,8 @@ namespace Pulumi.Gcp.AppEngine
 
         /// <summary>
         /// An ordered list of URL-matching patterns that should be applied to incoming requests.
-        /// The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
+        /// The first matching URL handles the request and other request handlers are not attempted.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.StandardAppVersionHandlerGetArgs> Handlers
         {
@@ -416,7 +435,8 @@ namespace Pulumi.Gcp.AppEngine
         private InputList<Inputs.StandardAppVersionLibraryGetArgs>? _libraries;
 
         /// <summary>
-        /// Configuration for third-party Python runtime libraries that are required by the application.  Structure is documented below.
+        /// Configuration for third-party Python runtime libraries that are required by the application.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.StandardAppVersionLibraryGetArgs> Libraries
         {
@@ -425,7 +445,8 @@ namespace Pulumi.Gcp.AppEngine
         }
 
         /// <summary>
-        /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.  Structure is documented below.
+        /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+        /// Structure is documented below.
         /// </summary>
         [Input("manualScaling")]
         public Input<Inputs.StandardAppVersionManualScalingGetArgs>? ManualScaling { get; set; }

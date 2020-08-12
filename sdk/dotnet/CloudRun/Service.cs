@@ -52,7 +52,8 @@ namespace Pulumi.Gcp.CloudRun
 
         /// <summary>
         /// Metadata associated with this Service, including name, namespace, labels,
-        /// and annotations.  Structure is documented below.
+        /// and annotations.
+        /// Structure is documented below.
         /// </summary>
         [Output("metadata")]
         public Output<Outputs.ServiceMetadata> Metadata { get; private set; } = null!;
@@ -85,14 +86,16 @@ namespace Pulumi.Gcp.CloudRun
         /// template metadata. For more details, see:
         /// https://github.com/knative/serving/blob/master/docs/client-conventions.md#associate-modifications-with-revisions
         /// Cloud Run does not currently support referencing a build that is
-        /// responsible for materializing the container image from source.  Structure is documented below.
+        /// responsible for materializing the container image from source.
+        /// Structure is documented below.
         /// </summary>
         [Output("template")]
         public Output<Outputs.ServiceTemplate?> Template { get; private set; } = null!;
 
         /// <summary>
         /// Traffic specifies how to distribute traffic over a collection of Knative Revisions
-        /// and Configurations  Structure is documented below.
+        /// and Configurations
+        /// Structure is documented below.
         /// </summary>
         [Output("traffics")]
         public Output<ImmutableArray<Outputs.ServiceTraffic>> Traffics { get; private set; } = null!;
@@ -161,7 +164,8 @@ namespace Pulumi.Gcp.CloudRun
 
         /// <summary>
         /// Metadata associated with this Service, including name, namespace, labels,
-        /// and annotations.  Structure is documented below.
+        /// and annotations.
+        /// Structure is documented below.
         /// </summary>
         [Input("metadata")]
         public Input<Inputs.ServiceMetadataArgs>? Metadata { get; set; }
@@ -188,7 +192,8 @@ namespace Pulumi.Gcp.CloudRun
         /// template metadata. For more details, see:
         /// https://github.com/knative/serving/blob/master/docs/client-conventions.md#associate-modifications-with-revisions
         /// Cloud Run does not currently support referencing a build that is
-        /// responsible for materializing the container image from source.  Structure is documented below.
+        /// responsible for materializing the container image from source.
+        /// Structure is documented below.
         /// </summary>
         [Input("template")]
         public Input<Inputs.ServiceTemplateArgs>? Template { get; set; }
@@ -198,7 +203,8 @@ namespace Pulumi.Gcp.CloudRun
 
         /// <summary>
         /// Traffic specifies how to distribute traffic over a collection of Knative Revisions
-        /// and Configurations  Structure is documented below.
+        /// and Configurations
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.ServiceTrafficArgs> Traffics
         {
@@ -231,7 +237,8 @@ namespace Pulumi.Gcp.CloudRun
 
         /// <summary>
         /// Metadata associated with this Service, including name, namespace, labels,
-        /// and annotations.  Structure is documented below.
+        /// and annotations.
+        /// Structure is documented below.
         /// </summary>
         [Input("metadata")]
         public Input<Inputs.ServiceMetadataGetArgs>? Metadata { get; set; }
@@ -264,7 +271,8 @@ namespace Pulumi.Gcp.CloudRun
         /// template metadata. For more details, see:
         /// https://github.com/knative/serving/blob/master/docs/client-conventions.md#associate-modifications-with-revisions
         /// Cloud Run does not currently support referencing a build that is
-        /// responsible for materializing the container image from source.  Structure is documented below.
+        /// responsible for materializing the container image from source.
+        /// Structure is documented below.
         /// </summary>
         [Input("template")]
         public Input<Inputs.ServiceTemplateGetArgs>? Template { get; set; }
@@ -274,7 +282,8 @@ namespace Pulumi.Gcp.CloudRun
 
         /// <summary>
         /// Traffic specifies how to distribute traffic over a collection of Knative Revisions
-        /// and Configurations  Structure is documented below.
+        /// and Configurations
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.ServiceTrafficGetArgs> Traffics
         {

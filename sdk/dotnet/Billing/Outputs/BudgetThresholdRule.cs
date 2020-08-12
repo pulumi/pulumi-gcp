@@ -16,6 +16,8 @@ namespace Pulumi.Gcp.Billing.Outputs
         /// <summary>
         /// The type of basis used to determine if spend has passed
         /// the threshold.
+        /// Default value is `CURRENT_SPEND`.
+        /// Possible values are `CURRENT_SPEND` and `FORECASTED_SPEND`.
         /// </summary>
         public readonly string? SpendBasis;
         /// <summary>

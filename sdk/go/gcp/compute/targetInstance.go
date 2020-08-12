@@ -48,6 +48,8 @@ type TargetInstance struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// NAT option controlling how IPs are NAT'ed to the instance.
 	// Currently only NO_NAT (default value) is supported.
+	// Default value is `NO_NAT`.
+	// Possible values are `NO_NAT`.
 	NatPolicy pulumi.StringPtrOutput `pulumi:"natPolicy"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -110,6 +112,8 @@ type targetInstanceState struct {
 	Name *string `pulumi:"name"`
 	// NAT option controlling how IPs are NAT'ed to the instance.
 	// Currently only NO_NAT (default value) is supported.
+	// Default value is `NO_NAT`.
+	// Possible values are `NO_NAT`.
 	NatPolicy *string `pulumi:"natPolicy"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -142,6 +146,8 @@ type TargetInstanceState struct {
 	Name pulumi.StringPtrInput
 	// NAT option controlling how IPs are NAT'ed to the instance.
 	// Currently only NO_NAT (default value) is supported.
+	// Default value is `NO_NAT`.
+	// Possible values are `NO_NAT`.
 	NatPolicy pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -176,6 +182,8 @@ type targetInstanceArgs struct {
 	Name *string `pulumi:"name"`
 	// NAT option controlling how IPs are NAT'ed to the instance.
 	// Currently only NO_NAT (default value) is supported.
+	// Default value is `NO_NAT`.
+	// Possible values are `NO_NAT`.
 	NatPolicy *string `pulumi:"natPolicy"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -205,6 +213,8 @@ type TargetInstanceArgs struct {
 	Name pulumi.StringPtrInput
 	// NAT option controlling how IPs are NAT'ed to the instance.
 	// Currently only NO_NAT (default value) is supported.
+	// Default value is `NO_NAT`.
+	// Possible values are `NO_NAT`.
 	NatPolicy pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

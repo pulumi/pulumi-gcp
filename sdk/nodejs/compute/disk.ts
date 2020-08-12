@@ -80,7 +80,8 @@ export class Disk extends pulumi.CustomResource {
      * the disk.
      * If you do not provide an encryption key when creating the disk, then
      * the disk will be encrypted using an automatically generated key and
-     * you do not need to provide a key to use the disk later.  Structure is documented below.
+     * you do not need to provide a key to use the disk later.
+     * Structure is documented below.
      */
     public readonly diskEncryptionKey!: pulumi.Output<outputs.compute.DiskDiskEncryptionKey | undefined>;
     /**
@@ -168,7 +169,8 @@ export class Disk extends pulumi.CustomResource {
     public readonly snapshot!: pulumi.Output<string | undefined>;
     /**
      * The customer-supplied encryption key of the source image. Required if
-     * the source image is protected by a customer-supplied encryption key.  Structure is documented below.
+     * the source image is protected by a customer-supplied encryption key.
+     * Structure is documented below.
      */
     public readonly sourceImageEncryptionKey!: pulumi.Output<outputs.compute.DiskSourceImageEncryptionKey | undefined>;
     /**
@@ -180,7 +182,8 @@ export class Disk extends pulumi.CustomResource {
     /**
      * The customer-supplied encryption key of the source snapshot. Required
      * if the source snapshot is protected by a customer-supplied encryption
-     * key.  Structure is documented below.
+     * key.
+     * Structure is documented below.
      */
     public readonly sourceSnapshotEncryptionKey!: pulumi.Output<outputs.compute.DiskSourceSnapshotEncryptionKey | undefined>;
     /**
@@ -295,7 +298,8 @@ export interface DiskState {
      * the disk.
      * If you do not provide an encryption key when creating the disk, then
      * the disk will be encrypted using an automatically generated key and
-     * you do not need to provide a key to use the disk later.  Structure is documented below.
+     * you do not need to provide a key to use the disk later.
+     * Structure is documented below.
      */
     readonly diskEncryptionKey?: pulumi.Input<inputs.compute.DiskDiskEncryptionKey>;
     /**
@@ -383,7 +387,8 @@ export interface DiskState {
     readonly snapshot?: pulumi.Input<string>;
     /**
      * The customer-supplied encryption key of the source image. Required if
-     * the source image is protected by a customer-supplied encryption key.  Structure is documented below.
+     * the source image is protected by a customer-supplied encryption key.
+     * Structure is documented below.
      */
     readonly sourceImageEncryptionKey?: pulumi.Input<inputs.compute.DiskSourceImageEncryptionKey>;
     /**
@@ -395,7 +400,8 @@ export interface DiskState {
     /**
      * The customer-supplied encryption key of the source snapshot. Required
      * if the source snapshot is protected by a customer-supplied encryption
-     * key.  Structure is documented below.
+     * key.
+     * Structure is documented below.
      */
     readonly sourceSnapshotEncryptionKey?: pulumi.Input<inputs.compute.DiskSourceSnapshotEncryptionKey>;
     /**
@@ -437,7 +443,8 @@ export interface DiskArgs {
      * the disk.
      * If you do not provide an encryption key when creating the disk, then
      * the disk will be encrypted using an automatically generated key and
-     * you do not need to provide a key to use the disk later.  Structure is documented below.
+     * you do not need to provide a key to use the disk later.
+     * Structure is documented below.
      */
     readonly diskEncryptionKey?: pulumi.Input<inputs.compute.DiskDiskEncryptionKey>;
     /**
@@ -509,13 +516,15 @@ export interface DiskArgs {
     readonly snapshot?: pulumi.Input<string>;
     /**
      * The customer-supplied encryption key of the source image. Required if
-     * the source image is protected by a customer-supplied encryption key.  Structure is documented below.
+     * the source image is protected by a customer-supplied encryption key.
+     * Structure is documented below.
      */
     readonly sourceImageEncryptionKey?: pulumi.Input<inputs.compute.DiskSourceImageEncryptionKey>;
     /**
      * The customer-supplied encryption key of the source snapshot. Required
      * if the source snapshot is protected by a customer-supplied encryption
-     * key.  Structure is documented below.
+     * key.
+     * Structure is documented below.
      */
     readonly sourceSnapshotEncryptionKey?: pulumi.Input<inputs.compute.DiskSourceSnapshotEncryptionKey>;
     /**

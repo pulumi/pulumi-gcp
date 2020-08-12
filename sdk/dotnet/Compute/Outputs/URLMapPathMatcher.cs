@@ -18,7 +18,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
         /// to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
         /// Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
-        /// Only one of defaultRouteAction or defaultUrlRedirect must be set.  Structure is documented below.
+        /// Only one of defaultRouteAction or defaultUrlRedirect must be set.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.URLMapPathMatcherDefaultRouteAction? DefaultRouteAction;
         /// <summary>
@@ -28,7 +29,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// <summary>
         /// When none of the specified hostRules match, the request is redirected to a URL specified
         /// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
-        /// defaultRouteAction must not be set.  Structure is documented below.
+        /// defaultRouteAction must not be set.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.URLMapPathMatcherDefaultUrlRedirect? DefaultUrlRedirect;
         /// <summary>
@@ -39,7 +41,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// Specifies changes to request and response headers that need to take effect for
         /// the selected backendService.
         /// headerAction specified here take effect before headerAction in the enclosing
-        /// HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+        /// HttpRouteRule, PathMatcher and UrlMap.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.URLMapPathMatcherHeaderAction? HeaderAction;
         /// <summary>
@@ -53,7 +56,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// are specified does not matter. Matches are always done on the longest-path-first
         /// basis. For example: a pathRule with a path /a/b/c/* will match before /a/b/*
         /// irrespective of the order in which those paths appear in this list. Within a
-        /// given pathMatcher, only one of pathRules or routeRules must be set.  Structure is documented below.
+        /// given pathMatcher, only one of pathRules or routeRules must be set.
+        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.URLMapPathMatcherPathRule> PathRules;
         /// <summary>
@@ -62,7 +66,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// routeRules matters: the first rule that matches will cause its specified routing
         /// action to take effect. Within a given pathMatcher, only one of pathRules or
         /// routeRules must be set. routeRules are not supported in UrlMaps intended for
-        /// External load balancers.  Structure is documented below.
+        /// External load balancers.
+        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.URLMapPathMatcherRouteRule> RouteRules;
 

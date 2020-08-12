@@ -43,11 +43,12 @@ type LookupInstanceResult struct {
 	// to connect to the service.
 	Host string `pulumi:"host"`
 	// The provider-assigned unique ID for this managed resource.
-	Id           string            `pulumi:"id"`
-	Labels       map[string]string `pulumi:"labels"`
-	LocationId   string            `pulumi:"locationId"`
-	MemorySizeGb int               `pulumi:"memorySizeGb"`
-	Name         string            `pulumi:"name"`
+	Id                     string            `pulumi:"id"`
+	Labels                 map[string]string `pulumi:"labels"`
+	LocationId             string            `pulumi:"locationId"`
+	MemorySizeGb           int               `pulumi:"memorySizeGb"`
+	Name                   string            `pulumi:"name"`
+	PersistenceIamIdentity string            `pulumi:"persistenceIamIdentity"`
 	// The port number of the exposed Redis endpoint.
 	Port            int               `pulumi:"port"`
 	Project         *string           `pulumi:"project"`

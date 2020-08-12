@@ -32,7 +32,8 @@ type GameServerDeploymentRollout struct {
 	// The gameServerConfigOverrides contains the per game server config
 	// overrides. The overrides are processed in the order they are listed. As
 	// soon as a match is found for a cluster, the rest of the list is not
-	// processed.  Structure is documented below.
+	// processed.
+	// Structure is documented below.
 	GameServerConfigOverrides GameServerDeploymentRolloutGameServerConfigOverrideArrayOutput `pulumi:"gameServerConfigOverrides"`
 	// The resource id of the game server deployment eg:
 	// 'projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout'.
@@ -85,7 +86,8 @@ type gameServerDeploymentRolloutState struct {
 	// The gameServerConfigOverrides contains the per game server config
 	// overrides. The overrides are processed in the order they are listed. As
 	// soon as a match is found for a cluster, the rest of the list is not
-	// processed.  Structure is documented below.
+	// processed.
+	// Structure is documented below.
 	GameServerConfigOverrides []GameServerDeploymentRolloutGameServerConfigOverride `pulumi:"gameServerConfigOverrides"`
 	// The resource id of the game server deployment eg:
 	// 'projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout'.
@@ -105,7 +107,8 @@ type GameServerDeploymentRolloutState struct {
 	// The gameServerConfigOverrides contains the per game server config
 	// overrides. The overrides are processed in the order they are listed. As
 	// soon as a match is found for a cluster, the rest of the list is not
-	// processed.  Structure is documented below.
+	// processed.
+	// Structure is documented below.
 	GameServerConfigOverrides GameServerDeploymentRolloutGameServerConfigOverrideArrayInput
 	// The resource id of the game server deployment eg:
 	// 'projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout'.
@@ -129,7 +132,8 @@ type gameServerDeploymentRolloutArgs struct {
 	// The gameServerConfigOverrides contains the per game server config
 	// overrides. The overrides are processed in the order they are listed. As
 	// soon as a match is found for a cluster, the rest of the list is not
-	// processed.  Structure is documented below.
+	// processed.
+	// Structure is documented below.
 	GameServerConfigOverrides []GameServerDeploymentRolloutGameServerConfigOverride `pulumi:"gameServerConfigOverrides"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -147,7 +151,8 @@ type GameServerDeploymentRolloutArgs struct {
 	// The gameServerConfigOverrides contains the per game server config
 	// overrides. The overrides are processed in the order they are listed. As
 	// soon as a match is found for a cluster, the rest of the list is not
-	// processed.  Structure is documented below.
+	// processed.
+	// Structure is documented below.
 	GameServerConfigOverrides GameServerDeploymentRolloutGameServerConfigOverrideArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

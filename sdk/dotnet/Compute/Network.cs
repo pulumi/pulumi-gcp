@@ -77,6 +77,7 @@ namespace Pulumi.Gcp.Compute
         /// of this network in the same region as the router. If set to `GLOBAL`,
         /// this network's cloud routers will advertise routes with all
         /// subnetworks of this network, across regions.
+        /// Possible values are `REGIONAL` and `GLOBAL`.
         /// </summary>
         [Output("routingMode")]
         public Output<string> RoutingMode { get; private set; } = null!;
@@ -182,6 +183,7 @@ namespace Pulumi.Gcp.Compute
         /// of this network in the same region as the router. If set to `GLOBAL`,
         /// this network's cloud routers will advertise routes with all
         /// subnetworks of this network, across regions.
+        /// Possible values are `REGIONAL` and `GLOBAL`.
         /// </summary>
         [Input("routingMode")]
         public Input<string>? RoutingMode { get; set; }
@@ -248,6 +250,7 @@ namespace Pulumi.Gcp.Compute
         /// of this network in the same region as the router. If set to `GLOBAL`,
         /// this network's cloud routers will advertise routes with all
         /// subnetworks of this network, across regions.
+        /// Possible values are `REGIONAL` and `GLOBAL`.
         /// </summary>
         [Input("routingMode")]
         public Input<string>? RoutingMode { get; set; }

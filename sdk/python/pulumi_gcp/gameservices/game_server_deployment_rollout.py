@@ -25,10 +25,12 @@ class GameServerDeploymentRollout(pulumi.CustomResource):
     The game_server_config_overrides contains the per game server config
     overrides. The overrides are processed in the order they are listed. As
     soon as a match is found for a cluster, the rest of the list is not
-    processed.  Structure is documented below.
+    processed.
+    Structure is documented below.
 
       * `configVersion` (`str`) - Version of the configuration.
-      * `realmsSelector` (`dict`) - Selection by realms.  Structure is documented below.
+      * `realmsSelector` (`dict`) - Selection by realms.
+        Structure is documented below.
         * `realms` (`list`) - List of realms to match against.
     """
     name: pulumi.Output[str]
@@ -63,14 +65,16 @@ class GameServerDeploymentRollout(pulumi.CustomResource):
         :param pulumi.Input[list] game_server_config_overrides: The game_server_config_overrides contains the per game server config
                overrides. The overrides are processed in the order they are listed. As
                soon as a match is found for a cluster, the rest of the list is not
-               processed.  Structure is documented below.
+               processed.
+               Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
 
         The **game_server_config_overrides** object supports the following:
 
           * `configVersion` (`pulumi.Input[str]`) - Version of the configuration.
-          * `realmsSelector` (`pulumi.Input[dict]`) - Selection by realms.  Structure is documented below.
+          * `realmsSelector` (`pulumi.Input[dict]`) - Selection by realms.
+            Structure is documented below.
             * `realms` (`pulumi.Input[list]`) - List of realms to match against.
         """
         if __name__ is not None:
@@ -121,7 +125,8 @@ class GameServerDeploymentRollout(pulumi.CustomResource):
         :param pulumi.Input[list] game_server_config_overrides: The game_server_config_overrides contains the per game server config
                overrides. The overrides are processed in the order they are listed. As
                soon as a match is found for a cluster, the rest of the list is not
-               processed.  Structure is documented below.
+               processed.
+               Structure is documented below.
         :param pulumi.Input[str] name: The resource id of the game server deployment eg:
                'projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout'.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -130,7 +135,8 @@ class GameServerDeploymentRollout(pulumi.CustomResource):
         The **game_server_config_overrides** object supports the following:
 
           * `configVersion` (`pulumi.Input[str]`) - Version of the configuration.
-          * `realmsSelector` (`pulumi.Input[dict]`) - Selection by realms.  Structure is documented below.
+          * `realmsSelector` (`pulumi.Input[dict]`) - Selection by realms.
+            Structure is documented below.
             * `realms` (`pulumi.Input[list]`) - List of realms to match against.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

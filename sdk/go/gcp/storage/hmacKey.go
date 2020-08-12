@@ -41,6 +41,8 @@ type HmacKey struct {
 	// The email address of the key's associated service account.
 	ServiceAccountEmail pulumi.StringOutput `pulumi:"serviceAccountEmail"`
 	// The state of the key. Can be set to one of ACTIVE, INACTIVE.
+	// Default value is `ACTIVE`.
+	// Possible values are `ACTIVE` and `INACTIVE`.
 	State pulumi.StringPtrOutput `pulumi:"state"`
 	// 'The creation time of the HMAC key in RFC 3339 format. '
 	TimeCreated pulumi.StringOutput `pulumi:"timeCreated"`
@@ -89,6 +91,8 @@ type hmacKeyState struct {
 	// The email address of the key's associated service account.
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
 	// The state of the key. Can be set to one of ACTIVE, INACTIVE.
+	// Default value is `ACTIVE`.
+	// Possible values are `ACTIVE` and `INACTIVE`.
 	State *string `pulumi:"state"`
 	// 'The creation time of the HMAC key in RFC 3339 format. '
 	TimeCreated *string `pulumi:"timeCreated"`
@@ -107,6 +111,8 @@ type HmacKeyState struct {
 	// The email address of the key's associated service account.
 	ServiceAccountEmail pulumi.StringPtrInput
 	// The state of the key. Can be set to one of ACTIVE, INACTIVE.
+	// Default value is `ACTIVE`.
+	// Possible values are `ACTIVE` and `INACTIVE`.
 	State pulumi.StringPtrInput
 	// 'The creation time of the HMAC key in RFC 3339 format. '
 	TimeCreated pulumi.StringPtrInput
@@ -125,6 +131,8 @@ type hmacKeyArgs struct {
 	// The email address of the key's associated service account.
 	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
 	// The state of the key. Can be set to one of ACTIVE, INACTIVE.
+	// Default value is `ACTIVE`.
+	// Possible values are `ACTIVE` and `INACTIVE`.
 	State *string `pulumi:"state"`
 }
 
@@ -136,6 +144,8 @@ type HmacKeyArgs struct {
 	// The email address of the key's associated service account.
 	ServiceAccountEmail pulumi.StringInput
 	// The state of the key. Can be set to one of ACTIVE, INACTIVE.
+	// Default value is `ACTIVE`.
+	// Possible values are `ACTIVE` and `INACTIVE`.
 	State pulumi.StringPtrInput
 }
 

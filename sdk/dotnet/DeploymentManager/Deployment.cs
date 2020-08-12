@@ -34,6 +34,8 @@ namespace Pulumi.Gcp.DeploymentManager
         /// `ACQUIRE`. If set to `ACQUIRE` and resources do not already exist,
         /// the deployment will fail. Note that updating this field does not
         /// actually affect the deployment, just how it is updated.
+        /// Default value is `CREATE_OR_ACQUIRE`.
+        /// Possible values are `ACQUIRE` and `CREATE_OR_ACQUIRE`.
         /// </summary>
         [Output("createPolicy")]
         public Output<string?> CreatePolicy { get; private set; } = null!;
@@ -45,6 +47,8 @@ namespace Pulumi.Gcp.DeploymentManager
         /// `ABANDON`, the resource is only removed from Deployment Manager
         /// and is not actually deleted. Note that updating this field does not
         /// actually change the deployment, just how it is updated.
+        /// Default value is `DELETE`.
+        /// Possible values are `ABANDON` and `DELETE`.
         /// </summary>
         [Output("deletePolicy")]
         public Output<string?> DeletePolicy { get; private set; } = null!;
@@ -62,7 +66,8 @@ namespace Pulumi.Gcp.DeploymentManager
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Key-value pairs to apply to this labels.  Structure is documented below.
+        /// Key-value pairs to apply to this labels.
+        /// Structure is documented below.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableArray<Outputs.DeploymentLabel>> Labels { get; private set; } = null!;
@@ -85,7 +90,7 @@ namespace Pulumi.Gcp.DeploymentManager
         /// that are not actually instantiated. This allows you to preview a
         /// deployment. It can be updated to false to actually deploy
         /// with real resources.
-        /// ~&gt;**NOTE**: Deployment Manager does not allow update
+        /// ~&gt;**NOTE:** Deployment Manager does not allow update
         /// of a deployment in preview (unless updating to preview=false). Thus,
         /// the provider will force-recreate deployments if either preview is updated
         /// to true or if other fields are updated while preview is true.
@@ -108,7 +113,8 @@ namespace Pulumi.Gcp.DeploymentManager
 
         /// <summary>
         /// Parameters that define your deployment, including the deployment
-        /// configuration and relevant templates.  Structure is documented below.
+        /// configuration and relevant templates.
+        /// Structure is documented below.
         /// </summary>
         [Output("target")]
         public Output<Outputs.DeploymentTarget> Target { get; private set; } = null!;
@@ -165,6 +171,8 @@ namespace Pulumi.Gcp.DeploymentManager
         /// `ACQUIRE`. If set to `ACQUIRE` and resources do not already exist,
         /// the deployment will fail. Note that updating this field does not
         /// actually affect the deployment, just how it is updated.
+        /// Default value is `CREATE_OR_ACQUIRE`.
+        /// Possible values are `ACQUIRE` and `CREATE_OR_ACQUIRE`.
         /// </summary>
         [Input("createPolicy")]
         public Input<string>? CreatePolicy { get; set; }
@@ -176,6 +184,8 @@ namespace Pulumi.Gcp.DeploymentManager
         /// `ABANDON`, the resource is only removed from Deployment Manager
         /// and is not actually deleted. Note that updating this field does not
         /// actually change the deployment, just how it is updated.
+        /// Default value is `DELETE`.
+        /// Possible values are `ABANDON` and `DELETE`.
         /// </summary>
         [Input("deletePolicy")]
         public Input<string>? DeletePolicy { get; set; }
@@ -190,7 +200,8 @@ namespace Pulumi.Gcp.DeploymentManager
         private InputList<Inputs.DeploymentLabelArgs>? _labels;
 
         /// <summary>
-        /// Key-value pairs to apply to this labels.  Structure is documented below.
+        /// Key-value pairs to apply to this labels.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.DeploymentLabelArgs> Labels
         {
@@ -210,7 +221,7 @@ namespace Pulumi.Gcp.DeploymentManager
         /// that are not actually instantiated. This allows you to preview a
         /// deployment. It can be updated to false to actually deploy
         /// with real resources.
-        /// ~&gt;**NOTE**: Deployment Manager does not allow update
+        /// ~&gt;**NOTE:** Deployment Manager does not allow update
         /// of a deployment in preview (unless updating to preview=false). Thus,
         /// the provider will force-recreate deployments if either preview is updated
         /// to true or if other fields are updated while preview is true.
@@ -227,7 +238,8 @@ namespace Pulumi.Gcp.DeploymentManager
 
         /// <summary>
         /// Parameters that define your deployment, including the deployment
-        /// configuration and relevant templates.  Structure is documented below.
+        /// configuration and relevant templates.
+        /// Structure is documented below.
         /// </summary>
         [Input("target", required: true)]
         public Input<Inputs.DeploymentTargetArgs> Target { get; set; } = null!;
@@ -245,6 +257,8 @@ namespace Pulumi.Gcp.DeploymentManager
         /// `ACQUIRE`. If set to `ACQUIRE` and resources do not already exist,
         /// the deployment will fail. Note that updating this field does not
         /// actually affect the deployment, just how it is updated.
+        /// Default value is `CREATE_OR_ACQUIRE`.
+        /// Possible values are `ACQUIRE` and `CREATE_OR_ACQUIRE`.
         /// </summary>
         [Input("createPolicy")]
         public Input<string>? CreatePolicy { get; set; }
@@ -256,6 +270,8 @@ namespace Pulumi.Gcp.DeploymentManager
         /// `ABANDON`, the resource is only removed from Deployment Manager
         /// and is not actually deleted. Note that updating this field does not
         /// actually change the deployment, just how it is updated.
+        /// Default value is `DELETE`.
+        /// Possible values are `ABANDON` and `DELETE`.
         /// </summary>
         [Input("deletePolicy")]
         public Input<string>? DeletePolicy { get; set; }
@@ -276,7 +292,8 @@ namespace Pulumi.Gcp.DeploymentManager
         private InputList<Inputs.DeploymentLabelGetArgs>? _labels;
 
         /// <summary>
-        /// Key-value pairs to apply to this labels.  Structure is documented below.
+        /// Key-value pairs to apply to this labels.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.DeploymentLabelGetArgs> Labels
         {
@@ -302,7 +319,7 @@ namespace Pulumi.Gcp.DeploymentManager
         /// that are not actually instantiated. This allows you to preview a
         /// deployment. It can be updated to false to actually deploy
         /// with real resources.
-        /// ~&gt;**NOTE**: Deployment Manager does not allow update
+        /// ~&gt;**NOTE:** Deployment Manager does not allow update
         /// of a deployment in preview (unless updating to preview=false). Thus,
         /// the provider will force-recreate deployments if either preview is updated
         /// to true or if other fields are updated while preview is true.
@@ -325,7 +342,8 @@ namespace Pulumi.Gcp.DeploymentManager
 
         /// <summary>
         /// Parameters that define your deployment, including the deployment
-        /// configuration and relevant templates.  Structure is documented below.
+        /// configuration and relevant templates.
+        /// Structure is documented below.
         /// </summary>
         [Input("target")]
         public Input<Inputs.DeploymentTargetGetArgs>? Target { get; set; }

@@ -40,7 +40,8 @@ export class AutoscalingPolicy extends pulumi.CustomResource {
     }
 
     /**
-     * Basic algorithm for autoscaling.  Structure is documented below.
+     * Basic algorithm for autoscaling.
+     * Structure is documented below.
      */
     public readonly basicAlgorithm!: pulumi.Output<outputs.dataproc.AutoscalingPolicyBasicAlgorithm | undefined>;
     /**
@@ -64,11 +65,13 @@ export class AutoscalingPolicy extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Describes how the autoscaler will operate for secondary workers.  Structure is documented below.
+     * Describes how the autoscaler will operate for secondary workers.
+     * Structure is documented below.
      */
     public readonly secondaryWorkerConfig!: pulumi.Output<outputs.dataproc.AutoscalingPolicySecondaryWorkerConfig | undefined>;
     /**
-     * Describes how the autoscaler will operate for primary workers.  Structure is documented below.
+     * Describes how the autoscaler will operate for primary workers.
+     * Structure is documented below.
      */
     public readonly workerConfig!: pulumi.Output<outputs.dataproc.AutoscalingPolicyWorkerConfig | undefined>;
 
@@ -120,7 +123,8 @@ export class AutoscalingPolicy extends pulumi.CustomResource {
  */
 export interface AutoscalingPolicyState {
     /**
-     * Basic algorithm for autoscaling.  Structure is documented below.
+     * Basic algorithm for autoscaling.
+     * Structure is documented below.
      */
     readonly basicAlgorithm?: pulumi.Input<inputs.dataproc.AutoscalingPolicyBasicAlgorithm>;
     /**
@@ -144,11 +148,13 @@ export interface AutoscalingPolicyState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * Describes how the autoscaler will operate for secondary workers.  Structure is documented below.
+     * Describes how the autoscaler will operate for secondary workers.
+     * Structure is documented below.
      */
     readonly secondaryWorkerConfig?: pulumi.Input<inputs.dataproc.AutoscalingPolicySecondaryWorkerConfig>;
     /**
-     * Describes how the autoscaler will operate for primary workers.  Structure is documented below.
+     * Describes how the autoscaler will operate for primary workers.
+     * Structure is documented below.
      */
     readonly workerConfig?: pulumi.Input<inputs.dataproc.AutoscalingPolicyWorkerConfig>;
 }
@@ -158,7 +164,8 @@ export interface AutoscalingPolicyState {
  */
 export interface AutoscalingPolicyArgs {
     /**
-     * Basic algorithm for autoscaling.  Structure is documented below.
+     * Basic algorithm for autoscaling.
+     * Structure is documented below.
      */
     readonly basicAlgorithm?: pulumi.Input<inputs.dataproc.AutoscalingPolicyBasicAlgorithm>;
     /**
@@ -178,11 +185,13 @@ export interface AutoscalingPolicyArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * Describes how the autoscaler will operate for secondary workers.  Structure is documented below.
+     * Describes how the autoscaler will operate for secondary workers.
+     * Structure is documented below.
      */
     readonly secondaryWorkerConfig?: pulumi.Input<inputs.dataproc.AutoscalingPolicySecondaryWorkerConfig>;
     /**
-     * Describes how the autoscaler will operate for primary workers.  Structure is documented below.
+     * Describes how the autoscaler will operate for primary workers.
+     * Structure is documented below.
      */
     readonly workerConfig?: pulumi.Input<inputs.dataproc.AutoscalingPolicyWorkerConfig>;
 }

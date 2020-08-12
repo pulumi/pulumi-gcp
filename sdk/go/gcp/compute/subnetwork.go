@@ -63,7 +63,8 @@ type Subnetwork struct {
 	IpCidrRange pulumi.StringOutput `pulumi:"ipCidrRange"`
 	// Denotes the logging options for the subnetwork flow logs. If logging is enabled
 	// logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
-	// subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`  Structure is documented below.
+	// subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`
+	// Structure is documented below.
 	LogConfig SubnetworkLogConfigPtrOutput `pulumi:"logConfig"`
 	// The name of the resource, provided by the client when initially
 	// creating the resource. The name must be 1-63 characters long, and
@@ -88,6 +89,7 @@ type Subnetwork struct {
 	// reserved for Internal HTTP(S) Load Balancing. If unspecified, the
 	// purpose defaults to PRIVATE.
 	// If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the role.
+	// Possible values are `INTERNAL_HTTPS_LOAD_BALANCER` and `PRIVATE`.
 	Purpose pulumi.StringOutput `pulumi:"purpose"`
 	// The GCP region for this subnetwork.
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -96,6 +98,7 @@ type Subnetwork struct {
 	// or BACKUP. An ACTIVE subnetwork is one that is currently being used
 	// for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that
 	// is ready to be promoted to ACTIVE or is currently draining.
+	// Possible values are `ACTIVE` and `BACKUP`.
 	Role pulumi.StringPtrOutput `pulumi:"role"`
 	// An array of configurations for secondary IP ranges for VM instances
 	// contained in this subnetwork. The primary IP of such VM must belong
@@ -159,7 +162,8 @@ type subnetworkState struct {
 	IpCidrRange *string `pulumi:"ipCidrRange"`
 	// Denotes the logging options for the subnetwork flow logs. If logging is enabled
 	// logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
-	// subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`  Structure is documented below.
+	// subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`
+	// Structure is documented below.
 	LogConfig *SubnetworkLogConfig `pulumi:"logConfig"`
 	// The name of the resource, provided by the client when initially
 	// creating the resource. The name must be 1-63 characters long, and
@@ -184,6 +188,7 @@ type subnetworkState struct {
 	// reserved for Internal HTTP(S) Load Balancing. If unspecified, the
 	// purpose defaults to PRIVATE.
 	// If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the role.
+	// Possible values are `INTERNAL_HTTPS_LOAD_BALANCER` and `PRIVATE`.
 	Purpose *string `pulumi:"purpose"`
 	// The GCP region for this subnetwork.
 	Region *string `pulumi:"region"`
@@ -192,6 +197,7 @@ type subnetworkState struct {
 	// or BACKUP. An ACTIVE subnetwork is one that is currently being used
 	// for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that
 	// is ready to be promoted to ACTIVE or is currently draining.
+	// Possible values are `ACTIVE` and `BACKUP`.
 	Role *string `pulumi:"role"`
 	// An array of configurations for secondary IP ranges for VM instances
 	// contained in this subnetwork. The primary IP of such VM must belong
@@ -222,7 +228,8 @@ type SubnetworkState struct {
 	IpCidrRange pulumi.StringPtrInput
 	// Denotes the logging options for the subnetwork flow logs. If logging is enabled
 	// logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
-	// subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`  Structure is documented below.
+	// subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`
+	// Structure is documented below.
 	LogConfig SubnetworkLogConfigPtrInput
 	// The name of the resource, provided by the client when initially
 	// creating the resource. The name must be 1-63 characters long, and
@@ -247,6 +254,7 @@ type SubnetworkState struct {
 	// reserved for Internal HTTP(S) Load Balancing. If unspecified, the
 	// purpose defaults to PRIVATE.
 	// If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the role.
+	// Possible values are `INTERNAL_HTTPS_LOAD_BALANCER` and `PRIVATE`.
 	Purpose pulumi.StringPtrInput
 	// The GCP region for this subnetwork.
 	Region pulumi.StringPtrInput
@@ -255,6 +263,7 @@ type SubnetworkState struct {
 	// or BACKUP. An ACTIVE subnetwork is one that is currently being used
 	// for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that
 	// is ready to be promoted to ACTIVE or is currently draining.
+	// Possible values are `ACTIVE` and `BACKUP`.
 	Role pulumi.StringPtrInput
 	// An array of configurations for secondary IP ranges for VM instances
 	// contained in this subnetwork. The primary IP of such VM must belong
@@ -281,7 +290,8 @@ type subnetworkArgs struct {
 	IpCidrRange string `pulumi:"ipCidrRange"`
 	// Denotes the logging options for the subnetwork flow logs. If logging is enabled
 	// logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
-	// subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`  Structure is documented below.
+	// subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`
+	// Structure is documented below.
 	LogConfig *SubnetworkLogConfig `pulumi:"logConfig"`
 	// The name of the resource, provided by the client when initially
 	// creating the resource. The name must be 1-63 characters long, and
@@ -306,6 +316,7 @@ type subnetworkArgs struct {
 	// reserved for Internal HTTP(S) Load Balancing. If unspecified, the
 	// purpose defaults to PRIVATE.
 	// If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the role.
+	// Possible values are `INTERNAL_HTTPS_LOAD_BALANCER` and `PRIVATE`.
 	Purpose *string `pulumi:"purpose"`
 	// The GCP region for this subnetwork.
 	Region *string `pulumi:"region"`
@@ -314,6 +325,7 @@ type subnetworkArgs struct {
 	// or BACKUP. An ACTIVE subnetwork is one that is currently being used
 	// for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that
 	// is ready to be promoted to ACTIVE or is currently draining.
+	// Possible values are `ACTIVE` and `BACKUP`.
 	Role *string `pulumi:"role"`
 	// An array of configurations for secondary IP ranges for VM instances
 	// contained in this subnetwork. The primary IP of such VM must belong
@@ -335,7 +347,8 @@ type SubnetworkArgs struct {
 	IpCidrRange pulumi.StringInput
 	// Denotes the logging options for the subnetwork flow logs. If logging is enabled
 	// logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
-	// subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`  Structure is documented below.
+	// subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`
+	// Structure is documented below.
 	LogConfig SubnetworkLogConfigPtrInput
 	// The name of the resource, provided by the client when initially
 	// creating the resource. The name must be 1-63 characters long, and
@@ -360,6 +373,7 @@ type SubnetworkArgs struct {
 	// reserved for Internal HTTP(S) Load Balancing. If unspecified, the
 	// purpose defaults to PRIVATE.
 	// If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the role.
+	// Possible values are `INTERNAL_HTTPS_LOAD_BALANCER` and `PRIVATE`.
 	Purpose pulumi.StringPtrInput
 	// The GCP region for this subnetwork.
 	Region pulumi.StringPtrInput
@@ -368,6 +382,7 @@ type SubnetworkArgs struct {
 	// or BACKUP. An ACTIVE subnetwork is one that is currently being used
 	// for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that
 	// is ready to be promoted to ACTIVE or is currently draining.
+	// Possible values are `ACTIVE` and `BACKUP`.
 	Role pulumi.StringPtrInput
 	// An array of configurations for secondary IP ranges for VM instances
 	// contained in this subnetwork. The primary IP of such VM must belong

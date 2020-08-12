@@ -77,7 +77,7 @@ namespace Pulumi.Gcp.Compute
         /// forwarding rule. By default, if this field is empty, an ephemeral
         /// internal IP address will be automatically allocated from the IP range
         /// of the subnet or network configured for this forwarding rule.
-        /// An address must be specified by a literal IP address. &gt; **NOTE**: While
+        /// An address must be specified by a literal IP address. &gt; **NOTE:** While
         /// the API allows you to specify various resource paths for an address resource
         /// instead, this provider requires this to specifically be an IP address to
         /// avoid needing to fetching the IP address from resource paths on refresh
@@ -90,6 +90,7 @@ namespace Pulumi.Gcp.Compute
         /// The IP protocol to which this rule applies.
         /// When the load balancing scheme is INTERNAL, only TCP and UDP are
         /// valid.
+        /// Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
         /// </summary>
         [Output("ipProtocol")]
         public Output<string> IpProtocol { get; private set; } = null!;
@@ -125,6 +126,8 @@ namespace Pulumi.Gcp.Compute
         /// INTERNAL is used for protocol forwarding to VMs from an internal IP address,
         /// and internal TCP/UDP load balancers.
         /// INTERNAL_MANAGED is used for internal HTTP(S) load balancers.
+        /// Default value is `EXTERNAL`.
+        /// Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
         /// </summary>
         [Output("loadBalancingScheme")]
         public Output<string?> LoadBalancingScheme { get; private set; } = null!;
@@ -153,6 +156,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The networking tier used for configuring this address. If this field is not
         /// specified, it is assumed to be PREMIUM.
+        /// Possible values are `PREMIUM` and `STANDARD`.
         /// </summary>
         [Output("networkTier")]
         public Output<string> NetworkTier { get; private set; } = null!;
@@ -343,7 +347,7 @@ namespace Pulumi.Gcp.Compute
         /// forwarding rule. By default, if this field is empty, an ephemeral
         /// internal IP address will be automatically allocated from the IP range
         /// of the subnet or network configured for this forwarding rule.
-        /// An address must be specified by a literal IP address. &gt; **NOTE**: While
+        /// An address must be specified by a literal IP address. &gt; **NOTE:** While
         /// the API allows you to specify various resource paths for an address resource
         /// instead, this provider requires this to specifically be an IP address to
         /// avoid needing to fetching the IP address from resource paths on refresh
@@ -356,6 +360,7 @@ namespace Pulumi.Gcp.Compute
         /// The IP protocol to which this rule applies.
         /// When the load balancing scheme is INTERNAL, only TCP and UDP are
         /// valid.
+        /// Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
         /// </summary>
         [Input("ipProtocol")]
         public Input<string>? IpProtocol { get; set; }
@@ -391,6 +396,8 @@ namespace Pulumi.Gcp.Compute
         /// INTERNAL is used for protocol forwarding to VMs from an internal IP address,
         /// and internal TCP/UDP load balancers.
         /// INTERNAL_MANAGED is used for internal HTTP(S) load balancers.
+        /// Default value is `EXTERNAL`.
+        /// Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
         /// </summary>
         [Input("loadBalancingScheme")]
         public Input<string>? LoadBalancingScheme { get; set; }
@@ -419,6 +426,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The networking tier used for configuring this address. If this field is not
         /// specified, it is assumed to be PREMIUM.
+        /// Possible values are `PREMIUM` and `STANDARD`.
         /// </summary>
         [Input("networkTier")]
         public Input<string>? NetworkTier { get; set; }
@@ -570,7 +578,7 @@ namespace Pulumi.Gcp.Compute
         /// forwarding rule. By default, if this field is empty, an ephemeral
         /// internal IP address will be automatically allocated from the IP range
         /// of the subnet or network configured for this forwarding rule.
-        /// An address must be specified by a literal IP address. &gt; **NOTE**: While
+        /// An address must be specified by a literal IP address. &gt; **NOTE:** While
         /// the API allows you to specify various resource paths for an address resource
         /// instead, this provider requires this to specifically be an IP address to
         /// avoid needing to fetching the IP address from resource paths on refresh
@@ -583,6 +591,7 @@ namespace Pulumi.Gcp.Compute
         /// The IP protocol to which this rule applies.
         /// When the load balancing scheme is INTERNAL, only TCP and UDP are
         /// valid.
+        /// Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
         /// </summary>
         [Input("ipProtocol")]
         public Input<string>? IpProtocol { get; set; }
@@ -624,6 +633,8 @@ namespace Pulumi.Gcp.Compute
         /// INTERNAL is used for protocol forwarding to VMs from an internal IP address,
         /// and internal TCP/UDP load balancers.
         /// INTERNAL_MANAGED is used for internal HTTP(S) load balancers.
+        /// Default value is `EXTERNAL`.
+        /// Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
         /// </summary>
         [Input("loadBalancingScheme")]
         public Input<string>? LoadBalancingScheme { get; set; }
@@ -652,6 +663,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The networking tier used for configuring this address. If this field is not
         /// specified, it is assumed to be PREMIUM.
+        /// Possible values are `PREMIUM` and `STANDARD`.
         /// </summary>
         [Input("networkTier")]
         public Input<string>? NetworkTier { get; set; }

@@ -999,7 +999,8 @@ func (o GetFunctionEventTriggerFailurePolicyArrayOutput) Index(i pulumi.IntInput
 
 type GetFunctionSourceRepository struct {
 	DeployedUrl string `pulumi:"deployedUrl"`
-	Url         string `pulumi:"url"`
+	// The URL pointing to the hosted repository where the function is defined.
+	Url string `pulumi:"url"`
 }
 
 // GetFunctionSourceRepositoryInput is an input type that accepts GetFunctionSourceRepositoryArgs and GetFunctionSourceRepositoryOutput values.
@@ -1015,7 +1016,8 @@ type GetFunctionSourceRepositoryInput interface {
 
 type GetFunctionSourceRepositoryArgs struct {
 	DeployedUrl pulumi.StringInput `pulumi:"deployedUrl"`
-	Url         pulumi.StringInput `pulumi:"url"`
+	// The URL pointing to the hosted repository where the function is defined.
+	Url pulumi.StringInput `pulumi:"url"`
 }
 
 func (GetFunctionSourceRepositoryArgs) ElementType() reflect.Type {
@@ -1073,6 +1075,7 @@ func (o GetFunctionSourceRepositoryOutput) DeployedUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFunctionSourceRepository) string { return v.DeployedUrl }).(pulumi.StringOutput)
 }
 
+// The URL pointing to the hosted repository where the function is defined.
 func (o GetFunctionSourceRepositoryOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFunctionSourceRepository) string { return v.Url }).(pulumi.StringOutput)
 }

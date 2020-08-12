@@ -32,6 +32,8 @@ type Instance struct {
 	// will be used.
 	AuthorizedNetwork pulumi.StringOutput `pulumi:"authorizedNetwork"`
 	// The connection mode of the Redis instance.
+	// Default value is `DIRECT_PEERING`.
+	// Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
 	ConnectMode pulumi.StringPtrOutput `pulumi:"connectMode"`
 	// The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -55,6 +57,10 @@ type Instance struct {
 	MemorySizeGb pulumi.IntOutput `pulumi:"memorySizeGb"`
 	// The ID of the instance or a fully qualified identifier for the instance.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
+	// "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export
+	// operation.
+	PersistenceIamIdentity pulumi.StringOutput `pulumi:"persistenceIamIdentity"`
 	// The port number of the exposed Redis endpoint.
 	Port pulumi.IntOutput `pulumi:"port"`
 	// The ID of the project in which the resource belongs.
@@ -66,6 +72,7 @@ type Instance struct {
 	RedisConfigs pulumi.StringMapOutput `pulumi:"redisConfigs"`
 	// The version of Redis software. If not provided, latest supported
 	// version will be used. Currently, the supported values are:
+	// - REDIS_5_0 for Redis 5.0 compatibility
 	// - REDIS_4_0 for Redis 4.0 compatibility
 	// - REDIS_3_2 for Redis 3.2 compatibility
 	RedisVersion pulumi.StringOutput `pulumi:"redisVersion"`
@@ -80,6 +87,8 @@ type Instance struct {
 	// The service tier of the instance. Must be one of these values:
 	// - BASIC: standalone instance
 	// - STANDARD_HA: highly available primary/replica instances
+	//   Default value is `BASIC`.
+	//   Possible values are `BASIC` and `STANDARD_HA`.
 	Tier pulumi.StringPtrOutput `pulumi:"tier"`
 }
 
@@ -124,6 +133,8 @@ type instanceState struct {
 	// will be used.
 	AuthorizedNetwork *string `pulumi:"authorizedNetwork"`
 	// The connection mode of the Redis instance.
+	// Default value is `DIRECT_PEERING`.
+	// Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
 	ConnectMode *string `pulumi:"connectMode"`
 	// The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
 	CreateTime *string `pulumi:"createTime"`
@@ -147,6 +158,10 @@ type instanceState struct {
 	MemorySizeGb *int `pulumi:"memorySizeGb"`
 	// The ID of the instance or a fully qualified identifier for the instance.
 	Name *string `pulumi:"name"`
+	// Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
+	// "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export
+	// operation.
+	PersistenceIamIdentity *string `pulumi:"persistenceIamIdentity"`
 	// The port number of the exposed Redis endpoint.
 	Port *int `pulumi:"port"`
 	// The ID of the project in which the resource belongs.
@@ -158,6 +173,7 @@ type instanceState struct {
 	RedisConfigs map[string]string `pulumi:"redisConfigs"`
 	// The version of Redis software. If not provided, latest supported
 	// version will be used. Currently, the supported values are:
+	// - REDIS_5_0 for Redis 5.0 compatibility
 	// - REDIS_4_0 for Redis 4.0 compatibility
 	// - REDIS_3_2 for Redis 3.2 compatibility
 	RedisVersion *string `pulumi:"redisVersion"`
@@ -172,6 +188,8 @@ type instanceState struct {
 	// The service tier of the instance. Must be one of these values:
 	// - BASIC: standalone instance
 	// - STANDARD_HA: highly available primary/replica instances
+	//   Default value is `BASIC`.
+	//   Possible values are `BASIC` and `STANDARD_HA`.
 	Tier *string `pulumi:"tier"`
 }
 
@@ -186,6 +204,8 @@ type InstanceState struct {
 	// will be used.
 	AuthorizedNetwork pulumi.StringPtrInput
 	// The connection mode of the Redis instance.
+	// Default value is `DIRECT_PEERING`.
+	// Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
 	ConnectMode pulumi.StringPtrInput
 	// The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
 	CreateTime pulumi.StringPtrInput
@@ -209,6 +229,10 @@ type InstanceState struct {
 	MemorySizeGb pulumi.IntPtrInput
 	// The ID of the instance or a fully qualified identifier for the instance.
 	Name pulumi.StringPtrInput
+	// Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
+	// "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export
+	// operation.
+	PersistenceIamIdentity pulumi.StringPtrInput
 	// The port number of the exposed Redis endpoint.
 	Port pulumi.IntPtrInput
 	// The ID of the project in which the resource belongs.
@@ -220,6 +244,7 @@ type InstanceState struct {
 	RedisConfigs pulumi.StringMapInput
 	// The version of Redis software. If not provided, latest supported
 	// version will be used. Currently, the supported values are:
+	// - REDIS_5_0 for Redis 5.0 compatibility
 	// - REDIS_4_0 for Redis 4.0 compatibility
 	// - REDIS_3_2 for Redis 3.2 compatibility
 	RedisVersion pulumi.StringPtrInput
@@ -234,6 +259,8 @@ type InstanceState struct {
 	// The service tier of the instance. Must be one of these values:
 	// - BASIC: standalone instance
 	// - STANDARD_HA: highly available primary/replica instances
+	//   Default value is `BASIC`.
+	//   Possible values are `BASIC` and `STANDARD_HA`.
 	Tier pulumi.StringPtrInput
 }
 
@@ -252,6 +279,8 @@ type instanceArgs struct {
 	// will be used.
 	AuthorizedNetwork *string `pulumi:"authorizedNetwork"`
 	// The connection mode of the Redis instance.
+	// Default value is `DIRECT_PEERING`.
+	// Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
 	ConnectMode *string `pulumi:"connectMode"`
 	// An arbitrary and optional user-provided name for the instance.
 	DisplayName *string `pulumi:"displayName"`
@@ -276,6 +305,7 @@ type instanceArgs struct {
 	RedisConfigs map[string]string `pulumi:"redisConfigs"`
 	// The version of Redis software. If not provided, latest supported
 	// version will be used. Currently, the supported values are:
+	// - REDIS_5_0 for Redis 5.0 compatibility
 	// - REDIS_4_0 for Redis 4.0 compatibility
 	// - REDIS_3_2 for Redis 3.2 compatibility
 	RedisVersion *string `pulumi:"redisVersion"`
@@ -290,6 +320,8 @@ type instanceArgs struct {
 	// The service tier of the instance. Must be one of these values:
 	// - BASIC: standalone instance
 	// - STANDARD_HA: highly available primary/replica instances
+	//   Default value is `BASIC`.
+	//   Possible values are `BASIC` and `STANDARD_HA`.
 	Tier *string `pulumi:"tier"`
 }
 
@@ -305,6 +337,8 @@ type InstanceArgs struct {
 	// will be used.
 	AuthorizedNetwork pulumi.StringPtrInput
 	// The connection mode of the Redis instance.
+	// Default value is `DIRECT_PEERING`.
+	// Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
 	ConnectMode pulumi.StringPtrInput
 	// An arbitrary and optional user-provided name for the instance.
 	DisplayName pulumi.StringPtrInput
@@ -329,6 +363,7 @@ type InstanceArgs struct {
 	RedisConfigs pulumi.StringMapInput
 	// The version of Redis software. If not provided, latest supported
 	// version will be used. Currently, the supported values are:
+	// - REDIS_5_0 for Redis 5.0 compatibility
 	// - REDIS_4_0 for Redis 4.0 compatibility
 	// - REDIS_3_2 for Redis 3.2 compatibility
 	RedisVersion pulumi.StringPtrInput
@@ -343,6 +378,8 @@ type InstanceArgs struct {
 	// The service tier of the instance. Must be one of these values:
 	// - BASIC: standalone instance
 	// - STANDARD_HA: highly available primary/replica instances
+	//   Default value is `BASIC`.
+	//   Possible values are `BASIC` and `STANDARD_HA`.
 	Tier pulumi.StringPtrInput
 }
 

@@ -18,7 +18,8 @@ namespace Pulumi.Gcp.GameServices.Outputs
         /// </summary>
         public readonly string? ConfigVersion;
         /// <summary>
-        /// Selection by realms.  Structure is documented below.
+        /// Selection by realms.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector? RealmsSelector;
 

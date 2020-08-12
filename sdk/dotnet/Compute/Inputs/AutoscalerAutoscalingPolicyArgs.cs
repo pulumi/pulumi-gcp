@@ -29,13 +29,15 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// <summary>
         /// Defines the CPU utilization policy that allows the autoscaler to
         /// scale based on the average CPU utilization of a managed instance
-        /// group.  Structure is documented below.
+        /// group.
+        /// Structure is documented below.
         /// </summary>
         [Input("cpuUtilization")]
         public Input<Inputs.AutoscalerAutoscalingPolicyCpuUtilizationArgs>? CpuUtilization { get; set; }
 
         /// <summary>
-        /// Configuration parameters of autoscaling based on a load balancer.  Structure is documented below.
+        /// Configuration parameters of autoscaling based on a load balancer.
+        /// Structure is documented below.
         /// </summary>
         [Input("loadBalancingUtilization")]
         public Input<Inputs.AutoscalerAutoscalingPolicyLoadBalancingUtilizationArgs>? LoadBalancingUtilization { get; set; }
@@ -53,7 +55,8 @@ namespace Pulumi.Gcp.Compute.Inputs
         private InputList<Inputs.AutoscalerAutoscalingPolicyMetricArgs>? _metrics;
 
         /// <summary>
-        /// Configuration parameters of autoscaling based on a custom metric.  Structure is documented below.
+        /// Configuration parameters of autoscaling based on a custom metric.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.AutoscalerAutoscalingPolicyMetricArgs> Metrics
         {
@@ -72,6 +75,8 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// Defines operating mode for this policy.
+        /// Default value is `ON`.
+        /// Possible values are `OFF`, `ONLY_UP`, and `ON`.
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }

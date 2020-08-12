@@ -28,7 +28,8 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         /// one in the MetricService.ListTimeSeries
         /// request. It is advisable to use the
         /// ListTimeSeries method when debugging this
-        /// field.  Structure is documented below.
+        /// field.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.AlertPolicyConditionConditionThresholdAggregationGetArgs> Aggregations
         {
@@ -45,6 +46,7 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         /// the left-hand side and the threshold on the
         /// right-hand side. Only COMPARISON_LT and
         /// COMPARISON_GT are supported currently.
+        /// Possible values are `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, and `COMPARISON_NE`.
         /// </summary>
         [Input("comparison", required: true)]
         public Input<string> Comparison { get; set; } = null!;
@@ -68,7 +70,8 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         /// labels.This field is similar to the one in
         /// the MetricService.ListTimeSeries request. It
         /// is advisable to use the ListTimeSeries
-        /// method when debugging this field.  Structure is documented below.
+        /// method when debugging this field.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.AlertPolicyConditionConditionThresholdDenominatorAggregationGetArgs> DenominatorAggregations
         {
@@ -148,7 +151,8 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         /// is true for any of the time series that have
         /// been identified by filter and aggregations,
         /// or by the ratio, if denominator_filter and
-        /// denominator_aggregations are specified.  Structure is documented below.
+        /// denominator_aggregations are specified.
+        /// Structure is documented below.
         /// </summary>
         [Input("trigger")]
         public Input<Inputs.AlertPolicyConditionConditionThresholdTriggerGetArgs>? Trigger { get; set; }

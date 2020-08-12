@@ -14,7 +14,8 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class RegionAutoscalerAutoscalingPolicyScaleDownControl
     {
         /// <summary>
-        /// A nested object resource  Structure is documented below.
+        /// A nested object resource
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas? MaxScaledDownReplicas;
         /// <summary>

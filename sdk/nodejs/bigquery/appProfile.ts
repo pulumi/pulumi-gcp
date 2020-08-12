@@ -72,7 +72,8 @@ export class AppProfile extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Use a single-cluster routing policy.  Structure is documented below.
+     * Use a single-cluster routing policy.
+     * Structure is documented below.
      */
     public readonly singleClusterRouting!: pulumi.Output<outputs.bigquery.AppProfileSingleClusterRouting | undefined>;
 
@@ -158,7 +159,8 @@ export interface AppProfileState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * Use a single-cluster routing policy.  Structure is documented below.
+     * Use a single-cluster routing policy.
+     * Structure is documented below.
      */
     readonly singleClusterRouting?: pulumi.Input<inputs.bigquery.AppProfileSingleClusterRouting>;
 }
@@ -195,7 +197,8 @@ export interface AppProfileArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * Use a single-cluster routing policy.  Structure is documented below.
+     * Use a single-cluster routing policy.
+     * Structure is documented below.
      */
     readonly singleClusterRouting?: pulumi.Input<inputs.bigquery.AppProfileSingleClusterRouting>;
 }

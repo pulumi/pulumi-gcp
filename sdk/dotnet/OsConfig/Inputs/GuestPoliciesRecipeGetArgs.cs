@@ -16,7 +16,8 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         private InputList<Inputs.GuestPoliciesRecipeArtifactGetArgs>? _artifacts;
 
         /// <summary>
-        /// Resources available to be used in the steps in the recipe.  Structure is documented below.
+        /// Resources available to be used in the steps in the recipe.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.GuestPoliciesRecipeArtifactGetArgs> Artifacts
         {
@@ -30,6 +31,8 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         /// INSTALLED_KEEP_UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version,
         /// if a higher version of the recipe is assigned to this instance.
         /// REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
+        /// Default value is `INSTALLED`.
+        /// Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
         /// </summary>
         [Input("desiredState")]
         public Input<string>? DesiredState { get; set; }
@@ -39,7 +42,8 @@ namespace Pulumi.Gcp.OsConfig.Inputs
 
         /// <summary>
         /// Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation.
-        /// Any steps taken (including partially completed steps) are not rolled back.  Structure is documented below.
+        /// Any steps taken (including partially completed steps) are not rolled back.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.GuestPoliciesRecipeInstallStepGetArgs> InstallSteps
         {
@@ -61,7 +65,8 @@ namespace Pulumi.Gcp.OsConfig.Inputs
 
         /// <summary>
         /// Actions to be taken for updating this recipe. On failure it stops executing steps and does not attempt another update for this recipe.
-        /// Any steps taken (including partially completed steps) are not rolled back.  Structure is documented below.
+        /// Any steps taken (including partially completed steps) are not rolled back.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.GuestPoliciesRecipeUpdateStepGetArgs> UpdateSteps
         {

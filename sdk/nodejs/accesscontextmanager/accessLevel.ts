@@ -47,12 +47,14 @@ export class AccessLevel extends pulumi.CustomResource {
     }
 
     /**
-     * A set of predefined conditions for the access level and a combining function.  Structure is documented below.
+     * A set of predefined conditions for the access level and a combining function.
+     * Structure is documented below.
      */
     public readonly basic!: pulumi.Output<outputs.accesscontextmanager.AccessLevelBasic | undefined>;
     /**
      * Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
-     * See CEL spec at: https://github.com/google/cel-spec.  Structure is documented below.
+     * See CEL spec at: https://github.com/google/cel-spec.
+     * Structure is documented below.
      */
     public readonly custom!: pulumi.Output<outputs.accesscontextmanager.AccessLevelCustom | undefined>;
     /**
@@ -124,12 +126,14 @@ export class AccessLevel extends pulumi.CustomResource {
  */
 export interface AccessLevelState {
     /**
-     * A set of predefined conditions for the access level and a combining function.  Structure is documented below.
+     * A set of predefined conditions for the access level and a combining function.
+     * Structure is documented below.
      */
     readonly basic?: pulumi.Input<inputs.accesscontextmanager.AccessLevelBasic>;
     /**
      * Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
-     * See CEL spec at: https://github.com/google/cel-spec.  Structure is documented below.
+     * See CEL spec at: https://github.com/google/cel-spec.
+     * Structure is documented below.
      */
     readonly custom?: pulumi.Input<inputs.accesscontextmanager.AccessLevelCustom>;
     /**
@@ -158,12 +162,14 @@ export interface AccessLevelState {
  */
 export interface AccessLevelArgs {
     /**
-     * A set of predefined conditions for the access level and a combining function.  Structure is documented below.
+     * A set of predefined conditions for the access level and a combining function.
+     * Structure is documented below.
      */
     readonly basic?: pulumi.Input<inputs.accesscontextmanager.AccessLevelBasic>;
     /**
      * Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
-     * See CEL spec at: https://github.com/google/cel-spec.  Structure is documented below.
+     * See CEL spec at: https://github.com/google/cel-spec.
+     * Structure is documented below.
      */
     readonly custom?: pulumi.Input<inputs.accesscontextmanager.AccessLevelCustom>;
     /**

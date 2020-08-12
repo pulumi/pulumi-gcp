@@ -14,7 +14,8 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class BackendServiceCdnPolicy
     {
         /// <summary>
-        /// The CacheKeyPolicy for this CdnPolicy.  Structure is documented below.
+        /// The CacheKeyPolicy for this CdnPolicy.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.BackendServiceCdnPolicyCacheKeyPolicy? CacheKeyPolicy;
         /// <summary>

@@ -87,7 +87,8 @@ export class Image extends pulumi.CustomResource {
     public readonly family!: pulumi.Output<string | undefined>;
     /**
      * A list of features to enable on the guest operating system.
-     * Applicable only for bootable images.  Structure is documented below.
+     * Applicable only for bootable images.
+     * Structure is documented below.
      */
     public readonly guestOsFeatures!: pulumi.Output<outputs.compute.ImageGuestOsFeature[]>;
     /**
@@ -118,7 +119,8 @@ export class Image extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The parameters of the raw disk image.  Structure is documented below.
+     * The parameters of the raw disk image.
+     * Structure is documented below.
      */
     public readonly rawDisk!: pulumi.Output<outputs.compute.ImageRawDisk | undefined>;
     /**
@@ -217,7 +219,8 @@ export interface ImageState {
     readonly family?: pulumi.Input<string>;
     /**
      * A list of features to enable on the guest operating system.
-     * Applicable only for bootable images.  Structure is documented below.
+     * Applicable only for bootable images.
+     * Structure is documented below.
      */
     readonly guestOsFeatures?: pulumi.Input<pulumi.Input<inputs.compute.ImageGuestOsFeature>[]>;
     /**
@@ -248,7 +251,8 @@ export interface ImageState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The parameters of the raw disk image.  Structure is documented below.
+     * The parameters of the raw disk image.
+     * Structure is documented below.
      */
     readonly rawDisk?: pulumi.Input<inputs.compute.ImageRawDisk>;
     /**
@@ -286,7 +290,8 @@ export interface ImageArgs {
     readonly family?: pulumi.Input<string>;
     /**
      * A list of features to enable on the guest operating system.
-     * Applicable only for bootable images.  Structure is documented below.
+     * Applicable only for bootable images.
+     * Structure is documented below.
      */
     readonly guestOsFeatures?: pulumi.Input<pulumi.Input<inputs.compute.ImageGuestOsFeature>[]>;
     /**
@@ -313,7 +318,8 @@ export interface ImageArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The parameters of the raw disk image.  Structure is documented below.
+     * The parameters of the raw disk image.
+     * Structure is documented below.
      */
     readonly rawDisk?: pulumi.Input<inputs.compute.ImageRawDisk>;
     /**

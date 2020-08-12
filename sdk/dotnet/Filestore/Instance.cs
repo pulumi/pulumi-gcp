@@ -44,7 +44,8 @@ namespace Pulumi.Gcp.Filestore
 
         /// <summary>
         /// File system shares on the instance. For this version, only a
-        /// single file share is supported.  Structure is documented below.
+        /// single file share is supported.
+        /// Structure is documented below.
         /// </summary>
         [Output("fileShares")]
         public Output<Outputs.InstanceFileShares> FileShares { get; private set; } = null!;
@@ -63,7 +64,8 @@ namespace Pulumi.Gcp.Filestore
 
         /// <summary>
         /// VPC networks to which the instance is connected. For this version,
-        /// only a single network is supported.  Structure is documented below.
+        /// only a single network is supported.
+        /// Structure is documented below.
         /// </summary>
         [Output("networks")]
         public Output<ImmutableArray<Outputs.InstanceNetwork>> Networks { get; private set; } = null!;
@@ -77,6 +79,7 @@ namespace Pulumi.Gcp.Filestore
 
         /// <summary>
         /// The service tier of the instance.
+        /// Possible values are `TIER_UNSPECIFIED`, `STANDARD`, `PREMIUM`, `BASIC_HDD`, `BASIC_SSD`, and `HIGH_SCALE_SSD`.
         /// </summary>
         [Output("tier")]
         public Output<string> Tier { get; private set; } = null!;
@@ -141,7 +144,8 @@ namespace Pulumi.Gcp.Filestore
 
         /// <summary>
         /// File system shares on the instance. For this version, only a
-        /// single file share is supported.  Structure is documented below.
+        /// single file share is supported.
+        /// Structure is documented below.
         /// </summary>
         [Input("fileShares", required: true)]
         public Input<Inputs.InstanceFileSharesArgs> FileShares { get; set; } = null!;
@@ -169,7 +173,8 @@ namespace Pulumi.Gcp.Filestore
 
         /// <summary>
         /// VPC networks to which the instance is connected. For this version,
-        /// only a single network is supported.  Structure is documented below.
+        /// only a single network is supported.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.InstanceNetworkArgs> Networks
         {
@@ -186,6 +191,7 @@ namespace Pulumi.Gcp.Filestore
 
         /// <summary>
         /// The service tier of the instance.
+        /// Possible values are `TIER_UNSPECIFIED`, `STANDARD`, `PREMIUM`, `BASIC_HDD`, `BASIC_SSD`, and `HIGH_SCALE_SSD`.
         /// </summary>
         [Input("tier", required: true)]
         public Input<string> Tier { get; set; } = null!;
@@ -223,7 +229,8 @@ namespace Pulumi.Gcp.Filestore
 
         /// <summary>
         /// File system shares on the instance. For this version, only a
-        /// single file share is supported.  Structure is documented below.
+        /// single file share is supported.
+        /// Structure is documented below.
         /// </summary>
         [Input("fileShares")]
         public Input<Inputs.InstanceFileSharesGetArgs>? FileShares { get; set; }
@@ -251,7 +258,8 @@ namespace Pulumi.Gcp.Filestore
 
         /// <summary>
         /// VPC networks to which the instance is connected. For this version,
-        /// only a single network is supported.  Structure is documented below.
+        /// only a single network is supported.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.InstanceNetworkGetArgs> Networks
         {
@@ -268,6 +276,7 @@ namespace Pulumi.Gcp.Filestore
 
         /// <summary>
         /// The service tier of the instance.
+        /// Possible values are `TIER_UNSPECIFIED`, `STANDARD`, `PREMIUM`, `BASIC_HDD`, `BASIC_SSD`, and `HIGH_SCALE_SSD`.
         /// </summary>
         [Input("tier")]
         public Input<string>? Tier { get; set; }

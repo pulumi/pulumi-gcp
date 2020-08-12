@@ -14,9 +14,11 @@ class Job(pulumi.CustomResource):
     """
     App Engine HTTP target.
     If the job providers a App Engine HTTP target the cron will
-    send a request to the service instance  Structure is documented below.
+    send a request to the service instance
+    Structure is documented below.
 
-      * `appEngineRouting` (`dict`) - App Engine Routing setting for the job.  Structure is documented below.
+      * `appEngineRouting` (`dict`) - App Engine Routing setting for the job.
+        Structure is documented below.
         * `instance` (`str`) - App instance.
           By default, the job is sent to an instance which is available when the job is attempted.
         * `service` (`str`) - App service.
@@ -55,7 +57,8 @@ class Job(pulumi.CustomResource):
     """
     HTTP target.
     If the job providers a http_target the cron will
-    send a request to the targeted url  Structure is documented below.
+    send a request to the targeted url
+    Structure is documented below.
 
       * `body` (`str`) - HTTP request body.
         A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
@@ -64,14 +67,16 @@ class Job(pulumi.CustomResource):
         Repeated headers are not supported, but a header value can contain commas.
       * `httpMethod` (`str`) - Which HTTP method to use for the request.
       * `oauthToken` (`dict`) - Contains information needed for generating an OAuth token.
-        This type of authorization should be used when sending requests to a GCP endpoint.  Structure is documented below.
+        This type of authorization should be used when sending requests to a GCP endpoint.
+        Structure is documented below.
         * `scope` (`str`) - OAuth scope to be used for generating OAuth access token. If not specified,
           "https://www.googleapis.com/auth/cloud-platform" will be used.
         * `service_account_email` (`str`) - Service account email to be used for generating OAuth token.
           The service account must be within the same project as the job.
 
       * `oidcToken` (`dict`) - Contains information needed for generating an OpenID Connect token.
-        This type of authorization should be used when sending requests to third party endpoints or Cloud Run.  Structure is documented below.
+        This type of authorization should be used when sending requests to third party endpoints or Cloud Run.
+        Structure is documented below.
         * `audience` (`str`) - Audience to be used when generating OIDC token. If not specified,
           the URI specified in target will be used.
         * `service_account_email` (`str`) - Service account email to be used for generating OAuth token.
@@ -92,14 +97,15 @@ class Job(pulumi.CustomResource):
     """
     Pub/Sub target
     If the job providers a Pub/Sub target the cron will publish
-    a message to the provided topic  Structure is documented below.
+    a message to the provided topic
+    Structure is documented below.
 
       * `attributes` (`dict`) - Attributes for PubsubMessage.
         Pubsub message must contain either non-empty data, or at least one attribute.
       * `data` (`str`) - The message payload for PubsubMessage.
         Pubsub message must contain either non-empty data, or at least one attribute.
       * `topicName` (`str`) - The full resource name for the Cloud Pub/Sub topic to which
-        messages will be published when a job is delivered. ~>**NOTE**:
+        messages will be published when a job is delivered. ~>**NOTE:**
         The topic name must be in the same format as required by PubSub's
         PublishRequest.name, e.g. `projects/my-project/topics/my-topic`.
     """
@@ -111,7 +117,8 @@ class Job(pulumi.CustomResource):
     """
     By default, if a job does not complete successfully,
     meaning that an acknowledgement is not received from the handler,
-    then it will be retried with exponential backoff according to the settings  Structure is documented below.
+    then it will be retried with exponential backoff according to the settings
+    Structure is documented below.
 
       * `maxBackoffDuration` (`str`) - The maximum amount of time to wait before retrying a job after it fails.
         A duration in seconds with up to nine fractional digits, terminated by 's'.
@@ -158,7 +165,8 @@ class Job(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] app_engine_http_target: App Engine HTTP target.
                If the job providers a App Engine HTTP target the cron will
-               send a request to the service instance  Structure is documented below.
+               send a request to the service instance
+               Structure is documented below.
         :param pulumi.Input[str] attempt_deadline: The deadline for job attempts. If the request handler does not respond by this deadline then the request is
                cancelled and the attempt is marked as a DEADLINE_EXCEEDED failure. The failed attempt can be viewed in
                execution logs. Cloud Scheduler will retry the job according to the RetryConfig.
@@ -170,24 +178,28 @@ class Job(pulumi.CustomResource):
                This string must not contain more than 500 characters.
         :param pulumi.Input[dict] http_target: HTTP target.
                If the job providers a http_target the cron will
-               send a request to the targeted url  Structure is documented below.
+               send a request to the targeted url
+               Structure is documented below.
         :param pulumi.Input[str] name: The name of the job.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[dict] pubsub_target: Pub/Sub target
                If the job providers a Pub/Sub target the cron will publish
-               a message to the provided topic  Structure is documented below.
+               a message to the provided topic
+               Structure is documented below.
         :param pulumi.Input[str] region: Region where the scheduler job resides
         :param pulumi.Input[dict] retry_config: By default, if a job does not complete successfully,
                meaning that an acknowledgement is not received from the handler,
-               then it will be retried with exponential backoff according to the settings  Structure is documented below.
+               then it will be retried with exponential backoff according to the settings
+               Structure is documented below.
         :param pulumi.Input[str] schedule: Describes the schedule on which the job will be executed.
         :param pulumi.Input[str] time_zone: Specifies the time zone to be used in interpreting schedule.
                The value of this field must be a time zone name from the tz database.
 
         The **app_engine_http_target** object supports the following:
 
-          * `appEngineRouting` (`pulumi.Input[dict]`) - App Engine Routing setting for the job.  Structure is documented below.
+          * `appEngineRouting` (`pulumi.Input[dict]`) - App Engine Routing setting for the job.
+            Structure is documented below.
             * `instance` (`pulumi.Input[str]`) - App instance.
               By default, the job is sent to an instance which is available when the job is attempted.
             * `service` (`pulumi.Input[str]`) - App service.
@@ -216,14 +228,16 @@ class Job(pulumi.CustomResource):
             Repeated headers are not supported, but a header value can contain commas.
           * `httpMethod` (`pulumi.Input[str]`) - Which HTTP method to use for the request.
           * `oauthToken` (`pulumi.Input[dict]`) - Contains information needed for generating an OAuth token.
-            This type of authorization should be used when sending requests to a GCP endpoint.  Structure is documented below.
+            This type of authorization should be used when sending requests to a GCP endpoint.
+            Structure is documented below.
             * `scope` (`pulumi.Input[str]`) - OAuth scope to be used for generating OAuth access token. If not specified,
               "https://www.googleapis.com/auth/cloud-platform" will be used.
             * `service_account_email` (`pulumi.Input[str]`) - Service account email to be used for generating OAuth token.
               The service account must be within the same project as the job.
 
           * `oidcToken` (`pulumi.Input[dict]`) - Contains information needed for generating an OpenID Connect token.
-            This type of authorization should be used when sending requests to third party endpoints or Cloud Run.  Structure is documented below.
+            This type of authorization should be used when sending requests to third party endpoints or Cloud Run.
+            Structure is documented below.
             * `audience` (`pulumi.Input[str]`) - Audience to be used when generating OIDC token. If not specified,
               the URI specified in target will be used.
             * `service_account_email` (`pulumi.Input[str]`) - Service account email to be used for generating OAuth token.
@@ -238,7 +252,7 @@ class Job(pulumi.CustomResource):
           * `data` (`pulumi.Input[str]`) - The message payload for PubsubMessage.
             Pubsub message must contain either non-empty data, or at least one attribute.
           * `topicName` (`pulumi.Input[str]`) - The full resource name for the Cloud Pub/Sub topic to which
-            messages will be published when a job is delivered. ~>**NOTE**:
+            messages will be published when a job is delivered. ~>**NOTE:**
             The topic name must be in the same format as required by PubSub's
             PublishRequest.name, e.g. `projects/my-project/topics/my-topic`.
 
@@ -304,7 +318,8 @@ class Job(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] app_engine_http_target: App Engine HTTP target.
                If the job providers a App Engine HTTP target the cron will
-               send a request to the service instance  Structure is documented below.
+               send a request to the service instance
+               Structure is documented below.
         :param pulumi.Input[str] attempt_deadline: The deadline for job attempts. If the request handler does not respond by this deadline then the request is
                cancelled and the attempt is marked as a DEADLINE_EXCEEDED failure. The failed attempt can be viewed in
                execution logs. Cloud Scheduler will retry the job according to the RetryConfig.
@@ -316,24 +331,28 @@ class Job(pulumi.CustomResource):
                This string must not contain more than 500 characters.
         :param pulumi.Input[dict] http_target: HTTP target.
                If the job providers a http_target the cron will
-               send a request to the targeted url  Structure is documented below.
+               send a request to the targeted url
+               Structure is documented below.
         :param pulumi.Input[str] name: The name of the job.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[dict] pubsub_target: Pub/Sub target
                If the job providers a Pub/Sub target the cron will publish
-               a message to the provided topic  Structure is documented below.
+               a message to the provided topic
+               Structure is documented below.
         :param pulumi.Input[str] region: Region where the scheduler job resides
         :param pulumi.Input[dict] retry_config: By default, if a job does not complete successfully,
                meaning that an acknowledgement is not received from the handler,
-               then it will be retried with exponential backoff according to the settings  Structure is documented below.
+               then it will be retried with exponential backoff according to the settings
+               Structure is documented below.
         :param pulumi.Input[str] schedule: Describes the schedule on which the job will be executed.
         :param pulumi.Input[str] time_zone: Specifies the time zone to be used in interpreting schedule.
                The value of this field must be a time zone name from the tz database.
 
         The **app_engine_http_target** object supports the following:
 
-          * `appEngineRouting` (`pulumi.Input[dict]`) - App Engine Routing setting for the job.  Structure is documented below.
+          * `appEngineRouting` (`pulumi.Input[dict]`) - App Engine Routing setting for the job.
+            Structure is documented below.
             * `instance` (`pulumi.Input[str]`) - App instance.
               By default, the job is sent to an instance which is available when the job is attempted.
             * `service` (`pulumi.Input[str]`) - App service.
@@ -362,14 +381,16 @@ class Job(pulumi.CustomResource):
             Repeated headers are not supported, but a header value can contain commas.
           * `httpMethod` (`pulumi.Input[str]`) - Which HTTP method to use for the request.
           * `oauthToken` (`pulumi.Input[dict]`) - Contains information needed for generating an OAuth token.
-            This type of authorization should be used when sending requests to a GCP endpoint.  Structure is documented below.
+            This type of authorization should be used when sending requests to a GCP endpoint.
+            Structure is documented below.
             * `scope` (`pulumi.Input[str]`) - OAuth scope to be used for generating OAuth access token. If not specified,
               "https://www.googleapis.com/auth/cloud-platform" will be used.
             * `service_account_email` (`pulumi.Input[str]`) - Service account email to be used for generating OAuth token.
               The service account must be within the same project as the job.
 
           * `oidcToken` (`pulumi.Input[dict]`) - Contains information needed for generating an OpenID Connect token.
-            This type of authorization should be used when sending requests to third party endpoints or Cloud Run.  Structure is documented below.
+            This type of authorization should be used when sending requests to third party endpoints or Cloud Run.
+            Structure is documented below.
             * `audience` (`pulumi.Input[str]`) - Audience to be used when generating OIDC token. If not specified,
               the URI specified in target will be used.
             * `service_account_email` (`pulumi.Input[str]`) - Service account email to be used for generating OAuth token.
@@ -384,7 +405,7 @@ class Job(pulumi.CustomResource):
           * `data` (`pulumi.Input[str]`) - The message payload for PubsubMessage.
             Pubsub message must contain either non-empty data, or at least one attribute.
           * `topicName` (`pulumi.Input[str]`) - The full resource name for the Cloud Pub/Sub topic to which
-            messages will be published when a job is delivered. ~>**NOTE**:
+            messages will be published when a job is delivered. ~>**NOTE:**
             The topic name must be in the same format as required by PubSub's
             PublishRequest.name, e.g. `projects/my-project/topics/my-topic`.
 

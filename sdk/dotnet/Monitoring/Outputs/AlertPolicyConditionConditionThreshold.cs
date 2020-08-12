@@ -26,7 +26,8 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         /// one in the MetricService.ListTimeSeries
         /// request. It is advisable to use the
         /// ListTimeSeries method when debugging this
-        /// field.  Structure is documented below.
+        /// field.
+        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.AlertPolicyConditionConditionThresholdAggregation> Aggregations;
         /// <summary>
@@ -38,6 +39,7 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         /// the left-hand side and the threshold on the
         /// right-hand side. Only COMPARISON_LT and
         /// COMPARISON_GT are supported currently.
+        /// Possible values are `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, and `COMPARISON_NE`.
         /// </summary>
         public readonly string Comparison;
         /// <summary>
@@ -56,7 +58,8 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         /// labels.This field is similar to the one in
         /// the MetricService.ListTimeSeries request. It
         /// is advisable to use the ListTimeSeries
-        /// method when debugging this field.  Structure is documented below.
+        /// method when debugging this field.
+        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.AlertPolicyConditionConditionThresholdDenominatorAggregation> DenominatorAggregations;
         /// <summary>
@@ -123,7 +126,8 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         /// is true for any of the time series that have
         /// been identified by filter and aggregations,
         /// or by the ratio, if denominator_filter and
-        /// denominator_aggregations are specified.  Structure is documented below.
+        /// denominator_aggregations are specified.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.AlertPolicyConditionConditionThresholdTrigger? Trigger;
 

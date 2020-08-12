@@ -66,7 +66,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Properties relevant to a managed certificate.  These will be used if the
-        /// certificate is managed (as indicated by a value of `MANAGED` in `type`).  Structure is documented below.
+        /// certificate is managed (as indicated by a value of `MANAGED` in `type`).
+        /// Structure is documented below.
         /// </summary>
         [Output("managed")]
         public Output<Outputs.ManagedSslCertificateManaged?> Managed { get; private set; } = null!;
@@ -105,6 +106,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Enum field whose value is always `MANAGED` - used to signal to the API
         /// which type this is.
+        /// Default value is `MANAGED`.
+        /// Possible values are `MANAGED`.
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -173,7 +176,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Properties relevant to a managed certificate.  These will be used if the
-        /// certificate is managed (as indicated by a value of `MANAGED` in `type`).  Structure is documented below.
+        /// certificate is managed (as indicated by a value of `MANAGED` in `type`).
+        /// Structure is documented below.
         /// </summary>
         [Input("managed")]
         public Input<Inputs.ManagedSslCertificateManagedArgs>? Managed { get; set; }
@@ -200,6 +204,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Enum field whose value is always `MANAGED` - used to signal to the API
         /// which type this is.
+        /// Default value is `MANAGED`.
+        /// Possible values are `MANAGED`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -237,7 +243,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Properties relevant to a managed certificate.  These will be used if the
-        /// certificate is managed (as indicated by a value of `MANAGED` in `type`).  Structure is documented below.
+        /// certificate is managed (as indicated by a value of `MANAGED` in `type`).
+        /// Structure is documented below.
         /// </summary>
         [Input("managed")]
         public Input<Inputs.ManagedSslCertificateManagedGetArgs>? Managed { get; set; }
@@ -282,6 +289,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Enum field whose value is always `MANAGED` - used to signal to the API
         /// which type this is.
+        /// Default value is `MANAGED`.
+        /// Possible values are `MANAGED`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

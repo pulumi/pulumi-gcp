@@ -27,6 +27,8 @@ namespace Pulumi.Gcp.Logging.Inputs
 
         /// <summary>
         /// The type of data that can be assigned to the label.
+        /// Default value is `STRING`.
+        /// Possible values are `BOOL`, `INT64`, and `STRING`.
         /// </summary>
         [Input("valueType")]
         public Input<string>? ValueType { get; set; }

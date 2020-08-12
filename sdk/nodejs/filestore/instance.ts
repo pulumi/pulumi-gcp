@@ -61,7 +61,8 @@ export class Instance extends pulumi.CustomResource {
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
      * File system shares on the instance. For this version, only a
-     * single file share is supported.  Structure is documented below.
+     * single file share is supported.
+     * Structure is documented below.
      */
     public readonly fileShares!: pulumi.Output<outputs.filestore.InstanceFileShares>;
     /**
@@ -74,7 +75,8 @@ export class Instance extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * VPC networks to which the instance is connected. For this version,
-     * only a single network is supported.  Structure is documented below.
+     * only a single network is supported.
+     * Structure is documented below.
      */
     public readonly networks!: pulumi.Output<outputs.filestore.InstanceNetwork[]>;
     /**
@@ -84,6 +86,7 @@ export class Instance extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * The service tier of the instance.
+     * Possible values are `TIER_UNSPECIFIED`, `STANDARD`, `PREMIUM`, `BASIC_HDD`, `BASIC_SSD`, and `HIGH_SCALE_SSD`.
      */
     public readonly tier!: pulumi.Output<string>;
     /**
@@ -167,7 +170,8 @@ export interface InstanceState {
     readonly etag?: pulumi.Input<string>;
     /**
      * File system shares on the instance. For this version, only a
-     * single file share is supported.  Structure is documented below.
+     * single file share is supported.
+     * Structure is documented below.
      */
     readonly fileShares?: pulumi.Input<inputs.filestore.InstanceFileShares>;
     /**
@@ -180,7 +184,8 @@ export interface InstanceState {
     readonly name?: pulumi.Input<string>;
     /**
      * VPC networks to which the instance is connected. For this version,
-     * only a single network is supported.  Structure is documented below.
+     * only a single network is supported.
+     * Structure is documented below.
      */
     readonly networks?: pulumi.Input<pulumi.Input<inputs.filestore.InstanceNetwork>[]>;
     /**
@@ -190,6 +195,7 @@ export interface InstanceState {
     readonly project?: pulumi.Input<string>;
     /**
      * The service tier of the instance.
+     * Possible values are `TIER_UNSPECIFIED`, `STANDARD`, `PREMIUM`, `BASIC_HDD`, `BASIC_SSD`, and `HIGH_SCALE_SSD`.
      */
     readonly tier?: pulumi.Input<string>;
     /**
@@ -208,7 +214,8 @@ export interface InstanceArgs {
     readonly description?: pulumi.Input<string>;
     /**
      * File system shares on the instance. For this version, only a
-     * single file share is supported.  Structure is documented below.
+     * single file share is supported.
+     * Structure is documented below.
      */
     readonly fileShares: pulumi.Input<inputs.filestore.InstanceFileShares>;
     /**
@@ -221,7 +228,8 @@ export interface InstanceArgs {
     readonly name?: pulumi.Input<string>;
     /**
      * VPC networks to which the instance is connected. For this version,
-     * only a single network is supported.  Structure is documented below.
+     * only a single network is supported.
+     * Structure is documented below.
      */
     readonly networks: pulumi.Input<pulumi.Input<inputs.filestore.InstanceNetwork>[]>;
     /**
@@ -231,6 +239,7 @@ export interface InstanceArgs {
     readonly project?: pulumi.Input<string>;
     /**
      * The service tier of the instance.
+     * Possible values are `TIER_UNSPECIFIED`, `STANDARD`, `PREMIUM`, `BASIC_HDD`, `BASIC_SSD`, and `HIGH_SCALE_SSD`.
      */
     readonly tier: pulumi.Input<string>;
     /**

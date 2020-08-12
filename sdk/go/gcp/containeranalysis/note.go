@@ -32,7 +32,8 @@ type Note struct {
 	// gate the ability for a principle to attach an Occurrence to a given
 	// Note. It also provides a single point of lookup to find all attached
 	// Attestation Occurrences, even if they don't all live in the same
-	// project.  Structure is documented below.
+	// project.
+	// Structure is documented below.
 	AttestationAuthority NoteAttestationAuthorityOutput `pulumi:"attestationAuthority"`
 	// The time this note was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -49,7 +50,8 @@ type Note struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Names of other notes related to this note.
 	RelatedNoteNames pulumi.StringArrayOutput `pulumi:"relatedNoteNames"`
-	// URLs associated with this note and related metadata.  Structure is documented below.
+	// URLs associated with this note and related metadata.
+	// Structure is documented below.
 	RelatedUrls NoteRelatedUrlArrayOutput `pulumi:"relatedUrls"`
 	// A one sentence description of the note.
 	ShortDescription pulumi.StringPtrOutput `pulumi:"shortDescription"`
@@ -96,7 +98,8 @@ type noteState struct {
 	// gate the ability for a principle to attach an Occurrence to a given
 	// Note. It also provides a single point of lookup to find all attached
 	// Attestation Occurrences, even if they don't all live in the same
-	// project.  Structure is documented below.
+	// project.
+	// Structure is documented below.
 	AttestationAuthority *NoteAttestationAuthority `pulumi:"attestationAuthority"`
 	// The time this note was created.
 	CreateTime *string `pulumi:"createTime"`
@@ -113,7 +116,8 @@ type noteState struct {
 	Project *string `pulumi:"project"`
 	// Names of other notes related to this note.
 	RelatedNoteNames []string `pulumi:"relatedNoteNames"`
-	// URLs associated with this note and related metadata.  Structure is documented below.
+	// URLs associated with this note and related metadata.
+	// Structure is documented below.
 	RelatedUrls []NoteRelatedUrl `pulumi:"relatedUrls"`
 	// A one sentence description of the note.
 	ShortDescription *string `pulumi:"shortDescription"`
@@ -130,7 +134,8 @@ type NoteState struct {
 	// gate the ability for a principle to attach an Occurrence to a given
 	// Note. It also provides a single point of lookup to find all attached
 	// Attestation Occurrences, even if they don't all live in the same
-	// project.  Structure is documented below.
+	// project.
+	// Structure is documented below.
 	AttestationAuthority NoteAttestationAuthorityPtrInput
 	// The time this note was created.
 	CreateTime pulumi.StringPtrInput
@@ -147,7 +152,8 @@ type NoteState struct {
 	Project pulumi.StringPtrInput
 	// Names of other notes related to this note.
 	RelatedNoteNames pulumi.StringArrayInput
-	// URLs associated with this note and related metadata.  Structure is documented below.
+	// URLs associated with this note and related metadata.
+	// Structure is documented below.
 	RelatedUrls NoteRelatedUrlArrayInput
 	// A one sentence description of the note.
 	ShortDescription pulumi.StringPtrInput
@@ -168,7 +174,8 @@ type noteArgs struct {
 	// gate the ability for a principle to attach an Occurrence to a given
 	// Note. It also provides a single point of lookup to find all attached
 	// Attestation Occurrences, even if they don't all live in the same
-	// project.  Structure is documented below.
+	// project.
+	// Structure is documented below.
 	AttestationAuthority NoteAttestationAuthority `pulumi:"attestationAuthority"`
 	// Time of expiration for this note. Leave empty if note does not expire.
 	ExpirationTime *string `pulumi:"expirationTime"`
@@ -181,7 +188,8 @@ type noteArgs struct {
 	Project *string `pulumi:"project"`
 	// Names of other notes related to this note.
 	RelatedNoteNames []string `pulumi:"relatedNoteNames"`
-	// URLs associated with this note and related metadata.  Structure is documented below.
+	// URLs associated with this note and related metadata.
+	// Structure is documented below.
 	RelatedUrls []NoteRelatedUrl `pulumi:"relatedUrls"`
 	// A one sentence description of the note.
 	ShortDescription *string `pulumi:"shortDescription"`
@@ -197,7 +205,8 @@ type NoteArgs struct {
 	// gate the ability for a principle to attach an Occurrence to a given
 	// Note. It also provides a single point of lookup to find all attached
 	// Attestation Occurrences, even if they don't all live in the same
-	// project.  Structure is documented below.
+	// project.
+	// Structure is documented below.
 	AttestationAuthority NoteAttestationAuthorityInput
 	// Time of expiration for this note. Leave empty if note does not expire.
 	ExpirationTime pulumi.StringPtrInput
@@ -210,7 +219,8 @@ type NoteArgs struct {
 	Project pulumi.StringPtrInput
 	// Names of other notes related to this note.
 	RelatedNoteNames pulumi.StringArrayInput
-	// URLs associated with this note and related metadata.  Structure is documented below.
+	// URLs associated with this note and related metadata.
+	// Structure is documented below.
 	RelatedUrls NoteRelatedUrlArrayInput
 	// A one sentence description of the note.
 	ShortDescription pulumi.StringPtrInput

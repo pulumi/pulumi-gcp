@@ -80,7 +80,8 @@ export class RegionDisk extends pulumi.CustomResource {
      * the disk.
      * If you do not provide an encryption key when creating the disk, then
      * the disk will be encrypted using an automatically generated key and
-     * you do not need to provide a key to use the disk later.  Structure is documented below.
+     * you do not need to provide a key to use the disk later.
+     * Structure is documented below.
      */
     public readonly diskEncryptionKey!: pulumi.Output<outputs.compute.RegionDiskDiskEncryptionKey | undefined>;
     /**
@@ -157,7 +158,8 @@ export class RegionDisk extends pulumi.CustomResource {
     /**
      * The customer-supplied encryption key of the source snapshot. Required
      * if the source snapshot is protected by a customer-supplied encryption
-     * key.  Structure is documented below.
+     * key.
+     * Structure is documented below.
      */
     public readonly sourceSnapshotEncryptionKey!: pulumi.Output<outputs.compute.RegionDiskSourceSnapshotEncryptionKey | undefined>;
     /**
@@ -265,7 +267,8 @@ export interface RegionDiskState {
      * the disk.
      * If you do not provide an encryption key when creating the disk, then
      * the disk will be encrypted using an automatically generated key and
-     * you do not need to provide a key to use the disk later.  Structure is documented below.
+     * you do not need to provide a key to use the disk later.
+     * Structure is documented below.
      */
     readonly diskEncryptionKey?: pulumi.Input<inputs.compute.RegionDiskDiskEncryptionKey>;
     /**
@@ -342,7 +345,8 @@ export interface RegionDiskState {
     /**
      * The customer-supplied encryption key of the source snapshot. Required
      * if the source snapshot is protected by a customer-supplied encryption
-     * key.  Structure is documented below.
+     * key.
+     * Structure is documented below.
      */
     readonly sourceSnapshotEncryptionKey?: pulumi.Input<inputs.compute.RegionDiskSourceSnapshotEncryptionKey>;
     /**
@@ -380,7 +384,8 @@ export interface RegionDiskArgs {
      * the disk.
      * If you do not provide an encryption key when creating the disk, then
      * the disk will be encrypted using an automatically generated key and
-     * you do not need to provide a key to use the disk later.  Structure is documented below.
+     * you do not need to provide a key to use the disk later.
+     * Structure is documented below.
      */
     readonly diskEncryptionKey?: pulumi.Input<inputs.compute.RegionDiskDiskEncryptionKey>;
     /**
@@ -441,7 +446,8 @@ export interface RegionDiskArgs {
     /**
      * The customer-supplied encryption key of the source snapshot. Required
      * if the source snapshot is protected by a customer-supplied encryption
-     * key.  Structure is documented below.
+     * key.
+     * Structure is documented below.
      */
     readonly sourceSnapshotEncryptionKey?: pulumi.Input<inputs.compute.RegionDiskSourceSnapshotEncryptionKey>;
     /**

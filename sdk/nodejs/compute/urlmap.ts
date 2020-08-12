@@ -53,7 +53,8 @@ export class URLMap extends pulumi.CustomResource {
      * advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
      * to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
      * Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
-     * Only one of defaultRouteAction or defaultUrlRedirect must be set.  Structure is documented below.
+     * Only one of defaultRouteAction or defaultUrlRedirect must be set.
+     * Structure is documented below.
      */
     public readonly defaultRouteAction!: pulumi.Output<outputs.compute.URLMapDefaultRouteAction | undefined>;
     /**
@@ -63,7 +64,8 @@ export class URLMap extends pulumi.CustomResource {
     /**
      * When none of the specified hostRules match, the request is redirected to a URL specified
      * by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
-     * defaultRouteAction must not be set.  Structure is documented below.
+     * defaultRouteAction must not be set.
+     * Structure is documented below.
      */
     public readonly defaultUrlRedirect!: pulumi.Output<outputs.compute.URLMapDefaultUrlRedirect | undefined>;
     /**
@@ -78,11 +80,13 @@ export class URLMap extends pulumi.CustomResource {
      * Specifies changes to request and response headers that need to take effect for
      * the selected backendService.
      * headerAction specified here take effect before headerAction in the enclosing
-     * HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+     * HttpRouteRule, PathMatcher and UrlMap.
+     * Structure is documented below.
      */
     public readonly headerAction!: pulumi.Output<outputs.compute.URLMapHeaderAction | undefined>;
     /**
-     * The list of HostRules to use against the URL.  Structure is documented below.
+     * The list of HostRules to use against the URL.
+     * Structure is documented below.
      */
     public readonly hostRules!: pulumi.Output<outputs.compute.URLMapHostRule[] | undefined>;
     /**
@@ -111,7 +115,8 @@ export class URLMap extends pulumi.CustomResource {
     /**
      * The list of expected URL mapping tests. Request to update this UrlMap will
      * succeed only if all of the test cases pass. You can specify a maximum of 100
-     * tests per UrlMap.  Structure is documented below.
+     * tests per UrlMap.
+     * Structure is documented below.
      */
     public readonly tests!: pulumi.Output<outputs.compute.URLMapTest[] | undefined>;
 
@@ -182,7 +187,8 @@ export interface URLMapState {
      * advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
      * to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
      * Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
-     * Only one of defaultRouteAction or defaultUrlRedirect must be set.  Structure is documented below.
+     * Only one of defaultRouteAction or defaultUrlRedirect must be set.
+     * Structure is documented below.
      */
     readonly defaultRouteAction?: pulumi.Input<inputs.compute.URLMapDefaultRouteAction>;
     /**
@@ -192,7 +198,8 @@ export interface URLMapState {
     /**
      * When none of the specified hostRules match, the request is redirected to a URL specified
      * by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
-     * defaultRouteAction must not be set.  Structure is documented below.
+     * defaultRouteAction must not be set.
+     * Structure is documented below.
      */
     readonly defaultUrlRedirect?: pulumi.Input<inputs.compute.URLMapDefaultUrlRedirect>;
     /**
@@ -207,11 +214,13 @@ export interface URLMapState {
      * Specifies changes to request and response headers that need to take effect for
      * the selected backendService.
      * headerAction specified here take effect before headerAction in the enclosing
-     * HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+     * HttpRouteRule, PathMatcher and UrlMap.
+     * Structure is documented below.
      */
     readonly headerAction?: pulumi.Input<inputs.compute.URLMapHeaderAction>;
     /**
-     * The list of HostRules to use against the URL.  Structure is documented below.
+     * The list of HostRules to use against the URL.
+     * Structure is documented below.
      */
     readonly hostRules?: pulumi.Input<pulumi.Input<inputs.compute.URLMapHostRule>[]>;
     /**
@@ -240,7 +249,8 @@ export interface URLMapState {
     /**
      * The list of expected URL mapping tests. Request to update this UrlMap will
      * succeed only if all of the test cases pass. You can specify a maximum of 100
-     * tests per UrlMap.  Structure is documented below.
+     * tests per UrlMap.
+     * Structure is documented below.
      */
     readonly tests?: pulumi.Input<pulumi.Input<inputs.compute.URLMapTest>[]>;
 }
@@ -254,7 +264,8 @@ export interface URLMapArgs {
      * advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
      * to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
      * Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
-     * Only one of defaultRouteAction or defaultUrlRedirect must be set.  Structure is documented below.
+     * Only one of defaultRouteAction or defaultUrlRedirect must be set.
+     * Structure is documented below.
      */
     readonly defaultRouteAction?: pulumi.Input<inputs.compute.URLMapDefaultRouteAction>;
     /**
@@ -264,7 +275,8 @@ export interface URLMapArgs {
     /**
      * When none of the specified hostRules match, the request is redirected to a URL specified
      * by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
-     * defaultRouteAction must not be set.  Structure is documented below.
+     * defaultRouteAction must not be set.
+     * Structure is documented below.
      */
     readonly defaultUrlRedirect?: pulumi.Input<inputs.compute.URLMapDefaultUrlRedirect>;
     /**
@@ -275,11 +287,13 @@ export interface URLMapArgs {
      * Specifies changes to request and response headers that need to take effect for
      * the selected backendService.
      * headerAction specified here take effect before headerAction in the enclosing
-     * HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+     * HttpRouteRule, PathMatcher and UrlMap.
+     * Structure is documented below.
      */
     readonly headerAction?: pulumi.Input<inputs.compute.URLMapHeaderAction>;
     /**
-     * The list of HostRules to use against the URL.  Structure is documented below.
+     * The list of HostRules to use against the URL.
+     * Structure is documented below.
      */
     readonly hostRules?: pulumi.Input<pulumi.Input<inputs.compute.URLMapHostRule>[]>;
     /**
@@ -300,7 +314,8 @@ export interface URLMapArgs {
     /**
      * The list of expected URL mapping tests. Request to update this UrlMap will
      * succeed only if all of the test cases pass. You can specify a maximum of 100
-     * tests per UrlMap.  Structure is documented below.
+     * tests per UrlMap.
+     * Structure is documented below.
      */
     readonly tests?: pulumi.Input<pulumi.Input<inputs.compute.URLMapTest>[]>;
 }

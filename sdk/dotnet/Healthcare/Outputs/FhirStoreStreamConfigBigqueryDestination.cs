@@ -18,7 +18,8 @@ namespace Pulumi.Gcp.Healthcare.Outputs
         /// </summary>
         public readonly string DatasetUri;
         /// <summary>
-        /// The configuration for the exported BigQuery schema.  Structure is documented below.
+        /// The configuration for the exported BigQuery schema.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.FhirStoreStreamConfigBigqueryDestinationSchemaConfig SchemaConfig;
 

@@ -14,7 +14,8 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class RegionPerInstanceConfigPreservedState
     {
         /// <summary>
-        /// Stateful disks for the instance.  Structure is documented below.
+        /// Stateful disks for the instance.
+        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.RegionPerInstanceConfigPreservedStateDisk> Disks;
         /// <summary>

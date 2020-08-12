@@ -40,15 +40,18 @@ type Hl7Store struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// -
 	// (Optional, Deprecated)
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	//
 	// Deprecated: This field has been replaced by notificationConfigs
 	NotificationConfig Hl7StoreNotificationConfigPtrOutput `pulumi:"notificationConfig"`
 	// A list of notification configs. Each configuration uses a filter to determine whether to publish a
 	// message (both Ingest & Create) on the corresponding notification destination. Only the message name
-	// is sent as part of the notification. Supplied by the client.  Structure is documented below.
+	// is sent as part of the notification. Supplied by the client.
+	// Structure is documented below.
 	NotificationConfigs Hl7StoreNotificationConfigsArrayOutput `pulumi:"notificationConfigs"`
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	ParserConfig Hl7StoreParserConfigPtrOutput `pulumi:"parserConfig"`
 	// The fully qualified name of this dataset
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -102,15 +105,18 @@ type hl7StoreState struct {
 	Name *string `pulumi:"name"`
 	// -
 	// (Optional, Deprecated)
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	//
 	// Deprecated: This field has been replaced by notificationConfigs
 	NotificationConfig *Hl7StoreNotificationConfig `pulumi:"notificationConfig"`
 	// A list of notification configs. Each configuration uses a filter to determine whether to publish a
 	// message (both Ingest & Create) on the corresponding notification destination. Only the message name
-	// is sent as part of the notification. Supplied by the client.  Structure is documented below.
+	// is sent as part of the notification. Supplied by the client.
+	// Structure is documented below.
 	NotificationConfigs []Hl7StoreNotificationConfigs `pulumi:"notificationConfigs"`
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	ParserConfig *Hl7StoreParserConfig `pulumi:"parserConfig"`
 	// The fully qualified name of this dataset
 	SelfLink *string `pulumi:"selfLink"`
@@ -134,15 +140,18 @@ type Hl7StoreState struct {
 	Name pulumi.StringPtrInput
 	// -
 	// (Optional, Deprecated)
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	//
 	// Deprecated: This field has been replaced by notificationConfigs
 	NotificationConfig Hl7StoreNotificationConfigPtrInput
 	// A list of notification configs. Each configuration uses a filter to determine whether to publish a
 	// message (both Ingest & Create) on the corresponding notification destination. Only the message name
-	// is sent as part of the notification. Supplied by the client.  Structure is documented below.
+	// is sent as part of the notification. Supplied by the client.
+	// Structure is documented below.
 	NotificationConfigs Hl7StoreNotificationConfigsArrayInput
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	ParserConfig Hl7StoreParserConfigPtrInput
 	// The fully qualified name of this dataset
 	SelfLink pulumi.StringPtrInput
@@ -170,15 +179,18 @@ type hl7StoreArgs struct {
 	Name *string `pulumi:"name"`
 	// -
 	// (Optional, Deprecated)
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	//
 	// Deprecated: This field has been replaced by notificationConfigs
 	NotificationConfig *Hl7StoreNotificationConfig `pulumi:"notificationConfig"`
 	// A list of notification configs. Each configuration uses a filter to determine whether to publish a
 	// message (both Ingest & Create) on the corresponding notification destination. Only the message name
-	// is sent as part of the notification. Supplied by the client.  Structure is documented below.
+	// is sent as part of the notification. Supplied by the client.
+	// Structure is documented below.
 	NotificationConfigs []Hl7StoreNotificationConfigs `pulumi:"notificationConfigs"`
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	ParserConfig *Hl7StoreParserConfig `pulumi:"parserConfig"`
 }
 
@@ -201,15 +213,18 @@ type Hl7StoreArgs struct {
 	Name pulumi.StringPtrInput
 	// -
 	// (Optional, Deprecated)
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	//
 	// Deprecated: This field has been replaced by notificationConfigs
 	NotificationConfig Hl7StoreNotificationConfigPtrInput
 	// A list of notification configs. Each configuration uses a filter to determine whether to publish a
 	// message (both Ingest & Create) on the corresponding notification destination. Only the message name
-	// is sent as part of the notification. Supplied by the client.  Structure is documented below.
+	// is sent as part of the notification. Supplied by the client.
+	// Structure is documented below.
 	NotificationConfigs Hl7StoreNotificationConfigsArrayInput
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	ParserConfig Hl7StoreParserConfigPtrInput
 }
 

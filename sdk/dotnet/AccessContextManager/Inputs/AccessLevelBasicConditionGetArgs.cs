@@ -15,7 +15,8 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
         /// <summary>
         /// Device specific restrictions, all restrictions must hold for
         /// the Condition to be true. If not specified, all devices are
-        /// allowed.  Structure is documented below.
+        /// allowed.
+        /// Structure is documented below.
         /// </summary>
         [Input("devicePolicy")]
         public Input<Inputs.AccessLevelBasicConditionDevicePolicyGetArgs>? DevicePolicy { get; set; }

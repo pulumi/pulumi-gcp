@@ -43,20 +43,24 @@ export class GroupMembership extends pulumi.CustomResource {
      */
     public readonly group!: pulumi.Output<string>;
     /**
-     * EntityKey of the member.  Structure is documented below.
+     * EntityKey of the member.
+     * Structure is documented below.
      */
     public readonly memberKey!: pulumi.Output<outputs.cloudidentity.GroupMembershipMemberKey>;
     /**
      * The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
+     * Possible values are `OWNER`, `MANAGER`, and `MEMBER`.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * EntityKey of the member.  Structure is documented below.
+     * EntityKey of the member.
+     * Structure is documented below.
      */
     public readonly preferredMemberKey!: pulumi.Output<outputs.cloudidentity.GroupMembershipPreferredMemberKey>;
     /**
      * The MembershipRoles that apply to the Membership.
-     * Must not contain duplicate MembershipRoles with the same name.  Structure is documented below.
+     * Must not contain duplicate MembershipRoles with the same name.
+     * Structure is documented below.
      */
     public readonly roles!: pulumi.Output<outputs.cloudidentity.GroupMembershipRole[]>;
     /**
@@ -129,20 +133,24 @@ export interface GroupMembershipState {
      */
     readonly group?: pulumi.Input<string>;
     /**
-     * EntityKey of the member.  Structure is documented below.
+     * EntityKey of the member.
+     * Structure is documented below.
      */
     readonly memberKey?: pulumi.Input<inputs.cloudidentity.GroupMembershipMemberKey>;
     /**
      * The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
+     * Possible values are `OWNER`, `MANAGER`, and `MEMBER`.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * EntityKey of the member.  Structure is documented below.
+     * EntityKey of the member.
+     * Structure is documented below.
      */
     readonly preferredMemberKey?: pulumi.Input<inputs.cloudidentity.GroupMembershipPreferredMemberKey>;
     /**
      * The MembershipRoles that apply to the Membership.
-     * Must not contain duplicate MembershipRoles with the same name.  Structure is documented below.
+     * Must not contain duplicate MembershipRoles with the same name.
+     * Structure is documented below.
      */
     readonly roles?: pulumi.Input<pulumi.Input<inputs.cloudidentity.GroupMembershipRole>[]>;
     /**
@@ -164,16 +172,19 @@ export interface GroupMembershipArgs {
      */
     readonly group: pulumi.Input<string>;
     /**
-     * EntityKey of the member.  Structure is documented below.
+     * EntityKey of the member.
+     * Structure is documented below.
      */
     readonly memberKey?: pulumi.Input<inputs.cloudidentity.GroupMembershipMemberKey>;
     /**
-     * EntityKey of the member.  Structure is documented below.
+     * EntityKey of the member.
+     * Structure is documented below.
      */
     readonly preferredMemberKey?: pulumi.Input<inputs.cloudidentity.GroupMembershipPreferredMemberKey>;
     /**
      * The MembershipRoles that apply to the Membership.
-     * Must not contain duplicate MembershipRoles with the same name.  Structure is documented below.
+     * Must not contain duplicate MembershipRoles with the same name.
+     * Structure is documented below.
      */
     readonly roles: pulumi.Input<pulumi.Input<inputs.cloudidentity.GroupMembershipRole>[]>;
 }

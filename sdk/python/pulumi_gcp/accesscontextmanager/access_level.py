@@ -12,27 +12,34 @@ from .. import utilities, tables
 class AccessLevel(pulumi.CustomResource):
     basic: pulumi.Output[dict]
     """
-    A set of predefined conditions for the access level and a combining function.  Structure is documented below.
+    A set of predefined conditions for the access level and a combining function.
+    Structure is documented below.
 
       * `combiningFunction` (`str`) - How the conditions list should be combined to determine if a request
         is granted this AccessLevel. If AND is used, each Condition in
         conditions must be satisfied for the AccessLevel to be applied. If
         OR is used, at least one Condition in conditions must be satisfied
         for the AccessLevel to be applied.
-      * `conditions` (`list`) - A set of requirements for the AccessLevel to be granted.  Structure is documented below.
+        Default value is `AND`.
+        Possible values are `AND` and `OR`.
+      * `conditions` (`list`) - A set of requirements for the AccessLevel to be granted.
+        Structure is documented below.
         * `devicePolicy` (`dict`) - Device specific restrictions, all restrictions must hold for
           the Condition to be true. If not specified, all devices are
-          allowed.  Structure is documented below.
+          allowed.
+          Structure is documented below.
           * `allowedDeviceManagementLevels` (`list`) - A list of allowed device management levels.
             An empty list allows all management levels.
           * `allowedEncryptionStatuses` (`list`) - A list of allowed encryptions statuses.
             An empty list allows all statuses.
           * `osConstraints` (`list`) - A list of allowed OS versions.
-            An empty list allows all types and all versions.  Structure is documented below.
+            An empty list allows all types and all versions.
+            Structure is documented below.
             * `minimumVersion` (`str`) - The minimum allowed OS version. If not set, any version
               of this OS satisfies the constraint.
               Format: "major.minor.patch" such as "10.5.301", "9.2.1".
             * `osType` (`str`) - The operating system type of the device.
+              Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, and `DESKTOP_CHROME_OS`.
 
           * `requireAdminApproval` (`bool`) - Whether the device needs to be approved by the customer admin.
           * `requireCorpOwned` (`bool`) - Whether the device needs to be corp owned.
@@ -71,11 +78,13 @@ class AccessLevel(pulumi.CustomResource):
     custom: pulumi.Output[dict]
     """
     Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
-    See CEL spec at: https://github.com/google/cel-spec.  Structure is documented below.
+    See CEL spec at: https://github.com/google/cel-spec.
+    Structure is documented below.
 
       * `expr` (`dict`) - Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
         This page details the objects and attributes that are used to the build the CEL expressions for
-        custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.  Structure is documented below.
+        custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+        Structure is documented below.
         * `description` (`str`) - Description of the expression
         * `expression` (`str`) - Textual representation of an expression in Common Expression Language syntax.
         * `location` (`str`) - String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
@@ -115,9 +124,11 @@ class AccessLevel(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] basic: A set of predefined conditions for the access level and a combining function.  Structure is documented below.
+        :param pulumi.Input[dict] basic: A set of predefined conditions for the access level and a combining function.
+               Structure is documented below.
         :param pulumi.Input[dict] custom: Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
-               See CEL spec at: https://github.com/google/cel-spec.  Structure is documented below.
+               See CEL spec at: https://github.com/google/cel-spec.
+               Structure is documented below.
         :param pulumi.Input[str] description: Description of the expression
         :param pulumi.Input[str] name: Resource name for the Access Level. The short_name component must begin
                with a letter and only include alphanumeric and '_'.
@@ -133,20 +144,26 @@ class AccessLevel(pulumi.CustomResource):
             conditions must be satisfied for the AccessLevel to be applied. If
             OR is used, at least one Condition in conditions must be satisfied
             for the AccessLevel to be applied.
-          * `conditions` (`pulumi.Input[list]`) - A set of requirements for the AccessLevel to be granted.  Structure is documented below.
+            Default value is `AND`.
+            Possible values are `AND` and `OR`.
+          * `conditions` (`pulumi.Input[list]`) - A set of requirements for the AccessLevel to be granted.
+            Structure is documented below.
             * `devicePolicy` (`pulumi.Input[dict]`) - Device specific restrictions, all restrictions must hold for
               the Condition to be true. If not specified, all devices are
-              allowed.  Structure is documented below.
+              allowed.
+              Structure is documented below.
               * `allowedDeviceManagementLevels` (`pulumi.Input[list]`) - A list of allowed device management levels.
                 An empty list allows all management levels.
               * `allowedEncryptionStatuses` (`pulumi.Input[list]`) - A list of allowed encryptions statuses.
                 An empty list allows all statuses.
               * `osConstraints` (`pulumi.Input[list]`) - A list of allowed OS versions.
-                An empty list allows all types and all versions.  Structure is documented below.
+                An empty list allows all types and all versions.
+                Structure is documented below.
                 * `minimumVersion` (`pulumi.Input[str]`) - The minimum allowed OS version. If not set, any version
                   of this OS satisfies the constraint.
                   Format: "major.minor.patch" such as "10.5.301", "9.2.1".
                 * `osType` (`pulumi.Input[str]`) - The operating system type of the device.
+                  Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, and `DESKTOP_CHROME_OS`.
 
               * `requireAdminApproval` (`pulumi.Input[bool]`) - Whether the device needs to be approved by the customer admin.
               * `requireCorpOwned` (`pulumi.Input[bool]`) - Whether the device needs to be corp owned.
@@ -186,7 +203,8 @@ class AccessLevel(pulumi.CustomResource):
 
           * `expr` (`pulumi.Input[dict]`) - Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
             This page details the objects and attributes that are used to the build the CEL expressions for
-            custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.  Structure is documented below.
+            custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+            Structure is documented below.
             * `description` (`pulumi.Input[str]`) - Description of the expression
             * `expression` (`pulumi.Input[str]`) - Textual representation of an expression in Common Expression Language syntax.
             * `location` (`pulumi.Input[str]`) - String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
@@ -234,9 +252,11 @@ class AccessLevel(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] basic: A set of predefined conditions for the access level and a combining function.  Structure is documented below.
+        :param pulumi.Input[dict] basic: A set of predefined conditions for the access level and a combining function.
+               Structure is documented below.
         :param pulumi.Input[dict] custom: Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
-               See CEL spec at: https://github.com/google/cel-spec.  Structure is documented below.
+               See CEL spec at: https://github.com/google/cel-spec.
+               Structure is documented below.
         :param pulumi.Input[str] description: Description of the expression
         :param pulumi.Input[str] name: Resource name for the Access Level. The short_name component must begin
                with a letter and only include alphanumeric and '_'.
@@ -252,20 +272,26 @@ class AccessLevel(pulumi.CustomResource):
             conditions must be satisfied for the AccessLevel to be applied. If
             OR is used, at least one Condition in conditions must be satisfied
             for the AccessLevel to be applied.
-          * `conditions` (`pulumi.Input[list]`) - A set of requirements for the AccessLevel to be granted.  Structure is documented below.
+            Default value is `AND`.
+            Possible values are `AND` and `OR`.
+          * `conditions` (`pulumi.Input[list]`) - A set of requirements for the AccessLevel to be granted.
+            Structure is documented below.
             * `devicePolicy` (`pulumi.Input[dict]`) - Device specific restrictions, all restrictions must hold for
               the Condition to be true. If not specified, all devices are
-              allowed.  Structure is documented below.
+              allowed.
+              Structure is documented below.
               * `allowedDeviceManagementLevels` (`pulumi.Input[list]`) - A list of allowed device management levels.
                 An empty list allows all management levels.
               * `allowedEncryptionStatuses` (`pulumi.Input[list]`) - A list of allowed encryptions statuses.
                 An empty list allows all statuses.
               * `osConstraints` (`pulumi.Input[list]`) - A list of allowed OS versions.
-                An empty list allows all types and all versions.  Structure is documented below.
+                An empty list allows all types and all versions.
+                Structure is documented below.
                 * `minimumVersion` (`pulumi.Input[str]`) - The minimum allowed OS version. If not set, any version
                   of this OS satisfies the constraint.
                   Format: "major.minor.patch" such as "10.5.301", "9.2.1".
                 * `osType` (`pulumi.Input[str]`) - The operating system type of the device.
+                  Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, and `DESKTOP_CHROME_OS`.
 
               * `requireAdminApproval` (`pulumi.Input[bool]`) - Whether the device needs to be approved by the customer admin.
               * `requireCorpOwned` (`pulumi.Input[bool]`) - Whether the device needs to be corp owned.
@@ -305,7 +331,8 @@ class AccessLevel(pulumi.CustomResource):
 
           * `expr` (`pulumi.Input[dict]`) - Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
             This page details the objects and attributes that are used to the build the CEL expressions for
-            custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.  Structure is documented below.
+            custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+            Structure is documented below.
             * `description` (`pulumi.Input[str]`) - Description of the expression
             * `expression` (`pulumi.Input[str]`) - Textual representation of an expression in Common Expression Language syntax.
             * `location` (`pulumi.Input[str]`) - String indicating the location of the expression for error reporting, e.g. a file name and a position in the file

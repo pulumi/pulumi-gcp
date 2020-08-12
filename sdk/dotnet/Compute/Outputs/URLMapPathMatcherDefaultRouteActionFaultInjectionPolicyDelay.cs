@@ -14,7 +14,8 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelay
     {
         /// <summary>
-        /// Specifies the value of the fixed delay interval.  Structure is documented below.
+        /// Specifies the value of the fixed delay interval.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelay? FixedDelay;
         /// <summary>

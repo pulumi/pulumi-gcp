@@ -24,6 +24,7 @@ type FirewallRule struct {
 	pulumi.CustomResourceState
 
 	// The action to take if this rule matches.
+	// Possible values are `UNSPECIFIED_ACTION`, `ALLOW`, and `DENY`.
 	Action pulumi.StringOutput `pulumi:"action"`
 	// An optional string description of this rule.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -75,6 +76,7 @@ func GetFirewallRule(ctx *pulumi.Context,
 // Input properties used for looking up and filtering FirewallRule resources.
 type firewallRuleState struct {
 	// The action to take if this rule matches.
+	// Possible values are `UNSPECIFIED_ACTION`, `ALLOW`, and `DENY`.
 	Action *string `pulumi:"action"`
 	// An optional string description of this rule.
 	Description *string `pulumi:"description"`
@@ -93,6 +95,7 @@ type firewallRuleState struct {
 
 type FirewallRuleState struct {
 	// The action to take if this rule matches.
+	// Possible values are `UNSPECIFIED_ACTION`, `ALLOW`, and `DENY`.
 	Action pulumi.StringPtrInput
 	// An optional string description of this rule.
 	Description pulumi.StringPtrInput
@@ -115,6 +118,7 @@ func (FirewallRuleState) ElementType() reflect.Type {
 
 type firewallRuleArgs struct {
 	// The action to take if this rule matches.
+	// Possible values are `UNSPECIFIED_ACTION`, `ALLOW`, and `DENY`.
 	Action string `pulumi:"action"`
 	// An optional string description of this rule.
 	Description *string `pulumi:"description"`
@@ -134,6 +138,7 @@ type firewallRuleArgs struct {
 // The set of arguments for constructing a FirewallRule resource.
 type FirewallRuleArgs struct {
 	// The action to take if this rule matches.
+	// Possible values are `UNSPECIFIED_ACTION`, `ALLOW`, and `DENY`.
 	Action pulumi.StringInput
 	// An optional string description of this rule.
 	Description pulumi.StringPtrInput

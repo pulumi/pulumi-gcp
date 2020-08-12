@@ -25,7 +25,8 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
         public readonly ImmutableArray<string> AllowedEncryptionStatuses;
         /// <summary>
         /// A list of allowed OS versions.
-        /// An empty list allows all types and all versions.  Structure is documented below.
+        /// An empty list allows all types and all versions.
+        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.AccessLevelBasicConditionDevicePolicyOsConstraint> OsConstraints;
         /// <summary>

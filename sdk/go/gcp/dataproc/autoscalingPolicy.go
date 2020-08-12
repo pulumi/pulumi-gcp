@@ -16,7 +16,8 @@ import (
 type AutoscalingPolicy struct {
 	pulumi.CustomResourceState
 
-	// Basic algorithm for autoscaling.  Structure is documented below.
+	// Basic algorithm for autoscaling.
+	// Structure is documented below.
 	BasicAlgorithm AutoscalingPolicyBasicAlgorithmPtrOutput `pulumi:"basicAlgorithm"`
 	// The  location where the autoscaling poicy should reside.
 	// The default value is `global`.
@@ -30,9 +31,11 @@ type AutoscalingPolicy struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Describes how the autoscaler will operate for secondary workers.  Structure is documented below.
+	// Describes how the autoscaler will operate for secondary workers.
+	// Structure is documented below.
 	SecondaryWorkerConfig AutoscalingPolicySecondaryWorkerConfigPtrOutput `pulumi:"secondaryWorkerConfig"`
-	// Describes how the autoscaler will operate for primary workers.  Structure is documented below.
+	// Describes how the autoscaler will operate for primary workers.
+	// Structure is documented below.
 	WorkerConfig AutoscalingPolicyWorkerConfigPtrOutput `pulumi:"workerConfig"`
 }
 
@@ -67,7 +70,8 @@ func GetAutoscalingPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AutoscalingPolicy resources.
 type autoscalingPolicyState struct {
-	// Basic algorithm for autoscaling.  Structure is documented below.
+	// Basic algorithm for autoscaling.
+	// Structure is documented below.
 	BasicAlgorithm *AutoscalingPolicyBasicAlgorithm `pulumi:"basicAlgorithm"`
 	// The  location where the autoscaling poicy should reside.
 	// The default value is `global`.
@@ -81,14 +85,17 @@ type autoscalingPolicyState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Describes how the autoscaler will operate for secondary workers.  Structure is documented below.
+	// Describes how the autoscaler will operate for secondary workers.
+	// Structure is documented below.
 	SecondaryWorkerConfig *AutoscalingPolicySecondaryWorkerConfig `pulumi:"secondaryWorkerConfig"`
-	// Describes how the autoscaler will operate for primary workers.  Structure is documented below.
+	// Describes how the autoscaler will operate for primary workers.
+	// Structure is documented below.
 	WorkerConfig *AutoscalingPolicyWorkerConfig `pulumi:"workerConfig"`
 }
 
 type AutoscalingPolicyState struct {
-	// Basic algorithm for autoscaling.  Structure is documented below.
+	// Basic algorithm for autoscaling.
+	// Structure is documented below.
 	BasicAlgorithm AutoscalingPolicyBasicAlgorithmPtrInput
 	// The  location where the autoscaling poicy should reside.
 	// The default value is `global`.
@@ -102,9 +109,11 @@ type AutoscalingPolicyState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Describes how the autoscaler will operate for secondary workers.  Structure is documented below.
+	// Describes how the autoscaler will operate for secondary workers.
+	// Structure is documented below.
 	SecondaryWorkerConfig AutoscalingPolicySecondaryWorkerConfigPtrInput
-	// Describes how the autoscaler will operate for primary workers.  Structure is documented below.
+	// Describes how the autoscaler will operate for primary workers.
+	// Structure is documented below.
 	WorkerConfig AutoscalingPolicyWorkerConfigPtrInput
 }
 
@@ -113,7 +122,8 @@ func (AutoscalingPolicyState) ElementType() reflect.Type {
 }
 
 type autoscalingPolicyArgs struct {
-	// Basic algorithm for autoscaling.  Structure is documented below.
+	// Basic algorithm for autoscaling.
+	// Structure is documented below.
 	BasicAlgorithm *AutoscalingPolicyBasicAlgorithm `pulumi:"basicAlgorithm"`
 	// The  location where the autoscaling poicy should reside.
 	// The default value is `global`.
@@ -125,15 +135,18 @@ type autoscalingPolicyArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Describes how the autoscaler will operate for secondary workers.  Structure is documented below.
+	// Describes how the autoscaler will operate for secondary workers.
+	// Structure is documented below.
 	SecondaryWorkerConfig *AutoscalingPolicySecondaryWorkerConfig `pulumi:"secondaryWorkerConfig"`
-	// Describes how the autoscaler will operate for primary workers.  Structure is documented below.
+	// Describes how the autoscaler will operate for primary workers.
+	// Structure is documented below.
 	WorkerConfig *AutoscalingPolicyWorkerConfig `pulumi:"workerConfig"`
 }
 
 // The set of arguments for constructing a AutoscalingPolicy resource.
 type AutoscalingPolicyArgs struct {
-	// Basic algorithm for autoscaling.  Structure is documented below.
+	// Basic algorithm for autoscaling.
+	// Structure is documented below.
 	BasicAlgorithm AutoscalingPolicyBasicAlgorithmPtrInput
 	// The  location where the autoscaling poicy should reside.
 	// The default value is `global`.
@@ -145,9 +158,11 @@ type AutoscalingPolicyArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Describes how the autoscaler will operate for secondary workers.  Structure is documented below.
+	// Describes how the autoscaler will operate for secondary workers.
+	// Structure is documented below.
 	SecondaryWorkerConfig AutoscalingPolicySecondaryWorkerConfigPtrInput
-	// Describes how the autoscaler will operate for primary workers.  Structure is documented below.
+	// Describes how the autoscaler will operate for primary workers.
+	// Structure is documented below.
 	WorkerConfig AutoscalingPolicyWorkerConfigPtrInput
 }
 

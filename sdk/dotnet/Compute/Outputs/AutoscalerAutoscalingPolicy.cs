@@ -28,11 +28,13 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// <summary>
         /// Defines the CPU utilization policy that allows the autoscaler to
         /// scale based on the average CPU utilization of a managed instance
-        /// group.  Structure is documented below.
+        /// group.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.AutoscalerAutoscalingPolicyCpuUtilization? CpuUtilization;
         /// <summary>
-        /// Configuration parameters of autoscaling based on a load balancer.  Structure is documented below.
+        /// Configuration parameters of autoscaling based on a load balancer.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.AutoscalerAutoscalingPolicyLoadBalancingUtilization? LoadBalancingUtilization;
         /// <summary>
@@ -43,7 +45,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly int MaxReplicas;
         /// <summary>
-        /// Configuration parameters of autoscaling based on a custom metric.  Structure is documented below.
+        /// Configuration parameters of autoscaling based on a custom metric.
+        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.AutoscalerAutoscalingPolicyMetric> Metrics;
         /// <summary>
@@ -55,6 +58,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly int MinReplicas;
         /// <summary>
         /// Defines operating mode for this policy.
+        /// Default value is `ON`.
+        /// Possible values are `OFF`, `ONLY_UP`, and `ON`.
         /// </summary>
         public readonly string? Mode;
         public readonly Outputs.AutoscalerAutoscalingPolicyScaleDownControl? ScaleDownControl;

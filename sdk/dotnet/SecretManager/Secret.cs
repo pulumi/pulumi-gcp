@@ -54,7 +54,8 @@ namespace Pulumi.Gcp.SecretManager
 
         /// <summary>
         /// The replication policy of the secret data attached to the Secret. It cannot be changed
-        /// after the Secret has been created.  Structure is documented below.
+        /// after the Secret has been created.
+        /// Structure is documented below.
         /// </summary>
         [Output("replication")]
         public Output<Outputs.SecretReplication> Replication { get; private set; } = null!;
@@ -139,7 +140,8 @@ namespace Pulumi.Gcp.SecretManager
 
         /// <summary>
         /// The replication policy of the secret data attached to the Secret. It cannot be changed
-        /// after the Secret has been created.  Structure is documented below.
+        /// after the Secret has been created.
+        /// Structure is documented below.
         /// </summary>
         [Input("replication", required: true)]
         public Input<Inputs.SecretReplicationArgs> Replication { get; set; } = null!;
@@ -197,7 +199,8 @@ namespace Pulumi.Gcp.SecretManager
 
         /// <summary>
         /// The replication policy of the secret data attached to the Secret. It cannot be changed
-        /// after the Secret has been created.  Structure is documented below.
+        /// after the Secret has been created.
+        /// Structure is documented below.
         /// </summary>
         [Input("replication")]
         public Input<Inputs.SecretReplicationGetArgs>? Replication { get; set; }

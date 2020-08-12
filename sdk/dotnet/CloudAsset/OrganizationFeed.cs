@@ -51,6 +51,7 @@ namespace Pulumi.Gcp.CloudAsset
 
         /// <summary>
         /// Asset content type. If not specified, no content but the asset name and type will be returned.
+        /// Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
         /// </summary>
         [Output("contentType")]
         public Output<string?> ContentType { get; private set; } = null!;
@@ -62,7 +63,8 @@ namespace Pulumi.Gcp.CloudAsset
         public Output<string> FeedId { get; private set; } = null!;
 
         /// <summary>
-        /// Output configuration for asset feed destination.  Structure is documented below.
+        /// Output configuration for asset feed destination.
+        /// Structure is documented below.
         /// </summary>
         [Output("feedOutputConfig")]
         public Output<Outputs.OrganizationFeedFeedOutputConfig> FeedOutputConfig { get; private set; } = null!;
@@ -166,6 +168,7 @@ namespace Pulumi.Gcp.CloudAsset
 
         /// <summary>
         /// Asset content type. If not specified, no content but the asset name and type will be returned.
+        /// Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
         /// </summary>
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
@@ -177,7 +180,8 @@ namespace Pulumi.Gcp.CloudAsset
         public Input<string> FeedId { get; set; } = null!;
 
         /// <summary>
-        /// Output configuration for asset feed destination.  Structure is documented below.
+        /// Output configuration for asset feed destination.
+        /// Structure is documented below.
         /// </summary>
         [Input("feedOutputConfig", required: true)]
         public Input<Inputs.OrganizationFeedFeedOutputConfigArgs> FeedOutputConfig { get; set; } = null!;
@@ -236,6 +240,7 @@ namespace Pulumi.Gcp.CloudAsset
 
         /// <summary>
         /// Asset content type. If not specified, no content but the asset name and type will be returned.
+        /// Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
         /// </summary>
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
@@ -247,7 +252,8 @@ namespace Pulumi.Gcp.CloudAsset
         public Input<string>? FeedId { get; set; }
 
         /// <summary>
-        /// Output configuration for asset feed destination.  Structure is documented below.
+        /// Output configuration for asset feed destination.
+        /// Structure is documented below.
         /// </summary>
         [Input("feedOutputConfig")]
         public Input<Inputs.OrganizationFeedFeedOutputConfigGetArgs>? FeedOutputConfig { get; set; }

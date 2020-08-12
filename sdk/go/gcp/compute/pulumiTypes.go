@@ -23,16 +23,19 @@ type AutoscalarAutoscalingPolicy struct {
 	CooldownPeriod *int `pulumi:"cooldownPeriod"`
 	// Defines the CPU utilization policy that allows the autoscaler to
 	// scale based on the average CPU utilization of a managed instance
-	// group.  Structure is documented below.
+	// group.
+	// Structure is documented below.
 	CpuUtilization *AutoscalarAutoscalingPolicyCpuUtilization `pulumi:"cpuUtilization"`
-	// Configuration parameters of autoscaling based on a load balancer.  Structure is documented below.
+	// Configuration parameters of autoscaling based on a load balancer.
+	// Structure is documented below.
 	LoadBalancingUtilization *AutoscalarAutoscalingPolicyLoadBalancingUtilization `pulumi:"loadBalancingUtilization"`
 	// The maximum number of instances that the autoscaler can scale up
 	// to. This is required when creating or updating an autoscaler. The
 	// maximum number of replicas should not be lower than minimal number
 	// of replicas.
 	MaxReplicas int `pulumi:"maxReplicas"`
-	// Configuration parameters of autoscaling based on a custom metric.  Structure is documented below.
+	// Configuration parameters of autoscaling based on a custom metric.
+	// Structure is documented below.
 	Metrics []AutoscalarAutoscalingPolicyMetric `pulumi:"metrics"`
 	// The minimum number of replicas that the autoscaler can scale down
 	// to. This cannot be less than 0. If not provided, autoscaler will
@@ -40,6 +43,8 @@ type AutoscalarAutoscalingPolicy struct {
 	// allowed.
 	MinReplicas int `pulumi:"minReplicas"`
 	// Defines operating mode for this policy.
+	// Default value is `ON`.
+	// Possible values are `OFF`, `ONLY_UP`, and `ON`.
 	Mode             *string                                      `pulumi:"mode"`
 	ScaleDownControl *AutoscalarAutoscalingPolicyScaleDownControl `pulumi:"scaleDownControl"`
 }
@@ -68,16 +73,19 @@ type AutoscalarAutoscalingPolicyArgs struct {
 	CooldownPeriod pulumi.IntPtrInput `pulumi:"cooldownPeriod"`
 	// Defines the CPU utilization policy that allows the autoscaler to
 	// scale based on the average CPU utilization of a managed instance
-	// group.  Structure is documented below.
+	// group.
+	// Structure is documented below.
 	CpuUtilization AutoscalarAutoscalingPolicyCpuUtilizationPtrInput `pulumi:"cpuUtilization"`
-	// Configuration parameters of autoscaling based on a load balancer.  Structure is documented below.
+	// Configuration parameters of autoscaling based on a load balancer.
+	// Structure is documented below.
 	LoadBalancingUtilization AutoscalarAutoscalingPolicyLoadBalancingUtilizationPtrInput `pulumi:"loadBalancingUtilization"`
 	// The maximum number of instances that the autoscaler can scale up
 	// to. This is required when creating or updating an autoscaler. The
 	// maximum number of replicas should not be lower than minimal number
 	// of replicas.
 	MaxReplicas pulumi.IntInput `pulumi:"maxReplicas"`
-	// Configuration parameters of autoscaling based on a custom metric.  Structure is documented below.
+	// Configuration parameters of autoscaling based on a custom metric.
+	// Structure is documented below.
 	Metrics AutoscalarAutoscalingPolicyMetricArrayInput `pulumi:"metrics"`
 	// The minimum number of replicas that the autoscaler can scale down
 	// to. This cannot be less than 0. If not provided, autoscaler will
@@ -85,6 +93,8 @@ type AutoscalarAutoscalingPolicyArgs struct {
 	// allowed.
 	MinReplicas pulumi.IntInput `pulumi:"minReplicas"`
 	// Defines operating mode for this policy.
+	// Default value is `ON`.
+	// Possible values are `OFF`, `ONLY_UP`, and `ON`.
 	Mode             pulumi.StringPtrInput                               `pulumi:"mode"`
 	ScaleDownControl AutoscalarAutoscalingPolicyScaleDownControlPtrInput `pulumi:"scaleDownControl"`
 }
@@ -181,14 +191,16 @@ func (o AutoscalarAutoscalingPolicyOutput) CooldownPeriod() pulumi.IntPtrOutput 
 
 // Defines the CPU utilization policy that allows the autoscaler to
 // scale based on the average CPU utilization of a managed instance
-// group.  Structure is documented below.
+// group.
+// Structure is documented below.
 func (o AutoscalarAutoscalingPolicyOutput) CpuUtilization() AutoscalarAutoscalingPolicyCpuUtilizationPtrOutput {
 	return o.ApplyT(func(v AutoscalarAutoscalingPolicy) *AutoscalarAutoscalingPolicyCpuUtilization {
 		return v.CpuUtilization
 	}).(AutoscalarAutoscalingPolicyCpuUtilizationPtrOutput)
 }
 
-// Configuration parameters of autoscaling based on a load balancer.  Structure is documented below.
+// Configuration parameters of autoscaling based on a load balancer.
+// Structure is documented below.
 func (o AutoscalarAutoscalingPolicyOutput) LoadBalancingUtilization() AutoscalarAutoscalingPolicyLoadBalancingUtilizationPtrOutput {
 	return o.ApplyT(func(v AutoscalarAutoscalingPolicy) *AutoscalarAutoscalingPolicyLoadBalancingUtilization {
 		return v.LoadBalancingUtilization
@@ -203,7 +215,8 @@ func (o AutoscalarAutoscalingPolicyOutput) MaxReplicas() pulumi.IntOutput {
 	return o.ApplyT(func(v AutoscalarAutoscalingPolicy) int { return v.MaxReplicas }).(pulumi.IntOutput)
 }
 
-// Configuration parameters of autoscaling based on a custom metric.  Structure is documented below.
+// Configuration parameters of autoscaling based on a custom metric.
+// Structure is documented below.
 func (o AutoscalarAutoscalingPolicyOutput) Metrics() AutoscalarAutoscalingPolicyMetricArrayOutput {
 	return o.ApplyT(func(v AutoscalarAutoscalingPolicy) []AutoscalarAutoscalingPolicyMetric { return v.Metrics }).(AutoscalarAutoscalingPolicyMetricArrayOutput)
 }
@@ -217,6 +230,8 @@ func (o AutoscalarAutoscalingPolicyOutput) MinReplicas() pulumi.IntOutput {
 }
 
 // Defines operating mode for this policy.
+// Default value is `ON`.
+// Possible values are `OFF`, `ONLY_UP`, and `ON`.
 func (o AutoscalarAutoscalingPolicyOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AutoscalarAutoscalingPolicy) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -265,7 +280,8 @@ func (o AutoscalarAutoscalingPolicyPtrOutput) CooldownPeriod() pulumi.IntPtrOutp
 
 // Defines the CPU utilization policy that allows the autoscaler to
 // scale based on the average CPU utilization of a managed instance
-// group.  Structure is documented below.
+// group.
+// Structure is documented below.
 func (o AutoscalarAutoscalingPolicyPtrOutput) CpuUtilization() AutoscalarAutoscalingPolicyCpuUtilizationPtrOutput {
 	return o.ApplyT(func(v *AutoscalarAutoscalingPolicy) *AutoscalarAutoscalingPolicyCpuUtilization {
 		if v == nil {
@@ -275,7 +291,8 @@ func (o AutoscalarAutoscalingPolicyPtrOutput) CpuUtilization() AutoscalarAutosca
 	}).(AutoscalarAutoscalingPolicyCpuUtilizationPtrOutput)
 }
 
-// Configuration parameters of autoscaling based on a load balancer.  Structure is documented below.
+// Configuration parameters of autoscaling based on a load balancer.
+// Structure is documented below.
 func (o AutoscalarAutoscalingPolicyPtrOutput) LoadBalancingUtilization() AutoscalarAutoscalingPolicyLoadBalancingUtilizationPtrOutput {
 	return o.ApplyT(func(v *AutoscalarAutoscalingPolicy) *AutoscalarAutoscalingPolicyLoadBalancingUtilization {
 		if v == nil {
@@ -298,7 +315,8 @@ func (o AutoscalarAutoscalingPolicyPtrOutput) MaxReplicas() pulumi.IntPtrOutput 
 	}).(pulumi.IntPtrOutput)
 }
 
-// Configuration parameters of autoscaling based on a custom metric.  Structure is documented below.
+// Configuration parameters of autoscaling based on a custom metric.
+// Structure is documented below.
 func (o AutoscalarAutoscalingPolicyPtrOutput) Metrics() AutoscalarAutoscalingPolicyMetricArrayOutput {
 	return o.ApplyT(func(v *AutoscalarAutoscalingPolicy) []AutoscalarAutoscalingPolicyMetric {
 		if v == nil {
@@ -322,6 +340,8 @@ func (o AutoscalarAutoscalingPolicyPtrOutput) MinReplicas() pulumi.IntPtrOutput 
 }
 
 // Defines operating mode for this policy.
+// Default value is `ON`.
+// Possible values are `OFF`, `ONLY_UP`, and `ON`.
 func (o AutoscalarAutoscalingPolicyPtrOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AutoscalarAutoscalingPolicy) *string {
 		if v == nil {
@@ -676,6 +696,7 @@ type AutoscalarAutoscalingPolicyMetric struct {
 	Target *float64 `pulumi:"target"`
 	// Defines how target utilization value is expressed for a
 	// Stackdriver Monitoring metric.
+	// Possible values are `GAUGE`, `DELTA_PER_SECOND`, and `DELTA_PER_MINUTE`.
 	Type *string `pulumi:"type"`
 }
 
@@ -744,6 +765,7 @@ type AutoscalarAutoscalingPolicyMetricArgs struct {
 	Target pulumi.Float64PtrInput `pulumi:"target"`
 	// Defines how target utilization value is expressed for a
 	// Stackdriver Monitoring metric.
+	// Possible values are `GAUGE`, `DELTA_PER_SECOND`, and `DELTA_PER_MINUTE`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -863,6 +885,7 @@ func (o AutoscalarAutoscalingPolicyMetricOutput) Target() pulumi.Float64PtrOutpu
 
 // Defines how target utilization value is expressed for a
 // Stackdriver Monitoring metric.
+// Possible values are `GAUGE`, `DELTA_PER_SECOND`, and `DELTA_PER_MINUTE`.
 func (o AutoscalarAutoscalingPolicyMetricOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AutoscalarAutoscalingPolicyMetric) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -888,7 +911,8 @@ func (o AutoscalarAutoscalingPolicyMetricArrayOutput) Index(i pulumi.IntInput) A
 }
 
 type AutoscalarAutoscalingPolicyScaleDownControl struct {
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	MaxScaledDownReplicas *AutoscalarAutoscalingPolicyScaleDownControlMaxScaledDownReplicas `pulumi:"maxScaledDownReplicas"`
 	// How long back autoscaling should look when computing recommendations
 	// to include directives regarding slower scale down, as described above.
@@ -907,7 +931,8 @@ type AutoscalarAutoscalingPolicyScaleDownControlInput interface {
 }
 
 type AutoscalarAutoscalingPolicyScaleDownControlArgs struct {
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	MaxScaledDownReplicas AutoscalarAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrInput `pulumi:"maxScaledDownReplicas"`
 	// How long back autoscaling should look when computing recommendations
 	// to include directives regarding slower scale down, as described above.
@@ -991,7 +1016,8 @@ func (o AutoscalarAutoscalingPolicyScaleDownControlOutput) ToAutoscalarAutoscali
 	}).(AutoscalarAutoscalingPolicyScaleDownControlPtrOutput)
 }
 
-// A nested object resource  Structure is documented below.
+// A nested object resource
+// Structure is documented below.
 func (o AutoscalarAutoscalingPolicyScaleDownControlOutput) MaxScaledDownReplicas() AutoscalarAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrOutput {
 	return o.ApplyT(func(v AutoscalarAutoscalingPolicyScaleDownControl) *AutoscalarAutoscalingPolicyScaleDownControlMaxScaledDownReplicas {
 		return v.MaxScaledDownReplicas
@@ -1024,7 +1050,8 @@ func (o AutoscalarAutoscalingPolicyScaleDownControlPtrOutput) Elem() AutoscalarA
 	}).(AutoscalarAutoscalingPolicyScaleDownControlOutput)
 }
 
-// A nested object resource  Structure is documented below.
+// A nested object resource
+// Structure is documented below.
 func (o AutoscalarAutoscalingPolicyScaleDownControlPtrOutput) MaxScaledDownReplicas() AutoscalarAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrOutput {
 	return o.ApplyT(func(v *AutoscalarAutoscalingPolicyScaleDownControl) *AutoscalarAutoscalingPolicyScaleDownControlMaxScaledDownReplicas {
 		if v == nil {
@@ -1218,16 +1245,19 @@ type AutoscalerAutoscalingPolicy struct {
 	CooldownPeriod *int `pulumi:"cooldownPeriod"`
 	// Defines the CPU utilization policy that allows the autoscaler to
 	// scale based on the average CPU utilization of a managed instance
-	// group.  Structure is documented below.
+	// group.
+	// Structure is documented below.
 	CpuUtilization *AutoscalerAutoscalingPolicyCpuUtilization `pulumi:"cpuUtilization"`
-	// Configuration parameters of autoscaling based on a load balancer.  Structure is documented below.
+	// Configuration parameters of autoscaling based on a load balancer.
+	// Structure is documented below.
 	LoadBalancingUtilization *AutoscalerAutoscalingPolicyLoadBalancingUtilization `pulumi:"loadBalancingUtilization"`
 	// The maximum number of instances that the autoscaler can scale up
 	// to. This is required when creating or updating an autoscaler. The
 	// maximum number of replicas should not be lower than minimal number
 	// of replicas.
 	MaxReplicas int `pulumi:"maxReplicas"`
-	// Configuration parameters of autoscaling based on a custom metric.  Structure is documented below.
+	// Configuration parameters of autoscaling based on a custom metric.
+	// Structure is documented below.
 	Metrics []AutoscalerAutoscalingPolicyMetric `pulumi:"metrics"`
 	// The minimum number of replicas that the autoscaler can scale down
 	// to. This cannot be less than 0. If not provided, autoscaler will
@@ -1235,6 +1265,8 @@ type AutoscalerAutoscalingPolicy struct {
 	// allowed.
 	MinReplicas int `pulumi:"minReplicas"`
 	// Defines operating mode for this policy.
+	// Default value is `ON`.
+	// Possible values are `OFF`, `ONLY_UP`, and `ON`.
 	Mode             *string                                      `pulumi:"mode"`
 	ScaleDownControl *AutoscalerAutoscalingPolicyScaleDownControl `pulumi:"scaleDownControl"`
 }
@@ -1263,16 +1295,19 @@ type AutoscalerAutoscalingPolicyArgs struct {
 	CooldownPeriod pulumi.IntPtrInput `pulumi:"cooldownPeriod"`
 	// Defines the CPU utilization policy that allows the autoscaler to
 	// scale based on the average CPU utilization of a managed instance
-	// group.  Structure is documented below.
+	// group.
+	// Structure is documented below.
 	CpuUtilization AutoscalerAutoscalingPolicyCpuUtilizationPtrInput `pulumi:"cpuUtilization"`
-	// Configuration parameters of autoscaling based on a load balancer.  Structure is documented below.
+	// Configuration parameters of autoscaling based on a load balancer.
+	// Structure is documented below.
 	LoadBalancingUtilization AutoscalerAutoscalingPolicyLoadBalancingUtilizationPtrInput `pulumi:"loadBalancingUtilization"`
 	// The maximum number of instances that the autoscaler can scale up
 	// to. This is required when creating or updating an autoscaler. The
 	// maximum number of replicas should not be lower than minimal number
 	// of replicas.
 	MaxReplicas pulumi.IntInput `pulumi:"maxReplicas"`
-	// Configuration parameters of autoscaling based on a custom metric.  Structure is documented below.
+	// Configuration parameters of autoscaling based on a custom metric.
+	// Structure is documented below.
 	Metrics AutoscalerAutoscalingPolicyMetricArrayInput `pulumi:"metrics"`
 	// The minimum number of replicas that the autoscaler can scale down
 	// to. This cannot be less than 0. If not provided, autoscaler will
@@ -1280,6 +1315,8 @@ type AutoscalerAutoscalingPolicyArgs struct {
 	// allowed.
 	MinReplicas pulumi.IntInput `pulumi:"minReplicas"`
 	// Defines operating mode for this policy.
+	// Default value is `ON`.
+	// Possible values are `OFF`, `ONLY_UP`, and `ON`.
 	Mode             pulumi.StringPtrInput                               `pulumi:"mode"`
 	ScaleDownControl AutoscalerAutoscalingPolicyScaleDownControlPtrInput `pulumi:"scaleDownControl"`
 }
@@ -1376,14 +1413,16 @@ func (o AutoscalerAutoscalingPolicyOutput) CooldownPeriod() pulumi.IntPtrOutput 
 
 // Defines the CPU utilization policy that allows the autoscaler to
 // scale based on the average CPU utilization of a managed instance
-// group.  Structure is documented below.
+// group.
+// Structure is documented below.
 func (o AutoscalerAutoscalingPolicyOutput) CpuUtilization() AutoscalerAutoscalingPolicyCpuUtilizationPtrOutput {
 	return o.ApplyT(func(v AutoscalerAutoscalingPolicy) *AutoscalerAutoscalingPolicyCpuUtilization {
 		return v.CpuUtilization
 	}).(AutoscalerAutoscalingPolicyCpuUtilizationPtrOutput)
 }
 
-// Configuration parameters of autoscaling based on a load balancer.  Structure is documented below.
+// Configuration parameters of autoscaling based on a load balancer.
+// Structure is documented below.
 func (o AutoscalerAutoscalingPolicyOutput) LoadBalancingUtilization() AutoscalerAutoscalingPolicyLoadBalancingUtilizationPtrOutput {
 	return o.ApplyT(func(v AutoscalerAutoscalingPolicy) *AutoscalerAutoscalingPolicyLoadBalancingUtilization {
 		return v.LoadBalancingUtilization
@@ -1398,7 +1437,8 @@ func (o AutoscalerAutoscalingPolicyOutput) MaxReplicas() pulumi.IntOutput {
 	return o.ApplyT(func(v AutoscalerAutoscalingPolicy) int { return v.MaxReplicas }).(pulumi.IntOutput)
 }
 
-// Configuration parameters of autoscaling based on a custom metric.  Structure is documented below.
+// Configuration parameters of autoscaling based on a custom metric.
+// Structure is documented below.
 func (o AutoscalerAutoscalingPolicyOutput) Metrics() AutoscalerAutoscalingPolicyMetricArrayOutput {
 	return o.ApplyT(func(v AutoscalerAutoscalingPolicy) []AutoscalerAutoscalingPolicyMetric { return v.Metrics }).(AutoscalerAutoscalingPolicyMetricArrayOutput)
 }
@@ -1412,6 +1452,8 @@ func (o AutoscalerAutoscalingPolicyOutput) MinReplicas() pulumi.IntOutput {
 }
 
 // Defines operating mode for this policy.
+// Default value is `ON`.
+// Possible values are `OFF`, `ONLY_UP`, and `ON`.
 func (o AutoscalerAutoscalingPolicyOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AutoscalerAutoscalingPolicy) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -1460,7 +1502,8 @@ func (o AutoscalerAutoscalingPolicyPtrOutput) CooldownPeriod() pulumi.IntPtrOutp
 
 // Defines the CPU utilization policy that allows the autoscaler to
 // scale based on the average CPU utilization of a managed instance
-// group.  Structure is documented below.
+// group.
+// Structure is documented below.
 func (o AutoscalerAutoscalingPolicyPtrOutput) CpuUtilization() AutoscalerAutoscalingPolicyCpuUtilizationPtrOutput {
 	return o.ApplyT(func(v *AutoscalerAutoscalingPolicy) *AutoscalerAutoscalingPolicyCpuUtilization {
 		if v == nil {
@@ -1470,7 +1513,8 @@ func (o AutoscalerAutoscalingPolicyPtrOutput) CpuUtilization() AutoscalerAutosca
 	}).(AutoscalerAutoscalingPolicyCpuUtilizationPtrOutput)
 }
 
-// Configuration parameters of autoscaling based on a load balancer.  Structure is documented below.
+// Configuration parameters of autoscaling based on a load balancer.
+// Structure is documented below.
 func (o AutoscalerAutoscalingPolicyPtrOutput) LoadBalancingUtilization() AutoscalerAutoscalingPolicyLoadBalancingUtilizationPtrOutput {
 	return o.ApplyT(func(v *AutoscalerAutoscalingPolicy) *AutoscalerAutoscalingPolicyLoadBalancingUtilization {
 		if v == nil {
@@ -1493,7 +1537,8 @@ func (o AutoscalerAutoscalingPolicyPtrOutput) MaxReplicas() pulumi.IntPtrOutput 
 	}).(pulumi.IntPtrOutput)
 }
 
-// Configuration parameters of autoscaling based on a custom metric.  Structure is documented below.
+// Configuration parameters of autoscaling based on a custom metric.
+// Structure is documented below.
 func (o AutoscalerAutoscalingPolicyPtrOutput) Metrics() AutoscalerAutoscalingPolicyMetricArrayOutput {
 	return o.ApplyT(func(v *AutoscalerAutoscalingPolicy) []AutoscalerAutoscalingPolicyMetric {
 		if v == nil {
@@ -1517,6 +1562,8 @@ func (o AutoscalerAutoscalingPolicyPtrOutput) MinReplicas() pulumi.IntPtrOutput 
 }
 
 // Defines operating mode for this policy.
+// Default value is `ON`.
+// Possible values are `OFF`, `ONLY_UP`, and `ON`.
 func (o AutoscalerAutoscalingPolicyPtrOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AutoscalerAutoscalingPolicy) *string {
 		if v == nil {
@@ -1871,6 +1918,7 @@ type AutoscalerAutoscalingPolicyMetric struct {
 	Target *float64 `pulumi:"target"`
 	// Defines how target utilization value is expressed for a
 	// Stackdriver Monitoring metric.
+	// Possible values are `GAUGE`, `DELTA_PER_SECOND`, and `DELTA_PER_MINUTE`.
 	Type *string `pulumi:"type"`
 }
 
@@ -1939,6 +1987,7 @@ type AutoscalerAutoscalingPolicyMetricArgs struct {
 	Target pulumi.Float64PtrInput `pulumi:"target"`
 	// Defines how target utilization value is expressed for a
 	// Stackdriver Monitoring metric.
+	// Possible values are `GAUGE`, `DELTA_PER_SECOND`, and `DELTA_PER_MINUTE`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -2058,6 +2107,7 @@ func (o AutoscalerAutoscalingPolicyMetricOutput) Target() pulumi.Float64PtrOutpu
 
 // Defines how target utilization value is expressed for a
 // Stackdriver Monitoring metric.
+// Possible values are `GAUGE`, `DELTA_PER_SECOND`, and `DELTA_PER_MINUTE`.
 func (o AutoscalerAutoscalingPolicyMetricOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AutoscalerAutoscalingPolicyMetric) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -2083,7 +2133,8 @@ func (o AutoscalerAutoscalingPolicyMetricArrayOutput) Index(i pulumi.IntInput) A
 }
 
 type AutoscalerAutoscalingPolicyScaleDownControl struct {
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	MaxScaledDownReplicas *AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas `pulumi:"maxScaledDownReplicas"`
 	// How long back autoscaling should look when computing recommendations
 	// to include directives regarding slower scale down, as described above.
@@ -2102,7 +2153,8 @@ type AutoscalerAutoscalingPolicyScaleDownControlInput interface {
 }
 
 type AutoscalerAutoscalingPolicyScaleDownControlArgs struct {
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	MaxScaledDownReplicas AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrInput `pulumi:"maxScaledDownReplicas"`
 	// How long back autoscaling should look when computing recommendations
 	// to include directives regarding slower scale down, as described above.
@@ -2186,7 +2238,8 @@ func (o AutoscalerAutoscalingPolicyScaleDownControlOutput) ToAutoscalerAutoscali
 	}).(AutoscalerAutoscalingPolicyScaleDownControlPtrOutput)
 }
 
-// A nested object resource  Structure is documented below.
+// A nested object resource
+// Structure is documented below.
 func (o AutoscalerAutoscalingPolicyScaleDownControlOutput) MaxScaledDownReplicas() AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrOutput {
 	return o.ApplyT(func(v AutoscalerAutoscalingPolicyScaleDownControl) *AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas {
 		return v.MaxScaledDownReplicas
@@ -2219,7 +2272,8 @@ func (o AutoscalerAutoscalingPolicyScaleDownControlPtrOutput) Elem() AutoscalerA
 	}).(AutoscalerAutoscalingPolicyScaleDownControlOutput)
 }
 
-// A nested object resource  Structure is documented below.
+// A nested object resource
+// Structure is documented below.
 func (o AutoscalerAutoscalingPolicyScaleDownControlPtrOutput) MaxScaledDownReplicas() AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrOutput {
 	return o.ApplyT(func(v *AutoscalerAutoscalingPolicyScaleDownControl) *AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas {
 		if v == nil {
@@ -2564,6 +2618,8 @@ type BackendServiceBackend struct {
 	// For global HTTP(S) or TCP/SSL load balancing, the default is
 	// UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S))
 	// and CONNECTION (for TCP/SSL).
+	// Default value is `UTILIZATION`.
+	// Possible values are `UTILIZATION`, `RATE`, and `CONNECTION`.
 	BalancingMode *string `pulumi:"balancingMode"`
 	// A multiplier applied to the group's maximum servicing capacity
 	// (based on UTILIZATION, RATE or CONNECTION).
@@ -2645,6 +2701,8 @@ type BackendServiceBackendArgs struct {
 	// For global HTTP(S) or TCP/SSL load balancing, the default is
 	// UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S))
 	// and CONNECTION (for TCP/SSL).
+	// Default value is `UTILIZATION`.
+	// Possible values are `UTILIZATION`, `RATE`, and `CONNECTION`.
 	BalancingMode pulumi.StringPtrInput `pulumi:"balancingMode"`
 	// A multiplier applied to the group's maximum servicing capacity
 	// (based on UTILIZATION, RATE or CONNECTION).
@@ -2765,6 +2823,8 @@ func (o BackendServiceBackendOutput) ToBackendServiceBackendOutputWithContext(ct
 // For global HTTP(S) or TCP/SSL load balancing, the default is
 // UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S))
 // and CONNECTION (for TCP/SSL).
+// Default value is `UTILIZATION`.
+// Possible values are `UTILIZATION`, `RATE`, and `CONNECTION`.
 func (o BackendServiceBackendOutput) BalancingMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BackendServiceBackend) *string { return v.BalancingMode }).(pulumi.StringPtrOutput)
 }
@@ -2882,7 +2942,8 @@ func (o BackendServiceBackendArrayOutput) Index(i pulumi.IntInput) BackendServic
 }
 
 type BackendServiceCdnPolicy struct {
-	// The CacheKeyPolicy for this CdnPolicy.  Structure is documented below.
+	// The CacheKeyPolicy for this CdnPolicy.
+	// Structure is documented below.
 	CacheKeyPolicy *BackendServiceCdnPolicyCacheKeyPolicy `pulumi:"cacheKeyPolicy"`
 	// Maximum number of seconds the response to a signed URL request
 	// will be considered fresh, defaults to 1hr (3600s). After this
@@ -2908,7 +2969,8 @@ type BackendServiceCdnPolicyInput interface {
 }
 
 type BackendServiceCdnPolicyArgs struct {
-	// The CacheKeyPolicy for this CdnPolicy.  Structure is documented below.
+	// The CacheKeyPolicy for this CdnPolicy.
+	// Structure is documented below.
 	CacheKeyPolicy BackendServiceCdnPolicyCacheKeyPolicyPtrInput `pulumi:"cacheKeyPolicy"`
 	// Maximum number of seconds the response to a signed URL request
 	// will be considered fresh, defaults to 1hr (3600s). After this
@@ -2999,7 +3061,8 @@ func (o BackendServiceCdnPolicyOutput) ToBackendServiceCdnPolicyPtrOutputWithCon
 	}).(BackendServiceCdnPolicyPtrOutput)
 }
 
-// The CacheKeyPolicy for this CdnPolicy.  Structure is documented below.
+// The CacheKeyPolicy for this CdnPolicy.
+// Structure is documented below.
 func (o BackendServiceCdnPolicyOutput) CacheKeyPolicy() BackendServiceCdnPolicyCacheKeyPolicyPtrOutput {
 	return o.ApplyT(func(v BackendServiceCdnPolicy) *BackendServiceCdnPolicyCacheKeyPolicy { return v.CacheKeyPolicy }).(BackendServiceCdnPolicyCacheKeyPolicyPtrOutput)
 }
@@ -3035,7 +3098,8 @@ func (o BackendServiceCdnPolicyPtrOutput) Elem() BackendServiceCdnPolicyOutput {
 	return o.ApplyT(func(v *BackendServiceCdnPolicy) BackendServiceCdnPolicy { return *v }).(BackendServiceCdnPolicyOutput)
 }
 
-// The CacheKeyPolicy for this CdnPolicy.  Structure is documented below.
+// The CacheKeyPolicy for this CdnPolicy.
+// Structure is documented below.
 func (o BackendServiceCdnPolicyPtrOutput) CacheKeyPolicy() BackendServiceCdnPolicyCacheKeyPolicyPtrOutput {
 	return o.ApplyT(func(v *BackendServiceCdnPolicy) *BackendServiceCdnPolicyCacheKeyPolicy {
 		if v == nil {
@@ -3746,7 +3810,8 @@ type BackendServiceConsistentHash struct {
 	// Hash is based on HTTP Cookie. This field describes a HTTP cookie
 	// that will be used as the hash key for the consistent hash load
 	// balancer. If the cookie is not present, it will be generated.
-	// This field is applicable if the sessionAffinity is set to HTTP_COOKIE.  Structure is documented below.
+	// This field is applicable if the sessionAffinity is set to HTTP_COOKIE.
+	// Structure is documented below.
 	HttpCookie *BackendServiceConsistentHashHttpCookie `pulumi:"httpCookie"`
 	// The hash based on the value of the specified header field.
 	// This field is applicable if the sessionAffinity is set to HEADER_FIELD.
@@ -3775,7 +3840,8 @@ type BackendServiceConsistentHashArgs struct {
 	// Hash is based on HTTP Cookie. This field describes a HTTP cookie
 	// that will be used as the hash key for the consistent hash load
 	// balancer. If the cookie is not present, it will be generated.
-	// This field is applicable if the sessionAffinity is set to HTTP_COOKIE.  Structure is documented below.
+	// This field is applicable if the sessionAffinity is set to HTTP_COOKIE.
+	// Structure is documented below.
 	HttpCookie BackendServiceConsistentHashHttpCookiePtrInput `pulumi:"httpCookie"`
 	// The hash based on the value of the specified header field.
 	// This field is applicable if the sessionAffinity is set to HEADER_FIELD.
@@ -3869,7 +3935,8 @@ func (o BackendServiceConsistentHashOutput) ToBackendServiceConsistentHashPtrOut
 // Hash is based on HTTP Cookie. This field describes a HTTP cookie
 // that will be used as the hash key for the consistent hash load
 // balancer. If the cookie is not present, it will be generated.
-// This field is applicable if the sessionAffinity is set to HTTP_COOKIE.  Structure is documented below.
+// This field is applicable if the sessionAffinity is set to HTTP_COOKIE.
+// Structure is documented below.
 func (o BackendServiceConsistentHashOutput) HttpCookie() BackendServiceConsistentHashHttpCookiePtrOutput {
 	return o.ApplyT(func(v BackendServiceConsistentHash) *BackendServiceConsistentHashHttpCookie { return v.HttpCookie }).(BackendServiceConsistentHashHttpCookiePtrOutput)
 }
@@ -3911,7 +3978,8 @@ func (o BackendServiceConsistentHashPtrOutput) Elem() BackendServiceConsistentHa
 // Hash is based on HTTP Cookie. This field describes a HTTP cookie
 // that will be used as the hash key for the consistent hash load
 // balancer. If the cookie is not present, it will be generated.
-// This field is applicable if the sessionAffinity is set to HTTP_COOKIE.  Structure is documented below.
+// This field is applicable if the sessionAffinity is set to HTTP_COOKIE.
+// Structure is documented below.
 func (o BackendServiceConsistentHashPtrOutput) HttpCookie() BackendServiceConsistentHashHttpCookiePtrOutput {
 	return o.ApplyT(func(v *BackendServiceConsistentHash) *BackendServiceConsistentHashHttpCookie {
 		if v == nil {
@@ -3952,7 +4020,8 @@ type BackendServiceConsistentHashHttpCookie struct {
 	Name *string `pulumi:"name"`
 	// Path to set for the cookie.
 	Path *string `pulumi:"path"`
-	// Lifetime of the cookie.  Structure is documented below.
+	// Lifetime of the cookie.
+	// Structure is documented below.
 	Ttl *BackendServiceConsistentHashHttpCookieTtl `pulumi:"ttl"`
 }
 
@@ -3972,7 +4041,8 @@ type BackendServiceConsistentHashHttpCookieArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Path to set for the cookie.
 	Path pulumi.StringPtrInput `pulumi:"path"`
-	// Lifetime of the cookie.  Structure is documented below.
+	// Lifetime of the cookie.
+	// Structure is documented below.
 	Ttl BackendServiceConsistentHashHttpCookieTtlPtrInput `pulumi:"ttl"`
 }
 
@@ -4063,7 +4133,8 @@ func (o BackendServiceConsistentHashHttpCookieOutput) Path() pulumi.StringPtrOut
 	return o.ApplyT(func(v BackendServiceConsistentHashHttpCookie) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
-// Lifetime of the cookie.  Structure is documented below.
+// Lifetime of the cookie.
+// Structure is documented below.
 func (o BackendServiceConsistentHashHttpCookieOutput) Ttl() BackendServiceConsistentHashHttpCookieTtlPtrOutput {
 	return o.ApplyT(func(v BackendServiceConsistentHashHttpCookie) *BackendServiceConsistentHashHttpCookieTtl {
 		return v.Ttl
@@ -4108,7 +4179,8 @@ func (o BackendServiceConsistentHashHttpCookiePtrOutput) Path() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// Lifetime of the cookie.  Structure is documented below.
+// Lifetime of the cookie.
+// Structure is documented below.
 func (o BackendServiceConsistentHashHttpCookiePtrOutput) Ttl() BackendServiceConsistentHashHttpCookieTtlPtrOutput {
 	return o.ApplyT(func(v *BackendServiceConsistentHashHttpCookie) *BackendServiceConsistentHashHttpCookieTtl {
 		if v == nil {
@@ -4285,10 +4357,12 @@ func (o BackendServiceConsistentHashHttpCookieTtlPtrOutput) Seconds() pulumi.Int
 type BackendServiceIap struct {
 	// OAuth2 Client ID for IAP
 	Oauth2ClientId string `pulumi:"oauth2ClientId"`
-	// OAuth2 Client Secret for IAP  **Note**: This property is sensitive and will not be displayed in the plan.
+	// OAuth2 Client Secret for IAP
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Oauth2ClientSecret string `pulumi:"oauth2ClientSecret"`
 	// -
-	// OAuth2 Client Secret SHA-256 for IAP  **Note**: This property is sensitive and will not be displayed in the plan.
+	// OAuth2 Client Secret SHA-256 for IAP
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Oauth2ClientSecretSha256 *string `pulumi:"oauth2ClientSecretSha256"`
 }
 
@@ -4306,10 +4380,12 @@ type BackendServiceIapInput interface {
 type BackendServiceIapArgs struct {
 	// OAuth2 Client ID for IAP
 	Oauth2ClientId pulumi.StringInput `pulumi:"oauth2ClientId"`
-	// OAuth2 Client Secret for IAP  **Note**: This property is sensitive and will not be displayed in the plan.
+	// OAuth2 Client Secret for IAP
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Oauth2ClientSecret pulumi.StringInput `pulumi:"oauth2ClientSecret"`
 	// -
-	// OAuth2 Client Secret SHA-256 for IAP  **Note**: This property is sensitive and will not be displayed in the plan.
+	// OAuth2 Client Secret SHA-256 for IAP
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Oauth2ClientSecretSha256 pulumi.StringPtrInput `pulumi:"oauth2ClientSecretSha256"`
 }
 
@@ -4395,13 +4471,15 @@ func (o BackendServiceIapOutput) Oauth2ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v BackendServiceIap) string { return v.Oauth2ClientId }).(pulumi.StringOutput)
 }
 
-// OAuth2 Client Secret for IAP  **Note**: This property is sensitive and will not be displayed in the plan.
+// OAuth2 Client Secret for IAP
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o BackendServiceIapOutput) Oauth2ClientSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v BackendServiceIap) string { return v.Oauth2ClientSecret }).(pulumi.StringOutput)
 }
 
 // -
-// OAuth2 Client Secret SHA-256 for IAP  **Note**: This property is sensitive and will not be displayed in the plan.
+// OAuth2 Client Secret SHA-256 for IAP
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o BackendServiceIapOutput) Oauth2ClientSecretSha256() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BackendServiceIap) *string { return v.Oauth2ClientSecretSha256 }).(pulumi.StringPtrOutput)
 }
@@ -4434,7 +4512,8 @@ func (o BackendServiceIapPtrOutput) Oauth2ClientId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// OAuth2 Client Secret for IAP  **Note**: This property is sensitive and will not be displayed in the plan.
+// OAuth2 Client Secret for IAP
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o BackendServiceIapPtrOutput) Oauth2ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BackendServiceIap) *string {
 		if v == nil {
@@ -4445,7 +4524,8 @@ func (o BackendServiceIapPtrOutput) Oauth2ClientSecret() pulumi.StringPtrOutput 
 }
 
 // -
-// OAuth2 Client Secret SHA-256 for IAP  **Note**: This property is sensitive and will not be displayed in the plan.
+// OAuth2 Client Secret SHA-256 for IAP
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o BackendServiceIapPtrOutput) Oauth2ClientSecretSha256() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BackendServiceIap) *string {
 		if v == nil {
@@ -4620,7 +4700,8 @@ func (o BackendServiceLogConfigPtrOutput) SampleRate() pulumi.Float64PtrOutput {
 type BackendServiceOutlierDetection struct {
 	// The base time that a host is ejected for. The real time is equal to the base
 	// time multiplied by the number of times the host has been ejected. Defaults to
-	// 30000ms or 30s.  Structure is documented below.
+	// 30000ms or 30s.
+	// Structure is documented below.
 	BaseEjectionTime *BackendServiceOutlierDetectionBaseEjectionTime `pulumi:"baseEjectionTime"`
 	// Number of errors before a host is ejected from the connection pool. When the
 	// backend host is accessed over HTTP, a 5xx return code qualifies as an error.
@@ -4643,7 +4724,8 @@ type BackendServiceOutlierDetection struct {
 	// disable ejection or to ramp it up slowly. Defaults to 100.
 	EnforcingSuccessRate *int `pulumi:"enforcingSuccessRate"`
 	// Time interval between ejection sweep analysis. This can result in both new
-	// ejections as well as hosts being returned to service. Defaults to 10 seconds.  Structure is documented below.
+	// ejections as well as hosts being returned to service. Defaults to 10 seconds.
+	// Structure is documented below.
 	Interval *BackendServiceOutlierDetectionInterval `pulumi:"interval"`
 	// Maximum percentage of hosts in the load balancing pool for the backend service
 	// that can be ejected. Defaults to 10%.
@@ -4682,7 +4764,8 @@ type BackendServiceOutlierDetectionInput interface {
 type BackendServiceOutlierDetectionArgs struct {
 	// The base time that a host is ejected for. The real time is equal to the base
 	// time multiplied by the number of times the host has been ejected. Defaults to
-	// 30000ms or 30s.  Structure is documented below.
+	// 30000ms or 30s.
+	// Structure is documented below.
 	BaseEjectionTime BackendServiceOutlierDetectionBaseEjectionTimePtrInput `pulumi:"baseEjectionTime"`
 	// Number of errors before a host is ejected from the connection pool. When the
 	// backend host is accessed over HTTP, a 5xx return code qualifies as an error.
@@ -4705,7 +4788,8 @@ type BackendServiceOutlierDetectionArgs struct {
 	// disable ejection or to ramp it up slowly. Defaults to 100.
 	EnforcingSuccessRate pulumi.IntPtrInput `pulumi:"enforcingSuccessRate"`
 	// Time interval between ejection sweep analysis. This can result in both new
-	// ejections as well as hosts being returned to service. Defaults to 10 seconds.  Structure is documented below.
+	// ejections as well as hosts being returned to service. Defaults to 10 seconds.
+	// Structure is documented below.
 	Interval BackendServiceOutlierDetectionIntervalPtrInput `pulumi:"interval"`
 	// Maximum percentage of hosts in the load balancing pool for the backend service
 	// that can be ejected. Defaults to 10%.
@@ -4809,7 +4893,8 @@ func (o BackendServiceOutlierDetectionOutput) ToBackendServiceOutlierDetectionPt
 
 // The base time that a host is ejected for. The real time is equal to the base
 // time multiplied by the number of times the host has been ejected. Defaults to
-// 30000ms or 30s.  Structure is documented below.
+// 30000ms or 30s.
+// Structure is documented below.
 func (o BackendServiceOutlierDetectionOutput) BaseEjectionTime() BackendServiceOutlierDetectionBaseEjectionTimePtrOutput {
 	return o.ApplyT(func(v BackendServiceOutlierDetection) *BackendServiceOutlierDetectionBaseEjectionTime {
 		return v.BaseEjectionTime
@@ -4852,7 +4937,8 @@ func (o BackendServiceOutlierDetectionOutput) EnforcingSuccessRate() pulumi.IntP
 }
 
 // Time interval between ejection sweep analysis. This can result in both new
-// ejections as well as hosts being returned to service. Defaults to 10 seconds.  Structure is documented below.
+// ejections as well as hosts being returned to service. Defaults to 10 seconds.
+// Structure is documented below.
 func (o BackendServiceOutlierDetectionOutput) Interval() BackendServiceOutlierDetectionIntervalPtrOutput {
 	return o.ApplyT(func(v BackendServiceOutlierDetection) *BackendServiceOutlierDetectionInterval { return v.Interval }).(BackendServiceOutlierDetectionIntervalPtrOutput)
 }
@@ -4910,7 +4996,8 @@ func (o BackendServiceOutlierDetectionPtrOutput) Elem() BackendServiceOutlierDet
 
 // The base time that a host is ejected for. The real time is equal to the base
 // time multiplied by the number of times the host has been ejected. Defaults to
-// 30000ms or 30s.  Structure is documented below.
+// 30000ms or 30s.
+// Structure is documented below.
 func (o BackendServiceOutlierDetectionPtrOutput) BaseEjectionTime() BackendServiceOutlierDetectionBaseEjectionTimePtrOutput {
 	return o.ApplyT(func(v *BackendServiceOutlierDetection) *BackendServiceOutlierDetectionBaseEjectionTime {
 		if v == nil {
@@ -4981,7 +5068,8 @@ func (o BackendServiceOutlierDetectionPtrOutput) EnforcingSuccessRate() pulumi.I
 }
 
 // Time interval between ejection sweep analysis. This can result in both new
-// ejections as well as hosts being returned to service. Defaults to 10 seconds.  Structure is documented below.
+// ejections as well as hosts being returned to service. Defaults to 10 seconds.
+// Structure is documented below.
 func (o BackendServiceOutlierDetectionPtrOutput) Interval() BackendServiceOutlierDetectionIntervalPtrOutput {
 	return o.ApplyT(func(v *BackendServiceOutlierDetection) *BackendServiceOutlierDetectionInterval {
 		if v == nil {
@@ -6350,6 +6438,7 @@ func (o FirewallDenyArrayOutput) Index(i pulumi.IntInput) FirewallDenyOutput {
 
 type FirewallLogConfig struct {
 	// This field denotes whether to include or exclude metadata for firewall logs.
+	// Possible values are `EXCLUDE_ALL_METADATA` and `INCLUDE_ALL_METADATA`.
 	Metadata string `pulumi:"metadata"`
 }
 
@@ -6366,6 +6455,7 @@ type FirewallLogConfigInput interface {
 
 type FirewallLogConfigArgs struct {
 	// This field denotes whether to include or exclude metadata for firewall logs.
+	// Possible values are `EXCLUDE_ALL_METADATA` and `INCLUDE_ALL_METADATA`.
 	Metadata pulumi.StringInput `pulumi:"metadata"`
 }
 
@@ -6447,6 +6537,7 @@ func (o FirewallLogConfigOutput) ToFirewallLogConfigPtrOutputWithContext(ctx con
 }
 
 // This field denotes whether to include or exclude metadata for firewall logs.
+// Possible values are `EXCLUDE_ALL_METADATA` and `INCLUDE_ALL_METADATA`.
 func (o FirewallLogConfigOutput) Metadata() pulumi.StringOutput {
 	return o.ApplyT(func(v FirewallLogConfig) string { return v.Metadata }).(pulumi.StringOutput)
 }
@@ -6470,6 +6561,7 @@ func (o FirewallLogConfigPtrOutput) Elem() FirewallLogConfigOutput {
 }
 
 // This field denotes whether to include or exclude metadata for firewall logs.
+// Possible values are `EXCLUDE_ALL_METADATA` and `INCLUDE_ALL_METADATA`.
 func (o FirewallLogConfigPtrOutput) Metadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FirewallLogConfig) *string {
 		if v == nil {
@@ -6482,7 +6574,8 @@ func (o FirewallLogConfigPtrOutput) Metadata() pulumi.StringPtrOutput {
 type GlobalForwardingRuleMetadataFilter struct {
 	// The list of label value pairs that must match labels in the
 	// provided metadata based on filterMatchCriteria
-	// This list must not be empty and can have at the most 64 entries.  Structure is documented below.
+	// This list must not be empty and can have at the most 64 entries.
+	// Structure is documented below.
 	FilterLabels []GlobalForwardingRuleMetadataFilterFilterLabel `pulumi:"filterLabels"`
 	// Specifies how individual filterLabel matches within the list of
 	// filterLabels contribute towards the overall metadataFilter match.
@@ -6490,6 +6583,7 @@ type GlobalForwardingRuleMetadataFilter struct {
 	// label in the provided metadata.
 	// MATCH_ALL - All filterLabels must have matching labels in the
 	// provided metadata.
+	// Possible values are `MATCH_ANY` and `MATCH_ALL`.
 	FilterMatchCriteria string `pulumi:"filterMatchCriteria"`
 }
 
@@ -6507,7 +6601,8 @@ type GlobalForwardingRuleMetadataFilterInput interface {
 type GlobalForwardingRuleMetadataFilterArgs struct {
 	// The list of label value pairs that must match labels in the
 	// provided metadata based on filterMatchCriteria
-	// This list must not be empty and can have at the most 64 entries.  Structure is documented below.
+	// This list must not be empty and can have at the most 64 entries.
+	// Structure is documented below.
 	FilterLabels GlobalForwardingRuleMetadataFilterFilterLabelArrayInput `pulumi:"filterLabels"`
 	// Specifies how individual filterLabel matches within the list of
 	// filterLabels contribute towards the overall metadataFilter match.
@@ -6515,6 +6610,7 @@ type GlobalForwardingRuleMetadataFilterArgs struct {
 	// label in the provided metadata.
 	// MATCH_ALL - All filterLabels must have matching labels in the
 	// provided metadata.
+	// Possible values are `MATCH_ANY` and `MATCH_ALL`.
 	FilterMatchCriteria pulumi.StringInput `pulumi:"filterMatchCriteria"`
 }
 
@@ -6571,7 +6667,8 @@ func (o GlobalForwardingRuleMetadataFilterOutput) ToGlobalForwardingRuleMetadata
 
 // The list of label value pairs that must match labels in the
 // provided metadata based on filterMatchCriteria
-// This list must not be empty and can have at the most 64 entries.  Structure is documented below.
+// This list must not be empty and can have at the most 64 entries.
+// Structure is documented below.
 func (o GlobalForwardingRuleMetadataFilterOutput) FilterLabels() GlobalForwardingRuleMetadataFilterFilterLabelArrayOutput {
 	return o.ApplyT(func(v GlobalForwardingRuleMetadataFilter) []GlobalForwardingRuleMetadataFilterFilterLabel {
 		return v.FilterLabels
@@ -6584,6 +6681,7 @@ func (o GlobalForwardingRuleMetadataFilterOutput) FilterLabels() GlobalForwardin
 // label in the provided metadata.
 // MATCH_ALL - All filterLabels must have matching labels in the
 // provided metadata.
+// Possible values are `MATCH_ANY` and `MATCH_ALL`.
 func (o GlobalForwardingRuleMetadataFilterOutput) FilterMatchCriteria() pulumi.StringOutput {
 	return o.ApplyT(func(v GlobalForwardingRuleMetadataFilter) string { return v.FilterMatchCriteria }).(pulumi.StringOutput)
 }
@@ -6844,9 +6942,12 @@ type HealthCheckHttp2HealthCheck struct {
 	//   checking.
 	//   If not specified, HTTP2 health check follows behavior specified in `port` and
 	//   `portName` fields.
+	//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 	PortSpecification *string `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the
 	// backend.
+	// Default value is `NONE`.
+	// Possible values are `NONE` and `PROXY_V1`.
 	ProxyHeader *string `pulumi:"proxyHeader"`
 	// The request path of the HTTP2 health check request.
 	// The default value is /.
@@ -6889,9 +6990,12 @@ type HealthCheckHttp2HealthCheckArgs struct {
 	//   checking.
 	//   If not specified, HTTP2 health check follows behavior specified in `port` and
 	//   `portName` fields.
+	//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 	PortSpecification pulumi.StringPtrInput `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the
 	// backend.
+	// Default value is `NONE`.
+	// Possible values are `NONE` and `PROXY_V1`.
 	ProxyHeader pulumi.StringPtrInput `pulumi:"proxyHeader"`
 	// The request path of the HTTP2 health check request.
 	// The default value is /.
@@ -7008,12 +7112,15 @@ func (o HealthCheckHttp2HealthCheckOutput) PortName() pulumi.StringPtrOutput {
 //   checking.
 //   If not specified, HTTP2 health check follows behavior specified in `port` and
 //   `portName` fields.
+//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 func (o HealthCheckHttp2HealthCheckOutput) PortSpecification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HealthCheckHttp2HealthCheck) *string { return v.PortSpecification }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the type of proxy header to append before sending data to the
 // backend.
+// Default value is `NONE`.
+// Possible values are `NONE` and `PROXY_V1`.
 func (o HealthCheckHttp2HealthCheckOutput) ProxyHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HealthCheckHttp2HealthCheck) *string { return v.ProxyHeader }).(pulumi.StringPtrOutput)
 }
@@ -7093,6 +7200,7 @@ func (o HealthCheckHttp2HealthCheckPtrOutput) PortName() pulumi.StringPtrOutput 
 //   checking.
 //   If not specified, HTTP2 health check follows behavior specified in `port` and
 //   `portName` fields.
+//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 func (o HealthCheckHttp2HealthCheckPtrOutput) PortSpecification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HealthCheckHttp2HealthCheck) *string {
 		if v == nil {
@@ -7104,6 +7212,8 @@ func (o HealthCheckHttp2HealthCheckPtrOutput) PortSpecification() pulumi.StringP
 
 // Specifies the type of proxy header to append before sending data to the
 // backend.
+// Default value is `NONE`.
+// Possible values are `NONE` and `PROXY_V1`.
 func (o HealthCheckHttp2HealthCheckPtrOutput) ProxyHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HealthCheckHttp2HealthCheck) *string {
 		if v == nil {
@@ -7157,9 +7267,12 @@ type HealthCheckHttpHealthCheck struct {
 	//   checking.
 	//   If not specified, HTTP2 health check follows behavior specified in `port` and
 	//   `portName` fields.
+	//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 	PortSpecification *string `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the
 	// backend.
+	// Default value is `NONE`.
+	// Possible values are `NONE` and `PROXY_V1`.
 	ProxyHeader *string `pulumi:"proxyHeader"`
 	// The request path of the HTTP2 health check request.
 	// The default value is /.
@@ -7202,9 +7315,12 @@ type HealthCheckHttpHealthCheckArgs struct {
 	//   checking.
 	//   If not specified, HTTP2 health check follows behavior specified in `port` and
 	//   `portName` fields.
+	//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 	PortSpecification pulumi.StringPtrInput `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the
 	// backend.
+	// Default value is `NONE`.
+	// Possible values are `NONE` and `PROXY_V1`.
 	ProxyHeader pulumi.StringPtrInput `pulumi:"proxyHeader"`
 	// The request path of the HTTP2 health check request.
 	// The default value is /.
@@ -7321,12 +7437,15 @@ func (o HealthCheckHttpHealthCheckOutput) PortName() pulumi.StringPtrOutput {
 //   checking.
 //   If not specified, HTTP2 health check follows behavior specified in `port` and
 //   `portName` fields.
+//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 func (o HealthCheckHttpHealthCheckOutput) PortSpecification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HealthCheckHttpHealthCheck) *string { return v.PortSpecification }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the type of proxy header to append before sending data to the
 // backend.
+// Default value is `NONE`.
+// Possible values are `NONE` and `PROXY_V1`.
 func (o HealthCheckHttpHealthCheckOutput) ProxyHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HealthCheckHttpHealthCheck) *string { return v.ProxyHeader }).(pulumi.StringPtrOutput)
 }
@@ -7406,6 +7525,7 @@ func (o HealthCheckHttpHealthCheckPtrOutput) PortName() pulumi.StringPtrOutput {
 //   checking.
 //   If not specified, HTTP2 health check follows behavior specified in `port` and
 //   `portName` fields.
+//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 func (o HealthCheckHttpHealthCheckPtrOutput) PortSpecification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HealthCheckHttpHealthCheck) *string {
 		if v == nil {
@@ -7417,6 +7537,8 @@ func (o HealthCheckHttpHealthCheckPtrOutput) PortSpecification() pulumi.StringPt
 
 // Specifies the type of proxy header to append before sending data to the
 // backend.
+// Default value is `NONE`.
+// Possible values are `NONE` and `PROXY_V1`.
 func (o HealthCheckHttpHealthCheckPtrOutput) ProxyHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HealthCheckHttpHealthCheck) *string {
 		if v == nil {
@@ -7470,9 +7592,12 @@ type HealthCheckHttpsHealthCheck struct {
 	//   checking.
 	//   If not specified, HTTP2 health check follows behavior specified in `port` and
 	//   `portName` fields.
+	//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 	PortSpecification *string `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the
 	// backend.
+	// Default value is `NONE`.
+	// Possible values are `NONE` and `PROXY_V1`.
 	ProxyHeader *string `pulumi:"proxyHeader"`
 	// The request path of the HTTP2 health check request.
 	// The default value is /.
@@ -7515,9 +7640,12 @@ type HealthCheckHttpsHealthCheckArgs struct {
 	//   checking.
 	//   If not specified, HTTP2 health check follows behavior specified in `port` and
 	//   `portName` fields.
+	//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 	PortSpecification pulumi.StringPtrInput `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the
 	// backend.
+	// Default value is `NONE`.
+	// Possible values are `NONE` and `PROXY_V1`.
 	ProxyHeader pulumi.StringPtrInput `pulumi:"proxyHeader"`
 	// The request path of the HTTP2 health check request.
 	// The default value is /.
@@ -7634,12 +7762,15 @@ func (o HealthCheckHttpsHealthCheckOutput) PortName() pulumi.StringPtrOutput {
 //   checking.
 //   If not specified, HTTP2 health check follows behavior specified in `port` and
 //   `portName` fields.
+//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 func (o HealthCheckHttpsHealthCheckOutput) PortSpecification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HealthCheckHttpsHealthCheck) *string { return v.PortSpecification }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the type of proxy header to append before sending data to the
 // backend.
+// Default value is `NONE`.
+// Possible values are `NONE` and `PROXY_V1`.
 func (o HealthCheckHttpsHealthCheckOutput) ProxyHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HealthCheckHttpsHealthCheck) *string { return v.ProxyHeader }).(pulumi.StringPtrOutput)
 }
@@ -7719,6 +7850,7 @@ func (o HealthCheckHttpsHealthCheckPtrOutput) PortName() pulumi.StringPtrOutput 
 //   checking.
 //   If not specified, HTTP2 health check follows behavior specified in `port` and
 //   `portName` fields.
+//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 func (o HealthCheckHttpsHealthCheckPtrOutput) PortSpecification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HealthCheckHttpsHealthCheck) *string {
 		if v == nil {
@@ -7730,6 +7862,8 @@ func (o HealthCheckHttpsHealthCheckPtrOutput) PortSpecification() pulumi.StringP
 
 // Specifies the type of proxy header to append before sending data to the
 // backend.
+// Default value is `NONE`.
+// Possible values are `NONE` and `PROXY_V1`.
 func (o HealthCheckHttpsHealthCheckPtrOutput) ProxyHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HealthCheckHttpsHealthCheck) *string {
 		if v == nil {
@@ -7914,9 +8048,12 @@ type HealthCheckSslHealthCheck struct {
 	//   checking.
 	//   If not specified, HTTP2 health check follows behavior specified in `port` and
 	//   `portName` fields.
+	//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 	PortSpecification *string `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the
 	// backend.
+	// Default value is `NONE`.
+	// Possible values are `NONE` and `PROXY_V1`.
 	ProxyHeader *string `pulumi:"proxyHeader"`
 	// The application data to send once the SSL connection has been
 	// established (default value is empty). If both request and response are
@@ -7957,9 +8094,12 @@ type HealthCheckSslHealthCheckArgs struct {
 	//   checking.
 	//   If not specified, HTTP2 health check follows behavior specified in `port` and
 	//   `portName` fields.
+	//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 	PortSpecification pulumi.StringPtrInput `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the
 	// backend.
+	// Default value is `NONE`.
+	// Possible values are `NONE` and `PROXY_V1`.
 	ProxyHeader pulumi.StringPtrInput `pulumi:"proxyHeader"`
 	// The application data to send once the SSL connection has been
 	// established (default value is empty). If both request and response are
@@ -8071,12 +8211,15 @@ func (o HealthCheckSslHealthCheckOutput) PortName() pulumi.StringPtrOutput {
 //   checking.
 //   If not specified, HTTP2 health check follows behavior specified in `port` and
 //   `portName` fields.
+//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 func (o HealthCheckSslHealthCheckOutput) PortSpecification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HealthCheckSslHealthCheck) *string { return v.PortSpecification }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the type of proxy header to append before sending data to the
 // backend.
+// Default value is `NONE`.
+// Possible values are `NONE` and `PROXY_V1`.
 func (o HealthCheckSslHealthCheckOutput) ProxyHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HealthCheckSslHealthCheck) *string { return v.ProxyHeader }).(pulumi.StringPtrOutput)
 }
@@ -8146,6 +8289,7 @@ func (o HealthCheckSslHealthCheckPtrOutput) PortName() pulumi.StringPtrOutput {
 //   checking.
 //   If not specified, HTTP2 health check follows behavior specified in `port` and
 //   `portName` fields.
+//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 func (o HealthCheckSslHealthCheckPtrOutput) PortSpecification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HealthCheckSslHealthCheck) *string {
 		if v == nil {
@@ -8157,6 +8301,8 @@ func (o HealthCheckSslHealthCheckPtrOutput) PortSpecification() pulumi.StringPtr
 
 // Specifies the type of proxy header to append before sending data to the
 // backend.
+// Default value is `NONE`.
+// Possible values are `NONE` and `PROXY_V1`.
 func (o HealthCheckSslHealthCheckPtrOutput) ProxyHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HealthCheckSslHealthCheck) *string {
 		if v == nil {
@@ -8208,9 +8354,12 @@ type HealthCheckTcpHealthCheck struct {
 	//   checking.
 	//   If not specified, HTTP2 health check follows behavior specified in `port` and
 	//   `portName` fields.
+	//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 	PortSpecification *string `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the
 	// backend.
+	// Default value is `NONE`.
+	// Possible values are `NONE` and `PROXY_V1`.
 	ProxyHeader *string `pulumi:"proxyHeader"`
 	// The application data to send once the SSL connection has been
 	// established (default value is empty). If both request and response are
@@ -8251,9 +8400,12 @@ type HealthCheckTcpHealthCheckArgs struct {
 	//   checking.
 	//   If not specified, HTTP2 health check follows behavior specified in `port` and
 	//   `portName` fields.
+	//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 	PortSpecification pulumi.StringPtrInput `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the
 	// backend.
+	// Default value is `NONE`.
+	// Possible values are `NONE` and `PROXY_V1`.
 	ProxyHeader pulumi.StringPtrInput `pulumi:"proxyHeader"`
 	// The application data to send once the SSL connection has been
 	// established (default value is empty). If both request and response are
@@ -8365,12 +8517,15 @@ func (o HealthCheckTcpHealthCheckOutput) PortName() pulumi.StringPtrOutput {
 //   checking.
 //   If not specified, HTTP2 health check follows behavior specified in `port` and
 //   `portName` fields.
+//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 func (o HealthCheckTcpHealthCheckOutput) PortSpecification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HealthCheckTcpHealthCheck) *string { return v.PortSpecification }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the type of proxy header to append before sending data to the
 // backend.
+// Default value is `NONE`.
+// Possible values are `NONE` and `PROXY_V1`.
 func (o HealthCheckTcpHealthCheckOutput) ProxyHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HealthCheckTcpHealthCheck) *string { return v.ProxyHeader }).(pulumi.StringPtrOutput)
 }
@@ -8440,6 +8595,7 @@ func (o HealthCheckTcpHealthCheckPtrOutput) PortName() pulumi.StringPtrOutput {
 //   checking.
 //   If not specified, HTTP2 health check follows behavior specified in `port` and
 //   `portName` fields.
+//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 func (o HealthCheckTcpHealthCheckPtrOutput) PortSpecification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HealthCheckTcpHealthCheck) *string {
 		if v == nil {
@@ -8451,6 +8607,8 @@ func (o HealthCheckTcpHealthCheckPtrOutput) PortSpecification() pulumi.StringPtr
 
 // Specifies the type of proxy header to append before sending data to the
 // backend.
+// Default value is `NONE`.
+// Possible values are `NONE` and `PROXY_V1`.
 func (o HealthCheckTcpHealthCheckPtrOutput) ProxyHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HealthCheckTcpHealthCheck) *string {
 		if v == nil {
@@ -8487,6 +8645,7 @@ func (o HealthCheckTcpHealthCheckPtrOutput) Response() pulumi.StringPtrOutput {
 
 type ImageGuestOsFeature struct {
 	// The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
+	// Possible values are `MULTI_IP_SUBNET`, `SECURE_BOOT`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, and `WINDOWS`.
 	Type string `pulumi:"type"`
 }
 
@@ -8503,6 +8662,7 @@ type ImageGuestOsFeatureInput interface {
 
 type ImageGuestOsFeatureArgs struct {
 	// The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
+	// Possible values are `MULTI_IP_SUBNET`, `SECURE_BOOT`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, and `WINDOWS`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -8558,6 +8718,7 @@ func (o ImageGuestOsFeatureOutput) ToImageGuestOsFeatureOutputWithContext(ctx co
 }
 
 // The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
+// Possible values are `MULTI_IP_SUBNET`, `SECURE_BOOT`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, and `WINDOWS`.
 func (o ImageGuestOsFeatureOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ImageGuestOsFeature) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -8587,6 +8748,8 @@ type ImageRawDisk struct {
 	// should be TAR. This is just a container and transmission format
 	// and not a runtime format. Provided by the client when the disk
 	// image is created.
+	// Default value is `TAR`.
+	// Possible values are `TAR`.
 	ContainerType *string `pulumi:"containerType"`
 	// An optional SHA1 checksum of the disk image before unpackaging.
 	// This is provided by the client when the disk image is created.
@@ -8613,6 +8776,8 @@ type ImageRawDiskArgs struct {
 	// should be TAR. This is just a container and transmission format
 	// and not a runtime format. Provided by the client when the disk
 	// image is created.
+	// Default value is `TAR`.
+	// Possible values are `TAR`.
 	ContainerType pulumi.StringPtrInput `pulumi:"containerType"`
 	// An optional SHA1 checksum of the disk image before unpackaging.
 	// This is provided by the client when the disk image is created.
@@ -8704,6 +8869,8 @@ func (o ImageRawDiskOutput) ToImageRawDiskPtrOutputWithContext(ctx context.Conte
 // should be TAR. This is just a container and transmission format
 // and not a runtime format. Provided by the client when the disk
 // image is created.
+// Default value is `TAR`.
+// Possible values are `TAR`.
 func (o ImageRawDiskOutput) ContainerType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageRawDisk) *string { return v.ContainerType }).(pulumi.StringPtrOutput)
 }
@@ -8743,6 +8910,8 @@ func (o ImageRawDiskPtrOutput) Elem() ImageRawDiskOutput {
 // should be TAR. This is just a container and transmission format
 // and not a runtime format. Provided by the client when the disk
 // image is created.
+// Default value is `TAR`.
+// Possible values are `TAR`.
 func (o ImageRawDiskPtrOutput) ContainerType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ImageRawDisk) *string {
 		if v == nil {
@@ -15849,6 +16018,7 @@ type NodeGroupAutoscalingPolicy struct {
 	// - ONLY_SCALE_OUT: Enables only scaling out.
 	//   You must use this mode if your node groups are configured to
 	//   restart their hosted VMs on minimal servers.
+	//   Possible values are `OFF`, `ON`, and `ONLY_SCALE_OUT`.
 	Mode *string `pulumi:"mode"`
 }
 
@@ -15876,6 +16046,7 @@ type NodeGroupAutoscalingPolicyArgs struct {
 	// - ONLY_SCALE_OUT: Enables only scaling out.
 	//   You must use this mode if your node groups are configured to
 	//   restart their hosted VMs on minimal servers.
+	//   Possible values are `OFF`, `ON`, and `ONLY_SCALE_OUT`.
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
 }
 
@@ -15974,6 +16145,7 @@ func (o NodeGroupAutoscalingPolicyOutput) MinNodes() pulumi.IntPtrOutput {
 // - ONLY_SCALE_OUT: Enables only scaling out.
 //   You must use this mode if your node groups are configured to
 //   restart their hosted VMs on minimal servers.
+//   Possible values are `OFF`, `ON`, and `ONLY_SCALE_OUT`.
 func (o NodeGroupAutoscalingPolicyOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeGroupAutoscalingPolicy) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -16024,6 +16196,7 @@ func (o NodeGroupAutoscalingPolicyPtrOutput) MinNodes() pulumi.IntPtrOutput {
 // - ONLY_SCALE_OUT: Enables only scaling out.
 //   You must use this mode if your node groups are configured to
 //   restart their hosted VMs on minimal servers.
+//   Possible values are `OFF`, `ON`, and `ONLY_SCALE_OUT`.
 func (o NodeGroupAutoscalingPolicyPtrOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeGroupAutoscalingPolicy) *string {
 		if v == nil {
@@ -16218,6 +16391,7 @@ type NodeTemplateServerBinding struct {
 	// such as physical sockets or cores, to avoid the need for
 	// additional licenses when maintenance occurs. However, VMs on such
 	// nodes will experience outages while maintenance is applied.
+	// Possible values are `RESTART_NODE_ON_ANY_SERVER` and `RESTART_NODE_ON_MINIMAL_SERVERS`.
 	Type string `pulumi:"type"`
 }
 
@@ -16244,6 +16418,7 @@ type NodeTemplateServerBindingArgs struct {
 	// such as physical sockets or cores, to avoid the need for
 	// additional licenses when maintenance occurs. However, VMs on such
 	// nodes will experience outages while maintenance is applied.
+	// Possible values are `RESTART_NODE_ON_ANY_SERVER` and `RESTART_NODE_ON_MINIMAL_SERVERS`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -16335,6 +16510,7 @@ func (o NodeTemplateServerBindingOutput) ToNodeTemplateServerBindingPtrOutputWit
 // such as physical sockets or cores, to avoid the need for
 // additional licenses when maintenance occurs. However, VMs on such
 // nodes will experience outages while maintenance is applied.
+// Possible values are `RESTART_NODE_ON_ANY_SERVER` and `RESTART_NODE_ON_MINIMAL_SERVERS`.
 func (o NodeTemplateServerBindingOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeTemplateServerBinding) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -16368,6 +16544,7 @@ func (o NodeTemplateServerBindingPtrOutput) Elem() NodeTemplateServerBindingOutp
 // such as physical sockets or cores, to avoid the need for
 // additional licenses when maintenance occurs. However, VMs on such
 // nodes will experience outages while maintenance is applied.
+// Possible values are `RESTART_NODE_ON_ANY_SERVER` and `RESTART_NODE_ON_MINIMAL_SERVERS`.
 func (o NodeTemplateServerBindingPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeTemplateServerBinding) *string {
 		if v == nil {
@@ -16375,6 +16552,509 @@ func (o NodeTemplateServerBindingPtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return &v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+type OrganizationSecurityPolicyRuleMatch struct {
+	// The configuration options for matching the rule.
+	// Structure is documented below.
+	Config OrganizationSecurityPolicyRuleMatchConfig `pulumi:"config"`
+	// A description of the rule.
+	Description *string `pulumi:"description"`
+	// Preconfigured versioned expression. For organization security policy rules,
+	// the only supported type is "FIREWALL".
+	// Default value is `FIREWALL`.
+	// Possible values are `FIREWALL`.
+	VersionedExpr *string `pulumi:"versionedExpr"`
+}
+
+// OrganizationSecurityPolicyRuleMatchInput is an input type that accepts OrganizationSecurityPolicyRuleMatchArgs and OrganizationSecurityPolicyRuleMatchOutput values.
+// You can construct a concrete instance of `OrganizationSecurityPolicyRuleMatchInput` via:
+//
+//          OrganizationSecurityPolicyRuleMatchArgs{...}
+type OrganizationSecurityPolicyRuleMatchInput interface {
+	pulumi.Input
+
+	ToOrganizationSecurityPolicyRuleMatchOutput() OrganizationSecurityPolicyRuleMatchOutput
+	ToOrganizationSecurityPolicyRuleMatchOutputWithContext(context.Context) OrganizationSecurityPolicyRuleMatchOutput
+}
+
+type OrganizationSecurityPolicyRuleMatchArgs struct {
+	// The configuration options for matching the rule.
+	// Structure is documented below.
+	Config OrganizationSecurityPolicyRuleMatchConfigInput `pulumi:"config"`
+	// A description of the rule.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Preconfigured versioned expression. For organization security policy rules,
+	// the only supported type is "FIREWALL".
+	// Default value is `FIREWALL`.
+	// Possible values are `FIREWALL`.
+	VersionedExpr pulumi.StringPtrInput `pulumi:"versionedExpr"`
+}
+
+func (OrganizationSecurityPolicyRuleMatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationSecurityPolicyRuleMatch)(nil)).Elem()
+}
+
+func (i OrganizationSecurityPolicyRuleMatchArgs) ToOrganizationSecurityPolicyRuleMatchOutput() OrganizationSecurityPolicyRuleMatchOutput {
+	return i.ToOrganizationSecurityPolicyRuleMatchOutputWithContext(context.Background())
+}
+
+func (i OrganizationSecurityPolicyRuleMatchArgs) ToOrganizationSecurityPolicyRuleMatchOutputWithContext(ctx context.Context) OrganizationSecurityPolicyRuleMatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSecurityPolicyRuleMatchOutput)
+}
+
+func (i OrganizationSecurityPolicyRuleMatchArgs) ToOrganizationSecurityPolicyRuleMatchPtrOutput() OrganizationSecurityPolicyRuleMatchPtrOutput {
+	return i.ToOrganizationSecurityPolicyRuleMatchPtrOutputWithContext(context.Background())
+}
+
+func (i OrganizationSecurityPolicyRuleMatchArgs) ToOrganizationSecurityPolicyRuleMatchPtrOutputWithContext(ctx context.Context) OrganizationSecurityPolicyRuleMatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSecurityPolicyRuleMatchOutput).ToOrganizationSecurityPolicyRuleMatchPtrOutputWithContext(ctx)
+}
+
+// OrganizationSecurityPolicyRuleMatchPtrInput is an input type that accepts OrganizationSecurityPolicyRuleMatchArgs, OrganizationSecurityPolicyRuleMatchPtr and OrganizationSecurityPolicyRuleMatchPtrOutput values.
+// You can construct a concrete instance of `OrganizationSecurityPolicyRuleMatchPtrInput` via:
+//
+//          OrganizationSecurityPolicyRuleMatchArgs{...}
+//
+//  or:
+//
+//          nil
+type OrganizationSecurityPolicyRuleMatchPtrInput interface {
+	pulumi.Input
+
+	ToOrganizationSecurityPolicyRuleMatchPtrOutput() OrganizationSecurityPolicyRuleMatchPtrOutput
+	ToOrganizationSecurityPolicyRuleMatchPtrOutputWithContext(context.Context) OrganizationSecurityPolicyRuleMatchPtrOutput
+}
+
+type organizationSecurityPolicyRuleMatchPtrType OrganizationSecurityPolicyRuleMatchArgs
+
+func OrganizationSecurityPolicyRuleMatchPtr(v *OrganizationSecurityPolicyRuleMatchArgs) OrganizationSecurityPolicyRuleMatchPtrInput {
+	return (*organizationSecurityPolicyRuleMatchPtrType)(v)
+}
+
+func (*organizationSecurityPolicyRuleMatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationSecurityPolicyRuleMatch)(nil)).Elem()
+}
+
+func (i *organizationSecurityPolicyRuleMatchPtrType) ToOrganizationSecurityPolicyRuleMatchPtrOutput() OrganizationSecurityPolicyRuleMatchPtrOutput {
+	return i.ToOrganizationSecurityPolicyRuleMatchPtrOutputWithContext(context.Background())
+}
+
+func (i *organizationSecurityPolicyRuleMatchPtrType) ToOrganizationSecurityPolicyRuleMatchPtrOutputWithContext(ctx context.Context) OrganizationSecurityPolicyRuleMatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSecurityPolicyRuleMatchPtrOutput)
+}
+
+type OrganizationSecurityPolicyRuleMatchOutput struct{ *pulumi.OutputState }
+
+func (OrganizationSecurityPolicyRuleMatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationSecurityPolicyRuleMatch)(nil)).Elem()
+}
+
+func (o OrganizationSecurityPolicyRuleMatchOutput) ToOrganizationSecurityPolicyRuleMatchOutput() OrganizationSecurityPolicyRuleMatchOutput {
+	return o
+}
+
+func (o OrganizationSecurityPolicyRuleMatchOutput) ToOrganizationSecurityPolicyRuleMatchOutputWithContext(ctx context.Context) OrganizationSecurityPolicyRuleMatchOutput {
+	return o
+}
+
+func (o OrganizationSecurityPolicyRuleMatchOutput) ToOrganizationSecurityPolicyRuleMatchPtrOutput() OrganizationSecurityPolicyRuleMatchPtrOutput {
+	return o.ToOrganizationSecurityPolicyRuleMatchPtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationSecurityPolicyRuleMatchOutput) ToOrganizationSecurityPolicyRuleMatchPtrOutputWithContext(ctx context.Context) OrganizationSecurityPolicyRuleMatchPtrOutput {
+	return o.ApplyT(func(v OrganizationSecurityPolicyRuleMatch) *OrganizationSecurityPolicyRuleMatch {
+		return &v
+	}).(OrganizationSecurityPolicyRuleMatchPtrOutput)
+}
+
+// The configuration options for matching the rule.
+// Structure is documented below.
+func (o OrganizationSecurityPolicyRuleMatchOutput) Config() OrganizationSecurityPolicyRuleMatchConfigOutput {
+	return o.ApplyT(func(v OrganizationSecurityPolicyRuleMatch) OrganizationSecurityPolicyRuleMatchConfig { return v.Config }).(OrganizationSecurityPolicyRuleMatchConfigOutput)
+}
+
+// A description of the rule.
+func (o OrganizationSecurityPolicyRuleMatchOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OrganizationSecurityPolicyRuleMatch) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Preconfigured versioned expression. For organization security policy rules,
+// the only supported type is "FIREWALL".
+// Default value is `FIREWALL`.
+// Possible values are `FIREWALL`.
+func (o OrganizationSecurityPolicyRuleMatchOutput) VersionedExpr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OrganizationSecurityPolicyRuleMatch) *string { return v.VersionedExpr }).(pulumi.StringPtrOutput)
+}
+
+type OrganizationSecurityPolicyRuleMatchPtrOutput struct{ *pulumi.OutputState }
+
+func (OrganizationSecurityPolicyRuleMatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationSecurityPolicyRuleMatch)(nil)).Elem()
+}
+
+func (o OrganizationSecurityPolicyRuleMatchPtrOutput) ToOrganizationSecurityPolicyRuleMatchPtrOutput() OrganizationSecurityPolicyRuleMatchPtrOutput {
+	return o
+}
+
+func (o OrganizationSecurityPolicyRuleMatchPtrOutput) ToOrganizationSecurityPolicyRuleMatchPtrOutputWithContext(ctx context.Context) OrganizationSecurityPolicyRuleMatchPtrOutput {
+	return o
+}
+
+func (o OrganizationSecurityPolicyRuleMatchPtrOutput) Elem() OrganizationSecurityPolicyRuleMatchOutput {
+	return o.ApplyT(func(v *OrganizationSecurityPolicyRuleMatch) OrganizationSecurityPolicyRuleMatch { return *v }).(OrganizationSecurityPolicyRuleMatchOutput)
+}
+
+// The configuration options for matching the rule.
+// Structure is documented below.
+func (o OrganizationSecurityPolicyRuleMatchPtrOutput) Config() OrganizationSecurityPolicyRuleMatchConfigPtrOutput {
+	return o.ApplyT(func(v *OrganizationSecurityPolicyRuleMatch) *OrganizationSecurityPolicyRuleMatchConfig {
+		if v == nil {
+			return nil
+		}
+		return &v.Config
+	}).(OrganizationSecurityPolicyRuleMatchConfigPtrOutput)
+}
+
+// A description of the rule.
+func (o OrganizationSecurityPolicyRuleMatchPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OrganizationSecurityPolicyRuleMatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Preconfigured versioned expression. For organization security policy rules,
+// the only supported type is "FIREWALL".
+// Default value is `FIREWALL`.
+// Possible values are `FIREWALL`.
+func (o OrganizationSecurityPolicyRuleMatchPtrOutput) VersionedExpr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OrganizationSecurityPolicyRuleMatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VersionedExpr
+	}).(pulumi.StringPtrOutput)
+}
+
+type OrganizationSecurityPolicyRuleMatchConfig struct {
+	// Destination IP address range in CIDR format. Required for
+	// EGRESS rules.
+	DestIpRanges []string `pulumi:"destIpRanges"`
+	// Pairs of IP protocols and ports that the rule should match.
+	// Structure is documented below.
+	Layer4Configs []OrganizationSecurityPolicyRuleMatchConfigLayer4Config `pulumi:"layer4Configs"`
+	// Source IP address range in CIDR format. Required for
+	// INGRESS rules.
+	SrcIpRanges []string `pulumi:"srcIpRanges"`
+}
+
+// OrganizationSecurityPolicyRuleMatchConfigInput is an input type that accepts OrganizationSecurityPolicyRuleMatchConfigArgs and OrganizationSecurityPolicyRuleMatchConfigOutput values.
+// You can construct a concrete instance of `OrganizationSecurityPolicyRuleMatchConfigInput` via:
+//
+//          OrganizationSecurityPolicyRuleMatchConfigArgs{...}
+type OrganizationSecurityPolicyRuleMatchConfigInput interface {
+	pulumi.Input
+
+	ToOrganizationSecurityPolicyRuleMatchConfigOutput() OrganizationSecurityPolicyRuleMatchConfigOutput
+	ToOrganizationSecurityPolicyRuleMatchConfigOutputWithContext(context.Context) OrganizationSecurityPolicyRuleMatchConfigOutput
+}
+
+type OrganizationSecurityPolicyRuleMatchConfigArgs struct {
+	// Destination IP address range in CIDR format. Required for
+	// EGRESS rules.
+	DestIpRanges pulumi.StringArrayInput `pulumi:"destIpRanges"`
+	// Pairs of IP protocols and ports that the rule should match.
+	// Structure is documented below.
+	Layer4Configs OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArrayInput `pulumi:"layer4Configs"`
+	// Source IP address range in CIDR format. Required for
+	// INGRESS rules.
+	SrcIpRanges pulumi.StringArrayInput `pulumi:"srcIpRanges"`
+}
+
+func (OrganizationSecurityPolicyRuleMatchConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationSecurityPolicyRuleMatchConfig)(nil)).Elem()
+}
+
+func (i OrganizationSecurityPolicyRuleMatchConfigArgs) ToOrganizationSecurityPolicyRuleMatchConfigOutput() OrganizationSecurityPolicyRuleMatchConfigOutput {
+	return i.ToOrganizationSecurityPolicyRuleMatchConfigOutputWithContext(context.Background())
+}
+
+func (i OrganizationSecurityPolicyRuleMatchConfigArgs) ToOrganizationSecurityPolicyRuleMatchConfigOutputWithContext(ctx context.Context) OrganizationSecurityPolicyRuleMatchConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSecurityPolicyRuleMatchConfigOutput)
+}
+
+func (i OrganizationSecurityPolicyRuleMatchConfigArgs) ToOrganizationSecurityPolicyRuleMatchConfigPtrOutput() OrganizationSecurityPolicyRuleMatchConfigPtrOutput {
+	return i.ToOrganizationSecurityPolicyRuleMatchConfigPtrOutputWithContext(context.Background())
+}
+
+func (i OrganizationSecurityPolicyRuleMatchConfigArgs) ToOrganizationSecurityPolicyRuleMatchConfigPtrOutputWithContext(ctx context.Context) OrganizationSecurityPolicyRuleMatchConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSecurityPolicyRuleMatchConfigOutput).ToOrganizationSecurityPolicyRuleMatchConfigPtrOutputWithContext(ctx)
+}
+
+// OrganizationSecurityPolicyRuleMatchConfigPtrInput is an input type that accepts OrganizationSecurityPolicyRuleMatchConfigArgs, OrganizationSecurityPolicyRuleMatchConfigPtr and OrganizationSecurityPolicyRuleMatchConfigPtrOutput values.
+// You can construct a concrete instance of `OrganizationSecurityPolicyRuleMatchConfigPtrInput` via:
+//
+//          OrganizationSecurityPolicyRuleMatchConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type OrganizationSecurityPolicyRuleMatchConfigPtrInput interface {
+	pulumi.Input
+
+	ToOrganizationSecurityPolicyRuleMatchConfigPtrOutput() OrganizationSecurityPolicyRuleMatchConfigPtrOutput
+	ToOrganizationSecurityPolicyRuleMatchConfigPtrOutputWithContext(context.Context) OrganizationSecurityPolicyRuleMatchConfigPtrOutput
+}
+
+type organizationSecurityPolicyRuleMatchConfigPtrType OrganizationSecurityPolicyRuleMatchConfigArgs
+
+func OrganizationSecurityPolicyRuleMatchConfigPtr(v *OrganizationSecurityPolicyRuleMatchConfigArgs) OrganizationSecurityPolicyRuleMatchConfigPtrInput {
+	return (*organizationSecurityPolicyRuleMatchConfigPtrType)(v)
+}
+
+func (*organizationSecurityPolicyRuleMatchConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationSecurityPolicyRuleMatchConfig)(nil)).Elem()
+}
+
+func (i *organizationSecurityPolicyRuleMatchConfigPtrType) ToOrganizationSecurityPolicyRuleMatchConfigPtrOutput() OrganizationSecurityPolicyRuleMatchConfigPtrOutput {
+	return i.ToOrganizationSecurityPolicyRuleMatchConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *organizationSecurityPolicyRuleMatchConfigPtrType) ToOrganizationSecurityPolicyRuleMatchConfigPtrOutputWithContext(ctx context.Context) OrganizationSecurityPolicyRuleMatchConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSecurityPolicyRuleMatchConfigPtrOutput)
+}
+
+type OrganizationSecurityPolicyRuleMatchConfigOutput struct{ *pulumi.OutputState }
+
+func (OrganizationSecurityPolicyRuleMatchConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationSecurityPolicyRuleMatchConfig)(nil)).Elem()
+}
+
+func (o OrganizationSecurityPolicyRuleMatchConfigOutput) ToOrganizationSecurityPolicyRuleMatchConfigOutput() OrganizationSecurityPolicyRuleMatchConfigOutput {
+	return o
+}
+
+func (o OrganizationSecurityPolicyRuleMatchConfigOutput) ToOrganizationSecurityPolicyRuleMatchConfigOutputWithContext(ctx context.Context) OrganizationSecurityPolicyRuleMatchConfigOutput {
+	return o
+}
+
+func (o OrganizationSecurityPolicyRuleMatchConfigOutput) ToOrganizationSecurityPolicyRuleMatchConfigPtrOutput() OrganizationSecurityPolicyRuleMatchConfigPtrOutput {
+	return o.ToOrganizationSecurityPolicyRuleMatchConfigPtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationSecurityPolicyRuleMatchConfigOutput) ToOrganizationSecurityPolicyRuleMatchConfigPtrOutputWithContext(ctx context.Context) OrganizationSecurityPolicyRuleMatchConfigPtrOutput {
+	return o.ApplyT(func(v OrganizationSecurityPolicyRuleMatchConfig) *OrganizationSecurityPolicyRuleMatchConfig {
+		return &v
+	}).(OrganizationSecurityPolicyRuleMatchConfigPtrOutput)
+}
+
+// Destination IP address range in CIDR format. Required for
+// EGRESS rules.
+func (o OrganizationSecurityPolicyRuleMatchConfigOutput) DestIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OrganizationSecurityPolicyRuleMatchConfig) []string { return v.DestIpRanges }).(pulumi.StringArrayOutput)
+}
+
+// Pairs of IP protocols and ports that the rule should match.
+// Structure is documented below.
+func (o OrganizationSecurityPolicyRuleMatchConfigOutput) Layer4Configs() OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArrayOutput {
+	return o.ApplyT(func(v OrganizationSecurityPolicyRuleMatchConfig) []OrganizationSecurityPolicyRuleMatchConfigLayer4Config {
+		return v.Layer4Configs
+	}).(OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArrayOutput)
+}
+
+// Source IP address range in CIDR format. Required for
+// INGRESS rules.
+func (o OrganizationSecurityPolicyRuleMatchConfigOutput) SrcIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OrganizationSecurityPolicyRuleMatchConfig) []string { return v.SrcIpRanges }).(pulumi.StringArrayOutput)
+}
+
+type OrganizationSecurityPolicyRuleMatchConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (OrganizationSecurityPolicyRuleMatchConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationSecurityPolicyRuleMatchConfig)(nil)).Elem()
+}
+
+func (o OrganizationSecurityPolicyRuleMatchConfigPtrOutput) ToOrganizationSecurityPolicyRuleMatchConfigPtrOutput() OrganizationSecurityPolicyRuleMatchConfigPtrOutput {
+	return o
+}
+
+func (o OrganizationSecurityPolicyRuleMatchConfigPtrOutput) ToOrganizationSecurityPolicyRuleMatchConfigPtrOutputWithContext(ctx context.Context) OrganizationSecurityPolicyRuleMatchConfigPtrOutput {
+	return o
+}
+
+func (o OrganizationSecurityPolicyRuleMatchConfigPtrOutput) Elem() OrganizationSecurityPolicyRuleMatchConfigOutput {
+	return o.ApplyT(func(v *OrganizationSecurityPolicyRuleMatchConfig) OrganizationSecurityPolicyRuleMatchConfig {
+		return *v
+	}).(OrganizationSecurityPolicyRuleMatchConfigOutput)
+}
+
+// Destination IP address range in CIDR format. Required for
+// EGRESS rules.
+func (o OrganizationSecurityPolicyRuleMatchConfigPtrOutput) DestIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OrganizationSecurityPolicyRuleMatchConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DestIpRanges
+	}).(pulumi.StringArrayOutput)
+}
+
+// Pairs of IP protocols and ports that the rule should match.
+// Structure is documented below.
+func (o OrganizationSecurityPolicyRuleMatchConfigPtrOutput) Layer4Configs() OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArrayOutput {
+	return o.ApplyT(func(v *OrganizationSecurityPolicyRuleMatchConfig) []OrganizationSecurityPolicyRuleMatchConfigLayer4Config {
+		if v == nil {
+			return nil
+		}
+		return v.Layer4Configs
+	}).(OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArrayOutput)
+}
+
+// Source IP address range in CIDR format. Required for
+// INGRESS rules.
+func (o OrganizationSecurityPolicyRuleMatchConfigPtrOutput) SrcIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OrganizationSecurityPolicyRuleMatchConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SrcIpRanges
+	}).(pulumi.StringArrayOutput)
+}
+
+type OrganizationSecurityPolicyRuleMatchConfigLayer4Config struct {
+	// The IP protocol to which this rule applies. The protocol
+	// type is required when creating a firewall rule.
+	// This value can either be one of the following well
+	// known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp),
+	// or the IP protocol number.
+	IpProtocol string `pulumi:"ipProtocol"`
+	// An optional list of ports to which this rule applies. This field
+	// is only applicable for UDP or TCP protocol. Each entry must be
+	// either an integer or a range. If not specified, this rule
+	// applies to connections through any port.
+	// Example inputs include: ["22"], ["80","443"], and
+	// ["12345-12349"].
+	Ports []string `pulumi:"ports"`
+}
+
+// OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigInput is an input type that accepts OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs and OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigOutput values.
+// You can construct a concrete instance of `OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigInput` via:
+//
+//          OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs{...}
+type OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigInput interface {
+	pulumi.Input
+
+	ToOrganizationSecurityPolicyRuleMatchConfigLayer4ConfigOutput() OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigOutput
+	ToOrganizationSecurityPolicyRuleMatchConfigLayer4ConfigOutputWithContext(context.Context) OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigOutput
+}
+
+type OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs struct {
+	// The IP protocol to which this rule applies. The protocol
+	// type is required when creating a firewall rule.
+	// This value can either be one of the following well
+	// known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp),
+	// or the IP protocol number.
+	IpProtocol pulumi.StringInput `pulumi:"ipProtocol"`
+	// An optional list of ports to which this rule applies. This field
+	// is only applicable for UDP or TCP protocol. Each entry must be
+	// either an integer or a range. If not specified, this rule
+	// applies to connections through any port.
+	// Example inputs include: ["22"], ["80","443"], and
+	// ["12345-12349"].
+	Ports pulumi.StringArrayInput `pulumi:"ports"`
+}
+
+func (OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationSecurityPolicyRuleMatchConfigLayer4Config)(nil)).Elem()
+}
+
+func (i OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs) ToOrganizationSecurityPolicyRuleMatchConfigLayer4ConfigOutput() OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigOutput {
+	return i.ToOrganizationSecurityPolicyRuleMatchConfigLayer4ConfigOutputWithContext(context.Background())
+}
+
+func (i OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs) ToOrganizationSecurityPolicyRuleMatchConfigLayer4ConfigOutputWithContext(ctx context.Context) OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigOutput)
+}
+
+// OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArrayInput is an input type that accepts OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArray and OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArrayOutput values.
+// You can construct a concrete instance of `OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArrayInput` via:
+//
+//          OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArray{ OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs{...} }
+type OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArrayInput interface {
+	pulumi.Input
+
+	ToOrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArrayOutput() OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArrayOutput
+	ToOrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArrayOutputWithContext(context.Context) OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArrayOutput
+}
+
+type OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArray []OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigInput
+
+func (OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OrganizationSecurityPolicyRuleMatchConfigLayer4Config)(nil)).Elem()
+}
+
+func (i OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArray) ToOrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArrayOutput() OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArrayOutput {
+	return i.ToOrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArrayOutputWithContext(context.Background())
+}
+
+func (i OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArray) ToOrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArrayOutputWithContext(ctx context.Context) OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArrayOutput)
+}
+
+type OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigOutput struct{ *pulumi.OutputState }
+
+func (OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationSecurityPolicyRuleMatchConfigLayer4Config)(nil)).Elem()
+}
+
+func (o OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigOutput) ToOrganizationSecurityPolicyRuleMatchConfigLayer4ConfigOutput() OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigOutput {
+	return o
+}
+
+func (o OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigOutput) ToOrganizationSecurityPolicyRuleMatchConfigLayer4ConfigOutputWithContext(ctx context.Context) OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigOutput {
+	return o
+}
+
+// The IP protocol to which this rule applies. The protocol
+// type is required when creating a firewall rule.
+// This value can either be one of the following well
+// known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp),
+// or the IP protocol number.
+func (o OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigOutput) IpProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v OrganizationSecurityPolicyRuleMatchConfigLayer4Config) string { return v.IpProtocol }).(pulumi.StringOutput)
+}
+
+// An optional list of ports to which this rule applies. This field
+// is only applicable for UDP or TCP protocol. Each entry must be
+// either an integer or a range. If not specified, this rule
+// applies to connections through any port.
+// Example inputs include: ["22"], ["80","443"], and
+// ["12345-12349"].
+func (o OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigOutput) Ports() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OrganizationSecurityPolicyRuleMatchConfigLayer4Config) []string { return v.Ports }).(pulumi.StringArrayOutput)
+}
+
+type OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OrganizationSecurityPolicyRuleMatchConfigLayer4Config)(nil)).Elem()
+}
+
+func (o OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArrayOutput) ToOrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArrayOutput() OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArrayOutput {
+	return o
+}
+
+func (o OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArrayOutput) ToOrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArrayOutputWithContext(ctx context.Context) OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArrayOutput {
+	return o
+}
+
+func (o OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArrayOutput) Index(i pulumi.IntInput) OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OrganizationSecurityPolicyRuleMatchConfigLayer4Config {
+		return vs[0].([]OrganizationSecurityPolicyRuleMatchConfigLayer4Config)[vs[1].(int)]
+	}).(OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigOutput)
 }
 
 type PacketMirroringCollectorIlb struct {
@@ -16663,9 +17343,11 @@ func (o PacketMirroringFilterPtrOutput) IpProtocols() pulumi.StringArrayOutput {
 }
 
 type PacketMirroringMirroredResources struct {
-	// All the listed instances will be mirrored.  Specify at most 50.  Structure is documented below.
+	// All the listed instances will be mirrored.  Specify at most 50.
+	// Structure is documented below.
 	Instances []PacketMirroringMirroredResourcesInstance `pulumi:"instances"`
-	// All instances in one of these subnetworks will be mirrored.  Structure is documented below.
+	// All instances in one of these subnetworks will be mirrored.
+	// Structure is documented below.
 	Subnetworks []PacketMirroringMirroredResourcesSubnetwork `pulumi:"subnetworks"`
 	// All instances with these tags will be mirrored.
 	Tags []string `pulumi:"tags"`
@@ -16683,9 +17365,11 @@ type PacketMirroringMirroredResourcesInput interface {
 }
 
 type PacketMirroringMirroredResourcesArgs struct {
-	// All the listed instances will be mirrored.  Specify at most 50.  Structure is documented below.
+	// All the listed instances will be mirrored.  Specify at most 50.
+	// Structure is documented below.
 	Instances PacketMirroringMirroredResourcesInstanceArrayInput `pulumi:"instances"`
-	// All instances in one of these subnetworks will be mirrored.  Structure is documented below.
+	// All instances in one of these subnetworks will be mirrored.
+	// Structure is documented below.
 	Subnetworks PacketMirroringMirroredResourcesSubnetworkArrayInput `pulumi:"subnetworks"`
 	// All instances with these tags will be mirrored.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
@@ -16768,14 +17452,16 @@ func (o PacketMirroringMirroredResourcesOutput) ToPacketMirroringMirroredResourc
 	}).(PacketMirroringMirroredResourcesPtrOutput)
 }
 
-// All the listed instances will be mirrored.  Specify at most 50.  Structure is documented below.
+// All the listed instances will be mirrored.  Specify at most 50.
+// Structure is documented below.
 func (o PacketMirroringMirroredResourcesOutput) Instances() PacketMirroringMirroredResourcesInstanceArrayOutput {
 	return o.ApplyT(func(v PacketMirroringMirroredResources) []PacketMirroringMirroredResourcesInstance {
 		return v.Instances
 	}).(PacketMirroringMirroredResourcesInstanceArrayOutput)
 }
 
-// All instances in one of these subnetworks will be mirrored.  Structure is documented below.
+// All instances in one of these subnetworks will be mirrored.
+// Structure is documented below.
 func (o PacketMirroringMirroredResourcesOutput) Subnetworks() PacketMirroringMirroredResourcesSubnetworkArrayOutput {
 	return o.ApplyT(func(v PacketMirroringMirroredResources) []PacketMirroringMirroredResourcesSubnetwork {
 		return v.Subnetworks
@@ -16805,7 +17491,8 @@ func (o PacketMirroringMirroredResourcesPtrOutput) Elem() PacketMirroringMirrore
 	return o.ApplyT(func(v *PacketMirroringMirroredResources) PacketMirroringMirroredResources { return *v }).(PacketMirroringMirroredResourcesOutput)
 }
 
-// All the listed instances will be mirrored.  Specify at most 50.  Structure is documented below.
+// All the listed instances will be mirrored.  Specify at most 50.
+// Structure is documented below.
 func (o PacketMirroringMirroredResourcesPtrOutput) Instances() PacketMirroringMirroredResourcesInstanceArrayOutput {
 	return o.ApplyT(func(v *PacketMirroringMirroredResources) []PacketMirroringMirroredResourcesInstance {
 		if v == nil {
@@ -16815,7 +17502,8 @@ func (o PacketMirroringMirroredResourcesPtrOutput) Instances() PacketMirroringMi
 	}).(PacketMirroringMirroredResourcesInstanceArrayOutput)
 }
 
-// All instances in one of these subnetworks will be mirrored.  Structure is documented below.
+// All instances in one of these subnetworks will be mirrored.
+// Structure is documented below.
 func (o PacketMirroringMirroredResourcesPtrOutput) Subnetworks() PacketMirroringMirroredResourcesSubnetworkArrayOutput {
 	return o.ApplyT(func(v *PacketMirroringMirroredResources) []PacketMirroringMirroredResourcesSubnetwork {
 		if v == nil {
@@ -17161,7 +17849,8 @@ func (o PacketMirroringNetworkPtrOutput) Url() pulumi.StringPtrOutput {
 }
 
 type PerInstanceConfigPreservedState struct {
-	// Stateful disks for the instance.  Structure is documented below.
+	// Stateful disks for the instance.
+	// Structure is documented below.
 	Disks []PerInstanceConfigPreservedStateDisk `pulumi:"disks"`
 	// Preserved metadata defined for this instance. This is a list of key->value pairs.
 	Metadata map[string]string `pulumi:"metadata"`
@@ -17179,7 +17868,8 @@ type PerInstanceConfigPreservedStateInput interface {
 }
 
 type PerInstanceConfigPreservedStateArgs struct {
-	// Stateful disks for the instance.  Structure is documented below.
+	// Stateful disks for the instance.
+	// Structure is documented below.
 	Disks PerInstanceConfigPreservedStateDiskArrayInput `pulumi:"disks"`
 	// Preserved metadata defined for this instance. This is a list of key->value pairs.
 	Metadata pulumi.StringMapInput `pulumi:"metadata"`
@@ -17262,7 +17952,8 @@ func (o PerInstanceConfigPreservedStateOutput) ToPerInstanceConfigPreservedState
 	}).(PerInstanceConfigPreservedStatePtrOutput)
 }
 
-// Stateful disks for the instance.  Structure is documented below.
+// Stateful disks for the instance.
+// Structure is documented below.
 func (o PerInstanceConfigPreservedStateOutput) Disks() PerInstanceConfigPreservedStateDiskArrayOutput {
 	return o.ApplyT(func(v PerInstanceConfigPreservedState) []PerInstanceConfigPreservedStateDisk { return v.Disks }).(PerInstanceConfigPreservedStateDiskArrayOutput)
 }
@@ -17290,7 +17981,8 @@ func (o PerInstanceConfigPreservedStatePtrOutput) Elem() PerInstanceConfigPreser
 	return o.ApplyT(func(v *PerInstanceConfigPreservedState) PerInstanceConfigPreservedState { return *v }).(PerInstanceConfigPreservedStateOutput)
 }
 
-// Stateful disks for the instance.  Structure is documented below.
+// Stateful disks for the instance.
+// Structure is documented below.
 func (o PerInstanceConfigPreservedStatePtrOutput) Disks() PerInstanceConfigPreservedStateDiskArrayOutput {
 	return o.ApplyT(func(v *PerInstanceConfigPreservedState) []PerInstanceConfigPreservedStateDisk {
 		if v == nil {
@@ -17316,10 +18008,14 @@ type PerInstanceConfigPreservedStateDisk struct {
 	// `NEVER` detatch the disk when the VM is deleted, but not delete the disk.
 	// `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently
 	// deleted from the instance group.
+	// Default value is `NEVER`.
+	// Possible values are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
 	DeleteRule *string `pulumi:"deleteRule"`
 	// A unique device name that is reflected into the /dev/ tree of a Linux operating system running within the instance.
 	DeviceName string `pulumi:"deviceName"`
 	// The mode of the disk.
+	// Default value is `READ_WRITE`.
+	// Possible values are `READ_ONLY` and `READ_WRITE`.
 	Mode *string `pulumi:"mode"`
 	// The URI of an existing persistent disk to attach under the specified device-name in the format
 	// `projects/project-id/zones/zone/disks/disk-name`.
@@ -17343,10 +18039,14 @@ type PerInstanceConfigPreservedStateDiskArgs struct {
 	// `NEVER` detatch the disk when the VM is deleted, but not delete the disk.
 	// `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently
 	// deleted from the instance group.
+	// Default value is `NEVER`.
+	// Possible values are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
 	DeleteRule pulumi.StringPtrInput `pulumi:"deleteRule"`
 	// A unique device name that is reflected into the /dev/ tree of a Linux operating system running within the instance.
 	DeviceName pulumi.StringInput `pulumi:"deviceName"`
 	// The mode of the disk.
+	// Default value is `READ_WRITE`.
+	// Possible values are `READ_ONLY` and `READ_WRITE`.
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
 	// The URI of an existing persistent disk to attach under the specified device-name in the format
 	// `projects/project-id/zones/zone/disks/disk-name`.
@@ -17409,6 +18109,8 @@ func (o PerInstanceConfigPreservedStateDiskOutput) ToPerInstanceConfigPreservedS
 // `NEVER` detatch the disk when the VM is deleted, but not delete the disk.
 // `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently
 // deleted from the instance group.
+// Default value is `NEVER`.
+// Possible values are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
 func (o PerInstanceConfigPreservedStateDiskOutput) DeleteRule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PerInstanceConfigPreservedStateDisk) *string { return v.DeleteRule }).(pulumi.StringPtrOutput)
 }
@@ -17419,6 +18121,8 @@ func (o PerInstanceConfigPreservedStateDiskOutput) DeviceName() pulumi.StringOut
 }
 
 // The mode of the disk.
+// Default value is `READ_WRITE`.
+// Possible values are `READ_ONLY` and `READ_WRITE`.
 func (o PerInstanceConfigPreservedStateDiskOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PerInstanceConfigPreservedStateDisk) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -17462,16 +18166,19 @@ type RegionAutoscalerAutoscalingPolicy struct {
 	CooldownPeriod *int `pulumi:"cooldownPeriod"`
 	// Defines the CPU utilization policy that allows the autoscaler to
 	// scale based on the average CPU utilization of a managed instance
-	// group.  Structure is documented below.
+	// group.
+	// Structure is documented below.
 	CpuUtilization *RegionAutoscalerAutoscalingPolicyCpuUtilization `pulumi:"cpuUtilization"`
-	// Configuration parameters of autoscaling based on a load balancer.  Structure is documented below.
+	// Configuration parameters of autoscaling based on a load balancer.
+	// Structure is documented below.
 	LoadBalancingUtilization *RegionAutoscalerAutoscalingPolicyLoadBalancingUtilization `pulumi:"loadBalancingUtilization"`
 	// The maximum number of instances that the autoscaler can scale up
 	// to. This is required when creating or updating an autoscaler. The
 	// maximum number of replicas should not be lower than minimal number
 	// of replicas.
 	MaxReplicas int `pulumi:"maxReplicas"`
-	// Configuration parameters of autoscaling based on a custom metric.  Structure is documented below.
+	// Configuration parameters of autoscaling based on a custom metric.
+	// Structure is documented below.
 	Metrics []RegionAutoscalerAutoscalingPolicyMetric `pulumi:"metrics"`
 	// The minimum number of replicas that the autoscaler can scale down
 	// to. This cannot be less than 0. If not provided, autoscaler will
@@ -17479,6 +18186,8 @@ type RegionAutoscalerAutoscalingPolicy struct {
 	// allowed.
 	MinReplicas int `pulumi:"minReplicas"`
 	// Defines operating mode for this policy.
+	// Default value is `ON`.
+	// Possible values are `OFF`, `ONLY_UP`, and `ON`.
 	Mode             *string                                            `pulumi:"mode"`
 	ScaleDownControl *RegionAutoscalerAutoscalingPolicyScaleDownControl `pulumi:"scaleDownControl"`
 }
@@ -17507,16 +18216,19 @@ type RegionAutoscalerAutoscalingPolicyArgs struct {
 	CooldownPeriod pulumi.IntPtrInput `pulumi:"cooldownPeriod"`
 	// Defines the CPU utilization policy that allows the autoscaler to
 	// scale based on the average CPU utilization of a managed instance
-	// group.  Structure is documented below.
+	// group.
+	// Structure is documented below.
 	CpuUtilization RegionAutoscalerAutoscalingPolicyCpuUtilizationPtrInput `pulumi:"cpuUtilization"`
-	// Configuration parameters of autoscaling based on a load balancer.  Structure is documented below.
+	// Configuration parameters of autoscaling based on a load balancer.
+	// Structure is documented below.
 	LoadBalancingUtilization RegionAutoscalerAutoscalingPolicyLoadBalancingUtilizationPtrInput `pulumi:"loadBalancingUtilization"`
 	// The maximum number of instances that the autoscaler can scale up
 	// to. This is required when creating or updating an autoscaler. The
 	// maximum number of replicas should not be lower than minimal number
 	// of replicas.
 	MaxReplicas pulumi.IntInput `pulumi:"maxReplicas"`
-	// Configuration parameters of autoscaling based on a custom metric.  Structure is documented below.
+	// Configuration parameters of autoscaling based on a custom metric.
+	// Structure is documented below.
 	Metrics RegionAutoscalerAutoscalingPolicyMetricArrayInput `pulumi:"metrics"`
 	// The minimum number of replicas that the autoscaler can scale down
 	// to. This cannot be less than 0. If not provided, autoscaler will
@@ -17524,6 +18236,8 @@ type RegionAutoscalerAutoscalingPolicyArgs struct {
 	// allowed.
 	MinReplicas pulumi.IntInput `pulumi:"minReplicas"`
 	// Defines operating mode for this policy.
+	// Default value is `ON`.
+	// Possible values are `OFF`, `ONLY_UP`, and `ON`.
 	Mode             pulumi.StringPtrInput                                     `pulumi:"mode"`
 	ScaleDownControl RegionAutoscalerAutoscalingPolicyScaleDownControlPtrInput `pulumi:"scaleDownControl"`
 }
@@ -17620,14 +18334,16 @@ func (o RegionAutoscalerAutoscalingPolicyOutput) CooldownPeriod() pulumi.IntPtrO
 
 // Defines the CPU utilization policy that allows the autoscaler to
 // scale based on the average CPU utilization of a managed instance
-// group.  Structure is documented below.
+// group.
+// Structure is documented below.
 func (o RegionAutoscalerAutoscalingPolicyOutput) CpuUtilization() RegionAutoscalerAutoscalingPolicyCpuUtilizationPtrOutput {
 	return o.ApplyT(func(v RegionAutoscalerAutoscalingPolicy) *RegionAutoscalerAutoscalingPolicyCpuUtilization {
 		return v.CpuUtilization
 	}).(RegionAutoscalerAutoscalingPolicyCpuUtilizationPtrOutput)
 }
 
-// Configuration parameters of autoscaling based on a load balancer.  Structure is documented below.
+// Configuration parameters of autoscaling based on a load balancer.
+// Structure is documented below.
 func (o RegionAutoscalerAutoscalingPolicyOutput) LoadBalancingUtilization() RegionAutoscalerAutoscalingPolicyLoadBalancingUtilizationPtrOutput {
 	return o.ApplyT(func(v RegionAutoscalerAutoscalingPolicy) *RegionAutoscalerAutoscalingPolicyLoadBalancingUtilization {
 		return v.LoadBalancingUtilization
@@ -17642,7 +18358,8 @@ func (o RegionAutoscalerAutoscalingPolicyOutput) MaxReplicas() pulumi.IntOutput 
 	return o.ApplyT(func(v RegionAutoscalerAutoscalingPolicy) int { return v.MaxReplicas }).(pulumi.IntOutput)
 }
 
-// Configuration parameters of autoscaling based on a custom metric.  Structure is documented below.
+// Configuration parameters of autoscaling based on a custom metric.
+// Structure is documented below.
 func (o RegionAutoscalerAutoscalingPolicyOutput) Metrics() RegionAutoscalerAutoscalingPolicyMetricArrayOutput {
 	return o.ApplyT(func(v RegionAutoscalerAutoscalingPolicy) []RegionAutoscalerAutoscalingPolicyMetric { return v.Metrics }).(RegionAutoscalerAutoscalingPolicyMetricArrayOutput)
 }
@@ -17656,6 +18373,8 @@ func (o RegionAutoscalerAutoscalingPolicyOutput) MinReplicas() pulumi.IntOutput 
 }
 
 // Defines operating mode for this policy.
+// Default value is `ON`.
+// Possible values are `OFF`, `ONLY_UP`, and `ON`.
 func (o RegionAutoscalerAutoscalingPolicyOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionAutoscalerAutoscalingPolicy) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -17704,7 +18423,8 @@ func (o RegionAutoscalerAutoscalingPolicyPtrOutput) CooldownPeriod() pulumi.IntP
 
 // Defines the CPU utilization policy that allows the autoscaler to
 // scale based on the average CPU utilization of a managed instance
-// group.  Structure is documented below.
+// group.
+// Structure is documented below.
 func (o RegionAutoscalerAutoscalingPolicyPtrOutput) CpuUtilization() RegionAutoscalerAutoscalingPolicyCpuUtilizationPtrOutput {
 	return o.ApplyT(func(v *RegionAutoscalerAutoscalingPolicy) *RegionAutoscalerAutoscalingPolicyCpuUtilization {
 		if v == nil {
@@ -17714,7 +18434,8 @@ func (o RegionAutoscalerAutoscalingPolicyPtrOutput) CpuUtilization() RegionAutos
 	}).(RegionAutoscalerAutoscalingPolicyCpuUtilizationPtrOutput)
 }
 
-// Configuration parameters of autoscaling based on a load balancer.  Structure is documented below.
+// Configuration parameters of autoscaling based on a load balancer.
+// Structure is documented below.
 func (o RegionAutoscalerAutoscalingPolicyPtrOutput) LoadBalancingUtilization() RegionAutoscalerAutoscalingPolicyLoadBalancingUtilizationPtrOutput {
 	return o.ApplyT(func(v *RegionAutoscalerAutoscalingPolicy) *RegionAutoscalerAutoscalingPolicyLoadBalancingUtilization {
 		if v == nil {
@@ -17737,7 +18458,8 @@ func (o RegionAutoscalerAutoscalingPolicyPtrOutput) MaxReplicas() pulumi.IntPtrO
 	}).(pulumi.IntPtrOutput)
 }
 
-// Configuration parameters of autoscaling based on a custom metric.  Structure is documented below.
+// Configuration parameters of autoscaling based on a custom metric.
+// Structure is documented below.
 func (o RegionAutoscalerAutoscalingPolicyPtrOutput) Metrics() RegionAutoscalerAutoscalingPolicyMetricArrayOutput {
 	return o.ApplyT(func(v *RegionAutoscalerAutoscalingPolicy) []RegionAutoscalerAutoscalingPolicyMetric {
 		if v == nil {
@@ -17761,6 +18483,8 @@ func (o RegionAutoscalerAutoscalingPolicyPtrOutput) MinReplicas() pulumi.IntPtrO
 }
 
 // Defines operating mode for this policy.
+// Default value is `ON`.
+// Possible values are `OFF`, `ONLY_UP`, and `ON`.
 func (o RegionAutoscalerAutoscalingPolicyPtrOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionAutoscalerAutoscalingPolicy) *string {
 		if v == nil {
@@ -18115,6 +18839,7 @@ type RegionAutoscalerAutoscalingPolicyMetric struct {
 	Target *float64 `pulumi:"target"`
 	// Defines how target utilization value is expressed for a
 	// Stackdriver Monitoring metric.
+	// Possible values are `GAUGE`, `DELTA_PER_SECOND`, and `DELTA_PER_MINUTE`.
 	Type *string `pulumi:"type"`
 }
 
@@ -18183,6 +18908,7 @@ type RegionAutoscalerAutoscalingPolicyMetricArgs struct {
 	Target pulumi.Float64PtrInput `pulumi:"target"`
 	// Defines how target utilization value is expressed for a
 	// Stackdriver Monitoring metric.
+	// Possible values are `GAUGE`, `DELTA_PER_SECOND`, and `DELTA_PER_MINUTE`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -18302,6 +19028,7 @@ func (o RegionAutoscalerAutoscalingPolicyMetricOutput) Target() pulumi.Float64Pt
 
 // Defines how target utilization value is expressed for a
 // Stackdriver Monitoring metric.
+// Possible values are `GAUGE`, `DELTA_PER_SECOND`, and `DELTA_PER_MINUTE`.
 func (o RegionAutoscalerAutoscalingPolicyMetricOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionAutoscalerAutoscalingPolicyMetric) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -18327,7 +19054,8 @@ func (o RegionAutoscalerAutoscalingPolicyMetricArrayOutput) Index(i pulumi.IntIn
 }
 
 type RegionAutoscalerAutoscalingPolicyScaleDownControl struct {
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	MaxScaledDownReplicas *RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas `pulumi:"maxScaledDownReplicas"`
 	// How long back autoscaling should look when computing recommendations
 	// to include directives regarding slower scale down, as described above.
@@ -18346,7 +19074,8 @@ type RegionAutoscalerAutoscalingPolicyScaleDownControlInput interface {
 }
 
 type RegionAutoscalerAutoscalingPolicyScaleDownControlArgs struct {
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	MaxScaledDownReplicas RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrInput `pulumi:"maxScaledDownReplicas"`
 	// How long back autoscaling should look when computing recommendations
 	// to include directives regarding slower scale down, as described above.
@@ -18430,7 +19159,8 @@ func (o RegionAutoscalerAutoscalingPolicyScaleDownControlOutput) ToRegionAutosca
 	}).(RegionAutoscalerAutoscalingPolicyScaleDownControlPtrOutput)
 }
 
-// A nested object resource  Structure is documented below.
+// A nested object resource
+// Structure is documented below.
 func (o RegionAutoscalerAutoscalingPolicyScaleDownControlOutput) MaxScaledDownReplicas() RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrOutput {
 	return o.ApplyT(func(v RegionAutoscalerAutoscalingPolicyScaleDownControl) *RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas {
 		return v.MaxScaledDownReplicas
@@ -18463,7 +19193,8 @@ func (o RegionAutoscalerAutoscalingPolicyScaleDownControlPtrOutput) Elem() Regio
 	}).(RegionAutoscalerAutoscalingPolicyScaleDownControlOutput)
 }
 
-// A nested object resource  Structure is documented below.
+// A nested object resource
+// Structure is documented below.
 func (o RegionAutoscalerAutoscalingPolicyScaleDownControlPtrOutput) MaxScaledDownReplicas() RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrOutput {
 	return o.ApplyT(func(v *RegionAutoscalerAutoscalingPolicyScaleDownControl) *RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas {
 		if v == nil {
@@ -18646,6 +19377,8 @@ func (o RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPt
 
 type RegionBackendServiceBackend struct {
 	// Specifies the balancing mode for this backend.
+	// Default value is `CONNECTION`.
+	// Possible values are `UTILIZATION`, `RATE`, and `CONNECTION`.
 	BalancingMode *string `pulumi:"balancingMode"`
 	// A multiplier applied to the group's maximum servicing capacity
 	// (based on UTILIZATION, RATE or CONNECTION).
@@ -18736,6 +19469,8 @@ type RegionBackendServiceBackendInput interface {
 
 type RegionBackendServiceBackendArgs struct {
 	// Specifies the balancing mode for this backend.
+	// Default value is `CONNECTION`.
+	// Possible values are `UTILIZATION`, `RATE`, and `CONNECTION`.
 	BalancingMode pulumi.StringPtrInput `pulumi:"balancingMode"`
 	// A multiplier applied to the group's maximum servicing capacity
 	// (based on UTILIZATION, RATE or CONNECTION).
@@ -18865,6 +19600,8 @@ func (o RegionBackendServiceBackendOutput) ToRegionBackendServiceBackendOutputWi
 }
 
 // Specifies the balancing mode for this backend.
+// Default value is `CONNECTION`.
+// Possible values are `UTILIZATION`, `RATE`, and `CONNECTION`.
 func (o RegionBackendServiceBackendOutput) BalancingMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionBackendServiceBackend) *string { return v.BalancingMode }).(pulumi.StringPtrOutput)
 }
@@ -19420,7 +20157,8 @@ type RegionBackendServiceConsistentHash struct {
 	// Hash is based on HTTP Cookie. This field describes a HTTP cookie
 	// that will be used as the hash key for the consistent hash load
 	// balancer. If the cookie is not present, it will be generated.
-	// This field is applicable if the sessionAffinity is set to HTTP_COOKIE.  Structure is documented below.
+	// This field is applicable if the sessionAffinity is set to HTTP_COOKIE.
+	// Structure is documented below.
 	HttpCookie *RegionBackendServiceConsistentHashHttpCookie `pulumi:"httpCookie"`
 	// The hash based on the value of the specified header field.
 	// This field is applicable if the sessionAffinity is set to HEADER_FIELD.
@@ -19449,7 +20187,8 @@ type RegionBackendServiceConsistentHashArgs struct {
 	// Hash is based on HTTP Cookie. This field describes a HTTP cookie
 	// that will be used as the hash key for the consistent hash load
 	// balancer. If the cookie is not present, it will be generated.
-	// This field is applicable if the sessionAffinity is set to HTTP_COOKIE.  Structure is documented below.
+	// This field is applicable if the sessionAffinity is set to HTTP_COOKIE.
+	// Structure is documented below.
 	HttpCookie RegionBackendServiceConsistentHashHttpCookiePtrInput `pulumi:"httpCookie"`
 	// The hash based on the value of the specified header field.
 	// This field is applicable if the sessionAffinity is set to HEADER_FIELD.
@@ -19543,7 +20282,8 @@ func (o RegionBackendServiceConsistentHashOutput) ToRegionBackendServiceConsiste
 // Hash is based on HTTP Cookie. This field describes a HTTP cookie
 // that will be used as the hash key for the consistent hash load
 // balancer. If the cookie is not present, it will be generated.
-// This field is applicable if the sessionAffinity is set to HTTP_COOKIE.  Structure is documented below.
+// This field is applicable if the sessionAffinity is set to HTTP_COOKIE.
+// Structure is documented below.
 func (o RegionBackendServiceConsistentHashOutput) HttpCookie() RegionBackendServiceConsistentHashHttpCookiePtrOutput {
 	return o.ApplyT(func(v RegionBackendServiceConsistentHash) *RegionBackendServiceConsistentHashHttpCookie {
 		return v.HttpCookie
@@ -19587,7 +20327,8 @@ func (o RegionBackendServiceConsistentHashPtrOutput) Elem() RegionBackendService
 // Hash is based on HTTP Cookie. This field describes a HTTP cookie
 // that will be used as the hash key for the consistent hash load
 // balancer. If the cookie is not present, it will be generated.
-// This field is applicable if the sessionAffinity is set to HTTP_COOKIE.  Structure is documented below.
+// This field is applicable if the sessionAffinity is set to HTTP_COOKIE.
+// Structure is documented below.
 func (o RegionBackendServiceConsistentHashPtrOutput) HttpCookie() RegionBackendServiceConsistentHashHttpCookiePtrOutput {
 	return o.ApplyT(func(v *RegionBackendServiceConsistentHash) *RegionBackendServiceConsistentHashHttpCookie {
 		if v == nil {
@@ -19628,7 +20369,8 @@ type RegionBackendServiceConsistentHashHttpCookie struct {
 	Name *string `pulumi:"name"`
 	// Path to set for the cookie.
 	Path *string `pulumi:"path"`
-	// Lifetime of the cookie.  Structure is documented below.
+	// Lifetime of the cookie.
+	// Structure is documented below.
 	Ttl *RegionBackendServiceConsistentHashHttpCookieTtl `pulumi:"ttl"`
 }
 
@@ -19648,7 +20390,8 @@ type RegionBackendServiceConsistentHashHttpCookieArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Path to set for the cookie.
 	Path pulumi.StringPtrInput `pulumi:"path"`
-	// Lifetime of the cookie.  Structure is documented below.
+	// Lifetime of the cookie.
+	// Structure is documented below.
 	Ttl RegionBackendServiceConsistentHashHttpCookieTtlPtrInput `pulumi:"ttl"`
 }
 
@@ -19739,7 +20482,8 @@ func (o RegionBackendServiceConsistentHashHttpCookieOutput) Path() pulumi.String
 	return o.ApplyT(func(v RegionBackendServiceConsistentHashHttpCookie) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
-// Lifetime of the cookie.  Structure is documented below.
+// Lifetime of the cookie.
+// Structure is documented below.
 func (o RegionBackendServiceConsistentHashHttpCookieOutput) Ttl() RegionBackendServiceConsistentHashHttpCookieTtlPtrOutput {
 	return o.ApplyT(func(v RegionBackendServiceConsistentHashHttpCookie) *RegionBackendServiceConsistentHashHttpCookieTtl {
 		return v.Ttl
@@ -19786,7 +20530,8 @@ func (o RegionBackendServiceConsistentHashHttpCookiePtrOutput) Path() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
-// Lifetime of the cookie.  Structure is documented below.
+// Lifetime of the cookie.
+// Structure is documented below.
 func (o RegionBackendServiceConsistentHashHttpCookiePtrOutput) Ttl() RegionBackendServiceConsistentHashHttpCookieTtlPtrOutput {
 	return o.ApplyT(func(v *RegionBackendServiceConsistentHashHttpCookie) *RegionBackendServiceConsistentHashHttpCookieTtl {
 		if v == nil {
@@ -20362,7 +21107,8 @@ func (o RegionBackendServiceLogConfigPtrOutput) SampleRate() pulumi.Float64PtrOu
 type RegionBackendServiceOutlierDetection struct {
 	// The base time that a host is ejected for. The real time is equal to the base
 	// time multiplied by the number of times the host has been ejected. Defaults to
-	// 30000ms or 30s.  Structure is documented below.
+	// 30000ms or 30s.
+	// Structure is documented below.
 	BaseEjectionTime *RegionBackendServiceOutlierDetectionBaseEjectionTime `pulumi:"baseEjectionTime"`
 	// Number of errors before a host is ejected from the connection pool. When the
 	// backend host is accessed over HTTP, a 5xx return code qualifies as an error.
@@ -20385,7 +21131,8 @@ type RegionBackendServiceOutlierDetection struct {
 	// disable ejection or to ramp it up slowly. Defaults to 100.
 	EnforcingSuccessRate *int `pulumi:"enforcingSuccessRate"`
 	// Time interval between ejection sweep analysis. This can result in both new
-	// ejections as well as hosts being returned to service. Defaults to 10 seconds.  Structure is documented below.
+	// ejections as well as hosts being returned to service. Defaults to 10 seconds.
+	// Structure is documented below.
 	Interval *RegionBackendServiceOutlierDetectionInterval `pulumi:"interval"`
 	// Maximum percentage of hosts in the load balancing pool for the backend service
 	// that can be ejected. Defaults to 10%.
@@ -20424,7 +21171,8 @@ type RegionBackendServiceOutlierDetectionInput interface {
 type RegionBackendServiceOutlierDetectionArgs struct {
 	// The base time that a host is ejected for. The real time is equal to the base
 	// time multiplied by the number of times the host has been ejected. Defaults to
-	// 30000ms or 30s.  Structure is documented below.
+	// 30000ms or 30s.
+	// Structure is documented below.
 	BaseEjectionTime RegionBackendServiceOutlierDetectionBaseEjectionTimePtrInput `pulumi:"baseEjectionTime"`
 	// Number of errors before a host is ejected from the connection pool. When the
 	// backend host is accessed over HTTP, a 5xx return code qualifies as an error.
@@ -20447,7 +21195,8 @@ type RegionBackendServiceOutlierDetectionArgs struct {
 	// disable ejection or to ramp it up slowly. Defaults to 100.
 	EnforcingSuccessRate pulumi.IntPtrInput `pulumi:"enforcingSuccessRate"`
 	// Time interval between ejection sweep analysis. This can result in both new
-	// ejections as well as hosts being returned to service. Defaults to 10 seconds.  Structure is documented below.
+	// ejections as well as hosts being returned to service. Defaults to 10 seconds.
+	// Structure is documented below.
 	Interval RegionBackendServiceOutlierDetectionIntervalPtrInput `pulumi:"interval"`
 	// Maximum percentage of hosts in the load balancing pool for the backend service
 	// that can be ejected. Defaults to 10%.
@@ -20551,7 +21300,8 @@ func (o RegionBackendServiceOutlierDetectionOutput) ToRegionBackendServiceOutlie
 
 // The base time that a host is ejected for. The real time is equal to the base
 // time multiplied by the number of times the host has been ejected. Defaults to
-// 30000ms or 30s.  Structure is documented below.
+// 30000ms or 30s.
+// Structure is documented below.
 func (o RegionBackendServiceOutlierDetectionOutput) BaseEjectionTime() RegionBackendServiceOutlierDetectionBaseEjectionTimePtrOutput {
 	return o.ApplyT(func(v RegionBackendServiceOutlierDetection) *RegionBackendServiceOutlierDetectionBaseEjectionTime {
 		return v.BaseEjectionTime
@@ -20594,7 +21344,8 @@ func (o RegionBackendServiceOutlierDetectionOutput) EnforcingSuccessRate() pulum
 }
 
 // Time interval between ejection sweep analysis. This can result in both new
-// ejections as well as hosts being returned to service. Defaults to 10 seconds.  Structure is documented below.
+// ejections as well as hosts being returned to service. Defaults to 10 seconds.
+// Structure is documented below.
 func (o RegionBackendServiceOutlierDetectionOutput) Interval() RegionBackendServiceOutlierDetectionIntervalPtrOutput {
 	return o.ApplyT(func(v RegionBackendServiceOutlierDetection) *RegionBackendServiceOutlierDetectionInterval {
 		return v.Interval
@@ -20654,7 +21405,8 @@ func (o RegionBackendServiceOutlierDetectionPtrOutput) Elem() RegionBackendServi
 
 // The base time that a host is ejected for. The real time is equal to the base
 // time multiplied by the number of times the host has been ejected. Defaults to
-// 30000ms or 30s.  Structure is documented below.
+// 30000ms or 30s.
+// Structure is documented below.
 func (o RegionBackendServiceOutlierDetectionPtrOutput) BaseEjectionTime() RegionBackendServiceOutlierDetectionBaseEjectionTimePtrOutput {
 	return o.ApplyT(func(v *RegionBackendServiceOutlierDetection) *RegionBackendServiceOutlierDetectionBaseEjectionTime {
 		if v == nil {
@@ -20725,7 +21477,8 @@ func (o RegionBackendServiceOutlierDetectionPtrOutput) EnforcingSuccessRate() pu
 }
 
 // Time interval between ejection sweep analysis. This can result in both new
-// ejections as well as hosts being returned to service. Defaults to 10 seconds.  Structure is documented below.
+// ejections as well as hosts being returned to service. Defaults to 10 seconds.
+// Structure is documented below.
 func (o RegionBackendServiceOutlierDetectionPtrOutput) Interval() RegionBackendServiceOutlierDetectionIntervalPtrOutput {
 	return o.ApplyT(func(v *RegionBackendServiceOutlierDetection) *RegionBackendServiceOutlierDetectionInterval {
 		if v == nil {
@@ -21499,9 +22252,12 @@ type RegionHealthCheckHttp2HealthCheck struct {
 	//   checking.
 	//   If not specified, HTTP2 health check follows behavior specified in `port` and
 	//   `portName` fields.
+	//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 	PortSpecification *string `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the
 	// backend.
+	// Default value is `NONE`.
+	// Possible values are `NONE` and `PROXY_V1`.
 	ProxyHeader *string `pulumi:"proxyHeader"`
 	// The request path of the HTTP2 health check request.
 	// The default value is /.
@@ -21544,9 +22300,12 @@ type RegionHealthCheckHttp2HealthCheckArgs struct {
 	//   checking.
 	//   If not specified, HTTP2 health check follows behavior specified in `port` and
 	//   `portName` fields.
+	//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 	PortSpecification pulumi.StringPtrInput `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the
 	// backend.
+	// Default value is `NONE`.
+	// Possible values are `NONE` and `PROXY_V1`.
 	ProxyHeader pulumi.StringPtrInput `pulumi:"proxyHeader"`
 	// The request path of the HTTP2 health check request.
 	// The default value is /.
@@ -21663,12 +22422,15 @@ func (o RegionHealthCheckHttp2HealthCheckOutput) PortName() pulumi.StringPtrOutp
 //   checking.
 //   If not specified, HTTP2 health check follows behavior specified in `port` and
 //   `portName` fields.
+//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 func (o RegionHealthCheckHttp2HealthCheckOutput) PortSpecification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionHealthCheckHttp2HealthCheck) *string { return v.PortSpecification }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the type of proxy header to append before sending data to the
 // backend.
+// Default value is `NONE`.
+// Possible values are `NONE` and `PROXY_V1`.
 func (o RegionHealthCheckHttp2HealthCheckOutput) ProxyHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionHealthCheckHttp2HealthCheck) *string { return v.ProxyHeader }).(pulumi.StringPtrOutput)
 }
@@ -21748,6 +22510,7 @@ func (o RegionHealthCheckHttp2HealthCheckPtrOutput) PortName() pulumi.StringPtrO
 //   checking.
 //   If not specified, HTTP2 health check follows behavior specified in `port` and
 //   `portName` fields.
+//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 func (o RegionHealthCheckHttp2HealthCheckPtrOutput) PortSpecification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionHealthCheckHttp2HealthCheck) *string {
 		if v == nil {
@@ -21759,6 +22522,8 @@ func (o RegionHealthCheckHttp2HealthCheckPtrOutput) PortSpecification() pulumi.S
 
 // Specifies the type of proxy header to append before sending data to the
 // backend.
+// Default value is `NONE`.
+// Possible values are `NONE` and `PROXY_V1`.
 func (o RegionHealthCheckHttp2HealthCheckPtrOutput) ProxyHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionHealthCheckHttp2HealthCheck) *string {
 		if v == nil {
@@ -21812,9 +22577,12 @@ type RegionHealthCheckHttpHealthCheck struct {
 	//   checking.
 	//   If not specified, HTTP2 health check follows behavior specified in `port` and
 	//   `portName` fields.
+	//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 	PortSpecification *string `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the
 	// backend.
+	// Default value is `NONE`.
+	// Possible values are `NONE` and `PROXY_V1`.
 	ProxyHeader *string `pulumi:"proxyHeader"`
 	// The request path of the HTTP2 health check request.
 	// The default value is /.
@@ -21857,9 +22625,12 @@ type RegionHealthCheckHttpHealthCheckArgs struct {
 	//   checking.
 	//   If not specified, HTTP2 health check follows behavior specified in `port` and
 	//   `portName` fields.
+	//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 	PortSpecification pulumi.StringPtrInput `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the
 	// backend.
+	// Default value is `NONE`.
+	// Possible values are `NONE` and `PROXY_V1`.
 	ProxyHeader pulumi.StringPtrInput `pulumi:"proxyHeader"`
 	// The request path of the HTTP2 health check request.
 	// The default value is /.
@@ -21976,12 +22747,15 @@ func (o RegionHealthCheckHttpHealthCheckOutput) PortName() pulumi.StringPtrOutpu
 //   checking.
 //   If not specified, HTTP2 health check follows behavior specified in `port` and
 //   `portName` fields.
+//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 func (o RegionHealthCheckHttpHealthCheckOutput) PortSpecification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionHealthCheckHttpHealthCheck) *string { return v.PortSpecification }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the type of proxy header to append before sending data to the
 // backend.
+// Default value is `NONE`.
+// Possible values are `NONE` and `PROXY_V1`.
 func (o RegionHealthCheckHttpHealthCheckOutput) ProxyHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionHealthCheckHttpHealthCheck) *string { return v.ProxyHeader }).(pulumi.StringPtrOutput)
 }
@@ -22061,6 +22835,7 @@ func (o RegionHealthCheckHttpHealthCheckPtrOutput) PortName() pulumi.StringPtrOu
 //   checking.
 //   If not specified, HTTP2 health check follows behavior specified in `port` and
 //   `portName` fields.
+//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 func (o RegionHealthCheckHttpHealthCheckPtrOutput) PortSpecification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionHealthCheckHttpHealthCheck) *string {
 		if v == nil {
@@ -22072,6 +22847,8 @@ func (o RegionHealthCheckHttpHealthCheckPtrOutput) PortSpecification() pulumi.St
 
 // Specifies the type of proxy header to append before sending data to the
 // backend.
+// Default value is `NONE`.
+// Possible values are `NONE` and `PROXY_V1`.
 func (o RegionHealthCheckHttpHealthCheckPtrOutput) ProxyHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionHealthCheckHttpHealthCheck) *string {
 		if v == nil {
@@ -22125,9 +22902,12 @@ type RegionHealthCheckHttpsHealthCheck struct {
 	//   checking.
 	//   If not specified, HTTP2 health check follows behavior specified in `port` and
 	//   `portName` fields.
+	//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 	PortSpecification *string `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the
 	// backend.
+	// Default value is `NONE`.
+	// Possible values are `NONE` and `PROXY_V1`.
 	ProxyHeader *string `pulumi:"proxyHeader"`
 	// The request path of the HTTP2 health check request.
 	// The default value is /.
@@ -22170,9 +22950,12 @@ type RegionHealthCheckHttpsHealthCheckArgs struct {
 	//   checking.
 	//   If not specified, HTTP2 health check follows behavior specified in `port` and
 	//   `portName` fields.
+	//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 	PortSpecification pulumi.StringPtrInput `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the
 	// backend.
+	// Default value is `NONE`.
+	// Possible values are `NONE` and `PROXY_V1`.
 	ProxyHeader pulumi.StringPtrInput `pulumi:"proxyHeader"`
 	// The request path of the HTTP2 health check request.
 	// The default value is /.
@@ -22289,12 +23072,15 @@ func (o RegionHealthCheckHttpsHealthCheckOutput) PortName() pulumi.StringPtrOutp
 //   checking.
 //   If not specified, HTTP2 health check follows behavior specified in `port` and
 //   `portName` fields.
+//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 func (o RegionHealthCheckHttpsHealthCheckOutput) PortSpecification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionHealthCheckHttpsHealthCheck) *string { return v.PortSpecification }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the type of proxy header to append before sending data to the
 // backend.
+// Default value is `NONE`.
+// Possible values are `NONE` and `PROXY_V1`.
 func (o RegionHealthCheckHttpsHealthCheckOutput) ProxyHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionHealthCheckHttpsHealthCheck) *string { return v.ProxyHeader }).(pulumi.StringPtrOutput)
 }
@@ -22374,6 +23160,7 @@ func (o RegionHealthCheckHttpsHealthCheckPtrOutput) PortName() pulumi.StringPtrO
 //   checking.
 //   If not specified, HTTP2 health check follows behavior specified in `port` and
 //   `portName` fields.
+//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 func (o RegionHealthCheckHttpsHealthCheckPtrOutput) PortSpecification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionHealthCheckHttpsHealthCheck) *string {
 		if v == nil {
@@ -22385,6 +23172,8 @@ func (o RegionHealthCheckHttpsHealthCheckPtrOutput) PortSpecification() pulumi.S
 
 // Specifies the type of proxy header to append before sending data to the
 // backend.
+// Default value is `NONE`.
+// Possible values are `NONE` and `PROXY_V1`.
 func (o RegionHealthCheckHttpsHealthCheckPtrOutput) ProxyHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionHealthCheckHttpsHealthCheck) *string {
 		if v == nil {
@@ -22569,9 +23358,12 @@ type RegionHealthCheckSslHealthCheck struct {
 	//   checking.
 	//   If not specified, HTTP2 health check follows behavior specified in `port` and
 	//   `portName` fields.
+	//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 	PortSpecification *string `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the
 	// backend.
+	// Default value is `NONE`.
+	// Possible values are `NONE` and `PROXY_V1`.
 	ProxyHeader *string `pulumi:"proxyHeader"`
 	// The application data to send once the SSL connection has been
 	// established (default value is empty). If both request and response are
@@ -22612,9 +23404,12 @@ type RegionHealthCheckSslHealthCheckArgs struct {
 	//   checking.
 	//   If not specified, HTTP2 health check follows behavior specified in `port` and
 	//   `portName` fields.
+	//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 	PortSpecification pulumi.StringPtrInput `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the
 	// backend.
+	// Default value is `NONE`.
+	// Possible values are `NONE` and `PROXY_V1`.
 	ProxyHeader pulumi.StringPtrInput `pulumi:"proxyHeader"`
 	// The application data to send once the SSL connection has been
 	// established (default value is empty). If both request and response are
@@ -22726,12 +23521,15 @@ func (o RegionHealthCheckSslHealthCheckOutput) PortName() pulumi.StringPtrOutput
 //   checking.
 //   If not specified, HTTP2 health check follows behavior specified in `port` and
 //   `portName` fields.
+//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 func (o RegionHealthCheckSslHealthCheckOutput) PortSpecification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionHealthCheckSslHealthCheck) *string { return v.PortSpecification }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the type of proxy header to append before sending data to the
 // backend.
+// Default value is `NONE`.
+// Possible values are `NONE` and `PROXY_V1`.
 func (o RegionHealthCheckSslHealthCheckOutput) ProxyHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionHealthCheckSslHealthCheck) *string { return v.ProxyHeader }).(pulumi.StringPtrOutput)
 }
@@ -22801,6 +23599,7 @@ func (o RegionHealthCheckSslHealthCheckPtrOutput) PortName() pulumi.StringPtrOut
 //   checking.
 //   If not specified, HTTP2 health check follows behavior specified in `port` and
 //   `portName` fields.
+//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 func (o RegionHealthCheckSslHealthCheckPtrOutput) PortSpecification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionHealthCheckSslHealthCheck) *string {
 		if v == nil {
@@ -22812,6 +23611,8 @@ func (o RegionHealthCheckSslHealthCheckPtrOutput) PortSpecification() pulumi.Str
 
 // Specifies the type of proxy header to append before sending data to the
 // backend.
+// Default value is `NONE`.
+// Possible values are `NONE` and `PROXY_V1`.
 func (o RegionHealthCheckSslHealthCheckPtrOutput) ProxyHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionHealthCheckSslHealthCheck) *string {
 		if v == nil {
@@ -22863,9 +23664,12 @@ type RegionHealthCheckTcpHealthCheck struct {
 	//   checking.
 	//   If not specified, HTTP2 health check follows behavior specified in `port` and
 	//   `portName` fields.
+	//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 	PortSpecification *string `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the
 	// backend.
+	// Default value is `NONE`.
+	// Possible values are `NONE` and `PROXY_V1`.
 	ProxyHeader *string `pulumi:"proxyHeader"`
 	// The application data to send once the SSL connection has been
 	// established (default value is empty). If both request and response are
@@ -22906,9 +23710,12 @@ type RegionHealthCheckTcpHealthCheckArgs struct {
 	//   checking.
 	//   If not specified, HTTP2 health check follows behavior specified in `port` and
 	//   `portName` fields.
+	//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 	PortSpecification pulumi.StringPtrInput `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the
 	// backend.
+	// Default value is `NONE`.
+	// Possible values are `NONE` and `PROXY_V1`.
 	ProxyHeader pulumi.StringPtrInput `pulumi:"proxyHeader"`
 	// The application data to send once the SSL connection has been
 	// established (default value is empty). If both request and response are
@@ -23020,12 +23827,15 @@ func (o RegionHealthCheckTcpHealthCheckOutput) PortName() pulumi.StringPtrOutput
 //   checking.
 //   If not specified, HTTP2 health check follows behavior specified in `port` and
 //   `portName` fields.
+//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 func (o RegionHealthCheckTcpHealthCheckOutput) PortSpecification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionHealthCheckTcpHealthCheck) *string { return v.PortSpecification }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the type of proxy header to append before sending data to the
 // backend.
+// Default value is `NONE`.
+// Possible values are `NONE` and `PROXY_V1`.
 func (o RegionHealthCheckTcpHealthCheckOutput) ProxyHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionHealthCheckTcpHealthCheck) *string { return v.ProxyHeader }).(pulumi.StringPtrOutput)
 }
@@ -23095,6 +23905,7 @@ func (o RegionHealthCheckTcpHealthCheckPtrOutput) PortName() pulumi.StringPtrOut
 //   checking.
 //   If not specified, HTTP2 health check follows behavior specified in `port` and
 //   `portName` fields.
+//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 func (o RegionHealthCheckTcpHealthCheckPtrOutput) PortSpecification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionHealthCheckTcpHealthCheck) *string {
 		if v == nil {
@@ -23106,6 +23917,8 @@ func (o RegionHealthCheckTcpHealthCheckPtrOutput) PortSpecification() pulumi.Str
 
 // Specifies the type of proxy header to append before sending data to the
 // backend.
+// Default value is `NONE`.
+// Possible values are `NONE` and `PROXY_V1`.
 func (o RegionHealthCheckTcpHealthCheckPtrOutput) ProxyHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionHealthCheckTcpHealthCheck) *string {
 		if v == nil {
@@ -24057,7 +24870,8 @@ func (o RegionInstanceGroupManagerVersionTargetSizePtrOutput) Percent() pulumi.I
 }
 
 type RegionPerInstanceConfigPreservedState struct {
-	// Stateful disks for the instance.  Structure is documented below.
+	// Stateful disks for the instance.
+	// Structure is documented below.
 	Disks []RegionPerInstanceConfigPreservedStateDisk `pulumi:"disks"`
 	// Preserved metadata defined for this instance. This is a list of key->value pairs.
 	Metadata map[string]string `pulumi:"metadata"`
@@ -24075,7 +24889,8 @@ type RegionPerInstanceConfigPreservedStateInput interface {
 }
 
 type RegionPerInstanceConfigPreservedStateArgs struct {
-	// Stateful disks for the instance.  Structure is documented below.
+	// Stateful disks for the instance.
+	// Structure is documented below.
 	Disks RegionPerInstanceConfigPreservedStateDiskArrayInput `pulumi:"disks"`
 	// Preserved metadata defined for this instance. This is a list of key->value pairs.
 	Metadata pulumi.StringMapInput `pulumi:"metadata"`
@@ -24158,7 +24973,8 @@ func (o RegionPerInstanceConfigPreservedStateOutput) ToRegionPerInstanceConfigPr
 	}).(RegionPerInstanceConfigPreservedStatePtrOutput)
 }
 
-// Stateful disks for the instance.  Structure is documented below.
+// Stateful disks for the instance.
+// Structure is documented below.
 func (o RegionPerInstanceConfigPreservedStateOutput) Disks() RegionPerInstanceConfigPreservedStateDiskArrayOutput {
 	return o.ApplyT(func(v RegionPerInstanceConfigPreservedState) []RegionPerInstanceConfigPreservedStateDisk {
 		return v.Disks
@@ -24188,7 +25004,8 @@ func (o RegionPerInstanceConfigPreservedStatePtrOutput) Elem() RegionPerInstance
 	return o.ApplyT(func(v *RegionPerInstanceConfigPreservedState) RegionPerInstanceConfigPreservedState { return *v }).(RegionPerInstanceConfigPreservedStateOutput)
 }
 
-// Stateful disks for the instance.  Structure is documented below.
+// Stateful disks for the instance.
+// Structure is documented below.
 func (o RegionPerInstanceConfigPreservedStatePtrOutput) Disks() RegionPerInstanceConfigPreservedStateDiskArrayOutput {
 	return o.ApplyT(func(v *RegionPerInstanceConfigPreservedState) []RegionPerInstanceConfigPreservedStateDisk {
 		if v == nil {
@@ -24214,10 +25031,14 @@ type RegionPerInstanceConfigPreservedStateDisk struct {
 	// `NEVER` detatch the disk when the VM is deleted, but not delete the disk.
 	// `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently
 	// deleted from the instance group.
+	// Default value is `NEVER`.
+	// Possible values are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
 	DeleteRule *string `pulumi:"deleteRule"`
 	// A unique device name that is reflected into the /dev/ tree of a Linux operating system running within the instance.
 	DeviceName string `pulumi:"deviceName"`
 	// The mode of the disk.
+	// Default value is `READ_WRITE`.
+	// Possible values are `READ_ONLY` and `READ_WRITE`.
 	Mode *string `pulumi:"mode"`
 	// The URI of an existing persistent disk to attach under the specified device-name in the format
 	// `projects/project-id/zones/zone/disks/disk-name`.
@@ -24241,10 +25062,14 @@ type RegionPerInstanceConfigPreservedStateDiskArgs struct {
 	// `NEVER` detatch the disk when the VM is deleted, but not delete the disk.
 	// `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently
 	// deleted from the instance group.
+	// Default value is `NEVER`.
+	// Possible values are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
 	DeleteRule pulumi.StringPtrInput `pulumi:"deleteRule"`
 	// A unique device name that is reflected into the /dev/ tree of a Linux operating system running within the instance.
 	DeviceName pulumi.StringInput `pulumi:"deviceName"`
 	// The mode of the disk.
+	// Default value is `READ_WRITE`.
+	// Possible values are `READ_ONLY` and `READ_WRITE`.
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
 	// The URI of an existing persistent disk to attach under the specified device-name in the format
 	// `projects/project-id/zones/zone/disks/disk-name`.
@@ -24307,6 +25132,8 @@ func (o RegionPerInstanceConfigPreservedStateDiskOutput) ToRegionPerInstanceConf
 // `NEVER` detatch the disk when the VM is deleted, but not delete the disk.
 // `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently
 // deleted from the instance group.
+// Default value is `NEVER`.
+// Possible values are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
 func (o RegionPerInstanceConfigPreservedStateDiskOutput) DeleteRule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionPerInstanceConfigPreservedStateDisk) *string { return v.DeleteRule }).(pulumi.StringPtrOutput)
 }
@@ -24317,6 +25144,8 @@ func (o RegionPerInstanceConfigPreservedStateDiskOutput) DeviceName() pulumi.Str
 }
 
 // The mode of the disk.
+// Default value is `READ_WRITE`.
+// Possible values are `READ_ONLY` and `READ_WRITE`.
 func (o RegionPerInstanceConfigPreservedStateDiskOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionPerInstanceConfigPreservedStateDisk) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -24795,7 +25624,8 @@ type RegionUrlMapPathMatcher struct {
 	DefaultService string `pulumi:"defaultService"`
 	// When none of the specified hostRules match, the request is redirected to a URL specified
 	// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
-	// defaultRouteAction must not be set.  Structure is documented below.
+	// defaultRouteAction must not be set.
+	// Structure is documented below.
 	DefaultUrlRedirect *RegionUrlMapPathMatcherDefaultUrlRedirect `pulumi:"defaultUrlRedirect"`
 	// Description of this test case.
 	Description *string `pulumi:"description"`
@@ -24807,14 +25637,16 @@ type RegionUrlMapPathMatcher struct {
 	// are specified does not matter. Matches are always done on the longest-path-first
 	// basis. For example: a pathRule with a path /a/b/c/* will match before /a/b/*
 	// irrespective of the order in which those paths appear in this list. Within a
-	// given pathMatcher, only one of pathRules or routeRules must be set.  Structure is documented below.
+	// given pathMatcher, only one of pathRules or routeRules must be set.
+	// Structure is documented below.
 	PathRules []RegionUrlMapPathMatcherPathRule `pulumi:"pathRules"`
 	// The list of ordered HTTP route rules. Use this list instead of pathRules when
 	// advanced route matching and routing actions are desired. The order of specifying
 	// routeRules matters: the first rule that matches will cause its specified routing
 	// action to take effect. Within a given pathMatcher, only one of pathRules or
 	// routeRules must be set. routeRules are not supported in UrlMaps intended for
-	// External load balancers.  Structure is documented below.
+	// External load balancers.
+	// Structure is documented below.
 	RouteRules []RegionUrlMapPathMatcherRouteRule `pulumi:"routeRules"`
 }
 
@@ -24836,7 +25668,8 @@ type RegionUrlMapPathMatcherArgs struct {
 	DefaultService pulumi.StringInput `pulumi:"defaultService"`
 	// When none of the specified hostRules match, the request is redirected to a URL specified
 	// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
-	// defaultRouteAction must not be set.  Structure is documented below.
+	// defaultRouteAction must not be set.
+	// Structure is documented below.
 	DefaultUrlRedirect RegionUrlMapPathMatcherDefaultUrlRedirectPtrInput `pulumi:"defaultUrlRedirect"`
 	// Description of this test case.
 	Description pulumi.StringPtrInput `pulumi:"description"`
@@ -24848,14 +25681,16 @@ type RegionUrlMapPathMatcherArgs struct {
 	// are specified does not matter. Matches are always done on the longest-path-first
 	// basis. For example: a pathRule with a path /a/b/c/* will match before /a/b/*
 	// irrespective of the order in which those paths appear in this list. Within a
-	// given pathMatcher, only one of pathRules or routeRules must be set.  Structure is documented below.
+	// given pathMatcher, only one of pathRules or routeRules must be set.
+	// Structure is documented below.
 	PathRules RegionUrlMapPathMatcherPathRuleArrayInput `pulumi:"pathRules"`
 	// The list of ordered HTTP route rules. Use this list instead of pathRules when
 	// advanced route matching and routing actions are desired. The order of specifying
 	// routeRules matters: the first rule that matches will cause its specified routing
 	// action to take effect. Within a given pathMatcher, only one of pathRules or
 	// routeRules must be set. routeRules are not supported in UrlMaps intended for
-	// External load balancers.  Structure is documented below.
+	// External load balancers.
+	// Structure is documented below.
 	RouteRules RegionUrlMapPathMatcherRouteRuleArrayInput `pulumi:"routeRules"`
 }
 
@@ -24919,7 +25754,8 @@ func (o RegionUrlMapPathMatcherOutput) DefaultService() pulumi.StringOutput {
 
 // When none of the specified hostRules match, the request is redirected to a URL specified
 // by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
-// defaultRouteAction must not be set.  Structure is documented below.
+// defaultRouteAction must not be set.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherOutput) DefaultUrlRedirect() RegionUrlMapPathMatcherDefaultUrlRedirectPtrOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcher) *RegionUrlMapPathMatcherDefaultUrlRedirect {
 		return v.DefaultUrlRedirect
@@ -24942,7 +25778,8 @@ func (o RegionUrlMapPathMatcherOutput) Name() pulumi.StringOutput {
 // are specified does not matter. Matches are always done on the longest-path-first
 // basis. For example: a pathRule with a path /a/b/c/* will match before /a/b/*
 // irrespective of the order in which those paths appear in this list. Within a
-// given pathMatcher, only one of pathRules or routeRules must be set.  Structure is documented below.
+// given pathMatcher, only one of pathRules or routeRules must be set.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherOutput) PathRules() RegionUrlMapPathMatcherPathRuleArrayOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcher) []RegionUrlMapPathMatcherPathRule { return v.PathRules }).(RegionUrlMapPathMatcherPathRuleArrayOutput)
 }
@@ -24952,7 +25789,8 @@ func (o RegionUrlMapPathMatcherOutput) PathRules() RegionUrlMapPathMatcherPathRu
 // routeRules matters: the first rule that matches will cause its specified routing
 // action to take effect. Within a given pathMatcher, only one of pathRules or
 // routeRules must be set. routeRules are not supported in UrlMaps intended for
-// External load balancers.  Structure is documented below.
+// External load balancers.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherOutput) RouteRules() RegionUrlMapPathMatcherRouteRuleArrayOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcher) []RegionUrlMapPathMatcherRouteRule { return v.RouteRules }).(RegionUrlMapPathMatcherRouteRuleArrayOutput)
 }
@@ -25304,13 +26142,15 @@ type RegionUrlMapPathMatcherPathRule struct {
 	// request to the selected backend. If routeAction specifies any
 	// weightedBackendServices, service must not be set. Conversely if service is set,
 	// routeAction cannot contain any  weightedBackendServices. Only one of routeAction
-	// or urlRedirect must be set.  Structure is documented below.
+	// or urlRedirect must be set.
+	// Structure is documented below.
 	RouteAction *RegionUrlMapPathMatcherPathRuleRouteAction `pulumi:"routeAction"`
 	// A reference to expected RegionBackendService resource the given URL should be mapped to.
 	Service *string `pulumi:"service"`
 	// When a path pattern is matched, the request is redirected to a URL specified
 	// by urlRedirect. If urlRedirect is specified, service or routeAction must not
-	// be set.  Structure is documented below.
+	// be set.
+	// Structure is documented below.
 	UrlRedirect *RegionUrlMapPathMatcherPathRuleUrlRedirect `pulumi:"urlRedirect"`
 }
 
@@ -25336,13 +26176,15 @@ type RegionUrlMapPathMatcherPathRuleArgs struct {
 	// request to the selected backend. If routeAction specifies any
 	// weightedBackendServices, service must not be set. Conversely if service is set,
 	// routeAction cannot contain any  weightedBackendServices. Only one of routeAction
-	// or urlRedirect must be set.  Structure is documented below.
+	// or urlRedirect must be set.
+	// Structure is documented below.
 	RouteAction RegionUrlMapPathMatcherPathRuleRouteActionPtrInput `pulumi:"routeAction"`
 	// A reference to expected RegionBackendService resource the given URL should be mapped to.
 	Service pulumi.StringPtrInput `pulumi:"service"`
 	// When a path pattern is matched, the request is redirected to a URL specified
 	// by urlRedirect. If urlRedirect is specified, service or routeAction must not
-	// be set.  Structure is documented below.
+	// be set.
+	// Structure is documented below.
 	UrlRedirect RegionUrlMapPathMatcherPathRuleUrlRedirectPtrInput `pulumi:"urlRedirect"`
 }
 
@@ -25410,7 +26252,8 @@ func (o RegionUrlMapPathMatcherPathRuleOutput) Paths() pulumi.StringArrayOutput 
 // request to the selected backend. If routeAction specifies any
 // weightedBackendServices, service must not be set. Conversely if service is set,
 // routeAction cannot contain any  weightedBackendServices. Only one of routeAction
-// or urlRedirect must be set.  Structure is documented below.
+// or urlRedirect must be set.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherPathRuleOutput) RouteAction() RegionUrlMapPathMatcherPathRuleRouteActionPtrOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherPathRule) *RegionUrlMapPathMatcherPathRuleRouteAction {
 		return v.RouteAction
@@ -25424,7 +26267,8 @@ func (o RegionUrlMapPathMatcherPathRuleOutput) Service() pulumi.StringPtrOutput 
 
 // When a path pattern is matched, the request is redirected to a URL specified
 // by urlRedirect. If urlRedirect is specified, service or routeAction must not
-// be set.  Structure is documented below.
+// be set.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherPathRuleOutput) UrlRedirect() RegionUrlMapPathMatcherPathRuleUrlRedirectPtrOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherPathRule) *RegionUrlMapPathMatcherPathRuleUrlRedirect {
 		return v.UrlRedirect
@@ -25453,7 +26297,8 @@ func (o RegionUrlMapPathMatcherPathRuleArrayOutput) Index(i pulumi.IntInput) Reg
 
 type RegionUrlMapPathMatcherPathRuleRouteAction struct {
 	// The specification for allowing client side cross-origin requests. Please see W3C
-	// Recommendation for Cross Origin Resource Sharing  Structure is documented below.
+	// Recommendation for Cross Origin Resource Sharing
+	// Structure is documented below.
 	CorsPolicy *RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicy `pulumi:"corsPolicy"`
 	// The specification for fault injection introduced into traffic to test the
 	// resiliency of clients to backend service failure. As part of fault injection,
@@ -25461,22 +26306,27 @@ type RegionUrlMapPathMatcherPathRuleRouteAction struct {
 	// Loadbalancer on a percentage of requests before sending those request to the
 	// backend service. Similarly requests from clients can be aborted by the
 	// Loadbalancer for a percentage of requests. timeout and retryPolicy will be
-	// ignored by clients that are configured with a fault_injection_policy.  Structure is documented below.
+	// ignored by clients that are configured with a fault_injection_policy.
+	// Structure is documented below.
 	FaultInjectionPolicy *RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicy `pulumi:"faultInjectionPolicy"`
 	// Specifies the policy on how requests intended for the route's backends are
 	// shadowed to a separate mirrored backend service. Loadbalancer does not wait for
 	// responses from the shadow service. Prior to sending traffic to the shadow
-	// service, the host / authority header is suffixed with -shadow.  Structure is documented below.
+	// service, the host / authority header is suffixed with -shadow.
+	// Structure is documented below.
 	RequestMirrorPolicy *RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicy `pulumi:"requestMirrorPolicy"`
-	// Specifies the retry policy associated with this route.  Structure is documented below.
+	// Specifies the retry policy associated with this route.
+	// Structure is documented below.
 	RetryPolicy *RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicy `pulumi:"retryPolicy"`
 	// Specifies the timeout for the selected route. Timeout is computed from the time
 	// the request is has been fully processed (i.e. end-of-stream) up until the
 	// response has been completely processed. Timeout includes all retries. If not
-	// specified, the default value is 15 seconds.  Structure is documented below.
+	// specified, the default value is 15 seconds.
+	// Structure is documented below.
 	Timeout *RegionUrlMapPathMatcherPathRuleRouteActionTimeout `pulumi:"timeout"`
 	// The spec to modify the URL of the request, prior to forwarding the request to
-	// the matched service  Structure is documented below.
+	// the matched service
+	// Structure is documented below.
 	UrlRewrite *RegionUrlMapPathMatcherPathRuleRouteActionUrlRewrite `pulumi:"urlRewrite"`
 	// A list of weighted backend services to send traffic to when a route match
 	// occurs. The weights determine the fraction of traffic that flows to their
@@ -25485,7 +26335,8 @@ type RegionUrlMapPathMatcherPathRuleRouteAction struct {
 	// number. Once a backendService is identified and before forwarding the request to
 	// the backend service, advanced routing actions like Url rewrites and header
 	// transformations are applied depending on additional settings specified in this
-	// HttpRouteAction.  Structure is documented below.
+	// HttpRouteAction.
+	// Structure is documented below.
 	WeightedBackendServices []RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendService `pulumi:"weightedBackendServices"`
 }
 
@@ -25502,7 +26353,8 @@ type RegionUrlMapPathMatcherPathRuleRouteActionInput interface {
 
 type RegionUrlMapPathMatcherPathRuleRouteActionArgs struct {
 	// The specification for allowing client side cross-origin requests. Please see W3C
-	// Recommendation for Cross Origin Resource Sharing  Structure is documented below.
+	// Recommendation for Cross Origin Resource Sharing
+	// Structure is documented below.
 	CorsPolicy RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyPtrInput `pulumi:"corsPolicy"`
 	// The specification for fault injection introduced into traffic to test the
 	// resiliency of clients to backend service failure. As part of fault injection,
@@ -25510,22 +26362,27 @@ type RegionUrlMapPathMatcherPathRuleRouteActionArgs struct {
 	// Loadbalancer on a percentage of requests before sending those request to the
 	// backend service. Similarly requests from clients can be aborted by the
 	// Loadbalancer for a percentage of requests. timeout and retryPolicy will be
-	// ignored by clients that are configured with a fault_injection_policy.  Structure is documented below.
+	// ignored by clients that are configured with a fault_injection_policy.
+	// Structure is documented below.
 	FaultInjectionPolicy RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrInput `pulumi:"faultInjectionPolicy"`
 	// Specifies the policy on how requests intended for the route's backends are
 	// shadowed to a separate mirrored backend service. Loadbalancer does not wait for
 	// responses from the shadow service. Prior to sending traffic to the shadow
-	// service, the host / authority header is suffixed with -shadow.  Structure is documented below.
+	// service, the host / authority header is suffixed with -shadow.
+	// Structure is documented below.
 	RequestMirrorPolicy RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrInput `pulumi:"requestMirrorPolicy"`
-	// Specifies the retry policy associated with this route.  Structure is documented below.
+	// Specifies the retry policy associated with this route.
+	// Structure is documented below.
 	RetryPolicy RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPtrInput `pulumi:"retryPolicy"`
 	// Specifies the timeout for the selected route. Timeout is computed from the time
 	// the request is has been fully processed (i.e. end-of-stream) up until the
 	// response has been completely processed. Timeout includes all retries. If not
-	// specified, the default value is 15 seconds.  Structure is documented below.
+	// specified, the default value is 15 seconds.
+	// Structure is documented below.
 	Timeout RegionUrlMapPathMatcherPathRuleRouteActionTimeoutPtrInput `pulumi:"timeout"`
 	// The spec to modify the URL of the request, prior to forwarding the request to
-	// the matched service  Structure is documented below.
+	// the matched service
+	// Structure is documented below.
 	UrlRewrite RegionUrlMapPathMatcherPathRuleRouteActionUrlRewritePtrInput `pulumi:"urlRewrite"`
 	// A list of weighted backend services to send traffic to when a route match
 	// occurs. The weights determine the fraction of traffic that flows to their
@@ -25534,7 +26391,8 @@ type RegionUrlMapPathMatcherPathRuleRouteActionArgs struct {
 	// number. Once a backendService is identified and before forwarding the request to
 	// the backend service, advanced routing actions like Url rewrites and header
 	// transformations are applied depending on additional settings specified in this
-	// HttpRouteAction.  Structure is documented below.
+	// HttpRouteAction.
+	// Structure is documented below.
 	WeightedBackendServices RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrayInput `pulumi:"weightedBackendServices"`
 }
 
@@ -25616,7 +26474,8 @@ func (o RegionUrlMapPathMatcherPathRuleRouteActionOutput) ToRegionUrlMapPathMatc
 }
 
 // The specification for allowing client side cross-origin requests. Please see W3C
-// Recommendation for Cross Origin Resource Sharing  Structure is documented below.
+// Recommendation for Cross Origin Resource Sharing
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherPathRuleRouteActionOutput) CorsPolicy() RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherPathRuleRouteAction) *RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicy {
 		return v.CorsPolicy
@@ -25629,7 +26488,8 @@ func (o RegionUrlMapPathMatcherPathRuleRouteActionOutput) CorsPolicy() RegionUrl
 // Loadbalancer on a percentage of requests before sending those request to the
 // backend service. Similarly requests from clients can be aborted by the
 // Loadbalancer for a percentage of requests. timeout and retryPolicy will be
-// ignored by clients that are configured with a fault_injection_policy.  Structure is documented below.
+// ignored by clients that are configured with a fault_injection_policy.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherPathRuleRouteActionOutput) FaultInjectionPolicy() RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherPathRuleRouteAction) *RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicy {
 		return v.FaultInjectionPolicy
@@ -25639,14 +26499,16 @@ func (o RegionUrlMapPathMatcherPathRuleRouteActionOutput) FaultInjectionPolicy()
 // Specifies the policy on how requests intended for the route's backends are
 // shadowed to a separate mirrored backend service. Loadbalancer does not wait for
 // responses from the shadow service. Prior to sending traffic to the shadow
-// service, the host / authority header is suffixed with -shadow.  Structure is documented below.
+// service, the host / authority header is suffixed with -shadow.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherPathRuleRouteActionOutput) RequestMirrorPolicy() RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherPathRuleRouteAction) *RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicy {
 		return v.RequestMirrorPolicy
 	}).(RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutput)
 }
 
-// Specifies the retry policy associated with this route.  Structure is documented below.
+// Specifies the retry policy associated with this route.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherPathRuleRouteActionOutput) RetryPolicy() RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPtrOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherPathRuleRouteAction) *RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicy {
 		return v.RetryPolicy
@@ -25656,7 +26518,8 @@ func (o RegionUrlMapPathMatcherPathRuleRouteActionOutput) RetryPolicy() RegionUr
 // Specifies the timeout for the selected route. Timeout is computed from the time
 // the request is has been fully processed (i.e. end-of-stream) up until the
 // response has been completely processed. Timeout includes all retries. If not
-// specified, the default value is 15 seconds.  Structure is documented below.
+// specified, the default value is 15 seconds.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherPathRuleRouteActionOutput) Timeout() RegionUrlMapPathMatcherPathRuleRouteActionTimeoutPtrOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherPathRuleRouteAction) *RegionUrlMapPathMatcherPathRuleRouteActionTimeout {
 		return v.Timeout
@@ -25664,7 +26527,8 @@ func (o RegionUrlMapPathMatcherPathRuleRouteActionOutput) Timeout() RegionUrlMap
 }
 
 // The spec to modify the URL of the request, prior to forwarding the request to
-// the matched service  Structure is documented below.
+// the matched service
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherPathRuleRouteActionOutput) UrlRewrite() RegionUrlMapPathMatcherPathRuleRouteActionUrlRewritePtrOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherPathRuleRouteAction) *RegionUrlMapPathMatcherPathRuleRouteActionUrlRewrite {
 		return v.UrlRewrite
@@ -25678,7 +26542,8 @@ func (o RegionUrlMapPathMatcherPathRuleRouteActionOutput) UrlRewrite() RegionUrl
 // number. Once a backendService is identified and before forwarding the request to
 // the backend service, advanced routing actions like Url rewrites and header
 // transformations are applied depending on additional settings specified in this
-// HttpRouteAction.  Structure is documented below.
+// HttpRouteAction.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherPathRuleRouteActionOutput) WeightedBackendServices() RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrayOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherPathRuleRouteAction) []RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendService {
 		return v.WeightedBackendServices
@@ -25706,7 +26571,8 @@ func (o RegionUrlMapPathMatcherPathRuleRouteActionPtrOutput) Elem() RegionUrlMap
 }
 
 // The specification for allowing client side cross-origin requests. Please see W3C
-// Recommendation for Cross Origin Resource Sharing  Structure is documented below.
+// Recommendation for Cross Origin Resource Sharing
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherPathRuleRouteActionPtrOutput) CorsPolicy() RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput {
 	return o.ApplyT(func(v *RegionUrlMapPathMatcherPathRuleRouteAction) *RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicy {
 		if v == nil {
@@ -25722,7 +26588,8 @@ func (o RegionUrlMapPathMatcherPathRuleRouteActionPtrOutput) CorsPolicy() Region
 // Loadbalancer on a percentage of requests before sending those request to the
 // backend service. Similarly requests from clients can be aborted by the
 // Loadbalancer for a percentage of requests. timeout and retryPolicy will be
-// ignored by clients that are configured with a fault_injection_policy.  Structure is documented below.
+// ignored by clients that are configured with a fault_injection_policy.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherPathRuleRouteActionPtrOutput) FaultInjectionPolicy() RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput {
 	return o.ApplyT(func(v *RegionUrlMapPathMatcherPathRuleRouteAction) *RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicy {
 		if v == nil {
@@ -25735,7 +26602,8 @@ func (o RegionUrlMapPathMatcherPathRuleRouteActionPtrOutput) FaultInjectionPolic
 // Specifies the policy on how requests intended for the route's backends are
 // shadowed to a separate mirrored backend service. Loadbalancer does not wait for
 // responses from the shadow service. Prior to sending traffic to the shadow
-// service, the host / authority header is suffixed with -shadow.  Structure is documented below.
+// service, the host / authority header is suffixed with -shadow.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherPathRuleRouteActionPtrOutput) RequestMirrorPolicy() RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutput {
 	return o.ApplyT(func(v *RegionUrlMapPathMatcherPathRuleRouteAction) *RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicy {
 		if v == nil {
@@ -25745,7 +26613,8 @@ func (o RegionUrlMapPathMatcherPathRuleRouteActionPtrOutput) RequestMirrorPolicy
 	}).(RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutput)
 }
 
-// Specifies the retry policy associated with this route.  Structure is documented below.
+// Specifies the retry policy associated with this route.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherPathRuleRouteActionPtrOutput) RetryPolicy() RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPtrOutput {
 	return o.ApplyT(func(v *RegionUrlMapPathMatcherPathRuleRouteAction) *RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicy {
 		if v == nil {
@@ -25758,7 +26627,8 @@ func (o RegionUrlMapPathMatcherPathRuleRouteActionPtrOutput) RetryPolicy() Regio
 // Specifies the timeout for the selected route. Timeout is computed from the time
 // the request is has been fully processed (i.e. end-of-stream) up until the
 // response has been completely processed. Timeout includes all retries. If not
-// specified, the default value is 15 seconds.  Structure is documented below.
+// specified, the default value is 15 seconds.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherPathRuleRouteActionPtrOutput) Timeout() RegionUrlMapPathMatcherPathRuleRouteActionTimeoutPtrOutput {
 	return o.ApplyT(func(v *RegionUrlMapPathMatcherPathRuleRouteAction) *RegionUrlMapPathMatcherPathRuleRouteActionTimeout {
 		if v == nil {
@@ -25769,7 +26639,8 @@ func (o RegionUrlMapPathMatcherPathRuleRouteActionPtrOutput) Timeout() RegionUrl
 }
 
 // The spec to modify the URL of the request, prior to forwarding the request to
-// the matched service  Structure is documented below.
+// the matched service
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherPathRuleRouteActionPtrOutput) UrlRewrite() RegionUrlMapPathMatcherPathRuleRouteActionUrlRewritePtrOutput {
 	return o.ApplyT(func(v *RegionUrlMapPathMatcherPathRuleRouteAction) *RegionUrlMapPathMatcherPathRuleRouteActionUrlRewrite {
 		if v == nil {
@@ -25786,7 +26657,8 @@ func (o RegionUrlMapPathMatcherPathRuleRouteActionPtrOutput) UrlRewrite() Region
 // number. Once a backendService is identified and before forwarding the request to
 // the backend service, advanced routing actions like Url rewrites and header
 // transformations are applied depending on additional settings specified in this
-// HttpRouteAction.  Structure is documented below.
+// HttpRouteAction.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherPathRuleRouteActionPtrOutput) WeightedBackendServices() RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrayOutput {
 	return o.ApplyT(func(v *RegionUrlMapPathMatcherPathRuleRouteAction) []RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendService {
 		if v == nil {
@@ -26088,10 +26960,12 @@ func (o RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput) MaxAge() 
 
 type RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicy struct {
 	// The specification for how client requests are aborted as part of fault
-	// injection.  Structure is documented below.
+	// injection.
+	// Structure is documented below.
 	Abort *RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort `pulumi:"abort"`
 	// The specification for how client requests are delayed as part of fault
-	// injection, before being sent to a backend service.  Structure is documented below.
+	// injection, before being sent to a backend service.
+	// Structure is documented below.
 	Delay *RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay `pulumi:"delay"`
 }
 
@@ -26108,10 +26982,12 @@ type RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyInput interfa
 
 type RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs struct {
 	// The specification for how client requests are aborted as part of fault
-	// injection.  Structure is documented below.
+	// injection.
+	// Structure is documented below.
 	Abort RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrInput `pulumi:"abort"`
 	// The specification for how client requests are delayed as part of fault
-	// injection, before being sent to a backend service.  Structure is documented below.
+	// injection, before being sent to a backend service.
+	// Structure is documented below.
 	Delay RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrInput `pulumi:"delay"`
 }
 
@@ -26193,7 +27069,8 @@ func (o RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyOutput) To
 }
 
 // The specification for how client requests are aborted as part of fault
-// injection.  Structure is documented below.
+// injection.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyOutput) Abort() RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicy) *RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort {
 		return v.Abort
@@ -26201,7 +27078,8 @@ func (o RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyOutput) Ab
 }
 
 // The specification for how client requests are delayed as part of fault
-// injection, before being sent to a backend service.  Structure is documented below.
+// injection, before being sent to a backend service.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyOutput) Delay() RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicy) *RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay {
 		return v.Delay
@@ -26229,7 +27107,8 @@ func (o RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput)
 }
 
 // The specification for how client requests are aborted as part of fault
-// injection.  Structure is documented below.
+// injection.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput) Abort() RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrOutput {
 	return o.ApplyT(func(v *RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicy) *RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort {
 		if v == nil {
@@ -26240,7 +27119,8 @@ func (o RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput)
 }
 
 // The specification for how client requests are delayed as part of fault
-// injection, before being sent to a backend service.  Structure is documented below.
+// injection, before being sent to a backend service.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput) Delay() RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutput {
 	return o.ApplyT(func(v *RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicy) *RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay {
 		if v == nil {
@@ -26417,7 +27297,8 @@ func (o RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrOu
 }
 
 type RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay struct {
-	// Specifies the value of the fixed delay interval.  Structure is documented below.
+	// Specifies the value of the fixed delay interval.
+	// Structure is documented below.
 	FixedDelay RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay `pulumi:"fixedDelay"`
 	// The percentage of traffic (connections/operations/requests) on which delay will
 	// be introduced as part of fault injection. The value must be between 0.0 and
@@ -26437,7 +27318,8 @@ type RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayInput in
 }
 
 type RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs struct {
-	// Specifies the value of the fixed delay interval.  Structure is documented below.
+	// Specifies the value of the fixed delay interval.
+	// Structure is documented below.
 	FixedDelay RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayInput `pulumi:"fixedDelay"`
 	// The percentage of traffic (connections/operations/requests) on which delay will
 	// be introduced as part of fault injection. The value must be between 0.0 and
@@ -26522,7 +27404,8 @@ func (o RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayOutpu
 	}).(RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutput)
 }
 
-// Specifies the value of the fixed delay interval.  Structure is documented below.
+// Specifies the value of the fixed delay interval.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayOutput) FixedDelay() RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay) RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay {
 		return v.FixedDelay
@@ -26558,7 +27441,8 @@ func (o RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOu
 	}).(RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayOutput)
 }
 
-// Specifies the value of the fixed delay interval.  Structure is documented below.
+// Specifies the value of the fixed delay interval.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutput) FixedDelay() RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput {
 	return o.ApplyT(func(v *RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay) *RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay {
 		if v == nil {
@@ -26892,7 +27776,8 @@ func (o RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutput) 
 type RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicy struct {
 	// Specifies the allowed number retries. This number must be > 0.
 	NumRetries *int `pulumi:"numRetries"`
-	// Specifies a non-zero timeout per retry attempt.  Structure is documented below.
+	// Specifies a non-zero timeout per retry attempt.
+	// Structure is documented below.
 	PerTryTimeout *RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout `pulumi:"perTryTimeout"`
 	// Specifies one or more conditions when this retry rule applies. Valid values are:
 	// - 5xx: Loadbalancer will attempt a retry if the backend service responds with
@@ -26932,7 +27817,8 @@ type RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyInput interface {
 type RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyArgs struct {
 	// Specifies the allowed number retries. This number must be > 0.
 	NumRetries pulumi.IntPtrInput `pulumi:"numRetries"`
-	// Specifies a non-zero timeout per retry attempt.  Structure is documented below.
+	// Specifies a non-zero timeout per retry attempt.
+	// Structure is documented below.
 	PerTryTimeout RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrInput `pulumi:"perTryTimeout"`
 	// Specifies one or more conditions when this retry rule applies. Valid values are:
 	// - 5xx: Loadbalancer will attempt a retry if the backend service responds with
@@ -27040,7 +27926,8 @@ func (o RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyOutput) NumRetries(
 	return o.ApplyT(func(v RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicy) *int { return v.NumRetries }).(pulumi.IntPtrOutput)
 }
 
-// Specifies a non-zero timeout per retry attempt.  Structure is documented below.
+// Specifies a non-zero timeout per retry attempt.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyOutput) PerTryTimeout() RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicy) *RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout {
 		return v.PerTryTimeout
@@ -27102,7 +27989,8 @@ func (o RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPtrOutput) NumRetri
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies a non-zero timeout per retry attempt.  Structure is documented below.
+// Specifies a non-zero timeout per retry attempt.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPtrOutput) PerTryTimeout() RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput {
 	return o.ApplyT(func(v *RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicy) *RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout {
 		if v == nil {
@@ -27645,7 +28533,8 @@ type RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendService struct {
 	BackendService string `pulumi:"backendService"`
 	// Specifies changes to request and response headers that need to take effect for
 	// the selected backendService. headerAction specified here take effect before
-	// headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+	// headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+	// Structure is documented below.
 	HeaderAction *RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction `pulumi:"headerAction"`
 	// Specifies the fraction of traffic sent to backendService, computed as weight /
 	// (sum of all weightedBackendService weights in routeAction) . The selection of a
@@ -27674,7 +28563,8 @@ type RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs struct
 	BackendService pulumi.StringInput `pulumi:"backendService"`
 	// Specifies changes to request and response headers that need to take effect for
 	// the selected backendService. headerAction specified here take effect before
-	// headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+	// headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+	// Structure is documented below.
 	HeaderAction RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrInput `pulumi:"headerAction"`
 	// Specifies the fraction of traffic sent to backendService, computed as weight /
 	// (sum of all weightedBackendService weights in routeAction) . The selection of a
@@ -27747,7 +28637,8 @@ func (o RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceOutput) 
 
 // Specifies changes to request and response headers that need to take effect for
 // the selected backendService. headerAction specified here take effect before
-// headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+// headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceOutput) HeaderAction() RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendService) *RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction {
 		return v.HeaderAction
@@ -27786,12 +28677,14 @@ func (o RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrayOut
 
 type RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction struct {
 	// Headers to add to a matching request prior to forwarding the request to the
-	// backendService.  Structure is documented below.
+	// backendService.
+	// Structure is documented below.
 	RequestHeadersToAdds []RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd `pulumi:"requestHeadersToAdds"`
 	// A list of header names for headers that need to be removed from the request
 	// prior to forwarding the request to the backendService.
 	RequestHeadersToRemoves []string `pulumi:"requestHeadersToRemoves"`
-	// Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+	// Headers to add the response prior to sending the response back to the client.
+	// Structure is documented below.
 	ResponseHeadersToAdds []RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd `pulumi:"responseHeadersToAdds"`
 	// A list of header names for headers that need to be removed from the response
 	// prior to sending the response back to the client.
@@ -27811,12 +28704,14 @@ type RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActio
 
 type RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs struct {
 	// Headers to add to a matching request prior to forwarding the request to the
-	// backendService.  Structure is documented below.
+	// backendService.
+	// Structure is documented below.
 	RequestHeadersToAdds RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayInput `pulumi:"requestHeadersToAdds"`
 	// A list of header names for headers that need to be removed from the request
 	// prior to forwarding the request to the backendService.
 	RequestHeadersToRemoves pulumi.StringArrayInput `pulumi:"requestHeadersToRemoves"`
-	// Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+	// Headers to add the response prior to sending the response back to the client.
+	// Structure is documented below.
 	ResponseHeadersToAdds RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayInput `pulumi:"responseHeadersToAdds"`
 	// A list of header names for headers that need to be removed from the response
 	// prior to sending the response back to the client.
@@ -27901,7 +28796,8 @@ func (o RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAc
 }
 
 // Headers to add to a matching request prior to forwarding the request to the
-// backendService.  Structure is documented below.
+// backendService.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionOutput) RequestHeadersToAdds() RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction) []RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd {
 		return v.RequestHeadersToAdds
@@ -27916,7 +28812,8 @@ func (o RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAc
 	}).(pulumi.StringArrayOutput)
 }
 
-// Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+// Headers to add the response prior to sending the response back to the client.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionOutput) ResponseHeadersToAdds() RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction) []RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd {
 		return v.ResponseHeadersToAdds
@@ -27952,7 +28849,8 @@ func (o RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAc
 }
 
 // Headers to add to a matching request prior to forwarding the request to the
-// backendService.  Structure is documented below.
+// backendService.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput) RequestHeadersToAdds() RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput {
 	return o.ApplyT(func(v *RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction) []RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd {
 		if v == nil {
@@ -27973,7 +28871,8 @@ func (o RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAc
 	}).(pulumi.StringArrayOutput)
 }
 
-// Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+// Headers to add the response prior to sending the response back to the client.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput) ResponseHeadersToAdds() RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput {
 	return o.ApplyT(func(v *RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction) []RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd {
 		if v == nil {
@@ -28567,9 +29466,11 @@ func (o RegionUrlMapPathMatcherPathRuleUrlRedirectPtrOutput) StripQuery() pulumi
 type RegionUrlMapPathMatcherRouteRule struct {
 	// Specifies changes to request and response headers that need to take effect for
 	// the selected backendService. headerAction specified here take effect before
-	// headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+	// headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+	// Structure is documented below.
 	HeaderAction *RegionUrlMapPathMatcherRouteRuleHeaderAction `pulumi:"headerAction"`
-	// The rules for determining a match.  Structure is documented below.
+	// The rules for determining a match.
+	// Structure is documented below.
 	MatchRules []RegionUrlMapPathMatcherRouteRuleMatchRule `pulumi:"matchRules"`
 	// For routeRules within a given pathMatcher, priority determines the order
 	// in which load balancer will interpret routeRules. RouteRules are evaluated
@@ -28590,13 +29491,15 @@ type RegionUrlMapPathMatcherRouteRule struct {
 	// request to the selected backend. If routeAction specifies any
 	// weightedBackendServices, service must not be set. Conversely if service is set,
 	// routeAction cannot contain any  weightedBackendServices. Only one of routeAction
-	// or urlRedirect must be set.  Structure is documented below.
+	// or urlRedirect must be set.
+	// Structure is documented below.
 	RouteAction *RegionUrlMapPathMatcherRouteRuleRouteAction `pulumi:"routeAction"`
 	// A reference to expected RegionBackendService resource the given URL should be mapped to.
 	Service *string `pulumi:"service"`
 	// When a path pattern is matched, the request is redirected to a URL specified
 	// by urlRedirect. If urlRedirect is specified, service or routeAction must not
-	// be set.  Structure is documented below.
+	// be set.
+	// Structure is documented below.
 	UrlRedirect *RegionUrlMapPathMatcherRouteRuleUrlRedirect `pulumi:"urlRedirect"`
 }
 
@@ -28614,9 +29517,11 @@ type RegionUrlMapPathMatcherRouteRuleInput interface {
 type RegionUrlMapPathMatcherRouteRuleArgs struct {
 	// Specifies changes to request and response headers that need to take effect for
 	// the selected backendService. headerAction specified here take effect before
-	// headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+	// headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+	// Structure is documented below.
 	HeaderAction RegionUrlMapPathMatcherRouteRuleHeaderActionPtrInput `pulumi:"headerAction"`
-	// The rules for determining a match.  Structure is documented below.
+	// The rules for determining a match.
+	// Structure is documented below.
 	MatchRules RegionUrlMapPathMatcherRouteRuleMatchRuleArrayInput `pulumi:"matchRules"`
 	// For routeRules within a given pathMatcher, priority determines the order
 	// in which load balancer will interpret routeRules. RouteRules are evaluated
@@ -28637,13 +29542,15 @@ type RegionUrlMapPathMatcherRouteRuleArgs struct {
 	// request to the selected backend. If routeAction specifies any
 	// weightedBackendServices, service must not be set. Conversely if service is set,
 	// routeAction cannot contain any  weightedBackendServices. Only one of routeAction
-	// or urlRedirect must be set.  Structure is documented below.
+	// or urlRedirect must be set.
+	// Structure is documented below.
 	RouteAction RegionUrlMapPathMatcherRouteRuleRouteActionPtrInput `pulumi:"routeAction"`
 	// A reference to expected RegionBackendService resource the given URL should be mapped to.
 	Service pulumi.StringPtrInput `pulumi:"service"`
 	// When a path pattern is matched, the request is redirected to a URL specified
 	// by urlRedirect. If urlRedirect is specified, service or routeAction must not
-	// be set.  Structure is documented below.
+	// be set.
+	// Structure is documented below.
 	UrlRedirect RegionUrlMapPathMatcherRouteRuleUrlRedirectPtrInput `pulumi:"urlRedirect"`
 }
 
@@ -28700,14 +29607,16 @@ func (o RegionUrlMapPathMatcherRouteRuleOutput) ToRegionUrlMapPathMatcherRouteRu
 
 // Specifies changes to request and response headers that need to take effect for
 // the selected backendService. headerAction specified here take effect before
-// headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+// headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherRouteRuleOutput) HeaderAction() RegionUrlMapPathMatcherRouteRuleHeaderActionPtrOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherRouteRule) *RegionUrlMapPathMatcherRouteRuleHeaderAction {
 		return v.HeaderAction
 	}).(RegionUrlMapPathMatcherRouteRuleHeaderActionPtrOutput)
 }
 
-// The rules for determining a match.  Structure is documented below.
+// The rules for determining a match.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherRouteRuleOutput) MatchRules() RegionUrlMapPathMatcherRouteRuleMatchRuleArrayOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherRouteRule) []RegionUrlMapPathMatcherRouteRuleMatchRule {
 		return v.MatchRules
@@ -28736,7 +29645,8 @@ func (o RegionUrlMapPathMatcherRouteRuleOutput) Priority() pulumi.IntOutput {
 // request to the selected backend. If routeAction specifies any
 // weightedBackendServices, service must not be set. Conversely if service is set,
 // routeAction cannot contain any  weightedBackendServices. Only one of routeAction
-// or urlRedirect must be set.  Structure is documented below.
+// or urlRedirect must be set.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherRouteRuleOutput) RouteAction() RegionUrlMapPathMatcherRouteRuleRouteActionPtrOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherRouteRule) *RegionUrlMapPathMatcherRouteRuleRouteAction {
 		return v.RouteAction
@@ -28750,7 +29660,8 @@ func (o RegionUrlMapPathMatcherRouteRuleOutput) Service() pulumi.StringPtrOutput
 
 // When a path pattern is matched, the request is redirected to a URL specified
 // by urlRedirect. If urlRedirect is specified, service or routeAction must not
-// be set.  Structure is documented below.
+// be set.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherRouteRuleOutput) UrlRedirect() RegionUrlMapPathMatcherRouteRuleUrlRedirectPtrOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherRouteRule) *RegionUrlMapPathMatcherRouteRuleUrlRedirect {
 		return v.UrlRedirect
@@ -28779,12 +29690,14 @@ func (o RegionUrlMapPathMatcherRouteRuleArrayOutput) Index(i pulumi.IntInput) Re
 
 type RegionUrlMapPathMatcherRouteRuleHeaderAction struct {
 	// Headers to add to a matching request prior to forwarding the request to the
-	// backendService.  Structure is documented below.
+	// backendService.
+	// Structure is documented below.
 	RequestHeadersToAdds []RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAdd `pulumi:"requestHeadersToAdds"`
 	// A list of header names for headers that need to be removed from the request
 	// prior to forwarding the request to the backendService.
 	RequestHeadersToRemoves []string `pulumi:"requestHeadersToRemoves"`
-	// Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+	// Headers to add the response prior to sending the response back to the client.
+	// Structure is documented below.
 	ResponseHeadersToAdds []RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd `pulumi:"responseHeadersToAdds"`
 	// A list of header names for headers that need to be removed from the response
 	// prior to sending the response back to the client.
@@ -28804,12 +29717,14 @@ type RegionUrlMapPathMatcherRouteRuleHeaderActionInput interface {
 
 type RegionUrlMapPathMatcherRouteRuleHeaderActionArgs struct {
 	// Headers to add to a matching request prior to forwarding the request to the
-	// backendService.  Structure is documented below.
+	// backendService.
+	// Structure is documented below.
 	RequestHeadersToAdds RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrayInput `pulumi:"requestHeadersToAdds"`
 	// A list of header names for headers that need to be removed from the request
 	// prior to forwarding the request to the backendService.
 	RequestHeadersToRemoves pulumi.StringArrayInput `pulumi:"requestHeadersToRemoves"`
-	// Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+	// Headers to add the response prior to sending the response back to the client.
+	// Structure is documented below.
 	ResponseHeadersToAdds RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrayInput `pulumi:"responseHeadersToAdds"`
 	// A list of header names for headers that need to be removed from the response
 	// prior to sending the response back to the client.
@@ -28894,7 +29809,8 @@ func (o RegionUrlMapPathMatcherRouteRuleHeaderActionOutput) ToRegionUrlMapPathMa
 }
 
 // Headers to add to a matching request prior to forwarding the request to the
-// backendService.  Structure is documented below.
+// backendService.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherRouteRuleHeaderActionOutput) RequestHeadersToAdds() RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrayOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherRouteRuleHeaderAction) []RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAdd {
 		return v.RequestHeadersToAdds
@@ -28907,7 +29823,8 @@ func (o RegionUrlMapPathMatcherRouteRuleHeaderActionOutput) RequestHeadersToRemo
 	return o.ApplyT(func(v RegionUrlMapPathMatcherRouteRuleHeaderAction) []string { return v.RequestHeadersToRemoves }).(pulumi.StringArrayOutput)
 }
 
-// Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+// Headers to add the response prior to sending the response back to the client.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherRouteRuleHeaderActionOutput) ResponseHeadersToAdds() RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrayOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherRouteRuleHeaderAction) []RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd {
 		return v.ResponseHeadersToAdds
@@ -28941,7 +29858,8 @@ func (o RegionUrlMapPathMatcherRouteRuleHeaderActionPtrOutput) Elem() RegionUrlM
 }
 
 // Headers to add to a matching request prior to forwarding the request to the
-// backendService.  Structure is documented below.
+// backendService.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherRouteRuleHeaderActionPtrOutput) RequestHeadersToAdds() RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrayOutput {
 	return o.ApplyT(func(v *RegionUrlMapPathMatcherRouteRuleHeaderAction) []RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAdd {
 		if v == nil {
@@ -28962,7 +29880,8 @@ func (o RegionUrlMapPathMatcherRouteRuleHeaderActionPtrOutput) RequestHeadersToR
 	}).(pulumi.StringArrayOutput)
 }
 
-// Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+// Headers to add the response prior to sending the response back to the client.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherRouteRuleHeaderActionPtrOutput) ResponseHeadersToAdds() RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrayOutput {
 	return o.ApplyT(func(v *RegionUrlMapPathMatcherRouteRuleHeaderAction) []RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd {
 		if v == nil {
@@ -29233,7 +30152,8 @@ type RegionUrlMapPathMatcherRouteRuleMatchRule struct {
 	// be specified.
 	FullPathMatch *string `pulumi:"fullPathMatch"`
 	// Specifies a list of header match criteria, all of which must match corresponding
-	// headers in the request.  Structure is documented below.
+	// headers in the request.
+	// Structure is documented below.
 	HeaderMatches []RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatch `pulumi:"headerMatches"`
 	// Specifies that prefixMatch and fullPathMatch matches are case sensitive.
 	// Defaults to false.
@@ -29248,14 +30168,16 @@ type RegionUrlMapPathMatcherRouteRuleMatchRule struct {
 	// with corresponding labels in the provided metadata. metadataFilters specified
 	// here can be overrides those specified in ForwardingRule that refers to this
 	// UrlMap. metadataFilters only applies to Loadbalancers that have their
-	// loadBalancingScheme set to INTERNAL_SELF_MANAGED.  Structure is documented below.
+	// loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	// Structure is documented below.
 	MetadataFilters []RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter `pulumi:"metadataFilters"`
 	// The value of the header must start with the contents of prefixMatch. Only one of
 	// exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
 	// must be set.
 	PrefixMatch *string `pulumi:"prefixMatch"`
 	// Specifies a list of query parameter match criteria, all of which must match
-	// corresponding query parameters in the request.  Structure is documented below.
+	// corresponding query parameters in the request.
+	// Structure is documented below.
 	QueryParameterMatches []RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatch `pulumi:"queryParameterMatches"`
 	// The queryParameterMatch matches if the value of the parameter matches the
 	// regular expression specified by regexMatch. For the regular expression grammar,
@@ -29283,7 +30205,8 @@ type RegionUrlMapPathMatcherRouteRuleMatchRuleArgs struct {
 	// be specified.
 	FullPathMatch pulumi.StringPtrInput `pulumi:"fullPathMatch"`
 	// Specifies a list of header match criteria, all of which must match corresponding
-	// headers in the request.  Structure is documented below.
+	// headers in the request.
+	// Structure is documented below.
 	HeaderMatches RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchArrayInput `pulumi:"headerMatches"`
 	// Specifies that prefixMatch and fullPathMatch matches are case sensitive.
 	// Defaults to false.
@@ -29298,14 +30221,16 @@ type RegionUrlMapPathMatcherRouteRuleMatchRuleArgs struct {
 	// with corresponding labels in the provided metadata. metadataFilters specified
 	// here can be overrides those specified in ForwardingRule that refers to this
 	// UrlMap. metadataFilters only applies to Loadbalancers that have their
-	// loadBalancingScheme set to INTERNAL_SELF_MANAGED.  Structure is documented below.
+	// loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	// Structure is documented below.
 	MetadataFilters RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterArrayInput `pulumi:"metadataFilters"`
 	// The value of the header must start with the contents of prefixMatch. Only one of
 	// exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
 	// must be set.
 	PrefixMatch pulumi.StringPtrInput `pulumi:"prefixMatch"`
 	// Specifies a list of query parameter match criteria, all of which must match
-	// corresponding query parameters in the request.  Structure is documented below.
+	// corresponding query parameters in the request.
+	// Structure is documented below.
 	QueryParameterMatches RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArrayInput `pulumi:"queryParameterMatches"`
 	// The queryParameterMatch matches if the value of the parameter matches the
 	// regular expression specified by regexMatch. For the regular expression grammar,
@@ -29375,7 +30300,8 @@ func (o RegionUrlMapPathMatcherRouteRuleMatchRuleOutput) FullPathMatch() pulumi.
 }
 
 // Specifies a list of header match criteria, all of which must match corresponding
-// headers in the request.  Structure is documented below.
+// headers in the request.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherRouteRuleMatchRuleOutput) HeaderMatches() RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchArrayOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherRouteRuleMatchRule) []RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatch {
 		return v.HeaderMatches
@@ -29398,7 +30324,8 @@ func (o RegionUrlMapPathMatcherRouteRuleMatchRuleOutput) IgnoreCase() pulumi.Boo
 // with corresponding labels in the provided metadata. metadataFilters specified
 // here can be overrides those specified in ForwardingRule that refers to this
 // UrlMap. metadataFilters only applies to Loadbalancers that have their
-// loadBalancingScheme set to INTERNAL_SELF_MANAGED.  Structure is documented below.
+// loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherRouteRuleMatchRuleOutput) MetadataFilters() RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterArrayOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherRouteRuleMatchRule) []RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter {
 		return v.MetadataFilters
@@ -29413,7 +30340,8 @@ func (o RegionUrlMapPathMatcherRouteRuleMatchRuleOutput) PrefixMatch() pulumi.St
 }
 
 // Specifies a list of query parameter match criteria, all of which must match
-// corresponding query parameters in the request.  Structure is documented below.
+// corresponding query parameters in the request.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherRouteRuleMatchRuleOutput) QueryParameterMatches() RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArrayOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherRouteRuleMatchRule) []RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatch {
 		return v.QueryParameterMatches
@@ -29472,7 +30400,8 @@ type RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatch struct {
 	// the match fails. For example for a range [-5, 0]   - -3 will match.  - 0 will
 	// not match.  - 0.25 will not match.  - -3someString will not match.   Only one of
 	// exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
-	// must be set.  Structure is documented below.
+	// must be set.
+	// Structure is documented below.
 	RangeMatch *RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch `pulumi:"rangeMatch"`
 	// The queryParameterMatch matches if the value of the parameter matches the
 	// regular expression specified by regexMatch. For the regular expression grammar,
@@ -29520,7 +30449,8 @@ type RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs struct {
 	// the match fails. For example for a range [-5, 0]   - -3 will match.  - 0 will
 	// not match.  - 0.25 will not match.  - -3someString will not match.   Only one of
 	// exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
-	// must be set.  Structure is documented below.
+	// must be set.
+	// Structure is documented below.
 	RangeMatch RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrInput `pulumi:"rangeMatch"`
 	// The queryParameterMatch matches if the value of the parameter matches the
 	// regular expression specified by regexMatch. For the regular expression grammar,
@@ -29622,7 +30552,8 @@ func (o RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchOutput) PresentMatch
 // the match fails. For example for a range [-5, 0]   - -3 will match.  - 0 will
 // not match.  - 0.25 will not match.  - -3someString will not match.   Only one of
 // exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
-// must be set.  Structure is documented below.
+// must be set.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchOutput) RangeMatch() RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatch) *RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch {
 		return v.RangeMatch
@@ -29819,7 +30750,8 @@ func (o RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrOutput)
 type RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter struct {
 	// The list of label value pairs that must match labels in the provided metadata
 	// based on filterMatchCriteria  This list must not be empty and can have at the
-	// most 64 entries.  Structure is documented below.
+	// most 64 entries.
+	// Structure is documented below.
 	FilterLabels []RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel `pulumi:"filterLabels"`
 	// Specifies how individual filterLabel matches within the list of filterLabels
 	// contribute towards the overall metadataFilter match. Supported values are:
@@ -29827,6 +30759,7 @@ type RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter struct {
 	//   provided metadata.
 	// - MATCH_ALL: All filterLabels must have matching labels in
 	//   the provided metadata.
+	//   Possible values are `MATCH_ALL` and `MATCH_ANY`.
 	FilterMatchCriteria string `pulumi:"filterMatchCriteria"`
 }
 
@@ -29844,7 +30777,8 @@ type RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterInput interface {
 type RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs struct {
 	// The list of label value pairs that must match labels in the provided metadata
 	// based on filterMatchCriteria  This list must not be empty and can have at the
-	// most 64 entries.  Structure is documented below.
+	// most 64 entries.
+	// Structure is documented below.
 	FilterLabels RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArrayInput `pulumi:"filterLabels"`
 	// Specifies how individual filterLabel matches within the list of filterLabels
 	// contribute towards the overall metadataFilter match. Supported values are:
@@ -29852,6 +30786,7 @@ type RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs struct {
 	//   provided metadata.
 	// - MATCH_ALL: All filterLabels must have matching labels in
 	//   the provided metadata.
+	//   Possible values are `MATCH_ALL` and `MATCH_ANY`.
 	FilterMatchCriteria pulumi.StringInput `pulumi:"filterMatchCriteria"`
 }
 
@@ -29908,7 +30843,8 @@ func (o RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterOutput) ToRegionU
 
 // The list of label value pairs that must match labels in the provided metadata
 // based on filterMatchCriteria  This list must not be empty and can have at the
-// most 64 entries.  Structure is documented below.
+// most 64 entries.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterOutput) FilterLabels() RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArrayOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter) []RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel {
 		return v.FilterLabels
@@ -29921,6 +30857,7 @@ func (o RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterOutput) FilterLab
 //   provided metadata.
 // - MATCH_ALL: All filterLabels must have matching labels in
 //   the provided metadata.
+//   Possible values are `MATCH_ALL` and `MATCH_ANY`.
 func (o RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterOutput) FilterMatchCriteria() pulumi.StringOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter) string { return v.FilterMatchCriteria }).(pulumi.StringOutput)
 }
@@ -30207,7 +31144,8 @@ func (o RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArrayOutput)
 
 type RegionUrlMapPathMatcherRouteRuleRouteAction struct {
 	// The specification for allowing client side cross-origin requests. Please see W3C
-	// Recommendation for Cross Origin Resource Sharing  Structure is documented below.
+	// Recommendation for Cross Origin Resource Sharing
+	// Structure is documented below.
 	CorsPolicy *RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicy `pulumi:"corsPolicy"`
 	// The specification for fault injection introduced into traffic to test the
 	// resiliency of clients to backend service failure. As part of fault injection,
@@ -30215,22 +31153,27 @@ type RegionUrlMapPathMatcherRouteRuleRouteAction struct {
 	// Loadbalancer on a percentage of requests before sending those request to the
 	// backend service. Similarly requests from clients can be aborted by the
 	// Loadbalancer for a percentage of requests. timeout and retryPolicy will be
-	// ignored by clients that are configured with a fault_injection_policy.  Structure is documented below.
+	// ignored by clients that are configured with a fault_injection_policy.
+	// Structure is documented below.
 	FaultInjectionPolicy *RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy `pulumi:"faultInjectionPolicy"`
 	// Specifies the policy on how requests intended for the route's backends are
 	// shadowed to a separate mirrored backend service. Loadbalancer does not wait for
 	// responses from the shadow service. Prior to sending traffic to the shadow
-	// service, the host / authority header is suffixed with -shadow.  Structure is documented below.
+	// service, the host / authority header is suffixed with -shadow.
+	// Structure is documented below.
 	RequestMirrorPolicy *RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy `pulumi:"requestMirrorPolicy"`
-	// Specifies the retry policy associated with this route.  Structure is documented below.
+	// Specifies the retry policy associated with this route.
+	// Structure is documented below.
 	RetryPolicy *RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicy `pulumi:"retryPolicy"`
 	// Specifies the timeout for the selected route. Timeout is computed from the time
 	// the request is has been fully processed (i.e. end-of-stream) up until the
 	// response has been completely processed. Timeout includes all retries. If not
-	// specified, the default value is 15 seconds.  Structure is documented below.
+	// specified, the default value is 15 seconds.
+	// Structure is documented below.
 	Timeout *RegionUrlMapPathMatcherRouteRuleRouteActionTimeout `pulumi:"timeout"`
 	// The spec to modify the URL of the request, prior to forwarding the request to
-	// the matched service  Structure is documented below.
+	// the matched service
+	// Structure is documented below.
 	UrlRewrite *RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite `pulumi:"urlRewrite"`
 	// A list of weighted backend services to send traffic to when a route match
 	// occurs. The weights determine the fraction of traffic that flows to their
@@ -30239,7 +31182,8 @@ type RegionUrlMapPathMatcherRouteRuleRouteAction struct {
 	// number. Once a backendService is identified and before forwarding the request to
 	// the backend service, advanced routing actions like Url rewrites and header
 	// transformations are applied depending on additional settings specified in this
-	// HttpRouteAction.  Structure is documented below.
+	// HttpRouteAction.
+	// Structure is documented below.
 	WeightedBackendServices []RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendService `pulumi:"weightedBackendServices"`
 }
 
@@ -30256,7 +31200,8 @@ type RegionUrlMapPathMatcherRouteRuleRouteActionInput interface {
 
 type RegionUrlMapPathMatcherRouteRuleRouteActionArgs struct {
 	// The specification for allowing client side cross-origin requests. Please see W3C
-	// Recommendation for Cross Origin Resource Sharing  Structure is documented below.
+	// Recommendation for Cross Origin Resource Sharing
+	// Structure is documented below.
 	CorsPolicy RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicyPtrInput `pulumi:"corsPolicy"`
 	// The specification for fault injection introduced into traffic to test the
 	// resiliency of clients to backend service failure. As part of fault injection,
@@ -30264,22 +31209,27 @@ type RegionUrlMapPathMatcherRouteRuleRouteActionArgs struct {
 	// Loadbalancer on a percentage of requests before sending those request to the
 	// backend service. Similarly requests from clients can be aborted by the
 	// Loadbalancer for a percentage of requests. timeout and retryPolicy will be
-	// ignored by clients that are configured with a fault_injection_policy.  Structure is documented below.
+	// ignored by clients that are configured with a fault_injection_policy.
+	// Structure is documented below.
 	FaultInjectionPolicy RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrInput `pulumi:"faultInjectionPolicy"`
 	// Specifies the policy on how requests intended for the route's backends are
 	// shadowed to a separate mirrored backend service. Loadbalancer does not wait for
 	// responses from the shadow service. Prior to sending traffic to the shadow
-	// service, the host / authority header is suffixed with -shadow.  Structure is documented below.
+	// service, the host / authority header is suffixed with -shadow.
+	// Structure is documented below.
 	RequestMirrorPolicy RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyPtrInput `pulumi:"requestMirrorPolicy"`
-	// Specifies the retry policy associated with this route.  Structure is documented below.
+	// Specifies the retry policy associated with this route.
+	// Structure is documented below.
 	RetryPolicy RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPtrInput `pulumi:"retryPolicy"`
 	// Specifies the timeout for the selected route. Timeout is computed from the time
 	// the request is has been fully processed (i.e. end-of-stream) up until the
 	// response has been completely processed. Timeout includes all retries. If not
-	// specified, the default value is 15 seconds.  Structure is documented below.
+	// specified, the default value is 15 seconds.
+	// Structure is documented below.
 	Timeout RegionUrlMapPathMatcherRouteRuleRouteActionTimeoutPtrInput `pulumi:"timeout"`
 	// The spec to modify the URL of the request, prior to forwarding the request to
-	// the matched service  Structure is documented below.
+	// the matched service
+	// Structure is documented below.
 	UrlRewrite RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewritePtrInput `pulumi:"urlRewrite"`
 	// A list of weighted backend services to send traffic to when a route match
 	// occurs. The weights determine the fraction of traffic that flows to their
@@ -30288,7 +31238,8 @@ type RegionUrlMapPathMatcherRouteRuleRouteActionArgs struct {
 	// number. Once a backendService is identified and before forwarding the request to
 	// the backend service, advanced routing actions like Url rewrites and header
 	// transformations are applied depending on additional settings specified in this
-	// HttpRouteAction.  Structure is documented below.
+	// HttpRouteAction.
+	// Structure is documented below.
 	WeightedBackendServices RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrayInput `pulumi:"weightedBackendServices"`
 }
 
@@ -30370,7 +31321,8 @@ func (o RegionUrlMapPathMatcherRouteRuleRouteActionOutput) ToRegionUrlMapPathMat
 }
 
 // The specification for allowing client side cross-origin requests. Please see W3C
-// Recommendation for Cross Origin Resource Sharing  Structure is documented below.
+// Recommendation for Cross Origin Resource Sharing
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherRouteRuleRouteActionOutput) CorsPolicy() RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherRouteRuleRouteAction) *RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicy {
 		return v.CorsPolicy
@@ -30383,7 +31335,8 @@ func (o RegionUrlMapPathMatcherRouteRuleRouteActionOutput) CorsPolicy() RegionUr
 // Loadbalancer on a percentage of requests before sending those request to the
 // backend service. Similarly requests from clients can be aborted by the
 // Loadbalancer for a percentage of requests. timeout and retryPolicy will be
-// ignored by clients that are configured with a fault_injection_policy.  Structure is documented below.
+// ignored by clients that are configured with a fault_injection_policy.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherRouteRuleRouteActionOutput) FaultInjectionPolicy() RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherRouteRuleRouteAction) *RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy {
 		return v.FaultInjectionPolicy
@@ -30393,14 +31346,16 @@ func (o RegionUrlMapPathMatcherRouteRuleRouteActionOutput) FaultInjectionPolicy(
 // Specifies the policy on how requests intended for the route's backends are
 // shadowed to a separate mirrored backend service. Loadbalancer does not wait for
 // responses from the shadow service. Prior to sending traffic to the shadow
-// service, the host / authority header is suffixed with -shadow.  Structure is documented below.
+// service, the host / authority header is suffixed with -shadow.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherRouteRuleRouteActionOutput) RequestMirrorPolicy() RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyPtrOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherRouteRuleRouteAction) *RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy {
 		return v.RequestMirrorPolicy
 	}).(RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyPtrOutput)
 }
 
-// Specifies the retry policy associated with this route.  Structure is documented below.
+// Specifies the retry policy associated with this route.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherRouteRuleRouteActionOutput) RetryPolicy() RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherRouteRuleRouteAction) *RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicy {
 		return v.RetryPolicy
@@ -30410,7 +31365,8 @@ func (o RegionUrlMapPathMatcherRouteRuleRouteActionOutput) RetryPolicy() RegionU
 // Specifies the timeout for the selected route. Timeout is computed from the time
 // the request is has been fully processed (i.e. end-of-stream) up until the
 // response has been completely processed. Timeout includes all retries. If not
-// specified, the default value is 15 seconds.  Structure is documented below.
+// specified, the default value is 15 seconds.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherRouteRuleRouteActionOutput) Timeout() RegionUrlMapPathMatcherRouteRuleRouteActionTimeoutPtrOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherRouteRuleRouteAction) *RegionUrlMapPathMatcherRouteRuleRouteActionTimeout {
 		return v.Timeout
@@ -30418,7 +31374,8 @@ func (o RegionUrlMapPathMatcherRouteRuleRouteActionOutput) Timeout() RegionUrlMa
 }
 
 // The spec to modify the URL of the request, prior to forwarding the request to
-// the matched service  Structure is documented below.
+// the matched service
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherRouteRuleRouteActionOutput) UrlRewrite() RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherRouteRuleRouteAction) *RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite {
 		return v.UrlRewrite
@@ -30432,7 +31389,8 @@ func (o RegionUrlMapPathMatcherRouteRuleRouteActionOutput) UrlRewrite() RegionUr
 // number. Once a backendService is identified and before forwarding the request to
 // the backend service, advanced routing actions like Url rewrites and header
 // transformations are applied depending on additional settings specified in this
-// HttpRouteAction.  Structure is documented below.
+// HttpRouteAction.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherRouteRuleRouteActionOutput) WeightedBackendServices() RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrayOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherRouteRuleRouteAction) []RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendService {
 		return v.WeightedBackendServices
@@ -30460,7 +31418,8 @@ func (o RegionUrlMapPathMatcherRouteRuleRouteActionPtrOutput) Elem() RegionUrlMa
 }
 
 // The specification for allowing client side cross-origin requests. Please see W3C
-// Recommendation for Cross Origin Resource Sharing  Structure is documented below.
+// Recommendation for Cross Origin Resource Sharing
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherRouteRuleRouteActionPtrOutput) CorsPolicy() RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput {
 	return o.ApplyT(func(v *RegionUrlMapPathMatcherRouteRuleRouteAction) *RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicy {
 		if v == nil {
@@ -30476,7 +31435,8 @@ func (o RegionUrlMapPathMatcherRouteRuleRouteActionPtrOutput) CorsPolicy() Regio
 // Loadbalancer on a percentage of requests before sending those request to the
 // backend service. Similarly requests from clients can be aborted by the
 // Loadbalancer for a percentage of requests. timeout and retryPolicy will be
-// ignored by clients that are configured with a fault_injection_policy.  Structure is documented below.
+// ignored by clients that are configured with a fault_injection_policy.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherRouteRuleRouteActionPtrOutput) FaultInjectionPolicy() RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput {
 	return o.ApplyT(func(v *RegionUrlMapPathMatcherRouteRuleRouteAction) *RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy {
 		if v == nil {
@@ -30489,7 +31449,8 @@ func (o RegionUrlMapPathMatcherRouteRuleRouteActionPtrOutput) FaultInjectionPoli
 // Specifies the policy on how requests intended for the route's backends are
 // shadowed to a separate mirrored backend service. Loadbalancer does not wait for
 // responses from the shadow service. Prior to sending traffic to the shadow
-// service, the host / authority header is suffixed with -shadow.  Structure is documented below.
+// service, the host / authority header is suffixed with -shadow.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherRouteRuleRouteActionPtrOutput) RequestMirrorPolicy() RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyPtrOutput {
 	return o.ApplyT(func(v *RegionUrlMapPathMatcherRouteRuleRouteAction) *RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy {
 		if v == nil {
@@ -30499,7 +31460,8 @@ func (o RegionUrlMapPathMatcherRouteRuleRouteActionPtrOutput) RequestMirrorPolic
 	}).(RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyPtrOutput)
 }
 
-// Specifies the retry policy associated with this route.  Structure is documented below.
+// Specifies the retry policy associated with this route.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherRouteRuleRouteActionPtrOutput) RetryPolicy() RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutput {
 	return o.ApplyT(func(v *RegionUrlMapPathMatcherRouteRuleRouteAction) *RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicy {
 		if v == nil {
@@ -30512,7 +31474,8 @@ func (o RegionUrlMapPathMatcherRouteRuleRouteActionPtrOutput) RetryPolicy() Regi
 // Specifies the timeout for the selected route. Timeout is computed from the time
 // the request is has been fully processed (i.e. end-of-stream) up until the
 // response has been completely processed. Timeout includes all retries. If not
-// specified, the default value is 15 seconds.  Structure is documented below.
+// specified, the default value is 15 seconds.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherRouteRuleRouteActionPtrOutput) Timeout() RegionUrlMapPathMatcherRouteRuleRouteActionTimeoutPtrOutput {
 	return o.ApplyT(func(v *RegionUrlMapPathMatcherRouteRuleRouteAction) *RegionUrlMapPathMatcherRouteRuleRouteActionTimeout {
 		if v == nil {
@@ -30523,7 +31486,8 @@ func (o RegionUrlMapPathMatcherRouteRuleRouteActionPtrOutput) Timeout() RegionUr
 }
 
 // The spec to modify the URL of the request, prior to forwarding the request to
-// the matched service  Structure is documented below.
+// the matched service
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherRouteRuleRouteActionPtrOutput) UrlRewrite() RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutput {
 	return o.ApplyT(func(v *RegionUrlMapPathMatcherRouteRuleRouteAction) *RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite {
 		if v == nil {
@@ -30540,7 +31504,8 @@ func (o RegionUrlMapPathMatcherRouteRuleRouteActionPtrOutput) UrlRewrite() Regio
 // number. Once a backendService is identified and before forwarding the request to
 // the backend service, advanced routing actions like Url rewrites and header
 // transformations are applied depending on additional settings specified in this
-// HttpRouteAction.  Structure is documented below.
+// HttpRouteAction.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherRouteRuleRouteActionPtrOutput) WeightedBackendServices() RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrayOutput {
 	return o.ApplyT(func(v *RegionUrlMapPathMatcherRouteRuleRouteAction) []RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendService {
 		if v == nil {
@@ -30842,10 +31807,12 @@ func (o RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput) MaxAge()
 
 type RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy struct {
 	// The specification for how client requests are aborted as part of fault
-	// injection.  Structure is documented below.
+	// injection.
+	// Structure is documented below.
 	Abort *RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort `pulumi:"abort"`
 	// The specification for how client requests are delayed as part of fault
-	// injection, before being sent to a backend service.  Structure is documented below.
+	// injection, before being sent to a backend service.
+	// Structure is documented below.
 	Delay *RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay `pulumi:"delay"`
 }
 
@@ -30862,10 +31829,12 @@ type RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyInput interf
 
 type RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs struct {
 	// The specification for how client requests are aborted as part of fault
-	// injection.  Structure is documented below.
+	// injection.
+	// Structure is documented below.
 	Abort RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrInput `pulumi:"abort"`
 	// The specification for how client requests are delayed as part of fault
-	// injection, before being sent to a backend service.  Structure is documented below.
+	// injection, before being sent to a backend service.
+	// Structure is documented below.
 	Delay RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayPtrInput `pulumi:"delay"`
 }
 
@@ -30947,7 +31916,8 @@ func (o RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyOutput) T
 }
 
 // The specification for how client requests are aborted as part of fault
-// injection.  Structure is documented below.
+// injection.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyOutput) Abort() RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy) *RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort {
 		return v.Abort
@@ -30955,7 +31925,8 @@ func (o RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyOutput) A
 }
 
 // The specification for how client requests are delayed as part of fault
-// injection, before being sent to a backend service.  Structure is documented below.
+// injection, before being sent to a backend service.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyOutput) Delay() RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayPtrOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy) *RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay {
 		return v.Delay
@@ -30983,7 +31954,8 @@ func (o RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput
 }
 
 // The specification for how client requests are aborted as part of fault
-// injection.  Structure is documented below.
+// injection.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput) Abort() RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrOutput {
 	return o.ApplyT(func(v *RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy) *RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort {
 		if v == nil {
@@ -30994,7 +31966,8 @@ func (o RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput
 }
 
 // The specification for how client requests are delayed as part of fault
-// injection, before being sent to a backend service.  Structure is documented below.
+// injection, before being sent to a backend service.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput) Delay() RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayPtrOutput {
 	return o.ApplyT(func(v *RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy) *RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay {
 		if v == nil {
@@ -31171,7 +32144,8 @@ func (o RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrO
 }
 
 type RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay struct {
-	// Specifies the value of the fixed delay interval.  Structure is documented below.
+	// Specifies the value of the fixed delay interval.
+	// Structure is documented below.
 	FixedDelay *RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelay `pulumi:"fixedDelay"`
 	// The percentage of traffic (connections/operations/requests) on which delay will
 	// be introduced as part of fault injection. The value must be between 0.0 and
@@ -31191,7 +32165,8 @@ type RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayInput i
 }
 
 type RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgs struct {
-	// Specifies the value of the fixed delay interval.  Structure is documented below.
+	// Specifies the value of the fixed delay interval.
+	// Structure is documented below.
 	FixedDelay RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrInput `pulumi:"fixedDelay"`
 	// The percentage of traffic (connections/operations/requests) on which delay will
 	// be introduced as part of fault injection. The value must be between 0.0 and
@@ -31276,7 +32251,8 @@ func (o RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayOutp
 	}).(RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayPtrOutput)
 }
 
-// Specifies the value of the fixed delay interval.  Structure is documented below.
+// Specifies the value of the fixed delay interval.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayOutput) FixedDelay() RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay) *RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelay {
 		return v.FixedDelay
@@ -31312,7 +32288,8 @@ func (o RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayPtrO
 	}).(RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayOutput)
 }
 
-// Specifies the value of the fixed delay interval.  Structure is documented below.
+// Specifies the value of the fixed delay interval.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayPtrOutput) FixedDelay() RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput {
 	return o.ApplyT(func(v *RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay) *RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelay {
 		if v == nil {
@@ -31646,7 +32623,8 @@ func (o RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyPtrOutput)
 type RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicy struct {
 	// Specifies the allowed number retries. This number must be > 0.
 	NumRetries int `pulumi:"numRetries"`
-	// Specifies a non-zero timeout per retry attempt.  Structure is documented below.
+	// Specifies a non-zero timeout per retry attempt.
+	// Structure is documented below.
 	PerTryTimeout *RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout `pulumi:"perTryTimeout"`
 	// Specifies one or more conditions when this retry rule applies. Valid values are:
 	// - 5xx: Loadbalancer will attempt a retry if the backend service responds with
@@ -31686,7 +32664,8 @@ type RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyInput interface {
 type RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyArgs struct {
 	// Specifies the allowed number retries. This number must be > 0.
 	NumRetries pulumi.IntInput `pulumi:"numRetries"`
-	// Specifies a non-zero timeout per retry attempt.  Structure is documented below.
+	// Specifies a non-zero timeout per retry attempt.
+	// Structure is documented below.
 	PerTryTimeout RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrInput `pulumi:"perTryTimeout"`
 	// Specifies one or more conditions when this retry rule applies. Valid values are:
 	// - 5xx: Loadbalancer will attempt a retry if the backend service responds with
@@ -31794,7 +32773,8 @@ func (o RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyOutput) NumRetries
 	return o.ApplyT(func(v RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicy) int { return v.NumRetries }).(pulumi.IntOutput)
 }
 
-// Specifies a non-zero timeout per retry attempt.  Structure is documented below.
+// Specifies a non-zero timeout per retry attempt.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyOutput) PerTryTimeout() RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicy) *RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout {
 		return v.PerTryTimeout
@@ -31856,7 +32836,8 @@ func (o RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutput) NumRetr
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies a non-zero timeout per retry attempt.  Structure is documented below.
+// Specifies a non-zero timeout per retry attempt.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutput) PerTryTimeout() RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput {
 	return o.ApplyT(func(v *RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicy) *RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout {
 		if v == nil {
@@ -32399,7 +33380,8 @@ type RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendService struct {
 	BackendService string `pulumi:"backendService"`
 	// Specifies changes to request and response headers that need to take effect for
 	// the selected backendService. headerAction specified here take effect before
-	// headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+	// headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+	// Structure is documented below.
 	HeaderAction *RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction `pulumi:"headerAction"`
 	// Specifies the fraction of traffic sent to backendService, computed as weight /
 	// (sum of all weightedBackendService weights in routeAction) . The selection of a
@@ -32428,7 +33410,8 @@ type RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs struc
 	BackendService pulumi.StringInput `pulumi:"backendService"`
 	// Specifies changes to request and response headers that need to take effect for
 	// the selected backendService. headerAction specified here take effect before
-	// headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+	// headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+	// Structure is documented below.
 	HeaderAction RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrInput `pulumi:"headerAction"`
 	// Specifies the fraction of traffic sent to backendService, computed as weight /
 	// (sum of all weightedBackendService weights in routeAction) . The selection of a
@@ -32501,7 +33484,8 @@ func (o RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceOutput)
 
 // Specifies changes to request and response headers that need to take effect for
 // the selected backendService. headerAction specified here take effect before
-// headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+// headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceOutput) HeaderAction() RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendService) *RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction {
 		return v.HeaderAction
@@ -32540,12 +33524,14 @@ func (o RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrayOu
 
 type RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction struct {
 	// Headers to add to a matching request prior to forwarding the request to the
-	// backendService.  Structure is documented below.
+	// backendService.
+	// Structure is documented below.
 	RequestHeadersToAdds []RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd `pulumi:"requestHeadersToAdds"`
 	// A list of header names for headers that need to be removed from the request
 	// prior to forwarding the request to the backendService.
 	RequestHeadersToRemoves []string `pulumi:"requestHeadersToRemoves"`
-	// Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+	// Headers to add the response prior to sending the response back to the client.
+	// Structure is documented below.
 	ResponseHeadersToAdds []RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd `pulumi:"responseHeadersToAdds"`
 	// A list of header names for headers that need to be removed from the response
 	// prior to sending the response back to the client.
@@ -32565,12 +33551,14 @@ type RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActi
 
 type RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgs struct {
 	// Headers to add to a matching request prior to forwarding the request to the
-	// backendService.  Structure is documented below.
+	// backendService.
+	// Structure is documented below.
 	RequestHeadersToAdds RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayInput `pulumi:"requestHeadersToAdds"`
 	// A list of header names for headers that need to be removed from the request
 	// prior to forwarding the request to the backendService.
 	RequestHeadersToRemoves pulumi.StringArrayInput `pulumi:"requestHeadersToRemoves"`
-	// Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+	// Headers to add the response prior to sending the response back to the client.
+	// Structure is documented below.
 	ResponseHeadersToAdds RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayInput `pulumi:"responseHeadersToAdds"`
 	// A list of header names for headers that need to be removed from the response
 	// prior to sending the response back to the client.
@@ -32655,7 +33643,8 @@ func (o RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderA
 }
 
 // Headers to add to a matching request prior to forwarding the request to the
-// backendService.  Structure is documented below.
+// backendService.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionOutput) RequestHeadersToAdds() RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction) []RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd {
 		return v.RequestHeadersToAdds
@@ -32670,7 +33659,8 @@ func (o RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderA
 	}).(pulumi.StringArrayOutput)
 }
 
-// Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+// Headers to add the response prior to sending the response back to the client.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionOutput) ResponseHeadersToAdds() RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction) []RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd {
 		return v.ResponseHeadersToAdds
@@ -32706,7 +33696,8 @@ func (o RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderA
 }
 
 // Headers to add to a matching request prior to forwarding the request to the
-// backendService.  Structure is documented below.
+// backendService.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput) RequestHeadersToAdds() RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput {
 	return o.ApplyT(func(v *RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction) []RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd {
 		if v == nil {
@@ -32727,7 +33718,8 @@ func (o RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderA
 	}).(pulumi.StringArrayOutput)
 }
 
-// Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+// Headers to add the response prior to sending the response back to the client.
+// Structure is documented below.
 func (o RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput) ResponseHeadersToAdds() RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput {
 	return o.ApplyT(func(v *RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction) []RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd {
 		if v == nil {
@@ -33448,7 +34440,8 @@ type ReservationSpecificReservation struct {
 	// -
 	// How many instances are in use.
 	InUseCount *int `pulumi:"inUseCount"`
-	// The instance properties for the reservation.  Structure is documented below.
+	// The instance properties for the reservation.
+	// Structure is documented below.
 	InstanceProperties ReservationSpecificReservationInstanceProperties `pulumi:"instanceProperties"`
 }
 
@@ -33469,7 +34462,8 @@ type ReservationSpecificReservationArgs struct {
 	// -
 	// How many instances are in use.
 	InUseCount pulumi.IntPtrInput `pulumi:"inUseCount"`
-	// The instance properties for the reservation.  Structure is documented below.
+	// The instance properties for the reservation.
+	// Structure is documented below.
 	InstanceProperties ReservationSpecificReservationInstancePropertiesInput `pulumi:"instanceProperties"`
 }
 
@@ -33561,7 +34555,8 @@ func (o ReservationSpecificReservationOutput) InUseCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ReservationSpecificReservation) *int { return v.InUseCount }).(pulumi.IntPtrOutput)
 }
 
-// The instance properties for the reservation.  Structure is documented below.
+// The instance properties for the reservation.
+// Structure is documented below.
 func (o ReservationSpecificReservationOutput) InstanceProperties() ReservationSpecificReservationInstancePropertiesOutput {
 	return o.ApplyT(func(v ReservationSpecificReservation) ReservationSpecificReservationInstanceProperties {
 		return v.InstanceProperties
@@ -33607,7 +34602,8 @@ func (o ReservationSpecificReservationPtrOutput) InUseCount() pulumi.IntPtrOutpu
 	}).(pulumi.IntPtrOutput)
 }
 
-// The instance properties for the reservation.  Structure is documented below.
+// The instance properties for the reservation.
+// Structure is documented below.
 func (o ReservationSpecificReservationPtrOutput) InstanceProperties() ReservationSpecificReservationInstancePropertiesPtrOutput {
 	return o.ApplyT(func(v *ReservationSpecificReservation) *ReservationSpecificReservationInstanceProperties {
 		if v == nil {
@@ -33618,10 +34614,12 @@ func (o ReservationSpecificReservationPtrOutput) InstanceProperties() Reservatio
 }
 
 type ReservationSpecificReservationInstanceProperties struct {
-	// Guest accelerator type and count.  Structure is documented below.
+	// Guest accelerator type and count.
+	// Structure is documented below.
 	GuestAccelerators []ReservationSpecificReservationInstancePropertiesGuestAccelerator `pulumi:"guestAccelerators"`
 	// The amount of local ssd to reserve with each instance. This
-	// reserves disks of type `local-ssd`.  Structure is documented below.
+	// reserves disks of type `local-ssd`.
+	// Structure is documented below.
 	LocalSsds []ReservationSpecificReservationInstancePropertiesLocalSsd `pulumi:"localSsds"`
 	// The name of the machine type to reserve.
 	MachineType string `pulumi:"machineType"`
@@ -33644,10 +34642,12 @@ type ReservationSpecificReservationInstancePropertiesInput interface {
 }
 
 type ReservationSpecificReservationInstancePropertiesArgs struct {
-	// Guest accelerator type and count.  Structure is documented below.
+	// Guest accelerator type and count.
+	// Structure is documented below.
 	GuestAccelerators ReservationSpecificReservationInstancePropertiesGuestAcceleratorArrayInput `pulumi:"guestAccelerators"`
 	// The amount of local ssd to reserve with each instance. This
-	// reserves disks of type `local-ssd`.  Structure is documented below.
+	// reserves disks of type `local-ssd`.
+	// Structure is documented below.
 	LocalSsds ReservationSpecificReservationInstancePropertiesLocalSsdArrayInput `pulumi:"localSsds"`
 	// The name of the machine type to reserve.
 	MachineType pulumi.StringInput `pulumi:"machineType"`
@@ -33735,7 +34735,8 @@ func (o ReservationSpecificReservationInstancePropertiesOutput) ToReservationSpe
 	}).(ReservationSpecificReservationInstancePropertiesPtrOutput)
 }
 
-// Guest accelerator type and count.  Structure is documented below.
+// Guest accelerator type and count.
+// Structure is documented below.
 func (o ReservationSpecificReservationInstancePropertiesOutput) GuestAccelerators() ReservationSpecificReservationInstancePropertiesGuestAcceleratorArrayOutput {
 	return o.ApplyT(func(v ReservationSpecificReservationInstanceProperties) []ReservationSpecificReservationInstancePropertiesGuestAccelerator {
 		return v.GuestAccelerators
@@ -33743,7 +34744,8 @@ func (o ReservationSpecificReservationInstancePropertiesOutput) GuestAccelerator
 }
 
 // The amount of local ssd to reserve with each instance. This
-// reserves disks of type `local-ssd`.  Structure is documented below.
+// reserves disks of type `local-ssd`.
+// Structure is documented below.
 func (o ReservationSpecificReservationInstancePropertiesOutput) LocalSsds() ReservationSpecificReservationInstancePropertiesLocalSsdArrayOutput {
 	return o.ApplyT(func(v ReservationSpecificReservationInstanceProperties) []ReservationSpecificReservationInstancePropertiesLocalSsd {
 		return v.LocalSsds
@@ -33783,7 +34785,8 @@ func (o ReservationSpecificReservationInstancePropertiesPtrOutput) Elem() Reserv
 	}).(ReservationSpecificReservationInstancePropertiesOutput)
 }
 
-// Guest accelerator type and count.  Structure is documented below.
+// Guest accelerator type and count.
+// Structure is documented below.
 func (o ReservationSpecificReservationInstancePropertiesPtrOutput) GuestAccelerators() ReservationSpecificReservationInstancePropertiesGuestAcceleratorArrayOutput {
 	return o.ApplyT(func(v *ReservationSpecificReservationInstanceProperties) []ReservationSpecificReservationInstancePropertiesGuestAccelerator {
 		if v == nil {
@@ -33794,7 +34797,8 @@ func (o ReservationSpecificReservationInstancePropertiesPtrOutput) GuestAccelera
 }
 
 // The amount of local ssd to reserve with each instance. This
-// reserves disks of type `local-ssd`.  Structure is documented below.
+// reserves disks of type `local-ssd`.
+// Structure is documented below.
 func (o ReservationSpecificReservationInstancePropertiesPtrOutput) LocalSsds() ReservationSpecificReservationInstancePropertiesLocalSsdArrayOutput {
 	return o.ApplyT(func(v *ReservationSpecificReservationInstanceProperties) []ReservationSpecificReservationInstancePropertiesLocalSsd {
 		if v == nil {
@@ -33953,6 +34957,8 @@ type ReservationSpecificReservationInstancePropertiesLocalSsd struct {
 	// The size of the disk in base-2 GB.
 	DiskSizeGb int `pulumi:"diskSizeGb"`
 	// The disk interface to use for attaching this disk.
+	// Default value is `SCSI`.
+	// Possible values are `SCSI` and `NVME`.
 	Interface *string `pulumi:"interface"`
 }
 
@@ -33971,6 +34977,8 @@ type ReservationSpecificReservationInstancePropertiesLocalSsdArgs struct {
 	// The size of the disk in base-2 GB.
 	DiskSizeGb pulumi.IntInput `pulumi:"diskSizeGb"`
 	// The disk interface to use for attaching this disk.
+	// Default value is `SCSI`.
+	// Possible values are `SCSI` and `NVME`.
 	Interface pulumi.StringPtrInput `pulumi:"interface"`
 }
 
@@ -34031,6 +35039,8 @@ func (o ReservationSpecificReservationInstancePropertiesLocalSsdOutput) DiskSize
 }
 
 // The disk interface to use for attaching this disk.
+// Default value is `SCSI`.
+// Possible values are `SCSI` and `NVME`.
 func (o ReservationSpecificReservationInstancePropertiesLocalSsdOutput) Interface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReservationSpecificReservationInstancePropertiesLocalSsd) *string { return v.Interface }).(pulumi.StringPtrOutput)
 }
@@ -34063,6 +35073,7 @@ type ResourcePolicyGroupPlacementPolicy struct {
 	// Specify `COLLOCATED` to enable collocation. Can only be specified with `vmCount`. If compute instances are created
 	// with a COLLOCATED policy, then exactly `vmCount` instances must be created at the same time with the resource policy
 	// attached.
+	// Possible values are `COLLOCATED`.
 	Collocation *string `pulumi:"collocation"`
 	// Number of vms in this placement group.
 	VmCount *int `pulumi:"vmCount"`
@@ -34087,6 +35098,7 @@ type ResourcePolicyGroupPlacementPolicyArgs struct {
 	// Specify `COLLOCATED` to enable collocation. Can only be specified with `vmCount`. If compute instances are created
 	// with a COLLOCATED policy, then exactly `vmCount` instances must be created at the same time with the resource policy
 	// attached.
+	// Possible values are `COLLOCATED`.
 	Collocation pulumi.StringPtrInput `pulumi:"collocation"`
 	// Number of vms in this placement group.
 	VmCount pulumi.IntPtrInput `pulumi:"vmCount"`
@@ -34179,6 +35191,7 @@ func (o ResourcePolicyGroupPlacementPolicyOutput) AvailabilityDomainCount() pulu
 // Specify `COLLOCATED` to enable collocation. Can only be specified with `vmCount`. If compute instances are created
 // with a COLLOCATED policy, then exactly `vmCount` instances must be created at the same time with the resource policy
 // attached.
+// Possible values are `COLLOCATED`.
 func (o ResourcePolicyGroupPlacementPolicyOutput) Collocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourcePolicyGroupPlacementPolicy) *string { return v.Collocation }).(pulumi.StringPtrOutput)
 }
@@ -34221,6 +35234,7 @@ func (o ResourcePolicyGroupPlacementPolicyPtrOutput) AvailabilityDomainCount() p
 // Specify `COLLOCATED` to enable collocation. Can only be specified with `vmCount`. If compute instances are created
 // with a COLLOCATED policy, then exactly `vmCount` instances must be created at the same time with the resource policy
 // attached.
+// Possible values are `COLLOCATED`.
 func (o ResourcePolicyGroupPlacementPolicyPtrOutput) Collocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourcePolicyGroupPlacementPolicy) *string {
 		if v == nil {
@@ -34241,11 +35255,14 @@ func (o ResourcePolicyGroupPlacementPolicyPtrOutput) VmCount() pulumi.IntPtrOutp
 }
 
 type ResourcePolicySnapshotSchedulePolicy struct {
-	// Retention policy applied to snapshots created by this resource policy.  Structure is documented below.
+	// Retention policy applied to snapshots created by this resource policy.
+	// Structure is documented below.
 	RetentionPolicy *ResourcePolicySnapshotSchedulePolicyRetentionPolicy `pulumi:"retentionPolicy"`
-	// Contains one of an `hourlySchedule`, `dailySchedule`, or `weeklySchedule`.  Structure is documented below.
+	// Contains one of an `hourlySchedule`, `dailySchedule`, or `weeklySchedule`.
+	// Structure is documented below.
 	Schedule ResourcePolicySnapshotSchedulePolicySchedule `pulumi:"schedule"`
-	// Properties with which the snapshots are created, such as labels.  Structure is documented below.
+	// Properties with which the snapshots are created, such as labels.
+	// Structure is documented below.
 	SnapshotProperties *ResourcePolicySnapshotSchedulePolicySnapshotProperties `pulumi:"snapshotProperties"`
 }
 
@@ -34261,11 +35278,14 @@ type ResourcePolicySnapshotSchedulePolicyInput interface {
 }
 
 type ResourcePolicySnapshotSchedulePolicyArgs struct {
-	// Retention policy applied to snapshots created by this resource policy.  Structure is documented below.
+	// Retention policy applied to snapshots created by this resource policy.
+	// Structure is documented below.
 	RetentionPolicy ResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrInput `pulumi:"retentionPolicy"`
-	// Contains one of an `hourlySchedule`, `dailySchedule`, or `weeklySchedule`.  Structure is documented below.
+	// Contains one of an `hourlySchedule`, `dailySchedule`, or `weeklySchedule`.
+	// Structure is documented below.
 	Schedule ResourcePolicySnapshotSchedulePolicyScheduleInput `pulumi:"schedule"`
-	// Properties with which the snapshots are created, such as labels.  Structure is documented below.
+	// Properties with which the snapshots are created, such as labels.
+	// Structure is documented below.
 	SnapshotProperties ResourcePolicySnapshotSchedulePolicySnapshotPropertiesPtrInput `pulumi:"snapshotProperties"`
 }
 
@@ -34346,21 +35366,24 @@ func (o ResourcePolicySnapshotSchedulePolicyOutput) ToResourcePolicySnapshotSche
 	}).(ResourcePolicySnapshotSchedulePolicyPtrOutput)
 }
 
-// Retention policy applied to snapshots created by this resource policy.  Structure is documented below.
+// Retention policy applied to snapshots created by this resource policy.
+// Structure is documented below.
 func (o ResourcePolicySnapshotSchedulePolicyOutput) RetentionPolicy() ResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutput {
 	return o.ApplyT(func(v ResourcePolicySnapshotSchedulePolicy) *ResourcePolicySnapshotSchedulePolicyRetentionPolicy {
 		return v.RetentionPolicy
 	}).(ResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutput)
 }
 
-// Contains one of an `hourlySchedule`, `dailySchedule`, or `weeklySchedule`.  Structure is documented below.
+// Contains one of an `hourlySchedule`, `dailySchedule`, or `weeklySchedule`.
+// Structure is documented below.
 func (o ResourcePolicySnapshotSchedulePolicyOutput) Schedule() ResourcePolicySnapshotSchedulePolicyScheduleOutput {
 	return o.ApplyT(func(v ResourcePolicySnapshotSchedulePolicy) ResourcePolicySnapshotSchedulePolicySchedule {
 		return v.Schedule
 	}).(ResourcePolicySnapshotSchedulePolicyScheduleOutput)
 }
 
-// Properties with which the snapshots are created, such as labels.  Structure is documented below.
+// Properties with which the snapshots are created, such as labels.
+// Structure is documented below.
 func (o ResourcePolicySnapshotSchedulePolicyOutput) SnapshotProperties() ResourcePolicySnapshotSchedulePolicySnapshotPropertiesPtrOutput {
 	return o.ApplyT(func(v ResourcePolicySnapshotSchedulePolicy) *ResourcePolicySnapshotSchedulePolicySnapshotProperties {
 		return v.SnapshotProperties
@@ -34385,7 +35408,8 @@ func (o ResourcePolicySnapshotSchedulePolicyPtrOutput) Elem() ResourcePolicySnap
 	return o.ApplyT(func(v *ResourcePolicySnapshotSchedulePolicy) ResourcePolicySnapshotSchedulePolicy { return *v }).(ResourcePolicySnapshotSchedulePolicyOutput)
 }
 
-// Retention policy applied to snapshots created by this resource policy.  Structure is documented below.
+// Retention policy applied to snapshots created by this resource policy.
+// Structure is documented below.
 func (o ResourcePolicySnapshotSchedulePolicyPtrOutput) RetentionPolicy() ResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutput {
 	return o.ApplyT(func(v *ResourcePolicySnapshotSchedulePolicy) *ResourcePolicySnapshotSchedulePolicyRetentionPolicy {
 		if v == nil {
@@ -34395,7 +35419,8 @@ func (o ResourcePolicySnapshotSchedulePolicyPtrOutput) RetentionPolicy() Resourc
 	}).(ResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutput)
 }
 
-// Contains one of an `hourlySchedule`, `dailySchedule`, or `weeklySchedule`.  Structure is documented below.
+// Contains one of an `hourlySchedule`, `dailySchedule`, or `weeklySchedule`.
+// Structure is documented below.
 func (o ResourcePolicySnapshotSchedulePolicyPtrOutput) Schedule() ResourcePolicySnapshotSchedulePolicySchedulePtrOutput {
 	return o.ApplyT(func(v *ResourcePolicySnapshotSchedulePolicy) *ResourcePolicySnapshotSchedulePolicySchedule {
 		if v == nil {
@@ -34405,7 +35430,8 @@ func (o ResourcePolicySnapshotSchedulePolicyPtrOutput) Schedule() ResourcePolicy
 	}).(ResourcePolicySnapshotSchedulePolicySchedulePtrOutput)
 }
 
-// Properties with which the snapshots are created, such as labels.  Structure is documented below.
+// Properties with which the snapshots are created, such as labels.
+// Structure is documented below.
 func (o ResourcePolicySnapshotSchedulePolicyPtrOutput) SnapshotProperties() ResourcePolicySnapshotSchedulePolicySnapshotPropertiesPtrOutput {
 	return o.ApplyT(func(v *ResourcePolicySnapshotSchedulePolicy) *ResourcePolicySnapshotSchedulePolicySnapshotProperties {
 		if v == nil {
@@ -34420,6 +35446,8 @@ type ResourcePolicySnapshotSchedulePolicyRetentionPolicy struct {
 	MaxRetentionDays int `pulumi:"maxRetentionDays"`
 	// Specifies the behavior to apply to scheduled snapshots when
 	// the source disk is deleted.
+	// Default value is `KEEP_AUTO_SNAPSHOTS`.
+	// Possible values are `KEEP_AUTO_SNAPSHOTS` and `APPLY_RETENTION_POLICY`.
 	OnSourceDiskDelete *string `pulumi:"onSourceDiskDelete"`
 }
 
@@ -34439,6 +35467,8 @@ type ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs struct {
 	MaxRetentionDays pulumi.IntInput `pulumi:"maxRetentionDays"`
 	// Specifies the behavior to apply to scheduled snapshots when
 	// the source disk is deleted.
+	// Default value is `KEEP_AUTO_SNAPSHOTS`.
+	// Possible values are `KEEP_AUTO_SNAPSHOTS` and `APPLY_RETENTION_POLICY`.
 	OnSourceDiskDelete pulumi.StringPtrInput `pulumi:"onSourceDiskDelete"`
 }
 
@@ -34526,6 +35556,8 @@ func (o ResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput) MaxRetentionD
 
 // Specifies the behavior to apply to scheduled snapshots when
 // the source disk is deleted.
+// Default value is `KEEP_AUTO_SNAPSHOTS`.
+// Possible values are `KEEP_AUTO_SNAPSHOTS` and `APPLY_RETENTION_POLICY`.
 func (o ResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput) OnSourceDiskDelete() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourcePolicySnapshotSchedulePolicyRetentionPolicy) *string { return v.OnSourceDiskDelete }).(pulumi.StringPtrOutput)
 }
@@ -34562,6 +35594,8 @@ func (o ResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutput) MaxRetenti
 
 // Specifies the behavior to apply to scheduled snapshots when
 // the source disk is deleted.
+// Default value is `KEEP_AUTO_SNAPSHOTS`.
+// Possible values are `KEEP_AUTO_SNAPSHOTS` and `APPLY_RETENTION_POLICY`.
 func (o ResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutput) OnSourceDiskDelete() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourcePolicySnapshotSchedulePolicyRetentionPolicy) *string {
 		if v == nil {
@@ -34572,11 +35606,14 @@ func (o ResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutput) OnSourceDi
 }
 
 type ResourcePolicySnapshotSchedulePolicySchedule struct {
-	// The policy will execute every nth day at the specified time.  Structure is documented below.
+	// The policy will execute every nth day at the specified time.
+	// Structure is documented below.
 	DailySchedule *ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule `pulumi:"dailySchedule"`
-	// The policy will execute every nth hour starting at the specified time.  Structure is documented below.
+	// The policy will execute every nth hour starting at the specified time.
+	// Structure is documented below.
 	HourlySchedule *ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule `pulumi:"hourlySchedule"`
-	// Allows specifying a snapshot time for each day of the week.  Structure is documented below.
+	// Allows specifying a snapshot time for each day of the week.
+	// Structure is documented below.
 	WeeklySchedule *ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule `pulumi:"weeklySchedule"`
 }
 
@@ -34592,11 +35629,14 @@ type ResourcePolicySnapshotSchedulePolicyScheduleInput interface {
 }
 
 type ResourcePolicySnapshotSchedulePolicyScheduleArgs struct {
-	// The policy will execute every nth day at the specified time.  Structure is documented below.
+	// The policy will execute every nth day at the specified time.
+	// Structure is documented below.
 	DailySchedule ResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrInput `pulumi:"dailySchedule"`
-	// The policy will execute every nth hour starting at the specified time.  Structure is documented below.
+	// The policy will execute every nth hour starting at the specified time.
+	// Structure is documented below.
 	HourlySchedule ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrInput `pulumi:"hourlySchedule"`
-	// Allows specifying a snapshot time for each day of the week.  Structure is documented below.
+	// Allows specifying a snapshot time for each day of the week.
+	// Structure is documented below.
 	WeeklySchedule ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedulePtrInput `pulumi:"weeklySchedule"`
 }
 
@@ -34677,21 +35717,24 @@ func (o ResourcePolicySnapshotSchedulePolicyScheduleOutput) ToResourcePolicySnap
 	}).(ResourcePolicySnapshotSchedulePolicySchedulePtrOutput)
 }
 
-// The policy will execute every nth day at the specified time.  Structure is documented below.
+// The policy will execute every nth day at the specified time.
+// Structure is documented below.
 func (o ResourcePolicySnapshotSchedulePolicyScheduleOutput) DailySchedule() ResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrOutput {
 	return o.ApplyT(func(v ResourcePolicySnapshotSchedulePolicySchedule) *ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule {
 		return v.DailySchedule
 	}).(ResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrOutput)
 }
 
-// The policy will execute every nth hour starting at the specified time.  Structure is documented below.
+// The policy will execute every nth hour starting at the specified time.
+// Structure is documented below.
 func (o ResourcePolicySnapshotSchedulePolicyScheduleOutput) HourlySchedule() ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrOutput {
 	return o.ApplyT(func(v ResourcePolicySnapshotSchedulePolicySchedule) *ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule {
 		return v.HourlySchedule
 	}).(ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrOutput)
 }
 
-// Allows specifying a snapshot time for each day of the week.  Structure is documented below.
+// Allows specifying a snapshot time for each day of the week.
+// Structure is documented below.
 func (o ResourcePolicySnapshotSchedulePolicyScheduleOutput) WeeklySchedule() ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedulePtrOutput {
 	return o.ApplyT(func(v ResourcePolicySnapshotSchedulePolicySchedule) *ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule {
 		return v.WeeklySchedule
@@ -34718,7 +35761,8 @@ func (o ResourcePolicySnapshotSchedulePolicySchedulePtrOutput) Elem() ResourcePo
 	}).(ResourcePolicySnapshotSchedulePolicyScheduleOutput)
 }
 
-// The policy will execute every nth day at the specified time.  Structure is documented below.
+// The policy will execute every nth day at the specified time.
+// Structure is documented below.
 func (o ResourcePolicySnapshotSchedulePolicySchedulePtrOutput) DailySchedule() ResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrOutput {
 	return o.ApplyT(func(v *ResourcePolicySnapshotSchedulePolicySchedule) *ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule {
 		if v == nil {
@@ -34728,7 +35772,8 @@ func (o ResourcePolicySnapshotSchedulePolicySchedulePtrOutput) DailySchedule() R
 	}).(ResourcePolicySnapshotSchedulePolicyScheduleDailySchedulePtrOutput)
 }
 
-// The policy will execute every nth hour starting at the specified time.  Structure is documented below.
+// The policy will execute every nth hour starting at the specified time.
+// Structure is documented below.
 func (o ResourcePolicySnapshotSchedulePolicySchedulePtrOutput) HourlySchedule() ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrOutput {
 	return o.ApplyT(func(v *ResourcePolicySnapshotSchedulePolicySchedule) *ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule {
 		if v == nil {
@@ -34738,7 +35783,8 @@ func (o ResourcePolicySnapshotSchedulePolicySchedulePtrOutput) HourlySchedule() 
 	}).(ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrOutput)
 }
 
-// Allows specifying a snapshot time for each day of the week.  Structure is documented below.
+// Allows specifying a snapshot time for each day of the week.
+// Structure is documented below.
 func (o ResourcePolicySnapshotSchedulePolicySchedulePtrOutput) WeeklySchedule() ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedulePtrOutput {
 	return o.ApplyT(func(v *ResourcePolicySnapshotSchedulePolicySchedule) *ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule {
 		if v == nil {
@@ -35061,7 +36107,8 @@ func (o ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedulePtrOutput) Sta
 }
 
 type ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule struct {
-	// May contain up to seven (one for each day of the week) snapshot times.  Structure is documented below.
+	// May contain up to seven (one for each day of the week) snapshot times.
+	// Structure is documented below.
 	DayOfWeeks []ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek `pulumi:"dayOfWeeks"`
 }
 
@@ -35077,7 +36124,8 @@ type ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleInput interface {
 }
 
 type ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArgs struct {
-	// May contain up to seven (one for each day of the week) snapshot times.  Structure is documented below.
+	// May contain up to seven (one for each day of the week) snapshot times.
+	// Structure is documented below.
 	DayOfWeeks ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayInput `pulumi:"dayOfWeeks"`
 }
 
@@ -35158,7 +36206,8 @@ func (o ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutput) ToReso
 	}).(ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedulePtrOutput)
 }
 
-// May contain up to seven (one for each day of the week) snapshot times.  Structure is documented below.
+// May contain up to seven (one for each day of the week) snapshot times.
+// Structure is documented below.
 func (o ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutput) DayOfWeeks() ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutput {
 	return o.ApplyT(func(v ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule) []ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek {
 		return v.DayOfWeeks
@@ -35185,7 +36234,8 @@ func (o ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedulePtrOutput) Ele
 	}).(ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutput)
 }
 
-// May contain up to seven (one for each day of the week) snapshot times.  Structure is documented below.
+// May contain up to seven (one for each day of the week) snapshot times.
+// Structure is documented below.
 func (o ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedulePtrOutput) DayOfWeeks() ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutput {
 	return o.ApplyT(func(v *ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule) []ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek {
 		if v == nil {
@@ -35197,6 +36247,7 @@ func (o ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedulePtrOutput) Day
 
 type ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek struct {
 	// The day of the week to create the snapshot. e.g. MONDAY
+	// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
 	Day string `pulumi:"day"`
 	// Time within the window to start the operations.
 	// It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
@@ -35216,6 +36267,7 @@ type ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekInput in
 
 type ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArgs struct {
 	// The day of the week to create the snapshot. e.g. MONDAY
+	// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
 	Day pulumi.StringInput `pulumi:"day"`
 	// Time within the window to start the operations.
 	// It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
@@ -35274,6 +36326,7 @@ func (o ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutpu
 }
 
 // The day of the week to create the snapshot. e.g. MONDAY
+// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
 func (o ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutput) Day() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek) string { return v.Day }).(pulumi.StringOutput)
 }
@@ -35481,6 +36534,8 @@ func (o ResourcePolicySnapshotSchedulePolicySnapshotPropertiesPtrOutput) Storage
 
 type RouterBgp struct {
 	// User-specified flag to indicate which mode to use for advertisement.
+	// Default value is `DEFAULT`.
+	// Possible values are `DEFAULT` and `CUSTOM`.
 	AdvertiseMode *string `pulumi:"advertiseMode"`
 	// User-specified list of prefix groups to advertise in custom mode.
 	// This field can only be populated if advertiseMode is CUSTOM and
@@ -35493,7 +36548,8 @@ type RouterBgp struct {
 	// custom mode. This field can only be populated if advertiseMode
 	// is CUSTOM and is advertised to all peers of the router. These IP
 	// ranges will be advertised in addition to any specified groups.
-	// Leave this field blank to advertise no custom IP ranges.  Structure is documented below.
+	// Leave this field blank to advertise no custom IP ranges.
+	// Structure is documented below.
 	AdvertisedIpRanges []RouterBgpAdvertisedIpRange `pulumi:"advertisedIpRanges"`
 	// Local BGP Autonomous System Number (ASN). Must be an RFC6996
 	// private ASN, either 16-bit or 32-bit. The value will be fixed for
@@ -35515,6 +36571,8 @@ type RouterBgpInput interface {
 
 type RouterBgpArgs struct {
 	// User-specified flag to indicate which mode to use for advertisement.
+	// Default value is `DEFAULT`.
+	// Possible values are `DEFAULT` and `CUSTOM`.
 	AdvertiseMode pulumi.StringPtrInput `pulumi:"advertiseMode"`
 	// User-specified list of prefix groups to advertise in custom mode.
 	// This field can only be populated if advertiseMode is CUSTOM and
@@ -35527,7 +36585,8 @@ type RouterBgpArgs struct {
 	// custom mode. This field can only be populated if advertiseMode
 	// is CUSTOM and is advertised to all peers of the router. These IP
 	// ranges will be advertised in addition to any specified groups.
-	// Leave this field blank to advertise no custom IP ranges.  Structure is documented below.
+	// Leave this field blank to advertise no custom IP ranges.
+	// Structure is documented below.
 	AdvertisedIpRanges RouterBgpAdvertisedIpRangeArrayInput `pulumi:"advertisedIpRanges"`
 	// Local BGP Autonomous System Number (ASN). Must be an RFC6996
 	// private ASN, either 16-bit or 32-bit. The value will be fixed for
@@ -35614,6 +36673,8 @@ func (o RouterBgpOutput) ToRouterBgpPtrOutputWithContext(ctx context.Context) Ro
 }
 
 // User-specified flag to indicate which mode to use for advertisement.
+// Default value is `DEFAULT`.
+// Possible values are `DEFAULT` and `CUSTOM`.
 func (o RouterBgpOutput) AdvertiseMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RouterBgp) *string { return v.AdvertiseMode }).(pulumi.StringPtrOutput)
 }
@@ -35632,7 +36693,8 @@ func (o RouterBgpOutput) AdvertisedGroups() pulumi.StringArrayOutput {
 // custom mode. This field can only be populated if advertiseMode
 // is CUSTOM and is advertised to all peers of the router. These IP
 // ranges will be advertised in addition to any specified groups.
-// Leave this field blank to advertise no custom IP ranges.  Structure is documented below.
+// Leave this field blank to advertise no custom IP ranges.
+// Structure is documented below.
 func (o RouterBgpOutput) AdvertisedIpRanges() RouterBgpAdvertisedIpRangeArrayOutput {
 	return o.ApplyT(func(v RouterBgp) []RouterBgpAdvertisedIpRange { return v.AdvertisedIpRanges }).(RouterBgpAdvertisedIpRangeArrayOutput)
 }
@@ -35664,6 +36726,8 @@ func (o RouterBgpPtrOutput) Elem() RouterBgpOutput {
 }
 
 // User-specified flag to indicate which mode to use for advertisement.
+// Default value is `DEFAULT`.
+// Possible values are `DEFAULT` and `CUSTOM`.
 func (o RouterBgpPtrOutput) AdvertiseMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RouterBgp) *string {
 		if v == nil {
@@ -35692,7 +36756,8 @@ func (o RouterBgpPtrOutput) AdvertisedGroups() pulumi.StringArrayOutput {
 // custom mode. This field can only be populated if advertiseMode
 // is CUSTOM and is advertised to all peers of the router. These IP
 // ranges will be advertised in addition to any specified groups.
-// Leave this field blank to advertise no custom IP ranges.  Structure is documented below.
+// Leave this field blank to advertise no custom IP ranges.
+// Structure is documented below.
 func (o RouterBgpPtrOutput) AdvertisedIpRanges() RouterBgpAdvertisedIpRangeArrayOutput {
 	return o.ApplyT(func(v *RouterBgp) []RouterBgpAdvertisedIpRange {
 		if v == nil {
@@ -35828,6 +36893,7 @@ type RouterNatLogConfig struct {
 	// Indicates whether or not to export logs.
 	Enable bool `pulumi:"enable"`
 	// Specifies the desired filtering of logs on this NAT.
+	// Possible values are `ERRORS_ONLY`, `TRANSLATIONS_ONLY`, and `ALL`.
 	Filter string `pulumi:"filter"`
 }
 
@@ -35846,6 +36912,7 @@ type RouterNatLogConfigArgs struct {
 	// Indicates whether or not to export logs.
 	Enable pulumi.BoolInput `pulumi:"enable"`
 	// Specifies the desired filtering of logs on this NAT.
+	// Possible values are `ERRORS_ONLY`, `TRANSLATIONS_ONLY`, and `ALL`.
 	Filter pulumi.StringInput `pulumi:"filter"`
 }
 
@@ -35932,6 +36999,7 @@ func (o RouterNatLogConfigOutput) Enable() pulumi.BoolOutput {
 }
 
 // Specifies the desired filtering of logs on this NAT.
+// Possible values are `ERRORS_ONLY`, `TRANSLATIONS_ONLY`, and `ALL`.
 func (o RouterNatLogConfigOutput) Filter() pulumi.StringOutput {
 	return o.ApplyT(func(v RouterNatLogConfig) string { return v.Filter }).(pulumi.StringOutput)
 }
@@ -35965,6 +37033,7 @@ func (o RouterNatLogConfigPtrOutput) Enable() pulumi.BoolPtrOutput {
 }
 
 // Specifies the desired filtering of logs on this NAT.
+// Possible values are `ERRORS_ONLY`, `TRANSLATIONS_ONLY`, and `ALL`.
 func (o RouterNatLogConfigPtrOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RouterNatLogConfig) *string {
 		if v == nil {
@@ -36454,7 +37523,7 @@ func (o SecurityPolicyRuleMatchOutput) VersionedExpr() pulumi.StringPtrOutput {
 
 type SecurityPolicyRuleMatchConfig struct {
 	// Set of IP addresses or ranges (IPV4 or IPV6) in CIDR notation
-	// to match against inbound traffic. There is a limit of 5 IP ranges per rule. A value of '\*' matches all IPs
+	// to match against inbound traffic. There is a limit of 10 IP ranges per rule. A value of '\*' matches all IPs
 	// (can be used to override the default behavior).
 	SrcIpRanges []string `pulumi:"srcIpRanges"`
 }
@@ -36472,7 +37541,7 @@ type SecurityPolicyRuleMatchConfigInput interface {
 
 type SecurityPolicyRuleMatchConfigArgs struct {
 	// Set of IP addresses or ranges (IPV4 or IPV6) in CIDR notation
-	// to match against inbound traffic. There is a limit of 5 IP ranges per rule. A value of '\*' matches all IPs
+	// to match against inbound traffic. There is a limit of 10 IP ranges per rule. A value of '\*' matches all IPs
 	// (can be used to override the default behavior).
 	SrcIpRanges pulumi.StringArrayInput `pulumi:"srcIpRanges"`
 }
@@ -36555,7 +37624,7 @@ func (o SecurityPolicyRuleMatchConfigOutput) ToSecurityPolicyRuleMatchConfigPtrO
 }
 
 // Set of IP addresses or ranges (IPV4 or IPV6) in CIDR notation
-// to match against inbound traffic. There is a limit of 5 IP ranges per rule. A value of '\*' matches all IPs
+// to match against inbound traffic. There is a limit of 10 IP ranges per rule. A value of '\*' matches all IPs
 // (can be used to override the default behavior).
 func (o SecurityPolicyRuleMatchConfigOutput) SrcIpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleMatchConfig) []string { return v.SrcIpRanges }).(pulumi.StringArrayOutput)
@@ -36580,7 +37649,7 @@ func (o SecurityPolicyRuleMatchConfigPtrOutput) Elem() SecurityPolicyRuleMatchCo
 }
 
 // Set of IP addresses or ranges (IPV4 or IPV6) in CIDR notation
-// to match against inbound traffic. There is a limit of 5 IP ranges per rule. A value of '\*' matches all IPs
+// to match against inbound traffic. There is a limit of 10 IP ranges per rule. A value of '\*' matches all IPs
 // (can be used to override the default behavior).
 func (o SecurityPolicyRuleMatchConfigPtrOutput) SrcIpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SecurityPolicyRuleMatchConfig) []string {
@@ -36727,9 +37796,11 @@ func (o SecurityPolicyRuleMatchExprPtrOutput) Expression() pulumi.StringPtrOutpu
 }
 
 type SecurityScanConfigAuthentication struct {
-	// Describes authentication configuration that uses a custom account.  Structure is documented below.
+	// Describes authentication configuration that uses a custom account.
+	// Structure is documented below.
 	CustomAccount *SecurityScanConfigAuthenticationCustomAccount `pulumi:"customAccount"`
-	// Describes authentication configuration that uses a Google account.  Structure is documented below.
+	// Describes authentication configuration that uses a Google account.
+	// Structure is documented below.
 	GoogleAccount *SecurityScanConfigAuthenticationGoogleAccount `pulumi:"googleAccount"`
 }
 
@@ -36745,9 +37816,11 @@ type SecurityScanConfigAuthenticationInput interface {
 }
 
 type SecurityScanConfigAuthenticationArgs struct {
-	// Describes authentication configuration that uses a custom account.  Structure is documented below.
+	// Describes authentication configuration that uses a custom account.
+	// Structure is documented below.
 	CustomAccount SecurityScanConfigAuthenticationCustomAccountPtrInput `pulumi:"customAccount"`
-	// Describes authentication configuration that uses a Google account.  Structure is documented below.
+	// Describes authentication configuration that uses a Google account.
+	// Structure is documented below.
 	GoogleAccount SecurityScanConfigAuthenticationGoogleAccountPtrInput `pulumi:"googleAccount"`
 }
 
@@ -36828,14 +37901,16 @@ func (o SecurityScanConfigAuthenticationOutput) ToSecurityScanConfigAuthenticati
 	}).(SecurityScanConfigAuthenticationPtrOutput)
 }
 
-// Describes authentication configuration that uses a custom account.  Structure is documented below.
+// Describes authentication configuration that uses a custom account.
+// Structure is documented below.
 func (o SecurityScanConfigAuthenticationOutput) CustomAccount() SecurityScanConfigAuthenticationCustomAccountPtrOutput {
 	return o.ApplyT(func(v SecurityScanConfigAuthentication) *SecurityScanConfigAuthenticationCustomAccount {
 		return v.CustomAccount
 	}).(SecurityScanConfigAuthenticationCustomAccountPtrOutput)
 }
 
-// Describes authentication configuration that uses a Google account.  Structure is documented below.
+// Describes authentication configuration that uses a Google account.
+// Structure is documented below.
 func (o SecurityScanConfigAuthenticationOutput) GoogleAccount() SecurityScanConfigAuthenticationGoogleAccountPtrOutput {
 	return o.ApplyT(func(v SecurityScanConfigAuthentication) *SecurityScanConfigAuthenticationGoogleAccount {
 		return v.GoogleAccount
@@ -36860,7 +37935,8 @@ func (o SecurityScanConfigAuthenticationPtrOutput) Elem() SecurityScanConfigAuth
 	return o.ApplyT(func(v *SecurityScanConfigAuthentication) SecurityScanConfigAuthentication { return *v }).(SecurityScanConfigAuthenticationOutput)
 }
 
-// Describes authentication configuration that uses a custom account.  Structure is documented below.
+// Describes authentication configuration that uses a custom account.
+// Structure is documented below.
 func (o SecurityScanConfigAuthenticationPtrOutput) CustomAccount() SecurityScanConfigAuthenticationCustomAccountPtrOutput {
 	return o.ApplyT(func(v *SecurityScanConfigAuthentication) *SecurityScanConfigAuthenticationCustomAccount {
 		if v == nil {
@@ -36870,7 +37946,8 @@ func (o SecurityScanConfigAuthenticationPtrOutput) CustomAccount() SecurityScanC
 	}).(SecurityScanConfigAuthenticationCustomAccountPtrOutput)
 }
 
-// Describes authentication configuration that uses a Google account.  Structure is documented below.
+// Describes authentication configuration that uses a Google account.
+// Structure is documented below.
 func (o SecurityScanConfigAuthenticationPtrOutput) GoogleAccount() SecurityScanConfigAuthenticationGoogleAccountPtrOutput {
 	return o.ApplyT(func(v *SecurityScanConfigAuthentication) *SecurityScanConfigAuthenticationGoogleAccount {
 		if v == nil {
@@ -36884,7 +37961,8 @@ type SecurityScanConfigAuthenticationCustomAccount struct {
 	// The login form URL of the website.
 	LoginUrl string `pulumi:"loginUrl"`
 	// The password of the custom account. The credential is stored encrypted
-	// in GCP.  **Note**: This property is sensitive and will not be displayed in the plan.
+	// in GCP.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Password string `pulumi:"password"`
 	// The user name of the custom account.
 	Username string `pulumi:"username"`
@@ -36905,7 +37983,8 @@ type SecurityScanConfigAuthenticationCustomAccountArgs struct {
 	// The login form URL of the website.
 	LoginUrl pulumi.StringInput `pulumi:"loginUrl"`
 	// The password of the custom account. The credential is stored encrypted
-	// in GCP.  **Note**: This property is sensitive and will not be displayed in the plan.
+	// in GCP.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Password pulumi.StringInput `pulumi:"password"`
 	// The user name of the custom account.
 	Username pulumi.StringInput `pulumi:"username"`
@@ -36994,7 +38073,8 @@ func (o SecurityScanConfigAuthenticationCustomAccountOutput) LoginUrl() pulumi.S
 }
 
 // The password of the custom account. The credential is stored encrypted
-// in GCP.  **Note**: This property is sensitive and will not be displayed in the plan.
+// in GCP.
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o SecurityScanConfigAuthenticationCustomAccountOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityScanConfigAuthenticationCustomAccount) string { return v.Password }).(pulumi.StringOutput)
 }
@@ -37035,7 +38115,8 @@ func (o SecurityScanConfigAuthenticationCustomAccountPtrOutput) LoginUrl() pulum
 }
 
 // The password of the custom account. The credential is stored encrypted
-// in GCP.  **Note**: This property is sensitive and will not be displayed in the plan.
+// in GCP.
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o SecurityScanConfigAuthenticationCustomAccountPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityScanConfigAuthenticationCustomAccount) *string {
 		if v == nil {
@@ -37057,7 +38138,8 @@ func (o SecurityScanConfigAuthenticationCustomAccountPtrOutput) Username() pulum
 
 type SecurityScanConfigAuthenticationGoogleAccount struct {
 	// The password of the custom account. The credential is stored encrypted
-	// in GCP.  **Note**: This property is sensitive and will not be displayed in the plan.
+	// in GCP.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Password string `pulumi:"password"`
 	// The user name of the custom account.
 	Username string `pulumi:"username"`
@@ -37076,7 +38158,8 @@ type SecurityScanConfigAuthenticationGoogleAccountInput interface {
 
 type SecurityScanConfigAuthenticationGoogleAccountArgs struct {
 	// The password of the custom account. The credential is stored encrypted
-	// in GCP.  **Note**: This property is sensitive and will not be displayed in the plan.
+	// in GCP.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Password pulumi.StringInput `pulumi:"password"`
 	// The user name of the custom account.
 	Username pulumi.StringInput `pulumi:"username"`
@@ -37160,7 +38243,8 @@ func (o SecurityScanConfigAuthenticationGoogleAccountOutput) ToSecurityScanConfi
 }
 
 // The password of the custom account. The credential is stored encrypted
-// in GCP.  **Note**: This property is sensitive and will not be displayed in the plan.
+// in GCP.
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o SecurityScanConfigAuthenticationGoogleAccountOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityScanConfigAuthenticationGoogleAccount) string { return v.Password }).(pulumi.StringOutput)
 }
@@ -37191,7 +38275,8 @@ func (o SecurityScanConfigAuthenticationGoogleAccountPtrOutput) Elem() SecurityS
 }
 
 // The password of the custom account. The credential is stored encrypted
-// in GCP.  **Note**: This property is sensitive and will not be displayed in the plan.
+// in GCP.
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o SecurityScanConfigAuthenticationGoogleAccountPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityScanConfigAuthenticationGoogleAccount) *string {
 		if v == nil {
@@ -37371,7 +38456,8 @@ func (o SecurityScanConfigSchedulePtrOutput) ScheduleTime() pulumi.StringPtrOutp
 
 type SnapshotSnapshotEncryptionKey struct {
 	// Specifies a 256-bit customer-supplied encryption key, encoded in
-	// RFC 4648 base64 to either encrypt or decrypt this resource.  **Note**: This property is sensitive and will not be displayed in the plan.
+	// RFC 4648 base64 to either encrypt or decrypt this resource.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	RawKey string `pulumi:"rawKey"`
 	// -
 	// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
@@ -37392,7 +38478,8 @@ type SnapshotSnapshotEncryptionKeyInput interface {
 
 type SnapshotSnapshotEncryptionKeyArgs struct {
 	// Specifies a 256-bit customer-supplied encryption key, encoded in
-	// RFC 4648 base64 to either encrypt or decrypt this resource.  **Note**: This property is sensitive and will not be displayed in the plan.
+	// RFC 4648 base64 to either encrypt or decrypt this resource.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	RawKey pulumi.StringInput `pulumi:"rawKey"`
 	// -
 	// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
@@ -37478,7 +38565,8 @@ func (o SnapshotSnapshotEncryptionKeyOutput) ToSnapshotSnapshotEncryptionKeyPtrO
 }
 
 // Specifies a 256-bit customer-supplied encryption key, encoded in
-// RFC 4648 base64 to either encrypt or decrypt this resource.  **Note**: This property is sensitive and will not be displayed in the plan.
+// RFC 4648 base64 to either encrypt or decrypt this resource.
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o SnapshotSnapshotEncryptionKeyOutput) RawKey() pulumi.StringOutput {
 	return o.ApplyT(func(v SnapshotSnapshotEncryptionKey) string { return v.RawKey }).(pulumi.StringOutput)
 }
@@ -37509,7 +38597,8 @@ func (o SnapshotSnapshotEncryptionKeyPtrOutput) Elem() SnapshotSnapshotEncryptio
 }
 
 // Specifies a 256-bit customer-supplied encryption key, encoded in
-// RFC 4648 base64 to either encrypt or decrypt this resource.  **Note**: This property is sensitive and will not be displayed in the plan.
+// RFC 4648 base64 to either encrypt or decrypt this resource.
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o SnapshotSnapshotEncryptionKeyPtrOutput) RawKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SnapshotSnapshotEncryptionKey) *string {
 		if v == nil {
@@ -37533,7 +38622,8 @@ func (o SnapshotSnapshotEncryptionKeyPtrOutput) Sha256() pulumi.StringPtrOutput 
 
 type SnapshotSourceDiskEncryptionKey struct {
 	// Specifies a 256-bit customer-supplied encryption key, encoded in
-	// RFC 4648 base64 to either encrypt or decrypt this resource.  **Note**: This property is sensitive and will not be displayed in the plan.
+	// RFC 4648 base64 to either encrypt or decrypt this resource.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	RawKey *string `pulumi:"rawKey"`
 }
 
@@ -37550,7 +38640,8 @@ type SnapshotSourceDiskEncryptionKeyInput interface {
 
 type SnapshotSourceDiskEncryptionKeyArgs struct {
 	// Specifies a 256-bit customer-supplied encryption key, encoded in
-	// RFC 4648 base64 to either encrypt or decrypt this resource.  **Note**: This property is sensitive and will not be displayed in the plan.
+	// RFC 4648 base64 to either encrypt or decrypt this resource.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	RawKey pulumi.StringPtrInput `pulumi:"rawKey"`
 }
 
@@ -37632,7 +38723,8 @@ func (o SnapshotSourceDiskEncryptionKeyOutput) ToSnapshotSourceDiskEncryptionKey
 }
 
 // Specifies a 256-bit customer-supplied encryption key, encoded in
-// RFC 4648 base64 to either encrypt or decrypt this resource.  **Note**: This property is sensitive and will not be displayed in the plan.
+// RFC 4648 base64 to either encrypt or decrypt this resource.
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o SnapshotSourceDiskEncryptionKeyOutput) RawKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SnapshotSourceDiskEncryptionKey) *string { return v.RawKey }).(pulumi.StringPtrOutput)
 }
@@ -37656,7 +38748,8 @@ func (o SnapshotSourceDiskEncryptionKeyPtrOutput) Elem() SnapshotSourceDiskEncry
 }
 
 // Specifies a 256-bit customer-supplied encryption key, encoded in
-// RFC 4648 base64 to either encrypt or decrypt this resource.  **Note**: This property is sensitive and will not be displayed in the plan.
+// RFC 4648 base64 to either encrypt or decrypt this resource.
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o SnapshotSourceDiskEncryptionKeyPtrOutput) RawKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SnapshotSourceDiskEncryptionKey) *string {
 		if v == nil {
@@ -38011,6 +39104,8 @@ type SubnetworkLogConfig struct {
 	// lasting connections. Default is an interval of 5 seconds per connection.
 	// Possible values are INTERVAL_5_SEC, INTERVAL_30_SEC, INTERVAL_1_MIN,
 	// INTERVAL_5_MIN, INTERVAL_10_MIN, INTERVAL_15_MIN
+	// Default value is `INTERVAL_5_SEC`.
+	// Possible values are `INTERVAL_5_SEC`, `INTERVAL_30_SEC`, `INTERVAL_1_MIN`, `INTERVAL_5_MIN`, `INTERVAL_10_MIN`, and `INTERVAL_15_MIN`.
 	AggregationInterval *string `pulumi:"aggregationInterval"`
 	// Can only be specified if VPC flow logging for this subnetwork is enabled.
 	// The value of the field must be in [0, 1]. Set the sampling rate of VPC
@@ -38021,6 +39116,8 @@ type SubnetworkLogConfig struct {
 	// Can only be specified if VPC flow logging for this subnetwork is enabled.
 	// Configures whether metadata fields should be added to the reported VPC
 	// flow logs.
+	// Default value is `INCLUDE_ALL_METADATA`.
+	// Possible values are `EXCLUDE_ALL_METADATA` and `INCLUDE_ALL_METADATA`.
 	Metadata *string `pulumi:"metadata"`
 }
 
@@ -38042,6 +39139,8 @@ type SubnetworkLogConfigArgs struct {
 	// lasting connections. Default is an interval of 5 seconds per connection.
 	// Possible values are INTERVAL_5_SEC, INTERVAL_30_SEC, INTERVAL_1_MIN,
 	// INTERVAL_5_MIN, INTERVAL_10_MIN, INTERVAL_15_MIN
+	// Default value is `INTERVAL_5_SEC`.
+	// Possible values are `INTERVAL_5_SEC`, `INTERVAL_30_SEC`, `INTERVAL_1_MIN`, `INTERVAL_5_MIN`, `INTERVAL_10_MIN`, and `INTERVAL_15_MIN`.
 	AggregationInterval pulumi.StringPtrInput `pulumi:"aggregationInterval"`
 	// Can only be specified if VPC flow logging for this subnetwork is enabled.
 	// The value of the field must be in [0, 1]. Set the sampling rate of VPC
@@ -38052,6 +39151,8 @@ type SubnetworkLogConfigArgs struct {
 	// Can only be specified if VPC flow logging for this subnetwork is enabled.
 	// Configures whether metadata fields should be added to the reported VPC
 	// flow logs.
+	// Default value is `INCLUDE_ALL_METADATA`.
+	// Possible values are `EXCLUDE_ALL_METADATA` and `INCLUDE_ALL_METADATA`.
 	Metadata pulumi.StringPtrInput `pulumi:"metadata"`
 }
 
@@ -38138,6 +39239,8 @@ func (o SubnetworkLogConfigOutput) ToSubnetworkLogConfigPtrOutputWithContext(ctx
 // lasting connections. Default is an interval of 5 seconds per connection.
 // Possible values are INTERVAL_5_SEC, INTERVAL_30_SEC, INTERVAL_1_MIN,
 // INTERVAL_5_MIN, INTERVAL_10_MIN, INTERVAL_15_MIN
+// Default value is `INTERVAL_5_SEC`.
+// Possible values are `INTERVAL_5_SEC`, `INTERVAL_30_SEC`, `INTERVAL_1_MIN`, `INTERVAL_5_MIN`, `INTERVAL_10_MIN`, and `INTERVAL_15_MIN`.
 func (o SubnetworkLogConfigOutput) AggregationInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubnetworkLogConfig) *string { return v.AggregationInterval }).(pulumi.StringPtrOutput)
 }
@@ -38154,6 +39257,8 @@ func (o SubnetworkLogConfigOutput) FlowSampling() pulumi.Float64PtrOutput {
 // Can only be specified if VPC flow logging for this subnetwork is enabled.
 // Configures whether metadata fields should be added to the reported VPC
 // flow logs.
+// Default value is `INCLUDE_ALL_METADATA`.
+// Possible values are `EXCLUDE_ALL_METADATA` and `INCLUDE_ALL_METADATA`.
 func (o SubnetworkLogConfigOutput) Metadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubnetworkLogConfig) *string { return v.Metadata }).(pulumi.StringPtrOutput)
 }
@@ -38182,6 +39287,8 @@ func (o SubnetworkLogConfigPtrOutput) Elem() SubnetworkLogConfigOutput {
 // lasting connections. Default is an interval of 5 seconds per connection.
 // Possible values are INTERVAL_5_SEC, INTERVAL_30_SEC, INTERVAL_1_MIN,
 // INTERVAL_5_MIN, INTERVAL_10_MIN, INTERVAL_15_MIN
+// Default value is `INTERVAL_5_SEC`.
+// Possible values are `INTERVAL_5_SEC`, `INTERVAL_30_SEC`, `INTERVAL_1_MIN`, `INTERVAL_5_MIN`, `INTERVAL_10_MIN`, and `INTERVAL_15_MIN`.
 func (o SubnetworkLogConfigPtrOutput) AggregationInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SubnetworkLogConfig) *string {
 		if v == nil {
@@ -38208,6 +39315,8 @@ func (o SubnetworkLogConfigPtrOutput) FlowSampling() pulumi.Float64PtrOutput {
 // Can only be specified if VPC flow logging for this subnetwork is enabled.
 // Configures whether metadata fields should be added to the reported VPC
 // flow logs.
+// Default value is `INCLUDE_ALL_METADATA`.
+// Possible values are `EXCLUDE_ALL_METADATA` and `INCLUDE_ALL_METADATA`.
 func (o SubnetworkLogConfigPtrOutput) Metadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SubnetworkLogConfig) *string {
 		if v == nil {
@@ -38343,25 +39452,31 @@ func (o SubnetworkSecondaryIpRangeArrayOutput) Index(i pulumi.IntInput) Subnetwo
 
 type URLMapDefaultRouteAction struct {
 	// The specification for allowing client side cross-origin requests. Please see
-	// [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)  Structure is documented below.
+	// [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
+	// Structure is documented below.
 	CorsPolicy *URLMapDefaultRouteActionCorsPolicy `pulumi:"corsPolicy"`
 	// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
 	// As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
 	// percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
 	// by the Loadbalancer for a percentage of requests.
-	// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.  Structure is documented below.
+	// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
+	// Structure is documented below.
 	FaultInjectionPolicy *URLMapDefaultRouteActionFaultInjectionPolicy `pulumi:"faultInjectionPolicy"`
 	// Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
 	// Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
-	// the host / authority header is suffixed with -shadow.  Structure is documented below.
+	// the host / authority header is suffixed with -shadow.
+	// Structure is documented below.
 	RequestMirrorPolicy *URLMapDefaultRouteActionRequestMirrorPolicy `pulumi:"requestMirrorPolicy"`
-	// Specifies the retry policy associated with this route.  Structure is documented below.
+	// Specifies the retry policy associated with this route.
+	// Structure is documented below.
 	RetryPolicy *URLMapDefaultRouteActionRetryPolicy `pulumi:"retryPolicy"`
 	// Specifies the timeout for the selected route. Timeout is computed from the time the request has been
 	// fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries.
-	// If not specified, will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+	// If not specified, will use the largest timeout among all backend services associated with the route.
+	// Structure is documented below.
 	Timeout *URLMapDefaultRouteActionTimeout `pulumi:"timeout"`
-	// The spec to modify the URL of the request, prior to forwarding the request to the matched service.  Structure is documented below.
+	// The spec to modify the URL of the request, prior to forwarding the request to the matched service.
+	// Structure is documented below.
 	UrlRewrite *URLMapDefaultRouteActionUrlRewrite `pulumi:"urlRewrite"`
 	// A list of weighted backend services to send traffic to when a route match occurs.
 	// The weights determine the fraction of traffic that flows to their corresponding backend service.
@@ -38369,7 +39484,8 @@ type URLMapDefaultRouteAction struct {
 	// with weight set to a non 0 number.
 	// Once a backendService is identified and before forwarding the request to the backend service,
 	// advanced routing actions like Url rewrites and header transformations are applied depending on
-	// additional settings specified in this HttpRouteAction.  Structure is documented below.
+	// additional settings specified in this HttpRouteAction.
+	// Structure is documented below.
 	WeightedBackendServices []URLMapDefaultRouteActionWeightedBackendService `pulumi:"weightedBackendServices"`
 }
 
@@ -38386,25 +39502,31 @@ type URLMapDefaultRouteActionInput interface {
 
 type URLMapDefaultRouteActionArgs struct {
 	// The specification for allowing client side cross-origin requests. Please see
-	// [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)  Structure is documented below.
+	// [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
+	// Structure is documented below.
 	CorsPolicy URLMapDefaultRouteActionCorsPolicyPtrInput `pulumi:"corsPolicy"`
 	// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
 	// As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
 	// percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
 	// by the Loadbalancer for a percentage of requests.
-	// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.  Structure is documented below.
+	// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
+	// Structure is documented below.
 	FaultInjectionPolicy URLMapDefaultRouteActionFaultInjectionPolicyPtrInput `pulumi:"faultInjectionPolicy"`
 	// Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
 	// Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
-	// the host / authority header is suffixed with -shadow.  Structure is documented below.
+	// the host / authority header is suffixed with -shadow.
+	// Structure is documented below.
 	RequestMirrorPolicy URLMapDefaultRouteActionRequestMirrorPolicyPtrInput `pulumi:"requestMirrorPolicy"`
-	// Specifies the retry policy associated with this route.  Structure is documented below.
+	// Specifies the retry policy associated with this route.
+	// Structure is documented below.
 	RetryPolicy URLMapDefaultRouteActionRetryPolicyPtrInput `pulumi:"retryPolicy"`
 	// Specifies the timeout for the selected route. Timeout is computed from the time the request has been
 	// fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries.
-	// If not specified, will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+	// If not specified, will use the largest timeout among all backend services associated with the route.
+	// Structure is documented below.
 	Timeout URLMapDefaultRouteActionTimeoutPtrInput `pulumi:"timeout"`
-	// The spec to modify the URL of the request, prior to forwarding the request to the matched service.  Structure is documented below.
+	// The spec to modify the URL of the request, prior to forwarding the request to the matched service.
+	// Structure is documented below.
 	UrlRewrite URLMapDefaultRouteActionUrlRewritePtrInput `pulumi:"urlRewrite"`
 	// A list of weighted backend services to send traffic to when a route match occurs.
 	// The weights determine the fraction of traffic that flows to their corresponding backend service.
@@ -38412,7 +39534,8 @@ type URLMapDefaultRouteActionArgs struct {
 	// with weight set to a non 0 number.
 	// Once a backendService is identified and before forwarding the request to the backend service,
 	// advanced routing actions like Url rewrites and header transformations are applied depending on
-	// additional settings specified in this HttpRouteAction.  Structure is documented below.
+	// additional settings specified in this HttpRouteAction.
+	// Structure is documented below.
 	WeightedBackendServices URLMapDefaultRouteActionWeightedBackendServiceArrayInput `pulumi:"weightedBackendServices"`
 }
 
@@ -38494,7 +39617,8 @@ func (o URLMapDefaultRouteActionOutput) ToURLMapDefaultRouteActionPtrOutputWithC
 }
 
 // The specification for allowing client side cross-origin requests. Please see
-// [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)  Structure is documented below.
+// [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
+// Structure is documented below.
 func (o URLMapDefaultRouteActionOutput) CorsPolicy() URLMapDefaultRouteActionCorsPolicyPtrOutput {
 	return o.ApplyT(func(v URLMapDefaultRouteAction) *URLMapDefaultRouteActionCorsPolicy { return v.CorsPolicy }).(URLMapDefaultRouteActionCorsPolicyPtrOutput)
 }
@@ -38503,7 +39627,8 @@ func (o URLMapDefaultRouteActionOutput) CorsPolicy() URLMapDefaultRouteActionCor
 // As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
 // percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
 // by the Loadbalancer for a percentage of requests.
-// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.  Structure is documented below.
+// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
+// Structure is documented below.
 func (o URLMapDefaultRouteActionOutput) FaultInjectionPolicy() URLMapDefaultRouteActionFaultInjectionPolicyPtrOutput {
 	return o.ApplyT(func(v URLMapDefaultRouteAction) *URLMapDefaultRouteActionFaultInjectionPolicy {
 		return v.FaultInjectionPolicy
@@ -38512,26 +39637,30 @@ func (o URLMapDefaultRouteActionOutput) FaultInjectionPolicy() URLMapDefaultRout
 
 // Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
 // Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
-// the host / authority header is suffixed with -shadow.  Structure is documented below.
+// the host / authority header is suffixed with -shadow.
+// Structure is documented below.
 func (o URLMapDefaultRouteActionOutput) RequestMirrorPolicy() URLMapDefaultRouteActionRequestMirrorPolicyPtrOutput {
 	return o.ApplyT(func(v URLMapDefaultRouteAction) *URLMapDefaultRouteActionRequestMirrorPolicy {
 		return v.RequestMirrorPolicy
 	}).(URLMapDefaultRouteActionRequestMirrorPolicyPtrOutput)
 }
 
-// Specifies the retry policy associated with this route.  Structure is documented below.
+// Specifies the retry policy associated with this route.
+// Structure is documented below.
 func (o URLMapDefaultRouteActionOutput) RetryPolicy() URLMapDefaultRouteActionRetryPolicyPtrOutput {
 	return o.ApplyT(func(v URLMapDefaultRouteAction) *URLMapDefaultRouteActionRetryPolicy { return v.RetryPolicy }).(URLMapDefaultRouteActionRetryPolicyPtrOutput)
 }
 
 // Specifies the timeout for the selected route. Timeout is computed from the time the request has been
 // fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries.
-// If not specified, will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+// If not specified, will use the largest timeout among all backend services associated with the route.
+// Structure is documented below.
 func (o URLMapDefaultRouteActionOutput) Timeout() URLMapDefaultRouteActionTimeoutPtrOutput {
 	return o.ApplyT(func(v URLMapDefaultRouteAction) *URLMapDefaultRouteActionTimeout { return v.Timeout }).(URLMapDefaultRouteActionTimeoutPtrOutput)
 }
 
-// The spec to modify the URL of the request, prior to forwarding the request to the matched service.  Structure is documented below.
+// The spec to modify the URL of the request, prior to forwarding the request to the matched service.
+// Structure is documented below.
 func (o URLMapDefaultRouteActionOutput) UrlRewrite() URLMapDefaultRouteActionUrlRewritePtrOutput {
 	return o.ApplyT(func(v URLMapDefaultRouteAction) *URLMapDefaultRouteActionUrlRewrite { return v.UrlRewrite }).(URLMapDefaultRouteActionUrlRewritePtrOutput)
 }
@@ -38542,7 +39671,8 @@ func (o URLMapDefaultRouteActionOutput) UrlRewrite() URLMapDefaultRouteActionUrl
 // with weight set to a non 0 number.
 // Once a backendService is identified and before forwarding the request to the backend service,
 // advanced routing actions like Url rewrites and header transformations are applied depending on
-// additional settings specified in this HttpRouteAction.  Structure is documented below.
+// additional settings specified in this HttpRouteAction.
+// Structure is documented below.
 func (o URLMapDefaultRouteActionOutput) WeightedBackendServices() URLMapDefaultRouteActionWeightedBackendServiceArrayOutput {
 	return o.ApplyT(func(v URLMapDefaultRouteAction) []URLMapDefaultRouteActionWeightedBackendService {
 		return v.WeightedBackendServices
@@ -38568,7 +39698,8 @@ func (o URLMapDefaultRouteActionPtrOutput) Elem() URLMapDefaultRouteActionOutput
 }
 
 // The specification for allowing client side cross-origin requests. Please see
-// [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)  Structure is documented below.
+// [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
+// Structure is documented below.
 func (o URLMapDefaultRouteActionPtrOutput) CorsPolicy() URLMapDefaultRouteActionCorsPolicyPtrOutput {
 	return o.ApplyT(func(v *URLMapDefaultRouteAction) *URLMapDefaultRouteActionCorsPolicy {
 		if v == nil {
@@ -38582,7 +39713,8 @@ func (o URLMapDefaultRouteActionPtrOutput) CorsPolicy() URLMapDefaultRouteAction
 // As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
 // percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
 // by the Loadbalancer for a percentage of requests.
-// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.  Structure is documented below.
+// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
+// Structure is documented below.
 func (o URLMapDefaultRouteActionPtrOutput) FaultInjectionPolicy() URLMapDefaultRouteActionFaultInjectionPolicyPtrOutput {
 	return o.ApplyT(func(v *URLMapDefaultRouteAction) *URLMapDefaultRouteActionFaultInjectionPolicy {
 		if v == nil {
@@ -38594,7 +39726,8 @@ func (o URLMapDefaultRouteActionPtrOutput) FaultInjectionPolicy() URLMapDefaultR
 
 // Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
 // Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
-// the host / authority header is suffixed with -shadow.  Structure is documented below.
+// the host / authority header is suffixed with -shadow.
+// Structure is documented below.
 func (o URLMapDefaultRouteActionPtrOutput) RequestMirrorPolicy() URLMapDefaultRouteActionRequestMirrorPolicyPtrOutput {
 	return o.ApplyT(func(v *URLMapDefaultRouteAction) *URLMapDefaultRouteActionRequestMirrorPolicy {
 		if v == nil {
@@ -38604,7 +39737,8 @@ func (o URLMapDefaultRouteActionPtrOutput) RequestMirrorPolicy() URLMapDefaultRo
 	}).(URLMapDefaultRouteActionRequestMirrorPolicyPtrOutput)
 }
 
-// Specifies the retry policy associated with this route.  Structure is documented below.
+// Specifies the retry policy associated with this route.
+// Structure is documented below.
 func (o URLMapDefaultRouteActionPtrOutput) RetryPolicy() URLMapDefaultRouteActionRetryPolicyPtrOutput {
 	return o.ApplyT(func(v *URLMapDefaultRouteAction) *URLMapDefaultRouteActionRetryPolicy {
 		if v == nil {
@@ -38616,7 +39750,8 @@ func (o URLMapDefaultRouteActionPtrOutput) RetryPolicy() URLMapDefaultRouteActio
 
 // Specifies the timeout for the selected route. Timeout is computed from the time the request has been
 // fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries.
-// If not specified, will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+// If not specified, will use the largest timeout among all backend services associated with the route.
+// Structure is documented below.
 func (o URLMapDefaultRouteActionPtrOutput) Timeout() URLMapDefaultRouteActionTimeoutPtrOutput {
 	return o.ApplyT(func(v *URLMapDefaultRouteAction) *URLMapDefaultRouteActionTimeout {
 		if v == nil {
@@ -38626,7 +39761,8 @@ func (o URLMapDefaultRouteActionPtrOutput) Timeout() URLMapDefaultRouteActionTim
 	}).(URLMapDefaultRouteActionTimeoutPtrOutput)
 }
 
-// The spec to modify the URL of the request, prior to forwarding the request to the matched service.  Structure is documented below.
+// The spec to modify the URL of the request, prior to forwarding the request to the matched service.
+// Structure is documented below.
 func (o URLMapDefaultRouteActionPtrOutput) UrlRewrite() URLMapDefaultRouteActionUrlRewritePtrOutput {
 	return o.ApplyT(func(v *URLMapDefaultRouteAction) *URLMapDefaultRouteActionUrlRewrite {
 		if v == nil {
@@ -38642,7 +39778,8 @@ func (o URLMapDefaultRouteActionPtrOutput) UrlRewrite() URLMapDefaultRouteAction
 // with weight set to a non 0 number.
 // Once a backendService is identified and before forwarding the request to the backend service,
 // advanced routing actions like Url rewrites and header transformations are applied depending on
-// additional settings specified in this HttpRouteAction.  Structure is documented below.
+// additional settings specified in this HttpRouteAction.
+// Structure is documented below.
 func (o URLMapDefaultRouteActionPtrOutput) WeightedBackendServices() URLMapDefaultRouteActionWeightedBackendServiceArrayOutput {
 	return o.ApplyT(func(v *URLMapDefaultRouteAction) []URLMapDefaultRouteActionWeightedBackendService {
 		if v == nil {
@@ -38937,9 +40074,11 @@ func (o URLMapDefaultRouteActionCorsPolicyPtrOutput) MaxAge() pulumi.IntPtrOutpu
 }
 
 type URLMapDefaultRouteActionFaultInjectionPolicy struct {
-	// The specification for how client requests are aborted as part of fault injection.  Structure is documented below.
+	// The specification for how client requests are aborted as part of fault injection.
+	// Structure is documented below.
 	Abort *URLMapDefaultRouteActionFaultInjectionPolicyAbort `pulumi:"abort"`
-	// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.  Structure is documented below.
+	// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+	// Structure is documented below.
 	Delay *URLMapDefaultRouteActionFaultInjectionPolicyDelay `pulumi:"delay"`
 }
 
@@ -38955,9 +40094,11 @@ type URLMapDefaultRouteActionFaultInjectionPolicyInput interface {
 }
 
 type URLMapDefaultRouteActionFaultInjectionPolicyArgs struct {
-	// The specification for how client requests are aborted as part of fault injection.  Structure is documented below.
+	// The specification for how client requests are aborted as part of fault injection.
+	// Structure is documented below.
 	Abort URLMapDefaultRouteActionFaultInjectionPolicyAbortPtrInput `pulumi:"abort"`
-	// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.  Structure is documented below.
+	// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+	// Structure is documented below.
 	Delay URLMapDefaultRouteActionFaultInjectionPolicyDelayPtrInput `pulumi:"delay"`
 }
 
@@ -39038,14 +40179,16 @@ func (o URLMapDefaultRouteActionFaultInjectionPolicyOutput) ToURLMapDefaultRoute
 	}).(URLMapDefaultRouteActionFaultInjectionPolicyPtrOutput)
 }
 
-// The specification for how client requests are aborted as part of fault injection.  Structure is documented below.
+// The specification for how client requests are aborted as part of fault injection.
+// Structure is documented below.
 func (o URLMapDefaultRouteActionFaultInjectionPolicyOutput) Abort() URLMapDefaultRouteActionFaultInjectionPolicyAbortPtrOutput {
 	return o.ApplyT(func(v URLMapDefaultRouteActionFaultInjectionPolicy) *URLMapDefaultRouteActionFaultInjectionPolicyAbort {
 		return v.Abort
 	}).(URLMapDefaultRouteActionFaultInjectionPolicyAbortPtrOutput)
 }
 
-// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.  Structure is documented below.
+// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+// Structure is documented below.
 func (o URLMapDefaultRouteActionFaultInjectionPolicyOutput) Delay() URLMapDefaultRouteActionFaultInjectionPolicyDelayPtrOutput {
 	return o.ApplyT(func(v URLMapDefaultRouteActionFaultInjectionPolicy) *URLMapDefaultRouteActionFaultInjectionPolicyDelay {
 		return v.Delay
@@ -39072,7 +40215,8 @@ func (o URLMapDefaultRouteActionFaultInjectionPolicyPtrOutput) Elem() URLMapDefa
 	}).(URLMapDefaultRouteActionFaultInjectionPolicyOutput)
 }
 
-// The specification for how client requests are aborted as part of fault injection.  Structure is documented below.
+// The specification for how client requests are aborted as part of fault injection.
+// Structure is documented below.
 func (o URLMapDefaultRouteActionFaultInjectionPolicyPtrOutput) Abort() URLMapDefaultRouteActionFaultInjectionPolicyAbortPtrOutput {
 	return o.ApplyT(func(v *URLMapDefaultRouteActionFaultInjectionPolicy) *URLMapDefaultRouteActionFaultInjectionPolicyAbort {
 		if v == nil {
@@ -39082,7 +40226,8 @@ func (o URLMapDefaultRouteActionFaultInjectionPolicyPtrOutput) Abort() URLMapDef
 	}).(URLMapDefaultRouteActionFaultInjectionPolicyAbortPtrOutput)
 }
 
-// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.  Structure is documented below.
+// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+// Structure is documented below.
 func (o URLMapDefaultRouteActionFaultInjectionPolicyPtrOutput) Delay() URLMapDefaultRouteActionFaultInjectionPolicyDelayPtrOutput {
 	return o.ApplyT(func(v *URLMapDefaultRouteActionFaultInjectionPolicy) *URLMapDefaultRouteActionFaultInjectionPolicyDelay {
 		if v == nil {
@@ -39253,7 +40398,8 @@ func (o URLMapDefaultRouteActionFaultInjectionPolicyAbortPtrOutput) Percentage()
 }
 
 type URLMapDefaultRouteActionFaultInjectionPolicyDelay struct {
-	// Specifies the value of the fixed delay interval.  Structure is documented below.
+	// Specifies the value of the fixed delay interval.
+	// Structure is documented below.
 	FixedDelay *URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay `pulumi:"fixedDelay"`
 	// The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
 	// The value must be between 0.0 and 100.0 inclusive.
@@ -39272,7 +40418,8 @@ type URLMapDefaultRouteActionFaultInjectionPolicyDelayInput interface {
 }
 
 type URLMapDefaultRouteActionFaultInjectionPolicyDelayArgs struct {
-	// Specifies the value of the fixed delay interval.  Structure is documented below.
+	// Specifies the value of the fixed delay interval.
+	// Structure is documented below.
 	FixedDelay URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrInput `pulumi:"fixedDelay"`
 	// The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
 	// The value must be between 0.0 and 100.0 inclusive.
@@ -39356,7 +40503,8 @@ func (o URLMapDefaultRouteActionFaultInjectionPolicyDelayOutput) ToURLMapDefault
 	}).(URLMapDefaultRouteActionFaultInjectionPolicyDelayPtrOutput)
 }
 
-// Specifies the value of the fixed delay interval.  Structure is documented below.
+// Specifies the value of the fixed delay interval.
+// Structure is documented below.
 func (o URLMapDefaultRouteActionFaultInjectionPolicyDelayOutput) FixedDelay() URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput {
 	return o.ApplyT(func(v URLMapDefaultRouteActionFaultInjectionPolicyDelay) *URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay {
 		return v.FixedDelay
@@ -39389,7 +40537,8 @@ func (o URLMapDefaultRouteActionFaultInjectionPolicyDelayPtrOutput) Elem() URLMa
 	}).(URLMapDefaultRouteActionFaultInjectionPolicyDelayOutput)
 }
 
-// Specifies the value of the fixed delay interval.  Structure is documented below.
+// Specifies the value of the fixed delay interval.
+// Structure is documented below.
 func (o URLMapDefaultRouteActionFaultInjectionPolicyDelayPtrOutput) FixedDelay() URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput {
 	return o.ApplyT(func(v *URLMapDefaultRouteActionFaultInjectionPolicyDelay) *URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay {
 		if v == nil {
@@ -39708,7 +40857,8 @@ type URLMapDefaultRouteActionRetryPolicy struct {
 	NumRetries *int `pulumi:"numRetries"`
 	// Specifies a non-zero timeout per retry attempt.
 	// If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-	// will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+	// will use the largest timeout among all backend services associated with the route.
+	// Structure is documented below.
 	PerTryTimeout *URLMapDefaultRouteActionRetryPolicyPerTryTimeout `pulumi:"perTryTimeout"`
 	// Specfies one or more conditions when this retry rule applies. Valid values are:
 	// 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
@@ -39744,7 +40894,8 @@ type URLMapDefaultRouteActionRetryPolicyArgs struct {
 	NumRetries pulumi.IntPtrInput `pulumi:"numRetries"`
 	// Specifies a non-zero timeout per retry attempt.
 	// If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-	// will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+	// will use the largest timeout among all backend services associated with the route.
+	// Structure is documented below.
 	PerTryTimeout URLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtrInput `pulumi:"perTryTimeout"`
 	// Specfies one or more conditions when this retry rule applies. Valid values are:
 	// 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
@@ -39848,7 +40999,8 @@ func (o URLMapDefaultRouteActionRetryPolicyOutput) NumRetries() pulumi.IntPtrOut
 
 // Specifies a non-zero timeout per retry attempt.
 // If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-// will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+// will use the largest timeout among all backend services associated with the route.
+// Structure is documented below.
 func (o URLMapDefaultRouteActionRetryPolicyOutput) PerTryTimeout() URLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtrOutput {
 	return o.ApplyT(func(v URLMapDefaultRouteActionRetryPolicy) *URLMapDefaultRouteActionRetryPolicyPerTryTimeout {
 		return v.PerTryTimeout
@@ -39904,7 +41056,8 @@ func (o URLMapDefaultRouteActionRetryPolicyPtrOutput) NumRetries() pulumi.IntPtr
 
 // Specifies a non-zero timeout per retry attempt.
 // If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-// will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+// will use the largest timeout among all backend services associated with the route.
+// Structure is documented below.
 func (o URLMapDefaultRouteActionRetryPolicyPtrOutput) PerTryTimeout() URLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtrOutput {
 	return o.ApplyT(func(v *URLMapDefaultRouteActionRetryPolicy) *URLMapDefaultRouteActionRetryPolicyPerTryTimeout {
 		if v == nil {
@@ -40428,7 +41581,8 @@ type URLMapDefaultRouteActionWeightedBackendService struct {
 	// Specifies changes to request and response headers that need to take effect for
 	// the selected backendService.
 	// headerAction specified here take effect before headerAction in the enclosing
-	// HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+	// HttpRouteRule, PathMatcher and UrlMap.
+	// Structure is documented below.
 	HeaderAction *URLMapDefaultRouteActionWeightedBackendServiceHeaderAction `pulumi:"headerAction"`
 	// Specifies the fraction of traffic sent to backendService, computed as
 	// weight / (sum of all weightedBackendService weights in routeAction) .
@@ -40456,7 +41610,8 @@ type URLMapDefaultRouteActionWeightedBackendServiceArgs struct {
 	// Specifies changes to request and response headers that need to take effect for
 	// the selected backendService.
 	// headerAction specified here take effect before headerAction in the enclosing
-	// HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+	// HttpRouteRule, PathMatcher and UrlMap.
+	// Structure is documented below.
 	HeaderAction URLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrInput `pulumi:"headerAction"`
 	// Specifies the fraction of traffic sent to backendService, computed as
 	// weight / (sum of all weightedBackendService weights in routeAction) .
@@ -40526,7 +41681,8 @@ func (o URLMapDefaultRouteActionWeightedBackendServiceOutput) BackendService() p
 // Specifies changes to request and response headers that need to take effect for
 // the selected backendService.
 // headerAction specified here take effect before headerAction in the enclosing
-// HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+// HttpRouteRule, PathMatcher and UrlMap.
+// Structure is documented below.
 func (o URLMapDefaultRouteActionWeightedBackendServiceOutput) HeaderAction() URLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutput {
 	return o.ApplyT(func(v URLMapDefaultRouteActionWeightedBackendService) *URLMapDefaultRouteActionWeightedBackendServiceHeaderAction {
 		return v.HeaderAction
@@ -40564,12 +41720,14 @@ func (o URLMapDefaultRouteActionWeightedBackendServiceArrayOutput) Index(i pulum
 }
 
 type URLMapDefaultRouteActionWeightedBackendServiceHeaderAction struct {
-	// Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+	// Headers to add to a matching request prior to forwarding the request to the backendService.
+	// Structure is documented below.
 	RequestHeadersToAdds []URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd `pulumi:"requestHeadersToAdds"`
 	// A list of header names for headers that need to be removed from the request prior to
 	// forwarding the request to the backendService.
 	RequestHeadersToRemoves []string `pulumi:"requestHeadersToRemoves"`
-	// Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+	// Headers to add the response prior to sending the response back to the client.
+	// Structure is documented below.
 	ResponseHeadersToAdds []URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd `pulumi:"responseHeadersToAdds"`
 	// A list of header names for headers that need to be removed from the response prior to sending the
 	// response back to the client.
@@ -40588,12 +41746,14 @@ type URLMapDefaultRouteActionWeightedBackendServiceHeaderActionInput interface {
 }
 
 type URLMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs struct {
-	// Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+	// Headers to add to a matching request prior to forwarding the request to the backendService.
+	// Structure is documented below.
 	RequestHeadersToAdds URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayInput `pulumi:"requestHeadersToAdds"`
 	// A list of header names for headers that need to be removed from the request prior to
 	// forwarding the request to the backendService.
 	RequestHeadersToRemoves pulumi.StringArrayInput `pulumi:"requestHeadersToRemoves"`
-	// Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+	// Headers to add the response prior to sending the response back to the client.
+	// Structure is documented below.
 	ResponseHeadersToAdds URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayInput `pulumi:"responseHeadersToAdds"`
 	// A list of header names for headers that need to be removed from the response prior to sending the
 	// response back to the client.
@@ -40677,7 +41837,8 @@ func (o URLMapDefaultRouteActionWeightedBackendServiceHeaderActionOutput) ToURLM
 	}).(URLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutput)
 }
 
-// Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+// Headers to add to a matching request prior to forwarding the request to the backendService.
+// Structure is documented below.
 func (o URLMapDefaultRouteActionWeightedBackendServiceHeaderActionOutput) RequestHeadersToAdds() URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput {
 	return o.ApplyT(func(v URLMapDefaultRouteActionWeightedBackendServiceHeaderAction) []URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd {
 		return v.RequestHeadersToAdds
@@ -40692,7 +41853,8 @@ func (o URLMapDefaultRouteActionWeightedBackendServiceHeaderActionOutput) Reques
 	}).(pulumi.StringArrayOutput)
 }
 
-// Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+// Headers to add the response prior to sending the response back to the client.
+// Structure is documented below.
 func (o URLMapDefaultRouteActionWeightedBackendServiceHeaderActionOutput) ResponseHeadersToAdds() URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput {
 	return o.ApplyT(func(v URLMapDefaultRouteActionWeightedBackendServiceHeaderAction) []URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd {
 		return v.ResponseHeadersToAdds
@@ -40727,7 +41889,8 @@ func (o URLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutput) Ele
 	}).(URLMapDefaultRouteActionWeightedBackendServiceHeaderActionOutput)
 }
 
-// Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+// Headers to add to a matching request prior to forwarding the request to the backendService.
+// Structure is documented below.
 func (o URLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutput) RequestHeadersToAdds() URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput {
 	return o.ApplyT(func(v *URLMapDefaultRouteActionWeightedBackendServiceHeaderAction) []URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd {
 		if v == nil {
@@ -40748,7 +41911,8 @@ func (o URLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutput) Req
 	}).(pulumi.StringArrayOutput)
 }
 
-// Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+// Headers to add the response prior to sending the response back to the client.
+// Structure is documented below.
 func (o URLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutput) ResponseHeadersToAdds() URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput {
 	return o.ApplyT(func(v *URLMapDefaultRouteActionWeightedBackendServiceHeaderAction) []URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd {
 		if v == nil {
@@ -41332,12 +42496,14 @@ func (o URLMapDefaultUrlRedirectPtrOutput) StripQuery() pulumi.BoolPtrOutput {
 }
 
 type URLMapHeaderAction struct {
-	// Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+	// Headers to add to a matching request prior to forwarding the request to the backendService.
+	// Structure is documented below.
 	RequestHeadersToAdds []URLMapHeaderActionRequestHeadersToAdd `pulumi:"requestHeadersToAdds"`
 	// A list of header names for headers that need to be removed from the request prior to
 	// forwarding the request to the backendService.
 	RequestHeadersToRemoves []string `pulumi:"requestHeadersToRemoves"`
-	// Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+	// Headers to add the response prior to sending the response back to the client.
+	// Structure is documented below.
 	ResponseHeadersToAdds []URLMapHeaderActionResponseHeadersToAdd `pulumi:"responseHeadersToAdds"`
 	// A list of header names for headers that need to be removed from the response prior to sending the
 	// response back to the client.
@@ -41356,12 +42522,14 @@ type URLMapHeaderActionInput interface {
 }
 
 type URLMapHeaderActionArgs struct {
-	// Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+	// Headers to add to a matching request prior to forwarding the request to the backendService.
+	// Structure is documented below.
 	RequestHeadersToAdds URLMapHeaderActionRequestHeadersToAddArrayInput `pulumi:"requestHeadersToAdds"`
 	// A list of header names for headers that need to be removed from the request prior to
 	// forwarding the request to the backendService.
 	RequestHeadersToRemoves pulumi.StringArrayInput `pulumi:"requestHeadersToRemoves"`
-	// Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+	// Headers to add the response prior to sending the response back to the client.
+	// Structure is documented below.
 	ResponseHeadersToAdds URLMapHeaderActionResponseHeadersToAddArrayInput `pulumi:"responseHeadersToAdds"`
 	// A list of header names for headers that need to be removed from the response prior to sending the
 	// response back to the client.
@@ -41445,7 +42613,8 @@ func (o URLMapHeaderActionOutput) ToURLMapHeaderActionPtrOutputWithContext(ctx c
 	}).(URLMapHeaderActionPtrOutput)
 }
 
-// Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+// Headers to add to a matching request prior to forwarding the request to the backendService.
+// Structure is documented below.
 func (o URLMapHeaderActionOutput) RequestHeadersToAdds() URLMapHeaderActionRequestHeadersToAddArrayOutput {
 	return o.ApplyT(func(v URLMapHeaderAction) []URLMapHeaderActionRequestHeadersToAdd { return v.RequestHeadersToAdds }).(URLMapHeaderActionRequestHeadersToAddArrayOutput)
 }
@@ -41456,7 +42625,8 @@ func (o URLMapHeaderActionOutput) RequestHeadersToRemoves() pulumi.StringArrayOu
 	return o.ApplyT(func(v URLMapHeaderAction) []string { return v.RequestHeadersToRemoves }).(pulumi.StringArrayOutput)
 }
 
-// Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+// Headers to add the response prior to sending the response back to the client.
+// Structure is documented below.
 func (o URLMapHeaderActionOutput) ResponseHeadersToAdds() URLMapHeaderActionResponseHeadersToAddArrayOutput {
 	return o.ApplyT(func(v URLMapHeaderAction) []URLMapHeaderActionResponseHeadersToAdd { return v.ResponseHeadersToAdds }).(URLMapHeaderActionResponseHeadersToAddArrayOutput)
 }
@@ -41485,7 +42655,8 @@ func (o URLMapHeaderActionPtrOutput) Elem() URLMapHeaderActionOutput {
 	return o.ApplyT(func(v *URLMapHeaderAction) URLMapHeaderAction { return *v }).(URLMapHeaderActionOutput)
 }
 
-// Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+// Headers to add to a matching request prior to forwarding the request to the backendService.
+// Structure is documented below.
 func (o URLMapHeaderActionPtrOutput) RequestHeadersToAdds() URLMapHeaderActionRequestHeadersToAddArrayOutput {
 	return o.ApplyT(func(v *URLMapHeaderAction) []URLMapHeaderActionRequestHeadersToAdd {
 		if v == nil {
@@ -41506,7 +42677,8 @@ func (o URLMapHeaderActionPtrOutput) RequestHeadersToRemoves() pulumi.StringArra
 	}).(pulumi.StringArrayOutput)
 }
 
-// Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+// Headers to add the response prior to sending the response back to the client.
+// Structure is documented below.
 func (o URLMapHeaderActionPtrOutput) ResponseHeadersToAdds() URLMapHeaderActionResponseHeadersToAddArrayOutput {
 	return o.ApplyT(func(v *URLMapHeaderAction) []URLMapHeaderActionResponseHeadersToAdd {
 		if v == nil {
@@ -41892,20 +43064,23 @@ type URLMapPathMatcher struct {
 	// advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
 	// to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
 	// Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
-	// Only one of defaultRouteAction or defaultUrlRedirect must be set.  Structure is documented below.
+	// Only one of defaultRouteAction or defaultUrlRedirect must be set.
+	// Structure is documented below.
 	DefaultRouteAction *URLMapPathMatcherDefaultRouteAction `pulumi:"defaultRouteAction"`
 	// The backend service or backend bucket to use when none of the given paths match.
 	DefaultService *string `pulumi:"defaultService"`
 	// When none of the specified hostRules match, the request is redirected to a URL specified
 	// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
-	// defaultRouteAction must not be set.  Structure is documented below.
+	// defaultRouteAction must not be set.
+	// Structure is documented below.
 	DefaultUrlRedirect *URLMapPathMatcherDefaultUrlRedirect `pulumi:"defaultUrlRedirect"`
 	// Description of this test case.
 	Description *string `pulumi:"description"`
 	// Specifies changes to request and response headers that need to take effect for
 	// the selected backendService.
 	// headerAction specified here take effect before headerAction in the enclosing
-	// HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+	// HttpRouteRule, PathMatcher and UrlMap.
+	// Structure is documented below.
 	HeaderAction *URLMapPathMatcherHeaderAction `pulumi:"headerAction"`
 	// The name of the query parameter to match. The query parameter must exist in the
 	// request, in the absence of which the request match fails.
@@ -41915,14 +43090,16 @@ type URLMapPathMatcher struct {
 	// are specified does not matter. Matches are always done on the longest-path-first
 	// basis. For example: a pathRule with a path /a/b/c/* will match before /a/b/*
 	// irrespective of the order in which those paths appear in this list. Within a
-	// given pathMatcher, only one of pathRules or routeRules must be set.  Structure is documented below.
+	// given pathMatcher, only one of pathRules or routeRules must be set.
+	// Structure is documented below.
 	PathRules []URLMapPathMatcherPathRule `pulumi:"pathRules"`
 	// The list of ordered HTTP route rules. Use this list instead of pathRules when
 	// advanced route matching and routing actions are desired. The order of specifying
 	// routeRules matters: the first rule that matches will cause its specified routing
 	// action to take effect. Within a given pathMatcher, only one of pathRules or
 	// routeRules must be set. routeRules are not supported in UrlMaps intended for
-	// External load balancers.  Structure is documented below.
+	// External load balancers.
+	// Structure is documented below.
 	RouteRules []URLMapPathMatcherRouteRule `pulumi:"routeRules"`
 }
 
@@ -41942,20 +43119,23 @@ type URLMapPathMatcherArgs struct {
 	// advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
 	// to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
 	// Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
-	// Only one of defaultRouteAction or defaultUrlRedirect must be set.  Structure is documented below.
+	// Only one of defaultRouteAction or defaultUrlRedirect must be set.
+	// Structure is documented below.
 	DefaultRouteAction URLMapPathMatcherDefaultRouteActionPtrInput `pulumi:"defaultRouteAction"`
 	// The backend service or backend bucket to use when none of the given paths match.
 	DefaultService pulumi.StringPtrInput `pulumi:"defaultService"`
 	// When none of the specified hostRules match, the request is redirected to a URL specified
 	// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
-	// defaultRouteAction must not be set.  Structure is documented below.
+	// defaultRouteAction must not be set.
+	// Structure is documented below.
 	DefaultUrlRedirect URLMapPathMatcherDefaultUrlRedirectPtrInput `pulumi:"defaultUrlRedirect"`
 	// Description of this test case.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Specifies changes to request and response headers that need to take effect for
 	// the selected backendService.
 	// headerAction specified here take effect before headerAction in the enclosing
-	// HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+	// HttpRouteRule, PathMatcher and UrlMap.
+	// Structure is documented below.
 	HeaderAction URLMapPathMatcherHeaderActionPtrInput `pulumi:"headerAction"`
 	// The name of the query parameter to match. The query parameter must exist in the
 	// request, in the absence of which the request match fails.
@@ -41965,14 +43145,16 @@ type URLMapPathMatcherArgs struct {
 	// are specified does not matter. Matches are always done on the longest-path-first
 	// basis. For example: a pathRule with a path /a/b/c/* will match before /a/b/*
 	// irrespective of the order in which those paths appear in this list. Within a
-	// given pathMatcher, only one of pathRules or routeRules must be set.  Structure is documented below.
+	// given pathMatcher, only one of pathRules or routeRules must be set.
+	// Structure is documented below.
 	PathRules URLMapPathMatcherPathRuleArrayInput `pulumi:"pathRules"`
 	// The list of ordered HTTP route rules. Use this list instead of pathRules when
 	// advanced route matching and routing actions are desired. The order of specifying
 	// routeRules matters: the first rule that matches will cause its specified routing
 	// action to take effect. Within a given pathMatcher, only one of pathRules or
 	// routeRules must be set. routeRules are not supported in UrlMaps intended for
-	// External load balancers.  Structure is documented below.
+	// External load balancers.
+	// Structure is documented below.
 	RouteRules URLMapPathMatcherRouteRuleArrayInput `pulumi:"routeRules"`
 }
 
@@ -42031,7 +43213,8 @@ func (o URLMapPathMatcherOutput) ToURLMapPathMatcherOutputWithContext(ctx contex
 // advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
 // to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
 // Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
-// Only one of defaultRouteAction or defaultUrlRedirect must be set.  Structure is documented below.
+// Only one of defaultRouteAction or defaultUrlRedirect must be set.
+// Structure is documented below.
 func (o URLMapPathMatcherOutput) DefaultRouteAction() URLMapPathMatcherDefaultRouteActionPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcher) *URLMapPathMatcherDefaultRouteAction { return v.DefaultRouteAction }).(URLMapPathMatcherDefaultRouteActionPtrOutput)
 }
@@ -42043,7 +43226,8 @@ func (o URLMapPathMatcherOutput) DefaultService() pulumi.StringPtrOutput {
 
 // When none of the specified hostRules match, the request is redirected to a URL specified
 // by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
-// defaultRouteAction must not be set.  Structure is documented below.
+// defaultRouteAction must not be set.
+// Structure is documented below.
 func (o URLMapPathMatcherOutput) DefaultUrlRedirect() URLMapPathMatcherDefaultUrlRedirectPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcher) *URLMapPathMatcherDefaultUrlRedirect { return v.DefaultUrlRedirect }).(URLMapPathMatcherDefaultUrlRedirectPtrOutput)
 }
@@ -42056,7 +43240,8 @@ func (o URLMapPathMatcherOutput) Description() pulumi.StringPtrOutput {
 // Specifies changes to request and response headers that need to take effect for
 // the selected backendService.
 // headerAction specified here take effect before headerAction in the enclosing
-// HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+// HttpRouteRule, PathMatcher and UrlMap.
+// Structure is documented below.
 func (o URLMapPathMatcherOutput) HeaderAction() URLMapPathMatcherHeaderActionPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcher) *URLMapPathMatcherHeaderAction { return v.HeaderAction }).(URLMapPathMatcherHeaderActionPtrOutput)
 }
@@ -42072,7 +43257,8 @@ func (o URLMapPathMatcherOutput) Name() pulumi.StringOutput {
 // are specified does not matter. Matches are always done on the longest-path-first
 // basis. For example: a pathRule with a path /a/b/c/* will match before /a/b/*
 // irrespective of the order in which those paths appear in this list. Within a
-// given pathMatcher, only one of pathRules or routeRules must be set.  Structure is documented below.
+// given pathMatcher, only one of pathRules or routeRules must be set.
+// Structure is documented below.
 func (o URLMapPathMatcherOutput) PathRules() URLMapPathMatcherPathRuleArrayOutput {
 	return o.ApplyT(func(v URLMapPathMatcher) []URLMapPathMatcherPathRule { return v.PathRules }).(URLMapPathMatcherPathRuleArrayOutput)
 }
@@ -42082,7 +43268,8 @@ func (o URLMapPathMatcherOutput) PathRules() URLMapPathMatcherPathRuleArrayOutpu
 // routeRules matters: the first rule that matches will cause its specified routing
 // action to take effect. Within a given pathMatcher, only one of pathRules or
 // routeRules must be set. routeRules are not supported in UrlMaps intended for
-// External load balancers.  Structure is documented below.
+// External load balancers.
+// Structure is documented below.
 func (o URLMapPathMatcherOutput) RouteRules() URLMapPathMatcherRouteRuleArrayOutput {
 	return o.ApplyT(func(v URLMapPathMatcher) []URLMapPathMatcherRouteRule { return v.RouteRules }).(URLMapPathMatcherRouteRuleArrayOutput)
 }
@@ -42109,25 +43296,31 @@ func (o URLMapPathMatcherArrayOutput) Index(i pulumi.IntInput) URLMapPathMatcher
 
 type URLMapPathMatcherDefaultRouteAction struct {
 	// The specification for allowing client side cross-origin requests. Please see
-	// [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)  Structure is documented below.
+	// [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
+	// Structure is documented below.
 	CorsPolicy *URLMapPathMatcherDefaultRouteActionCorsPolicy `pulumi:"corsPolicy"`
 	// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
 	// As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
 	// percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
 	// by the Loadbalancer for a percentage of requests.
-	// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.  Structure is documented below.
+	// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
+	// Structure is documented below.
 	FaultInjectionPolicy *URLMapPathMatcherDefaultRouteActionFaultInjectionPolicy `pulumi:"faultInjectionPolicy"`
 	// Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
 	// Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
-	// the host / authority header is suffixed with -shadow.  Structure is documented below.
+	// the host / authority header is suffixed with -shadow.
+	// Structure is documented below.
 	RequestMirrorPolicy *URLMapPathMatcherDefaultRouteActionRequestMirrorPolicy `pulumi:"requestMirrorPolicy"`
-	// Specifies the retry policy associated with this route.  Structure is documented below.
+	// Specifies the retry policy associated with this route.
+	// Structure is documented below.
 	RetryPolicy *URLMapPathMatcherDefaultRouteActionRetryPolicy `pulumi:"retryPolicy"`
 	// Specifies the timeout for the selected route. Timeout is computed from the time the request has been
 	// fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries.
-	// If not specified, will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+	// If not specified, will use the largest timeout among all backend services associated with the route.
+	// Structure is documented below.
 	Timeout *URLMapPathMatcherDefaultRouteActionTimeout `pulumi:"timeout"`
-	// The spec to modify the URL of the request, prior to forwarding the request to the matched service.  Structure is documented below.
+	// The spec to modify the URL of the request, prior to forwarding the request to the matched service.
+	// Structure is documented below.
 	UrlRewrite *URLMapPathMatcherDefaultRouteActionUrlRewrite `pulumi:"urlRewrite"`
 	// A list of weighted backend services to send traffic to when a route match occurs.
 	// The weights determine the fraction of traffic that flows to their corresponding backend service.
@@ -42135,7 +43328,8 @@ type URLMapPathMatcherDefaultRouteAction struct {
 	// with weight set to a non 0 number.
 	// Once a backendService is identified and before forwarding the request to the backend service,
 	// advanced routing actions like Url rewrites and header transformations are applied depending on
-	// additional settings specified in this HttpRouteAction.  Structure is documented below.
+	// additional settings specified in this HttpRouteAction.
+	// Structure is documented below.
 	WeightedBackendServices []URLMapPathMatcherDefaultRouteActionWeightedBackendService `pulumi:"weightedBackendServices"`
 }
 
@@ -42152,25 +43346,31 @@ type URLMapPathMatcherDefaultRouteActionInput interface {
 
 type URLMapPathMatcherDefaultRouteActionArgs struct {
 	// The specification for allowing client side cross-origin requests. Please see
-	// [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)  Structure is documented below.
+	// [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
+	// Structure is documented below.
 	CorsPolicy URLMapPathMatcherDefaultRouteActionCorsPolicyPtrInput `pulumi:"corsPolicy"`
 	// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
 	// As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
 	// percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
 	// by the Loadbalancer for a percentage of requests.
-	// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.  Structure is documented below.
+	// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
+	// Structure is documented below.
 	FaultInjectionPolicy URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyPtrInput `pulumi:"faultInjectionPolicy"`
 	// Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
 	// Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
-	// the host / authority header is suffixed with -shadow.  Structure is documented below.
+	// the host / authority header is suffixed with -shadow.
+	// Structure is documented below.
 	RequestMirrorPolicy URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyPtrInput `pulumi:"requestMirrorPolicy"`
-	// Specifies the retry policy associated with this route.  Structure is documented below.
+	// Specifies the retry policy associated with this route.
+	// Structure is documented below.
 	RetryPolicy URLMapPathMatcherDefaultRouteActionRetryPolicyPtrInput `pulumi:"retryPolicy"`
 	// Specifies the timeout for the selected route. Timeout is computed from the time the request has been
 	// fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries.
-	// If not specified, will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+	// If not specified, will use the largest timeout among all backend services associated with the route.
+	// Structure is documented below.
 	Timeout URLMapPathMatcherDefaultRouteActionTimeoutPtrInput `pulumi:"timeout"`
-	// The spec to modify the URL of the request, prior to forwarding the request to the matched service.  Structure is documented below.
+	// The spec to modify the URL of the request, prior to forwarding the request to the matched service.
+	// Structure is documented below.
 	UrlRewrite URLMapPathMatcherDefaultRouteActionUrlRewritePtrInput `pulumi:"urlRewrite"`
 	// A list of weighted backend services to send traffic to when a route match occurs.
 	// The weights determine the fraction of traffic that flows to their corresponding backend service.
@@ -42178,7 +43378,8 @@ type URLMapPathMatcherDefaultRouteActionArgs struct {
 	// with weight set to a non 0 number.
 	// Once a backendService is identified and before forwarding the request to the backend service,
 	// advanced routing actions like Url rewrites and header transformations are applied depending on
-	// additional settings specified in this HttpRouteAction.  Structure is documented below.
+	// additional settings specified in this HttpRouteAction.
+	// Structure is documented below.
 	WeightedBackendServices URLMapPathMatcherDefaultRouteActionWeightedBackendServiceArrayInput `pulumi:"weightedBackendServices"`
 }
 
@@ -42260,7 +43461,8 @@ func (o URLMapPathMatcherDefaultRouteActionOutput) ToURLMapPathMatcherDefaultRou
 }
 
 // The specification for allowing client side cross-origin requests. Please see
-// [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)  Structure is documented below.
+// [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
+// Structure is documented below.
 func (o URLMapPathMatcherDefaultRouteActionOutput) CorsPolicy() URLMapPathMatcherDefaultRouteActionCorsPolicyPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherDefaultRouteAction) *URLMapPathMatcherDefaultRouteActionCorsPolicy {
 		return v.CorsPolicy
@@ -42271,7 +43473,8 @@ func (o URLMapPathMatcherDefaultRouteActionOutput) CorsPolicy() URLMapPathMatche
 // As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
 // percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
 // by the Loadbalancer for a percentage of requests.
-// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.  Structure is documented below.
+// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
+// Structure is documented below.
 func (o URLMapPathMatcherDefaultRouteActionOutput) FaultInjectionPolicy() URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherDefaultRouteAction) *URLMapPathMatcherDefaultRouteActionFaultInjectionPolicy {
 		return v.FaultInjectionPolicy
@@ -42280,14 +43483,16 @@ func (o URLMapPathMatcherDefaultRouteActionOutput) FaultInjectionPolicy() URLMap
 
 // Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
 // Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
-// the host / authority header is suffixed with -shadow.  Structure is documented below.
+// the host / authority header is suffixed with -shadow.
+// Structure is documented below.
 func (o URLMapPathMatcherDefaultRouteActionOutput) RequestMirrorPolicy() URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherDefaultRouteAction) *URLMapPathMatcherDefaultRouteActionRequestMirrorPolicy {
 		return v.RequestMirrorPolicy
 	}).(URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyPtrOutput)
 }
 
-// Specifies the retry policy associated with this route.  Structure is documented below.
+// Specifies the retry policy associated with this route.
+// Structure is documented below.
 func (o URLMapPathMatcherDefaultRouteActionOutput) RetryPolicy() URLMapPathMatcherDefaultRouteActionRetryPolicyPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherDefaultRouteAction) *URLMapPathMatcherDefaultRouteActionRetryPolicy {
 		return v.RetryPolicy
@@ -42296,14 +43501,16 @@ func (o URLMapPathMatcherDefaultRouteActionOutput) RetryPolicy() URLMapPathMatch
 
 // Specifies the timeout for the selected route. Timeout is computed from the time the request has been
 // fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries.
-// If not specified, will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+// If not specified, will use the largest timeout among all backend services associated with the route.
+// Structure is documented below.
 func (o URLMapPathMatcherDefaultRouteActionOutput) Timeout() URLMapPathMatcherDefaultRouteActionTimeoutPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherDefaultRouteAction) *URLMapPathMatcherDefaultRouteActionTimeout {
 		return v.Timeout
 	}).(URLMapPathMatcherDefaultRouteActionTimeoutPtrOutput)
 }
 
-// The spec to modify the URL of the request, prior to forwarding the request to the matched service.  Structure is documented below.
+// The spec to modify the URL of the request, prior to forwarding the request to the matched service.
+// Structure is documented below.
 func (o URLMapPathMatcherDefaultRouteActionOutput) UrlRewrite() URLMapPathMatcherDefaultRouteActionUrlRewritePtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherDefaultRouteAction) *URLMapPathMatcherDefaultRouteActionUrlRewrite {
 		return v.UrlRewrite
@@ -42316,7 +43523,8 @@ func (o URLMapPathMatcherDefaultRouteActionOutput) UrlRewrite() URLMapPathMatche
 // with weight set to a non 0 number.
 // Once a backendService is identified and before forwarding the request to the backend service,
 // advanced routing actions like Url rewrites and header transformations are applied depending on
-// additional settings specified in this HttpRouteAction.  Structure is documented below.
+// additional settings specified in this HttpRouteAction.
+// Structure is documented below.
 func (o URLMapPathMatcherDefaultRouteActionOutput) WeightedBackendServices() URLMapPathMatcherDefaultRouteActionWeightedBackendServiceArrayOutput {
 	return o.ApplyT(func(v URLMapPathMatcherDefaultRouteAction) []URLMapPathMatcherDefaultRouteActionWeightedBackendService {
 		return v.WeightedBackendServices
@@ -42342,7 +43550,8 @@ func (o URLMapPathMatcherDefaultRouteActionPtrOutput) Elem() URLMapPathMatcherDe
 }
 
 // The specification for allowing client side cross-origin requests. Please see
-// [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)  Structure is documented below.
+// [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
+// Structure is documented below.
 func (o URLMapPathMatcherDefaultRouteActionPtrOutput) CorsPolicy() URLMapPathMatcherDefaultRouteActionCorsPolicyPtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherDefaultRouteAction) *URLMapPathMatcherDefaultRouteActionCorsPolicy {
 		if v == nil {
@@ -42356,7 +43565,8 @@ func (o URLMapPathMatcherDefaultRouteActionPtrOutput) CorsPolicy() URLMapPathMat
 // As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
 // percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
 // by the Loadbalancer for a percentage of requests.
-// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.  Structure is documented below.
+// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
+// Structure is documented below.
 func (o URLMapPathMatcherDefaultRouteActionPtrOutput) FaultInjectionPolicy() URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyPtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherDefaultRouteAction) *URLMapPathMatcherDefaultRouteActionFaultInjectionPolicy {
 		if v == nil {
@@ -42368,7 +43578,8 @@ func (o URLMapPathMatcherDefaultRouteActionPtrOutput) FaultInjectionPolicy() URL
 
 // Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
 // Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
-// the host / authority header is suffixed with -shadow.  Structure is documented below.
+// the host / authority header is suffixed with -shadow.
+// Structure is documented below.
 func (o URLMapPathMatcherDefaultRouteActionPtrOutput) RequestMirrorPolicy() URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyPtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherDefaultRouteAction) *URLMapPathMatcherDefaultRouteActionRequestMirrorPolicy {
 		if v == nil {
@@ -42378,7 +43589,8 @@ func (o URLMapPathMatcherDefaultRouteActionPtrOutput) RequestMirrorPolicy() URLM
 	}).(URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyPtrOutput)
 }
 
-// Specifies the retry policy associated with this route.  Structure is documented below.
+// Specifies the retry policy associated with this route.
+// Structure is documented below.
 func (o URLMapPathMatcherDefaultRouteActionPtrOutput) RetryPolicy() URLMapPathMatcherDefaultRouteActionRetryPolicyPtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherDefaultRouteAction) *URLMapPathMatcherDefaultRouteActionRetryPolicy {
 		if v == nil {
@@ -42390,7 +43602,8 @@ func (o URLMapPathMatcherDefaultRouteActionPtrOutput) RetryPolicy() URLMapPathMa
 
 // Specifies the timeout for the selected route. Timeout is computed from the time the request has been
 // fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries.
-// If not specified, will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+// If not specified, will use the largest timeout among all backend services associated with the route.
+// Structure is documented below.
 func (o URLMapPathMatcherDefaultRouteActionPtrOutput) Timeout() URLMapPathMatcherDefaultRouteActionTimeoutPtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherDefaultRouteAction) *URLMapPathMatcherDefaultRouteActionTimeout {
 		if v == nil {
@@ -42400,7 +43613,8 @@ func (o URLMapPathMatcherDefaultRouteActionPtrOutput) Timeout() URLMapPathMatche
 	}).(URLMapPathMatcherDefaultRouteActionTimeoutPtrOutput)
 }
 
-// The spec to modify the URL of the request, prior to forwarding the request to the matched service.  Structure is documented below.
+// The spec to modify the URL of the request, prior to forwarding the request to the matched service.
+// Structure is documented below.
 func (o URLMapPathMatcherDefaultRouteActionPtrOutput) UrlRewrite() URLMapPathMatcherDefaultRouteActionUrlRewritePtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherDefaultRouteAction) *URLMapPathMatcherDefaultRouteActionUrlRewrite {
 		if v == nil {
@@ -42416,7 +43630,8 @@ func (o URLMapPathMatcherDefaultRouteActionPtrOutput) UrlRewrite() URLMapPathMat
 // with weight set to a non 0 number.
 // Once a backendService is identified and before forwarding the request to the backend service,
 // advanced routing actions like Url rewrites and header transformations are applied depending on
-// additional settings specified in this HttpRouteAction.  Structure is documented below.
+// additional settings specified in this HttpRouteAction.
+// Structure is documented below.
 func (o URLMapPathMatcherDefaultRouteActionPtrOutput) WeightedBackendServices() URLMapPathMatcherDefaultRouteActionWeightedBackendServiceArrayOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherDefaultRouteAction) []URLMapPathMatcherDefaultRouteActionWeightedBackendService {
 		if v == nil {
@@ -42713,9 +43928,11 @@ func (o URLMapPathMatcherDefaultRouteActionCorsPolicyPtrOutput) MaxAge() pulumi.
 }
 
 type URLMapPathMatcherDefaultRouteActionFaultInjectionPolicy struct {
-	// The specification for how client requests are aborted as part of fault injection.  Structure is documented below.
+	// The specification for how client requests are aborted as part of fault injection.
+	// Structure is documented below.
 	Abort *URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbort `pulumi:"abort"`
-	// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.  Structure is documented below.
+	// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+	// Structure is documented below.
 	Delay *URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelay `pulumi:"delay"`
 }
 
@@ -42731,9 +43948,11 @@ type URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyInput interface {
 }
 
 type URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyArgs struct {
-	// The specification for how client requests are aborted as part of fault injection.  Structure is documented below.
+	// The specification for how client requests are aborted as part of fault injection.
+	// Structure is documented below.
 	Abort URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortPtrInput `pulumi:"abort"`
-	// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.  Structure is documented below.
+	// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+	// Structure is documented below.
 	Delay URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayPtrInput `pulumi:"delay"`
 }
 
@@ -42814,14 +44033,16 @@ func (o URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyOutput) ToURLMapP
 	}).(URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyPtrOutput)
 }
 
-// The specification for how client requests are aborted as part of fault injection.  Structure is documented below.
+// The specification for how client requests are aborted as part of fault injection.
+// Structure is documented below.
 func (o URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyOutput) Abort() URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherDefaultRouteActionFaultInjectionPolicy) *URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbort {
 		return v.Abort
 	}).(URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortPtrOutput)
 }
 
-// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.  Structure is documented below.
+// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+// Structure is documented below.
 func (o URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyOutput) Delay() URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherDefaultRouteActionFaultInjectionPolicy) *URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelay {
 		return v.Delay
@@ -42848,7 +44069,8 @@ func (o URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyPtrOutput) Elem()
 	}).(URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyOutput)
 }
 
-// The specification for how client requests are aborted as part of fault injection.  Structure is documented below.
+// The specification for how client requests are aborted as part of fault injection.
+// Structure is documented below.
 func (o URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyPtrOutput) Abort() URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortPtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherDefaultRouteActionFaultInjectionPolicy) *URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbort {
 		if v == nil {
@@ -42858,7 +44080,8 @@ func (o URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyPtrOutput) Abort(
 	}).(URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortPtrOutput)
 }
 
-// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.  Structure is documented below.
+// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+// Structure is documented below.
 func (o URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyPtrOutput) Delay() URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayPtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherDefaultRouteActionFaultInjectionPolicy) *URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelay {
 		if v == nil {
@@ -43029,7 +44252,8 @@ func (o URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortPtrOutput) P
 }
 
 type URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelay struct {
-	// Specifies the value of the fixed delay interval.  Structure is documented below.
+	// Specifies the value of the fixed delay interval.
+	// Structure is documented below.
 	FixedDelay *URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelay `pulumi:"fixedDelay"`
 	// The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
 	// The value must be between 0.0 and 100.0 inclusive.
@@ -43048,7 +44272,8 @@ type URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayInput interface
 }
 
 type URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayArgs struct {
-	// Specifies the value of the fixed delay interval.  Structure is documented below.
+	// Specifies the value of the fixed delay interval.
+	// Structure is documented below.
 	FixedDelay URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrInput `pulumi:"fixedDelay"`
 	// The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
 	// The value must be between 0.0 and 100.0 inclusive.
@@ -43132,7 +44357,8 @@ func (o URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayOutput) ToUR
 	}).(URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayPtrOutput)
 }
 
-// Specifies the value of the fixed delay interval.  Structure is documented below.
+// Specifies the value of the fixed delay interval.
+// Structure is documented below.
 func (o URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayOutput) FixedDelay() URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelay) *URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelay {
 		return v.FixedDelay
@@ -43165,7 +44391,8 @@ func (o URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayPtrOutput) E
 	}).(URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayOutput)
 }
 
-// Specifies the value of the fixed delay interval.  Structure is documented below.
+// Specifies the value of the fixed delay interval.
+// Structure is documented below.
 func (o URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayPtrOutput) FixedDelay() URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelay) *URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelay {
 		if v == nil {
@@ -43486,7 +44713,8 @@ type URLMapPathMatcherDefaultRouteActionRetryPolicy struct {
 	NumRetries *int `pulumi:"numRetries"`
 	// Specifies a non-zero timeout per retry attempt.
 	// If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-	// will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+	// will use the largest timeout among all backend services associated with the route.
+	// Structure is documented below.
 	PerTryTimeout *URLMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeout `pulumi:"perTryTimeout"`
 	// Specfies one or more conditions when this retry rule applies. Valid values are:
 	// 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
@@ -43522,7 +44750,8 @@ type URLMapPathMatcherDefaultRouteActionRetryPolicyArgs struct {
 	NumRetries pulumi.IntPtrInput `pulumi:"numRetries"`
 	// Specifies a non-zero timeout per retry attempt.
 	// If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-	// will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+	// will use the largest timeout among all backend services associated with the route.
+	// Structure is documented below.
 	PerTryTimeout URLMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeoutPtrInput `pulumi:"perTryTimeout"`
 	// Specfies one or more conditions when this retry rule applies. Valid values are:
 	// 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
@@ -43626,7 +44855,8 @@ func (o URLMapPathMatcherDefaultRouteActionRetryPolicyOutput) NumRetries() pulum
 
 // Specifies a non-zero timeout per retry attempt.
 // If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-// will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+// will use the largest timeout among all backend services associated with the route.
+// Structure is documented below.
 func (o URLMapPathMatcherDefaultRouteActionRetryPolicyOutput) PerTryTimeout() URLMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeoutPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherDefaultRouteActionRetryPolicy) *URLMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeout {
 		return v.PerTryTimeout
@@ -43684,7 +44914,8 @@ func (o URLMapPathMatcherDefaultRouteActionRetryPolicyPtrOutput) NumRetries() pu
 
 // Specifies a non-zero timeout per retry attempt.
 // If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-// will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+// will use the largest timeout among all backend services associated with the route.
+// Structure is documented below.
 func (o URLMapPathMatcherDefaultRouteActionRetryPolicyPtrOutput) PerTryTimeout() URLMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeoutPtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherDefaultRouteActionRetryPolicy) *URLMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeout {
 		if v == nil {
@@ -44212,7 +45443,8 @@ type URLMapPathMatcherDefaultRouteActionWeightedBackendService struct {
 	// Specifies changes to request and response headers that need to take effect for
 	// the selected backendService.
 	// headerAction specified here take effect before headerAction in the enclosing
-	// HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+	// HttpRouteRule, PathMatcher and UrlMap.
+	// Structure is documented below.
 	HeaderAction *URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderAction `pulumi:"headerAction"`
 	// Specifies the fraction of traffic sent to backendService, computed as
 	// weight / (sum of all weightedBackendService weights in routeAction) .
@@ -44240,7 +45472,8 @@ type URLMapPathMatcherDefaultRouteActionWeightedBackendServiceArgs struct {
 	// Specifies changes to request and response headers that need to take effect for
 	// the selected backendService.
 	// headerAction specified here take effect before headerAction in the enclosing
-	// HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+	// HttpRouteRule, PathMatcher and UrlMap.
+	// Structure is documented below.
 	HeaderAction URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionPtrInput `pulumi:"headerAction"`
 	// Specifies the fraction of traffic sent to backendService, computed as
 	// weight / (sum of all weightedBackendService weights in routeAction) .
@@ -44310,7 +45543,8 @@ func (o URLMapPathMatcherDefaultRouteActionWeightedBackendServiceOutput) Backend
 // Specifies changes to request and response headers that need to take effect for
 // the selected backendService.
 // headerAction specified here take effect before headerAction in the enclosing
-// HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+// HttpRouteRule, PathMatcher and UrlMap.
+// Structure is documented below.
 func (o URLMapPathMatcherDefaultRouteActionWeightedBackendServiceOutput) HeaderAction() URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherDefaultRouteActionWeightedBackendService) *URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderAction {
 		return v.HeaderAction
@@ -44348,12 +45582,14 @@ func (o URLMapPathMatcherDefaultRouteActionWeightedBackendServiceArrayOutput) In
 }
 
 type URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderAction struct {
-	// Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+	// Headers to add to a matching request prior to forwarding the request to the backendService.
+	// Structure is documented below.
 	RequestHeadersToAdds []URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd `pulumi:"requestHeadersToAdds"`
 	// A list of header names for headers that need to be removed from the request prior to
 	// forwarding the request to the backendService.
 	RequestHeadersToRemoves []string `pulumi:"requestHeadersToRemoves"`
-	// Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+	// Headers to add the response prior to sending the response back to the client.
+	// Structure is documented below.
 	ResponseHeadersToAdds []URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd `pulumi:"responseHeadersToAdds"`
 	// A list of header names for headers that need to be removed from the response prior to sending the
 	// response back to the client.
@@ -44372,12 +45608,14 @@ type URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionInput 
 }
 
 type URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArgs struct {
-	// Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+	// Headers to add to a matching request prior to forwarding the request to the backendService.
+	// Structure is documented below.
 	RequestHeadersToAdds URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayInput `pulumi:"requestHeadersToAdds"`
 	// A list of header names for headers that need to be removed from the request prior to
 	// forwarding the request to the backendService.
 	RequestHeadersToRemoves pulumi.StringArrayInput `pulumi:"requestHeadersToRemoves"`
-	// Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+	// Headers to add the response prior to sending the response back to the client.
+	// Structure is documented below.
 	ResponseHeadersToAdds URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayInput `pulumi:"responseHeadersToAdds"`
 	// A list of header names for headers that need to be removed from the response prior to sending the
 	// response back to the client.
@@ -44461,7 +45699,8 @@ func (o URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionOut
 	}).(URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutput)
 }
 
-// Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+// Headers to add to a matching request prior to forwarding the request to the backendService.
+// Structure is documented below.
 func (o URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionOutput) RequestHeadersToAdds() URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput {
 	return o.ApplyT(func(v URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderAction) []URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd {
 		return v.RequestHeadersToAdds
@@ -44476,7 +45715,8 @@ func (o URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionOut
 	}).(pulumi.StringArrayOutput)
 }
 
-// Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+// Headers to add the response prior to sending the response back to the client.
+// Structure is documented below.
 func (o URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionOutput) ResponseHeadersToAdds() URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput {
 	return o.ApplyT(func(v URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderAction) []URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd {
 		return v.ResponseHeadersToAdds
@@ -44511,7 +45751,8 @@ func (o URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionPtr
 	}).(URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionOutput)
 }
 
-// Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+// Headers to add to a matching request prior to forwarding the request to the backendService.
+// Structure is documented below.
 func (o URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutput) RequestHeadersToAdds() URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderAction) []URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd {
 		if v == nil {
@@ -44532,7 +45773,8 @@ func (o URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionPtr
 	}).(pulumi.StringArrayOutput)
 }
 
-// Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+// Headers to add the response prior to sending the response back to the client.
+// Structure is documented below.
 func (o URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutput) ResponseHeadersToAdds() URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderAction) []URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd {
 		if v == nil {
@@ -45116,12 +46358,14 @@ func (o URLMapPathMatcherDefaultUrlRedirectPtrOutput) StripQuery() pulumi.BoolPt
 }
 
 type URLMapPathMatcherHeaderAction struct {
-	// Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+	// Headers to add to a matching request prior to forwarding the request to the backendService.
+	// Structure is documented below.
 	RequestHeadersToAdds []URLMapPathMatcherHeaderActionRequestHeadersToAdd `pulumi:"requestHeadersToAdds"`
 	// A list of header names for headers that need to be removed from the request prior to
 	// forwarding the request to the backendService.
 	RequestHeadersToRemoves []string `pulumi:"requestHeadersToRemoves"`
-	// Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+	// Headers to add the response prior to sending the response back to the client.
+	// Structure is documented below.
 	ResponseHeadersToAdds []URLMapPathMatcherHeaderActionResponseHeadersToAdd `pulumi:"responseHeadersToAdds"`
 	// A list of header names for headers that need to be removed from the response prior to sending the
 	// response back to the client.
@@ -45140,12 +46384,14 @@ type URLMapPathMatcherHeaderActionInput interface {
 }
 
 type URLMapPathMatcherHeaderActionArgs struct {
-	// Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+	// Headers to add to a matching request prior to forwarding the request to the backendService.
+	// Structure is documented below.
 	RequestHeadersToAdds URLMapPathMatcherHeaderActionRequestHeadersToAddArrayInput `pulumi:"requestHeadersToAdds"`
 	// A list of header names for headers that need to be removed from the request prior to
 	// forwarding the request to the backendService.
 	RequestHeadersToRemoves pulumi.StringArrayInput `pulumi:"requestHeadersToRemoves"`
-	// Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+	// Headers to add the response prior to sending the response back to the client.
+	// Structure is documented below.
 	ResponseHeadersToAdds URLMapPathMatcherHeaderActionResponseHeadersToAddArrayInput `pulumi:"responseHeadersToAdds"`
 	// A list of header names for headers that need to be removed from the response prior to sending the
 	// response back to the client.
@@ -45229,7 +46475,8 @@ func (o URLMapPathMatcherHeaderActionOutput) ToURLMapPathMatcherHeaderActionPtrO
 	}).(URLMapPathMatcherHeaderActionPtrOutput)
 }
 
-// Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+// Headers to add to a matching request prior to forwarding the request to the backendService.
+// Structure is documented below.
 func (o URLMapPathMatcherHeaderActionOutput) RequestHeadersToAdds() URLMapPathMatcherHeaderActionRequestHeadersToAddArrayOutput {
 	return o.ApplyT(func(v URLMapPathMatcherHeaderAction) []URLMapPathMatcherHeaderActionRequestHeadersToAdd {
 		return v.RequestHeadersToAdds
@@ -45242,7 +46489,8 @@ func (o URLMapPathMatcherHeaderActionOutput) RequestHeadersToRemoves() pulumi.St
 	return o.ApplyT(func(v URLMapPathMatcherHeaderAction) []string { return v.RequestHeadersToRemoves }).(pulumi.StringArrayOutput)
 }
 
-// Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+// Headers to add the response prior to sending the response back to the client.
+// Structure is documented below.
 func (o URLMapPathMatcherHeaderActionOutput) ResponseHeadersToAdds() URLMapPathMatcherHeaderActionResponseHeadersToAddArrayOutput {
 	return o.ApplyT(func(v URLMapPathMatcherHeaderAction) []URLMapPathMatcherHeaderActionResponseHeadersToAdd {
 		return v.ResponseHeadersToAdds
@@ -45273,7 +46521,8 @@ func (o URLMapPathMatcherHeaderActionPtrOutput) Elem() URLMapPathMatcherHeaderAc
 	return o.ApplyT(func(v *URLMapPathMatcherHeaderAction) URLMapPathMatcherHeaderAction { return *v }).(URLMapPathMatcherHeaderActionOutput)
 }
 
-// Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+// Headers to add to a matching request prior to forwarding the request to the backendService.
+// Structure is documented below.
 func (o URLMapPathMatcherHeaderActionPtrOutput) RequestHeadersToAdds() URLMapPathMatcherHeaderActionRequestHeadersToAddArrayOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherHeaderAction) []URLMapPathMatcherHeaderActionRequestHeadersToAdd {
 		if v == nil {
@@ -45294,7 +46543,8 @@ func (o URLMapPathMatcherHeaderActionPtrOutput) RequestHeadersToRemoves() pulumi
 	}).(pulumi.StringArrayOutput)
 }
 
-// Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+// Headers to add the response prior to sending the response back to the client.
+// Structure is documented below.
 func (o URLMapPathMatcherHeaderActionPtrOutput) ResponseHeadersToAdds() URLMapPathMatcherHeaderActionResponseHeadersToAddArrayOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherHeaderAction) []URLMapPathMatcherHeaderActionResponseHeadersToAdd {
 		if v == nil {
@@ -45562,13 +46812,15 @@ type URLMapPathMatcherPathRule struct {
 	// request to the selected backend. If  routeAction specifies any
 	// weightedBackendServices, service must not be set. Conversely if service is set,
 	// routeAction cannot contain any  weightedBackendServices. Only one of routeAction
-	// or urlRedirect must be set.  Structure is documented below.
+	// or urlRedirect must be set.
+	// Structure is documented below.
 	RouteAction *URLMapPathMatcherPathRuleRouteAction `pulumi:"routeAction"`
 	// The backend service or backend bucket link that should be matched by this test.
 	Service *string `pulumi:"service"`
 	// When this rule is matched, the request is redirected to a URL specified by
 	// urlRedirect. If urlRedirect is specified, service or routeAction must not be
-	// set.  Structure is documented below.
+	// set.
+	// Structure is documented below.
 	UrlRedirect *URLMapPathMatcherPathRuleUrlRedirect `pulumi:"urlRedirect"`
 }
 
@@ -45594,13 +46846,15 @@ type URLMapPathMatcherPathRuleArgs struct {
 	// request to the selected backend. If  routeAction specifies any
 	// weightedBackendServices, service must not be set. Conversely if service is set,
 	// routeAction cannot contain any  weightedBackendServices. Only one of routeAction
-	// or urlRedirect must be set.  Structure is documented below.
+	// or urlRedirect must be set.
+	// Structure is documented below.
 	RouteAction URLMapPathMatcherPathRuleRouteActionPtrInput `pulumi:"routeAction"`
 	// The backend service or backend bucket link that should be matched by this test.
 	Service pulumi.StringPtrInput `pulumi:"service"`
 	// When this rule is matched, the request is redirected to a URL specified by
 	// urlRedirect. If urlRedirect is specified, service or routeAction must not be
-	// set.  Structure is documented below.
+	// set.
+	// Structure is documented below.
 	UrlRedirect URLMapPathMatcherPathRuleUrlRedirectPtrInput `pulumi:"urlRedirect"`
 }
 
@@ -45668,7 +46922,8 @@ func (o URLMapPathMatcherPathRuleOutput) Paths() pulumi.StringArrayOutput {
 // request to the selected backend. If  routeAction specifies any
 // weightedBackendServices, service must not be set. Conversely if service is set,
 // routeAction cannot contain any  weightedBackendServices. Only one of routeAction
-// or urlRedirect must be set.  Structure is documented below.
+// or urlRedirect must be set.
+// Structure is documented below.
 func (o URLMapPathMatcherPathRuleOutput) RouteAction() URLMapPathMatcherPathRuleRouteActionPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherPathRule) *URLMapPathMatcherPathRuleRouteAction { return v.RouteAction }).(URLMapPathMatcherPathRuleRouteActionPtrOutput)
 }
@@ -45680,7 +46935,8 @@ func (o URLMapPathMatcherPathRuleOutput) Service() pulumi.StringPtrOutput {
 
 // When this rule is matched, the request is redirected to a URL specified by
 // urlRedirect. If urlRedirect is specified, service or routeAction must not be
-// set.  Structure is documented below.
+// set.
+// Structure is documented below.
 func (o URLMapPathMatcherPathRuleOutput) UrlRedirect() URLMapPathMatcherPathRuleUrlRedirectPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherPathRule) *URLMapPathMatcherPathRuleUrlRedirect { return v.UrlRedirect }).(URLMapPathMatcherPathRuleUrlRedirectPtrOutput)
 }
@@ -45707,25 +46963,31 @@ func (o URLMapPathMatcherPathRuleArrayOutput) Index(i pulumi.IntInput) URLMapPat
 
 type URLMapPathMatcherPathRuleRouteAction struct {
 	// The specification for allowing client side cross-origin requests. Please see
-	// [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)  Structure is documented below.
+	// [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
+	// Structure is documented below.
 	CorsPolicy *URLMapPathMatcherPathRuleRouteActionCorsPolicy `pulumi:"corsPolicy"`
 	// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
 	// As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
 	// percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
 	// by the Loadbalancer for a percentage of requests.
-	// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.  Structure is documented below.
+	// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
+	// Structure is documented below.
 	FaultInjectionPolicy *URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy `pulumi:"faultInjectionPolicy"`
 	// Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
 	// Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
-	// the host / authority header is suffixed with -shadow.  Structure is documented below.
+	// the host / authority header is suffixed with -shadow.
+	// Structure is documented below.
 	RequestMirrorPolicy *URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy `pulumi:"requestMirrorPolicy"`
-	// Specifies the retry policy associated with this route.  Structure is documented below.
+	// Specifies the retry policy associated with this route.
+	// Structure is documented below.
 	RetryPolicy *URLMapPathMatcherPathRuleRouteActionRetryPolicy `pulumi:"retryPolicy"`
 	// Specifies the timeout for the selected route. Timeout is computed from the time the request has been
 	// fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries.
-	// If not specified, will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+	// If not specified, will use the largest timeout among all backend services associated with the route.
+	// Structure is documented below.
 	Timeout *URLMapPathMatcherPathRuleRouteActionTimeout `pulumi:"timeout"`
-	// The spec to modify the URL of the request, prior to forwarding the request to the matched service.  Structure is documented below.
+	// The spec to modify the URL of the request, prior to forwarding the request to the matched service.
+	// Structure is documented below.
 	UrlRewrite *URLMapPathMatcherPathRuleRouteActionUrlRewrite `pulumi:"urlRewrite"`
 	// A list of weighted backend services to send traffic to when a route match occurs.
 	// The weights determine the fraction of traffic that flows to their corresponding backend service.
@@ -45733,7 +46995,8 @@ type URLMapPathMatcherPathRuleRouteAction struct {
 	// with weight set to a non 0 number.
 	// Once a backendService is identified and before forwarding the request to the backend service,
 	// advanced routing actions like Url rewrites and header transformations are applied depending on
-	// additional settings specified in this HttpRouteAction.  Structure is documented below.
+	// additional settings specified in this HttpRouteAction.
+	// Structure is documented below.
 	WeightedBackendServices []URLMapPathMatcherPathRuleRouteActionWeightedBackendService `pulumi:"weightedBackendServices"`
 }
 
@@ -45750,25 +47013,31 @@ type URLMapPathMatcherPathRuleRouteActionInput interface {
 
 type URLMapPathMatcherPathRuleRouteActionArgs struct {
 	// The specification for allowing client side cross-origin requests. Please see
-	// [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)  Structure is documented below.
+	// [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
+	// Structure is documented below.
 	CorsPolicy URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrInput `pulumi:"corsPolicy"`
 	// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
 	// As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
 	// percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
 	// by the Loadbalancer for a percentage of requests.
-	// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.  Structure is documented below.
+	// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
+	// Structure is documented below.
 	FaultInjectionPolicy URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrInput `pulumi:"faultInjectionPolicy"`
 	// Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
 	// Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
-	// the host / authority header is suffixed with -shadow.  Structure is documented below.
+	// the host / authority header is suffixed with -shadow.
+	// Structure is documented below.
 	RequestMirrorPolicy URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrInput `pulumi:"requestMirrorPolicy"`
-	// Specifies the retry policy associated with this route.  Structure is documented below.
+	// Specifies the retry policy associated with this route.
+	// Structure is documented below.
 	RetryPolicy URLMapPathMatcherPathRuleRouteActionRetryPolicyPtrInput `pulumi:"retryPolicy"`
 	// Specifies the timeout for the selected route. Timeout is computed from the time the request has been
 	// fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries.
-	// If not specified, will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+	// If not specified, will use the largest timeout among all backend services associated with the route.
+	// Structure is documented below.
 	Timeout URLMapPathMatcherPathRuleRouteActionTimeoutPtrInput `pulumi:"timeout"`
-	// The spec to modify the URL of the request, prior to forwarding the request to the matched service.  Structure is documented below.
+	// The spec to modify the URL of the request, prior to forwarding the request to the matched service.
+	// Structure is documented below.
 	UrlRewrite URLMapPathMatcherPathRuleRouteActionUrlRewritePtrInput `pulumi:"urlRewrite"`
 	// A list of weighted backend services to send traffic to when a route match occurs.
 	// The weights determine the fraction of traffic that flows to their corresponding backend service.
@@ -45776,7 +47045,8 @@ type URLMapPathMatcherPathRuleRouteActionArgs struct {
 	// with weight set to a non 0 number.
 	// Once a backendService is identified and before forwarding the request to the backend service,
 	// advanced routing actions like Url rewrites and header transformations are applied depending on
-	// additional settings specified in this HttpRouteAction.  Structure is documented below.
+	// additional settings specified in this HttpRouteAction.
+	// Structure is documented below.
 	WeightedBackendServices URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrayInput `pulumi:"weightedBackendServices"`
 }
 
@@ -45858,7 +47128,8 @@ func (o URLMapPathMatcherPathRuleRouteActionOutput) ToURLMapPathMatcherPathRuleR
 }
 
 // The specification for allowing client side cross-origin requests. Please see
-// [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)  Structure is documented below.
+// [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
+// Structure is documented below.
 func (o URLMapPathMatcherPathRuleRouteActionOutput) CorsPolicy() URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteAction) *URLMapPathMatcherPathRuleRouteActionCorsPolicy {
 		return v.CorsPolicy
@@ -45869,7 +47140,8 @@ func (o URLMapPathMatcherPathRuleRouteActionOutput) CorsPolicy() URLMapPathMatch
 // As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
 // percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
 // by the Loadbalancer for a percentage of requests.
-// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.  Structure is documented below.
+// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
+// Structure is documented below.
 func (o URLMapPathMatcherPathRuleRouteActionOutput) FaultInjectionPolicy() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteAction) *URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy {
 		return v.FaultInjectionPolicy
@@ -45878,14 +47150,16 @@ func (o URLMapPathMatcherPathRuleRouteActionOutput) FaultInjectionPolicy() URLMa
 
 // Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
 // Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
-// the host / authority header is suffixed with -shadow.  Structure is documented below.
+// the host / authority header is suffixed with -shadow.
+// Structure is documented below.
 func (o URLMapPathMatcherPathRuleRouteActionOutput) RequestMirrorPolicy() URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteAction) *URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy {
 		return v.RequestMirrorPolicy
 	}).(URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutput)
 }
 
-// Specifies the retry policy associated with this route.  Structure is documented below.
+// Specifies the retry policy associated with this route.
+// Structure is documented below.
 func (o URLMapPathMatcherPathRuleRouteActionOutput) RetryPolicy() URLMapPathMatcherPathRuleRouteActionRetryPolicyPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteAction) *URLMapPathMatcherPathRuleRouteActionRetryPolicy {
 		return v.RetryPolicy
@@ -45894,14 +47168,16 @@ func (o URLMapPathMatcherPathRuleRouteActionOutput) RetryPolicy() URLMapPathMatc
 
 // Specifies the timeout for the selected route. Timeout is computed from the time the request has been
 // fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries.
-// If not specified, will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+// If not specified, will use the largest timeout among all backend services associated with the route.
+// Structure is documented below.
 func (o URLMapPathMatcherPathRuleRouteActionOutput) Timeout() URLMapPathMatcherPathRuleRouteActionTimeoutPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteAction) *URLMapPathMatcherPathRuleRouteActionTimeout {
 		return v.Timeout
 	}).(URLMapPathMatcherPathRuleRouteActionTimeoutPtrOutput)
 }
 
-// The spec to modify the URL of the request, prior to forwarding the request to the matched service.  Structure is documented below.
+// The spec to modify the URL of the request, prior to forwarding the request to the matched service.
+// Structure is documented below.
 func (o URLMapPathMatcherPathRuleRouteActionOutput) UrlRewrite() URLMapPathMatcherPathRuleRouteActionUrlRewritePtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteAction) *URLMapPathMatcherPathRuleRouteActionUrlRewrite {
 		return v.UrlRewrite
@@ -45914,7 +47190,8 @@ func (o URLMapPathMatcherPathRuleRouteActionOutput) UrlRewrite() URLMapPathMatch
 // with weight set to a non 0 number.
 // Once a backendService is identified and before forwarding the request to the backend service,
 // advanced routing actions like Url rewrites and header transformations are applied depending on
-// additional settings specified in this HttpRouteAction.  Structure is documented below.
+// additional settings specified in this HttpRouteAction.
+// Structure is documented below.
 func (o URLMapPathMatcherPathRuleRouteActionOutput) WeightedBackendServices() URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrayOutput {
 	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteAction) []URLMapPathMatcherPathRuleRouteActionWeightedBackendService {
 		return v.WeightedBackendServices
@@ -45940,7 +47217,8 @@ func (o URLMapPathMatcherPathRuleRouteActionPtrOutput) Elem() URLMapPathMatcherP
 }
 
 // The specification for allowing client side cross-origin requests. Please see
-// [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)  Structure is documented below.
+// [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
+// Structure is documented below.
 func (o URLMapPathMatcherPathRuleRouteActionPtrOutput) CorsPolicy() URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteAction) *URLMapPathMatcherPathRuleRouteActionCorsPolicy {
 		if v == nil {
@@ -45954,7 +47232,8 @@ func (o URLMapPathMatcherPathRuleRouteActionPtrOutput) CorsPolicy() URLMapPathMa
 // As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
 // percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
 // by the Loadbalancer for a percentage of requests.
-// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.  Structure is documented below.
+// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
+// Structure is documented below.
 func (o URLMapPathMatcherPathRuleRouteActionPtrOutput) FaultInjectionPolicy() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteAction) *URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy {
 		if v == nil {
@@ -45966,7 +47245,8 @@ func (o URLMapPathMatcherPathRuleRouteActionPtrOutput) FaultInjectionPolicy() UR
 
 // Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
 // Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
-// the host / authority header is suffixed with -shadow.  Structure is documented below.
+// the host / authority header is suffixed with -shadow.
+// Structure is documented below.
 func (o URLMapPathMatcherPathRuleRouteActionPtrOutput) RequestMirrorPolicy() URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteAction) *URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy {
 		if v == nil {
@@ -45976,7 +47256,8 @@ func (o URLMapPathMatcherPathRuleRouteActionPtrOutput) RequestMirrorPolicy() URL
 	}).(URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutput)
 }
 
-// Specifies the retry policy associated with this route.  Structure is documented below.
+// Specifies the retry policy associated with this route.
+// Structure is documented below.
 func (o URLMapPathMatcherPathRuleRouteActionPtrOutput) RetryPolicy() URLMapPathMatcherPathRuleRouteActionRetryPolicyPtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteAction) *URLMapPathMatcherPathRuleRouteActionRetryPolicy {
 		if v == nil {
@@ -45988,7 +47269,8 @@ func (o URLMapPathMatcherPathRuleRouteActionPtrOutput) RetryPolicy() URLMapPathM
 
 // Specifies the timeout for the selected route. Timeout is computed from the time the request has been
 // fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries.
-// If not specified, will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+// If not specified, will use the largest timeout among all backend services associated with the route.
+// Structure is documented below.
 func (o URLMapPathMatcherPathRuleRouteActionPtrOutput) Timeout() URLMapPathMatcherPathRuleRouteActionTimeoutPtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteAction) *URLMapPathMatcherPathRuleRouteActionTimeout {
 		if v == nil {
@@ -45998,7 +47280,8 @@ func (o URLMapPathMatcherPathRuleRouteActionPtrOutput) Timeout() URLMapPathMatch
 	}).(URLMapPathMatcherPathRuleRouteActionTimeoutPtrOutput)
 }
 
-// The spec to modify the URL of the request, prior to forwarding the request to the matched service.  Structure is documented below.
+// The spec to modify the URL of the request, prior to forwarding the request to the matched service.
+// Structure is documented below.
 func (o URLMapPathMatcherPathRuleRouteActionPtrOutput) UrlRewrite() URLMapPathMatcherPathRuleRouteActionUrlRewritePtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteAction) *URLMapPathMatcherPathRuleRouteActionUrlRewrite {
 		if v == nil {
@@ -46014,7 +47297,8 @@ func (o URLMapPathMatcherPathRuleRouteActionPtrOutput) UrlRewrite() URLMapPathMa
 // with weight set to a non 0 number.
 // Once a backendService is identified and before forwarding the request to the backend service,
 // advanced routing actions like Url rewrites and header transformations are applied depending on
-// additional settings specified in this HttpRouteAction.  Structure is documented below.
+// additional settings specified in this HttpRouteAction.
+// Structure is documented below.
 func (o URLMapPathMatcherPathRuleRouteActionPtrOutput) WeightedBackendServices() URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrayOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteAction) []URLMapPathMatcherPathRuleRouteActionWeightedBackendService {
 		if v == nil {
@@ -46311,9 +47595,11 @@ func (o URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput) MaxAge() pulumi
 }
 
 type URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy struct {
-	// The specification for how client requests are aborted as part of fault injection.  Structure is documented below.
+	// The specification for how client requests are aborted as part of fault injection.
+	// Structure is documented below.
 	Abort *URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort `pulumi:"abort"`
-	// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.  Structure is documented below.
+	// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+	// Structure is documented below.
 	Delay *URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay `pulumi:"delay"`
 }
 
@@ -46329,9 +47615,11 @@ type URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyInput interface {
 }
 
 type URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs struct {
-	// The specification for how client requests are aborted as part of fault injection.  Structure is documented below.
+	// The specification for how client requests are aborted as part of fault injection.
+	// Structure is documented below.
 	Abort URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrInput `pulumi:"abort"`
-	// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.  Structure is documented below.
+	// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+	// Structure is documented below.
 	Delay URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrInput `pulumi:"delay"`
 }
 
@@ -46412,14 +47700,16 @@ func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyOutput) ToURLMap
 	}).(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput)
 }
 
-// The specification for how client requests are aborted as part of fault injection.  Structure is documented below.
+// The specification for how client requests are aborted as part of fault injection.
+// Structure is documented below.
 func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyOutput) Abort() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy) *URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort {
 		return v.Abort
 	}).(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrOutput)
 }
 
-// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.  Structure is documented below.
+// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+// Structure is documented below.
 func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyOutput) Delay() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy) *URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay {
 		return v.Delay
@@ -46446,7 +47736,8 @@ func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput) Elem(
 	}).(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyOutput)
 }
 
-// The specification for how client requests are aborted as part of fault injection.  Structure is documented below.
+// The specification for how client requests are aborted as part of fault injection.
+// Structure is documented below.
 func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput) Abort() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy) *URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort {
 		if v == nil {
@@ -46456,7 +47747,8 @@ func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput) Abort
 	}).(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrOutput)
 }
 
-// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.  Structure is documented below.
+// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+// Structure is documented below.
 func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput) Delay() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy) *URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay {
 		if v == nil {
@@ -46627,7 +47919,8 @@ func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrOutput) 
 }
 
 type URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay struct {
-	// Specifies the value of the fixed delay interval.  Structure is documented below.
+	// Specifies the value of the fixed delay interval.
+	// Structure is documented below.
 	FixedDelay URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay `pulumi:"fixedDelay"`
 	// The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
 	// The value must be between 0.0 and 100.0 inclusive.
@@ -46646,7 +47939,8 @@ type URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayInput interfac
 }
 
 type URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs struct {
-	// Specifies the value of the fixed delay interval.  Structure is documented below.
+	// Specifies the value of the fixed delay interval.
+	// Structure is documented below.
 	FixedDelay URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayInput `pulumi:"fixedDelay"`
 	// The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
 	// The value must be between 0.0 and 100.0 inclusive.
@@ -46730,7 +48024,8 @@ func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayOutput) ToU
 	}).(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutput)
 }
 
-// Specifies the value of the fixed delay interval.  Structure is documented below.
+// Specifies the value of the fixed delay interval.
+// Structure is documented below.
 func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayOutput) FixedDelay() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayOutput {
 	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay) URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay {
 		return v.FixedDelay
@@ -46763,7 +48058,8 @@ func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutput) 
 	}).(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayOutput)
 }
 
-// Specifies the value of the fixed delay interval.  Structure is documented below.
+// Specifies the value of the fixed delay interval.
+// Structure is documented below.
 func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutput) FixedDelay() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay) *URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay {
 		if v == nil {
@@ -47084,7 +48380,8 @@ type URLMapPathMatcherPathRuleRouteActionRetryPolicy struct {
 	NumRetries *int `pulumi:"numRetries"`
 	// Specifies a non-zero timeout per retry attempt.
 	// If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-	// will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+	// will use the largest timeout among all backend services associated with the route.
+	// Structure is documented below.
 	PerTryTimeout *URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout `pulumi:"perTryTimeout"`
 	// Specfies one or more conditions when this retry rule applies. Valid values are:
 	// 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
@@ -47120,7 +48417,8 @@ type URLMapPathMatcherPathRuleRouteActionRetryPolicyArgs struct {
 	NumRetries pulumi.IntPtrInput `pulumi:"numRetries"`
 	// Specifies a non-zero timeout per retry attempt.
 	// If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-	// will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+	// will use the largest timeout among all backend services associated with the route.
+	// Structure is documented below.
 	PerTryTimeout URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrInput `pulumi:"perTryTimeout"`
 	// Specfies one or more conditions when this retry rule applies. Valid values are:
 	// 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
@@ -47224,7 +48522,8 @@ func (o URLMapPathMatcherPathRuleRouteActionRetryPolicyOutput) NumRetries() pulu
 
 // Specifies a non-zero timeout per retry attempt.
 // If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-// will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+// will use the largest timeout among all backend services associated with the route.
+// Structure is documented below.
 func (o URLMapPathMatcherPathRuleRouteActionRetryPolicyOutput) PerTryTimeout() URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionRetryPolicy) *URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout {
 		return v.PerTryTimeout
@@ -47282,7 +48581,8 @@ func (o URLMapPathMatcherPathRuleRouteActionRetryPolicyPtrOutput) NumRetries() p
 
 // Specifies a non-zero timeout per retry attempt.
 // If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-// will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+// will use the largest timeout among all backend services associated with the route.
+// Structure is documented below.
 func (o URLMapPathMatcherPathRuleRouteActionRetryPolicyPtrOutput) PerTryTimeout() URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionRetryPolicy) *URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout {
 		if v == nil {
@@ -47810,7 +49110,8 @@ type URLMapPathMatcherPathRuleRouteActionWeightedBackendService struct {
 	// Specifies changes to request and response headers that need to take effect for
 	// the selected backendService.
 	// headerAction specified here take effect before headerAction in the enclosing
-	// HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+	// HttpRouteRule, PathMatcher and UrlMap.
+	// Structure is documented below.
 	HeaderAction *URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction `pulumi:"headerAction"`
 	// Specifies the fraction of traffic sent to backendService, computed as
 	// weight / (sum of all weightedBackendService weights in routeAction) .
@@ -47838,7 +49139,8 @@ type URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs struct {
 	// Specifies changes to request and response headers that need to take effect for
 	// the selected backendService.
 	// headerAction specified here take effect before headerAction in the enclosing
-	// HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+	// HttpRouteRule, PathMatcher and UrlMap.
+	// Structure is documented below.
 	HeaderAction URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrInput `pulumi:"headerAction"`
 	// Specifies the fraction of traffic sent to backendService, computed as
 	// weight / (sum of all weightedBackendService weights in routeAction) .
@@ -47908,7 +49210,8 @@ func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceOutput) Backen
 // Specifies changes to request and response headers that need to take effect for
 // the selected backendService.
 // headerAction specified here take effect before headerAction in the enclosing
-// HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+// HttpRouteRule, PathMatcher and UrlMap.
+// Structure is documented below.
 func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceOutput) HeaderAction() URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionWeightedBackendService) *URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction {
 		return v.HeaderAction
@@ -47946,12 +49249,14 @@ func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrayOutput) I
 }
 
 type URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction struct {
-	// Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+	// Headers to add to a matching request prior to forwarding the request to the backendService.
+	// Structure is documented below.
 	RequestHeadersToAdds []URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd `pulumi:"requestHeadersToAdds"`
 	// A list of header names for headers that need to be removed from the request prior to
 	// forwarding the request to the backendService.
 	RequestHeadersToRemoves []string `pulumi:"requestHeadersToRemoves"`
-	// Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+	// Headers to add the response prior to sending the response back to the client.
+	// Structure is documented below.
 	ResponseHeadersToAdds []URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd `pulumi:"responseHeadersToAdds"`
 	// A list of header names for headers that need to be removed from the response prior to sending the
 	// response back to the client.
@@ -47970,12 +49275,14 @@ type URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionInput
 }
 
 type URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs struct {
-	// Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+	// Headers to add to a matching request prior to forwarding the request to the backendService.
+	// Structure is documented below.
 	RequestHeadersToAdds URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayInput `pulumi:"requestHeadersToAdds"`
 	// A list of header names for headers that need to be removed from the request prior to
 	// forwarding the request to the backendService.
 	RequestHeadersToRemoves pulumi.StringArrayInput `pulumi:"requestHeadersToRemoves"`
-	// Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+	// Headers to add the response prior to sending the response back to the client.
+	// Structure is documented below.
 	ResponseHeadersToAdds URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayInput `pulumi:"responseHeadersToAdds"`
 	// A list of header names for headers that need to be removed from the response prior to sending the
 	// response back to the client.
@@ -48059,7 +49366,8 @@ func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionOu
 	}).(URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput)
 }
 
-// Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+// Headers to add to a matching request prior to forwarding the request to the backendService.
+// Structure is documented below.
 func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionOutput) RequestHeadersToAdds() URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput {
 	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction) []URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd {
 		return v.RequestHeadersToAdds
@@ -48074,7 +49382,8 @@ func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionOu
 	}).(pulumi.StringArrayOutput)
 }
 
-// Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+// Headers to add the response prior to sending the response back to the client.
+// Structure is documented below.
 func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionOutput) ResponseHeadersToAdds() URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput {
 	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction) []URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd {
 		return v.ResponseHeadersToAdds
@@ -48109,7 +49418,8 @@ func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPt
 	}).(URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionOutput)
 }
 
-// Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+// Headers to add to a matching request prior to forwarding the request to the backendService.
+// Structure is documented below.
 func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput) RequestHeadersToAdds() URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction) []URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd {
 		if v == nil {
@@ -48130,7 +49440,8 @@ func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPt
 	}).(pulumi.StringArrayOutput)
 }
 
-// Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+// Headers to add the response prior to sending the response back to the client.
+// Structure is documented below.
 func (o URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput) ResponseHeadersToAdds() URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction) []URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd {
 		if v == nil {
@@ -48717,9 +50028,11 @@ type URLMapPathMatcherRouteRule struct {
 	// Specifies changes to request and response headers that need to take effect for
 	// the selected backendService.
 	// headerAction specified here take effect before headerAction in the enclosing
-	// HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+	// HttpRouteRule, PathMatcher and UrlMap.
+	// Structure is documented below.
 	HeaderAction *URLMapPathMatcherRouteRuleHeaderAction `pulumi:"headerAction"`
-	// The rules for determining a match.  Structure is documented below.
+	// The rules for determining a match.
+	// Structure is documented below.
 	MatchRules []URLMapPathMatcherRouteRuleMatchRule `pulumi:"matchRules"`
 	// For routeRules within a given pathMatcher, priority determines the order
 	// in which load balancer will interpret routeRules. RouteRules are evaluated
@@ -48740,13 +50053,15 @@ type URLMapPathMatcherRouteRule struct {
 	// request to the selected backend. If  routeAction specifies any
 	// weightedBackendServices, service must not be set. Conversely if service is set,
 	// routeAction cannot contain any  weightedBackendServices. Only one of routeAction
-	// or urlRedirect must be set.  Structure is documented below.
+	// or urlRedirect must be set.
+	// Structure is documented below.
 	RouteAction *URLMapPathMatcherRouteRuleRouteAction `pulumi:"routeAction"`
 	// The backend service or backend bucket link that should be matched by this test.
 	Service *string `pulumi:"service"`
 	// When this rule is matched, the request is redirected to a URL specified by
 	// urlRedirect. If urlRedirect is specified, service or routeAction must not be
-	// set.  Structure is documented below.
+	// set.
+	// Structure is documented below.
 	UrlRedirect *URLMapPathMatcherRouteRuleUrlRedirect `pulumi:"urlRedirect"`
 }
 
@@ -48765,9 +50080,11 @@ type URLMapPathMatcherRouteRuleArgs struct {
 	// Specifies changes to request and response headers that need to take effect for
 	// the selected backendService.
 	// headerAction specified here take effect before headerAction in the enclosing
-	// HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+	// HttpRouteRule, PathMatcher and UrlMap.
+	// Structure is documented below.
 	HeaderAction URLMapPathMatcherRouteRuleHeaderActionPtrInput `pulumi:"headerAction"`
-	// The rules for determining a match.  Structure is documented below.
+	// The rules for determining a match.
+	// Structure is documented below.
 	MatchRules URLMapPathMatcherRouteRuleMatchRuleArrayInput `pulumi:"matchRules"`
 	// For routeRules within a given pathMatcher, priority determines the order
 	// in which load balancer will interpret routeRules. RouteRules are evaluated
@@ -48788,13 +50105,15 @@ type URLMapPathMatcherRouteRuleArgs struct {
 	// request to the selected backend. If  routeAction specifies any
 	// weightedBackendServices, service must not be set. Conversely if service is set,
 	// routeAction cannot contain any  weightedBackendServices. Only one of routeAction
-	// or urlRedirect must be set.  Structure is documented below.
+	// or urlRedirect must be set.
+	// Structure is documented below.
 	RouteAction URLMapPathMatcherRouteRuleRouteActionPtrInput `pulumi:"routeAction"`
 	// The backend service or backend bucket link that should be matched by this test.
 	Service pulumi.StringPtrInput `pulumi:"service"`
 	// When this rule is matched, the request is redirected to a URL specified by
 	// urlRedirect. If urlRedirect is specified, service or routeAction must not be
-	// set.  Structure is documented below.
+	// set.
+	// Structure is documented below.
 	UrlRedirect URLMapPathMatcherRouteRuleUrlRedirectPtrInput `pulumi:"urlRedirect"`
 }
 
@@ -48852,12 +50171,14 @@ func (o URLMapPathMatcherRouteRuleOutput) ToURLMapPathMatcherRouteRuleOutputWith
 // Specifies changes to request and response headers that need to take effect for
 // the selected backendService.
 // headerAction specified here take effect before headerAction in the enclosing
-// HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+// HttpRouteRule, PathMatcher and UrlMap.
+// Structure is documented below.
 func (o URLMapPathMatcherRouteRuleOutput) HeaderAction() URLMapPathMatcherRouteRuleHeaderActionPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherRouteRule) *URLMapPathMatcherRouteRuleHeaderAction { return v.HeaderAction }).(URLMapPathMatcherRouteRuleHeaderActionPtrOutput)
 }
 
-// The rules for determining a match.  Structure is documented below.
+// The rules for determining a match.
+// Structure is documented below.
 func (o URLMapPathMatcherRouteRuleOutput) MatchRules() URLMapPathMatcherRouteRuleMatchRuleArrayOutput {
 	return o.ApplyT(func(v URLMapPathMatcherRouteRule) []URLMapPathMatcherRouteRuleMatchRule { return v.MatchRules }).(URLMapPathMatcherRouteRuleMatchRuleArrayOutput)
 }
@@ -48884,7 +50205,8 @@ func (o URLMapPathMatcherRouteRuleOutput) Priority() pulumi.IntOutput {
 // request to the selected backend. If  routeAction specifies any
 // weightedBackendServices, service must not be set. Conversely if service is set,
 // routeAction cannot contain any  weightedBackendServices. Only one of routeAction
-// or urlRedirect must be set.  Structure is documented below.
+// or urlRedirect must be set.
+// Structure is documented below.
 func (o URLMapPathMatcherRouteRuleOutput) RouteAction() URLMapPathMatcherRouteRuleRouteActionPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherRouteRule) *URLMapPathMatcherRouteRuleRouteAction { return v.RouteAction }).(URLMapPathMatcherRouteRuleRouteActionPtrOutput)
 }
@@ -48896,7 +50218,8 @@ func (o URLMapPathMatcherRouteRuleOutput) Service() pulumi.StringPtrOutput {
 
 // When this rule is matched, the request is redirected to a URL specified by
 // urlRedirect. If urlRedirect is specified, service or routeAction must not be
-// set.  Structure is documented below.
+// set.
+// Structure is documented below.
 func (o URLMapPathMatcherRouteRuleOutput) UrlRedirect() URLMapPathMatcherRouteRuleUrlRedirectPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherRouteRule) *URLMapPathMatcherRouteRuleUrlRedirect { return v.UrlRedirect }).(URLMapPathMatcherRouteRuleUrlRedirectPtrOutput)
 }
@@ -48922,12 +50245,14 @@ func (o URLMapPathMatcherRouteRuleArrayOutput) Index(i pulumi.IntInput) URLMapPa
 }
 
 type URLMapPathMatcherRouteRuleHeaderAction struct {
-	// Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+	// Headers to add to a matching request prior to forwarding the request to the backendService.
+	// Structure is documented below.
 	RequestHeadersToAdds []URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAdd `pulumi:"requestHeadersToAdds"`
 	// A list of header names for headers that need to be removed from the request prior to
 	// forwarding the request to the backendService.
 	RequestHeadersToRemoves []string `pulumi:"requestHeadersToRemoves"`
-	// Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+	// Headers to add the response prior to sending the response back to the client.
+	// Structure is documented below.
 	ResponseHeadersToAdds []URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd `pulumi:"responseHeadersToAdds"`
 	// A list of header names for headers that need to be removed from the response prior to sending the
 	// response back to the client.
@@ -48946,12 +50271,14 @@ type URLMapPathMatcherRouteRuleHeaderActionInput interface {
 }
 
 type URLMapPathMatcherRouteRuleHeaderActionArgs struct {
-	// Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+	// Headers to add to a matching request prior to forwarding the request to the backendService.
+	// Structure is documented below.
 	RequestHeadersToAdds URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrayInput `pulumi:"requestHeadersToAdds"`
 	// A list of header names for headers that need to be removed from the request prior to
 	// forwarding the request to the backendService.
 	RequestHeadersToRemoves pulumi.StringArrayInput `pulumi:"requestHeadersToRemoves"`
-	// Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+	// Headers to add the response prior to sending the response back to the client.
+	// Structure is documented below.
 	ResponseHeadersToAdds URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrayInput `pulumi:"responseHeadersToAdds"`
 	// A list of header names for headers that need to be removed from the response prior to sending the
 	// response back to the client.
@@ -49035,7 +50362,8 @@ func (o URLMapPathMatcherRouteRuleHeaderActionOutput) ToURLMapPathMatcherRouteRu
 	}).(URLMapPathMatcherRouteRuleHeaderActionPtrOutput)
 }
 
-// Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+// Headers to add to a matching request prior to forwarding the request to the backendService.
+// Structure is documented below.
 func (o URLMapPathMatcherRouteRuleHeaderActionOutput) RequestHeadersToAdds() URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrayOutput {
 	return o.ApplyT(func(v URLMapPathMatcherRouteRuleHeaderAction) []URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAdd {
 		return v.RequestHeadersToAdds
@@ -49048,7 +50376,8 @@ func (o URLMapPathMatcherRouteRuleHeaderActionOutput) RequestHeadersToRemoves() 
 	return o.ApplyT(func(v URLMapPathMatcherRouteRuleHeaderAction) []string { return v.RequestHeadersToRemoves }).(pulumi.StringArrayOutput)
 }
 
-// Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+// Headers to add the response prior to sending the response back to the client.
+// Structure is documented below.
 func (o URLMapPathMatcherRouteRuleHeaderActionOutput) ResponseHeadersToAdds() URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrayOutput {
 	return o.ApplyT(func(v URLMapPathMatcherRouteRuleHeaderAction) []URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd {
 		return v.ResponseHeadersToAdds
@@ -49079,7 +50408,8 @@ func (o URLMapPathMatcherRouteRuleHeaderActionPtrOutput) Elem() URLMapPathMatche
 	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleHeaderAction) URLMapPathMatcherRouteRuleHeaderAction { return *v }).(URLMapPathMatcherRouteRuleHeaderActionOutput)
 }
 
-// Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+// Headers to add to a matching request prior to forwarding the request to the backendService.
+// Structure is documented below.
 func (o URLMapPathMatcherRouteRuleHeaderActionPtrOutput) RequestHeadersToAdds() URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArrayOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleHeaderAction) []URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAdd {
 		if v == nil {
@@ -49100,7 +50430,8 @@ func (o URLMapPathMatcherRouteRuleHeaderActionPtrOutput) RequestHeadersToRemoves
 	}).(pulumi.StringArrayOutput)
 }
 
-// Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+// Headers to add the response prior to sending the response back to the client.
+// Structure is documented below.
 func (o URLMapPathMatcherRouteRuleHeaderActionPtrOutput) ResponseHeadersToAdds() URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrayOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleHeaderAction) []URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd {
 		if v == nil {
@@ -49365,7 +50696,8 @@ type URLMapPathMatcherRouteRuleMatchRule struct {
 	// be specified.
 	FullPathMatch *string `pulumi:"fullPathMatch"`
 	// Specifies a list of header match criteria, all of which must match corresponding
-	// headers in the request.  Structure is documented below.
+	// headers in the request.
+	// Structure is documented below.
 	HeaderMatches []URLMapPathMatcherRouteRuleMatchRuleHeaderMatch `pulumi:"headerMatches"`
 	// Specifies that prefixMatch and fullPathMatch matches are case sensitive.
 	// Defaults to false.
@@ -49380,14 +50712,16 @@ type URLMapPathMatcherRouteRuleMatchRule struct {
 	// with corresponding labels in the provided metadata. metadataFilters specified
 	// here can be overrides those specified in ForwardingRule that refers to this
 	// UrlMap. metadataFilters only applies to Loadbalancers that have their
-	// loadBalancingScheme set to INTERNAL_SELF_MANAGED.  Structure is documented below.
+	// loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	// Structure is documented below.
 	MetadataFilters []URLMapPathMatcherRouteRuleMatchRuleMetadataFilter `pulumi:"metadataFilters"`
 	// The value of the header must start with the contents of prefixMatch. Only one of
 	// exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
 	// must be set.
 	PrefixMatch *string `pulumi:"prefixMatch"`
 	// Specifies a list of query parameter match criteria, all of which must match
-	// corresponding query parameters in the request.  Structure is documented below.
+	// corresponding query parameters in the request.
+	// Structure is documented below.
 	QueryParameterMatches []URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatch `pulumi:"queryParameterMatches"`
 	// The queryParameterMatch matches if the value of the parameter matches the
 	// regular expression specified by regexMatch. For the regular expression grammar,
@@ -49415,7 +50749,8 @@ type URLMapPathMatcherRouteRuleMatchRuleArgs struct {
 	// be specified.
 	FullPathMatch pulumi.StringPtrInput `pulumi:"fullPathMatch"`
 	// Specifies a list of header match criteria, all of which must match corresponding
-	// headers in the request.  Structure is documented below.
+	// headers in the request.
+	// Structure is documented below.
 	HeaderMatches URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArrayInput `pulumi:"headerMatches"`
 	// Specifies that prefixMatch and fullPathMatch matches are case sensitive.
 	// Defaults to false.
@@ -49430,14 +50765,16 @@ type URLMapPathMatcherRouteRuleMatchRuleArgs struct {
 	// with corresponding labels in the provided metadata. metadataFilters specified
 	// here can be overrides those specified in ForwardingRule that refers to this
 	// UrlMap. metadataFilters only applies to Loadbalancers that have their
-	// loadBalancingScheme set to INTERNAL_SELF_MANAGED.  Structure is documented below.
+	// loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	// Structure is documented below.
 	MetadataFilters URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArrayInput `pulumi:"metadataFilters"`
 	// The value of the header must start with the contents of prefixMatch. Only one of
 	// exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
 	// must be set.
 	PrefixMatch pulumi.StringPtrInput `pulumi:"prefixMatch"`
 	// Specifies a list of query parameter match criteria, all of which must match
-	// corresponding query parameters in the request.  Structure is documented below.
+	// corresponding query parameters in the request.
+	// Structure is documented below.
 	QueryParameterMatches URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArrayInput `pulumi:"queryParameterMatches"`
 	// The queryParameterMatch matches if the value of the parameter matches the
 	// regular expression specified by regexMatch. For the regular expression grammar,
@@ -49507,7 +50844,8 @@ func (o URLMapPathMatcherRouteRuleMatchRuleOutput) FullPathMatch() pulumi.String
 }
 
 // Specifies a list of header match criteria, all of which must match corresponding
-// headers in the request.  Structure is documented below.
+// headers in the request.
+// Structure is documented below.
 func (o URLMapPathMatcherRouteRuleMatchRuleOutput) HeaderMatches() URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArrayOutput {
 	return o.ApplyT(func(v URLMapPathMatcherRouteRuleMatchRule) []URLMapPathMatcherRouteRuleMatchRuleHeaderMatch {
 		return v.HeaderMatches
@@ -49530,7 +50868,8 @@ func (o URLMapPathMatcherRouteRuleMatchRuleOutput) IgnoreCase() pulumi.BoolPtrOu
 // with corresponding labels in the provided metadata. metadataFilters specified
 // here can be overrides those specified in ForwardingRule that refers to this
 // UrlMap. metadataFilters only applies to Loadbalancers that have their
-// loadBalancingScheme set to INTERNAL_SELF_MANAGED.  Structure is documented below.
+// loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+// Structure is documented below.
 func (o URLMapPathMatcherRouteRuleMatchRuleOutput) MetadataFilters() URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArrayOutput {
 	return o.ApplyT(func(v URLMapPathMatcherRouteRuleMatchRule) []URLMapPathMatcherRouteRuleMatchRuleMetadataFilter {
 		return v.MetadataFilters
@@ -49545,7 +50884,8 @@ func (o URLMapPathMatcherRouteRuleMatchRuleOutput) PrefixMatch() pulumi.StringPt
 }
 
 // Specifies a list of query parameter match criteria, all of which must match
-// corresponding query parameters in the request.  Structure is documented below.
+// corresponding query parameters in the request.
+// Structure is documented below.
 func (o URLMapPathMatcherRouteRuleMatchRuleOutput) QueryParameterMatches() URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArrayOutput {
 	return o.ApplyT(func(v URLMapPathMatcherRouteRuleMatchRule) []URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatch {
 		return v.QueryParameterMatches
@@ -49604,7 +50944,8 @@ type URLMapPathMatcherRouteRuleMatchRuleHeaderMatch struct {
 	// the match fails. For example for a range [-5, 0]   - -3 will match.  - 0 will
 	// not match.  - 0.25 will not match.  - -3someString will not match.   Only one of
 	// exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
-	// must be set.  Structure is documented below.
+	// must be set.
+	// Structure is documented below.
 	RangeMatch *URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch `pulumi:"rangeMatch"`
 	// The queryParameterMatch matches if the value of the parameter matches the
 	// regular expression specified by regexMatch. For the regular expression grammar,
@@ -49652,7 +50993,8 @@ type URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs struct {
 	// the match fails. For example for a range [-5, 0]   - -3 will match.  - 0 will
 	// not match.  - 0.25 will not match.  - -3someString will not match.   Only one of
 	// exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
-	// must be set.  Structure is documented below.
+	// must be set.
+	// Structure is documented below.
 	RangeMatch URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrInput `pulumi:"rangeMatch"`
 	// The queryParameterMatch matches if the value of the parameter matches the
 	// regular expression specified by regexMatch. For the regular expression grammar,
@@ -49754,7 +51096,8 @@ func (o URLMapPathMatcherRouteRuleMatchRuleHeaderMatchOutput) PresentMatch() pul
 // the match fails. For example for a range [-5, 0]   - -3 will match.  - 0 will
 // not match.  - 0.25 will not match.  - -3someString will not match.   Only one of
 // exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
-// must be set.  Structure is documented below.
+// must be set.
+// Structure is documented below.
 func (o URLMapPathMatcherRouteRuleMatchRuleHeaderMatchOutput) RangeMatch() URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherRouteRuleMatchRuleHeaderMatch) *URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch {
 		return v.RangeMatch
@@ -49951,7 +51294,8 @@ func (o URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchPtrOutput) Range
 type URLMapPathMatcherRouteRuleMatchRuleMetadataFilter struct {
 	// The list of label value pairs that must match labels in the provided metadata
 	// based on filterMatchCriteria  This list must not be empty and can have at the
-	// most 64 entries.  Structure is documented below.
+	// most 64 entries.
+	// Structure is documented below.
 	FilterLabels []URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel `pulumi:"filterLabels"`
 	// Specifies how individual filterLabel matches within the list of filterLabels
 	// contribute towards the overall metadataFilter match. Supported values are:
@@ -49959,6 +51303,7 @@ type URLMapPathMatcherRouteRuleMatchRuleMetadataFilter struct {
 	//   provided metadata.
 	// - MATCH_ALL: All filterLabels must have matching labels in
 	//   the provided metadata.
+	//   Possible values are `MATCH_ALL` and `MATCH_ANY`.
 	FilterMatchCriteria string `pulumi:"filterMatchCriteria"`
 }
 
@@ -49976,7 +51321,8 @@ type URLMapPathMatcherRouteRuleMatchRuleMetadataFilterInput interface {
 type URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs struct {
 	// The list of label value pairs that must match labels in the provided metadata
 	// based on filterMatchCriteria  This list must not be empty and can have at the
-	// most 64 entries.  Structure is documented below.
+	// most 64 entries.
+	// Structure is documented below.
 	FilterLabels URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArrayInput `pulumi:"filterLabels"`
 	// Specifies how individual filterLabel matches within the list of filterLabels
 	// contribute towards the overall metadataFilter match. Supported values are:
@@ -49984,6 +51330,7 @@ type URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs struct {
 	//   provided metadata.
 	// - MATCH_ALL: All filterLabels must have matching labels in
 	//   the provided metadata.
+	//   Possible values are `MATCH_ALL` and `MATCH_ANY`.
 	FilterMatchCriteria pulumi.StringInput `pulumi:"filterMatchCriteria"`
 }
 
@@ -50040,7 +51387,8 @@ func (o URLMapPathMatcherRouteRuleMatchRuleMetadataFilterOutput) ToURLMapPathMat
 
 // The list of label value pairs that must match labels in the provided metadata
 // based on filterMatchCriteria  This list must not be empty and can have at the
-// most 64 entries.  Structure is documented below.
+// most 64 entries.
+// Structure is documented below.
 func (o URLMapPathMatcherRouteRuleMatchRuleMetadataFilterOutput) FilterLabels() URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArrayOutput {
 	return o.ApplyT(func(v URLMapPathMatcherRouteRuleMatchRuleMetadataFilter) []URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel {
 		return v.FilterLabels
@@ -50053,6 +51401,7 @@ func (o URLMapPathMatcherRouteRuleMatchRuleMetadataFilterOutput) FilterLabels() 
 //   provided metadata.
 // - MATCH_ALL: All filterLabels must have matching labels in
 //   the provided metadata.
+//   Possible values are `MATCH_ALL` and `MATCH_ANY`.
 func (o URLMapPathMatcherRouteRuleMatchRuleMetadataFilterOutput) FilterMatchCriteria() pulumi.StringOutput {
 	return o.ApplyT(func(v URLMapPathMatcherRouteRuleMatchRuleMetadataFilter) string { return v.FilterMatchCriteria }).(pulumi.StringOutput)
 }
@@ -50339,25 +51688,31 @@ func (o URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArrayOutput) Index
 
 type URLMapPathMatcherRouteRuleRouteAction struct {
 	// The specification for allowing client side cross-origin requests. Please see
-	// [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)  Structure is documented below.
+	// [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
+	// Structure is documented below.
 	CorsPolicy *URLMapPathMatcherRouteRuleRouteActionCorsPolicy `pulumi:"corsPolicy"`
 	// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
 	// As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
 	// percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
 	// by the Loadbalancer for a percentage of requests.
-	// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.  Structure is documented below.
+	// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
+	// Structure is documented below.
 	FaultInjectionPolicy *URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy `pulumi:"faultInjectionPolicy"`
 	// Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
 	// Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
-	// the host / authority header is suffixed with -shadow.  Structure is documented below.
+	// the host / authority header is suffixed with -shadow.
+	// Structure is documented below.
 	RequestMirrorPolicy *URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy `pulumi:"requestMirrorPolicy"`
-	// Specifies the retry policy associated with this route.  Structure is documented below.
+	// Specifies the retry policy associated with this route.
+	// Structure is documented below.
 	RetryPolicy *URLMapPathMatcherRouteRuleRouteActionRetryPolicy `pulumi:"retryPolicy"`
 	// Specifies the timeout for the selected route. Timeout is computed from the time the request has been
 	// fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries.
-	// If not specified, will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+	// If not specified, will use the largest timeout among all backend services associated with the route.
+	// Structure is documented below.
 	Timeout *URLMapPathMatcherRouteRuleRouteActionTimeout `pulumi:"timeout"`
-	// The spec to modify the URL of the request, prior to forwarding the request to the matched service.  Structure is documented below.
+	// The spec to modify the URL of the request, prior to forwarding the request to the matched service.
+	// Structure is documented below.
 	UrlRewrite *URLMapPathMatcherRouteRuleRouteActionUrlRewrite `pulumi:"urlRewrite"`
 	// A list of weighted backend services to send traffic to when a route match occurs.
 	// The weights determine the fraction of traffic that flows to their corresponding backend service.
@@ -50365,7 +51720,8 @@ type URLMapPathMatcherRouteRuleRouteAction struct {
 	// with weight set to a non 0 number.
 	// Once a backendService is identified and before forwarding the request to the backend service,
 	// advanced routing actions like Url rewrites and header transformations are applied depending on
-	// additional settings specified in this HttpRouteAction.  Structure is documented below.
+	// additional settings specified in this HttpRouteAction.
+	// Structure is documented below.
 	WeightedBackendServices []URLMapPathMatcherRouteRuleRouteActionWeightedBackendService `pulumi:"weightedBackendServices"`
 }
 
@@ -50382,25 +51738,31 @@ type URLMapPathMatcherRouteRuleRouteActionInput interface {
 
 type URLMapPathMatcherRouteRuleRouteActionArgs struct {
 	// The specification for allowing client side cross-origin requests. Please see
-	// [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)  Structure is documented below.
+	// [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
+	// Structure is documented below.
 	CorsPolicy URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrInput `pulumi:"corsPolicy"`
 	// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
 	// As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
 	// percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
 	// by the Loadbalancer for a percentage of requests.
-	// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.  Structure is documented below.
+	// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
+	// Structure is documented below.
 	FaultInjectionPolicy URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrInput `pulumi:"faultInjectionPolicy"`
 	// Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
 	// Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
-	// the host / authority header is suffixed with -shadow.  Structure is documented below.
+	// the host / authority header is suffixed with -shadow.
+	// Structure is documented below.
 	RequestMirrorPolicy URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyPtrInput `pulumi:"requestMirrorPolicy"`
-	// Specifies the retry policy associated with this route.  Structure is documented below.
+	// Specifies the retry policy associated with this route.
+	// Structure is documented below.
 	RetryPolicy URLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrInput `pulumi:"retryPolicy"`
 	// Specifies the timeout for the selected route. Timeout is computed from the time the request has been
 	// fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries.
-	// If not specified, will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+	// If not specified, will use the largest timeout among all backend services associated with the route.
+	// Structure is documented below.
 	Timeout URLMapPathMatcherRouteRuleRouteActionTimeoutPtrInput `pulumi:"timeout"`
-	// The spec to modify the URL of the request, prior to forwarding the request to the matched service.  Structure is documented below.
+	// The spec to modify the URL of the request, prior to forwarding the request to the matched service.
+	// Structure is documented below.
 	UrlRewrite URLMapPathMatcherRouteRuleRouteActionUrlRewritePtrInput `pulumi:"urlRewrite"`
 	// A list of weighted backend services to send traffic to when a route match occurs.
 	// The weights determine the fraction of traffic that flows to their corresponding backend service.
@@ -50408,7 +51770,8 @@ type URLMapPathMatcherRouteRuleRouteActionArgs struct {
 	// with weight set to a non 0 number.
 	// Once a backendService is identified and before forwarding the request to the backend service,
 	// advanced routing actions like Url rewrites and header transformations are applied depending on
-	// additional settings specified in this HttpRouteAction.  Structure is documented below.
+	// additional settings specified in this HttpRouteAction.
+	// Structure is documented below.
 	WeightedBackendServices URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrayInput `pulumi:"weightedBackendServices"`
 }
 
@@ -50490,7 +51853,8 @@ func (o URLMapPathMatcherRouteRuleRouteActionOutput) ToURLMapPathMatcherRouteRul
 }
 
 // The specification for allowing client side cross-origin requests. Please see
-// [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)  Structure is documented below.
+// [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
+// Structure is documented below.
 func (o URLMapPathMatcherRouteRuleRouteActionOutput) CorsPolicy() URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteAction) *URLMapPathMatcherRouteRuleRouteActionCorsPolicy {
 		return v.CorsPolicy
@@ -50501,7 +51865,8 @@ func (o URLMapPathMatcherRouteRuleRouteActionOutput) CorsPolicy() URLMapPathMatc
 // As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
 // percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
 // by the Loadbalancer for a percentage of requests.
-// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.  Structure is documented below.
+// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
+// Structure is documented below.
 func (o URLMapPathMatcherRouteRuleRouteActionOutput) FaultInjectionPolicy() URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteAction) *URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy {
 		return v.FaultInjectionPolicy
@@ -50510,14 +51875,16 @@ func (o URLMapPathMatcherRouteRuleRouteActionOutput) FaultInjectionPolicy() URLM
 
 // Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
 // Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
-// the host / authority header is suffixed with -shadow.  Structure is documented below.
+// the host / authority header is suffixed with -shadow.
+// Structure is documented below.
 func (o URLMapPathMatcherRouteRuleRouteActionOutput) RequestMirrorPolicy() URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteAction) *URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy {
 		return v.RequestMirrorPolicy
 	}).(URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyPtrOutput)
 }
 
-// Specifies the retry policy associated with this route.  Structure is documented below.
+// Specifies the retry policy associated with this route.
+// Structure is documented below.
 func (o URLMapPathMatcherRouteRuleRouteActionOutput) RetryPolicy() URLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteAction) *URLMapPathMatcherRouteRuleRouteActionRetryPolicy {
 		return v.RetryPolicy
@@ -50526,14 +51893,16 @@ func (o URLMapPathMatcherRouteRuleRouteActionOutput) RetryPolicy() URLMapPathMat
 
 // Specifies the timeout for the selected route. Timeout is computed from the time the request has been
 // fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries.
-// If not specified, will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+// If not specified, will use the largest timeout among all backend services associated with the route.
+// Structure is documented below.
 func (o URLMapPathMatcherRouteRuleRouteActionOutput) Timeout() URLMapPathMatcherRouteRuleRouteActionTimeoutPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteAction) *URLMapPathMatcherRouteRuleRouteActionTimeout {
 		return v.Timeout
 	}).(URLMapPathMatcherRouteRuleRouteActionTimeoutPtrOutput)
 }
 
-// The spec to modify the URL of the request, prior to forwarding the request to the matched service.  Structure is documented below.
+// The spec to modify the URL of the request, prior to forwarding the request to the matched service.
+// Structure is documented below.
 func (o URLMapPathMatcherRouteRuleRouteActionOutput) UrlRewrite() URLMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteAction) *URLMapPathMatcherRouteRuleRouteActionUrlRewrite {
 		return v.UrlRewrite
@@ -50546,7 +51915,8 @@ func (o URLMapPathMatcherRouteRuleRouteActionOutput) UrlRewrite() URLMapPathMatc
 // with weight set to a non 0 number.
 // Once a backendService is identified and before forwarding the request to the backend service,
 // advanced routing actions like Url rewrites and header transformations are applied depending on
-// additional settings specified in this HttpRouteAction.  Structure is documented below.
+// additional settings specified in this HttpRouteAction.
+// Structure is documented below.
 func (o URLMapPathMatcherRouteRuleRouteActionOutput) WeightedBackendServices() URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrayOutput {
 	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteAction) []URLMapPathMatcherRouteRuleRouteActionWeightedBackendService {
 		return v.WeightedBackendServices
@@ -50572,7 +51942,8 @@ func (o URLMapPathMatcherRouteRuleRouteActionPtrOutput) Elem() URLMapPathMatcher
 }
 
 // The specification for allowing client side cross-origin requests. Please see
-// [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)  Structure is documented below.
+// [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
+// Structure is documented below.
 func (o URLMapPathMatcherRouteRuleRouteActionPtrOutput) CorsPolicy() URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteAction) *URLMapPathMatcherRouteRuleRouteActionCorsPolicy {
 		if v == nil {
@@ -50586,7 +51957,8 @@ func (o URLMapPathMatcherRouteRuleRouteActionPtrOutput) CorsPolicy() URLMapPathM
 // As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
 // percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
 // by the Loadbalancer for a percentage of requests.
-// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.  Structure is documented below.
+// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
+// Structure is documented below.
 func (o URLMapPathMatcherRouteRuleRouteActionPtrOutput) FaultInjectionPolicy() URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteAction) *URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy {
 		if v == nil {
@@ -50598,7 +51970,8 @@ func (o URLMapPathMatcherRouteRuleRouteActionPtrOutput) FaultInjectionPolicy() U
 
 // Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
 // Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
-// the host / authority header is suffixed with -shadow.  Structure is documented below.
+// the host / authority header is suffixed with -shadow.
+// Structure is documented below.
 func (o URLMapPathMatcherRouteRuleRouteActionPtrOutput) RequestMirrorPolicy() URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyPtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteAction) *URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy {
 		if v == nil {
@@ -50608,7 +51981,8 @@ func (o URLMapPathMatcherRouteRuleRouteActionPtrOutput) RequestMirrorPolicy() UR
 	}).(URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyPtrOutput)
 }
 
-// Specifies the retry policy associated with this route.  Structure is documented below.
+// Specifies the retry policy associated with this route.
+// Structure is documented below.
 func (o URLMapPathMatcherRouteRuleRouteActionPtrOutput) RetryPolicy() URLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteAction) *URLMapPathMatcherRouteRuleRouteActionRetryPolicy {
 		if v == nil {
@@ -50620,7 +51994,8 @@ func (o URLMapPathMatcherRouteRuleRouteActionPtrOutput) RetryPolicy() URLMapPath
 
 // Specifies the timeout for the selected route. Timeout is computed from the time the request has been
 // fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries.
-// If not specified, will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+// If not specified, will use the largest timeout among all backend services associated with the route.
+// Structure is documented below.
 func (o URLMapPathMatcherRouteRuleRouteActionPtrOutput) Timeout() URLMapPathMatcherRouteRuleRouteActionTimeoutPtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteAction) *URLMapPathMatcherRouteRuleRouteActionTimeout {
 		if v == nil {
@@ -50630,7 +52005,8 @@ func (o URLMapPathMatcherRouteRuleRouteActionPtrOutput) Timeout() URLMapPathMatc
 	}).(URLMapPathMatcherRouteRuleRouteActionTimeoutPtrOutput)
 }
 
-// The spec to modify the URL of the request, prior to forwarding the request to the matched service.  Structure is documented below.
+// The spec to modify the URL of the request, prior to forwarding the request to the matched service.
+// Structure is documented below.
 func (o URLMapPathMatcherRouteRuleRouteActionPtrOutput) UrlRewrite() URLMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteAction) *URLMapPathMatcherRouteRuleRouteActionUrlRewrite {
 		if v == nil {
@@ -50646,7 +52022,8 @@ func (o URLMapPathMatcherRouteRuleRouteActionPtrOutput) UrlRewrite() URLMapPathM
 // with weight set to a non 0 number.
 // Once a backendService is identified and before forwarding the request to the backend service,
 // advanced routing actions like Url rewrites and header transformations are applied depending on
-// additional settings specified in this HttpRouteAction.  Structure is documented below.
+// additional settings specified in this HttpRouteAction.
+// Structure is documented below.
 func (o URLMapPathMatcherRouteRuleRouteActionPtrOutput) WeightedBackendServices() URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrayOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteAction) []URLMapPathMatcherRouteRuleRouteActionWeightedBackendService {
 		if v == nil {
@@ -50943,9 +52320,11 @@ func (o URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput) MaxAge() pulum
 }
 
 type URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy struct {
-	// The specification for how client requests are aborted as part of fault injection.  Structure is documented below.
+	// The specification for how client requests are aborted as part of fault injection.
+	// Structure is documented below.
 	Abort *URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort `pulumi:"abort"`
-	// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.  Structure is documented below.
+	// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+	// Structure is documented below.
 	Delay *URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay `pulumi:"delay"`
 }
 
@@ -50961,9 +52340,11 @@ type URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyInput interface {
 }
 
 type URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs struct {
-	// The specification for how client requests are aborted as part of fault injection.  Structure is documented below.
+	// The specification for how client requests are aborted as part of fault injection.
+	// Structure is documented below.
 	Abort URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrInput `pulumi:"abort"`
-	// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.  Structure is documented below.
+	// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+	// Structure is documented below.
 	Delay URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayPtrInput `pulumi:"delay"`
 }
 
@@ -51044,14 +52425,16 @@ func (o URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyOutput) ToURLMa
 	}).(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput)
 }
 
-// The specification for how client requests are aborted as part of fault injection.  Structure is documented below.
+// The specification for how client requests are aborted as part of fault injection.
+// Structure is documented below.
 func (o URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyOutput) Abort() URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy) *URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort {
 		return v.Abort
 	}).(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrOutput)
 }
 
-// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.  Structure is documented below.
+// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+// Structure is documented below.
 func (o URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyOutput) Delay() URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy) *URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay {
 		return v.Delay
@@ -51078,7 +52461,8 @@ func (o URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput) Elem
 	}).(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyOutput)
 }
 
-// The specification for how client requests are aborted as part of fault injection.  Structure is documented below.
+// The specification for how client requests are aborted as part of fault injection.
+// Structure is documented below.
 func (o URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput) Abort() URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy) *URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort {
 		if v == nil {
@@ -51088,7 +52472,8 @@ func (o URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput) Abor
 	}).(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrOutput)
 }
 
-// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.  Structure is documented below.
+// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+// Structure is documented below.
 func (o URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput) Delay() URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayPtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy) *URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay {
 		if v == nil {
@@ -51259,7 +52644,8 @@ func (o URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrOutput)
 }
 
 type URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay struct {
-	// Specifies the value of the fixed delay interval.  Structure is documented below.
+	// Specifies the value of the fixed delay interval.
+	// Structure is documented below.
 	FixedDelay *URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelay `pulumi:"fixedDelay"`
 	// The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
 	// The value must be between 0.0 and 100.0 inclusive.
@@ -51278,7 +52664,8 @@ type URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayInput interfa
 }
 
 type URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgs struct {
-	// Specifies the value of the fixed delay interval.  Structure is documented below.
+	// Specifies the value of the fixed delay interval.
+	// Structure is documented below.
 	FixedDelay URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrInput `pulumi:"fixedDelay"`
 	// The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
 	// The value must be between 0.0 and 100.0 inclusive.
@@ -51362,7 +52749,8 @@ func (o URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayOutput) To
 	}).(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayPtrOutput)
 }
 
-// Specifies the value of the fixed delay interval.  Structure is documented below.
+// Specifies the value of the fixed delay interval.
+// Structure is documented below.
 func (o URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayOutput) FixedDelay() URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay) *URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelay {
 		return v.FixedDelay
@@ -51395,7 +52783,8 @@ func (o URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayPtrOutput)
 	}).(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayOutput)
 }
 
-// Specifies the value of the fixed delay interval.  Structure is documented below.
+// Specifies the value of the fixed delay interval.
+// Structure is documented below.
 func (o URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayPtrOutput) FixedDelay() URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay) *URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelay {
 		if v == nil {
@@ -51716,7 +53105,8 @@ type URLMapPathMatcherRouteRuleRouteActionRetryPolicy struct {
 	NumRetries int `pulumi:"numRetries"`
 	// Specifies a non-zero timeout per retry attempt.
 	// If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-	// will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+	// will use the largest timeout among all backend services associated with the route.
+	// Structure is documented below.
 	PerTryTimeout *URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout `pulumi:"perTryTimeout"`
 	// Specfies one or more conditions when this retry rule applies. Valid values are:
 	// 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
@@ -51752,7 +53142,8 @@ type URLMapPathMatcherRouteRuleRouteActionRetryPolicyArgs struct {
 	NumRetries pulumi.IntInput `pulumi:"numRetries"`
 	// Specifies a non-zero timeout per retry attempt.
 	// If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-	// will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+	// will use the largest timeout among all backend services associated with the route.
+	// Structure is documented below.
 	PerTryTimeout URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrInput `pulumi:"perTryTimeout"`
 	// Specfies one or more conditions when this retry rule applies. Valid values are:
 	// 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
@@ -51856,7 +53247,8 @@ func (o URLMapPathMatcherRouteRuleRouteActionRetryPolicyOutput) NumRetries() pul
 
 // Specifies a non-zero timeout per retry attempt.
 // If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-// will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+// will use the largest timeout among all backend services associated with the route.
+// Structure is documented below.
 func (o URLMapPathMatcherRouteRuleRouteActionRetryPolicyOutput) PerTryTimeout() URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionRetryPolicy) *URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout {
 		return v.PerTryTimeout
@@ -51914,7 +53306,8 @@ func (o URLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutput) NumRetries() 
 
 // Specifies a non-zero timeout per retry attempt.
 // If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-// will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+// will use the largest timeout among all backend services associated with the route.
+// Structure is documented below.
 func (o URLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutput) PerTryTimeout() URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionRetryPolicy) *URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout {
 		if v == nil {
@@ -52442,7 +53835,8 @@ type URLMapPathMatcherRouteRuleRouteActionWeightedBackendService struct {
 	// Specifies changes to request and response headers that need to take effect for
 	// the selected backendService.
 	// headerAction specified here take effect before headerAction in the enclosing
-	// HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+	// HttpRouteRule, PathMatcher and UrlMap.
+	// Structure is documented below.
 	HeaderAction *URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction `pulumi:"headerAction"`
 	// Specifies the fraction of traffic sent to backendService, computed as
 	// weight / (sum of all weightedBackendService weights in routeAction) .
@@ -52470,7 +53864,8 @@ type URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs struct {
 	// Specifies changes to request and response headers that need to take effect for
 	// the selected backendService.
 	// headerAction specified here take effect before headerAction in the enclosing
-	// HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+	// HttpRouteRule, PathMatcher and UrlMap.
+	// Structure is documented below.
 	HeaderAction URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrInput `pulumi:"headerAction"`
 	// Specifies the fraction of traffic sent to backendService, computed as
 	// weight / (sum of all weightedBackendService weights in routeAction) .
@@ -52540,7 +53935,8 @@ func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceOutput) Backe
 // Specifies changes to request and response headers that need to take effect for
 // the selected backendService.
 // headerAction specified here take effect before headerAction in the enclosing
-// HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+// HttpRouteRule, PathMatcher and UrlMap.
+// Structure is documented below.
 func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceOutput) HeaderAction() URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionWeightedBackendService) *URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction {
 		return v.HeaderAction
@@ -52578,12 +53974,14 @@ func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrayOutput) 
 }
 
 type URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction struct {
-	// Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+	// Headers to add to a matching request prior to forwarding the request to the backendService.
+	// Structure is documented below.
 	RequestHeadersToAdds []URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd `pulumi:"requestHeadersToAdds"`
 	// A list of header names for headers that need to be removed from the request prior to
 	// forwarding the request to the backendService.
 	RequestHeadersToRemoves []string `pulumi:"requestHeadersToRemoves"`
-	// Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+	// Headers to add the response prior to sending the response back to the client.
+	// Structure is documented below.
 	ResponseHeadersToAdds []URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd `pulumi:"responseHeadersToAdds"`
 	// A list of header names for headers that need to be removed from the response prior to sending the
 	// response back to the client.
@@ -52602,12 +54000,14 @@ type URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionInpu
 }
 
 type URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgs struct {
-	// Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+	// Headers to add to a matching request prior to forwarding the request to the backendService.
+	// Structure is documented below.
 	RequestHeadersToAdds URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayInput `pulumi:"requestHeadersToAdds"`
 	// A list of header names for headers that need to be removed from the request prior to
 	// forwarding the request to the backendService.
 	RequestHeadersToRemoves pulumi.StringArrayInput `pulumi:"requestHeadersToRemoves"`
-	// Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+	// Headers to add the response prior to sending the response back to the client.
+	// Structure is documented below.
 	ResponseHeadersToAdds URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayInput `pulumi:"responseHeadersToAdds"`
 	// A list of header names for headers that need to be removed from the response prior to sending the
 	// response back to the client.
@@ -52691,7 +54091,8 @@ func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionO
 	}).(URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput)
 }
 
-// Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+// Headers to add to a matching request prior to forwarding the request to the backendService.
+// Structure is documented below.
 func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionOutput) RequestHeadersToAdds() URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput {
 	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction) []URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd {
 		return v.RequestHeadersToAdds
@@ -52706,7 +54107,8 @@ func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionO
 	}).(pulumi.StringArrayOutput)
 }
 
-// Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+// Headers to add the response prior to sending the response back to the client.
+// Structure is documented below.
 func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionOutput) ResponseHeadersToAdds() URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput {
 	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction) []URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd {
 		return v.ResponseHeadersToAdds
@@ -52741,7 +54143,8 @@ func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionP
 	}).(URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionOutput)
 }
 
-// Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+// Headers to add to a matching request prior to forwarding the request to the backendService.
+// Structure is documented below.
 func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput) RequestHeadersToAdds() URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction) []URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd {
 		if v == nil {
@@ -52762,7 +54165,8 @@ func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionP
 	}).(pulumi.StringArrayOutput)
 }
 
-// Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+// Headers to add the response prior to sending the response back to the client.
+// Structure is documented below.
 func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput) ResponseHeadersToAdds() URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction) []URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd {
 		if v == nil {
@@ -57345,6 +58749,12 @@ func init() {
 	pulumi.RegisterOutputType(NodeTemplateNodeTypeFlexibilityPtrOutput{})
 	pulumi.RegisterOutputType(NodeTemplateServerBindingOutput{})
 	pulumi.RegisterOutputType(NodeTemplateServerBindingPtrOutput{})
+	pulumi.RegisterOutputType(OrganizationSecurityPolicyRuleMatchOutput{})
+	pulumi.RegisterOutputType(OrganizationSecurityPolicyRuleMatchPtrOutput{})
+	pulumi.RegisterOutputType(OrganizationSecurityPolicyRuleMatchConfigOutput{})
+	pulumi.RegisterOutputType(OrganizationSecurityPolicyRuleMatchConfigPtrOutput{})
+	pulumi.RegisterOutputType(OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigOutput{})
+	pulumi.RegisterOutputType(OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArrayOutput{})
 	pulumi.RegisterOutputType(PacketMirroringCollectorIlbOutput{})
 	pulumi.RegisterOutputType(PacketMirroringCollectorIlbPtrOutput{})
 	pulumi.RegisterOutputType(PacketMirroringFilterOutput{})

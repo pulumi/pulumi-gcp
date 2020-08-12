@@ -88,19 +88,23 @@ export class ServicePerimeter extends pulumi.CustomResource {
      * topologies with many independent perimeters that need to share some data
      * with a common perimeter, but should not be able to share data among
      * themselves.
+     * Default value is `PERIMETER_TYPE_REGULAR`.
+     * Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
      */
     public readonly perimeterType!: pulumi.Output<string | undefined>;
     /**
      * Proposed (or dry run) ServicePerimeter configuration.
      * This configuration allows to specify and test ServicePerimeter configuration
      * without enforcing actual access restrictions. Only allowed to be set when
-     * the `useExplicitDryRunSpec` flag is set.  Structure is documented below.
+     * the `useExplicitDryRunSpec` flag is set.
+     * Structure is documented below.
      */
     public readonly spec!: pulumi.Output<outputs.accesscontextmanager.ServicePerimeterSpec | undefined>;
     /**
      * ServicePerimeter configuration. Specifies sets of resources,
      * restricted services and access levels that determine
-     * perimeter content and boundaries.  Structure is documented below.
+     * perimeter content and boundaries.
+     * Structure is documented below.
      */
     public readonly status!: pulumi.Output<outputs.accesscontextmanager.ServicePerimeterStatus | undefined>;
     /**
@@ -215,19 +219,23 @@ export interface ServicePerimeterState {
      * topologies with many independent perimeters that need to share some data
      * with a common perimeter, but should not be able to share data among
      * themselves.
+     * Default value is `PERIMETER_TYPE_REGULAR`.
+     * Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
      */
     readonly perimeterType?: pulumi.Input<string>;
     /**
      * Proposed (or dry run) ServicePerimeter configuration.
      * This configuration allows to specify and test ServicePerimeter configuration
      * without enforcing actual access restrictions. Only allowed to be set when
-     * the `useExplicitDryRunSpec` flag is set.  Structure is documented below.
+     * the `useExplicitDryRunSpec` flag is set.
+     * Structure is documented below.
      */
     readonly spec?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterSpec>;
     /**
      * ServicePerimeter configuration. Specifies sets of resources,
      * restricted services and access levels that determine
-     * perimeter content and boundaries.  Structure is documented below.
+     * perimeter content and boundaries.
+     * Structure is documented below.
      */
     readonly status?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterStatus>;
     /**
@@ -287,19 +295,23 @@ export interface ServicePerimeterArgs {
      * topologies with many independent perimeters that need to share some data
      * with a common perimeter, but should not be able to share data among
      * themselves.
+     * Default value is `PERIMETER_TYPE_REGULAR`.
+     * Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
      */
     readonly perimeterType?: pulumi.Input<string>;
     /**
      * Proposed (or dry run) ServicePerimeter configuration.
      * This configuration allows to specify and test ServicePerimeter configuration
      * without enforcing actual access restrictions. Only allowed to be set when
-     * the `useExplicitDryRunSpec` flag is set.  Structure is documented below.
+     * the `useExplicitDryRunSpec` flag is set.
+     * Structure is documented below.
      */
     readonly spec?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterSpec>;
     /**
      * ServicePerimeter configuration. Specifies sets of resources,
      * restricted services and access levels that determine
-     * perimeter content and boundaries.  Structure is documented below.
+     * perimeter content and boundaries.
+     * Structure is documented below.
      */
     readonly status?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterStatus>;
     /**

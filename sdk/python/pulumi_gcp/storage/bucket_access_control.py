@@ -43,6 +43,7 @@ class BucketAccessControl(pulumi.CustomResource):
     role: pulumi.Output[str]
     """
     The access permission for the entity.
+    Possible values are `OWNER`, `READER`, and `WRITER`.
     """
     def __init__(__self__, resource_name, opts=None, bucket=None, entity=None, role=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -90,6 +91,7 @@ class BucketAccessControl(pulumi.CustomResource):
                To refer to all members of the Google Apps for Business domain
                example.com, the entity would be domain-example.com.
         :param pulumi.Input[str] role: The access permission for the entity.
+               Possible values are `OWNER`, `READER`, and `WRITER`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -151,6 +153,7 @@ class BucketAccessControl(pulumi.CustomResource):
                To refer to all members of the Google Apps for Business domain
                example.com, the entity would be domain-example.com.
         :param pulumi.Input[str] role: The access permission for the entity.
+               Possible values are `OWNER`, `READER`, and `WRITER`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

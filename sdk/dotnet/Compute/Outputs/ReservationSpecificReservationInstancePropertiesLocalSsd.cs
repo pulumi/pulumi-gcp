@@ -19,6 +19,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly int DiskSizeGb;
         /// <summary>
         /// The disk interface to use for attaching this disk.
+        /// Default value is `SCSI`.
+        /// Possible values are `SCSI` and `NVME`.
         /// </summary>
         public readonly string? Interface;
 

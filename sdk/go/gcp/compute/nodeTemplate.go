@@ -40,7 +40,8 @@ type NodeTemplate struct {
 	// Flexible properties for the desired node type. Node groups that
 	// use this node template will create nodes of a type that matches
 	// these properties. Only one of nodeTypeFlexibility and nodeType can
-	// be specified.  Structure is documented below.
+	// be specified.
+	// Structure is documented below.
 	NodeTypeFlexibility NodeTemplateNodeTypeFlexibilityPtrOutput `pulumi:"nodeTypeFlexibility"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -51,7 +52,8 @@ type NodeTemplate struct {
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// The server binding policy for nodes using this template. Determines
-	// where the nodes should restart following a maintenance event.  Structure is documented below.
+	// where the nodes should restart following a maintenance event.
+	// Structure is documented below.
 	ServerBinding NodeTemplateServerBindingOutput `pulumi:"serverBinding"`
 }
 
@@ -100,7 +102,8 @@ type nodeTemplateState struct {
 	// Flexible properties for the desired node type. Node groups that
 	// use this node template will create nodes of a type that matches
 	// these properties. Only one of nodeTypeFlexibility and nodeType can
-	// be specified.  Structure is documented below.
+	// be specified.
+	// Structure is documented below.
 	NodeTypeFlexibility *NodeTemplateNodeTypeFlexibility `pulumi:"nodeTypeFlexibility"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -111,7 +114,8 @@ type nodeTemplateState struct {
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// The server binding policy for nodes using this template. Determines
-	// where the nodes should restart following a maintenance event.  Structure is documented below.
+	// where the nodes should restart following a maintenance event.
+	// Structure is documented below.
 	ServerBinding *NodeTemplateServerBinding `pulumi:"serverBinding"`
 }
 
@@ -133,7 +137,8 @@ type NodeTemplateState struct {
 	// Flexible properties for the desired node type. Node groups that
 	// use this node template will create nodes of a type that matches
 	// these properties. Only one of nodeTypeFlexibility and nodeType can
-	// be specified.  Structure is documented below.
+	// be specified.
+	// Structure is documented below.
 	NodeTypeFlexibility NodeTemplateNodeTypeFlexibilityPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -144,7 +149,8 @@ type NodeTemplateState struct {
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
 	// The server binding policy for nodes using this template. Determines
-	// where the nodes should restart following a maintenance event.  Structure is documented below.
+	// where the nodes should restart following a maintenance event.
+	// Structure is documented below.
 	ServerBinding NodeTemplateServerBindingPtrInput
 }
 
@@ -168,7 +174,8 @@ type nodeTemplateArgs struct {
 	// Flexible properties for the desired node type. Node groups that
 	// use this node template will create nodes of a type that matches
 	// these properties. Only one of nodeTypeFlexibility and nodeType can
-	// be specified.  Structure is documented below.
+	// be specified.
+	// Structure is documented below.
 	NodeTypeFlexibility *NodeTemplateNodeTypeFlexibility `pulumi:"nodeTypeFlexibility"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -177,7 +184,8 @@ type nodeTemplateArgs struct {
 	// If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
 	// The server binding policy for nodes using this template. Determines
-	// where the nodes should restart following a maintenance event.  Structure is documented below.
+	// where the nodes should restart following a maintenance event.
+	// Structure is documented below.
 	ServerBinding *NodeTemplateServerBinding `pulumi:"serverBinding"`
 }
 
@@ -198,7 +206,8 @@ type NodeTemplateArgs struct {
 	// Flexible properties for the desired node type. Node groups that
 	// use this node template will create nodes of a type that matches
 	// these properties. Only one of nodeTypeFlexibility and nodeType can
-	// be specified.  Structure is documented below.
+	// be specified.
+	// Structure is documented below.
 	NodeTypeFlexibility NodeTemplateNodeTypeFlexibilityPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -207,7 +216,8 @@ type NodeTemplateArgs struct {
 	// If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
 	// The server binding policy for nodes using this template. Determines
-	// where the nodes should restart following a maintenance event.  Structure is documented below.
+	// where the nodes should restart following a maintenance event.
+	// Structure is documented below.
 	ServerBinding NodeTemplateServerBindingPtrInput
 }
 

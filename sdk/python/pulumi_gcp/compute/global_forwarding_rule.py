@@ -42,10 +42,12 @@ class GlobalForwardingRule(pulumi.CustomResource):
     """
     The IP protocol to which this rule applies. When the load balancing scheme is
     INTERNAL_SELF_MANAGED, only TCP is valid.
+    Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
     """
     ip_version: pulumi.Output[str]
     """
     The IP Version that will be used by this global forwarding rule.
+    Possible values are `IPV4` and `IPV6`.
     """
     label_fingerprint: pulumi.Output[str]
     """
@@ -64,6 +66,8 @@ class GlobalForwardingRule(pulumi.CustomResource):
     External TCP/UDP LB, SSL Proxy)
     NOTE: Currently global forwarding rules cannot be used for INTERNAL
     load balancing.
+    Default value is `EXTERNAL`.
+    Possible values are `EXTERNAL` and `INTERNAL_SELF_MANAGED`.
     """
     metadata_filters: pulumi.Output[list]
     """
@@ -80,11 +84,13 @@ class GlobalForwardingRule(pulumi.CustomResource):
     metadataFilters specified here can be overridden by those specified in
     the UrlMap that this ForwardingRule references.
     metadataFilters only applies to Loadbalancers that have their
-    loadBalancingScheme set to INTERNAL_SELF_MANAGED.  Structure is documented below.
+    loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+    Structure is documented below.
 
       * `filterLabels` (`list`) - The list of label value pairs that must match labels in the
         provided metadata based on filterMatchCriteria
-        This list must not be empty and can have at the most 64 entries.  Structure is documented below.
+        This list must not be empty and can have at the most 64 entries.
+        Structure is documented below.
         * `name` (`str`) - Name of the metadata label. The length must be between
           1 and 1024 characters, inclusive.
         * `value` (`str`) - The value that the label must match. The value has a maximum
@@ -96,6 +102,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
         label in the provided metadata.
         MATCH_ALL - All filterLabels must have matching labels in the
         provided metadata.
+        Possible values are `MATCH_ANY` and `MATCH_ALL`.
     """
     name: pulumi.Output[str]
     """
@@ -183,7 +190,9 @@ class GlobalForwardingRule(pulumi.CustomResource):
                or unnecessary diffs.
         :param pulumi.Input[str] ip_protocol: The IP protocol to which this rule applies. When the load balancing scheme is
                INTERNAL_SELF_MANAGED, only TCP is valid.
+               Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
         :param pulumi.Input[str] ip_version: The IP Version that will be used by this global forwarding rule.
+               Possible values are `IPV4` and `IPV6`.
         :param pulumi.Input[dict] labels: Labels to apply to this forwarding rule.  A list of key->value pairs.
         :param pulumi.Input[str] load_balancing_scheme: This signifies what the GlobalForwardingRule will be used for.
                The value of INTERNAL_SELF_MANAGED means that this will be used for
@@ -192,6 +201,8 @@ class GlobalForwardingRule(pulumi.CustomResource):
                External TCP/UDP LB, SSL Proxy)
                NOTE: Currently global forwarding rules cannot be used for INTERNAL
                load balancing.
+               Default value is `EXTERNAL`.
+               Possible values are `EXTERNAL` and `INTERNAL_SELF_MANAGED`.
         :param pulumi.Input[list] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing
                configuration to a limited set xDS compliant clients. In their xDS
                requests to Loadbalancer, xDS clients present node metadata. If a
@@ -205,7 +216,8 @@ class GlobalForwardingRule(pulumi.CustomResource):
                metadataFilters specified here can be overridden by those specified in
                the UrlMap that this ForwardingRule references.
                metadataFilters only applies to Loadbalancers that have their
-               loadBalancingScheme set to INTERNAL_SELF_MANAGED.  Structure is documented below.
+               loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+               Structure is documented below.
         :param pulumi.Input[str] name: Name of the metadata label. The length must be between
                1 and 1024 characters, inclusive.
         :param pulumi.Input[str] network: This field is not used for external load balancing.
@@ -240,7 +252,8 @@ class GlobalForwardingRule(pulumi.CustomResource):
 
           * `filterLabels` (`pulumi.Input[list]`) - The list of label value pairs that must match labels in the
             provided metadata based on filterMatchCriteria
-            This list must not be empty and can have at the most 64 entries.  Structure is documented below.
+            This list must not be empty and can have at the most 64 entries.
+            Structure is documented below.
             * `name` (`pulumi.Input[str]`) - Name of the metadata label. The length must be between
               1 and 1024 characters, inclusive.
             * `value` (`pulumi.Input[str]`) - The value that the label must match. The value has a maximum
@@ -252,6 +265,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
             label in the provided metadata.
             MATCH_ALL - All filterLabels must have matching labels in the
             provided metadata.
+            Possible values are `MATCH_ANY` and `MATCH_ALL`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -325,7 +339,9 @@ class GlobalForwardingRule(pulumi.CustomResource):
                or unnecessary diffs.
         :param pulumi.Input[str] ip_protocol: The IP protocol to which this rule applies. When the load balancing scheme is
                INTERNAL_SELF_MANAGED, only TCP is valid.
+               Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
         :param pulumi.Input[str] ip_version: The IP Version that will be used by this global forwarding rule.
+               Possible values are `IPV4` and `IPV6`.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
         :param pulumi.Input[dict] labels: Labels to apply to this forwarding rule.  A list of key->value pairs.
         :param pulumi.Input[str] load_balancing_scheme: This signifies what the GlobalForwardingRule will be used for.
@@ -335,6 +351,8 @@ class GlobalForwardingRule(pulumi.CustomResource):
                External TCP/UDP LB, SSL Proxy)
                NOTE: Currently global forwarding rules cannot be used for INTERNAL
                load balancing.
+               Default value is `EXTERNAL`.
+               Possible values are `EXTERNAL` and `INTERNAL_SELF_MANAGED`.
         :param pulumi.Input[list] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing
                configuration to a limited set xDS compliant clients. In their xDS
                requests to Loadbalancer, xDS clients present node metadata. If a
@@ -348,7 +366,8 @@ class GlobalForwardingRule(pulumi.CustomResource):
                metadataFilters specified here can be overridden by those specified in
                the UrlMap that this ForwardingRule references.
                metadataFilters only applies to Loadbalancers that have their
-               loadBalancingScheme set to INTERNAL_SELF_MANAGED.  Structure is documented below.
+               loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+               Structure is documented below.
         :param pulumi.Input[str] name: Name of the metadata label. The length must be between
                1 and 1024 characters, inclusive.
         :param pulumi.Input[str] network: This field is not used for external load balancing.
@@ -384,7 +403,8 @@ class GlobalForwardingRule(pulumi.CustomResource):
 
           * `filterLabels` (`pulumi.Input[list]`) - The list of label value pairs that must match labels in the
             provided metadata based on filterMatchCriteria
-            This list must not be empty and can have at the most 64 entries.  Structure is documented below.
+            This list must not be empty and can have at the most 64 entries.
+            Structure is documented below.
             * `name` (`pulumi.Input[str]`) - Name of the metadata label. The length must be between
               1 and 1024 characters, inclusive.
             * `value` (`pulumi.Input[str]`) - The value that the label must match. The value has a maximum
@@ -396,6 +416,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
             label in the provided metadata.
             MATCH_ALL - All filterLabels must have matching labels in the
             provided metadata.
+            Possible values are `MATCH_ANY` and `MATCH_ALL`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

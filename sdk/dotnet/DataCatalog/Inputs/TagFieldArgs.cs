@@ -32,7 +32,8 @@ namespace Pulumi.Gcp.DataCatalog.Inputs
         public Input<double>? DoubleValue { get; set; }
 
         /// <summary>
-        /// Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.  Structure is documented below.
+        /// Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.
+        /// Structure is documented below.
         /// </summary>
         [Input("enumValue")]
         public Input<string>? EnumValue { get; set; }

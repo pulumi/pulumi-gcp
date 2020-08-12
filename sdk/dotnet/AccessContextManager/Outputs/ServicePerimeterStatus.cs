@@ -41,7 +41,8 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
         public readonly ImmutableArray<string> RestrictedServices;
         /// <summary>
         /// Specifies how APIs are allowed to communicate within the Service
-        /// Perimeter.  Structure is documented below.
+        /// Perimeter.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.ServicePerimeterStatusVpcAccessibleServices? VpcAccessibleServices;
 

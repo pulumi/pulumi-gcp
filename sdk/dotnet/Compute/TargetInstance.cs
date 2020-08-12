@@ -65,6 +65,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// NAT option controlling how IPs are NAT'ed to the instance.
         /// Currently only NO_NAT (default value) is supported.
+        /// Default value is `NO_NAT`.
+        /// Possible values are `NO_NAT`.
         /// </summary>
         [Output("natPolicy")]
         public Output<string?> NatPolicy { get; private set; } = null!;
@@ -166,6 +168,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// NAT option controlling how IPs are NAT'ed to the instance.
         /// Currently only NO_NAT (default value) is supported.
+        /// Default value is `NO_NAT`.
+        /// Possible values are `NO_NAT`.
         /// </summary>
         [Input("natPolicy")]
         public Input<string>? NatPolicy { get; set; }
@@ -228,6 +232,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// NAT option controlling how IPs are NAT'ed to the instance.
         /// Currently only NO_NAT (default value) is supported.
+        /// Default value is `NO_NAT`.
+        /// Possible values are `NO_NAT`.
         /// </summary>
         [Input("natPolicy")]
         public Input<string>? NatPolicy { get; set; }

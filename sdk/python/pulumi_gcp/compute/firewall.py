@@ -14,7 +14,8 @@ class Firewall(pulumi.CustomResource):
     """
     The list of ALLOW rules specified by this firewall. Each rule
     specifies a protocol and port-range tuple that describes a permitted
-    connection.  Structure is documented below.
+    connection.
+    Structure is documented below.
 
       * `ports` (`list`) - An optional list of ports to which this rule applies. This field
         is only applicable for UDP or TCP protocol. Each entry must be
@@ -34,7 +35,8 @@ class Firewall(pulumi.CustomResource):
     denies: pulumi.Output[list]
     """
     The list of DENY rules specified by this firewall. Each rule specifies
-    a protocol and port-range tuple that describes a denied connection.  Structure is documented below.
+    a protocol and port-range tuple that describes a denied connection.
+    Structure is documented below.
 
       * `ports` (`list`) - An optional list of ports to which this rule applies. This field
         is only applicable for UDP or TCP protocol. Each entry must be
@@ -64,6 +66,7 @@ class Firewall(pulumi.CustomResource):
     INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
     destinationRanges; For EGRESS traffic, it is NOT supported to specify
     sourceRanges OR sourceTags.
+    Possible values are `INGRESS` and `EGRESS`.
     """
     disabled: pulumi.Output[bool]
     """
@@ -80,9 +83,11 @@ class Firewall(pulumi.CustomResource):
     log_config: pulumi.Output[dict]
     """
     This field denotes the logging options for a particular firewall rule.
-    If defined, logging is enabled, and logs will be exported to Cloud Logging.  Structure is documented below.
+    If defined, logging is enabled, and logs will be exported to Cloud Logging.
+    Structure is documented below.
 
       * `metadata` (`str`) - This field denotes whether to include or exclude metadata for firewall logs.
+        Possible values are `EXCLUDE_ALL_METADATA` and `INCLUDE_ALL_METADATA`.
     """
     name: pulumi.Output[str]
     """
@@ -196,9 +201,11 @@ class Firewall(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] allows: The list of ALLOW rules specified by this firewall. Each rule
                specifies a protocol and port-range tuple that describes a permitted
-               connection.  Structure is documented below.
+               connection.
+               Structure is documented below.
         :param pulumi.Input[list] denies: The list of DENY rules specified by this firewall. Each rule specifies
-               a protocol and port-range tuple that describes a denied connection.  Structure is documented below.
+               a protocol and port-range tuple that describes a denied connection.
+               Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
         :param pulumi.Input[list] destination_ranges: If destination ranges are specified, the firewall will apply only to
@@ -208,6 +215,7 @@ class Firewall(pulumi.CustomResource):
                INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
                destinationRanges; For EGRESS traffic, it is NOT supported to specify
                sourceRanges OR sourceTags.
+               Possible values are `INGRESS` and `EGRESS`.
         :param pulumi.Input[bool] disabled: Denotes whether the firewall rule is disabled, i.e not applied to the
                network it is associated with. When set to true, the firewall rule is
                not enforced and the network behaves as if it did not exist. If this
@@ -215,7 +223,8 @@ class Firewall(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_logging: This field denotes whether to enable logging for a particular firewall rule.
                If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `log_config`
         :param pulumi.Input[dict] log_config: This field denotes the logging options for a particular firewall rule.
-               If defined, logging is enabled, and logs will be exported to Cloud Logging.  Structure is documented below.
+               If defined, logging is enabled, and logs will be exported to Cloud Logging.
+               Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -300,6 +309,7 @@ class Firewall(pulumi.CustomResource):
         The **log_config** object supports the following:
 
           * `metadata` (`pulumi.Input[str]`) - This field denotes whether to include or exclude metadata for firewall logs.
+            Possible values are `EXCLUDE_ALL_METADATA` and `INCLUDE_ALL_METADATA`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -359,10 +369,12 @@ class Firewall(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] allows: The list of ALLOW rules specified by this firewall. Each rule
                specifies a protocol and port-range tuple that describes a permitted
-               connection.  Structure is documented below.
+               connection.
+               Structure is documented below.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[list] denies: The list of DENY rules specified by this firewall. Each rule specifies
-               a protocol and port-range tuple that describes a denied connection.  Structure is documented below.
+               a protocol and port-range tuple that describes a denied connection.
+               Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
         :param pulumi.Input[list] destination_ranges: If destination ranges are specified, the firewall will apply only to
@@ -372,6 +384,7 @@ class Firewall(pulumi.CustomResource):
                INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
                destinationRanges; For EGRESS traffic, it is NOT supported to specify
                sourceRanges OR sourceTags.
+               Possible values are `INGRESS` and `EGRESS`.
         :param pulumi.Input[bool] disabled: Denotes whether the firewall rule is disabled, i.e not applied to the
                network it is associated with. When set to true, the firewall rule is
                not enforced and the network behaves as if it did not exist. If this
@@ -379,7 +392,8 @@ class Firewall(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_logging: This field denotes whether to enable logging for a particular firewall rule.
                If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `log_config`
         :param pulumi.Input[dict] log_config: This field denotes the logging options for a particular firewall rule.
-               If defined, logging is enabled, and logs will be exported to Cloud Logging.  Structure is documented below.
+               If defined, logging is enabled, and logs will be exported to Cloud Logging.
+               Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -465,6 +479,7 @@ class Firewall(pulumi.CustomResource):
         The **log_config** object supports the following:
 
           * `metadata` (`pulumi.Input[str]`) - This field denotes whether to include or exclude metadata for firewall logs.
+            Possible values are `EXCLUDE_ALL_METADATA` and `INCLUDE_ALL_METADATA`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

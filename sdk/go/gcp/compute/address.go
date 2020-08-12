@@ -40,6 +40,8 @@ type Address struct {
 	// if any.
 	Address pulumi.StringOutput `pulumi:"address"`
 	// The type of address to reserve.
+	// Default value is `EXTERNAL`.
+	// Possible values are `INTERNAL` and `EXTERNAL`.
 	AddressType pulumi.StringPtrOutput `pulumi:"addressType"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
@@ -58,6 +60,7 @@ type Address struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The networking tier used for configuring this address. If this field is not
 	// specified, it is assumed to be PREMIUM.
+	// Possible values are `PREMIUM` and `STANDARD`.
 	NetworkTier pulumi.StringOutput `pulumi:"networkTier"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -66,6 +69,7 @@ type Address struct {
 	// - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
 	// - SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers
 	//   This should only be set when using an Internal address.
+	//   Possible values are `GCE_ENDPOINT` and `SHARED_LOADBALANCER_VIP`.
 	Purpose pulumi.StringOutput `pulumi:"purpose"`
 	// The Region in which the created address should reside.
 	// If it is not provided, the provider region is used.
@@ -115,6 +119,8 @@ type addressState struct {
 	// if any.
 	Address *string `pulumi:"address"`
 	// The type of address to reserve.
+	// Default value is `EXTERNAL`.
+	// Possible values are `INTERNAL` and `EXTERNAL`.
 	AddressType *string `pulumi:"addressType"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
@@ -133,6 +139,7 @@ type addressState struct {
 	Name *string `pulumi:"name"`
 	// The networking tier used for configuring this address. If this field is not
 	// specified, it is assumed to be PREMIUM.
+	// Possible values are `PREMIUM` and `STANDARD`.
 	NetworkTier *string `pulumi:"networkTier"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -141,6 +148,7 @@ type addressState struct {
 	// - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
 	// - SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers
 	//   This should only be set when using an Internal address.
+	//   Possible values are `GCE_ENDPOINT` and `SHARED_LOADBALANCER_VIP`.
 	Purpose *string `pulumi:"purpose"`
 	// The Region in which the created address should reside.
 	// If it is not provided, the provider region is used.
@@ -163,6 +171,8 @@ type AddressState struct {
 	// if any.
 	Address pulumi.StringPtrInput
 	// The type of address to reserve.
+	// Default value is `EXTERNAL`.
+	// Possible values are `INTERNAL` and `EXTERNAL`.
 	AddressType pulumi.StringPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
@@ -181,6 +191,7 @@ type AddressState struct {
 	Name pulumi.StringPtrInput
 	// The networking tier used for configuring this address. If this field is not
 	// specified, it is assumed to be PREMIUM.
+	// Possible values are `PREMIUM` and `STANDARD`.
 	NetworkTier pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -189,6 +200,7 @@ type AddressState struct {
 	// - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
 	// - SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers
 	//   This should only be set when using an Internal address.
+	//   Possible values are `GCE_ENDPOINT` and `SHARED_LOADBALANCER_VIP`.
 	Purpose pulumi.StringPtrInput
 	// The Region in which the created address should reside.
 	// If it is not provided, the provider region is used.
@@ -215,6 +227,8 @@ type addressArgs struct {
 	// if any.
 	Address *string `pulumi:"address"`
 	// The type of address to reserve.
+	// Default value is `EXTERNAL`.
+	// Possible values are `INTERNAL` and `EXTERNAL`.
 	AddressType *string `pulumi:"addressType"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
@@ -229,6 +243,7 @@ type addressArgs struct {
 	Name *string `pulumi:"name"`
 	// The networking tier used for configuring this address. If this field is not
 	// specified, it is assumed to be PREMIUM.
+	// Possible values are `PREMIUM` and `STANDARD`.
 	NetworkTier *string `pulumi:"networkTier"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -237,6 +252,7 @@ type addressArgs struct {
 	// - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
 	// - SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers
 	//   This should only be set when using an Internal address.
+	//   Possible values are `GCE_ENDPOINT` and `SHARED_LOADBALANCER_VIP`.
 	Purpose *string `pulumi:"purpose"`
 	// The Region in which the created address should reside.
 	// If it is not provided, the provider region is used.
@@ -256,6 +272,8 @@ type AddressArgs struct {
 	// if any.
 	Address pulumi.StringPtrInput
 	// The type of address to reserve.
+	// Default value is `EXTERNAL`.
+	// Possible values are `INTERNAL` and `EXTERNAL`.
 	AddressType pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
@@ -270,6 +288,7 @@ type AddressArgs struct {
 	Name pulumi.StringPtrInput
 	// The networking tier used for configuring this address. If this field is not
 	// specified, it is assumed to be PREMIUM.
+	// Possible values are `PREMIUM` and `STANDARD`.
 	NetworkTier pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -278,6 +297,7 @@ type AddressArgs struct {
 	// - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
 	// - SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers
 	//   This should only be set when using an Internal address.
+	//   Possible values are `GCE_ENDPOINT` and `SHARED_LOADBALANCER_VIP`.
 	Purpose pulumi.StringPtrInput
 	// The Region in which the created address should reside.
 	// If it is not provided, the provider region is used.

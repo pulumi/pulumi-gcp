@@ -495,7 +495,8 @@ func (o BudgetAllUpdatesRulePtrOutput) SchemaVersion() pulumi.StringPtrOutput {
 type BudgetAmount struct {
 	// A specified amount to use as the budget. currencyCode is
 	// optional. If specified, it must match the currency of the
-	// billing account. The currencyCode is provided on output.  Structure is documented below.
+	// billing account. The currencyCode is provided on output.
+	// Structure is documented below.
 	SpecifiedAmount BudgetAmountSpecifiedAmount `pulumi:"specifiedAmount"`
 }
 
@@ -513,7 +514,8 @@ type BudgetAmountInput interface {
 type BudgetAmountArgs struct {
 	// A specified amount to use as the budget. currencyCode is
 	// optional. If specified, it must match the currency of the
-	// billing account. The currencyCode is provided on output.  Structure is documented below.
+	// billing account. The currencyCode is provided on output.
+	// Structure is documented below.
 	SpecifiedAmount BudgetAmountSpecifiedAmountInput `pulumi:"specifiedAmount"`
 }
 
@@ -596,7 +598,8 @@ func (o BudgetAmountOutput) ToBudgetAmountPtrOutputWithContext(ctx context.Conte
 
 // A specified amount to use as the budget. currencyCode is
 // optional. If specified, it must match the currency of the
-// billing account. The currencyCode is provided on output.  Structure is documented below.
+// billing account. The currencyCode is provided on output.
+// Structure is documented below.
 func (o BudgetAmountOutput) SpecifiedAmount() BudgetAmountSpecifiedAmountOutput {
 	return o.ApplyT(func(v BudgetAmount) BudgetAmountSpecifiedAmount { return v.SpecifiedAmount }).(BudgetAmountSpecifiedAmountOutput)
 }
@@ -621,7 +624,8 @@ func (o BudgetAmountPtrOutput) Elem() BudgetAmountOutput {
 
 // A specified amount to use as the budget. currencyCode is
 // optional. If specified, it must match the currency of the
-// billing account. The currencyCode is provided on output.  Structure is documented below.
+// billing account. The currencyCode is provided on output.
+// Structure is documented below.
 func (o BudgetAmountPtrOutput) SpecifiedAmount() BudgetAmountSpecifiedAmountPtrOutput {
 	return o.ApplyT(func(v *BudgetAmount) *BudgetAmountSpecifiedAmount {
 		if v == nil {
@@ -831,6 +835,8 @@ func (o BudgetAmountSpecifiedAmountPtrOutput) Units() pulumi.StringPtrOutput {
 type BudgetBudgetFilter struct {
 	// Specifies how credits should be treated when determining spend
 	// for threshold calculations.
+	// Default value is `INCLUDE_ALL_CREDITS`.
+	// Possible values are `INCLUDE_ALL_CREDITS` and `EXCLUDE_ALL_CREDITS`.
 	CreditTypesTreatment *string `pulumi:"creditTypesTreatment"`
 	// A set of projects of the form projects/{project_id},
 	// specifying that usage from only this set of projects should be
@@ -862,6 +868,8 @@ type BudgetBudgetFilterInput interface {
 type BudgetBudgetFilterArgs struct {
 	// Specifies how credits should be treated when determining spend
 	// for threshold calculations.
+	// Default value is `INCLUDE_ALL_CREDITS`.
+	// Possible values are `INCLUDE_ALL_CREDITS` and `EXCLUDE_ALL_CREDITS`.
 	CreditTypesTreatment pulumi.StringPtrInput `pulumi:"creditTypesTreatment"`
 	// A set of projects of the form projects/{project_id},
 	// specifying that usage from only this set of projects should be
@@ -958,6 +966,8 @@ func (o BudgetBudgetFilterOutput) ToBudgetBudgetFilterPtrOutputWithContext(ctx c
 
 // Specifies how credits should be treated when determining spend
 // for threshold calculations.
+// Default value is `INCLUDE_ALL_CREDITS`.
+// Possible values are `INCLUDE_ALL_CREDITS` and `EXCLUDE_ALL_CREDITS`.
 func (o BudgetBudgetFilterOutput) CreditTypesTreatment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BudgetBudgetFilter) *string { return v.CreditTypesTreatment }).(pulumi.StringPtrOutput)
 }
@@ -1002,6 +1012,8 @@ func (o BudgetBudgetFilterPtrOutput) Elem() BudgetBudgetFilterOutput {
 
 // Specifies how credits should be treated when determining spend
 // for threshold calculations.
+// Default value is `INCLUDE_ALL_CREDITS`.
+// Possible values are `INCLUDE_ALL_CREDITS` and `EXCLUDE_ALL_CREDITS`.
 func (o BudgetBudgetFilterPtrOutput) CreditTypesTreatment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BudgetBudgetFilter) *string {
 		if v == nil {
@@ -1044,6 +1056,8 @@ func (o BudgetBudgetFilterPtrOutput) Services() pulumi.StringArrayOutput {
 type BudgetThresholdRule struct {
 	// The type of basis used to determine if spend has passed
 	// the threshold.
+	// Default value is `CURRENT_SPEND`.
+	// Possible values are `CURRENT_SPEND` and `FORECASTED_SPEND`.
 	SpendBasis *string `pulumi:"spendBasis"`
 	// Send an alert when this threshold is exceeded. This is a
 	// 1.0-based percentage, so 0.5 = 50%. Must be >= 0.
@@ -1064,6 +1078,8 @@ type BudgetThresholdRuleInput interface {
 type BudgetThresholdRuleArgs struct {
 	// The type of basis used to determine if spend has passed
 	// the threshold.
+	// Default value is `CURRENT_SPEND`.
+	// Possible values are `CURRENT_SPEND` and `FORECASTED_SPEND`.
 	SpendBasis pulumi.StringPtrInput `pulumi:"spendBasis"`
 	// Send an alert when this threshold is exceeded. This is a
 	// 1.0-based percentage, so 0.5 = 50%. Must be >= 0.
@@ -1123,6 +1139,8 @@ func (o BudgetThresholdRuleOutput) ToBudgetThresholdRuleOutputWithContext(ctx co
 
 // The type of basis used to determine if spend has passed
 // the threshold.
+// Default value is `CURRENT_SPEND`.
+// Possible values are `CURRENT_SPEND` and `FORECASTED_SPEND`.
 func (o BudgetThresholdRuleOutput) SpendBasis() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BudgetThresholdRule) *string { return v.SpendBasis }).(pulumi.StringPtrOutput)
 }

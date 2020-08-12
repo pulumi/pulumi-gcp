@@ -31,7 +31,8 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         private InputList<Inputs.TriggerBuildStepGetArgs>? _steps;
 
         /// <summary>
-        /// The operations to be performed on the workspace.  Structure is documented below.
+        /// The operations to be performed on the workspace.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.TriggerBuildStepGetArgs> Steps
         {

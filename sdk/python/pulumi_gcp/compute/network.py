@@ -54,6 +54,7 @@ class Network(pulumi.CustomResource):
     of this network in the same region as the router. If set to `GLOBAL`,
     this network's cloud routers will advertise routes with all
     subnetworks of this network, across regions.
+    Possible values are `REGIONAL` and `GLOBAL`.
     """
     self_link: pulumi.Output[str]
     """
@@ -96,6 +97,7 @@ class Network(pulumi.CustomResource):
                of this network in the same region as the router. If set to `GLOBAL`,
                this network's cloud routers will advertise routes with all
                subnetworks of this network, across regions.
+               Possible values are `REGIONAL` and `GLOBAL`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -161,6 +163,7 @@ class Network(pulumi.CustomResource):
                of this network in the same region as the router. If set to `GLOBAL`,
                this network's cloud routers will advertise routes with all
                subnetworks of this network, across regions.
+               Possible values are `REGIONAL` and `GLOBAL`.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

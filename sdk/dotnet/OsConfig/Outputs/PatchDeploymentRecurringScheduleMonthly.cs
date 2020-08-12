@@ -20,7 +20,8 @@ namespace Pulumi.Gcp.OsConfig.Outputs
         /// </summary>
         public readonly int? MonthDay;
         /// <summary>
-        /// Week day in a month.  Structure is documented below.
+        /// Week day in a month.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth? WeekDayOfMonth;
 

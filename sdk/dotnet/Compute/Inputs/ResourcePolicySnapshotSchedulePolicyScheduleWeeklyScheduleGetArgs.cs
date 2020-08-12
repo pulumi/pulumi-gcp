@@ -16,7 +16,8 @@ namespace Pulumi.Gcp.Compute.Inputs
         private InputList<Inputs.ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekGetArgs>? _dayOfWeeks;
 
         /// <summary>
-        /// May contain up to seven (one for each day of the week) snapshot times.  Structure is documented below.
+        /// May contain up to seven (one for each day of the week) snapshot times.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekGetArgs> DayOfWeeks
         {

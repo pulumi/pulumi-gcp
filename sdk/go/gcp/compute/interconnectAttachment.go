@@ -25,6 +25,7 @@ type InterconnectAttachment struct {
 	// For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth.
 	// Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED,
 	// Defaults to BPS_10G
+	// Possible values are `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, and `BPS_50G`.
 	Bandwidth pulumi.StringOutput `pulumi:"bandwidth"`
 	// Up to 16 candidate prefixes that can be used to restrict the allocation
 	// of cloudRouterIpAddress and customerRouterIpAddress for this attachment.
@@ -88,6 +89,7 @@ type InterconnectAttachment struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// The type of InterconnectAttachment you wish to create. Defaults to
 	// DEDICATED.
+	// Possible values are `DEDICATED`, `PARTNER`, and `PARTNER_PROVIDER`.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. When
 	// using PARTNER type this will be managed upstream.
@@ -133,6 +135,7 @@ type interconnectAttachmentState struct {
 	// For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth.
 	// Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED,
 	// Defaults to BPS_10G
+	// Possible values are `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, and `BPS_50G`.
 	Bandwidth *string `pulumi:"bandwidth"`
 	// Up to 16 candidate prefixes that can be used to restrict the allocation
 	// of cloudRouterIpAddress and customerRouterIpAddress for this attachment.
@@ -196,6 +199,7 @@ type interconnectAttachmentState struct {
 	State *string `pulumi:"state"`
 	// The type of InterconnectAttachment you wish to create. Defaults to
 	// DEDICATED.
+	// Possible values are `DEDICATED`, `PARTNER`, and `PARTNER_PROVIDER`.
 	Type *string `pulumi:"type"`
 	// The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. When
 	// using PARTNER type this will be managed upstream.
@@ -211,6 +215,7 @@ type InterconnectAttachmentState struct {
 	// For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth.
 	// Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED,
 	// Defaults to BPS_10G
+	// Possible values are `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, and `BPS_50G`.
 	Bandwidth pulumi.StringPtrInput
 	// Up to 16 candidate prefixes that can be used to restrict the allocation
 	// of cloudRouterIpAddress and customerRouterIpAddress for this attachment.
@@ -274,6 +279,7 @@ type InterconnectAttachmentState struct {
 	State pulumi.StringPtrInput
 	// The type of InterconnectAttachment you wish to create. Defaults to
 	// DEDICATED.
+	// Possible values are `DEDICATED`, `PARTNER`, and `PARTNER_PROVIDER`.
 	Type pulumi.StringPtrInput
 	// The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. When
 	// using PARTNER type this will be managed upstream.
@@ -293,6 +299,7 @@ type interconnectAttachmentArgs struct {
 	// For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth.
 	// Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED,
 	// Defaults to BPS_10G
+	// Possible values are `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, and `BPS_50G`.
 	Bandwidth *string `pulumi:"bandwidth"`
 	// Up to 16 candidate prefixes that can be used to restrict the allocation
 	// of cloudRouterIpAddress and customerRouterIpAddress for this attachment.
@@ -334,6 +341,7 @@ type interconnectAttachmentArgs struct {
 	Router string `pulumi:"router"`
 	// The type of InterconnectAttachment you wish to create. Defaults to
 	// DEDICATED.
+	// Possible values are `DEDICATED`, `PARTNER`, and `PARTNER_PROVIDER`.
 	Type *string `pulumi:"type"`
 	// The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. When
 	// using PARTNER type this will be managed upstream.
@@ -350,6 +358,7 @@ type InterconnectAttachmentArgs struct {
 	// For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth.
 	// Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED,
 	// Defaults to BPS_10G
+	// Possible values are `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, and `BPS_50G`.
 	Bandwidth pulumi.StringPtrInput
 	// Up to 16 candidate prefixes that can be used to restrict the allocation
 	// of cloudRouterIpAddress and customerRouterIpAddress for this attachment.
@@ -391,6 +400,7 @@ type InterconnectAttachmentArgs struct {
 	Router pulumi.StringInput
 	// The type of InterconnectAttachment you wish to create. Defaults to
 	// DEDICATED.
+	// Possible values are `DEDICATED`, `PARTNER`, and `PARTNER_PROVIDER`.
 	Type pulumi.StringPtrInput
 	// The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. When
 	// using PARTNER type this will be managed upstream.

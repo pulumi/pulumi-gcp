@@ -30,7 +30,8 @@ namespace Pulumi.Gcp.GameServices.Inputs
         private InputList<Inputs.GameServerConfigScalingConfigScheduleArgs>? _schedules;
 
         /// <summary>
-        /// The schedules to which this scaling config applies.  Structure is documented below.
+        /// The schedules to which this scaling config applies.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.GameServerConfigScalingConfigScheduleArgs> Schedules
         {
@@ -44,7 +45,8 @@ namespace Pulumi.Gcp.GameServices.Inputs
         /// <summary>
         /// Labels used to identify the clusters to which this scaling config
         /// applies. A cluster is subject to this scaling config if its labels match
-        /// any of the selector entries.  Structure is documented below.
+        /// any of the selector entries.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.GameServerConfigScalingConfigSelectorArgs> Selectors
         {

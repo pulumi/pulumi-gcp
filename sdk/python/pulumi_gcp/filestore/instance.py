@@ -25,7 +25,8 @@ class Instance(pulumi.CustomResource):
     file_shares: pulumi.Output[dict]
     """
     File system shares on the instance. For this version, only a
-    single file share is supported.  Structure is documented below.
+    single file share is supported.
+    Structure is documented below.
 
       * `capacityGb` (`float`) - File share capacity in GiB. This must be at least 1024 GiB
         for the standard tier, or 2560 GiB for the premium tier.
@@ -33,6 +34,8 @@ class Instance(pulumi.CustomResource):
       * `nfsExportOptions` (`list`)
         * `accessMode` (`str`) - Either READ_ONLY, for allowing only read requests on the exported directory,
           or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE.
+          Default value is `READ_WRITE`.
+          Possible values are `READ_ONLY` and `READ_WRITE`.
         * `anonGid` (`float`) - An integer representing the anonymous group id with a default value of 65534.
           Anon_gid may only be set with squashMode of ROOT_SQUASH. An error will be returned
           if this field is specified for other squashMode settings.
@@ -44,6 +47,8 @@ class Instance(pulumi.CustomResource):
           The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
         * `squashMode` (`str`) - Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
           for not allowing root access. The default is NO_ROOT_SQUASH.
+          Default value is `NO_ROOT_SQUASH`.
+          Possible values are `NO_ROOT_SQUASH` and `ROOT_SQUASH`.
     """
     labels: pulumi.Output[dict]
     """
@@ -56,7 +61,8 @@ class Instance(pulumi.CustomResource):
     networks: pulumi.Output[list]
     """
     VPC networks to which the instance is connected. For this version,
-    only a single network is supported.  Structure is documented below.
+    only a single network is supported.
+    Structure is documented below.
 
       * `ip_addresses` (`list`) - -
         A list of IPv4 or IPv6 addresses.
@@ -75,6 +81,7 @@ class Instance(pulumi.CustomResource):
     tier: pulumi.Output[str]
     """
     The service tier of the instance.
+    Possible values are `TIER_UNSPECIFIED`, `STANDARD`, `PREMIUM`, `BASIC_HDD`, `BASIC_SSD`, and `HIGH_SCALE_SSD`.
     """
     zone: pulumi.Output[str]
     """
@@ -98,14 +105,17 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of the instance.
         :param pulumi.Input[dict] file_shares: File system shares on the instance. For this version, only a
-               single file share is supported.  Structure is documented below.
+               single file share is supported.
+               Structure is documented below.
         :param pulumi.Input[dict] labels: Resource labels to represent user-provided metadata.
         :param pulumi.Input[str] name: The name of the fileshare (16 characters or less)
         :param pulumi.Input[list] networks: VPC networks to which the instance is connected. For this version,
-               only a single network is supported.  Structure is documented below.
+               only a single network is supported.
+               Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] tier: The service tier of the instance.
+               Possible values are `TIER_UNSPECIFIED`, `STANDARD`, `PREMIUM`, `BASIC_HDD`, `BASIC_SSD`, and `HIGH_SCALE_SSD`.
         :param pulumi.Input[str] zone: The name of the Filestore zone of the instance.
 
         The **file_shares** object supports the following:
@@ -116,6 +126,8 @@ class Instance(pulumi.CustomResource):
           * `nfsExportOptions` (`pulumi.Input[list]`)
             * `accessMode` (`pulumi.Input[str]`) - Either READ_ONLY, for allowing only read requests on the exported directory,
               or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE.
+              Default value is `READ_WRITE`.
+              Possible values are `READ_ONLY` and `READ_WRITE`.
             * `anonGid` (`pulumi.Input[float]`) - An integer representing the anonymous group id with a default value of 65534.
               Anon_gid may only be set with squashMode of ROOT_SQUASH. An error will be returned
               if this field is specified for other squashMode settings.
@@ -127,6 +139,8 @@ class Instance(pulumi.CustomResource):
               The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
             * `squashMode` (`pulumi.Input[str]`) - Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
               for not allowing root access. The default is NO_ROOT_SQUASH.
+              Default value is `NO_ROOT_SQUASH`.
+              Possible values are `NO_ROOT_SQUASH` and `ROOT_SQUASH`.
 
         The **networks** object supports the following:
 
@@ -193,14 +207,17 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] description: A description of the instance.
         :param pulumi.Input[str] etag: Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
         :param pulumi.Input[dict] file_shares: File system shares on the instance. For this version, only a
-               single file share is supported.  Structure is documented below.
+               single file share is supported.
+               Structure is documented below.
         :param pulumi.Input[dict] labels: Resource labels to represent user-provided metadata.
         :param pulumi.Input[str] name: The name of the fileshare (16 characters or less)
         :param pulumi.Input[list] networks: VPC networks to which the instance is connected. For this version,
-               only a single network is supported.  Structure is documented below.
+               only a single network is supported.
+               Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] tier: The service tier of the instance.
+               Possible values are `TIER_UNSPECIFIED`, `STANDARD`, `PREMIUM`, `BASIC_HDD`, `BASIC_SSD`, and `HIGH_SCALE_SSD`.
         :param pulumi.Input[str] zone: The name of the Filestore zone of the instance.
 
         The **file_shares** object supports the following:
@@ -211,6 +228,8 @@ class Instance(pulumi.CustomResource):
           * `nfsExportOptions` (`pulumi.Input[list]`)
             * `accessMode` (`pulumi.Input[str]`) - Either READ_ONLY, for allowing only read requests on the exported directory,
               or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE.
+              Default value is `READ_WRITE`.
+              Possible values are `READ_ONLY` and `READ_WRITE`.
             * `anonGid` (`pulumi.Input[float]`) - An integer representing the anonymous group id with a default value of 65534.
               Anon_gid may only be set with squashMode of ROOT_SQUASH. An error will be returned
               if this field is specified for other squashMode settings.
@@ -222,6 +241,8 @@ class Instance(pulumi.CustomResource):
               The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
             * `squashMode` (`pulumi.Input[str]`) - Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
               for not allowing root access. The default is NO_ROOT_SQUASH.
+              Default value is `NO_ROOT_SQUASH`.
+              Possible values are `NO_ROOT_SQUASH` and `ROOT_SQUASH`.
 
         The **networks** object supports the following:
 

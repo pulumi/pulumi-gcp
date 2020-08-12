@@ -69,6 +69,7 @@ type Intent struct {
 	// * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
 	// * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
 	//   filling prompt is forwarded to the webhook.
+	//   Possible values are `WEBHOOK_STATE_ENABLED` and `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
 	WebhookState pulumi.StringOutput `pulumi:"webhookState"`
 }
 
@@ -149,6 +150,7 @@ type intentState struct {
 	// * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
 	// * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
 	//   filling prompt is forwarded to the webhook.
+	//   Possible values are `WEBHOOK_STATE_ENABLED` and `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
 	WebhookState *string `pulumi:"webhookState"`
 }
 
@@ -199,6 +201,7 @@ type IntentState struct {
 	// * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
 	// * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
 	//   filling prompt is forwarded to the webhook.
+	//   Possible values are `WEBHOOK_STATE_ENABLED` and `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
 	WebhookState pulumi.StringPtrInput
 }
 
@@ -245,6 +248,7 @@ type intentArgs struct {
 	// * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
 	// * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
 	//   filling prompt is forwarded to the webhook.
+	//   Possible values are `WEBHOOK_STATE_ENABLED` and `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
 	WebhookState *string `pulumi:"webhookState"`
 }
 
@@ -288,6 +292,7 @@ type IntentArgs struct {
 	// * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
 	// * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
 	//   filling prompt is forwarded to the webhook.
+	//   Possible values are `WEBHOOK_STATE_ENABLED` and `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
 	WebhookState pulumi.StringPtrInput
 }
 

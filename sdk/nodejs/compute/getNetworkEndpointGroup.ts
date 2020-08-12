@@ -22,6 +22,7 @@ export function getNetworkEndpointGroup(args?: GetNetworkEndpointGroupArgs, opts
     }
     return pulumi.runtime.invoke("gcp:compute/getNetworkEndpointGroup:getNetworkEndpointGroup", {
         "name": args.name,
+        "project": args.project,
         "selfLink": args.selfLink,
         "zone": args.zone,
     }, opts);
@@ -36,6 +37,11 @@ export interface GetNetworkEndpointGroupArgs {
      * Provide either this or a `selfLink`.
      */
     readonly name?: string;
+    /**
+     * The ID of the project to list versions in.
+     * If it is not provided, the provider project is used.
+     */
+    readonly project?: string;
     /**
      * The Network Endpoint Group self\_link.
      */
@@ -71,7 +77,7 @@ export interface GetNetworkEndpointGroupResult {
      * Type of network endpoints in this network endpoint group.
      */
     readonly networkEndpointType: string;
-    readonly project: string;
+    readonly project?: string;
     readonly selfLink?: string;
     /**
      * Number of network endpoints in the network endpoint group.

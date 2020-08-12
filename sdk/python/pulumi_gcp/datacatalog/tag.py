@@ -20,13 +20,15 @@ class Tag(pulumi.CustomResource):
     fields: pulumi.Output[list]
     """
     This maps the ID of a tag field to the value of and additional information about that field.
-    Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.  Structure is documented below.
+    Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
+    Structure is documented below.
 
       * `boolValue` (`bool`) - Holds the value for a tag field with boolean type.
       * `display_name` (`str`) - -
         The display name of this field
       * `doubleValue` (`float`) - Holds the value for a tag field with double type.
-      * `enumValue` (`str`) - Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.  Structure is documented below.
+      * `enumValue` (`str`) - Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.
+        Structure is documented below.
       * `fieldName` (`str`) - The identifier for this object. Format specified above.
       * `order` (`float`) - -
         The order of this field with respect to other fields in this tag. For example, a higher value can indicate
@@ -78,7 +80,8 @@ class Tag(pulumi.CustomResource):
                For attaching a tag to a nested column, use `.` to separate the column names. Example:
                `outer_column.inner_column`
         :param pulumi.Input[list] fields: This maps the ID of a tag field to the value of and additional information about that field.
-               Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.  Structure is documented below.
+               Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
+               Structure is documented below.
         :param pulumi.Input[str] parent: The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
                all entries in that group.
         :param pulumi.Input[str] template: The resource name of the tag template that this tag uses. Example:
@@ -91,7 +94,8 @@ class Tag(pulumi.CustomResource):
           * `display_name` (`pulumi.Input[str]`) - -
             The display name of this field
           * `doubleValue` (`pulumi.Input[float]`) - Holds the value for a tag field with double type.
-          * `enumValue` (`pulumi.Input[str]`) - Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.  Structure is documented below.
+          * `enumValue` (`pulumi.Input[str]`) - Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.
+            Structure is documented below.
           * `fieldName` (`pulumi.Input[str]`) - The identifier for this object. Format specified above.
           * `order` (`pulumi.Input[float]`) - -
             The order of this field with respect to other fields in this tag. For example, a higher value can indicate
@@ -147,7 +151,8 @@ class Tag(pulumi.CustomResource):
                For attaching a tag to a nested column, use `.` to separate the column names. Example:
                `outer_column.inner_column`
         :param pulumi.Input[list] fields: This maps the ID of a tag field to the value of and additional information about that field.
-               Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.  Structure is documented below.
+               Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
+               Structure is documented below.
         :param pulumi.Input[str] name: The resource name of the tag in URL format. Example:
                projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}/tags/{tag_id} or
                projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/tags/{tag_id} where tag_id is a system-generated
@@ -165,7 +170,8 @@ class Tag(pulumi.CustomResource):
           * `display_name` (`pulumi.Input[str]`) - -
             The display name of this field
           * `doubleValue` (`pulumi.Input[float]`) - Holds the value for a tag field with double type.
-          * `enumValue` (`pulumi.Input[str]`) - Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.  Structure is documented below.
+          * `enumValue` (`pulumi.Input[str]`) - Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.
+            Structure is documented below.
           * `fieldName` (`pulumi.Input[str]`) - The identifier for this object. Format specified above.
           * `order` (`pulumi.Input[float]`) - -
             The order of this field with respect to other fields in this tag. For example, a higher value can indicate

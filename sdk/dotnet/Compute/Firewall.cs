@@ -36,7 +36,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The list of ALLOW rules specified by this firewall. Each rule
         /// specifies a protocol and port-range tuple that describes a permitted
-        /// connection.  Structure is documented below.
+        /// connection.
+        /// Structure is documented below.
         /// </summary>
         [Output("allows")]
         public Output<ImmutableArray<Outputs.FirewallAllow>> Allows { get; private set; } = null!;
@@ -49,7 +50,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The list of DENY rules specified by this firewall. Each rule specifies
-        /// a protocol and port-range tuple that describes a denied connection.  Structure is documented below.
+        /// a protocol and port-range tuple that describes a denied connection.
+        /// Structure is documented below.
         /// </summary>
         [Output("denies")]
         public Output<ImmutableArray<Outputs.FirewallDeny>> Denies { get; private set; } = null!;
@@ -74,6 +76,7 @@ namespace Pulumi.Gcp.Compute
         /// INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
         /// destinationRanges; For EGRESS traffic, it is NOT supported to specify
         /// sourceRanges OR sourceTags.
+        /// Possible values are `INGRESS` and `EGRESS`.
         /// </summary>
         [Output("direction")]
         public Output<string> Direction { get; private set; } = null!;
@@ -96,7 +99,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// This field denotes the logging options for a particular firewall rule.
-        /// If defined, logging is enabled, and logs will be exported to Cloud Logging.  Structure is documented below.
+        /// If defined, logging is enabled, and logs will be exported to Cloud Logging.
+        /// Structure is documented below.
         /// </summary>
         [Output("logConfig")]
         public Output<Outputs.FirewallLogConfig?> LogConfig { get; private set; } = null!;
@@ -258,7 +262,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The list of ALLOW rules specified by this firewall. Each rule
         /// specifies a protocol and port-range tuple that describes a permitted
-        /// connection.  Structure is documented below.
+        /// connection.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.FirewallAllowArgs> Allows
         {
@@ -271,7 +276,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The list of DENY rules specified by this firewall. Each rule specifies
-        /// a protocol and port-range tuple that describes a denied connection.  Structure is documented below.
+        /// a protocol and port-range tuple that describes a denied connection.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.FirewallDenyArgs> Denies
         {
@@ -305,6 +311,7 @@ namespace Pulumi.Gcp.Compute
         /// INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
         /// destinationRanges; For EGRESS traffic, it is NOT supported to specify
         /// sourceRanges OR sourceTags.
+        /// Possible values are `INGRESS` and `EGRESS`.
         /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }
@@ -327,7 +334,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// This field denotes the logging options for a particular firewall rule.
-        /// If defined, logging is enabled, and logs will be exported to Cloud Logging.  Structure is documented below.
+        /// If defined, logging is enabled, and logs will be exported to Cloud Logging.
+        /// Structure is documented below.
         /// </summary>
         [Input("logConfig")]
         public Input<Inputs.FirewallLogConfigArgs>? LogConfig { get; set; }
@@ -474,7 +482,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The list of ALLOW rules specified by this firewall. Each rule
         /// specifies a protocol and port-range tuple that describes a permitted
-        /// connection.  Structure is documented below.
+        /// connection.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.FirewallAllowGetArgs> Allows
         {
@@ -493,7 +502,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The list of DENY rules specified by this firewall. Each rule specifies
-        /// a protocol and port-range tuple that describes a denied connection.  Structure is documented below.
+        /// a protocol and port-range tuple that describes a denied connection.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.FirewallDenyGetArgs> Denies
         {
@@ -527,6 +537,7 @@ namespace Pulumi.Gcp.Compute
         /// INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
         /// destinationRanges; For EGRESS traffic, it is NOT supported to specify
         /// sourceRanges OR sourceTags.
+        /// Possible values are `INGRESS` and `EGRESS`.
         /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }
@@ -549,7 +560,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// This field denotes the logging options for a particular firewall rule.
-        /// If defined, logging is enabled, and logs will be exported to Cloud Logging.  Structure is documented below.
+        /// If defined, logging is enabled, and logs will be exported to Cloud Logging.
+        /// Structure is documented below.
         /// </summary>
         [Input("logConfig")]
         public Input<Inputs.FirewallLogConfigGetArgs>? LogConfig { get; set; }

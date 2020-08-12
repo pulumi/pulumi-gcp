@@ -38,7 +38,8 @@ type DicomStore struct {
 	// The resource name for the DicomStore.
 	// ** Changing this property may recreate the Dicom store (removing all data) **
 	Name pulumi.StringOutput `pulumi:"name"`
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	NotificationConfig DicomStoreNotificationConfigPtrOutput `pulumi:"notificationConfig"`
 	// The fully qualified name of this dataset
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -90,7 +91,8 @@ type dicomStoreState struct {
 	// The resource name for the DicomStore.
 	// ** Changing this property may recreate the Dicom store (removing all data) **
 	Name *string `pulumi:"name"`
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	NotificationConfig *DicomStoreNotificationConfig `pulumi:"notificationConfig"`
 	// The fully qualified name of this dataset
 	SelfLink *string `pulumi:"selfLink"`
@@ -112,7 +114,8 @@ type DicomStoreState struct {
 	// The resource name for the DicomStore.
 	// ** Changing this property may recreate the Dicom store (removing all data) **
 	Name pulumi.StringPtrInput
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	NotificationConfig DicomStoreNotificationConfigPtrInput
 	// The fully qualified name of this dataset
 	SelfLink pulumi.StringPtrInput
@@ -138,7 +141,8 @@ type dicomStoreArgs struct {
 	// The resource name for the DicomStore.
 	// ** Changing this property may recreate the Dicom store (removing all data) **
 	Name *string `pulumi:"name"`
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	NotificationConfig *DicomStoreNotificationConfig `pulumi:"notificationConfig"`
 }
 
@@ -159,7 +163,8 @@ type DicomStoreArgs struct {
 	// The resource name for the DicomStore.
 	// ** Changing this property may recreate the Dicom store (removing all data) **
 	Name pulumi.StringPtrInput
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	NotificationConfig DicomStoreNotificationConfigPtrInput
 }
 

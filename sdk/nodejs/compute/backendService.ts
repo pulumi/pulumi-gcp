@@ -59,16 +59,19 @@ export class BackendService extends pulumi.CustomResource {
      */
     public readonly affinityCookieTtlSec!: pulumi.Output<number | undefined>;
     /**
-     * The set of backends that serve this BackendService.  Structure is documented below.
+     * The set of backends that serve this BackendService.
+     * Structure is documented below.
      */
     public readonly backends!: pulumi.Output<outputs.compute.BackendServiceBackend[] | undefined>;
     /**
-     * Cloud CDN configuration for this BackendService.  Structure is documented below.
+     * Cloud CDN configuration for this BackendService.
+     * Structure is documented below.
      */
     public readonly cdnPolicy!: pulumi.Output<outputs.compute.BackendServiceCdnPolicy>;
     /**
      * Settings controlling the volume of connections to a backend service. This field
-     * is applicable only when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.  Structure is documented below.
+     * is applicable only when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
+     * Structure is documented below.
      */
     public readonly circuitBreakers!: pulumi.Output<outputs.compute.BackendServiceCircuitBreakers | undefined>;
     /**
@@ -84,7 +87,8 @@ export class BackendService extends pulumi.CustomResource {
      * destination service. This field specifies parameters that control consistent
      * hashing. This field only applies if the loadBalancingScheme is set to
      * INTERNAL_SELF_MANAGED. This field is only applicable when localityLbPolicy is
-     * set to MAGLEV or RING_HASH.  Structure is documented below.
+     * set to MAGLEV or RING_HASH.
+     * Structure is documented below.
      */
     public readonly consistentHash!: pulumi.Output<outputs.compute.BackendServiceConsistentHash | undefined>;
     /**
@@ -118,13 +122,16 @@ export class BackendService extends pulumi.CustomResource {
      */
     public readonly healthChecks!: pulumi.Output<string | undefined>;
     /**
-     * Settings for enabling Cloud Identity Aware Proxy  Structure is documented below.
+     * Settings for enabling Cloud Identity Aware Proxy
+     * Structure is documented below.
      */
     public readonly iap!: pulumi.Output<outputs.compute.BackendServiceIap | undefined>;
     /**
      * Indicates whether the backend service will be used with internal or
      * external load balancing. A backend service created for one type of
      * load balancing cannot be used with the other.
+     * Default value is `EXTERNAL`.
+     * Possible values are `EXTERNAL` and `INTERNAL_SELF_MANAGED`.
      */
     public readonly loadBalancingScheme!: pulumi.Output<string | undefined>;
     /**
@@ -150,11 +157,13 @@ export class BackendService extends pulumi.CustomResource {
      * Maglev, refer to https://ai.google/research/pubs/pub44824
      * This field is applicable only when the loadBalancingScheme is set to
      * INTERNAL_SELF_MANAGED.
+     * Possible values are `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, and `MAGLEV`.
      */
     public readonly localityLbPolicy!: pulumi.Output<string | undefined>;
     /**
      * This field denotes the logging options for the load balancer traffic served by this backend service.
-     * If logging is enabled, logs will be exported to Stackdriver.  Structure is documented below.
+     * If logging is enabled, logs will be exported to Stackdriver.
+     * Structure is documented below.
      */
     public readonly logConfig!: pulumi.Output<outputs.compute.BackendServiceLogConfig>;
     /**
@@ -164,7 +173,8 @@ export class BackendService extends pulumi.CustomResource {
     /**
      * Settings controlling eviction of unhealthy hosts from the load balancing pool.
      * This field is applicable only when the loadBalancingScheme is set
-     * to INTERNAL_SELF_MANAGED.  Structure is documented below.
+     * to INTERNAL_SELF_MANAGED.
+     * Structure is documented below.
      */
     public readonly outlierDetection!: pulumi.Output<outputs.compute.BackendServiceOutlierDetection | undefined>;
     /**
@@ -182,6 +192,7 @@ export class BackendService extends pulumi.CustomResource {
      * The protocol this BackendService uses to communicate with backends.
      * The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
      * types and may result in errors if used with the GA API.
+     * Possible values are `HTTP`, `HTTPS`, `HTTP2`, `TCP`, and `SSL`.
      */
     public readonly protocol!: pulumi.Output<string>;
     /**
@@ -195,6 +206,7 @@ export class BackendService extends pulumi.CustomResource {
     /**
      * Type of session affinity to use. The default is NONE. Session affinity is
      * not applicable if the protocol is UDP.
+     * Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
      */
     public readonly sessionAffinity!: pulumi.Output<string>;
     /**
@@ -292,16 +304,19 @@ export interface BackendServiceState {
      */
     readonly affinityCookieTtlSec?: pulumi.Input<number>;
     /**
-     * The set of backends that serve this BackendService.  Structure is documented below.
+     * The set of backends that serve this BackendService.
+     * Structure is documented below.
      */
     readonly backends?: pulumi.Input<pulumi.Input<inputs.compute.BackendServiceBackend>[]>;
     /**
-     * Cloud CDN configuration for this BackendService.  Structure is documented below.
+     * Cloud CDN configuration for this BackendService.
+     * Structure is documented below.
      */
     readonly cdnPolicy?: pulumi.Input<inputs.compute.BackendServiceCdnPolicy>;
     /**
      * Settings controlling the volume of connections to a backend service. This field
-     * is applicable only when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.  Structure is documented below.
+     * is applicable only when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
+     * Structure is documented below.
      */
     readonly circuitBreakers?: pulumi.Input<inputs.compute.BackendServiceCircuitBreakers>;
     /**
@@ -317,7 +332,8 @@ export interface BackendServiceState {
      * destination service. This field specifies parameters that control consistent
      * hashing. This field only applies if the loadBalancingScheme is set to
      * INTERNAL_SELF_MANAGED. This field is only applicable when localityLbPolicy is
-     * set to MAGLEV or RING_HASH.  Structure is documented below.
+     * set to MAGLEV or RING_HASH.
+     * Structure is documented below.
      */
     readonly consistentHash?: pulumi.Input<inputs.compute.BackendServiceConsistentHash>;
     /**
@@ -351,13 +367,16 @@ export interface BackendServiceState {
      */
     readonly healthChecks?: pulumi.Input<string>;
     /**
-     * Settings for enabling Cloud Identity Aware Proxy  Structure is documented below.
+     * Settings for enabling Cloud Identity Aware Proxy
+     * Structure is documented below.
      */
     readonly iap?: pulumi.Input<inputs.compute.BackendServiceIap>;
     /**
      * Indicates whether the backend service will be used with internal or
      * external load balancing. A backend service created for one type of
      * load balancing cannot be used with the other.
+     * Default value is `EXTERNAL`.
+     * Possible values are `EXTERNAL` and `INTERNAL_SELF_MANAGED`.
      */
     readonly loadBalancingScheme?: pulumi.Input<string>;
     /**
@@ -383,11 +402,13 @@ export interface BackendServiceState {
      * Maglev, refer to https://ai.google/research/pubs/pub44824
      * This field is applicable only when the loadBalancingScheme is set to
      * INTERNAL_SELF_MANAGED.
+     * Possible values are `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, and `MAGLEV`.
      */
     readonly localityLbPolicy?: pulumi.Input<string>;
     /**
      * This field denotes the logging options for the load balancer traffic served by this backend service.
-     * If logging is enabled, logs will be exported to Stackdriver.  Structure is documented below.
+     * If logging is enabled, logs will be exported to Stackdriver.
+     * Structure is documented below.
      */
     readonly logConfig?: pulumi.Input<inputs.compute.BackendServiceLogConfig>;
     /**
@@ -397,7 +418,8 @@ export interface BackendServiceState {
     /**
      * Settings controlling eviction of unhealthy hosts from the load balancing pool.
      * This field is applicable only when the loadBalancingScheme is set
-     * to INTERNAL_SELF_MANAGED.  Structure is documented below.
+     * to INTERNAL_SELF_MANAGED.
+     * Structure is documented below.
      */
     readonly outlierDetection?: pulumi.Input<inputs.compute.BackendServiceOutlierDetection>;
     /**
@@ -415,6 +437,7 @@ export interface BackendServiceState {
      * The protocol this BackendService uses to communicate with backends.
      * The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
      * types and may result in errors if used with the GA API.
+     * Possible values are `HTTP`, `HTTPS`, `HTTP2`, `TCP`, and `SSL`.
      */
     readonly protocol?: pulumi.Input<string>;
     /**
@@ -428,6 +451,7 @@ export interface BackendServiceState {
     /**
      * Type of session affinity to use. The default is NONE. Session affinity is
      * not applicable if the protocol is UDP.
+     * Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
      */
     readonly sessionAffinity?: pulumi.Input<string>;
     /**
@@ -450,16 +474,19 @@ export interface BackendServiceArgs {
      */
     readonly affinityCookieTtlSec?: pulumi.Input<number>;
     /**
-     * The set of backends that serve this BackendService.  Structure is documented below.
+     * The set of backends that serve this BackendService.
+     * Structure is documented below.
      */
     readonly backends?: pulumi.Input<pulumi.Input<inputs.compute.BackendServiceBackend>[]>;
     /**
-     * Cloud CDN configuration for this BackendService.  Structure is documented below.
+     * Cloud CDN configuration for this BackendService.
+     * Structure is documented below.
      */
     readonly cdnPolicy?: pulumi.Input<inputs.compute.BackendServiceCdnPolicy>;
     /**
      * Settings controlling the volume of connections to a backend service. This field
-     * is applicable only when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.  Structure is documented below.
+     * is applicable only when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
+     * Structure is documented below.
      */
     readonly circuitBreakers?: pulumi.Input<inputs.compute.BackendServiceCircuitBreakers>;
     /**
@@ -475,7 +502,8 @@ export interface BackendServiceArgs {
      * destination service. This field specifies parameters that control consistent
      * hashing. This field only applies if the loadBalancingScheme is set to
      * INTERNAL_SELF_MANAGED. This field is only applicable when localityLbPolicy is
-     * set to MAGLEV or RING_HASH.  Structure is documented below.
+     * set to MAGLEV or RING_HASH.
+     * Structure is documented below.
      */
     readonly consistentHash?: pulumi.Input<inputs.compute.BackendServiceConsistentHash>;
     /**
@@ -501,13 +529,16 @@ export interface BackendServiceArgs {
      */
     readonly healthChecks?: pulumi.Input<string>;
     /**
-     * Settings for enabling Cloud Identity Aware Proxy  Structure is documented below.
+     * Settings for enabling Cloud Identity Aware Proxy
+     * Structure is documented below.
      */
     readonly iap?: pulumi.Input<inputs.compute.BackendServiceIap>;
     /**
      * Indicates whether the backend service will be used with internal or
      * external load balancing. A backend service created for one type of
      * load balancing cannot be used with the other.
+     * Default value is `EXTERNAL`.
+     * Possible values are `EXTERNAL` and `INTERNAL_SELF_MANAGED`.
      */
     readonly loadBalancingScheme?: pulumi.Input<string>;
     /**
@@ -533,11 +564,13 @@ export interface BackendServiceArgs {
      * Maglev, refer to https://ai.google/research/pubs/pub44824
      * This field is applicable only when the loadBalancingScheme is set to
      * INTERNAL_SELF_MANAGED.
+     * Possible values are `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, and `MAGLEV`.
      */
     readonly localityLbPolicy?: pulumi.Input<string>;
     /**
      * This field denotes the logging options for the load balancer traffic served by this backend service.
-     * If logging is enabled, logs will be exported to Stackdriver.  Structure is documented below.
+     * If logging is enabled, logs will be exported to Stackdriver.
+     * Structure is documented below.
      */
     readonly logConfig?: pulumi.Input<inputs.compute.BackendServiceLogConfig>;
     /**
@@ -547,7 +580,8 @@ export interface BackendServiceArgs {
     /**
      * Settings controlling eviction of unhealthy hosts from the load balancing pool.
      * This field is applicable only when the loadBalancingScheme is set
-     * to INTERNAL_SELF_MANAGED.  Structure is documented below.
+     * to INTERNAL_SELF_MANAGED.
+     * Structure is documented below.
      */
     readonly outlierDetection?: pulumi.Input<inputs.compute.BackendServiceOutlierDetection>;
     /**
@@ -565,6 +599,7 @@ export interface BackendServiceArgs {
      * The protocol this BackendService uses to communicate with backends.
      * The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
      * types and may result in errors if used with the GA API.
+     * Possible values are `HTTP`, `HTTPS`, `HTTP2`, `TCP`, and `SSL`.
      */
     readonly protocol?: pulumi.Input<string>;
     /**
@@ -574,6 +609,7 @@ export interface BackendServiceArgs {
     /**
      * Type of session affinity to use. The default is NONE. Session affinity is
      * not applicable if the protocol is UDP.
+     * Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
      */
     readonly sessionAffinity?: pulumi.Input<string>;
     /**

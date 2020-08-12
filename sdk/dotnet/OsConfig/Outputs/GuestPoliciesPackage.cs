@@ -19,6 +19,8 @@ namespace Pulumi.Gcp.OsConfig.Outputs
         /// INSTALLED_KEEP_UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version,
         /// if a higher version of the recipe is assigned to this instance.
         /// REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
+        /// Default value is `INSTALLED`.
+        /// Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
         /// </summary>
         public readonly string? DesiredState;
         /// <summary>
@@ -27,6 +29,8 @@ namespace Pulumi.Gcp.OsConfig.Outputs
         /// the agent attempts to install and remove this package using the default package manager.
         /// This is useful when creating a policy that applies to different types of systems.
         /// The default behavior is ANY.
+        /// Default value is `ANY`.
+        /// Possible values are `ANY`, `APT`, `YUM`, `ZYPPER`, and `GOO`.
         /// </summary>
         public readonly string? Manager;
         /// <summary>

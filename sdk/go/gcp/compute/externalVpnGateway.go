@@ -21,7 +21,8 @@ type ExternalVpnGateway struct {
 
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// A list of interfaces on this external VPN gateway.  Structure is documented below.
+	// A list of interfaces on this external VPN gateway.
+	// Structure is documented below.
 	Interfaces ExternalVpnGatewayInterfaceArrayOutput `pulumi:"interfaces"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -35,6 +36,7 @@ type ExternalVpnGateway struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Indicates the redundancy type of this external VPN gateway
+	// Possible values are `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, and `TWO_IPS_REDUNDANCY`.
 	RedundancyType pulumi.StringPtrOutput `pulumi:"redundancyType"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -70,7 +72,8 @@ func GetExternalVpnGateway(ctx *pulumi.Context,
 type externalVpnGatewayState struct {
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
-	// A list of interfaces on this external VPN gateway.  Structure is documented below.
+	// A list of interfaces on this external VPN gateway.
+	// Structure is documented below.
 	Interfaces []ExternalVpnGatewayInterface `pulumi:"interfaces"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -84,6 +87,7 @@ type externalVpnGatewayState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Indicates the redundancy type of this external VPN gateway
+	// Possible values are `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, and `TWO_IPS_REDUNDANCY`.
 	RedundancyType *string `pulumi:"redundancyType"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -92,7 +96,8 @@ type externalVpnGatewayState struct {
 type ExternalVpnGatewayState struct {
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
-	// A list of interfaces on this external VPN gateway.  Structure is documented below.
+	// A list of interfaces on this external VPN gateway.
+	// Structure is documented below.
 	Interfaces ExternalVpnGatewayInterfaceArrayInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -106,6 +111,7 @@ type ExternalVpnGatewayState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Indicates the redundancy type of this external VPN gateway
+	// Possible values are `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, and `TWO_IPS_REDUNDANCY`.
 	RedundancyType pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
@@ -118,7 +124,8 @@ func (ExternalVpnGatewayState) ElementType() reflect.Type {
 type externalVpnGatewayArgs struct {
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
-	// A list of interfaces on this external VPN gateway.  Structure is documented below.
+	// A list of interfaces on this external VPN gateway.
+	// Structure is documented below.
 	Interfaces []ExternalVpnGatewayInterface `pulumi:"interfaces"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -132,6 +139,7 @@ type externalVpnGatewayArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Indicates the redundancy type of this external VPN gateway
+	// Possible values are `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, and `TWO_IPS_REDUNDANCY`.
 	RedundancyType *string `pulumi:"redundancyType"`
 }
 
@@ -139,7 +147,8 @@ type externalVpnGatewayArgs struct {
 type ExternalVpnGatewayArgs struct {
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
-	// A list of interfaces on this external VPN gateway.  Structure is documented below.
+	// A list of interfaces on this external VPN gateway.
+	// Structure is documented below.
 	Interfaces ExternalVpnGatewayInterfaceArrayInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -153,6 +162,7 @@ type ExternalVpnGatewayArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Indicates the redundancy type of this external VPN gateway
+	// Possible values are `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, and `TWO_IPS_REDUNDANCY`.
 	RedundancyType pulumi.StringPtrInput
 }
 

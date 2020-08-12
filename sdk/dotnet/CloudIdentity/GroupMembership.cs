@@ -24,26 +24,30 @@ namespace Pulumi.Gcp.CloudIdentity
         public Output<string> Group { get; private set; } = null!;
 
         /// <summary>
-        /// EntityKey of the member.  Structure is documented below.
+        /// EntityKey of the member.
+        /// Structure is documented below.
         /// </summary>
         [Output("memberKey")]
         public Output<Outputs.GroupMembershipMemberKey> MemberKey { get; private set; } = null!;
 
         /// <summary>
         /// The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
+        /// Possible values are `OWNER`, `MANAGER`, and `MEMBER`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// EntityKey of the member.  Structure is documented below.
+        /// EntityKey of the member.
+        /// Structure is documented below.
         /// </summary>
         [Output("preferredMemberKey")]
         public Output<Outputs.GroupMembershipPreferredMemberKey> PreferredMemberKey { get; private set; } = null!;
 
         /// <summary>
         /// The MembershipRoles that apply to the Membership.
-        /// Must not contain duplicate MembershipRoles with the same name.  Structure is documented below.
+        /// Must not contain duplicate MembershipRoles with the same name.
+        /// Structure is documented below.
         /// </summary>
         [Output("roles")]
         public Output<ImmutableArray<Outputs.GroupMembershipRole>> Roles { get; private set; } = null!;
@@ -113,13 +117,15 @@ namespace Pulumi.Gcp.CloudIdentity
         public Input<string> Group { get; set; } = null!;
 
         /// <summary>
-        /// EntityKey of the member.  Structure is documented below.
+        /// EntityKey of the member.
+        /// Structure is documented below.
         /// </summary>
         [Input("memberKey")]
         public Input<Inputs.GroupMembershipMemberKeyArgs>? MemberKey { get; set; }
 
         /// <summary>
-        /// EntityKey of the member.  Structure is documented below.
+        /// EntityKey of the member.
+        /// Structure is documented below.
         /// </summary>
         [Input("preferredMemberKey")]
         public Input<Inputs.GroupMembershipPreferredMemberKeyArgs>? PreferredMemberKey { get; set; }
@@ -129,7 +135,8 @@ namespace Pulumi.Gcp.CloudIdentity
 
         /// <summary>
         /// The MembershipRoles that apply to the Membership.
-        /// Must not contain duplicate MembershipRoles with the same name.  Structure is documented below.
+        /// Must not contain duplicate MembershipRoles with the same name.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.GroupMembershipRoleArgs> Roles
         {
@@ -157,19 +164,22 @@ namespace Pulumi.Gcp.CloudIdentity
         public Input<string>? Group { get; set; }
 
         /// <summary>
-        /// EntityKey of the member.  Structure is documented below.
+        /// EntityKey of the member.
+        /// Structure is documented below.
         /// </summary>
         [Input("memberKey")]
         public Input<Inputs.GroupMembershipMemberKeyGetArgs>? MemberKey { get; set; }
 
         /// <summary>
         /// The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
+        /// Possible values are `OWNER`, `MANAGER`, and `MEMBER`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// EntityKey of the member.  Structure is documented below.
+        /// EntityKey of the member.
+        /// Structure is documented below.
         /// </summary>
         [Input("preferredMemberKey")]
         public Input<Inputs.GroupMembershipPreferredMemberKeyGetArgs>? PreferredMemberKey { get; set; }
@@ -179,7 +189,8 @@ namespace Pulumi.Gcp.CloudIdentity
 
         /// <summary>
         /// The MembershipRoles that apply to the Membership.
-        /// Must not contain duplicate MembershipRoles with the same name.  Structure is documented below.
+        /// Must not contain duplicate MembershipRoles with the same name.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.GroupMembershipRoleGetArgs> Roles
         {

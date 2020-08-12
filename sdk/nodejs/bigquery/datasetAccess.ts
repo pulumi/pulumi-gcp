@@ -97,7 +97,8 @@ export class DatasetAccess extends pulumi.CustomResource {
      * executed against that view will have read access to tables in
      * this dataset. The role field is not required when this field is
      * set. If that view is updated by any user, access to the view
-     * needs to be granted again via an update operation.  Structure is documented below.
+     * needs to be granted again via an update operation.
+     * Structure is documented below.
      */
     public readonly view!: pulumi.Output<outputs.bigquery.DatasetAccessView | undefined>;
 
@@ -198,7 +199,8 @@ export interface DatasetAccessState {
      * executed against that view will have read access to tables in
      * this dataset. The role field is not required when this field is
      * set. If that view is updated by any user, access to the view
-     * needs to be granted again via an update operation.  Structure is documented below.
+     * needs to be granted again via an update operation.
+     * Structure is documented below.
      */
     readonly view?: pulumi.Input<inputs.bigquery.DatasetAccessView>;
 }
@@ -253,7 +255,8 @@ export interface DatasetAccessArgs {
      * executed against that view will have read access to tables in
      * this dataset. The role field is not required when this field is
      * set. If that view is updated by any user, access to the view
-     * needs to be granted again via an update operation.  Structure is documented below.
+     * needs to be granted again via an update operation.
+     * Structure is documented below.
      */
     readonly view?: pulumi.Input<inputs.bigquery.DatasetAccessView>;
 }

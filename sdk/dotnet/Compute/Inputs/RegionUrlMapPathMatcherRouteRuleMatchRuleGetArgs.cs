@@ -27,7 +27,8 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// Specifies a list of header match criteria, all of which must match corresponding
-        /// headers in the request.  Structure is documented below.
+        /// headers in the request.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchGetArgs> HeaderMatches
         {
@@ -56,7 +57,8 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// with corresponding labels in the provided metadata. metadataFilters specified
         /// here can be overrides those specified in ForwardingRule that refers to this
         /// UrlMap. metadataFilters only applies to Loadbalancers that have their
-        /// loadBalancingScheme set to INTERNAL_SELF_MANAGED.  Structure is documented below.
+        /// loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterGetArgs> MetadataFilters
         {
@@ -77,7 +79,8 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// Specifies a list of query parameter match criteria, all of which must match
-        /// corresponding query parameters in the request.  Structure is documented below.
+        /// corresponding query parameters in the request.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatchGetArgs> QueryParameterMatches
         {

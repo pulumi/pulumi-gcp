@@ -35,7 +35,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string> BucketName { get; private set; } = null!;
 
         /// <summary>
-        /// Cloud CDN configuration for this Backend Bucket.  Structure is documented below.
+        /// Cloud CDN configuration for this Backend Bucket.
+        /// Structure is documented below.
         /// </summary>
         [Output("cdnPolicy")]
         public Output<Outputs.BackendBucketCdnPolicy> CdnPolicy { get; private set; } = null!;
@@ -137,7 +138,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string> BucketName { get; set; } = null!;
 
         /// <summary>
-        /// Cloud CDN configuration for this Backend Bucket.  Structure is documented below.
+        /// Cloud CDN configuration for this Backend Bucket.
+        /// Structure is documented below.
         /// </summary>
         [Input("cdnPolicy")]
         public Input<Inputs.BackendBucketCdnPolicyArgs>? CdnPolicy { get; set; }
@@ -188,7 +190,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? BucketName { get; set; }
 
         /// <summary>
-        /// Cloud CDN configuration for this Backend Bucket.  Structure is documented below.
+        /// Cloud CDN configuration for this Backend Bucket.
+        /// Structure is documented below.
         /// </summary>
         [Input("cdnPolicy")]
         public Input<Inputs.BackendBucketCdnPolicyGetArgs>? CdnPolicy { get; set; }

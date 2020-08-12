@@ -23,7 +23,8 @@ namespace Pulumi.Gcp.Compute
     public partial class Router : Pulumi.CustomResource
     {
         /// <summary>
-        /// BGP information specific to this router.  Structure is documented below.
+        /// BGP information specific to this router.
+        /// Structure is documented below.
         /// </summary>
         [Output("bgp")]
         public Output<Outputs.RouterBgp?> Bgp { get; private set; } = null!;
@@ -123,7 +124,8 @@ namespace Pulumi.Gcp.Compute
     public sealed class RouterArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// BGP information specific to this router.  Structure is documented below.
+        /// BGP information specific to this router.
+        /// Structure is documented below.
         /// </summary>
         [Input("bgp")]
         public Input<Inputs.RouterBgpArgs>? Bgp { get; set; }
@@ -172,7 +174,8 @@ namespace Pulumi.Gcp.Compute
     public sealed class RouterState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// BGP information specific to this router.  Structure is documented below.
+        /// BGP information specific to this router.
+        /// Structure is documented below.
         /// </summary>
         [Input("bgp")]
         public Input<Inputs.RouterBgpGetArgs>? Bgp { get; set; }

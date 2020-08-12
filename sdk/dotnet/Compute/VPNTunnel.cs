@@ -148,7 +148,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Shared secret used to set the secure session between the Cloud VPN
-        /// gateway and the peer VPN gateway.  **Note**: This property is sensitive and will not be displayed in the plan.
+        /// gateway and the peer VPN gateway.
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         [Output("sharedSecret")]
         public Output<string> SharedSecret { get; private set; } = null!;
@@ -348,7 +349,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Shared secret used to set the secure session between the Cloud VPN
-        /// gateway and the peer VPN gateway.  **Note**: This property is sensitive and will not be displayed in the plan.
+        /// gateway and the peer VPN gateway.
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         [Input("sharedSecret", required: true)]
         public Input<string> SharedSecret { get; set; } = null!;
@@ -521,7 +523,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Shared secret used to set the secure session between the Cloud VPN
-        /// gateway and the peer VPN gateway.  **Note**: This property is sensitive and will not be displayed in the plan.
+        /// gateway and the peer VPN gateway.
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         [Input("sharedSecret")]
         public Input<string>? SharedSecret { get; set; }

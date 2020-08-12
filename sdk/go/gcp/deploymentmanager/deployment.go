@@ -33,6 +33,8 @@ type Deployment struct {
 	// `ACQUIRE`. If set to `ACQUIRE` and resources do not already exist,
 	// the deployment will fail. Note that updating this field does not
 	// actually affect the deployment, just how it is updated.
+	// Default value is `CREATE_OR_ACQUIRE`.
+	// Possible values are `ACQUIRE` and `CREATE_OR_ACQUIRE`.
 	CreatePolicy pulumi.StringPtrOutput `pulumi:"createPolicy"`
 	// Set the policy to use for deleting new resources on update/delete.
 	// Valid values are `DELETE` (default) or `ABANDON`. If `DELETE`,
@@ -40,12 +42,15 @@ type Deployment struct {
 	// `ABANDON`, the resource is only removed from Deployment Manager
 	// and is not actually deleted. Note that updating this field does not
 	// actually change the deployment, just how it is updated.
+	// Default value is `DELETE`.
+	// Possible values are `ABANDON` and `DELETE`.
 	DeletePolicy pulumi.StringPtrOutput `pulumi:"deletePolicy"`
 	// Unique identifier for deployment. Output only.
 	DeploymentId pulumi.StringOutput `pulumi:"deploymentId"`
 	// Optional user-provided description of deployment.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Key-value pairs to apply to this labels.  Structure is documented below.
+	// Key-value pairs to apply to this labels.
+	// Structure is documented below.
 	Labels DeploymentLabelArrayOutput `pulumi:"labels"`
 	// Output only. URL of the manifest representing the last manifest that was successfully deployed.
 	Manifest pulumi.StringOutput `pulumi:"manifest"`
@@ -56,7 +61,7 @@ type Deployment struct {
 	// that are not actually instantiated. This allows you to preview a
 	// deployment. It can be updated to false to actually deploy
 	// with real resources.
-	// ~>**NOTE**: Deployment Manager does not allow update
+	// ~>**NOTE:** Deployment Manager does not allow update
 	// of a deployment in preview (unless updating to preview=false). Thus,
 	// the provider will force-recreate deployments if either preview is updated
 	// to true or if other fields are updated while preview is true.
@@ -67,7 +72,8 @@ type Deployment struct {
 	// Output only. Server defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Parameters that define your deployment, including the deployment
-	// configuration and relevant templates.  Structure is documented below.
+	// configuration and relevant templates.
+	// Structure is documented below.
 	Target DeploymentTargetOutput `pulumi:"target"`
 }
 
@@ -107,6 +113,8 @@ type deploymentState struct {
 	// `ACQUIRE`. If set to `ACQUIRE` and resources do not already exist,
 	// the deployment will fail. Note that updating this field does not
 	// actually affect the deployment, just how it is updated.
+	// Default value is `CREATE_OR_ACQUIRE`.
+	// Possible values are `ACQUIRE` and `CREATE_OR_ACQUIRE`.
 	CreatePolicy *string `pulumi:"createPolicy"`
 	// Set the policy to use for deleting new resources on update/delete.
 	// Valid values are `DELETE` (default) or `ABANDON`. If `DELETE`,
@@ -114,12 +122,15 @@ type deploymentState struct {
 	// `ABANDON`, the resource is only removed from Deployment Manager
 	// and is not actually deleted. Note that updating this field does not
 	// actually change the deployment, just how it is updated.
+	// Default value is `DELETE`.
+	// Possible values are `ABANDON` and `DELETE`.
 	DeletePolicy *string `pulumi:"deletePolicy"`
 	// Unique identifier for deployment. Output only.
 	DeploymentId *string `pulumi:"deploymentId"`
 	// Optional user-provided description of deployment.
 	Description *string `pulumi:"description"`
-	// Key-value pairs to apply to this labels.  Structure is documented below.
+	// Key-value pairs to apply to this labels.
+	// Structure is documented below.
 	Labels []DeploymentLabel `pulumi:"labels"`
 	// Output only. URL of the manifest representing the last manifest that was successfully deployed.
 	Manifest *string `pulumi:"manifest"`
@@ -130,7 +141,7 @@ type deploymentState struct {
 	// that are not actually instantiated. This allows you to preview a
 	// deployment. It can be updated to false to actually deploy
 	// with real resources.
-	// ~>**NOTE**: Deployment Manager does not allow update
+	// ~>**NOTE:** Deployment Manager does not allow update
 	// of a deployment in preview (unless updating to preview=false). Thus,
 	// the provider will force-recreate deployments if either preview is updated
 	// to true or if other fields are updated while preview is true.
@@ -141,7 +152,8 @@ type deploymentState struct {
 	// Output only. Server defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// Parameters that define your deployment, including the deployment
-	// configuration and relevant templates.  Structure is documented below.
+	// configuration and relevant templates.
+	// Structure is documented below.
 	Target *DeploymentTarget `pulumi:"target"`
 }
 
@@ -151,6 +163,8 @@ type DeploymentState struct {
 	// `ACQUIRE`. If set to `ACQUIRE` and resources do not already exist,
 	// the deployment will fail. Note that updating this field does not
 	// actually affect the deployment, just how it is updated.
+	// Default value is `CREATE_OR_ACQUIRE`.
+	// Possible values are `ACQUIRE` and `CREATE_OR_ACQUIRE`.
 	CreatePolicy pulumi.StringPtrInput
 	// Set the policy to use for deleting new resources on update/delete.
 	// Valid values are `DELETE` (default) or `ABANDON`. If `DELETE`,
@@ -158,12 +172,15 @@ type DeploymentState struct {
 	// `ABANDON`, the resource is only removed from Deployment Manager
 	// and is not actually deleted. Note that updating this field does not
 	// actually change the deployment, just how it is updated.
+	// Default value is `DELETE`.
+	// Possible values are `ABANDON` and `DELETE`.
 	DeletePolicy pulumi.StringPtrInput
 	// Unique identifier for deployment. Output only.
 	DeploymentId pulumi.StringPtrInput
 	// Optional user-provided description of deployment.
 	Description pulumi.StringPtrInput
-	// Key-value pairs to apply to this labels.  Structure is documented below.
+	// Key-value pairs to apply to this labels.
+	// Structure is documented below.
 	Labels DeploymentLabelArrayInput
 	// Output only. URL of the manifest representing the last manifest that was successfully deployed.
 	Manifest pulumi.StringPtrInput
@@ -174,7 +191,7 @@ type DeploymentState struct {
 	// that are not actually instantiated. This allows you to preview a
 	// deployment. It can be updated to false to actually deploy
 	// with real resources.
-	// ~>**NOTE**: Deployment Manager does not allow update
+	// ~>**NOTE:** Deployment Manager does not allow update
 	// of a deployment in preview (unless updating to preview=false). Thus,
 	// the provider will force-recreate deployments if either preview is updated
 	// to true or if other fields are updated while preview is true.
@@ -185,7 +202,8 @@ type DeploymentState struct {
 	// Output only. Server defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	// Parameters that define your deployment, including the deployment
-	// configuration and relevant templates.  Structure is documented below.
+	// configuration and relevant templates.
+	// Structure is documented below.
 	Target DeploymentTargetPtrInput
 }
 
@@ -199,6 +217,8 @@ type deploymentArgs struct {
 	// `ACQUIRE`. If set to `ACQUIRE` and resources do not already exist,
 	// the deployment will fail. Note that updating this field does not
 	// actually affect the deployment, just how it is updated.
+	// Default value is `CREATE_OR_ACQUIRE`.
+	// Possible values are `ACQUIRE` and `CREATE_OR_ACQUIRE`.
 	CreatePolicy *string `pulumi:"createPolicy"`
 	// Set the policy to use for deleting new resources on update/delete.
 	// Valid values are `DELETE` (default) or `ABANDON`. If `DELETE`,
@@ -206,10 +226,13 @@ type deploymentArgs struct {
 	// `ABANDON`, the resource is only removed from Deployment Manager
 	// and is not actually deleted. Note that updating this field does not
 	// actually change the deployment, just how it is updated.
+	// Default value is `DELETE`.
+	// Possible values are `ABANDON` and `DELETE`.
 	DeletePolicy *string `pulumi:"deletePolicy"`
 	// Optional user-provided description of deployment.
 	Description *string `pulumi:"description"`
-	// Key-value pairs to apply to this labels.  Structure is documented below.
+	// Key-value pairs to apply to this labels.
+	// Structure is documented below.
 	Labels []DeploymentLabel `pulumi:"labels"`
 	// The name of the template to import, as declared in the YAML
 	// configuration.
@@ -218,7 +241,7 @@ type deploymentArgs struct {
 	// that are not actually instantiated. This allows you to preview a
 	// deployment. It can be updated to false to actually deploy
 	// with real resources.
-	// ~>**NOTE**: Deployment Manager does not allow update
+	// ~>**NOTE:** Deployment Manager does not allow update
 	// of a deployment in preview (unless updating to preview=false). Thus,
 	// the provider will force-recreate deployments if either preview is updated
 	// to true or if other fields are updated while preview is true.
@@ -227,7 +250,8 @@ type deploymentArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Parameters that define your deployment, including the deployment
-	// configuration and relevant templates.  Structure is documented below.
+	// configuration and relevant templates.
+	// Structure is documented below.
 	Target DeploymentTarget `pulumi:"target"`
 }
 
@@ -238,6 +262,8 @@ type DeploymentArgs struct {
 	// `ACQUIRE`. If set to `ACQUIRE` and resources do not already exist,
 	// the deployment will fail. Note that updating this field does not
 	// actually affect the deployment, just how it is updated.
+	// Default value is `CREATE_OR_ACQUIRE`.
+	// Possible values are `ACQUIRE` and `CREATE_OR_ACQUIRE`.
 	CreatePolicy pulumi.StringPtrInput
 	// Set the policy to use for deleting new resources on update/delete.
 	// Valid values are `DELETE` (default) or `ABANDON`. If `DELETE`,
@@ -245,10 +271,13 @@ type DeploymentArgs struct {
 	// `ABANDON`, the resource is only removed from Deployment Manager
 	// and is not actually deleted. Note that updating this field does not
 	// actually change the deployment, just how it is updated.
+	// Default value is `DELETE`.
+	// Possible values are `ABANDON` and `DELETE`.
 	DeletePolicy pulumi.StringPtrInput
 	// Optional user-provided description of deployment.
 	Description pulumi.StringPtrInput
-	// Key-value pairs to apply to this labels.  Structure is documented below.
+	// Key-value pairs to apply to this labels.
+	// Structure is documented below.
 	Labels DeploymentLabelArrayInput
 	// The name of the template to import, as declared in the YAML
 	// configuration.
@@ -257,7 +286,7 @@ type DeploymentArgs struct {
 	// that are not actually instantiated. This allows you to preview a
 	// deployment. It can be updated to false to actually deploy
 	// with real resources.
-	// ~>**NOTE**: Deployment Manager does not allow update
+	// ~>**NOTE:** Deployment Manager does not allow update
 	// of a deployment in preview (unless updating to preview=false). Thus,
 	// the provider will force-recreate deployments if either preview is updated
 	// to true or if other fields are updated while preview is true.
@@ -266,7 +295,8 @@ type DeploymentArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Parameters that define your deployment, including the deployment
-	// configuration and relevant templates.  Structure is documented below.
+	// configuration and relevant templates.
+	// Structure is documented below.
 	Target DeploymentTargetInput
 }
 

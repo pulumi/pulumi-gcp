@@ -30,7 +30,8 @@ type Occurence struct {
 	// the authority to which this attestation is attached is primarily
 	// useful for lookup (how to find this attestation if you already
 	// know the authority and artifact to be verified) and intent (for
-	// which authority this attestation was intended to sign.  Structure is documented below.
+	// which authority this attestation was intended to sign.
+	// Structure is documented below.
 	Attestation OccurenceAttestationOutput `pulumi:"attestation"`
 	// The time when the repository was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -100,7 +101,8 @@ type occurenceState struct {
 	// the authority to which this attestation is attached is primarily
 	// useful for lookup (how to find this attestation if you already
 	// know the authority and artifact to be verified) and intent (for
-	// which authority this attestation was intended to sign.  Structure is documented below.
+	// which authority this attestation was intended to sign.
+	// Structure is documented below.
 	Attestation *OccurenceAttestation `pulumi:"attestation"`
 	// The time when the repository was created.
 	CreateTime *string `pulumi:"createTime"`
@@ -134,7 +136,8 @@ type OccurenceState struct {
 	// the authority to which this attestation is attached is primarily
 	// useful for lookup (how to find this attestation if you already
 	// know the authority and artifact to be verified) and intent (for
-	// which authority this attestation was intended to sign.  Structure is documented below.
+	// which authority this attestation was intended to sign.
+	// Structure is documented below.
 	Attestation OccurenceAttestationPtrInput
 	// The time when the repository was created.
 	CreateTime pulumi.StringPtrInput
@@ -172,7 +175,8 @@ type occurenceArgs struct {
 	// the authority to which this attestation is attached is primarily
 	// useful for lookup (how to find this attestation if you already
 	// know the authority and artifact to be verified) and intent (for
-	// which authority this attestation was intended to sign.  Structure is documented below.
+	// which authority this attestation was intended to sign.
+	// Structure is documented below.
 	Attestation OccurenceAttestation `pulumi:"attestation"`
 	// The analysis note associated with this occurrence, in the form of
 	// projects/[PROJECT]/notes/[NOTE_ID]. This field can be used as a
@@ -198,7 +202,8 @@ type OccurenceArgs struct {
 	// the authority to which this attestation is attached is primarily
 	// useful for lookup (how to find this attestation if you already
 	// know the authority and artifact to be verified) and intent (for
-	// which authority this attestation was intended to sign.  Structure is documented below.
+	// which authority this attestation was intended to sign.
+	// Structure is documented below.
 	Attestation OccurenceAttestationInput
 	// The analysis note associated with this occurrence, in the form of
 	// projects/[PROJECT]/notes/[NOTE_ID]. This field can be used as a

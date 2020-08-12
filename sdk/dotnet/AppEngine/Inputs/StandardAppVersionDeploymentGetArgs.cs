@@ -17,7 +17,8 @@ namespace Pulumi.Gcp.AppEngine.Inputs
 
         /// <summary>
         /// Manifest of the files stored in Google Cloud Storage that are included as part of this version.
-        /// All files must be readable using the credentials supplied with this call.  Structure is documented below.
+        /// All files must be readable using the credentials supplied with this call.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.StandardAppVersionDeploymentFileGetArgs> Files
         {
@@ -26,7 +27,8 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         }
 
         /// <summary>
-        /// Zip File  Structure is documented below.
+        /// Zip File
+        /// Structure is documented below.
         /// </summary>
         [Input("zip")]
         public Input<Inputs.StandardAppVersionDeploymentZipGetArgs>? Zip { get; set; }

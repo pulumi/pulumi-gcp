@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.CloudScheduler.Outputs
         public readonly string? Data;
         /// <summary>
         /// The full resource name for the Cloud Pub/Sub topic to which
-        /// messages will be published when a job is delivered. ~&gt;**NOTE**:
+        /// messages will be published when a job is delivered. ~&gt;**NOTE:**
         /// The topic name must be in the same format as required by PubSub's
         /// PublishRequest.name, e.g. `projects/my-project/topics/my-topic`.
         /// </summary>

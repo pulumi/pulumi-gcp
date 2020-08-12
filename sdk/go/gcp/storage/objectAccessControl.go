@@ -58,6 +58,7 @@ type ObjectAccessControl struct {
 	// The project team associated with the entity
 	ProjectTeam ObjectAccessControlProjectTeamOutput `pulumi:"projectTeam"`
 	// The access permission for the entity.
+	// Possible values are `OWNER` and `READER`.
 	Role pulumi.StringOutput `pulumi:"role"`
 }
 
@@ -126,6 +127,7 @@ type objectAccessControlState struct {
 	// The project team associated with the entity
 	ProjectTeam *ObjectAccessControlProjectTeam `pulumi:"projectTeam"`
 	// The access permission for the entity.
+	// Possible values are `OWNER` and `READER`.
 	Role *string `pulumi:"role"`
 }
 
@@ -155,6 +157,7 @@ type ObjectAccessControlState struct {
 	// The project team associated with the entity
 	ProjectTeam ObjectAccessControlProjectTeamPtrInput
 	// The access permission for the entity.
+	// Possible values are `OWNER` and `READER`.
 	Role pulumi.StringPtrInput
 }
 
@@ -178,6 +181,7 @@ type objectAccessControlArgs struct {
 	// The name of the object to apply the access control to.
 	Object string `pulumi:"object"`
 	// The access permission for the entity.
+	// Possible values are `OWNER` and `READER`.
 	Role string `pulumi:"role"`
 }
 
@@ -198,6 +202,7 @@ type ObjectAccessControlArgs struct {
 	// The name of the object to apply the access control to.
 	Object pulumi.StringInput
 	// The access permission for the entity.
+	// Possible values are `OWNER` and `READER`.
 	Role pulumi.StringInput
 }
 

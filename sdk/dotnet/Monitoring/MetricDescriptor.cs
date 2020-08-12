@@ -35,25 +35,29 @@ namespace Pulumi.Gcp.Monitoring
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.  Structure is documented below.
+        /// The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
+        /// Structure is documented below.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableArray<Outputs.MetricDescriptorLabel>> Labels { get; private set; } = null!;
 
         /// <summary>
         /// The launch stage of the metric definition.
+        /// Possible values are `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
         /// </summary>
         [Output("launchStage")]
         public Output<string?> LaunchStage { get; private set; } = null!;
 
         /// <summary>
-        /// Metadata which can be used to guide usage of the metric.  Structure is documented below.
+        /// Metadata which can be used to guide usage of the metric.
+        /// Structure is documented below.
         /// </summary>
         [Output("metadata")]
         public Output<Outputs.MetricDescriptorMetadata?> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
+        /// Possible values are `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, and `CUMULATIVE`.
         /// </summary>
         [Output("metricKind")]
         public Output<string> MetricKind { get; private set; } = null!;
@@ -110,6 +114,8 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// The type of data that can be assigned to the label.
+        /// Default value is `STRING`.
+        /// Possible values are `STRING`, `BOOL`, and `INT64`.
         /// </summary>
         [Output("valueType")]
         public Output<string> ValueType { get; private set; } = null!;
@@ -176,7 +182,8 @@ namespace Pulumi.Gcp.Monitoring
         private InputList<Inputs.MetricDescriptorLabelArgs>? _labels;
 
         /// <summary>
-        /// The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.  Structure is documented below.
+        /// The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.MetricDescriptorLabelArgs> Labels
         {
@@ -186,18 +193,21 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// The launch stage of the metric definition.
+        /// Possible values are `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
         /// </summary>
         [Input("launchStage")]
         public Input<string>? LaunchStage { get; set; }
 
         /// <summary>
-        /// Metadata which can be used to guide usage of the metric.  Structure is documented below.
+        /// Metadata which can be used to guide usage of the metric.
+        /// Structure is documented below.
         /// </summary>
         [Input("metadata")]
         public Input<Inputs.MetricDescriptorMetadataArgs>? Metadata { get; set; }
 
         /// <summary>
         /// Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
+        /// Possible values are `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, and `CUMULATIVE`.
         /// </summary>
         [Input("metricKind", required: true)]
         public Input<string> MetricKind { get; set; } = null!;
@@ -239,6 +249,8 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// The type of data that can be assigned to the label.
+        /// Default value is `STRING`.
+        /// Possible values are `STRING`, `BOOL`, and `INT64`.
         /// </summary>
         [Input("valueType", required: true)]
         public Input<string> ValueType { get; set; } = null!;
@@ -266,7 +278,8 @@ namespace Pulumi.Gcp.Monitoring
         private InputList<Inputs.MetricDescriptorLabelGetArgs>? _labels;
 
         /// <summary>
-        /// The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.  Structure is documented below.
+        /// The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.MetricDescriptorLabelGetArgs> Labels
         {
@@ -276,18 +289,21 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// The launch stage of the metric definition.
+        /// Possible values are `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
         /// </summary>
         [Input("launchStage")]
         public Input<string>? LaunchStage { get; set; }
 
         /// <summary>
-        /// Metadata which can be used to guide usage of the metric.  Structure is documented below.
+        /// Metadata which can be used to guide usage of the metric.
+        /// Structure is documented below.
         /// </summary>
         [Input("metadata")]
         public Input<Inputs.MetricDescriptorMetadataGetArgs>? Metadata { get; set; }
 
         /// <summary>
         /// Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
+        /// Possible values are `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, and `CUMULATIVE`.
         /// </summary>
         [Input("metricKind")]
         public Input<string>? MetricKind { get; set; }
@@ -350,6 +366,8 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// The type of data that can be assigned to the label.
+        /// Default value is `STRING`.
+        /// Possible values are `STRING`, `BOOL`, and `INT64`.
         /// </summary>
         [Input("valueType")]
         public Input<string>? ValueType { get; set; }

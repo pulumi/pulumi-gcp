@@ -42,11 +42,14 @@ type RegionHealthCheck struct {
 	// A so-far unhealthy instance will be marked healthy after this many
 	// consecutive successes. The default value is 2.
 	HealthyThreshold pulumi.IntPtrOutput `pulumi:"healthyThreshold"`
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	Http2HealthCheck RegionHealthCheckHttp2HealthCheckPtrOutput `pulumi:"http2HealthCheck"`
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	HttpHealthCheck RegionHealthCheckHttpHealthCheckPtrOutput `pulumi:"httpHealthCheck"`
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	HttpsHealthCheck RegionHealthCheckHttpsHealthCheckPtrOutput `pulumi:"httpsHealthCheck"`
 	// Configure logging on this health check.  Structure is documented below.
 	LogConfig RegionHealthCheckLogConfigPtrOutput `pulumi:"logConfig"`
@@ -66,9 +69,11 @@ type RegionHealthCheck struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	SslHealthCheck RegionHealthCheckSslHealthCheckPtrOutput `pulumi:"sslHealthCheck"`
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	TcpHealthCheck RegionHealthCheckTcpHealthCheckPtrOutput `pulumi:"tcpHealthCheck"`
 	// How long (in seconds) to wait before claiming failure.
 	// The default value is 5 seconds.  It is invalid for timeoutSec to have
@@ -120,11 +125,14 @@ type regionHealthCheckState struct {
 	// A so-far unhealthy instance will be marked healthy after this many
 	// consecutive successes. The default value is 2.
 	HealthyThreshold *int `pulumi:"healthyThreshold"`
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	Http2HealthCheck *RegionHealthCheckHttp2HealthCheck `pulumi:"http2HealthCheck"`
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	HttpHealthCheck *RegionHealthCheckHttpHealthCheck `pulumi:"httpHealthCheck"`
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	HttpsHealthCheck *RegionHealthCheckHttpsHealthCheck `pulumi:"httpsHealthCheck"`
 	// Configure logging on this health check.  Structure is documented below.
 	LogConfig *RegionHealthCheckLogConfig `pulumi:"logConfig"`
@@ -144,9 +152,11 @@ type regionHealthCheckState struct {
 	Region *string `pulumi:"region"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	SslHealthCheck *RegionHealthCheckSslHealthCheck `pulumi:"sslHealthCheck"`
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	TcpHealthCheck *RegionHealthCheckTcpHealthCheck `pulumi:"tcpHealthCheck"`
 	// How long (in seconds) to wait before claiming failure.
 	// The default value is 5 seconds.  It is invalid for timeoutSec to have
@@ -171,11 +181,14 @@ type RegionHealthCheckState struct {
 	// A so-far unhealthy instance will be marked healthy after this many
 	// consecutive successes. The default value is 2.
 	HealthyThreshold pulumi.IntPtrInput
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	Http2HealthCheck RegionHealthCheckHttp2HealthCheckPtrInput
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	HttpHealthCheck RegionHealthCheckHttpHealthCheckPtrInput
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	HttpsHealthCheck RegionHealthCheckHttpsHealthCheckPtrInput
 	// Configure logging on this health check.  Structure is documented below.
 	LogConfig RegionHealthCheckLogConfigPtrInput
@@ -195,9 +208,11 @@ type RegionHealthCheckState struct {
 	Region pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	SslHealthCheck RegionHealthCheckSslHealthCheckPtrInput
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	TcpHealthCheck RegionHealthCheckTcpHealthCheckPtrInput
 	// How long (in seconds) to wait before claiming failure.
 	// The default value is 5 seconds.  It is invalid for timeoutSec to have
@@ -224,11 +239,14 @@ type regionHealthCheckArgs struct {
 	// A so-far unhealthy instance will be marked healthy after this many
 	// consecutive successes. The default value is 2.
 	HealthyThreshold *int `pulumi:"healthyThreshold"`
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	Http2HealthCheck *RegionHealthCheckHttp2HealthCheck `pulumi:"http2HealthCheck"`
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	HttpHealthCheck *RegionHealthCheckHttpHealthCheck `pulumi:"httpHealthCheck"`
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	HttpsHealthCheck *RegionHealthCheckHttpsHealthCheck `pulumi:"httpsHealthCheck"`
 	// Configure logging on this health check.  Structure is documented below.
 	LogConfig *RegionHealthCheckLogConfig `pulumi:"logConfig"`
@@ -246,9 +264,11 @@ type regionHealthCheckArgs struct {
 	// The Region in which the created health check should reside.
 	// If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	SslHealthCheck *RegionHealthCheckSslHealthCheck `pulumi:"sslHealthCheck"`
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	TcpHealthCheck *RegionHealthCheckTcpHealthCheck `pulumi:"tcpHealthCheck"`
 	// How long (in seconds) to wait before claiming failure.
 	// The default value is 5 seconds.  It is invalid for timeoutSec to have
@@ -270,11 +290,14 @@ type RegionHealthCheckArgs struct {
 	// A so-far unhealthy instance will be marked healthy after this many
 	// consecutive successes. The default value is 2.
 	HealthyThreshold pulumi.IntPtrInput
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	Http2HealthCheck RegionHealthCheckHttp2HealthCheckPtrInput
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	HttpHealthCheck RegionHealthCheckHttpHealthCheckPtrInput
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	HttpsHealthCheck RegionHealthCheckHttpsHealthCheckPtrInput
 	// Configure logging on this health check.  Structure is documented below.
 	LogConfig RegionHealthCheckLogConfigPtrInput
@@ -292,9 +315,11 @@ type RegionHealthCheckArgs struct {
 	// The Region in which the created health check should reside.
 	// If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	SslHealthCheck RegionHealthCheckSslHealthCheckPtrInput
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	TcpHealthCheck RegionHealthCheckTcpHealthCheckPtrInput
 	// How long (in seconds) to wait before claiming failure.
 	// The default value is 5 seconds.  It is invalid for timeoutSec to have

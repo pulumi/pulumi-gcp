@@ -48,8 +48,10 @@ type GlobalForwardingRule struct {
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
 	// The IP protocol to which this rule applies. When the load balancing scheme is
 	// INTERNAL_SELF_MANAGED, only TCP is valid.
+	// Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
 	IpProtocol pulumi.StringOutput `pulumi:"ipProtocol"`
 	// The IP Version that will be used by this global forwarding rule.
+	// Possible values are `IPV4` and `IPV6`.
 	IpVersion pulumi.StringPtrOutput `pulumi:"ipVersion"`
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
@@ -62,6 +64,8 @@ type GlobalForwardingRule struct {
 	// External TCP/UDP LB, SSL Proxy)
 	// NOTE: Currently global forwarding rules cannot be used for INTERNAL
 	// load balancing.
+	// Default value is `EXTERNAL`.
+	// Possible values are `EXTERNAL` and `INTERNAL_SELF_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrOutput `pulumi:"loadBalancingScheme"`
 	// Opaque filter criteria used by Loadbalancer to restrict routing
 	// configuration to a limited set xDS compliant clients. In their xDS
@@ -76,7 +80,8 @@ type GlobalForwardingRule struct {
 	// metadataFilters specified here can be overridden by those specified in
 	// the UrlMap that this ForwardingRule references.
 	// metadataFilters only applies to Loadbalancers that have their
-	// loadBalancingScheme set to INTERNAL_SELF_MANAGED.  Structure is documented below.
+	// loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	// Structure is documented below.
 	MetadataFilters GlobalForwardingRuleMetadataFilterArrayOutput `pulumi:"metadataFilters"`
 	// Name of the metadata label. The length must be between
 	// 1 and 1024 characters, inclusive.
@@ -173,8 +178,10 @@ type globalForwardingRuleState struct {
 	IpAddress *string `pulumi:"ipAddress"`
 	// The IP protocol to which this rule applies. When the load balancing scheme is
 	// INTERNAL_SELF_MANAGED, only TCP is valid.
+	// Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
 	IpProtocol *string `pulumi:"ipProtocol"`
 	// The IP Version that will be used by this global forwarding rule.
+	// Possible values are `IPV4` and `IPV6`.
 	IpVersion *string `pulumi:"ipVersion"`
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
@@ -187,6 +194,8 @@ type globalForwardingRuleState struct {
 	// External TCP/UDP LB, SSL Proxy)
 	// NOTE: Currently global forwarding rules cannot be used for INTERNAL
 	// load balancing.
+	// Default value is `EXTERNAL`.
+	// Possible values are `EXTERNAL` and `INTERNAL_SELF_MANAGED`.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// Opaque filter criteria used by Loadbalancer to restrict routing
 	// configuration to a limited set xDS compliant clients. In their xDS
@@ -201,7 +210,8 @@ type globalForwardingRuleState struct {
 	// metadataFilters specified here can be overridden by those specified in
 	// the UrlMap that this ForwardingRule references.
 	// metadataFilters only applies to Loadbalancers that have their
-	// loadBalancingScheme set to INTERNAL_SELF_MANAGED.  Structure is documented below.
+	// loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	// Structure is documented below.
 	MetadataFilters []GlobalForwardingRuleMetadataFilter `pulumi:"metadataFilters"`
 	// Name of the metadata label. The length must be between
 	// 1 and 1024 characters, inclusive.
@@ -268,8 +278,10 @@ type GlobalForwardingRuleState struct {
 	IpAddress pulumi.StringPtrInput
 	// The IP protocol to which this rule applies. When the load balancing scheme is
 	// INTERNAL_SELF_MANAGED, only TCP is valid.
+	// Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
 	IpProtocol pulumi.StringPtrInput
 	// The IP Version that will be used by this global forwarding rule.
+	// Possible values are `IPV4` and `IPV6`.
 	IpVersion pulumi.StringPtrInput
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint pulumi.StringPtrInput
@@ -282,6 +294,8 @@ type GlobalForwardingRuleState struct {
 	// External TCP/UDP LB, SSL Proxy)
 	// NOTE: Currently global forwarding rules cannot be used for INTERNAL
 	// load balancing.
+	// Default value is `EXTERNAL`.
+	// Possible values are `EXTERNAL` and `INTERNAL_SELF_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrInput
 	// Opaque filter criteria used by Loadbalancer to restrict routing
 	// configuration to a limited set xDS compliant clients. In their xDS
@@ -296,7 +310,8 @@ type GlobalForwardingRuleState struct {
 	// metadataFilters specified here can be overridden by those specified in
 	// the UrlMap that this ForwardingRule references.
 	// metadataFilters only applies to Loadbalancers that have their
-	// loadBalancingScheme set to INTERNAL_SELF_MANAGED.  Structure is documented below.
+	// loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	// Structure is documented below.
 	MetadataFilters GlobalForwardingRuleMetadataFilterArrayInput
 	// Name of the metadata label. The length must be between
 	// 1 and 1024 characters, inclusive.
@@ -367,8 +382,10 @@ type globalForwardingRuleArgs struct {
 	IpAddress *string `pulumi:"ipAddress"`
 	// The IP protocol to which this rule applies. When the load balancing scheme is
 	// INTERNAL_SELF_MANAGED, only TCP is valid.
+	// Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
 	IpProtocol *string `pulumi:"ipProtocol"`
 	// The IP Version that will be used by this global forwarding rule.
+	// Possible values are `IPV4` and `IPV6`.
 	IpVersion *string `pulumi:"ipVersion"`
 	// Labels to apply to this forwarding rule.  A list of key->value pairs.
 	Labels map[string]string `pulumi:"labels"`
@@ -379,6 +396,8 @@ type globalForwardingRuleArgs struct {
 	// External TCP/UDP LB, SSL Proxy)
 	// NOTE: Currently global forwarding rules cannot be used for INTERNAL
 	// load balancing.
+	// Default value is `EXTERNAL`.
+	// Possible values are `EXTERNAL` and `INTERNAL_SELF_MANAGED`.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// Opaque filter criteria used by Loadbalancer to restrict routing
 	// configuration to a limited set xDS compliant clients. In their xDS
@@ -393,7 +412,8 @@ type globalForwardingRuleArgs struct {
 	// metadataFilters specified here can be overridden by those specified in
 	// the UrlMap that this ForwardingRule references.
 	// metadataFilters only applies to Loadbalancers that have their
-	// loadBalancingScheme set to INTERNAL_SELF_MANAGED.  Structure is documented below.
+	// loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	// Structure is documented below.
 	MetadataFilters []GlobalForwardingRuleMetadataFilter `pulumi:"metadataFilters"`
 	// Name of the metadata label. The length must be between
 	// 1 and 1024 characters, inclusive.
@@ -459,8 +479,10 @@ type GlobalForwardingRuleArgs struct {
 	IpAddress pulumi.StringPtrInput
 	// The IP protocol to which this rule applies. When the load balancing scheme is
 	// INTERNAL_SELF_MANAGED, only TCP is valid.
+	// Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
 	IpProtocol pulumi.StringPtrInput
 	// The IP Version that will be used by this global forwarding rule.
+	// Possible values are `IPV4` and `IPV6`.
 	IpVersion pulumi.StringPtrInput
 	// Labels to apply to this forwarding rule.  A list of key->value pairs.
 	Labels pulumi.StringMapInput
@@ -471,6 +493,8 @@ type GlobalForwardingRuleArgs struct {
 	// External TCP/UDP LB, SSL Proxy)
 	// NOTE: Currently global forwarding rules cannot be used for INTERNAL
 	// load balancing.
+	// Default value is `EXTERNAL`.
+	// Possible values are `EXTERNAL` and `INTERNAL_SELF_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrInput
 	// Opaque filter criteria used by Loadbalancer to restrict routing
 	// configuration to a limited set xDS compliant clients. In their xDS
@@ -485,7 +509,8 @@ type GlobalForwardingRuleArgs struct {
 	// metadataFilters specified here can be overridden by those specified in
 	// the UrlMap that this ForwardingRule references.
 	// metadataFilters only applies to Loadbalancers that have their
-	// loadBalancingScheme set to INTERNAL_SELF_MANAGED.  Structure is documented below.
+	// loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	// Structure is documented below.
 	MetadataFilters GlobalForwardingRuleMetadataFilterArrayInput
 	// Name of the metadata label. The length must be between
 	// 1 and 1024 characters, inclusive.

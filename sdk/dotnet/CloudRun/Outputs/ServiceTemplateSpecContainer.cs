@@ -44,11 +44,13 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         /// All invalid keys will be reported as an event when the container is starting.
         /// When a key exists in multiple sources, the value associated with the last source will
         /// take precedence. Values defined by an Env with a duplicate key will take
-        /// precedence.  Structure is documented below.
+        /// precedence.
+        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ServiceTemplateSpecContainerEnvFrom> EnvFroms;
         /// <summary>
-        /// List of environment variables to set in the container.  Structure is documented below.
+        /// List of environment variables to set in the container.
+        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ServiceTemplateSpecContainerEnv> Envs;
         /// <summary>
@@ -60,13 +62,15 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         /// <summary>
         /// List of open ports in the container.
         /// More Info:
-        /// https://cloud.google.com/run/docs/reference/rest/v1/RevisionSpec#ContainerPort  Structure is documented below.
+        /// https://cloud.google.com/run/docs/reference/rest/v1/RevisionSpec#ContainerPort
+        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ServiceTemplateSpecContainerPort> Ports;
         /// <summary>
         /// Compute Resources required by this container. Used to set values such as max memory
         /// More info:
-        /// https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources  Structure is documented below.
+        /// https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.ServiceTemplateSpecContainerResources? Resources;
         /// <summary>

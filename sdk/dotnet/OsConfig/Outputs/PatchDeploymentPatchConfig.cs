@@ -14,35 +14,43 @@ namespace Pulumi.Gcp.OsConfig.Outputs
     public sealed class PatchDeploymentPatchConfig
     {
         /// <summary>
-        /// Apt update settings. Use this setting to override the default apt patch rules.  Structure is documented below.
+        /// Apt update settings. Use this setting to override the default apt patch rules.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.PatchDeploymentPatchConfigApt? Apt;
         /// <summary>
-        /// goo update settings. Use this setting to override the default goo patch rules.  Structure is documented below.
+        /// goo update settings. Use this setting to override the default goo patch rules.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.PatchDeploymentPatchConfigGoo? Goo;
         /// <summary>
-        /// The ExecStep to run after the patch update.  Structure is documented below.
+        /// The ExecStep to run after the patch update.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.PatchDeploymentPatchConfigPostStep? PostStep;
         /// <summary>
-        /// The ExecStep to run before the patch update.  Structure is documented below.
+        /// The ExecStep to run before the patch update.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.PatchDeploymentPatchConfigPreStep? PreStep;
         /// <summary>
         /// Post-patch reboot settings.
+        /// Possible values are `DEFAULT`, `ALWAYS`, and `NEVER`.
         /// </summary>
         public readonly string? RebootConfig;
         /// <summary>
-        /// Windows update settings. Use this setting to override the default Windows patch rules.  Structure is documented below.
+        /// Windows update settings. Use this setting to override the default Windows patch rules.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.PatchDeploymentPatchConfigWindowsUpdate? WindowsUpdate;
         /// <summary>
-        /// Yum update settings. Use this setting to override the default yum patch rules.  Structure is documented below.
+        /// Yum update settings. Use this setting to override the default yum patch rules.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.PatchDeploymentPatchConfigYum? Yum;
         /// <summary>
-        /// zypper update settings. Use this setting to override the default zypper patch rules.  Structure is documented below.
+        /// zypper update settings. Use this setting to override the default zypper patch rules.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.PatchDeploymentPatchConfigZypper? Zypper;
 

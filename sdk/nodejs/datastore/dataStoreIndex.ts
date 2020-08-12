@@ -47,6 +47,8 @@ export class DataStoreIndex extends pulumi.CustomResource {
 
     /**
      * Policy for including ancestors in the index.
+     * Default value is `NONE`.
+     * Possible values are `NONE` and `ALL_ANCESTORS`.
      */
     public readonly ancestor!: pulumi.Output<string | undefined>;
     /**
@@ -63,7 +65,8 @@ export class DataStoreIndex extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * An ordered list of properties to index on.  Structure is documented below.
+     * An ordered list of properties to index on.
+     * Structure is documented below.
      */
     public readonly properties!: pulumi.Output<outputs.datastore.DataStoreIndexProperty[] | undefined>;
 
@@ -112,6 +115,8 @@ export class DataStoreIndex extends pulumi.CustomResource {
 export interface DataStoreIndexState {
     /**
      * Policy for including ancestors in the index.
+     * Default value is `NONE`.
+     * Possible values are `NONE` and `ALL_ANCESTORS`.
      */
     readonly ancestor?: pulumi.Input<string>;
     /**
@@ -128,7 +133,8 @@ export interface DataStoreIndexState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * An ordered list of properties to index on.  Structure is documented below.
+     * An ordered list of properties to index on.
+     * Structure is documented below.
      */
     readonly properties?: pulumi.Input<pulumi.Input<inputs.datastore.DataStoreIndexProperty>[]>;
 }
@@ -139,6 +145,8 @@ export interface DataStoreIndexState {
 export interface DataStoreIndexArgs {
     /**
      * Policy for including ancestors in the index.
+     * Default value is `NONE`.
+     * Possible values are `NONE` and `ALL_ANCESTORS`.
      */
     readonly ancestor?: pulumi.Input<string>;
     /**
@@ -151,7 +159,8 @@ export interface DataStoreIndexArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * An ordered list of properties to index on.  Structure is documented below.
+     * An ordered list of properties to index on.
+     * Structure is documented below.
      */
     readonly properties?: pulumi.Input<pulumi.Input<inputs.datastore.DataStoreIndexProperty>[]>;
 }

@@ -60,7 +60,8 @@ export class Topic extends pulumi.CustomResource {
     /**
      * Policy constraining the set of Google Cloud Platform regions where
      * messages published to the topic may be stored. If not present, then no
-     * constraints are in effect.  Structure is documented below.
+     * constraints are in effect.
+     * Structure is documented below.
      */
     public readonly messageStoragePolicy!: pulumi.Output<outputs.pubsub.TopicMessageStoragePolicy>;
     /**
@@ -128,7 +129,8 @@ export interface TopicState {
     /**
      * Policy constraining the set of Google Cloud Platform regions where
      * messages published to the topic may be stored. If not present, then no
-     * constraints are in effect.  Structure is documented below.
+     * constraints are in effect.
+     * Structure is documented below.
      */
     readonly messageStoragePolicy?: pulumi.Input<inputs.pubsub.TopicMessageStoragePolicy>;
     /**
@@ -161,7 +163,8 @@ export interface TopicArgs {
     /**
      * Policy constraining the set of Google Cloud Platform regions where
      * messages published to the topic may be stored. If not present, then no
-     * constraints are in effect.  Structure is documented below.
+     * constraints are in effect.
+     * Structure is documented below.
      */
     readonly messageStoragePolicy?: pulumi.Input<inputs.pubsub.TopicMessageStoragePolicy>;
     /**

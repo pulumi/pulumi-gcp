@@ -26,7 +26,8 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<int>? InUseCount { get; set; }
 
         /// <summary>
-        /// The instance properties for the reservation.  Structure is documented below.
+        /// The instance properties for the reservation.
+        /// Structure is documented below.
         /// </summary>
         [Input("instanceProperties", required: true)]
         public Input<Inputs.ReservationSpecificReservationInstancePropertiesArgs> InstanceProperties { get; set; } = null!;

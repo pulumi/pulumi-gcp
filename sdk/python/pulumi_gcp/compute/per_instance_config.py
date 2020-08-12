@@ -38,16 +38,22 @@ class PerInstanceConfig(pulumi.CustomResource):
     """
     preserved_state: pulumi.Output[dict]
     """
-    The preserved state for this instance.  Structure is documented below.
+    The preserved state for this instance.
+    Structure is documented below.
 
-      * `disks` (`list`) - Stateful disks for the instance.  Structure is documented below.
+      * `disks` (`list`) - Stateful disks for the instance.
+        Structure is documented below.
         * `deleteRule` (`str`) - A value that prescribes what should happen to the stateful disk when the VM instance is deleted.
           The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
           `NEVER` detatch the disk when the VM is deleted, but not delete the disk.
           `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently
           deleted from the instance group.
+          Default value is `NEVER`.
+          Possible values are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
         * `device_name` (`str`) - A unique device name that is reflected into the /dev/ tree of a Linux operating system running within the instance.
         * `mode` (`str`) - The mode of the disk.
+          Default value is `READ_WRITE`.
+          Possible values are `READ_ONLY` and `READ_WRITE`.
         * `source` (`str`) - The URI of an existing persistent disk to attach under the specified device-name in the format
           `projects/project-id/zones/zone/disks/disk-name`.
 
@@ -97,7 +103,8 @@ class PerInstanceConfig(pulumi.CustomResource):
                * REFRESH
                * NONE
         :param pulumi.Input[str] name: The name for this per-instance config and its corresponding instance.
-        :param pulumi.Input[dict] preserved_state: The preserved state for this instance.  Structure is documented below.
+        :param pulumi.Input[dict] preserved_state: The preserved state for this instance.
+               Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[bool] remove_instance_state_on_destroy: When true, deleting this config will immediately remove any specified state from the underlying instance.
@@ -107,14 +114,19 @@ class PerInstanceConfig(pulumi.CustomResource):
 
         The **preserved_state** object supports the following:
 
-          * `disks` (`pulumi.Input[list]`) - Stateful disks for the instance.  Structure is documented below.
+          * `disks` (`pulumi.Input[list]`) - Stateful disks for the instance.
+            Structure is documented below.
             * `deleteRule` (`pulumi.Input[str]`) - A value that prescribes what should happen to the stateful disk when the VM instance is deleted.
               The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
               `NEVER` detatch the disk when the VM is deleted, but not delete the disk.
               `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently
               deleted from the instance group.
+              Default value is `NEVER`.
+              Possible values are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
             * `device_name` (`pulumi.Input[str]`) - A unique device name that is reflected into the /dev/ tree of a Linux operating system running within the instance.
             * `mode` (`pulumi.Input[str]`) - The mode of the disk.
+              Default value is `READ_WRITE`.
+              Possible values are `READ_ONLY` and `READ_WRITE`.
             * `source` (`pulumi.Input[str]`) - The URI of an existing persistent disk to attach under the specified device-name in the format
               `projects/project-id/zones/zone/disks/disk-name`.
 
@@ -178,7 +190,8 @@ class PerInstanceConfig(pulumi.CustomResource):
                * REFRESH
                * NONE
         :param pulumi.Input[str] name: The name for this per-instance config and its corresponding instance.
-        :param pulumi.Input[dict] preserved_state: The preserved state for this instance.  Structure is documented below.
+        :param pulumi.Input[dict] preserved_state: The preserved state for this instance.
+               Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[bool] remove_instance_state_on_destroy: When true, deleting this config will immediately remove any specified state from the underlying instance.
@@ -188,14 +201,19 @@ class PerInstanceConfig(pulumi.CustomResource):
 
         The **preserved_state** object supports the following:
 
-          * `disks` (`pulumi.Input[list]`) - Stateful disks for the instance.  Structure is documented below.
+          * `disks` (`pulumi.Input[list]`) - Stateful disks for the instance.
+            Structure is documented below.
             * `deleteRule` (`pulumi.Input[str]`) - A value that prescribes what should happen to the stateful disk when the VM instance is deleted.
               The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
               `NEVER` detatch the disk when the VM is deleted, but not delete the disk.
               `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently
               deleted from the instance group.
+              Default value is `NEVER`.
+              Possible values are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
             * `device_name` (`pulumi.Input[str]`) - A unique device name that is reflected into the /dev/ tree of a Linux operating system running within the instance.
             * `mode` (`pulumi.Input[str]`) - The mode of the disk.
+              Default value is `READ_WRITE`.
+              Possible values are `READ_ONLY` and `READ_WRITE`.
             * `source` (`pulumi.Input[str]`) - The URI of an existing persistent disk to attach under the specified device-name in the format
               `projects/project-id/zones/zone/disks/disk-name`.
 

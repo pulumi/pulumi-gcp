@@ -20,11 +20,13 @@ namespace Pulumi.Gcp.AppEngine.Outputs
         /// </summary>
         public readonly string? CoolDownPeriod;
         /// <summary>
-        /// Target scaling by CPU usage.  Structure is documented below.
+        /// Target scaling by CPU usage.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.FlexibleAppVersionAutomaticScalingCpuUtilization CpuUtilization;
         /// <summary>
-        /// Target scaling by disk usage.  Structure is documented below.
+        /// Target scaling by disk usage.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.FlexibleAppVersionAutomaticScalingDiskUtilization? DiskUtilization;
         /// <summary>
@@ -57,11 +59,13 @@ namespace Pulumi.Gcp.AppEngine.Outputs
         /// </summary>
         public readonly int? MinTotalInstances;
         /// <summary>
-        /// Target scaling by network usage.  Structure is documented below.
+        /// Target scaling by network usage.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.FlexibleAppVersionAutomaticScalingNetworkUtilization? NetworkUtilization;
         /// <summary>
-        /// Target scaling by request utilization.  Structure is documented below.
+        /// Target scaling by request utilization.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.FlexibleAppVersionAutomaticScalingRequestUtilization? RequestUtilization;
 

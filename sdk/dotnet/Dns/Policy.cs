@@ -26,7 +26,8 @@ namespace Pulumi.Gcp.Dns
         /// <summary>
         /// Sets an alternative name server for the associated networks.
         /// When specified, all DNS queries are forwarded to a name server that you choose.
-        /// Names such as .internal are not available when an alternative name server is specified.  Structure is documented below.
+        /// Names such as .internal are not available when an alternative name server is specified.
+        /// Structure is documented below.
         /// </summary>
         [Output("alternativeNameServerConfig")]
         public Output<Outputs.PolicyAlternativeNameServerConfig?> AlternativeNameServerConfig { get; private set; } = null!;
@@ -60,7 +61,8 @@ namespace Pulumi.Gcp.Dns
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// List of network names specifying networks to which this policy is applied.  Structure is documented below.
+        /// List of network names specifying networks to which this policy is applied.
+        /// Structure is documented below.
         /// </summary>
         [Output("networks")]
         public Output<ImmutableArray<Outputs.PolicyNetwork>> Networks { get; private set; } = null!;
@@ -121,7 +123,8 @@ namespace Pulumi.Gcp.Dns
         /// <summary>
         /// Sets an alternative name server for the associated networks.
         /// When specified, all DNS queries are forwarded to a name server that you choose.
-        /// Names such as .internal are not available when an alternative name server is specified.  Structure is documented below.
+        /// Names such as .internal are not available when an alternative name server is specified.
+        /// Structure is documented below.
         /// </summary>
         [Input("alternativeNameServerConfig")]
         public Input<Inputs.PolicyAlternativeNameServerConfigArgs>? AlternativeNameServerConfig { get; set; }
@@ -158,7 +161,8 @@ namespace Pulumi.Gcp.Dns
         private InputList<Inputs.PolicyNetworkArgs>? _networks;
 
         /// <summary>
-        /// List of network names specifying networks to which this policy is applied.  Structure is documented below.
+        /// List of network names specifying networks to which this policy is applied.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.PolicyNetworkArgs> Networks
         {
@@ -183,7 +187,8 @@ namespace Pulumi.Gcp.Dns
         /// <summary>
         /// Sets an alternative name server for the associated networks.
         /// When specified, all DNS queries are forwarded to a name server that you choose.
-        /// Names such as .internal are not available when an alternative name server is specified.  Structure is documented below.
+        /// Names such as .internal are not available when an alternative name server is specified.
+        /// Structure is documented below.
         /// </summary>
         [Input("alternativeNameServerConfig")]
         public Input<Inputs.PolicyAlternativeNameServerConfigGetArgs>? AlternativeNameServerConfig { get; set; }
@@ -220,7 +225,8 @@ namespace Pulumi.Gcp.Dns
         private InputList<Inputs.PolicyNetworkGetArgs>? _networks;
 
         /// <summary>
-        /// List of network names specifying networks to which this policy is applied.  Structure is documented below.
+        /// List of network names specifying networks to which this policy is applied.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.PolicyNetworkGetArgs> Networks
         {

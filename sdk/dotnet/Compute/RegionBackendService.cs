@@ -34,7 +34,8 @@ namespace Pulumi.Gcp.Compute
         public Output<int?> AffinityCookieTtlSec { get; private set; } = null!;
 
         /// <summary>
-        /// The set of backends that serve this RegionBackendService.  Structure is documented below.
+        /// The set of backends that serve this RegionBackendService.
+        /// Structure is documented below.
         /// </summary>
         [Output("backends")]
         public Output<ImmutableArray<Outputs.RegionBackendServiceBackend>> Backends { get; private set; } = null!;
@@ -42,7 +43,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Settings controlling the volume of connections to a backend service. This field
         /// is applicable only when the `load_balancing_scheme` is set to INTERNAL_MANAGED
-        /// and the `protocol` is set to HTTP, HTTPS, or HTTP2.  Structure is documented below.
+        /// and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+        /// Structure is documented below.
         /// </summary>
         [Output("circuitBreakers")]
         public Output<Outputs.RegionBackendServiceCircuitBreakers?> CircuitBreakers { get; private set; } = null!;
@@ -80,7 +82,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Policy for failovers.  Structure is documented below.
+        /// Policy for failovers.
+        /// Structure is documented below.
         /// </summary>
         [Output("failoverPolicy")]
         public Output<Outputs.RegionBackendServiceFailoverPolicy?> FailoverPolicy { get; private set; } = null!;
@@ -103,6 +106,8 @@ namespace Pulumi.Gcp.Compute
         /// Indicates what kind of load balancing this regional backend service
         /// will be used for. A backend service created for one type of load
         /// balancing cannot be used with the other(s).
+        /// Default value is `INTERNAL`.
+        /// Possible values are `INTERNAL` and `INTERNAL_MANAGED`.
         /// </summary>
         [Output("loadBalancingScheme")]
         public Output<string?> LoadBalancingScheme { get; private set; } = null!;
@@ -130,13 +135,15 @@ namespace Pulumi.Gcp.Compute
         /// Maglev, refer to https://ai.google/research/pubs/pub44824
         /// This field is applicable only when the `load_balancing_scheme` is set to
         /// INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+        /// Possible values are `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, and `MAGLEV`.
         /// </summary>
         [Output("localityLbPolicy")]
         public Output<string?> LocalityLbPolicy { get; private set; } = null!;
 
         /// <summary>
         /// This field denotes the logging options for the load balancer traffic served by this backend service.
-        /// If logging is enabled, logs will be exported to Stackdriver.  Structure is documented below.
+        /// If logging is enabled, logs will be exported to Stackdriver.
+        /// Structure is documented below.
         /// </summary>
         [Output("logConfig")]
         public Output<Outputs.RegionBackendServiceLogConfig?> LogConfig { get; private set; } = null!;
@@ -157,7 +164,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Settings controlling eviction of unhealthy hosts from the load balancing pool.
         /// This field is applicable only when the `load_balancing_scheme` is set
-        /// to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.  Structure is documented below.
+        /// to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+        /// Structure is documented below.
         /// </summary>
         [Output("outlierDetection")]
         public Output<Outputs.RegionBackendServiceOutlierDetection?> OutlierDetection { get; private set; } = null!;
@@ -185,6 +193,7 @@ namespace Pulumi.Gcp.Compute
         /// The protocol this RegionBackendService uses to communicate with backends.
         /// The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
         /// types and may result in errors if used with the GA API.
+        /// Possible values are `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, and `UDP`.
         /// </summary>
         [Output("protocol")]
         public Output<string> Protocol { get; private set; } = null!;
@@ -205,6 +214,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Type of session affinity to use. The default is NONE. Session affinity is
         /// not applicable if the protocol is UDP.
+        /// Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
         /// </summary>
         [Output("sessionAffinity")]
         public Output<string> SessionAffinity { get; private set; } = null!;
@@ -276,7 +286,8 @@ namespace Pulumi.Gcp.Compute
         private InputList<Inputs.RegionBackendServiceBackendArgs>? _backends;
 
         /// <summary>
-        /// The set of backends that serve this RegionBackendService.  Structure is documented below.
+        /// The set of backends that serve this RegionBackendService.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.RegionBackendServiceBackendArgs> Backends
         {
@@ -287,7 +298,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Settings controlling the volume of connections to a backend service. This field
         /// is applicable only when the `load_balancing_scheme` is set to INTERNAL_MANAGED
-        /// and the `protocol` is set to HTTP, HTTPS, or HTTP2.  Structure is documented below.
+        /// and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+        /// Structure is documented below.
         /// </summary>
         [Input("circuitBreakers")]
         public Input<Inputs.RegionBackendServiceCircuitBreakersArgs>? CircuitBreakers { get; set; }
@@ -319,7 +331,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Policy for failovers.  Structure is documented below.
+        /// Policy for failovers.
+        /// Structure is documented below.
         /// </summary>
         [Input("failoverPolicy")]
         public Input<Inputs.RegionBackendServiceFailoverPolicyArgs>? FailoverPolicy { get; set; }
@@ -336,6 +349,8 @@ namespace Pulumi.Gcp.Compute
         /// Indicates what kind of load balancing this regional backend service
         /// will be used for. A backend service created for one type of load
         /// balancing cannot be used with the other(s).
+        /// Default value is `INTERNAL`.
+        /// Possible values are `INTERNAL` and `INTERNAL_MANAGED`.
         /// </summary>
         [Input("loadBalancingScheme")]
         public Input<string>? LoadBalancingScheme { get; set; }
@@ -363,13 +378,15 @@ namespace Pulumi.Gcp.Compute
         /// Maglev, refer to https://ai.google/research/pubs/pub44824
         /// This field is applicable only when the `load_balancing_scheme` is set to
         /// INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+        /// Possible values are `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, and `MAGLEV`.
         /// </summary>
         [Input("localityLbPolicy")]
         public Input<string>? LocalityLbPolicy { get; set; }
 
         /// <summary>
         /// This field denotes the logging options for the load balancer traffic served by this backend service.
-        /// If logging is enabled, logs will be exported to Stackdriver.  Structure is documented below.
+        /// If logging is enabled, logs will be exported to Stackdriver.
+        /// Structure is documented below.
         /// </summary>
         [Input("logConfig")]
         public Input<Inputs.RegionBackendServiceLogConfigArgs>? LogConfig { get; set; }
@@ -390,7 +407,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Settings controlling eviction of unhealthy hosts from the load balancing pool.
         /// This field is applicable only when the `load_balancing_scheme` is set
-        /// to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.  Structure is documented below.
+        /// to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+        /// Structure is documented below.
         /// </summary>
         [Input("outlierDetection")]
         public Input<Inputs.RegionBackendServiceOutlierDetectionArgs>? OutlierDetection { get; set; }
@@ -418,6 +436,7 @@ namespace Pulumi.Gcp.Compute
         /// The protocol this RegionBackendService uses to communicate with backends.
         /// The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
         /// types and may result in errors if used with the GA API.
+        /// Possible values are `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, and `UDP`.
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
@@ -432,6 +451,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Type of session affinity to use. The default is NONE. Session affinity is
         /// not applicable if the protocol is UDP.
+        /// Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
         /// </summary>
         [Input("sessionAffinity")]
         public Input<string>? SessionAffinity { get; set; }
@@ -464,7 +484,8 @@ namespace Pulumi.Gcp.Compute
         private InputList<Inputs.RegionBackendServiceBackendGetArgs>? _backends;
 
         /// <summary>
-        /// The set of backends that serve this RegionBackendService.  Structure is documented below.
+        /// The set of backends that serve this RegionBackendService.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.RegionBackendServiceBackendGetArgs> Backends
         {
@@ -475,7 +496,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Settings controlling the volume of connections to a backend service. This field
         /// is applicable only when the `load_balancing_scheme` is set to INTERNAL_MANAGED
-        /// and the `protocol` is set to HTTP, HTTPS, or HTTP2.  Structure is documented below.
+        /// and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+        /// Structure is documented below.
         /// </summary>
         [Input("circuitBreakers")]
         public Input<Inputs.RegionBackendServiceCircuitBreakersGetArgs>? CircuitBreakers { get; set; }
@@ -513,7 +535,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Policy for failovers.  Structure is documented below.
+        /// Policy for failovers.
+        /// Structure is documented below.
         /// </summary>
         [Input("failoverPolicy")]
         public Input<Inputs.RegionBackendServiceFailoverPolicyGetArgs>? FailoverPolicy { get; set; }
@@ -536,6 +559,8 @@ namespace Pulumi.Gcp.Compute
         /// Indicates what kind of load balancing this regional backend service
         /// will be used for. A backend service created for one type of load
         /// balancing cannot be used with the other(s).
+        /// Default value is `INTERNAL`.
+        /// Possible values are `INTERNAL` and `INTERNAL_MANAGED`.
         /// </summary>
         [Input("loadBalancingScheme")]
         public Input<string>? LoadBalancingScheme { get; set; }
@@ -563,13 +588,15 @@ namespace Pulumi.Gcp.Compute
         /// Maglev, refer to https://ai.google/research/pubs/pub44824
         /// This field is applicable only when the `load_balancing_scheme` is set to
         /// INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+        /// Possible values are `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, and `MAGLEV`.
         /// </summary>
         [Input("localityLbPolicy")]
         public Input<string>? LocalityLbPolicy { get; set; }
 
         /// <summary>
         /// This field denotes the logging options for the load balancer traffic served by this backend service.
-        /// If logging is enabled, logs will be exported to Stackdriver.  Structure is documented below.
+        /// If logging is enabled, logs will be exported to Stackdriver.
+        /// Structure is documented below.
         /// </summary>
         [Input("logConfig")]
         public Input<Inputs.RegionBackendServiceLogConfigGetArgs>? LogConfig { get; set; }
@@ -590,7 +617,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Settings controlling eviction of unhealthy hosts from the load balancing pool.
         /// This field is applicable only when the `load_balancing_scheme` is set
-        /// to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.  Structure is documented below.
+        /// to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+        /// Structure is documented below.
         /// </summary>
         [Input("outlierDetection")]
         public Input<Inputs.RegionBackendServiceOutlierDetectionGetArgs>? OutlierDetection { get; set; }
@@ -618,6 +646,7 @@ namespace Pulumi.Gcp.Compute
         /// The protocol this RegionBackendService uses to communicate with backends.
         /// The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
         /// types and may result in errors if used with the GA API.
+        /// Possible values are `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, and `UDP`.
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
@@ -638,6 +667,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Type of session affinity to use. The default is NONE. Session affinity is
         /// not applicable if the protocol is UDP.
+        /// Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
         /// </summary>
         [Input("sessionAffinity")]
         public Input<string>? SessionAffinity { get; set; }

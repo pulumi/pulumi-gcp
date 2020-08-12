@@ -18,6 +18,8 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// `NEVER` detatch the disk when the VM is deleted, but not delete the disk.
         /// `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently
         /// deleted from the instance group.
+        /// Default value is `NEVER`.
+        /// Possible values are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
         /// </summary>
         [Input("deleteRule")]
         public Input<string>? DeleteRule { get; set; }
@@ -30,6 +32,8 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// The mode of the disk.
+        /// Default value is `READ_WRITE`.
+        /// Possible values are `READ_ONLY` and `READ_WRITE`.
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }

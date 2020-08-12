@@ -13,13 +13,15 @@ namespace Pulumi.Gcp.AppEngine.Inputs
     public sealed class FlexibleAppVersionDeploymentArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Options for the build operations performed as a part of the version deployment. Only applicable when creating a version using source code directly.  Structure is documented below.
+        /// Options for the build operations performed as a part of the version deployment. Only applicable when creating a version using source code directly.
+        /// Structure is documented below.
         /// </summary>
         [Input("cloudBuildOptions")]
         public Input<Inputs.FlexibleAppVersionDeploymentCloudBuildOptionsArgs>? CloudBuildOptions { get; set; }
 
         /// <summary>
-        /// The Docker image for the container that runs the version.  Structure is documented below.
+        /// The Docker image for the container that runs the version.
+        /// Structure is documented below.
         /// </summary>
         [Input("container")]
         public Input<Inputs.FlexibleAppVersionDeploymentContainerArgs>? Container { get; set; }
@@ -29,7 +31,8 @@ namespace Pulumi.Gcp.AppEngine.Inputs
 
         /// <summary>
         /// Manifest of the files stored in Google Cloud Storage that are included as part of this version.
-        /// All files must be readable using the credentials supplied with this call.  Structure is documented below.
+        /// All files must be readable using the credentials supplied with this call.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.FlexibleAppVersionDeploymentFileArgs> Files
         {
@@ -38,7 +41,8 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         }
 
         /// <summary>
-        /// Zip File  Structure is documented below.
+        /// Zip File
+        /// Structure is documented below.
         /// </summary>
         [Input("zip")]
         public Input<Inputs.FlexibleAppVersionDeploymentZipArgs>? Zip { get; set; }

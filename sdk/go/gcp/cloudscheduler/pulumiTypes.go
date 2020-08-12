@@ -11,7 +11,8 @@ import (
 )
 
 type JobAppEngineHttpTarget struct {
-	// App Engine Routing setting for the job.  Structure is documented below.
+	// App Engine Routing setting for the job.
+	// Structure is documented below.
 	AppEngineRouting *JobAppEngineHttpTargetAppEngineRouting `pulumi:"appEngineRouting"`
 	// HTTP request body.
 	// A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
@@ -42,7 +43,8 @@ type JobAppEngineHttpTargetInput interface {
 }
 
 type JobAppEngineHttpTargetArgs struct {
-	// App Engine Routing setting for the job.  Structure is documented below.
+	// App Engine Routing setting for the job.
+	// Structure is documented below.
 	AppEngineRouting JobAppEngineHttpTargetAppEngineRoutingPtrInput `pulumi:"appEngineRouting"`
 	// HTTP request body.
 	// A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
@@ -138,7 +140,8 @@ func (o JobAppEngineHttpTargetOutput) ToJobAppEngineHttpTargetPtrOutputWithConte
 	}).(JobAppEngineHttpTargetPtrOutput)
 }
 
-// App Engine Routing setting for the job.  Structure is documented below.
+// App Engine Routing setting for the job.
+// Structure is documented below.
 func (o JobAppEngineHttpTargetOutput) AppEngineRouting() JobAppEngineHttpTargetAppEngineRoutingPtrOutput {
 	return o.ApplyT(func(v JobAppEngineHttpTarget) *JobAppEngineHttpTargetAppEngineRouting { return v.AppEngineRouting }).(JobAppEngineHttpTargetAppEngineRoutingPtrOutput)
 }
@@ -188,7 +191,8 @@ func (o JobAppEngineHttpTargetPtrOutput) Elem() JobAppEngineHttpTargetOutput {
 	return o.ApplyT(func(v *JobAppEngineHttpTarget) JobAppEngineHttpTarget { return *v }).(JobAppEngineHttpTargetOutput)
 }
 
-// App Engine Routing setting for the job.  Structure is documented below.
+// App Engine Routing setting for the job.
+// Structure is documented below.
 func (o JobAppEngineHttpTargetPtrOutput) AppEngineRouting() JobAppEngineHttpTargetAppEngineRoutingPtrOutput {
 	return o.ApplyT(func(v *JobAppEngineHttpTarget) *JobAppEngineHttpTargetAppEngineRouting {
 		if v == nil {
@@ -437,10 +441,12 @@ type JobHttpTarget struct {
 	// Which HTTP method to use for the request.
 	HttpMethod *string `pulumi:"httpMethod"`
 	// Contains information needed for generating an OAuth token.
-	// This type of authorization should be used when sending requests to a GCP endpoint.  Structure is documented below.
+	// This type of authorization should be used when sending requests to a GCP endpoint.
+	// Structure is documented below.
 	OauthToken *JobHttpTargetOauthToken `pulumi:"oauthToken"`
 	// Contains information needed for generating an OpenID Connect token.
-	// This type of authorization should be used when sending requests to third party endpoints or Cloud Run.  Structure is documented below.
+	// This type of authorization should be used when sending requests to third party endpoints or Cloud Run.
+	// Structure is documented below.
 	OidcToken *JobHttpTargetOidcToken `pulumi:"oidcToken"`
 	// The full URI path that the request will be sent to.
 	Uri string `pulumi:"uri"`
@@ -468,10 +474,12 @@ type JobHttpTargetArgs struct {
 	// Which HTTP method to use for the request.
 	HttpMethod pulumi.StringPtrInput `pulumi:"httpMethod"`
 	// Contains information needed for generating an OAuth token.
-	// This type of authorization should be used when sending requests to a GCP endpoint.  Structure is documented below.
+	// This type of authorization should be used when sending requests to a GCP endpoint.
+	// Structure is documented below.
 	OauthToken JobHttpTargetOauthTokenPtrInput `pulumi:"oauthToken"`
 	// Contains information needed for generating an OpenID Connect token.
-	// This type of authorization should be used when sending requests to third party endpoints or Cloud Run.  Structure is documented below.
+	// This type of authorization should be used when sending requests to third party endpoints or Cloud Run.
+	// Structure is documented below.
 	OidcToken JobHttpTargetOidcTokenPtrInput `pulumi:"oidcToken"`
 	// The full URI path that the request will be sent to.
 	Uri pulumi.StringInput `pulumi:"uri"`
@@ -573,13 +581,15 @@ func (o JobHttpTargetOutput) HttpMethod() pulumi.StringPtrOutput {
 }
 
 // Contains information needed for generating an OAuth token.
-// This type of authorization should be used when sending requests to a GCP endpoint.  Structure is documented below.
+// This type of authorization should be used when sending requests to a GCP endpoint.
+// Structure is documented below.
 func (o JobHttpTargetOutput) OauthToken() JobHttpTargetOauthTokenPtrOutput {
 	return o.ApplyT(func(v JobHttpTarget) *JobHttpTargetOauthToken { return v.OauthToken }).(JobHttpTargetOauthTokenPtrOutput)
 }
 
 // Contains information needed for generating an OpenID Connect token.
-// This type of authorization should be used when sending requests to third party endpoints or Cloud Run.  Structure is documented below.
+// This type of authorization should be used when sending requests to third party endpoints or Cloud Run.
+// Structure is documented below.
 func (o JobHttpTargetOutput) OidcToken() JobHttpTargetOidcTokenPtrOutput {
 	return o.ApplyT(func(v JobHttpTarget) *JobHttpTargetOidcToken { return v.OidcToken }).(JobHttpTargetOidcTokenPtrOutput)
 }
@@ -641,7 +651,8 @@ func (o JobHttpTargetPtrOutput) HttpMethod() pulumi.StringPtrOutput {
 }
 
 // Contains information needed for generating an OAuth token.
-// This type of authorization should be used when sending requests to a GCP endpoint.  Structure is documented below.
+// This type of authorization should be used when sending requests to a GCP endpoint.
+// Structure is documented below.
 func (o JobHttpTargetPtrOutput) OauthToken() JobHttpTargetOauthTokenPtrOutput {
 	return o.ApplyT(func(v *JobHttpTarget) *JobHttpTargetOauthToken {
 		if v == nil {
@@ -652,7 +663,8 @@ func (o JobHttpTargetPtrOutput) OauthToken() JobHttpTargetOauthTokenPtrOutput {
 }
 
 // Contains information needed for generating an OpenID Connect token.
-// This type of authorization should be used when sending requests to third party endpoints or Cloud Run.  Structure is documented below.
+// This type of authorization should be used when sending requests to third party endpoints or Cloud Run.
+// Structure is documented below.
 func (o JobHttpTargetPtrOutput) OidcToken() JobHttpTargetOidcTokenPtrOutput {
 	return o.ApplyT(func(v *JobHttpTarget) *JobHttpTargetOidcToken {
 		if v == nil {
@@ -996,7 +1008,7 @@ type JobPubsubTarget struct {
 	// Pubsub message must contain either non-empty data, or at least one attribute.
 	Data *string `pulumi:"data"`
 	// The full resource name for the Cloud Pub/Sub topic to which
-	// messages will be published when a job is delivered. ~>**NOTE**:
+	// messages will be published when a job is delivered. ~>**NOTE:**
 	// The topic name must be in the same format as required by PubSub's
 	// PublishRequest.name, e.g. `projects/my-project/topics/my-topic`.
 	TopicName string `pulumi:"topicName"`
@@ -1021,7 +1033,7 @@ type JobPubsubTargetArgs struct {
 	// Pubsub message must contain either non-empty data, or at least one attribute.
 	Data pulumi.StringPtrInput `pulumi:"data"`
 	// The full resource name for the Cloud Pub/Sub topic to which
-	// messages will be published when a job is delivered. ~>**NOTE**:
+	// messages will be published when a job is delivered. ~>**NOTE:**
 	// The topic name must be in the same format as required by PubSub's
 	// PublishRequest.name, e.g. `projects/my-project/topics/my-topic`.
 	TopicName pulumi.StringInput `pulumi:"topicName"`
@@ -1117,7 +1129,7 @@ func (o JobPubsubTargetOutput) Data() pulumi.StringPtrOutput {
 }
 
 // The full resource name for the Cloud Pub/Sub topic to which
-// messages will be published when a job is delivered. ~>**NOTE**:
+// messages will be published when a job is delivered. ~>**NOTE:**
 // The topic name must be in the same format as required by PubSub's
 // PublishRequest.name, e.g. `projects/my-project/topics/my-topic`.
 func (o JobPubsubTargetOutput) TopicName() pulumi.StringOutput {
@@ -1165,7 +1177,7 @@ func (o JobPubsubTargetPtrOutput) Data() pulumi.StringPtrOutput {
 }
 
 // The full resource name for the Cloud Pub/Sub topic to which
-// messages will be published when a job is delivered. ~>**NOTE**:
+// messages will be published when a job is delivered. ~>**NOTE:**
 // The topic name must be in the same format as required by PubSub's
 // PublishRequest.name, e.g. `projects/my-project/topics/my-topic`.
 func (o JobPubsubTargetPtrOutput) TopicName() pulumi.StringPtrOutput {

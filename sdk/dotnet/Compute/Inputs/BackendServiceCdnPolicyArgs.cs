@@ -13,7 +13,8 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class BackendServiceCdnPolicyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The CacheKeyPolicy for this CdnPolicy.  Structure is documented below.
+        /// The CacheKeyPolicy for this CdnPolicy.
+        /// Structure is documented below.
         /// </summary>
         [Input("cacheKeyPolicy")]
         public Input<Inputs.BackendServiceCdnPolicyCacheKeyPolicyArgs>? CacheKeyPolicy { get; set; }

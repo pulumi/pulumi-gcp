@@ -51,6 +51,7 @@ type Network struct {
 	// of this network in the same region as the router. If set to `GLOBAL`,
 	// this network's cloud routers will advertise routes with all
 	// subnetworks of this network, across regions.
+	// Possible values are `REGIONAL` and `GLOBAL`.
 	RoutingMode pulumi.StringOutput `pulumi:"routingMode"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -114,6 +115,7 @@ type networkState struct {
 	// of this network in the same region as the router. If set to `GLOBAL`,
 	// this network's cloud routers will advertise routes with all
 	// subnetworks of this network, across regions.
+	// Possible values are `REGIONAL` and `GLOBAL`.
 	RoutingMode *string `pulumi:"routingMode"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -150,6 +152,7 @@ type NetworkState struct {
 	// of this network in the same region as the router. If set to `GLOBAL`,
 	// this network's cloud routers will advertise routes with all
 	// subnetworks of this network, across regions.
+	// Possible values are `REGIONAL` and `GLOBAL`.
 	RoutingMode pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
@@ -188,6 +191,7 @@ type networkArgs struct {
 	// of this network in the same region as the router. If set to `GLOBAL`,
 	// this network's cloud routers will advertise routes with all
 	// subnetworks of this network, across regions.
+	// Possible values are `REGIONAL` and `GLOBAL`.
 	RoutingMode *string `pulumi:"routingMode"`
 }
 
@@ -221,6 +225,7 @@ type NetworkArgs struct {
 	// of this network in the same region as the router. If set to `GLOBAL`,
 	// this network's cloud routers will advertise routes with all
 	// subnetworks of this network, across regions.
+	// Possible values are `REGIONAL` and `GLOBAL`.
 	RoutingMode pulumi.StringPtrInput
 }
 

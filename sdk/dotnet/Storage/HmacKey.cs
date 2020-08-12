@@ -58,6 +58,8 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// The state of the key. Can be set to one of ACTIVE, INACTIVE.
+        /// Default value is `ACTIVE`.
+        /// Possible values are `ACTIVE` and `INACTIVE`.
         /// </summary>
         [Output("state")]
         public Output<string?> State { get; private set; } = null!;
@@ -135,6 +137,8 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// The state of the key. Can be set to one of ACTIVE, INACTIVE.
+        /// Default value is `ACTIVE`.
+        /// Possible values are `ACTIVE` and `INACTIVE`.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
@@ -173,6 +177,8 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// The state of the key. Can be set to one of ACTIVE, INACTIVE.
+        /// Default value is `ACTIVE`.
+        /// Possible values are `ACTIVE` and `INACTIVE`.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

@@ -105,7 +105,8 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Network configuration options. These are required when a private Data Fusion instance is to be created.  Structure is documented below.
+     * Network configuration options. These are required when a private Data Fusion instance is to be created.
+     * Structure is documented below.
      */
     public readonly networkConfig!: pulumi.Output<outputs.datafusion.InstanceNetworkConfig | undefined>;
     /**
@@ -153,6 +154,7 @@ export class Instance extends pulumi.CustomResource {
      * of concurrent pipelines, no support for streaming pipelines, etc.
      * - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
      * available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
+     * Possible values are `BASIC` and `ENTERPRISE`.
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -259,7 +261,8 @@ export interface InstanceState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Network configuration options. These are required when a private Data Fusion instance is to be created.  Structure is documented below.
+     * Network configuration options. These are required when a private Data Fusion instance is to be created.
+     * Structure is documented below.
      */
     readonly networkConfig?: pulumi.Input<inputs.datafusion.InstanceNetworkConfig>;
     /**
@@ -307,6 +310,7 @@ export interface InstanceState {
      * of concurrent pipelines, no support for streaming pipelines, etc.
      * - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
      * available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
+     * Possible values are `BASIC` and `ENTERPRISE`.
      */
     readonly type?: pulumi.Input<string>;
     /**
@@ -345,7 +349,8 @@ export interface InstanceArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Network configuration options. These are required when a private Data Fusion instance is to be created.  Structure is documented below.
+     * Network configuration options. These are required when a private Data Fusion instance is to be created.
+     * Structure is documented below.
      */
     readonly networkConfig?: pulumi.Input<inputs.datafusion.InstanceNetworkConfig>;
     /**
@@ -375,6 +380,7 @@ export interface InstanceArgs {
      * of concurrent pipelines, no support for streaming pipelines, etc.
      * - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
      * available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
+     * Possible values are `BASIC` and `ENTERPRISE`.
      */
     readonly type: pulumi.Input<string>;
     /**

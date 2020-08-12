@@ -37,7 +37,8 @@ type Secret struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The replication policy of the secret data attached to the Secret. It cannot be changed
-	// after the Secret has been created.  Structure is documented below.
+	// after the Secret has been created.
+	// Structure is documented below.
 	Replication SecretReplicationOutput `pulumi:"replication"`
 	// This must be unique within the project.
 	SecretId pulumi.StringOutput `pulumi:"secretId"`
@@ -94,7 +95,8 @@ type secretState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The replication policy of the secret data attached to the Secret. It cannot be changed
-	// after the Secret has been created.  Structure is documented below.
+	// after the Secret has been created.
+	// Structure is documented below.
 	Replication *SecretReplication `pulumi:"replication"`
 	// This must be unique within the project.
 	SecretId *string `pulumi:"secretId"`
@@ -118,7 +120,8 @@ type SecretState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The replication policy of the secret data attached to the Secret. It cannot be changed
-	// after the Secret has been created.  Structure is documented below.
+	// after the Secret has been created.
+	// Structure is documented below.
 	Replication SecretReplicationPtrInput
 	// This must be unique within the project.
 	SecretId pulumi.StringPtrInput
@@ -142,7 +145,8 @@ type secretArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The replication policy of the secret data attached to the Secret. It cannot be changed
-	// after the Secret has been created.  Structure is documented below.
+	// after the Secret has been created.
+	// Structure is documented below.
 	Replication SecretReplication `pulumi:"replication"`
 	// This must be unique within the project.
 	SecretId string `pulumi:"secretId"`
@@ -163,7 +167,8 @@ type SecretArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The replication policy of the secret data attached to the Secret. It cannot be changed
-	// after the Secret has been created.  Structure is documented below.
+	// after the Secret has been created.
+	// Structure is documented below.
 	Replication SecretReplicationInput
 	// This must be unique within the project.
 	SecretId pulumi.StringInput

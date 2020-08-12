@@ -106,7 +106,8 @@ export class Snapshot extends pulumi.CustomResource {
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
      * The customer-supplied encryption key of the snapshot. Required if the
-     * source snapshot is protected by a customer-supplied encryption key.  Structure is documented below.
+     * source snapshot is protected by a customer-supplied encryption key.
+     * Structure is documented below.
      */
     public readonly snapshotEncryptionKey!: pulumi.Output<outputs.compute.SnapshotSnapshotEncryptionKey | undefined>;
     /**
@@ -120,7 +121,8 @@ export class Snapshot extends pulumi.CustomResource {
     /**
      * The customer-supplied encryption key of the source snapshot. Required
      * if the source snapshot is protected by a customer-supplied encryption
-     * key.  Structure is documented below.
+     * key.
+     * Structure is documented below.
      */
     public readonly sourceDiskEncryptionKey!: pulumi.Output<outputs.compute.SnapshotSourceDiskEncryptionKey | undefined>;
     public /*out*/ readonly sourceDiskLink!: pulumi.Output<string>;
@@ -246,7 +248,8 @@ export interface SnapshotState {
     readonly selfLink?: pulumi.Input<string>;
     /**
      * The customer-supplied encryption key of the snapshot. Required if the
-     * source snapshot is protected by a customer-supplied encryption key.  Structure is documented below.
+     * source snapshot is protected by a customer-supplied encryption key.
+     * Structure is documented below.
      */
     readonly snapshotEncryptionKey?: pulumi.Input<inputs.compute.SnapshotSnapshotEncryptionKey>;
     /**
@@ -260,7 +263,8 @@ export interface SnapshotState {
     /**
      * The customer-supplied encryption key of the source snapshot. Required
      * if the source snapshot is protected by a customer-supplied encryption
-     * key.  Structure is documented below.
+     * key.
+     * Structure is documented below.
      */
     readonly sourceDiskEncryptionKey?: pulumi.Input<inputs.compute.SnapshotSourceDiskEncryptionKey>;
     readonly sourceDiskLink?: pulumi.Input<string>;
@@ -304,7 +308,8 @@ export interface SnapshotArgs {
     readonly project?: pulumi.Input<string>;
     /**
      * The customer-supplied encryption key of the snapshot. Required if the
-     * source snapshot is protected by a customer-supplied encryption key.  Structure is documented below.
+     * source snapshot is protected by a customer-supplied encryption key.
+     * Structure is documented below.
      */
     readonly snapshotEncryptionKey?: pulumi.Input<inputs.compute.SnapshotSnapshotEncryptionKey>;
     /**
@@ -314,7 +319,8 @@ export interface SnapshotArgs {
     /**
      * The customer-supplied encryption key of the source snapshot. Required
      * if the source snapshot is protected by a customer-supplied encryption
-     * key.  Structure is documented below.
+     * key.
+     * Structure is documented below.
      */
     readonly sourceDiskEncryptionKey?: pulumi.Input<inputs.compute.SnapshotSourceDiskEncryptionKey>;
     /**

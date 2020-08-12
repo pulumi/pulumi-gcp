@@ -41,7 +41,8 @@ namespace Pulumi.Gcp.GameServices
         /// The game_server_config_overrides contains the per game server config
         /// overrides. The overrides are processed in the order they are listed. As
         /// soon as a match is found for a cluster, the rest of the list is not
-        /// processed.  Structure is documented below.
+        /// processed.
+        /// Structure is documented below.
         /// </summary>
         [Output("gameServerConfigOverrides")]
         public Output<ImmutableArray<Outputs.GameServerDeploymentRolloutGameServerConfigOverride>> GameServerConfigOverrides { get; private set; } = null!;
@@ -127,7 +128,8 @@ namespace Pulumi.Gcp.GameServices
         /// The game_server_config_overrides contains the per game server config
         /// overrides. The overrides are processed in the order they are listed. As
         /// soon as a match is found for a cluster, the rest of the list is not
-        /// processed.  Structure is documented below.
+        /// processed.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.GameServerDeploymentRolloutGameServerConfigOverrideArgs> GameServerConfigOverrides
         {
@@ -170,7 +172,8 @@ namespace Pulumi.Gcp.GameServices
         /// The game_server_config_overrides contains the per game server config
         /// overrides. The overrides are processed in the order they are listed. As
         /// soon as a match is found for a cluster, the rest of the list is not
-        /// processed.  Structure is documented below.
+        /// processed.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.GameServerDeploymentRolloutGameServerConfigOverrideGetArgs> GameServerConfigOverrides
         {

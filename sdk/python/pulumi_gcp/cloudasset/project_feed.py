@@ -35,6 +35,7 @@ class ProjectFeed(pulumi.CustomResource):
     content_type: pulumi.Output[str]
     """
     Asset content type. If not specified, no content but the asset name and type will be returned.
+    Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
     """
     feed_id: pulumi.Output[str]
     """
@@ -42,9 +43,11 @@ class ProjectFeed(pulumi.CustomResource):
     """
     feed_output_config: pulumi.Output[dict]
     """
-    Output configuration for asset feed destination.  Structure is documented below.
+    Output configuration for asset feed destination.
+    Structure is documented below.
 
-      * `pubsubDestination` (`dict`) - Destination on Cloud Pubsub.  Structure is documented below.
+      * `pubsubDestination` (`dict`) - Destination on Cloud Pubsub.
+        Structure is documented below.
         * `topic` (`str`) - Destination on Cloud Pubsub topic.
     """
     name: pulumi.Output[str]
@@ -84,14 +87,17 @@ class ProjectFeed(pulumi.CustomResource):
                enablement check, quota, and billing. If not specified, the resource's
                project will be used.
         :param pulumi.Input[str] content_type: Asset content type. If not specified, no content but the asset name and type will be returned.
+               Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
         :param pulumi.Input[str] feed_id: This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
-        :param pulumi.Input[dict] feed_output_config: Output configuration for asset feed destination.  Structure is documented below.
+        :param pulumi.Input[dict] feed_output_config: Output configuration for asset feed destination.
+               Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
 
         The **feed_output_config** object supports the following:
 
-          * `pubsubDestination` (`pulumi.Input[dict]`) - Destination on Cloud Pubsub.  Structure is documented below.
+          * `pubsubDestination` (`pulumi.Input[dict]`) - Destination on Cloud Pubsub.
+            Structure is documented below.
             * `topic` (`pulumi.Input[str]`) - Destination on Cloud Pubsub topic.
         """
         if __name__ is not None:
@@ -152,15 +158,18 @@ class ProjectFeed(pulumi.CustomResource):
                enablement check, quota, and billing. If not specified, the resource's
                project will be used.
         :param pulumi.Input[str] content_type: Asset content type. If not specified, no content but the asset name and type will be returned.
+               Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
         :param pulumi.Input[str] feed_id: This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
-        :param pulumi.Input[dict] feed_output_config: Output configuration for asset feed destination.  Structure is documented below.
+        :param pulumi.Input[dict] feed_output_config: Output configuration for asset feed destination.
+               Structure is documented below.
         :param pulumi.Input[str] name: The format will be projects/{projectNumber}/feeds/{client-assigned_feed_identifier}.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
 
         The **feed_output_config** object supports the following:
 
-          * `pubsubDestination` (`pulumi.Input[dict]`) - Destination on Cloud Pubsub.  Structure is documented below.
+          * `pubsubDestination` (`pulumi.Input[dict]`) - Destination on Cloud Pubsub.
+            Structure is documented below.
             * `topic` (`pulumi.Input[str]`) - Destination on Cloud Pubsub topic.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

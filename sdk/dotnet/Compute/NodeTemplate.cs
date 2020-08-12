@@ -66,7 +66,8 @@ namespace Pulumi.Gcp.Compute
         /// Flexible properties for the desired node type. Node groups that
         /// use this node template will create nodes of a type that matches
         /// these properties. Only one of nodeTypeFlexibility and nodeType can
-        /// be specified.  Structure is documented below.
+        /// be specified.
+        /// Structure is documented below.
         /// </summary>
         [Output("nodeTypeFlexibility")]
         public Output<Outputs.NodeTemplateNodeTypeFlexibility?> NodeTypeFlexibility { get; private set; } = null!;
@@ -93,7 +94,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The server binding policy for nodes using this template. Determines
-        /// where the nodes should restart following a maintenance event.  Structure is documented below.
+        /// where the nodes should restart following a maintenance event.
+        /// Structure is documented below.
         /// </summary>
         [Output("serverBinding")]
         public Output<Outputs.NodeTemplateServerBinding> ServerBinding { get; private set; } = null!;
@@ -186,7 +188,8 @@ namespace Pulumi.Gcp.Compute
         /// Flexible properties for the desired node type. Node groups that
         /// use this node template will create nodes of a type that matches
         /// these properties. Only one of nodeTypeFlexibility and nodeType can
-        /// be specified.  Structure is documented below.
+        /// be specified.
+        /// Structure is documented below.
         /// </summary>
         [Input("nodeTypeFlexibility")]
         public Input<Inputs.NodeTemplateNodeTypeFlexibilityArgs>? NodeTypeFlexibility { get; set; }
@@ -207,7 +210,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The server binding policy for nodes using this template. Determines
-        /// where the nodes should restart following a maintenance event.  Structure is documented below.
+        /// where the nodes should restart following a maintenance event.
+        /// Structure is documented below.
         /// </summary>
         [Input("serverBinding")]
         public Input<Inputs.NodeTemplateServerBindingArgs>? ServerBinding { get; set; }
@@ -267,7 +271,8 @@ namespace Pulumi.Gcp.Compute
         /// Flexible properties for the desired node type. Node groups that
         /// use this node template will create nodes of a type that matches
         /// these properties. Only one of nodeTypeFlexibility and nodeType can
-        /// be specified.  Structure is documented below.
+        /// be specified.
+        /// Structure is documented below.
         /// </summary>
         [Input("nodeTypeFlexibility")]
         public Input<Inputs.NodeTemplateNodeTypeFlexibilityGetArgs>? NodeTypeFlexibility { get; set; }
@@ -294,7 +299,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The server binding policy for nodes using this template. Determines
-        /// where the nodes should restart following a maintenance event.  Structure is documented below.
+        /// where the nodes should restart following a maintenance event.
+        /// Structure is documented below.
         /// </summary>
         [Input("serverBinding")]
         public Input<Inputs.NodeTemplateServerBindingGetArgs>? ServerBinding { get; set; }

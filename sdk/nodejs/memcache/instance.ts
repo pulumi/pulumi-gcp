@@ -52,7 +52,8 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * User-specified parameters for this memcache instance.  Structure is documented below.
+     * User-specified parameters for this memcache instance.
+     * Structure is documented below.
      */
     public readonly memcacheParameters!: pulumi.Output<outputs.memcache.InstanceMemcacheParameters | undefined>;
     /**
@@ -60,7 +61,8 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Configuration for memcache nodes.  Structure is documented below.
+     * Configuration for memcache nodes.
+     * Structure is documented below.
      */
     public readonly nodeConfig!: pulumi.Output<outputs.memcache.InstanceNodeConfig>;
     /**
@@ -161,7 +163,8 @@ export interface InstanceState {
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * User-specified parameters for this memcache instance.  Structure is documented below.
+     * User-specified parameters for this memcache instance.
+     * Structure is documented below.
      */
     readonly memcacheParameters?: pulumi.Input<inputs.memcache.InstanceMemcacheParameters>;
     /**
@@ -169,7 +172,8 @@ export interface InstanceState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Configuration for memcache nodes.  Structure is documented below.
+     * Configuration for memcache nodes.
+     * Structure is documented below.
      */
     readonly nodeConfig?: pulumi.Input<inputs.memcache.InstanceNodeConfig>;
     /**
@@ -210,7 +214,8 @@ export interface InstanceArgs {
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * User-specified parameters for this memcache instance.  Structure is documented below.
+     * User-specified parameters for this memcache instance.
+     * Structure is documented below.
      */
     readonly memcacheParameters?: pulumi.Input<inputs.memcache.InstanceMemcacheParameters>;
     /**
@@ -218,7 +223,8 @@ export interface InstanceArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Configuration for memcache nodes.  Structure is documented below.
+     * Configuration for memcache nodes.
+     * Structure is documented below.
      */
     readonly nodeConfig: pulumi.Input<inputs.memcache.InstanceNodeConfig>;
     /**

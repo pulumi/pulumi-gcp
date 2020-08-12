@@ -78,6 +78,12 @@ namespace Pulumi.Gcp.Storage
         public Output<string> Md5hash { get; private set; } = null!;
 
         /// <summary>
+        /// (Computed) A url reference to download this object.
+        /// </summary>
+        [Output("mediaLink")]
+        public Output<string> MediaLink { get; private set; } = null!;
+
+        /// <summary>
         /// User-provided metadata, in key/value pairs.
         /// </summary>
         [Output("metadata")]
@@ -306,6 +312,12 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         [Input("md5hash")]
         public Input<string>? Md5hash { get; set; }
+
+        /// <summary>
+        /// (Computed) A url reference to download this object.
+        /// </summary>
+        [Input("mediaLink")]
+        public Input<string>? MediaLink { get; set; }
 
         [Input("metadata")]
         private InputMap<string>? _metadata;

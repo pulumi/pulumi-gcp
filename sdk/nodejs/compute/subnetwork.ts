@@ -97,7 +97,8 @@ export class Subnetwork extends pulumi.CustomResource {
     /**
      * Denotes the logging options for the subnetwork flow logs. If logging is enabled
      * logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
-     * subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`  Structure is documented below.
+     * subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`
+     * Structure is documented below.
      */
     public readonly logConfig!: pulumi.Output<outputs.compute.SubnetworkLogConfig | undefined>;
     /**
@@ -132,6 +133,7 @@ export class Subnetwork extends pulumi.CustomResource {
      * reserved for Internal HTTP(S) Load Balancing. If unspecified, the
      * purpose defaults to PRIVATE.
      * If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the role.
+     * Possible values are `INTERNAL_HTTPS_LOAD_BALANCER` and `PRIVATE`.
      */
     public readonly purpose!: pulumi.Output<string>;
     /**
@@ -144,6 +146,7 @@ export class Subnetwork extends pulumi.CustomResource {
      * or BACKUP. An ACTIVE subnetwork is one that is currently being used
      * for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that
      * is ready to be promoted to ACTIVE or is currently draining.
+     * Possible values are `ACTIVE` and `BACKUP`.
      */
     public readonly role!: pulumi.Output<string | undefined>;
     /**
@@ -254,7 +257,8 @@ export interface SubnetworkState {
     /**
      * Denotes the logging options for the subnetwork flow logs. If logging is enabled
      * logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
-     * subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`  Structure is documented below.
+     * subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`
+     * Structure is documented below.
      */
     readonly logConfig?: pulumi.Input<inputs.compute.SubnetworkLogConfig>;
     /**
@@ -289,6 +293,7 @@ export interface SubnetworkState {
      * reserved for Internal HTTP(S) Load Balancing. If unspecified, the
      * purpose defaults to PRIVATE.
      * If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the role.
+     * Possible values are `INTERNAL_HTTPS_LOAD_BALANCER` and `PRIVATE`.
      */
     readonly purpose?: pulumi.Input<string>;
     /**
@@ -301,6 +306,7 @@ export interface SubnetworkState {
      * or BACKUP. An ACTIVE subnetwork is one that is currently being used
      * for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that
      * is ready to be promoted to ACTIVE or is currently draining.
+     * Possible values are `ACTIVE` and `BACKUP`.
      */
     readonly role?: pulumi.Input<string>;
     /**
@@ -336,7 +342,8 @@ export interface SubnetworkArgs {
     /**
      * Denotes the logging options for the subnetwork flow logs. If logging is enabled
      * logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
-     * subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`  Structure is documented below.
+     * subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`
+     * Structure is documented below.
      */
     readonly logConfig?: pulumi.Input<inputs.compute.SubnetworkLogConfig>;
     /**
@@ -371,6 +378,7 @@ export interface SubnetworkArgs {
      * reserved for Internal HTTP(S) Load Balancing. If unspecified, the
      * purpose defaults to PRIVATE.
      * If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the role.
+     * Possible values are `INTERNAL_HTTPS_LOAD_BALANCER` and `PRIVATE`.
      */
     readonly purpose?: pulumi.Input<string>;
     /**
@@ -383,6 +391,7 @@ export interface SubnetworkArgs {
      * or BACKUP. An ACTIVE subnetwork is one that is currently being used
      * for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that
      * is ready to be promoted to ACTIVE or is currently draining.
+     * Possible values are `ACTIVE` and `BACKUP`.
      */
     readonly role?: pulumi.Input<string>;
     /**

@@ -37,7 +37,8 @@ namespace Pulumi.Gcp.DataCatalog.Outputs
         /// </summary>
         public readonly int? Order;
         /// <summary>
-        /// The type of value this tag field can contain.  Structure is documented below.
+        /// The type of value this tag field can contain.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.TagTemplateFieldType Type;
 

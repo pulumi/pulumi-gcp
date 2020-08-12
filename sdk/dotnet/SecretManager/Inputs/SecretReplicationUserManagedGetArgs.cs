@@ -16,7 +16,8 @@ namespace Pulumi.Gcp.SecretManager.Inputs
         private InputList<Inputs.SecretReplicationUserManagedReplicaGetArgs>? _replicas;
 
         /// <summary>
-        /// The list of Replicas for this Secret. Cannot be empty.  Structure is documented below.
+        /// The list of Replicas for this Secret. Cannot be empty.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.SecretReplicationUserManagedReplicaGetArgs> Replicas
         {

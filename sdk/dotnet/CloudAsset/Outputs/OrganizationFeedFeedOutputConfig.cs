@@ -14,7 +14,8 @@ namespace Pulumi.Gcp.CloudAsset.Outputs
     public sealed class OrganizationFeedFeedOutputConfig
     {
         /// <summary>
-        /// Destination on Cloud Pubsub.  Structure is documented below.
+        /// Destination on Cloud Pubsub.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.OrganizationFeedFeedOutputConfigPubsubDestination PubsubDestination;
 

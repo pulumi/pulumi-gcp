@@ -24,6 +24,8 @@ namespace Pulumi.Gcp.Datastore
     {
         /// <summary>
         /// Policy for including ancestors in the index.
+        /// Default value is `NONE`.
+        /// Possible values are `NONE` and `ALL_ANCESTORS`.
         /// </summary>
         [Output("ancestor")]
         public Output<string?> Ancestor { get; private set; } = null!;
@@ -48,7 +50,8 @@ namespace Pulumi.Gcp.Datastore
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// An ordered list of properties to index on.  Structure is documented below.
+        /// An ordered list of properties to index on.
+        /// Structure is documented below.
         /// </summary>
         [Output("properties")]
         public Output<ImmutableArray<Outputs.DataStoreIndexProperty>> Properties { get; private set; } = null!;
@@ -101,6 +104,8 @@ namespace Pulumi.Gcp.Datastore
     {
         /// <summary>
         /// Policy for including ancestors in the index.
+        /// Default value is `NONE`.
+        /// Possible values are `NONE` and `ALL_ANCESTORS`.
         /// </summary>
         [Input("ancestor")]
         public Input<string>? Ancestor { get; set; }
@@ -122,7 +127,8 @@ namespace Pulumi.Gcp.Datastore
         private InputList<Inputs.DataStoreIndexPropertyArgs>? _properties;
 
         /// <summary>
-        /// An ordered list of properties to index on.  Structure is documented below.
+        /// An ordered list of properties to index on.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.DataStoreIndexPropertyArgs> Properties
         {
@@ -139,6 +145,8 @@ namespace Pulumi.Gcp.Datastore
     {
         /// <summary>
         /// Policy for including ancestors in the index.
+        /// Default value is `NONE`.
+        /// Possible values are `NONE` and `ALL_ANCESTORS`.
         /// </summary>
         [Input("ancestor")]
         public Input<string>? Ancestor { get; set; }
@@ -166,7 +174,8 @@ namespace Pulumi.Gcp.Datastore
         private InputList<Inputs.DataStoreIndexPropertyGetArgs>? _properties;
 
         /// <summary>
-        /// An ordered list of properties to index on.  Structure is documented below.
+        /// An ordered list of properties to index on.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.DataStoreIndexPropertyGetArgs> Properties
         {

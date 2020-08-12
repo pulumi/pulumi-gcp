@@ -14,7 +14,8 @@ class Budget(pulumi.CustomResource):
     """
     Defines notifications that are sent on every update to the
     billing account's spend, regardless of the thresholds defined
-    using threshold rules.  Structure is documented below.
+    using threshold rules.
+    Structure is documented below.
 
       * `pubsubTopic` (`str`) - The name of the Cloud Pub/Sub topic where budget related
         messages will be published, in the form
@@ -26,11 +27,13 @@ class Budget(pulumi.CustomResource):
     """
     amount: pulumi.Output[dict]
     """
-    The budgeted amount for each usage period.  Structure is documented below.
+    The budgeted amount for each usage period.
+    Structure is documented below.
 
       * `specifiedAmount` (`dict`) - A specified amount to use as the budget. currencyCode is
         optional. If specified, it must match the currency of the
-        billing account. The currencyCode is provided on output.  Structure is documented below.
+        billing account. The currencyCode is provided on output.
+        Structure is documented below.
         * `currencyCode` (`str`) - The 3-letter currency code defined in ISO 4217.
         * `nanos` (`float`) - Number of nano (10^-9) units of the amount.
           The value must be between -999,999,999 and +999,999,999
@@ -49,10 +52,13 @@ class Budget(pulumi.CustomResource):
     budget_filter: pulumi.Output[dict]
     """
     Filters that define which resources are used to compute the actual
-    spend against the budget.  Structure is documented below.
+    spend against the budget.
+    Structure is documented below.
 
       * `creditTypesTreatment` (`str`) - Specifies how credits should be treated when determining spend
         for threshold calculations.
+        Default value is `INCLUDE_ALL_CREDITS`.
+        Possible values are `INCLUDE_ALL_CREDITS` and `EXCLUDE_ALL_CREDITS`.
       * `projects` (`list`) - A set of projects of the form projects/{project_id},
         specifying that usage from only this set of projects should be
         included in the budget. If omitted, the report will include
@@ -79,10 +85,13 @@ class Budget(pulumi.CustomResource):
     """
     Rules that trigger alerts (notifications of thresholds being
     crossed) when spend exceeds the specified percentages of the
-    budget.  Structure is documented below.
+    budget.
+    Structure is documented below.
 
       * `spendBasis` (`str`) - The type of basis used to determine if spend has passed
         the threshold.
+        Default value is `CURRENT_SPEND`.
+        Possible values are `CURRENT_SPEND` and `FORECASTED_SPEND`.
       * `thresholdPercent` (`float`) - Send an alert when this threshold is exceeded. This is a
         1.0-based percentage, so 0.5 = 50%. Must be >= 0.
     """
@@ -102,15 +111,19 @@ class Budget(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] all_updates_rule: Defines notifications that are sent on every update to the
                billing account's spend, regardless of the thresholds defined
-               using threshold rules.  Structure is documented below.
-        :param pulumi.Input[dict] amount: The budgeted amount for each usage period.  Structure is documented below.
+               using threshold rules.
+               Structure is documented below.
+        :param pulumi.Input[dict] amount: The budgeted amount for each usage period.
+               Structure is documented below.
         :param pulumi.Input[str] billing_account: ID of the billing account to set a budget on.
         :param pulumi.Input[dict] budget_filter: Filters that define which resources are used to compute the actual
-               spend against the budget.  Structure is documented below.
+               spend against the budget.
+               Structure is documented below.
         :param pulumi.Input[str] display_name: User data for display name in UI. Must be <= 60 chars.
         :param pulumi.Input[list] threshold_rules: Rules that trigger alerts (notifications of thresholds being
                crossed) when spend exceeds the specified percentages of the
-               budget.  Structure is documented below.
+               budget.
+               Structure is documented below.
 
         The **all_updates_rule** object supports the following:
 
@@ -126,7 +139,8 @@ class Budget(pulumi.CustomResource):
 
           * `specifiedAmount` (`pulumi.Input[dict]`) - A specified amount to use as the budget. currencyCode is
             optional. If specified, it must match the currency of the
-            billing account. The currencyCode is provided on output.  Structure is documented below.
+            billing account. The currencyCode is provided on output.
+            Structure is documented below.
             * `currencyCode` (`pulumi.Input[str]`) - The 3-letter currency code defined in ISO 4217.
             * `nanos` (`pulumi.Input[float]`) - Number of nano (10^-9) units of the amount.
               The value must be between -999,999,999 and +999,999,999
@@ -142,6 +156,8 @@ class Budget(pulumi.CustomResource):
 
           * `creditTypesTreatment` (`pulumi.Input[str]`) - Specifies how credits should be treated when determining spend
             for threshold calculations.
+            Default value is `INCLUDE_ALL_CREDITS`.
+            Possible values are `INCLUDE_ALL_CREDITS` and `EXCLUDE_ALL_CREDITS`.
           * `projects` (`pulumi.Input[list]`) - A set of projects of the form projects/{project_id},
             specifying that usage from only this set of projects should be
             included in the budget. If omitted, the report will include
@@ -159,6 +175,8 @@ class Budget(pulumi.CustomResource):
 
           * `spendBasis` (`pulumi.Input[str]`) - The type of basis used to determine if spend has passed
             the threshold.
+            Default value is `CURRENT_SPEND`.
+            Possible values are `CURRENT_SPEND` and `FORECASTED_SPEND`.
           * `thresholdPercent` (`pulumi.Input[float]`) - Send an alert when this threshold is exceeded. This is a
             1.0-based percentage, so 0.5 = 50%. Must be >= 0.
         """
@@ -209,17 +227,21 @@ class Budget(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] all_updates_rule: Defines notifications that are sent on every update to the
                billing account's spend, regardless of the thresholds defined
-               using threshold rules.  Structure is documented below.
-        :param pulumi.Input[dict] amount: The budgeted amount for each usage period.  Structure is documented below.
+               using threshold rules.
+               Structure is documented below.
+        :param pulumi.Input[dict] amount: The budgeted amount for each usage period.
+               Structure is documented below.
         :param pulumi.Input[str] billing_account: ID of the billing account to set a budget on.
         :param pulumi.Input[dict] budget_filter: Filters that define which resources are used to compute the actual
-               spend against the budget.  Structure is documented below.
+               spend against the budget.
+               Structure is documented below.
         :param pulumi.Input[str] display_name: User data for display name in UI. Must be <= 60 chars.
         :param pulumi.Input[str] name: Resource name of the budget. The resource name implies the scope of a budget. Values are of the form
                billingAccounts/{billingAccountId}/budgets/{budgetId}.
         :param pulumi.Input[list] threshold_rules: Rules that trigger alerts (notifications of thresholds being
                crossed) when spend exceeds the specified percentages of the
-               budget.  Structure is documented below.
+               budget.
+               Structure is documented below.
 
         The **all_updates_rule** object supports the following:
 
@@ -235,7 +257,8 @@ class Budget(pulumi.CustomResource):
 
           * `specifiedAmount` (`pulumi.Input[dict]`) - A specified amount to use as the budget. currencyCode is
             optional. If specified, it must match the currency of the
-            billing account. The currencyCode is provided on output.  Structure is documented below.
+            billing account. The currencyCode is provided on output.
+            Structure is documented below.
             * `currencyCode` (`pulumi.Input[str]`) - The 3-letter currency code defined in ISO 4217.
             * `nanos` (`pulumi.Input[float]`) - Number of nano (10^-9) units of the amount.
               The value must be between -999,999,999 and +999,999,999
@@ -251,6 +274,8 @@ class Budget(pulumi.CustomResource):
 
           * `creditTypesTreatment` (`pulumi.Input[str]`) - Specifies how credits should be treated when determining spend
             for threshold calculations.
+            Default value is `INCLUDE_ALL_CREDITS`.
+            Possible values are `INCLUDE_ALL_CREDITS` and `EXCLUDE_ALL_CREDITS`.
           * `projects` (`pulumi.Input[list]`) - A set of projects of the form projects/{project_id},
             specifying that usage from only this set of projects should be
             included in the budget. If omitted, the report will include
@@ -268,6 +293,8 @@ class Budget(pulumi.CustomResource):
 
           * `spendBasis` (`pulumi.Input[str]`) - The type of basis used to determine if spend has passed
             the threshold.
+            Default value is `CURRENT_SPEND`.
+            Possible values are `CURRENT_SPEND` and `FORECASTED_SPEND`.
           * `thresholdPercent` (`pulumi.Input[float]`) - Send an alert when this threshold is exceeded. This is a
             1.0-based percentage, so 0.5 = 50%. Must be >= 0.
         """

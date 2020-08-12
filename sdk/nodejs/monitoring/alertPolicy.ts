@@ -50,13 +50,15 @@ export class AlertPolicy extends pulumi.CustomResource {
     /**
      * How to combine the results of multiple conditions to
      * determine if an incident should be opened.
+     * Possible values are `AND`, `OR`, and `AND_WITH_MATCHING_RESOURCE`.
      */
     public readonly combiner!: pulumi.Output<string>;
     /**
      * A list of conditions for the policy. The conditions are combined by
      * AND or OR according to the combiner field. If the combined conditions
      * evaluate to true, then an incident is created. A policy can have from
-     * one to six conditions.  Structure is documented below.
+     * one to six conditions.
+     * Structure is documented below.
      */
     public readonly conditions!: pulumi.Output<outputs.monitoring.AlertPolicyCondition[]>;
     /**
@@ -76,7 +78,8 @@ export class AlertPolicy extends pulumi.CustomResource {
      * A short name or phrase used to identify the policy in dashboards,
      * notifications, and incidents. To avoid confusion, don't use the same
      * display name for multiple policies in the same project. The name is
-     * limited to 512 Unicode characters.  Structure is documented below.
+     * limited to 512 Unicode characters.
+     * Structure is documented below.
      */
     public readonly documentation!: pulumi.Output<outputs.monitoring.AlertPolicyDocumentation | undefined>;
     /**
@@ -179,13 +182,15 @@ export interface AlertPolicyState {
     /**
      * How to combine the results of multiple conditions to
      * determine if an incident should be opened.
+     * Possible values are `AND`, `OR`, and `AND_WITH_MATCHING_RESOURCE`.
      */
     readonly combiner?: pulumi.Input<string>;
     /**
      * A list of conditions for the policy. The conditions are combined by
      * AND or OR according to the combiner field. If the combined conditions
      * evaluate to true, then an incident is created. A policy can have from
-     * one to six conditions.  Structure is documented below.
+     * one to six conditions.
+     * Structure is documented below.
      */
     readonly conditions?: pulumi.Input<pulumi.Input<inputs.monitoring.AlertPolicyCondition>[]>;
     /**
@@ -205,7 +210,8 @@ export interface AlertPolicyState {
      * A short name or phrase used to identify the policy in dashboards,
      * notifications, and incidents. To avoid confusion, don't use the same
      * display name for multiple policies in the same project. The name is
-     * limited to 512 Unicode characters.  Structure is documented below.
+     * limited to 512 Unicode characters.
+     * Structure is documented below.
      */
     readonly documentation?: pulumi.Input<inputs.monitoring.AlertPolicyDocumentation>;
     /**
@@ -254,13 +260,15 @@ export interface AlertPolicyArgs {
     /**
      * How to combine the results of multiple conditions to
      * determine if an incident should be opened.
+     * Possible values are `AND`, `OR`, and `AND_WITH_MATCHING_RESOURCE`.
      */
     readonly combiner: pulumi.Input<string>;
     /**
      * A list of conditions for the policy. The conditions are combined by
      * AND or OR according to the combiner field. If the combined conditions
      * evaluate to true, then an incident is created. A policy can have from
-     * one to six conditions.  Structure is documented below.
+     * one to six conditions.
+     * Structure is documented below.
      */
     readonly conditions: pulumi.Input<pulumi.Input<inputs.monitoring.AlertPolicyCondition>[]>;
     /**
@@ -275,7 +283,8 @@ export interface AlertPolicyArgs {
      * A short name or phrase used to identify the policy in dashboards,
      * notifications, and incidents. To avoid confusion, don't use the same
      * display name for multiple policies in the same project. The name is
-     * limited to 512 Unicode characters.  Structure is documented below.
+     * limited to 512 Unicode characters.
+     * Structure is documented below.
      */
     readonly documentation?: pulumi.Input<inputs.monitoring.AlertPolicyDocumentation>;
     /**

@@ -19,6 +19,7 @@ namespace Pulumi.Gcp.AppEngine.Outputs
         public readonly ImmutableDictionary<string, string> Allocations;
         /// <summary>
         /// Mechanism used to determine which version a request is sent to. The traffic selection algorithm will be stable for either type until allocations are changed.
+        /// Possible values are `UNSPECIFIED`, `COOKIE`, `IP`, and `RANDOM`.
         /// </summary>
         public readonly string? ShardBy;
 

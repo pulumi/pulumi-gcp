@@ -135,7 +135,8 @@ export class VPNTunnel extends pulumi.CustomResource {
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
      * Shared secret used to set the secure session between the Cloud VPN
-     * gateway and the peer VPN gateway.  **Note**: This property is sensitive and will not be displayed in the plan.
+     * gateway and the peer VPN gateway.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      */
     public readonly sharedSecret!: pulumi.Output<string>;
     /**
@@ -329,7 +330,8 @@ export interface VPNTunnelState {
     readonly selfLink?: pulumi.Input<string>;
     /**
      * Shared secret used to set the secure session between the Cloud VPN
-     * gateway and the peer VPN gateway.  **Note**: This property is sensitive and will not be displayed in the plan.
+     * gateway and the peer VPN gateway.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      */
     readonly sharedSecret?: pulumi.Input<string>;
     /**
@@ -433,7 +435,8 @@ export interface VPNTunnelArgs {
     readonly router?: pulumi.Input<string>;
     /**
      * Shared secret used to set the secure session between the Cloud VPN
-     * gateway and the peer VPN gateway.  **Note**: This property is sensitive and will not be displayed in the plan.
+     * gateway and the peer VPN gateway.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      */
     readonly sharedSecret: pulumi.Input<string>;
     /**

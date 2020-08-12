@@ -20,6 +20,8 @@ namespace Pulumi.Gcp.Kms.Outputs
         public readonly string Algorithm;
         /// <summary>
         /// The protection level to use when creating a version based on this template.
+        /// Default value is `SOFTWARE`.
+        /// Possible values are `SOFTWARE` and `HSM`.
         /// </summary>
         public readonly string? ProtectionLevel;
 

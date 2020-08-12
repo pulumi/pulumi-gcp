@@ -19,7 +19,8 @@ namespace Pulumi.Gcp.GameServices.Inputs
         public Input<string>? ConfigVersion { get; set; }
 
         /// <summary>
-        /// Selection by realms.  Structure is documented below.
+        /// Selection by realms.
+        /// Structure is documented below.
         /// </summary>
         [Input("realmsSelector")]
         public Input<Inputs.GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorGetArgs>? RealmsSelector { get; set; }

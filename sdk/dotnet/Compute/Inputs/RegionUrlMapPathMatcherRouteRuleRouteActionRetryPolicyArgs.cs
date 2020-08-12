@@ -19,7 +19,8 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<int> NumRetries { get; set; } = null!;
 
         /// <summary>
-        /// Specifies a non-zero timeout per retry attempt.  Structure is documented below.
+        /// Specifies a non-zero timeout per retry attempt.
+        /// Structure is documented below.
         /// </summary>
         [Input("perTryTimeout")]
         public Input<Inputs.RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgs>? PerTryTimeout { get; set; }

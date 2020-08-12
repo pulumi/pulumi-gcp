@@ -20,7 +20,8 @@ namespace Pulumi.Gcp.OsConfig.Outputs
         /// </summary>
         public readonly bool? AllowInsecure;
         /// <summary>
-        /// A Google Cloud Storage artifact.  Structure is documented below.
+        /// A Google Cloud Storage artifact.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.GuestPoliciesRecipeArtifactGcs? Gcs;
         /// <summary>
@@ -29,7 +30,8 @@ namespace Pulumi.Gcp.OsConfig.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A generic remote artifact.  Structure is documented below.
+        /// A generic remote artifact.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.GuestPoliciesRecipeArtifactRemote? Remote;
 

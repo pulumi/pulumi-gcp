@@ -14,7 +14,8 @@ namespace Pulumi.Gcp.Monitoring.Outputs
     public sealed class SloBasicSli
     {
         /// <summary>
-        /// Parameters for a latency threshold SLI.  Structure is documented below.
+        /// Parameters for a latency threshold SLI.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.SloBasicSliLatency Latency;
         /// <summary>

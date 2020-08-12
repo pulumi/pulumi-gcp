@@ -35,7 +35,8 @@ export class Environment extends pulumi.CustomResource {
     }
 
     /**
-     * Use a container image to start the notebook instance.  Structure is documented below.
+     * Use a container image to start the notebook instance.
+     * Structure is documented below.
      */
     public readonly containerImage!: pulumi.Output<outputs.notebooks.EnvironmentContainerImage | undefined>;
     /**
@@ -70,7 +71,8 @@ export class Environment extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Use a Compute Engine VM image to start the notebook instance.  Structure is documented below.
+     * Use a Compute Engine VM image to start the notebook instance.
+     * Structure is documented below.
      */
     public readonly vmImage!: pulumi.Output<outputs.notebooks.EnvironmentVmImage | undefined>;
 
@@ -126,7 +128,8 @@ export class Environment extends pulumi.CustomResource {
  */
 export interface EnvironmentState {
     /**
-     * Use a container image to start the notebook instance.  Structure is documented below.
+     * Use a container image to start the notebook instance.
+     * Structure is documented below.
      */
     readonly containerImage?: pulumi.Input<inputs.notebooks.EnvironmentContainerImage>;
     /**
@@ -161,7 +164,8 @@ export interface EnvironmentState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * Use a Compute Engine VM image to start the notebook instance.  Structure is documented below.
+     * Use a Compute Engine VM image to start the notebook instance.
+     * Structure is documented below.
      */
     readonly vmImage?: pulumi.Input<inputs.notebooks.EnvironmentVmImage>;
 }
@@ -171,7 +175,8 @@ export interface EnvironmentState {
  */
 export interface EnvironmentArgs {
     /**
-     * Use a container image to start the notebook instance.  Structure is documented below.
+     * Use a container image to start the notebook instance.
+     * Structure is documented below.
      */
     readonly containerImage?: pulumi.Input<inputs.notebooks.EnvironmentContainerImage>;
     /**
@@ -202,7 +207,8 @@ export interface EnvironmentArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * Use a Compute Engine VM image to start the notebook instance.  Structure is documented below.
+     * Use a Compute Engine VM image to start the notebook instance.
+     * Structure is documented below.
      */
     readonly vmImage?: pulumi.Input<inputs.notebooks.EnvironmentVmImage>;
 }

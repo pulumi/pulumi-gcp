@@ -33,7 +33,7 @@ type InstanceIamMember struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The role that should be applied. Only one
 	// `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
-	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
 	Role pulumi.StringOutput `pulumi:"role"`
 }
 
@@ -85,7 +85,7 @@ type instanceIamMemberState struct {
 	Project *string `pulumi:"project"`
 	// The role that should be applied. Only one
 	// `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
-	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
 	Role *string `pulumi:"role"`
 }
 
@@ -101,7 +101,7 @@ type InstanceIamMemberState struct {
 	Project pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
-	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
 	Role pulumi.StringPtrInput
 }
 
@@ -119,7 +119,7 @@ type instanceIamMemberArgs struct {
 	Project *string `pulumi:"project"`
 	// The role that should be applied. Only one
 	// `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
-	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
 	Role string `pulumi:"role"`
 }
 
@@ -134,7 +134,7 @@ type InstanceIamMemberArgs struct {
 	Project pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
-	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
 	Role pulumi.StringInput
 }
 

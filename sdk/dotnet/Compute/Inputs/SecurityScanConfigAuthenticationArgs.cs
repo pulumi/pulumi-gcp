@@ -13,13 +13,15 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class SecurityScanConfigAuthenticationArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Describes authentication configuration that uses a custom account.  Structure is documented below.
+        /// Describes authentication configuration that uses a custom account.
+        /// Structure is documented below.
         /// </summary>
         [Input("customAccount")]
         public Input<Inputs.SecurityScanConfigAuthenticationCustomAccountArgs>? CustomAccount { get; set; }
 
         /// <summary>
-        /// Describes authentication configuration that uses a Google account.  Structure is documented below.
+        /// Describes authentication configuration that uses a Google account.
+        /// Structure is documented below.
         /// </summary>
         [Input("googleAccount")]
         public Input<Inputs.SecurityScanConfigAuthenticationGoogleAccountArgs>? GoogleAccount { get; set; }

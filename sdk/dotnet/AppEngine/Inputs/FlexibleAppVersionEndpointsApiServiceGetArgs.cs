@@ -37,6 +37,8 @@ namespace Pulumi.Gcp.AppEngine.Inputs
 
         /// <summary>
         /// Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted.
+        /// Default value is `FIXED`.
+        /// Possible values are `FIXED` and `MANAGED`.
         /// </summary>
         [Input("rolloutStrategy")]
         public Input<string>? RolloutStrategy { get; set; }

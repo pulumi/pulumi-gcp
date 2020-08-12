@@ -13,7 +13,8 @@ class EngineModel(pulumi.CustomResource):
     default_version: pulumi.Output[dict]
     """
     The default version of the model. This version will be used to handle
-    prediction requests that do not specify a version.  Structure is documented below.
+    prediction requests that do not specify a version.
+    Structure is documented below.
 
       * `name` (`str`) - The name specified for the version when it was created.
     """
@@ -59,7 +60,8 @@ class EngineModel(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] default_version: The default version of the model. This version will be used to handle
-               prediction requests that do not specify a version.  Structure is documented below.
+               prediction requests that do not specify a version.
+               Structure is documented below.
         :param pulumi.Input[str] description: The description specified for the model when it was created.
         :param pulumi.Input[dict] labels: One or more labels that you can add, to organize your models.
         :param pulumi.Input[str] name: The name specified for the version when it was created.
@@ -115,7 +117,8 @@ class EngineModel(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] default_version: The default version of the model. This version will be used to handle
-               prediction requests that do not specify a version.  Structure is documented below.
+               prediction requests that do not specify a version.
+               Structure is documented below.
         :param pulumi.Input[str] description: The description specified for the model when it was created.
         :param pulumi.Input[dict] labels: One or more labels that you can add, to organize your models.
         :param pulumi.Input[str] name: The name specified for the version when it was created.

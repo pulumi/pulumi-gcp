@@ -13,7 +13,8 @@ class Queue(pulumi.CustomResource):
     app_engine_routing_override: pulumi.Output[dict]
     """
     Overrides for task-level appEngineRouting. These settings apply only
-    to App Engine tasks in this queue  Structure is documented below.
+    to App Engine tasks in this queue
+    Structure is documented below.
 
       * `host` (`str`) - -
         The host that the task is sent to.
@@ -45,7 +46,8 @@ class Queue(pulumi.CustomResource):
     * User-specified throttling: rateLimits, retryConfig, and the queue's state.
     * System throttling due to 429 (Too Many Requests) or 503 (Service
     Unavailable) responses from the worker, high error rates, or to
-    smooth sudden large traffic spikes.  Structure is documented below.
+    smooth sudden large traffic spikes.
+    Structure is documented below.
 
       * `maxBurstSize` (`float`) - -
         The max burst size.
@@ -62,7 +64,8 @@ class Queue(pulumi.CustomResource):
     """
     retry_config: pulumi.Output[dict]
     """
-    Settings that determine the retry behavior.  Structure is documented below.
+    Settings that determine the retry behavior.
+    Structure is documented below.
 
       * `maxAttempts` (`float`) - Number of attempts per task.
         Cloud Tasks will attempt the task maxAttempts times (that is, if
@@ -97,7 +100,8 @@ class Queue(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] app_engine_routing_override: Overrides for task-level appEngineRouting. These settings apply only
-               to App Engine tasks in this queue  Structure is documented below.
+               to App Engine tasks in this queue
+               Structure is documented below.
         :param pulumi.Input[str] location: The location of the queue
         :param pulumi.Input[str] name: The queue name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -108,8 +112,10 @@ class Queue(pulumi.CustomResource):
                * User-specified throttling: rateLimits, retryConfig, and the queue's state.
                * System throttling due to 429 (Too Many Requests) or 503 (Service
                Unavailable) responses from the worker, high error rates, or to
-               smooth sudden large traffic spikes.  Structure is documented below.
-        :param pulumi.Input[dict] retry_config: Settings that determine the retry behavior.  Structure is documented below.
+               smooth sudden large traffic spikes.
+               Structure is documented below.
+        :param pulumi.Input[dict] retry_config: Settings that determine the retry behavior.
+               Structure is documented below.
 
         The **app_engine_routing_override** object supports the following:
 
@@ -204,7 +210,8 @@ class Queue(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] app_engine_routing_override: Overrides for task-level appEngineRouting. These settings apply only
-               to App Engine tasks in this queue  Structure is documented below.
+               to App Engine tasks in this queue
+               Structure is documented below.
         :param pulumi.Input[str] location: The location of the queue
         :param pulumi.Input[str] name: The queue name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -215,8 +222,10 @@ class Queue(pulumi.CustomResource):
                * User-specified throttling: rateLimits, retryConfig, and the queue's state.
                * System throttling due to 429 (Too Many Requests) or 503 (Service
                Unavailable) responses from the worker, high error rates, or to
-               smooth sudden large traffic spikes.  Structure is documented below.
-        :param pulumi.Input[dict] retry_config: Settings that determine the retry behavior.  Structure is documented below.
+               smooth sudden large traffic spikes.
+               Structure is documented below.
+        :param pulumi.Input[dict] retry_config: Settings that determine the retry behavior.
+               Structure is documented below.
 
         The **app_engine_routing_override** object supports the following:
 

@@ -34,10 +34,12 @@ type Slo struct {
 	// SLIs are used to measure and calculate the quality of the Service's
 	// performance with respect to a single aspect of service quality.
 	// Exactly one of the following must be set:
-	// `basicSli`, `requestBasedSli`, `windowsBasedSli`  Structure is documented below.
+	// `basicSli`, `requestBasedSli`, `windowsBasedSli`
+	// Structure is documented below.
 	BasicSli SloBasicSliPtrOutput `pulumi:"basicSli"`
 	// A calendar period, semantically "since the start of the current
 	// <calendarPeriod>".
+	// Possible values are `DAY`, `WEEK`, `FORTNIGHT`, and `MONTH`.
 	CalendarPeriod pulumi.StringPtrOutput `pulumi:"calendarPeriod"`
 	// Name used for UI elements listing this SLO.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
@@ -56,7 +58,8 @@ type Slo struct {
 	// It is used to measure and calculate the quality of the Service's
 	// performance with respect to a single aspect of service quality.
 	// Exactly one of the following must be set:
-	// `basicSli`, `requestBasedSli`, `windowsBasedSli`  Structure is documented below.
+	// `basicSli`, `requestBasedSli`, `windowsBasedSli`
+	// Structure is documented below.
 	RequestBasedSli SloRequestBasedSliPtrOutput `pulumi:"requestBasedSli"`
 	// A rolling time period, semantically "in the past X days".
 	// Must be between 1 to 30 days, inclusive.
@@ -72,7 +75,8 @@ type Slo struct {
 	// the quality of the Service's performance with respect to a single
 	// aspect of service quality.
 	// Exactly one of the following must be set:
-	// `basicSli`, `requestBasedSli`, `windowsBasedSli`  Structure is documented below.
+	// `basicSli`, `requestBasedSli`, `windowsBasedSli`
+	// Structure is documented below.
 	WindowsBasedSli SloWindowsBasedSliPtrOutput `pulumi:"windowsBasedSli"`
 }
 
@@ -115,10 +119,12 @@ type sloState struct {
 	// SLIs are used to measure and calculate the quality of the Service's
 	// performance with respect to a single aspect of service quality.
 	// Exactly one of the following must be set:
-	// `basicSli`, `requestBasedSli`, `windowsBasedSli`  Structure is documented below.
+	// `basicSli`, `requestBasedSli`, `windowsBasedSli`
+	// Structure is documented below.
 	BasicSli *SloBasicSli `pulumi:"basicSli"`
 	// A calendar period, semantically "since the start of the current
 	// <calendarPeriod>".
+	// Possible values are `DAY`, `WEEK`, `FORTNIGHT`, and `MONTH`.
 	CalendarPeriod *string `pulumi:"calendarPeriod"`
 	// Name used for UI elements listing this SLO.
 	DisplayName *string `pulumi:"displayName"`
@@ -137,7 +143,8 @@ type sloState struct {
 	// It is used to measure and calculate the quality of the Service's
 	// performance with respect to a single aspect of service quality.
 	// Exactly one of the following must be set:
-	// `basicSli`, `requestBasedSli`, `windowsBasedSli`  Structure is documented below.
+	// `basicSli`, `requestBasedSli`, `windowsBasedSli`
+	// Structure is documented below.
 	RequestBasedSli *SloRequestBasedSli `pulumi:"requestBasedSli"`
 	// A rolling time period, semantically "in the past X days".
 	// Must be between 1 to 30 days, inclusive.
@@ -153,7 +160,8 @@ type sloState struct {
 	// the quality of the Service's performance with respect to a single
 	// aspect of service quality.
 	// Exactly one of the following must be set:
-	// `basicSli`, `requestBasedSli`, `windowsBasedSli`  Structure is documented below.
+	// `basicSli`, `requestBasedSli`, `windowsBasedSli`
+	// Structure is documented below.
 	WindowsBasedSli *SloWindowsBasedSli `pulumi:"windowsBasedSli"`
 }
 
@@ -163,10 +171,12 @@ type SloState struct {
 	// SLIs are used to measure and calculate the quality of the Service's
 	// performance with respect to a single aspect of service quality.
 	// Exactly one of the following must be set:
-	// `basicSli`, `requestBasedSli`, `windowsBasedSli`  Structure is documented below.
+	// `basicSli`, `requestBasedSli`, `windowsBasedSli`
+	// Structure is documented below.
 	BasicSli SloBasicSliPtrInput
 	// A calendar period, semantically "since the start of the current
 	// <calendarPeriod>".
+	// Possible values are `DAY`, `WEEK`, `FORTNIGHT`, and `MONTH`.
 	CalendarPeriod pulumi.StringPtrInput
 	// Name used for UI elements listing this SLO.
 	DisplayName pulumi.StringPtrInput
@@ -185,7 +195,8 @@ type SloState struct {
 	// It is used to measure and calculate the quality of the Service's
 	// performance with respect to a single aspect of service quality.
 	// Exactly one of the following must be set:
-	// `basicSli`, `requestBasedSli`, `windowsBasedSli`  Structure is documented below.
+	// `basicSli`, `requestBasedSli`, `windowsBasedSli`
+	// Structure is documented below.
 	RequestBasedSli SloRequestBasedSliPtrInput
 	// A rolling time period, semantically "in the past X days".
 	// Must be between 1 to 30 days, inclusive.
@@ -201,7 +212,8 @@ type SloState struct {
 	// the quality of the Service's performance with respect to a single
 	// aspect of service quality.
 	// Exactly one of the following must be set:
-	// `basicSli`, `requestBasedSli`, `windowsBasedSli`  Structure is documented below.
+	// `basicSli`, `requestBasedSli`, `windowsBasedSli`
+	// Structure is documented below.
 	WindowsBasedSli SloWindowsBasedSliPtrInput
 }
 
@@ -215,10 +227,12 @@ type sloArgs struct {
 	// SLIs are used to measure and calculate the quality of the Service's
 	// performance with respect to a single aspect of service quality.
 	// Exactly one of the following must be set:
-	// `basicSli`, `requestBasedSli`, `windowsBasedSli`  Structure is documented below.
+	// `basicSli`, `requestBasedSli`, `windowsBasedSli`
+	// Structure is documented below.
 	BasicSli *SloBasicSli `pulumi:"basicSli"`
 	// A calendar period, semantically "since the start of the current
 	// <calendarPeriod>".
+	// Possible values are `DAY`, `WEEK`, `FORTNIGHT`, and `MONTH`.
 	CalendarPeriod *string `pulumi:"calendarPeriod"`
 	// Name used for UI elements listing this SLO.
 	DisplayName *string `pulumi:"displayName"`
@@ -234,7 +248,8 @@ type sloArgs struct {
 	// It is used to measure and calculate the quality of the Service's
 	// performance with respect to a single aspect of service quality.
 	// Exactly one of the following must be set:
-	// `basicSli`, `requestBasedSli`, `windowsBasedSli`  Structure is documented below.
+	// `basicSli`, `requestBasedSli`, `windowsBasedSli`
+	// Structure is documented below.
 	RequestBasedSli *SloRequestBasedSli `pulumi:"requestBasedSli"`
 	// A rolling time period, semantically "in the past X days".
 	// Must be between 1 to 30 days, inclusive.
@@ -250,7 +265,8 @@ type sloArgs struct {
 	// the quality of the Service's performance with respect to a single
 	// aspect of service quality.
 	// Exactly one of the following must be set:
-	// `basicSli`, `requestBasedSli`, `windowsBasedSli`  Structure is documented below.
+	// `basicSli`, `requestBasedSli`, `windowsBasedSli`
+	// Structure is documented below.
 	WindowsBasedSli *SloWindowsBasedSli `pulumi:"windowsBasedSli"`
 }
 
@@ -261,10 +277,12 @@ type SloArgs struct {
 	// SLIs are used to measure and calculate the quality of the Service's
 	// performance with respect to a single aspect of service quality.
 	// Exactly one of the following must be set:
-	// `basicSli`, `requestBasedSli`, `windowsBasedSli`  Structure is documented below.
+	// `basicSli`, `requestBasedSli`, `windowsBasedSli`
+	// Structure is documented below.
 	BasicSli SloBasicSliPtrInput
 	// A calendar period, semantically "since the start of the current
 	// <calendarPeriod>".
+	// Possible values are `DAY`, `WEEK`, `FORTNIGHT`, and `MONTH`.
 	CalendarPeriod pulumi.StringPtrInput
 	// Name used for UI elements listing this SLO.
 	DisplayName pulumi.StringPtrInput
@@ -280,7 +298,8 @@ type SloArgs struct {
 	// It is used to measure and calculate the quality of the Service's
 	// performance with respect to a single aspect of service quality.
 	// Exactly one of the following must be set:
-	// `basicSli`, `requestBasedSli`, `windowsBasedSli`  Structure is documented below.
+	// `basicSli`, `requestBasedSli`, `windowsBasedSli`
+	// Structure is documented below.
 	RequestBasedSli SloRequestBasedSliPtrInput
 	// A rolling time period, semantically "in the past X days".
 	// Must be between 1 to 30 days, inclusive.
@@ -296,7 +315,8 @@ type SloArgs struct {
 	// the quality of the Service's performance with respect to a single
 	// aspect of service quality.
 	// Exactly one of the following must be set:
-	// `basicSli`, `requestBasedSli`, `windowsBasedSli`  Structure is documented below.
+	// `basicSli`, `requestBasedSli`, `windowsBasedSli`
+	// Structure is documented below.
 	WindowsBasedSli SloWindowsBasedSliPtrInput
 }
 

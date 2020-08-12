@@ -56,7 +56,8 @@ export class Tag extends pulumi.CustomResource {
     public readonly column!: pulumi.Output<string | undefined>;
     /**
      * This maps the ID of a tag field to the value of and additional information about that field.
-     * Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.  Structure is documented below.
+     * Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
+     * Structure is documented below.
      */
     public readonly fields!: pulumi.Output<outputs.datacatalog.TagField[]>;
     /**
@@ -139,7 +140,8 @@ export interface TagState {
     readonly column?: pulumi.Input<string>;
     /**
      * This maps the ID of a tag field to the value of and additional information about that field.
-     * Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.  Structure is documented below.
+     * Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
+     * Structure is documented below.
      */
     readonly fields?: pulumi.Input<pulumi.Input<inputs.datacatalog.TagField>[]>;
     /**
@@ -179,7 +181,8 @@ export interface TagArgs {
     readonly column?: pulumi.Input<string>;
     /**
      * This maps the ID of a tag field to the value of and additional information about that field.
-     * Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.  Structure is documented below.
+     * Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
+     * Structure is documented below.
      */
     readonly fields: pulumi.Input<pulumi.Input<inputs.datacatalog.TagField>[]>;
     /**

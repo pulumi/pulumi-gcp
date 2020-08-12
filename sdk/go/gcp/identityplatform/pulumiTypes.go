@@ -11,7 +11,8 @@ import (
 )
 
 type InboundSamlConfigIdpConfig struct {
-	// The IdP's certificate data to verify the signature in the SAMLResponse issued by the IDP.  Structure is documented below.
+	// The IdP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
+	// Structure is documented below.
 	IdpCertificates []InboundSamlConfigIdpConfigIdpCertificate `pulumi:"idpCertificates"`
 	// Unique identifier for all SAML entities
 	IdpEntityId string `pulumi:"idpEntityId"`
@@ -33,7 +34,8 @@ type InboundSamlConfigIdpConfigInput interface {
 }
 
 type InboundSamlConfigIdpConfigArgs struct {
-	// The IdP's certificate data to verify the signature in the SAMLResponse issued by the IDP.  Structure is documented below.
+	// The IdP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
+	// Structure is documented below.
 	IdpCertificates InboundSamlConfigIdpConfigIdpCertificateArrayInput `pulumi:"idpCertificates"`
 	// Unique identifier for all SAML entities
 	IdpEntityId pulumi.StringInput `pulumi:"idpEntityId"`
@@ -120,7 +122,8 @@ func (o InboundSamlConfigIdpConfigOutput) ToInboundSamlConfigIdpConfigPtrOutputW
 	}).(InboundSamlConfigIdpConfigPtrOutput)
 }
 
-// The IdP's certificate data to verify the signature in the SAMLResponse issued by the IDP.  Structure is documented below.
+// The IdP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
+// Structure is documented below.
 func (o InboundSamlConfigIdpConfigOutput) IdpCertificates() InboundSamlConfigIdpConfigIdpCertificateArrayOutput {
 	return o.ApplyT(func(v InboundSamlConfigIdpConfig) []InboundSamlConfigIdpConfigIdpCertificate {
 		return v.IdpCertificates
@@ -160,7 +163,8 @@ func (o InboundSamlConfigIdpConfigPtrOutput) Elem() InboundSamlConfigIdpConfigOu
 	return o.ApplyT(func(v *InboundSamlConfigIdpConfig) InboundSamlConfigIdpConfig { return *v }).(InboundSamlConfigIdpConfigOutput)
 }
 
-// The IdP's certificate data to verify the signature in the SAMLResponse issued by the IDP.  Structure is documented below.
+// The IdP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
+// Structure is documented below.
 func (o InboundSamlConfigIdpConfigPtrOutput) IdpCertificates() InboundSamlConfigIdpConfigIdpCertificateArrayOutput {
 	return o.ApplyT(func(v *InboundSamlConfigIdpConfig) []InboundSamlConfigIdpConfigIdpCertificate {
 		if v == nil {
@@ -304,7 +308,8 @@ type InboundSamlConfigSpConfig struct {
 	// Callback URI where responses from IDP are handled. Must start with `https://`.
 	CallbackUri *string `pulumi:"callbackUri"`
 	// -
-	// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.  Structure is documented below.
+	// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
+	// Structure is documented below.
 	SpCertificates []InboundSamlConfigSpConfigSpCertificate `pulumi:"spCertificates"`
 	// Unique identifier for all SAML entities.
 	SpEntityId *string `pulumi:"spEntityId"`
@@ -325,7 +330,8 @@ type InboundSamlConfigSpConfigArgs struct {
 	// Callback URI where responses from IDP are handled. Must start with `https://`.
 	CallbackUri pulumi.StringPtrInput `pulumi:"callbackUri"`
 	// -
-	// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.  Structure is documented below.
+	// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
+	// Structure is documented below.
 	SpCertificates InboundSamlConfigSpConfigSpCertificateArrayInput `pulumi:"spCertificates"`
 	// Unique identifier for all SAML entities.
 	SpEntityId pulumi.StringPtrInput `pulumi:"spEntityId"`
@@ -414,7 +420,8 @@ func (o InboundSamlConfigSpConfigOutput) CallbackUri() pulumi.StringPtrOutput {
 }
 
 // -
-// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.  Structure is documented below.
+// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
+// Structure is documented below.
 func (o InboundSamlConfigSpConfigOutput) SpCertificates() InboundSamlConfigSpConfigSpCertificateArrayOutput {
 	return o.ApplyT(func(v InboundSamlConfigSpConfig) []InboundSamlConfigSpConfigSpCertificate { return v.SpCertificates }).(InboundSamlConfigSpConfigSpCertificateArrayOutput)
 }
@@ -453,7 +460,8 @@ func (o InboundSamlConfigSpConfigPtrOutput) CallbackUri() pulumi.StringPtrOutput
 }
 
 // -
-// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.  Structure is documented below.
+// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
+// Structure is documented below.
 func (o InboundSamlConfigSpConfigPtrOutput) SpCertificates() InboundSamlConfigSpConfigSpCertificateArrayOutput {
 	return o.ApplyT(func(v *InboundSamlConfigSpConfig) []InboundSamlConfigSpConfigSpCertificate {
 		if v == nil {
@@ -574,7 +582,8 @@ func (o InboundSamlConfigSpConfigSpCertificateArrayOutput) Index(i pulumi.IntInp
 }
 
 type TenantInboundSamlConfigIdpConfig struct {
-	// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.  Structure is documented below.
+	// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
+	// Structure is documented below.
 	IdpCertificates []TenantInboundSamlConfigIdpConfigIdpCertificate `pulumi:"idpCertificates"`
 	// Unique identifier for all SAML entities
 	IdpEntityId string `pulumi:"idpEntityId"`
@@ -596,7 +605,8 @@ type TenantInboundSamlConfigIdpConfigInput interface {
 }
 
 type TenantInboundSamlConfigIdpConfigArgs struct {
-	// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.  Structure is documented below.
+	// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
+	// Structure is documented below.
 	IdpCertificates TenantInboundSamlConfigIdpConfigIdpCertificateArrayInput `pulumi:"idpCertificates"`
 	// Unique identifier for all SAML entities
 	IdpEntityId pulumi.StringInput `pulumi:"idpEntityId"`
@@ -683,7 +693,8 @@ func (o TenantInboundSamlConfigIdpConfigOutput) ToTenantInboundSamlConfigIdpConf
 	}).(TenantInboundSamlConfigIdpConfigPtrOutput)
 }
 
-// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.  Structure is documented below.
+// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
+// Structure is documented below.
 func (o TenantInboundSamlConfigIdpConfigOutput) IdpCertificates() TenantInboundSamlConfigIdpConfigIdpCertificateArrayOutput {
 	return o.ApplyT(func(v TenantInboundSamlConfigIdpConfig) []TenantInboundSamlConfigIdpConfigIdpCertificate {
 		return v.IdpCertificates
@@ -723,7 +734,8 @@ func (o TenantInboundSamlConfigIdpConfigPtrOutput) Elem() TenantInboundSamlConfi
 	return o.ApplyT(func(v *TenantInboundSamlConfigIdpConfig) TenantInboundSamlConfigIdpConfig { return *v }).(TenantInboundSamlConfigIdpConfigOutput)
 }
 
-// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.  Structure is documented below.
+// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
+// Structure is documented below.
 func (o TenantInboundSamlConfigIdpConfigPtrOutput) IdpCertificates() TenantInboundSamlConfigIdpConfigIdpCertificateArrayOutput {
 	return o.ApplyT(func(v *TenantInboundSamlConfigIdpConfig) []TenantInboundSamlConfigIdpConfigIdpCertificate {
 		if v == nil {
@@ -867,7 +879,8 @@ type TenantInboundSamlConfigSpConfig struct {
 	// Callback URI where responses from IDP are handled. Must start with `https://`.
 	CallbackUri string `pulumi:"callbackUri"`
 	// -
-	// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.  Structure is documented below.
+	// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
+	// Structure is documented below.
 	SpCertificates []TenantInboundSamlConfigSpConfigSpCertificate `pulumi:"spCertificates"`
 	// Unique identifier for all SAML entities.
 	SpEntityId string `pulumi:"spEntityId"`
@@ -888,7 +901,8 @@ type TenantInboundSamlConfigSpConfigArgs struct {
 	// Callback URI where responses from IDP are handled. Must start with `https://`.
 	CallbackUri pulumi.StringInput `pulumi:"callbackUri"`
 	// -
-	// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.  Structure is documented below.
+	// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
+	// Structure is documented below.
 	SpCertificates TenantInboundSamlConfigSpConfigSpCertificateArrayInput `pulumi:"spCertificates"`
 	// Unique identifier for all SAML entities.
 	SpEntityId pulumi.StringInput `pulumi:"spEntityId"`
@@ -977,7 +991,8 @@ func (o TenantInboundSamlConfigSpConfigOutput) CallbackUri() pulumi.StringOutput
 }
 
 // -
-// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.  Structure is documented below.
+// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
+// Structure is documented below.
 func (o TenantInboundSamlConfigSpConfigOutput) SpCertificates() TenantInboundSamlConfigSpConfigSpCertificateArrayOutput {
 	return o.ApplyT(func(v TenantInboundSamlConfigSpConfig) []TenantInboundSamlConfigSpConfigSpCertificate {
 		return v.SpCertificates
@@ -1018,7 +1033,8 @@ func (o TenantInboundSamlConfigSpConfigPtrOutput) CallbackUri() pulumi.StringPtr
 }
 
 // -
-// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.  Structure is documented below.
+// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
+// Structure is documented below.
 func (o TenantInboundSamlConfigSpConfigPtrOutput) SpCertificates() TenantInboundSamlConfigSpConfigSpCertificateArrayOutput {
 	return o.ApplyT(func(v *TenantInboundSamlConfigSpConfig) []TenantInboundSamlConfigSpConfigSpCertificate {
 		if v == nil {

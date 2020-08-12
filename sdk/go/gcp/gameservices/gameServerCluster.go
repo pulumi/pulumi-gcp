@@ -25,7 +25,8 @@ type GameServerCluster struct {
 	// Required. The resource name of the game server cluster
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// Game server cluster connection information. This information is used to
-	// manage game server clusters.  Structure is documented below.
+	// manage game server clusters.
+	// Structure is documented below.
 	ConnectionInfo GameServerClusterConnectionInfoOutput `pulumi:"connectionInfo"`
 	// Human readable description of the cluster.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -85,7 +86,8 @@ type gameServerClusterState struct {
 	// Required. The resource name of the game server cluster
 	ClusterId *string `pulumi:"clusterId"`
 	// Game server cluster connection information. This information is used to
-	// manage game server clusters.  Structure is documented below.
+	// manage game server clusters.
+	// Structure is documented below.
 	ConnectionInfo *GameServerClusterConnectionInfo `pulumi:"connectionInfo"`
 	// Human readable description of the cluster.
 	Description *string `pulumi:"description"`
@@ -109,7 +111,8 @@ type GameServerClusterState struct {
 	// Required. The resource name of the game server cluster
 	ClusterId pulumi.StringPtrInput
 	// Game server cluster connection information. This information is used to
-	// manage game server clusters.  Structure is documented below.
+	// manage game server clusters.
+	// Structure is documented below.
 	ConnectionInfo GameServerClusterConnectionInfoPtrInput
 	// Human readable description of the cluster.
 	Description pulumi.StringPtrInput
@@ -137,7 +140,8 @@ type gameServerClusterArgs struct {
 	// Required. The resource name of the game server cluster
 	ClusterId string `pulumi:"clusterId"`
 	// Game server cluster connection information. This information is used to
-	// manage game server clusters.  Structure is documented below.
+	// manage game server clusters.
+	// Structure is documented below.
 	ConnectionInfo GameServerClusterConnectionInfo `pulumi:"connectionInfo"`
 	// Human readable description of the cluster.
 	Description *string `pulumi:"description"`
@@ -158,7 +162,8 @@ type GameServerClusterArgs struct {
 	// Required. The resource name of the game server cluster
 	ClusterId pulumi.StringInput
 	// Game server cluster connection information. This information is used to
-	// manage game server clusters.  Structure is documented below.
+	// manage game server clusters.
+	// Structure is documented below.
 	ConnectionInfo GameServerClusterConnectionInfoInput
 	// Human readable description of the cluster.
 	Description pulumi.StringPtrInput

@@ -37,7 +37,8 @@ namespace Pulumi.Gcp.Dns
         public Output<string> DnsName { get; private set; } = null!;
 
         /// <summary>
-        /// DNSSEC configuration  Structure is documented below.
+        /// DNSSEC configuration
+        /// Structure is documented below.
         /// </summary>
         [Output("dnssecConfig")]
         public Output<Outputs.ManagedZoneDnssecConfig?> DnssecConfig { get; private set; } = null!;
@@ -45,7 +46,8 @@ namespace Pulumi.Gcp.Dns
         /// <summary>
         /// The presence for this field indicates that outbound forwarding is enabled
         /// for this zone. The value of this field contains the set of destinations
-        /// to forward to.  Structure is documented below.
+        /// to forward to.
+        /// Structure is documented below.
         /// </summary>
         [Output("forwardingConfig")]
         public Output<Outputs.ManagedZoneForwardingConfig?> ForwardingConfig { get; private set; } = null!;
@@ -71,14 +73,16 @@ namespace Pulumi.Gcp.Dns
 
         /// <summary>
         /// The presence of this field indicates that DNS Peering is enabled for this
-        /// zone. The value of this field contains the network to peer with.  Structure is documented below.
+        /// zone. The value of this field contains the network to peer with.
+        /// Structure is documented below.
         /// </summary>
         [Output("peeringConfig")]
         public Output<Outputs.ManagedZonePeeringConfig?> PeeringConfig { get; private set; } = null!;
 
         /// <summary>
         /// For privately visible zones, the set of Virtual Private Cloud
-        /// resources that the zone is visible from.  Structure is documented below.
+        /// resources that the zone is visible from.
+        /// Structure is documented below.
         /// </summary>
         [Output("privateVisibilityConfig")]
         public Output<Outputs.ManagedZonePrivateVisibilityConfig?> PrivateVisibilityConfig { get; private set; } = null!;
@@ -107,6 +111,8 @@ namespace Pulumi.Gcp.Dns
         /// <summary>
         /// The zone's visibility: public zones are exposed to the Internet,
         /// while private zones are visible only to Virtual Private Cloud resources.
+        /// Default value is `public`.
+        /// Possible values are `private` and `public`.
         /// </summary>
         [Output("visibility")]
         public Output<string?> Visibility { get; private set; } = null!;
@@ -170,7 +176,8 @@ namespace Pulumi.Gcp.Dns
         public Input<string> DnsName { get; set; } = null!;
 
         /// <summary>
-        /// DNSSEC configuration  Structure is documented below.
+        /// DNSSEC configuration
+        /// Structure is documented below.
         /// </summary>
         [Input("dnssecConfig")]
         public Input<Inputs.ManagedZoneDnssecConfigArgs>? DnssecConfig { get; set; }
@@ -178,7 +185,8 @@ namespace Pulumi.Gcp.Dns
         /// <summary>
         /// The presence for this field indicates that outbound forwarding is enabled
         /// for this zone. The value of this field contains the set of destinations
-        /// to forward to.  Structure is documented below.
+        /// to forward to.
+        /// Structure is documented below.
         /// </summary>
         [Input("forwardingConfig")]
         public Input<Inputs.ManagedZoneForwardingConfigArgs>? ForwardingConfig { get; set; }
@@ -204,14 +212,16 @@ namespace Pulumi.Gcp.Dns
 
         /// <summary>
         /// The presence of this field indicates that DNS Peering is enabled for this
-        /// zone. The value of this field contains the network to peer with.  Structure is documented below.
+        /// zone. The value of this field contains the network to peer with.
+        /// Structure is documented below.
         /// </summary>
         [Input("peeringConfig")]
         public Input<Inputs.ManagedZonePeeringConfigArgs>? PeeringConfig { get; set; }
 
         /// <summary>
         /// For privately visible zones, the set of Virtual Private Cloud
-        /// resources that the zone is visible from.  Structure is documented below.
+        /// resources that the zone is visible from.
+        /// Structure is documented below.
         /// </summary>
         [Input("privateVisibilityConfig")]
         public Input<Inputs.ManagedZonePrivateVisibilityConfigArgs>? PrivateVisibilityConfig { get; set; }
@@ -240,6 +250,8 @@ namespace Pulumi.Gcp.Dns
         /// <summary>
         /// The zone's visibility: public zones are exposed to the Internet,
         /// while private zones are visible only to Virtual Private Cloud resources.
+        /// Default value is `public`.
+        /// Possible values are `private` and `public`.
         /// </summary>
         [Input("visibility")]
         public Input<string>? Visibility { get; set; }
@@ -265,7 +277,8 @@ namespace Pulumi.Gcp.Dns
         public Input<string>? DnsName { get; set; }
 
         /// <summary>
-        /// DNSSEC configuration  Structure is documented below.
+        /// DNSSEC configuration
+        /// Structure is documented below.
         /// </summary>
         [Input("dnssecConfig")]
         public Input<Inputs.ManagedZoneDnssecConfigGetArgs>? DnssecConfig { get; set; }
@@ -273,7 +286,8 @@ namespace Pulumi.Gcp.Dns
         /// <summary>
         /// The presence for this field indicates that outbound forwarding is enabled
         /// for this zone. The value of this field contains the set of destinations
-        /// to forward to.  Structure is documented below.
+        /// to forward to.
+        /// Structure is documented below.
         /// </summary>
         [Input("forwardingConfig")]
         public Input<Inputs.ManagedZoneForwardingConfigGetArgs>? ForwardingConfig { get; set; }
@@ -311,14 +325,16 @@ namespace Pulumi.Gcp.Dns
 
         /// <summary>
         /// The presence of this field indicates that DNS Peering is enabled for this
-        /// zone. The value of this field contains the network to peer with.  Structure is documented below.
+        /// zone. The value of this field contains the network to peer with.
+        /// Structure is documented below.
         /// </summary>
         [Input("peeringConfig")]
         public Input<Inputs.ManagedZonePeeringConfigGetArgs>? PeeringConfig { get; set; }
 
         /// <summary>
         /// For privately visible zones, the set of Virtual Private Cloud
-        /// resources that the zone is visible from.  Structure is documented below.
+        /// resources that the zone is visible from.
+        /// Structure is documented below.
         /// </summary>
         [Input("privateVisibilityConfig")]
         public Input<Inputs.ManagedZonePrivateVisibilityConfigGetArgs>? PrivateVisibilityConfig { get; set; }
@@ -347,6 +363,8 @@ namespace Pulumi.Gcp.Dns
         /// <summary>
         /// The zone's visibility: public zones are exposed to the Internet,
         /// while private zones are visible only to Virtual Private Cloud resources.
+        /// Default value is `public`.
+        /// Possible values are `private` and `public`.
         /// </summary>
         [Input("visibility")]
         public Input<string>? Visibility { get; set; }

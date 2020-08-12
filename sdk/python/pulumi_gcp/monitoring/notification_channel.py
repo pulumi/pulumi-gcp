@@ -48,11 +48,15 @@ class NotificationChannel(pulumi.CustomResource):
     sensitive and hidden from plan output. The name of the field, eg: password, will be the key
     in the `labels` map in the api request.
     Credentials may not be specified in both locations and will cause an error. Changing from one location
-    to a different credential configuration in the config will require an apply to update state.  Structure is documented below.
+    to a different credential configuration in the config will require an apply to update state.
+    Structure is documented below.
 
-      * `authToken` (`str`) - An authorization token for a notification channel. Channel types that support this field include: slack  **Note**: This property is sensitive and will not be displayed in the plan.
-      * `password` (`str`) - An password for a notification channel. Channel types that support this field include: webhook_basicauth  **Note**: This property is sensitive and will not be displayed in the plan.
-      * `serviceKey` (`str`) - An servicekey token for a notification channel. Channel types that support this field include: pagerduty  **Note**: This property is sensitive and will not be displayed in the plan.
+      * `authToken` (`str`) - An authorization token for a notification channel. Channel types that support this field include: slack
+        **Note**: This property is sensitive and will not be displayed in the plan.
+      * `password` (`str`) - An password for a notification channel. Channel types that support this field include: webhook_basicauth
+        **Note**: This property is sensitive and will not be displayed in the plan.
+      * `serviceKey` (`str`) - An servicekey token for a notification channel. Channel types that support this field include: pagerduty
+        **Note**: This property is sensitive and will not be displayed in the plan.
     """
     type: pulumi.Output[str]
     """
@@ -118,15 +122,19 @@ class NotificationChannel(pulumi.CustomResource):
                sensitive and hidden from plan output. The name of the field, eg: password, will be the key
                in the `labels` map in the api request.
                Credentials may not be specified in both locations and will cause an error. Changing from one location
-               to a different credential configuration in the config will require an apply to update state.  Structure is documented below.
+               to a different credential configuration in the config will require an apply to update state.
+               Structure is documented below.
         :param pulumi.Input[str] type: The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of valid values such as "email", "slack", etc...
         :param pulumi.Input[dict] user_labels: User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor's schema, unlike the labels field. This field is intended to be used for organizing and identifying the NotificationChannel objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
 
         The **sensitive_labels** object supports the following:
 
-          * `authToken` (`pulumi.Input[str]`) - An authorization token for a notification channel. Channel types that support this field include: slack  **Note**: This property is sensitive and will not be displayed in the plan.
-          * `password` (`pulumi.Input[str]`) - An password for a notification channel. Channel types that support this field include: webhook_basicauth  **Note**: This property is sensitive and will not be displayed in the plan.
-          * `serviceKey` (`pulumi.Input[str]`) - An servicekey token for a notification channel. Channel types that support this field include: pagerduty  **Note**: This property is sensitive and will not be displayed in the plan.
+          * `authToken` (`pulumi.Input[str]`) - An authorization token for a notification channel. Channel types that support this field include: slack
+            **Note**: This property is sensitive and will not be displayed in the plan.
+          * `password` (`pulumi.Input[str]`) - An password for a notification channel. Channel types that support this field include: webhook_basicauth
+            **Note**: This property is sensitive and will not be displayed in the plan.
+          * `serviceKey` (`pulumi.Input[str]`) - An servicekey token for a notification channel. Channel types that support this field include: pagerduty
+            **Note**: This property is sensitive and will not be displayed in the plan.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -190,7 +198,8 @@ class NotificationChannel(pulumi.CustomResource):
                sensitive and hidden from plan output. The name of the field, eg: password, will be the key
                in the `labels` map in the api request.
                Credentials may not be specified in both locations and will cause an error. Changing from one location
-               to a different credential configuration in the config will require an apply to update state.  Structure is documented below.
+               to a different credential configuration in the config will require an apply to update state.
+               Structure is documented below.
         :param pulumi.Input[str] type: The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of valid values such as "email", "slack", etc...
         :param pulumi.Input[dict] user_labels: User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor's schema, unlike the labels field. This field is intended to be used for organizing and identifying the NotificationChannel objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
         :param pulumi.Input[str] verification_status: Indicates whether this channel has been verified or not. On a ListNotificationChannels or GetNotificationChannel
@@ -203,9 +212,12 @@ class NotificationChannel(pulumi.CustomResource):
 
         The **sensitive_labels** object supports the following:
 
-          * `authToken` (`pulumi.Input[str]`) - An authorization token for a notification channel. Channel types that support this field include: slack  **Note**: This property is sensitive and will not be displayed in the plan.
-          * `password` (`pulumi.Input[str]`) - An password for a notification channel. Channel types that support this field include: webhook_basicauth  **Note**: This property is sensitive and will not be displayed in the plan.
-          * `serviceKey` (`pulumi.Input[str]`) - An servicekey token for a notification channel. Channel types that support this field include: pagerduty  **Note**: This property is sensitive and will not be displayed in the plan.
+          * `authToken` (`pulumi.Input[str]`) - An authorization token for a notification channel. Channel types that support this field include: slack
+            **Note**: This property is sensitive and will not be displayed in the plan.
+          * `password` (`pulumi.Input[str]`) - An password for a notification channel. Channel types that support this field include: webhook_basicauth
+            **Note**: This property is sensitive and will not be displayed in the plan.
+          * `serviceKey` (`pulumi.Input[str]`) - An servicekey token for a notification channel. Channel types that support this field include: pagerduty
+            **Note**: This property is sensitive and will not be displayed in the plan.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

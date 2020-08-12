@@ -56,7 +56,8 @@ export class BackendBucket extends pulumi.CustomResource {
      */
     public readonly bucketName!: pulumi.Output<string>;
     /**
-     * Cloud CDN configuration for this Backend Bucket.  Structure is documented below.
+     * Cloud CDN configuration for this Backend Bucket.
+     * Structure is documented below.
      */
     public readonly cdnPolicy!: pulumi.Output<outputs.compute.BackendBucketCdnPolicy>;
     /**
@@ -146,7 +147,8 @@ export interface BackendBucketState {
      */
     readonly bucketName?: pulumi.Input<string>;
     /**
-     * Cloud CDN configuration for this Backend Bucket.  Structure is documented below.
+     * Cloud CDN configuration for this Backend Bucket.
+     * Structure is documented below.
      */
     readonly cdnPolicy?: pulumi.Input<inputs.compute.BackendBucketCdnPolicy>;
     /**
@@ -192,7 +194,8 @@ export interface BackendBucketArgs {
      */
     readonly bucketName: pulumi.Input<string>;
     /**
-     * Cloud CDN configuration for this Backend Bucket.  Structure is documented below.
+     * Cloud CDN configuration for this Backend Bucket.
+     * Structure is documented below.
      */
     readonly cdnPolicy?: pulumi.Input<inputs.compute.BackendBucketCdnPolicy>;
     /**

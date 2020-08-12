@@ -23,7 +23,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly string? FullPathMatch;
         /// <summary>
         /// Specifies a list of header match criteria, all of which must match corresponding
-        /// headers in the request.  Structure is documented below.
+        /// headers in the request.
+        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.URLMapPathMatcherRouteRuleMatchRuleHeaderMatch> HeaderMatches;
         /// <summary>
@@ -42,7 +43,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// with corresponding labels in the provided metadata. metadataFilters specified
         /// here can be overrides those specified in ForwardingRule that refers to this
         /// UrlMap. metadataFilters only applies to Loadbalancers that have their
-        /// loadBalancingScheme set to INTERNAL_SELF_MANAGED.  Structure is documented below.
+        /// loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.URLMapPathMatcherRouteRuleMatchRuleMetadataFilter> MetadataFilters;
         /// <summary>
@@ -53,7 +55,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly string? PrefixMatch;
         /// <summary>
         /// Specifies a list of query parameter match criteria, all of which must match
-        /// corresponding query parameters in the request.  Structure is documented below.
+        /// corresponding query parameters in the request.
+        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatch> QueryParameterMatches;
         /// <summary>

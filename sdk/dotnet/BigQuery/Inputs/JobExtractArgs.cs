@@ -53,13 +53,15 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public Input<bool>? PrintHeader { get; set; }
 
         /// <summary>
-        /// A reference to the model being exported.  Structure is documented below.
+        /// A reference to the model being exported.
+        /// Structure is documented below.
         /// </summary>
         [Input("sourceModel")]
         public Input<Inputs.JobExtractSourceModelArgs>? SourceModel { get; set; }
 
         /// <summary>
-        /// A reference to the table being exported.  Structure is documented below.
+        /// A reference to the table being exported.
+        /// Structure is documented below.
         /// </summary>
         [Input("sourceTable")]
         public Input<Inputs.JobExtractSourceTableArgs>? SourceTable { get; set; }

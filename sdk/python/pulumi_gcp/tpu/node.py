@@ -59,7 +59,8 @@ class Node(pulumi.CustomResource):
     """
     scheduling_config: pulumi.Output[dict]
     """
-    Sets the scheduling options for this TPU instance.  Structure is documented below.
+    Sets the scheduling options for this TPU instance.
+    Structure is documented below.
 
       * `preemptible` (`bool`) - Defines whether the TPU instance is preemptible.
     """
@@ -108,7 +109,8 @@ class Node(pulumi.CustomResource):
                used.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[dict] scheduling_config: Sets the scheduling options for this TPU instance.  Structure is documented below.
+        :param pulumi.Input[dict] scheduling_config: Sets the scheduling options for this TPU instance.
+               Structure is documented below.
         :param pulumi.Input[str] tensorflow_version: The version of Tensorflow running in the Node.
         :param pulumi.Input[str] zone: The GCP location for the TPU.
 
@@ -188,7 +190,8 @@ class Node(pulumi.CustomResource):
                node first reach out to the first (index 0) entry.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[dict] scheduling_config: Sets the scheduling options for this TPU instance.  Structure is documented below.
+        :param pulumi.Input[dict] scheduling_config: Sets the scheduling options for this TPU instance.
+               Structure is documented below.
         :param pulumi.Input[str] service_account: The service account used to run the tensor flow services within the node. To share resources, including Google Cloud
                Storage data, with the Tensorflow job running in the Node, this account must have permissions to that data.
         :param pulumi.Input[str] tensorflow_version: The version of Tensorflow running in the Node.

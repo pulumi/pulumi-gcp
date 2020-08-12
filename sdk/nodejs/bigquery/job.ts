@@ -41,11 +41,13 @@ export class Job extends pulumi.CustomResource {
     }
 
     /**
-     * Copies a table.  Structure is documented below.
+     * Copies a table.
+     * Structure is documented below.
      */
     public readonly copy!: pulumi.Output<outputs.bigquery.JobCopy | undefined>;
     /**
-     * Configures an extract job.  Structure is documented below.
+     * Configures an extract job.
+     * Structure is documented below.
      */
     public readonly extract!: pulumi.Output<outputs.bigquery.JobExtract | undefined>;
     /**
@@ -65,7 +67,8 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Configures a load job.  Structure is documented below.
+     * Configures a load job.
+     * Structure is documented below.
      */
     public readonly load!: pulumi.Output<outputs.bigquery.JobLoad | undefined>;
     /**
@@ -78,7 +81,8 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Configures a query job.  Structure is documented below.
+     * Configures a query job.
+     * Structure is documented below.
      */
     public readonly query!: pulumi.Output<outputs.bigquery.JobQuery | undefined>;
     /**
@@ -142,11 +146,13 @@ export class Job extends pulumi.CustomResource {
  */
 export interface JobState {
     /**
-     * Copies a table.  Structure is documented below.
+     * Copies a table.
+     * Structure is documented below.
      */
     readonly copy?: pulumi.Input<inputs.bigquery.JobCopy>;
     /**
-     * Configures an extract job.  Structure is documented below.
+     * Configures an extract job.
+     * Structure is documented below.
      */
     readonly extract?: pulumi.Input<inputs.bigquery.JobExtract>;
     /**
@@ -166,7 +172,8 @@ export interface JobState {
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Configures a load job.  Structure is documented below.
+     * Configures a load job.
+     * Structure is documented below.
      */
     readonly load?: pulumi.Input<inputs.bigquery.JobLoad>;
     /**
@@ -179,7 +186,8 @@ export interface JobState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * Configures a query job.  Structure is documented below.
+     * Configures a query job.
+     * Structure is documented below.
      */
     readonly query?: pulumi.Input<inputs.bigquery.JobQuery>;
     /**
@@ -193,11 +201,13 @@ export interface JobState {
  */
 export interface JobArgs {
     /**
-     * Copies a table.  Structure is documented below.
+     * Copies a table.
+     * Structure is documented below.
      */
     readonly copy?: pulumi.Input<inputs.bigquery.JobCopy>;
     /**
-     * Configures an extract job.  Structure is documented below.
+     * Configures an extract job.
+     * Structure is documented below.
      */
     readonly extract?: pulumi.Input<inputs.bigquery.JobExtract>;
     /**
@@ -213,7 +223,8 @@ export interface JobArgs {
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Configures a load job.  Structure is documented below.
+     * Configures a load job.
+     * Structure is documented below.
      */
     readonly load?: pulumi.Input<inputs.bigquery.JobLoad>;
     /**
@@ -226,7 +237,8 @@ export interface JobArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * Configures a query job.  Structure is documented below.
+     * Configures a query job.
+     * Structure is documented below.
      */
     readonly query?: pulumi.Input<inputs.bigquery.JobQuery>;
 }

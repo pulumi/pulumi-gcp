@@ -26,7 +26,8 @@ namespace Pulumi.Gcp.AppEngine.Outputs
         /// </summary>
         public readonly double? MemoryGb;
         /// <summary>
-        /// List of ports, or port pairs, to forward from the virtual machine to the application container.  Structure is documented below.
+        /// List of ports, or port pairs, to forward from the virtual machine to the application container.
+        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.FlexibleAppVersionResourcesVolume> Volumes;
 

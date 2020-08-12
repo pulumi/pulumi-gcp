@@ -29,7 +29,8 @@ type GameServerConfig struct {
 	// The description of the game server config.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The fleet config contains list of fleet specs. In the Single Cloud, there
-	// will be only one.  Structure is documented below.
+	// will be only one.
+	// Structure is documented below.
 	FleetConfigs GameServerConfigFleetConfigArrayOutput `pulumi:"fleetConfigs"`
 	// Set of labels to group by.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
@@ -40,7 +41,8 @@ type GameServerConfig struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Optional. This contains the autoscaling settings.  Structure is documented below.
+	// Optional. This contains the autoscaling settings.
+	// Structure is documented below.
 	ScalingConfigs GameServerConfigScalingConfigArrayOutput `pulumi:"scalingConfigs"`
 }
 
@@ -88,7 +90,8 @@ type gameServerConfigState struct {
 	// The description of the game server config.
 	Description *string `pulumi:"description"`
 	// The fleet config contains list of fleet specs. In the Single Cloud, there
-	// will be only one.  Structure is documented below.
+	// will be only one.
+	// Structure is documented below.
 	FleetConfigs []GameServerConfigFleetConfig `pulumi:"fleetConfigs"`
 	// Set of labels to group by.
 	Labels map[string]string `pulumi:"labels"`
@@ -99,7 +102,8 @@ type gameServerConfigState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Optional. This contains the autoscaling settings.  Structure is documented below.
+	// Optional. This contains the autoscaling settings.
+	// Structure is documented below.
 	ScalingConfigs []GameServerConfigScalingConfig `pulumi:"scalingConfigs"`
 }
 
@@ -111,7 +115,8 @@ type GameServerConfigState struct {
 	// The description of the game server config.
 	Description pulumi.StringPtrInput
 	// The fleet config contains list of fleet specs. In the Single Cloud, there
-	// will be only one.  Structure is documented below.
+	// will be only one.
+	// Structure is documented below.
 	FleetConfigs GameServerConfigFleetConfigArrayInput
 	// Set of labels to group by.
 	Labels pulumi.StringMapInput
@@ -122,7 +127,8 @@ type GameServerConfigState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Optional. This contains the autoscaling settings.  Structure is documented below.
+	// Optional. This contains the autoscaling settings.
+	// Structure is documented below.
 	ScalingConfigs GameServerConfigScalingConfigArrayInput
 }
 
@@ -138,7 +144,8 @@ type gameServerConfigArgs struct {
 	// The description of the game server config.
 	Description *string `pulumi:"description"`
 	// The fleet config contains list of fleet specs. In the Single Cloud, there
-	// will be only one.  Structure is documented below.
+	// will be only one.
+	// Structure is documented below.
 	FleetConfigs []GameServerConfigFleetConfig `pulumi:"fleetConfigs"`
 	// Set of labels to group by.
 	Labels map[string]string `pulumi:"labels"`
@@ -147,7 +154,8 @@ type gameServerConfigArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Optional. This contains the autoscaling settings.  Structure is documented below.
+	// Optional. This contains the autoscaling settings.
+	// Structure is documented below.
 	ScalingConfigs []GameServerConfigScalingConfig `pulumi:"scalingConfigs"`
 }
 
@@ -160,7 +168,8 @@ type GameServerConfigArgs struct {
 	// The description of the game server config.
 	Description pulumi.StringPtrInput
 	// The fleet config contains list of fleet specs. In the Single Cloud, there
-	// will be only one.  Structure is documented below.
+	// will be only one.
+	// Structure is documented below.
 	FleetConfigs GameServerConfigFleetConfigArrayInput
 	// Set of labels to group by.
 	Labels pulumi.StringMapInput
@@ -169,7 +178,8 @@ type GameServerConfigArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Optional. This contains the autoscaling settings.  Structure is documented below.
+	// Optional. This contains the autoscaling settings.
+	// Structure is documented below.
 	ScalingConfigs GameServerConfigScalingConfigArrayInput
 }
 

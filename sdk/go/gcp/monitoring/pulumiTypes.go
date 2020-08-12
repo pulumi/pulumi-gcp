@@ -12,10 +12,12 @@ import (
 
 type AlertPolicyCondition struct {
 	// A condition that checks that a time series
-	// continues to receive new data points.  Structure is documented below.
+	// continues to receive new data points.
+	// Structure is documented below.
 	ConditionAbsent *AlertPolicyConditionConditionAbsent `pulumi:"conditionAbsent"`
 	// A condition that compares a time series against a
-	// threshold.  Structure is documented below.
+	// threshold.
+	// Structure is documented below.
 	ConditionThreshold *AlertPolicyConditionConditionThreshold `pulumi:"conditionThreshold"`
 	// A short name or phrase used to identify the
 	// condition in dashboards, notifications, and
@@ -46,10 +48,12 @@ type AlertPolicyConditionInput interface {
 
 type AlertPolicyConditionArgs struct {
 	// A condition that checks that a time series
-	// continues to receive new data points.  Structure is documented below.
+	// continues to receive new data points.
+	// Structure is documented below.
 	ConditionAbsent AlertPolicyConditionConditionAbsentPtrInput `pulumi:"conditionAbsent"`
 	// A condition that compares a time series against a
-	// threshold.  Structure is documented below.
+	// threshold.
+	// Structure is documented below.
 	ConditionThreshold AlertPolicyConditionConditionThresholdPtrInput `pulumi:"conditionThreshold"`
 	// A short name or phrase used to identify the
 	// condition in dashboards, notifications, and
@@ -119,13 +123,15 @@ func (o AlertPolicyConditionOutput) ToAlertPolicyConditionOutputWithContext(ctx 
 }
 
 // A condition that checks that a time series
-// continues to receive new data points.  Structure is documented below.
+// continues to receive new data points.
+// Structure is documented below.
 func (o AlertPolicyConditionOutput) ConditionAbsent() AlertPolicyConditionConditionAbsentPtrOutput {
 	return o.ApplyT(func(v AlertPolicyCondition) *AlertPolicyConditionConditionAbsent { return v.ConditionAbsent }).(AlertPolicyConditionConditionAbsentPtrOutput)
 }
 
 // A condition that compares a time series against a
-// threshold.  Structure is documented below.
+// threshold.
+// Structure is documented below.
 func (o AlertPolicyConditionOutput) ConditionThreshold() AlertPolicyConditionConditionThresholdPtrOutput {
 	return o.ApplyT(func(v AlertPolicyCondition) *AlertPolicyConditionConditionThreshold { return v.ConditionThreshold }).(AlertPolicyConditionConditionThresholdPtrOutput)
 }
@@ -183,7 +189,8 @@ type AlertPolicyConditionConditionAbsent struct {
 	// one in the MetricService.ListTimeSeries
 	// request. It is advisable to use the
 	// ListTimeSeries method when debugging this
-	// field.  Structure is documented below.
+	// field.
+	// Structure is documented below.
 	Aggregations []AlertPolicyConditionConditionAbsentAggregation `pulumi:"aggregations"`
 	// The amount of time that a time series must
 	// violate the threshold to be considered
@@ -221,7 +228,8 @@ type AlertPolicyConditionConditionAbsent struct {
 	// is true for any of the time series that have
 	// been identified by filter and aggregations,
 	// or by the ratio, if denominatorFilter and
-	// denominatorAggregations are specified.  Structure is documented below.
+	// denominatorAggregations are specified.
+	// Structure is documented below.
 	Trigger *AlertPolicyConditionConditionAbsentTrigger `pulumi:"trigger"`
 }
 
@@ -249,7 +257,8 @@ type AlertPolicyConditionConditionAbsentArgs struct {
 	// one in the MetricService.ListTimeSeries
 	// request. It is advisable to use the
 	// ListTimeSeries method when debugging this
-	// field.  Structure is documented below.
+	// field.
+	// Structure is documented below.
 	Aggregations AlertPolicyConditionConditionAbsentAggregationArrayInput `pulumi:"aggregations"`
 	// The amount of time that a time series must
 	// violate the threshold to be considered
@@ -287,7 +296,8 @@ type AlertPolicyConditionConditionAbsentArgs struct {
 	// is true for any of the time series that have
 	// been identified by filter and aggregations,
 	// or by the ratio, if denominatorFilter and
-	// denominatorAggregations are specified.  Structure is documented below.
+	// denominatorAggregations are specified.
+	// Structure is documented below.
 	Trigger AlertPolicyConditionConditionAbsentTriggerPtrInput `pulumi:"trigger"`
 }
 
@@ -380,7 +390,8 @@ func (o AlertPolicyConditionConditionAbsentOutput) ToAlertPolicyConditionConditi
 // one in the MetricService.ListTimeSeries
 // request. It is advisable to use the
 // ListTimeSeries method when debugging this
-// field.  Structure is documented below.
+// field.
+// Structure is documented below.
 func (o AlertPolicyConditionConditionAbsentOutput) Aggregations() AlertPolicyConditionConditionAbsentAggregationArrayOutput {
 	return o.ApplyT(func(v AlertPolicyConditionConditionAbsent) []AlertPolicyConditionConditionAbsentAggregation {
 		return v.Aggregations
@@ -429,7 +440,8 @@ func (o AlertPolicyConditionConditionAbsentOutput) Filter() pulumi.StringPtrOutp
 // is true for any of the time series that have
 // been identified by filter and aggregations,
 // or by the ratio, if denominatorFilter and
-// denominatorAggregations are specified.  Structure is documented below.
+// denominatorAggregations are specified.
+// Structure is documented below.
 func (o AlertPolicyConditionConditionAbsentOutput) Trigger() AlertPolicyConditionConditionAbsentTriggerPtrOutput {
 	return o.ApplyT(func(v AlertPolicyConditionConditionAbsent) *AlertPolicyConditionConditionAbsentTrigger {
 		return v.Trigger
@@ -466,7 +478,8 @@ func (o AlertPolicyConditionConditionAbsentPtrOutput) Elem() AlertPolicyConditio
 // one in the MetricService.ListTimeSeries
 // request. It is advisable to use the
 // ListTimeSeries method when debugging this
-// field.  Structure is documented below.
+// field.
+// Structure is documented below.
 func (o AlertPolicyConditionConditionAbsentPtrOutput) Aggregations() AlertPolicyConditionConditionAbsentAggregationArrayOutput {
 	return o.ApplyT(func(v *AlertPolicyConditionConditionAbsent) []AlertPolicyConditionConditionAbsentAggregation {
 		if v == nil {
@@ -528,7 +541,8 @@ func (o AlertPolicyConditionConditionAbsentPtrOutput) Filter() pulumi.StringPtrO
 // is true for any of the time series that have
 // been identified by filter and aggregations,
 // or by the ratio, if denominatorFilter and
-// denominatorAggregations are specified.  Structure is documented below.
+// denominatorAggregations are specified.
+// Structure is documented below.
 func (o AlertPolicyConditionConditionAbsentPtrOutput) Trigger() AlertPolicyConditionConditionAbsentTriggerPtrOutput {
 	return o.ApplyT(func(v *AlertPolicyConditionConditionAbsent) *AlertPolicyConditionConditionAbsentTrigger {
 		if v == nil {
@@ -571,6 +585,7 @@ type AlertPolicyConditionConditionAbsentAggregation struct {
 	// and alignmentPeriod must be
 	// specified; otherwise, an error is
 	// returned.
+	// Possible values are `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, and `REDUCE_PERCENTILE_05`.
 	CrossSeriesReducer *string `pulumi:"crossSeriesReducer"`
 	// The set of fields to preserve when
 	// crossSeriesReducer is specified.
@@ -615,6 +630,7 @@ type AlertPolicyConditionConditionAbsentAggregation struct {
 	// and alignmentPeriod must be
 	// specified; otherwise, an error is
 	// returned.
+	// Possible values are `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, and `ALIGN_PERCENT_CHANGE`.
 	PerSeriesAligner *string `pulumi:"perSeriesAligner"`
 }
 
@@ -662,6 +678,7 @@ type AlertPolicyConditionConditionAbsentAggregationArgs struct {
 	// and alignmentPeriod must be
 	// specified; otherwise, an error is
 	// returned.
+	// Possible values are `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, and `REDUCE_PERCENTILE_05`.
 	CrossSeriesReducer pulumi.StringPtrInput `pulumi:"crossSeriesReducer"`
 	// The set of fields to preserve when
 	// crossSeriesReducer is specified.
@@ -706,6 +723,7 @@ type AlertPolicyConditionConditionAbsentAggregationArgs struct {
 	// and alignmentPeriod must be
 	// specified; otherwise, an error is
 	// returned.
+	// Possible values are `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, and `ALIGN_PERCENT_CHANGE`.
 	PerSeriesAligner pulumi.StringPtrInput `pulumi:"perSeriesAligner"`
 }
 
@@ -795,6 +813,7 @@ func (o AlertPolicyConditionConditionAbsentAggregationOutput) AlignmentPeriod() 
 // and alignmentPeriod must be
 // specified; otherwise, an error is
 // returned.
+// Possible values are `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, and `REDUCE_PERCENTILE_05`.
 func (o AlertPolicyConditionConditionAbsentAggregationOutput) CrossSeriesReducer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertPolicyConditionConditionAbsentAggregation) *string { return v.CrossSeriesReducer }).(pulumi.StringPtrOutput)
 }
@@ -845,6 +864,7 @@ func (o AlertPolicyConditionConditionAbsentAggregationOutput) GroupByFields() pu
 // and alignmentPeriod must be
 // specified; otherwise, an error is
 // returned.
+// Possible values are `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, and `ALIGN_PERCENT_CHANGE`.
 func (o AlertPolicyConditionConditionAbsentAggregationOutput) PerSeriesAligner() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertPolicyConditionConditionAbsentAggregation) *string { return v.PerSeriesAligner }).(pulumi.StringPtrOutput)
 }
@@ -1050,7 +1070,8 @@ type AlertPolicyConditionConditionThreshold struct {
 	// one in the MetricService.ListTimeSeries
 	// request. It is advisable to use the
 	// ListTimeSeries method when debugging this
-	// field.  Structure is documented below.
+	// field.
+	// Structure is documented below.
 	Aggregations []AlertPolicyConditionConditionThresholdAggregation `pulumi:"aggregations"`
 	// The comparison to apply between the time
 	// series (indicated by filter and aggregation)
@@ -1060,6 +1081,7 @@ type AlertPolicyConditionConditionThreshold struct {
 	// the left-hand side and the threshold on the
 	// right-hand side. Only COMPARISON_LT and
 	// COMPARISON_GT are supported currently.
+	// Possible values are `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, and `COMPARISON_NE`.
 	Comparison string `pulumi:"comparison"`
 	// Specifies the alignment of data points in
 	// individual time series selected by
@@ -1076,7 +1098,8 @@ type AlertPolicyConditionConditionThreshold struct {
 	// labels.This field is similar to the one in
 	// the MetricService.ListTimeSeries request. It
 	// is advisable to use the ListTimeSeries
-	// method when debugging this field.  Structure is documented below.
+	// method when debugging this field.
+	// Structure is documented below.
 	DenominatorAggregations []AlertPolicyConditionConditionThresholdDenominatorAggregation `pulumi:"denominatorAggregations"`
 	// A filter that identifies a time series that
 	// should be used as the denominator of a ratio
@@ -1133,7 +1156,8 @@ type AlertPolicyConditionConditionThreshold struct {
 	// is true for any of the time series that have
 	// been identified by filter and aggregations,
 	// or by the ratio, if denominatorFilter and
-	// denominatorAggregations are specified.  Structure is documented below.
+	// denominatorAggregations are specified.
+	// Structure is documented below.
 	Trigger *AlertPolicyConditionConditionThresholdTrigger `pulumi:"trigger"`
 }
 
@@ -1161,7 +1185,8 @@ type AlertPolicyConditionConditionThresholdArgs struct {
 	// one in the MetricService.ListTimeSeries
 	// request. It is advisable to use the
 	// ListTimeSeries method when debugging this
-	// field.  Structure is documented below.
+	// field.
+	// Structure is documented below.
 	Aggregations AlertPolicyConditionConditionThresholdAggregationArrayInput `pulumi:"aggregations"`
 	// The comparison to apply between the time
 	// series (indicated by filter and aggregation)
@@ -1171,6 +1196,7 @@ type AlertPolicyConditionConditionThresholdArgs struct {
 	// the left-hand side and the threshold on the
 	// right-hand side. Only COMPARISON_LT and
 	// COMPARISON_GT are supported currently.
+	// Possible values are `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, and `COMPARISON_NE`.
 	Comparison pulumi.StringInput `pulumi:"comparison"`
 	// Specifies the alignment of data points in
 	// individual time series selected by
@@ -1187,7 +1213,8 @@ type AlertPolicyConditionConditionThresholdArgs struct {
 	// labels.This field is similar to the one in
 	// the MetricService.ListTimeSeries request. It
 	// is advisable to use the ListTimeSeries
-	// method when debugging this field.  Structure is documented below.
+	// method when debugging this field.
+	// Structure is documented below.
 	DenominatorAggregations AlertPolicyConditionConditionThresholdDenominatorAggregationArrayInput `pulumi:"denominatorAggregations"`
 	// A filter that identifies a time series that
 	// should be used as the denominator of a ratio
@@ -1244,7 +1271,8 @@ type AlertPolicyConditionConditionThresholdArgs struct {
 	// is true for any of the time series that have
 	// been identified by filter and aggregations,
 	// or by the ratio, if denominatorFilter and
-	// denominatorAggregations are specified.  Structure is documented below.
+	// denominatorAggregations are specified.
+	// Structure is documented below.
 	Trigger AlertPolicyConditionConditionThresholdTriggerPtrInput `pulumi:"trigger"`
 }
 
@@ -1337,7 +1365,8 @@ func (o AlertPolicyConditionConditionThresholdOutput) ToAlertPolicyConditionCond
 // one in the MetricService.ListTimeSeries
 // request. It is advisable to use the
 // ListTimeSeries method when debugging this
-// field.  Structure is documented below.
+// field.
+// Structure is documented below.
 func (o AlertPolicyConditionConditionThresholdOutput) Aggregations() AlertPolicyConditionConditionThresholdAggregationArrayOutput {
 	return o.ApplyT(func(v AlertPolicyConditionConditionThreshold) []AlertPolicyConditionConditionThresholdAggregation {
 		return v.Aggregations
@@ -1352,6 +1381,7 @@ func (o AlertPolicyConditionConditionThresholdOutput) Aggregations() AlertPolicy
 // the left-hand side and the threshold on the
 // right-hand side. Only COMPARISON_LT and
 // COMPARISON_GT are supported currently.
+// Possible values are `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, and `COMPARISON_NE`.
 func (o AlertPolicyConditionConditionThresholdOutput) Comparison() pulumi.StringOutput {
 	return o.ApplyT(func(v AlertPolicyConditionConditionThreshold) string { return v.Comparison }).(pulumi.StringOutput)
 }
@@ -1371,7 +1401,8 @@ func (o AlertPolicyConditionConditionThresholdOutput) Comparison() pulumi.String
 // labels.This field is similar to the one in
 // the MetricService.ListTimeSeries request. It
 // is advisable to use the ListTimeSeries
-// method when debugging this field.  Structure is documented below.
+// method when debugging this field.
+// Structure is documented below.
 func (o AlertPolicyConditionConditionThresholdOutput) DenominatorAggregations() AlertPolicyConditionConditionThresholdDenominatorAggregationArrayOutput {
 	return o.ApplyT(func(v AlertPolicyConditionConditionThreshold) []AlertPolicyConditionConditionThresholdDenominatorAggregation {
 		return v.DenominatorAggregations
@@ -1445,7 +1476,8 @@ func (o AlertPolicyConditionConditionThresholdOutput) ThresholdValue() pulumi.Fl
 // is true for any of the time series that have
 // been identified by filter and aggregations,
 // or by the ratio, if denominatorFilter and
-// denominatorAggregations are specified.  Structure is documented below.
+// denominatorAggregations are specified.
+// Structure is documented below.
 func (o AlertPolicyConditionConditionThresholdOutput) Trigger() AlertPolicyConditionConditionThresholdTriggerPtrOutput {
 	return o.ApplyT(func(v AlertPolicyConditionConditionThreshold) *AlertPolicyConditionConditionThresholdTrigger {
 		return v.Trigger
@@ -1482,7 +1514,8 @@ func (o AlertPolicyConditionConditionThresholdPtrOutput) Elem() AlertPolicyCondi
 // one in the MetricService.ListTimeSeries
 // request. It is advisable to use the
 // ListTimeSeries method when debugging this
-// field.  Structure is documented below.
+// field.
+// Structure is documented below.
 func (o AlertPolicyConditionConditionThresholdPtrOutput) Aggregations() AlertPolicyConditionConditionThresholdAggregationArrayOutput {
 	return o.ApplyT(func(v *AlertPolicyConditionConditionThreshold) []AlertPolicyConditionConditionThresholdAggregation {
 		if v == nil {
@@ -1500,6 +1533,7 @@ func (o AlertPolicyConditionConditionThresholdPtrOutput) Aggregations() AlertPol
 // the left-hand side and the threshold on the
 // right-hand side. Only COMPARISON_LT and
 // COMPARISON_GT are supported currently.
+// Possible values are `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, and `COMPARISON_NE`.
 func (o AlertPolicyConditionConditionThresholdPtrOutput) Comparison() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertPolicyConditionConditionThreshold) *string {
 		if v == nil {
@@ -1524,7 +1558,8 @@ func (o AlertPolicyConditionConditionThresholdPtrOutput) Comparison() pulumi.Str
 // labels.This field is similar to the one in
 // the MetricService.ListTimeSeries request. It
 // is advisable to use the ListTimeSeries
-// method when debugging this field.  Structure is documented below.
+// method when debugging this field.
+// Structure is documented below.
 func (o AlertPolicyConditionConditionThresholdPtrOutput) DenominatorAggregations() AlertPolicyConditionConditionThresholdDenominatorAggregationArrayOutput {
 	return o.ApplyT(func(v *AlertPolicyConditionConditionThreshold) []AlertPolicyConditionConditionThresholdDenominatorAggregation {
 		if v == nil {
@@ -1621,7 +1656,8 @@ func (o AlertPolicyConditionConditionThresholdPtrOutput) ThresholdValue() pulumi
 // is true for any of the time series that have
 // been identified by filter and aggregations,
 // or by the ratio, if denominatorFilter and
-// denominatorAggregations are specified.  Structure is documented below.
+// denominatorAggregations are specified.
+// Structure is documented below.
 func (o AlertPolicyConditionConditionThresholdPtrOutput) Trigger() AlertPolicyConditionConditionThresholdTriggerPtrOutput {
 	return o.ApplyT(func(v *AlertPolicyConditionConditionThreshold) *AlertPolicyConditionConditionThresholdTrigger {
 		if v == nil {
@@ -1664,6 +1700,7 @@ type AlertPolicyConditionConditionThresholdAggregation struct {
 	// and alignmentPeriod must be
 	// specified; otherwise, an error is
 	// returned.
+	// Possible values are `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, and `REDUCE_PERCENTILE_05`.
 	CrossSeriesReducer *string `pulumi:"crossSeriesReducer"`
 	// The set of fields to preserve when
 	// crossSeriesReducer is specified.
@@ -1708,6 +1745,7 @@ type AlertPolicyConditionConditionThresholdAggregation struct {
 	// and alignmentPeriod must be
 	// specified; otherwise, an error is
 	// returned.
+	// Possible values are `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, and `ALIGN_PERCENT_CHANGE`.
 	PerSeriesAligner *string `pulumi:"perSeriesAligner"`
 }
 
@@ -1755,6 +1793,7 @@ type AlertPolicyConditionConditionThresholdAggregationArgs struct {
 	// and alignmentPeriod must be
 	// specified; otherwise, an error is
 	// returned.
+	// Possible values are `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, and `REDUCE_PERCENTILE_05`.
 	CrossSeriesReducer pulumi.StringPtrInput `pulumi:"crossSeriesReducer"`
 	// The set of fields to preserve when
 	// crossSeriesReducer is specified.
@@ -1799,6 +1838,7 @@ type AlertPolicyConditionConditionThresholdAggregationArgs struct {
 	// and alignmentPeriod must be
 	// specified; otherwise, an error is
 	// returned.
+	// Possible values are `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, and `ALIGN_PERCENT_CHANGE`.
 	PerSeriesAligner pulumi.StringPtrInput `pulumi:"perSeriesAligner"`
 }
 
@@ -1888,6 +1928,7 @@ func (o AlertPolicyConditionConditionThresholdAggregationOutput) AlignmentPeriod
 // and alignmentPeriod must be
 // specified; otherwise, an error is
 // returned.
+// Possible values are `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, and `REDUCE_PERCENTILE_05`.
 func (o AlertPolicyConditionConditionThresholdAggregationOutput) CrossSeriesReducer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertPolicyConditionConditionThresholdAggregation) *string { return v.CrossSeriesReducer }).(pulumi.StringPtrOutput)
 }
@@ -1938,6 +1979,7 @@ func (o AlertPolicyConditionConditionThresholdAggregationOutput) GroupByFields()
 // and alignmentPeriod must be
 // specified; otherwise, an error is
 // returned.
+// Possible values are `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, and `ALIGN_PERCENT_CHANGE`.
 func (o AlertPolicyConditionConditionThresholdAggregationOutput) PerSeriesAligner() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertPolicyConditionConditionThresholdAggregation) *string { return v.PerSeriesAligner }).(pulumi.StringPtrOutput)
 }
@@ -1995,6 +2037,7 @@ type AlertPolicyConditionConditionThresholdDenominatorAggregation struct {
 	// and alignmentPeriod must be
 	// specified; otherwise, an error is
 	// returned.
+	// Possible values are `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, and `REDUCE_PERCENTILE_05`.
 	CrossSeriesReducer *string `pulumi:"crossSeriesReducer"`
 	// The set of fields to preserve when
 	// crossSeriesReducer is specified.
@@ -2039,6 +2082,7 @@ type AlertPolicyConditionConditionThresholdDenominatorAggregation struct {
 	// and alignmentPeriod must be
 	// specified; otherwise, an error is
 	// returned.
+	// Possible values are `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, and `ALIGN_PERCENT_CHANGE`.
 	PerSeriesAligner *string `pulumi:"perSeriesAligner"`
 }
 
@@ -2086,6 +2130,7 @@ type AlertPolicyConditionConditionThresholdDenominatorAggregationArgs struct {
 	// and alignmentPeriod must be
 	// specified; otherwise, an error is
 	// returned.
+	// Possible values are `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, and `REDUCE_PERCENTILE_05`.
 	CrossSeriesReducer pulumi.StringPtrInput `pulumi:"crossSeriesReducer"`
 	// The set of fields to preserve when
 	// crossSeriesReducer is specified.
@@ -2130,6 +2175,7 @@ type AlertPolicyConditionConditionThresholdDenominatorAggregationArgs struct {
 	// and alignmentPeriod must be
 	// specified; otherwise, an error is
 	// returned.
+	// Possible values are `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, and `ALIGN_PERCENT_CHANGE`.
 	PerSeriesAligner pulumi.StringPtrInput `pulumi:"perSeriesAligner"`
 }
 
@@ -2219,6 +2265,7 @@ func (o AlertPolicyConditionConditionThresholdDenominatorAggregationOutput) Alig
 // and alignmentPeriod must be
 // specified; otherwise, an error is
 // returned.
+// Possible values are `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, and `REDUCE_PERCENTILE_05`.
 func (o AlertPolicyConditionConditionThresholdDenominatorAggregationOutput) CrossSeriesReducer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertPolicyConditionConditionThresholdDenominatorAggregation) *string {
 		return v.CrossSeriesReducer
@@ -2271,6 +2318,7 @@ func (o AlertPolicyConditionConditionThresholdDenominatorAggregationOutput) Grou
 // and alignmentPeriod must be
 // specified; otherwise, an error is
 // returned.
+// Possible values are `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, and `ALIGN_PERCENT_CHANGE`.
 func (o AlertPolicyConditionConditionThresholdDenominatorAggregationOutput) PerSeriesAligner() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertPolicyConditionConditionThresholdDenominatorAggregation) *string {
 		return v.PerSeriesAligner
@@ -2917,6 +2965,8 @@ type MetricDescriptorLabel struct {
 	// The key for this label. The key must not exceed 100 characters. The first character of the key must be an upper- or lower-case letter, the remaining characters must be letters, digits or underscores, and the key must match the regular expression [a-zA-Z][a-zA-Z0-9_]*
 	Key string `pulumi:"key"`
 	// The type of data that can be assigned to the label.
+	// Default value is `STRING`.
+	// Possible values are `STRING`, `BOOL`, and `INT64`.
 	ValueType *string `pulumi:"valueType"`
 }
 
@@ -2937,6 +2987,8 @@ type MetricDescriptorLabelArgs struct {
 	// The key for this label. The key must not exceed 100 characters. The first character of the key must be an upper- or lower-case letter, the remaining characters must be letters, digits or underscores, and the key must match the regular expression [a-zA-Z][a-zA-Z0-9_]*
 	Key pulumi.StringInput `pulumi:"key"`
 	// The type of data that can be assigned to the label.
+	// Default value is `STRING`.
+	// Possible values are `STRING`, `BOOL`, and `INT64`.
 	ValueType pulumi.StringPtrInput `pulumi:"valueType"`
 }
 
@@ -3002,6 +3054,8 @@ func (o MetricDescriptorLabelOutput) Key() pulumi.StringOutput {
 }
 
 // The type of data that can be assigned to the label.
+// Default value is `STRING`.
+// Possible values are `STRING`, `BOOL`, and `INT64`.
 func (o MetricDescriptorLabelOutput) ValueType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetricDescriptorLabel) *string { return v.ValueType }).(pulumi.StringPtrOutput)
 }
@@ -3177,11 +3231,14 @@ func (o MetricDescriptorMetadataPtrOutput) SamplePeriod() pulumi.StringPtrOutput
 }
 
 type NotificationChannelSensitiveLabels struct {
-	// An authorization token for a notification channel. Channel types that support this field include: slack  **Note**: This property is sensitive and will not be displayed in the plan.
+	// An authorization token for a notification channel. Channel types that support this field include: slack
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	AuthToken *string `pulumi:"authToken"`
-	// An password for a notification channel. Channel types that support this field include: webhookBasicauth  **Note**: This property is sensitive and will not be displayed in the plan.
+	// An password for a notification channel. Channel types that support this field include: webhookBasicauth
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Password *string `pulumi:"password"`
-	// An servicekey token for a notification channel. Channel types that support this field include: pagerduty  **Note**: This property is sensitive and will not be displayed in the plan.
+	// An servicekey token for a notification channel. Channel types that support this field include: pagerduty
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	ServiceKey *string `pulumi:"serviceKey"`
 }
 
@@ -3197,11 +3254,14 @@ type NotificationChannelSensitiveLabelsInput interface {
 }
 
 type NotificationChannelSensitiveLabelsArgs struct {
-	// An authorization token for a notification channel. Channel types that support this field include: slack  **Note**: This property is sensitive and will not be displayed in the plan.
+	// An authorization token for a notification channel. Channel types that support this field include: slack
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	AuthToken pulumi.StringPtrInput `pulumi:"authToken"`
-	// An password for a notification channel. Channel types that support this field include: webhookBasicauth  **Note**: This property is sensitive and will not be displayed in the plan.
+	// An password for a notification channel. Channel types that support this field include: webhookBasicauth
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Password pulumi.StringPtrInput `pulumi:"password"`
-	// An servicekey token for a notification channel. Channel types that support this field include: pagerduty  **Note**: This property is sensitive and will not be displayed in the plan.
+	// An servicekey token for a notification channel. Channel types that support this field include: pagerduty
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	ServiceKey pulumi.StringPtrInput `pulumi:"serviceKey"`
 }
 
@@ -3282,17 +3342,20 @@ func (o NotificationChannelSensitiveLabelsOutput) ToNotificationChannelSensitive
 	}).(NotificationChannelSensitiveLabelsPtrOutput)
 }
 
-// An authorization token for a notification channel. Channel types that support this field include: slack  **Note**: This property is sensitive and will not be displayed in the plan.
+// An authorization token for a notification channel. Channel types that support this field include: slack
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o NotificationChannelSensitiveLabelsOutput) AuthToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NotificationChannelSensitiveLabels) *string { return v.AuthToken }).(pulumi.StringPtrOutput)
 }
 
-// An password for a notification channel. Channel types that support this field include: webhookBasicauth  **Note**: This property is sensitive and will not be displayed in the plan.
+// An password for a notification channel. Channel types that support this field include: webhookBasicauth
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o NotificationChannelSensitiveLabelsOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NotificationChannelSensitiveLabels) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-// An servicekey token for a notification channel. Channel types that support this field include: pagerduty  **Note**: This property is sensitive and will not be displayed in the plan.
+// An servicekey token for a notification channel. Channel types that support this field include: pagerduty
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o NotificationChannelSensitiveLabelsOutput) ServiceKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NotificationChannelSensitiveLabels) *string { return v.ServiceKey }).(pulumi.StringPtrOutput)
 }
@@ -3315,7 +3378,8 @@ func (o NotificationChannelSensitiveLabelsPtrOutput) Elem() NotificationChannelS
 	return o.ApplyT(func(v *NotificationChannelSensitiveLabels) NotificationChannelSensitiveLabels { return *v }).(NotificationChannelSensitiveLabelsOutput)
 }
 
-// An authorization token for a notification channel. Channel types that support this field include: slack  **Note**: This property is sensitive and will not be displayed in the plan.
+// An authorization token for a notification channel. Channel types that support this field include: slack
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o NotificationChannelSensitiveLabelsPtrOutput) AuthToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NotificationChannelSensitiveLabels) *string {
 		if v == nil {
@@ -3325,7 +3389,8 @@ func (o NotificationChannelSensitiveLabelsPtrOutput) AuthToken() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// An password for a notification channel. Channel types that support this field include: webhookBasicauth  **Note**: This property is sensitive and will not be displayed in the plan.
+// An password for a notification channel. Channel types that support this field include: webhookBasicauth
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o NotificationChannelSensitiveLabelsPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NotificationChannelSensitiveLabels) *string {
 		if v == nil {
@@ -3335,7 +3400,8 @@ func (o NotificationChannelSensitiveLabelsPtrOutput) Password() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// An servicekey token for a notification channel. Channel types that support this field include: pagerduty  **Note**: This property is sensitive and will not be displayed in the plan.
+// An servicekey token for a notification channel. Channel types that support this field include: pagerduty
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o NotificationChannelSensitiveLabelsPtrOutput) ServiceKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NotificationChannelSensitiveLabels) *string {
 		if v == nil {
@@ -3346,7 +3412,8 @@ func (o NotificationChannelSensitiveLabelsPtrOutput) ServiceKey() pulumi.StringP
 }
 
 type SloBasicSli struct {
-	// Parameters for a latency threshold SLI.  Structure is documented below.
+	// Parameters for a latency threshold SLI.
+	// Structure is documented below.
 	Latency SloBasicSliLatency `pulumi:"latency"`
 	// An optional set of locations to which this SLI is relevant.
 	// Telemetry from other locations will not be used to calculate
@@ -3383,7 +3450,8 @@ type SloBasicSliInput interface {
 }
 
 type SloBasicSliArgs struct {
-	// Parameters for a latency threshold SLI.  Structure is documented below.
+	// Parameters for a latency threshold SLI.
+	// Structure is documented below.
 	Latency SloBasicSliLatencyInput `pulumi:"latency"`
 	// An optional set of locations to which this SLI is relevant.
 	// Telemetry from other locations will not be used to calculate
@@ -3485,7 +3553,8 @@ func (o SloBasicSliOutput) ToSloBasicSliPtrOutputWithContext(ctx context.Context
 	}).(SloBasicSliPtrOutput)
 }
 
-// Parameters for a latency threshold SLI.  Structure is documented below.
+// Parameters for a latency threshold SLI.
+// Structure is documented below.
 func (o SloBasicSliOutput) Latency() SloBasicSliLatencyOutput {
 	return o.ApplyT(func(v SloBasicSli) SloBasicSliLatency { return v.Latency }).(SloBasicSliLatencyOutput)
 }
@@ -3538,7 +3607,8 @@ func (o SloBasicSliPtrOutput) Elem() SloBasicSliOutput {
 	return o.ApplyT(func(v *SloBasicSli) SloBasicSli { return *v }).(SloBasicSliOutput)
 }
 
-// Parameters for a latency threshold SLI.  Structure is documented below.
+// Parameters for a latency threshold SLI.
+// Structure is documented below.
 func (o SloBasicSliPtrOutput) Latency() SloBasicSliLatencyPtrOutput {
 	return o.ApplyT(func(v *SloBasicSli) *SloBasicSliLatency {
 		if v == nil {
@@ -3737,13 +3807,15 @@ type SloRequestBasedSli struct {
 	// Distribution that fall into a good range. The totalService is the
 	// total count of all values aggregated in the Distribution.
 	// Defines a distribution TimeSeries filter and thresholds used for
-	// measuring good service and total service.  Structure is documented below.
+	// measuring good service and total service.
+	// Structure is documented below.
 	DistributionCut *SloRequestBasedSliDistributionCut `pulumi:"distributionCut"`
 	// A means to compute a ratio of `goodService` to `totalService`.
 	// Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
 	// Must specify exactly two of good, bad, and total service filters.
 	// The relationship goodService + badService = totalService
-	// will be assumed.  Structure is documented below.
+	// will be assumed.
+	// Structure is documented below.
 	GoodTotalRatio *SloRequestBasedSliGoodTotalRatio `pulumi:"goodTotalRatio"`
 }
 
@@ -3763,13 +3835,15 @@ type SloRequestBasedSliArgs struct {
 	// Distribution that fall into a good range. The totalService is the
 	// total count of all values aggregated in the Distribution.
 	// Defines a distribution TimeSeries filter and thresholds used for
-	// measuring good service and total service.  Structure is documented below.
+	// measuring good service and total service.
+	// Structure is documented below.
 	DistributionCut SloRequestBasedSliDistributionCutPtrInput `pulumi:"distributionCut"`
 	// A means to compute a ratio of `goodService` to `totalService`.
 	// Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
 	// Must specify exactly two of good, bad, and total service filters.
 	// The relationship goodService + badService = totalService
-	// will be assumed.  Structure is documented below.
+	// will be assumed.
+	// Structure is documented below.
 	GoodTotalRatio SloRequestBasedSliGoodTotalRatioPtrInput `pulumi:"goodTotalRatio"`
 }
 
@@ -3854,7 +3928,8 @@ func (o SloRequestBasedSliOutput) ToSloRequestBasedSliPtrOutputWithContext(ctx c
 // Distribution that fall into a good range. The totalService is the
 // total count of all values aggregated in the Distribution.
 // Defines a distribution TimeSeries filter and thresholds used for
-// measuring good service and total service.  Structure is documented below.
+// measuring good service and total service.
+// Structure is documented below.
 func (o SloRequestBasedSliOutput) DistributionCut() SloRequestBasedSliDistributionCutPtrOutput {
 	return o.ApplyT(func(v SloRequestBasedSli) *SloRequestBasedSliDistributionCut { return v.DistributionCut }).(SloRequestBasedSliDistributionCutPtrOutput)
 }
@@ -3863,7 +3938,8 @@ func (o SloRequestBasedSliOutput) DistributionCut() SloRequestBasedSliDistributi
 // Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
 // Must specify exactly two of good, bad, and total service filters.
 // The relationship goodService + badService = totalService
-// will be assumed.  Structure is documented below.
+// will be assumed.
+// Structure is documented below.
 func (o SloRequestBasedSliOutput) GoodTotalRatio() SloRequestBasedSliGoodTotalRatioPtrOutput {
 	return o.ApplyT(func(v SloRequestBasedSli) *SloRequestBasedSliGoodTotalRatio { return v.GoodTotalRatio }).(SloRequestBasedSliGoodTotalRatioPtrOutput)
 }
@@ -3890,7 +3966,8 @@ func (o SloRequestBasedSliPtrOutput) Elem() SloRequestBasedSliOutput {
 // Distribution that fall into a good range. The totalService is the
 // total count of all values aggregated in the Distribution.
 // Defines a distribution TimeSeries filter and thresholds used for
-// measuring good service and total service.  Structure is documented below.
+// measuring good service and total service.
+// Structure is documented below.
 func (o SloRequestBasedSliPtrOutput) DistributionCut() SloRequestBasedSliDistributionCutPtrOutput {
 	return o.ApplyT(func(v *SloRequestBasedSli) *SloRequestBasedSliDistributionCut {
 		if v == nil {
@@ -3904,7 +3981,8 @@ func (o SloRequestBasedSliPtrOutput) DistributionCut() SloRequestBasedSliDistrib
 // Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
 // Must specify exactly two of good, bad, and total service filters.
 // The relationship goodService + badService = totalService
-// will be assumed.  Structure is documented below.
+// will be assumed.
+// Structure is documented below.
 func (o SloRequestBasedSliPtrOutput) GoodTotalRatio() SloRequestBasedSliGoodTotalRatioPtrOutput {
 	return o.ApplyT(func(v *SloRequestBasedSli) *SloRequestBasedSliGoodTotalRatio {
 		if v == nil {
@@ -3925,7 +4003,8 @@ type SloRequestBasedSliDistributionCut struct {
 	// that range.min <= x < range.max. inclusive of min and
 	// exclusive of max. Open ranges can be defined by setting
 	// just one of min or max. Summed value `X` should satisfy
-	// `range.min <= X < range.max` for a good window.  Structure is documented below.
+	// `range.min <= X < range.max` for a good window.
+	// Structure is documented below.
 	Range SloRequestBasedSliDistributionCutRange `pulumi:"range"`
 }
 
@@ -3951,7 +4030,8 @@ type SloRequestBasedSliDistributionCutArgs struct {
 	// that range.min <= x < range.max. inclusive of min and
 	// exclusive of max. Open ranges can be defined by setting
 	// just one of min or max. Summed value `X` should satisfy
-	// `range.min <= X < range.max` for a good window.  Structure is documented below.
+	// `range.min <= X < range.max` for a good window.
+	// Structure is documented below.
 	Range SloRequestBasedSliDistributionCutRangeInput `pulumi:"range"`
 }
 
@@ -4045,7 +4125,8 @@ func (o SloRequestBasedSliDistributionCutOutput) DistributionFilter() pulumi.Str
 // that range.min <= x < range.max. inclusive of min and
 // exclusive of max. Open ranges can be defined by setting
 // just one of min or max. Summed value `X` should satisfy
-// `range.min <= X < range.max` for a good window.  Structure is documented below.
+// `range.min <= X < range.max` for a good window.
+// Structure is documented below.
 func (o SloRequestBasedSliDistributionCutOutput) Range() SloRequestBasedSliDistributionCutRangeOutput {
 	return o.ApplyT(func(v SloRequestBasedSliDistributionCut) SloRequestBasedSliDistributionCutRange { return v.Range }).(SloRequestBasedSliDistributionCutRangeOutput)
 }
@@ -4086,7 +4167,8 @@ func (o SloRequestBasedSliDistributionCutPtrOutput) DistributionFilter() pulumi.
 // that range.min <= x < range.max. inclusive of min and
 // exclusive of max. Open ranges can be defined by setting
 // just one of min or max. Summed value `X` should satisfy
-// `range.min <= X < range.max` for a good window.  Structure is documented below.
+// `range.min <= X < range.max` for a good window.
+// Structure is documented below.
 func (o SloRequestBasedSliDistributionCutPtrOutput) Range() SloRequestBasedSliDistributionCutRangePtrOutput {
 	return o.ApplyT(func(v *SloRequestBasedSliDistributionCut) *SloRequestBasedSliDistributionCutRange {
 		if v == nil {
@@ -4509,7 +4591,8 @@ type SloWindowsBasedSli struct {
 	// Criterion that describes a window as good if its performance is
 	// high enough. One of `goodBadMetricFilter`,
 	// `goodTotalRatioThreshold`, `metricMeanInRange`,
-	// `metricSumInRange` must be set for `windowsBasedSli`.  Structure is documented below.
+	// `metricSumInRange` must be set for `windowsBasedSli`.
+	// Structure is documented below.
 	GoodTotalRatioThreshold *SloWindowsBasedSliGoodTotalRatioThreshold `pulumi:"goodTotalRatioThreshold"`
 	// Criterion that describes a window as good if the metric's value
 	// is in a good range, *averaged* across returned streams.
@@ -4517,7 +4600,8 @@ type SloWindowsBasedSli struct {
 	// `goodTotalRatioThreshold`, `metricMeanInRange`,
 	// `metricSumInRange` must be set for `windowsBasedSli`.
 	// Average value X of `timeSeries` should satisfy
-	// `range.min <= X < range.max` for a good window.  Structure is documented below.
+	// `range.min <= X < range.max` for a good window.
+	// Structure is documented below.
 	MetricMeanInRange *SloWindowsBasedSliMetricMeanInRange `pulumi:"metricMeanInRange"`
 	// Criterion that describes a window as good if the metric's value
 	// is in a good range, *summed* across returned streams.
@@ -4525,7 +4609,8 @@ type SloWindowsBasedSli struct {
 	// `range.min <= X < range.max` for a good window.
 	// One of `goodBadMetricFilter`,
 	// `goodTotalRatioThreshold`, `metricMeanInRange`,
-	// `metricSumInRange` must be set for `windowsBasedSli`.  Structure is documented below.
+	// `metricSumInRange` must be set for `windowsBasedSli`.
+	// Structure is documented below.
 	MetricSumInRange *SloWindowsBasedSliMetricSumInRange `pulumi:"metricSumInRange"`
 	// Duration over which window quality is evaluated, given as a
 	// duration string "{X}s" representing X seconds. Must be an
@@ -4554,7 +4639,8 @@ type SloWindowsBasedSliArgs struct {
 	// Criterion that describes a window as good if its performance is
 	// high enough. One of `goodBadMetricFilter`,
 	// `goodTotalRatioThreshold`, `metricMeanInRange`,
-	// `metricSumInRange` must be set for `windowsBasedSli`.  Structure is documented below.
+	// `metricSumInRange` must be set for `windowsBasedSli`.
+	// Structure is documented below.
 	GoodTotalRatioThreshold SloWindowsBasedSliGoodTotalRatioThresholdPtrInput `pulumi:"goodTotalRatioThreshold"`
 	// Criterion that describes a window as good if the metric's value
 	// is in a good range, *averaged* across returned streams.
@@ -4562,7 +4648,8 @@ type SloWindowsBasedSliArgs struct {
 	// `goodTotalRatioThreshold`, `metricMeanInRange`,
 	// `metricSumInRange` must be set for `windowsBasedSli`.
 	// Average value X of `timeSeries` should satisfy
-	// `range.min <= X < range.max` for a good window.  Structure is documented below.
+	// `range.min <= X < range.max` for a good window.
+	// Structure is documented below.
 	MetricMeanInRange SloWindowsBasedSliMetricMeanInRangePtrInput `pulumi:"metricMeanInRange"`
 	// Criterion that describes a window as good if the metric's value
 	// is in a good range, *summed* across returned streams.
@@ -4570,7 +4657,8 @@ type SloWindowsBasedSliArgs struct {
 	// `range.min <= X < range.max` for a good window.
 	// One of `goodBadMetricFilter`,
 	// `goodTotalRatioThreshold`, `metricMeanInRange`,
-	// `metricSumInRange` must be set for `windowsBasedSli`.  Structure is documented below.
+	// `metricSumInRange` must be set for `windowsBasedSli`.
+	// Structure is documented below.
 	MetricSumInRange SloWindowsBasedSliMetricSumInRangePtrInput `pulumi:"metricSumInRange"`
 	// Duration over which window quality is evaluated, given as a
 	// duration string "{X}s" representing X seconds. Must be an
@@ -4667,7 +4755,8 @@ func (o SloWindowsBasedSliOutput) GoodBadMetricFilter() pulumi.StringPtrOutput {
 // Criterion that describes a window as good if its performance is
 // high enough. One of `goodBadMetricFilter`,
 // `goodTotalRatioThreshold`, `metricMeanInRange`,
-// `metricSumInRange` must be set for `windowsBasedSli`.  Structure is documented below.
+// `metricSumInRange` must be set for `windowsBasedSli`.
+// Structure is documented below.
 func (o SloWindowsBasedSliOutput) GoodTotalRatioThreshold() SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput {
 	return o.ApplyT(func(v SloWindowsBasedSli) *SloWindowsBasedSliGoodTotalRatioThreshold {
 		return v.GoodTotalRatioThreshold
@@ -4680,7 +4769,8 @@ func (o SloWindowsBasedSliOutput) GoodTotalRatioThreshold() SloWindowsBasedSliGo
 // `goodTotalRatioThreshold`, `metricMeanInRange`,
 // `metricSumInRange` must be set for `windowsBasedSli`.
 // Average value X of `timeSeries` should satisfy
-// `range.min <= X < range.max` for a good window.  Structure is documented below.
+// `range.min <= X < range.max` for a good window.
+// Structure is documented below.
 func (o SloWindowsBasedSliOutput) MetricMeanInRange() SloWindowsBasedSliMetricMeanInRangePtrOutput {
 	return o.ApplyT(func(v SloWindowsBasedSli) *SloWindowsBasedSliMetricMeanInRange { return v.MetricMeanInRange }).(SloWindowsBasedSliMetricMeanInRangePtrOutput)
 }
@@ -4691,7 +4781,8 @@ func (o SloWindowsBasedSliOutput) MetricMeanInRange() SloWindowsBasedSliMetricMe
 // `range.min <= X < range.max` for a good window.
 // One of `goodBadMetricFilter`,
 // `goodTotalRatioThreshold`, `metricMeanInRange`,
-// `metricSumInRange` must be set for `windowsBasedSli`.  Structure is documented below.
+// `metricSumInRange` must be set for `windowsBasedSli`.
+// Structure is documented below.
 func (o SloWindowsBasedSliOutput) MetricSumInRange() SloWindowsBasedSliMetricSumInRangePtrOutput {
 	return o.ApplyT(func(v SloWindowsBasedSli) *SloWindowsBasedSliMetricSumInRange { return v.MetricSumInRange }).(SloWindowsBasedSliMetricSumInRangePtrOutput)
 }
@@ -4738,7 +4829,8 @@ func (o SloWindowsBasedSliPtrOutput) GoodBadMetricFilter() pulumi.StringPtrOutpu
 // Criterion that describes a window as good if its performance is
 // high enough. One of `goodBadMetricFilter`,
 // `goodTotalRatioThreshold`, `metricMeanInRange`,
-// `metricSumInRange` must be set for `windowsBasedSli`.  Structure is documented below.
+// `metricSumInRange` must be set for `windowsBasedSli`.
+// Structure is documented below.
 func (o SloWindowsBasedSliPtrOutput) GoodTotalRatioThreshold() SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput {
 	return o.ApplyT(func(v *SloWindowsBasedSli) *SloWindowsBasedSliGoodTotalRatioThreshold {
 		if v == nil {
@@ -4754,7 +4846,8 @@ func (o SloWindowsBasedSliPtrOutput) GoodTotalRatioThreshold() SloWindowsBasedSl
 // `goodTotalRatioThreshold`, `metricMeanInRange`,
 // `metricSumInRange` must be set for `windowsBasedSli`.
 // Average value X of `timeSeries` should satisfy
-// `range.min <= X < range.max` for a good window.  Structure is documented below.
+// `range.min <= X < range.max` for a good window.
+// Structure is documented below.
 func (o SloWindowsBasedSliPtrOutput) MetricMeanInRange() SloWindowsBasedSliMetricMeanInRangePtrOutput {
 	return o.ApplyT(func(v *SloWindowsBasedSli) *SloWindowsBasedSliMetricMeanInRange {
 		if v == nil {
@@ -4770,7 +4863,8 @@ func (o SloWindowsBasedSliPtrOutput) MetricMeanInRange() SloWindowsBasedSliMetri
 // `range.min <= X < range.max` for a good window.
 // One of `goodBadMetricFilter`,
 // `goodTotalRatioThreshold`, `metricMeanInRange`,
-// `metricSumInRange` must be set for `windowsBasedSli`.  Structure is documented below.
+// `metricSumInRange` must be set for `windowsBasedSli`.
+// Structure is documented below.
 func (o SloWindowsBasedSliPtrOutput) MetricSumInRange() SloWindowsBasedSliMetricSumInRangePtrOutput {
 	return o.ApplyT(func(v *SloWindowsBasedSli) *SloWindowsBasedSliMetricSumInRange {
 		if v == nil {
@@ -4793,9 +4887,11 @@ func (o SloWindowsBasedSliPtrOutput) WindowPeriod() pulumi.StringPtrOutput {
 }
 
 type SloWindowsBasedSliGoodTotalRatioThreshold struct {
-	// Basic SLI to evaluate to judge window quality.  Structure is documented below.
+	// Basic SLI to evaluate to judge window quality.
+	// Structure is documented below.
 	BasicSliPerformance *SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance `pulumi:"basicSliPerformance"`
-	// Request-based SLI to evaluate to judge window quality.  Structure is documented below.
+	// Request-based SLI to evaluate to judge window quality.
+	// Structure is documented below.
 	Performance *SloWindowsBasedSliGoodTotalRatioThresholdPerformance `pulumi:"performance"`
 	// A duration string, e.g. 10s.
 	// Good service is defined to be the count of requests made to
@@ -4815,9 +4911,11 @@ type SloWindowsBasedSliGoodTotalRatioThresholdInput interface {
 }
 
 type SloWindowsBasedSliGoodTotalRatioThresholdArgs struct {
-	// Basic SLI to evaluate to judge window quality.  Structure is documented below.
+	// Basic SLI to evaluate to judge window quality.
+	// Structure is documented below.
 	BasicSliPerformance SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrInput `pulumi:"basicSliPerformance"`
-	// Request-based SLI to evaluate to judge window quality.  Structure is documented below.
+	// Request-based SLI to evaluate to judge window quality.
+	// Structure is documented below.
 	Performance SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrInput `pulumi:"performance"`
 	// A duration string, e.g. 10s.
 	// Good service is defined to be the count of requests made to
@@ -4902,14 +5000,16 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdOutput) ToSloWindowsBasedSliGoo
 	}).(SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput)
 }
 
-// Basic SLI to evaluate to judge window quality.  Structure is documented below.
+// Basic SLI to evaluate to judge window quality.
+// Structure is documented below.
 func (o SloWindowsBasedSliGoodTotalRatioThresholdOutput) BasicSliPerformance() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput {
 	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThreshold) *SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance {
 		return v.BasicSliPerformance
 	}).(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput)
 }
 
-// Request-based SLI to evaluate to judge window quality.  Structure is documented below.
+// Request-based SLI to evaluate to judge window quality.
+// Structure is documented below.
 func (o SloWindowsBasedSliGoodTotalRatioThresholdOutput) Performance() SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput {
 	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThreshold) *SloWindowsBasedSliGoodTotalRatioThresholdPerformance {
 		return v.Performance
@@ -4943,7 +5043,8 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput) Elem() SloWindowsBas
 	}).(SloWindowsBasedSliGoodTotalRatioThresholdOutput)
 }
 
-// Basic SLI to evaluate to judge window quality.  Structure is documented below.
+// Basic SLI to evaluate to judge window quality.
+// Structure is documented below.
 func (o SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput) BasicSliPerformance() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput {
 	return o.ApplyT(func(v *SloWindowsBasedSliGoodTotalRatioThreshold) *SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance {
 		if v == nil {
@@ -4953,7 +5054,8 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput) BasicSliPerformance(
 	}).(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput)
 }
 
-// Request-based SLI to evaluate to judge window quality.  Structure is documented below.
+// Request-based SLI to evaluate to judge window quality.
+// Structure is documented below.
 func (o SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput) Performance() SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput {
 	return o.ApplyT(func(v *SloWindowsBasedSliGoodTotalRatioThreshold) *SloWindowsBasedSliGoodTotalRatioThresholdPerformance {
 		if v == nil {
@@ -4976,7 +5078,8 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput) Threshold() pulumi.F
 }
 
 type SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance struct {
-	// Parameters for a latency threshold SLI.  Structure is documented below.
+	// Parameters for a latency threshold SLI.
+	// Structure is documented below.
 	Latency SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency `pulumi:"latency"`
 	// An optional set of locations to which this SLI is relevant.
 	// Telemetry from other locations will not be used to calculate
@@ -5013,7 +5116,8 @@ type SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceInput interface
 }
 
 type SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs struct {
-	// Parameters for a latency threshold SLI.  Structure is documented below.
+	// Parameters for a latency threshold SLI.
+	// Structure is documented below.
 	Latency SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyInput `pulumi:"latency"`
 	// An optional set of locations to which this SLI is relevant.
 	// Telemetry from other locations will not be used to calculate
@@ -5115,7 +5219,8 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutput) ToSl
 	}).(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput)
 }
 
-// Parameters for a latency threshold SLI.  Structure is documented below.
+// Parameters for a latency threshold SLI.
+// Structure is documented below.
 func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutput) Latency() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyOutput {
 	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance) SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency {
 		return v.Latency
@@ -5172,7 +5277,8 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput) E
 	}).(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutput)
 }
 
-// Parameters for a latency threshold SLI.  Structure is documented below.
+// Parameters for a latency threshold SLI.
+// Structure is documented below.
 func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput) Latency() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutput {
 	return o.ApplyT(func(v *SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance) *SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency {
 		if v == nil {
@@ -5373,13 +5479,15 @@ type SloWindowsBasedSliGoodTotalRatioThresholdPerformance struct {
 	// Distribution that fall into a good range. The totalService is the
 	// total count of all values aggregated in the Distribution.
 	// Defines a distribution TimeSeries filter and thresholds used for
-	// measuring good service and total service.  Structure is documented below.
+	// measuring good service and total service.
+	// Structure is documented below.
 	DistributionCut *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut `pulumi:"distributionCut"`
 	// A means to compute a ratio of `goodService` to `totalService`.
 	// Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
 	// Must specify exactly two of good, bad, and total service filters.
 	// The relationship goodService + badService = totalService
-	// will be assumed.  Structure is documented below.
+	// will be assumed.
+	// Structure is documented below.
 	GoodTotalRatio *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio `pulumi:"goodTotalRatio"`
 }
 
@@ -5399,13 +5507,15 @@ type SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs struct {
 	// Distribution that fall into a good range. The totalService is the
 	// total count of all values aggregated in the Distribution.
 	// Defines a distribution TimeSeries filter and thresholds used for
-	// measuring good service and total service.  Structure is documented below.
+	// measuring good service and total service.
+	// Structure is documented below.
 	DistributionCut SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrInput `pulumi:"distributionCut"`
 	// A means to compute a ratio of `goodService` to `totalService`.
 	// Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
 	// Must specify exactly two of good, bad, and total service filters.
 	// The relationship goodService + badService = totalService
-	// will be assumed.  Structure is documented below.
+	// will be assumed.
+	// Structure is documented below.
 	GoodTotalRatio SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrInput `pulumi:"goodTotalRatio"`
 }
 
@@ -5490,7 +5600,8 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceOutput) ToSloWindows
 // Distribution that fall into a good range. The totalService is the
 // total count of all values aggregated in the Distribution.
 // Defines a distribution TimeSeries filter and thresholds used for
-// measuring good service and total service.  Structure is documented below.
+// measuring good service and total service.
+// Structure is documented below.
 func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceOutput) DistributionCut() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutput {
 	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThresholdPerformance) *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut {
 		return v.DistributionCut
@@ -5501,7 +5612,8 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceOutput) Distribution
 // Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
 // Must specify exactly two of good, bad, and total service filters.
 // The relationship goodService + badService = totalService
-// will be assumed.  Structure is documented below.
+// will be assumed.
+// Structure is documented below.
 func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceOutput) GoodTotalRatio() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutput {
 	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThresholdPerformance) *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio {
 		return v.GoodTotalRatio
@@ -5532,7 +5644,8 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput) Elem() Sl
 // Distribution that fall into a good range. The totalService is the
 // total count of all values aggregated in the Distribution.
 // Defines a distribution TimeSeries filter and thresholds used for
-// measuring good service and total service.  Structure is documented below.
+// measuring good service and total service.
+// Structure is documented below.
 func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput) DistributionCut() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutput {
 	return o.ApplyT(func(v *SloWindowsBasedSliGoodTotalRatioThresholdPerformance) *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut {
 		if v == nil {
@@ -5546,7 +5659,8 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput) Distribut
 // Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
 // Must specify exactly two of good, bad, and total service filters.
 // The relationship goodService + badService = totalService
-// will be assumed.  Structure is documented below.
+// will be assumed.
+// Structure is documented below.
 func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput) GoodTotalRatio() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutput {
 	return o.ApplyT(func(v *SloWindowsBasedSliGoodTotalRatioThresholdPerformance) *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio {
 		if v == nil {
@@ -5567,7 +5681,8 @@ type SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut struct 
 	// that range.min <= x < range.max. inclusive of min and
 	// exclusive of max. Open ranges can be defined by setting
 	// just one of min or max. Summed value `X` should satisfy
-	// `range.min <= X < range.max` for a good window.  Structure is documented below.
+	// `range.min <= X < range.max` for a good window.
+	// Structure is documented below.
 	Range SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange `pulumi:"range"`
 }
 
@@ -5593,7 +5708,8 @@ type SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs str
 	// that range.min <= x < range.max. inclusive of min and
 	// exclusive of max. Open ranges can be defined by setting
 	// just one of min or max. Summed value `X` should satisfy
-	// `range.min <= X < range.max` for a good window.  Structure is documented below.
+	// `range.min <= X < range.max` for a good window.
+	// Structure is documented below.
 	Range SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeInput `pulumi:"range"`
 }
 
@@ -5689,7 +5805,8 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutOutpu
 // that range.min <= x < range.max. inclusive of min and
 // exclusive of max. Open ranges can be defined by setting
 // just one of min or max. Summed value `X` should satisfy
-// `range.min <= X < range.max` for a good window.  Structure is documented below.
+// `range.min <= X < range.max` for a good window.
+// Structure is documented below.
 func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutOutput) Range() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeOutput {
 	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut) SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange {
 		return v.Range
@@ -5734,7 +5851,8 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOu
 // that range.min <= x < range.max. inclusive of min and
 // exclusive of max. Open ranges can be defined by setting
 // just one of min or max. Summed value `X` should satisfy
-// `range.min <= X < range.max` for a good window.  Structure is documented below.
+// `range.min <= X < range.max` for a good window.
+// Structure is documented below.
 func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutput) Range() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutput {
 	return o.ApplyT(func(v *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut) *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange {
 		if v == nil {
@@ -6163,7 +6281,8 @@ type SloWindowsBasedSliMetricMeanInRange struct {
 	// that range.min <= x < range.max. inclusive of min and
 	// exclusive of max. Open ranges can be defined by setting
 	// just one of min or max. Summed value `X` should satisfy
-	// `range.min <= X < range.max` for a good window.  Structure is documented below.
+	// `range.min <= X < range.max` for a good window.
+	// Structure is documented below.
 	Range SloWindowsBasedSliMetricMeanInRangeRange `pulumi:"range"`
 	// A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
 	// specifying the TimeSeries to use for evaluating window
@@ -6192,7 +6311,8 @@ type SloWindowsBasedSliMetricMeanInRangeArgs struct {
 	// that range.min <= x < range.max. inclusive of min and
 	// exclusive of max. Open ranges can be defined by setting
 	// just one of min or max. Summed value `X` should satisfy
-	// `range.min <= X < range.max` for a good window.  Structure is documented below.
+	// `range.min <= X < range.max` for a good window.
+	// Structure is documented below.
 	Range SloWindowsBasedSliMetricMeanInRangeRangeInput `pulumi:"range"`
 	// A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
 	// specifying the TimeSeries to use for evaluating window
@@ -6286,7 +6406,8 @@ func (o SloWindowsBasedSliMetricMeanInRangeOutput) ToSloWindowsBasedSliMetricMea
 // that range.min <= x < range.max. inclusive of min and
 // exclusive of max. Open ranges can be defined by setting
 // just one of min or max. Summed value `X` should satisfy
-// `range.min <= X < range.max` for a good window.  Structure is documented below.
+// `range.min <= X < range.max` for a good window.
+// Structure is documented below.
 func (o SloWindowsBasedSliMetricMeanInRangeOutput) Range() SloWindowsBasedSliMetricMeanInRangeRangeOutput {
 	return o.ApplyT(func(v SloWindowsBasedSliMetricMeanInRange) SloWindowsBasedSliMetricMeanInRangeRange { return v.Range }).(SloWindowsBasedSliMetricMeanInRangeRangeOutput)
 }
@@ -6325,7 +6446,8 @@ func (o SloWindowsBasedSliMetricMeanInRangePtrOutput) Elem() SloWindowsBasedSliM
 // that range.min <= x < range.max. inclusive of min and
 // exclusive of max. Open ranges can be defined by setting
 // just one of min or max. Summed value `X` should satisfy
-// `range.min <= X < range.max` for a good window.  Structure is documented below.
+// `range.min <= X < range.max` for a good window.
+// Structure is documented below.
 func (o SloWindowsBasedSliMetricMeanInRangePtrOutput) Range() SloWindowsBasedSliMetricMeanInRangeRangePtrOutput {
 	return o.ApplyT(func(v *SloWindowsBasedSliMetricMeanInRange) *SloWindowsBasedSliMetricMeanInRangeRange {
 		if v == nil {
@@ -6523,7 +6645,8 @@ type SloWindowsBasedSliMetricSumInRange struct {
 	// that range.min <= x < range.max. inclusive of min and
 	// exclusive of max. Open ranges can be defined by setting
 	// just one of min or max. Summed value `X` should satisfy
-	// `range.min <= X < range.max` for a good window.  Structure is documented below.
+	// `range.min <= X < range.max` for a good window.
+	// Structure is documented below.
 	Range SloWindowsBasedSliMetricSumInRangeRange `pulumi:"range"`
 	// A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
 	// specifying the TimeSeries to use for evaluating window
@@ -6552,7 +6675,8 @@ type SloWindowsBasedSliMetricSumInRangeArgs struct {
 	// that range.min <= x < range.max. inclusive of min and
 	// exclusive of max. Open ranges can be defined by setting
 	// just one of min or max. Summed value `X` should satisfy
-	// `range.min <= X < range.max` for a good window.  Structure is documented below.
+	// `range.min <= X < range.max` for a good window.
+	// Structure is documented below.
 	Range SloWindowsBasedSliMetricSumInRangeRangeInput `pulumi:"range"`
 	// A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
 	// specifying the TimeSeries to use for evaluating window
@@ -6646,7 +6770,8 @@ func (o SloWindowsBasedSliMetricSumInRangeOutput) ToSloWindowsBasedSliMetricSumI
 // that range.min <= x < range.max. inclusive of min and
 // exclusive of max. Open ranges can be defined by setting
 // just one of min or max. Summed value `X` should satisfy
-// `range.min <= X < range.max` for a good window.  Structure is documented below.
+// `range.min <= X < range.max` for a good window.
+// Structure is documented below.
 func (o SloWindowsBasedSliMetricSumInRangeOutput) Range() SloWindowsBasedSliMetricSumInRangeRangeOutput {
 	return o.ApplyT(func(v SloWindowsBasedSliMetricSumInRange) SloWindowsBasedSliMetricSumInRangeRange { return v.Range }).(SloWindowsBasedSliMetricSumInRangeRangeOutput)
 }
@@ -6685,7 +6810,8 @@ func (o SloWindowsBasedSliMetricSumInRangePtrOutput) Elem() SloWindowsBasedSliMe
 // that range.min <= x < range.max. inclusive of min and
 // exclusive of max. Open ranges can be defined by setting
 // just one of min or max. Summed value `X` should satisfy
-// `range.min <= X < range.max` for a good window.  Structure is documented below.
+// `range.min <= X < range.max` for a good window.
+// Structure is documented below.
 func (o SloWindowsBasedSliMetricSumInRangePtrOutput) Range() SloWindowsBasedSliMetricSumInRangeRangePtrOutput {
 	return o.ApplyT(func(v *SloWindowsBasedSliMetricSumInRange) *SloWindowsBasedSliMetricSumInRangeRange {
 		if v == nil {
@@ -6881,6 +7007,8 @@ type UptimeCheckConfigContentMatcher struct {
 	// String or regex content to match (max 1024 bytes)
 	Content string `pulumi:"content"`
 	// The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
+	// Default value is `CONTAINS_STRING`.
+	// Possible values are `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, and `NON_MATCHES_REGEX`.
 	Matcher *string `pulumi:"matcher"`
 }
 
@@ -6899,6 +7027,8 @@ type UptimeCheckConfigContentMatcherArgs struct {
 	// String or regex content to match (max 1024 bytes)
 	Content pulumi.StringInput `pulumi:"content"`
 	// The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
+	// Default value is `CONTAINS_STRING`.
+	// Possible values are `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, and `NON_MATCHES_REGEX`.
 	Matcher pulumi.StringPtrInput `pulumi:"matcher"`
 }
 
@@ -6959,6 +7089,8 @@ func (o UptimeCheckConfigContentMatcherOutput) Content() pulumi.StringOutput {
 }
 
 // The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
+// Default value is `CONTAINS_STRING`.
+// Possible values are `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, and `NON_MATCHES_REGEX`.
 func (o UptimeCheckConfigContentMatcherOutput) Matcher() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UptimeCheckConfigContentMatcher) *string { return v.Matcher }).(pulumi.StringPtrOutput)
 }
@@ -6984,11 +7116,13 @@ func (o UptimeCheckConfigContentMatcherArrayOutput) Index(i pulumi.IntInput) Upt
 }
 
 type UptimeCheckConfigHttpCheck struct {
-	// The authentication information. Optional when creating an HTTP check; defaults to empty.  Structure is documented below.
+	// The authentication information. Optional when creating an HTTP check; defaults to empty.
+	// Structure is documented below.
 	AuthInfo *UptimeCheckConfigHttpCheckAuthInfo `pulumi:"authInfo"`
 	// The request body associated with the HTTP POST request. If contentType is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the requestMethod is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. "foo=bar" in URL-encoded form is "foo%3Dbar" and in base64 encoding is "Zm9vJTI1M0RiYXI=".
 	Body *string `pulumi:"body"`
 	// The content type to use for the check.
+	// Possible values are `TYPE_UNSPECIFIED` and `URL_ENCODED`.
 	ContentType *string `pulumi:"contentType"`
 	// The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
 	Headers map[string]string `pulumi:"headers"`
@@ -6999,6 +7133,8 @@ type UptimeCheckConfigHttpCheck struct {
 	// The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
 	Port *int `pulumi:"port"`
 	// The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then requestMethod defaults to GET.
+	// Default value is `GET`.
+	// Possible values are `METHOD_UNSPECIFIED`, `GET`, and `POST`.
 	RequestMethod *string `pulumi:"requestMethod"`
 	// If true, use HTTPS instead of HTTP to run the check.
 	UseSsl *bool `pulumi:"useSsl"`
@@ -7018,11 +7154,13 @@ type UptimeCheckConfigHttpCheckInput interface {
 }
 
 type UptimeCheckConfigHttpCheckArgs struct {
-	// The authentication information. Optional when creating an HTTP check; defaults to empty.  Structure is documented below.
+	// The authentication information. Optional when creating an HTTP check; defaults to empty.
+	// Structure is documented below.
 	AuthInfo UptimeCheckConfigHttpCheckAuthInfoPtrInput `pulumi:"authInfo"`
 	// The request body associated with the HTTP POST request. If contentType is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the requestMethod is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. "foo=bar" in URL-encoded form is "foo%3Dbar" and in base64 encoding is "Zm9vJTI1M0RiYXI=".
 	Body pulumi.StringPtrInput `pulumi:"body"`
 	// The content type to use for the check.
+	// Possible values are `TYPE_UNSPECIFIED` and `URL_ENCODED`.
 	ContentType pulumi.StringPtrInput `pulumi:"contentType"`
 	// The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
 	Headers pulumi.StringMapInput `pulumi:"headers"`
@@ -7033,6 +7171,8 @@ type UptimeCheckConfigHttpCheckArgs struct {
 	// The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then requestMethod defaults to GET.
+	// Default value is `GET`.
+	// Possible values are `METHOD_UNSPECIFIED`, `GET`, and `POST`.
 	RequestMethod pulumi.StringPtrInput `pulumi:"requestMethod"`
 	// If true, use HTTPS instead of HTTP to run the check.
 	UseSsl pulumi.BoolPtrInput `pulumi:"useSsl"`
@@ -7117,7 +7257,8 @@ func (o UptimeCheckConfigHttpCheckOutput) ToUptimeCheckConfigHttpCheckPtrOutputW
 	}).(UptimeCheckConfigHttpCheckPtrOutput)
 }
 
-// The authentication information. Optional when creating an HTTP check; defaults to empty.  Structure is documented below.
+// The authentication information. Optional when creating an HTTP check; defaults to empty.
+// Structure is documented below.
 func (o UptimeCheckConfigHttpCheckOutput) AuthInfo() UptimeCheckConfigHttpCheckAuthInfoPtrOutput {
 	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) *UptimeCheckConfigHttpCheckAuthInfo { return v.AuthInfo }).(UptimeCheckConfigHttpCheckAuthInfoPtrOutput)
 }
@@ -7128,6 +7269,7 @@ func (o UptimeCheckConfigHttpCheckOutput) Body() pulumi.StringPtrOutput {
 }
 
 // The content type to use for the check.
+// Possible values are `TYPE_UNSPECIFIED` and `URL_ENCODED`.
 func (o UptimeCheckConfigHttpCheckOutput) ContentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) *string { return v.ContentType }).(pulumi.StringPtrOutput)
 }
@@ -7153,6 +7295,8 @@ func (o UptimeCheckConfigHttpCheckOutput) Port() pulumi.IntPtrOutput {
 }
 
 // The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then requestMethod defaults to GET.
+// Default value is `GET`.
+// Possible values are `METHOD_UNSPECIFIED`, `GET`, and `POST`.
 func (o UptimeCheckConfigHttpCheckOutput) RequestMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) *string { return v.RequestMethod }).(pulumi.StringPtrOutput)
 }
@@ -7185,7 +7329,8 @@ func (o UptimeCheckConfigHttpCheckPtrOutput) Elem() UptimeCheckConfigHttpCheckOu
 	return o.ApplyT(func(v *UptimeCheckConfigHttpCheck) UptimeCheckConfigHttpCheck { return *v }).(UptimeCheckConfigHttpCheckOutput)
 }
 
-// The authentication information. Optional when creating an HTTP check; defaults to empty.  Structure is documented below.
+// The authentication information. Optional when creating an HTTP check; defaults to empty.
+// Structure is documented below.
 func (o UptimeCheckConfigHttpCheckPtrOutput) AuthInfo() UptimeCheckConfigHttpCheckAuthInfoPtrOutput {
 	return o.ApplyT(func(v *UptimeCheckConfigHttpCheck) *UptimeCheckConfigHttpCheckAuthInfo {
 		if v == nil {
@@ -7206,6 +7351,7 @@ func (o UptimeCheckConfigHttpCheckPtrOutput) Body() pulumi.StringPtrOutput {
 }
 
 // The content type to use for the check.
+// Possible values are `TYPE_UNSPECIFIED` and `URL_ENCODED`.
 func (o UptimeCheckConfigHttpCheckPtrOutput) ContentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UptimeCheckConfigHttpCheck) *string {
 		if v == nil {
@@ -7256,6 +7402,8 @@ func (o UptimeCheckConfigHttpCheckPtrOutput) Port() pulumi.IntPtrOutput {
 }
 
 // The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then requestMethod defaults to GET.
+// Default value is `GET`.
+// Possible values are `METHOD_UNSPECIFIED`, `GET`, and `POST`.
 func (o UptimeCheckConfigHttpCheckPtrOutput) RequestMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UptimeCheckConfigHttpCheck) *string {
 		if v == nil {
@@ -7286,7 +7434,8 @@ func (o UptimeCheckConfigHttpCheckPtrOutput) ValidateSsl() pulumi.BoolPtrOutput 
 }
 
 type UptimeCheckConfigHttpCheckAuthInfo struct {
-	// The password to authenticate.  **Note**: This property is sensitive and will not be displayed in the plan.
+	// The password to authenticate.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Password string `pulumi:"password"`
 	// The username to authenticate.
 	Username string `pulumi:"username"`
@@ -7304,7 +7453,8 @@ type UptimeCheckConfigHttpCheckAuthInfoInput interface {
 }
 
 type UptimeCheckConfigHttpCheckAuthInfoArgs struct {
-	// The password to authenticate.  **Note**: This property is sensitive and will not be displayed in the plan.
+	// The password to authenticate.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Password pulumi.StringInput `pulumi:"password"`
 	// The username to authenticate.
 	Username pulumi.StringInput `pulumi:"username"`
@@ -7387,7 +7537,8 @@ func (o UptimeCheckConfigHttpCheckAuthInfoOutput) ToUptimeCheckConfigHttpCheckAu
 	}).(UptimeCheckConfigHttpCheckAuthInfoPtrOutput)
 }
 
-// The password to authenticate.  **Note**: This property is sensitive and will not be displayed in the plan.
+// The password to authenticate.
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o UptimeCheckConfigHttpCheckAuthInfoOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v UptimeCheckConfigHttpCheckAuthInfo) string { return v.Password }).(pulumi.StringOutput)
 }
@@ -7415,7 +7566,8 @@ func (o UptimeCheckConfigHttpCheckAuthInfoPtrOutput) Elem() UptimeCheckConfigHtt
 	return o.ApplyT(func(v *UptimeCheckConfigHttpCheckAuthInfo) UptimeCheckConfigHttpCheckAuthInfo { return *v }).(UptimeCheckConfigHttpCheckAuthInfoOutput)
 }
 
-// The password to authenticate.  **Note**: This property is sensitive and will not be displayed in the plan.
+// The password to authenticate.
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o UptimeCheckConfigHttpCheckAuthInfoPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UptimeCheckConfigHttpCheckAuthInfo) *string {
 		if v == nil {
@@ -7589,6 +7741,7 @@ type UptimeCheckConfigResourceGroup struct {
 	// The group of resources being monitored. Should be the `name` of a group
 	GroupId *string `pulumi:"groupId"`
 	// The resource type of the group members.
+	// Possible values are `RESOURCE_TYPE_UNSPECIFIED`, `INSTANCE`, and `AWS_ELB_LOAD_BALANCER`.
 	ResourceType *string `pulumi:"resourceType"`
 }
 
@@ -7607,6 +7760,7 @@ type UptimeCheckConfigResourceGroupArgs struct {
 	// The group of resources being monitored. Should be the `name` of a group
 	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
 	// The resource type of the group members.
+	// Possible values are `RESOURCE_TYPE_UNSPECIFIED`, `INSTANCE`, and `AWS_ELB_LOAD_BALANCER`.
 	ResourceType pulumi.StringPtrInput `pulumi:"resourceType"`
 }
 
@@ -7693,6 +7847,7 @@ func (o UptimeCheckConfigResourceGroupOutput) GroupId() pulumi.StringPtrOutput {
 }
 
 // The resource type of the group members.
+// Possible values are `RESOURCE_TYPE_UNSPECIFIED`, `INSTANCE`, and `AWS_ELB_LOAD_BALANCER`.
 func (o UptimeCheckConfigResourceGroupOutput) ResourceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UptimeCheckConfigResourceGroup) *string { return v.ResourceType }).(pulumi.StringPtrOutput)
 }
@@ -7726,6 +7881,7 @@ func (o UptimeCheckConfigResourceGroupPtrOutput) GroupId() pulumi.StringPtrOutpu
 }
 
 // The resource type of the group members.
+// Possible values are `RESOURCE_TYPE_UNSPECIFIED`, `INSTANCE`, and `AWS_ELB_LOAD_BALANCER`.
 func (o UptimeCheckConfigResourceGroupPtrOutput) ResourceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UptimeCheckConfigResourceGroup) *string {
 		if v == nil {

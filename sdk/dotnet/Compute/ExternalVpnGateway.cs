@@ -27,7 +27,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// A list of interfaces on this external VPN gateway.  Structure is documented below.
+        /// A list of interfaces on this external VPN gateway.
+        /// Structure is documented below.
         /// </summary>
         [Output("interfaces")]
         public Output<ImmutableArray<Outputs.ExternalVpnGatewayInterface>> Interfaces { get; private set; } = null!;
@@ -53,6 +54,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Indicates the redundancy type of this external VPN gateway
+        /// Possible values are `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, and `TWO_IPS_REDUNDANCY`.
         /// </summary>
         [Output("redundancyType")]
         public Output<string?> RedundancyType { get; private set; } = null!;
@@ -119,7 +121,8 @@ namespace Pulumi.Gcp.Compute
         private InputList<Inputs.ExternalVpnGatewayInterfaceArgs>? _interfaces;
 
         /// <summary>
-        /// A list of interfaces on this external VPN gateway.  Structure is documented below.
+        /// A list of interfaces on this external VPN gateway.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.ExternalVpnGatewayInterfaceArgs> Interfaces
         {
@@ -148,6 +151,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Indicates the redundancy type of this external VPN gateway
+        /// Possible values are `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, and `TWO_IPS_REDUNDANCY`.
         /// </summary>
         [Input("redundancyType")]
         public Input<string>? RedundancyType { get; set; }
@@ -169,7 +173,8 @@ namespace Pulumi.Gcp.Compute
         private InputList<Inputs.ExternalVpnGatewayInterfaceGetArgs>? _interfaces;
 
         /// <summary>
-        /// A list of interfaces on this external VPN gateway.  Structure is documented below.
+        /// A list of interfaces on this external VPN gateway.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.ExternalVpnGatewayInterfaceGetArgs> Interfaces
         {
@@ -198,6 +203,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Indicates the redundancy type of this external VPN gateway
+        /// Possible values are `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, and `TWO_IPS_REDUNDANCY`.
         /// </summary>
         [Input("redundancyType")]
         public Input<string>? RedundancyType { get; set; }

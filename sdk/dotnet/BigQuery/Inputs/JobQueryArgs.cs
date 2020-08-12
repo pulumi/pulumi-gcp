@@ -25,24 +25,29 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         /// CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
         /// CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
         /// Creation, truncation and append actions occur as one atomic update upon job completion
+        /// Default value is `CREATE_IF_NEEDED`.
+        /// Possible values are `CREATE_IF_NEEDED` and `CREATE_NEVER`.
         /// </summary>
         [Input("createDisposition")]
         public Input<string>? CreateDisposition { get; set; }
 
         /// <summary>
-        /// Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names.  Structure is documented below.
+        /// Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names.
+        /// Structure is documented below.
         /// </summary>
         [Input("defaultDataset")]
         public Input<Inputs.JobQueryDefaultDatasetArgs>? DefaultDataset { get; set; }
 
         /// <summary>
-        /// Custom encryption configuration (e.g., Cloud KMS keys)  Structure is documented below.
+        /// Custom encryption configuration (e.g., Cloud KMS keys)
+        /// Structure is documented below.
         /// </summary>
         [Input("destinationEncryptionConfiguration")]
         public Input<Inputs.JobQueryDestinationEncryptionConfigurationArgs>? DestinationEncryptionConfiguration { get; set; }
 
         /// <summary>
-        /// The destination table.  Structure is documented below.
+        /// The destination table.
+        /// Structure is documented below.
         /// </summary>
         [Input("destinationTable")]
         public Input<Inputs.JobQueryDestinationTableArgs>? DestinationTable { get; set; }
@@ -76,12 +81,15 @@ namespace Pulumi.Gcp.BigQuery.Inputs
 
         /// <summary>
         /// Specifies a priority for the query.
+        /// Default value is `INTERACTIVE`.
+        /// Possible values are `INTERACTIVE` and `BATCH`.
         /// </summary>
         [Input("priority")]
         public Input<string>? Priority { get; set; }
 
         /// <summary>
-        /// Configures a query job.  Structure is documented below.
+        /// Configures a query job.
+        /// Structure is documented below.
         /// </summary>
         [Input("query", required: true)]
         public Input<string> Query { get; set; } = null!;
@@ -104,7 +112,8 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         }
 
         /// <summary>
-        /// Options controlling the execution of scripts.  Structure is documented below.
+        /// Options controlling the execution of scripts.
+        /// Structure is documented below.
         /// </summary>
         [Input("scriptOptions")]
         public Input<Inputs.JobQueryScriptOptionsArgs>? ScriptOptions { get; set; }
@@ -128,7 +137,8 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         private InputList<Inputs.JobQueryUserDefinedFunctionResourceArgs>? _userDefinedFunctionResources;
 
         /// <summary>
-        /// Describes user-defined function resources used in the query.  Structure is documented below.
+        /// Describes user-defined function resources used in the query.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.JobQueryUserDefinedFunctionResourceArgs> UserDefinedFunctionResources
         {
@@ -143,6 +153,8 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         /// WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
         /// Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
         /// Creation, truncation and append actions occur as one atomic update upon job completion.
+        /// Default value is `WRITE_EMPTY`.
+        /// Possible values are `WRITE_TRUNCATE`, `WRITE_APPEND`, and `WRITE_EMPTY`.
         /// </summary>
         [Input("writeDisposition")]
         public Input<string>? WriteDisposition { get; set; }

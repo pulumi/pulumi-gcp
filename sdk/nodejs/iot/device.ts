@@ -54,11 +54,13 @@ export class Device extends pulumi.CustomResource {
      */
     public /*out*/ readonly config!: pulumi.Output<outputs.iot.DeviceConfig>;
     /**
-     * The credentials used to authenticate this device.  Structure is documented below.
+     * The credentials used to authenticate this device.
+     * Structure is documented below.
      */
     public readonly credentials!: pulumi.Output<outputs.iot.DeviceCredential[] | undefined>;
     /**
-     * Gateway-related configuration and state.  Structure is documented below.
+     * Gateway-related configuration and state.
+     * Structure is documented below.
      */
     public readonly gatewayConfig!: pulumi.Output<outputs.iot.DeviceGatewayConfig | undefined>;
     /**
@@ -91,6 +93,7 @@ export class Device extends pulumi.CustomResource {
     public /*out*/ readonly lastStateTime!: pulumi.Output<string>;
     /**
      * The logging verbosity for device activity.
+     * Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
      */
     public readonly logLevel!: pulumi.Output<string | undefined>;
     /**
@@ -191,11 +194,13 @@ export interface DeviceState {
      */
     readonly config?: pulumi.Input<inputs.iot.DeviceConfig>;
     /**
-     * The credentials used to authenticate this device.  Structure is documented below.
+     * The credentials used to authenticate this device.
+     * Structure is documented below.
      */
     readonly credentials?: pulumi.Input<pulumi.Input<inputs.iot.DeviceCredential>[]>;
     /**
-     * Gateway-related configuration and state.  Structure is documented below.
+     * Gateway-related configuration and state.
+     * Structure is documented below.
      */
     readonly gatewayConfig?: pulumi.Input<inputs.iot.DeviceGatewayConfig>;
     /**
@@ -228,6 +233,7 @@ export interface DeviceState {
     readonly lastStateTime?: pulumi.Input<string>;
     /**
      * The logging verbosity for device activity.
+     * Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
      */
     readonly logLevel?: pulumi.Input<string>;
     /**
@@ -262,15 +268,18 @@ export interface DeviceArgs {
      */
     readonly blocked?: pulumi.Input<boolean>;
     /**
-     * The credentials used to authenticate this device.  Structure is documented below.
+     * The credentials used to authenticate this device.
+     * Structure is documented below.
      */
     readonly credentials?: pulumi.Input<pulumi.Input<inputs.iot.DeviceCredential>[]>;
     /**
-     * Gateway-related configuration and state.  Structure is documented below.
+     * Gateway-related configuration and state.
+     * Structure is documented below.
      */
     readonly gatewayConfig?: pulumi.Input<inputs.iot.DeviceGatewayConfig>;
     /**
      * The logging verbosity for device activity.
+     * Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
      */
     readonly logLevel?: pulumi.Input<string>;
     /**

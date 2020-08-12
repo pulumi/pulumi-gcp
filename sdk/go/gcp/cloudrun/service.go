@@ -43,7 +43,8 @@ type Service struct {
 	// The location of the cloud run instance. eg us-central1
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Metadata associated with this Service, including name, namespace, labels,
-	// and annotations.  Structure is documented below.
+	// and annotations.
+	// Structure is documented below.
 	Metadata ServiceMetadataOutput `pulumi:"metadata"`
 	// Name of the port.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -60,10 +61,12 @@ type Service struct {
 	// template metadata. For more details, see:
 	// https://github.com/knative/serving/blob/master/docs/client-conventions.md#associate-modifications-with-revisions
 	// Cloud Run does not currently support referencing a build that is
-	// responsible for materializing the container image from source.  Structure is documented below.
+	// responsible for materializing the container image from source.
+	// Structure is documented below.
 	Template ServiceTemplatePtrOutput `pulumi:"template"`
 	// Traffic specifies how to distribute traffic over a collection of Knative Revisions
-	// and Configurations  Structure is documented below.
+	// and Configurations
+	// Structure is documented below.
 	Traffics ServiceTrafficArrayOutput `pulumi:"traffics"`
 }
 
@@ -107,7 +110,8 @@ type serviceState struct {
 	// The location of the cloud run instance. eg us-central1
 	Location *string `pulumi:"location"`
 	// Metadata associated with this Service, including name, namespace, labels,
-	// and annotations.  Structure is documented below.
+	// and annotations.
+	// Structure is documented below.
 	Metadata *ServiceMetadata `pulumi:"metadata"`
 	// Name of the port.
 	Name *string `pulumi:"name"`
@@ -124,10 +128,12 @@ type serviceState struct {
 	// template metadata. For more details, see:
 	// https://github.com/knative/serving/blob/master/docs/client-conventions.md#associate-modifications-with-revisions
 	// Cloud Run does not currently support referencing a build that is
-	// responsible for materializing the container image from source.  Structure is documented below.
+	// responsible for materializing the container image from source.
+	// Structure is documented below.
 	Template *ServiceTemplate `pulumi:"template"`
 	// Traffic specifies how to distribute traffic over a collection of Knative Revisions
-	// and Configurations  Structure is documented below.
+	// and Configurations
+	// Structure is documented below.
 	Traffics []ServiceTraffic `pulumi:"traffics"`
 }
 
@@ -141,7 +147,8 @@ type ServiceState struct {
 	// The location of the cloud run instance. eg us-central1
 	Location pulumi.StringPtrInput
 	// Metadata associated with this Service, including name, namespace, labels,
-	// and annotations.  Structure is documented below.
+	// and annotations.
+	// Structure is documented below.
 	Metadata ServiceMetadataPtrInput
 	// Name of the port.
 	Name pulumi.StringPtrInput
@@ -158,10 +165,12 @@ type ServiceState struct {
 	// template metadata. For more details, see:
 	// https://github.com/knative/serving/blob/master/docs/client-conventions.md#associate-modifications-with-revisions
 	// Cloud Run does not currently support referencing a build that is
-	// responsible for materializing the container image from source.  Structure is documented below.
+	// responsible for materializing the container image from source.
+	// Structure is documented below.
 	Template ServiceTemplatePtrInput
 	// Traffic specifies how to distribute traffic over a collection of Knative Revisions
-	// and Configurations  Structure is documented below.
+	// and Configurations
+	// Structure is documented below.
 	Traffics ServiceTrafficArrayInput
 }
 
@@ -179,7 +188,8 @@ type serviceArgs struct {
 	// The location of the cloud run instance. eg us-central1
 	Location string `pulumi:"location"`
 	// Metadata associated with this Service, including name, namespace, labels,
-	// and annotations.  Structure is documented below.
+	// and annotations.
+	// Structure is documented below.
 	Metadata *ServiceMetadata `pulumi:"metadata"`
 	// Name of the port.
 	Name *string `pulumi:"name"`
@@ -194,10 +204,12 @@ type serviceArgs struct {
 	// template metadata. For more details, see:
 	// https://github.com/knative/serving/blob/master/docs/client-conventions.md#associate-modifications-with-revisions
 	// Cloud Run does not currently support referencing a build that is
-	// responsible for materializing the container image from source.  Structure is documented below.
+	// responsible for materializing the container image from source.
+	// Structure is documented below.
 	Template *ServiceTemplate `pulumi:"template"`
 	// Traffic specifies how to distribute traffic over a collection of Knative Revisions
-	// and Configurations  Structure is documented below.
+	// and Configurations
+	// Structure is documented below.
 	Traffics []ServiceTraffic `pulumi:"traffics"`
 }
 
@@ -212,7 +224,8 @@ type ServiceArgs struct {
 	// The location of the cloud run instance. eg us-central1
 	Location pulumi.StringInput
 	// Metadata associated with this Service, including name, namespace, labels,
-	// and annotations.  Structure is documented below.
+	// and annotations.
+	// Structure is documented below.
 	Metadata ServiceMetadataPtrInput
 	// Name of the port.
 	Name pulumi.StringPtrInput
@@ -227,10 +240,12 @@ type ServiceArgs struct {
 	// template metadata. For more details, see:
 	// https://github.com/knative/serving/blob/master/docs/client-conventions.md#associate-modifications-with-revisions
 	// Cloud Run does not currently support referencing a build that is
-	// responsible for materializing the container image from source.  Structure is documented below.
+	// responsible for materializing the container image from source.
+	// Structure is documented below.
 	Template ServiceTemplatePtrInput
 	// Traffic specifies how to distribute traffic over a collection of Knative Revisions
-	// and Configurations  Structure is documented below.
+	// and Configurations
+	// Structure is documented below.
 	Traffics ServiceTrafficArrayInput
 }
 

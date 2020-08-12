@@ -20,7 +20,8 @@ type Group struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The display name of the Group.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// EntityKey of the Group.  Structure is documented below.
+	// EntityKey of the Group.
+	// Structure is documented below.
 	GroupKey GroupGroupKeyOutput `pulumi:"groupKey"`
 	// The labels that apply to the Group.
 	// Must not contain more than one entry. Must contain the entry
@@ -82,7 +83,8 @@ type groupState struct {
 	Description *string `pulumi:"description"`
 	// The display name of the Group.
 	DisplayName *string `pulumi:"displayName"`
-	// EntityKey of the Group.  Structure is documented below.
+	// EntityKey of the Group.
+	// Structure is documented below.
 	GroupKey *GroupGroupKey `pulumi:"groupKey"`
 	// The labels that apply to the Group.
 	// Must not contain more than one entry. Must contain the entry
@@ -108,7 +110,8 @@ type GroupState struct {
 	Description pulumi.StringPtrInput
 	// The display name of the Group.
 	DisplayName pulumi.StringPtrInput
-	// EntityKey of the Group.  Structure is documented below.
+	// EntityKey of the Group.
+	// Structure is documented below.
 	GroupKey GroupGroupKeyPtrInput
 	// The labels that apply to the Group.
 	// Must not contain more than one entry. Must contain the entry
@@ -136,7 +139,8 @@ type groupArgs struct {
 	Description *string `pulumi:"description"`
 	// The display name of the Group.
 	DisplayName *string `pulumi:"displayName"`
-	// EntityKey of the Group.  Structure is documented below.
+	// EntityKey of the Group.
+	// Structure is documented below.
 	GroupKey GroupGroupKey `pulumi:"groupKey"`
 	// The labels that apply to the Group.
 	// Must not contain more than one entry. Must contain the entry
@@ -157,7 +161,8 @@ type GroupArgs struct {
 	Description pulumi.StringPtrInput
 	// The display name of the Group.
 	DisplayName pulumi.StringPtrInput
-	// EntityKey of the Group.  Structure is documented below.
+	// EntityKey of the Group.
+	// Structure is documented below.
 	GroupKey GroupGroupKeyInput
 	// The labels that apply to the Group.
 	// Must not contain more than one entry. Must contain the entry

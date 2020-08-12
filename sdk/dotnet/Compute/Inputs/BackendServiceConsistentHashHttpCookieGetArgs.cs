@@ -25,7 +25,8 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? Path { get; set; }
 
         /// <summary>
-        /// Lifetime of the cookie.  Structure is documented below.
+        /// Lifetime of the cookie.
+        /// Structure is documented below.
         /// </summary>
         [Input("ttl")]
         public Input<Inputs.BackendServiceConsistentHashHttpCookieTtlGetArgs>? Ttl { get; set; }

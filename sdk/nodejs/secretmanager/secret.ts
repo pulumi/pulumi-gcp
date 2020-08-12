@@ -69,7 +69,8 @@ export class Secret extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * The replication policy of the secret data attached to the Secret. It cannot be changed
-     * after the Secret has been created.  Structure is documented below.
+     * after the Secret has been created.
+     * Structure is documented below.
      */
     public readonly replication!: pulumi.Output<outputs.secretmanager.SecretReplication>;
     /**
@@ -151,7 +152,8 @@ export interface SecretState {
     readonly project?: pulumi.Input<string>;
     /**
      * The replication policy of the secret data attached to the Secret. It cannot be changed
-     * after the Secret has been created.  Structure is documented below.
+     * after the Secret has been created.
+     * Structure is documented below.
      */
     readonly replication?: pulumi.Input<inputs.secretmanager.SecretReplication>;
     /**
@@ -182,7 +184,8 @@ export interface SecretArgs {
     readonly project?: pulumi.Input<string>;
     /**
      * The replication policy of the secret data attached to the Secret. It cannot be changed
-     * after the Secret has been created.  Structure is documented below.
+     * after the Secret has been created.
+     * Structure is documented below.
      */
     readonly replication: pulumi.Input<inputs.secretmanager.SecretReplication>;
     /**

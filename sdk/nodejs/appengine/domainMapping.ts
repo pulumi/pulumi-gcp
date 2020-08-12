@@ -56,6 +56,8 @@ export class DomainMapping extends pulumi.CustomResource {
     /**
      * Whether the domain creation should override any existing mappings for this domain.
      * By default, overrides are rejected.
+     * Default value is `STRICT`.
+     * Possible values are `STRICT` and `OVERRIDE`.
      */
     public readonly overrideStrategy!: pulumi.Output<string | undefined>;
     /**
@@ -69,7 +71,8 @@ export class DomainMapping extends pulumi.CustomResource {
      */
     public /*out*/ readonly resourceRecords!: pulumi.Output<outputs.appengine.DomainMappingResourceRecord[]>;
     /**
-     * SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.  Structure is documented below.
+     * SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
+     * Structure is documented below.
      */
     public readonly sslSettings!: pulumi.Output<outputs.appengine.DomainMappingSslSettings | undefined>;
 
@@ -129,6 +132,8 @@ export interface DomainMappingState {
     /**
      * Whether the domain creation should override any existing mappings for this domain.
      * By default, overrides are rejected.
+     * Default value is `STRICT`.
+     * Possible values are `STRICT` and `OVERRIDE`.
      */
     readonly overrideStrategy?: pulumi.Input<string>;
     /**
@@ -142,7 +147,8 @@ export interface DomainMappingState {
      */
     readonly resourceRecords?: pulumi.Input<pulumi.Input<inputs.appengine.DomainMappingResourceRecord>[]>;
     /**
-     * SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.  Structure is documented below.
+     * SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
+     * Structure is documented below.
      */
     readonly sslSettings?: pulumi.Input<inputs.appengine.DomainMappingSslSettings>;
 }
@@ -158,6 +164,8 @@ export interface DomainMappingArgs {
     /**
      * Whether the domain creation should override any existing mappings for this domain.
      * By default, overrides are rejected.
+     * Default value is `STRICT`.
+     * Possible values are `STRICT` and `OVERRIDE`.
      */
     readonly overrideStrategy?: pulumi.Input<string>;
     /**
@@ -166,7 +174,8 @@ export interface DomainMappingArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.  Structure is documented below.
+     * SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
+     * Structure is documented below.
      */
     readonly sslSettings?: pulumi.Input<inputs.appengine.DomainMappingSslSettings>;
 }

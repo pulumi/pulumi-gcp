@@ -13,17 +13,22 @@ class SecurityScanConfig(pulumi.CustomResource):
     authentication: pulumi.Output[dict]
     """
     The authentication configuration.
-    If specified, service will use the authentication configuration during scanning.  Structure is documented below.
+    If specified, service will use the authentication configuration during scanning.
+    Structure is documented below.
 
-      * `customAccount` (`dict`) - Describes authentication configuration that uses a custom account.  Structure is documented below.
+      * `customAccount` (`dict`) - Describes authentication configuration that uses a custom account.
+        Structure is documented below.
         * `loginUrl` (`str`) - The login form URL of the website.
         * `password` (`str`) - The password of the custom account. The credential is stored encrypted
-          in GCP.  **Note**: This property is sensitive and will not be displayed in the plan.
+          in GCP.
+          **Note**: This property is sensitive and will not be displayed in the plan.
         * `username` (`str`) - The user name of the custom account.
 
-      * `googleAccount` (`dict`) - Describes authentication configuration that uses a Google account.  Structure is documented below.
+      * `googleAccount` (`dict`) - Describes authentication configuration that uses a Google account.
+        Structure is documented below.
         * `password` (`str`) - The password of the custom account. The credential is stored encrypted
-          in GCP.  **Note**: This property is sensitive and will not be displayed in the plan.
+          in GCP.
+          **Note**: This property is sensitive and will not be displayed in the plan.
         * `username` (`str`) - The user name of the custom account.
     """
     blacklist_patterns: pulumi.Output[list]
@@ -38,6 +43,8 @@ class SecurityScanConfig(pulumi.CustomResource):
     export_to_security_command_center: pulumi.Output[str]
     """
     Controls export of scan configurations and results to Cloud Security Command Center.
+    Default value is `ENABLED`.
+    Possible values are `ENABLED` and `DISABLED`.
     """
     max_qps: pulumi.Output[float]
     """
@@ -55,7 +62,8 @@ class SecurityScanConfig(pulumi.CustomResource):
     """
     schedule: pulumi.Output[dict]
     """
-    The schedule of the ScanConfig  Structure is documented below.
+    The schedule of the ScanConfig
+    Structure is documented below.
 
       * `intervalDurationDays` (`float`) - The duration of time between executions in days
       * `scheduleTime` (`str`) - A timestamp indicates when the next run will be scheduled. The value is refreshed
@@ -73,6 +81,8 @@ class SecurityScanConfig(pulumi.CustomResource):
     user_agent: pulumi.Output[str]
     """
     Type of the user agents used for scanning
+    Default value is `CHROME_LINUX`.
+    Possible values are `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, and `SAFARI_IPHONE`.
     """
     def __init__(__self__, resource_name, opts=None, authentication=None, blacklist_patterns=None, display_name=None, export_to_security_command_center=None, max_qps=None, project=None, schedule=None, starting_urls=None, target_platforms=None, user_agent=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -92,31 +102,41 @@ class SecurityScanConfig(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] authentication: The authentication configuration.
-               If specified, service will use the authentication configuration during scanning.  Structure is documented below.
+               If specified, service will use the authentication configuration during scanning.
+               Structure is documented below.
         :param pulumi.Input[list] blacklist_patterns: The blacklist URL patterns as described in
                https://cloud.google.com/security-scanner/docs/excluded-urls
         :param pulumi.Input[str] display_name: The user provider display name of the ScanConfig.
         :param pulumi.Input[str] export_to_security_command_center: Controls export of scan configurations and results to Cloud Security Command Center.
+               Default value is `ENABLED`.
+               Possible values are `ENABLED` and `DISABLED`.
         :param pulumi.Input[float] max_qps: The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
                Defaults to 15.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[dict] schedule: The schedule of the ScanConfig  Structure is documented below.
+        :param pulumi.Input[dict] schedule: The schedule of the ScanConfig
+               Structure is documented below.
         :param pulumi.Input[list] starting_urls: The starting URLs from which the scanner finds site pages.
         :param pulumi.Input[list] target_platforms: Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
         :param pulumi.Input[str] user_agent: Type of the user agents used for scanning
+               Default value is `CHROME_LINUX`.
+               Possible values are `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, and `SAFARI_IPHONE`.
 
         The **authentication** object supports the following:
 
-          * `customAccount` (`pulumi.Input[dict]`) - Describes authentication configuration that uses a custom account.  Structure is documented below.
+          * `customAccount` (`pulumi.Input[dict]`) - Describes authentication configuration that uses a custom account.
+            Structure is documented below.
             * `loginUrl` (`pulumi.Input[str]`) - The login form URL of the website.
             * `password` (`pulumi.Input[str]`) - The password of the custom account. The credential is stored encrypted
-              in GCP.  **Note**: This property is sensitive and will not be displayed in the plan.
+              in GCP.
+              **Note**: This property is sensitive and will not be displayed in the plan.
             * `username` (`pulumi.Input[str]`) - The user name of the custom account.
 
-          * `googleAccount` (`pulumi.Input[dict]`) - Describes authentication configuration that uses a Google account.  Structure is documented below.
+          * `googleAccount` (`pulumi.Input[dict]`) - Describes authentication configuration that uses a Google account.
+            Structure is documented below.
             * `password` (`pulumi.Input[str]`) - The password of the custom account. The credential is stored encrypted
-              in GCP.  **Note**: This property is sensitive and will not be displayed in the plan.
+              in GCP.
+              **Note**: This property is sensitive and will not be displayed in the plan.
             * `username` (`pulumi.Input[str]`) - The user name of the custom account.
 
         The **schedule** object supports the following:
@@ -174,32 +194,42 @@ class SecurityScanConfig(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] authentication: The authentication configuration.
-               If specified, service will use the authentication configuration during scanning.  Structure is documented below.
+               If specified, service will use the authentication configuration during scanning.
+               Structure is documented below.
         :param pulumi.Input[list] blacklist_patterns: The blacklist URL patterns as described in
                https://cloud.google.com/security-scanner/docs/excluded-urls
         :param pulumi.Input[str] display_name: The user provider display name of the ScanConfig.
         :param pulumi.Input[str] export_to_security_command_center: Controls export of scan configurations and results to Cloud Security Command Center.
+               Default value is `ENABLED`.
+               Possible values are `ENABLED` and `DISABLED`.
         :param pulumi.Input[float] max_qps: The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
                Defaults to 15.
         :param pulumi.Input[str] name: A server defined name for this index. Format: 'projects/{{project}}/scanConfigs/{{server_generated_id}}'
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[dict] schedule: The schedule of the ScanConfig  Structure is documented below.
+        :param pulumi.Input[dict] schedule: The schedule of the ScanConfig
+               Structure is documented below.
         :param pulumi.Input[list] starting_urls: The starting URLs from which the scanner finds site pages.
         :param pulumi.Input[list] target_platforms: Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
         :param pulumi.Input[str] user_agent: Type of the user agents used for scanning
+               Default value is `CHROME_LINUX`.
+               Possible values are `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, and `SAFARI_IPHONE`.
 
         The **authentication** object supports the following:
 
-          * `customAccount` (`pulumi.Input[dict]`) - Describes authentication configuration that uses a custom account.  Structure is documented below.
+          * `customAccount` (`pulumi.Input[dict]`) - Describes authentication configuration that uses a custom account.
+            Structure is documented below.
             * `loginUrl` (`pulumi.Input[str]`) - The login form URL of the website.
             * `password` (`pulumi.Input[str]`) - The password of the custom account. The credential is stored encrypted
-              in GCP.  **Note**: This property is sensitive and will not be displayed in the plan.
+              in GCP.
+              **Note**: This property is sensitive and will not be displayed in the plan.
             * `username` (`pulumi.Input[str]`) - The user name of the custom account.
 
-          * `googleAccount` (`pulumi.Input[dict]`) - Describes authentication configuration that uses a Google account.  Structure is documented below.
+          * `googleAccount` (`pulumi.Input[dict]`) - Describes authentication configuration that uses a Google account.
+            Structure is documented below.
             * `password` (`pulumi.Input[str]`) - The password of the custom account. The credential is stored encrypted
-              in GCP.  **Note**: This property is sensitive and will not be displayed in the plan.
+              in GCP.
+              **Note**: This property is sensitive and will not be displayed in the plan.
             * `username` (`pulumi.Input[str]`) - The user name of the custom account.
 
         The **schedule** object supports the following:

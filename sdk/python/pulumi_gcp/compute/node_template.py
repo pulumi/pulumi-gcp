@@ -41,7 +41,8 @@ class NodeTemplate(pulumi.CustomResource):
     Flexible properties for the desired node type. Node groups that
     use this node template will create nodes of a type that matches
     these properties. Only one of nodeTypeFlexibility and nodeType can
-    be specified.  Structure is documented below.
+    be specified.
+    Structure is documented below.
 
       * `cpus` (`str`) - Number of virtual CPUs to use.
       * `localSsd` (`str`) - -
@@ -65,7 +66,8 @@ class NodeTemplate(pulumi.CustomResource):
     server_binding: pulumi.Output[dict]
     """
     The server binding policy for nodes using this template. Determines
-    where the nodes should restart following a maintenance event.  Structure is documented below.
+    where the nodes should restart following a maintenance event.
+    Structure is documented below.
 
       * `type` (`str`) - Type of server binding policy. If `RESTART_NODE_ON_ANY_SERVER`,
         nodes using this template will restart on any physical server
@@ -78,6 +80,7 @@ class NodeTemplate(pulumi.CustomResource):
         such as physical sockets or cores, to avoid the need for
         additional licenses when maintenance occurs. However, VMs on such
         nodes will experience outages while maintenance is applied.
+        Possible values are `RESTART_NODE_ON_ANY_SERVER` and `RESTART_NODE_ON_MINIMAL_SERVERS`.
     """
     def __init__(__self__, resource_name, opts=None, cpu_overcommit_type=None, description=None, name=None, node_affinity_labels=None, node_type=None, node_type_flexibility=None, project=None, region=None, server_binding=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -105,13 +108,15 @@ class NodeTemplate(pulumi.CustomResource):
         :param pulumi.Input[dict] node_type_flexibility: Flexible properties for the desired node type. Node groups that
                use this node template will create nodes of a type that matches
                these properties. Only one of nodeTypeFlexibility and nodeType can
-               be specified.  Structure is documented below.
+               be specified.
+               Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where nodes using the node template will be created.
                If it is not provided, the provider region is used.
         :param pulumi.Input[dict] server_binding: The server binding policy for nodes using this template. Determines
-               where the nodes should restart following a maintenance event.  Structure is documented below.
+               where the nodes should restart following a maintenance event.
+               Structure is documented below.
 
         The **node_type_flexibility** object supports the following:
 
@@ -133,6 +138,7 @@ class NodeTemplate(pulumi.CustomResource):
             such as physical sockets or cores, to avoid the need for
             additional licenses when maintenance occurs. However, VMs on such
             nodes will experience outages while maintenance is applied.
+            Possible values are `RESTART_NODE_ON_ANY_SERVER` and `RESTART_NODE_ON_MINIMAL_SERVERS`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -188,14 +194,16 @@ class NodeTemplate(pulumi.CustomResource):
         :param pulumi.Input[dict] node_type_flexibility: Flexible properties for the desired node type. Node groups that
                use this node template will create nodes of a type that matches
                these properties. Only one of nodeTypeFlexibility and nodeType can
-               be specified.  Structure is documented below.
+               be specified.
+               Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where nodes using the node template will be created.
                If it is not provided, the provider region is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[dict] server_binding: The server binding policy for nodes using this template. Determines
-               where the nodes should restart following a maintenance event.  Structure is documented below.
+               where the nodes should restart following a maintenance event.
+               Structure is documented below.
 
         The **node_type_flexibility** object supports the following:
 
@@ -217,6 +225,7 @@ class NodeTemplate(pulumi.CustomResource):
             such as physical sockets or cores, to avoid the need for
             additional licenses when maintenance occurs. However, VMs on such
             nodes will experience outages while maintenance is applied.
+            Possible values are `RESTART_NODE_ON_ANY_SERVER` and `RESTART_NODE_ON_MINIMAL_SERVERS`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -12,7 +12,8 @@ from .. import utilities, tables
 class Environment(pulumi.CustomResource):
     container_image: pulumi.Output[dict]
     """
-    Use a container image to start the notebook instance.  Structure is documented below.
+    Use a container image to start the notebook instance.
+    Structure is documented below.
 
       * `repository` (`str`) - The path to the container image repository.
         For example: gcr.io/{project_id}/{imageName}
@@ -51,7 +52,8 @@ class Environment(pulumi.CustomResource):
     """
     vm_image: pulumi.Output[dict]
     """
-    Use a Compute Engine VM image to start the notebook instance.  Structure is documented below.
+    Use a Compute Engine VM image to start the notebook instance.
+    Structure is documented below.
 
       * `imageFamily` (`str`) - Use this VM image family to find the image; the newest image in this family will be used.
       * `imageName` (`str`) - Use VM image name to find the image.
@@ -63,7 +65,8 @@ class Environment(pulumi.CustomResource):
         Create a Environment resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] container_image: Use a container image to start the notebook instance.  Structure is documented below.
+        :param pulumi.Input[dict] container_image: Use a container image to start the notebook instance.
+               Structure is documented below.
         :param pulumi.Input[str] description: A brief description of this environment.
         :param pulumi.Input[str] display_name: Display name of this environment for the UI.
         :param pulumi.Input[str] location: A reference to the zone where the machine resides.
@@ -73,7 +76,8 @@ class Environment(pulumi.CustomResource):
                The path must be a URL or Cloud Storage path. Example: "gs://path-to-file/file-name"
         :param pulumi.Input[str] project: The name of the Google Cloud project that this VM image belongs to.
                Format: projects/{project_id}
-        :param pulumi.Input[dict] vm_image: Use a Compute Engine VM image to start the notebook instance.  Structure is documented below.
+        :param pulumi.Input[dict] vm_image: Use a Compute Engine VM image to start the notebook instance.
+               Structure is documented below.
 
         The **container_image** object supports the following:
 
@@ -131,7 +135,8 @@ class Environment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] container_image: Use a container image to start the notebook instance.  Structure is documented below.
+        :param pulumi.Input[dict] container_image: Use a container image to start the notebook instance.
+               Structure is documented below.
         :param pulumi.Input[str] create_time: Instance creation time
         :param pulumi.Input[str] description: A brief description of this environment.
         :param pulumi.Input[str] display_name: Display name of this environment for the UI.
@@ -142,7 +147,8 @@ class Environment(pulumi.CustomResource):
                The path must be a URL or Cloud Storage path. Example: "gs://path-to-file/file-name"
         :param pulumi.Input[str] project: The name of the Google Cloud project that this VM image belongs to.
                Format: projects/{project_id}
-        :param pulumi.Input[dict] vm_image: Use a Compute Engine VM image to start the notebook instance.  Structure is documented below.
+        :param pulumi.Input[dict] vm_image: Use a Compute Engine VM image to start the notebook instance.
+               Structure is documented below.
 
         The **container_image** object supports the following:
 

@@ -31,7 +31,8 @@ type Topic struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Policy constraining the set of Google Cloud Platform regions where
 	// messages published to the topic may be stored. If not present, then no
-	// constraints are in effect.  Structure is documented below.
+	// constraints are in effect.
+	// Structure is documented below.
 	MessageStoragePolicy TopicMessageStoragePolicyOutput `pulumi:"messageStoragePolicy"`
 	// Name of the topic.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -78,7 +79,8 @@ type topicState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Policy constraining the set of Google Cloud Platform regions where
 	// messages published to the topic may be stored. If not present, then no
-	// constraints are in effect.  Structure is documented below.
+	// constraints are in effect.
+	// Structure is documented below.
 	MessageStoragePolicy *TopicMessageStoragePolicy `pulumi:"messageStoragePolicy"`
 	// Name of the topic.
 	Name *string `pulumi:"name"`
@@ -98,7 +100,8 @@ type TopicState struct {
 	Labels pulumi.StringMapInput
 	// Policy constraining the set of Google Cloud Platform regions where
 	// messages published to the topic may be stored. If not present, then no
-	// constraints are in effect.  Structure is documented below.
+	// constraints are in effect.
+	// Structure is documented below.
 	MessageStoragePolicy TopicMessageStoragePolicyPtrInput
 	// Name of the topic.
 	Name pulumi.StringPtrInput
@@ -122,7 +125,8 @@ type topicArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Policy constraining the set of Google Cloud Platform regions where
 	// messages published to the topic may be stored. If not present, then no
-	// constraints are in effect.  Structure is documented below.
+	// constraints are in effect.
+	// Structure is documented below.
 	MessageStoragePolicy *TopicMessageStoragePolicy `pulumi:"messageStoragePolicy"`
 	// Name of the topic.
 	Name *string `pulumi:"name"`
@@ -143,7 +147,8 @@ type TopicArgs struct {
 	Labels pulumi.StringMapInput
 	// Policy constraining the set of Google Cloud Platform regions where
 	// messages published to the topic may be stored. If not present, then no
-	// constraints are in effect.  Structure is documented below.
+	// constraints are in effect.
+	// Structure is documented below.
 	MessageStoragePolicy TopicMessageStoragePolicyPtrInput
 	// Name of the topic.
 	Name pulumi.StringPtrInput

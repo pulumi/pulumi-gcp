@@ -21,7 +21,8 @@ namespace Pulumi.Gcp.ContainerAnalysis.Outputs
         /// from "readable" names more suitable for debug output. Note that
         /// these hints should NOT be used to look up AttestationAuthorities
         /// in security sensitive contexts, such as when looking up
-        /// Attestations to verify.  Structure is documented below.
+        /// Attestations to verify.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.NoteAttestationAuthorityHint Hint;
 

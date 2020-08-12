@@ -16,7 +16,8 @@ namespace Pulumi.Gcp.Compute.Inputs
         private InputList<Inputs.RegionPerInstanceConfigPreservedStateDiskArgs>? _disks;
 
         /// <summary>
-        /// Stateful disks for the instance.  Structure is documented below.
+        /// Stateful disks for the instance.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.RegionPerInstanceConfigPreservedStateDiskArgs> Disks
         {

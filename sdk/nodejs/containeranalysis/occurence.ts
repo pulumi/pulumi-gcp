@@ -54,7 +54,8 @@ export class Occurence extends pulumi.CustomResource {
      * the authority to which this attestation is attached is primarily
      * useful for lookup (how to find this attestation if you already
      * know the authority and artifact to be verified) and intent (for
-     * which authority this attestation was intended to sign.  Structure is documented below.
+     * which authority this attestation was intended to sign.
+     * Structure is documented below.
      */
     public readonly attestation!: pulumi.Output<outputs.containeranalysis.OccurenceAttestation>;
     /**
@@ -161,7 +162,8 @@ export interface OccurenceState {
      * the authority to which this attestation is attached is primarily
      * useful for lookup (how to find this attestation if you already
      * know the authority and artifact to be verified) and intent (for
-     * which authority this attestation was intended to sign.  Structure is documented below.
+     * which authority this attestation was intended to sign.
+     * Structure is documented below.
      */
     readonly attestation?: pulumi.Input<inputs.containeranalysis.OccurenceAttestation>;
     /**
@@ -216,7 +218,8 @@ export interface OccurenceArgs {
      * the authority to which this attestation is attached is primarily
      * useful for lookup (how to find this attestation if you already
      * know the authority and artifact to be verified) and intent (for
-     * which authority this attestation was intended to sign.  Structure is documented below.
+     * which authority this attestation was intended to sign.
+     * Structure is documented below.
      */
     readonly attestation: pulumi.Input<inputs.containeranalysis.OccurenceAttestation>;
     /**

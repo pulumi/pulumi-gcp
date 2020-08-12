@@ -12,15 +12,19 @@ from .. import utilities, tables
 class Connection(pulumi.CustomResource):
     cloud_sql: pulumi.Output[dict]
     """
-    Cloud SQL properties.  Structure is documented below.
+    Cloud SQL properties.
+    Structure is documented below.
 
-      * `credential` (`dict`) - Cloud SQL properties.  Structure is documented below.
-        * `password` (`str`) - Password for database.  **Note**: This property is sensitive and will not be displayed in the plan.
+      * `credential` (`dict`) - Cloud SQL properties.
+        Structure is documented below.
+        * `password` (`str`) - Password for database.
+          **Note**: This property is sensitive and will not be displayed in the plan.
         * `username` (`str`) - Username for database.
 
       * `database` (`str`) - Database name.
       * `instance_id` (`str`) - Cloud SQL instance ID in the form project:location:instance.
       * `type` (`str`) - Type of the Cloud SQL database.
+        Possible values are `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, and `MYSQL`.
     """
     connection_id: pulumi.Output[str]
     """
@@ -72,7 +76,8 @@ class Connection(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] cloud_sql: Cloud SQL properties.  Structure is documented below.
+        :param pulumi.Input[dict] cloud_sql: Cloud SQL properties.
+               Structure is documented below.
         :param pulumi.Input[str] connection_id: Optional connection id that should be assigned to the created connection.
         :param pulumi.Input[str] description: A descriptive description for the connection
         :param pulumi.Input[str] friendly_name: A descriptive name for the connection
@@ -85,13 +90,16 @@ class Connection(pulumi.CustomResource):
 
         The **cloud_sql** object supports the following:
 
-          * `credential` (`pulumi.Input[dict]`) - Cloud SQL properties.  Structure is documented below.
-            * `password` (`pulumi.Input[str]`) - Password for database.  **Note**: This property is sensitive and will not be displayed in the plan.
+          * `credential` (`pulumi.Input[dict]`) - Cloud SQL properties.
+            Structure is documented below.
+            * `password` (`pulumi.Input[str]`) - Password for database.
+              **Note**: This property is sensitive and will not be displayed in the plan.
             * `username` (`pulumi.Input[str]`) - Username for database.
 
           * `database` (`pulumi.Input[str]`) - Database name.
           * `instance_id` (`pulumi.Input[str]`) - Cloud SQL instance ID in the form project:location:instance.
           * `type` (`pulumi.Input[str]`) - Type of the Cloud SQL database.
+            Possible values are `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, and `MYSQL`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -135,7 +143,8 @@ class Connection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] cloud_sql: Cloud SQL properties.  Structure is documented below.
+        :param pulumi.Input[dict] cloud_sql: Cloud SQL properties.
+               Structure is documented below.
         :param pulumi.Input[str] connection_id: Optional connection id that should be assigned to the created connection.
         :param pulumi.Input[str] description: A descriptive description for the connection
         :param pulumi.Input[str] friendly_name: A descriptive name for the connection
@@ -151,13 +160,16 @@ class Connection(pulumi.CustomResource):
 
         The **cloud_sql** object supports the following:
 
-          * `credential` (`pulumi.Input[dict]`) - Cloud SQL properties.  Structure is documented below.
-            * `password` (`pulumi.Input[str]`) - Password for database.  **Note**: This property is sensitive and will not be displayed in the plan.
+          * `credential` (`pulumi.Input[dict]`) - Cloud SQL properties.
+            Structure is documented below.
+            * `password` (`pulumi.Input[str]`) - Password for database.
+              **Note**: This property is sensitive and will not be displayed in the plan.
             * `username` (`pulumi.Input[str]`) - Username for database.
 
           * `database` (`pulumi.Input[str]`) - Database name.
           * `instance_id` (`pulumi.Input[str]`) - Cloud SQL instance ID in the form project:location:instance.
           * `type` (`pulumi.Input[str]`) - Type of the Cloud SQL database.
+            Possible values are `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, and `MYSQL`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

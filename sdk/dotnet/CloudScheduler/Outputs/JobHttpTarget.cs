@@ -30,12 +30,14 @@ namespace Pulumi.Gcp.CloudScheduler.Outputs
         public readonly string? HttpMethod;
         /// <summary>
         /// Contains information needed for generating an OAuth token.
-        /// This type of authorization should be used when sending requests to a GCP endpoint.  Structure is documented below.
+        /// This type of authorization should be used when sending requests to a GCP endpoint.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.JobHttpTargetOauthToken? OauthToken;
         /// <summary>
         /// Contains information needed for generating an OpenID Connect token.
-        /// This type of authorization should be used when sending requests to third party endpoints or Cloud Run.  Structure is documented below.
+        /// This type of authorization should be used when sending requests to third party endpoints or Cloud Run.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.JobHttpTargetOidcToken? OidcToken;
         /// <summary>

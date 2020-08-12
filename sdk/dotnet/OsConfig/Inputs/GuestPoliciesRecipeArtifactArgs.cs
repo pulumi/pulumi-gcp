@@ -21,7 +21,8 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public Input<bool>? AllowInsecure { get; set; }
 
         /// <summary>
-        /// A Google Cloud Storage artifact.  Structure is documented below.
+        /// A Google Cloud Storage artifact.
+        /// Structure is documented below.
         /// </summary>
         [Input("gcs")]
         public Input<Inputs.GuestPoliciesRecipeArtifactGcsArgs>? Gcs { get; set; }
@@ -34,7 +35,8 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public Input<string> Id { get; set; } = null!;
 
         /// <summary>
-        /// A generic remote artifact.  Structure is documented below.
+        /// A generic remote artifact.
+        /// Structure is documented below.
         /// </summary>
         [Input("remote")]
         public Input<Inputs.GuestPoliciesRecipeArtifactRemoteArgs>? Remote { get; set; }

@@ -57,7 +57,8 @@ type DatasetAccess struct {
 	// executed against that view will have read access to tables in
 	// this dataset. The role field is not required when this field is
 	// set. If that view is updated by any user, access to the view
-	// needs to be granted again via an update operation.  Structure is documented below.
+	// needs to be granted again via an update operation.
+	// Structure is documented below.
 	View DatasetAccessViewPtrOutput `pulumi:"view"`
 }
 
@@ -121,7 +122,8 @@ type datasetAccessState struct {
 	// executed against that view will have read access to tables in
 	// this dataset. The role field is not required when this field is
 	// set. If that view is updated by any user, access to the view
-	// needs to be granted again via an update operation.  Structure is documented below.
+	// needs to be granted again via an update operation.
+	// Structure is documented below.
 	View *DatasetAccessView `pulumi:"view"`
 }
 
@@ -155,7 +157,8 @@ type DatasetAccessState struct {
 	// executed against that view will have read access to tables in
 	// this dataset. The role field is not required when this field is
 	// set. If that view is updated by any user, access to the view
-	// needs to be granted again via an update operation.  Structure is documented below.
+	// needs to be granted again via an update operation.
+	// Structure is documented below.
 	View DatasetAccessViewPtrInput
 }
 
@@ -193,7 +196,8 @@ type datasetAccessArgs struct {
 	// executed against that view will have read access to tables in
 	// this dataset. The role field is not required when this field is
 	// set. If that view is updated by any user, access to the view
-	// needs to be granted again via an update operation.  Structure is documented below.
+	// needs to be granted again via an update operation.
+	// Structure is documented below.
 	View *DatasetAccessView `pulumi:"view"`
 }
 
@@ -228,7 +232,8 @@ type DatasetAccessArgs struct {
 	// executed against that view will have read access to tables in
 	// this dataset. The role field is not required when this field is
 	// set. If that view is updated by any user, access to the view
-	// needs to be granted again via an update operation.  Structure is documented below.
+	// needs to be granted again via an update operation.
+	// Structure is documented below.
 	View DatasetAccessViewPtrInput
 }
 

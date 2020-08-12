@@ -17,7 +17,8 @@ type Queue struct {
 	pulumi.CustomResourceState
 
 	// Overrides for task-level appEngineRouting. These settings apply only
-	// to App Engine tasks in this queue  Structure is documented below.
+	// to App Engine tasks in this queue
+	// Structure is documented below.
 	AppEngineRoutingOverride QueueAppEngineRoutingOverridePtrOutput `pulumi:"appEngineRoutingOverride"`
 	// The location of the queue
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -32,9 +33,11 @@ type Queue struct {
 	// * User-specified throttling: rateLimits, retryConfig, and the queue's state.
 	// * System throttling due to 429 (Too Many Requests) or 503 (Service
 	//   Unavailable) responses from the worker, high error rates, or to
-	//   smooth sudden large traffic spikes.  Structure is documented below.
+	//   smooth sudden large traffic spikes.
+	//   Structure is documented below.
 	RateLimits QueueRateLimitsOutput `pulumi:"rateLimits"`
-	// Settings that determine the retry behavior.  Structure is documented below.
+	// Settings that determine the retry behavior.
+	// Structure is documented below.
 	RetryConfig QueueRetryConfigOutput `pulumi:"retryConfig"`
 }
 
@@ -70,7 +73,8 @@ func GetQueue(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Queue resources.
 type queueState struct {
 	// Overrides for task-level appEngineRouting. These settings apply only
-	// to App Engine tasks in this queue  Structure is documented below.
+	// to App Engine tasks in this queue
+	// Structure is documented below.
 	AppEngineRoutingOverride *QueueAppEngineRoutingOverride `pulumi:"appEngineRoutingOverride"`
 	// The location of the queue
 	Location *string `pulumi:"location"`
@@ -85,15 +89,18 @@ type queueState struct {
 	// * User-specified throttling: rateLimits, retryConfig, and the queue's state.
 	// * System throttling due to 429 (Too Many Requests) or 503 (Service
 	//   Unavailable) responses from the worker, high error rates, or to
-	//   smooth sudden large traffic spikes.  Structure is documented below.
+	//   smooth sudden large traffic spikes.
+	//   Structure is documented below.
 	RateLimits *QueueRateLimits `pulumi:"rateLimits"`
-	// Settings that determine the retry behavior.  Structure is documented below.
+	// Settings that determine the retry behavior.
+	// Structure is documented below.
 	RetryConfig *QueueRetryConfig `pulumi:"retryConfig"`
 }
 
 type QueueState struct {
 	// Overrides for task-level appEngineRouting. These settings apply only
-	// to App Engine tasks in this queue  Structure is documented below.
+	// to App Engine tasks in this queue
+	// Structure is documented below.
 	AppEngineRoutingOverride QueueAppEngineRoutingOverridePtrInput
 	// The location of the queue
 	Location pulumi.StringPtrInput
@@ -108,9 +115,11 @@ type QueueState struct {
 	// * User-specified throttling: rateLimits, retryConfig, and the queue's state.
 	// * System throttling due to 429 (Too Many Requests) or 503 (Service
 	//   Unavailable) responses from the worker, high error rates, or to
-	//   smooth sudden large traffic spikes.  Structure is documented below.
+	//   smooth sudden large traffic spikes.
+	//   Structure is documented below.
 	RateLimits QueueRateLimitsPtrInput
-	// Settings that determine the retry behavior.  Structure is documented below.
+	// Settings that determine the retry behavior.
+	// Structure is documented below.
 	RetryConfig QueueRetryConfigPtrInput
 }
 
@@ -120,7 +129,8 @@ func (QueueState) ElementType() reflect.Type {
 
 type queueArgs struct {
 	// Overrides for task-level appEngineRouting. These settings apply only
-	// to App Engine tasks in this queue  Structure is documented below.
+	// to App Engine tasks in this queue
+	// Structure is documented below.
 	AppEngineRoutingOverride *QueueAppEngineRoutingOverride `pulumi:"appEngineRoutingOverride"`
 	// The location of the queue
 	Location string `pulumi:"location"`
@@ -135,16 +145,19 @@ type queueArgs struct {
 	// * User-specified throttling: rateLimits, retryConfig, and the queue's state.
 	// * System throttling due to 429 (Too Many Requests) or 503 (Service
 	//   Unavailable) responses from the worker, high error rates, or to
-	//   smooth sudden large traffic spikes.  Structure is documented below.
+	//   smooth sudden large traffic spikes.
+	//   Structure is documented below.
 	RateLimits *QueueRateLimits `pulumi:"rateLimits"`
-	// Settings that determine the retry behavior.  Structure is documented below.
+	// Settings that determine the retry behavior.
+	// Structure is documented below.
 	RetryConfig *QueueRetryConfig `pulumi:"retryConfig"`
 }
 
 // The set of arguments for constructing a Queue resource.
 type QueueArgs struct {
 	// Overrides for task-level appEngineRouting. These settings apply only
-	// to App Engine tasks in this queue  Structure is documented below.
+	// to App Engine tasks in this queue
+	// Structure is documented below.
 	AppEngineRoutingOverride QueueAppEngineRoutingOverridePtrInput
 	// The location of the queue
 	Location pulumi.StringInput
@@ -159,9 +172,11 @@ type QueueArgs struct {
 	// * User-specified throttling: rateLimits, retryConfig, and the queue's state.
 	// * System throttling due to 429 (Too Many Requests) or 503 (Service
 	//   Unavailable) responses from the worker, high error rates, or to
-	//   smooth sudden large traffic spikes.  Structure is documented below.
+	//   smooth sudden large traffic spikes.
+	//   Structure is documented below.
 	RateLimits QueueRateLimitsPtrInput
-	// Settings that determine the retry behavior.  Structure is documented below.
+	// Settings that determine the retry behavior.
+	// Structure is documented below.
 	RetryConfig QueueRetryConfigPtrInput
 }
 

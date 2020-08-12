@@ -30,6 +30,7 @@ class KeyRingImportJob(pulumi.CustomResource):
     import_method: pulumi.Output[str]
     """
     The wrapping method to be used for incoming key material.
+    Possible values are `RSA_OAEP_3072_SHA1_AES_256` and `RSA_OAEP_4096_SHA1_AES_256`.
     """
     key_ring: pulumi.Output[str]
     """
@@ -44,6 +45,7 @@ class KeyRingImportJob(pulumi.CustomResource):
     """
     The protection level of the ImportJob. This must match the protectionLevel of the
     versionTemplate on the CryptoKey you attempt to import into.
+    Possible values are `SOFTWARE`, `HSM`, and `EXTERNAL`.
     """
     public_key: pulumi.Output[dict]
     """
@@ -62,10 +64,12 @@ class KeyRingImportJob(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] import_job_id: It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
         :param pulumi.Input[str] import_method: The wrapping method to be used for incoming key material.
+               Possible values are `RSA_OAEP_3072_SHA1_AES_256` and `RSA_OAEP_4096_SHA1_AES_256`.
         :param pulumi.Input[str] key_ring: The KeyRing that this import job belongs to.
                Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
         :param pulumi.Input[str] protection_level: The protection level of the ImportJob. This must match the protectionLevel of the
                versionTemplate on the CryptoKey you attempt to import into.
+               Possible values are `SOFTWARE`, `HSM`, and `EXTERNAL`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -122,11 +126,13 @@ class KeyRingImportJob(pulumi.CustomResource):
         :param pulumi.Input[str] expire_time: The time at which this resource is scheduled for expiration and can no longer be used. This is in RFC3339 text format.
         :param pulumi.Input[str] import_job_id: It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
         :param pulumi.Input[str] import_method: The wrapping method to be used for incoming key material.
+               Possible values are `RSA_OAEP_3072_SHA1_AES_256` and `RSA_OAEP_4096_SHA1_AES_256`.
         :param pulumi.Input[str] key_ring: The KeyRing that this import job belongs to.
                Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
         :param pulumi.Input[str] name: The resource name for this ImportJob in the format projects/*/locations/*/keyRings/*/importJobs/*.
         :param pulumi.Input[str] protection_level: The protection level of the ImportJob. This must match the protectionLevel of the
                versionTemplate on the CryptoKey you attempt to import into.
+               Possible values are `SOFTWARE`, `HSM`, and `EXTERNAL`.
         :param pulumi.Input[dict] public_key: The public key with which to wrap key material prior to import. Only returned if state is 'ACTIVE'.
         :param pulumi.Input[str] state: The current state of the ImportJob, indicating if it can be used.
 

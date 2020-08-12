@@ -59,7 +59,8 @@ export class GameServerConfig extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The fleet config contains list of fleet specs. In the Single Cloud, there
-     * will be only one.  Structure is documented below.
+     * will be only one.
+     * Structure is documented below.
      */
     public readonly fleetConfigs!: pulumi.Output<outputs.gameservices.GameServerConfigFleetConfig[]>;
     /**
@@ -80,7 +81,8 @@ export class GameServerConfig extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Optional. This contains the autoscaling settings.  Structure is documented below.
+     * Optional. This contains the autoscaling settings.
+     * Structure is documented below.
      */
     public readonly scalingConfigs!: pulumi.Output<outputs.gameservices.GameServerConfigScalingConfig[] | undefined>;
 
@@ -155,7 +157,8 @@ export interface GameServerConfigState {
     readonly description?: pulumi.Input<string>;
     /**
      * The fleet config contains list of fleet specs. In the Single Cloud, there
-     * will be only one.  Structure is documented below.
+     * will be only one.
+     * Structure is documented below.
      */
     readonly fleetConfigs?: pulumi.Input<pulumi.Input<inputs.gameservices.GameServerConfigFleetConfig>[]>;
     /**
@@ -176,7 +179,8 @@ export interface GameServerConfigState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * Optional. This contains the autoscaling settings.  Structure is documented below.
+     * Optional. This contains the autoscaling settings.
+     * Structure is documented below.
      */
     readonly scalingConfigs?: pulumi.Input<pulumi.Input<inputs.gameservices.GameServerConfigScalingConfig>[]>;
 }
@@ -199,7 +203,8 @@ export interface GameServerConfigArgs {
     readonly description?: pulumi.Input<string>;
     /**
      * The fleet config contains list of fleet specs. In the Single Cloud, there
-     * will be only one.  Structure is documented below.
+     * will be only one.
+     * Structure is documented below.
      */
     readonly fleetConfigs: pulumi.Input<pulumi.Input<inputs.gameservices.GameServerConfigFleetConfig>[]>;
     /**
@@ -216,7 +221,8 @@ export interface GameServerConfigArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * Optional. This contains the autoscaling settings.  Structure is documented below.
+     * Optional. This contains the autoscaling settings.
+     * Structure is documented below.
      */
     readonly scalingConfigs?: pulumi.Input<pulumi.Input<inputs.gameservices.GameServerConfigScalingConfig>[]>;
 }

@@ -17,6 +17,8 @@ class Deployment(pulumi.CustomResource):
     `ACQUIRE`. If set to `ACQUIRE` and resources do not already exist,
     the deployment will fail. Note that updating this field does not
     actually affect the deployment, just how it is updated.
+    Default value is `CREATE_OR_ACQUIRE`.
+    Possible values are `ACQUIRE` and `CREATE_OR_ACQUIRE`.
     """
     delete_policy: pulumi.Output[str]
     """
@@ -26,6 +28,8 @@ class Deployment(pulumi.CustomResource):
     `ABANDON`, the resource is only removed from Deployment Manager
     and is not actually deleted. Note that updating this field does not
     actually change the deployment, just how it is updated.
+    Default value is `DELETE`.
+    Possible values are `ABANDON` and `DELETE`.
     """
     deployment_id: pulumi.Output[str]
     """
@@ -37,7 +41,8 @@ class Deployment(pulumi.CustomResource):
     """
     labels: pulumi.Output[list]
     """
-    Key-value pairs to apply to this labels.  Structure is documented below.
+    Key-value pairs to apply to this labels.
+    Structure is documented below.
 
       * `key` (`str`) - Key for label.
       * `value` (`str`) - Value of label.
@@ -57,7 +62,7 @@ class Deployment(pulumi.CustomResource):
     that are not actually instantiated. This allows you to preview a
     deployment. It can be updated to false to actually deploy
     with real resources.
-    ~>**NOTE**: Deployment Manager does not allow update
+    ~>**NOTE:** Deployment Manager does not allow update
     of a deployment in preview (unless updating to preview=false). Thus,
     the provider will force-recreate deployments if either preview is updated
     to true or if other fields are updated while preview is true.
@@ -74,14 +79,17 @@ class Deployment(pulumi.CustomResource):
     target: pulumi.Output[dict]
     """
     Parameters that define your deployment, including the deployment
-    configuration and relevant templates.  Structure is documented below.
+    configuration and relevant templates.
+    Structure is documented below.
 
-      * `config` (`dict`) - The root configuration file to use for this deployment.  Structure is documented below.
+      * `config` (`dict`) - The root configuration file to use for this deployment.
+        Structure is documented below.
         * `content` (`str`) - The full contents of the template that you want to import.
 
       * `imports` (`list`) - Specifies import files for this configuration. This can be
         used to import templates or other files. For example, you might
-        import a text file in order to use the file in a template.  Structure is documented below.
+        import a text file in order to use the file in a template.
+        Structure is documented below.
         * `content` (`str`) - The full contents of the template that you want to import.
         * `name` (`str`) - The name of the template to import, as declared in the YAML
           configuration.
@@ -111,28 +119,34 @@ class Deployment(pulumi.CustomResource):
                `ACQUIRE`. If set to `ACQUIRE` and resources do not already exist,
                the deployment will fail. Note that updating this field does not
                actually affect the deployment, just how it is updated.
+               Default value is `CREATE_OR_ACQUIRE`.
+               Possible values are `ACQUIRE` and `CREATE_OR_ACQUIRE`.
         :param pulumi.Input[str] delete_policy: Set the policy to use for deleting new resources on update/delete.
                Valid values are `DELETE` (default) or `ABANDON`. If `DELETE`,
                resource is deleted after removal from Deployment Manager. If
                `ABANDON`, the resource is only removed from Deployment Manager
                and is not actually deleted. Note that updating this field does not
                actually change the deployment, just how it is updated.
+               Default value is `DELETE`.
+               Possible values are `ABANDON` and `DELETE`.
         :param pulumi.Input[str] description: Optional user-provided description of deployment.
-        :param pulumi.Input[list] labels: Key-value pairs to apply to this labels.  Structure is documented below.
+        :param pulumi.Input[list] labels: Key-value pairs to apply to this labels.
+               Structure is documented below.
         :param pulumi.Input[str] name: The name of the template to import, as declared in the YAML
                configuration.
         :param pulumi.Input[bool] preview: If set to true, a deployment is created with "shell" resources
                that are not actually instantiated. This allows you to preview a
                deployment. It can be updated to false to actually deploy
                with real resources.
-               ~>**NOTE**: Deployment Manager does not allow update
+               ~>**NOTE:** Deployment Manager does not allow update
                of a deployment in preview (unless updating to preview=false). Thus,
                the provider will force-recreate deployments if either preview is updated
                to true or if other fields are updated while preview is true.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[dict] target: Parameters that define your deployment, including the deployment
-               configuration and relevant templates.  Structure is documented below.
+               configuration and relevant templates.
+               Structure is documented below.
 
         The **labels** object supports the following:
 
@@ -141,12 +155,14 @@ class Deployment(pulumi.CustomResource):
 
         The **target** object supports the following:
 
-          * `config` (`pulumi.Input[dict]`) - The root configuration file to use for this deployment.  Structure is documented below.
+          * `config` (`pulumi.Input[dict]`) - The root configuration file to use for this deployment.
+            Structure is documented below.
             * `content` (`pulumi.Input[str]`) - The full contents of the template that you want to import.
 
           * `imports` (`pulumi.Input[list]`) - Specifies import files for this configuration. This can be
             used to import templates or other files. For example, you might
-            import a text file in order to use the file in a template.  Structure is documented below.
+            import a text file in order to use the file in a template.
+            Structure is documented below.
             * `content` (`pulumi.Input[str]`) - The full contents of the template that you want to import.
             * `name` (`pulumi.Input[str]`) - The name of the template to import, as declared in the YAML
               configuration.
@@ -201,15 +217,20 @@ class Deployment(pulumi.CustomResource):
                `ACQUIRE`. If set to `ACQUIRE` and resources do not already exist,
                the deployment will fail. Note that updating this field does not
                actually affect the deployment, just how it is updated.
+               Default value is `CREATE_OR_ACQUIRE`.
+               Possible values are `ACQUIRE` and `CREATE_OR_ACQUIRE`.
         :param pulumi.Input[str] delete_policy: Set the policy to use for deleting new resources on update/delete.
                Valid values are `DELETE` (default) or `ABANDON`. If `DELETE`,
                resource is deleted after removal from Deployment Manager. If
                `ABANDON`, the resource is only removed from Deployment Manager
                and is not actually deleted. Note that updating this field does not
                actually change the deployment, just how it is updated.
+               Default value is `DELETE`.
+               Possible values are `ABANDON` and `DELETE`.
         :param pulumi.Input[str] deployment_id: Unique identifier for deployment. Output only.
         :param pulumi.Input[str] description: Optional user-provided description of deployment.
-        :param pulumi.Input[list] labels: Key-value pairs to apply to this labels.  Structure is documented below.
+        :param pulumi.Input[list] labels: Key-value pairs to apply to this labels.
+               Structure is documented below.
         :param pulumi.Input[str] manifest: Output only. URL of the manifest representing the last manifest that was successfully deployed.
         :param pulumi.Input[str] name: The name of the template to import, as declared in the YAML
                configuration.
@@ -217,7 +238,7 @@ class Deployment(pulumi.CustomResource):
                that are not actually instantiated. This allows you to preview a
                deployment. It can be updated to false to actually deploy
                with real resources.
-               ~>**NOTE**: Deployment Manager does not allow update
+               ~>**NOTE:** Deployment Manager does not allow update
                of a deployment in preview (unless updating to preview=false). Thus,
                the provider will force-recreate deployments if either preview is updated
                to true or if other fields are updated while preview is true.
@@ -225,7 +246,8 @@ class Deployment(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: Output only. Server defined URL for the resource.
         :param pulumi.Input[dict] target: Parameters that define your deployment, including the deployment
-               configuration and relevant templates.  Structure is documented below.
+               configuration and relevant templates.
+               Structure is documented below.
 
         The **labels** object supports the following:
 
@@ -234,12 +256,14 @@ class Deployment(pulumi.CustomResource):
 
         The **target** object supports the following:
 
-          * `config` (`pulumi.Input[dict]`) - The root configuration file to use for this deployment.  Structure is documented below.
+          * `config` (`pulumi.Input[dict]`) - The root configuration file to use for this deployment.
+            Structure is documented below.
             * `content` (`pulumi.Input[str]`) - The full contents of the template that you want to import.
 
           * `imports` (`pulumi.Input[list]`) - Specifies import files for this configuration. This can be
             used to import templates or other files. For example, you might
-            import a text file in order to use the file in a template.  Structure is documented below.
+            import a text file in order to use the file in a template.
+            Structure is documented below.
             * `content` (`pulumi.Input[str]`) - The full contents of the template that you want to import.
             * `name` (`pulumi.Input[str]`) - The name of the template to import, as declared in the YAML
               configuration.

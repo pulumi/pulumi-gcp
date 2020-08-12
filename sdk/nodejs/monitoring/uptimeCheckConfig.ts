@@ -49,7 +49,8 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
     }
 
     /**
-     * The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.  Structure is documented below.
+     * The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
+     * Structure is documented below.
      */
     public readonly contentMatchers!: pulumi.Output<outputs.monitoring.UptimeCheckConfigContentMatcher[] | undefined>;
     /**
@@ -57,11 +58,13 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * Contains information needed to make an HTTP or HTTPS check.  Structure is documented below.
+     * Contains information needed to make an HTTP or HTTPS check.
+     * Structure is documented below.
      */
     public readonly httpCheck!: pulumi.Output<outputs.monitoring.UptimeCheckConfigHttpCheck | undefined>;
     /**
-     * The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptimeUrl  gceInstance  gaeApp  awsEc2Instance  awsElbLoadBalancer  Structure is documented below.
+     * The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptimeUrl  gceInstance  gaeApp  awsEc2Instance  awsElbLoadBalancer
+     * Structure is documented below.
      */
     public readonly monitoredResource!: pulumi.Output<outputs.monitoring.UptimeCheckConfigMonitoredResource | undefined>;
     /**
@@ -79,7 +82,8 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The group resource associated with the configuration.  Structure is documented below.
+     * The group resource associated with the configuration.
+     * Structure is documented below.
      */
     public readonly resourceGroup!: pulumi.Output<outputs.monitoring.UptimeCheckConfigResourceGroup | undefined>;
     /**
@@ -87,7 +91,8 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
      */
     public readonly selectedRegions!: pulumi.Output<string[] | undefined>;
     /**
-     * Contains information needed to make a TCP check.  Structure is documented below.
+     * Contains information needed to make a TCP check.
+     * Structure is documented below.
      */
     public readonly tcpCheck!: pulumi.Output<outputs.monitoring.UptimeCheckConfigTcpCheck | undefined>;
     /**
@@ -160,7 +165,8 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
  */
 export interface UptimeCheckConfigState {
     /**
-     * The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.  Structure is documented below.
+     * The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
+     * Structure is documented below.
      */
     readonly contentMatchers?: pulumi.Input<pulumi.Input<inputs.monitoring.UptimeCheckConfigContentMatcher>[]>;
     /**
@@ -168,11 +174,13 @@ export interface UptimeCheckConfigState {
      */
     readonly displayName?: pulumi.Input<string>;
     /**
-     * Contains information needed to make an HTTP or HTTPS check.  Structure is documented below.
+     * Contains information needed to make an HTTP or HTTPS check.
+     * Structure is documented below.
      */
     readonly httpCheck?: pulumi.Input<inputs.monitoring.UptimeCheckConfigHttpCheck>;
     /**
-     * The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptimeUrl  gceInstance  gaeApp  awsEc2Instance  awsElbLoadBalancer  Structure is documented below.
+     * The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptimeUrl  gceInstance  gaeApp  awsEc2Instance  awsElbLoadBalancer
+     * Structure is documented below.
      */
     readonly monitoredResource?: pulumi.Input<inputs.monitoring.UptimeCheckConfigMonitoredResource>;
     /**
@@ -190,7 +198,8 @@ export interface UptimeCheckConfigState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The group resource associated with the configuration.  Structure is documented below.
+     * The group resource associated with the configuration.
+     * Structure is documented below.
      */
     readonly resourceGroup?: pulumi.Input<inputs.monitoring.UptimeCheckConfigResourceGroup>;
     /**
@@ -198,7 +207,8 @@ export interface UptimeCheckConfigState {
      */
     readonly selectedRegions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Contains information needed to make a TCP check.  Structure is documented below.
+     * Contains information needed to make a TCP check.
+     * Structure is documented below.
      */
     readonly tcpCheck?: pulumi.Input<inputs.monitoring.UptimeCheckConfigTcpCheck>;
     /**
@@ -216,7 +226,8 @@ export interface UptimeCheckConfigState {
  */
 export interface UptimeCheckConfigArgs {
     /**
-     * The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.  Structure is documented below.
+     * The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
+     * Structure is documented below.
      */
     readonly contentMatchers?: pulumi.Input<pulumi.Input<inputs.monitoring.UptimeCheckConfigContentMatcher>[]>;
     /**
@@ -224,11 +235,13 @@ export interface UptimeCheckConfigArgs {
      */
     readonly displayName: pulumi.Input<string>;
     /**
-     * Contains information needed to make an HTTP or HTTPS check.  Structure is documented below.
+     * Contains information needed to make an HTTP or HTTPS check.
+     * Structure is documented below.
      */
     readonly httpCheck?: pulumi.Input<inputs.monitoring.UptimeCheckConfigHttpCheck>;
     /**
-     * The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptimeUrl  gceInstance  gaeApp  awsEc2Instance  awsElbLoadBalancer  Structure is documented below.
+     * The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptimeUrl  gceInstance  gaeApp  awsEc2Instance  awsElbLoadBalancer
+     * Structure is documented below.
      */
     readonly monitoredResource?: pulumi.Input<inputs.monitoring.UptimeCheckConfigMonitoredResource>;
     /**
@@ -241,7 +254,8 @@ export interface UptimeCheckConfigArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The group resource associated with the configuration.  Structure is documented below.
+     * The group resource associated with the configuration.
+     * Structure is documented below.
      */
     readonly resourceGroup?: pulumi.Input<inputs.monitoring.UptimeCheckConfigResourceGroup>;
     /**
@@ -249,7 +263,8 @@ export interface UptimeCheckConfigArgs {
      */
     readonly selectedRegions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Contains information needed to make a TCP check.  Structure is documented below.
+     * Contains information needed to make a TCP check.
+     * Structure is documented below.
      */
     readonly tcpCheck?: pulumi.Input<inputs.monitoring.UptimeCheckConfigTcpCheck>;
     /**

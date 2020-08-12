@@ -19,6 +19,8 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         public readonly string Content;
         /// <summary>
         /// The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
+        /// Default value is `CONTAINS_STRING`.
+        /// Possible values are `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, and `NON_MATCHES_REGEX`.
         /// </summary>
         public readonly string? Matcher;
 

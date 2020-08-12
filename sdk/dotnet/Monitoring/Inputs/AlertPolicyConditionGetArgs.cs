@@ -14,14 +14,16 @@ namespace Pulumi.Gcp.Monitoring.Inputs
     {
         /// <summary>
         /// A condition that checks that a time series
-        /// continues to receive new data points.  Structure is documented below.
+        /// continues to receive new data points.
+        /// Structure is documented below.
         /// </summary>
         [Input("conditionAbsent")]
         public Input<Inputs.AlertPolicyConditionConditionAbsentGetArgs>? ConditionAbsent { get; set; }
 
         /// <summary>
         /// A condition that compares a time series against a
-        /// threshold.  Structure is documented below.
+        /// threshold.
+        /// Structure is documented below.
         /// </summary>
         [Input("conditionThreshold")]
         public Input<Inputs.AlertPolicyConditionConditionThresholdGetArgs>? ConditionThreshold { get; set; }

@@ -52,7 +52,8 @@ export class Registry extends pulumi.CustomResource {
     public readonly credentials!: pulumi.Output<outputs.iot.RegistryCredential[] | undefined>;
     /**
      * List of configurations for event notifications, such as PubSub topics
-     * to publish device events to.  Structure is documented below.
+     * to publish device events to.
+     * Structure is documented below.
      */
     public readonly eventNotificationConfigs!: pulumi.Output<outputs.iot.RegistryEventNotificationConfigItem[]>;
     /**
@@ -66,6 +67,8 @@ export class Registry extends pulumi.CustomResource {
      * example, if the LogLevel is ERROR, only events that terminate in
      * errors will be logged. LogLevel is inclusive; enabling INFO logging
      * will also enable ERROR logging.
+     * Default value is `NONE`.
+     * Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
      */
     public readonly logLevel!: pulumi.Output<string | undefined>;
     /**
@@ -150,7 +153,8 @@ export interface RegistryState {
     readonly credentials?: pulumi.Input<pulumi.Input<inputs.iot.RegistryCredential>[]>;
     /**
      * List of configurations for event notifications, such as PubSub topics
-     * to publish device events to.  Structure is documented below.
+     * to publish device events to.
+     * Structure is documented below.
      */
     readonly eventNotificationConfigs?: pulumi.Input<pulumi.Input<inputs.iot.RegistryEventNotificationConfigItem>[]>;
     /**
@@ -164,6 +168,8 @@ export interface RegistryState {
      * example, if the LogLevel is ERROR, only events that terminate in
      * errors will be logged. LogLevel is inclusive; enabling INFO logging
      * will also enable ERROR logging.
+     * Default value is `NONE`.
+     * Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
      */
     readonly logLevel?: pulumi.Input<string>;
     /**
@@ -203,7 +209,8 @@ export interface RegistryArgs {
     readonly credentials?: pulumi.Input<pulumi.Input<inputs.iot.RegistryCredential>[]>;
     /**
      * List of configurations for event notifications, such as PubSub topics
-     * to publish device events to.  Structure is documented below.
+     * to publish device events to.
+     * Structure is documented below.
      */
     readonly eventNotificationConfigs?: pulumi.Input<pulumi.Input<inputs.iot.RegistryEventNotificationConfigItem>[]>;
     /**
@@ -217,6 +224,8 @@ export interface RegistryArgs {
      * example, if the LogLevel is ERROR, only events that terminate in
      * errors will be logged. LogLevel is inclusive; enabling INFO logging
      * will also enable ERROR logging.
+     * Default value is `NONE`.
+     * Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
      */
     readonly logLevel?: pulumi.Input<string>;
     /**

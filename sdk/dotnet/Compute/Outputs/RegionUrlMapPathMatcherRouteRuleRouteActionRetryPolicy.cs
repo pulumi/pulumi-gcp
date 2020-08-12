@@ -18,7 +18,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly int NumRetries;
         /// <summary>
-        /// Specifies a non-zero timeout per retry attempt.  Structure is documented below.
+        /// Specifies a non-zero timeout per retry attempt.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout? PerTryTimeout;
         /// <summary>

@@ -43,7 +43,8 @@ namespace Pulumi.Gcp.BinaryAuthorization.Outputs
         /// verify that an attestation was signed by this attestor for the
         /// image specified in the admission request.
         /// If this field is empty, this attestor always returns that no valid
-        /// attestations exist.  Structure is documented below.
+        /// attestations exist.
+        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.AttestorAttestationAuthorityNotePublicKey> PublicKeys;
 

@@ -17,7 +17,8 @@ namespace Pulumi.Gcp.Compute
     public partial class ResourcePolicy : Pulumi.CustomResource
     {
         /// <summary>
-        /// Policy for creating snapshots of persistent disks.  Structure is documented below.
+        /// Policy for creating snapshots of persistent disks.
+        /// Structure is documented below.
         /// </summary>
         [Output("groupPlacementPolicy")]
         public Output<Outputs.ResourcePolicyGroupPlacementPolicy?> GroupPlacementPolicy { get; private set; } = null!;
@@ -54,7 +55,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// Policy for creating snapshots of persistent disks.  Structure is documented below.
+        /// Policy for creating snapshots of persistent disks.
+        /// Structure is documented below.
         /// </summary>
         [Output("snapshotSchedulePolicy")]
         public Output<Outputs.ResourcePolicySnapshotSchedulePolicy?> SnapshotSchedulePolicy { get; private set; } = null!;
@@ -106,7 +108,8 @@ namespace Pulumi.Gcp.Compute
     public sealed class ResourcePolicyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Policy for creating snapshots of persistent disks.  Structure is documented below.
+        /// Policy for creating snapshots of persistent disks.
+        /// Structure is documented below.
         /// </summary>
         [Input("groupPlacementPolicy")]
         public Input<Inputs.ResourcePolicyGroupPlacementPolicyArgs>? GroupPlacementPolicy { get; set; }
@@ -137,7 +140,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// Policy for creating snapshots of persistent disks.  Structure is documented below.
+        /// Policy for creating snapshots of persistent disks.
+        /// Structure is documented below.
         /// </summary>
         [Input("snapshotSchedulePolicy")]
         public Input<Inputs.ResourcePolicySnapshotSchedulePolicyArgs>? SnapshotSchedulePolicy { get; set; }
@@ -150,7 +154,8 @@ namespace Pulumi.Gcp.Compute
     public sealed class ResourcePolicyState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Policy for creating snapshots of persistent disks.  Structure is documented below.
+        /// Policy for creating snapshots of persistent disks.
+        /// Structure is documented below.
         /// </summary>
         [Input("groupPlacementPolicy")]
         public Input<Inputs.ResourcePolicyGroupPlacementPolicyGetArgs>? GroupPlacementPolicy { get; set; }
@@ -187,7 +192,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? SelfLink { get; set; }
 
         /// <summary>
-        /// Policy for creating snapshots of persistent disks.  Structure is documented below.
+        /// Policy for creating snapshots of persistent disks.
+        /// Structure is documented below.
         /// </summary>
         [Input("snapshotSchedulePolicy")]
         public Input<Inputs.ResourcePolicySnapshotSchedulePolicyGetArgs>? SnapshotSchedulePolicy { get; set; }

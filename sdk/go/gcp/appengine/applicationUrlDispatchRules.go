@@ -20,7 +20,8 @@ import (
 type ApplicationUrlDispatchRules struct {
 	pulumi.CustomResourceState
 
-	// Rules to match an HTTP request and dispatch that request to a service.  Structure is documented below.
+	// Rules to match an HTTP request and dispatch that request to a service.
+	// Structure is documented below.
 	DispatchRules ApplicationUrlDispatchRulesDispatchRuleArrayOutput `pulumi:"dispatchRules"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -58,7 +59,8 @@ func GetApplicationUrlDispatchRules(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ApplicationUrlDispatchRules resources.
 type applicationUrlDispatchRulesState struct {
-	// Rules to match an HTTP request and dispatch that request to a service.  Structure is documented below.
+	// Rules to match an HTTP request and dispatch that request to a service.
+	// Structure is documented below.
 	DispatchRules []ApplicationUrlDispatchRulesDispatchRule `pulumi:"dispatchRules"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -66,7 +68,8 @@ type applicationUrlDispatchRulesState struct {
 }
 
 type ApplicationUrlDispatchRulesState struct {
-	// Rules to match an HTTP request and dispatch that request to a service.  Structure is documented below.
+	// Rules to match an HTTP request and dispatch that request to a service.
+	// Structure is documented below.
 	DispatchRules ApplicationUrlDispatchRulesDispatchRuleArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -78,7 +81,8 @@ func (ApplicationUrlDispatchRulesState) ElementType() reflect.Type {
 }
 
 type applicationUrlDispatchRulesArgs struct {
-	// Rules to match an HTTP request and dispatch that request to a service.  Structure is documented below.
+	// Rules to match an HTTP request and dispatch that request to a service.
+	// Structure is documented below.
 	DispatchRules []ApplicationUrlDispatchRulesDispatchRule `pulumi:"dispatchRules"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -87,7 +91,8 @@ type applicationUrlDispatchRulesArgs struct {
 
 // The set of arguments for constructing a ApplicationUrlDispatchRules resource.
 type ApplicationUrlDispatchRulesArgs struct {
-	// Rules to match an HTTP request and dispatch that request to a service.  Structure is documented below.
+	// Rules to match an HTTP request and dispatch that request to a service.
+	// Structure is documented below.
 	DispatchRules ApplicationUrlDispatchRulesDispatchRuleArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

@@ -15,6 +15,8 @@ namespace Pulumi.Gcp.CloudRun.Outputs
     {
         /// <summary>
         /// The mode of the certificate.
+        /// Default value is `AUTOMATIC`.
+        /// Possible values are `NONE` and `AUTOMATIC`.
         /// </summary>
         public readonly string? CertificateMode;
         /// <summary>

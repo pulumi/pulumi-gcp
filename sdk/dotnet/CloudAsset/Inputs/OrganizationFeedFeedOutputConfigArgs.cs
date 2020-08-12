@@ -13,7 +13,8 @@ namespace Pulumi.Gcp.CloudAsset.Inputs
     public sealed class OrganizationFeedFeedOutputConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Destination on Cloud Pubsub.  Structure is documented below.
+        /// Destination on Cloud Pubsub.
+        /// Structure is documented below.
         /// </summary>
         [Input("pubsubDestination", required: true)]
         public Input<Inputs.OrganizationFeedFeedOutputConfigPubsubDestinationArgs> PubsubDestination { get; set; } = null!;

@@ -50,7 +50,7 @@ namespace Pulumi.Gcp.BigTable
         /// <summary>
         /// The role that should be applied. Only one
         /// `gcp.bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
-        /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        /// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
         /// </summary>
         [Output("role")]
         public Output<string> Role { get; private set; } = null!;
@@ -123,7 +123,7 @@ namespace Pulumi.Gcp.BigTable
         /// <summary>
         /// The role that should be applied. Only one
         /// `gcp.bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
-        /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        /// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
         /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
@@ -163,7 +163,7 @@ namespace Pulumi.Gcp.BigTable
         /// <summary>
         /// The role that should be applied. Only one
         /// `gcp.bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
-        /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        /// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }

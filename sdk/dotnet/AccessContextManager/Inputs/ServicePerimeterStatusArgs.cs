@@ -64,7 +64,8 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
 
         /// <summary>
         /// Specifies how APIs are allowed to communicate within the Service
-        /// Perimeter.  Structure is documented below.
+        /// Perimeter.
+        /// Structure is documented below.
         /// </summary>
         [Input("vpcAccessibleServices")]
         public Input<Inputs.ServicePerimeterStatusVpcAccessibleServicesArgs>? VpcAccessibleServices { get; set; }

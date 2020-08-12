@@ -26,7 +26,8 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         /// Criterion that describes a window as good if its performance is
         /// high enough. One of `good_bad_metric_filter`,
         /// `good_total_ratio_threshold`, `metric_mean_in_range`,
-        /// `metric_sum_in_range` must be set for `windows_based_sli`.  Structure is documented below.
+        /// `metric_sum_in_range` must be set for `windows_based_sli`.
+        /// Structure is documented below.
         /// </summary>
         [Input("goodTotalRatioThreshold")]
         public Input<Inputs.SloWindowsBasedSliGoodTotalRatioThresholdArgs>? GoodTotalRatioThreshold { get; set; }
@@ -38,7 +39,8 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         /// `good_total_ratio_threshold`, `metric_mean_in_range`,
         /// `metric_sum_in_range` must be set for `windows_based_sli`.
         /// Average value X of `time_series` should satisfy
-        /// `range.min &lt;= X &lt; range.max` for a good window.  Structure is documented below.
+        /// `range.min &lt;= X &lt; range.max` for a good window.
+        /// Structure is documented below.
         /// </summary>
         [Input("metricMeanInRange")]
         public Input<Inputs.SloWindowsBasedSliMetricMeanInRangeArgs>? MetricMeanInRange { get; set; }
@@ -50,7 +52,8 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         /// `range.min &lt;= X &lt; range.max` for a good window.
         /// One of `good_bad_metric_filter`,
         /// `good_total_ratio_threshold`, `metric_mean_in_range`,
-        /// `metric_sum_in_range` must be set for `windows_based_sli`.  Structure is documented below.
+        /// `metric_sum_in_range` must be set for `windows_based_sli`.
+        /// Structure is documented below.
         /// </summary>
         [Input("metricSumInRange")]
         public Input<Inputs.SloWindowsBasedSliMetricSumInRangeArgs>? MetricSumInRange { get; set; }

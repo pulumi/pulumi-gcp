@@ -64,7 +64,8 @@ type Snapshot struct {
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// The customer-supplied encryption key of the snapshot. Required if the
-	// source snapshot is protected by a customer-supplied encryption key.  Structure is documented below.
+	// source snapshot is protected by a customer-supplied encryption key.
+	// Structure is documented below.
 	SnapshotEncryptionKey SnapshotSnapshotEncryptionKeyPtrOutput `pulumi:"snapshotEncryptionKey"`
 	// The unique identifier for the resource.
 	SnapshotId pulumi.IntOutput `pulumi:"snapshotId"`
@@ -72,7 +73,8 @@ type Snapshot struct {
 	SourceDisk pulumi.StringOutput `pulumi:"sourceDisk"`
 	// The customer-supplied encryption key of the source snapshot. Required
 	// if the source snapshot is protected by a customer-supplied encryption
-	// key.  Structure is documented below.
+	// key.
+	// Structure is documented below.
 	SourceDiskEncryptionKey SnapshotSourceDiskEncryptionKeyPtrOutput `pulumi:"sourceDiskEncryptionKey"`
 	SourceDiskLink          pulumi.StringOutput                      `pulumi:"sourceDiskLink"`
 	// A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot
@@ -141,7 +143,8 @@ type snapshotState struct {
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// The customer-supplied encryption key of the snapshot. Required if the
-	// source snapshot is protected by a customer-supplied encryption key.  Structure is documented below.
+	// source snapshot is protected by a customer-supplied encryption key.
+	// Structure is documented below.
 	SnapshotEncryptionKey *SnapshotSnapshotEncryptionKey `pulumi:"snapshotEncryptionKey"`
 	// The unique identifier for the resource.
 	SnapshotId *int `pulumi:"snapshotId"`
@@ -149,7 +152,8 @@ type snapshotState struct {
 	SourceDisk *string `pulumi:"sourceDisk"`
 	// The customer-supplied encryption key of the source snapshot. Required
 	// if the source snapshot is protected by a customer-supplied encryption
-	// key.  Structure is documented below.
+	// key.
+	// Structure is documented below.
 	SourceDiskEncryptionKey *SnapshotSourceDiskEncryptionKey `pulumi:"sourceDiskEncryptionKey"`
 	SourceDiskLink          *string                          `pulumi:"sourceDiskLink"`
 	// A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot
@@ -188,7 +192,8 @@ type SnapshotState struct {
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
 	// The customer-supplied encryption key of the snapshot. Required if the
-	// source snapshot is protected by a customer-supplied encryption key.  Structure is documented below.
+	// source snapshot is protected by a customer-supplied encryption key.
+	// Structure is documented below.
 	SnapshotEncryptionKey SnapshotSnapshotEncryptionKeyPtrInput
 	// The unique identifier for the resource.
 	SnapshotId pulumi.IntPtrInput
@@ -196,7 +201,8 @@ type SnapshotState struct {
 	SourceDisk pulumi.StringPtrInput
 	// The customer-supplied encryption key of the source snapshot. Required
 	// if the source snapshot is protected by a customer-supplied encryption
-	// key.  Structure is documented below.
+	// key.
+	// Structure is documented below.
 	SourceDiskEncryptionKey SnapshotSourceDiskEncryptionKeyPtrInput
 	SourceDiskLink          pulumi.StringPtrInput
 	// A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot
@@ -227,13 +233,15 @@ type snapshotArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The customer-supplied encryption key of the snapshot. Required if the
-	// source snapshot is protected by a customer-supplied encryption key.  Structure is documented below.
+	// source snapshot is protected by a customer-supplied encryption key.
+	// Structure is documented below.
 	SnapshotEncryptionKey *SnapshotSnapshotEncryptionKey `pulumi:"snapshotEncryptionKey"`
 	// A reference to the disk used to create this snapshot.
 	SourceDisk string `pulumi:"sourceDisk"`
 	// The customer-supplied encryption key of the source snapshot. Required
 	// if the source snapshot is protected by a customer-supplied encryption
-	// key.  Structure is documented below.
+	// key.
+	// Structure is documented below.
 	SourceDiskEncryptionKey *SnapshotSourceDiskEncryptionKey `pulumi:"sourceDiskEncryptionKey"`
 	// A reference to the zone where the disk is hosted.
 	Zone *string `pulumi:"zone"`
@@ -257,13 +265,15 @@ type SnapshotArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The customer-supplied encryption key of the snapshot. Required if the
-	// source snapshot is protected by a customer-supplied encryption key.  Structure is documented below.
+	// source snapshot is protected by a customer-supplied encryption key.
+	// Structure is documented below.
 	SnapshotEncryptionKey SnapshotSnapshotEncryptionKeyPtrInput
 	// A reference to the disk used to create this snapshot.
 	SourceDisk pulumi.StringInput
 	// The customer-supplied encryption key of the source snapshot. Required
 	// if the source snapshot is protected by a customer-supplied encryption
-	// key.  Structure is documented below.
+	// key.
+	// Structure is documented below.
 	SourceDiskEncryptionKey SnapshotSourceDiskEncryptionKeyPtrInput
 	// A reference to the zone where the disk is hosted.
 	Zone pulumi.StringPtrInput

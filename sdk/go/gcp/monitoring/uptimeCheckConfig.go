@@ -25,13 +25,16 @@ import (
 type UptimeCheckConfig struct {
 	pulumi.CustomResourceState
 
-	// The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.  Structure is documented below.
+	// The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
+	// Structure is documented below.
 	ContentMatchers UptimeCheckConfigContentMatcherArrayOutput `pulumi:"contentMatchers"`
 	// A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// Contains information needed to make an HTTP or HTTPS check.  Structure is documented below.
+	// Contains information needed to make an HTTP or HTTPS check.
+	// Structure is documented below.
 	HttpCheck UptimeCheckConfigHttpCheckPtrOutput `pulumi:"httpCheck"`
-	// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptimeUrl  gceInstance  gaeApp  awsEc2Instance  awsElbLoadBalancer  Structure is documented below.
+	// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptimeUrl  gceInstance  gaeApp  awsEc2Instance  awsElbLoadBalancer
+	// Structure is documented below.
 	MonitoredResource UptimeCheckConfigMonitoredResourcePtrOutput `pulumi:"monitoredResource"`
 	// A unique resource name for this UptimeCheckConfig. The format is
 	// projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
@@ -41,11 +44,13 @@ type UptimeCheckConfig struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The group resource associated with the configuration.  Structure is documented below.
+	// The group resource associated with the configuration.
+	// Structure is documented below.
 	ResourceGroup UptimeCheckConfigResourceGroupPtrOutput `pulumi:"resourceGroup"`
 	// The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions to include a minimum of 3 locations must be provided, or an error message is returned. Not specifying this field will result in uptime checks running from all regions.
 	SelectedRegions pulumi.StringArrayOutput `pulumi:"selectedRegions"`
-	// Contains information needed to make a TCP check.  Structure is documented below.
+	// Contains information needed to make a TCP check.
+	// Structure is documented below.
 	TcpCheck UptimeCheckConfigTcpCheckPtrOutput `pulumi:"tcpCheck"`
 	// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Accepted formats https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration
 	Timeout pulumi.StringOutput `pulumi:"timeout"`
@@ -87,13 +92,16 @@ func GetUptimeCheckConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering UptimeCheckConfig resources.
 type uptimeCheckConfigState struct {
-	// The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.  Structure is documented below.
+	// The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
+	// Structure is documented below.
 	ContentMatchers []UptimeCheckConfigContentMatcher `pulumi:"contentMatchers"`
 	// A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
 	DisplayName *string `pulumi:"displayName"`
-	// Contains information needed to make an HTTP or HTTPS check.  Structure is documented below.
+	// Contains information needed to make an HTTP or HTTPS check.
+	// Structure is documented below.
 	HttpCheck *UptimeCheckConfigHttpCheck `pulumi:"httpCheck"`
-	// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptimeUrl  gceInstance  gaeApp  awsEc2Instance  awsElbLoadBalancer  Structure is documented below.
+	// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptimeUrl  gceInstance  gaeApp  awsEc2Instance  awsElbLoadBalancer
+	// Structure is documented below.
 	MonitoredResource *UptimeCheckConfigMonitoredResource `pulumi:"monitoredResource"`
 	// A unique resource name for this UptimeCheckConfig. The format is
 	// projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
@@ -103,11 +111,13 @@ type uptimeCheckConfigState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The group resource associated with the configuration.  Structure is documented below.
+	// The group resource associated with the configuration.
+	// Structure is documented below.
 	ResourceGroup *UptimeCheckConfigResourceGroup `pulumi:"resourceGroup"`
 	// The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions to include a minimum of 3 locations must be provided, or an error message is returned. Not specifying this field will result in uptime checks running from all regions.
 	SelectedRegions []string `pulumi:"selectedRegions"`
-	// Contains information needed to make a TCP check.  Structure is documented below.
+	// Contains information needed to make a TCP check.
+	// Structure is documented below.
 	TcpCheck *UptimeCheckConfigTcpCheck `pulumi:"tcpCheck"`
 	// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Accepted formats https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration
 	Timeout *string `pulumi:"timeout"`
@@ -116,13 +126,16 @@ type uptimeCheckConfigState struct {
 }
 
 type UptimeCheckConfigState struct {
-	// The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.  Structure is documented below.
+	// The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
+	// Structure is documented below.
 	ContentMatchers UptimeCheckConfigContentMatcherArrayInput
 	// A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
 	DisplayName pulumi.StringPtrInput
-	// Contains information needed to make an HTTP or HTTPS check.  Structure is documented below.
+	// Contains information needed to make an HTTP or HTTPS check.
+	// Structure is documented below.
 	HttpCheck UptimeCheckConfigHttpCheckPtrInput
-	// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptimeUrl  gceInstance  gaeApp  awsEc2Instance  awsElbLoadBalancer  Structure is documented below.
+	// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptimeUrl  gceInstance  gaeApp  awsEc2Instance  awsElbLoadBalancer
+	// Structure is documented below.
 	MonitoredResource UptimeCheckConfigMonitoredResourcePtrInput
 	// A unique resource name for this UptimeCheckConfig. The format is
 	// projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
@@ -132,11 +145,13 @@ type UptimeCheckConfigState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The group resource associated with the configuration.  Structure is documented below.
+	// The group resource associated with the configuration.
+	// Structure is documented below.
 	ResourceGroup UptimeCheckConfigResourceGroupPtrInput
 	// The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions to include a minimum of 3 locations must be provided, or an error message is returned. Not specifying this field will result in uptime checks running from all regions.
 	SelectedRegions pulumi.StringArrayInput
-	// Contains information needed to make a TCP check.  Structure is documented below.
+	// Contains information needed to make a TCP check.
+	// Structure is documented below.
 	TcpCheck UptimeCheckConfigTcpCheckPtrInput
 	// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Accepted formats https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration
 	Timeout pulumi.StringPtrInput
@@ -149,24 +164,29 @@ func (UptimeCheckConfigState) ElementType() reflect.Type {
 }
 
 type uptimeCheckConfigArgs struct {
-	// The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.  Structure is documented below.
+	// The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
+	// Structure is documented below.
 	ContentMatchers []UptimeCheckConfigContentMatcher `pulumi:"contentMatchers"`
 	// A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
 	DisplayName string `pulumi:"displayName"`
-	// Contains information needed to make an HTTP or HTTPS check.  Structure is documented below.
+	// Contains information needed to make an HTTP or HTTPS check.
+	// Structure is documented below.
 	HttpCheck *UptimeCheckConfigHttpCheck `pulumi:"httpCheck"`
-	// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptimeUrl  gceInstance  gaeApp  awsEc2Instance  awsElbLoadBalancer  Structure is documented below.
+	// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptimeUrl  gceInstance  gaeApp  awsEc2Instance  awsElbLoadBalancer
+	// Structure is documented below.
 	MonitoredResource *UptimeCheckConfigMonitoredResource `pulumi:"monitoredResource"`
 	// How often, in seconds, the uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 300s.
 	Period *string `pulumi:"period"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The group resource associated with the configuration.  Structure is documented below.
+	// The group resource associated with the configuration.
+	// Structure is documented below.
 	ResourceGroup *UptimeCheckConfigResourceGroup `pulumi:"resourceGroup"`
 	// The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions to include a minimum of 3 locations must be provided, or an error message is returned. Not specifying this field will result in uptime checks running from all regions.
 	SelectedRegions []string `pulumi:"selectedRegions"`
-	// Contains information needed to make a TCP check.  Structure is documented below.
+	// Contains information needed to make a TCP check.
+	// Structure is documented below.
 	TcpCheck *UptimeCheckConfigTcpCheck `pulumi:"tcpCheck"`
 	// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Accepted formats https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration
 	Timeout string `pulumi:"timeout"`
@@ -174,24 +194,29 @@ type uptimeCheckConfigArgs struct {
 
 // The set of arguments for constructing a UptimeCheckConfig resource.
 type UptimeCheckConfigArgs struct {
-	// The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.  Structure is documented below.
+	// The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
+	// Structure is documented below.
 	ContentMatchers UptimeCheckConfigContentMatcherArrayInput
 	// A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
 	DisplayName pulumi.StringInput
-	// Contains information needed to make an HTTP or HTTPS check.  Structure is documented below.
+	// Contains information needed to make an HTTP or HTTPS check.
+	// Structure is documented below.
 	HttpCheck UptimeCheckConfigHttpCheckPtrInput
-	// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptimeUrl  gceInstance  gaeApp  awsEc2Instance  awsElbLoadBalancer  Structure is documented below.
+	// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptimeUrl  gceInstance  gaeApp  awsEc2Instance  awsElbLoadBalancer
+	// Structure is documented below.
 	MonitoredResource UptimeCheckConfigMonitoredResourcePtrInput
 	// How often, in seconds, the uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 300s.
 	Period pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The group resource associated with the configuration.  Structure is documented below.
+	// The group resource associated with the configuration.
+	// Structure is documented below.
 	ResourceGroup UptimeCheckConfigResourceGroupPtrInput
 	// The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions to include a minimum of 3 locations must be provided, or an error message is returned. Not specifying this field will result in uptime checks running from all regions.
 	SelectedRegions pulumi.StringArrayInput
-	// Contains information needed to make a TCP check.  Structure is documented below.
+	// Contains information needed to make a TCP check.
+	// Structure is documented below.
 	TcpCheck UptimeCheckConfigTcpCheckPtrInput
 	// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Accepted formats https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration
 	Timeout pulumi.StringInput

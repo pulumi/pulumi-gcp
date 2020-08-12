@@ -37,7 +37,8 @@ namespace Pulumi.Gcp.AppEngine.Outputs
         /// </summary>
         public readonly string? MinPendingLatency;
         /// <summary>
-        /// Scheduler settings for standard environment.  Structure is documented below.
+        /// Scheduler settings for standard environment.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.StandardAppVersionAutomaticScalingStandardSchedulerSettings? StandardSchedulerSettings;
 

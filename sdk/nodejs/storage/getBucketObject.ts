@@ -81,6 +81,10 @@ export interface GetBucketObjectResult {
      * (Computed) Base 64 MD5 hash of the uploaded data.
      */
     readonly md5hash: string;
+    /**
+     * (Computed) A url reference to download this object.
+     */
+    readonly mediaLink: string;
     readonly metadata: {[key: string]: string};
     readonly name?: string;
     readonly outputName: string;

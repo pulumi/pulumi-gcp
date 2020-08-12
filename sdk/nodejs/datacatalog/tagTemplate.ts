@@ -51,7 +51,8 @@ export class TagTemplate extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
-     * Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields.  Structure is documented below.
+     * Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields.
+     * Structure is documented below.
      */
     public readonly fields!: pulumi.Output<outputs.datacatalog.TagTemplateField[]>;
     /**
@@ -132,7 +133,8 @@ export interface TagTemplateState {
      */
     readonly displayName?: pulumi.Input<string>;
     /**
-     * Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields.  Structure is documented below.
+     * Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields.
+     * Structure is documented below.
      */
     readonly fields?: pulumi.Input<pulumi.Input<inputs.datacatalog.TagTemplateField>[]>;
     /**
@@ -168,7 +170,8 @@ export interface TagTemplateArgs {
      */
     readonly displayName?: pulumi.Input<string>;
     /**
-     * Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields.  Structure is documented below.
+     * Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields.
+     * Structure is documented below.
      */
     readonly fields: pulumi.Input<pulumi.Input<inputs.datacatalog.TagTemplateField>[]>;
     /**

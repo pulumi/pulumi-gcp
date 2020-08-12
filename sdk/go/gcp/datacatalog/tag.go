@@ -30,7 +30,8 @@ type Tag struct {
 	// `outer_column.inner_column`
 	Column pulumi.StringPtrOutput `pulumi:"column"`
 	// This maps the ID of a tag field to the value of and additional information about that field.
-	// Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.  Structure is documented below.
+	// Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
+	// Structure is documented below.
 	Fields TagFieldArrayOutput `pulumi:"fields"`
 	// The resource name of the tag in URL format. Example:
 	// projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}/tags/{tag_id} or
@@ -88,7 +89,8 @@ type tagState struct {
 	// `outer_column.inner_column`
 	Column *string `pulumi:"column"`
 	// This maps the ID of a tag field to the value of and additional information about that field.
-	// Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.  Structure is documented below.
+	// Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
+	// Structure is documented below.
 	Fields []TagField `pulumi:"fields"`
 	// The resource name of the tag in URL format. Example:
 	// projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}/tags/{tag_id} or
@@ -113,7 +115,8 @@ type TagState struct {
 	// `outer_column.inner_column`
 	Column pulumi.StringPtrInput
 	// This maps the ID of a tag field to the value of and additional information about that field.
-	// Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.  Structure is documented below.
+	// Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
+	// Structure is documented below.
 	Fields TagFieldArrayInput
 	// The resource name of the tag in URL format. Example:
 	// projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}/tags/{tag_id} or
@@ -142,7 +145,8 @@ type tagArgs struct {
 	// `outer_column.inner_column`
 	Column *string `pulumi:"column"`
 	// This maps the ID of a tag field to the value of and additional information about that field.
-	// Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.  Structure is documented below.
+	// Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
+	// Structure is documented below.
 	Fields []TagField `pulumi:"fields"`
 	// The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
 	// all entries in that group.
@@ -161,7 +165,8 @@ type TagArgs struct {
 	// `outer_column.inner_column`
 	Column pulumi.StringPtrInput
 	// This maps the ID of a tag field to the value of and additional information about that field.
-	// Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.  Structure is documented below.
+	// Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
+	// Structure is documented below.
 	Fields TagFieldArrayInput
 	// The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
 	// all entries in that group.

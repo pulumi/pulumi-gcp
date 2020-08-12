@@ -12,7 +12,8 @@ from .. import utilities, tables
 class Dataset(pulumi.CustomResource):
     accesses: pulumi.Output[list]
     """
-    An array of objects that define dataset access for one or more entities.  Structure is documented below.
+    An array of objects that define dataset access for one or more entities.
+    Structure is documented below.
 
       * `domain` (`str`) - A domain to grant access to. Any users signed in with the
         domain specified will be granted the specified access
@@ -30,7 +31,8 @@ class Dataset(pulumi.CustomResource):
         executed against that view will have read access to tables in
         this dataset. The role field is not required when this field is
         set. If that view is updated by any user, access to the view
-        needs to be granted again via an update operation.  Structure is documented below.
+        needs to be granted again via an update operation.
+        Structure is documented below.
         * `dataset_id` (`str`) - The ID of the dataset containing this table.
         * `project_id` (`str`) - The ID of the project containing this table.
         * `table_id` (`str`) - The ID of the table. The ID must contain only letters (a-z,
@@ -49,7 +51,8 @@ class Dataset(pulumi.CustomResource):
     """
     The default encryption key for all tables in the dataset. Once this property is set,
     all newly-created partitioned tables in the dataset will have encryption key set to
-    this value, unless table creation request (or query) overrides the key.  Structure is documented below.
+    this value, unless table creation request (or query) overrides the key.
+    Structure is documented below.
 
       * `kms_key_name` (`str`) - Describes the Cloud KMS encryption key that will be used to protect destination
         BigQuery table. The BigQuery Service Account associated with your project requires
@@ -120,11 +123,13 @@ class Dataset(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] accesses: An array of objects that define dataset access for one or more entities.  Structure is documented below.
+        :param pulumi.Input[list] accesses: An array of objects that define dataset access for one or more entities.
+               Structure is documented below.
         :param pulumi.Input[str] dataset_id: The ID of the dataset containing this table.
         :param pulumi.Input[dict] default_encryption_configuration: The default encryption key for all tables in the dataset. Once this property is set,
                all newly-created partitioned tables in the dataset will have encryption key set to
-               this value, unless table creation request (or query) overrides the key.  Structure is documented below.
+               this value, unless table creation request (or query) overrides the key.
+               Structure is documented below.
         :param pulumi.Input[float] default_partition_expiration_ms: The default partition expiration for all partitioned tables in
                the dataset, in milliseconds.
         :param pulumi.Input[float] default_table_expiration_ms: The default lifetime of all tables in the dataset, in milliseconds.
@@ -159,7 +164,8 @@ class Dataset(pulumi.CustomResource):
             executed against that view will have read access to tables in
             this dataset. The role field is not required when this field is
             set. If that view is updated by any user, access to the view
-            needs to be granted again via an update operation.  Structure is documented below.
+            needs to be granted again via an update operation.
+            Structure is documented below.
             * `dataset_id` (`pulumi.Input[str]`) - The ID of the dataset containing this table.
             * `project_id` (`pulumi.Input[str]`) - The ID of the project containing this table.
             * `table_id` (`pulumi.Input[str]`) - The ID of the table. The ID must contain only letters (a-z,
@@ -221,12 +227,14 @@ class Dataset(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] accesses: An array of objects that define dataset access for one or more entities.  Structure is documented below.
+        :param pulumi.Input[list] accesses: An array of objects that define dataset access for one or more entities.
+               Structure is documented below.
         :param pulumi.Input[float] creation_time: The time when this dataset was created, in milliseconds since the epoch.
         :param pulumi.Input[str] dataset_id: The ID of the dataset containing this table.
         :param pulumi.Input[dict] default_encryption_configuration: The default encryption key for all tables in the dataset. Once this property is set,
                all newly-created partitioned tables in the dataset will have encryption key set to
-               this value, unless table creation request (or query) overrides the key.  Structure is documented below.
+               this value, unless table creation request (or query) overrides the key.
+               Structure is documented below.
         :param pulumi.Input[float] default_partition_expiration_ms: The default partition expiration for all partitioned tables in
                the dataset, in milliseconds.
         :param pulumi.Input[float] default_table_expiration_ms: The default lifetime of all tables in the dataset, in milliseconds.
@@ -264,7 +272,8 @@ class Dataset(pulumi.CustomResource):
             executed against that view will have read access to tables in
             this dataset. The role field is not required when this field is
             set. If that view is updated by any user, access to the view
-            needs to be granted again via an update operation.  Structure is documented below.
+            needs to be granted again via an update operation.
+            Structure is documented below.
             * `dataset_id` (`pulumi.Input[str]`) - The ID of the dataset containing this table.
             * `project_id` (`pulumi.Input[str]`) - The ID of the project containing this table.
             * `table_id` (`pulumi.Input[str]`) - The ID of the table. The ID must contain only letters (a-z,

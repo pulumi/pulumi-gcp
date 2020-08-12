@@ -38,11 +38,13 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// </summary>
         public readonly bool? PrintHeader;
         /// <summary>
-        /// A reference to the model being exported.  Structure is documented below.
+        /// A reference to the model being exported.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.JobExtractSourceModel? SourceModel;
         /// <summary>
-        /// A reference to the table being exported.  Structure is documented below.
+        /// A reference to the table being exported.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.JobExtractSourceTable? SourceTable;
         /// <summary>

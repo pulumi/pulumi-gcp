@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Kms
         /// For more information see
         /// [the official documentation](https://cloud.google.com/kms/docs/encrypt-decrypt).
         /// 
-        /// &gt; **NOTE**: Using this data provider will allow you to conceal secret data within your
+        /// &gt; **NOTE:** Using this data provider will allow you to conceal secret data within your
         /// resource definitions, but it does not take care of protecting that data in the
         /// logging output, plan output, or state output.  Please take care to secure your secret
         /// data outside of resource definitions.

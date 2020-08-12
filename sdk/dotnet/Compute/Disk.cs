@@ -61,7 +61,8 @@ namespace Pulumi.Gcp.Compute
         /// the disk.
         /// If you do not provide an encryption key when creating the disk, then
         /// the disk will be encrypted using an automatically generated key and
-        /// you do not need to provide a key to use the disk later.  Structure is documented below.
+        /// you do not need to provide a key to use the disk later.
+        /// Structure is documented below.
         /// </summary>
         [Output("diskEncryptionKey")]
         public Output<Outputs.DiskDiskEncryptionKey?> DiskEncryptionKey { get; private set; } = null!;
@@ -175,7 +176,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The customer-supplied encryption key of the source image. Required if
-        /// the source image is protected by a customer-supplied encryption key.  Structure is documented below.
+        /// the source image is protected by a customer-supplied encryption key.
+        /// Structure is documented below.
         /// </summary>
         [Output("sourceImageEncryptionKey")]
         public Output<Outputs.DiskSourceImageEncryptionKey?> SourceImageEncryptionKey { get; private set; } = null!;
@@ -191,7 +193,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The customer-supplied encryption key of the source snapshot. Required
         /// if the source snapshot is protected by a customer-supplied encryption
-        /// key.  Structure is documented below.
+        /// key.
+        /// Structure is documented below.
         /// </summary>
         [Output("sourceSnapshotEncryptionKey")]
         public Output<Outputs.DiskSourceSnapshotEncryptionKey?> SourceSnapshotEncryptionKey { get; private set; } = null!;
@@ -285,7 +288,8 @@ namespace Pulumi.Gcp.Compute
         /// the disk.
         /// If you do not provide an encryption key when creating the disk, then
         /// the disk will be encrypted using an automatically generated key and
-        /// you do not need to provide a key to use the disk later.  Structure is documented below.
+        /// you do not need to provide a key to use the disk later.
+        /// Structure is documented below.
         /// </summary>
         [Input("diskEncryptionKey")]
         public Input<Inputs.DiskDiskEncryptionKeyArgs>? DiskEncryptionKey { get; set; }
@@ -387,7 +391,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The customer-supplied encryption key of the source image. Required if
-        /// the source image is protected by a customer-supplied encryption key.  Structure is documented below.
+        /// the source image is protected by a customer-supplied encryption key.
+        /// Structure is documented below.
         /// </summary>
         [Input("sourceImageEncryptionKey")]
         public Input<Inputs.DiskSourceImageEncryptionKeyArgs>? SourceImageEncryptionKey { get; set; }
@@ -395,7 +400,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The customer-supplied encryption key of the source snapshot. Required
         /// if the source snapshot is protected by a customer-supplied encryption
-        /// key.  Structure is documented below.
+        /// key.
+        /// Structure is documented below.
         /// </summary>
         [Input("sourceSnapshotEncryptionKey")]
         public Input<Inputs.DiskSourceSnapshotEncryptionKeyArgs>? SourceSnapshotEncryptionKey { get; set; }
@@ -442,7 +448,8 @@ namespace Pulumi.Gcp.Compute
         /// the disk.
         /// If you do not provide an encryption key when creating the disk, then
         /// the disk will be encrypted using an automatically generated key and
-        /// you do not need to provide a key to use the disk later.  Structure is documented below.
+        /// you do not need to provide a key to use the disk later.
+        /// Structure is documented below.
         /// </summary>
         [Input("diskEncryptionKey")]
         public Input<Inputs.DiskDiskEncryptionKeyGetArgs>? DiskEncryptionKey { get; set; }
@@ -568,7 +575,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The customer-supplied encryption key of the source image. Required if
-        /// the source image is protected by a customer-supplied encryption key.  Structure is documented below.
+        /// the source image is protected by a customer-supplied encryption key.
+        /// Structure is documented below.
         /// </summary>
         [Input("sourceImageEncryptionKey")]
         public Input<Inputs.DiskSourceImageEncryptionKeyGetArgs>? SourceImageEncryptionKey { get; set; }
@@ -584,7 +592,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The customer-supplied encryption key of the source snapshot. Required
         /// if the source snapshot is protected by a customer-supplied encryption
-        /// key.  Structure is documented below.
+        /// key.
+        /// Structure is documented below.
         /// </summary>
         [Input("sourceSnapshotEncryptionKey")]
         public Input<Inputs.DiskSourceSnapshotEncryptionKeyGetArgs>? SourceSnapshotEncryptionKey { get; set; }

@@ -70,6 +70,8 @@ export class CryptoKey extends pulumi.CustomResource {
      * The immutable purpose of this CryptoKey. See the
      * [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
      * for possible inputs.
+     * Default value is `ENCRYPT_DECRYPT`.
+     * Possible values are `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, and `ASYMMETRIC_DECRYPT`.
      */
     public readonly purpose!: pulumi.Output<string | undefined>;
     /**
@@ -81,7 +83,8 @@ export class CryptoKey extends pulumi.CustomResource {
     public readonly rotationPeriod!: pulumi.Output<string | undefined>;
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * A template describing settings for new crypto key versions.  Structure is documented below.
+     * A template describing settings for new crypto key versions.
+     * Structure is documented below.
      */
     public readonly versionTemplate!: pulumi.Output<outputs.kms.CryptoKeyVersionTemplate>;
 
@@ -149,6 +152,8 @@ export interface CryptoKeyState {
      * The immutable purpose of this CryptoKey. See the
      * [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
      * for possible inputs.
+     * Default value is `ENCRYPT_DECRYPT`.
+     * Possible values are `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, and `ASYMMETRIC_DECRYPT`.
      */
     readonly purpose?: pulumi.Input<string>;
     /**
@@ -160,7 +165,8 @@ export interface CryptoKeyState {
     readonly rotationPeriod?: pulumi.Input<string>;
     readonly selfLink?: pulumi.Input<string>;
     /**
-     * A template describing settings for new crypto key versions.  Structure is documented below.
+     * A template describing settings for new crypto key versions.
+     * Structure is documented below.
      */
     readonly versionTemplate?: pulumi.Input<inputs.kms.CryptoKeyVersionTemplate>;
 }
@@ -186,6 +192,8 @@ export interface CryptoKeyArgs {
      * The immutable purpose of this CryptoKey. See the
      * [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
      * for possible inputs.
+     * Default value is `ENCRYPT_DECRYPT`.
+     * Possible values are `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, and `ASYMMETRIC_DECRYPT`.
      */
     readonly purpose?: pulumi.Input<string>;
     /**
@@ -196,7 +204,8 @@ export interface CryptoKeyArgs {
      */
     readonly rotationPeriod?: pulumi.Input<string>;
     /**
-     * A template describing settings for new crypto key versions.  Structure is documented below.
+     * A template describing settings for new crypto key versions.
+     * Structure is documented below.
      */
     readonly versionTemplate?: pulumi.Input<inputs.kms.CryptoKeyVersionTemplate>;
 }

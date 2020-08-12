@@ -55,13 +55,15 @@ export class RegionBackendService extends pulumi.CustomResource {
      */
     public readonly affinityCookieTtlSec!: pulumi.Output<number | undefined>;
     /**
-     * The set of backends that serve this RegionBackendService.  Structure is documented below.
+     * The set of backends that serve this RegionBackendService.
+     * Structure is documented below.
      */
     public readonly backends!: pulumi.Output<outputs.compute.RegionBackendServiceBackend[] | undefined>;
     /**
      * Settings controlling the volume of connections to a backend service. This field
      * is applicable only when the `loadBalancingScheme` is set to INTERNAL_MANAGED
-     * and the `protocol` is set to HTTP, HTTPS, or HTTP2.  Structure is documented below.
+     * and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+     * Structure is documented below.
      */
     public readonly circuitBreakers!: pulumi.Output<outputs.compute.RegionBackendServiceCircuitBreakers | undefined>;
     /**
@@ -89,7 +91,8 @@ export class RegionBackendService extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Policy for failovers.  Structure is documented below.
+     * Policy for failovers.
+     * Structure is documented below.
      */
     public readonly failoverPolicy!: pulumi.Output<outputs.compute.RegionBackendServiceFailoverPolicy | undefined>;
     /**
@@ -106,6 +109,8 @@ export class RegionBackendService extends pulumi.CustomResource {
      * Indicates what kind of load balancing this regional backend service
      * will be used for. A backend service created for one type of load
      * balancing cannot be used with the other(s).
+     * Default value is `INTERNAL`.
+     * Possible values are `INTERNAL` and `INTERNAL_MANAGED`.
      */
     public readonly loadBalancingScheme!: pulumi.Output<string | undefined>;
     /**
@@ -131,11 +136,13 @@ export class RegionBackendService extends pulumi.CustomResource {
      * Maglev, refer to https://ai.google/research/pubs/pub44824
      * This field is applicable only when the `loadBalancingScheme` is set to
      * INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+     * Possible values are `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, and `MAGLEV`.
      */
     public readonly localityLbPolicy!: pulumi.Output<string | undefined>;
     /**
      * This field denotes the logging options for the load balancer traffic served by this backend service.
-     * If logging is enabled, logs will be exported to Stackdriver.  Structure is documented below.
+     * If logging is enabled, logs will be exported to Stackdriver.
+     * Structure is documented below.
      */
     public readonly logConfig!: pulumi.Output<outputs.compute.RegionBackendServiceLogConfig | undefined>;
     /**
@@ -150,7 +157,8 @@ export class RegionBackendService extends pulumi.CustomResource {
     /**
      * Settings controlling eviction of unhealthy hosts from the load balancing pool.
      * This field is applicable only when the `loadBalancingScheme` is set
-     * to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.  Structure is documented below.
+     * to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+     * Structure is documented below.
      */
     public readonly outlierDetection!: pulumi.Output<outputs.compute.RegionBackendServiceOutlierDetection | undefined>;
     /**
@@ -172,6 +180,7 @@ export class RegionBackendService extends pulumi.CustomResource {
      * The protocol this RegionBackendService uses to communicate with backends.
      * The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
      * types and may result in errors if used with the GA API.
+     * Possible values are `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, and `UDP`.
      */
     public readonly protocol!: pulumi.Output<string>;
     /**
@@ -186,6 +195,7 @@ export class RegionBackendService extends pulumi.CustomResource {
     /**
      * Type of session affinity to use. The default is NONE. Session affinity is
      * not applicable if the protocol is UDP.
+     * Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
      */
     public readonly sessionAffinity!: pulumi.Output<string>;
     /**
@@ -282,13 +292,15 @@ export interface RegionBackendServiceState {
      */
     readonly affinityCookieTtlSec?: pulumi.Input<number>;
     /**
-     * The set of backends that serve this RegionBackendService.  Structure is documented below.
+     * The set of backends that serve this RegionBackendService.
+     * Structure is documented below.
      */
     readonly backends?: pulumi.Input<pulumi.Input<inputs.compute.RegionBackendServiceBackend>[]>;
     /**
      * Settings controlling the volume of connections to a backend service. This field
      * is applicable only when the `loadBalancingScheme` is set to INTERNAL_MANAGED
-     * and the `protocol` is set to HTTP, HTTPS, or HTTP2.  Structure is documented below.
+     * and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+     * Structure is documented below.
      */
     readonly circuitBreakers?: pulumi.Input<inputs.compute.RegionBackendServiceCircuitBreakers>;
     /**
@@ -316,7 +328,8 @@ export interface RegionBackendServiceState {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Policy for failovers.  Structure is documented below.
+     * Policy for failovers.
+     * Structure is documented below.
      */
     readonly failoverPolicy?: pulumi.Input<inputs.compute.RegionBackendServiceFailoverPolicy>;
     /**
@@ -333,6 +346,8 @@ export interface RegionBackendServiceState {
      * Indicates what kind of load balancing this regional backend service
      * will be used for. A backend service created for one type of load
      * balancing cannot be used with the other(s).
+     * Default value is `INTERNAL`.
+     * Possible values are `INTERNAL` and `INTERNAL_MANAGED`.
      */
     readonly loadBalancingScheme?: pulumi.Input<string>;
     /**
@@ -358,11 +373,13 @@ export interface RegionBackendServiceState {
      * Maglev, refer to https://ai.google/research/pubs/pub44824
      * This field is applicable only when the `loadBalancingScheme` is set to
      * INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+     * Possible values are `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, and `MAGLEV`.
      */
     readonly localityLbPolicy?: pulumi.Input<string>;
     /**
      * This field denotes the logging options for the load balancer traffic served by this backend service.
-     * If logging is enabled, logs will be exported to Stackdriver.  Structure is documented below.
+     * If logging is enabled, logs will be exported to Stackdriver.
+     * Structure is documented below.
      */
     readonly logConfig?: pulumi.Input<inputs.compute.RegionBackendServiceLogConfig>;
     /**
@@ -377,7 +394,8 @@ export interface RegionBackendServiceState {
     /**
      * Settings controlling eviction of unhealthy hosts from the load balancing pool.
      * This field is applicable only when the `loadBalancingScheme` is set
-     * to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.  Structure is documented below.
+     * to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+     * Structure is documented below.
      */
     readonly outlierDetection?: pulumi.Input<inputs.compute.RegionBackendServiceOutlierDetection>;
     /**
@@ -399,6 +417,7 @@ export interface RegionBackendServiceState {
      * The protocol this RegionBackendService uses to communicate with backends.
      * The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
      * types and may result in errors if used with the GA API.
+     * Possible values are `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, and `UDP`.
      */
     readonly protocol?: pulumi.Input<string>;
     /**
@@ -413,6 +432,7 @@ export interface RegionBackendServiceState {
     /**
      * Type of session affinity to use. The default is NONE. Session affinity is
      * not applicable if the protocol is UDP.
+     * Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
      */
     readonly sessionAffinity?: pulumi.Input<string>;
     /**
@@ -435,13 +455,15 @@ export interface RegionBackendServiceArgs {
      */
     readonly affinityCookieTtlSec?: pulumi.Input<number>;
     /**
-     * The set of backends that serve this RegionBackendService.  Structure is documented below.
+     * The set of backends that serve this RegionBackendService.
+     * Structure is documented below.
      */
     readonly backends?: pulumi.Input<pulumi.Input<inputs.compute.RegionBackendServiceBackend>[]>;
     /**
      * Settings controlling the volume of connections to a backend service. This field
      * is applicable only when the `loadBalancingScheme` is set to INTERNAL_MANAGED
-     * and the `protocol` is set to HTTP, HTTPS, or HTTP2.  Structure is documented below.
+     * and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+     * Structure is documented below.
      */
     readonly circuitBreakers?: pulumi.Input<inputs.compute.RegionBackendServiceCircuitBreakers>;
     /**
@@ -465,7 +487,8 @@ export interface RegionBackendServiceArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Policy for failovers.  Structure is documented below.
+     * Policy for failovers.
+     * Structure is documented below.
      */
     readonly failoverPolicy?: pulumi.Input<inputs.compute.RegionBackendServiceFailoverPolicy>;
     /**
@@ -478,6 +501,8 @@ export interface RegionBackendServiceArgs {
      * Indicates what kind of load balancing this regional backend service
      * will be used for. A backend service created for one type of load
      * balancing cannot be used with the other(s).
+     * Default value is `INTERNAL`.
+     * Possible values are `INTERNAL` and `INTERNAL_MANAGED`.
      */
     readonly loadBalancingScheme?: pulumi.Input<string>;
     /**
@@ -503,11 +528,13 @@ export interface RegionBackendServiceArgs {
      * Maglev, refer to https://ai.google/research/pubs/pub44824
      * This field is applicable only when the `loadBalancingScheme` is set to
      * INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+     * Possible values are `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, and `MAGLEV`.
      */
     readonly localityLbPolicy?: pulumi.Input<string>;
     /**
      * This field denotes the logging options for the load balancer traffic served by this backend service.
-     * If logging is enabled, logs will be exported to Stackdriver.  Structure is documented below.
+     * If logging is enabled, logs will be exported to Stackdriver.
+     * Structure is documented below.
      */
     readonly logConfig?: pulumi.Input<inputs.compute.RegionBackendServiceLogConfig>;
     /**
@@ -522,7 +549,8 @@ export interface RegionBackendServiceArgs {
     /**
      * Settings controlling eviction of unhealthy hosts from the load balancing pool.
      * This field is applicable only when the `loadBalancingScheme` is set
-     * to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.  Structure is documented below.
+     * to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+     * Structure is documented below.
      */
     readonly outlierDetection?: pulumi.Input<inputs.compute.RegionBackendServiceOutlierDetection>;
     /**
@@ -544,6 +572,7 @@ export interface RegionBackendServiceArgs {
      * The protocol this RegionBackendService uses to communicate with backends.
      * The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
      * types and may result in errors if used with the GA API.
+     * Possible values are `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, and `UDP`.
      */
     readonly protocol?: pulumi.Input<string>;
     /**
@@ -554,6 +583,7 @@ export interface RegionBackendServiceArgs {
     /**
      * Type of session affinity to use. The default is NONE. Session affinity is
      * not applicable if the protocol is UDP.
+     * Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
      */
     readonly sessionAffinity?: pulumi.Input<string>;
     /**

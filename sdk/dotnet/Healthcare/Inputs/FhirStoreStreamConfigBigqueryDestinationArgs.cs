@@ -19,7 +19,8 @@ namespace Pulumi.Gcp.Healthcare.Inputs
         public Input<string> DatasetUri { get; set; } = null!;
 
         /// <summary>
-        /// The configuration for the exported BigQuery schema.  Structure is documented below.
+        /// The configuration for the exported BigQuery schema.
+        /// Structure is documented below.
         /// </summary>
         [Input("schemaConfig", required: true)]
         public Input<Inputs.FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs> SchemaConfig { get; set; } = null!;

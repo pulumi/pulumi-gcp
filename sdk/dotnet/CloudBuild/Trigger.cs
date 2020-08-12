@@ -23,7 +23,8 @@ namespace Pulumi.Gcp.CloudBuild
     public partial class Trigger : Pulumi.CustomResource
     {
         /// <summary>
-        /// Contents of the build template. Either a filename or build template must be provided.  Structure is documented below.
+        /// Contents of the build template. Either a filename or build template must be provided.
+        /// Structure is documented below.
         /// </summary>
         [Output("build")]
         public Output<Outputs.TriggerBuild?> Build { get; private set; } = null!;
@@ -54,7 +55,8 @@ namespace Pulumi.Gcp.CloudBuild
 
         /// <summary>
         /// Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
-        /// One of `trigger_template` or `github` must be provided.  Structure is documented below.
+        /// One of `trigger_template` or `github` must be provided.
+        /// Structure is documented below.
         /// </summary>
         [Output("github")]
         public Output<Outputs.TriggerGithub?> Github { get; private set; } = null!;
@@ -117,7 +119,8 @@ namespace Pulumi.Gcp.CloudBuild
         /// Branch and tag names in trigger templates are interpreted as regular
         /// expressions. Any branch or tag change that matches that regular
         /// expression will trigger a build.
-        /// One of `trigger_template` or `github` must be provided.  Structure is documented below.
+        /// One of `trigger_template` or `github` must be provided.
+        /// Structure is documented below.
         /// </summary>
         [Output("triggerTemplate")]
         public Output<Outputs.TriggerTriggerTemplate?> TriggerTemplate { get; private set; } = null!;
@@ -169,7 +172,8 @@ namespace Pulumi.Gcp.CloudBuild
     public sealed class TriggerArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Contents of the build template. Either a filename or build template must be provided.  Structure is documented below.
+        /// Contents of the build template. Either a filename or build template must be provided.
+        /// Structure is documented below.
         /// </summary>
         [Input("build")]
         public Input<Inputs.TriggerBuildArgs>? Build { get; set; }
@@ -194,7 +198,8 @@ namespace Pulumi.Gcp.CloudBuild
 
         /// <summary>
         /// Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
-        /// One of `trigger_template` or `github` must be provided.  Structure is documented below.
+        /// One of `trigger_template` or `github` must be provided.
+        /// Structure is documented below.
         /// </summary>
         [Input("github")]
         public Input<Inputs.TriggerGithubArgs>? Github { get; set; }
@@ -269,7 +274,8 @@ namespace Pulumi.Gcp.CloudBuild
         /// Branch and tag names in trigger templates are interpreted as regular
         /// expressions. Any branch or tag change that matches that regular
         /// expression will trigger a build.
-        /// One of `trigger_template` or `github` must be provided.  Structure is documented below.
+        /// One of `trigger_template` or `github` must be provided.
+        /// Structure is documented below.
         /// </summary>
         [Input("triggerTemplate")]
         public Input<Inputs.TriggerTriggerTemplateArgs>? TriggerTemplate { get; set; }
@@ -282,7 +288,8 @@ namespace Pulumi.Gcp.CloudBuild
     public sealed class TriggerState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Contents of the build template. Either a filename or build template must be provided.  Structure is documented below.
+        /// Contents of the build template. Either a filename or build template must be provided.
+        /// Structure is documented below.
         /// </summary>
         [Input("build")]
         public Input<Inputs.TriggerBuildGetArgs>? Build { get; set; }
@@ -313,7 +320,8 @@ namespace Pulumi.Gcp.CloudBuild
 
         /// <summary>
         /// Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
-        /// One of `trigger_template` or `github` must be provided.  Structure is documented below.
+        /// One of `trigger_template` or `github` must be provided.
+        /// Structure is documented below.
         /// </summary>
         [Input("github")]
         public Input<Inputs.TriggerGithubGetArgs>? Github { get; set; }
@@ -394,7 +402,8 @@ namespace Pulumi.Gcp.CloudBuild
         /// Branch and tag names in trigger templates are interpreted as regular
         /// expressions. Any branch or tag change that matches that regular
         /// expression will trigger a build.
-        /// One of `trigger_template` or `github` must be provided.  Structure is documented below.
+        /// One of `trigger_template` or `github` must be provided.
+        /// Structure is documented below.
         /// </summary>
         [Input("triggerTemplate")]
         public Input<Inputs.TriggerTriggerTemplateGetArgs>? TriggerTemplate { get; set; }

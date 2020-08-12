@@ -37,7 +37,8 @@ class Instance(pulumi.CustomResource):
     """
     network_config: pulumi.Output[dict]
     """
-    Network configuration options. These are required when a private Data Fusion instance is to be created.  Structure is documented below.
+    Network configuration options. These are required when a private Data Fusion instance is to be created.
+    Structure is documented below.
 
       * `ipAllocation` (`str`) - The IP range in CIDR notation to use for the managed Data Fusion instance
         nodes. This range must not overlap with any other ranges used in the Data Fusion instance network.
@@ -91,6 +92,7 @@ class Instance(pulumi.CustomResource):
     of concurrent pipelines, no support for streaming pipelines, etc.
     - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
     available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
+    Possible values are `BASIC` and `ENTERPRISE`.
     """
     update_time: pulumi.Output[str]
     """
@@ -120,7 +122,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[dict] labels: The resource labels for instance to use to annotate any related underlying resources,
                such as Compute Engine VMs.
         :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
-        :param pulumi.Input[dict] network_config: Network configuration options. These are required when a private Data Fusion instance is to be created.  Structure is documented below.
+        :param pulumi.Input[dict] network_config: Network configuration options. These are required when a private Data Fusion instance is to be created.
+               Structure is documented below.
         :param pulumi.Input[dict] options: Map of additional options used to configure the behavior of Data Fusion instance.
         :param pulumi.Input[bool] private_instance: Specifies whether the Data Fusion instance should be private. If set to
                true, all Data Fusion nodes will have private IP addresses and will not be
@@ -135,6 +138,7 @@ class Instance(pulumi.CustomResource):
                of concurrent pipelines, no support for streaming pipelines, etc.
                - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
                available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
+               Possible values are `BASIC` and `ENTERPRISE`.
         :param pulumi.Input[str] version: Current version of the Data Fusion.
 
         The **network_config** object supports the following:
@@ -204,7 +208,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[dict] labels: The resource labels for instance to use to annotate any related underlying resources,
                such as Compute Engine VMs.
         :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
-        :param pulumi.Input[dict] network_config: Network configuration options. These are required when a private Data Fusion instance is to be created.  Structure is documented below.
+        :param pulumi.Input[dict] network_config: Network configuration options. These are required when a private Data Fusion instance is to be created.
+               Structure is documented below.
         :param pulumi.Input[dict] options: Map of additional options used to configure the behavior of Data Fusion instance.
         :param pulumi.Input[bool] private_instance: Specifies whether the Data Fusion instance should be private. If set to
                true, all Data Fusion nodes will have private IP addresses and will not be
@@ -225,6 +230,7 @@ class Instance(pulumi.CustomResource):
                of concurrent pipelines, no support for streaming pipelines, etc.
                - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
                available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
+               Possible values are `BASIC` and `ENTERPRISE`.
         :param pulumi.Input[str] update_time: The time the instance was last updated in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
         :param pulumi.Input[str] version: Current version of the Data Fusion.
 

@@ -16,6 +16,8 @@ namespace Pulumi.Gcp.Billing.Outputs
         /// <summary>
         /// Specifies how credits should be treated when determining spend
         /// for threshold calculations.
+        /// Default value is `INCLUDE_ALL_CREDITS`.
+        /// Possible values are `INCLUDE_ALL_CREDITS` and `EXCLUDE_ALL_CREDITS`.
         /// </summary>
         public readonly string? CreditTypesTreatment;
         /// <summary>

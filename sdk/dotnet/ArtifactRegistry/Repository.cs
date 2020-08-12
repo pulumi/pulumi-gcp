@@ -36,6 +36,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
 
         /// <summary>
         /// The format of packages that are stored in the repoitory.
+        /// Possible values are `DOCKER`.
         /// </summary>
         [Output("format")]
         public Output<string> Format { get; private set; } = null!;
@@ -145,6 +146,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
 
         /// <summary>
         /// The format of packages that are stored in the repoitory.
+        /// Possible values are `DOCKER`.
         /// </summary>
         [Input("format", required: true)]
         public Input<string> Format { get; set; } = null!;
@@ -215,6 +217,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
 
         /// <summary>
         /// The format of packages that are stored in the repoitory.
+        /// Possible values are `DOCKER`.
         /// </summary>
         [Input("format")]
         public Input<string>? Format { get; set; }

@@ -101,7 +101,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The customer-supplied encryption key of the snapshot. Required if the
-        /// source snapshot is protected by a customer-supplied encryption key.  Structure is documented below.
+        /// source snapshot is protected by a customer-supplied encryption key.
+        /// Structure is documented below.
         /// </summary>
         [Output("snapshotEncryptionKey")]
         public Output<Outputs.SnapshotSnapshotEncryptionKey?> SnapshotEncryptionKey { get; private set; } = null!;
@@ -121,7 +122,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The customer-supplied encryption key of the source snapshot. Required
         /// if the source snapshot is protected by a customer-supplied encryption
-        /// key.  Structure is documented below.
+        /// key.
+        /// Structure is documented below.
         /// </summary>
         [Output("sourceDiskEncryptionKey")]
         public Output<Outputs.SnapshotSourceDiskEncryptionKey?> SourceDiskEncryptionKey { get; private set; } = null!;
@@ -227,7 +229,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The customer-supplied encryption key of the snapshot. Required if the
-        /// source snapshot is protected by a customer-supplied encryption key.  Structure is documented below.
+        /// source snapshot is protected by a customer-supplied encryption key.
+        /// Structure is documented below.
         /// </summary>
         [Input("snapshotEncryptionKey")]
         public Input<Inputs.SnapshotSnapshotEncryptionKeyArgs>? SnapshotEncryptionKey { get; set; }
@@ -241,7 +244,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The customer-supplied encryption key of the source snapshot. Required
         /// if the source snapshot is protected by a customer-supplied encryption
-        /// key.  Structure is documented below.
+        /// key.
+        /// Structure is documented below.
         /// </summary>
         [Input("sourceDiskEncryptionKey")]
         public Input<Inputs.SnapshotSourceDiskEncryptionKeyArgs>? SourceDiskEncryptionKey { get; set; }
@@ -336,7 +340,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The customer-supplied encryption key of the snapshot. Required if the
-        /// source snapshot is protected by a customer-supplied encryption key.  Structure is documented below.
+        /// source snapshot is protected by a customer-supplied encryption key.
+        /// Structure is documented below.
         /// </summary>
         [Input("snapshotEncryptionKey")]
         public Input<Inputs.SnapshotSnapshotEncryptionKeyGetArgs>? SnapshotEncryptionKey { get; set; }
@@ -356,7 +361,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The customer-supplied encryption key of the source snapshot. Required
         /// if the source snapshot is protected by a customer-supplied encryption
-        /// key.  Structure is documented below.
+        /// key.
+        /// Structure is documented below.
         /// </summary>
         [Input("sourceDiskEncryptionKey")]
         public Input<Inputs.SnapshotSourceDiskEncryptionKeyGetArgs>? SourceDiskEncryptionKey { get; set; }

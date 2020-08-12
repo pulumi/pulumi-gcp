@@ -29,7 +29,8 @@ type SecretVersion struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Secret Manager secret resource
 	Secret pulumi.StringOutput `pulumi:"secret"`
-	// The secret data. Must be no larger than 64KiB.  **Note**: This property is sensitive and will not be displayed in the plan.
+	// The secret data. Must be no larger than 64KiB.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	SecretData pulumi.StringPtrOutput `pulumi:"secretData"`
 }
 
@@ -74,7 +75,8 @@ type secretVersionState struct {
 	Name *string `pulumi:"name"`
 	// Secret Manager secret resource
 	Secret *string `pulumi:"secret"`
-	// The secret data. Must be no larger than 64KiB.  **Note**: This property is sensitive and will not be displayed in the plan.
+	// The secret data. Must be no larger than 64KiB.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	SecretData *string `pulumi:"secretData"`
 }
 
@@ -89,7 +91,8 @@ type SecretVersionState struct {
 	Name pulumi.StringPtrInput
 	// Secret Manager secret resource
 	Secret pulumi.StringPtrInput
-	// The secret data. Must be no larger than 64KiB.  **Note**: This property is sensitive and will not be displayed in the plan.
+	// The secret data. Must be no larger than 64KiB.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	SecretData pulumi.StringPtrInput
 }
 
@@ -102,7 +105,8 @@ type secretVersionArgs struct {
 	Enabled *bool `pulumi:"enabled"`
 	// Secret Manager secret resource
 	Secret string `pulumi:"secret"`
-	// The secret data. Must be no larger than 64KiB.  **Note**: This property is sensitive and will not be displayed in the plan.
+	// The secret data. Must be no larger than 64KiB.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	SecretData *string `pulumi:"secretData"`
 }
 
@@ -112,7 +116,8 @@ type SecretVersionArgs struct {
 	Enabled pulumi.BoolPtrInput
 	// Secret Manager secret resource
 	Secret pulumi.StringInput
-	// The secret data. Must be no larger than 64KiB.  **Note**: This property is sensitive and will not be displayed in the plan.
+	// The secret data. Must be no larger than 64KiB.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	SecretData pulumi.StringPtrInput
 }
 

@@ -71,6 +71,7 @@ namespace Pulumi.Gcp.Redis
         public readonly string LocationId;
         public readonly int MemorySizeGb;
         public readonly string Name;
+        public readonly string PersistenceIamIdentity;
         /// <summary>
         /// The port number of the exposed Redis endpoint.
         /// </summary>
@@ -108,6 +109,8 @@ namespace Pulumi.Gcp.Redis
 
             string name,
 
+            string persistenceIamIdentity,
+
             int port,
 
             string? project,
@@ -134,6 +137,7 @@ namespace Pulumi.Gcp.Redis
             LocationId = locationId;
             MemorySizeGb = memorySizeGb;
             Name = name;
+            PersistenceIamIdentity = persistenceIamIdentity;
             Port = port;
             Project = project;
             RedisConfigs = redisConfigs;

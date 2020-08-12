@@ -71,7 +71,8 @@ export class Service extends pulumi.CustomResource {
     public readonly location!: pulumi.Output<string>;
     /**
      * Metadata associated with this Service, including name, namespace, labels,
-     * and annotations.  Structure is documented below.
+     * and annotations.
+     * Structure is documented below.
      */
     public readonly metadata!: pulumi.Output<outputs.cloudrun.ServiceMetadata>;
     /**
@@ -96,12 +97,14 @@ export class Service extends pulumi.CustomResource {
      * template metadata. For more details, see:
      * https://github.com/knative/serving/blob/master/docs/client-conventions.md#associate-modifications-with-revisions
      * Cloud Run does not currently support referencing a build that is
-     * responsible for materializing the container image from source.  Structure is documented below.
+     * responsible for materializing the container image from source.
+     * Structure is documented below.
      */
     public readonly template!: pulumi.Output<outputs.cloudrun.ServiceTemplate | undefined>;
     /**
      * Traffic specifies how to distribute traffic over a collection of Knative Revisions
-     * and Configurations  Structure is documented below.
+     * and Configurations
+     * Structure is documented below.
      */
     public readonly traffics!: pulumi.Output<outputs.cloudrun.ServiceTraffic[]>;
 
@@ -168,7 +171,8 @@ export interface ServiceState {
     readonly location?: pulumi.Input<string>;
     /**
      * Metadata associated with this Service, including name, namespace, labels,
-     * and annotations.  Structure is documented below.
+     * and annotations.
+     * Structure is documented below.
      */
     readonly metadata?: pulumi.Input<inputs.cloudrun.ServiceMetadata>;
     /**
@@ -193,12 +197,14 @@ export interface ServiceState {
      * template metadata. For more details, see:
      * https://github.com/knative/serving/blob/master/docs/client-conventions.md#associate-modifications-with-revisions
      * Cloud Run does not currently support referencing a build that is
-     * responsible for materializing the container image from source.  Structure is documented below.
+     * responsible for materializing the container image from source.
+     * Structure is documented below.
      */
     readonly template?: pulumi.Input<inputs.cloudrun.ServiceTemplate>;
     /**
      * Traffic specifies how to distribute traffic over a collection of Knative Revisions
-     * and Configurations  Structure is documented below.
+     * and Configurations
+     * Structure is documented below.
      */
     readonly traffics?: pulumi.Input<pulumi.Input<inputs.cloudrun.ServiceTraffic>[]>;
 }
@@ -221,7 +227,8 @@ export interface ServiceArgs {
     readonly location: pulumi.Input<string>;
     /**
      * Metadata associated with this Service, including name, namespace, labels,
-     * and annotations.  Structure is documented below.
+     * and annotations.
+     * Structure is documented below.
      */
     readonly metadata?: pulumi.Input<inputs.cloudrun.ServiceMetadata>;
     /**
@@ -242,12 +249,14 @@ export interface ServiceArgs {
      * template metadata. For more details, see:
      * https://github.com/knative/serving/blob/master/docs/client-conventions.md#associate-modifications-with-revisions
      * Cloud Run does not currently support referencing a build that is
-     * responsible for materializing the container image from source.  Structure is documented below.
+     * responsible for materializing the container image from source.
+     * Structure is documented below.
      */
     readonly template?: pulumi.Input<inputs.cloudrun.ServiceTemplate>;
     /**
      * Traffic specifies how to distribute traffic over a collection of Knative Revisions
-     * and Configurations  Structure is documented below.
+     * and Configurations
+     * Structure is documented below.
      */
     readonly traffics?: pulumi.Input<pulumi.Input<inputs.cloudrun.ServiceTraffic>[]>;
 }

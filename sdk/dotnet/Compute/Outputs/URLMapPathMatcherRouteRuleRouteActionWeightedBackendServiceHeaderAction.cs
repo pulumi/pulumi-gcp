@@ -14,7 +14,8 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction
     {
         /// <summary>
-        /// Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+        /// Headers to add to a matching request prior to forwarding the request to the backendService.
+        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd> RequestHeadersToAdds;
         /// <summary>
@@ -23,7 +24,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly ImmutableArray<string> RequestHeadersToRemoves;
         /// <summary>
-        /// Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+        /// Headers to add the response prior to sending the response back to the client.
+        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd> ResponseHeadersToAdds;
         /// <summary>

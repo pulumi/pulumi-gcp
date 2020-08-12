@@ -27,6 +27,8 @@ type RouterPeer struct {
 
 	// User-specified flag to indicate which mode to use for advertisement.
 	// Valid values of this enum field are: `DEFAULT`, `CUSTOM`
+	// Default value is `DEFAULT`.
+	// Possible values are `DEFAULT` and `CUSTOM`.
 	AdvertiseMode pulumi.StringPtrOutput `pulumi:"advertiseMode"`
 	// User-specified list of prefix groups to advertise in custom
 	// mode, which can take one of the following options:
@@ -38,7 +40,8 @@ type RouterPeer struct {
 	// custom mode. This field can only be populated if advertiseMode
 	// is `CUSTOM` and is advertised to all peers of the router. These IP
 	// ranges will be advertised in addition to any specified groups.
-	// Leave this field blank to advertise no custom IP ranges.  Structure is documented below.
+	// Leave this field blank to advertise no custom IP ranges.
+	// Structure is documented below.
 	AdvertisedIpRanges RouterPeerAdvertisedIpRangeArrayOutput `pulumi:"advertisedIpRanges"`
 	// The priority of routes advertised to this BGP peer.
 	// Where there is more than one matching route of maximum
@@ -118,6 +121,8 @@ func GetRouterPeer(ctx *pulumi.Context,
 type routerPeerState struct {
 	// User-specified flag to indicate which mode to use for advertisement.
 	// Valid values of this enum field are: `DEFAULT`, `CUSTOM`
+	// Default value is `DEFAULT`.
+	// Possible values are `DEFAULT` and `CUSTOM`.
 	AdvertiseMode *string `pulumi:"advertiseMode"`
 	// User-specified list of prefix groups to advertise in custom
 	// mode, which can take one of the following options:
@@ -129,7 +134,8 @@ type routerPeerState struct {
 	// custom mode. This field can only be populated if advertiseMode
 	// is `CUSTOM` and is advertised to all peers of the router. These IP
 	// ranges will be advertised in addition to any specified groups.
-	// Leave this field blank to advertise no custom IP ranges.  Structure is documented below.
+	// Leave this field blank to advertise no custom IP ranges.
+	// Structure is documented below.
 	AdvertisedIpRanges []RouterPeerAdvertisedIpRange `pulumi:"advertisedIpRanges"`
 	// The priority of routes advertised to this BGP peer.
 	// Where there is more than one matching route of maximum
@@ -170,6 +176,8 @@ type routerPeerState struct {
 type RouterPeerState struct {
 	// User-specified flag to indicate which mode to use for advertisement.
 	// Valid values of this enum field are: `DEFAULT`, `CUSTOM`
+	// Default value is `DEFAULT`.
+	// Possible values are `DEFAULT` and `CUSTOM`.
 	AdvertiseMode pulumi.StringPtrInput
 	// User-specified list of prefix groups to advertise in custom
 	// mode, which can take one of the following options:
@@ -181,7 +189,8 @@ type RouterPeerState struct {
 	// custom mode. This field can only be populated if advertiseMode
 	// is `CUSTOM` and is advertised to all peers of the router. These IP
 	// ranges will be advertised in addition to any specified groups.
-	// Leave this field blank to advertise no custom IP ranges.  Structure is documented below.
+	// Leave this field blank to advertise no custom IP ranges.
+	// Structure is documented below.
 	AdvertisedIpRanges RouterPeerAdvertisedIpRangeArrayInput
 	// The priority of routes advertised to this BGP peer.
 	// Where there is more than one matching route of maximum
@@ -226,6 +235,8 @@ func (RouterPeerState) ElementType() reflect.Type {
 type routerPeerArgs struct {
 	// User-specified flag to indicate which mode to use for advertisement.
 	// Valid values of this enum field are: `DEFAULT`, `CUSTOM`
+	// Default value is `DEFAULT`.
+	// Possible values are `DEFAULT` and `CUSTOM`.
 	AdvertiseMode *string `pulumi:"advertiseMode"`
 	// User-specified list of prefix groups to advertise in custom
 	// mode, which can take one of the following options:
@@ -237,7 +248,8 @@ type routerPeerArgs struct {
 	// custom mode. This field can only be populated if advertiseMode
 	// is `CUSTOM` and is advertised to all peers of the router. These IP
 	// ranges will be advertised in addition to any specified groups.
-	// Leave this field blank to advertise no custom IP ranges.  Structure is documented below.
+	// Leave this field blank to advertise no custom IP ranges.
+	// Structure is documented below.
 	AdvertisedIpRanges []RouterPeerAdvertisedIpRange `pulumi:"advertisedIpRanges"`
 	// The priority of routes advertised to this BGP peer.
 	// Where there is more than one matching route of maximum
@@ -272,6 +284,8 @@ type routerPeerArgs struct {
 type RouterPeerArgs struct {
 	// User-specified flag to indicate which mode to use for advertisement.
 	// Valid values of this enum field are: `DEFAULT`, `CUSTOM`
+	// Default value is `DEFAULT`.
+	// Possible values are `DEFAULT` and `CUSTOM`.
 	AdvertiseMode pulumi.StringPtrInput
 	// User-specified list of prefix groups to advertise in custom
 	// mode, which can take one of the following options:
@@ -283,7 +297,8 @@ type RouterPeerArgs struct {
 	// custom mode. This field can only be populated if advertiseMode
 	// is `CUSTOM` and is advertised to all peers of the router. These IP
 	// ranges will be advertised in addition to any specified groups.
-	// Leave this field blank to advertise no custom IP ranges.  Structure is documented below.
+	// Leave this field blank to advertise no custom IP ranges.
+	// Structure is documented below.
 	AdvertisedIpRanges RouterPeerAdvertisedIpRangeArrayInput
 	// The priority of routes advertised to this BGP peer.
 	// Where there is more than one matching route of maximum

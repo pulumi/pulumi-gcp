@@ -17,10 +17,13 @@ export namespace accesscontextmanager {
          * conditions must be satisfied for the AccessLevel to be applied. If
          * OR is used, at least one Condition in conditions must be satisfied
          * for the AccessLevel to be applied.
+         * Default value is `AND`.
+         * Possible values are `AND` and `OR`.
          */
         combiningFunction?: pulumi.Input<string>;
         /**
-         * A set of requirements for the AccessLevel to be granted.  Structure is documented below.
+         * A set of requirements for the AccessLevel to be granted.
+         * Structure is documented below.
          */
         conditions: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.AccessLevelBasicCondition>[]>;
     }
@@ -29,7 +32,8 @@ export namespace accesscontextmanager {
         /**
          * Device specific restrictions, all restrictions must hold for
          * the Condition to be true. If not specified, all devices are
-         * allowed.  Structure is documented below.
+         * allowed.
+         * Structure is documented below.
          */
         devicePolicy?: pulumi.Input<inputs.accesscontextmanager.AccessLevelBasicConditionDevicePolicy>;
         /**
@@ -90,7 +94,8 @@ export namespace accesscontextmanager {
         allowedEncryptionStatuses?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * A list of allowed OS versions.
-         * An empty list allows all types and all versions.  Structure is documented below.
+         * An empty list allows all types and all versions.
+         * Structure is documented below.
          */
         osConstraints?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraint>[]>;
         /**
@@ -117,6 +122,7 @@ export namespace accesscontextmanager {
         minimumVersion?: pulumi.Input<string>;
         /**
          * The operating system type of the device.
+         * Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, and `DESKTOP_CHROME_OS`.
          */
         osType: pulumi.Input<string>;
     }
@@ -125,7 +131,8 @@ export namespace accesscontextmanager {
         /**
          * Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
          * This page details the objects and attributes that are used to the build the CEL expressions for
-         * custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.  Structure is documented below.
+         * custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+         * Structure is documented below.
          */
         expr: pulumi.Input<inputs.accesscontextmanager.AccessLevelCustomExpr>;
     }
@@ -178,7 +185,8 @@ export namespace accesscontextmanager {
         restrictedServices?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Specifies how APIs are allowed to communicate within the Service
-         * Perimeter.  Structure is documented below.
+         * Perimeter.
+         * Structure is documented below.
          */
         vpcAccessibleServices?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterSpecVpcAccessibleServices>;
     }
@@ -225,7 +233,8 @@ export namespace accesscontextmanager {
         restrictedServices?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Specifies how APIs are allowed to communicate within the Service
-         * Perimeter.  Structure is documented below.
+         * Perimeter.
+         * Structure is documented below.
          */
         vpcAccessibleServices?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterStatusVpcAccessibleServices>;
     }
@@ -322,6 +331,7 @@ export namespace appengine {
         /**
          * SSL management type for this domain. If `AUTOMATIC`, a managed certificate is automatically provisioned.
          * If `MANUAL`, `certificateId` must be manually specified in order to configure SSL for this domain.
+         * Possible values are `AUTOMATIC` and `MANUAL`.
          */
         sslManagementType: pulumi.Input<string>;
     }
@@ -333,6 +343,7 @@ export namespace appengine {
         allocations: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * Mechanism used to determine which version a request is sent to. The traffic selection algorithm will be stable for either type until allocations are changed.
+         * Possible values are `UNSPECIFIED`, `COOKIE`, `IP`, and `RANDOM`.
          */
         shardBy?: pulumi.Input<string>;
     }
@@ -340,10 +351,14 @@ export namespace appengine {
     export interface FlexibleAppVersionApiConfig {
         /**
          * Action to take when users access resources that require authentication.
+         * Default value is `AUTH_FAIL_ACTION_REDIRECT`.
+         * Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
          */
         authFailAction?: pulumi.Input<string>;
         /**
          * Level of login required to access this resource.
+         * Default value is `LOGIN_OPTIONAL`.
+         * Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
          */
         login?: pulumi.Input<string>;
         /**
@@ -352,6 +367,7 @@ export namespace appengine {
         script: pulumi.Input<string>;
         /**
          * Security (HTTPS) enforcement for this URL.
+         * Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
          */
         securityLevel?: pulumi.Input<string>;
         /**
@@ -368,11 +384,13 @@ export namespace appengine {
          */
         coolDownPeriod?: pulumi.Input<string>;
         /**
-         * Target scaling by CPU usage.  Structure is documented below.
+         * Target scaling by CPU usage.
+         * Structure is documented below.
          */
         cpuUtilization: pulumi.Input<inputs.appengine.FlexibleAppVersionAutomaticScalingCpuUtilization>;
         /**
-         * Target scaling by disk usage.  Structure is documented below.
+         * Target scaling by disk usage.
+         * Structure is documented below.
          */
         diskUtilization?: pulumi.Input<inputs.appengine.FlexibleAppVersionAutomaticScalingDiskUtilization>;
         /**
@@ -405,11 +423,13 @@ export namespace appengine {
          */
         minTotalInstances?: pulumi.Input<number>;
         /**
-         * Target scaling by network usage.  Structure is documented below.
+         * Target scaling by network usage.
+         * Structure is documented below.
          */
         networkUtilization?: pulumi.Input<inputs.appengine.FlexibleAppVersionAutomaticScalingNetworkUtilization>;
         /**
-         * Target scaling by request utilization.  Structure is documented below.
+         * Target scaling by request utilization.
+         * Structure is documented below.
          */
         requestUtilization?: pulumi.Input<inputs.appengine.FlexibleAppVersionAutomaticScalingRequestUtilization>;
     }
@@ -476,20 +496,24 @@ export namespace appengine {
 
     export interface FlexibleAppVersionDeployment {
         /**
-         * Options for the build operations performed as a part of the version deployment. Only applicable when creating a version using source code directly.  Structure is documented below.
+         * Options for the build operations performed as a part of the version deployment. Only applicable when creating a version using source code directly.
+         * Structure is documented below.
          */
         cloudBuildOptions?: pulumi.Input<inputs.appengine.FlexibleAppVersionDeploymentCloudBuildOptions>;
         /**
-         * The Docker image for the container that runs the version.  Structure is documented below.
+         * The Docker image for the container that runs the version.
+         * Structure is documented below.
          */
         container?: pulumi.Input<inputs.appengine.FlexibleAppVersionDeploymentContainer>;
         /**
          * Manifest of the files stored in Google Cloud Storage that are included as part of this version.
-         * All files must be readable using the credentials supplied with this call.  Structure is documented below.
+         * All files must be readable using the credentials supplied with this call.
+         * Structure is documented below.
          */
         files?: pulumi.Input<pulumi.Input<inputs.appengine.FlexibleAppVersionDeploymentFile>[]>;
         /**
-         * Zip File  Structure is documented below.
+         * Zip File
+         * Structure is documented below.
          */
         zip?: pulumi.Input<inputs.appengine.FlexibleAppVersionDeploymentZip>;
     }
@@ -560,6 +584,8 @@ export namespace appengine {
         name: pulumi.Input<string>;
         /**
          * Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted.
+         * Default value is `FIXED`.
+         * Possible values are `FIXED` and `MANAGED`.
          */
         rolloutStrategy?: pulumi.Input<string>;
     }
@@ -574,14 +600,19 @@ export namespace appengine {
     export interface FlexibleAppVersionHandler {
         /**
          * Action to take when users access resources that require authentication.
+         * Default value is `AUTH_FAIL_ACTION_REDIRECT`.
+         * Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
          */
         authFailAction?: pulumi.Input<string>;
         /**
          * Level of login required to access this resource.
+         * Default value is `LOGIN_OPTIONAL`.
+         * Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
          */
         login?: pulumi.Input<string>;
         /**
          * 30x code to use when performing redirects for the secure field.
+         * Possible values are `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, and `REDIRECT_HTTP_RESPONSE_CODE_307`.
          */
         redirectHttpResponseCode?: pulumi.Input<string>;
         /**
@@ -590,11 +621,13 @@ export namespace appengine {
         script?: pulumi.Input<inputs.appengine.FlexibleAppVersionHandlerScript>;
         /**
          * Security (HTTPS) enforcement for this URL.
+         * Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
          */
         securityLevel?: pulumi.Input<string>;
         /**
          * Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files.
-         * Static file handlers describe which files in the application directory are static files, and which URLs serve them.  Structure is documented below.
+         * Static file handlers describe which files in the application directory are static files, and which URLs serve them.
+         * Structure is documented below.
          */
         staticFiles?: pulumi.Input<inputs.appengine.FlexibleAppVersionHandlerStaticFiles>;
         /**
@@ -764,7 +797,8 @@ export namespace appengine {
          */
         memoryGb?: pulumi.Input<number>;
         /**
-         * List of ports, or port pairs, to forward from the virtual machine to the application container.  Structure is documented below.
+         * List of ports, or port pairs, to forward from the virtual machine to the application container.
+         * Structure is documented below.
          */
         volumes?: pulumi.Input<pulumi.Input<inputs.appengine.FlexibleAppVersionResourcesVolume>[]>;
     }
@@ -816,7 +850,8 @@ export namespace appengine {
          */
         minPendingLatency?: pulumi.Input<string>;
         /**
-         * Scheduler settings for standard environment.  Structure is documented below.
+         * Scheduler settings for standard environment.
+         * Structure is documented below.
          */
         standardSchedulerSettings?: pulumi.Input<inputs.appengine.StandardAppVersionAutomaticScalingStandardSchedulerSettings>;
     }
@@ -855,11 +890,13 @@ export namespace appengine {
     export interface StandardAppVersionDeployment {
         /**
          * Manifest of the files stored in Google Cloud Storage that are included as part of this version.
-         * All files must be readable using the credentials supplied with this call.  Structure is documented below.
+         * All files must be readable using the credentials supplied with this call.
+         * Structure is documented below.
          */
         files?: pulumi.Input<pulumi.Input<inputs.appengine.StandardAppVersionDeploymentFile>[]>;
         /**
-         * Zip File  Structure is documented below.
+         * Zip File
+         * Structure is documented below.
          */
         zip?: pulumi.Input<inputs.appengine.StandardAppVersionDeploymentZip>;
     }
@@ -900,27 +937,33 @@ export namespace appengine {
     export interface StandardAppVersionHandler {
         /**
          * Actions to take when the user is not logged in.
+         * Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
          */
         authFailAction?: pulumi.Input<string>;
         /**
          * Methods to restrict access to a URL based on login status.
+         * Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
          */
         login?: pulumi.Input<string>;
         /**
          * 30x code to use when performing redirects for the secure field.
+         * Possible values are `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, and `REDIRECT_HTTP_RESPONSE_CODE_307`.
          */
         redirectHttpResponseCode?: pulumi.Input<string>;
         /**
          * Executes a script to handle the requests that match this URL pattern.
-         * Only the auto value is supported for Node.js in the App Engine standard environment, for example "script:" "auto".  Structure is documented below.
+         * Only the auto value is supported for Node.js in the App Engine standard environment, for example "script:" "auto".
+         * Structure is documented below.
          */
         script?: pulumi.Input<inputs.appengine.StandardAppVersionHandlerScript>;
         /**
          * Security (HTTPS) enforcement for this URL.
+         * Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
          */
         securityLevel?: pulumi.Input<string>;
         /**
-         * Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files. Static file handlers describe which files in the application directory are static files, and which URLs serve them.  Structure is documented below.
+         * Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files. Static file handlers describe which files in the application directory are static files, and which URLs serve them.
+         * Structure is documented below.
          */
         staticFiles?: pulumi.Input<inputs.appengine.StandardAppVersionHandlerStaticFiles>;
         /**
@@ -1023,7 +1066,8 @@ export namespace bigquery {
 
     export interface ConnectionCloudSql {
         /**
-         * Cloud SQL properties.  Structure is documented below.
+         * Cloud SQL properties.
+         * Structure is documented below.
          */
         credential: pulumi.Input<inputs.bigquery.ConnectionCloudSqlCredential>;
         /**
@@ -1036,13 +1080,15 @@ export namespace bigquery {
         instanceId: pulumi.Input<string>;
         /**
          * Type of the Cloud SQL database.
+         * Possible values are `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, and `MYSQL`.
          */
         type: pulumi.Input<string>;
     }
 
     export interface ConnectionCloudSqlCredential {
         /**
-         * Password for database.  **Note**: This property is sensitive and will not be displayed in the plan.
+         * Password for database.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
          */
         password: pulumi.Input<string>;
         /**
@@ -1084,7 +1130,8 @@ export namespace bigquery {
          * executed against that view will have read access to tables in
          * this dataset. The role field is not required when this field is
          * set. If that view is updated by any user, access to the view
-         * needs to be granted again via an update operation.  Structure is documented below.
+         * needs to be granted again via an update operation.
+         * Structure is documented below.
          */
         view?: pulumi.Input<inputs.bigquery.DatasetAccessView>;
     }
@@ -1133,18 +1180,23 @@ export namespace bigquery {
          * CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
          * CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
          * Creation, truncation and append actions occur as one atomic update upon job completion
+         * Default value is `CREATE_IF_NEEDED`.
+         * Possible values are `CREATE_IF_NEEDED` and `CREATE_NEVER`.
          */
         createDisposition?: pulumi.Input<string>;
         /**
-         * Custom encryption configuration (e.g., Cloud KMS keys)  Structure is documented below.
+         * Custom encryption configuration (e.g., Cloud KMS keys)
+         * Structure is documented below.
          */
         destinationEncryptionConfiguration?: pulumi.Input<inputs.bigquery.JobCopyDestinationEncryptionConfiguration>;
         /**
-         * The destination table.  Structure is documented below.
+         * The destination table.
+         * Structure is documented below.
          */
         destinationTable?: pulumi.Input<inputs.bigquery.JobCopyDestinationTable>;
         /**
-         * Source tables to copy.  Structure is documented below.
+         * Source tables to copy.
+         * Structure is documented below.
          */
         sourceTables: pulumi.Input<pulumi.Input<inputs.bigquery.JobCopySourceTable>[]>;
         /**
@@ -1154,6 +1206,8 @@ export namespace bigquery {
          * WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
          * Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
          * Creation, truncation and append actions occur as one atomic update upon job completion.
+         * Default value is `WRITE_EMPTY`.
+         * Possible values are `WRITE_TRUNCATE`, `WRITE_APPEND`, and `WRITE_EMPTY`.
          */
         writeDisposition?: pulumi.Input<string>;
     }
@@ -1224,11 +1278,13 @@ export namespace bigquery {
          */
         printHeader?: pulumi.Input<boolean>;
         /**
-         * A reference to the model being exported.  Structure is documented below.
+         * A reference to the model being exported.
+         * Structure is documented below.
          */
         sourceModel?: pulumi.Input<inputs.bigquery.JobExtractSourceModel>;
         /**
-         * A reference to the table being exported.  Structure is documented below.
+         * A reference to the table being exported.
+         * Structure is documented below.
          */
         sourceTable?: pulumi.Input<inputs.bigquery.JobExtractSourceTable>;
         /**
@@ -1289,14 +1345,18 @@ export namespace bigquery {
          * CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
          * CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
          * Creation, truncation and append actions occur as one atomic update upon job completion
+         * Default value is `CREATE_IF_NEEDED`.
+         * Possible values are `CREATE_IF_NEEDED` and `CREATE_NEVER`.
          */
         createDisposition?: pulumi.Input<string>;
         /**
-         * Custom encryption configuration (e.g., Cloud KMS keys)  Structure is documented below.
+         * Custom encryption configuration (e.g., Cloud KMS keys)
+         * Structure is documented below.
          */
         destinationEncryptionConfiguration?: pulumi.Input<inputs.bigquery.JobLoadDestinationEncryptionConfiguration>;
         /**
-         * The destination table.  Structure is documented below.
+         * The destination table.
+         * Structure is documented below.
          */
         destinationTable: pulumi.Input<inputs.bigquery.JobLoadDestinationTable>;
         /**
@@ -1380,7 +1440,8 @@ export namespace bigquery {
          */
         sourceUris: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Time-based partitioning specification for the destination table.  Structure is documented below.
+         * Time-based partitioning specification for the destination table.
+         * Structure is documented below.
          */
         timePartitioning?: pulumi.Input<inputs.bigquery.JobLoadTimePartitioning>;
         /**
@@ -1390,6 +1451,8 @@ export namespace bigquery {
          * WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
          * Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
          * Creation, truncation and append actions occur as one atomic update upon job completion.
+         * Default value is `WRITE_EMPTY`.
+         * Possible values are `WRITE_TRUNCATE`, `WRITE_APPEND`, and `WRITE_EMPTY`.
          */
         writeDisposition?: pulumi.Input<string>;
     }
@@ -1448,18 +1511,23 @@ export namespace bigquery {
          * CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
          * CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
          * Creation, truncation and append actions occur as one atomic update upon job completion
+         * Default value is `CREATE_IF_NEEDED`.
+         * Possible values are `CREATE_IF_NEEDED` and `CREATE_NEVER`.
          */
         createDisposition?: pulumi.Input<string>;
         /**
-         * Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names.  Structure is documented below.
+         * Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names.
+         * Structure is documented below.
          */
         defaultDataset?: pulumi.Input<inputs.bigquery.JobQueryDefaultDataset>;
         /**
-         * Custom encryption configuration (e.g., Cloud KMS keys)  Structure is documented below.
+         * Custom encryption configuration (e.g., Cloud KMS keys)
+         * Structure is documented below.
          */
         destinationEncryptionConfiguration?: pulumi.Input<inputs.bigquery.JobQueryDestinationEncryptionConfiguration>;
         /**
-         * The destination table.  Structure is documented below.
+         * The destination table.
+         * Structure is documented below.
          */
         destinationTable?: pulumi.Input<inputs.bigquery.JobQueryDestinationTable>;
         /**
@@ -1483,10 +1551,13 @@ export namespace bigquery {
         parameterMode?: pulumi.Input<string>;
         /**
          * Specifies a priority for the query.
+         * Default value is `INTERACTIVE`.
+         * Possible values are `INTERACTIVE` and `BATCH`.
          */
         priority?: pulumi.Input<string>;
         /**
-         * Configures a query job.  Structure is documented below.
+         * Configures a query job.
+         * Structure is documented below.
          */
         query: pulumi.Input<string>;
         /**
@@ -1499,7 +1570,8 @@ export namespace bigquery {
          */
         schemaUpdateOptions?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Options controlling the execution of scripts.  Structure is documented below.
+         * Options controlling the execution of scripts.
+         * Structure is documented below.
          */
         scriptOptions?: pulumi.Input<inputs.bigquery.JobQueryScriptOptions>;
         /**
@@ -1514,7 +1586,8 @@ export namespace bigquery {
          */
         useQueryCache?: pulumi.Input<boolean>;
         /**
-         * Describes user-defined function resources used in the query.  Structure is documented below.
+         * Describes user-defined function resources used in the query.
+         * Structure is documented below.
          */
         userDefinedFunctionResources?: pulumi.Input<pulumi.Input<inputs.bigquery.JobQueryUserDefinedFunctionResource>[]>;
         /**
@@ -1524,6 +1597,8 @@ export namespace bigquery {
          * WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
          * Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
          * Creation, truncation and append actions occur as one atomic update upon job completion.
+         * Default value is `WRITE_EMPTY`.
+         * Possible values are `WRITE_TRUNCATE`, `WRITE_APPEND`, and `WRITE_EMPTY`.
          */
         writeDisposition?: pulumi.Input<string>;
     }
@@ -1567,6 +1642,7 @@ export namespace bigquery {
         /**
          * Determines which statement in the script represents the "key result",
          * used to populate the schema and query results of the script job.
+         * Possible values are `LAST` and `FIRST_SELECT`.
          */
         keyResultStatement?: pulumi.Input<string>;
         /**
@@ -1649,7 +1725,7 @@ export namespace bigquery {
          * A JSON schema for the external table. Schema is required
          * for CSV and JSON formats if autodetect is not on. Schema is disallowed
          * for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
-         * ~>**NOTE**: Because this field expects a JSON string, any changes to the
+         * ~>**NOTE:** Because this field expects a JSON string, any changes to the
          * string will create a diff, even if the JSON itself hasn't changed.
          * Furthermore drift for this field cannot not be detected because BigQuery
          * only uses this schema to compute the effective schema for the table, therefore
@@ -1909,7 +1985,8 @@ export namespace billing {
         /**
          * A specified amount to use as the budget. currencyCode is
          * optional. If specified, it must match the currency of the
-         * billing account. The currencyCode is provided on output.  Structure is documented below.
+         * billing account. The currencyCode is provided on output.
+         * Structure is documented below.
          */
         specifiedAmount: pulumi.Input<inputs.billing.BudgetAmountSpecifiedAmount>;
     }
@@ -1940,6 +2017,8 @@ export namespace billing {
         /**
          * Specifies how credits should be treated when determining spend
          * for threshold calculations.
+         * Default value is `INCLUDE_ALL_CREDITS`.
+         * Possible values are `INCLUDE_ALL_CREDITS` and `EXCLUDE_ALL_CREDITS`.
          */
         creditTypesTreatment?: pulumi.Input<string>;
         /**
@@ -1966,6 +2045,8 @@ export namespace billing {
         /**
          * The type of basis used to determine if spend has passed
          * the threshold.
+         * Default value is `CURRENT_SPEND`.
+         * Possible values are `CURRENT_SPEND` and `FORECASTED_SPEND`.
          */
         spendBasis?: pulumi.Input<string>;
         /**
@@ -2008,7 +2089,8 @@ export namespace binaryauthorization {
          * verify that an attestation was signed by this attestor for the
          * image specified in the admission request.
          * If this field is empty, this attestor always returns that no valid
-         * attestations exist.  Structure is documented below.
+         * attestations exist.
+         * Structure is documented below.
          */
         publicKeys?: pulumi.Input<pulumi.Input<inputs.binaryauthorization.AttestorAttestationAuthorityNotePublicKey>[]>;
     }
@@ -2044,7 +2126,8 @@ export namespace binaryauthorization {
          * NOTE: id may be explicitly provided by the caller when using this
          * type of public key, but it MUST be a valid RFC3986 URI. If id is left
          * blank, a default one will be computed based on the digest of the DER
-         * encoding of the public key.  Structure is documented below.
+         * encoding of the public key.
+         * Structure is documented below.
          */
         pkixPublicKey?: pulumi.Input<inputs.binaryauthorization.AttestorAttestationAuthorityNotePublicKeyPkixPublicKey>;
     }
@@ -2094,10 +2177,12 @@ export namespace binaryauthorization {
         cluster: pulumi.Input<string>;
         /**
          * The action when a pod creation is denied by the admission rule.
+         * Possible values are `ENFORCED_BLOCK_AND_AUDIT_LOG` and `DRYRUN_AUDIT_LOG_ONLY`.
          */
         enforcementMode: pulumi.Input<string>;
         /**
          * How this admission rule will be evaluated.
+         * Possible values are `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, and `ALWAYS_DENY`.
          */
         evaluationMode: pulumi.Input<string>;
         /**
@@ -2116,10 +2201,12 @@ export namespace binaryauthorization {
     export interface PolicyDefaultAdmissionRule {
         /**
          * The action when a pod creation is denied by the admission rule.
+         * Possible values are `ENFORCED_BLOCK_AND_AUDIT_LOG` and `DRYRUN_AUDIT_LOG_ONLY`.
          */
         enforcementMode: pulumi.Input<string>;
         /**
          * How this admission rule will be evaluated.
+         * Possible values are `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, and `ALWAYS_DENY`.
          */
         evaluationMode: pulumi.Input<string>;
         /**
@@ -2139,7 +2226,8 @@ export namespace binaryauthorization {
 export namespace cloudasset {
     export interface FolderFeedFeedOutputConfig {
         /**
-         * Destination on Cloud Pubsub.  Structure is documented below.
+         * Destination on Cloud Pubsub.
+         * Structure is documented below.
          */
         pubsubDestination: pulumi.Input<inputs.cloudasset.FolderFeedFeedOutputConfigPubsubDestination>;
     }
@@ -2153,7 +2241,8 @@ export namespace cloudasset {
 
     export interface OrganizationFeedFeedOutputConfig {
         /**
-         * Destination on Cloud Pubsub.  Structure is documented below.
+         * Destination on Cloud Pubsub.
+         * Structure is documented below.
          */
         pubsubDestination: pulumi.Input<inputs.cloudasset.OrganizationFeedFeedOutputConfigPubsubDestination>;
     }
@@ -2167,7 +2256,8 @@ export namespace cloudasset {
 
     export interface ProjectFeedFeedOutputConfig {
         /**
-         * Destination on Cloud Pubsub.  Structure is documented below.
+         * Destination on Cloud Pubsub.
+         * Structure is documented below.
          */
         pubsubDestination: pulumi.Input<inputs.cloudasset.ProjectFeedFeedOutputConfigPubsubDestination>;
     }
@@ -2190,7 +2280,8 @@ export namespace cloudbuild {
          */
         images?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * The operations to be performed on the workspace.  Structure is documented below.
+         * The operations to be performed on the workspace.
+         * Structure is documented below.
          */
         steps: pulumi.Input<pulumi.Input<inputs.cloudbuild.TriggerBuildStep>[]>;
         /**
@@ -2276,7 +2367,8 @@ export namespace cloudbuild {
          * build step. Upon completion of the build, volumes and their contents
          * are discarded.
          * Using a named volume in only one step is not valid as it is
-         * indicative of a build request with an incorrect configuration.  Structure is documented below.
+         * indicative of a build request with an incorrect configuration.
+         * Structure is documented below.
          */
         volumes?: pulumi.Input<pulumi.Input<inputs.cloudbuild.TriggerBuildStepVolume>[]>;
         /**
@@ -2317,11 +2409,13 @@ export namespace cloudbuild {
          */
         owner?: pulumi.Input<string>;
         /**
-         * filter to match changes in pull requests.  Specify only one of pullRequest or push.  Structure is documented below.
+         * filter to match changes in pull requests.  Specify only one of pullRequest or push.
+         * Structure is documented below.
          */
         pullRequest?: pulumi.Input<inputs.cloudbuild.TriggerGithubPullRequest>;
         /**
-         * filter to match changes in refs, like branches or tags.  Specify only one of pullRequest or push.  Structure is documented below.
+         * filter to match changes in refs, like branches or tags.  Specify only one of pullRequest or push.
+         * Structure is documented below.
          */
         push?: pulumi.Input<inputs.cloudbuild.TriggerGithubPush>;
     }
@@ -2333,6 +2427,7 @@ export namespace cloudbuild {
         branch: pulumi.Input<string>;
         /**
          * Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
+         * Possible values are `COMMENTS_DISABLED` and `COMMENTS_ENABLED`.
          */
         commentControl?: pulumi.Input<string>;
         /**
@@ -2514,6 +2609,7 @@ export namespace cloudidentity {
     export interface GroupMembershipRole {
         /**
          * The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
+         * Possible values are `OWNER`, `MANAGER`, and `MEMBER`.
          */
         name: pulumi.Input<string>;
     }
@@ -2572,6 +2668,8 @@ export namespace cloudrun {
     export interface DomainMappingSpec {
         /**
          * The mode of the certificate.
+         * Default value is `AUTOMATIC`.
+         * Possible values are `NONE` and `AUTOMATIC`.
          */
         certificateMode?: pulumi.Input<string>;
         /**
@@ -2690,11 +2788,13 @@ export namespace cloudrun {
     export interface ServiceTemplate {
         /**
          * Metadata associated with this Service, including name, namespace, labels,
-         * and annotations.  Structure is documented below.
+         * and annotations.
+         * Structure is documented below.
          */
         metadata?: pulumi.Input<inputs.cloudrun.ServiceTemplateMetadata>;
         /**
-         * RevisionSpec holds the desired state of the Revision (from the client).  Structure is documented below.
+         * RevisionSpec holds the desired state of the Revision (from the client).
+         * Structure is documented below.
          */
         spec?: pulumi.Input<inputs.cloudrun.ServiceTemplateSpec>;
     }
@@ -2767,7 +2867,8 @@ export namespace cloudrun {
          * In the context of a Revision, we disallow a number of the fields of
          * this Container, including: name, ports, and volumeMounts.
          * The runtime contract is documented here:
-         * https://github.com/knative/serving/blob/master/docs/runtime-contract.md  Structure is documented below.
+         * https://github.com/knative/serving/blob/master/docs/runtime-contract.md
+         * Structure is documented below.
          */
         containers?: pulumi.Input<pulumi.Input<inputs.cloudrun.ServiceTemplateSpecContainer>[]>;
         /**
@@ -2825,13 +2926,15 @@ export namespace cloudrun {
          * All invalid keys will be reported as an event when the container is starting.
          * When a key exists in multiple sources, the value associated with the last source will
          * take precedence. Values defined by an Env with a duplicate key will take
-         * precedence.  Structure is documented below.
+         * precedence.
+         * Structure is documented below.
          *
          * @deprecated Not supported by Cloud Run fully managed
          */
         envFroms?: pulumi.Input<pulumi.Input<inputs.cloudrun.ServiceTemplateSpecContainerEnvFrom>[]>;
         /**
-         * List of environment variables to set in the container.  Structure is documented below.
+         * List of environment variables to set in the container.
+         * Structure is documented below.
          */
         envs?: pulumi.Input<pulumi.Input<inputs.cloudrun.ServiceTemplateSpecContainerEnv>[]>;
         /**
@@ -2843,13 +2946,15 @@ export namespace cloudrun {
         /**
          * List of open ports in the container.
          * More Info:
-         * https://cloud.google.com/run/docs/reference/rest/v1/RevisionSpec#ContainerPort  Structure is documented below.
+         * https://cloud.google.com/run/docs/reference/rest/v1/RevisionSpec#ContainerPort
+         * Structure is documented below.
          */
         ports?: pulumi.Input<pulumi.Input<inputs.cloudrun.ServiceTemplateSpecContainerPort>[]>;
         /**
          * Compute Resources required by this container. Used to set values such as max memory
          * More info:
-         * https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources  Structure is documented below.
+         * https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+         * Structure is documented below.
          */
         resources?: pulumi.Input<inputs.cloudrun.ServiceTemplateSpecContainerResources>;
         /**
@@ -2884,7 +2989,8 @@ export namespace cloudrun {
 
     export interface ServiceTemplateSpecContainerEnvFrom {
         /**
-         * The ConfigMap to select from.  Structure is documented below.
+         * The ConfigMap to select from.
+         * Structure is documented below.
          */
         configMapRef?: pulumi.Input<inputs.cloudrun.ServiceTemplateSpecContainerEnvFromConfigMapRef>;
         /**
@@ -2892,14 +2998,16 @@ export namespace cloudrun {
          */
         prefix?: pulumi.Input<string>;
         /**
-         * The Secret to select from.  Structure is documented below.
+         * The Secret to select from.
+         * Structure is documented below.
          */
         secretRef?: pulumi.Input<inputs.cloudrun.ServiceTemplateSpecContainerEnvFromSecretRef>;
     }
 
     export interface ServiceTemplateSpecContainerEnvFromConfigMapRef {
         /**
-         * The Secret to select from.  Structure is documented below.
+         * The Secret to select from.
+         * Structure is documented below.
          */
         localObjectReference?: pulumi.Input<inputs.cloudrun.ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference>;
         /**
@@ -2917,7 +3025,8 @@ export namespace cloudrun {
 
     export interface ServiceTemplateSpecContainerEnvFromSecretRef {
         /**
-         * The Secret to select from.  Structure is documented below.
+         * The Secret to select from.
+         * Structure is documented below.
          */
         localObjectReference?: pulumi.Input<inputs.cloudrun.ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference>;
         /**
@@ -2987,7 +3096,8 @@ export namespace cloudrun {
 export namespace cloudscheduler {
     export interface JobAppEngineHttpTarget {
         /**
-         * App Engine Routing setting for the job.  Structure is documented below.
+         * App Engine Routing setting for the job.
+         * Structure is documented below.
          */
         appEngineRouting?: pulumi.Input<inputs.cloudscheduler.JobAppEngineHttpTargetAppEngineRouting>;
         /**
@@ -3051,12 +3161,14 @@ export namespace cloudscheduler {
         httpMethod?: pulumi.Input<string>;
         /**
          * Contains information needed for generating an OAuth token.
-         * This type of authorization should be used when sending requests to a GCP endpoint.  Structure is documented below.
+         * This type of authorization should be used when sending requests to a GCP endpoint.
+         * Structure is documented below.
          */
         oauthToken?: pulumi.Input<inputs.cloudscheduler.JobHttpTargetOauthToken>;
         /**
          * Contains information needed for generating an OpenID Connect token.
-         * This type of authorization should be used when sending requests to third party endpoints or Cloud Run.  Structure is documented below.
+         * This type of authorization should be used when sending requests to third party endpoints or Cloud Run.
+         * Structure is documented below.
          */
         oidcToken?: pulumi.Input<inputs.cloudscheduler.JobHttpTargetOidcToken>;
         /**
@@ -3104,7 +3216,7 @@ export namespace cloudscheduler {
         data?: pulumi.Input<string>;
         /**
          * The full resource name for the Cloud Pub/Sub topic to which
-         * messages will be published when a job is delivered. ~>**NOTE**:
+         * messages will be published when a job is delivered. ~>**NOTE:**
          * The topic name must be in the same format as required by PubSub's
          * PublishRequest.name, e.g. `projects/my-project/topics/my-topic`.
          */
@@ -3470,11 +3582,13 @@ export namespace compute {
         /**
          * Defines the CPU utilization policy that allows the autoscaler to
          * scale based on the average CPU utilization of a managed instance
-         * group.  Structure is documented below.
+         * group.
+         * Structure is documented below.
          */
         cpuUtilization?: pulumi.Input<inputs.compute.AutoscalarAutoscalingPolicyCpuUtilization>;
         /**
-         * Configuration parameters of autoscaling based on a load balancer.  Structure is documented below.
+         * Configuration parameters of autoscaling based on a load balancer.
+         * Structure is documented below.
          */
         loadBalancingUtilization?: pulumi.Input<inputs.compute.AutoscalarAutoscalingPolicyLoadBalancingUtilization>;
         /**
@@ -3485,7 +3599,8 @@ export namespace compute {
          */
         maxReplicas: pulumi.Input<number>;
         /**
-         * Configuration parameters of autoscaling based on a custom metric.  Structure is documented below.
+         * Configuration parameters of autoscaling based on a custom metric.
+         * Structure is documented below.
          */
         metrics?: pulumi.Input<pulumi.Input<inputs.compute.AutoscalarAutoscalingPolicyMetric>[]>;
         /**
@@ -3497,6 +3612,8 @@ export namespace compute {
         minReplicas: pulumi.Input<number>;
         /**
          * Defines operating mode for this policy.
+         * Default value is `ON`.
+         * Possible values are `OFF`, `ONLY_UP`, and `ON`.
          */
         mode?: pulumi.Input<string>;
         scaleDownControl?: pulumi.Input<inputs.compute.AutoscalarAutoscalingPolicyScaleDownControl>;
@@ -3583,13 +3700,15 @@ export namespace compute {
         /**
          * Defines how target utilization value is expressed for a
          * Stackdriver Monitoring metric.
+         * Possible values are `GAUGE`, `DELTA_PER_SECOND`, and `DELTA_PER_MINUTE`.
          */
         type?: pulumi.Input<string>;
     }
 
     export interface AutoscalarAutoscalingPolicyScaleDownControl {
         /**
-         * A nested object resource  Structure is documented below.
+         * A nested object resource
+         * Structure is documented below.
          */
         maxScaledDownReplicas?: pulumi.Input<inputs.compute.AutoscalarAutoscalingPolicyScaleDownControlMaxScaledDownReplicas>;
         /**
@@ -3628,11 +3747,13 @@ export namespace compute {
         /**
          * Defines the CPU utilization policy that allows the autoscaler to
          * scale based on the average CPU utilization of a managed instance
-         * group.  Structure is documented below.
+         * group.
+         * Structure is documented below.
          */
         cpuUtilization?: pulumi.Input<inputs.compute.AutoscalerAutoscalingPolicyCpuUtilization>;
         /**
-         * Configuration parameters of autoscaling based on a load balancer.  Structure is documented below.
+         * Configuration parameters of autoscaling based on a load balancer.
+         * Structure is documented below.
          */
         loadBalancingUtilization?: pulumi.Input<inputs.compute.AutoscalerAutoscalingPolicyLoadBalancingUtilization>;
         /**
@@ -3643,7 +3764,8 @@ export namespace compute {
          */
         maxReplicas: pulumi.Input<number>;
         /**
-         * Configuration parameters of autoscaling based on a custom metric.  Structure is documented below.
+         * Configuration parameters of autoscaling based on a custom metric.
+         * Structure is documented below.
          */
         metrics?: pulumi.Input<pulumi.Input<inputs.compute.AutoscalerAutoscalingPolicyMetric>[]>;
         /**
@@ -3655,6 +3777,8 @@ export namespace compute {
         minReplicas: pulumi.Input<number>;
         /**
          * Defines operating mode for this policy.
+         * Default value is `ON`.
+         * Possible values are `OFF`, `ONLY_UP`, and `ON`.
          */
         mode?: pulumi.Input<string>;
         scaleDownControl?: pulumi.Input<inputs.compute.AutoscalerAutoscalingPolicyScaleDownControl>;
@@ -3741,13 +3865,15 @@ export namespace compute {
         /**
          * Defines how target utilization value is expressed for a
          * Stackdriver Monitoring metric.
+         * Possible values are `GAUGE`, `DELTA_PER_SECOND`, and `DELTA_PER_MINUTE`.
          */
         type?: pulumi.Input<string>;
     }
 
     export interface AutoscalerAutoscalingPolicyScaleDownControl {
         /**
-         * A nested object resource  Structure is documented below.
+         * A nested object resource
+         * Structure is documented below.
          */
         maxScaledDownReplicas?: pulumi.Input<inputs.compute.AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas>;
         /**
@@ -3790,6 +3916,8 @@ export namespace compute {
          * For global HTTP(S) or TCP/SSL load balancing, the default is
          * UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S))
          * and CONNECTION (for TCP/SSL).
+         * Default value is `UTILIZATION`.
+         * Possible values are `UTILIZATION`, `RATE`, and `CONNECTION`.
          */
         balancingMode?: pulumi.Input<string>;
         /**
@@ -3878,7 +4006,8 @@ export namespace compute {
 
     export interface BackendServiceCdnPolicy {
         /**
-         * The CacheKeyPolicy for this CdnPolicy.  Structure is documented below.
+         * The CacheKeyPolicy for this CdnPolicy.
+         * Structure is documented below.
          */
         cacheKeyPolicy?: pulumi.Input<inputs.compute.BackendServiceCdnPolicyCacheKeyPolicy>;
         /**
@@ -3984,7 +4113,8 @@ export namespace compute {
          * Hash is based on HTTP Cookie. This field describes a HTTP cookie
          * that will be used as the hash key for the consistent hash load
          * balancer. If the cookie is not present, it will be generated.
-         * This field is applicable if the sessionAffinity is set to HTTP_COOKIE.  Structure is documented below.
+         * This field is applicable if the sessionAffinity is set to HTTP_COOKIE.
+         * Structure is documented below.
          */
         httpCookie?: pulumi.Input<inputs.compute.BackendServiceConsistentHashHttpCookie>;
         /**
@@ -4013,7 +4143,8 @@ export namespace compute {
          */
         path?: pulumi.Input<string>;
         /**
-         * Lifetime of the cookie.  Structure is documented below.
+         * Lifetime of the cookie.
+         * Structure is documented below.
          */
         ttl?: pulumi.Input<inputs.compute.BackendServiceConsistentHashHttpCookieTtl>;
     }
@@ -4038,12 +4169,14 @@ export namespace compute {
          */
         oauth2ClientId: pulumi.Input<string>;
         /**
-         * OAuth2 Client Secret for IAP  **Note**: This property is sensitive and will not be displayed in the plan.
+         * OAuth2 Client Secret for IAP
+         * **Note**: This property is sensitive and will not be displayed in the plan.
          */
         oauth2ClientSecret: pulumi.Input<string>;
         /**
          * -
-         * OAuth2 Client Secret SHA-256 for IAP  **Note**: This property is sensitive and will not be displayed in the plan.
+         * OAuth2 Client Secret SHA-256 for IAP
+         * **Note**: This property is sensitive and will not be displayed in the plan.
          */
         oauth2ClientSecretSha256?: pulumi.Input<string>;
     }
@@ -4066,7 +4199,8 @@ export namespace compute {
         /**
          * The base time that a host is ejected for. The real time is equal to the base
          * time multiplied by the number of times the host has been ejected. Defaults to
-         * 30000ms or 30s.  Structure is documented below.
+         * 30000ms or 30s.
+         * Structure is documented below.
          */
         baseEjectionTime?: pulumi.Input<inputs.compute.BackendServiceOutlierDetectionBaseEjectionTime>;
         /**
@@ -4101,7 +4235,8 @@ export namespace compute {
         enforcingSuccessRate?: pulumi.Input<number>;
         /**
          * Time interval between ejection sweep analysis. This can result in both new
-         * ejections as well as hosts being returned to service. Defaults to 10 seconds.  Structure is documented below.
+         * ejections as well as hosts being returned to service. Defaults to 10 seconds.
+         * Structure is documented below.
          */
         interval?: pulumi.Input<inputs.compute.BackendServiceOutlierDetectionInterval>;
         /**
@@ -4288,6 +4423,7 @@ export namespace compute {
     export interface FirewallLogConfig {
         /**
          * This field denotes whether to include or exclude metadata for firewall logs.
+         * Possible values are `EXCLUDE_ALL_METADATA` and `INCLUDE_ALL_METADATA`.
          */
         metadata: pulumi.Input<string>;
     }
@@ -4296,7 +4432,8 @@ export namespace compute {
         /**
          * The list of label value pairs that must match labels in the
          * provided metadata based on filterMatchCriteria
-         * This list must not be empty and can have at the most 64 entries.  Structure is documented below.
+         * This list must not be empty and can have at the most 64 entries.
+         * Structure is documented below.
          */
         filterLabels: pulumi.Input<pulumi.Input<inputs.compute.GlobalForwardingRuleMetadataFilterFilterLabel>[]>;
         /**
@@ -4306,6 +4443,7 @@ export namespace compute {
          * label in the provided metadata.
          * MATCH_ALL - All filterLabels must have matching labels in the
          * provided metadata.
+         * Possible values are `MATCH_ANY` and `MATCH_ALL`.
          */
         filterMatchCriteria: pulumi.Input<string>;
     }
@@ -4359,11 +4497,14 @@ export namespace compute {
          * checking.
          * If not specified, HTTP2 health check follows behavior specified in `port` and
          * `portName` fields.
+         * Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
          */
         portSpecification?: pulumi.Input<string>;
         /**
          * Specifies the type of proxy header to append before sending data to the
          * backend.
+         * Default value is `NONE`.
+         * Possible values are `NONE` and `PROXY_V1`.
          */
         proxyHeader?: pulumi.Input<string>;
         /**
@@ -4407,11 +4548,14 @@ export namespace compute {
          * checking.
          * If not specified, HTTP2 health check follows behavior specified in `port` and
          * `portName` fields.
+         * Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
          */
         portSpecification?: pulumi.Input<string>;
         /**
          * Specifies the type of proxy header to append before sending data to the
          * backend.
+         * Default value is `NONE`.
+         * Possible values are `NONE` and `PROXY_V1`.
          */
         proxyHeader?: pulumi.Input<string>;
         /**
@@ -4455,11 +4599,14 @@ export namespace compute {
          * checking.
          * If not specified, HTTP2 health check follows behavior specified in `port` and
          * `portName` fields.
+         * Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
          */
         portSpecification?: pulumi.Input<string>;
         /**
          * Specifies the type of proxy header to append before sending data to the
          * backend.
+         * Default value is `NONE`.
+         * Possible values are `NONE` and `PROXY_V1`.
          */
         proxyHeader?: pulumi.Input<string>;
         /**
@@ -4505,11 +4652,14 @@ export namespace compute {
          * checking.
          * If not specified, HTTP2 health check follows behavior specified in `port` and
          * `portName` fields.
+         * Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
          */
         portSpecification?: pulumi.Input<string>;
         /**
          * Specifies the type of proxy header to append before sending data to the
          * backend.
+         * Default value is `NONE`.
+         * Possible values are `NONE` and `PROXY_V1`.
          */
         proxyHeader?: pulumi.Input<string>;
         /**
@@ -4549,11 +4699,14 @@ export namespace compute {
          * checking.
          * If not specified, HTTP2 health check follows behavior specified in `port` and
          * `portName` fields.
+         * Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
          */
         portSpecification?: pulumi.Input<string>;
         /**
          * Specifies the type of proxy header to append before sending data to the
          * backend.
+         * Default value is `NONE`.
+         * Possible values are `NONE` and `PROXY_V1`.
          */
         proxyHeader?: pulumi.Input<string>;
         /**
@@ -4574,6 +4727,7 @@ export namespace compute {
     export interface ImageGuestOsFeature {
         /**
          * The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
+         * Possible values are `MULTI_IP_SUBNET`, `SECURE_BOOT`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, and `WINDOWS`.
          */
         type: pulumi.Input<string>;
     }
@@ -4584,6 +4738,8 @@ export namespace compute {
          * should be TAR. This is just a container and transmission format
          * and not a runtime format. Provided by the client when the disk
          * image is created.
+         * Default value is `TAR`.
+         * Possible values are `TAR`.
          */
         containerType?: pulumi.Input<string>;
         /**
@@ -5375,6 +5531,7 @@ export namespace compute {
          * - ONLY_SCALE_OUT: Enables only scaling out.
          * You must use this mode if your node groups are configured to
          * restart their hosted VMs on minimal servers.
+         * Possible values are `OFF`, `ON`, and `ONLY_SCALE_OUT`.
          */
         mode?: pulumi.Input<string>;
     }
@@ -5408,8 +5565,66 @@ export namespace compute {
          * such as physical sockets or cores, to avoid the need for
          * additional licenses when maintenance occurs. However, VMs on such
          * nodes will experience outages while maintenance is applied.
+         * Possible values are `RESTART_NODE_ON_ANY_SERVER` and `RESTART_NODE_ON_MINIMAL_SERVERS`.
          */
         type: pulumi.Input<string>;
+    }
+
+    export interface OrganizationSecurityPolicyRuleMatch {
+        /**
+         * The configuration options for matching the rule.
+         * Structure is documented below.
+         */
+        config: pulumi.Input<inputs.compute.OrganizationSecurityPolicyRuleMatchConfig>;
+        /**
+         * A description of the rule.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * Preconfigured versioned expression. For organization security policy rules,
+         * the only supported type is "FIREWALL".
+         * Default value is `FIREWALL`.
+         * Possible values are `FIREWALL`.
+         */
+        versionedExpr?: pulumi.Input<string>;
+    }
+
+    export interface OrganizationSecurityPolicyRuleMatchConfig {
+        /**
+         * Destination IP address range in CIDR format. Required for
+         * EGRESS rules.
+         */
+        destIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Pairs of IP protocols and ports that the rule should match.
+         * Structure is documented below.
+         */
+        layer4Configs: pulumi.Input<pulumi.Input<inputs.compute.OrganizationSecurityPolicyRuleMatchConfigLayer4Config>[]>;
+        /**
+         * Source IP address range in CIDR format. Required for
+         * INGRESS rules.
+         */
+        srcIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface OrganizationSecurityPolicyRuleMatchConfigLayer4Config {
+        /**
+         * The IP protocol to which this rule applies. The protocol
+         * type is required when creating a firewall rule.
+         * This value can either be one of the following well
+         * known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp),
+         * or the IP protocol number.
+         */
+        ipProtocol: pulumi.Input<string>;
+        /**
+         * An optional list of ports to which this rule applies. This field
+         * is only applicable for UDP or TCP protocol. Each entry must be
+         * either an integer or a range. If not specified, this rule
+         * applies to connections through any port.
+         * Example inputs include: ["22"], ["80","443"], and
+         * ["12345-12349"].
+         */
+        ports?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface PacketMirroringCollectorIlb {
@@ -5433,11 +5648,13 @@ export namespace compute {
 
     export interface PacketMirroringMirroredResources {
         /**
-         * All the listed instances will be mirrored.  Specify at most 50.  Structure is documented below.
+         * All the listed instances will be mirrored.  Specify at most 50.
+         * Structure is documented below.
          */
         instances?: pulumi.Input<pulumi.Input<inputs.compute.PacketMirroringMirroredResourcesInstance>[]>;
         /**
-         * All instances in one of these subnetworks will be mirrored.  Structure is documented below.
+         * All instances in one of these subnetworks will be mirrored.
+         * Structure is documented below.
          */
         subnetworks?: pulumi.Input<pulumi.Input<inputs.compute.PacketMirroringMirroredResourcesSubnetwork>[]>;
         /**
@@ -5469,7 +5686,8 @@ export namespace compute {
 
     export interface PerInstanceConfigPreservedState {
         /**
-         * Stateful disks for the instance.  Structure is documented below.
+         * Stateful disks for the instance.
+         * Structure is documented below.
          */
         disks?: pulumi.Input<pulumi.Input<inputs.compute.PerInstanceConfigPreservedStateDisk>[]>;
         /**
@@ -5485,6 +5703,8 @@ export namespace compute {
          * `NEVER` detatch the disk when the VM is deleted, but not delete the disk.
          * `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently
          * deleted from the instance group.
+         * Default value is `NEVER`.
+         * Possible values are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
          */
         deleteRule?: pulumi.Input<string>;
         /**
@@ -5493,6 +5713,8 @@ export namespace compute {
         deviceName: pulumi.Input<string>;
         /**
          * The mode of the disk.
+         * Default value is `READ_WRITE`.
+         * Possible values are `READ_ONLY` and `READ_WRITE`.
          */
         mode?: pulumi.Input<string>;
         /**
@@ -5518,11 +5740,13 @@ export namespace compute {
         /**
          * Defines the CPU utilization policy that allows the autoscaler to
          * scale based on the average CPU utilization of a managed instance
-         * group.  Structure is documented below.
+         * group.
+         * Structure is documented below.
          */
         cpuUtilization?: pulumi.Input<inputs.compute.RegionAutoscalerAutoscalingPolicyCpuUtilization>;
         /**
-         * Configuration parameters of autoscaling based on a load balancer.  Structure is documented below.
+         * Configuration parameters of autoscaling based on a load balancer.
+         * Structure is documented below.
          */
         loadBalancingUtilization?: pulumi.Input<inputs.compute.RegionAutoscalerAutoscalingPolicyLoadBalancingUtilization>;
         /**
@@ -5533,7 +5757,8 @@ export namespace compute {
          */
         maxReplicas: pulumi.Input<number>;
         /**
-         * Configuration parameters of autoscaling based on a custom metric.  Structure is documented below.
+         * Configuration parameters of autoscaling based on a custom metric.
+         * Structure is documented below.
          */
         metrics?: pulumi.Input<pulumi.Input<inputs.compute.RegionAutoscalerAutoscalingPolicyMetric>[]>;
         /**
@@ -5545,6 +5770,8 @@ export namespace compute {
         minReplicas: pulumi.Input<number>;
         /**
          * Defines operating mode for this policy.
+         * Default value is `ON`.
+         * Possible values are `OFF`, `ONLY_UP`, and `ON`.
          */
         mode?: pulumi.Input<string>;
         scaleDownControl?: pulumi.Input<inputs.compute.RegionAutoscalerAutoscalingPolicyScaleDownControl>;
@@ -5631,13 +5858,15 @@ export namespace compute {
         /**
          * Defines how target utilization value is expressed for a
          * Stackdriver Monitoring metric.
+         * Possible values are `GAUGE`, `DELTA_PER_SECOND`, and `DELTA_PER_MINUTE`.
          */
         type?: pulumi.Input<string>;
     }
 
     export interface RegionAutoscalerAutoscalingPolicyScaleDownControl {
         /**
-         * A nested object resource  Structure is documented below.
+         * A nested object resource
+         * Structure is documented below.
          */
         maxScaledDownReplicas?: pulumi.Input<inputs.compute.RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas>;
         /**
@@ -5663,6 +5892,8 @@ export namespace compute {
     export interface RegionBackendServiceBackend {
         /**
          * Specifies the balancing mode for this backend.
+         * Default value is `CONNECTION`.
+         * Possible values are `UTILIZATION`, `RATE`, and `CONNECTION`.
          */
         balancingMode?: pulumi.Input<string>;
         /**
@@ -5816,7 +6047,8 @@ export namespace compute {
          * Hash is based on HTTP Cookie. This field describes a HTTP cookie
          * that will be used as the hash key for the consistent hash load
          * balancer. If the cookie is not present, it will be generated.
-         * This field is applicable if the sessionAffinity is set to HTTP_COOKIE.  Structure is documented below.
+         * This field is applicable if the sessionAffinity is set to HTTP_COOKIE.
+         * Structure is documented below.
          */
         httpCookie?: pulumi.Input<inputs.compute.RegionBackendServiceConsistentHashHttpCookie>;
         /**
@@ -5845,7 +6077,8 @@ export namespace compute {
          */
         path?: pulumi.Input<string>;
         /**
-         * Lifetime of the cookie.  Structure is documented below.
+         * Lifetime of the cookie.
+         * Structure is documented below.
          */
         ttl?: pulumi.Input<inputs.compute.RegionBackendServiceConsistentHashHttpCookieTtl>;
     }
@@ -5914,7 +6147,8 @@ export namespace compute {
         /**
          * The base time that a host is ejected for. The real time is equal to the base
          * time multiplied by the number of times the host has been ejected. Defaults to
-         * 30000ms or 30s.  Structure is documented below.
+         * 30000ms or 30s.
+         * Structure is documented below.
          */
         baseEjectionTime?: pulumi.Input<inputs.compute.RegionBackendServiceOutlierDetectionBaseEjectionTime>;
         /**
@@ -5949,7 +6183,8 @@ export namespace compute {
         enforcingSuccessRate?: pulumi.Input<number>;
         /**
          * Time interval between ejection sweep analysis. This can result in both new
-         * ejections as well as hosts being returned to service. Defaults to 10 seconds.  Structure is documented below.
+         * ejections as well as hosts being returned to service. Defaults to 10 seconds.
+         * Structure is documented below.
          */
         interval?: pulumi.Input<inputs.compute.RegionBackendServiceOutlierDetectionInterval>;
         /**
@@ -6075,11 +6310,14 @@ export namespace compute {
          * checking.
          * If not specified, HTTP2 health check follows behavior specified in `port` and
          * `portName` fields.
+         * Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
          */
         portSpecification?: pulumi.Input<string>;
         /**
          * Specifies the type of proxy header to append before sending data to the
          * backend.
+         * Default value is `NONE`.
+         * Possible values are `NONE` and `PROXY_V1`.
          */
         proxyHeader?: pulumi.Input<string>;
         /**
@@ -6123,11 +6361,14 @@ export namespace compute {
          * checking.
          * If not specified, HTTP2 health check follows behavior specified in `port` and
          * `portName` fields.
+         * Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
          */
         portSpecification?: pulumi.Input<string>;
         /**
          * Specifies the type of proxy header to append before sending data to the
          * backend.
+         * Default value is `NONE`.
+         * Possible values are `NONE` and `PROXY_V1`.
          */
         proxyHeader?: pulumi.Input<string>;
         /**
@@ -6171,11 +6412,14 @@ export namespace compute {
          * checking.
          * If not specified, HTTP2 health check follows behavior specified in `port` and
          * `portName` fields.
+         * Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
          */
         portSpecification?: pulumi.Input<string>;
         /**
          * Specifies the type of proxy header to append before sending data to the
          * backend.
+         * Default value is `NONE`.
+         * Possible values are `NONE` and `PROXY_V1`.
          */
         proxyHeader?: pulumi.Input<string>;
         /**
@@ -6221,11 +6465,14 @@ export namespace compute {
          * checking.
          * If not specified, HTTP2 health check follows behavior specified in `port` and
          * `portName` fields.
+         * Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
          */
         portSpecification?: pulumi.Input<string>;
         /**
          * Specifies the type of proxy header to append before sending data to the
          * backend.
+         * Default value is `NONE`.
+         * Possible values are `NONE` and `PROXY_V1`.
          */
         proxyHeader?: pulumi.Input<string>;
         /**
@@ -6265,11 +6512,14 @@ export namespace compute {
          * checking.
          * If not specified, HTTP2 health check follows behavior specified in `port` and
          * `portName` fields.
+         * Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
          */
         portSpecification?: pulumi.Input<string>;
         /**
          * Specifies the type of proxy header to append before sending data to the
          * backend.
+         * Default value is `NONE`.
+         * Possible values are `NONE` and `PROXY_V1`.
          */
         proxyHeader?: pulumi.Input<string>;
         /**
@@ -6388,7 +6638,8 @@ export namespace compute {
 
     export interface RegionPerInstanceConfigPreservedState {
         /**
-         * Stateful disks for the instance.  Structure is documented below.
+         * Stateful disks for the instance.
+         * Structure is documented below.
          */
         disks?: pulumi.Input<pulumi.Input<inputs.compute.RegionPerInstanceConfigPreservedStateDisk>[]>;
         /**
@@ -6404,6 +6655,8 @@ export namespace compute {
          * `NEVER` detatch the disk when the VM is deleted, but not delete the disk.
          * `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently
          * deleted from the instance group.
+         * Default value is `NEVER`.
+         * Possible values are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
          */
         deleteRule?: pulumi.Input<string>;
         /**
@@ -6412,6 +6665,8 @@ export namespace compute {
         deviceName: pulumi.Input<string>;
         /**
          * The mode of the disk.
+         * Default value is `READ_WRITE`.
+         * Possible values are `READ_ONLY` and `READ_WRITE`.
          */
         mode?: pulumi.Input<string>;
         /**
@@ -6499,7 +6754,8 @@ export namespace compute {
         /**
          * When none of the specified hostRules match, the request is redirected to a URL specified
          * by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
-         * defaultRouteAction must not be set.  Structure is documented below.
+         * defaultRouteAction must not be set.
+         * Structure is documented below.
          */
         defaultUrlRedirect?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherDefaultUrlRedirect>;
         /**
@@ -6517,7 +6773,8 @@ export namespace compute {
          * are specified does not matter. Matches are always done on the longest-path-first
          * basis. For example: a pathRule with a path /a/b/c/* will match before /a/b/*
          * irrespective of the order in which those paths appear in this list. Within a
-         * given pathMatcher, only one of pathRules or routeRules must be set.  Structure is documented below.
+         * given pathMatcher, only one of pathRules or routeRules must be set.
+         * Structure is documented below.
          */
         pathRules?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapPathMatcherPathRule>[]>;
         /**
@@ -6526,7 +6783,8 @@ export namespace compute {
          * routeRules matters: the first rule that matches will cause its specified routing
          * action to take effect. Within a given pathMatcher, only one of pathRules or
          * routeRules must be set. routeRules are not supported in UrlMaps intended for
-         * External load balancers.  Structure is documented below.
+         * External load balancers.
+         * Structure is documented below.
          */
         routeRules?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRule>[]>;
     }
@@ -6594,7 +6852,8 @@ export namespace compute {
          * request to the selected backend. If routeAction specifies any
          * weightedBackendServices, service must not be set. Conversely if service is set,
          * routeAction cannot contain any  weightedBackendServices. Only one of routeAction
-         * or urlRedirect must be set.  Structure is documented below.
+         * or urlRedirect must be set.
+         * Structure is documented below.
          */
         routeAction?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherPathRuleRouteAction>;
         /**
@@ -6604,7 +6863,8 @@ export namespace compute {
         /**
          * When a path pattern is matched, the request is redirected to a URL specified
          * by urlRedirect. If urlRedirect is specified, service or routeAction must not
-         * be set.  Structure is documented below.
+         * be set.
+         * Structure is documented below.
          */
         urlRedirect?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherPathRuleUrlRedirect>;
     }
@@ -6612,7 +6872,8 @@ export namespace compute {
     export interface RegionUrlMapPathMatcherPathRuleRouteAction {
         /**
          * The specification for allowing client side cross-origin requests. Please see W3C
-         * Recommendation for Cross Origin Resource Sharing  Structure is documented below.
+         * Recommendation for Cross Origin Resource Sharing
+         * Structure is documented below.
          */
         corsPolicy?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicy>;
         /**
@@ -6622,30 +6883,35 @@ export namespace compute {
          * Loadbalancer on a percentage of requests before sending those request to the
          * backend service. Similarly requests from clients can be aborted by the
          * Loadbalancer for a percentage of requests. timeout and retryPolicy will be
-         * ignored by clients that are configured with a fault_injection_policy.  Structure is documented below.
+         * ignored by clients that are configured with a fault_injection_policy.
+         * Structure is documented below.
          */
         faultInjectionPolicy?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicy>;
         /**
          * Specifies the policy on how requests intended for the route's backends are
          * shadowed to a separate mirrored backend service. Loadbalancer does not wait for
          * responses from the shadow service. Prior to sending traffic to the shadow
-         * service, the host / authority header is suffixed with -shadow.  Structure is documented below.
+         * service, the host / authority header is suffixed with -shadow.
+         * Structure is documented below.
          */
         requestMirrorPolicy?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicy>;
         /**
-         * Specifies the retry policy associated with this route.  Structure is documented below.
+         * Specifies the retry policy associated with this route.
+         * Structure is documented below.
          */
         retryPolicy?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicy>;
         /**
          * Specifies the timeout for the selected route. Timeout is computed from the time
          * the request is has been fully processed (i.e. end-of-stream) up until the
          * response has been completely processed. Timeout includes all retries. If not
-         * specified, the default value is 15 seconds.  Structure is documented below.
+         * specified, the default value is 15 seconds.
+         * Structure is documented below.
          */
         timeout?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionTimeout>;
         /**
          * The spec to modify the URL of the request, prior to forwarding the request to
-         * the matched service  Structure is documented below.
+         * the matched service
+         * Structure is documented below.
          */
         urlRewrite?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionUrlRewrite>;
         /**
@@ -6656,7 +6922,8 @@ export namespace compute {
          * number. Once a backendService is identified and before forwarding the request to
          * the backend service, advanced routing actions like Url rewrites and header
          * transformations are applied depending on additional settings specified in this
-         * HttpRouteAction.  Structure is documented below.
+         * HttpRouteAction.
+         * Structure is documented below.
          */
         weightedBackendServices?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendService>[]>;
     }
@@ -6705,12 +6972,14 @@ export namespace compute {
     export interface RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicy {
         /**
          * The specification for how client requests are aborted as part of fault
-         * injection.  Structure is documented below.
+         * injection.
+         * Structure is documented below.
          */
         abort?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort>;
         /**
          * The specification for how client requests are delayed as part of fault
-         * injection, before being sent to a backend service.  Structure is documented below.
+         * injection, before being sent to a backend service.
+         * Structure is documented below.
          */
         delay?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay>;
     }
@@ -6731,7 +7000,8 @@ export namespace compute {
 
     export interface RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay {
         /**
-         * Specifies the value of the fixed delay interval.  Structure is documented below.
+         * Specifies the value of the fixed delay interval.
+         * Structure is documented below.
          */
         fixedDelay: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay>;
         /**
@@ -6771,7 +7041,8 @@ export namespace compute {
          */
         numRetries?: pulumi.Input<number>;
         /**
-         * Specifies a non-zero timeout per retry attempt.  Structure is documented below.
+         * Specifies a non-zero timeout per retry attempt.
+         * Structure is documented below.
          */
         perTryTimeout?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout>;
         /**
@@ -6853,7 +7124,8 @@ export namespace compute {
         /**
          * Specifies changes to request and response headers that need to take effect for
          * the selected backendService. headerAction specified here take effect before
-         * headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+         * headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+         * Structure is documented below.
          */
         headerAction?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction>;
         /**
@@ -6870,7 +7142,8 @@ export namespace compute {
     export interface RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction {
         /**
          * Headers to add to a matching request prior to forwarding the request to the
-         * backendService.  Structure is documented below.
+         * backendService.
+         * Structure is documented below.
          */
         requestHeadersToAdds?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd>[]>;
         /**
@@ -6879,7 +7152,8 @@ export namespace compute {
          */
         requestHeadersToRemoves?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+         * Headers to add the response prior to sending the response back to the client.
+         * Structure is documented below.
          */
         responseHeadersToAdds?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd>[]>;
         /**
@@ -6976,11 +7250,13 @@ export namespace compute {
         /**
          * Specifies changes to request and response headers that need to take effect for
          * the selected backendService. headerAction specified here take effect before
-         * headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+         * headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+         * Structure is documented below.
          */
         headerAction?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleHeaderAction>;
         /**
-         * The rules for determining a match.  Structure is documented below.
+         * The rules for determining a match.
+         * Structure is documented below.
          */
         matchRules?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleMatchRule>[]>;
         /**
@@ -7005,7 +7281,8 @@ export namespace compute {
          * request to the selected backend. If routeAction specifies any
          * weightedBackendServices, service must not be set. Conversely if service is set,
          * routeAction cannot contain any  weightedBackendServices. Only one of routeAction
-         * or urlRedirect must be set.  Structure is documented below.
+         * or urlRedirect must be set.
+         * Structure is documented below.
          */
         routeAction?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleRouteAction>;
         /**
@@ -7015,7 +7292,8 @@ export namespace compute {
         /**
          * When a path pattern is matched, the request is redirected to a URL specified
          * by urlRedirect. If urlRedirect is specified, service or routeAction must not
-         * be set.  Structure is documented below.
+         * be set.
+         * Structure is documented below.
          */
         urlRedirect?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleUrlRedirect>;
     }
@@ -7023,7 +7301,8 @@ export namespace compute {
     export interface RegionUrlMapPathMatcherRouteRuleHeaderAction {
         /**
          * Headers to add to a matching request prior to forwarding the request to the
-         * backendService.  Structure is documented below.
+         * backendService.
+         * Structure is documented below.
          */
         requestHeadersToAdds?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAdd>[]>;
         /**
@@ -7032,7 +7311,8 @@ export namespace compute {
          */
         requestHeadersToRemoves?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+         * Headers to add the response prior to sending the response back to the client.
+         * Structure is documented below.
          */
         responseHeadersToAdds?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd>[]>;
         /**
@@ -7087,7 +7367,8 @@ export namespace compute {
         fullPathMatch?: pulumi.Input<string>;
         /**
          * Specifies a list of header match criteria, all of which must match corresponding
-         * headers in the request.  Structure is documented below.
+         * headers in the request.
+         * Structure is documented below.
          */
         headerMatches?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatch>[]>;
         /**
@@ -7106,7 +7387,8 @@ export namespace compute {
          * with corresponding labels in the provided metadata. metadataFilters specified
          * here can be overrides those specified in ForwardingRule that refers to this
          * UrlMap. metadataFilters only applies to Loadbalancers that have their
-         * loadBalancingScheme set to INTERNAL_SELF_MANAGED.  Structure is documented below.
+         * loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+         * Structure is documented below.
          */
         metadataFilters?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter>[]>;
         /**
@@ -7117,7 +7399,8 @@ export namespace compute {
         prefixMatch?: pulumi.Input<string>;
         /**
          * Specifies a list of query parameter match criteria, all of which must match
-         * corresponding query parameters in the request.  Structure is documented below.
+         * corresponding query parameters in the request.
+         * Structure is documented below.
          */
         queryParameterMatches?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatch>[]>;
         /**
@@ -7164,7 +7447,8 @@ export namespace compute {
          * the match fails. For example for a range [-5, 0]   - -3 will match.  - 0 will
          * not match.  - 0.25 will not match.  - -3someString will not match.   Only one of
          * exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
-         * must be set.  Structure is documented below.
+         * must be set.
+         * Structure is documented below.
          */
         rangeMatch?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch>;
         /**
@@ -7197,7 +7481,8 @@ export namespace compute {
         /**
          * The list of label value pairs that must match labels in the provided metadata
          * based on filterMatchCriteria  This list must not be empty and can have at the
-         * most 64 entries.  Structure is documented below.
+         * most 64 entries.
+         * Structure is documented below.
          */
         filterLabels: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel>[]>;
         /**
@@ -7207,6 +7492,7 @@ export namespace compute {
          * provided metadata.
          * - MATCH_ALL: All filterLabels must have matching labels in
          * the provided metadata.
+         * Possible values are `MATCH_ALL` and `MATCH_ANY`.
          */
         filterMatchCriteria: pulumi.Input<string>;
     }
@@ -7254,7 +7540,8 @@ export namespace compute {
     export interface RegionUrlMapPathMatcherRouteRuleRouteAction {
         /**
          * The specification for allowing client side cross-origin requests. Please see W3C
-         * Recommendation for Cross Origin Resource Sharing  Structure is documented below.
+         * Recommendation for Cross Origin Resource Sharing
+         * Structure is documented below.
          */
         corsPolicy?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicy>;
         /**
@@ -7264,30 +7551,35 @@ export namespace compute {
          * Loadbalancer on a percentage of requests before sending those request to the
          * backend service. Similarly requests from clients can be aborted by the
          * Loadbalancer for a percentage of requests. timeout and retryPolicy will be
-         * ignored by clients that are configured with a fault_injection_policy.  Structure is documented below.
+         * ignored by clients that are configured with a fault_injection_policy.
+         * Structure is documented below.
          */
         faultInjectionPolicy?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy>;
         /**
          * Specifies the policy on how requests intended for the route's backends are
          * shadowed to a separate mirrored backend service. Loadbalancer does not wait for
          * responses from the shadow service. Prior to sending traffic to the shadow
-         * service, the host / authority header is suffixed with -shadow.  Structure is documented below.
+         * service, the host / authority header is suffixed with -shadow.
+         * Structure is documented below.
          */
         requestMirrorPolicy?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy>;
         /**
-         * Specifies the retry policy associated with this route.  Structure is documented below.
+         * Specifies the retry policy associated with this route.
+         * Structure is documented below.
          */
         retryPolicy?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicy>;
         /**
          * Specifies the timeout for the selected route. Timeout is computed from the time
          * the request is has been fully processed (i.e. end-of-stream) up until the
          * response has been completely processed. Timeout includes all retries. If not
-         * specified, the default value is 15 seconds.  Structure is documented below.
+         * specified, the default value is 15 seconds.
+         * Structure is documented below.
          */
         timeout?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionTimeout>;
         /**
          * The spec to modify the URL of the request, prior to forwarding the request to
-         * the matched service  Structure is documented below.
+         * the matched service
+         * Structure is documented below.
          */
         urlRewrite?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite>;
         /**
@@ -7298,7 +7590,8 @@ export namespace compute {
          * number. Once a backendService is identified and before forwarding the request to
          * the backend service, advanced routing actions like Url rewrites and header
          * transformations are applied depending on additional settings specified in this
-         * HttpRouteAction.  Structure is documented below.
+         * HttpRouteAction.
+         * Structure is documented below.
          */
         weightedBackendServices?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendService>[]>;
     }
@@ -7347,12 +7640,14 @@ export namespace compute {
     export interface RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy {
         /**
          * The specification for how client requests are aborted as part of fault
-         * injection.  Structure is documented below.
+         * injection.
+         * Structure is documented below.
          */
         abort?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort>;
         /**
          * The specification for how client requests are delayed as part of fault
-         * injection, before being sent to a backend service.  Structure is documented below.
+         * injection, before being sent to a backend service.
+         * Structure is documented below.
          */
         delay?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay>;
     }
@@ -7373,7 +7668,8 @@ export namespace compute {
 
     export interface RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay {
         /**
-         * Specifies the value of the fixed delay interval.  Structure is documented below.
+         * Specifies the value of the fixed delay interval.
+         * Structure is documented below.
          */
         fixedDelay?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelay>;
         /**
@@ -7413,7 +7709,8 @@ export namespace compute {
          */
         numRetries: pulumi.Input<number>;
         /**
-         * Specifies a non-zero timeout per retry attempt.  Structure is documented below.
+         * Specifies a non-zero timeout per retry attempt.
+         * Structure is documented below.
          */
         perTryTimeout?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout>;
         /**
@@ -7495,7 +7792,8 @@ export namespace compute {
         /**
          * Specifies changes to request and response headers that need to take effect for
          * the selected backendService. headerAction specified here take effect before
-         * headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+         * headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+         * Structure is documented below.
          */
         headerAction?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction>;
         /**
@@ -7512,7 +7810,8 @@ export namespace compute {
     export interface RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction {
         /**
          * Headers to add to a matching request prior to forwarding the request to the
-         * backendService.  Structure is documented below.
+         * backendService.
+         * Structure is documented below.
          */
         requestHeadersToAdds?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd>[]>;
         /**
@@ -7521,7 +7820,8 @@ export namespace compute {
          */
         requestHeadersToRemoves?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+         * Headers to add the response prior to sending the response back to the client.
+         * Structure is documented below.
          */
         responseHeadersToAdds?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd>[]>;
         /**
@@ -7644,19 +7944,22 @@ export namespace compute {
          */
         inUseCount?: pulumi.Input<number>;
         /**
-         * The instance properties for the reservation.  Structure is documented below.
+         * The instance properties for the reservation.
+         * Structure is documented below.
          */
         instanceProperties: pulumi.Input<inputs.compute.ReservationSpecificReservationInstanceProperties>;
     }
 
     export interface ReservationSpecificReservationInstanceProperties {
         /**
-         * Guest accelerator type and count.  Structure is documented below.
+         * Guest accelerator type and count.
+         * Structure is documented below.
          */
         guestAccelerators?: pulumi.Input<pulumi.Input<inputs.compute.ReservationSpecificReservationInstancePropertiesGuestAccelerator>[]>;
         /**
          * The amount of local ssd to reserve with each instance. This
-         * reserves disks of type `local-ssd`.  Structure is documented below.
+         * reserves disks of type `local-ssd`.
+         * Structure is documented below.
          */
         localSsds?: pulumi.Input<pulumi.Input<inputs.compute.ReservationSpecificReservationInstancePropertiesLocalSsd>[]>;
         /**
@@ -7694,6 +7997,8 @@ export namespace compute {
         diskSizeGb: pulumi.Input<number>;
         /**
          * The disk interface to use for attaching this disk.
+         * Default value is `SCSI`.
+         * Possible values are `SCSI` and `NVME`.
          */
         interface?: pulumi.Input<string>;
     }
@@ -7709,6 +8014,7 @@ export namespace compute {
          * Specify `COLLOCATED` to enable collocation. Can only be specified with `vmCount`. If compute instances are created
          * with a COLLOCATED policy, then exactly `vmCount` instances must be created at the same time with the resource policy
          * attached.
+         * Possible values are `COLLOCATED`.
          */
         collocation?: pulumi.Input<string>;
         /**
@@ -7719,15 +8025,18 @@ export namespace compute {
 
     export interface ResourcePolicySnapshotSchedulePolicy {
         /**
-         * Retention policy applied to snapshots created by this resource policy.  Structure is documented below.
+         * Retention policy applied to snapshots created by this resource policy.
+         * Structure is documented below.
          */
         retentionPolicy?: pulumi.Input<inputs.compute.ResourcePolicySnapshotSchedulePolicyRetentionPolicy>;
         /**
-         * Contains one of an `hourlySchedule`, `dailySchedule`, or `weeklySchedule`.  Structure is documented below.
+         * Contains one of an `hourlySchedule`, `dailySchedule`, or `weeklySchedule`.
+         * Structure is documented below.
          */
         schedule: pulumi.Input<inputs.compute.ResourcePolicySnapshotSchedulePolicySchedule>;
         /**
-         * Properties with which the snapshots are created, such as labels.  Structure is documented below.
+         * Properties with which the snapshots are created, such as labels.
+         * Structure is documented below.
          */
         snapshotProperties?: pulumi.Input<inputs.compute.ResourcePolicySnapshotSchedulePolicySnapshotProperties>;
     }
@@ -7740,21 +8049,26 @@ export namespace compute {
         /**
          * Specifies the behavior to apply to scheduled snapshots when
          * the source disk is deleted.
+         * Default value is `KEEP_AUTO_SNAPSHOTS`.
+         * Possible values are `KEEP_AUTO_SNAPSHOTS` and `APPLY_RETENTION_POLICY`.
          */
         onSourceDiskDelete?: pulumi.Input<string>;
     }
 
     export interface ResourcePolicySnapshotSchedulePolicySchedule {
         /**
-         * The policy will execute every nth day at the specified time.  Structure is documented below.
+         * The policy will execute every nth day at the specified time.
+         * Structure is documented below.
          */
         dailySchedule?: pulumi.Input<inputs.compute.ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule>;
         /**
-         * The policy will execute every nth hour starting at the specified time.  Structure is documented below.
+         * The policy will execute every nth hour starting at the specified time.
+         * Structure is documented below.
          */
         hourlySchedule?: pulumi.Input<inputs.compute.ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule>;
         /**
-         * Allows specifying a snapshot time for each day of the week.  Structure is documented below.
+         * Allows specifying a snapshot time for each day of the week.
+         * Structure is documented below.
          */
         weeklySchedule?: pulumi.Input<inputs.compute.ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule>;
     }
@@ -7785,7 +8099,8 @@ export namespace compute {
 
     export interface ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule {
         /**
-         * May contain up to seven (one for each day of the week) snapshot times.  Structure is documented below.
+         * May contain up to seven (one for each day of the week) snapshot times.
+         * Structure is documented below.
          */
         dayOfWeeks: pulumi.Input<pulumi.Input<inputs.compute.ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek>[]>;
     }
@@ -7793,6 +8108,7 @@ export namespace compute {
     export interface ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek {
         /**
          * The day of the week to create the snapshot. e.g. MONDAY
+         * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
          */
         day: pulumi.Input<string>;
         /**
@@ -7821,6 +8137,8 @@ export namespace compute {
     export interface RouterBgp {
         /**
          * User-specified flag to indicate which mode to use for advertisement.
+         * Default value is `DEFAULT`.
+         * Possible values are `DEFAULT` and `CUSTOM`.
          */
         advertiseMode?: pulumi.Input<string>;
         /**
@@ -7837,7 +8155,8 @@ export namespace compute {
          * custom mode. This field can only be populated if advertiseMode
          * is CUSTOM and is advertised to all peers of the router. These IP
          * ranges will be advertised in addition to any specified groups.
-         * Leave this field blank to advertise no custom IP ranges.  Structure is documented below.
+         * Leave this field blank to advertise no custom IP ranges.
+         * Structure is documented below.
          */
         advertisedIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.RouterBgpAdvertisedIpRange>[]>;
         /**
@@ -7868,6 +8187,7 @@ export namespace compute {
         enable: pulumi.Input<boolean>;
         /**
          * Specifies the desired filtering of logs on this NAT.
+         * Possible values are `ERRORS_ONLY`, `TRANSLATIONS_ONLY`, and `ALL`.
          */
         filter: pulumi.Input<string>;
     }
@@ -7957,7 +8277,7 @@ export namespace compute {
     export interface SecurityPolicyRuleMatchConfig {
         /**
          * Set of IP addresses or ranges (IPV4 or IPV6) in CIDR notation
-         * to match against inbound traffic. There is a limit of 5 IP ranges per rule. A value of '\*' matches all IPs
+         * to match against inbound traffic. There is a limit of 10 IP ranges per rule. A value of '\*' matches all IPs
          * (can be used to override the default behavior).
          */
         srcIpRanges: pulumi.Input<pulumi.Input<string>[]>;
@@ -7973,11 +8293,13 @@ export namespace compute {
 
     export interface SecurityScanConfigAuthentication {
         /**
-         * Describes authentication configuration that uses a custom account.  Structure is documented below.
+         * Describes authentication configuration that uses a custom account.
+         * Structure is documented below.
          */
         customAccount?: pulumi.Input<inputs.compute.SecurityScanConfigAuthenticationCustomAccount>;
         /**
-         * Describes authentication configuration that uses a Google account.  Structure is documented below.
+         * Describes authentication configuration that uses a Google account.
+         * Structure is documented below.
          */
         googleAccount?: pulumi.Input<inputs.compute.SecurityScanConfigAuthenticationGoogleAccount>;
     }
@@ -7989,7 +8311,8 @@ export namespace compute {
         loginUrl: pulumi.Input<string>;
         /**
          * The password of the custom account. The credential is stored encrypted
-         * in GCP.  **Note**: This property is sensitive and will not be displayed in the plan.
+         * in GCP.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
          */
         password: pulumi.Input<string>;
         /**
@@ -8001,7 +8324,8 @@ export namespace compute {
     export interface SecurityScanConfigAuthenticationGoogleAccount {
         /**
          * The password of the custom account. The credential is stored encrypted
-         * in GCP.  **Note**: This property is sensitive and will not be displayed in the plan.
+         * in GCP.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
          */
         password: pulumi.Input<string>;
         /**
@@ -8026,7 +8350,8 @@ export namespace compute {
     export interface SnapshotSnapshotEncryptionKey {
         /**
          * Specifies a 256-bit customer-supplied encryption key, encoded in
-         * RFC 4648 base64 to either encrypt or decrypt this resource.  **Note**: This property is sensitive and will not be displayed in the plan.
+         * RFC 4648 base64 to either encrypt or decrypt this resource.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
          */
         rawKey: pulumi.Input<string>;
         /**
@@ -8040,7 +8365,8 @@ export namespace compute {
     export interface SnapshotSourceDiskEncryptionKey {
         /**
          * Specifies a 256-bit customer-supplied encryption key, encoded in
-         * RFC 4648 base64 to either encrypt or decrypt this resource.  **Note**: This property is sensitive and will not be displayed in the plan.
+         * RFC 4648 base64 to either encrypt or decrypt this resource.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
          */
         rawKey?: pulumi.Input<string>;
     }
@@ -8083,6 +8409,8 @@ export namespace compute {
          * lasting connections. Default is an interval of 5 seconds per connection.
          * Possible values are INTERVAL_5_SEC, INTERVAL_30_SEC, INTERVAL_1_MIN,
          * INTERVAL_5_MIN, INTERVAL_10_MIN, INTERVAL_15_MIN
+         * Default value is `INTERVAL_5_SEC`.
+         * Possible values are `INTERVAL_5_SEC`, `INTERVAL_30_SEC`, `INTERVAL_1_MIN`, `INTERVAL_5_MIN`, `INTERVAL_10_MIN`, and `INTERVAL_15_MIN`.
          */
         aggregationInterval?: pulumi.Input<string>;
         /**
@@ -8097,6 +8425,8 @@ export namespace compute {
          * Can only be specified if VPC flow logging for this subnetwork is enabled.
          * Configures whether metadata fields should be added to the reported VPC
          * flow logs.
+         * Default value is `INCLUDE_ALL_METADATA`.
+         * Possible values are `EXCLUDE_ALL_METADATA` and `INCLUDE_ALL_METADATA`.
          */
         metadata?: pulumi.Input<string>;
     }
@@ -8121,7 +8451,8 @@ export namespace compute {
     export interface URLMapDefaultRouteAction {
         /**
          * The specification for allowing client side cross-origin requests. Please see
-         * [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)  Structure is documented below.
+         * [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
+         * Structure is documented below.
          */
         corsPolicy?: pulumi.Input<inputs.compute.URLMapDefaultRouteActionCorsPolicy>;
         /**
@@ -8129,27 +8460,32 @@ export namespace compute {
          * As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
          * percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
          * by the Loadbalancer for a percentage of requests.
-         * timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.  Structure is documented below.
+         * timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
+         * Structure is documented below.
          */
         faultInjectionPolicy?: pulumi.Input<inputs.compute.URLMapDefaultRouteActionFaultInjectionPolicy>;
         /**
          * Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
          * Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
-         * the host / authority header is suffixed with -shadow.  Structure is documented below.
+         * the host / authority header is suffixed with -shadow.
+         * Structure is documented below.
          */
         requestMirrorPolicy?: pulumi.Input<inputs.compute.URLMapDefaultRouteActionRequestMirrorPolicy>;
         /**
-         * Specifies the retry policy associated with this route.  Structure is documented below.
+         * Specifies the retry policy associated with this route.
+         * Structure is documented below.
          */
         retryPolicy?: pulumi.Input<inputs.compute.URLMapDefaultRouteActionRetryPolicy>;
         /**
          * Specifies the timeout for the selected route. Timeout is computed from the time the request has been
          * fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries.
-         * If not specified, will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+         * If not specified, will use the largest timeout among all backend services associated with the route.
+         * Structure is documented below.
          */
         timeout?: pulumi.Input<inputs.compute.URLMapDefaultRouteActionTimeout>;
         /**
-         * The spec to modify the URL of the request, prior to forwarding the request to the matched service.  Structure is documented below.
+         * The spec to modify the URL of the request, prior to forwarding the request to the matched service.
+         * Structure is documented below.
          */
         urlRewrite?: pulumi.Input<inputs.compute.URLMapDefaultRouteActionUrlRewrite>;
         /**
@@ -8159,7 +8495,8 @@ export namespace compute {
          * with weight set to a non 0 number.
          * Once a backendService is identified and before forwarding the request to the backend service,
          * advanced routing actions like Url rewrites and header transformations are applied depending on
-         * additional settings specified in this HttpRouteAction.  Structure is documented below.
+         * additional settings specified in this HttpRouteAction.
+         * Structure is documented below.
          */
         weightedBackendServices?: pulumi.Input<pulumi.Input<inputs.compute.URLMapDefaultRouteActionWeightedBackendService>[]>;
     }
@@ -8206,11 +8543,13 @@ export namespace compute {
 
     export interface URLMapDefaultRouteActionFaultInjectionPolicy {
         /**
-         * The specification for how client requests are aborted as part of fault injection.  Structure is documented below.
+         * The specification for how client requests are aborted as part of fault injection.
+         * Structure is documented below.
          */
         abort?: pulumi.Input<inputs.compute.URLMapDefaultRouteActionFaultInjectionPolicyAbort>;
         /**
-         * The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.  Structure is documented below.
+         * The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+         * Structure is documented below.
          */
         delay?: pulumi.Input<inputs.compute.URLMapDefaultRouteActionFaultInjectionPolicyDelay>;
     }
@@ -8230,7 +8569,8 @@ export namespace compute {
 
     export interface URLMapDefaultRouteActionFaultInjectionPolicyDelay {
         /**
-         * Specifies the value of the fixed delay interval.  Structure is documented below.
+         * Specifies the value of the fixed delay interval.
+         * Structure is documented below.
          */
         fixedDelay?: pulumi.Input<inputs.compute.URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay>;
         /**
@@ -8268,7 +8608,8 @@ export namespace compute {
         /**
          * Specifies a non-zero timeout per retry attempt.
          * If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-         * will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+         * will use the largest timeout among all backend services associated with the route.
+         * Structure is documented below.
          */
         perTryTimeout?: pulumi.Input<inputs.compute.URLMapDefaultRouteActionRetryPolicyPerTryTimeout>;
         /**
@@ -8341,7 +8682,8 @@ export namespace compute {
          * Specifies changes to request and response headers that need to take effect for
          * the selected backendService.
          * headerAction specified here take effect before headerAction in the enclosing
-         * HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+         * HttpRouteRule, PathMatcher and UrlMap.
+         * Structure is documented below.
          */
         headerAction?: pulumi.Input<inputs.compute.URLMapDefaultRouteActionWeightedBackendServiceHeaderAction>;
         /**
@@ -8357,7 +8699,8 @@ export namespace compute {
 
     export interface URLMapDefaultRouteActionWeightedBackendServiceHeaderAction {
         /**
-         * Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+         * Headers to add to a matching request prior to forwarding the request to the backendService.
+         * Structure is documented below.
          */
         requestHeadersToAdds?: pulumi.Input<pulumi.Input<inputs.compute.URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd>[]>;
         /**
@@ -8366,7 +8709,8 @@ export namespace compute {
          */
         requestHeadersToRemoves?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+         * Headers to add the response prior to sending the response back to the client.
+         * Structure is documented below.
          */
         responseHeadersToAdds?: pulumi.Input<pulumi.Input<inputs.compute.URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd>[]>;
         /**
@@ -8459,7 +8803,8 @@ export namespace compute {
 
     export interface URLMapHeaderAction {
         /**
-         * Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+         * Headers to add to a matching request prior to forwarding the request to the backendService.
+         * Structure is documented below.
          */
         requestHeadersToAdds?: pulumi.Input<pulumi.Input<inputs.compute.URLMapHeaderActionRequestHeadersToAdd>[]>;
         /**
@@ -8468,7 +8813,8 @@ export namespace compute {
          */
         requestHeadersToRemoves?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+         * Headers to add the response prior to sending the response back to the client.
+         * Structure is documented below.
          */
         responseHeadersToAdds?: pulumi.Input<pulumi.Input<inputs.compute.URLMapHeaderActionResponseHeadersToAdd>[]>;
         /**
@@ -8534,7 +8880,8 @@ export namespace compute {
          * advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
          * to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
          * Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
-         * Only one of defaultRouteAction or defaultUrlRedirect must be set.  Structure is documented below.
+         * Only one of defaultRouteAction or defaultUrlRedirect must be set.
+         * Structure is documented below.
          */
         defaultRouteAction?: pulumi.Input<inputs.compute.URLMapPathMatcherDefaultRouteAction>;
         /**
@@ -8544,7 +8891,8 @@ export namespace compute {
         /**
          * When none of the specified hostRules match, the request is redirected to a URL specified
          * by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
-         * defaultRouteAction must not be set.  Structure is documented below.
+         * defaultRouteAction must not be set.
+         * Structure is documented below.
          */
         defaultUrlRedirect?: pulumi.Input<inputs.compute.URLMapPathMatcherDefaultUrlRedirect>;
         /**
@@ -8555,7 +8903,8 @@ export namespace compute {
          * Specifies changes to request and response headers that need to take effect for
          * the selected backendService.
          * headerAction specified here take effect before headerAction in the enclosing
-         * HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+         * HttpRouteRule, PathMatcher and UrlMap.
+         * Structure is documented below.
          */
         headerAction?: pulumi.Input<inputs.compute.URLMapPathMatcherHeaderAction>;
         /**
@@ -8569,7 +8918,8 @@ export namespace compute {
          * are specified does not matter. Matches are always done on the longest-path-first
          * basis. For example: a pathRule with a path /a/b/c/* will match before /a/b/*
          * irrespective of the order in which those paths appear in this list. Within a
-         * given pathMatcher, only one of pathRules or routeRules must be set.  Structure is documented below.
+         * given pathMatcher, only one of pathRules or routeRules must be set.
+         * Structure is documented below.
          */
         pathRules?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcherPathRule>[]>;
         /**
@@ -8578,7 +8928,8 @@ export namespace compute {
          * routeRules matters: the first rule that matches will cause its specified routing
          * action to take effect. Within a given pathMatcher, only one of pathRules or
          * routeRules must be set. routeRules are not supported in UrlMaps intended for
-         * External load balancers.  Structure is documented below.
+         * External load balancers.
+         * Structure is documented below.
          */
         routeRules?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcherRouteRule>[]>;
     }
@@ -8586,7 +8937,8 @@ export namespace compute {
     export interface URLMapPathMatcherDefaultRouteAction {
         /**
          * The specification for allowing client side cross-origin requests. Please see
-         * [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)  Structure is documented below.
+         * [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
+         * Structure is documented below.
          */
         corsPolicy?: pulumi.Input<inputs.compute.URLMapPathMatcherDefaultRouteActionCorsPolicy>;
         /**
@@ -8594,27 +8946,32 @@ export namespace compute {
          * As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
          * percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
          * by the Loadbalancer for a percentage of requests.
-         * timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.  Structure is documented below.
+         * timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
+         * Structure is documented below.
          */
         faultInjectionPolicy?: pulumi.Input<inputs.compute.URLMapPathMatcherDefaultRouteActionFaultInjectionPolicy>;
         /**
          * Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
          * Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
-         * the host / authority header is suffixed with -shadow.  Structure is documented below.
+         * the host / authority header is suffixed with -shadow.
+         * Structure is documented below.
          */
         requestMirrorPolicy?: pulumi.Input<inputs.compute.URLMapPathMatcherDefaultRouteActionRequestMirrorPolicy>;
         /**
-         * Specifies the retry policy associated with this route.  Structure is documented below.
+         * Specifies the retry policy associated with this route.
+         * Structure is documented below.
          */
         retryPolicy?: pulumi.Input<inputs.compute.URLMapPathMatcherDefaultRouteActionRetryPolicy>;
         /**
          * Specifies the timeout for the selected route. Timeout is computed from the time the request has been
          * fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries.
-         * If not specified, will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+         * If not specified, will use the largest timeout among all backend services associated with the route.
+         * Structure is documented below.
          */
         timeout?: pulumi.Input<inputs.compute.URLMapPathMatcherDefaultRouteActionTimeout>;
         /**
-         * The spec to modify the URL of the request, prior to forwarding the request to the matched service.  Structure is documented below.
+         * The spec to modify the URL of the request, prior to forwarding the request to the matched service.
+         * Structure is documented below.
          */
         urlRewrite?: pulumi.Input<inputs.compute.URLMapPathMatcherDefaultRouteActionUrlRewrite>;
         /**
@@ -8624,7 +8981,8 @@ export namespace compute {
          * with weight set to a non 0 number.
          * Once a backendService is identified and before forwarding the request to the backend service,
          * advanced routing actions like Url rewrites and header transformations are applied depending on
-         * additional settings specified in this HttpRouteAction.  Structure is documented below.
+         * additional settings specified in this HttpRouteAction.
+         * Structure is documented below.
          */
         weightedBackendServices?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcherDefaultRouteActionWeightedBackendService>[]>;
     }
@@ -8671,11 +9029,13 @@ export namespace compute {
 
     export interface URLMapPathMatcherDefaultRouteActionFaultInjectionPolicy {
         /**
-         * The specification for how client requests are aborted as part of fault injection.  Structure is documented below.
+         * The specification for how client requests are aborted as part of fault injection.
+         * Structure is documented below.
          */
         abort?: pulumi.Input<inputs.compute.URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbort>;
         /**
-         * The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.  Structure is documented below.
+         * The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+         * Structure is documented below.
          */
         delay?: pulumi.Input<inputs.compute.URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelay>;
     }
@@ -8695,7 +9055,8 @@ export namespace compute {
 
     export interface URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelay {
         /**
-         * Specifies the value of the fixed delay interval.  Structure is documented below.
+         * Specifies the value of the fixed delay interval.
+         * Structure is documented below.
          */
         fixedDelay?: pulumi.Input<inputs.compute.URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelay>;
         /**
@@ -8733,7 +9094,8 @@ export namespace compute {
         /**
          * Specifies a non-zero timeout per retry attempt.
          * If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-         * will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+         * will use the largest timeout among all backend services associated with the route.
+         * Structure is documented below.
          */
         perTryTimeout?: pulumi.Input<inputs.compute.URLMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeout>;
         /**
@@ -8806,7 +9168,8 @@ export namespace compute {
          * Specifies changes to request and response headers that need to take effect for
          * the selected backendService.
          * headerAction specified here take effect before headerAction in the enclosing
-         * HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+         * HttpRouteRule, PathMatcher and UrlMap.
+         * Structure is documented below.
          */
         headerAction?: pulumi.Input<inputs.compute.URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderAction>;
         /**
@@ -8822,7 +9185,8 @@ export namespace compute {
 
     export interface URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderAction {
         /**
-         * Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+         * Headers to add to a matching request prior to forwarding the request to the backendService.
+         * Structure is documented below.
          */
         requestHeadersToAdds?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd>[]>;
         /**
@@ -8831,7 +9195,8 @@ export namespace compute {
          */
         requestHeadersToRemoves?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+         * Headers to add the response prior to sending the response back to the client.
+         * Structure is documented below.
          */
         responseHeadersToAdds?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd>[]>;
         /**
@@ -8924,7 +9289,8 @@ export namespace compute {
 
     export interface URLMapPathMatcherHeaderAction {
         /**
-         * Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+         * Headers to add to a matching request prior to forwarding the request to the backendService.
+         * Structure is documented below.
          */
         requestHeadersToAdds?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcherHeaderActionRequestHeadersToAdd>[]>;
         /**
@@ -8933,7 +9299,8 @@ export namespace compute {
          */
         requestHeadersToRemoves?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+         * Headers to add the response prior to sending the response back to the client.
+         * Structure is documented below.
          */
         responseHeadersToAdds?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcherHeaderActionResponseHeadersToAdd>[]>;
         /**
@@ -8989,7 +9356,8 @@ export namespace compute {
          * request to the selected backend. If  routeAction specifies any
          * weightedBackendServices, service must not be set. Conversely if service is set,
          * routeAction cannot contain any  weightedBackendServices. Only one of routeAction
-         * or urlRedirect must be set.  Structure is documented below.
+         * or urlRedirect must be set.
+         * Structure is documented below.
          */
         routeAction?: pulumi.Input<inputs.compute.URLMapPathMatcherPathRuleRouteAction>;
         /**
@@ -8999,7 +9367,8 @@ export namespace compute {
         /**
          * When this rule is matched, the request is redirected to a URL specified by
          * urlRedirect. If urlRedirect is specified, service or routeAction must not be
-         * set.  Structure is documented below.
+         * set.
+         * Structure is documented below.
          */
         urlRedirect?: pulumi.Input<inputs.compute.URLMapPathMatcherPathRuleUrlRedirect>;
     }
@@ -9007,7 +9376,8 @@ export namespace compute {
     export interface URLMapPathMatcherPathRuleRouteAction {
         /**
          * The specification for allowing client side cross-origin requests. Please see
-         * [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)  Structure is documented below.
+         * [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
+         * Structure is documented below.
          */
         corsPolicy?: pulumi.Input<inputs.compute.URLMapPathMatcherPathRuleRouteActionCorsPolicy>;
         /**
@@ -9015,27 +9385,32 @@ export namespace compute {
          * As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
          * percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
          * by the Loadbalancer for a percentage of requests.
-         * timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.  Structure is documented below.
+         * timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
+         * Structure is documented below.
          */
         faultInjectionPolicy?: pulumi.Input<inputs.compute.URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy>;
         /**
          * Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
          * Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
-         * the host / authority header is suffixed with -shadow.  Structure is documented below.
+         * the host / authority header is suffixed with -shadow.
+         * Structure is documented below.
          */
         requestMirrorPolicy?: pulumi.Input<inputs.compute.URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy>;
         /**
-         * Specifies the retry policy associated with this route.  Structure is documented below.
+         * Specifies the retry policy associated with this route.
+         * Structure is documented below.
          */
         retryPolicy?: pulumi.Input<inputs.compute.URLMapPathMatcherPathRuleRouteActionRetryPolicy>;
         /**
          * Specifies the timeout for the selected route. Timeout is computed from the time the request has been
          * fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries.
-         * If not specified, will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+         * If not specified, will use the largest timeout among all backend services associated with the route.
+         * Structure is documented below.
          */
         timeout?: pulumi.Input<inputs.compute.URLMapPathMatcherPathRuleRouteActionTimeout>;
         /**
-         * The spec to modify the URL of the request, prior to forwarding the request to the matched service.  Structure is documented below.
+         * The spec to modify the URL of the request, prior to forwarding the request to the matched service.
+         * Structure is documented below.
          */
         urlRewrite?: pulumi.Input<inputs.compute.URLMapPathMatcherPathRuleRouteActionUrlRewrite>;
         /**
@@ -9045,7 +9420,8 @@ export namespace compute {
          * with weight set to a non 0 number.
          * Once a backendService is identified and before forwarding the request to the backend service,
          * advanced routing actions like Url rewrites and header transformations are applied depending on
-         * additional settings specified in this HttpRouteAction.  Structure is documented below.
+         * additional settings specified in this HttpRouteAction.
+         * Structure is documented below.
          */
         weightedBackendServices?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcherPathRuleRouteActionWeightedBackendService>[]>;
     }
@@ -9092,11 +9468,13 @@ export namespace compute {
 
     export interface URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy {
         /**
-         * The specification for how client requests are aborted as part of fault injection.  Structure is documented below.
+         * The specification for how client requests are aborted as part of fault injection.
+         * Structure is documented below.
          */
         abort?: pulumi.Input<inputs.compute.URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort>;
         /**
-         * The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.  Structure is documented below.
+         * The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+         * Structure is documented below.
          */
         delay?: pulumi.Input<inputs.compute.URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay>;
     }
@@ -9116,7 +9494,8 @@ export namespace compute {
 
     export interface URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay {
         /**
-         * Specifies the value of the fixed delay interval.  Structure is documented below.
+         * Specifies the value of the fixed delay interval.
+         * Structure is documented below.
          */
         fixedDelay: pulumi.Input<inputs.compute.URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay>;
         /**
@@ -9154,7 +9533,8 @@ export namespace compute {
         /**
          * Specifies a non-zero timeout per retry attempt.
          * If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-         * will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+         * will use the largest timeout among all backend services associated with the route.
+         * Structure is documented below.
          */
         perTryTimeout?: pulumi.Input<inputs.compute.URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout>;
         /**
@@ -9227,7 +9607,8 @@ export namespace compute {
          * Specifies changes to request and response headers that need to take effect for
          * the selected backendService.
          * headerAction specified here take effect before headerAction in the enclosing
-         * HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+         * HttpRouteRule, PathMatcher and UrlMap.
+         * Structure is documented below.
          */
         headerAction?: pulumi.Input<inputs.compute.URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction>;
         /**
@@ -9243,7 +9624,8 @@ export namespace compute {
 
     export interface URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction {
         /**
-         * Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+         * Headers to add to a matching request prior to forwarding the request to the backendService.
+         * Structure is documented below.
          */
         requestHeadersToAdds?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd>[]>;
         /**
@@ -9252,7 +9634,8 @@ export namespace compute {
          */
         requestHeadersToRemoves?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+         * Headers to add the response prior to sending the response back to the client.
+         * Structure is documented below.
          */
         responseHeadersToAdds?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd>[]>;
         /**
@@ -9348,11 +9731,13 @@ export namespace compute {
          * Specifies changes to request and response headers that need to take effect for
          * the selected backendService.
          * headerAction specified here take effect before headerAction in the enclosing
-         * HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+         * HttpRouteRule, PathMatcher and UrlMap.
+         * Structure is documented below.
          */
         headerAction?: pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleHeaderAction>;
         /**
-         * The rules for determining a match.  Structure is documented below.
+         * The rules for determining a match.
+         * Structure is documented below.
          */
         matchRules?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleMatchRule>[]>;
         /**
@@ -9377,7 +9762,8 @@ export namespace compute {
          * request to the selected backend. If  routeAction specifies any
          * weightedBackendServices, service must not be set. Conversely if service is set,
          * routeAction cannot contain any  weightedBackendServices. Only one of routeAction
-         * or urlRedirect must be set.  Structure is documented below.
+         * or urlRedirect must be set.
+         * Structure is documented below.
          */
         routeAction?: pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleRouteAction>;
         /**
@@ -9387,14 +9773,16 @@ export namespace compute {
         /**
          * When this rule is matched, the request is redirected to a URL specified by
          * urlRedirect. If urlRedirect is specified, service or routeAction must not be
-         * set.  Structure is documented below.
+         * set.
+         * Structure is documented below.
          */
         urlRedirect?: pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleUrlRedirect>;
     }
 
     export interface URLMapPathMatcherRouteRuleHeaderAction {
         /**
-         * Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+         * Headers to add to a matching request prior to forwarding the request to the backendService.
+         * Structure is documented below.
          */
         requestHeadersToAdds?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAdd>[]>;
         /**
@@ -9403,7 +9791,8 @@ export namespace compute {
          */
         requestHeadersToRemoves?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+         * Headers to add the response prior to sending the response back to the client.
+         * Structure is documented below.
          */
         responseHeadersToAdds?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd>[]>;
         /**
@@ -9456,7 +9845,8 @@ export namespace compute {
         fullPathMatch?: pulumi.Input<string>;
         /**
          * Specifies a list of header match criteria, all of which must match corresponding
-         * headers in the request.  Structure is documented below.
+         * headers in the request.
+         * Structure is documented below.
          */
         headerMatches?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleMatchRuleHeaderMatch>[]>;
         /**
@@ -9475,7 +9865,8 @@ export namespace compute {
          * with corresponding labels in the provided metadata. metadataFilters specified
          * here can be overrides those specified in ForwardingRule that refers to this
          * UrlMap. metadataFilters only applies to Loadbalancers that have their
-         * loadBalancingScheme set to INTERNAL_SELF_MANAGED.  Structure is documented below.
+         * loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+         * Structure is documented below.
          */
         metadataFilters?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleMatchRuleMetadataFilter>[]>;
         /**
@@ -9486,7 +9877,8 @@ export namespace compute {
         prefixMatch?: pulumi.Input<string>;
         /**
          * Specifies a list of query parameter match criteria, all of which must match
-         * corresponding query parameters in the request.  Structure is documented below.
+         * corresponding query parameters in the request.
+         * Structure is documented below.
          */
         queryParameterMatches?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatch>[]>;
         /**
@@ -9533,7 +9925,8 @@ export namespace compute {
          * the match fails. For example for a range [-5, 0]   - -3 will match.  - 0 will
          * not match.  - 0.25 will not match.  - -3someString will not match.   Only one of
          * exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
-         * must be set.  Structure is documented below.
+         * must be set.
+         * Structure is documented below.
          */
         rangeMatch?: pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch>;
         /**
@@ -9566,7 +9959,8 @@ export namespace compute {
         /**
          * The list of label value pairs that must match labels in the provided metadata
          * based on filterMatchCriteria  This list must not be empty and can have at the
-         * most 64 entries.  Structure is documented below.
+         * most 64 entries.
+         * Structure is documented below.
          */
         filterLabels: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel>[]>;
         /**
@@ -9576,6 +9970,7 @@ export namespace compute {
          * provided metadata.
          * - MATCH_ALL: All filterLabels must have matching labels in
          * the provided metadata.
+         * Possible values are `MATCH_ALL` and `MATCH_ANY`.
          */
         filterMatchCriteria: pulumi.Input<string>;
     }
@@ -9623,7 +10018,8 @@ export namespace compute {
     export interface URLMapPathMatcherRouteRuleRouteAction {
         /**
          * The specification for allowing client side cross-origin requests. Please see
-         * [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)  Structure is documented below.
+         * [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
+         * Structure is documented below.
          */
         corsPolicy?: pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleRouteActionCorsPolicy>;
         /**
@@ -9631,27 +10027,32 @@ export namespace compute {
          * As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
          * percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
          * by the Loadbalancer for a percentage of requests.
-         * timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.  Structure is documented below.
+         * timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
+         * Structure is documented below.
          */
         faultInjectionPolicy?: pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy>;
         /**
          * Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
          * Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
-         * the host / authority header is suffixed with -shadow.  Structure is documented below.
+         * the host / authority header is suffixed with -shadow.
+         * Structure is documented below.
          */
         requestMirrorPolicy?: pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy>;
         /**
-         * Specifies the retry policy associated with this route.  Structure is documented below.
+         * Specifies the retry policy associated with this route.
+         * Structure is documented below.
          */
         retryPolicy?: pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleRouteActionRetryPolicy>;
         /**
          * Specifies the timeout for the selected route. Timeout is computed from the time the request has been
          * fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries.
-         * If not specified, will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+         * If not specified, will use the largest timeout among all backend services associated with the route.
+         * Structure is documented below.
          */
         timeout?: pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleRouteActionTimeout>;
         /**
-         * The spec to modify the URL of the request, prior to forwarding the request to the matched service.  Structure is documented below.
+         * The spec to modify the URL of the request, prior to forwarding the request to the matched service.
+         * Structure is documented below.
          */
         urlRewrite?: pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleRouteActionUrlRewrite>;
         /**
@@ -9661,7 +10062,8 @@ export namespace compute {
          * with weight set to a non 0 number.
          * Once a backendService is identified and before forwarding the request to the backend service,
          * advanced routing actions like Url rewrites and header transformations are applied depending on
-         * additional settings specified in this HttpRouteAction.  Structure is documented below.
+         * additional settings specified in this HttpRouteAction.
+         * Structure is documented below.
          */
         weightedBackendServices?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleRouteActionWeightedBackendService>[]>;
     }
@@ -9708,11 +10110,13 @@ export namespace compute {
 
     export interface URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy {
         /**
-         * The specification for how client requests are aborted as part of fault injection.  Structure is documented below.
+         * The specification for how client requests are aborted as part of fault injection.
+         * Structure is documented below.
          */
         abort?: pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort>;
         /**
-         * The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.  Structure is documented below.
+         * The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+         * Structure is documented below.
          */
         delay?: pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay>;
     }
@@ -9732,7 +10136,8 @@ export namespace compute {
 
     export interface URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay {
         /**
-         * Specifies the value of the fixed delay interval.  Structure is documented below.
+         * Specifies the value of the fixed delay interval.
+         * Structure is documented below.
          */
         fixedDelay?: pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelay>;
         /**
@@ -9770,7 +10175,8 @@ export namespace compute {
         /**
          * Specifies a non-zero timeout per retry attempt.
          * If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-         * will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+         * will use the largest timeout among all backend services associated with the route.
+         * Structure is documented below.
          */
         perTryTimeout?: pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout>;
         /**
@@ -9843,7 +10249,8 @@ export namespace compute {
          * Specifies changes to request and response headers that need to take effect for
          * the selected backendService.
          * headerAction specified here take effect before headerAction in the enclosing
-         * HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+         * HttpRouteRule, PathMatcher and UrlMap.
+         * Structure is documented below.
          */
         headerAction?: pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction>;
         /**
@@ -9859,7 +10266,8 @@ export namespace compute {
 
     export interface URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction {
         /**
-         * Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+         * Headers to add to a matching request prior to forwarding the request to the backendService.
+         * Structure is documented below.
          */
         requestHeadersToAdds?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd>[]>;
         /**
@@ -9868,7 +10276,8 @@ export namespace compute {
          */
         requestHeadersToRemoves?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+         * Headers to add the response prior to sending the response back to the client.
+         * Structure is documented below.
          */
         responseHeadersToAdds?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd>[]>;
         /**
@@ -10926,7 +11335,8 @@ export namespace containeranalysis {
          * from "readable" names more suitable for debug output. Note that
          * these hints should NOT be used to look up AttestationAuthorities
          * in security sensitive contexts, such as when looking up
-         * Attestations to verify.  Structure is documented below.
+         * Attestations to verify.
+         * Structure is documented below.
          */
         hint: pulumi.Input<inputs.containeranalysis.NoteAttestationAuthorityHint>;
     }
@@ -10961,7 +11371,8 @@ export namespace containeranalysis {
          * Verifier implementations should consider this attestation
          * message verified if at least one signature verifies
          * serializedPayload. See Signature in common.proto for more
-         * details on signature structure and verification.  Structure is documented below.
+         * details on signature structure and verification.
+         * Structure is documented below.
          */
         signatures: pulumi.Input<pulumi.Input<inputs.containeranalysis.OccurenceAttestationSignature>[]>;
     }
@@ -11031,7 +11442,8 @@ export namespace datacatalog {
         filePatterns: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * -
-         * Sample files contained in this fileset, not all files contained in this fileset are represented here.  Structure is documented below.
+         * Sample files contained in this fileset, not all files contained in this fileset are represented here.
+         * Structure is documented below.
          */
         sampleGcsFileSpecs?: pulumi.Input<pulumi.Input<inputs.datacatalog.EntryGcsFilesetSpecSampleGcsFileSpec>[]>;
     }
@@ -11076,7 +11488,8 @@ export namespace datacatalog {
          */
         doubleValue?: pulumi.Input<number>;
         /**
-         * Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.  Structure is documented below.
+         * Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.
+         * Structure is documented below.
          */
         enumValue?: pulumi.Input<string>;
         /**
@@ -11125,7 +11538,8 @@ export namespace datacatalog {
          */
         order?: pulumi.Input<number>;
         /**
-         * The type of value this tag field can contain.  Structure is documented below.
+         * The type of value this tag field can contain.
+         * Structure is documented below.
          */
         type: pulumi.Input<inputs.datacatalog.TagTemplateFieldType>;
     }
@@ -11133,12 +11547,14 @@ export namespace datacatalog {
     export interface TagTemplateFieldType {
         /**
          * Represents an enum type.
-         * Exactly one of `primitiveType` or `enumType` must be set  Structure is documented below.
+         * Exactly one of `primitiveType` or `enumType` must be set
+         * Structure is documented below.
          */
         enumType?: pulumi.Input<inputs.datacatalog.TagTemplateFieldTypeEnumType>;
         /**
          * Represents primitive types - string, bool etc.
          * Exactly one of `primitiveType` or `enumType` must be set
+         * Possible values are `DOUBLE`, `STRING`, `BOOL`, and `TIMESTAMP`.
          */
         primitiveType?: pulumi.Input<string>;
     }
@@ -11149,7 +11565,8 @@ export namespace datacatalog {
          * values must be case-insensitively unique within this set. Currently,
          * enum values can only be added to the list of allowed values. Deletion
          * and renaming of enum values are not supported.
-         * Can have up to 500 allowed values.  Structure is documented below.
+         * Can have up to 500 allowed values.
+         * Structure is documented below.
          */
         allowedValues: pulumi.Input<pulumi.Input<inputs.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValue>[]>;
     }
@@ -11187,7 +11604,8 @@ export namespace dataproc {
          */
         cooldownPeriod?: pulumi.Input<string>;
         /**
-         * YARN autoscaling configuration.  Structure is documented below.
+         * YARN autoscaling configuration.
+         * Structure is documented below.
          */
         yarnConfig: pulumi.Input<inputs.dataproc.AutoscalingPolicyBasicAlgorithmYarnConfig>;
     }
@@ -12005,6 +12423,7 @@ export namespace datastore {
     export interface DataStoreIndexProperty {
         /**
          * The direction the index should optimize for sorting.
+         * Possible values are `ASCENDING` and `DESCENDING`.
          */
         direction: pulumi.Input<string>;
         /**
@@ -12028,13 +12447,15 @@ export namespace deploymentmanager {
 
     export interface DeploymentTarget {
         /**
-         * The root configuration file to use for this deployment.  Structure is documented below.
+         * The root configuration file to use for this deployment.
+         * Structure is documented below.
          */
         config: pulumi.Input<inputs.deploymentmanager.DeploymentTargetConfig>;
         /**
          * Specifies import files for this configuration. This can be
          * used to import templates or other files. For example, you might
-         * import a text file in order to use the file in a template.  Structure is documented below.
+         * import a text file in order to use the file in a template.
+         * Structure is documented below.
          */
         imports?: pulumi.Input<pulumi.Input<inputs.deploymentmanager.DeploymentTargetImport>[]>;
     }
@@ -12095,7 +12516,8 @@ export namespace dns {
          * Specifies parameters that will be used for generating initial DnsKeys
          * for this ManagedZone. If you provide a spec for keySigning or zoneSigning,
          * you must also provide one for the other.
-         * defaultKeySpecs can only be updated when the state is `off`.  Structure is documented below.
+         * defaultKeySpecs can only be updated when the state is `off`.
+         * Structure is documented below.
          */
         defaultKeySpecs?: pulumi.Input<pulumi.Input<inputs.dns.ManagedZoneDnssecConfigDefaultKeySpec>[]>;
         /**
@@ -12105,10 +12527,12 @@ export namespace dns {
         /**
          * Specifies the mechanism used to provide authenticated denial-of-existence responses.
          * nonExistence can only be updated when the state is `off`.
+         * Possible values are `nsec` and `nsec3`.
          */
         nonExistence?: pulumi.Input<string>;
         /**
          * Specifies whether DNSSEC is enabled, and what mode it is in
+         * Possible values are `off`, `on`, and `transfer`.
          */
         state?: pulumi.Input<string>;
     }
@@ -12116,6 +12540,7 @@ export namespace dns {
     export interface ManagedZoneDnssecConfigDefaultKeySpec {
         /**
          * String mnemonic specifying the DNSSEC algorithm of this key
+         * Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
          */
         algorithm?: pulumi.Input<string>;
         /**
@@ -12129,6 +12554,7 @@ export namespace dns {
          * resource record sets of type DNSKEY. Zone signing keys do
          * not have the Secure Entry Point flag set and will be used
          * to sign all other types of resource record sets.
+         * Possible values are `keySigning` and `zoneSigning`.
          */
         keyType?: pulumi.Input<string>;
         /**
@@ -12141,7 +12567,8 @@ export namespace dns {
         /**
          * List of target name servers to forward to. Cloud DNS will
          * select the best available name server if more than
-         * one target is given.  Structure is documented below.
+         * one target is given.
+         * Structure is documented below.
          */
         targetNameServers: pulumi.Input<pulumi.Input<inputs.dns.ManagedZoneForwardingConfigTargetNameServer>[]>;
     }
@@ -12151,6 +12578,7 @@ export namespace dns {
          * Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
          * decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
          * to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
+         * Possible values are `default` and `private`.
          */
         forwardingPath?: pulumi.Input<string>;
         /**
@@ -12161,7 +12589,8 @@ export namespace dns {
 
     export interface ManagedZonePeeringConfig {
         /**
-         * The network with which to peer.  Structure is documented below.
+         * The network with which to peer.
+         * Structure is documented below.
          */
         targetNetwork: pulumi.Input<inputs.dns.ManagedZonePeeringConfigTargetNetwork>;
     }
@@ -12193,7 +12622,8 @@ export namespace dns {
 
     export interface ManagedZoneServiceDirectoryConfig {
         /**
-         * The namespace associated with the zone.  Structure is documented below.
+         * The namespace associated with the zone.
+         * Structure is documented below.
          */
         namespace: pulumi.Input<inputs.dns.ManagedZoneServiceDirectoryConfigNamespace>;
     }
@@ -12213,7 +12643,8 @@ export namespace dns {
         /**
          * Sets an alternative name server for the associated networks. When specified,
          * all DNS queries are forwarded to a name server that you choose. Names such as .internal
-         * are not available when an alternative name server is specified.  Structure is documented below.
+         * are not available when an alternative name server is specified.
+         * Structure is documented below.
          */
         targetNameServers: pulumi.Input<pulumi.Input<inputs.dns.PolicyAlternativeNameServerConfigTargetNameServer>[]>;
     }
@@ -12286,6 +12717,8 @@ export namespace filestore {
         /**
          * Either READ_ONLY, for allowing only read requests on the exported directory,
          * or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE.
+         * Default value is `READ_WRITE`.
+         * Possible values are `READ_ONLY` and `READ_WRITE`.
          */
         accessMode?: pulumi.Input<string>;
         /**
@@ -12309,6 +12742,8 @@ export namespace filestore {
         /**
          * Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
          * for not allowing root access. The default is NO_ROOT_SQUASH.
+         * Default value is `NO_ROOT_SQUASH`.
+         * Possible values are `NO_ROOT_SQUASH` and `ROOT_SQUASH`.
          */
         squashMode?: pulumi.Input<string>;
     }
@@ -12342,6 +12777,7 @@ export namespace firestore {
         /**
          * Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
          * be specified.
+         * Possible values are `CONTAINS`.
          */
         arrayConfig?: pulumi.Input<string>;
         /**
@@ -12351,6 +12787,7 @@ export namespace firestore {
         /**
          * Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=.
          * Only one of `order` and `arrayConfig` can be specified.
+         * Possible values are `ASCENDING` and `DESCENDING`.
          */
         order?: pulumi.Input<string>;
     }
@@ -12442,7 +12879,8 @@ export namespace folder {
 export namespace gameservices {
     export interface GameServerClusterConnectionInfo {
         /**
-         * Reference of the GKE cluster where the game servers are installed.  Structure is documented below.
+         * Reference of the GKE cluster where the game servers are installed.
+         * Structure is documented below.
          */
         gkeClusterReference: pulumi.Input<inputs.gameservices.GameServerClusterConnectionInfoGkeClusterReference>;
         /**
@@ -12496,13 +12934,15 @@ export namespace gameservices {
          */
         name: pulumi.Input<string>;
         /**
-         * The schedules to which this scaling config applies.  Structure is documented below.
+         * The schedules to which this scaling config applies.
+         * Structure is documented below.
          */
         schedules?: pulumi.Input<pulumi.Input<inputs.gameservices.GameServerConfigScalingConfigSchedule>[]>;
         /**
          * Labels used to identify the clusters to which this scaling config
          * applies. A cluster is subject to this scaling config if its labels match
-         * any of the selector entries.  Structure is documented below.
+         * any of the selector entries.
+         * Structure is documented below.
          */
         selectors?: pulumi.Input<pulumi.Input<inputs.gameservices.GameServerConfigScalingConfigSelector>[]>;
     }
@@ -12545,7 +12985,8 @@ export namespace gameservices {
          */
         configVersion?: pulumi.Input<string>;
         /**
-         * Selection by realms.  Structure is documented below.
+         * Selection by realms.
+         * Structure is documented below.
          */
         realmsSelector?: pulumi.Input<inputs.gameservices.GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector>;
     }
@@ -12626,7 +13067,8 @@ export namespace healthcare {
          * The output is organized in one table per resource type. The server reuses the existing tables (if any) that
          * are named after the resource types, e.g. "Patient", "Observation". When there is no existing table for a given
          * resource type, the server attempts to create one.
-         * See the [streaming config reference](https://cloud.google.com/healthcare/docs/reference/rest/v1beta1/projects.locations.datasets.fhirStores#streamconfig) for more details.  Structure is documented below.
+         * See the [streaming config reference](https://cloud.google.com/healthcare/docs/reference/rest/v1beta1/projects.locations.datasets.fhirStores#streamconfig) for more details.
+         * Structure is documented below.
          */
         bigqueryDestination: pulumi.Input<inputs.healthcare.FhirStoreStreamConfigBigqueryDestination>;
         /**
@@ -12643,7 +13085,8 @@ export namespace healthcare {
          */
         datasetUri: pulumi.Input<string>;
         /**
-         * The configuration for the exported BigQuery schema.  Structure is documented below.
+         * The configuration for the exported BigQuery schema.
+         * Structure is documented below.
          */
         schemaConfig: pulumi.Input<inputs.healthcare.FhirStoreStreamConfigBigqueryDestinationSchemaConfig>;
     }
@@ -12660,6 +13103,8 @@ export namespace healthcare {
          * Specifies the output schema type. Only ANALYTICS is supported at this time.
          * * ANALYTICS: Analytics schema defined by the FHIR community.
          * See https://github.com/FHIR/sql-on-fhir/blob/master/sql-on-fhir.md.
+         * Default value is `ANALYTICS`.
+         * Possible values are `ANALYTICS`.
          */
         schemaType?: pulumi.Input<string>;
     }
@@ -12948,7 +13393,8 @@ export namespace iap {
 export namespace identityplatform {
     export interface InboundSamlConfigIdpConfig {
         /**
-         * The IdP's certificate data to verify the signature in the SAMLResponse issued by the IDP.  Structure is documented below.
+         * The IdP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
+         * Structure is documented below.
          */
         idpCertificates: pulumi.Input<pulumi.Input<inputs.identityplatform.InboundSamlConfigIdpConfigIdpCertificate>[]>;
         /**
@@ -12980,7 +13426,8 @@ export namespace identityplatform {
         callbackUri?: pulumi.Input<string>;
         /**
          * -
-         * The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.  Structure is documented below.
+         * The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
+         * Structure is documented below.
          */
         spCertificates?: pulumi.Input<pulumi.Input<inputs.identityplatform.InboundSamlConfigSpConfigSpCertificate>[]>;
         /**
@@ -12999,7 +13446,8 @@ export namespace identityplatform {
 
     export interface TenantInboundSamlConfigIdpConfig {
         /**
-         * The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.  Structure is documented below.
+         * The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
+         * Structure is documented below.
          */
         idpCertificates: pulumi.Input<pulumi.Input<inputs.identityplatform.TenantInboundSamlConfigIdpConfigIdpCertificate>[]>;
         /**
@@ -13031,7 +13479,8 @@ export namespace identityplatform {
         callbackUri: pulumi.Input<string>;
         /**
          * -
-         * The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.  Structure is documented below.
+         * The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
+         * Structure is documented below.
          */
         spCertificates?: pulumi.Input<pulumi.Input<inputs.identityplatform.TenantInboundSamlConfigSpConfigSpCertificate>[]>;
         /**
@@ -13063,7 +13512,8 @@ export namespace iot {
          */
         expirationTime?: pulumi.Input<string>;
         /**
-         * A public key used to verify the signature of JSON Web Tokens (JWTs).  Structure is documented below.
+         * A public key used to verify the signature of JSON Web Tokens (JWTs).
+         * Structure is documented below.
          */
         publicKey: pulumi.Input<inputs.iot.DeviceCredentialPublicKey>;
     }
@@ -13071,6 +13521,7 @@ export namespace iot {
     export interface DeviceCredentialPublicKey {
         /**
          * The format of the key.
+         * Possible values are `RSA_PEM`, `RSA_X509_PEM`, `ES256_PEM`, and `ES256_X509_PEM`.
          */
         format: pulumi.Input<string>;
         /**
@@ -13082,10 +13533,13 @@ export namespace iot {
     export interface DeviceGatewayConfig {
         /**
          * Indicates whether the device is a gateway.
+         * Possible values are `ASSOCIATION_ONLY`, `DEVICE_AUTH_TOKEN_ONLY`, and `ASSOCIATION_AND_DEVICE_AUTH_TOKEN`.
          */
         gatewayAuthMethod?: pulumi.Input<string>;
         /**
          * Indicates whether the device is a gateway.
+         * Default value is `NON_GATEWAY`.
+         * Possible values are `GATEWAY` and `NON_GATEWAY`.
          */
         gatewayType?: pulumi.Input<string>;
         /**
@@ -13205,6 +13659,8 @@ export namespace kms {
         algorithm: pulumi.Input<string>;
         /**
          * The protection level to use when creating a version based on this template.
+         * Default value is `SOFTWARE`.
+         * Possible values are `SOFTWARE` and `HSM`.
          */
         protectionLevel?: pulumi.Input<string>;
     }
@@ -13326,17 +13782,20 @@ export namespace logging {
 
     export interface MetricBucketOptions {
         /**
-         * Specifies a set of buckets with arbitrary widths.  Structure is documented below.
+         * Specifies a set of buckets with arbitrary widths.
+         * Structure is documented below.
          */
         explicitBuckets?: pulumi.Input<inputs.logging.MetricBucketOptionsExplicitBuckets>;
         /**
          * Specifies an exponential sequence of buckets that have a width that is proportional to the value of
-         * the lower bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket.  Structure is documented below.
+         * the lower bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket.
+         * Structure is documented below.
          */
         exponentialBuckets?: pulumi.Input<inputs.logging.MetricBucketOptionsExponentialBuckets>;
         /**
          * Specifies a linear sequence of buckets that all have the same width (except overflow and underflow).
-         * Each bucket represents a constant absolute uncertainty on the specific value in the bucket.  Structure is documented below.
+         * Each bucket represents a constant absolute uncertainty on the specific value in the bucket.
+         * Structure is documented below.
          */
         linearBuckets?: pulumi.Input<inputs.logging.MetricBucketOptionsLinearBuckets>;
     }
@@ -13389,13 +13848,15 @@ export namespace logging {
          * The set of labels that can be used to describe a specific instance of this metric type. For
          * example, the appengine.googleapis.com/http/server/response_latencies metric type has a label
          * for the HTTP response code, response_code, so you can look at latencies for successful responses
-         * or just for responses that failed.  Structure is documented below.
+         * or just for responses that failed.
+         * Structure is documented below.
          */
         labels?: pulumi.Input<pulumi.Input<inputs.logging.MetricMetricDescriptorLabel>[]>;
         /**
          * Whether the metric records instantaneous values, changes to a value, etc.
          * Some combinations of metricKind and valueType might not be supported.
          * For counter metrics, set this to DELTA.
+         * Possible values are `DELTA`, `GAUGE`, and `CUMULATIVE`.
          */
         metricKind: pulumi.Input<string>;
         /**
@@ -13406,6 +13867,8 @@ export namespace logging {
         unit?: pulumi.Input<string>;
         /**
          * The type of data that can be assigned to the label.
+         * Default value is `STRING`.
+         * Possible values are `BOOL`, `INT64`, and `STRING`.
          */
         valueType: pulumi.Input<string>;
     }
@@ -13422,6 +13885,8 @@ export namespace logging {
         key: pulumi.Input<string>;
         /**
          * The type of data that can be assigned to the label.
+         * Default value is `STRING`.
+         * Possible values are `BOOL`, `INT64`, and `STRING`.
          */
         valueType?: pulumi.Input<string>;
     }
@@ -13485,12 +13950,14 @@ export namespace monitoring {
     export interface AlertPolicyCondition {
         /**
          * A condition that checks that a time series
-         * continues to receive new data points.  Structure is documented below.
+         * continues to receive new data points.
+         * Structure is documented below.
          */
         conditionAbsent?: pulumi.Input<inputs.monitoring.AlertPolicyConditionConditionAbsent>;
         /**
          * A condition that compares a time series against a
-         * threshold.  Structure is documented below.
+         * threshold.
+         * Structure is documented below.
          */
         conditionThreshold?: pulumi.Input<inputs.monitoring.AlertPolicyConditionConditionThreshold>;
         /**
@@ -13527,7 +13994,8 @@ export namespace monitoring {
          * one in the MetricService.ListTimeSeries
          * request. It is advisable to use the
          * ListTimeSeries method when debugging this
-         * field.  Structure is documented below.
+         * field.
+         * Structure is documented below.
          */
         aggregations?: pulumi.Input<pulumi.Input<inputs.monitoring.AlertPolicyConditionConditionAbsentAggregation>[]>;
         /**
@@ -13571,7 +14039,8 @@ export namespace monitoring {
          * is true for any of the time series that have
          * been identified by filter and aggregations,
          * or by the ratio, if denominatorFilter and
-         * denominatorAggregations are specified.  Structure is documented below.
+         * denominatorAggregations are specified.
+         * Structure is documented below.
          */
         trigger?: pulumi.Input<inputs.monitoring.AlertPolicyConditionConditionAbsentTrigger>;
     }
@@ -13612,6 +14081,7 @@ export namespace monitoring {
          * and alignmentPeriod must be
          * specified; otherwise, an error is
          * returned.
+         * Possible values are `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, and `REDUCE_PERCENTILE_05`.
          */
         crossSeriesReducer?: pulumi.Input<string>;
         /**
@@ -13660,6 +14130,7 @@ export namespace monitoring {
          * and alignmentPeriod must be
          * specified; otherwise, an error is
          * returned.
+         * Possible values are `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, and `ALIGN_PERCENT_CHANGE`.
          */
         perSeriesAligner?: pulumi.Input<string>;
     }
@@ -13693,7 +14164,8 @@ export namespace monitoring {
          * one in the MetricService.ListTimeSeries
          * request. It is advisable to use the
          * ListTimeSeries method when debugging this
-         * field.  Structure is documented below.
+         * field.
+         * Structure is documented below.
          */
         aggregations?: pulumi.Input<pulumi.Input<inputs.monitoring.AlertPolicyConditionConditionThresholdAggregation>[]>;
         /**
@@ -13705,6 +14177,7 @@ export namespace monitoring {
          * the left-hand side and the threshold on the
          * right-hand side. Only COMPARISON_LT and
          * COMPARISON_GT are supported currently.
+         * Possible values are `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, and `COMPARISON_NE`.
          */
         comparison: pulumi.Input<string>;
         /**
@@ -13723,7 +14196,8 @@ export namespace monitoring {
          * labels.This field is similar to the one in
          * the MetricService.ListTimeSeries request. It
          * is advisable to use the ListTimeSeries
-         * method when debugging this field.  Structure is documented below.
+         * method when debugging this field.
+         * Structure is documented below.
          */
         denominatorAggregations?: pulumi.Input<pulumi.Input<inputs.monitoring.AlertPolicyConditionConditionThresholdDenominatorAggregation>[]>;
         /**
@@ -13790,7 +14264,8 @@ export namespace monitoring {
          * is true for any of the time series that have
          * been identified by filter and aggregations,
          * or by the ratio, if denominatorFilter and
-         * denominatorAggregations are specified.  Structure is documented below.
+         * denominatorAggregations are specified.
+         * Structure is documented below.
          */
         trigger?: pulumi.Input<inputs.monitoring.AlertPolicyConditionConditionThresholdTrigger>;
     }
@@ -13831,6 +14306,7 @@ export namespace monitoring {
          * and alignmentPeriod must be
          * specified; otherwise, an error is
          * returned.
+         * Possible values are `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, and `REDUCE_PERCENTILE_05`.
          */
         crossSeriesReducer?: pulumi.Input<string>;
         /**
@@ -13879,6 +14355,7 @@ export namespace monitoring {
          * and alignmentPeriod must be
          * specified; otherwise, an error is
          * returned.
+         * Possible values are `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, and `ALIGN_PERCENT_CHANGE`.
          */
         perSeriesAligner?: pulumi.Input<string>;
     }
@@ -13919,6 +14396,7 @@ export namespace monitoring {
          * and alignmentPeriod must be
          * specified; otherwise, an error is
          * returned.
+         * Possible values are `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, and `REDUCE_PERCENTILE_05`.
          */
         crossSeriesReducer?: pulumi.Input<string>;
         /**
@@ -13967,6 +14445,7 @@ export namespace monitoring {
          * and alignmentPeriod must be
          * specified; otherwise, an error is
          * returned.
+         * Possible values are `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, and `ALIGN_PERCENT_CHANGE`.
          */
         perSeriesAligner?: pulumi.Input<string>;
     }
@@ -14026,6 +14505,8 @@ export namespace monitoring {
         key: pulumi.Input<string>;
         /**
          * The type of data that can be assigned to the label.
+         * Default value is `STRING`.
+         * Possible values are `STRING`, `BOOL`, and `INT64`.
          */
         valueType?: pulumi.Input<string>;
     }
@@ -14043,22 +14524,26 @@ export namespace monitoring {
 
     export interface NotificationChannelSensitiveLabels {
         /**
-         * An authorization token for a notification channel. Channel types that support this field include: slack  **Note**: This property is sensitive and will not be displayed in the plan.
+         * An authorization token for a notification channel. Channel types that support this field include: slack
+         * **Note**: This property is sensitive and will not be displayed in the plan.
          */
         authToken?: pulumi.Input<string>;
         /**
-         * An password for a notification channel. Channel types that support this field include: webhookBasicauth  **Note**: This property is sensitive and will not be displayed in the plan.
+         * An password for a notification channel. Channel types that support this field include: webhookBasicauth
+         * **Note**: This property is sensitive and will not be displayed in the plan.
          */
         password?: pulumi.Input<string>;
         /**
-         * An servicekey token for a notification channel. Channel types that support this field include: pagerduty  **Note**: This property is sensitive and will not be displayed in the plan.
+         * An servicekey token for a notification channel. Channel types that support this field include: pagerduty
+         * **Note**: This property is sensitive and will not be displayed in the plan.
          */
         serviceKey?: pulumi.Input<string>;
     }
 
     export interface SloBasicSli {
         /**
-         * Parameters for a latency threshold SLI.  Structure is documented below.
+         * Parameters for a latency threshold SLI.
+         * Structure is documented below.
          */
         latency: pulumi.Input<inputs.monitoring.SloBasicSliLatency>;
         /**
@@ -14105,7 +14590,8 @@ export namespace monitoring {
          * Distribution that fall into a good range. The totalService is the
          * total count of all values aggregated in the Distribution.
          * Defines a distribution TimeSeries filter and thresholds used for
-         * measuring good service and total service.  Structure is documented below.
+         * measuring good service and total service.
+         * Structure is documented below.
          */
         distributionCut?: pulumi.Input<inputs.monitoring.SloRequestBasedSliDistributionCut>;
         /**
@@ -14113,7 +14599,8 @@ export namespace monitoring {
          * Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
          * Must specify exactly two of good, bad, and total service filters.
          * The relationship goodService + badService = totalService
-         * will be assumed.  Structure is documented below.
+         * will be assumed.
+         * Structure is documented below.
          */
         goodTotalRatio?: pulumi.Input<inputs.monitoring.SloRequestBasedSliGoodTotalRatio>;
     }
@@ -14132,7 +14619,8 @@ export namespace monitoring {
          * that range.min <= x < range.max. inclusive of min and
          * exclusive of max. Open ranges can be defined by setting
          * just one of min or max. Summed value `X` should satisfy
-         * `range.min <= X < range.max` for a good window.  Structure is documented below.
+         * `range.min <= X < range.max` for a good window.
+         * Structure is documented below.
          */
         range: pulumi.Input<inputs.monitoring.SloRequestBasedSliDistributionCutRange>;
     }
@@ -14197,7 +14685,8 @@ export namespace monitoring {
          * Criterion that describes a window as good if its performance is
          * high enough. One of `goodBadMetricFilter`,
          * `goodTotalRatioThreshold`, `metricMeanInRange`,
-         * `metricSumInRange` must be set for `windowsBasedSli`.  Structure is documented below.
+         * `metricSumInRange` must be set for `windowsBasedSli`.
+         * Structure is documented below.
          */
         goodTotalRatioThreshold?: pulumi.Input<inputs.monitoring.SloWindowsBasedSliGoodTotalRatioThreshold>;
         /**
@@ -14207,7 +14696,8 @@ export namespace monitoring {
          * `goodTotalRatioThreshold`, `metricMeanInRange`,
          * `metricSumInRange` must be set for `windowsBasedSli`.
          * Average value X of `timeSeries` should satisfy
-         * `range.min <= X < range.max` for a good window.  Structure is documented below.
+         * `range.min <= X < range.max` for a good window.
+         * Structure is documented below.
          */
         metricMeanInRange?: pulumi.Input<inputs.monitoring.SloWindowsBasedSliMetricMeanInRange>;
         /**
@@ -14217,7 +14707,8 @@ export namespace monitoring {
          * `range.min <= X < range.max` for a good window.
          * One of `goodBadMetricFilter`,
          * `goodTotalRatioThreshold`, `metricMeanInRange`,
-         * `metricSumInRange` must be set for `windowsBasedSli`.  Structure is documented below.
+         * `metricSumInRange` must be set for `windowsBasedSli`.
+         * Structure is documented below.
          */
         metricSumInRange?: pulumi.Input<inputs.monitoring.SloWindowsBasedSliMetricSumInRange>;
         /**
@@ -14230,11 +14721,13 @@ export namespace monitoring {
 
     export interface SloWindowsBasedSliGoodTotalRatioThreshold {
         /**
-         * Basic SLI to evaluate to judge window quality.  Structure is documented below.
+         * Basic SLI to evaluate to judge window quality.
+         * Structure is documented below.
          */
         basicSliPerformance?: pulumi.Input<inputs.monitoring.SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance>;
         /**
-         * Request-based SLI to evaluate to judge window quality.  Structure is documented below.
+         * Request-based SLI to evaluate to judge window quality.
+         * Structure is documented below.
          */
         performance?: pulumi.Input<inputs.monitoring.SloWindowsBasedSliGoodTotalRatioThresholdPerformance>;
         /**
@@ -14247,7 +14740,8 @@ export namespace monitoring {
 
     export interface SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance {
         /**
-         * Parameters for a latency threshold SLI.  Structure is documented below.
+         * Parameters for a latency threshold SLI.
+         * Structure is documented below.
          */
         latency: pulumi.Input<inputs.monitoring.SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency>;
         /**
@@ -14294,7 +14788,8 @@ export namespace monitoring {
          * Distribution that fall into a good range. The totalService is the
          * total count of all values aggregated in the Distribution.
          * Defines a distribution TimeSeries filter and thresholds used for
-         * measuring good service and total service.  Structure is documented below.
+         * measuring good service and total service.
+         * Structure is documented below.
          */
         distributionCut?: pulumi.Input<inputs.monitoring.SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut>;
         /**
@@ -14302,7 +14797,8 @@ export namespace monitoring {
          * Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
          * Must specify exactly two of good, bad, and total service filters.
          * The relationship goodService + badService = totalService
-         * will be assumed.  Structure is documented below.
+         * will be assumed.
+         * Structure is documented below.
          */
         goodTotalRatio?: pulumi.Input<inputs.monitoring.SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio>;
     }
@@ -14321,7 +14817,8 @@ export namespace monitoring {
          * that range.min <= x < range.max. inclusive of min and
          * exclusive of max. Open ranges can be defined by setting
          * just one of min or max. Summed value `X` should satisfy
-         * `range.min <= X < range.max` for a good window.  Structure is documented below.
+         * `range.min <= X < range.max` for a good window.
+         * Structure is documented below.
          */
         range: pulumi.Input<inputs.monitoring.SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange>;
     }
@@ -14380,7 +14877,8 @@ export namespace monitoring {
          * that range.min <= x < range.max. inclusive of min and
          * exclusive of max. Open ranges can be defined by setting
          * just one of min or max. Summed value `X` should satisfy
-         * `range.min <= X < range.max` for a good window.  Structure is documented below.
+         * `range.min <= X < range.max` for a good window.
+         * Structure is documented below.
          */
         range: pulumi.Input<inputs.monitoring.SloWindowsBasedSliMetricMeanInRangeRange>;
         /**
@@ -14417,7 +14915,8 @@ export namespace monitoring {
          * that range.min <= x < range.max. inclusive of min and
          * exclusive of max. Open ranges can be defined by setting
          * just one of min or max. Summed value `X` should satisfy
-         * `range.min <= X < range.max` for a good window.  Structure is documented below.
+         * `range.min <= X < range.max` for a good window.
+         * Structure is documented below.
          */
         range: pulumi.Input<inputs.monitoring.SloWindowsBasedSliMetricSumInRangeRange>;
         /**
@@ -14454,13 +14953,16 @@ export namespace monitoring {
         content: pulumi.Input<string>;
         /**
          * The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
+         * Default value is `CONTAINS_STRING`.
+         * Possible values are `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, and `NON_MATCHES_REGEX`.
          */
         matcher?: pulumi.Input<string>;
     }
 
     export interface UptimeCheckConfigHttpCheck {
         /**
-         * The authentication information. Optional when creating an HTTP check; defaults to empty.  Structure is documented below.
+         * The authentication information. Optional when creating an HTTP check; defaults to empty.
+         * Structure is documented below.
          */
         authInfo?: pulumi.Input<inputs.monitoring.UptimeCheckConfigHttpCheckAuthInfo>;
         /**
@@ -14469,6 +14971,7 @@ export namespace monitoring {
         body?: pulumi.Input<string>;
         /**
          * The content type to use for the check.
+         * Possible values are `TYPE_UNSPECIFIED` and `URL_ENCODED`.
          */
         contentType?: pulumi.Input<string>;
         /**
@@ -14489,6 +14992,8 @@ export namespace monitoring {
         port?: pulumi.Input<number>;
         /**
          * The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then requestMethod defaults to GET.
+         * Default value is `GET`.
+         * Possible values are `METHOD_UNSPECIFIED`, `GET`, and `POST`.
          */
         requestMethod?: pulumi.Input<string>;
         /**
@@ -14503,7 +15008,8 @@ export namespace monitoring {
 
     export interface UptimeCheckConfigHttpCheckAuthInfo {
         /**
-         * The password to authenticate.  **Note**: This property is sensitive and will not be displayed in the plan.
+         * The password to authenticate.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
          */
         password: pulumi.Input<string>;
         /**
@@ -14530,6 +15036,7 @@ export namespace monitoring {
         groupId?: pulumi.Input<string>;
         /**
          * The resource type of the group members.
+         * Possible values are `RESOURCE_TYPE_UNSPECIFIED`, `INSTANCE`, and `AWS_ELB_LOAD_BALANCER`.
          */
         resourceType?: pulumi.Input<string>;
     }
@@ -14593,6 +15100,7 @@ export namespace networkmanagement {
         network?: pulumi.Input<string>;
         /**
          * Type of the network where the endpoint is located.
+         * Possible values are `GCP_NETWORK` and `NON_GCP_NETWORK`.
          */
         networkType?: pulumi.Input<string>;
         /**
@@ -14650,6 +15158,7 @@ export namespace notebooks {
         coreCount: pulumi.Input<number>;
         /**
          * Type of this accelerator.
+         * Possible values are `ACCELERATOR_TYPE_UNSPECIFIED`, `NVIDIA_TESLA_K80`, `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`, `TPU_V2`, and `TPU_V3`.
          */
         type: pulumi.Input<string>;
     }
@@ -14831,7 +15340,8 @@ export namespace osconfig {
     export interface GuestPoliciesAssignment {
         /**
          * Targets instances matching at least one of these label sets. This allows an assignment to target disparate groups,
-         * for example "env=prod or env=staging".  Structure is documented below.
+         * for example "env=prod or env=staging".
+         * Structure is documented below.
          */
         groupLabels?: pulumi.Input<pulumi.Input<inputs.osconfig.GuestPoliciesAssignmentGroupLabel>[]>;
         /**
@@ -14851,7 +15361,8 @@ export namespace osconfig {
         instances?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Targets VM instances matching at least one of the following OS types.
-         * VM instances must match all supplied criteria for a given OsType to be included.  Structure is documented below.
+         * VM instances must match all supplied criteria for a given OsType to be included.
+         * Structure is documented below.
          */
         osTypes?: pulumi.Input<pulumi.Input<inputs.osconfig.GuestPoliciesAssignmentOsType>[]>;
         /**
@@ -14890,6 +15401,8 @@ export namespace osconfig {
          * INSTALLED_KEEP_UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version,
          * if a higher version of the recipe is assigned to this instance.
          * REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
+         * Default value is `INSTALLED`.
+         * Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
          */
         desiredState?: pulumi.Input<string>;
         /**
@@ -14898,6 +15411,8 @@ export namespace osconfig {
          * the agent attempts to install and remove this package using the default package manager.
          * This is useful when creating a policy that applies to different types of systems.
          * The default behavior is ANY.
+         * Default value is `ANY`.
+         * Possible values are `ANY`, `APT`, `YUM`, `ZYPPER`, and `GOO`.
          */
         manager?: pulumi.Input<string>;
         /**
@@ -14911,19 +15426,23 @@ export namespace osconfig {
 
     export interface GuestPoliciesPackageRepository {
         /**
-         * An Apt Repository.  Structure is documented below.
+         * An Apt Repository.
+         * Structure is documented below.
          */
         apt?: pulumi.Input<inputs.osconfig.GuestPoliciesPackageRepositoryApt>;
         /**
-         * A Goo Repository.  Structure is documented below.
+         * A Goo Repository.
+         * Structure is documented below.
          */
         goo?: pulumi.Input<inputs.osconfig.GuestPoliciesPackageRepositoryGoo>;
         /**
-         * A Yum Repository.  Structure is documented below.
+         * A Yum Repository.
+         * Structure is documented below.
          */
         yum?: pulumi.Input<inputs.osconfig.GuestPoliciesPackageRepositoryYum>;
         /**
-         * A Zypper Repository.  Structure is documented below.
+         * A Zypper Repository.
+         * Structure is documented below.
          */
         zypper?: pulumi.Input<inputs.osconfig.GuestPoliciesPackageRepositoryZypper>;
     }
@@ -14931,6 +15450,8 @@ export namespace osconfig {
     export interface GuestPoliciesPackageRepositoryApt {
         /**
          * Type of archive files in this repository. The default behavior is DEB.
+         * Default value is `DEB`.
+         * Possible values are `DEB` and `DEB_SRC`.
          */
         archiveType?: pulumi.Input<string>;
         /**
@@ -15008,7 +15529,8 @@ export namespace osconfig {
 
     export interface GuestPoliciesRecipe {
         /**
-         * Resources available to be used in the steps in the recipe.  Structure is documented below.
+         * Resources available to be used in the steps in the recipe.
+         * Structure is documented below.
          */
         artifacts?: pulumi.Input<pulumi.Input<inputs.osconfig.GuestPoliciesRecipeArtifact>[]>;
         /**
@@ -15017,11 +15539,14 @@ export namespace osconfig {
          * INSTALLED_KEEP_UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version,
          * if a higher version of the recipe is assigned to this instance.
          * REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
+         * Default value is `INSTALLED`.
+         * Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
          */
         desiredState?: pulumi.Input<string>;
         /**
          * Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation.
-         * Any steps taken (including partially completed steps) are not rolled back.  Structure is documented below.
+         * Any steps taken (including partially completed steps) are not rolled back.
+         * Structure is documented below.
          */
         installSteps?: pulumi.Input<pulumi.Input<inputs.osconfig.GuestPoliciesRecipeInstallStep>[]>;
         /**
@@ -15033,7 +15558,8 @@ export namespace osconfig {
         name: pulumi.Input<string>;
         /**
          * Actions to be taken for updating this recipe. On failure it stops executing steps and does not attempt another update for this recipe.
-         * Any steps taken (including partially completed steps) are not rolled back.  Structure is documented below.
+         * Any steps taken (including partially completed steps) are not rolled back.
+         * Structure is documented below.
          */
         updateSteps?: pulumi.Input<pulumi.Input<inputs.osconfig.GuestPoliciesRecipeUpdateStep>[]>;
         /**
@@ -15050,7 +15576,8 @@ export namespace osconfig {
          */
         allowInsecure?: pulumi.Input<boolean>;
         /**
-         * A Google Cloud Storage artifact.  Structure is documented below.
+         * A Google Cloud Storage artifact.
+         * Structure is documented below.
          */
         gcs?: pulumi.Input<inputs.osconfig.GuestPoliciesRecipeArtifactGcs>;
         /**
@@ -15059,7 +15586,8 @@ export namespace osconfig {
          */
         id: pulumi.Input<string>;
         /**
-         * A generic remote artifact.  Structure is documented below.
+         * A generic remote artifact.
+         * Structure is documented below.
          */
         remote?: pulumi.Input<inputs.osconfig.GuestPoliciesRecipeArtifactRemote>;
     }
@@ -15097,31 +15625,38 @@ export namespace osconfig {
 
     export interface GuestPoliciesRecipeInstallStep {
         /**
-         * Extracts an archive into the specified directory.  Structure is documented below.
+         * Extracts an archive into the specified directory.
+         * Structure is documented below.
          */
         archiveExtraction?: pulumi.Input<inputs.osconfig.GuestPoliciesRecipeInstallStepArchiveExtraction>;
         /**
-         * Installs a deb file via dpkg.  Structure is documented below.
+         * Installs a deb file via dpkg.
+         * Structure is documented below.
          */
         dpkgInstallation?: pulumi.Input<inputs.osconfig.GuestPoliciesRecipeInstallStepDpkgInstallation>;
         /**
-         * Copies a file onto the instance.  Structure is documented below.
+         * Copies a file onto the instance.
+         * Structure is documented below.
          */
         fileCopy?: pulumi.Input<inputs.osconfig.GuestPoliciesRecipeInstallStepFileCopy>;
         /**
-         * Executes an artifact or local file.  Structure is documented below.
+         * Executes an artifact or local file.
+         * Structure is documented below.
          */
         fileExec?: pulumi.Input<inputs.osconfig.GuestPoliciesRecipeInstallStepFileExec>;
         /**
-         * Installs an MSI file.  Structure is documented below.
+         * Installs an MSI file.
+         * Structure is documented below.
          */
         msiInstallation?: pulumi.Input<inputs.osconfig.GuestPoliciesRecipeInstallStepMsiInstallation>;
         /**
-         * Installs an rpm file via the rpm utility.  Structure is documented below.
+         * Installs an rpm file via the rpm utility.
+         * Structure is documented below.
          */
         rpmInstallation?: pulumi.Input<inputs.osconfig.GuestPoliciesRecipeInstallStepRpmInstallation>;
         /**
-         * Runs commands in a shell.  Structure is documented below.
+         * Runs commands in a shell.
+         * Structure is documented below.
          */
         scriptRun?: pulumi.Input<inputs.osconfig.GuestPoliciesRecipeInstallStepScriptRun>;
     }
@@ -15137,6 +15672,7 @@ export namespace osconfig {
         destination?: pulumi.Input<string>;
         /**
          * The type of the archive to extract.
+         * Possible values are `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, and `ZIP`.
          */
         type: pulumi.Input<string>;
     }
@@ -15222,6 +15758,7 @@ export namespace osconfig {
         /**
          * The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
          * which likely only succeed for scripts with shebang lines.
+         * Possible values are `SHELL` and `POWERSHELL`.
          */
         interpreter?: pulumi.Input<string>;
         /**
@@ -15232,31 +15769,38 @@ export namespace osconfig {
 
     export interface GuestPoliciesRecipeUpdateStep {
         /**
-         * Extracts an archive into the specified directory.  Structure is documented below.
+         * Extracts an archive into the specified directory.
+         * Structure is documented below.
          */
         archiveExtraction?: pulumi.Input<inputs.osconfig.GuestPoliciesRecipeUpdateStepArchiveExtraction>;
         /**
-         * Installs a deb file via dpkg.  Structure is documented below.
+         * Installs a deb file via dpkg.
+         * Structure is documented below.
          */
         dpkgInstallation?: pulumi.Input<inputs.osconfig.GuestPoliciesRecipeUpdateStepDpkgInstallation>;
         /**
-         * Copies a file onto the instance.  Structure is documented below.
+         * Copies a file onto the instance.
+         * Structure is documented below.
          */
         fileCopy?: pulumi.Input<inputs.osconfig.GuestPoliciesRecipeUpdateStepFileCopy>;
         /**
-         * Executes an artifact or local file.  Structure is documented below.
+         * Executes an artifact or local file.
+         * Structure is documented below.
          */
         fileExec?: pulumi.Input<inputs.osconfig.GuestPoliciesRecipeUpdateStepFileExec>;
         /**
-         * Installs an MSI file.  Structure is documented below.
+         * Installs an MSI file.
+         * Structure is documented below.
          */
         msiInstallation?: pulumi.Input<inputs.osconfig.GuestPoliciesRecipeUpdateStepMsiInstallation>;
         /**
-         * Installs an rpm file via the rpm utility.  Structure is documented below.
+         * Installs an rpm file via the rpm utility.
+         * Structure is documented below.
          */
         rpmInstallation?: pulumi.Input<inputs.osconfig.GuestPoliciesRecipeUpdateStepRpmInstallation>;
         /**
-         * Runs commands in a shell.  Structure is documented below.
+         * Runs commands in a shell.
+         * Structure is documented below.
          */
         scriptRun?: pulumi.Input<inputs.osconfig.GuestPoliciesRecipeUpdateStepScriptRun>;
     }
@@ -15272,6 +15816,7 @@ export namespace osconfig {
         destination?: pulumi.Input<string>;
         /**
          * The type of the archive to extract.
+         * Possible values are `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, and `ZIP`.
          */
         type: pulumi.Input<string>;
     }
@@ -15357,6 +15902,7 @@ export namespace osconfig {
         /**
          * The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
          * which likely only succeed for scripts with shebang lines.
+         * Possible values are `SHELL` and `POWERSHELL`.
          */
         interpreter?: pulumi.Input<string>;
         /**
@@ -15371,7 +15917,8 @@ export namespace osconfig {
          */
         all?: pulumi.Input<boolean>;
         /**
-         * Targets VM instances matching ANY of these GroupLabels. This allows targeting of disparate groups of VM instances.  Structure is documented below.
+         * Targets VM instances matching ANY of these GroupLabels. This allows targeting of disparate groups of VM instances.
+         * Structure is documented below.
          */
         groupLabels?: pulumi.Input<pulumi.Input<inputs.osconfig.PatchDeploymentInstanceFilterGroupLabel>[]>;
         /**
@@ -15408,35 +15955,43 @@ export namespace osconfig {
 
     export interface PatchDeploymentPatchConfig {
         /**
-         * Apt update settings. Use this setting to override the default apt patch rules.  Structure is documented below.
+         * Apt update settings. Use this setting to override the default apt patch rules.
+         * Structure is documented below.
          */
         apt?: pulumi.Input<inputs.osconfig.PatchDeploymentPatchConfigApt>;
         /**
-         * goo update settings. Use this setting to override the default goo patch rules.  Structure is documented below.
+         * goo update settings. Use this setting to override the default goo patch rules.
+         * Structure is documented below.
          */
         goo?: pulumi.Input<inputs.osconfig.PatchDeploymentPatchConfigGoo>;
         /**
-         * The ExecStep to run after the patch update.  Structure is documented below.
+         * The ExecStep to run after the patch update.
+         * Structure is documented below.
          */
         postStep?: pulumi.Input<inputs.osconfig.PatchDeploymentPatchConfigPostStep>;
         /**
-         * The ExecStep to run before the patch update.  Structure is documented below.
+         * The ExecStep to run before the patch update.
+         * Structure is documented below.
          */
         preStep?: pulumi.Input<inputs.osconfig.PatchDeploymentPatchConfigPreStep>;
         /**
          * Post-patch reboot settings.
+         * Possible values are `DEFAULT`, `ALWAYS`, and `NEVER`.
          */
         rebootConfig?: pulumi.Input<string>;
         /**
-         * Windows update settings. Use this setting to override the default Windows patch rules.  Structure is documented below.
+         * Windows update settings. Use this setting to override the default Windows patch rules.
+         * Structure is documented below.
          */
         windowsUpdate?: pulumi.Input<inputs.osconfig.PatchDeploymentPatchConfigWindowsUpdate>;
         /**
-         * Yum update settings. Use this setting to override the default yum patch rules.  Structure is documented below.
+         * Yum update settings. Use this setting to override the default yum patch rules.
+         * Structure is documented below.
          */
         yum?: pulumi.Input<inputs.osconfig.PatchDeploymentPatchConfigYum>;
         /**
-         * zypper update settings. Use this setting to override the default zypper patch rules.  Structure is documented below.
+         * zypper update settings. Use this setting to override the default zypper patch rules.
+         * Structure is documented below.
          */
         zypper?: pulumi.Input<inputs.osconfig.PatchDeploymentPatchConfigZypper>;
     }
@@ -15454,6 +16009,7 @@ export namespace osconfig {
         exclusivePackages?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * By changing the type to DIST, the patching is performed using apt-get dist-upgrade instead.
+         * Possible values are `DIST` and `UPGRADE`.
          */
         type?: pulumi.Input<string>;
     }
@@ -15467,11 +16023,13 @@ export namespace osconfig {
 
     export interface PatchDeploymentPatchConfigPostStep {
         /**
-         * The ExecStepConfig for all Linux VMs targeted by the PatchJob.  Structure is documented below.
+         * The ExecStepConfig for all Linux VMs targeted by the PatchJob.
+         * Structure is documented below.
          */
         linuxExecStepConfig?: pulumi.Input<inputs.osconfig.PatchDeploymentPatchConfigPostStepLinuxExecStepConfig>;
         /**
-         * The ExecStepConfig for all Windows VMs targeted by the PatchJob.  Structure is documented below.
+         * The ExecStepConfig for all Windows VMs targeted by the PatchJob.
+         * Structure is documented below.
          */
         windowsExecStepConfig?: pulumi.Input<inputs.osconfig.PatchDeploymentPatchConfigPostStepWindowsExecStepConfig>;
     }
@@ -15482,12 +16040,14 @@ export namespace osconfig {
          */
         allowedSuccessCodes?: pulumi.Input<pulumi.Input<number>[]>;
         /**
-         * A Cloud Storage object containing the executable.  Structure is documented below.
+         * A Cloud Storage object containing the executable.
+         * Structure is documented below.
          */
         gcsObject?: pulumi.Input<inputs.osconfig.PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject>;
         /**
          * The script interpreter to use to run the script. If no interpreter is specified the script will
          * be executed directly, which will likely only succeed for scripts with shebang lines.
+         * Possible values are `SHELL` and `POWERSHELL`.
          */
         interpreter?: pulumi.Input<string>;
         /**
@@ -15517,12 +16077,14 @@ export namespace osconfig {
          */
         allowedSuccessCodes?: pulumi.Input<pulumi.Input<number>[]>;
         /**
-         * A Cloud Storage object containing the executable.  Structure is documented below.
+         * A Cloud Storage object containing the executable.
+         * Structure is documented below.
          */
         gcsObject?: pulumi.Input<inputs.osconfig.PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObject>;
         /**
          * The script interpreter to use to run the script. If no interpreter is specified the script will
          * be executed directly, which will likely only succeed for scripts with shebang lines.
+         * Possible values are `SHELL` and `POWERSHELL`.
          */
         interpreter?: pulumi.Input<string>;
         /**
@@ -15548,11 +16110,13 @@ export namespace osconfig {
 
     export interface PatchDeploymentPatchConfigPreStep {
         /**
-         * The ExecStepConfig for all Linux VMs targeted by the PatchJob.  Structure is documented below.
+         * The ExecStepConfig for all Linux VMs targeted by the PatchJob.
+         * Structure is documented below.
          */
         linuxExecStepConfig?: pulumi.Input<inputs.osconfig.PatchDeploymentPatchConfigPreStepLinuxExecStepConfig>;
         /**
-         * The ExecStepConfig for all Windows VMs targeted by the PatchJob.  Structure is documented below.
+         * The ExecStepConfig for all Windows VMs targeted by the PatchJob.
+         * Structure is documented below.
          */
         windowsExecStepConfig?: pulumi.Input<inputs.osconfig.PatchDeploymentPatchConfigPreStepWindowsExecStepConfig>;
     }
@@ -15563,12 +16127,14 @@ export namespace osconfig {
          */
         allowedSuccessCodes?: pulumi.Input<pulumi.Input<number>[]>;
         /**
-         * A Cloud Storage object containing the executable.  Structure is documented below.
+         * A Cloud Storage object containing the executable.
+         * Structure is documented below.
          */
         gcsObject?: pulumi.Input<inputs.osconfig.PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject>;
         /**
          * The script interpreter to use to run the script. If no interpreter is specified the script will
          * be executed directly, which will likely only succeed for scripts with shebang lines.
+         * Possible values are `SHELL` and `POWERSHELL`.
          */
         interpreter?: pulumi.Input<string>;
         /**
@@ -15598,12 +16164,14 @@ export namespace osconfig {
          */
         allowedSuccessCodes?: pulumi.Input<pulumi.Input<number>[]>;
         /**
-         * A Cloud Storage object containing the executable.  Structure is documented below.
+         * A Cloud Storage object containing the executable.
+         * Structure is documented below.
          */
         gcsObject?: pulumi.Input<inputs.osconfig.PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject>;
         /**
          * The script interpreter to use to run the script. If no interpreter is specified the script will
          * be executed directly, which will likely only succeed for scripts with shebang lines.
+         * Possible values are `SHELL` and `POWERSHELL`.
          */
         interpreter?: pulumi.Input<string>;
         /**
@@ -15630,6 +16198,7 @@ export namespace osconfig {
     export interface PatchDeploymentPatchConfigWindowsUpdate {
         /**
          * Only apply updates of these windows update classifications. If empty, all updates are applied.
+         * Possible values are `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, and `UPDATE`.
          */
         classifications?: pulumi.Input<string>;
         /**
@@ -15705,7 +16274,8 @@ export namespace osconfig {
          */
         lastExecuteTime?: pulumi.Input<string>;
         /**
-         * Schedule with monthly executions.  Structure is documented below.
+         * Schedule with monthly executions.
+         * Structure is documented below.
          */
         monthly?: pulumi.Input<inputs.osconfig.PatchDeploymentRecurringScheduleMonthly>;
         /**
@@ -15720,16 +16290,19 @@ export namespace osconfig {
          */
         startTime?: pulumi.Input<string>;
         /**
-         * Time of the day to run a recurring deployment.  Structure is documented below.
+         * Time of the day to run a recurring deployment.
+         * Structure is documented below.
          */
         timeOfDay: pulumi.Input<inputs.osconfig.PatchDeploymentRecurringScheduleTimeOfDay>;
         /**
          * Defines the time zone that timeOfDay is relative to. The rules for daylight saving time are
-         * determined by the chosen time zone.  Structure is documented below.
+         * determined by the chosen time zone.
+         * Structure is documented below.
          */
         timeZone: pulumi.Input<inputs.osconfig.PatchDeploymentRecurringScheduleTimeZone>;
         /**
-         * Schedule with weekly executions.  Structure is documented below.
+         * Schedule with weekly executions.
+         * Structure is documented below.
          */
         weekly?: pulumi.Input<inputs.osconfig.PatchDeploymentRecurringScheduleWeekly>;
     }
@@ -15742,7 +16315,8 @@ export namespace osconfig {
          */
         monthDay?: pulumi.Input<number>;
         /**
-         * Week day in a month.  Structure is documented below.
+         * Week day in a month.
+         * Structure is documented below.
          */
         weekDayOfMonth?: pulumi.Input<inputs.osconfig.PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth>;
     }
@@ -15750,6 +16324,7 @@ export namespace osconfig {
     export interface PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth {
         /**
          * A day of the week.
+         * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
          */
         dayOfWeek: pulumi.Input<string>;
         /**
@@ -15792,6 +16367,7 @@ export namespace osconfig {
     export interface PatchDeploymentRecurringScheduleWeekly {
         /**
          * A day of the week.
+         * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
          */
         dayOfWeek: pulumi.Input<string>;
     }
@@ -15967,7 +16543,8 @@ export namespace pubsub {
         attributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * If specified, Pub/Sub will generate and attach an OIDC JWT token as
-         * an Authorization header in the HTTP request for every pushed message.  Structure is documented below.
+         * an Authorization header in the HTTP request for every pushed message.
+         * Structure is documented below.
          */
         oidcToken?: pulumi.Input<inputs.pubsub.SubscriptionPushConfigOidcToken>;
         /**
@@ -16055,14 +16632,16 @@ export namespace secretmanager {
          */
         automatic?: pulumi.Input<boolean>;
         /**
-         * The Secret will automatically be replicated without any restrictions.  Structure is documented below.
+         * The Secret will automatically be replicated without any restrictions.
+         * Structure is documented below.
          */
         userManaged?: pulumi.Input<inputs.secretmanager.SecretReplicationUserManaged>;
     }
 
     export interface SecretReplicationUserManaged {
         /**
-         * The list of Replicas for this Secret. Cannot be empty.  Structure is documented below.
+         * The list of Replicas for this Secret. Cannot be empty.
+         * Structure is documented below.
          */
         replicas: pulumi.Input<pulumi.Input<inputs.secretmanager.SecretReplicationUserManagedReplica>[]>;
     }
@@ -16151,6 +16730,7 @@ export namespace sourcerepo {
          * The format of the Cloud Pub/Sub messages.
          * - PROTOBUF: The message payload is a serialized protocol buffer of SourceRepoEvent.
          * - JSON: The message payload is a JSON string of SourceRepoEvent.
+         * Possible values are `PROTOBUF` and `JSON`.
          */
         messageFormat: pulumi.Input<string>;
         /**

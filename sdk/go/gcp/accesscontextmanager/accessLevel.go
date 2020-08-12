@@ -23,10 +23,12 @@ import (
 type AccessLevel struct {
 	pulumi.CustomResourceState
 
-	// A set of predefined conditions for the access level and a combining function.  Structure is documented below.
+	// A set of predefined conditions for the access level and a combining function.
+	// Structure is documented below.
 	Basic AccessLevelBasicPtrOutput `pulumi:"basic"`
 	// Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
-	// See CEL spec at: https://github.com/google/cel-spec.  Structure is documented below.
+	// See CEL spec at: https://github.com/google/cel-spec.
+	// Structure is documented below.
 	Custom AccessLevelCustomPtrOutput `pulumi:"custom"`
 	// Description of the expression
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -75,10 +77,12 @@ func GetAccessLevel(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessLevel resources.
 type accessLevelState struct {
-	// A set of predefined conditions for the access level and a combining function.  Structure is documented below.
+	// A set of predefined conditions for the access level and a combining function.
+	// Structure is documented below.
 	Basic *AccessLevelBasic `pulumi:"basic"`
 	// Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
-	// See CEL spec at: https://github.com/google/cel-spec.  Structure is documented below.
+	// See CEL spec at: https://github.com/google/cel-spec.
+	// Structure is documented below.
 	Custom *AccessLevelCustom `pulumi:"custom"`
 	// Description of the expression
 	Description *string `pulumi:"description"`
@@ -94,10 +98,12 @@ type accessLevelState struct {
 }
 
 type AccessLevelState struct {
-	// A set of predefined conditions for the access level and a combining function.  Structure is documented below.
+	// A set of predefined conditions for the access level and a combining function.
+	// Structure is documented below.
 	Basic AccessLevelBasicPtrInput
 	// Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
-	// See CEL spec at: https://github.com/google/cel-spec.  Structure is documented below.
+	// See CEL spec at: https://github.com/google/cel-spec.
+	// Structure is documented below.
 	Custom AccessLevelCustomPtrInput
 	// Description of the expression
 	Description pulumi.StringPtrInput
@@ -117,10 +123,12 @@ func (AccessLevelState) ElementType() reflect.Type {
 }
 
 type accessLevelArgs struct {
-	// A set of predefined conditions for the access level and a combining function.  Structure is documented below.
+	// A set of predefined conditions for the access level and a combining function.
+	// Structure is documented below.
 	Basic *AccessLevelBasic `pulumi:"basic"`
 	// Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
-	// See CEL spec at: https://github.com/google/cel-spec.  Structure is documented below.
+	// See CEL spec at: https://github.com/google/cel-spec.
+	// Structure is documented below.
 	Custom *AccessLevelCustom `pulumi:"custom"`
 	// Description of the expression
 	Description *string `pulumi:"description"`
@@ -137,10 +145,12 @@ type accessLevelArgs struct {
 
 // The set of arguments for constructing a AccessLevel resource.
 type AccessLevelArgs struct {
-	// A set of predefined conditions for the access level and a combining function.  Structure is documented below.
+	// A set of predefined conditions for the access level and a combining function.
+	// Structure is documented below.
 	Basic AccessLevelBasicPtrInput
 	// Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
-	// See CEL spec at: https://github.com/google/cel-spec.  Structure is documented below.
+	// See CEL spec at: https://github.com/google/cel-spec.
+	// Structure is documented below.
 	Custom AccessLevelCustomPtrInput
 	// Description of the expression
 	Description pulumi.StringPtrInput

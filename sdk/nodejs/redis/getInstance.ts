@@ -69,6 +69,7 @@ export interface GetInstanceResult {
     readonly locationId: string;
     readonly memorySizeGb: number;
     readonly name: string;
+    readonly persistenceIamIdentity: string;
     /**
      * The port number of the exposed Redis endpoint.
      */

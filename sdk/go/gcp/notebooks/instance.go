@@ -15,15 +15,18 @@ type Instance struct {
 
 	// The hardware accelerator used on this instance. If you use accelerators,
 	// make sure that your configuration has enough vCPUs and memory to support the
-	// machineType you have selected.  Structure is documented below.
+	// machineType you have selected.
+	// Structure is documented below.
 	AcceleratorConfig InstanceAcceleratorConfigPtrOutput `pulumi:"acceleratorConfig"`
 	// The size of the boot disk in GB attached to this instance,
 	// up to a maximum of 64000 GB (64 TB). The minimum recommended value is 100 GB.
 	// If not specified, this defaults to 100.
 	BootDiskSizeGb pulumi.IntPtrOutput `pulumi:"bootDiskSizeGb"`
 	// Possible disk types for notebook instances.
+	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
 	BootDiskType pulumi.StringPtrOutput `pulumi:"bootDiskType"`
-	// Use a container image to start the notebook instance.  Structure is documented below.
+	// Use a container image to start the notebook instance.
+	// Structure is documented below.
 	ContainerImage InstanceContainerImagePtrOutput `pulumi:"containerImage"`
 	// Instance creation time
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -36,8 +39,10 @@ type Instance struct {
 	// If not specified, this defaults to 100.
 	DataDiskSizeGb pulumi.IntPtrOutput `pulumi:"dataDiskSizeGb"`
 	// Possible disk types for notebook instances.
+	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
 	DataDiskType pulumi.StringPtrOutput `pulumi:"dataDiskType"`
 	// Disk encryption method used on the boot and data disks, defaults to GMEK.
+	// Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
 	DiskEncryption pulumi.StringPtrOutput `pulumi:"diskEncryption"`
 	// Indicates that this is a boot disk. The virtual machine will
 	// use the first partition of the disk for its root filesystem.
@@ -94,7 +99,8 @@ type Instance struct {
 	Subnet pulumi.StringOutput `pulumi:"subnet"`
 	// Instance update time.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// Use a Compute Engine VM image to start the notebook instance.  Structure is documented below.
+	// Use a Compute Engine VM image to start the notebook instance.
+	// Structure is documented below.
 	VmImage InstanceVmImagePtrOutput `pulumi:"vmImage"`
 }
 
@@ -134,15 +140,18 @@ func GetInstance(ctx *pulumi.Context,
 type instanceState struct {
 	// The hardware accelerator used on this instance. If you use accelerators,
 	// make sure that your configuration has enough vCPUs and memory to support the
-	// machineType you have selected.  Structure is documented below.
+	// machineType you have selected.
+	// Structure is documented below.
 	AcceleratorConfig *InstanceAcceleratorConfig `pulumi:"acceleratorConfig"`
 	// The size of the boot disk in GB attached to this instance,
 	// up to a maximum of 64000 GB (64 TB). The minimum recommended value is 100 GB.
 	// If not specified, this defaults to 100.
 	BootDiskSizeGb *int `pulumi:"bootDiskSizeGb"`
 	// Possible disk types for notebook instances.
+	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
 	BootDiskType *string `pulumi:"bootDiskType"`
-	// Use a container image to start the notebook instance.  Structure is documented below.
+	// Use a container image to start the notebook instance.
+	// Structure is documented below.
 	ContainerImage *InstanceContainerImage `pulumi:"containerImage"`
 	// Instance creation time
 	CreateTime *string `pulumi:"createTime"`
@@ -155,8 +164,10 @@ type instanceState struct {
 	// If not specified, this defaults to 100.
 	DataDiskSizeGb *int `pulumi:"dataDiskSizeGb"`
 	// Possible disk types for notebook instances.
+	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
 	DataDiskType *string `pulumi:"dataDiskType"`
 	// Disk encryption method used on the boot and data disks, defaults to GMEK.
+	// Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
 	DiskEncryption *string `pulumi:"diskEncryption"`
 	// Indicates that this is a boot disk. The virtual machine will
 	// use the first partition of the disk for its root filesystem.
@@ -213,22 +224,26 @@ type instanceState struct {
 	Subnet *string `pulumi:"subnet"`
 	// Instance update time.
 	UpdateTime *string `pulumi:"updateTime"`
-	// Use a Compute Engine VM image to start the notebook instance.  Structure is documented below.
+	// Use a Compute Engine VM image to start the notebook instance.
+	// Structure is documented below.
 	VmImage *InstanceVmImage `pulumi:"vmImage"`
 }
 
 type InstanceState struct {
 	// The hardware accelerator used on this instance. If you use accelerators,
 	// make sure that your configuration has enough vCPUs and memory to support the
-	// machineType you have selected.  Structure is documented below.
+	// machineType you have selected.
+	// Structure is documented below.
 	AcceleratorConfig InstanceAcceleratorConfigPtrInput
 	// The size of the boot disk in GB attached to this instance,
 	// up to a maximum of 64000 GB (64 TB). The minimum recommended value is 100 GB.
 	// If not specified, this defaults to 100.
 	BootDiskSizeGb pulumi.IntPtrInput
 	// Possible disk types for notebook instances.
+	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
 	BootDiskType pulumi.StringPtrInput
-	// Use a container image to start the notebook instance.  Structure is documented below.
+	// Use a container image to start the notebook instance.
+	// Structure is documented below.
 	ContainerImage InstanceContainerImagePtrInput
 	// Instance creation time
 	CreateTime pulumi.StringPtrInput
@@ -241,8 +256,10 @@ type InstanceState struct {
 	// If not specified, this defaults to 100.
 	DataDiskSizeGb pulumi.IntPtrInput
 	// Possible disk types for notebook instances.
+	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
 	DataDiskType pulumi.StringPtrInput
 	// Disk encryption method used on the boot and data disks, defaults to GMEK.
+	// Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
 	DiskEncryption pulumi.StringPtrInput
 	// Indicates that this is a boot disk. The virtual machine will
 	// use the first partition of the disk for its root filesystem.
@@ -299,7 +316,8 @@ type InstanceState struct {
 	Subnet pulumi.StringPtrInput
 	// Instance update time.
 	UpdateTime pulumi.StringPtrInput
-	// Use a Compute Engine VM image to start the notebook instance.  Structure is documented below.
+	// Use a Compute Engine VM image to start the notebook instance.
+	// Structure is documented below.
 	VmImage InstanceVmImagePtrInput
 }
 
@@ -310,15 +328,18 @@ func (InstanceState) ElementType() reflect.Type {
 type instanceArgs struct {
 	// The hardware accelerator used on this instance. If you use accelerators,
 	// make sure that your configuration has enough vCPUs and memory to support the
-	// machineType you have selected.  Structure is documented below.
+	// machineType you have selected.
+	// Structure is documented below.
 	AcceleratorConfig *InstanceAcceleratorConfig `pulumi:"acceleratorConfig"`
 	// The size of the boot disk in GB attached to this instance,
 	// up to a maximum of 64000 GB (64 TB). The minimum recommended value is 100 GB.
 	// If not specified, this defaults to 100.
 	BootDiskSizeGb *int `pulumi:"bootDiskSizeGb"`
 	// Possible disk types for notebook instances.
+	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
 	BootDiskType *string `pulumi:"bootDiskType"`
-	// Use a container image to start the notebook instance.  Structure is documented below.
+	// Use a container image to start the notebook instance.
+	// Structure is documented below.
 	ContainerImage *InstanceContainerImage `pulumi:"containerImage"`
 	// Instance creation time
 	CreateTime *string `pulumi:"createTime"`
@@ -331,8 +352,10 @@ type instanceArgs struct {
 	// If not specified, this defaults to 100.
 	DataDiskSizeGb *int `pulumi:"dataDiskSizeGb"`
 	// Possible disk types for notebook instances.
+	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
 	DataDiskType *string `pulumi:"dataDiskType"`
 	// Disk encryption method used on the boot and data disks, defaults to GMEK.
+	// Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
 	DiskEncryption *string `pulumi:"diskEncryption"`
 	// Indicates that this is a boot disk. The virtual machine will
 	// use the first partition of the disk for its root filesystem.
@@ -385,7 +408,8 @@ type instanceArgs struct {
 	Subnet *string `pulumi:"subnet"`
 	// Instance update time.
 	UpdateTime *string `pulumi:"updateTime"`
-	// Use a Compute Engine VM image to start the notebook instance.  Structure is documented below.
+	// Use a Compute Engine VM image to start the notebook instance.
+	// Structure is documented below.
 	VmImage *InstanceVmImage `pulumi:"vmImage"`
 }
 
@@ -393,15 +417,18 @@ type instanceArgs struct {
 type InstanceArgs struct {
 	// The hardware accelerator used on this instance. If you use accelerators,
 	// make sure that your configuration has enough vCPUs and memory to support the
-	// machineType you have selected.  Structure is documented below.
+	// machineType you have selected.
+	// Structure is documented below.
 	AcceleratorConfig InstanceAcceleratorConfigPtrInput
 	// The size of the boot disk in GB attached to this instance,
 	// up to a maximum of 64000 GB (64 TB). The minimum recommended value is 100 GB.
 	// If not specified, this defaults to 100.
 	BootDiskSizeGb pulumi.IntPtrInput
 	// Possible disk types for notebook instances.
+	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
 	BootDiskType pulumi.StringPtrInput
-	// Use a container image to start the notebook instance.  Structure is documented below.
+	// Use a container image to start the notebook instance.
+	// Structure is documented below.
 	ContainerImage InstanceContainerImagePtrInput
 	// Instance creation time
 	CreateTime pulumi.StringPtrInput
@@ -414,8 +441,10 @@ type InstanceArgs struct {
 	// If not specified, this defaults to 100.
 	DataDiskSizeGb pulumi.IntPtrInput
 	// Possible disk types for notebook instances.
+	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
 	DataDiskType pulumi.StringPtrInput
 	// Disk encryption method used on the boot and data disks, defaults to GMEK.
+	// Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
 	DiskEncryption pulumi.StringPtrInput
 	// Indicates that this is a boot disk. The virtual machine will
 	// use the first partition of the disk for its root filesystem.
@@ -468,7 +497,8 @@ type InstanceArgs struct {
 	Subnet pulumi.StringPtrInput
 	// Instance update time.
 	UpdateTime pulumi.StringPtrInput
-	// Use a Compute Engine VM image to start the notebook instance.  Structure is documented below.
+	// Use a Compute Engine VM image to start the notebook instance.
+	// Structure is documented below.
 	VmImage InstanceVmImagePtrInput
 }
 

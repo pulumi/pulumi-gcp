@@ -44,7 +44,8 @@ export class EngineModel extends pulumi.CustomResource {
 
     /**
      * The default version of the model. This version will be used to handle
-     * prediction requests that do not specify a version.  Structure is documented below.
+     * prediction requests that do not specify a version.
+     * Structure is documented below.
      */
     public readonly defaultVersion!: pulumi.Output<outputs.ml.EngineModelDefaultVersion | undefined>;
     /**
@@ -126,7 +127,8 @@ export class EngineModel extends pulumi.CustomResource {
 export interface EngineModelState {
     /**
      * The default version of the model. This version will be used to handle
-     * prediction requests that do not specify a version.  Structure is documented below.
+     * prediction requests that do not specify a version.
+     * Structure is documented below.
      */
     readonly defaultVersion?: pulumi.Input<inputs.ml.EngineModelDefaultVersion>;
     /**
@@ -167,7 +169,8 @@ export interface EngineModelState {
 export interface EngineModelArgs {
     /**
      * The default version of the model. This version will be used to handle
-     * prediction requests that do not specify a version.  Structure is documented below.
+     * prediction requests that do not specify a version.
+     * Structure is documented below.
      */
     readonly defaultVersion?: pulumi.Input<inputs.ml.EngineModelDefaultVersion>;
     /**

@@ -14,7 +14,8 @@ namespace Pulumi.Gcp.Notebooks
         /// <summary>
         /// The hardware accelerator used on this instance. If you use accelerators,
         /// make sure that your configuration has enough vCPUs and memory to support the
-        /// machineType you have selected.  Structure is documented below.
+        /// machineType you have selected.
+        /// Structure is documented below.
         /// </summary>
         [Output("acceleratorConfig")]
         public Output<Outputs.InstanceAcceleratorConfig?> AcceleratorConfig { get; private set; } = null!;
@@ -29,12 +30,14 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// Possible disk types for notebook instances.
+        /// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
         /// </summary>
         [Output("bootDiskType")]
         public Output<string?> BootDiskType { get; private set; } = null!;
 
         /// <summary>
-        /// Use a container image to start the notebook instance.  Structure is documented below.
+        /// Use a container image to start the notebook instance.
+        /// Structure is documented below.
         /// </summary>
         [Output("containerImage")]
         public Output<Outputs.InstanceContainerImage?> ContainerImage { get; private set; } = null!;
@@ -63,12 +66,14 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// Possible disk types for notebook instances.
+        /// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
         /// </summary>
         [Output("dataDiskType")]
         public Output<string?> DataDiskType { get; private set; } = null!;
 
         /// <summary>
         /// Disk encryption method used on the boot and data disks, defaults to GMEK.
+        /// Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
         /// </summary>
         [Output("diskEncryption")]
         public Output<string?> DiskEncryption { get; private set; } = null!;
@@ -205,7 +210,8 @@ namespace Pulumi.Gcp.Notebooks
         public Output<string> UpdateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Use a Compute Engine VM image to start the notebook instance.  Structure is documented below.
+        /// Use a Compute Engine VM image to start the notebook instance.
+        /// Structure is documented below.
         /// </summary>
         [Output("vmImage")]
         public Output<Outputs.InstanceVmImage?> VmImage { get; private set; } = null!;
@@ -259,7 +265,8 @@ namespace Pulumi.Gcp.Notebooks
         /// <summary>
         /// The hardware accelerator used on this instance. If you use accelerators,
         /// make sure that your configuration has enough vCPUs and memory to support the
-        /// machineType you have selected.  Structure is documented below.
+        /// machineType you have selected.
+        /// Structure is documented below.
         /// </summary>
         [Input("acceleratorConfig")]
         public Input<Inputs.InstanceAcceleratorConfigArgs>? AcceleratorConfig { get; set; }
@@ -274,12 +281,14 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// Possible disk types for notebook instances.
+        /// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
         /// </summary>
         [Input("bootDiskType")]
         public Input<string>? BootDiskType { get; set; }
 
         /// <summary>
-        /// Use a container image to start the notebook instance.  Structure is documented below.
+        /// Use a container image to start the notebook instance.
+        /// Structure is documented below.
         /// </summary>
         [Input("containerImage")]
         public Input<Inputs.InstanceContainerImageArgs>? ContainerImage { get; set; }
@@ -308,12 +317,14 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// Possible disk types for notebook instances.
+        /// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
         /// </summary>
         [Input("dataDiskType")]
         public Input<string>? DataDiskType { get; set; }
 
         /// <summary>
         /// Disk encryption method used on the boot and data disks, defaults to GMEK.
+        /// Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
         /// </summary>
         [Input("diskEncryption")]
         public Input<string>? DiskEncryption { get; set; }
@@ -450,7 +461,8 @@ namespace Pulumi.Gcp.Notebooks
         public Input<string>? UpdateTime { get; set; }
 
         /// <summary>
-        /// Use a Compute Engine VM image to start the notebook instance.  Structure is documented below.
+        /// Use a Compute Engine VM image to start the notebook instance.
+        /// Structure is documented below.
         /// </summary>
         [Input("vmImage")]
         public Input<Inputs.InstanceVmImageArgs>? VmImage { get; set; }
@@ -465,7 +477,8 @@ namespace Pulumi.Gcp.Notebooks
         /// <summary>
         /// The hardware accelerator used on this instance. If you use accelerators,
         /// make sure that your configuration has enough vCPUs and memory to support the
-        /// machineType you have selected.  Structure is documented below.
+        /// machineType you have selected.
+        /// Structure is documented below.
         /// </summary>
         [Input("acceleratorConfig")]
         public Input<Inputs.InstanceAcceleratorConfigGetArgs>? AcceleratorConfig { get; set; }
@@ -480,12 +493,14 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// Possible disk types for notebook instances.
+        /// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
         /// </summary>
         [Input("bootDiskType")]
         public Input<string>? BootDiskType { get; set; }
 
         /// <summary>
-        /// Use a container image to start the notebook instance.  Structure is documented below.
+        /// Use a container image to start the notebook instance.
+        /// Structure is documented below.
         /// </summary>
         [Input("containerImage")]
         public Input<Inputs.InstanceContainerImageGetArgs>? ContainerImage { get; set; }
@@ -514,12 +529,14 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// Possible disk types for notebook instances.
+        /// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
         /// </summary>
         [Input("dataDiskType")]
         public Input<string>? DataDiskType { get; set; }
 
         /// <summary>
         /// Disk encryption method used on the boot and data disks, defaults to GMEK.
+        /// Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
         /// </summary>
         [Input("diskEncryption")]
         public Input<string>? DiskEncryption { get; set; }
@@ -668,7 +685,8 @@ namespace Pulumi.Gcp.Notebooks
         public Input<string>? UpdateTime { get; set; }
 
         /// <summary>
-        /// Use a Compute Engine VM image to start the notebook instance.  Structure is documented below.
+        /// Use a Compute Engine VM image to start the notebook instance.
+        /// Structure is documented below.
         /// </summary>
         [Input("vmImage")]
         public Input<Inputs.InstanceVmImageGetArgs>? VmImage { get; set; }

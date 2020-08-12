@@ -49,6 +49,7 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         /// and alignmentPeriod must be
         /// specified; otherwise, an error is
         /// returned.
+        /// Possible values are `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, and `REDUCE_PERCENTILE_05`.
         /// </summary>
         [Input("crossSeriesReducer")]
         public Input<string>? CrossSeriesReducer { get; set; }
@@ -107,6 +108,7 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         /// and alignmentPeriod must be
         /// specified; otherwise, an error is
         /// returned.
+        /// Possible values are `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, and `ALIGN_PERCENT_CHANGE`.
         /// </summary>
         [Input("perSeriesAligner")]
         public Input<string>? PerSeriesAligner { get; set; }

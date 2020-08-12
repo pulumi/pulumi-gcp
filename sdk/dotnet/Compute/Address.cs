@@ -46,6 +46,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The type of address to reserve.
+        /// Default value is `EXTERNAL`.
+        /// Possible values are `INTERNAL` and `EXTERNAL`.
         /// </summary>
         [Output("addressType")]
         public Output<string?> AddressType { get; private set; } = null!;
@@ -88,6 +90,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The networking tier used for configuring this address. If this field is not
         /// specified, it is assumed to be PREMIUM.
+        /// Possible values are `PREMIUM` and `STANDARD`.
         /// </summary>
         [Output("networkTier")]
         public Output<string> NetworkTier { get; private set; } = null!;
@@ -104,6 +107,7 @@ namespace Pulumi.Gcp.Compute
         /// - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
         /// - SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers
         /// This should only be set when using an Internal address.
+        /// Possible values are `GCE_ENDPOINT` and `SHARED_LOADBALANCER_VIP`.
         /// </summary>
         [Output("purpose")]
         public Output<string> Purpose { get; private set; } = null!;
@@ -193,6 +197,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The type of address to reserve.
+        /// Default value is `EXTERNAL`.
+        /// Possible values are `INTERNAL` and `EXTERNAL`.
         /// </summary>
         [Input("addressType")]
         public Input<string>? AddressType { get; set; }
@@ -229,6 +235,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The networking tier used for configuring this address. If this field is not
         /// specified, it is assumed to be PREMIUM.
+        /// Possible values are `PREMIUM` and `STANDARD`.
         /// </summary>
         [Input("networkTier")]
         public Input<string>? NetworkTier { get; set; }
@@ -245,6 +252,7 @@ namespace Pulumi.Gcp.Compute
         /// - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
         /// - SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers
         /// This should only be set when using an Internal address.
+        /// Possible values are `GCE_ENDPOINT` and `SHARED_LOADBALANCER_VIP`.
         /// </summary>
         [Input("purpose")]
         public Input<string>? Purpose { get; set; }
@@ -283,6 +291,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The type of address to reserve.
+        /// Default value is `EXTERNAL`.
+        /// Possible values are `INTERNAL` and `EXTERNAL`.
         /// </summary>
         [Input("addressType")]
         public Input<string>? AddressType { get; set; }
@@ -331,6 +341,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The networking tier used for configuring this address. If this field is not
         /// specified, it is assumed to be PREMIUM.
+        /// Possible values are `PREMIUM` and `STANDARD`.
         /// </summary>
         [Input("networkTier")]
         public Input<string>? NetworkTier { get; set; }
@@ -347,6 +358,7 @@ namespace Pulumi.Gcp.Compute
         /// - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
         /// - SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers
         /// This should only be set when using an Internal address.
+        /// Possible values are `GCE_ENDPOINT` and `SHARED_LOADBALANCER_VIP`.
         /// </summary>
         [Input("purpose")]
         public Input<string>? Purpose { get; set; }

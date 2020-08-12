@@ -30,7 +30,8 @@ namespace Pulumi.Gcp.CloudScheduler
         /// <summary>
         /// App Engine HTTP target.
         /// If the job providers a App Engine HTTP target the cron will
-        /// send a request to the service instance  Structure is documented below.
+        /// send a request to the service instance
+        /// Structure is documented below.
         /// </summary>
         [Output("appEngineHttpTarget")]
         public Output<Outputs.JobAppEngineHttpTarget?> AppEngineHttpTarget { get; private set; } = null!;
@@ -57,7 +58,8 @@ namespace Pulumi.Gcp.CloudScheduler
         /// <summary>
         /// HTTP target.
         /// If the job providers a http_target the cron will
-        /// send a request to the targeted url  Structure is documented below.
+        /// send a request to the targeted url
+        /// Structure is documented below.
         /// </summary>
         [Output("httpTarget")]
         public Output<Outputs.JobHttpTarget?> HttpTarget { get; private set; } = null!;
@@ -78,7 +80,8 @@ namespace Pulumi.Gcp.CloudScheduler
         /// <summary>
         /// Pub/Sub target
         /// If the job providers a Pub/Sub target the cron will publish
-        /// a message to the provided topic  Structure is documented below.
+        /// a message to the provided topic
+        /// Structure is documented below.
         /// </summary>
         [Output("pubsubTarget")]
         public Output<Outputs.JobPubsubTarget?> PubsubTarget { get; private set; } = null!;
@@ -92,7 +95,8 @@ namespace Pulumi.Gcp.CloudScheduler
         /// <summary>
         /// By default, if a job does not complete successfully,
         /// meaning that an acknowledgement is not received from the handler,
-        /// then it will be retried with exponential backoff according to the settings  Structure is documented below.
+        /// then it will be retried with exponential backoff according to the settings
+        /// Structure is documented below.
         /// </summary>
         [Output("retryConfig")]
         public Output<Outputs.JobRetryConfig?> RetryConfig { get; private set; } = null!;
@@ -159,7 +163,8 @@ namespace Pulumi.Gcp.CloudScheduler
         /// <summary>
         /// App Engine HTTP target.
         /// If the job providers a App Engine HTTP target the cron will
-        /// send a request to the service instance  Structure is documented below.
+        /// send a request to the service instance
+        /// Structure is documented below.
         /// </summary>
         [Input("appEngineHttpTarget")]
         public Input<Inputs.JobAppEngineHttpTargetArgs>? AppEngineHttpTarget { get; set; }
@@ -186,7 +191,8 @@ namespace Pulumi.Gcp.CloudScheduler
         /// <summary>
         /// HTTP target.
         /// If the job providers a http_target the cron will
-        /// send a request to the targeted url  Structure is documented below.
+        /// send a request to the targeted url
+        /// Structure is documented below.
         /// </summary>
         [Input("httpTarget")]
         public Input<Inputs.JobHttpTargetArgs>? HttpTarget { get; set; }
@@ -207,7 +213,8 @@ namespace Pulumi.Gcp.CloudScheduler
         /// <summary>
         /// Pub/Sub target
         /// If the job providers a Pub/Sub target the cron will publish
-        /// a message to the provided topic  Structure is documented below.
+        /// a message to the provided topic
+        /// Structure is documented below.
         /// </summary>
         [Input("pubsubTarget")]
         public Input<Inputs.JobPubsubTargetArgs>? PubsubTarget { get; set; }
@@ -221,7 +228,8 @@ namespace Pulumi.Gcp.CloudScheduler
         /// <summary>
         /// By default, if a job does not complete successfully,
         /// meaning that an acknowledgement is not received from the handler,
-        /// then it will be retried with exponential backoff according to the settings  Structure is documented below.
+        /// then it will be retried with exponential backoff according to the settings
+        /// Structure is documented below.
         /// </summary>
         [Input("retryConfig")]
         public Input<Inputs.JobRetryConfigArgs>? RetryConfig { get; set; }
@@ -249,7 +257,8 @@ namespace Pulumi.Gcp.CloudScheduler
         /// <summary>
         /// App Engine HTTP target.
         /// If the job providers a App Engine HTTP target the cron will
-        /// send a request to the service instance  Structure is documented below.
+        /// send a request to the service instance
+        /// Structure is documented below.
         /// </summary>
         [Input("appEngineHttpTarget")]
         public Input<Inputs.JobAppEngineHttpTargetGetArgs>? AppEngineHttpTarget { get; set; }
@@ -276,7 +285,8 @@ namespace Pulumi.Gcp.CloudScheduler
         /// <summary>
         /// HTTP target.
         /// If the job providers a http_target the cron will
-        /// send a request to the targeted url  Structure is documented below.
+        /// send a request to the targeted url
+        /// Structure is documented below.
         /// </summary>
         [Input("httpTarget")]
         public Input<Inputs.JobHttpTargetGetArgs>? HttpTarget { get; set; }
@@ -297,7 +307,8 @@ namespace Pulumi.Gcp.CloudScheduler
         /// <summary>
         /// Pub/Sub target
         /// If the job providers a Pub/Sub target the cron will publish
-        /// a message to the provided topic  Structure is documented below.
+        /// a message to the provided topic
+        /// Structure is documented below.
         /// </summary>
         [Input("pubsubTarget")]
         public Input<Inputs.JobPubsubTargetGetArgs>? PubsubTarget { get; set; }
@@ -311,7 +322,8 @@ namespace Pulumi.Gcp.CloudScheduler
         /// <summary>
         /// By default, if a job does not complete successfully,
         /// meaning that an acknowledgement is not received from the handler,
-        /// then it will be retried with exponential backoff according to the settings  Structure is documented below.
+        /// then it will be retried with exponential backoff according to the settings
+        /// Structure is documented below.
         /// </summary>
         [Input("retryConfig")]
         public Input<Inputs.JobRetryConfigGetArgs>? RetryConfig { get; set; }

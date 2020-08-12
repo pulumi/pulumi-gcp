@@ -13,7 +13,8 @@ namespace Pulumi.Gcp.BigQuery.Inputs
     public sealed class ConnectionCloudSqlCredentialArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Password for database.  **Note**: This property is sensitive and will not be displayed in the plan.
+        /// Password for database.
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         [Input("password", required: true)]
         public Input<string> Password { get; set; } = null!;

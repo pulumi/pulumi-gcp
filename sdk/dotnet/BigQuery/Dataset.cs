@@ -23,7 +23,8 @@ namespace Pulumi.Gcp.BigQuery
     public partial class Dataset : Pulumi.CustomResource
     {
         /// <summary>
-        /// An array of objects that define dataset access for one or more entities.  Structure is documented below.
+        /// An array of objects that define dataset access for one or more entities.
+        /// Structure is documented below.
         /// </summary>
         [Output("accesses")]
         public Output<ImmutableArray<Outputs.DatasetAccess>> Accesses { get; private set; } = null!;
@@ -43,7 +44,8 @@ namespace Pulumi.Gcp.BigQuery
         /// <summary>
         /// The default encryption key for all tables in the dataset. Once this property is set,
         /// all newly-created partitioned tables in the dataset will have encryption key set to
-        /// this value, unless table creation request (or query) overrides the key.  Structure is documented below.
+        /// this value, unless table creation request (or query) overrides the key.
+        /// Structure is documented below.
         /// </summary>
         [Output("defaultEncryptionConfiguration")]
         public Output<Outputs.DatasetDefaultEncryptionConfiguration?> DefaultEncryptionConfiguration { get; private set; } = null!;
@@ -171,7 +173,8 @@ namespace Pulumi.Gcp.BigQuery
         private InputList<Inputs.DatasetAccessArgs>? _accesses;
 
         /// <summary>
-        /// An array of objects that define dataset access for one or more entities.  Structure is documented below.
+        /// An array of objects that define dataset access for one or more entities.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.DatasetAccessArgs> Accesses
         {
@@ -188,7 +191,8 @@ namespace Pulumi.Gcp.BigQuery
         /// <summary>
         /// The default encryption key for all tables in the dataset. Once this property is set,
         /// all newly-created partitioned tables in the dataset will have encryption key set to
-        /// this value, unless table creation request (or query) overrides the key.  Structure is documented below.
+        /// this value, unless table creation request (or query) overrides the key.
+        /// Structure is documented below.
         /// </summary>
         [Input("defaultEncryptionConfiguration")]
         public Input<Inputs.DatasetDefaultEncryptionConfigurationArgs>? DefaultEncryptionConfiguration { get; set; }
@@ -265,7 +269,8 @@ namespace Pulumi.Gcp.BigQuery
         private InputList<Inputs.DatasetAccessGetArgs>? _accesses;
 
         /// <summary>
-        /// An array of objects that define dataset access for one or more entities.  Structure is documented below.
+        /// An array of objects that define dataset access for one or more entities.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.DatasetAccessGetArgs> Accesses
         {
@@ -288,7 +293,8 @@ namespace Pulumi.Gcp.BigQuery
         /// <summary>
         /// The default encryption key for all tables in the dataset. Once this property is set,
         /// all newly-created partitioned tables in the dataset will have encryption key set to
-        /// this value, unless table creation request (or query) overrides the key.  Structure is documented below.
+        /// this value, unless table creation request (or query) overrides the key.
+        /// Structure is documented below.
         /// </summary>
         [Input("defaultEncryptionConfiguration")]
         public Input<Inputs.DatasetDefaultEncryptionConfigurationGetArgs>? DefaultEncryptionConfiguration { get; set; }

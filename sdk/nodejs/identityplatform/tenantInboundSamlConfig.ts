@@ -52,7 +52,8 @@ export class TenantInboundSamlConfig extends pulumi.CustomResource {
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
-     * SAML IdP configuration when the project acts as the relying party  Structure is documented below.
+     * SAML IdP configuration when the project acts as the relying party
+     * Structure is documented below.
      */
     public readonly idpConfig!: pulumi.Output<outputs.identityplatform.TenantInboundSamlConfigIdpConfig>;
     /**
@@ -68,7 +69,8 @@ export class TenantInboundSamlConfig extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * SAML SP (Service Provider) configuration when the project acts as the relying party to receive
-     * and accept an authentication assertion issued by a SAML identity provider.  Structure is documented below.
+     * and accept an authentication assertion issued by a SAML identity provider.
+     * Structure is documented below.
      */
     public readonly spConfig!: pulumi.Output<outputs.identityplatform.TenantInboundSamlConfigSpConfig>;
     /**
@@ -141,7 +143,8 @@ export interface TenantInboundSamlConfigState {
      */
     readonly enabled?: pulumi.Input<boolean>;
     /**
-     * SAML IdP configuration when the project acts as the relying party  Structure is documented below.
+     * SAML IdP configuration when the project acts as the relying party
+     * Structure is documented below.
      */
     readonly idpConfig?: pulumi.Input<inputs.identityplatform.TenantInboundSamlConfigIdpConfig>;
     /**
@@ -157,7 +160,8 @@ export interface TenantInboundSamlConfigState {
     readonly project?: pulumi.Input<string>;
     /**
      * SAML SP (Service Provider) configuration when the project acts as the relying party to receive
-     * and accept an authentication assertion issued by a SAML identity provider.  Structure is documented below.
+     * and accept an authentication assertion issued by a SAML identity provider.
+     * Structure is documented below.
      */
     readonly spConfig?: pulumi.Input<inputs.identityplatform.TenantInboundSamlConfigSpConfig>;
     /**
@@ -179,7 +183,8 @@ export interface TenantInboundSamlConfigArgs {
      */
     readonly enabled?: pulumi.Input<boolean>;
     /**
-     * SAML IdP configuration when the project acts as the relying party  Structure is documented below.
+     * SAML IdP configuration when the project acts as the relying party
+     * Structure is documented below.
      */
     readonly idpConfig: pulumi.Input<inputs.identityplatform.TenantInboundSamlConfigIdpConfig>;
     /**
@@ -195,7 +200,8 @@ export interface TenantInboundSamlConfigArgs {
     readonly project?: pulumi.Input<string>;
     /**
      * SAML SP (Service Provider) configuration when the project acts as the relying party to receive
-     * and accept an authentication assertion issued by a SAML identity provider.  Structure is documented below.
+     * and accept an authentication assertion issued by a SAML identity provider.
+     * Structure is documented below.
      */
     readonly spConfig: pulumi.Input<inputs.identityplatform.TenantInboundSamlConfigSpConfig>;
     /**

@@ -67,7 +67,7 @@ class Application(pulumi.CustomResource):
     project: pulumi.Output[str]
     """
     The project ID to create the application under.
-    ~>**NOTE**: GCP only accepts project ID, not project number. If you are using number,
+    ~>**NOTE:** GCP only accepts project ID, not project number. If you are using number,
     you may get a "Permission denied" error.
     """
     serving_status: pulumi.Output[str]
@@ -103,7 +103,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[str] location_id: The [location](https://cloud.google.com/appengine/docs/locations)
                to serve the app from.
         :param pulumi.Input[str] project: The project ID to create the application under.
-               ~>**NOTE**: GCP only accepts project ID, not project number. If you are using number,
+               ~>**NOTE:** GCP only accepts project ID, not project number. If you are using number,
                you may get a "Permission denied" error.
         :param pulumi.Input[str] serving_status: The serving status of the app.
 
@@ -181,7 +181,7 @@ class Application(pulumi.CustomResource):
                to serve the app from.
         :param pulumi.Input[str] name: Unique name of the app, usually `apps/{PROJECT_ID}`
         :param pulumi.Input[str] project: The project ID to create the application under.
-               ~>**NOTE**: GCP only accepts project ID, not project number. If you are using number,
+               ~>**NOTE:** GCP only accepts project ID, not project number. If you are using number,
                you may get a "Permission denied" error.
         :param pulumi.Input[str] serving_status: The serving status of the app.
         :param pulumi.Input[list] url_dispatch_rules: A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.

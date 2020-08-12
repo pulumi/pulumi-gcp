@@ -39,7 +39,8 @@ class Subnetwork(pulumi.CustomResource):
     """
     Denotes the logging options for the subnetwork flow logs. If logging is enabled
     logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
-    subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`  Structure is documented below.
+    subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`
+    Structure is documented below.
 
       * `aggregationInterval` (`str`) - Can only be specified if VPC flow logging for this subnetwork is enabled.
         Toggles the aggregation interval for collecting flow logs. Increasing the
@@ -47,6 +48,8 @@ class Subnetwork(pulumi.CustomResource):
         lasting connections. Default is an interval of 5 seconds per connection.
         Possible values are INTERVAL_5_SEC, INTERVAL_30_SEC, INTERVAL_1_MIN,
         INTERVAL_5_MIN, INTERVAL_10_MIN, INTERVAL_15_MIN
+        Default value is `INTERVAL_5_SEC`.
+        Possible values are `INTERVAL_5_SEC`, `INTERVAL_30_SEC`, `INTERVAL_1_MIN`, `INTERVAL_5_MIN`, `INTERVAL_10_MIN`, and `INTERVAL_15_MIN`.
       * `flowSampling` (`float`) - Can only be specified if VPC flow logging for this subnetwork is enabled.
         The value of the field must be in [0, 1]. Set the sampling rate of VPC
         flow logs within the subnetwork where 1.0 means all collected logs are
@@ -55,6 +58,8 @@ class Subnetwork(pulumi.CustomResource):
       * `metadata` (`str`) - Can only be specified if VPC flow logging for this subnetwork is enabled.
         Configures whether metadata fields should be added to the reported VPC
         flow logs.
+        Default value is `INCLUDE_ALL_METADATA`.
+        Possible values are `EXCLUDE_ALL_METADATA` and `INCLUDE_ALL_METADATA`.
     """
     name: pulumi.Output[str]
     """
@@ -89,6 +94,7 @@ class Subnetwork(pulumi.CustomResource):
     reserved for Internal HTTP(S) Load Balancing. If unspecified, the
     purpose defaults to PRIVATE.
     If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the role.
+    Possible values are `INTERNAL_HTTPS_LOAD_BALANCER` and `PRIVATE`.
     """
     region: pulumi.Output[str]
     """
@@ -101,6 +107,7 @@ class Subnetwork(pulumi.CustomResource):
     or BACKUP. An ACTIVE subnetwork is one that is currently being used
     for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that
     is ready to be promoted to ACTIVE or is currently draining.
+    Possible values are `ACTIVE` and `BACKUP`.
     """
     secondary_ip_ranges: pulumi.Output[list]
     """
@@ -167,7 +174,8 @@ class Subnetwork(pulumi.CustomResource):
                secondary IP ranges within a network. Only IPv4 is supported.
         :param pulumi.Input[dict] log_config: Denotes the logging options for the subnetwork flow logs. If logging is enabled
                logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
-               subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`  Structure is documented below.
+               subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`
+               Structure is documented below.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially
                creating the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -187,12 +195,14 @@ class Subnetwork(pulumi.CustomResource):
                reserved for Internal HTTP(S) Load Balancing. If unspecified, the
                purpose defaults to PRIVATE.
                If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the role.
+               Possible values are `INTERNAL_HTTPS_LOAD_BALANCER` and `PRIVATE`.
         :param pulumi.Input[str] region: The GCP region for this subnetwork.
         :param pulumi.Input[str] role: The role of subnetwork. Currently, this field is only used when
                purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE
                or BACKUP. An ACTIVE subnetwork is one that is currently being used
                for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that
                is ready to be promoted to ACTIVE or is currently draining.
+               Possible values are `ACTIVE` and `BACKUP`.
         :param pulumi.Input[list] secondary_ip_ranges: An array of configurations for secondary IP ranges for VM instances
                contained in this subnetwork. The primary IP of such VM must belong
                to the primary ipCidrRange of the subnetwork. The alias IPs may belong
@@ -206,6 +216,8 @@ class Subnetwork(pulumi.CustomResource):
             lasting connections. Default is an interval of 5 seconds per connection.
             Possible values are INTERVAL_5_SEC, INTERVAL_30_SEC, INTERVAL_1_MIN,
             INTERVAL_5_MIN, INTERVAL_10_MIN, INTERVAL_15_MIN
+            Default value is `INTERVAL_5_SEC`.
+            Possible values are `INTERVAL_5_SEC`, `INTERVAL_30_SEC`, `INTERVAL_1_MIN`, `INTERVAL_5_MIN`, `INTERVAL_10_MIN`, and `INTERVAL_15_MIN`.
           * `flowSampling` (`pulumi.Input[float]`) - Can only be specified if VPC flow logging for this subnetwork is enabled.
             The value of the field must be in [0, 1]. Set the sampling rate of VPC
             flow logs within the subnetwork where 1.0 means all collected logs are
@@ -214,6 +226,8 @@ class Subnetwork(pulumi.CustomResource):
           * `metadata` (`pulumi.Input[str]`) - Can only be specified if VPC flow logging for this subnetwork is enabled.
             Configures whether metadata fields should be added to the reported VPC
             flow logs.
+            Default value is `INCLUDE_ALL_METADATA`.
+            Possible values are `EXCLUDE_ALL_METADATA` and `INCLUDE_ALL_METADATA`.
 
         The **secondary_ip_ranges** object supports the following:
 
@@ -289,7 +303,8 @@ class Subnetwork(pulumi.CustomResource):
                secondary IP ranges within a network. Only IPv4 is supported.
         :param pulumi.Input[dict] log_config: Denotes the logging options for the subnetwork flow logs. If logging is enabled
                logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
-               subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`  Structure is documented below.
+               subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`
+               Structure is documented below.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially
                creating the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -309,12 +324,14 @@ class Subnetwork(pulumi.CustomResource):
                reserved for Internal HTTP(S) Load Balancing. If unspecified, the
                purpose defaults to PRIVATE.
                If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the role.
+               Possible values are `INTERNAL_HTTPS_LOAD_BALANCER` and `PRIVATE`.
         :param pulumi.Input[str] region: The GCP region for this subnetwork.
         :param pulumi.Input[str] role: The role of subnetwork. Currently, this field is only used when
                purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE
                or BACKUP. An ACTIVE subnetwork is one that is currently being used
                for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that
                is ready to be promoted to ACTIVE or is currently draining.
+               Possible values are `ACTIVE` and `BACKUP`.
         :param pulumi.Input[list] secondary_ip_ranges: An array of configurations for secondary IP ranges for VM instances
                contained in this subnetwork. The primary IP of such VM must belong
                to the primary ipCidrRange of the subnetwork. The alias IPs may belong
@@ -329,6 +346,8 @@ class Subnetwork(pulumi.CustomResource):
             lasting connections. Default is an interval of 5 seconds per connection.
             Possible values are INTERVAL_5_SEC, INTERVAL_30_SEC, INTERVAL_1_MIN,
             INTERVAL_5_MIN, INTERVAL_10_MIN, INTERVAL_15_MIN
+            Default value is `INTERVAL_5_SEC`.
+            Possible values are `INTERVAL_5_SEC`, `INTERVAL_30_SEC`, `INTERVAL_1_MIN`, `INTERVAL_5_MIN`, `INTERVAL_10_MIN`, and `INTERVAL_15_MIN`.
           * `flowSampling` (`pulumi.Input[float]`) - Can only be specified if VPC flow logging for this subnetwork is enabled.
             The value of the field must be in [0, 1]. Set the sampling rate of VPC
             flow logs within the subnetwork where 1.0 means all collected logs are
@@ -337,6 +356,8 @@ class Subnetwork(pulumi.CustomResource):
           * `metadata` (`pulumi.Input[str]`) - Can only be specified if VPC flow logging for this subnetwork is enabled.
             Configures whether metadata fields should be added to the reported VPC
             flow logs.
+            Default value is `INCLUDE_ALL_METADATA`.
+            Possible values are `EXCLUDE_ALL_METADATA` and `INCLUDE_ALL_METADATA`.
 
         The **secondary_ip_ranges** object supports the following:
 

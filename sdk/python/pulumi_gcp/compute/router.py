@@ -12,9 +12,12 @@ from .. import utilities, tables
 class Router(pulumi.CustomResource):
     bgp: pulumi.Output[dict]
     """
-    BGP information specific to this router.  Structure is documented below.
+    BGP information specific to this router.
+    Structure is documented below.
 
       * `advertise_mode` (`str`) - User-specified flag to indicate which mode to use for advertisement.
+        Default value is `DEFAULT`.
+        Possible values are `DEFAULT` and `CUSTOM`.
       * `advertised_groups` (`list`) - User-specified list of prefix groups to advertise in custom mode.
         This field can only be populated if advertiseMode is CUSTOM and
         is advertised to all peers of the router. These groups will be
@@ -25,7 +28,8 @@ class Router(pulumi.CustomResource):
         custom mode. This field can only be populated if advertiseMode
         is CUSTOM and is advertised to all peers of the router. These IP
         ranges will be advertised in addition to any specified groups.
-        Leave this field blank to advertise no custom IP ranges.  Structure is documented below.
+        Leave this field blank to advertise no custom IP ranges.
+        Structure is documented below.
         * `description` (`str`) - User-specified description for the IP range.
         * `range` (`str`) - The IP range to advertise. The value must be a
           CIDR-formatted string.
@@ -83,7 +87,8 @@ class Router(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] bgp: BGP information specific to this router.  Structure is documented below.
+        :param pulumi.Input[dict] bgp: BGP information specific to this router.
+               Structure is documented below.
         :param pulumi.Input[str] description: User-specified description for the IP range.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -99,6 +104,8 @@ class Router(pulumi.CustomResource):
         The **bgp** object supports the following:
 
           * `advertise_mode` (`pulumi.Input[str]`) - User-specified flag to indicate which mode to use for advertisement.
+            Default value is `DEFAULT`.
+            Possible values are `DEFAULT` and `CUSTOM`.
           * `advertised_groups` (`pulumi.Input[list]`) - User-specified list of prefix groups to advertise in custom mode.
             This field can only be populated if advertiseMode is CUSTOM and
             is advertised to all peers of the router. These groups will be
@@ -109,7 +116,8 @@ class Router(pulumi.CustomResource):
             custom mode. This field can only be populated if advertiseMode
             is CUSTOM and is advertised to all peers of the router. These IP
             ranges will be advertised in addition to any specified groups.
-            Leave this field blank to advertise no custom IP ranges.  Structure is documented below.
+            Leave this field blank to advertise no custom IP ranges.
+            Structure is documented below.
             * `description` (`pulumi.Input[str]`) - User-specified description for the IP range.
             * `range` (`pulumi.Input[str]`) - The IP range to advertise. The value must be a
               CIDR-formatted string.
@@ -161,7 +169,8 @@ class Router(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] bgp: BGP information specific to this router.  Structure is documented below.
+        :param pulumi.Input[dict] bgp: BGP information specific to this router.
+               Structure is documented below.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: User-specified description for the IP range.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and
@@ -179,6 +188,8 @@ class Router(pulumi.CustomResource):
         The **bgp** object supports the following:
 
           * `advertise_mode` (`pulumi.Input[str]`) - User-specified flag to indicate which mode to use for advertisement.
+            Default value is `DEFAULT`.
+            Possible values are `DEFAULT` and `CUSTOM`.
           * `advertised_groups` (`pulumi.Input[list]`) - User-specified list of prefix groups to advertise in custom mode.
             This field can only be populated if advertiseMode is CUSTOM and
             is advertised to all peers of the router. These groups will be
@@ -189,7 +200,8 @@ class Router(pulumi.CustomResource):
             custom mode. This field can only be populated if advertiseMode
             is CUSTOM and is advertised to all peers of the router. These IP
             ranges will be advertised in addition to any specified groups.
-            Leave this field blank to advertise no custom IP ranges.  Structure is documented below.
+            Leave this field blank to advertise no custom IP ranges.
+            Structure is documented below.
             * `description` (`pulumi.Input[str]`) - User-specified description for the IP range.
             * `range` (`pulumi.Input[str]`) - The IP range to advertise. The value must be a
               CIDR-formatted string.

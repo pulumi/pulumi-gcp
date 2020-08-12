@@ -35,7 +35,8 @@ namespace Pulumi.Gcp.Diagflow
         public Output<bool?> EnableFuzzyExtraction { get; private set; } = null!;
 
         /// <summary>
-        /// The collection of entity entries associated with the entity type.  Structure is documented below.
+        /// The collection of entity entries associated with the entity type.
+        /// Structure is documented below.
         /// </summary>
         [Output("entities")]
         public Output<ImmutableArray<Outputs.EntityTypeEntity>> Entities { get; private set; } = null!;
@@ -46,6 +47,7 @@ namespace Pulumi.Gcp.Diagflow
         /// * KIND_LIST: List entity types contain a set of entries that do not map to reference values. However, list entity
         /// types can contain references to other entity types (with or without aliases).
         /// * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
+        /// Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -125,7 +127,8 @@ namespace Pulumi.Gcp.Diagflow
         private InputList<Inputs.EntityTypeEntityArgs>? _entities;
 
         /// <summary>
-        /// The collection of entity entries associated with the entity type.  Structure is documented below.
+        /// The collection of entity entries associated with the entity type.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.EntityTypeEntityArgs> Entities
         {
@@ -139,6 +142,7 @@ namespace Pulumi.Gcp.Diagflow
         /// * KIND_LIST: List entity types contain a set of entries that do not map to reference values. However, list entity
         /// types can contain references to other entity types (with or without aliases).
         /// * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
+        /// Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
         /// </summary>
         [Input("kind", required: true)]
         public Input<string> Kind { get; set; } = null!;
@@ -173,7 +177,8 @@ namespace Pulumi.Gcp.Diagflow
         private InputList<Inputs.EntityTypeEntityGetArgs>? _entities;
 
         /// <summary>
-        /// The collection of entity entries associated with the entity type.  Structure is documented below.
+        /// The collection of entity entries associated with the entity type.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.EntityTypeEntityGetArgs> Entities
         {
@@ -187,6 +192,7 @@ namespace Pulumi.Gcp.Diagflow
         /// * KIND_LIST: List entity types contain a set of entries that do not map to reference values. However, list entity
         /// types can contain references to other entity types (with or without aliases).
         /// * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
+        /// Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }

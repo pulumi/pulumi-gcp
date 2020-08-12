@@ -63,7 +63,7 @@ export class InstanceIamMember extends pulumi.CustomResource {
     /**
      * The role that should be applied. Only one
      * `gcp.bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
-     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
      */
     public readonly role!: pulumi.Output<string>;
 
@@ -136,7 +136,7 @@ export interface InstanceIamMemberState {
     /**
      * The role that should be applied. Only one
      * `gcp.bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
-     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
      */
     readonly role?: pulumi.Input<string>;
 }
@@ -159,7 +159,7 @@ export interface InstanceIamMemberArgs {
     /**
      * The role that should be applied. Only one
      * `gcp.bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
-     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
      */
     readonly role: pulumi.Input<string>;
 }

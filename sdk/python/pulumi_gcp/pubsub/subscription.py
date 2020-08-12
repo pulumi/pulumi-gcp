@@ -36,7 +36,8 @@ class Subscription(pulumi.CustomResource):
     The Cloud Pub/Sub service account associated with this subscriptions's
     parent project (i.e.,
     service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
-    permission to Acknowledge() messages on this subscription.  Structure is documented below.
+    permission to Acknowledge() messages on this subscription.
+    Structure is documented below.
 
       * `deadLetterTopic` (`str`) - The name of the topic to which dead letter messages should be published.
         Format is `projects/{project}/topics/{topic}`.
@@ -64,7 +65,8 @@ class Subscription(pulumi.CustomResource):
     operations on the subscription. If expirationPolicy is not set, a default
     policy with ttl of 31 days will be used.  If it is set but ttl is "", the
     resource never expires.  The minimum allowed value for expirationPolicy.ttl
-    is 1 day.  Structure is documented below.
+    is 1 day.
+    Structure is documented below.
 
       * `ttl` (`str`) - Specifies the "time-to-live" duration for an associated resource. The
         resource expires if it is not active for a period of ttl.
@@ -101,7 +103,8 @@ class Subscription(pulumi.CustomResource):
     """
     If push delivery is used with this subscription, this field is used to
     configure it. An empty pushConfig signifies that the subscriber will
-    pull and ack messages using API methods.  Structure is documented below.
+    pull and ack messages using API methods.
+    Structure is documented below.
 
       * `attributes` (`dict`) - Endpoint configuration attributes.
         Every endpoint has a set of API supported attributes that can
@@ -122,7 +125,8 @@ class Subscription(pulumi.CustomResource):
         - v1beta1: uses the push format defined in the v1beta1 Pub/Sub API.
         - v1 or v1beta2: uses the push format defined in the v1 Pub/Sub API.
       * `oidcToken` (`dict`) - If specified, Pub/Sub will generate and attach an OIDC JWT token as
-        an Authorization header in the HTTP request for every pushed message.  Structure is documented below.
+        an Authorization header in the HTTP request for every pushed message.
+        Structure is documented below.
         * `audience` (`str`) - Audience to be used when generating OIDC token. The audience claim
           identifies the recipients that the JWT is intended for. The audience
           value is a single case-sensitive string. Having multiple values (array)
@@ -185,14 +189,16 @@ class Subscription(pulumi.CustomResource):
                The Cloud Pub/Sub service account associated with this subscriptions's
                parent project (i.e.,
                service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
-               permission to Acknowledge() messages on this subscription.  Structure is documented below.
+               permission to Acknowledge() messages on this subscription.
+               Structure is documented below.
         :param pulumi.Input[dict] expiration_policy: A policy that specifies the conditions for this subscription's expiration.
                A subscription is considered active as long as any connected subscriber
                is successfully consuming messages from the subscription or is issuing
                operations on the subscription. If expirationPolicy is not set, a default
                policy with ttl of 31 days will be used.  If it is set but ttl is "", the
                resource never expires.  The minimum allowed value for expirationPolicy.ttl
-               is 1 day.  Structure is documented below.
+               is 1 day.
+               Structure is documented below.
         :param pulumi.Input[dict] labels: A set of key/value label pairs to assign to this Subscription.
         :param pulumi.Input[str] message_retention_duration: How long to retain unacknowledged messages in the subscription's
                backlog, from the moment a message is published. If
@@ -207,7 +213,8 @@ class Subscription(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[dict] push_config: If push delivery is used with this subscription, this field is used to
                configure it. An empty pushConfig signifies that the subscriber will
-               pull and ack messages using API methods.  Structure is documented below.
+               pull and ack messages using API methods.
+               Structure is documented below.
         :param pulumi.Input[bool] retain_acked_messages: Indicates whether to retain acknowledged messages. If `true`, then
                messages are not expunged from the subscription's backlog, even if
                they are acknowledged, until they fall out of the
@@ -263,7 +270,8 @@ class Subscription(pulumi.CustomResource):
             - v1beta1: uses the push format defined in the v1beta1 Pub/Sub API.
             - v1 or v1beta2: uses the push format defined in the v1 Pub/Sub API.
           * `oidcToken` (`pulumi.Input[dict]`) - If specified, Pub/Sub will generate and attach an OIDC JWT token as
-            an Authorization header in the HTTP request for every pushed message.  Structure is documented below.
+            an Authorization header in the HTTP request for every pushed message.
+            Structure is documented below.
             * `audience` (`pulumi.Input[str]`) - Audience to be used when generating OIDC token. The audience claim
               identifies the recipients that the JWT is intended for. The audience
               value is a single case-sensitive string. Having multiple values (array)
@@ -345,14 +353,16 @@ class Subscription(pulumi.CustomResource):
                The Cloud Pub/Sub service account associated with this subscriptions's
                parent project (i.e.,
                service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
-               permission to Acknowledge() messages on this subscription.  Structure is documented below.
+               permission to Acknowledge() messages on this subscription.
+               Structure is documented below.
         :param pulumi.Input[dict] expiration_policy: A policy that specifies the conditions for this subscription's expiration.
                A subscription is considered active as long as any connected subscriber
                is successfully consuming messages from the subscription or is issuing
                operations on the subscription. If expirationPolicy is not set, a default
                policy with ttl of 31 days will be used.  If it is set but ttl is "", the
                resource never expires.  The minimum allowed value for expirationPolicy.ttl
-               is 1 day.  Structure is documented below.
+               is 1 day.
+               Structure is documented below.
         :param pulumi.Input[dict] labels: A set of key/value label pairs to assign to this Subscription.
         :param pulumi.Input[str] message_retention_duration: How long to retain unacknowledged messages in the subscription's
                backlog, from the moment a message is published. If
@@ -367,7 +377,8 @@ class Subscription(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[dict] push_config: If push delivery is used with this subscription, this field is used to
                configure it. An empty pushConfig signifies that the subscriber will
-               pull and ack messages using API methods.  Structure is documented below.
+               pull and ack messages using API methods.
+               Structure is documented below.
         :param pulumi.Input[bool] retain_acked_messages: Indicates whether to retain acknowledged messages. If `true`, then
                messages are not expunged from the subscription's backlog, even if
                they are acknowledged, until they fall out of the
@@ -423,7 +434,8 @@ class Subscription(pulumi.CustomResource):
             - v1beta1: uses the push format defined in the v1beta1 Pub/Sub API.
             - v1 or v1beta2: uses the push format defined in the v1 Pub/Sub API.
           * `oidcToken` (`pulumi.Input[dict]`) - If specified, Pub/Sub will generate and attach an OIDC JWT token as
-            an Authorization header in the HTTP request for every pushed message.  Structure is documented below.
+            an Authorization header in the HTTP request for every pushed message.
+            Structure is documented below.
             * `audience` (`pulumi.Input[str]`) - Audience to be used when generating OIDC token. The audience claim
               identifies the recipients that the JWT is intended for. The audience
               value is a single case-sensitive string. Having multiple values (array)

@@ -13,7 +13,8 @@ namespace Pulumi.Gcp.CloudScheduler.Inputs
     public sealed class JobAppEngineHttpTargetGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// App Engine Routing setting for the job.  Structure is documented below.
+        /// App Engine Routing setting for the job.
+        /// Structure is documented below.
         /// </summary>
         [Input("appEngineRouting")]
         public Input<Inputs.JobAppEngineHttpTargetAppEngineRoutingGetArgs>? AppEngineRouting { get; set; }

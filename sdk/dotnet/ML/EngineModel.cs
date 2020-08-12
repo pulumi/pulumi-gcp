@@ -21,7 +21,8 @@ namespace Pulumi.Gcp.ML
     {
         /// <summary>
         /// The default version of the model. This version will be used to handle
-        /// prediction requests that do not specify a version.  Structure is documented below.
+        /// prediction requests that do not specify a version.
+        /// Structure is documented below.
         /// </summary>
         [Output("defaultVersion")]
         public Output<Outputs.EngineModelDefaultVersion?> DefaultVersion { get; private set; } = null!;
@@ -118,7 +119,8 @@ namespace Pulumi.Gcp.ML
     {
         /// <summary>
         /// The default version of the model. This version will be used to handle
-        /// prediction requests that do not specify a version.  Structure is documented below.
+        /// prediction requests that do not specify a version.
+        /// Structure is documented below.
         /// </summary>
         [Input("defaultVersion")]
         public Input<Inputs.EngineModelDefaultVersionArgs>? DefaultVersion { get; set; }
@@ -182,7 +184,8 @@ namespace Pulumi.Gcp.ML
     {
         /// <summary>
         /// The default version of the model. This version will be used to handle
-        /// prediction requests that do not specify a version.  Structure is documented below.
+        /// prediction requests that do not specify a version.
+        /// Structure is documented below.
         /// </summary>
         [Input("defaultVersion")]
         public Input<Inputs.EngineModelDefaultVersionGetArgs>? DefaultVersion { get; set; }

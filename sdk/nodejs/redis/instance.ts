@@ -58,6 +58,8 @@ export class Instance extends pulumi.CustomResource {
     public readonly authorizedNetwork!: pulumi.Output<string>;
     /**
      * The connection mode of the Redis instance.
+     * Default value is `DIRECT_PEERING`.
+     * Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
      */
     public readonly connectMode!: pulumi.Output<string | undefined>;
     /**
@@ -99,6 +101,12 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
+     * "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export
+     * operation.
+     */
+    public /*out*/ readonly persistenceIamIdentity!: pulumi.Output<string>;
+    /**
      * The port number of the exposed Redis endpoint.
      */
     public /*out*/ readonly port!: pulumi.Output<number>;
@@ -116,6 +124,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The version of Redis software. If not provided, latest supported
      * version will be used. Currently, the supported values are:
+     * - REDIS_5_0 for Redis 5.0 compatibility
      * - REDIS_4_0 for Redis 4.0 compatibility
      * - REDIS_3_2 for Redis 3.2 compatibility
      */
@@ -136,6 +145,8 @@ export class Instance extends pulumi.CustomResource {
      * The service tier of the instance. Must be one of these values:
      * - BASIC: standalone instance
      * - STANDARD_HA: highly available primary/replica instances
+     * Default value is `BASIC`.
+     * Possible values are `BASIC` and `STANDARD_HA`.
      */
     public readonly tier!: pulumi.Output<string | undefined>;
 
@@ -162,6 +173,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["locationId"] = state ? state.locationId : undefined;
             inputs["memorySizeGb"] = state ? state.memorySizeGb : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["persistenceIamIdentity"] = state ? state.persistenceIamIdentity : undefined;
             inputs["port"] = state ? state.port : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["redisConfigs"] = state ? state.redisConfigs : undefined;
@@ -191,6 +203,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["createTime"] = undefined /*out*/;
             inputs["currentLocationId"] = undefined /*out*/;
             inputs["host"] = undefined /*out*/;
+            inputs["persistenceIamIdentity"] = undefined /*out*/;
             inputs["port"] = undefined /*out*/;
         }
         if (!opts) {
@@ -223,6 +236,8 @@ export interface InstanceState {
     readonly authorizedNetwork?: pulumi.Input<string>;
     /**
      * The connection mode of the Redis instance.
+     * Default value is `DIRECT_PEERING`.
+     * Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
      */
     readonly connectMode?: pulumi.Input<string>;
     /**
@@ -264,6 +279,12 @@ export interface InstanceState {
      */
     readonly name?: pulumi.Input<string>;
     /**
+     * Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
+     * "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export
+     * operation.
+     */
+    readonly persistenceIamIdentity?: pulumi.Input<string>;
+    /**
      * The port number of the exposed Redis endpoint.
      */
     readonly port?: pulumi.Input<number>;
@@ -281,6 +302,7 @@ export interface InstanceState {
     /**
      * The version of Redis software. If not provided, latest supported
      * version will be used. Currently, the supported values are:
+     * - REDIS_5_0 for Redis 5.0 compatibility
      * - REDIS_4_0 for Redis 4.0 compatibility
      * - REDIS_3_2 for Redis 3.2 compatibility
      */
@@ -301,6 +323,8 @@ export interface InstanceState {
      * The service tier of the instance. Must be one of these values:
      * - BASIC: standalone instance
      * - STANDARD_HA: highly available primary/replica instances
+     * Default value is `BASIC`.
+     * Possible values are `BASIC` and `STANDARD_HA`.
      */
     readonly tier?: pulumi.Input<string>;
 }
@@ -324,6 +348,8 @@ export interface InstanceArgs {
     readonly authorizedNetwork?: pulumi.Input<string>;
     /**
      * The connection mode of the Redis instance.
+     * Default value is `DIRECT_PEERING`.
+     * Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
      */
     readonly connectMode?: pulumi.Input<string>;
     /**
@@ -364,6 +390,7 @@ export interface InstanceArgs {
     /**
      * The version of Redis software. If not provided, latest supported
      * version will be used. Currently, the supported values are:
+     * - REDIS_5_0 for Redis 5.0 compatibility
      * - REDIS_4_0 for Redis 4.0 compatibility
      * - REDIS_3_2 for Redis 3.2 compatibility
      */
@@ -384,6 +411,8 @@ export interface InstanceArgs {
      * The service tier of the instance. Must be one of these values:
      * - BASIC: standalone instance
      * - STANDARD_HA: highly available primary/replica instances
+     * Default value is `BASIC`.
+     * Possible values are `BASIC` and `STANDARD_HA`.
      */
     readonly tier?: pulumi.Input<string>;
 }

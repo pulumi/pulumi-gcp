@@ -62,7 +62,8 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         /// All invalid keys will be reported as an event when the container is starting.
         /// When a key exists in multiple sources, the value associated with the last source will
         /// take precedence. Values defined by an Env with a duplicate key will take
-        /// precedence.  Structure is documented below.
+        /// precedence.
+        /// Structure is documented below.
         /// </summary>
         [Obsolete(@"Not supported by Cloud Run fully managed")]
         public InputList<Inputs.ServiceTemplateSpecContainerEnvFromGetArgs> EnvFroms
@@ -75,7 +76,8 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         private InputList<Inputs.ServiceTemplateSpecContainerEnvGetArgs>? _envs;
 
         /// <summary>
-        /// List of environment variables to set in the container.  Structure is documented below.
+        /// List of environment variables to set in the container.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.ServiceTemplateSpecContainerEnvGetArgs> Envs
         {
@@ -97,7 +99,8 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         /// <summary>
         /// List of open ports in the container.
         /// More Info:
-        /// https://cloud.google.com/run/docs/reference/rest/v1/RevisionSpec#ContainerPort  Structure is documented below.
+        /// https://cloud.google.com/run/docs/reference/rest/v1/RevisionSpec#ContainerPort
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.ServiceTemplateSpecContainerPortGetArgs> Ports
         {
@@ -108,7 +111,8 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         /// <summary>
         /// Compute Resources required by this container. Used to set values such as max memory
         /// More info:
-        /// https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources  Structure is documented below.
+        /// https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+        /// Structure is documented below.
         /// </summary>
         [Input("resources")]
         public Input<Inputs.ServiceTemplateSpecContainerResourcesGetArgs>? Resources { get; set; }

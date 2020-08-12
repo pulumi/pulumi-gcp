@@ -54,7 +54,8 @@ export class Autoscaler extends pulumi.CustomResource {
      * define one or more of the policies for an autoscaler: cpuUtilization,
      * customMetricUtilizations, and loadBalancingUtilization.
      * If none of these are specified, the default will be to autoscale based
-     * on cpuUtilization to 0.6 or 60%.  Structure is documented below.
+     * on cpuUtilization to 0.6 or 60%.
+     * Structure is documented below.
      */
     public readonly autoscalingPolicy!: pulumi.Output<outputs.compute.AutoscalerAutoscalingPolicy>;
     /**
@@ -150,7 +151,8 @@ export interface AutoscalerState {
      * define one or more of the policies for an autoscaler: cpuUtilization,
      * customMetricUtilizations, and loadBalancingUtilization.
      * If none of these are specified, the default will be to autoscale based
-     * on cpuUtilization to 0.6 or 60%.  Structure is documented below.
+     * on cpuUtilization to 0.6 or 60%.
+     * Structure is documented below.
      */
     readonly autoscalingPolicy?: pulumi.Input<inputs.compute.AutoscalerAutoscalingPolicy>;
     /**
@@ -197,7 +199,8 @@ export interface AutoscalerArgs {
      * define one or more of the policies for an autoscaler: cpuUtilization,
      * customMetricUtilizations, and loadBalancingUtilization.
      * If none of these are specified, the default will be to autoscale based
-     * on cpuUtilization to 0.6 or 60%.  Structure is documented below.
+     * on cpuUtilization to 0.6 or 60%.
+     * Structure is documented below.
      */
     readonly autoscalingPolicy: pulumi.Input<inputs.compute.AutoscalerAutoscalingPolicy>;
     /**

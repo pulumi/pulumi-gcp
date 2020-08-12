@@ -77,7 +77,8 @@ export class NodeTemplate extends pulumi.CustomResource {
      * Flexible properties for the desired node type. Node groups that
      * use this node template will create nodes of a type that matches
      * these properties. Only one of nodeTypeFlexibility and nodeType can
-     * be specified.  Structure is documented below.
+     * be specified.
+     * Structure is documented below.
      */
     public readonly nodeTypeFlexibility!: pulumi.Output<outputs.compute.NodeTemplateNodeTypeFlexibility | undefined>;
     /**
@@ -96,7 +97,8 @@ export class NodeTemplate extends pulumi.CustomResource {
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
      * The server binding policy for nodes using this template. Determines
-     * where the nodes should restart following a maintenance event.  Structure is documented below.
+     * where the nodes should restart following a maintenance event.
+     * Structure is documented below.
      */
     public readonly serverBinding!: pulumi.Output<outputs.compute.NodeTemplateServerBinding>;
 
@@ -182,7 +184,8 @@ export interface NodeTemplateState {
      * Flexible properties for the desired node type. Node groups that
      * use this node template will create nodes of a type that matches
      * these properties. Only one of nodeTypeFlexibility and nodeType can
-     * be specified.  Structure is documented below.
+     * be specified.
+     * Structure is documented below.
      */
     readonly nodeTypeFlexibility?: pulumi.Input<inputs.compute.NodeTemplateNodeTypeFlexibility>;
     /**
@@ -201,7 +204,8 @@ export interface NodeTemplateState {
     readonly selfLink?: pulumi.Input<string>;
     /**
      * The server binding policy for nodes using this template. Determines
-     * where the nodes should restart following a maintenance event.  Structure is documented below.
+     * where the nodes should restart following a maintenance event.
+     * Structure is documented below.
      */
     readonly serverBinding?: pulumi.Input<inputs.compute.NodeTemplateServerBinding>;
 }
@@ -236,7 +240,8 @@ export interface NodeTemplateArgs {
      * Flexible properties for the desired node type. Node groups that
      * use this node template will create nodes of a type that matches
      * these properties. Only one of nodeTypeFlexibility and nodeType can
-     * be specified.  Structure is documented below.
+     * be specified.
+     * Structure is documented below.
      */
     readonly nodeTypeFlexibility?: pulumi.Input<inputs.compute.NodeTemplateNodeTypeFlexibility>;
     /**
@@ -251,7 +256,8 @@ export interface NodeTemplateArgs {
     readonly region?: pulumi.Input<string>;
     /**
      * The server binding policy for nodes using this template. Determines
-     * where the nodes should restart following a maintenance event.  Structure is documented below.
+     * where the nodes should restart following a maintenance event.
+     * Structure is documented below.
      */
     readonly serverBinding?: pulumi.Input<inputs.compute.NodeTemplateServerBinding>;
 }

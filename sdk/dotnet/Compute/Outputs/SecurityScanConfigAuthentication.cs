@@ -14,11 +14,13 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class SecurityScanConfigAuthentication
     {
         /// <summary>
-        /// Describes authentication configuration that uses a custom account.  Structure is documented below.
+        /// Describes authentication configuration that uses a custom account.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.SecurityScanConfigAuthenticationCustomAccount? CustomAccount;
         /// <summary>
-        /// Describes authentication configuration that uses a Google account.  Structure is documented below.
+        /// Describes authentication configuration that uses a Google account.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.SecurityScanConfigAuthenticationGoogleAccount? GoogleAccount;
 

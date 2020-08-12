@@ -52,7 +52,8 @@ type Image struct {
 	// RFC1035.
 	Family pulumi.StringPtrOutput `pulumi:"family"`
 	// A list of features to enable on the guest operating system.
-	// Applicable only for bootable images.  Structure is documented below.
+	// Applicable only for bootable images.
+	// Structure is documented below.
 	GuestOsFeatures ImageGuestOsFeatureArrayOutput `pulumi:"guestOsFeatures"`
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
@@ -71,7 +72,8 @@ type Image struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The parameters of the raw disk image.  Structure is documented below.
+	// The parameters of the raw disk image.
+	// Structure is documented below.
 	RawDisk ImageRawDiskPtrOutput `pulumi:"rawDisk"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -125,7 +127,8 @@ type imageState struct {
 	// RFC1035.
 	Family *string `pulumi:"family"`
 	// A list of features to enable on the guest operating system.
-	// Applicable only for bootable images.  Structure is documented below.
+	// Applicable only for bootable images.
+	// Structure is documented below.
 	GuestOsFeatures []ImageGuestOsFeature `pulumi:"guestOsFeatures"`
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
@@ -144,7 +147,8 @@ type imageState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The parameters of the raw disk image.  Structure is documented below.
+	// The parameters of the raw disk image.
+	// Structure is documented below.
 	RawDisk *ImageRawDisk `pulumi:"rawDisk"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -171,7 +175,8 @@ type ImageState struct {
 	// RFC1035.
 	Family pulumi.StringPtrInput
 	// A list of features to enable on the guest operating system.
-	// Applicable only for bootable images.  Structure is documented below.
+	// Applicable only for bootable images.
+	// Structure is documented below.
 	GuestOsFeatures ImageGuestOsFeatureArrayInput
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint pulumi.StringPtrInput
@@ -190,7 +195,8 @@ type ImageState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The parameters of the raw disk image.  Structure is documented below.
+	// The parameters of the raw disk image.
+	// Structure is documented below.
 	RawDisk ImageRawDiskPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
@@ -217,7 +223,8 @@ type imageArgs struct {
 	// RFC1035.
 	Family *string `pulumi:"family"`
 	// A list of features to enable on the guest operating system.
-	// Applicable only for bootable images.  Structure is documented below.
+	// Applicable only for bootable images.
+	// Structure is documented below.
 	GuestOsFeatures []ImageGuestOsFeature `pulumi:"guestOsFeatures"`
 	// Labels to apply to this Image.
 	Labels map[string]string `pulumi:"labels"`
@@ -234,7 +241,8 @@ type imageArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The parameters of the raw disk image.  Structure is documented below.
+	// The parameters of the raw disk image.
+	// Structure is documented below.
 	RawDisk *ImageRawDisk `pulumi:"rawDisk"`
 	// The source disk to create this image based on.
 	// You must provide either this property or the
@@ -256,7 +264,8 @@ type ImageArgs struct {
 	// RFC1035.
 	Family pulumi.StringPtrInput
 	// A list of features to enable on the guest operating system.
-	// Applicable only for bootable images.  Structure is documented below.
+	// Applicable only for bootable images.
+	// Structure is documented below.
 	GuestOsFeatures ImageGuestOsFeatureArrayInput
 	// Labels to apply to this Image.
 	Labels pulumi.StringMapInput
@@ -273,7 +282,8 @@ type ImageArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The parameters of the raw disk image.  Structure is documented below.
+	// The parameters of the raw disk image.
+	// Structure is documented below.
 	RawDisk ImageRawDiskPtrInput
 	// The source disk to create this image based on.
 	// You must provide either this property or the

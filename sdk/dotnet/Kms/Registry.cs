@@ -32,7 +32,8 @@ namespace Pulumi.Gcp.Kms
 
         /// <summary>
         /// List of configurations for event notifications, such as PubSub topics
-        /// to publish device events to.  Structure is documented below.
+        /// to publish device events to.
+        /// Structure is documented below.
         /// </summary>
         [Output("eventNotificationConfigs")]
         public Output<ImmutableArray<Outputs.RegistryEventNotificationConfigItem>> EventNotificationConfigs { get; private set; } = null!;
@@ -50,6 +51,8 @@ namespace Pulumi.Gcp.Kms
         /// example, if the LogLevel is ERROR, only events that terminate in
         /// errors will be logged. LogLevel is inclusive; enabling INFO logging
         /// will also enable ERROR logging.
+        /// Default value is `NONE`.
+        /// Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
         /// </summary>
         [Output("logLevel")]
         public Output<string?> LogLevel { get; private set; } = null!;
@@ -152,7 +155,8 @@ namespace Pulumi.Gcp.Kms
 
         /// <summary>
         /// List of configurations for event notifications, such as PubSub topics
-        /// to publish device events to.  Structure is documented below.
+        /// to publish device events to.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.RegistryEventNotificationConfigItemArgs> EventNotificationConfigs
         {
@@ -173,6 +177,8 @@ namespace Pulumi.Gcp.Kms
         /// example, if the LogLevel is ERROR, only events that terminate in
         /// errors will be logged. LogLevel is inclusive; enabling INFO logging
         /// will also enable ERROR logging.
+        /// Default value is `NONE`.
+        /// Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
         /// </summary>
         [Input("logLevel")]
         public Input<string>? LogLevel { get; set; }
@@ -236,7 +242,8 @@ namespace Pulumi.Gcp.Kms
 
         /// <summary>
         /// List of configurations for event notifications, such as PubSub topics
-        /// to publish device events to.  Structure is documented below.
+        /// to publish device events to.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.RegistryEventNotificationConfigItemGetArgs> EventNotificationConfigs
         {
@@ -257,6 +264,8 @@ namespace Pulumi.Gcp.Kms
         /// example, if the LogLevel is ERROR, only events that terminate in
         /// errors will be logged. LogLevel is inclusive; enabling INFO logging
         /// will also enable ERROR logging.
+        /// Default value is `NONE`.
+        /// Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
         /// </summary>
         [Input("logLevel")]
         public Input<string>? LogLevel { get; set; }

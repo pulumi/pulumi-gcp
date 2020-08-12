@@ -77,6 +77,8 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
      * or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is
      * specified, uses the QUIC policy with no user overrides, which is
      * equivalent to DISABLE.
+     * Default value is `NONE`.
+     * Possible values are `NONE`, `ENABLE`, and `DISABLE`.
      */
     public readonly quicOverride!: pulumi.Output<string | undefined>;
     /**
@@ -190,6 +192,8 @@ export interface TargetHttpsProxyState {
      * or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is
      * specified, uses the QUIC policy with no user overrides, which is
      * equivalent to DISABLE.
+     * Default value is `NONE`.
+     * Possible values are `NONE`, `ENABLE`, and `DISABLE`.
      */
     readonly quicOverride?: pulumi.Input<string>;
     /**
@@ -244,6 +248,8 @@ export interface TargetHttpsProxyArgs {
      * or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is
      * specified, uses the QUIC policy with no user overrides, which is
      * equivalent to DISABLE.
+     * Default value is `NONE`.
+     * Possible values are `NONE`, `ENABLE`, and `DISABLE`.
      */
     readonly quicOverride?: pulumi.Input<string>;
     /**

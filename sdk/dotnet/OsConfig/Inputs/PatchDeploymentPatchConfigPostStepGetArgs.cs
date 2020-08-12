@@ -13,13 +13,15 @@ namespace Pulumi.Gcp.OsConfig.Inputs
     public sealed class PatchDeploymentPatchConfigPostStepGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ExecStepConfig for all Linux VMs targeted by the PatchJob.  Structure is documented below.
+        /// The ExecStepConfig for all Linux VMs targeted by the PatchJob.
+        /// Structure is documented below.
         /// </summary>
         [Input("linuxExecStepConfig")]
         public Input<Inputs.PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGetArgs>? LinuxExecStepConfig { get; set; }
 
         /// <summary>
-        /// The ExecStepConfig for all Windows VMs targeted by the PatchJob.  Structure is documented below.
+        /// The ExecStepConfig for all Windows VMs targeted by the PatchJob.
+        /// Structure is documented below.
         /// </summary>
         [Input("windowsExecStepConfig")]
         public Input<Inputs.PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGetArgs>? WindowsExecStepConfig { get; set; }

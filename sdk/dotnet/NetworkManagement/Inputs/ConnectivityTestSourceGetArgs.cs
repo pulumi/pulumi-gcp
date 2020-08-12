@@ -34,6 +34,7 @@ namespace Pulumi.Gcp.NetworkManagement.Inputs
 
         /// <summary>
         /// Type of the network where the endpoint is located.
+        /// Possible values are `GCP_NETWORK` and `NON_GCP_NETWORK`.
         /// </summary>
         [Input("networkType")]
         public Input<string>? NetworkType { get; set; }

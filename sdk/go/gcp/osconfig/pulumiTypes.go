@@ -12,7 +12,8 @@ import (
 
 type GuestPoliciesAssignment struct {
 	// Targets instances matching at least one of these label sets. This allows an assignment to target disparate groups,
-	// for example "env=prod or env=staging".  Structure is documented below.
+	// for example "env=prod or env=staging".
+	// Structure is documented below.
 	GroupLabels []GuestPoliciesAssignmentGroupLabel `pulumi:"groupLabels"`
 	// Targets VM instances whose name starts with one of these prefixes.
 	// Like labels, this is another way to group VM instances when targeting configs,
@@ -26,7 +27,8 @@ type GuestPoliciesAssignment struct {
 	// Only supported for project-level policies and must reference instances within this project.
 	Instances []string `pulumi:"instances"`
 	// Targets VM instances matching at least one of the following OS types.
-	// VM instances must match all supplied criteria for a given OsType to be included.  Structure is documented below.
+	// VM instances must match all supplied criteria for a given OsType to be included.
+	// Structure is documented below.
 	OsTypes []GuestPoliciesAssignmentOsType `pulumi:"osTypes"`
 	// Targets instances in any of these zones. Leave empty to target instances in any zone.
 	// Zonal targeting is uncommon and is supported to facilitate the management of changes by zone.
@@ -46,7 +48,8 @@ type GuestPoliciesAssignmentInput interface {
 
 type GuestPoliciesAssignmentArgs struct {
 	// Targets instances matching at least one of these label sets. This allows an assignment to target disparate groups,
-	// for example "env=prod or env=staging".  Structure is documented below.
+	// for example "env=prod or env=staging".
+	// Structure is documented below.
 	GroupLabels GuestPoliciesAssignmentGroupLabelArrayInput `pulumi:"groupLabels"`
 	// Targets VM instances whose name starts with one of these prefixes.
 	// Like labels, this is another way to group VM instances when targeting configs,
@@ -60,7 +63,8 @@ type GuestPoliciesAssignmentArgs struct {
 	// Only supported for project-level policies and must reference instances within this project.
 	Instances pulumi.StringArrayInput `pulumi:"instances"`
 	// Targets VM instances matching at least one of the following OS types.
-	// VM instances must match all supplied criteria for a given OsType to be included.  Structure is documented below.
+	// VM instances must match all supplied criteria for a given OsType to be included.
+	// Structure is documented below.
 	OsTypes GuestPoliciesAssignmentOsTypeArrayInput `pulumi:"osTypes"`
 	// Targets instances in any of these zones. Leave empty to target instances in any zone.
 	// Zonal targeting is uncommon and is supported to facilitate the management of changes by zone.
@@ -145,7 +149,8 @@ func (o GuestPoliciesAssignmentOutput) ToGuestPoliciesAssignmentPtrOutputWithCon
 }
 
 // Targets instances matching at least one of these label sets. This allows an assignment to target disparate groups,
-// for example "env=prod or env=staging".  Structure is documented below.
+// for example "env=prod or env=staging".
+// Structure is documented below.
 func (o GuestPoliciesAssignmentOutput) GroupLabels() GuestPoliciesAssignmentGroupLabelArrayOutput {
 	return o.ApplyT(func(v GuestPoliciesAssignment) []GuestPoliciesAssignmentGroupLabel { return v.GroupLabels }).(GuestPoliciesAssignmentGroupLabelArrayOutput)
 }
@@ -168,7 +173,8 @@ func (o GuestPoliciesAssignmentOutput) Instances() pulumi.StringArrayOutput {
 }
 
 // Targets VM instances matching at least one of the following OS types.
-// VM instances must match all supplied criteria for a given OsType to be included.  Structure is documented below.
+// VM instances must match all supplied criteria for a given OsType to be included.
+// Structure is documented below.
 func (o GuestPoliciesAssignmentOutput) OsTypes() GuestPoliciesAssignmentOsTypeArrayOutput {
 	return o.ApplyT(func(v GuestPoliciesAssignment) []GuestPoliciesAssignmentOsType { return v.OsTypes }).(GuestPoliciesAssignmentOsTypeArrayOutput)
 }
@@ -198,7 +204,8 @@ func (o GuestPoliciesAssignmentPtrOutput) Elem() GuestPoliciesAssignmentOutput {
 }
 
 // Targets instances matching at least one of these label sets. This allows an assignment to target disparate groups,
-// for example "env=prod or env=staging".  Structure is documented below.
+// for example "env=prod or env=staging".
+// Structure is documented below.
 func (o GuestPoliciesAssignmentPtrOutput) GroupLabels() GuestPoliciesAssignmentGroupLabelArrayOutput {
 	return o.ApplyT(func(v *GuestPoliciesAssignment) []GuestPoliciesAssignmentGroupLabel {
 		if v == nil {
@@ -236,7 +243,8 @@ func (o GuestPoliciesAssignmentPtrOutput) Instances() pulumi.StringArrayOutput {
 }
 
 // Targets VM instances matching at least one of the following OS types.
-// VM instances must match all supplied criteria for a given OsType to be included.  Structure is documented below.
+// VM instances must match all supplied criteria for a given OsType to be included.
+// Structure is documented below.
 func (o GuestPoliciesAssignmentPtrOutput) OsTypes() GuestPoliciesAssignmentOsTypeArrayOutput {
 	return o.ApplyT(func(v *GuestPoliciesAssignment) []GuestPoliciesAssignmentOsType {
 		if v == nil {
@@ -475,12 +483,16 @@ type GuestPoliciesPackage struct {
 	// INSTALLED_KEEP_UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version,
 	// if a higher version of the recipe is assigned to this instance.
 	// REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
+	// Default value is `INSTALLED`.
+	// Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
 	DesiredState *string `pulumi:"desiredState"`
 	// Type of package manager that can be used to install this package. If a system does not have the package manager,
 	// the package is not installed or removed no error message is returned. By default, or if you specify ANY,
 	// the agent attempts to install and remove this package using the default package manager.
 	// This is useful when creating a policy that applies to different types of systems.
 	// The default behavior is ANY.
+	// Default value is `ANY`.
+	// Possible values are `ANY`, `APT`, `YUM`, `ZYPPER`, and `GOO`.
 	Manager *string `pulumi:"manager"`
 	// Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
 	// Names are also used to identify resources which helps to determine whether guest policies have conflicts.
@@ -506,12 +518,16 @@ type GuestPoliciesPackageArgs struct {
 	// INSTALLED_KEEP_UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version,
 	// if a higher version of the recipe is assigned to this instance.
 	// REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
+	// Default value is `INSTALLED`.
+	// Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
 	DesiredState pulumi.StringPtrInput `pulumi:"desiredState"`
 	// Type of package manager that can be used to install this package. If a system does not have the package manager,
 	// the package is not installed or removed no error message is returned. By default, or if you specify ANY,
 	// the agent attempts to install and remove this package using the default package manager.
 	// This is useful when creating a policy that applies to different types of systems.
 	// The default behavior is ANY.
+	// Default value is `ANY`.
+	// Possible values are `ANY`, `APT`, `YUM`, `ZYPPER`, and `GOO`.
 	Manager pulumi.StringPtrInput `pulumi:"manager"`
 	// Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
 	// Names are also used to identify resources which helps to determine whether guest policies have conflicts.
@@ -576,6 +592,8 @@ func (o GuestPoliciesPackageOutput) ToGuestPoliciesPackageOutputWithContext(ctx 
 // INSTALLED_KEEP_UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version,
 // if a higher version of the recipe is assigned to this instance.
 // REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
+// Default value is `INSTALLED`.
+// Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
 func (o GuestPoliciesPackageOutput) DesiredState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuestPoliciesPackage) *string { return v.DesiredState }).(pulumi.StringPtrOutput)
 }
@@ -585,6 +603,8 @@ func (o GuestPoliciesPackageOutput) DesiredState() pulumi.StringPtrOutput {
 // the agent attempts to install and remove this package using the default package manager.
 // This is useful when creating a policy that applies to different types of systems.
 // The default behavior is ANY.
+// Default value is `ANY`.
+// Possible values are `ANY`, `APT`, `YUM`, `ZYPPER`, and `GOO`.
 func (o GuestPoliciesPackageOutput) Manager() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuestPoliciesPackage) *string { return v.Manager }).(pulumi.StringPtrOutput)
 }
@@ -618,13 +638,17 @@ func (o GuestPoliciesPackageArrayOutput) Index(i pulumi.IntInput) GuestPoliciesP
 }
 
 type GuestPoliciesPackageRepository struct {
-	// An Apt Repository.  Structure is documented below.
+	// An Apt Repository.
+	// Structure is documented below.
 	Apt *GuestPoliciesPackageRepositoryApt `pulumi:"apt"`
-	// A Goo Repository.  Structure is documented below.
+	// A Goo Repository.
+	// Structure is documented below.
 	Goo *GuestPoliciesPackageRepositoryGoo `pulumi:"goo"`
-	// A Yum Repository.  Structure is documented below.
+	// A Yum Repository.
+	// Structure is documented below.
 	Yum *GuestPoliciesPackageRepositoryYum `pulumi:"yum"`
-	// A Zypper Repository.  Structure is documented below.
+	// A Zypper Repository.
+	// Structure is documented below.
 	Zypper *GuestPoliciesPackageRepositoryZypper `pulumi:"zypper"`
 }
 
@@ -640,13 +664,17 @@ type GuestPoliciesPackageRepositoryInput interface {
 }
 
 type GuestPoliciesPackageRepositoryArgs struct {
-	// An Apt Repository.  Structure is documented below.
+	// An Apt Repository.
+	// Structure is documented below.
 	Apt GuestPoliciesPackageRepositoryAptPtrInput `pulumi:"apt"`
-	// A Goo Repository.  Structure is documented below.
+	// A Goo Repository.
+	// Structure is documented below.
 	Goo GuestPoliciesPackageRepositoryGooPtrInput `pulumi:"goo"`
-	// A Yum Repository.  Structure is documented below.
+	// A Yum Repository.
+	// Structure is documented below.
 	Yum GuestPoliciesPackageRepositoryYumPtrInput `pulumi:"yum"`
-	// A Zypper Repository.  Structure is documented below.
+	// A Zypper Repository.
+	// Structure is documented below.
 	Zypper GuestPoliciesPackageRepositoryZypperPtrInput `pulumi:"zypper"`
 }
 
@@ -701,22 +729,26 @@ func (o GuestPoliciesPackageRepositoryOutput) ToGuestPoliciesPackageRepositoryOu
 	return o
 }
 
-// An Apt Repository.  Structure is documented below.
+// An Apt Repository.
+// Structure is documented below.
 func (o GuestPoliciesPackageRepositoryOutput) Apt() GuestPoliciesPackageRepositoryAptPtrOutput {
 	return o.ApplyT(func(v GuestPoliciesPackageRepository) *GuestPoliciesPackageRepositoryApt { return v.Apt }).(GuestPoliciesPackageRepositoryAptPtrOutput)
 }
 
-// A Goo Repository.  Structure is documented below.
+// A Goo Repository.
+// Structure is documented below.
 func (o GuestPoliciesPackageRepositoryOutput) Goo() GuestPoliciesPackageRepositoryGooPtrOutput {
 	return o.ApplyT(func(v GuestPoliciesPackageRepository) *GuestPoliciesPackageRepositoryGoo { return v.Goo }).(GuestPoliciesPackageRepositoryGooPtrOutput)
 }
 
-// A Yum Repository.  Structure is documented below.
+// A Yum Repository.
+// Structure is documented below.
 func (o GuestPoliciesPackageRepositoryOutput) Yum() GuestPoliciesPackageRepositoryYumPtrOutput {
 	return o.ApplyT(func(v GuestPoliciesPackageRepository) *GuestPoliciesPackageRepositoryYum { return v.Yum }).(GuestPoliciesPackageRepositoryYumPtrOutput)
 }
 
-// A Zypper Repository.  Structure is documented below.
+// A Zypper Repository.
+// Structure is documented below.
 func (o GuestPoliciesPackageRepositoryOutput) Zypper() GuestPoliciesPackageRepositoryZypperPtrOutput {
 	return o.ApplyT(func(v GuestPoliciesPackageRepository) *GuestPoliciesPackageRepositoryZypper { return v.Zypper }).(GuestPoliciesPackageRepositoryZypperPtrOutput)
 }
@@ -743,6 +775,8 @@ func (o GuestPoliciesPackageRepositoryArrayOutput) Index(i pulumi.IntInput) Gues
 
 type GuestPoliciesPackageRepositoryApt struct {
 	// Type of archive files in this repository. The default behavior is DEB.
+	// Default value is `DEB`.
+	// Possible values are `DEB` and `DEB_SRC`.
 	ArchiveType *string `pulumi:"archiveType"`
 	// List of components for this repository. Must contain at least one item.
 	Components []string `pulumi:"components"`
@@ -768,6 +802,8 @@ type GuestPoliciesPackageRepositoryAptInput interface {
 
 type GuestPoliciesPackageRepositoryAptArgs struct {
 	// Type of archive files in this repository. The default behavior is DEB.
+	// Default value is `DEB`.
+	// Possible values are `DEB` and `DEB_SRC`.
 	ArchiveType pulumi.StringPtrInput `pulumi:"archiveType"`
 	// List of components for this repository. Must contain at least one item.
 	Components pulumi.StringArrayInput `pulumi:"components"`
@@ -858,6 +894,8 @@ func (o GuestPoliciesPackageRepositoryAptOutput) ToGuestPoliciesPackageRepositor
 }
 
 // Type of archive files in this repository. The default behavior is DEB.
+// Default value is `DEB`.
+// Possible values are `DEB` and `DEB_SRC`.
 func (o GuestPoliciesPackageRepositoryAptOutput) ArchiveType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuestPoliciesPackageRepositoryApt) *string { return v.ArchiveType }).(pulumi.StringPtrOutput)
 }
@@ -902,6 +940,8 @@ func (o GuestPoliciesPackageRepositoryAptPtrOutput) Elem() GuestPoliciesPackageR
 }
 
 // Type of archive files in this repository. The default behavior is DEB.
+// Default value is `DEB`.
+// Possible values are `DEB` and `DEB_SRC`.
 func (o GuestPoliciesPackageRepositoryAptPtrOutput) ArchiveType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuestPoliciesPackageRepositoryApt) *string {
 		if v == nil {
@@ -1499,16 +1539,20 @@ func (o GuestPoliciesPackageRepositoryZypperPtrOutput) Id() pulumi.StringPtrOutp
 }
 
 type GuestPoliciesRecipe struct {
-	// Resources available to be used in the steps in the recipe.  Structure is documented below.
+	// Resources available to be used in the steps in the recipe.
+	// Structure is documented below.
 	Artifacts []GuestPoliciesRecipeArtifact `pulumi:"artifacts"`
 	// Default is INSTALLED. The desired state the agent should maintain for this recipe.
 	// INSTALLED: The software recipe is installed on the instance but won't be updated to new versions.
 	// INSTALLED_KEEP_UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version,
 	// if a higher version of the recipe is assigned to this instance.
 	// REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
+	// Default value is `INSTALLED`.
+	// Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
 	DesiredState *string `pulumi:"desiredState"`
 	// Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation.
-	// Any steps taken (including partially completed steps) are not rolled back.  Structure is documented below.
+	// Any steps taken (including partially completed steps) are not rolled back.
+	// Structure is documented below.
 	InstallSteps []GuestPoliciesRecipeInstallStep `pulumi:"installSteps"`
 	// Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
 	// Names are also used to identify resources which helps to determine whether guest policies have conflicts.
@@ -1516,7 +1560,8 @@ type GuestPoliciesRecipe struct {
 	// could potentially have conflicting assignments.
 	Name string `pulumi:"name"`
 	// Actions to be taken for updating this recipe. On failure it stops executing steps and does not attempt another update for this recipe.
-	// Any steps taken (including partially completed steps) are not rolled back.  Structure is documented below.
+	// Any steps taken (including partially completed steps) are not rolled back.
+	// Structure is documented below.
 	UpdateSteps []GuestPoliciesRecipeUpdateStep `pulumi:"updateSteps"`
 	// The version of this software recipe. Version can be up to 4 period separated numbers (e.g. 12.34.56.78).
 	Version *string `pulumi:"version"`
@@ -1534,16 +1579,20 @@ type GuestPoliciesRecipeInput interface {
 }
 
 type GuestPoliciesRecipeArgs struct {
-	// Resources available to be used in the steps in the recipe.  Structure is documented below.
+	// Resources available to be used in the steps in the recipe.
+	// Structure is documented below.
 	Artifacts GuestPoliciesRecipeArtifactArrayInput `pulumi:"artifacts"`
 	// Default is INSTALLED. The desired state the agent should maintain for this recipe.
 	// INSTALLED: The software recipe is installed on the instance but won't be updated to new versions.
 	// INSTALLED_KEEP_UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version,
 	// if a higher version of the recipe is assigned to this instance.
 	// REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
+	// Default value is `INSTALLED`.
+	// Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
 	DesiredState pulumi.StringPtrInput `pulumi:"desiredState"`
 	// Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation.
-	// Any steps taken (including partially completed steps) are not rolled back.  Structure is documented below.
+	// Any steps taken (including partially completed steps) are not rolled back.
+	// Structure is documented below.
 	InstallSteps GuestPoliciesRecipeInstallStepArrayInput `pulumi:"installSteps"`
 	// Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
 	// Names are also used to identify resources which helps to determine whether guest policies have conflicts.
@@ -1551,7 +1600,8 @@ type GuestPoliciesRecipeArgs struct {
 	// could potentially have conflicting assignments.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Actions to be taken for updating this recipe. On failure it stops executing steps and does not attempt another update for this recipe.
-	// Any steps taken (including partially completed steps) are not rolled back.  Structure is documented below.
+	// Any steps taken (including partially completed steps) are not rolled back.
+	// Structure is documented below.
 	UpdateSteps GuestPoliciesRecipeUpdateStepArrayInput `pulumi:"updateSteps"`
 	// The version of this software recipe. Version can be up to 4 period separated numbers (e.g. 12.34.56.78).
 	Version pulumi.StringPtrInput `pulumi:"version"`
@@ -1608,7 +1658,8 @@ func (o GuestPoliciesRecipeOutput) ToGuestPoliciesRecipeOutputWithContext(ctx co
 	return o
 }
 
-// Resources available to be used in the steps in the recipe.  Structure is documented below.
+// Resources available to be used in the steps in the recipe.
+// Structure is documented below.
 func (o GuestPoliciesRecipeOutput) Artifacts() GuestPoliciesRecipeArtifactArrayOutput {
 	return o.ApplyT(func(v GuestPoliciesRecipe) []GuestPoliciesRecipeArtifact { return v.Artifacts }).(GuestPoliciesRecipeArtifactArrayOutput)
 }
@@ -1618,12 +1669,15 @@ func (o GuestPoliciesRecipeOutput) Artifacts() GuestPoliciesRecipeArtifactArrayO
 // INSTALLED_KEEP_UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version,
 // if a higher version of the recipe is assigned to this instance.
 // REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
+// Default value is `INSTALLED`.
+// Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
 func (o GuestPoliciesRecipeOutput) DesiredState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuestPoliciesRecipe) *string { return v.DesiredState }).(pulumi.StringPtrOutput)
 }
 
 // Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation.
-// Any steps taken (including partially completed steps) are not rolled back.  Structure is documented below.
+// Any steps taken (including partially completed steps) are not rolled back.
+// Structure is documented below.
 func (o GuestPoliciesRecipeOutput) InstallSteps() GuestPoliciesRecipeInstallStepArrayOutput {
 	return o.ApplyT(func(v GuestPoliciesRecipe) []GuestPoliciesRecipeInstallStep { return v.InstallSteps }).(GuestPoliciesRecipeInstallStepArrayOutput)
 }
@@ -1637,7 +1691,8 @@ func (o GuestPoliciesRecipeOutput) Name() pulumi.StringOutput {
 }
 
 // Actions to be taken for updating this recipe. On failure it stops executing steps and does not attempt another update for this recipe.
-// Any steps taken (including partially completed steps) are not rolled back.  Structure is documented below.
+// Any steps taken (including partially completed steps) are not rolled back.
+// Structure is documented below.
 func (o GuestPoliciesRecipeOutput) UpdateSteps() GuestPoliciesRecipeUpdateStepArrayOutput {
 	return o.ApplyT(func(v GuestPoliciesRecipe) []GuestPoliciesRecipeUpdateStep { return v.UpdateSteps }).(GuestPoliciesRecipeUpdateStepArrayOutput)
 }
@@ -1672,12 +1727,14 @@ type GuestPoliciesRecipeArtifact struct {
 	// Remote: A checksum must be specified, and only protocols with transport-layer security are permitted.
 	// GCS: An object generation number must be specified.
 	AllowInsecure *bool `pulumi:"allowInsecure"`
-	// A Google Cloud Storage artifact.  Structure is documented below.
+	// A Google Cloud Storage artifact.
+	// Structure is documented below.
 	Gcs *GuestPoliciesRecipeArtifactGcs `pulumi:"gcs"`
 	// Id of the artifact, which the installation and update steps of this recipe can reference.
 	// Artifacts in a recipe cannot have the same id.
 	Id string `pulumi:"id"`
-	// A generic remote artifact.  Structure is documented below.
+	// A generic remote artifact.
+	// Structure is documented below.
 	Remote *GuestPoliciesRecipeArtifactRemote `pulumi:"remote"`
 }
 
@@ -1697,12 +1754,14 @@ type GuestPoliciesRecipeArtifactArgs struct {
 	// Remote: A checksum must be specified, and only protocols with transport-layer security are permitted.
 	// GCS: An object generation number must be specified.
 	AllowInsecure pulumi.BoolPtrInput `pulumi:"allowInsecure"`
-	// A Google Cloud Storage artifact.  Structure is documented below.
+	// A Google Cloud Storage artifact.
+	// Structure is documented below.
 	Gcs GuestPoliciesRecipeArtifactGcsPtrInput `pulumi:"gcs"`
 	// Id of the artifact, which the installation and update steps of this recipe can reference.
 	// Artifacts in a recipe cannot have the same id.
 	Id pulumi.StringInput `pulumi:"id"`
-	// A generic remote artifact.  Structure is documented below.
+	// A generic remote artifact.
+	// Structure is documented below.
 	Remote GuestPoliciesRecipeArtifactRemotePtrInput `pulumi:"remote"`
 }
 
@@ -1764,7 +1823,8 @@ func (o GuestPoliciesRecipeArtifactOutput) AllowInsecure() pulumi.BoolPtrOutput 
 	return o.ApplyT(func(v GuestPoliciesRecipeArtifact) *bool { return v.AllowInsecure }).(pulumi.BoolPtrOutput)
 }
 
-// A Google Cloud Storage artifact.  Structure is documented below.
+// A Google Cloud Storage artifact.
+// Structure is documented below.
 func (o GuestPoliciesRecipeArtifactOutput) Gcs() GuestPoliciesRecipeArtifactGcsPtrOutput {
 	return o.ApplyT(func(v GuestPoliciesRecipeArtifact) *GuestPoliciesRecipeArtifactGcs { return v.Gcs }).(GuestPoliciesRecipeArtifactGcsPtrOutput)
 }
@@ -1775,7 +1835,8 @@ func (o GuestPoliciesRecipeArtifactOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GuestPoliciesRecipeArtifact) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// A generic remote artifact.  Structure is documented below.
+// A generic remote artifact.
+// Structure is documented below.
 func (o GuestPoliciesRecipeArtifactOutput) Remote() GuestPoliciesRecipeArtifactRemotePtrOutput {
 	return o.ApplyT(func(v GuestPoliciesRecipeArtifact) *GuestPoliciesRecipeArtifactRemote { return v.Remote }).(GuestPoliciesRecipeArtifactRemotePtrOutput)
 }
@@ -2140,19 +2201,26 @@ func (o GuestPoliciesRecipeArtifactRemotePtrOutput) Uri() pulumi.StringPtrOutput
 }
 
 type GuestPoliciesRecipeInstallStep struct {
-	// Extracts an archive into the specified directory.  Structure is documented below.
+	// Extracts an archive into the specified directory.
+	// Structure is documented below.
 	ArchiveExtraction *GuestPoliciesRecipeInstallStepArchiveExtraction `pulumi:"archiveExtraction"`
-	// Installs a deb file via dpkg.  Structure is documented below.
+	// Installs a deb file via dpkg.
+	// Structure is documented below.
 	DpkgInstallation *GuestPoliciesRecipeInstallStepDpkgInstallation `pulumi:"dpkgInstallation"`
-	// Copies a file onto the instance.  Structure is documented below.
+	// Copies a file onto the instance.
+	// Structure is documented below.
 	FileCopy *GuestPoliciesRecipeInstallStepFileCopy `pulumi:"fileCopy"`
-	// Executes an artifact or local file.  Structure is documented below.
+	// Executes an artifact or local file.
+	// Structure is documented below.
 	FileExec *GuestPoliciesRecipeInstallStepFileExec `pulumi:"fileExec"`
-	// Installs an MSI file.  Structure is documented below.
+	// Installs an MSI file.
+	// Structure is documented below.
 	MsiInstallation *GuestPoliciesRecipeInstallStepMsiInstallation `pulumi:"msiInstallation"`
-	// Installs an rpm file via the rpm utility.  Structure is documented below.
+	// Installs an rpm file via the rpm utility.
+	// Structure is documented below.
 	RpmInstallation *GuestPoliciesRecipeInstallStepRpmInstallation `pulumi:"rpmInstallation"`
-	// Runs commands in a shell.  Structure is documented below.
+	// Runs commands in a shell.
+	// Structure is documented below.
 	ScriptRun *GuestPoliciesRecipeInstallStepScriptRun `pulumi:"scriptRun"`
 }
 
@@ -2168,19 +2236,26 @@ type GuestPoliciesRecipeInstallStepInput interface {
 }
 
 type GuestPoliciesRecipeInstallStepArgs struct {
-	// Extracts an archive into the specified directory.  Structure is documented below.
+	// Extracts an archive into the specified directory.
+	// Structure is documented below.
 	ArchiveExtraction GuestPoliciesRecipeInstallStepArchiveExtractionPtrInput `pulumi:"archiveExtraction"`
-	// Installs a deb file via dpkg.  Structure is documented below.
+	// Installs a deb file via dpkg.
+	// Structure is documented below.
 	DpkgInstallation GuestPoliciesRecipeInstallStepDpkgInstallationPtrInput `pulumi:"dpkgInstallation"`
-	// Copies a file onto the instance.  Structure is documented below.
+	// Copies a file onto the instance.
+	// Structure is documented below.
 	FileCopy GuestPoliciesRecipeInstallStepFileCopyPtrInput `pulumi:"fileCopy"`
-	// Executes an artifact or local file.  Structure is documented below.
+	// Executes an artifact or local file.
+	// Structure is documented below.
 	FileExec GuestPoliciesRecipeInstallStepFileExecPtrInput `pulumi:"fileExec"`
-	// Installs an MSI file.  Structure is documented below.
+	// Installs an MSI file.
+	// Structure is documented below.
 	MsiInstallation GuestPoliciesRecipeInstallStepMsiInstallationPtrInput `pulumi:"msiInstallation"`
-	// Installs an rpm file via the rpm utility.  Structure is documented below.
+	// Installs an rpm file via the rpm utility.
+	// Structure is documented below.
 	RpmInstallation GuestPoliciesRecipeInstallStepRpmInstallationPtrInput `pulumi:"rpmInstallation"`
-	// Runs commands in a shell.  Structure is documented below.
+	// Runs commands in a shell.
+	// Structure is documented below.
 	ScriptRun GuestPoliciesRecipeInstallStepScriptRunPtrInput `pulumi:"scriptRun"`
 }
 
@@ -2235,45 +2310,52 @@ func (o GuestPoliciesRecipeInstallStepOutput) ToGuestPoliciesRecipeInstallStepOu
 	return o
 }
 
-// Extracts an archive into the specified directory.  Structure is documented below.
+// Extracts an archive into the specified directory.
+// Structure is documented below.
 func (o GuestPoliciesRecipeInstallStepOutput) ArchiveExtraction() GuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput {
 	return o.ApplyT(func(v GuestPoliciesRecipeInstallStep) *GuestPoliciesRecipeInstallStepArchiveExtraction {
 		return v.ArchiveExtraction
 	}).(GuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput)
 }
 
-// Installs a deb file via dpkg.  Structure is documented below.
+// Installs a deb file via dpkg.
+// Structure is documented below.
 func (o GuestPoliciesRecipeInstallStepOutput) DpkgInstallation() GuestPoliciesRecipeInstallStepDpkgInstallationPtrOutput {
 	return o.ApplyT(func(v GuestPoliciesRecipeInstallStep) *GuestPoliciesRecipeInstallStepDpkgInstallation {
 		return v.DpkgInstallation
 	}).(GuestPoliciesRecipeInstallStepDpkgInstallationPtrOutput)
 }
 
-// Copies a file onto the instance.  Structure is documented below.
+// Copies a file onto the instance.
+// Structure is documented below.
 func (o GuestPoliciesRecipeInstallStepOutput) FileCopy() GuestPoliciesRecipeInstallStepFileCopyPtrOutput {
 	return o.ApplyT(func(v GuestPoliciesRecipeInstallStep) *GuestPoliciesRecipeInstallStepFileCopy { return v.FileCopy }).(GuestPoliciesRecipeInstallStepFileCopyPtrOutput)
 }
 
-// Executes an artifact or local file.  Structure is documented below.
+// Executes an artifact or local file.
+// Structure is documented below.
 func (o GuestPoliciesRecipeInstallStepOutput) FileExec() GuestPoliciesRecipeInstallStepFileExecPtrOutput {
 	return o.ApplyT(func(v GuestPoliciesRecipeInstallStep) *GuestPoliciesRecipeInstallStepFileExec { return v.FileExec }).(GuestPoliciesRecipeInstallStepFileExecPtrOutput)
 }
 
-// Installs an MSI file.  Structure is documented below.
+// Installs an MSI file.
+// Structure is documented below.
 func (o GuestPoliciesRecipeInstallStepOutput) MsiInstallation() GuestPoliciesRecipeInstallStepMsiInstallationPtrOutput {
 	return o.ApplyT(func(v GuestPoliciesRecipeInstallStep) *GuestPoliciesRecipeInstallStepMsiInstallation {
 		return v.MsiInstallation
 	}).(GuestPoliciesRecipeInstallStepMsiInstallationPtrOutput)
 }
 
-// Installs an rpm file via the rpm utility.  Structure is documented below.
+// Installs an rpm file via the rpm utility.
+// Structure is documented below.
 func (o GuestPoliciesRecipeInstallStepOutput) RpmInstallation() GuestPoliciesRecipeInstallStepRpmInstallationPtrOutput {
 	return o.ApplyT(func(v GuestPoliciesRecipeInstallStep) *GuestPoliciesRecipeInstallStepRpmInstallation {
 		return v.RpmInstallation
 	}).(GuestPoliciesRecipeInstallStepRpmInstallationPtrOutput)
 }
 
-// Runs commands in a shell.  Structure is documented below.
+// Runs commands in a shell.
+// Structure is documented below.
 func (o GuestPoliciesRecipeInstallStepOutput) ScriptRun() GuestPoliciesRecipeInstallStepScriptRunPtrOutput {
 	return o.ApplyT(func(v GuestPoliciesRecipeInstallStep) *GuestPoliciesRecipeInstallStepScriptRun { return v.ScriptRun }).(GuestPoliciesRecipeInstallStepScriptRunPtrOutput)
 }
@@ -2304,6 +2386,7 @@ type GuestPoliciesRecipeInstallStepArchiveExtraction struct {
 	// Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
 	Destination *string `pulumi:"destination"`
 	// The type of the archive to extract.
+	// Possible values are `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, and `ZIP`.
 	Type string `pulumi:"type"`
 }
 
@@ -2324,6 +2407,7 @@ type GuestPoliciesRecipeInstallStepArchiveExtractionArgs struct {
 	// Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
 	Destination pulumi.StringPtrInput `pulumi:"destination"`
 	// The type of the archive to extract.
+	// Possible values are `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, and `ZIP`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -2415,6 +2499,7 @@ func (o GuestPoliciesRecipeInstallStepArchiveExtractionOutput) Destination() pul
 }
 
 // The type of the archive to extract.
+// Possible values are `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, and `ZIP`.
 func (o GuestPoliciesRecipeInstallStepArchiveExtractionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GuestPoliciesRecipeInstallStepArchiveExtraction) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -2460,6 +2545,7 @@ func (o GuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput) Destination() 
 }
 
 // The type of the archive to extract.
+// Possible values are `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, and `ZIP`.
 func (o GuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuestPoliciesRecipeInstallStepArchiveExtraction) *string {
 		if v == nil {
@@ -3311,6 +3397,7 @@ type GuestPoliciesRecipeInstallStepScriptRun struct {
 	AllowedExitCodes []int `pulumi:"allowedExitCodes"`
 	// The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
 	// which likely only succeed for scripts with shebang lines.
+	// Possible values are `SHELL` and `POWERSHELL`.
 	Interpreter *string `pulumi:"interpreter"`
 	// The shell script to be executed.
 	Script string `pulumi:"script"`
@@ -3332,6 +3419,7 @@ type GuestPoliciesRecipeInstallStepScriptRunArgs struct {
 	AllowedExitCodes pulumi.IntArrayInput `pulumi:"allowedExitCodes"`
 	// The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
 	// which likely only succeed for scripts with shebang lines.
+	// Possible values are `SHELL` and `POWERSHELL`.
 	Interpreter pulumi.StringPtrInput `pulumi:"interpreter"`
 	// The shell script to be executed.
 	Script pulumi.StringInput `pulumi:"script"`
@@ -3421,6 +3509,7 @@ func (o GuestPoliciesRecipeInstallStepScriptRunOutput) AllowedExitCodes() pulumi
 
 // The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
 // which likely only succeed for scripts with shebang lines.
+// Possible values are `SHELL` and `POWERSHELL`.
 func (o GuestPoliciesRecipeInstallStepScriptRunOutput) Interpreter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuestPoliciesRecipeInstallStepScriptRun) *string { return v.Interpreter }).(pulumi.StringPtrOutput)
 }
@@ -3460,6 +3549,7 @@ func (o GuestPoliciesRecipeInstallStepScriptRunPtrOutput) AllowedExitCodes() pul
 
 // The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
 // which likely only succeed for scripts with shebang lines.
+// Possible values are `SHELL` and `POWERSHELL`.
 func (o GuestPoliciesRecipeInstallStepScriptRunPtrOutput) Interpreter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuestPoliciesRecipeInstallStepScriptRun) *string {
 		if v == nil {
@@ -3480,19 +3570,26 @@ func (o GuestPoliciesRecipeInstallStepScriptRunPtrOutput) Script() pulumi.String
 }
 
 type GuestPoliciesRecipeUpdateStep struct {
-	// Extracts an archive into the specified directory.  Structure is documented below.
+	// Extracts an archive into the specified directory.
+	// Structure is documented below.
 	ArchiveExtraction *GuestPoliciesRecipeUpdateStepArchiveExtraction `pulumi:"archiveExtraction"`
-	// Installs a deb file via dpkg.  Structure is documented below.
+	// Installs a deb file via dpkg.
+	// Structure is documented below.
 	DpkgInstallation *GuestPoliciesRecipeUpdateStepDpkgInstallation `pulumi:"dpkgInstallation"`
-	// Copies a file onto the instance.  Structure is documented below.
+	// Copies a file onto the instance.
+	// Structure is documented below.
 	FileCopy *GuestPoliciesRecipeUpdateStepFileCopy `pulumi:"fileCopy"`
-	// Executes an artifact or local file.  Structure is documented below.
+	// Executes an artifact or local file.
+	// Structure is documented below.
 	FileExec *GuestPoliciesRecipeUpdateStepFileExec `pulumi:"fileExec"`
-	// Installs an MSI file.  Structure is documented below.
+	// Installs an MSI file.
+	// Structure is documented below.
 	MsiInstallation *GuestPoliciesRecipeUpdateStepMsiInstallation `pulumi:"msiInstallation"`
-	// Installs an rpm file via the rpm utility.  Structure is documented below.
+	// Installs an rpm file via the rpm utility.
+	// Structure is documented below.
 	RpmInstallation *GuestPoliciesRecipeUpdateStepRpmInstallation `pulumi:"rpmInstallation"`
-	// Runs commands in a shell.  Structure is documented below.
+	// Runs commands in a shell.
+	// Structure is documented below.
 	ScriptRun *GuestPoliciesRecipeUpdateStepScriptRun `pulumi:"scriptRun"`
 }
 
@@ -3508,19 +3605,26 @@ type GuestPoliciesRecipeUpdateStepInput interface {
 }
 
 type GuestPoliciesRecipeUpdateStepArgs struct {
-	// Extracts an archive into the specified directory.  Structure is documented below.
+	// Extracts an archive into the specified directory.
+	// Structure is documented below.
 	ArchiveExtraction GuestPoliciesRecipeUpdateStepArchiveExtractionPtrInput `pulumi:"archiveExtraction"`
-	// Installs a deb file via dpkg.  Structure is documented below.
+	// Installs a deb file via dpkg.
+	// Structure is documented below.
 	DpkgInstallation GuestPoliciesRecipeUpdateStepDpkgInstallationPtrInput `pulumi:"dpkgInstallation"`
-	// Copies a file onto the instance.  Structure is documented below.
+	// Copies a file onto the instance.
+	// Structure is documented below.
 	FileCopy GuestPoliciesRecipeUpdateStepFileCopyPtrInput `pulumi:"fileCopy"`
-	// Executes an artifact or local file.  Structure is documented below.
+	// Executes an artifact or local file.
+	// Structure is documented below.
 	FileExec GuestPoliciesRecipeUpdateStepFileExecPtrInput `pulumi:"fileExec"`
-	// Installs an MSI file.  Structure is documented below.
+	// Installs an MSI file.
+	// Structure is documented below.
 	MsiInstallation GuestPoliciesRecipeUpdateStepMsiInstallationPtrInput `pulumi:"msiInstallation"`
-	// Installs an rpm file via the rpm utility.  Structure is documented below.
+	// Installs an rpm file via the rpm utility.
+	// Structure is documented below.
 	RpmInstallation GuestPoliciesRecipeUpdateStepRpmInstallationPtrInput `pulumi:"rpmInstallation"`
-	// Runs commands in a shell.  Structure is documented below.
+	// Runs commands in a shell.
+	// Structure is documented below.
 	ScriptRun GuestPoliciesRecipeUpdateStepScriptRunPtrInput `pulumi:"scriptRun"`
 }
 
@@ -3575,45 +3679,52 @@ func (o GuestPoliciesRecipeUpdateStepOutput) ToGuestPoliciesRecipeUpdateStepOutp
 	return o
 }
 
-// Extracts an archive into the specified directory.  Structure is documented below.
+// Extracts an archive into the specified directory.
+// Structure is documented below.
 func (o GuestPoliciesRecipeUpdateStepOutput) ArchiveExtraction() GuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput {
 	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStep) *GuestPoliciesRecipeUpdateStepArchiveExtraction {
 		return v.ArchiveExtraction
 	}).(GuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput)
 }
 
-// Installs a deb file via dpkg.  Structure is documented below.
+// Installs a deb file via dpkg.
+// Structure is documented below.
 func (o GuestPoliciesRecipeUpdateStepOutput) DpkgInstallation() GuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutput {
 	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStep) *GuestPoliciesRecipeUpdateStepDpkgInstallation {
 		return v.DpkgInstallation
 	}).(GuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutput)
 }
 
-// Copies a file onto the instance.  Structure is documented below.
+// Copies a file onto the instance.
+// Structure is documented below.
 func (o GuestPoliciesRecipeUpdateStepOutput) FileCopy() GuestPoliciesRecipeUpdateStepFileCopyPtrOutput {
 	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStep) *GuestPoliciesRecipeUpdateStepFileCopy { return v.FileCopy }).(GuestPoliciesRecipeUpdateStepFileCopyPtrOutput)
 }
 
-// Executes an artifact or local file.  Structure is documented below.
+// Executes an artifact or local file.
+// Structure is documented below.
 func (o GuestPoliciesRecipeUpdateStepOutput) FileExec() GuestPoliciesRecipeUpdateStepFileExecPtrOutput {
 	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStep) *GuestPoliciesRecipeUpdateStepFileExec { return v.FileExec }).(GuestPoliciesRecipeUpdateStepFileExecPtrOutput)
 }
 
-// Installs an MSI file.  Structure is documented below.
+// Installs an MSI file.
+// Structure is documented below.
 func (o GuestPoliciesRecipeUpdateStepOutput) MsiInstallation() GuestPoliciesRecipeUpdateStepMsiInstallationPtrOutput {
 	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStep) *GuestPoliciesRecipeUpdateStepMsiInstallation {
 		return v.MsiInstallation
 	}).(GuestPoliciesRecipeUpdateStepMsiInstallationPtrOutput)
 }
 
-// Installs an rpm file via the rpm utility.  Structure is documented below.
+// Installs an rpm file via the rpm utility.
+// Structure is documented below.
 func (o GuestPoliciesRecipeUpdateStepOutput) RpmInstallation() GuestPoliciesRecipeUpdateStepRpmInstallationPtrOutput {
 	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStep) *GuestPoliciesRecipeUpdateStepRpmInstallation {
 		return v.RpmInstallation
 	}).(GuestPoliciesRecipeUpdateStepRpmInstallationPtrOutput)
 }
 
-// Runs commands in a shell.  Structure is documented below.
+// Runs commands in a shell.
+// Structure is documented below.
 func (o GuestPoliciesRecipeUpdateStepOutput) ScriptRun() GuestPoliciesRecipeUpdateStepScriptRunPtrOutput {
 	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStep) *GuestPoliciesRecipeUpdateStepScriptRun { return v.ScriptRun }).(GuestPoliciesRecipeUpdateStepScriptRunPtrOutput)
 }
@@ -3644,6 +3755,7 @@ type GuestPoliciesRecipeUpdateStepArchiveExtraction struct {
 	// Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
 	Destination *string `pulumi:"destination"`
 	// The type of the archive to extract.
+	// Possible values are `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, and `ZIP`.
 	Type string `pulumi:"type"`
 }
 
@@ -3664,6 +3776,7 @@ type GuestPoliciesRecipeUpdateStepArchiveExtractionArgs struct {
 	// Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
 	Destination pulumi.StringPtrInput `pulumi:"destination"`
 	// The type of the archive to extract.
+	// Possible values are `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, and `ZIP`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -3755,6 +3868,7 @@ func (o GuestPoliciesRecipeUpdateStepArchiveExtractionOutput) Destination() pulu
 }
 
 // The type of the archive to extract.
+// Possible values are `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, and `ZIP`.
 func (o GuestPoliciesRecipeUpdateStepArchiveExtractionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStepArchiveExtraction) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -3800,6 +3914,7 @@ func (o GuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput) Destination() p
 }
 
 // The type of the archive to extract.
+// Possible values are `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, and `ZIP`.
 func (o GuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuestPoliciesRecipeUpdateStepArchiveExtraction) *string {
 		if v == nil {
@@ -4651,6 +4766,7 @@ type GuestPoliciesRecipeUpdateStepScriptRun struct {
 	AllowedExitCodes []int `pulumi:"allowedExitCodes"`
 	// The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
 	// which likely only succeed for scripts with shebang lines.
+	// Possible values are `SHELL` and `POWERSHELL`.
 	Interpreter *string `pulumi:"interpreter"`
 	// The shell script to be executed.
 	Script string `pulumi:"script"`
@@ -4672,6 +4788,7 @@ type GuestPoliciesRecipeUpdateStepScriptRunArgs struct {
 	AllowedExitCodes pulumi.IntArrayInput `pulumi:"allowedExitCodes"`
 	// The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
 	// which likely only succeed for scripts with shebang lines.
+	// Possible values are `SHELL` and `POWERSHELL`.
 	Interpreter pulumi.StringPtrInput `pulumi:"interpreter"`
 	// The shell script to be executed.
 	Script pulumi.StringInput `pulumi:"script"`
@@ -4761,6 +4878,7 @@ func (o GuestPoliciesRecipeUpdateStepScriptRunOutput) AllowedExitCodes() pulumi.
 
 // The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
 // which likely only succeed for scripts with shebang lines.
+// Possible values are `SHELL` and `POWERSHELL`.
 func (o GuestPoliciesRecipeUpdateStepScriptRunOutput) Interpreter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStepScriptRun) *string { return v.Interpreter }).(pulumi.StringPtrOutput)
 }
@@ -4800,6 +4918,7 @@ func (o GuestPoliciesRecipeUpdateStepScriptRunPtrOutput) AllowedExitCodes() pulu
 
 // The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
 // which likely only succeed for scripts with shebang lines.
+// Possible values are `SHELL` and `POWERSHELL`.
 func (o GuestPoliciesRecipeUpdateStepScriptRunPtrOutput) Interpreter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuestPoliciesRecipeUpdateStepScriptRun) *string {
 		if v == nil {
@@ -4822,7 +4941,8 @@ func (o GuestPoliciesRecipeUpdateStepScriptRunPtrOutput) Script() pulumi.StringP
 type PatchDeploymentInstanceFilter struct {
 	// Target all VM instances in the project. If true, no other criteria is permitted.
 	All *bool `pulumi:"all"`
-	// Targets VM instances matching ANY of these GroupLabels. This allows targeting of disparate groups of VM instances.  Structure is documented below.
+	// Targets VM instances matching ANY of these GroupLabels. This allows targeting of disparate groups of VM instances.
+	// Structure is documented below.
 	GroupLabels []PatchDeploymentInstanceFilterGroupLabel `pulumi:"groupLabels"`
 	// Targets VMs whose name starts with one of these prefixes. Similar to labels, this is another way to group
 	// VMs when targeting configs, for example prefix="prod-".
@@ -4849,7 +4969,8 @@ type PatchDeploymentInstanceFilterInput interface {
 type PatchDeploymentInstanceFilterArgs struct {
 	// Target all VM instances in the project. If true, no other criteria is permitted.
 	All pulumi.BoolPtrInput `pulumi:"all"`
-	// Targets VM instances matching ANY of these GroupLabels. This allows targeting of disparate groups of VM instances.  Structure is documented below.
+	// Targets VM instances matching ANY of these GroupLabels. This allows targeting of disparate groups of VM instances.
+	// Structure is documented below.
 	GroupLabels PatchDeploymentInstanceFilterGroupLabelArrayInput `pulumi:"groupLabels"`
 	// Targets VMs whose name starts with one of these prefixes. Similar to labels, this is another way to group
 	// VMs when targeting configs, for example prefix="prod-".
@@ -4944,7 +5065,8 @@ func (o PatchDeploymentInstanceFilterOutput) All() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v PatchDeploymentInstanceFilter) *bool { return v.All }).(pulumi.BoolPtrOutput)
 }
 
-// Targets VM instances matching ANY of these GroupLabels. This allows targeting of disparate groups of VM instances.  Structure is documented below.
+// Targets VM instances matching ANY of these GroupLabels. This allows targeting of disparate groups of VM instances.
+// Structure is documented below.
 func (o PatchDeploymentInstanceFilterOutput) GroupLabels() PatchDeploymentInstanceFilterGroupLabelArrayOutput {
 	return o.ApplyT(func(v PatchDeploymentInstanceFilter) []PatchDeploymentInstanceFilterGroupLabel { return v.GroupLabels }).(PatchDeploymentInstanceFilterGroupLabelArrayOutput)
 }
@@ -4995,7 +5117,8 @@ func (o PatchDeploymentInstanceFilterPtrOutput) All() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Targets VM instances matching ANY of these GroupLabels. This allows targeting of disparate groups of VM instances.  Structure is documented below.
+// Targets VM instances matching ANY of these GroupLabels. This allows targeting of disparate groups of VM instances.
+// Structure is documented below.
 func (o PatchDeploymentInstanceFilterPtrOutput) GroupLabels() PatchDeploymentInstanceFilterGroupLabelArrayOutput {
 	return o.ApplyT(func(v *PatchDeploymentInstanceFilter) []PatchDeploymentInstanceFilterGroupLabel {
 		if v == nil {
@@ -5271,21 +5394,29 @@ func (o PatchDeploymentOneTimeSchedulePtrOutput) ExecuteTime() pulumi.StringPtrO
 }
 
 type PatchDeploymentPatchConfig struct {
-	// Apt update settings. Use this setting to override the default apt patch rules.  Structure is documented below.
+	// Apt update settings. Use this setting to override the default apt patch rules.
+	// Structure is documented below.
 	Apt *PatchDeploymentPatchConfigApt `pulumi:"apt"`
-	// goo update settings. Use this setting to override the default goo patch rules.  Structure is documented below.
+	// goo update settings. Use this setting to override the default goo patch rules.
+	// Structure is documented below.
 	Goo *PatchDeploymentPatchConfigGoo `pulumi:"goo"`
-	// The ExecStep to run after the patch update.  Structure is documented below.
+	// The ExecStep to run after the patch update.
+	// Structure is documented below.
 	PostStep *PatchDeploymentPatchConfigPostStep `pulumi:"postStep"`
-	// The ExecStep to run before the patch update.  Structure is documented below.
+	// The ExecStep to run before the patch update.
+	// Structure is documented below.
 	PreStep *PatchDeploymentPatchConfigPreStep `pulumi:"preStep"`
 	// Post-patch reboot settings.
+	// Possible values are `DEFAULT`, `ALWAYS`, and `NEVER`.
 	RebootConfig *string `pulumi:"rebootConfig"`
-	// Windows update settings. Use this setting to override the default Windows patch rules.  Structure is documented below.
+	// Windows update settings. Use this setting to override the default Windows patch rules.
+	// Structure is documented below.
 	WindowsUpdate *PatchDeploymentPatchConfigWindowsUpdate `pulumi:"windowsUpdate"`
-	// Yum update settings. Use this setting to override the default yum patch rules.  Structure is documented below.
+	// Yum update settings. Use this setting to override the default yum patch rules.
+	// Structure is documented below.
 	Yum *PatchDeploymentPatchConfigYum `pulumi:"yum"`
-	// zypper update settings. Use this setting to override the default zypper patch rules.  Structure is documented below.
+	// zypper update settings. Use this setting to override the default zypper patch rules.
+	// Structure is documented below.
 	Zypper *PatchDeploymentPatchConfigZypper `pulumi:"zypper"`
 }
 
@@ -5301,21 +5432,29 @@ type PatchDeploymentPatchConfigInput interface {
 }
 
 type PatchDeploymentPatchConfigArgs struct {
-	// Apt update settings. Use this setting to override the default apt patch rules.  Structure is documented below.
+	// Apt update settings. Use this setting to override the default apt patch rules.
+	// Structure is documented below.
 	Apt PatchDeploymentPatchConfigAptPtrInput `pulumi:"apt"`
-	// goo update settings. Use this setting to override the default goo patch rules.  Structure is documented below.
+	// goo update settings. Use this setting to override the default goo patch rules.
+	// Structure is documented below.
 	Goo PatchDeploymentPatchConfigGooPtrInput `pulumi:"goo"`
-	// The ExecStep to run after the patch update.  Structure is documented below.
+	// The ExecStep to run after the patch update.
+	// Structure is documented below.
 	PostStep PatchDeploymentPatchConfigPostStepPtrInput `pulumi:"postStep"`
-	// The ExecStep to run before the patch update.  Structure is documented below.
+	// The ExecStep to run before the patch update.
+	// Structure is documented below.
 	PreStep PatchDeploymentPatchConfigPreStepPtrInput `pulumi:"preStep"`
 	// Post-patch reboot settings.
+	// Possible values are `DEFAULT`, `ALWAYS`, and `NEVER`.
 	RebootConfig pulumi.StringPtrInput `pulumi:"rebootConfig"`
-	// Windows update settings. Use this setting to override the default Windows patch rules.  Structure is documented below.
+	// Windows update settings. Use this setting to override the default Windows patch rules.
+	// Structure is documented below.
 	WindowsUpdate PatchDeploymentPatchConfigWindowsUpdatePtrInput `pulumi:"windowsUpdate"`
-	// Yum update settings. Use this setting to override the default yum patch rules.  Structure is documented below.
+	// Yum update settings. Use this setting to override the default yum patch rules.
+	// Structure is documented below.
 	Yum PatchDeploymentPatchConfigYumPtrInput `pulumi:"yum"`
-	// zypper update settings. Use this setting to override the default zypper patch rules.  Structure is documented below.
+	// zypper update settings. Use this setting to override the default zypper patch rules.
+	// Structure is documented below.
 	Zypper PatchDeploymentPatchConfigZypperPtrInput `pulumi:"zypper"`
 }
 
@@ -5396,42 +5535,50 @@ func (o PatchDeploymentPatchConfigOutput) ToPatchDeploymentPatchConfigPtrOutputW
 	}).(PatchDeploymentPatchConfigPtrOutput)
 }
 
-// Apt update settings. Use this setting to override the default apt patch rules.  Structure is documented below.
+// Apt update settings. Use this setting to override the default apt patch rules.
+// Structure is documented below.
 func (o PatchDeploymentPatchConfigOutput) Apt() PatchDeploymentPatchConfigAptPtrOutput {
 	return o.ApplyT(func(v PatchDeploymentPatchConfig) *PatchDeploymentPatchConfigApt { return v.Apt }).(PatchDeploymentPatchConfigAptPtrOutput)
 }
 
-// goo update settings. Use this setting to override the default goo patch rules.  Structure is documented below.
+// goo update settings. Use this setting to override the default goo patch rules.
+// Structure is documented below.
 func (o PatchDeploymentPatchConfigOutput) Goo() PatchDeploymentPatchConfigGooPtrOutput {
 	return o.ApplyT(func(v PatchDeploymentPatchConfig) *PatchDeploymentPatchConfigGoo { return v.Goo }).(PatchDeploymentPatchConfigGooPtrOutput)
 }
 
-// The ExecStep to run after the patch update.  Structure is documented below.
+// The ExecStep to run after the patch update.
+// Structure is documented below.
 func (o PatchDeploymentPatchConfigOutput) PostStep() PatchDeploymentPatchConfigPostStepPtrOutput {
 	return o.ApplyT(func(v PatchDeploymentPatchConfig) *PatchDeploymentPatchConfigPostStep { return v.PostStep }).(PatchDeploymentPatchConfigPostStepPtrOutput)
 }
 
-// The ExecStep to run before the patch update.  Structure is documented below.
+// The ExecStep to run before the patch update.
+// Structure is documented below.
 func (o PatchDeploymentPatchConfigOutput) PreStep() PatchDeploymentPatchConfigPreStepPtrOutput {
 	return o.ApplyT(func(v PatchDeploymentPatchConfig) *PatchDeploymentPatchConfigPreStep { return v.PreStep }).(PatchDeploymentPatchConfigPreStepPtrOutput)
 }
 
 // Post-patch reboot settings.
+// Possible values are `DEFAULT`, `ALWAYS`, and `NEVER`.
 func (o PatchDeploymentPatchConfigOutput) RebootConfig() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PatchDeploymentPatchConfig) *string { return v.RebootConfig }).(pulumi.StringPtrOutput)
 }
 
-// Windows update settings. Use this setting to override the default Windows patch rules.  Structure is documented below.
+// Windows update settings. Use this setting to override the default Windows patch rules.
+// Structure is documented below.
 func (o PatchDeploymentPatchConfigOutput) WindowsUpdate() PatchDeploymentPatchConfigWindowsUpdatePtrOutput {
 	return o.ApplyT(func(v PatchDeploymentPatchConfig) *PatchDeploymentPatchConfigWindowsUpdate { return v.WindowsUpdate }).(PatchDeploymentPatchConfigWindowsUpdatePtrOutput)
 }
 
-// Yum update settings. Use this setting to override the default yum patch rules.  Structure is documented below.
+// Yum update settings. Use this setting to override the default yum patch rules.
+// Structure is documented below.
 func (o PatchDeploymentPatchConfigOutput) Yum() PatchDeploymentPatchConfigYumPtrOutput {
 	return o.ApplyT(func(v PatchDeploymentPatchConfig) *PatchDeploymentPatchConfigYum { return v.Yum }).(PatchDeploymentPatchConfigYumPtrOutput)
 }
 
-// zypper update settings. Use this setting to override the default zypper patch rules.  Structure is documented below.
+// zypper update settings. Use this setting to override the default zypper patch rules.
+// Structure is documented below.
 func (o PatchDeploymentPatchConfigOutput) Zypper() PatchDeploymentPatchConfigZypperPtrOutput {
 	return o.ApplyT(func(v PatchDeploymentPatchConfig) *PatchDeploymentPatchConfigZypper { return v.Zypper }).(PatchDeploymentPatchConfigZypperPtrOutput)
 }
@@ -5454,7 +5601,8 @@ func (o PatchDeploymentPatchConfigPtrOutput) Elem() PatchDeploymentPatchConfigOu
 	return o.ApplyT(func(v *PatchDeploymentPatchConfig) PatchDeploymentPatchConfig { return *v }).(PatchDeploymentPatchConfigOutput)
 }
 
-// Apt update settings. Use this setting to override the default apt patch rules.  Structure is documented below.
+// Apt update settings. Use this setting to override the default apt patch rules.
+// Structure is documented below.
 func (o PatchDeploymentPatchConfigPtrOutput) Apt() PatchDeploymentPatchConfigAptPtrOutput {
 	return o.ApplyT(func(v *PatchDeploymentPatchConfig) *PatchDeploymentPatchConfigApt {
 		if v == nil {
@@ -5464,7 +5612,8 @@ func (o PatchDeploymentPatchConfigPtrOutput) Apt() PatchDeploymentPatchConfigApt
 	}).(PatchDeploymentPatchConfigAptPtrOutput)
 }
 
-// goo update settings. Use this setting to override the default goo patch rules.  Structure is documented below.
+// goo update settings. Use this setting to override the default goo patch rules.
+// Structure is documented below.
 func (o PatchDeploymentPatchConfigPtrOutput) Goo() PatchDeploymentPatchConfigGooPtrOutput {
 	return o.ApplyT(func(v *PatchDeploymentPatchConfig) *PatchDeploymentPatchConfigGoo {
 		if v == nil {
@@ -5474,7 +5623,8 @@ func (o PatchDeploymentPatchConfigPtrOutput) Goo() PatchDeploymentPatchConfigGoo
 	}).(PatchDeploymentPatchConfigGooPtrOutput)
 }
 
-// The ExecStep to run after the patch update.  Structure is documented below.
+// The ExecStep to run after the patch update.
+// Structure is documented below.
 func (o PatchDeploymentPatchConfigPtrOutput) PostStep() PatchDeploymentPatchConfigPostStepPtrOutput {
 	return o.ApplyT(func(v *PatchDeploymentPatchConfig) *PatchDeploymentPatchConfigPostStep {
 		if v == nil {
@@ -5484,7 +5634,8 @@ func (o PatchDeploymentPatchConfigPtrOutput) PostStep() PatchDeploymentPatchConf
 	}).(PatchDeploymentPatchConfigPostStepPtrOutput)
 }
 
-// The ExecStep to run before the patch update.  Structure is documented below.
+// The ExecStep to run before the patch update.
+// Structure is documented below.
 func (o PatchDeploymentPatchConfigPtrOutput) PreStep() PatchDeploymentPatchConfigPreStepPtrOutput {
 	return o.ApplyT(func(v *PatchDeploymentPatchConfig) *PatchDeploymentPatchConfigPreStep {
 		if v == nil {
@@ -5495,6 +5646,7 @@ func (o PatchDeploymentPatchConfigPtrOutput) PreStep() PatchDeploymentPatchConfi
 }
 
 // Post-patch reboot settings.
+// Possible values are `DEFAULT`, `ALWAYS`, and `NEVER`.
 func (o PatchDeploymentPatchConfigPtrOutput) RebootConfig() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PatchDeploymentPatchConfig) *string {
 		if v == nil {
@@ -5504,7 +5656,8 @@ func (o PatchDeploymentPatchConfigPtrOutput) RebootConfig() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Windows update settings. Use this setting to override the default Windows patch rules.  Structure is documented below.
+// Windows update settings. Use this setting to override the default Windows patch rules.
+// Structure is documented below.
 func (o PatchDeploymentPatchConfigPtrOutput) WindowsUpdate() PatchDeploymentPatchConfigWindowsUpdatePtrOutput {
 	return o.ApplyT(func(v *PatchDeploymentPatchConfig) *PatchDeploymentPatchConfigWindowsUpdate {
 		if v == nil {
@@ -5514,7 +5667,8 @@ func (o PatchDeploymentPatchConfigPtrOutput) WindowsUpdate() PatchDeploymentPatc
 	}).(PatchDeploymentPatchConfigWindowsUpdatePtrOutput)
 }
 
-// Yum update settings. Use this setting to override the default yum patch rules.  Structure is documented below.
+// Yum update settings. Use this setting to override the default yum patch rules.
+// Structure is documented below.
 func (o PatchDeploymentPatchConfigPtrOutput) Yum() PatchDeploymentPatchConfigYumPtrOutput {
 	return o.ApplyT(func(v *PatchDeploymentPatchConfig) *PatchDeploymentPatchConfigYum {
 		if v == nil {
@@ -5524,7 +5678,8 @@ func (o PatchDeploymentPatchConfigPtrOutput) Yum() PatchDeploymentPatchConfigYum
 	}).(PatchDeploymentPatchConfigYumPtrOutput)
 }
 
-// zypper update settings. Use this setting to override the default zypper patch rules.  Structure is documented below.
+// zypper update settings. Use this setting to override the default zypper patch rules.
+// Structure is documented below.
 func (o PatchDeploymentPatchConfigPtrOutput) Zypper() PatchDeploymentPatchConfigZypperPtrOutput {
 	return o.ApplyT(func(v *PatchDeploymentPatchConfig) *PatchDeploymentPatchConfigZypper {
 		if v == nil {
@@ -5542,6 +5697,7 @@ type PatchDeploymentPatchConfigApt struct {
 	// any other patch configuration fields.
 	ExclusivePackages []string `pulumi:"exclusivePackages"`
 	// By changing the type to DIST, the patching is performed using apt-get dist-upgrade instead.
+	// Possible values are `DIST` and `UPGRADE`.
 	Type *string `pulumi:"type"`
 }
 
@@ -5564,6 +5720,7 @@ type PatchDeploymentPatchConfigAptArgs struct {
 	// any other patch configuration fields.
 	ExclusivePackages pulumi.StringArrayInput `pulumi:"exclusivePackages"`
 	// By changing the type to DIST, the patching is performed using apt-get dist-upgrade instead.
+	// Possible values are `DIST` and `UPGRADE`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -5657,6 +5814,7 @@ func (o PatchDeploymentPatchConfigAptOutput) ExclusivePackages() pulumi.StringAr
 }
 
 // By changing the type to DIST, the patching is performed using apt-get dist-upgrade instead.
+// Possible values are `DIST` and `UPGRADE`.
 func (o PatchDeploymentPatchConfigAptOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PatchDeploymentPatchConfigApt) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -5702,6 +5860,7 @@ func (o PatchDeploymentPatchConfigAptPtrOutput) ExclusivePackages() pulumi.Strin
 }
 
 // By changing the type to DIST, the patching is performed using apt-get dist-upgrade instead.
+// Possible values are `DIST` and `UPGRADE`.
 func (o PatchDeploymentPatchConfigAptPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PatchDeploymentPatchConfigApt) *string {
 		if v == nil {
@@ -5843,9 +6002,11 @@ func (o PatchDeploymentPatchConfigGooPtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 type PatchDeploymentPatchConfigPostStep struct {
-	// The ExecStepConfig for all Linux VMs targeted by the PatchJob.  Structure is documented below.
+	// The ExecStepConfig for all Linux VMs targeted by the PatchJob.
+	// Structure is documented below.
 	LinuxExecStepConfig *PatchDeploymentPatchConfigPostStepLinuxExecStepConfig `pulumi:"linuxExecStepConfig"`
-	// The ExecStepConfig for all Windows VMs targeted by the PatchJob.  Structure is documented below.
+	// The ExecStepConfig for all Windows VMs targeted by the PatchJob.
+	// Structure is documented below.
 	WindowsExecStepConfig *PatchDeploymentPatchConfigPostStepWindowsExecStepConfig `pulumi:"windowsExecStepConfig"`
 }
 
@@ -5861,9 +6022,11 @@ type PatchDeploymentPatchConfigPostStepInput interface {
 }
 
 type PatchDeploymentPatchConfigPostStepArgs struct {
-	// The ExecStepConfig for all Linux VMs targeted by the PatchJob.  Structure is documented below.
+	// The ExecStepConfig for all Linux VMs targeted by the PatchJob.
+	// Structure is documented below.
 	LinuxExecStepConfig PatchDeploymentPatchConfigPostStepLinuxExecStepConfigPtrInput `pulumi:"linuxExecStepConfig"`
-	// The ExecStepConfig for all Windows VMs targeted by the PatchJob.  Structure is documented below.
+	// The ExecStepConfig for all Windows VMs targeted by the PatchJob.
+	// Structure is documented below.
 	WindowsExecStepConfig PatchDeploymentPatchConfigPostStepWindowsExecStepConfigPtrInput `pulumi:"windowsExecStepConfig"`
 }
 
@@ -5944,14 +6107,16 @@ func (o PatchDeploymentPatchConfigPostStepOutput) ToPatchDeploymentPatchConfigPo
 	}).(PatchDeploymentPatchConfigPostStepPtrOutput)
 }
 
-// The ExecStepConfig for all Linux VMs targeted by the PatchJob.  Structure is documented below.
+// The ExecStepConfig for all Linux VMs targeted by the PatchJob.
+// Structure is documented below.
 func (o PatchDeploymentPatchConfigPostStepOutput) LinuxExecStepConfig() PatchDeploymentPatchConfigPostStepLinuxExecStepConfigPtrOutput {
 	return o.ApplyT(func(v PatchDeploymentPatchConfigPostStep) *PatchDeploymentPatchConfigPostStepLinuxExecStepConfig {
 		return v.LinuxExecStepConfig
 	}).(PatchDeploymentPatchConfigPostStepLinuxExecStepConfigPtrOutput)
 }
 
-// The ExecStepConfig for all Windows VMs targeted by the PatchJob.  Structure is documented below.
+// The ExecStepConfig for all Windows VMs targeted by the PatchJob.
+// Structure is documented below.
 func (o PatchDeploymentPatchConfigPostStepOutput) WindowsExecStepConfig() PatchDeploymentPatchConfigPostStepWindowsExecStepConfigPtrOutput {
 	return o.ApplyT(func(v PatchDeploymentPatchConfigPostStep) *PatchDeploymentPatchConfigPostStepWindowsExecStepConfig {
 		return v.WindowsExecStepConfig
@@ -5976,7 +6141,8 @@ func (o PatchDeploymentPatchConfigPostStepPtrOutput) Elem() PatchDeploymentPatch
 	return o.ApplyT(func(v *PatchDeploymentPatchConfigPostStep) PatchDeploymentPatchConfigPostStep { return *v }).(PatchDeploymentPatchConfigPostStepOutput)
 }
 
-// The ExecStepConfig for all Linux VMs targeted by the PatchJob.  Structure is documented below.
+// The ExecStepConfig for all Linux VMs targeted by the PatchJob.
+// Structure is documented below.
 func (o PatchDeploymentPatchConfigPostStepPtrOutput) LinuxExecStepConfig() PatchDeploymentPatchConfigPostStepLinuxExecStepConfigPtrOutput {
 	return o.ApplyT(func(v *PatchDeploymentPatchConfigPostStep) *PatchDeploymentPatchConfigPostStepLinuxExecStepConfig {
 		if v == nil {
@@ -5986,7 +6152,8 @@ func (o PatchDeploymentPatchConfigPostStepPtrOutput) LinuxExecStepConfig() Patch
 	}).(PatchDeploymentPatchConfigPostStepLinuxExecStepConfigPtrOutput)
 }
 
-// The ExecStepConfig for all Windows VMs targeted by the PatchJob.  Structure is documented below.
+// The ExecStepConfig for all Windows VMs targeted by the PatchJob.
+// Structure is documented below.
 func (o PatchDeploymentPatchConfigPostStepPtrOutput) WindowsExecStepConfig() PatchDeploymentPatchConfigPostStepWindowsExecStepConfigPtrOutput {
 	return o.ApplyT(func(v *PatchDeploymentPatchConfigPostStep) *PatchDeploymentPatchConfigPostStepWindowsExecStepConfig {
 		if v == nil {
@@ -5999,10 +6166,12 @@ func (o PatchDeploymentPatchConfigPostStepPtrOutput) WindowsExecStepConfig() Pat
 type PatchDeploymentPatchConfigPostStepLinuxExecStepConfig struct {
 	// Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
 	AllowedSuccessCodes []int `pulumi:"allowedSuccessCodes"`
-	// A Cloud Storage object containing the executable.  Structure is documented below.
+	// A Cloud Storage object containing the executable.
+	// Structure is documented below.
 	GcsObject *PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject `pulumi:"gcsObject"`
 	// The script interpreter to use to run the script. If no interpreter is specified the script will
 	// be executed directly, which will likely only succeed for scripts with shebang lines.
+	// Possible values are `SHELL` and `POWERSHELL`.
 	Interpreter *string `pulumi:"interpreter"`
 	// An absolute path to the executable on the VM.
 	LocalPath *string `pulumi:"localPath"`
@@ -6022,10 +6191,12 @@ type PatchDeploymentPatchConfigPostStepLinuxExecStepConfigInput interface {
 type PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgs struct {
 	// Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
 	AllowedSuccessCodes pulumi.IntArrayInput `pulumi:"allowedSuccessCodes"`
-	// A Cloud Storage object containing the executable.  Structure is documented below.
+	// A Cloud Storage object containing the executable.
+	// Structure is documented below.
 	GcsObject PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectPtrInput `pulumi:"gcsObject"`
 	// The script interpreter to use to run the script. If no interpreter is specified the script will
 	// be executed directly, which will likely only succeed for scripts with shebang lines.
+	// Possible values are `SHELL` and `POWERSHELL`.
 	Interpreter pulumi.StringPtrInput `pulumi:"interpreter"`
 	// An absolute path to the executable on the VM.
 	LocalPath pulumi.StringPtrInput `pulumi:"localPath"`
@@ -6113,7 +6284,8 @@ func (o PatchDeploymentPatchConfigPostStepLinuxExecStepConfigOutput) AllowedSucc
 	return o.ApplyT(func(v PatchDeploymentPatchConfigPostStepLinuxExecStepConfig) []int { return v.AllowedSuccessCodes }).(pulumi.IntArrayOutput)
 }
 
-// A Cloud Storage object containing the executable.  Structure is documented below.
+// A Cloud Storage object containing the executable.
+// Structure is documented below.
 func (o PatchDeploymentPatchConfigPostStepLinuxExecStepConfigOutput) GcsObject() PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectPtrOutput {
 	return o.ApplyT(func(v PatchDeploymentPatchConfigPostStepLinuxExecStepConfig) *PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject {
 		return v.GcsObject
@@ -6122,6 +6294,7 @@ func (o PatchDeploymentPatchConfigPostStepLinuxExecStepConfigOutput) GcsObject()
 
 // The script interpreter to use to run the script. If no interpreter is specified the script will
 // be executed directly, which will likely only succeed for scripts with shebang lines.
+// Possible values are `SHELL` and `POWERSHELL`.
 func (o PatchDeploymentPatchConfigPostStepLinuxExecStepConfigOutput) Interpreter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PatchDeploymentPatchConfigPostStepLinuxExecStepConfig) *string { return v.Interpreter }).(pulumi.StringPtrOutput)
 }
@@ -6161,7 +6334,8 @@ func (o PatchDeploymentPatchConfigPostStepLinuxExecStepConfigPtrOutput) AllowedS
 	}).(pulumi.IntArrayOutput)
 }
 
-// A Cloud Storage object containing the executable.  Structure is documented below.
+// A Cloud Storage object containing the executable.
+// Structure is documented below.
 func (o PatchDeploymentPatchConfigPostStepLinuxExecStepConfigPtrOutput) GcsObject() PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectPtrOutput {
 	return o.ApplyT(func(v *PatchDeploymentPatchConfigPostStepLinuxExecStepConfig) *PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject {
 		if v == nil {
@@ -6173,6 +6347,7 @@ func (o PatchDeploymentPatchConfigPostStepLinuxExecStepConfigPtrOutput) GcsObjec
 
 // The script interpreter to use to run the script. If no interpreter is specified the script will
 // be executed directly, which will likely only succeed for scripts with shebang lines.
+// Possible values are `SHELL` and `POWERSHELL`.
 func (o PatchDeploymentPatchConfigPostStepLinuxExecStepConfigPtrOutput) Interpreter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PatchDeploymentPatchConfigPostStepLinuxExecStepConfig) *string {
 		if v == nil {
@@ -6368,10 +6543,12 @@ func (o PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectPtrOutput)
 type PatchDeploymentPatchConfigPostStepWindowsExecStepConfig struct {
 	// Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
 	AllowedSuccessCodes []int `pulumi:"allowedSuccessCodes"`
-	// A Cloud Storage object containing the executable.  Structure is documented below.
+	// A Cloud Storage object containing the executable.
+	// Structure is documented below.
 	GcsObject *PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObject `pulumi:"gcsObject"`
 	// The script interpreter to use to run the script. If no interpreter is specified the script will
 	// be executed directly, which will likely only succeed for scripts with shebang lines.
+	// Possible values are `SHELL` and `POWERSHELL`.
 	Interpreter *string `pulumi:"interpreter"`
 	// An absolute path to the executable on the VM.
 	LocalPath *string `pulumi:"localPath"`
@@ -6391,10 +6568,12 @@ type PatchDeploymentPatchConfigPostStepWindowsExecStepConfigInput interface {
 type PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgs struct {
 	// Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
 	AllowedSuccessCodes pulumi.IntArrayInput `pulumi:"allowedSuccessCodes"`
-	// A Cloud Storage object containing the executable.  Structure is documented below.
+	// A Cloud Storage object containing the executable.
+	// Structure is documented below.
 	GcsObject PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectPtrInput `pulumi:"gcsObject"`
 	// The script interpreter to use to run the script. If no interpreter is specified the script will
 	// be executed directly, which will likely only succeed for scripts with shebang lines.
+	// Possible values are `SHELL` and `POWERSHELL`.
 	Interpreter pulumi.StringPtrInput `pulumi:"interpreter"`
 	// An absolute path to the executable on the VM.
 	LocalPath pulumi.StringPtrInput `pulumi:"localPath"`
@@ -6482,7 +6661,8 @@ func (o PatchDeploymentPatchConfigPostStepWindowsExecStepConfigOutput) AllowedSu
 	return o.ApplyT(func(v PatchDeploymentPatchConfigPostStepWindowsExecStepConfig) []int { return v.AllowedSuccessCodes }).(pulumi.IntArrayOutput)
 }
 
-// A Cloud Storage object containing the executable.  Structure is documented below.
+// A Cloud Storage object containing the executable.
+// Structure is documented below.
 func (o PatchDeploymentPatchConfigPostStepWindowsExecStepConfigOutput) GcsObject() PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectPtrOutput {
 	return o.ApplyT(func(v PatchDeploymentPatchConfigPostStepWindowsExecStepConfig) *PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObject {
 		return v.GcsObject
@@ -6491,6 +6671,7 @@ func (o PatchDeploymentPatchConfigPostStepWindowsExecStepConfigOutput) GcsObject
 
 // The script interpreter to use to run the script. If no interpreter is specified the script will
 // be executed directly, which will likely only succeed for scripts with shebang lines.
+// Possible values are `SHELL` and `POWERSHELL`.
 func (o PatchDeploymentPatchConfigPostStepWindowsExecStepConfigOutput) Interpreter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PatchDeploymentPatchConfigPostStepWindowsExecStepConfig) *string { return v.Interpreter }).(pulumi.StringPtrOutput)
 }
@@ -6530,7 +6711,8 @@ func (o PatchDeploymentPatchConfigPostStepWindowsExecStepConfigPtrOutput) Allowe
 	}).(pulumi.IntArrayOutput)
 }
 
-// A Cloud Storage object containing the executable.  Structure is documented below.
+// A Cloud Storage object containing the executable.
+// Structure is documented below.
 func (o PatchDeploymentPatchConfigPostStepWindowsExecStepConfigPtrOutput) GcsObject() PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectPtrOutput {
 	return o.ApplyT(func(v *PatchDeploymentPatchConfigPostStepWindowsExecStepConfig) *PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObject {
 		if v == nil {
@@ -6542,6 +6724,7 @@ func (o PatchDeploymentPatchConfigPostStepWindowsExecStepConfigPtrOutput) GcsObj
 
 // The script interpreter to use to run the script. If no interpreter is specified the script will
 // be executed directly, which will likely only succeed for scripts with shebang lines.
+// Possible values are `SHELL` and `POWERSHELL`.
 func (o PatchDeploymentPatchConfigPostStepWindowsExecStepConfigPtrOutput) Interpreter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PatchDeploymentPatchConfigPostStepWindowsExecStepConfig) *string {
 		if v == nil {
@@ -6735,9 +6918,11 @@ func (o PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectPtrOutpu
 }
 
 type PatchDeploymentPatchConfigPreStep struct {
-	// The ExecStepConfig for all Linux VMs targeted by the PatchJob.  Structure is documented below.
+	// The ExecStepConfig for all Linux VMs targeted by the PatchJob.
+	// Structure is documented below.
 	LinuxExecStepConfig *PatchDeploymentPatchConfigPreStepLinuxExecStepConfig `pulumi:"linuxExecStepConfig"`
-	// The ExecStepConfig for all Windows VMs targeted by the PatchJob.  Structure is documented below.
+	// The ExecStepConfig for all Windows VMs targeted by the PatchJob.
+	// Structure is documented below.
 	WindowsExecStepConfig *PatchDeploymentPatchConfigPreStepWindowsExecStepConfig `pulumi:"windowsExecStepConfig"`
 }
 
@@ -6753,9 +6938,11 @@ type PatchDeploymentPatchConfigPreStepInput interface {
 }
 
 type PatchDeploymentPatchConfigPreStepArgs struct {
-	// The ExecStepConfig for all Linux VMs targeted by the PatchJob.  Structure is documented below.
+	// The ExecStepConfig for all Linux VMs targeted by the PatchJob.
+	// Structure is documented below.
 	LinuxExecStepConfig PatchDeploymentPatchConfigPreStepLinuxExecStepConfigPtrInput `pulumi:"linuxExecStepConfig"`
-	// The ExecStepConfig for all Windows VMs targeted by the PatchJob.  Structure is documented below.
+	// The ExecStepConfig for all Windows VMs targeted by the PatchJob.
+	// Structure is documented below.
 	WindowsExecStepConfig PatchDeploymentPatchConfigPreStepWindowsExecStepConfigPtrInput `pulumi:"windowsExecStepConfig"`
 }
 
@@ -6836,14 +7023,16 @@ func (o PatchDeploymentPatchConfigPreStepOutput) ToPatchDeploymentPatchConfigPre
 	}).(PatchDeploymentPatchConfigPreStepPtrOutput)
 }
 
-// The ExecStepConfig for all Linux VMs targeted by the PatchJob.  Structure is documented below.
+// The ExecStepConfig for all Linux VMs targeted by the PatchJob.
+// Structure is documented below.
 func (o PatchDeploymentPatchConfigPreStepOutput) LinuxExecStepConfig() PatchDeploymentPatchConfigPreStepLinuxExecStepConfigPtrOutput {
 	return o.ApplyT(func(v PatchDeploymentPatchConfigPreStep) *PatchDeploymentPatchConfigPreStepLinuxExecStepConfig {
 		return v.LinuxExecStepConfig
 	}).(PatchDeploymentPatchConfigPreStepLinuxExecStepConfigPtrOutput)
 }
 
-// The ExecStepConfig for all Windows VMs targeted by the PatchJob.  Structure is documented below.
+// The ExecStepConfig for all Windows VMs targeted by the PatchJob.
+// Structure is documented below.
 func (o PatchDeploymentPatchConfigPreStepOutput) WindowsExecStepConfig() PatchDeploymentPatchConfigPreStepWindowsExecStepConfigPtrOutput {
 	return o.ApplyT(func(v PatchDeploymentPatchConfigPreStep) *PatchDeploymentPatchConfigPreStepWindowsExecStepConfig {
 		return v.WindowsExecStepConfig
@@ -6868,7 +7057,8 @@ func (o PatchDeploymentPatchConfigPreStepPtrOutput) Elem() PatchDeploymentPatchC
 	return o.ApplyT(func(v *PatchDeploymentPatchConfigPreStep) PatchDeploymentPatchConfigPreStep { return *v }).(PatchDeploymentPatchConfigPreStepOutput)
 }
 
-// The ExecStepConfig for all Linux VMs targeted by the PatchJob.  Structure is documented below.
+// The ExecStepConfig for all Linux VMs targeted by the PatchJob.
+// Structure is documented below.
 func (o PatchDeploymentPatchConfigPreStepPtrOutput) LinuxExecStepConfig() PatchDeploymentPatchConfigPreStepLinuxExecStepConfigPtrOutput {
 	return o.ApplyT(func(v *PatchDeploymentPatchConfigPreStep) *PatchDeploymentPatchConfigPreStepLinuxExecStepConfig {
 		if v == nil {
@@ -6878,7 +7068,8 @@ func (o PatchDeploymentPatchConfigPreStepPtrOutput) LinuxExecStepConfig() PatchD
 	}).(PatchDeploymentPatchConfigPreStepLinuxExecStepConfigPtrOutput)
 }
 
-// The ExecStepConfig for all Windows VMs targeted by the PatchJob.  Structure is documented below.
+// The ExecStepConfig for all Windows VMs targeted by the PatchJob.
+// Structure is documented below.
 func (o PatchDeploymentPatchConfigPreStepPtrOutput) WindowsExecStepConfig() PatchDeploymentPatchConfigPreStepWindowsExecStepConfigPtrOutput {
 	return o.ApplyT(func(v *PatchDeploymentPatchConfigPreStep) *PatchDeploymentPatchConfigPreStepWindowsExecStepConfig {
 		if v == nil {
@@ -6891,10 +7082,12 @@ func (o PatchDeploymentPatchConfigPreStepPtrOutput) WindowsExecStepConfig() Patc
 type PatchDeploymentPatchConfigPreStepLinuxExecStepConfig struct {
 	// Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
 	AllowedSuccessCodes []int `pulumi:"allowedSuccessCodes"`
-	// A Cloud Storage object containing the executable.  Structure is documented below.
+	// A Cloud Storage object containing the executable.
+	// Structure is documented below.
 	GcsObject *PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject `pulumi:"gcsObject"`
 	// The script interpreter to use to run the script. If no interpreter is specified the script will
 	// be executed directly, which will likely only succeed for scripts with shebang lines.
+	// Possible values are `SHELL` and `POWERSHELL`.
 	Interpreter *string `pulumi:"interpreter"`
 	// An absolute path to the executable on the VM.
 	LocalPath *string `pulumi:"localPath"`
@@ -6914,10 +7107,12 @@ type PatchDeploymentPatchConfigPreStepLinuxExecStepConfigInput interface {
 type PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs struct {
 	// Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
 	AllowedSuccessCodes pulumi.IntArrayInput `pulumi:"allowedSuccessCodes"`
-	// A Cloud Storage object containing the executable.  Structure is documented below.
+	// A Cloud Storage object containing the executable.
+	// Structure is documented below.
 	GcsObject PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectPtrInput `pulumi:"gcsObject"`
 	// The script interpreter to use to run the script. If no interpreter is specified the script will
 	// be executed directly, which will likely only succeed for scripts with shebang lines.
+	// Possible values are `SHELL` and `POWERSHELL`.
 	Interpreter pulumi.StringPtrInput `pulumi:"interpreter"`
 	// An absolute path to the executable on the VM.
 	LocalPath pulumi.StringPtrInput `pulumi:"localPath"`
@@ -7005,7 +7200,8 @@ func (o PatchDeploymentPatchConfigPreStepLinuxExecStepConfigOutput) AllowedSucce
 	return o.ApplyT(func(v PatchDeploymentPatchConfigPreStepLinuxExecStepConfig) []int { return v.AllowedSuccessCodes }).(pulumi.IntArrayOutput)
 }
 
-// A Cloud Storage object containing the executable.  Structure is documented below.
+// A Cloud Storage object containing the executable.
+// Structure is documented below.
 func (o PatchDeploymentPatchConfigPreStepLinuxExecStepConfigOutput) GcsObject() PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectPtrOutput {
 	return o.ApplyT(func(v PatchDeploymentPatchConfigPreStepLinuxExecStepConfig) *PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject {
 		return v.GcsObject
@@ -7014,6 +7210,7 @@ func (o PatchDeploymentPatchConfigPreStepLinuxExecStepConfigOutput) GcsObject() 
 
 // The script interpreter to use to run the script. If no interpreter is specified the script will
 // be executed directly, which will likely only succeed for scripts with shebang lines.
+// Possible values are `SHELL` and `POWERSHELL`.
 func (o PatchDeploymentPatchConfigPreStepLinuxExecStepConfigOutput) Interpreter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PatchDeploymentPatchConfigPreStepLinuxExecStepConfig) *string { return v.Interpreter }).(pulumi.StringPtrOutput)
 }
@@ -7053,7 +7250,8 @@ func (o PatchDeploymentPatchConfigPreStepLinuxExecStepConfigPtrOutput) AllowedSu
 	}).(pulumi.IntArrayOutput)
 }
 
-// A Cloud Storage object containing the executable.  Structure is documented below.
+// A Cloud Storage object containing the executable.
+// Structure is documented below.
 func (o PatchDeploymentPatchConfigPreStepLinuxExecStepConfigPtrOutput) GcsObject() PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectPtrOutput {
 	return o.ApplyT(func(v *PatchDeploymentPatchConfigPreStepLinuxExecStepConfig) *PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject {
 		if v == nil {
@@ -7065,6 +7263,7 @@ func (o PatchDeploymentPatchConfigPreStepLinuxExecStepConfigPtrOutput) GcsObject
 
 // The script interpreter to use to run the script. If no interpreter is specified the script will
 // be executed directly, which will likely only succeed for scripts with shebang lines.
+// Possible values are `SHELL` and `POWERSHELL`.
 func (o PatchDeploymentPatchConfigPreStepLinuxExecStepConfigPtrOutput) Interpreter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PatchDeploymentPatchConfigPreStepLinuxExecStepConfig) *string {
 		if v == nil {
@@ -7260,10 +7459,12 @@ func (o PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectPtrOutput) 
 type PatchDeploymentPatchConfigPreStepWindowsExecStepConfig struct {
 	// Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
 	AllowedSuccessCodes []int `pulumi:"allowedSuccessCodes"`
-	// A Cloud Storage object containing the executable.  Structure is documented below.
+	// A Cloud Storage object containing the executable.
+	// Structure is documented below.
 	GcsObject *PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject `pulumi:"gcsObject"`
 	// The script interpreter to use to run the script. If no interpreter is specified the script will
 	// be executed directly, which will likely only succeed for scripts with shebang lines.
+	// Possible values are `SHELL` and `POWERSHELL`.
 	Interpreter *string `pulumi:"interpreter"`
 	// An absolute path to the executable on the VM.
 	LocalPath *string `pulumi:"localPath"`
@@ -7283,10 +7484,12 @@ type PatchDeploymentPatchConfigPreStepWindowsExecStepConfigInput interface {
 type PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgs struct {
 	// Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
 	AllowedSuccessCodes pulumi.IntArrayInput `pulumi:"allowedSuccessCodes"`
-	// A Cloud Storage object containing the executable.  Structure is documented below.
+	// A Cloud Storage object containing the executable.
+	// Structure is documented below.
 	GcsObject PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectPtrInput `pulumi:"gcsObject"`
 	// The script interpreter to use to run the script. If no interpreter is specified the script will
 	// be executed directly, which will likely only succeed for scripts with shebang lines.
+	// Possible values are `SHELL` and `POWERSHELL`.
 	Interpreter pulumi.StringPtrInput `pulumi:"interpreter"`
 	// An absolute path to the executable on the VM.
 	LocalPath pulumi.StringPtrInput `pulumi:"localPath"`
@@ -7374,7 +7577,8 @@ func (o PatchDeploymentPatchConfigPreStepWindowsExecStepConfigOutput) AllowedSuc
 	return o.ApplyT(func(v PatchDeploymentPatchConfigPreStepWindowsExecStepConfig) []int { return v.AllowedSuccessCodes }).(pulumi.IntArrayOutput)
 }
 
-// A Cloud Storage object containing the executable.  Structure is documented below.
+// A Cloud Storage object containing the executable.
+// Structure is documented below.
 func (o PatchDeploymentPatchConfigPreStepWindowsExecStepConfigOutput) GcsObject() PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectPtrOutput {
 	return o.ApplyT(func(v PatchDeploymentPatchConfigPreStepWindowsExecStepConfig) *PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject {
 		return v.GcsObject
@@ -7383,6 +7587,7 @@ func (o PatchDeploymentPatchConfigPreStepWindowsExecStepConfigOutput) GcsObject(
 
 // The script interpreter to use to run the script. If no interpreter is specified the script will
 // be executed directly, which will likely only succeed for scripts with shebang lines.
+// Possible values are `SHELL` and `POWERSHELL`.
 func (o PatchDeploymentPatchConfigPreStepWindowsExecStepConfigOutput) Interpreter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PatchDeploymentPatchConfigPreStepWindowsExecStepConfig) *string { return v.Interpreter }).(pulumi.StringPtrOutput)
 }
@@ -7422,7 +7627,8 @@ func (o PatchDeploymentPatchConfigPreStepWindowsExecStepConfigPtrOutput) Allowed
 	}).(pulumi.IntArrayOutput)
 }
 
-// A Cloud Storage object containing the executable.  Structure is documented below.
+// A Cloud Storage object containing the executable.
+// Structure is documented below.
 func (o PatchDeploymentPatchConfigPreStepWindowsExecStepConfigPtrOutput) GcsObject() PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectPtrOutput {
 	return o.ApplyT(func(v *PatchDeploymentPatchConfigPreStepWindowsExecStepConfig) *PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject {
 		if v == nil {
@@ -7434,6 +7640,7 @@ func (o PatchDeploymentPatchConfigPreStepWindowsExecStepConfigPtrOutput) GcsObje
 
 // The script interpreter to use to run the script. If no interpreter is specified the script will
 // be executed directly, which will likely only succeed for scripts with shebang lines.
+// Possible values are `SHELL` and `POWERSHELL`.
 func (o PatchDeploymentPatchConfigPreStepWindowsExecStepConfigPtrOutput) Interpreter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PatchDeploymentPatchConfigPreStepWindowsExecStepConfig) *string {
 		if v == nil {
@@ -7628,6 +7835,7 @@ func (o PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectPtrOutput
 
 type PatchDeploymentPatchConfigWindowsUpdate struct {
 	// Only apply updates of these windows update classifications. If empty, all updates are applied.
+	// Possible values are `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, and `UPDATE`.
 	Classifications *string `pulumi:"classifications"`
 	// List of KBs to exclude from update.
 	Excludes []string `pulumi:"excludes"`
@@ -7649,6 +7857,7 @@ type PatchDeploymentPatchConfigWindowsUpdateInput interface {
 
 type PatchDeploymentPatchConfigWindowsUpdateArgs struct {
 	// Only apply updates of these windows update classifications. If empty, all updates are applied.
+	// Possible values are `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, and `UPDATE`.
 	Classifications pulumi.StringPtrInput `pulumi:"classifications"`
 	// List of KBs to exclude from update.
 	Excludes pulumi.StringArrayInput `pulumi:"excludes"`
@@ -7735,6 +7944,7 @@ func (o PatchDeploymentPatchConfigWindowsUpdateOutput) ToPatchDeploymentPatchCon
 }
 
 // Only apply updates of these windows update classifications. If empty, all updates are applied.
+// Possible values are `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, and `UPDATE`.
 func (o PatchDeploymentPatchConfigWindowsUpdateOutput) Classifications() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PatchDeploymentPatchConfigWindowsUpdate) *string { return v.Classifications }).(pulumi.StringPtrOutput)
 }
@@ -7769,6 +7979,7 @@ func (o PatchDeploymentPatchConfigWindowsUpdatePtrOutput) Elem() PatchDeployment
 }
 
 // Only apply updates of these windows update classifications. If empty, all updates are applied.
+// Possible values are `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, and `UPDATE`.
 func (o PatchDeploymentPatchConfigWindowsUpdatePtrOutput) Classifications() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PatchDeploymentPatchConfigWindowsUpdate) *string {
 		if v == nil {
@@ -8233,7 +8444,8 @@ type PatchDeploymentRecurringSchedule struct {
 	// The time the last patch job ran successfully.
 	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	LastExecuteTime *string `pulumi:"lastExecuteTime"`
-	// Schedule with monthly executions.  Structure is documented below.
+	// Schedule with monthly executions.
+	// Structure is documented below.
 	Monthly *PatchDeploymentRecurringScheduleMonthly `pulumi:"monthly"`
 	// -
 	// The time the next patch job is scheduled to run.
@@ -8242,12 +8454,15 @@ type PatchDeploymentRecurringSchedule struct {
 	// The time that the recurring schedule becomes effective. Defaults to createTime of the patch deployment.
 	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	StartTime *string `pulumi:"startTime"`
-	// Time of the day to run a recurring deployment.  Structure is documented below.
+	// Time of the day to run a recurring deployment.
+	// Structure is documented below.
 	TimeOfDay PatchDeploymentRecurringScheduleTimeOfDay `pulumi:"timeOfDay"`
 	// Defines the time zone that timeOfDay is relative to. The rules for daylight saving time are
-	// determined by the chosen time zone.  Structure is documented below.
+	// determined by the chosen time zone.
+	// Structure is documented below.
 	TimeZone PatchDeploymentRecurringScheduleTimeZone `pulumi:"timeZone"`
-	// Schedule with weekly executions.  Structure is documented below.
+	// Schedule with weekly executions.
+	// Structure is documented below.
 	Weekly *PatchDeploymentRecurringScheduleWeekly `pulumi:"weekly"`
 }
 
@@ -8270,7 +8485,8 @@ type PatchDeploymentRecurringScheduleArgs struct {
 	// The time the last patch job ran successfully.
 	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	LastExecuteTime pulumi.StringPtrInput `pulumi:"lastExecuteTime"`
-	// Schedule with monthly executions.  Structure is documented below.
+	// Schedule with monthly executions.
+	// Structure is documented below.
 	Monthly PatchDeploymentRecurringScheduleMonthlyPtrInput `pulumi:"monthly"`
 	// -
 	// The time the next patch job is scheduled to run.
@@ -8279,12 +8495,15 @@ type PatchDeploymentRecurringScheduleArgs struct {
 	// The time that the recurring schedule becomes effective. Defaults to createTime of the patch deployment.
 	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
-	// Time of the day to run a recurring deployment.  Structure is documented below.
+	// Time of the day to run a recurring deployment.
+	// Structure is documented below.
 	TimeOfDay PatchDeploymentRecurringScheduleTimeOfDayInput `pulumi:"timeOfDay"`
 	// Defines the time zone that timeOfDay is relative to. The rules for daylight saving time are
-	// determined by the chosen time zone.  Structure is documented below.
+	// determined by the chosen time zone.
+	// Structure is documented below.
 	TimeZone PatchDeploymentRecurringScheduleTimeZoneInput `pulumi:"timeZone"`
-	// Schedule with weekly executions.  Structure is documented below.
+	// Schedule with weekly executions.
+	// Structure is documented below.
 	Weekly PatchDeploymentRecurringScheduleWeeklyPtrInput `pulumi:"weekly"`
 }
 
@@ -8378,7 +8597,8 @@ func (o PatchDeploymentRecurringScheduleOutput) LastExecuteTime() pulumi.StringP
 	return o.ApplyT(func(v PatchDeploymentRecurringSchedule) *string { return v.LastExecuteTime }).(pulumi.StringPtrOutput)
 }
 
-// Schedule with monthly executions.  Structure is documented below.
+// Schedule with monthly executions.
+// Structure is documented below.
 func (o PatchDeploymentRecurringScheduleOutput) Monthly() PatchDeploymentRecurringScheduleMonthlyPtrOutput {
 	return o.ApplyT(func(v PatchDeploymentRecurringSchedule) *PatchDeploymentRecurringScheduleMonthly { return v.Monthly }).(PatchDeploymentRecurringScheduleMonthlyPtrOutput)
 }
@@ -8396,18 +8616,21 @@ func (o PatchDeploymentRecurringScheduleOutput) StartTime() pulumi.StringPtrOutp
 	return o.ApplyT(func(v PatchDeploymentRecurringSchedule) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }
 
-// Time of the day to run a recurring deployment.  Structure is documented below.
+// Time of the day to run a recurring deployment.
+// Structure is documented below.
 func (o PatchDeploymentRecurringScheduleOutput) TimeOfDay() PatchDeploymentRecurringScheduleTimeOfDayOutput {
 	return o.ApplyT(func(v PatchDeploymentRecurringSchedule) PatchDeploymentRecurringScheduleTimeOfDay { return v.TimeOfDay }).(PatchDeploymentRecurringScheduleTimeOfDayOutput)
 }
 
 // Defines the time zone that timeOfDay is relative to. The rules for daylight saving time are
-// determined by the chosen time zone.  Structure is documented below.
+// determined by the chosen time zone.
+// Structure is documented below.
 func (o PatchDeploymentRecurringScheduleOutput) TimeZone() PatchDeploymentRecurringScheduleTimeZoneOutput {
 	return o.ApplyT(func(v PatchDeploymentRecurringSchedule) PatchDeploymentRecurringScheduleTimeZone { return v.TimeZone }).(PatchDeploymentRecurringScheduleTimeZoneOutput)
 }
 
-// Schedule with weekly executions.  Structure is documented below.
+// Schedule with weekly executions.
+// Structure is documented below.
 func (o PatchDeploymentRecurringScheduleOutput) Weekly() PatchDeploymentRecurringScheduleWeeklyPtrOutput {
 	return o.ApplyT(func(v PatchDeploymentRecurringSchedule) *PatchDeploymentRecurringScheduleWeekly { return v.Weekly }).(PatchDeploymentRecurringScheduleWeeklyPtrOutput)
 }
@@ -8453,7 +8676,8 @@ func (o PatchDeploymentRecurringSchedulePtrOutput) LastExecuteTime() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Schedule with monthly executions.  Structure is documented below.
+// Schedule with monthly executions.
+// Structure is documented below.
 func (o PatchDeploymentRecurringSchedulePtrOutput) Monthly() PatchDeploymentRecurringScheduleMonthlyPtrOutput {
 	return o.ApplyT(func(v *PatchDeploymentRecurringSchedule) *PatchDeploymentRecurringScheduleMonthly {
 		if v == nil {
@@ -8486,7 +8710,8 @@ func (o PatchDeploymentRecurringSchedulePtrOutput) StartTime() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// Time of the day to run a recurring deployment.  Structure is documented below.
+// Time of the day to run a recurring deployment.
+// Structure is documented below.
 func (o PatchDeploymentRecurringSchedulePtrOutput) TimeOfDay() PatchDeploymentRecurringScheduleTimeOfDayPtrOutput {
 	return o.ApplyT(func(v *PatchDeploymentRecurringSchedule) *PatchDeploymentRecurringScheduleTimeOfDay {
 		if v == nil {
@@ -8497,7 +8722,8 @@ func (o PatchDeploymentRecurringSchedulePtrOutput) TimeOfDay() PatchDeploymentRe
 }
 
 // Defines the time zone that timeOfDay is relative to. The rules for daylight saving time are
-// determined by the chosen time zone.  Structure is documented below.
+// determined by the chosen time zone.
+// Structure is documented below.
 func (o PatchDeploymentRecurringSchedulePtrOutput) TimeZone() PatchDeploymentRecurringScheduleTimeZonePtrOutput {
 	return o.ApplyT(func(v *PatchDeploymentRecurringSchedule) *PatchDeploymentRecurringScheduleTimeZone {
 		if v == nil {
@@ -8507,7 +8733,8 @@ func (o PatchDeploymentRecurringSchedulePtrOutput) TimeZone() PatchDeploymentRec
 	}).(PatchDeploymentRecurringScheduleTimeZonePtrOutput)
 }
 
-// Schedule with weekly executions.  Structure is documented below.
+// Schedule with weekly executions.
+// Structure is documented below.
 func (o PatchDeploymentRecurringSchedulePtrOutput) Weekly() PatchDeploymentRecurringScheduleWeeklyPtrOutput {
 	return o.ApplyT(func(v *PatchDeploymentRecurringSchedule) *PatchDeploymentRecurringScheduleWeekly {
 		if v == nil {
@@ -8522,7 +8749,8 @@ type PatchDeploymentRecurringScheduleMonthly struct {
 	// Months without the target day will be skipped. For example, a schedule to run "every month on the 31st"
 	// will not run in February, April, June, etc.
 	MonthDay *int `pulumi:"monthDay"`
-	// Week day in a month.  Structure is documented below.
+	// Week day in a month.
+	// Structure is documented below.
 	WeekDayOfMonth *PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth `pulumi:"weekDayOfMonth"`
 }
 
@@ -8542,7 +8770,8 @@ type PatchDeploymentRecurringScheduleMonthlyArgs struct {
 	// Months without the target day will be skipped. For example, a schedule to run "every month on the 31st"
 	// will not run in February, April, June, etc.
 	MonthDay pulumi.IntPtrInput `pulumi:"monthDay"`
-	// Week day in a month.  Structure is documented below.
+	// Week day in a month.
+	// Structure is documented below.
 	WeekDayOfMonth PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthPtrInput `pulumi:"weekDayOfMonth"`
 }
 
@@ -8630,7 +8859,8 @@ func (o PatchDeploymentRecurringScheduleMonthlyOutput) MonthDay() pulumi.IntPtrO
 	return o.ApplyT(func(v PatchDeploymentRecurringScheduleMonthly) *int { return v.MonthDay }).(pulumi.IntPtrOutput)
 }
 
-// Week day in a month.  Structure is documented below.
+// Week day in a month.
+// Structure is documented below.
 func (o PatchDeploymentRecurringScheduleMonthlyOutput) WeekDayOfMonth() PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthPtrOutput {
 	return o.ApplyT(func(v PatchDeploymentRecurringScheduleMonthly) *PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth {
 		return v.WeekDayOfMonth
@@ -8667,7 +8897,8 @@ func (o PatchDeploymentRecurringScheduleMonthlyPtrOutput) MonthDay() pulumi.IntP
 	}).(pulumi.IntPtrOutput)
 }
 
-// Week day in a month.  Structure is documented below.
+// Week day in a month.
+// Structure is documented below.
 func (o PatchDeploymentRecurringScheduleMonthlyPtrOutput) WeekDayOfMonth() PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthPtrOutput {
 	return o.ApplyT(func(v *PatchDeploymentRecurringScheduleMonthly) *PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth {
 		if v == nil {
@@ -8679,6 +8910,7 @@ func (o PatchDeploymentRecurringScheduleMonthlyPtrOutput) WeekDayOfMonth() Patch
 
 type PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth struct {
 	// A day of the week.
+	// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
 	DayOfWeek string `pulumi:"dayOfWeek"`
 	// Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
 	WeekOrdinal int `pulumi:"weekOrdinal"`
@@ -8697,6 +8929,7 @@ type PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthInput interface {
 
 type PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs struct {
 	// A day of the week.
+	// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
 	DayOfWeek pulumi.StringInput `pulumi:"dayOfWeek"`
 	// Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
 	WeekOrdinal pulumi.IntInput `pulumi:"weekOrdinal"`
@@ -8780,6 +9013,7 @@ func (o PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthOutput) ToPatchDepl
 }
 
 // A day of the week.
+// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
 func (o PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthOutput) DayOfWeek() pulumi.StringOutput {
 	return o.ApplyT(func(v PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth) string { return v.DayOfWeek }).(pulumi.StringOutput)
 }
@@ -8810,6 +9044,7 @@ func (o PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthPtrOutput) Elem() P
 }
 
 // A day of the week.
+// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
 func (o PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthPtrOutput) DayOfWeek() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth) *string {
 		if v == nil {
@@ -9175,6 +9410,7 @@ func (o PatchDeploymentRecurringScheduleTimeZonePtrOutput) Version() pulumi.Stri
 
 type PatchDeploymentRecurringScheduleWeekly struct {
 	// A day of the week.
+	// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
 	DayOfWeek string `pulumi:"dayOfWeek"`
 }
 
@@ -9191,6 +9427,7 @@ type PatchDeploymentRecurringScheduleWeeklyInput interface {
 
 type PatchDeploymentRecurringScheduleWeeklyArgs struct {
 	// A day of the week.
+	// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
 	DayOfWeek pulumi.StringInput `pulumi:"dayOfWeek"`
 }
 
@@ -9272,6 +9509,7 @@ func (o PatchDeploymentRecurringScheduleWeeklyOutput) ToPatchDeploymentRecurring
 }
 
 // A day of the week.
+// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
 func (o PatchDeploymentRecurringScheduleWeeklyOutput) DayOfWeek() pulumi.StringOutput {
 	return o.ApplyT(func(v PatchDeploymentRecurringScheduleWeekly) string { return v.DayOfWeek }).(pulumi.StringOutput)
 }
@@ -9295,6 +9533,7 @@ func (o PatchDeploymentRecurringScheduleWeeklyPtrOutput) Elem() PatchDeploymentR
 }
 
 // A day of the week.
+// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
 func (o PatchDeploymentRecurringScheduleWeeklyPtrOutput) DayOfWeek() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PatchDeploymentRecurringScheduleWeekly) *string {
 		if v == nil {

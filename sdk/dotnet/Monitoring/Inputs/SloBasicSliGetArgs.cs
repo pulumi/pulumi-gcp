@@ -13,7 +13,8 @@ namespace Pulumi.Gcp.Monitoring.Inputs
     public sealed class SloBasicSliGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Parameters for a latency threshold SLI.  Structure is documented below.
+        /// Parameters for a latency threshold SLI.
+        /// Structure is documented below.
         /// </summary>
         [Input("latency", required: true)]
         public Input<Inputs.SloBasicSliLatencyGetArgs> Latency { get; set; } = null!;

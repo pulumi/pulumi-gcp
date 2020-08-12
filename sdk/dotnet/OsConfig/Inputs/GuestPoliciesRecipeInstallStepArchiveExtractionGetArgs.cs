@@ -26,6 +26,7 @@ namespace Pulumi.Gcp.OsConfig.Inputs
 
         /// <summary>
         /// The type of the archive to extract.
+        /// Possible values are `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, and `ZIP`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

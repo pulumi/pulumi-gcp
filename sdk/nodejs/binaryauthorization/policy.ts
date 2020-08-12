@@ -48,7 +48,8 @@ export class Policy extends pulumi.CustomResource {
     /**
      * A whitelist of image patterns to exclude from admission rules. If an
      * image's name matches a whitelist pattern, the image's admission
-     * requests will always be permitted regardless of your admission rules.  Structure is documented below.
+     * requests will always be permitted regardless of your admission rules.
+     * Structure is documented below.
      */
     public readonly admissionWhitelistPatterns!: pulumi.Output<outputs.binaryauthorization.PolicyAdmissionWhitelistPattern[] | undefined>;
     /**
@@ -61,7 +62,8 @@ export class Policy extends pulumi.CustomResource {
     public readonly clusterAdmissionRules!: pulumi.Output<outputs.binaryauthorization.PolicyClusterAdmissionRule[] | undefined>;
     /**
      * Default admission rule for a cluster without a per-cluster admission
-     * rule.  Structure is documented below.
+     * rule.
+     * Structure is documented below.
      */
     public readonly defaultAdmissionRule!: pulumi.Output<outputs.binaryauthorization.PolicyDefaultAdmissionRule>;
     /**
@@ -72,6 +74,7 @@ export class Policy extends pulumi.CustomResource {
      * Controls the evaluation of a Google-maintained global admission policy
      * for common system-level images. Images not covered by the global
      * policy will be subject to the project admission policy.
+     * Possible values are `ENABLE` and `DISABLE`.
      */
     public readonly globalPolicyEvaluationMode!: pulumi.Output<string>;
     /**
@@ -128,7 +131,8 @@ export interface PolicyState {
     /**
      * A whitelist of image patterns to exclude from admission rules. If an
      * image's name matches a whitelist pattern, the image's admission
-     * requests will always be permitted regardless of your admission rules.  Structure is documented below.
+     * requests will always be permitted regardless of your admission rules.
+     * Structure is documented below.
      */
     readonly admissionWhitelistPatterns?: pulumi.Input<pulumi.Input<inputs.binaryauthorization.PolicyAdmissionWhitelistPattern>[]>;
     /**
@@ -141,7 +145,8 @@ export interface PolicyState {
     readonly clusterAdmissionRules?: pulumi.Input<pulumi.Input<inputs.binaryauthorization.PolicyClusterAdmissionRule>[]>;
     /**
      * Default admission rule for a cluster without a per-cluster admission
-     * rule.  Structure is documented below.
+     * rule.
+     * Structure is documented below.
      */
     readonly defaultAdmissionRule?: pulumi.Input<inputs.binaryauthorization.PolicyDefaultAdmissionRule>;
     /**
@@ -152,6 +157,7 @@ export interface PolicyState {
      * Controls the evaluation of a Google-maintained global admission policy
      * for common system-level images. Images not covered by the global
      * policy will be subject to the project admission policy.
+     * Possible values are `ENABLE` and `DISABLE`.
      */
     readonly globalPolicyEvaluationMode?: pulumi.Input<string>;
     /**
@@ -168,7 +174,8 @@ export interface PolicyArgs {
     /**
      * A whitelist of image patterns to exclude from admission rules. If an
      * image's name matches a whitelist pattern, the image's admission
-     * requests will always be permitted regardless of your admission rules.  Structure is documented below.
+     * requests will always be permitted regardless of your admission rules.
+     * Structure is documented below.
      */
     readonly admissionWhitelistPatterns?: pulumi.Input<pulumi.Input<inputs.binaryauthorization.PolicyAdmissionWhitelistPattern>[]>;
     /**
@@ -181,7 +188,8 @@ export interface PolicyArgs {
     readonly clusterAdmissionRules?: pulumi.Input<pulumi.Input<inputs.binaryauthorization.PolicyClusterAdmissionRule>[]>;
     /**
      * Default admission rule for a cluster without a per-cluster admission
-     * rule.  Structure is documented below.
+     * rule.
+     * Structure is documented below.
      */
     readonly defaultAdmissionRule: pulumi.Input<inputs.binaryauthorization.PolicyDefaultAdmissionRule>;
     /**
@@ -192,6 +200,7 @@ export interface PolicyArgs {
      * Controls the evaluation of a Google-maintained global admission policy
      * for common system-level images. Images not covered by the global
      * policy will be subject to the project admission policy.
+     * Possible values are `ENABLE` and `DISABLE`.
      */
     readonly globalPolicyEvaluationMode?: pulumi.Input<string>;
     /**

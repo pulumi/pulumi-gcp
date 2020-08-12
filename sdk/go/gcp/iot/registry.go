@@ -25,7 +25,8 @@ type Registry struct {
 	// The structure is documented below.
 	Credentials RegistryCredentialArrayOutput `pulumi:"credentials"`
 	// List of configurations for event notifications, such as PubSub topics
-	// to publish device events to.  Structure is documented below.
+	// to publish device events to.
+	// Structure is documented below.
 	EventNotificationConfigs RegistryEventNotificationConfigItemArrayOutput `pulumi:"eventNotificationConfigs"`
 	// Activate or deactivate HTTP.
 	// The structure is documented below.
@@ -35,6 +36,8 @@ type Registry struct {
 	// example, if the LogLevel is ERROR, only events that terminate in
 	// errors will be logged. LogLevel is inclusive; enabling INFO logging
 	// will also enable ERROR logging.
+	// Default value is `NONE`.
+	// Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
 	LogLevel pulumi.StringPtrOutput `pulumi:"logLevel"`
 	// Activate or deactivate MQTT.
 	// The structure is documented below.
@@ -90,7 +93,8 @@ type registryState struct {
 	// The structure is documented below.
 	Credentials []RegistryCredential `pulumi:"credentials"`
 	// List of configurations for event notifications, such as PubSub topics
-	// to publish device events to.  Structure is documented below.
+	// to publish device events to.
+	// Structure is documented below.
 	EventNotificationConfigs []RegistryEventNotificationConfigItem `pulumi:"eventNotificationConfigs"`
 	// Activate or deactivate HTTP.
 	// The structure is documented below.
@@ -100,6 +104,8 @@ type registryState struct {
 	// example, if the LogLevel is ERROR, only events that terminate in
 	// errors will be logged. LogLevel is inclusive; enabling INFO logging
 	// will also enable ERROR logging.
+	// Default value is `NONE`.
+	// Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
 	LogLevel *string `pulumi:"logLevel"`
 	// Activate or deactivate MQTT.
 	// The structure is documented below.
@@ -122,7 +128,8 @@ type RegistryState struct {
 	// The structure is documented below.
 	Credentials RegistryCredentialArrayInput
 	// List of configurations for event notifications, such as PubSub topics
-	// to publish device events to.  Structure is documented below.
+	// to publish device events to.
+	// Structure is documented below.
 	EventNotificationConfigs RegistryEventNotificationConfigItemArrayInput
 	// Activate or deactivate HTTP.
 	// The structure is documented below.
@@ -132,6 +139,8 @@ type RegistryState struct {
 	// example, if the LogLevel is ERROR, only events that terminate in
 	// errors will be logged. LogLevel is inclusive; enabling INFO logging
 	// will also enable ERROR logging.
+	// Default value is `NONE`.
+	// Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
 	LogLevel pulumi.StringPtrInput
 	// Activate or deactivate MQTT.
 	// The structure is documented below.
@@ -158,7 +167,8 @@ type registryArgs struct {
 	// The structure is documented below.
 	Credentials []RegistryCredential `pulumi:"credentials"`
 	// List of configurations for event notifications, such as PubSub topics
-	// to publish device events to.  Structure is documented below.
+	// to publish device events to.
+	// Structure is documented below.
 	EventNotificationConfigs []RegistryEventNotificationConfigItem `pulumi:"eventNotificationConfigs"`
 	// Activate or deactivate HTTP.
 	// The structure is documented below.
@@ -168,6 +178,8 @@ type registryArgs struct {
 	// example, if the LogLevel is ERROR, only events that terminate in
 	// errors will be logged. LogLevel is inclusive; enabling INFO logging
 	// will also enable ERROR logging.
+	// Default value is `NONE`.
+	// Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
 	LogLevel *string `pulumi:"logLevel"`
 	// Activate or deactivate MQTT.
 	// The structure is documented below.
@@ -191,7 +203,8 @@ type RegistryArgs struct {
 	// The structure is documented below.
 	Credentials RegistryCredentialArrayInput
 	// List of configurations for event notifications, such as PubSub topics
-	// to publish device events to.  Structure is documented below.
+	// to publish device events to.
+	// Structure is documented below.
 	EventNotificationConfigs RegistryEventNotificationConfigItemArrayInput
 	// Activate or deactivate HTTP.
 	// The structure is documented below.
@@ -201,6 +214,8 @@ type RegistryArgs struct {
 	// example, if the LogLevel is ERROR, only events that terminate in
 	// errors will be logged. LogLevel is inclusive; enabling INFO logging
 	// will also enable ERROR logging.
+	// Default value is `NONE`.
+	// Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
 	LogLevel pulumi.StringPtrInput
 	// Activate or deactivate MQTT.
 	// The structure is documented below.

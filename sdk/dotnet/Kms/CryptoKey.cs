@@ -53,6 +53,8 @@ namespace Pulumi.Gcp.Kms
         /// The immutable purpose of this CryptoKey. See the
         /// [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
         /// for possible inputs.
+        /// Default value is `ENCRYPT_DECRYPT`.
+        /// Possible values are `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, and `ASYMMETRIC_DECRYPT`.
         /// </summary>
         [Output("purpose")]
         public Output<string?> Purpose { get; private set; } = null!;
@@ -70,7 +72,8 @@ namespace Pulumi.Gcp.Kms
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// A template describing settings for new crypto key versions.  Structure is documented below.
+        /// A template describing settings for new crypto key versions.
+        /// Structure is documented below.
         /// </summary>
         [Output("versionTemplate")]
         public Output<Outputs.CryptoKeyVersionTemplate> VersionTemplate { get; private set; } = null!;
@@ -150,6 +153,8 @@ namespace Pulumi.Gcp.Kms
         /// The immutable purpose of this CryptoKey. See the
         /// [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
         /// for possible inputs.
+        /// Default value is `ENCRYPT_DECRYPT`.
+        /// Possible values are `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, and `ASYMMETRIC_DECRYPT`.
         /// </summary>
         [Input("purpose")]
         public Input<string>? Purpose { get; set; }
@@ -164,7 +169,8 @@ namespace Pulumi.Gcp.Kms
         public Input<string>? RotationPeriod { get; set; }
 
         /// <summary>
-        /// A template describing settings for new crypto key versions.  Structure is documented below.
+        /// A template describing settings for new crypto key versions.
+        /// Structure is documented below.
         /// </summary>
         [Input("versionTemplate")]
         public Input<Inputs.CryptoKeyVersionTemplateArgs>? VersionTemplate { get; set; }
@@ -205,6 +211,8 @@ namespace Pulumi.Gcp.Kms
         /// The immutable purpose of this CryptoKey. See the
         /// [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
         /// for possible inputs.
+        /// Default value is `ENCRYPT_DECRYPT`.
+        /// Possible values are `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, and `ASYMMETRIC_DECRYPT`.
         /// </summary>
         [Input("purpose")]
         public Input<string>? Purpose { get; set; }
@@ -222,7 +230,8 @@ namespace Pulumi.Gcp.Kms
         public Input<string>? SelfLink { get; set; }
 
         /// <summary>
-        /// A template describing settings for new crypto key versions.  Structure is documented below.
+        /// A template describing settings for new crypto key versions.
+        /// Structure is documented below.
         /// </summary>
         [Input("versionTemplate")]
         public Input<Inputs.CryptoKeyVersionTemplateGetArgs>? VersionTemplate { get; set; }

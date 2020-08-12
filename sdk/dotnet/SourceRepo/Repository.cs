@@ -38,7 +38,8 @@ namespace Pulumi.Gcp.SourceRepo
 
         /// <summary>
         /// How this repository publishes a change in the repository through Cloud Pub/Sub.
-        /// Keyed by the topic names.  Structure is documented below.
+        /// Keyed by the topic names.
+        /// Structure is documented below.
         /// </summary>
         [Output("pubsubConfigs")]
         public Output<ImmutableArray<Outputs.RepositoryPubsubConfig>> PubsubConfigs { get; private set; } = null!;
@@ -120,7 +121,8 @@ namespace Pulumi.Gcp.SourceRepo
 
         /// <summary>
         /// How this repository publishes a change in the repository through Cloud Pub/Sub.
-        /// Keyed by the topic names.  Structure is documented below.
+        /// Keyed by the topic names.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.RepositoryPubsubConfigArgs> PubsubConfigs
         {
@@ -154,7 +156,8 @@ namespace Pulumi.Gcp.SourceRepo
 
         /// <summary>
         /// How this repository publishes a change in the repository through Cloud Pub/Sub.
-        /// Keyed by the topic names.  Structure is documented below.
+        /// Keyed by the topic names.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.RepositoryPubsubConfigGetArgs> PubsubConfigs
         {

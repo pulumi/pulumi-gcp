@@ -13,6 +13,7 @@ class FirewallRule(pulumi.CustomResource):
     action: pulumi.Output[str]
     """
     The action to take if this rule matches.
+    Possible values are `UNSPECIFIED_ACTION`, `ALLOW`, and `DENY`.
     """
     description: pulumi.Output[str]
     """
@@ -51,6 +52,7 @@ class FirewallRule(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: The action to take if this rule matches.
+               Possible values are `UNSPECIFIED_ACTION`, `ALLOW`, and `DENY`.
         :param pulumi.Input[str] description: An optional string description of this rule.
         :param pulumi.Input[float] priority: A positive integer that defines the order of rule evaluation.
                Rules with the lowest priority are evaluated first.
@@ -103,6 +105,7 @@ class FirewallRule(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: The action to take if this rule matches.
+               Possible values are `UNSPECIFIED_ACTION`, `ALLOW`, and `DENY`.
         :param pulumi.Input[str] description: An optional string description of this rule.
         :param pulumi.Input[float] priority: A positive integer that defines the order of rule evaluation.
                Rules with the lowest priority are evaluated first.

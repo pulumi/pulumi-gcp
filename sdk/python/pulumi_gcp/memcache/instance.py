@@ -29,7 +29,8 @@ class Instance(pulumi.CustomResource):
     """
     memcache_parameters: pulumi.Output[dict]
     """
-    User-specified parameters for this memcache instance.  Structure is documented below.
+    User-specified parameters for this memcache instance.
+    Structure is documented below.
 
       * `id` (`str`) - -
         This is a unique ID associated with this set of parameters.
@@ -41,7 +42,8 @@ class Instance(pulumi.CustomResource):
     """
     node_config: pulumi.Output[dict]
     """
-    Configuration for memcache nodes.  Structure is documented below.
+    Configuration for memcache nodes.
+    Structure is documented below.
 
       * `cpuCount` (`float`) - Number of CPUs per node.
       * `memorySizeMb` (`float`) - Memory size in Mebibytes for each memcache node.
@@ -73,9 +75,11 @@ class Instance(pulumi.CustomResource):
                'default' will be used.
         :param pulumi.Input[str] display_name: A user-visible name for the instance.
         :param pulumi.Input[dict] labels: Resource labels to represent user-provided metadata.
-        :param pulumi.Input[dict] memcache_parameters: User-specified parameters for this memcache instance.  Structure is documented below.
+        :param pulumi.Input[dict] memcache_parameters: User-specified parameters for this memcache instance.
+               Structure is documented below.
         :param pulumi.Input[str] name: The resource name of the instance.
-        :param pulumi.Input[dict] node_config: Configuration for memcache nodes.  Structure is documented below.
+        :param pulumi.Input[dict] node_config: Configuration for memcache nodes.
+               Structure is documented below.
         :param pulumi.Input[float] node_count: Number of nodes in the memcache instance.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -148,9 +152,11 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] display_name: A user-visible name for the instance.
         :param pulumi.Input[dict] labels: Resource labels to represent user-provided metadata.
-        :param pulumi.Input[dict] memcache_parameters: User-specified parameters for this memcache instance.  Structure is documented below.
+        :param pulumi.Input[dict] memcache_parameters: User-specified parameters for this memcache instance.
+               Structure is documented below.
         :param pulumi.Input[str] name: The resource name of the instance.
-        :param pulumi.Input[dict] node_config: Configuration for memcache nodes.  Structure is documented below.
+        :param pulumi.Input[dict] node_config: Configuration for memcache nodes.
+               Structure is documented below.
         :param pulumi.Input[float] node_count: Number of nodes in the memcache instance.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

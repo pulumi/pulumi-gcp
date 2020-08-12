@@ -73,6 +73,8 @@ namespace Pulumi.Gcp.AccessContextManager
         /// topologies with many independent perimeters that need to share some data
         /// with a common perimeter, but should not be able to share data among
         /// themselves.
+        /// Default value is `PERIMETER_TYPE_REGULAR`.
+        /// Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
         /// </summary>
         [Output("perimeterType")]
         public Output<string?> PerimeterType { get; private set; } = null!;
@@ -81,7 +83,8 @@ namespace Pulumi.Gcp.AccessContextManager
         /// Proposed (or dry run) ServicePerimeter configuration.
         /// This configuration allows to specify and test ServicePerimeter configuration
         /// without enforcing actual access restrictions. Only allowed to be set when
-        /// the `useExplicitDryRunSpec` flag is set.  Structure is documented below.
+        /// the `useExplicitDryRunSpec` flag is set.
+        /// Structure is documented below.
         /// </summary>
         [Output("spec")]
         public Output<Outputs.ServicePerimeterSpec?> Spec { get; private set; } = null!;
@@ -89,7 +92,8 @@ namespace Pulumi.Gcp.AccessContextManager
         /// <summary>
         /// ServicePerimeter configuration. Specifies sets of resources,
         /// restricted services and access levels that determine
-        /// perimeter content and boundaries.  Structure is documented below.
+        /// perimeter content and boundaries.
+        /// Structure is documented below.
         /// </summary>
         [Output("status")]
         public Output<Outputs.ServicePerimeterStatus?> Status { get; private set; } = null!;
@@ -203,6 +207,8 @@ namespace Pulumi.Gcp.AccessContextManager
         /// topologies with many independent perimeters that need to share some data
         /// with a common perimeter, but should not be able to share data among
         /// themselves.
+        /// Default value is `PERIMETER_TYPE_REGULAR`.
+        /// Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
         /// </summary>
         [Input("perimeterType")]
         public Input<string>? PerimeterType { get; set; }
@@ -211,7 +217,8 @@ namespace Pulumi.Gcp.AccessContextManager
         /// Proposed (or dry run) ServicePerimeter configuration.
         /// This configuration allows to specify and test ServicePerimeter configuration
         /// without enforcing actual access restrictions. Only allowed to be set when
-        /// the `useExplicitDryRunSpec` flag is set.  Structure is documented below.
+        /// the `useExplicitDryRunSpec` flag is set.
+        /// Structure is documented below.
         /// </summary>
         [Input("spec")]
         public Input<Inputs.ServicePerimeterSpecArgs>? Spec { get; set; }
@@ -219,7 +226,8 @@ namespace Pulumi.Gcp.AccessContextManager
         /// <summary>
         /// ServicePerimeter configuration. Specifies sets of resources,
         /// restricted services and access levels that determine
-        /// perimeter content and boundaries.  Structure is documented below.
+        /// perimeter content and boundaries.
+        /// Structure is documented below.
         /// </summary>
         [Input("status")]
         public Input<Inputs.ServicePerimeterStatusArgs>? Status { get; set; }
@@ -294,6 +302,8 @@ namespace Pulumi.Gcp.AccessContextManager
         /// topologies with many independent perimeters that need to share some data
         /// with a common perimeter, but should not be able to share data among
         /// themselves.
+        /// Default value is `PERIMETER_TYPE_REGULAR`.
+        /// Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
         /// </summary>
         [Input("perimeterType")]
         public Input<string>? PerimeterType { get; set; }
@@ -302,7 +312,8 @@ namespace Pulumi.Gcp.AccessContextManager
         /// Proposed (or dry run) ServicePerimeter configuration.
         /// This configuration allows to specify and test ServicePerimeter configuration
         /// without enforcing actual access restrictions. Only allowed to be set when
-        /// the `useExplicitDryRunSpec` flag is set.  Structure is documented below.
+        /// the `useExplicitDryRunSpec` flag is set.
+        /// Structure is documented below.
         /// </summary>
         [Input("spec")]
         public Input<Inputs.ServicePerimeterSpecGetArgs>? Spec { get; set; }
@@ -310,7 +321,8 @@ namespace Pulumi.Gcp.AccessContextManager
         /// <summary>
         /// ServicePerimeter configuration. Specifies sets of resources,
         /// restricted services and access levels that determine
-        /// perimeter content and boundaries.  Structure is documented below.
+        /// perimeter content and boundaries.
+        /// Structure is documented below.
         /// </summary>
         [Input("status")]
         public Input<Inputs.ServicePerimeterStatusGetArgs>? Status { get; set; }

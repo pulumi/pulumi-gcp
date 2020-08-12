@@ -685,6 +685,7 @@ type DomainMappingSslSettings struct {
 	PendingManagedCertificateId *string `pulumi:"pendingManagedCertificateId"`
 	// SSL management type for this domain. If `AUTOMATIC`, a managed certificate is automatically provisioned.
 	// If `MANUAL`, `certificateId` must be manually specified in order to configure SSL for this domain.
+	// Possible values are `AUTOMATIC` and `MANUAL`.
 	SslManagementType string `pulumi:"sslManagementType"`
 }
 
@@ -716,6 +717,7 @@ type DomainMappingSslSettingsArgs struct {
 	PendingManagedCertificateId pulumi.StringPtrInput `pulumi:"pendingManagedCertificateId"`
 	// SSL management type for this domain. If `AUTOMATIC`, a managed certificate is automatically provisioned.
 	// If `MANUAL`, `certificateId` must be manually specified in order to configure SSL for this domain.
+	// Possible values are `AUTOMATIC` and `MANUAL`.
 	SslManagementType pulumi.StringInput `pulumi:"sslManagementType"`
 }
 
@@ -818,6 +820,7 @@ func (o DomainMappingSslSettingsOutput) PendingManagedCertificateId() pulumi.Str
 
 // SSL management type for this domain. If `AUTOMATIC`, a managed certificate is automatically provisioned.
 // If `MANUAL`, `certificateId` must be manually specified in order to configure SSL for this domain.
+// Possible values are `AUTOMATIC` and `MANUAL`.
 func (o DomainMappingSslSettingsOutput) SslManagementType() pulumi.StringOutput {
 	return o.ApplyT(func(v DomainMappingSslSettings) string { return v.SslManagementType }).(pulumi.StringOutput)
 }
@@ -872,6 +875,7 @@ func (o DomainMappingSslSettingsPtrOutput) PendingManagedCertificateId() pulumi.
 
 // SSL management type for this domain. If `AUTOMATIC`, a managed certificate is automatically provisioned.
 // If `MANUAL`, `certificateId` must be manually specified in order to configure SSL for this domain.
+// Possible values are `AUTOMATIC` and `MANUAL`.
 func (o DomainMappingSslSettingsPtrOutput) SslManagementType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DomainMappingSslSettings) *string {
 		if v == nil {
@@ -885,6 +889,7 @@ type EngineSplitTrafficSplit struct {
 	// Mapping from version IDs within the service to fractional (0.000, 1] allocations of traffic for that version. Each version can be specified only once, but some versions in the service may not have any traffic allocation. Services that have traffic allocated cannot be deleted until either the service is deleted or their traffic allocation is removed. Allocations must sum to 1. Up to two decimal place precision is supported for IP-based splits and up to three decimal places is supported for cookie-based splits.
 	Allocations map[string]string `pulumi:"allocations"`
 	// Mechanism used to determine which version a request is sent to. The traffic selection algorithm will be stable for either type until allocations are changed.
+	// Possible values are `UNSPECIFIED`, `COOKIE`, `IP`, and `RANDOM`.
 	ShardBy *string `pulumi:"shardBy"`
 }
 
@@ -903,6 +908,7 @@ type EngineSplitTrafficSplitArgs struct {
 	// Mapping from version IDs within the service to fractional (0.000, 1] allocations of traffic for that version. Each version can be specified only once, but some versions in the service may not have any traffic allocation. Services that have traffic allocated cannot be deleted until either the service is deleted or their traffic allocation is removed. Allocations must sum to 1. Up to two decimal place precision is supported for IP-based splits and up to three decimal places is supported for cookie-based splits.
 	Allocations pulumi.StringMapInput `pulumi:"allocations"`
 	// Mechanism used to determine which version a request is sent to. The traffic selection algorithm will be stable for either type until allocations are changed.
+	// Possible values are `UNSPECIFIED`, `COOKIE`, `IP`, and `RANDOM`.
 	ShardBy pulumi.StringPtrInput `pulumi:"shardBy"`
 }
 
@@ -989,6 +995,7 @@ func (o EngineSplitTrafficSplitOutput) Allocations() pulumi.StringMapOutput {
 }
 
 // Mechanism used to determine which version a request is sent to. The traffic selection algorithm will be stable for either type until allocations are changed.
+// Possible values are `UNSPECIFIED`, `COOKIE`, `IP`, and `RANDOM`.
 func (o EngineSplitTrafficSplitOutput) ShardBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EngineSplitTrafficSplit) *string { return v.ShardBy }).(pulumi.StringPtrOutput)
 }
@@ -1022,6 +1029,7 @@ func (o EngineSplitTrafficSplitPtrOutput) Allocations() pulumi.StringMapOutput {
 }
 
 // Mechanism used to determine which version a request is sent to. The traffic selection algorithm will be stable for either type until allocations are changed.
+// Possible values are `UNSPECIFIED`, `COOKIE`, `IP`, and `RANDOM`.
 func (o EngineSplitTrafficSplitPtrOutput) ShardBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EngineSplitTrafficSplit) *string {
 		if v == nil {
@@ -1033,12 +1041,17 @@ func (o EngineSplitTrafficSplitPtrOutput) ShardBy() pulumi.StringPtrOutput {
 
 type FlexibleAppVersionApiConfig struct {
 	// Action to take when users access resources that require authentication.
+	// Default value is `AUTH_FAIL_ACTION_REDIRECT`.
+	// Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
 	AuthFailAction *string `pulumi:"authFailAction"`
 	// Level of login required to access this resource.
+	// Default value is `LOGIN_OPTIONAL`.
+	// Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
 	Login *string `pulumi:"login"`
 	// Path to the script from the application root directory.
 	Script string `pulumi:"script"`
 	// Security (HTTPS) enforcement for this URL.
+	// Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
 	SecurityLevel *string `pulumi:"securityLevel"`
 	// URL to serve the endpoint at.
 	Url *string `pulumi:"url"`
@@ -1057,12 +1070,17 @@ type FlexibleAppVersionApiConfigInput interface {
 
 type FlexibleAppVersionApiConfigArgs struct {
 	// Action to take when users access resources that require authentication.
+	// Default value is `AUTH_FAIL_ACTION_REDIRECT`.
+	// Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
 	AuthFailAction pulumi.StringPtrInput `pulumi:"authFailAction"`
 	// Level of login required to access this resource.
+	// Default value is `LOGIN_OPTIONAL`.
+	// Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
 	Login pulumi.StringPtrInput `pulumi:"login"`
 	// Path to the script from the application root directory.
 	Script pulumi.StringInput `pulumi:"script"`
 	// Security (HTTPS) enforcement for this URL.
+	// Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
 	SecurityLevel pulumi.StringPtrInput `pulumi:"securityLevel"`
 	// URL to serve the endpoint at.
 	Url pulumi.StringPtrInput `pulumi:"url"`
@@ -1146,11 +1164,15 @@ func (o FlexibleAppVersionApiConfigOutput) ToFlexibleAppVersionApiConfigPtrOutpu
 }
 
 // Action to take when users access resources that require authentication.
+// Default value is `AUTH_FAIL_ACTION_REDIRECT`.
+// Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
 func (o FlexibleAppVersionApiConfigOutput) AuthFailAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionApiConfig) *string { return v.AuthFailAction }).(pulumi.StringPtrOutput)
 }
 
 // Level of login required to access this resource.
+// Default value is `LOGIN_OPTIONAL`.
+// Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
 func (o FlexibleAppVersionApiConfigOutput) Login() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionApiConfig) *string { return v.Login }).(pulumi.StringPtrOutput)
 }
@@ -1161,6 +1183,7 @@ func (o FlexibleAppVersionApiConfigOutput) Script() pulumi.StringOutput {
 }
 
 // Security (HTTPS) enforcement for this URL.
+// Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
 func (o FlexibleAppVersionApiConfigOutput) SecurityLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionApiConfig) *string { return v.SecurityLevel }).(pulumi.StringPtrOutput)
 }
@@ -1189,6 +1212,8 @@ func (o FlexibleAppVersionApiConfigPtrOutput) Elem() FlexibleAppVersionApiConfig
 }
 
 // Action to take when users access resources that require authentication.
+// Default value is `AUTH_FAIL_ACTION_REDIRECT`.
+// Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
 func (o FlexibleAppVersionApiConfigPtrOutput) AuthFailAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlexibleAppVersionApiConfig) *string {
 		if v == nil {
@@ -1199,6 +1224,8 @@ func (o FlexibleAppVersionApiConfigPtrOutput) AuthFailAction() pulumi.StringPtrO
 }
 
 // Level of login required to access this resource.
+// Default value is `LOGIN_OPTIONAL`.
+// Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
 func (o FlexibleAppVersionApiConfigPtrOutput) Login() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlexibleAppVersionApiConfig) *string {
 		if v == nil {
@@ -1219,6 +1246,7 @@ func (o FlexibleAppVersionApiConfigPtrOutput) Script() pulumi.StringPtrOutput {
 }
 
 // Security (HTTPS) enforcement for this URL.
+// Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
 func (o FlexibleAppVersionApiConfigPtrOutput) SecurityLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlexibleAppVersionApiConfig) *string {
 		if v == nil {
@@ -1243,9 +1271,11 @@ type FlexibleAppVersionAutomaticScaling struct {
 	// This prevents the autoscaler from collecting information when the instance is initializing,
 	// during which the collected usage would not be reliable. Default: 120s
 	CoolDownPeriod *string `pulumi:"coolDownPeriod"`
-	// Target scaling by CPU usage.  Structure is documented below.
+	// Target scaling by CPU usage.
+	// Structure is documented below.
 	CpuUtilization FlexibleAppVersionAutomaticScalingCpuUtilization `pulumi:"cpuUtilization"`
-	// Target scaling by disk usage.  Structure is documented below.
+	// Target scaling by disk usage.
+	// Structure is documented below.
 	DiskUtilization *FlexibleAppVersionAutomaticScalingDiskUtilization `pulumi:"diskUtilization"`
 	// Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns a new instance.
 	// Defaults to a runtime-specific value.
@@ -1262,9 +1292,11 @@ type FlexibleAppVersionAutomaticScaling struct {
 	MinPendingLatency *string `pulumi:"minPendingLatency"`
 	// Minimum number of running instances that should be maintained for this version. Default: 2
 	MinTotalInstances *int `pulumi:"minTotalInstances"`
-	// Target scaling by network usage.  Structure is documented below.
+	// Target scaling by network usage.
+	// Structure is documented below.
 	NetworkUtilization *FlexibleAppVersionAutomaticScalingNetworkUtilization `pulumi:"networkUtilization"`
-	// Target scaling by request utilization.  Structure is documented below.
+	// Target scaling by request utilization.
+	// Structure is documented below.
 	RequestUtilization *FlexibleAppVersionAutomaticScalingRequestUtilization `pulumi:"requestUtilization"`
 }
 
@@ -1284,9 +1316,11 @@ type FlexibleAppVersionAutomaticScalingArgs struct {
 	// This prevents the autoscaler from collecting information when the instance is initializing,
 	// during which the collected usage would not be reliable. Default: 120s
 	CoolDownPeriod pulumi.StringPtrInput `pulumi:"coolDownPeriod"`
-	// Target scaling by CPU usage.  Structure is documented below.
+	// Target scaling by CPU usage.
+	// Structure is documented below.
 	CpuUtilization FlexibleAppVersionAutomaticScalingCpuUtilizationInput `pulumi:"cpuUtilization"`
-	// Target scaling by disk usage.  Structure is documented below.
+	// Target scaling by disk usage.
+	// Structure is documented below.
 	DiskUtilization FlexibleAppVersionAutomaticScalingDiskUtilizationPtrInput `pulumi:"diskUtilization"`
 	// Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns a new instance.
 	// Defaults to a runtime-specific value.
@@ -1303,9 +1337,11 @@ type FlexibleAppVersionAutomaticScalingArgs struct {
 	MinPendingLatency pulumi.StringPtrInput `pulumi:"minPendingLatency"`
 	// Minimum number of running instances that should be maintained for this version. Default: 2
 	MinTotalInstances pulumi.IntPtrInput `pulumi:"minTotalInstances"`
-	// Target scaling by network usage.  Structure is documented below.
+	// Target scaling by network usage.
+	// Structure is documented below.
 	NetworkUtilization FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrInput `pulumi:"networkUtilization"`
-	// Target scaling by request utilization.  Structure is documented below.
+	// Target scaling by request utilization.
+	// Structure is documented below.
 	RequestUtilization FlexibleAppVersionAutomaticScalingRequestUtilizationPtrInput `pulumi:"requestUtilization"`
 }
 
@@ -1393,14 +1429,16 @@ func (o FlexibleAppVersionAutomaticScalingOutput) CoolDownPeriod() pulumi.String
 	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *string { return v.CoolDownPeriod }).(pulumi.StringPtrOutput)
 }
 
-// Target scaling by CPU usage.  Structure is documented below.
+// Target scaling by CPU usage.
+// Structure is documented below.
 func (o FlexibleAppVersionAutomaticScalingOutput) CpuUtilization() FlexibleAppVersionAutomaticScalingCpuUtilizationOutput {
 	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) FlexibleAppVersionAutomaticScalingCpuUtilization {
 		return v.CpuUtilization
 	}).(FlexibleAppVersionAutomaticScalingCpuUtilizationOutput)
 }
 
-// Target scaling by disk usage.  Structure is documented below.
+// Target scaling by disk usage.
+// Structure is documented below.
 func (o FlexibleAppVersionAutomaticScalingOutput) DiskUtilization() FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *FlexibleAppVersionAutomaticScalingDiskUtilization {
 		return v.DiskUtilization
@@ -1443,14 +1481,16 @@ func (o FlexibleAppVersionAutomaticScalingOutput) MinTotalInstances() pulumi.Int
 	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *int { return v.MinTotalInstances }).(pulumi.IntPtrOutput)
 }
 
-// Target scaling by network usage.  Structure is documented below.
+// Target scaling by network usage.
+// Structure is documented below.
 func (o FlexibleAppVersionAutomaticScalingOutput) NetworkUtilization() FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *FlexibleAppVersionAutomaticScalingNetworkUtilization {
 		return v.NetworkUtilization
 	}).(FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput)
 }
 
-// Target scaling by request utilization.  Structure is documented below.
+// Target scaling by request utilization.
+// Structure is documented below.
 func (o FlexibleAppVersionAutomaticScalingOutput) RequestUtilization() FlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *FlexibleAppVersionAutomaticScalingRequestUtilization {
 		return v.RequestUtilization
@@ -1487,7 +1527,8 @@ func (o FlexibleAppVersionAutomaticScalingPtrOutput) CoolDownPeriod() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
-// Target scaling by CPU usage.  Structure is documented below.
+// Target scaling by CPU usage.
+// Structure is documented below.
 func (o FlexibleAppVersionAutomaticScalingPtrOutput) CpuUtilization() FlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutput {
 	return o.ApplyT(func(v *FlexibleAppVersionAutomaticScaling) *FlexibleAppVersionAutomaticScalingCpuUtilization {
 		if v == nil {
@@ -1497,7 +1538,8 @@ func (o FlexibleAppVersionAutomaticScalingPtrOutput) CpuUtilization() FlexibleAp
 	}).(FlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutput)
 }
 
-// Target scaling by disk usage.  Structure is documented below.
+// Target scaling by disk usage.
+// Structure is documented below.
 func (o FlexibleAppVersionAutomaticScalingPtrOutput) DiskUtilization() FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput {
 	return o.ApplyT(func(v *FlexibleAppVersionAutomaticScaling) *FlexibleAppVersionAutomaticScalingDiskUtilization {
 		if v == nil {
@@ -1578,7 +1620,8 @@ func (o FlexibleAppVersionAutomaticScalingPtrOutput) MinTotalInstances() pulumi.
 	}).(pulumi.IntPtrOutput)
 }
 
-// Target scaling by network usage.  Structure is documented below.
+// Target scaling by network usage.
+// Structure is documented below.
 func (o FlexibleAppVersionAutomaticScalingPtrOutput) NetworkUtilization() FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput {
 	return o.ApplyT(func(v *FlexibleAppVersionAutomaticScaling) *FlexibleAppVersionAutomaticScalingNetworkUtilization {
 		if v == nil {
@@ -1588,7 +1631,8 @@ func (o FlexibleAppVersionAutomaticScalingPtrOutput) NetworkUtilization() Flexib
 	}).(FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput)
 }
 
-// Target scaling by request utilization.  Structure is documented below.
+// Target scaling by request utilization.
+// Structure is documented below.
 func (o FlexibleAppVersionAutomaticScalingPtrOutput) RequestUtilization() FlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput {
 	return o.ApplyT(func(v *FlexibleAppVersionAutomaticScaling) *FlexibleAppVersionAutomaticScalingRequestUtilization {
 		if v == nil {
@@ -2291,14 +2335,18 @@ func (o FlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput) TargetReq
 }
 
 type FlexibleAppVersionDeployment struct {
-	// Options for the build operations performed as a part of the version deployment. Only applicable when creating a version using source code directly.  Structure is documented below.
+	// Options for the build operations performed as a part of the version deployment. Only applicable when creating a version using source code directly.
+	// Structure is documented below.
 	CloudBuildOptions *FlexibleAppVersionDeploymentCloudBuildOptions `pulumi:"cloudBuildOptions"`
-	// The Docker image for the container that runs the version.  Structure is documented below.
+	// The Docker image for the container that runs the version.
+	// Structure is documented below.
 	Container *FlexibleAppVersionDeploymentContainer `pulumi:"container"`
 	// Manifest of the files stored in Google Cloud Storage that are included as part of this version.
-	// All files must be readable using the credentials supplied with this call.  Structure is documented below.
+	// All files must be readable using the credentials supplied with this call.
+	// Structure is documented below.
 	Files []FlexibleAppVersionDeploymentFile `pulumi:"files"`
-	// Zip File  Structure is documented below.
+	// Zip File
+	// Structure is documented below.
 	Zip *FlexibleAppVersionDeploymentZip `pulumi:"zip"`
 }
 
@@ -2314,14 +2362,18 @@ type FlexibleAppVersionDeploymentInput interface {
 }
 
 type FlexibleAppVersionDeploymentArgs struct {
-	// Options for the build operations performed as a part of the version deployment. Only applicable when creating a version using source code directly.  Structure is documented below.
+	// Options for the build operations performed as a part of the version deployment. Only applicable when creating a version using source code directly.
+	// Structure is documented below.
 	CloudBuildOptions FlexibleAppVersionDeploymentCloudBuildOptionsPtrInput `pulumi:"cloudBuildOptions"`
-	// The Docker image for the container that runs the version.  Structure is documented below.
+	// The Docker image for the container that runs the version.
+	// Structure is documented below.
 	Container FlexibleAppVersionDeploymentContainerPtrInput `pulumi:"container"`
 	// Manifest of the files stored in Google Cloud Storage that are included as part of this version.
-	// All files must be readable using the credentials supplied with this call.  Structure is documented below.
+	// All files must be readable using the credentials supplied with this call.
+	// Structure is documented below.
 	Files FlexibleAppVersionDeploymentFileArrayInput `pulumi:"files"`
-	// Zip File  Structure is documented below.
+	// Zip File
+	// Structure is documented below.
 	Zip FlexibleAppVersionDeploymentZipPtrInput `pulumi:"zip"`
 }
 
@@ -2402,25 +2454,29 @@ func (o FlexibleAppVersionDeploymentOutput) ToFlexibleAppVersionDeploymentPtrOut
 	}).(FlexibleAppVersionDeploymentPtrOutput)
 }
 
-// Options for the build operations performed as a part of the version deployment. Only applicable when creating a version using source code directly.  Structure is documented below.
+// Options for the build operations performed as a part of the version deployment. Only applicable when creating a version using source code directly.
+// Structure is documented below.
 func (o FlexibleAppVersionDeploymentOutput) CloudBuildOptions() FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionDeployment) *FlexibleAppVersionDeploymentCloudBuildOptions {
 		return v.CloudBuildOptions
 	}).(FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput)
 }
 
-// The Docker image for the container that runs the version.  Structure is documented below.
+// The Docker image for the container that runs the version.
+// Structure is documented below.
 func (o FlexibleAppVersionDeploymentOutput) Container() FlexibleAppVersionDeploymentContainerPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionDeployment) *FlexibleAppVersionDeploymentContainer { return v.Container }).(FlexibleAppVersionDeploymentContainerPtrOutput)
 }
 
 // Manifest of the files stored in Google Cloud Storage that are included as part of this version.
-// All files must be readable using the credentials supplied with this call.  Structure is documented below.
+// All files must be readable using the credentials supplied with this call.
+// Structure is documented below.
 func (o FlexibleAppVersionDeploymentOutput) Files() FlexibleAppVersionDeploymentFileArrayOutput {
 	return o.ApplyT(func(v FlexibleAppVersionDeployment) []FlexibleAppVersionDeploymentFile { return v.Files }).(FlexibleAppVersionDeploymentFileArrayOutput)
 }
 
-// Zip File  Structure is documented below.
+// Zip File
+// Structure is documented below.
 func (o FlexibleAppVersionDeploymentOutput) Zip() FlexibleAppVersionDeploymentZipPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionDeployment) *FlexibleAppVersionDeploymentZip { return v.Zip }).(FlexibleAppVersionDeploymentZipPtrOutput)
 }
@@ -2443,7 +2499,8 @@ func (o FlexibleAppVersionDeploymentPtrOutput) Elem() FlexibleAppVersionDeployme
 	return o.ApplyT(func(v *FlexibleAppVersionDeployment) FlexibleAppVersionDeployment { return *v }).(FlexibleAppVersionDeploymentOutput)
 }
 
-// Options for the build operations performed as a part of the version deployment. Only applicable when creating a version using source code directly.  Structure is documented below.
+// Options for the build operations performed as a part of the version deployment. Only applicable when creating a version using source code directly.
+// Structure is documented below.
 func (o FlexibleAppVersionDeploymentPtrOutput) CloudBuildOptions() FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput {
 	return o.ApplyT(func(v *FlexibleAppVersionDeployment) *FlexibleAppVersionDeploymentCloudBuildOptions {
 		if v == nil {
@@ -2453,7 +2510,8 @@ func (o FlexibleAppVersionDeploymentPtrOutput) CloudBuildOptions() FlexibleAppVe
 	}).(FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput)
 }
 
-// The Docker image for the container that runs the version.  Structure is documented below.
+// The Docker image for the container that runs the version.
+// Structure is documented below.
 func (o FlexibleAppVersionDeploymentPtrOutput) Container() FlexibleAppVersionDeploymentContainerPtrOutput {
 	return o.ApplyT(func(v *FlexibleAppVersionDeployment) *FlexibleAppVersionDeploymentContainer {
 		if v == nil {
@@ -2464,7 +2522,8 @@ func (o FlexibleAppVersionDeploymentPtrOutput) Container() FlexibleAppVersionDep
 }
 
 // Manifest of the files stored in Google Cloud Storage that are included as part of this version.
-// All files must be readable using the credentials supplied with this call.  Structure is documented below.
+// All files must be readable using the credentials supplied with this call.
+// Structure is documented below.
 func (o FlexibleAppVersionDeploymentPtrOutput) Files() FlexibleAppVersionDeploymentFileArrayOutput {
 	return o.ApplyT(func(v *FlexibleAppVersionDeployment) []FlexibleAppVersionDeploymentFile {
 		if v == nil {
@@ -2474,7 +2533,8 @@ func (o FlexibleAppVersionDeploymentPtrOutput) Files() FlexibleAppVersionDeploym
 	}).(FlexibleAppVersionDeploymentFileArrayOutput)
 }
 
-// Zip File  Structure is documented below.
+// Zip File
+// Structure is documented below.
 func (o FlexibleAppVersionDeploymentPtrOutput) Zip() FlexibleAppVersionDeploymentZipPtrOutput {
 	return o.ApplyT(func(v *FlexibleAppVersionDeployment) *FlexibleAppVersionDeploymentZip {
 		if v == nil {
@@ -3053,6 +3113,8 @@ type FlexibleAppVersionEndpointsApiService struct {
 	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
 	Name string `pulumi:"name"`
 	// Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted.
+	// Default value is `FIXED`.
+	// Possible values are `FIXED` and `MANAGED`.
 	RolloutStrategy *string `pulumi:"rolloutStrategy"`
 }
 
@@ -3080,6 +3142,8 @@ type FlexibleAppVersionEndpointsApiServiceArgs struct {
 	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted.
+	// Default value is `FIXED`.
+	// Possible values are `FIXED` and `MANAGED`.
 	RolloutStrategy pulumi.StringPtrInput `pulumi:"rolloutStrategy"`
 }
 
@@ -3181,6 +3245,8 @@ func (o FlexibleAppVersionEndpointsApiServiceOutput) Name() pulumi.StringOutput 
 }
 
 // Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted.
+// Default value is `FIXED`.
+// Possible values are `FIXED` and `MANAGED`.
 func (o FlexibleAppVersionEndpointsApiServiceOutput) RolloutStrategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionEndpointsApiService) *string { return v.RolloutStrategy }).(pulumi.StringPtrOutput)
 }
@@ -3239,6 +3305,8 @@ func (o FlexibleAppVersionEndpointsApiServicePtrOutput) Name() pulumi.StringPtrO
 }
 
 // Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted.
+// Default value is `FIXED`.
+// Possible values are `FIXED` and `MANAGED`.
 func (o FlexibleAppVersionEndpointsApiServicePtrOutput) RolloutStrategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlexibleAppVersionEndpointsApiService) *string {
 		if v == nil {
@@ -3381,17 +3449,24 @@ func (o FlexibleAppVersionEntrypointPtrOutput) Shell() pulumi.StringPtrOutput {
 
 type FlexibleAppVersionHandler struct {
 	// Action to take when users access resources that require authentication.
+	// Default value is `AUTH_FAIL_ACTION_REDIRECT`.
+	// Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
 	AuthFailAction *string `pulumi:"authFailAction"`
 	// Level of login required to access this resource.
+	// Default value is `LOGIN_OPTIONAL`.
+	// Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
 	Login *string `pulumi:"login"`
 	// 30x code to use when performing redirects for the secure field.
+	// Possible values are `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, and `REDIRECT_HTTP_RESPONSE_CODE_307`.
 	RedirectHttpResponseCode *string `pulumi:"redirectHttpResponseCode"`
 	// Path to the script from the application root directory.
 	Script *FlexibleAppVersionHandlerScript `pulumi:"script"`
 	// Security (HTTPS) enforcement for this URL.
+	// Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
 	SecurityLevel *string `pulumi:"securityLevel"`
 	// Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files.
-	// Static file handlers describe which files in the application directory are static files, and which URLs serve them.  Structure is documented below.
+	// Static file handlers describe which files in the application directory are static files, and which URLs serve them.
+	// Structure is documented below.
 	StaticFiles *FlexibleAppVersionHandlerStaticFiles `pulumi:"staticFiles"`
 	// URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings.
 	// All URLs that begin with this prefix are handled by this handler, using the portion of the URL after the prefix as part of the file path.
@@ -3411,17 +3486,24 @@ type FlexibleAppVersionHandlerInput interface {
 
 type FlexibleAppVersionHandlerArgs struct {
 	// Action to take when users access resources that require authentication.
+	// Default value is `AUTH_FAIL_ACTION_REDIRECT`.
+	// Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
 	AuthFailAction pulumi.StringPtrInput `pulumi:"authFailAction"`
 	// Level of login required to access this resource.
+	// Default value is `LOGIN_OPTIONAL`.
+	// Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
 	Login pulumi.StringPtrInput `pulumi:"login"`
 	// 30x code to use when performing redirects for the secure field.
+	// Possible values are `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, and `REDIRECT_HTTP_RESPONSE_CODE_307`.
 	RedirectHttpResponseCode pulumi.StringPtrInput `pulumi:"redirectHttpResponseCode"`
 	// Path to the script from the application root directory.
 	Script FlexibleAppVersionHandlerScriptPtrInput `pulumi:"script"`
 	// Security (HTTPS) enforcement for this URL.
+	// Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
 	SecurityLevel pulumi.StringPtrInput `pulumi:"securityLevel"`
 	// Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files.
-	// Static file handlers describe which files in the application directory are static files, and which URLs serve them.  Structure is documented below.
+	// Static file handlers describe which files in the application directory are static files, and which URLs serve them.
+	// Structure is documented below.
 	StaticFiles FlexibleAppVersionHandlerStaticFilesPtrInput `pulumi:"staticFiles"`
 	// URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings.
 	// All URLs that begin with this prefix are handled by this handler, using the portion of the URL after the prefix as part of the file path.
@@ -3480,16 +3562,21 @@ func (o FlexibleAppVersionHandlerOutput) ToFlexibleAppVersionHandlerOutputWithCo
 }
 
 // Action to take when users access resources that require authentication.
+// Default value is `AUTH_FAIL_ACTION_REDIRECT`.
+// Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
 func (o FlexibleAppVersionHandlerOutput) AuthFailAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionHandler) *string { return v.AuthFailAction }).(pulumi.StringPtrOutput)
 }
 
 // Level of login required to access this resource.
+// Default value is `LOGIN_OPTIONAL`.
+// Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
 func (o FlexibleAppVersionHandlerOutput) Login() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionHandler) *string { return v.Login }).(pulumi.StringPtrOutput)
 }
 
 // 30x code to use when performing redirects for the secure field.
+// Possible values are `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, and `REDIRECT_HTTP_RESPONSE_CODE_307`.
 func (o FlexibleAppVersionHandlerOutput) RedirectHttpResponseCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionHandler) *string { return v.RedirectHttpResponseCode }).(pulumi.StringPtrOutput)
 }
@@ -3500,12 +3587,14 @@ func (o FlexibleAppVersionHandlerOutput) Script() FlexibleAppVersionHandlerScrip
 }
 
 // Security (HTTPS) enforcement for this URL.
+// Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
 func (o FlexibleAppVersionHandlerOutput) SecurityLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionHandler) *string { return v.SecurityLevel }).(pulumi.StringPtrOutput)
 }
 
 // Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files.
-// Static file handlers describe which files in the application directory are static files, and which URLs serve them.  Structure is documented below.
+// Static file handlers describe which files in the application directory are static files, and which URLs serve them.
+// Structure is documented below.
 func (o FlexibleAppVersionHandlerOutput) StaticFiles() FlexibleAppVersionHandlerStaticFilesPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionHandler) *FlexibleAppVersionHandlerStaticFiles { return v.StaticFiles }).(FlexibleAppVersionHandlerStaticFilesPtrOutput)
 }
@@ -4811,7 +4900,8 @@ type FlexibleAppVersionResources struct {
 	DiskGb *int `pulumi:"diskGb"`
 	// Memory (GB) needed.
 	MemoryGb *float64 `pulumi:"memoryGb"`
-	// List of ports, or port pairs, to forward from the virtual machine to the application container.  Structure is documented below.
+	// List of ports, or port pairs, to forward from the virtual machine to the application container.
+	// Structure is documented below.
 	Volumes []FlexibleAppVersionResourcesVolume `pulumi:"volumes"`
 }
 
@@ -4833,7 +4923,8 @@ type FlexibleAppVersionResourcesArgs struct {
 	DiskGb pulumi.IntPtrInput `pulumi:"diskGb"`
 	// Memory (GB) needed.
 	MemoryGb pulumi.Float64PtrInput `pulumi:"memoryGb"`
-	// List of ports, or port pairs, to forward from the virtual machine to the application container.  Structure is documented below.
+	// List of ports, or port pairs, to forward from the virtual machine to the application container.
+	// Structure is documented below.
 	Volumes FlexibleAppVersionResourcesVolumeArrayInput `pulumi:"volumes"`
 }
 
@@ -4929,7 +5020,8 @@ func (o FlexibleAppVersionResourcesOutput) MemoryGb() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionResources) *float64 { return v.MemoryGb }).(pulumi.Float64PtrOutput)
 }
 
-// List of ports, or port pairs, to forward from the virtual machine to the application container.  Structure is documented below.
+// List of ports, or port pairs, to forward from the virtual machine to the application container.
+// Structure is documented below.
 func (o FlexibleAppVersionResourcesOutput) Volumes() FlexibleAppVersionResourcesVolumeArrayOutput {
 	return o.ApplyT(func(v FlexibleAppVersionResources) []FlexibleAppVersionResourcesVolume { return v.Volumes }).(FlexibleAppVersionResourcesVolumeArrayOutput)
 }
@@ -4982,7 +5074,8 @@ func (o FlexibleAppVersionResourcesPtrOutput) MemoryGb() pulumi.Float64PtrOutput
 	}).(pulumi.Float64PtrOutput)
 }
 
-// List of ports, or port pairs, to forward from the virtual machine to the application container.  Structure is documented below.
+// List of ports, or port pairs, to forward from the virtual machine to the application container.
+// Structure is documented below.
 func (o FlexibleAppVersionResourcesPtrOutput) Volumes() FlexibleAppVersionResourcesVolumeArrayOutput {
 	return o.ApplyT(func(v *FlexibleAppVersionResources) []FlexibleAppVersionResourcesVolume {
 		if v == nil {
@@ -5252,7 +5345,8 @@ type StandardAppVersionAutomaticScaling struct {
 	// Minimum amount of time a request should wait in the pending queue before starting a new instance to handle it.
 	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 	MinPendingLatency *string `pulumi:"minPendingLatency"`
-	// Scheduler settings for standard environment.  Structure is documented below.
+	// Scheduler settings for standard environment.
+	// Structure is documented below.
 	StandardSchedulerSettings *StandardAppVersionAutomaticScalingStandardSchedulerSettings `pulumi:"standardSchedulerSettings"`
 }
 
@@ -5281,7 +5375,8 @@ type StandardAppVersionAutomaticScalingArgs struct {
 	// Minimum amount of time a request should wait in the pending queue before starting a new instance to handle it.
 	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 	MinPendingLatency pulumi.StringPtrInput `pulumi:"minPendingLatency"`
-	// Scheduler settings for standard environment.  Structure is documented below.
+	// Scheduler settings for standard environment.
+	// Structure is documented below.
 	StandardSchedulerSettings StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrInput `pulumi:"standardSchedulerSettings"`
 }
 
@@ -5390,7 +5485,8 @@ func (o StandardAppVersionAutomaticScalingOutput) MinPendingLatency() pulumi.Str
 	return o.ApplyT(func(v StandardAppVersionAutomaticScaling) *string { return v.MinPendingLatency }).(pulumi.StringPtrOutput)
 }
 
-// Scheduler settings for standard environment.  Structure is documented below.
+// Scheduler settings for standard environment.
+// Structure is documented below.
 func (o StandardAppVersionAutomaticScalingOutput) StandardSchedulerSettings() StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput {
 	return o.ApplyT(func(v StandardAppVersionAutomaticScaling) *StandardAppVersionAutomaticScalingStandardSchedulerSettings {
 		return v.StandardSchedulerSettings
@@ -5468,7 +5564,8 @@ func (o StandardAppVersionAutomaticScalingPtrOutput) MinPendingLatency() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-// Scheduler settings for standard environment.  Structure is documented below.
+// Scheduler settings for standard environment.
+// Structure is documented below.
 func (o StandardAppVersionAutomaticScalingPtrOutput) StandardSchedulerSettings() StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput {
 	return o.ApplyT(func(v *StandardAppVersionAutomaticScaling) *StandardAppVersionAutomaticScalingStandardSchedulerSettings {
 		if v == nil {
@@ -5828,9 +5925,11 @@ func (o StandardAppVersionBasicScalingPtrOutput) MaxInstances() pulumi.IntPtrOut
 
 type StandardAppVersionDeployment struct {
 	// Manifest of the files stored in Google Cloud Storage that are included as part of this version.
-	// All files must be readable using the credentials supplied with this call.  Structure is documented below.
+	// All files must be readable using the credentials supplied with this call.
+	// Structure is documented below.
 	Files []StandardAppVersionDeploymentFile `pulumi:"files"`
-	// Zip File  Structure is documented below.
+	// Zip File
+	// Structure is documented below.
 	Zip *StandardAppVersionDeploymentZip `pulumi:"zip"`
 }
 
@@ -5847,9 +5946,11 @@ type StandardAppVersionDeploymentInput interface {
 
 type StandardAppVersionDeploymentArgs struct {
 	// Manifest of the files stored in Google Cloud Storage that are included as part of this version.
-	// All files must be readable using the credentials supplied with this call.  Structure is documented below.
+	// All files must be readable using the credentials supplied with this call.
+	// Structure is documented below.
 	Files StandardAppVersionDeploymentFileArrayInput `pulumi:"files"`
-	// Zip File  Structure is documented below.
+	// Zip File
+	// Structure is documented below.
 	Zip StandardAppVersionDeploymentZipPtrInput `pulumi:"zip"`
 }
 
@@ -5931,12 +6032,14 @@ func (o StandardAppVersionDeploymentOutput) ToStandardAppVersionDeploymentPtrOut
 }
 
 // Manifest of the files stored in Google Cloud Storage that are included as part of this version.
-// All files must be readable using the credentials supplied with this call.  Structure is documented below.
+// All files must be readable using the credentials supplied with this call.
+// Structure is documented below.
 func (o StandardAppVersionDeploymentOutput) Files() StandardAppVersionDeploymentFileArrayOutput {
 	return o.ApplyT(func(v StandardAppVersionDeployment) []StandardAppVersionDeploymentFile { return v.Files }).(StandardAppVersionDeploymentFileArrayOutput)
 }
 
-// Zip File  Structure is documented below.
+// Zip File
+// Structure is documented below.
 func (o StandardAppVersionDeploymentOutput) Zip() StandardAppVersionDeploymentZipPtrOutput {
 	return o.ApplyT(func(v StandardAppVersionDeployment) *StandardAppVersionDeploymentZip { return v.Zip }).(StandardAppVersionDeploymentZipPtrOutput)
 }
@@ -5960,7 +6063,8 @@ func (o StandardAppVersionDeploymentPtrOutput) Elem() StandardAppVersionDeployme
 }
 
 // Manifest of the files stored in Google Cloud Storage that are included as part of this version.
-// All files must be readable using the credentials supplied with this call.  Structure is documented below.
+// All files must be readable using the credentials supplied with this call.
+// Structure is documented below.
 func (o StandardAppVersionDeploymentPtrOutput) Files() StandardAppVersionDeploymentFileArrayOutput {
 	return o.ApplyT(func(v *StandardAppVersionDeployment) []StandardAppVersionDeploymentFile {
 		if v == nil {
@@ -5970,7 +6074,8 @@ func (o StandardAppVersionDeploymentPtrOutput) Files() StandardAppVersionDeploym
 	}).(StandardAppVersionDeploymentFileArrayOutput)
 }
 
-// Zip File  Structure is documented below.
+// Zip File
+// Structure is documented below.
 func (o StandardAppVersionDeploymentPtrOutput) Zip() StandardAppVersionDeploymentZipPtrOutput {
 	return o.ApplyT(func(v *StandardAppVersionDeployment) *StandardAppVersionDeploymentZip {
 		if v == nil {
@@ -6378,17 +6483,23 @@ func (o StandardAppVersionEntrypointPtrOutput) Shell() pulumi.StringPtrOutput {
 
 type StandardAppVersionHandler struct {
 	// Actions to take when the user is not logged in.
+	// Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
 	AuthFailAction *string `pulumi:"authFailAction"`
 	// Methods to restrict access to a URL based on login status.
+	// Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
 	Login *string `pulumi:"login"`
 	// 30x code to use when performing redirects for the secure field.
+	// Possible values are `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, and `REDIRECT_HTTP_RESPONSE_CODE_307`.
 	RedirectHttpResponseCode *string `pulumi:"redirectHttpResponseCode"`
 	// Executes a script to handle the requests that match this URL pattern.
-	// Only the auto value is supported for Node.js in the App Engine standard environment, for example "script:" "auto".  Structure is documented below.
+	// Only the auto value is supported for Node.js in the App Engine standard environment, for example "script:" "auto".
+	// Structure is documented below.
 	Script *StandardAppVersionHandlerScript `pulumi:"script"`
 	// Security (HTTPS) enforcement for this URL.
+	// Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
 	SecurityLevel *string `pulumi:"securityLevel"`
-	// Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files. Static file handlers describe which files in the application directory are static files, and which URLs serve them.  Structure is documented below.
+	// Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files. Static file handlers describe which files in the application directory are static files, and which URLs serve them.
+	// Structure is documented below.
 	StaticFiles *StandardAppVersionHandlerStaticFiles `pulumi:"staticFiles"`
 	// URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings.
 	// All URLs that begin with this prefix are handled by this handler, using the portion of the URL after the prefix as part of the file path.
@@ -6408,17 +6519,23 @@ type StandardAppVersionHandlerInput interface {
 
 type StandardAppVersionHandlerArgs struct {
 	// Actions to take when the user is not logged in.
+	// Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
 	AuthFailAction pulumi.StringPtrInput `pulumi:"authFailAction"`
 	// Methods to restrict access to a URL based on login status.
+	// Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
 	Login pulumi.StringPtrInput `pulumi:"login"`
 	// 30x code to use when performing redirects for the secure field.
+	// Possible values are `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, and `REDIRECT_HTTP_RESPONSE_CODE_307`.
 	RedirectHttpResponseCode pulumi.StringPtrInput `pulumi:"redirectHttpResponseCode"`
 	// Executes a script to handle the requests that match this URL pattern.
-	// Only the auto value is supported for Node.js in the App Engine standard environment, for example "script:" "auto".  Structure is documented below.
+	// Only the auto value is supported for Node.js in the App Engine standard environment, for example "script:" "auto".
+	// Structure is documented below.
 	Script StandardAppVersionHandlerScriptPtrInput `pulumi:"script"`
 	// Security (HTTPS) enforcement for this URL.
+	// Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
 	SecurityLevel pulumi.StringPtrInput `pulumi:"securityLevel"`
-	// Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files. Static file handlers describe which files in the application directory are static files, and which URLs serve them.  Structure is documented below.
+	// Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files. Static file handlers describe which files in the application directory are static files, and which URLs serve them.
+	// Structure is documented below.
 	StaticFiles StandardAppVersionHandlerStaticFilesPtrInput `pulumi:"staticFiles"`
 	// URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings.
 	// All URLs that begin with this prefix are handled by this handler, using the portion of the URL after the prefix as part of the file path.
@@ -6477,32 +6594,38 @@ func (o StandardAppVersionHandlerOutput) ToStandardAppVersionHandlerOutputWithCo
 }
 
 // Actions to take when the user is not logged in.
+// Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
 func (o StandardAppVersionHandlerOutput) AuthFailAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StandardAppVersionHandler) *string { return v.AuthFailAction }).(pulumi.StringPtrOutput)
 }
 
 // Methods to restrict access to a URL based on login status.
+// Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
 func (o StandardAppVersionHandlerOutput) Login() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StandardAppVersionHandler) *string { return v.Login }).(pulumi.StringPtrOutput)
 }
 
 // 30x code to use when performing redirects for the secure field.
+// Possible values are `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, and `REDIRECT_HTTP_RESPONSE_CODE_307`.
 func (o StandardAppVersionHandlerOutput) RedirectHttpResponseCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StandardAppVersionHandler) *string { return v.RedirectHttpResponseCode }).(pulumi.StringPtrOutput)
 }
 
 // Executes a script to handle the requests that match this URL pattern.
-// Only the auto value is supported for Node.js in the App Engine standard environment, for example "script:" "auto".  Structure is documented below.
+// Only the auto value is supported for Node.js in the App Engine standard environment, for example "script:" "auto".
+// Structure is documented below.
 func (o StandardAppVersionHandlerOutput) Script() StandardAppVersionHandlerScriptPtrOutput {
 	return o.ApplyT(func(v StandardAppVersionHandler) *StandardAppVersionHandlerScript { return v.Script }).(StandardAppVersionHandlerScriptPtrOutput)
 }
 
 // Security (HTTPS) enforcement for this URL.
+// Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
 func (o StandardAppVersionHandlerOutput) SecurityLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StandardAppVersionHandler) *string { return v.SecurityLevel }).(pulumi.StringPtrOutput)
 }
 
-// Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files. Static file handlers describe which files in the application directory are static files, and which URLs serve them.  Structure is documented below.
+// Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files. Static file handlers describe which files in the application directory are static files, and which URLs serve them.
+// Structure is documented below.
 func (o StandardAppVersionHandlerOutput) StaticFiles() StandardAppVersionHandlerStaticFilesPtrOutput {
 	return o.ApplyT(func(v StandardAppVersionHandler) *StandardAppVersionHandlerStaticFiles { return v.StaticFiles }).(StandardAppVersionHandlerStaticFilesPtrOutput)
 }

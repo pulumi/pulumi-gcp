@@ -25,7 +25,8 @@ class Group(pulumi.CustomResource):
     """
     group_key: pulumi.Output[dict]
     """
-    EntityKey of the Group.  Structure is documented below.
+    EntityKey of the Group.
+    Structure is documented below.
 
       * `id` (`str`) - The ID of the entity.
         For Google-managed entities, the id must be the email address of an existing
@@ -70,7 +71,8 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] description: An extended description to help users determine the purpose of a Group.
                Must not be longer than 4,096 characters.
         :param pulumi.Input[str] display_name: The display name of the Group.
-        :param pulumi.Input[dict] group_key: EntityKey of the Group.  Structure is documented below.
+        :param pulumi.Input[dict] group_key: EntityKey of the Group.
+               Structure is documented below.
         :param pulumi.Input[dict] labels: The labels that apply to the Group.
                Must not contain more than one entry. Must contain the entry
                'cloudidentity.googleapis.com/groups.discussion_forum': '' if the Group is a Google Group or
@@ -145,7 +147,8 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] description: An extended description to help users determine the purpose of a Group.
                Must not be longer than 4,096 characters.
         :param pulumi.Input[str] display_name: The display name of the Group.
-        :param pulumi.Input[dict] group_key: EntityKey of the Group.  Structure is documented below.
+        :param pulumi.Input[dict] group_key: EntityKey of the Group.
+               Structure is documented below.
         :param pulumi.Input[dict] labels: The labels that apply to the Group.
                Must not contain more than one entry. Must contain the entry
                'cloudidentity.googleapis.com/groups.discussion_forum': '' if the Group is a Google Group or

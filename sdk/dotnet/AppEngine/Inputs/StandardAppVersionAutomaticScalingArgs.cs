@@ -46,7 +46,8 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         public Input<string>? MinPendingLatency { get; set; }
 
         /// <summary>
-        /// Scheduler settings for standard environment.  Structure is documented below.
+        /// Scheduler settings for standard environment.
+        /// Structure is documented below.
         /// </summary>
         [Input("standardSchedulerSettings")]
         public Input<Inputs.StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs>? StandardSchedulerSettings { get; set; }

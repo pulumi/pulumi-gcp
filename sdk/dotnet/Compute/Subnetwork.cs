@@ -82,7 +82,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Denotes the logging options for the subnetwork flow logs. If logging is enabled
         /// logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
-        /// subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`  Structure is documented below.
+        /// subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`
+        /// Structure is documented below.
         /// </summary>
         [Output("logConfig")]
         public Output<Outputs.SubnetworkLogConfig?> LogConfig { get; private set; } = null!;
@@ -127,6 +128,7 @@ namespace Pulumi.Gcp.Compute
         /// reserved for Internal HTTP(S) Load Balancing. If unspecified, the
         /// purpose defaults to PRIVATE.
         /// If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the role.
+        /// Possible values are `INTERNAL_HTTPS_LOAD_BALANCER` and `PRIVATE`.
         /// </summary>
         [Output("purpose")]
         public Output<string> Purpose { get; private set; } = null!;
@@ -143,6 +145,7 @@ namespace Pulumi.Gcp.Compute
         /// or BACKUP. An ACTIVE subnetwork is one that is currently being used
         /// for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that
         /// is ready to be promoted to ACTIVE or is currently draining.
+        /// Possible values are `ACTIVE` and `BACKUP`.
         /// </summary>
         [Output("role")]
         public Output<string?> Role { get; private set; } = null!;
@@ -228,7 +231,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Denotes the logging options for the subnetwork flow logs. If logging is enabled
         /// logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
-        /// subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`  Structure is documented below.
+        /// subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`
+        /// Structure is documented below.
         /// </summary>
         [Input("logConfig")]
         public Input<Inputs.SubnetworkLogConfigArgs>? LogConfig { get; set; }
@@ -273,6 +277,7 @@ namespace Pulumi.Gcp.Compute
         /// reserved for Internal HTTP(S) Load Balancing. If unspecified, the
         /// purpose defaults to PRIVATE.
         /// If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the role.
+        /// Possible values are `INTERNAL_HTTPS_LOAD_BALANCER` and `PRIVATE`.
         /// </summary>
         [Input("purpose")]
         public Input<string>? Purpose { get; set; }
@@ -289,6 +294,7 @@ namespace Pulumi.Gcp.Compute
         /// or BACKUP. An ACTIVE subnetwork is one that is currently being used
         /// for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that
         /// is ready to be promoted to ACTIVE or is currently draining.
+        /// Possible values are `ACTIVE` and `BACKUP`.
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
@@ -353,7 +359,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Denotes the logging options for the subnetwork flow logs. If logging is enabled
         /// logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
-        /// subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`  Structure is documented below.
+        /// subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`
+        /// Structure is documented below.
         /// </summary>
         [Input("logConfig")]
         public Input<Inputs.SubnetworkLogConfigGetArgs>? LogConfig { get; set; }
@@ -398,6 +405,7 @@ namespace Pulumi.Gcp.Compute
         /// reserved for Internal HTTP(S) Load Balancing. If unspecified, the
         /// purpose defaults to PRIVATE.
         /// If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the role.
+        /// Possible values are `INTERNAL_HTTPS_LOAD_BALANCER` and `PRIVATE`.
         /// </summary>
         [Input("purpose")]
         public Input<string>? Purpose { get; set; }
@@ -414,6 +422,7 @@ namespace Pulumi.Gcp.Compute
         /// or BACKUP. An ACTIVE subnetwork is one that is currently being used
         /// for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that
         /// is ready to be promoted to ACTIVE or is currently draining.
+        /// Possible values are `ACTIVE` and `BACKUP`.
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }

@@ -12,26 +12,35 @@ from .. import utilities, tables
 class FlexibleAppVersion(pulumi.CustomResource):
     api_config: pulumi.Output[dict]
     """
-    Serving configuration for Google Cloud Endpoints.  Structure is documented below.
+    Serving configuration for Google Cloud Endpoints.
+    Structure is documented below.
 
       * `authFailAction` (`str`) - Action to take when users access resources that require authentication.
+        Default value is `AUTH_FAIL_ACTION_REDIRECT`.
+        Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
       * `login` (`str`) - Level of login required to access this resource.
+        Default value is `LOGIN_OPTIONAL`.
+        Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
       * `script` (`str`) - Path to the script from the application root directory.
       * `securityLevel` (`str`) - Security (HTTPS) enforcement for this URL.
+        Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
       * `url` (`str`) - URL to serve the endpoint at.
     """
     automatic_scaling: pulumi.Output[dict]
     """
-    Automatic scaling is based on request rate, response latencies, and other application metrics.  Structure is documented below.
+    Automatic scaling is based on request rate, response latencies, and other application metrics.
+    Structure is documented below.
 
       * `coolDownPeriod` (`str`) - The time period that the Autoscaler should wait before it starts collecting information from a new instance.
         This prevents the autoscaler from collecting information when the instance is initializing,
         during which the collected usage would not be reliable. Default: 120s
-      * `cpuUtilization` (`dict`) - Target scaling by CPU usage.  Structure is documented below.
+      * `cpuUtilization` (`dict`) - Target scaling by CPU usage.
+        Structure is documented below.
         * `aggregationWindowLength` (`str`) - Period of time over which CPU utilization is calculated.
         * `targetUtilization` (`float`) - Target CPU utilization ratio to maintain when scaling. Must be between 0 and 1.
 
-      * `diskUtilization` (`dict`) - Target scaling by disk usage.  Structure is documented below.
+      * `diskUtilization` (`dict`) - Target scaling by disk usage.
+        Structure is documented below.
         * `targetReadBytesPerSecond` (`float`) - Target bytes read per second.
         * `targetReadOpsPerSecond` (`float`) - Target ops read per seconds.
         * `targetWriteBytesPerSecond` (`float`) - Target bytes written per second.
@@ -45,13 +54,15 @@ class FlexibleAppVersion(pulumi.CustomResource):
       * `minIdleInstances` (`float`) - Minimum number of idle instances that should be maintained for this version. Only applicable for the default version of a service.
       * `minPendingLatency` (`str`) - Minimum amount of time a request should wait in the pending queue before starting a new instance to handle it.
       * `minTotalInstances` (`float`) - Minimum number of running instances that should be maintained for this version. Default: 2
-      * `networkUtilization` (`dict`) - Target scaling by network usage.  Structure is documented below.
+      * `networkUtilization` (`dict`) - Target scaling by network usage.
+        Structure is documented below.
         * `targetReceivedBytesPerSecond` (`float`) - Target bytes received per second.
         * `targetReceivedPacketsPerSecond` (`float`) - Target packets received per second.
         * `targetSentBytesPerSecond` (`float`) - Target bytes sent per second.
         * `targetSentPacketsPerSecond` (`float`) - Target packets sent per second.
 
-      * `requestUtilization` (`dict`) - Target scaling by request utilization.  Structure is documented below.
+      * `requestUtilization` (`dict`) - Target scaling by request utilization.
+        Structure is documented below.
         * `targetConcurrentRequests` (`float`) - Target number of concurrent requests.
         * `targetRequestCountPerSecond` (`str`) - Target requests per second.
     """
@@ -70,30 +81,36 @@ class FlexibleAppVersion(pulumi.CustomResource):
     """
     deployment: pulumi.Output[dict]
     """
-    Code and application artifacts that make up this version.  Structure is documented below.
+    Code and application artifacts that make up this version.
+    Structure is documented below.
 
-      * `cloudBuildOptions` (`dict`) - Options for the build operations performed as a part of the version deployment. Only applicable when creating a version using source code directly.  Structure is documented below.
+      * `cloudBuildOptions` (`dict`) - Options for the build operations performed as a part of the version deployment. Only applicable when creating a version using source code directly.
+        Structure is documented below.
         * `appYamlPath` (`str`) - Path to the yaml file used in deployment, used to determine runtime configuration details.
         * `cloudBuildTimeout` (`str`) - The Cloud Build timeout used as part of any dependent builds performed by version creation. Defaults to 10 minutes.
           A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 
-      * `container` (`dict`) - The Docker image for the container that runs the version.  Structure is documented below.
+      * `container` (`dict`) - The Docker image for the container that runs the version.
+        Structure is documented below.
         * `image` (`str`) - URI to the hosted container image in Google Container Registry. The URI must be fully qualified and include a tag or digest.
           Examples: "gcr.io/my-project/image:tag" or "gcr.io/my-project/image@digest"
 
       * `files` (`list`) - Manifest of the files stored in Google Cloud Storage that are included as part of this version.
-        All files must be readable using the credentials supplied with this call.  Structure is documented below.
+        All files must be readable using the credentials supplied with this call.
+        Structure is documented below.
         * `name` (`str`) - Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         * `sha1Sum` (`str`) - SHA1 checksum of the file
         * `sourceUrl` (`str`) - Source URL
 
-      * `zip` (`dict`) - Zip File  Structure is documented below.
+      * `zip` (`dict`) - Zip File
+        Structure is documented below.
         * `filesCount` (`float`) - files count
         * `sourceUrl` (`str`) - Source URL
     """
     endpoints_api_service: pulumi.Output[dict]
     """
-    Code and application artifacts that make up this version.  Structure is documented below.
+    Code and application artifacts that make up this version.
+    Structure is documented below.
 
       * `config_id` (`str`) - Endpoints service configuration ID as specified by the Service Management API. For example "2016-09-19r1".
         By default, the rollout strategy for Endpoints is "FIXED". This means that Endpoints starts up with a particular configuration ID.
@@ -104,10 +121,13 @@ class FlexibleAppVersion(pulumi.CustomResource):
       * `disableTraceSampling` (`bool`) - Enable or disable trace sampling. By default, this is set to false for enabled.
       * `name` (`str`) - Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
       * `rolloutStrategy` (`str`) - Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted.
+        Default value is `FIXED`.
+        Possible values are `FIXED` and `MANAGED`.
     """
     entrypoint: pulumi.Output[dict]
     """
-    The entrypoint for the application.  Structure is documented below.
+    The entrypoint for the application.
+    Structure is documented below.
 
       * `shell` (`str`) - The format should be a shell command that can be fed to bash -c.
     """
@@ -118,17 +138,25 @@ class FlexibleAppVersion(pulumi.CustomResource):
     handlers: pulumi.Output[list]
     """
     An ordered list of URL-matching patterns that should be applied to incoming requests.
-    The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
+    The first matching URL handles the request and other request handlers are not attempted.
+    Structure is documented below.
 
       * `authFailAction` (`str`) - Action to take when users access resources that require authentication.
+        Default value is `AUTH_FAIL_ACTION_REDIRECT`.
+        Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
       * `login` (`str`) - Level of login required to access this resource.
+        Default value is `LOGIN_OPTIONAL`.
+        Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
       * `redirectHttpResponseCode` (`str`) - 30x code to use when performing redirects for the secure field.
+        Possible values are `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, and `REDIRECT_HTTP_RESPONSE_CODE_307`.
       * `script` (`dict`) - Path to the script from the application root directory.
         * `scriptPath` (`str`) - Path to the script from the application root directory.
 
       * `securityLevel` (`str`) - Security (HTTPS) enforcement for this URL.
+        Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
       * `staticFiles` (`dict`) - Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files.
-        Static file handlers describe which files in the application directory are static files, and which URLs serve them.  Structure is documented below.
+        Static file handlers describe which files in the application directory are static files, and which URLs serve them.
+        Structure is documented below.
         * `applicationReadable` (`bool`) - Whether files should also be uploaded as code data. By default, files declared in static file handlers are
           uploaded as static data and are only served to end users; they cannot be read by the application. If enabled,
           uploads are charged against both your code and static data storage resource quotas.
@@ -160,7 +188,8 @@ class FlexibleAppVersion(pulumi.CustomResource):
     """
     liveness_check: pulumi.Output[dict]
     """
-    Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances.  Structure is documented below.
+    Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances.
+    Structure is documented below.
 
       * `checkInterval` (`str`) - Interval between health checks.
       * `failureThreshold` (`float`) - Number of consecutive failed checks required before considering the VM unhealthy. Default: 4.
@@ -173,7 +202,8 @@ class FlexibleAppVersion(pulumi.CustomResource):
     """
     manual_scaling: pulumi.Output[dict]
     """
-    A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.  Structure is documented below.
+    A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+    Structure is documented below.
 
       * `instances` (`float`) - Number of instances to assign to the service at the start.
         **Note:** When managing the number of instances at runtime through the App Engine Admin API or the (now deprecated) Python 2
@@ -185,7 +215,8 @@ class FlexibleAppVersion(pulumi.CustomResource):
     """
     network: pulumi.Output[dict]
     """
-    Extra network settings  Structure is documented below.
+    Extra network settings
+    Structure is documented below.
 
       * `forwardedPorts` (`list`) - List of ports, or port pairs, to forward from the virtual machine to the application container.
       * `instanceTag` (`str`) - Tag to apply to the instance during creation.
@@ -212,7 +243,8 @@ class FlexibleAppVersion(pulumi.CustomResource):
     """
     readiness_check: pulumi.Output[dict]
     """
-    Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.  Structure is documented below.
+    Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
+    Structure is documented below.
 
       * `appStartTimeout` (`str`) - A maximum time limit on application initialization, measured from moment the application successfully
         replies to a healthcheck until it is ready to serve traffic. Default: "300s"
@@ -226,12 +258,14 @@ class FlexibleAppVersion(pulumi.CustomResource):
     """
     resources: pulumi.Output[dict]
     """
-    Machine resources for a version.  Structure is documented below.
+    Machine resources for a version.
+    Structure is documented below.
 
       * `cpu` (`float`) - Number of CPU cores needed.
       * `diskGb` (`float`) - Disk size (GB) needed.
       * `memoryGb` (`float`) - Memory (GB) needed.
-      * `volumes` (`list`) - List of ports, or port pairs, to forward from the virtual machine to the application container.  Structure is documented below.
+      * `volumes` (`list`) - List of ports, or port pairs, to forward from the virtual machine to the application container.
+        Structure is documented below.
         * `name` (`str`) - Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         * `sizeGb` (`float`) - Volume size in gigabytes.
         * `volumeType` (`str`) - Underlying volume type, e.g. 'tmpfs'.
@@ -260,6 +294,8 @@ class FlexibleAppVersion(pulumi.CustomResource):
     serving_status: pulumi.Output[str]
     """
     Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
+    Default value is `SERVING`.
+    Possible values are `SERVING` and `STOPPED`.
     """
     version_id: pulumi.Output[str]
     """
@@ -268,7 +304,8 @@ class FlexibleAppVersion(pulumi.CustomResource):
     """
     vpc_access_connector: pulumi.Output[dict]
     """
-    Enables VPC connectivity for standard apps.  Structure is documented below.
+    Enables VPC connectivity for standard apps.
+    Structure is documented below.
 
       * `name` (`str`) - Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
     """
@@ -292,32 +329,43 @@ class FlexibleAppVersion(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] api_config: Serving configuration for Google Cloud Endpoints.  Structure is documented below.
-        :param pulumi.Input[dict] automatic_scaling: Automatic scaling is based on request rate, response latencies, and other application metrics.  Structure is documented below.
+        :param pulumi.Input[dict] api_config: Serving configuration for Google Cloud Endpoints.
+               Structure is documented below.
+        :param pulumi.Input[dict] automatic_scaling: Automatic scaling is based on request rate, response latencies, and other application metrics.
+               Structure is documented below.
         :param pulumi.Input[dict] beta_settings: Metadata settings that are supplied to this version to enable beta runtime features.
         :param pulumi.Input[str] default_expiration: Duration that static files should be cached by web proxies and browsers.
                Only applicable if the corresponding StaticFilesHandler does not specify its own expiration time.
         :param pulumi.Input[bool] delete_service_on_destroy: If set to `true`, the service will be deleted if it is the last version.
-        :param pulumi.Input[dict] deployment: Code and application artifacts that make up this version.  Structure is documented below.
-        :param pulumi.Input[dict] endpoints_api_service: Code and application artifacts that make up this version.  Structure is documented below.
-        :param pulumi.Input[dict] entrypoint: The entrypoint for the application.  Structure is documented below.
+        :param pulumi.Input[dict] deployment: Code and application artifacts that make up this version.
+               Structure is documented below.
+        :param pulumi.Input[dict] endpoints_api_service: Code and application artifacts that make up this version.
+               Structure is documented below.
+        :param pulumi.Input[dict] entrypoint: The entrypoint for the application.
+               Structure is documented below.
         :param pulumi.Input[dict] env_variables: Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
         :param pulumi.Input[list] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests.
-               The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
+               The first matching URL handles the request and other request handlers are not attempted.
+               Structure is documented below.
         :param pulumi.Input[list] inbound_services: Before an application can receive email or XMPP messages, the application must be configured to enable the service.
         :param pulumi.Input[str] instance_class: Instance class that is used to run this version. Valid values are
                AutomaticScaling: F1, F2, F4, F4_1G
                ManualScaling: B1, B2, B4, B8, B4_1G
                Defaults to F1 for AutomaticScaling and B1 for ManualScaling.
-        :param pulumi.Input[dict] liveness_check: Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances.  Structure is documented below.
-        :param pulumi.Input[dict] manual_scaling: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.  Structure is documented below.
-        :param pulumi.Input[dict] network: Extra network settings  Structure is documented below.
+        :param pulumi.Input[dict] liveness_check: Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances.
+               Structure is documented below.
+        :param pulumi.Input[dict] manual_scaling: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+               Structure is documented below.
+        :param pulumi.Input[dict] network: Extra network settings
+               Structure is documented below.
         :param pulumi.Input[str] nobuild_files_regex: Files that match this pattern will not be built into this version. Only applicable for Go runtimes.
         :param pulumi.Input[bool] noop_on_destroy: If set to `true`, the application version will not be deleted.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[dict] readiness_check: Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.  Structure is documented below.
-        :param pulumi.Input[dict] resources: Machine resources for a version.  Structure is documented below.
+        :param pulumi.Input[dict] readiness_check: Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
+               Structure is documented below.
+        :param pulumi.Input[dict] resources: Machine resources for a version.
+               Structure is documented below.
         :param pulumi.Input[str] runtime: Desired runtime. Example python27.
         :param pulumi.Input[str] runtime_api_version: The version of the API in the given runtime environment.
                Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
@@ -325,16 +373,24 @@ class FlexibleAppVersion(pulumi.CustomResource):
         :param pulumi.Input[str] runtime_main_executable_path: The path or name of the app's main executable.
         :param pulumi.Input[str] service: AppEngine service resource
         :param pulumi.Input[str] serving_status: Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
+               Default value is `SERVING`.
+               Possible values are `SERVING` and `STOPPED`.
         :param pulumi.Input[str] version_id: Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens.
                Reserved names,"default", "latest", and any name with the prefix "ah-".
-        :param pulumi.Input[dict] vpc_access_connector: Enables VPC connectivity for standard apps.  Structure is documented below.
+        :param pulumi.Input[dict] vpc_access_connector: Enables VPC connectivity for standard apps.
+               Structure is documented below.
 
         The **api_config** object supports the following:
 
           * `authFailAction` (`pulumi.Input[str]`) - Action to take when users access resources that require authentication.
+            Default value is `AUTH_FAIL_ACTION_REDIRECT`.
+            Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
           * `login` (`pulumi.Input[str]`) - Level of login required to access this resource.
+            Default value is `LOGIN_OPTIONAL`.
+            Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
           * `script` (`pulumi.Input[str]`) - Path to the script from the application root directory.
           * `securityLevel` (`pulumi.Input[str]`) - Security (HTTPS) enforcement for this URL.
+            Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
           * `url` (`pulumi.Input[str]`) - URL to serve the endpoint at.
 
         The **automatic_scaling** object supports the following:
@@ -342,11 +398,13 @@ class FlexibleAppVersion(pulumi.CustomResource):
           * `coolDownPeriod` (`pulumi.Input[str]`) - The time period that the Autoscaler should wait before it starts collecting information from a new instance.
             This prevents the autoscaler from collecting information when the instance is initializing,
             during which the collected usage would not be reliable. Default: 120s
-          * `cpuUtilization` (`pulumi.Input[dict]`) - Target scaling by CPU usage.  Structure is documented below.
+          * `cpuUtilization` (`pulumi.Input[dict]`) - Target scaling by CPU usage.
+            Structure is documented below.
             * `aggregationWindowLength` (`pulumi.Input[str]`) - Period of time over which CPU utilization is calculated.
             * `targetUtilization` (`pulumi.Input[float]`) - Target CPU utilization ratio to maintain when scaling. Must be between 0 and 1.
 
-          * `diskUtilization` (`pulumi.Input[dict]`) - Target scaling by disk usage.  Structure is documented below.
+          * `diskUtilization` (`pulumi.Input[dict]`) - Target scaling by disk usage.
+            Structure is documented below.
             * `targetReadBytesPerSecond` (`pulumi.Input[float]`) - Target bytes read per second.
             * `targetReadOpsPerSecond` (`pulumi.Input[float]`) - Target ops read per seconds.
             * `targetWriteBytesPerSecond` (`pulumi.Input[float]`) - Target bytes written per second.
@@ -360,34 +418,40 @@ class FlexibleAppVersion(pulumi.CustomResource):
           * `minIdleInstances` (`pulumi.Input[float]`) - Minimum number of idle instances that should be maintained for this version. Only applicable for the default version of a service.
           * `minPendingLatency` (`pulumi.Input[str]`) - Minimum amount of time a request should wait in the pending queue before starting a new instance to handle it.
           * `minTotalInstances` (`pulumi.Input[float]`) - Minimum number of running instances that should be maintained for this version. Default: 2
-          * `networkUtilization` (`pulumi.Input[dict]`) - Target scaling by network usage.  Structure is documented below.
+          * `networkUtilization` (`pulumi.Input[dict]`) - Target scaling by network usage.
+            Structure is documented below.
             * `targetReceivedBytesPerSecond` (`pulumi.Input[float]`) - Target bytes received per second.
             * `targetReceivedPacketsPerSecond` (`pulumi.Input[float]`) - Target packets received per second.
             * `targetSentBytesPerSecond` (`pulumi.Input[float]`) - Target bytes sent per second.
             * `targetSentPacketsPerSecond` (`pulumi.Input[float]`) - Target packets sent per second.
 
-          * `requestUtilization` (`pulumi.Input[dict]`) - Target scaling by request utilization.  Structure is documented below.
+          * `requestUtilization` (`pulumi.Input[dict]`) - Target scaling by request utilization.
+            Structure is documented below.
             * `targetConcurrentRequests` (`pulumi.Input[float]`) - Target number of concurrent requests.
             * `targetRequestCountPerSecond` (`pulumi.Input[str]`) - Target requests per second.
 
         The **deployment** object supports the following:
 
-          * `cloudBuildOptions` (`pulumi.Input[dict]`) - Options for the build operations performed as a part of the version deployment. Only applicable when creating a version using source code directly.  Structure is documented below.
+          * `cloudBuildOptions` (`pulumi.Input[dict]`) - Options for the build operations performed as a part of the version deployment. Only applicable when creating a version using source code directly.
+            Structure is documented below.
             * `appYamlPath` (`pulumi.Input[str]`) - Path to the yaml file used in deployment, used to determine runtime configuration details.
             * `cloudBuildTimeout` (`pulumi.Input[str]`) - The Cloud Build timeout used as part of any dependent builds performed by version creation. Defaults to 10 minutes.
               A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 
-          * `container` (`pulumi.Input[dict]`) - The Docker image for the container that runs the version.  Structure is documented below.
+          * `container` (`pulumi.Input[dict]`) - The Docker image for the container that runs the version.
+            Structure is documented below.
             * `image` (`pulumi.Input[str]`) - URI to the hosted container image in Google Container Registry. The URI must be fully qualified and include a tag or digest.
               Examples: "gcr.io/my-project/image:tag" or "gcr.io/my-project/image@digest"
 
           * `files` (`pulumi.Input[list]`) - Manifest of the files stored in Google Cloud Storage that are included as part of this version.
-            All files must be readable using the credentials supplied with this call.  Structure is documented below.
+            All files must be readable using the credentials supplied with this call.
+            Structure is documented below.
             * `name` (`pulumi.Input[str]`) - Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
             * `sha1Sum` (`pulumi.Input[str]`) - SHA1 checksum of the file
             * `sourceUrl` (`pulumi.Input[str]`) - Source URL
 
-          * `zip` (`pulumi.Input[dict]`) - Zip File  Structure is documented below.
+          * `zip` (`pulumi.Input[dict]`) - Zip File
+            Structure is documented below.
             * `filesCount` (`pulumi.Input[float]`) - files count
             * `sourceUrl` (`pulumi.Input[str]`) - Source URL
 
@@ -402,6 +466,8 @@ class FlexibleAppVersion(pulumi.CustomResource):
           * `disableTraceSampling` (`pulumi.Input[bool]`) - Enable or disable trace sampling. By default, this is set to false for enabled.
           * `name` (`pulumi.Input[str]`) - Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
           * `rolloutStrategy` (`pulumi.Input[str]`) - Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted.
+            Default value is `FIXED`.
+            Possible values are `FIXED` and `MANAGED`.
 
         The **entrypoint** object supports the following:
 
@@ -410,14 +476,21 @@ class FlexibleAppVersion(pulumi.CustomResource):
         The **handlers** object supports the following:
 
           * `authFailAction` (`pulumi.Input[str]`) - Action to take when users access resources that require authentication.
+            Default value is `AUTH_FAIL_ACTION_REDIRECT`.
+            Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
           * `login` (`pulumi.Input[str]`) - Level of login required to access this resource.
+            Default value is `LOGIN_OPTIONAL`.
+            Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
           * `redirectHttpResponseCode` (`pulumi.Input[str]`) - 30x code to use when performing redirects for the secure field.
+            Possible values are `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, and `REDIRECT_HTTP_RESPONSE_CODE_307`.
           * `script` (`pulumi.Input[dict]`) - Path to the script from the application root directory.
             * `scriptPath` (`pulumi.Input[str]`) - Path to the script from the application root directory.
 
           * `securityLevel` (`pulumi.Input[str]`) - Security (HTTPS) enforcement for this URL.
+            Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
           * `staticFiles` (`pulumi.Input[dict]`) - Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files.
-            Static file handlers describe which files in the application directory are static files, and which URLs serve them.  Structure is documented below.
+            Static file handlers describe which files in the application directory are static files, and which URLs serve them.
+            Structure is documented below.
             * `applicationReadable` (`pulumi.Input[bool]`) - Whether files should also be uploaded as code data. By default, files declared in static file handlers are
               uploaded as static data and are only served to end users; they cannot be read by the application. If enabled,
               uploads are charged against both your code and static data storage resource quotas.
@@ -482,7 +555,8 @@ class FlexibleAppVersion(pulumi.CustomResource):
           * `cpu` (`pulumi.Input[float]`) - Number of CPU cores needed.
           * `diskGb` (`pulumi.Input[float]`) - Disk size (GB) needed.
           * `memoryGb` (`pulumi.Input[float]`) - Memory (GB) needed.
-          * `volumes` (`pulumi.Input[list]`) - List of ports, or port pairs, to forward from the virtual machine to the application container.  Structure is documented below.
+          * `volumes` (`pulumi.Input[list]`) - List of ports, or port pairs, to forward from the virtual machine to the application container.
+            Structure is documented below.
             * `name` (`pulumi.Input[str]`) - Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
             * `sizeGb` (`pulumi.Input[float]`) - Volume size in gigabytes.
             * `volumeType` (`pulumi.Input[str]`) - Underlying volume type, e.g. 'tmpfs'.
@@ -560,33 +634,44 @@ class FlexibleAppVersion(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] api_config: Serving configuration for Google Cloud Endpoints.  Structure is documented below.
-        :param pulumi.Input[dict] automatic_scaling: Automatic scaling is based on request rate, response latencies, and other application metrics.  Structure is documented below.
+        :param pulumi.Input[dict] api_config: Serving configuration for Google Cloud Endpoints.
+               Structure is documented below.
+        :param pulumi.Input[dict] automatic_scaling: Automatic scaling is based on request rate, response latencies, and other application metrics.
+               Structure is documented below.
         :param pulumi.Input[dict] beta_settings: Metadata settings that are supplied to this version to enable beta runtime features.
         :param pulumi.Input[str] default_expiration: Duration that static files should be cached by web proxies and browsers.
                Only applicable if the corresponding StaticFilesHandler does not specify its own expiration time.
         :param pulumi.Input[bool] delete_service_on_destroy: If set to `true`, the service will be deleted if it is the last version.
-        :param pulumi.Input[dict] deployment: Code and application artifacts that make up this version.  Structure is documented below.
-        :param pulumi.Input[dict] endpoints_api_service: Code and application artifacts that make up this version.  Structure is documented below.
-        :param pulumi.Input[dict] entrypoint: The entrypoint for the application.  Structure is documented below.
+        :param pulumi.Input[dict] deployment: Code and application artifacts that make up this version.
+               Structure is documented below.
+        :param pulumi.Input[dict] endpoints_api_service: Code and application artifacts that make up this version.
+               Structure is documented below.
+        :param pulumi.Input[dict] entrypoint: The entrypoint for the application.
+               Structure is documented below.
         :param pulumi.Input[dict] env_variables: Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
         :param pulumi.Input[list] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests.
-               The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
+               The first matching URL handles the request and other request handlers are not attempted.
+               Structure is documented below.
         :param pulumi.Input[list] inbound_services: Before an application can receive email or XMPP messages, the application must be configured to enable the service.
         :param pulumi.Input[str] instance_class: Instance class that is used to run this version. Valid values are
                AutomaticScaling: F1, F2, F4, F4_1G
                ManualScaling: B1, B2, B4, B8, B4_1G
                Defaults to F1 for AutomaticScaling and B1 for ManualScaling.
-        :param pulumi.Input[dict] liveness_check: Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances.  Structure is documented below.
-        :param pulumi.Input[dict] manual_scaling: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.  Structure is documented below.
+        :param pulumi.Input[dict] liveness_check: Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances.
+               Structure is documented below.
+        :param pulumi.Input[dict] manual_scaling: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+               Structure is documented below.
         :param pulumi.Input[str] name: Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
-        :param pulumi.Input[dict] network: Extra network settings  Structure is documented below.
+        :param pulumi.Input[dict] network: Extra network settings
+               Structure is documented below.
         :param pulumi.Input[str] nobuild_files_regex: Files that match this pattern will not be built into this version. Only applicable for Go runtimes.
         :param pulumi.Input[bool] noop_on_destroy: If set to `true`, the application version will not be deleted.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[dict] readiness_check: Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.  Structure is documented below.
-        :param pulumi.Input[dict] resources: Machine resources for a version.  Structure is documented below.
+        :param pulumi.Input[dict] readiness_check: Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
+               Structure is documented below.
+        :param pulumi.Input[dict] resources: Machine resources for a version.
+               Structure is documented below.
         :param pulumi.Input[str] runtime: Desired runtime. Example python27.
         :param pulumi.Input[str] runtime_api_version: The version of the API in the given runtime environment.
                Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
@@ -594,16 +679,24 @@ class FlexibleAppVersion(pulumi.CustomResource):
         :param pulumi.Input[str] runtime_main_executable_path: The path or name of the app's main executable.
         :param pulumi.Input[str] service: AppEngine service resource
         :param pulumi.Input[str] serving_status: Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
+               Default value is `SERVING`.
+               Possible values are `SERVING` and `STOPPED`.
         :param pulumi.Input[str] version_id: Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens.
                Reserved names,"default", "latest", and any name with the prefix "ah-".
-        :param pulumi.Input[dict] vpc_access_connector: Enables VPC connectivity for standard apps.  Structure is documented below.
+        :param pulumi.Input[dict] vpc_access_connector: Enables VPC connectivity for standard apps.
+               Structure is documented below.
 
         The **api_config** object supports the following:
 
           * `authFailAction` (`pulumi.Input[str]`) - Action to take when users access resources that require authentication.
+            Default value is `AUTH_FAIL_ACTION_REDIRECT`.
+            Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
           * `login` (`pulumi.Input[str]`) - Level of login required to access this resource.
+            Default value is `LOGIN_OPTIONAL`.
+            Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
           * `script` (`pulumi.Input[str]`) - Path to the script from the application root directory.
           * `securityLevel` (`pulumi.Input[str]`) - Security (HTTPS) enforcement for this URL.
+            Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
           * `url` (`pulumi.Input[str]`) - URL to serve the endpoint at.
 
         The **automatic_scaling** object supports the following:
@@ -611,11 +704,13 @@ class FlexibleAppVersion(pulumi.CustomResource):
           * `coolDownPeriod` (`pulumi.Input[str]`) - The time period that the Autoscaler should wait before it starts collecting information from a new instance.
             This prevents the autoscaler from collecting information when the instance is initializing,
             during which the collected usage would not be reliable. Default: 120s
-          * `cpuUtilization` (`pulumi.Input[dict]`) - Target scaling by CPU usage.  Structure is documented below.
+          * `cpuUtilization` (`pulumi.Input[dict]`) - Target scaling by CPU usage.
+            Structure is documented below.
             * `aggregationWindowLength` (`pulumi.Input[str]`) - Period of time over which CPU utilization is calculated.
             * `targetUtilization` (`pulumi.Input[float]`) - Target CPU utilization ratio to maintain when scaling. Must be between 0 and 1.
 
-          * `diskUtilization` (`pulumi.Input[dict]`) - Target scaling by disk usage.  Structure is documented below.
+          * `diskUtilization` (`pulumi.Input[dict]`) - Target scaling by disk usage.
+            Structure is documented below.
             * `targetReadBytesPerSecond` (`pulumi.Input[float]`) - Target bytes read per second.
             * `targetReadOpsPerSecond` (`pulumi.Input[float]`) - Target ops read per seconds.
             * `targetWriteBytesPerSecond` (`pulumi.Input[float]`) - Target bytes written per second.
@@ -629,34 +724,40 @@ class FlexibleAppVersion(pulumi.CustomResource):
           * `minIdleInstances` (`pulumi.Input[float]`) - Minimum number of idle instances that should be maintained for this version. Only applicable for the default version of a service.
           * `minPendingLatency` (`pulumi.Input[str]`) - Minimum amount of time a request should wait in the pending queue before starting a new instance to handle it.
           * `minTotalInstances` (`pulumi.Input[float]`) - Minimum number of running instances that should be maintained for this version. Default: 2
-          * `networkUtilization` (`pulumi.Input[dict]`) - Target scaling by network usage.  Structure is documented below.
+          * `networkUtilization` (`pulumi.Input[dict]`) - Target scaling by network usage.
+            Structure is documented below.
             * `targetReceivedBytesPerSecond` (`pulumi.Input[float]`) - Target bytes received per second.
             * `targetReceivedPacketsPerSecond` (`pulumi.Input[float]`) - Target packets received per second.
             * `targetSentBytesPerSecond` (`pulumi.Input[float]`) - Target bytes sent per second.
             * `targetSentPacketsPerSecond` (`pulumi.Input[float]`) - Target packets sent per second.
 
-          * `requestUtilization` (`pulumi.Input[dict]`) - Target scaling by request utilization.  Structure is documented below.
+          * `requestUtilization` (`pulumi.Input[dict]`) - Target scaling by request utilization.
+            Structure is documented below.
             * `targetConcurrentRequests` (`pulumi.Input[float]`) - Target number of concurrent requests.
             * `targetRequestCountPerSecond` (`pulumi.Input[str]`) - Target requests per second.
 
         The **deployment** object supports the following:
 
-          * `cloudBuildOptions` (`pulumi.Input[dict]`) - Options for the build operations performed as a part of the version deployment. Only applicable when creating a version using source code directly.  Structure is documented below.
+          * `cloudBuildOptions` (`pulumi.Input[dict]`) - Options for the build operations performed as a part of the version deployment. Only applicable when creating a version using source code directly.
+            Structure is documented below.
             * `appYamlPath` (`pulumi.Input[str]`) - Path to the yaml file used in deployment, used to determine runtime configuration details.
             * `cloudBuildTimeout` (`pulumi.Input[str]`) - The Cloud Build timeout used as part of any dependent builds performed by version creation. Defaults to 10 minutes.
               A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 
-          * `container` (`pulumi.Input[dict]`) - The Docker image for the container that runs the version.  Structure is documented below.
+          * `container` (`pulumi.Input[dict]`) - The Docker image for the container that runs the version.
+            Structure is documented below.
             * `image` (`pulumi.Input[str]`) - URI to the hosted container image in Google Container Registry. The URI must be fully qualified and include a tag or digest.
               Examples: "gcr.io/my-project/image:tag" or "gcr.io/my-project/image@digest"
 
           * `files` (`pulumi.Input[list]`) - Manifest of the files stored in Google Cloud Storage that are included as part of this version.
-            All files must be readable using the credentials supplied with this call.  Structure is documented below.
+            All files must be readable using the credentials supplied with this call.
+            Structure is documented below.
             * `name` (`pulumi.Input[str]`) - Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
             * `sha1Sum` (`pulumi.Input[str]`) - SHA1 checksum of the file
             * `sourceUrl` (`pulumi.Input[str]`) - Source URL
 
-          * `zip` (`pulumi.Input[dict]`) - Zip File  Structure is documented below.
+          * `zip` (`pulumi.Input[dict]`) - Zip File
+            Structure is documented below.
             * `filesCount` (`pulumi.Input[float]`) - files count
             * `sourceUrl` (`pulumi.Input[str]`) - Source URL
 
@@ -671,6 +772,8 @@ class FlexibleAppVersion(pulumi.CustomResource):
           * `disableTraceSampling` (`pulumi.Input[bool]`) - Enable or disable trace sampling. By default, this is set to false for enabled.
           * `name` (`pulumi.Input[str]`) - Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
           * `rolloutStrategy` (`pulumi.Input[str]`) - Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted.
+            Default value is `FIXED`.
+            Possible values are `FIXED` and `MANAGED`.
 
         The **entrypoint** object supports the following:
 
@@ -679,14 +782,21 @@ class FlexibleAppVersion(pulumi.CustomResource):
         The **handlers** object supports the following:
 
           * `authFailAction` (`pulumi.Input[str]`) - Action to take when users access resources that require authentication.
+            Default value is `AUTH_FAIL_ACTION_REDIRECT`.
+            Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
           * `login` (`pulumi.Input[str]`) - Level of login required to access this resource.
+            Default value is `LOGIN_OPTIONAL`.
+            Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
           * `redirectHttpResponseCode` (`pulumi.Input[str]`) - 30x code to use when performing redirects for the secure field.
+            Possible values are `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, and `REDIRECT_HTTP_RESPONSE_CODE_307`.
           * `script` (`pulumi.Input[dict]`) - Path to the script from the application root directory.
             * `scriptPath` (`pulumi.Input[str]`) - Path to the script from the application root directory.
 
           * `securityLevel` (`pulumi.Input[str]`) - Security (HTTPS) enforcement for this URL.
+            Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
           * `staticFiles` (`pulumi.Input[dict]`) - Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files.
-            Static file handlers describe which files in the application directory are static files, and which URLs serve them.  Structure is documented below.
+            Static file handlers describe which files in the application directory are static files, and which URLs serve them.
+            Structure is documented below.
             * `applicationReadable` (`pulumi.Input[bool]`) - Whether files should also be uploaded as code data. By default, files declared in static file handlers are
               uploaded as static data and are only served to end users; they cannot be read by the application. If enabled,
               uploads are charged against both your code and static data storage resource quotas.
@@ -751,7 +861,8 @@ class FlexibleAppVersion(pulumi.CustomResource):
           * `cpu` (`pulumi.Input[float]`) - Number of CPU cores needed.
           * `diskGb` (`pulumi.Input[float]`) - Disk size (GB) needed.
           * `memoryGb` (`pulumi.Input[float]`) - Memory (GB) needed.
-          * `volumes` (`pulumi.Input[list]`) - List of ports, or port pairs, to forward from the virtual machine to the application container.  Structure is documented below.
+          * `volumes` (`pulumi.Input[list]`) - List of ports, or port pairs, to forward from the virtual machine to the application container.
+            Structure is documented below.
             * `name` (`pulumi.Input[str]`) - Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
             * `sizeGb` (`pulumi.Input[float]`) - Volume size in gigabytes.
             * `volumeType` (`pulumi.Input[str]`) - Underlying volume type, e.g. 'tmpfs'.

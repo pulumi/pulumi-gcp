@@ -25,7 +25,8 @@ import (
 type Connection struct {
 	pulumi.CustomResourceState
 
-	// Cloud SQL properties.  Structure is documented below.
+	// Cloud SQL properties.
+	// Structure is documented below.
 	CloudSql ConnectionCloudSqlOutput `pulumi:"cloudSql"`
 	// Optional connection id that should be assigned to the created connection.
 	ConnectionId pulumi.StringPtrOutput `pulumi:"connectionId"`
@@ -79,7 +80,8 @@ func GetConnection(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Connection resources.
 type connectionState struct {
-	// Cloud SQL properties.  Structure is documented below.
+	// Cloud SQL properties.
+	// Structure is documented below.
 	CloudSql *ConnectionCloudSql `pulumi:"cloudSql"`
 	// Optional connection id that should be assigned to the created connection.
 	ConnectionId *string `pulumi:"connectionId"`
@@ -103,7 +105,8 @@ type connectionState struct {
 }
 
 type ConnectionState struct {
-	// Cloud SQL properties.  Structure is documented below.
+	// Cloud SQL properties.
+	// Structure is documented below.
 	CloudSql ConnectionCloudSqlPtrInput
 	// Optional connection id that should be assigned to the created connection.
 	ConnectionId pulumi.StringPtrInput
@@ -131,7 +134,8 @@ func (ConnectionState) ElementType() reflect.Type {
 }
 
 type connectionArgs struct {
-	// Cloud SQL properties.  Structure is documented below.
+	// Cloud SQL properties.
+	// Structure is documented below.
 	CloudSql ConnectionCloudSql `pulumi:"cloudSql"`
 	// Optional connection id that should be assigned to the created connection.
 	ConnectionId *string `pulumi:"connectionId"`
@@ -151,7 +155,8 @@ type connectionArgs struct {
 
 // The set of arguments for constructing a Connection resource.
 type ConnectionArgs struct {
-	// Cloud SQL properties.  Structure is documented below.
+	// Cloud SQL properties.
+	// Structure is documented below.
 	CloudSql ConnectionCloudSqlInput
 	// Optional connection id that should be assigned to the created connection.
 	ConnectionId pulumi.StringPtrInput

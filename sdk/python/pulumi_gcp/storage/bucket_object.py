@@ -48,6 +48,10 @@ class BucketObject(pulumi.CustomResource):
     """
     (Computed) Base 64 MD5 hash of the uploaded data.
     """
+    media_link: pulumi.Output[str]
+    """
+    (Computed) A url reference to download this object.
+    """
     metadata: pulumi.Output[dict]
     """
     User-provided metadata, in key/value pairs.
@@ -136,6 +140,7 @@ class BucketObject(pulumi.CustomResource):
             __props__['storage_class'] = storage_class
             __props__['crc32c'] = None
             __props__['md5hash'] = None
+            __props__['media_link'] = None
             __props__['output_name'] = None
             __props__['self_link'] = None
         super(BucketObject, __self__).__init__(
@@ -145,7 +150,7 @@ class BucketObject(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, bucket=None, cache_control=None, content=None, content_disposition=None, content_encoding=None, content_language=None, content_type=None, crc32c=None, detect_md5hash=None, md5hash=None, metadata=None, name=None, output_name=None, self_link=None, source=None, storage_class=None):
+    def get(resource_name, id, opts=None, bucket=None, cache_control=None, content=None, content_disposition=None, content_encoding=None, content_language=None, content_type=None, crc32c=None, detect_md5hash=None, md5hash=None, media_link=None, metadata=None, name=None, output_name=None, self_link=None, source=None, storage_class=None):
         """
         Get an existing BucketObject resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -163,6 +168,7 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[str] content_type: [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
         :param pulumi.Input[str] crc32c: (Computed) Base 64 CRC32 hash of the uploaded data.
         :param pulumi.Input[str] md5hash: (Computed) Base 64 MD5 hash of the uploaded data.
+        :param pulumi.Input[str] media_link: (Computed) A url reference to download this object.
         :param pulumi.Input[dict] metadata: User-provided metadata, in key/value pairs.
         :param pulumi.Input[str] name: The name of the object. If you're interpolating the name of this object, see `output_name` instead.
         :param pulumi.Input[str] output_name: (Computed) The name of the object. Use this field in interpolations with `storage.ObjectACL` to recreate
@@ -188,6 +194,7 @@ class BucketObject(pulumi.CustomResource):
         __props__["crc32c"] = crc32c
         __props__["detect_md5hash"] = detect_md5hash
         __props__["md5hash"] = md5hash
+        __props__["media_link"] = media_link
         __props__["metadata"] = metadata
         __props__["name"] = name
         __props__["output_name"] = output_name

@@ -33,7 +33,8 @@ namespace Pulumi.Gcp.ContainerAnalysis
         /// gate the ability for a principle to attach an Occurrence to a given
         /// Note. It also provides a single point of lookup to find all attached
         /// Attestation Occurrences, even if they don't all live in the same
-        /// project.  Structure is documented below.
+        /// project.
+        /// Structure is documented below.
         /// </summary>
         [Output("attestationAuthority")]
         public Output<Outputs.NoteAttestationAuthority> AttestationAuthority { get; private set; } = null!;
@@ -82,7 +83,8 @@ namespace Pulumi.Gcp.ContainerAnalysis
         public Output<ImmutableArray<string>> RelatedNoteNames { get; private set; } = null!;
 
         /// <summary>
-        /// URLs associated with this note and related metadata.  Structure is documented below.
+        /// URLs associated with this note and related metadata.
+        /// Structure is documented below.
         /// </summary>
         [Output("relatedUrls")]
         public Output<ImmutableArray<Outputs.NoteRelatedUrl>> RelatedUrls { get; private set; } = null!;
@@ -154,7 +156,8 @@ namespace Pulumi.Gcp.ContainerAnalysis
         /// gate the ability for a principle to attach an Occurrence to a given
         /// Note. It also provides a single point of lookup to find all attached
         /// Attestation Occurrences, even if they don't all live in the same
-        /// project.  Structure is documented below.
+        /// project.
+        /// Structure is documented below.
         /// </summary>
         [Input("attestationAuthority", required: true)]
         public Input<Inputs.NoteAttestationAuthorityArgs> AttestationAuthority { get; set; } = null!;
@@ -200,7 +203,8 @@ namespace Pulumi.Gcp.ContainerAnalysis
         private InputList<Inputs.NoteRelatedUrlArgs>? _relatedUrls;
 
         /// <summary>
-        /// URLs associated with this note and related metadata.  Structure is documented below.
+        /// URLs associated with this note and related metadata.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.NoteRelatedUrlArgs> RelatedUrls
         {
@@ -230,7 +234,8 @@ namespace Pulumi.Gcp.ContainerAnalysis
         /// gate the ability for a principle to attach an Occurrence to a given
         /// Note. It also provides a single point of lookup to find all attached
         /// Attestation Occurrences, even if they don't all live in the same
-        /// project.  Structure is documented below.
+        /// project.
+        /// Structure is documented below.
         /// </summary>
         [Input("attestationAuthority")]
         public Input<Inputs.NoteAttestationAuthorityGetArgs>? AttestationAuthority { get; set; }
@@ -288,7 +293,8 @@ namespace Pulumi.Gcp.ContainerAnalysis
         private InputList<Inputs.NoteRelatedUrlGetArgs>? _relatedUrls;
 
         /// <summary>
-        /// URLs associated with this note and related metadata.  Structure is documented below.
+        /// URLs associated with this note and related metadata.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.NoteRelatedUrlGetArgs> RelatedUrls
         {

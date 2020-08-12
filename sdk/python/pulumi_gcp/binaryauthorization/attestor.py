@@ -12,7 +12,8 @@ from .. import utilities, tables
 class Attestor(pulumi.CustomResource):
     attestation_authority_note: pulumi.Output[dict]
     """
-    A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.  Structure is documented below.
+    A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
+    Structure is documented below.
 
       * `delegationServiceAccountEmail` (`str`) - -
         This field will contain the service account email address that
@@ -37,7 +38,8 @@ class Attestor(pulumi.CustomResource):
         verify that an attestation was signed by this attestor for the
         image specified in the admission request.
         If this field is empty, this attestor always returns that no valid
-        attestations exist.  Structure is documented below.
+        attestations exist.
+        Structure is documented below.
         * `asciiArmoredPgpPublicKey` (`str`) - ASCII-armored representation of a PGP public key, as the
           entire output by the command
           `gpg --export --armor foo@example.com` (either LF or CRLF
@@ -58,7 +60,8 @@ class Attestor(pulumi.CustomResource):
           NOTE: id may be explicitly provided by the caller when using this
           type of public key, but it MUST be a valid RFC3986 URI. If id is left
           blank, a default one will be computed based on the digest of the DER
-          encoding of the public key.  Structure is documented below.
+          encoding of the public key.
+          Structure is documented below.
           * `publicKeyPem` (`str`) - A PEM-encoded public key, as described in
             `https://tools.ietf.org/html/rfc7468#section-13`
           * `signatureAlgorithm` (`str`) - The signature algorithm used to verify a message against
@@ -95,7 +98,8 @@ class Attestor(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] attestation_authority_note: A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.  Structure is documented below.
+        :param pulumi.Input[dict] attestation_authority_note: A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
+               Structure is documented below.
         :param pulumi.Input[str] description: A descriptive comment. This field may be updated. The field may be
                displayed in chooser dialogs.
         :param pulumi.Input[str] name: The resource name.
@@ -127,7 +131,8 @@ class Attestor(pulumi.CustomResource):
             verify that an attestation was signed by this attestor for the
             image specified in the admission request.
             If this field is empty, this attestor always returns that no valid
-            attestations exist.  Structure is documented below.
+            attestations exist.
+            Structure is documented below.
             * `asciiArmoredPgpPublicKey` (`pulumi.Input[str]`) - ASCII-armored representation of a PGP public key, as the
               entire output by the command
               `gpg --export --armor foo@example.com` (either LF or CRLF
@@ -148,7 +153,8 @@ class Attestor(pulumi.CustomResource):
               NOTE: id may be explicitly provided by the caller when using this
               type of public key, but it MUST be a valid RFC3986 URI. If id is left
               blank, a default one will be computed based on the digest of the DER
-              encoding of the public key.  Structure is documented below.
+              encoding of the public key.
+              Structure is documented below.
               * `publicKeyPem` (`pulumi.Input[str]`) - A PEM-encoded public key, as described in
                 `https://tools.ietf.org/html/rfc7468#section-13`
               * `signatureAlgorithm` (`pulumi.Input[str]`) - The signature algorithm used to verify a message against
@@ -195,7 +201,8 @@ class Attestor(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] attestation_authority_note: A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.  Structure is documented below.
+        :param pulumi.Input[dict] attestation_authority_note: A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
+               Structure is documented below.
         :param pulumi.Input[str] description: A descriptive comment. This field may be updated. The field may be
                displayed in chooser dialogs.
         :param pulumi.Input[str] name: The resource name.
@@ -227,7 +234,8 @@ class Attestor(pulumi.CustomResource):
             verify that an attestation was signed by this attestor for the
             image specified in the admission request.
             If this field is empty, this attestor always returns that no valid
-            attestations exist.  Structure is documented below.
+            attestations exist.
+            Structure is documented below.
             * `asciiArmoredPgpPublicKey` (`pulumi.Input[str]`) - ASCII-armored representation of a PGP public key, as the
               entire output by the command
               `gpg --export --armor foo@example.com` (either LF or CRLF
@@ -248,7 +256,8 @@ class Attestor(pulumi.CustomResource):
               NOTE: id may be explicitly provided by the caller when using this
               type of public key, but it MUST be a valid RFC3986 URI. If id is left
               blank, a default one will be computed based on the digest of the DER
-              encoding of the public key.  Structure is documented below.
+              encoding of the public key.
+              Structure is documented below.
               * `publicKeyPem` (`pulumi.Input[str]`) - A PEM-encoded public key, as described in
                 `https://tools.ietf.org/html/rfc7468#section-13`
               * `signatureAlgorithm` (`pulumi.Input[str]`) - The signature algorithm used to verify a message against

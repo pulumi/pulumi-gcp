@@ -35,13 +35,15 @@ namespace Pulumi.Gcp.Iot
         public Output<Outputs.DeviceConfig> Config { get; private set; } = null!;
 
         /// <summary>
-        /// The credentials used to authenticate this device.  Structure is documented below.
+        /// The credentials used to authenticate this device.
+        /// Structure is documented below.
         /// </summary>
         [Output("credentials")]
         public Output<ImmutableArray<Outputs.DeviceCredential>> Credentials { get; private set; } = null!;
 
         /// <summary>
-        /// Gateway-related configuration and state.  Structure is documented below.
+        /// Gateway-related configuration and state.
+        /// Structure is documented below.
         /// </summary>
         [Output("gatewayConfig")]
         public Output<Outputs.DeviceGatewayConfig?> GatewayConfig { get; private set; } = null!;
@@ -90,6 +92,7 @@ namespace Pulumi.Gcp.Iot
 
         /// <summary>
         /// The logging verbosity for device activity.
+        /// Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
         /// </summary>
         [Output("logLevel")]
         public Output<string?> LogLevel { get; private set; } = null!;
@@ -181,7 +184,8 @@ namespace Pulumi.Gcp.Iot
         private InputList<Inputs.DeviceCredentialArgs>? _credentials;
 
         /// <summary>
-        /// The credentials used to authenticate this device.  Structure is documented below.
+        /// The credentials used to authenticate this device.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.DeviceCredentialArgs> Credentials
         {
@@ -190,13 +194,15 @@ namespace Pulumi.Gcp.Iot
         }
 
         /// <summary>
-        /// Gateway-related configuration and state.  Structure is documented below.
+        /// Gateway-related configuration and state.
+        /// Structure is documented below.
         /// </summary>
         [Input("gatewayConfig")]
         public Input<Inputs.DeviceGatewayConfigArgs>? GatewayConfig { get; set; }
 
         /// <summary>
         /// The logging verbosity for device activity.
+        /// Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
         /// </summary>
         [Input("logLevel")]
         public Input<string>? LogLevel { get; set; }
@@ -248,7 +254,8 @@ namespace Pulumi.Gcp.Iot
         private InputList<Inputs.DeviceCredentialGetArgs>? _credentials;
 
         /// <summary>
-        /// The credentials used to authenticate this device.  Structure is documented below.
+        /// The credentials used to authenticate this device.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.DeviceCredentialGetArgs> Credentials
         {
@@ -257,7 +264,8 @@ namespace Pulumi.Gcp.Iot
         }
 
         /// <summary>
-        /// Gateway-related configuration and state.  Structure is documented below.
+        /// Gateway-related configuration and state.
+        /// Structure is documented below.
         /// </summary>
         [Input("gatewayConfig")]
         public Input<Inputs.DeviceGatewayConfigGetArgs>? GatewayConfig { get; set; }
@@ -306,6 +314,7 @@ namespace Pulumi.Gcp.Iot
 
         /// <summary>
         /// The logging verbosity for device activity.
+        /// Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
         /// </summary>
         [Input("logLevel")]
         public Input<string>? LogLevel { get; set; }

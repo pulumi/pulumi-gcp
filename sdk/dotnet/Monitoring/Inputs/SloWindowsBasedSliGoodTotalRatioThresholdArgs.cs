@@ -13,13 +13,15 @@ namespace Pulumi.Gcp.Monitoring.Inputs
     public sealed class SloWindowsBasedSliGoodTotalRatioThresholdArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Basic SLI to evaluate to judge window quality.  Structure is documented below.
+        /// Basic SLI to evaluate to judge window quality.
+        /// Structure is documented below.
         /// </summary>
         [Input("basicSliPerformance")]
         public Input<Inputs.SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs>? BasicSliPerformance { get; set; }
 
         /// <summary>
-        /// Request-based SLI to evaluate to judge window quality.  Structure is documented below.
+        /// Request-based SLI to evaluate to judge window quality.
+        /// Structure is documented below.
         /// </summary>
         [Input("performance")]
         public Input<Inputs.SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs>? Performance { get; set; }

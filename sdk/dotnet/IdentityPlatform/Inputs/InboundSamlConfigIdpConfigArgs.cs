@@ -16,7 +16,8 @@ namespace Pulumi.Gcp.IdentityPlatform.Inputs
         private InputList<Inputs.InboundSamlConfigIdpConfigIdpCertificateArgs>? _idpCertificates;
 
         /// <summary>
-        /// The IdP's certificate data to verify the signature in the SAMLResponse issued by the IDP.  Structure is documented below.
+        /// The IdP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.InboundSamlConfigIdpConfigIdpCertificateArgs> IdpCertificates
         {

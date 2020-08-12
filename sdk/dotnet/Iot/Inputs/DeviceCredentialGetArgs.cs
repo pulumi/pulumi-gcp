@@ -19,7 +19,8 @@ namespace Pulumi.Gcp.Iot.Inputs
         public Input<string>? ExpirationTime { get; set; }
 
         /// <summary>
-        /// A public key used to verify the signature of JSON Web Tokens (JWTs).  Structure is documented below.
+        /// A public key used to verify the signature of JSON Web Tokens (JWTs).
+        /// Structure is documented below.
         /// </summary>
         [Input("publicKey", required: true)]
         public Input<Inputs.DeviceCredentialPublicKeyGetArgs> PublicKey { get; set; } = null!;

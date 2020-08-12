@@ -13,19 +13,22 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class ResourcePolicySnapshotSchedulePolicyGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Retention policy applied to snapshots created by this resource policy.  Structure is documented below.
+        /// Retention policy applied to snapshots created by this resource policy.
+        /// Structure is documented below.
         /// </summary>
         [Input("retentionPolicy")]
         public Input<Inputs.ResourcePolicySnapshotSchedulePolicyRetentionPolicyGetArgs>? RetentionPolicy { get; set; }
 
         /// <summary>
-        /// Contains one of an `hourlySchedule`, `dailySchedule`, or `weeklySchedule`.  Structure is documented below.
+        /// Contains one of an `hourlySchedule`, `dailySchedule`, or `weeklySchedule`.
+        /// Structure is documented below.
         /// </summary>
         [Input("schedule", required: true)]
         public Input<Inputs.ResourcePolicySnapshotSchedulePolicyScheduleGetArgs> Schedule { get; set; } = null!;
 
         /// <summary>
-        /// Properties with which the snapshots are created, such as labels.  Structure is documented below.
+        /// Properties with which the snapshots are created, such as labels.
+        /// Structure is documented below.
         /// </summary>
         [Input("snapshotProperties")]
         public Input<Inputs.ResourcePolicySnapshotSchedulePolicySnapshotPropertiesGetArgs>? SnapshotProperties { get; set; }

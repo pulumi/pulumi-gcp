@@ -22,7 +22,8 @@ import (
 type Dataset struct {
 	pulumi.CustomResourceState
 
-	// An array of objects that define dataset access for one or more entities.  Structure is documented below.
+	// An array of objects that define dataset access for one or more entities.
+	// Structure is documented below.
 	Accesses DatasetAccessTypeArrayOutput `pulumi:"accesses"`
 	// The time when this dataset was created, in milliseconds since the epoch.
 	CreationTime pulumi.IntOutput `pulumi:"creationTime"`
@@ -30,7 +31,8 @@ type Dataset struct {
 	DatasetId pulumi.StringOutput `pulumi:"datasetId"`
 	// The default encryption key for all tables in the dataset. Once this property is set,
 	// all newly-created partitioned tables in the dataset will have encryption key set to
-	// this value, unless table creation request (or query) overrides the key.  Structure is documented below.
+	// this value, unless table creation request (or query) overrides the key.
+	// Structure is documented below.
 	DefaultEncryptionConfiguration DatasetDefaultEncryptionConfigurationPtrOutput `pulumi:"defaultEncryptionConfiguration"`
 	// The default partition expiration for all partitioned tables in
 	// the dataset, in milliseconds.
@@ -94,7 +96,8 @@ func GetDataset(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Dataset resources.
 type datasetState struct {
-	// An array of objects that define dataset access for one or more entities.  Structure is documented below.
+	// An array of objects that define dataset access for one or more entities.
+	// Structure is documented below.
 	Accesses []DatasetAccessType `pulumi:"accesses"`
 	// The time when this dataset was created, in milliseconds since the epoch.
 	CreationTime *int `pulumi:"creationTime"`
@@ -102,7 +105,8 @@ type datasetState struct {
 	DatasetId *string `pulumi:"datasetId"`
 	// The default encryption key for all tables in the dataset. Once this property is set,
 	// all newly-created partitioned tables in the dataset will have encryption key set to
-	// this value, unless table creation request (or query) overrides the key.  Structure is documented below.
+	// this value, unless table creation request (or query) overrides the key.
+	// Structure is documented below.
 	DefaultEncryptionConfiguration *DatasetDefaultEncryptionConfiguration `pulumi:"defaultEncryptionConfiguration"`
 	// The default partition expiration for all partitioned tables in
 	// the dataset, in milliseconds.
@@ -136,7 +140,8 @@ type datasetState struct {
 }
 
 type DatasetState struct {
-	// An array of objects that define dataset access for one or more entities.  Structure is documented below.
+	// An array of objects that define dataset access for one or more entities.
+	// Structure is documented below.
 	Accesses DatasetAccessTypeArrayInput
 	// The time when this dataset was created, in milliseconds since the epoch.
 	CreationTime pulumi.IntPtrInput
@@ -144,7 +149,8 @@ type DatasetState struct {
 	DatasetId pulumi.StringPtrInput
 	// The default encryption key for all tables in the dataset. Once this property is set,
 	// all newly-created partitioned tables in the dataset will have encryption key set to
-	// this value, unless table creation request (or query) overrides the key.  Structure is documented below.
+	// this value, unless table creation request (or query) overrides the key.
+	// Structure is documented below.
 	DefaultEncryptionConfiguration DatasetDefaultEncryptionConfigurationPtrInput
 	// The default partition expiration for all partitioned tables in
 	// the dataset, in milliseconds.
@@ -182,13 +188,15 @@ func (DatasetState) ElementType() reflect.Type {
 }
 
 type datasetArgs struct {
-	// An array of objects that define dataset access for one or more entities.  Structure is documented below.
+	// An array of objects that define dataset access for one or more entities.
+	// Structure is documented below.
 	Accesses []DatasetAccessType `pulumi:"accesses"`
 	// The ID of the dataset containing this table.
 	DatasetId string `pulumi:"datasetId"`
 	// The default encryption key for all tables in the dataset. Once this property is set,
 	// all newly-created partitioned tables in the dataset will have encryption key set to
-	// this value, unless table creation request (or query) overrides the key.  Structure is documented below.
+	// this value, unless table creation request (or query) overrides the key.
+	// Structure is documented below.
 	DefaultEncryptionConfiguration *DatasetDefaultEncryptionConfiguration `pulumi:"defaultEncryptionConfiguration"`
 	// The default partition expiration for all partitioned tables in
 	// the dataset, in milliseconds.
@@ -217,13 +225,15 @@ type datasetArgs struct {
 
 // The set of arguments for constructing a Dataset resource.
 type DatasetArgs struct {
-	// An array of objects that define dataset access for one or more entities.  Structure is documented below.
+	// An array of objects that define dataset access for one or more entities.
+	// Structure is documented below.
 	Accesses DatasetAccessTypeArrayInput
 	// The ID of the dataset containing this table.
 	DatasetId pulumi.StringInput
 	// The default encryption key for all tables in the dataset. Once this property is set,
 	// all newly-created partitioned tables in the dataset will have encryption key set to
-	// this value, unless table creation request (or query) overrides the key.  Structure is documented below.
+	// this value, unless table creation request (or query) overrides the key.
+	// Structure is documented below.
 	DefaultEncryptionConfiguration DatasetDefaultEncryptionConfigurationPtrInput
 	// The default partition expiration for all partitioned tables in
 	// the dataset, in milliseconds.

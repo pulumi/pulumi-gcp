@@ -14,6 +14,8 @@ namespace Pulumi.Gcp.Compute.Inputs
     {
         /// <summary>
         /// Specifies the balancing mode for this backend.
+        /// Default value is `CONNECTION`.
+        /// Possible values are `UTILIZATION`, `RATE`, and `CONNECTION`.
         /// </summary>
         [Input("balancingMode")]
         public Input<string>? BalancingMode { get; set; }

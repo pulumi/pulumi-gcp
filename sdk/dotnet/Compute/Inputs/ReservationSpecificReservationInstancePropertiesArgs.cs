@@ -16,7 +16,8 @@ namespace Pulumi.Gcp.Compute.Inputs
         private InputList<Inputs.ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs>? _guestAccelerators;
 
         /// <summary>
-        /// Guest accelerator type and count.  Structure is documented below.
+        /// Guest accelerator type and count.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs> GuestAccelerators
         {
@@ -29,7 +30,8 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// The amount of local ssd to reserve with each instance. This
-        /// reserves disks of type `local-ssd`.  Structure is documented below.
+        /// reserves disks of type `local-ssd`.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.ReservationSpecificReservationInstancePropertiesLocalSsdArgs> LocalSsds
         {

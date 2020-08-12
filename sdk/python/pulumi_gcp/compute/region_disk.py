@@ -29,7 +29,8 @@ class RegionDisk(pulumi.CustomResource):
     the disk.
     If you do not provide an encryption key when creating the disk, then
     the disk will be encrypted using an automatically generated key and
-    you do not need to provide a key to use the disk later.  Structure is documented below.
+    you do not need to provide a key to use the disk later.
+    Structure is documented below.
 
       * `kms_key_name` (`str`) - The name of the encryption key that is stored in Google Cloud KMS.
       * `rawKey` (`str`) - Specifies a 256-bit customer-supplied encryption key, encoded in
@@ -113,7 +114,8 @@ class RegionDisk(pulumi.CustomResource):
     """
     The customer-supplied encryption key of the source snapshot. Required
     if the source snapshot is protected by a customer-supplied encryption
-    key.  Structure is documented below.
+    key.
+    Structure is documented below.
 
       * `kms_key_name` (`str`) - The name of the encryption key that is stored in Google Cloud KMS.
       * `rawKey` (`str`) - Specifies a 256-bit customer-supplied encryption key, encoded in
@@ -178,7 +180,8 @@ class RegionDisk(pulumi.CustomResource):
                the disk.
                If you do not provide an encryption key when creating the disk, then
                the disk will be encrypted using an automatically generated key and
-               you do not need to provide a key to use the disk later.  Structure is documented below.
+               you do not need to provide a key to use the disk later.
+               Structure is documented below.
         :param pulumi.Input[dict] labels: Labels to apply to this disk.  A list of key->value pairs.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -212,7 +215,8 @@ class RegionDisk(pulumi.CustomResource):
                * `snapshot`
         :param pulumi.Input[dict] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required
                if the source snapshot is protected by a customer-supplied encryption
-               key.  Structure is documented below.
+               key.
+               Structure is documented below.
         :param pulumi.Input[str] type: URL of the disk type resource describing which disk type to use to
                create the disk. Provide this when creating the disk.
 
@@ -298,7 +302,8 @@ class RegionDisk(pulumi.CustomResource):
                the disk.
                If you do not provide an encryption key when creating the disk, then
                the disk will be encrypted using an automatically generated key and
-               you do not need to provide a key to use the disk later.  Structure is documented below.
+               you do not need to provide a key to use the disk later.
+               Structure is documented below.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
         :param pulumi.Input[dict] labels: Labels to apply to this disk.  A list of key->value pairs.
         :param pulumi.Input[str] last_attach_timestamp: Last attach timestamp in RFC3339 text format.
@@ -336,7 +341,8 @@ class RegionDisk(pulumi.CustomResource):
                * `snapshot`
         :param pulumi.Input[dict] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required
                if the source snapshot is protected by a customer-supplied encryption
-               key.  Structure is documented below.
+               key.
+               Structure is documented below.
         :param pulumi.Input[str] source_snapshot_id: The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create
                this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and
                recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.

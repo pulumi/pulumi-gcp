@@ -25,7 +25,8 @@ class GameServerConfig(pulumi.CustomResource):
     fleet_configs: pulumi.Output[list]
     """
     The fleet config contains list of fleet specs. In the Single Cloud, there
-    will be only one.  Structure is documented below.
+    will be only one.
+    Structure is documented below.
 
       * `fleetSpec` (`str`) - The fleet spec, which is sent to Agones to configure fleet.
         The spec can be passed as inline json but it is recommended to use a file reference
@@ -55,13 +56,15 @@ class GameServerConfig(pulumi.CustomResource):
     """
     scaling_configs: pulumi.Output[list]
     """
-    Optional. This contains the autoscaling settings.  Structure is documented below.
+    Optional. This contains the autoscaling settings.
+    Structure is documented below.
 
       * `fleetAutoscalerSpec` (`str`) - Fleet autoscaler spec, which is sent to Agones.
         Example spec can be found :
         https://agones.dev/site/docs/reference/fleetautoscaler/
       * `name` (`str`) - The name of the ScalingConfig
-      * `schedules` (`list`) - The schedules to which this scaling config applies.  Structure is documented below.
+      * `schedules` (`list`) - The schedules to which this scaling config applies.
+        Structure is documented below.
         * `cronJobDuration` (`str`) - The duration for the cron job event. The duration of the event is effective
           after the cron job's start time.
           A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
@@ -75,7 +78,8 @@ class GameServerConfig(pulumi.CustomResource):
 
       * `selectors` (`list`) - Labels used to identify the clusters to which this scaling config
         applies. A cluster is subject to this scaling config if its labels match
-        any of the selector entries.  Structure is documented below.
+        any of the selector entries.
+        Structure is documented below.
         * `labels` (`dict`) - Set of labels to group by.
     """
     def __init__(__self__, resource_name, opts=None, config_id=None, deployment_id=None, description=None, fleet_configs=None, labels=None, location=None, project=None, scaling_configs=None, __props__=None, __name__=None, __opts__=None):
@@ -96,12 +100,14 @@ class GameServerConfig(pulumi.CustomResource):
         :param pulumi.Input[str] deployment_id: A unique id for the deployment.
         :param pulumi.Input[str] description: The description of the game server config.
         :param pulumi.Input[list] fleet_configs: The fleet config contains list of fleet specs. In the Single Cloud, there
-               will be only one.  Structure is documented below.
+               will be only one.
+               Structure is documented below.
         :param pulumi.Input[dict] labels: Set of labels to group by.
         :param pulumi.Input[str] location: Location of the Deployment.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[list] scaling_configs: Optional. This contains the autoscaling settings.  Structure is documented below.
+        :param pulumi.Input[list] scaling_configs: Optional. This contains the autoscaling settings.
+               Structure is documented below.
 
         The **fleet_configs** object supports the following:
 
@@ -120,7 +126,8 @@ class GameServerConfig(pulumi.CustomResource):
             Example spec can be found :
             https://agones.dev/site/docs/reference/fleetautoscaler/
           * `name` (`pulumi.Input[str]`) - The name of the ScalingConfig
-          * `schedules` (`pulumi.Input[list]`) - The schedules to which this scaling config applies.  Structure is documented below.
+          * `schedules` (`pulumi.Input[list]`) - The schedules to which this scaling config applies.
+            Structure is documented below.
             * `cronJobDuration` (`pulumi.Input[str]`) - The duration for the cron job event. The duration of the event is effective
               after the cron job's start time.
               A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
@@ -134,7 +141,8 @@ class GameServerConfig(pulumi.CustomResource):
 
           * `selectors` (`pulumi.Input[list]`) - Labels used to identify the clusters to which this scaling config
             applies. A cluster is subject to this scaling config if its labels match
-            any of the selector entries.  Structure is documented below.
+            any of the selector entries.
+            Structure is documented below.
             * `labels` (`pulumi.Input[dict]`) - Set of labels to group by.
         """
         if __name__ is not None:
@@ -188,13 +196,15 @@ class GameServerConfig(pulumi.CustomResource):
         :param pulumi.Input[str] deployment_id: A unique id for the deployment.
         :param pulumi.Input[str] description: The description of the game server config.
         :param pulumi.Input[list] fleet_configs: The fleet config contains list of fleet specs. In the Single Cloud, there
-               will be only one.  Structure is documented below.
+               will be only one.
+               Structure is documented below.
         :param pulumi.Input[dict] labels: Set of labels to group by.
         :param pulumi.Input[str] location: Location of the Deployment.
         :param pulumi.Input[str] name: The name of the ScalingConfig
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[list] scaling_configs: Optional. This contains the autoscaling settings.  Structure is documented below.
+        :param pulumi.Input[list] scaling_configs: Optional. This contains the autoscaling settings.
+               Structure is documented below.
 
         The **fleet_configs** object supports the following:
 
@@ -213,7 +223,8 @@ class GameServerConfig(pulumi.CustomResource):
             Example spec can be found :
             https://agones.dev/site/docs/reference/fleetautoscaler/
           * `name` (`pulumi.Input[str]`) - The name of the ScalingConfig
-          * `schedules` (`pulumi.Input[list]`) - The schedules to which this scaling config applies.  Structure is documented below.
+          * `schedules` (`pulumi.Input[list]`) - The schedules to which this scaling config applies.
+            Structure is documented below.
             * `cronJobDuration` (`pulumi.Input[str]`) - The duration for the cron job event. The duration of the event is effective
               after the cron job's start time.
               A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
@@ -227,7 +238,8 @@ class GameServerConfig(pulumi.CustomResource):
 
           * `selectors` (`pulumi.Input[list]`) - Labels used to identify the clusters to which this scaling config
             applies. A cluster is subject to this scaling config if its labels match
-            any of the selector entries.  Structure is documented below.
+            any of the selector entries.
+            Structure is documented below.
             * `labels` (`pulumi.Input[dict]`) - Set of labels to group by.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

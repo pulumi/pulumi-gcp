@@ -30,7 +30,8 @@ class CustomService(pulumi.CustomResource):
     """
     telemetry: pulumi.Output[dict]
     """
-    Configuration for how to query telemetry on a Service.  Structure is documented below.
+    Configuration for how to query telemetry on a Service.
+    Structure is documented below.
 
       * `resourceName` (`str`) - The full name of the resource that defines this service.
         Formatted as described in
@@ -59,7 +60,8 @@ class CustomService(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] service_id: An optional service ID to use. If not given, the server will generate a
                service ID.
-        :param pulumi.Input[dict] telemetry: Configuration for how to query telemetry on a Service.  Structure is documented below.
+        :param pulumi.Input[dict] telemetry: Configuration for how to query telemetry on a Service.
+               Structure is documented below.
 
         The **telemetry** object supports the following:
 
@@ -110,7 +112,8 @@ class CustomService(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] service_id: An optional service ID to use. If not given, the server will generate a
                service ID.
-        :param pulumi.Input[dict] telemetry: Configuration for how to query telemetry on a Service.  Structure is documented below.
+        :param pulumi.Input[dict] telemetry: Configuration for how to query telemetry on a Service.
+               Structure is documented below.
 
         The **telemetry** object supports the following:
 

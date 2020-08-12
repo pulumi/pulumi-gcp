@@ -98,7 +98,8 @@ export class NotificationChannel extends pulumi.CustomResource {
      * sensitive and hidden from plan output. The name of the field, eg: password, will be the key
      * in the `labels` map in the api request.
      * Credentials may not be specified in both locations and will cause an error. Changing from one location
-     * to a different credential configuration in the config will require an apply to update state.  Structure is documented below.
+     * to a different credential configuration in the config will require an apply to update state.
+     * Structure is documented below.
      */
     public readonly sensitiveLabels!: pulumi.Output<outputs.monitoring.NotificationChannelSensitiveLabels | undefined>;
     /**
@@ -210,7 +211,8 @@ export interface NotificationChannelState {
      * sensitive and hidden from plan output. The name of the field, eg: password, will be the key
      * in the `labels` map in the api request.
      * Credentials may not be specified in both locations and will cause an error. Changing from one location
-     * to a different credential configuration in the config will require an apply to update state.  Structure is documented below.
+     * to a different credential configuration in the config will require an apply to update state.
+     * Structure is documented below.
      */
     readonly sensitiveLabels?: pulumi.Input<inputs.monitoring.NotificationChannelSensitiveLabels>;
     /**
@@ -269,7 +271,8 @@ export interface NotificationChannelArgs {
      * sensitive and hidden from plan output. The name of the field, eg: password, will be the key
      * in the `labels` map in the api request.
      * Credentials may not be specified in both locations and will cause an error. Changing from one location
-     * to a different credential configuration in the config will require an apply to update state.  Structure is documented below.
+     * to a different credential configuration in the config will require an apply to update state.
+     * Structure is documented below.
      */
     readonly sensitiveLabels?: pulumi.Input<inputs.monitoring.NotificationChannelSensitiveLabels>;
     /**

@@ -20,7 +20,8 @@ class Note(pulumi.CustomResource):
     gate the ability for a principle to attach an Occurrence to a given
     Note. It also provides a single point of lookup to find all attached
     Attestation Occurrences, even if they don't all live in the same
-    project.  Structure is documented below.
+    project.
+    Structure is documented below.
 
       * `hint` (`dict`) - This submessage provides human-readable hints about the purpose of
         the AttestationAuthority. Because the name of a Note acts as its
@@ -29,7 +30,8 @@ class Note(pulumi.CustomResource):
         from "readable" names more suitable for debug output. Note that
         these hints should NOT be used to look up AttestationAuthorities
         in security sensitive contexts, such as when looking up
-        Attestations to verify.  Structure is documented below.
+        Attestations to verify.
+        Structure is documented below.
         * `humanReadableName` (`str`) - The human readable name of this Attestation Authority, for
           example "qa".
     """
@@ -64,7 +66,8 @@ class Note(pulumi.CustomResource):
     """
     related_urls: pulumi.Output[list]
     """
-    URLs associated with this note and related metadata.  Structure is documented below.
+    URLs associated with this note and related metadata.
+    Structure is documented below.
 
       * `label` (`str`) - Label to describe usage of the URL
       * `url` (`str`) - Specific URL associated with the resource.
@@ -101,14 +104,16 @@ class Note(pulumi.CustomResource):
                gate the ability for a principle to attach an Occurrence to a given
                Note. It also provides a single point of lookup to find all attached
                Attestation Occurrences, even if they don't all live in the same
-               project.  Structure is documented below.
+               project.
+               Structure is documented below.
         :param pulumi.Input[str] expiration_time: Time of expiration for this note. Leave empty if note does not expire.
         :param pulumi.Input[str] long_description: A detailed description of the note
         :param pulumi.Input[str] name: The name of the note.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[list] related_note_names: Names of other notes related to this note.
-        :param pulumi.Input[list] related_urls: URLs associated with this note and related metadata.  Structure is documented below.
+        :param pulumi.Input[list] related_urls: URLs associated with this note and related metadata.
+               Structure is documented below.
         :param pulumi.Input[str] short_description: A one sentence description of the note.
 
         The **attestation_authority** object supports the following:
@@ -120,7 +125,8 @@ class Note(pulumi.CustomResource):
             from "readable" names more suitable for debug output. Note that
             these hints should NOT be used to look up AttestationAuthorities
             in security sensitive contexts, such as when looking up
-            Attestations to verify.  Structure is documented below.
+            Attestations to verify.
+            Structure is documented below.
             * `humanReadableName` (`pulumi.Input[str]`) - The human readable name of this Attestation Authority, for
               example "qa".
 
@@ -182,7 +188,8 @@ class Note(pulumi.CustomResource):
                gate the ability for a principle to attach an Occurrence to a given
                Note. It also provides a single point of lookup to find all attached
                Attestation Occurrences, even if they don't all live in the same
-               project.  Structure is documented below.
+               project.
+               Structure is documented below.
         :param pulumi.Input[str] create_time: The time this note was created.
         :param pulumi.Input[str] expiration_time: Time of expiration for this note. Leave empty if note does not expire.
         :param pulumi.Input[str] kind: The type of analysis this note describes
@@ -191,7 +198,8 @@ class Note(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[list] related_note_names: Names of other notes related to this note.
-        :param pulumi.Input[list] related_urls: URLs associated with this note and related metadata.  Structure is documented below.
+        :param pulumi.Input[list] related_urls: URLs associated with this note and related metadata.
+               Structure is documented below.
         :param pulumi.Input[str] short_description: A one sentence description of the note.
         :param pulumi.Input[str] update_time: The time this note was last updated.
 
@@ -204,7 +212,8 @@ class Note(pulumi.CustomResource):
             from "readable" names more suitable for debug output. Note that
             these hints should NOT be used to look up AttestationAuthorities
             in security sensitive contexts, such as when looking up
-            Attestations to verify.  Structure is documented below.
+            Attestations to verify.
+            Structure is documented below.
             * `humanReadableName` (`pulumi.Input[str]`) - The human readable name of this Attestation Authority, for
               example "qa".
 

@@ -58,10 +58,12 @@ class Snapshot(pulumi.CustomResource):
     snapshot_encryption_key: pulumi.Output[dict]
     """
     The customer-supplied encryption key of the snapshot. Required if the
-    source snapshot is protected by a customer-supplied encryption key.  Structure is documented below.
+    source snapshot is protected by a customer-supplied encryption key.
+    Structure is documented below.
 
       * `rawKey` (`str`) - Specifies a 256-bit customer-supplied encryption key, encoded in
-        RFC 4648 base64 to either encrypt or decrypt this resource.  **Note**: This property is sensitive and will not be displayed in the plan.
+        RFC 4648 base64 to either encrypt or decrypt this resource.
+        **Note**: This property is sensitive and will not be displayed in the plan.
       * `sha256` (`str`) - -
         The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
         encryption key that protects this resource.
@@ -78,10 +80,12 @@ class Snapshot(pulumi.CustomResource):
     """
     The customer-supplied encryption key of the source snapshot. Required
     if the source snapshot is protected by a customer-supplied encryption
-    key.  Structure is documented below.
+    key.
+    Structure is documented below.
 
       * `rawKey` (`str`) - Specifies a 256-bit customer-supplied encryption key, encoded in
-        RFC 4648 base64 to either encrypt or decrypt this resource.  **Note**: This property is sensitive and will not be displayed in the plan.
+        RFC 4648 base64 to either encrypt or decrypt this resource.
+        **Note**: This property is sensitive and will not be displayed in the plan.
     """
     source_disk_link: pulumi.Output[str]
     storage_bytes: pulumi.Output[float]
@@ -133,17 +137,20 @@ class Snapshot(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[dict] snapshot_encryption_key: The customer-supplied encryption key of the snapshot. Required if the
-               source snapshot is protected by a customer-supplied encryption key.  Structure is documented below.
+               source snapshot is protected by a customer-supplied encryption key.
+               Structure is documented below.
         :param pulumi.Input[str] source_disk: A reference to the disk used to create this snapshot.
         :param pulumi.Input[dict] source_disk_encryption_key: The customer-supplied encryption key of the source snapshot. Required
                if the source snapshot is protected by a customer-supplied encryption
-               key.  Structure is documented below.
+               key.
+               Structure is documented below.
         :param pulumi.Input[str] zone: A reference to the zone where the disk is hosted.
 
         The **snapshot_encryption_key** object supports the following:
 
           * `rawKey` (`pulumi.Input[str]`) - Specifies a 256-bit customer-supplied encryption key, encoded in
-            RFC 4648 base64 to either encrypt or decrypt this resource.  **Note**: This property is sensitive and will not be displayed in the plan.
+            RFC 4648 base64 to either encrypt or decrypt this resource.
+            **Note**: This property is sensitive and will not be displayed in the plan.
           * `sha256` (`pulumi.Input[str]`) - -
             The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
             encryption key that protects this resource.
@@ -151,7 +158,8 @@ class Snapshot(pulumi.CustomResource):
         The **source_disk_encryption_key** object supports the following:
 
           * `rawKey` (`pulumi.Input[str]`) - Specifies a 256-bit customer-supplied encryption key, encoded in
-            RFC 4648 base64 to either encrypt or decrypt this resource.  **Note**: This property is sensitive and will not be displayed in the plan.
+            RFC 4648 base64 to either encrypt or decrypt this resource.
+            **Note**: This property is sensitive and will not be displayed in the plan.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -222,12 +230,14 @@ class Snapshot(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[dict] snapshot_encryption_key: The customer-supplied encryption key of the snapshot. Required if the
-               source snapshot is protected by a customer-supplied encryption key.  Structure is documented below.
+               source snapshot is protected by a customer-supplied encryption key.
+               Structure is documented below.
         :param pulumi.Input[float] snapshot_id: The unique identifier for the resource.
         :param pulumi.Input[str] source_disk: A reference to the disk used to create this snapshot.
         :param pulumi.Input[dict] source_disk_encryption_key: The customer-supplied encryption key of the source snapshot. Required
                if the source snapshot is protected by a customer-supplied encryption
-               key.  Structure is documented below.
+               key.
+               Structure is documented below.
         :param pulumi.Input[float] storage_bytes: A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot
                creation/deletion.
         :param pulumi.Input[str] zone: A reference to the zone where the disk is hosted.
@@ -235,7 +245,8 @@ class Snapshot(pulumi.CustomResource):
         The **snapshot_encryption_key** object supports the following:
 
           * `rawKey` (`pulumi.Input[str]`) - Specifies a 256-bit customer-supplied encryption key, encoded in
-            RFC 4648 base64 to either encrypt or decrypt this resource.  **Note**: This property is sensitive and will not be displayed in the plan.
+            RFC 4648 base64 to either encrypt or decrypt this resource.
+            **Note**: This property is sensitive and will not be displayed in the plan.
           * `sha256` (`pulumi.Input[str]`) - -
             The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
             encryption key that protects this resource.
@@ -243,7 +254,8 @@ class Snapshot(pulumi.CustomResource):
         The **source_disk_encryption_key** object supports the following:
 
           * `rawKey` (`pulumi.Input[str]`) - Specifies a 256-bit customer-supplied encryption key, encoded in
-            RFC 4648 base64 to either encrypt or decrypt this resource.  **Note**: This property is sensitive and will not be displayed in the plan.
+            RFC 4648 base64 to either encrypt or decrypt this resource.
+            **Note**: This property is sensitive and will not be displayed in the plan.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

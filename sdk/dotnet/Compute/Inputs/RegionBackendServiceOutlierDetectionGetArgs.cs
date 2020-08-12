@@ -15,7 +15,8 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// <summary>
         /// The base time that a host is ejected for. The real time is equal to the base
         /// time multiplied by the number of times the host has been ejected. Defaults to
-        /// 30000ms or 30s.  Structure is documented below.
+        /// 30000ms or 30s.
+        /// Structure is documented below.
         /// </summary>
         [Input("baseEjectionTime")]
         public Input<Inputs.RegionBackendServiceOutlierDetectionBaseEjectionTimeGetArgs>? BaseEjectionTime { get; set; }
@@ -62,7 +63,8 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// Time interval between ejection sweep analysis. This can result in both new
-        /// ejections as well as hosts being returned to service. Defaults to 10 seconds.  Structure is documented below.
+        /// ejections as well as hosts being returned to service. Defaults to 10 seconds.
+        /// Structure is documented below.
         /// </summary>
         [Input("interval")]
         public Input<Inputs.RegionBackendServiceOutlierDetectionIntervalGetArgs>? Interval { get; set; }

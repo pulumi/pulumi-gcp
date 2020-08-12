@@ -51,7 +51,8 @@ export class GameServerCluster extends pulumi.CustomResource {
     public readonly clusterId!: pulumi.Output<string>;
     /**
      * Game server cluster connection information. This information is used to
-     * manage game server clusters.  Structure is documented below.
+     * manage game server clusters.
+     * Structure is documented below.
      */
     public readonly connectionInfo!: pulumi.Output<outputs.gameservices.GameServerClusterConnectionInfo>;
     /**
@@ -144,7 +145,8 @@ export interface GameServerClusterState {
     readonly clusterId?: pulumi.Input<string>;
     /**
      * Game server cluster connection information. This information is used to
-     * manage game server clusters.  Structure is documented below.
+     * manage game server clusters.
+     * Structure is documented below.
      */
     readonly connectionInfo?: pulumi.Input<inputs.gameservices.GameServerClusterConnectionInfo>;
     /**
@@ -187,7 +189,8 @@ export interface GameServerClusterArgs {
     readonly clusterId: pulumi.Input<string>;
     /**
      * Game server cluster connection information. This information is used to
-     * manage game server clusters.  Structure is documented below.
+     * manage game server clusters.
+     * Structure is documented below.
      */
     readonly connectionInfo: pulumi.Input<inputs.gameservices.GameServerClusterConnectionInfo>;
     /**

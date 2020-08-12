@@ -46,7 +46,8 @@ export class Router extends pulumi.CustomResource {
     }
 
     /**
-     * BGP information specific to this router.  Structure is documented below.
+     * BGP information specific to this router.
+     * Structure is documented below.
      */
     public readonly bgp!: pulumi.Output<outputs.compute.RouterBgp | undefined>;
     /**
@@ -134,7 +135,8 @@ export class Router extends pulumi.CustomResource {
  */
 export interface RouterState {
     /**
-     * BGP information specific to this router.  Structure is documented below.
+     * BGP information specific to this router.
+     * Structure is documented below.
      */
     readonly bgp?: pulumi.Input<inputs.compute.RouterBgp>;
     /**
@@ -178,7 +180,8 @@ export interface RouterState {
  */
 export interface RouterArgs {
     /**
-     * BGP information specific to this router.  Structure is documented below.
+     * BGP information specific to this router.
+     * Structure is documented below.
      */
     readonly bgp?: pulumi.Input<inputs.compute.RouterBgp>;
     /**

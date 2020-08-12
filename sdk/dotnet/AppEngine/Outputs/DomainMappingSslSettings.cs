@@ -34,6 +34,7 @@ namespace Pulumi.Gcp.AppEngine.Outputs
         /// <summary>
         /// SSL management type for this domain. If `AUTOMATIC`, a managed certificate is automatically provisioned.
         /// If `MANUAL`, `certificateId` must be manually specified in order to configure SSL for this domain.
+        /// Possible values are `AUTOMATIC` and `MANUAL`.
         /// </summary>
         public readonly string SslManagementType;
 

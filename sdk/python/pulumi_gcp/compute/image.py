@@ -38,9 +38,11 @@ class Image(pulumi.CustomResource):
     guest_os_features: pulumi.Output[list]
     """
     A list of features to enable on the guest operating system.
-    Applicable only for bootable images.  Structure is documented below.
+    Applicable only for bootable images.
+    Structure is documented below.
 
       * `type` (`str`) - The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
+        Possible values are `MULTI_IP_SUBNET`, `SECURE_BOOT`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, and `WINDOWS`.
     """
     label_fingerprint: pulumi.Output[str]
     """
@@ -71,12 +73,15 @@ class Image(pulumi.CustomResource):
     """
     raw_disk: pulumi.Output[dict]
     """
-    The parameters of the raw disk image.  Structure is documented below.
+    The parameters of the raw disk image.
+    Structure is documented below.
 
       * `containerType` (`str`) - The format used to encode and transmit the block device, which
         should be TAR. This is just a container and transmission format
         and not a runtime format. Provided by the client when the disk
         image is created.
+        Default value is `TAR`.
+        Possible values are `TAR`.
       * `sha1` (`str`) - An optional SHA1 checksum of the disk image before unpackaging.
         This is provided by the client when the disk image is created.
       * `source` (`str`) - The full Google Cloud Storage URL where disk storage is stored
@@ -131,7 +136,8 @@ class Image(pulumi.CustomResource):
                not deprecated. The name of the image family must comply with
                RFC1035.
         :param pulumi.Input[list] guest_os_features: A list of features to enable on the guest operating system.
-               Applicable only for bootable images.  Structure is documented below.
+               Applicable only for bootable images.
+               Structure is documented below.
         :param pulumi.Input[dict] labels: Labels to apply to this Image.
         :param pulumi.Input[list] licenses: Any applicable license URI.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is
@@ -143,7 +149,8 @@ class Image(pulumi.CustomResource):
                last character, which cannot be a dash.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[dict] raw_disk: The parameters of the raw disk image.  Structure is documented below.
+        :param pulumi.Input[dict] raw_disk: The parameters of the raw disk image.
+               Structure is documented below.
         :param pulumi.Input[str] source_disk: The source disk to create this image based on.
                You must provide either this property or the
                rawDisk.source property but not both to create an image.
@@ -151,6 +158,7 @@ class Image(pulumi.CustomResource):
         The **guest_os_features** object supports the following:
 
           * `type` (`pulumi.Input[str]`) - The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
+            Possible values are `MULTI_IP_SUBNET`, `SECURE_BOOT`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, and `WINDOWS`.
 
         The **raw_disk** object supports the following:
 
@@ -158,6 +166,8 @@ class Image(pulumi.CustomResource):
             should be TAR. This is just a container and transmission format
             and not a runtime format. Provided by the client when the disk
             image is created.
+            Default value is `TAR`.
+            Possible values are `TAR`.
           * `sha1` (`pulumi.Input[str]`) - An optional SHA1 checksum of the disk image before unpackaging.
             This is provided by the client when the disk image is created.
           * `source` (`pulumi.Input[str]`) - The full Google Cloud Storage URL where disk storage is stored
@@ -221,7 +231,8 @@ class Image(pulumi.CustomResource):
                not deprecated. The name of the image family must comply with
                RFC1035.
         :param pulumi.Input[list] guest_os_features: A list of features to enable on the guest operating system.
-               Applicable only for bootable images.  Structure is documented below.
+               Applicable only for bootable images.
+               Structure is documented below.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
         :param pulumi.Input[dict] labels: Labels to apply to this Image.
         :param pulumi.Input[list] licenses: Any applicable license URI.
@@ -234,7 +245,8 @@ class Image(pulumi.CustomResource):
                last character, which cannot be a dash.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[dict] raw_disk: The parameters of the raw disk image.  Structure is documented below.
+        :param pulumi.Input[dict] raw_disk: The parameters of the raw disk image.
+               Structure is documented below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] source_disk: The source disk to create this image based on.
                You must provide either this property or the
@@ -243,6 +255,7 @@ class Image(pulumi.CustomResource):
         The **guest_os_features** object supports the following:
 
           * `type` (`pulumi.Input[str]`) - The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
+            Possible values are `MULTI_IP_SUBNET`, `SECURE_BOOT`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, and `WINDOWS`.
 
         The **raw_disk** object supports the following:
 
@@ -250,6 +263,8 @@ class Image(pulumi.CustomResource):
             should be TAR. This is just a container and transmission format
             and not a runtime format. Provided by the client when the disk
             image is created.
+            Default value is `TAR`.
+            Possible values are `TAR`.
           * `sha1` (`pulumi.Input[str]`) - An optional SHA1 checksum of the disk image before unpackaging.
             This is provided by the client when the disk image is created.
           * `source` (`pulumi.Input[str]`) - The full Google Cloud Storage URL where disk storage is stored

@@ -79,7 +79,8 @@ type VPNTunnel struct {
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Shared secret used to set the secure session between the Cloud VPN
-	// gateway and the peer VPN gateway.  **Note**: This property is sensitive and will not be displayed in the plan.
+	// gateway and the peer VPN gateway.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	SharedSecret pulumi.StringOutput `pulumi:"sharedSecret"`
 	// Hash of the shared secret.
 	SharedSecretHash pulumi.StringOutput `pulumi:"sharedSecretHash"`
@@ -180,7 +181,8 @@ type vpntunnelState struct {
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// Shared secret used to set the secure session between the Cloud VPN
-	// gateway and the peer VPN gateway.  **Note**: This property is sensitive and will not be displayed in the plan.
+	// gateway and the peer VPN gateway.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	SharedSecret *string `pulumi:"sharedSecret"`
 	// Hash of the shared secret.
 	SharedSecretHash *string `pulumi:"sharedSecretHash"`
@@ -251,7 +253,8 @@ type VPNTunnelState struct {
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
 	// Shared secret used to set the secure session between the Cloud VPN
-	// gateway and the peer VPN gateway.  **Note**: This property is sensitive and will not be displayed in the plan.
+	// gateway and the peer VPN gateway.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	SharedSecret pulumi.StringPtrInput
 	// Hash of the shared secret.
 	SharedSecretHash pulumi.StringPtrInput
@@ -318,7 +321,8 @@ type vpntunnelArgs struct {
 	// URL of router resource to be used for dynamic routing.
 	Router *string `pulumi:"router"`
 	// Shared secret used to set the secure session between the Cloud VPN
-	// gateway and the peer VPN gateway.  **Note**: This property is sensitive and will not be displayed in the plan.
+	// gateway and the peer VPN gateway.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	SharedSecret string `pulumi:"sharedSecret"`
 	// URL of the Target VPN gateway with which this VPN tunnel is
 	// associated.
@@ -378,7 +382,8 @@ type VPNTunnelArgs struct {
 	// URL of router resource to be used for dynamic routing.
 	Router pulumi.StringPtrInput
 	// Shared secret used to set the secure session between the Cloud VPN
-	// gateway and the peer VPN gateway.  **Note**: This property is sensitive and will not be displayed in the plan.
+	// gateway and the peer VPN gateway.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	SharedSecret pulumi.StringInput
 	// URL of the Target VPN gateway with which this VPN tunnel is
 	// associated.

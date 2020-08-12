@@ -73,7 +73,8 @@ export class PerInstanceConfig extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The preserved state for this instance.  Structure is documented below.
+     * The preserved state for this instance.
+     * Structure is documented below.
      */
     public readonly preservedState!: pulumi.Output<outputs.compute.PerInstanceConfigPreservedState | undefined>;
     /**
@@ -171,7 +172,8 @@ export interface PerInstanceConfigState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The preserved state for this instance.  Structure is documented below.
+     * The preserved state for this instance.
+     * Structure is documented below.
      */
     readonly preservedState?: pulumi.Input<inputs.compute.PerInstanceConfigPreservedState>;
     /**
@@ -222,7 +224,8 @@ export interface PerInstanceConfigArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The preserved state for this instance.  Structure is documented below.
+     * The preserved state for this instance.
+     * Structure is documented below.
      */
     readonly preservedState?: pulumi.Input<inputs.compute.PerInstanceConfigPreservedState>;
     /**

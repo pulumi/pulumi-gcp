@@ -20,10 +20,12 @@ class URLMap(pulumi.CustomResource):
     advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
     to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
     Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
-    Only one of defaultRouteAction or defaultUrlRedirect must be set.  Structure is documented below.
+    Only one of defaultRouteAction or defaultUrlRedirect must be set.
+    Structure is documented below.
 
       * `corsPolicy` (`dict`) - The specification for allowing client side cross-origin requests. Please see
-        [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)  Structure is documented below.
+        [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
+        Structure is documented below.
         * `allowCredentials` (`bool`) - In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
           This translates to the Access-Control-Allow-Credentials header.
         * `allowHeaders` (`list`) - Specifies the content for the Access-Control-Allow-Headers header.
@@ -42,15 +44,19 @@ class URLMap(pulumi.CustomResource):
         As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
         percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
         by the Loadbalancer for a percentage of requests.
-        timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.  Structure is documented below.
-        * `abort` (`dict`) - The specification for how client requests are aborted as part of fault injection.  Structure is documented below.
+        timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
+        Structure is documented below.
+        * `abort` (`dict`) - The specification for how client requests are aborted as part of fault injection.
+          Structure is documented below.
           * `httpStatus` (`float`) - The HTTP status code used to abort the request.
             The value must be between 200 and 599 inclusive.
           * `percentage` (`float`) - The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
             The value must be between 0.0 and 100.0 inclusive.
 
-        * `delay` (`dict`) - The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.  Structure is documented below.
-          * `fixedDelay` (`dict`) - Specifies the value of the fixed delay interval.  Structure is documented below.
+        * `delay` (`dict`) - The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+          Structure is documented below.
+          * `fixedDelay` (`dict`) - Specifies the value of the fixed delay interval.
+            Structure is documented below.
             * `nanos` (`float`) - Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
               represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
             * `seconds` (`str`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
@@ -61,14 +67,17 @@ class URLMap(pulumi.CustomResource):
 
       * `requestMirrorPolicy` (`dict`) - Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
         Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
-        the host / authority header is suffixed with -shadow.  Structure is documented below.
+        the host / authority header is suffixed with -shadow.
+        Structure is documented below.
         * `backend_service` (`str`) - The full or partial URL to the BackendService resource being mirrored to.
 
-      * `retryPolicy` (`dict`) - Specifies the retry policy associated with this route.  Structure is documented below.
+      * `retryPolicy` (`dict`) - Specifies the retry policy associated with this route.
+        Structure is documented below.
         * `numRetries` (`float`) - Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
         * `perTryTimeout` (`dict`) - Specifies a non-zero timeout per retry attempt.
           If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-          will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+          will use the largest timeout among all backend services associated with the route.
+          Structure is documented below.
           * `nanos` (`float`) - Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
             represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
           * `seconds` (`str`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
@@ -92,13 +101,15 @@ class URLMap(pulumi.CustomResource):
 
       * `timeout` (`dict`) - Specifies the timeout for the selected route. Timeout is computed from the time the request has been
         fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries.
-        If not specified, will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+        If not specified, will use the largest timeout among all backend services associated with the route.
+        Structure is documented below.
         * `nanos` (`float`) - Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
           represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
         * `seconds` (`str`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
           Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
 
-      * `urlRewrite` (`dict`) - The spec to modify the URL of the request, prior to forwarding the request to the matched service.  Structure is documented below.
+      * `urlRewrite` (`dict`) - The spec to modify the URL of the request, prior to forwarding the request to the matched service.
+        Structure is documented below.
         * `hostRewrite` (`str`) - Prior to forwarding the request to the selected service, the request's host header is replaced
           with contents of hostRewrite.
           The value must be between 1 and 255 characters.
@@ -112,13 +123,16 @@ class URLMap(pulumi.CustomResource):
         with weight set to a non 0 number.
         Once a backendService is identified and before forwarding the request to the backend service,
         advanced routing actions like Url rewrites and header transformations are applied depending on
-        additional settings specified in this HttpRouteAction.  Structure is documented below.
+        additional settings specified in this HttpRouteAction.
+        Structure is documented below.
         * `backend_service` (`str`) - The full or partial URL to the BackendService resource being mirrored to.
         * `header_action` (`dict`) - Specifies changes to request and response headers that need to take effect for
           the selected backendService.
           headerAction specified here take effect before headerAction in the enclosing
-          HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
-          * `requestHeadersToAdds` (`list`) - Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+          HttpRouteRule, PathMatcher and UrlMap.
+          Structure is documented below.
+          * `requestHeadersToAdds` (`list`) - Headers to add to a matching request prior to forwarding the request to the backendService.
+            Structure is documented below.
             * `headerName` (`str`) - The name of the header to add.
             * `headerValue` (`str`) - The value of the header to add.
             * `replace` (`bool`) - If false, headerValue is appended to any values that already exist for the header.
@@ -126,7 +140,8 @@ class URLMap(pulumi.CustomResource):
 
           * `requestHeadersToRemoves` (`list`) - A list of header names for headers that need to be removed from the request prior to
             forwarding the request to the backendService.
-          * `responseHeadersToAdds` (`list`) - Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+          * `responseHeadersToAdds` (`list`) - Headers to add the response prior to sending the response back to the client.
+            Structure is documented below.
             * `headerName` (`str`) - The name of the header to add.
             * `headerValue` (`str`) - The value of the header to add.
             * `replace` (`bool`) - If false, headerValue is appended to any values that already exist for the header.
@@ -150,7 +165,8 @@ class URLMap(pulumi.CustomResource):
     """
     When none of the specified hostRules match, the request is redirected to a URL specified
     by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
-    defaultRouteAction must not be set.  Structure is documented below.
+    defaultRouteAction must not be set.
+    Structure is documented below.
 
       * `hostRedirect` (`str`) - The host that will be used in the redirect response instead of the one that was
         supplied in the request. The value must be between 1 and 255 characters.
@@ -194,9 +210,11 @@ class URLMap(pulumi.CustomResource):
     Specifies changes to request and response headers that need to take effect for
     the selected backendService.
     headerAction specified here take effect before headerAction in the enclosing
-    HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+    HttpRouteRule, PathMatcher and UrlMap.
+    Structure is documented below.
 
-      * `requestHeadersToAdds` (`list`) - Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+      * `requestHeadersToAdds` (`list`) - Headers to add to a matching request prior to forwarding the request to the backendService.
+        Structure is documented below.
         * `headerName` (`str`) - The name of the header to add.
         * `headerValue` (`str`) - The value of the header to add.
         * `replace` (`bool`) - If false, headerValue is appended to any values that already exist for the header.
@@ -204,7 +222,8 @@ class URLMap(pulumi.CustomResource):
 
       * `requestHeadersToRemoves` (`list`) - A list of header names for headers that need to be removed from the request prior to
         forwarding the request to the backendService.
-      * `responseHeadersToAdds` (`list`) - Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+      * `responseHeadersToAdds` (`list`) - Headers to add the response prior to sending the response back to the client.
+        Structure is documented below.
         * `headerName` (`str`) - The name of the header to add.
         * `headerValue` (`str`) - The value of the header to add.
         * `replace` (`bool`) - If false, headerValue is appended to any values that already exist for the header.
@@ -215,7 +234,8 @@ class URLMap(pulumi.CustomResource):
     """
     host_rules: pulumi.Output[list]
     """
-    The list of HostRules to use against the URL.  Structure is documented below.
+    The list of HostRules to use against the URL.
+    Structure is documented below.
 
       * `description` (`str`) - Description of this test case.
       * `hosts` (`list`) - The list of host patterns to match. They must be valid hostnames, except * will
@@ -242,9 +262,11 @@ class URLMap(pulumi.CustomResource):
         advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
         to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
         Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
-        Only one of defaultRouteAction or defaultUrlRedirect must be set.  Structure is documented below.
+        Only one of defaultRouteAction or defaultUrlRedirect must be set.
+        Structure is documented below.
         * `corsPolicy` (`dict`) - The specification for allowing client side cross-origin requests. Please see
-          [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)  Structure is documented below.
+          [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
+          Structure is documented below.
           * `allowCredentials` (`bool`) - In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
             This translates to the Access-Control-Allow-Credentials header.
           * `allowHeaders` (`list`) - Specifies the content for the Access-Control-Allow-Headers header.
@@ -263,15 +285,19 @@ class URLMap(pulumi.CustomResource):
           As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
           percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
           by the Loadbalancer for a percentage of requests.
-          timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.  Structure is documented below.
-          * `abort` (`dict`) - The specification for how client requests are aborted as part of fault injection.  Structure is documented below.
+          timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
+          Structure is documented below.
+          * `abort` (`dict`) - The specification for how client requests are aborted as part of fault injection.
+            Structure is documented below.
             * `httpStatus` (`float`) - The HTTP status code used to abort the request.
               The value must be between 200 and 599 inclusive.
             * `percentage` (`float`) - The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
               The value must be between 0.0 and 100.0 inclusive.
 
-          * `delay` (`dict`) - The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.  Structure is documented below.
-            * `fixedDelay` (`dict`) - Specifies the value of the fixed delay interval.  Structure is documented below.
+          * `delay` (`dict`) - The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+            Structure is documented below.
+            * `fixedDelay` (`dict`) - Specifies the value of the fixed delay interval.
+              Structure is documented below.
               * `nanos` (`float`) - Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
                 represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
               * `seconds` (`str`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
@@ -282,14 +308,17 @@ class URLMap(pulumi.CustomResource):
 
         * `requestMirrorPolicy` (`dict`) - Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
           Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
-          the host / authority header is suffixed with -shadow.  Structure is documented below.
+          the host / authority header is suffixed with -shadow.
+          Structure is documented below.
           * `backend_service` (`str`) - The full or partial URL to the BackendService resource being mirrored to.
 
-        * `retryPolicy` (`dict`) - Specifies the retry policy associated with this route.  Structure is documented below.
+        * `retryPolicy` (`dict`) - Specifies the retry policy associated with this route.
+          Structure is documented below.
           * `numRetries` (`float`) - Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
           * `perTryTimeout` (`dict`) - Specifies a non-zero timeout per retry attempt.
             If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-            will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+            will use the largest timeout among all backend services associated with the route.
+            Structure is documented below.
             * `nanos` (`float`) - Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
               represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
             * `seconds` (`str`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
@@ -313,13 +342,15 @@ class URLMap(pulumi.CustomResource):
 
         * `timeout` (`dict`) - Specifies the timeout for the selected route. Timeout is computed from the time the request has been
           fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries.
-          If not specified, will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+          If not specified, will use the largest timeout among all backend services associated with the route.
+          Structure is documented below.
           * `nanos` (`float`) - Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
             represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
           * `seconds` (`str`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
             Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
 
-        * `urlRewrite` (`dict`) - The spec to modify the URL of the request, prior to forwarding the request to the matched service.  Structure is documented below.
+        * `urlRewrite` (`dict`) - The spec to modify the URL of the request, prior to forwarding the request to the matched service.
+          Structure is documented below.
           * `hostRewrite` (`str`) - Prior to forwarding the request to the selected service, the request's host header is replaced
             with contents of hostRewrite.
             The value must be between 1 and 255 characters.
@@ -333,13 +364,16 @@ class URLMap(pulumi.CustomResource):
           with weight set to a non 0 number.
           Once a backendService is identified and before forwarding the request to the backend service,
           advanced routing actions like Url rewrites and header transformations are applied depending on
-          additional settings specified in this HttpRouteAction.  Structure is documented below.
+          additional settings specified in this HttpRouteAction.
+          Structure is documented below.
           * `backend_service` (`str`) - The full or partial URL to the BackendService resource being mirrored to.
           * `header_action` (`dict`) - Specifies changes to request and response headers that need to take effect for
             the selected backendService.
             headerAction specified here take effect before headerAction in the enclosing
-            HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
-            * `requestHeadersToAdds` (`list`) - Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+            HttpRouteRule, PathMatcher and UrlMap.
+            Structure is documented below.
+            * `requestHeadersToAdds` (`list`) - Headers to add to a matching request prior to forwarding the request to the backendService.
+              Structure is documented below.
               * `headerName` (`str`) - The name of the header to add.
               * `headerValue` (`str`) - The value of the header to add.
               * `replace` (`bool`) - If false, headerValue is appended to any values that already exist for the header.
@@ -347,7 +381,8 @@ class URLMap(pulumi.CustomResource):
 
             * `requestHeadersToRemoves` (`list`) - A list of header names for headers that need to be removed from the request prior to
               forwarding the request to the backendService.
-            * `responseHeadersToAdds` (`list`) - Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+            * `responseHeadersToAdds` (`list`) - Headers to add the response prior to sending the response back to the client.
+              Structure is documented below.
               * `headerName` (`str`) - The name of the header to add.
               * `headerValue` (`str`) - The value of the header to add.
               * `replace` (`bool`) - If false, headerValue is appended to any values that already exist for the header.
@@ -366,7 +401,8 @@ class URLMap(pulumi.CustomResource):
       * `default_service` (`str`) - The backend service or backend bucket to use when none of the given paths match.
       * `default_url_redirect` (`dict`) - When none of the specified hostRules match, the request is redirected to a URL specified
         by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
-        defaultRouteAction must not be set.  Structure is documented below.
+        defaultRouteAction must not be set.
+        Structure is documented below.
         * `hostRedirect` (`str`) - The host that will be used in the redirect response instead of the one that was
           supplied in the request. The value must be between 1 and 255 characters.
         * `httpsRedirect` (`bool`) - If set to true, the URL scheme in the redirected request is set to https. If set to
@@ -400,8 +436,10 @@ class URLMap(pulumi.CustomResource):
       * `header_action` (`dict`) - Specifies changes to request and response headers that need to take effect for
         the selected backendService.
         headerAction specified here take effect before headerAction in the enclosing
-        HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
-        * `requestHeadersToAdds` (`list`) - Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+        HttpRouteRule, PathMatcher and UrlMap.
+        Structure is documented below.
+        * `requestHeadersToAdds` (`list`) - Headers to add to a matching request prior to forwarding the request to the backendService.
+          Structure is documented below.
           * `headerName` (`str`) - The name of the header to add.
           * `headerValue` (`str`) - The value of the header to add.
           * `replace` (`bool`) - If false, headerValue is appended to any values that already exist for the header.
@@ -409,7 +447,8 @@ class URLMap(pulumi.CustomResource):
 
         * `requestHeadersToRemoves` (`list`) - A list of header names for headers that need to be removed from the request prior to
           forwarding the request to the backendService.
-        * `responseHeadersToAdds` (`list`) - Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+        * `responseHeadersToAdds` (`list`) - Headers to add the response prior to sending the response back to the client.
+          Structure is documented below.
           * `headerName` (`str`) - The name of the header to add.
           * `headerValue` (`str`) - The value of the header to add.
           * `replace` (`bool`) - If false, headerValue is appended to any values that already exist for the header.
@@ -425,7 +464,8 @@ class URLMap(pulumi.CustomResource):
         are specified does not matter. Matches are always done on the longest-path-first
         basis. For example: a pathRule with a path /a/b/c/* will match before /a/b/*
         irrespective of the order in which those paths appear in this list. Within a
-        given pathMatcher, only one of pathRules or routeRules must be set.  Structure is documented below.
+        given pathMatcher, only one of pathRules or routeRules must be set.
+        Structure is documented below.
         * `paths` (`list`) - The list of path patterns to match. Each must start with / and the only place a
           * is allowed is at the end following a /. The string fed to the path matcher
           does not include any text after the first ? or #, and those chars are not
@@ -435,9 +475,11 @@ class URLMap(pulumi.CustomResource):
           request to the selected backend. If  routeAction specifies any
           weightedBackendServices, service must not be set. Conversely if service is set,
           routeAction cannot contain any  weightedBackendServices. Only one of routeAction
-          or urlRedirect must be set.  Structure is documented below.
+          or urlRedirect must be set.
+          Structure is documented below.
           * `corsPolicy` (`dict`) - The specification for allowing client side cross-origin requests. Please see
-            [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)  Structure is documented below.
+            [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
+            Structure is documented below.
             * `allowCredentials` (`bool`) - In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
               This translates to the Access-Control-Allow-Credentials header.
             * `allowHeaders` (`list`) - Specifies the content for the Access-Control-Allow-Headers header.
@@ -456,15 +498,19 @@ class URLMap(pulumi.CustomResource):
             As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
             percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
             by the Loadbalancer for a percentage of requests.
-            timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.  Structure is documented below.
-            * `abort` (`dict`) - The specification for how client requests are aborted as part of fault injection.  Structure is documented below.
+            timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
+            Structure is documented below.
+            * `abort` (`dict`) - The specification for how client requests are aborted as part of fault injection.
+              Structure is documented below.
               * `httpStatus` (`float`) - The HTTP status code used to abort the request.
                 The value must be between 200 and 599 inclusive.
               * `percentage` (`float`) - The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
                 The value must be between 0.0 and 100.0 inclusive.
 
-            * `delay` (`dict`) - The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.  Structure is documented below.
-              * `fixedDelay` (`dict`) - Specifies the value of the fixed delay interval.  Structure is documented below.
+            * `delay` (`dict`) - The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+              Structure is documented below.
+              * `fixedDelay` (`dict`) - Specifies the value of the fixed delay interval.
+                Structure is documented below.
                 * `nanos` (`float`) - Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
                   represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
                 * `seconds` (`str`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
@@ -475,14 +521,17 @@ class URLMap(pulumi.CustomResource):
 
           * `requestMirrorPolicy` (`dict`) - Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
             Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
-            the host / authority header is suffixed with -shadow.  Structure is documented below.
+            the host / authority header is suffixed with -shadow.
+            Structure is documented below.
             * `backend_service` (`str`) - The full or partial URL to the BackendService resource being mirrored to.
 
-          * `retryPolicy` (`dict`) - Specifies the retry policy associated with this route.  Structure is documented below.
+          * `retryPolicy` (`dict`) - Specifies the retry policy associated with this route.
+            Structure is documented below.
             * `numRetries` (`float`) - Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
             * `perTryTimeout` (`dict`) - Specifies a non-zero timeout per retry attempt.
               If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-              will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+              will use the largest timeout among all backend services associated with the route.
+              Structure is documented below.
               * `nanos` (`float`) - Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
                 represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
               * `seconds` (`str`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
@@ -506,13 +555,15 @@ class URLMap(pulumi.CustomResource):
 
           * `timeout` (`dict`) - Specifies the timeout for the selected route. Timeout is computed from the time the request has been
             fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries.
-            If not specified, will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+            If not specified, will use the largest timeout among all backend services associated with the route.
+            Structure is documented below.
             * `nanos` (`float`) - Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
               represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
             * `seconds` (`str`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
               Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
 
-          * `urlRewrite` (`dict`) - The spec to modify the URL of the request, prior to forwarding the request to the matched service.  Structure is documented below.
+          * `urlRewrite` (`dict`) - The spec to modify the URL of the request, prior to forwarding the request to the matched service.
+            Structure is documented below.
             * `hostRewrite` (`str`) - Prior to forwarding the request to the selected service, the request's host header is replaced
               with contents of hostRewrite.
               The value must be between 1 and 255 characters.
@@ -526,13 +577,16 @@ class URLMap(pulumi.CustomResource):
             with weight set to a non 0 number.
             Once a backendService is identified and before forwarding the request to the backend service,
             advanced routing actions like Url rewrites and header transformations are applied depending on
-            additional settings specified in this HttpRouteAction.  Structure is documented below.
+            additional settings specified in this HttpRouteAction.
+            Structure is documented below.
             * `backend_service` (`str`) - The full or partial URL to the BackendService resource being mirrored to.
             * `header_action` (`dict`) - Specifies changes to request and response headers that need to take effect for
               the selected backendService.
               headerAction specified here take effect before headerAction in the enclosing
-              HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
-              * `requestHeadersToAdds` (`list`) - Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+              HttpRouteRule, PathMatcher and UrlMap.
+              Structure is documented below.
+              * `requestHeadersToAdds` (`list`) - Headers to add to a matching request prior to forwarding the request to the backendService.
+                Structure is documented below.
                 * `headerName` (`str`) - The name of the header to add.
                 * `headerValue` (`str`) - The value of the header to add.
                 * `replace` (`bool`) - If false, headerValue is appended to any values that already exist for the header.
@@ -540,7 +594,8 @@ class URLMap(pulumi.CustomResource):
 
               * `requestHeadersToRemoves` (`list`) - A list of header names for headers that need to be removed from the request prior to
                 forwarding the request to the backendService.
-              * `responseHeadersToAdds` (`list`) - Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+              * `responseHeadersToAdds` (`list`) - Headers to add the response prior to sending the response back to the client.
+                Structure is documented below.
                 * `headerName` (`str`) - The name of the header to add.
                 * `headerValue` (`str`) - The value of the header to add.
                 * `replace` (`bool`) - If false, headerValue is appended to any values that already exist for the header.
@@ -559,7 +614,8 @@ class URLMap(pulumi.CustomResource):
         * `service` (`str`) - The backend service or backend bucket link that should be matched by this test.
         * `urlRedirect` (`dict`) - When this rule is matched, the request is redirected to a URL specified by
           urlRedirect. If urlRedirect is specified, service or routeAction must not be
-          set.  Structure is documented below.
+          set.
+          Structure is documented below.
           * `hostRedirect` (`str`) - The host that will be used in the redirect response instead of the one that was
             supplied in the request. The value must be between 1 and 255 characters.
           * `httpsRedirect` (`bool`) - If set to true, the URL scheme in the redirected request is set to https. If set to
@@ -594,12 +650,15 @@ class URLMap(pulumi.CustomResource):
         routeRules matters: the first rule that matches will cause its specified routing
         action to take effect. Within a given pathMatcher, only one of pathRules or
         routeRules must be set. routeRules are not supported in UrlMaps intended for
-        External load balancers.  Structure is documented below.
+        External load balancers.
+        Structure is documented below.
         * `header_action` (`dict`) - Specifies changes to request and response headers that need to take effect for
           the selected backendService.
           headerAction specified here take effect before headerAction in the enclosing
-          HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
-          * `requestHeadersToAdds` (`list`) - Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+          HttpRouteRule, PathMatcher and UrlMap.
+          Structure is documented below.
+          * `requestHeadersToAdds` (`list`) - Headers to add to a matching request prior to forwarding the request to the backendService.
+            Structure is documented below.
             * `headerName` (`str`) - The name of the header to add.
             * `headerValue` (`str`) - The value of the header to add.
             * `replace` (`bool`) - If false, headerValue is appended to any values that already exist for the header.
@@ -607,7 +666,8 @@ class URLMap(pulumi.CustomResource):
 
           * `requestHeadersToRemoves` (`list`) - A list of header names for headers that need to be removed from the request prior to
             forwarding the request to the backendService.
-          * `responseHeadersToAdds` (`list`) - Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+          * `responseHeadersToAdds` (`list`) - Headers to add the response prior to sending the response back to the client.
+            Structure is documented below.
             * `headerName` (`str`) - The name of the header to add.
             * `headerValue` (`str`) - The value of the header to add.
             * `replace` (`bool`) - If false, headerValue is appended to any values that already exist for the header.
@@ -616,14 +676,16 @@ class URLMap(pulumi.CustomResource):
           * `responseHeadersToRemoves` (`list`) - A list of header names for headers that need to be removed from the response prior to sending the
             response back to the client.
 
-        * `matchRules` (`list`) - The rules for determining a match.  Structure is documented below.
+        * `matchRules` (`list`) - The rules for determining a match.
+          Structure is documented below.
           * `fullPathMatch` (`str`) - For satifying the matchRule condition, the path of the request must exactly
             match the value specified in fullPathMatch after removing any query parameters
             and anchor that may be part of the original URL. FullPathMatch must be between 1
             and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must
             be specified.
           * `headerMatches` (`list`) - Specifies a list of header match criteria, all of which must match corresponding
-            headers in the request.  Structure is documented below.
+            headers in the request.
+            Structure is documented below.
             * `exactMatch` (`str`) - The queryParameterMatch matches if the value of the parameter exactly matches
               the contents of exactMatch. Only one of presentMatch, exactMatch and regexMatch
               must be set.
@@ -642,7 +704,8 @@ class URLMap(pulumi.CustomResource):
               the match fails. For example for a range [-5, 0]   - -3 will match.  - 0 will
               not match.  - 0.25 will not match.  - -3someString will not match.   Only one of
               exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
-              must be set.  Structure is documented below.
+              must be set.
+              Structure is documented below.
               * `rangeEnd` (`float`) - The end of the range (exclusive).
               * `rangeStart` (`float`) - The start of the range (inclusive).
 
@@ -666,10 +729,12 @@ class URLMap(pulumi.CustomResource):
             with corresponding labels in the provided metadata. metadataFilters specified
             here can be overrides those specified in ForwardingRule that refers to this
             UrlMap. metadataFilters only applies to Loadbalancers that have their
-            loadBalancingScheme set to INTERNAL_SELF_MANAGED.  Structure is documented below.
+            loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+            Structure is documented below.
             * `filterLabels` (`list`) - The list of label value pairs that must match labels in the provided metadata
               based on filterMatchCriteria  This list must not be empty and can have at the
-              most 64 entries.  Structure is documented below.
+              most 64 entries.
+              Structure is documented below.
               * `name` (`str`) - The name of the query parameter to match. The query parameter must exist in the
                 request, in the absence of which the request match fails.
               * `value` (`str`) - The value of the label must match the specified value. value can have a maximum
@@ -681,12 +746,14 @@ class URLMap(pulumi.CustomResource):
               provided metadata.
               - MATCH_ALL: All filterLabels must have matching labels in
               the provided metadata.
+              Possible values are `MATCH_ALL` and `MATCH_ANY`.
 
           * `prefixMatch` (`str`) - The value of the header must start with the contents of prefixMatch. Only one of
             exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
             must be set.
           * `queryParameterMatches` (`list`) - Specifies a list of query parameter match criteria, all of which must match
-            corresponding query parameters in the request.  Structure is documented below.
+            corresponding query parameters in the request.
+            Structure is documented below.
             * `exactMatch` (`str`) - The queryParameterMatch matches if the value of the parameter exactly matches
               the contents of exactMatch. Only one of presentMatch, exactMatch and regexMatch
               must be set.
@@ -723,9 +790,11 @@ class URLMap(pulumi.CustomResource):
           request to the selected backend. If  routeAction specifies any
           weightedBackendServices, service must not be set. Conversely if service is set,
           routeAction cannot contain any  weightedBackendServices. Only one of routeAction
-          or urlRedirect must be set.  Structure is documented below.
+          or urlRedirect must be set.
+          Structure is documented below.
           * `corsPolicy` (`dict`) - The specification for allowing client side cross-origin requests. Please see
-            [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)  Structure is documented below.
+            [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
+            Structure is documented below.
             * `allowCredentials` (`bool`) - In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
               This translates to the Access-Control-Allow-Credentials header.
             * `allowHeaders` (`list`) - Specifies the content for the Access-Control-Allow-Headers header.
@@ -744,15 +813,19 @@ class URLMap(pulumi.CustomResource):
             As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
             percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
             by the Loadbalancer for a percentage of requests.
-            timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.  Structure is documented below.
-            * `abort` (`dict`) - The specification for how client requests are aborted as part of fault injection.  Structure is documented below.
+            timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
+            Structure is documented below.
+            * `abort` (`dict`) - The specification for how client requests are aborted as part of fault injection.
+              Structure is documented below.
               * `httpStatus` (`float`) - The HTTP status code used to abort the request.
                 The value must be between 200 and 599 inclusive.
               * `percentage` (`float`) - The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
                 The value must be between 0.0 and 100.0 inclusive.
 
-            * `delay` (`dict`) - The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.  Structure is documented below.
-              * `fixedDelay` (`dict`) - Specifies the value of the fixed delay interval.  Structure is documented below.
+            * `delay` (`dict`) - The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+              Structure is documented below.
+              * `fixedDelay` (`dict`) - Specifies the value of the fixed delay interval.
+                Structure is documented below.
                 * `nanos` (`float`) - Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
                   represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
                 * `seconds` (`str`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
@@ -763,14 +836,17 @@ class URLMap(pulumi.CustomResource):
 
           * `requestMirrorPolicy` (`dict`) - Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
             Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
-            the host / authority header is suffixed with -shadow.  Structure is documented below.
+            the host / authority header is suffixed with -shadow.
+            Structure is documented below.
             * `backend_service` (`str`) - The full or partial URL to the BackendService resource being mirrored to.
 
-          * `retryPolicy` (`dict`) - Specifies the retry policy associated with this route.  Structure is documented below.
+          * `retryPolicy` (`dict`) - Specifies the retry policy associated with this route.
+            Structure is documented below.
             * `numRetries` (`float`) - Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
             * `perTryTimeout` (`dict`) - Specifies a non-zero timeout per retry attempt.
               If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-              will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+              will use the largest timeout among all backend services associated with the route.
+              Structure is documented below.
               * `nanos` (`float`) - Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
                 represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
               * `seconds` (`str`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
@@ -794,13 +870,15 @@ class URLMap(pulumi.CustomResource):
 
           * `timeout` (`dict`) - Specifies the timeout for the selected route. Timeout is computed from the time the request has been
             fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries.
-            If not specified, will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+            If not specified, will use the largest timeout among all backend services associated with the route.
+            Structure is documented below.
             * `nanos` (`float`) - Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
               represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
             * `seconds` (`str`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
               Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
 
-          * `urlRewrite` (`dict`) - The spec to modify the URL of the request, prior to forwarding the request to the matched service.  Structure is documented below.
+          * `urlRewrite` (`dict`) - The spec to modify the URL of the request, prior to forwarding the request to the matched service.
+            Structure is documented below.
             * `hostRewrite` (`str`) - Prior to forwarding the request to the selected service, the request's host header is replaced
               with contents of hostRewrite.
               The value must be between 1 and 255 characters.
@@ -814,13 +892,16 @@ class URLMap(pulumi.CustomResource):
             with weight set to a non 0 number.
             Once a backendService is identified and before forwarding the request to the backend service,
             advanced routing actions like Url rewrites and header transformations are applied depending on
-            additional settings specified in this HttpRouteAction.  Structure is documented below.
+            additional settings specified in this HttpRouteAction.
+            Structure is documented below.
             * `backend_service` (`str`) - The full or partial URL to the BackendService resource being mirrored to.
             * `header_action` (`dict`) - Specifies changes to request and response headers that need to take effect for
               the selected backendService.
               headerAction specified here take effect before headerAction in the enclosing
-              HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
-              * `requestHeadersToAdds` (`list`) - Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+              HttpRouteRule, PathMatcher and UrlMap.
+              Structure is documented below.
+              * `requestHeadersToAdds` (`list`) - Headers to add to a matching request prior to forwarding the request to the backendService.
+                Structure is documented below.
                 * `headerName` (`str`) - The name of the header to add.
                 * `headerValue` (`str`) - The value of the header to add.
                 * `replace` (`bool`) - If false, headerValue is appended to any values that already exist for the header.
@@ -828,7 +909,8 @@ class URLMap(pulumi.CustomResource):
 
               * `requestHeadersToRemoves` (`list`) - A list of header names for headers that need to be removed from the request prior to
                 forwarding the request to the backendService.
-              * `responseHeadersToAdds` (`list`) - Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+              * `responseHeadersToAdds` (`list`) - Headers to add the response prior to sending the response back to the client.
+                Structure is documented below.
                 * `headerName` (`str`) - The name of the header to add.
                 * `headerValue` (`str`) - The value of the header to add.
                 * `replace` (`bool`) - If false, headerValue is appended to any values that already exist for the header.
@@ -847,7 +929,8 @@ class URLMap(pulumi.CustomResource):
         * `service` (`str`) - The backend service or backend bucket link that should be matched by this test.
         * `urlRedirect` (`dict`) - When this rule is matched, the request is redirected to a URL specified by
           urlRedirect. If urlRedirect is specified, service or routeAction must not be
-          set.  Structure is documented below.
+          set.
+          Structure is documented below.
           * `hostRedirect` (`str`) - The host that will be used in the redirect response instead of the one that was
             supplied in the request. The value must be between 1 and 255 characters.
           * `httpsRedirect` (`bool`) - If set to true, the URL scheme in the redirected request is set to https. If set to
@@ -890,7 +973,8 @@ class URLMap(pulumi.CustomResource):
     """
     The list of expected URL mapping tests. Request to update this UrlMap will
     succeed only if all of the test cases pass. You can specify a maximum of 100
-    tests per UrlMap.  Structure is documented below.
+    tests per UrlMap.
+    Structure is documented below.
 
       * `description` (`str`) - Description of this test case.
       * `host` (`str`) - Host portion of the URL.
@@ -914,17 +998,21 @@ class URLMap(pulumi.CustomResource):
                advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
                to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
                Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
-               Only one of defaultRouteAction or defaultUrlRedirect must be set.  Structure is documented below.
+               Only one of defaultRouteAction or defaultUrlRedirect must be set.
+               Structure is documented below.
         :param pulumi.Input[str] default_service: The backend service or backend bucket to use when none of the given paths match.
         :param pulumi.Input[dict] default_url_redirect: When none of the specified hostRules match, the request is redirected to a URL specified
                by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
-               defaultRouteAction must not be set.  Structure is documented below.
+               defaultRouteAction must not be set.
+               Structure is documented below.
         :param pulumi.Input[str] description: Description of this test case.
         :param pulumi.Input[dict] header_action: Specifies changes to request and response headers that need to take effect for
                the selected backendService.
                headerAction specified here take effect before headerAction in the enclosing
-               HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
-        :param pulumi.Input[list] host_rules: The list of HostRules to use against the URL.  Structure is documented below.
+               HttpRouteRule, PathMatcher and UrlMap.
+               Structure is documented below.
+        :param pulumi.Input[list] host_rules: The list of HostRules to use against the URL.
+               Structure is documented below.
         :param pulumi.Input[str] name: The name of the query parameter to match. The query parameter must exist in the
                request, in the absence of which the request match fails.
         :param pulumi.Input[list] path_matchers: The name of the PathMatcher to use to match the path portion of the URL if the
@@ -933,12 +1021,14 @@ class URLMap(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[list] tests: The list of expected URL mapping tests. Request to update this UrlMap will
                succeed only if all of the test cases pass. You can specify a maximum of 100
-               tests per UrlMap.  Structure is documented below.
+               tests per UrlMap.
+               Structure is documented below.
 
         The **default_route_action** object supports the following:
 
           * `corsPolicy` (`pulumi.Input[dict]`) - The specification for allowing client side cross-origin requests. Please see
-            [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)  Structure is documented below.
+            [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
+            Structure is documented below.
             * `allowCredentials` (`pulumi.Input[bool]`) - In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
               This translates to the Access-Control-Allow-Credentials header.
             * `allowHeaders` (`pulumi.Input[list]`) - Specifies the content for the Access-Control-Allow-Headers header.
@@ -957,15 +1047,19 @@ class URLMap(pulumi.CustomResource):
             As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
             percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
             by the Loadbalancer for a percentage of requests.
-            timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.  Structure is documented below.
-            * `abort` (`pulumi.Input[dict]`) - The specification for how client requests are aborted as part of fault injection.  Structure is documented below.
+            timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
+            Structure is documented below.
+            * `abort` (`pulumi.Input[dict]`) - The specification for how client requests are aborted as part of fault injection.
+              Structure is documented below.
               * `httpStatus` (`pulumi.Input[float]`) - The HTTP status code used to abort the request.
                 The value must be between 200 and 599 inclusive.
               * `percentage` (`pulumi.Input[float]`) - The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
                 The value must be between 0.0 and 100.0 inclusive.
 
-            * `delay` (`pulumi.Input[dict]`) - The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.  Structure is documented below.
-              * `fixedDelay` (`pulumi.Input[dict]`) - Specifies the value of the fixed delay interval.  Structure is documented below.
+            * `delay` (`pulumi.Input[dict]`) - The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+              Structure is documented below.
+              * `fixedDelay` (`pulumi.Input[dict]`) - Specifies the value of the fixed delay interval.
+                Structure is documented below.
                 * `nanos` (`pulumi.Input[float]`) - Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
                   represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
                 * `seconds` (`pulumi.Input[str]`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
@@ -976,14 +1070,17 @@ class URLMap(pulumi.CustomResource):
 
           * `requestMirrorPolicy` (`pulumi.Input[dict]`) - Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
             Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
-            the host / authority header is suffixed with -shadow.  Structure is documented below.
+            the host / authority header is suffixed with -shadow.
+            Structure is documented below.
             * `backend_service` (`pulumi.Input[str]`) - The full or partial URL to the BackendService resource being mirrored to.
 
-          * `retryPolicy` (`pulumi.Input[dict]`) - Specifies the retry policy associated with this route.  Structure is documented below.
+          * `retryPolicy` (`pulumi.Input[dict]`) - Specifies the retry policy associated with this route.
+            Structure is documented below.
             * `numRetries` (`pulumi.Input[float]`) - Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
             * `perTryTimeout` (`pulumi.Input[dict]`) - Specifies a non-zero timeout per retry attempt.
               If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-              will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+              will use the largest timeout among all backend services associated with the route.
+              Structure is documented below.
               * `nanos` (`pulumi.Input[float]`) - Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
                 represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
               * `seconds` (`pulumi.Input[str]`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
@@ -1007,13 +1104,15 @@ class URLMap(pulumi.CustomResource):
 
           * `timeout` (`pulumi.Input[dict]`) - Specifies the timeout for the selected route. Timeout is computed from the time the request has been
             fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries.
-            If not specified, will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+            If not specified, will use the largest timeout among all backend services associated with the route.
+            Structure is documented below.
             * `nanos` (`pulumi.Input[float]`) - Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
               represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
             * `seconds` (`pulumi.Input[str]`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
               Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
 
-          * `urlRewrite` (`pulumi.Input[dict]`) - The spec to modify the URL of the request, prior to forwarding the request to the matched service.  Structure is documented below.
+          * `urlRewrite` (`pulumi.Input[dict]`) - The spec to modify the URL of the request, prior to forwarding the request to the matched service.
+            Structure is documented below.
             * `hostRewrite` (`pulumi.Input[str]`) - Prior to forwarding the request to the selected service, the request's host header is replaced
               with contents of hostRewrite.
               The value must be between 1 and 255 characters.
@@ -1027,13 +1126,16 @@ class URLMap(pulumi.CustomResource):
             with weight set to a non 0 number.
             Once a backendService is identified and before forwarding the request to the backend service,
             advanced routing actions like Url rewrites and header transformations are applied depending on
-            additional settings specified in this HttpRouteAction.  Structure is documented below.
+            additional settings specified in this HttpRouteAction.
+            Structure is documented below.
             * `backend_service` (`pulumi.Input[str]`) - The full or partial URL to the BackendService resource being mirrored to.
             * `header_action` (`pulumi.Input[dict]`) - Specifies changes to request and response headers that need to take effect for
               the selected backendService.
               headerAction specified here take effect before headerAction in the enclosing
-              HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
-              * `requestHeadersToAdds` (`pulumi.Input[list]`) - Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+              HttpRouteRule, PathMatcher and UrlMap.
+              Structure is documented below.
+              * `requestHeadersToAdds` (`pulumi.Input[list]`) - Headers to add to a matching request prior to forwarding the request to the backendService.
+                Structure is documented below.
                 * `headerName` (`pulumi.Input[str]`) - The name of the header to add.
                 * `headerValue` (`pulumi.Input[str]`) - The value of the header to add.
                 * `replace` (`pulumi.Input[bool]`) - If false, headerValue is appended to any values that already exist for the header.
@@ -1041,7 +1143,8 @@ class URLMap(pulumi.CustomResource):
 
               * `requestHeadersToRemoves` (`pulumi.Input[list]`) - A list of header names for headers that need to be removed from the request prior to
                 forwarding the request to the backendService.
-              * `responseHeadersToAdds` (`pulumi.Input[list]`) - Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+              * `responseHeadersToAdds` (`pulumi.Input[list]`) - Headers to add the response prior to sending the response back to the client.
+                Structure is documented below.
                 * `headerName` (`pulumi.Input[str]`) - The name of the header to add.
                 * `headerValue` (`pulumi.Input[str]`) - The value of the header to add.
                 * `replace` (`pulumi.Input[bool]`) - If false, headerValue is appended to any values that already exist for the header.
@@ -1090,7 +1193,8 @@ class URLMap(pulumi.CustomResource):
 
         The **header_action** object supports the following:
 
-          * `requestHeadersToAdds` (`pulumi.Input[list]`) - Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+          * `requestHeadersToAdds` (`pulumi.Input[list]`) - Headers to add to a matching request prior to forwarding the request to the backendService.
+            Structure is documented below.
             * `headerName` (`pulumi.Input[str]`) - The name of the header to add.
             * `headerValue` (`pulumi.Input[str]`) - The value of the header to add.
             * `replace` (`pulumi.Input[bool]`) - If false, headerValue is appended to any values that already exist for the header.
@@ -1098,7 +1202,8 @@ class URLMap(pulumi.CustomResource):
 
           * `requestHeadersToRemoves` (`pulumi.Input[list]`) - A list of header names for headers that need to be removed from the request prior to
             forwarding the request to the backendService.
-          * `responseHeadersToAdds` (`pulumi.Input[list]`) - Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+          * `responseHeadersToAdds` (`pulumi.Input[list]`) - Headers to add the response prior to sending the response back to the client.
+            Structure is documented below.
             * `headerName` (`pulumi.Input[str]`) - The name of the header to add.
             * `headerValue` (`pulumi.Input[str]`) - The value of the header to add.
             * `replace` (`pulumi.Input[bool]`) - If false, headerValue is appended to any values that already exist for the header.
@@ -1122,9 +1227,11 @@ class URLMap(pulumi.CustomResource):
             advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
             to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
             Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
-            Only one of defaultRouteAction or defaultUrlRedirect must be set.  Structure is documented below.
+            Only one of defaultRouteAction or defaultUrlRedirect must be set.
+            Structure is documented below.
             * `corsPolicy` (`pulumi.Input[dict]`) - The specification for allowing client side cross-origin requests. Please see
-              [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)  Structure is documented below.
+              [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
+              Structure is documented below.
               * `allowCredentials` (`pulumi.Input[bool]`) - In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
                 This translates to the Access-Control-Allow-Credentials header.
               * `allowHeaders` (`pulumi.Input[list]`) - Specifies the content for the Access-Control-Allow-Headers header.
@@ -1143,15 +1250,19 @@ class URLMap(pulumi.CustomResource):
               As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
               percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
               by the Loadbalancer for a percentage of requests.
-              timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.  Structure is documented below.
-              * `abort` (`pulumi.Input[dict]`) - The specification for how client requests are aborted as part of fault injection.  Structure is documented below.
+              timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
+              Structure is documented below.
+              * `abort` (`pulumi.Input[dict]`) - The specification for how client requests are aborted as part of fault injection.
+                Structure is documented below.
                 * `httpStatus` (`pulumi.Input[float]`) - The HTTP status code used to abort the request.
                   The value must be between 200 and 599 inclusive.
                 * `percentage` (`pulumi.Input[float]`) - The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
                   The value must be between 0.0 and 100.0 inclusive.
 
-              * `delay` (`pulumi.Input[dict]`) - The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.  Structure is documented below.
-                * `fixedDelay` (`pulumi.Input[dict]`) - Specifies the value of the fixed delay interval.  Structure is documented below.
+              * `delay` (`pulumi.Input[dict]`) - The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+                Structure is documented below.
+                * `fixedDelay` (`pulumi.Input[dict]`) - Specifies the value of the fixed delay interval.
+                  Structure is documented below.
                   * `nanos` (`pulumi.Input[float]`) - Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
                     represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
                   * `seconds` (`pulumi.Input[str]`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
@@ -1162,14 +1273,17 @@ class URLMap(pulumi.CustomResource):
 
             * `requestMirrorPolicy` (`pulumi.Input[dict]`) - Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
               Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
-              the host / authority header is suffixed with -shadow.  Structure is documented below.
+              the host / authority header is suffixed with -shadow.
+              Structure is documented below.
               * `backend_service` (`pulumi.Input[str]`) - The full or partial URL to the BackendService resource being mirrored to.
 
-            * `retryPolicy` (`pulumi.Input[dict]`) - Specifies the retry policy associated with this route.  Structure is documented below.
+            * `retryPolicy` (`pulumi.Input[dict]`) - Specifies the retry policy associated with this route.
+              Structure is documented below.
               * `numRetries` (`pulumi.Input[float]`) - Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
               * `perTryTimeout` (`pulumi.Input[dict]`) - Specifies a non-zero timeout per retry attempt.
                 If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-                will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+                will use the largest timeout among all backend services associated with the route.
+                Structure is documented below.
                 * `nanos` (`pulumi.Input[float]`) - Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
                   represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
                 * `seconds` (`pulumi.Input[str]`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
@@ -1193,13 +1307,15 @@ class URLMap(pulumi.CustomResource):
 
             * `timeout` (`pulumi.Input[dict]`) - Specifies the timeout for the selected route. Timeout is computed from the time the request has been
               fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries.
-              If not specified, will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+              If not specified, will use the largest timeout among all backend services associated with the route.
+              Structure is documented below.
               * `nanos` (`pulumi.Input[float]`) - Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
                 represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
               * `seconds` (`pulumi.Input[str]`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
                 Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
 
-            * `urlRewrite` (`pulumi.Input[dict]`) - The spec to modify the URL of the request, prior to forwarding the request to the matched service.  Structure is documented below.
+            * `urlRewrite` (`pulumi.Input[dict]`) - The spec to modify the URL of the request, prior to forwarding the request to the matched service.
+              Structure is documented below.
               * `hostRewrite` (`pulumi.Input[str]`) - Prior to forwarding the request to the selected service, the request's host header is replaced
                 with contents of hostRewrite.
                 The value must be between 1 and 255 characters.
@@ -1213,13 +1329,16 @@ class URLMap(pulumi.CustomResource):
               with weight set to a non 0 number.
               Once a backendService is identified and before forwarding the request to the backend service,
               advanced routing actions like Url rewrites and header transformations are applied depending on
-              additional settings specified in this HttpRouteAction.  Structure is documented below.
+              additional settings specified in this HttpRouteAction.
+              Structure is documented below.
               * `backend_service` (`pulumi.Input[str]`) - The full or partial URL to the BackendService resource being mirrored to.
               * `header_action` (`pulumi.Input[dict]`) - Specifies changes to request and response headers that need to take effect for
                 the selected backendService.
                 headerAction specified here take effect before headerAction in the enclosing
-                HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
-                * `requestHeadersToAdds` (`pulumi.Input[list]`) - Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+                HttpRouteRule, PathMatcher and UrlMap.
+                Structure is documented below.
+                * `requestHeadersToAdds` (`pulumi.Input[list]`) - Headers to add to a matching request prior to forwarding the request to the backendService.
+                  Structure is documented below.
                   * `headerName` (`pulumi.Input[str]`) - The name of the header to add.
                   * `headerValue` (`pulumi.Input[str]`) - The value of the header to add.
                   * `replace` (`pulumi.Input[bool]`) - If false, headerValue is appended to any values that already exist for the header.
@@ -1227,7 +1346,8 @@ class URLMap(pulumi.CustomResource):
 
                 * `requestHeadersToRemoves` (`pulumi.Input[list]`) - A list of header names for headers that need to be removed from the request prior to
                   forwarding the request to the backendService.
-                * `responseHeadersToAdds` (`pulumi.Input[list]`) - Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+                * `responseHeadersToAdds` (`pulumi.Input[list]`) - Headers to add the response prior to sending the response back to the client.
+                  Structure is documented below.
                   * `headerName` (`pulumi.Input[str]`) - The name of the header to add.
                   * `headerValue` (`pulumi.Input[str]`) - The value of the header to add.
                   * `replace` (`pulumi.Input[bool]`) - If false, headerValue is appended to any values that already exist for the header.
@@ -1246,7 +1366,8 @@ class URLMap(pulumi.CustomResource):
           * `default_service` (`pulumi.Input[str]`) - The backend service or backend bucket to use when none of the given paths match.
           * `default_url_redirect` (`pulumi.Input[dict]`) - When none of the specified hostRules match, the request is redirected to a URL specified
             by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
-            defaultRouteAction must not be set.  Structure is documented below.
+            defaultRouteAction must not be set.
+            Structure is documented below.
             * `hostRedirect` (`pulumi.Input[str]`) - The host that will be used in the redirect response instead of the one that was
               supplied in the request. The value must be between 1 and 255 characters.
             * `httpsRedirect` (`pulumi.Input[bool]`) - If set to true, the URL scheme in the redirected request is set to https. If set to
@@ -1280,8 +1401,10 @@ class URLMap(pulumi.CustomResource):
           * `header_action` (`pulumi.Input[dict]`) - Specifies changes to request and response headers that need to take effect for
             the selected backendService.
             headerAction specified here take effect before headerAction in the enclosing
-            HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
-            * `requestHeadersToAdds` (`pulumi.Input[list]`) - Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+            HttpRouteRule, PathMatcher and UrlMap.
+            Structure is documented below.
+            * `requestHeadersToAdds` (`pulumi.Input[list]`) - Headers to add to a matching request prior to forwarding the request to the backendService.
+              Structure is documented below.
               * `headerName` (`pulumi.Input[str]`) - The name of the header to add.
               * `headerValue` (`pulumi.Input[str]`) - The value of the header to add.
               * `replace` (`pulumi.Input[bool]`) - If false, headerValue is appended to any values that already exist for the header.
@@ -1289,7 +1412,8 @@ class URLMap(pulumi.CustomResource):
 
             * `requestHeadersToRemoves` (`pulumi.Input[list]`) - A list of header names for headers that need to be removed from the request prior to
               forwarding the request to the backendService.
-            * `responseHeadersToAdds` (`pulumi.Input[list]`) - Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+            * `responseHeadersToAdds` (`pulumi.Input[list]`) - Headers to add the response prior to sending the response back to the client.
+              Structure is documented below.
               * `headerName` (`pulumi.Input[str]`) - The name of the header to add.
               * `headerValue` (`pulumi.Input[str]`) - The value of the header to add.
               * `replace` (`pulumi.Input[bool]`) - If false, headerValue is appended to any values that already exist for the header.
@@ -1305,7 +1429,8 @@ class URLMap(pulumi.CustomResource):
             are specified does not matter. Matches are always done on the longest-path-first
             basis. For example: a pathRule with a path /a/b/c/* will match before /a/b/*
             irrespective of the order in which those paths appear in this list. Within a
-            given pathMatcher, only one of pathRules or routeRules must be set.  Structure is documented below.
+            given pathMatcher, only one of pathRules or routeRules must be set.
+            Structure is documented below.
             * `paths` (`pulumi.Input[list]`) - The list of path patterns to match. Each must start with / and the only place a
               * is allowed is at the end following a /. The string fed to the path matcher
               does not include any text after the first ? or #, and those chars are not
@@ -1315,9 +1440,11 @@ class URLMap(pulumi.CustomResource):
               request to the selected backend. If  routeAction specifies any
               weightedBackendServices, service must not be set. Conversely if service is set,
               routeAction cannot contain any  weightedBackendServices. Only one of routeAction
-              or urlRedirect must be set.  Structure is documented below.
+              or urlRedirect must be set.
+              Structure is documented below.
               * `corsPolicy` (`pulumi.Input[dict]`) - The specification for allowing client side cross-origin requests. Please see
-                [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)  Structure is documented below.
+                [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
+                Structure is documented below.
                 * `allowCredentials` (`pulumi.Input[bool]`) - In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
                   This translates to the Access-Control-Allow-Credentials header.
                 * `allowHeaders` (`pulumi.Input[list]`) - Specifies the content for the Access-Control-Allow-Headers header.
@@ -1336,15 +1463,19 @@ class URLMap(pulumi.CustomResource):
                 As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
                 percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
                 by the Loadbalancer for a percentage of requests.
-                timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.  Structure is documented below.
-                * `abort` (`pulumi.Input[dict]`) - The specification for how client requests are aborted as part of fault injection.  Structure is documented below.
+                timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
+                Structure is documented below.
+                * `abort` (`pulumi.Input[dict]`) - The specification for how client requests are aborted as part of fault injection.
+                  Structure is documented below.
                   * `httpStatus` (`pulumi.Input[float]`) - The HTTP status code used to abort the request.
                     The value must be between 200 and 599 inclusive.
                   * `percentage` (`pulumi.Input[float]`) - The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
                     The value must be between 0.0 and 100.0 inclusive.
 
-                * `delay` (`pulumi.Input[dict]`) - The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.  Structure is documented below.
-                  * `fixedDelay` (`pulumi.Input[dict]`) - Specifies the value of the fixed delay interval.  Structure is documented below.
+                * `delay` (`pulumi.Input[dict]`) - The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+                  Structure is documented below.
+                  * `fixedDelay` (`pulumi.Input[dict]`) - Specifies the value of the fixed delay interval.
+                    Structure is documented below.
                     * `nanos` (`pulumi.Input[float]`) - Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
                       represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
                     * `seconds` (`pulumi.Input[str]`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
@@ -1355,14 +1486,17 @@ class URLMap(pulumi.CustomResource):
 
               * `requestMirrorPolicy` (`pulumi.Input[dict]`) - Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
                 Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
-                the host / authority header is suffixed with -shadow.  Structure is documented below.
+                the host / authority header is suffixed with -shadow.
+                Structure is documented below.
                 * `backend_service` (`pulumi.Input[str]`) - The full or partial URL to the BackendService resource being mirrored to.
 
-              * `retryPolicy` (`pulumi.Input[dict]`) - Specifies the retry policy associated with this route.  Structure is documented below.
+              * `retryPolicy` (`pulumi.Input[dict]`) - Specifies the retry policy associated with this route.
+                Structure is documented below.
                 * `numRetries` (`pulumi.Input[float]`) - Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
                 * `perTryTimeout` (`pulumi.Input[dict]`) - Specifies a non-zero timeout per retry attempt.
                   If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-                  will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+                  will use the largest timeout among all backend services associated with the route.
+                  Structure is documented below.
                   * `nanos` (`pulumi.Input[float]`) - Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
                     represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
                   * `seconds` (`pulumi.Input[str]`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
@@ -1386,13 +1520,15 @@ class URLMap(pulumi.CustomResource):
 
               * `timeout` (`pulumi.Input[dict]`) - Specifies the timeout for the selected route. Timeout is computed from the time the request has been
                 fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries.
-                If not specified, will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+                If not specified, will use the largest timeout among all backend services associated with the route.
+                Structure is documented below.
                 * `nanos` (`pulumi.Input[float]`) - Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
                   represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
                 * `seconds` (`pulumi.Input[str]`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
                   Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
 
-              * `urlRewrite` (`pulumi.Input[dict]`) - The spec to modify the URL of the request, prior to forwarding the request to the matched service.  Structure is documented below.
+              * `urlRewrite` (`pulumi.Input[dict]`) - The spec to modify the URL of the request, prior to forwarding the request to the matched service.
+                Structure is documented below.
                 * `hostRewrite` (`pulumi.Input[str]`) - Prior to forwarding the request to the selected service, the request's host header is replaced
                   with contents of hostRewrite.
                   The value must be between 1 and 255 characters.
@@ -1406,13 +1542,16 @@ class URLMap(pulumi.CustomResource):
                 with weight set to a non 0 number.
                 Once a backendService is identified and before forwarding the request to the backend service,
                 advanced routing actions like Url rewrites and header transformations are applied depending on
-                additional settings specified in this HttpRouteAction.  Structure is documented below.
+                additional settings specified in this HttpRouteAction.
+                Structure is documented below.
                 * `backend_service` (`pulumi.Input[str]`) - The full or partial URL to the BackendService resource being mirrored to.
                 * `header_action` (`pulumi.Input[dict]`) - Specifies changes to request and response headers that need to take effect for
                   the selected backendService.
                   headerAction specified here take effect before headerAction in the enclosing
-                  HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
-                  * `requestHeadersToAdds` (`pulumi.Input[list]`) - Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+                  HttpRouteRule, PathMatcher and UrlMap.
+                  Structure is documented below.
+                  * `requestHeadersToAdds` (`pulumi.Input[list]`) - Headers to add to a matching request prior to forwarding the request to the backendService.
+                    Structure is documented below.
                     * `headerName` (`pulumi.Input[str]`) - The name of the header to add.
                     * `headerValue` (`pulumi.Input[str]`) - The value of the header to add.
                     * `replace` (`pulumi.Input[bool]`) - If false, headerValue is appended to any values that already exist for the header.
@@ -1420,7 +1559,8 @@ class URLMap(pulumi.CustomResource):
 
                   * `requestHeadersToRemoves` (`pulumi.Input[list]`) - A list of header names for headers that need to be removed from the request prior to
                     forwarding the request to the backendService.
-                  * `responseHeadersToAdds` (`pulumi.Input[list]`) - Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+                  * `responseHeadersToAdds` (`pulumi.Input[list]`) - Headers to add the response prior to sending the response back to the client.
+                    Structure is documented below.
                     * `headerName` (`pulumi.Input[str]`) - The name of the header to add.
                     * `headerValue` (`pulumi.Input[str]`) - The value of the header to add.
                     * `replace` (`pulumi.Input[bool]`) - If false, headerValue is appended to any values that already exist for the header.
@@ -1439,7 +1579,8 @@ class URLMap(pulumi.CustomResource):
             * `service` (`pulumi.Input[str]`) - The backend service or backend bucket link that should be matched by this test.
             * `urlRedirect` (`pulumi.Input[dict]`) - When this rule is matched, the request is redirected to a URL specified by
               urlRedirect. If urlRedirect is specified, service or routeAction must not be
-              set.  Structure is documented below.
+              set.
+              Structure is documented below.
               * `hostRedirect` (`pulumi.Input[str]`) - The host that will be used in the redirect response instead of the one that was
                 supplied in the request. The value must be between 1 and 255 characters.
               * `httpsRedirect` (`pulumi.Input[bool]`) - If set to true, the URL scheme in the redirected request is set to https. If set to
@@ -1474,12 +1615,15 @@ class URLMap(pulumi.CustomResource):
             routeRules matters: the first rule that matches will cause its specified routing
             action to take effect. Within a given pathMatcher, only one of pathRules or
             routeRules must be set. routeRules are not supported in UrlMaps intended for
-            External load balancers.  Structure is documented below.
+            External load balancers.
+            Structure is documented below.
             * `header_action` (`pulumi.Input[dict]`) - Specifies changes to request and response headers that need to take effect for
               the selected backendService.
               headerAction specified here take effect before headerAction in the enclosing
-              HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
-              * `requestHeadersToAdds` (`pulumi.Input[list]`) - Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+              HttpRouteRule, PathMatcher and UrlMap.
+              Structure is documented below.
+              * `requestHeadersToAdds` (`pulumi.Input[list]`) - Headers to add to a matching request prior to forwarding the request to the backendService.
+                Structure is documented below.
                 * `headerName` (`pulumi.Input[str]`) - The name of the header to add.
                 * `headerValue` (`pulumi.Input[str]`) - The value of the header to add.
                 * `replace` (`pulumi.Input[bool]`) - If false, headerValue is appended to any values that already exist for the header.
@@ -1487,7 +1631,8 @@ class URLMap(pulumi.CustomResource):
 
               * `requestHeadersToRemoves` (`pulumi.Input[list]`) - A list of header names for headers that need to be removed from the request prior to
                 forwarding the request to the backendService.
-              * `responseHeadersToAdds` (`pulumi.Input[list]`) - Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+              * `responseHeadersToAdds` (`pulumi.Input[list]`) - Headers to add the response prior to sending the response back to the client.
+                Structure is documented below.
                 * `headerName` (`pulumi.Input[str]`) - The name of the header to add.
                 * `headerValue` (`pulumi.Input[str]`) - The value of the header to add.
                 * `replace` (`pulumi.Input[bool]`) - If false, headerValue is appended to any values that already exist for the header.
@@ -1496,14 +1641,16 @@ class URLMap(pulumi.CustomResource):
               * `responseHeadersToRemoves` (`pulumi.Input[list]`) - A list of header names for headers that need to be removed from the response prior to sending the
                 response back to the client.
 
-            * `matchRules` (`pulumi.Input[list]`) - The rules for determining a match.  Structure is documented below.
+            * `matchRules` (`pulumi.Input[list]`) - The rules for determining a match.
+              Structure is documented below.
               * `fullPathMatch` (`pulumi.Input[str]`) - For satifying the matchRule condition, the path of the request must exactly
                 match the value specified in fullPathMatch after removing any query parameters
                 and anchor that may be part of the original URL. FullPathMatch must be between 1
                 and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must
                 be specified.
               * `headerMatches` (`pulumi.Input[list]`) - Specifies a list of header match criteria, all of which must match corresponding
-                headers in the request.  Structure is documented below.
+                headers in the request.
+                Structure is documented below.
                 * `exactMatch` (`pulumi.Input[str]`) - The queryParameterMatch matches if the value of the parameter exactly matches
                   the contents of exactMatch. Only one of presentMatch, exactMatch and regexMatch
                   must be set.
@@ -1522,7 +1669,8 @@ class URLMap(pulumi.CustomResource):
                   the match fails. For example for a range [-5, 0]   - -3 will match.  - 0 will
                   not match.  - 0.25 will not match.  - -3someString will not match.   Only one of
                   exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
-                  must be set.  Structure is documented below.
+                  must be set.
+                  Structure is documented below.
                   * `rangeEnd` (`pulumi.Input[float]`) - The end of the range (exclusive).
                   * `rangeStart` (`pulumi.Input[float]`) - The start of the range (inclusive).
 
@@ -1546,10 +1694,12 @@ class URLMap(pulumi.CustomResource):
                 with corresponding labels in the provided metadata. metadataFilters specified
                 here can be overrides those specified in ForwardingRule that refers to this
                 UrlMap. metadataFilters only applies to Loadbalancers that have their
-                loadBalancingScheme set to INTERNAL_SELF_MANAGED.  Structure is documented below.
+                loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+                Structure is documented below.
                 * `filterLabels` (`pulumi.Input[list]`) - The list of label value pairs that must match labels in the provided metadata
                   based on filterMatchCriteria  This list must not be empty and can have at the
-                  most 64 entries.  Structure is documented below.
+                  most 64 entries.
+                  Structure is documented below.
                   * `name` (`pulumi.Input[str]`) - The name of the query parameter to match. The query parameter must exist in the
                     request, in the absence of which the request match fails.
                   * `value` (`pulumi.Input[str]`) - The value of the label must match the specified value. value can have a maximum
@@ -1561,12 +1711,14 @@ class URLMap(pulumi.CustomResource):
                   provided metadata.
                   - MATCH_ALL: All filterLabels must have matching labels in
                   the provided metadata.
+                  Possible values are `MATCH_ALL` and `MATCH_ANY`.
 
               * `prefixMatch` (`pulumi.Input[str]`) - The value of the header must start with the contents of prefixMatch. Only one of
                 exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
                 must be set.
               * `queryParameterMatches` (`pulumi.Input[list]`) - Specifies a list of query parameter match criteria, all of which must match
-                corresponding query parameters in the request.  Structure is documented below.
+                corresponding query parameters in the request.
+                Structure is documented below.
                 * `exactMatch` (`pulumi.Input[str]`) - The queryParameterMatch matches if the value of the parameter exactly matches
                   the contents of exactMatch. Only one of presentMatch, exactMatch and regexMatch
                   must be set.
@@ -1603,9 +1755,11 @@ class URLMap(pulumi.CustomResource):
               request to the selected backend. If  routeAction specifies any
               weightedBackendServices, service must not be set. Conversely if service is set,
               routeAction cannot contain any  weightedBackendServices. Only one of routeAction
-              or urlRedirect must be set.  Structure is documented below.
+              or urlRedirect must be set.
+              Structure is documented below.
               * `corsPolicy` (`pulumi.Input[dict]`) - The specification for allowing client side cross-origin requests. Please see
-                [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)  Structure is documented below.
+                [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
+                Structure is documented below.
                 * `allowCredentials` (`pulumi.Input[bool]`) - In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
                   This translates to the Access-Control-Allow-Credentials header.
                 * `allowHeaders` (`pulumi.Input[list]`) - Specifies the content for the Access-Control-Allow-Headers header.
@@ -1624,15 +1778,19 @@ class URLMap(pulumi.CustomResource):
                 As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
                 percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
                 by the Loadbalancer for a percentage of requests.
-                timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.  Structure is documented below.
-                * `abort` (`pulumi.Input[dict]`) - The specification for how client requests are aborted as part of fault injection.  Structure is documented below.
+                timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
+                Structure is documented below.
+                * `abort` (`pulumi.Input[dict]`) - The specification for how client requests are aborted as part of fault injection.
+                  Structure is documented below.
                   * `httpStatus` (`pulumi.Input[float]`) - The HTTP status code used to abort the request.
                     The value must be between 200 and 599 inclusive.
                   * `percentage` (`pulumi.Input[float]`) - The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
                     The value must be between 0.0 and 100.0 inclusive.
 
-                * `delay` (`pulumi.Input[dict]`) - The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.  Structure is documented below.
-                  * `fixedDelay` (`pulumi.Input[dict]`) - Specifies the value of the fixed delay interval.  Structure is documented below.
+                * `delay` (`pulumi.Input[dict]`) - The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+                  Structure is documented below.
+                  * `fixedDelay` (`pulumi.Input[dict]`) - Specifies the value of the fixed delay interval.
+                    Structure is documented below.
                     * `nanos` (`pulumi.Input[float]`) - Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
                       represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
                     * `seconds` (`pulumi.Input[str]`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
@@ -1643,14 +1801,17 @@ class URLMap(pulumi.CustomResource):
 
               * `requestMirrorPolicy` (`pulumi.Input[dict]`) - Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
                 Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
-                the host / authority header is suffixed with -shadow.  Structure is documented below.
+                the host / authority header is suffixed with -shadow.
+                Structure is documented below.
                 * `backend_service` (`pulumi.Input[str]`) - The full or partial URL to the BackendService resource being mirrored to.
 
-              * `retryPolicy` (`pulumi.Input[dict]`) - Specifies the retry policy associated with this route.  Structure is documented below.
+              * `retryPolicy` (`pulumi.Input[dict]`) - Specifies the retry policy associated with this route.
+                Structure is documented below.
                 * `numRetries` (`pulumi.Input[float]`) - Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
                 * `perTryTimeout` (`pulumi.Input[dict]`) - Specifies a non-zero timeout per retry attempt.
                   If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-                  will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+                  will use the largest timeout among all backend services associated with the route.
+                  Structure is documented below.
                   * `nanos` (`pulumi.Input[float]`) - Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
                     represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
                   * `seconds` (`pulumi.Input[str]`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
@@ -1674,13 +1835,15 @@ class URLMap(pulumi.CustomResource):
 
               * `timeout` (`pulumi.Input[dict]`) - Specifies the timeout for the selected route. Timeout is computed from the time the request has been
                 fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries.
-                If not specified, will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+                If not specified, will use the largest timeout among all backend services associated with the route.
+                Structure is documented below.
                 * `nanos` (`pulumi.Input[float]`) - Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
                   represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
                 * `seconds` (`pulumi.Input[str]`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
                   Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
 
-              * `urlRewrite` (`pulumi.Input[dict]`) - The spec to modify the URL of the request, prior to forwarding the request to the matched service.  Structure is documented below.
+              * `urlRewrite` (`pulumi.Input[dict]`) - The spec to modify the URL of the request, prior to forwarding the request to the matched service.
+                Structure is documented below.
                 * `hostRewrite` (`pulumi.Input[str]`) - Prior to forwarding the request to the selected service, the request's host header is replaced
                   with contents of hostRewrite.
                   The value must be between 1 and 255 characters.
@@ -1694,13 +1857,16 @@ class URLMap(pulumi.CustomResource):
                 with weight set to a non 0 number.
                 Once a backendService is identified and before forwarding the request to the backend service,
                 advanced routing actions like Url rewrites and header transformations are applied depending on
-                additional settings specified in this HttpRouteAction.  Structure is documented below.
+                additional settings specified in this HttpRouteAction.
+                Structure is documented below.
                 * `backend_service` (`pulumi.Input[str]`) - The full or partial URL to the BackendService resource being mirrored to.
                 * `header_action` (`pulumi.Input[dict]`) - Specifies changes to request and response headers that need to take effect for
                   the selected backendService.
                   headerAction specified here take effect before headerAction in the enclosing
-                  HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
-                  * `requestHeadersToAdds` (`pulumi.Input[list]`) - Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+                  HttpRouteRule, PathMatcher and UrlMap.
+                  Structure is documented below.
+                  * `requestHeadersToAdds` (`pulumi.Input[list]`) - Headers to add to a matching request prior to forwarding the request to the backendService.
+                    Structure is documented below.
                     * `headerName` (`pulumi.Input[str]`) - The name of the header to add.
                     * `headerValue` (`pulumi.Input[str]`) - The value of the header to add.
                     * `replace` (`pulumi.Input[bool]`) - If false, headerValue is appended to any values that already exist for the header.
@@ -1708,7 +1874,8 @@ class URLMap(pulumi.CustomResource):
 
                   * `requestHeadersToRemoves` (`pulumi.Input[list]`) - A list of header names for headers that need to be removed from the request prior to
                     forwarding the request to the backendService.
-                  * `responseHeadersToAdds` (`pulumi.Input[list]`) - Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+                  * `responseHeadersToAdds` (`pulumi.Input[list]`) - Headers to add the response prior to sending the response back to the client.
+                    Structure is documented below.
                     * `headerName` (`pulumi.Input[str]`) - The name of the header to add.
                     * `headerValue` (`pulumi.Input[str]`) - The value of the header to add.
                     * `replace` (`pulumi.Input[bool]`) - If false, headerValue is appended to any values that already exist for the header.
@@ -1727,7 +1894,8 @@ class URLMap(pulumi.CustomResource):
             * `service` (`pulumi.Input[str]`) - The backend service or backend bucket link that should be matched by this test.
             * `urlRedirect` (`pulumi.Input[dict]`) - When this rule is matched, the request is redirected to a URL specified by
               urlRedirect. If urlRedirect is specified, service or routeAction must not be
-              set.  Structure is documented below.
+              set.
+              Structure is documented below.
               * `hostRedirect` (`pulumi.Input[str]`) - The host that will be used in the redirect response instead of the one that was
                 supplied in the request. The value must be between 1 and 255 characters.
               * `httpsRedirect` (`pulumi.Input[bool]`) - If set to true, the URL scheme in the redirected request is set to https. If set to
@@ -1815,18 +1983,22 @@ class URLMap(pulumi.CustomResource):
                advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
                to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
                Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
-               Only one of defaultRouteAction or defaultUrlRedirect must be set.  Structure is documented below.
+               Only one of defaultRouteAction or defaultUrlRedirect must be set.
+               Structure is documented below.
         :param pulumi.Input[str] default_service: The backend service or backend bucket to use when none of the given paths match.
         :param pulumi.Input[dict] default_url_redirect: When none of the specified hostRules match, the request is redirected to a URL specified
                by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
-               defaultRouteAction must not be set.  Structure is documented below.
+               defaultRouteAction must not be set.
+               Structure is documented below.
         :param pulumi.Input[str] description: Description of this test case.
         :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
         :param pulumi.Input[dict] header_action: Specifies changes to request and response headers that need to take effect for
                the selected backendService.
                headerAction specified here take effect before headerAction in the enclosing
-               HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
-        :param pulumi.Input[list] host_rules: The list of HostRules to use against the URL.  Structure is documented below.
+               HttpRouteRule, PathMatcher and UrlMap.
+               Structure is documented below.
+        :param pulumi.Input[list] host_rules: The list of HostRules to use against the URL.
+               Structure is documented below.
         :param pulumi.Input[float] map_id: The unique identifier for the resource.
         :param pulumi.Input[str] name: The name of the query parameter to match. The query parameter must exist in the
                request, in the absence of which the request match fails.
@@ -1837,12 +2009,14 @@ class URLMap(pulumi.CustomResource):
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[list] tests: The list of expected URL mapping tests. Request to update this UrlMap will
                succeed only if all of the test cases pass. You can specify a maximum of 100
-               tests per UrlMap.  Structure is documented below.
+               tests per UrlMap.
+               Structure is documented below.
 
         The **default_route_action** object supports the following:
 
           * `corsPolicy` (`pulumi.Input[dict]`) - The specification for allowing client side cross-origin requests. Please see
-            [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)  Structure is documented below.
+            [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
+            Structure is documented below.
             * `allowCredentials` (`pulumi.Input[bool]`) - In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
               This translates to the Access-Control-Allow-Credentials header.
             * `allowHeaders` (`pulumi.Input[list]`) - Specifies the content for the Access-Control-Allow-Headers header.
@@ -1861,15 +2035,19 @@ class URLMap(pulumi.CustomResource):
             As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
             percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
             by the Loadbalancer for a percentage of requests.
-            timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.  Structure is documented below.
-            * `abort` (`pulumi.Input[dict]`) - The specification for how client requests are aborted as part of fault injection.  Structure is documented below.
+            timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
+            Structure is documented below.
+            * `abort` (`pulumi.Input[dict]`) - The specification for how client requests are aborted as part of fault injection.
+              Structure is documented below.
               * `httpStatus` (`pulumi.Input[float]`) - The HTTP status code used to abort the request.
                 The value must be between 200 and 599 inclusive.
               * `percentage` (`pulumi.Input[float]`) - The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
                 The value must be between 0.0 and 100.0 inclusive.
 
-            * `delay` (`pulumi.Input[dict]`) - The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.  Structure is documented below.
-              * `fixedDelay` (`pulumi.Input[dict]`) - Specifies the value of the fixed delay interval.  Structure is documented below.
+            * `delay` (`pulumi.Input[dict]`) - The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+              Structure is documented below.
+              * `fixedDelay` (`pulumi.Input[dict]`) - Specifies the value of the fixed delay interval.
+                Structure is documented below.
                 * `nanos` (`pulumi.Input[float]`) - Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
                   represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
                 * `seconds` (`pulumi.Input[str]`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
@@ -1880,14 +2058,17 @@ class URLMap(pulumi.CustomResource):
 
           * `requestMirrorPolicy` (`pulumi.Input[dict]`) - Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
             Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
-            the host / authority header is suffixed with -shadow.  Structure is documented below.
+            the host / authority header is suffixed with -shadow.
+            Structure is documented below.
             * `backend_service` (`pulumi.Input[str]`) - The full or partial URL to the BackendService resource being mirrored to.
 
-          * `retryPolicy` (`pulumi.Input[dict]`) - Specifies the retry policy associated with this route.  Structure is documented below.
+          * `retryPolicy` (`pulumi.Input[dict]`) - Specifies the retry policy associated with this route.
+            Structure is documented below.
             * `numRetries` (`pulumi.Input[float]`) - Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
             * `perTryTimeout` (`pulumi.Input[dict]`) - Specifies a non-zero timeout per retry attempt.
               If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-              will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+              will use the largest timeout among all backend services associated with the route.
+              Structure is documented below.
               * `nanos` (`pulumi.Input[float]`) - Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
                 represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
               * `seconds` (`pulumi.Input[str]`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
@@ -1911,13 +2092,15 @@ class URLMap(pulumi.CustomResource):
 
           * `timeout` (`pulumi.Input[dict]`) - Specifies the timeout for the selected route. Timeout is computed from the time the request has been
             fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries.
-            If not specified, will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+            If not specified, will use the largest timeout among all backend services associated with the route.
+            Structure is documented below.
             * `nanos` (`pulumi.Input[float]`) - Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
               represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
             * `seconds` (`pulumi.Input[str]`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
               Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
 
-          * `urlRewrite` (`pulumi.Input[dict]`) - The spec to modify the URL of the request, prior to forwarding the request to the matched service.  Structure is documented below.
+          * `urlRewrite` (`pulumi.Input[dict]`) - The spec to modify the URL of the request, prior to forwarding the request to the matched service.
+            Structure is documented below.
             * `hostRewrite` (`pulumi.Input[str]`) - Prior to forwarding the request to the selected service, the request's host header is replaced
               with contents of hostRewrite.
               The value must be between 1 and 255 characters.
@@ -1931,13 +2114,16 @@ class URLMap(pulumi.CustomResource):
             with weight set to a non 0 number.
             Once a backendService is identified and before forwarding the request to the backend service,
             advanced routing actions like Url rewrites and header transformations are applied depending on
-            additional settings specified in this HttpRouteAction.  Structure is documented below.
+            additional settings specified in this HttpRouteAction.
+            Structure is documented below.
             * `backend_service` (`pulumi.Input[str]`) - The full or partial URL to the BackendService resource being mirrored to.
             * `header_action` (`pulumi.Input[dict]`) - Specifies changes to request and response headers that need to take effect for
               the selected backendService.
               headerAction specified here take effect before headerAction in the enclosing
-              HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
-              * `requestHeadersToAdds` (`pulumi.Input[list]`) - Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+              HttpRouteRule, PathMatcher and UrlMap.
+              Structure is documented below.
+              * `requestHeadersToAdds` (`pulumi.Input[list]`) - Headers to add to a matching request prior to forwarding the request to the backendService.
+                Structure is documented below.
                 * `headerName` (`pulumi.Input[str]`) - The name of the header to add.
                 * `headerValue` (`pulumi.Input[str]`) - The value of the header to add.
                 * `replace` (`pulumi.Input[bool]`) - If false, headerValue is appended to any values that already exist for the header.
@@ -1945,7 +2131,8 @@ class URLMap(pulumi.CustomResource):
 
               * `requestHeadersToRemoves` (`pulumi.Input[list]`) - A list of header names for headers that need to be removed from the request prior to
                 forwarding the request to the backendService.
-              * `responseHeadersToAdds` (`pulumi.Input[list]`) - Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+              * `responseHeadersToAdds` (`pulumi.Input[list]`) - Headers to add the response prior to sending the response back to the client.
+                Structure is documented below.
                 * `headerName` (`pulumi.Input[str]`) - The name of the header to add.
                 * `headerValue` (`pulumi.Input[str]`) - The value of the header to add.
                 * `replace` (`pulumi.Input[bool]`) - If false, headerValue is appended to any values that already exist for the header.
@@ -1994,7 +2181,8 @@ class URLMap(pulumi.CustomResource):
 
         The **header_action** object supports the following:
 
-          * `requestHeadersToAdds` (`pulumi.Input[list]`) - Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+          * `requestHeadersToAdds` (`pulumi.Input[list]`) - Headers to add to a matching request prior to forwarding the request to the backendService.
+            Structure is documented below.
             * `headerName` (`pulumi.Input[str]`) - The name of the header to add.
             * `headerValue` (`pulumi.Input[str]`) - The value of the header to add.
             * `replace` (`pulumi.Input[bool]`) - If false, headerValue is appended to any values that already exist for the header.
@@ -2002,7 +2190,8 @@ class URLMap(pulumi.CustomResource):
 
           * `requestHeadersToRemoves` (`pulumi.Input[list]`) - A list of header names for headers that need to be removed from the request prior to
             forwarding the request to the backendService.
-          * `responseHeadersToAdds` (`pulumi.Input[list]`) - Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+          * `responseHeadersToAdds` (`pulumi.Input[list]`) - Headers to add the response prior to sending the response back to the client.
+            Structure is documented below.
             * `headerName` (`pulumi.Input[str]`) - The name of the header to add.
             * `headerValue` (`pulumi.Input[str]`) - The value of the header to add.
             * `replace` (`pulumi.Input[bool]`) - If false, headerValue is appended to any values that already exist for the header.
@@ -2026,9 +2215,11 @@ class URLMap(pulumi.CustomResource):
             advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
             to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
             Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
-            Only one of defaultRouteAction or defaultUrlRedirect must be set.  Structure is documented below.
+            Only one of defaultRouteAction or defaultUrlRedirect must be set.
+            Structure is documented below.
             * `corsPolicy` (`pulumi.Input[dict]`) - The specification for allowing client side cross-origin requests. Please see
-              [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)  Structure is documented below.
+              [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
+              Structure is documented below.
               * `allowCredentials` (`pulumi.Input[bool]`) - In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
                 This translates to the Access-Control-Allow-Credentials header.
               * `allowHeaders` (`pulumi.Input[list]`) - Specifies the content for the Access-Control-Allow-Headers header.
@@ -2047,15 +2238,19 @@ class URLMap(pulumi.CustomResource):
               As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
               percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
               by the Loadbalancer for a percentage of requests.
-              timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.  Structure is documented below.
-              * `abort` (`pulumi.Input[dict]`) - The specification for how client requests are aborted as part of fault injection.  Structure is documented below.
+              timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
+              Structure is documented below.
+              * `abort` (`pulumi.Input[dict]`) - The specification for how client requests are aborted as part of fault injection.
+                Structure is documented below.
                 * `httpStatus` (`pulumi.Input[float]`) - The HTTP status code used to abort the request.
                   The value must be between 200 and 599 inclusive.
                 * `percentage` (`pulumi.Input[float]`) - The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
                   The value must be between 0.0 and 100.0 inclusive.
 
-              * `delay` (`pulumi.Input[dict]`) - The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.  Structure is documented below.
-                * `fixedDelay` (`pulumi.Input[dict]`) - Specifies the value of the fixed delay interval.  Structure is documented below.
+              * `delay` (`pulumi.Input[dict]`) - The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+                Structure is documented below.
+                * `fixedDelay` (`pulumi.Input[dict]`) - Specifies the value of the fixed delay interval.
+                  Structure is documented below.
                   * `nanos` (`pulumi.Input[float]`) - Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
                     represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
                   * `seconds` (`pulumi.Input[str]`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
@@ -2066,14 +2261,17 @@ class URLMap(pulumi.CustomResource):
 
             * `requestMirrorPolicy` (`pulumi.Input[dict]`) - Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
               Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
-              the host / authority header is suffixed with -shadow.  Structure is documented below.
+              the host / authority header is suffixed with -shadow.
+              Structure is documented below.
               * `backend_service` (`pulumi.Input[str]`) - The full or partial URL to the BackendService resource being mirrored to.
 
-            * `retryPolicy` (`pulumi.Input[dict]`) - Specifies the retry policy associated with this route.  Structure is documented below.
+            * `retryPolicy` (`pulumi.Input[dict]`) - Specifies the retry policy associated with this route.
+              Structure is documented below.
               * `numRetries` (`pulumi.Input[float]`) - Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
               * `perTryTimeout` (`pulumi.Input[dict]`) - Specifies a non-zero timeout per retry attempt.
                 If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-                will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+                will use the largest timeout among all backend services associated with the route.
+                Structure is documented below.
                 * `nanos` (`pulumi.Input[float]`) - Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
                   represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
                 * `seconds` (`pulumi.Input[str]`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
@@ -2097,13 +2295,15 @@ class URLMap(pulumi.CustomResource):
 
             * `timeout` (`pulumi.Input[dict]`) - Specifies the timeout for the selected route. Timeout is computed from the time the request has been
               fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries.
-              If not specified, will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+              If not specified, will use the largest timeout among all backend services associated with the route.
+              Structure is documented below.
               * `nanos` (`pulumi.Input[float]`) - Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
                 represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
               * `seconds` (`pulumi.Input[str]`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
                 Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
 
-            * `urlRewrite` (`pulumi.Input[dict]`) - The spec to modify the URL of the request, prior to forwarding the request to the matched service.  Structure is documented below.
+            * `urlRewrite` (`pulumi.Input[dict]`) - The spec to modify the URL of the request, prior to forwarding the request to the matched service.
+              Structure is documented below.
               * `hostRewrite` (`pulumi.Input[str]`) - Prior to forwarding the request to the selected service, the request's host header is replaced
                 with contents of hostRewrite.
                 The value must be between 1 and 255 characters.
@@ -2117,13 +2317,16 @@ class URLMap(pulumi.CustomResource):
               with weight set to a non 0 number.
               Once a backendService is identified and before forwarding the request to the backend service,
               advanced routing actions like Url rewrites and header transformations are applied depending on
-              additional settings specified in this HttpRouteAction.  Structure is documented below.
+              additional settings specified in this HttpRouteAction.
+              Structure is documented below.
               * `backend_service` (`pulumi.Input[str]`) - The full or partial URL to the BackendService resource being mirrored to.
               * `header_action` (`pulumi.Input[dict]`) - Specifies changes to request and response headers that need to take effect for
                 the selected backendService.
                 headerAction specified here take effect before headerAction in the enclosing
-                HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
-                * `requestHeadersToAdds` (`pulumi.Input[list]`) - Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+                HttpRouteRule, PathMatcher and UrlMap.
+                Structure is documented below.
+                * `requestHeadersToAdds` (`pulumi.Input[list]`) - Headers to add to a matching request prior to forwarding the request to the backendService.
+                  Structure is documented below.
                   * `headerName` (`pulumi.Input[str]`) - The name of the header to add.
                   * `headerValue` (`pulumi.Input[str]`) - The value of the header to add.
                   * `replace` (`pulumi.Input[bool]`) - If false, headerValue is appended to any values that already exist for the header.
@@ -2131,7 +2334,8 @@ class URLMap(pulumi.CustomResource):
 
                 * `requestHeadersToRemoves` (`pulumi.Input[list]`) - A list of header names for headers that need to be removed from the request prior to
                   forwarding the request to the backendService.
-                * `responseHeadersToAdds` (`pulumi.Input[list]`) - Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+                * `responseHeadersToAdds` (`pulumi.Input[list]`) - Headers to add the response prior to sending the response back to the client.
+                  Structure is documented below.
                   * `headerName` (`pulumi.Input[str]`) - The name of the header to add.
                   * `headerValue` (`pulumi.Input[str]`) - The value of the header to add.
                   * `replace` (`pulumi.Input[bool]`) - If false, headerValue is appended to any values that already exist for the header.
@@ -2150,7 +2354,8 @@ class URLMap(pulumi.CustomResource):
           * `default_service` (`pulumi.Input[str]`) - The backend service or backend bucket to use when none of the given paths match.
           * `default_url_redirect` (`pulumi.Input[dict]`) - When none of the specified hostRules match, the request is redirected to a URL specified
             by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
-            defaultRouteAction must not be set.  Structure is documented below.
+            defaultRouteAction must not be set.
+            Structure is documented below.
             * `hostRedirect` (`pulumi.Input[str]`) - The host that will be used in the redirect response instead of the one that was
               supplied in the request. The value must be between 1 and 255 characters.
             * `httpsRedirect` (`pulumi.Input[bool]`) - If set to true, the URL scheme in the redirected request is set to https. If set to
@@ -2184,8 +2389,10 @@ class URLMap(pulumi.CustomResource):
           * `header_action` (`pulumi.Input[dict]`) - Specifies changes to request and response headers that need to take effect for
             the selected backendService.
             headerAction specified here take effect before headerAction in the enclosing
-            HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
-            * `requestHeadersToAdds` (`pulumi.Input[list]`) - Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+            HttpRouteRule, PathMatcher and UrlMap.
+            Structure is documented below.
+            * `requestHeadersToAdds` (`pulumi.Input[list]`) - Headers to add to a matching request prior to forwarding the request to the backendService.
+              Structure is documented below.
               * `headerName` (`pulumi.Input[str]`) - The name of the header to add.
               * `headerValue` (`pulumi.Input[str]`) - The value of the header to add.
               * `replace` (`pulumi.Input[bool]`) - If false, headerValue is appended to any values that already exist for the header.
@@ -2193,7 +2400,8 @@ class URLMap(pulumi.CustomResource):
 
             * `requestHeadersToRemoves` (`pulumi.Input[list]`) - A list of header names for headers that need to be removed from the request prior to
               forwarding the request to the backendService.
-            * `responseHeadersToAdds` (`pulumi.Input[list]`) - Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+            * `responseHeadersToAdds` (`pulumi.Input[list]`) - Headers to add the response prior to sending the response back to the client.
+              Structure is documented below.
               * `headerName` (`pulumi.Input[str]`) - The name of the header to add.
               * `headerValue` (`pulumi.Input[str]`) - The value of the header to add.
               * `replace` (`pulumi.Input[bool]`) - If false, headerValue is appended to any values that already exist for the header.
@@ -2209,7 +2417,8 @@ class URLMap(pulumi.CustomResource):
             are specified does not matter. Matches are always done on the longest-path-first
             basis. For example: a pathRule with a path /a/b/c/* will match before /a/b/*
             irrespective of the order in which those paths appear in this list. Within a
-            given pathMatcher, only one of pathRules or routeRules must be set.  Structure is documented below.
+            given pathMatcher, only one of pathRules or routeRules must be set.
+            Structure is documented below.
             * `paths` (`pulumi.Input[list]`) - The list of path patterns to match. Each must start with / and the only place a
               * is allowed is at the end following a /. The string fed to the path matcher
               does not include any text after the first ? or #, and those chars are not
@@ -2219,9 +2428,11 @@ class URLMap(pulumi.CustomResource):
               request to the selected backend. If  routeAction specifies any
               weightedBackendServices, service must not be set. Conversely if service is set,
               routeAction cannot contain any  weightedBackendServices. Only one of routeAction
-              or urlRedirect must be set.  Structure is documented below.
+              or urlRedirect must be set.
+              Structure is documented below.
               * `corsPolicy` (`pulumi.Input[dict]`) - The specification for allowing client side cross-origin requests. Please see
-                [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)  Structure is documented below.
+                [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
+                Structure is documented below.
                 * `allowCredentials` (`pulumi.Input[bool]`) - In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
                   This translates to the Access-Control-Allow-Credentials header.
                 * `allowHeaders` (`pulumi.Input[list]`) - Specifies the content for the Access-Control-Allow-Headers header.
@@ -2240,15 +2451,19 @@ class URLMap(pulumi.CustomResource):
                 As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
                 percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
                 by the Loadbalancer for a percentage of requests.
-                timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.  Structure is documented below.
-                * `abort` (`pulumi.Input[dict]`) - The specification for how client requests are aborted as part of fault injection.  Structure is documented below.
+                timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
+                Structure is documented below.
+                * `abort` (`pulumi.Input[dict]`) - The specification for how client requests are aborted as part of fault injection.
+                  Structure is documented below.
                   * `httpStatus` (`pulumi.Input[float]`) - The HTTP status code used to abort the request.
                     The value must be between 200 and 599 inclusive.
                   * `percentage` (`pulumi.Input[float]`) - The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
                     The value must be between 0.0 and 100.0 inclusive.
 
-                * `delay` (`pulumi.Input[dict]`) - The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.  Structure is documented below.
-                  * `fixedDelay` (`pulumi.Input[dict]`) - Specifies the value of the fixed delay interval.  Structure is documented below.
+                * `delay` (`pulumi.Input[dict]`) - The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+                  Structure is documented below.
+                  * `fixedDelay` (`pulumi.Input[dict]`) - Specifies the value of the fixed delay interval.
+                    Structure is documented below.
                     * `nanos` (`pulumi.Input[float]`) - Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
                       represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
                     * `seconds` (`pulumi.Input[str]`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
@@ -2259,14 +2474,17 @@ class URLMap(pulumi.CustomResource):
 
               * `requestMirrorPolicy` (`pulumi.Input[dict]`) - Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
                 Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
-                the host / authority header is suffixed with -shadow.  Structure is documented below.
+                the host / authority header is suffixed with -shadow.
+                Structure is documented below.
                 * `backend_service` (`pulumi.Input[str]`) - The full or partial URL to the BackendService resource being mirrored to.
 
-              * `retryPolicy` (`pulumi.Input[dict]`) - Specifies the retry policy associated with this route.  Structure is documented below.
+              * `retryPolicy` (`pulumi.Input[dict]`) - Specifies the retry policy associated with this route.
+                Structure is documented below.
                 * `numRetries` (`pulumi.Input[float]`) - Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
                 * `perTryTimeout` (`pulumi.Input[dict]`) - Specifies a non-zero timeout per retry attempt.
                   If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-                  will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+                  will use the largest timeout among all backend services associated with the route.
+                  Structure is documented below.
                   * `nanos` (`pulumi.Input[float]`) - Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
                     represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
                   * `seconds` (`pulumi.Input[str]`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
@@ -2290,13 +2508,15 @@ class URLMap(pulumi.CustomResource):
 
               * `timeout` (`pulumi.Input[dict]`) - Specifies the timeout for the selected route. Timeout is computed from the time the request has been
                 fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries.
-                If not specified, will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+                If not specified, will use the largest timeout among all backend services associated with the route.
+                Structure is documented below.
                 * `nanos` (`pulumi.Input[float]`) - Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
                   represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
                 * `seconds` (`pulumi.Input[str]`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
                   Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
 
-              * `urlRewrite` (`pulumi.Input[dict]`) - The spec to modify the URL of the request, prior to forwarding the request to the matched service.  Structure is documented below.
+              * `urlRewrite` (`pulumi.Input[dict]`) - The spec to modify the URL of the request, prior to forwarding the request to the matched service.
+                Structure is documented below.
                 * `hostRewrite` (`pulumi.Input[str]`) - Prior to forwarding the request to the selected service, the request's host header is replaced
                   with contents of hostRewrite.
                   The value must be between 1 and 255 characters.
@@ -2310,13 +2530,16 @@ class URLMap(pulumi.CustomResource):
                 with weight set to a non 0 number.
                 Once a backendService is identified and before forwarding the request to the backend service,
                 advanced routing actions like Url rewrites and header transformations are applied depending on
-                additional settings specified in this HttpRouteAction.  Structure is documented below.
+                additional settings specified in this HttpRouteAction.
+                Structure is documented below.
                 * `backend_service` (`pulumi.Input[str]`) - The full or partial URL to the BackendService resource being mirrored to.
                 * `header_action` (`pulumi.Input[dict]`) - Specifies changes to request and response headers that need to take effect for
                   the selected backendService.
                   headerAction specified here take effect before headerAction in the enclosing
-                  HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
-                  * `requestHeadersToAdds` (`pulumi.Input[list]`) - Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+                  HttpRouteRule, PathMatcher and UrlMap.
+                  Structure is documented below.
+                  * `requestHeadersToAdds` (`pulumi.Input[list]`) - Headers to add to a matching request prior to forwarding the request to the backendService.
+                    Structure is documented below.
                     * `headerName` (`pulumi.Input[str]`) - The name of the header to add.
                     * `headerValue` (`pulumi.Input[str]`) - The value of the header to add.
                     * `replace` (`pulumi.Input[bool]`) - If false, headerValue is appended to any values that already exist for the header.
@@ -2324,7 +2547,8 @@ class URLMap(pulumi.CustomResource):
 
                   * `requestHeadersToRemoves` (`pulumi.Input[list]`) - A list of header names for headers that need to be removed from the request prior to
                     forwarding the request to the backendService.
-                  * `responseHeadersToAdds` (`pulumi.Input[list]`) - Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+                  * `responseHeadersToAdds` (`pulumi.Input[list]`) - Headers to add the response prior to sending the response back to the client.
+                    Structure is documented below.
                     * `headerName` (`pulumi.Input[str]`) - The name of the header to add.
                     * `headerValue` (`pulumi.Input[str]`) - The value of the header to add.
                     * `replace` (`pulumi.Input[bool]`) - If false, headerValue is appended to any values that already exist for the header.
@@ -2343,7 +2567,8 @@ class URLMap(pulumi.CustomResource):
             * `service` (`pulumi.Input[str]`) - The backend service or backend bucket link that should be matched by this test.
             * `urlRedirect` (`pulumi.Input[dict]`) - When this rule is matched, the request is redirected to a URL specified by
               urlRedirect. If urlRedirect is specified, service or routeAction must not be
-              set.  Structure is documented below.
+              set.
+              Structure is documented below.
               * `hostRedirect` (`pulumi.Input[str]`) - The host that will be used in the redirect response instead of the one that was
                 supplied in the request. The value must be between 1 and 255 characters.
               * `httpsRedirect` (`pulumi.Input[bool]`) - If set to true, the URL scheme in the redirected request is set to https. If set to
@@ -2378,12 +2603,15 @@ class URLMap(pulumi.CustomResource):
             routeRules matters: the first rule that matches will cause its specified routing
             action to take effect. Within a given pathMatcher, only one of pathRules or
             routeRules must be set. routeRules are not supported in UrlMaps intended for
-            External load balancers.  Structure is documented below.
+            External load balancers.
+            Structure is documented below.
             * `header_action` (`pulumi.Input[dict]`) - Specifies changes to request and response headers that need to take effect for
               the selected backendService.
               headerAction specified here take effect before headerAction in the enclosing
-              HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
-              * `requestHeadersToAdds` (`pulumi.Input[list]`) - Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+              HttpRouteRule, PathMatcher and UrlMap.
+              Structure is documented below.
+              * `requestHeadersToAdds` (`pulumi.Input[list]`) - Headers to add to a matching request prior to forwarding the request to the backendService.
+                Structure is documented below.
                 * `headerName` (`pulumi.Input[str]`) - The name of the header to add.
                 * `headerValue` (`pulumi.Input[str]`) - The value of the header to add.
                 * `replace` (`pulumi.Input[bool]`) - If false, headerValue is appended to any values that already exist for the header.
@@ -2391,7 +2619,8 @@ class URLMap(pulumi.CustomResource):
 
               * `requestHeadersToRemoves` (`pulumi.Input[list]`) - A list of header names for headers that need to be removed from the request prior to
                 forwarding the request to the backendService.
-              * `responseHeadersToAdds` (`pulumi.Input[list]`) - Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+              * `responseHeadersToAdds` (`pulumi.Input[list]`) - Headers to add the response prior to sending the response back to the client.
+                Structure is documented below.
                 * `headerName` (`pulumi.Input[str]`) - The name of the header to add.
                 * `headerValue` (`pulumi.Input[str]`) - The value of the header to add.
                 * `replace` (`pulumi.Input[bool]`) - If false, headerValue is appended to any values that already exist for the header.
@@ -2400,14 +2629,16 @@ class URLMap(pulumi.CustomResource):
               * `responseHeadersToRemoves` (`pulumi.Input[list]`) - A list of header names for headers that need to be removed from the response prior to sending the
                 response back to the client.
 
-            * `matchRules` (`pulumi.Input[list]`) - The rules for determining a match.  Structure is documented below.
+            * `matchRules` (`pulumi.Input[list]`) - The rules for determining a match.
+              Structure is documented below.
               * `fullPathMatch` (`pulumi.Input[str]`) - For satifying the matchRule condition, the path of the request must exactly
                 match the value specified in fullPathMatch after removing any query parameters
                 and anchor that may be part of the original URL. FullPathMatch must be between 1
                 and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must
                 be specified.
               * `headerMatches` (`pulumi.Input[list]`) - Specifies a list of header match criteria, all of which must match corresponding
-                headers in the request.  Structure is documented below.
+                headers in the request.
+                Structure is documented below.
                 * `exactMatch` (`pulumi.Input[str]`) - The queryParameterMatch matches if the value of the parameter exactly matches
                   the contents of exactMatch. Only one of presentMatch, exactMatch and regexMatch
                   must be set.
@@ -2426,7 +2657,8 @@ class URLMap(pulumi.CustomResource):
                   the match fails. For example for a range [-5, 0]   - -3 will match.  - 0 will
                   not match.  - 0.25 will not match.  - -3someString will not match.   Only one of
                   exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
-                  must be set.  Structure is documented below.
+                  must be set.
+                  Structure is documented below.
                   * `rangeEnd` (`pulumi.Input[float]`) - The end of the range (exclusive).
                   * `rangeStart` (`pulumi.Input[float]`) - The start of the range (inclusive).
 
@@ -2450,10 +2682,12 @@ class URLMap(pulumi.CustomResource):
                 with corresponding labels in the provided metadata. metadataFilters specified
                 here can be overrides those specified in ForwardingRule that refers to this
                 UrlMap. metadataFilters only applies to Loadbalancers that have their
-                loadBalancingScheme set to INTERNAL_SELF_MANAGED.  Structure is documented below.
+                loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+                Structure is documented below.
                 * `filterLabels` (`pulumi.Input[list]`) - The list of label value pairs that must match labels in the provided metadata
                   based on filterMatchCriteria  This list must not be empty and can have at the
-                  most 64 entries.  Structure is documented below.
+                  most 64 entries.
+                  Structure is documented below.
                   * `name` (`pulumi.Input[str]`) - The name of the query parameter to match. The query parameter must exist in the
                     request, in the absence of which the request match fails.
                   * `value` (`pulumi.Input[str]`) - The value of the label must match the specified value. value can have a maximum
@@ -2465,12 +2699,14 @@ class URLMap(pulumi.CustomResource):
                   provided metadata.
                   - MATCH_ALL: All filterLabels must have matching labels in
                   the provided metadata.
+                  Possible values are `MATCH_ALL` and `MATCH_ANY`.
 
               * `prefixMatch` (`pulumi.Input[str]`) - The value of the header must start with the contents of prefixMatch. Only one of
                 exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
                 must be set.
               * `queryParameterMatches` (`pulumi.Input[list]`) - Specifies a list of query parameter match criteria, all of which must match
-                corresponding query parameters in the request.  Structure is documented below.
+                corresponding query parameters in the request.
+                Structure is documented below.
                 * `exactMatch` (`pulumi.Input[str]`) - The queryParameterMatch matches if the value of the parameter exactly matches
                   the contents of exactMatch. Only one of presentMatch, exactMatch and regexMatch
                   must be set.
@@ -2507,9 +2743,11 @@ class URLMap(pulumi.CustomResource):
               request to the selected backend. If  routeAction specifies any
               weightedBackendServices, service must not be set. Conversely if service is set,
               routeAction cannot contain any  weightedBackendServices. Only one of routeAction
-              or urlRedirect must be set.  Structure is documented below.
+              or urlRedirect must be set.
+              Structure is documented below.
               * `corsPolicy` (`pulumi.Input[dict]`) - The specification for allowing client side cross-origin requests. Please see
-                [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)  Structure is documented below.
+                [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
+                Structure is documented below.
                 * `allowCredentials` (`pulumi.Input[bool]`) - In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
                   This translates to the Access-Control-Allow-Credentials header.
                 * `allowHeaders` (`pulumi.Input[list]`) - Specifies the content for the Access-Control-Allow-Headers header.
@@ -2528,15 +2766,19 @@ class URLMap(pulumi.CustomResource):
                 As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
                 percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
                 by the Loadbalancer for a percentage of requests.
-                timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.  Structure is documented below.
-                * `abort` (`pulumi.Input[dict]`) - The specification for how client requests are aborted as part of fault injection.  Structure is documented below.
+                timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
+                Structure is documented below.
+                * `abort` (`pulumi.Input[dict]`) - The specification for how client requests are aborted as part of fault injection.
+                  Structure is documented below.
                   * `httpStatus` (`pulumi.Input[float]`) - The HTTP status code used to abort the request.
                     The value must be between 200 and 599 inclusive.
                   * `percentage` (`pulumi.Input[float]`) - The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
                     The value must be between 0.0 and 100.0 inclusive.
 
-                * `delay` (`pulumi.Input[dict]`) - The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.  Structure is documented below.
-                  * `fixedDelay` (`pulumi.Input[dict]`) - Specifies the value of the fixed delay interval.  Structure is documented below.
+                * `delay` (`pulumi.Input[dict]`) - The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+                  Structure is documented below.
+                  * `fixedDelay` (`pulumi.Input[dict]`) - Specifies the value of the fixed delay interval.
+                    Structure is documented below.
                     * `nanos` (`pulumi.Input[float]`) - Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
                       represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
                     * `seconds` (`pulumi.Input[str]`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
@@ -2547,14 +2789,17 @@ class URLMap(pulumi.CustomResource):
 
               * `requestMirrorPolicy` (`pulumi.Input[dict]`) - Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
                 Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
-                the host / authority header is suffixed with -shadow.  Structure is documented below.
+                the host / authority header is suffixed with -shadow.
+                Structure is documented below.
                 * `backend_service` (`pulumi.Input[str]`) - The full or partial URL to the BackendService resource being mirrored to.
 
-              * `retryPolicy` (`pulumi.Input[dict]`) - Specifies the retry policy associated with this route.  Structure is documented below.
+              * `retryPolicy` (`pulumi.Input[dict]`) - Specifies the retry policy associated with this route.
+                Structure is documented below.
                 * `numRetries` (`pulumi.Input[float]`) - Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
                 * `perTryTimeout` (`pulumi.Input[dict]`) - Specifies a non-zero timeout per retry attempt.
                   If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-                  will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+                  will use the largest timeout among all backend services associated with the route.
+                  Structure is documented below.
                   * `nanos` (`pulumi.Input[float]`) - Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
                     represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
                   * `seconds` (`pulumi.Input[str]`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
@@ -2578,13 +2823,15 @@ class URLMap(pulumi.CustomResource):
 
               * `timeout` (`pulumi.Input[dict]`) - Specifies the timeout for the selected route. Timeout is computed from the time the request has been
                 fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries.
-                If not specified, will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+                If not specified, will use the largest timeout among all backend services associated with the route.
+                Structure is documented below.
                 * `nanos` (`pulumi.Input[float]`) - Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
                   represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
                 * `seconds` (`pulumi.Input[str]`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
                   Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
 
-              * `urlRewrite` (`pulumi.Input[dict]`) - The spec to modify the URL of the request, prior to forwarding the request to the matched service.  Structure is documented below.
+              * `urlRewrite` (`pulumi.Input[dict]`) - The spec to modify the URL of the request, prior to forwarding the request to the matched service.
+                Structure is documented below.
                 * `hostRewrite` (`pulumi.Input[str]`) - Prior to forwarding the request to the selected service, the request's host header is replaced
                   with contents of hostRewrite.
                   The value must be between 1 and 255 characters.
@@ -2598,13 +2845,16 @@ class URLMap(pulumi.CustomResource):
                 with weight set to a non 0 number.
                 Once a backendService is identified and before forwarding the request to the backend service,
                 advanced routing actions like Url rewrites and header transformations are applied depending on
-                additional settings specified in this HttpRouteAction.  Structure is documented below.
+                additional settings specified in this HttpRouteAction.
+                Structure is documented below.
                 * `backend_service` (`pulumi.Input[str]`) - The full or partial URL to the BackendService resource being mirrored to.
                 * `header_action` (`pulumi.Input[dict]`) - Specifies changes to request and response headers that need to take effect for
                   the selected backendService.
                   headerAction specified here take effect before headerAction in the enclosing
-                  HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
-                  * `requestHeadersToAdds` (`pulumi.Input[list]`) - Headers to add to a matching request prior to forwarding the request to the backendService.  Structure is documented below.
+                  HttpRouteRule, PathMatcher and UrlMap.
+                  Structure is documented below.
+                  * `requestHeadersToAdds` (`pulumi.Input[list]`) - Headers to add to a matching request prior to forwarding the request to the backendService.
+                    Structure is documented below.
                     * `headerName` (`pulumi.Input[str]`) - The name of the header to add.
                     * `headerValue` (`pulumi.Input[str]`) - The value of the header to add.
                     * `replace` (`pulumi.Input[bool]`) - If false, headerValue is appended to any values that already exist for the header.
@@ -2612,7 +2862,8 @@ class URLMap(pulumi.CustomResource):
 
                   * `requestHeadersToRemoves` (`pulumi.Input[list]`) - A list of header names for headers that need to be removed from the request prior to
                     forwarding the request to the backendService.
-                  * `responseHeadersToAdds` (`pulumi.Input[list]`) - Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+                  * `responseHeadersToAdds` (`pulumi.Input[list]`) - Headers to add the response prior to sending the response back to the client.
+                    Structure is documented below.
                     * `headerName` (`pulumi.Input[str]`) - The name of the header to add.
                     * `headerValue` (`pulumi.Input[str]`) - The value of the header to add.
                     * `replace` (`pulumi.Input[bool]`) - If false, headerValue is appended to any values that already exist for the header.
@@ -2631,7 +2882,8 @@ class URLMap(pulumi.CustomResource):
             * `service` (`pulumi.Input[str]`) - The backend service or backend bucket link that should be matched by this test.
             * `urlRedirect` (`pulumi.Input[dict]`) - When this rule is matched, the request is redirected to a URL specified by
               urlRedirect. If urlRedirect is specified, service or routeAction must not be
-              set.  Structure is documented below.
+              set.
+              Structure is documented below.
               * `hostRedirect` (`pulumi.Input[str]`) - The host that will be used in the redirect response instead of the one that was
                 supplied in the request. The value must be between 1 and 255 characters.
               * `httpsRedirect` (`pulumi.Input[bool]`) - If set to true, the URL scheme in the redirected request is set to https. If set to
