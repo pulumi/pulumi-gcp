@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 __config__ = pulumi.Config('gcp')
 
@@ -66,7 +66,7 @@ container_beta_custom_endpoint = __config__.get('containerBetaCustomEndpoint')
 
 container_custom_endpoint = __config__.get('containerCustomEndpoint')
 
-credentials = __config__.get('credentials') or utilities.get_env('GOOGLE_CREDENTIALS', 'GOOGLE_CLOUD_KEYFILE_JSON', 'GCLOUD_KEYFILE_JSON')
+credentials = __config__.get('credentials') or _utilities.get_env('GOOGLE_CREDENTIALS', 'GOOGLE_CLOUD_KEYFILE_JSON', 'GCLOUD_KEYFILE_JSON')
 
 data_catalog_custom_endpoint = __config__.get('dataCatalogCustomEndpoint')
 
@@ -124,13 +124,13 @@ os_config_custom_endpoint = __config__.get('osConfigCustomEndpoint')
 
 os_login_custom_endpoint = __config__.get('osLoginCustomEndpoint')
 
-project = __config__.get('project') or utilities.get_env('GOOGLE_PROJECT', 'GOOGLE_CLOUD_PROJECT', 'GCLOUD_PROJECT', 'CLOUDSDK_CORE_PROJECT')
+project = __config__.get('project') or _utilities.get_env('GOOGLE_PROJECT', 'GOOGLE_CLOUD_PROJECT', 'GCLOUD_PROJECT', 'CLOUDSDK_CORE_PROJECT')
 
 pubsub_custom_endpoint = __config__.get('pubsubCustomEndpoint')
 
 redis_custom_endpoint = __config__.get('redisCustomEndpoint')
 
-region = __config__.get('region') or utilities.get_env('GOOGLE_REGION', 'GCLOUD_REGION', 'CLOUDSDK_COMPUTE_REGION')
+region = __config__.get('region') or _utilities.get_env('GOOGLE_REGION', 'GCLOUD_REGION', 'CLOUDSDK_COMPUTE_REGION')
 
 request_timeout = __config__.get('requestTimeout')
 
@@ -174,5 +174,5 @@ user_project_override = __config__.get('userProjectOverride')
 
 vpc_access_custom_endpoint = __config__.get('vpcAccessCustomEndpoint')
 
-zone = __config__.get('zone') or utilities.get_env('GOOGLE_ZONE', 'GCLOUD_ZONE', 'CLOUDSDK_COMPUTE_ZONE')
+zone = __config__.get('zone') or _utilities.get_env('GOOGLE_ZONE', 'GCLOUD_ZONE', 'CLOUDSDK_COMPUTE_ZONE')
 

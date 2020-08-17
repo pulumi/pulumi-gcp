@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetUptimeCheckIPsResult:
     """
@@ -25,6 +26,8 @@ class GetUptimeCheckIPsResult:
         """
         A list of uptime check IPs used by Stackdriver Monitoring. Each `uptime_check_ip` contains:
         """
+
+
 class AwaitableGetUptimeCheckIPsResult(GetUptimeCheckIPsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -34,18 +37,17 @@ class AwaitableGetUptimeCheckIPsResult(GetUptimeCheckIPsResult):
             id=self.id,
             uptime_check_ips=self.uptime_check_ips)
 
+
 def get_uptime_check_i_ps(opts=None):
     """
     Returns the list of IP addresses that checkers run from. For more information see
     the [official documentation](https://cloud.google.com/monitoring/uptime-checks#get-ips).
     """
     __args__ = dict()
-
-
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:monitoring/getUptimeCheckIPs:getUptimeCheckIPs', __args__, opts=opts).value
 
     return AwaitableGetUptimeCheckIPsResult(

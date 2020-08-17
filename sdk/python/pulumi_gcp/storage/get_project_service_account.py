@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetProjectServiceAccountResult:
     """
@@ -32,6 +33,8 @@ class GetProjectServiceAccountResult:
         if user_project and not isinstance(user_project, str):
             raise TypeError("Expected argument 'user_project' to be a str")
         __self__.user_project = user_project
+
+
 class AwaitableGetProjectServiceAccountResult(GetProjectServiceAccountResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -43,7 +46,8 @@ class AwaitableGetProjectServiceAccountResult(GetProjectServiceAccountResult):
             project=self.project,
             user_project=self.user_project)
 
-def get_project_service_account(project=None,user_project=None,opts=None):
+
+def get_project_service_account(project=None, user_project=None, opts=None):
     """
     Get the email address of a project's unique Google Cloud Storage service account.
 
@@ -59,14 +63,12 @@ def get_project_service_account(project=None,user_project=None,opts=None):
            from a different account than the one you are finding the service account for.
     """
     __args__ = dict()
-
-
     __args__['project'] = project
     __args__['userProject'] = user_project
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:storage/getProjectServiceAccount:getProjectServiceAccount', __args__, opts=opts).value
 
     return AwaitableGetProjectServiceAccountResult(

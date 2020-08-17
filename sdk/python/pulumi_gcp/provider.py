@@ -7,7 +7,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from . import utilities, tables
+from . import _utilities, _tables
 
 
 class Provider(pulumi.ProviderResource):
@@ -37,7 +37,7 @@ class Provider(pulumi.ProviderResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -72,7 +72,7 @@ class Provider(pulumi.ProviderResource):
             __props__['container_beta_custom_endpoint'] = container_beta_custom_endpoint
             __props__['container_custom_endpoint'] = container_custom_endpoint
             if credentials is None:
-                credentials = utilities.get_env('GOOGLE_CREDENTIALS', 'GOOGLE_CLOUD_KEYFILE_JSON', 'GCLOUD_KEYFILE_JSON')
+                credentials = _utilities.get_env('GOOGLE_CREDENTIALS', 'GOOGLE_CLOUD_KEYFILE_JSON', 'GCLOUD_KEYFILE_JSON')
             __props__['credentials'] = credentials
             __props__['data_catalog_custom_endpoint'] = data_catalog_custom_endpoint
             __props__['data_fusion_custom_endpoint'] = data_fusion_custom_endpoint
@@ -103,12 +103,12 @@ class Provider(pulumi.ProviderResource):
             __props__['os_config_custom_endpoint'] = os_config_custom_endpoint
             __props__['os_login_custom_endpoint'] = os_login_custom_endpoint
             if project is None:
-                project = utilities.get_env('GOOGLE_PROJECT', 'GOOGLE_CLOUD_PROJECT', 'GCLOUD_PROJECT', 'CLOUDSDK_CORE_PROJECT')
+                project = _utilities.get_env('GOOGLE_PROJECT', 'GOOGLE_CLOUD_PROJECT', 'GCLOUD_PROJECT', 'CLOUDSDK_CORE_PROJECT')
             __props__['project'] = project
             __props__['pubsub_custom_endpoint'] = pubsub_custom_endpoint
             __props__['redis_custom_endpoint'] = redis_custom_endpoint
             if region is None:
-                region = utilities.get_env('GOOGLE_REGION', 'GCLOUD_REGION', 'CLOUDSDK_COMPUTE_REGION')
+                region = _utilities.get_env('GOOGLE_REGION', 'GCLOUD_REGION', 'CLOUDSDK_COMPUTE_REGION')
             __props__['region'] = region
             __props__['request_timeout'] = request_timeout
             __props__['resource_manager_custom_endpoint'] = resource_manager_custom_endpoint
@@ -132,7 +132,7 @@ class Provider(pulumi.ProviderResource):
             __props__['user_project_override'] = pulumi.Output.from_input(user_project_override).apply(json.dumps) if user_project_override is not None else None
             __props__['vpc_access_custom_endpoint'] = vpc_access_custom_endpoint
             if zone is None:
-                zone = utilities.get_env('GOOGLE_ZONE', 'GCLOUD_ZONE', 'CLOUDSDK_COMPUTE_ZONE')
+                zone = _utilities.get_env('GOOGLE_ZONE', 'GCLOUD_ZONE', 'CLOUDSDK_COMPUTE_ZONE')
             __props__['zone'] = zone
         super(Provider, __self__).__init__(
             'gcp',
@@ -141,7 +141,7 @@ class Provider(pulumi.ProviderResource):
             opts)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

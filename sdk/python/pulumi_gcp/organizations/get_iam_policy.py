@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetIAMPolicyResult:
     """
@@ -32,6 +33,8 @@ class GetIAMPolicyResult:
         The above bindings serialized in a format suitable for
         referencing from a resource that supports IAM.
         """
+
+
 class AwaitableGetIAMPolicyResult(GetIAMPolicyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -43,7 +46,8 @@ class AwaitableGetIAMPolicyResult(GetIAMPolicyResult):
             id=self.id,
             policy_data=self.policy_data)
 
-def get_iam_policy(audit_configs=None,bindings=None,opts=None):
+
+def get_iam_policy(audit_configs=None, bindings=None, opts=None):
     """
     Generates an IAM policy document that may be referenced by and applied to
     other Google Cloud Platform resources, such as the `organizations.Project` resource.
@@ -90,14 +94,12 @@ def get_iam_policy(audit_configs=None,bindings=None,opts=None):
         Note that custom roles must be of the format `[projects|organizations]/{parent-name}/roles/{role-name}`.
     """
     __args__ = dict()
-
-
     __args__['auditConfigs'] = audit_configs
     __args__['bindings'] = bindings
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:organizations/getIAMPolicy:getIAMPolicy', __args__, opts=opts).value
 
     return AwaitableGetIAMPolicyResult(

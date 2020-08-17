@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetAppEngineServiceResult:
     """
@@ -37,6 +38,8 @@ class GetAppEngineServiceResult:
         if telemetries and not isinstance(telemetries, list):
             raise TypeError("Expected argument 'telemetries' to be a list")
         __self__.telemetries = telemetries
+
+
 class AwaitableGetAppEngineServiceResult(GetAppEngineServiceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -51,7 +54,8 @@ class AwaitableGetAppEngineServiceResult(GetAppEngineServiceResult):
             service_id=self.service_id,
             telemetries=self.telemetries)
 
-def get_app_engine_service(module_id=None,project=None,opts=None):
+
+def get_app_engine_service(module_id=None, project=None, opts=None):
     """
     A Monitoring Service is the root resource under which operational aspects of a
     generic service are accessible. A service is some discrete, autonomous, and
@@ -76,14 +80,12 @@ def get_app_engine_service(module_id=None,project=None,opts=None):
            If it is not provided, the provider project is used.
     """
     __args__ = dict()
-
-
     __args__['moduleId'] = module_id
     __args__['project'] = project
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:monitoring/getAppEngineService:getAppEngineService', __args__, opts=opts).value
 
     return AwaitableGetAppEngineServiceResult(

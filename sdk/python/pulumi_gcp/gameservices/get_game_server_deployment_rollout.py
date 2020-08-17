@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetGameServerDeploymentRolloutResult:
     """
@@ -38,6 +39,8 @@ class GetGameServerDeploymentRolloutResult:
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
         """
+
+
 class AwaitableGetGameServerDeploymentRolloutResult(GetGameServerDeploymentRolloutResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -51,7 +54,8 @@ class AwaitableGetGameServerDeploymentRolloutResult(GetGameServerDeploymentRollo
             name=self.name,
             project=self.project)
 
-def get_game_server_deployment_rollout(deployment_id=None,opts=None):
+
+def get_game_server_deployment_rollout(deployment_id=None, opts=None):
     """
     Use this data source to get the rollout state.
 
@@ -61,13 +65,11 @@ def get_game_server_deployment_rollout(deployment_id=None,opts=None):
     :param str deployment_id: The deployment to get the rollout state from. Only 1 rollout must be associated with each deployment.
     """
     __args__ = dict()
-
-
     __args__['deploymentId'] = deployment_id
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:gameservices/getGameServerDeploymentRollout:getGameServerDeploymentRollout', __args__, opts=opts).value
 
     return AwaitableGetGameServerDeploymentRolloutResult(

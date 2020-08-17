@@ -1780,8 +1780,6 @@ type GetKeysKeySigningKey struct {
 	// A mutable string of at most 1024 characters associated with this resource for the user's convenience.
 	Description string `pulumi:"description"`
 	// A list of cryptographic hashes of the DNSKEY resource record associated with this DnsKey. These digests are needed to construct a DS record that points at this DNS key. Each contains:
-	// - `digest` - The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
-	// - `type` - Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
 	Digests []GetKeysKeySigningKeyDigest `pulumi:"digests"`
 	// The DS record based on the KSK record. This is used when [delegating](https://cloud.google.com/dns/docs/dnssec-advanced#subdelegation) DNSSEC-signed subdomains.
 	DsRecord string `pulumi:"dsRecord"`
@@ -1816,8 +1814,6 @@ type GetKeysKeySigningKeyArgs struct {
 	// A mutable string of at most 1024 characters associated with this resource for the user's convenience.
 	Description pulumi.StringInput `pulumi:"description"`
 	// A list of cryptographic hashes of the DNSKEY resource record associated with this DnsKey. These digests are needed to construct a DS record that points at this DNS key. Each contains:
-	// - `digest` - The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
-	// - `type` - Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
 	Digests GetKeysKeySigningKeyDigestArrayInput `pulumi:"digests"`
 	// The DS record based on the KSK record. This is used when [delegating](https://cloud.google.com/dns/docs/dnssec-advanced#subdelegation) DNSSEC-signed subdomains.
 	DsRecord pulumi.StringInput `pulumi:"dsRecord"`
@@ -1900,8 +1896,6 @@ func (o GetKeysKeySigningKeyOutput) Description() pulumi.StringOutput {
 }
 
 // A list of cryptographic hashes of the DNSKEY resource record associated with this DnsKey. These digests are needed to construct a DS record that points at this DNS key. Each contains:
-// - `digest` - The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
-// - `type` - Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
 func (o GetKeysKeySigningKeyOutput) Digests() GetKeysKeySigningKeyDigestArrayOutput {
 	return o.ApplyT(func(v GetKeysKeySigningKey) []GetKeysKeySigningKeyDigest { return v.Digests }).(GetKeysKeySigningKeyDigestArrayOutput)
 }
@@ -1957,8 +1951,10 @@ func (o GetKeysKeySigningKeyArrayOutput) Index(i pulumi.IntInput) GetKeysKeySign
 }
 
 type GetKeysKeySigningKeyDigest struct {
+	// The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
 	Digest *string `pulumi:"digest"`
-	Type   *string `pulumi:"type"`
+	// Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
+	Type *string `pulumi:"type"`
 }
 
 // GetKeysKeySigningKeyDigestInput is an input type that accepts GetKeysKeySigningKeyDigestArgs and GetKeysKeySigningKeyDigestOutput values.
@@ -1973,8 +1969,10 @@ type GetKeysKeySigningKeyDigestInput interface {
 }
 
 type GetKeysKeySigningKeyDigestArgs struct {
+	// The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
 	Digest pulumi.StringPtrInput `pulumi:"digest"`
-	Type   pulumi.StringPtrInput `pulumi:"type"`
+	// Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (GetKeysKeySigningKeyDigestArgs) ElementType() reflect.Type {
@@ -2028,10 +2026,12 @@ func (o GetKeysKeySigningKeyDigestOutput) ToGetKeysKeySigningKeyDigestOutputWith
 	return o
 }
 
+// The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
 func (o GetKeysKeySigningKeyDigestOutput) Digest() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKeysKeySigningKeyDigest) *string { return v.Digest }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
 func (o GetKeysKeySigningKeyDigestOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKeysKeySigningKeyDigest) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -2064,8 +2064,6 @@ type GetKeysZoneSigningKey struct {
 	// A mutable string of at most 1024 characters associated with this resource for the user's convenience.
 	Description string `pulumi:"description"`
 	// A list of cryptographic hashes of the DNSKEY resource record associated with this DnsKey. These digests are needed to construct a DS record that points at this DNS key. Each contains:
-	// - `digest` - The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
-	// - `type` - Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
 	Digests []GetKeysZoneSigningKeyDigest `pulumi:"digests"`
 	// Unique identifier for the resource; defined by the server.
 	Id string `pulumi:"id"`
@@ -2098,8 +2096,6 @@ type GetKeysZoneSigningKeyArgs struct {
 	// A mutable string of at most 1024 characters associated with this resource for the user's convenience.
 	Description pulumi.StringInput `pulumi:"description"`
 	// A list of cryptographic hashes of the DNSKEY resource record associated with this DnsKey. These digests are needed to construct a DS record that points at this DNS key. Each contains:
-	// - `digest` - The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
-	// - `type` - Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
 	Digests GetKeysZoneSigningKeyDigestArrayInput `pulumi:"digests"`
 	// Unique identifier for the resource; defined by the server.
 	Id pulumi.StringInput `pulumi:"id"`
@@ -2180,8 +2176,6 @@ func (o GetKeysZoneSigningKeyOutput) Description() pulumi.StringOutput {
 }
 
 // A list of cryptographic hashes of the DNSKEY resource record associated with this DnsKey. These digests are needed to construct a DS record that points at this DNS key. Each contains:
-// - `digest` - The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
-// - `type` - Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
 func (o GetKeysZoneSigningKeyOutput) Digests() GetKeysZoneSigningKeyDigestArrayOutput {
 	return o.ApplyT(func(v GetKeysZoneSigningKey) []GetKeysZoneSigningKeyDigest { return v.Digests }).(GetKeysZoneSigningKeyDigestArrayOutput)
 }
@@ -2232,8 +2226,10 @@ func (o GetKeysZoneSigningKeyArrayOutput) Index(i pulumi.IntInput) GetKeysZoneSi
 }
 
 type GetKeysZoneSigningKeyDigest struct {
+	// The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
 	Digest *string `pulumi:"digest"`
-	Type   *string `pulumi:"type"`
+	// Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
+	Type *string `pulumi:"type"`
 }
 
 // GetKeysZoneSigningKeyDigestInput is an input type that accepts GetKeysZoneSigningKeyDigestArgs and GetKeysZoneSigningKeyDigestOutput values.
@@ -2248,8 +2244,10 @@ type GetKeysZoneSigningKeyDigestInput interface {
 }
 
 type GetKeysZoneSigningKeyDigestArgs struct {
+	// The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
 	Digest pulumi.StringPtrInput `pulumi:"digest"`
-	Type   pulumi.StringPtrInput `pulumi:"type"`
+	// Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (GetKeysZoneSigningKeyDigestArgs) ElementType() reflect.Type {
@@ -2303,10 +2301,12 @@ func (o GetKeysZoneSigningKeyDigestOutput) ToGetKeysZoneSigningKeyDigestOutputWi
 	return o
 }
 
+// The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
 func (o GetKeysZoneSigningKeyDigestOutput) Digest() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKeysZoneSigningKeyDigest) *string { return v.Digest }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
 func (o GetKeysZoneSigningKeyDigestOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKeysZoneSigningKeyDigest) *string { return v.Type }).(pulumi.StringPtrOutput)
 }

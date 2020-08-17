@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetDefaultServiceAccountResult:
     """
@@ -29,6 +30,8 @@ class GetDefaultServiceAccountResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         __self__.project = project
+
+
 class AwaitableGetDefaultServiceAccountResult(GetDefaultServiceAccountResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -39,7 +42,8 @@ class AwaitableGetDefaultServiceAccountResult(GetDefaultServiceAccountResult):
             id=self.id,
             project=self.project)
 
-def get_default_service_account(project=None,opts=None):
+
+def get_default_service_account(project=None, opts=None):
     """
     Get the email address of a project's unique BigQuery service account.
 
@@ -55,13 +59,11 @@ def get_default_service_account(project=None,opts=None):
     :param str project: The project the unique service account was created for. If it is not provided, the provider project is used.
     """
     __args__ = dict()
-
-
     __args__['project'] = project
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:bigquery/getDefaultServiceAccount:getDefaultServiceAccount', __args__, opts=opts).value
 
     return AwaitableGetDefaultServiceAccountResult(

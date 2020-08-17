@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetCaCertsResult:
     """
@@ -37,6 +38,8 @@ class GetCaCertsResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         __self__.project = project
+
+
 class AwaitableGetCaCertsResult(GetCaCertsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -49,7 +52,8 @@ class AwaitableGetCaCertsResult(GetCaCertsResult):
             instance=self.instance,
             project=self.project)
 
-def get_ca_certs(instance=None,project=None,opts=None):
+
+def get_ca_certs(instance=None, project=None, opts=None):
     """
     Get all of the trusted Certificate Authorities (CAs) for the specified SQL database instance. For more information see the
     [official documentation](https://cloud.google.com/sql/)
@@ -61,14 +65,12 @@ def get_ca_certs(instance=None,project=None,opts=None):
     :param str project: The ID of the project in which the resource belongs. If `project` is not provided, the provider project is used.
     """
     __args__ = dict()
-
-
     __args__['instance'] = instance
     __args__['project'] = project
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:sql/getCaCerts:getCaCerts', __args__, opts=opts).value
 
     return AwaitableGetCaCertsResult(

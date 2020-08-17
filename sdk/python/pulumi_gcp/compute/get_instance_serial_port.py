@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetInstanceSerialPortResult:
     """
@@ -37,6 +38,8 @@ class GetInstanceSerialPortResult:
         if zone and not isinstance(zone, str):
             raise TypeError("Expected argument 'zone' to be a str")
         __self__.zone = zone
+
+
 class AwaitableGetInstanceSerialPortResult(GetInstanceSerialPortResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -50,7 +53,8 @@ class AwaitableGetInstanceSerialPortResult(GetInstanceSerialPortResult):
             project=self.project,
             zone=self.zone)
 
-def get_instance_serial_port(instance=None,port=None,project=None,zone=None,opts=None):
+
+def get_instance_serial_port(instance=None, port=None, project=None, zone=None, opts=None):
     """
     Get the serial port output from a Compute Instance. For more information see
     the official [API](https://cloud.google.com/compute/docs/instances/viewing-serial-port-output) documentation.
@@ -64,8 +68,6 @@ def get_instance_serial_port(instance=None,port=None,project=None,zone=None,opts
            If it is not provided, the provider zone is used.
     """
     __args__ = dict()
-
-
     __args__['instance'] = instance
     __args__['port'] = port
     __args__['project'] = project
@@ -73,7 +75,7 @@ def get_instance_serial_port(instance=None,port=None,project=None,zone=None,opts
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:compute/getInstanceSerialPort:getInstanceSerialPort', __args__, opts=opts).value
 
     return AwaitableGetInstanceSerialPortResult(

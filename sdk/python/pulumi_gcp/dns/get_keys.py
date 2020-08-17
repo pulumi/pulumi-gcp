@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetKeysResult:
     """
@@ -37,6 +38,8 @@ class GetKeysResult:
         """
         A list of Zone-signing key (ZSK) records. Structure is documented below.
         """
+
+
 class AwaitableGetKeysResult(GetKeysResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -49,7 +52,8 @@ class AwaitableGetKeysResult(GetKeysResult):
             project=self.project,
             zone_signing_keys=self.zone_signing_keys)
 
-def get_keys(managed_zone=None,project=None,opts=None):
+
+def get_keys(managed_zone=None, project=None, opts=None):
     """
     Get the DNSKEY and DS records of DNSSEC-signed managed zones. For more information see the
     [official documentation](https://cloud.google.com/dns/docs/dnskeys/)
@@ -60,14 +64,12 @@ def get_keys(managed_zone=None,project=None,opts=None):
     :param str project: The ID of the project in which the resource belongs. If `project` is not provided, the provider project is used.
     """
     __args__ = dict()
-
-
     __args__['managedZone'] = managed_zone
     __args__['project'] = project
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:dns/getKeys:getKeys', __args__, opts=opts).value
 
     return AwaitableGetKeysResult(

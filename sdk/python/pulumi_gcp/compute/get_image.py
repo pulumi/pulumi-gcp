@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetImageResult:
     """
@@ -128,6 +129,8 @@ class GetImageResult:
         """
         The status of the image. Possible values are **FAILED**, **PENDING**, or **READY**.
         """
+
+
 class AwaitableGetImageResult(GetImageResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -154,7 +157,8 @@ class AwaitableGetImageResult(GetImageResult):
             source_image_id=self.source_image_id,
             status=self.status)
 
-def get_image(family=None,name=None,project=None,opts=None):
+
+def get_image(family=None, name=None, project=None, opts=None):
     """
     Get information about a Google Compute Image. Check that your service account has the `compute.imageUser` role if you want to share [custom images](https://cloud.google.com/compute/docs/images/sharing-images-across-projects) from another project. If you want to use [public images][pubimg], do not forget to specify the dedicated project. For more information see
     [the official documentation](https://cloud.google.com/compute/docs/images) and its [API](https://cloud.google.com/compute/docs/reference/latest/images).
@@ -170,15 +174,13 @@ def get_image(family=None,name=None,project=None,opts=None):
            [public base image][pubimg], be sure to specify the correct Image Project.
     """
     __args__ = dict()
-
-
     __args__['family'] = family
     __args__['name'] = name
     __args__['project'] = project
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:compute/getImage:getImage', __args__, opts=opts).value
 
     return AwaitableGetImageResult(

@@ -6,9 +6,10 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 warnings.warn("gcp.monitoring.getSecretVersion has been deprecated in favor of gcp.secretmanager.getSecretVersion", DeprecationWarning)
+
 class GetSecretVersionResult:
     """
     A collection of values returned by getSecretVersion.
@@ -44,6 +45,8 @@ class GetSecretVersionResult:
         if version and not isinstance(version, str):
             raise TypeError("Expected argument 'version' to be a str")
         __self__.version = version
+
+
 class AwaitableGetSecretVersionResult(GetSecretVersionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -60,21 +63,20 @@ class AwaitableGetSecretVersionResult(GetSecretVersionResult):
             secret_data=self.secret_data,
             version=self.version)
 
-def get_secret_version(project=None,secret=None,version=None,opts=None):
+
+def get_secret_version(project=None, secret=None, version=None, opts=None):
     """
     Use this data source to access information about an existing resource.
     """
     pulumi.log.warn("get_secret_version is deprecated: gcp.monitoring.getSecretVersion has been deprecated in favor of gcp.secretmanager.getSecretVersion")
     __args__ = dict()
-
-
     __args__['project'] = project
     __args__['secret'] = secret
     __args__['version'] = version
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:monitoring/getSecretVersion:getSecretVersion', __args__, opts=opts).value
 
     return AwaitableGetSecretVersionResult(

@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetRegistryImageResult:
     """
@@ -37,6 +38,8 @@ class GetRegistryImageResult:
         if tag and not isinstance(tag, str):
             raise TypeError("Expected argument 'tag' to be a str")
         __self__.tag = tag
+
+
 class AwaitableGetRegistryImageResult(GetRegistryImageResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -51,15 +54,14 @@ class AwaitableGetRegistryImageResult(GetRegistryImageResult):
             region=self.region,
             tag=self.tag)
 
-def get_registry_image(digest=None,name=None,project=None,region=None,tag=None,opts=None):
+
+def get_registry_image(digest=None, name=None, project=None, region=None, tag=None, opts=None):
     """
     This data source fetches the project name, and provides the appropriate URLs to use for container registry for this project.
 
     The URLs are computed entirely offline - as long as the project exists, they will be valid, but this data source does not contact Google Container Registry (GCR) at any point.
     """
     __args__ = dict()
-
-
     __args__['digest'] = digest
     __args__['name'] = name
     __args__['project'] = project
@@ -68,7 +70,7 @@ def get_registry_image(digest=None,name=None,project=None,region=None,tag=None,o
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:container/getRegistryImage:getRegistryImage', __args__, opts=opts).value
 
     return AwaitableGetRegistryImageResult(

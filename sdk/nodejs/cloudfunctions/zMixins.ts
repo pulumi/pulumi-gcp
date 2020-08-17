@@ -324,12 +324,12 @@ export interface CallbackFunctionArgs {
      */
     serviceAccountEmail?: pulumi.Input<string>;
     /**
-    * Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
-    */
+     * Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
+     */
     timeout?: pulumi.Input<number>;
     /**
-    * Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `trigger_bucket` and `trigger_topic`.
-    */
+     * Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `trigger_bucket` and `trigger_topic`.
+     */
     triggerHttp?: pulumi.Input<boolean>;
 
     /**

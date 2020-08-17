@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetInstanceResult:
     """
@@ -83,6 +84,8 @@ class GetInstanceResult:
         if tier and not isinstance(tier, str):
             raise TypeError("Expected argument 'tier' to be a str")
         __self__.tier = tier
+
+
 class AwaitableGetInstanceResult(GetInstanceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -110,7 +113,8 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             reserved_ip_range=self.reserved_ip_range,
             tier=self.tier)
 
-def get_instance(name=None,project=None,region=None,opts=None):
+
+def get_instance(name=None, project=None, region=None, opts=None):
     """
     Get information about a Google Cloud Redis instance. For more information see
     the [official documentation](https://cloud.google.com/memorystore/docs/redis)
@@ -124,15 +128,13 @@ def get_instance(name=None,project=None,region=None,opts=None):
            is not provided, the provider region is used.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['project'] = project
     __args__['region'] = region
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:redis/getInstance:getInstance', __args__, opts=opts).value
 
     return AwaitableGetInstanceResult(

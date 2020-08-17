@@ -27,8 +27,6 @@ namespace Pulumi.Gcp.Dns.Outputs
         public readonly string Description;
         /// <summary>
         /// A list of cryptographic hashes of the DNSKEY resource record associated with this DnsKey. These digests are needed to construct a DS record that points at this DNS key. Each contains:
-        /// - `digest` - The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
-        /// - `type` - Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
         /// </summary>
         public readonly ImmutableArray<Outputs.GetKeysKeySigningKeyDigestResult> Digests;
         /// <summary>

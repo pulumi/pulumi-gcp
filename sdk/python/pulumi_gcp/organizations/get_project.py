@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetProjectResult:
     """
@@ -46,6 +47,8 @@ class GetProjectResult:
         if skip_delete and not isinstance(skip_delete, bool):
             raise TypeError("Expected argument 'skip_delete' to be a bool")
         __self__.skip_delete = skip_delete
+
+
 class AwaitableGetProjectResult(GetProjectResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -63,7 +66,8 @@ class AwaitableGetProjectResult(GetProjectResult):
             project_id=self.project_id,
             skip_delete=self.skip_delete)
 
-def get_project(project_id=None,opts=None):
+
+def get_project(project_id=None, opts=None):
     """
     Use this data source to get project details.
     For more information see
@@ -73,13 +77,11 @@ def get_project(project_id=None,opts=None):
     :param str project_id: The project ID. If it is not provided, the provider project is used.
     """
     __args__ = dict()
-
-
     __args__['projectId'] = project_id
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:organizations/getProject:getProject', __args__, opts=opts).value
 
     return AwaitableGetProjectResult(

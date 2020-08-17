@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetRegionsResult:
     """
@@ -31,6 +32,8 @@ class GetRegionsResult:
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         __self__.status = status
+
+
 class AwaitableGetRegionsResult(GetRegionsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -42,7 +45,8 @@ class AwaitableGetRegionsResult(GetRegionsResult):
             project=self.project,
             status=self.status)
 
-def get_regions(project=None,status=None,opts=None):
+
+def get_regions(project=None, status=None, opts=None):
     """
     Provides access to available Google Compute regions for a given project.
     See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/) in the upstream docs.
@@ -53,14 +57,12 @@ def get_regions(project=None,status=None,opts=None):
            Defaults to no filtering (all available regions - both `UP` and `DOWN`).
     """
     __args__ = dict()
-
-
     __args__['project'] = project
     __args__['status'] = status
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:compute/getRegions:getRegions', __args__, opts=opts).value
 
     return AwaitableGetRegionsResult(

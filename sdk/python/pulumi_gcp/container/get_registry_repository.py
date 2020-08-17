@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetRegistryRepositoryResult:
     """
@@ -28,6 +29,8 @@ class GetRegistryRepositoryResult:
         if repository_url and not isinstance(repository_url, str):
             raise TypeError("Expected argument 'repository_url' to be a str")
         __self__.repository_url = repository_url
+
+
 class AwaitableGetRegistryRepositoryResult(GetRegistryRepositoryResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -39,21 +42,20 @@ class AwaitableGetRegistryRepositoryResult(GetRegistryRepositoryResult):
             region=self.region,
             repository_url=self.repository_url)
 
-def get_registry_repository(project=None,region=None,opts=None):
+
+def get_registry_repository(project=None, region=None, opts=None):
     """
     This data source fetches the project name, and provides the appropriate URLs to use for container registry for this project.
 
     The URLs are computed entirely offline - as long as the project exists, they will be valid, but this data source does not contact Google Container Registry (GCR) at any point.
     """
     __args__ = dict()
-
-
     __args__['project'] = project
     __args__['region'] = region
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:container/getRegistryRepository:getRegistryRepository', __args__, opts=opts).value
 
     return AwaitableGetRegistryRepositoryResult(

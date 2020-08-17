@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetKMSSecretResult:
     """
@@ -34,6 +35,8 @@ class GetKMSSecretResult:
         """
         Contains the result of decrypting the provided ciphertext.
         """
+
+
 class AwaitableGetKMSSecretResult(GetKMSSecretResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -46,7 +49,8 @@ class AwaitableGetKMSSecretResult(GetKMSSecretResult):
             id=self.id,
             plaintext=self.plaintext)
 
-def get_kms_secret(additional_authenticated_data=None,ciphertext=None,crypto_key=None,opts=None):
+
+def get_kms_secret(additional_authenticated_data=None, ciphertext=None, crypto_key=None, opts=None):
     """
     This data source allows you to use data encrypted with Google Cloud KMS
     within your resource definitions.
@@ -67,15 +71,13 @@ def get_kms_secret(additional_authenticated_data=None,ciphertext=None,crypto_key
            `{projectId}/{location}/{keyRingName}/{cryptoKeyName}`.
     """
     __args__ = dict()
-
-
     __args__['additionalAuthenticatedData'] = additional_authenticated_data
     __args__['ciphertext'] = ciphertext
     __args__['cryptoKey'] = crypto_key
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:kms/getKMSSecret:getKMSSecret', __args__, opts=opts).value
 
     return AwaitableGetKMSSecretResult(

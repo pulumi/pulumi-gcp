@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetNetworkEndpointGroupResult:
     """
@@ -67,6 +68,8 @@ class GetNetworkEndpointGroupResult:
         if zone and not isinstance(zone, str):
             raise TypeError("Expected argument 'zone' to be a str")
         __self__.zone = zone
+
+
 class AwaitableGetNetworkEndpointGroupResult(GetNetworkEndpointGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -85,7 +88,8 @@ class AwaitableGetNetworkEndpointGroupResult(GetNetworkEndpointGroupResult):
             subnetwork=self.subnetwork,
             zone=self.zone)
 
-def get_network_endpoint_group(name=None,project=None,self_link=None,zone=None,opts=None):
+
+def get_network_endpoint_group(name=None, project=None, self_link=None, zone=None, opts=None):
     """
     Use this data source to access a Network Endpoint Group's attributes.
 
@@ -100,8 +104,6 @@ def get_network_endpoint_group(name=None,project=None,self_link=None,zone=None,o
     :param str zone: The Network Endpoint Group availability zone.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['project'] = project
     __args__['selfLink'] = self_link
@@ -109,7 +111,7 @@ def get_network_endpoint_group(name=None,project=None,self_link=None,zone=None,o
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:compute/getNetworkEndpointGroup:getNetworkEndpointGroup', __args__, opts=opts).value
 
     return AwaitableGetNetworkEndpointGroupResult(

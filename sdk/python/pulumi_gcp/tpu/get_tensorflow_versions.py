@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetTensorflowVersionsResult:
     """
@@ -31,6 +32,8 @@ class GetTensorflowVersionsResult:
         if zone and not isinstance(zone, str):
             raise TypeError("Expected argument 'zone' to be a str")
         __self__.zone = zone
+
+
 class AwaitableGetTensorflowVersionsResult(GetTensorflowVersionsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -42,7 +45,8 @@ class AwaitableGetTensorflowVersionsResult(GetTensorflowVersionsResult):
             versions=self.versions,
             zone=self.zone)
 
-def get_tensorflow_versions(project=None,zone=None,opts=None):
+
+def get_tensorflow_versions(project=None, zone=None, opts=None):
     """
     Get TensorFlow versions available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v1/projects.locations.tensorflowVersions).
 
@@ -53,14 +57,12 @@ def get_tensorflow_versions(project=None,zone=None,opts=None):
            is not provided, the provider zone is used.
     """
     __args__ = dict()
-
-
     __args__['project'] = project
     __args__['zone'] = zone
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:tpu/getTensorflowVersions:getTensorflowVersions', __args__, opts=opts).value
 
     return AwaitableGetTensorflowVersionsResult(

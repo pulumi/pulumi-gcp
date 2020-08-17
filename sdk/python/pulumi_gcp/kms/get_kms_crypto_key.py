@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetKMSCryptoKeyResult:
     """
@@ -51,6 +52,8 @@ class GetKMSCryptoKeyResult:
         if version_templates and not isinstance(version_templates, list):
             raise TypeError("Expected argument 'version_templates' to be a list")
         __self__.version_templates = version_templates
+
+
 class AwaitableGetKMSCryptoKeyResult(GetKMSCryptoKeyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -66,7 +69,8 @@ class AwaitableGetKMSCryptoKeyResult(GetKMSCryptoKeyResult):
             self_link=self.self_link,
             version_templates=self.version_templates)
 
-def get_kms_crypto_key(key_ring=None,name=None,opts=None):
+
+def get_kms_crypto_key(key_ring=None, name=None, opts=None):
     """
     Provides access to a Google Cloud Platform KMS CryptoKey. For more information see
     [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key)
@@ -82,14 +86,12 @@ def get_kms_crypto_key(key_ring=None,name=None,opts=None):
            A CryptoKey’s name belonging to the specified Google Cloud Platform KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
     """
     __args__ = dict()
-
-
     __args__['keyRing'] = key_ring
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:kms/getKMSCryptoKey:getKMSCryptoKey', __args__, opts=opts).value
 
     return AwaitableGetKMSCryptoKeyResult(
