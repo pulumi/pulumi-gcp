@@ -1,8 +1,9 @@
-[![Build Status](https://travis-ci.com/pulumi/pulumi-gcp.svg?token=eHg7Zp5zdDDJfTjY8ejq&branch=master)](https://travis-ci.com/pulumi/pulumi-gcp)
+[![Actions Status](https://github.com/pulumi/pulumi-gcp/workflows/master/badge.svg)](https://github.com/pulumi/pulumi-gcp/actions)
 [![Slack](http://www.pulumi.com/images/docs/badges/slack.svg)](https://slack.pulumi.com)
 [![NPM version](https://badge.fury.io/js/%40pulumi%2Fgcp.svg)](https://npmjs.com/package/@pulumi/gcp)
+[![NuGet version](https://badge.fury.io/nu/pulumi.gcp.svg)](https://badge.fury.io/nu/pulumi.gcp)
 [![Python version](https://badge.fury.io/py/pulumi-gcp.svg)](https://pypi.org/project/pulumi-gcp)
-[![GoDoc](https://godoc.org/github.com/pulumi/pulumi-gcp?status.svg)](https://godoc.org/github.com/pulumi/pulumi-gcp)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/pulumi/pulumi-gcp/sdk/v3/go)](https://pkg.go.dev/github.com/pulumi/pulumi-gcp/sdk/v3/go)
 [![License](https://img.shields.io/npm/l/%40pulumi%2Fpulumi.svg)](https://github.com/pulumi/pulumi-gcp/blob/master/LICENSE)
 
 # Google Cloud Platform Resource Provider
