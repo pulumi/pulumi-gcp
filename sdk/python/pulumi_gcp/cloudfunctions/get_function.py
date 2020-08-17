@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetFunctionResult:
     """
@@ -136,6 +137,8 @@ class GetFunctionResult:
         """
         The egress settings for the connector, controlling what traffic is diverted through it.
         """
+
+
 class AwaitableGetFunctionResult(GetFunctionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -165,7 +168,8 @@ class AwaitableGetFunctionResult(GetFunctionResult):
             vpc_connector=self.vpc_connector,
             vpc_connector_egress_settings=self.vpc_connector_egress_settings)
 
-def get_function(name=None,project=None,region=None,opts=None):
+
+def get_function(name=None, project=None, region=None, opts=None):
     """
     Get information about a Google Cloud Function. For more information see
     the [official documentation](https://cloud.google.com/functions/docs/)
@@ -179,15 +183,13 @@ def get_function(name=None,project=None,region=None,opts=None):
            is not provided, the provider region is used.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['project'] = project
     __args__['region'] = region
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:cloudfunctions/getFunction:getFunction', __args__, opts=opts).value
 
     return AwaitableGetFunctionResult(

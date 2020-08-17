@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetObjectSignedUrlResult:
     """
@@ -49,6 +50,8 @@ class GetObjectSignedUrlResult:
         """
         The signed URL that can be used to access the storage object without authentication.
         """
+
+
 class AwaitableGetObjectSignedUrlResult(GetObjectSignedUrlResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -66,7 +69,8 @@ class AwaitableGetObjectSignedUrlResult(GetObjectSignedUrlResult):
             path=self.path,
             signed_url=self.signed_url)
 
-def get_object_signed_url(bucket=None,content_md5=None,content_type=None,credentials=None,duration=None,extension_headers=None,http_method=None,path=None,opts=None):
+
+def get_object_signed_url(bucket=None, content_md5=None, content_type=None, credentials=None, duration=None, extension_headers=None, http_method=None, path=None, opts=None):
     """
     The Google Cloud storage signed URL data source generates a signed URL for a given storage object. Signed URLs provide a way to give time-limited read or write access to anyone in possession of the URL, regardless of whether they have a Google account.
 
@@ -88,8 +92,6 @@ def get_object_signed_url(bucket=None,content_md5=None,content_type=None,credent
     :param str path: The full path to the object inside the bucket
     """
     __args__ = dict()
-
-
     __args__['bucket'] = bucket
     __args__['contentMd5'] = content_md5
     __args__['contentType'] = content_type
@@ -101,7 +103,7 @@ def get_object_signed_url(bucket=None,content_md5=None,content_type=None,credent
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:storage/getObjectSignedUrl:getObjectSignedUrl', __args__, opts=opts).value
 
     return AwaitableGetObjectSignedUrlResult(

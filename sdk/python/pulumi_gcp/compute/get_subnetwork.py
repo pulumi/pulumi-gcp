@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetSubnetworkResult:
     """
@@ -72,6 +73,8 @@ class GetSubnetworkResult:
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         __self__.self_link = self_link
+
+
 class AwaitableGetSubnetworkResult(GetSubnetworkResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -90,7 +93,8 @@ class AwaitableGetSubnetworkResult(GetSubnetworkResult):
             secondary_ip_ranges=self.secondary_ip_ranges,
             self_link=self.self_link)
 
-def get_subnetwork(name=None,project=None,region=None,self_link=None,opts=None):
+
+def get_subnetwork(name=None, project=None, region=None, self_link=None, opts=None):
     """
     Get a subnetwork within GCE from its name and region.
 
@@ -105,8 +109,6 @@ def get_subnetwork(name=None,project=None,region=None,self_link=None,opts=None):
            specified, `name`, `project`, and `region` are ignored.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['project'] = project
     __args__['region'] = region
@@ -114,7 +116,7 @@ def get_subnetwork(name=None,project=None,region=None,self_link=None,opts=None):
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:compute/getSubnetwork:getSubnetwork', __args__, opts=opts).value
 
     return AwaitableGetSubnetworkResult(

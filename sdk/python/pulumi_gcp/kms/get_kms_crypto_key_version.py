@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetKMSCryptoKeyVersionResult:
     """
@@ -49,6 +50,8 @@ class GetKMSCryptoKeyVersionResult:
         if version and not isinstance(version, float):
             raise TypeError("Expected argument 'version' to be a float")
         __self__.version = version
+
+
 class AwaitableGetKMSCryptoKeyVersionResult(GetKMSCryptoKeyVersionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -63,7 +66,8 @@ class AwaitableGetKMSCryptoKeyVersionResult(GetKMSCryptoKeyVersionResult):
             state=self.state,
             version=self.version)
 
-def get_kms_crypto_key_version(crypto_key=None,version=None,opts=None):
+
+def get_kms_crypto_key_version(crypto_key=None, version=None, opts=None):
     """
     Provides access to a Google Cloud Platform KMS CryptoKeyVersion. For more information see
     [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key_version)
@@ -77,14 +81,12 @@ def get_kms_crypto_key_version(crypto_key=None,version=None,opts=None):
     :param float version: The version number for this CryptoKeyVersion. Defaults to `1`.
     """
     __args__ = dict()
-
-
     __args__['cryptoKey'] = crypto_key
     __args__['version'] = version
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:kms/getKMSCryptoKeyVersion:getKMSCryptoKeyVersion', __args__, opts=opts).value
 
     return AwaitableGetKMSCryptoKeyVersionResult(

@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetSSLPolicyResult:
     """
@@ -72,6 +73,8 @@ class GetSSLPolicyResult:
         """
         The URI of the created resource.
         """
+
+
 class AwaitableGetSSLPolicyResult(GetSSLPolicyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -90,7 +93,8 @@ class AwaitableGetSSLPolicyResult(GetSSLPolicyResult):
             project=self.project,
             self_link=self.self_link)
 
-def get_ssl_policy(name=None,project=None,opts=None):
+
+def get_ssl_policy(name=None, project=None, opts=None):
     """
     Gets an SSL Policy within GCE from its name, for use with Target HTTPS and Target SSL Proxies.
         For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies).
@@ -101,14 +105,12 @@ def get_ssl_policy(name=None,project=None,opts=None):
            is not provided, the provider project is used.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['project'] = project
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:compute/getSSLPolicy:getSSLPolicy', __args__, opts=opts).value
 
     return AwaitableGetSSLPolicyResult(

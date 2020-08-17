@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetClientOpenIdUserInfoResult:
     """
@@ -25,6 +26,8 @@ class GetClientOpenIdUserInfoResult:
         """
         The provider-assigned unique ID for this managed resource.
         """
+
+
 class AwaitableGetClientOpenIdUserInfoResult(GetClientOpenIdUserInfoResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -33,6 +36,7 @@ class AwaitableGetClientOpenIdUserInfoResult(GetClientOpenIdUserInfoResult):
         return GetClientOpenIdUserInfoResult(
             email=self.email,
             id=self.id)
+
 
 def get_client_open_id_user_info(opts=None):
     """
@@ -51,12 +55,10 @@ def get_client_open_id_user_info(opts=None):
     ## Example Usage
     """
     __args__ = dict()
-
-
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:organizations/getClientOpenIdUserInfo:getClientOpenIdUserInfo', __args__, opts=opts).value
 
     return AwaitableGetClientOpenIdUserInfoResult(

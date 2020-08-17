@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetImageVersionsResult:
     """
@@ -31,6 +32,8 @@ class GetImageVersionsResult:
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         __self__.region = region
+
+
 class AwaitableGetImageVersionsResult(GetImageVersionsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -42,7 +45,8 @@ class AwaitableGetImageVersionsResult(GetImageVersionsResult):
             project=self.project,
             region=self.region)
 
-def get_image_versions(project=None,region=None,opts=None):
+
+def get_image_versions(project=None, region=None, opts=None):
     """
     Provides access to available Cloud Composer versions in a region for a given project.
 
@@ -53,14 +57,12 @@ def get_image_versions(project=None,region=None,opts=None):
            If it is not provider, the provider region is used.
     """
     __args__ = dict()
-
-
     __args__['project'] = project
     __args__['region'] = region
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:composer/getImageVersions:getImageVersions', __args__, opts=opts).value
 
     return AwaitableGetImageVersionsResult(

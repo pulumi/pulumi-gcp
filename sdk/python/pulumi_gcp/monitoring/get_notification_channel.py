@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetNotificationChannelResult:
     """
@@ -49,6 +50,8 @@ class GetNotificationChannelResult:
         if verification_status and not isinstance(verification_status, str):
             raise TypeError("Expected argument 'verification_status' to be a str")
         __self__.verification_status = verification_status
+
+
 class AwaitableGetNotificationChannelResult(GetNotificationChannelResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -67,7 +70,8 @@ class AwaitableGetNotificationChannelResult(GetNotificationChannelResult):
             user_labels=self.user_labels,
             verification_status=self.verification_status)
 
-def get_notification_channel(display_name=None,labels=None,project=None,type=None,user_labels=None,opts=None):
+
+def get_notification_channel(display_name=None, labels=None, project=None, type=None, user_labels=None, opts=None):
     """
     A NotificationChannel is a medium through which an alert is delivered
     when a policy violation is detected. Examples of channels include email, SMS,
@@ -93,8 +97,6 @@ def get_notification_channel(display_name=None,labels=None,project=None,type=Non
     :param dict user_labels: User-provided key-value labels to filter by.
     """
     __args__ = dict()
-
-
     __args__['displayName'] = display_name
     __args__['labels'] = labels
     __args__['project'] = project
@@ -103,7 +105,7 @@ def get_notification_channel(display_name=None,labels=None,project=None,type=Non
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:monitoring/getNotificationChannel:getNotificationChannel', __args__, opts=opts).value
 
     return AwaitableGetNotificationChannelResult(

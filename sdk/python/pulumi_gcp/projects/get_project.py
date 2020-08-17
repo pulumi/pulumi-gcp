@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetProjectResult:
     """
@@ -28,6 +29,8 @@ class GetProjectResult:
         """
         A list of projects matching the provided filter. Structure is defined below.
         """
+
+
 class AwaitableGetProjectResult(GetProjectResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -38,7 +41,8 @@ class AwaitableGetProjectResult(GetProjectResult):
             id=self.id,
             projects=self.projects)
 
-def get_project(filter=None,opts=None):
+
+def get_project(filter=None, opts=None):
     """
     Retrieve information about a set of projects based on a filter. See the
     [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/list)
@@ -50,13 +54,11 @@ def get_project(filter=None,opts=None):
     :param str filter: A string filter as defined in the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/list#query-parameters).
     """
     __args__ = dict()
-
-
     __args__['filter'] = filter
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:projects/getProject:getProject', __args__, opts=opts).value
 
     return AwaitableGetProjectResult(

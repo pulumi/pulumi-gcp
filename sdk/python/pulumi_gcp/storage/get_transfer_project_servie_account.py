@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetTransferProjectServieAccountResult:
     """
@@ -28,6 +29,8 @@ class GetTransferProjectServieAccountResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         __self__.project = project
+
+
 class AwaitableGetTransferProjectServieAccountResult(GetTransferProjectServieAccountResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -38,7 +41,8 @@ class AwaitableGetTransferProjectServieAccountResult(GetTransferProjectServieAcc
             id=self.id,
             project=self.project)
 
-def get_transfer_project_servie_account(project=None,opts=None):
+
+def get_transfer_project_servie_account(project=None, opts=None):
     """
     Use this data source to retrieve Storage Transfer service account for this project
 
@@ -46,13 +50,11 @@ def get_transfer_project_servie_account(project=None,opts=None):
     :param str project: The project ID. If it is not provided, the provider project is used.
     """
     __args__ = dict()
-
-
     __args__['project'] = project
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:storage/getTransferProjectServieAccount:getTransferProjectServieAccount', __args__, opts=opts).value
 
     return AwaitableGetTransferProjectServieAccountResult(

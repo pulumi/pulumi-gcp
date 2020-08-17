@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetRegionInstanceGroupResult:
     """
@@ -46,6 +47,8 @@ class GetRegionInstanceGroupResult:
         """
         The number of instances in the group.
         """
+
+
 class AwaitableGetRegionInstanceGroupResult(GetRegionInstanceGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -60,7 +63,8 @@ class AwaitableGetRegionInstanceGroupResult(GetRegionInstanceGroupResult):
             self_link=self.self_link,
             size=self.size)
 
-def get_region_instance_group(name=None,project=None,region=None,self_link=None,opts=None):
+
+def get_region_instance_group(name=None, project=None, region=None, self_link=None, opts=None):
     """
     Get a Compute Region Instance Group within GCE.
     For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroups).
@@ -78,8 +82,6 @@ def get_region_instance_group(name=None,project=None,region=None,self_link=None,
     :param str self_link: The link to the instance group.  One of `name` or `self_link` must be provided.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['project'] = project
     __args__['region'] = region
@@ -87,7 +89,7 @@ def get_region_instance_group(name=None,project=None,region=None,self_link=None,
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup', __args__, opts=opts).value
 
     return AwaitableGetRegionInstanceGroupResult(

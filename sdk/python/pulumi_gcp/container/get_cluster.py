@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetClusterResult:
     """
@@ -175,6 +176,8 @@ class GetClusterResult:
         if zone and not isinstance(zone, str):
             raise TypeError("Expected argument 'zone' to be a str")
         __self__.zone = zone
+
+
 class AwaitableGetClusterResult(GetClusterResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -235,7 +238,8 @@ class AwaitableGetClusterResult(GetClusterResult):
             workload_identity_configs=self.workload_identity_configs,
             zone=self.zone)
 
-def get_cluster(location=None,name=None,project=None,region=None,zone=None,opts=None):
+
+def get_cluster(location=None, name=None, project=None, region=None, zone=None, opts=None):
     """
     Get info about a GKE cluster from its name and location.
 
@@ -252,8 +256,6 @@ def get_cluster(location=None,name=None,project=None,region=None,zone=None,opts=
            favour of `location`.
     """
     __args__ = dict()
-
-
     __args__['location'] = location
     __args__['name'] = name
     __args__['project'] = project
@@ -262,7 +264,7 @@ def get_cluster(location=None,name=None,project=None,region=None,zone=None,opts=
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:container/getCluster:getCluster', __args__, opts=opts).value
 
     return AwaitableGetClusterResult(

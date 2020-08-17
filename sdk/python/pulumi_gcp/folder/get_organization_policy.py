@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetOrganizationPolicyResult:
     """
@@ -43,6 +44,8 @@ class GetOrganizationPolicyResult:
         if version and not isinstance(version, float):
             raise TypeError("Expected argument 'version' to be a float")
         __self__.version = version
+
+
 class AwaitableGetOrganizationPolicyResult(GetOrganizationPolicyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -59,7 +62,8 @@ class AwaitableGetOrganizationPolicyResult(GetOrganizationPolicyResult):
             update_time=self.update_time,
             version=self.version)
 
-def get_organization_policy(constraint=None,folder=None,opts=None):
+
+def get_organization_policy(constraint=None, folder=None, opts=None):
     """
     Allows management of Organization policies for a Google Folder. For more information see
     [the official
@@ -70,14 +74,12 @@ def get_organization_policy(constraint=None,folder=None,opts=None):
     :param str folder: The resource name of the folder to set the policy for. Its format is folders/{folder_id}.
     """
     __args__ = dict()
-
-
     __args__['constraint'] = constraint
     __args__['folder'] = folder
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:folder/getOrganizationPolicy:getOrganizationPolicy', __args__, opts=opts).value
 
     return AwaitableGetOrganizationPolicyResult(

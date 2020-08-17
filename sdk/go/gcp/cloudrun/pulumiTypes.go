@@ -2340,10 +2340,6 @@ func (o ServiceTemplateMetadataPtrOutput) Uid() pulumi.StringPtrOutput {
 type ServiceTemplateSpec struct {
 	// ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
 	// requests per container of the Revision. Values are:
-	// - `0` thread-safe, the system should manage the max concurrency. This is
-	//   the default value.
-	// - `1` not-thread-safe. Single concurrency
-	// - `2-N` thread-safe, max concurrency of N
 	ContainerConcurrency *int `pulumi:"containerConcurrency"`
 	// Container defines the unit of execution for this Revision.
 	// In the context of a Revision, we disallow a number of the fields of
@@ -2383,10 +2379,6 @@ type ServiceTemplateSpecInput interface {
 type ServiceTemplateSpecArgs struct {
 	// ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
 	// requests per container of the Revision. Values are:
-	// - `0` thread-safe, the system should manage the max concurrency. This is
-	//   the default value.
-	// - `1` not-thread-safe. Single concurrency
-	// - `2-N` thread-safe, max concurrency of N
 	ContainerConcurrency pulumi.IntPtrInput `pulumi:"containerConcurrency"`
 	// Container defines the unit of execution for this Revision.
 	// In the context of a Revision, we disallow a number of the fields of
@@ -2491,10 +2483,6 @@ func (o ServiceTemplateSpecOutput) ToServiceTemplateSpecPtrOutputWithContext(ctx
 
 // ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
 // requests per container of the Revision. Values are:
-// - `0` thread-safe, the system should manage the max concurrency. This is
-//   the default value.
-// - `1` not-thread-safe. Single concurrency
-// - `2-N` thread-safe, max concurrency of N
 func (o ServiceTemplateSpecOutput) ContainerConcurrency() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateSpec) *int { return v.ContainerConcurrency }).(pulumi.IntPtrOutput)
 }
@@ -2553,10 +2541,6 @@ func (o ServiceTemplateSpecPtrOutput) Elem() ServiceTemplateSpecOutput {
 
 // ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
 // requests per container of the Revision. Values are:
-// - `0` thread-safe, the system should manage the max concurrency. This is
-//   the default value.
-// - `1` not-thread-safe. Single concurrency
-// - `2-N` thread-safe, max concurrency of N
 func (o ServiceTemplateSpecPtrOutput) ContainerConcurrency() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateSpec) *int {
 		if v == nil {

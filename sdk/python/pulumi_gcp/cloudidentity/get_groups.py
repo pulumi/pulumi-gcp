@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetGroupsResult:
     """
@@ -28,6 +29,8 @@ class GetGroupsResult:
         if parent and not isinstance(parent, str):
             raise TypeError("Expected argument 'parent' to be a str")
         __self__.parent = parent
+
+
 class AwaitableGetGroupsResult(GetGroupsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -38,7 +41,8 @@ class AwaitableGetGroupsResult(GetGroupsResult):
             id=self.id,
             parent=self.parent)
 
-def get_groups(parent=None,opts=None):
+
+def get_groups(parent=None, opts=None):
     """
     Use this data source to get list of the Cloud Identity Groups under a customer or namespace.
 
@@ -48,13 +52,11 @@ def get_groups(parent=None,opts=None):
     :param str parent: The parent resource under which to list all Groups. Must be of the form identitysources/{identity_source_id} for external- identity-mapped groups or customers/{customer_id} for Google Groups.
     """
     __args__ = dict()
-
-
     __args__['parent'] = parent
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gcp:cloudidentity/getGroups:getGroups', __args__, opts=opts).value
 
     return AwaitableGetGroupsResult(

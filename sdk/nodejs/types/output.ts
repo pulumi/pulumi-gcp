@@ -2965,10 +2965,6 @@ export namespace cloudrun {
         /**
          * ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
          * requests per container of the Revision. Values are:
-         * - `0` thread-safe, the system should manage the max concurrency. This is
-         * the default value.
-         * - `1` not-thread-safe. Single concurrency
-         * - `2-N` thread-safe, max concurrency of N
          */
         containerConcurrency: number;
         /**
@@ -13307,8 +13303,6 @@ export namespace dns {
         description: string;
         /**
          * A list of cryptographic hashes of the DNSKEY resource record associated with this DnsKey. These digests are needed to construct a DS record that points at this DNS key. Each contains:
-         * - `digest` - The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
-         * - `type` - Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
          */
         digests: outputs.dns.GetKeysKeySigningKeyDigest[];
         /**
@@ -13338,7 +13332,13 @@ export namespace dns {
     }
 
     export interface GetKeysKeySigningKeyDigest {
+        /**
+         * The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
+         */
         digest?: string;
+        /**
+         * Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
+         */
         type?: string;
     }
 
@@ -13357,8 +13357,6 @@ export namespace dns {
         description: string;
         /**
          * A list of cryptographic hashes of the DNSKEY resource record associated with this DnsKey. These digests are needed to construct a DS record that points at this DNS key. Each contains:
-         * - `digest` - The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
-         * - `type` - Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
          */
         digests: outputs.dns.GetKeysZoneSigningKeyDigest[];
         /**
@@ -13384,7 +13382,13 @@ export namespace dns {
     }
 
     export interface GetKeysZoneSigningKeyDigest {
+        /**
+         * The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
+         */
         digest?: string;
+        /**
+         * Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
+         */
         type?: string;
     }
 
