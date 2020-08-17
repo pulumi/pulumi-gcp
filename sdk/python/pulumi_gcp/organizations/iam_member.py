@@ -12,37 +12,18 @@ from .. import _utilities, _tables
 class IAMMember(pulumi.CustomResource):
     condition: pulumi.Output[dict]
     etag: pulumi.Output[str]
-    """
-    (Computed) The etag of the organization's IAM policy.
-    """
     member: pulumi.Output[str]
-    """
-    The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-    """
     org_id: pulumi.Output[str]
     """
-    The numeric ID of the organization in which you want to create a custom role.
+    The numeric ID of the organization in which you want to manage the audit logging config.
     """
     role: pulumi.Output[str]
-    """
-    The role that should be applied. Note that custom roles must be of the format
-    `[projects|organizations]/{parent-name}/roles/{role-name}`.
-    """
     def __init__(__self__, resource_name, opts=None, condition=None, member=None, org_id=None, role=None, __props__=None, __name__=None, __opts__=None):
         """
-        Allows creation and management of a single member for a single binding within
-        the IAM policy for an existing Google Cloud Platform Organization.
-
-        > **Note:** This resource __must not__ be used in conjunction with
-           `organizations.IAMBinding` for the __same role__ or they will fight over
-           what your policy should be.
-
+        Create a IAMMember resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] member: The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-        :param pulumi.Input[str] org_id: The numeric ID of the organization in which you want to create a custom role.
-        :param pulumi.Input[str] role: The role that should be applied. Note that custom roles must be of the format
-               `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input[str] org_id: The numeric ID of the organization in which you want to manage the audit logging config.
 
         The **condition** object supports the following:
 
@@ -93,11 +74,7 @@ class IAMMember(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] etag: (Computed) The etag of the organization's IAM policy.
-        :param pulumi.Input[str] member: The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-        :param pulumi.Input[str] org_id: The numeric ID of the organization in which you want to create a custom role.
-        :param pulumi.Input[str] role: The role that should be applied. Note that custom roles must be of the format
-               `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input[str] org_id: The numeric ID of the organization in which you want to manage the audit logging config.
 
         The **condition** object supports the following:
 

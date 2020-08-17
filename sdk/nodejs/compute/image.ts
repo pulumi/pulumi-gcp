@@ -133,6 +133,25 @@ export class Image extends pulumi.CustomResource {
      * rawDisk.source property but not both to create an image.
      */
     public readonly sourceDisk!: pulumi.Output<string | undefined>;
+    /**
+     * URL of the source image used to create this image. In order to create an image, you must provide the full or partial
+     * URL of one of the following:
+     * The selfLink URL
+     * This property
+     * The rawDisk.source URL
+     * The sourceDisk URL
+     */
+    public readonly sourceImage!: pulumi.Output<string | undefined>;
+    /**
+     * URL of the source snapshot used to create this image.
+     * In order to create an image, you must provide the full or partial URL of one of the following:
+     * The selfLink URL
+     * This property
+     * The sourceImage URL
+     * The rawDisk.source URL
+     * The sourceDisk URL
+     */
+    public readonly sourceSnapshot!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Image resource with the given unique name, arguments, and options.
@@ -160,6 +179,8 @@ export class Image extends pulumi.CustomResource {
             inputs["rawDisk"] = state ? state.rawDisk : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
             inputs["sourceDisk"] = state ? state.sourceDisk : undefined;
+            inputs["sourceImage"] = state ? state.sourceImage : undefined;
+            inputs["sourceSnapshot"] = state ? state.sourceSnapshot : undefined;
         } else {
             const args = argsOrState as ImageArgs | undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -172,6 +193,8 @@ export class Image extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["rawDisk"] = args ? args.rawDisk : undefined;
             inputs["sourceDisk"] = args ? args.sourceDisk : undefined;
+            inputs["sourceImage"] = args ? args.sourceImage : undefined;
+            inputs["sourceSnapshot"] = args ? args.sourceSnapshot : undefined;
             inputs["archiveSizeBytes"] = undefined /*out*/;
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["labelFingerprint"] = undefined /*out*/;
@@ -265,6 +288,25 @@ export interface ImageState {
      * rawDisk.source property but not both to create an image.
      */
     readonly sourceDisk?: pulumi.Input<string>;
+    /**
+     * URL of the source image used to create this image. In order to create an image, you must provide the full or partial
+     * URL of one of the following:
+     * The selfLink URL
+     * This property
+     * The rawDisk.source URL
+     * The sourceDisk URL
+     */
+    readonly sourceImage?: pulumi.Input<string>;
+    /**
+     * URL of the source snapshot used to create this image.
+     * In order to create an image, you must provide the full or partial URL of one of the following:
+     * The selfLink URL
+     * This property
+     * The sourceImage URL
+     * The rawDisk.source URL
+     * The sourceDisk URL
+     */
+    readonly sourceSnapshot?: pulumi.Input<string>;
 }
 
 /**
@@ -328,4 +370,23 @@ export interface ImageArgs {
      * rawDisk.source property but not both to create an image.
      */
     readonly sourceDisk?: pulumi.Input<string>;
+    /**
+     * URL of the source image used to create this image. In order to create an image, you must provide the full or partial
+     * URL of one of the following:
+     * The selfLink URL
+     * This property
+     * The rawDisk.source URL
+     * The sourceDisk URL
+     */
+    readonly sourceImage?: pulumi.Input<string>;
+    /**
+     * URL of the source snapshot used to create this image.
+     * In order to create an image, you must provide the full or partial URL of one of the following:
+     * The selfLink URL
+     * This property
+     * The sourceImage URL
+     * The rawDisk.source URL
+     * The sourceDisk URL
+     */
+    readonly sourceSnapshot?: pulumi.Input<string>;
 }

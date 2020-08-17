@@ -1180,6 +1180,8 @@ type DatabaseInstanceSettingsBackupConfiguration struct {
 	// True if backup configuration is enabled.
 	Enabled  *bool   `pulumi:"enabled"`
 	Location *string `pulumi:"location"`
+	// True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation.
+	PointInTimeRecoveryEnabled *bool `pulumi:"pointInTimeRecoveryEnabled"`
 	// `HH:MM` format time indicating when backup
 	// configuration starts.
 	StartTime *string `pulumi:"startTime"`
@@ -1204,6 +1206,8 @@ type DatabaseInstanceSettingsBackupConfigurationArgs struct {
 	// True if backup configuration is enabled.
 	Enabled  pulumi.BoolPtrInput   `pulumi:"enabled"`
 	Location pulumi.StringPtrInput `pulumi:"location"`
+	// True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation.
+	PointInTimeRecoveryEnabled pulumi.BoolPtrInput `pulumi:"pointInTimeRecoveryEnabled"`
 	// `HH:MM` format time indicating when backup
 	// configuration starts.
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
@@ -1302,6 +1306,11 @@ func (o DatabaseInstanceSettingsBackupConfigurationOutput) Location() pulumi.Str
 	return o.ApplyT(func(v DatabaseInstanceSettingsBackupConfiguration) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation.
+func (o DatabaseInstanceSettingsBackupConfigurationOutput) PointInTimeRecoveryEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsBackupConfiguration) *bool { return v.PointInTimeRecoveryEnabled }).(pulumi.BoolPtrOutput)
+}
+
 // `HH:MM` format time indicating when backup
 // configuration starts.
 func (o DatabaseInstanceSettingsBackupConfigurationOutput) StartTime() pulumi.StringPtrOutput {
@@ -1357,6 +1366,16 @@ func (o DatabaseInstanceSettingsBackupConfigurationPtrOutput) Location() pulumi.
 		}
 		return v.Location
 	}).(pulumi.StringPtrOutput)
+}
+
+// True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation.
+func (o DatabaseInstanceSettingsBackupConfigurationPtrOutput) PointInTimeRecoveryEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsBackupConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PointInTimeRecoveryEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 // `HH:MM` format time indicating when backup
@@ -2957,8 +2976,9 @@ type GetDatabaseInstanceSettingBackupConfiguration struct {
 	// True if binary logging is enabled.
 	BinaryLogEnabled bool `pulumi:"binaryLogEnabled"`
 	// True if backup configuration is enabled.
-	Enabled  bool   `pulumi:"enabled"`
-	Location string `pulumi:"location"`
+	Enabled                    bool   `pulumi:"enabled"`
+	Location                   string `pulumi:"location"`
+	PointInTimeRecoveryEnabled bool   `pulumi:"pointInTimeRecoveryEnabled"`
 	// `HH:MM` format time indicating when backup configuration starts.
 	StartTime string `pulumi:"startTime"`
 }
@@ -2978,8 +2998,9 @@ type GetDatabaseInstanceSettingBackupConfigurationArgs struct {
 	// True if binary logging is enabled.
 	BinaryLogEnabled pulumi.BoolInput `pulumi:"binaryLogEnabled"`
 	// True if backup configuration is enabled.
-	Enabled  pulumi.BoolInput   `pulumi:"enabled"`
-	Location pulumi.StringInput `pulumi:"location"`
+	Enabled                    pulumi.BoolInput   `pulumi:"enabled"`
+	Location                   pulumi.StringInput `pulumi:"location"`
+	PointInTimeRecoveryEnabled pulumi.BoolInput   `pulumi:"pointInTimeRecoveryEnabled"`
 	// `HH:MM` format time indicating when backup configuration starts.
 	StartTime pulumi.StringInput `pulumi:"startTime"`
 }
@@ -3047,6 +3068,10 @@ func (o GetDatabaseInstanceSettingBackupConfigurationOutput) Enabled() pulumi.Bo
 
 func (o GetDatabaseInstanceSettingBackupConfigurationOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSettingBackupConfiguration) string { return v.Location }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstanceSettingBackupConfigurationOutput) PointInTimeRecoveryEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingBackupConfiguration) bool { return v.PointInTimeRecoveryEnabled }).(pulumi.BoolOutput)
 }
 
 // `HH:MM` format time indicating when backup configuration starts.

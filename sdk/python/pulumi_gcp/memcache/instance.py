@@ -27,6 +27,20 @@ class Instance(pulumi.CustomResource):
     """
     Resource labels to represent user-provided metadata.
     """
+    memcache_full_version: pulumi.Output[str]
+    """
+    The full version of memcached server running on this instance.
+    """
+    memcache_nodes: pulumi.Output[list]
+    """
+    Additional information about the instance state, if available.
+
+      * `host` (`str`)
+      * `nodeId` (`str`)
+      * `port` (`float`)
+      * `state` (`str`)
+      * `zone` (`str`)
+    """
     memcache_parameters: pulumi.Output[dict]
     """
     User-specified parameters for this memcache instance.
@@ -35,6 +49,14 @@ class Instance(pulumi.CustomResource):
       * `id` (`str`) - -
         This is a unique ID associated with this set of parameters.
       * `params` (`dict`) - User-defined set of parameters to use in the memcache process.
+    """
+    memcache_version: pulumi.Output[str]
+    """
+    The major version of Memcached software. If not provided, latest supported version will be used.
+    Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
+    determined by our system based on the latest supported minor version.
+    Default value is `MEMCACHE_1_5`.
+    Possible values are `MEMCACHE_1_5`.
     """
     name: pulumi.Output[str]
     """
@@ -66,7 +88,7 @@ class Instance(pulumi.CustomResource):
     Zones where memcache nodes should be provisioned.  If not
     provided, all zones will be used.
     """
-    def __init__(__self__, resource_name, opts=None, authorized_network=None, display_name=None, labels=None, memcache_parameters=None, name=None, node_config=None, node_count=None, project=None, region=None, zones=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, authorized_network=None, display_name=None, labels=None, memcache_parameters=None, memcache_version=None, name=None, node_config=None, node_count=None, project=None, region=None, zones=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Instance resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
@@ -77,6 +99,11 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[dict] labels: Resource labels to represent user-provided metadata.
         :param pulumi.Input[dict] memcache_parameters: User-specified parameters for this memcache instance.
                Structure is documented below.
+        :param pulumi.Input[str] memcache_version: The major version of Memcached software. If not provided, latest supported version will be used.
+               Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
+               determined by our system based on the latest supported minor version.
+               Default value is `MEMCACHE_1_5`.
+               Possible values are `MEMCACHE_1_5`.
         :param pulumi.Input[str] name: The resource name of the instance.
         :param pulumi.Input[dict] node_config: Configuration for memcache nodes.
                Structure is documented below.
@@ -119,6 +146,7 @@ class Instance(pulumi.CustomResource):
             __props__['display_name'] = display_name
             __props__['labels'] = labels
             __props__['memcache_parameters'] = memcache_parameters
+            __props__['memcache_version'] = memcache_version
             __props__['name'] = name
             if node_config is None:
                 raise TypeError("Missing required property 'node_config'")
@@ -132,6 +160,8 @@ class Instance(pulumi.CustomResource):
             __props__['region'] = region
             __props__['zones'] = zones
             __props__['create_time'] = None
+            __props__['memcache_full_version'] = None
+            __props__['memcache_nodes'] = None
         super(Instance, __self__).__init__(
             'gcp:memcache/instance:Instance',
             resource_name,
@@ -139,7 +169,7 @@ class Instance(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, authorized_network=None, create_time=None, display_name=None, labels=None, memcache_parameters=None, name=None, node_config=None, node_count=None, project=None, region=None, zones=None):
+    def get(resource_name, id, opts=None, authorized_network=None, create_time=None, display_name=None, labels=None, memcache_full_version=None, memcache_nodes=None, memcache_parameters=None, memcache_version=None, name=None, node_config=None, node_count=None, project=None, region=None, zones=None):
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -152,8 +182,15 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] display_name: A user-visible name for the instance.
         :param pulumi.Input[dict] labels: Resource labels to represent user-provided metadata.
+        :param pulumi.Input[str] memcache_full_version: The full version of memcached server running on this instance.
+        :param pulumi.Input[list] memcache_nodes: Additional information about the instance state, if available.
         :param pulumi.Input[dict] memcache_parameters: User-specified parameters for this memcache instance.
                Structure is documented below.
+        :param pulumi.Input[str] memcache_version: The major version of Memcached software. If not provided, latest supported version will be used.
+               Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
+               determined by our system based on the latest supported minor version.
+               Default value is `MEMCACHE_1_5`.
+               Possible values are `MEMCACHE_1_5`.
         :param pulumi.Input[str] name: The resource name of the instance.
         :param pulumi.Input[dict] node_config: Configuration for memcache nodes.
                Structure is documented below.
@@ -163,6 +200,14 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] region: The name of the Memcache region of the instance.
         :param pulumi.Input[list] zones: Zones where memcache nodes should be provisioned.  If not
                provided, all zones will be used.
+
+        The **memcache_nodes** object supports the following:
+
+          * `host` (`pulumi.Input[str]`)
+          * `nodeId` (`pulumi.Input[str]`)
+          * `port` (`pulumi.Input[float]`)
+          * `state` (`pulumi.Input[str]`)
+          * `zone` (`pulumi.Input[str]`)
 
         The **memcache_parameters** object supports the following:
 
@@ -183,7 +228,10 @@ class Instance(pulumi.CustomResource):
         __props__["create_time"] = create_time
         __props__["display_name"] = display_name
         __props__["labels"] = labels
+        __props__["memcache_full_version"] = memcache_full_version
+        __props__["memcache_nodes"] = memcache_nodes
         __props__["memcache_parameters"] = memcache_parameters
+        __props__["memcache_version"] = memcache_version
         __props__["name"] = name
         __props__["node_config"] = node_config
         __props__["node_count"] = node_count

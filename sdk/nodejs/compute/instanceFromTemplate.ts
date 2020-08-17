@@ -62,6 +62,11 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
      */
     public readonly canIpForward!: pulumi.Output<boolean>;
     /**
+     * The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
+     * to create.
+     */
+    public readonly confidentialInstanceConfig!: pulumi.Output<outputs.compute.InstanceFromTemplateConfidentialInstanceConfig>;
+    /**
      * The CPU platform used by this instance.
      */
     public /*out*/ readonly cpuPlatform!: pulumi.Output<string>;
@@ -201,6 +206,7 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
             inputs["attachedDisks"] = state ? state.attachedDisks : undefined;
             inputs["bootDisk"] = state ? state.bootDisk : undefined;
             inputs["canIpForward"] = state ? state.canIpForward : undefined;
+            inputs["confidentialInstanceConfig"] = state ? state.confidentialInstanceConfig : undefined;
             inputs["cpuPlatform"] = state ? state.cpuPlatform : undefined;
             inputs["currentStatus"] = state ? state.currentStatus : undefined;
             inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
@@ -239,6 +245,7 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
             inputs["attachedDisks"] = args ? args.attachedDisks : undefined;
             inputs["bootDisk"] = args ? args.bootDisk : undefined;
             inputs["canIpForward"] = args ? args.canIpForward : undefined;
+            inputs["confidentialInstanceConfig"] = args ? args.confidentialInstanceConfig : undefined;
             inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["desiredStatus"] = args ? args.desiredStatus : undefined;
@@ -301,6 +308,11 @@ export interface InstanceFromTemplateState {
      * Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
      */
     readonly canIpForward?: pulumi.Input<boolean>;
+    /**
+     * The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
+     * to create.
+     */
+    readonly confidentialInstanceConfig?: pulumi.Input<inputs.compute.InstanceFromTemplateConfidentialInstanceConfig>;
     /**
      * The CPU platform used by this instance.
      */
@@ -447,6 +459,11 @@ export interface InstanceFromTemplateArgs {
      * Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
      */
     readonly canIpForward?: pulumi.Input<boolean>;
+    /**
+     * The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
+     * to create.
+     */
+    readonly confidentialInstanceConfig?: pulumi.Input<inputs.compute.InstanceFromTemplateConfidentialInstanceConfig>;
     /**
      * Whether deletion protection is enabled on this instance.
      */

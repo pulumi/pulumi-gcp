@@ -30,8 +30,10 @@ class AccessLevel(pulumi.CustomResource):
           Structure is documented below.
           * `allowedDeviceManagementLevels` (`list`) - A list of allowed device management levels.
             An empty list allows all management levels.
+            Each value may be one of `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, and `COMPLETE`.
           * `allowedEncryptionStatuses` (`list`) - A list of allowed encryptions statuses.
             An empty list allows all statuses.
+            Each value may be one of `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, and `ENCRYPTED`.
           * `osConstraints` (`list`) - A list of allowed OS versions.
             An empty list allows all types and all versions.
             Structure is documented below.
@@ -154,8 +156,10 @@ class AccessLevel(pulumi.CustomResource):
               Structure is documented below.
               * `allowedDeviceManagementLevels` (`pulumi.Input[list]`) - A list of allowed device management levels.
                 An empty list allows all management levels.
+                Each value may be one of `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, and `COMPLETE`.
               * `allowedEncryptionStatuses` (`pulumi.Input[list]`) - A list of allowed encryptions statuses.
                 An empty list allows all statuses.
+                Each value may be one of `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, and `ENCRYPTED`.
               * `osConstraints` (`pulumi.Input[list]`) - A list of allowed OS versions.
                 An empty list allows all types and all versions.
                 Structure is documented below.
@@ -282,8 +286,10 @@ class AccessLevel(pulumi.CustomResource):
               Structure is documented below.
               * `allowedDeviceManagementLevels` (`pulumi.Input[list]`) - A list of allowed device management levels.
                 An empty list allows all management levels.
+                Each value may be one of `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, and `COMPLETE`.
               * `allowedEncryptionStatuses` (`pulumi.Input[list]`) - A list of allowed encryptions statuses.
                 An empty list allows all statuses.
+                Each value may be one of `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, and `ENCRYPTED`.
               * `osConstraints` (`pulumi.Input[list]`) - A list of allowed OS versions.
                 An empty list allows all types and all versions.
                 Structure is documented below.

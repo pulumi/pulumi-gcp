@@ -9,41 +9,23 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Organizations
 {
-    /// <summary>
-    /// Allows creation and management of a single member for a single binding within
-    /// the IAM policy for an existing Google Cloud Platform Organization.
-    /// 
-    /// &gt; **Note:** This resource __must not__ be used in conjunction with
-    ///    `gcp.organizations.IAMBinding` for the __same role__ or they will fight over
-    ///    what your policy should be.
-    /// </summary>
     public partial class IAMMember : Pulumi.CustomResource
     {
         [Output("condition")]
         public Output<Outputs.IAMMemberCondition?> Condition { get; private set; } = null!;
 
-        /// <summary>
-        /// (Computed) The etag of the organization's IAM policy.
-        /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
-        /// <summary>
-        /// The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-        /// </summary>
         [Output("member")]
         public Output<string> Member { get; private set; } = null!;
 
         /// <summary>
-        /// The numeric ID of the organization in which you want to create a custom role.
+        /// The numeric ID of the organization in which you want to manage the audit logging config.
         /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
 
-        /// <summary>
-        /// The role that should be applied. Note that custom roles must be of the format
-        /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        /// </summary>
         [Output("role")]
         public Output<string> Role { get; private set; } = null!;
 
@@ -96,22 +78,15 @@ namespace Pulumi.Gcp.Organizations
         [Input("condition")]
         public Input<Inputs.IAMMemberConditionArgs>? Condition { get; set; }
 
-        /// <summary>
-        /// The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-        /// </summary>
         [Input("member", required: true)]
         public Input<string> Member { get; set; } = null!;
 
         /// <summary>
-        /// The numeric ID of the organization in which you want to create a custom role.
+        /// The numeric ID of the organization in which you want to manage the audit logging config.
         /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
 
-        /// <summary>
-        /// The role that should be applied. Note that custom roles must be of the format
-        /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
 
@@ -125,28 +100,18 @@ namespace Pulumi.Gcp.Organizations
         [Input("condition")]
         public Input<Inputs.IAMMemberConditionGetArgs>? Condition { get; set; }
 
-        /// <summary>
-        /// (Computed) The etag of the organization's IAM policy.
-        /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
-        /// <summary>
-        /// The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-        /// </summary>
         [Input("member")]
         public Input<string>? Member { get; set; }
 
         /// <summary>
-        /// The numeric ID of the organization in which you want to create a custom role.
+        /// The numeric ID of the organization in which you want to manage the audit logging config.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
-        /// <summary>
-        /// The role that should be applied. Note that custom roles must be of the format
-        /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
 

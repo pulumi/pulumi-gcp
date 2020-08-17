@@ -61,6 +61,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly canIpForward!: pulumi.Output<boolean | undefined>;
     /**
+     * The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
+     * to create.
+     */
+    public readonly confidentialInstanceConfig!: pulumi.Output<outputs.compute.InstanceConfidentialInstanceConfig>;
+    /**
      * The CPU platform used by this instance.
      */
     public /*out*/ readonly cpuPlatform!: pulumi.Output<string>;
@@ -217,6 +222,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["attachedDisks"] = state ? state.attachedDisks : undefined;
             inputs["bootDisk"] = state ? state.bootDisk : undefined;
             inputs["canIpForward"] = state ? state.canIpForward : undefined;
+            inputs["confidentialInstanceConfig"] = state ? state.confidentialInstanceConfig : undefined;
             inputs["cpuPlatform"] = state ? state.cpuPlatform : undefined;
             inputs["currentStatus"] = state ? state.currentStatus : undefined;
             inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
@@ -260,6 +266,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["attachedDisks"] = args ? args.attachedDisks : undefined;
             inputs["bootDisk"] = args ? args.bootDisk : undefined;
             inputs["canIpForward"] = args ? args.canIpForward : undefined;
+            inputs["confidentialInstanceConfig"] = args ? args.confidentialInstanceConfig : undefined;
             inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["desiredStatus"] = args ? args.desiredStatus : undefined;
@@ -324,6 +331,11 @@ export interface InstanceState {
      * This defaults to false.
      */
     readonly canIpForward?: pulumi.Input<boolean>;
+    /**
+     * The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
+     * to create.
+     */
+    readonly confidentialInstanceConfig?: pulumi.Input<inputs.compute.InstanceConfidentialInstanceConfig>;
     /**
      * The CPU platform used by this instance.
      */
@@ -490,6 +502,11 @@ export interface InstanceArgs {
      * This defaults to false.
      */
     readonly canIpForward?: pulumi.Input<boolean>;
+    /**
+     * The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
+     * to create.
+     */
+    readonly confidentialInstanceConfig?: pulumi.Input<inputs.compute.InstanceConfidentialInstanceConfig>;
     /**
      * Enable deletion protection on this instance. Defaults to false.
      * **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.

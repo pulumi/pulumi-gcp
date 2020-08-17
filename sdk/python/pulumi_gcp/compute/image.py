@@ -98,7 +98,26 @@ class Image(pulumi.CustomResource):
     You must provide either this property or the
     rawDisk.source property but not both to create an image.
     """
-    def __init__(__self__, resource_name, opts=None, description=None, disk_size_gb=None, family=None, guest_os_features=None, labels=None, licenses=None, name=None, project=None, raw_disk=None, source_disk=None, __props__=None, __name__=None, __opts__=None):
+    source_image: pulumi.Output[str]
+    """
+    URL of the source image used to create this image. In order to create an image, you must provide the full or partial
+    URL of one of the following:
+    The selfLink URL
+    This property
+    The rawDisk.source URL
+    The sourceDisk URL
+    """
+    source_snapshot: pulumi.Output[str]
+    """
+    URL of the source snapshot used to create this image.
+    In order to create an image, you must provide the full or partial URL of one of the following:
+    The selfLink URL
+    This property
+    The sourceImage URL
+    The rawDisk.source URL
+    The sourceDisk URL
+    """
+    def __init__(__self__, resource_name, opts=None, description=None, disk_size_gb=None, family=None, guest_os_features=None, labels=None, licenses=None, name=None, project=None, raw_disk=None, source_disk=None, source_image=None, source_snapshot=None, __props__=None, __name__=None, __opts__=None):
         """
         Represents an Image resource.
 
@@ -154,6 +173,19 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[str] source_disk: The source disk to create this image based on.
                You must provide either this property or the
                rawDisk.source property but not both to create an image.
+        :param pulumi.Input[str] source_image: URL of the source image used to create this image. In order to create an image, you must provide the full or partial
+               URL of one of the following:
+               The selfLink URL
+               This property
+               The rawDisk.source URL
+               The sourceDisk URL
+        :param pulumi.Input[str] source_snapshot: URL of the source snapshot used to create this image.
+               In order to create an image, you must provide the full or partial URL of one of the following:
+               The selfLink URL
+               This property
+               The sourceImage URL
+               The rawDisk.source URL
+               The sourceDisk URL
 
         The **guest_os_features** object supports the following:
 
@@ -201,6 +233,8 @@ class Image(pulumi.CustomResource):
             __props__['project'] = project
             __props__['raw_disk'] = raw_disk
             __props__['source_disk'] = source_disk
+            __props__['source_image'] = source_image
+            __props__['source_snapshot'] = source_snapshot
             __props__['archive_size_bytes'] = None
             __props__['creation_timestamp'] = None
             __props__['label_fingerprint'] = None
@@ -212,7 +246,7 @@ class Image(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, archive_size_bytes=None, creation_timestamp=None, description=None, disk_size_gb=None, family=None, guest_os_features=None, label_fingerprint=None, labels=None, licenses=None, name=None, project=None, raw_disk=None, self_link=None, source_disk=None):
+    def get(resource_name, id, opts=None, archive_size_bytes=None, creation_timestamp=None, description=None, disk_size_gb=None, family=None, guest_os_features=None, label_fingerprint=None, labels=None, licenses=None, name=None, project=None, raw_disk=None, self_link=None, source_disk=None, source_image=None, source_snapshot=None):
         """
         Get an existing Image resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -251,6 +285,19 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[str] source_disk: The source disk to create this image based on.
                You must provide either this property or the
                rawDisk.source property but not both to create an image.
+        :param pulumi.Input[str] source_image: URL of the source image used to create this image. In order to create an image, you must provide the full or partial
+               URL of one of the following:
+               The selfLink URL
+               This property
+               The rawDisk.source URL
+               The sourceDisk URL
+        :param pulumi.Input[str] source_snapshot: URL of the source snapshot used to create this image.
+               In order to create an image, you must provide the full or partial URL of one of the following:
+               The selfLink URL
+               This property
+               The sourceImage URL
+               The rawDisk.source URL
+               The sourceDisk URL
 
         The **guest_os_features** object supports the following:
 
@@ -289,6 +336,8 @@ class Image(pulumi.CustomResource):
         __props__["raw_disk"] = raw_disk
         __props__["self_link"] = self_link
         __props__["source_disk"] = source_disk
+        __props__["source_image"] = source_image
+        __props__["source_snapshot"] = source_snapshot
         return Image(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):

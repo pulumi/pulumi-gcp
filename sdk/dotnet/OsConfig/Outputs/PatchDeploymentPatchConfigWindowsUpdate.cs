@@ -15,9 +15,9 @@ namespace Pulumi.Gcp.OsConfig.Outputs
     {
         /// <summary>
         /// Only apply updates of these windows update classifications. If empty, all updates are applied.
-        /// Possible values are `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, and `UPDATE`.
+        /// Each value may be one of `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, and `UPDATE`.
         /// </summary>
-        public readonly string? Classifications;
+        public readonly ImmutableArray<string> Classifications;
         /// <summary>
         /// List of KBs to exclude from update.
         /// </summary>
@@ -30,7 +30,7 @@ namespace Pulumi.Gcp.OsConfig.Outputs
 
         [OutputConstructor]
         private PatchDeploymentPatchConfigWindowsUpdate(
-            string? classifications,
+            ImmutableArray<string> classifications,
 
             ImmutableArray<string> excludes,
 

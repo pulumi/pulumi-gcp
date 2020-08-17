@@ -10,18 +10,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Allows creation and management of the IAM policy for an existing Google Cloud
-// Platform folder.
 type IAMPolicy struct {
 	pulumi.CustomResourceState
 
-	// (Computed) The etag of the folder's IAM policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
-	Etag pulumi.StringOutput `pulumi:"etag"`
-	// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
-	Folder pulumi.StringOutput `pulumi:"folder"`
-	// The `organizations.getIAMPolicy` data source that represents
-	// the IAM policy that will be applied to the folder. This policy overrides any existing
-	// policy applied to the folder.
+	Etag       pulumi.StringOutput `pulumi:"etag"`
+	Folder     pulumi.StringOutput `pulumi:"folder"`
 	PolicyData pulumi.StringOutput `pulumi:"policyData"`
 }
 
@@ -59,24 +52,14 @@ func GetIAMPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering IAMPolicy resources.
 type iampolicyState struct {
-	// (Computed) The etag of the folder's IAM policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
-	Etag *string `pulumi:"etag"`
-	// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
-	Folder *string `pulumi:"folder"`
-	// The `organizations.getIAMPolicy` data source that represents
-	// the IAM policy that will be applied to the folder. This policy overrides any existing
-	// policy applied to the folder.
+	Etag       *string `pulumi:"etag"`
+	Folder     *string `pulumi:"folder"`
 	PolicyData *string `pulumi:"policyData"`
 }
 
 type IAMPolicyState struct {
-	// (Computed) The etag of the folder's IAM policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
-	Etag pulumi.StringPtrInput
-	// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
-	Folder pulumi.StringPtrInput
-	// The `organizations.getIAMPolicy` data source that represents
-	// the IAM policy that will be applied to the folder. This policy overrides any existing
-	// policy applied to the folder.
+	Etag       pulumi.StringPtrInput
+	Folder     pulumi.StringPtrInput
 	PolicyData pulumi.StringPtrInput
 }
 
@@ -85,21 +68,13 @@ func (IAMPolicyState) ElementType() reflect.Type {
 }
 
 type iampolicyArgs struct {
-	// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
-	Folder string `pulumi:"folder"`
-	// The `organizations.getIAMPolicy` data source that represents
-	// the IAM policy that will be applied to the folder. This policy overrides any existing
-	// policy applied to the folder.
+	Folder     string `pulumi:"folder"`
 	PolicyData string `pulumi:"policyData"`
 }
 
 // The set of arguments for constructing a IAMPolicy resource.
 type IAMPolicyArgs struct {
-	// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
-	Folder pulumi.StringInput
-	// The `organizations.getIAMPolicy` data source that represents
-	// the IAM policy that will be applied to the folder. This policy overrides any existing
-	// policy applied to the folder.
+	Folder     pulumi.StringInput
 	PolicyData pulumi.StringInput
 }
 

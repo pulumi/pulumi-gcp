@@ -142,8 +142,8 @@ class PatchDeployment(pulumi.CustomResource):
         Possible values are `DEFAULT`, `ALWAYS`, and `NEVER`.
       * `windowsUpdate` (`dict`) - Windows update settings. Use this setting to override the default Windows patch rules.
         Structure is documented below.
-        * `classifications` (`str`) - Only apply updates of these windows update classifications. If empty, all updates are applied.
-          Possible values are `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, and `UPDATE`.
+        * `classifications` (`list`) - Only apply updates of these windows update classifications. If empty, all updates are applied.
+          Each value may be one of `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, and `UPDATE`.
         * `excludes` (`list`) - List of KBs to exclude from update.
         * `exclusivePatches` (`list`) - An exclusive list of kbs to be updated. These are the only patches that will be updated.
           This field must not be used with other patch configurations.
@@ -364,8 +364,8 @@ class PatchDeployment(pulumi.CustomResource):
             Possible values are `DEFAULT`, `ALWAYS`, and `NEVER`.
           * `windowsUpdate` (`pulumi.Input[dict]`) - Windows update settings. Use this setting to override the default Windows patch rules.
             Structure is documented below.
-            * `classifications` (`pulumi.Input[str]`) - Only apply updates of these windows update classifications. If empty, all updates are applied.
-              Possible values are `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, and `UPDATE`.
+            * `classifications` (`pulumi.Input[list]`) - Only apply updates of these windows update classifications. If empty, all updates are applied.
+              Each value may be one of `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, and `UPDATE`.
             * `excludes` (`pulumi.Input[list]`) - List of KBs to exclude from update.
             * `exclusivePatches` (`pulumi.Input[list]`) - An exclusive list of kbs to be updated. These are the only patches that will be updated.
               This field must not be used with other patch configurations.
@@ -606,8 +606,8 @@ class PatchDeployment(pulumi.CustomResource):
             Possible values are `DEFAULT`, `ALWAYS`, and `NEVER`.
           * `windowsUpdate` (`pulumi.Input[dict]`) - Windows update settings. Use this setting to override the default Windows patch rules.
             Structure is documented below.
-            * `classifications` (`pulumi.Input[str]`) - Only apply updates of these windows update classifications. If empty, all updates are applied.
-              Possible values are `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, and `UPDATE`.
+            * `classifications` (`pulumi.Input[list]`) - Only apply updates of these windows update classifications. If empty, all updates are applied.
+              Each value may be one of `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, and `UPDATE`.
             * `excludes` (`pulumi.Input[list]`) - List of KBs to exclude from update.
             * `exclusivePatches` (`pulumi.Input[list]`) - An exclusive list of kbs to be updated. These are the only patches that will be updated.
               This field must not be used with other patch configurations.

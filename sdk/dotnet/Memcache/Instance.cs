@@ -37,11 +37,33 @@ namespace Pulumi.Gcp.Memcache
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
+        /// The full version of memcached server running on this instance.
+        /// </summary>
+        [Output("memcacheFullVersion")]
+        public Output<string> MemcacheFullVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// Additional information about the instance state, if available.
+        /// </summary>
+        [Output("memcacheNodes")]
+        public Output<ImmutableArray<Outputs.InstanceMemcacheNode>> MemcacheNodes { get; private set; } = null!;
+
+        /// <summary>
         /// User-specified parameters for this memcache instance.
         /// Structure is documented below.
         /// </summary>
         [Output("memcacheParameters")]
         public Output<Outputs.InstanceMemcacheParameters?> MemcacheParameters { get; private set; } = null!;
+
+        /// <summary>
+        /// The major version of Memcached software. If not provided, latest supported version will be used.
+        /// Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
+        /// determined by our system based on the latest supported minor version.
+        /// Default value is `MEMCACHE_1_5`.
+        /// Possible values are `MEMCACHE_1_5`.
+        /// </summary>
+        [Output("memcacheVersion")]
+        public Output<string?> MemcacheVersion { get; private set; } = null!;
 
         /// <summary>
         /// The resource name of the instance.
@@ -161,6 +183,16 @@ namespace Pulumi.Gcp.Memcache
         public Input<Inputs.InstanceMemcacheParametersArgs>? MemcacheParameters { get; set; }
 
         /// <summary>
+        /// The major version of Memcached software. If not provided, latest supported version will be used.
+        /// Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
+        /// determined by our system based on the latest supported minor version.
+        /// Default value is `MEMCACHE_1_5`.
+        /// Possible values are `MEMCACHE_1_5`.
+        /// </summary>
+        [Input("memcacheVersion")]
+        public Input<string>? MemcacheVersion { get; set; }
+
+        /// <summary>
         /// The resource name of the instance.
         /// </summary>
         [Input("name")]
@@ -244,11 +276,39 @@ namespace Pulumi.Gcp.Memcache
         }
 
         /// <summary>
+        /// The full version of memcached server running on this instance.
+        /// </summary>
+        [Input("memcacheFullVersion")]
+        public Input<string>? MemcacheFullVersion { get; set; }
+
+        [Input("memcacheNodes")]
+        private InputList<Inputs.InstanceMemcacheNodeGetArgs>? _memcacheNodes;
+
+        /// <summary>
+        /// Additional information about the instance state, if available.
+        /// </summary>
+        public InputList<Inputs.InstanceMemcacheNodeGetArgs> MemcacheNodes
+        {
+            get => _memcacheNodes ?? (_memcacheNodes = new InputList<Inputs.InstanceMemcacheNodeGetArgs>());
+            set => _memcacheNodes = value;
+        }
+
+        /// <summary>
         /// User-specified parameters for this memcache instance.
         /// Structure is documented below.
         /// </summary>
         [Input("memcacheParameters")]
         public Input<Inputs.InstanceMemcacheParametersGetArgs>? MemcacheParameters { get; set; }
+
+        /// <summary>
+        /// The major version of Memcached software. If not provided, latest supported version will be used.
+        /// Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
+        /// determined by our system based on the latest supported minor version.
+        /// Default value is `MEMCACHE_1_5`.
+        /// Possible values are `MEMCACHE_1_5`.
+        /// </summary>
+        [Input("memcacheVersion")]
+        public Input<string>? MemcacheVersion { get; set; }
 
         /// <summary>
         /// The resource name of the instance.

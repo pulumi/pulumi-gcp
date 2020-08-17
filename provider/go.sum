@@ -614,6 +614,8 @@ github.com/pulumi/terraform-provider-google-beta v0.0.0-20200804214836-39302eaa6
 github.com/pulumi/terraform-provider-google-beta v0.0.0-20200804214836-39302eaa6cb2/go.mod h1:kf0ennph7pjXoSmoUup2J964i28MPOwPvf+nPh1zouw=
 github.com/pulumi/terraform-provider-google-beta v0.0.0-20200812090849-a4128f1507d2 h1:k3FOsYKXxoCqOGu7LrQf6MUhEiMObJbqb3PPqrIsS2g=
 github.com/pulumi/terraform-provider-google-beta v0.0.0-20200812090849-a4128f1507d2/go.mod h1:7CCa96aXKZ3sRsHnqyfKWq0Heeu2Bb1PZ0WK8Pz6IL4=
+github.com/pulumi/terraform-provider-google-beta v0.0.0-20200817191203-097ec6fba670 h1:GQYab0rPxDDFJAicDFaXnNrko3+wed2MV8yDvGHL7OA=
+github.com/pulumi/terraform-provider-google-beta v0.0.0-20200817191203-097ec6fba670/go.mod h1:4c8kWZMLN9uu4T9eH52Vec2LgtTBGZuGkSDk57abL+0=
 github.com/pulumi/tf2pulumi v0.8.1-0.20200610210702-8e5d1a569c4a h1:CUbap8oEhlXRiqVBcAGiW63iXuDY7iIwQLM4r7y8lw8=
 github.com/pulumi/tf2pulumi v0.8.1-0.20200610210702-8e5d1a569c4a/go.mod h1:lE39suxXfTqjNHg8PxtPUdek3wnTTdnoYXVpQdFGmEo=
 github.com/pulumi/tf2pulumi v0.8.1-0.20200630203740-1846524be4ec h1:C0l29EHsfhH+reeRSmqr0sIzJipQpXssof3YZurRrVo=
@@ -963,6 +965,8 @@ google.golang.org/api v0.25.0 h1:LodzhlzZEUfhXzNUMIfVlf9Gr6Ua5MMtoFWh7+f47qA=
 google.golang.org/api v0.25.0/go.mod h1:lIXQywCXRcnZPGlsd8NbLnOjtAoL6em04bJ9+z0MncE=
 google.golang.org/api v0.26.0 h1:VJZ8h6E8ip82FRpQl848c5vAadxlTXrUh8RzQzSRm08=
 google.golang.org/api v0.26.0/go.mod h1:lIXQywCXRcnZPGlsd8NbLnOjtAoL6em04bJ9+z0MncE=
+google.golang.org/api v0.29.0 h1:BaiDisFir8O4IJxvAabCGGkQ6yCJegNQqSVoYUNAnbk=
+google.golang.org/api v0.29.0/go.mod h1:Lcubydp8VUV7KeIHD9z2Bys/sm/vGKnG1UHuDBSrHWM=
 google.golang.org/appengine v1.1.0/go.mod h1:EbEs0AVv82hx2wNQdGPgUI5lhzA/G0D9YwlJXL52JkM=
 google.golang.org/appengine v1.4.0/go.mod h1:xpcJRLb0r/rnEns0DIKYYv+WjYCduHsrkT7/EB5XEv4=
 google.golang.org/appengine v1.6.1/go.mod h1:i06prIuMbXzDqacNJfV5OdTW448YApPu5ww/cMBSeb0=

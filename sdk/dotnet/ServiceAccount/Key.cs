@@ -51,6 +51,12 @@ namespace Pulumi.Gcp.ServiceAccount
         public Output<string> PublicKey { get; private set; } = null!;
 
         /// <summary>
+        /// Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with `public_key_type` and `private_key_type`.
+        /// </summary>
+        [Output("publicKeyData")]
+        public Output<string?> PublicKeyData { get; private set; } = null!;
+
+        /// <summary>
         /// The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
         /// </summary>
         [Output("publicKeyType")]
@@ -139,6 +145,12 @@ namespace Pulumi.Gcp.ServiceAccount
         public Input<string>? PrivateKeyType { get; set; }
 
         /// <summary>
+        /// Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with `public_key_type` and `private_key_type`.
+        /// </summary>
+        [Input("publicKeyData")]
+        public Input<string>? PublicKeyData { get; set; }
+
+        /// <summary>
         /// The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
         /// </summary>
         [Input("publicKeyType")]
@@ -192,6 +204,12 @@ namespace Pulumi.Gcp.ServiceAccount
         /// </summary>
         [Input("publicKey")]
         public Input<string>? PublicKey { get; set; }
+
+        /// <summary>
+        /// Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with `public_key_type` and `private_key_type`.
+        /// </summary>
+        [Input("publicKeyData")]
+        public Input<string>? PublicKeyData { get; set; }
 
         /// <summary>
         /// The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.

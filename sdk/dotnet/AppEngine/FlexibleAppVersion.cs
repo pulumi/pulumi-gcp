@@ -97,7 +97,8 @@ namespace Pulumi.Gcp.AppEngine
         public Output<ImmutableArray<Outputs.FlexibleAppVersionHandler>> Handlers { get; private set; } = null!;
 
         /// <summary>
-        /// Before an application can receive email or XMPP messages, the application must be configured to enable the service.
+        /// A list of the types of messages that this application is able to receive.
+        /// Each value may be one of `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, and `INBOUND_SERVICE_WARMUP`.
         /// </summary>
         [Output("inboundServices")]
         public Output<ImmutableArray<string>> InboundServices { get; private set; } = null!;
@@ -360,7 +361,8 @@ namespace Pulumi.Gcp.AppEngine
         private InputList<string>? _inboundServices;
 
         /// <summary>
-        /// Before an application can receive email or XMPP messages, the application must be configured to enable the service.
+        /// A list of the types of messages that this application is able to receive.
+        /// Each value may be one of `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, and `INBOUND_SERVICE_WARMUP`.
         /// </summary>
         public InputList<string> InboundServices
         {
@@ -581,7 +583,8 @@ namespace Pulumi.Gcp.AppEngine
         private InputList<string>? _inboundServices;
 
         /// <summary>
-        /// Before an application can receive email or XMPP messages, the application must be configured to enable the service.
+        /// A list of the types of messages that this application is able to receive.
+        /// Each value may be one of `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, and `INBOUND_SERVICE_WARMUP`.
         /// </summary>
         public InputList<string> InboundServices
         {

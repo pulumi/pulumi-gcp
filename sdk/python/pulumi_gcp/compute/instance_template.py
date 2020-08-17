@@ -15,6 +15,13 @@ class InstanceTemplate(pulumi.CustomResource):
     Whether to allow sending and receiving of
     packets with non-matching source or destination IPs. This defaults to false.
     """
+    confidential_instance_config: pulumi.Output[dict]
+    """
+    The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
+    to create.
+
+      * `enableConfidentialCompute` (`bool`)
+    """
     description: pulumi.Output[str]
     """
     A brief description of this resource.
@@ -51,7 +58,7 @@ class InstanceTemplate(pulumi.CustomResource):
       * `source` (`str`) - The name (**not self_link**)
         of the disk (such as those managed by `compute.Disk`) to attach.
         > **Note:** Either `source` or `source_image` is **required** when creating a new instance except for when creating a local SSD. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
-      * `sourceImage` (`str`) - The image from which to
+      * `source_image` (`str`) - The image from which to
         initialize this disk. This can be one of: the image's `self_link`,
         `projects/{project}/global/images/{image}`,
         `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
@@ -231,7 +238,7 @@ class InstanceTemplate(pulumi.CustomResource):
     """
     The unique fingerprint of the tags.
     """
-    def __init__(__self__, resource_name, opts=None, can_ip_forward=None, description=None, disks=None, enable_display=None, guest_accelerators=None, instance_description=None, labels=None, machine_type=None, metadata=None, metadata_startup_script=None, min_cpu_platform=None, name=None, name_prefix=None, network_interfaces=None, project=None, region=None, scheduling=None, service_account=None, shielded_instance_config=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, can_ip_forward=None, confidential_instance_config=None, description=None, disks=None, enable_display=None, guest_accelerators=None, instance_description=None, labels=None, machine_type=None, metadata=None, metadata_startup_script=None, min_cpu_platform=None, name=None, name_prefix=None, network_interfaces=None, project=None, region=None, scheduling=None, service_account=None, shielded_instance_config=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a VM instance template resource within GCE. For more information see
         [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
@@ -242,6 +249,8 @@ class InstanceTemplate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] can_ip_forward: Whether to allow sending and receiving of
                packets with non-matching source or destination IPs. This defaults to false.
+        :param pulumi.Input[dict] confidential_instance_config: The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
+               to create.
         :param pulumi.Input[str] description: A brief description of this resource.
         :param pulumi.Input[list] disks: Disks to attach to instances created from this template.
                This can be specified multiple times for multiple disks. Structure is
@@ -284,6 +293,10 @@ class InstanceTemplate(pulumi.CustomResource):
                **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
         :param pulumi.Input[list] tags: Tags to attach to the instance.
 
+        The **confidential_instance_config** object supports the following:
+
+          * `enableConfidentialCompute` (`pulumi.Input[bool]`)
+
         The **disks** object supports the following:
 
           * `autoDelete` (`pulumi.Input[bool]`) - Whether or not the disk should be auto-deleted.
@@ -312,7 +325,7 @@ class InstanceTemplate(pulumi.CustomResource):
           * `source` (`pulumi.Input[str]`) - The name (**not self_link**)
             of the disk (such as those managed by `compute.Disk`) to attach.
             > **Note:** Either `source` or `source_image` is **required** when creating a new instance except for when creating a local SSD. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
-          * `sourceImage` (`pulumi.Input[str]`) - The image from which to
+          * `source_image` (`pulumi.Input[str]`) - The image from which to
             initialize this disk. This can be one of: the image's `self_link`,
             `projects/{project}/global/images/{image}`,
             `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
@@ -420,6 +433,7 @@ class InstanceTemplate(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['can_ip_forward'] = can_ip_forward
+            __props__['confidential_instance_config'] = confidential_instance_config
             __props__['description'] = description
             if disks is None:
                 raise TypeError("Missing required property 'disks'")
@@ -453,7 +467,7 @@ class InstanceTemplate(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, can_ip_forward=None, description=None, disks=None, enable_display=None, guest_accelerators=None, instance_description=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, name=None, name_prefix=None, network_interfaces=None, project=None, region=None, scheduling=None, self_link=None, service_account=None, shielded_instance_config=None, tags=None, tags_fingerprint=None):
+    def get(resource_name, id, opts=None, can_ip_forward=None, confidential_instance_config=None, description=None, disks=None, enable_display=None, guest_accelerators=None, instance_description=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, name=None, name_prefix=None, network_interfaces=None, project=None, region=None, scheduling=None, self_link=None, service_account=None, shielded_instance_config=None, tags=None, tags_fingerprint=None):
         """
         Get an existing InstanceTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -463,6 +477,8 @@ class InstanceTemplate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] can_ip_forward: Whether to allow sending and receiving of
                packets with non-matching source or destination IPs. This defaults to false.
+        :param pulumi.Input[dict] confidential_instance_config: The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
+               to create.
         :param pulumi.Input[str] description: A brief description of this resource.
         :param pulumi.Input[list] disks: Disks to attach to instances created from this template.
                This can be specified multiple times for multiple disks. Structure is
@@ -508,6 +524,10 @@ class InstanceTemplate(pulumi.CustomResource):
         :param pulumi.Input[list] tags: Tags to attach to the instance.
         :param pulumi.Input[str] tags_fingerprint: The unique fingerprint of the tags.
 
+        The **confidential_instance_config** object supports the following:
+
+          * `enableConfidentialCompute` (`pulumi.Input[bool]`)
+
         The **disks** object supports the following:
 
           * `autoDelete` (`pulumi.Input[bool]`) - Whether or not the disk should be auto-deleted.
@@ -536,7 +556,7 @@ class InstanceTemplate(pulumi.CustomResource):
           * `source` (`pulumi.Input[str]`) - The name (**not self_link**)
             of the disk (such as those managed by `compute.Disk`) to attach.
             > **Note:** Either `source` or `source_image` is **required** when creating a new instance except for when creating a local SSD. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
-          * `sourceImage` (`pulumi.Input[str]`) - The image from which to
+          * `source_image` (`pulumi.Input[str]`) - The image from which to
             initialize this disk. This can be one of: the image's `self_link`,
             `projects/{project}/global/images/{image}`,
             `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
@@ -631,6 +651,7 @@ class InstanceTemplate(pulumi.CustomResource):
         __props__ = dict()
 
         __props__["can_ip_forward"] = can_ip_forward
+        __props__["confidential_instance_config"] = confidential_instance_config
         __props__["description"] = description
         __props__["disks"] = disks
         __props__["enable_display"] = enable_display

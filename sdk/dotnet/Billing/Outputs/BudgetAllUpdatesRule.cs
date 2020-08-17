@@ -14,12 +14,19 @@ namespace Pulumi.Gcp.Billing.Outputs
     public sealed class BudgetAllUpdatesRule
     {
         /// <summary>
+        /// The full resource name of a monitoring notification
+        /// channel in the form
+        /// projects/{project_id}/notificationChannels/{channel_id}.
+        /// A maximum of 5 channels are allowed.
+        /// </summary>
+        public readonly ImmutableArray<string> MonitoringNotificationChannels;
+        /// <summary>
         /// The name of the Cloud Pub/Sub topic where budget related
         /// messages will be published, in the form
         /// projects/{project_id}/topics/{topic_id}. Updates are sent
         /// at regular intervals to the topic.
         /// </summary>
-        public readonly string PubsubTopic;
+        public readonly string? PubsubTopic;
         /// <summary>
         /// The schema version of the notification. Only "1.0" is
         /// accepted. It represents the JSON schema as defined in
@@ -29,10 +36,13 @@ namespace Pulumi.Gcp.Billing.Outputs
 
         [OutputConstructor]
         private BudgetAllUpdatesRule(
-            string pubsubTopic,
+            ImmutableArray<string> monitoringNotificationChannels,
+
+            string? pubsubTopic,
 
             string? schemaVersion)
         {
+            MonitoringNotificationChannels = monitoringNotificationChannels;
             PubsubTopic = pubsubTopic;
             SchemaVersion = schemaVersion;
         }

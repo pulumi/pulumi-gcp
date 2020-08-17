@@ -30,6 +30,12 @@ namespace Pulumi.Gcp.Sql.Inputs
         public Input<string>? Location { get; set; }
 
         /// <summary>
+        /// True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation.
+        /// </summary>
+        [Input("pointInTimeRecoveryEnabled")]
+        public Input<bool>? PointInTimeRecoveryEnabled { get; set; }
+
+        /// <summary>
         /// `HH:MM` format time indicating when backup
         /// configuration starts.
         /// </summary>

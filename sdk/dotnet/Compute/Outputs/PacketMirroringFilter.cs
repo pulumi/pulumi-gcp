@@ -20,6 +20,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly ImmutableArray<string> CidrRanges;
         /// <summary>
         /// Protocols that apply as a filter on mirrored traffic.
+        /// Each value may be one of `tcp`, `udp`, and `icmp`.
         /// </summary>
         public readonly ImmutableArray<string> IpProtocols;
 

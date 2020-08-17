@@ -57,6 +57,11 @@ type Subscription struct {
 	// is 1 day.
 	// Structure is documented below.
 	ExpirationPolicy SubscriptionExpirationPolicyOutput `pulumi:"expirationPolicy"`
+	// The subscription only delivers the messages that match the filter.
+	// Pub/Sub automatically acknowledges the messages that don't match the filter. You can filter messages
+	// by their attributes. The maximum length of a filter is 256 bytes. After creating the subscription,
+	// you can't modify the filter.
+	Filter pulumi.StringPtrOutput `pulumi:"filter"`
 	// A set of key/value label pairs to assign to this Subscription.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// How long to retain unacknowledged messages in the subscription's
@@ -153,6 +158,11 @@ type subscriptionState struct {
 	// is 1 day.
 	// Structure is documented below.
 	ExpirationPolicy *SubscriptionExpirationPolicy `pulumi:"expirationPolicy"`
+	// The subscription only delivers the messages that match the filter.
+	// Pub/Sub automatically acknowledges the messages that don't match the filter. You can filter messages
+	// by their attributes. The maximum length of a filter is 256 bytes. After creating the subscription,
+	// you can't modify the filter.
+	Filter *string `pulumi:"filter"`
 	// A set of key/value label pairs to assign to this Subscription.
 	Labels map[string]string `pulumi:"labels"`
 	// How long to retain unacknowledged messages in the subscription's
@@ -219,6 +229,11 @@ type SubscriptionState struct {
 	// is 1 day.
 	// Structure is documented below.
 	ExpirationPolicy SubscriptionExpirationPolicyPtrInput
+	// The subscription only delivers the messages that match the filter.
+	// Pub/Sub automatically acknowledges the messages that don't match the filter. You can filter messages
+	// by their attributes. The maximum length of a filter is 256 bytes. After creating the subscription,
+	// you can't modify the filter.
+	Filter pulumi.StringPtrInput
 	// A set of key/value label pairs to assign to this Subscription.
 	Labels pulumi.StringMapInput
 	// How long to retain unacknowledged messages in the subscription's
@@ -289,6 +304,11 @@ type subscriptionArgs struct {
 	// is 1 day.
 	// Structure is documented below.
 	ExpirationPolicy *SubscriptionExpirationPolicy `pulumi:"expirationPolicy"`
+	// The subscription only delivers the messages that match the filter.
+	// Pub/Sub automatically acknowledges the messages that don't match the filter. You can filter messages
+	// by their attributes. The maximum length of a filter is 256 bytes. After creating the subscription,
+	// you can't modify the filter.
+	Filter *string `pulumi:"filter"`
 	// A set of key/value label pairs to assign to this Subscription.
 	Labels map[string]string `pulumi:"labels"`
 	// How long to retain unacknowledged messages in the subscription's
@@ -355,6 +375,11 @@ type SubscriptionArgs struct {
 	// is 1 day.
 	// Structure is documented below.
 	ExpirationPolicy SubscriptionExpirationPolicyPtrInput
+	// The subscription only delivers the messages that match the filter.
+	// Pub/Sub automatically acknowledges the messages that don't match the filter. You can filter messages
+	// by their attributes. The maximum length of a filter is 256 bytes. After creating the subscription,
+	// you can't modify the filter.
+	Filter pulumi.StringPtrInput
 	// A set of key/value label pairs to assign to this Subscription.
 	Labels pulumi.StringMapInput
 	// How long to retain unacknowledged messages in the subscription's

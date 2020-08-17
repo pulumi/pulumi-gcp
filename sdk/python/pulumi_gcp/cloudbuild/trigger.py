@@ -19,6 +19,55 @@ class Trigger(pulumi.CustomResource):
         The images are pushed using the builder service account's credentials.
         The digests of the pushed images will be stored in the Build resource's results field.
         If any of the images fail to be pushed, the build status is marked FAILURE.
+      * `logsBucket` (`str`) - Google Cloud Storage bucket where logs should be written.
+        Logs file names will be of the format ${logsBucket}/log-${build_id}.txt.
+      * `queueTtl` (`str`) - TTL in queue for this build. If provided and the build is enqueued longer than this value,
+        the build will expire and the build status will be EXPIRED.
+        The TTL starts ticking from createTime.
+        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+      * `secrets` (`list`) - Secrets to decrypt using Cloud Key Management Service.
+        Structure is documented below.
+        * `kms_key_name` (`str`) - Cloud KMS key name to use to decrypt these envs.
+        * `secretEnv` (`dict`) - A list of environment variables which are encrypted using
+          a Cloud Key
+          Management Service crypto key. These values must be specified in
+          the build's `Secret`.
+
+      * `source` (`dict`) - The location of the source files to build.
+        One of `storageSource` or `repoSource` must be provided.
+        Structure is documented below.
+        * `repoSource` (`dict`) - Location of the source in a Google Cloud Source Repository.
+          Structure is documented below.
+          * `branchName` (`str`) - Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+            The syntax of the regular expressions accepted is the syntax accepted by RE2 and
+            described at https://github.com/google/re2/wiki/Syntax
+          * `commitSha` (`str`) - Explicit commit SHA to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+          * `dir` (`str`) - Working directory to use when running this step's container.
+            If this value is a relative path, it is relative to the build's working
+            directory. If this value is absolute, it may be outside the build's working
+            directory, in which case the contents of the path may not be persisted
+            across build step executions, unless a `volume` for that path is specified.
+            If the build specifies a `RepoSource` with `dir` and a step with a
+            `dir`,
+            which specifies an absolute path, the `RepoSource` `dir` is ignored
+            for the step's execution.
+          * `invertRegex` (`bool`) - Only trigger a build if the revision regex does NOT match the revision regex.
+          * `project_id` (`str`) - ID of the project that owns the Cloud Source Repository.
+            If omitted, the project ID requesting the build is assumed.
+          * `repoName` (`str`) - Name of the Cloud Source Repository.
+          * `substitutions` (`dict`) - Substitutions to use in a triggered build. Should only be used with triggers.run
+          * `tagName` (`str`) - Regex matching tags to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+            The syntax of the regular expressions accepted is the syntax accepted by RE2 and
+            described at https://github.com/google/re2/wiki/Syntax
+
+        * `storageSource` (`dict`) - Location of the source in an archive file in Google Cloud Storage.
+          Structure is documented below.
+          * `bucket` (`str`) - Google Cloud Storage bucket containing the source.
+          * `generation` (`str`) - Google Cloud Storage generation for the object.
+            If the generation is omitted, the latest generation will be used
+          * `object` (`str`) - Google Cloud Storage object containing the source.
+            This object must be a gzipped archive file (.tar.gz) containing source to build.
+
       * `steps` (`list`) - The operations to be performed on the workspace.
         Structure is documented below.
         * `args` (`list`) - A list of arguments that will be presented to the step when it is started.
@@ -77,6 +126,7 @@ class Trigger(pulumi.CustomResource):
           will start when all previous build steps in the `Build.Steps` list
           have completed successfully.
 
+      * `substitutions` (`dict`) - Substitutions to use in a triggered build. Should only be used with triggers.run
       * `tags` (`list`) - Tags for annotation of a Build. These are not docker tags.
       * `timeout` (`str`) - Time limit for executing this build step. If not defined,
         the step has no
@@ -115,12 +165,12 @@ class Trigger(pulumi.CustomResource):
         * `branch` (`str`) - Regex of branches to match.  Specify only one of branch or tag.
         * `commentControl` (`str`) - Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
           Possible values are `COMMENTS_DISABLED` and `COMMENTS_ENABLED`.
-        * `invertRegex` (`bool`) - When true, only trigger a build if the revision regex does NOT match the git_ref regex.
+        * `invertRegex` (`bool`) - Only trigger a build if the revision regex does NOT match the revision regex.
 
       * `push` (`dict`) - filter to match changes in refs, like branches or tags.  Specify only one of pullRequest or push.
         Structure is documented below.
         * `branch` (`str`) - Regex of branches to match.  Specify only one of branch or tag.
-        * `invertRegex` (`bool`) - When true, only trigger a build if the revision regex does NOT match the git_ref regex.
+        * `invertRegex` (`bool`) - Only trigger a build if the revision regex does NOT match the revision regex.
         * `tag` (`str`) - Regex of tags to match.  Specify only one of branch or tag.
     """
     ignored_files: pulumi.Output[list]
@@ -158,7 +208,11 @@ class Trigger(pulumi.CustomResource):
     """
     substitutions: pulumi.Output[dict]
     """
-    Substitutions data for Build resource.
+    Substitutions to use in a triggered build. Should only be used with triggers.run
+    """
+    tags: pulumi.Output[list]
+    """
+    Tags for annotation of a Build. These are not docker tags.
     """
     trigger_id: pulumi.Output[str]
     """
@@ -173,9 +227,10 @@ class Trigger(pulumi.CustomResource):
     One of `trigger_template` or `github` must be provided.
     Structure is documented below.
 
-      * `branchName` (`str`) - Name of the branch to build. Exactly one a of branch name, tag, or commit SHA must be provided.
-        This field is a regular expression.
-      * `commitSha` (`str`) - Explicit commit SHA to build. Exactly one of a branch name, tag, or commit SHA must be provided.
+      * `branchName` (`str`) - Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+        The syntax of the regular expressions accepted is the syntax accepted by RE2 and
+        described at https://github.com/google/re2/wiki/Syntax
+      * `commitSha` (`str`) - Explicit commit SHA to build. Exactly one a of branch name, tag, or commit SHA must be provided.
       * `dir` (`str`) - Working directory to use when running this step's container.
         If this value is a relative path, it is relative to the build's working
         directory. If this value is absolute, it may be outside the build's working
@@ -185,14 +240,15 @@ class Trigger(pulumi.CustomResource):
         `dir`,
         which specifies an absolute path, the `RepoSource` `dir` is ignored
         for the step's execution.
-      * `invertRegex` (`bool`) - When true, only trigger a build if the revision regex does NOT match the git_ref regex.
-      * `project_id` (`str`) - ID of the project that owns the Cloud Source Repository. If
-        omitted, the project ID requesting the build is assumed.
-      * `repoName` (`str`) - Name of the Cloud Source Repository. If omitted, the name "default" is assumed.
-      * `tagName` (`str`) - Name of the tag to build. Exactly one of a branch name, tag, or commit SHA must be provided.
-        This field is a regular expression.
+      * `invertRegex` (`bool`) - Only trigger a build if the revision regex does NOT match the revision regex.
+      * `project_id` (`str`) - ID of the project that owns the Cloud Source Repository.
+        If omitted, the project ID requesting the build is assumed.
+      * `repoName` (`str`) - Name of the Cloud Source Repository.
+      * `tagName` (`str`) - Regex matching tags to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+        The syntax of the regular expressions accepted is the syntax accepted by RE2 and
+        described at https://github.com/google/re2/wiki/Syntax
     """
-    def __init__(__self__, resource_name, opts=None, build=None, description=None, disabled=None, filename=None, github=None, ignored_files=None, included_files=None, name=None, project=None, substitutions=None, trigger_template=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, build=None, description=None, disabled=None, filename=None, github=None, ignored_files=None, included_files=None, name=None, project=None, substitutions=None, tags=None, trigger_template=None, __props__=None, __name__=None, __opts__=None):
         """
         Configuration for an automated build in response to source repository changes.
 
@@ -235,7 +291,8 @@ class Trigger(pulumi.CustomResource):
                Docker volumes. Each named volume must be used by at least two build steps.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[dict] substitutions: Substitutions data for Build resource.
+        :param pulumi.Input[dict] substitutions: Substitutions to use in a triggered build. Should only be used with triggers.run
+        :param pulumi.Input[list] tags: Tags for annotation of a Build. These are not docker tags.
         :param pulumi.Input[dict] trigger_template: Template describing the types of source changes to trigger a build.
                Branch and tag names in trigger templates are interpreted as regular
                expressions. Any branch or tag change that matches that regular
@@ -249,6 +306,55 @@ class Trigger(pulumi.CustomResource):
             The images are pushed using the builder service account's credentials.
             The digests of the pushed images will be stored in the Build resource's results field.
             If any of the images fail to be pushed, the build status is marked FAILURE.
+          * `logsBucket` (`pulumi.Input[str]`) - Google Cloud Storage bucket where logs should be written.
+            Logs file names will be of the format ${logsBucket}/log-${build_id}.txt.
+          * `queueTtl` (`pulumi.Input[str]`) - TTL in queue for this build. If provided and the build is enqueued longer than this value,
+            the build will expire and the build status will be EXPIRED.
+            The TTL starts ticking from createTime.
+            A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+          * `secrets` (`pulumi.Input[list]`) - Secrets to decrypt using Cloud Key Management Service.
+            Structure is documented below.
+            * `kms_key_name` (`pulumi.Input[str]`) - Cloud KMS key name to use to decrypt these envs.
+            * `secretEnv` (`pulumi.Input[dict]`) - A list of environment variables which are encrypted using
+              a Cloud Key
+              Management Service crypto key. These values must be specified in
+              the build's `Secret`.
+
+          * `source` (`pulumi.Input[dict]`) - The location of the source files to build.
+            One of `storageSource` or `repoSource` must be provided.
+            Structure is documented below.
+            * `repoSource` (`pulumi.Input[dict]`) - Location of the source in a Google Cloud Source Repository.
+              Structure is documented below.
+              * `branchName` (`pulumi.Input[str]`) - Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+                The syntax of the regular expressions accepted is the syntax accepted by RE2 and
+                described at https://github.com/google/re2/wiki/Syntax
+              * `commitSha` (`pulumi.Input[str]`) - Explicit commit SHA to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+              * `dir` (`pulumi.Input[str]`) - Working directory to use when running this step's container.
+                If this value is a relative path, it is relative to the build's working
+                directory. If this value is absolute, it may be outside the build's working
+                directory, in which case the contents of the path may not be persisted
+                across build step executions, unless a `volume` for that path is specified.
+                If the build specifies a `RepoSource` with `dir` and a step with a
+                `dir`,
+                which specifies an absolute path, the `RepoSource` `dir` is ignored
+                for the step's execution.
+              * `invertRegex` (`pulumi.Input[bool]`) - Only trigger a build if the revision regex does NOT match the revision regex.
+              * `project_id` (`pulumi.Input[str]`) - ID of the project that owns the Cloud Source Repository.
+                If omitted, the project ID requesting the build is assumed.
+              * `repoName` (`pulumi.Input[str]`) - Name of the Cloud Source Repository.
+              * `substitutions` (`pulumi.Input[dict]`) - Substitutions to use in a triggered build. Should only be used with triggers.run
+              * `tagName` (`pulumi.Input[str]`) - Regex matching tags to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+                The syntax of the regular expressions accepted is the syntax accepted by RE2 and
+                described at https://github.com/google/re2/wiki/Syntax
+
+            * `storageSource` (`pulumi.Input[dict]`) - Location of the source in an archive file in Google Cloud Storage.
+              Structure is documented below.
+              * `bucket` (`pulumi.Input[str]`) - Google Cloud Storage bucket containing the source.
+              * `generation` (`pulumi.Input[str]`) - Google Cloud Storage generation for the object.
+                If the generation is omitted, the latest generation will be used
+              * `object` (`pulumi.Input[str]`) - Google Cloud Storage object containing the source.
+                This object must be a gzipped archive file (.tar.gz) containing source to build.
+
           * `steps` (`pulumi.Input[list]`) - The operations to be performed on the workspace.
             Structure is documented below.
             * `args` (`pulumi.Input[list]`) - A list of arguments that will be presented to the step when it is started.
@@ -307,6 +413,7 @@ class Trigger(pulumi.CustomResource):
               will start when all previous build steps in the `Build.Steps` list
               have completed successfully.
 
+          * `substitutions` (`pulumi.Input[dict]`) - Substitutions to use in a triggered build. Should only be used with triggers.run
           * `tags` (`pulumi.Input[list]`) - Tags for annotation of a Build. These are not docker tags.
           * `timeout` (`pulumi.Input[str]`) - Time limit for executing this build step. If not defined,
             the step has no
@@ -325,19 +432,20 @@ class Trigger(pulumi.CustomResource):
             * `branch` (`pulumi.Input[str]`) - Regex of branches to match.  Specify only one of branch or tag.
             * `commentControl` (`pulumi.Input[str]`) - Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
               Possible values are `COMMENTS_DISABLED` and `COMMENTS_ENABLED`.
-            * `invertRegex` (`pulumi.Input[bool]`) - When true, only trigger a build if the revision regex does NOT match the git_ref regex.
+            * `invertRegex` (`pulumi.Input[bool]`) - Only trigger a build if the revision regex does NOT match the revision regex.
 
           * `push` (`pulumi.Input[dict]`) - filter to match changes in refs, like branches or tags.  Specify only one of pullRequest or push.
             Structure is documented below.
             * `branch` (`pulumi.Input[str]`) - Regex of branches to match.  Specify only one of branch or tag.
-            * `invertRegex` (`pulumi.Input[bool]`) - When true, only trigger a build if the revision regex does NOT match the git_ref regex.
+            * `invertRegex` (`pulumi.Input[bool]`) - Only trigger a build if the revision regex does NOT match the revision regex.
             * `tag` (`pulumi.Input[str]`) - Regex of tags to match.  Specify only one of branch or tag.
 
         The **trigger_template** object supports the following:
 
-          * `branchName` (`pulumi.Input[str]`) - Name of the branch to build. Exactly one a of branch name, tag, or commit SHA must be provided.
-            This field is a regular expression.
-          * `commitSha` (`pulumi.Input[str]`) - Explicit commit SHA to build. Exactly one of a branch name, tag, or commit SHA must be provided.
+          * `branchName` (`pulumi.Input[str]`) - Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+            The syntax of the regular expressions accepted is the syntax accepted by RE2 and
+            described at https://github.com/google/re2/wiki/Syntax
+          * `commitSha` (`pulumi.Input[str]`) - Explicit commit SHA to build. Exactly one a of branch name, tag, or commit SHA must be provided.
           * `dir` (`pulumi.Input[str]`) - Working directory to use when running this step's container.
             If this value is a relative path, it is relative to the build's working
             directory. If this value is absolute, it may be outside the build's working
@@ -347,12 +455,13 @@ class Trigger(pulumi.CustomResource):
             `dir`,
             which specifies an absolute path, the `RepoSource` `dir` is ignored
             for the step's execution.
-          * `invertRegex` (`pulumi.Input[bool]`) - When true, only trigger a build if the revision regex does NOT match the git_ref regex.
-          * `project_id` (`pulumi.Input[str]`) - ID of the project that owns the Cloud Source Repository. If
-            omitted, the project ID requesting the build is assumed.
-          * `repoName` (`pulumi.Input[str]`) - Name of the Cloud Source Repository. If omitted, the name "default" is assumed.
-          * `tagName` (`pulumi.Input[str]`) - Name of the tag to build. Exactly one of a branch name, tag, or commit SHA must be provided.
-            This field is a regular expression.
+          * `invertRegex` (`pulumi.Input[bool]`) - Only trigger a build if the revision regex does NOT match the revision regex.
+          * `project_id` (`pulumi.Input[str]`) - ID of the project that owns the Cloud Source Repository.
+            If omitted, the project ID requesting the build is assumed.
+          * `repoName` (`pulumi.Input[str]`) - Name of the Cloud Source Repository.
+          * `tagName` (`pulumi.Input[str]`) - Regex matching tags to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+            The syntax of the regular expressions accepted is the syntax accepted by RE2 and
+            described at https://github.com/google/re2/wiki/Syntax
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -381,6 +490,7 @@ class Trigger(pulumi.CustomResource):
             __props__['name'] = name
             __props__['project'] = project
             __props__['substitutions'] = substitutions
+            __props__['tags'] = tags
             __props__['trigger_template'] = trigger_template
             __props__['create_time'] = None
             __props__['trigger_id'] = None
@@ -391,7 +501,7 @@ class Trigger(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, build=None, create_time=None, description=None, disabled=None, filename=None, github=None, ignored_files=None, included_files=None, name=None, project=None, substitutions=None, trigger_id=None, trigger_template=None):
+    def get(resource_name, id, opts=None, build=None, create_time=None, description=None, disabled=None, filename=None, github=None, ignored_files=None, included_files=None, name=None, project=None, substitutions=None, tags=None, trigger_id=None, trigger_template=None):
         """
         Get an existing Trigger resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -429,7 +539,8 @@ class Trigger(pulumi.CustomResource):
                Docker volumes. Each named volume must be used by at least two build steps.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[dict] substitutions: Substitutions data for Build resource.
+        :param pulumi.Input[dict] substitutions: Substitutions to use in a triggered build. Should only be used with triggers.run
+        :param pulumi.Input[list] tags: Tags for annotation of a Build. These are not docker tags.
         :param pulumi.Input[str] trigger_id: The unique identifier for the trigger.
         :param pulumi.Input[dict] trigger_template: Template describing the types of source changes to trigger a build.
                Branch and tag names in trigger templates are interpreted as regular
@@ -444,6 +555,55 @@ class Trigger(pulumi.CustomResource):
             The images are pushed using the builder service account's credentials.
             The digests of the pushed images will be stored in the Build resource's results field.
             If any of the images fail to be pushed, the build status is marked FAILURE.
+          * `logsBucket` (`pulumi.Input[str]`) - Google Cloud Storage bucket where logs should be written.
+            Logs file names will be of the format ${logsBucket}/log-${build_id}.txt.
+          * `queueTtl` (`pulumi.Input[str]`) - TTL in queue for this build. If provided and the build is enqueued longer than this value,
+            the build will expire and the build status will be EXPIRED.
+            The TTL starts ticking from createTime.
+            A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+          * `secrets` (`pulumi.Input[list]`) - Secrets to decrypt using Cloud Key Management Service.
+            Structure is documented below.
+            * `kms_key_name` (`pulumi.Input[str]`) - Cloud KMS key name to use to decrypt these envs.
+            * `secretEnv` (`pulumi.Input[dict]`) - A list of environment variables which are encrypted using
+              a Cloud Key
+              Management Service crypto key. These values must be specified in
+              the build's `Secret`.
+
+          * `source` (`pulumi.Input[dict]`) - The location of the source files to build.
+            One of `storageSource` or `repoSource` must be provided.
+            Structure is documented below.
+            * `repoSource` (`pulumi.Input[dict]`) - Location of the source in a Google Cloud Source Repository.
+              Structure is documented below.
+              * `branchName` (`pulumi.Input[str]`) - Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+                The syntax of the regular expressions accepted is the syntax accepted by RE2 and
+                described at https://github.com/google/re2/wiki/Syntax
+              * `commitSha` (`pulumi.Input[str]`) - Explicit commit SHA to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+              * `dir` (`pulumi.Input[str]`) - Working directory to use when running this step's container.
+                If this value is a relative path, it is relative to the build's working
+                directory. If this value is absolute, it may be outside the build's working
+                directory, in which case the contents of the path may not be persisted
+                across build step executions, unless a `volume` for that path is specified.
+                If the build specifies a `RepoSource` with `dir` and a step with a
+                `dir`,
+                which specifies an absolute path, the `RepoSource` `dir` is ignored
+                for the step's execution.
+              * `invertRegex` (`pulumi.Input[bool]`) - Only trigger a build if the revision regex does NOT match the revision regex.
+              * `project_id` (`pulumi.Input[str]`) - ID of the project that owns the Cloud Source Repository.
+                If omitted, the project ID requesting the build is assumed.
+              * `repoName` (`pulumi.Input[str]`) - Name of the Cloud Source Repository.
+              * `substitutions` (`pulumi.Input[dict]`) - Substitutions to use in a triggered build. Should only be used with triggers.run
+              * `tagName` (`pulumi.Input[str]`) - Regex matching tags to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+                The syntax of the regular expressions accepted is the syntax accepted by RE2 and
+                described at https://github.com/google/re2/wiki/Syntax
+
+            * `storageSource` (`pulumi.Input[dict]`) - Location of the source in an archive file in Google Cloud Storage.
+              Structure is documented below.
+              * `bucket` (`pulumi.Input[str]`) - Google Cloud Storage bucket containing the source.
+              * `generation` (`pulumi.Input[str]`) - Google Cloud Storage generation for the object.
+                If the generation is omitted, the latest generation will be used
+              * `object` (`pulumi.Input[str]`) - Google Cloud Storage object containing the source.
+                This object must be a gzipped archive file (.tar.gz) containing source to build.
+
           * `steps` (`pulumi.Input[list]`) - The operations to be performed on the workspace.
             Structure is documented below.
             * `args` (`pulumi.Input[list]`) - A list of arguments that will be presented to the step when it is started.
@@ -502,6 +662,7 @@ class Trigger(pulumi.CustomResource):
               will start when all previous build steps in the `Build.Steps` list
               have completed successfully.
 
+          * `substitutions` (`pulumi.Input[dict]`) - Substitutions to use in a triggered build. Should only be used with triggers.run
           * `tags` (`pulumi.Input[list]`) - Tags for annotation of a Build. These are not docker tags.
           * `timeout` (`pulumi.Input[str]`) - Time limit for executing this build step. If not defined,
             the step has no
@@ -520,19 +681,20 @@ class Trigger(pulumi.CustomResource):
             * `branch` (`pulumi.Input[str]`) - Regex of branches to match.  Specify only one of branch or tag.
             * `commentControl` (`pulumi.Input[str]`) - Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
               Possible values are `COMMENTS_DISABLED` and `COMMENTS_ENABLED`.
-            * `invertRegex` (`pulumi.Input[bool]`) - When true, only trigger a build if the revision regex does NOT match the git_ref regex.
+            * `invertRegex` (`pulumi.Input[bool]`) - Only trigger a build if the revision regex does NOT match the revision regex.
 
           * `push` (`pulumi.Input[dict]`) - filter to match changes in refs, like branches or tags.  Specify only one of pullRequest or push.
             Structure is documented below.
             * `branch` (`pulumi.Input[str]`) - Regex of branches to match.  Specify only one of branch or tag.
-            * `invertRegex` (`pulumi.Input[bool]`) - When true, only trigger a build if the revision regex does NOT match the git_ref regex.
+            * `invertRegex` (`pulumi.Input[bool]`) - Only trigger a build if the revision regex does NOT match the revision regex.
             * `tag` (`pulumi.Input[str]`) - Regex of tags to match.  Specify only one of branch or tag.
 
         The **trigger_template** object supports the following:
 
-          * `branchName` (`pulumi.Input[str]`) - Name of the branch to build. Exactly one a of branch name, tag, or commit SHA must be provided.
-            This field is a regular expression.
-          * `commitSha` (`pulumi.Input[str]`) - Explicit commit SHA to build. Exactly one of a branch name, tag, or commit SHA must be provided.
+          * `branchName` (`pulumi.Input[str]`) - Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+            The syntax of the regular expressions accepted is the syntax accepted by RE2 and
+            described at https://github.com/google/re2/wiki/Syntax
+          * `commitSha` (`pulumi.Input[str]`) - Explicit commit SHA to build. Exactly one a of branch name, tag, or commit SHA must be provided.
           * `dir` (`pulumi.Input[str]`) - Working directory to use when running this step's container.
             If this value is a relative path, it is relative to the build's working
             directory. If this value is absolute, it may be outside the build's working
@@ -542,12 +704,13 @@ class Trigger(pulumi.CustomResource):
             `dir`,
             which specifies an absolute path, the `RepoSource` `dir` is ignored
             for the step's execution.
-          * `invertRegex` (`pulumi.Input[bool]`) - When true, only trigger a build if the revision regex does NOT match the git_ref regex.
-          * `project_id` (`pulumi.Input[str]`) - ID of the project that owns the Cloud Source Repository. If
-            omitted, the project ID requesting the build is assumed.
-          * `repoName` (`pulumi.Input[str]`) - Name of the Cloud Source Repository. If omitted, the name "default" is assumed.
-          * `tagName` (`pulumi.Input[str]`) - Name of the tag to build. Exactly one of a branch name, tag, or commit SHA must be provided.
-            This field is a regular expression.
+          * `invertRegex` (`pulumi.Input[bool]`) - Only trigger a build if the revision regex does NOT match the revision regex.
+          * `project_id` (`pulumi.Input[str]`) - ID of the project that owns the Cloud Source Repository.
+            If omitted, the project ID requesting the build is assumed.
+          * `repoName` (`pulumi.Input[str]`) - Name of the Cloud Source Repository.
+          * `tagName` (`pulumi.Input[str]`) - Regex matching tags to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+            The syntax of the regular expressions accepted is the syntax accepted by RE2 and
+            described at https://github.com/google/re2/wiki/Syntax
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -564,6 +727,7 @@ class Trigger(pulumi.CustomResource):
         __props__["name"] = name
         __props__["project"] = project
         __props__["substitutions"] = substitutions
+        __props__["tags"] = tags
         __props__["trigger_id"] = trigger_id
         __props__["trigger_template"] = trigger_template
         return Trigger(resource_name, opts=opts, __props__=__props__)

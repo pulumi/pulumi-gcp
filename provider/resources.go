@@ -7,10 +7,10 @@ import (
 	"unicode"
 
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
+	google "github.com/hashicorp/terraform-provider-google-beta/google-beta"
 	"github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfbridge"
 	"github.com/pulumi/pulumi/sdk/v2/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v2/go/common/tokens"
-	google "github.com/terraform-providers/terraform-provider-google-beta/google-beta"
 )
 
 // all of the Google Cloud Platform token components used below.
@@ -138,6 +138,7 @@ func Provider() tfbridge.ProviderInfo {
 		P:              p,
 		Name:           "google-beta",
 		ResourcePrefix: "google",
+		GitHubOrg:      "hashicorp",
 		Description:    "A Pulumi package for creating and managing Google Cloud Platform resources.",
 		Keywords:       []string{"pulumi", "gcp"},
 		License:        "Apache-2.0",
@@ -628,6 +629,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_compute_region_ssl_certificate":        {Tok: gcpResource(gcpCompute, "RegionSslCertificate")},
 			"google_compute_region_target_http_proxy":      {Tok: gcpResource(gcpCompute, "RegionTargetHttpProxy")},
 			"google_compute_region_target_https_proxy":     {Tok: gcpResource(gcpCompute, "RegionTargetHttpsProxy")},
+			"google_compute_region_network_endpoint_group": {Tok: gcpResource(gcpCompute, "RegionNetworkEndpointGroup")},
 			"google_compute_resource_policy":               {Tok: gcpResource(gcpCompute, "ResourcePolicy")},
 			"google_compute_route":                         {Tok: gcpResource(gcpCompute, "Route")},
 			"google_compute_router":                        {Tok: gcpResource(gcpCompute, "Router")},

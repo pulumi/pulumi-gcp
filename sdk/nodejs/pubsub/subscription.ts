@@ -87,6 +87,13 @@ export class Subscription extends pulumi.CustomResource {
      */
     public readonly expirationPolicy!: pulumi.Output<outputs.pubsub.SubscriptionExpirationPolicy>;
     /**
+     * The subscription only delivers the messages that match the filter.
+     * Pub/Sub automatically acknowledges the messages that don't match the filter. You can filter messages
+     * by their attributes. The maximum length of a filter is 256 bytes. After creating the subscription,
+     * you can't modify the filter.
+     */
+    public readonly filter!: pulumi.Output<string | undefined>;
+    /**
      * A set of key/value label pairs to assign to this Subscription.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
@@ -145,6 +152,7 @@ export class Subscription extends pulumi.CustomResource {
             inputs["ackDeadlineSeconds"] = state ? state.ackDeadlineSeconds : undefined;
             inputs["deadLetterPolicy"] = state ? state.deadLetterPolicy : undefined;
             inputs["expirationPolicy"] = state ? state.expirationPolicy : undefined;
+            inputs["filter"] = state ? state.filter : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["messageRetentionDuration"] = state ? state.messageRetentionDuration : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -161,6 +169,7 @@ export class Subscription extends pulumi.CustomResource {
             inputs["ackDeadlineSeconds"] = args ? args.ackDeadlineSeconds : undefined;
             inputs["deadLetterPolicy"] = args ? args.deadLetterPolicy : undefined;
             inputs["expirationPolicy"] = args ? args.expirationPolicy : undefined;
+            inputs["filter"] = args ? args.filter : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["messageRetentionDuration"] = args ? args.messageRetentionDuration : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -225,6 +234,13 @@ export interface SubscriptionState {
      * Structure is documented below.
      */
     readonly expirationPolicy?: pulumi.Input<inputs.pubsub.SubscriptionExpirationPolicy>;
+    /**
+     * The subscription only delivers the messages that match the filter.
+     * Pub/Sub automatically acknowledges the messages that don't match the filter. You can filter messages
+     * by their attributes. The maximum length of a filter is 256 bytes. After creating the subscription,
+     * you can't modify the filter.
+     */
+    readonly filter?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to this Subscription.
      */
@@ -314,6 +330,13 @@ export interface SubscriptionArgs {
      * Structure is documented below.
      */
     readonly expirationPolicy?: pulumi.Input<inputs.pubsub.SubscriptionExpirationPolicy>;
+    /**
+     * The subscription only delivers the messages that match the filter.
+     * Pub/Sub automatically acknowledges the messages that don't match the filter. You can filter messages
+     * by their attributes. The maximum length of a filter is 256 bytes. After creating the subscription,
+     * you can't modify the filter.
+     */
+    readonly filter?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to this Subscription.
      */

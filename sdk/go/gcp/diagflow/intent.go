@@ -28,6 +28,7 @@ type Intent struct {
 	Action pulumi.StringOutput `pulumi:"action"`
 	// The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
 	// (i.e. default platform).
+	// Each value may be one of `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, and `GOOGLE_HANGOUTS`.
 	DefaultResponsePlatforms pulumi.StringArrayOutput `pulumi:"defaultResponsePlatforms"`
 	// The name of this intent to be displayed on the console.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
@@ -109,6 +110,7 @@ type intentState struct {
 	Action *string `pulumi:"action"`
 	// The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
 	// (i.e. default platform).
+	// Each value may be one of `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, and `GOOGLE_HANGOUTS`.
 	DefaultResponsePlatforms []string `pulumi:"defaultResponsePlatforms"`
 	// The name of this intent to be displayed on the console.
 	DisplayName *string `pulumi:"displayName"`
@@ -160,6 +162,7 @@ type IntentState struct {
 	Action pulumi.StringPtrInput
 	// The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
 	// (i.e. default platform).
+	// Each value may be one of `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, and `GOOGLE_HANGOUTS`.
 	DefaultResponsePlatforms pulumi.StringArrayInput
 	// The name of this intent to be displayed on the console.
 	DisplayName pulumi.StringPtrInput
@@ -215,6 +218,7 @@ type intentArgs struct {
 	Action *string `pulumi:"action"`
 	// The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
 	// (i.e. default platform).
+	// Each value may be one of `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, and `GOOGLE_HANGOUTS`.
 	DefaultResponsePlatforms []string `pulumi:"defaultResponsePlatforms"`
 	// The name of this intent to be displayed on the console.
 	DisplayName string `pulumi:"displayName"`
@@ -259,6 +263,7 @@ type IntentArgs struct {
 	Action pulumi.StringPtrInput
 	// The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
 	// (i.e. default platform).
+	// Each value may be one of `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, and `GOOGLE_HANGOUTS`.
 	DefaultResponsePlatforms pulumi.StringArrayInput
 	// The name of this intent to be displayed on the console.
 	DisplayName pulumi.StringInput

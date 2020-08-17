@@ -354,6 +354,7 @@ type InstanceNetwork struct {
 	IpAddresses []string `pulumi:"ipAddresses"`
 	// IP versions for which the instance has
 	// IP addresses assigned.
+	// Each value may be one of `ADDRESS_MODE_UNSPECIFIED`, `MODE_IPV4`, and `MODE_IPV6`.
 	Modes []string `pulumi:"modes"`
 	// The name of the GCE VPC network to which the
 	// instance is connected.
@@ -380,6 +381,7 @@ type InstanceNetworkArgs struct {
 	IpAddresses pulumi.StringArrayInput `pulumi:"ipAddresses"`
 	// IP versions for which the instance has
 	// IP addresses assigned.
+	// Each value may be one of `ADDRESS_MODE_UNSPECIFIED`, `MODE_IPV4`, and `MODE_IPV6`.
 	Modes pulumi.StringArrayInput `pulumi:"modes"`
 	// The name of the GCE VPC network to which the
 	// instance is connected.
@@ -448,6 +450,7 @@ func (o InstanceNetworkOutput) IpAddresses() pulumi.StringArrayOutput {
 
 // IP versions for which the instance has
 // IP addresses assigned.
+// Each value may be one of `ADDRESS_MODE_UNSPECIFIED`, `MODE_IPV4`, and `MODE_IPV6`.
 func (o InstanceNetworkOutput) Modes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v InstanceNetwork) []string { return v.Modes }).(pulumi.StringArrayOutput)
 }

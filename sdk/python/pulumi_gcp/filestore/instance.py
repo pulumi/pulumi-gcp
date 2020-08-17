@@ -68,6 +68,7 @@ class Instance(pulumi.CustomResource):
         A list of IPv4 or IPv6 addresses.
       * `modes` (`list`) - IP versions for which the instance has
         IP addresses assigned.
+        Each value may be one of `ADDRESS_MODE_UNSPECIFIED`, `MODE_IPV4`, and `MODE_IPV6`.
       * `network` (`str`) - The name of the GCE VPC network to which the
         instance is connected.
       * `reserved_ip_range` (`str`) - A /29 CIDR block that identifies the range of IP
@@ -148,6 +149,7 @@ class Instance(pulumi.CustomResource):
             A list of IPv4 or IPv6 addresses.
           * `modes` (`pulumi.Input[list]`) - IP versions for which the instance has
             IP addresses assigned.
+            Each value may be one of `ADDRESS_MODE_UNSPECIFIED`, `MODE_IPV4`, and `MODE_IPV6`.
           * `network` (`pulumi.Input[str]`) - The name of the GCE VPC network to which the
             instance is connected.
           * `reserved_ip_range` (`pulumi.Input[str]`) - A /29 CIDR block that identifies the range of IP
@@ -250,6 +252,7 @@ class Instance(pulumi.CustomResource):
             A list of IPv4 or IPv6 addresses.
           * `modes` (`pulumi.Input[list]`) - IP versions for which the instance has
             IP addresses assigned.
+            Each value may be one of `ADDRESS_MODE_UNSPECIFIED`, `MODE_IPV4`, and `MODE_IPV6`.
           * `network` (`pulumi.Input[str]`) - The name of the GCE VPC network to which the
             instance is connected.
           * `reserved_ip_range` (`pulumi.Input[str]`) - A /29 CIDR block that identifies the range of IP

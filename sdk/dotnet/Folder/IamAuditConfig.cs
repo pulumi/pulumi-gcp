@@ -12,7 +12,7 @@ namespace Pulumi.Gcp.Folder
     public partial class IamAuditConfig : Pulumi.CustomResource
     {
         /// <summary>
-        /// The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
+        /// The configuration for logging of each type of permission. This can be specified multiple times.
         /// </summary>
         [Output("auditLogConfigs")]
         public Output<ImmutableArray<Outputs.IamAuditConfigAuditLogConfig>> AuditLogConfigs { get; private set; } = null!;
@@ -23,14 +23,11 @@ namespace Pulumi.Gcp.Folder
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
-        /// <summary>
-        /// The resource name of the folder in which you want to manage the audit logging config. Its format is folders/{folder_id}.
-        /// </summary>
         [Output("folder")]
         public Output<string> Folder { get; private set; } = null!;
 
         /// <summary>
-        /// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_folder\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
+        /// Service which will be enabled for audit logging. The special value allServices covers all services.
         /// </summary>
         [Output("service")]
         public Output<string> Service { get; private set; } = null!;
@@ -85,7 +82,7 @@ namespace Pulumi.Gcp.Folder
         private InputList<Inputs.IamAuditConfigAuditLogConfigArgs>? _auditLogConfigs;
 
         /// <summary>
-        /// The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
+        /// The configuration for logging of each type of permission. This can be specified multiple times.
         /// </summary>
         public InputList<Inputs.IamAuditConfigAuditLogConfigArgs> AuditLogConfigs
         {
@@ -93,14 +90,11 @@ namespace Pulumi.Gcp.Folder
             set => _auditLogConfigs = value;
         }
 
-        /// <summary>
-        /// The resource name of the folder in which you want to manage the audit logging config. Its format is folders/{folder_id}.
-        /// </summary>
         [Input("folder", required: true)]
         public Input<string> Folder { get; set; } = null!;
 
         /// <summary>
-        /// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_folder\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
+        /// Service which will be enabled for audit logging. The special value allServices covers all services.
         /// </summary>
         [Input("service", required: true)]
         public Input<string> Service { get; set; } = null!;
@@ -116,7 +110,7 @@ namespace Pulumi.Gcp.Folder
         private InputList<Inputs.IamAuditConfigAuditLogConfigGetArgs>? _auditLogConfigs;
 
         /// <summary>
-        /// The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
+        /// The configuration for logging of each type of permission. This can be specified multiple times.
         /// </summary>
         public InputList<Inputs.IamAuditConfigAuditLogConfigGetArgs> AuditLogConfigs
         {
@@ -130,14 +124,11 @@ namespace Pulumi.Gcp.Folder
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
-        /// <summary>
-        /// The resource name of the folder in which you want to manage the audit logging config. Its format is folders/{folder_id}.
-        /// </summary>
         [Input("folder")]
         public Input<string>? Folder { get; set; }
 
         /// <summary>
-        /// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_folder\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
+        /// Service which will be enabled for audit logging. The special value allServices covers all services.
         /// </summary>
         [Input("service")]
         public Input<string>? Service { get; set; }

@@ -81,6 +81,21 @@ type Image struct {
 	// You must provide either this property or the
 	// rawDisk.source property but not both to create an image.
 	SourceDisk pulumi.StringPtrOutput `pulumi:"sourceDisk"`
+	// URL of the source image used to create this image. In order to create an image, you must provide the full or partial
+	// URL of one of the following:
+	// The selfLink URL
+	// This property
+	// The rawDisk.source URL
+	// The sourceDisk URL
+	SourceImage pulumi.StringPtrOutput `pulumi:"sourceImage"`
+	// URL of the source snapshot used to create this image.
+	// In order to create an image, you must provide the full or partial URL of one of the following:
+	// The selfLink URL
+	// This property
+	// The sourceImage URL
+	// The rawDisk.source URL
+	// The sourceDisk URL
+	SourceSnapshot pulumi.StringPtrOutput `pulumi:"sourceSnapshot"`
 }
 
 // NewImage registers a new resource with the given unique name, arguments, and options.
@@ -156,6 +171,21 @@ type imageState struct {
 	// You must provide either this property or the
 	// rawDisk.source property but not both to create an image.
 	SourceDisk *string `pulumi:"sourceDisk"`
+	// URL of the source image used to create this image. In order to create an image, you must provide the full or partial
+	// URL of one of the following:
+	// The selfLink URL
+	// This property
+	// The rawDisk.source URL
+	// The sourceDisk URL
+	SourceImage *string `pulumi:"sourceImage"`
+	// URL of the source snapshot used to create this image.
+	// In order to create an image, you must provide the full or partial URL of one of the following:
+	// The selfLink URL
+	// This property
+	// The sourceImage URL
+	// The rawDisk.source URL
+	// The sourceDisk URL
+	SourceSnapshot *string `pulumi:"sourceSnapshot"`
 }
 
 type ImageState struct {
@@ -204,6 +234,21 @@ type ImageState struct {
 	// You must provide either this property or the
 	// rawDisk.source property but not both to create an image.
 	SourceDisk pulumi.StringPtrInput
+	// URL of the source image used to create this image. In order to create an image, you must provide the full or partial
+	// URL of one of the following:
+	// The selfLink URL
+	// This property
+	// The rawDisk.source URL
+	// The sourceDisk URL
+	SourceImage pulumi.StringPtrInput
+	// URL of the source snapshot used to create this image.
+	// In order to create an image, you must provide the full or partial URL of one of the following:
+	// The selfLink URL
+	// This property
+	// The sourceImage URL
+	// The rawDisk.source URL
+	// The sourceDisk URL
+	SourceSnapshot pulumi.StringPtrInput
 }
 
 func (ImageState) ElementType() reflect.Type {
@@ -248,6 +293,21 @@ type imageArgs struct {
 	// You must provide either this property or the
 	// rawDisk.source property but not both to create an image.
 	SourceDisk *string `pulumi:"sourceDisk"`
+	// URL of the source image used to create this image. In order to create an image, you must provide the full or partial
+	// URL of one of the following:
+	// The selfLink URL
+	// This property
+	// The rawDisk.source URL
+	// The sourceDisk URL
+	SourceImage *string `pulumi:"sourceImage"`
+	// URL of the source snapshot used to create this image.
+	// In order to create an image, you must provide the full or partial URL of one of the following:
+	// The selfLink URL
+	// This property
+	// The sourceImage URL
+	// The rawDisk.source URL
+	// The sourceDisk URL
+	SourceSnapshot *string `pulumi:"sourceSnapshot"`
 }
 
 // The set of arguments for constructing a Image resource.
@@ -289,6 +349,21 @@ type ImageArgs struct {
 	// You must provide either this property or the
 	// rawDisk.source property but not both to create an image.
 	SourceDisk pulumi.StringPtrInput
+	// URL of the source image used to create this image. In order to create an image, you must provide the full or partial
+	// URL of one of the following:
+	// The selfLink URL
+	// This property
+	// The rawDisk.source URL
+	// The sourceDisk URL
+	SourceImage pulumi.StringPtrInput
+	// URL of the source snapshot used to create this image.
+	// In order to create an image, you must provide the full or partial URL of one of the following:
+	// The selfLink URL
+	// This property
+	// The sourceImage URL
+	// The rawDisk.source URL
+	// The sourceDisk URL
+	SourceSnapshot pulumi.StringPtrInput
 }
 
 func (ImageArgs) ElementType() reflect.Type {

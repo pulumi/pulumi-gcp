@@ -12,14 +12,29 @@ namespace Pulumi.Gcp.Billing.Inputs
 
     public sealed class BudgetAllUpdatesRuleGetArgs : Pulumi.ResourceArgs
     {
+        [Input("monitoringNotificationChannels")]
+        private InputList<string>? _monitoringNotificationChannels;
+
+        /// <summary>
+        /// The full resource name of a monitoring notification
+        /// channel in the form
+        /// projects/{project_id}/notificationChannels/{channel_id}.
+        /// A maximum of 5 channels are allowed.
+        /// </summary>
+        public InputList<string> MonitoringNotificationChannels
+        {
+            get => _monitoringNotificationChannels ?? (_monitoringNotificationChannels = new InputList<string>());
+            set => _monitoringNotificationChannels = value;
+        }
+
         /// <summary>
         /// The name of the Cloud Pub/Sub topic where budget related
         /// messages will be published, in the form
         /// projects/{project_id}/topics/{topic_id}. Updates are sent
         /// at regular intervals to the topic.
         /// </summary>
-        [Input("pubsubTopic", required: true)]
-        public Input<string> PubsubTopic { get; set; } = null!;
+        [Input("pubsubTopic")]
+        public Input<string>? PubsubTopic { get; set; }
 
         /// <summary>
         /// The schema version of the notification. Only "1.0" is

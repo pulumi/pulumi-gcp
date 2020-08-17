@@ -17,6 +17,10 @@ class Budget(pulumi.CustomResource):
     using threshold rules.
     Structure is documented below.
 
+      * `monitoringNotificationChannels` (`list`) - The full resource name of a monitoring notification
+        channel in the form
+        projects/{project_id}/notificationChannels/{channel_id}.
+        A maximum of 5 channels are allowed.
       * `pubsubTopic` (`str`) - The name of the Cloud Pub/Sub topic where budget related
         messages will be published, in the form
         projects/{project_id}/topics/{topic_id}. Updates are sent
@@ -127,6 +131,10 @@ class Budget(pulumi.CustomResource):
 
         The **all_updates_rule** object supports the following:
 
+          * `monitoringNotificationChannels` (`pulumi.Input[list]`) - The full resource name of a monitoring notification
+            channel in the form
+            projects/{project_id}/notificationChannels/{channel_id}.
+            A maximum of 5 channels are allowed.
           * `pubsubTopic` (`pulumi.Input[str]`) - The name of the Cloud Pub/Sub topic where budget related
             messages will be published, in the form
             projects/{project_id}/topics/{topic_id}. Updates are sent
@@ -245,6 +253,10 @@ class Budget(pulumi.CustomResource):
 
         The **all_updates_rule** object supports the following:
 
+          * `monitoringNotificationChannels` (`pulumi.Input[list]`) - The full resource name of a monitoring notification
+            channel in the form
+            projects/{project_id}/notificationChannels/{channel_id}.
+            A maximum of 5 channels are allowed.
           * `pubsubTopic` (`pulumi.Input[str]`) - The name of the Cloud Pub/Sub topic where budget related
             messages will be published, in the form
             projects/{project_id}/topics/{topic_id}. Updates are sent

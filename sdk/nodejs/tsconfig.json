@@ -176,6 +176,7 @@
         "compute/regionDiskResourcePolicyAttachment.ts",
         "compute/regionHealthCheck.ts",
         "compute/regionInstanceGroupManager.ts",
+        "compute/regionNetworkEndpointGroup.ts",
         "compute/regionPerInstanceConfig.ts",
         "compute/regionSslCertificate.ts",
         "compute/regionTargetHttpProxy.ts",

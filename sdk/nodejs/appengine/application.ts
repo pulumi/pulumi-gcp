@@ -80,7 +80,7 @@ export class Application extends pulumi.CustomResource {
     /**
      * Settings for enabling Cloud Identity Aware Proxy
      */
-    public readonly iap!: pulumi.Output<outputs.appengine.ApplicationIap | undefined>;
+    public readonly iap!: pulumi.Output<outputs.appengine.ApplicationIap>;
     /**
      * The [location](https://cloud.google.com/appengine/docs/locations)
      * to serve the app from.

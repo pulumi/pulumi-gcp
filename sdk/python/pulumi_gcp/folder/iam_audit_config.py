@@ -12,46 +12,32 @@ from .. import _utilities, _tables
 class IamAuditConfig(pulumi.CustomResource):
     audit_log_configs: pulumi.Output[list]
     """
-    The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
+    The configuration for logging of each type of permission. This can be specified multiple times.
 
-      * `exemptedMembers` (`list`) - Identities that do not cause logging for this type of permission.
-        Each entry can have one of the following values:
-        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-      * `logType` (`str`) - Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
+      * `exemptedMembers` (`list`)
+      * `logType` (`str`)
     """
     etag: pulumi.Output[str]
     """
     The etag of iam policy
     """
     folder: pulumi.Output[str]
-    """
-    The resource name of the folder in which you want to manage the audit logging config. Its format is folders/{folder_id}.
-    """
     service: pulumi.Output[str]
     """
-    Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_folder\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
+    Service which will be enabled for audit logging. The special value allServices covers all services.
     """
     def __init__(__self__, resource_name, opts=None, audit_log_configs=None, folder=None, service=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a IamAuditConfig resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
-        :param pulumi.Input[str] folder: The resource name of the folder in which you want to manage the audit logging config. Its format is folders/{folder_id}.
-        :param pulumi.Input[str] service: Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_folder\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
+        :param pulumi.Input[list] audit_log_configs: The configuration for logging of each type of permission. This can be specified multiple times.
+        :param pulumi.Input[str] service: Service which will be enabled for audit logging. The special value allServices covers all services.
 
         The **audit_log_configs** object supports the following:
 
-          * `exemptedMembers` (`pulumi.Input[list]`) - Identities that do not cause logging for this type of permission.
-            Each entry can have one of the following values:
-            * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-            * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-            * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-            * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-          * `logType` (`pulumi.Input[str]`) - Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
+          * `exemptedMembers` (`pulumi.Input[list]`)
+          * `logType` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -95,20 +81,14 @@ class IamAuditConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
+        :param pulumi.Input[list] audit_log_configs: The configuration for logging of each type of permission. This can be specified multiple times.
         :param pulumi.Input[str] etag: The etag of iam policy
-        :param pulumi.Input[str] folder: The resource name of the folder in which you want to manage the audit logging config. Its format is folders/{folder_id}.
-        :param pulumi.Input[str] service: Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_folder\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
+        :param pulumi.Input[str] service: Service which will be enabled for audit logging. The special value allServices covers all services.
 
         The **audit_log_configs** object supports the following:
 
-          * `exemptedMembers` (`pulumi.Input[list]`) - Identities that do not cause logging for this type of permission.
-            Each entry can have one of the following values:
-            * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-            * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-            * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-            * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-          * `logType` (`pulumi.Input[str]`) - Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
+          * `exemptedMembers` (`pulumi.Input[list]`)
+          * `logType` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

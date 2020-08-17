@@ -10,25 +10,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Allows creation and management of a single member for a single binding within
-// the IAM policy for an existing Google Cloud Platform Organization.
-//
-// > **Note:** This resource __must not__ be used in conjunction with
-//    `organizations.IAMBinding` for the __same role__ or they will fight over
-//    what your policy should be.
 type IAMMember struct {
 	pulumi.CustomResourceState
 
 	Condition IAMMemberConditionPtrOutput `pulumi:"condition"`
-	// (Computed) The etag of the organization's IAM policy.
-	Etag pulumi.StringOutput `pulumi:"etag"`
-	// The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-	Member pulumi.StringOutput `pulumi:"member"`
-	// The numeric ID of the organization in which you want to create a custom role.
+	Etag      pulumi.StringOutput         `pulumi:"etag"`
+	Member    pulumi.StringOutput         `pulumi:"member"`
+	// The numeric ID of the organization in which you want to manage the audit logging config.
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
-	// The role that should be applied. Note that custom roles must be of the format
-	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role pulumi.StringOutput `pulumi:"role"`
+	Role  pulumi.StringOutput `pulumi:"role"`
 }
 
 // NewIAMMember registers a new resource with the given unique name, arguments, and options.
@@ -69,28 +59,20 @@ func GetIAMMember(ctx *pulumi.Context,
 // Input properties used for looking up and filtering IAMMember resources.
 type iammemberState struct {
 	Condition *IAMMemberCondition `pulumi:"condition"`
-	// (Computed) The etag of the organization's IAM policy.
-	Etag *string `pulumi:"etag"`
-	// The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-	Member *string `pulumi:"member"`
-	// The numeric ID of the organization in which you want to create a custom role.
+	Etag      *string             `pulumi:"etag"`
+	Member    *string             `pulumi:"member"`
+	// The numeric ID of the organization in which you want to manage the audit logging config.
 	OrgId *string `pulumi:"orgId"`
-	// The role that should be applied. Note that custom roles must be of the format
-	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role *string `pulumi:"role"`
+	Role  *string `pulumi:"role"`
 }
 
 type IAMMemberState struct {
 	Condition IAMMemberConditionPtrInput
-	// (Computed) The etag of the organization's IAM policy.
-	Etag pulumi.StringPtrInput
-	// The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-	Member pulumi.StringPtrInput
-	// The numeric ID of the organization in which you want to create a custom role.
+	Etag      pulumi.StringPtrInput
+	Member    pulumi.StringPtrInput
+	// The numeric ID of the organization in which you want to manage the audit logging config.
 	OrgId pulumi.StringPtrInput
-	// The role that should be applied. Note that custom roles must be of the format
-	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role pulumi.StringPtrInput
+	Role  pulumi.StringPtrInput
 }
 
 func (IAMMemberState) ElementType() reflect.Type {
@@ -99,25 +81,19 @@ func (IAMMemberState) ElementType() reflect.Type {
 
 type iammemberArgs struct {
 	Condition *IAMMemberCondition `pulumi:"condition"`
-	// The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-	Member string `pulumi:"member"`
-	// The numeric ID of the organization in which you want to create a custom role.
+	Member    string              `pulumi:"member"`
+	// The numeric ID of the organization in which you want to manage the audit logging config.
 	OrgId string `pulumi:"orgId"`
-	// The role that should be applied. Note that custom roles must be of the format
-	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role string `pulumi:"role"`
+	Role  string `pulumi:"role"`
 }
 
 // The set of arguments for constructing a IAMMember resource.
 type IAMMemberArgs struct {
 	Condition IAMMemberConditionPtrInput
-	// The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-	Member pulumi.StringInput
-	// The numeric ID of the organization in which you want to create a custom role.
+	Member    pulumi.StringInput
+	// The numeric ID of the organization in which you want to manage the audit logging config.
 	OrgId pulumi.StringInput
-	// The role that should be applied. Note that custom roles must be of the format
-	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-	Role pulumi.StringInput
+	Role  pulumi.StringInput
 }
 
 func (IAMMemberArgs) ElementType() reflect.Type {

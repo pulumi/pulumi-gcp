@@ -16,9 +16,26 @@ type TriggerBuild struct {
 	// The digests of the pushed images will be stored in the Build resource's results field.
 	// If any of the images fail to be pushed, the build status is marked FAILURE.
 	Images []string `pulumi:"images"`
+	// Google Cloud Storage bucket where logs should be written.
+	// Logs file names will be of the format ${logsBucket}/log-${build_id}.txt.
+	LogsBucket *string `pulumi:"logsBucket"`
+	// TTL in queue for this build. If provided and the build is enqueued longer than this value,
+	// the build will expire and the build status will be EXPIRED.
+	// The TTL starts ticking from createTime.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	QueueTtl *string `pulumi:"queueTtl"`
+	// Secrets to decrypt using Cloud Key Management Service.
+	// Structure is documented below.
+	Secrets []TriggerBuildSecret `pulumi:"secrets"`
+	// The location of the source files to build.
+	// One of `storageSource` or `repoSource` must be provided.
+	// Structure is documented below.
+	Source *TriggerBuildSource `pulumi:"source"`
 	// The operations to be performed on the workspace.
 	// Structure is documented below.
 	Steps []TriggerBuildStep `pulumi:"steps"`
+	// Substitutions to use in a triggered build. Should only be used with triggers.run
+	Substitutions map[string]string `pulumi:"substitutions"`
 	// Tags for annotation of a Build. These are not docker tags.
 	Tags []string `pulumi:"tags"`
 	// Time limit for executing this build step. If not defined,
@@ -45,9 +62,26 @@ type TriggerBuildArgs struct {
 	// The digests of the pushed images will be stored in the Build resource's results field.
 	// If any of the images fail to be pushed, the build status is marked FAILURE.
 	Images pulumi.StringArrayInput `pulumi:"images"`
+	// Google Cloud Storage bucket where logs should be written.
+	// Logs file names will be of the format ${logsBucket}/log-${build_id}.txt.
+	LogsBucket pulumi.StringPtrInput `pulumi:"logsBucket"`
+	// TTL in queue for this build. If provided and the build is enqueued longer than this value,
+	// the build will expire and the build status will be EXPIRED.
+	// The TTL starts ticking from createTime.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	QueueTtl pulumi.StringPtrInput `pulumi:"queueTtl"`
+	// Secrets to decrypt using Cloud Key Management Service.
+	// Structure is documented below.
+	Secrets TriggerBuildSecretArrayInput `pulumi:"secrets"`
+	// The location of the source files to build.
+	// One of `storageSource` or `repoSource` must be provided.
+	// Structure is documented below.
+	Source TriggerBuildSourcePtrInput `pulumi:"source"`
 	// The operations to be performed on the workspace.
 	// Structure is documented below.
 	Steps TriggerBuildStepArrayInput `pulumi:"steps"`
+	// Substitutions to use in a triggered build. Should only be used with triggers.run
+	Substitutions pulumi.StringMapInput `pulumi:"substitutions"`
 	// Tags for annotation of a Build. These are not docker tags.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 	// Time limit for executing this build step. If not defined,
@@ -142,10 +176,42 @@ func (o TriggerBuildOutput) Images() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TriggerBuild) []string { return v.Images }).(pulumi.StringArrayOutput)
 }
 
+// Google Cloud Storage bucket where logs should be written.
+// Logs file names will be of the format ${logsBucket}/log-${build_id}.txt.
+func (o TriggerBuildOutput) LogsBucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerBuild) *string { return v.LogsBucket }).(pulumi.StringPtrOutput)
+}
+
+// TTL in queue for this build. If provided and the build is enqueued longer than this value,
+// the build will expire and the build status will be EXPIRED.
+// The TTL starts ticking from createTime.
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+func (o TriggerBuildOutput) QueueTtl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerBuild) *string { return v.QueueTtl }).(pulumi.StringPtrOutput)
+}
+
+// Secrets to decrypt using Cloud Key Management Service.
+// Structure is documented below.
+func (o TriggerBuildOutput) Secrets() TriggerBuildSecretArrayOutput {
+	return o.ApplyT(func(v TriggerBuild) []TriggerBuildSecret { return v.Secrets }).(TriggerBuildSecretArrayOutput)
+}
+
+// The location of the source files to build.
+// One of `storageSource` or `repoSource` must be provided.
+// Structure is documented below.
+func (o TriggerBuildOutput) Source() TriggerBuildSourcePtrOutput {
+	return o.ApplyT(func(v TriggerBuild) *TriggerBuildSource { return v.Source }).(TriggerBuildSourcePtrOutput)
+}
+
 // The operations to be performed on the workspace.
 // Structure is documented below.
 func (o TriggerBuildOutput) Steps() TriggerBuildStepArrayOutput {
 	return o.ApplyT(func(v TriggerBuild) []TriggerBuildStep { return v.Steps }).(TriggerBuildStepArrayOutput)
+}
+
+// Substitutions to use in a triggered build. Should only be used with triggers.run
+func (o TriggerBuildOutput) Substitutions() pulumi.StringMapOutput {
+	return o.ApplyT(func(v TriggerBuild) map[string]string { return v.Substitutions }).(pulumi.StringMapOutput)
 }
 
 // Tags for annotation of a Build. These are not docker tags.
@@ -192,6 +258,53 @@ func (o TriggerBuildPtrOutput) Images() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// Google Cloud Storage bucket where logs should be written.
+// Logs file names will be of the format ${logsBucket}/log-${build_id}.txt.
+func (o TriggerBuildPtrOutput) LogsBucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerBuild) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogsBucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// TTL in queue for this build. If provided and the build is enqueued longer than this value,
+// the build will expire and the build status will be EXPIRED.
+// The TTL starts ticking from createTime.
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+func (o TriggerBuildPtrOutput) QueueTtl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerBuild) *string {
+		if v == nil {
+			return nil
+		}
+		return v.QueueTtl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Secrets to decrypt using Cloud Key Management Service.
+// Structure is documented below.
+func (o TriggerBuildPtrOutput) Secrets() TriggerBuildSecretArrayOutput {
+	return o.ApplyT(func(v *TriggerBuild) []TriggerBuildSecret {
+		if v == nil {
+			return nil
+		}
+		return v.Secrets
+	}).(TriggerBuildSecretArrayOutput)
+}
+
+// The location of the source files to build.
+// One of `storageSource` or `repoSource` must be provided.
+// Structure is documented below.
+func (o TriggerBuildPtrOutput) Source() TriggerBuildSourcePtrOutput {
+	return o.ApplyT(func(v *TriggerBuild) *TriggerBuildSource {
+		if v == nil {
+			return nil
+		}
+		return v.Source
+	}).(TriggerBuildSourcePtrOutput)
+}
+
 // The operations to be performed on the workspace.
 // Structure is documented below.
 func (o TriggerBuildPtrOutput) Steps() TriggerBuildStepArrayOutput {
@@ -201,6 +314,16 @@ func (o TriggerBuildPtrOutput) Steps() TriggerBuildStepArrayOutput {
 		}
 		return v.Steps
 	}).(TriggerBuildStepArrayOutput)
+}
+
+// Substitutions to use in a triggered build. Should only be used with triggers.run
+func (o TriggerBuildPtrOutput) Substitutions() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *TriggerBuild) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Substitutions
+	}).(pulumi.StringMapOutput)
 }
 
 // Tags for annotation of a Build. These are not docker tags.
@@ -223,6 +346,772 @@ func (o TriggerBuildPtrOutput) Timeout() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Timeout
+	}).(pulumi.StringPtrOutput)
+}
+
+type TriggerBuildSecret struct {
+	// Cloud KMS key name to use to decrypt these envs.
+	KmsKeyName string `pulumi:"kmsKeyName"`
+	// A list of environment variables which are encrypted using
+	// a Cloud Key
+	// Management Service crypto key. These values must be specified in
+	// the build's `Secret`.
+	SecretEnv map[string]string `pulumi:"secretEnv"`
+}
+
+// TriggerBuildSecretInput is an input type that accepts TriggerBuildSecretArgs and TriggerBuildSecretOutput values.
+// You can construct a concrete instance of `TriggerBuildSecretInput` via:
+//
+//          TriggerBuildSecretArgs{...}
+type TriggerBuildSecretInput interface {
+	pulumi.Input
+
+	ToTriggerBuildSecretOutput() TriggerBuildSecretOutput
+	ToTriggerBuildSecretOutputWithContext(context.Context) TriggerBuildSecretOutput
+}
+
+type TriggerBuildSecretArgs struct {
+	// Cloud KMS key name to use to decrypt these envs.
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+	// A list of environment variables which are encrypted using
+	// a Cloud Key
+	// Management Service crypto key. These values must be specified in
+	// the build's `Secret`.
+	SecretEnv pulumi.StringMapInput `pulumi:"secretEnv"`
+}
+
+func (TriggerBuildSecretArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerBuildSecret)(nil)).Elem()
+}
+
+func (i TriggerBuildSecretArgs) ToTriggerBuildSecretOutput() TriggerBuildSecretOutput {
+	return i.ToTriggerBuildSecretOutputWithContext(context.Background())
+}
+
+func (i TriggerBuildSecretArgs) ToTriggerBuildSecretOutputWithContext(ctx context.Context) TriggerBuildSecretOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildSecretOutput)
+}
+
+// TriggerBuildSecretArrayInput is an input type that accepts TriggerBuildSecretArray and TriggerBuildSecretArrayOutput values.
+// You can construct a concrete instance of `TriggerBuildSecretArrayInput` via:
+//
+//          TriggerBuildSecretArray{ TriggerBuildSecretArgs{...} }
+type TriggerBuildSecretArrayInput interface {
+	pulumi.Input
+
+	ToTriggerBuildSecretArrayOutput() TriggerBuildSecretArrayOutput
+	ToTriggerBuildSecretArrayOutputWithContext(context.Context) TriggerBuildSecretArrayOutput
+}
+
+type TriggerBuildSecretArray []TriggerBuildSecretInput
+
+func (TriggerBuildSecretArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TriggerBuildSecret)(nil)).Elem()
+}
+
+func (i TriggerBuildSecretArray) ToTriggerBuildSecretArrayOutput() TriggerBuildSecretArrayOutput {
+	return i.ToTriggerBuildSecretArrayOutputWithContext(context.Background())
+}
+
+func (i TriggerBuildSecretArray) ToTriggerBuildSecretArrayOutputWithContext(ctx context.Context) TriggerBuildSecretArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildSecretArrayOutput)
+}
+
+type TriggerBuildSecretOutput struct{ *pulumi.OutputState }
+
+func (TriggerBuildSecretOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerBuildSecret)(nil)).Elem()
+}
+
+func (o TriggerBuildSecretOutput) ToTriggerBuildSecretOutput() TriggerBuildSecretOutput {
+	return o
+}
+
+func (o TriggerBuildSecretOutput) ToTriggerBuildSecretOutputWithContext(ctx context.Context) TriggerBuildSecretOutput {
+	return o
+}
+
+// Cloud KMS key name to use to decrypt these envs.
+func (o TriggerBuildSecretOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v TriggerBuildSecret) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+// A list of environment variables which are encrypted using
+// a Cloud Key
+// Management Service crypto key. These values must be specified in
+// the build's `Secret`.
+func (o TriggerBuildSecretOutput) SecretEnv() pulumi.StringMapOutput {
+	return o.ApplyT(func(v TriggerBuildSecret) map[string]string { return v.SecretEnv }).(pulumi.StringMapOutput)
+}
+
+type TriggerBuildSecretArrayOutput struct{ *pulumi.OutputState }
+
+func (TriggerBuildSecretArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TriggerBuildSecret)(nil)).Elem()
+}
+
+func (o TriggerBuildSecretArrayOutput) ToTriggerBuildSecretArrayOutput() TriggerBuildSecretArrayOutput {
+	return o
+}
+
+func (o TriggerBuildSecretArrayOutput) ToTriggerBuildSecretArrayOutputWithContext(ctx context.Context) TriggerBuildSecretArrayOutput {
+	return o
+}
+
+func (o TriggerBuildSecretArrayOutput) Index(i pulumi.IntInput) TriggerBuildSecretOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TriggerBuildSecret {
+		return vs[0].([]TriggerBuildSecret)[vs[1].(int)]
+	}).(TriggerBuildSecretOutput)
+}
+
+type TriggerBuildSource struct {
+	// Location of the source in a Google Cloud Source Repository.
+	// Structure is documented below.
+	RepoSource *TriggerBuildSourceRepoSource `pulumi:"repoSource"`
+	// Location of the source in an archive file in Google Cloud Storage.
+	// Structure is documented below.
+	StorageSource *TriggerBuildSourceStorageSource `pulumi:"storageSource"`
+}
+
+// TriggerBuildSourceInput is an input type that accepts TriggerBuildSourceArgs and TriggerBuildSourceOutput values.
+// You can construct a concrete instance of `TriggerBuildSourceInput` via:
+//
+//          TriggerBuildSourceArgs{...}
+type TriggerBuildSourceInput interface {
+	pulumi.Input
+
+	ToTriggerBuildSourceOutput() TriggerBuildSourceOutput
+	ToTriggerBuildSourceOutputWithContext(context.Context) TriggerBuildSourceOutput
+}
+
+type TriggerBuildSourceArgs struct {
+	// Location of the source in a Google Cloud Source Repository.
+	// Structure is documented below.
+	RepoSource TriggerBuildSourceRepoSourcePtrInput `pulumi:"repoSource"`
+	// Location of the source in an archive file in Google Cloud Storage.
+	// Structure is documented below.
+	StorageSource TriggerBuildSourceStorageSourcePtrInput `pulumi:"storageSource"`
+}
+
+func (TriggerBuildSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerBuildSource)(nil)).Elem()
+}
+
+func (i TriggerBuildSourceArgs) ToTriggerBuildSourceOutput() TriggerBuildSourceOutput {
+	return i.ToTriggerBuildSourceOutputWithContext(context.Background())
+}
+
+func (i TriggerBuildSourceArgs) ToTriggerBuildSourceOutputWithContext(ctx context.Context) TriggerBuildSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildSourceOutput)
+}
+
+func (i TriggerBuildSourceArgs) ToTriggerBuildSourcePtrOutput() TriggerBuildSourcePtrOutput {
+	return i.ToTriggerBuildSourcePtrOutputWithContext(context.Background())
+}
+
+func (i TriggerBuildSourceArgs) ToTriggerBuildSourcePtrOutputWithContext(ctx context.Context) TriggerBuildSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildSourceOutput).ToTriggerBuildSourcePtrOutputWithContext(ctx)
+}
+
+// TriggerBuildSourcePtrInput is an input type that accepts TriggerBuildSourceArgs, TriggerBuildSourcePtr and TriggerBuildSourcePtrOutput values.
+// You can construct a concrete instance of `TriggerBuildSourcePtrInput` via:
+//
+//          TriggerBuildSourceArgs{...}
+//
+//  or:
+//
+//          nil
+type TriggerBuildSourcePtrInput interface {
+	pulumi.Input
+
+	ToTriggerBuildSourcePtrOutput() TriggerBuildSourcePtrOutput
+	ToTriggerBuildSourcePtrOutputWithContext(context.Context) TriggerBuildSourcePtrOutput
+}
+
+type triggerBuildSourcePtrType TriggerBuildSourceArgs
+
+func TriggerBuildSourcePtr(v *TriggerBuildSourceArgs) TriggerBuildSourcePtrInput {
+	return (*triggerBuildSourcePtrType)(v)
+}
+
+func (*triggerBuildSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerBuildSource)(nil)).Elem()
+}
+
+func (i *triggerBuildSourcePtrType) ToTriggerBuildSourcePtrOutput() TriggerBuildSourcePtrOutput {
+	return i.ToTriggerBuildSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *triggerBuildSourcePtrType) ToTriggerBuildSourcePtrOutputWithContext(ctx context.Context) TriggerBuildSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildSourcePtrOutput)
+}
+
+type TriggerBuildSourceOutput struct{ *pulumi.OutputState }
+
+func (TriggerBuildSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerBuildSource)(nil)).Elem()
+}
+
+func (o TriggerBuildSourceOutput) ToTriggerBuildSourceOutput() TriggerBuildSourceOutput {
+	return o
+}
+
+func (o TriggerBuildSourceOutput) ToTriggerBuildSourceOutputWithContext(ctx context.Context) TriggerBuildSourceOutput {
+	return o
+}
+
+func (o TriggerBuildSourceOutput) ToTriggerBuildSourcePtrOutput() TriggerBuildSourcePtrOutput {
+	return o.ToTriggerBuildSourcePtrOutputWithContext(context.Background())
+}
+
+func (o TriggerBuildSourceOutput) ToTriggerBuildSourcePtrOutputWithContext(ctx context.Context) TriggerBuildSourcePtrOutput {
+	return o.ApplyT(func(v TriggerBuildSource) *TriggerBuildSource {
+		return &v
+	}).(TriggerBuildSourcePtrOutput)
+}
+
+// Location of the source in a Google Cloud Source Repository.
+// Structure is documented below.
+func (o TriggerBuildSourceOutput) RepoSource() TriggerBuildSourceRepoSourcePtrOutput {
+	return o.ApplyT(func(v TriggerBuildSource) *TriggerBuildSourceRepoSource { return v.RepoSource }).(TriggerBuildSourceRepoSourcePtrOutput)
+}
+
+// Location of the source in an archive file in Google Cloud Storage.
+// Structure is documented below.
+func (o TriggerBuildSourceOutput) StorageSource() TriggerBuildSourceStorageSourcePtrOutput {
+	return o.ApplyT(func(v TriggerBuildSource) *TriggerBuildSourceStorageSource { return v.StorageSource }).(TriggerBuildSourceStorageSourcePtrOutput)
+}
+
+type TriggerBuildSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (TriggerBuildSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerBuildSource)(nil)).Elem()
+}
+
+func (o TriggerBuildSourcePtrOutput) ToTriggerBuildSourcePtrOutput() TriggerBuildSourcePtrOutput {
+	return o
+}
+
+func (o TriggerBuildSourcePtrOutput) ToTriggerBuildSourcePtrOutputWithContext(ctx context.Context) TriggerBuildSourcePtrOutput {
+	return o
+}
+
+func (o TriggerBuildSourcePtrOutput) Elem() TriggerBuildSourceOutput {
+	return o.ApplyT(func(v *TriggerBuildSource) TriggerBuildSource { return *v }).(TriggerBuildSourceOutput)
+}
+
+// Location of the source in a Google Cloud Source Repository.
+// Structure is documented below.
+func (o TriggerBuildSourcePtrOutput) RepoSource() TriggerBuildSourceRepoSourcePtrOutput {
+	return o.ApplyT(func(v *TriggerBuildSource) *TriggerBuildSourceRepoSource {
+		if v == nil {
+			return nil
+		}
+		return v.RepoSource
+	}).(TriggerBuildSourceRepoSourcePtrOutput)
+}
+
+// Location of the source in an archive file in Google Cloud Storage.
+// Structure is documented below.
+func (o TriggerBuildSourcePtrOutput) StorageSource() TriggerBuildSourceStorageSourcePtrOutput {
+	return o.ApplyT(func(v *TriggerBuildSource) *TriggerBuildSourceStorageSource {
+		if v == nil {
+			return nil
+		}
+		return v.StorageSource
+	}).(TriggerBuildSourceStorageSourcePtrOutput)
+}
+
+type TriggerBuildSourceRepoSource struct {
+	// Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+	// The syntax of the regular expressions accepted is the syntax accepted by RE2 and
+	// described at https://github.com/google/re2/wiki/Syntax
+	BranchName *string `pulumi:"branchName"`
+	// Explicit commit SHA to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+	CommitSha *string `pulumi:"commitSha"`
+	// Working directory to use when running this step's container.
+	// If this value is a relative path, it is relative to the build's working
+	// directory. If this value is absolute, it may be outside the build's working
+	// directory, in which case the contents of the path may not be persisted
+	// across build step executions, unless a `volume` for that path is specified.
+	// If the build specifies a `RepoSource` with `dir` and a step with a
+	// `dir`,
+	// which specifies an absolute path, the `RepoSource` `dir` is ignored
+	// for the step's execution.
+	Dir *string `pulumi:"dir"`
+	// Only trigger a build if the revision regex does NOT match the revision regex.
+	InvertRegex *bool `pulumi:"invertRegex"`
+	// ID of the project that owns the Cloud Source Repository.
+	// If omitted, the project ID requesting the build is assumed.
+	ProjectId *string `pulumi:"projectId"`
+	// Name of the Cloud Source Repository.
+	RepoName string `pulumi:"repoName"`
+	// Substitutions to use in a triggered build. Should only be used with triggers.run
+	Substitutions map[string]string `pulumi:"substitutions"`
+	// Regex matching tags to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+	// The syntax of the regular expressions accepted is the syntax accepted by RE2 and
+	// described at https://github.com/google/re2/wiki/Syntax
+	TagName *string `pulumi:"tagName"`
+}
+
+// TriggerBuildSourceRepoSourceInput is an input type that accepts TriggerBuildSourceRepoSourceArgs and TriggerBuildSourceRepoSourceOutput values.
+// You can construct a concrete instance of `TriggerBuildSourceRepoSourceInput` via:
+//
+//          TriggerBuildSourceRepoSourceArgs{...}
+type TriggerBuildSourceRepoSourceInput interface {
+	pulumi.Input
+
+	ToTriggerBuildSourceRepoSourceOutput() TriggerBuildSourceRepoSourceOutput
+	ToTriggerBuildSourceRepoSourceOutputWithContext(context.Context) TriggerBuildSourceRepoSourceOutput
+}
+
+type TriggerBuildSourceRepoSourceArgs struct {
+	// Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+	// The syntax of the regular expressions accepted is the syntax accepted by RE2 and
+	// described at https://github.com/google/re2/wiki/Syntax
+	BranchName pulumi.StringPtrInput `pulumi:"branchName"`
+	// Explicit commit SHA to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+	CommitSha pulumi.StringPtrInput `pulumi:"commitSha"`
+	// Working directory to use when running this step's container.
+	// If this value is a relative path, it is relative to the build's working
+	// directory. If this value is absolute, it may be outside the build's working
+	// directory, in which case the contents of the path may not be persisted
+	// across build step executions, unless a `volume` for that path is specified.
+	// If the build specifies a `RepoSource` with `dir` and a step with a
+	// `dir`,
+	// which specifies an absolute path, the `RepoSource` `dir` is ignored
+	// for the step's execution.
+	Dir pulumi.StringPtrInput `pulumi:"dir"`
+	// Only trigger a build if the revision regex does NOT match the revision regex.
+	InvertRegex pulumi.BoolPtrInput `pulumi:"invertRegex"`
+	// ID of the project that owns the Cloud Source Repository.
+	// If omitted, the project ID requesting the build is assumed.
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	// Name of the Cloud Source Repository.
+	RepoName pulumi.StringInput `pulumi:"repoName"`
+	// Substitutions to use in a triggered build. Should only be used with triggers.run
+	Substitutions pulumi.StringMapInput `pulumi:"substitutions"`
+	// Regex matching tags to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+	// The syntax of the regular expressions accepted is the syntax accepted by RE2 and
+	// described at https://github.com/google/re2/wiki/Syntax
+	TagName pulumi.StringPtrInput `pulumi:"tagName"`
+}
+
+func (TriggerBuildSourceRepoSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerBuildSourceRepoSource)(nil)).Elem()
+}
+
+func (i TriggerBuildSourceRepoSourceArgs) ToTriggerBuildSourceRepoSourceOutput() TriggerBuildSourceRepoSourceOutput {
+	return i.ToTriggerBuildSourceRepoSourceOutputWithContext(context.Background())
+}
+
+func (i TriggerBuildSourceRepoSourceArgs) ToTriggerBuildSourceRepoSourceOutputWithContext(ctx context.Context) TriggerBuildSourceRepoSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildSourceRepoSourceOutput)
+}
+
+func (i TriggerBuildSourceRepoSourceArgs) ToTriggerBuildSourceRepoSourcePtrOutput() TriggerBuildSourceRepoSourcePtrOutput {
+	return i.ToTriggerBuildSourceRepoSourcePtrOutputWithContext(context.Background())
+}
+
+func (i TriggerBuildSourceRepoSourceArgs) ToTriggerBuildSourceRepoSourcePtrOutputWithContext(ctx context.Context) TriggerBuildSourceRepoSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildSourceRepoSourceOutput).ToTriggerBuildSourceRepoSourcePtrOutputWithContext(ctx)
+}
+
+// TriggerBuildSourceRepoSourcePtrInput is an input type that accepts TriggerBuildSourceRepoSourceArgs, TriggerBuildSourceRepoSourcePtr and TriggerBuildSourceRepoSourcePtrOutput values.
+// You can construct a concrete instance of `TriggerBuildSourceRepoSourcePtrInput` via:
+//
+//          TriggerBuildSourceRepoSourceArgs{...}
+//
+//  or:
+//
+//          nil
+type TriggerBuildSourceRepoSourcePtrInput interface {
+	pulumi.Input
+
+	ToTriggerBuildSourceRepoSourcePtrOutput() TriggerBuildSourceRepoSourcePtrOutput
+	ToTriggerBuildSourceRepoSourcePtrOutputWithContext(context.Context) TriggerBuildSourceRepoSourcePtrOutput
+}
+
+type triggerBuildSourceRepoSourcePtrType TriggerBuildSourceRepoSourceArgs
+
+func TriggerBuildSourceRepoSourcePtr(v *TriggerBuildSourceRepoSourceArgs) TriggerBuildSourceRepoSourcePtrInput {
+	return (*triggerBuildSourceRepoSourcePtrType)(v)
+}
+
+func (*triggerBuildSourceRepoSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerBuildSourceRepoSource)(nil)).Elem()
+}
+
+func (i *triggerBuildSourceRepoSourcePtrType) ToTriggerBuildSourceRepoSourcePtrOutput() TriggerBuildSourceRepoSourcePtrOutput {
+	return i.ToTriggerBuildSourceRepoSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *triggerBuildSourceRepoSourcePtrType) ToTriggerBuildSourceRepoSourcePtrOutputWithContext(ctx context.Context) TriggerBuildSourceRepoSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildSourceRepoSourcePtrOutput)
+}
+
+type TriggerBuildSourceRepoSourceOutput struct{ *pulumi.OutputState }
+
+func (TriggerBuildSourceRepoSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerBuildSourceRepoSource)(nil)).Elem()
+}
+
+func (o TriggerBuildSourceRepoSourceOutput) ToTriggerBuildSourceRepoSourceOutput() TriggerBuildSourceRepoSourceOutput {
+	return o
+}
+
+func (o TriggerBuildSourceRepoSourceOutput) ToTriggerBuildSourceRepoSourceOutputWithContext(ctx context.Context) TriggerBuildSourceRepoSourceOutput {
+	return o
+}
+
+func (o TriggerBuildSourceRepoSourceOutput) ToTriggerBuildSourceRepoSourcePtrOutput() TriggerBuildSourceRepoSourcePtrOutput {
+	return o.ToTriggerBuildSourceRepoSourcePtrOutputWithContext(context.Background())
+}
+
+func (o TriggerBuildSourceRepoSourceOutput) ToTriggerBuildSourceRepoSourcePtrOutputWithContext(ctx context.Context) TriggerBuildSourceRepoSourcePtrOutput {
+	return o.ApplyT(func(v TriggerBuildSourceRepoSource) *TriggerBuildSourceRepoSource {
+		return &v
+	}).(TriggerBuildSourceRepoSourcePtrOutput)
+}
+
+// Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+// The syntax of the regular expressions accepted is the syntax accepted by RE2 and
+// described at https://github.com/google/re2/wiki/Syntax
+func (o TriggerBuildSourceRepoSourceOutput) BranchName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerBuildSourceRepoSource) *string { return v.BranchName }).(pulumi.StringPtrOutput)
+}
+
+// Explicit commit SHA to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+func (o TriggerBuildSourceRepoSourceOutput) CommitSha() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerBuildSourceRepoSource) *string { return v.CommitSha }).(pulumi.StringPtrOutput)
+}
+
+// Working directory to use when running this step's container.
+// If this value is a relative path, it is relative to the build's working
+// directory. If this value is absolute, it may be outside the build's working
+// directory, in which case the contents of the path may not be persisted
+// across build step executions, unless a `volume` for that path is specified.
+// If the build specifies a `RepoSource` with `dir` and a step with a
+// `dir`,
+// which specifies an absolute path, the `RepoSource` `dir` is ignored
+// for the step's execution.
+func (o TriggerBuildSourceRepoSourceOutput) Dir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerBuildSourceRepoSource) *string { return v.Dir }).(pulumi.StringPtrOutput)
+}
+
+// Only trigger a build if the revision regex does NOT match the revision regex.
+func (o TriggerBuildSourceRepoSourceOutput) InvertRegex() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TriggerBuildSourceRepoSource) *bool { return v.InvertRegex }).(pulumi.BoolPtrOutput)
+}
+
+// ID of the project that owns the Cloud Source Repository.
+// If omitted, the project ID requesting the build is assumed.
+func (o TriggerBuildSourceRepoSourceOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerBuildSourceRepoSource) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+}
+
+// Name of the Cloud Source Repository.
+func (o TriggerBuildSourceRepoSourceOutput) RepoName() pulumi.StringOutput {
+	return o.ApplyT(func(v TriggerBuildSourceRepoSource) string { return v.RepoName }).(pulumi.StringOutput)
+}
+
+// Substitutions to use in a triggered build. Should only be used with triggers.run
+func (o TriggerBuildSourceRepoSourceOutput) Substitutions() pulumi.StringMapOutput {
+	return o.ApplyT(func(v TriggerBuildSourceRepoSource) map[string]string { return v.Substitutions }).(pulumi.StringMapOutput)
+}
+
+// Regex matching tags to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+// The syntax of the regular expressions accepted is the syntax accepted by RE2 and
+// described at https://github.com/google/re2/wiki/Syntax
+func (o TriggerBuildSourceRepoSourceOutput) TagName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerBuildSourceRepoSource) *string { return v.TagName }).(pulumi.StringPtrOutput)
+}
+
+type TriggerBuildSourceRepoSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (TriggerBuildSourceRepoSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerBuildSourceRepoSource)(nil)).Elem()
+}
+
+func (o TriggerBuildSourceRepoSourcePtrOutput) ToTriggerBuildSourceRepoSourcePtrOutput() TriggerBuildSourceRepoSourcePtrOutput {
+	return o
+}
+
+func (o TriggerBuildSourceRepoSourcePtrOutput) ToTriggerBuildSourceRepoSourcePtrOutputWithContext(ctx context.Context) TriggerBuildSourceRepoSourcePtrOutput {
+	return o
+}
+
+func (o TriggerBuildSourceRepoSourcePtrOutput) Elem() TriggerBuildSourceRepoSourceOutput {
+	return o.ApplyT(func(v *TriggerBuildSourceRepoSource) TriggerBuildSourceRepoSource { return *v }).(TriggerBuildSourceRepoSourceOutput)
+}
+
+// Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+// The syntax of the regular expressions accepted is the syntax accepted by RE2 and
+// described at https://github.com/google/re2/wiki/Syntax
+func (o TriggerBuildSourceRepoSourcePtrOutput) BranchName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerBuildSourceRepoSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BranchName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Explicit commit SHA to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+func (o TriggerBuildSourceRepoSourcePtrOutput) CommitSha() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerBuildSourceRepoSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CommitSha
+	}).(pulumi.StringPtrOutput)
+}
+
+// Working directory to use when running this step's container.
+// If this value is a relative path, it is relative to the build's working
+// directory. If this value is absolute, it may be outside the build's working
+// directory, in which case the contents of the path may not be persisted
+// across build step executions, unless a `volume` for that path is specified.
+// If the build specifies a `RepoSource` with `dir` and a step with a
+// `dir`,
+// which specifies an absolute path, the `RepoSource` `dir` is ignored
+// for the step's execution.
+func (o TriggerBuildSourceRepoSourcePtrOutput) Dir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerBuildSourceRepoSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Dir
+	}).(pulumi.StringPtrOutput)
+}
+
+// Only trigger a build if the revision regex does NOT match the revision regex.
+func (o TriggerBuildSourceRepoSourcePtrOutput) InvertRegex() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TriggerBuildSourceRepoSource) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.InvertRegex
+	}).(pulumi.BoolPtrOutput)
+}
+
+// ID of the project that owns the Cloud Source Repository.
+// If omitted, the project ID requesting the build is assumed.
+func (o TriggerBuildSourceRepoSourcePtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerBuildSourceRepoSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the Cloud Source Repository.
+func (o TriggerBuildSourceRepoSourcePtrOutput) RepoName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerBuildSourceRepoSource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RepoName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Substitutions to use in a triggered build. Should only be used with triggers.run
+func (o TriggerBuildSourceRepoSourcePtrOutput) Substitutions() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *TriggerBuildSourceRepoSource) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Substitutions
+	}).(pulumi.StringMapOutput)
+}
+
+// Regex matching tags to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+// The syntax of the regular expressions accepted is the syntax accepted by RE2 and
+// described at https://github.com/google/re2/wiki/Syntax
+func (o TriggerBuildSourceRepoSourcePtrOutput) TagName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerBuildSourceRepoSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TagName
+	}).(pulumi.StringPtrOutput)
+}
+
+type TriggerBuildSourceStorageSource struct {
+	// Google Cloud Storage bucket containing the source.
+	Bucket string `pulumi:"bucket"`
+	// Google Cloud Storage generation for the object.
+	// If the generation is omitted, the latest generation will be used
+	Generation *string `pulumi:"generation"`
+	// Google Cloud Storage object containing the source.
+	// This object must be a gzipped archive file (.tar.gz) containing source to build.
+	Object string `pulumi:"object"`
+}
+
+// TriggerBuildSourceStorageSourceInput is an input type that accepts TriggerBuildSourceStorageSourceArgs and TriggerBuildSourceStorageSourceOutput values.
+// You can construct a concrete instance of `TriggerBuildSourceStorageSourceInput` via:
+//
+//          TriggerBuildSourceStorageSourceArgs{...}
+type TriggerBuildSourceStorageSourceInput interface {
+	pulumi.Input
+
+	ToTriggerBuildSourceStorageSourceOutput() TriggerBuildSourceStorageSourceOutput
+	ToTriggerBuildSourceStorageSourceOutputWithContext(context.Context) TriggerBuildSourceStorageSourceOutput
+}
+
+type TriggerBuildSourceStorageSourceArgs struct {
+	// Google Cloud Storage bucket containing the source.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// Google Cloud Storage generation for the object.
+	// If the generation is omitted, the latest generation will be used
+	Generation pulumi.StringPtrInput `pulumi:"generation"`
+	// Google Cloud Storage object containing the source.
+	// This object must be a gzipped archive file (.tar.gz) containing source to build.
+	Object pulumi.StringInput `pulumi:"object"`
+}
+
+func (TriggerBuildSourceStorageSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerBuildSourceStorageSource)(nil)).Elem()
+}
+
+func (i TriggerBuildSourceStorageSourceArgs) ToTriggerBuildSourceStorageSourceOutput() TriggerBuildSourceStorageSourceOutput {
+	return i.ToTriggerBuildSourceStorageSourceOutputWithContext(context.Background())
+}
+
+func (i TriggerBuildSourceStorageSourceArgs) ToTriggerBuildSourceStorageSourceOutputWithContext(ctx context.Context) TriggerBuildSourceStorageSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildSourceStorageSourceOutput)
+}
+
+func (i TriggerBuildSourceStorageSourceArgs) ToTriggerBuildSourceStorageSourcePtrOutput() TriggerBuildSourceStorageSourcePtrOutput {
+	return i.ToTriggerBuildSourceStorageSourcePtrOutputWithContext(context.Background())
+}
+
+func (i TriggerBuildSourceStorageSourceArgs) ToTriggerBuildSourceStorageSourcePtrOutputWithContext(ctx context.Context) TriggerBuildSourceStorageSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildSourceStorageSourceOutput).ToTriggerBuildSourceStorageSourcePtrOutputWithContext(ctx)
+}
+
+// TriggerBuildSourceStorageSourcePtrInput is an input type that accepts TriggerBuildSourceStorageSourceArgs, TriggerBuildSourceStorageSourcePtr and TriggerBuildSourceStorageSourcePtrOutput values.
+// You can construct a concrete instance of `TriggerBuildSourceStorageSourcePtrInput` via:
+//
+//          TriggerBuildSourceStorageSourceArgs{...}
+//
+//  or:
+//
+//          nil
+type TriggerBuildSourceStorageSourcePtrInput interface {
+	pulumi.Input
+
+	ToTriggerBuildSourceStorageSourcePtrOutput() TriggerBuildSourceStorageSourcePtrOutput
+	ToTriggerBuildSourceStorageSourcePtrOutputWithContext(context.Context) TriggerBuildSourceStorageSourcePtrOutput
+}
+
+type triggerBuildSourceStorageSourcePtrType TriggerBuildSourceStorageSourceArgs
+
+func TriggerBuildSourceStorageSourcePtr(v *TriggerBuildSourceStorageSourceArgs) TriggerBuildSourceStorageSourcePtrInput {
+	return (*triggerBuildSourceStorageSourcePtrType)(v)
+}
+
+func (*triggerBuildSourceStorageSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerBuildSourceStorageSource)(nil)).Elem()
+}
+
+func (i *triggerBuildSourceStorageSourcePtrType) ToTriggerBuildSourceStorageSourcePtrOutput() TriggerBuildSourceStorageSourcePtrOutput {
+	return i.ToTriggerBuildSourceStorageSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *triggerBuildSourceStorageSourcePtrType) ToTriggerBuildSourceStorageSourcePtrOutputWithContext(ctx context.Context) TriggerBuildSourceStorageSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildSourceStorageSourcePtrOutput)
+}
+
+type TriggerBuildSourceStorageSourceOutput struct{ *pulumi.OutputState }
+
+func (TriggerBuildSourceStorageSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerBuildSourceStorageSource)(nil)).Elem()
+}
+
+func (o TriggerBuildSourceStorageSourceOutput) ToTriggerBuildSourceStorageSourceOutput() TriggerBuildSourceStorageSourceOutput {
+	return o
+}
+
+func (o TriggerBuildSourceStorageSourceOutput) ToTriggerBuildSourceStorageSourceOutputWithContext(ctx context.Context) TriggerBuildSourceStorageSourceOutput {
+	return o
+}
+
+func (o TriggerBuildSourceStorageSourceOutput) ToTriggerBuildSourceStorageSourcePtrOutput() TriggerBuildSourceStorageSourcePtrOutput {
+	return o.ToTriggerBuildSourceStorageSourcePtrOutputWithContext(context.Background())
+}
+
+func (o TriggerBuildSourceStorageSourceOutput) ToTriggerBuildSourceStorageSourcePtrOutputWithContext(ctx context.Context) TriggerBuildSourceStorageSourcePtrOutput {
+	return o.ApplyT(func(v TriggerBuildSourceStorageSource) *TriggerBuildSourceStorageSource {
+		return &v
+	}).(TriggerBuildSourceStorageSourcePtrOutput)
+}
+
+// Google Cloud Storage bucket containing the source.
+func (o TriggerBuildSourceStorageSourceOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v TriggerBuildSourceStorageSource) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// Google Cloud Storage generation for the object.
+// If the generation is omitted, the latest generation will be used
+func (o TriggerBuildSourceStorageSourceOutput) Generation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerBuildSourceStorageSource) *string { return v.Generation }).(pulumi.StringPtrOutput)
+}
+
+// Google Cloud Storage object containing the source.
+// This object must be a gzipped archive file (.tar.gz) containing source to build.
+func (o TriggerBuildSourceStorageSourceOutput) Object() pulumi.StringOutput {
+	return o.ApplyT(func(v TriggerBuildSourceStorageSource) string { return v.Object }).(pulumi.StringOutput)
+}
+
+type TriggerBuildSourceStorageSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (TriggerBuildSourceStorageSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerBuildSourceStorageSource)(nil)).Elem()
+}
+
+func (o TriggerBuildSourceStorageSourcePtrOutput) ToTriggerBuildSourceStorageSourcePtrOutput() TriggerBuildSourceStorageSourcePtrOutput {
+	return o
+}
+
+func (o TriggerBuildSourceStorageSourcePtrOutput) ToTriggerBuildSourceStorageSourcePtrOutputWithContext(ctx context.Context) TriggerBuildSourceStorageSourcePtrOutput {
+	return o
+}
+
+func (o TriggerBuildSourceStorageSourcePtrOutput) Elem() TriggerBuildSourceStorageSourceOutput {
+	return o.ApplyT(func(v *TriggerBuildSourceStorageSource) TriggerBuildSourceStorageSource { return *v }).(TriggerBuildSourceStorageSourceOutput)
+}
+
+// Google Cloud Storage bucket containing the source.
+func (o TriggerBuildSourceStorageSourcePtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerBuildSourceStorageSource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// Google Cloud Storage generation for the object.
+// If the generation is omitted, the latest generation will be used
+func (o TriggerBuildSourceStorageSourcePtrOutput) Generation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerBuildSourceStorageSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Generation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Google Cloud Storage object containing the source.
+// This object must be a gzipped archive file (.tar.gz) containing source to build.
+func (o TriggerBuildSourceStorageSourcePtrOutput) Object() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerBuildSourceStorageSource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Object
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -856,7 +1745,7 @@ type TriggerGithubPullRequest struct {
 	// Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
 	// Possible values are `COMMENTS_DISABLED` and `COMMENTS_ENABLED`.
 	CommentControl *string `pulumi:"commentControl"`
-	// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+	// Only trigger a build if the revision regex does NOT match the revision regex.
 	InvertRegex *bool `pulumi:"invertRegex"`
 }
 
@@ -877,7 +1766,7 @@ type TriggerGithubPullRequestArgs struct {
 	// Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
 	// Possible values are `COMMENTS_DISABLED` and `COMMENTS_ENABLED`.
 	CommentControl pulumi.StringPtrInput `pulumi:"commentControl"`
-	// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+	// Only trigger a build if the revision regex does NOT match the revision regex.
 	InvertRegex pulumi.BoolPtrInput `pulumi:"invertRegex"`
 }
 
@@ -969,7 +1858,7 @@ func (o TriggerGithubPullRequestOutput) CommentControl() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v TriggerGithubPullRequest) *string { return v.CommentControl }).(pulumi.StringPtrOutput)
 }
 
-// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+// Only trigger a build if the revision regex does NOT match the revision regex.
 func (o TriggerGithubPullRequestOutput) InvertRegex() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TriggerGithubPullRequest) *bool { return v.InvertRegex }).(pulumi.BoolPtrOutput)
 }
@@ -1013,7 +1902,7 @@ func (o TriggerGithubPullRequestPtrOutput) CommentControl() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+// Only trigger a build if the revision regex does NOT match the revision regex.
 func (o TriggerGithubPullRequestPtrOutput) InvertRegex() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TriggerGithubPullRequest) *bool {
 		if v == nil {
@@ -1026,7 +1915,7 @@ func (o TriggerGithubPullRequestPtrOutput) InvertRegex() pulumi.BoolPtrOutput {
 type TriggerGithubPush struct {
 	// Regex of branches to match.  Specify only one of branch or tag.
 	Branch *string `pulumi:"branch"`
-	// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+	// Only trigger a build if the revision regex does NOT match the revision regex.
 	InvertRegex *bool `pulumi:"invertRegex"`
 	// Regex of tags to match.  Specify only one of branch or tag.
 	Tag *string `pulumi:"tag"`
@@ -1046,7 +1935,7 @@ type TriggerGithubPushInput interface {
 type TriggerGithubPushArgs struct {
 	// Regex of branches to match.  Specify only one of branch or tag.
 	Branch pulumi.StringPtrInput `pulumi:"branch"`
-	// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+	// Only trigger a build if the revision regex does NOT match the revision regex.
 	InvertRegex pulumi.BoolPtrInput `pulumi:"invertRegex"`
 	// Regex of tags to match.  Specify only one of branch or tag.
 	Tag pulumi.StringPtrInput `pulumi:"tag"`
@@ -1134,7 +2023,7 @@ func (o TriggerGithubPushOutput) Branch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerGithubPush) *string { return v.Branch }).(pulumi.StringPtrOutput)
 }
 
-// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+// Only trigger a build if the revision regex does NOT match the revision regex.
 func (o TriggerGithubPushOutput) InvertRegex() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TriggerGithubPush) *bool { return v.InvertRegex }).(pulumi.BoolPtrOutput)
 }
@@ -1172,7 +2061,7 @@ func (o TriggerGithubPushPtrOutput) Branch() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+// Only trigger a build if the revision regex does NOT match the revision regex.
 func (o TriggerGithubPushPtrOutput) InvertRegex() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TriggerGithubPush) *bool {
 		if v == nil {
@@ -1193,10 +2082,11 @@ func (o TriggerGithubPushPtrOutput) Tag() pulumi.StringPtrOutput {
 }
 
 type TriggerTriggerTemplate struct {
-	// Name of the branch to build. Exactly one a of branch name, tag, or commit SHA must be provided.
-	// This field is a regular expression.
+	// Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+	// The syntax of the regular expressions accepted is the syntax accepted by RE2 and
+	// described at https://github.com/google/re2/wiki/Syntax
 	BranchName *string `pulumi:"branchName"`
-	// Explicit commit SHA to build. Exactly one of a branch name, tag, or commit SHA must be provided.
+	// Explicit commit SHA to build. Exactly one a of branch name, tag, or commit SHA must be provided.
 	CommitSha *string `pulumi:"commitSha"`
 	// Working directory to use when running this step's container.
 	// If this value is a relative path, it is relative to the build's working
@@ -1208,15 +2098,16 @@ type TriggerTriggerTemplate struct {
 	// which specifies an absolute path, the `RepoSource` `dir` is ignored
 	// for the step's execution.
 	Dir *string `pulumi:"dir"`
-	// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+	// Only trigger a build if the revision regex does NOT match the revision regex.
 	InvertRegex *bool `pulumi:"invertRegex"`
-	// ID of the project that owns the Cloud Source Repository. If
-	// omitted, the project ID requesting the build is assumed.
+	// ID of the project that owns the Cloud Source Repository.
+	// If omitted, the project ID requesting the build is assumed.
 	ProjectId *string `pulumi:"projectId"`
-	// Name of the Cloud Source Repository. If omitted, the name "default" is assumed.
+	// Name of the Cloud Source Repository.
 	RepoName *string `pulumi:"repoName"`
-	// Name of the tag to build. Exactly one of a branch name, tag, or commit SHA must be provided.
-	// This field is a regular expression.
+	// Regex matching tags to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+	// The syntax of the regular expressions accepted is the syntax accepted by RE2 and
+	// described at https://github.com/google/re2/wiki/Syntax
 	TagName *string `pulumi:"tagName"`
 }
 
@@ -1232,10 +2123,11 @@ type TriggerTriggerTemplateInput interface {
 }
 
 type TriggerTriggerTemplateArgs struct {
-	// Name of the branch to build. Exactly one a of branch name, tag, or commit SHA must be provided.
-	// This field is a regular expression.
+	// Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+	// The syntax of the regular expressions accepted is the syntax accepted by RE2 and
+	// described at https://github.com/google/re2/wiki/Syntax
 	BranchName pulumi.StringPtrInput `pulumi:"branchName"`
-	// Explicit commit SHA to build. Exactly one of a branch name, tag, or commit SHA must be provided.
+	// Explicit commit SHA to build. Exactly one a of branch name, tag, or commit SHA must be provided.
 	CommitSha pulumi.StringPtrInput `pulumi:"commitSha"`
 	// Working directory to use when running this step's container.
 	// If this value is a relative path, it is relative to the build's working
@@ -1247,15 +2139,16 @@ type TriggerTriggerTemplateArgs struct {
 	// which specifies an absolute path, the `RepoSource` `dir` is ignored
 	// for the step's execution.
 	Dir pulumi.StringPtrInput `pulumi:"dir"`
-	// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+	// Only trigger a build if the revision regex does NOT match the revision regex.
 	InvertRegex pulumi.BoolPtrInput `pulumi:"invertRegex"`
-	// ID of the project that owns the Cloud Source Repository. If
-	// omitted, the project ID requesting the build is assumed.
+	// ID of the project that owns the Cloud Source Repository.
+	// If omitted, the project ID requesting the build is assumed.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
-	// Name of the Cloud Source Repository. If omitted, the name "default" is assumed.
+	// Name of the Cloud Source Repository.
 	RepoName pulumi.StringPtrInput `pulumi:"repoName"`
-	// Name of the tag to build. Exactly one of a branch name, tag, or commit SHA must be provided.
-	// This field is a regular expression.
+	// Regex matching tags to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+	// The syntax of the regular expressions accepted is the syntax accepted by RE2 and
+	// described at https://github.com/google/re2/wiki/Syntax
 	TagName pulumi.StringPtrInput `pulumi:"tagName"`
 }
 
@@ -1336,13 +2229,14 @@ func (o TriggerTriggerTemplateOutput) ToTriggerTriggerTemplatePtrOutputWithConte
 	}).(TriggerTriggerTemplatePtrOutput)
 }
 
-// Name of the branch to build. Exactly one a of branch name, tag, or commit SHA must be provided.
-// This field is a regular expression.
+// Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+// The syntax of the regular expressions accepted is the syntax accepted by RE2 and
+// described at https://github.com/google/re2/wiki/Syntax
 func (o TriggerTriggerTemplateOutput) BranchName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerTriggerTemplate) *string { return v.BranchName }).(pulumi.StringPtrOutput)
 }
 
-// Explicit commit SHA to build. Exactly one of a branch name, tag, or commit SHA must be provided.
+// Explicit commit SHA to build. Exactly one a of branch name, tag, or commit SHA must be provided.
 func (o TriggerTriggerTemplateOutput) CommitSha() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerTriggerTemplate) *string { return v.CommitSha }).(pulumi.StringPtrOutput)
 }
@@ -1360,24 +2254,25 @@ func (o TriggerTriggerTemplateOutput) Dir() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerTriggerTemplate) *string { return v.Dir }).(pulumi.StringPtrOutput)
 }
 
-// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+// Only trigger a build if the revision regex does NOT match the revision regex.
 func (o TriggerTriggerTemplateOutput) InvertRegex() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TriggerTriggerTemplate) *bool { return v.InvertRegex }).(pulumi.BoolPtrOutput)
 }
 
-// ID of the project that owns the Cloud Source Repository. If
-// omitted, the project ID requesting the build is assumed.
+// ID of the project that owns the Cloud Source Repository.
+// If omitted, the project ID requesting the build is assumed.
 func (o TriggerTriggerTemplateOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerTriggerTemplate) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Name of the Cloud Source Repository. If omitted, the name "default" is assumed.
+// Name of the Cloud Source Repository.
 func (o TriggerTriggerTemplateOutput) RepoName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerTriggerTemplate) *string { return v.RepoName }).(pulumi.StringPtrOutput)
 }
 
-// Name of the tag to build. Exactly one of a branch name, tag, or commit SHA must be provided.
-// This field is a regular expression.
+// Regex matching tags to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+// The syntax of the regular expressions accepted is the syntax accepted by RE2 and
+// described at https://github.com/google/re2/wiki/Syntax
 func (o TriggerTriggerTemplateOutput) TagName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerTriggerTemplate) *string { return v.TagName }).(pulumi.StringPtrOutput)
 }
@@ -1400,8 +2295,9 @@ func (o TriggerTriggerTemplatePtrOutput) Elem() TriggerTriggerTemplateOutput {
 	return o.ApplyT(func(v *TriggerTriggerTemplate) TriggerTriggerTemplate { return *v }).(TriggerTriggerTemplateOutput)
 }
 
-// Name of the branch to build. Exactly one a of branch name, tag, or commit SHA must be provided.
-// This field is a regular expression.
+// Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+// The syntax of the regular expressions accepted is the syntax accepted by RE2 and
+// described at https://github.com/google/re2/wiki/Syntax
 func (o TriggerTriggerTemplatePtrOutput) BranchName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerTriggerTemplate) *string {
 		if v == nil {
@@ -1411,7 +2307,7 @@ func (o TriggerTriggerTemplatePtrOutput) BranchName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Explicit commit SHA to build. Exactly one of a branch name, tag, or commit SHA must be provided.
+// Explicit commit SHA to build. Exactly one a of branch name, tag, or commit SHA must be provided.
 func (o TriggerTriggerTemplatePtrOutput) CommitSha() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerTriggerTemplate) *string {
 		if v == nil {
@@ -1439,7 +2335,7 @@ func (o TriggerTriggerTemplatePtrOutput) Dir() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+// Only trigger a build if the revision regex does NOT match the revision regex.
 func (o TriggerTriggerTemplatePtrOutput) InvertRegex() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TriggerTriggerTemplate) *bool {
 		if v == nil {
@@ -1449,8 +2345,8 @@ func (o TriggerTriggerTemplatePtrOutput) InvertRegex() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// ID of the project that owns the Cloud Source Repository. If
-// omitted, the project ID requesting the build is assumed.
+// ID of the project that owns the Cloud Source Repository.
+// If omitted, the project ID requesting the build is assumed.
 func (o TriggerTriggerTemplatePtrOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerTriggerTemplate) *string {
 		if v == nil {
@@ -1460,7 +2356,7 @@ func (o TriggerTriggerTemplatePtrOutput) ProjectId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Name of the Cloud Source Repository. If omitted, the name "default" is assumed.
+// Name of the Cloud Source Repository.
 func (o TriggerTriggerTemplatePtrOutput) RepoName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerTriggerTemplate) *string {
 		if v == nil {
@@ -1470,8 +2366,9 @@ func (o TriggerTriggerTemplatePtrOutput) RepoName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Name of the tag to build. Exactly one of a branch name, tag, or commit SHA must be provided.
-// This field is a regular expression.
+// Regex matching tags to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+// The syntax of the regular expressions accepted is the syntax accepted by RE2 and
+// described at https://github.com/google/re2/wiki/Syntax
 func (o TriggerTriggerTemplatePtrOutput) TagName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerTriggerTemplate) *string {
 		if v == nil {
@@ -1484,6 +2381,14 @@ func (o TriggerTriggerTemplatePtrOutput) TagName() pulumi.StringPtrOutput {
 func init() {
 	pulumi.RegisterOutputType(TriggerBuildOutput{})
 	pulumi.RegisterOutputType(TriggerBuildPtrOutput{})
+	pulumi.RegisterOutputType(TriggerBuildSecretOutput{})
+	pulumi.RegisterOutputType(TriggerBuildSecretArrayOutput{})
+	pulumi.RegisterOutputType(TriggerBuildSourceOutput{})
+	pulumi.RegisterOutputType(TriggerBuildSourcePtrOutput{})
+	pulumi.RegisterOutputType(TriggerBuildSourceRepoSourceOutput{})
+	pulumi.RegisterOutputType(TriggerBuildSourceRepoSourcePtrOutput{})
+	pulumi.RegisterOutputType(TriggerBuildSourceStorageSourceOutput{})
+	pulumi.RegisterOutputType(TriggerBuildSourceStorageSourcePtrOutput{})
 	pulumi.RegisterOutputType(TriggerBuildStepOutput{})
 	pulumi.RegisterOutputType(TriggerBuildStepArrayOutput{})
 	pulumi.RegisterOutputType(TriggerBuildStepVolumeOutput{})

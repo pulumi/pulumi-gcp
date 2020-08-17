@@ -27,6 +27,43 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
             set => _images = value;
         }
 
+        /// <summary>
+        /// Google Cloud Storage bucket where logs should be written.
+        /// Logs file names will be of the format ${logsBucket}/log-${build_id}.txt.
+        /// </summary>
+        [Input("logsBucket")]
+        public Input<string>? LogsBucket { get; set; }
+
+        /// <summary>
+        /// TTL in queue for this build. If provided and the build is enqueued longer than this value,
+        /// the build will expire and the build status will be EXPIRED.
+        /// The TTL starts ticking from createTime.
+        /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        /// </summary>
+        [Input("queueTtl")]
+        public Input<string>? QueueTtl { get; set; }
+
+        [Input("secrets")]
+        private InputList<Inputs.TriggerBuildSecretArgs>? _secrets;
+
+        /// <summary>
+        /// Secrets to decrypt using Cloud Key Management Service.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.TriggerBuildSecretArgs> Secrets
+        {
+            get => _secrets ?? (_secrets = new InputList<Inputs.TriggerBuildSecretArgs>());
+            set => _secrets = value;
+        }
+
+        /// <summary>
+        /// The location of the source files to build.
+        /// One of `storageSource` or `repoSource` must be provided.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("source")]
+        public Input<Inputs.TriggerBuildSourceArgs>? Source { get; set; }
+
         [Input("steps", required: true)]
         private InputList<Inputs.TriggerBuildStepArgs>? _steps;
 
@@ -38,6 +75,18 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         {
             get => _steps ?? (_steps = new InputList<Inputs.TriggerBuildStepArgs>());
             set => _steps = value;
+        }
+
+        [Input("substitutions")]
+        private InputMap<string>? _substitutions;
+
+        /// <summary>
+        /// Substitutions to use in a triggered build. Should only be used with triggers.run
+        /// </summary>
+        public InputMap<string> Substitutions
+        {
+            get => _substitutions ?? (_substitutions = new InputMap<string>());
+            set => _substitutions = value;
         }
 
         [Input("tags")]

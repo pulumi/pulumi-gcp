@@ -62,6 +62,10 @@ export class Key extends pulumi.CustomResource {
      */
     public /*out*/ readonly publicKey!: pulumi.Output<string>;
     /**
+     * Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with `publicKeyType` and `privateKeyType`.
+     */
+    public readonly publicKeyData!: pulumi.Output<string | undefined>;
+    /**
      * The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
      */
     public readonly publicKeyType!: pulumi.Output<string | undefined>;
@@ -98,6 +102,7 @@ export class Key extends pulumi.CustomResource {
             inputs["privateKey"] = state ? state.privateKey : undefined;
             inputs["privateKeyType"] = state ? state.privateKeyType : undefined;
             inputs["publicKey"] = state ? state.publicKey : undefined;
+            inputs["publicKeyData"] = state ? state.publicKeyData : undefined;
             inputs["publicKeyType"] = state ? state.publicKeyType : undefined;
             inputs["serviceAccountId"] = state ? state.serviceAccountId : undefined;
             inputs["validAfter"] = state ? state.validAfter : undefined;
@@ -109,6 +114,7 @@ export class Key extends pulumi.CustomResource {
             }
             inputs["keyAlgorithm"] = args ? args.keyAlgorithm : undefined;
             inputs["privateKeyType"] = args ? args.privateKeyType : undefined;
+            inputs["publicKeyData"] = args ? args.publicKeyData : undefined;
             inputs["publicKeyType"] = args ? args.publicKeyType : undefined;
             inputs["serviceAccountId"] = args ? args.serviceAccountId : undefined;
             inputs["name"] = undefined /*out*/;
@@ -157,6 +163,10 @@ export interface KeyState {
      */
     readonly publicKey?: pulumi.Input<string>;
     /**
+     * Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with `publicKeyType` and `privateKeyType`.
+     */
+    readonly publicKeyData?: pulumi.Input<string>;
+    /**
      * The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
      */
     readonly publicKeyType?: pulumi.Input<string>;
@@ -192,6 +202,10 @@ export interface KeyArgs {
      * The output format of the private key. TYPE_GOOGLE_CREDENTIALS_FILE is the default output format.
      */
     readonly privateKeyType?: pulumi.Input<string>;
+    /**
+     * Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with `publicKeyType` and `privateKeyType`.
+     */
+    readonly publicKeyData?: pulumi.Input<string>;
     /**
      * The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
      */
