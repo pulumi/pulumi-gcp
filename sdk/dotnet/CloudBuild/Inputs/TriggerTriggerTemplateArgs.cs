@@ -13,14 +13,15 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
     public sealed class TriggerTriggerTemplateArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the branch to build. Exactly one a of branch name, tag, or commit SHA must be provided.
-        /// This field is a regular expression.
+        /// Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+        /// The syntax of the regular expressions accepted is the syntax accepted by RE2 and
+        /// described at https://github.com/google/re2/wiki/Syntax
         /// </summary>
         [Input("branchName")]
         public Input<string>? BranchName { get; set; }
 
         /// <summary>
-        /// Explicit commit SHA to build. Exactly one of a branch name, tag, or commit SHA must be provided.
+        /// Explicit commit SHA to build. Exactly one a of branch name, tag, or commit SHA must be provided.
         /// </summary>
         [Input("commitSha")]
         public Input<string>? CommitSha { get; set; }
@@ -40,27 +41,28 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         public Input<string>? Dir { get; set; }
 
         /// <summary>
-        /// When true, only trigger a build if the revision regex does NOT match the git_ref regex.
+        /// Only trigger a build if the revision regex does NOT match the revision regex.
         /// </summary>
         [Input("invertRegex")]
         public Input<bool>? InvertRegex { get; set; }
 
         /// <summary>
-        /// ID of the project that owns the Cloud Source Repository. If
-        /// omitted, the project ID requesting the build is assumed.
+        /// ID of the project that owns the Cloud Source Repository.
+        /// If omitted, the project ID requesting the build is assumed.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// Name of the Cloud Source Repository. If omitted, the name "default" is assumed.
+        /// Name of the Cloud Source Repository.
         /// </summary>
         [Input("repoName")]
         public Input<string>? RepoName { get; set; }
 
         /// <summary>
-        /// Name of the tag to build. Exactly one of a branch name, tag, or commit SHA must be provided.
-        /// This field is a regular expression.
+        /// Regex matching tags to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+        /// The syntax of the regular expressions accepted is the syntax accepted by RE2 and
+        /// described at https://github.com/google/re2/wiki/Syntax
         /// </summary>
         [Input("tagName")]
         public Input<string>? TagName { get; set; }

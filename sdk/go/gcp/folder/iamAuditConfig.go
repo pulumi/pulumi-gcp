@@ -13,13 +13,12 @@ import (
 type IamAuditConfig struct {
 	pulumi.CustomResourceState
 
-	// The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
+	// The configuration for logging of each type of permission. This can be specified multiple times.
 	AuditLogConfigs IamAuditConfigAuditLogConfigArrayOutput `pulumi:"auditLogConfigs"`
 	// The etag of iam policy
-	Etag pulumi.StringOutput `pulumi:"etag"`
-	// The resource name of the folder in which you want to manage the audit logging config. Its format is folders/{folder_id}.
+	Etag   pulumi.StringOutput `pulumi:"etag"`
 	Folder pulumi.StringOutput `pulumi:"folder"`
-	// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_folder\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
+	// Service which will be enabled for audit logging. The special value allServices covers all services.
 	Service pulumi.StringOutput `pulumi:"service"`
 }
 
@@ -60,24 +59,22 @@ func GetIamAuditConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering IamAuditConfig resources.
 type iamAuditConfigState struct {
-	// The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
+	// The configuration for logging of each type of permission. This can be specified multiple times.
 	AuditLogConfigs []IamAuditConfigAuditLogConfig `pulumi:"auditLogConfigs"`
 	// The etag of iam policy
-	Etag *string `pulumi:"etag"`
-	// The resource name of the folder in which you want to manage the audit logging config. Its format is folders/{folder_id}.
+	Etag   *string `pulumi:"etag"`
 	Folder *string `pulumi:"folder"`
-	// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_folder\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
+	// Service which will be enabled for audit logging. The special value allServices covers all services.
 	Service *string `pulumi:"service"`
 }
 
 type IamAuditConfigState struct {
-	// The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
+	// The configuration for logging of each type of permission. This can be specified multiple times.
 	AuditLogConfigs IamAuditConfigAuditLogConfigArrayInput
 	// The etag of iam policy
-	Etag pulumi.StringPtrInput
-	// The resource name of the folder in which you want to manage the audit logging config. Its format is folders/{folder_id}.
+	Etag   pulumi.StringPtrInput
 	Folder pulumi.StringPtrInput
-	// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_folder\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
+	// Service which will be enabled for audit logging. The special value allServices covers all services.
 	Service pulumi.StringPtrInput
 }
 
@@ -86,21 +83,19 @@ func (IamAuditConfigState) ElementType() reflect.Type {
 }
 
 type iamAuditConfigArgs struct {
-	// The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
+	// The configuration for logging of each type of permission. This can be specified multiple times.
 	AuditLogConfigs []IamAuditConfigAuditLogConfig `pulumi:"auditLogConfigs"`
-	// The resource name of the folder in which you want to manage the audit logging config. Its format is folders/{folder_id}.
-	Folder string `pulumi:"folder"`
-	// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_folder\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
+	Folder          string                         `pulumi:"folder"`
+	// Service which will be enabled for audit logging. The special value allServices covers all services.
 	Service string `pulumi:"service"`
 }
 
 // The set of arguments for constructing a IamAuditConfig resource.
 type IamAuditConfigArgs struct {
-	// The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
+	// The configuration for logging of each type of permission. This can be specified multiple times.
 	AuditLogConfigs IamAuditConfigAuditLogConfigArrayInput
-	// The resource name of the folder in which you want to manage the audit logging config. Its format is folders/{folder_id}.
-	Folder pulumi.StringInput
-	// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_folder\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
+	Folder          pulumi.StringInput
+	// Service which will be enabled for audit logging. The special value allServices covers all services.
 	Service pulumi.StringInput
 }
 

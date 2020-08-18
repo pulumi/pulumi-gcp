@@ -47,6 +47,13 @@ namespace Pulumi.Gcp.Compute
         public Output<bool> CanIpForward { get; private set; } = null!;
 
         /// <summary>
+        /// The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
+        /// to create.
+        /// </summary>
+        [Output("confidentialInstanceConfig")]
+        public Output<Outputs.InstanceFromTemplateConfidentialInstanceConfig> ConfidentialInstanceConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The CPU platform used by this instance.
         /// </summary>
         [Output("cpuPlatform")]
@@ -305,6 +312,13 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? CanIpForward { get; set; }
 
         /// <summary>
+        /// The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
+        /// to create.
+        /// </summary>
+        [Input("confidentialInstanceConfig")]
+        public Input<Inputs.InstanceFromTemplateConfidentialInstanceConfigArgs>? ConfidentialInstanceConfig { get; set; }
+
+        /// <summary>
         /// Whether deletion protection is enabled on this instance.
         /// </summary>
         [Input("deletionProtection")]
@@ -516,6 +530,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("canIpForward")]
         public Input<bool>? CanIpForward { get; set; }
+
+        /// <summary>
+        /// The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
+        /// to create.
+        /// </summary>
+        [Input("confidentialInstanceConfig")]
+        public Input<Inputs.InstanceFromTemplateConfidentialInstanceConfigGetArgs>? ConfidentialInstanceConfig { get; set; }
 
         /// <summary>
         /// The CPU platform used by this instance.

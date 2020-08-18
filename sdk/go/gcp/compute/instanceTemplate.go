@@ -20,6 +20,9 @@ type InstanceTemplate struct {
 	// Whether to allow sending and receiving of
 	// packets with non-matching source or destination IPs. This defaults to false.
 	CanIpForward pulumi.BoolPtrOutput `pulumi:"canIpForward"`
+	// The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
+	// to create.
+	ConfidentialInstanceConfig InstanceTemplateConfidentialInstanceConfigOutput `pulumi:"confidentialInstanceConfig"`
 	// A brief description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Disks to attach to instances created from this template.
@@ -125,6 +128,9 @@ type instanceTemplateState struct {
 	// Whether to allow sending and receiving of
 	// packets with non-matching source or destination IPs. This defaults to false.
 	CanIpForward *bool `pulumi:"canIpForward"`
+	// The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
+	// to create.
+	ConfidentialInstanceConfig *InstanceTemplateConfidentialInstanceConfig `pulumi:"confidentialInstanceConfig"`
 	// A brief description of this resource.
 	Description *string `pulumi:"description"`
 	// Disks to attach to instances created from this template.
@@ -197,6 +203,9 @@ type InstanceTemplateState struct {
 	// Whether to allow sending and receiving of
 	// packets with non-matching source or destination IPs. This defaults to false.
 	CanIpForward pulumi.BoolPtrInput
+	// The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
+	// to create.
+	ConfidentialInstanceConfig InstanceTemplateConfidentialInstanceConfigPtrInput
 	// A brief description of this resource.
 	Description pulumi.StringPtrInput
 	// Disks to attach to instances created from this template.
@@ -273,6 +282,9 @@ type instanceTemplateArgs struct {
 	// Whether to allow sending and receiving of
 	// packets with non-matching source or destination IPs. This defaults to false.
 	CanIpForward *bool `pulumi:"canIpForward"`
+	// The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
+	// to create.
+	ConfidentialInstanceConfig *InstanceTemplateConfidentialInstanceConfig `pulumi:"confidentialInstanceConfig"`
 	// A brief description of this resource.
 	Description *string `pulumi:"description"`
 	// Disks to attach to instances created from this template.
@@ -340,6 +352,9 @@ type InstanceTemplateArgs struct {
 	// Whether to allow sending and receiving of
 	// packets with non-matching source or destination IPs. This defaults to false.
 	CanIpForward pulumi.BoolPtrInput
+	// The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
+	// to create.
+	ConfidentialInstanceConfig InstanceTemplateConfidentialInstanceConfigPtrInput
 	// A brief description of this resource.
 	Description pulumi.StringPtrInput
 	// Disks to attach to instances created from this template.

@@ -103,10 +103,16 @@ namespace Pulumi.Gcp.CloudBuild
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Substitutions data for Build resource.
+        /// Substitutions to use in a triggered build. Should only be used with triggers.run
         /// </summary>
         [Output("substitutions")]
         public Output<ImmutableDictionary<string, string>?> Substitutions { get; private set; } = null!;
+
+        /// <summary>
+        /// Tags for annotation of a Build. These are not docker tags.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
         /// The unique identifier for the trigger.
@@ -261,12 +267,24 @@ namespace Pulumi.Gcp.CloudBuild
         private InputMap<string>? _substitutions;
 
         /// <summary>
-        /// Substitutions data for Build resource.
+        /// Substitutions to use in a triggered build. Should only be used with triggers.run
         /// </summary>
         public InputMap<string> Substitutions
         {
             get => _substitutions ?? (_substitutions = new InputMap<string>());
             set => _substitutions = value;
+        }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// Tags for annotation of a Build. These are not docker tags.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
         }
 
         /// <summary>
@@ -383,12 +401,24 @@ namespace Pulumi.Gcp.CloudBuild
         private InputMap<string>? _substitutions;
 
         /// <summary>
-        /// Substitutions data for Build resource.
+        /// Substitutions to use in a triggered build. Should only be used with triggers.run
         /// </summary>
         public InputMap<string> Substitutions
         {
             get => _substitutions ?? (_substitutions = new InputMap<string>());
             set => _substitutions = value;
+        }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// Tags for annotation of a Build. These are not docker tags.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
         }
 
         /// <summary>

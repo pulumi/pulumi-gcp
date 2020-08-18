@@ -94,6 +94,7 @@ export class SecurityScanConfig extends pulumi.CustomResource {
     public readonly startingUrls!: pulumi.Output<string[]>;
     /**
      * Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
+     * Each value may be one of `APP_ENGINE` and `COMPUTE`.
      */
     public readonly targetPlatforms!: pulumi.Output<string[] | undefined>;
     /**
@@ -207,6 +208,7 @@ export interface SecurityScanConfigState {
     readonly startingUrls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
+     * Each value may be one of `APP_ENGINE` and `COMPUTE`.
      */
     readonly targetPlatforms?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -263,6 +265,7 @@ export interface SecurityScanConfigArgs {
     readonly startingUrls: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
+     * Each value may be one of `APP_ENGINE` and `COMPUTE`.
      */
     readonly targetPlatforms?: pulumi.Input<pulumi.Input<string>[]>;
     /**

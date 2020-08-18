@@ -39,7 +39,7 @@ type Application struct {
 	// The GCR domain used for storing managed Docker images for this app.
 	GcrDomain pulumi.StringOutput `pulumi:"gcrDomain"`
 	// Settings for enabling Cloud Identity Aware Proxy
-	Iap ApplicationIapPtrOutput `pulumi:"iap"`
+	Iap ApplicationIapOutput `pulumi:"iap"`
 	// The [location](https://cloud.google.com/appengine/docs/locations)
 	// to serve the app from.
 	LocationId pulumi.StringOutput `pulumi:"locationId"`

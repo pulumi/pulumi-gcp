@@ -100,7 +100,8 @@ export class FlexibleAppVersion extends pulumi.CustomResource {
      */
     public readonly handlers!: pulumi.Output<outputs.appengine.FlexibleAppVersionHandler[]>;
     /**
-     * Before an application can receive email or XMPP messages, the application must be configured to enable the service.
+     * A list of the types of messages that this application is able to receive.
+     * Each value may be one of `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, and `INBOUND_SERVICE_WARMUP`.
      */
     public readonly inboundServices!: pulumi.Output<string[] | undefined>;
     /**
@@ -339,7 +340,8 @@ export interface FlexibleAppVersionState {
      */
     readonly handlers?: pulumi.Input<pulumi.Input<inputs.appengine.FlexibleAppVersionHandler>[]>;
     /**
-     * Before an application can receive email or XMPP messages, the application must be configured to enable the service.
+     * A list of the types of messages that this application is able to receive.
+     * Each value may be one of `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, and `INBOUND_SERVICE_WARMUP`.
      */
     readonly inboundServices?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -483,7 +485,8 @@ export interface FlexibleAppVersionArgs {
      */
     readonly handlers?: pulumi.Input<pulumi.Input<inputs.appengine.FlexibleAppVersionHandler>[]>;
     /**
-     * Before an application can receive email or XMPP messages, the application must be configured to enable the service.
+     * A list of the types of messages that this application is able to receive.
+     * Each value may be one of `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, and `INBOUND_SERVICE_WARMUP`.
      */
     readonly inboundServices?: pulumi.Input<pulumi.Input<string>[]>;
     /**

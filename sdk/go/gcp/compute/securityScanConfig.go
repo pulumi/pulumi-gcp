@@ -52,6 +52,7 @@ type SecurityScanConfig struct {
 	// The starting URLs from which the scanner finds site pages.
 	StartingUrls pulumi.StringArrayOutput `pulumi:"startingUrls"`
 	// Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
+	// Each value may be one of `APP_ENGINE` and `COMPUTE`.
 	TargetPlatforms pulumi.StringArrayOutput `pulumi:"targetPlatforms"`
 	// Type of the user agents used for scanning
 	// Default value is `CHROME_LINUX`.
@@ -120,6 +121,7 @@ type securityScanConfigState struct {
 	// The starting URLs from which the scanner finds site pages.
 	StartingUrls []string `pulumi:"startingUrls"`
 	// Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
+	// Each value may be one of `APP_ENGINE` and `COMPUTE`.
 	TargetPlatforms []string `pulumi:"targetPlatforms"`
 	// Type of the user agents used for scanning
 	// Default value is `CHROME_LINUX`.
@@ -155,6 +157,7 @@ type SecurityScanConfigState struct {
 	// The starting URLs from which the scanner finds site pages.
 	StartingUrls pulumi.StringArrayInput
 	// Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
+	// Each value may be one of `APP_ENGINE` and `COMPUTE`.
 	TargetPlatforms pulumi.StringArrayInput
 	// Type of the user agents used for scanning
 	// Default value is `CHROME_LINUX`.
@@ -192,6 +195,7 @@ type securityScanConfigArgs struct {
 	// The starting URLs from which the scanner finds site pages.
 	StartingUrls []string `pulumi:"startingUrls"`
 	// Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
+	// Each value may be one of `APP_ENGINE` and `COMPUTE`.
 	TargetPlatforms []string `pulumi:"targetPlatforms"`
 	// Type of the user agents used for scanning
 	// Default value is `CHROME_LINUX`.
@@ -226,6 +230,7 @@ type SecurityScanConfigArgs struct {
 	// The starting URLs from which the scanner finds site pages.
 	StartingUrls pulumi.StringArrayInput
 	// Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
+	// Each value may be one of `APP_ENGINE` and `COMPUTE`.
 	TargetPlatforms pulumi.StringArrayInput
 	// Type of the user agents used for scanning
 	// Default value is `CHROME_LINUX`.

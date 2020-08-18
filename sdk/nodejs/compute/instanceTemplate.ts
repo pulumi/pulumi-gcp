@@ -46,6 +46,11 @@ export class InstanceTemplate extends pulumi.CustomResource {
      */
     public readonly canIpForward!: pulumi.Output<boolean | undefined>;
     /**
+     * The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
+     * to create.
+     */
+    public readonly confidentialInstanceConfig!: pulumi.Output<outputs.compute.InstanceTemplateConfidentialInstanceConfig>;
+    /**
      * A brief description of this resource.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -169,6 +174,7 @@ export class InstanceTemplate extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as InstanceTemplateState | undefined;
             inputs["canIpForward"] = state ? state.canIpForward : undefined;
+            inputs["confidentialInstanceConfig"] = state ? state.confidentialInstanceConfig : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["disks"] = state ? state.disks : undefined;
             inputs["enableDisplay"] = state ? state.enableDisplay : undefined;
@@ -200,6 +206,7 @@ export class InstanceTemplate extends pulumi.CustomResource {
                 throw new Error("Missing required property 'machineType'");
             }
             inputs["canIpForward"] = args ? args.canIpForward : undefined;
+            inputs["confidentialInstanceConfig"] = args ? args.confidentialInstanceConfig : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["disks"] = args ? args.disks : undefined;
             inputs["enableDisplay"] = args ? args.enableDisplay : undefined;
@@ -243,6 +250,11 @@ export interface InstanceTemplateState {
      * packets with non-matching source or destination IPs. This defaults to false.
      */
     readonly canIpForward?: pulumi.Input<boolean>;
+    /**
+     * The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
+     * to create.
+     */
+    readonly confidentialInstanceConfig?: pulumi.Input<inputs.compute.InstanceTemplateConfidentialInstanceConfig>;
     /**
      * A brief description of this resource.
      */
@@ -364,6 +376,11 @@ export interface InstanceTemplateArgs {
      * packets with non-matching source or destination IPs. This defaults to false.
      */
     readonly canIpForward?: pulumi.Input<boolean>;
+    /**
+     * The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
+     * to create.
+     */
+    readonly confidentialInstanceConfig?: pulumi.Input<inputs.compute.InstanceTemplateConfidentialInstanceConfig>;
     /**
      * A brief description of this resource.
      */

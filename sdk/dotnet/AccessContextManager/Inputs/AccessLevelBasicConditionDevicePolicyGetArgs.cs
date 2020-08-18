@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
         /// <summary>
         /// A list of allowed device management levels.
         /// An empty list allows all management levels.
+        /// Each value may be one of `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, and `COMPLETE`.
         /// </summary>
         public InputList<string> AllowedDeviceManagementLevels
         {
@@ -31,6 +32,7 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
         /// <summary>
         /// A list of allowed encryptions statuses.
         /// An empty list allows all statuses.
+        /// Each value may be one of `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, and `ENCRYPTED`.
         /// </summary>
         public InputList<string> AllowedEncryptionStatuses
         {

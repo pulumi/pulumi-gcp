@@ -22,6 +22,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly bool Enabled;
         public readonly string Location;
+        public readonly bool PointInTimeRecoveryEnabled;
         /// <summary>
         /// `HH:MM` format time indicating when backup configuration starts.
         /// </summary>
@@ -35,11 +36,14 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             string location,
 
+            bool pointInTimeRecoveryEnabled,
+
             string startTime)
         {
             BinaryLogEnabled = binaryLogEnabled;
             Enabled = enabled;
             Location = location;
+            PointInTimeRecoveryEnabled = pointInTimeRecoveryEnabled;
             StartTime = startTime;
         }
     }

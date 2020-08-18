@@ -30,6 +30,7 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// Protocols that apply as a filter on mirrored traffic.
+        /// Each value may be one of `tcp`, `udp`, and `icmp`.
         /// </summary>
         public InputList<string> IpProtocols
         {

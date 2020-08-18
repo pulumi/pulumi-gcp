@@ -10,6 +10,124 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+type InstanceMemcacheNode struct {
+	Host   *string `pulumi:"host"`
+	NodeId *string `pulumi:"nodeId"`
+	Port   *int    `pulumi:"port"`
+	State  *string `pulumi:"state"`
+	Zone   *string `pulumi:"zone"`
+}
+
+// InstanceMemcacheNodeInput is an input type that accepts InstanceMemcacheNodeArgs and InstanceMemcacheNodeOutput values.
+// You can construct a concrete instance of `InstanceMemcacheNodeInput` via:
+//
+//          InstanceMemcacheNodeArgs{...}
+type InstanceMemcacheNodeInput interface {
+	pulumi.Input
+
+	ToInstanceMemcacheNodeOutput() InstanceMemcacheNodeOutput
+	ToInstanceMemcacheNodeOutputWithContext(context.Context) InstanceMemcacheNodeOutput
+}
+
+type InstanceMemcacheNodeArgs struct {
+	Host   pulumi.StringPtrInput `pulumi:"host"`
+	NodeId pulumi.StringPtrInput `pulumi:"nodeId"`
+	Port   pulumi.IntPtrInput    `pulumi:"port"`
+	State  pulumi.StringPtrInput `pulumi:"state"`
+	Zone   pulumi.StringPtrInput `pulumi:"zone"`
+}
+
+func (InstanceMemcacheNodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceMemcacheNode)(nil)).Elem()
+}
+
+func (i InstanceMemcacheNodeArgs) ToInstanceMemcacheNodeOutput() InstanceMemcacheNodeOutput {
+	return i.ToInstanceMemcacheNodeOutputWithContext(context.Background())
+}
+
+func (i InstanceMemcacheNodeArgs) ToInstanceMemcacheNodeOutputWithContext(ctx context.Context) InstanceMemcacheNodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMemcacheNodeOutput)
+}
+
+// InstanceMemcacheNodeArrayInput is an input type that accepts InstanceMemcacheNodeArray and InstanceMemcacheNodeArrayOutput values.
+// You can construct a concrete instance of `InstanceMemcacheNodeArrayInput` via:
+//
+//          InstanceMemcacheNodeArray{ InstanceMemcacheNodeArgs{...} }
+type InstanceMemcacheNodeArrayInput interface {
+	pulumi.Input
+
+	ToInstanceMemcacheNodeArrayOutput() InstanceMemcacheNodeArrayOutput
+	ToInstanceMemcacheNodeArrayOutputWithContext(context.Context) InstanceMemcacheNodeArrayOutput
+}
+
+type InstanceMemcacheNodeArray []InstanceMemcacheNodeInput
+
+func (InstanceMemcacheNodeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceMemcacheNode)(nil)).Elem()
+}
+
+func (i InstanceMemcacheNodeArray) ToInstanceMemcacheNodeArrayOutput() InstanceMemcacheNodeArrayOutput {
+	return i.ToInstanceMemcacheNodeArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceMemcacheNodeArray) ToInstanceMemcacheNodeArrayOutputWithContext(ctx context.Context) InstanceMemcacheNodeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMemcacheNodeArrayOutput)
+}
+
+type InstanceMemcacheNodeOutput struct{ *pulumi.OutputState }
+
+func (InstanceMemcacheNodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceMemcacheNode)(nil)).Elem()
+}
+
+func (o InstanceMemcacheNodeOutput) ToInstanceMemcacheNodeOutput() InstanceMemcacheNodeOutput {
+	return o
+}
+
+func (o InstanceMemcacheNodeOutput) ToInstanceMemcacheNodeOutputWithContext(ctx context.Context) InstanceMemcacheNodeOutput {
+	return o
+}
+
+func (o InstanceMemcacheNodeOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceMemcacheNode) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceMemcacheNodeOutput) NodeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceMemcacheNode) *string { return v.NodeId }).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceMemcacheNodeOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceMemcacheNode) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+func (o InstanceMemcacheNodeOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceMemcacheNode) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceMemcacheNodeOutput) Zone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceMemcacheNode) *string { return v.Zone }).(pulumi.StringPtrOutput)
+}
+
+type InstanceMemcacheNodeArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceMemcacheNodeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceMemcacheNode)(nil)).Elem()
+}
+
+func (o InstanceMemcacheNodeArrayOutput) ToInstanceMemcacheNodeArrayOutput() InstanceMemcacheNodeArrayOutput {
+	return o
+}
+
+func (o InstanceMemcacheNodeArrayOutput) ToInstanceMemcacheNodeArrayOutputWithContext(ctx context.Context) InstanceMemcacheNodeArrayOutput {
+	return o
+}
+
+func (o InstanceMemcacheNodeArrayOutput) Index(i pulumi.IntInput) InstanceMemcacheNodeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceMemcacheNode {
+		return vs[0].([]InstanceMemcacheNode)[vs[1].(int)]
+	}).(InstanceMemcacheNodeOutput)
+}
+
 type InstanceMemcacheParameters struct {
 	// -
 	// This is a unique ID associated with this set of parameters.
@@ -315,6 +433,8 @@ func (o InstanceNodeConfigPtrOutput) MemorySizeMb() pulumi.IntPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterOutputType(InstanceMemcacheNodeOutput{})
+	pulumi.RegisterOutputType(InstanceMemcacheNodeArrayOutput{})
 	pulumi.RegisterOutputType(InstanceMemcacheParametersOutput{})
 	pulumi.RegisterOutputType(InstanceMemcacheParametersPtrOutput{})
 	pulumi.RegisterOutputType(InstanceNodeConfigOutput{})

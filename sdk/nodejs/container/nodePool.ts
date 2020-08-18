@@ -51,9 +51,8 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly cluster!: pulumi.Output<string>;
     /**
-     * The initial number of nodes for the pool. In
-     * regional or multi-zonal clusters, this is the number of nodes per zone. Changing
-     * this will force recreation of the resource.
+     * The initial number of nodes for the pool. In regional or multi-zonal clusters, this is the number of nodes per zone.
+     * Changing this will force recreation of the resource.
      */
     public readonly initialNodeCount!: pulumi.Output<number>;
     /**
@@ -198,9 +197,8 @@ export interface NodePoolState {
      */
     readonly cluster?: pulumi.Input<string>;
     /**
-     * The initial number of nodes for the pool. In
-     * regional or multi-zonal clusters, this is the number of nodes per zone. Changing
-     * this will force recreation of the resource.
+     * The initial number of nodes for the pool. In regional or multi-zonal clusters, this is the number of nodes per zone.
+     * Changing this will force recreation of the resource.
      */
     readonly initialNodeCount?: pulumi.Input<number>;
     /**
@@ -287,9 +285,8 @@ export interface NodePoolArgs {
      */
     readonly cluster: pulumi.Input<string>;
     /**
-     * The initial number of nodes for the pool. In
-     * regional or multi-zonal clusters, this is the number of nodes per zone. Changing
-     * this will force recreation of the resource.
+     * The initial number of nodes for the pool. In regional or multi-zonal clusters, this is the number of nodes per zone.
+     * Changing this will force recreation of the resource.
      */
     readonly initialNodeCount?: pulumi.Input<number>;
     /**

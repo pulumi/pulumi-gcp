@@ -323,11 +323,16 @@ func (o AccountIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type BudgetAllUpdatesRule struct {
+	// The full resource name of a monitoring notification
+	// channel in the form
+	// projects/{project_id}/notificationChannels/{channel_id}.
+	// A maximum of 5 channels are allowed.
+	MonitoringNotificationChannels []string `pulumi:"monitoringNotificationChannels"`
 	// The name of the Cloud Pub/Sub topic where budget related
 	// messages will be published, in the form
 	// projects/{project_id}/topics/{topic_id}. Updates are sent
 	// at regular intervals to the topic.
-	PubsubTopic string `pulumi:"pubsubTopic"`
+	PubsubTopic *string `pulumi:"pubsubTopic"`
 	// The schema version of the notification. Only "1.0" is
 	// accepted. It represents the JSON schema as defined in
 	// https://cloud.google.com/billing/docs/how-to/budgets#notification_format.
@@ -346,11 +351,16 @@ type BudgetAllUpdatesRuleInput interface {
 }
 
 type BudgetAllUpdatesRuleArgs struct {
+	// The full resource name of a monitoring notification
+	// channel in the form
+	// projects/{project_id}/notificationChannels/{channel_id}.
+	// A maximum of 5 channels are allowed.
+	MonitoringNotificationChannels pulumi.StringArrayInput `pulumi:"monitoringNotificationChannels"`
 	// The name of the Cloud Pub/Sub topic where budget related
 	// messages will be published, in the form
 	// projects/{project_id}/topics/{topic_id}. Updates are sent
 	// at regular intervals to the topic.
-	PubsubTopic pulumi.StringInput `pulumi:"pubsubTopic"`
+	PubsubTopic pulumi.StringPtrInput `pulumi:"pubsubTopic"`
 	// The schema version of the notification. Only "1.0" is
 	// accepted. It represents the JSON schema as defined in
 	// https://cloud.google.com/billing/docs/how-to/budgets#notification_format.
@@ -434,12 +444,20 @@ func (o BudgetAllUpdatesRuleOutput) ToBudgetAllUpdatesRulePtrOutputWithContext(c
 	}).(BudgetAllUpdatesRulePtrOutput)
 }
 
+// The full resource name of a monitoring notification
+// channel in the form
+// projects/{project_id}/notificationChannels/{channel_id}.
+// A maximum of 5 channels are allowed.
+func (o BudgetAllUpdatesRuleOutput) MonitoringNotificationChannels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BudgetAllUpdatesRule) []string { return v.MonitoringNotificationChannels }).(pulumi.StringArrayOutput)
+}
+
 // The name of the Cloud Pub/Sub topic where budget related
 // messages will be published, in the form
 // projects/{project_id}/topics/{topic_id}. Updates are sent
 // at regular intervals to the topic.
-func (o BudgetAllUpdatesRuleOutput) PubsubTopic() pulumi.StringOutput {
-	return o.ApplyT(func(v BudgetAllUpdatesRule) string { return v.PubsubTopic }).(pulumi.StringOutput)
+func (o BudgetAllUpdatesRuleOutput) PubsubTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BudgetAllUpdatesRule) *string { return v.PubsubTopic }).(pulumi.StringPtrOutput)
 }
 
 // The schema version of the notification. Only "1.0" is
@@ -467,6 +485,19 @@ func (o BudgetAllUpdatesRulePtrOutput) Elem() BudgetAllUpdatesRuleOutput {
 	return o.ApplyT(func(v *BudgetAllUpdatesRule) BudgetAllUpdatesRule { return *v }).(BudgetAllUpdatesRuleOutput)
 }
 
+// The full resource name of a monitoring notification
+// channel in the form
+// projects/{project_id}/notificationChannels/{channel_id}.
+// A maximum of 5 channels are allowed.
+func (o BudgetAllUpdatesRulePtrOutput) MonitoringNotificationChannels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BudgetAllUpdatesRule) []string {
+		if v == nil {
+			return nil
+		}
+		return v.MonitoringNotificationChannels
+	}).(pulumi.StringArrayOutput)
+}
+
 // The name of the Cloud Pub/Sub topic where budget related
 // messages will be published, in the form
 // projects/{project_id}/topics/{topic_id}. Updates are sent
@@ -476,7 +507,7 @@ func (o BudgetAllUpdatesRulePtrOutput) PubsubTopic() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.PubsubTopic
+		return v.PubsubTopic
 	}).(pulumi.StringPtrOutput)
 }
 

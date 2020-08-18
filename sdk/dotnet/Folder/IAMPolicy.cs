@@ -9,29 +9,14 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Folder
 {
-    /// <summary>
-    /// Allows creation and management of the IAM policy for an existing Google Cloud
-    /// Platform folder.
-    /// </summary>
     public partial class IAMPolicy : Pulumi.CustomResource
     {
-        /// <summary>
-        /// (Computed) The etag of the folder's IAM policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
-        /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
-        /// <summary>
-        /// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
-        /// </summary>
         [Output("folder")]
         public Output<string> Folder { get; private set; } = null!;
 
-        /// <summary>
-        /// The `gcp.organizations.getIAMPolicy` data source that represents
-        /// the IAM policy that will be applied to the folder. This policy overrides any existing
-        /// policy applied to the folder.
-        /// </summary>
         [Output("policyData")]
         public Output<string> PolicyData { get; private set; } = null!;
 
@@ -81,17 +66,9 @@ namespace Pulumi.Gcp.Folder
 
     public sealed class IAMPolicyArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
-        /// </summary>
         [Input("folder", required: true)]
         public Input<string> Folder { get; set; } = null!;
 
-        /// <summary>
-        /// The `gcp.organizations.getIAMPolicy` data source that represents
-        /// the IAM policy that will be applied to the folder. This policy overrides any existing
-        /// policy applied to the folder.
-        /// </summary>
         [Input("policyData", required: true)]
         public Input<string> PolicyData { get; set; } = null!;
 
@@ -102,23 +79,12 @@ namespace Pulumi.Gcp.Folder
 
     public sealed class IAMPolicyState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// (Computed) The etag of the folder's IAM policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
-        /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
-        /// <summary>
-        /// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
-        /// </summary>
         [Input("folder")]
         public Input<string>? Folder { get; set; }
 
-        /// <summary>
-        /// The `gcp.organizations.getIAMPolicy` data source that represents
-        /// the IAM policy that will be applied to the folder. This policy overrides any existing
-        /// policy applied to the folder.
-        /// </summary>
         [Input("policyData")]
         public Input<string>? PolicyData { get; set; }
 

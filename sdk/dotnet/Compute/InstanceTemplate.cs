@@ -25,6 +25,13 @@ namespace Pulumi.Gcp.Compute
         public Output<bool?> CanIpForward { get; private set; } = null!;
 
         /// <summary>
+        /// The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
+        /// to create.
+        /// </summary>
+        [Output("confidentialInstanceConfig")]
+        public Output<Outputs.InstanceTemplateConfidentialInstanceConfig> ConfidentialInstanceConfig { get; private set; } = null!;
+
+        /// <summary>
         /// A brief description of this resource.
         /// </summary>
         [Output("description")]
@@ -232,6 +239,13 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? CanIpForward { get; set; }
 
         /// <summary>
+        /// The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
+        /// to create.
+        /// </summary>
+        [Input("confidentialInstanceConfig")]
+        public Input<Inputs.InstanceTemplateConfidentialInstanceConfigArgs>? ConfidentialInstanceConfig { get; set; }
+
+        /// <summary>
         /// A brief description of this resource.
         /// </summary>
         [Input("description")]
@@ -416,6 +430,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("canIpForward")]
         public Input<bool>? CanIpForward { get; set; }
+
+        /// <summary>
+        /// The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
+        /// to create.
+        /// </summary>
+        [Input("confidentialInstanceConfig")]
+        public Input<Inputs.InstanceTemplateConfidentialInstanceConfigGetArgs>? ConfidentialInstanceConfig { get; set; }
 
         /// <summary>
         /// A brief description of this resource.

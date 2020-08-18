@@ -52,10 +52,26 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
+     * The full version of memcached server running on this instance.
+     */
+    public /*out*/ readonly memcacheFullVersion!: pulumi.Output<string>;
+    /**
+     * Additional information about the instance state, if available.
+     */
+    public /*out*/ readonly memcacheNodes!: pulumi.Output<outputs.memcache.InstanceMemcacheNode[]>;
+    /**
      * User-specified parameters for this memcache instance.
      * Structure is documented below.
      */
     public readonly memcacheParameters!: pulumi.Output<outputs.memcache.InstanceMemcacheParameters | undefined>;
+    /**
+     * The major version of Memcached software. If not provided, latest supported version will be used.
+     * Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
+     * determined by our system based on the latest supported minor version.
+     * Default value is `MEMCACHE_1_5`.
+     * Possible values are `MEMCACHE_1_5`.
+     */
+    public readonly memcacheVersion!: pulumi.Output<string | undefined>;
     /**
      * The resource name of the instance.
      */
@@ -100,7 +116,10 @@ export class Instance extends pulumi.CustomResource {
             inputs["createTime"] = state ? state.createTime : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
             inputs["labels"] = state ? state.labels : undefined;
+            inputs["memcacheFullVersion"] = state ? state.memcacheFullVersion : undefined;
+            inputs["memcacheNodes"] = state ? state.memcacheNodes : undefined;
             inputs["memcacheParameters"] = state ? state.memcacheParameters : undefined;
+            inputs["memcacheVersion"] = state ? state.memcacheVersion : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["nodeConfig"] = state ? state.nodeConfig : undefined;
             inputs["nodeCount"] = state ? state.nodeCount : undefined;
@@ -122,6 +141,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["memcacheParameters"] = args ? args.memcacheParameters : undefined;
+            inputs["memcacheVersion"] = args ? args.memcacheVersion : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["nodeConfig"] = args ? args.nodeConfig : undefined;
             inputs["nodeCount"] = args ? args.nodeCount : undefined;
@@ -129,6 +149,8 @@ export class Instance extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["zones"] = args ? args.zones : undefined;
             inputs["createTime"] = undefined /*out*/;
+            inputs["memcacheFullVersion"] = undefined /*out*/;
+            inputs["memcacheNodes"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -163,10 +185,26 @@ export interface InstanceState {
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * The full version of memcached server running on this instance.
+     */
+    readonly memcacheFullVersion?: pulumi.Input<string>;
+    /**
+     * Additional information about the instance state, if available.
+     */
+    readonly memcacheNodes?: pulumi.Input<pulumi.Input<inputs.memcache.InstanceMemcacheNode>[]>;
+    /**
      * User-specified parameters for this memcache instance.
      * Structure is documented below.
      */
     readonly memcacheParameters?: pulumi.Input<inputs.memcache.InstanceMemcacheParameters>;
+    /**
+     * The major version of Memcached software. If not provided, latest supported version will be used.
+     * Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
+     * determined by our system based on the latest supported minor version.
+     * Default value is `MEMCACHE_1_5`.
+     * Possible values are `MEMCACHE_1_5`.
+     */
+    readonly memcacheVersion?: pulumi.Input<string>;
     /**
      * The resource name of the instance.
      */
@@ -218,6 +256,14 @@ export interface InstanceArgs {
      * Structure is documented below.
      */
     readonly memcacheParameters?: pulumi.Input<inputs.memcache.InstanceMemcacheParameters>;
+    /**
+     * The major version of Memcached software. If not provided, latest supported version will be used.
+     * Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
+     * determined by our system based on the latest supported minor version.
+     * Default value is `MEMCACHE_1_5`.
+     * Possible values are `MEMCACHE_1_5`.
+     */
+    readonly memcacheVersion?: pulumi.Input<string>;
     /**
      * The resource name of the instance.
      */

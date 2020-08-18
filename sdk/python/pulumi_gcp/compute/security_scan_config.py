@@ -77,6 +77,7 @@ class SecurityScanConfig(pulumi.CustomResource):
     target_platforms: pulumi.Output[list]
     """
     Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
+    Each value may be one of `APP_ENGINE` and `COMPUTE`.
     """
     user_agent: pulumi.Output[str]
     """
@@ -118,6 +119,7 @@ class SecurityScanConfig(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[list] starting_urls: The starting URLs from which the scanner finds site pages.
         :param pulumi.Input[list] target_platforms: Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
+               Each value may be one of `APP_ENGINE` and `COMPUTE`.
         :param pulumi.Input[str] user_agent: Type of the user agents used for scanning
                Default value is `CHROME_LINUX`.
                Possible values are `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, and `SAFARI_IPHONE`.
@@ -211,6 +213,7 @@ class SecurityScanConfig(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[list] starting_urls: The starting URLs from which the scanner finds site pages.
         :param pulumi.Input[list] target_platforms: Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
+               Each value may be one of `APP_ENGINE` and `COMPUTE`.
         :param pulumi.Input[str] user_agent: Type of the user agents used for scanning
                Default value is `CHROME_LINUX`.
                Possible values are `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, and `SAFARI_IPHONE`.

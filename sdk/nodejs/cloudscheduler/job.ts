@@ -96,7 +96,7 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly pubsubTarget!: pulumi.Output<outputs.cloudscheduler.JobPubsubTarget | undefined>;
     /**
-     * Region where the scheduler job resides
+     * Region where the scheduler job resides. If it is not provided, Terraform will use the provider default.
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -214,7 +214,7 @@ export interface JobState {
      */
     readonly pubsubTarget?: pulumi.Input<inputs.cloudscheduler.JobPubsubTarget>;
     /**
-     * Region where the scheduler job resides
+     * Region where the scheduler job resides. If it is not provided, Terraform will use the provider default.
      */
     readonly region?: pulumi.Input<string>;
     /**
@@ -285,7 +285,7 @@ export interface JobArgs {
      */
     readonly pubsubTarget?: pulumi.Input<inputs.cloudscheduler.JobPubsubTarget>;
     /**
-     * Region where the scheduler job resides
+     * Region where the scheduler job resides. If it is not provided, Terraform will use the provider default.
      */
     readonly region?: pulumi.Input<string>;
     /**

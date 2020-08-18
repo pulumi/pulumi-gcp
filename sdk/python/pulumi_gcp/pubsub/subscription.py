@@ -41,7 +41,7 @@ class Subscription(pulumi.CustomResource):
 
       * `deadLetterTopic` (`str`) - The name of the topic to which dead letter messages should be published.
         Format is `projects/{project}/topics/{topic}`.
-        The Cloud Pub/Sub service\naccount associated with the enclosing subscription's
+        The Cloud Pub/Sub service account associated with the enclosing subscription's
         parent project (i.e.,
         service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
         permission to Publish() to this topic.
@@ -73,6 +73,13 @@ class Subscription(pulumi.CustomResource):
         If ttl is not set, the associated resource never expires.
         A duration in seconds with up to nine fractional digits, terminated by 's'.
         Example - "3.5s".
+    """
+    filter: pulumi.Output[str]
+    """
+    The subscription only delivers the messages that match the filter.
+    Pub/Sub automatically acknowledges the messages that don't match the filter. You can filter messages
+    by their attributes. The maximum length of a filter is 256 bytes. After creating the subscription,
+    you can't modify the filter.
     """
     labels: pulumi.Output[dict]
     """
@@ -153,7 +160,7 @@ class Subscription(pulumi.CustomResource):
     """
     A reference to a Topic resource.
     """
-    def __init__(__self__, resource_name, opts=None, ack_deadline_seconds=None, dead_letter_policy=None, expiration_policy=None, labels=None, message_retention_duration=None, name=None, project=None, push_config=None, retain_acked_messages=None, topic=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, ack_deadline_seconds=None, dead_letter_policy=None, expiration_policy=None, filter=None, labels=None, message_retention_duration=None, name=None, project=None, push_config=None, retain_acked_messages=None, topic=None, __props__=None, __name__=None, __opts__=None):
         """
         A named resource representing the stream of messages from a single,
         specific topic, to be delivered to the subscribing application.
@@ -199,6 +206,10 @@ class Subscription(pulumi.CustomResource):
                resource never expires.  The minimum allowed value for expirationPolicy.ttl
                is 1 day.
                Structure is documented below.
+        :param pulumi.Input[str] filter: The subscription only delivers the messages that match the filter.
+               Pub/Sub automatically acknowledges the messages that don't match the filter. You can filter messages
+               by their attributes. The maximum length of a filter is 256 bytes. After creating the subscription,
+               you can't modify the filter.
         :param pulumi.Input[dict] labels: A set of key/value label pairs to assign to this Subscription.
         :param pulumi.Input[str] message_retention_duration: How long to retain unacknowledged messages in the subscription's
                backlog, from the moment a message is published. If
@@ -225,7 +236,7 @@ class Subscription(pulumi.CustomResource):
 
           * `deadLetterTopic` (`pulumi.Input[str]`) - The name of the topic to which dead letter messages should be published.
             Format is `projects/{project}/topics/{topic}`.
-            The Cloud Pub/Sub service\naccount associated with the enclosing subscription's
+            The Cloud Pub/Sub service account associated with the enclosing subscription's
             parent project (i.e.,
             service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
             permission to Publish() to this topic.
@@ -307,6 +318,7 @@ class Subscription(pulumi.CustomResource):
             __props__['ack_deadline_seconds'] = ack_deadline_seconds
             __props__['dead_letter_policy'] = dead_letter_policy
             __props__['expiration_policy'] = expiration_policy
+            __props__['filter'] = filter
             __props__['labels'] = labels
             __props__['message_retention_duration'] = message_retention_duration
             __props__['name'] = name
@@ -324,7 +336,7 @@ class Subscription(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, ack_deadline_seconds=None, dead_letter_policy=None, expiration_policy=None, labels=None, message_retention_duration=None, name=None, path=None, project=None, push_config=None, retain_acked_messages=None, topic=None):
+    def get(resource_name, id, opts=None, ack_deadline_seconds=None, dead_letter_policy=None, expiration_policy=None, filter=None, labels=None, message_retention_duration=None, name=None, path=None, project=None, push_config=None, retain_acked_messages=None, topic=None):
         """
         Get an existing Subscription resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -363,6 +375,10 @@ class Subscription(pulumi.CustomResource):
                resource never expires.  The minimum allowed value for expirationPolicy.ttl
                is 1 day.
                Structure is documented below.
+        :param pulumi.Input[str] filter: The subscription only delivers the messages that match the filter.
+               Pub/Sub automatically acknowledges the messages that don't match the filter. You can filter messages
+               by their attributes. The maximum length of a filter is 256 bytes. After creating the subscription,
+               you can't modify the filter.
         :param pulumi.Input[dict] labels: A set of key/value label pairs to assign to this Subscription.
         :param pulumi.Input[str] message_retention_duration: How long to retain unacknowledged messages in the subscription's
                backlog, from the moment a message is published. If
@@ -389,7 +405,7 @@ class Subscription(pulumi.CustomResource):
 
           * `deadLetterTopic` (`pulumi.Input[str]`) - The name of the topic to which dead letter messages should be published.
             Format is `projects/{project}/topics/{topic}`.
-            The Cloud Pub/Sub service\naccount associated with the enclosing subscription's
+            The Cloud Pub/Sub service account associated with the enclosing subscription's
             parent project (i.e.,
             service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
             permission to Publish() to this topic.
@@ -458,6 +474,7 @@ class Subscription(pulumi.CustomResource):
         __props__["ack_deadline_seconds"] = ack_deadline_seconds
         __props__["dead_letter_policy"] = dead_letter_policy
         __props__["expiration_policy"] = expiration_policy
+        __props__["filter"] = filter
         __props__["labels"] = labels
         __props__["message_retention_duration"] = message_retention_duration
         __props__["name"] = name

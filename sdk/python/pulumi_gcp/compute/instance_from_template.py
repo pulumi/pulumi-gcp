@@ -48,6 +48,13 @@ class InstanceFromTemplate(pulumi.CustomResource):
     """
     Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
     """
+    confidential_instance_config: pulumi.Output[dict]
+    """
+    The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
+    to create.
+
+      * `enableConfidentialCompute` (`bool`)
+    """
     cpu_platform: pulumi.Output[str]
     """
     The CPU platform used by this instance.
@@ -209,7 +216,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
     The zone that the machine should be created in. If not
     set, the provider zone is used.
     """
-    def __init__(__self__, resource_name, opts=None, allow_stopping_for_update=None, attached_disks=None, boot_disk=None, can_ip_forward=None, deletion_protection=None, description=None, desired_status=None, enable_display=None, guest_accelerators=None, hostname=None, labels=None, machine_type=None, metadata=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, resource_policies=None, scheduling=None, scratch_disks=None, service_account=None, shielded_instance_config=None, source_instance_template=None, tags=None, zone=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, allow_stopping_for_update=None, attached_disks=None, boot_disk=None, can_ip_forward=None, confidential_instance_config=None, deletion_protection=None, description=None, desired_status=None, enable_display=None, guest_accelerators=None, hostname=None, labels=None, machine_type=None, metadata=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, resource_policies=None, scheduling=None, scratch_disks=None, service_account=None, shielded_instance_config=None, source_instance_template=None, tags=None, zone=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a VM instance resource within GCE. For more information see
         [the official documentation](https://cloud.google.com/compute/docs/instances)
@@ -227,6 +234,8 @@ class InstanceFromTemplate(pulumi.CustomResource):
         :param pulumi.Input[list] attached_disks: List of disks attached to the instance
         :param pulumi.Input[dict] boot_disk: The boot disk for the instance.
         :param pulumi.Input[bool] can_ip_forward: Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
+        :param pulumi.Input[dict] confidential_instance_config: The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
+               to create.
         :param pulumi.Input[bool] deletion_protection: Whether deletion protection is enabled on this instance.
         :param pulumi.Input[str] description: A brief description of the resource.
         :param pulumi.Input[str] desired_status: Desired status of the instance. Either "RUNNING" or "TERMINATED".
@@ -281,6 +290,10 @@ class InstanceFromTemplate(pulumi.CustomResource):
           * `kmsKeySelfLink` (`pulumi.Input[str]`)
           * `mode` (`pulumi.Input[str]`)
           * `source` (`pulumi.Input[str]`)
+
+        The **confidential_instance_config** object supports the following:
+
+          * `enableConfidentialCompute` (`pulumi.Input[bool]`)
 
         The **guest_accelerators** object supports the following:
 
@@ -353,6 +366,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
             __props__['attached_disks'] = attached_disks
             __props__['boot_disk'] = boot_disk
             __props__['can_ip_forward'] = can_ip_forward
+            __props__['confidential_instance_config'] = confidential_instance_config
             __props__['deletion_protection'] = deletion_protection
             __props__['description'] = description
             __props__['desired_status'] = desired_status
@@ -391,7 +405,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, allow_stopping_for_update=None, attached_disks=None, boot_disk=None, can_ip_forward=None, cpu_platform=None, current_status=None, deletion_protection=None, description=None, desired_status=None, enable_display=None, guest_accelerators=None, hostname=None, instance_id=None, label_fingerprint=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, resource_policies=None, scheduling=None, scratch_disks=None, self_link=None, service_account=None, shielded_instance_config=None, source_instance_template=None, tags=None, tags_fingerprint=None, zone=None):
+    def get(resource_name, id, opts=None, allow_stopping_for_update=None, attached_disks=None, boot_disk=None, can_ip_forward=None, confidential_instance_config=None, cpu_platform=None, current_status=None, deletion_protection=None, description=None, desired_status=None, enable_display=None, guest_accelerators=None, hostname=None, instance_id=None, label_fingerprint=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, resource_policies=None, scheduling=None, scratch_disks=None, self_link=None, service_account=None, shielded_instance_config=None, source_instance_template=None, tags=None, tags_fingerprint=None, zone=None):
         """
         Get an existing InstanceFromTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -404,6 +418,8 @@ class InstanceFromTemplate(pulumi.CustomResource):
         :param pulumi.Input[list] attached_disks: List of disks attached to the instance
         :param pulumi.Input[dict] boot_disk: The boot disk for the instance.
         :param pulumi.Input[bool] can_ip_forward: Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
+        :param pulumi.Input[dict] confidential_instance_config: The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
+               to create.
         :param pulumi.Input[str] cpu_platform: The CPU platform used by this instance.
         :param pulumi.Input[str] current_status: Current status of the instance.
         :param pulumi.Input[bool] deletion_protection: Whether deletion protection is enabled on this instance.
@@ -466,6 +482,10 @@ class InstanceFromTemplate(pulumi.CustomResource):
           * `mode` (`pulumi.Input[str]`)
           * `source` (`pulumi.Input[str]`)
 
+        The **confidential_instance_config** object supports the following:
+
+          * `enableConfidentialCompute` (`pulumi.Input[bool]`)
+
         The **guest_accelerators** object supports the following:
 
           * `count` (`pulumi.Input[float]`)
@@ -524,6 +544,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
         __props__["attached_disks"] = attached_disks
         __props__["boot_disk"] = boot_disk
         __props__["can_ip_forward"] = can_ip_forward
+        __props__["confidential_instance_config"] = confidential_instance_config
         __props__["cpu_platform"] = cpu_platform
         __props__["current_status"] = current_status
         __props__["deletion_protection"] = deletion_protection

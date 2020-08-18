@@ -89,6 +89,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
+        /// Each value may be one of `APP_ENGINE` and `COMPUTE`.
         /// </summary>
         [Output("targetPlatforms")]
         public Output<ImmutableArray<string>> TargetPlatforms { get; private set; } = null!;
@@ -220,6 +221,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
+        /// Each value may be one of `APP_ENGINE` and `COMPUTE`.
         /// </summary>
         public InputList<string> TargetPlatforms
         {
@@ -321,6 +323,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
+        /// Each value may be one of `APP_ENGINE` and `COMPUTE`.
         /// </summary>
         public InputList<string> TargetPlatforms
         {

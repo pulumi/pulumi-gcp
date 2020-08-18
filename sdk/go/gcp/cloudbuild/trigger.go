@@ -61,8 +61,10 @@ type Trigger struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Substitutions data for Build resource.
+	// Substitutions to use in a triggered build. Should only be used with triggers.run
 	Substitutions pulumi.StringMapOutput `pulumi:"substitutions"`
+	// Tags for annotation of a Build. These are not docker tags.
+	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The unique identifier for the trigger.
 	TriggerId pulumi.StringOutput `pulumi:"triggerId"`
 	// Template describing the types of source changes to trigger a build.
@@ -142,8 +144,10 @@ type triggerState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Substitutions data for Build resource.
+	// Substitutions to use in a triggered build. Should only be used with triggers.run
 	Substitutions map[string]string `pulumi:"substitutions"`
+	// Tags for annotation of a Build. These are not docker tags.
+	Tags []string `pulumi:"tags"`
 	// The unique identifier for the trigger.
 	TriggerId *string `pulumi:"triggerId"`
 	// Template describing the types of source changes to trigger a build.
@@ -196,8 +200,10 @@ type TriggerState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Substitutions data for Build resource.
+	// Substitutions to use in a triggered build. Should only be used with triggers.run
 	Substitutions pulumi.StringMapInput
+	// Tags for annotation of a Build. These are not docker tags.
+	Tags pulumi.StringArrayInput
 	// The unique identifier for the trigger.
 	TriggerId pulumi.StringPtrInput
 	// Template describing the types of source changes to trigger a build.
@@ -252,8 +258,10 @@ type triggerArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Substitutions data for Build resource.
+	// Substitutions to use in a triggered build. Should only be used with triggers.run
 	Substitutions map[string]string `pulumi:"substitutions"`
+	// Tags for annotation of a Build. These are not docker tags.
+	Tags []string `pulumi:"tags"`
 	// Template describing the types of source changes to trigger a build.
 	// Branch and tag names in trigger templates are interpreted as regular
 	// expressions. Any branch or tag change that matches that regular
@@ -303,8 +311,10 @@ type TriggerArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Substitutions data for Build resource.
+	// Substitutions to use in a triggered build. Should only be used with triggers.run
 	Substitutions pulumi.StringMapInput
+	// Tags for annotation of a Build. These are not docker tags.
+	Tags pulumi.StringArrayInput
 	// Template describing the types of source changes to trigger a build.
 	// Branch and tag names in trigger templates are interpreted as regular
 	// expressions. Any branch or tag change that matches that regular

@@ -85,11 +85,13 @@ export namespace accesscontextmanager {
         /**
          * A list of allowed device management levels.
          * An empty list allows all management levels.
+         * Each value may be one of `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, and `COMPLETE`.
          */
         allowedDeviceManagementLevels?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * A list of allowed encryptions statuses.
          * An empty list allows all statuses.
+         * Each value may be one of `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, and `ENCRYPTED`.
          */
         allowedEncryptionStatuses?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -1967,12 +1969,19 @@ export namespace billing {
 
     export interface BudgetAllUpdatesRule {
         /**
+         * The full resource name of a monitoring notification
+         * channel in the form
+         * projects/{project_id}/notificationChannels/{channel_id}.
+         * A maximum of 5 channels are allowed.
+         */
+        monitoringNotificationChannels?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
          * The name of the Cloud Pub/Sub topic where budget related
          * messages will be published, in the form
          * projects/{project_id}/topics/{topic_id}. Updates are sent
          * at regular intervals to the topic.
          */
-        pubsubTopic: pulumi.Input<string>;
+        pubsubTopic?: pulumi.Input<string>;
         /**
          * The schema version of the notification. Only "1.0" is
          * accepted. It represents the JSON schema as defined in
@@ -2280,10 +2289,37 @@ export namespace cloudbuild {
          */
         images?: pulumi.Input<pulumi.Input<string>[]>;
         /**
+         * Google Cloud Storage bucket where logs should be written.
+         * Logs file names will be of the format ${logsBucket}/log-${build_id}.txt.
+         */
+        logsBucket?: pulumi.Input<string>;
+        /**
+         * TTL in queue for this build. If provided and the build is enqueued longer than this value,
+         * the build will expire and the build status will be EXPIRED.
+         * The TTL starts ticking from createTime.
+         * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+         */
+        queueTtl?: pulumi.Input<string>;
+        /**
+         * Secrets to decrypt using Cloud Key Management Service.
+         * Structure is documented below.
+         */
+        secrets?: pulumi.Input<pulumi.Input<inputs.cloudbuild.TriggerBuildSecret>[]>;
+        /**
+         * The location of the source files to build.
+         * One of `storageSource` or `repoSource` must be provided.
+         * Structure is documented below.
+         */
+        source?: pulumi.Input<inputs.cloudbuild.TriggerBuildSource>;
+        /**
          * The operations to be performed on the workspace.
          * Structure is documented below.
          */
         steps: pulumi.Input<pulumi.Input<inputs.cloudbuild.TriggerBuildStep>[]>;
+        /**
+         * Substitutions to use in a triggered build. Should only be used with triggers.run
+         */
+        substitutions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * Tags for annotation of a Build. These are not docker tags.
          */
@@ -2295,6 +2331,98 @@ export namespace cloudbuild {
          * completes or the build itself times out.
          */
         timeout?: pulumi.Input<string>;
+    }
+
+    export interface TriggerBuildSecret {
+        /**
+         * Cloud KMS key name to use to decrypt these envs.
+         */
+        kmsKeyName: pulumi.Input<string>;
+        /**
+         * A list of environment variables which are encrypted using
+         * a Cloud Key
+         * Management Service crypto key. These values must be specified in
+         * the build's `Secret`.
+         */
+        secretEnv?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    }
+
+    export interface TriggerBuildSource {
+        /**
+         * Location of the source in a Google Cloud Source Repository.
+         * Structure is documented below.
+         */
+        repoSource?: pulumi.Input<inputs.cloudbuild.TriggerBuildSourceRepoSource>;
+        /**
+         * Location of the source in an archive file in Google Cloud Storage.
+         * Structure is documented below.
+         */
+        storageSource?: pulumi.Input<inputs.cloudbuild.TriggerBuildSourceStorageSource>;
+    }
+
+    export interface TriggerBuildSourceRepoSource {
+        /**
+         * Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+         * The syntax of the regular expressions accepted is the syntax accepted by RE2 and
+         * described at https://github.com/google/re2/wiki/Syntax
+         */
+        branchName?: pulumi.Input<string>;
+        /**
+         * Explicit commit SHA to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+         */
+        commitSha?: pulumi.Input<string>;
+        /**
+         * Working directory to use when running this step's container.
+         * If this value is a relative path, it is relative to the build's working
+         * directory. If this value is absolute, it may be outside the build's working
+         * directory, in which case the contents of the path may not be persisted
+         * across build step executions, unless a `volume` for that path is specified.
+         * If the build specifies a `RepoSource` with `dir` and a step with a
+         * `dir`,
+         * which specifies an absolute path, the `RepoSource` `dir` is ignored
+         * for the step's execution.
+         */
+        dir?: pulumi.Input<string>;
+        /**
+         * Only trigger a build if the revision regex does NOT match the revision regex.
+         */
+        invertRegex?: pulumi.Input<boolean>;
+        /**
+         * ID of the project that owns the Cloud Source Repository.
+         * If omitted, the project ID requesting the build is assumed.
+         */
+        projectId?: pulumi.Input<string>;
+        /**
+         * Name of the Cloud Source Repository.
+         */
+        repoName: pulumi.Input<string>;
+        /**
+         * Substitutions to use in a triggered build. Should only be used with triggers.run
+         */
+        substitutions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Regex matching tags to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+         * The syntax of the regular expressions accepted is the syntax accepted by RE2 and
+         * described at https://github.com/google/re2/wiki/Syntax
+         */
+        tagName?: pulumi.Input<string>;
+    }
+
+    export interface TriggerBuildSourceStorageSource {
+        /**
+         * Google Cloud Storage bucket containing the source.
+         */
+        bucket: pulumi.Input<string>;
+        /**
+         * Google Cloud Storage generation for the object.
+         * If the generation is omitted, the latest generation will be used
+         */
+        generation?: pulumi.Input<string>;
+        /**
+         * Google Cloud Storage object containing the source.
+         * This object must be a gzipped archive file (.tar.gz) containing source to build.
+         */
+        object: pulumi.Input<string>;
     }
 
     export interface TriggerBuildStep {
@@ -2431,7 +2559,7 @@ export namespace cloudbuild {
          */
         commentControl?: pulumi.Input<string>;
         /**
-         * When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+         * Only trigger a build if the revision regex does NOT match the revision regex.
          */
         invertRegex?: pulumi.Input<boolean>;
     }
@@ -2442,7 +2570,7 @@ export namespace cloudbuild {
          */
         branch?: pulumi.Input<string>;
         /**
-         * When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+         * Only trigger a build if the revision regex does NOT match the revision regex.
          */
         invertRegex?: pulumi.Input<boolean>;
         /**
@@ -2453,12 +2581,13 @@ export namespace cloudbuild {
 
     export interface TriggerTriggerTemplate {
         /**
-         * Name of the branch to build. Exactly one a of branch name, tag, or commit SHA must be provided.
-         * This field is a regular expression.
+         * Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+         * The syntax of the regular expressions accepted is the syntax accepted by RE2 and
+         * described at https://github.com/google/re2/wiki/Syntax
          */
         branchName?: pulumi.Input<string>;
         /**
-         * Explicit commit SHA to build. Exactly one of a branch name, tag, or commit SHA must be provided.
+         * Explicit commit SHA to build. Exactly one a of branch name, tag, or commit SHA must be provided.
          */
         commitSha?: pulumi.Input<string>;
         /**
@@ -2474,21 +2603,22 @@ export namespace cloudbuild {
          */
         dir?: pulumi.Input<string>;
         /**
-         * When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+         * Only trigger a build if the revision regex does NOT match the revision regex.
          */
         invertRegex?: pulumi.Input<boolean>;
         /**
-         * ID of the project that owns the Cloud Source Repository. If
-         * omitted, the project ID requesting the build is assumed.
+         * ID of the project that owns the Cloud Source Repository.
+         * If omitted, the project ID requesting the build is assumed.
          */
         projectId?: pulumi.Input<string>;
         /**
-         * Name of the Cloud Source Repository. If omitted, the name "default" is assumed.
+         * Name of the Cloud Source Repository.
          */
         repoName?: pulumi.Input<string>;
         /**
-         * Name of the tag to build. Exactly one of a branch name, tag, or commit SHA must be provided.
-         * This field is a regular expression.
+         * Regex matching tags to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+         * The syntax of the regular expressions accepted is the syntax accepted by RE2 and
+         * described at https://github.com/google/re2/wiki/Syntax
          */
         tagName?: pulumi.Input<string>;
     }
@@ -4372,7 +4502,7 @@ export namespace compute {
         /**
          * IP address of the interface in the external VPN gateway.
          * Only IPv4 is supported. This IP address can be either from
-         * your on-premise gateway or another Cloud provider’s VPN gateway,
+         * your on-premise gateway or another Cloud provider's VPN gateway,
          * it cannot be an IP address from Google Compute Engine.
          */
         ipAddress?: pulumi.Input<string>;
@@ -4856,6 +4986,10 @@ export namespace compute {
         type?: pulumi.Input<string>;
     }
 
+    export interface InstanceConfidentialInstanceConfig {
+        enableConfidentialCompute: pulumi.Input<boolean>;
+    }
+
     export interface InstanceFromTemplateAttachedDisk {
         deviceName?: pulumi.Input<string>;
         diskEncryptionKeyRaw?: pulumi.Input<string>;
@@ -4881,6 +5015,10 @@ export namespace compute {
         labels?: pulumi.Input<{[key: string]: any}>;
         size?: pulumi.Input<number>;
         type?: pulumi.Input<string>;
+    }
+
+    export interface InstanceFromTemplateConfidentialInstanceConfig {
+        enableConfidentialCompute: pulumi.Input<boolean>;
     }
 
     export interface InstanceFromTemplateGuestAccelerator {
@@ -5251,6 +5389,10 @@ export namespace compute {
          * -- Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
          */
         enableVtpm?: pulumi.Input<boolean>;
+    }
+
+    export interface InstanceTemplateConfidentialInstanceConfig {
+        enableConfidentialCompute: pulumi.Input<boolean>;
     }
 
     export interface InstanceTemplateDisk {
@@ -5638,6 +5780,7 @@ export namespace compute {
         cidrRanges?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Protocols that apply as a filter on mirrored traffic.
+         * Each value may be one of `tcp`, `udp`, and `icmp`.
          */
         ipProtocols?: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -6630,6 +6773,73 @@ export namespace compute {
          * one of which has a `target_size.percent` of `60` will create 2 instances of that `version`.
          */
         percent?: pulumi.Input<number>;
+    }
+
+    export interface RegionNetworkEndpointGroupAppEngine {
+        /**
+         * Optional serving service.
+         * The service name must be 1-63 characters long, and comply with RFC1035.
+         * Example value: "default", "my-service".
+         */
+        service?: pulumi.Input<string>;
+        /**
+         * A template to parse function field from a request URL. URL mask allows
+         * for routing to multiple Cloud Functions without having to create
+         * multiple Network Endpoint Groups and backend services.
+         * For example, request URLs "mydomain.com/function1" and "mydomain.com/function2"
+         * can be backed by the same Serverless NEG with URL mask "/". The URL mask
+         * will parse them to { function = "function1" } and { function = "function2" } respectively.
+         */
+        urlMask?: pulumi.Input<string>;
+        /**
+         * Optional serving version.
+         * The version must be 1-63 characters long, and comply with RFC1035.
+         * Example value: "v1", "v2".
+         */
+        version?: pulumi.Input<string>;
+    }
+
+    export interface RegionNetworkEndpointGroupCloudFunction {
+        /**
+         * A user-defined name of the Cloud Function.
+         * The function name is case-sensitive and must be 1-63 characters long.
+         * Example value: "func1".
+         */
+        function?: pulumi.Input<string>;
+        /**
+         * A template to parse function field from a request URL. URL mask allows
+         * for routing to multiple Cloud Functions without having to create
+         * multiple Network Endpoint Groups and backend services.
+         * For example, request URLs "mydomain.com/function1" and "mydomain.com/function2"
+         * can be backed by the same Serverless NEG with URL mask "/". The URL mask
+         * will parse them to { function = "function1" } and { function = "function2" } respectively.
+         */
+        urlMask?: pulumi.Input<string>;
+    }
+
+    export interface RegionNetworkEndpointGroupCloudRun {
+        /**
+         * Optional serving service.
+         * The service name must be 1-63 characters long, and comply with RFC1035.
+         * Example value: "default", "my-service".
+         */
+        service?: pulumi.Input<string>;
+        /**
+         * Cloud Run tag represents the "named-revision" to provide
+         * additional fine-grained traffic routing information.
+         * The tag must be 1-63 characters long, and comply with RFC1035.
+         * Example value: "revision-0010".
+         */
+        tag?: pulumi.Input<string>;
+        /**
+         * A template to parse function field from a request URL. URL mask allows
+         * for routing to multiple Cloud Functions without having to create
+         * multiple Network Endpoint Groups and backend services.
+         * For example, request URLs "mydomain.com/function1" and "mydomain.com/function2"
+         * can be backed by the same Serverless NEG with URL mask "/". The URL mask
+         * will parse them to { function = "function1" } and { function = "function2" } respectively.
+         */
+        urlMask?: pulumi.Input<string>;
     }
 
     export interface RegionPerInstanceConfigPreservedState {
@@ -12753,6 +12963,7 @@ export namespace filestore {
         /**
          * IP versions for which the instance has
          * IP addresses assigned.
+         * Each value may be one of `ADDRESS_MODE_UNSPECIFIED`, `MODE_IPV4`, and `MODE_IPV6`.
          */
         modes: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -12803,18 +13014,7 @@ export namespace folder {
     }
 
     export interface IamAuditConfigAuditLogConfig {
-        /**
-         * Identities that do not cause logging for this type of permission.
-         * Each entry can have one of the following values:
-         * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-         * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-         * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-         * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-         */
         exemptedMembers?: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
-         */
         logType: pulumi.Input<string>;
     }
 
@@ -13909,6 +14109,14 @@ export namespace logging {
 }
 
 export namespace memcache {
+    export interface InstanceMemcacheNode {
+        host?: pulumi.Input<string>;
+        nodeId?: pulumi.Input<string>;
+        port?: pulumi.Input<number>;
+        state?: pulumi.Input<string>;
+        zone?: pulumi.Input<string>;
+    }
+
     export interface InstanceMemcacheParameters {
         /**
          * -
@@ -16194,9 +16402,9 @@ export namespace osconfig {
     export interface PatchDeploymentPatchConfigWindowsUpdate {
         /**
          * Only apply updates of these windows update classifications. If empty, all updates are applied.
-         * Possible values are `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, and `UPDATE`.
+         * Each value may be one of `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, and `UPDATE`.
          */
-        classifications?: pulumi.Input<string>;
+        classifications?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * List of KBs to exclude from update.
          */
@@ -16470,7 +16678,7 @@ export namespace pubsub {
         /**
          * The name of the topic to which dead letter messages should be published.
          * Format is `projects/{project}/topics/{topic}`.
-         * The Cloud Pub/Sub service\naccount associated with the enclosing subscription's
+         * The Cloud Pub/Sub service account associated with the enclosing subscription's
          * parent project (i.e.,
          * service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
          * permission to Publish() to this topic.
@@ -16929,6 +17137,10 @@ export namespace sql {
          */
         enabled?: pulumi.Input<boolean>;
         location?: pulumi.Input<string>;
+        /**
+         * True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation.
+         */
+        pointInTimeRecoveryEnabled?: pulumi.Input<boolean>;
         /**
          * `HH:MM` format time indicating when backup
          * configuration starts.

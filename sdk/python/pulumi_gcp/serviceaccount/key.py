@@ -34,6 +34,10 @@ class Key(pulumi.CustomResource):
     """
     The public key, base64 encoded
     """
+    public_key_data: pulumi.Output[str]
+    """
+    Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with `public_key_type` and `private_key_type`.
+    """
     public_key_type: pulumi.Output[str]
     """
     The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
@@ -53,7 +57,7 @@ class Key(pulumi.CustomResource):
     The key can be used before this timestamp.
     A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
     """
-    def __init__(__self__, resource_name, opts=None, key_algorithm=None, private_key_type=None, public_key_type=None, service_account_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, key_algorithm=None, private_key_type=None, public_key_data=None, public_key_type=None, service_account_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Creates and manages service account key-pairs, which allow the user to establish identity of a service account outside of GCP. For more information, see [the official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) and [API](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys).
 
@@ -66,6 +70,7 @@ class Key(pulumi.CustomResource):
                [ServiceAccountPrivateKeyType](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys#ServiceAccountKeyAlgorithm)
                (only used on create)
         :param pulumi.Input[str] private_key_type: The output format of the private key. TYPE_GOOGLE_CREDENTIALS_FILE is the default output format.
+        :param pulumi.Input[str] public_key_data: Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with `public_key_type` and `private_key_type`.
         :param pulumi.Input[str] public_key_type: The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
         :param pulumi.Input[str] service_account_id: The Service account id of the Key Pair. This can be a string in the format
                `{ACCOUNT}` or `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`, where `{ACCOUNT}` is the email address or
@@ -90,6 +95,7 @@ class Key(pulumi.CustomResource):
 
             __props__['key_algorithm'] = key_algorithm
             __props__['private_key_type'] = private_key_type
+            __props__['public_key_data'] = public_key_data
             __props__['public_key_type'] = public_key_type
             if service_account_id is None:
                 raise TypeError("Missing required property 'service_account_id'")
@@ -106,7 +112,7 @@ class Key(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, key_algorithm=None, name=None, private_key=None, private_key_type=None, public_key=None, public_key_type=None, service_account_id=None, valid_after=None, valid_before=None):
+    def get(resource_name, id, opts=None, key_algorithm=None, name=None, private_key=None, private_key_type=None, public_key=None, public_key_data=None, public_key_type=None, service_account_id=None, valid_after=None, valid_before=None):
         """
         Get an existing Key resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -123,6 +129,7 @@ class Key(pulumi.CustomResource):
                service account keys through the CLI or web console. This is only populated when creating a new key.
         :param pulumi.Input[str] private_key_type: The output format of the private key. TYPE_GOOGLE_CREDENTIALS_FILE is the default output format.
         :param pulumi.Input[str] public_key: The public key, base64 encoded
+        :param pulumi.Input[str] public_key_data: Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with `public_key_type` and `private_key_type`.
         :param pulumi.Input[str] public_key_type: The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
         :param pulumi.Input[str] service_account_id: The Service account id of the Key Pair. This can be a string in the format
                `{ACCOUNT}` or `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`, where `{ACCOUNT}` is the email address or
@@ -140,6 +147,7 @@ class Key(pulumi.CustomResource):
         __props__["private_key"] = private_key
         __props__["private_key_type"] = private_key_type
         __props__["public_key"] = public_key
+        __props__["public_key_data"] = public_key_data
         __props__["public_key_type"] = public_key_type
         __props__["service_account_id"] = service_account_id
         __props__["valid_after"] = valid_after

@@ -44,7 +44,8 @@ type LookupInstanceResult struct {
 	// The boot disk for the instance. Structure is documented below.
 	BootDisks []GetInstanceBootDisk `pulumi:"bootDisks"`
 	// Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
-	CanIpForward bool `pulumi:"canIpForward"`
+	CanIpForward                bool                                    `pulumi:"canIpForward"`
+	ConfidentialInstanceConfigs []GetInstanceConfidentialInstanceConfig `pulumi:"confidentialInstanceConfigs"`
 	// The CPU platform used by this instance.
 	CpuPlatform   string `pulumi:"cpuPlatform"`
 	CurrentStatus string `pulumi:"currentStatus"`

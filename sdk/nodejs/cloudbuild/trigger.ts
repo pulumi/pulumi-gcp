@@ -106,9 +106,13 @@ export class Trigger extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Substitutions data for Build resource.
+     * Substitutions to use in a triggered build. Should only be used with triggers.run
      */
     public readonly substitutions!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * Tags for annotation of a Build. These are not docker tags.
+     */
+    public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
      * The unique identifier for the trigger.
      */
@@ -146,6 +150,7 @@ export class Trigger extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["substitutions"] = state ? state.substitutions : undefined;
+            inputs["tags"] = state ? state.tags : undefined;
             inputs["triggerId"] = state ? state.triggerId : undefined;
             inputs["triggerTemplate"] = state ? state.triggerTemplate : undefined;
         } else {
@@ -160,6 +165,7 @@ export class Trigger extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["substitutions"] = args ? args.substitutions : undefined;
+            inputs["tags"] = args ? args.tags : undefined;
             inputs["triggerTemplate"] = args ? args.triggerTemplate : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["triggerId"] = undefined /*out*/;
@@ -240,9 +246,13 @@ export interface TriggerState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * Substitutions data for Build resource.
+     * Substitutions to use in a triggered build. Should only be used with triggers.run
      */
     readonly substitutions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Tags for annotation of a Build. These are not docker tags.
+     */
+    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The unique identifier for the trigger.
      */
@@ -319,9 +329,13 @@ export interface TriggerArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * Substitutions data for Build resource.
+     * Substitutions to use in a triggered build. Should only be used with triggers.run
      */
     readonly substitutions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Tags for annotation of a Build. These are not docker tags.
+     */
+    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Template describing the types of source changes to trigger a build.
      * Branch and tag names in trigger templates are interpreted as regular

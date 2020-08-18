@@ -31,6 +31,7 @@ namespace Pulumi.Gcp.Filestore.Inputs
         /// <summary>
         /// IP versions for which the instance has
         /// IP addresses assigned.
+        /// Each value may be one of `ADDRESS_MODE_UNSPECIFIED`, `MODE_IPV4`, and `MODE_IPV6`.
         /// </summary>
         public InputList<string> Modes
         {

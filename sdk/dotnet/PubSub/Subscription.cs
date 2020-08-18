@@ -70,6 +70,15 @@ namespace Pulumi.Gcp.PubSub
         public Output<Outputs.SubscriptionExpirationPolicy> ExpirationPolicy { get; private set; } = null!;
 
         /// <summary>
+        /// The subscription only delivers the messages that match the filter.
+        /// Pub/Sub automatically acknowledges the messages that don't match the filter. You can filter messages
+        /// by their attributes. The maximum length of a filter is 256 bytes. After creating the subscription,
+        /// you can't modify the filter.
+        /// </summary>
+        [Output("filter")]
+        public Output<string?> Filter { get; private set; } = null!;
+
+        /// <summary>
         /// A set of key/value label pairs to assign to this Subscription.
         /// </summary>
         [Output("labels")]
@@ -220,6 +229,15 @@ namespace Pulumi.Gcp.PubSub
         [Input("expirationPolicy")]
         public Input<Inputs.SubscriptionExpirationPolicyArgs>? ExpirationPolicy { get; set; }
 
+        /// <summary>
+        /// The subscription only delivers the messages that match the filter.
+        /// Pub/Sub automatically acknowledges the messages that don't match the filter. You can filter messages
+        /// by their attributes. The maximum length of a filter is 256 bytes. After creating the subscription,
+        /// you can't modify the filter.
+        /// </summary>
+        [Input("filter")]
+        public Input<string>? Filter { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -334,6 +352,15 @@ namespace Pulumi.Gcp.PubSub
         /// </summary>
         [Input("expirationPolicy")]
         public Input<Inputs.SubscriptionExpirationPolicyGetArgs>? ExpirationPolicy { get; set; }
+
+        /// <summary>
+        /// The subscription only delivers the messages that match the filter.
+        /// Pub/Sub automatically acknowledges the messages that don't match the filter. You can filter messages
+        /// by their attributes. The maximum length of a filter is 256 bytes. After creating the subscription,
+        /// you can't modify the filter.
+        /// </summary>
+        [Input("filter")]
+        public Input<string>? Filter { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

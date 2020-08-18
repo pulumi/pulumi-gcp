@@ -56,7 +56,8 @@ type FlexibleAppVersion struct {
 	// The first matching URL handles the request and other request handlers are not attempted.
 	// Structure is documented below.
 	Handlers FlexibleAppVersionHandlerArrayOutput `pulumi:"handlers"`
-	// Before an application can receive email or XMPP messages, the application must be configured to enable the service.
+	// A list of the types of messages that this application is able to receive.
+	// Each value may be one of `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, and `INBOUND_SERVICE_WARMUP`.
 	InboundServices pulumi.StringArrayOutput `pulumi:"inboundServices"`
 	// Instance class that is used to run this version. Valid values are
 	// AutomaticScaling: F1, F2, F4, F4_1G
@@ -178,7 +179,8 @@ type flexibleAppVersionState struct {
 	// The first matching URL handles the request and other request handlers are not attempted.
 	// Structure is documented below.
 	Handlers []FlexibleAppVersionHandler `pulumi:"handlers"`
-	// Before an application can receive email or XMPP messages, the application must be configured to enable the service.
+	// A list of the types of messages that this application is able to receive.
+	// Each value may be one of `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, and `INBOUND_SERVICE_WARMUP`.
 	InboundServices []string `pulumi:"inboundServices"`
 	// Instance class that is used to run this version. Valid values are
 	// AutomaticScaling: F1, F2, F4, F4_1G
@@ -261,7 +263,8 @@ type FlexibleAppVersionState struct {
 	// The first matching URL handles the request and other request handlers are not attempted.
 	// Structure is documented below.
 	Handlers FlexibleAppVersionHandlerArrayInput
-	// Before an application can receive email or XMPP messages, the application must be configured to enable the service.
+	// A list of the types of messages that this application is able to receive.
+	// Each value may be one of `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, and `INBOUND_SERVICE_WARMUP`.
 	InboundServices pulumi.StringArrayInput
 	// Instance class that is used to run this version. Valid values are
 	// AutomaticScaling: F1, F2, F4, F4_1G
@@ -348,7 +351,8 @@ type flexibleAppVersionArgs struct {
 	// The first matching URL handles the request and other request handlers are not attempted.
 	// Structure is documented below.
 	Handlers []FlexibleAppVersionHandler `pulumi:"handlers"`
-	// Before an application can receive email or XMPP messages, the application must be configured to enable the service.
+	// A list of the types of messages that this application is able to receive.
+	// Each value may be one of `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, and `INBOUND_SERVICE_WARMUP`.
 	InboundServices []string `pulumi:"inboundServices"`
 	// Instance class that is used to run this version. Valid values are
 	// AutomaticScaling: F1, F2, F4, F4_1G
@@ -430,7 +434,8 @@ type FlexibleAppVersionArgs struct {
 	// The first matching URL handles the request and other request handlers are not attempted.
 	// Structure is documented below.
 	Handlers FlexibleAppVersionHandlerArrayInput
-	// Before an application can receive email or XMPP messages, the application must be configured to enable the service.
+	// A list of the types of messages that this application is able to receive.
+	// Each value may be one of `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, and `INBOUND_SERVICE_WARMUP`.
 	InboundServices pulumi.StringArrayInput
 	// Instance class that is used to run this version. Valid values are
 	// AutomaticScaling: F1, F2, F4, F4_1G

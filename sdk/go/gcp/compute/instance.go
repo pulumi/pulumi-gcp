@@ -29,6 +29,9 @@ type Instance struct {
 	// packets with non-matching source or destination IPs.
 	// This defaults to false.
 	CanIpForward pulumi.BoolPtrOutput `pulumi:"canIpForward"`
+	// The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
+	// to create.
+	ConfidentialInstanceConfig InstanceConfidentialInstanceConfigOutput `pulumi:"confidentialInstanceConfig"`
 	// The CPU platform used by this instance.
 	CpuPlatform pulumi.StringOutput `pulumi:"cpuPlatform"`
 	// Current status of the instance.
@@ -164,6 +167,9 @@ type instanceState struct {
 	// packets with non-matching source or destination IPs.
 	// This defaults to false.
 	CanIpForward *bool `pulumi:"canIpForward"`
+	// The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
+	// to create.
+	ConfidentialInstanceConfig *InstanceConfidentialInstanceConfig `pulumi:"confidentialInstanceConfig"`
 	// The CPU platform used by this instance.
 	CpuPlatform *string `pulumi:"cpuPlatform"`
 	// Current status of the instance.
@@ -263,6 +269,9 @@ type InstanceState struct {
 	// packets with non-matching source or destination IPs.
 	// This defaults to false.
 	CanIpForward pulumi.BoolPtrInput
+	// The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
+	// to create.
+	ConfidentialInstanceConfig InstanceConfidentialInstanceConfigPtrInput
 	// The CPU platform used by this instance.
 	CpuPlatform pulumi.StringPtrInput
 	// Current status of the instance.
@@ -366,6 +375,9 @@ type instanceArgs struct {
 	// packets with non-matching source or destination IPs.
 	// This defaults to false.
 	CanIpForward *bool `pulumi:"canIpForward"`
+	// The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
+	// to create.
+	ConfidentialInstanceConfig *InstanceConfidentialInstanceConfig `pulumi:"confidentialInstanceConfig"`
 	// Enable deletion protection on this instance. Defaults to false.
 	// **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
@@ -452,6 +464,9 @@ type InstanceArgs struct {
 	// packets with non-matching source or destination IPs.
 	// This defaults to false.
 	CanIpForward pulumi.BoolPtrInput
+	// The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
+	// to create.
+	ConfidentialInstanceConfig InstanceConfidentialInstanceConfigPtrInput
 	// Enable deletion protection on this instance. Defaults to false.
 	// **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
 	DeletionProtection pulumi.BoolPtrInput

@@ -14,12 +14,13 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
     public sealed class TriggerTriggerTemplate
     {
         /// <summary>
-        /// Name of the branch to build. Exactly one a of branch name, tag, or commit SHA must be provided.
-        /// This field is a regular expression.
+        /// Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+        /// The syntax of the regular expressions accepted is the syntax accepted by RE2 and
+        /// described at https://github.com/google/re2/wiki/Syntax
         /// </summary>
         public readonly string? BranchName;
         /// <summary>
-        /// Explicit commit SHA to build. Exactly one of a branch name, tag, or commit SHA must be provided.
+        /// Explicit commit SHA to build. Exactly one a of branch name, tag, or commit SHA must be provided.
         /// </summary>
         public readonly string? CommitSha;
         /// <summary>
@@ -35,21 +36,22 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
         /// </summary>
         public readonly string? Dir;
         /// <summary>
-        /// When true, only trigger a build if the revision regex does NOT match the git_ref regex.
+        /// Only trigger a build if the revision regex does NOT match the revision regex.
         /// </summary>
         public readonly bool? InvertRegex;
         /// <summary>
-        /// ID of the project that owns the Cloud Source Repository. If
-        /// omitted, the project ID requesting the build is assumed.
+        /// ID of the project that owns the Cloud Source Repository.
+        /// If omitted, the project ID requesting the build is assumed.
         /// </summary>
         public readonly string? ProjectId;
         /// <summary>
-        /// Name of the Cloud Source Repository. If omitted, the name "default" is assumed.
+        /// Name of the Cloud Source Repository.
         /// </summary>
         public readonly string? RepoName;
         /// <summary>
-        /// Name of the tag to build. Exactly one of a branch name, tag, or commit SHA must be provided.
-        /// This field is a regular expression.
+        /// Regex matching tags to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+        /// The syntax of the regular expressions accepted is the syntax accepted by RE2 and
+        /// described at https://github.com/google/re2/wiki/Syntax
         /// </summary>
         public readonly string? TagName;
 

@@ -6058,7 +6058,7 @@ type ExternalVpnGatewayInterface struct {
 	Id *int `pulumi:"id"`
 	// IP address of the interface in the external VPN gateway.
 	// Only IPv4 is supported. This IP address can be either from
-	// your on-premise gateway or another Cloud provider’s VPN gateway,
+	// your on-premise gateway or another Cloud provider's VPN gateway,
 	// it cannot be an IP address from Google Compute Engine.
 	IpAddress *string `pulumi:"ipAddress"`
 }
@@ -6083,7 +6083,7 @@ type ExternalVpnGatewayInterfaceArgs struct {
 	Id pulumi.IntPtrInput `pulumi:"id"`
 	// IP address of the interface in the external VPN gateway.
 	// Only IPv4 is supported. This IP address can be either from
-	// your on-premise gateway or another Cloud provider’s VPN gateway,
+	// your on-premise gateway or another Cloud provider's VPN gateway,
 	// it cannot be an IP address from Google Compute Engine.
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
 }
@@ -6150,7 +6150,7 @@ func (o ExternalVpnGatewayInterfaceOutput) Id() pulumi.IntPtrOutput {
 
 // IP address of the interface in the external VPN gateway.
 // Only IPv4 is supported. This IP address can be either from
-// your on-premise gateway or another Cloud provider’s VPN gateway,
+// your on-premise gateway or another Cloud provider's VPN gateway,
 // it cannot be an IP address from Google Compute Engine.
 func (o ExternalVpnGatewayInterfaceOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExternalVpnGatewayInterface) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
@@ -9642,6 +9642,132 @@ func (o InstanceBootDiskInitializeParamsPtrOutput) Type() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+type InstanceConfidentialInstanceConfig struct {
+	EnableConfidentialCompute bool `pulumi:"enableConfidentialCompute"`
+}
+
+// InstanceConfidentialInstanceConfigInput is an input type that accepts InstanceConfidentialInstanceConfigArgs and InstanceConfidentialInstanceConfigOutput values.
+// You can construct a concrete instance of `InstanceConfidentialInstanceConfigInput` via:
+//
+//          InstanceConfidentialInstanceConfigArgs{...}
+type InstanceConfidentialInstanceConfigInput interface {
+	pulumi.Input
+
+	ToInstanceConfidentialInstanceConfigOutput() InstanceConfidentialInstanceConfigOutput
+	ToInstanceConfidentialInstanceConfigOutputWithContext(context.Context) InstanceConfidentialInstanceConfigOutput
+}
+
+type InstanceConfidentialInstanceConfigArgs struct {
+	EnableConfidentialCompute pulumi.BoolInput `pulumi:"enableConfidentialCompute"`
+}
+
+func (InstanceConfidentialInstanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceConfidentialInstanceConfig)(nil)).Elem()
+}
+
+func (i InstanceConfidentialInstanceConfigArgs) ToInstanceConfidentialInstanceConfigOutput() InstanceConfidentialInstanceConfigOutput {
+	return i.ToInstanceConfidentialInstanceConfigOutputWithContext(context.Background())
+}
+
+func (i InstanceConfidentialInstanceConfigArgs) ToInstanceConfidentialInstanceConfigOutputWithContext(ctx context.Context) InstanceConfidentialInstanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceConfidentialInstanceConfigOutput)
+}
+
+func (i InstanceConfidentialInstanceConfigArgs) ToInstanceConfidentialInstanceConfigPtrOutput() InstanceConfidentialInstanceConfigPtrOutput {
+	return i.ToInstanceConfidentialInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceConfidentialInstanceConfigArgs) ToInstanceConfidentialInstanceConfigPtrOutputWithContext(ctx context.Context) InstanceConfidentialInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceConfidentialInstanceConfigOutput).ToInstanceConfidentialInstanceConfigPtrOutputWithContext(ctx)
+}
+
+// InstanceConfidentialInstanceConfigPtrInput is an input type that accepts InstanceConfidentialInstanceConfigArgs, InstanceConfidentialInstanceConfigPtr and InstanceConfidentialInstanceConfigPtrOutput values.
+// You can construct a concrete instance of `InstanceConfidentialInstanceConfigPtrInput` via:
+//
+//          InstanceConfidentialInstanceConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type InstanceConfidentialInstanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToInstanceConfidentialInstanceConfigPtrOutput() InstanceConfidentialInstanceConfigPtrOutput
+	ToInstanceConfidentialInstanceConfigPtrOutputWithContext(context.Context) InstanceConfidentialInstanceConfigPtrOutput
+}
+
+type instanceConfidentialInstanceConfigPtrType InstanceConfidentialInstanceConfigArgs
+
+func InstanceConfidentialInstanceConfigPtr(v *InstanceConfidentialInstanceConfigArgs) InstanceConfidentialInstanceConfigPtrInput {
+	return (*instanceConfidentialInstanceConfigPtrType)(v)
+}
+
+func (*instanceConfidentialInstanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceConfidentialInstanceConfig)(nil)).Elem()
+}
+
+func (i *instanceConfidentialInstanceConfigPtrType) ToInstanceConfidentialInstanceConfigPtrOutput() InstanceConfidentialInstanceConfigPtrOutput {
+	return i.ToInstanceConfidentialInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceConfidentialInstanceConfigPtrType) ToInstanceConfidentialInstanceConfigPtrOutputWithContext(ctx context.Context) InstanceConfidentialInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceConfidentialInstanceConfigPtrOutput)
+}
+
+type InstanceConfidentialInstanceConfigOutput struct{ *pulumi.OutputState }
+
+func (InstanceConfidentialInstanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceConfidentialInstanceConfig)(nil)).Elem()
+}
+
+func (o InstanceConfidentialInstanceConfigOutput) ToInstanceConfidentialInstanceConfigOutput() InstanceConfidentialInstanceConfigOutput {
+	return o
+}
+
+func (o InstanceConfidentialInstanceConfigOutput) ToInstanceConfidentialInstanceConfigOutputWithContext(ctx context.Context) InstanceConfidentialInstanceConfigOutput {
+	return o
+}
+
+func (o InstanceConfidentialInstanceConfigOutput) ToInstanceConfidentialInstanceConfigPtrOutput() InstanceConfidentialInstanceConfigPtrOutput {
+	return o.ToInstanceConfidentialInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceConfidentialInstanceConfigOutput) ToInstanceConfidentialInstanceConfigPtrOutputWithContext(ctx context.Context) InstanceConfidentialInstanceConfigPtrOutput {
+	return o.ApplyT(func(v InstanceConfidentialInstanceConfig) *InstanceConfidentialInstanceConfig {
+		return &v
+	}).(InstanceConfidentialInstanceConfigPtrOutput)
+}
+func (o InstanceConfidentialInstanceConfigOutput) EnableConfidentialCompute() pulumi.BoolOutput {
+	return o.ApplyT(func(v InstanceConfidentialInstanceConfig) bool { return v.EnableConfidentialCompute }).(pulumi.BoolOutput)
+}
+
+type InstanceConfidentialInstanceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceConfidentialInstanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceConfidentialInstanceConfig)(nil)).Elem()
+}
+
+func (o InstanceConfidentialInstanceConfigPtrOutput) ToInstanceConfidentialInstanceConfigPtrOutput() InstanceConfidentialInstanceConfigPtrOutput {
+	return o
+}
+
+func (o InstanceConfidentialInstanceConfigPtrOutput) ToInstanceConfidentialInstanceConfigPtrOutputWithContext(ctx context.Context) InstanceConfidentialInstanceConfigPtrOutput {
+	return o
+}
+
+func (o InstanceConfidentialInstanceConfigPtrOutput) Elem() InstanceConfidentialInstanceConfigOutput {
+	return o.ApplyT(func(v *InstanceConfidentialInstanceConfig) InstanceConfidentialInstanceConfig { return *v }).(InstanceConfidentialInstanceConfigOutput)
+}
+
+func (o InstanceConfidentialInstanceConfigPtrOutput) EnableConfidentialCompute() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceConfidentialInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnableConfidentialCompute
+	}).(pulumi.BoolPtrOutput)
+}
+
 type InstanceFromTemplateAttachedDisk struct {
 	DeviceName              *string `pulumi:"deviceName"`
 	DiskEncryptionKeyRaw    *string `pulumi:"diskEncryptionKeyRaw"`
@@ -10170,6 +10296,134 @@ func (o InstanceFromTemplateBootDiskInitializeParamsPtrOutput) Type() pulumi.Str
 		}
 		return v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceFromTemplateConfidentialInstanceConfig struct {
+	EnableConfidentialCompute bool `pulumi:"enableConfidentialCompute"`
+}
+
+// InstanceFromTemplateConfidentialInstanceConfigInput is an input type that accepts InstanceFromTemplateConfidentialInstanceConfigArgs and InstanceFromTemplateConfidentialInstanceConfigOutput values.
+// You can construct a concrete instance of `InstanceFromTemplateConfidentialInstanceConfigInput` via:
+//
+//          InstanceFromTemplateConfidentialInstanceConfigArgs{...}
+type InstanceFromTemplateConfidentialInstanceConfigInput interface {
+	pulumi.Input
+
+	ToInstanceFromTemplateConfidentialInstanceConfigOutput() InstanceFromTemplateConfidentialInstanceConfigOutput
+	ToInstanceFromTemplateConfidentialInstanceConfigOutputWithContext(context.Context) InstanceFromTemplateConfidentialInstanceConfigOutput
+}
+
+type InstanceFromTemplateConfidentialInstanceConfigArgs struct {
+	EnableConfidentialCompute pulumi.BoolInput `pulumi:"enableConfidentialCompute"`
+}
+
+func (InstanceFromTemplateConfidentialInstanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFromTemplateConfidentialInstanceConfig)(nil)).Elem()
+}
+
+func (i InstanceFromTemplateConfidentialInstanceConfigArgs) ToInstanceFromTemplateConfidentialInstanceConfigOutput() InstanceFromTemplateConfidentialInstanceConfigOutput {
+	return i.ToInstanceFromTemplateConfidentialInstanceConfigOutputWithContext(context.Background())
+}
+
+func (i InstanceFromTemplateConfidentialInstanceConfigArgs) ToInstanceFromTemplateConfidentialInstanceConfigOutputWithContext(ctx context.Context) InstanceFromTemplateConfidentialInstanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromTemplateConfidentialInstanceConfigOutput)
+}
+
+func (i InstanceFromTemplateConfidentialInstanceConfigArgs) ToInstanceFromTemplateConfidentialInstanceConfigPtrOutput() InstanceFromTemplateConfidentialInstanceConfigPtrOutput {
+	return i.ToInstanceFromTemplateConfidentialInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceFromTemplateConfidentialInstanceConfigArgs) ToInstanceFromTemplateConfidentialInstanceConfigPtrOutputWithContext(ctx context.Context) InstanceFromTemplateConfidentialInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromTemplateConfidentialInstanceConfigOutput).ToInstanceFromTemplateConfidentialInstanceConfigPtrOutputWithContext(ctx)
+}
+
+// InstanceFromTemplateConfidentialInstanceConfigPtrInput is an input type that accepts InstanceFromTemplateConfidentialInstanceConfigArgs, InstanceFromTemplateConfidentialInstanceConfigPtr and InstanceFromTemplateConfidentialInstanceConfigPtrOutput values.
+// You can construct a concrete instance of `InstanceFromTemplateConfidentialInstanceConfigPtrInput` via:
+//
+//          InstanceFromTemplateConfidentialInstanceConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type InstanceFromTemplateConfidentialInstanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToInstanceFromTemplateConfidentialInstanceConfigPtrOutput() InstanceFromTemplateConfidentialInstanceConfigPtrOutput
+	ToInstanceFromTemplateConfidentialInstanceConfigPtrOutputWithContext(context.Context) InstanceFromTemplateConfidentialInstanceConfigPtrOutput
+}
+
+type instanceFromTemplateConfidentialInstanceConfigPtrType InstanceFromTemplateConfidentialInstanceConfigArgs
+
+func InstanceFromTemplateConfidentialInstanceConfigPtr(v *InstanceFromTemplateConfidentialInstanceConfigArgs) InstanceFromTemplateConfidentialInstanceConfigPtrInput {
+	return (*instanceFromTemplateConfidentialInstanceConfigPtrType)(v)
+}
+
+func (*instanceFromTemplateConfidentialInstanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceFromTemplateConfidentialInstanceConfig)(nil)).Elem()
+}
+
+func (i *instanceFromTemplateConfidentialInstanceConfigPtrType) ToInstanceFromTemplateConfidentialInstanceConfigPtrOutput() InstanceFromTemplateConfidentialInstanceConfigPtrOutput {
+	return i.ToInstanceFromTemplateConfidentialInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceFromTemplateConfidentialInstanceConfigPtrType) ToInstanceFromTemplateConfidentialInstanceConfigPtrOutputWithContext(ctx context.Context) InstanceFromTemplateConfidentialInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromTemplateConfidentialInstanceConfigPtrOutput)
+}
+
+type InstanceFromTemplateConfidentialInstanceConfigOutput struct{ *pulumi.OutputState }
+
+func (InstanceFromTemplateConfidentialInstanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFromTemplateConfidentialInstanceConfig)(nil)).Elem()
+}
+
+func (o InstanceFromTemplateConfidentialInstanceConfigOutput) ToInstanceFromTemplateConfidentialInstanceConfigOutput() InstanceFromTemplateConfidentialInstanceConfigOutput {
+	return o
+}
+
+func (o InstanceFromTemplateConfidentialInstanceConfigOutput) ToInstanceFromTemplateConfidentialInstanceConfigOutputWithContext(ctx context.Context) InstanceFromTemplateConfidentialInstanceConfigOutput {
+	return o
+}
+
+func (o InstanceFromTemplateConfidentialInstanceConfigOutput) ToInstanceFromTemplateConfidentialInstanceConfigPtrOutput() InstanceFromTemplateConfidentialInstanceConfigPtrOutput {
+	return o.ToInstanceFromTemplateConfidentialInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceFromTemplateConfidentialInstanceConfigOutput) ToInstanceFromTemplateConfidentialInstanceConfigPtrOutputWithContext(ctx context.Context) InstanceFromTemplateConfidentialInstanceConfigPtrOutput {
+	return o.ApplyT(func(v InstanceFromTemplateConfidentialInstanceConfig) *InstanceFromTemplateConfidentialInstanceConfig {
+		return &v
+	}).(InstanceFromTemplateConfidentialInstanceConfigPtrOutput)
+}
+func (o InstanceFromTemplateConfidentialInstanceConfigOutput) EnableConfidentialCompute() pulumi.BoolOutput {
+	return o.ApplyT(func(v InstanceFromTemplateConfidentialInstanceConfig) bool { return v.EnableConfidentialCompute }).(pulumi.BoolOutput)
+}
+
+type InstanceFromTemplateConfidentialInstanceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceFromTemplateConfidentialInstanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceFromTemplateConfidentialInstanceConfig)(nil)).Elem()
+}
+
+func (o InstanceFromTemplateConfidentialInstanceConfigPtrOutput) ToInstanceFromTemplateConfidentialInstanceConfigPtrOutput() InstanceFromTemplateConfidentialInstanceConfigPtrOutput {
+	return o
+}
+
+func (o InstanceFromTemplateConfidentialInstanceConfigPtrOutput) ToInstanceFromTemplateConfidentialInstanceConfigPtrOutputWithContext(ctx context.Context) InstanceFromTemplateConfidentialInstanceConfigPtrOutput {
+	return o
+}
+
+func (o InstanceFromTemplateConfidentialInstanceConfigPtrOutput) Elem() InstanceFromTemplateConfidentialInstanceConfigOutput {
+	return o.ApplyT(func(v *InstanceFromTemplateConfidentialInstanceConfig) InstanceFromTemplateConfidentialInstanceConfig {
+		return *v
+	}).(InstanceFromTemplateConfidentialInstanceConfigOutput)
+}
+
+func (o InstanceFromTemplateConfidentialInstanceConfigPtrOutput) EnableConfidentialCompute() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceFromTemplateConfidentialInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnableConfidentialCompute
+	}).(pulumi.BoolPtrOutput)
 }
 
 type InstanceFromTemplateGuestAccelerator struct {
@@ -13990,6 +14244,134 @@ func (o InstanceShieldedInstanceConfigPtrOutput) EnableVtpm() pulumi.BoolPtrOutp
 	}).(pulumi.BoolPtrOutput)
 }
 
+type InstanceTemplateConfidentialInstanceConfig struct {
+	EnableConfidentialCompute bool `pulumi:"enableConfidentialCompute"`
+}
+
+// InstanceTemplateConfidentialInstanceConfigInput is an input type that accepts InstanceTemplateConfidentialInstanceConfigArgs and InstanceTemplateConfidentialInstanceConfigOutput values.
+// You can construct a concrete instance of `InstanceTemplateConfidentialInstanceConfigInput` via:
+//
+//          InstanceTemplateConfidentialInstanceConfigArgs{...}
+type InstanceTemplateConfidentialInstanceConfigInput interface {
+	pulumi.Input
+
+	ToInstanceTemplateConfidentialInstanceConfigOutput() InstanceTemplateConfidentialInstanceConfigOutput
+	ToInstanceTemplateConfidentialInstanceConfigOutputWithContext(context.Context) InstanceTemplateConfidentialInstanceConfigOutput
+}
+
+type InstanceTemplateConfidentialInstanceConfigArgs struct {
+	EnableConfidentialCompute pulumi.BoolInput `pulumi:"enableConfidentialCompute"`
+}
+
+func (InstanceTemplateConfidentialInstanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceTemplateConfidentialInstanceConfig)(nil)).Elem()
+}
+
+func (i InstanceTemplateConfidentialInstanceConfigArgs) ToInstanceTemplateConfidentialInstanceConfigOutput() InstanceTemplateConfidentialInstanceConfigOutput {
+	return i.ToInstanceTemplateConfidentialInstanceConfigOutputWithContext(context.Background())
+}
+
+func (i InstanceTemplateConfidentialInstanceConfigArgs) ToInstanceTemplateConfidentialInstanceConfigOutputWithContext(ctx context.Context) InstanceTemplateConfidentialInstanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceTemplateConfidentialInstanceConfigOutput)
+}
+
+func (i InstanceTemplateConfidentialInstanceConfigArgs) ToInstanceTemplateConfidentialInstanceConfigPtrOutput() InstanceTemplateConfidentialInstanceConfigPtrOutput {
+	return i.ToInstanceTemplateConfidentialInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceTemplateConfidentialInstanceConfigArgs) ToInstanceTemplateConfidentialInstanceConfigPtrOutputWithContext(ctx context.Context) InstanceTemplateConfidentialInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceTemplateConfidentialInstanceConfigOutput).ToInstanceTemplateConfidentialInstanceConfigPtrOutputWithContext(ctx)
+}
+
+// InstanceTemplateConfidentialInstanceConfigPtrInput is an input type that accepts InstanceTemplateConfidentialInstanceConfigArgs, InstanceTemplateConfidentialInstanceConfigPtr and InstanceTemplateConfidentialInstanceConfigPtrOutput values.
+// You can construct a concrete instance of `InstanceTemplateConfidentialInstanceConfigPtrInput` via:
+//
+//          InstanceTemplateConfidentialInstanceConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type InstanceTemplateConfidentialInstanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToInstanceTemplateConfidentialInstanceConfigPtrOutput() InstanceTemplateConfidentialInstanceConfigPtrOutput
+	ToInstanceTemplateConfidentialInstanceConfigPtrOutputWithContext(context.Context) InstanceTemplateConfidentialInstanceConfigPtrOutput
+}
+
+type instanceTemplateConfidentialInstanceConfigPtrType InstanceTemplateConfidentialInstanceConfigArgs
+
+func InstanceTemplateConfidentialInstanceConfigPtr(v *InstanceTemplateConfidentialInstanceConfigArgs) InstanceTemplateConfidentialInstanceConfigPtrInput {
+	return (*instanceTemplateConfidentialInstanceConfigPtrType)(v)
+}
+
+func (*instanceTemplateConfidentialInstanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceTemplateConfidentialInstanceConfig)(nil)).Elem()
+}
+
+func (i *instanceTemplateConfidentialInstanceConfigPtrType) ToInstanceTemplateConfidentialInstanceConfigPtrOutput() InstanceTemplateConfidentialInstanceConfigPtrOutput {
+	return i.ToInstanceTemplateConfidentialInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceTemplateConfidentialInstanceConfigPtrType) ToInstanceTemplateConfidentialInstanceConfigPtrOutputWithContext(ctx context.Context) InstanceTemplateConfidentialInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceTemplateConfidentialInstanceConfigPtrOutput)
+}
+
+type InstanceTemplateConfidentialInstanceConfigOutput struct{ *pulumi.OutputState }
+
+func (InstanceTemplateConfidentialInstanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceTemplateConfidentialInstanceConfig)(nil)).Elem()
+}
+
+func (o InstanceTemplateConfidentialInstanceConfigOutput) ToInstanceTemplateConfidentialInstanceConfigOutput() InstanceTemplateConfidentialInstanceConfigOutput {
+	return o
+}
+
+func (o InstanceTemplateConfidentialInstanceConfigOutput) ToInstanceTemplateConfidentialInstanceConfigOutputWithContext(ctx context.Context) InstanceTemplateConfidentialInstanceConfigOutput {
+	return o
+}
+
+func (o InstanceTemplateConfidentialInstanceConfigOutput) ToInstanceTemplateConfidentialInstanceConfigPtrOutput() InstanceTemplateConfidentialInstanceConfigPtrOutput {
+	return o.ToInstanceTemplateConfidentialInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceTemplateConfidentialInstanceConfigOutput) ToInstanceTemplateConfidentialInstanceConfigPtrOutputWithContext(ctx context.Context) InstanceTemplateConfidentialInstanceConfigPtrOutput {
+	return o.ApplyT(func(v InstanceTemplateConfidentialInstanceConfig) *InstanceTemplateConfidentialInstanceConfig {
+		return &v
+	}).(InstanceTemplateConfidentialInstanceConfigPtrOutput)
+}
+func (o InstanceTemplateConfidentialInstanceConfigOutput) EnableConfidentialCompute() pulumi.BoolOutput {
+	return o.ApplyT(func(v InstanceTemplateConfidentialInstanceConfig) bool { return v.EnableConfidentialCompute }).(pulumi.BoolOutput)
+}
+
+type InstanceTemplateConfidentialInstanceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceTemplateConfidentialInstanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceTemplateConfidentialInstanceConfig)(nil)).Elem()
+}
+
+func (o InstanceTemplateConfidentialInstanceConfigPtrOutput) ToInstanceTemplateConfidentialInstanceConfigPtrOutput() InstanceTemplateConfidentialInstanceConfigPtrOutput {
+	return o
+}
+
+func (o InstanceTemplateConfidentialInstanceConfigPtrOutput) ToInstanceTemplateConfidentialInstanceConfigPtrOutputWithContext(ctx context.Context) InstanceTemplateConfidentialInstanceConfigPtrOutput {
+	return o
+}
+
+func (o InstanceTemplateConfidentialInstanceConfigPtrOutput) Elem() InstanceTemplateConfidentialInstanceConfigOutput {
+	return o.ApplyT(func(v *InstanceTemplateConfidentialInstanceConfig) InstanceTemplateConfidentialInstanceConfig {
+		return *v
+	}).(InstanceTemplateConfidentialInstanceConfigOutput)
+}
+
+func (o InstanceTemplateConfidentialInstanceConfigPtrOutput) EnableConfidentialCompute() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceTemplateConfidentialInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnableConfidentialCompute
+	}).(pulumi.BoolPtrOutput)
+}
+
 type InstanceTemplateDisk struct {
 	// Whether or not the disk should be auto-deleted.
 	// This defaults to true.
@@ -17193,6 +17575,7 @@ type PacketMirroringFilter struct {
 	// destination (egress) IP in the IP header. Only IPv4 is supported.
 	CidrRanges []string `pulumi:"cidrRanges"`
 	// Protocols that apply as a filter on mirrored traffic.
+	// Each value may be one of `tcp`, `udp`, and `icmp`.
 	IpProtocols []string `pulumi:"ipProtocols"`
 }
 
@@ -17212,6 +17595,7 @@ type PacketMirroringFilterArgs struct {
 	// destination (egress) IP in the IP header. Only IPv4 is supported.
 	CidrRanges pulumi.StringArrayInput `pulumi:"cidrRanges"`
 	// Protocols that apply as a filter on mirrored traffic.
+	// Each value may be one of `tcp`, `udp`, and `icmp`.
 	IpProtocols pulumi.StringArrayInput `pulumi:"ipProtocols"`
 }
 
@@ -17299,6 +17683,7 @@ func (o PacketMirroringFilterOutput) CidrRanges() pulumi.StringArrayOutput {
 }
 
 // Protocols that apply as a filter on mirrored traffic.
+// Each value may be one of `tcp`, `udp`, and `icmp`.
 func (o PacketMirroringFilterOutput) IpProtocols() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PacketMirroringFilter) []string { return v.IpProtocols }).(pulumi.StringArrayOutput)
 }
@@ -17333,6 +17718,7 @@ func (o PacketMirroringFilterPtrOutput) CidrRanges() pulumi.StringArrayOutput {
 }
 
 // Protocols that apply as a filter on mirrored traffic.
+// Each value may be one of `tcp`, `udp`, and `icmp`.
 func (o PacketMirroringFilterPtrOutput) IpProtocols() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PacketMirroringFilter) []string {
 		if v == nil {
@@ -24867,6 +25253,598 @@ func (o RegionInstanceGroupManagerVersionTargetSizePtrOutput) Percent() pulumi.I
 		}
 		return v.Percent
 	}).(pulumi.IntPtrOutput)
+}
+
+type RegionNetworkEndpointGroupAppEngine struct {
+	// Optional serving service.
+	// The service name must be 1-63 characters long, and comply with RFC1035.
+	// Example value: "default", "my-service".
+	Service *string `pulumi:"service"`
+	// A template to parse function field from a request URL. URL mask allows
+	// for routing to multiple Cloud Functions without having to create
+	// multiple Network Endpoint Groups and backend services.
+	// For example, request URLs "mydomain.com/function1" and "mydomain.com/function2"
+	// can be backed by the same Serverless NEG with URL mask "/". The URL mask
+	// will parse them to { function = "function1" } and { function = "function2" } respectively.
+	UrlMask *string `pulumi:"urlMask"`
+	// Optional serving version.
+	// The version must be 1-63 characters long, and comply with RFC1035.
+	// Example value: "v1", "v2".
+	Version *string `pulumi:"version"`
+}
+
+// RegionNetworkEndpointGroupAppEngineInput is an input type that accepts RegionNetworkEndpointGroupAppEngineArgs and RegionNetworkEndpointGroupAppEngineOutput values.
+// You can construct a concrete instance of `RegionNetworkEndpointGroupAppEngineInput` via:
+//
+//          RegionNetworkEndpointGroupAppEngineArgs{...}
+type RegionNetworkEndpointGroupAppEngineInput interface {
+	pulumi.Input
+
+	ToRegionNetworkEndpointGroupAppEngineOutput() RegionNetworkEndpointGroupAppEngineOutput
+	ToRegionNetworkEndpointGroupAppEngineOutputWithContext(context.Context) RegionNetworkEndpointGroupAppEngineOutput
+}
+
+type RegionNetworkEndpointGroupAppEngineArgs struct {
+	// Optional serving service.
+	// The service name must be 1-63 characters long, and comply with RFC1035.
+	// Example value: "default", "my-service".
+	Service pulumi.StringPtrInput `pulumi:"service"`
+	// A template to parse function field from a request URL. URL mask allows
+	// for routing to multiple Cloud Functions without having to create
+	// multiple Network Endpoint Groups and backend services.
+	// For example, request URLs "mydomain.com/function1" and "mydomain.com/function2"
+	// can be backed by the same Serverless NEG with URL mask "/". The URL mask
+	// will parse them to { function = "function1" } and { function = "function2" } respectively.
+	UrlMask pulumi.StringPtrInput `pulumi:"urlMask"`
+	// Optional serving version.
+	// The version must be 1-63 characters long, and comply with RFC1035.
+	// Example value: "v1", "v2".
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (RegionNetworkEndpointGroupAppEngineArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionNetworkEndpointGroupAppEngine)(nil)).Elem()
+}
+
+func (i RegionNetworkEndpointGroupAppEngineArgs) ToRegionNetworkEndpointGroupAppEngineOutput() RegionNetworkEndpointGroupAppEngineOutput {
+	return i.ToRegionNetworkEndpointGroupAppEngineOutputWithContext(context.Background())
+}
+
+func (i RegionNetworkEndpointGroupAppEngineArgs) ToRegionNetworkEndpointGroupAppEngineOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupAppEngineOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionNetworkEndpointGroupAppEngineOutput)
+}
+
+func (i RegionNetworkEndpointGroupAppEngineArgs) ToRegionNetworkEndpointGroupAppEnginePtrOutput() RegionNetworkEndpointGroupAppEnginePtrOutput {
+	return i.ToRegionNetworkEndpointGroupAppEnginePtrOutputWithContext(context.Background())
+}
+
+func (i RegionNetworkEndpointGroupAppEngineArgs) ToRegionNetworkEndpointGroupAppEnginePtrOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupAppEnginePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionNetworkEndpointGroupAppEngineOutput).ToRegionNetworkEndpointGroupAppEnginePtrOutputWithContext(ctx)
+}
+
+// RegionNetworkEndpointGroupAppEnginePtrInput is an input type that accepts RegionNetworkEndpointGroupAppEngineArgs, RegionNetworkEndpointGroupAppEnginePtr and RegionNetworkEndpointGroupAppEnginePtrOutput values.
+// You can construct a concrete instance of `RegionNetworkEndpointGroupAppEnginePtrInput` via:
+//
+//          RegionNetworkEndpointGroupAppEngineArgs{...}
+//
+//  or:
+//
+//          nil
+type RegionNetworkEndpointGroupAppEnginePtrInput interface {
+	pulumi.Input
+
+	ToRegionNetworkEndpointGroupAppEnginePtrOutput() RegionNetworkEndpointGroupAppEnginePtrOutput
+	ToRegionNetworkEndpointGroupAppEnginePtrOutputWithContext(context.Context) RegionNetworkEndpointGroupAppEnginePtrOutput
+}
+
+type regionNetworkEndpointGroupAppEnginePtrType RegionNetworkEndpointGroupAppEngineArgs
+
+func RegionNetworkEndpointGroupAppEnginePtr(v *RegionNetworkEndpointGroupAppEngineArgs) RegionNetworkEndpointGroupAppEnginePtrInput {
+	return (*regionNetworkEndpointGroupAppEnginePtrType)(v)
+}
+
+func (*regionNetworkEndpointGroupAppEnginePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionNetworkEndpointGroupAppEngine)(nil)).Elem()
+}
+
+func (i *regionNetworkEndpointGroupAppEnginePtrType) ToRegionNetworkEndpointGroupAppEnginePtrOutput() RegionNetworkEndpointGroupAppEnginePtrOutput {
+	return i.ToRegionNetworkEndpointGroupAppEnginePtrOutputWithContext(context.Background())
+}
+
+func (i *regionNetworkEndpointGroupAppEnginePtrType) ToRegionNetworkEndpointGroupAppEnginePtrOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupAppEnginePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionNetworkEndpointGroupAppEnginePtrOutput)
+}
+
+type RegionNetworkEndpointGroupAppEngineOutput struct{ *pulumi.OutputState }
+
+func (RegionNetworkEndpointGroupAppEngineOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionNetworkEndpointGroupAppEngine)(nil)).Elem()
+}
+
+func (o RegionNetworkEndpointGroupAppEngineOutput) ToRegionNetworkEndpointGroupAppEngineOutput() RegionNetworkEndpointGroupAppEngineOutput {
+	return o
+}
+
+func (o RegionNetworkEndpointGroupAppEngineOutput) ToRegionNetworkEndpointGroupAppEngineOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupAppEngineOutput {
+	return o
+}
+
+func (o RegionNetworkEndpointGroupAppEngineOutput) ToRegionNetworkEndpointGroupAppEnginePtrOutput() RegionNetworkEndpointGroupAppEnginePtrOutput {
+	return o.ToRegionNetworkEndpointGroupAppEnginePtrOutputWithContext(context.Background())
+}
+
+func (o RegionNetworkEndpointGroupAppEngineOutput) ToRegionNetworkEndpointGroupAppEnginePtrOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupAppEnginePtrOutput {
+	return o.ApplyT(func(v RegionNetworkEndpointGroupAppEngine) *RegionNetworkEndpointGroupAppEngine {
+		return &v
+	}).(RegionNetworkEndpointGroupAppEnginePtrOutput)
+}
+
+// Optional serving service.
+// The service name must be 1-63 characters long, and comply with RFC1035.
+// Example value: "default", "my-service".
+func (o RegionNetworkEndpointGroupAppEngineOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionNetworkEndpointGroupAppEngine) *string { return v.Service }).(pulumi.StringPtrOutput)
+}
+
+// A template to parse function field from a request URL. URL mask allows
+// for routing to multiple Cloud Functions without having to create
+// multiple Network Endpoint Groups and backend services.
+// For example, request URLs "mydomain.com/function1" and "mydomain.com/function2"
+// can be backed by the same Serverless NEG with URL mask "/". The URL mask
+// will parse them to { function = "function1" } and { function = "function2" } respectively.
+func (o RegionNetworkEndpointGroupAppEngineOutput) UrlMask() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionNetworkEndpointGroupAppEngine) *string { return v.UrlMask }).(pulumi.StringPtrOutput)
+}
+
+// Optional serving version.
+// The version must be 1-63 characters long, and comply with RFC1035.
+// Example value: "v1", "v2".
+func (o RegionNetworkEndpointGroupAppEngineOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionNetworkEndpointGroupAppEngine) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type RegionNetworkEndpointGroupAppEnginePtrOutput struct{ *pulumi.OutputState }
+
+func (RegionNetworkEndpointGroupAppEnginePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionNetworkEndpointGroupAppEngine)(nil)).Elem()
+}
+
+func (o RegionNetworkEndpointGroupAppEnginePtrOutput) ToRegionNetworkEndpointGroupAppEnginePtrOutput() RegionNetworkEndpointGroupAppEnginePtrOutput {
+	return o
+}
+
+func (o RegionNetworkEndpointGroupAppEnginePtrOutput) ToRegionNetworkEndpointGroupAppEnginePtrOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupAppEnginePtrOutput {
+	return o
+}
+
+func (o RegionNetworkEndpointGroupAppEnginePtrOutput) Elem() RegionNetworkEndpointGroupAppEngineOutput {
+	return o.ApplyT(func(v *RegionNetworkEndpointGroupAppEngine) RegionNetworkEndpointGroupAppEngine { return *v }).(RegionNetworkEndpointGroupAppEngineOutput)
+}
+
+// Optional serving service.
+// The service name must be 1-63 characters long, and comply with RFC1035.
+// Example value: "default", "my-service".
+func (o RegionNetworkEndpointGroupAppEnginePtrOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionNetworkEndpointGroupAppEngine) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Service
+	}).(pulumi.StringPtrOutput)
+}
+
+// A template to parse function field from a request URL. URL mask allows
+// for routing to multiple Cloud Functions without having to create
+// multiple Network Endpoint Groups and backend services.
+// For example, request URLs "mydomain.com/function1" and "mydomain.com/function2"
+// can be backed by the same Serverless NEG with URL mask "/". The URL mask
+// will parse them to { function = "function1" } and { function = "function2" } respectively.
+func (o RegionNetworkEndpointGroupAppEnginePtrOutput) UrlMask() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionNetworkEndpointGroupAppEngine) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UrlMask
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional serving version.
+// The version must be 1-63 characters long, and comply with RFC1035.
+// Example value: "v1", "v2".
+func (o RegionNetworkEndpointGroupAppEnginePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionNetworkEndpointGroupAppEngine) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type RegionNetworkEndpointGroupCloudFunction struct {
+	// A user-defined name of the Cloud Function.
+	// The function name is case-sensitive and must be 1-63 characters long.
+	// Example value: "func1".
+	Function *string `pulumi:"function"`
+	// A template to parse function field from a request URL. URL mask allows
+	// for routing to multiple Cloud Functions without having to create
+	// multiple Network Endpoint Groups and backend services.
+	// For example, request URLs "mydomain.com/function1" and "mydomain.com/function2"
+	// can be backed by the same Serverless NEG with URL mask "/". The URL mask
+	// will parse them to { function = "function1" } and { function = "function2" } respectively.
+	UrlMask *string `pulumi:"urlMask"`
+}
+
+// RegionNetworkEndpointGroupCloudFunctionInput is an input type that accepts RegionNetworkEndpointGroupCloudFunctionArgs and RegionNetworkEndpointGroupCloudFunctionOutput values.
+// You can construct a concrete instance of `RegionNetworkEndpointGroupCloudFunctionInput` via:
+//
+//          RegionNetworkEndpointGroupCloudFunctionArgs{...}
+type RegionNetworkEndpointGroupCloudFunctionInput interface {
+	pulumi.Input
+
+	ToRegionNetworkEndpointGroupCloudFunctionOutput() RegionNetworkEndpointGroupCloudFunctionOutput
+	ToRegionNetworkEndpointGroupCloudFunctionOutputWithContext(context.Context) RegionNetworkEndpointGroupCloudFunctionOutput
+}
+
+type RegionNetworkEndpointGroupCloudFunctionArgs struct {
+	// A user-defined name of the Cloud Function.
+	// The function name is case-sensitive and must be 1-63 characters long.
+	// Example value: "func1".
+	Function pulumi.StringPtrInput `pulumi:"function"`
+	// A template to parse function field from a request URL. URL mask allows
+	// for routing to multiple Cloud Functions without having to create
+	// multiple Network Endpoint Groups and backend services.
+	// For example, request URLs "mydomain.com/function1" and "mydomain.com/function2"
+	// can be backed by the same Serverless NEG with URL mask "/". The URL mask
+	// will parse them to { function = "function1" } and { function = "function2" } respectively.
+	UrlMask pulumi.StringPtrInput `pulumi:"urlMask"`
+}
+
+func (RegionNetworkEndpointGroupCloudFunctionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionNetworkEndpointGroupCloudFunction)(nil)).Elem()
+}
+
+func (i RegionNetworkEndpointGroupCloudFunctionArgs) ToRegionNetworkEndpointGroupCloudFunctionOutput() RegionNetworkEndpointGroupCloudFunctionOutput {
+	return i.ToRegionNetworkEndpointGroupCloudFunctionOutputWithContext(context.Background())
+}
+
+func (i RegionNetworkEndpointGroupCloudFunctionArgs) ToRegionNetworkEndpointGroupCloudFunctionOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupCloudFunctionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionNetworkEndpointGroupCloudFunctionOutput)
+}
+
+func (i RegionNetworkEndpointGroupCloudFunctionArgs) ToRegionNetworkEndpointGroupCloudFunctionPtrOutput() RegionNetworkEndpointGroupCloudFunctionPtrOutput {
+	return i.ToRegionNetworkEndpointGroupCloudFunctionPtrOutputWithContext(context.Background())
+}
+
+func (i RegionNetworkEndpointGroupCloudFunctionArgs) ToRegionNetworkEndpointGroupCloudFunctionPtrOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupCloudFunctionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionNetworkEndpointGroupCloudFunctionOutput).ToRegionNetworkEndpointGroupCloudFunctionPtrOutputWithContext(ctx)
+}
+
+// RegionNetworkEndpointGroupCloudFunctionPtrInput is an input type that accepts RegionNetworkEndpointGroupCloudFunctionArgs, RegionNetworkEndpointGroupCloudFunctionPtr and RegionNetworkEndpointGroupCloudFunctionPtrOutput values.
+// You can construct a concrete instance of `RegionNetworkEndpointGroupCloudFunctionPtrInput` via:
+//
+//          RegionNetworkEndpointGroupCloudFunctionArgs{...}
+//
+//  or:
+//
+//          nil
+type RegionNetworkEndpointGroupCloudFunctionPtrInput interface {
+	pulumi.Input
+
+	ToRegionNetworkEndpointGroupCloudFunctionPtrOutput() RegionNetworkEndpointGroupCloudFunctionPtrOutput
+	ToRegionNetworkEndpointGroupCloudFunctionPtrOutputWithContext(context.Context) RegionNetworkEndpointGroupCloudFunctionPtrOutput
+}
+
+type regionNetworkEndpointGroupCloudFunctionPtrType RegionNetworkEndpointGroupCloudFunctionArgs
+
+func RegionNetworkEndpointGroupCloudFunctionPtr(v *RegionNetworkEndpointGroupCloudFunctionArgs) RegionNetworkEndpointGroupCloudFunctionPtrInput {
+	return (*regionNetworkEndpointGroupCloudFunctionPtrType)(v)
+}
+
+func (*regionNetworkEndpointGroupCloudFunctionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionNetworkEndpointGroupCloudFunction)(nil)).Elem()
+}
+
+func (i *regionNetworkEndpointGroupCloudFunctionPtrType) ToRegionNetworkEndpointGroupCloudFunctionPtrOutput() RegionNetworkEndpointGroupCloudFunctionPtrOutput {
+	return i.ToRegionNetworkEndpointGroupCloudFunctionPtrOutputWithContext(context.Background())
+}
+
+func (i *regionNetworkEndpointGroupCloudFunctionPtrType) ToRegionNetworkEndpointGroupCloudFunctionPtrOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupCloudFunctionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionNetworkEndpointGroupCloudFunctionPtrOutput)
+}
+
+type RegionNetworkEndpointGroupCloudFunctionOutput struct{ *pulumi.OutputState }
+
+func (RegionNetworkEndpointGroupCloudFunctionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionNetworkEndpointGroupCloudFunction)(nil)).Elem()
+}
+
+func (o RegionNetworkEndpointGroupCloudFunctionOutput) ToRegionNetworkEndpointGroupCloudFunctionOutput() RegionNetworkEndpointGroupCloudFunctionOutput {
+	return o
+}
+
+func (o RegionNetworkEndpointGroupCloudFunctionOutput) ToRegionNetworkEndpointGroupCloudFunctionOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupCloudFunctionOutput {
+	return o
+}
+
+func (o RegionNetworkEndpointGroupCloudFunctionOutput) ToRegionNetworkEndpointGroupCloudFunctionPtrOutput() RegionNetworkEndpointGroupCloudFunctionPtrOutput {
+	return o.ToRegionNetworkEndpointGroupCloudFunctionPtrOutputWithContext(context.Background())
+}
+
+func (o RegionNetworkEndpointGroupCloudFunctionOutput) ToRegionNetworkEndpointGroupCloudFunctionPtrOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupCloudFunctionPtrOutput {
+	return o.ApplyT(func(v RegionNetworkEndpointGroupCloudFunction) *RegionNetworkEndpointGroupCloudFunction {
+		return &v
+	}).(RegionNetworkEndpointGroupCloudFunctionPtrOutput)
+}
+
+// A user-defined name of the Cloud Function.
+// The function name is case-sensitive and must be 1-63 characters long.
+// Example value: "func1".
+func (o RegionNetworkEndpointGroupCloudFunctionOutput) Function() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionNetworkEndpointGroupCloudFunction) *string { return v.Function }).(pulumi.StringPtrOutput)
+}
+
+// A template to parse function field from a request URL. URL mask allows
+// for routing to multiple Cloud Functions without having to create
+// multiple Network Endpoint Groups and backend services.
+// For example, request URLs "mydomain.com/function1" and "mydomain.com/function2"
+// can be backed by the same Serverless NEG with URL mask "/". The URL mask
+// will parse them to { function = "function1" } and { function = "function2" } respectively.
+func (o RegionNetworkEndpointGroupCloudFunctionOutput) UrlMask() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionNetworkEndpointGroupCloudFunction) *string { return v.UrlMask }).(pulumi.StringPtrOutput)
+}
+
+type RegionNetworkEndpointGroupCloudFunctionPtrOutput struct{ *pulumi.OutputState }
+
+func (RegionNetworkEndpointGroupCloudFunctionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionNetworkEndpointGroupCloudFunction)(nil)).Elem()
+}
+
+func (o RegionNetworkEndpointGroupCloudFunctionPtrOutput) ToRegionNetworkEndpointGroupCloudFunctionPtrOutput() RegionNetworkEndpointGroupCloudFunctionPtrOutput {
+	return o
+}
+
+func (o RegionNetworkEndpointGroupCloudFunctionPtrOutput) ToRegionNetworkEndpointGroupCloudFunctionPtrOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupCloudFunctionPtrOutput {
+	return o
+}
+
+func (o RegionNetworkEndpointGroupCloudFunctionPtrOutput) Elem() RegionNetworkEndpointGroupCloudFunctionOutput {
+	return o.ApplyT(func(v *RegionNetworkEndpointGroupCloudFunction) RegionNetworkEndpointGroupCloudFunction { return *v }).(RegionNetworkEndpointGroupCloudFunctionOutput)
+}
+
+// A user-defined name of the Cloud Function.
+// The function name is case-sensitive and must be 1-63 characters long.
+// Example value: "func1".
+func (o RegionNetworkEndpointGroupCloudFunctionPtrOutput) Function() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionNetworkEndpointGroupCloudFunction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Function
+	}).(pulumi.StringPtrOutput)
+}
+
+// A template to parse function field from a request URL. URL mask allows
+// for routing to multiple Cloud Functions without having to create
+// multiple Network Endpoint Groups and backend services.
+// For example, request URLs "mydomain.com/function1" and "mydomain.com/function2"
+// can be backed by the same Serverless NEG with URL mask "/". The URL mask
+// will parse them to { function = "function1" } and { function = "function2" } respectively.
+func (o RegionNetworkEndpointGroupCloudFunctionPtrOutput) UrlMask() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionNetworkEndpointGroupCloudFunction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UrlMask
+	}).(pulumi.StringPtrOutput)
+}
+
+type RegionNetworkEndpointGroupCloudRun struct {
+	// Optional serving service.
+	// The service name must be 1-63 characters long, and comply with RFC1035.
+	// Example value: "default", "my-service".
+	Service *string `pulumi:"service"`
+	// Cloud Run tag represents the "named-revision" to provide
+	// additional fine-grained traffic routing information.
+	// The tag must be 1-63 characters long, and comply with RFC1035.
+	// Example value: "revision-0010".
+	Tag *string `pulumi:"tag"`
+	// A template to parse function field from a request URL. URL mask allows
+	// for routing to multiple Cloud Functions without having to create
+	// multiple Network Endpoint Groups and backend services.
+	// For example, request URLs "mydomain.com/function1" and "mydomain.com/function2"
+	// can be backed by the same Serverless NEG with URL mask "/". The URL mask
+	// will parse them to { function = "function1" } and { function = "function2" } respectively.
+	UrlMask *string `pulumi:"urlMask"`
+}
+
+// RegionNetworkEndpointGroupCloudRunInput is an input type that accepts RegionNetworkEndpointGroupCloudRunArgs and RegionNetworkEndpointGroupCloudRunOutput values.
+// You can construct a concrete instance of `RegionNetworkEndpointGroupCloudRunInput` via:
+//
+//          RegionNetworkEndpointGroupCloudRunArgs{...}
+type RegionNetworkEndpointGroupCloudRunInput interface {
+	pulumi.Input
+
+	ToRegionNetworkEndpointGroupCloudRunOutput() RegionNetworkEndpointGroupCloudRunOutput
+	ToRegionNetworkEndpointGroupCloudRunOutputWithContext(context.Context) RegionNetworkEndpointGroupCloudRunOutput
+}
+
+type RegionNetworkEndpointGroupCloudRunArgs struct {
+	// Optional serving service.
+	// The service name must be 1-63 characters long, and comply with RFC1035.
+	// Example value: "default", "my-service".
+	Service pulumi.StringPtrInput `pulumi:"service"`
+	// Cloud Run tag represents the "named-revision" to provide
+	// additional fine-grained traffic routing information.
+	// The tag must be 1-63 characters long, and comply with RFC1035.
+	// Example value: "revision-0010".
+	Tag pulumi.StringPtrInput `pulumi:"tag"`
+	// A template to parse function field from a request URL. URL mask allows
+	// for routing to multiple Cloud Functions without having to create
+	// multiple Network Endpoint Groups and backend services.
+	// For example, request URLs "mydomain.com/function1" and "mydomain.com/function2"
+	// can be backed by the same Serverless NEG with URL mask "/". The URL mask
+	// will parse them to { function = "function1" } and { function = "function2" } respectively.
+	UrlMask pulumi.StringPtrInput `pulumi:"urlMask"`
+}
+
+func (RegionNetworkEndpointGroupCloudRunArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionNetworkEndpointGroupCloudRun)(nil)).Elem()
+}
+
+func (i RegionNetworkEndpointGroupCloudRunArgs) ToRegionNetworkEndpointGroupCloudRunOutput() RegionNetworkEndpointGroupCloudRunOutput {
+	return i.ToRegionNetworkEndpointGroupCloudRunOutputWithContext(context.Background())
+}
+
+func (i RegionNetworkEndpointGroupCloudRunArgs) ToRegionNetworkEndpointGroupCloudRunOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupCloudRunOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionNetworkEndpointGroupCloudRunOutput)
+}
+
+func (i RegionNetworkEndpointGroupCloudRunArgs) ToRegionNetworkEndpointGroupCloudRunPtrOutput() RegionNetworkEndpointGroupCloudRunPtrOutput {
+	return i.ToRegionNetworkEndpointGroupCloudRunPtrOutputWithContext(context.Background())
+}
+
+func (i RegionNetworkEndpointGroupCloudRunArgs) ToRegionNetworkEndpointGroupCloudRunPtrOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupCloudRunPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionNetworkEndpointGroupCloudRunOutput).ToRegionNetworkEndpointGroupCloudRunPtrOutputWithContext(ctx)
+}
+
+// RegionNetworkEndpointGroupCloudRunPtrInput is an input type that accepts RegionNetworkEndpointGroupCloudRunArgs, RegionNetworkEndpointGroupCloudRunPtr and RegionNetworkEndpointGroupCloudRunPtrOutput values.
+// You can construct a concrete instance of `RegionNetworkEndpointGroupCloudRunPtrInput` via:
+//
+//          RegionNetworkEndpointGroupCloudRunArgs{...}
+//
+//  or:
+//
+//          nil
+type RegionNetworkEndpointGroupCloudRunPtrInput interface {
+	pulumi.Input
+
+	ToRegionNetworkEndpointGroupCloudRunPtrOutput() RegionNetworkEndpointGroupCloudRunPtrOutput
+	ToRegionNetworkEndpointGroupCloudRunPtrOutputWithContext(context.Context) RegionNetworkEndpointGroupCloudRunPtrOutput
+}
+
+type regionNetworkEndpointGroupCloudRunPtrType RegionNetworkEndpointGroupCloudRunArgs
+
+func RegionNetworkEndpointGroupCloudRunPtr(v *RegionNetworkEndpointGroupCloudRunArgs) RegionNetworkEndpointGroupCloudRunPtrInput {
+	return (*regionNetworkEndpointGroupCloudRunPtrType)(v)
+}
+
+func (*regionNetworkEndpointGroupCloudRunPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionNetworkEndpointGroupCloudRun)(nil)).Elem()
+}
+
+func (i *regionNetworkEndpointGroupCloudRunPtrType) ToRegionNetworkEndpointGroupCloudRunPtrOutput() RegionNetworkEndpointGroupCloudRunPtrOutput {
+	return i.ToRegionNetworkEndpointGroupCloudRunPtrOutputWithContext(context.Background())
+}
+
+func (i *regionNetworkEndpointGroupCloudRunPtrType) ToRegionNetworkEndpointGroupCloudRunPtrOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupCloudRunPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionNetworkEndpointGroupCloudRunPtrOutput)
+}
+
+type RegionNetworkEndpointGroupCloudRunOutput struct{ *pulumi.OutputState }
+
+func (RegionNetworkEndpointGroupCloudRunOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionNetworkEndpointGroupCloudRun)(nil)).Elem()
+}
+
+func (o RegionNetworkEndpointGroupCloudRunOutput) ToRegionNetworkEndpointGroupCloudRunOutput() RegionNetworkEndpointGroupCloudRunOutput {
+	return o
+}
+
+func (o RegionNetworkEndpointGroupCloudRunOutput) ToRegionNetworkEndpointGroupCloudRunOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupCloudRunOutput {
+	return o
+}
+
+func (o RegionNetworkEndpointGroupCloudRunOutput) ToRegionNetworkEndpointGroupCloudRunPtrOutput() RegionNetworkEndpointGroupCloudRunPtrOutput {
+	return o.ToRegionNetworkEndpointGroupCloudRunPtrOutputWithContext(context.Background())
+}
+
+func (o RegionNetworkEndpointGroupCloudRunOutput) ToRegionNetworkEndpointGroupCloudRunPtrOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupCloudRunPtrOutput {
+	return o.ApplyT(func(v RegionNetworkEndpointGroupCloudRun) *RegionNetworkEndpointGroupCloudRun {
+		return &v
+	}).(RegionNetworkEndpointGroupCloudRunPtrOutput)
+}
+
+// Optional serving service.
+// The service name must be 1-63 characters long, and comply with RFC1035.
+// Example value: "default", "my-service".
+func (o RegionNetworkEndpointGroupCloudRunOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionNetworkEndpointGroupCloudRun) *string { return v.Service }).(pulumi.StringPtrOutput)
+}
+
+// Cloud Run tag represents the "named-revision" to provide
+// additional fine-grained traffic routing information.
+// The tag must be 1-63 characters long, and comply with RFC1035.
+// Example value: "revision-0010".
+func (o RegionNetworkEndpointGroupCloudRunOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionNetworkEndpointGroupCloudRun) *string { return v.Tag }).(pulumi.StringPtrOutput)
+}
+
+// A template to parse function field from a request URL. URL mask allows
+// for routing to multiple Cloud Functions without having to create
+// multiple Network Endpoint Groups and backend services.
+// For example, request URLs "mydomain.com/function1" and "mydomain.com/function2"
+// can be backed by the same Serverless NEG with URL mask "/". The URL mask
+// will parse them to { function = "function1" } and { function = "function2" } respectively.
+func (o RegionNetworkEndpointGroupCloudRunOutput) UrlMask() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionNetworkEndpointGroupCloudRun) *string { return v.UrlMask }).(pulumi.StringPtrOutput)
+}
+
+type RegionNetworkEndpointGroupCloudRunPtrOutput struct{ *pulumi.OutputState }
+
+func (RegionNetworkEndpointGroupCloudRunPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionNetworkEndpointGroupCloudRun)(nil)).Elem()
+}
+
+func (o RegionNetworkEndpointGroupCloudRunPtrOutput) ToRegionNetworkEndpointGroupCloudRunPtrOutput() RegionNetworkEndpointGroupCloudRunPtrOutput {
+	return o
+}
+
+func (o RegionNetworkEndpointGroupCloudRunPtrOutput) ToRegionNetworkEndpointGroupCloudRunPtrOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupCloudRunPtrOutput {
+	return o
+}
+
+func (o RegionNetworkEndpointGroupCloudRunPtrOutput) Elem() RegionNetworkEndpointGroupCloudRunOutput {
+	return o.ApplyT(func(v *RegionNetworkEndpointGroupCloudRun) RegionNetworkEndpointGroupCloudRun { return *v }).(RegionNetworkEndpointGroupCloudRunOutput)
+}
+
+// Optional serving service.
+// The service name must be 1-63 characters long, and comply with RFC1035.
+// Example value: "default", "my-service".
+func (o RegionNetworkEndpointGroupCloudRunPtrOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionNetworkEndpointGroupCloudRun) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Service
+	}).(pulumi.StringPtrOutput)
+}
+
+// Cloud Run tag represents the "named-revision" to provide
+// additional fine-grained traffic routing information.
+// The tag must be 1-63 characters long, and comply with RFC1035.
+// Example value: "revision-0010".
+func (o RegionNetworkEndpointGroupCloudRunPtrOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionNetworkEndpointGroupCloudRun) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tag
+	}).(pulumi.StringPtrOutput)
+}
+
+// A template to parse function field from a request URL. URL mask allows
+// for routing to multiple Cloud Functions without having to create
+// multiple Network Endpoint Groups and backend services.
+// For example, request URLs "mydomain.com/function1" and "mydomain.com/function2"
+// can be backed by the same Serverless NEG with URL mask "/". The URL mask
+// will parse them to { function = "function1" } and { function = "function2" } respectively.
+func (o RegionNetworkEndpointGroupCloudRunPtrOutput) UrlMask() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionNetworkEndpointGroupCloudRun) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UrlMask
+	}).(pulumi.StringPtrOutput)
 }
 
 type RegionPerInstanceConfigPreservedState struct {
@@ -56873,6 +57851,100 @@ func (o GetInstanceBootDiskInitializeParamArrayOutput) Index(i pulumi.IntInput) 
 	}).(GetInstanceBootDiskInitializeParamOutput)
 }
 
+type GetInstanceConfidentialInstanceConfig struct {
+	EnableConfidentialCompute bool `pulumi:"enableConfidentialCompute"`
+}
+
+// GetInstanceConfidentialInstanceConfigInput is an input type that accepts GetInstanceConfidentialInstanceConfigArgs and GetInstanceConfidentialInstanceConfigOutput values.
+// You can construct a concrete instance of `GetInstanceConfidentialInstanceConfigInput` via:
+//
+//          GetInstanceConfidentialInstanceConfigArgs{...}
+type GetInstanceConfidentialInstanceConfigInput interface {
+	pulumi.Input
+
+	ToGetInstanceConfidentialInstanceConfigOutput() GetInstanceConfidentialInstanceConfigOutput
+	ToGetInstanceConfidentialInstanceConfigOutputWithContext(context.Context) GetInstanceConfidentialInstanceConfigOutput
+}
+
+type GetInstanceConfidentialInstanceConfigArgs struct {
+	EnableConfidentialCompute pulumi.BoolInput `pulumi:"enableConfidentialCompute"`
+}
+
+func (GetInstanceConfidentialInstanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceConfidentialInstanceConfig)(nil)).Elem()
+}
+
+func (i GetInstanceConfidentialInstanceConfigArgs) ToGetInstanceConfidentialInstanceConfigOutput() GetInstanceConfidentialInstanceConfigOutput {
+	return i.ToGetInstanceConfidentialInstanceConfigOutputWithContext(context.Background())
+}
+
+func (i GetInstanceConfidentialInstanceConfigArgs) ToGetInstanceConfidentialInstanceConfigOutputWithContext(ctx context.Context) GetInstanceConfidentialInstanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceConfidentialInstanceConfigOutput)
+}
+
+// GetInstanceConfidentialInstanceConfigArrayInput is an input type that accepts GetInstanceConfidentialInstanceConfigArray and GetInstanceConfidentialInstanceConfigArrayOutput values.
+// You can construct a concrete instance of `GetInstanceConfidentialInstanceConfigArrayInput` via:
+//
+//          GetInstanceConfidentialInstanceConfigArray{ GetInstanceConfidentialInstanceConfigArgs{...} }
+type GetInstanceConfidentialInstanceConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceConfidentialInstanceConfigArrayOutput() GetInstanceConfidentialInstanceConfigArrayOutput
+	ToGetInstanceConfidentialInstanceConfigArrayOutputWithContext(context.Context) GetInstanceConfidentialInstanceConfigArrayOutput
+}
+
+type GetInstanceConfidentialInstanceConfigArray []GetInstanceConfidentialInstanceConfigInput
+
+func (GetInstanceConfidentialInstanceConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceConfidentialInstanceConfig)(nil)).Elem()
+}
+
+func (i GetInstanceConfidentialInstanceConfigArray) ToGetInstanceConfidentialInstanceConfigArrayOutput() GetInstanceConfidentialInstanceConfigArrayOutput {
+	return i.ToGetInstanceConfidentialInstanceConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceConfidentialInstanceConfigArray) ToGetInstanceConfidentialInstanceConfigArrayOutputWithContext(ctx context.Context) GetInstanceConfidentialInstanceConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceConfidentialInstanceConfigArrayOutput)
+}
+
+type GetInstanceConfidentialInstanceConfigOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceConfidentialInstanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceConfidentialInstanceConfig)(nil)).Elem()
+}
+
+func (o GetInstanceConfidentialInstanceConfigOutput) ToGetInstanceConfidentialInstanceConfigOutput() GetInstanceConfidentialInstanceConfigOutput {
+	return o
+}
+
+func (o GetInstanceConfidentialInstanceConfigOutput) ToGetInstanceConfidentialInstanceConfigOutputWithContext(ctx context.Context) GetInstanceConfidentialInstanceConfigOutput {
+	return o
+}
+
+func (o GetInstanceConfidentialInstanceConfigOutput) EnableConfidentialCompute() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceConfidentialInstanceConfig) bool { return v.EnableConfidentialCompute }).(pulumi.BoolOutput)
+}
+
+type GetInstanceConfidentialInstanceConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceConfidentialInstanceConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceConfidentialInstanceConfig)(nil)).Elem()
+}
+
+func (o GetInstanceConfidentialInstanceConfigArrayOutput) ToGetInstanceConfidentialInstanceConfigArrayOutput() GetInstanceConfidentialInstanceConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceConfidentialInstanceConfigArrayOutput) ToGetInstanceConfidentialInstanceConfigArrayOutputWithContext(ctx context.Context) GetInstanceConfidentialInstanceConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceConfidentialInstanceConfigArrayOutput) Index(i pulumi.IntInput) GetInstanceConfidentialInstanceConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceConfidentialInstanceConfig {
+		return vs[0].([]GetInstanceConfidentialInstanceConfig)[vs[1].(int)]
+	}).(GetInstanceConfidentialInstanceConfigOutput)
+}
+
 type GetInstanceGroupNamedPortType struct {
 	// The name of the instance group. Either `name` or `selfLink` must be provided.
 	Name string `pulumi:"name"`
@@ -58657,12 +59729,16 @@ func init() {
 	pulumi.RegisterOutputType(InstanceBootDiskPtrOutput{})
 	pulumi.RegisterOutputType(InstanceBootDiskInitializeParamsOutput{})
 	pulumi.RegisterOutputType(InstanceBootDiskInitializeParamsPtrOutput{})
+	pulumi.RegisterOutputType(InstanceConfidentialInstanceConfigOutput{})
+	pulumi.RegisterOutputType(InstanceConfidentialInstanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceFromTemplateAttachedDiskOutput{})
 	pulumi.RegisterOutputType(InstanceFromTemplateAttachedDiskArrayOutput{})
 	pulumi.RegisterOutputType(InstanceFromTemplateBootDiskOutput{})
 	pulumi.RegisterOutputType(InstanceFromTemplateBootDiskPtrOutput{})
 	pulumi.RegisterOutputType(InstanceFromTemplateBootDiskInitializeParamsOutput{})
 	pulumi.RegisterOutputType(InstanceFromTemplateBootDiskInitializeParamsPtrOutput{})
+	pulumi.RegisterOutputType(InstanceFromTemplateConfidentialInstanceConfigOutput{})
+	pulumi.RegisterOutputType(InstanceFromTemplateConfidentialInstanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceFromTemplateGuestAcceleratorOutput{})
 	pulumi.RegisterOutputType(InstanceFromTemplateGuestAcceleratorArrayOutput{})
 	pulumi.RegisterOutputType(InstanceFromTemplateNetworkInterfaceOutput{})
@@ -58717,6 +59793,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceServiceAccountPtrOutput{})
 	pulumi.RegisterOutputType(InstanceShieldedInstanceConfigOutput{})
 	pulumi.RegisterOutputType(InstanceShieldedInstanceConfigPtrOutput{})
+	pulumi.RegisterOutputType(InstanceTemplateConfidentialInstanceConfigOutput{})
+	pulumi.RegisterOutputType(InstanceTemplateConfidentialInstanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceTemplateDiskOutput{})
 	pulumi.RegisterOutputType(InstanceTemplateDiskArrayOutput{})
 	pulumi.RegisterOutputType(InstanceTemplateDiskDiskEncryptionKeyOutput{})
@@ -58833,6 +59911,12 @@ func init() {
 	pulumi.RegisterOutputType(RegionInstanceGroupManagerVersionArrayOutput{})
 	pulumi.RegisterOutputType(RegionInstanceGroupManagerVersionTargetSizeOutput{})
 	pulumi.RegisterOutputType(RegionInstanceGroupManagerVersionTargetSizePtrOutput{})
+	pulumi.RegisterOutputType(RegionNetworkEndpointGroupAppEngineOutput{})
+	pulumi.RegisterOutputType(RegionNetworkEndpointGroupAppEnginePtrOutput{})
+	pulumi.RegisterOutputType(RegionNetworkEndpointGroupCloudFunctionOutput{})
+	pulumi.RegisterOutputType(RegionNetworkEndpointGroupCloudFunctionPtrOutput{})
+	pulumi.RegisterOutputType(RegionNetworkEndpointGroupCloudRunOutput{})
+	pulumi.RegisterOutputType(RegionNetworkEndpointGroupCloudRunPtrOutput{})
 	pulumi.RegisterOutputType(RegionPerInstanceConfigPreservedStateOutput{})
 	pulumi.RegisterOutputType(RegionPerInstanceConfigPreservedStatePtrOutput{})
 	pulumi.RegisterOutputType(RegionPerInstanceConfigPreservedStateDiskOutput{})
@@ -59198,6 +60282,8 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceBootDiskArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceBootDiskInitializeParamOutput{})
 	pulumi.RegisterOutputType(GetInstanceBootDiskInitializeParamArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceConfidentialInstanceConfigOutput{})
+	pulumi.RegisterOutputType(GetInstanceConfidentialInstanceConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceGroupNamedPortTypeOutput{})
 	pulumi.RegisterOutputType(GetInstanceGroupNamedPortTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceGuestAcceleratorOutput{})

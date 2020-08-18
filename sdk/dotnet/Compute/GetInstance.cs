@@ -74,6 +74,7 @@ namespace Pulumi.Gcp.Compute
         /// Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
         /// </summary>
         public readonly bool CanIpForward;
+        public readonly ImmutableArray<Outputs.GetInstanceConfidentialInstanceConfigResult> ConfidentialInstanceConfigs;
         /// <summary>
         /// The CPU platform used by this instance.
         /// </summary>
@@ -174,6 +175,8 @@ namespace Pulumi.Gcp.Compute
 
             bool canIpForward,
 
+            ImmutableArray<Outputs.GetInstanceConfidentialInstanceConfigResult> confidentialInstanceConfigs,
+
             string cpuPlatform,
 
             string currentStatus,
@@ -236,6 +239,7 @@ namespace Pulumi.Gcp.Compute
             AttachedDisks = attachedDisks;
             BootDisks = bootDisks;
             CanIpForward = canIpForward;
+            ConfidentialInstanceConfigs = confidentialInstanceConfigs;
             CpuPlatform = cpuPlatform;
             CurrentStatus = currentStatus;
             DeletionProtection = deletionProtection;

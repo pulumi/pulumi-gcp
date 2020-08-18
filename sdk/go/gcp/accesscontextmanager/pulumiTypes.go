@@ -411,9 +411,11 @@ func (o AccessLevelBasicConditionArrayOutput) Index(i pulumi.IntInput) AccessLev
 type AccessLevelBasicConditionDevicePolicy struct {
 	// A list of allowed device management levels.
 	// An empty list allows all management levels.
+	// Each value may be one of `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, and `COMPLETE`.
 	AllowedDeviceManagementLevels []string `pulumi:"allowedDeviceManagementLevels"`
 	// A list of allowed encryptions statuses.
 	// An empty list allows all statuses.
+	// Each value may be one of `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, and `ENCRYPTED`.
 	AllowedEncryptionStatuses []string `pulumi:"allowedEncryptionStatuses"`
 	// A list of allowed OS versions.
 	// An empty list allows all types and all versions.
@@ -442,9 +444,11 @@ type AccessLevelBasicConditionDevicePolicyInput interface {
 type AccessLevelBasicConditionDevicePolicyArgs struct {
 	// A list of allowed device management levels.
 	// An empty list allows all management levels.
+	// Each value may be one of `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, and `COMPLETE`.
 	AllowedDeviceManagementLevels pulumi.StringArrayInput `pulumi:"allowedDeviceManagementLevels"`
 	// A list of allowed encryptions statuses.
 	// An empty list allows all statuses.
+	// Each value may be one of `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, and `ENCRYPTED`.
 	AllowedEncryptionStatuses pulumi.StringArrayInput `pulumi:"allowedEncryptionStatuses"`
 	// A list of allowed OS versions.
 	// An empty list allows all types and all versions.
@@ -538,12 +542,14 @@ func (o AccessLevelBasicConditionDevicePolicyOutput) ToAccessLevelBasicCondition
 
 // A list of allowed device management levels.
 // An empty list allows all management levels.
+// Each value may be one of `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, and `COMPLETE`.
 func (o AccessLevelBasicConditionDevicePolicyOutput) AllowedDeviceManagementLevels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessLevelBasicConditionDevicePolicy) []string { return v.AllowedDeviceManagementLevels }).(pulumi.StringArrayOutput)
 }
 
 // A list of allowed encryptions statuses.
 // An empty list allows all statuses.
+// Each value may be one of `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, and `ENCRYPTED`.
 func (o AccessLevelBasicConditionDevicePolicyOutput) AllowedEncryptionStatuses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessLevelBasicConditionDevicePolicy) []string { return v.AllowedEncryptionStatuses }).(pulumi.StringArrayOutput)
 }
@@ -593,6 +599,7 @@ func (o AccessLevelBasicConditionDevicePolicyPtrOutput) Elem() AccessLevelBasicC
 
 // A list of allowed device management levels.
 // An empty list allows all management levels.
+// Each value may be one of `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, and `COMPLETE`.
 func (o AccessLevelBasicConditionDevicePolicyPtrOutput) AllowedDeviceManagementLevels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AccessLevelBasicConditionDevicePolicy) []string {
 		if v == nil {
@@ -604,6 +611,7 @@ func (o AccessLevelBasicConditionDevicePolicyPtrOutput) AllowedDeviceManagementL
 
 // A list of allowed encryptions statuses.
 // An empty list allows all statuses.
+// Each value may be one of `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, and `ENCRYPTED`.
 func (o AccessLevelBasicConditionDevicePolicyPtrOutput) AllowedEncryptionStatuses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AccessLevelBasicConditionDevicePolicy) []string {
 		if v == nil {

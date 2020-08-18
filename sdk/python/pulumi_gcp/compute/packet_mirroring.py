@@ -32,6 +32,7 @@ class PacketMirroring(pulumi.CustomResource):
       * `cidrRanges` (`list`) - IP CIDR ranges that apply as a filter on the source (ingress) or
         destination (egress) IP in the IP header. Only IPv4 is supported.
       * `ipProtocols` (`list`) - Protocols that apply as a filter on mirrored traffic.
+        Each value may be one of `tcp`, `udp`, and `icmp`.
     """
     mirrored_resources: pulumi.Output[dict]
     """
@@ -125,6 +126,7 @@ class PacketMirroring(pulumi.CustomResource):
           * `cidrRanges` (`pulumi.Input[list]`) - IP CIDR ranges that apply as a filter on the source (ingress) or
             destination (egress) IP in the IP header. Only IPv4 is supported.
           * `ipProtocols` (`pulumi.Input[list]`) - Protocols that apply as a filter on mirrored traffic.
+            Each value may be one of `tcp`, `udp`, and `icmp`.
 
         The **mirrored_resources** object supports the following:
 
@@ -221,6 +223,7 @@ class PacketMirroring(pulumi.CustomResource):
           * `cidrRanges` (`pulumi.Input[list]`) - IP CIDR ranges that apply as a filter on the source (ingress) or
             destination (egress) IP in the IP header. Only IPv4 is supported.
           * `ipProtocols` (`pulumi.Input[list]`) - Protocols that apply as a filter on mirrored traffic.
+            Each value may be one of `tcp`, `udp`, and `icmp`.
 
         The **mirrored_resources** object supports the following:
 

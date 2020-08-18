@@ -30,6 +30,9 @@ type InstanceFromTemplate struct {
 	BootDisk InstanceFromTemplateBootDiskOutput `pulumi:"bootDisk"`
 	// Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
 	CanIpForward pulumi.BoolOutput `pulumi:"canIpForward"`
+	// The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
+	// to create.
+	ConfidentialInstanceConfig InstanceFromTemplateConfidentialInstanceConfigOutput `pulumi:"confidentialInstanceConfig"`
 	// The CPU platform used by this instance.
 	CpuPlatform pulumi.StringOutput `pulumi:"cpuPlatform"`
 	// Current status of the instance.
@@ -137,6 +140,9 @@ type instanceFromTemplateState struct {
 	BootDisk *InstanceFromTemplateBootDisk `pulumi:"bootDisk"`
 	// Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
 	CanIpForward *bool `pulumi:"canIpForward"`
+	// The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
+	// to create.
+	ConfidentialInstanceConfig *InstanceFromTemplateConfidentialInstanceConfig `pulumi:"confidentialInstanceConfig"`
 	// The CPU platform used by this instance.
 	CpuPlatform *string `pulumi:"cpuPlatform"`
 	// Current status of the instance.
@@ -214,6 +220,9 @@ type InstanceFromTemplateState struct {
 	BootDisk InstanceFromTemplateBootDiskPtrInput
 	// Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
 	CanIpForward pulumi.BoolPtrInput
+	// The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
+	// to create.
+	ConfidentialInstanceConfig InstanceFromTemplateConfidentialInstanceConfigPtrInput
 	// The CPU platform used by this instance.
 	CpuPlatform pulumi.StringPtrInput
 	// Current status of the instance.
@@ -295,6 +304,9 @@ type instanceFromTemplateArgs struct {
 	BootDisk *InstanceFromTemplateBootDisk `pulumi:"bootDisk"`
 	// Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
 	CanIpForward *bool `pulumi:"canIpForward"`
+	// The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
+	// to create.
+	ConfidentialInstanceConfig *InstanceFromTemplateConfidentialInstanceConfig `pulumi:"confidentialInstanceConfig"`
 	// Whether deletion protection is enabled on this instance.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// A brief description of the resource.
@@ -359,6 +371,9 @@ type InstanceFromTemplateArgs struct {
 	BootDisk InstanceFromTemplateBootDiskPtrInput
 	// Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
 	CanIpForward pulumi.BoolPtrInput
+	// The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
+	// to create.
+	ConfidentialInstanceConfig InstanceFromTemplateConfidentialInstanceConfigPtrInput
 	// Whether deletion protection is enabled on this instance.
 	DeletionProtection pulumi.BoolPtrInput
 	// A brief description of the resource.

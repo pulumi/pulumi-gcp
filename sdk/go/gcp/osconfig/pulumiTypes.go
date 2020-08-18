@@ -7835,8 +7835,8 @@ func (o PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectPtrOutput
 
 type PatchDeploymentPatchConfigWindowsUpdate struct {
 	// Only apply updates of these windows update classifications. If empty, all updates are applied.
-	// Possible values are `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, and `UPDATE`.
-	Classifications *string `pulumi:"classifications"`
+	// Each value may be one of `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, and `UPDATE`.
+	Classifications []string `pulumi:"classifications"`
 	// List of KBs to exclude from update.
 	Excludes []string `pulumi:"excludes"`
 	// An exclusive list of kbs to be updated. These are the only patches that will be updated.
@@ -7857,8 +7857,8 @@ type PatchDeploymentPatchConfigWindowsUpdateInput interface {
 
 type PatchDeploymentPatchConfigWindowsUpdateArgs struct {
 	// Only apply updates of these windows update classifications. If empty, all updates are applied.
-	// Possible values are `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, and `UPDATE`.
-	Classifications pulumi.StringPtrInput `pulumi:"classifications"`
+	// Each value may be one of `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, and `UPDATE`.
+	Classifications pulumi.StringArrayInput `pulumi:"classifications"`
 	// List of KBs to exclude from update.
 	Excludes pulumi.StringArrayInput `pulumi:"excludes"`
 	// An exclusive list of kbs to be updated. These are the only patches that will be updated.
@@ -7944,9 +7944,9 @@ func (o PatchDeploymentPatchConfigWindowsUpdateOutput) ToPatchDeploymentPatchCon
 }
 
 // Only apply updates of these windows update classifications. If empty, all updates are applied.
-// Possible values are `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, and `UPDATE`.
-func (o PatchDeploymentPatchConfigWindowsUpdateOutput) Classifications() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PatchDeploymentPatchConfigWindowsUpdate) *string { return v.Classifications }).(pulumi.StringPtrOutput)
+// Each value may be one of `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, and `UPDATE`.
+func (o PatchDeploymentPatchConfigWindowsUpdateOutput) Classifications() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PatchDeploymentPatchConfigWindowsUpdate) []string { return v.Classifications }).(pulumi.StringArrayOutput)
 }
 
 // List of KBs to exclude from update.
@@ -7979,14 +7979,14 @@ func (o PatchDeploymentPatchConfigWindowsUpdatePtrOutput) Elem() PatchDeployment
 }
 
 // Only apply updates of these windows update classifications. If empty, all updates are applied.
-// Possible values are `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, and `UPDATE`.
-func (o PatchDeploymentPatchConfigWindowsUpdatePtrOutput) Classifications() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PatchDeploymentPatchConfigWindowsUpdate) *string {
+// Each value may be one of `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, and `UPDATE`.
+func (o PatchDeploymentPatchConfigWindowsUpdatePtrOutput) Classifications() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PatchDeploymentPatchConfigWindowsUpdate) []string {
 		if v == nil {
 			return nil
 		}
 		return v.Classifications
-	}).(pulumi.StringPtrOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
 // List of KBs to exclude from update.

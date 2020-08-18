@@ -9,38 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Organizations
 {
-    /// <summary>
-    /// Allows management of the entire IAM policy for an existing Google Cloud Platform Organization.
-    /// 
-    /// !&gt; **Warning:** New organizations have several default policies which will,
-    ///    without extreme caution, be **overwritten** by use of this resource.
-    ///    The safest alternative is to use multiple `gcp.organizations.IAMBinding`
-    ///    resources.  It is easy to use this resource to remove your own access to
-    ///    an organization, which will require a call to Google Support to have
-    ///    fixed, and can take multiple days to resolve.  If you do use this resource,
-    ///    the best way to be sure that you are not making dangerous changes is to start
-    ///    by importing your existing policy, and examining the diff very closely.
-    /// 
-    /// &gt; **Note:** This resource __must not__ be used in conjunction with
-    ///    `gcp.organizations.IAMMember` or `gcp.organizations.IAMBinding`
-    ///    or they will fight over what your policy should be.
-    /// </summary>
     public partial class IAMPolicy : Pulumi.CustomResource
     {
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
-        /// The numeric ID of the organization in which you want to create a custom role.
+        /// The numeric ID of the organization in which you want to manage the audit logging config.
         /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
 
-        /// <summary>
-        /// The `gcp.organizations.getIAMPolicy` data source that represents
-        /// the IAM policy that will be applied to the organization. This policy overrides any existing
-        /// policy applied to the organization.
-        /// </summary>
         [Output("policyData")]
         public Output<string> PolicyData { get; private set; } = null!;
 
@@ -91,16 +70,11 @@ namespace Pulumi.Gcp.Organizations
     public sealed class IAMPolicyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The numeric ID of the organization in which you want to create a custom role.
+        /// The numeric ID of the organization in which you want to manage the audit logging config.
         /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
 
-        /// <summary>
-        /// The `gcp.organizations.getIAMPolicy` data source that represents
-        /// the IAM policy that will be applied to the organization. This policy overrides any existing
-        /// policy applied to the organization.
-        /// </summary>
         [Input("policyData", required: true)]
         public Input<string> PolicyData { get; set; } = null!;
 
@@ -115,16 +89,11 @@ namespace Pulumi.Gcp.Organizations
         public Input<string>? Etag { get; set; }
 
         /// <summary>
-        /// The numeric ID of the organization in which you want to create a custom role.
+        /// The numeric ID of the organization in which you want to manage the audit logging config.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
-        /// <summary>
-        /// The `gcp.organizations.getIAMPolicy` data source that represents
-        /// the IAM policy that will be applied to the organization. This policy overrides any existing
-        /// policy applied to the organization.
-        /// </summary>
         [Input("policyData")]
         public Input<string>? PolicyData { get; set; }
 

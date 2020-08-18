@@ -11,30 +11,13 @@ from .. import _utilities, _tables
 
 class IAMPolicy(pulumi.CustomResource):
     etag: pulumi.Output[str]
-    """
-    (Computed) The etag of the folder's IAM policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
-    """
     folder: pulumi.Output[str]
-    """
-    The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
-    """
     policy_data: pulumi.Output[str]
-    """
-    The `organizations.getIAMPolicy` data source that represents
-    the IAM policy that will be applied to the folder. This policy overrides any existing
-    policy applied to the folder.
-    """
     def __init__(__self__, resource_name, opts=None, folder=None, policy_data=None, __props__=None, __name__=None, __opts__=None):
         """
-        Allows creation and management of the IAM policy for an existing Google Cloud
-        Platform folder.
-
+        Create a IAMPolicy resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] folder: The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
-        :param pulumi.Input[str] policy_data: The `organizations.getIAMPolicy` data source that represents
-               the IAM policy that will be applied to the folder. This policy overrides any existing
-               policy applied to the folder.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -75,11 +58,6 @@ class IAMPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] etag: (Computed) The etag of the folder's IAM policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
-        :param pulumi.Input[str] folder: The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
-        :param pulumi.Input[str] policy_data: The `organizations.getIAMPolicy` data source that represents
-               the IAM policy that will be applied to the folder. This policy overrides any existing
-               policy applied to the folder.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

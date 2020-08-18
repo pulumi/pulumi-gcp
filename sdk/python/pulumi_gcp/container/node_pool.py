@@ -25,9 +25,8 @@ class NodePool(pulumi.CustomResource):
     """
     initial_node_count: pulumi.Output[float]
     """
-    The initial number of nodes for the pool. In
-    regional or multi-zonal clusters, this is the number of nodes per zone. Changing
-    this will force recreation of the resource.
+    The initial number of nodes for the pool. In regional or multi-zonal clusters, this is the number of nodes per zone.
+    Changing this will force recreation of the resource.
     """
     instance_group_urls: pulumi.Output[list]
     """
@@ -152,9 +151,8 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[dict] autoscaling: Configuration required by cluster autoscaler to adjust
                the size of the node pool to the current cluster usage. Structure is documented below.
         :param pulumi.Input[str] cluster: The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters.
-        :param pulumi.Input[float] initial_node_count: The initial number of nodes for the pool. In
-               regional or multi-zonal clusters, this is the number of nodes per zone. Changing
-               this will force recreation of the resource.
+        :param pulumi.Input[float] initial_node_count: The initial number of nodes for the pool. In regional or multi-zonal clusters, this is the number of nodes per zone.
+               Changing this will force recreation of the resource.
         :param pulumi.Input[str] location: The location (region or zone) of the cluster.
         :param pulumi.Input[dict] management: Node management configuration, wherein auto-repair and
                auto-upgrade is configured. Structure is documented below.
@@ -293,9 +291,8 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[dict] autoscaling: Configuration required by cluster autoscaler to adjust
                the size of the node pool to the current cluster usage. Structure is documented below.
         :param pulumi.Input[str] cluster: The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters.
-        :param pulumi.Input[float] initial_node_count: The initial number of nodes for the pool. In
-               regional or multi-zonal clusters, this is the number of nodes per zone. Changing
-               this will force recreation of the resource.
+        :param pulumi.Input[float] initial_node_count: The initial number of nodes for the pool. In regional or multi-zonal clusters, this is the number of nodes per zone.
+               Changing this will force recreation of the resource.
         :param pulumi.Input[list] instance_group_urls: The resource URLs of the managed instance groups associated with this node pool.
         :param pulumi.Input[str] location: The location (region or zone) of the cluster.
         :param pulumi.Input[dict] management: Node management configuration, wherein auto-repair and

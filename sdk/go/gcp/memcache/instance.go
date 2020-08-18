@@ -22,9 +22,19 @@ type Instance struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Resource labels to represent user-provided metadata.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// The full version of memcached server running on this instance.
+	MemcacheFullVersion pulumi.StringOutput `pulumi:"memcacheFullVersion"`
+	// Additional information about the instance state, if available.
+	MemcacheNodes InstanceMemcacheNodeArrayOutput `pulumi:"memcacheNodes"`
 	// User-specified parameters for this memcache instance.
 	// Structure is documented below.
 	MemcacheParameters InstanceMemcacheParametersPtrOutput `pulumi:"memcacheParameters"`
+	// The major version of Memcached software. If not provided, latest supported version will be used.
+	// Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
+	// determined by our system based on the latest supported minor version.
+	// Default value is `MEMCACHE_1_5`.
+	// Possible values are `MEMCACHE_1_5`.
+	MemcacheVersion pulumi.StringPtrOutput `pulumi:"memcacheVersion"`
 	// The resource name of the instance.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Configuration for memcache nodes.
@@ -88,9 +98,19 @@ type instanceState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Resource labels to represent user-provided metadata.
 	Labels map[string]string `pulumi:"labels"`
+	// The full version of memcached server running on this instance.
+	MemcacheFullVersion *string `pulumi:"memcacheFullVersion"`
+	// Additional information about the instance state, if available.
+	MemcacheNodes []InstanceMemcacheNode `pulumi:"memcacheNodes"`
 	// User-specified parameters for this memcache instance.
 	// Structure is documented below.
 	MemcacheParameters *InstanceMemcacheParameters `pulumi:"memcacheParameters"`
+	// The major version of Memcached software. If not provided, latest supported version will be used.
+	// Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
+	// determined by our system based on the latest supported minor version.
+	// Default value is `MEMCACHE_1_5`.
+	// Possible values are `MEMCACHE_1_5`.
+	MemcacheVersion *string `pulumi:"memcacheVersion"`
 	// The resource name of the instance.
 	Name *string `pulumi:"name"`
 	// Configuration for memcache nodes.
@@ -118,9 +138,19 @@ type InstanceState struct {
 	DisplayName pulumi.StringPtrInput
 	// Resource labels to represent user-provided metadata.
 	Labels pulumi.StringMapInput
+	// The full version of memcached server running on this instance.
+	MemcacheFullVersion pulumi.StringPtrInput
+	// Additional information about the instance state, if available.
+	MemcacheNodes InstanceMemcacheNodeArrayInput
 	// User-specified parameters for this memcache instance.
 	// Structure is documented below.
 	MemcacheParameters InstanceMemcacheParametersPtrInput
+	// The major version of Memcached software. If not provided, latest supported version will be used.
+	// Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
+	// determined by our system based on the latest supported minor version.
+	// Default value is `MEMCACHE_1_5`.
+	// Possible values are `MEMCACHE_1_5`.
+	MemcacheVersion pulumi.StringPtrInput
 	// The resource name of the instance.
 	Name pulumi.StringPtrInput
 	// Configuration for memcache nodes.
@@ -153,6 +183,12 @@ type instanceArgs struct {
 	// User-specified parameters for this memcache instance.
 	// Structure is documented below.
 	MemcacheParameters *InstanceMemcacheParameters `pulumi:"memcacheParameters"`
+	// The major version of Memcached software. If not provided, latest supported version will be used.
+	// Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
+	// determined by our system based on the latest supported minor version.
+	// Default value is `MEMCACHE_1_5`.
+	// Possible values are `MEMCACHE_1_5`.
+	MemcacheVersion *string `pulumi:"memcacheVersion"`
 	// The resource name of the instance.
 	Name *string `pulumi:"name"`
 	// Configuration for memcache nodes.
@@ -182,6 +218,12 @@ type InstanceArgs struct {
 	// User-specified parameters for this memcache instance.
 	// Structure is documented below.
 	MemcacheParameters InstanceMemcacheParametersPtrInput
+	// The major version of Memcached software. If not provided, latest supported version will be used.
+	// Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
+	// determined by our system based on the latest supported minor version.
+	// Default value is `MEMCACHE_1_5`.
+	// Possible values are `MEMCACHE_1_5`.
+	MemcacheVersion pulumi.StringPtrInput
 	// The resource name of the instance.
 	Name pulumi.StringPtrInput
 	// Configuration for memcache nodes.

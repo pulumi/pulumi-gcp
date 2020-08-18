@@ -12,12 +12,18 @@ namespace Pulumi.Gcp.OsConfig.Inputs
 
     public sealed class PatchDeploymentPatchConfigWindowsUpdateArgs : Pulumi.ResourceArgs
     {
+        [Input("classifications")]
+        private InputList<string>? _classifications;
+
         /// <summary>
         /// Only apply updates of these windows update classifications. If empty, all updates are applied.
-        /// Possible values are `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, and `UPDATE`.
+        /// Each value may be one of `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, and `UPDATE`.
         /// </summary>
-        [Input("classifications")]
-        public Input<string>? Classifications { get; set; }
+        public InputList<string> Classifications
+        {
+            get => _classifications ?? (_classifications = new InputList<string>());
+            set => _classifications = value;
+        }
 
         [Input("excludes")]
         private InputList<string>? _excludes;

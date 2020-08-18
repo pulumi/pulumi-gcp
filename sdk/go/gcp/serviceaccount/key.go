@@ -30,6 +30,8 @@ type Key struct {
 	PrivateKeyType pulumi.StringPtrOutput `pulumi:"privateKeyType"`
 	// The public key, base64 encoded
 	PublicKey pulumi.StringOutput `pulumi:"publicKey"`
+	// Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with `publicKeyType` and `privateKeyType`.
+	PublicKeyData pulumi.StringPtrOutput `pulumi:"publicKeyData"`
 	// The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
 	PublicKeyType pulumi.StringPtrOutput `pulumi:"publicKeyType"`
 	// The Service account id of the Key Pair. This can be a string in the format
@@ -88,6 +90,8 @@ type keyState struct {
 	PrivateKeyType *string `pulumi:"privateKeyType"`
 	// The public key, base64 encoded
 	PublicKey *string `pulumi:"publicKey"`
+	// Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with `publicKeyType` and `privateKeyType`.
+	PublicKeyData *string `pulumi:"publicKeyData"`
 	// The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
 	PublicKeyType *string `pulumi:"publicKeyType"`
 	// The Service account id of the Key Pair. This can be a string in the format
@@ -116,6 +120,8 @@ type KeyState struct {
 	PrivateKeyType pulumi.StringPtrInput
 	// The public key, base64 encoded
 	PublicKey pulumi.StringPtrInput
+	// Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with `publicKeyType` and `privateKeyType`.
+	PublicKeyData pulumi.StringPtrInput
 	// The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
 	PublicKeyType pulumi.StringPtrInput
 	// The Service account id of the Key Pair. This can be a string in the format
@@ -141,6 +147,8 @@ type keyArgs struct {
 	KeyAlgorithm *string `pulumi:"keyAlgorithm"`
 	// The output format of the private key. TYPE_GOOGLE_CREDENTIALS_FILE is the default output format.
 	PrivateKeyType *string `pulumi:"privateKeyType"`
+	// Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with `publicKeyType` and `privateKeyType`.
+	PublicKeyData *string `pulumi:"publicKeyData"`
 	// The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
 	PublicKeyType *string `pulumi:"publicKeyType"`
 	// The Service account id of the Key Pair. This can be a string in the format
@@ -158,6 +166,8 @@ type KeyArgs struct {
 	KeyAlgorithm pulumi.StringPtrInput
 	// The output format of the private key. TYPE_GOOGLE_CREDENTIALS_FILE is the default output format.
 	PrivateKeyType pulumi.StringPtrInput
+	// Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with `publicKeyType` and `privateKeyType`.
+	PublicKeyData pulumi.StringPtrInput
 	// The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
 	PublicKeyType pulumi.StringPtrInput
 	// The Service account id of the Key Pair. This can be a string in the format

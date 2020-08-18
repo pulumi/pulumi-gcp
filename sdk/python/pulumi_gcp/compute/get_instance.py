@@ -13,7 +13,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, allow_stopping_for_update=None, attached_disks=None, boot_disks=None, can_ip_forward=None, cpu_platform=None, current_status=None, deletion_protection=None, description=None, desired_status=None, enable_display=None, guest_accelerators=None, hostname=None, id=None, instance_id=None, label_fingerprint=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, resource_policies=None, schedulings=None, scratch_disks=None, self_link=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None, zone=None):
+    def __init__(__self__, allow_stopping_for_update=None, attached_disks=None, boot_disks=None, can_ip_forward=None, confidential_instance_configs=None, cpu_platform=None, current_status=None, deletion_protection=None, description=None, desired_status=None, enable_display=None, guest_accelerators=None, hostname=None, id=None, instance_id=None, label_fingerprint=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, resource_policies=None, schedulings=None, scratch_disks=None, self_link=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None, zone=None):
         if allow_stopping_for_update and not isinstance(allow_stopping_for_update, bool):
             raise TypeError("Expected argument 'allow_stopping_for_update' to be a bool")
         __self__.allow_stopping_for_update = allow_stopping_for_update
@@ -35,6 +35,9 @@ class GetInstanceResult:
         """
         Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
         """
+        if confidential_instance_configs and not isinstance(confidential_instance_configs, list):
+            raise TypeError("Expected argument 'confidential_instance_configs' to be a list")
+        __self__.confidential_instance_configs = confidential_instance_configs
         if cpu_platform and not isinstance(cpu_platform, str):
             raise TypeError("Expected argument 'cpu_platform' to be a str")
         __self__.cpu_platform = cpu_platform
@@ -194,6 +197,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             attached_disks=self.attached_disks,
             boot_disks=self.boot_disks,
             can_ip_forward=self.can_ip_forward,
+            confidential_instance_configs=self.confidential_instance_configs,
             cpu_platform=self.cpu_platform,
             current_status=self.current_status,
             deletion_protection=self.deletion_protection,
@@ -258,6 +262,7 @@ def get_instance(name=None, project=None, self_link=None, zone=None, opts=None):
         attached_disks=__ret__.get('attachedDisks'),
         boot_disks=__ret__.get('bootDisks'),
         can_ip_forward=__ret__.get('canIpForward'),
+        confidential_instance_configs=__ret__.get('confidentialInstanceConfigs'),
         cpu_platform=__ret__.get('cpuPlatform'),
         current_status=__ret__.get('currentStatus'),
         deletion_protection=__ret__.get('deletionProtection'),

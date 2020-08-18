@@ -32,9 +32,8 @@ namespace Pulumi.Gcp.Container
         public Output<string> Cluster { get; private set; } = null!;
 
         /// <summary>
-        /// The initial number of nodes for the pool. In
-        /// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
-        /// this will force recreation of the resource.
+        /// The initial number of nodes for the pool. In regional or multi-zonal clusters, this is the number of nodes per zone.
+        /// Changing this will force recreation of the resource.
         /// </summary>
         [Output("initialNodeCount")]
         public Output<int> InitialNodeCount { get; private set; } = null!;
@@ -191,9 +190,8 @@ namespace Pulumi.Gcp.Container
         public Input<string> Cluster { get; set; } = null!;
 
         /// <summary>
-        /// The initial number of nodes for the pool. In
-        /// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
-        /// this will force recreation of the resource.
+        /// The initial number of nodes for the pool. In regional or multi-zonal clusters, this is the number of nodes per zone.
+        /// Changing this will force recreation of the resource.
         /// </summary>
         [Input("initialNodeCount")]
         public Input<int>? InitialNodeCount { get; set; }
@@ -311,9 +309,8 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Cluster { get; set; }
 
         /// <summary>
-        /// The initial number of nodes for the pool. In
-        /// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
-        /// this will force recreation of the resource.
+        /// The initial number of nodes for the pool. In regional or multi-zonal clusters, this is the number of nodes per zone.
+        /// Changing this will force recreation of the resource.
         /// </summary>
         [Input("initialNodeCount")]
         public Input<int>? InitialNodeCount { get; set; }

@@ -74,7 +74,7 @@ namespace Pulumi.Gcp.AppEngine
         /// Settings for enabling Cloud Identity Aware Proxy
         /// </summary>
         [Output("iap")]
-        public Output<Outputs.ApplicationIap?> Iap { get; private set; } = null!;
+        public Output<Outputs.ApplicationIap> Iap { get; private set; } = null!;
 
         /// <summary>
         /// The [location](https://cloud.google.com/appengine/docs/locations)

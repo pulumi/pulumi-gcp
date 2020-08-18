@@ -134,6 +134,7 @@ class DatabaseInstance(pulumi.CustomResource):
           Cannot be used with Postgres.
         * `enabled` (`bool`) - True if backup configuration is enabled.
         * `location` (`str`)
+        * `pointInTimeRecoveryEnabled` (`bool`) - True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation.
         * `startTime` (`str`) - `HH:MM` format time indicating when backup
           configuration starts.
 
@@ -304,6 +305,7 @@ class DatabaseInstance(pulumi.CustomResource):
               Cannot be used with Postgres.
             * `enabled` (`pulumi.Input[bool]`) - True if backup configuration is enabled.
             * `location` (`pulumi.Input[str]`)
+            * `pointInTimeRecoveryEnabled` (`pulumi.Input[bool]`) - True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation.
             * `startTime` (`pulumi.Input[str]`) - `HH:MM` format time indicating when backup
               configuration starts.
 
@@ -512,6 +514,7 @@ class DatabaseInstance(pulumi.CustomResource):
               Cannot be used with Postgres.
             * `enabled` (`pulumi.Input[bool]`) - True if backup configuration is enabled.
             * `location` (`pulumi.Input[str]`)
+            * `pointInTimeRecoveryEnabled` (`pulumi.Input[bool]`) - True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation.
             * `startTime` (`pulumi.Input[str]`) - `HH:MM` format time indicating when backup
               configuration starts.
 

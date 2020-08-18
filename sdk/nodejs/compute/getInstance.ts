@@ -72,6 +72,7 @@ export interface GetInstanceResult {
      * Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
      */
     readonly canIpForward: boolean;
+    readonly confidentialInstanceConfigs: outputs.compute.GetInstanceConfidentialInstanceConfig[];
     /**
      * The CPU platform used by this instance.
      */

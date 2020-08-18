@@ -21,10 +21,37 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Images;
         /// <summary>
+        /// Google Cloud Storage bucket where logs should be written.
+        /// Logs file names will be of the format ${logsBucket}/log-${build_id}.txt.
+        /// </summary>
+        public readonly string? LogsBucket;
+        /// <summary>
+        /// TTL in queue for this build. If provided and the build is enqueued longer than this value,
+        /// the build will expire and the build status will be EXPIRED.
+        /// The TTL starts ticking from createTime.
+        /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        /// </summary>
+        public readonly string? QueueTtl;
+        /// <summary>
+        /// Secrets to decrypt using Cloud Key Management Service.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.TriggerBuildSecret> Secrets;
+        /// <summary>
+        /// The location of the source files to build.
+        /// One of `storageSource` or `repoSource` must be provided.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.TriggerBuildSource? Source;
+        /// <summary>
         /// The operations to be performed on the workspace.
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.TriggerBuildStep> Steps;
+        /// <summary>
+        /// Substitutions to use in a triggered build. Should only be used with triggers.run
+        /// </summary>
+        public readonly ImmutableDictionary<string, string>? Substitutions;
         /// <summary>
         /// Tags for annotation of a Build. These are not docker tags.
         /// </summary>
@@ -41,14 +68,29 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
         private TriggerBuild(
             ImmutableArray<string> images,
 
+            string? logsBucket,
+
+            string? queueTtl,
+
+            ImmutableArray<Outputs.TriggerBuildSecret> secrets,
+
+            Outputs.TriggerBuildSource? source,
+
             ImmutableArray<Outputs.TriggerBuildStep> steps,
+
+            ImmutableDictionary<string, string>? substitutions,
 
             ImmutableArray<string> tags,
 
             string? timeout)
         {
             Images = images;
+            LogsBucket = logsBucket;
+            QueueTtl = queueTtl;
+            Secrets = secrets;
+            Source = source;
             Steps = steps;
+            Substitutions = substitutions;
             Tags = tags;
             Timeout = timeout;
         }

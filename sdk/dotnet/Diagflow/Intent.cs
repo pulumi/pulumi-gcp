@@ -33,6 +33,7 @@ namespace Pulumi.Gcp.Diagflow
         /// <summary>
         /// The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
         /// (i.e. default platform).
+        /// Each value may be one of `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, and `GOOGLE_HANGOUTS`.
         /// </summary>
         [Output("defaultResponsePlatforms")]
         public Output<ImmutableArray<string>> DefaultResponsePlatforms { get; private set; } = null!;
@@ -190,6 +191,7 @@ namespace Pulumi.Gcp.Diagflow
         /// <summary>
         /// The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
         /// (i.e. default platform).
+        /// Each value may be one of `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, and `GOOGLE_HANGOUTS`.
         /// </summary>
         public InputList<string> DefaultResponsePlatforms
         {
@@ -303,6 +305,7 @@ namespace Pulumi.Gcp.Diagflow
         /// <summary>
         /// The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
         /// (i.e. default platform).
+        /// Each value may be one of `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, and `GOOGLE_HANGOUTS`.
         /// </summary>
         public InputList<string> DefaultResponsePlatforms
         {

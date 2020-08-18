@@ -35,19 +35,16 @@ export class IamAuditConfig extends pulumi.CustomResource {
     }
 
     /**
-     * The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
+     * The configuration for logging of each type of permission. This can be specified multiple times.
      */
     public readonly auditLogConfigs!: pulumi.Output<outputs.folder.IamAuditConfigAuditLogConfig[]>;
     /**
      * The etag of iam policy
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
-    /**
-     * The resource name of the folder in which you want to manage the audit logging config. Its format is folders/{folder_id}.
-     */
     public readonly folder!: pulumi.Output<string>;
     /**
-     * Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_folder\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
+     * Service which will be enabled for audit logging. The special value allServices covers all services.
      */
     public readonly service!: pulumi.Output<string>;
 
@@ -99,19 +96,16 @@ export class IamAuditConfig extends pulumi.CustomResource {
  */
 export interface IamAuditConfigState {
     /**
-     * The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
+     * The configuration for logging of each type of permission. This can be specified multiple times.
      */
     readonly auditLogConfigs?: pulumi.Input<pulumi.Input<inputs.folder.IamAuditConfigAuditLogConfig>[]>;
     /**
      * The etag of iam policy
      */
     readonly etag?: pulumi.Input<string>;
-    /**
-     * The resource name of the folder in which you want to manage the audit logging config. Its format is folders/{folder_id}.
-     */
     readonly folder?: pulumi.Input<string>;
     /**
-     * Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_folder\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
+     * Service which will be enabled for audit logging. The special value allServices covers all services.
      */
     readonly service?: pulumi.Input<string>;
 }
@@ -121,15 +115,12 @@ export interface IamAuditConfigState {
  */
 export interface IamAuditConfigArgs {
     /**
-     * The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
+     * The configuration for logging of each type of permission. This can be specified multiple times.
      */
     readonly auditLogConfigs: pulumi.Input<pulumi.Input<inputs.folder.IamAuditConfigAuditLogConfig>[]>;
-    /**
-     * The resource name of the folder in which you want to manage the audit logging config. Its format is folders/{folder_id}.
-     */
     readonly folder: pulumi.Input<string>;
     /**
-     * Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_folder\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
+     * Service which will be enabled for audit logging. The special value allServices covers all services.
      */
     readonly service: pulumi.Input<string>;
 }

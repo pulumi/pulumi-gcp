@@ -25,6 +25,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         public readonly bool? Enabled;
         public readonly string? Location;
         /// <summary>
+        /// True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation.
+        /// </summary>
+        public readonly bool? PointInTimeRecoveryEnabled;
+        /// <summary>
         /// `HH:MM` format time indicating when backup
         /// configuration starts.
         /// </summary>
@@ -38,11 +42,14 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             string? location,
 
+            bool? pointInTimeRecoveryEnabled,
+
             string? startTime)
         {
             BinaryLogEnabled = binaryLogEnabled;
             Enabled = enabled;
             Location = location;
+            PointInTimeRecoveryEnabled = pointInTimeRecoveryEnabled;
             StartTime = startTime;
         }
     }
