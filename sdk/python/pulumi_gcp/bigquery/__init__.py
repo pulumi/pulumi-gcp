@@ -15,3 +15,5 @@ from .get_default_service_account import *
 from .job import *
 from .reservation import *
 from .table import *
+from ._inputs import *
+from . import outputs

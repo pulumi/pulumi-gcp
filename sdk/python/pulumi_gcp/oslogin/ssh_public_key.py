@@ -5,28 +5,22 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['SshPublicKey']
 
 
 class SshPublicKey(pulumi.CustomResource):
-    expiration_time_usec: pulumi.Output[str]
-    """
-    An expiration time in microseconds since epoch.
-    """
-    fingerprint: pulumi.Output[str]
-    """
-    The SHA-256 fingerprint of the SSH public key.
-    """
-    key: pulumi.Output[str]
-    """
-    Public key text in SSH format, defined by RFC4253 section 6.6.
-    """
-    user: pulumi.Output[str]
-    """
-    The user email.
-    """
-    def __init__(__self__, resource_name, opts=None, expiration_time_usec=None, key=None, user=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 expiration_time_usec: Optional[pulumi.Input[str]] = None,
+                 key: Optional[pulumi.Input[str]] = None,
+                 user: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         The SSH public key information associated with a Google account.
 
@@ -76,13 +70,19 @@ class SshPublicKey(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, expiration_time_usec=None, fingerprint=None, key=None, user=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            expiration_time_usec: Optional[pulumi.Input[str]] = None,
+            fingerprint: Optional[pulumi.Input[str]] = None,
+            key: Optional[pulumi.Input[str]] = None,
+            user: Optional[pulumi.Input[str]] = None) -> 'SshPublicKey':
         """
         Get an existing SshPublicKey resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] expiration_time_usec: An expiration time in microseconds since epoch.
         :param pulumi.Input[str] fingerprint: The SHA-256 fingerprint of the SSH public key.
@@ -99,8 +99,41 @@ class SshPublicKey(pulumi.CustomResource):
         __props__["user"] = user
         return SshPublicKey(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="expirationTimeUsec")
+    def expiration_time_usec(self) -> Optional[str]:
+        """
+        An expiration time in microseconds since epoch.
+        """
+        return pulumi.get(self, "expiration_time_usec")
+
+    @property
+    @pulumi.getter
+    def fingerprint(self) -> str:
+        """
+        The SHA-256 fingerprint of the SSH public key.
+        """
+        return pulumi.get(self, "fingerprint")
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Public key text in SSH format, defined by RFC4253 section 6.6.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def user(self) -> str:
+        """
+        The user email.
+        """
+        return pulumi.get(self, "user")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

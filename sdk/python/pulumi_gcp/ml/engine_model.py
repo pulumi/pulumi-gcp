@@ -5,50 +5,29 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['EngineModel']
 
 
 class EngineModel(pulumi.CustomResource):
-    default_version: pulumi.Output[dict]
-    """
-    The default version of the model. This version will be used to handle
-    prediction requests that do not specify a version.
-    Structure is documented below.
-
-      * `name` (`str`) - The name specified for the version when it was created.
-    """
-    description: pulumi.Output[str]
-    """
-    The description specified for the model when it was created.
-    """
-    labels: pulumi.Output[dict]
-    """
-    One or more labels that you can add, to organize your models.
-    """
-    name: pulumi.Output[str]
-    """
-    The name specified for the version when it was created.
-    """
-    online_prediction_console_logging: pulumi.Output[bool]
-    """
-    If true, online prediction nodes send stderr and stdout streams to Stackdriver Logging
-    """
-    online_prediction_logging: pulumi.Output[bool]
-    """
-    If true, online prediction access logs are sent to StackDriver Logging.
-    """
-    project: pulumi.Output[str]
-    """
-    The ID of the project in which the resource belongs.
-    If it is not provided, the provider project is used.
-    """
-    regions: pulumi.Output[str]
-    """
-    The list of regions where the model is going to be deployed.
-    Currently only one region per model is supported
-    """
-    def __init__(__self__, resource_name, opts=None, default_version=None, description=None, labels=None, name=None, online_prediction_console_logging=None, online_prediction_logging=None, project=None, regions=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 default_version: Optional[pulumi.Input[pulumi.InputType['EngineModelDefaultVersionArgs']]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 online_prediction_console_logging: Optional[pulumi.Input[bool]] = None,
+                 online_prediction_logging: Optional[pulumi.Input[bool]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 regions: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Represents a machine learning solution.
 
@@ -59,11 +38,11 @@ class EngineModel(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] default_version: The default version of the model. This version will be used to handle
+        :param pulumi.Input[pulumi.InputType['EngineModelDefaultVersionArgs']] default_version: The default version of the model. This version will be used to handle
                prediction requests that do not specify a version.
                Structure is documented below.
         :param pulumi.Input[str] description: The description specified for the model when it was created.
-        :param pulumi.Input[dict] labels: One or more labels that you can add, to organize your models.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: One or more labels that you can add, to organize your models.
         :param pulumi.Input[str] name: The name specified for the version when it was created.
         :param pulumi.Input[bool] online_prediction_console_logging: If true, online prediction nodes send stderr and stdout streams to Stackdriver Logging
         :param pulumi.Input[bool] online_prediction_logging: If true, online prediction access logs are sent to StackDriver Logging.
@@ -71,10 +50,6 @@ class EngineModel(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] regions: The list of regions where the model is going to be deployed.
                Currently only one region per model is supported
-
-        The **default_version** object supports the following:
-
-          * `name` (`pulumi.Input[str]`) - The name specified for the version when it was created.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -108,19 +83,29 @@ class EngineModel(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, default_version=None, description=None, labels=None, name=None, online_prediction_console_logging=None, online_prediction_logging=None, project=None, regions=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            default_version: Optional[pulumi.Input[pulumi.InputType['EngineModelDefaultVersionArgs']]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            online_prediction_console_logging: Optional[pulumi.Input[bool]] = None,
+            online_prediction_logging: Optional[pulumi.Input[bool]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            regions: Optional[pulumi.Input[str]] = None) -> 'EngineModel':
         """
         Get an existing EngineModel resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] default_version: The default version of the model. This version will be used to handle
+        :param pulumi.Input[pulumi.InputType['EngineModelDefaultVersionArgs']] default_version: The default version of the model. This version will be used to handle
                prediction requests that do not specify a version.
                Structure is documented below.
         :param pulumi.Input[str] description: The description specified for the model when it was created.
-        :param pulumi.Input[dict] labels: One or more labels that you can add, to organize your models.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: One or more labels that you can add, to organize your models.
         :param pulumi.Input[str] name: The name specified for the version when it was created.
         :param pulumi.Input[bool] online_prediction_console_logging: If true, online prediction nodes send stderr and stdout streams to Stackdriver Logging
         :param pulumi.Input[bool] online_prediction_logging: If true, online prediction access logs are sent to StackDriver Logging.
@@ -128,10 +113,6 @@ class EngineModel(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] regions: The list of regions where the model is going to be deployed.
                Currently only one region per model is supported
-
-        The **default_version** object supports the following:
-
-          * `name` (`pulumi.Input[str]`) - The name specified for the version when it was created.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -147,8 +128,77 @@ class EngineModel(pulumi.CustomResource):
         __props__["regions"] = regions
         return EngineModel(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="defaultVersion")
+    def default_version(self) -> Optional['outputs.EngineModelDefaultVersion']:
+        """
+        The default version of the model. This version will be used to handle
+        prediction requests that do not specify a version.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "default_version")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The description specified for the model when it was created.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[Mapping[str, str]]:
+        """
+        One or more labels that you can add, to organize your models.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name specified for the version when it was created.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="onlinePredictionConsoleLogging")
+    def online_prediction_console_logging(self) -> Optional[bool]:
+        """
+        If true, online prediction nodes send stderr and stdout streams to Stackdriver Logging
+        """
+        return pulumi.get(self, "online_prediction_console_logging")
+
+    @property
+    @pulumi.getter(name="onlinePredictionLogging")
+    def online_prediction_logging(self) -> Optional[bool]:
+        """
+        If true, online prediction access logs are sent to StackDriver Logging.
+        """
+        return pulumi.get(self, "online_prediction_logging")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def regions(self) -> Optional[str]:
+        """
+        The list of regions where the model is going to be deployed.
+        Currently only one region per model is supported
+        """
+        return pulumi.get(self, "regions")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

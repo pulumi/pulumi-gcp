@@ -116,3 +116,5 @@ from .target_tcp_proxy import *
 from .url_map import *
 from .vpn_gateway import *
 from .vpn_tunnel import *
+from ._inputs import *
+from . import outputs

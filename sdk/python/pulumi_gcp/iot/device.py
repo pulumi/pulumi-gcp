@@ -5,113 +5,28 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['Device']
 
 
 class Device(pulumi.CustomResource):
-    blocked: pulumi.Output[bool]
-    """
-    If a device is blocked, connections or requests from this device will fail.
-    """
-    config: pulumi.Output[dict]
-    """
-    The most recent device configuration, which is eventually sent from Cloud IoT Core to the device.
-
-      * `binaryData` (`str`)
-      * `cloudUpdateTime` (`str`)
-      * `deviceAckTime` (`str`)
-      * `version` (`str`)
-    """
-    credentials: pulumi.Output[list]
-    """
-    The credentials used to authenticate this device.
-    Structure is documented below.
-
-      * `expiration_time` (`str`) - The time at which this credential becomes invalid.
-      * `public_key` (`dict`) - A public key used to verify the signature of JSON Web Tokens (JWTs).
-        Structure is documented below.
-        * `format` (`str`) - The format of the key.
-          Possible values are `RSA_PEM`, `RSA_X509_PEM`, `ES256_PEM`, and `ES256_X509_PEM`.
-        * `key` (`str`) - The key data.
-    """
-    gateway_config: pulumi.Output[dict]
-    """
-    Gateway-related configuration and state.
-    Structure is documented below.
-
-      * `gatewayAuthMethod` (`str`) - Indicates whether the device is a gateway.
-        Possible values are `ASSOCIATION_ONLY`, `DEVICE_AUTH_TOKEN_ONLY`, and `ASSOCIATION_AND_DEVICE_AUTH_TOKEN`.
-      * `gatewayType` (`str`) - Indicates whether the device is a gateway.
-        Default value is `NON_GATEWAY`.
-        Possible values are `GATEWAY` and `NON_GATEWAY`.
-      * `lastAccessedGatewayId` (`str`) - -
-        The ID of the gateway the device accessed most recently.
-      * `lastAccessedGatewayTime` (`str`) - -
-        The most recent time at which the device accessed the gateway specified in last_accessed_gateway.
-    """
-    last_config_ack_time: pulumi.Output[str]
-    """
-    The last time a cloud-to-device config version acknowledgment was received from the device.
-    """
-    last_config_send_time: pulumi.Output[str]
-    """
-    The last time a cloud-to-device config version was sent to the device.
-    """
-    last_error_status: pulumi.Output[dict]
-    """
-    The error message of the most recent error, such as a failure to publish to Cloud Pub/Sub.
-
-      * `details` (`list`)
-      * `message` (`str`)
-      * `number` (`float`)
-    """
-    last_error_time: pulumi.Output[str]
-    """
-    The time the most recent error occurred, such as a failure to publish to Cloud Pub/Sub.
-    """
-    last_event_time: pulumi.Output[str]
-    """
-    The last time a telemetry event was received.
-    """
-    last_heartbeat_time: pulumi.Output[str]
-    """
-    The last time an MQTT PINGREQ was received.
-    """
-    last_state_time: pulumi.Output[str]
-    """
-    The last time a state event was received.
-    """
-    log_level: pulumi.Output[str]
-    """
-    The logging verbosity for device activity.
-    Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
-    """
-    metadata: pulumi.Output[dict]
-    """
-    The metadata key-value pairs assigned to the device.
-    """
-    name: pulumi.Output[str]
-    """
-    A unique name for the resource.
-    """
-    num_id: pulumi.Output[str]
-    """
-    A server-defined unique numeric ID for the device. This is a more compact way to identify devices, and it is globally
-    unique.
-    """
-    registry: pulumi.Output[str]
-    """
-    The name of the device registry where this device should be created.
-    """
-    state: pulumi.Output[dict]
-    """
-    The state most recently received from the device.
-
-      * `binaryData` (`str`)
-      * `update_time` (`str`)
-    """
-    def __init__(__self__, resource_name, opts=None, blocked=None, credentials=None, gateway_config=None, log_level=None, metadata=None, name=None, registry=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 blocked: Optional[pulumi.Input[bool]] = None,
+                 credentials: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DeviceCredentialArgs']]]]] = None,
+                 gateway_config: Optional[pulumi.Input[pulumi.InputType['DeviceGatewayConfigArgs']]] = None,
+                 log_level: Optional[pulumi.Input[str]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 registry: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         A Google Cloud IoT Core device.
 
@@ -126,36 +41,15 @@ class Device(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] blocked: If a device is blocked, connections or requests from this device will fail.
-        :param pulumi.Input[list] credentials: The credentials used to authenticate this device.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DeviceCredentialArgs']]]] credentials: The credentials used to authenticate this device.
                Structure is documented below.
-        :param pulumi.Input[dict] gateway_config: Gateway-related configuration and state.
+        :param pulumi.Input[pulumi.InputType['DeviceGatewayConfigArgs']] gateway_config: Gateway-related configuration and state.
                Structure is documented below.
         :param pulumi.Input[str] log_level: The logging verbosity for device activity.
                Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
-        :param pulumi.Input[dict] metadata: The metadata key-value pairs assigned to the device.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The metadata key-value pairs assigned to the device.
         :param pulumi.Input[str] name: A unique name for the resource.
         :param pulumi.Input[str] registry: The name of the device registry where this device should be created.
-
-        The **credentials** object supports the following:
-
-          * `expiration_time` (`pulumi.Input[str]`) - The time at which this credential becomes invalid.
-          * `public_key` (`pulumi.Input[dict]`) - A public key used to verify the signature of JSON Web Tokens (JWTs).
-            Structure is documented below.
-            * `format` (`pulumi.Input[str]`) - The format of the key.
-              Possible values are `RSA_PEM`, `RSA_X509_PEM`, `ES256_PEM`, and `ES256_X509_PEM`.
-            * `key` (`pulumi.Input[str]`) - The key data.
-
-        The **gateway_config** object supports the following:
-
-          * `gatewayAuthMethod` (`pulumi.Input[str]`) - Indicates whether the device is a gateway.
-            Possible values are `ASSOCIATION_ONLY`, `DEVICE_AUTH_TOKEN_ONLY`, and `ASSOCIATION_AND_DEVICE_AUTH_TOKEN`.
-          * `gatewayType` (`pulumi.Input[str]`) - Indicates whether the device is a gateway.
-            Default value is `NON_GATEWAY`.
-            Possible values are `GATEWAY` and `NON_GATEWAY`.
-          * `lastAccessedGatewayId` (`pulumi.Input[str]`) - -
-            The ID of the gateway the device accessed most recently.
-          * `lastAccessedGatewayTime` (`pulumi.Input[str]`) - -
-            The most recent time at which the device accessed the gateway specified in last_accessed_gateway.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -200,74 +94,54 @@ class Device(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, blocked=None, config=None, credentials=None, gateway_config=None, last_config_ack_time=None, last_config_send_time=None, last_error_status=None, last_error_time=None, last_event_time=None, last_heartbeat_time=None, last_state_time=None, log_level=None, metadata=None, name=None, num_id=None, registry=None, state=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            blocked: Optional[pulumi.Input[bool]] = None,
+            config: Optional[pulumi.Input[pulumi.InputType['DeviceConfigArgs']]] = None,
+            credentials: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DeviceCredentialArgs']]]]] = None,
+            gateway_config: Optional[pulumi.Input[pulumi.InputType['DeviceGatewayConfigArgs']]] = None,
+            last_config_ack_time: Optional[pulumi.Input[str]] = None,
+            last_config_send_time: Optional[pulumi.Input[str]] = None,
+            last_error_status: Optional[pulumi.Input[pulumi.InputType['DeviceLastErrorStatusArgs']]] = None,
+            last_error_time: Optional[pulumi.Input[str]] = None,
+            last_event_time: Optional[pulumi.Input[str]] = None,
+            last_heartbeat_time: Optional[pulumi.Input[str]] = None,
+            last_state_time: Optional[pulumi.Input[str]] = None,
+            log_level: Optional[pulumi.Input[str]] = None,
+            metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            num_id: Optional[pulumi.Input[str]] = None,
+            registry: Optional[pulumi.Input[str]] = None,
+            state: Optional[pulumi.Input[pulumi.InputType['DeviceStateArgs']]] = None) -> 'Device':
         """
         Get an existing Device resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] blocked: If a device is blocked, connections or requests from this device will fail.
-        :param pulumi.Input[dict] config: The most recent device configuration, which is eventually sent from Cloud IoT Core to the device.
-        :param pulumi.Input[list] credentials: The credentials used to authenticate this device.
+        :param pulumi.Input[pulumi.InputType['DeviceConfigArgs']] config: The most recent device configuration, which is eventually sent from Cloud IoT Core to the device.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DeviceCredentialArgs']]]] credentials: The credentials used to authenticate this device.
                Structure is documented below.
-        :param pulumi.Input[dict] gateway_config: Gateway-related configuration and state.
+        :param pulumi.Input[pulumi.InputType['DeviceGatewayConfigArgs']] gateway_config: Gateway-related configuration and state.
                Structure is documented below.
         :param pulumi.Input[str] last_config_ack_time: The last time a cloud-to-device config version acknowledgment was received from the device.
         :param pulumi.Input[str] last_config_send_time: The last time a cloud-to-device config version was sent to the device.
-        :param pulumi.Input[dict] last_error_status: The error message of the most recent error, such as a failure to publish to Cloud Pub/Sub.
+        :param pulumi.Input[pulumi.InputType['DeviceLastErrorStatusArgs']] last_error_status: The error message of the most recent error, such as a failure to publish to Cloud Pub/Sub.
         :param pulumi.Input[str] last_error_time: The time the most recent error occurred, such as a failure to publish to Cloud Pub/Sub.
         :param pulumi.Input[str] last_event_time: The last time a telemetry event was received.
         :param pulumi.Input[str] last_heartbeat_time: The last time an MQTT PINGREQ was received.
         :param pulumi.Input[str] last_state_time: The last time a state event was received.
         :param pulumi.Input[str] log_level: The logging verbosity for device activity.
                Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
-        :param pulumi.Input[dict] metadata: The metadata key-value pairs assigned to the device.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The metadata key-value pairs assigned to the device.
         :param pulumi.Input[str] name: A unique name for the resource.
         :param pulumi.Input[str] num_id: A server-defined unique numeric ID for the device. This is a more compact way to identify devices, and it is globally
                unique.
         :param pulumi.Input[str] registry: The name of the device registry where this device should be created.
-        :param pulumi.Input[dict] state: The state most recently received from the device.
-
-        The **config** object supports the following:
-
-          * `binaryData` (`pulumi.Input[str]`)
-          * `cloudUpdateTime` (`pulumi.Input[str]`)
-          * `deviceAckTime` (`pulumi.Input[str]`)
-          * `version` (`pulumi.Input[str]`)
-
-        The **credentials** object supports the following:
-
-          * `expiration_time` (`pulumi.Input[str]`) - The time at which this credential becomes invalid.
-          * `public_key` (`pulumi.Input[dict]`) - A public key used to verify the signature of JSON Web Tokens (JWTs).
-            Structure is documented below.
-            * `format` (`pulumi.Input[str]`) - The format of the key.
-              Possible values are `RSA_PEM`, `RSA_X509_PEM`, `ES256_PEM`, and `ES256_X509_PEM`.
-            * `key` (`pulumi.Input[str]`) - The key data.
-
-        The **gateway_config** object supports the following:
-
-          * `gatewayAuthMethod` (`pulumi.Input[str]`) - Indicates whether the device is a gateway.
-            Possible values are `ASSOCIATION_ONLY`, `DEVICE_AUTH_TOKEN_ONLY`, and `ASSOCIATION_AND_DEVICE_AUTH_TOKEN`.
-          * `gatewayType` (`pulumi.Input[str]`) - Indicates whether the device is a gateway.
-            Default value is `NON_GATEWAY`.
-            Possible values are `GATEWAY` and `NON_GATEWAY`.
-          * `lastAccessedGatewayId` (`pulumi.Input[str]`) - -
-            The ID of the gateway the device accessed most recently.
-          * `lastAccessedGatewayTime` (`pulumi.Input[str]`) - -
-            The most recent time at which the device accessed the gateway specified in last_accessed_gateway.
-
-        The **last_error_status** object supports the following:
-
-          * `details` (`pulumi.Input[list]`)
-          * `message` (`pulumi.Input[str]`)
-          * `number` (`pulumi.Input[float]`)
-
-        The **state** object supports the following:
-
-          * `binaryData` (`pulumi.Input[str]`)
-          * `update_time` (`pulumi.Input[str]`)
+        :param pulumi.Input[pulumi.InputType['DeviceStateArgs']] state: The state most recently received from the device.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -292,8 +166,149 @@ class Device(pulumi.CustomResource):
         __props__["state"] = state
         return Device(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def blocked(self) -> Optional[bool]:
+        """
+        If a device is blocked, connections or requests from this device will fail.
+        """
+        return pulumi.get(self, "blocked")
+
+    @property
+    @pulumi.getter
+    def config(self) -> 'outputs.DeviceConfig':
+        """
+        The most recent device configuration, which is eventually sent from Cloud IoT Core to the device.
+        """
+        return pulumi.get(self, "config")
+
+    @property
+    @pulumi.getter
+    def credentials(self) -> Optional[List['outputs.DeviceCredential']]:
+        """
+        The credentials used to authenticate this device.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "credentials")
+
+    @property
+    @pulumi.getter(name="gatewayConfig")
+    def gateway_config(self) -> Optional['outputs.DeviceGatewayConfig']:
+        """
+        Gateway-related configuration and state.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gateway_config")
+
+    @property
+    @pulumi.getter(name="lastConfigAckTime")
+    def last_config_ack_time(self) -> str:
+        """
+        The last time a cloud-to-device config version acknowledgment was received from the device.
+        """
+        return pulumi.get(self, "last_config_ack_time")
+
+    @property
+    @pulumi.getter(name="lastConfigSendTime")
+    def last_config_send_time(self) -> str:
+        """
+        The last time a cloud-to-device config version was sent to the device.
+        """
+        return pulumi.get(self, "last_config_send_time")
+
+    @property
+    @pulumi.getter(name="lastErrorStatus")
+    def last_error_status(self) -> 'outputs.DeviceLastErrorStatus':
+        """
+        The error message of the most recent error, such as a failure to publish to Cloud Pub/Sub.
+        """
+        return pulumi.get(self, "last_error_status")
+
+    @property
+    @pulumi.getter(name="lastErrorTime")
+    def last_error_time(self) -> str:
+        """
+        The time the most recent error occurred, such as a failure to publish to Cloud Pub/Sub.
+        """
+        return pulumi.get(self, "last_error_time")
+
+    @property
+    @pulumi.getter(name="lastEventTime")
+    def last_event_time(self) -> str:
+        """
+        The last time a telemetry event was received.
+        """
+        return pulumi.get(self, "last_event_time")
+
+    @property
+    @pulumi.getter(name="lastHeartbeatTime")
+    def last_heartbeat_time(self) -> str:
+        """
+        The last time an MQTT PINGREQ was received.
+        """
+        return pulumi.get(self, "last_heartbeat_time")
+
+    @property
+    @pulumi.getter(name="lastStateTime")
+    def last_state_time(self) -> str:
+        """
+        The last time a state event was received.
+        """
+        return pulumi.get(self, "last_state_time")
+
+    @property
+    @pulumi.getter(name="logLevel")
+    def log_level(self) -> Optional[str]:
+        """
+        The logging verbosity for device activity.
+        Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+        """
+        return pulumi.get(self, "log_level")
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[Mapping[str, str]]:
+        """
+        The metadata key-value pairs assigned to the device.
+        """
+        return pulumi.get(self, "metadata")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        A unique name for the resource.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="numId")
+    def num_id(self) -> str:
+        """
+        A server-defined unique numeric ID for the device. This is a more compact way to identify devices, and it is globally
+        unique.
+        """
+        return pulumi.get(self, "num_id")
+
+    @property
+    @pulumi.getter
+    def registry(self) -> str:
+        """
+        The name of the device registry where this device should be created.
+        """
+        return pulumi.get(self, "registry")
+
+    @property
+    @pulumi.getter
+    def state(self) -> 'outputs.DeviceState':
+        """
+        The state most recently received from the device.
+        """
+        return pulumi.get(self, "state")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

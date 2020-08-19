@@ -5,53 +5,28 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['Instance']
 
 
 class Instance(pulumi.CustomResource):
-    clusters: pulumi.Output[list]
-    """
-    A block of cluster configuration options. This can be specified at least once, and up to 4 times.
-    See structure below.
-
-      * `cluster_id` (`str`) - The ID of the Cloud Bigtable cluster.
-      * `num_nodes` (`float`) - The number of nodes in your Cloud Bigtable cluster.
-        Required, with a minimum of `1` for a `PRODUCTION` instance. Must be left unset
-        for a `DEVELOPMENT` instance.
-      * `storageType` (`str`) - The storage type to use. One of `"SSD"` or
-        `"HDD"`. Defaults to `"SSD"`.
-      * `zone` (`str`) - The zone to create the Cloud Bigtable cluster in. Each
-        cluster must have a different zone in the same region. Zones that support
-        Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
-    """
-    deletion_protection: pulumi.Output[bool]
-    """
-    Whether or not to allow this provider to destroy the instance. Unless this field is set to false
-    in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
-    """
-    display_name: pulumi.Output[str]
-    """
-    The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
-    """
-    instance_type: pulumi.Output[str]
-    """
-    The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
-    """
-    labels: pulumi.Output[dict]
-    """
-    A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
-    """
-    name: pulumi.Output[str]
-    """
-    The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance.
-    """
-    project: pulumi.Output[str]
-    """
-    The ID of the project in which the resource belongs. If it
-    is not provided, the provider project is used.
-    """
-    def __init__(__self__, resource_name, opts=None, clusters=None, deletion_protection=None, display_name=None, instance_type=None, labels=None, name=None, project=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 clusters: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceClusterArgs']]]]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 instance_type: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Creates a Google Bigtable instance. For more information see
         [the official documentation](https://cloud.google.com/bigtable/) and
@@ -61,28 +36,16 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] clusters: A block of cluster configuration options. This can be specified at least once, and up to 4 times.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceClusterArgs']]]] clusters: A block of cluster configuration options. This can be specified at least once, and up to 4 times.
                See structure below.
         :param pulumi.Input[bool] deletion_protection: Whether or not to allow this provider to destroy the instance. Unless this field is set to false
                in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
         :param pulumi.Input[str] display_name: The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
         :param pulumi.Input[str] instance_type: The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
-        :param pulumi.Input[dict] labels: A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
         :param pulumi.Input[str] name: The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-
-        The **clusters** object supports the following:
-
-          * `cluster_id` (`pulumi.Input[str]`) - The ID of the Cloud Bigtable cluster.
-          * `num_nodes` (`pulumi.Input[float]`) - The number of nodes in your Cloud Bigtable cluster.
-            Required, with a minimum of `1` for a `PRODUCTION` instance. Must be left unset
-            for a `DEVELOPMENT` instance.
-          * `storageType` (`pulumi.Input[str]`) - The storage type to use. One of `"SSD"` or
-            `"HDD"`. Defaults to `"SSD"`.
-          * `zone` (`pulumi.Input[str]`) - The zone to create the Cloud Bigtable cluster in. Each
-            cluster must have a different zone in the same region. Zones that support
-            Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -115,36 +78,33 @@ class Instance(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, clusters=None, deletion_protection=None, display_name=None, instance_type=None, labels=None, name=None, project=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            clusters: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceClusterArgs']]]]] = None,
+            deletion_protection: Optional[pulumi.Input[bool]] = None,
+            display_name: Optional[pulumi.Input[str]] = None,
+            instance_type: Optional[pulumi.Input[str]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            project: Optional[pulumi.Input[str]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] clusters: A block of cluster configuration options. This can be specified at least once, and up to 4 times.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceClusterArgs']]]] clusters: A block of cluster configuration options. This can be specified at least once, and up to 4 times.
                See structure below.
         :param pulumi.Input[bool] deletion_protection: Whether or not to allow this provider to destroy the instance. Unless this field is set to false
                in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
         :param pulumi.Input[str] display_name: The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
         :param pulumi.Input[str] instance_type: The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
-        :param pulumi.Input[dict] labels: A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
         :param pulumi.Input[str] name: The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-
-        The **clusters** object supports the following:
-
-          * `cluster_id` (`pulumi.Input[str]`) - The ID of the Cloud Bigtable cluster.
-          * `num_nodes` (`pulumi.Input[float]`) - The number of nodes in your Cloud Bigtable cluster.
-            Required, with a minimum of `1` for a `PRODUCTION` instance. Must be left unset
-            for a `DEVELOPMENT` instance.
-          * `storageType` (`pulumi.Input[str]`) - The storage type to use. One of `"SSD"` or
-            `"HDD"`. Defaults to `"SSD"`.
-          * `zone` (`pulumi.Input[str]`) - The zone to create the Cloud Bigtable cluster in. Each
-            cluster must have a different zone in the same region. Zones that support
-            Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -159,8 +119,68 @@ class Instance(pulumi.CustomResource):
         __props__["project"] = project
         return Instance(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def clusters(self) -> List['outputs.InstanceCluster']:
+        """
+        A block of cluster configuration options. This can be specified at least once, and up to 4 times.
+        See structure below.
+        """
+        return pulumi.get(self, "clusters")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[bool]:
+        """
+        Whether or not to allow this provider to destroy the instance. Unless this field is set to false
+        in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> Optional[str]:
+        """
+        The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
+        """
+        return pulumi.get(self, "instance_type")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[Mapping[str, str]]:
+        """
+        A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The ID of the project in which the resource belongs. If it
+        is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

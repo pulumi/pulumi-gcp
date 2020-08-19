@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
 
+__all__ = [
+    'GetDefaultServiceAccountResult',
+    'AwaitableGetDefaultServiceAccountResult',
+    'get_default_service_account',
+]
 
+@pulumi.output_type
 class GetDefaultServiceAccountResult:
     """
     A collection of values returned by getDefaultServiceAccount.
@@ -16,20 +22,35 @@ class GetDefaultServiceAccountResult:
     def __init__(__self__, email=None, id=None, project=None):
         if email and not isinstance(email, str):
             raise TypeError("Expected argument 'email' to be a str")
-        __self__.email = email
+        pulumi.set(__self__, "email", email)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if project and not isinstance(project, str):
+            raise TypeError("Expected argument 'project' to be a str")
+        pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter
+    def email(self) -> str:
         """
         The email address of the service account. This value is often used to refer to the service account
         in order to grant IAM permissions.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if project and not isinstance(project, str):
-            raise TypeError("Expected argument 'project' to be a str")
-        __self__.project = project
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        return pulumi.get(self, "project")
 
 
 class AwaitableGetDefaultServiceAccountResult(GetDefaultServiceAccountResult):
@@ -43,7 +64,8 @@ class AwaitableGetDefaultServiceAccountResult(GetDefaultServiceAccountResult):
             project=self.project)
 
 
-def get_default_service_account(project=None, opts=None):
+def get_default_service_account(project: Optional[str] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDefaultServiceAccountResult:
     """
     Get the email address of a project's unique BigQuery service account.
 
@@ -64,9 +86,9 @@ def get_default_service_account(project=None, opts=None):
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('gcp:bigquery/getDefaultServiceAccount:getDefaultServiceAccount', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('gcp:bigquery/getDefaultServiceAccount:getDefaultServiceAccount', __args__, opts=opts, typ=GetDefaultServiceAccountResult).value
 
     return AwaitableGetDefaultServiceAccountResult(
-        email=__ret__.get('email'),
-        id=__ret__.get('id'),
-        project=__ret__.get('project'))
+        email=__ret__.email,
+        id=__ret__.id,
+        project=__ret__.project)

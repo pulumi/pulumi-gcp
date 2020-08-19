@@ -5,132 +5,33 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['ManagedZone']
 
 
 class ManagedZone(pulumi.CustomResource):
-    description: pulumi.Output[str]
-    """
-    A textual description field. Defaults to 'Managed by Pulumi'.
-    """
-    dns_name: pulumi.Output[str]
-    """
-    The DNS name of this managed zone, for instance "example.com.".
-    """
-    dnssec_config: pulumi.Output[dict]
-    """
-    DNSSEC configuration
-    Structure is documented below.
-
-      * `defaultKeySpecs` (`list`) - Specifies parameters that will be used for generating initial DnsKeys
-        for this ManagedZone. If you provide a spec for keySigning or zoneSigning,
-        you must also provide one for the other.
-        default_key_specs can only be updated when the state is `off`.
-        Structure is documented below.
-        * `algorithm` (`str`) - String mnemonic specifying the DNSSEC algorithm of this key
-          Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
-        * `keyLength` (`float`) - Length of the keys in bits
-        * `keyType` (`str`) - Specifies whether this is a key signing key (KSK) or a zone
-          signing key (ZSK). Key signing keys have the Secure Entry
-          Point flag set and, when active, will only be used to sign
-          resource record sets of type DNSKEY. Zone signing keys do
-          not have the Secure Entry Point flag set and will be used
-          to sign all other types of resource record sets.
-          Possible values are `keySigning` and `zoneSigning`.
-        * `kind` (`str`) - Identifies what kind of resource this is
-
-      * `kind` (`str`) - Identifies what kind of resource this is
-      * `nonExistence` (`str`) - Specifies the mechanism used to provide authenticated denial-of-existence responses.
-        non_existence can only be updated when the state is `off`.
-        Possible values are `nsec` and `nsec3`.
-      * `state` (`str`) - Specifies whether DNSSEC is enabled, and what mode it is in
-        Possible values are `off`, `on`, and `transfer`.
-    """
-    forwarding_config: pulumi.Output[dict]
-    """
-    The presence for this field indicates that outbound forwarding is enabled
-    for this zone. The value of this field contains the set of destinations
-    to forward to.
-    Structure is documented below.
-
-      * `targetNameServers` (`list`) - List of target name servers to forward to. Cloud DNS will
-        select the best available name server if more than
-        one target is given.
-        Structure is documented below.
-        * `forwardingPath` (`str`) - Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
-          decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
-          to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
-          Possible values are `default` and `private`.
-        * `ipv4Address` (`str`) - IPv4 address of a target name server.
-    """
-    labels: pulumi.Output[dict]
-    """
-    A set of key/value label pairs to assign to this ManagedZone.
-    """
-    name: pulumi.Output[str]
-    """
-    User assigned name for this resource.
-    Must be unique within the project.
-    """
-    name_servers: pulumi.Output[list]
-    """
-    Delegate your managed_zone to these virtual name servers; defined by the server
-    """
-    peering_config: pulumi.Output[dict]
-    """
-    The presence of this field indicates that DNS Peering is enabled for this
-    zone. The value of this field contains the network to peer with.
-    Structure is documented below.
-
-      * `targetNetwork` (`dict`) - The network with which to peer.
-        Structure is documented below.
-        * `networkUrl` (`str`) - The id or fully qualified URL of the VPC network to forward queries to.
-          This should be formatted like `projects/{project}/global/networks/{network}` or
-          `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
-    """
-    private_visibility_config: pulumi.Output[dict]
-    """
-    For privately visible zones, the set of Virtual Private Cloud
-    resources that the zone is visible from.
-    Structure is documented below.
-
-      * `networks` (`list`) - The list of VPC networks that can see this zone. Structure is documented below.
-        * `networkUrl` (`str`) - The id or fully qualified URL of the VPC network to forward queries to.
-          This should be formatted like `projects/{project}/global/networks/{network}` or
-          `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
-    """
-    project: pulumi.Output[str]
-    """
-    The ID of the project in which the resource belongs.
-    If it is not provided, the provider project is used.
-    """
-    reverse_lookup: pulumi.Output[bool]
-    """
-    Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
-    lookup queries using automatically configured records for VPC resources. This only applies
-    to networks listed under `private_visibility_config`.
-    """
-    service_directory_config: pulumi.Output[dict]
-    """
-    The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.  Structure is documented below.
-
-      * `namespace` (`dict`) - The namespace associated with the zone.
-        Structure is documented below.
-        * `namespaceUrl` (`str`) - The fully qualified or partial URL of the service directory namespace that should be
-          associated with the zone. This should be formatted like
-          `https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace_id}`
-          or simply `projects/{project}/locations/{location}/namespaces/{namespace_id}`
-          Ignored for `public` visibility zones.
-    """
-    visibility: pulumi.Output[str]
-    """
-    The zone's visibility: public zones are exposed to the Internet,
-    while private zones are visible only to Virtual Private Cloud resources.
-    Default value is `public`.
-    Possible values are `private` and `public`.
-    """
-    def __init__(__self__, resource_name, opts=None, description=None, dns_name=None, dnssec_config=None, forwarding_config=None, labels=None, name=None, peering_config=None, private_visibility_config=None, project=None, reverse_lookup=None, service_directory_config=None, visibility=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 dns_name: Optional[pulumi.Input[str]] = None,
+                 dnssec_config: Optional[pulumi.Input[pulumi.InputType['ManagedZoneDnssecConfigArgs']]] = None,
+                 forwarding_config: Optional[pulumi.Input[pulumi.InputType['ManagedZoneForwardingConfigArgs']]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 peering_config: Optional[pulumi.Input[pulumi.InputType['ManagedZonePeeringConfigArgs']]] = None,
+                 private_visibility_config: Optional[pulumi.Input[pulumi.InputType['ManagedZonePrivateVisibilityConfigArgs']]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 reverse_lookup: Optional[pulumi.Input[bool]] = None,
+                 service_directory_config: Optional[pulumi.Input[pulumi.InputType['ManagedZoneServiceDirectoryConfigArgs']]] = None,
+                 visibility: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         A zone is a subtree of the DNS namespace under one administrative
         responsibility. A ManagedZone is a resource that represents a DNS zone
@@ -148,19 +49,19 @@ class ManagedZone(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A textual description field. Defaults to 'Managed by Pulumi'.
         :param pulumi.Input[str] dns_name: The DNS name of this managed zone, for instance "example.com.".
-        :param pulumi.Input[dict] dnssec_config: DNSSEC configuration
+        :param pulumi.Input[pulumi.InputType['ManagedZoneDnssecConfigArgs']] dnssec_config: DNSSEC configuration
                Structure is documented below.
-        :param pulumi.Input[dict] forwarding_config: The presence for this field indicates that outbound forwarding is enabled
+        :param pulumi.Input[pulumi.InputType['ManagedZoneForwardingConfigArgs']] forwarding_config: The presence for this field indicates that outbound forwarding is enabled
                for this zone. The value of this field contains the set of destinations
                to forward to.
                Structure is documented below.
-        :param pulumi.Input[dict] labels: A set of key/value label pairs to assign to this ManagedZone.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this ManagedZone.
         :param pulumi.Input[str] name: User assigned name for this resource.
                Must be unique within the project.
-        :param pulumi.Input[dict] peering_config: The presence of this field indicates that DNS Peering is enabled for this
+        :param pulumi.Input[pulumi.InputType['ManagedZonePeeringConfigArgs']] peering_config: The presence of this field indicates that DNS Peering is enabled for this
                zone. The value of this field contains the network to peer with.
                Structure is documented below.
-        :param pulumi.Input[dict] private_visibility_config: For privately visible zones, the set of Virtual Private Cloud
+        :param pulumi.Input[pulumi.InputType['ManagedZonePrivateVisibilityConfigArgs']] private_visibility_config: For privately visible zones, the set of Virtual Private Cloud
                resources that the zone is visible from.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -168,74 +69,11 @@ class ManagedZone(pulumi.CustomResource):
         :param pulumi.Input[bool] reverse_lookup: Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
                lookup queries using automatically configured records for VPC resources. This only applies
                to networks listed under `private_visibility_config`.
-        :param pulumi.Input[dict] service_directory_config: The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.  Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ManagedZoneServiceDirectoryConfigArgs']] service_directory_config: The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.  Structure is documented below.
         :param pulumi.Input[str] visibility: The zone's visibility: public zones are exposed to the Internet,
                while private zones are visible only to Virtual Private Cloud resources.
                Default value is `public`.
                Possible values are `private` and `public`.
-
-        The **dnssec_config** object supports the following:
-
-          * `defaultKeySpecs` (`pulumi.Input[list]`) - Specifies parameters that will be used for generating initial DnsKeys
-            for this ManagedZone. If you provide a spec for keySigning or zoneSigning,
-            you must also provide one for the other.
-            default_key_specs can only be updated when the state is `off`.
-            Structure is documented below.
-            * `algorithm` (`pulumi.Input[str]`) - String mnemonic specifying the DNSSEC algorithm of this key
-              Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
-            * `keyLength` (`pulumi.Input[float]`) - Length of the keys in bits
-            * `keyType` (`pulumi.Input[str]`) - Specifies whether this is a key signing key (KSK) or a zone
-              signing key (ZSK). Key signing keys have the Secure Entry
-              Point flag set and, when active, will only be used to sign
-              resource record sets of type DNSKEY. Zone signing keys do
-              not have the Secure Entry Point flag set and will be used
-              to sign all other types of resource record sets.
-              Possible values are `keySigning` and `zoneSigning`.
-            * `kind` (`pulumi.Input[str]`) - Identifies what kind of resource this is
-
-          * `kind` (`pulumi.Input[str]`) - Identifies what kind of resource this is
-          * `nonExistence` (`pulumi.Input[str]`) - Specifies the mechanism used to provide authenticated denial-of-existence responses.
-            non_existence can only be updated when the state is `off`.
-            Possible values are `nsec` and `nsec3`.
-          * `state` (`pulumi.Input[str]`) - Specifies whether DNSSEC is enabled, and what mode it is in
-            Possible values are `off`, `on`, and `transfer`.
-
-        The **forwarding_config** object supports the following:
-
-          * `targetNameServers` (`pulumi.Input[list]`) - List of target name servers to forward to. Cloud DNS will
-            select the best available name server if more than
-            one target is given.
-            Structure is documented below.
-            * `forwardingPath` (`pulumi.Input[str]`) - Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
-              decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
-              to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
-              Possible values are `default` and `private`.
-            * `ipv4Address` (`pulumi.Input[str]`) - IPv4 address of a target name server.
-
-        The **peering_config** object supports the following:
-
-          * `targetNetwork` (`pulumi.Input[dict]`) - The network with which to peer.
-            Structure is documented below.
-            * `networkUrl` (`pulumi.Input[str]`) - The id or fully qualified URL of the VPC network to forward queries to.
-              This should be formatted like `projects/{project}/global/networks/{network}` or
-              `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
-
-        The **private_visibility_config** object supports the following:
-
-          * `networks` (`pulumi.Input[list]`) - The list of VPC networks that can see this zone. Structure is documented below.
-            * `networkUrl` (`pulumi.Input[str]`) - The id or fully qualified URL of the VPC network to forward queries to.
-              This should be formatted like `projects/{project}/global/networks/{network}` or
-              `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
-
-        The **service_directory_config** object supports the following:
-
-          * `namespace` (`pulumi.Input[dict]`) - The namespace associated with the zone.
-            Structure is documented below.
-            * `namespaceUrl` (`pulumi.Input[str]`) - The fully qualified or partial URL of the service directory namespace that should be
-              associated with the zone. This should be formatted like
-              `https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace_id}`
-              or simply `projects/{project}/locations/{location}/namespaces/{namespace_id}`
-              Ignored for `public` visibility zones.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -278,30 +116,45 @@ class ManagedZone(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, description=None, dns_name=None, dnssec_config=None, forwarding_config=None, labels=None, name=None, name_servers=None, peering_config=None, private_visibility_config=None, project=None, reverse_lookup=None, service_directory_config=None, visibility=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            dns_name: Optional[pulumi.Input[str]] = None,
+            dnssec_config: Optional[pulumi.Input[pulumi.InputType['ManagedZoneDnssecConfigArgs']]] = None,
+            forwarding_config: Optional[pulumi.Input[pulumi.InputType['ManagedZoneForwardingConfigArgs']]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            name_servers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            peering_config: Optional[pulumi.Input[pulumi.InputType['ManagedZonePeeringConfigArgs']]] = None,
+            private_visibility_config: Optional[pulumi.Input[pulumi.InputType['ManagedZonePrivateVisibilityConfigArgs']]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            reverse_lookup: Optional[pulumi.Input[bool]] = None,
+            service_directory_config: Optional[pulumi.Input[pulumi.InputType['ManagedZoneServiceDirectoryConfigArgs']]] = None,
+            visibility: Optional[pulumi.Input[str]] = None) -> 'ManagedZone':
         """
         Get an existing ManagedZone resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A textual description field. Defaults to 'Managed by Pulumi'.
         :param pulumi.Input[str] dns_name: The DNS name of this managed zone, for instance "example.com.".
-        :param pulumi.Input[dict] dnssec_config: DNSSEC configuration
+        :param pulumi.Input[pulumi.InputType['ManagedZoneDnssecConfigArgs']] dnssec_config: DNSSEC configuration
                Structure is documented below.
-        :param pulumi.Input[dict] forwarding_config: The presence for this field indicates that outbound forwarding is enabled
+        :param pulumi.Input[pulumi.InputType['ManagedZoneForwardingConfigArgs']] forwarding_config: The presence for this field indicates that outbound forwarding is enabled
                for this zone. The value of this field contains the set of destinations
                to forward to.
                Structure is documented below.
-        :param pulumi.Input[dict] labels: A set of key/value label pairs to assign to this ManagedZone.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this ManagedZone.
         :param pulumi.Input[str] name: User assigned name for this resource.
                Must be unique within the project.
-        :param pulumi.Input[list] name_servers: Delegate your managed_zone to these virtual name servers; defined by the server
-        :param pulumi.Input[dict] peering_config: The presence of this field indicates that DNS Peering is enabled for this
+        :param pulumi.Input[List[pulumi.Input[str]]] name_servers: Delegate your managed_zone to these virtual name servers; defined by the server
+        :param pulumi.Input[pulumi.InputType['ManagedZonePeeringConfigArgs']] peering_config: The presence of this field indicates that DNS Peering is enabled for this
                zone. The value of this field contains the network to peer with.
                Structure is documented below.
-        :param pulumi.Input[dict] private_visibility_config: For privately visible zones, the set of Virtual Private Cloud
+        :param pulumi.Input[pulumi.InputType['ManagedZonePrivateVisibilityConfigArgs']] private_visibility_config: For privately visible zones, the set of Virtual Private Cloud
                resources that the zone is visible from.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -309,74 +162,11 @@ class ManagedZone(pulumi.CustomResource):
         :param pulumi.Input[bool] reverse_lookup: Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
                lookup queries using automatically configured records for VPC resources. This only applies
                to networks listed under `private_visibility_config`.
-        :param pulumi.Input[dict] service_directory_config: The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.  Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ManagedZoneServiceDirectoryConfigArgs']] service_directory_config: The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.  Structure is documented below.
         :param pulumi.Input[str] visibility: The zone's visibility: public zones are exposed to the Internet,
                while private zones are visible only to Virtual Private Cloud resources.
                Default value is `public`.
                Possible values are `private` and `public`.
-
-        The **dnssec_config** object supports the following:
-
-          * `defaultKeySpecs` (`pulumi.Input[list]`) - Specifies parameters that will be used for generating initial DnsKeys
-            for this ManagedZone. If you provide a spec for keySigning or zoneSigning,
-            you must also provide one for the other.
-            default_key_specs can only be updated when the state is `off`.
-            Structure is documented below.
-            * `algorithm` (`pulumi.Input[str]`) - String mnemonic specifying the DNSSEC algorithm of this key
-              Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
-            * `keyLength` (`pulumi.Input[float]`) - Length of the keys in bits
-            * `keyType` (`pulumi.Input[str]`) - Specifies whether this is a key signing key (KSK) or a zone
-              signing key (ZSK). Key signing keys have the Secure Entry
-              Point flag set and, when active, will only be used to sign
-              resource record sets of type DNSKEY. Zone signing keys do
-              not have the Secure Entry Point flag set and will be used
-              to sign all other types of resource record sets.
-              Possible values are `keySigning` and `zoneSigning`.
-            * `kind` (`pulumi.Input[str]`) - Identifies what kind of resource this is
-
-          * `kind` (`pulumi.Input[str]`) - Identifies what kind of resource this is
-          * `nonExistence` (`pulumi.Input[str]`) - Specifies the mechanism used to provide authenticated denial-of-existence responses.
-            non_existence can only be updated when the state is `off`.
-            Possible values are `nsec` and `nsec3`.
-          * `state` (`pulumi.Input[str]`) - Specifies whether DNSSEC is enabled, and what mode it is in
-            Possible values are `off`, `on`, and `transfer`.
-
-        The **forwarding_config** object supports the following:
-
-          * `targetNameServers` (`pulumi.Input[list]`) - List of target name servers to forward to. Cloud DNS will
-            select the best available name server if more than
-            one target is given.
-            Structure is documented below.
-            * `forwardingPath` (`pulumi.Input[str]`) - Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
-              decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
-              to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
-              Possible values are `default` and `private`.
-            * `ipv4Address` (`pulumi.Input[str]`) - IPv4 address of a target name server.
-
-        The **peering_config** object supports the following:
-
-          * `targetNetwork` (`pulumi.Input[dict]`) - The network with which to peer.
-            Structure is documented below.
-            * `networkUrl` (`pulumi.Input[str]`) - The id or fully qualified URL of the VPC network to forward queries to.
-              This should be formatted like `projects/{project}/global/networks/{network}` or
-              `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
-
-        The **private_visibility_config** object supports the following:
-
-          * `networks` (`pulumi.Input[list]`) - The list of VPC networks that can see this zone. Structure is documented below.
-            * `networkUrl` (`pulumi.Input[str]`) - The id or fully qualified URL of the VPC network to forward queries to.
-              This should be formatted like `projects/{project}/global/networks/{network}` or
-              `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
-
-        The **service_directory_config** object supports the following:
-
-          * `namespace` (`pulumi.Input[dict]`) - The namespace associated with the zone.
-            Structure is documented below.
-            * `namespaceUrl` (`pulumi.Input[str]`) - The fully qualified or partial URL of the service directory namespace that should be
-              associated with the zone. This should be formatted like
-              `https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace_id}`
-              or simply `projects/{project}/locations/{location}/namespaces/{namespace_id}`
-              Ignored for `public` visibility zones.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -397,8 +187,128 @@ class ManagedZone(pulumi.CustomResource):
         __props__["visibility"] = visibility
         return ManagedZone(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        A textual description field. Defaults to 'Managed by Pulumi'.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="dnsName")
+    def dns_name(self) -> str:
+        """
+        The DNS name of this managed zone, for instance "example.com.".
+        """
+        return pulumi.get(self, "dns_name")
+
+    @property
+    @pulumi.getter(name="dnssecConfig")
+    def dnssec_config(self) -> Optional['outputs.ManagedZoneDnssecConfig']:
+        """
+        DNSSEC configuration
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dnssec_config")
+
+    @property
+    @pulumi.getter(name="forwardingConfig")
+    def forwarding_config(self) -> Optional['outputs.ManagedZoneForwardingConfig']:
+        """
+        The presence for this field indicates that outbound forwarding is enabled
+        for this zone. The value of this field contains the set of destinations
+        to forward to.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "forwarding_config")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[Mapping[str, str]]:
+        """
+        A set of key/value label pairs to assign to this ManagedZone.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        User assigned name for this resource.
+        Must be unique within the project.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="nameServers")
+    def name_servers(self) -> List[str]:
+        """
+        Delegate your managed_zone to these virtual name servers; defined by the server
+        """
+        return pulumi.get(self, "name_servers")
+
+    @property
+    @pulumi.getter(name="peeringConfig")
+    def peering_config(self) -> Optional['outputs.ManagedZonePeeringConfig']:
+        """
+        The presence of this field indicates that DNS Peering is enabled for this
+        zone. The value of this field contains the network to peer with.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "peering_config")
+
+    @property
+    @pulumi.getter(name="privateVisibilityConfig")
+    def private_visibility_config(self) -> Optional['outputs.ManagedZonePrivateVisibilityConfig']:
+        """
+        For privately visible zones, the set of Virtual Private Cloud
+        resources that the zone is visible from.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "private_visibility_config")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="reverseLookup")
+    def reverse_lookup(self) -> Optional[bool]:
+        """
+        Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
+        lookup queries using automatically configured records for VPC resources. This only applies
+        to networks listed under `private_visibility_config`.
+        """
+        return pulumi.get(self, "reverse_lookup")
+
+    @property
+    @pulumi.getter(name="serviceDirectoryConfig")
+    def service_directory_config(self) -> Optional['outputs.ManagedZoneServiceDirectoryConfig']:
+        """
+        The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.  Structure is documented below.
+        """
+        return pulumi.get(self, "service_directory_config")
+
+    @property
+    @pulumi.getter
+    def visibility(self) -> Optional[str]:
+        """
+        The zone's visibility: public zones are exposed to the Internet,
+        while private zones are visible only to Virtual Private Cloud resources.
+        Default value is `public`.
+        Possible values are `private` and `public`.
+        """
+        return pulumi.get(self, "visibility")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

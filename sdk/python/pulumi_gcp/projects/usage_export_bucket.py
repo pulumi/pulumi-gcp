@@ -5,24 +5,22 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['UsageExportBucket']
 
 
 class UsageExportBucket(pulumi.CustomResource):
-    bucket_name: pulumi.Output[str]
-    """
-    The bucket to store reports in.
-    """
-    prefix: pulumi.Output[str]
-    """
-    A prefix for the reports, for instance, the project name.
-    """
-    project: pulumi.Output[str]
-    """
-    The project to set the export bucket on. If it is not provided, the provider project is used.
-    """
-    def __init__(__self__, resource_name, opts=None, bucket_name=None, prefix=None, project=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 bucket_name: Optional[pulumi.Input[str]] = None,
+                 prefix: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Allows creation and management of a Google Cloud Platform project.
 
@@ -69,13 +67,18 @@ class UsageExportBucket(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, bucket_name=None, prefix=None, project=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bucket_name: Optional[pulumi.Input[str]] = None,
+            prefix: Optional[pulumi.Input[str]] = None,
+            project: Optional[pulumi.Input[str]] = None) -> 'UsageExportBucket':
         """
         Get an existing UsageExportBucket resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket_name: The bucket to store reports in.
         :param pulumi.Input[str] prefix: A prefix for the reports, for instance, the project name.
@@ -90,8 +93,33 @@ class UsageExportBucket(pulumi.CustomResource):
         __props__["project"] = project
         return UsageExportBucket(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> str:
+        """
+        The bucket to store reports in.
+        """
+        return pulumi.get(self, "bucket_name")
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[str]:
+        """
+        A prefix for the reports, for instance, the project name.
+        """
+        return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The project to set the export bucket on. If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
 
+__all__ = [
+    'GetActiveFolderResult',
+    'AwaitableGetActiveFolderResult',
+    'get_active_folder',
+]
 
+@pulumi.output_type
 class GetActiveFolderResult:
     """
     A collection of values returned by getActiveFolder.
@@ -16,22 +22,42 @@ class GetActiveFolderResult:
     def __init__(__self__, display_name=None, id=None, name=None, parent=None):
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
-        __self__.display_name = display_name
+        pulumi.set(__self__, "display_name", display_name)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if parent and not isinstance(parent, str):
+            raise TypeError("Expected argument 'parent' to be a str")
+        pulumi.set(__self__, "parent", parent)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
         """
         The resource name of the Folder. This uniquely identifies the folder.
         """
-        if parent and not isinstance(parent, str):
-            raise TypeError("Expected argument 'parent' to be a str")
-        __self__.parent = parent
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def parent(self) -> str:
+        return pulumi.get(self, "parent")
 
 
 class AwaitableGetActiveFolderResult(GetActiveFolderResult):
@@ -46,7 +72,9 @@ class AwaitableGetActiveFolderResult(GetActiveFolderResult):
             parent=self.parent)
 
 
-def get_active_folder(display_name=None, parent=None, opts=None):
+def get_active_folder(display_name: Optional[str] = None,
+                      parent: Optional[str] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetActiveFolderResult:
     """
     Get an active folder within GCP by `display_name` and `parent`.
 
@@ -61,10 +89,10 @@ def get_active_folder(display_name=None, parent=None, opts=None):
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('gcp:organizations/getActiveFolder:getActiveFolder', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('gcp:organizations/getActiveFolder:getActiveFolder', __args__, opts=opts, typ=GetActiveFolderResult).value
 
     return AwaitableGetActiveFolderResult(
-        display_name=__ret__.get('displayName'),
-        id=__ret__.get('id'),
-        name=__ret__.get('name'),
-        parent=__ret__.get('parent'))
+        display_name=__ret__.display_name,
+        id=__ret__.id,
+        name=__ret__.name,
+        parent=__ret__.parent)

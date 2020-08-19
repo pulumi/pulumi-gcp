@@ -5,78 +5,29 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['NotificationChannel']
 
 
 class NotificationChannel(pulumi.CustomResource):
-    description: pulumi.Output[str]
-    """
-    An optional human-readable description of this notification channel. This description may provide additional details, beyond the display name, for the channel. This may not exceed 1024 Unicode characters.
-    """
-    display_name: pulumi.Output[str]
-    """
-    An optional human-readable name for this notification channel. It is recommended that you specify a non-empty and unique name in order to make it easier to identify the channels in your project, though this is not enforced. The display name is limited to 512 Unicode characters.
-    """
-    enabled: pulumi.Output[bool]
-    """
-    Whether notifications are forwarded to the described channel. This makes it possible to disable delivery of notifications to a particular channel without removing the channel from all alerting policies that reference the channel. This is a more convenient approach when the change is temporary and you want to receive notifications from the same set of alerting policies on the channel at some point in the future.
-    """
-    labels: pulumi.Output[dict]
-    """
-    Configuration fields that define the channel and its behavior. The
-    permissible and required labels are specified in the
-    NotificationChannelDescriptor corresponding to the type field.
-    Labels with sensitive data are obfuscated by the API and therefore the provider cannot
-    determine if there are upstream changes to these fields. They can also be configured via
-    the sensitive_labels block, but cannot be configured in both places.
-    """
-    name: pulumi.Output[str]
-    """
-    The full REST resource name for this channel. The syntax is: projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID] The
-    [CHANNEL_ID] is automatically assigned by the server on creation.
-    """
-    project: pulumi.Output[str]
-    """
-    The ID of the project in which the resource belongs.
-    If it is not provided, the provider project is used.
-    """
-    sensitive_labels: pulumi.Output[dict]
-    """
-    Different notification type behaviors are configured primarily using the the `labels` field on this
-    resource. This block contains the labels which contain secrets or passwords so that they can be marked
-    sensitive and hidden from plan output. The name of the field, eg: password, will be the key
-    in the `labels` map in the api request.
-    Credentials may not be specified in both locations and will cause an error. Changing from one location
-    to a different credential configuration in the config will require an apply to update state.
-    Structure is documented below.
-
-      * `authToken` (`str`) - An authorization token for a notification channel. Channel types that support this field include: slack
-        **Note**: This property is sensitive and will not be displayed in the plan.
-      * `password` (`str`) - An password for a notification channel. Channel types that support this field include: webhook_basicauth
-        **Note**: This property is sensitive and will not be displayed in the plan.
-      * `serviceKey` (`str`) - An servicekey token for a notification channel. Channel types that support this field include: pagerduty
-        **Note**: This property is sensitive and will not be displayed in the plan.
-    """
-    type: pulumi.Output[str]
-    """
-    The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of valid values such as "email", "slack", etc...
-    """
-    user_labels: pulumi.Output[dict]
-    """
-    User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor's schema, unlike the labels field. This field is intended to be used for organizing and identifying the NotificationChannel objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
-    """
-    verification_status: pulumi.Output[str]
-    """
-    Indicates whether this channel has been verified or not. On a ListNotificationChannels or GetNotificationChannel
-    operation, this field is expected to be populated.If the value is UNVERIFIED, then it indicates that the channel is
-    non-functioning (it both requires verification and lacks verification); otherwise, it is assumed that the channel
-    works.If the channel is neither VERIFIED nor UNVERIFIED, it implies that the channel is of a type that does not require
-    verification or that this specific channel has been exempted from verification because it was created prior to
-    verification being required for channels of this type.This field cannot be modified using a standard
-    UpdateNotificationChannel operation. To change the value of this field, you must call VerifyNotificationChannel.
-    """
-    def __init__(__self__, resource_name, opts=None, description=None, display_name=None, enabled=None, labels=None, project=None, sensitive_labels=None, type=None, user_labels=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 sensitive_labels: Optional[pulumi.Input[pulumi.InputType['NotificationChannelSensitiveLabelsArgs']]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         A NotificationChannel is a medium through which an alert is delivered
         when a policy violation is detected. Examples of channels include email, SMS,
@@ -109,7 +60,7 @@ class NotificationChannel(pulumi.CustomResource):
         :param pulumi.Input[str] description: An optional human-readable description of this notification channel. This description may provide additional details, beyond the display name, for the channel. This may not exceed 1024 Unicode characters.
         :param pulumi.Input[str] display_name: An optional human-readable name for this notification channel. It is recommended that you specify a non-empty and unique name in order to make it easier to identify the channels in your project, though this is not enforced. The display name is limited to 512 Unicode characters.
         :param pulumi.Input[bool] enabled: Whether notifications are forwarded to the described channel. This makes it possible to disable delivery of notifications to a particular channel without removing the channel from all alerting policies that reference the channel. This is a more convenient approach when the change is temporary and you want to receive notifications from the same set of alerting policies on the channel at some point in the future.
-        :param pulumi.Input[dict] labels: Configuration fields that define the channel and its behavior. The
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Configuration fields that define the channel and its behavior. The
                permissible and required labels are specified in the
                NotificationChannelDescriptor corresponding to the type field.
                Labels with sensitive data are obfuscated by the API and therefore the provider cannot
@@ -117,7 +68,7 @@ class NotificationChannel(pulumi.CustomResource):
                the sensitive_labels block, but cannot be configured in both places.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[dict] sensitive_labels: Different notification type behaviors are configured primarily using the the `labels` field on this
+        :param pulumi.Input[pulumi.InputType['NotificationChannelSensitiveLabelsArgs']] sensitive_labels: Different notification type behaviors are configured primarily using the the `labels` field on this
                resource. This block contains the labels which contain secrets or passwords so that they can be marked
                sensitive and hidden from plan output. The name of the field, eg: password, will be the key
                in the `labels` map in the api request.
@@ -125,16 +76,7 @@ class NotificationChannel(pulumi.CustomResource):
                to a different credential configuration in the config will require an apply to update state.
                Structure is documented below.
         :param pulumi.Input[str] type: The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of valid values such as "email", "slack", etc...
-        :param pulumi.Input[dict] user_labels: User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor's schema, unlike the labels field. This field is intended to be used for organizing and identifying the NotificationChannel objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
-
-        The **sensitive_labels** object supports the following:
-
-          * `authToken` (`pulumi.Input[str]`) - An authorization token for a notification channel. Channel types that support this field include: slack
-            **Note**: This property is sensitive and will not be displayed in the plan.
-          * `password` (`pulumi.Input[str]`) - An password for a notification channel. Channel types that support this field include: webhook_basicauth
-            **Note**: This property is sensitive and will not be displayed in the plan.
-          * `serviceKey` (`pulumi.Input[str]`) - An servicekey token for a notification channel. Channel types that support this field include: pagerduty
-            **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor's schema, unlike the labels field. This field is intended to be used for organizing and identifying the NotificationChannel objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -172,18 +114,30 @@ class NotificationChannel(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, description=None, display_name=None, enabled=None, labels=None, name=None, project=None, sensitive_labels=None, type=None, user_labels=None, verification_status=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            display_name: Optional[pulumi.Input[str]] = None,
+            enabled: Optional[pulumi.Input[bool]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            sensitive_labels: Optional[pulumi.Input[pulumi.InputType['NotificationChannelSensitiveLabelsArgs']]] = None,
+            type: Optional[pulumi.Input[str]] = None,
+            user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            verification_status: Optional[pulumi.Input[str]] = None) -> 'NotificationChannel':
         """
         Get an existing NotificationChannel resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional human-readable description of this notification channel. This description may provide additional details, beyond the display name, for the channel. This may not exceed 1024 Unicode characters.
         :param pulumi.Input[str] display_name: An optional human-readable name for this notification channel. It is recommended that you specify a non-empty and unique name in order to make it easier to identify the channels in your project, though this is not enforced. The display name is limited to 512 Unicode characters.
         :param pulumi.Input[bool] enabled: Whether notifications are forwarded to the described channel. This makes it possible to disable delivery of notifications to a particular channel without removing the channel from all alerting policies that reference the channel. This is a more convenient approach when the change is temporary and you want to receive notifications from the same set of alerting policies on the channel at some point in the future.
-        :param pulumi.Input[dict] labels: Configuration fields that define the channel and its behavior. The
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Configuration fields that define the channel and its behavior. The
                permissible and required labels are specified in the
                NotificationChannelDescriptor corresponding to the type field.
                Labels with sensitive data are obfuscated by the API and therefore the provider cannot
@@ -193,7 +147,7 @@ class NotificationChannel(pulumi.CustomResource):
                [CHANNEL_ID] is automatically assigned by the server on creation.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[dict] sensitive_labels: Different notification type behaviors are configured primarily using the the `labels` field on this
+        :param pulumi.Input[pulumi.InputType['NotificationChannelSensitiveLabelsArgs']] sensitive_labels: Different notification type behaviors are configured primarily using the the `labels` field on this
                resource. This block contains the labels which contain secrets or passwords so that they can be marked
                sensitive and hidden from plan output. The name of the field, eg: password, will be the key
                in the `labels` map in the api request.
@@ -201,7 +155,7 @@ class NotificationChannel(pulumi.CustomResource):
                to a different credential configuration in the config will require an apply to update state.
                Structure is documented below.
         :param pulumi.Input[str] type: The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of valid values such as "email", "slack", etc...
-        :param pulumi.Input[dict] user_labels: User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor's schema, unlike the labels field. This field is intended to be used for organizing and identifying the NotificationChannel objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor's schema, unlike the labels field. This field is intended to be used for organizing and identifying the NotificationChannel objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
         :param pulumi.Input[str] verification_status: Indicates whether this channel has been verified or not. On a ListNotificationChannels or GetNotificationChannel
                operation, this field is expected to be populated.If the value is UNVERIFIED, then it indicates that the channel is
                non-functioning (it both requires verification and lacks verification); otherwise, it is assumed that the channel
@@ -209,15 +163,6 @@ class NotificationChannel(pulumi.CustomResource):
                verification or that this specific channel has been exempted from verification because it was created prior to
                verification being required for channels of this type.This field cannot be modified using a standard
                UpdateNotificationChannel operation. To change the value of this field, you must call VerifyNotificationChannel.
-
-        The **sensitive_labels** object supports the following:
-
-          * `authToken` (`pulumi.Input[str]`) - An authorization token for a notification channel. Channel types that support this field include: slack
-            **Note**: This property is sensitive and will not be displayed in the plan.
-          * `password` (`pulumi.Input[str]`) - An password for a notification channel. Channel types that support this field include: webhook_basicauth
-            **Note**: This property is sensitive and will not be displayed in the plan.
-          * `serviceKey` (`pulumi.Input[str]`) - An servicekey token for a notification channel. Channel types that support this field include: pagerduty
-            **Note**: This property is sensitive and will not be displayed in the plan.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -235,8 +180,108 @@ class NotificationChannel(pulumi.CustomResource):
         __props__["verification_status"] = verification_status
         return NotificationChannel(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        An optional human-readable description of this notification channel. This description may provide additional details, beyond the display name, for the channel. This may not exceed 1024 Unicode characters.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[str]:
+        """
+        An optional human-readable name for this notification channel. It is recommended that you specify a non-empty and unique name in order to make it easier to identify the channels in your project, though this is not enforced. The display name is limited to 512 Unicode characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether notifications are forwarded to the described channel. This makes it possible to disable delivery of notifications to a particular channel without removing the channel from all alerting policies that reference the channel. This is a more convenient approach when the change is temporary and you want to receive notifications from the same set of alerting policies on the channel at some point in the future.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[Mapping[str, str]]:
+        """
+        Configuration fields that define the channel and its behavior. The
+        permissible and required labels are specified in the
+        NotificationChannelDescriptor corresponding to the type field.
+        Labels with sensitive data are obfuscated by the API and therefore the provider cannot
+        determine if there are upstream changes to these fields. They can also be configured via
+        the sensitive_labels block, but cannot be configured in both places.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The full REST resource name for this channel. The syntax is: projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID] The
+        [CHANNEL_ID] is automatically assigned by the server on creation.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="sensitiveLabels")
+    def sensitive_labels(self) -> Optional['outputs.NotificationChannelSensitiveLabels']:
+        """
+        Different notification type behaviors are configured primarily using the the `labels` field on this
+        resource. This block contains the labels which contain secrets or passwords so that they can be marked
+        sensitive and hidden from plan output. The name of the field, eg: password, will be the key
+        in the `labels` map in the api request.
+        Credentials may not be specified in both locations and will cause an error. Changing from one location
+        to a different credential configuration in the config will require an apply to update state.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sensitive_labels")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of valid values such as "email", "slack", etc...
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="userLabels")
+    def user_labels(self) -> Optional[Mapping[str, str]]:
+        """
+        User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor's schema, unlike the labels field. This field is intended to be used for organizing and identifying the NotificationChannel objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+        """
+        return pulumi.get(self, "user_labels")
+
+    @property
+    @pulumi.getter(name="verificationStatus")
+    def verification_status(self) -> str:
+        """
+        Indicates whether this channel has been verified or not. On a ListNotificationChannels or GetNotificationChannel
+        operation, this field is expected to be populated.If the value is UNVERIFIED, then it indicates that the channel is
+        non-functioning (it both requires verification and lacks verification); otherwise, it is assumed that the channel
+        works.If the channel is neither VERIFIED nor UNVERIFIED, it implies that the channel is of a type that does not require
+        verification or that this specific channel has been exempted from verification because it was created prior to
+        verification being required for channels of this type.This field cannot be modified using a standard
+        UpdateNotificationChannel operation. To change the value of this field, you must call VerifyNotificationChannel.
+        """
+        return pulumi.get(self, "verification_status")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

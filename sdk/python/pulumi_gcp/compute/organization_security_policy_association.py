@@ -5,28 +5,22 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['OrganizationSecurityPolicyAssociation']
 
 
 class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
-    attachment_id: pulumi.Output[str]
-    """
-    The resource that the security policy is attached to.
-    """
-    display_name: pulumi.Output[str]
-    """
-    The display name of the security policy of the association.
-    """
-    name: pulumi.Output[str]
-    """
-    The name for an association.
-    """
-    policy_id: pulumi.Output[str]
-    """
-    The security policy ID of the association.
-    """
-    def __init__(__self__, resource_name, opts=None, attachment_id=None, name=None, policy_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 attachment_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 policy_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Create a OrganizationSecurityPolicyAssociation resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
@@ -67,13 +61,19 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, attachment_id=None, display_name=None, name=None, policy_id=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            attachment_id: Optional[pulumi.Input[str]] = None,
+            display_name: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            policy_id: Optional[pulumi.Input[str]] = None) -> 'OrganizationSecurityPolicyAssociation':
         """
         Get an existing OrganizationSecurityPolicyAssociation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] attachment_id: The resource that the security policy is attached to.
         :param pulumi.Input[str] display_name: The display name of the security policy of the association.
@@ -90,8 +90,41 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
         __props__["policy_id"] = policy_id
         return OrganizationSecurityPolicyAssociation(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="attachmentId")
+    def attachment_id(self) -> str:
+        """
+        The resource that the security policy is attached to.
+        """
+        return pulumi.get(self, "attachment_id")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        The display name of the security policy of the association.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name for an association.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="policyId")
+    def policy_id(self) -> str:
+        """
+        The security policy ID of the association.
+        """
+        return pulumi.get(self, "policy_id")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

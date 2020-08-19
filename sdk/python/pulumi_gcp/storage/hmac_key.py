@@ -5,43 +5,22 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['HmacKey']
 
 
 class HmacKey(pulumi.CustomResource):
-    access_id: pulumi.Output[str]
-    """
-    The access ID of the HMAC Key.
-    """
-    project: pulumi.Output[str]
-    """
-    The ID of the project in which the resource belongs.
-    If it is not provided, the provider project is used.
-    """
-    secret: pulumi.Output[str]
-    """
-    HMAC secret key material.
-    """
-    service_account_email: pulumi.Output[str]
-    """
-    The email address of the key's associated service account.
-    """
-    state: pulumi.Output[str]
-    """
-    The state of the key. Can be set to one of ACTIVE, INACTIVE.
-    Default value is `ACTIVE`.
-    Possible values are `ACTIVE` and `INACTIVE`.
-    """
-    time_created: pulumi.Output[str]
-    """
-    'The creation time of the HMAC key in RFC 3339 format. '
-    """
-    updated: pulumi.Output[str]
-    """
-    'The last modification time of the HMAC key metadata in RFC 3339 format.'
-    """
-    def __init__(__self__, resource_name, opts=None, project=None, service_account_email=None, state=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 service_account_email: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         The hmacKeys resource represents an HMAC key within Cloud Storage. The resource
         consists of a secret and HMAC key metadata. HMAC keys can be used as credentials
@@ -104,13 +83,22 @@ class HmacKey(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, access_id=None, project=None, secret=None, service_account_email=None, state=None, time_created=None, updated=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_id: Optional[pulumi.Input[str]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            secret: Optional[pulumi.Input[str]] = None,
+            service_account_email: Optional[pulumi.Input[str]] = None,
+            state: Optional[pulumi.Input[str]] = None,
+            time_created: Optional[pulumi.Input[str]] = None,
+            updated: Optional[pulumi.Input[str]] = None) -> 'HmacKey':
         """
         Get an existing HmacKey resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_id: The access ID of the HMAC Key.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -136,8 +124,68 @@ class HmacKey(pulumi.CustomResource):
         __props__["updated"] = updated
         return HmacKey(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="accessId")
+    def access_id(self) -> str:
+        """
+        The access ID of the HMAC Key.
+        """
+        return pulumi.get(self, "access_id")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def secret(self) -> str:
+        """
+        HMAC secret key material.
+        """
+        return pulumi.get(self, "secret")
+
+    @property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> str:
+        """
+        The email address of the key's associated service account.
+        """
+        return pulumi.get(self, "service_account_email")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        """
+        The state of the key. Can be set to one of ACTIVE, INACTIVE.
+        Default value is `ACTIVE`.
+        Possible values are `ACTIVE` and `INACTIVE`.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="timeCreated")
+    def time_created(self) -> str:
+        """
+        'The creation time of the HMAC key in RFC 3339 format. '
+        """
+        return pulumi.get(self, "time_created")
+
+    @property
+    @pulumi.getter
+    def updated(self) -> str:
+        """
+        'The last modification time of the HMAC key metadata in RFC 3339 format.'
+        """
+        return pulumi.get(self, "updated")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
 
+__all__ = [
+    'GetNetblockIPRangesResult',
+    'AwaitableGetNetblockIPRangesResult',
+    'get_netblock_ip_ranges',
+]
 
+@pulumi.output_type
 class GetNetblockIPRangesResult:
     """
     A collection of values returned by getNetblockIPRanges.
@@ -16,31 +22,56 @@ class GetNetblockIPRangesResult:
     def __init__(__self__, cidr_blocks=None, cidr_blocks_ipv4s=None, cidr_blocks_ipv6s=None, id=None, range_type=None):
         if cidr_blocks and not isinstance(cidr_blocks, list):
             raise TypeError("Expected argument 'cidr_blocks' to be a list")
-        __self__.cidr_blocks = cidr_blocks
+        pulumi.set(__self__, "cidr_blocks", cidr_blocks)
+        if cidr_blocks_ipv4s and not isinstance(cidr_blocks_ipv4s, list):
+            raise TypeError("Expected argument 'cidr_blocks_ipv4s' to be a list")
+        pulumi.set(__self__, "cidr_blocks_ipv4s", cidr_blocks_ipv4s)
+        if cidr_blocks_ipv6s and not isinstance(cidr_blocks_ipv6s, list):
+            raise TypeError("Expected argument 'cidr_blocks_ipv6s' to be a list")
+        pulumi.set(__self__, "cidr_blocks_ipv6s", cidr_blocks_ipv6s)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if range_type and not isinstance(range_type, str):
+            raise TypeError("Expected argument 'range_type' to be a str")
+        pulumi.set(__self__, "range_type", range_type)
+
+    @property
+    @pulumi.getter(name="cidrBlocks")
+    def cidr_blocks(self) -> List[str]:
         """
         Retrieve list of all CIDR blocks.
         """
-        if cidr_blocks_ipv4s and not isinstance(cidr_blocks_ipv4s, list):
-            raise TypeError("Expected argument 'cidr_blocks_ipv4s' to be a list")
-        __self__.cidr_blocks_ipv4s = cidr_blocks_ipv4s
+        return pulumi.get(self, "cidr_blocks")
+
+    @property
+    @pulumi.getter(name="cidrBlocksIpv4s")
+    def cidr_blocks_ipv4s(self) -> List[str]:
         """
         Retrieve list of the IPv4 CIDR blocks
         """
-        if cidr_blocks_ipv6s and not isinstance(cidr_blocks_ipv6s, list):
-            raise TypeError("Expected argument 'cidr_blocks_ipv6s' to be a list")
-        __self__.cidr_blocks_ipv6s = cidr_blocks_ipv6s
+        return pulumi.get(self, "cidr_blocks_ipv4s")
+
+    @property
+    @pulumi.getter(name="cidrBlocksIpv6s")
+    def cidr_blocks_ipv6s(self) -> List[str]:
         """
         Retrieve list of the IPv6 CIDR blocks, if available.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "cidr_blocks_ipv6s")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if range_type and not isinstance(range_type, str):
-            raise TypeError("Expected argument 'range_type' to be a str")
-        __self__.range_type = range_type
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="rangeType")
+    def range_type(self) -> Optional[str]:
+        return pulumi.get(self, "range_type")
 
 
 class AwaitableGetNetblockIPRangesResult(GetNetblockIPRangesResult):
@@ -56,7 +87,8 @@ class AwaitableGetNetblockIPRangesResult(GetNetblockIPRangesResult):
             range_type=self.range_type)
 
 
-def get_netblock_ip_ranges(range_type=None, opts=None):
+def get_netblock_ip_ranges(range_type: Optional[str] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetblockIPRangesResult:
     """
     Use this data source to get the IP addresses from different special IP ranges on Google Cloud Platform.
 
@@ -71,11 +103,11 @@ def get_netblock_ip_ranges(range_type=None, opts=None):
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('gcp:compute/getNetblockIPRanges:getNetblockIPRanges', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('gcp:compute/getNetblockIPRanges:getNetblockIPRanges', __args__, opts=opts, typ=GetNetblockIPRangesResult).value
 
     return AwaitableGetNetblockIPRangesResult(
-        cidr_blocks=__ret__.get('cidrBlocks'),
-        cidr_blocks_ipv4s=__ret__.get('cidrBlocksIpv4s'),
-        cidr_blocks_ipv6s=__ret__.get('cidrBlocksIpv6s'),
-        id=__ret__.get('id'),
-        range_type=__ret__.get('rangeType'))
+        cidr_blocks=__ret__.cidr_blocks,
+        cidr_blocks_ipv4s=__ret__.cidr_blocks_ipv4s,
+        cidr_blocks_ipv6s=__ret__.cidr_blocks_ipv6s,
+        id=__ret__.id,
+        range_type=__ret__.range_type)

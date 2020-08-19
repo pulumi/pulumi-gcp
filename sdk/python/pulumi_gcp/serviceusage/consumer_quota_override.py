@@ -5,46 +5,26 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['ConsumerQuotaOverride']
 
 
 class ConsumerQuotaOverride(pulumi.CustomResource):
-    dimensions: pulumi.Output[dict]
-    """
-    If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
-    """
-    force: pulumi.Output[bool]
-    """
-    If the new quota would decrease the existing quota by more than 10%, the request is rejected.
-    If `force` is `true`, that safety check is ignored.
-    """
-    limit: pulumi.Output[str]
-    """
-    The limit on the metric, e.g. `/project/region`.
-    """
-    metric: pulumi.Output[str]
-    """
-    The metric that should be limited, e.g. `compute.googleapis.com/cpus`.
-    """
-    name: pulumi.Output[str]
-    """
-    The server-generated name of the quota override.
-    """
-    override_value: pulumi.Output[str]
-    """
-    The overriding quota limit value. Can be any nonnegative integer, or -1 (unlimited quota).
-    """
-    project: pulumi.Output[str]
-    """
-    The ID of the project in which the resource belongs.
-    If it is not provided, the provider project is used.
-    """
-    service: pulumi.Output[str]
-    """
-    The service that the metrics belong to, e.g. `compute.googleapis.com`.
-    """
-    def __init__(__self__, resource_name, opts=None, dimensions=None, force=None, limit=None, metric=None, override_value=None, project=None, service=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 dimensions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 force: Optional[pulumi.Input[bool]] = None,
+                 limit: Optional[pulumi.Input[str]] = None,
+                 metric: Optional[pulumi.Input[str]] = None,
+                 override_value: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 service: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         A consumer override is applied to the consumer on its own authority to limit its own quota usage.
         Consumer overrides cannot be used to grant more quota than would be allowed by admin overrides,
@@ -60,7 +40,7 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] dimensions: If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] dimensions: If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
         :param pulumi.Input[bool] force: If the new quota would decrease the existing quota by more than 10%, the request is rejected.
                If `force` is `true`, that safety check is ignored.
         :param pulumi.Input[str] limit: The limit on the metric, e.g. `/project/region`.
@@ -110,15 +90,25 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, dimensions=None, force=None, limit=None, metric=None, name=None, override_value=None, project=None, service=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            dimensions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            force: Optional[pulumi.Input[bool]] = None,
+            limit: Optional[pulumi.Input[str]] = None,
+            metric: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            override_value: Optional[pulumi.Input[str]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            service: Optional[pulumi.Input[str]] = None) -> 'ConsumerQuotaOverride':
         """
         Get an existing ConsumerQuotaOverride resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] dimensions: If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] dimensions: If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
         :param pulumi.Input[bool] force: If the new quota would decrease the existing quota by more than 10%, the request is rejected.
                If `force` is `true`, that safety check is ignored.
         :param pulumi.Input[str] limit: The limit on the metric, e.g. `/project/region`.
@@ -143,8 +133,75 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
         __props__["service"] = service
         return ConsumerQuotaOverride(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def dimensions(self) -> Optional[Mapping[str, str]]:
+        """
+        If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
+        """
+        return pulumi.get(self, "dimensions")
+
+    @property
+    @pulumi.getter
+    def force(self) -> Optional[bool]:
+        """
+        If the new quota would decrease the existing quota by more than 10%, the request is rejected.
+        If `force` is `true`, that safety check is ignored.
+        """
+        return pulumi.get(self, "force")
+
+    @property
+    @pulumi.getter
+    def limit(self) -> str:
+        """
+        The limit on the metric, e.g. `/project/region`.
+        """
+        return pulumi.get(self, "limit")
+
+    @property
+    @pulumi.getter
+    def metric(self) -> str:
+        """
+        The metric that should be limited, e.g. `compute.googleapis.com/cpus`.
+        """
+        return pulumi.get(self, "metric")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The server-generated name of the quota override.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="overrideValue")
+    def override_value(self) -> str:
+        """
+        The overriding quota limit value. Can be any nonnegative integer, or -1 (unlimited quota).
+        """
+        return pulumi.get(self, "override_value")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def service(self) -> str:
+        """
+        The service that the metrics belong to, e.g. `compute.googleapis.com`.
+        """
+        return pulumi.get(self, "service")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,233 +5,29 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['PatchDeployment']
 
 
 class PatchDeployment(pulumi.CustomResource):
-    create_time: pulumi.Output[str]
-    """
-    Time the patch deployment was created. Timestamp is in RFC3339 text format. A timestamp in RFC3339 UTC "Zulu" format,
-    accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-    """
-    description: pulumi.Output[str]
-    """
-    Description of the patch deployment. Length of the description is limited to 1024 characters.
-    """
-    duration: pulumi.Output[str]
-    """
-    Duration of the patch. After the duration ends, the patch times out.
-    A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
-    """
-    instance_filter: pulumi.Output[dict]
-    """
-    VM instances to patch.
-    Structure is documented below.
-
-      * `all` (`bool`) - Target all VM instances in the project. If true, no other criteria is permitted.
-      * `groupLabels` (`list`) - Targets VM instances matching ANY of these GroupLabels. This allows targeting of disparate groups of VM instances.
-        Structure is documented below.
-        * `labels` (`dict`) - Compute Engine instance labels that must be present for a VM instance to be targeted by this filter
-
-      * `instanceNamePrefixes` (`list`) - Targets VMs whose name starts with one of these prefixes. Similar to labels, this is another way to group
-        VMs when targeting configs, for example prefix="prod-".
-      * `instances` (`list`) - Targets any of the VM instances specified. Instances are specified by their URI in the `form zones/{{zone}}/instances/{{instance_name}}`,
-        `projects/{{project_id}}/zones/{{zone}}/instances/{{instance_name}}`, or
-        `https://www.googleapis.com/compute/v1/projects/{{project_id}}/zones/{{zone}}/instances/{{instance_name}}`
-      * `zones` (`list`) - Targets VM instances in ANY of these zones. Leave empty to target VM instances in any zone.
-    """
-    last_execute_time: pulumi.Output[str]
-    """
-    -
-    The time the last patch job ran successfully.
-    A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-    """
-    name: pulumi.Output[str]
-    """
-    Unique name for the patch deployment resource in a project. The patch deployment name is in the form:
-    projects/{project_id}/patchDeployments/{patchDeploymentId}.
-    """
-    one_time_schedule: pulumi.Output[dict]
-    """
-    Schedule a one-time execution.
-    Structure is documented below.
-
-      * `executeTime` (`str`) - The desired patch job execution time. A timestamp in RFC3339 UTC "Zulu" format,
-        accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-    """
-    patch_config: pulumi.Output[dict]
-    """
-    Patch configuration that is applied.
-    Structure is documented below.
-
-      * `apt` (`dict`) - Apt update settings. Use this setting to override the default apt patch rules.
-        Structure is documented below.
-        * `excludes` (`list`) - List of KBs to exclude from update.
-        * `exclusivePackages` (`list`) - An exclusive list of packages to be updated. These are the only packages that will be updated.
-          If these packages are not installed, they will be ignored. This field cannot be specified with
-          any other patch configuration fields.
-        * `type` (`str`) - By changing the type to DIST, the patching is performed using apt-get dist-upgrade instead.
-          Possible values are `DIST` and `UPGRADE`.
-
-      * `goo` (`dict`) - goo update settings. Use this setting to override the default goo patch rules.
-        Structure is documented below.
-        * `enabled` (`bool`) - goo update settings. Use this setting to override the default goo patch rules.
-
-      * `postStep` (`dict`) - The ExecStep to run after the patch update.
-        Structure is documented below.
-        * `linuxExecStepConfig` (`dict`) - The ExecStepConfig for all Linux VMs targeted by the PatchJob.
-          Structure is documented below.
-          * `allowedSuccessCodes` (`list`) - Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
-          * `gcsObject` (`dict`) - A Cloud Storage object containing the executable.
-            Structure is documented below.
-            * `bucket` (`str`) - Bucket of the Cloud Storage object.
-            * `generationNumber` (`str`) - Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
-            * `object` (`str`) - Name of the Cloud Storage object.
-
-          * `interpreter` (`str`) - The script interpreter to use to run the script. If no interpreter is specified the script will
-            be executed directly, which will likely only succeed for scripts with shebang lines.
-            Possible values are `SHELL` and `POWERSHELL`.
-          * `localPath` (`str`) - An absolute path to the executable on the VM.
-
-        * `windowsExecStepConfig` (`dict`) - The ExecStepConfig for all Windows VMs targeted by the PatchJob.
-          Structure is documented below.
-          * `allowedSuccessCodes` (`list`) - Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
-          * `gcsObject` (`dict`) - A Cloud Storage object containing the executable.
-            Structure is documented below.
-            * `bucket` (`str`) - Bucket of the Cloud Storage object.
-            * `generationNumber` (`str`) - Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
-            * `object` (`str`) - Name of the Cloud Storage object.
-
-          * `interpreter` (`str`) - The script interpreter to use to run the script. If no interpreter is specified the script will
-            be executed directly, which will likely only succeed for scripts with shebang lines.
-            Possible values are `SHELL` and `POWERSHELL`.
-          * `localPath` (`str`) - An absolute path to the executable on the VM.
-
-      * `preStep` (`dict`) - The ExecStep to run before the patch update.
-        Structure is documented below.
-        * `linuxExecStepConfig` (`dict`) - The ExecStepConfig for all Linux VMs targeted by the PatchJob.
-          Structure is documented below.
-          * `allowedSuccessCodes` (`list`) - Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
-          * `gcsObject` (`dict`) - A Cloud Storage object containing the executable.
-            Structure is documented below.
-            * `bucket` (`str`) - Bucket of the Cloud Storage object.
-            * `generationNumber` (`str`) - Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
-            * `object` (`str`) - Name of the Cloud Storage object.
-
-          * `interpreter` (`str`) - The script interpreter to use to run the script. If no interpreter is specified the script will
-            be executed directly, which will likely only succeed for scripts with shebang lines.
-            Possible values are `SHELL` and `POWERSHELL`.
-          * `localPath` (`str`) - An absolute path to the executable on the VM.
-
-        * `windowsExecStepConfig` (`dict`) - The ExecStepConfig for all Windows VMs targeted by the PatchJob.
-          Structure is documented below.
-          * `allowedSuccessCodes` (`list`) - Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
-          * `gcsObject` (`dict`) - A Cloud Storage object containing the executable.
-            Structure is documented below.
-            * `bucket` (`str`) - Bucket of the Cloud Storage object.
-            * `generationNumber` (`str`) - Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
-            * `object` (`str`) - Name of the Cloud Storage object.
-
-          * `interpreter` (`str`) - The script interpreter to use to run the script. If no interpreter is specified the script will
-            be executed directly, which will likely only succeed for scripts with shebang lines.
-            Possible values are `SHELL` and `POWERSHELL`.
-          * `localPath` (`str`) - An absolute path to the executable on the VM.
-
-      * `rebootConfig` (`str`) - Post-patch reboot settings.
-        Possible values are `DEFAULT`, `ALWAYS`, and `NEVER`.
-      * `windowsUpdate` (`dict`) - Windows update settings. Use this setting to override the default Windows patch rules.
-        Structure is documented below.
-        * `classifications` (`list`) - Only apply updates of these windows update classifications. If empty, all updates are applied.
-          Each value may be one of `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, and `UPDATE`.
-        * `excludes` (`list`) - List of KBs to exclude from update.
-        * `exclusivePatches` (`list`) - An exclusive list of kbs to be updated. These are the only patches that will be updated.
-          This field must not be used with other patch configurations.
-
-      * `yum` (`dict`) - Yum update settings. Use this setting to override the default yum patch rules.
-        Structure is documented below.
-        * `excludes` (`list`) - List of KBs to exclude from update.
-        * `exclusivePackages` (`list`) - An exclusive list of packages to be updated. These are the only packages that will be updated.
-          If these packages are not installed, they will be ignored. This field cannot be specified with
-          any other patch configuration fields.
-        * `minimal` (`bool`) - Will cause patch to run yum update-minimal instead.
-        * `security` (`bool`) - Adds the --security flag to yum update. Not supported on all platforms.
-
-      * `zypper` (`dict`) - zypper update settings. Use this setting to override the default zypper patch rules.
-        Structure is documented below.
-        * `categories` (`list`) - Install only patches with these categories. Common categories include security, recommended, and feature.
-        * `excludes` (`list`) - List of KBs to exclude from update.
-        * `exclusivePatches` (`list`) - An exclusive list of kbs to be updated. These are the only patches that will be updated.
-          This field must not be used with other patch configurations.
-        * `severities` (`list`) - Install only patches with these severities. Common severities include critical, important, moderate, and low.
-        * `withOptional` (`bool`) - Adds the --with-optional flag to zypper patch.
-        * `withUpdate` (`bool`) - Adds the --with-update flag, to zypper patch.
-    """
-    patch_deployment_id: pulumi.Output[str]
-    """
-    A name for the patch deployment in the project. When creating a name the following rules apply:
-    * Must contain only lowercase letters, numbers, and hyphens.
-    * Must start with a letter.
-    * Must be between 1-63 characters.
-    * Must end with a number or a letter.
-    * Must be unique within the project.
-    """
-    project: pulumi.Output[str]
-    """
-    The ID of the project in which the resource belongs.
-    If it is not provided, the provider project is used.
-    """
-    recurring_schedule: pulumi.Output[dict]
-    """
-    Schedule recurring executions.
-    Structure is documented below.
-
-      * `endTime` (`str`) - The end time at which a recurring patch deployment schedule is no longer active.
-        A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-      * `last_execute_time` (`str`) - -
-        The time the last patch job ran successfully.
-        A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-      * `monthly` (`dict`) - Schedule with monthly executions.
-        Structure is documented below.
-        * `monthDay` (`float`) - One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month.
-          Months without the target day will be skipped. For example, a schedule to run "every month on the 31st"
-          will not run in February, April, June, etc.
-        * `weekDayOfMonth` (`dict`) - Week day in a month.
-          Structure is documented below.
-          * `dayOfWeek` (`str`) - A day of the week.
-            Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
-          * `weekOrdinal` (`float`) - Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
-
-      * `nextExecuteTime` (`str`) - -
-        The time the next patch job is scheduled to run.
-        A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-      * `startTime` (`str`) - The time that the recurring schedule becomes effective. Defaults to createTime of the patch deployment.
-        A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-      * `timeOfDay` (`dict`) - Time of the day to run a recurring deployment.
-        Structure is documented below.
-        * `hours` (`float`) - Hours of day in 24 hour format. Should be from 0 to 23.
-          An API may choose to allow the value "24:00:00" for scenarios like business closing time.
-        * `minutes` (`float`) - Minutes of hour of day. Must be from 0 to 59.
-        * `nanos` (`float`) - Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
-        * `seconds` (`float`) - Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
-
-      * `time_zone` (`dict`) - Defines the time zone that timeOfDay is relative to. The rules for daylight saving time are
-        determined by the chosen time zone.
-        Structure is documented below.
-        * `id` (`str`) - IANA Time Zone Database time zone, e.g. "America/New_York".
-        * `version` (`str`) - IANA Time Zone Database version number, e.g. "2019a".
-
-      * `weekly` (`dict`) - Schedule with weekly executions.
-        Structure is documented below.
-        * `dayOfWeek` (`str`) - A day of the week.
-          Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
-    """
-    update_time: pulumi.Output[str]
-    """
-    Time the patch deployment was last updated. Timestamp is in RFC3339 text format. A timestamp in RFC3339 UTC "Zulu"
-    format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-    """
-    def __init__(__self__, resource_name, opts=None, description=None, duration=None, instance_filter=None, one_time_schedule=None, patch_config=None, patch_deployment_id=None, project=None, recurring_schedule=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 duration: Optional[pulumi.Input[str]] = None,
+                 instance_filter: Optional[pulumi.Input[pulumi.InputType['PatchDeploymentInstanceFilterArgs']]] = None,
+                 one_time_schedule: Optional[pulumi.Input[pulumi.InputType['PatchDeploymentOneTimeScheduleArgs']]] = None,
+                 patch_config: Optional[pulumi.Input[pulumi.InputType['PatchDeploymentPatchConfigArgs']]] = None,
+                 patch_deployment_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 recurring_schedule: Optional[pulumi.Input[pulumi.InputType['PatchDeploymentRecurringScheduleArgs']]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Patch deployments are configurations that individual patch jobs use to complete a patch.
         These configurations include instance filter, package repository settings, and a schedule.
@@ -249,11 +45,11 @@ class PatchDeployment(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the patch deployment. Length of the description is limited to 1024 characters.
         :param pulumi.Input[str] duration: Duration of the patch. After the duration ends, the patch times out.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
-        :param pulumi.Input[dict] instance_filter: VM instances to patch.
+        :param pulumi.Input[pulumi.InputType['PatchDeploymentInstanceFilterArgs']] instance_filter: VM instances to patch.
                Structure is documented below.
-        :param pulumi.Input[dict] one_time_schedule: Schedule a one-time execution.
+        :param pulumi.Input[pulumi.InputType['PatchDeploymentOneTimeScheduleArgs']] one_time_schedule: Schedule a one-time execution.
                Structure is documented below.
-        :param pulumi.Input[dict] patch_config: Patch configuration that is applied.
+        :param pulumi.Input[pulumi.InputType['PatchDeploymentPatchConfigArgs']] patch_config: Patch configuration that is applied.
                Structure is documented below.
         :param pulumi.Input[str] patch_deployment_id: A name for the patch deployment in the project. When creating a name the following rules apply:
                * Must contain only lowercase letters, numbers, and hyphens.
@@ -263,173 +59,8 @@ class PatchDeployment(pulumi.CustomResource):
                * Must be unique within the project.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[dict] recurring_schedule: Schedule recurring executions.
+        :param pulumi.Input[pulumi.InputType['PatchDeploymentRecurringScheduleArgs']] recurring_schedule: Schedule recurring executions.
                Structure is documented below.
-
-        The **instance_filter** object supports the following:
-
-          * `all` (`pulumi.Input[bool]`) - Target all VM instances in the project. If true, no other criteria is permitted.
-          * `groupLabels` (`pulumi.Input[list]`) - Targets VM instances matching ANY of these GroupLabels. This allows targeting of disparate groups of VM instances.
-            Structure is documented below.
-            * `labels` (`pulumi.Input[dict]`) - Compute Engine instance labels that must be present for a VM instance to be targeted by this filter
-
-          * `instanceNamePrefixes` (`pulumi.Input[list]`) - Targets VMs whose name starts with one of these prefixes. Similar to labels, this is another way to group
-            VMs when targeting configs, for example prefix="prod-".
-          * `instances` (`pulumi.Input[list]`) - Targets any of the VM instances specified. Instances are specified by their URI in the `form zones/{{zone}}/instances/{{instance_name}}`,
-            `projects/{{project_id}}/zones/{{zone}}/instances/{{instance_name}}`, or
-            `https://www.googleapis.com/compute/v1/projects/{{project_id}}/zones/{{zone}}/instances/{{instance_name}}`
-          * `zones` (`pulumi.Input[list]`) - Targets VM instances in ANY of these zones. Leave empty to target VM instances in any zone.
-
-        The **one_time_schedule** object supports the following:
-
-          * `executeTime` (`pulumi.Input[str]`) - The desired patch job execution time. A timestamp in RFC3339 UTC "Zulu" format,
-            accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-
-        The **patch_config** object supports the following:
-
-          * `apt` (`pulumi.Input[dict]`) - Apt update settings. Use this setting to override the default apt patch rules.
-            Structure is documented below.
-            * `excludes` (`pulumi.Input[list]`) - List of KBs to exclude from update.
-            * `exclusivePackages` (`pulumi.Input[list]`) - An exclusive list of packages to be updated. These are the only packages that will be updated.
-              If these packages are not installed, they will be ignored. This field cannot be specified with
-              any other patch configuration fields.
-            * `type` (`pulumi.Input[str]`) - By changing the type to DIST, the patching is performed using apt-get dist-upgrade instead.
-              Possible values are `DIST` and `UPGRADE`.
-
-          * `goo` (`pulumi.Input[dict]`) - goo update settings. Use this setting to override the default goo patch rules.
-            Structure is documented below.
-            * `enabled` (`pulumi.Input[bool]`) - goo update settings. Use this setting to override the default goo patch rules.
-
-          * `postStep` (`pulumi.Input[dict]`) - The ExecStep to run after the patch update.
-            Structure is documented below.
-            * `linuxExecStepConfig` (`pulumi.Input[dict]`) - The ExecStepConfig for all Linux VMs targeted by the PatchJob.
-              Structure is documented below.
-              * `allowedSuccessCodes` (`pulumi.Input[list]`) - Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
-              * `gcsObject` (`pulumi.Input[dict]`) - A Cloud Storage object containing the executable.
-                Structure is documented below.
-                * `bucket` (`pulumi.Input[str]`) - Bucket of the Cloud Storage object.
-                * `generationNumber` (`pulumi.Input[str]`) - Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
-                * `object` (`pulumi.Input[str]`) - Name of the Cloud Storage object.
-
-              * `interpreter` (`pulumi.Input[str]`) - The script interpreter to use to run the script. If no interpreter is specified the script will
-                be executed directly, which will likely only succeed for scripts with shebang lines.
-                Possible values are `SHELL` and `POWERSHELL`.
-              * `localPath` (`pulumi.Input[str]`) - An absolute path to the executable on the VM.
-
-            * `windowsExecStepConfig` (`pulumi.Input[dict]`) - The ExecStepConfig for all Windows VMs targeted by the PatchJob.
-              Structure is documented below.
-              * `allowedSuccessCodes` (`pulumi.Input[list]`) - Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
-              * `gcsObject` (`pulumi.Input[dict]`) - A Cloud Storage object containing the executable.
-                Structure is documented below.
-                * `bucket` (`pulumi.Input[str]`) - Bucket of the Cloud Storage object.
-                * `generationNumber` (`pulumi.Input[str]`) - Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
-                * `object` (`pulumi.Input[str]`) - Name of the Cloud Storage object.
-
-              * `interpreter` (`pulumi.Input[str]`) - The script interpreter to use to run the script. If no interpreter is specified the script will
-                be executed directly, which will likely only succeed for scripts with shebang lines.
-                Possible values are `SHELL` and `POWERSHELL`.
-              * `localPath` (`pulumi.Input[str]`) - An absolute path to the executable on the VM.
-
-          * `preStep` (`pulumi.Input[dict]`) - The ExecStep to run before the patch update.
-            Structure is documented below.
-            * `linuxExecStepConfig` (`pulumi.Input[dict]`) - The ExecStepConfig for all Linux VMs targeted by the PatchJob.
-              Structure is documented below.
-              * `allowedSuccessCodes` (`pulumi.Input[list]`) - Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
-              * `gcsObject` (`pulumi.Input[dict]`) - A Cloud Storage object containing the executable.
-                Structure is documented below.
-                * `bucket` (`pulumi.Input[str]`) - Bucket of the Cloud Storage object.
-                * `generationNumber` (`pulumi.Input[str]`) - Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
-                * `object` (`pulumi.Input[str]`) - Name of the Cloud Storage object.
-
-              * `interpreter` (`pulumi.Input[str]`) - The script interpreter to use to run the script. If no interpreter is specified the script will
-                be executed directly, which will likely only succeed for scripts with shebang lines.
-                Possible values are `SHELL` and `POWERSHELL`.
-              * `localPath` (`pulumi.Input[str]`) - An absolute path to the executable on the VM.
-
-            * `windowsExecStepConfig` (`pulumi.Input[dict]`) - The ExecStepConfig for all Windows VMs targeted by the PatchJob.
-              Structure is documented below.
-              * `allowedSuccessCodes` (`pulumi.Input[list]`) - Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
-              * `gcsObject` (`pulumi.Input[dict]`) - A Cloud Storage object containing the executable.
-                Structure is documented below.
-                * `bucket` (`pulumi.Input[str]`) - Bucket of the Cloud Storage object.
-                * `generationNumber` (`pulumi.Input[str]`) - Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
-                * `object` (`pulumi.Input[str]`) - Name of the Cloud Storage object.
-
-              * `interpreter` (`pulumi.Input[str]`) - The script interpreter to use to run the script. If no interpreter is specified the script will
-                be executed directly, which will likely only succeed for scripts with shebang lines.
-                Possible values are `SHELL` and `POWERSHELL`.
-              * `localPath` (`pulumi.Input[str]`) - An absolute path to the executable on the VM.
-
-          * `rebootConfig` (`pulumi.Input[str]`) - Post-patch reboot settings.
-            Possible values are `DEFAULT`, `ALWAYS`, and `NEVER`.
-          * `windowsUpdate` (`pulumi.Input[dict]`) - Windows update settings. Use this setting to override the default Windows patch rules.
-            Structure is documented below.
-            * `classifications` (`pulumi.Input[list]`) - Only apply updates of these windows update classifications. If empty, all updates are applied.
-              Each value may be one of `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, and `UPDATE`.
-            * `excludes` (`pulumi.Input[list]`) - List of KBs to exclude from update.
-            * `exclusivePatches` (`pulumi.Input[list]`) - An exclusive list of kbs to be updated. These are the only patches that will be updated.
-              This field must not be used with other patch configurations.
-
-          * `yum` (`pulumi.Input[dict]`) - Yum update settings. Use this setting to override the default yum patch rules.
-            Structure is documented below.
-            * `excludes` (`pulumi.Input[list]`) - List of KBs to exclude from update.
-            * `exclusivePackages` (`pulumi.Input[list]`) - An exclusive list of packages to be updated. These are the only packages that will be updated.
-              If these packages are not installed, they will be ignored. This field cannot be specified with
-              any other patch configuration fields.
-            * `minimal` (`pulumi.Input[bool]`) - Will cause patch to run yum update-minimal instead.
-            * `security` (`pulumi.Input[bool]`) - Adds the --security flag to yum update. Not supported on all platforms.
-
-          * `zypper` (`pulumi.Input[dict]`) - zypper update settings. Use this setting to override the default zypper patch rules.
-            Structure is documented below.
-            * `categories` (`pulumi.Input[list]`) - Install only patches with these categories. Common categories include security, recommended, and feature.
-            * `excludes` (`pulumi.Input[list]`) - List of KBs to exclude from update.
-            * `exclusivePatches` (`pulumi.Input[list]`) - An exclusive list of kbs to be updated. These are the only patches that will be updated.
-              This field must not be used with other patch configurations.
-            * `severities` (`pulumi.Input[list]`) - Install only patches with these severities. Common severities include critical, important, moderate, and low.
-            * `withOptional` (`pulumi.Input[bool]`) - Adds the --with-optional flag to zypper patch.
-            * `withUpdate` (`pulumi.Input[bool]`) - Adds the --with-update flag, to zypper patch.
-
-        The **recurring_schedule** object supports the following:
-
-          * `endTime` (`pulumi.Input[str]`) - The end time at which a recurring patch deployment schedule is no longer active.
-            A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-          * `last_execute_time` (`pulumi.Input[str]`) - -
-            The time the last patch job ran successfully.
-            A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-          * `monthly` (`pulumi.Input[dict]`) - Schedule with monthly executions.
-            Structure is documented below.
-            * `monthDay` (`pulumi.Input[float]`) - One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month.
-              Months without the target day will be skipped. For example, a schedule to run "every month on the 31st"
-              will not run in February, April, June, etc.
-            * `weekDayOfMonth` (`pulumi.Input[dict]`) - Week day in a month.
-              Structure is documented below.
-              * `dayOfWeek` (`pulumi.Input[str]`) - A day of the week.
-                Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
-              * `weekOrdinal` (`pulumi.Input[float]`) - Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
-
-          * `nextExecuteTime` (`pulumi.Input[str]`) - -
-            The time the next patch job is scheduled to run.
-            A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-          * `startTime` (`pulumi.Input[str]`) - The time that the recurring schedule becomes effective. Defaults to createTime of the patch deployment.
-            A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-          * `timeOfDay` (`pulumi.Input[dict]`) - Time of the day to run a recurring deployment.
-            Structure is documented below.
-            * `hours` (`pulumi.Input[float]`) - Hours of day in 24 hour format. Should be from 0 to 23.
-              An API may choose to allow the value "24:00:00" for scenarios like business closing time.
-            * `minutes` (`pulumi.Input[float]`) - Minutes of hour of day. Must be from 0 to 59.
-            * `nanos` (`pulumi.Input[float]`) - Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
-            * `seconds` (`pulumi.Input[float]`) - Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
-
-          * `time_zone` (`pulumi.Input[dict]`) - Defines the time zone that timeOfDay is relative to. The rules for daylight saving time are
-            determined by the chosen time zone.
-            Structure is documented below.
-            * `id` (`pulumi.Input[str]`) - IANA Time Zone Database time zone, e.g. "America/New_York".
-            * `version` (`pulumi.Input[str]`) - IANA Time Zone Database version number, e.g. "2019a".
-
-          * `weekly` (`pulumi.Input[dict]`) - Schedule with weekly executions.
-            Structure is documented below.
-            * `dayOfWeek` (`pulumi.Input[str]`) - A day of the week.
-              Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -471,29 +102,43 @@ class PatchDeployment(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, create_time=None, description=None, duration=None, instance_filter=None, last_execute_time=None, name=None, one_time_schedule=None, patch_config=None, patch_deployment_id=None, project=None, recurring_schedule=None, update_time=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            duration: Optional[pulumi.Input[str]] = None,
+            instance_filter: Optional[pulumi.Input[pulumi.InputType['PatchDeploymentInstanceFilterArgs']]] = None,
+            last_execute_time: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            one_time_schedule: Optional[pulumi.Input[pulumi.InputType['PatchDeploymentOneTimeScheduleArgs']]] = None,
+            patch_config: Optional[pulumi.Input[pulumi.InputType['PatchDeploymentPatchConfigArgs']]] = None,
+            patch_deployment_id: Optional[pulumi.Input[str]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            recurring_schedule: Optional[pulumi.Input[pulumi.InputType['PatchDeploymentRecurringScheduleArgs']]] = None,
+            update_time: Optional[pulumi.Input[str]] = None) -> 'PatchDeployment':
         """
         Get an existing PatchDeployment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Time the patch deployment was created. Timestamp is in RFC3339 text format. A timestamp in RFC3339 UTC "Zulu" format,
                accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[str] description: Description of the patch deployment. Length of the description is limited to 1024 characters.
         :param pulumi.Input[str] duration: Duration of the patch. After the duration ends, the patch times out.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
-        :param pulumi.Input[dict] instance_filter: VM instances to patch.
+        :param pulumi.Input[pulumi.InputType['PatchDeploymentInstanceFilterArgs']] instance_filter: VM instances to patch.
                Structure is documented below.
         :param pulumi.Input[str] last_execute_time: -
                The time the last patch job ran successfully.
                A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[str] name: Unique name for the patch deployment resource in a project. The patch deployment name is in the form:
                projects/{project_id}/patchDeployments/{patchDeploymentId}.
-        :param pulumi.Input[dict] one_time_schedule: Schedule a one-time execution.
+        :param pulumi.Input[pulumi.InputType['PatchDeploymentOneTimeScheduleArgs']] one_time_schedule: Schedule a one-time execution.
                Structure is documented below.
-        :param pulumi.Input[dict] patch_config: Patch configuration that is applied.
+        :param pulumi.Input[pulumi.InputType['PatchDeploymentPatchConfigArgs']] patch_config: Patch configuration that is applied.
                Structure is documented below.
         :param pulumi.Input[str] patch_deployment_id: A name for the patch deployment in the project. When creating a name the following rules apply:
                * Must contain only lowercase letters, numbers, and hyphens.
@@ -503,175 +148,10 @@ class PatchDeployment(pulumi.CustomResource):
                * Must be unique within the project.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[dict] recurring_schedule: Schedule recurring executions.
+        :param pulumi.Input[pulumi.InputType['PatchDeploymentRecurringScheduleArgs']] recurring_schedule: Schedule recurring executions.
                Structure is documented below.
         :param pulumi.Input[str] update_time: Time the patch deployment was last updated. Timestamp is in RFC3339 text format. A timestamp in RFC3339 UTC "Zulu"
                format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-
-        The **instance_filter** object supports the following:
-
-          * `all` (`pulumi.Input[bool]`) - Target all VM instances in the project. If true, no other criteria is permitted.
-          * `groupLabels` (`pulumi.Input[list]`) - Targets VM instances matching ANY of these GroupLabels. This allows targeting of disparate groups of VM instances.
-            Structure is documented below.
-            * `labels` (`pulumi.Input[dict]`) - Compute Engine instance labels that must be present for a VM instance to be targeted by this filter
-
-          * `instanceNamePrefixes` (`pulumi.Input[list]`) - Targets VMs whose name starts with one of these prefixes. Similar to labels, this is another way to group
-            VMs when targeting configs, for example prefix="prod-".
-          * `instances` (`pulumi.Input[list]`) - Targets any of the VM instances specified. Instances are specified by their URI in the `form zones/{{zone}}/instances/{{instance_name}}`,
-            `projects/{{project_id}}/zones/{{zone}}/instances/{{instance_name}}`, or
-            `https://www.googleapis.com/compute/v1/projects/{{project_id}}/zones/{{zone}}/instances/{{instance_name}}`
-          * `zones` (`pulumi.Input[list]`) - Targets VM instances in ANY of these zones. Leave empty to target VM instances in any zone.
-
-        The **one_time_schedule** object supports the following:
-
-          * `executeTime` (`pulumi.Input[str]`) - The desired patch job execution time. A timestamp in RFC3339 UTC "Zulu" format,
-            accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-
-        The **patch_config** object supports the following:
-
-          * `apt` (`pulumi.Input[dict]`) - Apt update settings. Use this setting to override the default apt patch rules.
-            Structure is documented below.
-            * `excludes` (`pulumi.Input[list]`) - List of KBs to exclude from update.
-            * `exclusivePackages` (`pulumi.Input[list]`) - An exclusive list of packages to be updated. These are the only packages that will be updated.
-              If these packages are not installed, they will be ignored. This field cannot be specified with
-              any other patch configuration fields.
-            * `type` (`pulumi.Input[str]`) - By changing the type to DIST, the patching is performed using apt-get dist-upgrade instead.
-              Possible values are `DIST` and `UPGRADE`.
-
-          * `goo` (`pulumi.Input[dict]`) - goo update settings. Use this setting to override the default goo patch rules.
-            Structure is documented below.
-            * `enabled` (`pulumi.Input[bool]`) - goo update settings. Use this setting to override the default goo patch rules.
-
-          * `postStep` (`pulumi.Input[dict]`) - The ExecStep to run after the patch update.
-            Structure is documented below.
-            * `linuxExecStepConfig` (`pulumi.Input[dict]`) - The ExecStepConfig for all Linux VMs targeted by the PatchJob.
-              Structure is documented below.
-              * `allowedSuccessCodes` (`pulumi.Input[list]`) - Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
-              * `gcsObject` (`pulumi.Input[dict]`) - A Cloud Storage object containing the executable.
-                Structure is documented below.
-                * `bucket` (`pulumi.Input[str]`) - Bucket of the Cloud Storage object.
-                * `generationNumber` (`pulumi.Input[str]`) - Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
-                * `object` (`pulumi.Input[str]`) - Name of the Cloud Storage object.
-
-              * `interpreter` (`pulumi.Input[str]`) - The script interpreter to use to run the script. If no interpreter is specified the script will
-                be executed directly, which will likely only succeed for scripts with shebang lines.
-                Possible values are `SHELL` and `POWERSHELL`.
-              * `localPath` (`pulumi.Input[str]`) - An absolute path to the executable on the VM.
-
-            * `windowsExecStepConfig` (`pulumi.Input[dict]`) - The ExecStepConfig for all Windows VMs targeted by the PatchJob.
-              Structure is documented below.
-              * `allowedSuccessCodes` (`pulumi.Input[list]`) - Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
-              * `gcsObject` (`pulumi.Input[dict]`) - A Cloud Storage object containing the executable.
-                Structure is documented below.
-                * `bucket` (`pulumi.Input[str]`) - Bucket of the Cloud Storage object.
-                * `generationNumber` (`pulumi.Input[str]`) - Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
-                * `object` (`pulumi.Input[str]`) - Name of the Cloud Storage object.
-
-              * `interpreter` (`pulumi.Input[str]`) - The script interpreter to use to run the script. If no interpreter is specified the script will
-                be executed directly, which will likely only succeed for scripts with shebang lines.
-                Possible values are `SHELL` and `POWERSHELL`.
-              * `localPath` (`pulumi.Input[str]`) - An absolute path to the executable on the VM.
-
-          * `preStep` (`pulumi.Input[dict]`) - The ExecStep to run before the patch update.
-            Structure is documented below.
-            * `linuxExecStepConfig` (`pulumi.Input[dict]`) - The ExecStepConfig for all Linux VMs targeted by the PatchJob.
-              Structure is documented below.
-              * `allowedSuccessCodes` (`pulumi.Input[list]`) - Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
-              * `gcsObject` (`pulumi.Input[dict]`) - A Cloud Storage object containing the executable.
-                Structure is documented below.
-                * `bucket` (`pulumi.Input[str]`) - Bucket of the Cloud Storage object.
-                * `generationNumber` (`pulumi.Input[str]`) - Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
-                * `object` (`pulumi.Input[str]`) - Name of the Cloud Storage object.
-
-              * `interpreter` (`pulumi.Input[str]`) - The script interpreter to use to run the script. If no interpreter is specified the script will
-                be executed directly, which will likely only succeed for scripts with shebang lines.
-                Possible values are `SHELL` and `POWERSHELL`.
-              * `localPath` (`pulumi.Input[str]`) - An absolute path to the executable on the VM.
-
-            * `windowsExecStepConfig` (`pulumi.Input[dict]`) - The ExecStepConfig for all Windows VMs targeted by the PatchJob.
-              Structure is documented below.
-              * `allowedSuccessCodes` (`pulumi.Input[list]`) - Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
-              * `gcsObject` (`pulumi.Input[dict]`) - A Cloud Storage object containing the executable.
-                Structure is documented below.
-                * `bucket` (`pulumi.Input[str]`) - Bucket of the Cloud Storage object.
-                * `generationNumber` (`pulumi.Input[str]`) - Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
-                * `object` (`pulumi.Input[str]`) - Name of the Cloud Storage object.
-
-              * `interpreter` (`pulumi.Input[str]`) - The script interpreter to use to run the script. If no interpreter is specified the script will
-                be executed directly, which will likely only succeed for scripts with shebang lines.
-                Possible values are `SHELL` and `POWERSHELL`.
-              * `localPath` (`pulumi.Input[str]`) - An absolute path to the executable on the VM.
-
-          * `rebootConfig` (`pulumi.Input[str]`) - Post-patch reboot settings.
-            Possible values are `DEFAULT`, `ALWAYS`, and `NEVER`.
-          * `windowsUpdate` (`pulumi.Input[dict]`) - Windows update settings. Use this setting to override the default Windows patch rules.
-            Structure is documented below.
-            * `classifications` (`pulumi.Input[list]`) - Only apply updates of these windows update classifications. If empty, all updates are applied.
-              Each value may be one of `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, and `UPDATE`.
-            * `excludes` (`pulumi.Input[list]`) - List of KBs to exclude from update.
-            * `exclusivePatches` (`pulumi.Input[list]`) - An exclusive list of kbs to be updated. These are the only patches that will be updated.
-              This field must not be used with other patch configurations.
-
-          * `yum` (`pulumi.Input[dict]`) - Yum update settings. Use this setting to override the default yum patch rules.
-            Structure is documented below.
-            * `excludes` (`pulumi.Input[list]`) - List of KBs to exclude from update.
-            * `exclusivePackages` (`pulumi.Input[list]`) - An exclusive list of packages to be updated. These are the only packages that will be updated.
-              If these packages are not installed, they will be ignored. This field cannot be specified with
-              any other patch configuration fields.
-            * `minimal` (`pulumi.Input[bool]`) - Will cause patch to run yum update-minimal instead.
-            * `security` (`pulumi.Input[bool]`) - Adds the --security flag to yum update. Not supported on all platforms.
-
-          * `zypper` (`pulumi.Input[dict]`) - zypper update settings. Use this setting to override the default zypper patch rules.
-            Structure is documented below.
-            * `categories` (`pulumi.Input[list]`) - Install only patches with these categories. Common categories include security, recommended, and feature.
-            * `excludes` (`pulumi.Input[list]`) - List of KBs to exclude from update.
-            * `exclusivePatches` (`pulumi.Input[list]`) - An exclusive list of kbs to be updated. These are the only patches that will be updated.
-              This field must not be used with other patch configurations.
-            * `severities` (`pulumi.Input[list]`) - Install only patches with these severities. Common severities include critical, important, moderate, and low.
-            * `withOptional` (`pulumi.Input[bool]`) - Adds the --with-optional flag to zypper patch.
-            * `withUpdate` (`pulumi.Input[bool]`) - Adds the --with-update flag, to zypper patch.
-
-        The **recurring_schedule** object supports the following:
-
-          * `endTime` (`pulumi.Input[str]`) - The end time at which a recurring patch deployment schedule is no longer active.
-            A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-          * `last_execute_time` (`pulumi.Input[str]`) - -
-            The time the last patch job ran successfully.
-            A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-          * `monthly` (`pulumi.Input[dict]`) - Schedule with monthly executions.
-            Structure is documented below.
-            * `monthDay` (`pulumi.Input[float]`) - One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month.
-              Months without the target day will be skipped. For example, a schedule to run "every month on the 31st"
-              will not run in February, April, June, etc.
-            * `weekDayOfMonth` (`pulumi.Input[dict]`) - Week day in a month.
-              Structure is documented below.
-              * `dayOfWeek` (`pulumi.Input[str]`) - A day of the week.
-                Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
-              * `weekOrdinal` (`pulumi.Input[float]`) - Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
-
-          * `nextExecuteTime` (`pulumi.Input[str]`) - -
-            The time the next patch job is scheduled to run.
-            A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-          * `startTime` (`pulumi.Input[str]`) - The time that the recurring schedule becomes effective. Defaults to createTime of the patch deployment.
-            A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-          * `timeOfDay` (`pulumi.Input[dict]`) - Time of the day to run a recurring deployment.
-            Structure is documented below.
-            * `hours` (`pulumi.Input[float]`) - Hours of day in 24 hour format. Should be from 0 to 23.
-              An API may choose to allow the value "24:00:00" for scenarios like business closing time.
-            * `minutes` (`pulumi.Input[float]`) - Minutes of hour of day. Must be from 0 to 59.
-            * `nanos` (`pulumi.Input[float]`) - Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
-            * `seconds` (`pulumi.Input[float]`) - Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
-
-          * `time_zone` (`pulumi.Input[dict]`) - Defines the time zone that timeOfDay is relative to. The rules for daylight saving time are
-            determined by the chosen time zone.
-            Structure is documented below.
-            * `id` (`pulumi.Input[str]`) - IANA Time Zone Database time zone, e.g. "America/New_York".
-            * `version` (`pulumi.Input[str]`) - IANA Time Zone Database version number, e.g. "2019a".
-
-          * `weekly` (`pulumi.Input[dict]`) - Schedule with weekly executions.
-            Structure is documented below.
-            * `dayOfWeek` (`pulumi.Input[str]`) - A day of the week.
-              Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -691,8 +171,121 @@ class PatchDeployment(pulumi.CustomResource):
         __props__["update_time"] = update_time
         return PatchDeployment(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        Time the patch deployment was created. Timestamp is in RFC3339 text format. A timestamp in RFC3339 UTC "Zulu" format,
+        accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Description of the patch deployment. Length of the description is limited to 1024 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def duration(self) -> Optional[str]:
+        """
+        Duration of the patch. After the duration ends, the patch times out.
+        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+        """
+        return pulumi.get(self, "duration")
+
+    @property
+    @pulumi.getter(name="instanceFilter")
+    def instance_filter(self) -> 'outputs.PatchDeploymentInstanceFilter':
+        """
+        VM instances to patch.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "instance_filter")
+
+    @property
+    @pulumi.getter(name="lastExecuteTime")
+    def last_execute_time(self) -> str:
+        """
+        -
+        The time the last patch job ran successfully.
+        A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "last_execute_time")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Unique name for the patch deployment resource in a project. The patch deployment name is in the form:
+        projects/{project_id}/patchDeployments/{patchDeploymentId}.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="oneTimeSchedule")
+    def one_time_schedule(self) -> Optional['outputs.PatchDeploymentOneTimeSchedule']:
+        """
+        Schedule a one-time execution.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "one_time_schedule")
+
+    @property
+    @pulumi.getter(name="patchConfig")
+    def patch_config(self) -> Optional['outputs.PatchDeploymentPatchConfig']:
+        """
+        Patch configuration that is applied.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "patch_config")
+
+    @property
+    @pulumi.getter(name="patchDeploymentId")
+    def patch_deployment_id(self) -> str:
+        """
+        A name for the patch deployment in the project. When creating a name the following rules apply:
+        * Must contain only lowercase letters, numbers, and hyphens.
+        * Must start with a letter.
+        * Must be between 1-63 characters.
+        * Must end with a number or a letter.
+        * Must be unique within the project.
+        """
+        return pulumi.get(self, "patch_deployment_id")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="recurringSchedule")
+    def recurring_schedule(self) -> Optional['outputs.PatchDeploymentRecurringSchedule']:
+        """
+        Schedule recurring executions.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "recurring_schedule")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        """
+        Time the patch deployment was last updated. Timestamp is in RFC3339 text format. A timestamp in RFC3339 UTC "Zulu"
+        format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "update_time")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

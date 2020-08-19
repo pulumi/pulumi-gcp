@@ -5,700 +5,63 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['Cluster']
 
 
 class Cluster(pulumi.CustomResource):
-    addons_config: pulumi.Output[dict]
-    """
-    The configuration for addons supported by GKE.
-    Structure is documented below.
-
-      * `cloudrunConfig` (`dict`) - .
-        The status of the CloudRun addon. It is disabled by default.
-        Set `disabled = false` to enable.
-        * `disabled` (`bool`) - The status of the Istio addon, which makes it easy to set up Istio for services in a
-          cluster. It is disabled by default. Set `disabled = false` to enable.
-
-      * `configConnectorConfig` (`dict`) - .
-        The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
-        * `enabled` (`bool`) - Enable the PodSecurityPolicy controller for this cluster.
-          If enabled, pods must be valid under a PodSecurityPolicy to be created.
-
-      * `dnsCacheConfig` (`dict`) - .
-        The status of the NodeLocal DNSCache addon. It is disabled by default.
-        Set `enabled = true` to enable.
-        * `enabled` (`bool`) - Enable the PodSecurityPolicy controller for this cluster.
-          If enabled, pods must be valid under a PodSecurityPolicy to be created.
-
-      * `gcePersistentDiskCsiDriverConfig` (`dict`) - .
-        Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enable.
-        * `enabled` (`bool`) - Enable the PodSecurityPolicy controller for this cluster.
-          If enabled, pods must be valid under a PodSecurityPolicy to be created.
-
-      * `horizontalPodAutoscaling` (`dict`) - The status of the Horizontal Pod Autoscaling
-        addon, which increases or decreases the number of replica pods a replication controller
-        has based on the resource usage of the existing pods.
-        It ensures that a Heapster pod is running in the cluster, which is also used by the Cloud Monitoring service.
-        It is enabled by default;
-        set `disabled = true` to disable.
-        * `disabled` (`bool`) - The status of the Istio addon, which makes it easy to set up Istio for services in a
-          cluster. It is disabled by default. Set `disabled = false` to enable.
-
-      * `httpLoadBalancing` (`dict`) - The status of the HTTP (L7) load balancing
-        controller addon, which makes it easy to set up HTTP load balancers for services in a
-        cluster. It is enabled by default; set `disabled = true` to disable.
-        * `disabled` (`bool`) - The status of the Istio addon, which makes it easy to set up Istio for services in a
-          cluster. It is disabled by default. Set `disabled = false` to enable.
-
-      * `istioConfig` (`dict`) - .
-        Structure is documented below.
-        * `auth` (`str`) - The authentication type between services in Istio. Available options include `AUTH_MUTUAL_TLS`.
-        * `disabled` (`bool`) - The status of the Istio addon, which makes it easy to set up Istio for services in a
-          cluster. It is disabled by default. Set `disabled = false` to enable.
-
-      * `kalmConfig` (`dict`) - .
-        Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set `enabled = true` to enable.
-        * `enabled` (`bool`) - Enable the PodSecurityPolicy controller for this cluster.
-          If enabled, pods must be valid under a PodSecurityPolicy to be created.
-
-      * `networkPolicyConfig` (`dict`) - Whether we should enable the network policy addon
-        for the master.  This must be enabled in order to enable network policy for the nodes.
-        To enable this, you must also define a `network_policy` block,
-        otherwise nothing will happen.
-        It can only be disabled if the nodes already do not have network policies enabled.
-        Defaults to disabled; set `disabled = false` to enable.
-        * `disabled` (`bool`) - The status of the Istio addon, which makes it easy to set up Istio for services in a
-          cluster. It is disabled by default. Set `disabled = false` to enable.
-    """
-    authenticator_groups_config: pulumi.Output[dict]
-    """
-    Configuration for the
-    [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
-    Structure is documented below.
-
-      * `securityGroup` (`str`) - The name of the RBAC security group for use with Google security groups in Kubernetes RBAC. Group name must be in format `gke-security-groups@yourdomain.com`.
-    """
-    cluster_autoscaling: pulumi.Output[dict]
-    """
-    Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
-    automatically adjust the size of the cluster and create/delete node pools based
-    on the current needs of the cluster's workload. See the
-    [guide to using Node Auto-Provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)
-    for more details. Structure is documented below.
-
-      * `autoProvisioningDefaults` (`dict`) - Contains defaults for a node pool created by NAP.
-        Structure is documented below.
-        * `min_cpu_platform` (`str`) - Minimum CPU platform to be used by this instance.
-          The instance may be scheduled on the specified or newer CPU platform. Applicable
-          values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
-          [official documentation](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-          for more information.
-        * `oauthScopes` (`list`) - The set of Google API scopes to be made available
-          on all of the node VMs under the "default" service account. These can be
-          either FQDNs, or scope aliases. The following scopes are necessary to ensure
-          the correct functioning of the cluster:
-        * `service_account` (`str`) - The service account to be used by the Node VMs.
-          If not specified, the "default" service account is used.
-          In order to use the configured `oauth_scopes` for logging and monitoring, the service account being used needs the
-          [roles/logging.logWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_logging_roles) and
-          [roles/monitoring.metricWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_monitoring_roles) roles.
-
-      * `autoscalingProfile` (`str`) - ) Configuration
-        options for the [Autoscaling profile](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler#autoscaling_profiles)
-        feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability
-        when deciding to remove nodes from a cluster. Can be `BALANCED` or `OPTIMIZE_UTILIZATION`. Defaults to `BALANCED`.
-      * `enabled` (`bool`) - Enable the PodSecurityPolicy controller for this cluster.
-        If enabled, pods must be valid under a PodSecurityPolicy to be created.
-      * `resourceLimits` (`list`) - Global constraints for machine resources in the
-        cluster. Configuring the `cpu` and `memory` types is required if node
-        auto-provisioning is enabled. These limits will apply to node pool autoscaling
-        in addition to node auto-provisioning. Structure is documented below.
-        * `maximum` (`float`) - Maximum amount of the resource in the cluster.
-        * `minimum` (`float`) - Minimum amount of the resource in the cluster.
-        * `resourceType` (`str`) - The type of the resource. For example, `cpu` and
-          `memory`.  See the [guide to using Node Auto-Provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)
-          for a list of types.
-    """
-    cluster_ipv4_cidr: pulumi.Output[str]
-    """
-    The IP address range of the Kubernetes pods
-    in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
-    automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
-    only work for routes-based clusters, where `ip_allocation_policy` is not defined.
-    """
-    cluster_telemetry: pulumi.Output[dict]
-    """
-    ) Configuration for
-    [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
-    Structure is documented below.
-
-      * `type` (`str`) - The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
-    """
-    database_encryption: pulumi.Output[dict]
-    """
-    Structure is documented below.
-
-      * `keyName` (`str`) - the key to use to encrypt/decrypt secrets.  See the [DatabaseEncryption definition](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#Cluster.DatabaseEncryption) for more information.
-      * `state` (`str`) - `ENCRYPTED` or `DECRYPTED`
-    """
-    default_max_pods_per_node: pulumi.Output[float]
-    """
-    The default maximum number of pods
-    per node in this cluster. This doesn't work on "routes-based" clusters, clusters
-    that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
-    for more information.
-    """
-    default_snat_status: pulumi.Output[dict]
-    """
-    )
-    [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig).
-
-      * `disabled` (`bool`) - The status of the Istio addon, which makes it easy to set up Istio for services in a
-        cluster. It is disabled by default. Set `disabled = false` to enable.
-    """
-    description: pulumi.Output[str]
-    """
-    Description of the cluster.
-    """
-    enable_binary_authorization: pulumi.Output[bool]
-    """
-    Enable Binary Authorization for this cluster.
-    If enabled, all container images will be validated by Google Binary Authorization.
-    """
-    enable_intranode_visibility: pulumi.Output[bool]
-    """
-    Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
-    """
-    enable_kubernetes_alpha: pulumi.Output[bool]
-    """
-    Whether to enable Kubernetes Alpha features for
-    this cluster. Note that when this option is enabled, the cluster cannot be upgraded
-    and will be automatically deleted after 30 days.
-    """
-    enable_legacy_abac: pulumi.Output[bool]
-    """
-    Whether the ABAC authorizer is enabled for this cluster.
-    When enabled, identities in the system, including service accounts, nodes, and controllers,
-    will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
-    Defaults to `false`
-    """
-    enable_shielded_nodes: pulumi.Output[bool]
-    """
-    Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `false`.
-    """
-    enable_tpu: pulumi.Output[bool]
-    """
-    Whether to enable Cloud TPU resources in this cluster.
-    See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
-    """
-    endpoint: pulumi.Output[str]
-    """
-    The IP address of this cluster's Kubernetes master.
-    """
-    initial_node_count: pulumi.Output[float]
-    """
-    The number of nodes to create in this
-    cluster's default node pool. In regional or multi-zonal clusters, this is the
-    number of nodes per zone. Must be set if `node_pool` is not set. If you're using
-    `container.NodePool` objects with no default node pool, you'll need to
-    set this to a value of at least `1`, alongside setting
-    `remove_default_node_pool` to `true`.
-    """
-    instance_group_urls: pulumi.Output[list]
-    """
-    List of instance group URLs which have been assigned
-    to the cluster.
-    """
-    ip_allocation_policy: pulumi.Output[dict]
-    """
-    Configuration of cluster IP allocation for
-    VPC-native clusters. Adding this block enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-    making the cluster VPC-native instead of routes-based. Structure is documented
-    below.
-
-      * `clusterIpv4CidrBlock` (`str`) - The IP address range for the cluster pod IPs.
-        Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
-        to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14)
-        from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to
-        pick a specific range to use.
-      * `clusterSecondaryRangeName` (`str`) - The name of the existing secondary
-        range in the cluster's subnetwork to use for pod IP addresses. Alternatively,
-        `cluster_ipv4_cidr_block` can be used to automatically create a GKE-managed one.
-      * `servicesIpv4CidrBlock` (`str`) - The IP address range of the services IPs in this cluster.
-        Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
-        to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14)
-        from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to
-        pick a specific range to use.
-      * `servicesSecondaryRangeName` (`str`) - The name of the existing
-        secondary range in the cluster's subnetwork to use for service `ClusterIP`s.
-        Alternatively, `services_ipv4_cidr_block` can be used to automatically create a
-        GKE-managed one.
-    """
-    label_fingerprint: pulumi.Output[str]
-    """
-    The fingerprint of the set of labels for this cluster.
-    """
-    location: pulumi.Output[str]
-    """
-    The location (region or zone) in which the cluster
-    master will be created, as well as the default node location. If you specify a
-    zone (such as `us-central1-a`), the cluster will be a zonal cluster with a
-    single cluster master. If you specify a region (such as `us-west1`), the
-    cluster will be a regional cluster with multiple masters spread across zones in
-    the region, and with default node locations in those zones as well
-    """
-    logging_service: pulumi.Output[str]
-    """
-    The logging service that the cluster should
-    write logs to. Available options include `logging.googleapis.com`(Legacy Stackdriver),
-    `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
-    """
-    maintenance_policy: pulumi.Output[dict]
-    """
-    The maintenance policy to use for the cluster. Structure is
-    documented below.
-
-      * `dailyMaintenanceWindow` (`dict`) - Time window specified for daily maintenance operations.
-        Specify `start_time` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format "HH:MM”,
-        where HH : \[00-23\] and MM : \[00-59\] GMT. For example:
-        * `duration` (`str`)
-        * `startTime` (`str`)
-
-      * `recurringWindow` (`dict`) - Time window for
-        recurring maintenance operations.
-        * `endTime` (`str`)
-        * `recurrence` (`str`)
-        * `startTime` (`str`)
-    """
-    master_auth: pulumi.Output[dict]
-    """
-    The authentication information for accessing the
-    Kubernetes master. Some values in this block are only returned by the API if
-    your service account has permission to get credentials for your GKE cluster. If
-    you see an unexpected diff removing a username/password or unsetting your client
-    cert, ensure you have the `container.clusters.getCredentials` permission.
-    Structure is documented below.
-
-      * `clientCertificate` (`str`)
-      * `clientCertificateConfig` (`dict`) - Whether client certificate authorization is enabled for this cluster.  For example:
-        * `issueClientCertificate` (`bool`)
-
-      * `clientKey` (`str`)
-      * `clusterCaCertificate` (`str`)
-      * `password` (`str`) - The password to use for HTTP basic authentication when accessing
-        the Kubernetes master endpoint.
-      * `username` (`str`) - The username to use for HTTP basic authentication when accessing
-        the Kubernetes master endpoint. If not present basic auth will be disabled.
-    """
-    master_authorized_networks_config: pulumi.Output[dict]
-    """
-    The desired configuration options
-    for master authorized networks. Omit the nested `cidr_blocks` attribute to disallow
-    external access (except the cluster node IPs, which GKE automatically whitelists).
-
-      * `cidrBlocks` (`list`) - External networks that can access the
-        Kubernetes cluster master through HTTPS.
-        * `cidr_block` (`str`) - External network that can access Kubernetes master through HTTPS.
-          Must be specified in CIDR notation.
-        * `display_name` (`str`) - Field for users to identify CIDR blocks.
-    """
-    master_version: pulumi.Output[str]
-    """
-    The current version of the master in the cluster. This may
-    be different than the `min_master_version` set in the config if the master
-    has been updated by GKE.
-    """
-    min_master_version: pulumi.Output[str]
-    """
-    The minimum version of the master. GKE
-    will auto-update the master to new versions, so this does not guarantee the
-    current master version--use the read-only `master_version` field to obtain that.
-    If unset, the cluster's version will be set by GKE to the version of the most recent
-    official release (which is not necessarily the latest version).  Most users will find
-    the `container.getEngineVersions` data source useful - it indicates which versions
-    are available. If you intend to specify versions manually,
-    [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
-    describe the various acceptable formats for this field.
-    """
-    monitoring_service: pulumi.Output[str]
-    """
-    The monitoring service that the cluster
-    should write metrics to.
-    Automatically send metrics from pods in the cluster to the Google Cloud Monitoring API.
-    VM metrics will be collected by Google Compute Engine regardless of this setting
-    Available options include
-    `monitoring.googleapis.com`(Legacy Stackdriver), `monitoring.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Monitoring), and `none`.
-    Defaults to `monitoring.googleapis.com/kubernetes`
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the cluster, unique within the project and
-    location.
-    """
-    network: pulumi.Output[str]
-    """
-    The name or self_link of the Google Compute Engine
-    network to which the cluster is connected. For Shared VPC, set this to the self link of the
-    shared network.
-    """
-    network_policy: pulumi.Output[dict]
-    """
-    Configuration options for the
-    [NetworkPolicy](https://kubernetes.io/docs/concepts/services-networking/networkpolicies/)
-    feature. Structure is documented below.
-
-      * `enabled` (`bool`) - Enable the PodSecurityPolicy controller for this cluster.
-        If enabled, pods must be valid under a PodSecurityPolicy to be created.
-      * `provider` (`str`) - The selected network policy provider. Defaults to PROVIDER_UNSPECIFIED.
-    """
-    networking_mode: pulumi.Output[str]
-    """
-    Determines whether alias IPs or routes will be used for pod IPs in the cluster.
-    Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-    and requires the `ip_allocation_policy` block to be defined. By default when this field is unspecified, GKE will create a `ROUTES`-based cluster.
-    """
-    node_config: pulumi.Output[dict]
-    """
-    Parameters used in creating the default node pool.
-    Generally, this field should not be used at the same time as a
-    `container.NodePool` or a `node_pool` block; this configuration
-    manages the default node pool, which isn't recommended to be used.
-    Structure is documented below.
-
-      * `bootDiskKmsKey` (`str`) - The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
-      * `disk_size_gb` (`float`) - Size of the disk attached to each node, specified
-        in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
-      * `diskType` (`str`) - Type of the disk attached to each node
-        (e.g. 'pd-standard' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
-      * `guest_accelerators` (`list`) - List of the type and count of accelerator cards attached to the instance.
-        Structure documented below.
-        * `count` (`float`) - The number of the guest accelerator cards exposed to this instance.
-        * `type` (`str`) - The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
-
-      * `imageType` (`str`) - The image type to use for this node. Note that changing the image type
-        will delete and recreate all nodes in the node pool.
-      * `labels` (`dict`) - The Kubernetes labels (key/value pairs) to be applied to each node.
-      * `localSsdCount` (`float`) - The amount of local SSD disks that will be
-        attached to each cluster node. Defaults to 0.
-      * `machine_type` (`str`) - The name of a Google Compute Engine machine type.
-        Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
-        [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
-      * `metadata` (`dict`) - The metadata key/value pairs assigned to instances in
-        the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
-        `true` by the API; if `metadata` is set but that default value is not
-        included, the provider will attempt to unset the value. To avoid this, set the
-        value in your config.
-      * `min_cpu_platform` (`str`) - Minimum CPU platform to be used by this instance.
-        The instance may be scheduled on the specified or newer CPU platform. Applicable
-        values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
-        [official documentation](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-        for more information.
-      * `oauthScopes` (`list`) - The set of Google API scopes to be made available
-        on all of the node VMs under the "default" service account. These can be
-        either FQDNs, or scope aliases. The following scopes are necessary to ensure
-        the correct functioning of the cluster:
-      * `preemptible` (`bool`) - A boolean that represents whether or not the underlying node VMs
-        are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
-        for more information. Defaults to false.
-      * `sandboxConfig` (`dict`) - [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
-        Structure is documented below.
-        * `sandboxType` (`str`) - Which sandbox to use for pods in the node pool.
-          Accepted values are:
-
-      * `service_account` (`str`) - The service account to be used by the Node VMs.
-        If not specified, the "default" service account is used.
-        In order to use the configured `oauth_scopes` for logging and monitoring, the service account being used needs the
-        [roles/logging.logWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_logging_roles) and
-        [roles/monitoring.metricWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_monitoring_roles) roles.
-      * `shielded_instance_config` (`dict`) - Shielded Instance options. Structure is documented below.
-        * `enableIntegrityMonitoring` (`bool`) - Defines if the instance has integrity monitoring enabled.
-        * `enableSecureBoot` (`bool`) - Defines if the instance has Secure Boot enabled.
-
-      * `tags` (`list`) - The list of instance tags applied to all nodes. Tags are used to identify
-        valid sources or targets for network firewalls.
-      * `taints` (`list`) - A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
-        to apply to nodes. GKE's API can only set this field on cluster creation.
-        However, GKE will add taints to your nodes if you enable certain features such
-        as GPUs. If this field is set, any diffs on this field will cause the provider to
-        recreate the underlying resource. Taint values can be updated safely in
-        Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
-        this field to manage taints. If you do, `lifecycle.ignore_changes` is
-        recommended. Structure is documented below.
-        * `effect` (`str`) - Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
-        * `key` (`str`) - Key for taint.
-        * `value` (`str`) - Value for taint.
-
-      * `workloadMetadataConfig` (`dict`) - Metadata configuration to expose to workloads on the node pool.
-        Structure is documented below.
-        * `nodeMetadata` (`str`) - How to expose the node metadata to the workload running on the node.
-          Accepted values are:
-          * UNSPECIFIED: Not Set
-          * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
-          * EXPOSE: Expose all VM metadata to pods.
-          * GKE_METADATA_SERVER: Enables [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) on the node.
-    """
-    node_locations: pulumi.Output[list]
-    """
-    The list of zones in which the cluster's nodes
-    are located. Nodes must be in the region of their regional cluster or in the
-    same region as their cluster's zone for zonal clusters. If this is specified for
-    a zonal cluster, omit the cluster's zone.
-    """
-    node_pools: pulumi.Output[list]
-    """
-    List of node pools associated with this cluster.
-    See container.NodePool for schema.
-    **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
-    cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
-    to say "these are the _only_ node pools associated with this cluster", use the
-    container.NodePool resource instead of this property.
-
-      * `autoscaling` (`dict`)
-        * `maxNodeCount` (`float`)
-        * `minNodeCount` (`float`)
-
-      * `initial_node_count` (`float`) - The number of nodes to create in this
-        cluster's default node pool. In regional or multi-zonal clusters, this is the
-        number of nodes per zone. Must be set if `node_pool` is not set. If you're using
-        `container.NodePool` objects with no default node pool, you'll need to
-        set this to a value of at least `1`, alongside setting
-        `remove_default_node_pool` to `true`.
-      * `instance_group_urls` (`list`) - List of instance group URLs which have been assigned
-        to the cluster.
-      * `management` (`dict`)
-        * `autoRepair` (`bool`)
-        * `autoUpgrade` (`bool`)
-
-      * `max_pods_per_node` (`float`)
-      * `name` (`str`) - The name of the cluster, unique within the project and
-        location.
-      * `name_prefix` (`str`)
-      * `node_config` (`dict`) - Parameters used in creating the default node pool.
-        Generally, this field should not be used at the same time as a
-        `container.NodePool` or a `node_pool` block; this configuration
-        manages the default node pool, which isn't recommended to be used.
-        Structure is documented below.
-        * `bootDiskKmsKey` (`str`) - The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
-        * `disk_size_gb` (`float`) - Size of the disk attached to each node, specified
-          in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
-        * `diskType` (`str`) - Type of the disk attached to each node
-          (e.g. 'pd-standard' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
-        * `guest_accelerators` (`list`) - List of the type and count of accelerator cards attached to the instance.
-          Structure documented below.
-          * `count` (`float`) - The number of the guest accelerator cards exposed to this instance.
-          * `type` (`str`) - The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
-
-        * `imageType` (`str`) - The image type to use for this node. Note that changing the image type
-          will delete and recreate all nodes in the node pool.
-        * `labels` (`dict`) - The Kubernetes labels (key/value pairs) to be applied to each node.
-        * `localSsdCount` (`float`) - The amount of local SSD disks that will be
-          attached to each cluster node. Defaults to 0.
-        * `machine_type` (`str`) - The name of a Google Compute Engine machine type.
-          Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
-          [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
-        * `metadata` (`dict`) - The metadata key/value pairs assigned to instances in
-          the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
-          `true` by the API; if `metadata` is set but that default value is not
-          included, the provider will attempt to unset the value. To avoid this, set the
-          value in your config.
-        * `min_cpu_platform` (`str`) - Minimum CPU platform to be used by this instance.
-          The instance may be scheduled on the specified or newer CPU platform. Applicable
-          values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
-          [official documentation](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-          for more information.
-        * `oauthScopes` (`list`) - The set of Google API scopes to be made available
-          on all of the node VMs under the "default" service account. These can be
-          either FQDNs, or scope aliases. The following scopes are necessary to ensure
-          the correct functioning of the cluster:
-        * `preemptible` (`bool`) - A boolean that represents whether or not the underlying node VMs
-          are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
-          for more information. Defaults to false.
-        * `sandboxConfig` (`dict`) - [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
-          Structure is documented below.
-          * `sandboxType` (`str`) - Which sandbox to use for pods in the node pool.
-            Accepted values are:
-
-        * `service_account` (`str`) - The service account to be used by the Node VMs.
-          If not specified, the "default" service account is used.
-          In order to use the configured `oauth_scopes` for logging and monitoring, the service account being used needs the
-          [roles/logging.logWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_logging_roles) and
-          [roles/monitoring.metricWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_monitoring_roles) roles.
-        * `shielded_instance_config` (`dict`) - Shielded Instance options. Structure is documented below.
-          * `enableIntegrityMonitoring` (`bool`) - Defines if the instance has integrity monitoring enabled.
-          * `enableSecureBoot` (`bool`) - Defines if the instance has Secure Boot enabled.
-
-        * `tags` (`list`) - The list of instance tags applied to all nodes. Tags are used to identify
-          valid sources or targets for network firewalls.
-        * `taints` (`list`) - A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
-          to apply to nodes. GKE's API can only set this field on cluster creation.
-          However, GKE will add taints to your nodes if you enable certain features such
-          as GPUs. If this field is set, any diffs on this field will cause the provider to
-          recreate the underlying resource. Taint values can be updated safely in
-          Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
-          this field to manage taints. If you do, `lifecycle.ignore_changes` is
-          recommended. Structure is documented below.
-          * `effect` (`str`) - Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
-          * `key` (`str`) - Key for taint.
-          * `value` (`str`) - Value for taint.
-
-        * `workloadMetadataConfig` (`dict`) - Metadata configuration to expose to workloads on the node pool.
-          Structure is documented below.
-          * `nodeMetadata` (`str`) - How to expose the node metadata to the workload running on the node.
-            Accepted values are:
-            * UNSPECIFIED: Not Set
-            * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
-            * EXPOSE: Expose all VM metadata to pods.
-            * GKE_METADATA_SERVER: Enables [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) on the node.
-
-      * `node_count` (`float`)
-      * `node_locations` (`list`) - The list of zones in which the cluster's nodes
-        are located. Nodes must be in the region of their regional cluster or in the
-        same region as their cluster's zone for zonal clusters. If this is specified for
-        a zonal cluster, omit the cluster's zone.
-      * `upgrade_settings` (`dict`)
-        * `maxSurge` (`float`)
-        * `maxUnavailable` (`float`)
-
-      * `version` (`str`)
-    """
-    node_version: pulumi.Output[str]
-    """
-    The Kubernetes version on the nodes. Must either be unset
-    or set to the same value as `min_master_version` on create. Defaults to the default
-    version set by GKE which is not necessarily the latest version. This only affects
-    nodes in the default node pool. While a fuzzy version can be specified, it's
-    recommended that you specify explicit versions as the provider will see spurious diffs
-    when fuzzy versions are used. See the `container.getEngineVersions` data source's
-    `version_prefix` field to approximate fuzzy versions.
-    To update nodes in other node pools, use the `version` attribute on the node pool.
-    """
-    operation: pulumi.Output[str]
-    pod_security_policy_config: pulumi.Output[dict]
-    """
-    Configuration for the
-    [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
-    Structure is documented below.
-
-      * `enabled` (`bool`) - Enable the PodSecurityPolicy controller for this cluster.
-        If enabled, pods must be valid under a PodSecurityPolicy to be created.
-    """
-    private_cluster_config: pulumi.Output[dict]
-    """
-    Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
-    clusters with private nodes. Structure is documented below.
-
-      * `enablePrivateEndpoint` (`bool`) - When `true`, the cluster's private
-        endpoint is used as the cluster endpoint and access through the public endpoint
-        is disabled. When `false`, either endpoint can be used. This field only applies
-        to private clusters, when `enable_private_nodes` is `true`.
-      * `enablePrivateNodes` (`bool`) - Enables the private cluster feature,
-        creating a private endpoint on the cluster. In a private cluster, nodes only
-        have RFC 1918 private addresses and communicate with the master's private
-        endpoint via private networking.
-      * `masterGlobalAccessConfig` (`dict`)
-        * `enabled` (`bool`) - Enable the PodSecurityPolicy controller for this cluster.
-          If enabled, pods must be valid under a PodSecurityPolicy to be created.
-
-      * `masterIpv4CidrBlock` (`str`) - The IP range in CIDR notation to use for
-        the hosted master network. This range will be used for assigning private IP
-        addresses to the cluster master(s) and the ILB VIP. This range must not overlap
-        with any other ranges in use within the cluster's network, and it must be a /28
-        subnet. See [Private Cluster Limitations](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#limitations)
-        for more details. This field only applies to private clusters, when
-        `enable_private_nodes` is `true`.
-      * `peeringName` (`str`) - The name of the peering between this cluster and the Google owned VPC.
-      * `privateEndpoint` (`str`) - The internal IP address of this cluster's master endpoint.
-      * `publicEndpoint` (`str`) - The external IP address of this cluster's master endpoint.
-    """
-    project: pulumi.Output[str]
-    """
-    The ID of the project in which the resource belongs. If it
-    is not provided, the provider project is used.
-    """
-    release_channel: pulumi.Output[dict]
-    """
-    Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
-    feature, which provide more control over automatic upgrades of your GKE clusters.
-    When updating this field, GKE imposes specific version requirements. See
-    [Migrating between release channels](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#migrating_between_release_channels)
-    for more details; the `container.getEngineVersions` datasource can provide
-    the default version for a channel. Note that removing the `release_channel`
-    field from your config will cause this provider to stop managing your cluster's
-    release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
-    channel. Structure is documented below.
-
-      * `channel` (`str`) - The selected release channel.
-        Accepted values are:
-        * UNSPECIFIED: Not set.
-        * RAPID: Weekly upgrade cadence; Early testers and developers who requires new features.
-        * REGULAR: Multiple per month upgrade cadence; Production users who need features not yet offered in the Stable channel.
-        * STABLE: Every few months upgrade cadence; Production users who need stability above all else, and for whom frequent upgrades are too risky.
-    """
-    remove_default_node_pool: pulumi.Output[bool]
-    """
-    If `true`, deletes the default node
-    pool upon cluster creation. If you're using `container.NodePool`
-    resources with no default node pool, this should be set to `true`, alongside
-    setting `initial_node_count` to at least `1`.
-    """
-    resource_labels: pulumi.Output[dict]
-    """
-    The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
-    """
-    resource_usage_export_config: pulumi.Output[dict]
-    """
-    Configuration for the
-    [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
-    Structure is documented below.
-
-      * `bigqueryDestination` (`dict`) - Parameters for using BigQuery as the destination of resource usage export.
-        * `dataset_id` (`str`)
-
-      * `enableNetworkEgressMetering` (`bool`) - Whether to enable network egress metering for this cluster. If enabled, a daemonset will be created
-        in the cluster to meter network egress traffic.
-      * `enableResourceConsumptionMetering` (`bool`) - Whether to enable resource
-        consumption metering on this cluster. When enabled, a table will be created in
-        the resource export BigQuery dataset to store resource consumption data. The
-        resulting table can be joined with the resource usage table or with BigQuery
-        billing export. Defaults to `true`.
-    """
-    services_ipv4_cidr: pulumi.Output[str]
-    """
-    The IP address range of the Kubernetes services in this
-    cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
-    notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
-    `/16` from the container CIDR.
-    """
-    subnetwork: pulumi.Output[str]
-    """
-    The name or self_link of the Google Compute Engine
-    subnetwork in which the cluster's instances are launched.
-    """
-    tpu_ipv4_cidr_block: pulumi.Output[str]
-    """
-    The IP address range of the Cloud TPUs in this cluster, in
-    [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
-    notation (e.g. `1.2.3.4/29`).
-    """
-    vertical_pod_autoscaling: pulumi.Output[dict]
-    """
-    Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
-    Structure is documented below.
-
-      * `enabled` (`bool`) - Enable the PodSecurityPolicy controller for this cluster.
-        If enabled, pods must be valid under a PodSecurityPolicy to be created.
-    """
-    workload_identity_config: pulumi.Output[dict]
-    """
-    Workload Identity allows Kubernetes service accounts to act as a user-managed
-    [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
-    Structure is documented below.
-
-      * `identityNamespace` (`str`) - Currently, the only supported identity namespace is the project's default.
-    """
-    def __init__(__self__, resource_name, opts=None, addons_config=None, authenticator_groups_config=None, cluster_autoscaling=None, cluster_ipv4_cidr=None, cluster_telemetry=None, database_encryption=None, default_max_pods_per_node=None, default_snat_status=None, description=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, initial_node_count=None, ip_allocation_policy=None, location=None, logging_service=None, maintenance_policy=None, master_auth=None, master_authorized_networks_config=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policy=None, networking_mode=None, node_config=None, node_locations=None, node_pools=None, node_version=None, pod_security_policy_config=None, private_cluster_config=None, project=None, release_channel=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_config=None, subnetwork=None, vertical_pod_autoscaling=None, workload_identity_config=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 addons_config: Optional[pulumi.Input[pulumi.InputType['ClusterAddonsConfigArgs']]] = None,
+                 authenticator_groups_config: Optional[pulumi.Input[pulumi.InputType['ClusterAuthenticatorGroupsConfigArgs']]] = None,
+                 cluster_autoscaling: Optional[pulumi.Input[pulumi.InputType['ClusterClusterAutoscalingArgs']]] = None,
+                 cluster_ipv4_cidr: Optional[pulumi.Input[str]] = None,
+                 cluster_telemetry: Optional[pulumi.Input[pulumi.InputType['ClusterClusterTelemetryArgs']]] = None,
+                 database_encryption: Optional[pulumi.Input[pulumi.InputType['ClusterDatabaseEncryptionArgs']]] = None,
+                 default_max_pods_per_node: Optional[pulumi.Input[float]] = None,
+                 default_snat_status: Optional[pulumi.Input[pulumi.InputType['ClusterDefaultSnatStatusArgs']]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 enable_binary_authorization: Optional[pulumi.Input[bool]] = None,
+                 enable_intranode_visibility: Optional[pulumi.Input[bool]] = None,
+                 enable_kubernetes_alpha: Optional[pulumi.Input[bool]] = None,
+                 enable_legacy_abac: Optional[pulumi.Input[bool]] = None,
+                 enable_shielded_nodes: Optional[pulumi.Input[bool]] = None,
+                 enable_tpu: Optional[pulumi.Input[bool]] = None,
+                 initial_node_count: Optional[pulumi.Input[float]] = None,
+                 ip_allocation_policy: Optional[pulumi.Input[pulumi.InputType['ClusterIpAllocationPolicyArgs']]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 logging_service: Optional[pulumi.Input[str]] = None,
+                 maintenance_policy: Optional[pulumi.Input[pulumi.InputType['ClusterMaintenancePolicyArgs']]] = None,
+                 master_auth: Optional[pulumi.Input[pulumi.InputType['ClusterMasterAuthArgs']]] = None,
+                 master_authorized_networks_config: Optional[pulumi.Input[pulumi.InputType['ClusterMasterAuthorizedNetworksConfigArgs']]] = None,
+                 min_master_version: Optional[pulumi.Input[str]] = None,
+                 monitoring_service: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 network: Optional[pulumi.Input[str]] = None,
+                 network_policy: Optional[pulumi.Input[pulumi.InputType['ClusterNetworkPolicyArgs']]] = None,
+                 networking_mode: Optional[pulumi.Input[str]] = None,
+                 node_config: Optional[pulumi.Input[pulumi.InputType['ClusterNodeConfigArgs']]] = None,
+                 node_locations: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 node_pools: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterNodePoolArgs']]]]] = None,
+                 node_version: Optional[pulumi.Input[str]] = None,
+                 pod_security_policy_config: Optional[pulumi.Input[pulumi.InputType['ClusterPodSecurityPolicyConfigArgs']]] = None,
+                 private_cluster_config: Optional[pulumi.Input[pulumi.InputType['ClusterPrivateClusterConfigArgs']]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 release_channel: Optional[pulumi.Input[pulumi.InputType['ClusterReleaseChannelArgs']]] = None,
+                 remove_default_node_pool: Optional[pulumi.Input[bool]] = None,
+                 resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 resource_usage_export_config: Optional[pulumi.Input[pulumi.InputType['ClusterResourceUsageExportConfigArgs']]] = None,
+                 subnetwork: Optional[pulumi.Input[str]] = None,
+                 vertical_pod_autoscaling: Optional[pulumi.Input[pulumi.InputType['ClusterVerticalPodAutoscalingArgs']]] = None,
+                 workload_identity_config: Optional[pulumi.Input[pulumi.InputType['ClusterWorkloadIdentityConfigArgs']]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a Google Kubernetes Engine (GKE) cluster. For more information see
         [the official documentation](https://cloud.google.com/container-engine/docs/clusters)
@@ -712,12 +75,12 @@ class Cluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] addons_config: The configuration for addons supported by GKE.
+        :param pulumi.Input[pulumi.InputType['ClusterAddonsConfigArgs']] addons_config: The configuration for addons supported by GKE.
                Structure is documented below.
-        :param pulumi.Input[dict] authenticator_groups_config: Configuration for the
+        :param pulumi.Input[pulumi.InputType['ClusterAuthenticatorGroupsConfigArgs']] authenticator_groups_config: Configuration for the
                [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
                Structure is documented below.
-        :param pulumi.Input[dict] cluster_autoscaling: Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
+        :param pulumi.Input[pulumi.InputType['ClusterClusterAutoscalingArgs']] cluster_autoscaling: Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
                automatically adjust the size of the cluster and create/delete node pools based
                on the current needs of the cluster's workload. See the
                [guide to using Node Auto-Provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)
@@ -726,15 +89,15 @@ class Cluster(pulumi.CustomResource):
                in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
                automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
                only work for routes-based clusters, where `ip_allocation_policy` is not defined.
-        :param pulumi.Input[dict] cluster_telemetry: ) Configuration for
+        :param pulumi.Input[pulumi.InputType['ClusterClusterTelemetryArgs']] cluster_telemetry: ) Configuration for
                [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
                Structure is documented below.
-        :param pulumi.Input[dict] database_encryption: Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ClusterDatabaseEncryptionArgs']] database_encryption: Structure is documented below.
         :param pulumi.Input[float] default_max_pods_per_node: The default maximum number of pods
                per node in this cluster. This doesn't work on "routes-based" clusters, clusters
                that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
                for more information.
-        :param pulumi.Input[dict] default_snat_status: )
+        :param pulumi.Input[pulumi.InputType['ClusterDefaultSnatStatusArgs']] default_snat_status: )
                [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig).
         :param pulumi.Input[str] description: Description of the cluster.
         :param pulumi.Input[bool] enable_binary_authorization: Enable Binary Authorization for this cluster.
@@ -756,7 +119,7 @@ class Cluster(pulumi.CustomResource):
                `container.NodePool` objects with no default node pool, you'll need to
                set this to a value of at least `1`, alongside setting
                `remove_default_node_pool` to `true`.
-        :param pulumi.Input[dict] ip_allocation_policy: Configuration of cluster IP allocation for
+        :param pulumi.Input[pulumi.InputType['ClusterIpAllocationPolicyArgs']] ip_allocation_policy: Configuration of cluster IP allocation for
                VPC-native clusters. Adding this block enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
                making the cluster VPC-native instead of routes-based. Structure is documented
                below.
@@ -769,15 +132,15 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] logging_service: The logging service that the cluster should
                write logs to. Available options include `logging.googleapis.com`(Legacy Stackdriver),
                `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
-        :param pulumi.Input[dict] maintenance_policy: The maintenance policy to use for the cluster. Structure is
+        :param pulumi.Input[pulumi.InputType['ClusterMaintenancePolicyArgs']] maintenance_policy: The maintenance policy to use for the cluster. Structure is
                documented below.
-        :param pulumi.Input[dict] master_auth: The authentication information for accessing the
+        :param pulumi.Input[pulumi.InputType['ClusterMasterAuthArgs']] master_auth: The authentication information for accessing the
                Kubernetes master. Some values in this block are only returned by the API if
                your service account has permission to get credentials for your GKE cluster. If
                you see an unexpected diff removing a username/password or unsetting your client
                cert, ensure you have the `container.clusters.getCredentials` permission.
                Structure is documented below.
-        :param pulumi.Input[dict] master_authorized_networks_config: The desired configuration options
+        :param pulumi.Input[pulumi.InputType['ClusterMasterAuthorizedNetworksConfigArgs']] master_authorized_networks_config: The desired configuration options
                for master authorized networks. Omit the nested `cidr_blocks` attribute to disallow
                external access (except the cluster node IPs, which GKE automatically whitelists).
         :param pulumi.Input[str] min_master_version: The minimum version of the master. GKE
@@ -801,22 +164,22 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] network: The name or self_link of the Google Compute Engine
                network to which the cluster is connected. For Shared VPC, set this to the self link of the
                shared network.
-        :param pulumi.Input[dict] network_policy: Configuration options for the
+        :param pulumi.Input[pulumi.InputType['ClusterNetworkPolicyArgs']] network_policy: Configuration options for the
                [NetworkPolicy](https://kubernetes.io/docs/concepts/services-networking/networkpolicies/)
                feature. Structure is documented below.
         :param pulumi.Input[str] networking_mode: Determines whether alias IPs or routes will be used for pod IPs in the cluster.
                Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
                and requires the `ip_allocation_policy` block to be defined. By default when this field is unspecified, GKE will create a `ROUTES`-based cluster.
-        :param pulumi.Input[dict] node_config: Parameters used in creating the default node pool.
+        :param pulumi.Input[pulumi.InputType['ClusterNodeConfigArgs']] node_config: Parameters used in creating the default node pool.
                Generally, this field should not be used at the same time as a
                `container.NodePool` or a `node_pool` block; this configuration
                manages the default node pool, which isn't recommended to be used.
                Structure is documented below.
-        :param pulumi.Input[list] node_locations: The list of zones in which the cluster's nodes
+        :param pulumi.Input[List[pulumi.Input[str]]] node_locations: The list of zones in which the cluster's nodes
                are located. Nodes must be in the region of their regional cluster or in the
                same region as their cluster's zone for zonal clusters. If this is specified for
                a zonal cluster, omit the cluster's zone.
-        :param pulumi.Input[list] node_pools: List of node pools associated with this cluster.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterNodePoolArgs']]]] node_pools: List of node pools associated with this cluster.
                See container.NodePool for schema.
                **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
                cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
@@ -830,14 +193,14 @@ class Cluster(pulumi.CustomResource):
                when fuzzy versions are used. See the `container.getEngineVersions` data source's
                `version_prefix` field to approximate fuzzy versions.
                To update nodes in other node pools, use the `version` attribute on the node pool.
-        :param pulumi.Input[dict] pod_security_policy_config: Configuration for the
+        :param pulumi.Input[pulumi.InputType['ClusterPodSecurityPolicyConfigArgs']] pod_security_policy_config: Configuration for the
                [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
                Structure is documented below.
-        :param pulumi.Input[dict] private_cluster_config: Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
+        :param pulumi.Input[pulumi.InputType['ClusterPrivateClusterConfigArgs']] private_cluster_config: Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
                clusters with private nodes. Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[dict] release_channel: Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
+        :param pulumi.Input[pulumi.InputType['ClusterReleaseChannelArgs']] release_channel: Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
                feature, which provide more control over automatic upgrades of your GKE clusters.
                When updating this field, GKE imposes specific version requirements. See
                [Migrating between release channels](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#migrating_between_release_channels)
@@ -850,435 +213,17 @@ class Cluster(pulumi.CustomResource):
                pool upon cluster creation. If you're using `container.NodePool`
                resources with no default node pool, this should be set to `true`, alongside
                setting `initial_node_count` to at least `1`.
-        :param pulumi.Input[dict] resource_labels: The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
-        :param pulumi.Input[dict] resource_usage_export_config: Configuration for the
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_labels: The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+        :param pulumi.Input[pulumi.InputType['ClusterResourceUsageExportConfigArgs']] resource_usage_export_config: Configuration for the
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
         :param pulumi.Input[str] subnetwork: The name or self_link of the Google Compute Engine
                subnetwork in which the cluster's instances are launched.
-        :param pulumi.Input[dict] vertical_pod_autoscaling: Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
+        :param pulumi.Input[pulumi.InputType['ClusterVerticalPodAutoscalingArgs']] vertical_pod_autoscaling: Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
                Structure is documented below.
-        :param pulumi.Input[dict] workload_identity_config: Workload Identity allows Kubernetes service accounts to act as a user-managed
+        :param pulumi.Input[pulumi.InputType['ClusterWorkloadIdentityConfigArgs']] workload_identity_config: Workload Identity allows Kubernetes service accounts to act as a user-managed
                [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
                Structure is documented below.
-
-        The **addons_config** object supports the following:
-
-          * `cloudrunConfig` (`pulumi.Input[dict]`) - .
-            The status of the CloudRun addon. It is disabled by default.
-            Set `disabled = false` to enable.
-            * `disabled` (`pulumi.Input[bool]`) - The status of the Istio addon, which makes it easy to set up Istio for services in a
-              cluster. It is disabled by default. Set `disabled = false` to enable.
-
-          * `configConnectorConfig` (`pulumi.Input[dict]`) - .
-            The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
-            * `enabled` (`pulumi.Input[bool]`) - Enable the PodSecurityPolicy controller for this cluster.
-              If enabled, pods must be valid under a PodSecurityPolicy to be created.
-
-          * `dnsCacheConfig` (`pulumi.Input[dict]`) - .
-            The status of the NodeLocal DNSCache addon. It is disabled by default.
-            Set `enabled = true` to enable.
-            * `enabled` (`pulumi.Input[bool]`) - Enable the PodSecurityPolicy controller for this cluster.
-              If enabled, pods must be valid under a PodSecurityPolicy to be created.
-
-          * `gcePersistentDiskCsiDriverConfig` (`pulumi.Input[dict]`) - .
-            Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enable.
-            * `enabled` (`pulumi.Input[bool]`) - Enable the PodSecurityPolicy controller for this cluster.
-              If enabled, pods must be valid under a PodSecurityPolicy to be created.
-
-          * `horizontalPodAutoscaling` (`pulumi.Input[dict]`) - The status of the Horizontal Pod Autoscaling
-            addon, which increases or decreases the number of replica pods a replication controller
-            has based on the resource usage of the existing pods.
-            It ensures that a Heapster pod is running in the cluster, which is also used by the Cloud Monitoring service.
-            It is enabled by default;
-            set `disabled = true` to disable.
-            * `disabled` (`pulumi.Input[bool]`) - The status of the Istio addon, which makes it easy to set up Istio for services in a
-              cluster. It is disabled by default. Set `disabled = false` to enable.
-
-          * `httpLoadBalancing` (`pulumi.Input[dict]`) - The status of the HTTP (L7) load balancing
-            controller addon, which makes it easy to set up HTTP load balancers for services in a
-            cluster. It is enabled by default; set `disabled = true` to disable.
-            * `disabled` (`pulumi.Input[bool]`) - The status of the Istio addon, which makes it easy to set up Istio for services in a
-              cluster. It is disabled by default. Set `disabled = false` to enable.
-
-          * `istioConfig` (`pulumi.Input[dict]`) - .
-            Structure is documented below.
-            * `auth` (`pulumi.Input[str]`) - The authentication type between services in Istio. Available options include `AUTH_MUTUAL_TLS`.
-            * `disabled` (`pulumi.Input[bool]`) - The status of the Istio addon, which makes it easy to set up Istio for services in a
-              cluster. It is disabled by default. Set `disabled = false` to enable.
-
-          * `kalmConfig` (`pulumi.Input[dict]`) - .
-            Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set `enabled = true` to enable.
-            * `enabled` (`pulumi.Input[bool]`) - Enable the PodSecurityPolicy controller for this cluster.
-              If enabled, pods must be valid under a PodSecurityPolicy to be created.
-
-          * `networkPolicyConfig` (`pulumi.Input[dict]`) - Whether we should enable the network policy addon
-            for the master.  This must be enabled in order to enable network policy for the nodes.
-            To enable this, you must also define a `network_policy` block,
-            otherwise nothing will happen.
-            It can only be disabled if the nodes already do not have network policies enabled.
-            Defaults to disabled; set `disabled = false` to enable.
-            * `disabled` (`pulumi.Input[bool]`) - The status of the Istio addon, which makes it easy to set up Istio for services in a
-              cluster. It is disabled by default. Set `disabled = false` to enable.
-
-        The **authenticator_groups_config** object supports the following:
-
-          * `securityGroup` (`pulumi.Input[str]`) - The name of the RBAC security group for use with Google security groups in Kubernetes RBAC. Group name must be in format `gke-security-groups@yourdomain.com`.
-
-        The **cluster_autoscaling** object supports the following:
-
-          * `autoProvisioningDefaults` (`pulumi.Input[dict]`) - Contains defaults for a node pool created by NAP.
-            Structure is documented below.
-            * `min_cpu_platform` (`pulumi.Input[str]`) - Minimum CPU platform to be used by this instance.
-              The instance may be scheduled on the specified or newer CPU platform. Applicable
-              values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
-              [official documentation](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-              for more information.
-            * `oauthScopes` (`pulumi.Input[list]`) - The set of Google API scopes to be made available
-              on all of the node VMs under the "default" service account. These can be
-              either FQDNs, or scope aliases. The following scopes are necessary to ensure
-              the correct functioning of the cluster:
-            * `service_account` (`pulumi.Input[str]`) - The service account to be used by the Node VMs.
-              If not specified, the "default" service account is used.
-              In order to use the configured `oauth_scopes` for logging and monitoring, the service account being used needs the
-              [roles/logging.logWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_logging_roles) and
-              [roles/monitoring.metricWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_monitoring_roles) roles.
-
-          * `autoscalingProfile` (`pulumi.Input[str]`) - ) Configuration
-            options for the [Autoscaling profile](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler#autoscaling_profiles)
-            feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability
-            when deciding to remove nodes from a cluster. Can be `BALANCED` or `OPTIMIZE_UTILIZATION`. Defaults to `BALANCED`.
-          * `enabled` (`pulumi.Input[bool]`) - Enable the PodSecurityPolicy controller for this cluster.
-            If enabled, pods must be valid under a PodSecurityPolicy to be created.
-          * `resourceLimits` (`pulumi.Input[list]`) - Global constraints for machine resources in the
-            cluster. Configuring the `cpu` and `memory` types is required if node
-            auto-provisioning is enabled. These limits will apply to node pool autoscaling
-            in addition to node auto-provisioning. Structure is documented below.
-            * `maximum` (`pulumi.Input[float]`) - Maximum amount of the resource in the cluster.
-            * `minimum` (`pulumi.Input[float]`) - Minimum amount of the resource in the cluster.
-            * `resourceType` (`pulumi.Input[str]`) - The type of the resource. For example, `cpu` and
-              `memory`.  See the [guide to using Node Auto-Provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)
-              for a list of types.
-
-        The **cluster_telemetry** object supports the following:
-
-          * `type` (`pulumi.Input[str]`) - The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
-
-        The **database_encryption** object supports the following:
-
-          * `keyName` (`pulumi.Input[str]`) - the key to use to encrypt/decrypt secrets.  See the [DatabaseEncryption definition](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#Cluster.DatabaseEncryption) for more information.
-          * `state` (`pulumi.Input[str]`) - `ENCRYPTED` or `DECRYPTED`
-
-        The **default_snat_status** object supports the following:
-
-          * `disabled` (`pulumi.Input[bool]`) - The status of the Istio addon, which makes it easy to set up Istio for services in a
-            cluster. It is disabled by default. Set `disabled = false` to enable.
-
-        The **ip_allocation_policy** object supports the following:
-
-          * `clusterIpv4CidrBlock` (`pulumi.Input[str]`) - The IP address range for the cluster pod IPs.
-            Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
-            to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14)
-            from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to
-            pick a specific range to use.
-          * `clusterSecondaryRangeName` (`pulumi.Input[str]`) - The name of the existing secondary
-            range in the cluster's subnetwork to use for pod IP addresses. Alternatively,
-            `cluster_ipv4_cidr_block` can be used to automatically create a GKE-managed one.
-          * `servicesIpv4CidrBlock` (`pulumi.Input[str]`) - The IP address range of the services IPs in this cluster.
-            Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
-            to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14)
-            from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to
-            pick a specific range to use.
-          * `servicesSecondaryRangeName` (`pulumi.Input[str]`) - The name of the existing
-            secondary range in the cluster's subnetwork to use for service `ClusterIP`s.
-            Alternatively, `services_ipv4_cidr_block` can be used to automatically create a
-            GKE-managed one.
-
-        The **maintenance_policy** object supports the following:
-
-          * `dailyMaintenanceWindow` (`pulumi.Input[dict]`) - Time window specified for daily maintenance operations.
-            Specify `start_time` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format "HH:MM”,
-            where HH : \[00-23\] and MM : \[00-59\] GMT. For example:
-            * `duration` (`pulumi.Input[str]`)
-            * `startTime` (`pulumi.Input[str]`)
-
-          * `recurringWindow` (`pulumi.Input[dict]`) - Time window for
-            recurring maintenance operations.
-            * `endTime` (`pulumi.Input[str]`)
-            * `recurrence` (`pulumi.Input[str]`)
-            * `startTime` (`pulumi.Input[str]`)
-
-        The **master_auth** object supports the following:
-
-          * `clientCertificate` (`pulumi.Input[str]`)
-          * `clientCertificateConfig` (`pulumi.Input[dict]`) - Whether client certificate authorization is enabled for this cluster.  For example:
-            * `issueClientCertificate` (`pulumi.Input[bool]`)
-
-          * `clientKey` (`pulumi.Input[str]`)
-          * `clusterCaCertificate` (`pulumi.Input[str]`)
-          * `password` (`pulumi.Input[str]`) - The password to use for HTTP basic authentication when accessing
-            the Kubernetes master endpoint.
-          * `username` (`pulumi.Input[str]`) - The username to use for HTTP basic authentication when accessing
-            the Kubernetes master endpoint. If not present basic auth will be disabled.
-
-        The **master_authorized_networks_config** object supports the following:
-
-          * `cidrBlocks` (`pulumi.Input[list]`) - External networks that can access the
-            Kubernetes cluster master through HTTPS.
-            * `cidr_block` (`pulumi.Input[str]`) - External network that can access Kubernetes master through HTTPS.
-              Must be specified in CIDR notation.
-            * `display_name` (`pulumi.Input[str]`) - Field for users to identify CIDR blocks.
-
-        The **network_policy** object supports the following:
-
-          * `enabled` (`pulumi.Input[bool]`) - Enable the PodSecurityPolicy controller for this cluster.
-            If enabled, pods must be valid under a PodSecurityPolicy to be created.
-          * `provider` (`pulumi.Input[str]`) - The selected network policy provider. Defaults to PROVIDER_UNSPECIFIED.
-
-        The **node_config** object supports the following:
-
-          * `bootDiskKmsKey` (`pulumi.Input[str]`) - The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
-          * `disk_size_gb` (`pulumi.Input[float]`) - Size of the disk attached to each node, specified
-            in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
-          * `diskType` (`pulumi.Input[str]`) - Type of the disk attached to each node
-            (e.g. 'pd-standard' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
-          * `guest_accelerators` (`pulumi.Input[list]`) - List of the type and count of accelerator cards attached to the instance.
-            Structure documented below.
-            * `count` (`pulumi.Input[float]`) - The number of the guest accelerator cards exposed to this instance.
-            * `type` (`pulumi.Input[str]`) - The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
-
-          * `imageType` (`pulumi.Input[str]`) - The image type to use for this node. Note that changing the image type
-            will delete and recreate all nodes in the node pool.
-          * `labels` (`pulumi.Input[dict]`) - The Kubernetes labels (key/value pairs) to be applied to each node.
-          * `localSsdCount` (`pulumi.Input[float]`) - The amount of local SSD disks that will be
-            attached to each cluster node. Defaults to 0.
-          * `machine_type` (`pulumi.Input[str]`) - The name of a Google Compute Engine machine type.
-            Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
-            [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
-          * `metadata` (`pulumi.Input[dict]`) - The metadata key/value pairs assigned to instances in
-            the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
-            `true` by the API; if `metadata` is set but that default value is not
-            included, the provider will attempt to unset the value. To avoid this, set the
-            value in your config.
-          * `min_cpu_platform` (`pulumi.Input[str]`) - Minimum CPU platform to be used by this instance.
-            The instance may be scheduled on the specified or newer CPU platform. Applicable
-            values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
-            [official documentation](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-            for more information.
-          * `oauthScopes` (`pulumi.Input[list]`) - The set of Google API scopes to be made available
-            on all of the node VMs under the "default" service account. These can be
-            either FQDNs, or scope aliases. The following scopes are necessary to ensure
-            the correct functioning of the cluster:
-          * `preemptible` (`pulumi.Input[bool]`) - A boolean that represents whether or not the underlying node VMs
-            are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
-            for more information. Defaults to false.
-          * `sandboxConfig` (`pulumi.Input[dict]`) - [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
-            Structure is documented below.
-            * `sandboxType` (`pulumi.Input[str]`) - Which sandbox to use for pods in the node pool.
-              Accepted values are:
-
-          * `service_account` (`pulumi.Input[str]`) - The service account to be used by the Node VMs.
-            If not specified, the "default" service account is used.
-            In order to use the configured `oauth_scopes` for logging and monitoring, the service account being used needs the
-            [roles/logging.logWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_logging_roles) and
-            [roles/monitoring.metricWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_monitoring_roles) roles.
-          * `shielded_instance_config` (`pulumi.Input[dict]`) - Shielded Instance options. Structure is documented below.
-            * `enableIntegrityMonitoring` (`pulumi.Input[bool]`) - Defines if the instance has integrity monitoring enabled.
-            * `enableSecureBoot` (`pulumi.Input[bool]`) - Defines if the instance has Secure Boot enabled.
-
-          * `tags` (`pulumi.Input[list]`) - The list of instance tags applied to all nodes. Tags are used to identify
-            valid sources or targets for network firewalls.
-          * `taints` (`pulumi.Input[list]`) - A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
-            to apply to nodes. GKE's API can only set this field on cluster creation.
-            However, GKE will add taints to your nodes if you enable certain features such
-            as GPUs. If this field is set, any diffs on this field will cause the provider to
-            recreate the underlying resource. Taint values can be updated safely in
-            Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
-            this field to manage taints. If you do, `lifecycle.ignore_changes` is
-            recommended. Structure is documented below.
-            * `effect` (`pulumi.Input[str]`) - Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
-            * `key` (`pulumi.Input[str]`) - Key for taint.
-            * `value` (`pulumi.Input[str]`) - Value for taint.
-
-          * `workloadMetadataConfig` (`pulumi.Input[dict]`) - Metadata configuration to expose to workloads on the node pool.
-            Structure is documented below.
-            * `nodeMetadata` (`pulumi.Input[str]`) - How to expose the node metadata to the workload running on the node.
-              Accepted values are:
-              * UNSPECIFIED: Not Set
-              * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
-              * EXPOSE: Expose all VM metadata to pods.
-              * GKE_METADATA_SERVER: Enables [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) on the node.
-
-        The **node_pools** object supports the following:
-
-          * `autoscaling` (`pulumi.Input[dict]`)
-            * `maxNodeCount` (`pulumi.Input[float]`)
-            * `minNodeCount` (`pulumi.Input[float]`)
-
-          * `initial_node_count` (`pulumi.Input[float]`) - The number of nodes to create in this
-            cluster's default node pool. In regional or multi-zonal clusters, this is the
-            number of nodes per zone. Must be set if `node_pool` is not set. If you're using
-            `container.NodePool` objects with no default node pool, you'll need to
-            set this to a value of at least `1`, alongside setting
-            `remove_default_node_pool` to `true`.
-          * `instance_group_urls` (`pulumi.Input[list]`) - List of instance group URLs which have been assigned
-            to the cluster.
-          * `management` (`pulumi.Input[dict]`)
-            * `autoRepair` (`pulumi.Input[bool]`)
-            * `autoUpgrade` (`pulumi.Input[bool]`)
-
-          * `max_pods_per_node` (`pulumi.Input[float]`)
-          * `name` (`pulumi.Input[str]`) - The name of the cluster, unique within the project and
-            location.
-          * `name_prefix` (`pulumi.Input[str]`)
-          * `node_config` (`pulumi.Input[dict]`) - Parameters used in creating the default node pool.
-            Generally, this field should not be used at the same time as a
-            `container.NodePool` or a `node_pool` block; this configuration
-            manages the default node pool, which isn't recommended to be used.
-            Structure is documented below.
-            * `bootDiskKmsKey` (`pulumi.Input[str]`) - The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
-            * `disk_size_gb` (`pulumi.Input[float]`) - Size of the disk attached to each node, specified
-              in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
-            * `diskType` (`pulumi.Input[str]`) - Type of the disk attached to each node
-              (e.g. 'pd-standard' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
-            * `guest_accelerators` (`pulumi.Input[list]`) - List of the type and count of accelerator cards attached to the instance.
-              Structure documented below.
-              * `count` (`pulumi.Input[float]`) - The number of the guest accelerator cards exposed to this instance.
-              * `type` (`pulumi.Input[str]`) - The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
-
-            * `imageType` (`pulumi.Input[str]`) - The image type to use for this node. Note that changing the image type
-              will delete and recreate all nodes in the node pool.
-            * `labels` (`pulumi.Input[dict]`) - The Kubernetes labels (key/value pairs) to be applied to each node.
-            * `localSsdCount` (`pulumi.Input[float]`) - The amount of local SSD disks that will be
-              attached to each cluster node. Defaults to 0.
-            * `machine_type` (`pulumi.Input[str]`) - The name of a Google Compute Engine machine type.
-              Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
-              [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
-            * `metadata` (`pulumi.Input[dict]`) - The metadata key/value pairs assigned to instances in
-              the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
-              `true` by the API; if `metadata` is set but that default value is not
-              included, the provider will attempt to unset the value. To avoid this, set the
-              value in your config.
-            * `min_cpu_platform` (`pulumi.Input[str]`) - Minimum CPU platform to be used by this instance.
-              The instance may be scheduled on the specified or newer CPU platform. Applicable
-              values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
-              [official documentation](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-              for more information.
-            * `oauthScopes` (`pulumi.Input[list]`) - The set of Google API scopes to be made available
-              on all of the node VMs under the "default" service account. These can be
-              either FQDNs, or scope aliases. The following scopes are necessary to ensure
-              the correct functioning of the cluster:
-            * `preemptible` (`pulumi.Input[bool]`) - A boolean that represents whether or not the underlying node VMs
-              are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
-              for more information. Defaults to false.
-            * `sandboxConfig` (`pulumi.Input[dict]`) - [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
-              Structure is documented below.
-              * `sandboxType` (`pulumi.Input[str]`) - Which sandbox to use for pods in the node pool.
-                Accepted values are:
-
-            * `service_account` (`pulumi.Input[str]`) - The service account to be used by the Node VMs.
-              If not specified, the "default" service account is used.
-              In order to use the configured `oauth_scopes` for logging and monitoring, the service account being used needs the
-              [roles/logging.logWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_logging_roles) and
-              [roles/monitoring.metricWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_monitoring_roles) roles.
-            * `shielded_instance_config` (`pulumi.Input[dict]`) - Shielded Instance options. Structure is documented below.
-              * `enableIntegrityMonitoring` (`pulumi.Input[bool]`) - Defines if the instance has integrity monitoring enabled.
-              * `enableSecureBoot` (`pulumi.Input[bool]`) - Defines if the instance has Secure Boot enabled.
-
-            * `tags` (`pulumi.Input[list]`) - The list of instance tags applied to all nodes. Tags are used to identify
-              valid sources or targets for network firewalls.
-            * `taints` (`pulumi.Input[list]`) - A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
-              to apply to nodes. GKE's API can only set this field on cluster creation.
-              However, GKE will add taints to your nodes if you enable certain features such
-              as GPUs. If this field is set, any diffs on this field will cause the provider to
-              recreate the underlying resource. Taint values can be updated safely in
-              Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
-              this field to manage taints. If you do, `lifecycle.ignore_changes` is
-              recommended. Structure is documented below.
-              * `effect` (`pulumi.Input[str]`) - Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
-              * `key` (`pulumi.Input[str]`) - Key for taint.
-              * `value` (`pulumi.Input[str]`) - Value for taint.
-
-            * `workloadMetadataConfig` (`pulumi.Input[dict]`) - Metadata configuration to expose to workloads on the node pool.
-              Structure is documented below.
-              * `nodeMetadata` (`pulumi.Input[str]`) - How to expose the node metadata to the workload running on the node.
-                Accepted values are:
-                * UNSPECIFIED: Not Set
-                * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
-                * EXPOSE: Expose all VM metadata to pods.
-                * GKE_METADATA_SERVER: Enables [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) on the node.
-
-          * `node_count` (`pulumi.Input[float]`)
-          * `node_locations` (`pulumi.Input[list]`) - The list of zones in which the cluster's nodes
-            are located. Nodes must be in the region of their regional cluster or in the
-            same region as their cluster's zone for zonal clusters. If this is specified for
-            a zonal cluster, omit the cluster's zone.
-          * `upgrade_settings` (`pulumi.Input[dict]`)
-            * `maxSurge` (`pulumi.Input[float]`)
-            * `maxUnavailable` (`pulumi.Input[float]`)
-
-          * `version` (`pulumi.Input[str]`)
-
-        The **pod_security_policy_config** object supports the following:
-
-          * `enabled` (`pulumi.Input[bool]`) - Enable the PodSecurityPolicy controller for this cluster.
-            If enabled, pods must be valid under a PodSecurityPolicy to be created.
-
-        The **private_cluster_config** object supports the following:
-
-          * `enablePrivateEndpoint` (`pulumi.Input[bool]`) - When `true`, the cluster's private
-            endpoint is used as the cluster endpoint and access through the public endpoint
-            is disabled. When `false`, either endpoint can be used. This field only applies
-            to private clusters, when `enable_private_nodes` is `true`.
-          * `enablePrivateNodes` (`pulumi.Input[bool]`) - Enables the private cluster feature,
-            creating a private endpoint on the cluster. In a private cluster, nodes only
-            have RFC 1918 private addresses and communicate with the master's private
-            endpoint via private networking.
-          * `masterGlobalAccessConfig` (`pulumi.Input[dict]`)
-            * `enabled` (`pulumi.Input[bool]`) - Enable the PodSecurityPolicy controller for this cluster.
-              If enabled, pods must be valid under a PodSecurityPolicy to be created.
-
-          * `masterIpv4CidrBlock` (`pulumi.Input[str]`) - The IP range in CIDR notation to use for
-            the hosted master network. This range will be used for assigning private IP
-            addresses to the cluster master(s) and the ILB VIP. This range must not overlap
-            with any other ranges in use within the cluster's network, and it must be a /28
-            subnet. See [Private Cluster Limitations](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#limitations)
-            for more details. This field only applies to private clusters, when
-            `enable_private_nodes` is `true`.
-          * `peeringName` (`pulumi.Input[str]`) - The name of the peering between this cluster and the Google owned VPC.
-          * `privateEndpoint` (`pulumi.Input[str]`) - The internal IP address of this cluster's master endpoint.
-          * `publicEndpoint` (`pulumi.Input[str]`) - The external IP address of this cluster's master endpoint.
-
-        The **release_channel** object supports the following:
-
-          * `channel` (`pulumi.Input[str]`) - The selected release channel.
-            Accepted values are:
-            * UNSPECIFIED: Not set.
-            * RAPID: Weekly upgrade cadence; Early testers and developers who requires new features.
-            * REGULAR: Multiple per month upgrade cadence; Production users who need features not yet offered in the Stable channel.
-            * STABLE: Every few months upgrade cadence; Production users who need stability above all else, and for whom frequent upgrades are too risky.
-
-        The **resource_usage_export_config** object supports the following:
-
-          * `bigqueryDestination` (`pulumi.Input[dict]`) - Parameters for using BigQuery as the destination of resource usage export.
-            * `dataset_id` (`pulumi.Input[str]`)
-
-          * `enableNetworkEgressMetering` (`pulumi.Input[bool]`) - Whether to enable network egress metering for this cluster. If enabled, a daemonset will be created
-            in the cluster to meter network egress traffic.
-          * `enableResourceConsumptionMetering` (`pulumi.Input[bool]`) - Whether to enable resource
-            consumption metering on this cluster. When enabled, a table will be created in
-            the resource export BigQuery dataset to store resource consumption data. The
-            resulting table can be joined with the resource usage table or with BigQuery
-            billing export. Defaults to `true`.
-
-        The **vertical_pod_autoscaling** object supports the following:
-
-          * `enabled` (`pulumi.Input[bool]`) - Enable the PodSecurityPolicy controller for this cluster.
-            If enabled, pods must be valid under a PodSecurityPolicy to be created.
-
-        The **workload_identity_config** object supports the following:
-
-          * `identityNamespace` (`pulumi.Input[str]`) - Currently, the only supported identity namespace is the project's default.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -1353,20 +298,71 @@ class Cluster(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, addons_config=None, authenticator_groups_config=None, cluster_autoscaling=None, cluster_ipv4_cidr=None, cluster_telemetry=None, database_encryption=None, default_max_pods_per_node=None, default_snat_status=None, description=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policy=None, label_fingerprint=None, location=None, logging_service=None, maintenance_policy=None, master_auth=None, master_authorized_networks_config=None, master_version=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policy=None, networking_mode=None, node_config=None, node_locations=None, node_pools=None, node_version=None, operation=None, pod_security_policy_config=None, private_cluster_config=None, project=None, release_channel=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_config=None, services_ipv4_cidr=None, subnetwork=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscaling=None, workload_identity_config=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            addons_config: Optional[pulumi.Input[pulumi.InputType['ClusterAddonsConfigArgs']]] = None,
+            authenticator_groups_config: Optional[pulumi.Input[pulumi.InputType['ClusterAuthenticatorGroupsConfigArgs']]] = None,
+            cluster_autoscaling: Optional[pulumi.Input[pulumi.InputType['ClusterClusterAutoscalingArgs']]] = None,
+            cluster_ipv4_cidr: Optional[pulumi.Input[str]] = None,
+            cluster_telemetry: Optional[pulumi.Input[pulumi.InputType['ClusterClusterTelemetryArgs']]] = None,
+            database_encryption: Optional[pulumi.Input[pulumi.InputType['ClusterDatabaseEncryptionArgs']]] = None,
+            default_max_pods_per_node: Optional[pulumi.Input[float]] = None,
+            default_snat_status: Optional[pulumi.Input[pulumi.InputType['ClusterDefaultSnatStatusArgs']]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            enable_binary_authorization: Optional[pulumi.Input[bool]] = None,
+            enable_intranode_visibility: Optional[pulumi.Input[bool]] = None,
+            enable_kubernetes_alpha: Optional[pulumi.Input[bool]] = None,
+            enable_legacy_abac: Optional[pulumi.Input[bool]] = None,
+            enable_shielded_nodes: Optional[pulumi.Input[bool]] = None,
+            enable_tpu: Optional[pulumi.Input[bool]] = None,
+            endpoint: Optional[pulumi.Input[str]] = None,
+            initial_node_count: Optional[pulumi.Input[float]] = None,
+            instance_group_urls: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            ip_allocation_policy: Optional[pulumi.Input[pulumi.InputType['ClusterIpAllocationPolicyArgs']]] = None,
+            label_fingerprint: Optional[pulumi.Input[str]] = None,
+            location: Optional[pulumi.Input[str]] = None,
+            logging_service: Optional[pulumi.Input[str]] = None,
+            maintenance_policy: Optional[pulumi.Input[pulumi.InputType['ClusterMaintenancePolicyArgs']]] = None,
+            master_auth: Optional[pulumi.Input[pulumi.InputType['ClusterMasterAuthArgs']]] = None,
+            master_authorized_networks_config: Optional[pulumi.Input[pulumi.InputType['ClusterMasterAuthorizedNetworksConfigArgs']]] = None,
+            master_version: Optional[pulumi.Input[str]] = None,
+            min_master_version: Optional[pulumi.Input[str]] = None,
+            monitoring_service: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            network: Optional[pulumi.Input[str]] = None,
+            network_policy: Optional[pulumi.Input[pulumi.InputType['ClusterNetworkPolicyArgs']]] = None,
+            networking_mode: Optional[pulumi.Input[str]] = None,
+            node_config: Optional[pulumi.Input[pulumi.InputType['ClusterNodeConfigArgs']]] = None,
+            node_locations: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            node_pools: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterNodePoolArgs']]]]] = None,
+            node_version: Optional[pulumi.Input[str]] = None,
+            operation: Optional[pulumi.Input[str]] = None,
+            pod_security_policy_config: Optional[pulumi.Input[pulumi.InputType['ClusterPodSecurityPolicyConfigArgs']]] = None,
+            private_cluster_config: Optional[pulumi.Input[pulumi.InputType['ClusterPrivateClusterConfigArgs']]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            release_channel: Optional[pulumi.Input[pulumi.InputType['ClusterReleaseChannelArgs']]] = None,
+            remove_default_node_pool: Optional[pulumi.Input[bool]] = None,
+            resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            resource_usage_export_config: Optional[pulumi.Input[pulumi.InputType['ClusterResourceUsageExportConfigArgs']]] = None,
+            services_ipv4_cidr: Optional[pulumi.Input[str]] = None,
+            subnetwork: Optional[pulumi.Input[str]] = None,
+            tpu_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
+            vertical_pod_autoscaling: Optional[pulumi.Input[pulumi.InputType['ClusterVerticalPodAutoscalingArgs']]] = None,
+            workload_identity_config: Optional[pulumi.Input[pulumi.InputType['ClusterWorkloadIdentityConfigArgs']]] = None) -> 'Cluster':
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] addons_config: The configuration for addons supported by GKE.
+        :param pulumi.Input[pulumi.InputType['ClusterAddonsConfigArgs']] addons_config: The configuration for addons supported by GKE.
                Structure is documented below.
-        :param pulumi.Input[dict] authenticator_groups_config: Configuration for the
+        :param pulumi.Input[pulumi.InputType['ClusterAuthenticatorGroupsConfigArgs']] authenticator_groups_config: Configuration for the
                [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
                Structure is documented below.
-        :param pulumi.Input[dict] cluster_autoscaling: Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
+        :param pulumi.Input[pulumi.InputType['ClusterClusterAutoscalingArgs']] cluster_autoscaling: Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
                automatically adjust the size of the cluster and create/delete node pools based
                on the current needs of the cluster's workload. See the
                [guide to using Node Auto-Provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)
@@ -1375,15 +371,15 @@ class Cluster(pulumi.CustomResource):
                in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
                automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
                only work for routes-based clusters, where `ip_allocation_policy` is not defined.
-        :param pulumi.Input[dict] cluster_telemetry: ) Configuration for
+        :param pulumi.Input[pulumi.InputType['ClusterClusterTelemetryArgs']] cluster_telemetry: ) Configuration for
                [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
                Structure is documented below.
-        :param pulumi.Input[dict] database_encryption: Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ClusterDatabaseEncryptionArgs']] database_encryption: Structure is documented below.
         :param pulumi.Input[float] default_max_pods_per_node: The default maximum number of pods
                per node in this cluster. This doesn't work on "routes-based" clusters, clusters
                that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
                for more information.
-        :param pulumi.Input[dict] default_snat_status: )
+        :param pulumi.Input[pulumi.InputType['ClusterDefaultSnatStatusArgs']] default_snat_status: )
                [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig).
         :param pulumi.Input[str] description: Description of the cluster.
         :param pulumi.Input[bool] enable_binary_authorization: Enable Binary Authorization for this cluster.
@@ -1406,9 +402,9 @@ class Cluster(pulumi.CustomResource):
                `container.NodePool` objects with no default node pool, you'll need to
                set this to a value of at least `1`, alongside setting
                `remove_default_node_pool` to `true`.
-        :param pulumi.Input[list] instance_group_urls: List of instance group URLs which have been assigned
+        :param pulumi.Input[List[pulumi.Input[str]]] instance_group_urls: List of instance group URLs which have been assigned
                to the cluster.
-        :param pulumi.Input[dict] ip_allocation_policy: Configuration of cluster IP allocation for
+        :param pulumi.Input[pulumi.InputType['ClusterIpAllocationPolicyArgs']] ip_allocation_policy: Configuration of cluster IP allocation for
                VPC-native clusters. Adding this block enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
                making the cluster VPC-native instead of routes-based. Structure is documented
                below.
@@ -1422,15 +418,15 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] logging_service: The logging service that the cluster should
                write logs to. Available options include `logging.googleapis.com`(Legacy Stackdriver),
                `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
-        :param pulumi.Input[dict] maintenance_policy: The maintenance policy to use for the cluster. Structure is
+        :param pulumi.Input[pulumi.InputType['ClusterMaintenancePolicyArgs']] maintenance_policy: The maintenance policy to use for the cluster. Structure is
                documented below.
-        :param pulumi.Input[dict] master_auth: The authentication information for accessing the
+        :param pulumi.Input[pulumi.InputType['ClusterMasterAuthArgs']] master_auth: The authentication information for accessing the
                Kubernetes master. Some values in this block are only returned by the API if
                your service account has permission to get credentials for your GKE cluster. If
                you see an unexpected diff removing a username/password or unsetting your client
                cert, ensure you have the `container.clusters.getCredentials` permission.
                Structure is documented below.
-        :param pulumi.Input[dict] master_authorized_networks_config: The desired configuration options
+        :param pulumi.Input[pulumi.InputType['ClusterMasterAuthorizedNetworksConfigArgs']] master_authorized_networks_config: The desired configuration options
                for master authorized networks. Omit the nested `cidr_blocks` attribute to disallow
                external access (except the cluster node IPs, which GKE automatically whitelists).
         :param pulumi.Input[str] master_version: The current version of the master in the cluster. This may
@@ -1457,22 +453,22 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] network: The name or self_link of the Google Compute Engine
                network to which the cluster is connected. For Shared VPC, set this to the self link of the
                shared network.
-        :param pulumi.Input[dict] network_policy: Configuration options for the
+        :param pulumi.Input[pulumi.InputType['ClusterNetworkPolicyArgs']] network_policy: Configuration options for the
                [NetworkPolicy](https://kubernetes.io/docs/concepts/services-networking/networkpolicies/)
                feature. Structure is documented below.
         :param pulumi.Input[str] networking_mode: Determines whether alias IPs or routes will be used for pod IPs in the cluster.
                Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
                and requires the `ip_allocation_policy` block to be defined. By default when this field is unspecified, GKE will create a `ROUTES`-based cluster.
-        :param pulumi.Input[dict] node_config: Parameters used in creating the default node pool.
+        :param pulumi.Input[pulumi.InputType['ClusterNodeConfigArgs']] node_config: Parameters used in creating the default node pool.
                Generally, this field should not be used at the same time as a
                `container.NodePool` or a `node_pool` block; this configuration
                manages the default node pool, which isn't recommended to be used.
                Structure is documented below.
-        :param pulumi.Input[list] node_locations: The list of zones in which the cluster's nodes
+        :param pulumi.Input[List[pulumi.Input[str]]] node_locations: The list of zones in which the cluster's nodes
                are located. Nodes must be in the region of their regional cluster or in the
                same region as their cluster's zone for zonal clusters. If this is specified for
                a zonal cluster, omit the cluster's zone.
-        :param pulumi.Input[list] node_pools: List of node pools associated with this cluster.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterNodePoolArgs']]]] node_pools: List of node pools associated with this cluster.
                See container.NodePool for schema.
                **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
                cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
@@ -1486,14 +482,14 @@ class Cluster(pulumi.CustomResource):
                when fuzzy versions are used. See the `container.getEngineVersions` data source's
                `version_prefix` field to approximate fuzzy versions.
                To update nodes in other node pools, use the `version` attribute on the node pool.
-        :param pulumi.Input[dict] pod_security_policy_config: Configuration for the
+        :param pulumi.Input[pulumi.InputType['ClusterPodSecurityPolicyConfigArgs']] pod_security_policy_config: Configuration for the
                [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
                Structure is documented below.
-        :param pulumi.Input[dict] private_cluster_config: Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
+        :param pulumi.Input[pulumi.InputType['ClusterPrivateClusterConfigArgs']] private_cluster_config: Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
                clusters with private nodes. Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[dict] release_channel: Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
+        :param pulumi.Input[pulumi.InputType['ClusterReleaseChannelArgs']] release_channel: Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
                feature, which provide more control over automatic upgrades of your GKE clusters.
                When updating this field, GKE imposes specific version requirements. See
                [Migrating between release channels](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#migrating_between_release_channels)
@@ -1506,8 +502,8 @@ class Cluster(pulumi.CustomResource):
                pool upon cluster creation. If you're using `container.NodePool`
                resources with no default node pool, this should be set to `true`, alongside
                setting `initial_node_count` to at least `1`.
-        :param pulumi.Input[dict] resource_labels: The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
-        :param pulumi.Input[dict] resource_usage_export_config: Configuration for the
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_labels: The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+        :param pulumi.Input[pulumi.InputType['ClusterResourceUsageExportConfigArgs']] resource_usage_export_config: Configuration for the
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
         :param pulumi.Input[str] services_ipv4_cidr: The IP address range of the Kubernetes services in this
@@ -1519,429 +515,11 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] tpu_ipv4_cidr_block: The IP address range of the Cloud TPUs in this cluster, in
                [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
                notation (e.g. `1.2.3.4/29`).
-        :param pulumi.Input[dict] vertical_pod_autoscaling: Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
+        :param pulumi.Input[pulumi.InputType['ClusterVerticalPodAutoscalingArgs']] vertical_pod_autoscaling: Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
                Structure is documented below.
-        :param pulumi.Input[dict] workload_identity_config: Workload Identity allows Kubernetes service accounts to act as a user-managed
+        :param pulumi.Input[pulumi.InputType['ClusterWorkloadIdentityConfigArgs']] workload_identity_config: Workload Identity allows Kubernetes service accounts to act as a user-managed
                [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
                Structure is documented below.
-
-        The **addons_config** object supports the following:
-
-          * `cloudrunConfig` (`pulumi.Input[dict]`) - .
-            The status of the CloudRun addon. It is disabled by default.
-            Set `disabled = false` to enable.
-            * `disabled` (`pulumi.Input[bool]`) - The status of the Istio addon, which makes it easy to set up Istio for services in a
-              cluster. It is disabled by default. Set `disabled = false` to enable.
-
-          * `configConnectorConfig` (`pulumi.Input[dict]`) - .
-            The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
-            * `enabled` (`pulumi.Input[bool]`) - Enable the PodSecurityPolicy controller for this cluster.
-              If enabled, pods must be valid under a PodSecurityPolicy to be created.
-
-          * `dnsCacheConfig` (`pulumi.Input[dict]`) - .
-            The status of the NodeLocal DNSCache addon. It is disabled by default.
-            Set `enabled = true` to enable.
-            * `enabled` (`pulumi.Input[bool]`) - Enable the PodSecurityPolicy controller for this cluster.
-              If enabled, pods must be valid under a PodSecurityPolicy to be created.
-
-          * `gcePersistentDiskCsiDriverConfig` (`pulumi.Input[dict]`) - .
-            Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enable.
-            * `enabled` (`pulumi.Input[bool]`) - Enable the PodSecurityPolicy controller for this cluster.
-              If enabled, pods must be valid under a PodSecurityPolicy to be created.
-
-          * `horizontalPodAutoscaling` (`pulumi.Input[dict]`) - The status of the Horizontal Pod Autoscaling
-            addon, which increases or decreases the number of replica pods a replication controller
-            has based on the resource usage of the existing pods.
-            It ensures that a Heapster pod is running in the cluster, which is also used by the Cloud Monitoring service.
-            It is enabled by default;
-            set `disabled = true` to disable.
-            * `disabled` (`pulumi.Input[bool]`) - The status of the Istio addon, which makes it easy to set up Istio for services in a
-              cluster. It is disabled by default. Set `disabled = false` to enable.
-
-          * `httpLoadBalancing` (`pulumi.Input[dict]`) - The status of the HTTP (L7) load balancing
-            controller addon, which makes it easy to set up HTTP load balancers for services in a
-            cluster. It is enabled by default; set `disabled = true` to disable.
-            * `disabled` (`pulumi.Input[bool]`) - The status of the Istio addon, which makes it easy to set up Istio for services in a
-              cluster. It is disabled by default. Set `disabled = false` to enable.
-
-          * `istioConfig` (`pulumi.Input[dict]`) - .
-            Structure is documented below.
-            * `auth` (`pulumi.Input[str]`) - The authentication type between services in Istio. Available options include `AUTH_MUTUAL_TLS`.
-            * `disabled` (`pulumi.Input[bool]`) - The status of the Istio addon, which makes it easy to set up Istio for services in a
-              cluster. It is disabled by default. Set `disabled = false` to enable.
-
-          * `kalmConfig` (`pulumi.Input[dict]`) - .
-            Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set `enabled = true` to enable.
-            * `enabled` (`pulumi.Input[bool]`) - Enable the PodSecurityPolicy controller for this cluster.
-              If enabled, pods must be valid under a PodSecurityPolicy to be created.
-
-          * `networkPolicyConfig` (`pulumi.Input[dict]`) - Whether we should enable the network policy addon
-            for the master.  This must be enabled in order to enable network policy for the nodes.
-            To enable this, you must also define a `network_policy` block,
-            otherwise nothing will happen.
-            It can only be disabled if the nodes already do not have network policies enabled.
-            Defaults to disabled; set `disabled = false` to enable.
-            * `disabled` (`pulumi.Input[bool]`) - The status of the Istio addon, which makes it easy to set up Istio for services in a
-              cluster. It is disabled by default. Set `disabled = false` to enable.
-
-        The **authenticator_groups_config** object supports the following:
-
-          * `securityGroup` (`pulumi.Input[str]`) - The name of the RBAC security group for use with Google security groups in Kubernetes RBAC. Group name must be in format `gke-security-groups@yourdomain.com`.
-
-        The **cluster_autoscaling** object supports the following:
-
-          * `autoProvisioningDefaults` (`pulumi.Input[dict]`) - Contains defaults for a node pool created by NAP.
-            Structure is documented below.
-            * `min_cpu_platform` (`pulumi.Input[str]`) - Minimum CPU platform to be used by this instance.
-              The instance may be scheduled on the specified or newer CPU platform. Applicable
-              values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
-              [official documentation](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-              for more information.
-            * `oauthScopes` (`pulumi.Input[list]`) - The set of Google API scopes to be made available
-              on all of the node VMs under the "default" service account. These can be
-              either FQDNs, or scope aliases. The following scopes are necessary to ensure
-              the correct functioning of the cluster:
-            * `service_account` (`pulumi.Input[str]`) - The service account to be used by the Node VMs.
-              If not specified, the "default" service account is used.
-              In order to use the configured `oauth_scopes` for logging and monitoring, the service account being used needs the
-              [roles/logging.logWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_logging_roles) and
-              [roles/monitoring.metricWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_monitoring_roles) roles.
-
-          * `autoscalingProfile` (`pulumi.Input[str]`) - ) Configuration
-            options for the [Autoscaling profile](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler#autoscaling_profiles)
-            feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability
-            when deciding to remove nodes from a cluster. Can be `BALANCED` or `OPTIMIZE_UTILIZATION`. Defaults to `BALANCED`.
-          * `enabled` (`pulumi.Input[bool]`) - Enable the PodSecurityPolicy controller for this cluster.
-            If enabled, pods must be valid under a PodSecurityPolicy to be created.
-          * `resourceLimits` (`pulumi.Input[list]`) - Global constraints for machine resources in the
-            cluster. Configuring the `cpu` and `memory` types is required if node
-            auto-provisioning is enabled. These limits will apply to node pool autoscaling
-            in addition to node auto-provisioning. Structure is documented below.
-            * `maximum` (`pulumi.Input[float]`) - Maximum amount of the resource in the cluster.
-            * `minimum` (`pulumi.Input[float]`) - Minimum amount of the resource in the cluster.
-            * `resourceType` (`pulumi.Input[str]`) - The type of the resource. For example, `cpu` and
-              `memory`.  See the [guide to using Node Auto-Provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)
-              for a list of types.
-
-        The **cluster_telemetry** object supports the following:
-
-          * `type` (`pulumi.Input[str]`) - The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
-
-        The **database_encryption** object supports the following:
-
-          * `keyName` (`pulumi.Input[str]`) - the key to use to encrypt/decrypt secrets.  See the [DatabaseEncryption definition](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#Cluster.DatabaseEncryption) for more information.
-          * `state` (`pulumi.Input[str]`) - `ENCRYPTED` or `DECRYPTED`
-
-        The **default_snat_status** object supports the following:
-
-          * `disabled` (`pulumi.Input[bool]`) - The status of the Istio addon, which makes it easy to set up Istio for services in a
-            cluster. It is disabled by default. Set `disabled = false` to enable.
-
-        The **ip_allocation_policy** object supports the following:
-
-          * `clusterIpv4CidrBlock` (`pulumi.Input[str]`) - The IP address range for the cluster pod IPs.
-            Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
-            to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14)
-            from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to
-            pick a specific range to use.
-          * `clusterSecondaryRangeName` (`pulumi.Input[str]`) - The name of the existing secondary
-            range in the cluster's subnetwork to use for pod IP addresses. Alternatively,
-            `cluster_ipv4_cidr_block` can be used to automatically create a GKE-managed one.
-          * `servicesIpv4CidrBlock` (`pulumi.Input[str]`) - The IP address range of the services IPs in this cluster.
-            Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
-            to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14)
-            from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to
-            pick a specific range to use.
-          * `servicesSecondaryRangeName` (`pulumi.Input[str]`) - The name of the existing
-            secondary range in the cluster's subnetwork to use for service `ClusterIP`s.
-            Alternatively, `services_ipv4_cidr_block` can be used to automatically create a
-            GKE-managed one.
-
-        The **maintenance_policy** object supports the following:
-
-          * `dailyMaintenanceWindow` (`pulumi.Input[dict]`) - Time window specified for daily maintenance operations.
-            Specify `start_time` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format "HH:MM”,
-            where HH : \[00-23\] and MM : \[00-59\] GMT. For example:
-            * `duration` (`pulumi.Input[str]`)
-            * `startTime` (`pulumi.Input[str]`)
-
-          * `recurringWindow` (`pulumi.Input[dict]`) - Time window for
-            recurring maintenance operations.
-            * `endTime` (`pulumi.Input[str]`)
-            * `recurrence` (`pulumi.Input[str]`)
-            * `startTime` (`pulumi.Input[str]`)
-
-        The **master_auth** object supports the following:
-
-          * `clientCertificate` (`pulumi.Input[str]`)
-          * `clientCertificateConfig` (`pulumi.Input[dict]`) - Whether client certificate authorization is enabled for this cluster.  For example:
-            * `issueClientCertificate` (`pulumi.Input[bool]`)
-
-          * `clientKey` (`pulumi.Input[str]`)
-          * `clusterCaCertificate` (`pulumi.Input[str]`)
-          * `password` (`pulumi.Input[str]`) - The password to use for HTTP basic authentication when accessing
-            the Kubernetes master endpoint.
-          * `username` (`pulumi.Input[str]`) - The username to use for HTTP basic authentication when accessing
-            the Kubernetes master endpoint. If not present basic auth will be disabled.
-
-        The **master_authorized_networks_config** object supports the following:
-
-          * `cidrBlocks` (`pulumi.Input[list]`) - External networks that can access the
-            Kubernetes cluster master through HTTPS.
-            * `cidr_block` (`pulumi.Input[str]`) - External network that can access Kubernetes master through HTTPS.
-              Must be specified in CIDR notation.
-            * `display_name` (`pulumi.Input[str]`) - Field for users to identify CIDR blocks.
-
-        The **network_policy** object supports the following:
-
-          * `enabled` (`pulumi.Input[bool]`) - Enable the PodSecurityPolicy controller for this cluster.
-            If enabled, pods must be valid under a PodSecurityPolicy to be created.
-          * `provider` (`pulumi.Input[str]`) - The selected network policy provider. Defaults to PROVIDER_UNSPECIFIED.
-
-        The **node_config** object supports the following:
-
-          * `bootDiskKmsKey` (`pulumi.Input[str]`) - The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
-          * `disk_size_gb` (`pulumi.Input[float]`) - Size of the disk attached to each node, specified
-            in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
-          * `diskType` (`pulumi.Input[str]`) - Type of the disk attached to each node
-            (e.g. 'pd-standard' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
-          * `guest_accelerators` (`pulumi.Input[list]`) - List of the type and count of accelerator cards attached to the instance.
-            Structure documented below.
-            * `count` (`pulumi.Input[float]`) - The number of the guest accelerator cards exposed to this instance.
-            * `type` (`pulumi.Input[str]`) - The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
-
-          * `imageType` (`pulumi.Input[str]`) - The image type to use for this node. Note that changing the image type
-            will delete and recreate all nodes in the node pool.
-          * `labels` (`pulumi.Input[dict]`) - The Kubernetes labels (key/value pairs) to be applied to each node.
-          * `localSsdCount` (`pulumi.Input[float]`) - The amount of local SSD disks that will be
-            attached to each cluster node. Defaults to 0.
-          * `machine_type` (`pulumi.Input[str]`) - The name of a Google Compute Engine machine type.
-            Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
-            [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
-          * `metadata` (`pulumi.Input[dict]`) - The metadata key/value pairs assigned to instances in
-            the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
-            `true` by the API; if `metadata` is set but that default value is not
-            included, the provider will attempt to unset the value. To avoid this, set the
-            value in your config.
-          * `min_cpu_platform` (`pulumi.Input[str]`) - Minimum CPU platform to be used by this instance.
-            The instance may be scheduled on the specified or newer CPU platform. Applicable
-            values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
-            [official documentation](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-            for more information.
-          * `oauthScopes` (`pulumi.Input[list]`) - The set of Google API scopes to be made available
-            on all of the node VMs under the "default" service account. These can be
-            either FQDNs, or scope aliases. The following scopes are necessary to ensure
-            the correct functioning of the cluster:
-          * `preemptible` (`pulumi.Input[bool]`) - A boolean that represents whether or not the underlying node VMs
-            are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
-            for more information. Defaults to false.
-          * `sandboxConfig` (`pulumi.Input[dict]`) - [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
-            Structure is documented below.
-            * `sandboxType` (`pulumi.Input[str]`) - Which sandbox to use for pods in the node pool.
-              Accepted values are:
-
-          * `service_account` (`pulumi.Input[str]`) - The service account to be used by the Node VMs.
-            If not specified, the "default" service account is used.
-            In order to use the configured `oauth_scopes` for logging and monitoring, the service account being used needs the
-            [roles/logging.logWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_logging_roles) and
-            [roles/monitoring.metricWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_monitoring_roles) roles.
-          * `shielded_instance_config` (`pulumi.Input[dict]`) - Shielded Instance options. Structure is documented below.
-            * `enableIntegrityMonitoring` (`pulumi.Input[bool]`) - Defines if the instance has integrity monitoring enabled.
-            * `enableSecureBoot` (`pulumi.Input[bool]`) - Defines if the instance has Secure Boot enabled.
-
-          * `tags` (`pulumi.Input[list]`) - The list of instance tags applied to all nodes. Tags are used to identify
-            valid sources or targets for network firewalls.
-          * `taints` (`pulumi.Input[list]`) - A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
-            to apply to nodes. GKE's API can only set this field on cluster creation.
-            However, GKE will add taints to your nodes if you enable certain features such
-            as GPUs. If this field is set, any diffs on this field will cause the provider to
-            recreate the underlying resource. Taint values can be updated safely in
-            Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
-            this field to manage taints. If you do, `lifecycle.ignore_changes` is
-            recommended. Structure is documented below.
-            * `effect` (`pulumi.Input[str]`) - Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
-            * `key` (`pulumi.Input[str]`) - Key for taint.
-            * `value` (`pulumi.Input[str]`) - Value for taint.
-
-          * `workloadMetadataConfig` (`pulumi.Input[dict]`) - Metadata configuration to expose to workloads on the node pool.
-            Structure is documented below.
-            * `nodeMetadata` (`pulumi.Input[str]`) - How to expose the node metadata to the workload running on the node.
-              Accepted values are:
-              * UNSPECIFIED: Not Set
-              * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
-              * EXPOSE: Expose all VM metadata to pods.
-              * GKE_METADATA_SERVER: Enables [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) on the node.
-
-        The **node_pools** object supports the following:
-
-          * `autoscaling` (`pulumi.Input[dict]`)
-            * `maxNodeCount` (`pulumi.Input[float]`)
-            * `minNodeCount` (`pulumi.Input[float]`)
-
-          * `initial_node_count` (`pulumi.Input[float]`) - The number of nodes to create in this
-            cluster's default node pool. In regional or multi-zonal clusters, this is the
-            number of nodes per zone. Must be set if `node_pool` is not set. If you're using
-            `container.NodePool` objects with no default node pool, you'll need to
-            set this to a value of at least `1`, alongside setting
-            `remove_default_node_pool` to `true`.
-          * `instance_group_urls` (`pulumi.Input[list]`) - List of instance group URLs which have been assigned
-            to the cluster.
-          * `management` (`pulumi.Input[dict]`)
-            * `autoRepair` (`pulumi.Input[bool]`)
-            * `autoUpgrade` (`pulumi.Input[bool]`)
-
-          * `max_pods_per_node` (`pulumi.Input[float]`)
-          * `name` (`pulumi.Input[str]`) - The name of the cluster, unique within the project and
-            location.
-          * `name_prefix` (`pulumi.Input[str]`)
-          * `node_config` (`pulumi.Input[dict]`) - Parameters used in creating the default node pool.
-            Generally, this field should not be used at the same time as a
-            `container.NodePool` or a `node_pool` block; this configuration
-            manages the default node pool, which isn't recommended to be used.
-            Structure is documented below.
-            * `bootDiskKmsKey` (`pulumi.Input[str]`) - The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
-            * `disk_size_gb` (`pulumi.Input[float]`) - Size of the disk attached to each node, specified
-              in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
-            * `diskType` (`pulumi.Input[str]`) - Type of the disk attached to each node
-              (e.g. 'pd-standard' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
-            * `guest_accelerators` (`pulumi.Input[list]`) - List of the type and count of accelerator cards attached to the instance.
-              Structure documented below.
-              * `count` (`pulumi.Input[float]`) - The number of the guest accelerator cards exposed to this instance.
-              * `type` (`pulumi.Input[str]`) - The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
-
-            * `imageType` (`pulumi.Input[str]`) - The image type to use for this node. Note that changing the image type
-              will delete and recreate all nodes in the node pool.
-            * `labels` (`pulumi.Input[dict]`) - The Kubernetes labels (key/value pairs) to be applied to each node.
-            * `localSsdCount` (`pulumi.Input[float]`) - The amount of local SSD disks that will be
-              attached to each cluster node. Defaults to 0.
-            * `machine_type` (`pulumi.Input[str]`) - The name of a Google Compute Engine machine type.
-              Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
-              [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
-            * `metadata` (`pulumi.Input[dict]`) - The metadata key/value pairs assigned to instances in
-              the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
-              `true` by the API; if `metadata` is set but that default value is not
-              included, the provider will attempt to unset the value. To avoid this, set the
-              value in your config.
-            * `min_cpu_platform` (`pulumi.Input[str]`) - Minimum CPU platform to be used by this instance.
-              The instance may be scheduled on the specified or newer CPU platform. Applicable
-              values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
-              [official documentation](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-              for more information.
-            * `oauthScopes` (`pulumi.Input[list]`) - The set of Google API scopes to be made available
-              on all of the node VMs under the "default" service account. These can be
-              either FQDNs, or scope aliases. The following scopes are necessary to ensure
-              the correct functioning of the cluster:
-            * `preemptible` (`pulumi.Input[bool]`) - A boolean that represents whether or not the underlying node VMs
-              are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
-              for more information. Defaults to false.
-            * `sandboxConfig` (`pulumi.Input[dict]`) - [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
-              Structure is documented below.
-              * `sandboxType` (`pulumi.Input[str]`) - Which sandbox to use for pods in the node pool.
-                Accepted values are:
-
-            * `service_account` (`pulumi.Input[str]`) - The service account to be used by the Node VMs.
-              If not specified, the "default" service account is used.
-              In order to use the configured `oauth_scopes` for logging and monitoring, the service account being used needs the
-              [roles/logging.logWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_logging_roles) and
-              [roles/monitoring.metricWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_monitoring_roles) roles.
-            * `shielded_instance_config` (`pulumi.Input[dict]`) - Shielded Instance options. Structure is documented below.
-              * `enableIntegrityMonitoring` (`pulumi.Input[bool]`) - Defines if the instance has integrity monitoring enabled.
-              * `enableSecureBoot` (`pulumi.Input[bool]`) - Defines if the instance has Secure Boot enabled.
-
-            * `tags` (`pulumi.Input[list]`) - The list of instance tags applied to all nodes. Tags are used to identify
-              valid sources or targets for network firewalls.
-            * `taints` (`pulumi.Input[list]`) - A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
-              to apply to nodes. GKE's API can only set this field on cluster creation.
-              However, GKE will add taints to your nodes if you enable certain features such
-              as GPUs. If this field is set, any diffs on this field will cause the provider to
-              recreate the underlying resource. Taint values can be updated safely in
-              Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
-              this field to manage taints. If you do, `lifecycle.ignore_changes` is
-              recommended. Structure is documented below.
-              * `effect` (`pulumi.Input[str]`) - Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
-              * `key` (`pulumi.Input[str]`) - Key for taint.
-              * `value` (`pulumi.Input[str]`) - Value for taint.
-
-            * `workloadMetadataConfig` (`pulumi.Input[dict]`) - Metadata configuration to expose to workloads on the node pool.
-              Structure is documented below.
-              * `nodeMetadata` (`pulumi.Input[str]`) - How to expose the node metadata to the workload running on the node.
-                Accepted values are:
-                * UNSPECIFIED: Not Set
-                * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
-                * EXPOSE: Expose all VM metadata to pods.
-                * GKE_METADATA_SERVER: Enables [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) on the node.
-
-          * `node_count` (`pulumi.Input[float]`)
-          * `node_locations` (`pulumi.Input[list]`) - The list of zones in which the cluster's nodes
-            are located. Nodes must be in the region of their regional cluster or in the
-            same region as their cluster's zone for zonal clusters. If this is specified for
-            a zonal cluster, omit the cluster's zone.
-          * `upgrade_settings` (`pulumi.Input[dict]`)
-            * `maxSurge` (`pulumi.Input[float]`)
-            * `maxUnavailable` (`pulumi.Input[float]`)
-
-          * `version` (`pulumi.Input[str]`)
-
-        The **pod_security_policy_config** object supports the following:
-
-          * `enabled` (`pulumi.Input[bool]`) - Enable the PodSecurityPolicy controller for this cluster.
-            If enabled, pods must be valid under a PodSecurityPolicy to be created.
-
-        The **private_cluster_config** object supports the following:
-
-          * `enablePrivateEndpoint` (`pulumi.Input[bool]`) - When `true`, the cluster's private
-            endpoint is used as the cluster endpoint and access through the public endpoint
-            is disabled. When `false`, either endpoint can be used. This field only applies
-            to private clusters, when `enable_private_nodes` is `true`.
-          * `enablePrivateNodes` (`pulumi.Input[bool]`) - Enables the private cluster feature,
-            creating a private endpoint on the cluster. In a private cluster, nodes only
-            have RFC 1918 private addresses and communicate with the master's private
-            endpoint via private networking.
-          * `masterGlobalAccessConfig` (`pulumi.Input[dict]`)
-            * `enabled` (`pulumi.Input[bool]`) - Enable the PodSecurityPolicy controller for this cluster.
-              If enabled, pods must be valid under a PodSecurityPolicy to be created.
-
-          * `masterIpv4CidrBlock` (`pulumi.Input[str]`) - The IP range in CIDR notation to use for
-            the hosted master network. This range will be used for assigning private IP
-            addresses to the cluster master(s) and the ILB VIP. This range must not overlap
-            with any other ranges in use within the cluster's network, and it must be a /28
-            subnet. See [Private Cluster Limitations](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#limitations)
-            for more details. This field only applies to private clusters, when
-            `enable_private_nodes` is `true`.
-          * `peeringName` (`pulumi.Input[str]`) - The name of the peering between this cluster and the Google owned VPC.
-          * `privateEndpoint` (`pulumi.Input[str]`) - The internal IP address of this cluster's master endpoint.
-          * `publicEndpoint` (`pulumi.Input[str]`) - The external IP address of this cluster's master endpoint.
-
-        The **release_channel** object supports the following:
-
-          * `channel` (`pulumi.Input[str]`) - The selected release channel.
-            Accepted values are:
-            * UNSPECIFIED: Not set.
-            * RAPID: Weekly upgrade cadence; Early testers and developers who requires new features.
-            * REGULAR: Multiple per month upgrade cadence; Production users who need features not yet offered in the Stable channel.
-            * STABLE: Every few months upgrade cadence; Production users who need stability above all else, and for whom frequent upgrades are too risky.
-
-        The **resource_usage_export_config** object supports the following:
-
-          * `bigqueryDestination` (`pulumi.Input[dict]`) - Parameters for using BigQuery as the destination of resource usage export.
-            * `dataset_id` (`pulumi.Input[str]`)
-
-          * `enableNetworkEgressMetering` (`pulumi.Input[bool]`) - Whether to enable network egress metering for this cluster. If enabled, a daemonset will be created
-            in the cluster to meter network egress traffic.
-          * `enableResourceConsumptionMetering` (`pulumi.Input[bool]`) - Whether to enable resource
-            consumption metering on this cluster. When enabled, a table will be created in
-            the resource export BigQuery dataset to store resource consumption data. The
-            resulting table can be joined with the resource usage table or with BigQuery
-            billing export. Defaults to `true`.
-
-        The **vertical_pod_autoscaling** object supports the following:
-
-          * `enabled` (`pulumi.Input[bool]`) - Enable the PodSecurityPolicy controller for this cluster.
-            If enabled, pods must be valid under a PodSecurityPolicy to be created.
-
-        The **workload_identity_config** object supports the following:
-
-          * `identityNamespace` (`pulumi.Input[str]`) - Currently, the only supported identity namespace is the project's default.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1998,8 +576,513 @@ class Cluster(pulumi.CustomResource):
         __props__["workload_identity_config"] = workload_identity_config
         return Cluster(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="addonsConfig")
+    def addons_config(self) -> 'outputs.ClusterAddonsConfig':
+        """
+        The configuration for addons supported by GKE.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "addons_config")
+
+    @property
+    @pulumi.getter(name="authenticatorGroupsConfig")
+    def authenticator_groups_config(self) -> 'outputs.ClusterAuthenticatorGroupsConfig':
+        """
+        Configuration for the
+        [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "authenticator_groups_config")
+
+    @property
+    @pulumi.getter(name="clusterAutoscaling")
+    def cluster_autoscaling(self) -> 'outputs.ClusterClusterAutoscaling':
+        """
+        Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
+        automatically adjust the size of the cluster and create/delete node pools based
+        on the current needs of the cluster's workload. See the
+        [guide to using Node Auto-Provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)
+        for more details. Structure is documented below.
+        """
+        return pulumi.get(self, "cluster_autoscaling")
+
+    @property
+    @pulumi.getter(name="clusterIpv4Cidr")
+    def cluster_ipv4_cidr(self) -> str:
+        """
+        The IP address range of the Kubernetes pods
+        in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
+        automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
+        only work for routes-based clusters, where `ip_allocation_policy` is not defined.
+        """
+        return pulumi.get(self, "cluster_ipv4_cidr")
+
+    @property
+    @pulumi.getter(name="clusterTelemetry")
+    def cluster_telemetry(self) -> 'outputs.ClusterClusterTelemetry':
+        """
+        ) Configuration for
+        [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cluster_telemetry")
+
+    @property
+    @pulumi.getter(name="databaseEncryption")
+    def database_encryption(self) -> 'outputs.ClusterDatabaseEncryption':
+        """
+        Structure is documented below.
+        """
+        return pulumi.get(self, "database_encryption")
+
+    @property
+    @pulumi.getter(name="defaultMaxPodsPerNode")
+    def default_max_pods_per_node(self) -> float:
+        """
+        The default maximum number of pods
+        per node in this cluster. This doesn't work on "routes-based" clusters, clusters
+        that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
+        for more information.
+        """
+        return pulumi.get(self, "default_max_pods_per_node")
+
+    @property
+    @pulumi.getter(name="defaultSnatStatus")
+    def default_snat_status(self) -> 'outputs.ClusterDefaultSnatStatus':
+        """
+        )
+        [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig).
+        """
+        return pulumi.get(self, "default_snat_status")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Description of the cluster.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="enableBinaryAuthorization")
+    def enable_binary_authorization(self) -> Optional[bool]:
+        """
+        Enable Binary Authorization for this cluster.
+        If enabled, all container images will be validated by Google Binary Authorization.
+        """
+        return pulumi.get(self, "enable_binary_authorization")
+
+    @property
+    @pulumi.getter(name="enableIntranodeVisibility")
+    def enable_intranode_visibility(self) -> Optional[bool]:
+        """
+        Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
+        """
+        return pulumi.get(self, "enable_intranode_visibility")
+
+    @property
+    @pulumi.getter(name="enableKubernetesAlpha")
+    def enable_kubernetes_alpha(self) -> Optional[bool]:
+        """
+        Whether to enable Kubernetes Alpha features for
+        this cluster. Note that when this option is enabled, the cluster cannot be upgraded
+        and will be automatically deleted after 30 days.
+        """
+        return pulumi.get(self, "enable_kubernetes_alpha")
+
+    @property
+    @pulumi.getter(name="enableLegacyAbac")
+    def enable_legacy_abac(self) -> Optional[bool]:
+        """
+        Whether the ABAC authorizer is enabled for this cluster.
+        When enabled, identities in the system, including service accounts, nodes, and controllers,
+        will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
+        Defaults to `false`
+        """
+        return pulumi.get(self, "enable_legacy_abac")
+
+    @property
+    @pulumi.getter(name="enableShieldedNodes")
+    def enable_shielded_nodes(self) -> Optional[bool]:
+        """
+        Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `false`.
+        """
+        return pulumi.get(self, "enable_shielded_nodes")
+
+    @property
+    @pulumi.getter(name="enableTpu")
+    def enable_tpu(self) -> Optional[bool]:
+        """
+        Whether to enable Cloud TPU resources in this cluster.
+        See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
+        """
+        return pulumi.get(self, "enable_tpu")
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> str:
+        """
+        The IP address of this cluster's Kubernetes master.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter(name="initialNodeCount")
+    def initial_node_count(self) -> Optional[float]:
+        """
+        The number of nodes to create in this
+        cluster's default node pool. In regional or multi-zonal clusters, this is the
+        number of nodes per zone. Must be set if `node_pool` is not set. If you're using
+        `container.NodePool` objects with no default node pool, you'll need to
+        set this to a value of at least `1`, alongside setting
+        `remove_default_node_pool` to `true`.
+        """
+        return pulumi.get(self, "initial_node_count")
+
+    @property
+    @pulumi.getter(name="instanceGroupUrls")
+    def instance_group_urls(self) -> List[str]:
+        """
+        List of instance group URLs which have been assigned
+        to the cluster.
+        """
+        return pulumi.get(self, "instance_group_urls")
+
+    @property
+    @pulumi.getter(name="ipAllocationPolicy")
+    def ip_allocation_policy(self) -> Optional['outputs.ClusterIpAllocationPolicy']:
+        """
+        Configuration of cluster IP allocation for
+        VPC-native clusters. Adding this block enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
+        making the cluster VPC-native instead of routes-based. Structure is documented
+        below.
+        """
+        return pulumi.get(self, "ip_allocation_policy")
+
+    @property
+    @pulumi.getter(name="labelFingerprint")
+    def label_fingerprint(self) -> str:
+        """
+        The fingerprint of the set of labels for this cluster.
+        """
+        return pulumi.get(self, "label_fingerprint")
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        The location (region or zone) in which the cluster
+        master will be created, as well as the default node location. If you specify a
+        zone (such as `us-central1-a`), the cluster will be a zonal cluster with a
+        single cluster master. If you specify a region (such as `us-west1`), the
+        cluster will be a regional cluster with multiple masters spread across zones in
+        the region, and with default node locations in those zones as well
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="loggingService")
+    def logging_service(self) -> str:
+        """
+        The logging service that the cluster should
+        write logs to. Available options include `logging.googleapis.com`(Legacy Stackdriver),
+        `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
+        """
+        return pulumi.get(self, "logging_service")
+
+    @property
+    @pulumi.getter(name="maintenancePolicy")
+    def maintenance_policy(self) -> Optional['outputs.ClusterMaintenancePolicy']:
+        """
+        The maintenance policy to use for the cluster. Structure is
+        documented below.
+        """
+        return pulumi.get(self, "maintenance_policy")
+
+    @property
+    @pulumi.getter(name="masterAuth")
+    def master_auth(self) -> 'outputs.ClusterMasterAuth':
+        """
+        The authentication information for accessing the
+        Kubernetes master. Some values in this block are only returned by the API if
+        your service account has permission to get credentials for your GKE cluster. If
+        you see an unexpected diff removing a username/password or unsetting your client
+        cert, ensure you have the `container.clusters.getCredentials` permission.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "master_auth")
+
+    @property
+    @pulumi.getter(name="masterAuthorizedNetworksConfig")
+    def master_authorized_networks_config(self) -> Optional['outputs.ClusterMasterAuthorizedNetworksConfig']:
+        """
+        The desired configuration options
+        for master authorized networks. Omit the nested `cidr_blocks` attribute to disallow
+        external access (except the cluster node IPs, which GKE automatically whitelists).
+        """
+        return pulumi.get(self, "master_authorized_networks_config")
+
+    @property
+    @pulumi.getter(name="masterVersion")
+    def master_version(self) -> str:
+        """
+        The current version of the master in the cluster. This may
+        be different than the `min_master_version` set in the config if the master
+        has been updated by GKE.
+        """
+        return pulumi.get(self, "master_version")
+
+    @property
+    @pulumi.getter(name="minMasterVersion")
+    def min_master_version(self) -> Optional[str]:
+        """
+        The minimum version of the master. GKE
+        will auto-update the master to new versions, so this does not guarantee the
+        current master version--use the read-only `master_version` field to obtain that.
+        If unset, the cluster's version will be set by GKE to the version of the most recent
+        official release (which is not necessarily the latest version).  Most users will find
+        the `container.getEngineVersions` data source useful - it indicates which versions
+        are available. If you intend to specify versions manually,
+        [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
+        describe the various acceptable formats for this field.
+        """
+        return pulumi.get(self, "min_master_version")
+
+    @property
+    @pulumi.getter(name="monitoringService")
+    def monitoring_service(self) -> str:
+        """
+        The monitoring service that the cluster
+        should write metrics to.
+        Automatically send metrics from pods in the cluster to the Google Cloud Monitoring API.
+        VM metrics will be collected by Google Compute Engine regardless of this setting
+        Available options include
+        `monitoring.googleapis.com`(Legacy Stackdriver), `monitoring.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Monitoring), and `none`.
+        Defaults to `monitoring.googleapis.com/kubernetes`
+        """
+        return pulumi.get(self, "monitoring_service")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the cluster, unique within the project and
+        location.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[str]:
+        """
+        The name or self_link of the Google Compute Engine
+        network to which the cluster is connected. For Shared VPC, set this to the self link of the
+        shared network.
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="networkPolicy")
+    def network_policy(self) -> 'outputs.ClusterNetworkPolicy':
+        """
+        Configuration options for the
+        [NetworkPolicy](https://kubernetes.io/docs/concepts/services-networking/networkpolicies/)
+        feature. Structure is documented below.
+        """
+        return pulumi.get(self, "network_policy")
+
+    @property
+    @pulumi.getter(name="networkingMode")
+    def networking_mode(self) -> str:
+        """
+        Determines whether alias IPs or routes will be used for pod IPs in the cluster.
+        Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
+        and requires the `ip_allocation_policy` block to be defined. By default when this field is unspecified, GKE will create a `ROUTES`-based cluster.
+        """
+        return pulumi.get(self, "networking_mode")
+
+    @property
+    @pulumi.getter(name="nodeConfig")
+    def node_config(self) -> 'outputs.ClusterNodeConfig':
+        """
+        Parameters used in creating the default node pool.
+        Generally, this field should not be used at the same time as a
+        `container.NodePool` or a `node_pool` block; this configuration
+        manages the default node pool, which isn't recommended to be used.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "node_config")
+
+    @property
+    @pulumi.getter(name="nodeLocations")
+    def node_locations(self) -> List[str]:
+        """
+        The list of zones in which the cluster's nodes
+        are located. Nodes must be in the region of their regional cluster or in the
+        same region as their cluster's zone for zonal clusters. If this is specified for
+        a zonal cluster, omit the cluster's zone.
+        """
+        return pulumi.get(self, "node_locations")
+
+    @property
+    @pulumi.getter(name="nodePools")
+    def node_pools(self) -> List['outputs.ClusterNodePool']:
+        """
+        List of node pools associated with this cluster.
+        See container.NodePool for schema.
+        **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
+        cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
+        to say "these are the _only_ node pools associated with this cluster", use the
+        container.NodePool resource instead of this property.
+        """
+        return pulumi.get(self, "node_pools")
+
+    @property
+    @pulumi.getter(name="nodeVersion")
+    def node_version(self) -> str:
+        """
+        The Kubernetes version on the nodes. Must either be unset
+        or set to the same value as `min_master_version` on create. Defaults to the default
+        version set by GKE which is not necessarily the latest version. This only affects
+        nodes in the default node pool. While a fuzzy version can be specified, it's
+        recommended that you specify explicit versions as the provider will see spurious diffs
+        when fuzzy versions are used. See the `container.getEngineVersions` data source's
+        `version_prefix` field to approximate fuzzy versions.
+        To update nodes in other node pools, use the `version` attribute on the node pool.
+        """
+        return pulumi.get(self, "node_version")
+
+    @property
+    @pulumi.getter
+    def operation(self) -> str:
+        return pulumi.get(self, "operation")
+
+    @property
+    @pulumi.getter(name="podSecurityPolicyConfig")
+    def pod_security_policy_config(self) -> Optional['outputs.ClusterPodSecurityPolicyConfig']:
+        """
+        Configuration for the
+        [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "pod_security_policy_config")
+
+    @property
+    @pulumi.getter(name="privateClusterConfig")
+    def private_cluster_config(self) -> 'outputs.ClusterPrivateClusterConfig':
+        """
+        Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
+        clusters with private nodes. Structure is documented below.
+        """
+        return pulumi.get(self, "private_cluster_config")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The ID of the project in which the resource belongs. If it
+        is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="releaseChannel")
+    def release_channel(self) -> 'outputs.ClusterReleaseChannel':
+        """
+        Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
+        feature, which provide more control over automatic upgrades of your GKE clusters.
+        When updating this field, GKE imposes specific version requirements. See
+        [Migrating between release channels](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#migrating_between_release_channels)
+        for more details; the `container.getEngineVersions` datasource can provide
+        the default version for a channel. Note that removing the `release_channel`
+        field from your config will cause this provider to stop managing your cluster's
+        release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
+        channel. Structure is documented below.
+        """
+        return pulumi.get(self, "release_channel")
+
+    @property
+    @pulumi.getter(name="removeDefaultNodePool")
+    def remove_default_node_pool(self) -> Optional[bool]:
+        """
+        If `true`, deletes the default node
+        pool upon cluster creation. If you're using `container.NodePool`
+        resources with no default node pool, this should be set to `true`, alongside
+        setting `initial_node_count` to at least `1`.
+        """
+        return pulumi.get(self, "remove_default_node_pool")
+
+    @property
+    @pulumi.getter(name="resourceLabels")
+    def resource_labels(self) -> Optional[Mapping[str, str]]:
+        """
+        The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+        """
+        return pulumi.get(self, "resource_labels")
+
+    @property
+    @pulumi.getter(name="resourceUsageExportConfig")
+    def resource_usage_export_config(self) -> Optional['outputs.ClusterResourceUsageExportConfig']:
+        """
+        Configuration for the
+        [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "resource_usage_export_config")
+
+    @property
+    @pulumi.getter(name="servicesIpv4Cidr")
+    def services_ipv4_cidr(self) -> str:
+        """
+        The IP address range of the Kubernetes services in this
+        cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+        notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
+        `/16` from the container CIDR.
+        """
+        return pulumi.get(self, "services_ipv4_cidr")
+
+    @property
+    @pulumi.getter
+    def subnetwork(self) -> str:
+        """
+        The name or self_link of the Google Compute Engine
+        subnetwork in which the cluster's instances are launched.
+        """
+        return pulumi.get(self, "subnetwork")
+
+    @property
+    @pulumi.getter(name="tpuIpv4CidrBlock")
+    def tpu_ipv4_cidr_block(self) -> str:
+        """
+        The IP address range of the Cloud TPUs in this cluster, in
+        [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+        notation (e.g. `1.2.3.4/29`).
+        """
+        return pulumi.get(self, "tpu_ipv4_cidr_block")
+
+    @property
+    @pulumi.getter(name="verticalPodAutoscaling")
+    def vertical_pod_autoscaling(self) -> Optional['outputs.ClusterVerticalPodAutoscaling']:
+        """
+        Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "vertical_pod_autoscaling")
+
+    @property
+    @pulumi.getter(name="workloadIdentityConfig")
+    def workload_identity_config(self) -> Optional['outputs.ClusterWorkloadIdentityConfig']:
+        """
+        Workload Identity allows Kubernetes service accounts to act as a user-managed
+        [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "workload_identity_config")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

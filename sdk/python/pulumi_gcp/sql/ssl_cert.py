@@ -5,57 +5,22 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['SslCert']
 
 
 class SslCert(pulumi.CustomResource):
-    cert: pulumi.Output[str]
-    """
-    The actual certificate data for this client certificate.
-    """
-    cert_serial_number: pulumi.Output[str]
-    """
-    The serial number extracted from the certificate data.
-    """
-    common_name: pulumi.Output[str]
-    """
-    The common name to be used in the certificate to identify the
-    client. Constrained to [a-zA-Z.-_ ]+. Changing this forces a new resource to be created.
-    """
-    create_time: pulumi.Output[str]
-    """
-    The time when the certificate was created in RFC 3339 format,
-    for example 2012-11-15T16:19:00.094Z.
-    """
-    expiration_time: pulumi.Output[str]
-    """
-    The time when the certificate expires in RFC 3339 format,
-    for example 2012-11-15T16:19:00.094Z.
-    """
-    instance: pulumi.Output[str]
-    """
-    The name of the Cloud SQL instance. Changing this
-    forces a new resource to be created.
-    """
-    private_key: pulumi.Output[str]
-    """
-    The private key associated with the client certificate.
-    """
-    project: pulumi.Output[str]
-    """
-    The ID of the project in which the resource belongs. If it
-    is not provided, the provider project is used.
-    """
-    server_ca_cert: pulumi.Output[str]
-    """
-    The CA cert of the server this client cert was generated from.
-    """
-    sha1_fingerprint: pulumi.Output[str]
-    """
-    The SHA1 Fingerprint of the certificate.
-    """
-    def __init__(__self__, resource_name, opts=None, common_name=None, instance=None, project=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 common_name: Optional[pulumi.Input[str]] = None,
+                 instance: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Creates a new Google SQL SSL Cert on a Google SQL Instance. For more information, see the [official documentation](https://cloud.google.com/sql/), or the [JSON API](https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/sslCerts).
 
@@ -106,13 +71,25 @@ class SslCert(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, cert=None, cert_serial_number=None, common_name=None, create_time=None, expiration_time=None, instance=None, private_key=None, project=None, server_ca_cert=None, sha1_fingerprint=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cert: Optional[pulumi.Input[str]] = None,
+            cert_serial_number: Optional[pulumi.Input[str]] = None,
+            common_name: Optional[pulumi.Input[str]] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
+            expiration_time: Optional[pulumi.Input[str]] = None,
+            instance: Optional[pulumi.Input[str]] = None,
+            private_key: Optional[pulumi.Input[str]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            server_ca_cert: Optional[pulumi.Input[str]] = None,
+            sha1_fingerprint: Optional[pulumi.Input[str]] = None) -> 'SslCert':
         """
         Get an existing SslCert resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cert: The actual certificate data for this client certificate.
         :param pulumi.Input[str] cert_serial_number: The serial number extracted from the certificate data.
@@ -146,8 +123,94 @@ class SslCert(pulumi.CustomResource):
         __props__["sha1_fingerprint"] = sha1_fingerprint
         return SslCert(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def cert(self) -> str:
+        """
+        The actual certificate data for this client certificate.
+        """
+        return pulumi.get(self, "cert")
+
+    @property
+    @pulumi.getter(name="certSerialNumber")
+    def cert_serial_number(self) -> str:
+        """
+        The serial number extracted from the certificate data.
+        """
+        return pulumi.get(self, "cert_serial_number")
+
+    @property
+    @pulumi.getter(name="commonName")
+    def common_name(self) -> str:
+        """
+        The common name to be used in the certificate to identify the
+        client. Constrained to [a-zA-Z.-_ ]+. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "common_name")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The time when the certificate was created in RFC 3339 format,
+        for example 2012-11-15T16:19:00.094Z.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="expirationTime")
+    def expiration_time(self) -> str:
+        """
+        The time when the certificate expires in RFC 3339 format,
+        for example 2012-11-15T16:19:00.094Z.
+        """
+        return pulumi.get(self, "expiration_time")
+
+    @property
+    @pulumi.getter
+    def instance(self) -> str:
+        """
+        The name of the Cloud SQL instance. Changing this
+        forces a new resource to be created.
+        """
+        return pulumi.get(self, "instance")
+
+    @property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> str:
+        """
+        The private key associated with the client certificate.
+        """
+        return pulumi.get(self, "private_key")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The ID of the project in which the resource belongs. If it
+        is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="serverCaCert")
+    def server_ca_cert(self) -> str:
+        """
+        The CA cert of the server this client cert was generated from.
+        """
+        return pulumi.get(self, "server_ca_cert")
+
+    @property
+    @pulumi.getter(name="sha1Fingerprint")
+    def sha1_fingerprint(self) -> str:
+        """
+        The SHA1 Fingerprint of the certificate.
+        """
+        return pulumi.get(self, "sha1_fingerprint")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

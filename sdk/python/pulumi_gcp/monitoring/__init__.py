@@ -15,3 +15,5 @@ from .metric_descriptor import *
 from .notification_channel import *
 from .slo import *
 from .uptime_check_config import *
+from ._inputs import *
+from . import outputs

@@ -5,48 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['Account']
 
 
 class Account(pulumi.CustomResource):
-    account_id: pulumi.Output[str]
-    """
-    The account id that is used to generate the service
-    account email address and a stable unique id. It is unique within a project,
-    must be 6-30 characters long, and match the regular expression `a-z`
-    to comply with RFC1035. Changing this forces a new service account to be created.
-    """
-    description: pulumi.Output[str]
-    """
-    A text description of the service account.
-    Must be less than or equal to 256 UTF-8 bytes.
-    """
-    display_name: pulumi.Output[str]
-    """
-    The display name for the service account.
-    Can be updated without creating a new resource.
-    """
-    email: pulumi.Output[str]
-    """
-    The e-mail address of the service account. This value
-    should be referenced from any `organizations.getIAMPolicy` data sources
-    that would grant the service account privileges.
-    """
-    name: pulumi.Output[str]
-    """
-    The fully-qualified name of the service account.
-    """
-    project: pulumi.Output[str]
-    """
-    The ID of the project that the service account will be created in.
-    Defaults to the provider project configuration.
-    """
-    unique_id: pulumi.Output[str]
-    """
-    The unique id of the service account.
-    """
-    def __init__(__self__, resource_name, opts=None, account_id=None, description=None, display_name=None, project=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 account_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Allows management of a [Google Cloud Platform service account](https://cloud.google.com/compute/docs/access/service-accounts)
 
@@ -100,13 +75,22 @@ class Account(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, account_id=None, description=None, display_name=None, email=None, name=None, project=None, unique_id=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: Optional[pulumi.Input[str]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            display_name: Optional[pulumi.Input[str]] = None,
+            email: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            unique_id: Optional[pulumi.Input[str]] = None) -> 'Account':
         """
         Get an existing Account resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account id that is used to generate the service
                account email address and a stable unique id. It is unique within a project,
@@ -137,8 +121,73 @@ class Account(pulumi.CustomResource):
         __props__["unique_id"] = unique_id
         return Account(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> str:
+        """
+        The account id that is used to generate the service
+        account email address and a stable unique id. It is unique within a project,
+        must be 6-30 characters long, and match the regular expression `a-z`
+        to comply with RFC1035. Changing this forces a new service account to be created.
+        """
+        return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        A text description of the service account.
+        Must be less than or equal to 256 UTF-8 bytes.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[str]:
+        """
+        The display name for the service account.
+        Can be updated without creating a new resource.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def email(self) -> str:
+        """
+        The e-mail address of the service account. This value
+        should be referenced from any `organizations.getIAMPolicy` data sources
+        that would grant the service account privileges.
+        """
+        return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The fully-qualified name of the service account.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The ID of the project that the service account will be created in.
+        Defaults to the provider project configuration.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="uniqueId")
+    def unique_id(self) -> str:
+        """
+        The unique id of the service account.
+        """
+        return pulumi.get(self, "unique_id")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

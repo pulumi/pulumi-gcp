@@ -5,107 +5,36 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['RouterNat']
 
 
 class RouterNat(pulumi.CustomResource):
-    drain_nat_ips: pulumi.Output[list]
-    """
-    A list of URLs of the IP resources to be drained. These IPs must be
-    valid static external IPs that have been assigned to the NAT.
-    """
-    icmp_idle_timeout_sec: pulumi.Output[float]
-    """
-    Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
-    """
-    log_config: pulumi.Output[dict]
-    """
-    Configuration for logging on NAT
-    Structure is documented below.
-
-      * `enable` (`bool`) - Indicates whether or not to export logs.
-      * `filter` (`str`) - Specifies the desired filtering of logs on this NAT.
-        Possible values are `ERRORS_ONLY`, `TRANSLATIONS_ONLY`, and `ALL`.
-    """
-    min_ports_per_vm: pulumi.Output[float]
-    """
-    Minimum number of ports allocated to a VM from this NAT.
-    """
-    name: pulumi.Output[str]
-    """
-    Self-link of subnetwork to NAT
-    """
-    nat_ip_allocate_option: pulumi.Output[str]
-    """
-    How external IPs should be allocated for this NAT. Valid values are
-    `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
-    Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
-    Possible values are `MANUAL_ONLY` and `AUTO_ONLY`.
-    """
-    nat_ips: pulumi.Output[list]
-    """
-    Self-links of NAT IPs. Only valid if natIpAllocateOption
-    is set to MANUAL_ONLY.
-    """
-    project: pulumi.Output[str]
-    """
-    The ID of the project in which the resource belongs.
-    If it is not provided, the provider project is used.
-    """
-    region: pulumi.Output[str]
-    """
-    Region where the router and NAT reside.
-    """
-    router: pulumi.Output[str]
-    """
-    The name of the Cloud Router in which this NAT will be configured.
-    """
-    source_subnetwork_ip_ranges_to_nat: pulumi.Output[str]
-    """
-    How NAT should be configured per Subnetwork.
-    If `ALL_SUBNETWORKS_ALL_IP_RANGES`, all of the
-    IP ranges in every Subnetwork are allowed to Nat.
-    If `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, all of the primary IP
-    ranges in every Subnetwork are allowed to Nat.
-    `LIST_OF_SUBNETWORKS`: A list of Subnetworks are allowed to Nat
-    (specified in the field subnetwork below). Note that if this field
-    contains ALL_SUBNETWORKS_ALL_IP_RANGES or
-    ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any
-    other RouterNat section in any Router for this network in this region.
-    Possible values are `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, and `LIST_OF_SUBNETWORKS`.
-    """
-    subnetworks: pulumi.Output[list]
-    """
-    One or more subnetwork NAT configurations. Only used if
-    `source_subnetwork_ip_ranges_to_nat` is set to `LIST_OF_SUBNETWORKS`
-    Structure is documented below.
-
-      * `name` (`str`) - Self-link of subnetwork to NAT
-      * `secondaryIpRangeNames` (`list`) - List of the secondary ranges of the subnetwork that are allowed
-        to use NAT. This can be populated only if
-        `LIST_OF_SECONDARY_IP_RANGES` is one of the values in
-        sourceIpRangesToNat
-      * `sourceIpRangesToNats` (`list`) - List of options for which source IPs in the subnetwork
-        should have NAT enabled. Supported values include:
-        `ALL_IP_RANGES`, `LIST_OF_SECONDARY_IP_RANGES`,
-        `PRIMARY_IP_RANGE`.
-    """
-    tcp_established_idle_timeout_sec: pulumi.Output[float]
-    """
-    Timeout (in seconds) for TCP established connections.
-    Defaults to 1200s if not set.
-    """
-    tcp_transitory_idle_timeout_sec: pulumi.Output[float]
-    """
-    Timeout (in seconds) for TCP transitory connections.
-    Defaults to 30s if not set.
-    """
-    udp_idle_timeout_sec: pulumi.Output[float]
-    """
-    Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
-    """
-    def __init__(__self__, resource_name, opts=None, drain_nat_ips=None, icmp_idle_timeout_sec=None, log_config=None, min_ports_per_vm=None, name=None, nat_ip_allocate_option=None, nat_ips=None, project=None, region=None, router=None, source_subnetwork_ip_ranges_to_nat=None, subnetworks=None, tcp_established_idle_timeout_sec=None, tcp_transitory_idle_timeout_sec=None, udp_idle_timeout_sec=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 drain_nat_ips: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 icmp_idle_timeout_sec: Optional[pulumi.Input[float]] = None,
+                 log_config: Optional[pulumi.Input[pulumi.InputType['RouterNatLogConfigArgs']]] = None,
+                 min_ports_per_vm: Optional[pulumi.Input[float]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 nat_ip_allocate_option: Optional[pulumi.Input[str]] = None,
+                 nat_ips: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 router: Optional[pulumi.Input[str]] = None,
+                 source_subnetwork_ip_ranges_to_nat: Optional[pulumi.Input[str]] = None,
+                 subnetworks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['RouterNatSubnetworkArgs']]]]] = None,
+                 tcp_established_idle_timeout_sec: Optional[pulumi.Input[float]] = None,
+                 tcp_transitory_idle_timeout_sec: Optional[pulumi.Input[float]] = None,
+                 udp_idle_timeout_sec: Optional[pulumi.Input[float]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         A NAT service created in a router.
 
@@ -119,10 +48,10 @@ class RouterNat(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] drain_nat_ips: A list of URLs of the IP resources to be drained. These IPs must be
+        :param pulumi.Input[List[pulumi.Input[str]]] drain_nat_ips: A list of URLs of the IP resources to be drained. These IPs must be
                valid static external IPs that have been assigned to the NAT.
         :param pulumi.Input[float] icmp_idle_timeout_sec: Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
-        :param pulumi.Input[dict] log_config: Configuration for logging on NAT
+        :param pulumi.Input[pulumi.InputType['RouterNatLogConfigArgs']] log_config: Configuration for logging on NAT
                Structure is documented below.
         :param pulumi.Input[float] min_ports_per_vm: Minimum number of ports allocated to a VM from this NAT.
         :param pulumi.Input[str] name: Self-link of subnetwork to NAT
@@ -130,7 +59,7 @@ class RouterNat(pulumi.CustomResource):
                `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
                Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
                Possible values are `MANUAL_ONLY` and `AUTO_ONLY`.
-        :param pulumi.Input[list] nat_ips: Self-links of NAT IPs. Only valid if natIpAllocateOption
+        :param pulumi.Input[List[pulumi.Input[str]]] nat_ips: Self-links of NAT IPs. Only valid if natIpAllocateOption
                is set to MANUAL_ONLY.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -147,7 +76,7 @@ class RouterNat(pulumi.CustomResource):
                ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any
                other RouterNat section in any Router for this network in this region.
                Possible values are `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, and `LIST_OF_SUBNETWORKS`.
-        :param pulumi.Input[list] subnetworks: One or more subnetwork NAT configurations. Only used if
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['RouterNatSubnetworkArgs']]]] subnetworks: One or more subnetwork NAT configurations. Only used if
                `source_subnetwork_ip_ranges_to_nat` is set to `LIST_OF_SUBNETWORKS`
                Structure is documented below.
         :param pulumi.Input[float] tcp_established_idle_timeout_sec: Timeout (in seconds) for TCP established connections.
@@ -155,24 +84,6 @@ class RouterNat(pulumi.CustomResource):
         :param pulumi.Input[float] tcp_transitory_idle_timeout_sec: Timeout (in seconds) for TCP transitory connections.
                Defaults to 30s if not set.
         :param pulumi.Input[float] udp_idle_timeout_sec: Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
-
-        The **log_config** object supports the following:
-
-          * `enable` (`pulumi.Input[bool]`) - Indicates whether or not to export logs.
-          * `filter` (`pulumi.Input[str]`) - Specifies the desired filtering of logs on this NAT.
-            Possible values are `ERRORS_ONLY`, `TRANSLATIONS_ONLY`, and `ALL`.
-
-        The **subnetworks** object supports the following:
-
-          * `name` (`pulumi.Input[str]`) - Self-link of subnetwork to NAT
-          * `secondaryIpRangeNames` (`pulumi.Input[list]`) - List of the secondary ranges of the subnetwork that are allowed
-            to use NAT. This can be populated only if
-            `LIST_OF_SECONDARY_IP_RANGES` is one of the values in
-            sourceIpRangesToNat
-          * `sourceIpRangesToNats` (`pulumi.Input[list]`) - List of options for which source IPs in the subnetwork
-            should have NAT enabled. Supported values include:
-            `ALL_IP_RANGES`, `LIST_OF_SECONDARY_IP_RANGES`,
-            `PRIMARY_IP_RANGE`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -219,18 +130,35 @@ class RouterNat(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, drain_nat_ips=None, icmp_idle_timeout_sec=None, log_config=None, min_ports_per_vm=None, name=None, nat_ip_allocate_option=None, nat_ips=None, project=None, region=None, router=None, source_subnetwork_ip_ranges_to_nat=None, subnetworks=None, tcp_established_idle_timeout_sec=None, tcp_transitory_idle_timeout_sec=None, udp_idle_timeout_sec=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            drain_nat_ips: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            icmp_idle_timeout_sec: Optional[pulumi.Input[float]] = None,
+            log_config: Optional[pulumi.Input[pulumi.InputType['RouterNatLogConfigArgs']]] = None,
+            min_ports_per_vm: Optional[pulumi.Input[float]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            nat_ip_allocate_option: Optional[pulumi.Input[str]] = None,
+            nat_ips: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            router: Optional[pulumi.Input[str]] = None,
+            source_subnetwork_ip_ranges_to_nat: Optional[pulumi.Input[str]] = None,
+            subnetworks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['RouterNatSubnetworkArgs']]]]] = None,
+            tcp_established_idle_timeout_sec: Optional[pulumi.Input[float]] = None,
+            tcp_transitory_idle_timeout_sec: Optional[pulumi.Input[float]] = None,
+            udp_idle_timeout_sec: Optional[pulumi.Input[float]] = None) -> 'RouterNat':
         """
         Get an existing RouterNat resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] drain_nat_ips: A list of URLs of the IP resources to be drained. These IPs must be
+        :param pulumi.Input[List[pulumi.Input[str]]] drain_nat_ips: A list of URLs of the IP resources to be drained. These IPs must be
                valid static external IPs that have been assigned to the NAT.
         :param pulumi.Input[float] icmp_idle_timeout_sec: Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
-        :param pulumi.Input[dict] log_config: Configuration for logging on NAT
+        :param pulumi.Input[pulumi.InputType['RouterNatLogConfigArgs']] log_config: Configuration for logging on NAT
                Structure is documented below.
         :param pulumi.Input[float] min_ports_per_vm: Minimum number of ports allocated to a VM from this NAT.
         :param pulumi.Input[str] name: Self-link of subnetwork to NAT
@@ -238,7 +166,7 @@ class RouterNat(pulumi.CustomResource):
                `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
                Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
                Possible values are `MANUAL_ONLY` and `AUTO_ONLY`.
-        :param pulumi.Input[list] nat_ips: Self-links of NAT IPs. Only valid if natIpAllocateOption
+        :param pulumi.Input[List[pulumi.Input[str]]] nat_ips: Self-links of NAT IPs. Only valid if natIpAllocateOption
                is set to MANUAL_ONLY.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -255,7 +183,7 @@ class RouterNat(pulumi.CustomResource):
                ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any
                other RouterNat section in any Router for this network in this region.
                Possible values are `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, and `LIST_OF_SUBNETWORKS`.
-        :param pulumi.Input[list] subnetworks: One or more subnetwork NAT configurations. Only used if
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['RouterNatSubnetworkArgs']]]] subnetworks: One or more subnetwork NAT configurations. Only used if
                `source_subnetwork_ip_ranges_to_nat` is set to `LIST_OF_SUBNETWORKS`
                Structure is documented below.
         :param pulumi.Input[float] tcp_established_idle_timeout_sec: Timeout (in seconds) for TCP established connections.
@@ -263,24 +191,6 @@ class RouterNat(pulumi.CustomResource):
         :param pulumi.Input[float] tcp_transitory_idle_timeout_sec: Timeout (in seconds) for TCP transitory connections.
                Defaults to 30s if not set.
         :param pulumi.Input[float] udp_idle_timeout_sec: Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
-
-        The **log_config** object supports the following:
-
-          * `enable` (`pulumi.Input[bool]`) - Indicates whether or not to export logs.
-          * `filter` (`pulumi.Input[str]`) - Specifies the desired filtering of logs on this NAT.
-            Possible values are `ERRORS_ONLY`, `TRANSLATIONS_ONLY`, and `ALL`.
-
-        The **subnetworks** object supports the following:
-
-          * `name` (`pulumi.Input[str]`) - Self-link of subnetwork to NAT
-          * `secondaryIpRangeNames` (`pulumi.Input[list]`) - List of the secondary ranges of the subnetwork that are allowed
-            to use NAT. This can be populated only if
-            `LIST_OF_SECONDARY_IP_RANGES` is one of the values in
-            sourceIpRangesToNat
-          * `sourceIpRangesToNats` (`pulumi.Input[list]`) - List of options for which source IPs in the subnetwork
-            should have NAT enabled. Supported values include:
-            `ALL_IP_RANGES`, `LIST_OF_SECONDARY_IP_RANGES`,
-            `PRIMARY_IP_RANGE`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -303,8 +213,150 @@ class RouterNat(pulumi.CustomResource):
         __props__["udp_idle_timeout_sec"] = udp_idle_timeout_sec
         return RouterNat(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="drainNatIps")
+    def drain_nat_ips(self) -> Optional[List[str]]:
+        """
+        A list of URLs of the IP resources to be drained. These IPs must be
+        valid static external IPs that have been assigned to the NAT.
+        """
+        return pulumi.get(self, "drain_nat_ips")
+
+    @property
+    @pulumi.getter(name="icmpIdleTimeoutSec")
+    def icmp_idle_timeout_sec(self) -> Optional[float]:
+        """
+        Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
+        """
+        return pulumi.get(self, "icmp_idle_timeout_sec")
+
+    @property
+    @pulumi.getter(name="logConfig")
+    def log_config(self) -> Optional['outputs.RouterNatLogConfig']:
+        """
+        Configuration for logging on NAT
+        Structure is documented below.
+        """
+        return pulumi.get(self, "log_config")
+
+    @property
+    @pulumi.getter(name="minPortsPerVm")
+    def min_ports_per_vm(self) -> Optional[float]:
+        """
+        Minimum number of ports allocated to a VM from this NAT.
+        """
+        return pulumi.get(self, "min_ports_per_vm")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Self-link of subnetwork to NAT
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="natIpAllocateOption")
+    def nat_ip_allocate_option(self) -> str:
+        """
+        How external IPs should be allocated for this NAT. Valid values are
+        `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
+        Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
+        Possible values are `MANUAL_ONLY` and `AUTO_ONLY`.
+        """
+        return pulumi.get(self, "nat_ip_allocate_option")
+
+    @property
+    @pulumi.getter(name="natIps")
+    def nat_ips(self) -> Optional[List[str]]:
+        """
+        Self-links of NAT IPs. Only valid if natIpAllocateOption
+        is set to MANUAL_ONLY.
+        """
+        return pulumi.get(self, "nat_ips")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        Region where the router and NAT reside.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def router(self) -> str:
+        """
+        The name of the Cloud Router in which this NAT will be configured.
+        """
+        return pulumi.get(self, "router")
+
+    @property
+    @pulumi.getter(name="sourceSubnetworkIpRangesToNat")
+    def source_subnetwork_ip_ranges_to_nat(self) -> str:
+        """
+        How NAT should be configured per Subnetwork.
+        If `ALL_SUBNETWORKS_ALL_IP_RANGES`, all of the
+        IP ranges in every Subnetwork are allowed to Nat.
+        If `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, all of the primary IP
+        ranges in every Subnetwork are allowed to Nat.
+        `LIST_OF_SUBNETWORKS`: A list of Subnetworks are allowed to Nat
+        (specified in the field subnetwork below). Note that if this field
+        contains ALL_SUBNETWORKS_ALL_IP_RANGES or
+        ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any
+        other RouterNat section in any Router for this network in this region.
+        Possible values are `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, and `LIST_OF_SUBNETWORKS`.
+        """
+        return pulumi.get(self, "source_subnetwork_ip_ranges_to_nat")
+
+    @property
+    @pulumi.getter
+    def subnetworks(self) -> Optional[List['outputs.RouterNatSubnetwork']]:
+        """
+        One or more subnetwork NAT configurations. Only used if
+        `source_subnetwork_ip_ranges_to_nat` is set to `LIST_OF_SUBNETWORKS`
+        Structure is documented below.
+        """
+        return pulumi.get(self, "subnetworks")
+
+    @property
+    @pulumi.getter(name="tcpEstablishedIdleTimeoutSec")
+    def tcp_established_idle_timeout_sec(self) -> Optional[float]:
+        """
+        Timeout (in seconds) for TCP established connections.
+        Defaults to 1200s if not set.
+        """
+        return pulumi.get(self, "tcp_established_idle_timeout_sec")
+
+    @property
+    @pulumi.getter(name="tcpTransitoryIdleTimeoutSec")
+    def tcp_transitory_idle_timeout_sec(self) -> Optional[float]:
+        """
+        Timeout (in seconds) for TCP transitory connections.
+        Defaults to 30s if not set.
+        """
+        return pulumi.get(self, "tcp_transitory_idle_timeout_sec")
+
+    @property
+    @pulumi.getter(name="udpIdleTimeoutSec")
+    def udp_idle_timeout_sec(self) -> Optional[float]:
+        """
+        Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
+        """
+        return pulumi.get(self, "udp_idle_timeout_sec")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

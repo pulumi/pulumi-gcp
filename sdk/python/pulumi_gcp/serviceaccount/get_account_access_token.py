@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
 
+__all__ = [
+    'GetAccountAccessTokenResult',
+    'AwaitableGetAccountAccessTokenResult',
+    'get_account_access_token',
+]
 
+@pulumi.output_type
 class GetAccountAccessTokenResult:
     """
     A collection of values returned by getAccountAccessToken.
@@ -16,28 +22,58 @@ class GetAccountAccessTokenResult:
     def __init__(__self__, access_token=None, delegates=None, id=None, lifetime=None, scopes=None, target_service_account=None):
         if access_token and not isinstance(access_token, str):
             raise TypeError("Expected argument 'access_token' to be a str")
-        __self__.access_token = access_token
+        pulumi.set(__self__, "access_token", access_token)
+        if delegates and not isinstance(delegates, list):
+            raise TypeError("Expected argument 'delegates' to be a list")
+        pulumi.set(__self__, "delegates", delegates)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if lifetime and not isinstance(lifetime, str):
+            raise TypeError("Expected argument 'lifetime' to be a str")
+        pulumi.set(__self__, "lifetime", lifetime)
+        if scopes and not isinstance(scopes, list):
+            raise TypeError("Expected argument 'scopes' to be a list")
+        pulumi.set(__self__, "scopes", scopes)
+        if target_service_account and not isinstance(target_service_account, str):
+            raise TypeError("Expected argument 'target_service_account' to be a str")
+        pulumi.set(__self__, "target_service_account", target_service_account)
+
+    @property
+    @pulumi.getter(name="accessToken")
+    def access_token(self) -> str:
         """
         The `access_token` representing the new generated identity.
         """
-        if delegates and not isinstance(delegates, list):
-            raise TypeError("Expected argument 'delegates' to be a list")
-        __self__.delegates = delegates
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "access_token")
+
+    @property
+    @pulumi.getter
+    def delegates(self) -> Optional[List[str]]:
+        return pulumi.get(self, "delegates")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if lifetime and not isinstance(lifetime, str):
-            raise TypeError("Expected argument 'lifetime' to be a str")
-        __self__.lifetime = lifetime
-        if scopes and not isinstance(scopes, list):
-            raise TypeError("Expected argument 'scopes' to be a list")
-        __self__.scopes = scopes
-        if target_service_account and not isinstance(target_service_account, str):
-            raise TypeError("Expected argument 'target_service_account' to be a str")
-        __self__.target_service_account = target_service_account
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def lifetime(self) -> Optional[str]:
+        return pulumi.get(self, "lifetime")
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> List[str]:
+        return pulumi.get(self, "scopes")
+
+    @property
+    @pulumi.getter(name="targetServiceAccount")
+    def target_service_account(self) -> str:
+        return pulumi.get(self, "target_service_account")
 
 
 class AwaitableGetAccountAccessTokenResult(GetAccountAccessTokenResult):
@@ -54,7 +90,11 @@ class AwaitableGetAccountAccessTokenResult(GetAccountAccessTokenResult):
             target_service_account=self.target_service_account)
 
 
-def get_account_access_token(delegates=None, lifetime=None, scopes=None, target_service_account=None, opts=None):
+def get_account_access_token(delegates: Optional[List[str]] = None,
+                             lifetime: Optional[str] = None,
+                             scopes: Optional[List[str]] = None,
+                             target_service_account: Optional[str] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountAccessTokenResult:
     """
     This data source provides a google `oauth2` `access_token` for a different service account than the one initially running the script.
 
@@ -62,9 +102,9 @@ def get_account_access_token(delegates=None, lifetime=None, scopes=None, target_
     [the official documentation](https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials) as well as [iamcredentials.generateAccessToken()](https://cloud.google.com/iam/credentials/reference/rest/v1/projects.serviceAccounts/generateAccessToken)
 
 
-    :param list delegates: Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.  (e.g. `["projects/-/serviceAccounts/delegate-svc-account@project-id.iam.gserviceaccount.com"]`)
+    :param List[str] delegates: Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.  (e.g. `["projects/-/serviceAccounts/delegate-svc-account@project-id.iam.gserviceaccount.com"]`)
     :param str lifetime: Lifetime of the impersonated token (defaults to its max: `3600s`).
-    :param list scopes: The scopes the new credential should have (e.g. `["storage-ro", "cloud-platform"]`)
+    :param List[str] scopes: The scopes the new credential should have (e.g. `["storage-ro", "cloud-platform"]`)
     :param str target_service_account: The service account _to_ impersonate (e.g. `service_B@your-project-id.iam.gserviceaccount.com`)
     """
     __args__ = dict()
@@ -76,12 +116,12 @@ def get_account_access_token(delegates=None, lifetime=None, scopes=None, target_
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('gcp:serviceAccount/getAccountAccessToken:getAccountAccessToken', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('gcp:serviceAccount/getAccountAccessToken:getAccountAccessToken', __args__, opts=opts, typ=GetAccountAccessTokenResult).value
 
     return AwaitableGetAccountAccessTokenResult(
-        access_token=__ret__.get('accessToken'),
-        delegates=__ret__.get('delegates'),
-        id=__ret__.get('id'),
-        lifetime=__ret__.get('lifetime'),
-        scopes=__ret__.get('scopes'),
-        target_service_account=__ret__.get('targetServiceAccount'))
+        access_token=__ret__.access_token,
+        delegates=__ret__.delegates,
+        id=__ret__.id,
+        lifetime=__ret__.lifetime,
+        scopes=__ret__.scopes,
+        target_service_account=__ret__.target_service_account)

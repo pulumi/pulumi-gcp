@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
 
+__all__ = [
+    'GetProjectServiceAccountResult',
+    'AwaitableGetProjectServiceAccountResult',
+    'get_project_service_account',
+]
 
+@pulumi.output_type
 class GetProjectServiceAccountResult:
     """
     A collection of values returned by getProjectServiceAccount.
@@ -16,23 +22,43 @@ class GetProjectServiceAccountResult:
     def __init__(__self__, email_address=None, id=None, project=None, user_project=None):
         if email_address and not isinstance(email_address, str):
             raise TypeError("Expected argument 'email_address' to be a str")
-        __self__.email_address = email_address
+        pulumi.set(__self__, "email_address", email_address)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if project and not isinstance(project, str):
+            raise TypeError("Expected argument 'project' to be a str")
+        pulumi.set(__self__, "project", project)
+        if user_project and not isinstance(user_project, str):
+            raise TypeError("Expected argument 'user_project' to be a str")
+        pulumi.set(__self__, "user_project", user_project)
+
+    @property
+    @pulumi.getter(name="emailAddress")
+    def email_address(self) -> str:
         """
         The email address of the service account. This value is often used to refer to the service account
         in order to grant IAM permissions.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "email_address")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if project and not isinstance(project, str):
-            raise TypeError("Expected argument 'project' to be a str")
-        __self__.project = project
-        if user_project and not isinstance(user_project, str):
-            raise TypeError("Expected argument 'user_project' to be a str")
-        __self__.user_project = user_project
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="userProject")
+    def user_project(self) -> Optional[str]:
+        return pulumi.get(self, "user_project")
 
 
 class AwaitableGetProjectServiceAccountResult(GetProjectServiceAccountResult):
@@ -47,7 +73,9 @@ class AwaitableGetProjectServiceAccountResult(GetProjectServiceAccountResult):
             user_project=self.user_project)
 
 
-def get_project_service_account(project=None, user_project=None, opts=None):
+def get_project_service_account(project: Optional[str] = None,
+                                user_project: Optional[str] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectServiceAccountResult:
     """
     Get the email address of a project's unique Google Cloud Storage service account.
 
@@ -69,10 +97,10 @@ def get_project_service_account(project=None, user_project=None, opts=None):
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('gcp:storage/getProjectServiceAccount:getProjectServiceAccount', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('gcp:storage/getProjectServiceAccount:getProjectServiceAccount', __args__, opts=opts, typ=GetProjectServiceAccountResult).value
 
     return AwaitableGetProjectServiceAccountResult(
-        email_address=__ret__.get('emailAddress'),
-        id=__ret__.get('id'),
-        project=__ret__.get('project'),
-        user_project=__ret__.get('userProject'))
+        email_address=__ret__.email_address,
+        id=__ret__.id,
+        project=__ret__.project,
+        user_project=__ret__.user_project)

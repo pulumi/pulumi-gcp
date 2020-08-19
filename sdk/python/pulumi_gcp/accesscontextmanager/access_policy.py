@@ -5,33 +5,21 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['AccessPolicy']
 
 
 class AccessPolicy(pulumi.CustomResource):
-    create_time: pulumi.Output[str]
-    """
-    Time the AccessPolicy was created in UTC.
-    """
-    name: pulumi.Output[str]
-    """
-    Resource name of the AccessPolicy. Format: {policy_id}
-    """
-    parent: pulumi.Output[str]
-    """
-    The parent of this AccessPolicy in the Cloud Resource Hierarchy.
-    Format: organizations/{organization_id}
-    """
-    title: pulumi.Output[str]
-    """
-    Human readable title. Does not affect behavior.
-    """
-    update_time: pulumi.Output[str]
-    """
-    Time the AccessPolicy was updated in UTC.
-    """
-    def __init__(__self__, resource_name, opts=None, parent=None, title=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 parent: Optional[pulumi.Input[str]] = None,
+                 title: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         AccessPolicy is a container for AccessLevels (which define the necessary
         attributes to use GCP services) and ServicePerimeters (which define
@@ -86,13 +74,20 @@ class AccessPolicy(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, create_time=None, name=None, parent=None, title=None, update_time=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            parent: Optional[pulumi.Input[str]] = None,
+            title: Optional[pulumi.Input[str]] = None,
+            update_time: Optional[pulumi.Input[str]] = None) -> 'AccessPolicy':
         """
         Get an existing AccessPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Time the AccessPolicy was created in UTC.
         :param pulumi.Input[str] name: Resource name of the AccessPolicy. Format: {policy_id}
@@ -112,8 +107,50 @@ class AccessPolicy(pulumi.CustomResource):
         __props__["update_time"] = update_time
         return AccessPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        Time the AccessPolicy was created in UTC.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Resource name of the AccessPolicy. Format: {policy_id}
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def parent(self) -> str:
+        """
+        The parent of this AccessPolicy in the Cloud Resource Hierarchy.
+        Format: organizations/{organization_id}
+        """
+        return pulumi.get(self, "parent")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        """
+        Human readable title. Does not affect behavior.
+        """
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        """
+        Time the AccessPolicy was updated in UTC.
+        """
+        return pulumi.get(self, "update_time")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

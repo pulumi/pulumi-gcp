@@ -5,45 +5,27 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['AppEngineServiceIamBinding']
 
 
 class AppEngineServiceIamBinding(pulumi.CustomResource):
-    app_id: pulumi.Output[str]
-    """
-    Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
-    """
-    condition: pulumi.Output[dict]
-    """
-    An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
-    Structure is documented below.
-
-      * `description` (`str`) - An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-      * `expression` (`str`) - Textual representation of an expression in Common Expression Language syntax.
-      * `title` (`str`) - A title for the expression, i.e. a short string describing its purpose.
-    """
-    etag: pulumi.Output[str]
-    """
-    (Computed) The etag of the IAM policy.
-    """
-    members: pulumi.Output[list]
-    project: pulumi.Output[str]
-    """
-    The ID of the project in which the resource belongs.
-    If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-    """
-    role: pulumi.Output[str]
-    """
-    The role that should be applied. Only one
-    `iap.AppEngineServiceIamBinding` can be used per role. Note that custom roles must be of the format
-    `[projects|organizations]/{parent-name}/roles/{role-name}`.
-    """
-    service: pulumi.Output[str]
-    """
-    Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
-    """
-    def __init__(__self__, resource_name, opts=None, app_id=None, condition=None, members=None, project=None, role=None, service=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 app_id: Optional[pulumi.Input[str]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['AppEngineServiceIamBindingConditionArgs']]] = None,
+                 members: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 role: Optional[pulumi.Input[str]] = None,
+                 service: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Three different resources help you manage your IAM policy for Identity-Aware Proxy AppEngineService. Each of these resources serves a different use case:
 
@@ -58,7 +40,7 @@ class AppEngineServiceIamBinding(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_id: Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
-        :param pulumi.Input[dict] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[pulumi.InputType['AppEngineServiceIamBindingConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -66,12 +48,6 @@ class AppEngineServiceIamBinding(pulumi.CustomResource):
                `iap.AppEngineServiceIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input[str] service: Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
-
-        The **condition** object supports the following:
-
-          * `description` (`pulumi.Input[str]`) - An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-          * `expression` (`pulumi.Input[str]`) - Textual representation of an expression in Common Expression Language syntax.
-          * `title` (`pulumi.Input[str]`) - A title for the expression, i.e. a short string describing its purpose.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -112,16 +88,25 @@ class AppEngineServiceIamBinding(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, app_id=None, condition=None, etag=None, members=None, project=None, role=None, service=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            app_id: Optional[pulumi.Input[str]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['AppEngineServiceIamBindingConditionArgs']]] = None,
+            etag: Optional[pulumi.Input[str]] = None,
+            members: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            role: Optional[pulumi.Input[str]] = None,
+            service: Optional[pulumi.Input[str]] = None) -> 'AppEngineServiceIamBinding':
         """
         Get an existing AppEngineServiceIamBinding resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_id: Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
-        :param pulumi.Input[dict] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[pulumi.InputType['AppEngineServiceIamBindingConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -130,12 +115,6 @@ class AppEngineServiceIamBinding(pulumi.CustomResource):
                `iap.AppEngineServiceIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input[str] service: Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
-
-        The **condition** object supports the following:
-
-          * `description` (`pulumi.Input[str]`) - An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-          * `expression` (`pulumi.Input[str]`) - Textual representation of an expression in Common Expression Language syntax.
-          * `title` (`pulumi.Input[str]`) - A title for the expression, i.e. a short string describing its purpose.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -150,8 +129,66 @@ class AppEngineServiceIamBinding(pulumi.CustomResource):
         __props__["service"] = service
         return AppEngineServiceIamBinding(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="appId")
+    def app_id(self) -> str:
+        """
+        Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+        """
+        return pulumi.get(self, "app_id")
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional['outputs.AppEngineServiceIamBindingCondition']:
+        """
+        An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> str:
+        """
+        (Computed) The etag of the IAM policy.
+        """
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter
+    def members(self) -> List[str]:
+        return pulumi.get(self, "members")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def role(self) -> str:
+        """
+        The role that should be applied. Only one
+        `iap.AppEngineServiceIamBinding` can be used per role. Note that custom roles must be of the format
+        `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        """
+        return pulumi.get(self, "role")
+
+    @property
+    @pulumi.getter
+    def service(self) -> str:
+        """
+        Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
+        """
+        return pulumi.get(self, "service")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

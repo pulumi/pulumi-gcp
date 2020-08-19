@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
 
+__all__ = [
+    'GetNetworkEndpointGroupResult',
+    'AwaitableGetNetworkEndpointGroupResult',
+    'get_network_endpoint_group',
+]
 
+@pulumi.output_type
 class GetNetworkEndpointGroupResult:
     """
     A collection of values returned by getNetworkEndpointGroup.
@@ -16,58 +22,113 @@ class GetNetworkEndpointGroupResult:
     def __init__(__self__, default_port=None, description=None, id=None, name=None, network=None, network_endpoint_type=None, project=None, self_link=None, size=None, subnetwork=None, zone=None):
         if default_port and not isinstance(default_port, float):
             raise TypeError("Expected argument 'default_port' to be a float")
-        __self__.default_port = default_port
+        pulumi.set(__self__, "default_port", default_port)
+        if description and not isinstance(description, str):
+            raise TypeError("Expected argument 'description' to be a str")
+        pulumi.set(__self__, "description", description)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if network and not isinstance(network, str):
+            raise TypeError("Expected argument 'network' to be a str")
+        pulumi.set(__self__, "network", network)
+        if network_endpoint_type and not isinstance(network_endpoint_type, str):
+            raise TypeError("Expected argument 'network_endpoint_type' to be a str")
+        pulumi.set(__self__, "network_endpoint_type", network_endpoint_type)
+        if project and not isinstance(project, str):
+            raise TypeError("Expected argument 'project' to be a str")
+        pulumi.set(__self__, "project", project)
+        if self_link and not isinstance(self_link, str):
+            raise TypeError("Expected argument 'self_link' to be a str")
+        pulumi.set(__self__, "self_link", self_link)
+        if size and not isinstance(size, float):
+            raise TypeError("Expected argument 'size' to be a float")
+        pulumi.set(__self__, "size", size)
+        if subnetwork and not isinstance(subnetwork, str):
+            raise TypeError("Expected argument 'subnetwork' to be a str")
+        pulumi.set(__self__, "subnetwork", subnetwork)
+        if zone and not isinstance(zone, str):
+            raise TypeError("Expected argument 'zone' to be a str")
+        pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="defaultPort")
+    def default_port(self) -> float:
         """
         The NEG default port.
         """
-        if description and not isinstance(description, str):
-            raise TypeError("Expected argument 'description' to be a str")
-        __self__.description = description
+        return pulumi.get(self, "default_port")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
         """
         The NEG description.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
-        if network and not isinstance(network, str):
-            raise TypeError("Expected argument 'network' to be a str")
-        __self__.network = network
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def network(self) -> str:
         """
         The network to which all network endpoints in the NEG belong.
         """
-        if network_endpoint_type and not isinstance(network_endpoint_type, str):
-            raise TypeError("Expected argument 'network_endpoint_type' to be a str")
-        __self__.network_endpoint_type = network_endpoint_type
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="networkEndpointType")
+    def network_endpoint_type(self) -> str:
         """
         Type of network endpoints in this network endpoint group.
         """
-        if project and not isinstance(project, str):
-            raise TypeError("Expected argument 'project' to be a str")
-        __self__.project = project
-        if self_link and not isinstance(self_link, str):
-            raise TypeError("Expected argument 'self_link' to be a str")
-        __self__.self_link = self_link
-        if size and not isinstance(size, float):
-            raise TypeError("Expected argument 'size' to be a float")
-        __self__.size = size
+        return pulumi.get(self, "network_endpoint_type")
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> Optional[str]:
+        return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter
+    def size(self) -> float:
         """
         Number of network endpoints in the network endpoint group.
         """
-        if subnetwork and not isinstance(subnetwork, str):
-            raise TypeError("Expected argument 'subnetwork' to be a str")
-        __self__.subnetwork = subnetwork
+        return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter
+    def subnetwork(self) -> str:
         """
         subnetwork to which all network endpoints in the NEG belong.
         """
-        if zone and not isinstance(zone, str):
-            raise TypeError("Expected argument 'zone' to be a str")
-        __self__.zone = zone
+        return pulumi.get(self, "subnetwork")
+
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[str]:
+        return pulumi.get(self, "zone")
 
 
 class AwaitableGetNetworkEndpointGroupResult(GetNetworkEndpointGroupResult):
@@ -89,7 +150,11 @@ class AwaitableGetNetworkEndpointGroupResult(GetNetworkEndpointGroupResult):
             zone=self.zone)
 
 
-def get_network_endpoint_group(name=None, project=None, self_link=None, zone=None, opts=None):
+def get_network_endpoint_group(name: Optional[str] = None,
+                               project: Optional[str] = None,
+                               self_link: Optional[str] = None,
+                               zone: Optional[str] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetworkEndpointGroupResult:
     """
     Use this data source to access a Network Endpoint Group's attributes.
 
@@ -112,17 +177,17 @@ def get_network_endpoint_group(name=None, project=None, self_link=None, zone=Non
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('gcp:compute/getNetworkEndpointGroup:getNetworkEndpointGroup', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('gcp:compute/getNetworkEndpointGroup:getNetworkEndpointGroup', __args__, opts=opts, typ=GetNetworkEndpointGroupResult).value
 
     return AwaitableGetNetworkEndpointGroupResult(
-        default_port=__ret__.get('defaultPort'),
-        description=__ret__.get('description'),
-        id=__ret__.get('id'),
-        name=__ret__.get('name'),
-        network=__ret__.get('network'),
-        network_endpoint_type=__ret__.get('networkEndpointType'),
-        project=__ret__.get('project'),
-        self_link=__ret__.get('selfLink'),
-        size=__ret__.get('size'),
-        subnetwork=__ret__.get('subnetwork'),
-        zone=__ret__.get('zone'))
+        default_port=__ret__.default_port,
+        description=__ret__.description,
+        id=__ret__.id,
+        name=__ret__.name,
+        network=__ret__.network,
+        network_endpoint_type=__ret__.network_endpoint_type,
+        project=__ret__.project,
+        self_link=__ret__.self_link,
+        size=__ret__.size,
+        subnetwork=__ret__.subnetwork,
+        zone=__ret__.zone)

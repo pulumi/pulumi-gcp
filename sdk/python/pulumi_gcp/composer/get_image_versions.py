@@ -5,10 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
 
+__all__ = [
+    'GetImageVersionsResult',
+    'AwaitableGetImageVersionsResult',
+    'get_image_versions',
+]
 
+@pulumi.output_type
 class GetImageVersionsResult:
     """
     A collection of values returned by getImageVersions.
@@ -16,22 +23,42 @@ class GetImageVersionsResult:
     def __init__(__self__, id=None, image_versions=None, project=None, region=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if image_versions and not isinstance(image_versions, list):
+            raise TypeError("Expected argument 'image_versions' to be a list")
+        pulumi.set(__self__, "image_versions", image_versions)
+        if project and not isinstance(project, str):
+            raise TypeError("Expected argument 'project' to be a str")
+        pulumi.set(__self__, "project", project)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if image_versions and not isinstance(image_versions, list):
-            raise TypeError("Expected argument 'image_versions' to be a list")
-        __self__.image_versions = image_versions
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="imageVersions")
+    def image_versions(self) -> List['outputs.GetImageVersionsImageVersionResult']:
         """
         A list of composer image versions available in the given project and location. Each `image_version` contains:
         """
-        if project and not isinstance(project, str):
-            raise TypeError("Expected argument 'project' to be a str")
-        __self__.project = project
-        if region and not isinstance(region, str):
-            raise TypeError("Expected argument 'region' to be a str")
-        __self__.region = region
+        return pulumi.get(self, "image_versions")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        return pulumi.get(self, "region")
 
 
 class AwaitableGetImageVersionsResult(GetImageVersionsResult):
@@ -46,7 +73,9 @@ class AwaitableGetImageVersionsResult(GetImageVersionsResult):
             region=self.region)
 
 
-def get_image_versions(project=None, region=None, opts=None):
+def get_image_versions(project: Optional[str] = None,
+                       region: Optional[str] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetImageVersionsResult:
     """
     Provides access to available Cloud Composer versions in a region for a given project.
 
@@ -63,10 +92,10 @@ def get_image_versions(project=None, region=None, opts=None):
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('gcp:composer/getImageVersions:getImageVersions', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('gcp:composer/getImageVersions:getImageVersions', __args__, opts=opts, typ=GetImageVersionsResult).value
 
     return AwaitableGetImageVersionsResult(
-        id=__ret__.get('id'),
-        image_versions=__ret__.get('imageVersions'),
-        project=__ret__.get('project'),
-        region=__ret__.get('region'))
+        id=__ret__.id,
+        image_versions=__ret__.image_versions,
+        project=__ret__.project,
+        region=__ret__.region)

@@ -5,3 +5,5 @@
 # Export this package's modules as members:
 from .get_tensorflow_versions import *
 from .node import *
+from ._inputs import *
+from . import outputs

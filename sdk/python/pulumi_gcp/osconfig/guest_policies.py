@@ -5,302 +5,34 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['GuestPolicies']
 
 
 class GuestPolicies(pulumi.CustomResource):
-    assignment: pulumi.Output[dict]
-    """
-    Specifies the VM instances that are assigned to this policy. This allows you to target sets
-    or groups of VM instances by different parameters such as labels, names, OS, or zones.
-    If left empty, all VM instances underneath this policy are targeted.
-    At the same level in the resource hierarchy (that is within a project), the service prevents
-    the creation of multiple policies that conflict with each other.
-    For more information, see how the service
-    [handles assignment conflicts](https://cloud.google.com/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
-    Structure is documented below.
-
-      * `groupLabels` (`list`) - Targets instances matching at least one of these label sets. This allows an assignment to target disparate groups,
-        for example "env=prod or env=staging".
-        Structure is documented below.
-        * `labels` (`dict`) - Google Compute Engine instance labels that must be present for an instance to be included in this assignment group.
-
-      * `instanceNamePrefixes` (`list`) - Targets VM instances whose name starts with one of these prefixes.
-        Like labels, this is another way to group VM instances when targeting configs,
-        for example prefix="prod-".
-        Only supported for project-level policies.
-      * `instances` (`list`) - Targets any of the instances specified. Instances are specified by their URI in the form
-        zones/[ZONE]/instances/[INSTANCE_NAME].
-        Instance targeting is uncommon and is supported to facilitate the management of changes
-        by the instance or to target specific VM instances for development and testing.
-        Only supported for project-level policies and must reference instances within this project.
-      * `osTypes` (`list`) - Targets VM instances matching at least one of the following OS types.
-        VM instances must match all supplied criteria for a given OsType to be included.
-        Structure is documented below.
-        * `osArchitecture` (`str`) - Targets VM instances with OS Inventory enabled and having the following OS architecture.
-        * `osShortName` (`str`) - Targets VM instances with OS Inventory enabled and having the following OS short name, for example "debian" or "windows".
-        * `osVersion` (`str`) - Targets VM instances with OS Inventory enabled and having the following following OS version.
-
-      * `zones` (`list`) - Targets instances in any of these zones. Leave empty to target instances in any zone.
-        Zonal targeting is uncommon and is supported to facilitate the management of changes by zone.
-    """
-    create_time: pulumi.Output[str]
-    """
-    Time this guest policy was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example:
-    "2014-10-02T15:01:23.045123456Z".
-    """
-    description: pulumi.Output[str]
-    """
-    Description of the guest policy. Length of the description is limited to 1024 characters.
-    """
-    etag: pulumi.Output[str]
-    """
-    The etag for this guest policy. If this is provided on update, it must match the server's etag.
-    """
-    guest_policy_id: pulumi.Output[str]
-    """
-    The logical name of the guest policy in the project with the following restrictions:
-    * Must contain only lowercase letters, numbers, and hyphens.
-    * Must start with a letter.
-    * Must be between 1-63 characters.
-    * Must end with a number or a letter.
-    * Must be unique within the project.
-    """
-    name: pulumi.Output[str]
-    """
-    Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
-    Names are also used to identify resources which helps to determine whether guest policies have conflicts.
-    This means that requests to create multiple recipes with the same name and version are rejected since they
-    could potentially have conflicting assignments.
-    """
-    package_repositories: pulumi.Output[list]
-    """
-    A list of package repositories to configure on the VM instance.
-    This is done before any other configs are applied so they can use these repos.
-    Package repositories are only configured if the corresponding package manager(s) are available.
-    Structure is documented below.
-
-      * `apt` (`dict`) - An Apt Repository.
-        Structure is documented below.
-        * `archiveType` (`str`) - Type of archive files in this repository. The default behavior is DEB.
-          Default value is `DEB`.
-          Possible values are `DEB` and `DEB_SRC`.
-        * `components` (`list`) - List of components for this repository. Must contain at least one item.
-        * `distribution` (`str`) - Distribution of this repository.
-        * `gpgKey` (`str`) - URI of the key file for this repository. The agent maintains a keyring at
-          /etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg containing all the keys in any applied guest policy.
-        * `uri` (`str`) - URI from which to fetch the object. It should contain both the protocol and path following the format {protocol}://{location}.
-
-      * `goo` (`dict`) - A Goo Repository.
-        Structure is documented below.
-        * `name` (`str`) - Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
-          Names are also used to identify resources which helps to determine whether guest policies have conflicts.
-          This means that requests to create multiple recipes with the same name and version are rejected since they
-          could potentially have conflicting assignments.
-        * `url` (`str`) - The url of the repository.
-
-      * `yum` (`dict`) - A Yum Repository.
-        Structure is documented below.
-        * `baseUrl` (`str`) - The location of the repository directory.
-        * `display_name` (`str`) - The display name of the repository.
-        * `gpgKeys` (`list`) - URIs of GPG keys.
-        * `id` (`str`) - Id of the artifact, which the installation and update steps of this recipe can reference.
-          Artifacts in a recipe cannot have the same id.
-
-      * `zypper` (`dict`) - A Zypper Repository.
-        Structure is documented below.
-        * `baseUrl` (`str`) - The location of the repository directory.
-        * `display_name` (`str`) - The display name of the repository.
-        * `gpgKeys` (`list`) - URIs of GPG keys.
-        * `id` (`str`) - Id of the artifact, which the installation and update steps of this recipe can reference.
-          Artifacts in a recipe cannot have the same id.
-    """
-    packages: pulumi.Output[list]
-    """
-    The software packages to be managed by this policy.
-    Structure is documented below.
-
-      * `desiredState` (`str`) - Default is INSTALLED. The desired state the agent should maintain for this recipe.
-        INSTALLED: The software recipe is installed on the instance but won't be updated to new versions.
-        INSTALLED_KEEP_UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version,
-        if a higher version of the recipe is assigned to this instance.
-        REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
-        Default value is `INSTALLED`.
-        Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
-      * `manager` (`str`) - Type of package manager that can be used to install this package. If a system does not have the package manager,
-        the package is not installed or removed no error message is returned. By default, or if you specify ANY,
-        the agent attempts to install and remove this package using the default package manager.
-        This is useful when creating a policy that applies to different types of systems.
-        The default behavior is ANY.
-        Default value is `ANY`.
-        Possible values are `ANY`, `APT`, `YUM`, `ZYPPER`, and `GOO`.
-      * `name` (`str`) - Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
-        Names are also used to identify resources which helps to determine whether guest policies have conflicts.
-        This means that requests to create multiple recipes with the same name and version are rejected since they
-        could potentially have conflicting assignments.
-    """
-    project: pulumi.Output[str]
-    """
-    The ID of the project in which the resource belongs.
-    If it is not provided, the provider project is used.
-    """
-    recipes: pulumi.Output[list]
-    """
-    A list of Recipes to install on the VM instance.
-    Structure is documented below.
-
-      * `artifacts` (`list`) - Resources available to be used in the steps in the recipe.
-        Structure is documented below.
-        * `allowInsecure` (`bool`) - Defaults to false. When false, recipes are subject to validations based on the artifact type:
-          Remote: A checksum must be specified, and only protocols with transport-layer security are permitted.
-          GCS: An object generation number must be specified.
-        * `gcs` (`dict`) - A Google Cloud Storage artifact.
-          Structure is documented below.
-          * `bucket` (`str`) - Bucket of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
-            this value would be my-bucket.
-          * `generation` (`float`) - Must be provided if allowInsecure is false. Generation number of the Google Cloud Storage object.
-            https://storage.googleapis.com/my-bucket/foo/bar#1234567 this value would be 1234567.
-          * `object` (`str`) - Name of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
-            this value would be foo/bar.
-
-        * `id` (`str`) - Id of the artifact, which the installation and update steps of this recipe can reference.
-          Artifacts in a recipe cannot have the same id.
-        * `remote` (`dict`) - A generic remote artifact.
-          Structure is documented below.
-          * `checkSum` (`str`) - Must be provided if allowInsecure is false. SHA256 checksum in hex format, to compare to the checksum of the artifact.
-            If the checksum is not empty and it doesn't match the artifact then the recipe installation fails before running any
-            of the steps.
-          * `uri` (`str`) - URI from which to fetch the object. It should contain both the protocol and path following the format {protocol}://{location}.
-
-      * `desiredState` (`str`) - Default is INSTALLED. The desired state the agent should maintain for this recipe.
-        INSTALLED: The software recipe is installed on the instance but won't be updated to new versions.
-        INSTALLED_KEEP_UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version,
-        if a higher version of the recipe is assigned to this instance.
-        REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
-        Default value is `INSTALLED`.
-        Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
-      * `installSteps` (`list`) - Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation.
-        Any steps taken (including partially completed steps) are not rolled back.
-        Structure is documented below.
-        * `archiveExtraction` (`dict`) - Extracts an archive into the specified directory.
-          Structure is documented below.
-          * `artifactId` (`str`) - The id of the relevant artifact in the recipe.
-          * `destination` (`str`) - Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
-          * `type` (`str`) - The type of the archive to extract.
-            Possible values are `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, and `ZIP`.
-
-        * `dpkgInstallation` (`dict`) - Installs a deb file via dpkg.
-          Structure is documented below.
-          * `artifactId` (`str`) - The id of the relevant artifact in the recipe.
-
-        * `fileCopy` (`dict`) - Copies a file onto the instance.
-          Structure is documented below.
-          * `artifactId` (`str`) - The id of the relevant artifact in the recipe.
-          * `destination` (`str`) - Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
-          * `overwrite` (`bool`) - Whether to allow this step to overwrite existing files.If this is false and the file already exists the file
-            is not overwritten and the step is considered a success. Defaults to false.
-          * `permissions` (`str`) - Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users
-            for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit
-            number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one
-            bit corresponds to the execute permission. Default behavior is 755.
-            Below are some examples of permissions and their associated values:
-            read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
-
-        * `fileExec` (`dict`) - Executes an artifact or local file.
-          Structure is documented below.
-          * `allowedExitCodes` (`str`) - Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
-          * `args` (`list`) - Arguments to be passed to the provided executable.
-          * `artifactId` (`str`) - The id of the relevant artifact in the recipe.
-          * `localPath` (`str`) - The absolute path of the file on the local filesystem.
-
-        * `msiInstallation` (`dict`) - Installs an MSI file.
-          Structure is documented below.
-          * `allowedExitCodes` (`list`) - Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
-          * `artifactId` (`str`) - The id of the relevant artifact in the recipe.
-          * `flags` (`list`) - The flags to use when installing the MSI. Defaults to the install flag.
-
-        * `rpmInstallation` (`dict`) - Installs an rpm file via the rpm utility.
-          Structure is documented below.
-          * `artifactId` (`str`) - The id of the relevant artifact in the recipe.
-
-        * `scriptRun` (`dict`) - Runs commands in a shell.
-          Structure is documented below.
-          * `allowedExitCodes` (`list`) - Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
-          * `interpreter` (`str`) - The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
-            which likely only succeed for scripts with shebang lines.
-            Possible values are `SHELL` and `POWERSHELL`.
-          * `script` (`str`) - The shell script to be executed.
-
-      * `name` (`str`) - Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
-        Names are also used to identify resources which helps to determine whether guest policies have conflicts.
-        This means that requests to create multiple recipes with the same name and version are rejected since they
-        could potentially have conflicting assignments.
-      * `updateSteps` (`list`) - Actions to be taken for updating this recipe. On failure it stops executing steps and does not attempt another update for this recipe.
-        Any steps taken (including partially completed steps) are not rolled back.
-        Structure is documented below.
-        * `archiveExtraction` (`dict`) - Extracts an archive into the specified directory.
-          Structure is documented below.
-          * `artifactId` (`str`) - The id of the relevant artifact in the recipe.
-          * `destination` (`str`) - Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
-          * `type` (`str`) - The type of the archive to extract.
-            Possible values are `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, and `ZIP`.
-
-        * `dpkgInstallation` (`dict`) - Installs a deb file via dpkg.
-          Structure is documented below.
-          * `artifactId` (`str`) - The id of the relevant artifact in the recipe.
-
-        * `fileCopy` (`dict`) - Copies a file onto the instance.
-          Structure is documented below.
-          * `artifactId` (`str`) - The id of the relevant artifact in the recipe.
-          * `destination` (`str`) - Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
-          * `overwrite` (`bool`) - Whether to allow this step to overwrite existing files.If this is false and the file already exists the file
-            is not overwritten and the step is considered a success. Defaults to false.
-          * `permissions` (`str`) - Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users
-            for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit
-            number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one
-            bit corresponds to the execute permission. Default behavior is 755.
-            Below are some examples of permissions and their associated values:
-            read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
-
-        * `fileExec` (`dict`) - Executes an artifact or local file.
-          Structure is documented below.
-          * `allowedExitCodes` (`list`) - Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
-          * `args` (`list`) - Arguments to be passed to the provided executable.
-          * `artifactId` (`str`) - The id of the relevant artifact in the recipe.
-          * `localPath` (`str`) - The absolute path of the file on the local filesystem.
-
-        * `msiInstallation` (`dict`) - Installs an MSI file.
-          Structure is documented below.
-          * `allowedExitCodes` (`list`) - Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
-          * `artifactId` (`str`) - The id of the relevant artifact in the recipe.
-          * `flags` (`list`) - The flags to use when installing the MSI. Defaults to the install flag.
-
-        * `rpmInstallation` (`dict`) - Installs an rpm file via the rpm utility.
-          Structure is documented below.
-          * `artifactId` (`str`) - The id of the relevant artifact in the recipe.
-
-        * `scriptRun` (`dict`) - Runs commands in a shell.
-          Structure is documented below.
-          * `allowedExitCodes` (`list`) - Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
-          * `interpreter` (`str`) - The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
-            which likely only succeed for scripts with shebang lines.
-            Possible values are `SHELL` and `POWERSHELL`.
-          * `script` (`str`) - The shell script to be executed.
-
-      * `version` (`str`) - The version of this software recipe. Version can be up to 4 period separated numbers (e.g. 12.34.56.78).
-    """
-    update_time: pulumi.Output[str]
-    """
-    Last time this guest policy was updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example:
-    "2014-10-02T15:01:23.045123456Z".
-    """
-    def __init__(__self__, resource_name, opts=None, assignment=None, description=None, etag=None, guest_policy_id=None, package_repositories=None, packages=None, project=None, recipes=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 assignment: Optional[pulumi.Input[pulumi.InputType['GuestPoliciesAssignmentArgs']]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
+                 guest_policy_id: Optional[pulumi.Input[str]] = None,
+                 package_repositories: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['GuestPoliciesPackageRepositoryArgs']]]]] = None,
+                 packages: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['GuestPoliciesPackageArgs']]]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 recipes: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['GuestPoliciesRecipeArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Create a GuestPolicies resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] assignment: Specifies the VM instances that are assigned to this policy. This allows you to target sets
+        :param pulumi.Input[pulumi.InputType['GuestPoliciesAssignmentArgs']] assignment: Specifies the VM instances that are assigned to this policy. This allows you to target sets
                or groups of VM instances by different parameters such as labels, names, OS, or zones.
                If left empty, all VM instances underneath this policy are targeted.
                At the same level in the resource hierarchy (that is within a project), the service prevents
@@ -316,242 +48,16 @@ class GuestPolicies(pulumi.CustomResource):
                * Must be between 1-63 characters.
                * Must end with a number or a letter.
                * Must be unique within the project.
-        :param pulumi.Input[list] package_repositories: A list of package repositories to configure on the VM instance.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['GuestPoliciesPackageRepositoryArgs']]]] package_repositories: A list of package repositories to configure on the VM instance.
                This is done before any other configs are applied so they can use these repos.
                Package repositories are only configured if the corresponding package manager(s) are available.
                Structure is documented below.
-        :param pulumi.Input[list] packages: The software packages to be managed by this policy.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['GuestPoliciesPackageArgs']]]] packages: The software packages to be managed by this policy.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[list] recipes: A list of Recipes to install on the VM instance.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['GuestPoliciesRecipeArgs']]]] recipes: A list of Recipes to install on the VM instance.
                Structure is documented below.
-
-        The **assignment** object supports the following:
-
-          * `groupLabels` (`pulumi.Input[list]`) - Targets instances matching at least one of these label sets. This allows an assignment to target disparate groups,
-            for example "env=prod or env=staging".
-            Structure is documented below.
-            * `labels` (`pulumi.Input[dict]`) - Google Compute Engine instance labels that must be present for an instance to be included in this assignment group.
-
-          * `instanceNamePrefixes` (`pulumi.Input[list]`) - Targets VM instances whose name starts with one of these prefixes.
-            Like labels, this is another way to group VM instances when targeting configs,
-            for example prefix="prod-".
-            Only supported for project-level policies.
-          * `instances` (`pulumi.Input[list]`) - Targets any of the instances specified. Instances are specified by their URI in the form
-            zones/[ZONE]/instances/[INSTANCE_NAME].
-            Instance targeting is uncommon and is supported to facilitate the management of changes
-            by the instance or to target specific VM instances for development and testing.
-            Only supported for project-level policies and must reference instances within this project.
-          * `osTypes` (`pulumi.Input[list]`) - Targets VM instances matching at least one of the following OS types.
-            VM instances must match all supplied criteria for a given OsType to be included.
-            Structure is documented below.
-            * `osArchitecture` (`pulumi.Input[str]`) - Targets VM instances with OS Inventory enabled and having the following OS architecture.
-            * `osShortName` (`pulumi.Input[str]`) - Targets VM instances with OS Inventory enabled and having the following OS short name, for example "debian" or "windows".
-            * `osVersion` (`pulumi.Input[str]`) - Targets VM instances with OS Inventory enabled and having the following following OS version.
-
-          * `zones` (`pulumi.Input[list]`) - Targets instances in any of these zones. Leave empty to target instances in any zone.
-            Zonal targeting is uncommon and is supported to facilitate the management of changes by zone.
-
-        The **package_repositories** object supports the following:
-
-          * `apt` (`pulumi.Input[dict]`) - An Apt Repository.
-            Structure is documented below.
-            * `archiveType` (`pulumi.Input[str]`) - Type of archive files in this repository. The default behavior is DEB.
-              Default value is `DEB`.
-              Possible values are `DEB` and `DEB_SRC`.
-            * `components` (`pulumi.Input[list]`) - List of components for this repository. Must contain at least one item.
-            * `distribution` (`pulumi.Input[str]`) - Distribution of this repository.
-            * `gpgKey` (`pulumi.Input[str]`) - URI of the key file for this repository. The agent maintains a keyring at
-              /etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg containing all the keys in any applied guest policy.
-            * `uri` (`pulumi.Input[str]`) - URI from which to fetch the object. It should contain both the protocol and path following the format {protocol}://{location}.
-
-          * `goo` (`pulumi.Input[dict]`) - A Goo Repository.
-            Structure is documented below.
-            * `name` (`pulumi.Input[str]`) - Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
-              Names are also used to identify resources which helps to determine whether guest policies have conflicts.
-              This means that requests to create multiple recipes with the same name and version are rejected since they
-              could potentially have conflicting assignments.
-            * `url` (`pulumi.Input[str]`) - The url of the repository.
-
-          * `yum` (`pulumi.Input[dict]`) - A Yum Repository.
-            Structure is documented below.
-            * `baseUrl` (`pulumi.Input[str]`) - The location of the repository directory.
-            * `display_name` (`pulumi.Input[str]`) - The display name of the repository.
-            * `gpgKeys` (`pulumi.Input[list]`) - URIs of GPG keys.
-            * `id` (`pulumi.Input[str]`) - Id of the artifact, which the installation and update steps of this recipe can reference.
-              Artifacts in a recipe cannot have the same id.
-
-          * `zypper` (`pulumi.Input[dict]`) - A Zypper Repository.
-            Structure is documented below.
-            * `baseUrl` (`pulumi.Input[str]`) - The location of the repository directory.
-            * `display_name` (`pulumi.Input[str]`) - The display name of the repository.
-            * `gpgKeys` (`pulumi.Input[list]`) - URIs of GPG keys.
-            * `id` (`pulumi.Input[str]`) - Id of the artifact, which the installation and update steps of this recipe can reference.
-              Artifacts in a recipe cannot have the same id.
-
-        The **packages** object supports the following:
-
-          * `desiredState` (`pulumi.Input[str]`) - Default is INSTALLED. The desired state the agent should maintain for this recipe.
-            INSTALLED: The software recipe is installed on the instance but won't be updated to new versions.
-            INSTALLED_KEEP_UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version,
-            if a higher version of the recipe is assigned to this instance.
-            REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
-            Default value is `INSTALLED`.
-            Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
-          * `manager` (`pulumi.Input[str]`) - Type of package manager that can be used to install this package. If a system does not have the package manager,
-            the package is not installed or removed no error message is returned. By default, or if you specify ANY,
-            the agent attempts to install and remove this package using the default package manager.
-            This is useful when creating a policy that applies to different types of systems.
-            The default behavior is ANY.
-            Default value is `ANY`.
-            Possible values are `ANY`, `APT`, `YUM`, `ZYPPER`, and `GOO`.
-          * `name` (`pulumi.Input[str]`) - Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
-            Names are also used to identify resources which helps to determine whether guest policies have conflicts.
-            This means that requests to create multiple recipes with the same name and version are rejected since they
-            could potentially have conflicting assignments.
-
-        The **recipes** object supports the following:
-
-          * `artifacts` (`pulumi.Input[list]`) - Resources available to be used in the steps in the recipe.
-            Structure is documented below.
-            * `allowInsecure` (`pulumi.Input[bool]`) - Defaults to false. When false, recipes are subject to validations based on the artifact type:
-              Remote: A checksum must be specified, and only protocols with transport-layer security are permitted.
-              GCS: An object generation number must be specified.
-            * `gcs` (`pulumi.Input[dict]`) - A Google Cloud Storage artifact.
-              Structure is documented below.
-              * `bucket` (`pulumi.Input[str]`) - Bucket of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
-                this value would be my-bucket.
-              * `generation` (`pulumi.Input[float]`) - Must be provided if allowInsecure is false. Generation number of the Google Cloud Storage object.
-                https://storage.googleapis.com/my-bucket/foo/bar#1234567 this value would be 1234567.
-              * `object` (`pulumi.Input[str]`) - Name of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
-                this value would be foo/bar.
-
-            * `id` (`pulumi.Input[str]`) - Id of the artifact, which the installation and update steps of this recipe can reference.
-              Artifacts in a recipe cannot have the same id.
-            * `remote` (`pulumi.Input[dict]`) - A generic remote artifact.
-              Structure is documented below.
-              * `checkSum` (`pulumi.Input[str]`) - Must be provided if allowInsecure is false. SHA256 checksum in hex format, to compare to the checksum of the artifact.
-                If the checksum is not empty and it doesn't match the artifact then the recipe installation fails before running any
-                of the steps.
-              * `uri` (`pulumi.Input[str]`) - URI from which to fetch the object. It should contain both the protocol and path following the format {protocol}://{location}.
-
-          * `desiredState` (`pulumi.Input[str]`) - Default is INSTALLED. The desired state the agent should maintain for this recipe.
-            INSTALLED: The software recipe is installed on the instance but won't be updated to new versions.
-            INSTALLED_KEEP_UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version,
-            if a higher version of the recipe is assigned to this instance.
-            REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
-            Default value is `INSTALLED`.
-            Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
-          * `installSteps` (`pulumi.Input[list]`) - Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation.
-            Any steps taken (including partially completed steps) are not rolled back.
-            Structure is documented below.
-            * `archiveExtraction` (`pulumi.Input[dict]`) - Extracts an archive into the specified directory.
-              Structure is documented below.
-              * `artifactId` (`pulumi.Input[str]`) - The id of the relevant artifact in the recipe.
-              * `destination` (`pulumi.Input[str]`) - Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
-              * `type` (`pulumi.Input[str]`) - The type of the archive to extract.
-                Possible values are `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, and `ZIP`.
-
-            * `dpkgInstallation` (`pulumi.Input[dict]`) - Installs a deb file via dpkg.
-              Structure is documented below.
-              * `artifactId` (`pulumi.Input[str]`) - The id of the relevant artifact in the recipe.
-
-            * `fileCopy` (`pulumi.Input[dict]`) - Copies a file onto the instance.
-              Structure is documented below.
-              * `artifactId` (`pulumi.Input[str]`) - The id of the relevant artifact in the recipe.
-              * `destination` (`pulumi.Input[str]`) - Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
-              * `overwrite` (`pulumi.Input[bool]`) - Whether to allow this step to overwrite existing files.If this is false and the file already exists the file
-                is not overwritten and the step is considered a success. Defaults to false.
-              * `permissions` (`pulumi.Input[str]`) - Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users
-                for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit
-                number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one
-                bit corresponds to the execute permission. Default behavior is 755.
-                Below are some examples of permissions and their associated values:
-                read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
-
-            * `fileExec` (`pulumi.Input[dict]`) - Executes an artifact or local file.
-              Structure is documented below.
-              * `allowedExitCodes` (`pulumi.Input[str]`) - Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
-              * `args` (`pulumi.Input[list]`) - Arguments to be passed to the provided executable.
-              * `artifactId` (`pulumi.Input[str]`) - The id of the relevant artifact in the recipe.
-              * `localPath` (`pulumi.Input[str]`) - The absolute path of the file on the local filesystem.
-
-            * `msiInstallation` (`pulumi.Input[dict]`) - Installs an MSI file.
-              Structure is documented below.
-              * `allowedExitCodes` (`pulumi.Input[list]`) - Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
-              * `artifactId` (`pulumi.Input[str]`) - The id of the relevant artifact in the recipe.
-              * `flags` (`pulumi.Input[list]`) - The flags to use when installing the MSI. Defaults to the install flag.
-
-            * `rpmInstallation` (`pulumi.Input[dict]`) - Installs an rpm file via the rpm utility.
-              Structure is documented below.
-              * `artifactId` (`pulumi.Input[str]`) - The id of the relevant artifact in the recipe.
-
-            * `scriptRun` (`pulumi.Input[dict]`) - Runs commands in a shell.
-              Structure is documented below.
-              * `allowedExitCodes` (`pulumi.Input[list]`) - Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
-              * `interpreter` (`pulumi.Input[str]`) - The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
-                which likely only succeed for scripts with shebang lines.
-                Possible values are `SHELL` and `POWERSHELL`.
-              * `script` (`pulumi.Input[str]`) - The shell script to be executed.
-
-          * `name` (`pulumi.Input[str]`) - Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
-            Names are also used to identify resources which helps to determine whether guest policies have conflicts.
-            This means that requests to create multiple recipes with the same name and version are rejected since they
-            could potentially have conflicting assignments.
-          * `updateSteps` (`pulumi.Input[list]`) - Actions to be taken for updating this recipe. On failure it stops executing steps and does not attempt another update for this recipe.
-            Any steps taken (including partially completed steps) are not rolled back.
-            Structure is documented below.
-            * `archiveExtraction` (`pulumi.Input[dict]`) - Extracts an archive into the specified directory.
-              Structure is documented below.
-              * `artifactId` (`pulumi.Input[str]`) - The id of the relevant artifact in the recipe.
-              * `destination` (`pulumi.Input[str]`) - Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
-              * `type` (`pulumi.Input[str]`) - The type of the archive to extract.
-                Possible values are `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, and `ZIP`.
-
-            * `dpkgInstallation` (`pulumi.Input[dict]`) - Installs a deb file via dpkg.
-              Structure is documented below.
-              * `artifactId` (`pulumi.Input[str]`) - The id of the relevant artifact in the recipe.
-
-            * `fileCopy` (`pulumi.Input[dict]`) - Copies a file onto the instance.
-              Structure is documented below.
-              * `artifactId` (`pulumi.Input[str]`) - The id of the relevant artifact in the recipe.
-              * `destination` (`pulumi.Input[str]`) - Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
-              * `overwrite` (`pulumi.Input[bool]`) - Whether to allow this step to overwrite existing files.If this is false and the file already exists the file
-                is not overwritten and the step is considered a success. Defaults to false.
-              * `permissions` (`pulumi.Input[str]`) - Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users
-                for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit
-                number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one
-                bit corresponds to the execute permission. Default behavior is 755.
-                Below are some examples of permissions and their associated values:
-                read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
-
-            * `fileExec` (`pulumi.Input[dict]`) - Executes an artifact or local file.
-              Structure is documented below.
-              * `allowedExitCodes` (`pulumi.Input[list]`) - Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
-              * `args` (`pulumi.Input[list]`) - Arguments to be passed to the provided executable.
-              * `artifactId` (`pulumi.Input[str]`) - The id of the relevant artifact in the recipe.
-              * `localPath` (`pulumi.Input[str]`) - The absolute path of the file on the local filesystem.
-
-            * `msiInstallation` (`pulumi.Input[dict]`) - Installs an MSI file.
-              Structure is documented below.
-              * `allowedExitCodes` (`pulumi.Input[list]`) - Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
-              * `artifactId` (`pulumi.Input[str]`) - The id of the relevant artifact in the recipe.
-              * `flags` (`pulumi.Input[list]`) - The flags to use when installing the MSI. Defaults to the install flag.
-
-            * `rpmInstallation` (`pulumi.Input[dict]`) - Installs an rpm file via the rpm utility.
-              Structure is documented below.
-              * `artifactId` (`pulumi.Input[str]`) - The id of the relevant artifact in the recipe.
-
-            * `scriptRun` (`pulumi.Input[dict]`) - Runs commands in a shell.
-              Structure is documented below.
-              * `allowedExitCodes` (`pulumi.Input[list]`) - Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
-              * `interpreter` (`pulumi.Input[str]`) - The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
-                which likely only succeed for scripts with shebang lines.
-                Possible values are `SHELL` and `POWERSHELL`.
-              * `script` (`pulumi.Input[str]`) - The shell script to be executed.
-
-          * `version` (`pulumi.Input[str]`) - The version of this software recipe. Version can be up to 4 period separated numbers (e.g. 12.34.56.78).
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -592,15 +98,28 @@ class GuestPolicies(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, assignment=None, create_time=None, description=None, etag=None, guest_policy_id=None, name=None, package_repositories=None, packages=None, project=None, recipes=None, update_time=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            assignment: Optional[pulumi.Input[pulumi.InputType['GuestPoliciesAssignmentArgs']]] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            etag: Optional[pulumi.Input[str]] = None,
+            guest_policy_id: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            package_repositories: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['GuestPoliciesPackageRepositoryArgs']]]]] = None,
+            packages: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['GuestPoliciesPackageArgs']]]]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            recipes: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['GuestPoliciesRecipeArgs']]]]] = None,
+            update_time: Optional[pulumi.Input[str]] = None) -> 'GuestPolicies':
         """
         Get an existing GuestPolicies resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] assignment: Specifies the VM instances that are assigned to this policy. This allows you to target sets
+        :param pulumi.Input[pulumi.InputType['GuestPoliciesAssignmentArgs']] assignment: Specifies the VM instances that are assigned to this policy. This allows you to target sets
                or groups of VM instances by different parameters such as labels, names, OS, or zones.
                If left empty, all VM instances underneath this policy are targeted.
                At the same level in the resource hierarchy (that is within a project), the service prevents
@@ -622,244 +141,18 @@ class GuestPolicies(pulumi.CustomResource):
                Names are also used to identify resources which helps to determine whether guest policies have conflicts.
                This means that requests to create multiple recipes with the same name and version are rejected since they
                could potentially have conflicting assignments.
-        :param pulumi.Input[list] package_repositories: A list of package repositories to configure on the VM instance.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['GuestPoliciesPackageRepositoryArgs']]]] package_repositories: A list of package repositories to configure on the VM instance.
                This is done before any other configs are applied so they can use these repos.
                Package repositories are only configured if the corresponding package manager(s) are available.
                Structure is documented below.
-        :param pulumi.Input[list] packages: The software packages to be managed by this policy.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['GuestPoliciesPackageArgs']]]] packages: The software packages to be managed by this policy.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[list] recipes: A list of Recipes to install on the VM instance.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['GuestPoliciesRecipeArgs']]]] recipes: A list of Recipes to install on the VM instance.
                Structure is documented below.
         :param pulumi.Input[str] update_time: Last time this guest policy was updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example:
                "2014-10-02T15:01:23.045123456Z".
-
-        The **assignment** object supports the following:
-
-          * `groupLabels` (`pulumi.Input[list]`) - Targets instances matching at least one of these label sets. This allows an assignment to target disparate groups,
-            for example "env=prod or env=staging".
-            Structure is documented below.
-            * `labels` (`pulumi.Input[dict]`) - Google Compute Engine instance labels that must be present for an instance to be included in this assignment group.
-
-          * `instanceNamePrefixes` (`pulumi.Input[list]`) - Targets VM instances whose name starts with one of these prefixes.
-            Like labels, this is another way to group VM instances when targeting configs,
-            for example prefix="prod-".
-            Only supported for project-level policies.
-          * `instances` (`pulumi.Input[list]`) - Targets any of the instances specified. Instances are specified by their URI in the form
-            zones/[ZONE]/instances/[INSTANCE_NAME].
-            Instance targeting is uncommon and is supported to facilitate the management of changes
-            by the instance or to target specific VM instances for development and testing.
-            Only supported for project-level policies and must reference instances within this project.
-          * `osTypes` (`pulumi.Input[list]`) - Targets VM instances matching at least one of the following OS types.
-            VM instances must match all supplied criteria for a given OsType to be included.
-            Structure is documented below.
-            * `osArchitecture` (`pulumi.Input[str]`) - Targets VM instances with OS Inventory enabled and having the following OS architecture.
-            * `osShortName` (`pulumi.Input[str]`) - Targets VM instances with OS Inventory enabled and having the following OS short name, for example "debian" or "windows".
-            * `osVersion` (`pulumi.Input[str]`) - Targets VM instances with OS Inventory enabled and having the following following OS version.
-
-          * `zones` (`pulumi.Input[list]`) - Targets instances in any of these zones. Leave empty to target instances in any zone.
-            Zonal targeting is uncommon and is supported to facilitate the management of changes by zone.
-
-        The **package_repositories** object supports the following:
-
-          * `apt` (`pulumi.Input[dict]`) - An Apt Repository.
-            Structure is documented below.
-            * `archiveType` (`pulumi.Input[str]`) - Type of archive files in this repository. The default behavior is DEB.
-              Default value is `DEB`.
-              Possible values are `DEB` and `DEB_SRC`.
-            * `components` (`pulumi.Input[list]`) - List of components for this repository. Must contain at least one item.
-            * `distribution` (`pulumi.Input[str]`) - Distribution of this repository.
-            * `gpgKey` (`pulumi.Input[str]`) - URI of the key file for this repository. The agent maintains a keyring at
-              /etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg containing all the keys in any applied guest policy.
-            * `uri` (`pulumi.Input[str]`) - URI from which to fetch the object. It should contain both the protocol and path following the format {protocol}://{location}.
-
-          * `goo` (`pulumi.Input[dict]`) - A Goo Repository.
-            Structure is documented below.
-            * `name` (`pulumi.Input[str]`) - Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
-              Names are also used to identify resources which helps to determine whether guest policies have conflicts.
-              This means that requests to create multiple recipes with the same name and version are rejected since they
-              could potentially have conflicting assignments.
-            * `url` (`pulumi.Input[str]`) - The url of the repository.
-
-          * `yum` (`pulumi.Input[dict]`) - A Yum Repository.
-            Structure is documented below.
-            * `baseUrl` (`pulumi.Input[str]`) - The location of the repository directory.
-            * `display_name` (`pulumi.Input[str]`) - The display name of the repository.
-            * `gpgKeys` (`pulumi.Input[list]`) - URIs of GPG keys.
-            * `id` (`pulumi.Input[str]`) - Id of the artifact, which the installation and update steps of this recipe can reference.
-              Artifacts in a recipe cannot have the same id.
-
-          * `zypper` (`pulumi.Input[dict]`) - A Zypper Repository.
-            Structure is documented below.
-            * `baseUrl` (`pulumi.Input[str]`) - The location of the repository directory.
-            * `display_name` (`pulumi.Input[str]`) - The display name of the repository.
-            * `gpgKeys` (`pulumi.Input[list]`) - URIs of GPG keys.
-            * `id` (`pulumi.Input[str]`) - Id of the artifact, which the installation and update steps of this recipe can reference.
-              Artifacts in a recipe cannot have the same id.
-
-        The **packages** object supports the following:
-
-          * `desiredState` (`pulumi.Input[str]`) - Default is INSTALLED. The desired state the agent should maintain for this recipe.
-            INSTALLED: The software recipe is installed on the instance but won't be updated to new versions.
-            INSTALLED_KEEP_UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version,
-            if a higher version of the recipe is assigned to this instance.
-            REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
-            Default value is `INSTALLED`.
-            Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
-          * `manager` (`pulumi.Input[str]`) - Type of package manager that can be used to install this package. If a system does not have the package manager,
-            the package is not installed or removed no error message is returned. By default, or if you specify ANY,
-            the agent attempts to install and remove this package using the default package manager.
-            This is useful when creating a policy that applies to different types of systems.
-            The default behavior is ANY.
-            Default value is `ANY`.
-            Possible values are `ANY`, `APT`, `YUM`, `ZYPPER`, and `GOO`.
-          * `name` (`pulumi.Input[str]`) - Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
-            Names are also used to identify resources which helps to determine whether guest policies have conflicts.
-            This means that requests to create multiple recipes with the same name and version are rejected since they
-            could potentially have conflicting assignments.
-
-        The **recipes** object supports the following:
-
-          * `artifacts` (`pulumi.Input[list]`) - Resources available to be used in the steps in the recipe.
-            Structure is documented below.
-            * `allowInsecure` (`pulumi.Input[bool]`) - Defaults to false. When false, recipes are subject to validations based on the artifact type:
-              Remote: A checksum must be specified, and only protocols with transport-layer security are permitted.
-              GCS: An object generation number must be specified.
-            * `gcs` (`pulumi.Input[dict]`) - A Google Cloud Storage artifact.
-              Structure is documented below.
-              * `bucket` (`pulumi.Input[str]`) - Bucket of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
-                this value would be my-bucket.
-              * `generation` (`pulumi.Input[float]`) - Must be provided if allowInsecure is false. Generation number of the Google Cloud Storage object.
-                https://storage.googleapis.com/my-bucket/foo/bar#1234567 this value would be 1234567.
-              * `object` (`pulumi.Input[str]`) - Name of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
-                this value would be foo/bar.
-
-            * `id` (`pulumi.Input[str]`) - Id of the artifact, which the installation and update steps of this recipe can reference.
-              Artifacts in a recipe cannot have the same id.
-            * `remote` (`pulumi.Input[dict]`) - A generic remote artifact.
-              Structure is documented below.
-              * `checkSum` (`pulumi.Input[str]`) - Must be provided if allowInsecure is false. SHA256 checksum in hex format, to compare to the checksum of the artifact.
-                If the checksum is not empty and it doesn't match the artifact then the recipe installation fails before running any
-                of the steps.
-              * `uri` (`pulumi.Input[str]`) - URI from which to fetch the object. It should contain both the protocol and path following the format {protocol}://{location}.
-
-          * `desiredState` (`pulumi.Input[str]`) - Default is INSTALLED. The desired state the agent should maintain for this recipe.
-            INSTALLED: The software recipe is installed on the instance but won't be updated to new versions.
-            INSTALLED_KEEP_UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version,
-            if a higher version of the recipe is assigned to this instance.
-            REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
-            Default value is `INSTALLED`.
-            Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
-          * `installSteps` (`pulumi.Input[list]`) - Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation.
-            Any steps taken (including partially completed steps) are not rolled back.
-            Structure is documented below.
-            * `archiveExtraction` (`pulumi.Input[dict]`) - Extracts an archive into the specified directory.
-              Structure is documented below.
-              * `artifactId` (`pulumi.Input[str]`) - The id of the relevant artifact in the recipe.
-              * `destination` (`pulumi.Input[str]`) - Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
-              * `type` (`pulumi.Input[str]`) - The type of the archive to extract.
-                Possible values are `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, and `ZIP`.
-
-            * `dpkgInstallation` (`pulumi.Input[dict]`) - Installs a deb file via dpkg.
-              Structure is documented below.
-              * `artifactId` (`pulumi.Input[str]`) - The id of the relevant artifact in the recipe.
-
-            * `fileCopy` (`pulumi.Input[dict]`) - Copies a file onto the instance.
-              Structure is documented below.
-              * `artifactId` (`pulumi.Input[str]`) - The id of the relevant artifact in the recipe.
-              * `destination` (`pulumi.Input[str]`) - Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
-              * `overwrite` (`pulumi.Input[bool]`) - Whether to allow this step to overwrite existing files.If this is false and the file already exists the file
-                is not overwritten and the step is considered a success. Defaults to false.
-              * `permissions` (`pulumi.Input[str]`) - Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users
-                for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit
-                number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one
-                bit corresponds to the execute permission. Default behavior is 755.
-                Below are some examples of permissions and their associated values:
-                read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
-
-            * `fileExec` (`pulumi.Input[dict]`) - Executes an artifact or local file.
-              Structure is documented below.
-              * `allowedExitCodes` (`pulumi.Input[str]`) - Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
-              * `args` (`pulumi.Input[list]`) - Arguments to be passed to the provided executable.
-              * `artifactId` (`pulumi.Input[str]`) - The id of the relevant artifact in the recipe.
-              * `localPath` (`pulumi.Input[str]`) - The absolute path of the file on the local filesystem.
-
-            * `msiInstallation` (`pulumi.Input[dict]`) - Installs an MSI file.
-              Structure is documented below.
-              * `allowedExitCodes` (`pulumi.Input[list]`) - Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
-              * `artifactId` (`pulumi.Input[str]`) - The id of the relevant artifact in the recipe.
-              * `flags` (`pulumi.Input[list]`) - The flags to use when installing the MSI. Defaults to the install flag.
-
-            * `rpmInstallation` (`pulumi.Input[dict]`) - Installs an rpm file via the rpm utility.
-              Structure is documented below.
-              * `artifactId` (`pulumi.Input[str]`) - The id of the relevant artifact in the recipe.
-
-            * `scriptRun` (`pulumi.Input[dict]`) - Runs commands in a shell.
-              Structure is documented below.
-              * `allowedExitCodes` (`pulumi.Input[list]`) - Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
-              * `interpreter` (`pulumi.Input[str]`) - The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
-                which likely only succeed for scripts with shebang lines.
-                Possible values are `SHELL` and `POWERSHELL`.
-              * `script` (`pulumi.Input[str]`) - The shell script to be executed.
-
-          * `name` (`pulumi.Input[str]`) - Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
-            Names are also used to identify resources which helps to determine whether guest policies have conflicts.
-            This means that requests to create multiple recipes with the same name and version are rejected since they
-            could potentially have conflicting assignments.
-          * `updateSteps` (`pulumi.Input[list]`) - Actions to be taken for updating this recipe. On failure it stops executing steps and does not attempt another update for this recipe.
-            Any steps taken (including partially completed steps) are not rolled back.
-            Structure is documented below.
-            * `archiveExtraction` (`pulumi.Input[dict]`) - Extracts an archive into the specified directory.
-              Structure is documented below.
-              * `artifactId` (`pulumi.Input[str]`) - The id of the relevant artifact in the recipe.
-              * `destination` (`pulumi.Input[str]`) - Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
-              * `type` (`pulumi.Input[str]`) - The type of the archive to extract.
-                Possible values are `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, and `ZIP`.
-
-            * `dpkgInstallation` (`pulumi.Input[dict]`) - Installs a deb file via dpkg.
-              Structure is documented below.
-              * `artifactId` (`pulumi.Input[str]`) - The id of the relevant artifact in the recipe.
-
-            * `fileCopy` (`pulumi.Input[dict]`) - Copies a file onto the instance.
-              Structure is documented below.
-              * `artifactId` (`pulumi.Input[str]`) - The id of the relevant artifact in the recipe.
-              * `destination` (`pulumi.Input[str]`) - Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
-              * `overwrite` (`pulumi.Input[bool]`) - Whether to allow this step to overwrite existing files.If this is false and the file already exists the file
-                is not overwritten and the step is considered a success. Defaults to false.
-              * `permissions` (`pulumi.Input[str]`) - Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users
-                for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit
-                number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one
-                bit corresponds to the execute permission. Default behavior is 755.
-                Below are some examples of permissions and their associated values:
-                read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
-
-            * `fileExec` (`pulumi.Input[dict]`) - Executes an artifact or local file.
-              Structure is documented below.
-              * `allowedExitCodes` (`pulumi.Input[list]`) - Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
-              * `args` (`pulumi.Input[list]`) - Arguments to be passed to the provided executable.
-              * `artifactId` (`pulumi.Input[str]`) - The id of the relevant artifact in the recipe.
-              * `localPath` (`pulumi.Input[str]`) - The absolute path of the file on the local filesystem.
-
-            * `msiInstallation` (`pulumi.Input[dict]`) - Installs an MSI file.
-              Structure is documented below.
-              * `allowedExitCodes` (`pulumi.Input[list]`) - Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
-              * `artifactId` (`pulumi.Input[str]`) - The id of the relevant artifact in the recipe.
-              * `flags` (`pulumi.Input[list]`) - The flags to use when installing the MSI. Defaults to the install flag.
-
-            * `rpmInstallation` (`pulumi.Input[dict]`) - Installs an rpm file via the rpm utility.
-              Structure is documented below.
-              * `artifactId` (`pulumi.Input[str]`) - The id of the relevant artifact in the recipe.
-
-            * `scriptRun` (`pulumi.Input[dict]`) - Runs commands in a shell.
-              Structure is documented below.
-              * `allowedExitCodes` (`pulumi.Input[list]`) - Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
-              * `interpreter` (`pulumi.Input[str]`) - The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
-                which likely only succeed for scripts with shebang lines.
-                Possible values are `SHELL` and `POWERSHELL`.
-              * `script` (`pulumi.Input[str]`) - The shell script to be executed.
-
-          * `version` (`pulumi.Input[str]`) - The version of this software recipe. Version can be up to 4 period separated numbers (e.g. 12.34.56.78).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -878,8 +171,120 @@ class GuestPolicies(pulumi.CustomResource):
         __props__["update_time"] = update_time
         return GuestPolicies(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def assignment(self) -> 'outputs.GuestPoliciesAssignment':
+        """
+        Specifies the VM instances that are assigned to this policy. This allows you to target sets
+        or groups of VM instances by different parameters such as labels, names, OS, or zones.
+        If left empty, all VM instances underneath this policy are targeted.
+        At the same level in the resource hierarchy (that is within a project), the service prevents
+        the creation of multiple policies that conflict with each other.
+        For more information, see how the service
+        [handles assignment conflicts](https://cloud.google.com/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "assignment")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        Time this guest policy was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example:
+        "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Description of the guest policy. Length of the description is limited to 1024 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> str:
+        """
+        The etag for this guest policy. If this is provided on update, it must match the server's etag.
+        """
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter(name="guestPolicyId")
+    def guest_policy_id(self) -> str:
+        """
+        The logical name of the guest policy in the project with the following restrictions:
+        * Must contain only lowercase letters, numbers, and hyphens.
+        * Must start with a letter.
+        * Must be between 1-63 characters.
+        * Must end with a number or a letter.
+        * Must be unique within the project.
+        """
+        return pulumi.get(self, "guest_policy_id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
+        Names are also used to identify resources which helps to determine whether guest policies have conflicts.
+        This means that requests to create multiple recipes with the same name and version are rejected since they
+        could potentially have conflicting assignments.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="packageRepositories")
+    def package_repositories(self) -> Optional[List['outputs.GuestPoliciesPackageRepository']]:
+        """
+        A list of package repositories to configure on the VM instance.
+        This is done before any other configs are applied so they can use these repos.
+        Package repositories are only configured if the corresponding package manager(s) are available.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "package_repositories")
+
+    @property
+    @pulumi.getter
+    def packages(self) -> Optional[List['outputs.GuestPoliciesPackage']]:
+        """
+        The software packages to be managed by this policy.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "packages")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def recipes(self) -> Optional[List['outputs.GuestPoliciesRecipe']]:
+        """
+        A list of Recipes to install on the VM instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "recipes")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        """
+        Last time this guest policy was updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example:
+        "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "update_time")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

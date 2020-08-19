@@ -5,60 +5,27 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['OrganizationPolicy']
 
 
 class OrganizationPolicy(pulumi.CustomResource):
-    boolean_policy: pulumi.Output[dict]
-    """
-    A boolean policy is a constraint that is either enforced or not. Structure is documented below.
-
-      * `enforced` (`bool`) - If true, then the Policy is enforced. If false, then any configuration is acceptable.
-    """
-    constraint: pulumi.Output[str]
-    """
-    The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
-    """
-    etag: pulumi.Output[str]
-    """
-    (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
-    """
-    list_policy: pulumi.Output[dict]
-    """
-    A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
-
-      * `allow` (`dict`) - or `deny` - (Optional) One or the other must be set.
-        * `all` (`bool`) - The policy allows or denies all values.
-        * `values` (`list`) - The policy can define specific values that are allowed or denied.
-
-      * `deny` (`dict`)
-        * `all` (`bool`) - The policy allows or denies all values.
-        * `values` (`list`) - The policy can define specific values that are allowed or denied.
-
-      * `inheritFromParent` (`bool`) - If set to true, the values from the effective Policy of the parent resource
-        are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
-      * `suggestedValue` (`str`) - The Google Cloud Console will try to default to a configuration that matches the value specified in this field.
-    """
-    project: pulumi.Output[str]
-    """
-    The project id of the project to set the policy for.
-    """
-    restore_policy: pulumi.Output[dict]
-    """
-    A restore policy is a constraint to restore the default policy. Structure is documented below.
-
-      * `default` (`bool`) - May only be set to true. If set, then the default Policy is restored.
-    """
-    update_time: pulumi.Output[str]
-    """
-    (Computed) The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds, representing when the variable was last updated. Example: "2016-10-09T12:33:37.578138407Z".
-    """
-    version: pulumi.Output[float]
-    """
-    Version of the Policy. Default version is 0.
-    """
-    def __init__(__self__, resource_name, opts=None, boolean_policy=None, constraint=None, list_policy=None, project=None, restore_policy=None, version=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 boolean_policy: Optional[pulumi.Input[pulumi.InputType['OrganizationPolicyBooleanPolicyArgs']]] = None,
+                 constraint: Optional[pulumi.Input[str]] = None,
+                 list_policy: Optional[pulumi.Input[pulumi.InputType['OrganizationPolicyListPolicyArgs']]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 restore_policy: Optional[pulumi.Input[pulumi.InputType['OrganizationPolicyRestorePolicyArgs']]] = None,
+                 version: Optional[pulumi.Input[float]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Allows management of Organization policies for a Google Project. For more information see
         [the official
@@ -67,34 +34,12 @@ class OrganizationPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] boolean_policy: A boolean policy is a constraint that is either enforced or not. Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['OrganizationPolicyBooleanPolicyArgs']] boolean_policy: A boolean policy is a constraint that is either enforced or not. Structure is documented below.
         :param pulumi.Input[str] constraint: The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
-        :param pulumi.Input[dict] list_policy: A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['OrganizationPolicyListPolicyArgs']] list_policy: A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
         :param pulumi.Input[str] project: The project id of the project to set the policy for.
-        :param pulumi.Input[dict] restore_policy: A restore policy is a constraint to restore the default policy. Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['OrganizationPolicyRestorePolicyArgs']] restore_policy: A restore policy is a constraint to restore the default policy. Structure is documented below.
         :param pulumi.Input[float] version: Version of the Policy. Default version is 0.
-
-        The **boolean_policy** object supports the following:
-
-          * `enforced` (`pulumi.Input[bool]`) - If true, then the Policy is enforced. If false, then any configuration is acceptable.
-
-        The **list_policy** object supports the following:
-
-          * `allow` (`pulumi.Input[dict]`) - or `deny` - (Optional) One or the other must be set.
-            * `all` (`pulumi.Input[bool]`) - The policy allows or denies all values.
-            * `values` (`pulumi.Input[list]`) - The policy can define specific values that are allowed or denied.
-
-          * `deny` (`pulumi.Input[dict]`)
-            * `all` (`pulumi.Input[bool]`) - The policy allows or denies all values.
-            * `values` (`pulumi.Input[list]`) - The policy can define specific values that are allowed or denied.
-
-          * `inheritFromParent` (`pulumi.Input[bool]`) - If set to true, the values from the effective Policy of the parent resource
-            are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
-          * `suggestedValue` (`pulumi.Input[str]`) - The Google Cloud Console will try to default to a configuration that matches the value specified in this field.
-
-        The **restore_policy** object supports the following:
-
-          * `default` (`pulumi.Input[bool]`) - May only be set to true. If set, then the default Policy is restored.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -132,44 +77,32 @@ class OrganizationPolicy(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, boolean_policy=None, constraint=None, etag=None, list_policy=None, project=None, restore_policy=None, update_time=None, version=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            boolean_policy: Optional[pulumi.Input[pulumi.InputType['OrganizationPolicyBooleanPolicyArgs']]] = None,
+            constraint: Optional[pulumi.Input[str]] = None,
+            etag: Optional[pulumi.Input[str]] = None,
+            list_policy: Optional[pulumi.Input[pulumi.InputType['OrganizationPolicyListPolicyArgs']]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            restore_policy: Optional[pulumi.Input[pulumi.InputType['OrganizationPolicyRestorePolicyArgs']]] = None,
+            update_time: Optional[pulumi.Input[str]] = None,
+            version: Optional[pulumi.Input[float]] = None) -> 'OrganizationPolicy':
         """
         Get an existing OrganizationPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] boolean_policy: A boolean policy is a constraint that is either enforced or not. Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['OrganizationPolicyBooleanPolicyArgs']] boolean_policy: A boolean policy is a constraint that is either enforced or not. Structure is documented below.
         :param pulumi.Input[str] constraint: The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
         :param pulumi.Input[str] etag: (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
-        :param pulumi.Input[dict] list_policy: A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['OrganizationPolicyListPolicyArgs']] list_policy: A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
         :param pulumi.Input[str] project: The project id of the project to set the policy for.
-        :param pulumi.Input[dict] restore_policy: A restore policy is a constraint to restore the default policy. Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['OrganizationPolicyRestorePolicyArgs']] restore_policy: A restore policy is a constraint to restore the default policy. Structure is documented below.
         :param pulumi.Input[str] update_time: (Computed) The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds, representing when the variable was last updated. Example: "2016-10-09T12:33:37.578138407Z".
         :param pulumi.Input[float] version: Version of the Policy. Default version is 0.
-
-        The **boolean_policy** object supports the following:
-
-          * `enforced` (`pulumi.Input[bool]`) - If true, then the Policy is enforced. If false, then any configuration is acceptable.
-
-        The **list_policy** object supports the following:
-
-          * `allow` (`pulumi.Input[dict]`) - or `deny` - (Optional) One or the other must be set.
-            * `all` (`pulumi.Input[bool]`) - The policy allows or denies all values.
-            * `values` (`pulumi.Input[list]`) - The policy can define specific values that are allowed or denied.
-
-          * `deny` (`pulumi.Input[dict]`)
-            * `all` (`pulumi.Input[bool]`) - The policy allows or denies all values.
-            * `values` (`pulumi.Input[list]`) - The policy can define specific values that are allowed or denied.
-
-          * `inheritFromParent` (`pulumi.Input[bool]`) - If set to true, the values from the effective Policy of the parent resource
-            are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
-          * `suggestedValue` (`pulumi.Input[str]`) - The Google Cloud Console will try to default to a configuration that matches the value specified in this field.
-
-        The **restore_policy** object supports the following:
-
-          * `default` (`pulumi.Input[bool]`) - May only be set to true. If set, then the default Policy is restored.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -185,8 +118,73 @@ class OrganizationPolicy(pulumi.CustomResource):
         __props__["version"] = version
         return OrganizationPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="booleanPolicy")
+    def boolean_policy(self) -> Optional['outputs.OrganizationPolicyBooleanPolicy']:
+        """
+        A boolean policy is a constraint that is either enforced or not. Structure is documented below.
+        """
+        return pulumi.get(self, "boolean_policy")
+
+    @property
+    @pulumi.getter
+    def constraint(self) -> str:
+        """
+        The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+        """
+        return pulumi.get(self, "constraint")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> str:
+        """
+        (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
+        """
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter(name="listPolicy")
+    def list_policy(self) -> Optional['outputs.OrganizationPolicyListPolicy']:
+        """
+        A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
+        """
+        return pulumi.get(self, "list_policy")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The project id of the project to set the policy for.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="restorePolicy")
+    def restore_policy(self) -> Optional['outputs.OrganizationPolicyRestorePolicy']:
+        """
+        A restore policy is a constraint to restore the default policy. Structure is documented below.
+        """
+        return pulumi.get(self, "restore_policy")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        """
+        (Computed) The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds, representing when the variable was last updated. Example: "2016-10-09T12:33:37.578138407Z".
+        """
+        return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter
+    def version(self) -> float:
+        """
+        Version of the Policy. Default version is 0.
+        """
+        return pulumi.get(self, "version")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

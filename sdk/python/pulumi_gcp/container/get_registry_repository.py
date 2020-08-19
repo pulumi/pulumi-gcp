@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
 
+__all__ = [
+    'GetRegistryRepositoryResult',
+    'AwaitableGetRegistryRepositoryResult',
+    'get_registry_repository',
+]
 
+@pulumi.output_type
 class GetRegistryRepositoryResult:
     """
     A collection of values returned by getRegistryRepository.
@@ -16,19 +22,39 @@ class GetRegistryRepositoryResult:
     def __init__(__self__, id=None, project=None, region=None, repository_url=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if project and not isinstance(project, str):
+            raise TypeError("Expected argument 'project' to be a str")
+        pulumi.set(__self__, "project", project)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
+        if repository_url and not isinstance(repository_url, str):
+            raise TypeError("Expected argument 'repository_url' to be a str")
+        pulumi.set(__self__, "repository_url", repository_url)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if project and not isinstance(project, str):
-            raise TypeError("Expected argument 'project' to be a str")
-        __self__.project = project
-        if region and not isinstance(region, str):
-            raise TypeError("Expected argument 'region' to be a str")
-        __self__.region = region
-        if repository_url and not isinstance(repository_url, str):
-            raise TypeError("Expected argument 'repository_url' to be a str")
-        __self__.repository_url = repository_url
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="repositoryUrl")
+    def repository_url(self) -> str:
+        return pulumi.get(self, "repository_url")
 
 
 class AwaitableGetRegistryRepositoryResult(GetRegistryRepositoryResult):
@@ -43,7 +69,9 @@ class AwaitableGetRegistryRepositoryResult(GetRegistryRepositoryResult):
             repository_url=self.repository_url)
 
 
-def get_registry_repository(project=None, region=None, opts=None):
+def get_registry_repository(project: Optional[str] = None,
+                            region: Optional[str] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegistryRepositoryResult:
     """
     This data source fetches the project name, and provides the appropriate URLs to use for container registry for this project.
 
@@ -56,10 +84,10 @@ def get_registry_repository(project=None, region=None, opts=None):
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('gcp:container/getRegistryRepository:getRegistryRepository', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('gcp:container/getRegistryRepository:getRegistryRepository', __args__, opts=opts, typ=GetRegistryRepositoryResult).value
 
     return AwaitableGetRegistryRepositoryResult(
-        id=__ret__.get('id'),
-        project=__ret__.get('project'),
-        region=__ret__.get('region'),
-        repository_url=__ret__.get('repositoryUrl'))
+        id=__ret__.id,
+        project=__ret__.project,
+        region=__ret__.region,
+        repository_url=__ret__.repository_url)

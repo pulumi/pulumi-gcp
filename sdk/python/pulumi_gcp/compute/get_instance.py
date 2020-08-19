@@ -5,10 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
 
+__all__ = [
+    'GetInstanceResult',
+    'AwaitableGetInstanceResult',
+    'get_instance',
+]
 
+@pulumi.output_type
 class GetInstanceResult:
     """
     A collection of values returned by getInstance.
@@ -16,175 +23,345 @@ class GetInstanceResult:
     def __init__(__self__, allow_stopping_for_update=None, attached_disks=None, boot_disks=None, can_ip_forward=None, confidential_instance_configs=None, cpu_platform=None, current_status=None, deletion_protection=None, description=None, desired_status=None, enable_display=None, guest_accelerators=None, hostname=None, id=None, instance_id=None, label_fingerprint=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, resource_policies=None, schedulings=None, scratch_disks=None, self_link=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None, zone=None):
         if allow_stopping_for_update and not isinstance(allow_stopping_for_update, bool):
             raise TypeError("Expected argument 'allow_stopping_for_update' to be a bool")
-        __self__.allow_stopping_for_update = allow_stopping_for_update
+        pulumi.set(__self__, "allow_stopping_for_update", allow_stopping_for_update)
         if attached_disks and not isinstance(attached_disks, list):
             raise TypeError("Expected argument 'attached_disks' to be a list")
-        __self__.attached_disks = attached_disks
+        pulumi.set(__self__, "attached_disks", attached_disks)
+        if boot_disks and not isinstance(boot_disks, list):
+            raise TypeError("Expected argument 'boot_disks' to be a list")
+        pulumi.set(__self__, "boot_disks", boot_disks)
+        if can_ip_forward and not isinstance(can_ip_forward, bool):
+            raise TypeError("Expected argument 'can_ip_forward' to be a bool")
+        pulumi.set(__self__, "can_ip_forward", can_ip_forward)
+        if confidential_instance_configs and not isinstance(confidential_instance_configs, list):
+            raise TypeError("Expected argument 'confidential_instance_configs' to be a list")
+        pulumi.set(__self__, "confidential_instance_configs", confidential_instance_configs)
+        if cpu_platform and not isinstance(cpu_platform, str):
+            raise TypeError("Expected argument 'cpu_platform' to be a str")
+        pulumi.set(__self__, "cpu_platform", cpu_platform)
+        if current_status and not isinstance(current_status, str):
+            raise TypeError("Expected argument 'current_status' to be a str")
+        pulumi.set(__self__, "current_status", current_status)
+        if deletion_protection and not isinstance(deletion_protection, bool):
+            raise TypeError("Expected argument 'deletion_protection' to be a bool")
+        pulumi.set(__self__, "deletion_protection", deletion_protection)
+        if description and not isinstance(description, str):
+            raise TypeError("Expected argument 'description' to be a str")
+        pulumi.set(__self__, "description", description)
+        if desired_status and not isinstance(desired_status, str):
+            raise TypeError("Expected argument 'desired_status' to be a str")
+        pulumi.set(__self__, "desired_status", desired_status)
+        if enable_display and not isinstance(enable_display, bool):
+            raise TypeError("Expected argument 'enable_display' to be a bool")
+        pulumi.set(__self__, "enable_display", enable_display)
+        if guest_accelerators and not isinstance(guest_accelerators, list):
+            raise TypeError("Expected argument 'guest_accelerators' to be a list")
+        pulumi.set(__self__, "guest_accelerators", guest_accelerators)
+        if hostname and not isinstance(hostname, str):
+            raise TypeError("Expected argument 'hostname' to be a str")
+        pulumi.set(__self__, "hostname", hostname)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if instance_id and not isinstance(instance_id, str):
+            raise TypeError("Expected argument 'instance_id' to be a str")
+        pulumi.set(__self__, "instance_id", instance_id)
+        if label_fingerprint and not isinstance(label_fingerprint, str):
+            raise TypeError("Expected argument 'label_fingerprint' to be a str")
+        pulumi.set(__self__, "label_fingerprint", label_fingerprint)
+        if labels and not isinstance(labels, dict):
+            raise TypeError("Expected argument 'labels' to be a dict")
+        pulumi.set(__self__, "labels", labels)
+        if machine_type and not isinstance(machine_type, str):
+            raise TypeError("Expected argument 'machine_type' to be a str")
+        pulumi.set(__self__, "machine_type", machine_type)
+        if metadata and not isinstance(metadata, dict):
+            raise TypeError("Expected argument 'metadata' to be a dict")
+        pulumi.set(__self__, "metadata", metadata)
+        if metadata_fingerprint and not isinstance(metadata_fingerprint, str):
+            raise TypeError("Expected argument 'metadata_fingerprint' to be a str")
+        pulumi.set(__self__, "metadata_fingerprint", metadata_fingerprint)
+        if metadata_startup_script and not isinstance(metadata_startup_script, str):
+            raise TypeError("Expected argument 'metadata_startup_script' to be a str")
+        pulumi.set(__self__, "metadata_startup_script", metadata_startup_script)
+        if min_cpu_platform and not isinstance(min_cpu_platform, str):
+            raise TypeError("Expected argument 'min_cpu_platform' to be a str")
+        pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if network_interfaces and not isinstance(network_interfaces, list):
+            raise TypeError("Expected argument 'network_interfaces' to be a list")
+        pulumi.set(__self__, "network_interfaces", network_interfaces)
+        if project and not isinstance(project, str):
+            raise TypeError("Expected argument 'project' to be a str")
+        pulumi.set(__self__, "project", project)
+        if resource_policies and not isinstance(resource_policies, list):
+            raise TypeError("Expected argument 'resource_policies' to be a list")
+        pulumi.set(__self__, "resource_policies", resource_policies)
+        if schedulings and not isinstance(schedulings, list):
+            raise TypeError("Expected argument 'schedulings' to be a list")
+        pulumi.set(__self__, "schedulings", schedulings)
+        if scratch_disks and not isinstance(scratch_disks, list):
+            raise TypeError("Expected argument 'scratch_disks' to be a list")
+        pulumi.set(__self__, "scratch_disks", scratch_disks)
+        if self_link and not isinstance(self_link, str):
+            raise TypeError("Expected argument 'self_link' to be a str")
+        pulumi.set(__self__, "self_link", self_link)
+        if service_accounts and not isinstance(service_accounts, list):
+            raise TypeError("Expected argument 'service_accounts' to be a list")
+        pulumi.set(__self__, "service_accounts", service_accounts)
+        if shielded_instance_configs and not isinstance(shielded_instance_configs, list):
+            raise TypeError("Expected argument 'shielded_instance_configs' to be a list")
+        pulumi.set(__self__, "shielded_instance_configs", shielded_instance_configs)
+        if tags and not isinstance(tags, list):
+            raise TypeError("Expected argument 'tags' to be a list")
+        pulumi.set(__self__, "tags", tags)
+        if tags_fingerprint and not isinstance(tags_fingerprint, str):
+            raise TypeError("Expected argument 'tags_fingerprint' to be a str")
+        pulumi.set(__self__, "tags_fingerprint", tags_fingerprint)
+        if zone and not isinstance(zone, str):
+            raise TypeError("Expected argument 'zone' to be a str")
+        pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="allowStoppingForUpdate")
+    def allow_stopping_for_update(self) -> bool:
+        return pulumi.get(self, "allow_stopping_for_update")
+
+    @property
+    @pulumi.getter(name="attachedDisks")
+    def attached_disks(self) -> List['outputs.GetInstanceAttachedDiskResult']:
         """
         List of disks attached to the instance. Structure is documented below.
         """
-        if boot_disks and not isinstance(boot_disks, list):
-            raise TypeError("Expected argument 'boot_disks' to be a list")
-        __self__.boot_disks = boot_disks
+        return pulumi.get(self, "attached_disks")
+
+    @property
+    @pulumi.getter(name="bootDisks")
+    def boot_disks(self) -> List['outputs.GetInstanceBootDiskResult']:
         """
         The boot disk for the instance. Structure is documented below.
         """
-        if can_ip_forward and not isinstance(can_ip_forward, bool):
-            raise TypeError("Expected argument 'can_ip_forward' to be a bool")
-        __self__.can_ip_forward = can_ip_forward
+        return pulumi.get(self, "boot_disks")
+
+    @property
+    @pulumi.getter(name="canIpForward")
+    def can_ip_forward(self) -> bool:
         """
         Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
         """
-        if confidential_instance_configs and not isinstance(confidential_instance_configs, list):
-            raise TypeError("Expected argument 'confidential_instance_configs' to be a list")
-        __self__.confidential_instance_configs = confidential_instance_configs
-        if cpu_platform and not isinstance(cpu_platform, str):
-            raise TypeError("Expected argument 'cpu_platform' to be a str")
-        __self__.cpu_platform = cpu_platform
+        return pulumi.get(self, "can_ip_forward")
+
+    @property
+    @pulumi.getter(name="confidentialInstanceConfigs")
+    def confidential_instance_configs(self) -> List['outputs.GetInstanceConfidentialInstanceConfigResult']:
+        return pulumi.get(self, "confidential_instance_configs")
+
+    @property
+    @pulumi.getter(name="cpuPlatform")
+    def cpu_platform(self) -> str:
         """
         The CPU platform used by this instance.
         """
-        if current_status and not isinstance(current_status, str):
-            raise TypeError("Expected argument 'current_status' to be a str")
-        __self__.current_status = current_status
-        if deletion_protection and not isinstance(deletion_protection, bool):
-            raise TypeError("Expected argument 'deletion_protection' to be a bool")
-        __self__.deletion_protection = deletion_protection
+        return pulumi.get(self, "cpu_platform")
+
+    @property
+    @pulumi.getter(name="currentStatus")
+    def current_status(self) -> str:
+        return pulumi.get(self, "current_status")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> bool:
         """
         Whether deletion protection is enabled on this instance.
         """
-        if description and not isinstance(description, str):
-            raise TypeError("Expected argument 'description' to be a str")
-        __self__.description = description
+        return pulumi.get(self, "deletion_protection")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
         """
         A brief description of the resource.
         """
-        if desired_status and not isinstance(desired_status, str):
-            raise TypeError("Expected argument 'desired_status' to be a str")
-        __self__.desired_status = desired_status
-        if enable_display and not isinstance(enable_display, bool):
-            raise TypeError("Expected argument 'enable_display' to be a bool")
-        __self__.enable_display = enable_display
-        if guest_accelerators and not isinstance(guest_accelerators, list):
-            raise TypeError("Expected argument 'guest_accelerators' to be a list")
-        __self__.guest_accelerators = guest_accelerators
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="desiredStatus")
+    def desired_status(self) -> str:
+        return pulumi.get(self, "desired_status")
+
+    @property
+    @pulumi.getter(name="enableDisplay")
+    def enable_display(self) -> bool:
+        return pulumi.get(self, "enable_display")
+
+    @property
+    @pulumi.getter(name="guestAccelerators")
+    def guest_accelerators(self) -> List['outputs.GetInstanceGuestAcceleratorResult']:
         """
         List of the type and count of accelerator cards attached to the instance. Structure is documented below.
         """
-        if hostname and not isinstance(hostname, str):
-            raise TypeError("Expected argument 'hostname' to be a str")
-        __self__.hostname = hostname
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "guest_accelerators")
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> str:
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if instance_id and not isinstance(instance_id, str):
-            raise TypeError("Expected argument 'instance_id' to be a str")
-        __self__.instance_id = instance_id
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
         """
         The server-assigned unique identifier of this instance.
         """
-        if label_fingerprint and not isinstance(label_fingerprint, str):
-            raise TypeError("Expected argument 'label_fingerprint' to be a str")
-        __self__.label_fingerprint = label_fingerprint
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="labelFingerprint")
+    def label_fingerprint(self) -> str:
         """
         The unique fingerprint of the labels.
         """
-        if labels and not isinstance(labels, dict):
-            raise TypeError("Expected argument 'labels' to be a dict")
-        __self__.labels = labels
+        return pulumi.get(self, "label_fingerprint")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
         """
         A set of key/value label pairs assigned to the instance.
         """
-        if machine_type and not isinstance(machine_type, str):
-            raise TypeError("Expected argument 'machine_type' to be a str")
-        __self__.machine_type = machine_type
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> str:
         """
         The machine type to create.
         """
-        if metadata and not isinstance(metadata, dict):
-            raise TypeError("Expected argument 'metadata' to be a dict")
-        __self__.metadata = metadata
+        return pulumi.get(self, "machine_type")
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Mapping[str, str]:
         """
         Metadata key/value pairs made available within the instance.
         """
-        if metadata_fingerprint and not isinstance(metadata_fingerprint, str):
-            raise TypeError("Expected argument 'metadata_fingerprint' to be a str")
-        __self__.metadata_fingerprint = metadata_fingerprint
+        return pulumi.get(self, "metadata")
+
+    @property
+    @pulumi.getter(name="metadataFingerprint")
+    def metadata_fingerprint(self) -> str:
         """
         The unique fingerprint of the metadata.
         """
-        if metadata_startup_script and not isinstance(metadata_startup_script, str):
-            raise TypeError("Expected argument 'metadata_startup_script' to be a str")
-        __self__.metadata_startup_script = metadata_startup_script
-        if min_cpu_platform and not isinstance(min_cpu_platform, str):
-            raise TypeError("Expected argument 'min_cpu_platform' to be a str")
-        __self__.min_cpu_platform = min_cpu_platform
+        return pulumi.get(self, "metadata_fingerprint")
+
+    @property
+    @pulumi.getter(name="metadataStartupScript")
+    def metadata_startup_script(self) -> str:
+        return pulumi.get(self, "metadata_startup_script")
+
+    @property
+    @pulumi.getter(name="minCpuPlatform")
+    def min_cpu_platform(self) -> str:
         """
         The minimum CPU platform specified for the VM instance.
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
-        if network_interfaces and not isinstance(network_interfaces, list):
-            raise TypeError("Expected argument 'network_interfaces' to be a list")
-        __self__.network_interfaces = network_interfaces
+        return pulumi.get(self, "min_cpu_platform")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="networkInterfaces")
+    def network_interfaces(self) -> List['outputs.GetInstanceNetworkInterfaceResult']:
         """
         The networks attached to the instance. Structure is documented below.
         """
-        if project and not isinstance(project, str):
-            raise TypeError("Expected argument 'project' to be a str")
-        __self__.project = project
-        if resource_policies and not isinstance(resource_policies, list):
-            raise TypeError("Expected argument 'resource_policies' to be a list")
-        __self__.resource_policies = resource_policies
-        if schedulings and not isinstance(schedulings, list):
-            raise TypeError("Expected argument 'schedulings' to be a list")
-        __self__.schedulings = schedulings
+        return pulumi.get(self, "network_interfaces")
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="resourcePolicies")
+    def resource_policies(self) -> List[str]:
+        return pulumi.get(self, "resource_policies")
+
+    @property
+    @pulumi.getter
+    def schedulings(self) -> List['outputs.GetInstanceSchedulingResult']:
         """
         The scheduling strategy being used by the instance.
         """
-        if scratch_disks and not isinstance(scratch_disks, list):
-            raise TypeError("Expected argument 'scratch_disks' to be a list")
-        __self__.scratch_disks = scratch_disks
+        return pulumi.get(self, "schedulings")
+
+    @property
+    @pulumi.getter(name="scratchDisks")
+    def scratch_disks(self) -> List['outputs.GetInstanceScratchDiskResult']:
         """
         The scratch disks attached to the instance. Structure is documented below.
         """
-        if self_link and not isinstance(self_link, str):
-            raise TypeError("Expected argument 'self_link' to be a str")
-        __self__.self_link = self_link
+        return pulumi.get(self, "scratch_disks")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> Optional[str]:
         """
         The URI of the created resource.
         """
-        if service_accounts and not isinstance(service_accounts, list):
-            raise TypeError("Expected argument 'service_accounts' to be a list")
-        __self__.service_accounts = service_accounts
+        return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="serviceAccounts")
+    def service_accounts(self) -> List['outputs.GetInstanceServiceAccountResult']:
         """
         The service account to attach to the instance. Structure is documented below.
         """
-        if shielded_instance_configs and not isinstance(shielded_instance_configs, list):
-            raise TypeError("Expected argument 'shielded_instance_configs' to be a list")
-        __self__.shielded_instance_configs = shielded_instance_configs
+        return pulumi.get(self, "service_accounts")
+
+    @property
+    @pulumi.getter(name="shieldedInstanceConfigs")
+    def shielded_instance_configs(self) -> List['outputs.GetInstanceShieldedInstanceConfigResult']:
         """
         The shielded vm config being used by the instance. Structure is documented below.
         """
-        if tags and not isinstance(tags, list):
-            raise TypeError("Expected argument 'tags' to be a list")
-        __self__.tags = tags
+        return pulumi.get(self, "shielded_instance_configs")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> List[str]:
         """
         The list of tags attached to the instance.
         """
-        if tags_fingerprint and not isinstance(tags_fingerprint, str):
-            raise TypeError("Expected argument 'tags_fingerprint' to be a str")
-        __self__.tags_fingerprint = tags_fingerprint
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="tagsFingerprint")
+    def tags_fingerprint(self) -> str:
         """
         The unique fingerprint of the tags.
         """
-        if zone and not isinstance(zone, str):
-            raise TypeError("Expected argument 'zone' to be a str")
-        __self__.zone = zone
+        return pulumi.get(self, "tags_fingerprint")
+
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[str]:
+        return pulumi.get(self, "zone")
 
 
 class AwaitableGetInstanceResult(GetInstanceResult):
@@ -229,7 +406,11 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             zone=self.zone)
 
 
-def get_instance(name=None, project=None, self_link=None, zone=None, opts=None):
+def get_instance(name: Optional[str] = None,
+                 project: Optional[str] = None,
+                 self_link: Optional[str] = None,
+                 zone: Optional[str] = None,
+                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceResult:
     """
     Get information about a VM instance resource within GCE. For more information see
     [the official documentation](https://cloud.google.com/compute/docs/instances)
@@ -255,40 +436,40 @@ def get_instance(name=None, project=None, self_link=None, zone=None, opts=None):
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('gcp:compute/getInstance:getInstance', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('gcp:compute/getInstance:getInstance', __args__, opts=opts, typ=GetInstanceResult).value
 
     return AwaitableGetInstanceResult(
-        allow_stopping_for_update=__ret__.get('allowStoppingForUpdate'),
-        attached_disks=__ret__.get('attachedDisks'),
-        boot_disks=__ret__.get('bootDisks'),
-        can_ip_forward=__ret__.get('canIpForward'),
-        confidential_instance_configs=__ret__.get('confidentialInstanceConfigs'),
-        cpu_platform=__ret__.get('cpuPlatform'),
-        current_status=__ret__.get('currentStatus'),
-        deletion_protection=__ret__.get('deletionProtection'),
-        description=__ret__.get('description'),
-        desired_status=__ret__.get('desiredStatus'),
-        enable_display=__ret__.get('enableDisplay'),
-        guest_accelerators=__ret__.get('guestAccelerators'),
-        hostname=__ret__.get('hostname'),
-        id=__ret__.get('id'),
-        instance_id=__ret__.get('instanceId'),
-        label_fingerprint=__ret__.get('labelFingerprint'),
-        labels=__ret__.get('labels'),
-        machine_type=__ret__.get('machineType'),
-        metadata=__ret__.get('metadata'),
-        metadata_fingerprint=__ret__.get('metadataFingerprint'),
-        metadata_startup_script=__ret__.get('metadataStartupScript'),
-        min_cpu_platform=__ret__.get('minCpuPlatform'),
-        name=__ret__.get('name'),
-        network_interfaces=__ret__.get('networkInterfaces'),
-        project=__ret__.get('project'),
-        resource_policies=__ret__.get('resourcePolicies'),
-        schedulings=__ret__.get('schedulings'),
-        scratch_disks=__ret__.get('scratchDisks'),
-        self_link=__ret__.get('selfLink'),
-        service_accounts=__ret__.get('serviceAccounts'),
-        shielded_instance_configs=__ret__.get('shieldedInstanceConfigs'),
-        tags=__ret__.get('tags'),
-        tags_fingerprint=__ret__.get('tagsFingerprint'),
-        zone=__ret__.get('zone'))
+        allow_stopping_for_update=__ret__.allow_stopping_for_update,
+        attached_disks=__ret__.attached_disks,
+        boot_disks=__ret__.boot_disks,
+        can_ip_forward=__ret__.can_ip_forward,
+        confidential_instance_configs=__ret__.confidential_instance_configs,
+        cpu_platform=__ret__.cpu_platform,
+        current_status=__ret__.current_status,
+        deletion_protection=__ret__.deletion_protection,
+        description=__ret__.description,
+        desired_status=__ret__.desired_status,
+        enable_display=__ret__.enable_display,
+        guest_accelerators=__ret__.guest_accelerators,
+        hostname=__ret__.hostname,
+        id=__ret__.id,
+        instance_id=__ret__.instance_id,
+        label_fingerprint=__ret__.label_fingerprint,
+        labels=__ret__.labels,
+        machine_type=__ret__.machine_type,
+        metadata=__ret__.metadata,
+        metadata_fingerprint=__ret__.metadata_fingerprint,
+        metadata_startup_script=__ret__.metadata_startup_script,
+        min_cpu_platform=__ret__.min_cpu_platform,
+        name=__ret__.name,
+        network_interfaces=__ret__.network_interfaces,
+        project=__ret__.project,
+        resource_policies=__ret__.resource_policies,
+        schedulings=__ret__.schedulings,
+        scratch_disks=__ret__.scratch_disks,
+        self_link=__ret__.self_link,
+        service_accounts=__ret__.service_accounts,
+        shielded_instance_configs=__ret__.shielded_instance_configs,
+        tags=__ret__.tags,
+        tags_fingerprint=__ret__.tags_fingerprint,
+        zone=__ret__.zone)

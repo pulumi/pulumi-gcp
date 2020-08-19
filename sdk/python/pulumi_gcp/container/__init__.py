@@ -10,3 +10,5 @@ from .get_registry_image import *
 from .get_registry_repository import *
 from .node_pool import *
 from .registry import *
+from ._inputs import *
+from . import outputs

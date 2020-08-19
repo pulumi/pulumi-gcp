@@ -5,86 +5,29 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['GlobalAddress']
 
 
 class GlobalAddress(pulumi.CustomResource):
-    address: pulumi.Output[str]
-    """
-    The IP address or beginning of the address range represented by this
-    resource. This can be supplied as an input to reserve a specific
-    address or omitted to allow GCP to choose a valid one for you.
-    """
-    address_type: pulumi.Output[str]
-    """
-    The type of the address to reserve.
-    * EXTERNAL indicates public/external single IP address.
-    * INTERNAL indicates internal IP ranges belonging to some network.
-    Default value is `EXTERNAL`.
-    Possible values are `EXTERNAL` and `INTERNAL`.
-    """
-    creation_timestamp: pulumi.Output[str]
-    """
-    Creation timestamp in RFC3339 text format.
-    """
-    description: pulumi.Output[str]
-    """
-    An optional description of this resource.
-    """
-    ip_version: pulumi.Output[str]
-    """
-    The IP Version that will be used by this address. The default value is `IPV4`.
-    Possible values are `IPV4` and `IPV6`.
-    """
-    label_fingerprint: pulumi.Output[str]
-    """
-    The fingerprint used for optimistic locking of this resource. Used internally during updates.
-    """
-    labels: pulumi.Output[dict]
-    """
-    Labels to apply to this address.  A list of key->value pairs.
-    """
-    name: pulumi.Output[str]
-    """
-    Name of the resource. Provided by the client when the resource is
-    created. The name must be 1-63 characters long, and comply with
-    RFC1035.  Specifically, the name must be 1-63 characters long and
-    match the regular expression `a-z?` which means
-    the first character must be a lowercase letter, and all following
-    characters must be a dash, lowercase letter, or digit, except the last
-    character, which cannot be a dash.
-    """
-    network: pulumi.Output[str]
-    """
-    The URL of the network in which to reserve the IP range. The IP range
-    must be in RFC1918 space. The network cannot be deleted if there are
-    any reserved IP ranges referring to it.
-    This should only be set when using an Internal address.
-    """
-    prefix_length: pulumi.Output[float]
-    """
-    The prefix length of the IP range. If not present, it means the
-    address field is a single IP address.
-    This field is not applicable to addresses with addressType=EXTERNAL.
-    """
-    project: pulumi.Output[str]
-    """
-    The ID of the project in which the resource belongs.
-    If it is not provided, the provider project is used.
-    """
-    purpose: pulumi.Output[str]
-    """
-    The purpose of the resource. For global internal addresses it can be
-    * VPC_PEERING - for peer networks
-    This should only be set when using an Internal address.
-    Possible values are `VPC_PEERING`.
-    """
-    self_link: pulumi.Output[str]
-    """
-    The URI of the created resource.
-    """
-    def __init__(__self__, resource_name, opts=None, address=None, address_type=None, description=None, ip_version=None, labels=None, name=None, network=None, prefix_length=None, project=None, purpose=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 address: Optional[pulumi.Input[str]] = None,
+                 address_type: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 ip_version: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 network: Optional[pulumi.Input[str]] = None,
+                 prefix_length: Optional[pulumi.Input[float]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 purpose: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Represents a Global Address resource. Global addresses are used for
         HTTP(S) load balancing.
@@ -110,7 +53,7 @@ class GlobalAddress(pulumi.CustomResource):
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] ip_version: The IP Version that will be used by this address. The default value is `IPV4`.
                Possible values are `IPV4` and `IPV6`.
-        :param pulumi.Input[dict] labels: Labels to apply to this address.  A list of key->value pairs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this address.  A list of key->value pairs.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -169,13 +112,28 @@ class GlobalAddress(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, address=None, address_type=None, creation_timestamp=None, description=None, ip_version=None, label_fingerprint=None, labels=None, name=None, network=None, prefix_length=None, project=None, purpose=None, self_link=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            address: Optional[pulumi.Input[str]] = None,
+            address_type: Optional[pulumi.Input[str]] = None,
+            creation_timestamp: Optional[pulumi.Input[str]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            ip_version: Optional[pulumi.Input[str]] = None,
+            label_fingerprint: Optional[pulumi.Input[str]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            network: Optional[pulumi.Input[str]] = None,
+            prefix_length: Optional[pulumi.Input[float]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            purpose: Optional[pulumi.Input[str]] = None,
+            self_link: Optional[pulumi.Input[str]] = None) -> 'GlobalAddress':
         """
         Get an existing GlobalAddress resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: The IP address or beginning of the address range represented by this
                resource. This can be supplied as an input to reserve a specific
@@ -190,7 +148,7 @@ class GlobalAddress(pulumi.CustomResource):
         :param pulumi.Input[str] ip_version: The IP Version that will be used by this address. The default value is `IPV4`.
                Possible values are `IPV4` and `IPV6`.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
-        :param pulumi.Input[dict] labels: Labels to apply to this address.  A list of key->value pairs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this address.  A list of key->value pairs.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -232,8 +190,135 @@ class GlobalAddress(pulumi.CustomResource):
         __props__["self_link"] = self_link
         return GlobalAddress(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        """
+        The IP address or beginning of the address range represented by this
+        resource. This can be supplied as an input to reserve a specific
+        address or omitted to allow GCP to choose a valid one for you.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter(name="addressType")
+    def address_type(self) -> Optional[str]:
+        """
+        The type of the address to reserve.
+        * EXTERNAL indicates public/external single IP address.
+        * INTERNAL indicates internal IP ranges belonging to some network.
+        Default value is `EXTERNAL`.
+        Possible values are `EXTERNAL` and `INTERNAL`.
+        """
+        return pulumi.get(self, "address_type")
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> str:
+        """
+        Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        An optional description of this resource.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="ipVersion")
+    def ip_version(self) -> Optional[str]:
+        """
+        The IP Version that will be used by this address. The default value is `IPV4`.
+        Possible values are `IPV4` and `IPV6`.
+        """
+        return pulumi.get(self, "ip_version")
+
+    @property
+    @pulumi.getter(name="labelFingerprint")
+    def label_fingerprint(self) -> str:
+        """
+        The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        """
+        return pulumi.get(self, "label_fingerprint")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[Mapping[str, str]]:
+        """
+        Labels to apply to this address.  A list of key->value pairs.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the resource. Provided by the client when the resource is
+        created. The name must be 1-63 characters long, and comply with
+        RFC1035.  Specifically, the name must be 1-63 characters long and
+        match the regular expression `a-z?` which means
+        the first character must be a lowercase letter, and all following
+        characters must be a dash, lowercase letter, or digit, except the last
+        character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[str]:
+        """
+        The URL of the network in which to reserve the IP range. The IP range
+        must be in RFC1918 space. The network cannot be deleted if there are
+        any reserved IP ranges referring to it.
+        This should only be set when using an Internal address.
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="prefixLength")
+    def prefix_length(self) -> Optional[float]:
+        """
+        The prefix length of the IP range. If not present, it means the
+        address field is a single IP address.
+        This field is not applicable to addresses with addressType=EXTERNAL.
+        """
+        return pulumi.get(self, "prefix_length")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def purpose(self) -> Optional[str]:
+        """
+        The purpose of the resource. For global internal addresses it can be
+        * VPC_PEERING - for peer networks
+        This should only be set when using an Internal address.
+        Possible values are `VPC_PEERING`.
+        """
+        return pulumi.get(self, "purpose")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> str:
+        """
+        The URI of the created resource.
+        """
+        return pulumi.get(self, "self_link")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

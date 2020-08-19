@@ -5,85 +5,27 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['Hl7Store']
 
 
 class Hl7Store(pulumi.CustomResource):
-    dataset: pulumi.Output[str]
-    """
-    Identifies the dataset addressed by this request. Must be in the format
-    'projects/{project}/locations/{location}/datasets/{dataset}'
-    """
-    labels: pulumi.Output[dict]
-    """
-    User-supplied key-value pairs used to organize HL7v2 stores.
-    Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
-    conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
-    Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
-    bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
-    No more than 64 labels can be associated with a given store.
-    An object containing a list of "key": value pairs.
-    Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-    """
-    name: pulumi.Output[str]
-    """
-    The resource name for the Hl7V2Store.
-    ** Changing this property may recreate the Hl7v2 store (removing all data) **
-    """
-    notification_config: pulumi.Output[dict]
-    """
-    -
-    (Optional, Deprecated)
-    A nested object resource
-    Structure is documented below.
-
-      * `pubsubTopic` (`str`) - The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
-        PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
-        It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
-        was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-        project. cloud-healthcare@system.gserviceaccount.com must have publisher permissions on the given
-        Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
-    """
-    notification_configs: pulumi.Output[list]
-    """
-    A list of notification configs. Each configuration uses a filter to determine whether to publish a
-    message (both Ingest & Create) on the corresponding notification destination. Only the message name
-    is sent as part of the notification. Supplied by the client.
-    Structure is documented below.
-
-      * `filter` (`str`) - Restricts notifications sent for messages matching a filter. If this is empty, all messages
-        are matched. Syntax: https://cloud.google.com/appengine/docs/standard/python/search/query_strings
-        Fields/functions available for filtering are:
-        * messageType, from the MSH-9.1 field. For example, NOT messageType = "ADT".
-        * send_date or sendDate, the YYYY-MM-DD date the message was sent in the dataset's timeZone, from the MSH-7 segment. For example, send_date < "2017-01-02".
-        * sendTime, the timestamp when the message was sent, using the RFC3339 time format for comparisons, from the MSH-7 segment. For example, sendTime < "2017-01-02T00:00:00-05:00".
-        * sendFacility, the care center that the message came from, from the MSH-4 segment. For example, sendFacility = "ABC".
-        * PatientId(value, type), which matches if the message lists a patient having an ID of the given value and type in the PID-2, PID-3, or PID-4 segments. For example, PatientId("123456", "MRN").
-        * labels.x, a string value of the label with key x as set using the Message.labels map. For example, labels."priority"="high". The operator :* can be used to assert the existence of a label. For example, labels."priority":*.
-      * `pubsubTopic` (`str`) - The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
-        PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
-        It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
-        was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-        project. cloud-healthcare@system.gserviceaccount.com must have publisher permissions on the given
-        Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
-    """
-    parser_config: pulumi.Output[dict]
-    """
-    A nested object resource
-    Structure is documented below.
-
-      * `allowNullHeader` (`bool`) - Determines whether messages with no header are allowed.
-      * `schema` (`str`) - JSON encoded string for schemas used to parse messages in this
-        store if schematized parsing is desired.
-      * `segmentTerminator` (`str`) - Byte(s) to be used as the segment terminator. If this is unset, '\r' will be used as segment terminator.
-        A base64-encoded string.
-    """
-    self_link: pulumi.Output[str]
-    """
-    The fully qualified name of this dataset
-    """
-    def __init__(__self__, resource_name, opts=None, dataset=None, labels=None, name=None, notification_config=None, notification_configs=None, parser_config=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 dataset: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 notification_config: Optional[pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigArgs']]] = None,
+                 notification_configs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigsArgs']]]]] = None,
+                 parser_config: Optional[pulumi.Input[pulumi.InputType['Hl7StoreParserConfigArgs']]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         A Hl7V2Store is a datastore inside a Healthcare dataset that conforms to the FHIR (https://www.hl7.org/hl7V2/STU3/)
         standard for Healthcare information exchange
@@ -100,7 +42,7 @@ class Hl7Store(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] dataset: Identifies the dataset addressed by this request. Must be in the format
                'projects/{project}/locations/{location}/datasets/{dataset}'
-        :param pulumi.Input[dict] labels: User-supplied key-value pairs used to organize HL7v2 stores.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-supplied key-value pairs used to organize HL7v2 stores.
                Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
                conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
                Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
@@ -110,51 +52,16 @@ class Hl7Store(pulumi.CustomResource):
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[str] name: The resource name for the Hl7V2Store.
                ** Changing this property may recreate the Hl7v2 store (removing all data) **
-        :param pulumi.Input[dict] notification_config: -
+        :param pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigArgs']] notification_config: -
                (Optional, Deprecated)
                A nested object resource
                Structure is documented below.
-        :param pulumi.Input[list] notification_configs: A list of notification configs. Each configuration uses a filter to determine whether to publish a
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigsArgs']]]] notification_configs: A list of notification configs. Each configuration uses a filter to determine whether to publish a
                message (both Ingest & Create) on the corresponding notification destination. Only the message name
                is sent as part of the notification. Supplied by the client.
                Structure is documented below.
-        :param pulumi.Input[dict] parser_config: A nested object resource
+        :param pulumi.Input[pulumi.InputType['Hl7StoreParserConfigArgs']] parser_config: A nested object resource
                Structure is documented below.
-
-        The **notification_config** object supports the following:
-
-          * `pubsubTopic` (`pulumi.Input[str]`) - The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
-            PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
-            It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
-            was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-            project. cloud-healthcare@system.gserviceaccount.com must have publisher permissions on the given
-            Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
-
-        The **notification_configs** object supports the following:
-
-          * `filter` (`pulumi.Input[str]`) - Restricts notifications sent for messages matching a filter. If this is empty, all messages
-            are matched. Syntax: https://cloud.google.com/appengine/docs/standard/python/search/query_strings
-            Fields/functions available for filtering are:
-            * messageType, from the MSH-9.1 field. For example, NOT messageType = "ADT".
-            * send_date or sendDate, the YYYY-MM-DD date the message was sent in the dataset's timeZone, from the MSH-7 segment. For example, send_date < "2017-01-02".
-            * sendTime, the timestamp when the message was sent, using the RFC3339 time format for comparisons, from the MSH-7 segment. For example, sendTime < "2017-01-02T00:00:00-05:00".
-            * sendFacility, the care center that the message came from, from the MSH-4 segment. For example, sendFacility = "ABC".
-            * PatientId(value, type), which matches if the message lists a patient having an ID of the given value and type in the PID-2, PID-3, or PID-4 segments. For example, PatientId("123456", "MRN").
-            * labels.x, a string value of the label with key x as set using the Message.labels map. For example, labels."priority"="high". The operator :* can be used to assert the existence of a label. For example, labels."priority":*.
-          * `pubsubTopic` (`pulumi.Input[str]`) - The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
-            PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
-            It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
-            was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-            project. cloud-healthcare@system.gserviceaccount.com must have publisher permissions on the given
-            Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
-
-        The **parser_config** object supports the following:
-
-          * `allowNullHeader` (`pulumi.Input[bool]`) - Determines whether messages with no header are allowed.
-          * `schema` (`pulumi.Input[str]`) - JSON encoded string for schemas used to parse messages in this
-            store if schematized parsing is desired.
-          * `segmentTerminator` (`pulumi.Input[str]`) - Byte(s) to be used as the segment terminator. If this is unset, '\r' will be used as segment terminator.
-            A base64-encoded string.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -192,17 +99,26 @@ class Hl7Store(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, dataset=None, labels=None, name=None, notification_config=None, notification_configs=None, parser_config=None, self_link=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            dataset: Optional[pulumi.Input[str]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            notification_config: Optional[pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigArgs']]] = None,
+            notification_configs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigsArgs']]]]] = None,
+            parser_config: Optional[pulumi.Input[pulumi.InputType['Hl7StoreParserConfigArgs']]] = None,
+            self_link: Optional[pulumi.Input[str]] = None) -> 'Hl7Store':
         """
         Get an existing Hl7Store resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] dataset: Identifies the dataset addressed by this request. Must be in the format
                'projects/{project}/locations/{location}/datasets/{dataset}'
-        :param pulumi.Input[dict] labels: User-supplied key-value pairs used to organize HL7v2 stores.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-supplied key-value pairs used to organize HL7v2 stores.
                Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
                conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
                Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
@@ -212,52 +128,17 @@ class Hl7Store(pulumi.CustomResource):
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[str] name: The resource name for the Hl7V2Store.
                ** Changing this property may recreate the Hl7v2 store (removing all data) **
-        :param pulumi.Input[dict] notification_config: -
+        :param pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigArgs']] notification_config: -
                (Optional, Deprecated)
                A nested object resource
                Structure is documented below.
-        :param pulumi.Input[list] notification_configs: A list of notification configs. Each configuration uses a filter to determine whether to publish a
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigsArgs']]]] notification_configs: A list of notification configs. Each configuration uses a filter to determine whether to publish a
                message (both Ingest & Create) on the corresponding notification destination. Only the message name
                is sent as part of the notification. Supplied by the client.
                Structure is documented below.
-        :param pulumi.Input[dict] parser_config: A nested object resource
+        :param pulumi.Input[pulumi.InputType['Hl7StoreParserConfigArgs']] parser_config: A nested object resource
                Structure is documented below.
         :param pulumi.Input[str] self_link: The fully qualified name of this dataset
-
-        The **notification_config** object supports the following:
-
-          * `pubsubTopic` (`pulumi.Input[str]`) - The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
-            PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
-            It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
-            was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-            project. cloud-healthcare@system.gserviceaccount.com must have publisher permissions on the given
-            Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
-
-        The **notification_configs** object supports the following:
-
-          * `filter` (`pulumi.Input[str]`) - Restricts notifications sent for messages matching a filter. If this is empty, all messages
-            are matched. Syntax: https://cloud.google.com/appengine/docs/standard/python/search/query_strings
-            Fields/functions available for filtering are:
-            * messageType, from the MSH-9.1 field. For example, NOT messageType = "ADT".
-            * send_date or sendDate, the YYYY-MM-DD date the message was sent in the dataset's timeZone, from the MSH-7 segment. For example, send_date < "2017-01-02".
-            * sendTime, the timestamp when the message was sent, using the RFC3339 time format for comparisons, from the MSH-7 segment. For example, sendTime < "2017-01-02T00:00:00-05:00".
-            * sendFacility, the care center that the message came from, from the MSH-4 segment. For example, sendFacility = "ABC".
-            * PatientId(value, type), which matches if the message lists a patient having an ID of the given value and type in the PID-2, PID-3, or PID-4 segments. For example, PatientId("123456", "MRN").
-            * labels.x, a string value of the label with key x as set using the Message.labels map. For example, labels."priority"="high". The operator :* can be used to assert the existence of a label. For example, labels."priority":*.
-          * `pubsubTopic` (`pulumi.Input[str]`) - The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
-            PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
-            It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
-            was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-            project. cloud-healthcare@system.gserviceaccount.com must have publisher permissions on the given
-            Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
-
-        The **parser_config** object supports the following:
-
-          * `allowNullHeader` (`pulumi.Input[bool]`) - Determines whether messages with no header are allowed.
-          * `schema` (`pulumi.Input[str]`) - JSON encoded string for schemas used to parse messages in this
-            store if schematized parsing is desired.
-          * `segmentTerminator` (`pulumi.Input[str]`) - Byte(s) to be used as the segment terminator. If this is unset, '\r' will be used as segment terminator.
-            A base64-encoded string.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -272,8 +153,81 @@ class Hl7Store(pulumi.CustomResource):
         __props__["self_link"] = self_link
         return Hl7Store(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def dataset(self) -> str:
+        """
+        Identifies the dataset addressed by this request. Must be in the format
+        'projects/{project}/locations/{location}/datasets/{dataset}'
+        """
+        return pulumi.get(self, "dataset")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[Mapping[str, str]]:
+        """
+        User-supplied key-value pairs used to organize HL7v2 stores.
+        Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
+        conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+        Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
+        bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+        No more than 64 labels can be associated with a given store.
+        An object containing a list of "key": value pairs.
+        Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The resource name for the Hl7V2Store.
+        ** Changing this property may recreate the Hl7v2 store (removing all data) **
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="notificationConfig")
+    def notification_config(self) -> Optional['outputs.Hl7StoreNotificationConfig']:
+        """
+        -
+        (Optional, Deprecated)
+        A nested object resource
+        Structure is documented below.
+        """
+        return pulumi.get(self, "notification_config")
+
+    @property
+    @pulumi.getter(name="notificationConfigs")
+    def notification_configs(self) -> Optional[List['outputs.Hl7StoreNotificationConfigs']]:
+        """
+        A list of notification configs. Each configuration uses a filter to determine whether to publish a
+        message (both Ingest & Create) on the corresponding notification destination. Only the message name
+        is sent as part of the notification. Supplied by the client.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "notification_configs")
+
+    @property
+    @pulumi.getter(name="parserConfig")
+    def parser_config(self) -> Optional['outputs.Hl7StoreParserConfig']:
+        """
+        A nested object resource
+        Structure is documented below.
+        """
+        return pulumi.get(self, "parser_config")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> str:
+        """
+        The fully qualified name of this dataset
+        """
+        return pulumi.get(self, "self_link")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

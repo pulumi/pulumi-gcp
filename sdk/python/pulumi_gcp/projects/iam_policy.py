@@ -5,28 +5,21 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['IAMPolicy']
 
 
 class IAMPolicy(pulumi.CustomResource):
-    etag: pulumi.Output[str]
-    """
-    (Computed) The etag of the project's IAM policy.
-    """
-    policy_data: pulumi.Output[str]
-    """
-    The `organizations.getIAMPolicy` data source that represents
-    the IAM policy that will be applied to the project. The policy will be
-    merged with any existing policy applied to the project.
-    """
-    project: pulumi.Output[str]
-    """
-    The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
-    Required for `projects.IAMPolicy` - you must explicitly set the project, and it
-    will not be inferred from the provider.
-    """
-    def __init__(__self__, resource_name, opts=None, policy_data=None, project=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 policy_data: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Four different resources help you manage your IAM policy for a project. Each of these resources serves a different use case:
 
@@ -79,13 +72,18 @@ class IAMPolicy(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, etag=None, policy_data=None, project=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            etag: Optional[pulumi.Input[str]] = None,
+            policy_data: Optional[pulumi.Input[str]] = None,
+            project: Optional[pulumi.Input[str]] = None) -> 'IAMPolicy':
         """
         Get an existing IAMPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] etag: (Computed) The etag of the project's IAM policy.
         :param pulumi.Input[str] policy_data: The `organizations.getIAMPolicy` data source that represents
@@ -104,8 +102,37 @@ class IAMPolicy(pulumi.CustomResource):
         __props__["project"] = project
         return IAMPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def etag(self) -> str:
+        """
+        (Computed) The etag of the project's IAM policy.
+        """
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter(name="policyData")
+    def policy_data(self) -> str:
+        """
+        The `organizations.getIAMPolicy` data source that represents
+        the IAM policy that will be applied to the project. The policy will be
+        merged with any existing policy applied to the project.
+        """
+        return pulumi.get(self, "policy_data")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
+        Required for `projects.IAMPolicy` - you must explicitly set the project, and it
+        will not be inferred from the provider.
+        """
+        return pulumi.get(self, "project")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

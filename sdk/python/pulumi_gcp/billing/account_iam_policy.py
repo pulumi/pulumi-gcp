@@ -5,23 +5,21 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['AccountIamPolicy']
 
 
 class AccountIamPolicy(pulumi.CustomResource):
-    billing_account_id: pulumi.Output[str]
-    """
-    The billing account id.
-    """
-    etag: pulumi.Output[str]
-    policy_data: pulumi.Output[str]
-    """
-    The `organizations.getIAMPolicy` data source that represents
-    the IAM policy that will be applied to the billing account. This policy overrides any existing
-    policy applied to the billing account.
-    """
-    def __init__(__self__, resource_name, opts=None, billing_account_id=None, policy_data=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 billing_account_id: Optional[pulumi.Input[str]] = None,
+                 policy_data: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Allows management of the entire IAM policy for an existing Google Cloud Platform Billing Account.
 
@@ -73,13 +71,18 @@ class AccountIamPolicy(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, billing_account_id=None, etag=None, policy_data=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            billing_account_id: Optional[pulumi.Input[str]] = None,
+            etag: Optional[pulumi.Input[str]] = None,
+            policy_data: Optional[pulumi.Input[str]] = None) -> 'AccountIamPolicy':
         """
         Get an existing AccountIamPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] billing_account_id: The billing account id.
         :param pulumi.Input[str] policy_data: The `organizations.getIAMPolicy` data source that represents
@@ -95,8 +98,32 @@ class AccountIamPolicy(pulumi.CustomResource):
         __props__["policy_data"] = policy_data
         return AccountIamPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="billingAccountId")
+    def billing_account_id(self) -> str:
+        """
+        The billing account id.
+        """
+        return pulumi.get(self, "billing_account_id")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> str:
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter(name="policyData")
+    def policy_data(self) -> str:
+        """
+        The `organizations.getIAMPolicy` data source that represents
+        the IAM policy that will be applied to the billing account. This policy overrides any existing
+        policy applied to the billing account.
+        """
+        return pulumi.get(self, "policy_data")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

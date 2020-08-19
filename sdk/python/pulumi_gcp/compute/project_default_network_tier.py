@@ -5,22 +5,21 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['ProjectDefaultNetworkTier']
 
 
 class ProjectDefaultNetworkTier(pulumi.CustomResource):
-    network_tier: pulumi.Output[str]
-    """
-    The default network tier to be configured for the project.
-    This field can take the following values: `PREMIUM` or `STANDARD`.
-    """
-    project: pulumi.Output[str]
-    """
-    The ID of the project in which the resource belongs. If it
-    is not provided, the provider project is used.
-    """
-    def __init__(__self__, resource_name, opts=None, network_tier=None, project=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 network_tier: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Configures the Google Compute Engine
         [Default Network Tier](https://cloud.google.com/network-tiers/docs/using-network-service-tiers#setting_the_tier_for_all_resources_in_a_project)
@@ -64,13 +63,17 @@ class ProjectDefaultNetworkTier(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, network_tier=None, project=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            network_tier: Optional[pulumi.Input[str]] = None,
+            project: Optional[pulumi.Input[str]] = None) -> 'ProjectDefaultNetworkTier':
         """
         Get an existing ProjectDefaultNetworkTier resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] network_tier: The default network tier to be configured for the project.
                This field can take the following values: `PREMIUM` or `STANDARD`.
@@ -85,8 +88,27 @@ class ProjectDefaultNetworkTier(pulumi.CustomResource):
         __props__["project"] = project
         return ProjectDefaultNetworkTier(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="networkTier")
+    def network_tier(self) -> str:
+        """
+        The default network tier to be configured for the project.
+        This field can take the following values: `PREMIUM` or `STANDARD`.
+        """
+        return pulumi.get(self, "network_tier")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The ID of the project in which the resource belongs. If it
+        is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

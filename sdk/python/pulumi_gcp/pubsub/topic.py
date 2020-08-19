@@ -5,47 +5,26 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['Topic']
 
 
 class Topic(pulumi.CustomResource):
-    kms_key_name: pulumi.Output[str]
-    """
-    The resource name of the Cloud KMS CryptoKey to be used to protect access
-    to messages published on this topic. Your project's PubSub service account
-    (`service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com`) must have
-    `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
-    The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`
-    """
-    labels: pulumi.Output[dict]
-    """
-    A set of key/value label pairs to assign to this Topic.
-    """
-    message_storage_policy: pulumi.Output[dict]
-    """
-    Policy constraining the set of Google Cloud Platform regions where
-    messages published to the topic may be stored. If not present, then no
-    constraints are in effect.
-    Structure is documented below.
-
-      * `allowedPersistenceRegions` (`list`) - A list of IDs of GCP regions where messages that are published to
-        the topic may be persisted in storage. Messages published by
-        publishers running in non-allowed GCP regions (or running outside
-        of GCP altogether) will be routed for storage in one of the
-        allowed regions. An empty list means that no regions are allowed,
-        and is not a valid configuration.
-    """
-    name: pulumi.Output[str]
-    """
-    Name of the topic.
-    """
-    project: pulumi.Output[str]
-    """
-    The ID of the project in which the resource belongs.
-    If it is not provided, the provider project is used.
-    """
-    def __init__(__self__, resource_name, opts=None, kms_key_name=None, labels=None, message_storage_policy=None, name=None, project=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 kms_key_name: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 message_storage_policy: Optional[pulumi.Input[pulumi.InputType['TopicMessageStoragePolicyArgs']]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         A named resource to which messages are sent by publishers.
 
@@ -64,23 +43,14 @@ class Topic(pulumi.CustomResource):
                (`service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com`) must have
                `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
                The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`
-        :param pulumi.Input[dict] labels: A set of key/value label pairs to assign to this Topic.
-        :param pulumi.Input[dict] message_storage_policy: Policy constraining the set of Google Cloud Platform regions where
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this Topic.
+        :param pulumi.Input[pulumi.InputType['TopicMessageStoragePolicyArgs']] message_storage_policy: Policy constraining the set of Google Cloud Platform regions where
                messages published to the topic may be stored. If not present, then no
                constraints are in effect.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the topic.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-
-        The **message_storage_policy** object supports the following:
-
-          * `allowedPersistenceRegions` (`pulumi.Input[list]`) - A list of IDs of GCP regions where messages that are published to
-            the topic may be persisted in storage. Messages published by
-            publishers running in non-allowed GCP regions (or running outside
-            of GCP altogether) will be routed for storage in one of the
-            allowed regions. An empty list means that no regions are allowed,
-            and is not a valid configuration.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -111,36 +81,34 @@ class Topic(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, kms_key_name=None, labels=None, message_storage_policy=None, name=None, project=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            kms_key_name: Optional[pulumi.Input[str]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            message_storage_policy: Optional[pulumi.Input[pulumi.InputType['TopicMessageStoragePolicyArgs']]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            project: Optional[pulumi.Input[str]] = None) -> 'Topic':
         """
         Get an existing Topic resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] kms_key_name: The resource name of the Cloud KMS CryptoKey to be used to protect access
                to messages published on this topic. Your project's PubSub service account
                (`service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com`) must have
                `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
                The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`
-        :param pulumi.Input[dict] labels: A set of key/value label pairs to assign to this Topic.
-        :param pulumi.Input[dict] message_storage_policy: Policy constraining the set of Google Cloud Platform regions where
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this Topic.
+        :param pulumi.Input[pulumi.InputType['TopicMessageStoragePolicyArgs']] message_storage_policy: Policy constraining the set of Google Cloud Platform regions where
                messages published to the topic may be stored. If not present, then no
                constraints are in effect.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the topic.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-
-        The **message_storage_policy** object supports the following:
-
-          * `allowedPersistenceRegions` (`pulumi.Input[list]`) - A list of IDs of GCP regions where messages that are published to
-            the topic may be persisted in storage. Messages published by
-            publishers running in non-allowed GCP regions (or running outside
-            of GCP altogether) will be routed for storage in one of the
-            allowed regions. An empty list means that no regions are allowed,
-            and is not a valid configuration.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -153,8 +121,57 @@ class Topic(pulumi.CustomResource):
         __props__["project"] = project
         return Topic(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> Optional[str]:
+        """
+        The resource name of the Cloud KMS CryptoKey to be used to protect access
+        to messages published on this topic. Your project's PubSub service account
+        (`service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com`) must have
+        `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
+        The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[Mapping[str, str]]:
+        """
+        A set of key/value label pairs to assign to this Topic.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="messageStoragePolicy")
+    def message_storage_policy(self) -> 'outputs.TopicMessageStoragePolicy':
+        """
+        Policy constraining the set of Google Cloud Platform regions where
+        messages published to the topic may be stored. If not present, then no
+        constraints are in effect.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "message_storage_policy")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the topic.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

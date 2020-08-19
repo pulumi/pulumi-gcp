@@ -5,31 +5,25 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['DatasetIamBinding']
 
 
 class DatasetIamBinding(pulumi.CustomResource):
-    condition: pulumi.Output[dict]
-    dataset_id: pulumi.Output[str]
-    """
-    The dataset ID, in the form
-    `{project_id}/{location_name}/{dataset_name}` or
-    `{location_name}/{dataset_name}`. In the second form, the provider's
-    project setting will be used as a fallback.
-    """
-    etag: pulumi.Output[str]
-    """
-    (Computed) The etag of the dataset's IAM policy.
-    """
-    members: pulumi.Output[list]
-    role: pulumi.Output[str]
-    """
-    The role that should be applied. Only one
-    `healthcare.DatasetIamBinding` can be used per role. Note that custom roles must be of the format
-    `[projects|organizations]/{parent-name}/roles/{role-name}`.
-    """
-    def __init__(__self__, resource_name, opts=None, condition=None, dataset_id=None, members=None, role=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['DatasetIamBindingConditionArgs']]] = None,
+                 dataset_id: Optional[pulumi.Input[str]] = None,
+                 members: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 role: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Three different resources help you manage your IAM policy for Healthcare dataset. Each of these resources serves a different use case:
 
@@ -50,12 +44,6 @@ class DatasetIamBinding(pulumi.CustomResource):
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `healthcare.DatasetIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
-
-        The **condition** object supports the following:
-
-          * `description` (`pulumi.Input[str]`)
-          * `expression` (`pulumi.Input[str]`)
-          * `title` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -92,13 +80,20 @@ class DatasetIamBinding(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, condition=None, dataset_id=None, etag=None, members=None, role=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['DatasetIamBindingConditionArgs']]] = None,
+            dataset_id: Optional[pulumi.Input[str]] = None,
+            etag: Optional[pulumi.Input[str]] = None,
+            members: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            role: Optional[pulumi.Input[str]] = None) -> 'DatasetIamBinding':
         """
         Get an existing DatasetIamBinding resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] dataset_id: The dataset ID, in the form
                `{project_id}/{location_name}/{dataset_name}` or
@@ -108,12 +103,6 @@ class DatasetIamBinding(pulumi.CustomResource):
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `healthcare.DatasetIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
-
-        The **condition** object supports the following:
-
-          * `description` (`pulumi.Input[str]`)
-          * `expression` (`pulumi.Input[str]`)
-          * `title` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -126,8 +115,48 @@ class DatasetIamBinding(pulumi.CustomResource):
         __props__["role"] = role
         return DatasetIamBinding(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional['outputs.DatasetIamBindingCondition']:
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> str:
+        """
+        The dataset ID, in the form
+        `{project_id}/{location_name}/{dataset_name}` or
+        `{location_name}/{dataset_name}`. In the second form, the provider's
+        project setting will be used as a fallback.
+        """
+        return pulumi.get(self, "dataset_id")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> str:
+        """
+        (Computed) The etag of the dataset's IAM policy.
+        """
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter
+    def members(self) -> List[str]:
+        return pulumi.get(self, "members")
+
+    @property
+    @pulumi.getter
+    def role(self) -> str:
+        """
+        The role that should be applied. Only one
+        `healthcare.DatasetIamBinding` can be used per role. Note that custom roles must be of the format
+        `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        """
+        return pulumi.get(self, "role")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

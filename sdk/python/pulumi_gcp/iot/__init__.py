@@ -5,3 +5,5 @@
 # Export this package's modules as members:
 from .device import *
 from .registry import *
+from ._inputs import *
+from . import outputs

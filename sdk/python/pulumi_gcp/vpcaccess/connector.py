@@ -5,49 +5,26 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['Connector']
 
 
 class Connector(pulumi.CustomResource):
-    ip_cidr_range: pulumi.Output[str]
-    """
-    The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
-    """
-    max_throughput: pulumi.Output[float]
-    """
-    Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 1000.
-    """
-    min_throughput: pulumi.Output[float]
-    """
-    Minimum throughput of the connector in Mbps. Default and min is 200.
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the resource (Max 25 characters).
-    """
-    network: pulumi.Output[str]
-    """
-    Name of a VPC network.
-    """
-    project: pulumi.Output[str]
-    """
-    The ID of the project in which the resource belongs.
-    If it is not provided, the provider project is used.
-    """
-    region: pulumi.Output[str]
-    """
-    Region where the VPC Access connector resides
-    """
-    self_link: pulumi.Output[str]
-    """
-    The fully qualified name of this VPC connector
-    """
-    state: pulumi.Output[str]
-    """
-    State of the VPC access connector.
-    """
-    def __init__(__self__, resource_name, opts=None, ip_cidr_range=None, max_throughput=None, min_throughput=None, name=None, network=None, project=None, region=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 ip_cidr_range: Optional[pulumi.Input[str]] = None,
+                 max_throughput: Optional[pulumi.Input[float]] = None,
+                 min_throughput: Optional[pulumi.Input[float]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 network: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Serverless VPC Access connector resource.
 
@@ -109,13 +86,24 @@ class Connector(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, ip_cidr_range=None, max_throughput=None, min_throughput=None, name=None, network=None, project=None, region=None, self_link=None, state=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            ip_cidr_range: Optional[pulumi.Input[str]] = None,
+            max_throughput: Optional[pulumi.Input[float]] = None,
+            min_throughput: Optional[pulumi.Input[float]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            network: Optional[pulumi.Input[str]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            self_link: Optional[pulumi.Input[str]] = None,
+            state: Optional[pulumi.Input[str]] = None) -> 'Connector':
         """
         Get an existing Connector resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ip_cidr_range: The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
         :param pulumi.Input[float] max_throughput: Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 1000.
@@ -143,8 +131,82 @@ class Connector(pulumi.CustomResource):
         __props__["state"] = state
         return Connector(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="ipCidrRange")
+    def ip_cidr_range(self) -> str:
+        """
+        The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
+        """
+        return pulumi.get(self, "ip_cidr_range")
+
+    @property
+    @pulumi.getter(name="maxThroughput")
+    def max_throughput(self) -> Optional[float]:
+        """
+        Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 1000.
+        """
+        return pulumi.get(self, "max_throughput")
+
+    @property
+    @pulumi.getter(name="minThroughput")
+    def min_throughput(self) -> Optional[float]:
+        """
+        Minimum throughput of the connector in Mbps. Default and min is 200.
+        """
+        return pulumi.get(self, "min_throughput")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the resource (Max 25 characters).
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def network(self) -> str:
+        """
+        Name of a VPC network.
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        Region where the VPC Access connector resides
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> str:
+        """
+        The fully qualified name of this VPC connector
+        """
+        return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        State of the VPC access connector.
+        """
+        return pulumi.get(self, "state")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

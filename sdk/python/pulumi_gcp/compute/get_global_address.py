@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
 
+__all__ = [
+    'GetGlobalAddressResult',
+    'AwaitableGetGlobalAddressResult',
+    'get_global_address',
+]
 
+@pulumi.output_type
 class GetGlobalAddressResult:
     """
     A collection of values returned by getGlobalAddress.
@@ -16,34 +22,64 @@ class GetGlobalAddressResult:
     def __init__(__self__, address=None, id=None, name=None, project=None, self_link=None, status=None):
         if address and not isinstance(address, str):
             raise TypeError("Expected argument 'address' to be a str")
-        __self__.address = address
+        pulumi.set(__self__, "address", address)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if project and not isinstance(project, str):
+            raise TypeError("Expected argument 'project' to be a str")
+        pulumi.set(__self__, "project", project)
+        if self_link and not isinstance(self_link, str):
+            raise TypeError("Expected argument 'self_link' to be a str")
+        pulumi.set(__self__, "self_link", self_link)
+        if status and not isinstance(status, str):
+            raise TypeError("Expected argument 'status' to be a str")
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def address(self) -> str:
         """
         The IP of the created resource.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
-        if project and not isinstance(project, str):
-            raise TypeError("Expected argument 'project' to be a str")
-        __self__.project = project
-        if self_link and not isinstance(self_link, str):
-            raise TypeError("Expected argument 'self_link' to be a str")
-        __self__.self_link = self_link
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> str:
         """
         The URI of the created resource.
         """
-        if status and not isinstance(status, str):
-            raise TypeError("Expected argument 'status' to be a str")
-        __self__.status = status
+        return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
         """
         Indicates if the address is used. Possible values are: RESERVED or IN_USE.
         """
+        return pulumi.get(self, "status")
 
 
 class AwaitableGetGlobalAddressResult(GetGlobalAddressResult):
@@ -60,7 +96,9 @@ class AwaitableGetGlobalAddressResult(GetGlobalAddressResult):
             status=self.status)
 
 
-def get_global_address(name=None, project=None, opts=None):
+def get_global_address(name: Optional[str] = None,
+                       project: Optional[str] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGlobalAddressResult:
     """
     Get the IP address from a static address reserved for a Global Forwarding Rule which are only used for HTTP load balancing. For more information see
     the official [API](https://cloud.google.com/compute/docs/reference/latest/globalAddresses) documentation.
@@ -77,12 +115,12 @@ def get_global_address(name=None, project=None, opts=None):
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('gcp:compute/getGlobalAddress:getGlobalAddress', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('gcp:compute/getGlobalAddress:getGlobalAddress', __args__, opts=opts, typ=GetGlobalAddressResult).value
 
     return AwaitableGetGlobalAddressResult(
-        address=__ret__.get('address'),
-        id=__ret__.get('id'),
-        name=__ret__.get('name'),
-        project=__ret__.get('project'),
-        self_link=__ret__.get('selfLink'),
-        status=__ret__.get('status'))
+        address=__ret__.address,
+        id=__ret__.id,
+        name=__ret__.name,
+        project=__ret__.project,
+        self_link=__ret__.self_link,
+        status=__ret__.status)

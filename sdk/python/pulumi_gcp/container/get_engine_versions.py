@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
 
+__all__ = [
+    'GetEngineVersionsResult',
+    'AwaitableGetEngineVersionsResult',
+    'get_engine_versions',
+]
 
+@pulumi.output_type
 class GetEngineVersionsResult:
     """
     A collection of values returned by getEngineVersions.
@@ -16,55 +22,105 @@ class GetEngineVersionsResult:
     def __init__(__self__, default_cluster_version=None, id=None, latest_master_version=None, latest_node_version=None, location=None, project=None, release_channel_default_version=None, valid_master_versions=None, valid_node_versions=None, version_prefix=None):
         if default_cluster_version and not isinstance(default_cluster_version, str):
             raise TypeError("Expected argument 'default_cluster_version' to be a str")
-        __self__.default_cluster_version = default_cluster_version
+        pulumi.set(__self__, "default_cluster_version", default_cluster_version)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if latest_master_version and not isinstance(latest_master_version, str):
+            raise TypeError("Expected argument 'latest_master_version' to be a str")
+        pulumi.set(__self__, "latest_master_version", latest_master_version)
+        if latest_node_version and not isinstance(latest_node_version, str):
+            raise TypeError("Expected argument 'latest_node_version' to be a str")
+        pulumi.set(__self__, "latest_node_version", latest_node_version)
+        if location and not isinstance(location, str):
+            raise TypeError("Expected argument 'location' to be a str")
+        pulumi.set(__self__, "location", location)
+        if project and not isinstance(project, str):
+            raise TypeError("Expected argument 'project' to be a str")
+        pulumi.set(__self__, "project", project)
+        if release_channel_default_version and not isinstance(release_channel_default_version, dict):
+            raise TypeError("Expected argument 'release_channel_default_version' to be a dict")
+        pulumi.set(__self__, "release_channel_default_version", release_channel_default_version)
+        if valid_master_versions and not isinstance(valid_master_versions, list):
+            raise TypeError("Expected argument 'valid_master_versions' to be a list")
+        pulumi.set(__self__, "valid_master_versions", valid_master_versions)
+        if valid_node_versions and not isinstance(valid_node_versions, list):
+            raise TypeError("Expected argument 'valid_node_versions' to be a list")
+        pulumi.set(__self__, "valid_node_versions", valid_node_versions)
+        if version_prefix and not isinstance(version_prefix, str):
+            raise TypeError("Expected argument 'version_prefix' to be a str")
+        pulumi.set(__self__, "version_prefix", version_prefix)
+
+    @property
+    @pulumi.getter(name="defaultClusterVersion")
+    def default_cluster_version(self) -> str:
         """
         Version of Kubernetes the service deploys by default.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "default_cluster_version")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if latest_master_version and not isinstance(latest_master_version, str):
-            raise TypeError("Expected argument 'latest_master_version' to be a str")
-        __self__.latest_master_version = latest_master_version
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="latestMasterVersion")
+    def latest_master_version(self) -> str:
         """
         The latest version available in the given zone for use with master instances.
         """
-        if latest_node_version and not isinstance(latest_node_version, str):
-            raise TypeError("Expected argument 'latest_node_version' to be a str")
-        __self__.latest_node_version = latest_node_version
+        return pulumi.get(self, "latest_master_version")
+
+    @property
+    @pulumi.getter(name="latestNodeVersion")
+    def latest_node_version(self) -> str:
         """
         The latest version available in the given zone for use with node instances.
         """
-        if location and not isinstance(location, str):
-            raise TypeError("Expected argument 'location' to be a str")
-        __self__.location = location
-        if project and not isinstance(project, str):
-            raise TypeError("Expected argument 'project' to be a str")
-        __self__.project = project
-        if release_channel_default_version and not isinstance(release_channel_default_version, dict):
-            raise TypeError("Expected argument 'release_channel_default_version' to be a dict")
-        __self__.release_channel_default_version = release_channel_default_version
+        return pulumi.get(self, "latest_node_version")
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="releaseChannelDefaultVersion")
+    def release_channel_default_version(self) -> Mapping[str, str]:
         """
         A map from a release channel name to the channel's default version.
         """
-        if valid_master_versions and not isinstance(valid_master_versions, list):
-            raise TypeError("Expected argument 'valid_master_versions' to be a list")
-        __self__.valid_master_versions = valid_master_versions
+        return pulumi.get(self, "release_channel_default_version")
+
+    @property
+    @pulumi.getter(name="validMasterVersions")
+    def valid_master_versions(self) -> List[str]:
         """
         A list of versions available in the given zone for use with master instances.
         """
-        if valid_node_versions and not isinstance(valid_node_versions, list):
-            raise TypeError("Expected argument 'valid_node_versions' to be a list")
-        __self__.valid_node_versions = valid_node_versions
+        return pulumi.get(self, "valid_master_versions")
+
+    @property
+    @pulumi.getter(name="validNodeVersions")
+    def valid_node_versions(self) -> List[str]:
         """
         A list of versions available in the given zone for use with node instances.
         """
-        if version_prefix and not isinstance(version_prefix, str):
-            raise TypeError("Expected argument 'version_prefix' to be a str")
-        __self__.version_prefix = version_prefix
+        return pulumi.get(self, "valid_node_versions")
+
+    @property
+    @pulumi.getter(name="versionPrefix")
+    def version_prefix(self) -> Optional[str]:
+        return pulumi.get(self, "version_prefix")
 
 
 class AwaitableGetEngineVersionsResult(GetEngineVersionsResult):
@@ -85,7 +141,10 @@ class AwaitableGetEngineVersionsResult(GetEngineVersionsResult):
             version_prefix=self.version_prefix)
 
 
-def get_engine_versions(location=None, project=None, version_prefix=None, opts=None):
+def get_engine_versions(location: Optional[str] = None,
+                        project: Optional[str] = None,
+                        version_prefix: Optional[str] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEngineVersionsResult:
     """
     Provides access to available Google Kubernetes Engine versions in a zone or region for a given project.
 
@@ -117,16 +176,16 @@ def get_engine_versions(location=None, project=None, version_prefix=None, opts=N
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('gcp:container/getEngineVersions:getEngineVersions', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('gcp:container/getEngineVersions:getEngineVersions', __args__, opts=opts, typ=GetEngineVersionsResult).value
 
     return AwaitableGetEngineVersionsResult(
-        default_cluster_version=__ret__.get('defaultClusterVersion'),
-        id=__ret__.get('id'),
-        latest_master_version=__ret__.get('latestMasterVersion'),
-        latest_node_version=__ret__.get('latestNodeVersion'),
-        location=__ret__.get('location'),
-        project=__ret__.get('project'),
-        release_channel_default_version=__ret__.get('releaseChannelDefaultVersion'),
-        valid_master_versions=__ret__.get('validMasterVersions'),
-        valid_node_versions=__ret__.get('validNodeVersions'),
-        version_prefix=__ret__.get('versionPrefix'))
+        default_cluster_version=__ret__.default_cluster_version,
+        id=__ret__.id,
+        latest_master_version=__ret__.latest_master_version,
+        latest_node_version=__ret__.latest_node_version,
+        location=__ret__.location,
+        project=__ret__.project,
+        release_channel_default_version=__ret__.release_channel_default_version,
+        valid_master_versions=__ret__.valid_master_versions,
+        valid_node_versions=__ret__.valid_node_versions,
+        version_prefix=__ret__.version_prefix)

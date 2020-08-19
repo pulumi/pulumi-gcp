@@ -6,3 +6,5 @@
 from .environment import *
 from .instance import *
 from .location import *
+from ._inputs import *
+from . import outputs
