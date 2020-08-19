@@ -9,7 +9,12 @@ _(none)_
 ## 3.19.0 (2020-08-18)
 * Upgrade to v3.35.0 of the Google Beta Terraform Provider
 * Upgrade to Pulumi v2.7.1
-* Upgrade to pulumi-terraform-bridge v2.6.0
+* Upgrade to pulumi-terraform-bridge v2.6.0.  
+  **PLEASE NOTE**  
+  There is a *breaking change* in the `serviceAccount` module name:  
+  * Go `serviceAccount` is now `serviceaccount`  
+  * NodeJS `serviceAccount` is now `serviceaccount`
+  * Python `service_account` is now `serviceaccount`
 
 ## 3.18.0 (2020-08-12)
 * Upgrade to v3.34.0 of the Google Beta Terraform Provider
