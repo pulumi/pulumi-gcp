@@ -10,7 +10,173 @@ import * as utilities from "../utilities";
  * Jobs are actions that BigQuery runs on your behalf to load data, export data, query data, or copy data.
  * Once a BigQuery job is created, it cannot be changed or deleted.
  *
+ *
+ *
  * ## Example Usage
+ *
+ * ### Bigquery Job Query
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const bar = new gcp.bigquery.Dataset("bar", {
+ *     datasetId: "job_query_dataset",
+ *     friendlyName: "test",
+ *     description: "This is a test description",
+ *     location: "US",
+ * });
+ * const foo = new gcp.bigquery.Table("foo", {
+ *     datasetId: bar.datasetId,
+ *     tableId: "job_query_table",
+ * });
+ * const job = new gcp.bigquery.Job("job", {
+ *     jobId: "job_query",
+ *     labels: {
+ *         "example-label": "example-value",
+ *     },
+ *     query: {
+ *         query: "SELECT state FROM [lookerdata:cdc.project_tycho_reports]",
+ *         destination_table: {
+ *             projectId: foo.project,
+ *             datasetId: foo.datasetId,
+ *             tableId: foo.tableId,
+ *         },
+ *         allowLargeResults: true,
+ *         flattenResults: true,
+ *         script_options: {
+ *             keyResultStatement: "LAST",
+ *         },
+ *     },
+ * });
+ * ```
+ *
+ * ### Bigquery Job Query Table Reference
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const bar = new gcp.bigquery.Dataset("bar", {
+ *     datasetId: "job_query_dataset",
+ *     friendlyName: "test",
+ *     description: "This is a test description",
+ *     location: "US",
+ * });
+ * const foo = new gcp.bigquery.Table("foo", {
+ *     datasetId: bar.datasetId,
+ *     tableId: "job_query_table",
+ * });
+ * const job = new gcp.bigquery.Job("job", {
+ *     jobId: "job_query",
+ *     labels: {
+ *         "example-label": "example-value",
+ *     },
+ *     query: {
+ *         query: "SELECT state FROM [lookerdata:cdc.project_tycho_reports]",
+ *         destination_table: {
+ *             tableId: foo.id,
+ *         },
+ *         default_dataset: {
+ *             datasetId: bar.id,
+ *         },
+ *         allowLargeResults: true,
+ *         flattenResults: true,
+ *         script_options: {
+ *             keyResultStatement: "LAST",
+ *         },
+ *     },
+ * });
+ * ```
+ *
+ * ### Bigquery Job Load
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const bar = new gcp.bigquery.Dataset("bar", {
+ *     datasetId: "job_load_dataset",
+ *     friendlyName: "test",
+ *     description: "This is a test description",
+ *     location: "US",
+ * });
+ * const foo = new gcp.bigquery.Table("foo", {
+ *     datasetId: bar.datasetId,
+ *     tableId: "job_load_table",
+ * });
+ * const job = new gcp.bigquery.Job("job", {
+ *     jobId: "job_load",
+ *     labels: {
+ *         my_job: "load",
+ *     },
+ *     load: {
+ *         sourceUris: ["gs://cloud-samples-data/bigquery/us-states/us-states-by-date.csv"],
+ *         destination_table: {
+ *             projectId: foo.project,
+ *             datasetId: foo.datasetId,
+ *             tableId: foo.tableId,
+ *         },
+ *         skipLeadingRows: 1,
+ *         schemaUpdateOptions: [
+ *             "ALLOW_FIELD_RELAXATION",
+ *             "ALLOW_FIELD_ADDITION",
+ *         ],
+ *         writeDisposition: "WRITE_APPEND",
+ *         autodetect: true,
+ *     },
+ * });
+ * ```
+ *
+ * ### Bigquery Job Extract
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const source_oneDataset = new gcp.bigquery.Dataset("source-oneDataset", {
+ *     datasetId: "job_extract_dataset",
+ *     friendlyName: "test",
+ *     description: "This is a test description",
+ *     location: "US",
+ * });
+ * const source_oneTable = new gcp.bigquery.Table("source-oneTable", {
+ *     datasetId: source_oneDataset.datasetId,
+ *     tableId: "job_extract_table",
+ *     schema: `[
+ *   {
+ *     "name": "name",
+ *     "type": "STRING",
+ *     "mode": "NULLABLE"
+ *   },
+ *   {
+ *     "name": "post_abbr",
+ *     "type": "STRING",
+ *     "mode": "NULLABLE"
+ *   },
+ *   {
+ *     "name": "date",
+ *     "type": "DATE",
+ *     "mode": "NULLABLE"
+ *   }
+ * ]
+ * `,
+ * });
+ * const dest = new gcp.storage.Bucket("dest", {forceDestroy: true});
+ * const job = new gcp.bigquery.Job("job", {
+ *     jobId: "job_extract",
+ *     extract: {
+ *         destinationUris: [pulumi.interpolate`${dest.url}/extract`],
+ *         source_table: {
+ *             projectId: source_oneTable.project,
+ *             datasetId: source_oneTable.datasetId,
+ *             tableId: source_oneTable.tableId,
+ *         },
+ *         destinationFormat: "NEWLINE_DELIMITED_JSON",
+ *         compression: "GZIP",
+ *     },
+ * });
+ * ```
  */
 export class Job extends pulumi.CustomResource {
     /**

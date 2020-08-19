@@ -14,7 +14,29 @@ namespace Pulumi.Gcp.Compute
     /// For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
     /// and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
     /// 
+    /// 
     /// ## Example Usage
+    /// 
+    /// ### Empty Instance Group
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var test = new Gcp.Compute.InstanceGroup("test", new Gcp.Compute.InstanceGroupArgs
+    ///         {
+    ///             Description = "Test instance group",
+    ///             Zone = "us-central1-a",
+    ///             Network = google_compute_network.Default.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class InstanceGroup : Pulumi.CustomResource
     {

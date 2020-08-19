@@ -6,6 +6,26 @@ import * as utilities from "../utilities";
 
 /**
  * Creates a new Google SQL User on a Google SQL User Instance. For more information, see the [official documentation](https://cloud.google.com/sql/), or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/users).
+ *
+ * ## Example Usage
+ *
+ *
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as random from "@pulumi/random";
+ *
+ * const dbNameSuffix = new random.RandomId("dbNameSuffix", {byteLength: 4});
+ * const master = new gcp.sql.DatabaseInstance("master", {settings: {
+ *     tier: "db-f1-micro",
+ * }});
+ * const users = new gcp.sql.User("users", {
+ *     instance: master.name,
+ *     host: "me.com",
+ *     password: "changeme",
+ * });
+ * ```
  */
 export class User extends pulumi.CustomResource {
     /**

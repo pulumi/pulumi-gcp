@@ -11,7 +11,94 @@ import * as utilities from "../utilities";
  * For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
  * and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
  *
+ *
  * ## Example Usage
+ *
+ * ### Empty Instance Group
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const test = new gcp.compute.InstanceGroup("test", {
+ *     description: "Test instance group",
+ *     zone: "us-central1-a",
+ *     network: google_compute_network["default"].id,
+ * });
+ * ```
+ *
+ * ### Example Usage - With instances and named ports
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const webservers = new gcp.compute.InstanceGroup("webservers", {
+ *     description: "Test instance group",
+ *     instances: [
+ *         google_compute_instance.test.id,
+ *         google_compute_instance.test2.id,
+ *     ],
+ *     named_port: [
+ *         {
+ *             name: "http",
+ *             port: "8080",
+ *         },
+ *         {
+ *             name: "https",
+ *             port: "8443",
+ *         },
+ *     ],
+ *     zone: "us-central1-a",
+ * });
+ * ```
+ *
+ * ### Example Usage - Recreating an instance group in use
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const debianImage = gcp.compute.getImage({
+ *     family: "debian-9",
+ *     project: "debian-cloud",
+ * });
+ * const stagingVm = new gcp.compute.Instance("stagingVm", {
+ *     machineType: "n1-standard-1",
+ *     zone: "us-central1-c",
+ *     boot_disk: {
+ *         initialize_params: {
+ *             image: debianImage.then(debianImage => debianImage.selfLink),
+ *         },
+ *     },
+ *     network_interface: [{
+ *         network: "default",
+ *     }],
+ * });
+ * const stagingGroup = new gcp.compute.InstanceGroup("stagingGroup", {
+ *     zone: "us-central1-c",
+ *     instances: [stagingVm.id],
+ *     named_port: [
+ *         {
+ *             name: "http",
+ *             port: "8080",
+ *         },
+ *         {
+ *             name: "https",
+ *             port: "8443",
+ *         },
+ *     ],
+ * });
+ * const stagingHealth = new gcp.compute.HttpsHealthCheck("stagingHealth", {requestPath: "/health_check"});
+ * const stagingService = new gcp.compute.BackendService("stagingService", {
+ *     portName: "https",
+ *     protocol: "HTTPS",
+ *     backend: [{
+ *         group: stagingGroup.id,
+ *     }],
+ *     healthChecks: [stagingHealth.id],
+ * });
+ * ```
  */
 export class InstanceGroup extends pulumi.CustomResource {
     /**

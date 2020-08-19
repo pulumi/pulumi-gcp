@@ -16,13 +16,12 @@ import (
 // access policy is globally visible within an organization, and the
 // restrictions it specifies apply to all projects within an organization.
 //
+//
 // To get more information about AccessPolicy, see:
 //
 // * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies)
 // * How-to Guides
 //     * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
-//
-// ## Example Usage
 type AccessPolicy struct {
 	pulumi.CustomResourceState
 

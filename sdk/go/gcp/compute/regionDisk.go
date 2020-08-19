@@ -26,6 +26,7 @@ import (
 // Add a persistent disk to your instance when you need reliable and
 // affordable storage with consistent performance characteristics.
 //
+//
 // To get more information about RegionDisk, see:
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionDisks)
@@ -36,6 +37,52 @@ import (
 // state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
 //
 // ## Example Usage
+//
+// ### Region Disk Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		disk, err := compute.NewDisk(ctx, "disk", &compute.DiskArgs{
+// 			Image: pulumi.String("debian-cloud/debian-9"),
+// 			Size:  pulumi.Int(50),
+// 			Type:  pulumi.String("pd-ssd"),
+// 			Zone:  pulumi.String("us-central1-a"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		snapdisk, err := compute.NewSnapshot(ctx, "snapdisk", &compute.SnapshotArgs{
+// 			SourceDisk: disk.Name,
+// 			Zone:       pulumi.String("us-central1-a"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		regiondisk, err := compute.NewRegionDisk(ctx, "regiondisk", &compute.RegionDiskArgs{
+// 			Snapshot:               snapdisk.ID(),
+// 			Type:                   pulumi.String("pd-ssd"),
+// 			Region:                 pulumi.String("us-central1"),
+// 			PhysicalBlockSizeBytes: pulumi.Int(4096),
+// 			ReplicaZones: pulumi.StringArray{
+// 				pulumi.String("us-central1-a"),
+// 				pulumi.String("us-central1-f"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type RegionDisk struct {
 	pulumi.CustomResourceState
 

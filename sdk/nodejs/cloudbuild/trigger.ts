@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
 /**
  * Configuration for an automated build in response to source repository changes.
  *
+ *
  * To get more information about Trigger, see:
  *
  * * [API documentation](https://cloud.google.com/cloud-build/docs/api/reference/rest/)
@@ -16,6 +17,72 @@ import * as utilities from "../utilities";
  *     * [Automating builds using build triggers](https://cloud.google.com/cloud-build/docs/running-builds/automate-builds)
  *
  * ## Example Usage
+ *
+ * ### Cloudbuild Trigger Filename
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const filename_trigger = new gcp.cloudbuild.Trigger("filename-trigger", {
+ *     filename: "cloudbuild.yaml",
+ *     substitutions: {
+ *         _BAZ: "qux",
+ *         _FOO: "bar",
+ *     },
+ *     triggerTemplate: {
+ *         branchName: "master",
+ *         repoName: "my-repo",
+ *     },
+ * });
+ * ```
+ *
+ * ### Cloudbuild Trigger Build
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const build_trigger = new gcp.cloudbuild.Trigger("build-trigger", {
+ *     build: {
+ *         logsBucket: "gs://mybucket/logs",
+ *         queueTtl: "20s",
+ *         secret: [{
+ *             kmsKeyName: "projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name",
+ *             secretEnv: [{
+ *                 PASSWORD: "ZW5jcnlwdGVkLXBhc3N3b3JkCg==",
+ *             }],
+ *         }],
+ *         source: [{
+ *             storageSource: [{
+ *                 bucket: "mybucket",
+ *                 object: "source_code.tar.gz",
+ *             }],
+ *         }],
+ *         steps: [{
+ *             args: [
+ *                 "cp",
+ *                 "gs://mybucket/remotefile.zip",
+ *                 "localfile.zip",
+ *             ],
+ *             name: "gcr.io/cloud-builders/gsutil",
+ *             timeout: "120s",
+ *         }],
+ *         substitutions: [{
+ *             _BAZ: "qux",
+ *             _FOO: "bar",
+ *         }],
+ *         tags: [
+ *             "build",
+ *             "newFeature",
+ *         ],
+ *     },
+ *     triggerTemplate: {
+ *         branchName: "master",
+ *         repoName: "my-repo",
+ *     },
+ * });
+ * ```
  */
 export class Trigger extends pulumi.CustomResource {
     /**

@@ -12,6 +12,7 @@ import * as utilities from "../utilities";
  * at https://cloud.google.com/appengine/docs/the-appengine-environments.
  * Currently supporting Zip and File Containers.
  *
+ *
  * To get more information about StandardAppVersion, see:
  *
  * * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions)
@@ -19,6 +20,69 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/appengine/docs/standard)
  *
  * ## Example Usage
+ *
+ * ### App Engine Standard App Version
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const bucket = new gcp.storage.Bucket("bucket", {});
+ * const object = new gcp.storage.BucketObject("object", {
+ *     bucket: bucket.name,
+ *     source: new pulumi.asset.FileAsset("./test-fixtures/appengine/hello-world.zip"),
+ * });
+ * const myappV1 = new gcp.appengine.StandardAppVersion("myappV1", {
+ *     versionId: "v1",
+ *     service: "myapp",
+ *     runtime: "nodejs10",
+ *     entrypoint: {
+ *         shell: "node ./app.js",
+ *     },
+ *     deployment: {
+ *         zip: {
+ *             sourceUrl: pulumi.interpolate`https://storage.googleapis.com/${bucket.name}/${object.name}`,
+ *         },
+ *     },
+ *     envVariables: {
+ *         port: "8080",
+ *     },
+ *     automatic_scaling: {
+ *         maxConcurrentRequests: 10,
+ *         minIdleInstances: 1,
+ *         maxIdleInstances: 3,
+ *         minPendingLatency: "1s",
+ *         maxPendingLatency: "5s",
+ *         standard_scheduler_settings: {
+ *             targetCpuUtilization: 0.5,
+ *             targetThroughputUtilization: 0.75,
+ *             minInstances: 2,
+ *             maxInstances: 10,
+ *         },
+ *     },
+ *     deleteServiceOnDestroy: true,
+ * });
+ * const myappV2 = new gcp.appengine.StandardAppVersion("myappV2", {
+ *     versionId: "v2",
+ *     service: "myapp",
+ *     runtime: "nodejs10",
+ *     entrypoint: {
+ *         shell: "node ./app.js",
+ *     },
+ *     deployment: {
+ *         zip: {
+ *             sourceUrl: pulumi.interpolate`https://storage.googleapis.com/${bucket.name}/${object.name}`,
+ *         },
+ *     },
+ *     envVariables: {
+ *         port: "8080",
+ *     },
+ *     basic_scaling: {
+ *         maxInstances: 5,
+ *     },
+ *     noopOnDestroy: true,
+ * });
+ * ```
  */
 export class StandardAppVersion extends pulumi.CustomResource {
     /**

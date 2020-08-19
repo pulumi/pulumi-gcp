@@ -22,3 +22,7 @@ run:
   - schema.go
   - pulumiManifest.go
   timeout: 10m
+linters-settings:
+  misspell:
+    ignore-words:
+      - occurence

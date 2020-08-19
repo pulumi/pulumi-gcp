@@ -18,6 +18,7 @@ import (
 // static content to a Cloud Storage bucket and requests for dynamic content
 // to a virtual machine instance.
 //
+//
 // To get more information about BackendBucket, see:
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/v1/backendBuckets)
@@ -25,6 +26,38 @@ import (
 //     * [Using a Cloud Storage bucket as a load balancer backend](https://cloud.google.com/compute/docs/load-balancing/http/backend-bucket)
 //
 // ## Example Usage
+//
+// ### Backend Bucket Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/storage"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		imageBucket, err := storage.NewBucket(ctx, "imageBucket", &storage.BucketArgs{
+// 			Location: pulumi.String("EU"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		imageBackend, err := compute.NewBackendBucket(ctx, "imageBackend", &compute.BackendBucketArgs{
+// 			Description: pulumi.String("Contains beautiful images"),
+// 			BucketName:  imageBucket.Name,
+// 			EnableCdn:   pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type BackendBucket struct {
 	pulumi.CustomResourceState
 

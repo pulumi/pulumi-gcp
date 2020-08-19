@@ -24,6 +24,50 @@ import * as utilities from "../utilities";
  * > **Note:** `gcp.bigquery.DatasetIamPolicy` **cannot** be used in conjunction with `gcp.bigquery.DatasetIamBinding` and `gcp.bigquery.DatasetIamMember` or they will fight over what your policy should be.
  *
  * > **Note:** `gcp.bigquery.DatasetIamBinding` resources **can be** used in conjunction with `gcp.bigquery.DatasetIamMember` resources **only if** they do not grant privilege to the same role.
+ *
+ * ## google\_bigquery\_dataset\_iam\_policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const owner = gcp.organizations.getIAMPolicy({
+ *     binding: [{
+ *         role: "roles/dataOwner",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const dataset = new gcp.bigquery.DatasetIamPolicy("dataset", {
+ *     datasetId: "your-dataset-id",
+ *     policyData: owner.then(owner => owner.policyData),
+ * });
+ * ```
+ *
+ * ## google\_bigquery\_dataset\_iam\_binding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const reader = new gcp.bigquery.DatasetIamBinding("reader", {
+ *     datasetId: "your-dataset-id",
+ *     members: ["user:jane@example.com"],
+ *     role: "roles/bigquery.dataViewer",
+ * });
+ * ```
+ *
+ * ## google\_bigquery\_dataset\_iam\_member
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const editor = new gcp.bigquery.DatasetIamMember("editor", {
+ *     datasetId: "your-dataset-id",
+ *     member: "user:jane@example.com",
+ *     role: "roles/bigquery.dataEditor",
+ * });
+ * ```
  */
 export class DatasetIamBinding extends pulumi.CustomResource {
     /**

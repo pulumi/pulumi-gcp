@@ -13,6 +13,7 @@ import (
 // Patch deployments are configurations that individual patch jobs use to complete a patch.
 // These configurations include instance filter, package repository settings, and a schedule.
 //
+//
 // To get more information about PatchDeployment, see:
 //
 // * [API documentation](https://cloud.google.com/compute/docs/osconfig/rest)
@@ -20,6 +21,43 @@ import (
 //     * [Official Documentation](https://cloud.google.com/compute/docs/os-patch-management)
 //
 // ## Example Usage
+//
+// ### Os Config Patch Deployment Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/osconfig"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		patch, err := osconfig.NewPatchDeployment(ctx, "patch", &osconfig.PatchDeploymentArgs{
+// 			InstanceFilter: &osconfig.PatchDeploymentInstanceFilterArgs{
+// 				All: pulumi.Bool(true),
+// 			},
+// 			PatchDeploymentId: pulumi.String("patch-deploy-inst"),
+// 			RecurringSchedule: &osconfig.PatchDeploymentRecurringScheduleArgs{
+// 				TimeOfDay: &osconfig.PatchDeploymentRecurringScheduleTimeOfDayArgs{
+// 					Hours: pulumi.Int(1),
+// 				},
+// 				TimeZone: &osconfig.PatchDeploymentRecurringScheduleTimeZoneArgs{
+// 					Id: pulumi.String("America/New_York"),
+// 				},
+// 				Weekly: &osconfig.PatchDeploymentRecurringScheduleWeeklyArgs{
+// 					DayOfWeek: pulumi.String("MONDAY"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type PatchDeployment struct {
 	pulumi.CustomResourceState
 

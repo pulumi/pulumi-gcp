@@ -19,7 +19,8 @@ type RepositoryIamBindingCondition struct {
 // RepositoryIamBindingConditionInput is an input type that accepts RepositoryIamBindingConditionArgs and RepositoryIamBindingConditionOutput values.
 // You can construct a concrete instance of `RepositoryIamBindingConditionInput` via:
 //
-//          RepositoryIamBindingConditionArgs{...}
+// 		 RepositoryIamBindingConditionArgs{...}
+//
 type RepositoryIamBindingConditionInput interface {
 	pulumi.Input
 
@@ -56,11 +57,12 @@ func (i RepositoryIamBindingConditionArgs) ToRepositoryIamBindingConditionPtrOut
 // RepositoryIamBindingConditionPtrInput is an input type that accepts RepositoryIamBindingConditionArgs, RepositoryIamBindingConditionPtr and RepositoryIamBindingConditionPtrOutput values.
 // You can construct a concrete instance of `RepositoryIamBindingConditionPtrInput` via:
 //
-//          RepositoryIamBindingConditionArgs{...}
+// 		 RepositoryIamBindingConditionArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type RepositoryIamBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -175,7 +177,8 @@ type RepositoryIamMemberCondition struct {
 // RepositoryIamMemberConditionInput is an input type that accepts RepositoryIamMemberConditionArgs and RepositoryIamMemberConditionOutput values.
 // You can construct a concrete instance of `RepositoryIamMemberConditionInput` via:
 //
-//          RepositoryIamMemberConditionArgs{...}
+// 		 RepositoryIamMemberConditionArgs{...}
+//
 type RepositoryIamMemberConditionInput interface {
 	pulumi.Input
 
@@ -212,11 +215,12 @@ func (i RepositoryIamMemberConditionArgs) ToRepositoryIamMemberConditionPtrOutpu
 // RepositoryIamMemberConditionPtrInput is an input type that accepts RepositoryIamMemberConditionArgs, RepositoryIamMemberConditionPtr and RepositoryIamMemberConditionPtrOutput values.
 // You can construct a concrete instance of `RepositoryIamMemberConditionPtrInput` via:
 //
-//          RepositoryIamMemberConditionArgs{...}
+// 		 RepositoryIamMemberConditionArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type RepositoryIamMemberConditionPtrInput interface {
 	pulumi.Input
 
@@ -326,7 +330,7 @@ type RepositoryPubsubConfig struct {
 	// The format of the Cloud Pub/Sub messages.
 	// - PROTOBUF: The message payload is a serialized protocol buffer of SourceRepoEvent.
 	// - JSON: The message payload is a JSON string of SourceRepoEvent.
-	//   Possible values are `PROTOBUF` and `JSON`.
+	// Possible values are `PROTOBUF` and `JSON`.
 	MessageFormat string `pulumi:"messageFormat"`
 	// Email address of the service account used for publishing Cloud Pub/Sub messages.
 	// This service account needs to be in the same project as the PubsubConfig. When added,
@@ -340,7 +344,8 @@ type RepositoryPubsubConfig struct {
 // RepositoryPubsubConfigInput is an input type that accepts RepositoryPubsubConfigArgs and RepositoryPubsubConfigOutput values.
 // You can construct a concrete instance of `RepositoryPubsubConfigInput` via:
 //
-//          RepositoryPubsubConfigArgs{...}
+// 		 RepositoryPubsubConfigArgs{...}
+//
 type RepositoryPubsubConfigInput interface {
 	pulumi.Input
 
@@ -352,7 +357,7 @@ type RepositoryPubsubConfigArgs struct {
 	// The format of the Cloud Pub/Sub messages.
 	// - PROTOBUF: The message payload is a serialized protocol buffer of SourceRepoEvent.
 	// - JSON: The message payload is a JSON string of SourceRepoEvent.
-	//   Possible values are `PROTOBUF` and `JSON`.
+	// Possible values are `PROTOBUF` and `JSON`.
 	MessageFormat pulumi.StringInput `pulumi:"messageFormat"`
 	// Email address of the service account used for publishing Cloud Pub/Sub messages.
 	// This service account needs to be in the same project as the PubsubConfig. When added,
@@ -378,7 +383,8 @@ func (i RepositoryPubsubConfigArgs) ToRepositoryPubsubConfigOutputWithContext(ct
 // RepositoryPubsubConfigArrayInput is an input type that accepts RepositoryPubsubConfigArray and RepositoryPubsubConfigArrayOutput values.
 // You can construct a concrete instance of `RepositoryPubsubConfigArrayInput` via:
 //
-//          RepositoryPubsubConfigArray{ RepositoryPubsubConfigArgs{...} }
+// 		 RepositoryPubsubConfigArray{ RepositoryPubsubConfigArgs{...} }
+//
 type RepositoryPubsubConfigArrayInput interface {
 	pulumi.Input
 
@@ -417,7 +423,7 @@ func (o RepositoryPubsubConfigOutput) ToRepositoryPubsubConfigOutputWithContext(
 // The format of the Cloud Pub/Sub messages.
 // - PROTOBUF: The message payload is a serialized protocol buffer of SourceRepoEvent.
 // - JSON: The message payload is a JSON string of SourceRepoEvent.
-//   Possible values are `PROTOBUF` and `JSON`.
+// Possible values are `PROTOBUF` and `JSON`.
 func (o RepositoryPubsubConfigOutput) MessageFormat() pulumi.StringOutput {
 	return o.ApplyT(func(v RepositoryPubsubConfig) string { return v.MessageFormat }).(pulumi.StringOutput)
 }

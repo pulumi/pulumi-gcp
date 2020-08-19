@@ -13,7 +13,33 @@ import * as utilities from "../utilities";
  * [Google Identity Platform](https://console.cloud.google.com/marketplace/details/google-cloud-platform/customer-identity) in
  * the marketplace prior to using this resource.
  *
+ *
+ *
  * ## Example Usage
+ *
+ * ### Identity Platform Inbound Saml Config Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * from "fs";
+ *
+ * const samlConfig = new gcp.identityplatform.InboundSamlConfig("samlConfig", {
+ *     displayName: "Display Name",
+ *     idp_config: {
+ *         idpEntityId: "tf-idp",
+ *         signRequest: true,
+ *         ssoUrl: "https://example.com",
+ *         idp_certificates: [{
+ *             x509Certificate: fs.readFileSync("test-fixtures/rsa_cert.pem"),
+ *         }],
+ *     },
+ *     sp_config: {
+ *         spEntityId: "tf-sp",
+ *         callbackUri: "https://example.com",
+ *     },
+ * });
+ * ```
  */
 export class InboundSamlConfig extends pulumi.CustomResource {
     /**

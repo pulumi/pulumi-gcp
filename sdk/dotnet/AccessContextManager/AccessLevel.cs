@@ -13,6 +13,7 @@ namespace Pulumi.Gcp.AccessContextManager
     /// An AccessLevel is a label that can be applied to requests to GCP services,
     /// along with a list of requirements necessary for the label to be applied.
     /// 
+    /// 
     /// To get more information about AccessLevel, see:
     /// 
     /// * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.accessLevels)
@@ -20,6 +21,57 @@ namespace Pulumi.Gcp.AccessContextManager
     ///     * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
     /// 
     /// ## Example Usage
+    /// 
+    /// ### Access Context Manager Access Level Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var access_policy = new Gcp.AccessContextManager.AccessPolicy("access-policy", new Gcp.AccessContextManager.AccessPolicyArgs
+    ///         {
+    ///             Parent = "organizations/123456789",
+    ///             Title = "my policy",
+    ///         });
+    ///         var access_level = new Gcp.AccessContextManager.AccessLevel("access-level", new Gcp.AccessContextManager.AccessLevelArgs
+    ///         {
+    ///             Basic = new Gcp.AccessContextManager.Inputs.AccessLevelBasicArgs
+    ///             {
+    ///                 Conditions = 
+    ///                 {
+    ///                     new Gcp.AccessContextManager.Inputs.AccessLevelBasicConditionArgs
+    ///                     {
+    ///                         DevicePolicy = new Gcp.AccessContextManager.Inputs.AccessLevelBasicConditionDevicePolicyArgs
+    ///                         {
+    ///                             OsConstraints = 
+    ///                             {
+    ///                                 new Gcp.AccessContextManager.Inputs.AccessLevelBasicConditionDevicePolicyOsConstraintArgs
+    ///                                 {
+    ///                                     OsType = "DESKTOP_CHROME_OS",
+    ///                                 },
+    ///                             },
+    ///                             RequireScreenLock = true,
+    ///                         },
+    ///                         Regions = 
+    ///                         {
+    ///                             "CH",
+    ///                             "IT",
+    ///                             "US",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Parent = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}"),
+    ///             Title = "chromeos_no_lock",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class AccessLevel : Pulumi.CustomResource
     {

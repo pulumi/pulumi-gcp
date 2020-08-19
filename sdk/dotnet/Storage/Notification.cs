@@ -11,9 +11,9 @@ namespace Pulumi.Gcp.Storage
 {
     /// <summary>
     /// Creates a new notification configuration on a specified bucket, establishing a flow of event notifications from GCS to a Cloud Pub/Sub topic.
-    ///  For more information see
-    /// [the official documentation](https://cloud.google.com/storage/docs/pubsub-notifications)
-    /// and
+    ///  For more information see 
+    /// [the official documentation](https://cloud.google.com/storage/docs/pubsub-notifications) 
+    /// and 
     /// [API](https://cloud.google.com/storage/docs/json_api/v1/notifications).
     /// 
     /// In order to enable notifications, a special Google Cloud Storage service account unique to the project
@@ -22,8 +22,58 @@ namespace Pulumi.Gcp.Storage
     /// for an example of enabling notifications by granting the correct IAM permission. See
     /// [the notifications documentation](https://cloud.google.com/storage/docs/gsutil/commands/notification) for more details.
     /// 
-    /// &gt; **NOTE**: This resource can affect your storage IAM policy. If you are using this in the same config as your storage IAM policy resources, consider
+    /// &gt;**NOTE**: This resource can affect your storage IAM policy. If you are using this in the same config as your storage IAM policy resources, consider
     /// making this resource dependent on those IAM resources via `depends_on`. This will safeguard against errors due to IAM race conditions.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var gcsAccount = Output.Create(Gcp.Storage.GetProjectServiceAccount.InvokeAsync());
+    ///         var topic = new Gcp.PubSub.Topic("topic", new Gcp.PubSub.TopicArgs
+    ///         {
+    ///         });
+    ///         var binding = new Gcp.PubSub.TopicIAMBinding("binding", new Gcp.PubSub.TopicIAMBindingArgs
+    ///         {
+    ///             Topic = topic.Id,
+    ///             Role = "roles/pubsub.publisher",
+    ///             Members = 
+    ///             {
+    ///                 gcsAccount.Apply(gcsAccount =&gt; $"serviceAccount:{gcsAccount.EmailAddress}"),
+    ///             },
+    ///         });
+    ///         // End enabling notifications
+    ///         var bucket = new Gcp.Storage.Bucket("bucket", new Gcp.Storage.BucketArgs
+    ///         {
+    ///         });
+    ///         var notification = new Gcp.Storage.Notification("notification", new Gcp.Storage.NotificationArgs
+    ///         {
+    ///             Bucket = bucket.Name,
+    ///             PayloadFormat = "JSON_API_V1",
+    ///             Topic = topic.Id,
+    ///             EventTypes = 
+    ///             {
+    ///                 "OBJECT_FINALIZE",
+    ///                 "OBJECT_METADATA_UPDATE",
+    ///             },
+    ///             CustomAttributes = 
+    ///             {
+    ///                 { "new-attribute", "new-attribute-value" },
+    ///             },
+    ///         });
+    ///         // Enable notifications by giving the correct IAM permission to the unique service account.
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Notification : Pulumi.CustomResource
     {

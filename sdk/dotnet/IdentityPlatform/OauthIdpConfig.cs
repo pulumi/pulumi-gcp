@@ -16,7 +16,32 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// [Google Identity Platform](https://console.cloud.google.com/marketplace/details/google-cloud-platform/customer-identity) in
     /// the marketplace prior to using this resource.
     /// 
+    /// 
+    /// 
     /// ## Example Usage
+    /// 
+    /// ### Identity Platform Oauth Idp Config Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var oauthIdpConfig = new Gcp.IdentityPlatform.OauthIdpConfig("oauthIdpConfig", new Gcp.IdentityPlatform.OauthIdpConfigArgs
+    ///         {
+    ///             ClientId = "client-id",
+    ///             ClientSecret = "secret",
+    ///             DisplayName = "Display Name",
+    ///             Enabled = true,
+    ///             Issuer = "issuer",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class OauthIdpConfig : Pulumi.CustomResource
     {

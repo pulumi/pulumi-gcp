@@ -16,7 +16,40 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Using DNS server policies](https://cloud.google.com/dns/zones/#using-dns-server-policies)
  *
+ *
  * ## Example Usage
+ *
+ * ### Dns Policy Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const network_1 = new gcp.compute.Network("network-1", {autoCreateSubnetworks: false});
+ * const network_2 = new gcp.compute.Network("network-2", {autoCreateSubnetworks: false});
+ * const example_policy = new gcp.dns.Policy("example-policy", {
+ *     enableInboundForwarding: true,
+ *     enableLogging: true,
+ *     alternative_name_server_config: {
+ *         target_name_servers: [
+ *             {
+ *                 ipv4Address: "172.16.1.10",
+ *             },
+ *             {
+ *                 ipv4Address: "172.16.1.20",
+ *             },
+ *         ],
+ *     },
+ *     networks: [
+ *         {
+ *             networkUrl: network_1.id,
+ *         },
+ *         {
+ *             networkUrl: network_2.id,
+ *         },
+ *     ],
+ * });
+ * ```
  */
 export class Policy extends pulumi.CustomResource {
     /**

@@ -19,6 +19,28 @@ namespace Pulumi.Gcp.GameServices
     ///     * [Official Documentation](https://cloud.google.com/game-servers/docs)
     /// 
     /// ## Example Usage
+    /// 
+    /// ### Game Service Realm Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new Gcp.GameServices.Realm("default", new Gcp.GameServices.RealmArgs
+    ///         {
+    ///             Description = "one of the nine",
+    ///             Location = "global",
+    ///             RealmId = "tf-test-realm",
+    ///             TimeZone = "EST",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Realm : Pulumi.CustomResource
     {

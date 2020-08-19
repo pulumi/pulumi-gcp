@@ -17,6 +17,25 @@ import * as utilities from "../utilities";
  * > **Note:** On create, this resource will overwrite members of any existing roles.
  *     Use `pulumi import` and inspect the output to ensure
  *     your existing members are preserved.
+ *
+ * ## Example Usage
+ *
+ *
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const department1 = new gcp.organizations.Folder("department1", {
+ *     displayName: "Department 1",
+ *     parent: "organizations/1234567",
+ * });
+ * const admin = new gcp.folder.IAMBinding("admin", {
+ *     folder: department1.name,
+ *     role: "roles/editor",
+ *     members: ["user:alice@gmail.com"],
+ * });
+ * ```
  */
 export class IAMBinding extends pulumi.CustomResource {
     /**

@@ -14,6 +14,33 @@ namespace Pulumi.Gcp.Dataflow
     /// the official documentation for
     /// [Beam](https://beam.apache.org) and [Dataflow](https://cloud.google.com/dataflow/).
     /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var bigDataJob = new Gcp.Dataflow.Job("bigDataJob", new Gcp.Dataflow.JobArgs
+    ///         {
+    ///             Parameters = 
+    ///             {
+    ///                 { "baz", "qux" },
+    ///                 { "foo", "bar" },
+    ///             },
+    ///             TempGcsLocation = "gs://my-bucket/tmp_dir",
+    ///             TemplateGcsPath = "gs://my-bucket/templates/template_file",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Note on "destroy" / "apply"
     /// 
     /// There are many types of Dataflow jobs.  Some Dataflow jobs run constantly, getting new data from (e.g.) a GCS bucket, and outputting data continuously.  Some jobs process a set amount of data then terminate.  All jobs can fail while running due to programming errors or other issues.  In this way, Dataflow jobs are different from most other Google resources.

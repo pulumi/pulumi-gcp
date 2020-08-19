@@ -13,12 +13,132 @@ namespace Pulumi.Gcp.Dns
     /// Manages a set of DNS records within Google Cloud DNS. For more information see [the official documentation](https://cloud.google.com/dns/records/) and
     /// [API](https://cloud.google.com/dns/api/v1/resourceRecordSets).
     /// 
-    /// &gt; **Note:** The provider treats this resource as an authoritative record set. This means existing records (including
-    /// the default records) for the given type will be overwritten when you create this resource in the provider.
-    /// In addition, the Google Cloud DNS API requires NS records to be present at all times, so the provider
+    /// &gt; **Note:** The provider treats this resource as an authoritative record set. This means existing records (including 
+    /// the default records) for the given type will be overwritten when you create this resource in the provider. 
+    /// In addition, the Google Cloud DNS API requires NS records to be present at all times, so the provider 
     /// will not actually remove NS records during destroy but will report that it did.
     /// 
     /// ## Example Usage
+    /// 
+    /// ### Adding an A record
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var prod = new Gcp.Dns.ManagedZone("prod", new Gcp.Dns.ManagedZoneArgs
+    ///         {
+    ///             DnsName = "prod.mydomain.com.",
+    ///         });
+    ///         var recordSet = new Gcp.Dns.RecordSet("recordSet", new Gcp.Dns.RecordSetArgs
+    ///         {
+    ///             ManagedZone = prod.Name,
+    ///             Type = "A",
+    ///             Ttl = 300,
+    ///             Rrdatas = 
+    ///             {
+    ///                 "8.8.8.8",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ### Adding an MX record
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var prod = new Gcp.Dns.ManagedZone("prod", new Gcp.Dns.ManagedZoneArgs
+    ///         {
+    ///             DnsName = "prod.mydomain.com.",
+    ///         });
+    ///         var mx = new Gcp.Dns.RecordSet("mx", new Gcp.Dns.RecordSetArgs
+    ///         {
+    ///             ManagedZone = prod.Name,
+    ///             Type = "MX",
+    ///             Ttl = 3600,
+    ///             Rrdatas = 
+    ///             {
+    ///                 "1 aspmx.l.google.com.",
+    ///                 "5 alt1.aspmx.l.google.com.",
+    ///                 "5 alt2.aspmx.l.google.com.",
+    ///                 "10 alt3.aspmx.l.google.com.",
+    ///                 "10 alt4.aspmx.l.google.com.",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ### Adding an SPF record
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var prod = new Gcp.Dns.ManagedZone("prod", new Gcp.Dns.ManagedZoneArgs
+    ///         {
+    ///             DnsName = "prod.mydomain.com.",
+    ///         });
+    ///         var spf = new Gcp.Dns.RecordSet("spf", new Gcp.Dns.RecordSetArgs
+    ///         {
+    ///             ManagedZone = prod.Name,
+    ///             Type = "TXT",
+    ///             Ttl = 300,
+    ///             Rrdatas = 
+    ///             {
+    ///                 "\"v=spf1 ip4:111.111.111.111 include:backoff.email-example.com -all\"",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ### Adding a CNAME record
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var prod = new Gcp.Dns.ManagedZone("prod", new Gcp.Dns.ManagedZoneArgs
+    ///         {
+    ///             DnsName = "prod.mydomain.com.",
+    ///         });
+    ///         var cname = new Gcp.Dns.RecordSet("cname", new Gcp.Dns.RecordSetArgs
+    ///         {
+    ///             ManagedZone = prod.Name,
+    ///             Type = "CNAME",
+    ///             Ttl = 300,
+    ///             Rrdatas = 
+    ///             {
+    ///                 "frontend.mydomain.com.",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class RecordSet : Pulumi.CustomResource
     {

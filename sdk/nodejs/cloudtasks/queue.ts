@@ -9,7 +9,20 @@ import * as utilities from "../utilities";
 /**
  * A named resource to which messages are sent by publishers.
  *
+ *
+ *
  * ## Example Usage
+ *
+ * ### Queue Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultQueue = new gcp.cloudtasks.Queue("default", {
+ *     location: "us-central1",
+ * });
+ * ```
  */
 export class Queue extends pulumi.CustomResource {
     /**

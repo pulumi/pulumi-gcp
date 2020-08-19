@@ -24,6 +24,7 @@ namespace Pulumi.Gcp.Storage
     /// For more information, see Access Control, with the caveat that this API
     /// uses READER and OWNER instead of READ and FULL_CONTROL.
     /// 
+    /// 
     /// To get more information about DefaultObjectAccessControl, see:
     /// 
     /// * [API documentation](https://cloud.google.com/storage/docs/json_api/v1/defaultObjectAccessControls)
@@ -31,6 +32,30 @@ namespace Pulumi.Gcp.Storage
     ///     * [Official Documentation](https://cloud.google.com/storage/docs/access-control/create-manage-lists)
     /// 
     /// ## Example Usage
+    /// 
+    /// ### Storage Default Object Access Control Public
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var bucket = new Gcp.Storage.Bucket("bucket", new Gcp.Storage.BucketArgs
+    ///         {
+    ///         });
+    ///         var publicRule = new Gcp.Storage.DefaultObjectAccessControl("publicRule", new Gcp.Storage.DefaultObjectAccessControlArgs
+    ///         {
+    ///             Bucket = bucket.Name,
+    ///             Role = "READER",
+    ///             Entity = "allUsers",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class DefaultObjectAccessControl : Pulumi.CustomResource
     {

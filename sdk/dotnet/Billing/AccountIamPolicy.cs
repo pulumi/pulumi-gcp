@@ -21,6 +21,42 @@ namespace Pulumi.Gcp.Billing
     /// &gt; **Note:** This resource __must not__ be used in conjunction with
     ///    `gcp.billing.AccountIamMember` or `gcp.billing.AccountIamBinding`
     ///    or they will fight over what your policy should be.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         {
+    ///             Binding = 
+    ///             {
+    ///                 
+    ///                 {
+    ///                     { "role", "roles/billing.viewer" },
+    ///                     { "members", 
+    ///                     {
+    ///                         "user:jane@example.com",
+    ///                     } },
+    ///                 },
+    ///             },
+    ///         }));
+    ///         var policy = new Gcp.Billing.AccountIamPolicy("policy", new Gcp.Billing.AccountIamPolicyArgs
+    ///         {
+    ///             BillingAccountId = "00AA00-000AAA-00AA0A",
+    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class AccountIamPolicy : Pulumi.CustomResource
     {

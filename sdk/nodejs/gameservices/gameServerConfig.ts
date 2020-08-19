@@ -16,6 +16,69 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/game-servers/docs)
  *
  * ## Example Usage
+ *
+ * ### Game Service Config Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultGameServerDeployment = new gcp.gameservices.GameServerDeployment("defaultGameServerDeployment", {
+ *     deploymentId: "tf-test-deployment",
+ *     description: "a deployment description",
+ * });
+ * const defaultGameServerConfig = new gcp.gameservices.GameServerConfig("defaultGameServerConfig", {
+ *     configId: "tf-test-config",
+ *     deploymentId: defaultGameServerDeployment.deploymentId,
+ *     description: "a config description",
+ *     fleet_configs: [{
+ *         name: "something-unique",
+ *         fleetSpec: JSON.stringify({
+ *             replicas: 1,
+ *             scheduling: "Packed",
+ *             template: {
+ *                 metadata: {
+ *                     name: "tf-test-game-server-template",
+ *                 },
+ *                 spec: {
+ *                     template: {
+ *                         spec: {
+ *                             containers: [{
+ *                                 name: "simple-udp-server",
+ *                                 image: "gcr.io/agones-images/udp-server:0.14",
+ *                             }],
+ *                         },
+ *                     },
+ *                 },
+ *             },
+ *         }),
+ *     }],
+ *     scaling_configs: [{
+ *         name: "scaling-config-name",
+ *         fleetAutoscalerSpec: JSON.stringify({
+ *             policy: {
+ *                 type: "Webhook",
+ *                 webhook: {
+ *                     service: {
+ *                         name: "autoscaler-webhook-service",
+ *                         namespace: "default",
+ *                         path: "scale",
+ *                     },
+ *                 },
+ *             },
+ *         }),
+ *         selectors: [{
+ *             labels: {
+ *                 one: "two",
+ *             },
+ *         }],
+ *         schedules: [{
+ *             cronJobDuration: "3.500s",
+ *             cronSpec: "0 0 * * 0",
+ *         }],
+ *     }],
+ * });
+ * ```
  */
 export class GameServerConfig extends pulumi.CustomResource {
     /**

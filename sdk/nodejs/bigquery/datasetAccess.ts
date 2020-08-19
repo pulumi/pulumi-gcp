@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  * dataset resource must either have no defined `access` blocks or a `lifecycle` block with
  * `ignoreChanges = [access]` so they don't fight over which accesses should be on the dataset.
  *
+ *
  * To get more information about DatasetAccess, see:
  *
  * * [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets)
@@ -22,6 +23,47 @@ import * as utilities from "../utilities";
  *     * [Controlling access to datasets](https://cloud.google.com/bigquery/docs/dataset-access-controls)
  *
  * ## Example Usage
+ *
+ * ### Bigquery Dataset Access Basic User
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const dataset = new gcp.bigquery.Dataset("dataset", {datasetId: "example_dataset"});
+ * const bqowner = new gcp.serviceAccount.Account("bqowner", {accountId: "bqowner"});
+ * const access = new gcp.bigquery.DatasetAccess("access", {
+ *     datasetId: dataset.datasetId,
+ *     role: "OWNER",
+ *     userByEmail: bqowner.email,
+ * });
+ * ```
+ *
+ * ### Bigquery Dataset Access View
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _private = new gcp.bigquery.Dataset("private", {datasetId: "example_dataset"});
+ * const publicDataset = new gcp.bigquery.Dataset("publicDataset", {datasetId: "example_dataset2"});
+ * const publicTable = new gcp.bigquery.Table("publicTable", {
+ *     datasetId: publicDataset.datasetId,
+ *     tableId: "example_table",
+ *     view: {
+ *         query: "SELECT state FROM [lookerdata:cdc.project_tycho_reports]",
+ *         useLegacySql: false,
+ *     },
+ * });
+ * const access = new gcp.bigquery.DatasetAccess("access", {
+ *     datasetId: _private.datasetId,
+ *     view: {
+ *         projectId: publicTable.project,
+ *         datasetId: publicDataset.datasetId,
+ *         tableId: publicTable.tableId,
+ *     },
+ * });
+ * ```
  */
 export class DatasetAccess extends pulumi.CustomResource {
     /**

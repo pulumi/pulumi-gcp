@@ -20,8 +20,6 @@ import (
 // * [API documentation](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects)
 // * How-to Guides
 //     * [Official Documentation](https://firebase.google.com/)
-//
-// ## Example Usage
 type Project struct {
 	pulumi.CustomResourceState
 

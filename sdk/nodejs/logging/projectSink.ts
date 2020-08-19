@@ -16,6 +16,24 @@ import * as utilities from "../utilities";
  * > **Note:** You must have [granted the "Logs Configuration Writer"](https://cloud.google.com/logging/docs/access-control) IAM role (`roles/logging.configWriter`) to the credentials used with this provider.
  *
  * > **Note** You must [enable the Cloud Resource Manager API](https://console.cloud.google.com/apis/library/cloudresourcemanager.googleapis.com)
+ *
+ * ## Example Usage
+ *
+ *
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my_sink = new gcp.logging.ProjectSink("my-sink", {
+ *     // Can export to pubsub, cloud storage, or bigquery
+ *     destination: "pubsub.googleapis.com/projects/my-project/topics/instance-activity",
+ *     // Log all WARN or higher severity messages relating to instances
+ *     filter: "resource.type = gce_instance AND severity >= WARN",
+ *     // Use a unique writer (creates a unique service account used for writing)
+ *     uniqueWriterIdentity: true,
+ * });
+ * ```
  */
 export class ProjectSink extends pulumi.CustomResource {
     /**

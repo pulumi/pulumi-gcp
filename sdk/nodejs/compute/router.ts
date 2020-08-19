@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
 /**
  * Represents a Router resource.
  *
+ *
  * To get more information about Router, see:
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
@@ -16,6 +17,31 @@ import * as utilities from "../utilities";
  *     * [Google Cloud Router](https://cloud.google.com/router/docs/)
  *
  * ## Example Usage
+ *
+ * ### Router Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const foobarNetwork = new gcp.compute.Network("foobarNetwork", {autoCreateSubnetworks: false});
+ * const foobarRouter = new gcp.compute.Router("foobarRouter", {
+ *     network: foobarNetwork.name,
+ *     bgp: {
+ *         asn: 64514,
+ *         advertiseMode: "CUSTOM",
+ *         advertisedGroups: ["ALL_SUBNETS"],
+ *         advertised_ip_ranges: [
+ *             {
+ *                 range: "1.2.3.4",
+ *             },
+ *             {
+ *                 range: "6.7.0.0/16",
+ *             },
+ *         ],
+ *     },
+ * });
+ * ```
  */
 export class Router extends pulumi.CustomResource {
     /**

@@ -12,13 +12,12 @@ import (
 
 // A Google Cloud IoT Core device.
 //
+//
 // To get more information about Device, see:
 //
 // * [API documentation](https://cloud.google.com/iot/docs/reference/cloudiot/rest/)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/iot/docs/)
-//
-// ## Example Usage
 type Device struct {
 	pulumi.CustomResourceState
 

@@ -19,7 +19,8 @@ type ApplicationFeatureSettings struct {
 // ApplicationFeatureSettingsInput is an input type that accepts ApplicationFeatureSettingsArgs and ApplicationFeatureSettingsOutput values.
 // You can construct a concrete instance of `ApplicationFeatureSettingsInput` via:
 //
-//          ApplicationFeatureSettingsArgs{...}
+// 		 ApplicationFeatureSettingsArgs{...}
+//
 type ApplicationFeatureSettingsInput interface {
 	pulumi.Input
 
@@ -56,11 +57,12 @@ func (i ApplicationFeatureSettingsArgs) ToApplicationFeatureSettingsPtrOutputWit
 // ApplicationFeatureSettingsPtrInput is an input type that accepts ApplicationFeatureSettingsArgs, ApplicationFeatureSettingsPtr and ApplicationFeatureSettingsPtrOutput values.
 // You can construct a concrete instance of `ApplicationFeatureSettingsPtrInput` via:
 //
-//          ApplicationFeatureSettingsArgs{...}
+// 		 ApplicationFeatureSettingsArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type ApplicationFeatureSettingsPtrInput interface {
 	pulumi.Input
 
@@ -159,7 +161,8 @@ type ApplicationIap struct {
 // ApplicationIapInput is an input type that accepts ApplicationIapArgs and ApplicationIapOutput values.
 // You can construct a concrete instance of `ApplicationIapInput` via:
 //
-//          ApplicationIapArgs{...}
+// 		 ApplicationIapArgs{...}
+//
 type ApplicationIapInput interface {
 	pulumi.Input
 
@@ -201,11 +204,12 @@ func (i ApplicationIapArgs) ToApplicationIapPtrOutputWithContext(ctx context.Con
 // ApplicationIapPtrInput is an input type that accepts ApplicationIapArgs, ApplicationIapPtr and ApplicationIapPtrOutput values.
 // You can construct a concrete instance of `ApplicationIapPtrInput` via:
 //
-//          ApplicationIapArgs{...}
+// 		 ApplicationIapArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type ApplicationIapPtrInput interface {
 	pulumi.Input
 
@@ -341,7 +345,8 @@ type ApplicationUrlDispatchRule struct {
 // ApplicationUrlDispatchRuleInput is an input type that accepts ApplicationUrlDispatchRuleArgs and ApplicationUrlDispatchRuleOutput values.
 // You can construct a concrete instance of `ApplicationUrlDispatchRuleInput` via:
 //
-//          ApplicationUrlDispatchRuleArgs{...}
+// 		 ApplicationUrlDispatchRuleArgs{...}
+//
 type ApplicationUrlDispatchRuleInput interface {
 	pulumi.Input
 
@@ -370,7 +375,8 @@ func (i ApplicationUrlDispatchRuleArgs) ToApplicationUrlDispatchRuleOutputWithCo
 // ApplicationUrlDispatchRuleArrayInput is an input type that accepts ApplicationUrlDispatchRuleArray and ApplicationUrlDispatchRuleArrayOutput values.
 // You can construct a concrete instance of `ApplicationUrlDispatchRuleArrayInput` via:
 //
-//          ApplicationUrlDispatchRuleArray{ ApplicationUrlDispatchRuleArgs{...} }
+// 		 ApplicationUrlDispatchRuleArray{ ApplicationUrlDispatchRuleArgs{...} }
+//
 type ApplicationUrlDispatchRuleArrayInput interface {
 	pulumi.Input
 
@@ -453,7 +459,8 @@ type ApplicationUrlDispatchRulesDispatchRule struct {
 // ApplicationUrlDispatchRulesDispatchRuleInput is an input type that accepts ApplicationUrlDispatchRulesDispatchRuleArgs and ApplicationUrlDispatchRulesDispatchRuleOutput values.
 // You can construct a concrete instance of `ApplicationUrlDispatchRulesDispatchRuleInput` via:
 //
-//          ApplicationUrlDispatchRulesDispatchRuleArgs{...}
+// 		 ApplicationUrlDispatchRulesDispatchRuleArgs{...}
+//
 type ApplicationUrlDispatchRulesDispatchRuleInput interface {
 	pulumi.Input
 
@@ -488,7 +495,8 @@ func (i ApplicationUrlDispatchRulesDispatchRuleArgs) ToApplicationUrlDispatchRul
 // ApplicationUrlDispatchRulesDispatchRuleArrayInput is an input type that accepts ApplicationUrlDispatchRulesDispatchRuleArray and ApplicationUrlDispatchRulesDispatchRuleArrayOutput values.
 // You can construct a concrete instance of `ApplicationUrlDispatchRulesDispatchRuleArrayInput` via:
 //
-//          ApplicationUrlDispatchRulesDispatchRuleArray{ ApplicationUrlDispatchRulesDispatchRuleArgs{...} }
+// 		 ApplicationUrlDispatchRulesDispatchRuleArray{ ApplicationUrlDispatchRulesDispatchRuleArgs{...} }
+//
 type ApplicationUrlDispatchRulesDispatchRuleArrayInput interface {
 	pulumi.Input
 
@@ -571,7 +579,8 @@ type DomainMappingResourceRecord struct {
 // DomainMappingResourceRecordInput is an input type that accepts DomainMappingResourceRecordArgs and DomainMappingResourceRecordOutput values.
 // You can construct a concrete instance of `DomainMappingResourceRecordInput` via:
 //
-//          DomainMappingResourceRecordArgs{...}
+// 		 DomainMappingResourceRecordArgs{...}
+//
 type DomainMappingResourceRecordInput interface {
 	pulumi.Input
 
@@ -600,7 +609,8 @@ func (i DomainMappingResourceRecordArgs) ToDomainMappingResourceRecordOutputWith
 // DomainMappingResourceRecordArrayInput is an input type that accepts DomainMappingResourceRecordArray and DomainMappingResourceRecordArrayOutput values.
 // You can construct a concrete instance of `DomainMappingResourceRecordArrayInput` via:
 //
-//          DomainMappingResourceRecordArray{ DomainMappingResourceRecordArgs{...} }
+// 		 DomainMappingResourceRecordArray{ DomainMappingResourceRecordArgs{...} }
+//
 type DomainMappingResourceRecordArrayInput interface {
 	pulumi.Input
 
@@ -692,7 +702,8 @@ type DomainMappingSslSettings struct {
 // DomainMappingSslSettingsInput is an input type that accepts DomainMappingSslSettingsArgs and DomainMappingSslSettingsOutput values.
 // You can construct a concrete instance of `DomainMappingSslSettingsInput` via:
 //
-//          DomainMappingSslSettingsArgs{...}
+// 		 DomainMappingSslSettingsArgs{...}
+//
 type DomainMappingSslSettingsInput interface {
 	pulumi.Input
 
@@ -744,11 +755,12 @@ func (i DomainMappingSslSettingsArgs) ToDomainMappingSslSettingsPtrOutputWithCon
 // DomainMappingSslSettingsPtrInput is an input type that accepts DomainMappingSslSettingsArgs, DomainMappingSslSettingsPtr and DomainMappingSslSettingsPtrOutput values.
 // You can construct a concrete instance of `DomainMappingSslSettingsPtrInput` via:
 //
-//          DomainMappingSslSettingsArgs{...}
+// 		 DomainMappingSslSettingsArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type DomainMappingSslSettingsPtrInput interface {
 	pulumi.Input
 
@@ -896,7 +908,8 @@ type EngineSplitTrafficSplit struct {
 // EngineSplitTrafficSplitInput is an input type that accepts EngineSplitTrafficSplitArgs and EngineSplitTrafficSplitOutput values.
 // You can construct a concrete instance of `EngineSplitTrafficSplitInput` via:
 //
-//          EngineSplitTrafficSplitArgs{...}
+// 		 EngineSplitTrafficSplitArgs{...}
+//
 type EngineSplitTrafficSplitInput interface {
 	pulumi.Input
 
@@ -935,11 +948,12 @@ func (i EngineSplitTrafficSplitArgs) ToEngineSplitTrafficSplitPtrOutputWithConte
 // EngineSplitTrafficSplitPtrInput is an input type that accepts EngineSplitTrafficSplitArgs, EngineSplitTrafficSplitPtr and EngineSplitTrafficSplitPtrOutput values.
 // You can construct a concrete instance of `EngineSplitTrafficSplitPtrInput` via:
 //
-//          EngineSplitTrafficSplitArgs{...}
+// 		 EngineSplitTrafficSplitArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type EngineSplitTrafficSplitPtrInput interface {
 	pulumi.Input
 
@@ -1060,7 +1074,8 @@ type FlexibleAppVersionApiConfig struct {
 // FlexibleAppVersionApiConfigInput is an input type that accepts FlexibleAppVersionApiConfigArgs and FlexibleAppVersionApiConfigOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionApiConfigInput` via:
 //
-//          FlexibleAppVersionApiConfigArgs{...}
+// 		 FlexibleAppVersionApiConfigArgs{...}
+//
 type FlexibleAppVersionApiConfigInput interface {
 	pulumi.Input
 
@@ -1109,11 +1124,12 @@ func (i FlexibleAppVersionApiConfigArgs) ToFlexibleAppVersionApiConfigPtrOutputW
 // FlexibleAppVersionApiConfigPtrInput is an input type that accepts FlexibleAppVersionApiConfigArgs, FlexibleAppVersionApiConfigPtr and FlexibleAppVersionApiConfigPtrOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionApiConfigPtrInput` via:
 //
-//          FlexibleAppVersionApiConfigArgs{...}
+// 		 FlexibleAppVersionApiConfigArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type FlexibleAppVersionApiConfigPtrInput interface {
 	pulumi.Input
 
@@ -1303,7 +1319,8 @@ type FlexibleAppVersionAutomaticScaling struct {
 // FlexibleAppVersionAutomaticScalingInput is an input type that accepts FlexibleAppVersionAutomaticScalingArgs and FlexibleAppVersionAutomaticScalingOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionAutomaticScalingInput` via:
 //
-//          FlexibleAppVersionAutomaticScalingArgs{...}
+// 		 FlexibleAppVersionAutomaticScalingArgs{...}
+//
 type FlexibleAppVersionAutomaticScalingInput interface {
 	pulumi.Input
 
@@ -1368,11 +1385,12 @@ func (i FlexibleAppVersionAutomaticScalingArgs) ToFlexibleAppVersionAutomaticSca
 // FlexibleAppVersionAutomaticScalingPtrInput is an input type that accepts FlexibleAppVersionAutomaticScalingArgs, FlexibleAppVersionAutomaticScalingPtr and FlexibleAppVersionAutomaticScalingPtrOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionAutomaticScalingPtrInput` via:
 //
-//          FlexibleAppVersionAutomaticScalingArgs{...}
+// 		 FlexibleAppVersionAutomaticScalingArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type FlexibleAppVersionAutomaticScalingPtrInput interface {
 	pulumi.Input
 
@@ -1652,7 +1670,8 @@ type FlexibleAppVersionAutomaticScalingCpuUtilization struct {
 // FlexibleAppVersionAutomaticScalingCpuUtilizationInput is an input type that accepts FlexibleAppVersionAutomaticScalingCpuUtilizationArgs and FlexibleAppVersionAutomaticScalingCpuUtilizationOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionAutomaticScalingCpuUtilizationInput` via:
 //
-//          FlexibleAppVersionAutomaticScalingCpuUtilizationArgs{...}
+// 		 FlexibleAppVersionAutomaticScalingCpuUtilizationArgs{...}
+//
 type FlexibleAppVersionAutomaticScalingCpuUtilizationInput interface {
 	pulumi.Input
 
@@ -1690,11 +1709,12 @@ func (i FlexibleAppVersionAutomaticScalingCpuUtilizationArgs) ToFlexibleAppVersi
 // FlexibleAppVersionAutomaticScalingCpuUtilizationPtrInput is an input type that accepts FlexibleAppVersionAutomaticScalingCpuUtilizationArgs, FlexibleAppVersionAutomaticScalingCpuUtilizationPtr and FlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionAutomaticScalingCpuUtilizationPtrInput` via:
 //
-//          FlexibleAppVersionAutomaticScalingCpuUtilizationArgs{...}
+// 		 FlexibleAppVersionAutomaticScalingCpuUtilizationArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type FlexibleAppVersionAutomaticScalingCpuUtilizationPtrInput interface {
 	pulumi.Input
 
@@ -1808,7 +1828,8 @@ type FlexibleAppVersionAutomaticScalingDiskUtilization struct {
 // FlexibleAppVersionAutomaticScalingDiskUtilizationInput is an input type that accepts FlexibleAppVersionAutomaticScalingDiskUtilizationArgs and FlexibleAppVersionAutomaticScalingDiskUtilizationOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionAutomaticScalingDiskUtilizationInput` via:
 //
-//          FlexibleAppVersionAutomaticScalingDiskUtilizationArgs{...}
+// 		 FlexibleAppVersionAutomaticScalingDiskUtilizationArgs{...}
+//
 type FlexibleAppVersionAutomaticScalingDiskUtilizationInput interface {
 	pulumi.Input
 
@@ -1850,11 +1871,12 @@ func (i FlexibleAppVersionAutomaticScalingDiskUtilizationArgs) ToFlexibleAppVers
 // FlexibleAppVersionAutomaticScalingDiskUtilizationPtrInput is an input type that accepts FlexibleAppVersionAutomaticScalingDiskUtilizationArgs, FlexibleAppVersionAutomaticScalingDiskUtilizationPtr and FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionAutomaticScalingDiskUtilizationPtrInput` via:
 //
-//          FlexibleAppVersionAutomaticScalingDiskUtilizationArgs{...}
+// 		 FlexibleAppVersionAutomaticScalingDiskUtilizationArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type FlexibleAppVersionAutomaticScalingDiskUtilizationPtrInput interface {
 	pulumi.Input
 
@@ -1998,7 +2020,8 @@ type FlexibleAppVersionAutomaticScalingNetworkUtilization struct {
 // FlexibleAppVersionAutomaticScalingNetworkUtilizationInput is an input type that accepts FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs and FlexibleAppVersionAutomaticScalingNetworkUtilizationOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionAutomaticScalingNetworkUtilizationInput` via:
 //
-//          FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs{...}
+// 		 FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs{...}
+//
 type FlexibleAppVersionAutomaticScalingNetworkUtilizationInput interface {
 	pulumi.Input
 
@@ -2040,11 +2063,12 @@ func (i FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs) ToFlexibleAppV
 // FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrInput is an input type that accepts FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs, FlexibleAppVersionAutomaticScalingNetworkUtilizationPtr and FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrInput` via:
 //
-//          FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs{...}
+// 		 FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrInput interface {
 	pulumi.Input
 
@@ -2188,7 +2212,8 @@ type FlexibleAppVersionAutomaticScalingRequestUtilization struct {
 // FlexibleAppVersionAutomaticScalingRequestUtilizationInput is an input type that accepts FlexibleAppVersionAutomaticScalingRequestUtilizationArgs and FlexibleAppVersionAutomaticScalingRequestUtilizationOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionAutomaticScalingRequestUtilizationInput` via:
 //
-//          FlexibleAppVersionAutomaticScalingRequestUtilizationArgs{...}
+// 		 FlexibleAppVersionAutomaticScalingRequestUtilizationArgs{...}
+//
 type FlexibleAppVersionAutomaticScalingRequestUtilizationInput interface {
 	pulumi.Input
 
@@ -2226,11 +2251,12 @@ func (i FlexibleAppVersionAutomaticScalingRequestUtilizationArgs) ToFlexibleAppV
 // FlexibleAppVersionAutomaticScalingRequestUtilizationPtrInput is an input type that accepts FlexibleAppVersionAutomaticScalingRequestUtilizationArgs, FlexibleAppVersionAutomaticScalingRequestUtilizationPtr and FlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionAutomaticScalingRequestUtilizationPtrInput` via:
 //
-//          FlexibleAppVersionAutomaticScalingRequestUtilizationArgs{...}
+// 		 FlexibleAppVersionAutomaticScalingRequestUtilizationArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type FlexibleAppVersionAutomaticScalingRequestUtilizationPtrInput interface {
 	pulumi.Input
 
@@ -2353,7 +2379,8 @@ type FlexibleAppVersionDeployment struct {
 // FlexibleAppVersionDeploymentInput is an input type that accepts FlexibleAppVersionDeploymentArgs and FlexibleAppVersionDeploymentOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionDeploymentInput` via:
 //
-//          FlexibleAppVersionDeploymentArgs{...}
+// 		 FlexibleAppVersionDeploymentArgs{...}
+//
 type FlexibleAppVersionDeploymentInput interface {
 	pulumi.Input
 
@@ -2400,11 +2427,12 @@ func (i FlexibleAppVersionDeploymentArgs) ToFlexibleAppVersionDeploymentPtrOutpu
 // FlexibleAppVersionDeploymentPtrInput is an input type that accepts FlexibleAppVersionDeploymentArgs, FlexibleAppVersionDeploymentPtr and FlexibleAppVersionDeploymentPtrOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionDeploymentPtrInput` via:
 //
-//          FlexibleAppVersionDeploymentArgs{...}
+// 		 FlexibleAppVersionDeploymentArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type FlexibleAppVersionDeploymentPtrInput interface {
 	pulumi.Input
 
@@ -2555,7 +2583,8 @@ type FlexibleAppVersionDeploymentCloudBuildOptions struct {
 // FlexibleAppVersionDeploymentCloudBuildOptionsInput is an input type that accepts FlexibleAppVersionDeploymentCloudBuildOptionsArgs and FlexibleAppVersionDeploymentCloudBuildOptionsOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionDeploymentCloudBuildOptionsInput` via:
 //
-//          FlexibleAppVersionDeploymentCloudBuildOptionsArgs{...}
+// 		 FlexibleAppVersionDeploymentCloudBuildOptionsArgs{...}
+//
 type FlexibleAppVersionDeploymentCloudBuildOptionsInput interface {
 	pulumi.Input
 
@@ -2594,11 +2623,12 @@ func (i FlexibleAppVersionDeploymentCloudBuildOptionsArgs) ToFlexibleAppVersionD
 // FlexibleAppVersionDeploymentCloudBuildOptionsPtrInput is an input type that accepts FlexibleAppVersionDeploymentCloudBuildOptionsArgs, FlexibleAppVersionDeploymentCloudBuildOptionsPtr and FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionDeploymentCloudBuildOptionsPtrInput` via:
 //
-//          FlexibleAppVersionDeploymentCloudBuildOptionsArgs{...}
+// 		 FlexibleAppVersionDeploymentCloudBuildOptionsArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type FlexibleAppVersionDeploymentCloudBuildOptionsPtrInput interface {
 	pulumi.Input
 
@@ -2709,7 +2739,8 @@ type FlexibleAppVersionDeploymentContainer struct {
 // FlexibleAppVersionDeploymentContainerInput is an input type that accepts FlexibleAppVersionDeploymentContainerArgs and FlexibleAppVersionDeploymentContainerOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionDeploymentContainerInput` via:
 //
-//          FlexibleAppVersionDeploymentContainerArgs{...}
+// 		 FlexibleAppVersionDeploymentContainerArgs{...}
+//
 type FlexibleAppVersionDeploymentContainerInput interface {
 	pulumi.Input
 
@@ -2746,11 +2777,12 @@ func (i FlexibleAppVersionDeploymentContainerArgs) ToFlexibleAppVersionDeploymen
 // FlexibleAppVersionDeploymentContainerPtrInput is an input type that accepts FlexibleAppVersionDeploymentContainerArgs, FlexibleAppVersionDeploymentContainerPtr and FlexibleAppVersionDeploymentContainerPtrOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionDeploymentContainerPtrInput` via:
 //
-//          FlexibleAppVersionDeploymentContainerArgs{...}
+// 		 FlexibleAppVersionDeploymentContainerArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type FlexibleAppVersionDeploymentContainerPtrInput interface {
 	pulumi.Input
 
@@ -2847,7 +2879,8 @@ type FlexibleAppVersionDeploymentFile struct {
 // FlexibleAppVersionDeploymentFileInput is an input type that accepts FlexibleAppVersionDeploymentFileArgs and FlexibleAppVersionDeploymentFileOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionDeploymentFileInput` via:
 //
-//          FlexibleAppVersionDeploymentFileArgs{...}
+// 		 FlexibleAppVersionDeploymentFileArgs{...}
+//
 type FlexibleAppVersionDeploymentFileInput interface {
 	pulumi.Input
 
@@ -2879,7 +2912,8 @@ func (i FlexibleAppVersionDeploymentFileArgs) ToFlexibleAppVersionDeploymentFile
 // FlexibleAppVersionDeploymentFileArrayInput is an input type that accepts FlexibleAppVersionDeploymentFileArray and FlexibleAppVersionDeploymentFileArrayOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionDeploymentFileArrayInput` via:
 //
-//          FlexibleAppVersionDeploymentFileArray{ FlexibleAppVersionDeploymentFileArgs{...} }
+// 		 FlexibleAppVersionDeploymentFileArray{ FlexibleAppVersionDeploymentFileArgs{...} }
+//
 type FlexibleAppVersionDeploymentFileArrayInput interface {
 	pulumi.Input
 
@@ -2960,7 +2994,8 @@ type FlexibleAppVersionDeploymentZip struct {
 // FlexibleAppVersionDeploymentZipInput is an input type that accepts FlexibleAppVersionDeploymentZipArgs and FlexibleAppVersionDeploymentZipOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionDeploymentZipInput` via:
 //
-//          FlexibleAppVersionDeploymentZipArgs{...}
+// 		 FlexibleAppVersionDeploymentZipArgs{...}
+//
 type FlexibleAppVersionDeploymentZipInput interface {
 	pulumi.Input
 
@@ -2998,11 +3033,12 @@ func (i FlexibleAppVersionDeploymentZipArgs) ToFlexibleAppVersionDeploymentZipPt
 // FlexibleAppVersionDeploymentZipPtrInput is an input type that accepts FlexibleAppVersionDeploymentZipArgs, FlexibleAppVersionDeploymentZipPtr and FlexibleAppVersionDeploymentZipPtrOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionDeploymentZipPtrInput` via:
 //
-//          FlexibleAppVersionDeploymentZipArgs{...}
+// 		 FlexibleAppVersionDeploymentZipArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type FlexibleAppVersionDeploymentZipPtrInput interface {
 	pulumi.Input
 
@@ -3121,7 +3157,8 @@ type FlexibleAppVersionEndpointsApiService struct {
 // FlexibleAppVersionEndpointsApiServiceInput is an input type that accepts FlexibleAppVersionEndpointsApiServiceArgs and FlexibleAppVersionEndpointsApiServiceOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionEndpointsApiServiceInput` via:
 //
-//          FlexibleAppVersionEndpointsApiServiceArgs{...}
+// 		 FlexibleAppVersionEndpointsApiServiceArgs{...}
+//
 type FlexibleAppVersionEndpointsApiServiceInput interface {
 	pulumi.Input
 
@@ -3170,11 +3207,12 @@ func (i FlexibleAppVersionEndpointsApiServiceArgs) ToFlexibleAppVersionEndpoints
 // FlexibleAppVersionEndpointsApiServicePtrInput is an input type that accepts FlexibleAppVersionEndpointsApiServiceArgs, FlexibleAppVersionEndpointsApiServicePtr and FlexibleAppVersionEndpointsApiServicePtrOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionEndpointsApiServicePtrInput` via:
 //
-//          FlexibleAppVersionEndpointsApiServiceArgs{...}
+// 		 FlexibleAppVersionEndpointsApiServiceArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type FlexibleAppVersionEndpointsApiServicePtrInput interface {
 	pulumi.Input
 
@@ -3324,7 +3362,8 @@ type FlexibleAppVersionEntrypoint struct {
 // FlexibleAppVersionEntrypointInput is an input type that accepts FlexibleAppVersionEntrypointArgs and FlexibleAppVersionEntrypointOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionEntrypointInput` via:
 //
-//          FlexibleAppVersionEntrypointArgs{...}
+// 		 FlexibleAppVersionEntrypointArgs{...}
+//
 type FlexibleAppVersionEntrypointInput interface {
 	pulumi.Input
 
@@ -3360,11 +3399,12 @@ func (i FlexibleAppVersionEntrypointArgs) ToFlexibleAppVersionEntrypointPtrOutpu
 // FlexibleAppVersionEntrypointPtrInput is an input type that accepts FlexibleAppVersionEntrypointArgs, FlexibleAppVersionEntrypointPtr and FlexibleAppVersionEntrypointPtrOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionEntrypointPtrInput` via:
 //
-//          FlexibleAppVersionEntrypointArgs{...}
+// 		 FlexibleAppVersionEntrypointArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type FlexibleAppVersionEntrypointPtrInput interface {
 	pulumi.Input
 
@@ -3476,7 +3516,8 @@ type FlexibleAppVersionHandler struct {
 // FlexibleAppVersionHandlerInput is an input type that accepts FlexibleAppVersionHandlerArgs and FlexibleAppVersionHandlerOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionHandlerInput` via:
 //
-//          FlexibleAppVersionHandlerArgs{...}
+// 		 FlexibleAppVersionHandlerArgs{...}
+//
 type FlexibleAppVersionHandlerInput interface {
 	pulumi.Input
 
@@ -3525,7 +3566,8 @@ func (i FlexibleAppVersionHandlerArgs) ToFlexibleAppVersionHandlerOutputWithCont
 // FlexibleAppVersionHandlerArrayInput is an input type that accepts FlexibleAppVersionHandlerArray and FlexibleAppVersionHandlerArrayOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionHandlerArrayInput` via:
 //
-//          FlexibleAppVersionHandlerArray{ FlexibleAppVersionHandlerArgs{...} }
+// 		 FlexibleAppVersionHandlerArray{ FlexibleAppVersionHandlerArgs{...} }
+//
 type FlexibleAppVersionHandlerArrayInput interface {
 	pulumi.Input
 
@@ -3633,7 +3675,8 @@ type FlexibleAppVersionHandlerScript struct {
 // FlexibleAppVersionHandlerScriptInput is an input type that accepts FlexibleAppVersionHandlerScriptArgs and FlexibleAppVersionHandlerScriptOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionHandlerScriptInput` via:
 //
-//          FlexibleAppVersionHandlerScriptArgs{...}
+// 		 FlexibleAppVersionHandlerScriptArgs{...}
+//
 type FlexibleAppVersionHandlerScriptInput interface {
 	pulumi.Input
 
@@ -3669,11 +3712,12 @@ func (i FlexibleAppVersionHandlerScriptArgs) ToFlexibleAppVersionHandlerScriptPt
 // FlexibleAppVersionHandlerScriptPtrInput is an input type that accepts FlexibleAppVersionHandlerScriptArgs, FlexibleAppVersionHandlerScriptPtr and FlexibleAppVersionHandlerScriptPtrOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionHandlerScriptPtrInput` via:
 //
-//          FlexibleAppVersionHandlerScriptArgs{...}
+// 		 FlexibleAppVersionHandlerScriptArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type FlexibleAppVersionHandlerScriptPtrInput interface {
 	pulumi.Input
 
@@ -3783,7 +3827,8 @@ type FlexibleAppVersionHandlerStaticFiles struct {
 // FlexibleAppVersionHandlerStaticFilesInput is an input type that accepts FlexibleAppVersionHandlerStaticFilesArgs and FlexibleAppVersionHandlerStaticFilesOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionHandlerStaticFilesInput` via:
 //
-//          FlexibleAppVersionHandlerStaticFilesArgs{...}
+// 		 FlexibleAppVersionHandlerStaticFilesArgs{...}
+//
 type FlexibleAppVersionHandlerStaticFilesInput interface {
 	pulumi.Input
 
@@ -3838,11 +3883,12 @@ func (i FlexibleAppVersionHandlerStaticFilesArgs) ToFlexibleAppVersionHandlerSta
 // FlexibleAppVersionHandlerStaticFilesPtrInput is an input type that accepts FlexibleAppVersionHandlerStaticFilesArgs, FlexibleAppVersionHandlerStaticFilesPtr and FlexibleAppVersionHandlerStaticFilesPtrOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionHandlerStaticFilesPtrInput` via:
 //
-//          FlexibleAppVersionHandlerStaticFilesArgs{...}
+// 		 FlexibleAppVersionHandlerStaticFilesArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type FlexibleAppVersionHandlerStaticFilesPtrInput interface {
 	pulumi.Input
 
@@ -4050,7 +4096,8 @@ type FlexibleAppVersionLivenessCheck struct {
 // FlexibleAppVersionLivenessCheckInput is an input type that accepts FlexibleAppVersionLivenessCheckArgs and FlexibleAppVersionLivenessCheckOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionLivenessCheckInput` via:
 //
-//          FlexibleAppVersionLivenessCheckArgs{...}
+// 		 FlexibleAppVersionLivenessCheckArgs{...}
+//
 type FlexibleAppVersionLivenessCheckInput interface {
 	pulumi.Input
 
@@ -4099,11 +4146,12 @@ func (i FlexibleAppVersionLivenessCheckArgs) ToFlexibleAppVersionLivenessCheckPt
 // FlexibleAppVersionLivenessCheckPtrInput is an input type that accepts FlexibleAppVersionLivenessCheckArgs, FlexibleAppVersionLivenessCheckPtr and FlexibleAppVersionLivenessCheckPtrOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionLivenessCheckPtrInput` via:
 //
-//          FlexibleAppVersionLivenessCheckArgs{...}
+// 		 FlexibleAppVersionLivenessCheckArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type FlexibleAppVersionLivenessCheckPtrInput interface {
 	pulumi.Input
 
@@ -4288,7 +4336,8 @@ type FlexibleAppVersionManualScaling struct {
 // FlexibleAppVersionManualScalingInput is an input type that accepts FlexibleAppVersionManualScalingArgs and FlexibleAppVersionManualScalingOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionManualScalingInput` via:
 //
-//          FlexibleAppVersionManualScalingArgs{...}
+// 		 FlexibleAppVersionManualScalingArgs{...}
+//
 type FlexibleAppVersionManualScalingInput interface {
 	pulumi.Input
 
@@ -4326,11 +4375,12 @@ func (i FlexibleAppVersionManualScalingArgs) ToFlexibleAppVersionManualScalingPt
 // FlexibleAppVersionManualScalingPtrInput is an input type that accepts FlexibleAppVersionManualScalingArgs, FlexibleAppVersionManualScalingPtr and FlexibleAppVersionManualScalingPtrOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionManualScalingPtrInput` via:
 //
-//          FlexibleAppVersionManualScalingArgs{...}
+// 		 FlexibleAppVersionManualScalingArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type FlexibleAppVersionManualScalingPtrInput interface {
 	pulumi.Input
 
@@ -4437,7 +4487,8 @@ type FlexibleAppVersionNetwork struct {
 // FlexibleAppVersionNetworkInput is an input type that accepts FlexibleAppVersionNetworkArgs and FlexibleAppVersionNetworkOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionNetworkInput` via:
 //
-//          FlexibleAppVersionNetworkArgs{...}
+// 		 FlexibleAppVersionNetworkArgs{...}
+//
 type FlexibleAppVersionNetworkInput interface {
 	pulumi.Input
 
@@ -4485,11 +4536,12 @@ func (i FlexibleAppVersionNetworkArgs) ToFlexibleAppVersionNetworkPtrOutputWithC
 // FlexibleAppVersionNetworkPtrInput is an input type that accepts FlexibleAppVersionNetworkArgs, FlexibleAppVersionNetworkPtr and FlexibleAppVersionNetworkPtrOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionNetworkPtrInput` via:
 //
-//          FlexibleAppVersionNetworkArgs{...}
+// 		 FlexibleAppVersionNetworkArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type FlexibleAppVersionNetworkPtrInput interface {
 	pulumi.Input
 
@@ -4662,7 +4714,8 @@ type FlexibleAppVersionReadinessCheck struct {
 // FlexibleAppVersionReadinessCheckInput is an input type that accepts FlexibleAppVersionReadinessCheckArgs and FlexibleAppVersionReadinessCheckOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionReadinessCheckInput` via:
 //
-//          FlexibleAppVersionReadinessCheckArgs{...}
+// 		 FlexibleAppVersionReadinessCheckArgs{...}
+//
 type FlexibleAppVersionReadinessCheckInput interface {
 	pulumi.Input
 
@@ -4712,11 +4765,12 @@ func (i FlexibleAppVersionReadinessCheckArgs) ToFlexibleAppVersionReadinessCheck
 // FlexibleAppVersionReadinessCheckPtrInput is an input type that accepts FlexibleAppVersionReadinessCheckArgs, FlexibleAppVersionReadinessCheckPtr and FlexibleAppVersionReadinessCheckPtrOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionReadinessCheckPtrInput` via:
 //
-//          FlexibleAppVersionReadinessCheckArgs{...}
+// 		 FlexibleAppVersionReadinessCheckArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type FlexibleAppVersionReadinessCheckPtrInput interface {
 	pulumi.Input
 
@@ -4908,7 +4962,8 @@ type FlexibleAppVersionResources struct {
 // FlexibleAppVersionResourcesInput is an input type that accepts FlexibleAppVersionResourcesArgs and FlexibleAppVersionResourcesOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionResourcesInput` via:
 //
-//          FlexibleAppVersionResourcesArgs{...}
+// 		 FlexibleAppVersionResourcesArgs{...}
+//
 type FlexibleAppVersionResourcesInput interface {
 	pulumi.Input
 
@@ -4951,11 +5006,12 @@ func (i FlexibleAppVersionResourcesArgs) ToFlexibleAppVersionResourcesPtrOutputW
 // FlexibleAppVersionResourcesPtrInput is an input type that accepts FlexibleAppVersionResourcesArgs, FlexibleAppVersionResourcesPtr and FlexibleAppVersionResourcesPtrOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionResourcesPtrInput` via:
 //
-//          FlexibleAppVersionResourcesArgs{...}
+// 		 FlexibleAppVersionResourcesArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type FlexibleAppVersionResourcesPtrInput interface {
 	pulumi.Input
 
@@ -5097,7 +5153,8 @@ type FlexibleAppVersionResourcesVolume struct {
 // FlexibleAppVersionResourcesVolumeInput is an input type that accepts FlexibleAppVersionResourcesVolumeArgs and FlexibleAppVersionResourcesVolumeOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionResourcesVolumeInput` via:
 //
-//          FlexibleAppVersionResourcesVolumeArgs{...}
+// 		 FlexibleAppVersionResourcesVolumeArgs{...}
+//
 type FlexibleAppVersionResourcesVolumeInput interface {
 	pulumi.Input
 
@@ -5129,7 +5186,8 @@ func (i FlexibleAppVersionResourcesVolumeArgs) ToFlexibleAppVersionResourcesVolu
 // FlexibleAppVersionResourcesVolumeArrayInput is an input type that accepts FlexibleAppVersionResourcesVolumeArray and FlexibleAppVersionResourcesVolumeArrayOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionResourcesVolumeArrayInput` via:
 //
-//          FlexibleAppVersionResourcesVolumeArray{ FlexibleAppVersionResourcesVolumeArgs{...} }
+// 		 FlexibleAppVersionResourcesVolumeArray{ FlexibleAppVersionResourcesVolumeArgs{...} }
+//
 type FlexibleAppVersionResourcesVolumeArrayInput interface {
 	pulumi.Input
 
@@ -5208,7 +5266,8 @@ type FlexibleAppVersionVpcAccessConnector struct {
 // FlexibleAppVersionVpcAccessConnectorInput is an input type that accepts FlexibleAppVersionVpcAccessConnectorArgs and FlexibleAppVersionVpcAccessConnectorOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionVpcAccessConnectorInput` via:
 //
-//          FlexibleAppVersionVpcAccessConnectorArgs{...}
+// 		 FlexibleAppVersionVpcAccessConnectorArgs{...}
+//
 type FlexibleAppVersionVpcAccessConnectorInput interface {
 	pulumi.Input
 
@@ -5244,11 +5303,12 @@ func (i FlexibleAppVersionVpcAccessConnectorArgs) ToFlexibleAppVersionVpcAccessC
 // FlexibleAppVersionVpcAccessConnectorPtrInput is an input type that accepts FlexibleAppVersionVpcAccessConnectorArgs, FlexibleAppVersionVpcAccessConnectorPtr and FlexibleAppVersionVpcAccessConnectorPtrOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionVpcAccessConnectorPtrInput` via:
 //
-//          FlexibleAppVersionVpcAccessConnectorArgs{...}
+// 		 FlexibleAppVersionVpcAccessConnectorArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type FlexibleAppVersionVpcAccessConnectorPtrInput interface {
 	pulumi.Input
 
@@ -5353,7 +5413,8 @@ type StandardAppVersionAutomaticScaling struct {
 // StandardAppVersionAutomaticScalingInput is an input type that accepts StandardAppVersionAutomaticScalingArgs and StandardAppVersionAutomaticScalingOutput values.
 // You can construct a concrete instance of `StandardAppVersionAutomaticScalingInput` via:
 //
-//          StandardAppVersionAutomaticScalingArgs{...}
+// 		 StandardAppVersionAutomaticScalingArgs{...}
+//
 type StandardAppVersionAutomaticScalingInput interface {
 	pulumi.Input
 
@@ -5403,11 +5464,12 @@ func (i StandardAppVersionAutomaticScalingArgs) ToStandardAppVersionAutomaticSca
 // StandardAppVersionAutomaticScalingPtrInput is an input type that accepts StandardAppVersionAutomaticScalingArgs, StandardAppVersionAutomaticScalingPtr and StandardAppVersionAutomaticScalingPtrOutput values.
 // You can construct a concrete instance of `StandardAppVersionAutomaticScalingPtrInput` via:
 //
-//          StandardAppVersionAutomaticScalingArgs{...}
+// 		 StandardAppVersionAutomaticScalingArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type StandardAppVersionAutomaticScalingPtrInput interface {
 	pulumi.Input
 
@@ -5589,7 +5651,8 @@ type StandardAppVersionAutomaticScalingStandardSchedulerSettings struct {
 // StandardAppVersionAutomaticScalingStandardSchedulerSettingsInput is an input type that accepts StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs and StandardAppVersionAutomaticScalingStandardSchedulerSettingsOutput values.
 // You can construct a concrete instance of `StandardAppVersionAutomaticScalingStandardSchedulerSettingsInput` via:
 //
-//          StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs{...}
+// 		 StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs{...}
+//
 type StandardAppVersionAutomaticScalingStandardSchedulerSettingsInput interface {
 	pulumi.Input
 
@@ -5631,11 +5694,12 @@ func (i StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs) ToStand
 // StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrInput is an input type that accepts StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs, StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtr and StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput values.
 // You can construct a concrete instance of `StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrInput` via:
 //
-//          StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs{...}
+// 		 StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrInput interface {
 	pulumi.Input
 
@@ -5780,7 +5844,8 @@ type StandardAppVersionBasicScaling struct {
 // StandardAppVersionBasicScalingInput is an input type that accepts StandardAppVersionBasicScalingArgs and StandardAppVersionBasicScalingOutput values.
 // You can construct a concrete instance of `StandardAppVersionBasicScalingInput` via:
 //
-//          StandardAppVersionBasicScalingArgs{...}
+// 		 StandardAppVersionBasicScalingArgs{...}
+//
 type StandardAppVersionBasicScalingInput interface {
 	pulumi.Input
 
@@ -5819,11 +5884,12 @@ func (i StandardAppVersionBasicScalingArgs) ToStandardAppVersionBasicScalingPtrO
 // StandardAppVersionBasicScalingPtrInput is an input type that accepts StandardAppVersionBasicScalingArgs, StandardAppVersionBasicScalingPtr and StandardAppVersionBasicScalingPtrOutput values.
 // You can construct a concrete instance of `StandardAppVersionBasicScalingPtrInput` via:
 //
-//          StandardAppVersionBasicScalingArgs{...}
+// 		 StandardAppVersionBasicScalingArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type StandardAppVersionBasicScalingPtrInput interface {
 	pulumi.Input
 
@@ -5936,7 +6002,8 @@ type StandardAppVersionDeployment struct {
 // StandardAppVersionDeploymentInput is an input type that accepts StandardAppVersionDeploymentArgs and StandardAppVersionDeploymentOutput values.
 // You can construct a concrete instance of `StandardAppVersionDeploymentInput` via:
 //
-//          StandardAppVersionDeploymentArgs{...}
+// 		 StandardAppVersionDeploymentArgs{...}
+//
 type StandardAppVersionDeploymentInput interface {
 	pulumi.Input
 
@@ -5977,11 +6044,12 @@ func (i StandardAppVersionDeploymentArgs) ToStandardAppVersionDeploymentPtrOutpu
 // StandardAppVersionDeploymentPtrInput is an input type that accepts StandardAppVersionDeploymentArgs, StandardAppVersionDeploymentPtr and StandardAppVersionDeploymentPtrOutput values.
 // You can construct a concrete instance of `StandardAppVersionDeploymentPtrInput` via:
 //
-//          StandardAppVersionDeploymentArgs{...}
+// 		 StandardAppVersionDeploymentArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type StandardAppVersionDeploymentPtrInput interface {
 	pulumi.Input
 
@@ -6097,7 +6165,8 @@ type StandardAppVersionDeploymentFile struct {
 // StandardAppVersionDeploymentFileInput is an input type that accepts StandardAppVersionDeploymentFileArgs and StandardAppVersionDeploymentFileOutput values.
 // You can construct a concrete instance of `StandardAppVersionDeploymentFileInput` via:
 //
-//          StandardAppVersionDeploymentFileArgs{...}
+// 		 StandardAppVersionDeploymentFileArgs{...}
+//
 type StandardAppVersionDeploymentFileInput interface {
 	pulumi.Input
 
@@ -6129,7 +6198,8 @@ func (i StandardAppVersionDeploymentFileArgs) ToStandardAppVersionDeploymentFile
 // StandardAppVersionDeploymentFileArrayInput is an input type that accepts StandardAppVersionDeploymentFileArray and StandardAppVersionDeploymentFileArrayOutput values.
 // You can construct a concrete instance of `StandardAppVersionDeploymentFileArrayInput` via:
 //
-//          StandardAppVersionDeploymentFileArray{ StandardAppVersionDeploymentFileArgs{...} }
+// 		 StandardAppVersionDeploymentFileArray{ StandardAppVersionDeploymentFileArgs{...} }
+//
 type StandardAppVersionDeploymentFileArrayInput interface {
 	pulumi.Input
 
@@ -6210,7 +6280,8 @@ type StandardAppVersionDeploymentZip struct {
 // StandardAppVersionDeploymentZipInput is an input type that accepts StandardAppVersionDeploymentZipArgs and StandardAppVersionDeploymentZipOutput values.
 // You can construct a concrete instance of `StandardAppVersionDeploymentZipInput` via:
 //
-//          StandardAppVersionDeploymentZipArgs{...}
+// 		 StandardAppVersionDeploymentZipArgs{...}
+//
 type StandardAppVersionDeploymentZipInput interface {
 	pulumi.Input
 
@@ -6248,11 +6319,12 @@ func (i StandardAppVersionDeploymentZipArgs) ToStandardAppVersionDeploymentZipPt
 // StandardAppVersionDeploymentZipPtrInput is an input type that accepts StandardAppVersionDeploymentZipArgs, StandardAppVersionDeploymentZipPtr and StandardAppVersionDeploymentZipPtrOutput values.
 // You can construct a concrete instance of `StandardAppVersionDeploymentZipPtrInput` via:
 //
-//          StandardAppVersionDeploymentZipArgs{...}
+// 		 StandardAppVersionDeploymentZipArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type StandardAppVersionDeploymentZipPtrInput interface {
 	pulumi.Input
 
@@ -6358,7 +6430,8 @@ type StandardAppVersionEntrypoint struct {
 // StandardAppVersionEntrypointInput is an input type that accepts StandardAppVersionEntrypointArgs and StandardAppVersionEntrypointOutput values.
 // You can construct a concrete instance of `StandardAppVersionEntrypointInput` via:
 //
-//          StandardAppVersionEntrypointArgs{...}
+// 		 StandardAppVersionEntrypointArgs{...}
+//
 type StandardAppVersionEntrypointInput interface {
 	pulumi.Input
 
@@ -6394,11 +6467,12 @@ func (i StandardAppVersionEntrypointArgs) ToStandardAppVersionEntrypointPtrOutpu
 // StandardAppVersionEntrypointPtrInput is an input type that accepts StandardAppVersionEntrypointArgs, StandardAppVersionEntrypointPtr and StandardAppVersionEntrypointPtrOutput values.
 // You can construct a concrete instance of `StandardAppVersionEntrypointPtrInput` via:
 //
-//          StandardAppVersionEntrypointArgs{...}
+// 		 StandardAppVersionEntrypointArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type StandardAppVersionEntrypointPtrInput interface {
 	pulumi.Input
 
@@ -6509,7 +6583,8 @@ type StandardAppVersionHandler struct {
 // StandardAppVersionHandlerInput is an input type that accepts StandardAppVersionHandlerArgs and StandardAppVersionHandlerOutput values.
 // You can construct a concrete instance of `StandardAppVersionHandlerInput` via:
 //
-//          StandardAppVersionHandlerArgs{...}
+// 		 StandardAppVersionHandlerArgs{...}
+//
 type StandardAppVersionHandlerInput interface {
 	pulumi.Input
 
@@ -6557,7 +6632,8 @@ func (i StandardAppVersionHandlerArgs) ToStandardAppVersionHandlerOutputWithCont
 // StandardAppVersionHandlerArrayInput is an input type that accepts StandardAppVersionHandlerArray and StandardAppVersionHandlerArrayOutput values.
 // You can construct a concrete instance of `StandardAppVersionHandlerArrayInput` via:
 //
-//          StandardAppVersionHandlerArray{ StandardAppVersionHandlerArgs{...} }
+// 		 StandardAppVersionHandlerArray{ StandardAppVersionHandlerArgs{...} }
+//
 type StandardAppVersionHandlerArrayInput interface {
 	pulumi.Input
 
@@ -6664,7 +6740,8 @@ type StandardAppVersionHandlerScript struct {
 // StandardAppVersionHandlerScriptInput is an input type that accepts StandardAppVersionHandlerScriptArgs and StandardAppVersionHandlerScriptOutput values.
 // You can construct a concrete instance of `StandardAppVersionHandlerScriptInput` via:
 //
-//          StandardAppVersionHandlerScriptArgs{...}
+// 		 StandardAppVersionHandlerScriptArgs{...}
+//
 type StandardAppVersionHandlerScriptInput interface {
 	pulumi.Input
 
@@ -6700,11 +6777,12 @@ func (i StandardAppVersionHandlerScriptArgs) ToStandardAppVersionHandlerScriptPt
 // StandardAppVersionHandlerScriptPtrInput is an input type that accepts StandardAppVersionHandlerScriptArgs, StandardAppVersionHandlerScriptPtr and StandardAppVersionHandlerScriptPtrOutput values.
 // You can construct a concrete instance of `StandardAppVersionHandlerScriptPtrInput` via:
 //
-//          StandardAppVersionHandlerScriptArgs{...}
+// 		 StandardAppVersionHandlerScriptArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type StandardAppVersionHandlerScriptPtrInput interface {
 	pulumi.Input
 
@@ -6812,7 +6890,8 @@ type StandardAppVersionHandlerStaticFiles struct {
 // StandardAppVersionHandlerStaticFilesInput is an input type that accepts StandardAppVersionHandlerStaticFilesArgs and StandardAppVersionHandlerStaticFilesOutput values.
 // You can construct a concrete instance of `StandardAppVersionHandlerStaticFilesInput` via:
 //
-//          StandardAppVersionHandlerStaticFilesArgs{...}
+// 		 StandardAppVersionHandlerStaticFilesArgs{...}
+//
 type StandardAppVersionHandlerStaticFilesInput interface {
 	pulumi.Input
 
@@ -6865,11 +6944,12 @@ func (i StandardAppVersionHandlerStaticFilesArgs) ToStandardAppVersionHandlerSta
 // StandardAppVersionHandlerStaticFilesPtrInput is an input type that accepts StandardAppVersionHandlerStaticFilesArgs, StandardAppVersionHandlerStaticFilesPtr and StandardAppVersionHandlerStaticFilesPtrOutput values.
 // You can construct a concrete instance of `StandardAppVersionHandlerStaticFilesPtrInput` via:
 //
-//          StandardAppVersionHandlerStaticFilesArgs{...}
+// 		 StandardAppVersionHandlerStaticFilesArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type StandardAppVersionHandlerStaticFilesPtrInput interface {
 	pulumi.Input
 
@@ -7062,7 +7142,8 @@ type StandardAppVersionLibrary struct {
 // StandardAppVersionLibraryInput is an input type that accepts StandardAppVersionLibraryArgs and StandardAppVersionLibraryOutput values.
 // You can construct a concrete instance of `StandardAppVersionLibraryInput` via:
 //
-//          StandardAppVersionLibraryArgs{...}
+// 		 StandardAppVersionLibraryArgs{...}
+//
 type StandardAppVersionLibraryInput interface {
 	pulumi.Input
 
@@ -7092,7 +7173,8 @@ func (i StandardAppVersionLibraryArgs) ToStandardAppVersionLibraryOutputWithCont
 // StandardAppVersionLibraryArrayInput is an input type that accepts StandardAppVersionLibraryArray and StandardAppVersionLibraryArrayOutput values.
 // You can construct a concrete instance of `StandardAppVersionLibraryArrayInput` via:
 //
-//          StandardAppVersionLibraryArray{ StandardAppVersionLibraryArgs{...} }
+// 		 StandardAppVersionLibraryArray{ StandardAppVersionLibraryArgs{...} }
+//
 type StandardAppVersionLibraryArrayInput interface {
 	pulumi.Input
 
@@ -7168,7 +7250,8 @@ type StandardAppVersionManualScaling struct {
 // StandardAppVersionManualScalingInput is an input type that accepts StandardAppVersionManualScalingArgs and StandardAppVersionManualScalingOutput values.
 // You can construct a concrete instance of `StandardAppVersionManualScalingInput` via:
 //
-//          StandardAppVersionManualScalingArgs{...}
+// 		 StandardAppVersionManualScalingArgs{...}
+//
 type StandardAppVersionManualScalingInput interface {
 	pulumi.Input
 
@@ -7206,11 +7289,12 @@ func (i StandardAppVersionManualScalingArgs) ToStandardAppVersionManualScalingPt
 // StandardAppVersionManualScalingPtrInput is an input type that accepts StandardAppVersionManualScalingArgs, StandardAppVersionManualScalingPtr and StandardAppVersionManualScalingPtrOutput values.
 // You can construct a concrete instance of `StandardAppVersionManualScalingPtrInput` via:
 //
-//          StandardAppVersionManualScalingArgs{...}
+// 		 StandardAppVersionManualScalingArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type StandardAppVersionManualScalingPtrInput interface {
 	pulumi.Input
 

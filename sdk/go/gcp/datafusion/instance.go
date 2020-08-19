@@ -19,6 +19,66 @@ import (
 //     * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
 //
 // ## Example Usage
+//
+// ### Data Fusion Instance Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/datafusion"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		basicInstance, err := datafusion.NewInstance(ctx, "basicInstance", &datafusion.InstanceArgs{
+// 			Region: pulumi.String("us-central1"),
+// 			Type:   pulumi.String("BASIC"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ### Data Fusion Instance Full
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/datafusion"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		extendedInstance, err := datafusion.NewInstance(ctx, "extendedInstance", &datafusion.InstanceArgs{
+// 			Description:                 pulumi.String("My Data Fusion instance"),
+// 			EnableStackdriverLogging:    pulumi.Bool(true),
+// 			EnableStackdriverMonitoring: pulumi.Bool(true),
+// 			Labels: map[string]interface{}{
+// 				"example_key": "example_value",
+// 			},
+// 			NetworkConfig: &datafusion.InstanceNetworkConfigArgs{
+// 				IpAllocation: pulumi.String("10.89.48.0/22"),
+// 				Network:      pulumi.String("default"),
+// 			},
+// 			PrivateInstance: pulumi.Bool(true),
+// 			Region:          pulumi.String("us-central1"),
+// 			Type:            pulumi.String("BASIC"),
+// 			Version:         pulumi.String("6.1.1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Instance struct {
 	pulumi.CustomResourceState
 
@@ -62,11 +122,11 @@ type Instance struct {
 	// Represents the type of Data Fusion instance. Each type is configured with
 	// the default settings for processing and memory.
 	// - BASIC: Basic Data Fusion instance. In Basic type, the user will be able to create data pipelines
-	//   using point and click UI. However, there are certain limitations, such as fewer number
-	//   of concurrent pipelines, no support for streaming pipelines, etc.
+	// using point and click UI. However, there are certain limitations, such as fewer number
+	// of concurrent pipelines, no support for streaming pipelines, etc.
 	// - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
-	//   available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
-	//   Possible values are `BASIC` and `ENTERPRISE`.
+	// available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
+	// Possible values are `BASIC` and `ENTERPRISE`.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The time the instance was last updated in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -145,11 +205,11 @@ type instanceState struct {
 	// Represents the type of Data Fusion instance. Each type is configured with
 	// the default settings for processing and memory.
 	// - BASIC: Basic Data Fusion instance. In Basic type, the user will be able to create data pipelines
-	//   using point and click UI. However, there are certain limitations, such as fewer number
-	//   of concurrent pipelines, no support for streaming pipelines, etc.
+	// using point and click UI. However, there are certain limitations, such as fewer number
+	// of concurrent pipelines, no support for streaming pipelines, etc.
 	// - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
-	//   available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
-	//   Possible values are `BASIC` and `ENTERPRISE`.
+	// available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
+	// Possible values are `BASIC` and `ENTERPRISE`.
 	Type *string `pulumi:"type"`
 	// The time the instance was last updated in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -198,11 +258,11 @@ type InstanceState struct {
 	// Represents the type of Data Fusion instance. Each type is configured with
 	// the default settings for processing and memory.
 	// - BASIC: Basic Data Fusion instance. In Basic type, the user will be able to create data pipelines
-	//   using point and click UI. However, there are certain limitations, such as fewer number
-	//   of concurrent pipelines, no support for streaming pipelines, etc.
+	// using point and click UI. However, there are certain limitations, such as fewer number
+	// of concurrent pipelines, no support for streaming pipelines, etc.
 	// - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
-	//   available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
-	//   Possible values are `BASIC` and `ENTERPRISE`.
+	// available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
+	// Possible values are `BASIC` and `ENTERPRISE`.
 	Type pulumi.StringPtrInput
 	// The time the instance was last updated in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
 	UpdateTime pulumi.StringPtrInput
@@ -243,11 +303,11 @@ type instanceArgs struct {
 	// Represents the type of Data Fusion instance. Each type is configured with
 	// the default settings for processing and memory.
 	// - BASIC: Basic Data Fusion instance. In Basic type, the user will be able to create data pipelines
-	//   using point and click UI. However, there are certain limitations, such as fewer number
-	//   of concurrent pipelines, no support for streaming pipelines, etc.
+	// using point and click UI. However, there are certain limitations, such as fewer number
+	// of concurrent pipelines, no support for streaming pipelines, etc.
 	// - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
-	//   available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
-	//   Possible values are `BASIC` and `ENTERPRISE`.
+	// available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
+	// Possible values are `BASIC` and `ENTERPRISE`.
 	Type string `pulumi:"type"`
 	// Current version of the Data Fusion.
 	Version *string `pulumi:"version"`
@@ -283,11 +343,11 @@ type InstanceArgs struct {
 	// Represents the type of Data Fusion instance. Each type is configured with
 	// the default settings for processing and memory.
 	// - BASIC: Basic Data Fusion instance. In Basic type, the user will be able to create data pipelines
-	//   using point and click UI. However, there are certain limitations, such as fewer number
-	//   of concurrent pipelines, no support for streaming pipelines, etc.
+	// using point and click UI. However, there are certain limitations, such as fewer number
+	// of concurrent pipelines, no support for streaming pipelines, etc.
 	// - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
-	//   available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
-	//   Possible values are `BASIC` and `ENTERPRISE`.
+	// available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
+	// Possible values are `BASIC` and `ENTERPRISE`.
 	Type pulumi.StringInput
 	// Current version of the Data Fusion.
 	Version pulumi.StringPtrInput

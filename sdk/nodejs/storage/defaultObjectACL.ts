@@ -12,12 +12,30 @@ import * as utilities from "../utilities";
  * to the default ACL that has been defined.
  *
  * For more information see
- * [the official documentation](https://cloud.google.com/storage/docs/access-control/lists)
- * and
+ * [the official documentation](https://cloud.google.com/storage/docs/access-control/lists) 
+ * and 
  * [API](https://cloud.google.com/storage/docs/json_api/v1/defaultObjectAccessControls).
  *
  * > Want fine-grained control over default object ACLs? Use `gcp.storage.DefaultObjectAccessControl`
  * to control individual role entity pairs.
+ *
+ * ## Example Usage
+ *
+ *
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const image_store = new gcp.storage.Bucket("image-store", {location: "EU"});
+ * const image_store_default_acl = new gcp.storage.DefaultObjectACL("image-store-default-acl", {
+ *     bucket: image_store.name,
+ *     roleEntities: [
+ *         "OWNER:user-my.email@gmail.com",
+ *         "READER:group-mygroup",
+ *     ],
+ * });
+ * ```
  */
 export class DefaultObjectACL extends pulumi.CustomResource {
     /**

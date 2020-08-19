@@ -13,6 +13,63 @@ namespace Pulumi.Gcp.Compute
     /// A Security Policy defines an IP blacklist or whitelist that protects load balanced Google Cloud services by denying or permitting traffic from specified IP ranges. For more information
     /// see the [official documentation](https://cloud.google.com/armor/docs/configure-security-policies)
     /// and the [API](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var policy = new Gcp.Compute.SecurityPolicy("policy", new Gcp.Compute.SecurityPolicyArgs
+    ///         {
+    ///             Rules = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.SecurityPolicyRuleArgs
+    ///                 {
+    ///                     Action = "deny(403)",
+    ///                     Description = "Deny access to IPs in 9.9.9.0/24",
+    ///                     Match = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchArgs
+    ///                     {
+    ///                         Config = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchConfigArgs
+    ///                         {
+    ///                             SrcIpRanges = 
+    ///                             {
+    ///                                 "9.9.9.0/24",
+    ///                             },
+    ///                         },
+    ///                         VersionedExpr = "SRC_IPS_V1",
+    ///                     },
+    ///                     Priority = 1000,
+    ///                 },
+    ///                 new Gcp.Compute.Inputs.SecurityPolicyRuleArgs
+    ///                 {
+    ///                     Action = "allow",
+    ///                     Description = "default rule",
+    ///                     Match = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchArgs
+    ///                     {
+    ///                         Config = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchConfigArgs
+    ///                         {
+    ///                             SrcIpRanges = 
+    ///                             {
+    ///                                 "*",
+    ///                             },
+    ///                         },
+    ///                         VersionedExpr = "SRC_IPS_V1",
+    ///                     },
+    ///                     Priority = 2147483647,
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class SecurityPolicy : Pulumi.CustomResource
     {

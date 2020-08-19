@@ -16,6 +16,7 @@ namespace Pulumi.Gcp.Compute
     /// instance config isn't preferable or possible, such as attaching dynamic
     /// numbers of disks using the `count` variable.
     /// 
+    /// 
     /// To get more information about attaching disks, see:
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instances/attachDisk)

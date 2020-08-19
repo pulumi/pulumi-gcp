@@ -35,7 +35,8 @@ type SubscriptionDeadLetterPolicy struct {
 // SubscriptionDeadLetterPolicyInput is an input type that accepts SubscriptionDeadLetterPolicyArgs and SubscriptionDeadLetterPolicyOutput values.
 // You can construct a concrete instance of `SubscriptionDeadLetterPolicyInput` via:
 //
-//          SubscriptionDeadLetterPolicyArgs{...}
+// 		 SubscriptionDeadLetterPolicyArgs{...}
+//
 type SubscriptionDeadLetterPolicyInput interface {
 	pulumi.Input
 
@@ -88,11 +89,12 @@ func (i SubscriptionDeadLetterPolicyArgs) ToSubscriptionDeadLetterPolicyPtrOutpu
 // SubscriptionDeadLetterPolicyPtrInput is an input type that accepts SubscriptionDeadLetterPolicyArgs, SubscriptionDeadLetterPolicyPtr and SubscriptionDeadLetterPolicyPtrOutput values.
 // You can construct a concrete instance of `SubscriptionDeadLetterPolicyPtrInput` via:
 //
-//          SubscriptionDeadLetterPolicyArgs{...}
+// 		 SubscriptionDeadLetterPolicyArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type SubscriptionDeadLetterPolicyPtrInput interface {
 	pulumi.Input
 
@@ -232,7 +234,8 @@ type SubscriptionExpirationPolicy struct {
 // SubscriptionExpirationPolicyInput is an input type that accepts SubscriptionExpirationPolicyArgs and SubscriptionExpirationPolicyOutput values.
 // You can construct a concrete instance of `SubscriptionExpirationPolicyInput` via:
 //
-//          SubscriptionExpirationPolicyArgs{...}
+// 		 SubscriptionExpirationPolicyArgs{...}
+//
 type SubscriptionExpirationPolicyInput interface {
 	pulumi.Input
 
@@ -272,11 +275,12 @@ func (i SubscriptionExpirationPolicyArgs) ToSubscriptionExpirationPolicyPtrOutpu
 // SubscriptionExpirationPolicyPtrInput is an input type that accepts SubscriptionExpirationPolicyArgs, SubscriptionExpirationPolicyPtr and SubscriptionExpirationPolicyPtrOutput values.
 // You can construct a concrete instance of `SubscriptionExpirationPolicyPtrInput` via:
 //
-//          SubscriptionExpirationPolicyArgs{...}
+// 		 SubscriptionExpirationPolicyArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type SubscriptionExpirationPolicyPtrInput interface {
 	pulumi.Input
 
@@ -376,7 +380,8 @@ type SubscriptionIAMBindingCondition struct {
 // SubscriptionIAMBindingConditionInput is an input type that accepts SubscriptionIAMBindingConditionArgs and SubscriptionIAMBindingConditionOutput values.
 // You can construct a concrete instance of `SubscriptionIAMBindingConditionInput` via:
 //
-//          SubscriptionIAMBindingConditionArgs{...}
+// 		 SubscriptionIAMBindingConditionArgs{...}
+//
 type SubscriptionIAMBindingConditionInput interface {
 	pulumi.Input
 
@@ -413,11 +418,12 @@ func (i SubscriptionIAMBindingConditionArgs) ToSubscriptionIAMBindingConditionPt
 // SubscriptionIAMBindingConditionPtrInput is an input type that accepts SubscriptionIAMBindingConditionArgs, SubscriptionIAMBindingConditionPtr and SubscriptionIAMBindingConditionPtrOutput values.
 // You can construct a concrete instance of `SubscriptionIAMBindingConditionPtrInput` via:
 //
-//          SubscriptionIAMBindingConditionArgs{...}
+// 		 SubscriptionIAMBindingConditionArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type SubscriptionIAMBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -532,7 +538,8 @@ type SubscriptionIAMMemberCondition struct {
 // SubscriptionIAMMemberConditionInput is an input type that accepts SubscriptionIAMMemberConditionArgs and SubscriptionIAMMemberConditionOutput values.
 // You can construct a concrete instance of `SubscriptionIAMMemberConditionInput` via:
 //
-//          SubscriptionIAMMemberConditionArgs{...}
+// 		 SubscriptionIAMMemberConditionArgs{...}
+//
 type SubscriptionIAMMemberConditionInput interface {
 	pulumi.Input
 
@@ -569,11 +576,12 @@ func (i SubscriptionIAMMemberConditionArgs) ToSubscriptionIAMMemberConditionPtrO
 // SubscriptionIAMMemberConditionPtrInput is an input type that accepts SubscriptionIAMMemberConditionArgs, SubscriptionIAMMemberConditionPtr and SubscriptionIAMMemberConditionPtrOutput values.
 // You can construct a concrete instance of `SubscriptionIAMMemberConditionPtrInput` via:
 //
-//          SubscriptionIAMMemberConditionArgs{...}
+// 		 SubscriptionIAMMemberConditionArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type SubscriptionIAMMemberConditionPtrInput interface {
 	pulumi.Input
 
@@ -712,7 +720,8 @@ type SubscriptionPushConfig struct {
 // SubscriptionPushConfigInput is an input type that accepts SubscriptionPushConfigArgs and SubscriptionPushConfigOutput values.
 // You can construct a concrete instance of `SubscriptionPushConfigInput` via:
 //
-//          SubscriptionPushConfigArgs{...}
+// 		 SubscriptionPushConfigArgs{...}
+//
 type SubscriptionPushConfigInput interface {
 	pulumi.Input
 
@@ -773,11 +782,12 @@ func (i SubscriptionPushConfigArgs) ToSubscriptionPushConfigPtrOutputWithContext
 // SubscriptionPushConfigPtrInput is an input type that accepts SubscriptionPushConfigArgs, SubscriptionPushConfigPtr and SubscriptionPushConfigPtrOutput values.
 // You can construct a concrete instance of `SubscriptionPushConfigPtrInput` via:
 //
-//          SubscriptionPushConfigArgs{...}
+// 		 SubscriptionPushConfigArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type SubscriptionPushConfigPtrInput interface {
 	pulumi.Input
 
@@ -950,7 +960,8 @@ type SubscriptionPushConfigOidcToken struct {
 // SubscriptionPushConfigOidcTokenInput is an input type that accepts SubscriptionPushConfigOidcTokenArgs and SubscriptionPushConfigOidcTokenOutput values.
 // You can construct a concrete instance of `SubscriptionPushConfigOidcTokenInput` via:
 //
-//          SubscriptionPushConfigOidcTokenArgs{...}
+// 		 SubscriptionPushConfigOidcTokenArgs{...}
+//
 type SubscriptionPushConfigOidcTokenInput interface {
 	pulumi.Input
 
@@ -996,11 +1007,12 @@ func (i SubscriptionPushConfigOidcTokenArgs) ToSubscriptionPushConfigOidcTokenPt
 // SubscriptionPushConfigOidcTokenPtrInput is an input type that accepts SubscriptionPushConfigOidcTokenArgs, SubscriptionPushConfigOidcTokenPtr and SubscriptionPushConfigOidcTokenPtrOutput values.
 // You can construct a concrete instance of `SubscriptionPushConfigOidcTokenPtrInput` via:
 //
-//          SubscriptionPushConfigOidcTokenArgs{...}
+// 		 SubscriptionPushConfigOidcTokenArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type SubscriptionPushConfigOidcTokenPtrInput interface {
 	pulumi.Input
 
@@ -1123,7 +1135,8 @@ type TopicIAMBindingCondition struct {
 // TopicIAMBindingConditionInput is an input type that accepts TopicIAMBindingConditionArgs and TopicIAMBindingConditionOutput values.
 // You can construct a concrete instance of `TopicIAMBindingConditionInput` via:
 //
-//          TopicIAMBindingConditionArgs{...}
+// 		 TopicIAMBindingConditionArgs{...}
+//
 type TopicIAMBindingConditionInput interface {
 	pulumi.Input
 
@@ -1160,11 +1173,12 @@ func (i TopicIAMBindingConditionArgs) ToTopicIAMBindingConditionPtrOutputWithCon
 // TopicIAMBindingConditionPtrInput is an input type that accepts TopicIAMBindingConditionArgs, TopicIAMBindingConditionPtr and TopicIAMBindingConditionPtrOutput values.
 // You can construct a concrete instance of `TopicIAMBindingConditionPtrInput` via:
 //
-//          TopicIAMBindingConditionArgs{...}
+// 		 TopicIAMBindingConditionArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type TopicIAMBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -1279,7 +1293,8 @@ type TopicIAMMemberCondition struct {
 // TopicIAMMemberConditionInput is an input type that accepts TopicIAMMemberConditionArgs and TopicIAMMemberConditionOutput values.
 // You can construct a concrete instance of `TopicIAMMemberConditionInput` via:
 //
-//          TopicIAMMemberConditionArgs{...}
+// 		 TopicIAMMemberConditionArgs{...}
+//
 type TopicIAMMemberConditionInput interface {
 	pulumi.Input
 
@@ -1316,11 +1331,12 @@ func (i TopicIAMMemberConditionArgs) ToTopicIAMMemberConditionPtrOutputWithConte
 // TopicIAMMemberConditionPtrInput is an input type that accepts TopicIAMMemberConditionArgs, TopicIAMMemberConditionPtr and TopicIAMMemberConditionPtrOutput values.
 // You can construct a concrete instance of `TopicIAMMemberConditionPtrInput` via:
 //
-//          TopicIAMMemberConditionArgs{...}
+// 		 TopicIAMMemberConditionArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type TopicIAMMemberConditionPtrInput interface {
 	pulumi.Input
 
@@ -1439,7 +1455,8 @@ type TopicMessageStoragePolicy struct {
 // TopicMessageStoragePolicyInput is an input type that accepts TopicMessageStoragePolicyArgs and TopicMessageStoragePolicyOutput values.
 // You can construct a concrete instance of `TopicMessageStoragePolicyInput` via:
 //
-//          TopicMessageStoragePolicyArgs{...}
+// 		 TopicMessageStoragePolicyArgs{...}
+//
 type TopicMessageStoragePolicyInput interface {
 	pulumi.Input
 
@@ -1480,11 +1497,12 @@ func (i TopicMessageStoragePolicyArgs) ToTopicMessageStoragePolicyPtrOutputWithC
 // TopicMessageStoragePolicyPtrInput is an input type that accepts TopicMessageStoragePolicyArgs, TopicMessageStoragePolicyPtr and TopicMessageStoragePolicyPtrOutput values.
 // You can construct a concrete instance of `TopicMessageStoragePolicyPtrInput` via:
 //
-//          TopicMessageStoragePolicyArgs{...}
+// 		 TopicMessageStoragePolicyArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type TopicMessageStoragePolicyPtrInput interface {
 	pulumi.Input
 

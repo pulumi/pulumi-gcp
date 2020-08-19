@@ -30,7 +30,8 @@ type EnvironmentConfig struct {
 // EnvironmentConfigInput is an input type that accepts EnvironmentConfigArgs and EnvironmentConfigOutput values.
 // You can construct a concrete instance of `EnvironmentConfigInput` via:
 //
-//          EnvironmentConfigArgs{...}
+// 		 EnvironmentConfigArgs{...}
+//
 type EnvironmentConfigInput interface {
 	pulumi.Input
 
@@ -78,11 +79,12 @@ func (i EnvironmentConfigArgs) ToEnvironmentConfigPtrOutputWithContext(ctx conte
 // EnvironmentConfigPtrInput is an input type that accepts EnvironmentConfigArgs, EnvironmentConfigPtr and EnvironmentConfigPtrOutput values.
 // You can construct a concrete instance of `EnvironmentConfigPtrInput` via:
 //
-//          EnvironmentConfigArgs{...}
+// 		 EnvironmentConfigArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type EnvironmentConfigPtrInput interface {
 	pulumi.Input
 
@@ -316,7 +318,8 @@ type EnvironmentConfigNodeConfig struct {
 // EnvironmentConfigNodeConfigInput is an input type that accepts EnvironmentConfigNodeConfigArgs and EnvironmentConfigNodeConfigOutput values.
 // You can construct a concrete instance of `EnvironmentConfigNodeConfigInput` via:
 //
-//          EnvironmentConfigNodeConfigArgs{...}
+// 		 EnvironmentConfigNodeConfigArgs{...}
+//
 type EnvironmentConfigNodeConfigInput interface {
 	pulumi.Input
 
@@ -391,11 +394,12 @@ func (i EnvironmentConfigNodeConfigArgs) ToEnvironmentConfigNodeConfigPtrOutputW
 // EnvironmentConfigNodeConfigPtrInput is an input type that accepts EnvironmentConfigNodeConfigArgs, EnvironmentConfigNodeConfigPtr and EnvironmentConfigNodeConfigPtrOutput values.
 // You can construct a concrete instance of `EnvironmentConfigNodeConfigPtrInput` via:
 //
-//          EnvironmentConfigNodeConfigArgs{...}
+// 		 EnvironmentConfigNodeConfigArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type EnvironmentConfigNodeConfigPtrInput interface {
 	pulumi.Input
 
@@ -677,7 +681,8 @@ type EnvironmentConfigNodeConfigIpAllocationPolicy struct {
 // EnvironmentConfigNodeConfigIpAllocationPolicyInput is an input type that accepts EnvironmentConfigNodeConfigIpAllocationPolicyArgs and EnvironmentConfigNodeConfigIpAllocationPolicyOutput values.
 // You can construct a concrete instance of `EnvironmentConfigNodeConfigIpAllocationPolicyInput` via:
 //
-//          EnvironmentConfigNodeConfigIpAllocationPolicyArgs{...}
+// 		 EnvironmentConfigNodeConfigIpAllocationPolicyArgs{...}
+//
 type EnvironmentConfigNodeConfigIpAllocationPolicyInput interface {
 	pulumi.Input
 
@@ -736,11 +741,12 @@ func (i EnvironmentConfigNodeConfigIpAllocationPolicyArgs) ToEnvironmentConfigNo
 // EnvironmentConfigNodeConfigIpAllocationPolicyPtrInput is an input type that accepts EnvironmentConfigNodeConfigIpAllocationPolicyArgs, EnvironmentConfigNodeConfigIpAllocationPolicyPtr and EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput values.
 // You can construct a concrete instance of `EnvironmentConfigNodeConfigIpAllocationPolicyPtrInput` via:
 //
-//          EnvironmentConfigNodeConfigIpAllocationPolicyArgs{...}
+// 		 EnvironmentConfigNodeConfigIpAllocationPolicyArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type EnvironmentConfigNodeConfigIpAllocationPolicyPtrInput interface {
 	pulumi.Input
 
@@ -934,7 +940,8 @@ type EnvironmentConfigPrivateEnvironmentConfig struct {
 // EnvironmentConfigPrivateEnvironmentConfigInput is an input type that accepts EnvironmentConfigPrivateEnvironmentConfigArgs and EnvironmentConfigPrivateEnvironmentConfigOutput values.
 // You can construct a concrete instance of `EnvironmentConfigPrivateEnvironmentConfigInput` via:
 //
-//          EnvironmentConfigPrivateEnvironmentConfigArgs{...}
+// 		 EnvironmentConfigPrivateEnvironmentConfigArgs{...}
+//
 type EnvironmentConfigPrivateEnvironmentConfigInput interface {
 	pulumi.Input
 
@@ -981,11 +988,12 @@ func (i EnvironmentConfigPrivateEnvironmentConfigArgs) ToEnvironmentConfigPrivat
 // EnvironmentConfigPrivateEnvironmentConfigPtrInput is an input type that accepts EnvironmentConfigPrivateEnvironmentConfigArgs, EnvironmentConfigPrivateEnvironmentConfigPtr and EnvironmentConfigPrivateEnvironmentConfigPtrOutput values.
 // You can construct a concrete instance of `EnvironmentConfigPrivateEnvironmentConfigPtrInput` via:
 //
-//          EnvironmentConfigPrivateEnvironmentConfigArgs{...}
+// 		 EnvironmentConfigPrivateEnvironmentConfigArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type EnvironmentConfigPrivateEnvironmentConfigPtrInput interface {
 	pulumi.Input
 
@@ -1171,7 +1179,8 @@ type EnvironmentConfigSoftwareConfig struct {
 // EnvironmentConfigSoftwareConfigInput is an input type that accepts EnvironmentConfigSoftwareConfigArgs and EnvironmentConfigSoftwareConfigOutput values.
 // You can construct a concrete instance of `EnvironmentConfigSoftwareConfigInput` via:
 //
-//          EnvironmentConfigSoftwareConfigArgs{...}
+// 		 EnvironmentConfigSoftwareConfigArgs{...}
+//
 type EnvironmentConfigSoftwareConfigInput interface {
 	pulumi.Input
 
@@ -1245,11 +1254,12 @@ func (i EnvironmentConfigSoftwareConfigArgs) ToEnvironmentConfigSoftwareConfigPt
 // EnvironmentConfigSoftwareConfigPtrInput is an input type that accepts EnvironmentConfigSoftwareConfigArgs, EnvironmentConfigSoftwareConfigPtr and EnvironmentConfigSoftwareConfigPtrOutput values.
 // You can construct a concrete instance of `EnvironmentConfigSoftwareConfigPtrInput` via:
 //
-//          EnvironmentConfigSoftwareConfigArgs{...}
+// 		 EnvironmentConfigSoftwareConfigArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type EnvironmentConfigSoftwareConfigPtrInput interface {
 	pulumi.Input
 
@@ -1461,7 +1471,8 @@ type EnvironmentConfigWebServerNetworkAccessControl struct {
 // EnvironmentConfigWebServerNetworkAccessControlInput is an input type that accepts EnvironmentConfigWebServerNetworkAccessControlArgs and EnvironmentConfigWebServerNetworkAccessControlOutput values.
 // You can construct a concrete instance of `EnvironmentConfigWebServerNetworkAccessControlInput` via:
 //
-//          EnvironmentConfigWebServerNetworkAccessControlArgs{...}
+// 		 EnvironmentConfigWebServerNetworkAccessControlArgs{...}
+//
 type EnvironmentConfigWebServerNetworkAccessControlInput interface {
 	pulumi.Input
 
@@ -1498,11 +1509,12 @@ func (i EnvironmentConfigWebServerNetworkAccessControlArgs) ToEnvironmentConfigW
 // EnvironmentConfigWebServerNetworkAccessControlPtrInput is an input type that accepts EnvironmentConfigWebServerNetworkAccessControlArgs, EnvironmentConfigWebServerNetworkAccessControlPtr and EnvironmentConfigWebServerNetworkAccessControlPtrOutput values.
 // You can construct a concrete instance of `EnvironmentConfigWebServerNetworkAccessControlPtrInput` via:
 //
-//          EnvironmentConfigWebServerNetworkAccessControlArgs{...}
+// 		 EnvironmentConfigWebServerNetworkAccessControlArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type EnvironmentConfigWebServerNetworkAccessControlPtrInput interface {
 	pulumi.Input
 
@@ -1604,7 +1616,8 @@ type EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange struct {
 // EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeInput is an input type that accepts EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs and EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput values.
 // You can construct a concrete instance of `EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeInput` via:
 //
-//          EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs{...}
+// 		 EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs{...}
+//
 type EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeInput interface {
 	pulumi.Input
 
@@ -1637,7 +1650,8 @@ func (i EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs) ToEnvi
 // EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayInput is an input type that accepts EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArray and EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput values.
 // You can construct a concrete instance of `EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayInput` via:
 //
-//          EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArray{ EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs{...} }
+// 		 EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArray{ EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs{...} }
+//
 type EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayInput interface {
 	pulumi.Input
 
@@ -1716,7 +1730,8 @@ type GetImageVersionsImageVersion struct {
 // GetImageVersionsImageVersionInput is an input type that accepts GetImageVersionsImageVersionArgs and GetImageVersionsImageVersionOutput values.
 // You can construct a concrete instance of `GetImageVersionsImageVersionInput` via:
 //
-//          GetImageVersionsImageVersionArgs{...}
+// 		 GetImageVersionsImageVersionArgs{...}
+//
 type GetImageVersionsImageVersionInput interface {
 	pulumi.Input
 
@@ -1746,7 +1761,8 @@ func (i GetImageVersionsImageVersionArgs) ToGetImageVersionsImageVersionOutputWi
 // GetImageVersionsImageVersionArrayInput is an input type that accepts GetImageVersionsImageVersionArray and GetImageVersionsImageVersionArrayOutput values.
 // You can construct a concrete instance of `GetImageVersionsImageVersionArrayInput` via:
 //
-//          GetImageVersionsImageVersionArray{ GetImageVersionsImageVersionArgs{...} }
+// 		 GetImageVersionsImageVersionArray{ GetImageVersionsImageVersionArgs{...} }
+//
 type GetImageVersionsImageVersionArrayInput interface {
 	pulumi.Input
 

@@ -18,7 +18,8 @@ type Batching struct {
 // BatchingInput is an input type that accepts BatchingArgs and BatchingOutput values.
 // You can construct a concrete instance of `BatchingInput` via:
 //
-//          BatchingArgs{...}
+// 		 BatchingArgs{...}
+//
 type BatchingInput interface {
 	pulumi.Input
 

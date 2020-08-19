@@ -26,7 +26,8 @@ type GetTestablePermissionsPermission struct {
 // GetTestablePermissionsPermissionInput is an input type that accepts GetTestablePermissionsPermissionArgs and GetTestablePermissionsPermissionOutput values.
 // You can construct a concrete instance of `GetTestablePermissionsPermissionInput` via:
 //
-//          GetTestablePermissionsPermissionArgs{...}
+// 		 GetTestablePermissionsPermissionArgs{...}
+//
 type GetTestablePermissionsPermissionInput interface {
 	pulumi.Input
 
@@ -62,7 +63,8 @@ func (i GetTestablePermissionsPermissionArgs) ToGetTestablePermissionsPermission
 // GetTestablePermissionsPermissionArrayInput is an input type that accepts GetTestablePermissionsPermissionArray and GetTestablePermissionsPermissionArrayOutput values.
 // You can construct a concrete instance of `GetTestablePermissionsPermissionArrayInput` via:
 //
-//          GetTestablePermissionsPermissionArray{ GetTestablePermissionsPermissionArgs{...} }
+// 		 GetTestablePermissionsPermissionArray{ GetTestablePermissionsPermissionArgs{...} }
+//
 type GetTestablePermissionsPermissionArrayInput interface {
 	pulumi.Input
 

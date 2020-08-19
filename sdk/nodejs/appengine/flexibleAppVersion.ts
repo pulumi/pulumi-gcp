@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  * > **Note:** The App Engine flexible environment service account uses the member ID `service-[YOUR_PROJECT_NUMBER]@gae-api-prod.google.com.iam.gserviceaccount.com`
  * It should have the App Engine Flexible Environment Service Agent role, which will be applied when the `appengineflex.googleapis.com` service is enabled.
  *
+ *
  * To get more information about FlexibleAppVersion, see:
  *
  * * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions)
@@ -22,6 +23,78 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/appengine/docs/flexible)
  *
  * ## Example Usage
+ *
+ * ### App Engine Flexible App Version
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myProject = new gcp.organizations.Project("myProject", {
+ *     projectId: "appeng-flex",
+ *     orgId: "123456789",
+ *     billingAccount: "000000-0000000-0000000-000000",
+ * });
+ * const app = new gcp.appengine.Application("app", {
+ *     project: myProject.projectId,
+ *     locationId: "us-central",
+ * });
+ * const service = new gcp.projects.Service("service", {
+ *     project: myProject.projectId,
+ *     service: "appengineflex.googleapis.com",
+ *     disableDependentServices: false,
+ * });
+ * const gaeApi = new gcp.projects.IAMMember("gaeApi", {
+ *     project: service.project,
+ *     role: "roles/compute.networkUser",
+ *     member: pulumi.interpolate`serviceAccount:service-${myProject.number}@gae-api-prod.google.com.iam.gserviceaccount.com`,
+ * });
+ * const bucket = new gcp.storage.Bucket("bucket", {project: myProject.projectId});
+ * const object = new gcp.storage.BucketObject("object", {
+ *     bucket: bucket.name,
+ *     source: new pulumi.asset.FileAsset("./test-fixtures/appengine/hello-world.zip"),
+ * });
+ * const myappV1 = new gcp.appengine.FlexibleAppVersion("myappV1", {
+ *     versionId: "v1",
+ *     project: gaeApi.project,
+ *     service: "default",
+ *     runtime: "nodejs",
+ *     entrypoint: {
+ *         shell: "node ./app.js",
+ *     },
+ *     deployment: {
+ *         zip: {
+ *             sourceUrl: pulumi.interpolate`https://storage.googleapis.com/${bucket.name}/${object.name}`,
+ *         },
+ *     },
+ *     liveness_check: {
+ *         path: "/",
+ *     },
+ *     readiness_check: {
+ *         path: "/",
+ *     },
+ *     envVariables: {
+ *         port: "8080",
+ *     },
+ *     handlers: [{
+ *         urlRegex: ".*\\/my-path\\/*",
+ *         securityLevel: "SECURE_ALWAYS",
+ *         login: "LOGIN_REQUIRED",
+ *         authFailAction: "AUTH_FAIL_ACTION_REDIRECT",
+ *         static_files: {
+ *             path: "my-other-path",
+ *             uploadPathRegex: ".*\\/my-path\\/*",
+ *         },
+ *     }],
+ *     automatic_scaling: {
+ *         coolDownPeriod: "120s",
+ *         cpu_utilization: {
+ *             targetUtilization: 0.5,
+ *         },
+ *     },
+ *     noopOnDestroy: true,
+ * });
+ * ```
  */
 export class FlexibleAppVersion extends pulumi.CustomResource {
     /**

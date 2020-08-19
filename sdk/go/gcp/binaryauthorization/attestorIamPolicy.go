@@ -19,6 +19,100 @@ import (
 // > **Note:** `binaryauthorization.AttestorIamPolicy` **cannot** be used in conjunction with `binaryauthorization.AttestorIamBinding` and `binaryauthorization.AttestorIamMember` or they will fight over what your policy should be.
 //
 // > **Note:** `binaryauthorization.AttestorIamBinding` resources **can be** used in conjunction with `binaryauthorization.AttestorIamMember` resources **only if** they do not grant privilege to the same role.
+//
+//
+//
+// ## google\_binary\_authorization\_attestor\_iam\_policy
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/binaryauthorization"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+// 			Binding: []map[string]interface{}{
+// 				map[string]interface{}{
+// 					"role": "roles/viewer",
+// 					"members": []string{
+// 						"user:jane@example.com",
+// 					},
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		policy, err := binaryauthorization.NewAttestorIamPolicy(ctx, "policy", &binaryauthorization.AttestorIamPolicyArgs{
+// 			Project:    pulumi.String(google_binary_authorization_attestor.Attestor.Project),
+// 			Attestor:   pulumi.String(google_binary_authorization_attestor.Attestor.Name),
+// 			PolicyData: pulumi.String(admin.PolicyData),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## google\_binary\_authorization\_attestor\_iam\_binding
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/binaryauthorization"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		binding, err := binaryauthorization.NewAttestorIamBinding(ctx, "binding", &binaryauthorization.AttestorIamBindingArgs{
+// 			Project:  pulumi.String(google_binary_authorization_attestor.Attestor.Project),
+// 			Attestor: pulumi.String(google_binary_authorization_attestor.Attestor.Name),
+// 			Role:     pulumi.String("roles/viewer"),
+// 			Members: pulumi.StringArray{
+// 				pulumi.String("user:jane@example.com"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## google\_binary\_authorization\_attestor\_iam\_member
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/binaryauthorization"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		member, err := binaryauthorization.NewAttestorIamMember(ctx, "member", &binaryauthorization.AttestorIamMemberArgs{
+// 			Project:  pulumi.String(google_binary_authorization_attestor.Attestor.Project),
+// 			Attestor: pulumi.String(google_binary_authorization_attestor.Attestor.Name),
+// 			Role:     pulumi.String("roles/viewer"),
+// 			Member:   pulumi.String("user:jane@example.com"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type AttestorIamPolicy struct {
 	pulumi.CustomResourceState
 

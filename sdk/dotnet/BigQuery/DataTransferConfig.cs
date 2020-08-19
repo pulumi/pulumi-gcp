@@ -13,6 +13,7 @@ namespace Pulumi.Gcp.BigQuery
     /// Represents a data transfer configuration. A transfer configuration
     /// contains all metadata needed to perform a data transfer.
     /// 
+    /// 
     /// To get more information about Config, see:
     /// 
     /// * [API documentation](https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.locations.transferConfigs/create)
@@ -20,6 +21,48 @@ namespace Pulumi.Gcp.BigQuery
     ///     * [Official Documentation](https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/)
     /// 
     /// ## Example Usage
+    /// 
+    /// ### Bigquerydatatransfer Config Scheduled Query
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var project = Output.Create(Gcp.Organizations.GetProject.InvokeAsync());
+    ///         var permissions = new Gcp.Projects.IAMMember("permissions", new Gcp.Projects.IAMMemberArgs
+    ///         {
+    ///             Role = "roles/iam.serviceAccountShortTermTokenMinter",
+    ///             Member = project.Apply(project =&gt; $"serviceAccount:service-{project.Number}@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com"),
+    ///         });
+    ///         var myDataset = new Gcp.BigQuery.Dataset("myDataset", new Gcp.BigQuery.DatasetArgs
+    ///         {
+    ///             DatasetId = "my_dataset",
+    ///             FriendlyName = "foo",
+    ///             Description = "bar",
+    ///             Location = "asia-northeast1",
+    ///         });
+    ///         var queryConfig = new Gcp.BigQuery.DataTransferConfig("queryConfig", new Gcp.BigQuery.DataTransferConfigArgs
+    ///         {
+    ///             DisplayName = "my-query",
+    ///             Location = "asia-northeast1",
+    ///             DataSourceId = "scheduled_query",
+    ///             Schedule = "first sunday of quarter 00:00",
+    ///             DestinationDatasetId = myDataset.DatasetId,
+    ///             Params = 
+    ///             {
+    ///                 { "destination_table_name_template", "my_table" },
+    ///                 { "write_disposition", "WRITE_APPEND" },
+    ///                 { "query", "SELECT name FROM tabl WHERE x = 'y'" },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class DataTransferConfig : Pulumi.CustomResource
     {

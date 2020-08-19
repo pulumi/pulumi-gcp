@@ -18,8 +18,6 @@ namespace Pulumi.Gcp.Compute
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionTargetHttpProxies)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
-    /// 
-    /// ## Example Usage
     /// </summary>
     public partial class RegionTargetHttpProxy : Pulumi.CustomResource
     {

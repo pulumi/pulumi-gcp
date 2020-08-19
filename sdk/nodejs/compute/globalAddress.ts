@@ -8,6 +8,7 @@ import * as utilities from "../utilities";
  * Represents a Global Address resource. Global addresses are used for
  * HTTP(S) load balancing.
  *
+ *
  * To get more information about GlobalAddress, see:
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/globalAddresses)
@@ -15,6 +16,15 @@ import * as utilities from "../utilities";
  *     * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address)
  *
  * ## Example Usage
+ *
+ * ### Global Address Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultGlobalAddress = new gcp.compute.GlobalAddress("default", {});
+ * ```
  */
 export class GlobalAddress extends pulumi.CustomResource {
     /**

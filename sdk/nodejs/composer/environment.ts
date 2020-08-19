@@ -20,17 +20,88 @@ import * as utilities from "../utilities";
  * * [Apache Airflow Documentation](http://airflow.apache.org/)
  *
  * > **Warning:** We **STRONGLY** recommend  you read the [GCP guides](https://cloud.google.com/composer/docs/how-to)
- *   as the Environment resource requires a long deployment process and involves several layers of GCP infrastructure,
+ *   as the Environment resource requires a long deployment process and involves several layers of GCP infrastructure, 
  *   including a Kubernetes Engine cluster, Cloud Storage, and Compute networking resources. Due to limitations of the API,
  *   This provider will not be able to automatically find or manage many of these underlying resources. In particular:
- *   * It can take up to one hour to create or update an environment resource. In addition, GCP may only detect some
+ *   * It can take up to one hour to create or update an environment resource. In addition, GCP may only detect some 
  *     errors in configuration when they are used (e.g. ~40-50 minutes into the creation process), and is prone to limited
- *     error reporting. If you encounter confusing or uninformative errors, please verify your configuration is valid
- *     against GCP Cloud Composer before filing bugs against this provider.
- *   * **Environments create Google Cloud Storage buckets that do not get cleaned up automatically** on environment
+ *     error reporting. If you encounter confusing or uninformative errors, please verify your configuration is valid 
+ *     against GCP Cloud Composer before filing bugs against this provider. 
+ *   * **Environments create Google Cloud Storage buckets that do not get cleaned up automatically** on environment 
  *     deletion. [More about Composer's use of Cloud Storage](https://cloud.google.com/composer/docs/concepts/cloud-storage).
  *
  * ## Example Usage
+ *
+ * ### Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const test = new gcp.composer.Environment("test", {
+ *     region: "us-central1",
+ * });
+ * ```
+ *
+ * ### With GKE and Compute Resource Dependencies
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const testNetwork = new gcp.compute.Network("testNetwork", {autoCreateSubnetworks: false});
+ * const testSubnetwork = new gcp.compute.Subnetwork("testSubnetwork", {
+ *     ipCidrRange: "10.2.0.0/16",
+ *     region: "us-central1",
+ *     network: testNetwork.id,
+ * });
+ * const testAccount = new gcp.serviceAccount.Account("testAccount", {
+ *     accountId: "composer-env-account",
+ *     displayName: "Test Service Account for Composer Environment",
+ * });
+ * const composer_worker = new gcp.projects.IAMMember("composer-worker", {
+ *     role: "roles/composer.worker",
+ *     member: pulumi.interpolate`serviceAccount:${testAccount.email}`,
+ * });
+ * const testEnvironment = new gcp.composer.Environment("testEnvironment", {
+ *     region: "us-central1",
+ *     config: {
+ *         nodeCount: 4,
+ *         node_config: {
+ *             zone: "us-central1-a",
+ *             machineType: "n1-standard-1",
+ *             network: testNetwork.id,
+ *             subnetwork: testSubnetwork.id,
+ *             serviceAccount: testAccount.name,
+ *         },
+ *     },
+ * });
+ * ```
+ *
+ * ### With Software (Airflow) Config
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const test = new gcp.composer.Environment("test", {
+ *     config: {
+ *         softwareConfig: {
+ *             airflowConfigOverrides: {
+ *                 "core-load_example": "True",
+ *             },
+ *             envVariables: {
+ *                 FOO: "bar",
+ *             },
+ *             pypiPackages: {
+ *                 numpy: "",
+ *                 scipy: "==1.1.0",
+ *             },
+ *         },
+ *     },
+ *     region: "us-central1",
+ * });
+ * ```
  */
 export class Environment extends pulumi.CustomResource {
     /**

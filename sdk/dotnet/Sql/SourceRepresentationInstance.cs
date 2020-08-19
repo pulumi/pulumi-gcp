@@ -16,7 +16,31 @@ namespace Pulumi.Gcp.Sql
     /// contains no data, requires no configuration or maintenance, and does not
     /// affect billing. You cannot update the source representation instance.
     /// 
+    /// 
+    /// 
     /// ## Example Usage
+    /// 
+    /// ### Sql Source Representation Instance Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var instance = new Gcp.Sql.SourceRepresentationInstance("instance", new Gcp.Sql.SourceRepresentationInstanceArgs
+    ///         {
+    ///             DatabaseVersion = "MYSQL_5_7",
+    ///             Host = "10.20.30.40",
+    ///             Port = 3306,
+    ///             Region = "us-central1",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class SourceRepresentationInstance : Pulumi.CustomResource
     {

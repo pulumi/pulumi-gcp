@@ -19,6 +19,84 @@ import * as utilities from "../utilities";
  * state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
  *
  * ## Example Usage
+ *
+ * ### Bigquery Connection Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as random from "@pulumi/random";
+ *
+ * const instance = new gcp.sql.DatabaseInstance("instance", {
+ *     databaseVersion: "POSTGRES_11",
+ *     region: "us-central1",
+ *     settings: {
+ *         tier: "db-f1-micro",
+ *     },
+ * });
+ * const db = new gcp.sql.Database("db", {instance: instance.name});
+ * const pwd = new random.RandomPassword("pwd", {
+ *     length: 16,
+ *     special: false,
+ * });
+ * const user = new gcp.sql.User("user", {
+ *     instance: instance.name,
+ *     password: pwd.result,
+ * });
+ * const connection = new gcp.bigquery.Connection("connection", {
+ *     friendlyName: "👋",
+ *     description: "a riveting description",
+ *     cloud_sql: {
+ *         instanceId: instance.connectionName,
+ *         database: db.name,
+ *         type: "POSTGRES",
+ *         credential: {
+ *             username: user.name,
+ *             password: user.password,
+ *         },
+ *     },
+ * });
+ * ```
+ *
+ * ### Bigquery Connection Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as random from "@pulumi/random";
+ *
+ * const instance = new gcp.sql.DatabaseInstance("instance", {
+ *     databaseVersion: "POSTGRES_11",
+ *     region: "us-central1",
+ *     settings: {
+ *         tier: "db-f1-micro",
+ *     },
+ * });
+ * const db = new gcp.sql.Database("db", {instance: instance.name});
+ * const pwd = new random.RandomPassword("pwd", {
+ *     length: 16,
+ *     special: false,
+ * });
+ * const user = new gcp.sql.User("user", {
+ *     instance: instance.name,
+ *     password: pwd.result,
+ * });
+ * const connection = new gcp.bigquery.Connection("connection", {
+ *     connectionId: "my-connection",
+ *     location: "US",
+ *     friendlyName: "👋",
+ *     description: "a riveting description",
+ *     cloud_sql: {
+ *         instanceId: instance.connectionName,
+ *         database: db.name,
+ *         type: "POSTGRES",
+ *         credential: {
+ *             username: user.name,
+ *             password: user.password,
+ *         },
+ *     },
+ * });
+ * ```
  */
 export class Connection extends pulumi.CustomResource {
     /**

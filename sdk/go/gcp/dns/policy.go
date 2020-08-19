@@ -17,8 +17,6 @@ import (
 // * [API documentation](https://cloud.google.com/dns/docs/reference/v1beta2/policies)
 // * How-to Guides
 //     * [Using DNS server policies](https://cloud.google.com/dns/zones/#using-dns-server-policies)
-//
-// ## Example Usage
 type Policy struct {
 	pulumi.CustomResourceState
 

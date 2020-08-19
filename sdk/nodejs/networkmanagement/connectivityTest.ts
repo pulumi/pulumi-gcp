@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  * that enables you to evaluate connectivity to and from Google Cloud
  * resources in your Virtual Private Cloud (VPC) network.
  *
+ *
  * To get more information about ConnectivityTest, see:
  *
  * * [API documentation](https://cloud.google.com/network-intelligence-center/docs/connectivity-tests/reference/networkmanagement/rest/v1/projects.locations.global.connectivityTests)
@@ -18,6 +19,92 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/network-intelligence-center/docs)
  *
  * ## Example Usage
+ *
+ * ### Network Management Connectivity Test Instances
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const vpc = new gcp.compute.Network("vpc", {});
+ * const debian9 = gcp.compute.getImage({
+ *     family: "debian-9",
+ *     project: "debian-cloud",
+ * });
+ * const source = new gcp.compute.Instance("source", {
+ *     machineType: "n1-standard-1",
+ *     boot_disk: {
+ *         initialize_params: {
+ *             image: debian9.then(debian9 => debian9.id),
+ *         },
+ *     },
+ *     network_interface: [{
+ *         network: vpc.id,
+ *         access_config: [{}],
+ *     }],
+ * });
+ * const destination = new gcp.compute.Instance("destination", {
+ *     machineType: "n1-standard-1",
+ *     boot_disk: {
+ *         initialize_params: {
+ *             image: debian9.then(debian9 => debian9.id),
+ *         },
+ *     },
+ *     network_interface: [{
+ *         network: vpc.id,
+ *         access_config: [{}],
+ *     }],
+ * });
+ * const instance_test = new gcp.networkmanagement.ConnectivityTest("instance-test", {
+ *     source: {
+ *         instance: source.id,
+ *     },
+ *     destination: {
+ *         instance: destination.id,
+ *     },
+ *     protocol: "TCP",
+ * });
+ * ```
+ *
+ * ### Network Management Connectivity Test Addresses
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const vpc = new gcp.compute.Network("vpc", {});
+ * const subnet = new gcp.compute.Subnetwork("subnet", {
+ *     ipCidrRange: "10.0.0.0/16",
+ *     region: "us-central1",
+ *     network: vpc.id,
+ * });
+ * const source_addr = new gcp.compute.Address("source-addr", {
+ *     subnetwork: subnet.id,
+ *     addressType: "INTERNAL",
+ *     address: "10.0.42.42",
+ *     region: "us-central1",
+ * });
+ * const dest_addr = new gcp.compute.Address("dest-addr", {
+ *     subnetwork: subnet.id,
+ *     addressType: "INTERNAL",
+ *     address: "10.0.43.43",
+ *     region: "us-central1",
+ * });
+ * const address_test = new gcp.networkmanagement.ConnectivityTest("address-test", {
+ *     source: {
+ *         ipAddress: source_addr.address,
+ *         projectId: source_addr.project,
+ *         network: vpc.id,
+ *         networkType: "GCP_NETWORK",
+ *     },
+ *     destination: {
+ *         ipAddress: dest_addr.address,
+ *         projectId: dest_addr.project,
+ *         network: vpc.id,
+ *     },
+ *     protocol: "UDP",
+ * });
+ * ```
  */
 export class ConnectivityTest extends pulumi.CustomResource {
     /**

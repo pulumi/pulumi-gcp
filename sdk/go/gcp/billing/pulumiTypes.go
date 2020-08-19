@@ -19,7 +19,8 @@ type AccountIamBindingCondition struct {
 // AccountIamBindingConditionInput is an input type that accepts AccountIamBindingConditionArgs and AccountIamBindingConditionOutput values.
 // You can construct a concrete instance of `AccountIamBindingConditionInput` via:
 //
-//          AccountIamBindingConditionArgs{...}
+// 		 AccountIamBindingConditionArgs{...}
+//
 type AccountIamBindingConditionInput interface {
 	pulumi.Input
 
@@ -56,11 +57,12 @@ func (i AccountIamBindingConditionArgs) ToAccountIamBindingConditionPtrOutputWit
 // AccountIamBindingConditionPtrInput is an input type that accepts AccountIamBindingConditionArgs, AccountIamBindingConditionPtr and AccountIamBindingConditionPtrOutput values.
 // You can construct a concrete instance of `AccountIamBindingConditionPtrInput` via:
 //
-//          AccountIamBindingConditionArgs{...}
+// 		 AccountIamBindingConditionArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type AccountIamBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -175,7 +177,8 @@ type AccountIamMemberCondition struct {
 // AccountIamMemberConditionInput is an input type that accepts AccountIamMemberConditionArgs and AccountIamMemberConditionOutput values.
 // You can construct a concrete instance of `AccountIamMemberConditionInput` via:
 //
-//          AccountIamMemberConditionArgs{...}
+// 		 AccountIamMemberConditionArgs{...}
+//
 type AccountIamMemberConditionInput interface {
 	pulumi.Input
 
@@ -212,11 +215,12 @@ func (i AccountIamMemberConditionArgs) ToAccountIamMemberConditionPtrOutputWithC
 // AccountIamMemberConditionPtrInput is an input type that accepts AccountIamMemberConditionArgs, AccountIamMemberConditionPtr and AccountIamMemberConditionPtrOutput values.
 // You can construct a concrete instance of `AccountIamMemberConditionPtrInput` via:
 //
-//          AccountIamMemberConditionArgs{...}
+// 		 AccountIamMemberConditionArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type AccountIamMemberConditionPtrInput interface {
 	pulumi.Input
 
@@ -342,7 +346,8 @@ type BudgetAllUpdatesRule struct {
 // BudgetAllUpdatesRuleInput is an input type that accepts BudgetAllUpdatesRuleArgs and BudgetAllUpdatesRuleOutput values.
 // You can construct a concrete instance of `BudgetAllUpdatesRuleInput` via:
 //
-//          BudgetAllUpdatesRuleArgs{...}
+// 		 BudgetAllUpdatesRuleArgs{...}
+//
 type BudgetAllUpdatesRuleInput interface {
 	pulumi.Input
 
@@ -390,11 +395,12 @@ func (i BudgetAllUpdatesRuleArgs) ToBudgetAllUpdatesRulePtrOutputWithContext(ctx
 // BudgetAllUpdatesRulePtrInput is an input type that accepts BudgetAllUpdatesRuleArgs, BudgetAllUpdatesRulePtr and BudgetAllUpdatesRulePtrOutput values.
 // You can construct a concrete instance of `BudgetAllUpdatesRulePtrInput` via:
 //
-//          BudgetAllUpdatesRuleArgs{...}
+// 		 BudgetAllUpdatesRuleArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type BudgetAllUpdatesRulePtrInput interface {
 	pulumi.Input
 
@@ -534,7 +540,8 @@ type BudgetAmount struct {
 // BudgetAmountInput is an input type that accepts BudgetAmountArgs and BudgetAmountOutput values.
 // You can construct a concrete instance of `BudgetAmountInput` via:
 //
-//          BudgetAmountArgs{...}
+// 		 BudgetAmountArgs{...}
+//
 type BudgetAmountInput interface {
 	pulumi.Input
 
@@ -573,11 +580,12 @@ func (i BudgetAmountArgs) ToBudgetAmountPtrOutputWithContext(ctx context.Context
 // BudgetAmountPtrInput is an input type that accepts BudgetAmountArgs, BudgetAmountPtr and BudgetAmountPtrOutput values.
 // You can construct a concrete instance of `BudgetAmountPtrInput` via:
 //
-//          BudgetAmountArgs{...}
+// 		 BudgetAmountArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type BudgetAmountPtrInput interface {
 	pulumi.Input
 
@@ -685,7 +693,8 @@ type BudgetAmountSpecifiedAmount struct {
 // BudgetAmountSpecifiedAmountInput is an input type that accepts BudgetAmountSpecifiedAmountArgs and BudgetAmountSpecifiedAmountOutput values.
 // You can construct a concrete instance of `BudgetAmountSpecifiedAmountInput` via:
 //
-//          BudgetAmountSpecifiedAmountArgs{...}
+// 		 BudgetAmountSpecifiedAmountArgs{...}
+//
 type BudgetAmountSpecifiedAmountInput interface {
 	pulumi.Input
 
@@ -732,11 +741,12 @@ func (i BudgetAmountSpecifiedAmountArgs) ToBudgetAmountSpecifiedAmountPtrOutputW
 // BudgetAmountSpecifiedAmountPtrInput is an input type that accepts BudgetAmountSpecifiedAmountArgs, BudgetAmountSpecifiedAmountPtr and BudgetAmountSpecifiedAmountPtrOutput values.
 // You can construct a concrete instance of `BudgetAmountSpecifiedAmountPtrInput` via:
 //
-//          BudgetAmountSpecifiedAmountArgs{...}
+// 		 BudgetAmountSpecifiedAmountArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type BudgetAmountSpecifiedAmountPtrInput interface {
 	pulumi.Input
 
@@ -888,7 +898,8 @@ type BudgetBudgetFilter struct {
 // BudgetBudgetFilterInput is an input type that accepts BudgetBudgetFilterArgs and BudgetBudgetFilterOutput values.
 // You can construct a concrete instance of `BudgetBudgetFilterInput` via:
 //
-//          BudgetBudgetFilterArgs{...}
+// 		 BudgetBudgetFilterArgs{...}
+//
 type BudgetBudgetFilterInput interface {
 	pulumi.Input
 
@@ -941,11 +952,12 @@ func (i BudgetBudgetFilterArgs) ToBudgetBudgetFilterPtrOutputWithContext(ctx con
 // BudgetBudgetFilterPtrInput is an input type that accepts BudgetBudgetFilterArgs, BudgetBudgetFilterPtr and BudgetBudgetFilterPtrOutput values.
 // You can construct a concrete instance of `BudgetBudgetFilterPtrInput` via:
 //
-//          BudgetBudgetFilterArgs{...}
+// 		 BudgetBudgetFilterArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type BudgetBudgetFilterPtrInput interface {
 	pulumi.Input
 
@@ -1098,7 +1110,8 @@ type BudgetThresholdRule struct {
 // BudgetThresholdRuleInput is an input type that accepts BudgetThresholdRuleArgs and BudgetThresholdRuleOutput values.
 // You can construct a concrete instance of `BudgetThresholdRuleInput` via:
 //
-//          BudgetThresholdRuleArgs{...}
+// 		 BudgetThresholdRuleArgs{...}
+//
 type BudgetThresholdRuleInput interface {
 	pulumi.Input
 
@@ -1132,7 +1145,8 @@ func (i BudgetThresholdRuleArgs) ToBudgetThresholdRuleOutputWithContext(ctx cont
 // BudgetThresholdRuleArrayInput is an input type that accepts BudgetThresholdRuleArray and BudgetThresholdRuleArrayOutput values.
 // You can construct a concrete instance of `BudgetThresholdRuleArrayInput` via:
 //
-//          BudgetThresholdRuleArray{ BudgetThresholdRuleArgs{...} }
+// 		 BudgetThresholdRuleArray{ BudgetThresholdRuleArgs{...} }
+//
 type BudgetThresholdRuleArrayInput interface {
 	pulumi.Input
 

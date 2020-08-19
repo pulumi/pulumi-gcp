@@ -7,8 +7,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from . import _utilities, _tables
-
+from . import utilities, tables
 
 class Provider(pulumi.ProviderResource):
     def __init__(__self__, resource_name, opts=None, access_context_manager_custom_endpoint=None, access_token=None, active_directory_custom_endpoint=None, app_engine_custom_endpoint=None, artifact_registry_custom_endpoint=None, batching=None, big_query_custom_endpoint=None, bigquery_connection_custom_endpoint=None, bigquery_data_transfer_custom_endpoint=None, bigquery_reservation_custom_endpoint=None, bigtable_custom_endpoint=None, billing_custom_endpoint=None, binary_authorization_custom_endpoint=None, cloud_asset_custom_endpoint=None, cloud_billing_custom_endpoint=None, cloud_build_custom_endpoint=None, cloud_functions_custom_endpoint=None, cloud_identity_custom_endpoint=None, cloud_iot_custom_endpoint=None, cloud_run_custom_endpoint=None, cloud_scheduler_custom_endpoint=None, cloud_tasks_custom_endpoint=None, composer_custom_endpoint=None, compute_beta_custom_endpoint=None, compute_custom_endpoint=None, container_analysis_custom_endpoint=None, container_beta_custom_endpoint=None, container_custom_endpoint=None, credentials=None, data_catalog_custom_endpoint=None, data_fusion_custom_endpoint=None, dataflow_custom_endpoint=None, dataproc_beta_custom_endpoint=None, dataproc_custom_endpoint=None, datastore_custom_endpoint=None, deployment_manager_custom_endpoint=None, dialogflow_custom_endpoint=None, dns_beta_custom_endpoint=None, dns_custom_endpoint=None, filestore_custom_endpoint=None, firebase_custom_endpoint=None, firestore_custom_endpoint=None, game_services_custom_endpoint=None, healthcare_custom_endpoint=None, iam_credentials_custom_endpoint=None, iam_custom_endpoint=None, iap_custom_endpoint=None, identity_platform_custom_endpoint=None, kms_custom_endpoint=None, logging_custom_endpoint=None, memcache_custom_endpoint=None, ml_engine_custom_endpoint=None, monitoring_custom_endpoint=None, network_management_custom_endpoint=None, notebooks_custom_endpoint=None, os_config_custom_endpoint=None, os_login_custom_endpoint=None, project=None, pubsub_custom_endpoint=None, redis_custom_endpoint=None, region=None, request_timeout=None, resource_manager_custom_endpoint=None, resource_manager_v2beta1_custom_endpoint=None, runtime_config_custom_endpoint=None, runtimeconfig_custom_endpoint=None, scopes=None, secret_manager_custom_endpoint=None, security_center_custom_endpoint=None, security_scanner_custom_endpoint=None, service_directory_custom_endpoint=None, service_management_custom_endpoint=None, service_networking_custom_endpoint=None, service_usage_custom_endpoint=None, source_repo_custom_endpoint=None, spanner_custom_endpoint=None, sql_custom_endpoint=None, storage_custom_endpoint=None, storage_transfer_custom_endpoint=None, tpu_custom_endpoint=None, user_project_override=None, vpc_access_custom_endpoint=None, zone=None, __props__=None, __name__=None, __opts__=None):
@@ -23,8 +22,8 @@ class Provider(pulumi.ProviderResource):
 
         The **batching** object supports the following:
 
-          * `enable_batching` (`pulumi.Input[bool]`)
-          * `send_after` (`pulumi.Input[str]`)
+          * `enableBatching` (`pulumi.Input[bool]`)
+          * `sendAfter` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -37,7 +36,7 @@ class Provider(pulumi.ProviderResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = _utilities.get_version()
+            opts.version = utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -72,7 +71,7 @@ class Provider(pulumi.ProviderResource):
             __props__['container_beta_custom_endpoint'] = container_beta_custom_endpoint
             __props__['container_custom_endpoint'] = container_custom_endpoint
             if credentials is None:
-                credentials = _utilities.get_env('GOOGLE_CREDENTIALS', 'GOOGLE_CLOUD_KEYFILE_JSON', 'GCLOUD_KEYFILE_JSON')
+                credentials = utilities.get_env('GOOGLE_CREDENTIALS', 'GOOGLE_CLOUD_KEYFILE_JSON', 'GCLOUD_KEYFILE_JSON')
             __props__['credentials'] = credentials
             __props__['data_catalog_custom_endpoint'] = data_catalog_custom_endpoint
             __props__['data_fusion_custom_endpoint'] = data_fusion_custom_endpoint
@@ -103,12 +102,12 @@ class Provider(pulumi.ProviderResource):
             __props__['os_config_custom_endpoint'] = os_config_custom_endpoint
             __props__['os_login_custom_endpoint'] = os_login_custom_endpoint
             if project is None:
-                project = _utilities.get_env('GOOGLE_PROJECT', 'GOOGLE_CLOUD_PROJECT', 'GCLOUD_PROJECT', 'CLOUDSDK_CORE_PROJECT')
+                project = utilities.get_env('GOOGLE_PROJECT', 'GOOGLE_CLOUD_PROJECT', 'GCLOUD_PROJECT', 'CLOUDSDK_CORE_PROJECT')
             __props__['project'] = project
             __props__['pubsub_custom_endpoint'] = pubsub_custom_endpoint
             __props__['redis_custom_endpoint'] = redis_custom_endpoint
             if region is None:
-                region = _utilities.get_env('GOOGLE_REGION', 'GCLOUD_REGION', 'CLOUDSDK_COMPUTE_REGION')
+                region = utilities.get_env('GOOGLE_REGION', 'GCLOUD_REGION', 'CLOUDSDK_COMPUTE_REGION')
             __props__['region'] = region
             __props__['request_timeout'] = request_timeout
             __props__['resource_manager_custom_endpoint'] = resource_manager_custom_endpoint
@@ -132,7 +131,7 @@ class Provider(pulumi.ProviderResource):
             __props__['user_project_override'] = pulumi.Output.from_input(user_project_override).apply(json.dumps) if user_project_override is not None else None
             __props__['vpc_access_custom_endpoint'] = vpc_access_custom_endpoint
             if zone is None:
-                zone = _utilities.get_env('GOOGLE_ZONE', 'GCLOUD_ZONE', 'CLOUDSDK_COMPUTE_ZONE')
+                zone = utilities.get_env('GOOGLE_ZONE', 'GCLOUD_ZONE', 'CLOUDSDK_COMPUTE_ZONE')
             __props__['zone'] = zone
         super(Provider, __self__).__init__(
             'gcp',
@@ -141,7 +140,8 @@ class Provider(pulumi.ProviderResource):
             opts)
 
     def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

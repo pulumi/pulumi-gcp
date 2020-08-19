@@ -14,8 +14,6 @@ import (
 // which will be applied to this disk for scheduling snapshot creation.
 //
 // > **Note:** This resource does not support regional disks (`compute.RegionDisk`). For regional disks, please refer to the `compute.RegionDiskResourcePolicyAttachment` resource.
-//
-// ## Example Usage
 type DiskResourcePolicyAttachment struct {
 	pulumi.CustomResourceState
 

@@ -7,6 +7,7 @@ import * as utilities from "../utilities";
 /**
  * A key for signing Cloud CDN signed URLs for BackendBuckets.
  *
+ *
  * To get more information about BackendBucketSignedUrlKey, see:
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/backendBuckets)
@@ -17,6 +18,24 @@ import * as utilities from "../utilities";
  * state as plain-text.
  *
  * ## Example Usage
+ *
+ * ### Backend Bucket Signed Url Key
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const bucket = new gcp.storage.Bucket("bucket", {location: "EU"});
+ * const testBackend = new gcp.compute.BackendBucket("testBackend", {
+ *     description: "Contains beautiful images",
+ *     bucketName: bucket.name,
+ *     enableCdn: true,
+ * });
+ * const backendKey = new gcp.compute.BackendBucketSignedUrlKey("backendKey", {
+ *     keyValue: "pPsVemX8GM46QVeezid6Rw==",
+ *     backendBucket: testBackend.name,
+ * });
+ * ```
  */
 export class BackendBucketSignedUrlKey extends pulumi.CustomResource {
     /**

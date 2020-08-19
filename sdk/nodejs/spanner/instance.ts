@@ -8,6 +8,7 @@ import * as utilities from "../utilities";
  * An isolated set of Cloud Spanner resources on which databases can be
  * hosted.
  *
+ *
  * To get more information about Instance, see:
  *
  * * [API documentation](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances)
@@ -15,6 +16,22 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/spanner/)
  *
  * ## Example Usage
+ *
+ * ### Spanner Instance Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = new gcp.spanner.Instance("example", {
+ *     config: "regional-us-central1",
+ *     displayName: "Test Spanner Instance",
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     numNodes: 2,
+ * });
+ * ```
  */
 export class Instance extends pulumi.CustomResource {
     /**

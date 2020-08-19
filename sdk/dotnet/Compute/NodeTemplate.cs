@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.Compute
     /// for creating sole-tenant nodes, such as node type, vCPU and memory
     /// requirements, node affinity labels, and region.
     /// 
+    /// 
     /// To get more information about NodeTemplate, see:
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/nodeTemplates)
@@ -21,6 +22,26 @@ namespace Pulumi.Gcp.Compute
     ///     * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
     /// 
     /// ## Example Usage
+    /// 
+    /// ### Node Template Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var template = new Gcp.Compute.NodeTemplate("template", new Gcp.Compute.NodeTemplateArgs
+    ///         {
+    ///             NodeType = "n1-node-96-624",
+    ///             Region = "us-central1",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class NodeTemplate : Pulumi.CustomResource
     {

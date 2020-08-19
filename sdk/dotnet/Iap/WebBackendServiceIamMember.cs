@@ -19,6 +19,188 @@ namespace Pulumi.Gcp.Iap
     /// &gt; **Note:** `gcp.iap.WebBackendServiceIamPolicy` **cannot** be used in conjunction with `gcp.iap.WebBackendServiceIamBinding` and `gcp.iap.WebBackendServiceIamMember` or they will fight over what your policy should be.
     /// 
     /// &gt; **Note:** `gcp.iap.WebBackendServiceIamBinding` resources **can be** used in conjunction with `gcp.iap.WebBackendServiceIamMember` resources **only if** they do not grant privilege to the same role.
+    /// 
+    /// 
+    /// 
+    /// ## google\_iap\_web\_backend\_service\_iam\_policy
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         {
+    ///             Binding = 
+    ///             {
+    ///                 
+    ///                 {
+    ///                     { "role", "roles/iap.httpsResourceAccessor" },
+    ///                     { "members", 
+    ///                     {
+    ///                         "user:jane@example.com",
+    ///                     } },
+    ///                 },
+    ///             },
+    ///         }));
+    ///         var policy = new Gcp.Iap.WebBackendServiceIamPolicy("policy", new Gcp.Iap.WebBackendServiceIamPolicyArgs
+    ///         {
+    ///             Project = google_compute_backend_service.Default.Project,
+    ///             WebBackendService = google_compute_backend_service.Default.Name,
+    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         {
+    ///             Binding = 
+    ///             {
+    ///                 
+    ///                 {
+    ///                     { "role", "roles/iap.httpsResourceAccessor" },
+    ///                     { "members", 
+    ///                     {
+    ///                         "user:jane@example.com",
+    ///                     } },
+    ///                     { "condition", 
+    ///                     {
+    ///                         { "title", "expires_after_2019_12_31" },
+    ///                         { "description", "Expiring at midnight of 2019-12-31" },
+    ///                         { "expression", "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")" },
+    ///                     } },
+    ///                 },
+    ///             },
+    ///         }));
+    ///         var policy = new Gcp.Iap.WebBackendServiceIamPolicy("policy", new Gcp.Iap.WebBackendServiceIamPolicyArgs
+    ///         {
+    ///             Project = google_compute_backend_service.Default.Project,
+    ///             WebBackendService = google_compute_backend_service.Default.Name,
+    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ## google\_iap\_web\_backend\_service\_iam\_binding
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var binding = new Gcp.Iap.WebBackendServiceIamBinding("binding", new Gcp.Iap.WebBackendServiceIamBindingArgs
+    ///         {
+    ///             Project = google_compute_backend_service.Default.Project,
+    ///             WebBackendService = google_compute_backend_service.Default.Name,
+    ///             Role = "roles/iap.httpsResourceAccessor",
+    ///             Members = 
+    ///             {
+    ///                 "user:jane@example.com",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var binding = new Gcp.Iap.WebBackendServiceIamBinding("binding", new Gcp.Iap.WebBackendServiceIamBindingArgs
+    ///         {
+    ///             Project = google_compute_backend_service.Default.Project,
+    ///             WebBackendService = google_compute_backend_service.Default.Name,
+    ///             Role = "roles/iap.httpsResourceAccessor",
+    ///             Members = 
+    ///             {
+    ///                 "user:jane@example.com",
+    ///             },
+    ///             Condition = new Gcp.Iap.Inputs.WebBackendServiceIamBindingConditionArgs
+    ///             {
+    ///                 Title = "expires_after_2019_12_31",
+    ///                 Description = "Expiring at midnight of 2019-12-31",
+    ///                 Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ## google\_iap\_web\_backend\_service\_iam\_member
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var member = new Gcp.Iap.WebBackendServiceIamMember("member", new Gcp.Iap.WebBackendServiceIamMemberArgs
+    ///         {
+    ///             Project = google_compute_backend_service.Default.Project,
+    ///             WebBackendService = google_compute_backend_service.Default.Name,
+    ///             Role = "roles/iap.httpsResourceAccessor",
+    ///             Member = "user:jane@example.com",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var member = new Gcp.Iap.WebBackendServiceIamMember("member", new Gcp.Iap.WebBackendServiceIamMemberArgs
+    ///         {
+    ///             Project = google_compute_backend_service.Default.Project,
+    ///             WebBackendService = google_compute_backend_service.Default.Name,
+    ///             Role = "roles/iap.httpsResourceAccessor",
+    ///             Member = "user:jane@example.com",
+    ///             Condition = new Gcp.Iap.Inputs.WebBackendServiceIamMemberConditionArgs
+    ///             {
+    ///                 Title = "expires_after_2019_12_31",
+    ///                 Description = "Expiring at midnight of 2019-12-31",
+    ///                 Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class WebBackendServiceIamMember : Pulumi.CustomResource
     {

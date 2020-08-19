@@ -8,6 +8,19 @@ import * as utilities from "../utilities";
 
 /**
  * Get a VPN gateway within GCE from its name.
+ *
+ * ## Example Usage
+ *
+ *
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my_vpn_gateway = pulumi.output(gcp.compute.getVPNGateway({
+ *     name: "vpn-gateway-us-east1",
+ * }, { async: true }));
+ * ```
  */
 export function getVPNGateway(args: GetVPNGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetVPNGatewayResult> {
     if (!opts) {

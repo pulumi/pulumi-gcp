@@ -21,7 +21,8 @@ type EnvironmentContainerImage struct {
 // EnvironmentContainerImageInput is an input type that accepts EnvironmentContainerImageArgs and EnvironmentContainerImageOutput values.
 // You can construct a concrete instance of `EnvironmentContainerImageInput` via:
 //
-//          EnvironmentContainerImageArgs{...}
+// 		 EnvironmentContainerImageArgs{...}
+//
 type EnvironmentContainerImageInput interface {
 	pulumi.Input
 
@@ -60,11 +61,12 @@ func (i EnvironmentContainerImageArgs) ToEnvironmentContainerImagePtrOutputWithC
 // EnvironmentContainerImagePtrInput is an input type that accepts EnvironmentContainerImageArgs, EnvironmentContainerImagePtr and EnvironmentContainerImagePtrOutput values.
 // You can construct a concrete instance of `EnvironmentContainerImagePtrInput` via:
 //
-//          EnvironmentContainerImageArgs{...}
+// 		 EnvironmentContainerImageArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type EnvironmentContainerImagePtrInput interface {
 	pulumi.Input
 
@@ -177,7 +179,8 @@ type EnvironmentVmImage struct {
 // EnvironmentVmImageInput is an input type that accepts EnvironmentVmImageArgs and EnvironmentVmImageOutput values.
 // You can construct a concrete instance of `EnvironmentVmImageInput` via:
 //
-//          EnvironmentVmImageArgs{...}
+// 		 EnvironmentVmImageArgs{...}
+//
 type EnvironmentVmImageInput interface {
 	pulumi.Input
 
@@ -218,11 +221,12 @@ func (i EnvironmentVmImageArgs) ToEnvironmentVmImagePtrOutputWithContext(ctx con
 // EnvironmentVmImagePtrInput is an input type that accepts EnvironmentVmImageArgs, EnvironmentVmImagePtr and EnvironmentVmImagePtrOutput values.
 // You can construct a concrete instance of `EnvironmentVmImagePtrInput` via:
 //
-//          EnvironmentVmImageArgs{...}
+// 		 EnvironmentVmImageArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type EnvironmentVmImagePtrInput interface {
 	pulumi.Input
 
@@ -348,7 +352,8 @@ type InstanceAcceleratorConfig struct {
 // InstanceAcceleratorConfigInput is an input type that accepts InstanceAcceleratorConfigArgs and InstanceAcceleratorConfigOutput values.
 // You can construct a concrete instance of `InstanceAcceleratorConfigInput` via:
 //
-//          InstanceAcceleratorConfigArgs{...}
+// 		 InstanceAcceleratorConfigArgs{...}
+//
 type InstanceAcceleratorConfigInput interface {
 	pulumi.Input
 
@@ -387,11 +392,12 @@ func (i InstanceAcceleratorConfigArgs) ToInstanceAcceleratorConfigPtrOutputWithC
 // InstanceAcceleratorConfigPtrInput is an input type that accepts InstanceAcceleratorConfigArgs, InstanceAcceleratorConfigPtr and InstanceAcceleratorConfigPtrOutput values.
 // You can construct a concrete instance of `InstanceAcceleratorConfigPtrInput` via:
 //
-//          InstanceAcceleratorConfigArgs{...}
+// 		 InstanceAcceleratorConfigArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type InstanceAcceleratorConfigPtrInput interface {
 	pulumi.Input
 
@@ -502,7 +508,8 @@ type InstanceContainerImage struct {
 // InstanceContainerImageInput is an input type that accepts InstanceContainerImageArgs and InstanceContainerImageOutput values.
 // You can construct a concrete instance of `InstanceContainerImageInput` via:
 //
-//          InstanceContainerImageArgs{...}
+// 		 InstanceContainerImageArgs{...}
+//
 type InstanceContainerImageInput interface {
 	pulumi.Input
 
@@ -541,11 +548,12 @@ func (i InstanceContainerImageArgs) ToInstanceContainerImagePtrOutputWithContext
 // InstanceContainerImagePtrInput is an input type that accepts InstanceContainerImageArgs, InstanceContainerImagePtr and InstanceContainerImagePtrOutput values.
 // You can construct a concrete instance of `InstanceContainerImagePtrInput` via:
 //
-//          InstanceContainerImageArgs{...}
+// 		 InstanceContainerImageArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type InstanceContainerImagePtrInput interface {
 	pulumi.Input
 
@@ -658,7 +666,8 @@ type InstanceVmImage struct {
 // InstanceVmImageInput is an input type that accepts InstanceVmImageArgs and InstanceVmImageOutput values.
 // You can construct a concrete instance of `InstanceVmImageInput` via:
 //
-//          InstanceVmImageArgs{...}
+// 		 InstanceVmImageArgs{...}
+//
 type InstanceVmImageInput interface {
 	pulumi.Input
 
@@ -699,11 +708,12 @@ func (i InstanceVmImageArgs) ToInstanceVmImagePtrOutputWithContext(ctx context.C
 // InstanceVmImagePtrInput is an input type that accepts InstanceVmImageArgs, InstanceVmImagePtr and InstanceVmImagePtrOutput values.
 // You can construct a concrete instance of `InstanceVmImagePtrInput` via:
 //
-//          InstanceVmImageArgs{...}
+// 		 InstanceVmImageArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type InstanceVmImagePtrInput interface {
 	pulumi.Input
 

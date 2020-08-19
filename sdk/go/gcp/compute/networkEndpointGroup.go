@@ -21,6 +21,7 @@ import (
 // specify IP addresses and ports, you can distribute traffic in a granular
 // fashion among applications or containers running within VM instances.
 //
+//
 // To get more information about NetworkEndpointGroup, see:
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/networkEndpointGroups)
@@ -28,6 +29,46 @@ import (
 //     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
 //
 // ## Example Usage
+//
+// ### Network Endpoint Group
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", &compute.NetworkArgs{
+// 			AutoCreateSubnetworks: pulumi.Bool(false),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultSubnetwork, err := compute.NewSubnetwork(ctx, "defaultSubnetwork", &compute.SubnetworkArgs{
+// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
+// 			Region:      pulumi.String("us-central1"),
+// 			Network:     defaultNetwork.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		neg, err := compute.NewNetworkEndpointGroup(ctx, "neg", &compute.NetworkEndpointGroupArgs{
+// 			Network:     defaultNetwork.ID(),
+// 			Subnetwork:  defaultSubnetwork.ID(),
+// 			DefaultPort: pulumi.Int(90),
+// 			Zone:        pulumi.String("us-central1-a"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type NetworkEndpointGroup struct {
 	pulumi.CustomResourceState
 

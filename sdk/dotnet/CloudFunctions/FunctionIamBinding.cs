@@ -19,6 +19,93 @@ namespace Pulumi.Gcp.CloudFunctions
     /// &gt; **Note:** `gcp.cloudfunctions.FunctionIamPolicy` **cannot** be used in conjunction with `gcp.cloudfunctions.FunctionIamBinding` and `gcp.cloudfunctions.FunctionIamMember` or they will fight over what your policy should be.
     /// 
     /// &gt; **Note:** `gcp.cloudfunctions.FunctionIamBinding` resources **can be** used in conjunction with `gcp.cloudfunctions.FunctionIamMember` resources **only if** they do not grant privilege to the same role.
+    /// 
+    /// 
+    /// 
+    /// ## google\_cloudfunctions\_function\_iam\_policy
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         {
+    ///             Binding = 
+    ///             {
+    ///                 
+    ///                 {
+    ///                     { "role", "roles/viewer" },
+    ///                     { "members", 
+    ///                     {
+    ///                         "user:jane@example.com",
+    ///                     } },
+    ///                 },
+    ///             },
+    ///         }));
+    ///         var policy = new Gcp.CloudFunctions.FunctionIamPolicy("policy", new Gcp.CloudFunctions.FunctionIamPolicyArgs
+    ///         {
+    ///             Project = google_cloudfunctions_function.Function.Project,
+    ///             Region = google_cloudfunctions_function.Function.Region,
+    ///             CloudFunction = google_cloudfunctions_function.Function.Name,
+    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## google\_cloudfunctions\_function\_iam\_binding
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var binding = new Gcp.CloudFunctions.FunctionIamBinding("binding", new Gcp.CloudFunctions.FunctionIamBindingArgs
+    ///         {
+    ///             Project = google_cloudfunctions_function.Function.Project,
+    ///             Region = google_cloudfunctions_function.Function.Region,
+    ///             CloudFunction = google_cloudfunctions_function.Function.Name,
+    ///             Role = "roles/viewer",
+    ///             Members = 
+    ///             {
+    ///                 "user:jane@example.com",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## google\_cloudfunctions\_function\_iam\_member
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var member = new Gcp.CloudFunctions.FunctionIamMember("member", new Gcp.CloudFunctions.FunctionIamMemberArgs
+    ///         {
+    ///             Project = google_cloudfunctions_function.Function.Project,
+    ///             Region = google_cloudfunctions_function.Function.Region,
+    ///             CloudFunction = google_cloudfunctions_function.Function.Name,
+    ///             Role = "roles/viewer",
+    ///             Member = "user:jane@example.com",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class FunctionIamBinding : Pulumi.CustomResource
     {

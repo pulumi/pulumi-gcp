@@ -21,13 +21,12 @@ import (
 // successfully to some number of consecutive probes, it is marked
 // healthy again and can receive new connections.
 //
+//
 // To get more information about RegionHealthCheck, see:
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionHealthChecks)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/load-balancing/docs/health-checks)
-//
-// ## Example Usage
 type RegionHealthCheck struct {
 	pulumi.CustomResourceState
 

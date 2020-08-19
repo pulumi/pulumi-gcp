@@ -13,6 +13,29 @@ namespace Pulumi.Gcp.Storage
     {
         /// <summary>
         /// Use this data source to retrieve Storage Transfer service account for this project
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(Gcp.Storage.GetTransferProjectServieAccount.InvokeAsync());
+        ///         this.DefaultAccount = @default.Apply(@default =&gt; @default.Email);
+        ///     }
+        /// 
+        ///     [Output("defaultAccount")]
+        ///     public Output&lt;string&gt; DefaultAccount { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetTransferProjectServieAccountResult> InvokeAsync(GetTransferProjectServieAccountArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTransferProjectServieAccountResult>("gcp:storage/getTransferProjectServieAccount:getTransferProjectServieAccount", args ?? new GetTransferProjectServieAccountArgs(), options.WithVersion());

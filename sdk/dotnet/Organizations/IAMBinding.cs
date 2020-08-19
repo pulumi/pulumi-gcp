@@ -20,6 +20,32 @@ namespace Pulumi.Gcp.Organizations
     /// &gt; **Note:** On create, this resource will overwrite members of any existing roles.
     ///     Use `pulumi import` and inspect the `output to ensure
     ///     your existing members are preserved.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var binding = new Gcp.Organizations.IAMBinding("binding", new Gcp.Organizations.IAMBindingArgs
+    ///         {
+    ///             Members = 
+    ///             {
+    ///                 "user:alice@gmail.com",
+    ///             },
+    ///             OrgId = "123456789",
+    ///             Role = "roles/browser",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class IAMBinding : Pulumi.CustomResource
     {

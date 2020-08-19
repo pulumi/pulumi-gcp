@@ -17,8 +17,6 @@ import (
 // * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
-//
-// ## Example Usage
 type Repository struct {
 	pulumi.CustomResourceState
 

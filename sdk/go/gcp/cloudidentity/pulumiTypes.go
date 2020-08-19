@@ -30,7 +30,8 @@ type GroupGroupKey struct {
 // GroupGroupKeyInput is an input type that accepts GroupGroupKeyArgs and GroupGroupKeyOutput values.
 // You can construct a concrete instance of `GroupGroupKeyInput` via:
 //
-//          GroupGroupKeyArgs{...}
+// 		 GroupGroupKeyArgs{...}
+//
 type GroupGroupKeyInput interface {
 	pulumi.Input
 
@@ -78,11 +79,12 @@ func (i GroupGroupKeyArgs) ToGroupGroupKeyPtrOutputWithContext(ctx context.Conte
 // GroupGroupKeyPtrInput is an input type that accepts GroupGroupKeyArgs, GroupGroupKeyPtr and GroupGroupKeyPtrOutput values.
 // You can construct a concrete instance of `GroupGroupKeyPtrInput` via:
 //
-//          GroupGroupKeyArgs{...}
+// 		 GroupGroupKeyArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type GroupGroupKeyPtrInput interface {
 	pulumi.Input
 
@@ -220,7 +222,8 @@ type GroupMembershipMemberKey struct {
 // GroupMembershipMemberKeyInput is an input type that accepts GroupMembershipMemberKeyArgs and GroupMembershipMemberKeyOutput values.
 // You can construct a concrete instance of `GroupMembershipMemberKeyInput` via:
 //
-//          GroupMembershipMemberKeyArgs{...}
+// 		 GroupMembershipMemberKeyArgs{...}
+//
 type GroupMembershipMemberKeyInput interface {
 	pulumi.Input
 
@@ -268,11 +271,12 @@ func (i GroupMembershipMemberKeyArgs) ToGroupMembershipMemberKeyPtrOutputWithCon
 // GroupMembershipMemberKeyPtrInput is an input type that accepts GroupMembershipMemberKeyArgs, GroupMembershipMemberKeyPtr and GroupMembershipMemberKeyPtrOutput values.
 // You can construct a concrete instance of `GroupMembershipMemberKeyPtrInput` via:
 //
-//          GroupMembershipMemberKeyArgs{...}
+// 		 GroupMembershipMemberKeyArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type GroupMembershipMemberKeyPtrInput interface {
 	pulumi.Input
 
@@ -410,7 +414,8 @@ type GroupMembershipPreferredMemberKey struct {
 // GroupMembershipPreferredMemberKeyInput is an input type that accepts GroupMembershipPreferredMemberKeyArgs and GroupMembershipPreferredMemberKeyOutput values.
 // You can construct a concrete instance of `GroupMembershipPreferredMemberKeyInput` via:
 //
-//          GroupMembershipPreferredMemberKeyArgs{...}
+// 		 GroupMembershipPreferredMemberKeyArgs{...}
+//
 type GroupMembershipPreferredMemberKeyInput interface {
 	pulumi.Input
 
@@ -458,11 +463,12 @@ func (i GroupMembershipPreferredMemberKeyArgs) ToGroupMembershipPreferredMemberK
 // GroupMembershipPreferredMemberKeyPtrInput is an input type that accepts GroupMembershipPreferredMemberKeyArgs, GroupMembershipPreferredMemberKeyPtr and GroupMembershipPreferredMemberKeyPtrOutput values.
 // You can construct a concrete instance of `GroupMembershipPreferredMemberKeyPtrInput` via:
 //
-//          GroupMembershipPreferredMemberKeyArgs{...}
+// 		 GroupMembershipPreferredMemberKeyArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type GroupMembershipPreferredMemberKeyPtrInput interface {
 	pulumi.Input
 
@@ -589,7 +595,8 @@ type GroupMembershipRole struct {
 // GroupMembershipRoleInput is an input type that accepts GroupMembershipRoleArgs and GroupMembershipRoleOutput values.
 // You can construct a concrete instance of `GroupMembershipRoleInput` via:
 //
-//          GroupMembershipRoleArgs{...}
+// 		 GroupMembershipRoleArgs{...}
+//
 type GroupMembershipRoleInput interface {
 	pulumi.Input
 
@@ -618,7 +625,8 @@ func (i GroupMembershipRoleArgs) ToGroupMembershipRoleOutputWithContext(ctx cont
 // GroupMembershipRoleArrayInput is an input type that accepts GroupMembershipRoleArray and GroupMembershipRoleArrayOutput values.
 // You can construct a concrete instance of `GroupMembershipRoleArrayInput` via:
 //
-//          GroupMembershipRoleArray{ GroupMembershipRoleArgs{...} }
+// 		 GroupMembershipRoleArray{ GroupMembershipRoleArgs{...} }
+//
 type GroupMembershipRoleArrayInput interface {
 	pulumi.Input
 
@@ -697,7 +705,8 @@ type GetGroupMembershipsMembership struct {
 // GetGroupMembershipsMembershipInput is an input type that accepts GetGroupMembershipsMembershipArgs and GetGroupMembershipsMembershipOutput values.
 // You can construct a concrete instance of `GetGroupMembershipsMembershipInput` via:
 //
-//          GetGroupMembershipsMembershipArgs{...}
+// 		 GetGroupMembershipsMembershipArgs{...}
+//
 type GetGroupMembershipsMembershipInput interface {
 	pulumi.Input
 
@@ -734,7 +743,8 @@ func (i GetGroupMembershipsMembershipArgs) ToGetGroupMembershipsMembershipOutput
 // GetGroupMembershipsMembershipArrayInput is an input type that accepts GetGroupMembershipsMembershipArray and GetGroupMembershipsMembershipArrayOutput values.
 // You can construct a concrete instance of `GetGroupMembershipsMembershipArrayInput` via:
 //
-//          GetGroupMembershipsMembershipArray{ GetGroupMembershipsMembershipArgs{...} }
+// 		 GetGroupMembershipsMembershipArray{ GetGroupMembershipsMembershipArgs{...} }
+//
 type GetGroupMembershipsMembershipArrayInput interface {
 	pulumi.Input
 
@@ -842,7 +852,8 @@ type GetGroupMembershipsMembershipMemberKey struct {
 // GetGroupMembershipsMembershipMemberKeyInput is an input type that accepts GetGroupMembershipsMembershipMemberKeyArgs and GetGroupMembershipsMembershipMemberKeyOutput values.
 // You can construct a concrete instance of `GetGroupMembershipsMembershipMemberKeyInput` via:
 //
-//          GetGroupMembershipsMembershipMemberKeyArgs{...}
+// 		 GetGroupMembershipsMembershipMemberKeyArgs{...}
+//
 type GetGroupMembershipsMembershipMemberKeyInput interface {
 	pulumi.Input
 
@@ -877,7 +888,8 @@ func (i GetGroupMembershipsMembershipMemberKeyArgs) ToGetGroupMembershipsMembers
 // GetGroupMembershipsMembershipMemberKeyArrayInput is an input type that accepts GetGroupMembershipsMembershipMemberKeyArray and GetGroupMembershipsMembershipMemberKeyArrayOutput values.
 // You can construct a concrete instance of `GetGroupMembershipsMembershipMemberKeyArrayInput` via:
 //
-//          GetGroupMembershipsMembershipMemberKeyArray{ GetGroupMembershipsMembershipMemberKeyArgs{...} }
+// 		 GetGroupMembershipsMembershipMemberKeyArray{ GetGroupMembershipsMembershipMemberKeyArgs{...} }
+//
 type GetGroupMembershipsMembershipMemberKeyArrayInput interface {
 	pulumi.Input
 
@@ -963,7 +975,8 @@ type GetGroupMembershipsMembershipPreferredMemberKey struct {
 // GetGroupMembershipsMembershipPreferredMemberKeyInput is an input type that accepts GetGroupMembershipsMembershipPreferredMemberKeyArgs and GetGroupMembershipsMembershipPreferredMemberKeyOutput values.
 // You can construct a concrete instance of `GetGroupMembershipsMembershipPreferredMemberKeyInput` via:
 //
-//          GetGroupMembershipsMembershipPreferredMemberKeyArgs{...}
+// 		 GetGroupMembershipsMembershipPreferredMemberKeyArgs{...}
+//
 type GetGroupMembershipsMembershipPreferredMemberKeyInput interface {
 	pulumi.Input
 
@@ -998,7 +1011,8 @@ func (i GetGroupMembershipsMembershipPreferredMemberKeyArgs) ToGetGroupMembershi
 // GetGroupMembershipsMembershipPreferredMemberKeyArrayInput is an input type that accepts GetGroupMembershipsMembershipPreferredMemberKeyArray and GetGroupMembershipsMembershipPreferredMemberKeyArrayOutput values.
 // You can construct a concrete instance of `GetGroupMembershipsMembershipPreferredMemberKeyArrayInput` via:
 //
-//          GetGroupMembershipsMembershipPreferredMemberKeyArray{ GetGroupMembershipsMembershipPreferredMemberKeyArgs{...} }
+// 		 GetGroupMembershipsMembershipPreferredMemberKeyArray{ GetGroupMembershipsMembershipPreferredMemberKeyArgs{...} }
+//
 type GetGroupMembershipsMembershipPreferredMemberKeyArrayInput interface {
 	pulumi.Input
 
@@ -1077,7 +1091,8 @@ type GetGroupMembershipsMembershipRole struct {
 // GetGroupMembershipsMembershipRoleInput is an input type that accepts GetGroupMembershipsMembershipRoleArgs and GetGroupMembershipsMembershipRoleOutput values.
 // You can construct a concrete instance of `GetGroupMembershipsMembershipRoleInput` via:
 //
-//          GetGroupMembershipsMembershipRoleArgs{...}
+// 		 GetGroupMembershipsMembershipRoleArgs{...}
+//
 type GetGroupMembershipsMembershipRoleInput interface {
 	pulumi.Input
 
@@ -1105,7 +1120,8 @@ func (i GetGroupMembershipsMembershipRoleArgs) ToGetGroupMembershipsMembershipRo
 // GetGroupMembershipsMembershipRoleArrayInput is an input type that accepts GetGroupMembershipsMembershipRoleArray and GetGroupMembershipsMembershipRoleArrayOutput values.
 // You can construct a concrete instance of `GetGroupMembershipsMembershipRoleArrayInput` via:
 //
-//          GetGroupMembershipsMembershipRoleArray{ GetGroupMembershipsMembershipRoleArgs{...} }
+// 		 GetGroupMembershipsMembershipRoleArray{ GetGroupMembershipsMembershipRoleArgs{...} }
+//
 type GetGroupMembershipsMembershipRoleArrayInput interface {
 	pulumi.Input
 
@@ -1181,7 +1197,8 @@ type GetGroupsGroup struct {
 // GetGroupsGroupInput is an input type that accepts GetGroupsGroupArgs and GetGroupsGroupOutput values.
 // You can construct a concrete instance of `GetGroupsGroupInput` via:
 //
-//          GetGroupsGroupArgs{...}
+// 		 GetGroupsGroupArgs{...}
+//
 type GetGroupsGroupInput interface {
 	pulumi.Input
 
@@ -1216,7 +1233,8 @@ func (i GetGroupsGroupArgs) ToGetGroupsGroupOutputWithContext(ctx context.Contex
 // GetGroupsGroupArrayInput is an input type that accepts GetGroupsGroupArray and GetGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetGroupsGroupArrayInput` via:
 //
-//          GetGroupsGroupArray{ GetGroupsGroupArgs{...} }
+// 		 GetGroupsGroupArray{ GetGroupsGroupArgs{...} }
+//
 type GetGroupsGroupArrayInput interface {
 	pulumi.Input
 
@@ -1313,7 +1331,8 @@ type GetGroupsGroupGroupKey struct {
 // GetGroupsGroupGroupKeyInput is an input type that accepts GetGroupsGroupGroupKeyArgs and GetGroupsGroupGroupKeyOutput values.
 // You can construct a concrete instance of `GetGroupsGroupGroupKeyInput` via:
 //
-//          GetGroupsGroupGroupKeyArgs{...}
+// 		 GetGroupsGroupGroupKeyArgs{...}
+//
 type GetGroupsGroupGroupKeyInput interface {
 	pulumi.Input
 
@@ -1341,7 +1360,8 @@ func (i GetGroupsGroupGroupKeyArgs) ToGetGroupsGroupGroupKeyOutputWithContext(ct
 // GetGroupsGroupGroupKeyArrayInput is an input type that accepts GetGroupsGroupGroupKeyArray and GetGroupsGroupGroupKeyArrayOutput values.
 // You can construct a concrete instance of `GetGroupsGroupGroupKeyArrayInput` via:
 //
-//          GetGroupsGroupGroupKeyArray{ GetGroupsGroupGroupKeyArgs{...} }
+// 		 GetGroupsGroupGroupKeyArray{ GetGroupsGroupGroupKeyArgs{...} }
+//
 type GetGroupsGroupGroupKeyArrayInput interface {
 	pulumi.Input
 

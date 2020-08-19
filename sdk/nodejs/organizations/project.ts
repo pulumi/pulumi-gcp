@@ -14,6 +14,21 @@ import * as utilities from "../utilities";
  * resource must have `roles/resourcemanager.projectCreator`. See the
  * [Access Control for Organizations Using IAM](https://cloud.google.com/resource-manager/docs/access-control-org)
  * doc for more information.
+ *
+ *
+ * ## Example Usage
+ *
+ *
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myProject = new gcp.organizations.Project("my_project", {
+ *     orgId: "1234567",
+ *     projectId: "your-project-id",
+ * });
+ * ```
  */
 export class Project extends pulumi.CustomResource {
     /**

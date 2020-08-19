@@ -20,7 +20,8 @@ type ServiceApi struct {
 // ServiceApiInput is an input type that accepts ServiceApiArgs and ServiceApiOutput values.
 // You can construct a concrete instance of `ServiceApiInput` via:
 //
-//          ServiceApiArgs{...}
+// 		 ServiceApiArgs{...}
+//
 type ServiceApiInput interface {
 	pulumi.Input
 
@@ -50,7 +51,8 @@ func (i ServiceApiArgs) ToServiceApiOutputWithContext(ctx context.Context) Servi
 // ServiceApiArrayInput is an input type that accepts ServiceApiArray and ServiceApiArrayOutput values.
 // You can construct a concrete instance of `ServiceApiArrayInput` via:
 //
-//          ServiceApiArray{ ServiceApiArgs{...} }
+// 		 ServiceApiArray{ ServiceApiArgs{...} }
+//
 type ServiceApiArrayInput interface {
 	pulumi.Input
 
@@ -132,7 +134,8 @@ type ServiceApiMethod struct {
 // ServiceApiMethodInput is an input type that accepts ServiceApiMethodArgs and ServiceApiMethodOutput values.
 // You can construct a concrete instance of `ServiceApiMethodInput` via:
 //
-//          ServiceApiMethodArgs{...}
+// 		 ServiceApiMethodArgs{...}
+//
 type ServiceApiMethodInput interface {
 	pulumi.Input
 
@@ -162,7 +165,8 @@ func (i ServiceApiMethodArgs) ToServiceApiMethodOutputWithContext(ctx context.Co
 // ServiceApiMethodArrayInput is an input type that accepts ServiceApiMethodArray and ServiceApiMethodArrayOutput values.
 // You can construct a concrete instance of `ServiceApiMethodArrayInput` via:
 //
-//          ServiceApiMethodArray{ ServiceApiMethodArgs{...} }
+// 		 ServiceApiMethodArray{ ServiceApiMethodArgs{...} }
+//
 type ServiceApiMethodArrayInput interface {
 	pulumi.Input
 
@@ -242,7 +246,8 @@ type ServiceEndpoint struct {
 // ServiceEndpointInput is an input type that accepts ServiceEndpointArgs and ServiceEndpointOutput values.
 // You can construct a concrete instance of `ServiceEndpointInput` via:
 //
-//          ServiceEndpointArgs{...}
+// 		 ServiceEndpointArgs{...}
+//
 type ServiceEndpointInput interface {
 	pulumi.Input
 
@@ -270,7 +275,8 @@ func (i ServiceEndpointArgs) ToServiceEndpointOutputWithContext(ctx context.Cont
 // ServiceEndpointArrayInput is an input type that accepts ServiceEndpointArray and ServiceEndpointArrayOutput values.
 // You can construct a concrete instance of `ServiceEndpointArrayInput` via:
 //
-//          ServiceEndpointArray{ ServiceEndpointArgs{...} }
+// 		 ServiceEndpointArray{ ServiceEndpointArgs{...} }
+//
 type ServiceEndpointArrayInput interface {
 	pulumi.Input
 
@@ -343,7 +349,8 @@ type ServiceIamBindingCondition struct {
 // ServiceIamBindingConditionInput is an input type that accepts ServiceIamBindingConditionArgs and ServiceIamBindingConditionOutput values.
 // You can construct a concrete instance of `ServiceIamBindingConditionInput` via:
 //
-//          ServiceIamBindingConditionArgs{...}
+// 		 ServiceIamBindingConditionArgs{...}
+//
 type ServiceIamBindingConditionInput interface {
 	pulumi.Input
 
@@ -380,11 +387,12 @@ func (i ServiceIamBindingConditionArgs) ToServiceIamBindingConditionPtrOutputWit
 // ServiceIamBindingConditionPtrInput is an input type that accepts ServiceIamBindingConditionArgs, ServiceIamBindingConditionPtr and ServiceIamBindingConditionPtrOutput values.
 // You can construct a concrete instance of `ServiceIamBindingConditionPtrInput` via:
 //
-//          ServiceIamBindingConditionArgs{...}
+// 		 ServiceIamBindingConditionArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type ServiceIamBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -499,7 +507,8 @@ type ServiceIamMemberCondition struct {
 // ServiceIamMemberConditionInput is an input type that accepts ServiceIamMemberConditionArgs and ServiceIamMemberConditionOutput values.
 // You can construct a concrete instance of `ServiceIamMemberConditionInput` via:
 //
-//          ServiceIamMemberConditionArgs{...}
+// 		 ServiceIamMemberConditionArgs{...}
+//
 type ServiceIamMemberConditionInput interface {
 	pulumi.Input
 
@@ -536,11 +545,12 @@ func (i ServiceIamMemberConditionArgs) ToServiceIamMemberConditionPtrOutputWithC
 // ServiceIamMemberConditionPtrInput is an input type that accepts ServiceIamMemberConditionArgs, ServiceIamMemberConditionPtr and ServiceIamMemberConditionPtrOutput values.
 // You can construct a concrete instance of `ServiceIamMemberConditionPtrInput` via:
 //
-//          ServiceIamMemberConditionArgs{...}
+// 		 ServiceIamMemberConditionArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type ServiceIamMemberConditionPtrInput interface {
 	pulumi.Input
 

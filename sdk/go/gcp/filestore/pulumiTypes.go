@@ -22,7 +22,8 @@ type InstanceFileShares struct {
 // InstanceFileSharesInput is an input type that accepts InstanceFileSharesArgs and InstanceFileSharesOutput values.
 // You can construct a concrete instance of `InstanceFileSharesInput` via:
 //
-//          InstanceFileSharesArgs{...}
+// 		 InstanceFileSharesArgs{...}
+//
 type InstanceFileSharesInput interface {
 	pulumi.Input
 
@@ -62,11 +63,12 @@ func (i InstanceFileSharesArgs) ToInstanceFileSharesPtrOutputWithContext(ctx con
 // InstanceFileSharesPtrInput is an input type that accepts InstanceFileSharesArgs, InstanceFileSharesPtr and InstanceFileSharesPtrOutput values.
 // You can construct a concrete instance of `InstanceFileSharesPtrInput` via:
 //
-//          InstanceFileSharesArgs{...}
+// 		 InstanceFileSharesArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type InstanceFileSharesPtrInput interface {
 	pulumi.Input
 
@@ -207,7 +209,8 @@ type InstanceFileSharesNfsExportOption struct {
 // InstanceFileSharesNfsExportOptionInput is an input type that accepts InstanceFileSharesNfsExportOptionArgs and InstanceFileSharesNfsExportOptionOutput values.
 // You can construct a concrete instance of `InstanceFileSharesNfsExportOptionInput` via:
 //
-//          InstanceFileSharesNfsExportOptionArgs{...}
+// 		 InstanceFileSharesNfsExportOptionArgs{...}
+//
 type InstanceFileSharesNfsExportOptionInput interface {
 	pulumi.Input
 
@@ -255,7 +258,8 @@ func (i InstanceFileSharesNfsExportOptionArgs) ToInstanceFileSharesNfsExportOpti
 // InstanceFileSharesNfsExportOptionArrayInput is an input type that accepts InstanceFileSharesNfsExportOptionArray and InstanceFileSharesNfsExportOptionArrayOutput values.
 // You can construct a concrete instance of `InstanceFileSharesNfsExportOptionArrayInput` via:
 //
-//          InstanceFileSharesNfsExportOptionArray{ InstanceFileSharesNfsExportOptionArgs{...} }
+// 		 InstanceFileSharesNfsExportOptionArray{ InstanceFileSharesNfsExportOptionArgs{...} }
+//
 type InstanceFileSharesNfsExportOptionArrayInput interface {
 	pulumi.Input
 
@@ -367,7 +371,8 @@ type InstanceNetwork struct {
 // InstanceNetworkInput is an input type that accepts InstanceNetworkArgs and InstanceNetworkOutput values.
 // You can construct a concrete instance of `InstanceNetworkInput` via:
 //
-//          InstanceNetworkArgs{...}
+// 		 InstanceNetworkArgs{...}
+//
 type InstanceNetworkInput interface {
 	pulumi.Input
 
@@ -406,7 +411,8 @@ func (i InstanceNetworkArgs) ToInstanceNetworkOutputWithContext(ctx context.Cont
 // InstanceNetworkArrayInput is an input type that accepts InstanceNetworkArray and InstanceNetworkArrayOutput values.
 // You can construct a concrete instance of `InstanceNetworkArrayInput` via:
 //
-//          InstanceNetworkArray{ InstanceNetworkArgs{...} }
+// 		 InstanceNetworkArray{ InstanceNetworkArgs{...} }
+//
 type InstanceNetworkArrayInput interface {
 	pulumi.Input
 

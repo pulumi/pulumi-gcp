@@ -7,10 +7,12 @@ import * as utilities from "../utilities";
 /**
  * Encrypts secret data with Google Cloud KMS and provides access to the ciphertext.
  *
+ *
  * > **NOTE:** Using this resource will allow you to conceal secret data within your
  * resource definitions, but it does not take care of protecting that data in the
  * logging output, plan output, or state output.  Please take care to secure your secret
  * data outside of resource definitions.
+ *
  *
  * To get more information about SecretCiphertext, see:
  *
@@ -22,6 +24,39 @@ import * as utilities from "../utilities";
  * state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
  *
  * ## Example Usage
+ *
+ * ### Kms Secret Ciphertext Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const keyring = new gcp.kms.KeyRing("keyring", {location: "global"});
+ * const cryptokey = new gcp.kms.CryptoKey("cryptokey", {
+ *     keyRing: keyring.id,
+ *     rotationPeriod: "100000s",
+ * });
+ * const myPassword = new gcp.kms.SecretCiphertext("myPassword", {
+ *     cryptoKey: cryptokey.id,
+ *     plaintext: "my-secret-password",
+ * });
+ * const instance = new gcp.compute.Instance("instance", {
+ *     machineType: "n1-standard-1",
+ *     zone: "us-central1-a",
+ *     boot_disk: {
+ *         initialize_params: {
+ *             image: "debian-cloud/debian-9",
+ *         },
+ *     },
+ *     network_interface: [{
+ *         network: "default",
+ *         access_config: [{}],
+ *     }],
+ *     metadata: {
+ *         password: myPassword.ciphertext,
+ *     },
+ * });
+ * ```
  */
 export class SecretCiphertext extends pulumi.CustomResource {
     /**

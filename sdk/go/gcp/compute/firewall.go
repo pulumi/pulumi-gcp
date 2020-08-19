@@ -23,13 +23,12 @@ import (
 // networks except the default network, you must create any firewall rules
 // you need.
 //
+//
 // To get more information about Firewall, see:
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/v1/firewalls)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/vpc/docs/firewalls)
-//
-// ## Example Usage
 type Firewall struct {
 	pulumi.CustomResourceState
 

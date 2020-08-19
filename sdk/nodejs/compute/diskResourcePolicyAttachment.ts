@@ -10,7 +10,41 @@ import * as utilities from "../utilities";
  *
  * > **Note:** This resource does not support regional disks (`gcp.compute.RegionDisk`). For regional disks, please refer to the `gcp.compute.RegionDiskResourcePolicyAttachment` resource.
  *
+ *
  * ## Example Usage
+ *
+ * ### Disk Resource Policy Attachment Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myImage = gcp.compute.getImage({
+ *     family: "debian-9",
+ *     project: "debian-cloud",
+ * });
+ * const ssd = new gcp.compute.Disk("ssd", {
+ *     image: myImage.then(myImage => myImage.selfLink),
+ *     size: 50,
+ *     type: "pd-ssd",
+ *     zone: "us-central1-a",
+ * });
+ * const attachment = new gcp.compute.DiskResourcePolicyAttachment("attachment", {
+ *     disk: ssd.name,
+ *     zone: "us-central1-a",
+ * });
+ * const policy = new gcp.compute.ResourcePolicy("policy", {
+ *     region: "us-central1",
+ *     snapshot_schedule_policy: {
+ *         schedule: {
+ *             daily_schedule: {
+ *                 daysInCycle: 1,
+ *                 startTime: "04:00",
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
  */
 export class DiskResourcePolicyAttachment extends pulumi.CustomResource {
     /**

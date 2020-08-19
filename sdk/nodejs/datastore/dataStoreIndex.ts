@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
 /**
  * Describes a composite index for Cloud Datastore.
  *
+ *
  * To get more information about Index, see:
  *
  * * [API documentation](https://cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.indexes)
@@ -16,6 +17,27 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/datastore/docs/concepts/indexes)
  *
  * ## Example Usage
+ *
+ * ### Datastore Index
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultDataStoreIndex = new gcp.datastore.DataStoreIndex("default", {
+ *     kind: "foo",
+ *     properties: [
+ *         {
+ *             direction: "ASCENDING",
+ *             name: "property_a",
+ *         },
+ *         {
+ *             direction: "ASCENDING",
+ *             name: "property_b",
+ *         },
+ *     ],
+ * });
+ * ```
  */
 export class DataStoreIndex extends pulumi.CustomResource {
     /**

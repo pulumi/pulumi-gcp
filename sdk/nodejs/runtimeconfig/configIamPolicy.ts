@@ -14,6 +14,55 @@ import * as utilities from "../utilities";
  * > **Note:** `gcp.runtimeconfig.ConfigIamPolicy` **cannot** be used in conjunction with `gcp.runtimeconfig.ConfigIamBinding` and `gcp.runtimeconfig.ConfigIamMember` or they will fight over what your policy should be.
  *
  * > **Note:** `gcp.runtimeconfig.ConfigIamBinding` resources **can be** used in conjunction with `gcp.runtimeconfig.ConfigIamMember` resources **only if** they do not grant privilege to the same role.
+ *
+ *
+ *
+ * ## google\_runtimeconfig\_config\_iam\_policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     binding: [{
+ *         role: "roles/viewer",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const policy = new gcp.runtimeconfig.ConfigIamPolicy("policy", {
+ *     project: google_runtimeconfig_config.config.project,
+ *     config: google_runtimeconfig_config.config.name,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * ## google\_runtimeconfig\_config\_iam\_binding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.runtimeconfig.ConfigIamBinding("binding", {
+ *     project: google_runtimeconfig_config.config.project,
+ *     config: google_runtimeconfig_config.config.name,
+ *     role: "roles/viewer",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ *
+ * ## google\_runtimeconfig\_config\_iam\_member
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.runtimeconfig.ConfigIamMember("member", {
+ *     project: google_runtimeconfig_config.config.project,
+ *     config: google_runtimeconfig_config.config.name,
+ *     role: "roles/viewer",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
  */
 export class ConfigIamPolicy extends pulumi.CustomResource {
     /**

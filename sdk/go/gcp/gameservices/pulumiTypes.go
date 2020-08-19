@@ -23,7 +23,8 @@ type GameServerClusterConnectionInfo struct {
 // GameServerClusterConnectionInfoInput is an input type that accepts GameServerClusterConnectionInfoArgs and GameServerClusterConnectionInfoOutput values.
 // You can construct a concrete instance of `GameServerClusterConnectionInfoInput` via:
 //
-//          GameServerClusterConnectionInfoArgs{...}
+// 		 GameServerClusterConnectionInfoArgs{...}
+//
 type GameServerClusterConnectionInfoInput interface {
 	pulumi.Input
 
@@ -64,11 +65,12 @@ func (i GameServerClusterConnectionInfoArgs) ToGameServerClusterConnectionInfoPt
 // GameServerClusterConnectionInfoPtrInput is an input type that accepts GameServerClusterConnectionInfoArgs, GameServerClusterConnectionInfoPtr and GameServerClusterConnectionInfoPtrOutput values.
 // You can construct a concrete instance of `GameServerClusterConnectionInfoPtrInput` via:
 //
-//          GameServerClusterConnectionInfoArgs{...}
+// 		 GameServerClusterConnectionInfoArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type GameServerClusterConnectionInfoPtrInput interface {
 	pulumi.Input
 
@@ -180,16 +182,17 @@ type GameServerClusterConnectionInfoGkeClusterReference struct {
 	// * `projects/{project_id}/locations/{location}/clusters/{cluster_id}`
 	// * `locations/{location}/clusters/{cluster_id}`
 	// * `{cluster_id}`
-	//   If project and location are not specified, the project and location of the
-	//   GameServerCluster resource are used to generate the full name of the
-	//   GKE cluster.
+	// If project and location are not specified, the project and location of the
+	// GameServerCluster resource are used to generate the full name of the
+	// GKE cluster.
 	Cluster string `pulumi:"cluster"`
 }
 
 // GameServerClusterConnectionInfoGkeClusterReferenceInput is an input type that accepts GameServerClusterConnectionInfoGkeClusterReferenceArgs and GameServerClusterConnectionInfoGkeClusterReferenceOutput values.
 // You can construct a concrete instance of `GameServerClusterConnectionInfoGkeClusterReferenceInput` via:
 //
-//          GameServerClusterConnectionInfoGkeClusterReferenceArgs{...}
+// 		 GameServerClusterConnectionInfoGkeClusterReferenceArgs{...}
+//
 type GameServerClusterConnectionInfoGkeClusterReferenceInput interface {
 	pulumi.Input
 
@@ -203,9 +206,9 @@ type GameServerClusterConnectionInfoGkeClusterReferenceArgs struct {
 	// * `projects/{project_id}/locations/{location}/clusters/{cluster_id}`
 	// * `locations/{location}/clusters/{cluster_id}`
 	// * `{cluster_id}`
-	//   If project and location are not specified, the project and location of the
-	//   GameServerCluster resource are used to generate the full name of the
-	//   GKE cluster.
+	// If project and location are not specified, the project and location of the
+	// GameServerCluster resource are used to generate the full name of the
+	// GKE cluster.
 	Cluster pulumi.StringInput `pulumi:"cluster"`
 }
 
@@ -232,11 +235,12 @@ func (i GameServerClusterConnectionInfoGkeClusterReferenceArgs) ToGameServerClus
 // GameServerClusterConnectionInfoGkeClusterReferencePtrInput is an input type that accepts GameServerClusterConnectionInfoGkeClusterReferenceArgs, GameServerClusterConnectionInfoGkeClusterReferencePtr and GameServerClusterConnectionInfoGkeClusterReferencePtrOutput values.
 // You can construct a concrete instance of `GameServerClusterConnectionInfoGkeClusterReferencePtrInput` via:
 //
-//          GameServerClusterConnectionInfoGkeClusterReferenceArgs{...}
+// 		 GameServerClusterConnectionInfoGkeClusterReferenceArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type GameServerClusterConnectionInfoGkeClusterReferencePtrInput interface {
 	pulumi.Input
 
@@ -291,9 +295,9 @@ func (o GameServerClusterConnectionInfoGkeClusterReferenceOutput) ToGameServerCl
 // * `projects/{project_id}/locations/{location}/clusters/{cluster_id}`
 // * `locations/{location}/clusters/{cluster_id}`
 // * `{cluster_id}`
-//   If project and location are not specified, the project and location of the
-//   GameServerCluster resource are used to generate the full name of the
-//   GKE cluster.
+// If project and location are not specified, the project and location of the
+// GameServerCluster resource are used to generate the full name of the
+// GKE cluster.
 func (o GameServerClusterConnectionInfoGkeClusterReferenceOutput) Cluster() pulumi.StringOutput {
 	return o.ApplyT(func(v GameServerClusterConnectionInfoGkeClusterReference) string { return v.Cluster }).(pulumi.StringOutput)
 }
@@ -323,9 +327,9 @@ func (o GameServerClusterConnectionInfoGkeClusterReferencePtrOutput) Elem() Game
 // * `projects/{project_id}/locations/{location}/clusters/{cluster_id}`
 // * `locations/{location}/clusters/{cluster_id}`
 // * `{cluster_id}`
-//   If project and location are not specified, the project and location of the
-//   GameServerCluster resource are used to generate the full name of the
-//   GKE cluster.
+// If project and location are not specified, the project and location of the
+// GameServerCluster resource are used to generate the full name of the
+// GKE cluster.
 func (o GameServerClusterConnectionInfoGkeClusterReferencePtrOutput) Cluster() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GameServerClusterConnectionInfoGkeClusterReference) *string {
 		if v == nil {
@@ -341,8 +345,8 @@ type GameServerConfigFleetConfig struct {
 	// instead. File references can contain the json or yaml format of the fleet spec. Eg:
 	// * fleetSpec = jsonencode(yamldecode(file("fleet_configs.yaml")))
 	// * fleetSpec = file("fleet_configs.json")
-	//   The format of the spec can be found :
-	//   `https://agones.dev/site/docs/reference/fleet/`.
+	// The format of the spec can be found :
+	// `https://agones.dev/site/docs/reference/fleet/`.
 	FleetSpec string `pulumi:"fleetSpec"`
 	// The name of the ScalingConfig
 	Name *string `pulumi:"name"`
@@ -351,7 +355,8 @@ type GameServerConfigFleetConfig struct {
 // GameServerConfigFleetConfigInput is an input type that accepts GameServerConfigFleetConfigArgs and GameServerConfigFleetConfigOutput values.
 // You can construct a concrete instance of `GameServerConfigFleetConfigInput` via:
 //
-//          GameServerConfigFleetConfigArgs{...}
+// 		 GameServerConfigFleetConfigArgs{...}
+//
 type GameServerConfigFleetConfigInput interface {
 	pulumi.Input
 
@@ -365,8 +370,8 @@ type GameServerConfigFleetConfigArgs struct {
 	// instead. File references can contain the json or yaml format of the fleet spec. Eg:
 	// * fleetSpec = jsonencode(yamldecode(file("fleet_configs.yaml")))
 	// * fleetSpec = file("fleet_configs.json")
-	//   The format of the spec can be found :
-	//   `https://agones.dev/site/docs/reference/fleet/`.
+	// The format of the spec can be found :
+	// `https://agones.dev/site/docs/reference/fleet/`.
 	FleetSpec pulumi.StringInput `pulumi:"fleetSpec"`
 	// The name of the ScalingConfig
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -387,7 +392,8 @@ func (i GameServerConfigFleetConfigArgs) ToGameServerConfigFleetConfigOutputWith
 // GameServerConfigFleetConfigArrayInput is an input type that accepts GameServerConfigFleetConfigArray and GameServerConfigFleetConfigArrayOutput values.
 // You can construct a concrete instance of `GameServerConfigFleetConfigArrayInput` via:
 //
-//          GameServerConfigFleetConfigArray{ GameServerConfigFleetConfigArgs{...} }
+// 		 GameServerConfigFleetConfigArray{ GameServerConfigFleetConfigArgs{...} }
+//
 type GameServerConfigFleetConfigArrayInput interface {
 	pulumi.Input
 
@@ -428,8 +434,8 @@ func (o GameServerConfigFleetConfigOutput) ToGameServerConfigFleetConfigOutputWi
 // instead. File references can contain the json or yaml format of the fleet spec. Eg:
 // * fleetSpec = jsonencode(yamldecode(file("fleet_configs.yaml")))
 // * fleetSpec = file("fleet_configs.json")
-//   The format of the spec can be found :
-//   `https://agones.dev/site/docs/reference/fleet/`.
+// The format of the spec can be found :
+// `https://agones.dev/site/docs/reference/fleet/`.
 func (o GameServerConfigFleetConfigOutput) FleetSpec() pulumi.StringOutput {
 	return o.ApplyT(func(v GameServerConfigFleetConfig) string { return v.FleetSpec }).(pulumi.StringOutput)
 }
@@ -479,7 +485,8 @@ type GameServerConfigScalingConfig struct {
 // GameServerConfigScalingConfigInput is an input type that accepts GameServerConfigScalingConfigArgs and GameServerConfigScalingConfigOutput values.
 // You can construct a concrete instance of `GameServerConfigScalingConfigInput` via:
 //
-//          GameServerConfigScalingConfigArgs{...}
+// 		 GameServerConfigScalingConfigArgs{...}
+//
 type GameServerConfigScalingConfigInput interface {
 	pulumi.Input
 
@@ -519,7 +526,8 @@ func (i GameServerConfigScalingConfigArgs) ToGameServerConfigScalingConfigOutput
 // GameServerConfigScalingConfigArrayInput is an input type that accepts GameServerConfigScalingConfigArray and GameServerConfigScalingConfigArrayOutput values.
 // You can construct a concrete instance of `GameServerConfigScalingConfigArrayInput` via:
 //
-//          GameServerConfigScalingConfigArray{ GameServerConfigScalingConfigArgs{...} }
+// 		 GameServerConfigScalingConfigArray{ GameServerConfigScalingConfigArgs{...} }
+//
 type GameServerConfigScalingConfigArrayInput interface {
 	pulumi.Input
 
@@ -621,7 +629,8 @@ type GameServerConfigScalingConfigSchedule struct {
 // GameServerConfigScalingConfigScheduleInput is an input type that accepts GameServerConfigScalingConfigScheduleArgs and GameServerConfigScalingConfigScheduleOutput values.
 // You can construct a concrete instance of `GameServerConfigScalingConfigScheduleInput` via:
 //
-//          GameServerConfigScalingConfigScheduleArgs{...}
+// 		 GameServerConfigScalingConfigScheduleArgs{...}
+//
 type GameServerConfigScalingConfigScheduleInput interface {
 	pulumi.Input
 
@@ -661,7 +670,8 @@ func (i GameServerConfigScalingConfigScheduleArgs) ToGameServerConfigScalingConf
 // GameServerConfigScalingConfigScheduleArrayInput is an input type that accepts GameServerConfigScalingConfigScheduleArray and GameServerConfigScalingConfigScheduleArrayOutput values.
 // You can construct a concrete instance of `GameServerConfigScalingConfigScheduleArrayInput` via:
 //
-//          GameServerConfigScalingConfigScheduleArray{ GameServerConfigScalingConfigScheduleArgs{...} }
+// 		 GameServerConfigScalingConfigScheduleArray{ GameServerConfigScalingConfigScheduleArgs{...} }
+//
 type GameServerConfigScalingConfigScheduleArrayInput interface {
 	pulumi.Input
 
@@ -751,7 +761,8 @@ type GameServerConfigScalingConfigSelector struct {
 // GameServerConfigScalingConfigSelectorInput is an input type that accepts GameServerConfigScalingConfigSelectorArgs and GameServerConfigScalingConfigSelectorOutput values.
 // You can construct a concrete instance of `GameServerConfigScalingConfigSelectorInput` via:
 //
-//          GameServerConfigScalingConfigSelectorArgs{...}
+// 		 GameServerConfigScalingConfigSelectorArgs{...}
+//
 type GameServerConfigScalingConfigSelectorInput interface {
 	pulumi.Input
 
@@ -779,7 +790,8 @@ func (i GameServerConfigScalingConfigSelectorArgs) ToGameServerConfigScalingConf
 // GameServerConfigScalingConfigSelectorArrayInput is an input type that accepts GameServerConfigScalingConfigSelectorArray and GameServerConfigScalingConfigSelectorArrayOutput values.
 // You can construct a concrete instance of `GameServerConfigScalingConfigSelectorArrayInput` via:
 //
-//          GameServerConfigScalingConfigSelectorArray{ GameServerConfigScalingConfigSelectorArgs{...} }
+// 		 GameServerConfigScalingConfigSelectorArray{ GameServerConfigScalingConfigSelectorArgs{...} }
+//
 type GameServerConfigScalingConfigSelectorArrayInput interface {
 	pulumi.Input
 
@@ -851,7 +863,8 @@ type GameServerDeploymentRolloutGameServerConfigOverride struct {
 // GameServerDeploymentRolloutGameServerConfigOverrideInput is an input type that accepts GameServerDeploymentRolloutGameServerConfigOverrideArgs and GameServerDeploymentRolloutGameServerConfigOverrideOutput values.
 // You can construct a concrete instance of `GameServerDeploymentRolloutGameServerConfigOverrideInput` via:
 //
-//          GameServerDeploymentRolloutGameServerConfigOverrideArgs{...}
+// 		 GameServerDeploymentRolloutGameServerConfigOverrideArgs{...}
+//
 type GameServerDeploymentRolloutGameServerConfigOverrideInput interface {
 	pulumi.Input
 
@@ -882,7 +895,8 @@ func (i GameServerDeploymentRolloutGameServerConfigOverrideArgs) ToGameServerDep
 // GameServerDeploymentRolloutGameServerConfigOverrideArrayInput is an input type that accepts GameServerDeploymentRolloutGameServerConfigOverrideArray and GameServerDeploymentRolloutGameServerConfigOverrideArrayOutput values.
 // You can construct a concrete instance of `GameServerDeploymentRolloutGameServerConfigOverrideArrayInput` via:
 //
-//          GameServerDeploymentRolloutGameServerConfigOverrideArray{ GameServerDeploymentRolloutGameServerConfigOverrideArgs{...} }
+// 		 GameServerDeploymentRolloutGameServerConfigOverrideArray{ GameServerDeploymentRolloutGameServerConfigOverrideArgs{...} }
+//
 type GameServerDeploymentRolloutGameServerConfigOverrideArrayInput interface {
 	pulumi.Input
 
@@ -959,7 +973,8 @@ type GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector struct {
 // GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorInput is an input type that accepts GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArgs and GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput values.
 // You can construct a concrete instance of `GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorInput` via:
 //
-//          GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArgs{...}
+// 		 GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArgs{...}
+//
 type GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorInput interface {
 	pulumi.Input
 
@@ -995,11 +1010,12 @@ func (i GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArgs) T
 // GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtrInput is an input type that accepts GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArgs, GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtr and GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtrOutput values.
 // You can construct a concrete instance of `GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtrInput` via:
 //
-//          GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArgs{...}
+// 		 GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtrInput interface {
 	pulumi.Input
 
@@ -1092,7 +1108,8 @@ type GetGameServerDeploymentRolloutGameServerConfigOverride struct {
 // GetGameServerDeploymentRolloutGameServerConfigOverrideInput is an input type that accepts GetGameServerDeploymentRolloutGameServerConfigOverrideArgs and GetGameServerDeploymentRolloutGameServerConfigOverrideOutput values.
 // You can construct a concrete instance of `GetGameServerDeploymentRolloutGameServerConfigOverrideInput` via:
 //
-//          GetGameServerDeploymentRolloutGameServerConfigOverrideArgs{...}
+// 		 GetGameServerDeploymentRolloutGameServerConfigOverrideArgs{...}
+//
 type GetGameServerDeploymentRolloutGameServerConfigOverrideInput interface {
 	pulumi.Input
 
@@ -1120,7 +1137,8 @@ func (i GetGameServerDeploymentRolloutGameServerConfigOverrideArgs) ToGetGameSer
 // GetGameServerDeploymentRolloutGameServerConfigOverrideArrayInput is an input type that accepts GetGameServerDeploymentRolloutGameServerConfigOverrideArray and GetGameServerDeploymentRolloutGameServerConfigOverrideArrayOutput values.
 // You can construct a concrete instance of `GetGameServerDeploymentRolloutGameServerConfigOverrideArrayInput` via:
 //
-//          GetGameServerDeploymentRolloutGameServerConfigOverrideArray{ GetGameServerDeploymentRolloutGameServerConfigOverrideArgs{...} }
+// 		 GetGameServerDeploymentRolloutGameServerConfigOverrideArray{ GetGameServerDeploymentRolloutGameServerConfigOverrideArgs{...} }
+//
 type GetGameServerDeploymentRolloutGameServerConfigOverrideArrayInput interface {
 	pulumi.Input
 
@@ -1193,7 +1211,8 @@ type GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector struct
 // GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorInput is an input type that accepts GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArgs and GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput values.
 // You can construct a concrete instance of `GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorInput` via:
 //
-//          GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArgs{...}
+// 		 GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArgs{...}
+//
 type GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorInput interface {
 	pulumi.Input
 
@@ -1220,7 +1239,8 @@ func (i GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArgs
 // GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArrayInput is an input type that accepts GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArray and GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArrayOutput values.
 // You can construct a concrete instance of `GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArrayInput` via:
 //
-//          GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArray{ GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArgs{...} }
+// 		 GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArray{ GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArgs{...} }
+//
 type GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArrayInput interface {
 	pulumi.Input
 

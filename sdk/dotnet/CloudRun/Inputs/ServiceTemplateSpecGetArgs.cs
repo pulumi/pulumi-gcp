@@ -15,6 +15,10 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         /// <summary>
         /// ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
         /// requests per container of the Revision. Values are:
+        /// - `0` thread-safe, the system should manage the max concurrency. This is
+        /// the default value.
+        /// - `1` not-thread-safe. Single concurrency
+        /// - `2-N` thread-safe, max concurrency of N
         /// </summary>
         [Input("containerConcurrency")]
         public Input<int>? ContainerConcurrency { get; set; }

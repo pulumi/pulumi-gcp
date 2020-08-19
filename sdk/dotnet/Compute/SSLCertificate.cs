@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.Compute
     /// provides a mechanism to upload an SSL key and certificate to
     /// the load balancer to serve secure connections from the user.
     /// 
+    /// 
     /// To get more information about SslCertificate, see:
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/sslCertificates)
@@ -24,6 +25,29 @@ namespace Pulumi.Gcp.Compute
     /// state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
     /// 
     /// ## Example Usage
+    /// 
+    /// ### Ssl Certificate Basic
+    /// 
+    /// ```csharp
+    /// using System.IO;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new Gcp.Compute.SSLCertificate("default", new Gcp.Compute.SSLCertificateArgs
+    ///         {
+    ///             NamePrefix = "my-certificate-",
+    ///             Description = "a description",
+    ///             PrivateKey = File.ReadAllText("path/to/private.key"),
+    ///             Certificate = File.ReadAllText("path/to/certificate.crt"),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class SSLCertificate : Pulumi.CustomResource
     {

@@ -17,12 +17,42 @@ namespace Pulumi.Gcp.Storage
     /// to the default ACL that has been defined.
     /// 
     /// For more information see
-    /// [the official documentation](https://cloud.google.com/storage/docs/access-control/lists)
-    /// and
+    /// [the official documentation](https://cloud.google.com/storage/docs/access-control/lists) 
+    /// and 
     /// [API](https://cloud.google.com/storage/docs/json_api/v1/defaultObjectAccessControls).
     /// 
     /// &gt; Want fine-grained control over default object ACLs? Use `gcp.storage.DefaultObjectAccessControl`
     /// to control individual role entity pairs.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var image_store = new Gcp.Storage.Bucket("image-store", new Gcp.Storage.BucketArgs
+    ///         {
+    ///             Location = "EU",
+    ///         });
+    ///         var image_store_default_acl = new Gcp.Storage.DefaultObjectACL("image-store-default-acl", new Gcp.Storage.DefaultObjectACLArgs
+    ///         {
+    ///             Bucket = image_store.Name,
+    ///             RoleEntities = 
+    ///             {
+    ///                 "OWNER:user-my.email@gmail.com",
+    ///                 "READER:group-mygroup",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class DefaultObjectACL : Pulumi.CustomResource
     {

@@ -23,6 +23,7 @@ import * as utilities from "../utilities";
  * Add a persistent disk to your instance when you need reliable and
  * affordable storage with consistent performance characteristics.
  *
+ *
  * To get more information about Disk, see:
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/disks)
@@ -33,6 +34,23 @@ import * as utilities from "../utilities";
  * state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
  *
  * ## Example Usage
+ *
+ * ### Disk Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultDisk = new gcp.compute.Disk("default", {
+ *     image: "debian-8-jessie-v20170523",
+ *     labels: {
+ *         environment: "dev",
+ *     },
+ *     physicalBlockSizeBytes: 4096,
+ *     type: "pd-ssd",
+ *     zone: "us-central1-a",
+ * });
+ * ```
  */
 export class Disk extends pulumi.CustomResource {
     /**

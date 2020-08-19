@@ -16,6 +16,57 @@ import * as utilities from "../utilities";
  * > **Note:** `gcp.artifactregistry.RepositoryIamPolicy` **cannot** be used in conjunction with `gcp.artifactregistry.RepositoryIamBinding` and `gcp.artifactregistry.RepositoryIamMember` or they will fight over what your policy should be.
  *
  * > **Note:** `gcp.artifactregistry.RepositoryIamBinding` resources **can be** used in conjunction with `gcp.artifactregistry.RepositoryIamMember` resources **only if** they do not grant privilege to the same role.
+ *
+ *
+ * ## google\_artifact\_registry\_repository\_iam\_policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     binding: [{
+ *         role: "roles/viewer",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const policy = new gcp.artifactregistry.RepositoryIamPolicy("policy", {
+ *     project: google_artifact_registry_repository["my-repo"].project,
+ *     location: google_artifact_registry_repository["my-repo"].location,
+ *     repository: google_artifact_registry_repository["my-repo"].name,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * ## google\_artifact\_registry\_repository\_iam\_binding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.artifactregistry.RepositoryIamBinding("binding", {
+ *     project: google_artifact_registry_repository["my-repo"].project,
+ *     location: google_artifact_registry_repository["my-repo"].location,
+ *     repository: google_artifact_registry_repository["my-repo"].name,
+ *     role: "roles/viewer",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ *
+ * ## google\_artifact\_registry\_repository\_iam\_member
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.artifactregistry.RepositoryIamMember("member", {
+ *     project: google_artifact_registry_repository["my-repo"].project,
+ *     location: google_artifact_registry_repository["my-repo"].location,
+ *     repository: google_artifact_registry_repository["my-repo"].name,
+ *     role: "roles/viewer",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
  */
 export class RepositoryIamMember extends pulumi.CustomResource {
     /**

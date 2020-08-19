@@ -11,7 +11,23 @@ import * as utilities from "../utilities";
  * [Google Identity Platform](https://console.cloud.google.com/marketplace/details/google-cloud-platform/customer-identity) in
  * the marketplace prior to using this resource.
  *
+ *
+ *
  * ## Example Usage
+ *
+ * ### Identity Platform Default Supported Idp Config Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const idpConfig = new gcp.identityplatform.DefaultSupportedIdpConfig("idp_config", {
+ *     clientId: "client-id",
+ *     clientSecret: "secret",
+ *     enabled: true,
+ *     idpId: "playgames.google.com",
+ * });
+ * ```
  */
 export class DefaultSupportedIdpConfig extends pulumi.CustomResource {
     /**

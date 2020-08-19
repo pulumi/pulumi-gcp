@@ -7,6 +7,7 @@ import * as utilities from "../utilities";
 /**
  * An EntryGroup resource represents a logical grouping of zero or more Data Catalog Entry resources.
  *
+ *
  * To get more information about EntryGroup, see:
  *
  * * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups)
@@ -14,6 +15,30 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
  *
  * ## Example Usage
+ *
+ * ### Data Catalog Entry Group Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basicEntryGroup = new gcp.datacatalog.EntryGroup("basic_entry_group", {
+ *     entryGroupId: "my_group",
+ * });
+ * ```
+ *
+ * ### Data Catalog Entry Group Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basicEntryGroup = new gcp.datacatalog.EntryGroup("basic_entry_group", {
+ *     description: "entry group created by Terraform",
+ *     displayName: "terraform entry group",
+ *     entryGroupId: "my_group",
+ * });
+ * ```
  */
 export class EntryGroup extends pulumi.CustomResource {
     /**

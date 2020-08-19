@@ -12,6 +12,7 @@ namespace Pulumi.Gcp.SourceRepo
     /// <summary>
     /// A repository (or repo) is a Git repository storing versioned source content.
     /// 
+    /// 
     /// To get more information about Repository, see:
     /// 
     /// * [API documentation](https://cloud.google.com/source-repositories/docs/reference/rest/v1/projects.repos)
@@ -19,6 +20,24 @@ namespace Pulumi.Gcp.SourceRepo
     ///     * [Official Documentation](https://cloud.google.com/source-repositories/)
     /// 
     /// ## Example Usage
+    /// 
+    /// ### Sourcerepo Repository Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var my_repo = new Gcp.SourceRepo.Repository("my-repo", new Gcp.SourceRepo.RepositoryArgs
+    ///         {
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Repository : Pulumi.CustomResource
     {

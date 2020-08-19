@@ -8,6 +8,24 @@ import * as utilities from "../utilities";
 
 /**
  * Allows management of audit logging config for a given service for a Google Cloud Platform Organization.
+ *
+ * ## Example Usage
+ *
+ *
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const config = new gcp.organizations.IamAuditConfig("config", {
+ *     auditLogConfigs: [{
+ *         exemptedMembers: ["user:joebloggs@hashicorp.com"],
+ *         logType: "DATA_READ",
+ *     }],
+ *     orgId: "your-organization-id",
+ *     service: "allServices",
+ * });
+ * ```
  */
 export class IamAuditConfig extends pulumi.CustomResource {
     /**

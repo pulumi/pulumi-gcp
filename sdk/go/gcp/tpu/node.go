@@ -12,13 +12,12 @@ import (
 
 // A Cloud TPU instance.
 //
+//
 // To get more information about Node, see:
 //
 // * [API documentation](https://cloud.google.com/tpu/docs/reference/rest/)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/tpu/docs/)
-//
-// ## Example Usage
 type Node struct {
 	pulumi.CustomResourceState
 

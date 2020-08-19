@@ -16,6 +16,121 @@ import * as utilities from "../utilities";
  * > **Note:** `gcp.iap.TunnelInstanceIAMPolicy` **cannot** be used in conjunction with `gcp.iap.TunnelInstanceIAMBinding` and `gcp.iap.TunnelInstanceIAMMember` or they will fight over what your policy should be.
  *
  * > **Note:** `gcp.iap.TunnelInstanceIAMBinding` resources **can be** used in conjunction with `gcp.iap.TunnelInstanceIAMMember` resources **only if** they do not grant privilege to the same role.
+ *
+ *
+ *
+ * ## google\_iap\_tunnel\_instance\_iam\_policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     binding: [{
+ *         role: "roles/iap.tunnelResourceAccessor",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const policy = new gcp.iap.TunnelInstanceIAMPolicy("policy", {
+ *     project: google_compute_instance.tunnelvm.project,
+ *     zone: google_compute_instance.tunnelvm.zone,
+ *     instance: google_compute_instance.tunnelvm.name,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     binding: [{
+ *         role: "roles/iap.tunnelResourceAccessor",
+ *         members: ["user:jane@example.com"],
+ *         condition: {
+ *             title: "expires_after_2019_12_31",
+ *             description: "Expiring at midnight of 2019-12-31",
+ *             expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *         },
+ *     }],
+ * });
+ * const policy = new gcp.iap.TunnelInstanceIAMPolicy("policy", {
+ *     project: google_compute_instance.tunnelvm.project,
+ *     zone: google_compute_instance.tunnelvm.zone,
+ *     instance: google_compute_instance.tunnelvm.name,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ * ## google\_iap\_tunnel\_instance\_iam\_binding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.iap.TunnelInstanceIAMBinding("binding", {
+ *     project: google_compute_instance.tunnelvm.project,
+ *     zone: google_compute_instance.tunnelvm.zone,
+ *     instance: google_compute_instance.tunnelvm.name,
+ *     role: "roles/iap.tunnelResourceAccessor",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.iap.TunnelInstanceIAMBinding("binding", {
+ *     project: google_compute_instance.tunnelvm.project,
+ *     zone: google_compute_instance.tunnelvm.zone,
+ *     instance: google_compute_instance.tunnelvm.name,
+ *     role: "roles/iap.tunnelResourceAccessor",
+ *     members: ["user:jane@example.com"],
+ *     condition: {
+ *         title: "expires_after_2019_12_31",
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *     },
+ * });
+ * ```
+ * ## google\_iap\_tunnel\_instance\_iam\_member
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.iap.TunnelInstanceIAMMember("member", {
+ *     project: google_compute_instance.tunnelvm.project,
+ *     zone: google_compute_instance.tunnelvm.zone,
+ *     instance: google_compute_instance.tunnelvm.name,
+ *     role: "roles/iap.tunnelResourceAccessor",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.iap.TunnelInstanceIAMMember("member", {
+ *     project: google_compute_instance.tunnelvm.project,
+ *     zone: google_compute_instance.tunnelvm.zone,
+ *     instance: google_compute_instance.tunnelvm.name,
+ *     role: "roles/iap.tunnelResourceAccessor",
+ *     member: "user:jane@example.com",
+ *     condition: {
+ *         title: "expires_after_2019_12_31",
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *     },
+ * });
+ * ```
  */
 export class TunnelInstanceIAMBinding extends pulumi.CustomResource {
     /**

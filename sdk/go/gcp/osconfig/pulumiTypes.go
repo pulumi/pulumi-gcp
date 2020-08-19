@@ -38,7 +38,8 @@ type GuestPoliciesAssignment struct {
 // GuestPoliciesAssignmentInput is an input type that accepts GuestPoliciesAssignmentArgs and GuestPoliciesAssignmentOutput values.
 // You can construct a concrete instance of `GuestPoliciesAssignmentInput` via:
 //
-//          GuestPoliciesAssignmentArgs{...}
+// 		 GuestPoliciesAssignmentArgs{...}
+//
 type GuestPoliciesAssignmentInput interface {
 	pulumi.Input
 
@@ -94,11 +95,12 @@ func (i GuestPoliciesAssignmentArgs) ToGuestPoliciesAssignmentPtrOutputWithConte
 // GuestPoliciesAssignmentPtrInput is an input type that accepts GuestPoliciesAssignmentArgs, GuestPoliciesAssignmentPtr and GuestPoliciesAssignmentPtrOutput values.
 // You can construct a concrete instance of `GuestPoliciesAssignmentPtrInput` via:
 //
-//          GuestPoliciesAssignmentArgs{...}
+// 		 GuestPoliciesAssignmentArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type GuestPoliciesAssignmentPtrInput interface {
 	pulumi.Input
 
@@ -273,7 +275,8 @@ type GuestPoliciesAssignmentGroupLabel struct {
 // GuestPoliciesAssignmentGroupLabelInput is an input type that accepts GuestPoliciesAssignmentGroupLabelArgs and GuestPoliciesAssignmentGroupLabelOutput values.
 // You can construct a concrete instance of `GuestPoliciesAssignmentGroupLabelInput` via:
 //
-//          GuestPoliciesAssignmentGroupLabelArgs{...}
+// 		 GuestPoliciesAssignmentGroupLabelArgs{...}
+//
 type GuestPoliciesAssignmentGroupLabelInput interface {
 	pulumi.Input
 
@@ -301,7 +304,8 @@ func (i GuestPoliciesAssignmentGroupLabelArgs) ToGuestPoliciesAssignmentGroupLab
 // GuestPoliciesAssignmentGroupLabelArrayInput is an input type that accepts GuestPoliciesAssignmentGroupLabelArray and GuestPoliciesAssignmentGroupLabelArrayOutput values.
 // You can construct a concrete instance of `GuestPoliciesAssignmentGroupLabelArrayInput` via:
 //
-//          GuestPoliciesAssignmentGroupLabelArray{ GuestPoliciesAssignmentGroupLabelArgs{...} }
+// 		 GuestPoliciesAssignmentGroupLabelArray{ GuestPoliciesAssignmentGroupLabelArgs{...} }
+//
 type GuestPoliciesAssignmentGroupLabelArrayInput interface {
 	pulumi.Input
 
@@ -374,7 +378,8 @@ type GuestPoliciesAssignmentOsType struct {
 // GuestPoliciesAssignmentOsTypeInput is an input type that accepts GuestPoliciesAssignmentOsTypeArgs and GuestPoliciesAssignmentOsTypeOutput values.
 // You can construct a concrete instance of `GuestPoliciesAssignmentOsTypeInput` via:
 //
-//          GuestPoliciesAssignmentOsTypeArgs{...}
+// 		 GuestPoliciesAssignmentOsTypeArgs{...}
+//
 type GuestPoliciesAssignmentOsTypeInput interface {
 	pulumi.Input
 
@@ -406,7 +411,8 @@ func (i GuestPoliciesAssignmentOsTypeArgs) ToGuestPoliciesAssignmentOsTypeOutput
 // GuestPoliciesAssignmentOsTypeArrayInput is an input type that accepts GuestPoliciesAssignmentOsTypeArray and GuestPoliciesAssignmentOsTypeArrayOutput values.
 // You can construct a concrete instance of `GuestPoliciesAssignmentOsTypeArrayInput` via:
 //
-//          GuestPoliciesAssignmentOsTypeArray{ GuestPoliciesAssignmentOsTypeArgs{...} }
+// 		 GuestPoliciesAssignmentOsTypeArray{ GuestPoliciesAssignmentOsTypeArgs{...} }
+//
 type GuestPoliciesAssignmentOsTypeArrayInput interface {
 	pulumi.Input
 
@@ -504,7 +510,8 @@ type GuestPoliciesPackage struct {
 // GuestPoliciesPackageInput is an input type that accepts GuestPoliciesPackageArgs and GuestPoliciesPackageOutput values.
 // You can construct a concrete instance of `GuestPoliciesPackageInput` via:
 //
-//          GuestPoliciesPackageArgs{...}
+// 		 GuestPoliciesPackageArgs{...}
+//
 type GuestPoliciesPackageInput interface {
 	pulumi.Input
 
@@ -551,7 +558,8 @@ func (i GuestPoliciesPackageArgs) ToGuestPoliciesPackageOutputWithContext(ctx co
 // GuestPoliciesPackageArrayInput is an input type that accepts GuestPoliciesPackageArray and GuestPoliciesPackageArrayOutput values.
 // You can construct a concrete instance of `GuestPoliciesPackageArrayInput` via:
 //
-//          GuestPoliciesPackageArray{ GuestPoliciesPackageArgs{...} }
+// 		 GuestPoliciesPackageArray{ GuestPoliciesPackageArgs{...} }
+//
 type GuestPoliciesPackageArrayInput interface {
 	pulumi.Input
 
@@ -655,7 +663,8 @@ type GuestPoliciesPackageRepository struct {
 // GuestPoliciesPackageRepositoryInput is an input type that accepts GuestPoliciesPackageRepositoryArgs and GuestPoliciesPackageRepositoryOutput values.
 // You can construct a concrete instance of `GuestPoliciesPackageRepositoryInput` via:
 //
-//          GuestPoliciesPackageRepositoryArgs{...}
+// 		 GuestPoliciesPackageRepositoryArgs{...}
+//
 type GuestPoliciesPackageRepositoryInput interface {
 	pulumi.Input
 
@@ -693,7 +702,8 @@ func (i GuestPoliciesPackageRepositoryArgs) ToGuestPoliciesPackageRepositoryOutp
 // GuestPoliciesPackageRepositoryArrayInput is an input type that accepts GuestPoliciesPackageRepositoryArray and GuestPoliciesPackageRepositoryArrayOutput values.
 // You can construct a concrete instance of `GuestPoliciesPackageRepositoryArrayInput` via:
 //
-//          GuestPoliciesPackageRepositoryArray{ GuestPoliciesPackageRepositoryArgs{...} }
+// 		 GuestPoliciesPackageRepositoryArray{ GuestPoliciesPackageRepositoryArgs{...} }
+//
 type GuestPoliciesPackageRepositoryArrayInput interface {
 	pulumi.Input
 
@@ -792,7 +802,8 @@ type GuestPoliciesPackageRepositoryApt struct {
 // GuestPoliciesPackageRepositoryAptInput is an input type that accepts GuestPoliciesPackageRepositoryAptArgs and GuestPoliciesPackageRepositoryAptOutput values.
 // You can construct a concrete instance of `GuestPoliciesPackageRepositoryAptInput` via:
 //
-//          GuestPoliciesPackageRepositoryAptArgs{...}
+// 		 GuestPoliciesPackageRepositoryAptArgs{...}
+//
 type GuestPoliciesPackageRepositoryAptInput interface {
 	pulumi.Input
 
@@ -839,11 +850,12 @@ func (i GuestPoliciesPackageRepositoryAptArgs) ToGuestPoliciesPackageRepositoryA
 // GuestPoliciesPackageRepositoryAptPtrInput is an input type that accepts GuestPoliciesPackageRepositoryAptArgs, GuestPoliciesPackageRepositoryAptPtr and GuestPoliciesPackageRepositoryAptPtrOutput values.
 // You can construct a concrete instance of `GuestPoliciesPackageRepositoryAptPtrInput` via:
 //
-//          GuestPoliciesPackageRepositoryAptArgs{...}
+// 		 GuestPoliciesPackageRepositoryAptArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type GuestPoliciesPackageRepositoryAptPtrInput interface {
 	pulumi.Input
 
@@ -1005,7 +1017,8 @@ type GuestPoliciesPackageRepositoryGoo struct {
 // GuestPoliciesPackageRepositoryGooInput is an input type that accepts GuestPoliciesPackageRepositoryGooArgs and GuestPoliciesPackageRepositoryGooOutput values.
 // You can construct a concrete instance of `GuestPoliciesPackageRepositoryGooInput` via:
 //
-//          GuestPoliciesPackageRepositoryGooArgs{...}
+// 		 GuestPoliciesPackageRepositoryGooArgs{...}
+//
 type GuestPoliciesPackageRepositoryGooInput interface {
 	pulumi.Input
 
@@ -1046,11 +1059,12 @@ func (i GuestPoliciesPackageRepositoryGooArgs) ToGuestPoliciesPackageRepositoryG
 // GuestPoliciesPackageRepositoryGooPtrInput is an input type that accepts GuestPoliciesPackageRepositoryGooArgs, GuestPoliciesPackageRepositoryGooPtr and GuestPoliciesPackageRepositoryGooPtrOutput values.
 // You can construct a concrete instance of `GuestPoliciesPackageRepositoryGooPtrInput` via:
 //
-//          GuestPoliciesPackageRepositoryGooArgs{...}
+// 		 GuestPoliciesPackageRepositoryGooArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type GuestPoliciesPackageRepositoryGooPtrInput interface {
 	pulumi.Input
 
@@ -1169,7 +1183,8 @@ type GuestPoliciesPackageRepositoryYum struct {
 // GuestPoliciesPackageRepositoryYumInput is an input type that accepts GuestPoliciesPackageRepositoryYumArgs and GuestPoliciesPackageRepositoryYumOutput values.
 // You can construct a concrete instance of `GuestPoliciesPackageRepositoryYumInput` via:
 //
-//          GuestPoliciesPackageRepositoryYumArgs{...}
+// 		 GuestPoliciesPackageRepositoryYumArgs{...}
+//
 type GuestPoliciesPackageRepositoryYumInput interface {
 	pulumi.Input
 
@@ -1212,11 +1227,12 @@ func (i GuestPoliciesPackageRepositoryYumArgs) ToGuestPoliciesPackageRepositoryY
 // GuestPoliciesPackageRepositoryYumPtrInput is an input type that accepts GuestPoliciesPackageRepositoryYumArgs, GuestPoliciesPackageRepositoryYumPtr and GuestPoliciesPackageRepositoryYumPtrOutput values.
 // You can construct a concrete instance of `GuestPoliciesPackageRepositoryYumPtrInput` via:
 //
-//          GuestPoliciesPackageRepositoryYumArgs{...}
+// 		 GuestPoliciesPackageRepositoryYumArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type GuestPoliciesPackageRepositoryYumPtrInput interface {
 	pulumi.Input
 
@@ -1361,7 +1377,8 @@ type GuestPoliciesPackageRepositoryZypper struct {
 // GuestPoliciesPackageRepositoryZypperInput is an input type that accepts GuestPoliciesPackageRepositoryZypperArgs and GuestPoliciesPackageRepositoryZypperOutput values.
 // You can construct a concrete instance of `GuestPoliciesPackageRepositoryZypperInput` via:
 //
-//          GuestPoliciesPackageRepositoryZypperArgs{...}
+// 		 GuestPoliciesPackageRepositoryZypperArgs{...}
+//
 type GuestPoliciesPackageRepositoryZypperInput interface {
 	pulumi.Input
 
@@ -1404,11 +1421,12 @@ func (i GuestPoliciesPackageRepositoryZypperArgs) ToGuestPoliciesPackageReposito
 // GuestPoliciesPackageRepositoryZypperPtrInput is an input type that accepts GuestPoliciesPackageRepositoryZypperArgs, GuestPoliciesPackageRepositoryZypperPtr and GuestPoliciesPackageRepositoryZypperPtrOutput values.
 // You can construct a concrete instance of `GuestPoliciesPackageRepositoryZypperPtrInput` via:
 //
-//          GuestPoliciesPackageRepositoryZypperArgs{...}
+// 		 GuestPoliciesPackageRepositoryZypperArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type GuestPoliciesPackageRepositoryZypperPtrInput interface {
 	pulumi.Input
 
@@ -1570,7 +1588,8 @@ type GuestPoliciesRecipe struct {
 // GuestPoliciesRecipeInput is an input type that accepts GuestPoliciesRecipeArgs and GuestPoliciesRecipeOutput values.
 // You can construct a concrete instance of `GuestPoliciesRecipeInput` via:
 //
-//          GuestPoliciesRecipeArgs{...}
+// 		 GuestPoliciesRecipeArgs{...}
+//
 type GuestPoliciesRecipeInput interface {
 	pulumi.Input
 
@@ -1622,7 +1641,8 @@ func (i GuestPoliciesRecipeArgs) ToGuestPoliciesRecipeOutputWithContext(ctx cont
 // GuestPoliciesRecipeArrayInput is an input type that accepts GuestPoliciesRecipeArray and GuestPoliciesRecipeArrayOutput values.
 // You can construct a concrete instance of `GuestPoliciesRecipeArrayInput` via:
 //
-//          GuestPoliciesRecipeArray{ GuestPoliciesRecipeArgs{...} }
+// 		 GuestPoliciesRecipeArray{ GuestPoliciesRecipeArgs{...} }
+//
 type GuestPoliciesRecipeArrayInput interface {
 	pulumi.Input
 
@@ -1741,7 +1761,8 @@ type GuestPoliciesRecipeArtifact struct {
 // GuestPoliciesRecipeArtifactInput is an input type that accepts GuestPoliciesRecipeArtifactArgs and GuestPoliciesRecipeArtifactOutput values.
 // You can construct a concrete instance of `GuestPoliciesRecipeArtifactInput` via:
 //
-//          GuestPoliciesRecipeArtifactArgs{...}
+// 		 GuestPoliciesRecipeArtifactArgs{...}
+//
 type GuestPoliciesRecipeArtifactInput interface {
 	pulumi.Input
 
@@ -1780,7 +1801,8 @@ func (i GuestPoliciesRecipeArtifactArgs) ToGuestPoliciesRecipeArtifactOutputWith
 // GuestPoliciesRecipeArtifactArrayInput is an input type that accepts GuestPoliciesRecipeArtifactArray and GuestPoliciesRecipeArtifactArrayOutput values.
 // You can construct a concrete instance of `GuestPoliciesRecipeArtifactArrayInput` via:
 //
-//          GuestPoliciesRecipeArtifactArray{ GuestPoliciesRecipeArtifactArgs{...} }
+// 		 GuestPoliciesRecipeArtifactArray{ GuestPoliciesRecipeArtifactArgs{...} }
+//
 type GuestPoliciesRecipeArtifactArrayInput interface {
 	pulumi.Input
 
@@ -1876,7 +1898,8 @@ type GuestPoliciesRecipeArtifactGcs struct {
 // GuestPoliciesRecipeArtifactGcsInput is an input type that accepts GuestPoliciesRecipeArtifactGcsArgs and GuestPoliciesRecipeArtifactGcsOutput values.
 // You can construct a concrete instance of `GuestPoliciesRecipeArtifactGcsInput` via:
 //
-//          GuestPoliciesRecipeArtifactGcsArgs{...}
+// 		 GuestPoliciesRecipeArtifactGcsArgs{...}
+//
 type GuestPoliciesRecipeArtifactGcsInput interface {
 	pulumi.Input
 
@@ -1919,11 +1942,12 @@ func (i GuestPoliciesRecipeArtifactGcsArgs) ToGuestPoliciesRecipeArtifactGcsPtrO
 // GuestPoliciesRecipeArtifactGcsPtrInput is an input type that accepts GuestPoliciesRecipeArtifactGcsArgs, GuestPoliciesRecipeArtifactGcsPtr and GuestPoliciesRecipeArtifactGcsPtrOutput values.
 // You can construct a concrete instance of `GuestPoliciesRecipeArtifactGcsPtrInput` via:
 //
-//          GuestPoliciesRecipeArtifactGcsArgs{...}
+// 		 GuestPoliciesRecipeArtifactGcsArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type GuestPoliciesRecipeArtifactGcsPtrInput interface {
 	pulumi.Input
 
@@ -2054,7 +2078,8 @@ type GuestPoliciesRecipeArtifactRemote struct {
 // GuestPoliciesRecipeArtifactRemoteInput is an input type that accepts GuestPoliciesRecipeArtifactRemoteArgs and GuestPoliciesRecipeArtifactRemoteOutput values.
 // You can construct a concrete instance of `GuestPoliciesRecipeArtifactRemoteInput` via:
 //
-//          GuestPoliciesRecipeArtifactRemoteArgs{...}
+// 		 GuestPoliciesRecipeArtifactRemoteArgs{...}
+//
 type GuestPoliciesRecipeArtifactRemoteInput interface {
 	pulumi.Input
 
@@ -2094,11 +2119,12 @@ func (i GuestPoliciesRecipeArtifactRemoteArgs) ToGuestPoliciesRecipeArtifactRemo
 // GuestPoliciesRecipeArtifactRemotePtrInput is an input type that accepts GuestPoliciesRecipeArtifactRemoteArgs, GuestPoliciesRecipeArtifactRemotePtr and GuestPoliciesRecipeArtifactRemotePtrOutput values.
 // You can construct a concrete instance of `GuestPoliciesRecipeArtifactRemotePtrInput` via:
 //
-//          GuestPoliciesRecipeArtifactRemoteArgs{...}
+// 		 GuestPoliciesRecipeArtifactRemoteArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type GuestPoliciesRecipeArtifactRemotePtrInput interface {
 	pulumi.Input
 
@@ -2227,7 +2253,8 @@ type GuestPoliciesRecipeInstallStep struct {
 // GuestPoliciesRecipeInstallStepInput is an input type that accepts GuestPoliciesRecipeInstallStepArgs and GuestPoliciesRecipeInstallStepOutput values.
 // You can construct a concrete instance of `GuestPoliciesRecipeInstallStepInput` via:
 //
-//          GuestPoliciesRecipeInstallStepArgs{...}
+// 		 GuestPoliciesRecipeInstallStepArgs{...}
+//
 type GuestPoliciesRecipeInstallStepInput interface {
 	pulumi.Input
 
@@ -2274,7 +2301,8 @@ func (i GuestPoliciesRecipeInstallStepArgs) ToGuestPoliciesRecipeInstallStepOutp
 // GuestPoliciesRecipeInstallStepArrayInput is an input type that accepts GuestPoliciesRecipeInstallStepArray and GuestPoliciesRecipeInstallStepArrayOutput values.
 // You can construct a concrete instance of `GuestPoliciesRecipeInstallStepArrayInput` via:
 //
-//          GuestPoliciesRecipeInstallStepArray{ GuestPoliciesRecipeInstallStepArgs{...} }
+// 		 GuestPoliciesRecipeInstallStepArray{ GuestPoliciesRecipeInstallStepArgs{...} }
+//
 type GuestPoliciesRecipeInstallStepArrayInput interface {
 	pulumi.Input
 
@@ -2393,7 +2421,8 @@ type GuestPoliciesRecipeInstallStepArchiveExtraction struct {
 // GuestPoliciesRecipeInstallStepArchiveExtractionInput is an input type that accepts GuestPoliciesRecipeInstallStepArchiveExtractionArgs and GuestPoliciesRecipeInstallStepArchiveExtractionOutput values.
 // You can construct a concrete instance of `GuestPoliciesRecipeInstallStepArchiveExtractionInput` via:
 //
-//          GuestPoliciesRecipeInstallStepArchiveExtractionArgs{...}
+// 		 GuestPoliciesRecipeInstallStepArchiveExtractionArgs{...}
+//
 type GuestPoliciesRecipeInstallStepArchiveExtractionInput interface {
 	pulumi.Input
 
@@ -2434,11 +2463,12 @@ func (i GuestPoliciesRecipeInstallStepArchiveExtractionArgs) ToGuestPoliciesReci
 // GuestPoliciesRecipeInstallStepArchiveExtractionPtrInput is an input type that accepts GuestPoliciesRecipeInstallStepArchiveExtractionArgs, GuestPoliciesRecipeInstallStepArchiveExtractionPtr and GuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput values.
 // You can construct a concrete instance of `GuestPoliciesRecipeInstallStepArchiveExtractionPtrInput` via:
 //
-//          GuestPoliciesRecipeInstallStepArchiveExtractionArgs{...}
+// 		 GuestPoliciesRecipeInstallStepArchiveExtractionArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type GuestPoliciesRecipeInstallStepArchiveExtractionPtrInput interface {
 	pulumi.Input
 
@@ -2563,7 +2593,8 @@ type GuestPoliciesRecipeInstallStepDpkgInstallation struct {
 // GuestPoliciesRecipeInstallStepDpkgInstallationInput is an input type that accepts GuestPoliciesRecipeInstallStepDpkgInstallationArgs and GuestPoliciesRecipeInstallStepDpkgInstallationOutput values.
 // You can construct a concrete instance of `GuestPoliciesRecipeInstallStepDpkgInstallationInput` via:
 //
-//          GuestPoliciesRecipeInstallStepDpkgInstallationArgs{...}
+// 		 GuestPoliciesRecipeInstallStepDpkgInstallationArgs{...}
+//
 type GuestPoliciesRecipeInstallStepDpkgInstallationInput interface {
 	pulumi.Input
 
@@ -2599,11 +2630,12 @@ func (i GuestPoliciesRecipeInstallStepDpkgInstallationArgs) ToGuestPoliciesRecip
 // GuestPoliciesRecipeInstallStepDpkgInstallationPtrInput is an input type that accepts GuestPoliciesRecipeInstallStepDpkgInstallationArgs, GuestPoliciesRecipeInstallStepDpkgInstallationPtr and GuestPoliciesRecipeInstallStepDpkgInstallationPtrOutput values.
 // You can construct a concrete instance of `GuestPoliciesRecipeInstallStepDpkgInstallationPtrInput` via:
 //
-//          GuestPoliciesRecipeInstallStepDpkgInstallationArgs{...}
+// 		 GuestPoliciesRecipeInstallStepDpkgInstallationArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type GuestPoliciesRecipeInstallStepDpkgInstallationPtrInput interface {
 	pulumi.Input
 
@@ -2708,7 +2740,8 @@ type GuestPoliciesRecipeInstallStepFileCopy struct {
 // GuestPoliciesRecipeInstallStepFileCopyInput is an input type that accepts GuestPoliciesRecipeInstallStepFileCopyArgs and GuestPoliciesRecipeInstallStepFileCopyOutput values.
 // You can construct a concrete instance of `GuestPoliciesRecipeInstallStepFileCopyInput` via:
 //
-//          GuestPoliciesRecipeInstallStepFileCopyArgs{...}
+// 		 GuestPoliciesRecipeInstallStepFileCopyArgs{...}
+//
 type GuestPoliciesRecipeInstallStepFileCopyInput interface {
 	pulumi.Input
 
@@ -2756,11 +2789,12 @@ func (i GuestPoliciesRecipeInstallStepFileCopyArgs) ToGuestPoliciesRecipeInstall
 // GuestPoliciesRecipeInstallStepFileCopyPtrInput is an input type that accepts GuestPoliciesRecipeInstallStepFileCopyArgs, GuestPoliciesRecipeInstallStepFileCopyPtr and GuestPoliciesRecipeInstallStepFileCopyPtrOutput values.
 // You can construct a concrete instance of `GuestPoliciesRecipeInstallStepFileCopyPtrInput` via:
 //
-//          GuestPoliciesRecipeInstallStepFileCopyArgs{...}
+// 		 GuestPoliciesRecipeInstallStepFileCopyArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type GuestPoliciesRecipeInstallStepFileCopyPtrInput interface {
 	pulumi.Input
 
@@ -2914,7 +2948,8 @@ type GuestPoliciesRecipeInstallStepFileExec struct {
 // GuestPoliciesRecipeInstallStepFileExecInput is an input type that accepts GuestPoliciesRecipeInstallStepFileExecArgs and GuestPoliciesRecipeInstallStepFileExecOutput values.
 // You can construct a concrete instance of `GuestPoliciesRecipeInstallStepFileExecInput` via:
 //
-//          GuestPoliciesRecipeInstallStepFileExecArgs{...}
+// 		 GuestPoliciesRecipeInstallStepFileExecArgs{...}
+//
 type GuestPoliciesRecipeInstallStepFileExecInput interface {
 	pulumi.Input
 
@@ -2956,11 +2991,12 @@ func (i GuestPoliciesRecipeInstallStepFileExecArgs) ToGuestPoliciesRecipeInstall
 // GuestPoliciesRecipeInstallStepFileExecPtrInput is an input type that accepts GuestPoliciesRecipeInstallStepFileExecArgs, GuestPoliciesRecipeInstallStepFileExecPtr and GuestPoliciesRecipeInstallStepFileExecPtrOutput values.
 // You can construct a concrete instance of `GuestPoliciesRecipeInstallStepFileExecPtrInput` via:
 //
-//          GuestPoliciesRecipeInstallStepFileExecArgs{...}
+// 		 GuestPoliciesRecipeInstallStepFileExecArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type GuestPoliciesRecipeInstallStepFileExecPtrInput interface {
 	pulumi.Input
 
@@ -3100,7 +3136,8 @@ type GuestPoliciesRecipeInstallStepMsiInstallation struct {
 // GuestPoliciesRecipeInstallStepMsiInstallationInput is an input type that accepts GuestPoliciesRecipeInstallStepMsiInstallationArgs and GuestPoliciesRecipeInstallStepMsiInstallationOutput values.
 // You can construct a concrete instance of `GuestPoliciesRecipeInstallStepMsiInstallationInput` via:
 //
-//          GuestPoliciesRecipeInstallStepMsiInstallationArgs{...}
+// 		 GuestPoliciesRecipeInstallStepMsiInstallationArgs{...}
+//
 type GuestPoliciesRecipeInstallStepMsiInstallationInput interface {
 	pulumi.Input
 
@@ -3140,11 +3177,12 @@ func (i GuestPoliciesRecipeInstallStepMsiInstallationArgs) ToGuestPoliciesRecipe
 // GuestPoliciesRecipeInstallStepMsiInstallationPtrInput is an input type that accepts GuestPoliciesRecipeInstallStepMsiInstallationArgs, GuestPoliciesRecipeInstallStepMsiInstallationPtr and GuestPoliciesRecipeInstallStepMsiInstallationPtrOutput values.
 // You can construct a concrete instance of `GuestPoliciesRecipeInstallStepMsiInstallationPtrInput` via:
 //
-//          GuestPoliciesRecipeInstallStepMsiInstallationArgs{...}
+// 		 GuestPoliciesRecipeInstallStepMsiInstallationArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type GuestPoliciesRecipeInstallStepMsiInstallationPtrInput interface {
 	pulumi.Input
 
@@ -3267,7 +3305,8 @@ type GuestPoliciesRecipeInstallStepRpmInstallation struct {
 // GuestPoliciesRecipeInstallStepRpmInstallationInput is an input type that accepts GuestPoliciesRecipeInstallStepRpmInstallationArgs and GuestPoliciesRecipeInstallStepRpmInstallationOutput values.
 // You can construct a concrete instance of `GuestPoliciesRecipeInstallStepRpmInstallationInput` via:
 //
-//          GuestPoliciesRecipeInstallStepRpmInstallationArgs{...}
+// 		 GuestPoliciesRecipeInstallStepRpmInstallationArgs{...}
+//
 type GuestPoliciesRecipeInstallStepRpmInstallationInput interface {
 	pulumi.Input
 
@@ -3303,11 +3342,12 @@ func (i GuestPoliciesRecipeInstallStepRpmInstallationArgs) ToGuestPoliciesRecipe
 // GuestPoliciesRecipeInstallStepRpmInstallationPtrInput is an input type that accepts GuestPoliciesRecipeInstallStepRpmInstallationArgs, GuestPoliciesRecipeInstallStepRpmInstallationPtr and GuestPoliciesRecipeInstallStepRpmInstallationPtrOutput values.
 // You can construct a concrete instance of `GuestPoliciesRecipeInstallStepRpmInstallationPtrInput` via:
 //
-//          GuestPoliciesRecipeInstallStepRpmInstallationArgs{...}
+// 		 GuestPoliciesRecipeInstallStepRpmInstallationArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type GuestPoliciesRecipeInstallStepRpmInstallationPtrInput interface {
 	pulumi.Input
 
@@ -3406,7 +3446,8 @@ type GuestPoliciesRecipeInstallStepScriptRun struct {
 // GuestPoliciesRecipeInstallStepScriptRunInput is an input type that accepts GuestPoliciesRecipeInstallStepScriptRunArgs and GuestPoliciesRecipeInstallStepScriptRunOutput values.
 // You can construct a concrete instance of `GuestPoliciesRecipeInstallStepScriptRunInput` via:
 //
-//          GuestPoliciesRecipeInstallStepScriptRunArgs{...}
+// 		 GuestPoliciesRecipeInstallStepScriptRunArgs{...}
+//
 type GuestPoliciesRecipeInstallStepScriptRunInput interface {
 	pulumi.Input
 
@@ -3448,11 +3489,12 @@ func (i GuestPoliciesRecipeInstallStepScriptRunArgs) ToGuestPoliciesRecipeInstal
 // GuestPoliciesRecipeInstallStepScriptRunPtrInput is an input type that accepts GuestPoliciesRecipeInstallStepScriptRunArgs, GuestPoliciesRecipeInstallStepScriptRunPtr and GuestPoliciesRecipeInstallStepScriptRunPtrOutput values.
 // You can construct a concrete instance of `GuestPoliciesRecipeInstallStepScriptRunPtrInput` via:
 //
-//          GuestPoliciesRecipeInstallStepScriptRunArgs{...}
+// 		 GuestPoliciesRecipeInstallStepScriptRunArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type GuestPoliciesRecipeInstallStepScriptRunPtrInput interface {
 	pulumi.Input
 
@@ -3596,7 +3638,8 @@ type GuestPoliciesRecipeUpdateStep struct {
 // GuestPoliciesRecipeUpdateStepInput is an input type that accepts GuestPoliciesRecipeUpdateStepArgs and GuestPoliciesRecipeUpdateStepOutput values.
 // You can construct a concrete instance of `GuestPoliciesRecipeUpdateStepInput` via:
 //
-//          GuestPoliciesRecipeUpdateStepArgs{...}
+// 		 GuestPoliciesRecipeUpdateStepArgs{...}
+//
 type GuestPoliciesRecipeUpdateStepInput interface {
 	pulumi.Input
 
@@ -3643,7 +3686,8 @@ func (i GuestPoliciesRecipeUpdateStepArgs) ToGuestPoliciesRecipeUpdateStepOutput
 // GuestPoliciesRecipeUpdateStepArrayInput is an input type that accepts GuestPoliciesRecipeUpdateStepArray and GuestPoliciesRecipeUpdateStepArrayOutput values.
 // You can construct a concrete instance of `GuestPoliciesRecipeUpdateStepArrayInput` via:
 //
-//          GuestPoliciesRecipeUpdateStepArray{ GuestPoliciesRecipeUpdateStepArgs{...} }
+// 		 GuestPoliciesRecipeUpdateStepArray{ GuestPoliciesRecipeUpdateStepArgs{...} }
+//
 type GuestPoliciesRecipeUpdateStepArrayInput interface {
 	pulumi.Input
 
@@ -3762,7 +3806,8 @@ type GuestPoliciesRecipeUpdateStepArchiveExtraction struct {
 // GuestPoliciesRecipeUpdateStepArchiveExtractionInput is an input type that accepts GuestPoliciesRecipeUpdateStepArchiveExtractionArgs and GuestPoliciesRecipeUpdateStepArchiveExtractionOutput values.
 // You can construct a concrete instance of `GuestPoliciesRecipeUpdateStepArchiveExtractionInput` via:
 //
-//          GuestPoliciesRecipeUpdateStepArchiveExtractionArgs{...}
+// 		 GuestPoliciesRecipeUpdateStepArchiveExtractionArgs{...}
+//
 type GuestPoliciesRecipeUpdateStepArchiveExtractionInput interface {
 	pulumi.Input
 
@@ -3803,11 +3848,12 @@ func (i GuestPoliciesRecipeUpdateStepArchiveExtractionArgs) ToGuestPoliciesRecip
 // GuestPoliciesRecipeUpdateStepArchiveExtractionPtrInput is an input type that accepts GuestPoliciesRecipeUpdateStepArchiveExtractionArgs, GuestPoliciesRecipeUpdateStepArchiveExtractionPtr and GuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput values.
 // You can construct a concrete instance of `GuestPoliciesRecipeUpdateStepArchiveExtractionPtrInput` via:
 //
-//          GuestPoliciesRecipeUpdateStepArchiveExtractionArgs{...}
+// 		 GuestPoliciesRecipeUpdateStepArchiveExtractionArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type GuestPoliciesRecipeUpdateStepArchiveExtractionPtrInput interface {
 	pulumi.Input
 
@@ -3932,7 +3978,8 @@ type GuestPoliciesRecipeUpdateStepDpkgInstallation struct {
 // GuestPoliciesRecipeUpdateStepDpkgInstallationInput is an input type that accepts GuestPoliciesRecipeUpdateStepDpkgInstallationArgs and GuestPoliciesRecipeUpdateStepDpkgInstallationOutput values.
 // You can construct a concrete instance of `GuestPoliciesRecipeUpdateStepDpkgInstallationInput` via:
 //
-//          GuestPoliciesRecipeUpdateStepDpkgInstallationArgs{...}
+// 		 GuestPoliciesRecipeUpdateStepDpkgInstallationArgs{...}
+//
 type GuestPoliciesRecipeUpdateStepDpkgInstallationInput interface {
 	pulumi.Input
 
@@ -3968,11 +4015,12 @@ func (i GuestPoliciesRecipeUpdateStepDpkgInstallationArgs) ToGuestPoliciesRecipe
 // GuestPoliciesRecipeUpdateStepDpkgInstallationPtrInput is an input type that accepts GuestPoliciesRecipeUpdateStepDpkgInstallationArgs, GuestPoliciesRecipeUpdateStepDpkgInstallationPtr and GuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutput values.
 // You can construct a concrete instance of `GuestPoliciesRecipeUpdateStepDpkgInstallationPtrInput` via:
 //
-//          GuestPoliciesRecipeUpdateStepDpkgInstallationArgs{...}
+// 		 GuestPoliciesRecipeUpdateStepDpkgInstallationArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type GuestPoliciesRecipeUpdateStepDpkgInstallationPtrInput interface {
 	pulumi.Input
 
@@ -4077,7 +4125,8 @@ type GuestPoliciesRecipeUpdateStepFileCopy struct {
 // GuestPoliciesRecipeUpdateStepFileCopyInput is an input type that accepts GuestPoliciesRecipeUpdateStepFileCopyArgs and GuestPoliciesRecipeUpdateStepFileCopyOutput values.
 // You can construct a concrete instance of `GuestPoliciesRecipeUpdateStepFileCopyInput` via:
 //
-//          GuestPoliciesRecipeUpdateStepFileCopyArgs{...}
+// 		 GuestPoliciesRecipeUpdateStepFileCopyArgs{...}
+//
 type GuestPoliciesRecipeUpdateStepFileCopyInput interface {
 	pulumi.Input
 
@@ -4125,11 +4174,12 @@ func (i GuestPoliciesRecipeUpdateStepFileCopyArgs) ToGuestPoliciesRecipeUpdateSt
 // GuestPoliciesRecipeUpdateStepFileCopyPtrInput is an input type that accepts GuestPoliciesRecipeUpdateStepFileCopyArgs, GuestPoliciesRecipeUpdateStepFileCopyPtr and GuestPoliciesRecipeUpdateStepFileCopyPtrOutput values.
 // You can construct a concrete instance of `GuestPoliciesRecipeUpdateStepFileCopyPtrInput` via:
 //
-//          GuestPoliciesRecipeUpdateStepFileCopyArgs{...}
+// 		 GuestPoliciesRecipeUpdateStepFileCopyArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type GuestPoliciesRecipeUpdateStepFileCopyPtrInput interface {
 	pulumi.Input
 
@@ -4283,7 +4333,8 @@ type GuestPoliciesRecipeUpdateStepFileExec struct {
 // GuestPoliciesRecipeUpdateStepFileExecInput is an input type that accepts GuestPoliciesRecipeUpdateStepFileExecArgs and GuestPoliciesRecipeUpdateStepFileExecOutput values.
 // You can construct a concrete instance of `GuestPoliciesRecipeUpdateStepFileExecInput` via:
 //
-//          GuestPoliciesRecipeUpdateStepFileExecArgs{...}
+// 		 GuestPoliciesRecipeUpdateStepFileExecArgs{...}
+//
 type GuestPoliciesRecipeUpdateStepFileExecInput interface {
 	pulumi.Input
 
@@ -4325,11 +4376,12 @@ func (i GuestPoliciesRecipeUpdateStepFileExecArgs) ToGuestPoliciesRecipeUpdateSt
 // GuestPoliciesRecipeUpdateStepFileExecPtrInput is an input type that accepts GuestPoliciesRecipeUpdateStepFileExecArgs, GuestPoliciesRecipeUpdateStepFileExecPtr and GuestPoliciesRecipeUpdateStepFileExecPtrOutput values.
 // You can construct a concrete instance of `GuestPoliciesRecipeUpdateStepFileExecPtrInput` via:
 //
-//          GuestPoliciesRecipeUpdateStepFileExecArgs{...}
+// 		 GuestPoliciesRecipeUpdateStepFileExecArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type GuestPoliciesRecipeUpdateStepFileExecPtrInput interface {
 	pulumi.Input
 
@@ -4469,7 +4521,8 @@ type GuestPoliciesRecipeUpdateStepMsiInstallation struct {
 // GuestPoliciesRecipeUpdateStepMsiInstallationInput is an input type that accepts GuestPoliciesRecipeUpdateStepMsiInstallationArgs and GuestPoliciesRecipeUpdateStepMsiInstallationOutput values.
 // You can construct a concrete instance of `GuestPoliciesRecipeUpdateStepMsiInstallationInput` via:
 //
-//          GuestPoliciesRecipeUpdateStepMsiInstallationArgs{...}
+// 		 GuestPoliciesRecipeUpdateStepMsiInstallationArgs{...}
+//
 type GuestPoliciesRecipeUpdateStepMsiInstallationInput interface {
 	pulumi.Input
 
@@ -4509,11 +4562,12 @@ func (i GuestPoliciesRecipeUpdateStepMsiInstallationArgs) ToGuestPoliciesRecipeU
 // GuestPoliciesRecipeUpdateStepMsiInstallationPtrInput is an input type that accepts GuestPoliciesRecipeUpdateStepMsiInstallationArgs, GuestPoliciesRecipeUpdateStepMsiInstallationPtr and GuestPoliciesRecipeUpdateStepMsiInstallationPtrOutput values.
 // You can construct a concrete instance of `GuestPoliciesRecipeUpdateStepMsiInstallationPtrInput` via:
 //
-//          GuestPoliciesRecipeUpdateStepMsiInstallationArgs{...}
+// 		 GuestPoliciesRecipeUpdateStepMsiInstallationArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type GuestPoliciesRecipeUpdateStepMsiInstallationPtrInput interface {
 	pulumi.Input
 
@@ -4636,7 +4690,8 @@ type GuestPoliciesRecipeUpdateStepRpmInstallation struct {
 // GuestPoliciesRecipeUpdateStepRpmInstallationInput is an input type that accepts GuestPoliciesRecipeUpdateStepRpmInstallationArgs and GuestPoliciesRecipeUpdateStepRpmInstallationOutput values.
 // You can construct a concrete instance of `GuestPoliciesRecipeUpdateStepRpmInstallationInput` via:
 //
-//          GuestPoliciesRecipeUpdateStepRpmInstallationArgs{...}
+// 		 GuestPoliciesRecipeUpdateStepRpmInstallationArgs{...}
+//
 type GuestPoliciesRecipeUpdateStepRpmInstallationInput interface {
 	pulumi.Input
 
@@ -4672,11 +4727,12 @@ func (i GuestPoliciesRecipeUpdateStepRpmInstallationArgs) ToGuestPoliciesRecipeU
 // GuestPoliciesRecipeUpdateStepRpmInstallationPtrInput is an input type that accepts GuestPoliciesRecipeUpdateStepRpmInstallationArgs, GuestPoliciesRecipeUpdateStepRpmInstallationPtr and GuestPoliciesRecipeUpdateStepRpmInstallationPtrOutput values.
 // You can construct a concrete instance of `GuestPoliciesRecipeUpdateStepRpmInstallationPtrInput` via:
 //
-//          GuestPoliciesRecipeUpdateStepRpmInstallationArgs{...}
+// 		 GuestPoliciesRecipeUpdateStepRpmInstallationArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type GuestPoliciesRecipeUpdateStepRpmInstallationPtrInput interface {
 	pulumi.Input
 
@@ -4775,7 +4831,8 @@ type GuestPoliciesRecipeUpdateStepScriptRun struct {
 // GuestPoliciesRecipeUpdateStepScriptRunInput is an input type that accepts GuestPoliciesRecipeUpdateStepScriptRunArgs and GuestPoliciesRecipeUpdateStepScriptRunOutput values.
 // You can construct a concrete instance of `GuestPoliciesRecipeUpdateStepScriptRunInput` via:
 //
-//          GuestPoliciesRecipeUpdateStepScriptRunArgs{...}
+// 		 GuestPoliciesRecipeUpdateStepScriptRunArgs{...}
+//
 type GuestPoliciesRecipeUpdateStepScriptRunInput interface {
 	pulumi.Input
 
@@ -4817,11 +4874,12 @@ func (i GuestPoliciesRecipeUpdateStepScriptRunArgs) ToGuestPoliciesRecipeUpdateS
 // GuestPoliciesRecipeUpdateStepScriptRunPtrInput is an input type that accepts GuestPoliciesRecipeUpdateStepScriptRunArgs, GuestPoliciesRecipeUpdateStepScriptRunPtr and GuestPoliciesRecipeUpdateStepScriptRunPtrOutput values.
 // You can construct a concrete instance of `GuestPoliciesRecipeUpdateStepScriptRunPtrInput` via:
 //
-//          GuestPoliciesRecipeUpdateStepScriptRunArgs{...}
+// 		 GuestPoliciesRecipeUpdateStepScriptRunArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type GuestPoliciesRecipeUpdateStepScriptRunPtrInput interface {
 	pulumi.Input
 
@@ -4958,7 +5016,8 @@ type PatchDeploymentInstanceFilter struct {
 // PatchDeploymentInstanceFilterInput is an input type that accepts PatchDeploymentInstanceFilterArgs and PatchDeploymentInstanceFilterOutput values.
 // You can construct a concrete instance of `PatchDeploymentInstanceFilterInput` via:
 //
-//          PatchDeploymentInstanceFilterArgs{...}
+// 		 PatchDeploymentInstanceFilterArgs{...}
+//
 type PatchDeploymentInstanceFilterInput interface {
 	pulumi.Input
 
@@ -5006,11 +5065,12 @@ func (i PatchDeploymentInstanceFilterArgs) ToPatchDeploymentInstanceFilterPtrOut
 // PatchDeploymentInstanceFilterPtrInput is an input type that accepts PatchDeploymentInstanceFilterArgs, PatchDeploymentInstanceFilterPtr and PatchDeploymentInstanceFilterPtrOutput values.
 // You can construct a concrete instance of `PatchDeploymentInstanceFilterPtrInput` via:
 //
-//          PatchDeploymentInstanceFilterArgs{...}
+// 		 PatchDeploymentInstanceFilterArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type PatchDeploymentInstanceFilterPtrInput interface {
 	pulumi.Input
 
@@ -5169,7 +5229,8 @@ type PatchDeploymentInstanceFilterGroupLabel struct {
 // PatchDeploymentInstanceFilterGroupLabelInput is an input type that accepts PatchDeploymentInstanceFilterGroupLabelArgs and PatchDeploymentInstanceFilterGroupLabelOutput values.
 // You can construct a concrete instance of `PatchDeploymentInstanceFilterGroupLabelInput` via:
 //
-//          PatchDeploymentInstanceFilterGroupLabelArgs{...}
+// 		 PatchDeploymentInstanceFilterGroupLabelArgs{...}
+//
 type PatchDeploymentInstanceFilterGroupLabelInput interface {
 	pulumi.Input
 
@@ -5197,7 +5258,8 @@ func (i PatchDeploymentInstanceFilterGroupLabelArgs) ToPatchDeploymentInstanceFi
 // PatchDeploymentInstanceFilterGroupLabelArrayInput is an input type that accepts PatchDeploymentInstanceFilterGroupLabelArray and PatchDeploymentInstanceFilterGroupLabelArrayOutput values.
 // You can construct a concrete instance of `PatchDeploymentInstanceFilterGroupLabelArrayInput` via:
 //
-//          PatchDeploymentInstanceFilterGroupLabelArray{ PatchDeploymentInstanceFilterGroupLabelArgs{...} }
+// 		 PatchDeploymentInstanceFilterGroupLabelArray{ PatchDeploymentInstanceFilterGroupLabelArgs{...} }
+//
 type PatchDeploymentInstanceFilterGroupLabelArrayInput interface {
 	pulumi.Input
 
@@ -5267,7 +5329,8 @@ type PatchDeploymentOneTimeSchedule struct {
 // PatchDeploymentOneTimeScheduleInput is an input type that accepts PatchDeploymentOneTimeScheduleArgs and PatchDeploymentOneTimeScheduleOutput values.
 // You can construct a concrete instance of `PatchDeploymentOneTimeScheduleInput` via:
 //
-//          PatchDeploymentOneTimeScheduleArgs{...}
+// 		 PatchDeploymentOneTimeScheduleArgs{...}
+//
 type PatchDeploymentOneTimeScheduleInput interface {
 	pulumi.Input
 
@@ -5304,11 +5367,12 @@ func (i PatchDeploymentOneTimeScheduleArgs) ToPatchDeploymentOneTimeSchedulePtrO
 // PatchDeploymentOneTimeSchedulePtrInput is an input type that accepts PatchDeploymentOneTimeScheduleArgs, PatchDeploymentOneTimeSchedulePtr and PatchDeploymentOneTimeSchedulePtrOutput values.
 // You can construct a concrete instance of `PatchDeploymentOneTimeSchedulePtrInput` via:
 //
-//          PatchDeploymentOneTimeScheduleArgs{...}
+// 		 PatchDeploymentOneTimeScheduleArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type PatchDeploymentOneTimeSchedulePtrInput interface {
 	pulumi.Input
 
@@ -5423,7 +5487,8 @@ type PatchDeploymentPatchConfig struct {
 // PatchDeploymentPatchConfigInput is an input type that accepts PatchDeploymentPatchConfigArgs and PatchDeploymentPatchConfigOutput values.
 // You can construct a concrete instance of `PatchDeploymentPatchConfigInput` via:
 //
-//          PatchDeploymentPatchConfigArgs{...}
+// 		 PatchDeploymentPatchConfigArgs{...}
+//
 type PatchDeploymentPatchConfigInput interface {
 	pulumi.Input
 
@@ -5481,11 +5546,12 @@ func (i PatchDeploymentPatchConfigArgs) ToPatchDeploymentPatchConfigPtrOutputWit
 // PatchDeploymentPatchConfigPtrInput is an input type that accepts PatchDeploymentPatchConfigArgs, PatchDeploymentPatchConfigPtr and PatchDeploymentPatchConfigPtrOutput values.
 // You can construct a concrete instance of `PatchDeploymentPatchConfigPtrInput` via:
 //
-//          PatchDeploymentPatchConfigArgs{...}
+// 		 PatchDeploymentPatchConfigArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type PatchDeploymentPatchConfigPtrInput interface {
 	pulumi.Input
 
@@ -5704,7 +5770,8 @@ type PatchDeploymentPatchConfigApt struct {
 // PatchDeploymentPatchConfigAptInput is an input type that accepts PatchDeploymentPatchConfigAptArgs and PatchDeploymentPatchConfigAptOutput values.
 // You can construct a concrete instance of `PatchDeploymentPatchConfigAptInput` via:
 //
-//          PatchDeploymentPatchConfigAptArgs{...}
+// 		 PatchDeploymentPatchConfigAptArgs{...}
+//
 type PatchDeploymentPatchConfigAptInput interface {
 	pulumi.Input
 
@@ -5747,11 +5814,12 @@ func (i PatchDeploymentPatchConfigAptArgs) ToPatchDeploymentPatchConfigAptPtrOut
 // PatchDeploymentPatchConfigAptPtrInput is an input type that accepts PatchDeploymentPatchConfigAptArgs, PatchDeploymentPatchConfigAptPtr and PatchDeploymentPatchConfigAptPtrOutput values.
 // You can construct a concrete instance of `PatchDeploymentPatchConfigAptPtrInput` via:
 //
-//          PatchDeploymentPatchConfigAptArgs{...}
+// 		 PatchDeploymentPatchConfigAptArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type PatchDeploymentPatchConfigAptPtrInput interface {
 	pulumi.Input
 
@@ -5878,7 +5946,8 @@ type PatchDeploymentPatchConfigGoo struct {
 // PatchDeploymentPatchConfigGooInput is an input type that accepts PatchDeploymentPatchConfigGooArgs and PatchDeploymentPatchConfigGooOutput values.
 // You can construct a concrete instance of `PatchDeploymentPatchConfigGooInput` via:
 //
-//          PatchDeploymentPatchConfigGooArgs{...}
+// 		 PatchDeploymentPatchConfigGooArgs{...}
+//
 type PatchDeploymentPatchConfigGooInput interface {
 	pulumi.Input
 
@@ -5914,11 +5983,12 @@ func (i PatchDeploymentPatchConfigGooArgs) ToPatchDeploymentPatchConfigGooPtrOut
 // PatchDeploymentPatchConfigGooPtrInput is an input type that accepts PatchDeploymentPatchConfigGooArgs, PatchDeploymentPatchConfigGooPtr and PatchDeploymentPatchConfigGooPtrOutput values.
 // You can construct a concrete instance of `PatchDeploymentPatchConfigGooPtrInput` via:
 //
-//          PatchDeploymentPatchConfigGooArgs{...}
+// 		 PatchDeploymentPatchConfigGooArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type PatchDeploymentPatchConfigGooPtrInput interface {
 	pulumi.Input
 
@@ -6013,7 +6083,8 @@ type PatchDeploymentPatchConfigPostStep struct {
 // PatchDeploymentPatchConfigPostStepInput is an input type that accepts PatchDeploymentPatchConfigPostStepArgs and PatchDeploymentPatchConfigPostStepOutput values.
 // You can construct a concrete instance of `PatchDeploymentPatchConfigPostStepInput` via:
 //
-//          PatchDeploymentPatchConfigPostStepArgs{...}
+// 		 PatchDeploymentPatchConfigPostStepArgs{...}
+//
 type PatchDeploymentPatchConfigPostStepInput interface {
 	pulumi.Input
 
@@ -6053,11 +6124,12 @@ func (i PatchDeploymentPatchConfigPostStepArgs) ToPatchDeploymentPatchConfigPost
 // PatchDeploymentPatchConfigPostStepPtrInput is an input type that accepts PatchDeploymentPatchConfigPostStepArgs, PatchDeploymentPatchConfigPostStepPtr and PatchDeploymentPatchConfigPostStepPtrOutput values.
 // You can construct a concrete instance of `PatchDeploymentPatchConfigPostStepPtrInput` via:
 //
-//          PatchDeploymentPatchConfigPostStepArgs{...}
+// 		 PatchDeploymentPatchConfigPostStepArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type PatchDeploymentPatchConfigPostStepPtrInput interface {
 	pulumi.Input
 
@@ -6180,7 +6252,8 @@ type PatchDeploymentPatchConfigPostStepLinuxExecStepConfig struct {
 // PatchDeploymentPatchConfigPostStepLinuxExecStepConfigInput is an input type that accepts PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgs and PatchDeploymentPatchConfigPostStepLinuxExecStepConfigOutput values.
 // You can construct a concrete instance of `PatchDeploymentPatchConfigPostStepLinuxExecStepConfigInput` via:
 //
-//          PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgs{...}
+// 		 PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgs{...}
+//
 type PatchDeploymentPatchConfigPostStepLinuxExecStepConfigInput interface {
 	pulumi.Input
 
@@ -6225,11 +6298,12 @@ func (i PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgs) ToPatchDeploy
 // PatchDeploymentPatchConfigPostStepLinuxExecStepConfigPtrInput is an input type that accepts PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgs, PatchDeploymentPatchConfigPostStepLinuxExecStepConfigPtr and PatchDeploymentPatchConfigPostStepLinuxExecStepConfigPtrOutput values.
 // You can construct a concrete instance of `PatchDeploymentPatchConfigPostStepLinuxExecStepConfigPtrInput` via:
 //
-//          PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgs{...}
+// 		 PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type PatchDeploymentPatchConfigPostStepLinuxExecStepConfigPtrInput interface {
 	pulumi.Input
 
@@ -6379,7 +6453,8 @@ type PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject struct {
 // PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectInput is an input type that accepts PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgs and PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectOutput values.
 // You can construct a concrete instance of `PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectInput` via:
 //
-//          PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgs{...}
+// 		 PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgs{...}
+//
 type PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectInput interface {
 	pulumi.Input
 
@@ -6419,11 +6494,12 @@ func (i PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgs) ToPa
 // PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectPtrInput is an input type that accepts PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgs, PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectPtr and PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectPtrOutput values.
 // You can construct a concrete instance of `PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectPtrInput` via:
 //
-//          PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgs{...}
+// 		 PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectPtrInput interface {
 	pulumi.Input
 
@@ -6557,7 +6633,8 @@ type PatchDeploymentPatchConfigPostStepWindowsExecStepConfig struct {
 // PatchDeploymentPatchConfigPostStepWindowsExecStepConfigInput is an input type that accepts PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgs and PatchDeploymentPatchConfigPostStepWindowsExecStepConfigOutput values.
 // You can construct a concrete instance of `PatchDeploymentPatchConfigPostStepWindowsExecStepConfigInput` via:
 //
-//          PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgs{...}
+// 		 PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgs{...}
+//
 type PatchDeploymentPatchConfigPostStepWindowsExecStepConfigInput interface {
 	pulumi.Input
 
@@ -6602,11 +6679,12 @@ func (i PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgs) ToPatchDepl
 // PatchDeploymentPatchConfigPostStepWindowsExecStepConfigPtrInput is an input type that accepts PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgs, PatchDeploymentPatchConfigPostStepWindowsExecStepConfigPtr and PatchDeploymentPatchConfigPostStepWindowsExecStepConfigPtrOutput values.
 // You can construct a concrete instance of `PatchDeploymentPatchConfigPostStepWindowsExecStepConfigPtrInput` via:
 //
-//          PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgs{...}
+// 		 PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type PatchDeploymentPatchConfigPostStepWindowsExecStepConfigPtrInput interface {
 	pulumi.Input
 
@@ -6756,7 +6834,8 @@ type PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObject struct {
 // PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectInput is an input type that accepts PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArgs and PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectOutput values.
 // You can construct a concrete instance of `PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectInput` via:
 //
-//          PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArgs{...}
+// 		 PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArgs{...}
+//
 type PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectInput interface {
 	pulumi.Input
 
@@ -6796,11 +6875,12 @@ func (i PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArgs) To
 // PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectPtrInput is an input type that accepts PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArgs, PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectPtr and PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectPtrOutput values.
 // You can construct a concrete instance of `PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectPtrInput` via:
 //
-//          PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArgs{...}
+// 		 PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectPtrInput interface {
 	pulumi.Input
 
@@ -6929,7 +7009,8 @@ type PatchDeploymentPatchConfigPreStep struct {
 // PatchDeploymentPatchConfigPreStepInput is an input type that accepts PatchDeploymentPatchConfigPreStepArgs and PatchDeploymentPatchConfigPreStepOutput values.
 // You can construct a concrete instance of `PatchDeploymentPatchConfigPreStepInput` via:
 //
-//          PatchDeploymentPatchConfigPreStepArgs{...}
+// 		 PatchDeploymentPatchConfigPreStepArgs{...}
+//
 type PatchDeploymentPatchConfigPreStepInput interface {
 	pulumi.Input
 
@@ -6969,11 +7050,12 @@ func (i PatchDeploymentPatchConfigPreStepArgs) ToPatchDeploymentPatchConfigPreSt
 // PatchDeploymentPatchConfigPreStepPtrInput is an input type that accepts PatchDeploymentPatchConfigPreStepArgs, PatchDeploymentPatchConfigPreStepPtr and PatchDeploymentPatchConfigPreStepPtrOutput values.
 // You can construct a concrete instance of `PatchDeploymentPatchConfigPreStepPtrInput` via:
 //
-//          PatchDeploymentPatchConfigPreStepArgs{...}
+// 		 PatchDeploymentPatchConfigPreStepArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type PatchDeploymentPatchConfigPreStepPtrInput interface {
 	pulumi.Input
 
@@ -7096,7 +7178,8 @@ type PatchDeploymentPatchConfigPreStepLinuxExecStepConfig struct {
 // PatchDeploymentPatchConfigPreStepLinuxExecStepConfigInput is an input type that accepts PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs and PatchDeploymentPatchConfigPreStepLinuxExecStepConfigOutput values.
 // You can construct a concrete instance of `PatchDeploymentPatchConfigPreStepLinuxExecStepConfigInput` via:
 //
-//          PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs{...}
+// 		 PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs{...}
+//
 type PatchDeploymentPatchConfigPreStepLinuxExecStepConfigInput interface {
 	pulumi.Input
 
@@ -7141,11 +7224,12 @@ func (i PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs) ToPatchDeploym
 // PatchDeploymentPatchConfigPreStepLinuxExecStepConfigPtrInput is an input type that accepts PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs, PatchDeploymentPatchConfigPreStepLinuxExecStepConfigPtr and PatchDeploymentPatchConfigPreStepLinuxExecStepConfigPtrOutput values.
 // You can construct a concrete instance of `PatchDeploymentPatchConfigPreStepLinuxExecStepConfigPtrInput` via:
 //
-//          PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs{...}
+// 		 PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type PatchDeploymentPatchConfigPreStepLinuxExecStepConfigPtrInput interface {
 	pulumi.Input
 
@@ -7295,7 +7379,8 @@ type PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject struct {
 // PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectInput is an input type that accepts PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArgs and PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectOutput values.
 // You can construct a concrete instance of `PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectInput` via:
 //
-//          PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArgs{...}
+// 		 PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArgs{...}
+//
 type PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectInput interface {
 	pulumi.Input
 
@@ -7335,11 +7420,12 @@ func (i PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArgs) ToPat
 // PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectPtrInput is an input type that accepts PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArgs, PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectPtr and PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectPtrOutput values.
 // You can construct a concrete instance of `PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectPtrInput` via:
 //
-//          PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArgs{...}
+// 		 PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectPtrInput interface {
 	pulumi.Input
 
@@ -7473,7 +7559,8 @@ type PatchDeploymentPatchConfigPreStepWindowsExecStepConfig struct {
 // PatchDeploymentPatchConfigPreStepWindowsExecStepConfigInput is an input type that accepts PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgs and PatchDeploymentPatchConfigPreStepWindowsExecStepConfigOutput values.
 // You can construct a concrete instance of `PatchDeploymentPatchConfigPreStepWindowsExecStepConfigInput` via:
 //
-//          PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgs{...}
+// 		 PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgs{...}
+//
 type PatchDeploymentPatchConfigPreStepWindowsExecStepConfigInput interface {
 	pulumi.Input
 
@@ -7518,11 +7605,12 @@ func (i PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgs) ToPatchDeplo
 // PatchDeploymentPatchConfigPreStepWindowsExecStepConfigPtrInput is an input type that accepts PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgs, PatchDeploymentPatchConfigPreStepWindowsExecStepConfigPtr and PatchDeploymentPatchConfigPreStepWindowsExecStepConfigPtrOutput values.
 // You can construct a concrete instance of `PatchDeploymentPatchConfigPreStepWindowsExecStepConfigPtrInput` via:
 //
-//          PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgs{...}
+// 		 PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type PatchDeploymentPatchConfigPreStepWindowsExecStepConfigPtrInput interface {
 	pulumi.Input
 
@@ -7672,7 +7760,8 @@ type PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject struct {
 // PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectInput is an input type that accepts PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectArgs and PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectOutput values.
 // You can construct a concrete instance of `PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectInput` via:
 //
-//          PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectArgs{...}
+// 		 PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectArgs{...}
+//
 type PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectInput interface {
 	pulumi.Input
 
@@ -7712,11 +7801,12 @@ func (i PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectArgs) ToP
 // PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectPtrInput is an input type that accepts PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectArgs, PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectPtr and PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectPtrOutput values.
 // You can construct a concrete instance of `PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectPtrInput` via:
 //
-//          PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectArgs{...}
+// 		 PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectPtrInput interface {
 	pulumi.Input
 
@@ -7847,7 +7937,8 @@ type PatchDeploymentPatchConfigWindowsUpdate struct {
 // PatchDeploymentPatchConfigWindowsUpdateInput is an input type that accepts PatchDeploymentPatchConfigWindowsUpdateArgs and PatchDeploymentPatchConfigWindowsUpdateOutput values.
 // You can construct a concrete instance of `PatchDeploymentPatchConfigWindowsUpdateInput` via:
 //
-//          PatchDeploymentPatchConfigWindowsUpdateArgs{...}
+// 		 PatchDeploymentPatchConfigWindowsUpdateArgs{...}
+//
 type PatchDeploymentPatchConfigWindowsUpdateInput interface {
 	pulumi.Input
 
@@ -7889,11 +7980,12 @@ func (i PatchDeploymentPatchConfigWindowsUpdateArgs) ToPatchDeploymentPatchConfi
 // PatchDeploymentPatchConfigWindowsUpdatePtrInput is an input type that accepts PatchDeploymentPatchConfigWindowsUpdateArgs, PatchDeploymentPatchConfigWindowsUpdatePtr and PatchDeploymentPatchConfigWindowsUpdatePtrOutput values.
 // You can construct a concrete instance of `PatchDeploymentPatchConfigWindowsUpdatePtrInput` via:
 //
-//          PatchDeploymentPatchConfigWindowsUpdateArgs{...}
+// 		 PatchDeploymentPatchConfigWindowsUpdateArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type PatchDeploymentPatchConfigWindowsUpdatePtrInput interface {
 	pulumi.Input
 
@@ -8026,7 +8118,8 @@ type PatchDeploymentPatchConfigYum struct {
 // PatchDeploymentPatchConfigYumInput is an input type that accepts PatchDeploymentPatchConfigYumArgs and PatchDeploymentPatchConfigYumOutput values.
 // You can construct a concrete instance of `PatchDeploymentPatchConfigYumInput` via:
 //
-//          PatchDeploymentPatchConfigYumArgs{...}
+// 		 PatchDeploymentPatchConfigYumArgs{...}
+//
 type PatchDeploymentPatchConfigYumInput interface {
 	pulumi.Input
 
@@ -8070,11 +8163,12 @@ func (i PatchDeploymentPatchConfigYumArgs) ToPatchDeploymentPatchConfigYumPtrOut
 // PatchDeploymentPatchConfigYumPtrInput is an input type that accepts PatchDeploymentPatchConfigYumArgs, PatchDeploymentPatchConfigYumPtr and PatchDeploymentPatchConfigYumPtrOutput values.
 // You can construct a concrete instance of `PatchDeploymentPatchConfigYumPtrInput` via:
 //
-//          PatchDeploymentPatchConfigYumArgs{...}
+// 		 PatchDeploymentPatchConfigYumArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type PatchDeploymentPatchConfigYumPtrInput interface {
 	pulumi.Input
 
@@ -8225,7 +8319,8 @@ type PatchDeploymentPatchConfigZypper struct {
 // PatchDeploymentPatchConfigZypperInput is an input type that accepts PatchDeploymentPatchConfigZypperArgs and PatchDeploymentPatchConfigZypperOutput values.
 // You can construct a concrete instance of `PatchDeploymentPatchConfigZypperInput` via:
 //
-//          PatchDeploymentPatchConfigZypperArgs{...}
+// 		 PatchDeploymentPatchConfigZypperArgs{...}
+//
 type PatchDeploymentPatchConfigZypperInput interface {
 	pulumi.Input
 
@@ -8272,11 +8367,12 @@ func (i PatchDeploymentPatchConfigZypperArgs) ToPatchDeploymentPatchConfigZypper
 // PatchDeploymentPatchConfigZypperPtrInput is an input type that accepts PatchDeploymentPatchConfigZypperArgs, PatchDeploymentPatchConfigZypperPtr and PatchDeploymentPatchConfigZypperPtrOutput values.
 // You can construct a concrete instance of `PatchDeploymentPatchConfigZypperPtrInput` via:
 //
-//          PatchDeploymentPatchConfigZypperArgs{...}
+// 		 PatchDeploymentPatchConfigZypperArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type PatchDeploymentPatchConfigZypperPtrInput interface {
 	pulumi.Input
 
@@ -8469,7 +8565,8 @@ type PatchDeploymentRecurringSchedule struct {
 // PatchDeploymentRecurringScheduleInput is an input type that accepts PatchDeploymentRecurringScheduleArgs and PatchDeploymentRecurringScheduleOutput values.
 // You can construct a concrete instance of `PatchDeploymentRecurringScheduleInput` via:
 //
-//          PatchDeploymentRecurringScheduleArgs{...}
+// 		 PatchDeploymentRecurringScheduleArgs{...}
+//
 type PatchDeploymentRecurringScheduleInput interface {
 	pulumi.Input
 
@@ -8530,11 +8627,12 @@ func (i PatchDeploymentRecurringScheduleArgs) ToPatchDeploymentRecurringSchedule
 // PatchDeploymentRecurringSchedulePtrInput is an input type that accepts PatchDeploymentRecurringScheduleArgs, PatchDeploymentRecurringSchedulePtr and PatchDeploymentRecurringSchedulePtrOutput values.
 // You can construct a concrete instance of `PatchDeploymentRecurringSchedulePtrInput` via:
 //
-//          PatchDeploymentRecurringScheduleArgs{...}
+// 		 PatchDeploymentRecurringScheduleArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type PatchDeploymentRecurringSchedulePtrInput interface {
 	pulumi.Input
 
@@ -8757,7 +8855,8 @@ type PatchDeploymentRecurringScheduleMonthly struct {
 // PatchDeploymentRecurringScheduleMonthlyInput is an input type that accepts PatchDeploymentRecurringScheduleMonthlyArgs and PatchDeploymentRecurringScheduleMonthlyOutput values.
 // You can construct a concrete instance of `PatchDeploymentRecurringScheduleMonthlyInput` via:
 //
-//          PatchDeploymentRecurringScheduleMonthlyArgs{...}
+// 		 PatchDeploymentRecurringScheduleMonthlyArgs{...}
+//
 type PatchDeploymentRecurringScheduleMonthlyInput interface {
 	pulumi.Input
 
@@ -8798,11 +8897,12 @@ func (i PatchDeploymentRecurringScheduleMonthlyArgs) ToPatchDeploymentRecurringS
 // PatchDeploymentRecurringScheduleMonthlyPtrInput is an input type that accepts PatchDeploymentRecurringScheduleMonthlyArgs, PatchDeploymentRecurringScheduleMonthlyPtr and PatchDeploymentRecurringScheduleMonthlyPtrOutput values.
 // You can construct a concrete instance of `PatchDeploymentRecurringScheduleMonthlyPtrInput` via:
 //
-//          PatchDeploymentRecurringScheduleMonthlyArgs{...}
+// 		 PatchDeploymentRecurringScheduleMonthlyArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type PatchDeploymentRecurringScheduleMonthlyPtrInput interface {
 	pulumi.Input
 
@@ -8919,7 +9019,8 @@ type PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth struct {
 // PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthInput is an input type that accepts PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs and PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthOutput values.
 // You can construct a concrete instance of `PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthInput` via:
 //
-//          PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs{...}
+// 		 PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs{...}
+//
 type PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthInput interface {
 	pulumi.Input
 
@@ -8958,11 +9059,12 @@ func (i PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs) ToPatchDeploy
 // PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthPtrInput is an input type that accepts PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs, PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthPtr and PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthPtrOutput values.
 // You can construct a concrete instance of `PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthPtrInput` via:
 //
-//          PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs{...}
+// 		 PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthPtrInput interface {
 	pulumi.Input
 
@@ -9079,7 +9181,8 @@ type PatchDeploymentRecurringScheduleTimeOfDay struct {
 // PatchDeploymentRecurringScheduleTimeOfDayInput is an input type that accepts PatchDeploymentRecurringScheduleTimeOfDayArgs and PatchDeploymentRecurringScheduleTimeOfDayOutput values.
 // You can construct a concrete instance of `PatchDeploymentRecurringScheduleTimeOfDayInput` via:
 //
-//          PatchDeploymentRecurringScheduleTimeOfDayArgs{...}
+// 		 PatchDeploymentRecurringScheduleTimeOfDayArgs{...}
+//
 type PatchDeploymentRecurringScheduleTimeOfDayInput interface {
 	pulumi.Input
 
@@ -9122,11 +9225,12 @@ func (i PatchDeploymentRecurringScheduleTimeOfDayArgs) ToPatchDeploymentRecurrin
 // PatchDeploymentRecurringScheduleTimeOfDayPtrInput is an input type that accepts PatchDeploymentRecurringScheduleTimeOfDayArgs, PatchDeploymentRecurringScheduleTimeOfDayPtr and PatchDeploymentRecurringScheduleTimeOfDayPtrOutput values.
 // You can construct a concrete instance of `PatchDeploymentRecurringScheduleTimeOfDayPtrInput` via:
 //
-//          PatchDeploymentRecurringScheduleTimeOfDayArgs{...}
+// 		 PatchDeploymentRecurringScheduleTimeOfDayArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type PatchDeploymentRecurringScheduleTimeOfDayPtrInput interface {
 	pulumi.Input
 
@@ -9268,7 +9372,8 @@ type PatchDeploymentRecurringScheduleTimeZone struct {
 // PatchDeploymentRecurringScheduleTimeZoneInput is an input type that accepts PatchDeploymentRecurringScheduleTimeZoneArgs and PatchDeploymentRecurringScheduleTimeZoneOutput values.
 // You can construct a concrete instance of `PatchDeploymentRecurringScheduleTimeZoneInput` via:
 //
-//          PatchDeploymentRecurringScheduleTimeZoneArgs{...}
+// 		 PatchDeploymentRecurringScheduleTimeZoneArgs{...}
+//
 type PatchDeploymentRecurringScheduleTimeZoneInput interface {
 	pulumi.Input
 
@@ -9306,11 +9411,12 @@ func (i PatchDeploymentRecurringScheduleTimeZoneArgs) ToPatchDeploymentRecurring
 // PatchDeploymentRecurringScheduleTimeZonePtrInput is an input type that accepts PatchDeploymentRecurringScheduleTimeZoneArgs, PatchDeploymentRecurringScheduleTimeZonePtr and PatchDeploymentRecurringScheduleTimeZonePtrOutput values.
 // You can construct a concrete instance of `PatchDeploymentRecurringScheduleTimeZonePtrInput` via:
 //
-//          PatchDeploymentRecurringScheduleTimeZoneArgs{...}
+// 		 PatchDeploymentRecurringScheduleTimeZoneArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type PatchDeploymentRecurringScheduleTimeZonePtrInput interface {
 	pulumi.Input
 
@@ -9417,7 +9523,8 @@ type PatchDeploymentRecurringScheduleWeekly struct {
 // PatchDeploymentRecurringScheduleWeeklyInput is an input type that accepts PatchDeploymentRecurringScheduleWeeklyArgs and PatchDeploymentRecurringScheduleWeeklyOutput values.
 // You can construct a concrete instance of `PatchDeploymentRecurringScheduleWeeklyInput` via:
 //
-//          PatchDeploymentRecurringScheduleWeeklyArgs{...}
+// 		 PatchDeploymentRecurringScheduleWeeklyArgs{...}
+//
 type PatchDeploymentRecurringScheduleWeeklyInput interface {
 	pulumi.Input
 
@@ -9454,11 +9561,12 @@ func (i PatchDeploymentRecurringScheduleWeeklyArgs) ToPatchDeploymentRecurringSc
 // PatchDeploymentRecurringScheduleWeeklyPtrInput is an input type that accepts PatchDeploymentRecurringScheduleWeeklyArgs, PatchDeploymentRecurringScheduleWeeklyPtr and PatchDeploymentRecurringScheduleWeeklyPtrOutput values.
 // You can construct a concrete instance of `PatchDeploymentRecurringScheduleWeeklyPtrInput` via:
 //
-//          PatchDeploymentRecurringScheduleWeeklyArgs{...}
+// 		 PatchDeploymentRecurringScheduleWeeklyArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type PatchDeploymentRecurringScheduleWeeklyPtrInput interface {
 	pulumi.Input
 

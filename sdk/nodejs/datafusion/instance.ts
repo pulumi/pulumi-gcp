@@ -16,6 +16,7 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
  *
  * ## Example Usage
+ *
  * ### Data Fusion Instance Basic
  *
  * ```typescript
@@ -27,6 +28,7 @@ import * as utilities from "../utilities";
  *     type: "BASIC",
  * });
  * ```
+ *
  * ### Data Fusion Instance Full
  *
  * ```typescript

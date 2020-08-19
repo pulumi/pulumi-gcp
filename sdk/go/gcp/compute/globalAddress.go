@@ -12,13 +12,12 @@ import (
 // Represents a Global Address resource. Global addresses are used for
 // HTTP(S) load balancing.
 //
+//
 // To get more information about GlobalAddress, see:
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/v1/globalAddresses)
 // * How-to Guides
 //     * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address)
-//
-// ## Example Usage
 type GlobalAddress struct {
 	pulumi.CustomResourceState
 
@@ -29,8 +28,8 @@ type GlobalAddress struct {
 	// The type of the address to reserve.
 	// * EXTERNAL indicates public/external single IP address.
 	// * INTERNAL indicates internal IP ranges belonging to some network.
-	//   Default value is `EXTERNAL`.
-	//   Possible values are `EXTERNAL` and `INTERNAL`.
+	// Default value is `EXTERNAL`.
+	// Possible values are `EXTERNAL` and `INTERNAL`.
 	AddressType pulumi.StringPtrOutput `pulumi:"addressType"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
@@ -65,8 +64,8 @@ type GlobalAddress struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The purpose of the resource. For global internal addresses it can be
 	// * VPC_PEERING - for peer networks
-	//   This should only be set when using an Internal address.
-	//   Possible values are `VPC_PEERING`.
+	// This should only be set when using an Internal address.
+	// Possible values are `VPC_PEERING`.
 	Purpose pulumi.StringPtrOutput `pulumi:"purpose"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -107,8 +106,8 @@ type globalAddressState struct {
 	// The type of the address to reserve.
 	// * EXTERNAL indicates public/external single IP address.
 	// * INTERNAL indicates internal IP ranges belonging to some network.
-	//   Default value is `EXTERNAL`.
-	//   Possible values are `EXTERNAL` and `INTERNAL`.
+	// Default value is `EXTERNAL`.
+	// Possible values are `EXTERNAL` and `INTERNAL`.
 	AddressType *string `pulumi:"addressType"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
@@ -143,8 +142,8 @@ type globalAddressState struct {
 	Project *string `pulumi:"project"`
 	// The purpose of the resource. For global internal addresses it can be
 	// * VPC_PEERING - for peer networks
-	//   This should only be set when using an Internal address.
-	//   Possible values are `VPC_PEERING`.
+	// This should only be set when using an Internal address.
+	// Possible values are `VPC_PEERING`.
 	Purpose *string `pulumi:"purpose"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -158,8 +157,8 @@ type GlobalAddressState struct {
 	// The type of the address to reserve.
 	// * EXTERNAL indicates public/external single IP address.
 	// * INTERNAL indicates internal IP ranges belonging to some network.
-	//   Default value is `EXTERNAL`.
-	//   Possible values are `EXTERNAL` and `INTERNAL`.
+	// Default value is `EXTERNAL`.
+	// Possible values are `EXTERNAL` and `INTERNAL`.
 	AddressType pulumi.StringPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
@@ -194,8 +193,8 @@ type GlobalAddressState struct {
 	Project pulumi.StringPtrInput
 	// The purpose of the resource. For global internal addresses it can be
 	// * VPC_PEERING - for peer networks
-	//   This should only be set when using an Internal address.
-	//   Possible values are `VPC_PEERING`.
+	// This should only be set when using an Internal address.
+	// Possible values are `VPC_PEERING`.
 	Purpose pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
@@ -213,8 +212,8 @@ type globalAddressArgs struct {
 	// The type of the address to reserve.
 	// * EXTERNAL indicates public/external single IP address.
 	// * INTERNAL indicates internal IP ranges belonging to some network.
-	//   Default value is `EXTERNAL`.
-	//   Possible values are `EXTERNAL` and `INTERNAL`.
+	// Default value is `EXTERNAL`.
+	// Possible values are `EXTERNAL` and `INTERNAL`.
 	AddressType *string `pulumi:"addressType"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
@@ -245,8 +244,8 @@ type globalAddressArgs struct {
 	Project *string `pulumi:"project"`
 	// The purpose of the resource. For global internal addresses it can be
 	// * VPC_PEERING - for peer networks
-	//   This should only be set when using an Internal address.
-	//   Possible values are `VPC_PEERING`.
+	// This should only be set when using an Internal address.
+	// Possible values are `VPC_PEERING`.
 	Purpose *string `pulumi:"purpose"`
 }
 
@@ -259,8 +258,8 @@ type GlobalAddressArgs struct {
 	// The type of the address to reserve.
 	// * EXTERNAL indicates public/external single IP address.
 	// * INTERNAL indicates internal IP ranges belonging to some network.
-	//   Default value is `EXTERNAL`.
-	//   Possible values are `EXTERNAL` and `INTERNAL`.
+	// Default value is `EXTERNAL`.
+	// Possible values are `EXTERNAL` and `INTERNAL`.
 	AddressType pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
@@ -291,8 +290,8 @@ type GlobalAddressArgs struct {
 	Project pulumi.StringPtrInput
 	// The purpose of the resource. For global internal addresses it can be
 	// * VPC_PEERING - for peer networks
-	//   This should only be set when using an Internal address.
-	//   Possible values are `VPC_PEERING`.
+	// This should only be set when using an Internal address.
+	// Possible values are `VPC_PEERING`.
 	Purpose pulumi.StringPtrInput
 }
 

@@ -12,6 +12,7 @@ import (
 
 // A Google Cloud Redis instance.
 //
+//
 // To get more information about Instance, see:
 //
 // * [API documentation](https://cloud.google.com/memorystore/docs/redis/reference/rest/)
@@ -19,6 +20,29 @@ import (
 //     * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
 //
 // ## Example Usage
+//
+// ### Redis Instance Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/redis"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		cache, err := redis.NewInstance(ctx, "cache", &redis.InstanceArgs{
+// 			MemorySizeGb: pulumi.Int(1),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Instance struct {
 	pulumi.CustomResourceState
 
@@ -87,8 +111,8 @@ type Instance struct {
 	// The service tier of the instance. Must be one of these values:
 	// - BASIC: standalone instance
 	// - STANDARD_HA: highly available primary/replica instances
-	//   Default value is `BASIC`.
-	//   Possible values are `BASIC` and `STANDARD_HA`.
+	// Default value is `BASIC`.
+	// Possible values are `BASIC` and `STANDARD_HA`.
 	Tier pulumi.StringPtrOutput `pulumi:"tier"`
 }
 
@@ -188,8 +212,8 @@ type instanceState struct {
 	// The service tier of the instance. Must be one of these values:
 	// - BASIC: standalone instance
 	// - STANDARD_HA: highly available primary/replica instances
-	//   Default value is `BASIC`.
-	//   Possible values are `BASIC` and `STANDARD_HA`.
+	// Default value is `BASIC`.
+	// Possible values are `BASIC` and `STANDARD_HA`.
 	Tier *string `pulumi:"tier"`
 }
 
@@ -259,8 +283,8 @@ type InstanceState struct {
 	// The service tier of the instance. Must be one of these values:
 	// - BASIC: standalone instance
 	// - STANDARD_HA: highly available primary/replica instances
-	//   Default value is `BASIC`.
-	//   Possible values are `BASIC` and `STANDARD_HA`.
+	// Default value is `BASIC`.
+	// Possible values are `BASIC` and `STANDARD_HA`.
 	Tier pulumi.StringPtrInput
 }
 
@@ -320,8 +344,8 @@ type instanceArgs struct {
 	// The service tier of the instance. Must be one of these values:
 	// - BASIC: standalone instance
 	// - STANDARD_HA: highly available primary/replica instances
-	//   Default value is `BASIC`.
-	//   Possible values are `BASIC` and `STANDARD_HA`.
+	// Default value is `BASIC`.
+	// Possible values are `BASIC` and `STANDARD_HA`.
 	Tier *string `pulumi:"tier"`
 }
 
@@ -378,8 +402,8 @@ type InstanceArgs struct {
 	// The service tier of the instance. Must be one of these values:
 	// - BASIC: standalone instance
 	// - STANDARD_HA: highly available primary/replica instances
-	//   Default value is `BASIC`.
-	//   Possible values are `BASIC` and `STANDARD_HA`.
+	// Default value is `BASIC`.
+	// Possible values are `BASIC` and `STANDARD_HA`.
 	Tier pulumi.StringPtrInput
 }
 

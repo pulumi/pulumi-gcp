@@ -17,6 +17,7 @@ import (
 // An Entry resource contains resource details, such as its schema. An Entry can also be used to attach
 // flexible metadata, such as a Tag.
 //
+//
 // To get more information about Entry, see:
 //
 // * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries)
@@ -24,6 +25,38 @@ import (
 //     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
 //
 // ## Example Usage
+//
+// ### Data Catalog Entry Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/datacatalog"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		entryGroup, err := datacatalog.NewEntryGroup(ctx, "entryGroup", &datacatalog.EntryGroupArgs{
+// 			EntryGroupId: pulumi.String("my_group"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		basicEntry, err := datacatalog.NewEntry(ctx, "basicEntry", &datacatalog.EntryArgs{
+// 			EntryGroup:          entryGroup.ID(),
+// 			EntryId:             pulumi.String("my_entry"),
+// 			UserSpecifiedType:   pulumi.String("my_custom_type"),
+// 			UserSpecifiedSystem: pulumi.String("SomethingExternal"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Entry struct {
 	pulumi.CustomResourceState
 

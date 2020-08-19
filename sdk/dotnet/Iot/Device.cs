@@ -12,6 +12,7 @@ namespace Pulumi.Gcp.Iot
     /// <summary>
     /// A Google Cloud IoT Core device.
     /// 
+    /// 
     /// To get more information about Device, see:
     /// 
     /// * [API documentation](https://cloud.google.com/iot/docs/reference/cloudiot/rest/)
@@ -19,6 +20,28 @@ namespace Pulumi.Gcp.Iot
     ///     * [Official Documentation](https://cloud.google.com/iot/docs/)
     /// 
     /// ## Example Usage
+    /// 
+    /// ### Cloudiot Device Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var registry = new Gcp.Iot.Registry("registry", new Gcp.Iot.RegistryArgs
+    ///         {
+    ///         });
+    ///         var test_device = new Gcp.Iot.Device("test-device", new Gcp.Iot.DeviceArgs
+    ///         {
+    ///             Registry = registry.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Device : Pulumi.CustomResource
     {

@@ -13,9 +13,10 @@ import * as utilities from "../utilities";
  * has a target outside of the ServicePerimeter, the request will be blocked.
  * Otherwise the request is allowed. There are two types of Service Perimeter
  * - Regular and Bridge. Regular Service Perimeters cannot overlap, a single
- *   GCP project can only belong to a single regular Service Perimeter. Service
- *   Perimeter Bridges can contain only GCP projects as members, a single GCP
- *   project may belong to multiple Service Perimeter Bridges.
+ * GCP project can only belong to a single regular Service Perimeter. Service
+ * Perimeter Bridges can contain only GCP projects as members, a single GCP
+ * project may belong to multiple Service Perimeter Bridges.
+ *
  *
  * To get more information about ServicePerimeter, see:
  *
@@ -24,6 +25,69 @@ import * as utilities from "../utilities";
  *     * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
  *
  * ## Example Usage
+ *
+ * ### Access Context Manager Service Perimeter Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const access_policy = new gcp.accesscontextmanager.AccessPolicy("access-policy", {
+ *     parent: "organizations/123456789",
+ *     title: "my policy",
+ * });
+ * const service_perimeter = new gcp.accesscontextmanager.ServicePerimeter("service-perimeter", {
+ *     parent: pulumi.interpolate`accessPolicies/${access_policy.name}`,
+ *     status: {
+ *         restrictedServices: ["storage.googleapis.com"],
+ *     },
+ *     title: "restrict_storage",
+ * });
+ * const access_level = new gcp.accesscontextmanager.AccessLevel("access-level", {
+ *     basic: {
+ *         conditions: [{
+ *             devicePolicy: {
+ *                 osConstraints: [{
+ *                     osType: "DESKTOP_CHROME_OS",
+ *                 }],
+ *                 requireScreenLock: false,
+ *             },
+ *             regions: [
+ *                 "CH",
+ *                 "IT",
+ *                 "US",
+ *             ],
+ *         }],
+ *     },
+ *     parent: pulumi.interpolate`accessPolicies/${access_policy.name}`,
+ *     title: "chromeos_no_lock",
+ * });
+ * ```
+ *
+ * ### Access Context Manager Service Perimeter Dry Run
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const access_policy = new gcp.accesscontextmanager.AccessPolicy("access-policy", {
+ *     parent: "organizations/123456789",
+ *     title: "my policy",
+ * });
+ * const service_perimeter = new gcp.accesscontextmanager.ServicePerimeter("service-perimeter", {
+ *     parent: pulumi.interpolate`accessPolicies/${access_policy.name}`,
+ *     // Service 'storage.googleapis.com' will be in dry-run mode.
+ *     spec: {
+ *         restrictedServices: ["storage.googleapis.com"],
+ *     },
+ *     // Service 'bigquery.googleapis.com' will be restricted.
+ *     status: {
+ *         restrictedServices: ["bigquery.googleapis.com"],
+ *     },
+ *     title: "restrict_bigquery_dryrun_storage",
+ *     useExplicitDryRunSpec: true,
+ * });
+ * ```
  */
 export class ServicePerimeter extends pulumi.CustomResource {
     /**

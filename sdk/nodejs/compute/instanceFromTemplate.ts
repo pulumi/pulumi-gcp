@@ -15,6 +15,41 @@ import * as utilities from "../utilities";
  * This resource is specifically to create a compute instance from a given
  * `sourceInstanceTemplate`. To create an instance without a template, use the
  * `gcp.compute.Instance` resource.
+ *
+ *
+ * ## Example Usage
+ *
+ *
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const tplInstanceTemplate = new gcp.compute.InstanceTemplate("tplInstanceTemplate", {
+ *     machineType: "n1-standard-1",
+ *     disk: [{
+ *         sourceImage: "debian-cloud/debian-9",
+ *         autoDelete: true,
+ *         diskSizeGb: 100,
+ *         boot: true,
+ *     }],
+ *     network_interface: [{
+ *         network: "default",
+ *     }],
+ *     metadata: {
+ *         foo: "bar",
+ *     },
+ *     canIpForward: true,
+ * });
+ * const tplInstanceFromTemplate = new gcp.compute.InstanceFromTemplate("tplInstanceFromTemplate", {
+ *     zone: "us-central1-a",
+ *     sourceInstanceTemplate: tplInstanceTemplate.id,
+ *     canIpForward: false,
+ *     labels: {
+ *         my_key: "my_value",
+ *     },
+ * });
+ * ```
  */
 export class InstanceFromTemplate extends pulumi.CustomResource {
     /**

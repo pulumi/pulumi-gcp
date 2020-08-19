@@ -25,7 +25,8 @@ type FunctionEventTrigger struct {
 // FunctionEventTriggerInput is an input type that accepts FunctionEventTriggerArgs and FunctionEventTriggerOutput values.
 // You can construct a concrete instance of `FunctionEventTriggerInput` via:
 //
-//          FunctionEventTriggerArgs{...}
+// 		 FunctionEventTriggerArgs{...}
+//
 type FunctionEventTriggerInput interface {
 	pulumi.Input
 
@@ -68,11 +69,12 @@ func (i FunctionEventTriggerArgs) ToFunctionEventTriggerPtrOutputWithContext(ctx
 // FunctionEventTriggerPtrInput is an input type that accepts FunctionEventTriggerArgs, FunctionEventTriggerPtr and FunctionEventTriggerPtrOutput values.
 // You can construct a concrete instance of `FunctionEventTriggerPtrInput` via:
 //
-//          FunctionEventTriggerArgs{...}
+// 		 FunctionEventTriggerArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type FunctionEventTriggerPtrInput interface {
 	pulumi.Input
 
@@ -199,7 +201,8 @@ type FunctionEventTriggerFailurePolicy struct {
 // FunctionEventTriggerFailurePolicyInput is an input type that accepts FunctionEventTriggerFailurePolicyArgs and FunctionEventTriggerFailurePolicyOutput values.
 // You can construct a concrete instance of `FunctionEventTriggerFailurePolicyInput` via:
 //
-//          FunctionEventTriggerFailurePolicyArgs{...}
+// 		 FunctionEventTriggerFailurePolicyArgs{...}
+//
 type FunctionEventTriggerFailurePolicyInput interface {
 	pulumi.Input
 
@@ -235,11 +238,12 @@ func (i FunctionEventTriggerFailurePolicyArgs) ToFunctionEventTriggerFailurePoli
 // FunctionEventTriggerFailurePolicyPtrInput is an input type that accepts FunctionEventTriggerFailurePolicyArgs, FunctionEventTriggerFailurePolicyPtr and FunctionEventTriggerFailurePolicyPtrOutput values.
 // You can construct a concrete instance of `FunctionEventTriggerFailurePolicyPtrInput` via:
 //
-//          FunctionEventTriggerFailurePolicyArgs{...}
+// 		 FunctionEventTriggerFailurePolicyArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type FunctionEventTriggerFailurePolicyPtrInput interface {
 	pulumi.Input
 
@@ -331,7 +335,8 @@ type FunctionIamBindingCondition struct {
 // FunctionIamBindingConditionInput is an input type that accepts FunctionIamBindingConditionArgs and FunctionIamBindingConditionOutput values.
 // You can construct a concrete instance of `FunctionIamBindingConditionInput` via:
 //
-//          FunctionIamBindingConditionArgs{...}
+// 		 FunctionIamBindingConditionArgs{...}
+//
 type FunctionIamBindingConditionInput interface {
 	pulumi.Input
 
@@ -368,11 +373,12 @@ func (i FunctionIamBindingConditionArgs) ToFunctionIamBindingConditionPtrOutputW
 // FunctionIamBindingConditionPtrInput is an input type that accepts FunctionIamBindingConditionArgs, FunctionIamBindingConditionPtr and FunctionIamBindingConditionPtrOutput values.
 // You can construct a concrete instance of `FunctionIamBindingConditionPtrInput` via:
 //
-//          FunctionIamBindingConditionArgs{...}
+// 		 FunctionIamBindingConditionArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type FunctionIamBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -487,7 +493,8 @@ type FunctionIamMemberCondition struct {
 // FunctionIamMemberConditionInput is an input type that accepts FunctionIamMemberConditionArgs and FunctionIamMemberConditionOutput values.
 // You can construct a concrete instance of `FunctionIamMemberConditionInput` via:
 //
-//          FunctionIamMemberConditionArgs{...}
+// 		 FunctionIamMemberConditionArgs{...}
+//
 type FunctionIamMemberConditionInput interface {
 	pulumi.Input
 
@@ -524,11 +531,12 @@ func (i FunctionIamMemberConditionArgs) ToFunctionIamMemberConditionPtrOutputWit
 // FunctionIamMemberConditionPtrInput is an input type that accepts FunctionIamMemberConditionArgs, FunctionIamMemberConditionPtr and FunctionIamMemberConditionPtrOutput values.
 // You can construct a concrete instance of `FunctionIamMemberConditionPtrInput` via:
 //
-//          FunctionIamMemberConditionArgs{...}
+// 		 FunctionIamMemberConditionArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type FunctionIamMemberConditionPtrInput interface {
 	pulumi.Input
 
@@ -643,7 +651,8 @@ type FunctionSourceRepository struct {
 // FunctionSourceRepositoryInput is an input type that accepts FunctionSourceRepositoryArgs and FunctionSourceRepositoryOutput values.
 // You can construct a concrete instance of `FunctionSourceRepositoryInput` via:
 //
-//          FunctionSourceRepositoryArgs{...}
+// 		 FunctionSourceRepositoryArgs{...}
+//
 type FunctionSourceRepositoryInput interface {
 	pulumi.Input
 
@@ -680,11 +689,12 @@ func (i FunctionSourceRepositoryArgs) ToFunctionSourceRepositoryPtrOutputWithCon
 // FunctionSourceRepositoryPtrInput is an input type that accepts FunctionSourceRepositoryArgs, FunctionSourceRepositoryPtr and FunctionSourceRepositoryPtrOutput values.
 // You can construct a concrete instance of `FunctionSourceRepositoryPtrInput` via:
 //
-//          FunctionSourceRepositoryArgs{...}
+// 		 FunctionSourceRepositoryArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type FunctionSourceRepositoryPtrInput interface {
 	pulumi.Input
 
@@ -793,7 +803,8 @@ type GetFunctionEventTrigger struct {
 // GetFunctionEventTriggerInput is an input type that accepts GetFunctionEventTriggerArgs and GetFunctionEventTriggerOutput values.
 // You can construct a concrete instance of `GetFunctionEventTriggerInput` via:
 //
-//          GetFunctionEventTriggerArgs{...}
+// 		 GetFunctionEventTriggerArgs{...}
+//
 type GetFunctionEventTriggerInput interface {
 	pulumi.Input
 
@@ -827,7 +838,8 @@ func (i GetFunctionEventTriggerArgs) ToGetFunctionEventTriggerOutputWithContext(
 // GetFunctionEventTriggerArrayInput is an input type that accepts GetFunctionEventTriggerArray and GetFunctionEventTriggerArrayOutput values.
 // You can construct a concrete instance of `GetFunctionEventTriggerArrayInput` via:
 //
-//          GetFunctionEventTriggerArray{ GetFunctionEventTriggerArgs{...} }
+// 		 GetFunctionEventTriggerArray{ GetFunctionEventTriggerArgs{...} }
+//
 type GetFunctionEventTriggerArrayInput interface {
 	pulumi.Input
 
@@ -908,7 +920,8 @@ type GetFunctionEventTriggerFailurePolicy struct {
 // GetFunctionEventTriggerFailurePolicyInput is an input type that accepts GetFunctionEventTriggerFailurePolicyArgs and GetFunctionEventTriggerFailurePolicyOutput values.
 // You can construct a concrete instance of `GetFunctionEventTriggerFailurePolicyInput` via:
 //
-//          GetFunctionEventTriggerFailurePolicyArgs{...}
+// 		 GetFunctionEventTriggerFailurePolicyArgs{...}
+//
 type GetFunctionEventTriggerFailurePolicyInput interface {
 	pulumi.Input
 
@@ -936,7 +949,8 @@ func (i GetFunctionEventTriggerFailurePolicyArgs) ToGetFunctionEventTriggerFailu
 // GetFunctionEventTriggerFailurePolicyArrayInput is an input type that accepts GetFunctionEventTriggerFailurePolicyArray and GetFunctionEventTriggerFailurePolicyArrayOutput values.
 // You can construct a concrete instance of `GetFunctionEventTriggerFailurePolicyArrayInput` via:
 //
-//          GetFunctionEventTriggerFailurePolicyArray{ GetFunctionEventTriggerFailurePolicyArgs{...} }
+// 		 GetFunctionEventTriggerFailurePolicyArray{ GetFunctionEventTriggerFailurePolicyArgs{...} }
+//
 type GetFunctionEventTriggerFailurePolicyArrayInput interface {
 	pulumi.Input
 
@@ -1006,7 +1020,8 @@ type GetFunctionSourceRepository struct {
 // GetFunctionSourceRepositoryInput is an input type that accepts GetFunctionSourceRepositoryArgs and GetFunctionSourceRepositoryOutput values.
 // You can construct a concrete instance of `GetFunctionSourceRepositoryInput` via:
 //
-//          GetFunctionSourceRepositoryArgs{...}
+// 		 GetFunctionSourceRepositoryArgs{...}
+//
 type GetFunctionSourceRepositoryInput interface {
 	pulumi.Input
 
@@ -1035,7 +1050,8 @@ func (i GetFunctionSourceRepositoryArgs) ToGetFunctionSourceRepositoryOutputWith
 // GetFunctionSourceRepositoryArrayInput is an input type that accepts GetFunctionSourceRepositoryArray and GetFunctionSourceRepositoryArrayOutput values.
 // You can construct a concrete instance of `GetFunctionSourceRepositoryArrayInput` via:
 //
-//          GetFunctionSourceRepositoryArray{ GetFunctionSourceRepositoryArgs{...} }
+// 		 GetFunctionSourceRepositoryArray{ GetFunctionSourceRepositoryArgs{...} }
+//
 type GetFunctionSourceRepositoryArrayInput interface {
 	pulumi.Input
 

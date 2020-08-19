@@ -16,6 +16,52 @@ import * as utilities from "../utilities";
  * > **Note:** `gcp.dataproc.JobIAMPolicy` **cannot** be used in conjunction with `gcp.dataproc.JobIAMBinding` and `gcp.dataproc.JobIAMMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the job as `gcp.dataproc.JobIAMPolicy` replaces the entire policy.
  *
  * > **Note:** `gcp.dataproc.JobIAMBinding` resources **can be** used in conjunction with `gcp.dataproc.JobIAMMember` resources **only if** they do not grant privilege to the same role.
+ *
+ * ## google\_pubsub\_subscription\_iam\_policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     binding: [{
+ *         role: "roles/editor",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const editor = new gcp.dataproc.JobIAMPolicy("editor", {
+ *     project: "your-project",
+ *     region: "your-region",
+ *     jobId: "your-dataproc-job",
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * ## google\_pubsub\_subscription\_iam\_binding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const editor = new gcp.dataproc.JobIAMBinding("editor", {
+ *     jobId: "your-dataproc-job",
+ *     members: ["user:jane@example.com"],
+ *     role: "roles/editor",
+ * });
+ * ```
+ *
+ * ## google\_pubsub\_subscription\_iam\_member
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const editor = new gcp.dataproc.JobIAMMember("editor", {
+ *     jobId: "your-dataproc-job",
+ *     member: "user:jane@example.com",
+ *     role: "roles/editor",
+ * });
+ * ```
  */
 export class JobIAMMember extends pulumi.CustomResource {
     /**

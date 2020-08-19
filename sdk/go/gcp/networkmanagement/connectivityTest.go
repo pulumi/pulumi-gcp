@@ -14,13 +14,12 @@ import (
 // that enables you to evaluate connectivity to and from Google Cloud
 // resources in your Virtual Private Cloud (VPC) network.
 //
+//
 // To get more information about ConnectivityTest, see:
 //
 // * [API documentation](https://cloud.google.com/network-intelligence-center/docs/connectivity-tests/reference/networkmanagement/rest/v1/projects.locations.global.connectivityTests)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/network-intelligence-center/docs)
-//
-// ## Example Usage
 type ConnectivityTest struct {
 	pulumi.CustomResourceState
 

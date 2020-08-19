@@ -16,6 +16,55 @@ import * as utilities from "../utilities";
  * > **Note:** `gcp.binaryauthorization.AttestorIamPolicy` **cannot** be used in conjunction with `gcp.binaryauthorization.AttestorIamBinding` and `gcp.binaryauthorization.AttestorIamMember` or they will fight over what your policy should be.
  *
  * > **Note:** `gcp.binaryauthorization.AttestorIamBinding` resources **can be** used in conjunction with `gcp.binaryauthorization.AttestorIamMember` resources **only if** they do not grant privilege to the same role.
+ *
+ *
+ *
+ * ## google\_binary\_authorization\_attestor\_iam\_policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     binding: [{
+ *         role: "roles/viewer",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const policy = new gcp.binaryauthorization.AttestorIamPolicy("policy", {
+ *     project: google_binary_authorization_attestor.attestor.project,
+ *     attestor: google_binary_authorization_attestor.attestor.name,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * ## google\_binary\_authorization\_attestor\_iam\_binding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.binaryauthorization.AttestorIamBinding("binding", {
+ *     project: google_binary_authorization_attestor.attestor.project,
+ *     attestor: google_binary_authorization_attestor.attestor.name,
+ *     role: "roles/viewer",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ *
+ * ## google\_binary\_authorization\_attestor\_iam\_member
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.binaryauthorization.AttestorIamMember("member", {
+ *     project: google_binary_authorization_attestor.attestor.project,
+ *     attestor: google_binary_authorization_attestor.attestor.name,
+ *     role: "roles/viewer",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
  */
 export class AttestorIamBinding extends pulumi.CustomResource {
     /**

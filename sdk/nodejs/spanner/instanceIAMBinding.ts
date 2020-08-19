@@ -19,6 +19,50 @@ import * as utilities from "../utilities";
  * > **Note:** `gcp.spanner.InstanceIAMPolicy` **cannot** be used in conjunction with `gcp.spanner.InstanceIAMBinding` and `gcp.spanner.InstanceIAMMember` or they will fight over what your policy should be.
  *
  * > **Note:** `gcp.spanner.InstanceIAMBinding` resources **can be** used in conjunction with `gcp.spanner.InstanceIAMMember` resources **only if** they do not grant privilege to the same role.
+ *
+ * ## google\_spanner\_instance\_iam\_policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     binding: [{
+ *         role: "roles/editor",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const instance = new gcp.spanner.InstanceIAMPolicy("instance", {
+ *     instance: "your-instance-name",
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * ## google\_spanner\_instance\_iam\_binding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const instance = new gcp.spanner.InstanceIAMBinding("instance", {
+ *     instance: "your-instance-name",
+ *     members: ["user:jane@example.com"],
+ *     role: "roles/compute.networkUser",
+ * });
+ * ```
+ *
+ * ## google\_spanner\_instance\_iam\_member
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const instance = new gcp.spanner.InstanceIAMMember("instance", {
+ *     instance: "your-instance-name",
+ *     member: "user:jane@example.com",
+ *     role: "roles/compute.networkUser",
+ * });
+ * ```
  */
 export class InstanceIAMBinding extends pulumi.CustomResource {
     /**

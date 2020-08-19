@@ -13,6 +13,7 @@ import (
 // A tag template defines a tag, which can have one or more typed fields.
 // The template is used to create and attach the tag to GCP resources.
 //
+//
 // To get more information about TagTemplate, see:
 //
 // * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.tagTemplates)
@@ -20,6 +21,68 @@ import (
 //     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
 //
 // ## Example Usage
+//
+// ### Data Catalog Tag Template Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/datacatalog"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		basicTagTemplate, err := datacatalog.NewTagTemplate(ctx, "basicTagTemplate", &datacatalog.TagTemplateArgs{
+// 			DisplayName: pulumi.String("Demo Tag Template"),
+// 			Fields: datacatalog.TagTemplateFieldArray{
+// 				&datacatalog.TagTemplateFieldArgs{
+// 					DisplayName: pulumi.String("Source of data asset"),
+// 					FieldId:     pulumi.String("source"),
+// 					IsRequired:  pulumi.Bool(true),
+// 					Type: &datacatalog.TagTemplateFieldTypeArgs{
+// 						PrimitiveType: pulumi.String("STRING"),
+// 					},
+// 				},
+// 				&datacatalog.TagTemplateFieldArgs{
+// 					DisplayName: pulumi.String("Number of rows in the data asset"),
+// 					FieldId:     pulumi.String("num_rows"),
+// 					Type: &datacatalog.TagTemplateFieldTypeArgs{
+// 						PrimitiveType: pulumi.String("DOUBLE"),
+// 					},
+// 				},
+// 				&datacatalog.TagTemplateFieldArgs{
+// 					DisplayName: pulumi.String("PII type"),
+// 					FieldId:     pulumi.String("pii_type"),
+// 					Type: &datacatalog.TagTemplateFieldTypeArgs{
+// 						EnumType: &datacatalog.TagTemplateFieldTypeEnumTypeArgs{
+// 							AllowedValues: datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArray{
+// 								&datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs{
+// 									DisplayName: pulumi.String("EMAIL"),
+// 								},
+// 								&datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs{
+// 									DisplayName: pulumi.String("SOCIAL SECURITY NUMBER"),
+// 								},
+// 								&datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs{
+// 									DisplayName: pulumi.String("NONE"),
+// 								},
+// 							},
+// 						},
+// 					},
+// 				},
+// 			},
+// 			ForceDelete:   pulumi.Bool(false),
+// 			Region:        pulumi.String("us-central1"),
+// 			TagTemplateId: pulumi.String("my_template"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type TagTemplate struct {
 	pulumi.CustomResourceState
 

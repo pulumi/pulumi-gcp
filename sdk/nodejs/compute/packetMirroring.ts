@@ -18,6 +18,68 @@ import * as utilities from "../utilities";
  *     * [Using Packet Mirroring](https://cloud.google.com/vpc/docs/using-packet-mirroring#creating)
  *
  * ## Example Usage
+ *
+ * ### Compute Packet Mirroring Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {});
+ * const mirror = new gcp.compute.Instance("mirror", {
+ *     machineType: "n1-standard-1",
+ *     boot_disk: {
+ *         initialize_params: {
+ *             image: "debian-cloud/debian-9",
+ *         },
+ *     },
+ *     network_interface: [{
+ *         network: defaultNetwork.id,
+ *         access_config: [{}],
+ *     }],
+ * });
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("defaultSubnetwork", {
+ *     network: defaultNetwork.id,
+ *     ipCidrRange: "10.2.0.0/16",
+ * });
+ * const defaultHealthCheck = new gcp.compute.HealthCheck("defaultHealthCheck", {
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ *     tcp_health_check: {
+ *         port: "80",
+ *     },
+ * });
+ * const defaultRegionBackendService = new gcp.compute.RegionBackendService("defaultRegionBackendService", {healthChecks: [defaultHealthCheck.id]});
+ * const defaultForwardingRule = new gcp.compute.ForwardingRule("defaultForwardingRule", {
+ *     isMirroringCollector: true,
+ *     ipProtocol: "TCP",
+ *     loadBalancingScheme: "INTERNAL",
+ *     backendService: defaultRegionBackendService.id,
+ *     allPorts: true,
+ *     network: defaultNetwork.id,
+ *     subnetwork: defaultSubnetwork.id,
+ *     networkTier: "PREMIUM",
+ * });
+ * const foobar = new gcp.compute.PacketMirroring("foobar", {
+ *     description: "bar",
+ *     network: {
+ *         url: defaultNetwork.id,
+ *     },
+ *     collector_ilb: {
+ *         url: defaultForwardingRule.id,
+ *     },
+ *     mirrored_resources: {
+ *         tags: ["foo"],
+ *         instances: [{
+ *             url: mirror.id,
+ *         }],
+ *     },
+ *     filter: {
+ *         ipProtocols: ["tcp"],
+ *         cidrRanges: ["0.0.0.0/0"],
+ *     },
+ * });
+ * ```
  */
 export class PacketMirroring extends pulumi.CustomResource {
     /**

@@ -13,6 +13,7 @@ namespace Pulumi.Gcp.DataCatalog
     /// A tag template defines a tag, which can have one or more typed fields.
     /// The template is used to create and attach the tag to GCP resources.
     /// 
+    /// 
     /// To get more information about TagTemplate, see:
     /// 
     /// * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.tagTemplates)
@@ -20,6 +21,76 @@ namespace Pulumi.Gcp.DataCatalog
     ///     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
     /// 
     /// ## Example Usage
+    /// 
+    /// ### Data Catalog Tag Template Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var basicTagTemplate = new Gcp.DataCatalog.TagTemplate("basicTagTemplate", new Gcp.DataCatalog.TagTemplateArgs
+    ///         {
+    ///             DisplayName = "Demo Tag Template",
+    ///             Fields = 
+    ///             {
+    ///                 new Gcp.DataCatalog.Inputs.TagTemplateFieldArgs
+    ///                 {
+    ///                     DisplayName = "Source of data asset",
+    ///                     FieldId = "source",
+    ///                     IsRequired = true,
+    ///                     Type = new Gcp.DataCatalog.Inputs.TagTemplateFieldTypeArgs
+    ///                     {
+    ///                         PrimitiveType = "STRING",
+    ///                     },
+    ///                 },
+    ///                 new Gcp.DataCatalog.Inputs.TagTemplateFieldArgs
+    ///                 {
+    ///                     DisplayName = "Number of rows in the data asset",
+    ///                     FieldId = "num_rows",
+    ///                     Type = new Gcp.DataCatalog.Inputs.TagTemplateFieldTypeArgs
+    ///                     {
+    ///                         PrimitiveType = "DOUBLE",
+    ///                     },
+    ///                 },
+    ///                 new Gcp.DataCatalog.Inputs.TagTemplateFieldArgs
+    ///                 {
+    ///                     DisplayName = "PII type",
+    ///                     FieldId = "pii_type",
+    ///                     Type = new Gcp.DataCatalog.Inputs.TagTemplateFieldTypeArgs
+    ///                     {
+    ///                         EnumType = new Gcp.DataCatalog.Inputs.TagTemplateFieldTypeEnumTypeArgs
+    ///                         {
+    ///                             AllowedValues = 
+    ///                             {
+    ///                                 new Gcp.DataCatalog.Inputs.TagTemplateFieldTypeEnumTypeAllowedValueArgs
+    ///                                 {
+    ///                                     DisplayName = "EMAIL",
+    ///                                 },
+    ///                                 new Gcp.DataCatalog.Inputs.TagTemplateFieldTypeEnumTypeAllowedValueArgs
+    ///                                 {
+    ///                                     DisplayName = "SOCIAL SECURITY NUMBER",
+    ///                                 },
+    ///                                 new Gcp.DataCatalog.Inputs.TagTemplateFieldTypeEnumTypeAllowedValueArgs
+    ///                                 {
+    ///                                     DisplayName = "NONE",
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             ForceDelete = false,
+    ///             Region = "us-central1",
+    ///             TagTemplateId = "my_template",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class TagTemplate : Pulumi.CustomResource
     {

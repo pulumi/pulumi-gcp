@@ -15,6 +15,69 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/transferJobs#TransferJob)
  * * How-to Guides
  *     * [Configuring Access to Data Sources and Sinks](https://cloud.google.com/storage-transfer/docs/configure-access)
+ *
+ * ## Example Usage
+ *
+ *
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const default = gcp.storage.getTransferProjectServieAccount({
+ *     project: _var.project,
+ * });
+ * const s3_backup_bucketBucket = new gcp.storage.Bucket("s3-backup-bucketBucket", {
+ *     storageClass: "NEARLINE",
+ *     project: _var.project,
+ * });
+ * const s3_backup_bucketBucketIAMMember = new gcp.storage.BucketIAMMember("s3-backup-bucketBucketIAMMember", {
+ *     bucket: s3_backup_bucketBucket.name,
+ *     role: "roles/storage.admin",
+ *     member: _default.then(_default => `serviceAccount:${_default.email}`),
+ * });
+ * const s3_bucket_nightly_backup = new gcp.storage.TransferJob("s3-bucket-nightly-backup", {
+ *     description: "Nightly backup of S3 bucket",
+ *     project: _var.project,
+ *     transfer_spec: {
+ *         object_conditions: {
+ *             maxTimeElapsedSinceLastModification: "600s",
+ *             excludePrefixes: ["requests.gz"],
+ *         },
+ *         transfer_options: {
+ *             deleteObjectsUniqueInSink: false,
+ *         },
+ *         aws_s3_data_source: {
+ *             bucketName: _var.aws_s3_bucket,
+ *             aws_access_key: {
+ *                 accessKeyId: _var.aws_access_key,
+ *                 secretAccessKey: _var.aws_secret_key,
+ *             },
+ *         },
+ *         gcs_data_sink: {
+ *             bucketName: s3_backup_bucketBucket.name,
+ *         },
+ *     },
+ *     schedule: {
+ *         schedule_start_date: {
+ *             year: 2018,
+ *             month: 10,
+ *             day: 1,
+ *         },
+ *         schedule_end_date: {
+ *             year: 2019,
+ *             month: 1,
+ *             day: 15,
+ *         },
+ *         start_time_of_day: {
+ *             hours: 23,
+ *             minutes: 30,
+ *             seconds: 0,
+ *             nanos: 0,
+ *         },
+ *     },
+ * });
+ * ```
  */
 export class TransferJob extends pulumi.CustomResource {
     /**

@@ -12,13 +12,12 @@ namespace Pulumi.Gcp.CloudAsset
     /// <summary>
     /// Describes a Cloud Asset Inventory feed used to to listen to asset updates.
     /// 
+    /// 
     /// To get more information about ProjectFeed, see:
     /// 
     /// * [API documentation](https://cloud.google.com/asset-inventory/docs/reference/rest/)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/asset-inventory/docs)
-    /// 
-    /// ## Example Usage
     /// </summary>
     public partial class ProjectFeed : Pulumi.CustomResource
     {

@@ -18,8 +18,6 @@ namespace Pulumi.Gcp.Dns
     /// * [API documentation](https://cloud.google.com/dns/docs/reference/v1beta2/policies)
     /// * How-to Guides
     ///     * [Using DNS server policies](https://cloud.google.com/dns/zones/#using-dns-server-policies)
-    /// 
-    /// ## Example Usage
     /// </summary>
     public partial class Policy : Pulumi.CustomResource
     {

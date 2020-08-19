@@ -10,6 +10,7 @@ import * as utilities from "../utilities";
  * Patch deployments are configurations that individual patch jobs use to complete a patch.
  * These configurations include instance filter, package repository settings, and a schedule.
  *
+ *
  * To get more information about PatchDeployment, see:
  *
  * * [API documentation](https://cloud.google.com/compute/docs/osconfig/rest)
@@ -17,6 +18,191 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/compute/docs/os-patch-management)
  *
  * ## Example Usage
+ *
+ * ### Os Config Patch Deployment Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const patch = new gcp.osconfig.PatchDeployment("patch", {
+ *     instanceFilter: {
+ *         all: true,
+ *     },
+ *     patchDeploymentId: "patch-deploy-inst",
+ *     recurringSchedule: {
+ *         timeOfDay: {
+ *             hours: 1,
+ *         },
+ *         timeZone: {
+ *             id: "America/New_York",
+ *         },
+ *         weekly: {
+ *             dayOfWeek: "MONDAY",
+ *         },
+ *     },
+ * });
+ * ```
+ *
+ * ### Os Config Patch Deployment Instance
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myImage = gcp.compute.getImage({
+ *     family: "debian-9",
+ *     project: "debian-cloud",
+ * });
+ * const foobar = new gcp.compute.Instance("foobar", {
+ *     machineType: "n1-standard-1",
+ *     zone: "us-central1-a",
+ *     canIpForward: false,
+ *     tags: [
+ *         "foo",
+ *         "bar",
+ *     ],
+ *     boot_disk: {
+ *         initialize_params: {
+ *             image: myImage.then(myImage => myImage.selfLink),
+ *         },
+ *     },
+ *     network_interface: [{
+ *         network: "default",
+ *     }],
+ *     metadata: {
+ *         foo: "bar",
+ *     },
+ * });
+ * const patch = new gcp.osconfig.PatchDeployment("patch", {
+ *     patchDeploymentId: "patch-deploy-inst",
+ *     instance_filter: {
+ *         instances: [foobar.id],
+ *     },
+ *     patch_config: {
+ *         yum: {
+ *             security: true,
+ *             minimal: true,
+ *             excludes: ["bash"],
+ *         },
+ *     },
+ *     recurring_schedule: {
+ *         time_zone: {
+ *             id: "America/New_York",
+ *         },
+ *         time_of_day: {
+ *             hours: 0,
+ *             minutes: 30,
+ *             seconds: 30,
+ *             nanos: 20,
+ *         },
+ *         monthly: {
+ *             monthDay: 1,
+ *         },
+ *     },
+ * });
+ * ```
+ *
+ * ### Os Config Patch Deployment Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const patch = new gcp.osconfig.PatchDeployment("patch", {
+ *     duration: "10s",
+ *     instanceFilter: {
+ *         groupLabels: [{
+ *             labels: {
+ *                 app: "web",
+ *                 env: "dev",
+ *             },
+ *         }],
+ *         instanceNamePrefixes: ["test-"],
+ *         zones: [
+ *             "us-central1-a",
+ *             "us-central-1c",
+ *         ],
+ *     },
+ *     patchConfig: {
+ *         apt: {
+ *             excludes: ["python"],
+ *             type: "DIST",
+ *         },
+ *         goo: {
+ *             enabled: true,
+ *         },
+ *         postStep: {
+ *             linuxExecStepConfig: {
+ *                 gcsObject: {
+ *                     bucket: "my-patch-scripts",
+ *                     generationNumber: "1523477886880",
+ *                     object: "linux/post_patch_script",
+ *                 },
+ *             },
+ *             windowsExecStepConfig: {
+ *                 gcsObject: {
+ *                     bucket: "my-patch-scripts",
+ *                     generationNumber: "135920493447",
+ *                     object: "windows/post_patch_script.ps1",
+ *                 },
+ *                 interpreter: "POWERSHELL",
+ *             },
+ *         },
+ *         preStep: {
+ *             linuxExecStepConfig: {
+ *                 allowedSuccessCodes: [
+ *                     0,
+ *                     3,
+ *                 ],
+ *                 localPath: "/tmp/pre_patch_script.sh",
+ *             },
+ *             windowsExecStepConfig: {
+ *                 allowedSuccessCodes: [
+ *                     0,
+ *                     2,
+ *                 ],
+ *                 interpreter: "SHELL",
+ *                 localPath: "C:\\Users\\user\\pre-patch-script.cmd",
+ *             },
+ *         },
+ *         rebootConfig: "ALWAYS",
+ *         windowsUpdate: {
+ *             classifications: [
+ *                 "CRITICAL",
+ *                 "SECURITY",
+ *                 "UPDATE",
+ *             ],
+ *         },
+ *         yum: {
+ *             excludes: ["bash"],
+ *             minimal: true,
+ *             security: true,
+ *         },
+ *         zypper: {
+ *             categories: ["security"],
+ *         },
+ *     },
+ *     patchDeploymentId: "patch-deploy-inst",
+ *     recurringSchedule: {
+ *         monthly: {
+ *             weekDayOfMonth: {
+ *                 dayOfWeek: "TUESDAY",
+ *                 weekOrdinal: -1,
+ *             },
+ *         },
+ *         timeOfDay: {
+ *             hours: 0,
+ *             minutes: 30,
+ *             nanos: 20,
+ *             seconds: 30,
+ *         },
+ *         timeZone: {
+ *             id: "America/New_York",
+ *         },
+ *     },
+ * });
+ * ```
  */
 export class PatchDeployment extends pulumi.CustomResource {
     /**

@@ -19,6 +19,29 @@ namespace Pulumi.Gcp.Organizations
     /// resource must have `roles/resourcemanager.projectCreator`. See the
     /// [Access Control for Organizations Using IAM](https://cloud.google.com/resource-manager/docs/access-control-org)
     /// doc for more information.
+    /// 
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myProject = new Gcp.Organizations.Project("myProject", new Gcp.Organizations.ProjectArgs
+    ///         {
+    ///             OrgId = "1234567",
+    ///             ProjectId = "your-project-id",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Project : Pulumi.CustomResource
     {

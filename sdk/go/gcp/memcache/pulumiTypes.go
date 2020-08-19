@@ -21,7 +21,8 @@ type InstanceMemcacheNode struct {
 // InstanceMemcacheNodeInput is an input type that accepts InstanceMemcacheNodeArgs and InstanceMemcacheNodeOutput values.
 // You can construct a concrete instance of `InstanceMemcacheNodeInput` via:
 //
-//          InstanceMemcacheNodeArgs{...}
+// 		 InstanceMemcacheNodeArgs{...}
+//
 type InstanceMemcacheNodeInput interface {
 	pulumi.Input
 
@@ -52,7 +53,8 @@ func (i InstanceMemcacheNodeArgs) ToInstanceMemcacheNodeOutputWithContext(ctx co
 // InstanceMemcacheNodeArrayInput is an input type that accepts InstanceMemcacheNodeArray and InstanceMemcacheNodeArrayOutput values.
 // You can construct a concrete instance of `InstanceMemcacheNodeArrayInput` via:
 //
-//          InstanceMemcacheNodeArray{ InstanceMemcacheNodeArgs{...} }
+// 		 InstanceMemcacheNodeArray{ InstanceMemcacheNodeArgs{...} }
+//
 type InstanceMemcacheNodeArrayInput interface {
 	pulumi.Input
 
@@ -139,7 +141,8 @@ type InstanceMemcacheParameters struct {
 // InstanceMemcacheParametersInput is an input type that accepts InstanceMemcacheParametersArgs and InstanceMemcacheParametersOutput values.
 // You can construct a concrete instance of `InstanceMemcacheParametersInput` via:
 //
-//          InstanceMemcacheParametersArgs{...}
+// 		 InstanceMemcacheParametersArgs{...}
+//
 type InstanceMemcacheParametersInput interface {
 	pulumi.Input
 
@@ -178,11 +181,12 @@ func (i InstanceMemcacheParametersArgs) ToInstanceMemcacheParametersPtrOutputWit
 // InstanceMemcacheParametersPtrInput is an input type that accepts InstanceMemcacheParametersArgs, InstanceMemcacheParametersPtr and InstanceMemcacheParametersPtrOutput values.
 // You can construct a concrete instance of `InstanceMemcacheParametersPtrInput` via:
 //
-//          InstanceMemcacheParametersArgs{...}
+// 		 InstanceMemcacheParametersArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type InstanceMemcacheParametersPtrInput interface {
 	pulumi.Input
 
@@ -292,7 +296,8 @@ type InstanceNodeConfig struct {
 // InstanceNodeConfigInput is an input type that accepts InstanceNodeConfigArgs and InstanceNodeConfigOutput values.
 // You can construct a concrete instance of `InstanceNodeConfigInput` via:
 //
-//          InstanceNodeConfigArgs{...}
+// 		 InstanceNodeConfigArgs{...}
+//
 type InstanceNodeConfigInput interface {
 	pulumi.Input
 
@@ -330,11 +335,12 @@ func (i InstanceNodeConfigArgs) ToInstanceNodeConfigPtrOutputWithContext(ctx con
 // InstanceNodeConfigPtrInput is an input type that accepts InstanceNodeConfigArgs, InstanceNodeConfigPtr and InstanceNodeConfigPtrOutput values.
 // You can construct a concrete instance of `InstanceNodeConfigPtrInput` via:
 //
-//          InstanceNodeConfigArgs{...}
+// 		 InstanceNodeConfigArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type InstanceNodeConfigPtrInput interface {
 	pulumi.Input
 

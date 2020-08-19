@@ -20,7 +20,8 @@ type DeploymentLabel struct {
 // DeploymentLabelInput is an input type that accepts DeploymentLabelArgs and DeploymentLabelOutput values.
 // You can construct a concrete instance of `DeploymentLabelInput` via:
 //
-//          DeploymentLabelArgs{...}
+// 		 DeploymentLabelArgs{...}
+//
 type DeploymentLabelInput interface {
 	pulumi.Input
 
@@ -50,7 +51,8 @@ func (i DeploymentLabelArgs) ToDeploymentLabelOutputWithContext(ctx context.Cont
 // DeploymentLabelArrayInput is an input type that accepts DeploymentLabelArray and DeploymentLabelArrayOutput values.
 // You can construct a concrete instance of `DeploymentLabelArrayInput` via:
 //
-//          DeploymentLabelArray{ DeploymentLabelArgs{...} }
+// 		 DeploymentLabelArray{ DeploymentLabelArgs{...} }
+//
 type DeploymentLabelArrayInput interface {
 	pulumi.Input
 
@@ -130,7 +132,8 @@ type DeploymentTarget struct {
 // DeploymentTargetInput is an input type that accepts DeploymentTargetArgs and DeploymentTargetOutput values.
 // You can construct a concrete instance of `DeploymentTargetInput` via:
 //
-//          DeploymentTargetArgs{...}
+// 		 DeploymentTargetArgs{...}
+//
 type DeploymentTargetInput interface {
 	pulumi.Input
 
@@ -172,11 +175,12 @@ func (i DeploymentTargetArgs) ToDeploymentTargetPtrOutputWithContext(ctx context
 // DeploymentTargetPtrInput is an input type that accepts DeploymentTargetArgs, DeploymentTargetPtr and DeploymentTargetPtrOutput values.
 // You can construct a concrete instance of `DeploymentTargetPtrInput` via:
 //
-//          DeploymentTargetArgs{...}
+// 		 DeploymentTargetArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type DeploymentTargetPtrInput interface {
 	pulumi.Input
 
@@ -290,7 +294,8 @@ type DeploymentTargetConfig struct {
 // DeploymentTargetConfigInput is an input type that accepts DeploymentTargetConfigArgs and DeploymentTargetConfigOutput values.
 // You can construct a concrete instance of `DeploymentTargetConfigInput` via:
 //
-//          DeploymentTargetConfigArgs{...}
+// 		 DeploymentTargetConfigArgs{...}
+//
 type DeploymentTargetConfigInput interface {
 	pulumi.Input
 
@@ -326,11 +331,12 @@ func (i DeploymentTargetConfigArgs) ToDeploymentTargetConfigPtrOutputWithContext
 // DeploymentTargetConfigPtrInput is an input type that accepts DeploymentTargetConfigArgs, DeploymentTargetConfigPtr and DeploymentTargetConfigPtrOutput values.
 // You can construct a concrete instance of `DeploymentTargetConfigPtrInput` via:
 //
-//          DeploymentTargetConfigArgs{...}
+// 		 DeploymentTargetConfigArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type DeploymentTargetConfigPtrInput interface {
 	pulumi.Input
 
@@ -424,7 +430,8 @@ type DeploymentTargetImport struct {
 // DeploymentTargetImportInput is an input type that accepts DeploymentTargetImportArgs and DeploymentTargetImportOutput values.
 // You can construct a concrete instance of `DeploymentTargetImportInput` via:
 //
-//          DeploymentTargetImportArgs{...}
+// 		 DeploymentTargetImportArgs{...}
+//
 type DeploymentTargetImportInput interface {
 	pulumi.Input
 
@@ -455,7 +462,8 @@ func (i DeploymentTargetImportArgs) ToDeploymentTargetImportOutputWithContext(ct
 // DeploymentTargetImportArrayInput is an input type that accepts DeploymentTargetImportArray and DeploymentTargetImportArrayOutput values.
 // You can construct a concrete instance of `DeploymentTargetImportArrayInput` via:
 //
-//          DeploymentTargetImportArray{ DeploymentTargetImportArgs{...} }
+// 		 DeploymentTargetImportArray{ DeploymentTargetImportArgs{...} }
+//
 type DeploymentTargetImportArrayInput interface {
 	pulumi.Input
 

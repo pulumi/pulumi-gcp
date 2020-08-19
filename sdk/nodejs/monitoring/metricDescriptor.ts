@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
 /**
  * Defines a metric type and its schema. Once a metric descriptor is created, deleting or altering it stops data collection and makes the metric type's existing data unusable.
  *
+ *
  * To get more information about MetricDescriptor, see:
  *
  * * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors)
@@ -16,6 +17,60 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/monitoring/custom-metrics/)
  *
  * ## Example Usage
+ *
+ * ### Monitoring Metric Descriptor Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basic = new gcp.MonitoringMetricDescriptor("basic", {
+ *     description: "Daily sales records from all branch stores.",
+ *     displayName: "metric-descriptor",
+ *     labels: [{
+ *         description: "The ID of the store.",
+ *         key: "store_id",
+ *         valueType: "STRING",
+ *     }],
+ *     launchStage: "BETA",
+ *     metadata: [{
+ *         ingestDelay: "30s",
+ *         samplePeriod: "60s",
+ *     }],
+ *     metricKind: "GAUGE",
+ *     type: "custom.googleapis.com/stores/daily_sales",
+ *     unit: "{USD}",
+ *     valueType: "DOUBLE",
+ * });
+ * ```
+ *
+ * ### Monitoring Metric Descriptor Alert
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const withAlert = new gcp.MonitoringMetricDescriptor("with_alert", {
+ *     description: "Daily sales records from all branch stores.",
+ *     displayName: "metric-descriptor",
+ *     metricKind: "GAUGE",
+ *     type: "custom.googleapis.com/stores/daily_sales",
+ *     unit: "{USD}",
+ *     valueType: "DOUBLE",
+ * });
+ * const alertPolicy = new gcp.monitoring.AlertPolicy("alert_policy", {
+ *     combiner: "OR",
+ *     conditions: [{
+ *         conditionThreshold: {
+ *             comparison: "COMPARISON_GT",
+ *             duration: "60s",
+ *             filter: pulumi.interpolate`metric.type="${withAlert.type}" AND resource.type="gce_instance"`,
+ *         },
+ *         displayName: "test condition",
+ *     }],
+ *     displayName: "metric-descriptor",
+ * });
+ * ```
  */
 export class MetricDescriptor extends pulumi.CustomResource {
     /**

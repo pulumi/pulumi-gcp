@@ -26,7 +26,8 @@ type NoteAttestationAuthority struct {
 // NoteAttestationAuthorityInput is an input type that accepts NoteAttestationAuthorityArgs and NoteAttestationAuthorityOutput values.
 // You can construct a concrete instance of `NoteAttestationAuthorityInput` via:
 //
-//          NoteAttestationAuthorityArgs{...}
+// 		 NoteAttestationAuthorityArgs{...}
+//
 type NoteAttestationAuthorityInput interface {
 	pulumi.Input
 
@@ -70,11 +71,12 @@ func (i NoteAttestationAuthorityArgs) ToNoteAttestationAuthorityPtrOutputWithCon
 // NoteAttestationAuthorityPtrInput is an input type that accepts NoteAttestationAuthorityArgs, NoteAttestationAuthorityPtr and NoteAttestationAuthorityPtrOutput values.
 // You can construct a concrete instance of `NoteAttestationAuthorityPtrInput` via:
 //
-//          NoteAttestationAuthorityArgs{...}
+// 		 NoteAttestationAuthorityArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type NoteAttestationAuthorityPtrInput interface {
 	pulumi.Input
 
@@ -182,7 +184,8 @@ type NoteAttestationAuthorityHint struct {
 // NoteAttestationAuthorityHintInput is an input type that accepts NoteAttestationAuthorityHintArgs and NoteAttestationAuthorityHintOutput values.
 // You can construct a concrete instance of `NoteAttestationAuthorityHintInput` via:
 //
-//          NoteAttestationAuthorityHintArgs{...}
+// 		 NoteAttestationAuthorityHintArgs{...}
+//
 type NoteAttestationAuthorityHintInput interface {
 	pulumi.Input
 
@@ -219,11 +222,12 @@ func (i NoteAttestationAuthorityHintArgs) ToNoteAttestationAuthorityHintPtrOutpu
 // NoteAttestationAuthorityHintPtrInput is an input type that accepts NoteAttestationAuthorityHintArgs, NoteAttestationAuthorityHintPtr and NoteAttestationAuthorityHintPtrOutput values.
 // You can construct a concrete instance of `NoteAttestationAuthorityHintPtrInput` via:
 //
-//          NoteAttestationAuthorityHintArgs{...}
+// 		 NoteAttestationAuthorityHintArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type NoteAttestationAuthorityHintPtrInput interface {
 	pulumi.Input
 
@@ -318,7 +322,8 @@ type NoteRelatedUrl struct {
 // NoteRelatedUrlInput is an input type that accepts NoteRelatedUrlArgs and NoteRelatedUrlOutput values.
 // You can construct a concrete instance of `NoteRelatedUrlInput` via:
 //
-//          NoteRelatedUrlArgs{...}
+// 		 NoteRelatedUrlArgs{...}
+//
 type NoteRelatedUrlInput interface {
 	pulumi.Input
 
@@ -348,7 +353,8 @@ func (i NoteRelatedUrlArgs) ToNoteRelatedUrlOutputWithContext(ctx context.Contex
 // NoteRelatedUrlArrayInput is an input type that accepts NoteRelatedUrlArray and NoteRelatedUrlArrayOutput values.
 // You can construct a concrete instance of `NoteRelatedUrlArrayInput` via:
 //
-//          NoteRelatedUrlArray{ NoteRelatedUrlArgs{...} }
+// 		 NoteRelatedUrlArray{ NoteRelatedUrlArgs{...} }
+//
 type NoteRelatedUrlArrayInput interface {
 	pulumi.Input
 
@@ -430,7 +436,8 @@ type OccurenceAttestation struct {
 // OccurenceAttestationInput is an input type that accepts OccurenceAttestationArgs and OccurenceAttestationOutput values.
 // You can construct a concrete instance of `OccurenceAttestationInput` via:
 //
-//          OccurenceAttestationArgs{...}
+// 		 OccurenceAttestationArgs{...}
+//
 type OccurenceAttestationInput interface {
 	pulumi.Input
 
@@ -474,11 +481,12 @@ func (i OccurenceAttestationArgs) ToOccurenceAttestationPtrOutputWithContext(ctx
 // OccurenceAttestationPtrInput is an input type that accepts OccurenceAttestationArgs, OccurenceAttestationPtr and OccurenceAttestationPtrOutput values.
 // You can construct a concrete instance of `OccurenceAttestationPtrInput` via:
 //
-//          OccurenceAttestationArgs{...}
+// 		 OccurenceAttestationArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type OccurenceAttestationPtrInput interface {
 	pulumi.Input
 
@@ -595,7 +603,7 @@ type OccurenceAttestationSignature struct {
 	// immutable reference, such as a cryptographic digest.
 	// Examples of valid values:
 	// * OpenPGP V4 public key fingerprint. See https://www.iana.org/assignments/uri-schemes/prov/openpgp4fpr
-	//   for more details on this scheme.
+	// for more details on this scheme.
 	// * `openpgp4fpr:74FAF3B861BDA0870C7B6DEF607E48D2A663AEEA`
 	// * RFC6920 digest-named SubjectPublicKeyInfo (digest of the DER serialization):
 	// * "ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU"
@@ -613,7 +621,8 @@ type OccurenceAttestationSignature struct {
 // OccurenceAttestationSignatureInput is an input type that accepts OccurenceAttestationSignatureArgs and OccurenceAttestationSignatureOutput values.
 // You can construct a concrete instance of `OccurenceAttestationSignatureInput` via:
 //
-//          OccurenceAttestationSignatureArgs{...}
+// 		 OccurenceAttestationSignatureArgs{...}
+//
 type OccurenceAttestationSignatureInput interface {
 	pulumi.Input
 
@@ -628,7 +637,7 @@ type OccurenceAttestationSignatureArgs struct {
 	// immutable reference, such as a cryptographic digest.
 	// Examples of valid values:
 	// * OpenPGP V4 public key fingerprint. See https://www.iana.org/assignments/uri-schemes/prov/openpgp4fpr
-	//   for more details on this scheme.
+	// for more details on this scheme.
 	// * `openpgp4fpr:74FAF3B861BDA0870C7B6DEF607E48D2A663AEEA`
 	// * RFC6920 digest-named SubjectPublicKeyInfo (digest of the DER serialization):
 	// * "ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU"
@@ -658,7 +667,8 @@ func (i OccurenceAttestationSignatureArgs) ToOccurenceAttestationSignatureOutput
 // OccurenceAttestationSignatureArrayInput is an input type that accepts OccurenceAttestationSignatureArray and OccurenceAttestationSignatureArrayOutput values.
 // You can construct a concrete instance of `OccurenceAttestationSignatureArrayInput` via:
 //
-//          OccurenceAttestationSignatureArray{ OccurenceAttestationSignatureArgs{...} }
+// 		 OccurenceAttestationSignatureArray{ OccurenceAttestationSignatureArgs{...} }
+//
 type OccurenceAttestationSignatureArrayInput interface {
 	pulumi.Input
 
@@ -700,7 +710,7 @@ func (o OccurenceAttestationSignatureOutput) ToOccurenceAttestationSignatureOutp
 // immutable reference, such as a cryptographic digest.
 // Examples of valid values:
 // * OpenPGP V4 public key fingerprint. See https://www.iana.org/assignments/uri-schemes/prov/openpgp4fpr
-//   for more details on this scheme.
+// for more details on this scheme.
 // * `openpgp4fpr:74FAF3B861BDA0870C7B6DEF607E48D2A663AEEA`
 // * RFC6920 digest-named SubjectPublicKeyInfo (digest of the DER serialization):
 // * "ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU"

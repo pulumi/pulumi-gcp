@@ -19,7 +19,8 @@ type FolderFeedFeedOutputConfig struct {
 // FolderFeedFeedOutputConfigInput is an input type that accepts FolderFeedFeedOutputConfigArgs and FolderFeedFeedOutputConfigOutput values.
 // You can construct a concrete instance of `FolderFeedFeedOutputConfigInput` via:
 //
-//          FolderFeedFeedOutputConfigArgs{...}
+// 		 FolderFeedFeedOutputConfigArgs{...}
+//
 type FolderFeedFeedOutputConfigInput interface {
 	pulumi.Input
 
@@ -56,11 +57,12 @@ func (i FolderFeedFeedOutputConfigArgs) ToFolderFeedFeedOutputConfigPtrOutputWit
 // FolderFeedFeedOutputConfigPtrInput is an input type that accepts FolderFeedFeedOutputConfigArgs, FolderFeedFeedOutputConfigPtr and FolderFeedFeedOutputConfigPtrOutput values.
 // You can construct a concrete instance of `FolderFeedFeedOutputConfigPtrInput` via:
 //
-//          FolderFeedFeedOutputConfigArgs{...}
+// 		 FolderFeedFeedOutputConfigArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type FolderFeedFeedOutputConfigPtrInput interface {
 	pulumi.Input
 
@@ -155,7 +157,8 @@ type FolderFeedFeedOutputConfigPubsubDestination struct {
 // FolderFeedFeedOutputConfigPubsubDestinationInput is an input type that accepts FolderFeedFeedOutputConfigPubsubDestinationArgs and FolderFeedFeedOutputConfigPubsubDestinationOutput values.
 // You can construct a concrete instance of `FolderFeedFeedOutputConfigPubsubDestinationInput` via:
 //
-//          FolderFeedFeedOutputConfigPubsubDestinationArgs{...}
+// 		 FolderFeedFeedOutputConfigPubsubDestinationArgs{...}
+//
 type FolderFeedFeedOutputConfigPubsubDestinationInput interface {
 	pulumi.Input
 
@@ -191,11 +194,12 @@ func (i FolderFeedFeedOutputConfigPubsubDestinationArgs) ToFolderFeedFeedOutputC
 // FolderFeedFeedOutputConfigPubsubDestinationPtrInput is an input type that accepts FolderFeedFeedOutputConfigPubsubDestinationArgs, FolderFeedFeedOutputConfigPubsubDestinationPtr and FolderFeedFeedOutputConfigPubsubDestinationPtrOutput values.
 // You can construct a concrete instance of `FolderFeedFeedOutputConfigPubsubDestinationPtrInput` via:
 //
-//          FolderFeedFeedOutputConfigPubsubDestinationArgs{...}
+// 		 FolderFeedFeedOutputConfigPubsubDestinationArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type FolderFeedFeedOutputConfigPubsubDestinationPtrInput interface {
 	pulumi.Input
 
@@ -289,7 +293,8 @@ type OrganizationFeedFeedOutputConfig struct {
 // OrganizationFeedFeedOutputConfigInput is an input type that accepts OrganizationFeedFeedOutputConfigArgs and OrganizationFeedFeedOutputConfigOutput values.
 // You can construct a concrete instance of `OrganizationFeedFeedOutputConfigInput` via:
 //
-//          OrganizationFeedFeedOutputConfigArgs{...}
+// 		 OrganizationFeedFeedOutputConfigArgs{...}
+//
 type OrganizationFeedFeedOutputConfigInput interface {
 	pulumi.Input
 
@@ -326,11 +331,12 @@ func (i OrganizationFeedFeedOutputConfigArgs) ToOrganizationFeedFeedOutputConfig
 // OrganizationFeedFeedOutputConfigPtrInput is an input type that accepts OrganizationFeedFeedOutputConfigArgs, OrganizationFeedFeedOutputConfigPtr and OrganizationFeedFeedOutputConfigPtrOutput values.
 // You can construct a concrete instance of `OrganizationFeedFeedOutputConfigPtrInput` via:
 //
-//          OrganizationFeedFeedOutputConfigArgs{...}
+// 		 OrganizationFeedFeedOutputConfigArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type OrganizationFeedFeedOutputConfigPtrInput interface {
 	pulumi.Input
 
@@ -425,7 +431,8 @@ type OrganizationFeedFeedOutputConfigPubsubDestination struct {
 // OrganizationFeedFeedOutputConfigPubsubDestinationInput is an input type that accepts OrganizationFeedFeedOutputConfigPubsubDestinationArgs and OrganizationFeedFeedOutputConfigPubsubDestinationOutput values.
 // You can construct a concrete instance of `OrganizationFeedFeedOutputConfigPubsubDestinationInput` via:
 //
-//          OrganizationFeedFeedOutputConfigPubsubDestinationArgs{...}
+// 		 OrganizationFeedFeedOutputConfigPubsubDestinationArgs{...}
+//
 type OrganizationFeedFeedOutputConfigPubsubDestinationInput interface {
 	pulumi.Input
 
@@ -461,11 +468,12 @@ func (i OrganizationFeedFeedOutputConfigPubsubDestinationArgs) ToOrganizationFee
 // OrganizationFeedFeedOutputConfigPubsubDestinationPtrInput is an input type that accepts OrganizationFeedFeedOutputConfigPubsubDestinationArgs, OrganizationFeedFeedOutputConfigPubsubDestinationPtr and OrganizationFeedFeedOutputConfigPubsubDestinationPtrOutput values.
 // You can construct a concrete instance of `OrganizationFeedFeedOutputConfigPubsubDestinationPtrInput` via:
 //
-//          OrganizationFeedFeedOutputConfigPubsubDestinationArgs{...}
+// 		 OrganizationFeedFeedOutputConfigPubsubDestinationArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type OrganizationFeedFeedOutputConfigPubsubDestinationPtrInput interface {
 	pulumi.Input
 
@@ -559,7 +567,8 @@ type ProjectFeedFeedOutputConfig struct {
 // ProjectFeedFeedOutputConfigInput is an input type that accepts ProjectFeedFeedOutputConfigArgs and ProjectFeedFeedOutputConfigOutput values.
 // You can construct a concrete instance of `ProjectFeedFeedOutputConfigInput` via:
 //
-//          ProjectFeedFeedOutputConfigArgs{...}
+// 		 ProjectFeedFeedOutputConfigArgs{...}
+//
 type ProjectFeedFeedOutputConfigInput interface {
 	pulumi.Input
 
@@ -596,11 +605,12 @@ func (i ProjectFeedFeedOutputConfigArgs) ToProjectFeedFeedOutputConfigPtrOutputW
 // ProjectFeedFeedOutputConfigPtrInput is an input type that accepts ProjectFeedFeedOutputConfigArgs, ProjectFeedFeedOutputConfigPtr and ProjectFeedFeedOutputConfigPtrOutput values.
 // You can construct a concrete instance of `ProjectFeedFeedOutputConfigPtrInput` via:
 //
-//          ProjectFeedFeedOutputConfigArgs{...}
+// 		 ProjectFeedFeedOutputConfigArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type ProjectFeedFeedOutputConfigPtrInput interface {
 	pulumi.Input
 
@@ -695,7 +705,8 @@ type ProjectFeedFeedOutputConfigPubsubDestination struct {
 // ProjectFeedFeedOutputConfigPubsubDestinationInput is an input type that accepts ProjectFeedFeedOutputConfigPubsubDestinationArgs and ProjectFeedFeedOutputConfigPubsubDestinationOutput values.
 // You can construct a concrete instance of `ProjectFeedFeedOutputConfigPubsubDestinationInput` via:
 //
-//          ProjectFeedFeedOutputConfigPubsubDestinationArgs{...}
+// 		 ProjectFeedFeedOutputConfigPubsubDestinationArgs{...}
+//
 type ProjectFeedFeedOutputConfigPubsubDestinationInput interface {
 	pulumi.Input
 
@@ -731,11 +742,12 @@ func (i ProjectFeedFeedOutputConfigPubsubDestinationArgs) ToProjectFeedFeedOutpu
 // ProjectFeedFeedOutputConfigPubsubDestinationPtrInput is an input type that accepts ProjectFeedFeedOutputConfigPubsubDestinationArgs, ProjectFeedFeedOutputConfigPubsubDestinationPtr and ProjectFeedFeedOutputConfigPubsubDestinationPtrOutput values.
 // You can construct a concrete instance of `ProjectFeedFeedOutputConfigPubsubDestinationPtrInput` via:
 //
-//          ProjectFeedFeedOutputConfigPubsubDestinationArgs{...}
+// 		 ProjectFeedFeedOutputConfigPubsubDestinationArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type ProjectFeedFeedOutputConfigPubsubDestinationPtrInput interface {
 	pulumi.Input
 

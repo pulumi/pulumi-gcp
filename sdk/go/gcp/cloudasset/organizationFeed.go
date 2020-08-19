@@ -12,13 +12,12 @@ import (
 
 // Describes a Cloud Asset Inventory feed used to to listen to asset updates.
 //
+//
 // To get more information about OrganizationFeed, see:
 //
 // * [API documentation](https://cloud.google.com/asset-inventory/docs/reference/rest/)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/asset-inventory/docs)
-//
-// ## Example Usage
 type OrganizationFeed struct {
 	pulumi.CustomResourceState
 

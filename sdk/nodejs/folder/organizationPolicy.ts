@@ -11,6 +11,23 @@ import * as utilities from "../utilities";
  * [the official
  * documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview) and
  * [API](https://cloud.google.com/resource-manager/reference/rest/v1/folders/setOrgPolicy).
+ *
+ * ## Example Usage
+ *
+ *
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const serialPortPolicy = new gcp.folder.OrganizationPolicy("serial_port_policy", {
+ *     booleanPolicy: {
+ *         enforced: true,
+ *     },
+ *     constraint: "compute.disableSerialPortAccess",
+ *     folder: "folders/123456789",
+ * });
+ * ```
  */
 export class OrganizationPolicy extends pulumi.CustomResource {
     /**

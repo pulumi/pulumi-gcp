@@ -11,6 +11,21 @@ import * as utilities from "../utilities";
  * See [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
  * and
  * [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
+ *
+ *
+ * ## Example Usage
+ *
+ *
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const picture = pulumi.output(gcp.storage.getBucketObject({
+ *     bucket: "image-store",
+ *     name: "folder/butterfly01.jpg",
+ * }, { async: true }));
+ * ```
  */
 export function getBucketObject(args?: GetBucketObjectArgs, opts?: pulumi.InvokeOptions): Promise<GetBucketObjectResult> {
     args = args || {};

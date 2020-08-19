@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.Compute
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/machineImages)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/compute/docs/machine-images)
-    /// 
-    /// ## Example Usage
     /// </summary>
     public partial class MachineImage : Pulumi.CustomResource
     {

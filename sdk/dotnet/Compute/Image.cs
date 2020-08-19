@@ -27,6 +27,7 @@ namespace Pulumi.Gcp.Compute
     /// from root persistent disks and other images. Then, use the custom image
     /// to create an instance.
     /// 
+    /// 
     /// To get more information about Image, see:
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/v1/images)
@@ -34,6 +35,61 @@ namespace Pulumi.Gcp.Compute
     ///     * [Official Documentation](https://cloud.google.com/compute/docs/images)
     /// 
     /// ## Example Usage
+    /// 
+    /// ### Image Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new Gcp.Compute.Image("example", new Gcp.Compute.ImageArgs
+    ///         {
+    ///             RawDisk = new Gcp.Compute.Inputs.ImageRawDiskArgs
+    ///             {
+    ///                 Source = "https://storage.googleapis.com/bosh-cpi-artifacts/bosh-stemcell-3262.4-google-kvm-ubuntu-trusty-go_agent-raw.tar.gz",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ### Image Guest Os
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new Gcp.Compute.Image("example", new Gcp.Compute.ImageArgs
+    ///         {
+    ///             GuestOsFeatures = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.ImageGuestOsFeatureArgs
+    ///                 {
+    ///                     Type = "SECURE_BOOT",
+    ///                 },
+    ///                 new Gcp.Compute.Inputs.ImageGuestOsFeatureArgs
+    ///                 {
+    ///                     Type = "MULTI_IP_SUBNET",
+    ///                 },
+    ///             },
+    ///             RawDisk = new Gcp.Compute.Inputs.ImageRawDiskArgs
+    ///             {
+    ///                 Source = "https://storage.googleapis.com/bosh-cpi-artifacts/bosh-stemcell-3262.4-google-kvm-ubuntu-trusty-go_agent-raw.tar.gz",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Image : Pulumi.CustomResource
     {

@@ -12,6 +12,7 @@ import (
 
 // Represents an entity type. Entity types serve as a tool for extracting parameter values from natural language queries.
 //
+//
 // To get more information about EntityType, see:
 //
 // * [API documentation](https://cloud.google.com/dialogflow/docs/reference/rest/v2/projects.agent.entityTypes)
@@ -19,6 +20,54 @@ import (
 //     * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
 //
 // ## Example Usage
+//
+// ### Dialogflow Entity Type Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/diagflow"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		basicAgent, err := diagflow.NewAgent(ctx, "basicAgent", &diagflow.AgentArgs{
+// 			DisplayName:         pulumi.String("example_agent"),
+// 			DefaultLanguageCode: pulumi.String("en"),
+// 			TimeZone:            pulumi.String("America/New_York"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		basicEntityType, err := diagflow.NewEntityType(ctx, "basicEntityType", &diagflow.EntityTypeArgs{
+// 			DisplayName: pulumi.String(""),
+// 			Kind:        pulumi.String("KIND_MAP"),
+// 			Entities: diagflow.EntityTypeEntityArray{
+// 				&diagflow.EntityTypeEntityArgs{
+// 					Value: pulumi.String("value1"),
+// 					Synonyms: pulumi.StringArray{
+// 						pulumi.String("synonym1"),
+// 						pulumi.String("synonym2"),
+// 					},
+// 				},
+// 				&diagflow.EntityTypeEntityArgs{
+// 					Value: pulumi.String("value2"),
+// 					Synonyms: pulumi.StringArray{
+// 						pulumi.String("synonym3"),
+// 						pulumi.String("synonym4"),
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type EntityType struct {
 	pulumi.CustomResourceState
 
@@ -32,9 +81,9 @@ type EntityType struct {
 	// Indicates the kind of entity type.
 	// * KIND_MAP: Map entity types allow mapping of a group of synonyms to a reference value.
 	// * KIND_LIST: List entity types contain a set of entries that do not map to reference values. However, list entity
-	//   types can contain references to other entity types (with or without aliases).
+	// types can contain references to other entity types (with or without aliases).
 	// * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-	//   Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
+	// Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// The unique identifier of the entity type. Format: projects/<Project ID>/agent/entityTypes/<Entity type ID>.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -87,9 +136,9 @@ type entityTypeState struct {
 	// Indicates the kind of entity type.
 	// * KIND_MAP: Map entity types allow mapping of a group of synonyms to a reference value.
 	// * KIND_LIST: List entity types contain a set of entries that do not map to reference values. However, list entity
-	//   types can contain references to other entity types (with or without aliases).
+	// types can contain references to other entity types (with or without aliases).
 	// * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-	//   Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
+	// Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
 	Kind *string `pulumi:"kind"`
 	// The unique identifier of the entity type. Format: projects/<Project ID>/agent/entityTypes/<Entity type ID>.
 	Name *string `pulumi:"name"`
@@ -109,9 +158,9 @@ type EntityTypeState struct {
 	// Indicates the kind of entity type.
 	// * KIND_MAP: Map entity types allow mapping of a group of synonyms to a reference value.
 	// * KIND_LIST: List entity types contain a set of entries that do not map to reference values. However, list entity
-	//   types can contain references to other entity types (with or without aliases).
+	// types can contain references to other entity types (with or without aliases).
 	// * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-	//   Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
+	// Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
 	Kind pulumi.StringPtrInput
 	// The unique identifier of the entity type. Format: projects/<Project ID>/agent/entityTypes/<Entity type ID>.
 	Name pulumi.StringPtrInput
@@ -135,9 +184,9 @@ type entityTypeArgs struct {
 	// Indicates the kind of entity type.
 	// * KIND_MAP: Map entity types allow mapping of a group of synonyms to a reference value.
 	// * KIND_LIST: List entity types contain a set of entries that do not map to reference values. However, list entity
-	//   types can contain references to other entity types (with or without aliases).
+	// types can contain references to other entity types (with or without aliases).
 	// * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-	//   Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
+	// Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
 	Kind string `pulumi:"kind"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -156,9 +205,9 @@ type EntityTypeArgs struct {
 	// Indicates the kind of entity type.
 	// * KIND_MAP: Map entity types allow mapping of a group of synonyms to a reference value.
 	// * KIND_LIST: List entity types contain a set of entries that do not map to reference values. However, list entity
-	//   types can contain references to other entity types (with or without aliases).
+	// types can contain references to other entity types (with or without aliases).
 	// * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-	//   Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
+	// Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
 	Kind pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

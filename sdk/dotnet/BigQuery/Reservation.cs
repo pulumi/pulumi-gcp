@@ -19,6 +19,27 @@ namespace Pulumi.Gcp.BigQuery
     ///     * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
     /// 
     /// ## Example Usage
+    /// 
+    /// ### Bigquery Reservation Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var reservation = new Gcp.BigQuery.Reservation("reservation", new Gcp.BigQuery.ReservationArgs
+    ///         {
+    ///             Location = "asia-northeast1",
+    ///             SlotCapacity = 0,
+    ///             IgnoreIdleSlots = false,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Reservation : Pulumi.CustomResource
     {

@@ -20,7 +20,57 @@ import * as utilities from "../utilities";
  * **Note**: If the project id is not set on the resource or in the provider block it will be dynamically
  * determined which will require enabling the compute api.
  *
+ *
  * ## Example Usage
+ *
+ * ### Creating A Private Bucket In Standard Storage, In The EU Region. Bucket Configured As Static Website And CORS Configurations
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const static_site = new gcp.storage.Bucket("static-site", {
+ *     bucketPolicyOnly: true,
+ *     cors: [{
+ *         maxAgeSeconds: 3600,
+ *         methods: [
+ *             "GET",
+ *             "HEAD",
+ *             "PUT",
+ *             "POST",
+ *             "DELETE",
+ *         ],
+ *         origins: ["http://image-store.com"],
+ *         responseHeaders: ["*"],
+ *     }],
+ *     forceDestroy: true,
+ *     location: "EU",
+ *     website: {
+ *         mainPageSuffix: "index.html",
+ *         notFoundPage: "404.html",
+ *     },
+ * });
+ * ```
+ *
+ * ### Life Cycle Settings For Storage Bucket Objects
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const auto_expire = new gcp.storage.Bucket("auto-expire", {
+ *     forceDestroy: true,
+ *     lifecycleRules: [{
+ *         action: {
+ *             type: "Delete",
+ *         },
+ *         condition: {
+ *             age: 3,
+ *         },
+ *     }],
+ *     location: "US",
+ * });
+ * ```
  */
 export class Bucket extends pulumi.CustomResource {
     /**

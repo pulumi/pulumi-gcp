@@ -10,10 +10,33 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Projects
 {
     /// <summary>
-    /// Allows management of a single API service for an existing Google Cloud Platform project.
+    /// Allows management of a single API service for an existing Google Cloud Platform project. 
     /// 
     /// For a list of services available, visit the
     /// [API library page](https://console.cloud.google.com/apis/library) or run `gcloud services list`.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var project = new Gcp.Projects.Service("project", new Gcp.Projects.ServiceArgs
+    ///         {
+    ///             DisableDependentServices = true,
+    ///             Project = "your-project-id",
+    ///             Service = "iam.googleapis.com",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Service : Pulumi.CustomResource
     {

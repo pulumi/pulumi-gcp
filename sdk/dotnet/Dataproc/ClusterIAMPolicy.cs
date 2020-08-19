@@ -19,6 +19,87 @@ namespace Pulumi.Gcp.Dataproc
     /// &gt; **Note:** `gcp.dataproc.ClusterIAMPolicy` **cannot** be used in conjunction with `gcp.dataproc.ClusterIAMBinding` and `gcp.dataproc.ClusterIAMMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the cluster as `gcp.dataproc.ClusterIAMPolicy` replaces the entire policy.
     /// 
     /// &gt; **Note:** `gcp.dataproc.ClusterIAMBinding` resources **can be** used in conjunction with `gcp.dataproc.ClusterIAMMember` resources **only if** they do not grant privilege to the same role.
+    /// 
+    /// ## google\_pubsub\_subscription\_iam\_policy
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         {
+    ///             Binding = 
+    ///             {
+    ///                 
+    ///                 {
+    ///                     { "role", "roles/editor" },
+    ///                     { "members", 
+    ///                     {
+    ///                         "user:jane@example.com",
+    ///                     } },
+    ///                 },
+    ///             },
+    ///         }));
+    ///         var editor = new Gcp.Dataproc.ClusterIAMPolicy("editor", new Gcp.Dataproc.ClusterIAMPolicyArgs
+    ///         {
+    ///             Project = "your-project",
+    ///             Region = "your-region",
+    ///             Cluster = "your-dataproc-cluster",
+    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## google\_pubsub\_subscription\_iam\_binding
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var editor = new Gcp.Dataproc.ClusterIAMBinding("editor", new Gcp.Dataproc.ClusterIAMBindingArgs
+    ///         {
+    ///             Cluster = "your-dataproc-cluster",
+    ///             Members = 
+    ///             {
+    ///                 "user:jane@example.com",
+    ///             },
+    ///             Role = "roles/editor",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## google\_pubsub\_subscription\_iam\_member
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var editor = new Gcp.Dataproc.ClusterIAMMember("editor", new Gcp.Dataproc.ClusterIAMMemberArgs
+    ///         {
+    ///             Cluster = "your-dataproc-cluster",
+    ///             Member = "user:jane@example.com",
+    ///             Role = "roles/editor",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class ClusterIAMPolicy : Pulumi.CustomResource
     {

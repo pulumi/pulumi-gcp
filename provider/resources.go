@@ -127,10 +127,6 @@ func gcpResource(mod string, res string) tokens.Type {
 // managedByPulumi is a default used for some managed resources, in the absence of something more meaningful.
 var managedByPulumi = &tfbridge.DefaultInfo{Value: "Managed by Pulumi"}
 
-func boolRef(b bool) *bool {
-	return &b
-}
-
 // Provider returns additional overlaid schema and metadata associated with the gcp package.
 func Provider() tfbridge.ProviderInfo {
 	p := google.Provider().(*schema.Provider)

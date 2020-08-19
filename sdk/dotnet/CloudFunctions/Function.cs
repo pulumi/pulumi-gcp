@@ -22,6 +22,99 @@ namespace Pulumi.Gcp.CloudFunctions
     /// for Cloud Functions.
     /// 
     /// ## Example Usage
+    /// 
+    /// ### Public Function
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var bucket = new Gcp.Storage.Bucket("bucket", new Gcp.Storage.BucketArgs
+    ///         {
+    ///         });
+    ///         var archive = new Gcp.Storage.BucketObject("archive", new Gcp.Storage.BucketObjectArgs
+    ///         {
+    ///             Bucket = bucket.Name,
+    ///             Source = new FileAsset("./path/to/zip/file/which/contains/code"),
+    ///         });
+    ///         var function = new Gcp.CloudFunctions.Function("function", new Gcp.CloudFunctions.FunctionArgs
+    ///         {
+    ///             Description = "My function",
+    ///             Runtime = "nodejs10",
+    ///             AvailableMemoryMb = 128,
+    ///             SourceArchiveBucket = bucket.Name,
+    ///             SourceArchiveObject = archive.Name,
+    ///             TriggerHttp = true,
+    ///             EntryPoint = "helloGET",
+    ///         });
+    ///         // IAM entry for all users to invoke the function
+    ///         var invoker = new Gcp.CloudFunctions.FunctionIamMember("invoker", new Gcp.CloudFunctions.FunctionIamMemberArgs
+    ///         {
+    ///             Project = function.Project,
+    ///             Region = function.Region,
+    ///             CloudFunction = function.Name,
+    ///             Role = "roles/cloudfunctions.invoker",
+    ///             Member = "allUsers",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ### Single User
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var bucket = new Gcp.Storage.Bucket("bucket", new Gcp.Storage.BucketArgs
+    ///         {
+    ///         });
+    ///         var archive = new Gcp.Storage.BucketObject("archive", new Gcp.Storage.BucketObjectArgs
+    ///         {
+    ///             Bucket = bucket.Name,
+    ///             Source = new FileAsset("./path/to/zip/file/which/contains/code"),
+    ///         });
+    ///         var function = new Gcp.CloudFunctions.Function("function", new Gcp.CloudFunctions.FunctionArgs
+    ///         {
+    ///             Description = "My function",
+    ///             Runtime = "nodejs10",
+    ///             AvailableMemoryMb = 128,
+    ///             SourceArchiveBucket = bucket.Name,
+    ///             SourceArchiveObject = archive.Name,
+    ///             TriggerHttp = true,
+    ///             Timeout = 60,
+    ///             EntryPoint = "helloGET",
+    ///             Labels = 
+    ///             {
+    ///                 { "my-label", "my-label-value" },
+    ///             },
+    ///             EnvironmentVariables = 
+    ///             {
+    ///                 { "MY_ENV_VAR", "my-env-var-value" },
+    ///             },
+    ///         });
+    ///         // IAM entry for a single user to invoke the function
+    ///         var invoker = new Gcp.CloudFunctions.FunctionIamMember("invoker", new Gcp.CloudFunctions.FunctionIamMemberArgs
+    ///         {
+    ///             Project = function.Project,
+    ///             Region = function.Region,
+    ///             CloudFunction = function.Name,
+    ///             Role = "roles/cloudfunctions.invoker",
+    ///             Member = "user:myFunctionInvoker@example.com",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Function : Pulumi.CustomResource
     {

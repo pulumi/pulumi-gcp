@@ -7,6 +7,7 @@ import * as utilities from "../utilities";
 /**
  * The SSH public key information associated with a Google account.
  *
+ *
  * To get more information about SSHPublicKey, see:
  *
  * * [API documentation](https://cloud.google.com/compute/docs/oslogin/rest)
@@ -14,6 +15,20 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/compute/docs/oslogin)
  *
  * ## Example Usage
+ *
+ * ### Os Login Ssh Key Provided User
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * from "fs";
+ *
+ * const me = gcp.organizations.getClientOpenIdUserInfo({});
+ * const cache = new gcp.oslogin.SshPublicKey("cache", {
+ *     user: me.then(me => me.email),
+ *     key: fs.readFileSync("path/to/id_rsa.pub"),
+ * });
+ * ```
  */
 export class SshPublicKey extends pulumi.CustomResource {
     /**

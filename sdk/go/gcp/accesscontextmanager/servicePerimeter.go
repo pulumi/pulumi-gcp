@@ -16,17 +16,16 @@ import (
 // has a target outside of the ServicePerimeter, the request will be blocked.
 // Otherwise the request is allowed. There are two types of Service Perimeter
 // - Regular and Bridge. Regular Service Perimeters cannot overlap, a single
-//   GCP project can only belong to a single regular Service Perimeter. Service
-//   Perimeter Bridges can contain only GCP projects as members, a single GCP
-//   project may belong to multiple Service Perimeter Bridges.
+// GCP project can only belong to a single regular Service Perimeter. Service
+// Perimeter Bridges can contain only GCP projects as members, a single GCP
+// project may belong to multiple Service Perimeter Bridges.
+//
 //
 // To get more information about ServicePerimeter, see:
 //
 // * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.servicePerimeters)
 // * How-to Guides
 //     * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
-//
-// ## Example Usage
 type ServicePerimeter struct {
 	pulumi.CustomResourceState
 

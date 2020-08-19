@@ -15,6 +15,7 @@ namespace Pulumi.Gcp.Monitoring
     /// a Service acts as the root resource under which operational aspects of
     /// the service are accessible
     /// 
+    /// 
     /// To get more information about Service, see:
     /// 
     /// * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
@@ -23,6 +24,30 @@ namespace Pulumi.Gcp.Monitoring
     ///     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
     /// 
     /// ## Example Usage
+    /// 
+    /// ### Monitoring Service Custom
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var custom = new Gcp.Monitoring.CustomService("custom", new Gcp.Monitoring.CustomServiceArgs
+    ///         {
+    ///             DisplayName = "My Custom Service custom-srv",
+    ///             ServiceId = "custom-srv",
+    ///             Telemetry = new Gcp.Monitoring.Inputs.CustomServiceTelemetryArgs
+    ///             {
+    ///                 ResourceName = "//product.googleapis.com/foo/foo/services/test",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class CustomService : Pulumi.CustomResource
     {

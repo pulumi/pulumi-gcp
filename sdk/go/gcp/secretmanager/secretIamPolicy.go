@@ -19,6 +19,98 @@ import (
 // > **Note:** `secretmanager.SecretIamPolicy` **cannot** be used in conjunction with `secretmanager.SecretIamBinding` and `secretmanager.SecretIamMember` or they will fight over what your policy should be.
 //
 // > **Note:** `secretmanager.SecretIamBinding` resources **can be** used in conjunction with `secretmanager.SecretIamMember` resources **only if** they do not grant privilege to the same role.
+//
+// ## google\_secret\_manager\_secret\_iam\_policy
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/secretmanager"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+// 			Binding: []map[string]interface{}{
+// 				map[string]interface{}{
+// 					"role": "roles/secretmanager.secretAccessor",
+// 					"members": []string{
+// 						"user:jane@example.com",
+// 					},
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		policy, err := secretmanager.NewSecretIamPolicy(ctx, "policy", &secretmanager.SecretIamPolicyArgs{
+// 			Project:    pulumi.String(google_secret_manager_secret.Secret - basic.Project),
+// 			SecretId:   pulumi.String(google_secret_manager_secret.Secret - basic.Secret_id),
+// 			PolicyData: pulumi.String(admin.PolicyData),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## google\_secret\_manager\_secret\_iam\_binding
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/secretmanager"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		binding, err := secretmanager.NewSecretIamBinding(ctx, "binding", &secretmanager.SecretIamBindingArgs{
+// 			Project:  pulumi.String(google_secret_manager_secret.Secret - basic.Project),
+// 			SecretId: pulumi.String(google_secret_manager_secret.Secret - basic.Secret_id),
+// 			Role:     pulumi.String("roles/secretmanager.secretAccessor"),
+// 			Members: pulumi.StringArray{
+// 				pulumi.String("user:jane@example.com"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## google\_secret\_manager\_secret\_iam\_member
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/secretmanager"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		member, err := secretmanager.NewSecretIamMember(ctx, "member", &secretmanager.SecretIamMemberArgs{
+// 			Project:  pulumi.String(google_secret_manager_secret.Secret - basic.Project),
+// 			SecretId: pulumi.String(google_secret_manager_secret.Secret - basic.Secret_id),
+// 			Role:     pulumi.String("roles/secretmanager.secretAccessor"),
+// 			Member:   pulumi.String("user:jane@example.com"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type SecretIamPolicy struct {
 	pulumi.CustomResourceState
 

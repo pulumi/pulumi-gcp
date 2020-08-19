@@ -8,6 +8,7 @@ import * as utilities from "../utilities";
  * A global network endpoint group contains endpoints that reside outside of Google Cloud.
  * Currently a global network endpoint group can only support a single endpoint.
  *
+ *
  * To get more information about GlobalNetworkEndpointGroup, see:
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/networkEndpointGroups)
@@ -15,6 +16,30 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
  *
  * ## Example Usage
+ *
+ * ### Global Network Endpoint Group
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const neg = new gcp.compute.GlobalNetworkEndpointGroup("neg", {
+ *     defaultPort: 90,
+ *     networkEndpointType: "INTERNET_FQDN_PORT",
+ * });
+ * ```
+ *
+ * ### Global Network Endpoint Group Ip Address
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const neg = new gcp.compute.GlobalNetworkEndpointGroup("neg", {
+ *     defaultPort: 90,
+ *     networkEndpointType: "INTERNET_IP_PORT",
+ * });
+ * ```
  */
 export class GlobalNetworkEndpointGroup extends pulumi.CustomResource {
     /**

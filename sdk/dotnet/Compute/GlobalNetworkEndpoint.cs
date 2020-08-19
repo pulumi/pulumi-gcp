@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.Compute
     /// **NOTE**: Global network endpoints cannot be created outside of a
     /// global network endpoint group.
     /// 
+    /// 
     /// To get more information about GlobalNetworkEndpoint, see:
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/networkEndpointGroups)
@@ -21,6 +22,33 @@ namespace Pulumi.Gcp.Compute
     ///     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
     /// 
     /// ## Example Usage
+    /// 
+    /// ### Global Network Endpoint
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var neg = new Gcp.Compute.GlobalNetworkEndpointGroup("neg", new Gcp.Compute.GlobalNetworkEndpointGroupArgs
+    ///         {
+    ///             DefaultPort = 90,
+    ///             NetworkEndpointType = "INTERNET_IP_PORT",
+    ///         });
+    ///         var default_endpoint = new Gcp.Compute.GlobalNetworkEndpoint("default-endpoint", new Gcp.Compute.GlobalNetworkEndpointArgs
+    ///         {
+    ///             GlobalNetworkEndpointGroup = neg.Name,
+    ///             Fqdn = "www.example.com",
+    ///             Port = 90,
+    ///             IpAddress = "8.8.8.8",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class GlobalNetworkEndpoint : Pulumi.CustomResource
     {

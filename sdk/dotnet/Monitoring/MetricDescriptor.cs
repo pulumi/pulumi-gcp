@@ -12,13 +12,12 @@ namespace Pulumi.Gcp.Monitoring
     /// <summary>
     /// Defines a metric type and its schema. Once a metric descriptor is created, deleting or altering it stops data collection and makes the metric type's existing data unusable.
     /// 
+    /// 
     /// To get more information about MetricDescriptor, see:
     /// 
     /// * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/monitoring/custom-metrics/)
-    /// 
-    /// ## Example Usage
     /// </summary>
     public partial class MetricDescriptor : Pulumi.CustomResource
     {

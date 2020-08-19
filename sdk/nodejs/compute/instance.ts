@@ -11,6 +11,49 @@ import * as utilities from "../utilities";
  * [the official documentation](https://cloud.google.com/compute/docs/instances)
  * and
  * [API](https://cloud.google.com/compute/docs/reference/latest/instances).
+ *
+ *
+ * ## Example Usage
+ *
+ *
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultInstance = new gcp.compute.Instance("default", {
+ *     bootDisk: {
+ *         initializeParams: {
+ *             image: "debian-cloud/debian-9",
+ *         },
+ *     },
+ *     machineType: "n1-standard-1",
+ *     metadata: {
+ *         foo: "bar",
+ *     },
+ *     metadataStartupScript: "echo hi > /test.txt",
+ *     networkInterfaces: [{
+ *         accessConfigs: [{}],
+ *         network: "default",
+ *     }],
+ *     // Local SSD disk
+ *     scratchDisks: [{
+ *         interface: "SCSI",
+ *     }],
+ *     serviceAccount: {
+ *         scopes: [
+ *             "userinfo-email",
+ *             "compute-ro",
+ *             "storage-ro",
+ *         ],
+ *     },
+ *     tags: [
+ *         "foo",
+ *         "bar",
+ *     ],
+ *     zone: "us-central1-a",
+ * });
+ * ```
  */
 export class Instance extends pulumi.CustomResource {
     /**

@@ -13,13 +13,7 @@ namespace Pulumi.Gcp.Dns.Outputs
     [OutputType]
     public sealed class GetKeysKeySigningKeyDigestResult
     {
-        /// <summary>
-        /// The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
-        /// </summary>
         public readonly string? Digest;
-        /// <summary>
-        /// Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
-        /// </summary>
         public readonly string? Type;
 
         [OutputConstructor]

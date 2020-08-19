@@ -15,6 +15,29 @@ namespace Pulumi.Gcp.Redis
         /// Get information about a Google Cloud Redis instance. For more information see
         /// the [official documentation](https://cloud.google.com/memorystore/docs/redis)
         /// and [API](https://cloud.google.com/memorystore/docs/redis/apis).
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(Gcp.Redis.GetInstance.InvokeAsync(new Gcp.Redis.GetInstanceArgs
+        ///         {
+        ///             Name = "my-redis-instance",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceResult> InvokeAsync(GetInstanceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceResult>("gcp:redis/getInstance:getInstance", args ?? new GetInstanceArgs(), options.WithVersion());

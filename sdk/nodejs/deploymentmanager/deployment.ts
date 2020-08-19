@@ -10,6 +10,8 @@ import * as utilities from "../utilities";
  * A collection of resources that are deployed and managed together using
  * a configuration file
  *
+ *
+ *
  * > **Warning:** This resource is intended only to manage a Deployment resource,
  * and attempts to manage the Deployment's resources in the provider as well
  * will likely result in errors or unexpected behavior as the two tools
@@ -22,6 +24,26 @@ import * as utilities from "../utilities";
  * `preview=false`).
  *
  * ## Example Usage
+ *
+ * ### Deployment Manager Deployment Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * from "fs";
+ *
+ * const deployment = new gcp.deploymentmanager.Deployment("deployment", {
+ *     target: {
+ *         config: {
+ *             content: fs.readFileSync("path/to/config.yml"),
+ *         },
+ *     },
+ *     labels: [{
+ *         key: "foo",
+ *         value: "bar",
+ *     }],
+ * });
+ * ```
  */
 export class Deployment extends pulumi.CustomResource {
     /**

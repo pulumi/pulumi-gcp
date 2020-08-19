@@ -12,6 +12,44 @@ import * as utilities from "../utilities";
  * [API](https://cloud.google.com/bigtable/docs/go/reference).
  *
  * ## Example Usage
+ *
+ * ### Production Instance
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const production_instance = new gcp.bigtable.Instance("production-instance", {
+ *     clusters: [{
+ *         clusterId: "tf-instance-cluster",
+ *         numNodes: 1,
+ *         storageType: "HDD",
+ *         zone: "us-central1-b",
+ *     }],
+ *     labels: [{
+ *         "my-label": "prod-label",
+ *     }],
+ * });
+ * ```
+ *
+ * ### Development Instance
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const development_instance = new gcp.bigtable.Instance("development-instance", {
+ *     clusters: [{
+ *         clusterId: "tf-instance-cluster",
+ *         storageType: "HDD",
+ *         zone: "us-central1-b",
+ *     }],
+ *     instanceType: "DEVELOPMENT",
+ *     labels: [{
+ *         "my-label": "dev-label",
+ *     }],
+ * });
+ * ```
  */
 export class Instance extends pulumi.CustomResource {
     /**

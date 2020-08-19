@@ -10,6 +10,37 @@ import (
 // Use this data source to access a Network Endpoint Group's attributes.
 //
 // The NEG may be found by providing either a `selfLink`, or a `name` and a `zone`.
+//
+// ## Example Usage
+//
+//
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		neg1, err := compute.LookupNetworkEndpointGroup(ctx, &compute.LookupNetworkEndpointGroupArgs{
+// 			Name: "k8s1-abcdef01-myns-mysvc-8080-4b6bac43",
+// 			Zone: "us-central1-a",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		neg2, err := compute.LookupNetworkEndpointGroup(ctx, &compute.LookupNetworkEndpointGroupArgs{
+// 			SelfLink: "https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupNetworkEndpointGroup(ctx *pulumi.Context, args *LookupNetworkEndpointGroupArgs, opts ...pulumi.InvokeOption) (*LookupNetworkEndpointGroupResult, error) {
 	var rv LookupNetworkEndpointGroupResult
 	err := ctx.Invoke("gcp:compute/getNetworkEndpointGroup:getNetworkEndpointGroup", args, &rv, opts...)

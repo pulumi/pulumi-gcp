@@ -24,13 +24,12 @@ import (
 // See also:
 // https://github.com/knative/serving/blob/master/docs/spec/overview.md#service
 //
+//
 // To get more information about Service, see:
 //
 // * [API documentation](https://cloud.google.com/run/docs/reference/rest/v1/projects.locations.services)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/run/docs/)
-//
-// ## Example Usage
 type Service struct {
 	pulumi.CustomResourceState
 

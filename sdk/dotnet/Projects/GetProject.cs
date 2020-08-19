@@ -18,6 +18,30 @@ namespace Pulumi.Gcp.Projects
         /// 
         /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
+        /// ### Searching For Projects About To Be Deleted In An Org
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var my_org_projects = Output.Create(Gcp.Projects.GetProject.InvokeAsync(new Gcp.Projects.GetProjectArgs
+        ///         {
+        ///             Filter = "parent.id:012345678910 lifecycleState:DELETE_REQUESTED",
+        ///         }));
+        ///         var deletion_candidate = my_org_projects.Apply(my_org_projects =&gt; Output.Create(Gcp.Organizations.GetProject.InvokeAsync(new Gcp.Organizations.GetProjectArgs
+        ///         {
+        ///             ProjectId = my_org_projects.Projects[0].ProjectId,
+        ///         })));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectResult> InvokeAsync(GetProjectArgs args, InvokeOptions? options = null)

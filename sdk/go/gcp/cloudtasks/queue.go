@@ -11,8 +11,6 @@ import (
 )
 
 // A named resource to which messages are sent by publishers.
-//
-// ## Example Usage
 type Queue struct {
 	pulumi.CustomResourceState
 
@@ -32,9 +30,9 @@ type Queue struct {
 	// * Number of tasks in the queue
 	// * User-specified throttling: rateLimits, retryConfig, and the queue's state.
 	// * System throttling due to 429 (Too Many Requests) or 503 (Service
-	//   Unavailable) responses from the worker, high error rates, or to
-	//   smooth sudden large traffic spikes.
-	//   Structure is documented below.
+	// Unavailable) responses from the worker, high error rates, or to
+	// smooth sudden large traffic spikes.
+	// Structure is documented below.
 	RateLimits QueueRateLimitsOutput `pulumi:"rateLimits"`
 	// Settings that determine the retry behavior.
 	// Structure is documented below.
@@ -88,9 +86,9 @@ type queueState struct {
 	// * Number of tasks in the queue
 	// * User-specified throttling: rateLimits, retryConfig, and the queue's state.
 	// * System throttling due to 429 (Too Many Requests) or 503 (Service
-	//   Unavailable) responses from the worker, high error rates, or to
-	//   smooth sudden large traffic spikes.
-	//   Structure is documented below.
+	// Unavailable) responses from the worker, high error rates, or to
+	// smooth sudden large traffic spikes.
+	// Structure is documented below.
 	RateLimits *QueueRateLimits `pulumi:"rateLimits"`
 	// Settings that determine the retry behavior.
 	// Structure is documented below.
@@ -114,9 +112,9 @@ type QueueState struct {
 	// * Number of tasks in the queue
 	// * User-specified throttling: rateLimits, retryConfig, and the queue's state.
 	// * System throttling due to 429 (Too Many Requests) or 503 (Service
-	//   Unavailable) responses from the worker, high error rates, or to
-	//   smooth sudden large traffic spikes.
-	//   Structure is documented below.
+	// Unavailable) responses from the worker, high error rates, or to
+	// smooth sudden large traffic spikes.
+	// Structure is documented below.
 	RateLimits QueueRateLimitsPtrInput
 	// Settings that determine the retry behavior.
 	// Structure is documented below.
@@ -144,9 +142,9 @@ type queueArgs struct {
 	// * Number of tasks in the queue
 	// * User-specified throttling: rateLimits, retryConfig, and the queue's state.
 	// * System throttling due to 429 (Too Many Requests) or 503 (Service
-	//   Unavailable) responses from the worker, high error rates, or to
-	//   smooth sudden large traffic spikes.
-	//   Structure is documented below.
+	// Unavailable) responses from the worker, high error rates, or to
+	// smooth sudden large traffic spikes.
+	// Structure is documented below.
 	RateLimits *QueueRateLimits `pulumi:"rateLimits"`
 	// Settings that determine the retry behavior.
 	// Structure is documented below.
@@ -171,9 +169,9 @@ type QueueArgs struct {
 	// * Number of tasks in the queue
 	// * User-specified throttling: rateLimits, retryConfig, and the queue's state.
 	// * System throttling due to 429 (Too Many Requests) or 503 (Service
-	//   Unavailable) responses from the worker, high error rates, or to
-	//   smooth sudden large traffic spikes.
-	//   Structure is documented below.
+	// Unavailable) responses from the worker, high error rates, or to
+	// smooth sudden large traffic spikes.
+	// Structure is documented below.
 	RateLimits QueueRateLimitsPtrInput
 	// Settings that determine the retry behavior.
 	// Structure is documented below.

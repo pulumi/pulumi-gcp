@@ -12,6 +12,7 @@ import (
 // and third-party messaging applications. Fields containing sensitive information
 // like authentication tokens or contact info are only partially populated on retrieval.
 //
+//
 // To get more information about NotificationChannel, see:
 //
 // * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannels)
@@ -19,7 +20,57 @@ import (
 //     * [Notification Options](https://cloud.google.com/monitoring/support/notification-options)
 //     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 //
+//
 // ## Example Usage
+//
+// ### Notification Channel Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/monitoring"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		basic, err := monitoring.LookupNotificationChannel(ctx, &monitoring.LookupNotificationChannelArgs{
+// 			DisplayName: "Test Notification Channel",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		alertPolicy, err := monitoring.NewAlertPolicy(ctx, "alertPolicy", &monitoring.AlertPolicyArgs{
+// 			DisplayName: pulumi.String("My Alert Policy"),
+// 			NotificationChannels: pulumi.StringArray{
+// 				pulumi.String(basic.Name),
+// 			},
+// 			Combiner: pulumi.String("OR"),
+// 			Conditions: monitoring.AlertPolicyConditionArray{
+// 				&monitoring.AlertPolicyConditionArgs{
+// 					DisplayName: pulumi.String("test condition"),
+// 					Condition_threshold: map[string]interface{}{
+// 						"filter":     "metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"",
+// 						"duration":   "60s",
+// 						"comparison": "COMPARISON_GT",
+// 						"aggregations": []map[string]interface{}{
+// 							map[string]interface{}{
+// 								"alignmentPeriod":  "60s",
+// 								"perSeriesAligner": "ALIGN_RATE",
+// 							},
+// 						},
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupNotificationChannel(ctx *pulumi.Context, args *LookupNotificationChannelArgs, opts ...pulumi.InvokeOption) (*LookupNotificationChannelResult, error) {
 	var rv LookupNotificationChannelResult
 	err := ctx.Invoke("gcp:monitoring/getNotificationChannel:getNotificationChannel", args, &rv, opts...)

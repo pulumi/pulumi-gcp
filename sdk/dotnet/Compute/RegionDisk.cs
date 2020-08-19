@@ -26,6 +26,7 @@ namespace Pulumi.Gcp.Compute
     /// Add a persistent disk to your instance when you need reliable and
     /// affordable storage with consistent performance characteristics.
     /// 
+    /// 
     /// To get more information about RegionDisk, see:
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionDisks)
@@ -36,6 +37,45 @@ namespace Pulumi.Gcp.Compute
     /// state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
     /// 
     /// ## Example Usage
+    /// 
+    /// ### Region Disk Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var disk = new Gcp.Compute.Disk("disk", new Gcp.Compute.DiskArgs
+    ///         {
+    ///             Image = "debian-cloud/debian-9",
+    ///             Size = 50,
+    ///             Type = "pd-ssd",
+    ///             Zone = "us-central1-a",
+    ///         });
+    ///         var snapdisk = new Gcp.Compute.Snapshot("snapdisk", new Gcp.Compute.SnapshotArgs
+    ///         {
+    ///             SourceDisk = disk.Name,
+    ///             Zone = "us-central1-a",
+    ///         });
+    ///         var regiondisk = new Gcp.Compute.RegionDisk("regiondisk", new Gcp.Compute.RegionDiskArgs
+    ///         {
+    ///             Snapshot = snapdisk.Id,
+    ///             Type = "pd-ssd",
+    ///             Region = "us-central1",
+    ///             PhysicalBlockSizeBytes = 4096,
+    ///             ReplicaZones = 
+    ///             {
+    ///                 "us-central1-a",
+    ///                 "us-central1-f",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class RegionDisk : Pulumi.CustomResource
     {

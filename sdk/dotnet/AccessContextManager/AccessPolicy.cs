@@ -16,6 +16,7 @@ namespace Pulumi.Gcp.AccessContextManager
     /// access policy is globally visible within an organization, and the
     /// restrictions it specifies apply to all projects within an organization.
     /// 
+    /// 
     /// To get more information about AccessPolicy, see:
     /// 
     /// * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies)
@@ -23,6 +24,26 @@ namespace Pulumi.Gcp.AccessContextManager
     ///     * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
     /// 
     /// ## Example Usage
+    /// 
+    /// ### Access Context Manager Access Policy Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var access_policy = new Gcp.AccessContextManager.AccessPolicy("access-policy", new Gcp.AccessContextManager.AccessPolicyArgs
+    ///         {
+    ///             Parent = "organizations/123456789",
+    ///             Title = "my policy",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class AccessPolicy : Pulumi.CustomResource
     {

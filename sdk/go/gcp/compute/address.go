@@ -23,6 +23,7 @@ import (
 // Engine or by you. External IP addresses can be either ephemeral or
 // static.
 //
+//
 // To get more information about Address, see:
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/beta/addresses)
@@ -31,6 +32,89 @@ import (
 //     * [Reserving a Static Internal IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address)
 //
 // ## Example Usage
+//
+// ### Address Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		ipAddress, err := compute.NewAddress(ctx, "ipAddress", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ### Address With Subnetwork
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultSubnetwork, err := compute.NewSubnetwork(ctx, "defaultSubnetwork", &compute.SubnetworkArgs{
+// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
+// 			Region:      pulumi.String("us-central1"),
+// 			Network:     defaultNetwork.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		internalWithSubnetAndAddress, err := compute.NewAddress(ctx, "internalWithSubnetAndAddress", &compute.AddressArgs{
+// 			Subnetwork:  defaultSubnetwork.ID(),
+// 			AddressType: pulumi.String("INTERNAL"),
+// 			Address:     pulumi.String("10.0.42.42"),
+// 			Region:      pulumi.String("us-central1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ### Address With Gce Endpoint
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		internalWithGceEndpoint, err := compute.NewAddress(ctx, "internalWithGceEndpoint", &compute.AddressArgs{
+// 			AddressType: pulumi.String("INTERNAL"),
+// 			Purpose:     pulumi.String("GCE_ENDPOINT"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Address struct {
 	pulumi.CustomResourceState
 
@@ -68,8 +152,8 @@ type Address struct {
 	// The purpose of this resource, which can be one of the following values:
 	// - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
 	// - SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers
-	//   This should only be set when using an Internal address.
-	//   Possible values are `GCE_ENDPOINT` and `SHARED_LOADBALANCER_VIP`.
+	// This should only be set when using an Internal address.
+	// Possible values are `GCE_ENDPOINT` and `SHARED_LOADBALANCER_VIP`.
 	Purpose pulumi.StringOutput `pulumi:"purpose"`
 	// The Region in which the created address should reside.
 	// If it is not provided, the provider region is used.
@@ -147,8 +231,8 @@ type addressState struct {
 	// The purpose of this resource, which can be one of the following values:
 	// - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
 	// - SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers
-	//   This should only be set when using an Internal address.
-	//   Possible values are `GCE_ENDPOINT` and `SHARED_LOADBALANCER_VIP`.
+	// This should only be set when using an Internal address.
+	// Possible values are `GCE_ENDPOINT` and `SHARED_LOADBALANCER_VIP`.
 	Purpose *string `pulumi:"purpose"`
 	// The Region in which the created address should reside.
 	// If it is not provided, the provider region is used.
@@ -199,8 +283,8 @@ type AddressState struct {
 	// The purpose of this resource, which can be one of the following values:
 	// - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
 	// - SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers
-	//   This should only be set when using an Internal address.
-	//   Possible values are `GCE_ENDPOINT` and `SHARED_LOADBALANCER_VIP`.
+	// This should only be set when using an Internal address.
+	// Possible values are `GCE_ENDPOINT` and `SHARED_LOADBALANCER_VIP`.
 	Purpose pulumi.StringPtrInput
 	// The Region in which the created address should reside.
 	// If it is not provided, the provider region is used.
@@ -251,8 +335,8 @@ type addressArgs struct {
 	// The purpose of this resource, which can be one of the following values:
 	// - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
 	// - SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers
-	//   This should only be set when using an Internal address.
-	//   Possible values are `GCE_ENDPOINT` and `SHARED_LOADBALANCER_VIP`.
+	// This should only be set when using an Internal address.
+	// Possible values are `GCE_ENDPOINT` and `SHARED_LOADBALANCER_VIP`.
 	Purpose *string `pulumi:"purpose"`
 	// The Region in which the created address should reside.
 	// If it is not provided, the provider region is used.
@@ -296,8 +380,8 @@ type AddressArgs struct {
 	// The purpose of this resource, which can be one of the following values:
 	// - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
 	// - SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers
-	//   This should only be set when using an Internal address.
-	//   Possible values are `GCE_ENDPOINT` and `SHARED_LOADBALANCER_VIP`.
+	// This should only be set when using an Internal address.
+	// Possible values are `GCE_ENDPOINT` and `SHARED_LOADBALANCER_VIP`.
 	Purpose pulumi.StringPtrInput
 	// The Region in which the created address should reside.
 	// If it is not provided, the provider region is used.

@@ -12,6 +12,7 @@ namespace Pulumi.Gcp.CloudBuild
     /// <summary>
     /// Configuration for an automated build in response to source repository changes.
     /// 
+    /// 
     /// To get more information about Trigger, see:
     /// 
     /// * [API documentation](https://cloud.google.com/cloud-build/docs/api/reference/rest/)
@@ -19,6 +20,118 @@ namespace Pulumi.Gcp.CloudBuild
     ///     * [Automating builds using build triggers](https://cloud.google.com/cloud-build/docs/running-builds/automate-builds)
     /// 
     /// ## Example Usage
+    /// 
+    /// ### Cloudbuild Trigger Filename
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var filename_trigger = new Gcp.CloudBuild.Trigger("filename-trigger", new Gcp.CloudBuild.TriggerArgs
+    ///         {
+    ///             Filename = "cloudbuild.yaml",
+    ///             Substitutions = 
+    ///             {
+    ///                 { "_BAZ", "qux" },
+    ///                 { "_FOO", "bar" },
+    ///             },
+    ///             TriggerTemplate = new Gcp.CloudBuild.Inputs.TriggerTriggerTemplateArgs
+    ///             {
+    ///                 BranchName = "master",
+    ///                 RepoName = "my-repo",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ### Cloudbuild Trigger Build
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var build_trigger = new Gcp.CloudBuild.Trigger("build-trigger", new Gcp.CloudBuild.TriggerArgs
+    ///         {
+    ///             Build = new Gcp.CloudBuild.Inputs.TriggerBuildArgs
+    ///             {
+    ///                 LogsBucket = "gs://mybucket/logs",
+    ///                 QueueTtl = "20s",
+    ///                 Secret = 
+    ///                 {
+    ///                     
+    ///                     {
+    ///                         { "kmsKeyName", "projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name" },
+    ///                         { "secretEnv", 
+    ///                         {
+    ///                             
+    ///                             {
+    ///                                 { "PASSWORD", "ZW5jcnlwdGVkLXBhc3N3b3JkCg==" },
+    ///                             },
+    ///                         } },
+    ///                     },
+    ///                 },
+    ///                 Source = 
+    ///                 {
+    ///                     
+    ///                     {
+    ///                         { "storageSource", 
+    ///                         {
+    ///                             
+    ///                             {
+    ///                                 { "bucket", "mybucket" },
+    ///                                 { "object", "source_code.tar.gz" },
+    ///                             },
+    ///                         } },
+    ///                     },
+    ///                 },
+    ///                 Step = 
+    ///                 {
+    ///                     
+    ///                     {
+    ///                         { "args", 
+    ///                         {
+    ///                             "cp",
+    ///                             "gs://mybucket/remotefile.zip",
+    ///                             "localfile.zip",
+    ///                         } },
+    ///                         { "name", "gcr.io/cloud-builders/gsutil" },
+    ///                         { "timeout", "120s" },
+    ///                     },
+    ///                 },
+    ///                 Substitutions = 
+    ///                 {
+    ///                     
+    ///                     {
+    ///                         { "_BAZ", "qux" },
+    ///                         { "_FOO", "bar" },
+    ///                     },
+    ///                 },
+    ///                 Tags = 
+    ///                 {
+    ///                     "build",
+    ///                     "newFeature",
+    ///                 },
+    ///             },
+    ///             TriggerTemplate = new Gcp.CloudBuild.Inputs.TriggerTriggerTemplateArgs
+    ///             {
+    ///                 BranchName = "master",
+    ///                 RepoName = "my-repo",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Trigger : Pulumi.CustomResource
     {

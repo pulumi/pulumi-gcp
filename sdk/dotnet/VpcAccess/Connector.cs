@@ -12,6 +12,7 @@ namespace Pulumi.Gcp.VpcAccess
     /// <summary>
     /// Serverless VPC Access connector resource.
     /// 
+    /// 
     /// To get more information about Connector, see:
     /// 
     /// * [API documentation](https://cloud.google.com/vpc/docs/reference/vpcaccess/rest/v1/projects.locations.connectors)
@@ -19,6 +20,27 @@ namespace Pulumi.Gcp.VpcAccess
     ///     * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
     /// 
     /// ## Example Usage
+    /// 
+    /// ### VPC Access Connector
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var connector = new Gcp.VpcAccess.Connector("connector", new Gcp.VpcAccess.ConnectorArgs
+    ///         {
+    ///             IpCidrRange = "10.8.0.0/28",
+    ///             Network = "default",
+    ///             Region = "us-central1",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Connector : Pulumi.CustomResource
     {

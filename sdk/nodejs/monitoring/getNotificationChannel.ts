@@ -12,6 +12,7 @@ import * as utilities from "../utilities";
  * and third-party messaging applications. Fields containing sensitive information
  * like authentication tokens or contact info are only partially populated on retrieval.
  *
+ *
  * To get more information about NotificationChannel, see:
  *
  * * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannels)
@@ -19,7 +20,36 @@ import * as utilities from "../utilities";
  *     * [Notification Options](https://cloud.google.com/monitoring/support/notification-options)
  *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
  *
+ *
  * ## Example Usage
+ *
+ * ### Notification Channel Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basic = gcp.monitoring.getNotificationChannel({
+ *     displayName: "Test Notification Channel",
+ * });
+ * const alertPolicy = new gcp.monitoring.AlertPolicy("alertPolicy", {
+ *     displayName: "My Alert Policy",
+ *     notificationChannels: [basic.then(basic => basic.name)],
+ *     combiner: "OR",
+ *     conditions: [{
+ *         displayName: "test condition",
+ *         condition_threshold: {
+ *             filter: "metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"",
+ *             duration: "60s",
+ *             comparison: "COMPARISON_GT",
+ *             aggregations: [{
+ *                 alignmentPeriod: "60s",
+ *                 perSeriesAligner: "ALIGN_RATE",
+ *             }],
+ *         },
+ *     }],
+ * });
+ * ```
  */
 export function getNotificationChannel(args?: GetNotificationChannelArgs, opts?: pulumi.InvokeOptions): Promise<GetNotificationChannelResult> {
     args = args || {};

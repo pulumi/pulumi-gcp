@@ -7,6 +7,7 @@ import * as utilities from "../utilities";
 /**
  * A Google Cloud Redis instance.
  *
+ *
  * To get more information about Instance, see:
  *
  * * [API documentation](https://cloud.google.com/memorystore/docs/redis/reference/rest/)
@@ -14,6 +15,42 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
  *
  * ## Example Usage
+ *
+ * ### Redis Instance Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const cache = new gcp.redis.Instance("cache", {
+ *     memorySizeGb: 1,
+ * });
+ * ```
+ *
+ * ### Redis Instance Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const redis-network = gcp.compute.getNetwork({
+ *     name: "redis-test-network",
+ * });
+ * const cache = new gcp.redis.Instance("cache", {
+ *     tier: "STANDARD_HA",
+ *     memorySizeGb: 1,
+ *     locationId: "us-central1-a",
+ *     alternativeLocationId: "us-central1-f",
+ *     authorizedNetwork: redis_network.then(redis_network => redis_network.id),
+ *     redisVersion: "REDIS_4_0",
+ *     displayName: "Test Instance",
+ *     reservedIpRange: "192.168.0.0/29",
+ *     labels: {
+ *         my_key: "my_val",
+ *         other_key: "other_val",
+ *     },
+ * });
+ * ```
  */
 export class Instance extends pulumi.CustomResource {
     /**

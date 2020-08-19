@@ -17,8 +17,6 @@ import (
 //
 // For more information, see
 // https://cloud.google.com/compute/docs/load-balancing/http/
-//
-// ## Example Usage
 type GlobalForwardingRule struct {
 	pulumi.CustomResourceState
 
@@ -104,9 +102,9 @@ type GlobalForwardingRule struct {
 	// * TargetHttpProxy: 80, 8080
 	// * TargetHttpsProxy: 443
 	// * TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-	//   1883, 5222
+	// 1883, 5222
 	// * TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-	//   1883, 5222
+	// 1883, 5222
 	// * TargetVpnGateway: 500, 4500
 	PortRange pulumi.StringPtrOutput `pulumi:"portRange"`
 	// The ID of the project in which the resource belongs.
@@ -234,9 +232,9 @@ type globalForwardingRuleState struct {
 	// * TargetHttpProxy: 80, 8080
 	// * TargetHttpsProxy: 443
 	// * TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-	//   1883, 5222
+	// 1883, 5222
 	// * TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-	//   1883, 5222
+	// 1883, 5222
 	// * TargetVpnGateway: 500, 4500
 	PortRange *string `pulumi:"portRange"`
 	// The ID of the project in which the resource belongs.
@@ -334,9 +332,9 @@ type GlobalForwardingRuleState struct {
 	// * TargetHttpProxy: 80, 8080
 	// * TargetHttpsProxy: 443
 	// * TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-	//   1883, 5222
+	// 1883, 5222
 	// * TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-	//   1883, 5222
+	// 1883, 5222
 	// * TargetVpnGateway: 500, 4500
 	PortRange pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -436,9 +434,9 @@ type globalForwardingRuleArgs struct {
 	// * TargetHttpProxy: 80, 8080
 	// * TargetHttpsProxy: 443
 	// * TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-	//   1883, 5222
+	// 1883, 5222
 	// * TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-	//   1883, 5222
+	// 1883, 5222
 	// * TargetVpnGateway: 500, 4500
 	PortRange *string `pulumi:"portRange"`
 	// The ID of the project in which the resource belongs.
@@ -533,9 +531,9 @@ type GlobalForwardingRuleArgs struct {
 	// * TargetHttpProxy: 80, 8080
 	// * TargetHttpsProxy: 443
 	// * TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-	//   1883, 5222
+	// 1883, 5222
 	// * TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-	//   1883, 5222
+	// 1883, 5222
 	// * TargetVpnGateway: 500, 4500
 	PortRange pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.

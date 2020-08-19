@@ -19,21 +19,21 @@ namespace Pulumi.Gcp.Sql
     /// To upgrade your First-generation instance, update your config that the instance has
     /// * `settings.ip_configuration.ipv4_enabled=true`
     /// * `settings.backup_configuration.enabled=true`
-    /// * `settings.backup_configuration.binary_log_enabled=true`.\
-    ///   Apply the config, then upgrade the instance in the console as described in the documentation.
-    ///   Once upgraded, update the following attributes in your config to the correct value according to
-    ///   the above documentation:
+    /// * `settings.backup_configuration.binary_log_enabled=true`.  
+    /// Apply the config, then upgrade the instance in the console as described in the documentation.
+    /// Once upgraded, update the following attributes in your config to the correct value according to
+    /// the above documentation:
     /// * `region`
     /// * `database_version` (if applicable)
-    /// * `tier`\
-    ///   Remove any fields that are not applicable to Second-generation instances:
+    /// * `tier`  
+    /// Remove any fields that are not applicable to Second-generation instances:
     /// * `settings.crash_safe_replication`
     /// * `settings.replication_type`
     /// * `settings.authorized_gae_applications`
-    ///   And change values to appropriate values for Second-generation instances for:
+    /// And change values to appropriate values for Second-generation instances for:
     /// * `activation_policy` ("ON_DEMAND" is no longer an option)
     /// * `pricing_plan` ("PER_USE" is now the only valid option)
-    ///   Change `settings.backup_configuration.enabled` attribute back to its desired value and apply as necessary.
+    /// Change `settings.backup_configuration.enabled` attribute back to its desired value and apply as necessary.
     /// 
     /// &gt; **NOTE on `gcp.sql.DatabaseInstance`:** - Second-generation instances include a
     /// default 'root'@'%' user with no password. This user will be deleted by the provider on
@@ -41,6 +41,82 @@ namespace Pulumi.Gcp.Sql
     /// a restricted host and strong password.
     /// 
     /// ## Example Usage
+    /// 
+    /// ### SQL Second Generation Instance
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var master = new Gcp.Sql.DatabaseInstance("master", new Gcp.Sql.DatabaseInstanceArgs
+    ///         {
+    ///             DatabaseVersion = "POSTGRES_11",
+    ///             Region = "us-central1",
+    ///             Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+    ///             {
+    ///                 Tier = "db-f1-micro",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ### Private IP Instance
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var privateNetwork = new Gcp.Compute.Network("privateNetwork", new Gcp.Compute.NetworkArgs
+    ///         {
+    ///         });
+    ///         var privateIpAddress = new Gcp.Compute.GlobalAddress("privateIpAddress", new Gcp.Compute.GlobalAddressArgs
+    ///         {
+    ///             Purpose = "VPC_PEERING",
+    ///             AddressType = "INTERNAL",
+    ///             PrefixLength = 16,
+    ///             Network = privateNetwork.Id,
+    ///         });
+    ///         var privateVpcConnection = new Gcp.ServiceNetworking.Connection("privateVpcConnection", new Gcp.ServiceNetworking.ConnectionArgs
+    ///         {
+    ///             Network = privateNetwork.Id,
+    ///             Service = "servicenetworking.googleapis.com",
+    ///             ReservedPeeringRanges = 
+    ///             {
+    ///                 privateIpAddress.Name,
+    ///             },
+    ///         });
+    ///         var dbNameSuffix = new Random.RandomId("dbNameSuffix", new Random.RandomIdArgs
+    ///         {
+    ///             ByteLength = 4,
+    ///         });
+    ///         var instance = new Gcp.Sql.DatabaseInstance("instance", new Gcp.Sql.DatabaseInstanceArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+    ///             {
+    ///                 Tier = "db-f1-micro",
+    ///                 Ip_configuration = 
+    ///                 {
+    ///                     { "ipv4Enabled", false },
+    ///                     { "privateNetwork", privateNetwork.Id },
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class DatabaseInstance : Pulumi.CustomResource
     {

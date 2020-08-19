@@ -19,6 +19,60 @@ namespace Pulumi.Gcp.DataFusion
     ///     * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
     /// 
     /// ## Example Usage
+    /// 
+    /// ### Data Fusion Instance Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var basicInstance = new Gcp.DataFusion.Instance("basicInstance", new Gcp.DataFusion.InstanceArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             Type = "BASIC",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ### Data Fusion Instance Full
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var extendedInstance = new Gcp.DataFusion.Instance("extendedInstance", new Gcp.DataFusion.InstanceArgs
+    ///         {
+    ///             Description = "My Data Fusion instance",
+    ///             EnableStackdriverLogging = true,
+    ///             EnableStackdriverMonitoring = true,
+    ///             Labels = 
+    ///             {
+    ///                 { "example_key", "example_value" },
+    ///             },
+    ///             NetworkConfig = new Gcp.DataFusion.Inputs.InstanceNetworkConfigArgs
+    ///             {
+    ///                 IpAllocation = "10.89.48.0/22",
+    ///                 Network = "default",
+    ///             },
+    ///             PrivateInstance = true,
+    ///             Region = "us-central1",
+    ///             Type = "BASIC",
+    ///             Version = "6.1.1",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Instance : Pulumi.CustomResource
     {

@@ -16,6 +16,52 @@ import * as utilities from "../utilities";
  * > **Note:** `gcp.datacatalog.EntryGroupIamPolicy` **cannot** be used in conjunction with `gcp.datacatalog.EntryGroupIamBinding` and `gcp.datacatalog.EntryGroupIamMember` or they will fight over what your policy should be.
  *
  * > **Note:** `gcp.datacatalog.EntryGroupIamBinding` resources **can be** used in conjunction with `gcp.datacatalog.EntryGroupIamMember` resources **only if** they do not grant privilege to the same role.
+ *
+ *
+ *
+ * ## google\_data\_catalog\_entry\_group\_iam\_policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     binding: [{
+ *         role: "roles/viewer",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const policy = new gcp.datacatalog.EntryGroupIamPolicy("policy", {
+ *     entryGroup: google_data_catalog_entry_group.basic_entry_group.name,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * ## google\_data\_catalog\_entry\_group\_iam\_binding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.datacatalog.EntryGroupIamBinding("binding", {
+ *     entryGroup: google_data_catalog_entry_group.basic_entry_group.name,
+ *     role: "roles/viewer",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ *
+ * ## google\_data\_catalog\_entry\_group\_iam\_member
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.datacatalog.EntryGroupIamMember("member", {
+ *     entryGroup: google_data_catalog_entry_group.basic_entry_group.name,
+ *     role: "roles/viewer",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
  */
 export class EntryGroupIamMember extends pulumi.CustomResource {
     /**

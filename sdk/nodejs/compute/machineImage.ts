@@ -16,6 +16,26 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/compute/docs/machine-images)
  *
  * ## Example Usage
+ *
+ * ### Machine Image Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const vm = new gcp.compute.Instance("vm", {
+ *     machineType: "n1-standard-1",
+ *     boot_disk: {
+ *         initialize_params: {
+ *             image: "debian-cloud/debian-9",
+ *         },
+ *     },
+ *     network_interface: [{
+ *         network: "default",
+ *     }],
+ * });
+ * const image = new gcp.compute.MachineImage("image", {sourceInstance: vm.selfLink});
+ * ```
  */
 export class MachineImage extends pulumi.CustomResource {
     /**

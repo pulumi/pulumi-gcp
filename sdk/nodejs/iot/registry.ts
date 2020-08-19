@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
 /**
  * A Google Cloud IoT Core device registry.
  *
+ *
  * To get more information about DeviceRegistry, see:
  *
  * * [API documentation](https://cloud.google.com/iot/docs/reference/cloudiot/rest/)
@@ -16,6 +17,68 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/iot/docs/)
  *
  * ## Example Usage
+ *
+ * ### Cloudiot Device Registry Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const test_registry = new gcp.iot.Registry("test-registry", {});
+ * ```
+ *
+ * ### Cloudiot Device Registry Single Event Notification Configs
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const default_telemetry = new gcp.pubsub.Topic("default-telemetry", {});
+ * const test_registry = new gcp.iot.Registry("test-registry", {event_notification_configs: [{
+ *     pubsubTopicName: default_telemetry.id,
+ *     subfolderMatches: "",
+ * }]});
+ * ```
+ *
+ * ### Cloudiot Device Registry Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * from "fs";
+ *
+ * const default_devicestatus = new gcp.pubsub.Topic("default-devicestatus", {});
+ * const default_telemetry = new gcp.pubsub.Topic("default-telemetry", {});
+ * const additional_telemetry = new gcp.pubsub.Topic("additional-telemetry", {});
+ * const test_registry = new gcp.iot.Registry("test-registry", {
+ *     event_notification_configs: [
+ *         {
+ *             pubsubTopicName: additional_telemetry.id,
+ *             subfolderMatches: "test/path",
+ *         },
+ *         {
+ *             pubsubTopicName: default_telemetry.id,
+ *             subfolderMatches: "",
+ *         },
+ *     ],
+ *     stateNotificationConfig: {
+ *         pubsub_topic_name: default_devicestatus.id,
+ *     },
+ *     mqttConfig: {
+ *         mqtt_enabled_state: "MQTT_ENABLED",
+ *     },
+ *     httpConfig: {
+ *         http_enabled_state: "HTTP_ENABLED",
+ *     },
+ *     logLevel: "INFO",
+ *     credentials: [{
+ *         publicKeyCertificate: {
+ *             format: "X509_CERTIFICATE_PEM",
+ *             certificate: fs.readFileSync("test-fixtures/rsa_cert.pem"),
+ *         },
+ *     }],
+ * });
+ * ```
  */
 export class Registry extends pulumi.CustomResource {
     /**

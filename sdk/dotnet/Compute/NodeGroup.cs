@@ -12,6 +12,7 @@ namespace Pulumi.Gcp.Compute
     /// <summary>
     /// Represents a NodeGroup resource to manage a group of sole-tenant nodes.
     /// 
+    /// 
     /// To get more information about NodeGroup, see:
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups)
@@ -24,6 +25,33 @@ namespace Pulumi.Gcp.Compute
     /// the provider to delete and recreate the node group.
     /// 
     /// ## Example Usage
+    /// 
+    /// ### Node Group Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var soletenant_tmpl = new Gcp.Compute.NodeTemplate("soletenant-tmpl", new Gcp.Compute.NodeTemplateArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             NodeType = "n1-node-96-624",
+    ///         });
+    ///         var nodes = new Gcp.Compute.NodeGroup("nodes", new Gcp.Compute.NodeGroupArgs
+    ///         {
+    ///             Zone = "us-central1-a",
+    ///             Description = "example google_compute_node_group for the Google Provider",
+    ///             Size = 1,
+    ///             NodeTemplate = soletenant_tmpl.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class NodeGroup : Pulumi.CustomResource
     {

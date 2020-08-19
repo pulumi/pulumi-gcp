@@ -23,6 +23,7 @@ import * as utilities from "../utilities";
  * Add a persistent disk to your instance when you need reliable and
  * affordable storage with consistent performance characteristics.
  *
+ *
  * To get more information about RegionDisk, see:
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionDisks)
@@ -33,6 +34,34 @@ import * as utilities from "../utilities";
  * state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
  *
  * ## Example Usage
+ *
+ * ### Region Disk Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const disk = new gcp.compute.Disk("disk", {
+ *     image: "debian-cloud/debian-9",
+ *     size: 50,
+ *     type: "pd-ssd",
+ *     zone: "us-central1-a",
+ * });
+ * const snapdisk = new gcp.compute.Snapshot("snapdisk", {
+ *     sourceDisk: disk.name,
+ *     zone: "us-central1-a",
+ * });
+ * const regiondisk = new gcp.compute.RegionDisk("regiondisk", {
+ *     snapshot: snapdisk.id,
+ *     type: "pd-ssd",
+ *     region: "us-central1",
+ *     physicalBlockSizeBytes: 4096,
+ *     replicaZones: [
+ *         "us-central1-a",
+ *         "us-central1-f",
+ *     ],
+ * });
+ * ```
  */
 export class RegionDisk extends pulumi.CustomResource {
     /**

@@ -19,6 +19,7 @@ namespace Pulumi.Gcp.AccessContextManager
     /// the service perimeter resource must have a `lifecycle` block with `ignore_changes = [status[0].resources]` so
     /// they don't fight over which resources should be in the policy.
     /// 
+    /// 
     /// To get more information about ServicePerimeterResource, see:
     /// 
     /// * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.servicePerimeters)
@@ -26,6 +27,43 @@ namespace Pulumi.Gcp.AccessContextManager
     ///     * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
     /// 
     /// ## Example Usage
+    /// 
+    /// ### Access Context Manager Service Perimeter Resource Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var access_policy = new Gcp.AccessContextManager.AccessPolicy("access-policy", new Gcp.AccessContextManager.AccessPolicyArgs
+    ///         {
+    ///             Parent = "organizations/123456789",
+    ///             Title = "my policy",
+    ///         });
+    ///         var service_perimeter_resourceServicePerimeter = new Gcp.AccessContextManager.ServicePerimeter("service-perimeter-resourceServicePerimeter", new Gcp.AccessContextManager.ServicePerimeterArgs
+    ///         {
+    ///             Parent = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}"),
+    ///             Title = "restrict_all",
+    ///             Status = new Gcp.AccessContextManager.Inputs.ServicePerimeterStatusArgs
+    ///             {
+    ///                 RestrictedServices = 
+    ///                 {
+    ///                     "storage.googleapis.com",
+    ///                 },
+    ///             },
+    ///         });
+    ///         var service_perimeter_resourceServicePerimeterResource = new Gcp.AccessContextManager.ServicePerimeterResource("service-perimeter-resourceServicePerimeterResource", new Gcp.AccessContextManager.ServicePerimeterResourceArgs
+    ///         {
+    ///             PerimeterName = service_perimeter_resourceServicePerimeter.Name,
+    ///             Resource = "projects/987654321",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class ServicePerimeterResource : Pulumi.CustomResource
     {

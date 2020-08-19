@@ -19,6 +19,43 @@ namespace Pulumi.Gcp.ServiceDirectory
     ///     * [Configuring an endpoint](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_an_endpoint)
     /// 
     /// ## Example Usage
+    /// 
+    /// ### Service Directory Endpoint Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var exampleNamespace = new Gcp.ServiceDirectory.Namespace("exampleNamespace", new Gcp.ServiceDirectory.NamespaceArgs
+    ///         {
+    ///             NamespaceId = "example-namespace",
+    ///             Location = "us-central1",
+    ///         });
+    ///         var exampleService = new Gcp.ServiceDirectory.Service("exampleService", new Gcp.ServiceDirectory.ServiceArgs
+    ///         {
+    ///             ServiceId = "example-service",
+    ///             Namespace = exampleNamespace.Id,
+    ///         });
+    ///         var exampleEndpoint = new Gcp.ServiceDirectory.Endpoint("exampleEndpoint", new Gcp.ServiceDirectory.EndpointArgs
+    ///         {
+    ///             EndpointId = "example-endpoint",
+    ///             Service = exampleService.Id,
+    ///             Metadata = 
+    ///             {
+    ///                 { "stage", "prod" },
+    ///                 { "region", "us-central1" },
+    ///             },
+    ///             Address = "1.2.3.4",
+    ///             Port = 5353,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Endpoint : Pulumi.CustomResource
     {

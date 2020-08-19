@@ -12,6 +12,7 @@ namespace Pulumi.Gcp.OsLogin
     /// <summary>
     /// The SSH public key information associated with a Google account.
     /// 
+    /// 
     /// To get more information about SSHPublicKey, see:
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/oslogin/rest)
@@ -19,6 +20,28 @@ namespace Pulumi.Gcp.OsLogin
     ///     * [Official Documentation](https://cloud.google.com/compute/docs/oslogin)
     /// 
     /// ## Example Usage
+    /// 
+    /// ### Os Login Ssh Key Provided User
+    /// 
+    /// ```csharp
+    /// using System.IO;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var me = Output.Create(Gcp.Organizations.GetClientOpenIdUserInfo.InvokeAsync());
+    ///         var cache = new Gcp.OsLogin.SshPublicKey("cache", new Gcp.OsLogin.SshPublicKeyArgs
+    ///         {
+    ///             User = me.Apply(me =&gt; me.Email),
+    ///             Key = File.ReadAllText("path/to/id_rsa.pub"),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class SshPublicKey : Pulumi.CustomResource
     {

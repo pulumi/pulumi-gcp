@@ -21,8 +21,6 @@ import (
 //
 // **Note**: If the project id is not set on the resource or in the provider block it will be dynamically
 // determined which will require enabling the compute api.
-//
-// ## Example Usage
 type Bucket struct {
 	pulumi.CustomResourceState
 

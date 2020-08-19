@@ -12,6 +12,7 @@ namespace Pulumi.Gcp.Monitoring
     /// <summary>
     /// This message configures which resources and services to monitor for availability.
     /// 
+    /// 
     /// To get more information about UptimeCheckConfig, see:
     /// 
     /// * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.uptimeCheckConfigs)
@@ -22,6 +23,93 @@ namespace Pulumi.Gcp.Monitoring
     /// state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
     /// 
     /// ## Example Usage
+    /// 
+    /// ### Uptime Check Config Http
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var http = new Gcp.Monitoring.UptimeCheckConfig("http", new Gcp.Monitoring.UptimeCheckConfigArgs
+    ///         {
+    ///             ContentMatchers = 
+    ///             {
+    ///                 new Gcp.Monitoring.Inputs.UptimeCheckConfigContentMatcherArgs
+    ///                 {
+    ///                     Content = "example",
+    ///                 },
+    ///             },
+    ///             DisplayName = "http-uptime-check",
+    ///             HttpCheck = new Gcp.Monitoring.Inputs.UptimeCheckConfigHttpCheckArgs
+    ///             {
+    ///                 Body = "Zm9vJTI1M0RiYXI=",
+    ///                 ContentType = "URL_ENCODED",
+    ///                 Path = "/some-path",
+    ///                 Port = 8010,
+    ///                 RequestMethod = "POST",
+    ///             },
+    ///             MonitoredResource = new Gcp.Monitoring.Inputs.UptimeCheckConfigMonitoredResourceArgs
+    ///             {
+    ///                 Labels = 
+    ///                 {
+    ///                     { "host", "192.168.1.1" },
+    ///                     { "project_id", "my-project-name" },
+    ///                 },
+    ///                 Type = "uptime_url",
+    ///             },
+    ///             Timeout = "60s",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ### Uptime Check Config Https
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var https = new Gcp.Monitoring.UptimeCheckConfig("https", new Gcp.Monitoring.UptimeCheckConfigArgs
+    ///         {
+    ///             ContentMatchers = 
+    ///             {
+    ///                 new Gcp.Monitoring.Inputs.UptimeCheckConfigContentMatcherArgs
+    ///                 {
+    ///                     Content = "example",
+    ///                 },
+    ///             },
+    ///             DisplayName = "https-uptime-check",
+    ///             HttpCheck = new Gcp.Monitoring.Inputs.UptimeCheckConfigHttpCheckArgs
+    ///             {
+    ///                 Path = "/some-path",
+    ///                 Port = 443,
+    ///                 UseSsl = true,
+    ///                 ValidateSsl = true,
+    ///             },
+    ///             MonitoredResource = new Gcp.Monitoring.Inputs.UptimeCheckConfigMonitoredResourceArgs
+    ///             {
+    ///                 Labels = 
+    ///                 {
+    ///                     { "host", "192.168.1.1" },
+    ///                     { "project_id", "my-project-name" },
+    ///                 },
+    ///                 Type = "uptime_url",
+    ///             },
+    ///             Timeout = "60s",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class UptimeCheckConfig : Pulumi.CustomResource
     {

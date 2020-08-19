@@ -14,6 +14,45 @@ import * as utilities from "../utilities";
  * > **Note:** `gcp.servicedirectory.NamespaceIamPolicy` **cannot** be used in conjunction with `gcp.servicedirectory.NamespaceIamBinding` and `gcp.servicedirectory.NamespaceIamMember` or they will fight over what your policy should be.
  *
  * > **Note:** `gcp.servicedirectory.NamespaceIamBinding` resources **can be** used in conjunction with `gcp.servicedirectory.NamespaceIamMember` resources **only if** they do not grant privilege to the same role.
+ *
+ * ## google\_service\_directory\_namespace\_iam\_policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     binding: [{
+ *         role: "roles/viewer",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const policy = new gcp.servicedirectory.NamespaceIamPolicy("policy", {policyData: admin.then(admin => admin.policyData)});
+ * ```
+ *
+ * ## google\_service\_directory\_namespace\_iam\_binding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.servicedirectory.NamespaceIamBinding("binding", {
+ *     role: "roles/viewer",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ *
+ * ## google\_service\_directory\_namespace\_iam\_member
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.servicedirectory.NamespaceIamMember("member", {
+ *     role: "roles/viewer",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
  */
 export class NamespaceIamPolicy extends pulumi.CustomResource {
     /**

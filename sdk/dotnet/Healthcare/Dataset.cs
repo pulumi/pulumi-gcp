@@ -19,6 +19,26 @@ namespace Pulumi.Gcp.Healthcare
     ///     * [Creating a dataset](https://cloud.google.com/healthcare/docs/how-tos/datasets)
     /// 
     /// ## Example Usage
+    /// 
+    /// ### Healthcare Dataset Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new Gcp.Healthcare.Dataset("default", new Gcp.Healthcare.DatasetArgs
+    ///         {
+    ///             Location = "us-central1",
+    ///             TimeZone = "UTC",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Dataset : Pulumi.CustomResource
     {

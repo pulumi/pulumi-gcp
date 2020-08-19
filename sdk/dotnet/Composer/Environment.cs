@@ -23,17 +23,125 @@ namespace Pulumi.Gcp.Composer
     /// * [Apache Airflow Documentation](http://airflow.apache.org/)
     /// 
     /// &gt; **Warning:** We **STRONGLY** recommend  you read the [GCP guides](https://cloud.google.com/composer/docs/how-to)
-    ///   as the Environment resource requires a long deployment process and involves several layers of GCP infrastructure,
+    ///   as the Environment resource requires a long deployment process and involves several layers of GCP infrastructure, 
     ///   including a Kubernetes Engine cluster, Cloud Storage, and Compute networking resources. Due to limitations of the API,
     ///   This provider will not be able to automatically find or manage many of these underlying resources. In particular:
-    ///   * It can take up to one hour to create or update an environment resource. In addition, GCP may only detect some
+    ///   * It can take up to one hour to create or update an environment resource. In addition, GCP may only detect some 
     ///     errors in configuration when they are used (e.g. ~40-50 minutes into the creation process), and is prone to limited
-    ///     error reporting. If you encounter confusing or uninformative errors, please verify your configuration is valid
-    ///     against GCP Cloud Composer before filing bugs against this provider.
-    ///   * **Environments create Google Cloud Storage buckets that do not get cleaned up automatically** on environment
+    ///     error reporting. If you encounter confusing or uninformative errors, please verify your configuration is valid 
+    ///     against GCP Cloud Composer before filing bugs against this provider. 
+    ///   * **Environments create Google Cloud Storage buckets that do not get cleaned up automatically** on environment 
     ///     deletion. [More about Composer's use of Cloud Storage](https://cloud.google.com/composer/docs/concepts/cloud-storage).
     /// 
     /// ## Example Usage
+    /// 
+    /// ### Basic Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var test = new Gcp.Composer.Environment("test", new Gcp.Composer.EnvironmentArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ### With GKE and Compute Resource Dependencies
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var testNetwork = new Gcp.Compute.Network("testNetwork", new Gcp.Compute.NetworkArgs
+    ///         {
+    ///             AutoCreateSubnetworks = false,
+    ///         });
+    ///         var testSubnetwork = new Gcp.Compute.Subnetwork("testSubnetwork", new Gcp.Compute.SubnetworkArgs
+    ///         {
+    ///             IpCidrRange = "10.2.0.0/16",
+    ///             Region = "us-central1",
+    ///             Network = testNetwork.Id,
+    ///         });
+    ///         var testAccount = new Gcp.ServiceAccount.Account("testAccount", new Gcp.ServiceAccount.AccountArgs
+    ///         {
+    ///             AccountId = "composer-env-account",
+    ///             DisplayName = "Test Service Account for Composer Environment",
+    ///         });
+    ///         var composer_worker = new Gcp.Projects.IAMMember("composer-worker", new Gcp.Projects.IAMMemberArgs
+    ///         {
+    ///             Role = "roles/composer.worker",
+    ///             Member = testAccount.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///         });
+    ///         var testEnvironment = new Gcp.Composer.Environment("testEnvironment", new Gcp.Composer.EnvironmentArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             Config = new Gcp.Composer.Inputs.EnvironmentConfigArgs
+    ///             {
+    ///                 NodeCount = 4,
+    ///                 Node_config = 
+    ///                 {
+    ///                     { "zone", "us-central1-a" },
+    ///                     { "machineType", "n1-standard-1" },
+    ///                     { "network", testNetwork.Id },
+    ///                     { "subnetwork", testSubnetwork.Id },
+    ///                     { "serviceAccount", testAccount.Name },
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ### With Software (Airflow) Config
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var test = new Gcp.Composer.Environment("test", new Gcp.Composer.EnvironmentArgs
+    ///         {
+    ///             Config = new Gcp.Composer.Inputs.EnvironmentConfigArgs
+    ///             {
+    ///                 SoftwareConfig = new Gcp.Composer.Inputs.EnvironmentConfigSoftwareConfigArgs
+    ///                 {
+    ///                     AirflowConfigOverrides = 
+    ///                     {
+    ///                         { "core-loadExample", "True" },
+    ///                     },
+    ///                     EnvVariables = 
+    ///                     {
+    ///                         { "FOO", "bar" },
+    ///                     },
+    ///                     PypiPackages = 
+    ///                     {
+    ///                         { "numpy", "" },
+    ///                         { "scipy", "==1.1.0" },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Region = "us-central1",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Environment : Pulumi.CustomResource
     {

@@ -20,6 +20,31 @@ namespace Pulumi.Gcp.ServiceDirectory
     ///     * [Configuring a namespace](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_namespace)
     /// 
     /// ## Example Usage
+    /// 
+    /// ### Service Directory Namespace Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new Gcp.ServiceDirectory.Namespace("example", new Gcp.ServiceDirectory.NamespaceArgs
+    ///         {
+    ///             NamespaceId = "example-namespace",
+    ///             Location = "us-central1",
+    ///             Labels = 
+    ///             {
+    ///                 { "key", "value" },
+    ///                 { "foo", "bar" },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Namespace : Pulumi.CustomResource
     {

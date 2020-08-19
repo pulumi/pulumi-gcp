@@ -12,13 +12,12 @@ import (
 
 // Creates a Microsoft AD domain
 //
+//
 // To get more information about Domain, see:
 //
 // * [API documentation](https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains)
 // * How-to Guides
 //     * [Managed Microsoft Active Directory Quickstart](https://cloud.google.com/managed-microsoft-ad/docs/quickstarts)
-//
-// ## Example Usage
 type Domain struct {
 	pulumi.CustomResourceState
 

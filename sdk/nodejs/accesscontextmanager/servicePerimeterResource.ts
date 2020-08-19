@@ -14,6 +14,7 @@ import * as utilities from "../utilities";
  * the service perimeter resource must have a `lifecycle` block with `ignoreChanges = [status[0].resources]` so
  * they don't fight over which resources should be in the policy.
  *
+ *
  * To get more information about ServicePerimeterResource, see:
  *
  * * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.servicePerimeters)
@@ -21,6 +22,29 @@ import * as utilities from "../utilities";
  *     * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
  *
  * ## Example Usage
+ *
+ * ### Access Context Manager Service Perimeter Resource Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const access_policy = new gcp.accesscontextmanager.AccessPolicy("access-policy", {
+ *     parent: "organizations/123456789",
+ *     title: "my policy",
+ * });
+ * const service_perimeter_resourceServicePerimeter = new gcp.accesscontextmanager.ServicePerimeter("service-perimeter-resourceServicePerimeter", {
+ *     parent: pulumi.interpolate`accessPolicies/${access_policy.name}`,
+ *     title: "restrict_all",
+ *     status: {
+ *         restrictedServices: ["storage.googleapis.com"],
+ *     },
+ * });
+ * const service_perimeter_resourceServicePerimeterResource = new gcp.accesscontextmanager.ServicePerimeterResource("service-perimeter-resourceServicePerimeterResource", {
+ *     perimeterName: service_perimeter_resourceServicePerimeter.name,
+ *     resource: "projects/987654321",
+ * });
+ * ```
  */
 export class ServicePerimeterResource extends pulumi.CustomResource {
     /**

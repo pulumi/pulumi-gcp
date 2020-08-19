@@ -19,21 +19,21 @@ import (
 // To upgrade your First-generation instance, update your config that the instance has
 // * `settings.ip_configuration.ipv4_enabled=true`
 // * `settings.backup_configuration.enabled=true`
-// * `settings.backup_configuration.binary_log_enabled=true`.\
-//   Apply the config, then upgrade the instance in the console as described in the documentation.
-//   Once upgraded, update the following attributes in your config to the correct value according to
-//   the above documentation:
+// * `settings.backup_configuration.binary_log_enabled=true`.
+// Apply the config, then upgrade the instance in the console as described in the documentation.
+// Once upgraded, update the following attributes in your config to the correct value according to
+// the above documentation:
 // * `region`
 // * `databaseVersion` (if applicable)
-// * `tier`\
-//   Remove any fields that are not applicable to Second-generation instances:
+// * `tier`
+// Remove any fields that are not applicable to Second-generation instances:
 // * `settings.crash_safe_replication`
 // * `settings.replication_type`
 // * `settings.authorized_gae_applications`
-//   And change values to appropriate values for Second-generation instances for:
+// And change values to appropriate values for Second-generation instances for:
 // * `activationPolicy` ("ON_DEMAND" is no longer an option)
 // * `pricingPlan` ("PER_USE" is now the only valid option)
-//   Change `settings.backup_configuration.enabled` attribute back to its desired value and apply as necessary.
+// Change `settings.backup_configuration.enabled` attribute back to its desired value and apply as necessary.
 //
 // > **NOTE on `sql.DatabaseInstance`:** - Second-generation instances include a
 // default 'root'@'%' user with no password. This user will be deleted by the provider on
@@ -41,6 +41,33 @@ import (
 // a restricted host and strong password.
 //
 // ## Example Usage
+//
+// ### SQL Second Generation Instance
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/sql"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		master, err := sql.NewDatabaseInstance(ctx, "master", &sql.DatabaseInstanceArgs{
+// 			DatabaseVersion: pulumi.String("POSTGRES_11"),
+// 			Region:          pulumi.String("us-central1"),
+// 			Settings: &sql.DatabaseInstanceSettingsArgs{
+// 				Tier: pulumi.String("db-f1-micro"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type DatabaseInstance struct {
 	pulumi.CustomResourceState
 

@@ -18,8 +18,6 @@ namespace Pulumi.Gcp.Healthcare
     /// * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1/projects.locations.datasets.hl7V2Stores)
     /// * How-to Guides
     ///     * [Creating a HL7v2 Store](https://cloud.google.com/healthcare/docs/how-tos/hl7v2)
-    /// 
-    /// ## Example Usage
     /// </summary>
     public partial class Hl7Store : Pulumi.CustomResource
     {

@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  * For more information, see Access Control, with the caveat that this API
  * uses READER and OWNER instead of READ and FULL_CONTROL.
  *
+ *
  * To get more information about DefaultObjectAccessControl, see:
  *
  * * [API documentation](https://cloud.google.com/storage/docs/json_api/v1/defaultObjectAccessControls)
@@ -28,6 +29,20 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/storage/docs/access-control/create-manage-lists)
  *
  * ## Example Usage
+ *
+ * ### Storage Default Object Access Control Public
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const bucket = new gcp.storage.Bucket("bucket", {});
+ * const publicRule = new gcp.storage.DefaultObjectAccessControl("publicRule", {
+ *     bucket: bucket.name,
+ *     role: "READER",
+ *     entity: "allUsers",
+ * });
+ * ```
  */
 export class DefaultObjectAccessControl extends pulumi.CustomResource {
     /**

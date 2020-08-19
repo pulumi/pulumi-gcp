@@ -23,6 +23,7 @@ import (
 // persistent disk faster and at a much lower cost than if you regularly
 // created a full image of the disk.
 //
+//
 // To get more information about Snapshot, see:
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots)
@@ -33,6 +34,49 @@ import (
 // state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
 //
 // ## Example Usage
+//
+// ### Snapshot Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		debian, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
+// 			Family:  "debian-9",
+// 			Project: "debian-cloud",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		persistent, err := compute.NewDisk(ctx, "persistent", &compute.DiskArgs{
+// 			Image: pulumi.String(debian.SelfLink),
+// 			Size:  pulumi.Int(10),
+// 			Type:  pulumi.String("pd-ssd"),
+// 			Zone:  pulumi.String("us-central1-a"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		snapshot, err := compute.NewSnapshot(ctx, "snapshot", &compute.SnapshotArgs{
+// 			SourceDisk: persistent.Name,
+// 			Zone:       pulumi.String("us-central1-a"),
+// 			Labels: map[string]interface{}{
+// 				"my_label": "value",
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Snapshot struct {
 	pulumi.CustomResourceState
 

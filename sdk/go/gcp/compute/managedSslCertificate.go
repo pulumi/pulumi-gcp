@@ -34,8 +34,6 @@ import (
 // certificates may entail some downtime while the certificate provisions.
 //
 // In conclusion: Be extremely cautious.
-//
-// ## Example Usage
 type ManagedSslCertificate struct {
 	pulumi.CustomResourceState
 

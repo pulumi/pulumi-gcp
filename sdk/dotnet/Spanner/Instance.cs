@@ -13,6 +13,7 @@ namespace Pulumi.Gcp.Spanner
     /// An isolated set of Cloud Spanner resources on which databases can be
     /// hosted.
     /// 
+    /// 
     /// To get more information about Instance, see:
     /// 
     /// * [API documentation](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances)
@@ -20,6 +21,31 @@ namespace Pulumi.Gcp.Spanner
     ///     * [Official Documentation](https://cloud.google.com/spanner/)
     /// 
     /// ## Example Usage
+    /// 
+    /// ### Spanner Instance Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new Gcp.Spanner.Instance("example", new Gcp.Spanner.InstanceArgs
+    ///         {
+    ///             Config = "regional-us-central1",
+    ///             DisplayName = "Test Spanner Instance",
+    ///             Labels = 
+    ///             {
+    ///                 { "foo", "bar" },
+    ///             },
+    ///             NumNodes = 2,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Instance : Pulumi.CustomResource
     {

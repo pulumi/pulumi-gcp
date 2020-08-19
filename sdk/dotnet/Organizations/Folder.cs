@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Organizations
 {
     /// <summary>
-    /// Allows management of a Google Cloud Platform folder. For more information see
+    /// Allows management of a Google Cloud Platform folder. For more information see 
     /// [the official documentation](https://cloud.google.com/resource-manager/docs/creating-managing-folders)
-    /// and
+    /// and 
     /// [API](https://cloud.google.com/resource-manager/reference/rest/v2/folders).
     /// 
     /// A folder can contain projects, other folders, or a combination of both. You can use folders to group projects under an organization in a hierarchy. For example, your organization might contain multiple departments, each with its own set of Cloud Platform resources. Folders allows you to group these resources on a per-department basis. Folders are used to group resources that share common IAM policies.
@@ -23,6 +23,35 @@ namespace Pulumi.Gcp.Organizations
     /// resource must have `roles/resourcemanager.folderCreator`. See the
     /// [Access Control for Folders Using IAM](https://cloud.google.com/resource-manager/docs/access-control-folders)
     /// doc for more information.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Top-level folder under an organization.
+    ///         var department1 = new Gcp.Organizations.Folder("department1", new Gcp.Organizations.FolderArgs
+    ///         {
+    ///             DisplayName = "Department 1",
+    ///             Parent = "organizations/1234567",
+    ///         });
+    ///         // Folder nested under another folder.
+    ///         var team_abc = new Gcp.Organizations.Folder("team-abc", new Gcp.Organizations.FolderArgs
+    ///         {
+    ///             DisplayName = "Team ABC",
+    ///             Parent = department1.Name,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Folder : Pulumi.CustomResource
     {

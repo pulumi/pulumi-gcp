@@ -7,6 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Creates a Microsoft AD domain
  *
+ *
  * To get more information about Domain, see:
  *
  * * [API documentation](https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains)
@@ -14,6 +15,19 @@ import * as utilities from "../utilities";
  *     * [Managed Microsoft Active Directory Quickstart](https://cloud.google.com/managed-microsoft-ad/docs/quickstarts)
  *
  * ## Example Usage
+ *
+ * ### Active Directory Domain Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const ad_domain = new gcp.ActiveDirectoryDomain("ad-domain", {
+ *     domainName: "mydomain.org.com",
+ *     locations: ["us-central1"],
+ *     reservedIpRange: "192.168.255.0/24",
+ * });
+ * ```
  */
 export class Domain extends pulumi.CustomResource {
     /**

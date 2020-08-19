@@ -12,13 +12,12 @@ import (
 
 // Datasets allow you to organize and control access to your tables.
 //
+//
 // To get more information about Dataset, see:
 //
 // * [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets)
 // * How-to Guides
 //     * [Datasets Intro](https://cloud.google.com/bigquery/docs/datasets-intro)
-//
-// ## Example Usage
 type Dataset struct {
 	pulumi.CustomResourceState
 

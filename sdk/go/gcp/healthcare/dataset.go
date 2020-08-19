@@ -17,8 +17,6 @@ import (
 // * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1/projects.locations.datasets)
 // * How-to Guides
 //     * [Creating a dataset](https://cloud.google.com/healthcare/docs/how-tos/datasets)
-//
-// ## Example Usage
 type Dataset struct {
 	pulumi.CustomResourceState
 

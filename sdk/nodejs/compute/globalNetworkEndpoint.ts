@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  * **NOTE**: Global network endpoints cannot be created outside of a
  * global network endpoint group.
  *
+ *
  * To get more information about GlobalNetworkEndpoint, see:
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/networkEndpointGroups)
@@ -16,6 +17,24 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
  *
  * ## Example Usage
+ *
+ * ### Global Network Endpoint
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const neg = new gcp.compute.GlobalNetworkEndpointGroup("neg", {
+ *     defaultPort: "90",
+ *     networkEndpointType: "INTERNET_IP_PORT",
+ * });
+ * const default_endpoint = new gcp.compute.GlobalNetworkEndpoint("default-endpoint", {
+ *     globalNetworkEndpointGroup: neg.name,
+ *     fqdn: "www.example.com",
+ *     port: 90,
+ *     ipAddress: "8.8.8.8",
+ * });
+ * ```
  */
 export class GlobalNetworkEndpoint extends pulumi.CustomResource {
     /**

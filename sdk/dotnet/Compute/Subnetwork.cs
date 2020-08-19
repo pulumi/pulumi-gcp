@@ -33,6 +33,7 @@ namespace Pulumi.Gcp.Compute
     /// region, using their RFC1918 private IP addresses. You can isolate portions
     /// of the network, even entire subnets, using firewall rules.
     /// 
+    /// 
     /// To get more information about Subnetwork, see:
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/subnetworks)
@@ -41,6 +42,33 @@ namespace Pulumi.Gcp.Compute
     ///     * [Cloud Networking](https://cloud.google.com/vpc/docs/using-vpc)
     /// 
     /// ## Example Usage
+    /// 
+    /// ### Subnetwork Internal L7lb
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var custom_test = new Gcp.Compute.Network("custom-test", new Gcp.Compute.NetworkArgs
+    ///         {
+    ///             AutoCreateSubnetworks = false,
+    ///         });
+    ///         var network_for_l7lb = new Gcp.Compute.Subnetwork("network-for-l7lb", new Gcp.Compute.SubnetworkArgs
+    ///         {
+    ///             IpCidrRange = "10.0.0.0/22",
+    ///             Region = "us-central1",
+    ///             Purpose = "INTERNAL_HTTPS_LOAD_BALANCER",
+    ///             Role = "ACTIVE",
+    ///             Network = custom_test.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Subnetwork : Pulumi.CustomResource
     {

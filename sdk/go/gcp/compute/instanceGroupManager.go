@@ -16,8 +16,6 @@ import (
 // and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroupManagers)
 //
 // > **Note:** Use [compute.RegionInstanceGroupManager](https://www.terraform.io/docs/providers/google/r/compute_region_instance_group_manager.html) to create a regional (multi-zone) instance group manager.
-//
-// ## Example Usage
 type InstanceGroupManager struct {
 	pulumi.CustomResourceState
 

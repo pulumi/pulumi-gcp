@@ -13,6 +13,21 @@ import * as utilities from "../utilities";
  * > **Note:** This resource __must not__ be used in conjunction with
  *    `gcp.billing.AccountIamBinding` for the __same role__ or they will fight over
  *    what your policy should be.
+ *
+ * ## Example Usage
+ *
+ *
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.billing.AccountIamMember("binding", {
+ *     billingAccountId: "00AA00-000AAA-00AA0A",
+ *     member: "user:alice@gmail.com",
+ *     role: "roles/billing.viewer",
+ * });
+ * ```
  */
 export class AccountIamMember extends pulumi.CustomResource {
     /**

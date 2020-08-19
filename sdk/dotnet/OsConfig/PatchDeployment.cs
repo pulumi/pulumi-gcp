@@ -13,6 +13,7 @@ namespace Pulumi.Gcp.OsConfig
     /// Patch deployments are configurations that individual patch jobs use to complete a patch.
     /// These configurations include instance filter, package repository settings, and a schedule.
     /// 
+    /// 
     /// To get more information about PatchDeployment, see:
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/osconfig/rest)
@@ -20,6 +21,194 @@ namespace Pulumi.Gcp.OsConfig
     ///     * [Official Documentation](https://cloud.google.com/compute/docs/os-patch-management)
     /// 
     /// ## Example Usage
+    /// 
+    /// ### Os Config Patch Deployment Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var patch = new Gcp.OsConfig.PatchDeployment("patch", new Gcp.OsConfig.PatchDeploymentArgs
+    ///         {
+    ///             InstanceFilter = new Gcp.OsConfig.Inputs.PatchDeploymentInstanceFilterArgs
+    ///             {
+    ///                 All = true,
+    ///             },
+    ///             PatchDeploymentId = "patch-deploy-inst",
+    ///             RecurringSchedule = new Gcp.OsConfig.Inputs.PatchDeploymentRecurringScheduleArgs
+    ///             {
+    ///                 TimeOfDay = new Gcp.OsConfig.Inputs.PatchDeploymentRecurringScheduleTimeOfDayArgs
+    ///                 {
+    ///                     Hours = 1,
+    ///                 },
+    ///                 TimeZone = new Gcp.OsConfig.Inputs.PatchDeploymentRecurringScheduleTimeZoneArgs
+    ///                 {
+    ///                     Id = "America/New_York",
+    ///                 },
+    ///                 Weekly = new Gcp.OsConfig.Inputs.PatchDeploymentRecurringScheduleWeeklyArgs
+    ///                 {
+    ///                     DayOfWeek = "MONDAY",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ### Os Config Patch Deployment Full
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var patch = new Gcp.OsConfig.PatchDeployment("patch", new Gcp.OsConfig.PatchDeploymentArgs
+    ///         {
+    ///             Duration = "10s",
+    ///             InstanceFilter = new Gcp.OsConfig.Inputs.PatchDeploymentInstanceFilterArgs
+    ///             {
+    ///                 GroupLabels = 
+    ///                 {
+    ///                     new Gcp.OsConfig.Inputs.PatchDeploymentInstanceFilterGroupLabelArgs
+    ///                     {
+    ///                         Labels = 
+    ///                         {
+    ///                             { "app", "web" },
+    ///                             { "env", "dev" },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 InstanceNamePrefixes = 
+    ///                 {
+    ///                     "test-",
+    ///                 },
+    ///                 Zones = 
+    ///                 {
+    ///                     "us-central1-a",
+    ///                     "us-central-1c",
+    ///                 },
+    ///             },
+    ///             PatchConfig = new Gcp.OsConfig.Inputs.PatchDeploymentPatchConfigArgs
+    ///             {
+    ///                 Apt = new Gcp.OsConfig.Inputs.PatchDeploymentPatchConfigAptArgs
+    ///                 {
+    ///                     Excludes = 
+    ///                     {
+    ///                         "python",
+    ///                     },
+    ///                     Type = "DIST",
+    ///                 },
+    ///                 Goo = new Gcp.OsConfig.Inputs.PatchDeploymentPatchConfigGooArgs
+    ///                 {
+    ///                     Enabled = true,
+    ///                 },
+    ///                 PostStep = new Gcp.OsConfig.Inputs.PatchDeploymentPatchConfigPostStepArgs
+    ///                 {
+    ///                     LinuxExecStepConfig = new Gcp.OsConfig.Inputs.PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgs
+    ///                     {
+    ///                         GcsObject = new Gcp.OsConfig.Inputs.PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgs
+    ///                         {
+    ///                             Bucket = "my-patch-scripts",
+    ///                             GenerationNumber = "1523477886880",
+    ///                             Object = "linux/post_patch_script",
+    ///                         },
+    ///                     },
+    ///                     WindowsExecStepConfig = new Gcp.OsConfig.Inputs.PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgs
+    ///                     {
+    ///                         GcsObject = new Gcp.OsConfig.Inputs.PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArgs
+    ///                         {
+    ///                             Bucket = "my-patch-scripts",
+    ///                             GenerationNumber = "135920493447",
+    ///                             Object = "windows/post_patch_script.ps1",
+    ///                         },
+    ///                         Interpreter = "POWERSHELL",
+    ///                     },
+    ///                 },
+    ///                 PreStep = new Gcp.OsConfig.Inputs.PatchDeploymentPatchConfigPreStepArgs
+    ///                 {
+    ///                     LinuxExecStepConfig = new Gcp.OsConfig.Inputs.PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs
+    ///                     {
+    ///                         AllowedSuccessCodes = 
+    ///                         {
+    ///                             0,
+    ///                             3,
+    ///                         },
+    ///                         LocalPath = "/tmp/pre_patch_script.sh",
+    ///                     },
+    ///                     WindowsExecStepConfig = new Gcp.OsConfig.Inputs.PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgs
+    ///                     {
+    ///                         AllowedSuccessCodes = 
+    ///                         {
+    ///                             0,
+    ///                             2,
+    ///                         },
+    ///                         Interpreter = "SHELL",
+    ///                         LocalPath = "C:\\Users\\user\\pre-patch-script.cmd",
+    ///                     },
+    ///                 },
+    ///                 RebootConfig = "ALWAYS",
+    ///                 WindowsUpdate = new Gcp.OsConfig.Inputs.PatchDeploymentPatchConfigWindowsUpdateArgs
+    ///                 {
+    ///                     Classifications = 
+    ///                     {
+    ///                         "CRITICAL",
+    ///                         "SECURITY",
+    ///                         "UPDATE",
+    ///                     },
+    ///                 },
+    ///                 Yum = new Gcp.OsConfig.Inputs.PatchDeploymentPatchConfigYumArgs
+    ///                 {
+    ///                     Excludes = 
+    ///                     {
+    ///                         "bash",
+    ///                     },
+    ///                     Minimal = true,
+    ///                     Security = true,
+    ///                 },
+    ///                 Zypper = new Gcp.OsConfig.Inputs.PatchDeploymentPatchConfigZypperArgs
+    ///                 {
+    ///                     Categories = 
+    ///                     {
+    ///                         "security",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             PatchDeploymentId = "patch-deploy-inst",
+    ///             RecurringSchedule = new Gcp.OsConfig.Inputs.PatchDeploymentRecurringScheduleArgs
+    ///             {
+    ///                 Monthly = new Gcp.OsConfig.Inputs.PatchDeploymentRecurringScheduleMonthlyArgs
+    ///                 {
+    ///                     WeekDayOfMonth = new Gcp.OsConfig.Inputs.PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs
+    ///                     {
+    ///                         DayOfWeek = "TUESDAY",
+    ///                         WeekOrdinal = -1,
+    ///                     },
+    ///                 },
+    ///                 TimeOfDay = new Gcp.OsConfig.Inputs.PatchDeploymentRecurringScheduleTimeOfDayArgs
+    ///                 {
+    ///                     Hours = 0,
+    ///                     Minutes = 30,
+    ///                     Nanos = 20,
+    ///                     Seconds = 30,
+    ///                 },
+    ///                 TimeZone = new Gcp.OsConfig.Inputs.PatchDeploymentRecurringScheduleTimeZoneArgs
+    ///                 {
+    ///                     Id = "America/New_York",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class PatchDeployment : Pulumi.CustomResource
     {

@@ -12,6 +12,7 @@ import (
 
 // This message configures which resources and services to monitor for availability.
 //
+//
 // To get more information about UptimeCheckConfig, see:
 //
 // * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.uptimeCheckConfigs)
@@ -22,6 +23,91 @@ import (
 // state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
 //
 // ## Example Usage
+//
+// ### Uptime Check Config Http
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/monitoring"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		http, err := monitoring.NewUptimeCheckConfig(ctx, "http", &monitoring.UptimeCheckConfigArgs{
+// 			ContentMatchers: monitoring.UptimeCheckConfigContentMatcherArray{
+// 				&monitoring.UptimeCheckConfigContentMatcherArgs{
+// 					Content: pulumi.String("example"),
+// 				},
+// 			},
+// 			DisplayName: pulumi.String("http-uptime-check"),
+// 			HttpCheck: &monitoring.UptimeCheckConfigHttpCheckArgs{
+// 				Body:          pulumi.String("Zm9vJTI1M0RiYXI="),
+// 				ContentType:   pulumi.String("URL_ENCODED"),
+// 				Path:          pulumi.String("/some-path"),
+// 				Port:          pulumi.Int(8010),
+// 				RequestMethod: pulumi.String("POST"),
+// 			},
+// 			MonitoredResource: &monitoring.UptimeCheckConfigMonitoredResourceArgs{
+// 				Labels: map[string]interface{}{
+// 					"host":       "192.168.1.1",
+// 					"project_id": "my-project-name",
+// 				},
+// 				Type: pulumi.String("uptime_url"),
+// 			},
+// 			Timeout: pulumi.String("60s"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ### Uptime Check Config Https
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/monitoring"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		https, err := monitoring.NewUptimeCheckConfig(ctx, "https", &monitoring.UptimeCheckConfigArgs{
+// 			ContentMatchers: monitoring.UptimeCheckConfigContentMatcherArray{
+// 				&monitoring.UptimeCheckConfigContentMatcherArgs{
+// 					Content: pulumi.String("example"),
+// 				},
+// 			},
+// 			DisplayName: pulumi.String("https-uptime-check"),
+// 			HttpCheck: &monitoring.UptimeCheckConfigHttpCheckArgs{
+// 				Path:        pulumi.String("/some-path"),
+// 				Port:        pulumi.Int(443),
+// 				UseSsl:      pulumi.Bool(true),
+// 				ValidateSsl: pulumi.Bool(true),
+// 			},
+// 			MonitoredResource: &monitoring.UptimeCheckConfigMonitoredResourceArgs{
+// 				Labels: map[string]interface{}{
+// 					"host":       "192.168.1.1",
+// 					"project_id": "my-project-name",
+// 				},
+// 				Type: pulumi.String("uptime_url"),
+// 			},
+// 			Timeout: pulumi.String("60s"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type UptimeCheckConfig struct {
 	pulumi.CustomResourceState
 

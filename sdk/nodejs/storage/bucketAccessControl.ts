@@ -22,6 +22,7 @@ import * as utilities from "../utilities";
  * information, see Access Control, with the caveat that this API uses
  * READER, WRITER, and OWNER instead of READ, WRITE, and FULL_CONTROL.
  *
+ *
  * To get more information about BucketAccessControl, see:
  *
  * * [API documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)
@@ -29,6 +30,20 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/storage/docs/access-control/lists)
  *
  * ## Example Usage
+ *
+ * ### Storage Bucket Access Control Public Bucket
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const bucket = new gcp.storage.Bucket("bucket", {});
+ * const publicRule = new gcp.storage.BucketAccessControl("publicRule", {
+ *     bucket: bucket.name,
+ *     role: "READER",
+ *     entity: "allUsers",
+ * });
+ * ```
  */
 export class BucketAccessControl extends pulumi.CustomResource {
     /**

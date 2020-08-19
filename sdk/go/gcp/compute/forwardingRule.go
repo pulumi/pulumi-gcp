@@ -13,6 +13,7 @@ import (
 // of target virtual machines to forward a packet to if it matches the given
 // [IPAddress, IPProtocol, portRange] tuple.
 //
+//
 // To get more information about ForwardingRule, see:
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/v1/forwardingRules)
@@ -20,6 +21,34 @@ import (
 //     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/network/forwarding-rules)
 //
 // ## Example Usage
+//
+// ### Forwarding Rule Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		defaultTargetPool, err := compute.NewTargetPool(ctx, "defaultTargetPool", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultForwardingRule, err := compute.NewForwardingRule(ctx, "defaultForwardingRule", &compute.ForwardingRuleArgs{
+// 			Target:    defaultTargetPool.ID(),
+// 			PortRange: pulumi.String("80"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type ForwardingRule struct {
 	pulumi.CustomResourceState
 
@@ -116,9 +145,9 @@ type ForwardingRule struct {
 	// * TargetHttpProxy: 80, 8080
 	// * TargetHttpsProxy: 443
 	// * TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-	//   1883, 5222
+	// 1883, 5222
 	// * TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-	//   1883, 5222
+	// 1883, 5222
 	// * TargetVpnGateway: 500, 4500
 	PortRange pulumi.StringPtrOutput `pulumi:"portRange"`
 	// This field is used along with the backendService field for internal
@@ -284,9 +313,9 @@ type forwardingRuleState struct {
 	// * TargetHttpProxy: 80, 8080
 	// * TargetHttpsProxy: 443
 	// * TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-	//   1883, 5222
+	// 1883, 5222
 	// * TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-	//   1883, 5222
+	// 1883, 5222
 	// * TargetVpnGateway: 500, 4500
 	PortRange *string `pulumi:"portRange"`
 	// This field is used along with the backendService field for internal
@@ -425,9 +454,9 @@ type ForwardingRuleState struct {
 	// * TargetHttpProxy: 80, 8080
 	// * TargetHttpsProxy: 443
 	// * TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-	//   1883, 5222
+	// 1883, 5222
 	// * TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-	//   1883, 5222
+	// 1883, 5222
 	// * TargetVpnGateway: 500, 4500
 	PortRange pulumi.StringPtrInput
 	// This field is used along with the backendService field for internal
@@ -566,9 +595,9 @@ type forwardingRuleArgs struct {
 	// * TargetHttpProxy: 80, 8080
 	// * TargetHttpsProxy: 443
 	// * TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-	//   1883, 5222
+	// 1883, 5222
 	// * TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-	//   1883, 5222
+	// 1883, 5222
 	// * TargetVpnGateway: 500, 4500
 	PortRange *string `pulumi:"portRange"`
 	// This field is used along with the backendService field for internal
@@ -700,9 +729,9 @@ type ForwardingRuleArgs struct {
 	// * TargetHttpProxy: 80, 8080
 	// * TargetHttpsProxy: 443
 	// * TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-	//   1883, 5222
+	// 1883, 5222
 	// * TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-	//   1883, 5222
+	// 1883, 5222
 	// * TargetVpnGateway: 500, 4500
 	PortRange pulumi.StringPtrInput
 	// This field is used along with the backendService field for internal

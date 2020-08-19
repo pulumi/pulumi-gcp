@@ -12,6 +12,7 @@ namespace Pulumi.Gcp.Redis
     /// <summary>
     /// A Google Cloud Redis instance.
     /// 
+    /// 
     /// To get more information about Instance, see:
     /// 
     /// * [API documentation](https://cloud.google.com/memorystore/docs/redis/reference/rest/)
@@ -19,6 +20,60 @@ namespace Pulumi.Gcp.Redis
     ///     * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
     /// 
     /// ## Example Usage
+    /// 
+    /// ### Redis Instance Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var cache = new Gcp.Redis.Instance("cache", new Gcp.Redis.InstanceArgs
+    ///         {
+    ///             MemorySizeGb = 1,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ### Redis Instance Full
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var redis_network = Output.Create(Gcp.Compute.GetNetwork.InvokeAsync(new Gcp.Compute.GetNetworkArgs
+    ///         {
+    ///             Name = "redis-test-network",
+    ///         }));
+    ///         var cache = new Gcp.Redis.Instance("cache", new Gcp.Redis.InstanceArgs
+    ///         {
+    ///             Tier = "STANDARD_HA",
+    ///             MemorySizeGb = 1,
+    ///             LocationId = "us-central1-a",
+    ///             AlternativeLocationId = "us-central1-f",
+    ///             AuthorizedNetwork = redis_network.Apply(redis_network =&gt; redis_network.Id),
+    ///             RedisVersion = "REDIS_4_0",
+    ///             DisplayName = "Test Instance",
+    ///             ReservedIpRange = "192.168.0.0/29",
+    ///             Labels = 
+    ///             {
+    ///                 { "my_key", "my_val" },
+    ///                 { "other_key", "other_val" },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Instance : Pulumi.CustomResource
     {

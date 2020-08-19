@@ -19,6 +19,146 @@ import (
 // will not actually remove NS records during destroy but will report that it did.
 //
 // ## Example Usage
+//
+// ### Adding an A record
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/dns"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		prod, err := dns.NewManagedZone(ctx, "prod", &dns.ManagedZoneArgs{
+// 			DnsName: pulumi.String("prod.mydomain.com."),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		recordSet, err := dns.NewRecordSet(ctx, "recordSet", &dns.RecordSetArgs{
+// 			ManagedZone: prod.Name,
+// 			Type:        pulumi.String("A"),
+// 			Ttl:         pulumi.Int(300),
+// 			Rrdatas: pulumi.StringArray{
+// 				pulumi.String("8.8.8.8"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ### Adding an MX record
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/dns"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		prod, err := dns.NewManagedZone(ctx, "prod", &dns.ManagedZoneArgs{
+// 			DnsName: pulumi.String("prod.mydomain.com."),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		mx, err := dns.NewRecordSet(ctx, "mx", &dns.RecordSetArgs{
+// 			ManagedZone: prod.Name,
+// 			Type:        pulumi.String("MX"),
+// 			Ttl:         pulumi.Int(3600),
+// 			Rrdatas: pulumi.StringArray{
+// 				pulumi.String("1 aspmx.l.google.com."),
+// 				pulumi.String("5 alt1.aspmx.l.google.com."),
+// 				pulumi.String("5 alt2.aspmx.l.google.com."),
+// 				pulumi.String("10 alt3.aspmx.l.google.com."),
+// 				pulumi.String("10 alt4.aspmx.l.google.com."),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ### Adding an SPF record
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/dns"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		prod, err := dns.NewManagedZone(ctx, "prod", &dns.ManagedZoneArgs{
+// 			DnsName: pulumi.String("prod.mydomain.com."),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		spf, err := dns.NewRecordSet(ctx, "spf", &dns.RecordSetArgs{
+// 			ManagedZone: prod.Name,
+// 			Type:        pulumi.String("TXT"),
+// 			Ttl:         pulumi.Int(300),
+// 			Rrdatas: pulumi.StringArray{
+// 				pulumi.String("\"v=spf1 ip4:111.111.111.111 include:backoff.email-example.com -all\""),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ### Adding a CNAME record
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/dns"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		prod, err := dns.NewManagedZone(ctx, "prod", &dns.ManagedZoneArgs{
+// 			DnsName: pulumi.String("prod.mydomain.com."),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		cname, err := dns.NewRecordSet(ctx, "cname", &dns.RecordSetArgs{
+// 			ManagedZone: prod.Name,
+// 			Type:        pulumi.String("CNAME"),
+// 			Ttl:         pulumi.Int(300),
+// 			Rrdatas: pulumi.StringArray{
+// 				pulumi.String("frontend.mydomain.com."),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type RecordSet struct {
 	pulumi.CustomResourceState
 

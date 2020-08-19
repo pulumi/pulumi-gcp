@@ -28,7 +28,8 @@ type QueueAppEngineRoutingOverride struct {
 // QueueAppEngineRoutingOverrideInput is an input type that accepts QueueAppEngineRoutingOverrideArgs and QueueAppEngineRoutingOverrideOutput values.
 // You can construct a concrete instance of `QueueAppEngineRoutingOverrideInput` via:
 //
-//          QueueAppEngineRoutingOverrideArgs{...}
+// 		 QueueAppEngineRoutingOverrideArgs{...}
+//
 type QueueAppEngineRoutingOverrideInput interface {
 	pulumi.Input
 
@@ -74,11 +75,12 @@ func (i QueueAppEngineRoutingOverrideArgs) ToQueueAppEngineRoutingOverridePtrOut
 // QueueAppEngineRoutingOverridePtrInput is an input type that accepts QueueAppEngineRoutingOverrideArgs, QueueAppEngineRoutingOverridePtr and QueueAppEngineRoutingOverridePtrOutput values.
 // You can construct a concrete instance of `QueueAppEngineRoutingOverridePtrInput` via:
 //
-//          QueueAppEngineRoutingOverrideArgs{...}
+// 		 QueueAppEngineRoutingOverrideArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type QueueAppEngineRoutingOverridePtrInput interface {
 	pulumi.Input
 
@@ -235,7 +237,8 @@ type QueueRateLimits struct {
 // QueueRateLimitsInput is an input type that accepts QueueRateLimitsArgs and QueueRateLimitsOutput values.
 // You can construct a concrete instance of `QueueRateLimitsInput` via:
 //
-//          QueueRateLimitsArgs{...}
+// 		 QueueRateLimitsArgs{...}
+//
 type QueueRateLimitsInput interface {
 	pulumi.Input
 
@@ -284,11 +287,12 @@ func (i QueueRateLimitsArgs) ToQueueRateLimitsPtrOutputWithContext(ctx context.C
 // QueueRateLimitsPtrInput is an input type that accepts QueueRateLimitsArgs, QueueRateLimitsPtr and QueueRateLimitsPtrOutput values.
 // You can construct a concrete instance of `QueueRateLimitsPtrInput` via:
 //
-//          QueueRateLimitsArgs{...}
+// 		 QueueRateLimitsArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type QueueRateLimitsPtrInput interface {
 	pulumi.Input
 
@@ -453,7 +457,8 @@ type QueueRetryConfig struct {
 // QueueRetryConfigInput is an input type that accepts QueueRetryConfigArgs and QueueRetryConfigOutput values.
 // You can construct a concrete instance of `QueueRetryConfigInput` via:
 //
-//          QueueRetryConfigArgs{...}
+// 		 QueueRetryConfigArgs{...}
+//
 type QueueRetryConfigInput interface {
 	pulumi.Input
 
@@ -515,11 +520,12 @@ func (i QueueRetryConfigArgs) ToQueueRetryConfigPtrOutputWithContext(ctx context
 // QueueRetryConfigPtrInput is an input type that accepts QueueRetryConfigArgs, QueueRetryConfigPtr and QueueRetryConfigPtrOutput values.
 // You can construct a concrete instance of `QueueRetryConfigPtrInput` via:
 //
-//          QueueRetryConfigArgs{...}
+// 		 QueueRetryConfigArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type QueueRetryConfigPtrInput interface {
 	pulumi.Input
 

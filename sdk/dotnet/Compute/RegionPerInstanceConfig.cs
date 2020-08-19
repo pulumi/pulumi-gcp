@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.Compute
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/stateful-migs#per-instance_configs)
-    /// 
-    /// ## Example Usage
     /// </summary>
     public partial class RegionPerInstanceConfig : Pulumi.CustomResource
     {

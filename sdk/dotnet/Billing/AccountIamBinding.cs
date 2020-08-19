@@ -20,6 +20,32 @@ namespace Pulumi.Gcp.Billing
     /// &gt; **Note:** On create, this resource will overwrite members of any existing roles.
     ///     Use `pulumi import` and inspect the output to ensure
     ///     your existing members are preserved.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var binding = new Gcp.Billing.AccountIamBinding("binding", new Gcp.Billing.AccountIamBindingArgs
+    ///         {
+    ///             BillingAccountId = "00AA00-000AAA-00AA0A",
+    ///             Members = 
+    ///             {
+    ///                 "user:alice@gmail.com",
+    ///             },
+    ///             Role = "roles/billing.viewer",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class AccountIamBinding : Pulumi.CustomResource
     {

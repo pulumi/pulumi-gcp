@@ -10,11 +10,522 @@ import * as utilities from "../utilities";
  * UrlMaps are used to route requests to a backend service based on rules
  * that you define for the host and path of an incoming URL.
  *
+ *
  * To get more information about UrlMap, see:
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/urlMaps)
  *
  * ## Example Usage
+ *
+ * ### Url Map Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.HttpHealthCheck("default", {
+ *     requestPath: "/",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ * });
+ * const login = new gcp.compute.BackendService("login", {
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     healthChecks: [_default.id],
+ * });
+ * const home = new gcp.compute.BackendService("home", {
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     healthChecks: [_default.id],
+ * });
+ * const staticBucket = new gcp.storage.Bucket("staticBucket", {location: "US"});
+ * const staticBackendBucket = new gcp.compute.BackendBucket("staticBackendBucket", {
+ *     bucketName: staticBucket.name,
+ *     enableCdn: true,
+ * });
+ * const urlmap = new gcp.compute.URLMap("urlmap", {
+ *     description: "a description",
+ *     defaultService: home.id,
+ *     host_rule: [
+ *         {
+ *             hosts: ["mysite.com"],
+ *             pathMatcher: "mysite",
+ *         },
+ *         {
+ *             hosts: ["myothersite.com"],
+ *             pathMatcher: "otherpaths",
+ *         },
+ *     ],
+ *     path_matcher: [
+ *         {
+ *             name: "mysite",
+ *             defaultService: home.id,
+ *             path_rule: [
+ *                 {
+ *                     paths: ["/home"],
+ *                     service: home.id,
+ *                 },
+ *                 {
+ *                     paths: ["/login"],
+ *                     service: login.id,
+ *                 },
+ *                 {
+ *                     paths: ["/static"],
+ *                     service: staticBackendBucket.id,
+ *                 },
+ *             ],
+ *         },
+ *         {
+ *             name: "otherpaths",
+ *             defaultService: home.id,
+ *         },
+ *     ],
+ *     test: [{
+ *         service: home.id,
+ *         host: "hi.com",
+ *         path: "/home",
+ *     }],
+ * });
+ * ```
+ *
+ * ### Url Map Traffic Director Route
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.HealthCheck("default", {http_health_check: {
+ *     port: 80,
+ * }});
+ * const home = new gcp.compute.BackendService("home", {
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     healthChecks: [_default.id],
+ *     loadBalancingScheme: "INTERNAL_SELF_MANAGED",
+ * });
+ * const urlmap = new gcp.compute.URLMap("urlmap", {
+ *     description: "a description",
+ *     defaultService: home.id,
+ *     host_rule: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     path_matcher: [{
+ *         name: "allpaths",
+ *         defaultService: home.id,
+ *         route_rules: [{
+ *             priority: 1,
+ *             header_action: {
+ *                 requestHeadersToRemoves: ["RemoveMe2"],
+ *                 request_headers_to_add: [{
+ *                     headerName: "AddSomethingElse",
+ *                     headerValue: "MyOtherValue",
+ *                     replace: true,
+ *                 }],
+ *                 responseHeadersToRemoves: ["RemoveMe3"],
+ *                 response_headers_to_add: [{
+ *                     headerName: "AddMe",
+ *                     headerValue: "MyValue",
+ *                     replace: false,
+ *                 }],
+ *             },
+ *             match_rules: [{
+ *                 fullPathMatch: "a full path",
+ *                 header_matches: [{
+ *                     headerName: "someheader",
+ *                     exactMatch: "match this exactly",
+ *                     invertMatch: true,
+ *                 }],
+ *                 ignoreCase: true,
+ *                 metadata_filters: [{
+ *                     filterMatchCriteria: "MATCH_ANY",
+ *                     filter_labels: [{
+ *                         name: "PLANET",
+ *                         value: "MARS",
+ *                     }],
+ *                 }],
+ *                 query_parameter_matches: [{
+ *                     name: "a query parameter",
+ *                     presentMatch: true,
+ *                 }],
+ *             }],
+ *             url_redirect: {
+ *                 hostRedirect: "A host",
+ *                 httpsRedirect: false,
+ *                 pathRedirect: "some/path",
+ *                 redirectResponseCode: "TEMPORARY_REDIRECT",
+ *                 stripQuery: true,
+ *             },
+ *         }],
+ *     }],
+ *     test: [{
+ *         service: home.id,
+ *         host: "hi.com",
+ *         path: "/home",
+ *     }],
+ * });
+ * ```
+ *
+ * ### Url Map Traffic Director Route Partial
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.HealthCheck("default", {http_health_check: {
+ *     port: 80,
+ * }});
+ * const home = new gcp.compute.BackendService("home", {
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     healthChecks: [_default.id],
+ *     loadBalancingScheme: "INTERNAL_SELF_MANAGED",
+ * });
+ * const urlmap = new gcp.compute.URLMap("urlmap", {
+ *     description: "a description",
+ *     defaultService: home.id,
+ *     host_rule: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     path_matcher: [{
+ *         name: "allpaths",
+ *         defaultService: home.id,
+ *         route_rules: [{
+ *             priority: 1,
+ *             match_rules: [{
+ *                 prefixMatch: "/someprefix",
+ *                 header_matches: [{
+ *                     headerName: "someheader",
+ *                     exactMatch: "match this exactly",
+ *                     invertMatch: true,
+ *                 }],
+ *             }],
+ *             url_redirect: {
+ *                 pathRedirect: "some/path",
+ *                 redirectResponseCode: "TEMPORARY_REDIRECT",
+ *             },
+ *         }],
+ *     }],
+ *     test: [{
+ *         service: home.id,
+ *         host: "hi.com",
+ *         path: "/home",
+ *     }],
+ * });
+ * ```
+ *
+ * ### Url Map Traffic Director Path
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.HealthCheck("default", {http_health_check: {
+ *     port: 80,
+ * }});
+ * const home = new gcp.compute.BackendService("home", {
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     healthChecks: [_default.id],
+ *     loadBalancingScheme: "INTERNAL_SELF_MANAGED",
+ * });
+ * const urlmap = new gcp.compute.URLMap("urlmap", {
+ *     description: "a description",
+ *     defaultService: home.id,
+ *     host_rule: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     path_matcher: [{
+ *         name: "allpaths",
+ *         defaultService: home.id,
+ *         path_rule: [{
+ *             paths: ["/home"],
+ *             route_action: {
+ *                 cors_policy: {
+ *                     allowCredentials: true,
+ *                     allowHeaders: ["Allowed content"],
+ *                     allowMethods: ["GET"],
+ *                     allowOriginRegexes: ["abc.*"],
+ *                     allowOrigins: ["Allowed origin"],
+ *                     exposeHeaders: ["Exposed header"],
+ *                     maxAge: 30,
+ *                     disabled: false,
+ *                 },
+ *                 fault_injection_policy: {
+ *                     abort: {
+ *                         httpStatus: 234,
+ *                         percentage: 5.6,
+ *                     },
+ *                     delay: {
+ *                         fixed_delay: {
+ *                             seconds: 0,
+ *                             nanos: 50000,
+ *                         },
+ *                         percentage: 7.8,
+ *                     },
+ *                 },
+ *                 request_mirror_policy: {
+ *                     backendService: home.id,
+ *                 },
+ *                 retry_policy: {
+ *                     numRetries: 4,
+ *                     per_try_timeout: {
+ *                         seconds: 30,
+ *                     },
+ *                     retryConditions: [
+ *                         "5xx",
+ *                         "deadline-exceeded",
+ *                     ],
+ *                 },
+ *                 timeout: {
+ *                     seconds: 20,
+ *                     nanos: 750000000,
+ *                 },
+ *                 url_rewrite: {
+ *                     hostRewrite: "A replacement header",
+ *                     pathPrefixRewrite: "A replacement path",
+ *                 },
+ *                 weighted_backend_services: [{
+ *                     backendService: home.id,
+ *                     weight: 400,
+ *                     header_action: {
+ *                         requestHeadersToRemoves: ["RemoveMe"],
+ *                         request_headers_to_add: [{
+ *                             headerName: "AddMe",
+ *                             headerValue: "MyValue",
+ *                             replace: true,
+ *                         }],
+ *                         responseHeadersToRemoves: ["RemoveMe"],
+ *                         response_headers_to_add: [{
+ *                             headerName: "AddMe",
+ *                             headerValue: "MyValue",
+ *                             replace: false,
+ *                         }],
+ *                     },
+ *                 }],
+ *             },
+ *         }],
+ *     }],
+ *     test: [{
+ *         service: home.id,
+ *         host: "hi.com",
+ *         path: "/home",
+ *     }],
+ * });
+ * ```
+ *
+ * ### Url Map Traffic Director Path Partial
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.HealthCheck("default", {http_health_check: {
+ *     port: 80,
+ * }});
+ * const home = new gcp.compute.BackendService("home", {
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     healthChecks: [_default.id],
+ *     loadBalancingScheme: "INTERNAL_SELF_MANAGED",
+ * });
+ * const urlmap = new gcp.compute.URLMap("urlmap", {
+ *     description: "a description",
+ *     defaultService: home.id,
+ *     host_rule: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     path_matcher: [{
+ *         name: "allpaths",
+ *         defaultService: home.id,
+ *         path_rule: [{
+ *             paths: ["/home"],
+ *             route_action: {
+ *                 cors_policy: {
+ *                     allowCredentials: true,
+ *                     allowHeaders: ["Allowed content"],
+ *                     allowMethods: ["GET"],
+ *                     allowOriginRegexes: ["abc.*"],
+ *                     allowOrigins: ["Allowed origin"],
+ *                     exposeHeaders: ["Exposed header"],
+ *                     maxAge: 30,
+ *                     disabled: false,
+ *                 },
+ *                 weighted_backend_services: [{
+ *                     backendService: home.id,
+ *                     weight: 400,
+ *                     header_action: {
+ *                         requestHeadersToRemoves: ["RemoveMe"],
+ *                         request_headers_to_add: [{
+ *                             headerName: "AddMe",
+ *                             headerValue: "MyValue",
+ *                             replace: true,
+ *                         }],
+ *                         responseHeadersToRemoves: ["RemoveMe"],
+ *                         response_headers_to_add: [{
+ *                             headerName: "AddMe",
+ *                             headerValue: "MyValue",
+ *                             replace: false,
+ *                         }],
+ *                     },
+ *                 }],
+ *             },
+ *         }],
+ *     }],
+ *     test: [{
+ *         service: home.id,
+ *         host: "hi.com",
+ *         path: "/home",
+ *     }],
+ * });
+ * ```
+ *
+ * ### Url Map Header Based Routing
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("defaultHttpHealthCheck", {
+ *     requestPath: "/",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ * });
+ * const defaultBackendService = new gcp.compute.BackendService("defaultBackendService", {
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     healthChecks: [defaultHttpHealthCheck.id],
+ * });
+ * const service_a = new gcp.compute.BackendService("service-a", {
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     healthChecks: [defaultHttpHealthCheck.id],
+ * });
+ * const service_b = new gcp.compute.BackendService("service-b", {
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     healthChecks: [defaultHttpHealthCheck.id],
+ * });
+ * const urlmap = new gcp.compute.URLMap("urlmap", {
+ *     description: "header-based routing example",
+ *     defaultService: defaultBackendService.id,
+ *     host_rule: [{
+ *         hosts: ["*"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     path_matcher: [{
+ *         name: "allpaths",
+ *         defaultService: defaultBackendService.id,
+ *         route_rules: [
+ *             {
+ *                 priority: 1,
+ *                 service: service_a.id,
+ *                 match_rules: [{
+ *                     prefixMatch: "/",
+ *                     ignoreCase: true,
+ *                     header_matches: [{
+ *                         headerName: "abtest",
+ *                         exactMatch: "a",
+ *                     }],
+ *                 }],
+ *             },
+ *             {
+ *                 priority: 2,
+ *                 service: service_b.id,
+ *                 match_rules: [{
+ *                     ignoreCase: true,
+ *                     prefixMatch: "/",
+ *                     header_matches: [{
+ *                         headerName: "abtest",
+ *                         exactMatch: "b",
+ *                     }],
+ *                 }],
+ *             },
+ *         ],
+ *     }],
+ * });
+ * ```
+ *
+ * ### Url Map Parameter Based Routing
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("defaultHttpHealthCheck", {
+ *     requestPath: "/",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ * });
+ * const defaultBackendService = new gcp.compute.BackendService("defaultBackendService", {
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     healthChecks: [defaultHttpHealthCheck.id],
+ * });
+ * const service_a = new gcp.compute.BackendService("service-a", {
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     healthChecks: [defaultHttpHealthCheck.id],
+ * });
+ * const service_b = new gcp.compute.BackendService("service-b", {
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     healthChecks: [defaultHttpHealthCheck.id],
+ * });
+ * const urlmap = new gcp.compute.URLMap("urlmap", {
+ *     description: "parameter-based routing example",
+ *     defaultService: defaultBackendService.id,
+ *     host_rule: [{
+ *         hosts: ["*"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     path_matcher: [{
+ *         name: "allpaths",
+ *         defaultService: defaultBackendService.id,
+ *         route_rules: [
+ *             {
+ *                 priority: 1,
+ *                 service: service_a.id,
+ *                 match_rules: [{
+ *                     prefixMatch: "/",
+ *                     ignoreCase: true,
+ *                     query_parameter_matches: [{
+ *                         name: "abtest",
+ *                         exactMatch: "a",
+ *                     }],
+ *                 }],
+ *             },
+ *             {
+ *                 priority: 2,
+ *                 service: service_b.id,
+ *                 match_rules: [{
+ *                     ignoreCase: true,
+ *                     prefixMatch: "/",
+ *                     query_parameter_matches: [{
+ *                         name: "abtest",
+ *                         exactMatch: "b",
+ *                     }],
+ *                 }],
+ *             },
+ *         ],
+ *     }],
+ * });
+ * ```
  */
 export class URLMap extends pulumi.CustomResource {
     /**

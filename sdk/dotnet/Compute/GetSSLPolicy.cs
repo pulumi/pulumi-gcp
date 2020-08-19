@@ -14,6 +14,29 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Gets an SSL Policy within GCE from its name, for use with Target HTTPS and Target SSL Proxies.
         ///     For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies).
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var my_ssl_policy = Output.Create(Gcp.Compute.GetSSLPolicy.InvokeAsync(new Gcp.Compute.GetSSLPolicyArgs
+        ///         {
+        ///             Name = "production-ssl-policy",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetSSLPolicyResult> InvokeAsync(GetSSLPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSSLPolicyResult>("gcp:compute/getSSLPolicy:getSSLPolicy", args ?? new GetSSLPolicyArgs(), options.WithVersion());

@@ -15,12 +15,48 @@ namespace Pulumi.Gcp.Storage
     /// acl to the `private` [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl).
     /// 
     /// For more information see
-    /// [the official documentation](https://cloud.google.com/storage/docs/access-control/lists)
-    /// and
+    /// [the official documentation](https://cloud.google.com/storage/docs/access-control/lists) 
+    /// and 
     /// [API](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls).
     /// 
     /// &gt; Want fine-grained control over object ACLs? Use `gcp.storage.ObjectAccessControl` to control individual
     /// role entity pairs.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var image_store = new Gcp.Storage.Bucket("image-store", new Gcp.Storage.BucketArgs
+    ///         {
+    ///             Location = "EU",
+    ///         });
+    ///         var image = new Gcp.Storage.BucketObject("image", new Gcp.Storage.BucketObjectArgs
+    ///         {
+    ///             Bucket = image_store.Name,
+    ///             Source = new FileAsset("image1.jpg"),
+    ///         });
+    ///         var image_store_acl = new Gcp.Storage.ObjectACL("image-store-acl", new Gcp.Storage.ObjectACLArgs
+    ///         {
+    ///             Bucket = image_store.Name,
+    ///             Object = image.OutputName,
+    ///             RoleEntities = 
+    ///             {
+    ///                 "OWNER:user-my.email@gmail.com",
+    ///                 "READER:group-mygroup",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class ObjectACL : Pulumi.CustomResource
     {

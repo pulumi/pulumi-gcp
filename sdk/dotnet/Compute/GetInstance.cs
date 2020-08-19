@@ -16,6 +16,31 @@ namespace Pulumi.Gcp.Compute
         /// [the official documentation](https://cloud.google.com/compute/docs/instances)
         /// and
         /// [API](https://cloud.google.com/compute/docs/reference/latest/instances).
+        /// 
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var appserver = Output.Create(Gcp.Compute.GetInstance.InvokeAsync(new Gcp.Compute.GetInstanceArgs
+        ///         {
+        ///             Name = "primary-application-server",
+        ///             Zone = "us-central1-a",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceResult> InvokeAsync(GetInstanceArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceResult>("gcp:compute/getInstance:getInstance", args ?? new GetInstanceArgs(), options.WithVersion());

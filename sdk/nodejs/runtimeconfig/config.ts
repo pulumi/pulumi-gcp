@@ -9,6 +9,19 @@ import * as utilities from "../utilities";
  * [official documentation](https://cloud.google.com/deployment-manager/runtime-configurator/),
  * or the
  * [JSON API](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/).
+ *
+ * ## Example Usage
+ *
+ *
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my_runtime_config = new gcp.runtimeconfig.Config("my-runtime-config", {
+ *     description: "Runtime configuration values for my service",
+ * });
+ * ```
  */
 export class Config extends pulumi.CustomResource {
     /**

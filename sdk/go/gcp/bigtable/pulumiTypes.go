@@ -18,7 +18,8 @@ type GCPolicyMaxAge struct {
 // GCPolicyMaxAgeInput is an input type that accepts GCPolicyMaxAgeArgs and GCPolicyMaxAgeOutput values.
 // You can construct a concrete instance of `GCPolicyMaxAgeInput` via:
 //
-//          GCPolicyMaxAgeArgs{...}
+// 		 GCPolicyMaxAgeArgs{...}
+//
 type GCPolicyMaxAgeInput interface {
 	pulumi.Input
 
@@ -46,7 +47,8 @@ func (i GCPolicyMaxAgeArgs) ToGCPolicyMaxAgeOutputWithContext(ctx context.Contex
 // GCPolicyMaxAgeArrayInput is an input type that accepts GCPolicyMaxAgeArray and GCPolicyMaxAgeArrayOutput values.
 // You can construct a concrete instance of `GCPolicyMaxAgeArrayInput` via:
 //
-//          GCPolicyMaxAgeArray{ GCPolicyMaxAgeArgs{...} }
+// 		 GCPolicyMaxAgeArray{ GCPolicyMaxAgeArgs{...} }
+//
 type GCPolicyMaxAgeArrayInput interface {
 	pulumi.Input
 
@@ -115,7 +117,8 @@ type GCPolicyMaxVersion struct {
 // GCPolicyMaxVersionInput is an input type that accepts GCPolicyMaxVersionArgs and GCPolicyMaxVersionOutput values.
 // You can construct a concrete instance of `GCPolicyMaxVersionInput` via:
 //
-//          GCPolicyMaxVersionArgs{...}
+// 		 GCPolicyMaxVersionArgs{...}
+//
 type GCPolicyMaxVersionInput interface {
 	pulumi.Input
 
@@ -143,7 +146,8 @@ func (i GCPolicyMaxVersionArgs) ToGCPolicyMaxVersionOutputWithContext(ctx contex
 // GCPolicyMaxVersionArrayInput is an input type that accepts GCPolicyMaxVersionArray and GCPolicyMaxVersionArrayOutput values.
 // You can construct a concrete instance of `GCPolicyMaxVersionArrayInput` via:
 //
-//          GCPolicyMaxVersionArray{ GCPolicyMaxVersionArgs{...} }
+// 		 GCPolicyMaxVersionArray{ GCPolicyMaxVersionArgs{...} }
+//
 type GCPolicyMaxVersionArrayInput interface {
 	pulumi.Input
 
@@ -223,7 +227,8 @@ type InstanceCluster struct {
 // InstanceClusterInput is an input type that accepts InstanceClusterArgs and InstanceClusterOutput values.
 // You can construct a concrete instance of `InstanceClusterInput` via:
 //
-//          InstanceClusterArgs{...}
+// 		 InstanceClusterArgs{...}
+//
 type InstanceClusterInput interface {
 	pulumi.Input
 
@@ -262,7 +267,8 @@ func (i InstanceClusterArgs) ToInstanceClusterOutputWithContext(ctx context.Cont
 // InstanceClusterArrayInput is an input type that accepts InstanceClusterArray and InstanceClusterArrayOutput values.
 // You can construct a concrete instance of `InstanceClusterArrayInput` via:
 //
-//          InstanceClusterArray{ InstanceClusterArgs{...} }
+// 		 InstanceClusterArray{ InstanceClusterArgs{...} }
+//
 type InstanceClusterArrayInput interface {
 	pulumi.Input
 
@@ -352,7 +358,8 @@ type InstanceIamBindingCondition struct {
 // InstanceIamBindingConditionInput is an input type that accepts InstanceIamBindingConditionArgs and InstanceIamBindingConditionOutput values.
 // You can construct a concrete instance of `InstanceIamBindingConditionInput` via:
 //
-//          InstanceIamBindingConditionArgs{...}
+// 		 InstanceIamBindingConditionArgs{...}
+//
 type InstanceIamBindingConditionInput interface {
 	pulumi.Input
 
@@ -389,11 +396,12 @@ func (i InstanceIamBindingConditionArgs) ToInstanceIamBindingConditionPtrOutputW
 // InstanceIamBindingConditionPtrInput is an input type that accepts InstanceIamBindingConditionArgs, InstanceIamBindingConditionPtr and InstanceIamBindingConditionPtrOutput values.
 // You can construct a concrete instance of `InstanceIamBindingConditionPtrInput` via:
 //
-//          InstanceIamBindingConditionArgs{...}
+// 		 InstanceIamBindingConditionArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type InstanceIamBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -508,7 +516,8 @@ type InstanceIamMemberCondition struct {
 // InstanceIamMemberConditionInput is an input type that accepts InstanceIamMemberConditionArgs and InstanceIamMemberConditionOutput values.
 // You can construct a concrete instance of `InstanceIamMemberConditionInput` via:
 //
-//          InstanceIamMemberConditionArgs{...}
+// 		 InstanceIamMemberConditionArgs{...}
+//
 type InstanceIamMemberConditionInput interface {
 	pulumi.Input
 
@@ -545,11 +554,12 @@ func (i InstanceIamMemberConditionArgs) ToInstanceIamMemberConditionPtrOutputWit
 // InstanceIamMemberConditionPtrInput is an input type that accepts InstanceIamMemberConditionArgs, InstanceIamMemberConditionPtr and InstanceIamMemberConditionPtrOutput values.
 // You can construct a concrete instance of `InstanceIamMemberConditionPtrInput` via:
 //
-//          InstanceIamMemberConditionArgs{...}
+// 		 InstanceIamMemberConditionArgs{...}
 //
 //  or:
 //
-//          nil
+// 		 nil
+//
 type InstanceIamMemberConditionPtrInput interface {
 	pulumi.Input
 
@@ -663,7 +673,8 @@ type TableColumnFamily struct {
 // TableColumnFamilyInput is an input type that accepts TableColumnFamilyArgs and TableColumnFamilyOutput values.
 // You can construct a concrete instance of `TableColumnFamilyInput` via:
 //
-//          TableColumnFamilyArgs{...}
+// 		 TableColumnFamilyArgs{...}
+//
 type TableColumnFamilyInput interface {
 	pulumi.Input
 
@@ -691,7 +702,8 @@ func (i TableColumnFamilyArgs) ToTableColumnFamilyOutputWithContext(ctx context.
 // TableColumnFamilyArrayInput is an input type that accepts TableColumnFamilyArray and TableColumnFamilyArrayOutput values.
 // You can construct a concrete instance of `TableColumnFamilyArrayInput` via:
 //
-//          TableColumnFamilyArray{ TableColumnFamilyArgs{...} }
+// 		 TableColumnFamilyArray{ TableColumnFamilyArgs{...} }
+//
 type TableColumnFamilyArrayInput interface {
 	pulumi.Input
 

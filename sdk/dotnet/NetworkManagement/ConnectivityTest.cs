@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.NetworkManagement
     /// that enables you to evaluate connectivity to and from Google Cloud
     /// resources in your Virtual Private Cloud (VPC) network.
     /// 
+    /// 
     /// To get more information about ConnectivityTest, see:
     /// 
     /// * [API documentation](https://cloud.google.com/network-intelligence-center/docs/connectivity-tests/reference/networkmanagement/rest/v1/projects.locations.global.connectivityTests)
@@ -21,6 +22,61 @@ namespace Pulumi.Gcp.NetworkManagement
     ///     * [Official Documentation](https://cloud.google.com/network-intelligence-center/docs)
     /// 
     /// ## Example Usage
+    /// 
+    /// ### Network Management Connectivity Test Addresses
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var vpc = new Gcp.Compute.Network("vpc", new Gcp.Compute.NetworkArgs
+    ///         {
+    ///         });
+    ///         var subnet = new Gcp.Compute.Subnetwork("subnet", new Gcp.Compute.SubnetworkArgs
+    ///         {
+    ///             IpCidrRange = "10.0.0.0/16",
+    ///             Region = "us-central1",
+    ///             Network = vpc.Id,
+    ///         });
+    ///         var source_addr = new Gcp.Compute.Address("source-addr", new Gcp.Compute.AddressArgs
+    ///         {
+    ///             Subnetwork = subnet.Id,
+    ///             AddressType = "INTERNAL",
+    ///             Address = "10.0.42.42",
+    ///             Region = "us-central1",
+    ///         });
+    ///         var dest_addr = new Gcp.Compute.Address("dest-addr", new Gcp.Compute.AddressArgs
+    ///         {
+    ///             Subnetwork = subnet.Id,
+    ///             AddressType = "INTERNAL",
+    ///             Address = "10.0.43.43",
+    ///             Region = "us-central1",
+    ///         });
+    ///         var address_test = new Gcp.NetworkManagement.ConnectivityTest("address-test", new Gcp.NetworkManagement.ConnectivityTestArgs
+    ///         {
+    ///             Source = new Gcp.NetworkManagement.Inputs.ConnectivityTestSourceArgs
+    ///             {
+    ///                 IpAddress = source_addr.IPAddress,
+    ///                 ProjectId = source_addr.Project,
+    ///                 Network = vpc.Id,
+    ///                 NetworkType = "GCP_NETWORK",
+    ///             },
+    ///             Destination = new Gcp.NetworkManagement.Inputs.ConnectivityTestDestinationArgs
+    ///             {
+    ///                 IpAddress = dest_addr.IPAddress,
+    ///                 ProjectId = dest_addr.Project,
+    ///                 Network = vpc.Id,
+    ///             },
+    ///             Protocol = "UDP",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class ConnectivityTest : Pulumi.CustomResource
     {

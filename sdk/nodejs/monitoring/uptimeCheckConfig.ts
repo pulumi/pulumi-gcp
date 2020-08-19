@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This message configures which resources and services to monitor for availability.
  *
+ *
  * To get more information about UptimeCheckConfig, see:
  *
  * * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.uptimeCheckConfigs)
@@ -19,6 +20,86 @@ import * as utilities from "../utilities";
  * state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
  *
  * ## Example Usage
+ *
+ * ### Uptime Check Config Http
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const http = new gcp.monitoring.UptimeCheckConfig("http", {
+ *     contentMatchers: [{
+ *         content: "example",
+ *     }],
+ *     displayName: "http-uptime-check",
+ *     httpCheck: {
+ *         body: "Zm9vJTI1M0RiYXI=",
+ *         contentType: "URL_ENCODED",
+ *         path: "/some-path",
+ *         port: 8010,
+ *         requestMethod: "POST",
+ *     },
+ *     monitoredResource: {
+ *         labels: {
+ *             host: "192.168.1.1",
+ *             project_id: "my-project-name",
+ *         },
+ *         type: "uptime_url",
+ *     },
+ *     timeout: "60s",
+ * });
+ * ```
+ *
+ * ### Uptime Check Config Https
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const https = new gcp.monitoring.UptimeCheckConfig("https", {
+ *     contentMatchers: [{
+ *         content: "example",
+ *     }],
+ *     displayName: "https-uptime-check",
+ *     httpCheck: {
+ *         path: "/some-path",
+ *         port: 443,
+ *         useSsl: true,
+ *         validateSsl: true,
+ *     },
+ *     monitoredResource: {
+ *         labels: {
+ *             host: "192.168.1.1",
+ *             project_id: "my-project-name",
+ *         },
+ *         type: "uptime_url",
+ *     },
+ *     timeout: "60s",
+ * });
+ * ```
+ *
+ * ### Uptime Check Tcp
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const check = new gcp.monitoring.Group("check", {
+ *     displayName: "uptime-check-group",
+ *     filter: "resource.metadata.name=has_substring(\"foo\")",
+ * });
+ * const tcpGroup = new gcp.monitoring.UptimeCheckConfig("tcpGroup", {
+ *     displayName: "tcp-uptime-check",
+ *     timeout: "60s",
+ *     tcp_check: {
+ *         port: 888,
+ *     },
+ *     resource_group: {
+ *         resourceType: "INSTANCE",
+ *         groupId: check.name,
+ *     },
+ * });
+ * ```
  */
 export class UptimeCheckConfig extends pulumi.CustomResource {
     /**
