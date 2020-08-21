@@ -5,49 +5,26 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['BillingAccountSink']
 
 
 class BillingAccountSink(pulumi.CustomResource):
-    bigquery_options: pulumi.Output[dict]
-    """
-    Options that affect sinks exporting data to BigQuery. Structure documented below.
-
-      * `usePartitionedTables` (`bool`) - Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
-        By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned
-        tables the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
-        has to be used instead. In both cases, tables are sharded based on UTC timezone.
-    """
-    billing_account: pulumi.Output[str]
-    """
-    The billing account exported to the sink.
-    """
-    destination: pulumi.Output[str]
-    """
-    The destination of the sink (or, in other words, where logs are written to). Can be a
-    Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
-    ```python
-    import pulumi
-    ```
-    The writer associated with the sink must have access to write to the above resource.
-    """
-    filter: pulumi.Output[str]
-    """
-    The filter to apply when exporting logs. Only log entries that match the filter are exported.
-    See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
-    write a filter.
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the logging sink.
-    """
-    writer_identity: pulumi.Output[str]
-    """
-    The identity associated with this sink. This identity must be granted write access to the
-    configured `destination`.
-    """
-    def __init__(__self__, resource_name, opts=None, bigquery_options=None, billing_account=None, destination=None, filter=None, name=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 bigquery_options: Optional[pulumi.Input[pulumi.InputType['BillingAccountSinkBigqueryOptionsArgs']]] = None,
+                 billing_account: Optional[pulumi.Input[str]] = None,
+                 destination: Optional[pulumi.Input[str]] = None,
+                 filter: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a billing account logging sink. For more information see
         [the official documentation](https://cloud.google.com/logging/docs/) and
@@ -60,7 +37,7 @@ class BillingAccountSink(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
+        :param pulumi.Input[pulumi.InputType['BillingAccountSinkBigqueryOptionsArgs']] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
         :param pulumi.Input[str] billing_account: The billing account exported to the sink.
         :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a
                Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
@@ -72,13 +49,6 @@ class BillingAccountSink(pulumi.CustomResource):
                See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.
         :param pulumi.Input[str] name: The name of the logging sink.
-
-        The **bigquery_options** object supports the following:
-
-          * `usePartitionedTables` (`pulumi.Input[bool]`) - Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
-            By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned
-            tables the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
-            has to be used instead. In both cases, tables are sharded based on UTC timezone.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -114,15 +84,23 @@ class BillingAccountSink(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, bigquery_options=None, billing_account=None, destination=None, filter=None, name=None, writer_identity=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bigquery_options: Optional[pulumi.Input[pulumi.InputType['BillingAccountSinkBigqueryOptionsArgs']]] = None,
+            billing_account: Optional[pulumi.Input[str]] = None,
+            destination: Optional[pulumi.Input[str]] = None,
+            filter: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            writer_identity: Optional[pulumi.Input[str]] = None) -> 'BillingAccountSink':
         """
         Get an existing BillingAccountSink resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
+        :param pulumi.Input[pulumi.InputType['BillingAccountSinkBigqueryOptionsArgs']] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
         :param pulumi.Input[str] billing_account: The billing account exported to the sink.
         :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a
                Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
@@ -136,13 +114,6 @@ class BillingAccountSink(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the logging sink.
         :param pulumi.Input[str] writer_identity: The identity associated with this sink. This identity must be granted write access to the
                configured `destination`.
-
-        The **bigquery_options** object supports the following:
-
-          * `usePartitionedTables` (`pulumi.Input[bool]`) - Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
-            By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned
-            tables the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
-            has to be used instead. In both cases, tables are sharded based on UTC timezone.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -156,8 +127,65 @@ class BillingAccountSink(pulumi.CustomResource):
         __props__["writer_identity"] = writer_identity
         return BillingAccountSink(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="bigqueryOptions")
+    def bigquery_options(self) -> 'outputs.BillingAccountSinkBigqueryOptions':
+        """
+        Options that affect sinks exporting data to BigQuery. Structure documented below.
+        """
+        return pulumi.get(self, "bigquery_options")
+
+    @property
+    @pulumi.getter(name="billingAccount")
+    def billing_account(self) -> str:
+        """
+        The billing account exported to the sink.
+        """
+        return pulumi.get(self, "billing_account")
+
+    @property
+    @pulumi.getter
+    def destination(self) -> str:
+        """
+        The destination of the sink (or, in other words, where logs are written to). Can be a
+        Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+        ```python
+        import pulumi
+        ```
+        The writer associated with the sink must have access to write to the above resource.
+        """
+        return pulumi.get(self, "destination")
+
+    @property
+    @pulumi.getter
+    def filter(self) -> Optional[str]:
+        """
+        The filter to apply when exporting logs. Only log entries that match the filter are exported.
+        See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+        write a filter.
+        """
+        return pulumi.get(self, "filter")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the logging sink.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="writerIdentity")
+    def writer_identity(self) -> str:
+        """
+        The identity associated with this sink. This identity must be granted write access to the
+        configured `destination`.
+        """
+        return pulumi.get(self, "writer_identity")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

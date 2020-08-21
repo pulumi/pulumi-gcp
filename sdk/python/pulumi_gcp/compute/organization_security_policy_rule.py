@@ -5,90 +5,31 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['OrganizationSecurityPolicyRule']
 
 
 class OrganizationSecurityPolicyRule(pulumi.CustomResource):
-    action: pulumi.Output[str]
-    """
-    The Action to perform when the client connection triggers the rule. Can currently be either
-    "allow", "deny" or "goto_next".
-    """
-    description: pulumi.Output[str]
-    """
-    A description of the rule.
-    """
-    direction: pulumi.Output[str]
-    """
-    The direction in which this rule applies. If unspecified an INGRESS rule is created.
-    Possible values are `INGRESS` and `EGRESS`.
-    """
-    enable_logging: pulumi.Output[bool]
-    """
-    Denotes whether to enable logging for a particular rule.
-    If logging is enabled, logs will be exported to the
-    configured export destination in Stackdriver.
-    """
-    match: pulumi.Output[dict]
-    """
-    A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
-    Structure is documented below.
-
-      * `config` (`dict`) - The configuration options for matching the rule.
-        Structure is documented below.
-        * `destIpRanges` (`list`) - Destination IP address range in CIDR format. Required for
-          EGRESS rules.
-        * `layer4Configs` (`list`) - Pairs of IP protocols and ports that the rule should match.
-          Structure is documented below.
-          * `ip_protocol` (`str`) - The IP protocol to which this rule applies. The protocol
-            type is required when creating a firewall rule.
-            This value can either be one of the following well
-            known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp),
-            or the IP protocol number.
-          * `ports` (`list`) - An optional list of ports to which this rule applies. This field
-            is only applicable for UDP or TCP protocol. Each entry must be
-            either an integer or a range. If not specified, this rule
-            applies to connections through any port.
-            Example inputs include: ["22"], ["80","443"], and
-            ["12345-12349"].
-
-        * `srcIpRanges` (`list`) - Source IP address range in CIDR format. Required for
-          INGRESS rules.
-
-      * `description` (`str`) - A description of the rule.
-      * `versionedExpr` (`str`) - Preconfigured versioned expression. For organization security policy rules,
-        the only supported type is "FIREWALL".
-        Default value is `FIREWALL`.
-        Possible values are `FIREWALL`.
-    """
-    policy_id: pulumi.Output[str]
-    """
-    The ID of the OrganizationSecurityPolicy this rule applies to.
-    """
-    preview: pulumi.Output[bool]
-    """
-    If set to true, the specified action is not enforced.
-    """
-    priority: pulumi.Output[float]
-    """
-    An integer indicating the priority of a rule in the list. The priority must be a value
-    between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
-    highest priority and 2147483647 is the lowest prority.
-    """
-    target_resources: pulumi.Output[list]
-    """
-    A list of network resource URLs to which this rule applies.
-    This field allows you to control which network's VMs get
-    this rule. If this field is left blank, all VMs
-    within the organization will receive the rule.
-    """
-    target_service_accounts: pulumi.Output[list]
-    """
-    A list of service accounts indicating the sets of
-    instances that are applied with this rule.
-    """
-    def __init__(__self__, resource_name, opts=None, action=None, description=None, direction=None, enable_logging=None, match=None, policy_id=None, preview=None, priority=None, target_resources=None, target_service_accounts=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 action: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 direction: Optional[pulumi.Input[str]] = None,
+                 enable_logging: Optional[pulumi.Input[bool]] = None,
+                 match: Optional[pulumi.Input[pulumi.InputType['OrganizationSecurityPolicyRuleMatchArgs']]] = None,
+                 policy_id: Optional[pulumi.Input[str]] = None,
+                 preview: Optional[pulumi.Input[bool]] = None,
+                 priority: Optional[pulumi.Input[float]] = None,
+                 target_resources: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 target_service_accounts: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Create a OrganizationSecurityPolicyRule resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
@@ -101,48 +42,19 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_logging: Denotes whether to enable logging for a particular rule.
                If logging is enabled, logs will be exported to the
                configured export destination in Stackdriver.
-        :param pulumi.Input[dict] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+        :param pulumi.Input[pulumi.InputType['OrganizationSecurityPolicyRuleMatchArgs']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
                Structure is documented below.
         :param pulumi.Input[str] policy_id: The ID of the OrganizationSecurityPolicy this rule applies to.
         :param pulumi.Input[bool] preview: If set to true, the specified action is not enforced.
         :param pulumi.Input[float] priority: An integer indicating the priority of a rule in the list. The priority must be a value
                between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
                highest priority and 2147483647 is the lowest prority.
-        :param pulumi.Input[list] target_resources: A list of network resource URLs to which this rule applies.
+        :param pulumi.Input[List[pulumi.Input[str]]] target_resources: A list of network resource URLs to which this rule applies.
                This field allows you to control which network's VMs get
                this rule. If this field is left blank, all VMs
                within the organization will receive the rule.
-        :param pulumi.Input[list] target_service_accounts: A list of service accounts indicating the sets of
+        :param pulumi.Input[List[pulumi.Input[str]]] target_service_accounts: A list of service accounts indicating the sets of
                instances that are applied with this rule.
-
-        The **match** object supports the following:
-
-          * `config` (`pulumi.Input[dict]`) - The configuration options for matching the rule.
-            Structure is documented below.
-            * `destIpRanges` (`pulumi.Input[list]`) - Destination IP address range in CIDR format. Required for
-              EGRESS rules.
-            * `layer4Configs` (`pulumi.Input[list]`) - Pairs of IP protocols and ports that the rule should match.
-              Structure is documented below.
-              * `ip_protocol` (`pulumi.Input[str]`) - The IP protocol to which this rule applies. The protocol
-                type is required when creating a firewall rule.
-                This value can either be one of the following well
-                known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp),
-                or the IP protocol number.
-              * `ports` (`pulumi.Input[list]`) - An optional list of ports to which this rule applies. This field
-                is only applicable for UDP or TCP protocol. Each entry must be
-                either an integer or a range. If not specified, this rule
-                applies to connections through any port.
-                Example inputs include: ["22"], ["80","443"], and
-                ["12345-12349"].
-
-            * `srcIpRanges` (`pulumi.Input[list]`) - Source IP address range in CIDR format. Required for
-              INGRESS rules.
-
-          * `description` (`pulumi.Input[str]`) - A description of the rule.
-          * `versionedExpr` (`pulumi.Input[str]`) - Preconfigured versioned expression. For organization security policy rules,
-            the only supported type is "FIREWALL".
-            Default value is `FIREWALL`.
-            Possible values are `FIREWALL`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -186,13 +98,25 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, action=None, description=None, direction=None, enable_logging=None, match=None, policy_id=None, preview=None, priority=None, target_resources=None, target_service_accounts=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            action: Optional[pulumi.Input[str]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            direction: Optional[pulumi.Input[str]] = None,
+            enable_logging: Optional[pulumi.Input[bool]] = None,
+            match: Optional[pulumi.Input[pulumi.InputType['OrganizationSecurityPolicyRuleMatchArgs']]] = None,
+            policy_id: Optional[pulumi.Input[str]] = None,
+            preview: Optional[pulumi.Input[bool]] = None,
+            priority: Optional[pulumi.Input[float]] = None,
+            target_resources: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            target_service_accounts: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'OrganizationSecurityPolicyRule':
         """
         Get an existing OrganizationSecurityPolicyRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: The Action to perform when the client connection triggers the rule. Can currently be either
                "allow", "deny" or "goto_next".
@@ -202,48 +126,19 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_logging: Denotes whether to enable logging for a particular rule.
                If logging is enabled, logs will be exported to the
                configured export destination in Stackdriver.
-        :param pulumi.Input[dict] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+        :param pulumi.Input[pulumi.InputType['OrganizationSecurityPolicyRuleMatchArgs']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
                Structure is documented below.
         :param pulumi.Input[str] policy_id: The ID of the OrganizationSecurityPolicy this rule applies to.
         :param pulumi.Input[bool] preview: If set to true, the specified action is not enforced.
         :param pulumi.Input[float] priority: An integer indicating the priority of a rule in the list. The priority must be a value
                between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
                highest priority and 2147483647 is the lowest prority.
-        :param pulumi.Input[list] target_resources: A list of network resource URLs to which this rule applies.
+        :param pulumi.Input[List[pulumi.Input[str]]] target_resources: A list of network resource URLs to which this rule applies.
                This field allows you to control which network's VMs get
                this rule. If this field is left blank, all VMs
                within the organization will receive the rule.
-        :param pulumi.Input[list] target_service_accounts: A list of service accounts indicating the sets of
+        :param pulumi.Input[List[pulumi.Input[str]]] target_service_accounts: A list of service accounts indicating the sets of
                instances that are applied with this rule.
-
-        The **match** object supports the following:
-
-          * `config` (`pulumi.Input[dict]`) - The configuration options for matching the rule.
-            Structure is documented below.
-            * `destIpRanges` (`pulumi.Input[list]`) - Destination IP address range in CIDR format. Required for
-              EGRESS rules.
-            * `layer4Configs` (`pulumi.Input[list]`) - Pairs of IP protocols and ports that the rule should match.
-              Structure is documented below.
-              * `ip_protocol` (`pulumi.Input[str]`) - The IP protocol to which this rule applies. The protocol
-                type is required when creating a firewall rule.
-                This value can either be one of the following well
-                known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp),
-                or the IP protocol number.
-              * `ports` (`pulumi.Input[list]`) - An optional list of ports to which this rule applies. This field
-                is only applicable for UDP or TCP protocol. Each entry must be
-                either an integer or a range. If not specified, this rule
-                applies to connections through any port.
-                Example inputs include: ["22"], ["80","443"], and
-                ["12345-12349"].
-
-            * `srcIpRanges` (`pulumi.Input[list]`) - Source IP address range in CIDR format. Required for
-              INGRESS rules.
-
-          * `description` (`pulumi.Input[str]`) - A description of the rule.
-          * `versionedExpr` (`pulumi.Input[str]`) - Preconfigured versioned expression. For organization security policy rules,
-            the only supported type is "FIREWALL".
-            Default value is `FIREWALL`.
-            Possible values are `FIREWALL`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -261,8 +156,100 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         __props__["target_service_accounts"] = target_service_accounts
         return OrganizationSecurityPolicyRule(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def action(self) -> str:
+        """
+        The Action to perform when the client connection triggers the rule. Can currently be either
+        "allow", "deny" or "goto_next".
+        """
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        A description of the rule.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        """
+        The direction in which this rule applies. If unspecified an INGRESS rule is created.
+        Possible values are `INGRESS` and `EGRESS`.
+        """
+        return pulumi.get(self, "direction")
+
+    @property
+    @pulumi.getter(name="enableLogging")
+    def enable_logging(self) -> Optional[bool]:
+        """
+        Denotes whether to enable logging for a particular rule.
+        If logging is enabled, logs will be exported to the
+        configured export destination in Stackdriver.
+        """
+        return pulumi.get(self, "enable_logging")
+
+    @property
+    @pulumi.getter
+    def match(self) -> 'outputs.OrganizationSecurityPolicyRuleMatch':
+        """
+        A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "match")
+
+    @property
+    @pulumi.getter(name="policyId")
+    def policy_id(self) -> str:
+        """
+        The ID of the OrganizationSecurityPolicy this rule applies to.
+        """
+        return pulumi.get(self, "policy_id")
+
+    @property
+    @pulumi.getter
+    def preview(self) -> Optional[bool]:
+        """
+        If set to true, the specified action is not enforced.
+        """
+        return pulumi.get(self, "preview")
+
+    @property
+    @pulumi.getter
+    def priority(self) -> float:
+        """
+        An integer indicating the priority of a rule in the list. The priority must be a value
+        between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
+        highest priority and 2147483647 is the lowest prority.
+        """
+        return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter(name="targetResources")
+    def target_resources(self) -> Optional[List[str]]:
+        """
+        A list of network resource URLs to which this rule applies.
+        This field allows you to control which network's VMs get
+        this rule. If this field is left blank, all VMs
+        within the organization will receive the rule.
+        """
+        return pulumi.get(self, "target_resources")
+
+    @property
+    @pulumi.getter(name="targetServiceAccounts")
+    def target_service_accounts(self) -> Optional[List[str]]:
+        """
+        A list of service accounts indicating the sets of
+        instances that are applied with this rule.
+        """
+        return pulumi.get(self, "target_service_accounts")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

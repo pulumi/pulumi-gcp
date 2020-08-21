@@ -5,114 +5,29 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['ConnectivityTest']
 
 
 class ConnectivityTest(pulumi.CustomResource):
-    description: pulumi.Output[str]
-    """
-    The user-supplied description of the Connectivity Test.
-    Maximum of 512 characters.
-    """
-    destination: pulumi.Output[dict]
-    """
-    Required. Destination specification of the Connectivity Test.
-    You can use a combination of destination IP address, Compute
-    Engine VM instance, or VPC network to uniquely identify the
-    destination location.
-    Even if the destination IP address is not unique, the source IP
-    location is unique. Usually, the analysis can infer the destination
-    endpoint from route information.
-    If the destination you specify is a VM instance and the instance has
-    multiple network interfaces, then you must also specify either a
-    destination IP address or VPC network to identify the destination
-    interface.
-    A reachability analysis proceeds even if the destination location
-    is ambiguous. However, the result can include endpoints that you
-    don't intend to test.
-    Structure is documented below.
-
-      * `instance` (`str`) - A Compute Engine instance URI.
-      * `ip_address` (`str`) - The IP address of the endpoint, which can be an external or
-        internal IP. An IPv6 address is only allowed when the test's
-        destination is a global load balancer VIP.
-      * `network` (`str`) - A Compute Engine network URI.
-      * `port` (`float`) - The IP protocol port of the endpoint. Only applicable when
-        protocol is TCP or UDP.
-      * `project_id` (`str`) - Project ID where the endpoint is located. The Project ID can be
-        derived from the URI if you provide a VM instance or network URI.
-        The following are two cases where you must provide the project ID:
-        1. Only the IP address is specified, and the IP address is within
-        a GCP project. 2. When you are using Shared VPC and the IP address
-        that you provide is from the service project. In this case, the
-        network that the IP address resides in is defined in the host
-        project.
-    """
-    labels: pulumi.Output[dict]
-    """
-    Resource labels to represent user-provided metadata.
-    """
-    name: pulumi.Output[str]
-    """
-    Unique name for the connectivity test.
-    """
-    project: pulumi.Output[str]
-    """
-    The ID of the project in which the resource belongs.
-    If it is not provided, the provider project is used.
-    """
-    protocol: pulumi.Output[str]
-    """
-    IP Protocol of the test. When not provided, "TCP" is assumed.
-    """
-    related_projects: pulumi.Output[list]
-    """
-    Other projects that may be relevant for reachability analysis.
-    This is applicable to scenarios where a test can cross project
-    boundaries.
-    """
-    source: pulumi.Output[dict]
-    """
-    Required. Source specification of the Connectivity Test.
-    You can use a combination of source IP address, virtual machine
-    (VM) instance, or Compute Engine network to uniquely identify the
-    source location.
-    Examples: If the source IP address is an internal IP address within
-    a Google Cloud Virtual Private Cloud (VPC) network, then you must
-    also specify the VPC network. Otherwise, specify the VM instance,
-    which already contains its internal IP address and VPC network
-    information.
-    If the source of the test is within an on-premises network, then
-    you must provide the destination VPC network.
-    If the source endpoint is a Compute Engine VM instance with multiple
-    network interfaces, the instance itself is not sufficient to
-    identify the endpoint. So, you must also specify the source IP
-    address or VPC network.
-    A reachability analysis proceeds even if the source location is
-    ambiguous. However, the test result may include endpoints that
-    you don't intend to test.
-    Structure is documented below.
-
-      * `instance` (`str`) - A Compute Engine instance URI.
-      * `ip_address` (`str`) - The IP address of the endpoint, which can be an external or
-        internal IP. An IPv6 address is only allowed when the test's
-        destination is a global load balancer VIP.
-      * `network` (`str`) - A Compute Engine network URI.
-      * `networkType` (`str`) - Type of the network where the endpoint is located.
-        Possible values are `GCP_NETWORK` and `NON_GCP_NETWORK`.
-      * `port` (`float`) - The IP protocol port of the endpoint. Only applicable when
-        protocol is TCP or UDP.
-      * `project_id` (`str`) - Project ID where the endpoint is located. The Project ID can be
-        derived from the URI if you provide a VM instance or network URI.
-        The following are two cases where you must provide the project ID:
-        1. Only the IP address is specified, and the IP address is within
-        a GCP project. 2. When you are using Shared VPC and the IP address
-        that you provide is from the service project. In this case, the
-        network that the IP address resides in is defined in the host
-        project.
-    """
-    def __init__(__self__, resource_name, opts=None, description=None, destination=None, labels=None, name=None, project=None, protocol=None, related_projects=None, source=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 destination: Optional[pulumi.Input[pulumi.InputType['ConnectivityTestDestinationArgs']]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 protocol: Optional[pulumi.Input[str]] = None,
+                 related_projects: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 source: Optional[pulumi.Input[pulumi.InputType['ConnectivityTestSourceArgs']]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         A connectivity test are a static analysis of your resource configurations
         that enables you to evaluate connectivity to and from Google Cloud
@@ -130,7 +45,7 @@ class ConnectivityTest(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The user-supplied description of the Connectivity Test.
                Maximum of 512 characters.
-        :param pulumi.Input[dict] destination: Required. Destination specification of the Connectivity Test.
+        :param pulumi.Input[pulumi.InputType['ConnectivityTestDestinationArgs']] destination: Required. Destination specification of the Connectivity Test.
                You can use a combination of destination IP address, Compute
                Engine VM instance, or VPC network to uniquely identify the
                destination location.
@@ -145,15 +60,15 @@ class ConnectivityTest(pulumi.CustomResource):
                is ambiguous. However, the result can include endpoints that you
                don't intend to test.
                Structure is documented below.
-        :param pulumi.Input[dict] labels: Resource labels to represent user-provided metadata.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
         :param pulumi.Input[str] name: Unique name for the connectivity test.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] protocol: IP Protocol of the test. When not provided, "TCP" is assumed.
-        :param pulumi.Input[list] related_projects: Other projects that may be relevant for reachability analysis.
+        :param pulumi.Input[List[pulumi.Input[str]]] related_projects: Other projects that may be relevant for reachability analysis.
                This is applicable to scenarios where a test can cross project
                boundaries.
-        :param pulumi.Input[dict] source: Required. Source specification of the Connectivity Test.
+        :param pulumi.Input[pulumi.InputType['ConnectivityTestSourceArgs']] source: Required. Source specification of the Connectivity Test.
                You can use a combination of source IP address, virtual machine
                (VM) instance, or Compute Engine network to uniquely identify the
                source location.
@@ -172,44 +87,6 @@ class ConnectivityTest(pulumi.CustomResource):
                ambiguous. However, the test result may include endpoints that
                you don't intend to test.
                Structure is documented below.
-
-        The **destination** object supports the following:
-
-          * `instance` (`pulumi.Input[str]`) - A Compute Engine instance URI.
-          * `ip_address` (`pulumi.Input[str]`) - The IP address of the endpoint, which can be an external or
-            internal IP. An IPv6 address is only allowed when the test's
-            destination is a global load balancer VIP.
-          * `network` (`pulumi.Input[str]`) - A Compute Engine network URI.
-          * `port` (`pulumi.Input[float]`) - The IP protocol port of the endpoint. Only applicable when
-            protocol is TCP or UDP.
-          * `project_id` (`pulumi.Input[str]`) - Project ID where the endpoint is located. The Project ID can be
-            derived from the URI if you provide a VM instance or network URI.
-            The following are two cases where you must provide the project ID:
-            1. Only the IP address is specified, and the IP address is within
-            a GCP project. 2. When you are using Shared VPC and the IP address
-            that you provide is from the service project. In this case, the
-            network that the IP address resides in is defined in the host
-            project.
-
-        The **source** object supports the following:
-
-          * `instance` (`pulumi.Input[str]`) - A Compute Engine instance URI.
-          * `ip_address` (`pulumi.Input[str]`) - The IP address of the endpoint, which can be an external or
-            internal IP. An IPv6 address is only allowed when the test's
-            destination is a global load balancer VIP.
-          * `network` (`pulumi.Input[str]`) - A Compute Engine network URI.
-          * `networkType` (`pulumi.Input[str]`) - Type of the network where the endpoint is located.
-            Possible values are `GCP_NETWORK` and `NON_GCP_NETWORK`.
-          * `port` (`pulumi.Input[float]`) - The IP protocol port of the endpoint. Only applicable when
-            protocol is TCP or UDP.
-          * `project_id` (`pulumi.Input[str]`) - Project ID where the endpoint is located. The Project ID can be
-            derived from the URI if you provide a VM instance or network URI.
-            The following are two cases where you must provide the project ID:
-            1. Only the IP address is specified, and the IP address is within
-            a GCP project. 2. When you are using Shared VPC and the IP address
-            that you provide is from the service project. In this case, the
-            network that the IP address resides in is defined in the host
-            project.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -247,17 +124,27 @@ class ConnectivityTest(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, description=None, destination=None, labels=None, name=None, project=None, protocol=None, related_projects=None, source=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            destination: Optional[pulumi.Input[pulumi.InputType['ConnectivityTestDestinationArgs']]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            protocol: Optional[pulumi.Input[str]] = None,
+            related_projects: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            source: Optional[pulumi.Input[pulumi.InputType['ConnectivityTestSourceArgs']]] = None) -> 'ConnectivityTest':
         """
         Get an existing ConnectivityTest resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The user-supplied description of the Connectivity Test.
                Maximum of 512 characters.
-        :param pulumi.Input[dict] destination: Required. Destination specification of the Connectivity Test.
+        :param pulumi.Input[pulumi.InputType['ConnectivityTestDestinationArgs']] destination: Required. Destination specification of the Connectivity Test.
                You can use a combination of destination IP address, Compute
                Engine VM instance, or VPC network to uniquely identify the
                destination location.
@@ -272,15 +159,15 @@ class ConnectivityTest(pulumi.CustomResource):
                is ambiguous. However, the result can include endpoints that you
                don't intend to test.
                Structure is documented below.
-        :param pulumi.Input[dict] labels: Resource labels to represent user-provided metadata.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
         :param pulumi.Input[str] name: Unique name for the connectivity test.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] protocol: IP Protocol of the test. When not provided, "TCP" is assumed.
-        :param pulumi.Input[list] related_projects: Other projects that may be relevant for reachability analysis.
+        :param pulumi.Input[List[pulumi.Input[str]]] related_projects: Other projects that may be relevant for reachability analysis.
                This is applicable to scenarios where a test can cross project
                boundaries.
-        :param pulumi.Input[dict] source: Required. Source specification of the Connectivity Test.
+        :param pulumi.Input[pulumi.InputType['ConnectivityTestSourceArgs']] source: Required. Source specification of the Connectivity Test.
                You can use a combination of source IP address, virtual machine
                (VM) instance, or Compute Engine network to uniquely identify the
                source location.
@@ -299,44 +186,6 @@ class ConnectivityTest(pulumi.CustomResource):
                ambiguous. However, the test result may include endpoints that
                you don't intend to test.
                Structure is documented below.
-
-        The **destination** object supports the following:
-
-          * `instance` (`pulumi.Input[str]`) - A Compute Engine instance URI.
-          * `ip_address` (`pulumi.Input[str]`) - The IP address of the endpoint, which can be an external or
-            internal IP. An IPv6 address is only allowed when the test's
-            destination is a global load balancer VIP.
-          * `network` (`pulumi.Input[str]`) - A Compute Engine network URI.
-          * `port` (`pulumi.Input[float]`) - The IP protocol port of the endpoint. Only applicable when
-            protocol is TCP or UDP.
-          * `project_id` (`pulumi.Input[str]`) - Project ID where the endpoint is located. The Project ID can be
-            derived from the URI if you provide a VM instance or network URI.
-            The following are two cases where you must provide the project ID:
-            1. Only the IP address is specified, and the IP address is within
-            a GCP project. 2. When you are using Shared VPC and the IP address
-            that you provide is from the service project. In this case, the
-            network that the IP address resides in is defined in the host
-            project.
-
-        The **source** object supports the following:
-
-          * `instance` (`pulumi.Input[str]`) - A Compute Engine instance URI.
-          * `ip_address` (`pulumi.Input[str]`) - The IP address of the endpoint, which can be an external or
-            internal IP. An IPv6 address is only allowed when the test's
-            destination is a global load balancer VIP.
-          * `network` (`pulumi.Input[str]`) - A Compute Engine network URI.
-          * `networkType` (`pulumi.Input[str]`) - Type of the network where the endpoint is located.
-            Possible values are `GCP_NETWORK` and `NON_GCP_NETWORK`.
-          * `port` (`pulumi.Input[float]`) - The IP protocol port of the endpoint. Only applicable when
-            protocol is TCP or UDP.
-          * `project_id` (`pulumi.Input[str]`) - Project ID where the endpoint is located. The Project ID can be
-            derived from the URI if you provide a VM instance or network URI.
-            The following are two cases where you must provide the project ID:
-            1. Only the IP address is specified, and the IP address is within
-            a GCP project. 2. When you are using Shared VPC and the IP address
-            that you provide is from the service project. In this case, the
-            network that the IP address resides in is defined in the host
-            project.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -352,8 +201,109 @@ class ConnectivityTest(pulumi.CustomResource):
         __props__["source"] = source
         return ConnectivityTest(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The user-supplied description of the Connectivity Test.
+        Maximum of 512 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def destination(self) -> 'outputs.ConnectivityTestDestination':
+        """
+        Required. Destination specification of the Connectivity Test.
+        You can use a combination of destination IP address, Compute
+        Engine VM instance, or VPC network to uniquely identify the
+        destination location.
+        Even if the destination IP address is not unique, the source IP
+        location is unique. Usually, the analysis can infer the destination
+        endpoint from route information.
+        If the destination you specify is a VM instance and the instance has
+        multiple network interfaces, then you must also specify either a
+        destination IP address or VPC network to identify the destination
+        interface.
+        A reachability analysis proceeds even if the destination location
+        is ambiguous. However, the result can include endpoints that you
+        don't intend to test.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "destination")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[Mapping[str, str]]:
+        """
+        Resource labels to represent user-provided metadata.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Unique name for the connectivity test.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> Optional[str]:
+        """
+        IP Protocol of the test. When not provided, "TCP" is assumed.
+        """
+        return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter(name="relatedProjects")
+    def related_projects(self) -> Optional[List[str]]:
+        """
+        Other projects that may be relevant for reachability analysis.
+        This is applicable to scenarios where a test can cross project
+        boundaries.
+        """
+        return pulumi.get(self, "related_projects")
+
+    @property
+    @pulumi.getter
+    def source(self) -> 'outputs.ConnectivityTestSource':
+        """
+        Required. Source specification of the Connectivity Test.
+        You can use a combination of source IP address, virtual machine
+        (VM) instance, or Compute Engine network to uniquely identify the
+        source location.
+        Examples: If the source IP address is an internal IP address within
+        a Google Cloud Virtual Private Cloud (VPC) network, then you must
+        also specify the VPC network. Otherwise, specify the VM instance,
+        which already contains its internal IP address and VPC network
+        information.
+        If the source of the test is within an on-premises network, then
+        you must provide the destination VPC network.
+        If the source endpoint is a Compute Engine VM instance with multiple
+        network interfaces, the instance itself is not sufficient to
+        identify the endpoint. So, you must also specify the source IP
+        address or VPC network.
+        A reachability analysis proceeds even if the source location is
+        ambiguous. However, the test result may include endpoints that
+        you don't intend to test.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "source")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

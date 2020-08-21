@@ -5,309 +5,47 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['Instance']
 
 
 class Instance(pulumi.CustomResource):
-    allow_stopping_for_update: pulumi.Output[bool]
-    """
-    If true, allows this prvider to stop the instance to update its properties.
-    If you try to update a property that requires stopping the instance without setting this field, the update will fail.
-    """
-    attached_disks: pulumi.Output[list]
-    """
-    Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
-
-      * `device_name` (`str`) - Name with which the attached disk will be accessible
-        under `/dev/disk/by-id/google-*`
-      * `diskEncryptionKeyRaw` (`str`) - A 256-bit [customer-supplied encryption key]
-        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
-        encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-        to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw` may be set.
-      * `diskEncryptionKeySha256` (`str`)
-      * `kmsKeySelfLink` (`str`) - The self_link of the encryption key that is
-        stored in Google Cloud KMS to encrypt this disk. Only one of `kms_key_self_link`
-        and `disk_encryption_key_raw` may be set.
-      * `mode` (`str`) - Either "READ_ONLY" or "READ_WRITE", defaults to "READ_WRITE"
-        If you have a persistent disk with data that you want to share
-        between multiple instances, detach it from any read-write instances and
-        attach it to one or more instances in read-only mode.
-      * `source` (`str`) - The name or self_link of the disk to attach to this instance.
-    """
-    boot_disk: pulumi.Output[dict]
-    """
-    The boot disk for the instance.
-    Structure is documented below.
-
-      * `autoDelete` (`bool`) - Whether the disk will be auto-deleted when the instance
-        is deleted. Defaults to true.
-      * `device_name` (`str`) - Name with which the attached disk will be accessible
-        under `/dev/disk/by-id/google-*`
-      * `diskEncryptionKeyRaw` (`str`) - A 256-bit [customer-supplied encryption key]
-        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
-        encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-        to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw` may be set.
-      * `diskEncryptionKeySha256` (`str`)
-      * `initializeParams` (`dict`) - Parameters for a new disk that will be created
-        alongside the new instance. Either `initialize_params` or `source` must be set.
-        Structure is documented below.
-        * `image` (`str`) - The image from which to initialize this disk. This can be
-          one of: the image's `self_link`, `projects/{project}/global/images/{image}`,
-          `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
-          `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
-          `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
-          images names must include the family name. If they don't, use the
-          [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
-          For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
-          These images can be referred by family name here.
-        * `labels` (`dict`) - A map of key/value label pairs to assign to the instance.
-        * `size` (`float`) - The size of the image in gigabytes. If not specified, it
-          will inherit the size of its base image.
-        * `type` (`str`) - The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
-
-      * `kmsKeySelfLink` (`str`) - The self_link of the encryption key that is
-        stored in Google Cloud KMS to encrypt this disk. Only one of `kms_key_self_link`
-        and `disk_encryption_key_raw` may be set.
-      * `mode` (`str`) - Either "READ_ONLY" or "READ_WRITE", defaults to "READ_WRITE"
-        If you have a persistent disk with data that you want to share
-        between multiple instances, detach it from any read-write instances and
-        attach it to one or more instances in read-only mode.
-      * `source` (`str`) - The name or self_link of the disk to attach to this instance.
-    """
-    can_ip_forward: pulumi.Output[bool]
-    """
-    Whether to allow sending and receiving of
-    packets with non-matching source or destination IPs.
-    This defaults to false.
-    """
-    confidential_instance_config: pulumi.Output[dict]
-    """
-    The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
-    to create.
-
-      * `enableConfidentialCompute` (`bool`)
-    """
-    cpu_platform: pulumi.Output[str]
-    """
-    The CPU platform used by this instance.
-    """
-    current_status: pulumi.Output[str]
-    """
-    Current status of the instance.
-    """
-    deletion_protection: pulumi.Output[bool]
-    """
-    Enable deletion protection on this instance. Defaults to false.
-    **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
-    """
-    description: pulumi.Output[str]
-    """
-    A brief description of this resource.
-    """
-    desired_status: pulumi.Output[str]
-    """
-    Desired status of the instance. Either
-    `"RUNNING"` or `"TERMINATED"`.
-    """
-    enable_display: pulumi.Output[bool]
-    """
-    Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-    **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
-    """
-    guest_accelerators: pulumi.Output[list]
-    """
-    List of the type and count of accelerator cards attached to the instance. Structure documented below.
-    **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
-
-      * `count` (`float`) - The number of the guest accelerator cards exposed to this instance.
-      * `type` (`str`) - The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
-    """
-    hostname: pulumi.Output[str]
-    """
-    A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
-    Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
-    The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
-    """
-    instance_id: pulumi.Output[str]
-    """
-    The server-assigned unique identifier of this instance.
-    """
-    label_fingerprint: pulumi.Output[str]
-    """
-    The unique fingerprint of the labels.
-    """
-    labels: pulumi.Output[dict]
-    """
-    A map of key/value label pairs to assign to the instance.
-    """
-    machine_type: pulumi.Output[str]
-    """
-    The machine type to create.
-    """
-    metadata: pulumi.Output[dict]
-    """
-    Metadata key/value pairs to make available from
-    within the instance. Ssh keys attached in the Cloud Console will be removed.
-    Add them to your config in order to keep them attached to your instance.
-    """
-    metadata_fingerprint: pulumi.Output[str]
-    """
-    The unique fingerprint of the metadata.
-    """
-    metadata_startup_script: pulumi.Output[str]
-    """
-    An alternative to using the
-    startup-script metadata key, except this one forces the instance to be
-    recreated (thus re-running the script) if it is changed. This replaces the
-    startup-script metadata key on the created instance and thus the two
-    mechanisms are not allowed to be used simultaneously.  Users are free to use
-    either mechanism - the only distinction is that this separate attribute
-    willl cause a recreate on modification.  On import, `metadata_startup_script`
-    will be set, but `metadata.startup-script` will not - if you choose to use the
-    other mechanism, you will see a diff immediately after import, which will cause a
-    destroy/recreate operation.  You may want to modify your state file manually
-    using `pulumi stack` commands, depending on your use case.
-    """
-    min_cpu_platform: pulumi.Output[str]
-    """
-    Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
-    `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
-    **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
-    """
-    name: pulumi.Output[str]
-    """
-    A unique name for the resource, required by GCE.
-    Changing this forces a new resource to be created.
-    """
-    network_interfaces: pulumi.Output[list]
-    """
-    Networks to attach to the instance. This can
-    be specified multiple times. Structure is documented below.
-
-      * `accessConfigs` (`list`) - Access configurations, i.e. IPs via which this
-        instance can be accessed via the Internet. Omit to ensure that the instance
-        is not accessible from the Internet. If omitted, ssh will not
-        work unless this provider can send traffic to the instance's network (e.g. via
-        tunnel or because it is running on another cloud instance on that network).
-        This block can be repeated multiple times. Structure documented below.
-        * `natIp` (`str`) - The IP address that will be 1:1 mapped to the instance's
-          network ip. If not given, one will be generated.
-        * `network_tier` (`str`) - The [networking tier][network-tier] used for configuring this instance.
-          This field can take the following values: PREMIUM or STANDARD. If this field is
-          not specified, it is assumed to be PREMIUM.
-        * `publicPtrDomainName` (`str`) - The DNS domain name for the public PTR record.
-          To set this field on an instance, you must be verified as the owner of the domain.
-          See [the docs](https://cloud.google.com/compute/docs/instances/create-ptr-record) for how
-          to become verified as a domain owner.
-
-      * `aliasIpRanges` (`list`) - An
-        array of alias IP ranges for this network interface. Can only be specified for network
-        interfaces on subnet-mode networks. Structure documented below.
-        * `ip_cidr_range` (`str`) - The IP CIDR range represented by this alias IP range. This IP CIDR range
-          must belong to the specified subnetwork and cannot contain IP addresses reserved by
-          system or used by other network interfaces. This range may be a single IP address
-          (e.g. 10.2.3.4), a netmask (e.g. /24) or a CIDR format string (e.g. 10.1.2.0/24).
-        * `subnetworkRangeName` (`str`) - The subnetwork secondary range name specifying
-          the secondary range from which to allocate the IP CIDR range for this alias IP
-          range. If left unspecified, the primary range of the subnetwork will be used.
-
-      * `name` (`str`) - A unique name for the resource, required by GCE.
-        Changing this forces a new resource to be created.
-      * `network` (`str`) - The name or self_link of the network to attach this interface to.
-        Either `network` or `subnetwork` must be provided.
-      * `networkIp` (`str`) - The private IP address to assign to the instance. If
-        empty, the address will be automatically assigned.
-      * `subnetwork` (`str`) - The name or self_link of the subnetwork to attach this
-        interface to. The subnetwork must exist in the same region this instance will be
-        created in. Either `network` or `subnetwork` must be provided.
-      * `subnetworkProject` (`str`) - The project in which the subnetwork belongs.
-        If the `subnetwork` is a self_link, this field is ignored in favor of the project
-        defined in the subnetwork self_link. If the `subnetwork` is a name and this
-        field is not provided, the provider project is used.
-    """
-    project: pulumi.Output[str]
-    """
-    The ID of the project in which the resource belongs. If it
-    is not provided, the provider project is used.
-    """
-    resource_policies: pulumi.Output[str]
-    """
-    -- A list of short names or self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
-    """
-    scheduling: pulumi.Output[dict]
-    """
-    The scheduling strategy to use. More details about
-    this configuration option are detailed below.
-
-      * `automaticRestart` (`bool`) - Specifies if the instance should be
-        restarted if it was terminated by Compute Engine (not a user).
-        Defaults to true.
-      * `minNodeCpus` (`float`)
-      * `nodeAffinities` (`list`) - Specifies node affinities or anti-affinities
-        to determine which sole-tenant nodes your instances and managed instance
-        groups will use as host systems. Read more on sole-tenant node creation
-        [here](https://cloud.google.com/compute/docs/nodes/create-nodes).
-        Structure documented below.
-        * `key` (`str`) - The key for the node affinity label.
-        * `operator` (`str`) - The operator. Can be `IN` for node-affinities
-          or `NOT_IN` for anti-affinities.
-        * `values` (`list`)
-
-      * `onHostMaintenance` (`str`) - Describes maintenance behavior for the
-        instance. Can be MIGRATE or TERMINATE, for more info, read
-        [here](https://cloud.google.com/compute/docs/instances/setting-instance-scheduling-options).
-      * `preemptible` (`bool`) - Specifies if the instance is preemptible.
-        If this field is set to true, then `automatic_restart` must be
-        set to false.  Defaults to false.
-    """
-    scratch_disks: pulumi.Output[list]
-    """
-    Scratch disks to attach to the instance. This can be
-    specified multiple times for multiple scratch disks. Structure is documented below.
-
-      * `interface` (`str`) - The disk interface to use for attaching this disk; either SCSI or NVME.
-    """
-    self_link: pulumi.Output[str]
-    """
-    The URI of the created resource.
-    """
-    service_account: pulumi.Output[dict]
-    """
-    Service account to attach to the instance.
-    Structure is documented below.
-    **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
-
-      * `email` (`str`) - The service account e-mail address. If not given, the
-        default Google Compute Engine service account is used.
-        **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
-      * `scopes` (`list`) - A list of service scopes. Both OAuth2 URLs and gcloud
-        short names are supported. To allow full access to all Cloud APIs, use the
-        `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
-        **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
-    """
-    shielded_instance_config: pulumi.Output[dict]
-    """
-    Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
-    **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
-
-      * `enableIntegrityMonitoring` (`bool`) - -- Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
-      * `enableSecureBoot` (`bool`) - -- Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
-      * `enableVtpm` (`bool`) - -- Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
-    """
-    tags: pulumi.Output[list]
-    """
-    A list of network tags to attach to the instance.
-    """
-    tags_fingerprint: pulumi.Output[str]
-    """
-    The unique fingerprint of the tags.
-    """
-    zone: pulumi.Output[str]
-    """
-    The zone that the machine should be created in.
-    """
-    def __init__(__self__, resource_name, opts=None, allow_stopping_for_update=None, attached_disks=None, boot_disk=None, can_ip_forward=None, confidential_instance_config=None, deletion_protection=None, description=None, desired_status=None, enable_display=None, guest_accelerators=None, hostname=None, labels=None, machine_type=None, metadata=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, resource_policies=None, scheduling=None, scratch_disks=None, service_account=None, shielded_instance_config=None, tags=None, zone=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 allow_stopping_for_update: Optional[pulumi.Input[bool]] = None,
+                 attached_disks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceAttachedDiskArgs']]]]] = None,
+                 boot_disk: Optional[pulumi.Input[pulumi.InputType['InstanceBootDiskArgs']]] = None,
+                 can_ip_forward: Optional[pulumi.Input[bool]] = None,
+                 confidential_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceConfidentialInstanceConfigArgs']]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 desired_status: Optional[pulumi.Input[str]] = None,
+                 enable_display: Optional[pulumi.Input[bool]] = None,
+                 guest_accelerators: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceGuestAcceleratorArgs']]]]] = None,
+                 hostname: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 machine_type: Optional[pulumi.Input[str]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 metadata_startup_script: Optional[pulumi.Input[str]] = None,
+                 min_cpu_platform: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 network_interfaces: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceNetworkInterfaceArgs']]]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 resource_policies: Optional[pulumi.Input[str]] = None,
+                 scheduling: Optional[pulumi.Input[pulumi.InputType['InstanceSchedulingArgs']]] = None,
+                 scratch_disks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceScratchDiskArgs']]]]] = None,
+                 service_account: Optional[pulumi.Input[pulumi.InputType['InstanceServiceAccountArgs']]] = None,
+                 shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceShieldedInstanceConfigArgs']]] = None,
+                 tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 zone: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a VM instance resource within GCE. For more information see
         [the official documentation](https://cloud.google.com/compute/docs/instances)
@@ -318,13 +56,13 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_stopping_for_update: If true, allows this prvider to stop the instance to update its properties.
                If you try to update a property that requires stopping the instance without setting this field, the update will fail.
-        :param pulumi.Input[list] attached_disks: Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
-        :param pulumi.Input[dict] boot_disk: The boot disk for the instance.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceAttachedDiskArgs']]]] attached_disks: Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['InstanceBootDiskArgs']] boot_disk: The boot disk for the instance.
                Structure is documented below.
         :param pulumi.Input[bool] can_ip_forward: Whether to allow sending and receiving of
                packets with non-matching source or destination IPs.
                This defaults to false.
-        :param pulumi.Input[dict] confidential_instance_config: The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
+        :param pulumi.Input[pulumi.InputType['InstanceConfidentialInstanceConfigArgs']] confidential_instance_config: The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
                to create.
         :param pulumi.Input[bool] deletion_protection: Enable deletion protection on this instance. Defaults to false.
                **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
@@ -333,14 +71,14 @@ class Instance(pulumi.CustomResource):
                `"RUNNING"` or `"TERMINATED"`.
         :param pulumi.Input[bool] enable_display: Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
-        :param pulumi.Input[list] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceGuestAcceleratorArgs']]]] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
                **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
         :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
                Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
                The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] labels: A map of key/value label pairs to assign to the instance.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value label pairs to assign to the instance.
         :param pulumi.Input[str] machine_type: The machine type to create.
-        :param pulumi.Input[dict] metadata: Metadata key/value pairs to make available from
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata key/value pairs to make available from
                within the instance. Ssh keys attached in the Cloud Console will be removed.
                Add them to your config in order to keep them attached to your instance.
         :param pulumi.Input[str] metadata_startup_script: An alternative to using the
@@ -359,172 +97,22 @@ class Instance(pulumi.CustomResource):
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         :param pulumi.Input[str] name: A unique name for the resource, required by GCE.
                Changing this forces a new resource to be created.
-        :param pulumi.Input[list] network_interfaces: Networks to attach to the instance. This can
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceNetworkInterfaceArgs']]]] network_interfaces: Networks to attach to the instance. This can
                be specified multiple times. Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] resource_policies: -- A list of short names or self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
-        :param pulumi.Input[dict] scheduling: The scheduling strategy to use. More details about
+        :param pulumi.Input[pulumi.InputType['InstanceSchedulingArgs']] scheduling: The scheduling strategy to use. More details about
                this configuration option are detailed below.
-        :param pulumi.Input[list] scratch_disks: Scratch disks to attach to the instance. This can be
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceScratchDiskArgs']]]] scratch_disks: Scratch disks to attach to the instance. This can be
                specified multiple times for multiple scratch disks. Structure is documented below.
-        :param pulumi.Input[dict] service_account: Service account to attach to the instance.
+        :param pulumi.Input[pulumi.InputType['InstanceServiceAccountArgs']] service_account: Service account to attach to the instance.
                Structure is documented below.
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
-        :param pulumi.Input[dict] shielded_instance_config: Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['InstanceShieldedInstanceConfigArgs']] shielded_instance_config: Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
                **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
-        :param pulumi.Input[list] tags: A list of network tags to attach to the instance.
+        :param pulumi.Input[List[pulumi.Input[str]]] tags: A list of network tags to attach to the instance.
         :param pulumi.Input[str] zone: The zone that the machine should be created in.
-
-        The **attached_disks** object supports the following:
-
-          * `device_name` (`pulumi.Input[str]`) - Name with which the attached disk will be accessible
-            under `/dev/disk/by-id/google-*`
-          * `diskEncryptionKeyRaw` (`pulumi.Input[str]`) - A 256-bit [customer-supplied encryption key]
-            (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
-            encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-            to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw` may be set.
-          * `diskEncryptionKeySha256` (`pulumi.Input[str]`)
-          * `kmsKeySelfLink` (`pulumi.Input[str]`) - The self_link of the encryption key that is
-            stored in Google Cloud KMS to encrypt this disk. Only one of `kms_key_self_link`
-            and `disk_encryption_key_raw` may be set.
-          * `mode` (`pulumi.Input[str]`) - Either "READ_ONLY" or "READ_WRITE", defaults to "READ_WRITE"
-            If you have a persistent disk with data that you want to share
-            between multiple instances, detach it from any read-write instances and
-            attach it to one or more instances in read-only mode.
-          * `source` (`pulumi.Input[str]`) - The name or self_link of the disk to attach to this instance.
-
-        The **boot_disk** object supports the following:
-
-          * `autoDelete` (`pulumi.Input[bool]`) - Whether the disk will be auto-deleted when the instance
-            is deleted. Defaults to true.
-          * `device_name` (`pulumi.Input[str]`) - Name with which the attached disk will be accessible
-            under `/dev/disk/by-id/google-*`
-          * `diskEncryptionKeyRaw` (`pulumi.Input[str]`) - A 256-bit [customer-supplied encryption key]
-            (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
-            encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-            to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw` may be set.
-          * `diskEncryptionKeySha256` (`pulumi.Input[str]`)
-          * `initializeParams` (`pulumi.Input[dict]`) - Parameters for a new disk that will be created
-            alongside the new instance. Either `initialize_params` or `source` must be set.
-            Structure is documented below.
-            * `image` (`pulumi.Input[str]`) - The image from which to initialize this disk. This can be
-              one of: the image's `self_link`, `projects/{project}/global/images/{image}`,
-              `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
-              `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
-              `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
-              images names must include the family name. If they don't, use the
-              [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
-              For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
-              These images can be referred by family name here.
-            * `labels` (`pulumi.Input[dict]`) - A map of key/value label pairs to assign to the instance.
-            * `size` (`pulumi.Input[float]`) - The size of the image in gigabytes. If not specified, it
-              will inherit the size of its base image.
-            * `type` (`pulumi.Input[str]`) - The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
-
-          * `kmsKeySelfLink` (`pulumi.Input[str]`) - The self_link of the encryption key that is
-            stored in Google Cloud KMS to encrypt this disk. Only one of `kms_key_self_link`
-            and `disk_encryption_key_raw` may be set.
-          * `mode` (`pulumi.Input[str]`) - Either "READ_ONLY" or "READ_WRITE", defaults to "READ_WRITE"
-            If you have a persistent disk with data that you want to share
-            between multiple instances, detach it from any read-write instances and
-            attach it to one or more instances in read-only mode.
-          * `source` (`pulumi.Input[str]`) - The name or self_link of the disk to attach to this instance.
-
-        The **confidential_instance_config** object supports the following:
-
-          * `enableConfidentialCompute` (`pulumi.Input[bool]`)
-
-        The **guest_accelerators** object supports the following:
-
-          * `count` (`pulumi.Input[float]`) - The number of the guest accelerator cards exposed to this instance.
-          * `type` (`pulumi.Input[str]`) - The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
-
-        The **network_interfaces** object supports the following:
-
-          * `accessConfigs` (`pulumi.Input[list]`) - Access configurations, i.e. IPs via which this
-            instance can be accessed via the Internet. Omit to ensure that the instance
-            is not accessible from the Internet. If omitted, ssh will not
-            work unless this provider can send traffic to the instance's network (e.g. via
-            tunnel or because it is running on another cloud instance on that network).
-            This block can be repeated multiple times. Structure documented below.
-            * `natIp` (`pulumi.Input[str]`) - The IP address that will be 1:1 mapped to the instance's
-              network ip. If not given, one will be generated.
-            * `network_tier` (`pulumi.Input[str]`) - The [networking tier][network-tier] used for configuring this instance.
-              This field can take the following values: PREMIUM or STANDARD. If this field is
-              not specified, it is assumed to be PREMIUM.
-            * `publicPtrDomainName` (`pulumi.Input[str]`) - The DNS domain name for the public PTR record.
-              To set this field on an instance, you must be verified as the owner of the domain.
-              See [the docs](https://cloud.google.com/compute/docs/instances/create-ptr-record) for how
-              to become verified as a domain owner.
-
-          * `aliasIpRanges` (`pulumi.Input[list]`) - An
-            array of alias IP ranges for this network interface. Can only be specified for network
-            interfaces on subnet-mode networks. Structure documented below.
-            * `ip_cidr_range` (`pulumi.Input[str]`) - The IP CIDR range represented by this alias IP range. This IP CIDR range
-              must belong to the specified subnetwork and cannot contain IP addresses reserved by
-              system or used by other network interfaces. This range may be a single IP address
-              (e.g. 10.2.3.4), a netmask (e.g. /24) or a CIDR format string (e.g. 10.1.2.0/24).
-            * `subnetworkRangeName` (`pulumi.Input[str]`) - The subnetwork secondary range name specifying
-              the secondary range from which to allocate the IP CIDR range for this alias IP
-              range. If left unspecified, the primary range of the subnetwork will be used.
-
-          * `name` (`pulumi.Input[str]`) - A unique name for the resource, required by GCE.
-            Changing this forces a new resource to be created.
-          * `network` (`pulumi.Input[str]`) - The name or self_link of the network to attach this interface to.
-            Either `network` or `subnetwork` must be provided.
-          * `networkIp` (`pulumi.Input[str]`) - The private IP address to assign to the instance. If
-            empty, the address will be automatically assigned.
-          * `subnetwork` (`pulumi.Input[str]`) - The name or self_link of the subnetwork to attach this
-            interface to. The subnetwork must exist in the same region this instance will be
-            created in. Either `network` or `subnetwork` must be provided.
-          * `subnetworkProject` (`pulumi.Input[str]`) - The project in which the subnetwork belongs.
-            If the `subnetwork` is a self_link, this field is ignored in favor of the project
-            defined in the subnetwork self_link. If the `subnetwork` is a name and this
-            field is not provided, the provider project is used.
-
-        The **scheduling** object supports the following:
-
-          * `automaticRestart` (`pulumi.Input[bool]`) - Specifies if the instance should be
-            restarted if it was terminated by Compute Engine (not a user).
-            Defaults to true.
-          * `minNodeCpus` (`pulumi.Input[float]`)
-          * `nodeAffinities` (`pulumi.Input[list]`) - Specifies node affinities or anti-affinities
-            to determine which sole-tenant nodes your instances and managed instance
-            groups will use as host systems. Read more on sole-tenant node creation
-            [here](https://cloud.google.com/compute/docs/nodes/create-nodes).
-            Structure documented below.
-            * `key` (`pulumi.Input[str]`) - The key for the node affinity label.
-            * `operator` (`pulumi.Input[str]`) - The operator. Can be `IN` for node-affinities
-              or `NOT_IN` for anti-affinities.
-            * `values` (`pulumi.Input[list]`)
-
-          * `onHostMaintenance` (`pulumi.Input[str]`) - Describes maintenance behavior for the
-            instance. Can be MIGRATE or TERMINATE, for more info, read
-            [here](https://cloud.google.com/compute/docs/instances/setting-instance-scheduling-options).
-          * `preemptible` (`pulumi.Input[bool]`) - Specifies if the instance is preemptible.
-            If this field is set to true, then `automatic_restart` must be
-            set to false.  Defaults to false.
-
-        The **scratch_disks** object supports the following:
-
-          * `interface` (`pulumi.Input[str]`) - The disk interface to use for attaching this disk; either SCSI or NVME.
-
-        The **service_account** object supports the following:
-
-          * `email` (`pulumi.Input[str]`) - The service account e-mail address. If not given, the
-            default Google Compute Engine service account is used.
-            **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
-          * `scopes` (`pulumi.Input[list]`) - A list of service scopes. Both OAuth2 URLs and gcloud
-            short names are supported. To allow full access to all Cloud APIs, use the
-            `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
-            **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
-
-        The **shielded_instance_config** object supports the following:
-
-          * `enableIntegrityMonitoring` (`pulumi.Input[bool]`) - -- Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
-          * `enableSecureBoot` (`pulumi.Input[bool]`) - -- Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
-          * `enableVtpm` (`pulumi.Input[bool]`) - -- Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -589,23 +177,58 @@ class Instance(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, allow_stopping_for_update=None, attached_disks=None, boot_disk=None, can_ip_forward=None, confidential_instance_config=None, cpu_platform=None, current_status=None, deletion_protection=None, description=None, desired_status=None, enable_display=None, guest_accelerators=None, hostname=None, instance_id=None, label_fingerprint=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, resource_policies=None, scheduling=None, scratch_disks=None, self_link=None, service_account=None, shielded_instance_config=None, tags=None, tags_fingerprint=None, zone=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allow_stopping_for_update: Optional[pulumi.Input[bool]] = None,
+            attached_disks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceAttachedDiskArgs']]]]] = None,
+            boot_disk: Optional[pulumi.Input[pulumi.InputType['InstanceBootDiskArgs']]] = None,
+            can_ip_forward: Optional[pulumi.Input[bool]] = None,
+            confidential_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceConfidentialInstanceConfigArgs']]] = None,
+            cpu_platform: Optional[pulumi.Input[str]] = None,
+            current_status: Optional[pulumi.Input[str]] = None,
+            deletion_protection: Optional[pulumi.Input[bool]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            desired_status: Optional[pulumi.Input[str]] = None,
+            enable_display: Optional[pulumi.Input[bool]] = None,
+            guest_accelerators: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceGuestAcceleratorArgs']]]]] = None,
+            hostname: Optional[pulumi.Input[str]] = None,
+            instance_id: Optional[pulumi.Input[str]] = None,
+            label_fingerprint: Optional[pulumi.Input[str]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            machine_type: Optional[pulumi.Input[str]] = None,
+            metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            metadata_fingerprint: Optional[pulumi.Input[str]] = None,
+            metadata_startup_script: Optional[pulumi.Input[str]] = None,
+            min_cpu_platform: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            network_interfaces: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceNetworkInterfaceArgs']]]]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            resource_policies: Optional[pulumi.Input[str]] = None,
+            scheduling: Optional[pulumi.Input[pulumi.InputType['InstanceSchedulingArgs']]] = None,
+            scratch_disks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceScratchDiskArgs']]]]] = None,
+            self_link: Optional[pulumi.Input[str]] = None,
+            service_account: Optional[pulumi.Input[pulumi.InputType['InstanceServiceAccountArgs']]] = None,
+            shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceShieldedInstanceConfigArgs']]] = None,
+            tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            tags_fingerprint: Optional[pulumi.Input[str]] = None,
+            zone: Optional[pulumi.Input[str]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_stopping_for_update: If true, allows this prvider to stop the instance to update its properties.
                If you try to update a property that requires stopping the instance without setting this field, the update will fail.
-        :param pulumi.Input[list] attached_disks: Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
-        :param pulumi.Input[dict] boot_disk: The boot disk for the instance.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceAttachedDiskArgs']]]] attached_disks: Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['InstanceBootDiskArgs']] boot_disk: The boot disk for the instance.
                Structure is documented below.
         :param pulumi.Input[bool] can_ip_forward: Whether to allow sending and receiving of
                packets with non-matching source or destination IPs.
                This defaults to false.
-        :param pulumi.Input[dict] confidential_instance_config: The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
+        :param pulumi.Input[pulumi.InputType['InstanceConfidentialInstanceConfigArgs']] confidential_instance_config: The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
                to create.
         :param pulumi.Input[str] cpu_platform: The CPU platform used by this instance.
         :param pulumi.Input[str] current_status: Current status of the instance.
@@ -616,16 +239,16 @@ class Instance(pulumi.CustomResource):
                `"RUNNING"` or `"TERMINATED"`.
         :param pulumi.Input[bool] enable_display: Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
-        :param pulumi.Input[list] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceGuestAcceleratorArgs']]]] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
                **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
         :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
                Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
                The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
         :param pulumi.Input[str] instance_id: The server-assigned unique identifier of this instance.
         :param pulumi.Input[str] label_fingerprint: The unique fingerprint of the labels.
-        :param pulumi.Input[dict] labels: A map of key/value label pairs to assign to the instance.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value label pairs to assign to the instance.
         :param pulumi.Input[str] machine_type: The machine type to create.
-        :param pulumi.Input[dict] metadata: Metadata key/value pairs to make available from
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata key/value pairs to make available from
                within the instance. Ssh keys attached in the Cloud Console will be removed.
                Add them to your config in order to keep them attached to your instance.
         :param pulumi.Input[str] metadata_fingerprint: The unique fingerprint of the metadata.
@@ -645,174 +268,24 @@ class Instance(pulumi.CustomResource):
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         :param pulumi.Input[str] name: A unique name for the resource, required by GCE.
                Changing this forces a new resource to be created.
-        :param pulumi.Input[list] network_interfaces: Networks to attach to the instance. This can
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceNetworkInterfaceArgs']]]] network_interfaces: Networks to attach to the instance. This can
                be specified multiple times. Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] resource_policies: -- A list of short names or self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
-        :param pulumi.Input[dict] scheduling: The scheduling strategy to use. More details about
+        :param pulumi.Input[pulumi.InputType['InstanceSchedulingArgs']] scheduling: The scheduling strategy to use. More details about
                this configuration option are detailed below.
-        :param pulumi.Input[list] scratch_disks: Scratch disks to attach to the instance. This can be
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceScratchDiskArgs']]]] scratch_disks: Scratch disks to attach to the instance. This can be
                specified multiple times for multiple scratch disks. Structure is documented below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[dict] service_account: Service account to attach to the instance.
+        :param pulumi.Input[pulumi.InputType['InstanceServiceAccountArgs']] service_account: Service account to attach to the instance.
                Structure is documented below.
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
-        :param pulumi.Input[dict] shielded_instance_config: Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['InstanceShieldedInstanceConfigArgs']] shielded_instance_config: Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
                **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
-        :param pulumi.Input[list] tags: A list of network tags to attach to the instance.
+        :param pulumi.Input[List[pulumi.Input[str]]] tags: A list of network tags to attach to the instance.
         :param pulumi.Input[str] tags_fingerprint: The unique fingerprint of the tags.
         :param pulumi.Input[str] zone: The zone that the machine should be created in.
-
-        The **attached_disks** object supports the following:
-
-          * `device_name` (`pulumi.Input[str]`) - Name with which the attached disk will be accessible
-            under `/dev/disk/by-id/google-*`
-          * `diskEncryptionKeyRaw` (`pulumi.Input[str]`) - A 256-bit [customer-supplied encryption key]
-            (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
-            encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-            to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw` may be set.
-          * `diskEncryptionKeySha256` (`pulumi.Input[str]`)
-          * `kmsKeySelfLink` (`pulumi.Input[str]`) - The self_link of the encryption key that is
-            stored in Google Cloud KMS to encrypt this disk. Only one of `kms_key_self_link`
-            and `disk_encryption_key_raw` may be set.
-          * `mode` (`pulumi.Input[str]`) - Either "READ_ONLY" or "READ_WRITE", defaults to "READ_WRITE"
-            If you have a persistent disk with data that you want to share
-            between multiple instances, detach it from any read-write instances and
-            attach it to one or more instances in read-only mode.
-          * `source` (`pulumi.Input[str]`) - The name or self_link of the disk to attach to this instance.
-
-        The **boot_disk** object supports the following:
-
-          * `autoDelete` (`pulumi.Input[bool]`) - Whether the disk will be auto-deleted when the instance
-            is deleted. Defaults to true.
-          * `device_name` (`pulumi.Input[str]`) - Name with which the attached disk will be accessible
-            under `/dev/disk/by-id/google-*`
-          * `diskEncryptionKeyRaw` (`pulumi.Input[str]`) - A 256-bit [customer-supplied encryption key]
-            (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
-            encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-            to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw` may be set.
-          * `diskEncryptionKeySha256` (`pulumi.Input[str]`)
-          * `initializeParams` (`pulumi.Input[dict]`) - Parameters for a new disk that will be created
-            alongside the new instance. Either `initialize_params` or `source` must be set.
-            Structure is documented below.
-            * `image` (`pulumi.Input[str]`) - The image from which to initialize this disk. This can be
-              one of: the image's `self_link`, `projects/{project}/global/images/{image}`,
-              `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
-              `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
-              `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
-              images names must include the family name. If they don't, use the
-              [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
-              For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
-              These images can be referred by family name here.
-            * `labels` (`pulumi.Input[dict]`) - A map of key/value label pairs to assign to the instance.
-            * `size` (`pulumi.Input[float]`) - The size of the image in gigabytes. If not specified, it
-              will inherit the size of its base image.
-            * `type` (`pulumi.Input[str]`) - The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
-
-          * `kmsKeySelfLink` (`pulumi.Input[str]`) - The self_link of the encryption key that is
-            stored in Google Cloud KMS to encrypt this disk. Only one of `kms_key_self_link`
-            and `disk_encryption_key_raw` may be set.
-          * `mode` (`pulumi.Input[str]`) - Either "READ_ONLY" or "READ_WRITE", defaults to "READ_WRITE"
-            If you have a persistent disk with data that you want to share
-            between multiple instances, detach it from any read-write instances and
-            attach it to one or more instances in read-only mode.
-          * `source` (`pulumi.Input[str]`) - The name or self_link of the disk to attach to this instance.
-
-        The **confidential_instance_config** object supports the following:
-
-          * `enableConfidentialCompute` (`pulumi.Input[bool]`)
-
-        The **guest_accelerators** object supports the following:
-
-          * `count` (`pulumi.Input[float]`) - The number of the guest accelerator cards exposed to this instance.
-          * `type` (`pulumi.Input[str]`) - The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
-
-        The **network_interfaces** object supports the following:
-
-          * `accessConfigs` (`pulumi.Input[list]`) - Access configurations, i.e. IPs via which this
-            instance can be accessed via the Internet. Omit to ensure that the instance
-            is not accessible from the Internet. If omitted, ssh will not
-            work unless this provider can send traffic to the instance's network (e.g. via
-            tunnel or because it is running on another cloud instance on that network).
-            This block can be repeated multiple times. Structure documented below.
-            * `natIp` (`pulumi.Input[str]`) - The IP address that will be 1:1 mapped to the instance's
-              network ip. If not given, one will be generated.
-            * `network_tier` (`pulumi.Input[str]`) - The [networking tier][network-tier] used for configuring this instance.
-              This field can take the following values: PREMIUM or STANDARD. If this field is
-              not specified, it is assumed to be PREMIUM.
-            * `publicPtrDomainName` (`pulumi.Input[str]`) - The DNS domain name for the public PTR record.
-              To set this field on an instance, you must be verified as the owner of the domain.
-              See [the docs](https://cloud.google.com/compute/docs/instances/create-ptr-record) for how
-              to become verified as a domain owner.
-
-          * `aliasIpRanges` (`pulumi.Input[list]`) - An
-            array of alias IP ranges for this network interface. Can only be specified for network
-            interfaces on subnet-mode networks. Structure documented below.
-            * `ip_cidr_range` (`pulumi.Input[str]`) - The IP CIDR range represented by this alias IP range. This IP CIDR range
-              must belong to the specified subnetwork and cannot contain IP addresses reserved by
-              system or used by other network interfaces. This range may be a single IP address
-              (e.g. 10.2.3.4), a netmask (e.g. /24) or a CIDR format string (e.g. 10.1.2.0/24).
-            * `subnetworkRangeName` (`pulumi.Input[str]`) - The subnetwork secondary range name specifying
-              the secondary range from which to allocate the IP CIDR range for this alias IP
-              range. If left unspecified, the primary range of the subnetwork will be used.
-
-          * `name` (`pulumi.Input[str]`) - A unique name for the resource, required by GCE.
-            Changing this forces a new resource to be created.
-          * `network` (`pulumi.Input[str]`) - The name or self_link of the network to attach this interface to.
-            Either `network` or `subnetwork` must be provided.
-          * `networkIp` (`pulumi.Input[str]`) - The private IP address to assign to the instance. If
-            empty, the address will be automatically assigned.
-          * `subnetwork` (`pulumi.Input[str]`) - The name or self_link of the subnetwork to attach this
-            interface to. The subnetwork must exist in the same region this instance will be
-            created in. Either `network` or `subnetwork` must be provided.
-          * `subnetworkProject` (`pulumi.Input[str]`) - The project in which the subnetwork belongs.
-            If the `subnetwork` is a self_link, this field is ignored in favor of the project
-            defined in the subnetwork self_link. If the `subnetwork` is a name and this
-            field is not provided, the provider project is used.
-
-        The **scheduling** object supports the following:
-
-          * `automaticRestart` (`pulumi.Input[bool]`) - Specifies if the instance should be
-            restarted if it was terminated by Compute Engine (not a user).
-            Defaults to true.
-          * `minNodeCpus` (`pulumi.Input[float]`)
-          * `nodeAffinities` (`pulumi.Input[list]`) - Specifies node affinities or anti-affinities
-            to determine which sole-tenant nodes your instances and managed instance
-            groups will use as host systems. Read more on sole-tenant node creation
-            [here](https://cloud.google.com/compute/docs/nodes/create-nodes).
-            Structure documented below.
-            * `key` (`pulumi.Input[str]`) - The key for the node affinity label.
-            * `operator` (`pulumi.Input[str]`) - The operator. Can be `IN` for node-affinities
-              or `NOT_IN` for anti-affinities.
-            * `values` (`pulumi.Input[list]`)
-
-          * `onHostMaintenance` (`pulumi.Input[str]`) - Describes maintenance behavior for the
-            instance. Can be MIGRATE or TERMINATE, for more info, read
-            [here](https://cloud.google.com/compute/docs/instances/setting-instance-scheduling-options).
-          * `preemptible` (`pulumi.Input[bool]`) - Specifies if the instance is preemptible.
-            If this field is set to true, then `automatic_restart` must be
-            set to false.  Defaults to false.
-
-        The **scratch_disks** object supports the following:
-
-          * `interface` (`pulumi.Input[str]`) - The disk interface to use for attaching this disk; either SCSI or NVME.
-
-        The **service_account** object supports the following:
-
-          * `email` (`pulumi.Input[str]`) - The service account e-mail address. If not given, the
-            default Google Compute Engine service account is used.
-            **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
-          * `scopes` (`pulumi.Input[list]`) - A list of service scopes. Both OAuth2 URLs and gcloud
-            short names are supported. To allow full access to all Cloud APIs, use the
-            `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
-            **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
-
-        The **shielded_instance_config** object supports the following:
-
-          * `enableIntegrityMonitoring` (`pulumi.Input[bool]`) - -- Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
-          * `enableSecureBoot` (`pulumi.Input[bool]`) - -- Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
-          * `enableVtpm` (`pulumi.Input[bool]`) - -- Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -853,8 +326,306 @@ class Instance(pulumi.CustomResource):
         __props__["zone"] = zone
         return Instance(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="allowStoppingForUpdate")
+    def allow_stopping_for_update(self) -> Optional[bool]:
+        """
+        If true, allows this prvider to stop the instance to update its properties.
+        If you try to update a property that requires stopping the instance without setting this field, the update will fail.
+        """
+        return pulumi.get(self, "allow_stopping_for_update")
+
+    @property
+    @pulumi.getter(name="attachedDisks")
+    def attached_disks(self) -> Optional[List['outputs.InstanceAttachedDisk']]:
+        """
+        Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
+        """
+        return pulumi.get(self, "attached_disks")
+
+    @property
+    @pulumi.getter(name="bootDisk")
+    def boot_disk(self) -> 'outputs.InstanceBootDisk':
+        """
+        The boot disk for the instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "boot_disk")
+
+    @property
+    @pulumi.getter(name="canIpForward")
+    def can_ip_forward(self) -> Optional[bool]:
+        """
+        Whether to allow sending and receiving of
+        packets with non-matching source or destination IPs.
+        This defaults to false.
+        """
+        return pulumi.get(self, "can_ip_forward")
+
+    @property
+    @pulumi.getter(name="confidentialInstanceConfig")
+    def confidential_instance_config(self) -> 'outputs.InstanceConfidentialInstanceConfig':
+        """
+        The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
+        to create.
+        """
+        return pulumi.get(self, "confidential_instance_config")
+
+    @property
+    @pulumi.getter(name="cpuPlatform")
+    def cpu_platform(self) -> str:
+        """
+        The CPU platform used by this instance.
+        """
+        return pulumi.get(self, "cpu_platform")
+
+    @property
+    @pulumi.getter(name="currentStatus")
+    def current_status(self) -> str:
+        """
+        Current status of the instance.
+        """
+        return pulumi.get(self, "current_status")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[bool]:
+        """
+        Enable deletion protection on this instance. Defaults to false.
+        **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        A brief description of this resource.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="desiredStatus")
+    def desired_status(self) -> Optional[str]:
+        """
+        Desired status of the instance. Either
+        `"RUNNING"` or `"TERMINATED"`.
+        """
+        return pulumi.get(self, "desired_status")
+
+    @property
+    @pulumi.getter(name="enableDisplay")
+    def enable_display(self) -> Optional[bool]:
+        """
+        Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+        **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
+        """
+        return pulumi.get(self, "enable_display")
+
+    @property
+    @pulumi.getter(name="guestAccelerators")
+    def guest_accelerators(self) -> List['outputs.InstanceGuestAccelerator']:
+        """
+        List of the type and count of accelerator cards attached to the instance. Structure documented below.
+        **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
+        """
+        return pulumi.get(self, "guest_accelerators")
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> Optional[str]:
+        """
+        A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
+        Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
+        The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        The server-assigned unique identifier of this instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="labelFingerprint")
+    def label_fingerprint(self) -> str:
+        """
+        The unique fingerprint of the labels.
+        """
+        return pulumi.get(self, "label_fingerprint")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[Mapping[str, str]]:
+        """
+        A map of key/value label pairs to assign to the instance.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> str:
+        """
+        The machine type to create.
+        """
+        return pulumi.get(self, "machine_type")
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[Mapping[str, str]]:
+        """
+        Metadata key/value pairs to make available from
+        within the instance. Ssh keys attached in the Cloud Console will be removed.
+        Add them to your config in order to keep them attached to your instance.
+        """
+        return pulumi.get(self, "metadata")
+
+    @property
+    @pulumi.getter(name="metadataFingerprint")
+    def metadata_fingerprint(self) -> str:
+        """
+        The unique fingerprint of the metadata.
+        """
+        return pulumi.get(self, "metadata_fingerprint")
+
+    @property
+    @pulumi.getter(name="metadataStartupScript")
+    def metadata_startup_script(self) -> Optional[str]:
+        """
+        An alternative to using the
+        startup-script metadata key, except this one forces the instance to be
+        recreated (thus re-running the script) if it is changed. This replaces the
+        startup-script metadata key on the created instance and thus the two
+        mechanisms are not allowed to be used simultaneously.  Users are free to use
+        either mechanism - the only distinction is that this separate attribute
+        willl cause a recreate on modification.  On import, `metadata_startup_script`
+        will be set, but `metadata.startup-script` will not - if you choose to use the
+        other mechanism, you will see a diff immediately after import, which will cause a
+        destroy/recreate operation.  You may want to modify your state file manually
+        using `pulumi stack` commands, depending on your use case.
+        """
+        return pulumi.get(self, "metadata_startup_script")
+
+    @property
+    @pulumi.getter(name="minCpuPlatform")
+    def min_cpu_platform(self) -> str:
+        """
+        Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
+        `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
+        **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
+        """
+        return pulumi.get(self, "min_cpu_platform")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        A unique name for the resource, required by GCE.
+        Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="networkInterfaces")
+    def network_interfaces(self) -> List['outputs.InstanceNetworkInterface']:
+        """
+        Networks to attach to the instance. This can
+        be specified multiple times. Structure is documented below.
+        """
+        return pulumi.get(self, "network_interfaces")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The ID of the project in which the resource belongs. If it
+        is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="resourcePolicies")
+    def resource_policies(self) -> Optional[str]:
+        """
+        -- A list of short names or self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+        """
+        return pulumi.get(self, "resource_policies")
+
+    @property
+    @pulumi.getter
+    def scheduling(self) -> 'outputs.InstanceScheduling':
+        """
+        The scheduling strategy to use. More details about
+        this configuration option are detailed below.
+        """
+        return pulumi.get(self, "scheduling")
+
+    @property
+    @pulumi.getter(name="scratchDisks")
+    def scratch_disks(self) -> Optional[List['outputs.InstanceScratchDisk']]:
+        """
+        Scratch disks to attach to the instance. This can be
+        specified multiple times for multiple scratch disks. Structure is documented below.
+        """
+        return pulumi.get(self, "scratch_disks")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> str:
+        """
+        The URI of the created resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional['outputs.InstanceServiceAccount']:
+        """
+        Service account to attach to the instance.
+        Structure is documented below.
+        **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
+        """
+        return pulumi.get(self, "service_account")
+
+    @property
+    @pulumi.getter(name="shieldedInstanceConfig")
+    def shielded_instance_config(self) -> 'outputs.InstanceShieldedInstanceConfig':
+        """
+        Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
+        **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+        """
+        return pulumi.get(self, "shielded_instance_config")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[List[str]]:
+        """
+        A list of network tags to attach to the instance.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="tagsFingerprint")
+    def tags_fingerprint(self) -> str:
+        """
+        The unique fingerprint of the tags.
+        """
+        return pulumi.get(self, "tags_fingerprint")
+
+    @property
+    @pulumi.getter
+    def zone(self) -> str:
+        """
+        The zone that the machine should be created in.
+        """
+        return pulumi.get(self, "zone")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

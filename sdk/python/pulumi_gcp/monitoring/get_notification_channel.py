@@ -5,10 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
 
+__all__ = [
+    'GetNotificationChannelResult',
+    'AwaitableGetNotificationChannelResult',
+    'get_notification_channel',
+]
 
+@pulumi.output_type
 class GetNotificationChannelResult:
     """
     A collection of values returned by getNotificationChannel.
@@ -16,40 +23,95 @@ class GetNotificationChannelResult:
     def __init__(__self__, description=None, display_name=None, enabled=None, id=None, labels=None, name=None, project=None, sensitive_labels=None, type=None, user_labels=None, verification_status=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
-        __self__.description = description
+        pulumi.set(__self__, "description", description)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
-        __self__.display_name = display_name
+        pulumi.set(__self__, "display_name", display_name)
         if enabled and not isinstance(enabled, bool):
             raise TypeError("Expected argument 'enabled' to be a bool")
-        __self__.enabled = enabled
+        pulumi.set(__self__, "enabled", enabled)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if labels and not isinstance(labels, dict):
+            raise TypeError("Expected argument 'labels' to be a dict")
+        pulumi.set(__self__, "labels", labels)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if project and not isinstance(project, str):
+            raise TypeError("Expected argument 'project' to be a str")
+        pulumi.set(__self__, "project", project)
+        if sensitive_labels and not isinstance(sensitive_labels, list):
+            raise TypeError("Expected argument 'sensitive_labels' to be a list")
+        pulumi.set(__self__, "sensitive_labels", sensitive_labels)
+        if type and not isinstance(type, str):
+            raise TypeError("Expected argument 'type' to be a str")
+        pulumi.set(__self__, "type", type)
+        if user_labels and not isinstance(user_labels, dict):
+            raise TypeError("Expected argument 'user_labels' to be a dict")
+        pulumi.set(__self__, "user_labels", user_labels)
+        if verification_status and not isinstance(verification_status, str):
+            raise TypeError("Expected argument 'verification_status' to be a str")
+        pulumi.set(__self__, "verification_status", verification_status)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[str]:
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if labels and not isinstance(labels, dict):
-            raise TypeError("Expected argument 'labels' to be a dict")
-        __self__.labels = labels
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
-        if project and not isinstance(project, str):
-            raise TypeError("Expected argument 'project' to be a str")
-        __self__.project = project
-        if sensitive_labels and not isinstance(sensitive_labels, list):
-            raise TypeError("Expected argument 'sensitive_labels' to be a list")
-        __self__.sensitive_labels = sensitive_labels
-        if type and not isinstance(type, str):
-            raise TypeError("Expected argument 'type' to be a str")
-        __self__.type = type
-        if user_labels and not isinstance(user_labels, dict):
-            raise TypeError("Expected argument 'user_labels' to be a dict")
-        __self__.user_labels = user_labels
-        if verification_status and not isinstance(verification_status, str):
-            raise TypeError("Expected argument 'verification_status' to be a str")
-        __self__.verification_status = verification_status
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[Mapping[str, str]]:
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="sensitiveLabels")
+    def sensitive_labels(self) -> List['outputs.GetNotificationChannelSensitiveLabelResult']:
+        return pulumi.get(self, "sensitive_labels")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="userLabels")
+    def user_labels(self) -> Optional[Mapping[str, str]]:
+        return pulumi.get(self, "user_labels")
+
+    @property
+    @pulumi.getter(name="verificationStatus")
+    def verification_status(self) -> str:
+        return pulumi.get(self, "verification_status")
 
 
 class AwaitableGetNotificationChannelResult(GetNotificationChannelResult):
@@ -71,7 +133,12 @@ class AwaitableGetNotificationChannelResult(GetNotificationChannelResult):
             verification_status=self.verification_status)
 
 
-def get_notification_channel(display_name=None, labels=None, project=None, type=None, user_labels=None, opts=None):
+def get_notification_channel(display_name: Optional[str] = None,
+                             labels: Optional[Mapping[str, str]] = None,
+                             project: Optional[str] = None,
+                             type: Optional[str] = None,
+                             user_labels: Optional[Mapping[str, str]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNotificationChannelResult:
     """
     A NotificationChannel is a medium through which an alert is delivered
     when a policy violation is detected. Examples of channels include email, SMS,
@@ -89,12 +156,12 @@ def get_notification_channel(display_name=None, labels=None, project=None, type=
 
 
     :param str display_name: The display name for this notification channel.
-    :param dict labels: Labels (corresponding to the
+    :param Mapping[str, str] labels: Labels (corresponding to the
            NotificationChannelDescriptor schema) to filter the notification channels by.
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the provider project is used.
     :param str type: The type of the notification channel.
-    :param dict user_labels: User-provided key-value labels to filter by.
+    :param Mapping[str, str] user_labels: User-provided key-value labels to filter by.
     """
     __args__ = dict()
     __args__['displayName'] = display_name
@@ -106,17 +173,17 @@ def get_notification_channel(display_name=None, labels=None, project=None, type=
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('gcp:monitoring/getNotificationChannel:getNotificationChannel', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('gcp:monitoring/getNotificationChannel:getNotificationChannel', __args__, opts=opts, typ=GetNotificationChannelResult).value
 
     return AwaitableGetNotificationChannelResult(
-        description=__ret__.get('description'),
-        display_name=__ret__.get('displayName'),
-        enabled=__ret__.get('enabled'),
-        id=__ret__.get('id'),
-        labels=__ret__.get('labels'),
-        name=__ret__.get('name'),
-        project=__ret__.get('project'),
-        sensitive_labels=__ret__.get('sensitiveLabels'),
-        type=__ret__.get('type'),
-        user_labels=__ret__.get('userLabels'),
-        verification_status=__ret__.get('verificationStatus'))
+        description=__ret__.description,
+        display_name=__ret__.display_name,
+        enabled=__ret__.enabled,
+        id=__ret__.id,
+        labels=__ret__.labels,
+        name=__ret__.name,
+        project=__ret__.project,
+        sensitive_labels=__ret__.sensitive_labels,
+        type=__ret__.type,
+        user_labels=__ret__.user_labels,
+        verification_status=__ret__.verification_status)

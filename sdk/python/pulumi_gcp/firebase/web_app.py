@@ -5,30 +5,21 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['WebApp']
 
 
 class WebApp(pulumi.CustomResource):
-    app_id: pulumi.Output[str]
-    """
-    Immutable. The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque
-    token, as the data format is not specified.
-    """
-    display_name: pulumi.Output[str]
-    """
-    The user-assigned display name of the App.
-    """
-    name: pulumi.Output[str]
-    """
-    The fully qualified resource name of the App, for example: projects/projectId/webApps/appId
-    """
-    project: pulumi.Output[str]
-    """
-    The ID of the project in which the resource belongs.
-    If it is not provided, the provider project is used.
-    """
-    def __init__(__self__, resource_name, opts=None, display_name=None, project=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         A Google Cloud Firebase web application instance
 
@@ -76,13 +67,19 @@ class WebApp(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, app_id=None, display_name=None, name=None, project=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            app_id: Optional[pulumi.Input[str]] = None,
+            display_name: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            project: Optional[pulumi.Input[str]] = None) -> 'WebApp':
         """
         Get an existing WebApp resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_id: Immutable. The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque
                token, as the data format is not specified.
@@ -101,8 +98,43 @@ class WebApp(pulumi.CustomResource):
         __props__["project"] = project
         return WebApp(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="appId")
+    def app_id(self) -> str:
+        """
+        Immutable. The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque
+        token, as the data format is not specified.
+        """
+        return pulumi.get(self, "app_id")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        The user-assigned display name of the App.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The fully qualified resource name of the App, for example: projects/projectId/webApps/appId
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

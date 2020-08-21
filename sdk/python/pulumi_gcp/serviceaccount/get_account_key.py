@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
 
+__all__ = [
+    'GetAccountKeyResult',
+    'AwaitableGetAccountKeyResult',
+    'get_account_key',
+]
 
+@pulumi.output_type
 class GetAccountKeyResult:
     """
     A collection of values returned by getAccountKey.
@@ -16,28 +22,58 @@ class GetAccountKeyResult:
     def __init__(__self__, id=None, key_algorithm=None, name=None, project=None, public_key=None, public_key_type=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if key_algorithm and not isinstance(key_algorithm, str):
+            raise TypeError("Expected argument 'key_algorithm' to be a str")
+        pulumi.set(__self__, "key_algorithm", key_algorithm)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if project and not isinstance(project, str):
+            raise TypeError("Expected argument 'project' to be a str")
+        pulumi.set(__self__, "project", project)
+        if public_key and not isinstance(public_key, str):
+            raise TypeError("Expected argument 'public_key' to be a str")
+        pulumi.set(__self__, "public_key", public_key)
+        if public_key_type and not isinstance(public_key_type, str):
+            raise TypeError("Expected argument 'public_key_type' to be a str")
+        pulumi.set(__self__, "public_key_type", public_key_type)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if key_algorithm and not isinstance(key_algorithm, str):
-            raise TypeError("Expected argument 'key_algorithm' to be a str")
-        __self__.key_algorithm = key_algorithm
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
-        if project and not isinstance(project, str):
-            raise TypeError("Expected argument 'project' to be a str")
-        __self__.project = project
-        if public_key and not isinstance(public_key, str):
-            raise TypeError("Expected argument 'public_key' to be a str")
-        __self__.public_key = public_key
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="keyAlgorithm")
+    def key_algorithm(self) -> str:
+        return pulumi.get(self, "key_algorithm")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="publicKey")
+    def public_key(self) -> str:
         """
         The public key, base64 encoded
         """
-        if public_key_type and not isinstance(public_key_type, str):
-            raise TypeError("Expected argument 'public_key_type' to be a str")
-        __self__.public_key_type = public_key_type
+        return pulumi.get(self, "public_key")
+
+    @property
+    @pulumi.getter(name="publicKeyType")
+    def public_key_type(self) -> Optional[str]:
+        return pulumi.get(self, "public_key_type")
 
 
 class AwaitableGetAccountKeyResult(GetAccountKeyResult):
@@ -54,7 +90,10 @@ class AwaitableGetAccountKeyResult(GetAccountKeyResult):
             public_key_type=self.public_key_type)
 
 
-def get_account_key(name=None, project=None, public_key_type=None, opts=None):
+def get_account_key(name: Optional[str] = None,
+                    project: Optional[str] = None,
+                    public_key_type: Optional[str] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountKeyResult:
     """
     Get service account public key. For more information, see [the official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) and [API](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys/get).
 
@@ -74,12 +113,12 @@ def get_account_key(name=None, project=None, public_key_type=None, opts=None):
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('gcp:serviceAccount/getAccountKey:getAccountKey', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('gcp:serviceAccount/getAccountKey:getAccountKey', __args__, opts=opts, typ=GetAccountKeyResult).value
 
     return AwaitableGetAccountKeyResult(
-        id=__ret__.get('id'),
-        key_algorithm=__ret__.get('keyAlgorithm'),
-        name=__ret__.get('name'),
-        project=__ret__.get('project'),
-        public_key=__ret__.get('publicKey'),
-        public_key_type=__ret__.get('publicKeyType'))
+        id=__ret__.id,
+        key_algorithm=__ret__.key_algorithm,
+        name=__ret__.name,
+        project=__ret__.project,
+        public_key=__ret__.public_key,
+        public_key_type=__ret__.public_key_type)

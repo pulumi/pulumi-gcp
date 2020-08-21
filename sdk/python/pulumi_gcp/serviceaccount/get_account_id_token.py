@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
 
+__all__ = [
+    'GetAccountIdTokenResult',
+    'AwaitableGetAccountIdTokenResult',
+    'get_account_id_token',
+]
 
+@pulumi.output_type
 class GetAccountIdTokenResult:
     """
     A collection of values returned by getAccountIdToken.
@@ -16,28 +22,58 @@ class GetAccountIdTokenResult:
     def __init__(__self__, delegates=None, id=None, id_token=None, include_email=None, target_audience=None, target_service_account=None):
         if delegates and not isinstance(delegates, list):
             raise TypeError("Expected argument 'delegates' to be a list")
-        __self__.delegates = delegates
+        pulumi.set(__self__, "delegates", delegates)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if id_token and not isinstance(id_token, str):
+            raise TypeError("Expected argument 'id_token' to be a str")
+        pulumi.set(__self__, "id_token", id_token)
+        if include_email and not isinstance(include_email, bool):
+            raise TypeError("Expected argument 'include_email' to be a bool")
+        pulumi.set(__self__, "include_email", include_email)
+        if target_audience and not isinstance(target_audience, str):
+            raise TypeError("Expected argument 'target_audience' to be a str")
+        pulumi.set(__self__, "target_audience", target_audience)
+        if target_service_account and not isinstance(target_service_account, str):
+            raise TypeError("Expected argument 'target_service_account' to be a str")
+        pulumi.set(__self__, "target_service_account", target_service_account)
+
+    @property
+    @pulumi.getter
+    def delegates(self) -> Optional[List[str]]:
+        return pulumi.get(self, "delegates")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if id_token and not isinstance(id_token, str):
-            raise TypeError("Expected argument 'id_token' to be a str")
-        __self__.id_token = id_token
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="idToken")
+    def id_token(self) -> str:
         """
         The `id_token` representing the new generated identity.
         """
-        if include_email and not isinstance(include_email, bool):
-            raise TypeError("Expected argument 'include_email' to be a bool")
-        __self__.include_email = include_email
-        if target_audience and not isinstance(target_audience, str):
-            raise TypeError("Expected argument 'target_audience' to be a str")
-        __self__.target_audience = target_audience
-        if target_service_account and not isinstance(target_service_account, str):
-            raise TypeError("Expected argument 'target_service_account' to be a str")
-        __self__.target_service_account = target_service_account
+        return pulumi.get(self, "id_token")
+
+    @property
+    @pulumi.getter(name="includeEmail")
+    def include_email(self) -> Optional[bool]:
+        return pulumi.get(self, "include_email")
+
+    @property
+    @pulumi.getter(name="targetAudience")
+    def target_audience(self) -> str:
+        return pulumi.get(self, "target_audience")
+
+    @property
+    @pulumi.getter(name="targetServiceAccount")
+    def target_service_account(self) -> Optional[str]:
+        return pulumi.get(self, "target_service_account")
 
 
 class AwaitableGetAccountIdTokenResult(GetAccountIdTokenResult):
@@ -54,11 +90,15 @@ class AwaitableGetAccountIdTokenResult(GetAccountIdTokenResult):
             target_service_account=self.target_service_account)
 
 
-def get_account_id_token(delegates=None, include_email=None, target_audience=None, target_service_account=None, opts=None):
+def get_account_id_token(delegates: Optional[List[str]] = None,
+                         include_email: Optional[bool] = None,
+                         target_audience: Optional[str] = None,
+                         target_service_account: Optional[str] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountIdTokenResult:
     """
     Use this data source to access information about an existing resource.
 
-    :param list delegates: Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.   Used only when using impersonation mode.
+    :param List[str] delegates: Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.   Used only when using impersonation mode.
     :param bool include_email: Include the verified email in the claim. Used only when using impersonation mode.
     :param str target_audience: The audience claim for the `id_token`.
     :param str target_service_account: The email of the service account being impersonated.  Used only when using impersonation mode.
@@ -72,12 +112,12 @@ def get_account_id_token(delegates=None, include_email=None, target_audience=Non
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('gcp:serviceAccount/getAccountIdToken:getAccountIdToken', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('gcp:serviceAccount/getAccountIdToken:getAccountIdToken', __args__, opts=opts, typ=GetAccountIdTokenResult).value
 
     return AwaitableGetAccountIdTokenResult(
-        delegates=__ret__.get('delegates'),
-        id=__ret__.get('id'),
-        id_token=__ret__.get('idToken'),
-        include_email=__ret__.get('includeEmail'),
-        target_audience=__ret__.get('targetAudience'),
-        target_service_account=__ret__.get('targetServiceAccount'))
+        delegates=__ret__.delegates,
+        id=__ret__.id,
+        id_token=__ret__.id_token,
+        include_email=__ret__.include_email,
+        target_audience=__ret__.target_audience,
+        target_service_account=__ret__.target_service_account)

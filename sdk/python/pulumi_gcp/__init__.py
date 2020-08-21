@@ -4,6 +4,8 @@
 
 # Export this package's modules as members:
 from .provider import *
+from ._inputs import *
+from . import outputs
 
 # Make subpackages available:
 from . import (

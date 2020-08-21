@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
 
+__all__ = [
+    'GetRuleResult',
+    'AwaitableGetRuleResult',
+    'get_rule',
+]
 
+@pulumi.output_type
 class GetRuleResult:
     """
     A collection of values returned by getRule.
@@ -16,31 +22,56 @@ class GetRuleResult:
     def __init__(__self__, id=None, included_permissions=None, name=None, stage=None, title=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if included_permissions and not isinstance(included_permissions, list):
+            raise TypeError("Expected argument 'included_permissions' to be a list")
+        pulumi.set(__self__, "included_permissions", included_permissions)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if stage and not isinstance(stage, str):
+            raise TypeError("Expected argument 'stage' to be a str")
+        pulumi.set(__self__, "stage", stage)
+        if title and not isinstance(title, str):
+            raise TypeError("Expected argument 'title' to be a str")
+        pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if included_permissions and not isinstance(included_permissions, list):
-            raise TypeError("Expected argument 'included_permissions' to be a list")
-        __self__.included_permissions = included_permissions
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="includedPermissions")
+    def included_permissions(self) -> List[str]:
         """
         specifies the list of one or more permissions to include in the custom role, such as - `iam.roles.get`
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
-        if stage and not isinstance(stage, str):
-            raise TypeError("Expected argument 'stage' to be a str")
-        __self__.stage = stage
+        return pulumi.get(self, "included_permissions")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def stage(self) -> str:
         """
         indicates the stage of a role in the launch lifecycle, such as `GA`, `BETA` or `ALPHA`.
         """
-        if title and not isinstance(title, str):
-            raise TypeError("Expected argument 'title' to be a str")
-        __self__.title = title
+        return pulumi.get(self, "stage")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
         """
         is a friendly title for the role, such as "Role Viewer"
         """
+        return pulumi.get(self, "title")
 
 
 class AwaitableGetRuleResult(GetRuleResult):
@@ -56,7 +87,8 @@ class AwaitableGetRuleResult(GetRuleResult):
             title=self.title)
 
 
-def get_rule(name=None, opts=None):
+def get_rule(name: Optional[str] = None,
+             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRuleResult:
     """
     Use this data source to get information about a Google IAM Role.
 
@@ -69,11 +101,11 @@ def get_rule(name=None, opts=None):
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('gcp:iam/getRule:getRule', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('gcp:iam/getRule:getRule', __args__, opts=opts, typ=GetRuleResult).value
 
     return AwaitableGetRuleResult(
-        id=__ret__.get('id'),
-        included_permissions=__ret__.get('includedPermissions'),
-        name=__ret__.get('name'),
-        stage=__ret__.get('stage'),
-        title=__ret__.get('title'))
+        id=__ret__.id,
+        included_permissions=__ret__.included_permissions,
+        name=__ret__.name,
+        stage=__ret__.stage,
+        title=__ret__.title)

@@ -5,64 +5,27 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['NetworkEndpointGroup']
 
 
 class NetworkEndpointGroup(pulumi.CustomResource):
-    default_port: pulumi.Output[float]
-    """
-    The default port used if the port number is not specified in the
-    network endpoint.
-    """
-    description: pulumi.Output[str]
-    """
-    An optional description of this resource. Provide this property when
-    you create the resource.
-    """
-    name: pulumi.Output[str]
-    """
-    Name of the resource; provided by the client when the resource is
-    created. The name must be 1-63 characters long, and comply with
-    RFC1035. Specifically, the name must be 1-63 characters long and match
-    the regular expression `a-z?` which means the
-    first character must be a lowercase letter, and all following
-    characters must be a dash, lowercase letter, or digit, except the last
-    character, which cannot be a dash.
-    """
-    network: pulumi.Output[str]
-    """
-    The network to which all network endpoints in the NEG belong.
-    Uses "default" project network if unspecified.
-    """
-    network_endpoint_type: pulumi.Output[str]
-    """
-    Type of network endpoints in this network endpoint group.
-    Default value is `GCE_VM_IP_PORT`.
-    Possible values are `GCE_VM_IP_PORT`.
-    """
-    project: pulumi.Output[str]
-    """
-    The ID of the project in which the resource belongs.
-    If it is not provided, the provider project is used.
-    """
-    self_link: pulumi.Output[str]
-    """
-    The URI of the created resource.
-    """
-    size: pulumi.Output[float]
-    """
-    Number of network endpoints in the network endpoint group.
-    """
-    subnetwork: pulumi.Output[str]
-    """
-    Optional subnetwork to which all network endpoints in the NEG belong.
-    """
-    zone: pulumi.Output[str]
-    """
-    Zone where the network endpoint group is located.
-    """
-    def __init__(__self__, resource_name, opts=None, default_port=None, description=None, name=None, network=None, network_endpoint_type=None, project=None, subnetwork=None, zone=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 default_port: Optional[pulumi.Input[float]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 network: Optional[pulumi.Input[str]] = None,
+                 network_endpoint_type: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 subnetwork: Optional[pulumi.Input[str]] = None,
+                 zone: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Network endpoint groups (NEGs) are zonal resources that represent
         collections of IP address and port combinations for GCP resources within a
@@ -142,13 +105,25 @@ class NetworkEndpointGroup(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, default_port=None, description=None, name=None, network=None, network_endpoint_type=None, project=None, self_link=None, size=None, subnetwork=None, zone=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            default_port: Optional[pulumi.Input[float]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            network: Optional[pulumi.Input[str]] = None,
+            network_endpoint_type: Optional[pulumi.Input[str]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            self_link: Optional[pulumi.Input[str]] = None,
+            size: Optional[pulumi.Input[float]] = None,
+            subnetwork: Optional[pulumi.Input[str]] = None,
+            zone: Optional[pulumi.Input[str]] = None) -> 'NetworkEndpointGroup':
         """
         Get an existing NetworkEndpointGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] default_port: The default port used if the port number is not specified in the
                network endpoint.
@@ -189,8 +164,101 @@ class NetworkEndpointGroup(pulumi.CustomResource):
         __props__["zone"] = zone
         return NetworkEndpointGroup(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="defaultPort")
+    def default_port(self) -> Optional[float]:
+        """
+        The default port used if the port number is not specified in the
+        network endpoint.
+        """
+        return pulumi.get(self, "default_port")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        An optional description of this resource. Provide this property when
+        you create the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the resource; provided by the client when the resource is
+        created. The name must be 1-63 characters long, and comply with
+        RFC1035. Specifically, the name must be 1-63 characters long and match
+        the regular expression `a-z?` which means the
+        first character must be a lowercase letter, and all following
+        characters must be a dash, lowercase letter, or digit, except the last
+        character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def network(self) -> str:
+        """
+        The network to which all network endpoints in the NEG belong.
+        Uses "default" project network if unspecified.
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="networkEndpointType")
+    def network_endpoint_type(self) -> Optional[str]:
+        """
+        Type of network endpoints in this network endpoint group.
+        Default value is `GCE_VM_IP_PORT`.
+        Possible values are `GCE_VM_IP_PORT`.
+        """
+        return pulumi.get(self, "network_endpoint_type")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> str:
+        """
+        The URI of the created resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter
+    def size(self) -> float:
+        """
+        Number of network endpoints in the network endpoint group.
+        """
+        return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter
+    def subnetwork(self) -> Optional[str]:
+        """
+        Optional subnetwork to which all network endpoints in the NEG belong.
+        """
+        return pulumi.get(self, "subnetwork")
+
+    @property
+    @pulumi.getter
+    def zone(self) -> str:
+        """
+        Zone where the network endpoint group is located.
+        """
+        return pulumi.get(self, "zone")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

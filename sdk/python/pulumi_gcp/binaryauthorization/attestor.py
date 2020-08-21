@@ -5,86 +5,25 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['Attestor']
 
 
 class Attestor(pulumi.CustomResource):
-    attestation_authority_note: pulumi.Output[dict]
-    """
-    A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
-    Structure is documented below.
-
-      * `delegationServiceAccountEmail` (`str`) - -
-        This field will contain the service account email address that
-        this Attestor will use as the principal when querying Container
-        Analysis. Attestor administrators must grant this service account
-        the IAM role needed to read attestations from the noteReference in
-        Container Analysis (containeranalysis.notes.occurrences.viewer).
-        This email address is fixed for the lifetime of the Attestor, but
-        callers should not make any other assumptions about the service
-        account email; future versions may use an email based on a
-        different naming pattern.
-      * `noteReference` (`str`) - The resource name of a ATTESTATION_AUTHORITY Note, created by the
-        user. If the Note is in a different project from the Attestor, it
-        should be specified in the format `projects/*/notes/*` (or the legacy
-        `providers/*/notes/*`). This field may not be updated.
-        An attestation by this attestor is stored as a Container Analysis
-        ATTESTATION_AUTHORITY Occurrence that names a container image
-        and that links to this Note.
-      * `publicKeys` (`list`) - Public keys that verify attestations signed by this attestor. This
-        field may be updated.
-        If this field is non-empty, one of the specified public keys must
-        verify that an attestation was signed by this attestor for the
-        image specified in the admission request.
-        If this field is empty, this attestor always returns that no valid
-        attestations exist.
-        Structure is documented below.
-        * `asciiArmoredPgpPublicKey` (`str`) - ASCII-armored representation of a PGP public key, as the
-          entire output by the command
-          `gpg --export --armor foo@example.com` (either LF or CRLF
-          line endings). When using this field, id should be left
-          blank. The BinAuthz API handlers will calculate the ID
-          and fill it in automatically. BinAuthz computes this ID
-          as the OpenPGP RFC4880 V4 fingerprint, represented as
-          upper-case hex. If id is provided by the caller, it will
-          be overwritten by the API-calculated ID.
-        * `comment` (`str`) - A descriptive comment. This field may be updated.
-        * `id` (`str`) - The ID of this public key. Signatures verified by BinAuthz
-          must include the ID of the public key that can be used to
-          verify them, and that ID must match the contents of this
-          field exactly. Additional restrictions on this field can
-          be imposed based on which public key type is encapsulated.
-          See the documentation on publicKey cases below for details.
-        * `pkixPublicKey` (`dict`) - A raw PKIX SubjectPublicKeyInfo format public key.
-          NOTE: id may be explicitly provided by the caller when using this
-          type of public key, but it MUST be a valid RFC3986 URI. If id is left
-          blank, a default one will be computed based on the digest of the DER
-          encoding of the public key.
-          Structure is documented below.
-          * `publicKeyPem` (`str`) - A PEM-encoded public key, as described in
-            `https://tools.ietf.org/html/rfc7468#section-13`
-          * `signatureAlgorithm` (`str`) - The signature algorithm used to verify a message against
-            a signature using this key. These signature algorithm must
-            match the structure and any object identifiers encoded in
-            publicKeyPem (i.e. this algorithm must match that of the
-            public key).
-    """
-    description: pulumi.Output[str]
-    """
-    A descriptive comment. This field may be updated. The field may be
-    displayed in chooser dialogs.
-    """
-    name: pulumi.Output[str]
-    """
-    The resource name.
-    """
-    project: pulumi.Output[str]
-    """
-    The ID of the project in which the resource belongs.
-    If it is not provided, the provider project is used.
-    """
-    def __init__(__self__, resource_name, opts=None, attestation_authority_note=None, description=None, name=None, project=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 attestation_authority_note: Optional[pulumi.Input[pulumi.InputType['AttestorAttestationAuthorityNoteArgs']]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         An attestor that attests to container image artifacts.
 
@@ -98,70 +37,13 @@ class Attestor(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] attestation_authority_note: A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
+        :param pulumi.Input[pulumi.InputType['AttestorAttestationAuthorityNoteArgs']] attestation_authority_note: A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
                Structure is documented below.
         :param pulumi.Input[str] description: A descriptive comment. This field may be updated. The field may be
                displayed in chooser dialogs.
         :param pulumi.Input[str] name: The resource name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-
-        The **attestation_authority_note** object supports the following:
-
-          * `delegationServiceAccountEmail` (`pulumi.Input[str]`) - -
-            This field will contain the service account email address that
-            this Attestor will use as the principal when querying Container
-            Analysis. Attestor administrators must grant this service account
-            the IAM role needed to read attestations from the noteReference in
-            Container Analysis (containeranalysis.notes.occurrences.viewer).
-            This email address is fixed for the lifetime of the Attestor, but
-            callers should not make any other assumptions about the service
-            account email; future versions may use an email based on a
-            different naming pattern.
-          * `noteReference` (`pulumi.Input[str]`) - The resource name of a ATTESTATION_AUTHORITY Note, created by the
-            user. If the Note is in a different project from the Attestor, it
-            should be specified in the format `projects/*/notes/*` (or the legacy
-            `providers/*/notes/*`). This field may not be updated.
-            An attestation by this attestor is stored as a Container Analysis
-            ATTESTATION_AUTHORITY Occurrence that names a container image
-            and that links to this Note.
-          * `publicKeys` (`pulumi.Input[list]`) - Public keys that verify attestations signed by this attestor. This
-            field may be updated.
-            If this field is non-empty, one of the specified public keys must
-            verify that an attestation was signed by this attestor for the
-            image specified in the admission request.
-            If this field is empty, this attestor always returns that no valid
-            attestations exist.
-            Structure is documented below.
-            * `asciiArmoredPgpPublicKey` (`pulumi.Input[str]`) - ASCII-armored representation of a PGP public key, as the
-              entire output by the command
-              `gpg --export --armor foo@example.com` (either LF or CRLF
-              line endings). When using this field, id should be left
-              blank. The BinAuthz API handlers will calculate the ID
-              and fill it in automatically. BinAuthz computes this ID
-              as the OpenPGP RFC4880 V4 fingerprint, represented as
-              upper-case hex. If id is provided by the caller, it will
-              be overwritten by the API-calculated ID.
-            * `comment` (`pulumi.Input[str]`) - A descriptive comment. This field may be updated.
-            * `id` (`pulumi.Input[str]`) - The ID of this public key. Signatures verified by BinAuthz
-              must include the ID of the public key that can be used to
-              verify them, and that ID must match the contents of this
-              field exactly. Additional restrictions on this field can
-              be imposed based on which public key type is encapsulated.
-              See the documentation on publicKey cases below for details.
-            * `pkixPublicKey` (`pulumi.Input[dict]`) - A raw PKIX SubjectPublicKeyInfo format public key.
-              NOTE: id may be explicitly provided by the caller when using this
-              type of public key, but it MUST be a valid RFC3986 URI. If id is left
-              blank, a default one will be computed based on the digest of the DER
-              encoding of the public key.
-              Structure is documented below.
-              * `publicKeyPem` (`pulumi.Input[str]`) - A PEM-encoded public key, as described in
-                `https://tools.ietf.org/html/rfc7468#section-13`
-              * `signatureAlgorithm` (`pulumi.Input[str]`) - The signature algorithm used to verify a message against
-                a signature using this key. These signature algorithm must
-                match the structure and any object identifiers encoded in
-                publicKeyPem (i.e. this algorithm must match that of the
-                public key).
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -193,78 +75,27 @@ class Attestor(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, attestation_authority_note=None, description=None, name=None, project=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            attestation_authority_note: Optional[pulumi.Input[pulumi.InputType['AttestorAttestationAuthorityNoteArgs']]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            project: Optional[pulumi.Input[str]] = None) -> 'Attestor':
         """
         Get an existing Attestor resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] attestation_authority_note: A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
+        :param pulumi.Input[pulumi.InputType['AttestorAttestationAuthorityNoteArgs']] attestation_authority_note: A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
                Structure is documented below.
         :param pulumi.Input[str] description: A descriptive comment. This field may be updated. The field may be
                displayed in chooser dialogs.
         :param pulumi.Input[str] name: The resource name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-
-        The **attestation_authority_note** object supports the following:
-
-          * `delegationServiceAccountEmail` (`pulumi.Input[str]`) - -
-            This field will contain the service account email address that
-            this Attestor will use as the principal when querying Container
-            Analysis. Attestor administrators must grant this service account
-            the IAM role needed to read attestations from the noteReference in
-            Container Analysis (containeranalysis.notes.occurrences.viewer).
-            This email address is fixed for the lifetime of the Attestor, but
-            callers should not make any other assumptions about the service
-            account email; future versions may use an email based on a
-            different naming pattern.
-          * `noteReference` (`pulumi.Input[str]`) - The resource name of a ATTESTATION_AUTHORITY Note, created by the
-            user. If the Note is in a different project from the Attestor, it
-            should be specified in the format `projects/*/notes/*` (or the legacy
-            `providers/*/notes/*`). This field may not be updated.
-            An attestation by this attestor is stored as a Container Analysis
-            ATTESTATION_AUTHORITY Occurrence that names a container image
-            and that links to this Note.
-          * `publicKeys` (`pulumi.Input[list]`) - Public keys that verify attestations signed by this attestor. This
-            field may be updated.
-            If this field is non-empty, one of the specified public keys must
-            verify that an attestation was signed by this attestor for the
-            image specified in the admission request.
-            If this field is empty, this attestor always returns that no valid
-            attestations exist.
-            Structure is documented below.
-            * `asciiArmoredPgpPublicKey` (`pulumi.Input[str]`) - ASCII-armored representation of a PGP public key, as the
-              entire output by the command
-              `gpg --export --armor foo@example.com` (either LF or CRLF
-              line endings). When using this field, id should be left
-              blank. The BinAuthz API handlers will calculate the ID
-              and fill it in automatically. BinAuthz computes this ID
-              as the OpenPGP RFC4880 V4 fingerprint, represented as
-              upper-case hex. If id is provided by the caller, it will
-              be overwritten by the API-calculated ID.
-            * `comment` (`pulumi.Input[str]`) - A descriptive comment. This field may be updated.
-            * `id` (`pulumi.Input[str]`) - The ID of this public key. Signatures verified by BinAuthz
-              must include the ID of the public key that can be used to
-              verify them, and that ID must match the contents of this
-              field exactly. Additional restrictions on this field can
-              be imposed based on which public key type is encapsulated.
-              See the documentation on publicKey cases below for details.
-            * `pkixPublicKey` (`pulumi.Input[dict]`) - A raw PKIX SubjectPublicKeyInfo format public key.
-              NOTE: id may be explicitly provided by the caller when using this
-              type of public key, but it MUST be a valid RFC3986 URI. If id is left
-              blank, a default one will be computed based on the digest of the DER
-              encoding of the public key.
-              Structure is documented below.
-              * `publicKeyPem` (`pulumi.Input[str]`) - A PEM-encoded public key, as described in
-                `https://tools.ietf.org/html/rfc7468#section-13`
-              * `signatureAlgorithm` (`pulumi.Input[str]`) - The signature algorithm used to verify a message against
-                a signature using this key. These signature algorithm must
-                match the structure and any object identifiers encoded in
-                publicKeyPem (i.e. this algorithm must match that of the
-                public key).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -276,8 +107,44 @@ class Attestor(pulumi.CustomResource):
         __props__["project"] = project
         return Attestor(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="attestationAuthorityNote")
+    def attestation_authority_note(self) -> 'outputs.AttestorAttestationAuthorityNote':
+        """
+        A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "attestation_authority_note")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        A descriptive comment. This field may be updated. The field may be
+        displayed in chooser dialogs.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The resource name.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

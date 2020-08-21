@@ -5,244 +5,26 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['Cluster']
 
 
 class Cluster(pulumi.CustomResource):
-    cluster_config: pulumi.Output[dict]
-    """
-    Allows you to configure various aspects of the cluster.
-    Structure defined below.
-
-      * `autoscalingConfig` (`dict`) - The autoscaling policy config associated with the cluster.
-        Structure defined below.
-        * `policyUri` (`str`) - The autoscaling policy used by the cluster.
-
-      * `bucket` (`str`)
-      * `encryptionConfig` (`dict`) - The Customer managed encryption keys settings for the cluster.
-        Structure defined below.
-        * `kms_key_name` (`str`) - The Cloud KMS key name to use for PD disk encryption for
-          all instances in the cluster.
-
-      * `endpointConfig` (`dict`) - The config settings for port access on the cluster.
-        Structure defined below.
-        - - -
-        * `enableHttpPortAccess` (`bool`) - The flag to enable http access to specific ports
-          on the cluster from external sources (aka Component Gateway). Defaults to false.
-        * `httpPorts` (`dict`)
-
-      * `gceClusterConfig` (`dict`) - Common config settings for resources of Google Compute Engine cluster
-        instances, applicable to all instances in the cluster. Structure defined below.
-        * `internalIpOnly` (`bool`) - By default, clusters are not restricted to internal IP addresses, 
-          and will have ephemeral external IP addresses assigned to each instance. If set to true, all
-          instances in the cluster will only have internal IP addresses. Note: Private Google Access
-          (also known as `privateIpGoogleAccess`) must be enabled on the subnetwork that the cluster
-          will be launched in.
-        * `metadata` (`dict`) - A map of the Compute Engine metadata entries to add to all instances
-          (see [Project and instance metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
-        * `network` (`str`) - The name or self_link of the Google Compute Engine
-          network to the cluster will be part of. Conflicts with `subnetwork`.
-          If neither is specified, this defaults to the "default" network.
-        * `service_account` (`str`) - The service account to be used by the Node VMs.
-          If not specified, the "default" service account is used.
-        * `serviceAccountScopes` (`list`) - The set of Google API scopes
-          to be made available on all of the node VMs under the `service_account`
-          specified. These can be	either FQDNs, or scope aliases. The following scopes
-          must be set if any other scopes are set. They're necessary to ensure the
-          correct functioning ofthe cluster, and are set automatically by the API:
-        * `subnetwork` (`str`) - The name or self_link of the Google Compute Engine
-          subnetwork the cluster will be part of. Conflicts with `network`.
-        * `tags` (`list`) - The list of instance tags applied to instances in the cluster.
-          Tags are used to identify valid sources or targets for network firewalls.
-        * `zone` (`str`) - The GCP zone where your data is stored and used (i.e. where
-          the master and the worker nodes will be created in). If `region` is set to 'global' (default)
-          then `zone` is mandatory, otherwise GCP is able to make use of [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/auto-zone)
-          to determine this automatically for you.
-          Note: This setting additionally determines and restricts
-          which computing resources are available for use with other configs such as
-          `cluster_config.master_config.machine_type` and `cluster_config.worker_config.machine_type`.
-
-      * `initializationActions` (`list`) - Commands to execute on each node after config is completed.
-        You can specify multiple versions of these. Structure defined below.
-        * `script` (`str`) - The script to be executed during initialization of the cluster.
-          The script must be a GCS file with a gs:// prefix.
-        * `timeout_sec` (`float`) - The maximum duration (in seconds) which `script` is
-          allowed to take to execute its action. GCP will default to a predetermined
-          computed value if not set (currently 300).
-
-      * `lifecycleConfig` (`dict`) - The settings for auto deletion cluster schedule.
-        Structure defined below.
-        * `autoDeleteTime` (`str`) - The time when cluster will be auto-deleted.
-          A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
-          Example: "2014-10-02T15:01:23.045123456Z".
-        * `idleDeleteTtl` (`str`) - The duration to keep the cluster alive while idling
-          (no jobs running). After this TTL, the cluster will be deleted. Valid range: [10m, 14d].
-        * `idleStartTime` (`str`)
-
-      * `masterConfig` (`dict`) - The Google Compute Engine config settings for the master instances
-        in a cluster.. Structure defined below.
-        * `accelerators` (`list`) - The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
-          * `acceleratorCount` (`float`) - The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
-          * `accelerator_type` (`str`) - The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
-
-        * `diskConfig` (`dict`) - Disk Config
-          * `boot_disk_size_gb` (`float`) - Size of the primary disk attached to each preemptible worker node, specified
-            in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
-            computed value if not set (currently 500GB). Note: If SSDs are not
-            attached, it also contains the HDFS data blocks and Hadoop working directories.
-          * `boot_disk_type` (`str`) - The disk type of the primary disk attached to each preemptible worker node.
-            One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
-          * `numLocalSsds` (`float`) - The amount of local SSD disks that will be
-            attached to each preemptible worker node. Defaults to 0.
-
-        * `imageUri` (`str`) - The URI for the image to use for this worker.  See [the guide](https://cloud.google.com/dataproc/docs/guides/dataproc-images)
-          for more information.
-        * `instanceNames` (`list`)
-        * `machine_type` (`str`) - The name of a Google Compute Engine machine type
-          to create for the worker nodes. If not specified, GCP will default to a predetermined
-          computed value (currently `n1-standard-4`).
-        * `min_cpu_platform` (`str`) - The name of a minimum generation of CPU family
-          for the master. If not specified, GCP will default to a predetermined computed value
-          for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-          for details about which CPU families are available (and defaulted) for each zone.
-        * `numInstances` (`float`) - Specifies the number of preemptible nodes to create.
-          Defaults to 0.
-
-      * `preemptibleWorkerConfig` (`dict`) - The Google Compute Engine config settings for the additional (aka
-        preemptible) instances in a cluster. Structure defined below.
-        * `diskConfig` (`dict`) - Disk Config
-          * `boot_disk_size_gb` (`float`) - Size of the primary disk attached to each preemptible worker node, specified
-            in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
-            computed value if not set (currently 500GB). Note: If SSDs are not
-            attached, it also contains the HDFS data blocks and Hadoop working directories.
-          * `boot_disk_type` (`str`) - The disk type of the primary disk attached to each preemptible worker node.
-            One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
-          * `numLocalSsds` (`float`) - The amount of local SSD disks that will be
-            attached to each preemptible worker node. Defaults to 0.
-
-        * `instanceNames` (`list`)
-        * `numInstances` (`float`) - Specifies the number of preemptible nodes to create.
-          Defaults to 0.
-
-      * `securityConfig` (`dict`) - Security related configuration. Structure defined below.
-        * `kerberosConfig` (`dict`) - Kerberos Configuration
-          * `crossRealmTrustAdminServer` (`str`) - The admin server (IP or hostname) for the
-            remote trusted realm in a cross realm trust relationship.
-          * `crossRealmTrustKdc` (`str`) - The KDC (IP or hostname) for the
-            remote trusted realm in a cross realm trust relationship.
-          * `crossRealmTrustRealm` (`str`) - The remote realm the Dataproc on-cluster KDC will
-            trust, should the user enable cross realm trust.
-          * `crossRealmTrustSharedPasswordUri` (`str`) - The Cloud Storage URI of a KMS
-            encrypted file containing the shared password between the on-cluster Kerberos realm
-            and the remote trusted realm, in a cross realm trust relationship.
-          * `enableKerberos` (`bool`) - Flag to indicate whether to Kerberize the cluster.
-          * `kdcDbKeyUri` (`str`) - The Cloud Storage URI of a KMS encrypted file containing
-            the master key of the KDC database.
-          * `keyPasswordUri` (`str`) - The Cloud Storage URI of a KMS encrypted file containing
-            the password to the user provided key. For the self-signed certificate, this password
-            is generated by Dataproc.
-          * `keystorePasswordUri` (`str`) - The Cloud Storage URI of a KMS encrypted file containing
-            the password to the user provided keystore. For the self-signed certificated, the password
-            is generated by Dataproc.
-          * `keystoreUri` (`str`) - The Cloud Storage URI of the keystore file used for SSL encryption.
-            If not provided, Dataproc will provide a self-signed certificate.
-          * `kmsKeyUri` (`str`) - The URI of the KMS key used to encrypt various sensitive files.
-          * `realm` (`str`) - The name of the on-cluster Kerberos realm. If not specified, the
-            uppercased domain of hostnames will be the realm.
-          * `rootPrincipalPasswordUri` (`str`) - The Cloud Storage URI of a KMS encrypted file
-            containing the root principal password.
-          * `tgtLifetimeHours` (`float`) - The lifetime of the ticket granting ticket, in hours.
-          * `truststorePasswordUri` (`str`) - The Cloud Storage URI of a KMS encrypted file
-            containing the password to the user provided truststore. For the self-signed
-            certificate, this password is generated by Dataproc.
-          * `truststoreUri` (`str`) - The Cloud Storage URI of the truststore file used for
-            SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
-
-      * `softwareConfig` (`dict`) - The config settings for software inside the cluster.
-        Structure defined below.
-        * `imageVersion` (`str`) - The Cloud Dataproc image version to use
-          for the cluster - this controls the sets of software versions
-          installed onto the nodes when you create clusters. If not specified, defaults to the
-          latest version. For a list of valid versions see
-          [Cloud Dataproc versions](https://cloud.google.com/dataproc/docs/concepts/dataproc-versions)
-        * `optionalComponents` (`list`) - The set of optional components to activate on the cluster. 
-          Accepted values are:
-          * ANACONDA
-          * DRUID
-          * HBASE
-          * HIVE_WEBHCAT
-          * JUPYTER
-          * KERBEROS
-          * PRESTO
-          * RANGER
-          * SOLR
-          * ZEPPELIN
-          * ZOOKEEPER
-        * `overrideProperties` (`dict`) - A list of override and additional properties (key/value pairs)
-          used to modify various aspects of the common configuration files used when creating
-          a cluster. For a list of valid properties please see
-          [Cluster properties](https://cloud.google.com/dataproc/docs/concepts/cluster-properties)
-        * `properties` (`dict`)
-
-      * `stagingBucket` (`str`) - The Cloud Storage staging bucket used to stage files,
-        such as Hadoop jars, between client machines and the cluster.
-        Note: If you don't explicitly specify a `staging_bucket`
-        then GCP will auto create / assign one for you. However, you are not guaranteed
-        an auto generated bucket which is solely dedicated to your cluster; it may be shared
-        with other clusters in the same region/zone also choosing to use the auto generation
-        option.
-      * `worker_config` (`dict`) - The Google Compute Engine config settings for the worker instances
-        in a cluster.. Structure defined below.
-        * `accelerators` (`list`) - The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
-          * `acceleratorCount` (`float`) - The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
-          * `accelerator_type` (`str`) - The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
-
-        * `diskConfig` (`dict`) - Disk Config
-          * `boot_disk_size_gb` (`float`) - Size of the primary disk attached to each preemptible worker node, specified
-            in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
-            computed value if not set (currently 500GB). Note: If SSDs are not
-            attached, it also contains the HDFS data blocks and Hadoop working directories.
-          * `boot_disk_type` (`str`) - The disk type of the primary disk attached to each preemptible worker node.
-            One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
-          * `numLocalSsds` (`float`) - The amount of local SSD disks that will be
-            attached to each preemptible worker node. Defaults to 0.
-
-        * `imageUri` (`str`) - The URI for the image to use for this worker.  See [the guide](https://cloud.google.com/dataproc/docs/guides/dataproc-images)
-          for more information.
-        * `instanceNames` (`list`)
-        * `machine_type` (`str`) - The name of a Google Compute Engine machine type
-          to create for the worker nodes. If not specified, GCP will default to a predetermined
-          computed value (currently `n1-standard-4`).
-        * `min_cpu_platform` (`str`) - The name of a minimum generation of CPU family
-          for the master. If not specified, GCP will default to a predetermined computed value
-          for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-          for details about which CPU families are available (and defaulted) for each zone.
-        * `numInstances` (`float`) - Specifies the number of preemptible nodes to create.
-          Defaults to 0.
-    """
-    labels: pulumi.Output[dict]
-    """
-    The list of labels (key/value pairs) to be applied to
-    instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
-    which is the name of the cluster.
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the cluster, unique within the project and
-    zone.
-    """
-    project: pulumi.Output[str]
-    """
-    The ID of the project in which the `cluster` will exist. If it
-    is not provided, the provider project is used.
-    """
-    region: pulumi.Output[str]
-    """
-    The region in which the cluster and associated nodes will be created in.
-    Defaults to `global`.
-    """
-    def __init__(__self__, resource_name, opts=None, cluster_config=None, labels=None, name=None, project=None, region=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 cluster_config: Optional[pulumi.Input[pulumi.InputType['ClusterClusterConfigArgs']]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a Cloud Dataproc cluster resource within GCP. For more information see
         [the official dataproc documentation](https://cloud.google.com/dataproc/).
@@ -255,9 +37,9 @@ class Cluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] cluster_config: Allows you to configure various aspects of the cluster.
+        :param pulumi.Input[pulumi.InputType['ClusterClusterConfigArgs']] cluster_config: Allows you to configure various aspects of the cluster.
                Structure defined below.
-        :param pulumi.Input[dict] labels: The list of labels (key/value pairs) to be applied to
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The list of labels (key/value pairs) to be applied to
                instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
                which is the name of the cluster.
         :param pulumi.Input[str] name: The name of the cluster, unique within the project and
@@ -266,214 +48,6 @@ class Cluster(pulumi.CustomResource):
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region in which the cluster and associated nodes will be created in.
                Defaults to `global`.
-
-        The **cluster_config** object supports the following:
-
-          * `autoscalingConfig` (`pulumi.Input[dict]`) - The autoscaling policy config associated with the cluster.
-            Structure defined below.
-            * `policyUri` (`pulumi.Input[str]`) - The autoscaling policy used by the cluster.
-
-          * `bucket` (`pulumi.Input[str]`)
-          * `encryptionConfig` (`pulumi.Input[dict]`) - The Customer managed encryption keys settings for the cluster.
-            Structure defined below.
-            * `kms_key_name` (`pulumi.Input[str]`) - The Cloud KMS key name to use for PD disk encryption for
-              all instances in the cluster.
-
-          * `endpointConfig` (`pulumi.Input[dict]`) - The config settings for port access on the cluster.
-            Structure defined below.
-            - - -
-            * `enableHttpPortAccess` (`pulumi.Input[bool]`) - The flag to enable http access to specific ports
-              on the cluster from external sources (aka Component Gateway). Defaults to false.
-            * `httpPorts` (`pulumi.Input[dict]`)
-
-          * `gceClusterConfig` (`pulumi.Input[dict]`) - Common config settings for resources of Google Compute Engine cluster
-            instances, applicable to all instances in the cluster. Structure defined below.
-            * `internalIpOnly` (`pulumi.Input[bool]`) - By default, clusters are not restricted to internal IP addresses, 
-              and will have ephemeral external IP addresses assigned to each instance. If set to true, all
-              instances in the cluster will only have internal IP addresses. Note: Private Google Access
-              (also known as `privateIpGoogleAccess`) must be enabled on the subnetwork that the cluster
-              will be launched in.
-            * `metadata` (`pulumi.Input[dict]`) - A map of the Compute Engine metadata entries to add to all instances
-              (see [Project and instance metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
-            * `network` (`pulumi.Input[str]`) - The name or self_link of the Google Compute Engine
-              network to the cluster will be part of. Conflicts with `subnetwork`.
-              If neither is specified, this defaults to the "default" network.
-            * `service_account` (`pulumi.Input[str]`) - The service account to be used by the Node VMs.
-              If not specified, the "default" service account is used.
-            * `serviceAccountScopes` (`pulumi.Input[list]`) - The set of Google API scopes
-              to be made available on all of the node VMs under the `service_account`
-              specified. These can be	either FQDNs, or scope aliases. The following scopes
-              must be set if any other scopes are set. They're necessary to ensure the
-              correct functioning ofthe cluster, and are set automatically by the API:
-            * `subnetwork` (`pulumi.Input[str]`) - The name or self_link of the Google Compute Engine
-              subnetwork the cluster will be part of. Conflicts with `network`.
-            * `tags` (`pulumi.Input[list]`) - The list of instance tags applied to instances in the cluster.
-              Tags are used to identify valid sources or targets for network firewalls.
-            * `zone` (`pulumi.Input[str]`) - The GCP zone where your data is stored and used (i.e. where
-              the master and the worker nodes will be created in). If `region` is set to 'global' (default)
-              then `zone` is mandatory, otherwise GCP is able to make use of [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/auto-zone)
-              to determine this automatically for you.
-              Note: This setting additionally determines and restricts
-              which computing resources are available for use with other configs such as
-              `cluster_config.master_config.machine_type` and `cluster_config.worker_config.machine_type`.
-
-          * `initializationActions` (`pulumi.Input[list]`) - Commands to execute on each node after config is completed.
-            You can specify multiple versions of these. Structure defined below.
-            * `script` (`pulumi.Input[str]`) - The script to be executed during initialization of the cluster.
-              The script must be a GCS file with a gs:// prefix.
-            * `timeout_sec` (`pulumi.Input[float]`) - The maximum duration (in seconds) which `script` is
-              allowed to take to execute its action. GCP will default to a predetermined
-              computed value if not set (currently 300).
-
-          * `lifecycleConfig` (`pulumi.Input[dict]`) - The settings for auto deletion cluster schedule.
-            Structure defined below.
-            * `autoDeleteTime` (`pulumi.Input[str]`) - The time when cluster will be auto-deleted.
-              A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
-              Example: "2014-10-02T15:01:23.045123456Z".
-            * `idleDeleteTtl` (`pulumi.Input[str]`) - The duration to keep the cluster alive while idling
-              (no jobs running). After this TTL, the cluster will be deleted. Valid range: [10m, 14d].
-            * `idleStartTime` (`pulumi.Input[str]`)
-
-          * `masterConfig` (`pulumi.Input[dict]`) - The Google Compute Engine config settings for the master instances
-            in a cluster.. Structure defined below.
-            * `accelerators` (`pulumi.Input[list]`) - The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
-              * `acceleratorCount` (`pulumi.Input[float]`) - The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
-              * `accelerator_type` (`pulumi.Input[str]`) - The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
-
-            * `diskConfig` (`pulumi.Input[dict]`) - Disk Config
-              * `boot_disk_size_gb` (`pulumi.Input[float]`) - Size of the primary disk attached to each preemptible worker node, specified
-                in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
-                computed value if not set (currently 500GB). Note: If SSDs are not
-                attached, it also contains the HDFS data blocks and Hadoop working directories.
-              * `boot_disk_type` (`pulumi.Input[str]`) - The disk type of the primary disk attached to each preemptible worker node.
-                One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
-              * `numLocalSsds` (`pulumi.Input[float]`) - The amount of local SSD disks that will be
-                attached to each preemptible worker node. Defaults to 0.
-
-            * `imageUri` (`pulumi.Input[str]`) - The URI for the image to use for this worker.  See [the guide](https://cloud.google.com/dataproc/docs/guides/dataproc-images)
-              for more information.
-            * `instanceNames` (`pulumi.Input[list]`)
-            * `machine_type` (`pulumi.Input[str]`) - The name of a Google Compute Engine machine type
-              to create for the worker nodes. If not specified, GCP will default to a predetermined
-              computed value (currently `n1-standard-4`).
-            * `min_cpu_platform` (`pulumi.Input[str]`) - The name of a minimum generation of CPU family
-              for the master. If not specified, GCP will default to a predetermined computed value
-              for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-              for details about which CPU families are available (and defaulted) for each zone.
-            * `numInstances` (`pulumi.Input[float]`) - Specifies the number of preemptible nodes to create.
-              Defaults to 0.
-
-          * `preemptibleWorkerConfig` (`pulumi.Input[dict]`) - The Google Compute Engine config settings for the additional (aka
-            preemptible) instances in a cluster. Structure defined below.
-            * `diskConfig` (`pulumi.Input[dict]`) - Disk Config
-              * `boot_disk_size_gb` (`pulumi.Input[float]`) - Size of the primary disk attached to each preemptible worker node, specified
-                in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
-                computed value if not set (currently 500GB). Note: If SSDs are not
-                attached, it also contains the HDFS data blocks and Hadoop working directories.
-              * `boot_disk_type` (`pulumi.Input[str]`) - The disk type of the primary disk attached to each preemptible worker node.
-                One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
-              * `numLocalSsds` (`pulumi.Input[float]`) - The amount of local SSD disks that will be
-                attached to each preemptible worker node. Defaults to 0.
-
-            * `instanceNames` (`pulumi.Input[list]`)
-            * `numInstances` (`pulumi.Input[float]`) - Specifies the number of preemptible nodes to create.
-              Defaults to 0.
-
-          * `securityConfig` (`pulumi.Input[dict]`) - Security related configuration. Structure defined below.
-            * `kerberosConfig` (`pulumi.Input[dict]`) - Kerberos Configuration
-              * `crossRealmTrustAdminServer` (`pulumi.Input[str]`) - The admin server (IP or hostname) for the
-                remote trusted realm in a cross realm trust relationship.
-              * `crossRealmTrustKdc` (`pulumi.Input[str]`) - The KDC (IP or hostname) for the
-                remote trusted realm in a cross realm trust relationship.
-              * `crossRealmTrustRealm` (`pulumi.Input[str]`) - The remote realm the Dataproc on-cluster KDC will
-                trust, should the user enable cross realm trust.
-              * `crossRealmTrustSharedPasswordUri` (`pulumi.Input[str]`) - The Cloud Storage URI of a KMS
-                encrypted file containing the shared password between the on-cluster Kerberos realm
-                and the remote trusted realm, in a cross realm trust relationship.
-              * `enableKerberos` (`pulumi.Input[bool]`) - Flag to indicate whether to Kerberize the cluster.
-              * `kdcDbKeyUri` (`pulumi.Input[str]`) - The Cloud Storage URI of a KMS encrypted file containing
-                the master key of the KDC database.
-              * `keyPasswordUri` (`pulumi.Input[str]`) - The Cloud Storage URI of a KMS encrypted file containing
-                the password to the user provided key. For the self-signed certificate, this password
-                is generated by Dataproc.
-              * `keystorePasswordUri` (`pulumi.Input[str]`) - The Cloud Storage URI of a KMS encrypted file containing
-                the password to the user provided keystore. For the self-signed certificated, the password
-                is generated by Dataproc.
-              * `keystoreUri` (`pulumi.Input[str]`) - The Cloud Storage URI of the keystore file used for SSL encryption.
-                If not provided, Dataproc will provide a self-signed certificate.
-              * `kmsKeyUri` (`pulumi.Input[str]`) - The URI of the KMS key used to encrypt various sensitive files.
-              * `realm` (`pulumi.Input[str]`) - The name of the on-cluster Kerberos realm. If not specified, the
-                uppercased domain of hostnames will be the realm.
-              * `rootPrincipalPasswordUri` (`pulumi.Input[str]`) - The Cloud Storage URI of a KMS encrypted file
-                containing the root principal password.
-              * `tgtLifetimeHours` (`pulumi.Input[float]`) - The lifetime of the ticket granting ticket, in hours.
-              * `truststorePasswordUri` (`pulumi.Input[str]`) - The Cloud Storage URI of a KMS encrypted file
-                containing the password to the user provided truststore. For the self-signed
-                certificate, this password is generated by Dataproc.
-              * `truststoreUri` (`pulumi.Input[str]`) - The Cloud Storage URI of the truststore file used for
-                SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
-
-          * `softwareConfig` (`pulumi.Input[dict]`) - The config settings for software inside the cluster.
-            Structure defined below.
-            * `imageVersion` (`pulumi.Input[str]`) - The Cloud Dataproc image version to use
-              for the cluster - this controls the sets of software versions
-              installed onto the nodes when you create clusters. If not specified, defaults to the
-              latest version. For a list of valid versions see
-              [Cloud Dataproc versions](https://cloud.google.com/dataproc/docs/concepts/dataproc-versions)
-            * `optionalComponents` (`pulumi.Input[list]`) - The set of optional components to activate on the cluster. 
-              Accepted values are:
-              * ANACONDA
-              * DRUID
-              * HBASE
-              * HIVE_WEBHCAT
-              * JUPYTER
-              * KERBEROS
-              * PRESTO
-              * RANGER
-              * SOLR
-              * ZEPPELIN
-              * ZOOKEEPER
-            * `overrideProperties` (`pulumi.Input[dict]`) - A list of override and additional properties (key/value pairs)
-              used to modify various aspects of the common configuration files used when creating
-              a cluster. For a list of valid properties please see
-              [Cluster properties](https://cloud.google.com/dataproc/docs/concepts/cluster-properties)
-            * `properties` (`pulumi.Input[dict]`)
-
-          * `stagingBucket` (`pulumi.Input[str]`) - The Cloud Storage staging bucket used to stage files,
-            such as Hadoop jars, between client machines and the cluster.
-            Note: If you don't explicitly specify a `staging_bucket`
-            then GCP will auto create / assign one for you. However, you are not guaranteed
-            an auto generated bucket which is solely dedicated to your cluster; it may be shared
-            with other clusters in the same region/zone also choosing to use the auto generation
-            option.
-          * `worker_config` (`pulumi.Input[dict]`) - The Google Compute Engine config settings for the worker instances
-            in a cluster.. Structure defined below.
-            * `accelerators` (`pulumi.Input[list]`) - The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
-              * `acceleratorCount` (`pulumi.Input[float]`) - The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
-              * `accelerator_type` (`pulumi.Input[str]`) - The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
-
-            * `diskConfig` (`pulumi.Input[dict]`) - Disk Config
-              * `boot_disk_size_gb` (`pulumi.Input[float]`) - Size of the primary disk attached to each preemptible worker node, specified
-                in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
-                computed value if not set (currently 500GB). Note: If SSDs are not
-                attached, it also contains the HDFS data blocks and Hadoop working directories.
-              * `boot_disk_type` (`pulumi.Input[str]`) - The disk type of the primary disk attached to each preemptible worker node.
-                One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
-              * `numLocalSsds` (`pulumi.Input[float]`) - The amount of local SSD disks that will be
-                attached to each preemptible worker node. Defaults to 0.
-
-            * `imageUri` (`pulumi.Input[str]`) - The URI for the image to use for this worker.  See [the guide](https://cloud.google.com/dataproc/docs/guides/dataproc-images)
-              for more information.
-            * `instanceNames` (`pulumi.Input[list]`)
-            * `machine_type` (`pulumi.Input[str]`) - The name of a Google Compute Engine machine type
-              to create for the worker nodes. If not specified, GCP will default to a predetermined
-              computed value (currently `n1-standard-4`).
-            * `min_cpu_platform` (`pulumi.Input[str]`) - The name of a minimum generation of CPU family
-              for the master. If not specified, GCP will default to a predetermined computed value
-              for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-              for details about which CPU families are available (and defaulted) for each zone.
-            * `numInstances` (`pulumi.Input[float]`) - Specifies the number of preemptible nodes to create.
-              Defaults to 0.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -504,17 +78,24 @@ class Cluster(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, cluster_config=None, labels=None, name=None, project=None, region=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cluster_config: Optional[pulumi.Input[pulumi.InputType['ClusterClusterConfigArgs']]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None) -> 'Cluster':
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] cluster_config: Allows you to configure various aspects of the cluster.
+        :param pulumi.Input[pulumi.InputType['ClusterClusterConfigArgs']] cluster_config: Allows you to configure various aspects of the cluster.
                Structure defined below.
-        :param pulumi.Input[dict] labels: The list of labels (key/value pairs) to be applied to
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The list of labels (key/value pairs) to be applied to
                instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
                which is the name of the cluster.
         :param pulumi.Input[str] name: The name of the cluster, unique within the project and
@@ -523,214 +104,6 @@ class Cluster(pulumi.CustomResource):
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region in which the cluster and associated nodes will be created in.
                Defaults to `global`.
-
-        The **cluster_config** object supports the following:
-
-          * `autoscalingConfig` (`pulumi.Input[dict]`) - The autoscaling policy config associated with the cluster.
-            Structure defined below.
-            * `policyUri` (`pulumi.Input[str]`) - The autoscaling policy used by the cluster.
-
-          * `bucket` (`pulumi.Input[str]`)
-          * `encryptionConfig` (`pulumi.Input[dict]`) - The Customer managed encryption keys settings for the cluster.
-            Structure defined below.
-            * `kms_key_name` (`pulumi.Input[str]`) - The Cloud KMS key name to use for PD disk encryption for
-              all instances in the cluster.
-
-          * `endpointConfig` (`pulumi.Input[dict]`) - The config settings for port access on the cluster.
-            Structure defined below.
-            - - -
-            * `enableHttpPortAccess` (`pulumi.Input[bool]`) - The flag to enable http access to specific ports
-              on the cluster from external sources (aka Component Gateway). Defaults to false.
-            * `httpPorts` (`pulumi.Input[dict]`)
-
-          * `gceClusterConfig` (`pulumi.Input[dict]`) - Common config settings for resources of Google Compute Engine cluster
-            instances, applicable to all instances in the cluster. Structure defined below.
-            * `internalIpOnly` (`pulumi.Input[bool]`) - By default, clusters are not restricted to internal IP addresses, 
-              and will have ephemeral external IP addresses assigned to each instance. If set to true, all
-              instances in the cluster will only have internal IP addresses. Note: Private Google Access
-              (also known as `privateIpGoogleAccess`) must be enabled on the subnetwork that the cluster
-              will be launched in.
-            * `metadata` (`pulumi.Input[dict]`) - A map of the Compute Engine metadata entries to add to all instances
-              (see [Project and instance metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
-            * `network` (`pulumi.Input[str]`) - The name or self_link of the Google Compute Engine
-              network to the cluster will be part of. Conflicts with `subnetwork`.
-              If neither is specified, this defaults to the "default" network.
-            * `service_account` (`pulumi.Input[str]`) - The service account to be used by the Node VMs.
-              If not specified, the "default" service account is used.
-            * `serviceAccountScopes` (`pulumi.Input[list]`) - The set of Google API scopes
-              to be made available on all of the node VMs under the `service_account`
-              specified. These can be	either FQDNs, or scope aliases. The following scopes
-              must be set if any other scopes are set. They're necessary to ensure the
-              correct functioning ofthe cluster, and are set automatically by the API:
-            * `subnetwork` (`pulumi.Input[str]`) - The name or self_link of the Google Compute Engine
-              subnetwork the cluster will be part of. Conflicts with `network`.
-            * `tags` (`pulumi.Input[list]`) - The list of instance tags applied to instances in the cluster.
-              Tags are used to identify valid sources or targets for network firewalls.
-            * `zone` (`pulumi.Input[str]`) - The GCP zone where your data is stored and used (i.e. where
-              the master and the worker nodes will be created in). If `region` is set to 'global' (default)
-              then `zone` is mandatory, otherwise GCP is able to make use of [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/auto-zone)
-              to determine this automatically for you.
-              Note: This setting additionally determines and restricts
-              which computing resources are available for use with other configs such as
-              `cluster_config.master_config.machine_type` and `cluster_config.worker_config.machine_type`.
-
-          * `initializationActions` (`pulumi.Input[list]`) - Commands to execute on each node after config is completed.
-            You can specify multiple versions of these. Structure defined below.
-            * `script` (`pulumi.Input[str]`) - The script to be executed during initialization of the cluster.
-              The script must be a GCS file with a gs:// prefix.
-            * `timeout_sec` (`pulumi.Input[float]`) - The maximum duration (in seconds) which `script` is
-              allowed to take to execute its action. GCP will default to a predetermined
-              computed value if not set (currently 300).
-
-          * `lifecycleConfig` (`pulumi.Input[dict]`) - The settings for auto deletion cluster schedule.
-            Structure defined below.
-            * `autoDeleteTime` (`pulumi.Input[str]`) - The time when cluster will be auto-deleted.
-              A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
-              Example: "2014-10-02T15:01:23.045123456Z".
-            * `idleDeleteTtl` (`pulumi.Input[str]`) - The duration to keep the cluster alive while idling
-              (no jobs running). After this TTL, the cluster will be deleted. Valid range: [10m, 14d].
-            * `idleStartTime` (`pulumi.Input[str]`)
-
-          * `masterConfig` (`pulumi.Input[dict]`) - The Google Compute Engine config settings for the master instances
-            in a cluster.. Structure defined below.
-            * `accelerators` (`pulumi.Input[list]`) - The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
-              * `acceleratorCount` (`pulumi.Input[float]`) - The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
-              * `accelerator_type` (`pulumi.Input[str]`) - The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
-
-            * `diskConfig` (`pulumi.Input[dict]`) - Disk Config
-              * `boot_disk_size_gb` (`pulumi.Input[float]`) - Size of the primary disk attached to each preemptible worker node, specified
-                in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
-                computed value if not set (currently 500GB). Note: If SSDs are not
-                attached, it also contains the HDFS data blocks and Hadoop working directories.
-              * `boot_disk_type` (`pulumi.Input[str]`) - The disk type of the primary disk attached to each preemptible worker node.
-                One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
-              * `numLocalSsds` (`pulumi.Input[float]`) - The amount of local SSD disks that will be
-                attached to each preemptible worker node. Defaults to 0.
-
-            * `imageUri` (`pulumi.Input[str]`) - The URI for the image to use for this worker.  See [the guide](https://cloud.google.com/dataproc/docs/guides/dataproc-images)
-              for more information.
-            * `instanceNames` (`pulumi.Input[list]`)
-            * `machine_type` (`pulumi.Input[str]`) - The name of a Google Compute Engine machine type
-              to create for the worker nodes. If not specified, GCP will default to a predetermined
-              computed value (currently `n1-standard-4`).
-            * `min_cpu_platform` (`pulumi.Input[str]`) - The name of a minimum generation of CPU family
-              for the master. If not specified, GCP will default to a predetermined computed value
-              for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-              for details about which CPU families are available (and defaulted) for each zone.
-            * `numInstances` (`pulumi.Input[float]`) - Specifies the number of preemptible nodes to create.
-              Defaults to 0.
-
-          * `preemptibleWorkerConfig` (`pulumi.Input[dict]`) - The Google Compute Engine config settings for the additional (aka
-            preemptible) instances in a cluster. Structure defined below.
-            * `diskConfig` (`pulumi.Input[dict]`) - Disk Config
-              * `boot_disk_size_gb` (`pulumi.Input[float]`) - Size of the primary disk attached to each preemptible worker node, specified
-                in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
-                computed value if not set (currently 500GB). Note: If SSDs are not
-                attached, it also contains the HDFS data blocks and Hadoop working directories.
-              * `boot_disk_type` (`pulumi.Input[str]`) - The disk type of the primary disk attached to each preemptible worker node.
-                One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
-              * `numLocalSsds` (`pulumi.Input[float]`) - The amount of local SSD disks that will be
-                attached to each preemptible worker node. Defaults to 0.
-
-            * `instanceNames` (`pulumi.Input[list]`)
-            * `numInstances` (`pulumi.Input[float]`) - Specifies the number of preemptible nodes to create.
-              Defaults to 0.
-
-          * `securityConfig` (`pulumi.Input[dict]`) - Security related configuration. Structure defined below.
-            * `kerberosConfig` (`pulumi.Input[dict]`) - Kerberos Configuration
-              * `crossRealmTrustAdminServer` (`pulumi.Input[str]`) - The admin server (IP or hostname) for the
-                remote trusted realm in a cross realm trust relationship.
-              * `crossRealmTrustKdc` (`pulumi.Input[str]`) - The KDC (IP or hostname) for the
-                remote trusted realm in a cross realm trust relationship.
-              * `crossRealmTrustRealm` (`pulumi.Input[str]`) - The remote realm the Dataproc on-cluster KDC will
-                trust, should the user enable cross realm trust.
-              * `crossRealmTrustSharedPasswordUri` (`pulumi.Input[str]`) - The Cloud Storage URI of a KMS
-                encrypted file containing the shared password between the on-cluster Kerberos realm
-                and the remote trusted realm, in a cross realm trust relationship.
-              * `enableKerberos` (`pulumi.Input[bool]`) - Flag to indicate whether to Kerberize the cluster.
-              * `kdcDbKeyUri` (`pulumi.Input[str]`) - The Cloud Storage URI of a KMS encrypted file containing
-                the master key of the KDC database.
-              * `keyPasswordUri` (`pulumi.Input[str]`) - The Cloud Storage URI of a KMS encrypted file containing
-                the password to the user provided key. For the self-signed certificate, this password
-                is generated by Dataproc.
-              * `keystorePasswordUri` (`pulumi.Input[str]`) - The Cloud Storage URI of a KMS encrypted file containing
-                the password to the user provided keystore. For the self-signed certificated, the password
-                is generated by Dataproc.
-              * `keystoreUri` (`pulumi.Input[str]`) - The Cloud Storage URI of the keystore file used for SSL encryption.
-                If not provided, Dataproc will provide a self-signed certificate.
-              * `kmsKeyUri` (`pulumi.Input[str]`) - The URI of the KMS key used to encrypt various sensitive files.
-              * `realm` (`pulumi.Input[str]`) - The name of the on-cluster Kerberos realm. If not specified, the
-                uppercased domain of hostnames will be the realm.
-              * `rootPrincipalPasswordUri` (`pulumi.Input[str]`) - The Cloud Storage URI of a KMS encrypted file
-                containing the root principal password.
-              * `tgtLifetimeHours` (`pulumi.Input[float]`) - The lifetime of the ticket granting ticket, in hours.
-              * `truststorePasswordUri` (`pulumi.Input[str]`) - The Cloud Storage URI of a KMS encrypted file
-                containing the password to the user provided truststore. For the self-signed
-                certificate, this password is generated by Dataproc.
-              * `truststoreUri` (`pulumi.Input[str]`) - The Cloud Storage URI of the truststore file used for
-                SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
-
-          * `softwareConfig` (`pulumi.Input[dict]`) - The config settings for software inside the cluster.
-            Structure defined below.
-            * `imageVersion` (`pulumi.Input[str]`) - The Cloud Dataproc image version to use
-              for the cluster - this controls the sets of software versions
-              installed onto the nodes when you create clusters. If not specified, defaults to the
-              latest version. For a list of valid versions see
-              [Cloud Dataproc versions](https://cloud.google.com/dataproc/docs/concepts/dataproc-versions)
-            * `optionalComponents` (`pulumi.Input[list]`) - The set of optional components to activate on the cluster. 
-              Accepted values are:
-              * ANACONDA
-              * DRUID
-              * HBASE
-              * HIVE_WEBHCAT
-              * JUPYTER
-              * KERBEROS
-              * PRESTO
-              * RANGER
-              * SOLR
-              * ZEPPELIN
-              * ZOOKEEPER
-            * `overrideProperties` (`pulumi.Input[dict]`) - A list of override and additional properties (key/value pairs)
-              used to modify various aspects of the common configuration files used when creating
-              a cluster. For a list of valid properties please see
-              [Cluster properties](https://cloud.google.com/dataproc/docs/concepts/cluster-properties)
-            * `properties` (`pulumi.Input[dict]`)
-
-          * `stagingBucket` (`pulumi.Input[str]`) - The Cloud Storage staging bucket used to stage files,
-            such as Hadoop jars, between client machines and the cluster.
-            Note: If you don't explicitly specify a `staging_bucket`
-            then GCP will auto create / assign one for you. However, you are not guaranteed
-            an auto generated bucket which is solely dedicated to your cluster; it may be shared
-            with other clusters in the same region/zone also choosing to use the auto generation
-            option.
-          * `worker_config` (`pulumi.Input[dict]`) - The Google Compute Engine config settings for the worker instances
-            in a cluster.. Structure defined below.
-            * `accelerators` (`pulumi.Input[list]`) - The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
-              * `acceleratorCount` (`pulumi.Input[float]`) - The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
-              * `accelerator_type` (`pulumi.Input[str]`) - The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
-
-            * `diskConfig` (`pulumi.Input[dict]`) - Disk Config
-              * `boot_disk_size_gb` (`pulumi.Input[float]`) - Size of the primary disk attached to each preemptible worker node, specified
-                in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
-                computed value if not set (currently 500GB). Note: If SSDs are not
-                attached, it also contains the HDFS data blocks and Hadoop working directories.
-              * `boot_disk_type` (`pulumi.Input[str]`) - The disk type of the primary disk attached to each preemptible worker node.
-                One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
-              * `numLocalSsds` (`pulumi.Input[float]`) - The amount of local SSD disks that will be
-                attached to each preemptible worker node. Defaults to 0.
-
-            * `imageUri` (`pulumi.Input[str]`) - The URI for the image to use for this worker.  See [the guide](https://cloud.google.com/dataproc/docs/guides/dataproc-images)
-              for more information.
-            * `instanceNames` (`pulumi.Input[list]`)
-            * `machine_type` (`pulumi.Input[str]`) - The name of a Google Compute Engine machine type
-              to create for the worker nodes. If not specified, GCP will default to a predetermined
-              computed value (currently `n1-standard-4`).
-            * `min_cpu_platform` (`pulumi.Input[str]`) - The name of a minimum generation of CPU family
-              for the master. If not specified, GCP will default to a predetermined computed value
-              for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-              for details about which CPU families are available (and defaulted) for each zone.
-            * `numInstances` (`pulumi.Input[float]`) - Specifies the number of preemptible nodes to create.
-              Defaults to 0.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -743,8 +116,55 @@ class Cluster(pulumi.CustomResource):
         __props__["region"] = region
         return Cluster(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="clusterConfig")
+    def cluster_config(self) -> 'outputs.ClusterClusterConfig':
+        """
+        Allows you to configure various aspects of the cluster.
+        Structure defined below.
+        """
+        return pulumi.get(self, "cluster_config")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        The list of labels (key/value pairs) to be applied to
+        instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
+        which is the name of the cluster.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the cluster, unique within the project and
+        zone.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The ID of the project in which the `cluster` will exist. If it
+        is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        """
+        The region in which the cluster and associated nodes will be created in.
+        Defaults to `global`.
+        """
+        return pulumi.get(self, "region")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

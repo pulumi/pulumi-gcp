@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
 
+__all__ = [
+    'GetClientOpenIdUserInfoResult',
+    'AwaitableGetClientOpenIdUserInfoResult',
+    'get_client_open_id_user_info',
+]
 
+@pulumi.output_type
 class GetClientOpenIdUserInfoResult:
     """
     A collection of values returned by getClientOpenIdUserInfo.
@@ -16,16 +22,26 @@ class GetClientOpenIdUserInfoResult:
     def __init__(__self__, email=None, id=None):
         if email and not isinstance(email, str):
             raise TypeError("Expected argument 'email' to be a str")
-        __self__.email = email
+        pulumi.set(__self__, "email", email)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def email(self) -> str:
         """
         The email of the account used by the provider to authenticate with GCP.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
+        return pulumi.get(self, "id")
 
 
 class AwaitableGetClientOpenIdUserInfoResult(GetClientOpenIdUserInfoResult):
@@ -38,7 +54,7 @@ class AwaitableGetClientOpenIdUserInfoResult(GetClientOpenIdUserInfoResult):
             id=self.id)
 
 
-def get_client_open_id_user_info(opts=None):
+def get_client_open_id_user_info(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClientOpenIdUserInfoResult:
     """
     Get OpenID userinfo about the credentials used with the Google provider,
     specifically the email.
@@ -59,8 +75,8 @@ def get_client_open_id_user_info(opts=None):
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('gcp:organizations/getClientOpenIdUserInfo:getClientOpenIdUserInfo', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('gcp:organizations/getClientOpenIdUserInfo:getClientOpenIdUserInfo', __args__, opts=opts, typ=GetClientOpenIdUserInfoResult).value
 
     return AwaitableGetClientOpenIdUserInfoResult(
-        email=__ret__.get('email'),
-        id=__ret__.get('id'))
+        email=__ret__.email,
+        id=__ret__.id)

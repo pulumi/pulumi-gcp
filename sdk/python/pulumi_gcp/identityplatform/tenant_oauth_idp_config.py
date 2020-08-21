@@ -5,45 +5,27 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['TenantOauthIdpConfig']
 
 
 class TenantOauthIdpConfig(pulumi.CustomResource):
-    client_id: pulumi.Output[str]
-    """
-    The client id of an OAuth client.
-    """
-    client_secret: pulumi.Output[str]
-    """
-    The client secret of the OAuth client, to enable OIDC code flow.
-    """
-    display_name: pulumi.Output[str]
-    """
-    Human friendly display name.
-    """
-    enabled: pulumi.Output[bool]
-    """
-    If this config allows users to sign in with the provider.
-    """
-    issuer: pulumi.Output[str]
-    """
-    For OIDC Idps, the issuer identifier.
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the OauthIdpConfig. Must start with `oidc.`.
-    """
-    project: pulumi.Output[str]
-    """
-    The ID of the project in which the resource belongs.
-    If it is not provided, the provider project is used.
-    """
-    tenant: pulumi.Output[str]
-    """
-    The name of the tenant where this OIDC IDP configuration resource exists
-    """
-    def __init__(__self__, resource_name, opts=None, client_id=None, client_secret=None, display_name=None, enabled=None, issuer=None, name=None, project=None, tenant=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 client_id: Optional[pulumi.Input[str]] = None,
+                 client_secret: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 issuer: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 tenant: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         OIDC IdP configuration for a Identity Toolkit project within a tenant.
 
@@ -105,13 +87,23 @@ class TenantOauthIdpConfig(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, client_id=None, client_secret=None, display_name=None, enabled=None, issuer=None, name=None, project=None, tenant=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            client_id: Optional[pulumi.Input[str]] = None,
+            client_secret: Optional[pulumi.Input[str]] = None,
+            display_name: Optional[pulumi.Input[str]] = None,
+            enabled: Optional[pulumi.Input[bool]] = None,
+            issuer: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            tenant: Optional[pulumi.Input[str]] = None) -> 'TenantOauthIdpConfig':
         """
         Get an existing TenantOauthIdpConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] client_id: The client id of an OAuth client.
         :param pulumi.Input[str] client_secret: The client secret of the OAuth client, to enable OIDC code flow.
@@ -137,8 +129,74 @@ class TenantOauthIdpConfig(pulumi.CustomResource):
         __props__["tenant"] = tenant
         return TenantOauthIdpConfig(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> str:
+        """
+        The client id of an OAuth client.
+        """
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[str]:
+        """
+        The client secret of the OAuth client, to enable OIDC code flow.
+        """
+        return pulumi.get(self, "client_secret")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        Human friendly display name.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        If this config allows users to sign in with the provider.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def issuer(self) -> str:
+        """
+        For OIDC Idps, the issuer identifier.
+        """
+        return pulumi.get(self, "issuer")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the OauthIdpConfig. Must start with `oidc.`.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def tenant(self) -> str:
+        """
+        The name of the tenant where this OIDC IDP configuration resource exists
+        """
+        return pulumi.get(self, "tenant")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,62 +5,25 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['Network']
 
 
 class Network(pulumi.CustomResource):
-    auto_create_subnetworks: pulumi.Output[bool]
-    """
-    When set to `true`, the network is created in "auto subnet mode" and
-    it will create a subnet for each region automatically across the
-    `10.128.0.0/9` address range.
-    When set to `false`, the network is created in "custom subnet mode" so
-    the user can explicitly connect subnetwork resources.
-    """
-    delete_default_routes_on_create: pulumi.Output[bool]
-    """
-    If set to `true`, default routes (`0.0.0.0/0`) will be deleted
-    immediately after network creation. Defaults to `false`.
-    """
-    description: pulumi.Output[str]
-    """
-    An optional description of this resource. The resource must be
-    recreated to modify this field.
-    """
-    gateway_ipv4: pulumi.Output[str]
-    """
-    The gateway address for default routing out of the network. This value is selected by GCP.
-    """
-    name: pulumi.Output[str]
-    """
-    Name of the resource. Provided by the client when the resource is
-    created. The name must be 1-63 characters long, and comply with
-    RFC1035. Specifically, the name must be 1-63 characters long and match
-    the regular expression `a-z?` which means the
-    first character must be a lowercase letter, and all following
-    characters must be a dash, lowercase letter, or digit, except the last
-    character, which cannot be a dash.
-    """
-    project: pulumi.Output[str]
-    """
-    The ID of the project in which the resource belongs.
-    If it is not provided, the provider project is used.
-    """
-    routing_mode: pulumi.Output[str]
-    """
-    The network-wide routing mode to use. If set to `REGIONAL`, this
-    network's cloud routers will only advertise routes with subnetworks
-    of this network in the same region as the router. If set to `GLOBAL`,
-    this network's cloud routers will advertise routes with all
-    subnetworks of this network, across regions.
-    Possible values are `REGIONAL` and `GLOBAL`.
-    """
-    self_link: pulumi.Output[str]
-    """
-    The URI of the created resource.
-    """
-    def __init__(__self__, resource_name, opts=None, auto_create_subnetworks=None, delete_default_routes_on_create=None, description=None, name=None, project=None, routing_mode=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_create_subnetworks: Optional[pulumi.Input[bool]] = None,
+                 delete_default_routes_on_create: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 routing_mode: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a VPC network or legacy network resource on GCP.
 
@@ -131,13 +94,23 @@ class Network(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, auto_create_subnetworks=None, delete_default_routes_on_create=None, description=None, gateway_ipv4=None, name=None, project=None, routing_mode=None, self_link=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_create_subnetworks: Optional[pulumi.Input[bool]] = None,
+            delete_default_routes_on_create: Optional[pulumi.Input[bool]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            gateway_ipv4: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            routing_mode: Optional[pulumi.Input[str]] = None,
+            self_link: Optional[pulumi.Input[str]] = None) -> 'Network':
         """
         Get an existing Network resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_create_subnetworks: When set to `true`, the network is created in "auto subnet mode" and
                it will create a subnet for each region automatically across the
@@ -180,8 +153,91 @@ class Network(pulumi.CustomResource):
         __props__["self_link"] = self_link
         return Network(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="autoCreateSubnetworks")
+    def auto_create_subnetworks(self) -> Optional[bool]:
+        """
+        When set to `true`, the network is created in "auto subnet mode" and
+        it will create a subnet for each region automatically across the
+        `10.128.0.0/9` address range.
+        When set to `false`, the network is created in "custom subnet mode" so
+        the user can explicitly connect subnetwork resources.
+        """
+        return pulumi.get(self, "auto_create_subnetworks")
+
+    @property
+    @pulumi.getter(name="deleteDefaultRoutesOnCreate")
+    def delete_default_routes_on_create(self) -> Optional[bool]:
+        """
+        If set to `true`, default routes (`0.0.0.0/0`) will be deleted
+        immediately after network creation. Defaults to `false`.
+        """
+        return pulumi.get(self, "delete_default_routes_on_create")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        An optional description of this resource. The resource must be
+        recreated to modify this field.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="gatewayIpv4")
+    def gateway_ipv4(self) -> str:
+        """
+        The gateway address for default routing out of the network. This value is selected by GCP.
+        """
+        return pulumi.get(self, "gateway_ipv4")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the resource. Provided by the client when the resource is
+        created. The name must be 1-63 characters long, and comply with
+        RFC1035. Specifically, the name must be 1-63 characters long and match
+        the regular expression `a-z?` which means the
+        first character must be a lowercase letter, and all following
+        characters must be a dash, lowercase letter, or digit, except the last
+        character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="routingMode")
+    def routing_mode(self) -> str:
+        """
+        The network-wide routing mode to use. If set to `REGIONAL`, this
+        network's cloud routers will only advertise routes with subnetworks
+        of this network in the same region as the router. If set to `GLOBAL`,
+        this network's cloud routers will advertise routes with all
+        subnetworks of this network, across regions.
+        Possible values are `REGIONAL` and `GLOBAL`.
+        """
+        return pulumi.get(self, "routing_mode")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> str:
+        """
+        The URI of the created resource.
+        """
+        return pulumi.get(self, "self_link")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

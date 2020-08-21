@@ -5,78 +5,25 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['SSLPolicy']
 
 
 class SSLPolicy(pulumi.CustomResource):
-    creation_timestamp: pulumi.Output[str]
-    """
-    Creation timestamp in RFC3339 text format.
-    """
-    custom_features: pulumi.Output[list]
-    """
-    Profile specifies the set of SSL features that can be used by the
-    load balancer when negotiating SSL with clients. This can be one of
-    `COMPATIBLE`, `MODERN`, `RESTRICTED`, or `CUSTOM`. If using `CUSTOM`,
-    the set of SSL features to enable must be specified in the
-    `customFeatures` field.
-    See the [official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport)
-    for which ciphers are available to use. **Note**: this argument
-    *must* be present when using the `CUSTOM` profile. This argument
-    *must not* be present when using any other profile.
-    """
-    description: pulumi.Output[str]
-    """
-    An optional description of this resource.
-    """
-    enabled_features: pulumi.Output[list]
-    """
-    The list of features enabled in the SSL policy.
-    """
-    fingerprint: pulumi.Output[str]
-    """
-    Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
-    """
-    min_tls_version: pulumi.Output[str]
-    """
-    The minimum version of SSL protocol that can be used by the clients
-    to establish a connection with the load balancer.
-    Default value is `TLS_1_0`.
-    Possible values are `TLS_1_0`, `TLS_1_1`, and `TLS_1_2`.
-    """
-    name: pulumi.Output[str]
-    """
-    Name of the resource. Provided by the client when the resource is
-    created. The name must be 1-63 characters long, and comply with
-    RFC1035. Specifically, the name must be 1-63 characters long and match
-    the regular expression `a-z?` which means the
-    first character must be a lowercase letter, and all following
-    characters must be a dash, lowercase letter, or digit, except the last
-    character, which cannot be a dash.
-    """
-    profile: pulumi.Output[str]
-    """
-    Profile specifies the set of SSL features that can be used by the
-    load balancer when negotiating SSL with clients. If using `CUSTOM`,
-    the set of SSL features to enable must be specified in the
-    `customFeatures` field.
-    See the [official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport)
-    for information on what cipher suites each profile provides. If
-    `CUSTOM` is used, the `custom_features` attribute **must be set**.
-    Default value is `COMPATIBLE`.
-    Possible values are `COMPATIBLE`, `MODERN`, `RESTRICTED`, and `CUSTOM`.
-    """
-    project: pulumi.Output[str]
-    """
-    The ID of the project in which the resource belongs.
-    If it is not provided, the provider project is used.
-    """
-    self_link: pulumi.Output[str]
-    """
-    The URI of the created resource.
-    """
-    def __init__(__self__, resource_name, opts=None, custom_features=None, description=None, min_tls_version=None, name=None, profile=None, project=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 custom_features: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 min_tls_version: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 profile: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Represents a SSL policy. SSL policies give you the ability to control the
         features of SSL that your SSL proxy or HTTPS load balancer negotiates.
@@ -91,7 +38,7 @@ class SSLPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] custom_features: Profile specifies the set of SSL features that can be used by the
+        :param pulumi.Input[List[pulumi.Input[str]]] custom_features: Profile specifies the set of SSL features that can be used by the
                load balancer when negotiating SSL with clients. This can be one of
                `COMPATIBLE`, `MODERN`, `RESTRICTED`, or `CUSTOM`. If using `CUSTOM`,
                the set of SSL features to enable must be specified in the
@@ -158,16 +105,28 @@ class SSLPolicy(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, creation_timestamp=None, custom_features=None, description=None, enabled_features=None, fingerprint=None, min_tls_version=None, name=None, profile=None, project=None, self_link=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            creation_timestamp: Optional[pulumi.Input[str]] = None,
+            custom_features: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            enabled_features: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            fingerprint: Optional[pulumi.Input[str]] = None,
+            min_tls_version: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            profile: Optional[pulumi.Input[str]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            self_link: Optional[pulumi.Input[str]] = None) -> 'SSLPolicy':
         """
         Get an existing SSLPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
-        :param pulumi.Input[list] custom_features: Profile specifies the set of SSL features that can be used by the
+        :param pulumi.Input[List[pulumi.Input[str]]] custom_features: Profile specifies the set of SSL features that can be used by the
                load balancer when negotiating SSL with clients. This can be one of
                `COMPATIBLE`, `MODERN`, `RESTRICTED`, or `CUSTOM`. If using `CUSTOM`,
                the set of SSL features to enable must be specified in the
@@ -177,7 +136,7 @@ class SSLPolicy(pulumi.CustomResource):
                *must* be present when using the `CUSTOM` profile. This argument
                *must not* be present when using any other profile.
         :param pulumi.Input[str] description: An optional description of this resource.
-        :param pulumi.Input[list] enabled_features: The list of features enabled in the SSL policy.
+        :param pulumi.Input[List[pulumi.Input[str]]] enabled_features: The list of features enabled in the SSL policy.
         :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
         :param pulumi.Input[str] min_tls_version: The minimum version of SSL protocol that can be used by the clients
                to establish a connection with the load balancer.
@@ -219,8 +178,115 @@ class SSLPolicy(pulumi.CustomResource):
         __props__["self_link"] = self_link
         return SSLPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> str:
+        """
+        Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @property
+    @pulumi.getter(name="customFeatures")
+    def custom_features(self) -> Optional[List[str]]:
+        """
+        Profile specifies the set of SSL features that can be used by the
+        load balancer when negotiating SSL with clients. This can be one of
+        `COMPATIBLE`, `MODERN`, `RESTRICTED`, or `CUSTOM`. If using `CUSTOM`,
+        the set of SSL features to enable must be specified in the
+        `customFeatures` field.
+        See the [official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport)
+        for which ciphers are available to use. **Note**: this argument
+        *must* be present when using the `CUSTOM` profile. This argument
+        *must not* be present when using any other profile.
+        """
+        return pulumi.get(self, "custom_features")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        An optional description of this resource.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="enabledFeatures")
+    def enabled_features(self) -> List[str]:
+        """
+        The list of features enabled in the SSL policy.
+        """
+        return pulumi.get(self, "enabled_features")
+
+    @property
+    @pulumi.getter
+    def fingerprint(self) -> str:
+        """
+        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+        """
+        return pulumi.get(self, "fingerprint")
+
+    @property
+    @pulumi.getter(name="minTlsVersion")
+    def min_tls_version(self) -> Optional[str]:
+        """
+        The minimum version of SSL protocol that can be used by the clients
+        to establish a connection with the load balancer.
+        Default value is `TLS_1_0`.
+        Possible values are `TLS_1_0`, `TLS_1_1`, and `TLS_1_2`.
+        """
+        return pulumi.get(self, "min_tls_version")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the resource. Provided by the client when the resource is
+        created. The name must be 1-63 characters long, and comply with
+        RFC1035. Specifically, the name must be 1-63 characters long and match
+        the regular expression `a-z?` which means the
+        first character must be a lowercase letter, and all following
+        characters must be a dash, lowercase letter, or digit, except the last
+        character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def profile(self) -> Optional[str]:
+        """
+        Profile specifies the set of SSL features that can be used by the
+        load balancer when negotiating SSL with clients. If using `CUSTOM`,
+        the set of SSL features to enable must be specified in the
+        `customFeatures` field.
+        See the [official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport)
+        for information on what cipher suites each profile provides. If
+        `CUSTOM` is used, the `custom_features` attribute **must be set**.
+        Default value is `COMPATIBLE`.
+        Possible values are `COMPATIBLE`, `MODERN`, `RESTRICTED`, and `CUSTOM`.
+        """
+        return pulumi.get(self, "profile")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> str:
+        """
+        The URI of the created resource.
+        """
+        return pulumi.get(self, "self_link")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

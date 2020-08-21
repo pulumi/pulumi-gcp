@@ -5,47 +5,25 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['AttachedDisk']
 
 
 class AttachedDisk(pulumi.CustomResource):
-    device_name: pulumi.Output[str]
-    """
-    Specifies a unique device name of your choice that is
-    reflected into the /dev/disk/by-id/google-* tree of a Linux operating
-    system running within the instance. This name can be used to
-    reference the device for mounting, resizing, and so on, from within
-    the instance.
-    """
-    disk: pulumi.Output[str]
-    """
-    `name` or `self_link` of the disk that will be attached.
-    """
-    instance: pulumi.Output[str]
-    """
-    `name` or `self_link` of the compute instance that the disk will be attached to.
-    If the `self_link` is provided then `zone` and `project` are extracted from the
-    self link. If only the name is used then `zone` and `project` must be defined
-    as properties on the resource or provider.
-    """
-    mode: pulumi.Output[str]
-    """
-    The mode in which to attach this disk, either READ_WRITE or
-    READ_ONLY. If not specified, the default is to attach the disk in
-    READ_WRITE mode.
-    """
-    project: pulumi.Output[str]
-    """
-    The project that the referenced compute instance is a part of. If `instance` is referenced by its
-    `self_link` the project defined in the link will take precedence.
-    """
-    zone: pulumi.Output[str]
-    """
-    The zone that the referenced compute instance is located within. If `instance` is referenced by its
-    `self_link` the zone defined in the link will take precedence.
-    """
-    def __init__(__self__, resource_name, opts=None, device_name=None, disk=None, instance=None, mode=None, project=None, zone=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 device_name: Optional[pulumi.Input[str]] = None,
+                 disk: Optional[pulumi.Input[str]] = None,
+                 instance: Optional[pulumi.Input[str]] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 zone: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Persistent disks can be attached to a compute instance using the `attached_disk`
         section within the compute instance configuration.
@@ -115,13 +93,21 @@ class AttachedDisk(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, device_name=None, disk=None, instance=None, mode=None, project=None, zone=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            device_name: Optional[pulumi.Input[str]] = None,
+            disk: Optional[pulumi.Input[str]] = None,
+            instance: Optional[pulumi.Input[str]] = None,
+            mode: Optional[pulumi.Input[str]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            zone: Optional[pulumi.Input[str]] = None) -> 'AttachedDisk':
         """
         Get an existing AttachedDisk resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] device_name: Specifies a unique device name of your choice that is
                reflected into the /dev/disk/by-id/google-* tree of a Linux operating
@@ -153,8 +139,68 @@ class AttachedDisk(pulumi.CustomResource):
         __props__["zone"] = zone
         return AttachedDisk(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="deviceName")
+    def device_name(self) -> str:
+        """
+        Specifies a unique device name of your choice that is
+        reflected into the /dev/disk/by-id/google-* tree of a Linux operating
+        system running within the instance. This name can be used to
+        reference the device for mounting, resizing, and so on, from within
+        the instance.
+        """
+        return pulumi.get(self, "device_name")
+
+    @property
+    @pulumi.getter
+    def disk(self) -> str:
+        """
+        `name` or `self_link` of the disk that will be attached.
+        """
+        return pulumi.get(self, "disk")
+
+    @property
+    @pulumi.getter
+    def instance(self) -> str:
+        """
+        `name` or `self_link` of the compute instance that the disk will be attached to.
+        If the `self_link` is provided then `zone` and `project` are extracted from the
+        self link. If only the name is used then `zone` and `project` must be defined
+        as properties on the resource or provider.
+        """
+        return pulumi.get(self, "instance")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[str]:
+        """
+        The mode in which to attach this disk, either READ_WRITE or
+        READ_ONLY. If not specified, the default is to attach the disk in
+        READ_WRITE mode.
+        """
+        return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The project that the referenced compute instance is a part of. If `instance` is referenced by its
+        `self_link` the project defined in the link will take precedence.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def zone(self) -> str:
+        """
+        The zone that the referenced compute instance is located within. If `instance` is referenced by its
+        `self_link` the zone defined in the link will take precedence.
+        """
+        return pulumi.get(self, "zone")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

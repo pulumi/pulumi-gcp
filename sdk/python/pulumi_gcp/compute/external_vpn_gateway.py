@@ -5,55 +5,26 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['ExternalVpnGateway']
 
 
 class ExternalVpnGateway(pulumi.CustomResource):
-    description: pulumi.Output[str]
-    """
-    An optional description of this resource.
-    """
-    interfaces: pulumi.Output[list]
-    """
-    A list of interfaces on this external VPN gateway.
-    Structure is documented below.
-
-      * `id` (`float`) - The numberic ID for this interface. Allowed values are based on the redundancy type
-        of this external VPN gateway
-        * `0 - SINGLE_IP_INTERNALLY_REDUNDANT`
-        * `0, 1 - TWO_IPS_REDUNDANCY`
-        * `0, 1, 2, 3 - FOUR_IPS_REDUNDANCY`
-      * `ip_address` (`str`) - IP address of the interface in the external VPN gateway.
-        Only IPv4 is supported. This IP address can be either from
-        your on-premise gateway or another Cloud provider's VPN gateway,
-        it cannot be an IP address from Google Compute Engine.
-    """
-    name: pulumi.Output[str]
-    """
-    Name of the resource. Provided by the client when the resource is
-    created. The name must be 1-63 characters long, and comply with
-    RFC1035.  Specifically, the name must be 1-63 characters long and
-    match the regular expression `a-z?` which means
-    the first character must be a lowercase letter, and all following
-    characters must be a dash, lowercase letter, or digit, except the last
-    character, which cannot be a dash.
-    """
-    project: pulumi.Output[str]
-    """
-    The ID of the project in which the resource belongs.
-    If it is not provided, the provider project is used.
-    """
-    redundancy_type: pulumi.Output[str]
-    """
-    Indicates the redundancy type of this external VPN gateway
-    Possible values are `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, and `TWO_IPS_REDUNDANCY`.
-    """
-    self_link: pulumi.Output[str]
-    """
-    The URI of the created resource.
-    """
-    def __init__(__self__, resource_name, opts=None, description=None, interfaces=None, name=None, project=None, redundancy_type=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 interfaces: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ExternalVpnGatewayInterfaceArgs']]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 redundancy_type: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Represents a VPN gateway managed outside of GCP.
 
@@ -66,7 +37,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource.
-        :param pulumi.Input[list] interfaces: A list of interfaces on this external VPN gateway.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ExternalVpnGatewayInterfaceArgs']]]] interfaces: A list of interfaces on this external VPN gateway.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -79,18 +50,6 @@ class ExternalVpnGateway(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] redundancy_type: Indicates the redundancy type of this external VPN gateway
                Possible values are `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, and `TWO_IPS_REDUNDANCY`.
-
-        The **interfaces** object supports the following:
-
-          * `id` (`pulumi.Input[float]`) - The numberic ID for this interface. Allowed values are based on the redundancy type
-            of this external VPN gateway
-            * `0 - SINGLE_IP_INTERNALLY_REDUNDANT`
-            * `0, 1 - TWO_IPS_REDUNDANCY`
-            * `0, 1, 2, 3 - FOUR_IPS_REDUNDANCY`
-          * `ip_address` (`pulumi.Input[str]`) - IP address of the interface in the external VPN gateway.
-            Only IPv4 is supported. This IP address can be either from
-            your on-premise gateway or another Cloud provider's VPN gateway,
-            it cannot be an IP address from Google Compute Engine.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -122,16 +81,24 @@ class ExternalVpnGateway(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, description=None, interfaces=None, name=None, project=None, redundancy_type=None, self_link=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            interfaces: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ExternalVpnGatewayInterfaceArgs']]]]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            redundancy_type: Optional[pulumi.Input[str]] = None,
+            self_link: Optional[pulumi.Input[str]] = None) -> 'ExternalVpnGateway':
         """
         Get an existing ExternalVpnGateway resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource.
-        :param pulumi.Input[list] interfaces: A list of interfaces on this external VPN gateway.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ExternalVpnGatewayInterfaceArgs']]]] interfaces: A list of interfaces on this external VPN gateway.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -145,18 +112,6 @@ class ExternalVpnGateway(pulumi.CustomResource):
         :param pulumi.Input[str] redundancy_type: Indicates the redundancy type of this external VPN gateway
                Possible values are `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, and `TWO_IPS_REDUNDANCY`.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-
-        The **interfaces** object supports the following:
-
-          * `id` (`pulumi.Input[float]`) - The numberic ID for this interface. Allowed values are based on the redundancy type
-            of this external VPN gateway
-            * `0 - SINGLE_IP_INTERNALLY_REDUNDANT`
-            * `0, 1 - TWO_IPS_REDUNDANCY`
-            * `0, 1, 2, 3 - FOUR_IPS_REDUNDANCY`
-          * `ip_address` (`pulumi.Input[str]`) - IP address of the interface in the external VPN gateway.
-            Only IPv4 is supported. This IP address can be either from
-            your on-premise gateway or another Cloud provider's VPN gateway,
-            it cannot be an IP address from Google Compute Engine.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -170,8 +125,66 @@ class ExternalVpnGateway(pulumi.CustomResource):
         __props__["self_link"] = self_link
         return ExternalVpnGateway(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        An optional description of this resource.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def interfaces(self) -> Optional[List['outputs.ExternalVpnGatewayInterface']]:
+        """
+        A list of interfaces on this external VPN gateway.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "interfaces")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the resource. Provided by the client when the resource is
+        created. The name must be 1-63 characters long, and comply with
+        RFC1035.  Specifically, the name must be 1-63 characters long and
+        match the regular expression `a-z?` which means
+        the first character must be a lowercase letter, and all following
+        characters must be a dash, lowercase letter, or digit, except the last
+        character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="redundancyType")
+    def redundancy_type(self) -> Optional[str]:
+        """
+        Indicates the redundancy type of this external VPN gateway
+        Possible values are `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, and `TWO_IPS_REDUNDANCY`.
+        """
+        return pulumi.get(self, "redundancy_type")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> str:
+        """
+        The URI of the created resource.
+        """
+        return pulumi.get(self, "self_link")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

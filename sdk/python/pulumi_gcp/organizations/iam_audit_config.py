@@ -5,54 +5,32 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['IamAuditConfig']
 
 
 class IamAuditConfig(pulumi.CustomResource):
-    audit_log_configs: pulumi.Output[list]
-    """
-    The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
-
-      * `exemptedMembers` (`list`) - Identities that do not cause logging for this type of permission.
-        Each entry can have one of the following values:
-        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-      * `logType` (`str`) - Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
-    """
-    etag: pulumi.Output[str]
-    """
-    The etag of iam policy
-    """
-    org_id: pulumi.Output[str]
-    """
-    The numeric ID of the organization in which you want to manage the audit logging config.
-    """
-    service: pulumi.Output[str]
-    """
-    Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_organization\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
-    """
-    def __init__(__self__, resource_name, opts=None, audit_log_configs=None, org_id=None, service=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 audit_log_configs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['IamAuditConfigAuditLogConfigArgs']]]]] = None,
+                 org_id: Optional[pulumi.Input[str]] = None,
+                 service: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Allows management of audit logging config for a given service for a Google Cloud Platform Organization.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['IamAuditConfigAuditLogConfigArgs']]]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
         :param pulumi.Input[str] org_id: The numeric ID of the organization in which you want to manage the audit logging config.
         :param pulumi.Input[str] service: Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_organization\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
-
-        The **audit_log_configs** object supports the following:
-
-          * `exemptedMembers` (`pulumi.Input[list]`) - Identities that do not cause logging for this type of permission.
-            Each entry can have one of the following values:
-            * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-            * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-            * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-            * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-          * `logType` (`pulumi.Input[str]`) - Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -88,28 +66,24 @@ class IamAuditConfig(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, audit_log_configs=None, etag=None, org_id=None, service=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            audit_log_configs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['IamAuditConfigAuditLogConfigArgs']]]]] = None,
+            etag: Optional[pulumi.Input[str]] = None,
+            org_id: Optional[pulumi.Input[str]] = None,
+            service: Optional[pulumi.Input[str]] = None) -> 'IamAuditConfig':
         """
         Get an existing IamAuditConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['IamAuditConfigAuditLogConfigArgs']]]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
         :param pulumi.Input[str] etag: The etag of iam policy
         :param pulumi.Input[str] org_id: The numeric ID of the organization in which you want to manage the audit logging config.
         :param pulumi.Input[str] service: Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_organization\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
-
-        The **audit_log_configs** object supports the following:
-
-          * `exemptedMembers` (`pulumi.Input[list]`) - Identities that do not cause logging for this type of permission.
-            Each entry can have one of the following values:
-            * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-            * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-            * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-            * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-          * `logType` (`pulumi.Input[str]`) - Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -121,8 +95,41 @@ class IamAuditConfig(pulumi.CustomResource):
         __props__["service"] = service
         return IamAuditConfig(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="auditLogConfigs")
+    def audit_log_configs(self) -> List['outputs.IamAuditConfigAuditLogConfig']:
+        """
+        The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
+        """
+        return pulumi.get(self, "audit_log_configs")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> str:
+        """
+        The etag of iam policy
+        """
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter(name="orgId")
+    def org_id(self) -> str:
+        """
+        The numeric ID of the organization in which you want to manage the audit logging config.
+        """
+        return pulumi.get(self, "org_id")
+
+    @property
+    @pulumi.getter
+    def service(self) -> str:
+        """
+        Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_organization\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
+        """
+        return pulumi.get(self, "service")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

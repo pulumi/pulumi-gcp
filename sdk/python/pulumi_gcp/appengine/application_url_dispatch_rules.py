@@ -5,29 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['ApplicationUrlDispatchRules']
 
 
 class ApplicationUrlDispatchRules(pulumi.CustomResource):
-    dispatch_rules: pulumi.Output[list]
-    """
-    Rules to match an HTTP request and dispatch that request to a service.
-    Structure is documented below.
-
-      * `domain` (`str`) - Domain name to match against. The wildcard "*" is supported if specified before a period: "*.".
-        Defaults to matching all domains: "*".
-      * `path` (`str`) - Pathname within the host. Must start with a "/". A single "*" can be included at the end of the path.
-        The sum of the lengths of the domain and path may not exceed 100 characters.
-      * `service` (`str`) - Pathname within the host. Must start with a "/". A single "*" can be included at the end of the path.
-        The sum of the lengths of the domain and path may not exceed 100 characters.
-    """
-    project: pulumi.Output[str]
-    """
-    The ID of the project in which the resource belongs.
-    If it is not provided, the provider project is used.
-    """
-    def __init__(__self__, resource_name, opts=None, dispatch_rules=None, project=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 dispatch_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ApplicationUrlDispatchRulesDispatchRuleArgs']]]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Rules to match an HTTP request and dispatch that request to a service.
 
@@ -39,19 +33,10 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] dispatch_rules: Rules to match an HTTP request and dispatch that request to a service.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ApplicationUrlDispatchRulesDispatchRuleArgs']]]] dispatch_rules: Rules to match an HTTP request and dispatch that request to a service.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-
-        The **dispatch_rules** object supports the following:
-
-          * `domain` (`pulumi.Input[str]`) - Domain name to match against. The wildcard "*" is supported if specified before a period: "*.".
-            Defaults to matching all domains: "*".
-          * `path` (`pulumi.Input[str]`) - Pathname within the host. Must start with a "/". A single "*" can be included at the end of the path.
-            The sum of the lengths of the domain and path may not exceed 100 characters.
-          * `service` (`pulumi.Input[str]`) - Pathname within the host. Must start with a "/". A single "*" can be included at the end of the path.
-            The sum of the lengths of the domain and path may not exceed 100 characters.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -81,27 +66,22 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, dispatch_rules=None, project=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            dispatch_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ApplicationUrlDispatchRulesDispatchRuleArgs']]]]] = None,
+            project: Optional[pulumi.Input[str]] = None) -> 'ApplicationUrlDispatchRules':
         """
         Get an existing ApplicationUrlDispatchRules resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] dispatch_rules: Rules to match an HTTP request and dispatch that request to a service.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ApplicationUrlDispatchRulesDispatchRuleArgs']]]] dispatch_rules: Rules to match an HTTP request and dispatch that request to a service.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-
-        The **dispatch_rules** object supports the following:
-
-          * `domain` (`pulumi.Input[str]`) - Domain name to match against. The wildcard "*" is supported if specified before a period: "*.".
-            Defaults to matching all domains: "*".
-          * `path` (`pulumi.Input[str]`) - Pathname within the host. Must start with a "/". A single "*" can be included at the end of the path.
-            The sum of the lengths of the domain and path may not exceed 100 characters.
-          * `service` (`pulumi.Input[str]`) - Pathname within the host. Must start with a "/". A single "*" can be included at the end of the path.
-            The sum of the lengths of the domain and path may not exceed 100 characters.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -111,8 +91,27 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
         __props__["project"] = project
         return ApplicationUrlDispatchRules(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="dispatchRules")
+    def dispatch_rules(self) -> List['outputs.ApplicationUrlDispatchRulesDispatchRule']:
+        """
+        Rules to match an HTTP request and dispatch that request to a service.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dispatch_rules")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,35 +5,24 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['BillingAccountExclusion']
 
 
 class BillingAccountExclusion(pulumi.CustomResource):
-    billing_account: pulumi.Output[str]
-    """
-    The billing account to create the exclusion for.
-    """
-    description: pulumi.Output[str]
-    """
-    A human-readable description.
-    """
-    disabled: pulumi.Output[bool]
-    """
-    Whether this exclusion rule should be disabled or not. This defaults to
-    false.
-    """
-    filter: pulumi.Output[str]
-    """
-    The filter to apply when excluding logs. Only log entries that match the filter are excluded.
-    See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced-filters) for information on how to
-    write a filter.
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the logging exclusion.
-    """
-    def __init__(__self__, resource_name, opts=None, billing_account=None, description=None, disabled=None, filter=None, name=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 billing_account: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
+                 filter: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a billing account logging exclusion. For more information see
         [the official documentation](https://cloud.google.com/logging/docs/) and
@@ -86,13 +75,20 @@ class BillingAccountExclusion(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, billing_account=None, description=None, disabled=None, filter=None, name=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            billing_account: Optional[pulumi.Input[str]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            disabled: Optional[pulumi.Input[bool]] = None,
+            filter: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None) -> 'BillingAccountExclusion':
         """
         Get an existing BillingAccountExclusion resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] billing_account: The billing account to create the exclusion for.
         :param pulumi.Input[str] description: A human-readable description.
@@ -114,8 +110,52 @@ class BillingAccountExclusion(pulumi.CustomResource):
         __props__["name"] = name
         return BillingAccountExclusion(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="billingAccount")
+    def billing_account(self) -> str:
+        """
+        The billing account to create the exclusion for.
+        """
+        return pulumi.get(self, "billing_account")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        A human-readable description.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[bool]:
+        """
+        Whether this exclusion rule should be disabled or not. This defaults to
+        false.
+        """
+        return pulumi.get(self, "disabled")
+
+    @property
+    @pulumi.getter
+    def filter(self) -> str:
+        """
+        The filter to apply when excluding logs. Only log entries that match the filter are excluded.
+        See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced-filters) for information on how to
+        write a filter.
+        """
+        return pulumi.get(self, "filter")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the logging exclusion.
+        """
+        return pulumi.get(self, "name")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

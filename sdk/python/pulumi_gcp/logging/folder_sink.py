@@ -5,55 +5,27 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['FolderSink']
 
 
 class FolderSink(pulumi.CustomResource):
-    bigquery_options: pulumi.Output[dict]
-    """
-    Options that affect sinks exporting data to BigQuery. Structure documented below.
-
-      * `usePartitionedTables` (`bool`) - Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
-        By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned
-        tables the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
-        has to be used instead. In both cases, tables are sharded based on UTC timezone.
-    """
-    destination: pulumi.Output[str]
-    """
-    The destination of the sink (or, in other words, where logs are written to). Can be a
-    Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
-    "storage.googleapis.com/[GCS_BUCKET]"
-    "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
-    "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]"
-    The writer associated with the sink must have access to write to the above resource.
-    """
-    filter: pulumi.Output[str]
-    """
-    The filter to apply when exporting logs. Only log entries that match the filter are exported.
-    See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
-    write a filter.
-    """
-    folder: pulumi.Output[str]
-    """
-    The folder to be exported to the sink. Note that either [FOLDER_ID] or "folders/[FOLDER_ID]" is
-    accepted.
-    """
-    include_children: pulumi.Output[bool]
-    """
-    Whether or not to include children folders in the sink export. If true, logs
-    associated with child projects are also exported; otherwise only logs relating to the provided folder are included.
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the logging sink.
-    """
-    writer_identity: pulumi.Output[str]
-    """
-    The identity associated with this sink. This identity must be granted write access to the
-    configured `destination`.
-    """
-    def __init__(__self__, resource_name, opts=None, bigquery_options=None, destination=None, filter=None, folder=None, include_children=None, name=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 bigquery_options: Optional[pulumi.Input[pulumi.InputType['FolderSinkBigqueryOptionsArgs']]] = None,
+                 destination: Optional[pulumi.Input[str]] = None,
+                 filter: Optional[pulumi.Input[str]] = None,
+                 folder: Optional[pulumi.Input[str]] = None,
+                 include_children: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a folder-level logging sink. For more information see
         [the official documentation](https://cloud.google.com/logging/docs/) and
@@ -64,7 +36,7 @@ class FolderSink(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
+        :param pulumi.Input[pulumi.InputType['FolderSinkBigqueryOptionsArgs']] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
         :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a
                Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
                "storage.googleapis.com/[GCS_BUCKET]"
@@ -79,13 +51,6 @@ class FolderSink(pulumi.CustomResource):
         :param pulumi.Input[bool] include_children: Whether or not to include children folders in the sink export. If true, logs
                associated with child projects are also exported; otherwise only logs relating to the provided folder are included.
         :param pulumi.Input[str] name: The name of the logging sink.
-
-        The **bigquery_options** object supports the following:
-
-          * `usePartitionedTables` (`pulumi.Input[bool]`) - Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
-            By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned
-            tables the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
-            has to be used instead. In both cases, tables are sharded based on UTC timezone.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -122,15 +87,24 @@ class FolderSink(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, bigquery_options=None, destination=None, filter=None, folder=None, include_children=None, name=None, writer_identity=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bigquery_options: Optional[pulumi.Input[pulumi.InputType['FolderSinkBigqueryOptionsArgs']]] = None,
+            destination: Optional[pulumi.Input[str]] = None,
+            filter: Optional[pulumi.Input[str]] = None,
+            folder: Optional[pulumi.Input[str]] = None,
+            include_children: Optional[pulumi.Input[bool]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            writer_identity: Optional[pulumi.Input[str]] = None) -> 'FolderSink':
         """
         Get an existing FolderSink resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
+        :param pulumi.Input[pulumi.InputType['FolderSinkBigqueryOptionsArgs']] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
         :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a
                Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
                "storage.googleapis.com/[GCS_BUCKET]"
@@ -147,13 +121,6 @@ class FolderSink(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the logging sink.
         :param pulumi.Input[str] writer_identity: The identity associated with this sink. This identity must be granted write access to the
                configured `destination`.
-
-        The **bigquery_options** object supports the following:
-
-          * `usePartitionedTables` (`pulumi.Input[bool]`) - Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
-            By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned
-            tables the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
-            has to be used instead. In both cases, tables are sharded based on UTC timezone.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -168,8 +135,75 @@ class FolderSink(pulumi.CustomResource):
         __props__["writer_identity"] = writer_identity
         return FolderSink(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="bigqueryOptions")
+    def bigquery_options(self) -> 'outputs.FolderSinkBigqueryOptions':
+        """
+        Options that affect sinks exporting data to BigQuery. Structure documented below.
+        """
+        return pulumi.get(self, "bigquery_options")
+
+    @property
+    @pulumi.getter
+    def destination(self) -> str:
+        """
+        The destination of the sink (or, in other words, where logs are written to). Can be a
+        Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+        "storage.googleapis.com/[GCS_BUCKET]"
+        "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
+        "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]"
+        The writer associated with the sink must have access to write to the above resource.
+        """
+        return pulumi.get(self, "destination")
+
+    @property
+    @pulumi.getter
+    def filter(self) -> Optional[str]:
+        """
+        The filter to apply when exporting logs. Only log entries that match the filter are exported.
+        See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+        write a filter.
+        """
+        return pulumi.get(self, "filter")
+
+    @property
+    @pulumi.getter
+    def folder(self) -> str:
+        """
+        The folder to be exported to the sink. Note that either [FOLDER_ID] or "folders/[FOLDER_ID]" is
+        accepted.
+        """
+        return pulumi.get(self, "folder")
+
+    @property
+    @pulumi.getter(name="includeChildren")
+    def include_children(self) -> Optional[bool]:
+        """
+        Whether or not to include children folders in the sink export. If true, logs
+        associated with child projects are also exported; otherwise only logs relating to the provided folder are included.
+        """
+        return pulumi.get(self, "include_children")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the logging sink.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="writerIdentity")
+    def writer_identity(self) -> str:
+        """
+        The identity associated with this sink. This identity must be granted write access to the
+        configured `destination`.
+        """
+        return pulumi.get(self, "writer_identity")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

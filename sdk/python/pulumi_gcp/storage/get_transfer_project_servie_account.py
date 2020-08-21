@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
 
+__all__ = [
+    'GetTransferProjectServieAccountResult',
+    'AwaitableGetTransferProjectServieAccountResult',
+    'get_transfer_project_servie_account',
+]
 
+@pulumi.output_type
 class GetTransferProjectServieAccountResult:
     """
     A collection of values returned by getTransferProjectServieAccount.
@@ -16,19 +22,34 @@ class GetTransferProjectServieAccountResult:
     def __init__(__self__, email=None, id=None, project=None):
         if email and not isinstance(email, str):
             raise TypeError("Expected argument 'email' to be a str")
-        __self__.email = email
+        pulumi.set(__self__, "email", email)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if project and not isinstance(project, str):
+            raise TypeError("Expected argument 'project' to be a str")
+        pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter
+    def email(self) -> str:
         """
         Email address of the default service account used by Storage Transfer Jobs running in this project
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if project and not isinstance(project, str):
-            raise TypeError("Expected argument 'project' to be a str")
-        __self__.project = project
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        return pulumi.get(self, "project")
 
 
 class AwaitableGetTransferProjectServieAccountResult(GetTransferProjectServieAccountResult):
@@ -42,7 +63,8 @@ class AwaitableGetTransferProjectServieAccountResult(GetTransferProjectServieAcc
             project=self.project)
 
 
-def get_transfer_project_servie_account(project=None, opts=None):
+def get_transfer_project_servie_account(project: Optional[str] = None,
+                                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTransferProjectServieAccountResult:
     """
     Use this data source to retrieve Storage Transfer service account for this project
 
@@ -55,9 +77,9 @@ def get_transfer_project_servie_account(project=None, opts=None):
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('gcp:storage/getTransferProjectServieAccount:getTransferProjectServieAccount', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('gcp:storage/getTransferProjectServieAccount:getTransferProjectServieAccount', __args__, opts=opts, typ=GetTransferProjectServieAccountResult).value
 
     return AwaitableGetTransferProjectServieAccountResult(
-        email=__ret__.get('email'),
-        id=__ret__.get('id'),
-        project=__ret__.get('project'))
+        email=__ret__.email,
+        id=__ret__.id,
+        project=__ret__.project)

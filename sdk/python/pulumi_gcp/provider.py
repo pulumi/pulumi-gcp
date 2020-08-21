@@ -6,12 +6,103 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+from . import outputs
+
+__all__ = ['Provider']
 
 
 class Provider(pulumi.ProviderResource):
-    def __init__(__self__, resource_name, opts=None, access_context_manager_custom_endpoint=None, access_token=None, active_directory_custom_endpoint=None, app_engine_custom_endpoint=None, artifact_registry_custom_endpoint=None, batching=None, big_query_custom_endpoint=None, bigquery_connection_custom_endpoint=None, bigquery_data_transfer_custom_endpoint=None, bigquery_reservation_custom_endpoint=None, bigtable_custom_endpoint=None, billing_custom_endpoint=None, binary_authorization_custom_endpoint=None, cloud_asset_custom_endpoint=None, cloud_billing_custom_endpoint=None, cloud_build_custom_endpoint=None, cloud_functions_custom_endpoint=None, cloud_identity_custom_endpoint=None, cloud_iot_custom_endpoint=None, cloud_run_custom_endpoint=None, cloud_scheduler_custom_endpoint=None, cloud_tasks_custom_endpoint=None, composer_custom_endpoint=None, compute_beta_custom_endpoint=None, compute_custom_endpoint=None, container_analysis_custom_endpoint=None, container_beta_custom_endpoint=None, container_custom_endpoint=None, credentials=None, data_catalog_custom_endpoint=None, data_fusion_custom_endpoint=None, dataflow_custom_endpoint=None, dataproc_beta_custom_endpoint=None, dataproc_custom_endpoint=None, datastore_custom_endpoint=None, deployment_manager_custom_endpoint=None, dialogflow_custom_endpoint=None, dns_beta_custom_endpoint=None, dns_custom_endpoint=None, filestore_custom_endpoint=None, firebase_custom_endpoint=None, firestore_custom_endpoint=None, game_services_custom_endpoint=None, healthcare_custom_endpoint=None, iam_credentials_custom_endpoint=None, iam_custom_endpoint=None, iap_custom_endpoint=None, identity_platform_custom_endpoint=None, kms_custom_endpoint=None, logging_custom_endpoint=None, memcache_custom_endpoint=None, ml_engine_custom_endpoint=None, monitoring_custom_endpoint=None, network_management_custom_endpoint=None, notebooks_custom_endpoint=None, os_config_custom_endpoint=None, os_login_custom_endpoint=None, project=None, pubsub_custom_endpoint=None, redis_custom_endpoint=None, region=None, request_timeout=None, resource_manager_custom_endpoint=None, resource_manager_v2beta1_custom_endpoint=None, runtime_config_custom_endpoint=None, runtimeconfig_custom_endpoint=None, scopes=None, secret_manager_custom_endpoint=None, security_center_custom_endpoint=None, security_scanner_custom_endpoint=None, service_directory_custom_endpoint=None, service_management_custom_endpoint=None, service_networking_custom_endpoint=None, service_usage_custom_endpoint=None, source_repo_custom_endpoint=None, spanner_custom_endpoint=None, sql_custom_endpoint=None, storage_custom_endpoint=None, storage_transfer_custom_endpoint=None, tpu_custom_endpoint=None, user_project_override=None, vpc_access_custom_endpoint=None, zone=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 access_context_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 access_token: Optional[pulumi.Input[str]] = None,
+                 active_directory_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 app_engine_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 artifact_registry_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 batching: Optional[pulumi.Input[pulumi.InputType['ProviderBatchingArgs']]] = None,
+                 big_query_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 bigquery_connection_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 bigquery_data_transfer_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 bigquery_reservation_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 bigtable_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 billing_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 binary_authorization_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 cloud_asset_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 cloud_billing_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 cloud_build_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 cloud_functions_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 cloud_identity_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 cloud_iot_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 cloud_run_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 cloud_scheduler_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 cloud_tasks_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 composer_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 compute_beta_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 compute_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 container_analysis_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 container_beta_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 container_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 credentials: Optional[pulumi.Input[str]] = None,
+                 data_catalog_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 data_fusion_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 dataflow_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 dataproc_beta_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 dataproc_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 datastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 deployment_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 dialogflow_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 dns_beta_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 dns_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 filestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 firebase_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 firestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 game_services_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 healthcare_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 iam_credentials_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 iam_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 iap_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 identity_platform_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 kms_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 logging_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 memcache_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 ml_engine_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 monitoring_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 network_management_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 notebooks_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 os_config_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 os_login_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 pubsub_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 redis_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 request_timeout: Optional[pulumi.Input[str]] = None,
+                 resource_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 resource_manager_v2beta1_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 runtime_config_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 runtimeconfig_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 scopes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 secret_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 security_center_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 security_scanner_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 service_directory_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 service_management_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 service_networking_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 service_usage_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 source_repo_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 spanner_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 sql_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 storage_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 storage_transfer_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 tpu_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 user_project_override: Optional[pulumi.Input[bool]] = None,
+                 vpc_access_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 zone: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         The provider type for the google-beta package. By default, resources use package-wide configuration
         settings, however an explicit `Provider` instance may be created and passed during resource
@@ -20,11 +111,6 @@ class Provider(pulumi.ProviderResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-
-        The **batching** object supports the following:
-
-          * `enable_batching` (`pulumi.Input[bool]`)
-          * `send_after` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -145,3 +231,4 @@ class Provider(pulumi.ProviderResource):
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

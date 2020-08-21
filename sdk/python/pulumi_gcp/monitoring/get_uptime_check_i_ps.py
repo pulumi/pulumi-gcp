@@ -5,10 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
 
+__all__ = [
+    'GetUptimeCheckIPsResult',
+    'AwaitableGetUptimeCheckIPsResult',
+    'get_uptime_check_i_ps',
+]
 
+@pulumi.output_type
 class GetUptimeCheckIPsResult:
     """
     A collection of values returned by getUptimeCheckIPs.
@@ -16,16 +23,26 @@ class GetUptimeCheckIPsResult:
     def __init__(__self__, id=None, uptime_check_ips=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if uptime_check_ips and not isinstance(uptime_check_ips, list):
+            raise TypeError("Expected argument 'uptime_check_ips' to be a list")
+        pulumi.set(__self__, "uptime_check_ips", uptime_check_ips)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if uptime_check_ips and not isinstance(uptime_check_ips, list):
-            raise TypeError("Expected argument 'uptime_check_ips' to be a list")
-        __self__.uptime_check_ips = uptime_check_ips
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="uptimeCheckIps")
+    def uptime_check_ips(self) -> List['outputs.GetUptimeCheckIPsUptimeCheckIpResult']:
         """
         A list of uptime check IPs used by Stackdriver Monitoring. Each `uptime_check_ip` contains:
         """
+        return pulumi.get(self, "uptime_check_ips")
 
 
 class AwaitableGetUptimeCheckIPsResult(GetUptimeCheckIPsResult):
@@ -38,7 +55,7 @@ class AwaitableGetUptimeCheckIPsResult(GetUptimeCheckIPsResult):
             uptime_check_ips=self.uptime_check_ips)
 
 
-def get_uptime_check_i_ps(opts=None):
+def get_uptime_check_i_ps(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUptimeCheckIPsResult:
     """
     Returns the list of IP addresses that checkers run from. For more information see
     the [official documentation](https://cloud.google.com/monitoring/uptime-checks#get-ips).
@@ -48,8 +65,8 @@ def get_uptime_check_i_ps(opts=None):
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('gcp:monitoring/getUptimeCheckIPs:getUptimeCheckIPs', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('gcp:monitoring/getUptimeCheckIPs:getUptimeCheckIPs', __args__, opts=opts, typ=GetUptimeCheckIPsResult).value
 
     return AwaitableGetUptimeCheckIPsResult(
-        id=__ret__.get('id'),
-        uptime_check_ips=__ret__.get('uptimeCheckIps'))
+        id=__ret__.id,
+        uptime_check_ips=__ret__.uptime_check_ips)

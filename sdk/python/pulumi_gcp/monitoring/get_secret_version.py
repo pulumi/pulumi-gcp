@@ -5,11 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = [
+    'GetSecretVersionResult',
+    'AwaitableGetSecretVersionResult',
+    'get_secret_version',
+]
 
 warnings.warn("gcp.monitoring.getSecretVersion has been deprecated in favor of gcp.secretmanager.getSecretVersion", DeprecationWarning)
 
+@pulumi.output_type
 class GetSecretVersionResult:
     """
     A collection of values returned by getSecretVersion.
@@ -17,34 +24,79 @@ class GetSecretVersionResult:
     def __init__(__self__, create_time=None, destroy_time=None, enabled=None, id=None, name=None, project=None, secret=None, secret_data=None, version=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
-        __self__.create_time = create_time
+        pulumi.set(__self__, "create_time", create_time)
         if destroy_time and not isinstance(destroy_time, str):
             raise TypeError("Expected argument 'destroy_time' to be a str")
-        __self__.destroy_time = destroy_time
+        pulumi.set(__self__, "destroy_time", destroy_time)
         if enabled and not isinstance(enabled, bool):
             raise TypeError("Expected argument 'enabled' to be a bool")
-        __self__.enabled = enabled
+        pulumi.set(__self__, "enabled", enabled)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if project and not isinstance(project, str):
+            raise TypeError("Expected argument 'project' to be a str")
+        pulumi.set(__self__, "project", project)
+        if secret and not isinstance(secret, str):
+            raise TypeError("Expected argument 'secret' to be a str")
+        pulumi.set(__self__, "secret", secret)
+        if secret_data and not isinstance(secret_data, str):
+            raise TypeError("Expected argument 'secret_data' to be a str")
+        pulumi.set(__self__, "secret_data", secret_data)
+        if version and not isinstance(version, str):
+            raise TypeError("Expected argument 'version' to be a str")
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="destroyTime")
+    def destroy_time(self) -> str:
+        return pulumi.get(self, "destroy_time")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
-        if project and not isinstance(project, str):
-            raise TypeError("Expected argument 'project' to be a str")
-        __self__.project = project
-        if secret and not isinstance(secret, str):
-            raise TypeError("Expected argument 'secret' to be a str")
-        __self__.secret = secret
-        if secret_data and not isinstance(secret_data, str):
-            raise TypeError("Expected argument 'secret_data' to be a str")
-        __self__.secret_data = secret_data
-        if version and not isinstance(version, str):
-            raise TypeError("Expected argument 'version' to be a str")
-        __self__.version = version
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def secret(self) -> str:
+        return pulumi.get(self, "secret")
+
+    @property
+    @pulumi.getter(name="secretData")
+    def secret_data(self) -> str:
+        return pulumi.get(self, "secret_data")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        return pulumi.get(self, "version")
 
 
 class AwaitableGetSecretVersionResult(GetSecretVersionResult):
@@ -64,7 +116,10 @@ class AwaitableGetSecretVersionResult(GetSecretVersionResult):
             version=self.version)
 
 
-def get_secret_version(project=None, secret=None, version=None, opts=None):
+def get_secret_version(project: Optional[str] = None,
+                       secret: Optional[str] = None,
+                       version: Optional[str] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecretVersionResult:
     """
     Use this data source to access information about an existing resource.
     """
@@ -77,15 +132,15 @@ def get_secret_version(project=None, secret=None, version=None, opts=None):
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('gcp:monitoring/getSecretVersion:getSecretVersion', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('gcp:monitoring/getSecretVersion:getSecretVersion', __args__, opts=opts, typ=GetSecretVersionResult).value
 
     return AwaitableGetSecretVersionResult(
-        create_time=__ret__.get('createTime'),
-        destroy_time=__ret__.get('destroyTime'),
-        enabled=__ret__.get('enabled'),
-        id=__ret__.get('id'),
-        name=__ret__.get('name'),
-        project=__ret__.get('project'),
-        secret=__ret__.get('secret'),
-        secret_data=__ret__.get('secretData'),
-        version=__ret__.get('version'))
+        create_time=__ret__.create_time,
+        destroy_time=__ret__.destroy_time,
+        enabled=__ret__.enabled,
+        id=__ret__.id,
+        name=__ret__.name,
+        project=__ret__.project,
+        secret=__ret__.secret,
+        secret_data=__ret__.secret_data,
+        version=__ret__.version)

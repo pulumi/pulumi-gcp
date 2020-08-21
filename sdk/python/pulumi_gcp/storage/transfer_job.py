@@ -5,93 +5,26 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['TransferJob']
 
 
 class TransferJob(pulumi.CustomResource):
-    creation_time: pulumi.Output[str]
-    """
-    When the Transfer Job was created.
-    """
-    deletion_time: pulumi.Output[str]
-    """
-    When the Transfer Job was deleted.
-    """
-    description: pulumi.Output[str]
-    """
-    Unique description to identify the Transfer Job.
-    """
-    last_modification_time: pulumi.Output[str]
-    """
-    When the Transfer Job was last modified.
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the Transfer Job.
-    """
-    project: pulumi.Output[str]
-    """
-    The project in which the resource belongs. If it
-    is not provided, the provider project is used.
-    """
-    schedule: pulumi.Output[dict]
-    """
-    Schedule specification defining when the Transfer Job should be scheduled to start, end and and what time to run. Structure documented below.
-
-      * `scheduleEndDate` (`dict`) - The last day the recurring transfer will be run. If `schedule_end_date` is the same as `schedule_start_date`, the transfer will be executed only once. Structure documented below.
-        * `day` (`float`) - Day of month. Must be from 1 to 31 and valid for the year and month.
-        * `month` (`float`) - Month of year. Must be from 1 to 12.
-        * `year` (`float`) - Year of date. Must be from 1 to 9999.
-
-      * `scheduleStartDate` (`dict`) - The first day the recurring transfer is scheduled to run. If `schedule_start_date` is in the past, the transfer will run for the first time on the following day. Structure documented below.
-        * `day` (`float`) - Day of month. Must be from 1 to 31 and valid for the year and month.
-        * `month` (`float`) - Month of year. Must be from 1 to 12.
-        * `year` (`float`) - Year of date. Must be from 1 to 9999.
-
-      * `startTimeOfDay` (`dict`) - The time in UTC at which the transfer will be scheduled to start in a day. Transfers may start later than this time. If not specified, recurring and one-time transfers that are scheduled to run today will run immediately; recurring transfers that are scheduled to run on a future date will start at approximately midnight UTC on that date. Note that when configuring a transfer with the Cloud Platform Console, the transfer's start time in a day is specified in your local timezone. Structure documented below.
-        * `hours` (`float`) - Hours of day in 24 hour format. Should be from 0 to 23
-        * `minutes` (`float`) - Minutes of hour of day. Must be from 0 to 59.
-        * `nanos` (`float`) - Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
-        * `seconds` (`float`) - Seconds of minutes of the time. Must normally be from 0 to 59.
-    """
-    status: pulumi.Output[str]
-    """
-    Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
-    """
-    transfer_spec: pulumi.Output[dict]
-    """
-    Transfer specification. Structure documented below.
-
-      * `awsS3DataSource` (`dict`) - An AWS S3 data source. Structure documented below.
-        * `awsAccessKey` (`dict`) - AWS credentials block.
-          * `accessKeyId` (`str`) - AWS Key ID.
-          * `secretAccessKey` (`str`) - AWS Secret Access Key.
-
-        * `bucket_name` (`str`) - S3 Bucket name.
-
-      * `gcsDataSink` (`dict`) - A Google Cloud Storage data sink. Structure documented below.
-        * `bucket_name` (`str`) - S3 Bucket name.
-
-      * `gcsDataSource` (`dict`) - A Google Cloud Storage data source. Structure documented below.
-        * `bucket_name` (`str`) - S3 Bucket name.
-
-      * `httpDataSource` (`dict`) - An HTTP URL data source. Structure documented below.
-        * `listUrl` (`str`) - The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
-
-      * `objectConditions` (`dict`) - Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `last_modification_time` do not exclude objects in a data sink. Structure documented below.
-        * `excludePrefixes` (`list`) - `exclude_prefixes` must follow the requirements described for `include_prefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
-        * `includePrefixes` (`list`) - If `include_refixes` is specified, objects that satisfy the object conditions must have names that start with one of the `include_prefixes` and that do not start with any of the `exclude_prefixes`. If `include_prefixes` is not specified, all objects except those that have names starting with one of the `exclude_prefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
-        * `maxTimeElapsedSinceLastModification` (`str`) - A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-        * `minTimeElapsedSinceLastModification` (`str`) - A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-
-      * `transferOptions` (`dict`) - Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects' `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
-        * `deleteObjectsFromSourceAfterTransfer` (`bool`) - Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `delete_objects_unique_in_sink` are mutually exclusive.
-        * `deleteObjectsUniqueInSink` (`bool`) - Whether objects that exist only in the sink should be deleted. Note that this option and
-          `delete_objects_from_source_after_transfer` are mutually exclusive.
-        * `overwriteObjectsAlreadyExistingInSink` (`bool`) - Whether overwriting objects that already exist in the sink is allowed.
-    """
-    def __init__(__self__, resource_name, opts=None, description=None, project=None, schedule=None, status=None, transfer_spec=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 schedule: Optional[pulumi.Input[pulumi.InputType['TransferJobScheduleArgs']]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 transfer_spec: Optional[pulumi.Input[pulumi.InputType['TransferJobTransferSpecArgs']]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Creates a new Transfer Job in Google Cloud Storage Transfer.
 
@@ -107,57 +40,9 @@ class TransferJob(pulumi.CustomResource):
         :param pulumi.Input[str] description: Unique description to identify the Transfer Job.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[dict] schedule: Schedule specification defining when the Transfer Job should be scheduled to start, end and and what time to run. Structure documented below.
+        :param pulumi.Input[pulumi.InputType['TransferJobScheduleArgs']] schedule: Schedule specification defining when the Transfer Job should be scheduled to start, end and and what time to run. Structure documented below.
         :param pulumi.Input[str] status: Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
-        :param pulumi.Input[dict] transfer_spec: Transfer specification. Structure documented below.
-
-        The **schedule** object supports the following:
-
-          * `scheduleEndDate` (`pulumi.Input[dict]`) - The last day the recurring transfer will be run. If `schedule_end_date` is the same as `schedule_start_date`, the transfer will be executed only once. Structure documented below.
-            * `day` (`pulumi.Input[float]`) - Day of month. Must be from 1 to 31 and valid for the year and month.
-            * `month` (`pulumi.Input[float]`) - Month of year. Must be from 1 to 12.
-            * `year` (`pulumi.Input[float]`) - Year of date. Must be from 1 to 9999.
-
-          * `scheduleStartDate` (`pulumi.Input[dict]`) - The first day the recurring transfer is scheduled to run. If `schedule_start_date` is in the past, the transfer will run for the first time on the following day. Structure documented below.
-            * `day` (`pulumi.Input[float]`) - Day of month. Must be from 1 to 31 and valid for the year and month.
-            * `month` (`pulumi.Input[float]`) - Month of year. Must be from 1 to 12.
-            * `year` (`pulumi.Input[float]`) - Year of date. Must be from 1 to 9999.
-
-          * `startTimeOfDay` (`pulumi.Input[dict]`) - The time in UTC at which the transfer will be scheduled to start in a day. Transfers may start later than this time. If not specified, recurring and one-time transfers that are scheduled to run today will run immediately; recurring transfers that are scheduled to run on a future date will start at approximately midnight UTC on that date. Note that when configuring a transfer with the Cloud Platform Console, the transfer's start time in a day is specified in your local timezone. Structure documented below.
-            * `hours` (`pulumi.Input[float]`) - Hours of day in 24 hour format. Should be from 0 to 23
-            * `minutes` (`pulumi.Input[float]`) - Minutes of hour of day. Must be from 0 to 59.
-            * `nanos` (`pulumi.Input[float]`) - Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
-            * `seconds` (`pulumi.Input[float]`) - Seconds of minutes of the time. Must normally be from 0 to 59.
-
-        The **transfer_spec** object supports the following:
-
-          * `awsS3DataSource` (`pulumi.Input[dict]`) - An AWS S3 data source. Structure documented below.
-            * `awsAccessKey` (`pulumi.Input[dict]`) - AWS credentials block.
-              * `accessKeyId` (`pulumi.Input[str]`) - AWS Key ID.
-              * `secretAccessKey` (`pulumi.Input[str]`) - AWS Secret Access Key.
-
-            * `bucket_name` (`pulumi.Input[str]`) - S3 Bucket name.
-
-          * `gcsDataSink` (`pulumi.Input[dict]`) - A Google Cloud Storage data sink. Structure documented below.
-            * `bucket_name` (`pulumi.Input[str]`) - S3 Bucket name.
-
-          * `gcsDataSource` (`pulumi.Input[dict]`) - A Google Cloud Storage data source. Structure documented below.
-            * `bucket_name` (`pulumi.Input[str]`) - S3 Bucket name.
-
-          * `httpDataSource` (`pulumi.Input[dict]`) - An HTTP URL data source. Structure documented below.
-            * `listUrl` (`pulumi.Input[str]`) - The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
-
-          * `objectConditions` (`pulumi.Input[dict]`) - Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `last_modification_time` do not exclude objects in a data sink. Structure documented below.
-            * `excludePrefixes` (`pulumi.Input[list]`) - `exclude_prefixes` must follow the requirements described for `include_prefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
-            * `includePrefixes` (`pulumi.Input[list]`) - If `include_refixes` is specified, objects that satisfy the object conditions must have names that start with one of the `include_prefixes` and that do not start with any of the `exclude_prefixes`. If `include_prefixes` is not specified, all objects except those that have names starting with one of the `exclude_prefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
-            * `maxTimeElapsedSinceLastModification` (`pulumi.Input[str]`) - A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-            * `minTimeElapsedSinceLastModification` (`pulumi.Input[str]`) - A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-
-          * `transferOptions` (`pulumi.Input[dict]`) - Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects' `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
-            * `deleteObjectsFromSourceAfterTransfer` (`pulumi.Input[bool]`) - Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `delete_objects_unique_in_sink` are mutually exclusive.
-            * `deleteObjectsUniqueInSink` (`pulumi.Input[bool]`) - Whether objects that exist only in the sink should be deleted. Note that this option and
-              `delete_objects_from_source_after_transfer` are mutually exclusive.
-            * `overwriteObjectsAlreadyExistingInSink` (`pulumi.Input[bool]`) - Whether overwriting objects that already exist in the sink is allowed.
+        :param pulumi.Input[pulumi.InputType['TransferJobTransferSpecArgs']] transfer_spec: Transfer specification. Structure documented below.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -198,13 +83,24 @@ class TransferJob(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, creation_time=None, deletion_time=None, description=None, last_modification_time=None, name=None, project=None, schedule=None, status=None, transfer_spec=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            creation_time: Optional[pulumi.Input[str]] = None,
+            deletion_time: Optional[pulumi.Input[str]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            last_modification_time: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            schedule: Optional[pulumi.Input[pulumi.InputType['TransferJobScheduleArgs']]] = None,
+            status: Optional[pulumi.Input[str]] = None,
+            transfer_spec: Optional[pulumi.Input[pulumi.InputType['TransferJobTransferSpecArgs']]] = None) -> 'TransferJob':
         """
         Get an existing TransferJob resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] creation_time: When the Transfer Job was created.
         :param pulumi.Input[str] deletion_time: When the Transfer Job was deleted.
@@ -213,57 +109,9 @@ class TransferJob(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the Transfer Job.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[dict] schedule: Schedule specification defining when the Transfer Job should be scheduled to start, end and and what time to run. Structure documented below.
+        :param pulumi.Input[pulumi.InputType['TransferJobScheduleArgs']] schedule: Schedule specification defining when the Transfer Job should be scheduled to start, end and and what time to run. Structure documented below.
         :param pulumi.Input[str] status: Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
-        :param pulumi.Input[dict] transfer_spec: Transfer specification. Structure documented below.
-
-        The **schedule** object supports the following:
-
-          * `scheduleEndDate` (`pulumi.Input[dict]`) - The last day the recurring transfer will be run. If `schedule_end_date` is the same as `schedule_start_date`, the transfer will be executed only once. Structure documented below.
-            * `day` (`pulumi.Input[float]`) - Day of month. Must be from 1 to 31 and valid for the year and month.
-            * `month` (`pulumi.Input[float]`) - Month of year. Must be from 1 to 12.
-            * `year` (`pulumi.Input[float]`) - Year of date. Must be from 1 to 9999.
-
-          * `scheduleStartDate` (`pulumi.Input[dict]`) - The first day the recurring transfer is scheduled to run. If `schedule_start_date` is in the past, the transfer will run for the first time on the following day. Structure documented below.
-            * `day` (`pulumi.Input[float]`) - Day of month. Must be from 1 to 31 and valid for the year and month.
-            * `month` (`pulumi.Input[float]`) - Month of year. Must be from 1 to 12.
-            * `year` (`pulumi.Input[float]`) - Year of date. Must be from 1 to 9999.
-
-          * `startTimeOfDay` (`pulumi.Input[dict]`) - The time in UTC at which the transfer will be scheduled to start in a day. Transfers may start later than this time. If not specified, recurring and one-time transfers that are scheduled to run today will run immediately; recurring transfers that are scheduled to run on a future date will start at approximately midnight UTC on that date. Note that when configuring a transfer with the Cloud Platform Console, the transfer's start time in a day is specified in your local timezone. Structure documented below.
-            * `hours` (`pulumi.Input[float]`) - Hours of day in 24 hour format. Should be from 0 to 23
-            * `minutes` (`pulumi.Input[float]`) - Minutes of hour of day. Must be from 0 to 59.
-            * `nanos` (`pulumi.Input[float]`) - Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
-            * `seconds` (`pulumi.Input[float]`) - Seconds of minutes of the time. Must normally be from 0 to 59.
-
-        The **transfer_spec** object supports the following:
-
-          * `awsS3DataSource` (`pulumi.Input[dict]`) - An AWS S3 data source. Structure documented below.
-            * `awsAccessKey` (`pulumi.Input[dict]`) - AWS credentials block.
-              * `accessKeyId` (`pulumi.Input[str]`) - AWS Key ID.
-              * `secretAccessKey` (`pulumi.Input[str]`) - AWS Secret Access Key.
-
-            * `bucket_name` (`pulumi.Input[str]`) - S3 Bucket name.
-
-          * `gcsDataSink` (`pulumi.Input[dict]`) - A Google Cloud Storage data sink. Structure documented below.
-            * `bucket_name` (`pulumi.Input[str]`) - S3 Bucket name.
-
-          * `gcsDataSource` (`pulumi.Input[dict]`) - A Google Cloud Storage data source. Structure documented below.
-            * `bucket_name` (`pulumi.Input[str]`) - S3 Bucket name.
-
-          * `httpDataSource` (`pulumi.Input[dict]`) - An HTTP URL data source. Structure documented below.
-            * `listUrl` (`pulumi.Input[str]`) - The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
-
-          * `objectConditions` (`pulumi.Input[dict]`) - Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `last_modification_time` do not exclude objects in a data sink. Structure documented below.
-            * `excludePrefixes` (`pulumi.Input[list]`) - `exclude_prefixes` must follow the requirements described for `include_prefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
-            * `includePrefixes` (`pulumi.Input[list]`) - If `include_refixes` is specified, objects that satisfy the object conditions must have names that start with one of the `include_prefixes` and that do not start with any of the `exclude_prefixes`. If `include_prefixes` is not specified, all objects except those that have names starting with one of the `exclude_prefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
-            * `maxTimeElapsedSinceLastModification` (`pulumi.Input[str]`) - A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-            * `minTimeElapsedSinceLastModification` (`pulumi.Input[str]`) - A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-
-          * `transferOptions` (`pulumi.Input[dict]`) - Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects' `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
-            * `deleteObjectsFromSourceAfterTransfer` (`pulumi.Input[bool]`) - Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `delete_objects_unique_in_sink` are mutually exclusive.
-            * `deleteObjectsUniqueInSink` (`pulumi.Input[bool]`) - Whether objects that exist only in the sink should be deleted. Note that this option and
-              `delete_objects_from_source_after_transfer` are mutually exclusive.
-            * `overwriteObjectsAlreadyExistingInSink` (`pulumi.Input[bool]`) - Whether overwriting objects that already exist in the sink is allowed.
+        :param pulumi.Input[pulumi.InputType['TransferJobTransferSpecArgs']] transfer_spec: Transfer specification. Structure documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -280,8 +128,82 @@ class TransferJob(pulumi.CustomResource):
         __props__["transfer_spec"] = transfer_spec
         return TransferJob(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="creationTime")
+    def creation_time(self) -> str:
+        """
+        When the Transfer Job was created.
+        """
+        return pulumi.get(self, "creation_time")
+
+    @property
+    @pulumi.getter(name="deletionTime")
+    def deletion_time(self) -> str:
+        """
+        When the Transfer Job was deleted.
+        """
+        return pulumi.get(self, "deletion_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Unique description to identify the Transfer Job.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="lastModificationTime")
+    def last_modification_time(self) -> str:
+        """
+        When the Transfer Job was last modified.
+        """
+        return pulumi.get(self, "last_modification_time")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the Transfer Job.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The project in which the resource belongs. If it
+        is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def schedule(self) -> 'outputs.TransferJobSchedule':
+        """
+        Schedule specification defining when the Transfer Job should be scheduled to start, end and and what time to run. Structure documented below.
+        """
+        return pulumi.get(self, "schedule")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        """
+        Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="transferSpec")
+    def transfer_spec(self) -> 'outputs.TransferJobTransferSpec':
+        """
+        Transfer specification. Structure documented below.
+        """
+        return pulumi.get(self, "transfer_spec")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

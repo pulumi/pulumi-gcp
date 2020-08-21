@@ -19,3 +19,5 @@ from .iam_member import *
 from .iam_policy import *
 from .policy import *
 from .project import *
+from ._inputs import *
+from . import outputs

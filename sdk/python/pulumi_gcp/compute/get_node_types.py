@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
 
+__all__ = [
+    'GetNodeTypesResult',
+    'AwaitableGetNodeTypesResult',
+    'get_node_types',
+]
 
+@pulumi.output_type
 class GetNodeTypesResult:
     """
     A collection of values returned by getNodeTypes.
@@ -16,22 +22,42 @@ class GetNodeTypesResult:
     def __init__(__self__, id=None, names=None, project=None, zone=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if names and not isinstance(names, list):
+            raise TypeError("Expected argument 'names' to be a list")
+        pulumi.set(__self__, "names", names)
+        if project and not isinstance(project, str):
+            raise TypeError("Expected argument 'project' to be a str")
+        pulumi.set(__self__, "project", project)
+        if zone and not isinstance(zone, str):
+            raise TypeError("Expected argument 'zone' to be a str")
+        pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if names and not isinstance(names, list):
-            raise TypeError("Expected argument 'names' to be a list")
-        __self__.names = names
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def names(self) -> List[str]:
         """
         A list of node types available in the given zone and project.
         """
-        if project and not isinstance(project, str):
-            raise TypeError("Expected argument 'project' to be a str")
-        __self__.project = project
-        if zone and not isinstance(zone, str):
-            raise TypeError("Expected argument 'zone' to be a str")
-        __self__.zone = zone
+        return pulumi.get(self, "names")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def zone(self) -> str:
+        return pulumi.get(self, "zone")
 
 
 class AwaitableGetNodeTypesResult(GetNodeTypesResult):
@@ -46,7 +72,9 @@ class AwaitableGetNodeTypesResult(GetNodeTypesResult):
             zone=self.zone)
 
 
-def get_node_types(project=None, zone=None, opts=None):
+def get_node_types(project: Optional[str] = None,
+                   zone: Optional[str] = None,
+                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNodeTypesResult:
     """
     Provides available node types for Compute Engine sole-tenant nodes in a zone
     for a given project. For more information, see [the official documentation](https://cloud.google.com/compute/docs/nodes/#types) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/nodeTypes).
@@ -65,10 +93,10 @@ def get_node_types(project=None, zone=None, opts=None):
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('gcp:compute/getNodeTypes:getNodeTypes', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('gcp:compute/getNodeTypes:getNodeTypes', __args__, opts=opts, typ=GetNodeTypesResult).value
 
     return AwaitableGetNodeTypesResult(
-        id=__ret__.get('id'),
-        names=__ret__.get('names'),
-        project=__ret__.get('project'),
-        zone=__ret__.get('zone'))
+        id=__ret__.id,
+        names=__ret__.names,
+        project=__ret__.project,
+        zone=__ret__.zone)

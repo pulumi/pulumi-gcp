@@ -5,64 +5,28 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['NodeGroup']
 
 
 class NodeGroup(pulumi.CustomResource):
-    autoscaling_policy: pulumi.Output[dict]
-    """
-    -
-    If you use sole-tenant nodes for your workloads, you can use the node
-    group autoscaler to automatically manage the sizes of your node groups.
-    Structure is documented below.
-
-      * `maxNodes` (`float`) - Maximum size of the node group. Set to a value less than or equal
-        to 100 and greater than or equal to min-nodes.
-      * `minNodes` (`float`) - Minimum size of the node group. Must be less
-        than or equal to max-nodes. The default value is 0.
-      * `mode` (`str`) - The autoscaling mode. Set to one of the following:
-        - OFF: Disables the autoscaler.
-        - ON: Enables scaling in and scaling out.
-        - ONLY_SCALE_OUT: Enables only scaling out.
-        You must use this mode if your node groups are configured to
-        restart their hosted VMs on minimal servers.
-        Possible values are `OFF`, `ON`, and `ONLY_SCALE_OUT`.
-    """
-    creation_timestamp: pulumi.Output[str]
-    """
-    Creation timestamp in RFC3339 text format.
-    """
-    description: pulumi.Output[str]
-    """
-    An optional textual description of the resource.
-    """
-    name: pulumi.Output[str]
-    """
-    Name of the resource.
-    """
-    node_template: pulumi.Output[str]
-    """
-    The URL of the node template to which this node group belongs.
-    """
-    project: pulumi.Output[str]
-    """
-    The ID of the project in which the resource belongs.
-    If it is not provided, the provider project is used.
-    """
-    self_link: pulumi.Output[str]
-    """
-    The URI of the created resource.
-    """
-    size: pulumi.Output[float]
-    """
-    The total number of nodes in the node group.
-    """
-    zone: pulumi.Output[str]
-    """
-    Zone where this node group is located
-    """
-    def __init__(__self__, resource_name, opts=None, autoscaling_policy=None, description=None, name=None, node_template=None, project=None, size=None, zone=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 autoscaling_policy: Optional[pulumi.Input[pulumi.InputType['NodeGroupAutoscalingPolicyArgs']]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 node_template: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 size: Optional[pulumi.Input[float]] = None,
+                 zone: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Represents a NodeGroup resource to manage a group of sole-tenant nodes.
 
@@ -81,7 +45,7 @@ class NodeGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] autoscaling_policy: -
+        :param pulumi.Input[pulumi.InputType['NodeGroupAutoscalingPolicyArgs']] autoscaling_policy: -
                If you use sole-tenant nodes for your workloads, you can use the node
                group autoscaler to automatically manage the sizes of your node groups.
                Structure is documented below.
@@ -92,20 +56,6 @@ class NodeGroup(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[float] size: The total number of nodes in the node group.
         :param pulumi.Input[str] zone: Zone where this node group is located
-
-        The **autoscaling_policy** object supports the following:
-
-          * `maxNodes` (`pulumi.Input[float]`) - Maximum size of the node group. Set to a value less than or equal
-            to 100 and greater than or equal to min-nodes.
-          * `minNodes` (`pulumi.Input[float]`) - Minimum size of the node group. Must be less
-            than or equal to max-nodes. The default value is 0.
-          * `mode` (`pulumi.Input[str]`) - The autoscaling mode. Set to one of the following:
-            - OFF: Disables the autoscaler.
-            - ON: Enables scaling in and scaling out.
-            - ONLY_SCALE_OUT: Enables only scaling out.
-            You must use this mode if your node groups are configured to
-            restart their hosted VMs on minimal servers.
-            Possible values are `OFF`, `ON`, and `ONLY_SCALE_OUT`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -144,15 +94,26 @@ class NodeGroup(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, autoscaling_policy=None, creation_timestamp=None, description=None, name=None, node_template=None, project=None, self_link=None, size=None, zone=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            autoscaling_policy: Optional[pulumi.Input[pulumi.InputType['NodeGroupAutoscalingPolicyArgs']]] = None,
+            creation_timestamp: Optional[pulumi.Input[str]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            node_template: Optional[pulumi.Input[str]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            self_link: Optional[pulumi.Input[str]] = None,
+            size: Optional[pulumi.Input[float]] = None,
+            zone: Optional[pulumi.Input[str]] = None) -> 'NodeGroup':
         """
         Get an existing NodeGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] autoscaling_policy: -
+        :param pulumi.Input[pulumi.InputType['NodeGroupAutoscalingPolicyArgs']] autoscaling_policy: -
                If you use sole-tenant nodes for your workloads, you can use the node
                group autoscaler to automatically manage the sizes of your node groups.
                Structure is documented below.
@@ -165,20 +126,6 @@ class NodeGroup(pulumi.CustomResource):
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[float] size: The total number of nodes in the node group.
         :param pulumi.Input[str] zone: Zone where this node group is located
-
-        The **autoscaling_policy** object supports the following:
-
-          * `maxNodes` (`pulumi.Input[float]`) - Maximum size of the node group. Set to a value less than or equal
-            to 100 and greater than or equal to min-nodes.
-          * `minNodes` (`pulumi.Input[float]`) - Minimum size of the node group. Must be less
-            than or equal to max-nodes. The default value is 0.
-          * `mode` (`pulumi.Input[str]`) - The autoscaling mode. Set to one of the following:
-            - OFF: Disables the autoscaler.
-            - ON: Enables scaling in and scaling out.
-            - ONLY_SCALE_OUT: Enables only scaling out.
-            You must use this mode if your node groups are configured to
-            restart their hosted VMs on minimal servers.
-            Possible values are `OFF`, `ON`, and `ONLY_SCALE_OUT`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -195,8 +142,85 @@ class NodeGroup(pulumi.CustomResource):
         __props__["zone"] = zone
         return NodeGroup(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="autoscalingPolicy")
+    def autoscaling_policy(self) -> 'outputs.NodeGroupAutoscalingPolicy':
+        """
+        -
+        If you use sole-tenant nodes for your workloads, you can use the node
+        group autoscaler to automatically manage the sizes of your node groups.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "autoscaling_policy")
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> str:
+        """
+        Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        An optional textual description of the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the resource.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="nodeTemplate")
+    def node_template(self) -> str:
+        """
+        The URL of the node template to which this node group belongs.
+        """
+        return pulumi.get(self, "node_template")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> str:
+        """
+        The URI of the created resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter
+    def size(self) -> float:
+        """
+        The total number of nodes in the node group.
+        """
+        return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter
+    def zone(self) -> str:
+        """
+        Zone where this node group is located
+        """
+        return pulumi.get(self, "zone")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

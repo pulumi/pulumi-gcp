@@ -5,39 +5,24 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['EntryGroup']
 
 
 class EntryGroup(pulumi.CustomResource):
-    description: pulumi.Output[str]
-    """
-    Entry group description, which can consist of several sentences or paragraphs that describe entry group contents.
-    """
-    display_name: pulumi.Output[str]
-    """
-    A short name to identify the entry group, for example, "analytics data - jan 2011".
-    """
-    entry_group_id: pulumi.Output[str]
-    """
-    The id of the entry group to create. The id must begin with a letter or underscore,
-    contain only English letters, numbers and underscores, and be at most 64 characters.
-    """
-    name: pulumi.Output[str]
-    """
-    The resource name of the entry group in URL format. Example:
-    projects/{project}/locations/{location}/entryGroups/{entryGroupId}
-    """
-    project: pulumi.Output[str]
-    """
-    The ID of the project in which the resource belongs.
-    If it is not provided, the provider project is used.
-    """
-    region: pulumi.Output[str]
-    """
-    EntryGroup location region.
-    """
-    def __init__(__self__, resource_name, opts=None, description=None, display_name=None, entry_group_id=None, project=None, region=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 entry_group_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         An EntryGroup resource represents a logical grouping of zero or more Data Catalog Entry resources.
 
@@ -91,13 +76,21 @@ class EntryGroup(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, description=None, display_name=None, entry_group_id=None, name=None, project=None, region=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            display_name: Optional[pulumi.Input[str]] = None,
+            entry_group_id: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None) -> 'EntryGroup':
         """
         Get an existing EntryGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Entry group description, which can consist of several sentences or paragraphs that describe entry group contents.
         :param pulumi.Input[str] display_name: A short name to identify the entry group, for example, "analytics data - jan 2011".
@@ -121,8 +114,60 @@ class EntryGroup(pulumi.CustomResource):
         __props__["region"] = region
         return EntryGroup(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Entry group description, which can consist of several sentences or paragraphs that describe entry group contents.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[str]:
+        """
+        A short name to identify the entry group, for example, "analytics data - jan 2011".
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="entryGroupId")
+    def entry_group_id(self) -> str:
+        """
+        The id of the entry group to create. The id must begin with a letter or underscore,
+        contain only English letters, numbers and underscores, and be at most 64 characters.
+        """
+        return pulumi.get(self, "entry_group_id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The resource name of the entry group in URL format. Example:
+        projects/{project}/locations/{location}/entryGroups/{entryGroupId}
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        EntryGroup location region.
+        """
+        return pulumi.get(self, "region")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,146 +5,32 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['Job']
 
 
 class Job(pulumi.CustomResource):
-    app_engine_http_target: pulumi.Output[dict]
-    """
-    App Engine HTTP target.
-    If the job providers a App Engine HTTP target the cron will
-    send a request to the service instance
-    Structure is documented below.
-
-      * `appEngineRouting` (`dict`) - App Engine Routing setting for the job.
-        Structure is documented below.
-        * `instance` (`str`) - App instance.
-          By default, the job is sent to an instance which is available when the job is attempted.
-        * `service` (`str`) - App service.
-          By default, the job is sent to the service which is the default service when the job is attempted.
-        * `version` (`str`) - App version.
-          By default, the job is sent to the version which is the default version when the job is attempted.
-
-      * `body` (`str`) - HTTP request body.
-        A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
-        It is an error to set body on a job with an incompatible HttpMethod.
-      * `headers` (`dict`) - This map contains the header field names and values.
-        Repeated headers are not supported, but a header value can contain commas.
-      * `httpMethod` (`str`) - Which HTTP method to use for the request.
-      * `relativeUri` (`str`) - The relative URI.
-        The relative URL must begin with "/" and must be a valid HTTP relative URL.
-        It can contain a path, query string arguments, and \# fragments.
-        If the relative URL is empty, then the root path "/" will be used.
-        No spaces are allowed, and the maximum length allowed is 2083 characters
-    """
-    attempt_deadline: pulumi.Output[str]
-    """
-    The deadline for job attempts. If the request handler does not respond by this deadline then the request is
-    cancelled and the attempt is marked as a DEADLINE_EXCEEDED failure. The failed attempt can be viewed in
-    execution logs. Cloud Scheduler will retry the job according to the RetryConfig.
-    The allowed duration for this deadline is:
-    * For HTTP targets, between 15 seconds and 30 minutes.
-    * For App Engine HTTP targets, between 15 seconds and 24 hours.
-    A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
-    """
-    description: pulumi.Output[str]
-    """
-    A human-readable description for the job.
-    This string must not contain more than 500 characters.
-    """
-    http_target: pulumi.Output[dict]
-    """
-    HTTP target.
-    If the job providers a http_target the cron will
-    send a request to the targeted url
-    Structure is documented below.
-
-      * `body` (`str`) - HTTP request body.
-        A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
-        It is an error to set body on a job with an incompatible HttpMethod.
-      * `headers` (`dict`) - This map contains the header field names and values.
-        Repeated headers are not supported, but a header value can contain commas.
-      * `httpMethod` (`str`) - Which HTTP method to use for the request.
-      * `oauthToken` (`dict`) - Contains information needed for generating an OAuth token.
-        This type of authorization should be used when sending requests to a GCP endpoint.
-        Structure is documented below.
-        * `scope` (`str`) - OAuth scope to be used for generating OAuth access token. If not specified,
-          "https://www.googleapis.com/auth/cloud-platform" will be used.
-        * `service_account_email` (`str`) - Service account email to be used for generating OAuth token.
-          The service account must be within the same project as the job.
-
-      * `oidcToken` (`dict`) - Contains information needed for generating an OpenID Connect token.
-        This type of authorization should be used when sending requests to third party endpoints or Cloud Run.
-        Structure is documented below.
-        * `audience` (`str`) - Audience to be used when generating OIDC token. If not specified,
-          the URI specified in target will be used.
-        * `service_account_email` (`str`) - Service account email to be used for generating OAuth token.
-          The service account must be within the same project as the job.
-
-      * `uri` (`str`) - The full URI path that the request will be sent to.
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the job.
-    """
-    project: pulumi.Output[str]
-    """
-    The ID of the project in which the resource belongs.
-    If it is not provided, the provider project is used.
-    """
-    pubsub_target: pulumi.Output[dict]
-    """
-    Pub/Sub target
-    If the job providers a Pub/Sub target the cron will publish
-    a message to the provided topic
-    Structure is documented below.
-
-      * `attributes` (`dict`) - Attributes for PubsubMessage.
-        Pubsub message must contain either non-empty data, or at least one attribute.
-      * `data` (`str`) - The message payload for PubsubMessage.
-        Pubsub message must contain either non-empty data, or at least one attribute.
-      * `topicName` (`str`) - The full resource name for the Cloud Pub/Sub topic to which
-        messages will be published when a job is delivered. ~>**NOTE:**
-        The topic name must be in the same format as required by PubSub's
-        PublishRequest.name, e.g. `projects/my-project/topics/my-topic`.
-    """
-    region: pulumi.Output[str]
-    """
-    Region where the scheduler job resides. If it is not provided, Terraform will use the provider default.
-    """
-    retry_config: pulumi.Output[dict]
-    """
-    By default, if a job does not complete successfully,
-    meaning that an acknowledgement is not received from the handler,
-    then it will be retried with exponential backoff according to the settings
-    Structure is documented below.
-
-      * `maxBackoffDuration` (`str`) - The maximum amount of time to wait before retrying a job after it fails.
-        A duration in seconds with up to nine fractional digits, terminated by 's'.
-      * `maxDoublings` (`float`) - The time between retries will double maxDoublings times.
-        A job's retry interval starts at minBackoffDuration,
-        then doubles maxDoublings times, then increases linearly,
-        and finally retries retries at intervals of maxBackoffDuration up to retryCount times.
-      * `maxRetryDuration` (`str`) - The time limit for retrying a failed job, measured from time when an execution was first attempted.
-        If specified with retryCount, the job will be retried until both limits are reached.
-        A duration in seconds with up to nine fractional digits, terminated by 's'.
-      * `minBackoffDuration` (`str`) - The minimum amount of time to wait before retrying a job after it fails.
-        A duration in seconds with up to nine fractional digits, terminated by 's'.
-      * `retryCount` (`float`) - The number of attempts that the system will make to run a
-        job using the exponential backoff procedure described by maxDoublings.
-        Values greater than 5 and negative values are not allowed.
-    """
-    schedule: pulumi.Output[str]
-    """
-    Describes the schedule on which the job will be executed.
-    """
-    time_zone: pulumi.Output[str]
-    """
-    Specifies the time zone to be used in interpreting schedule.
-    The value of this field must be a time zone name from the tz database.
-    """
-    def __init__(__self__, resource_name, opts=None, app_engine_http_target=None, attempt_deadline=None, description=None, http_target=None, name=None, project=None, pubsub_target=None, region=None, retry_config=None, schedule=None, time_zone=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 app_engine_http_target: Optional[pulumi.Input[pulumi.InputType['JobAppEngineHttpTargetArgs']]] = None,
+                 attempt_deadline: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 http_target: Optional[pulumi.Input[pulumi.InputType['JobHttpTargetArgs']]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 pubsub_target: Optional[pulumi.Input[pulumi.InputType['JobPubsubTargetArgs']]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 retry_config: Optional[pulumi.Input[pulumi.InputType['JobRetryConfigArgs']]] = None,
+                 schedule: Optional[pulumi.Input[str]] = None,
+                 time_zone: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         A scheduled job that can publish a pubsub message or a http request
         every X interval of time, using crontab format string.
@@ -163,7 +49,7 @@ class Job(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] app_engine_http_target: App Engine HTTP target.
+        :param pulumi.Input[pulumi.InputType['JobAppEngineHttpTargetArgs']] app_engine_http_target: App Engine HTTP target.
                If the job providers a App Engine HTTP target the cron will
                send a request to the service instance
                Structure is documented below.
@@ -176,102 +62,25 @@ class Job(pulumi.CustomResource):
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
         :param pulumi.Input[str] description: A human-readable description for the job.
                This string must not contain more than 500 characters.
-        :param pulumi.Input[dict] http_target: HTTP target.
+        :param pulumi.Input[pulumi.InputType['JobHttpTargetArgs']] http_target: HTTP target.
                If the job providers a http_target the cron will
                send a request to the targeted url
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the job.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[dict] pubsub_target: Pub/Sub target
+        :param pulumi.Input[pulumi.InputType['JobPubsubTargetArgs']] pubsub_target: Pub/Sub target
                If the job providers a Pub/Sub target the cron will publish
                a message to the provided topic
                Structure is documented below.
         :param pulumi.Input[str] region: Region where the scheduler job resides. If it is not provided, Terraform will use the provider default.
-        :param pulumi.Input[dict] retry_config: By default, if a job does not complete successfully,
+        :param pulumi.Input[pulumi.InputType['JobRetryConfigArgs']] retry_config: By default, if a job does not complete successfully,
                meaning that an acknowledgement is not received from the handler,
                then it will be retried with exponential backoff according to the settings
                Structure is documented below.
         :param pulumi.Input[str] schedule: Describes the schedule on which the job will be executed.
         :param pulumi.Input[str] time_zone: Specifies the time zone to be used in interpreting schedule.
                The value of this field must be a time zone name from the tz database.
-
-        The **app_engine_http_target** object supports the following:
-
-          * `appEngineRouting` (`pulumi.Input[dict]`) - App Engine Routing setting for the job.
-            Structure is documented below.
-            * `instance` (`pulumi.Input[str]`) - App instance.
-              By default, the job is sent to an instance which is available when the job is attempted.
-            * `service` (`pulumi.Input[str]`) - App service.
-              By default, the job is sent to the service which is the default service when the job is attempted.
-            * `version` (`pulumi.Input[str]`) - App version.
-              By default, the job is sent to the version which is the default version when the job is attempted.
-
-          * `body` (`pulumi.Input[str]`) - HTTP request body.
-            A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
-            It is an error to set body on a job with an incompatible HttpMethod.
-          * `headers` (`pulumi.Input[dict]`) - This map contains the header field names and values.
-            Repeated headers are not supported, but a header value can contain commas.
-          * `httpMethod` (`pulumi.Input[str]`) - Which HTTP method to use for the request.
-          * `relativeUri` (`pulumi.Input[str]`) - The relative URI.
-            The relative URL must begin with "/" and must be a valid HTTP relative URL.
-            It can contain a path, query string arguments, and \# fragments.
-            If the relative URL is empty, then the root path "/" will be used.
-            No spaces are allowed, and the maximum length allowed is 2083 characters
-
-        The **http_target** object supports the following:
-
-          * `body` (`pulumi.Input[str]`) - HTTP request body.
-            A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
-            It is an error to set body on a job with an incompatible HttpMethod.
-          * `headers` (`pulumi.Input[dict]`) - This map contains the header field names and values.
-            Repeated headers are not supported, but a header value can contain commas.
-          * `httpMethod` (`pulumi.Input[str]`) - Which HTTP method to use for the request.
-          * `oauthToken` (`pulumi.Input[dict]`) - Contains information needed for generating an OAuth token.
-            This type of authorization should be used when sending requests to a GCP endpoint.
-            Structure is documented below.
-            * `scope` (`pulumi.Input[str]`) - OAuth scope to be used for generating OAuth access token. If not specified,
-              "https://www.googleapis.com/auth/cloud-platform" will be used.
-            * `service_account_email` (`pulumi.Input[str]`) - Service account email to be used for generating OAuth token.
-              The service account must be within the same project as the job.
-
-          * `oidcToken` (`pulumi.Input[dict]`) - Contains information needed for generating an OpenID Connect token.
-            This type of authorization should be used when sending requests to third party endpoints or Cloud Run.
-            Structure is documented below.
-            * `audience` (`pulumi.Input[str]`) - Audience to be used when generating OIDC token. If not specified,
-              the URI specified in target will be used.
-            * `service_account_email` (`pulumi.Input[str]`) - Service account email to be used for generating OAuth token.
-              The service account must be within the same project as the job.
-
-          * `uri` (`pulumi.Input[str]`) - The full URI path that the request will be sent to.
-
-        The **pubsub_target** object supports the following:
-
-          * `attributes` (`pulumi.Input[dict]`) - Attributes for PubsubMessage.
-            Pubsub message must contain either non-empty data, or at least one attribute.
-          * `data` (`pulumi.Input[str]`) - The message payload for PubsubMessage.
-            Pubsub message must contain either non-empty data, or at least one attribute.
-          * `topicName` (`pulumi.Input[str]`) - The full resource name for the Cloud Pub/Sub topic to which
-            messages will be published when a job is delivered. ~>**NOTE:**
-            The topic name must be in the same format as required by PubSub's
-            PublishRequest.name, e.g. `projects/my-project/topics/my-topic`.
-
-        The **retry_config** object supports the following:
-
-          * `maxBackoffDuration` (`pulumi.Input[str]`) - The maximum amount of time to wait before retrying a job after it fails.
-            A duration in seconds with up to nine fractional digits, terminated by 's'.
-          * `maxDoublings` (`pulumi.Input[float]`) - The time between retries will double maxDoublings times.
-            A job's retry interval starts at minBackoffDuration,
-            then doubles maxDoublings times, then increases linearly,
-            and finally retries retries at intervals of maxBackoffDuration up to retryCount times.
-          * `maxRetryDuration` (`pulumi.Input[str]`) - The time limit for retrying a failed job, measured from time when an execution was first attempted.
-            If specified with retryCount, the job will be retried until both limits are reached.
-            A duration in seconds with up to nine fractional digits, terminated by 's'.
-          * `minBackoffDuration` (`pulumi.Input[str]`) - The minimum amount of time to wait before retrying a job after it fails.
-            A duration in seconds with up to nine fractional digits, terminated by 's'.
-          * `retryCount` (`pulumi.Input[float]`) - The number of attempts that the system will make to run a
-            job using the exponential backoff procedure described by maxDoublings.
-            Values greater than 5 and negative values are not allowed.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -308,15 +117,28 @@ class Job(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, app_engine_http_target=None, attempt_deadline=None, description=None, http_target=None, name=None, project=None, pubsub_target=None, region=None, retry_config=None, schedule=None, time_zone=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            app_engine_http_target: Optional[pulumi.Input[pulumi.InputType['JobAppEngineHttpTargetArgs']]] = None,
+            attempt_deadline: Optional[pulumi.Input[str]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            http_target: Optional[pulumi.Input[pulumi.InputType['JobHttpTargetArgs']]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            pubsub_target: Optional[pulumi.Input[pulumi.InputType['JobPubsubTargetArgs']]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            retry_config: Optional[pulumi.Input[pulumi.InputType['JobRetryConfigArgs']]] = None,
+            schedule: Optional[pulumi.Input[str]] = None,
+            time_zone: Optional[pulumi.Input[str]] = None) -> 'Job':
         """
         Get an existing Job resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] app_engine_http_target: App Engine HTTP target.
+        :param pulumi.Input[pulumi.InputType['JobAppEngineHttpTargetArgs']] app_engine_http_target: App Engine HTTP target.
                If the job providers a App Engine HTTP target the cron will
                send a request to the service instance
                Structure is documented below.
@@ -329,102 +151,25 @@ class Job(pulumi.CustomResource):
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
         :param pulumi.Input[str] description: A human-readable description for the job.
                This string must not contain more than 500 characters.
-        :param pulumi.Input[dict] http_target: HTTP target.
+        :param pulumi.Input[pulumi.InputType['JobHttpTargetArgs']] http_target: HTTP target.
                If the job providers a http_target the cron will
                send a request to the targeted url
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the job.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[dict] pubsub_target: Pub/Sub target
+        :param pulumi.Input[pulumi.InputType['JobPubsubTargetArgs']] pubsub_target: Pub/Sub target
                If the job providers a Pub/Sub target the cron will publish
                a message to the provided topic
                Structure is documented below.
         :param pulumi.Input[str] region: Region where the scheduler job resides. If it is not provided, Terraform will use the provider default.
-        :param pulumi.Input[dict] retry_config: By default, if a job does not complete successfully,
+        :param pulumi.Input[pulumi.InputType['JobRetryConfigArgs']] retry_config: By default, if a job does not complete successfully,
                meaning that an acknowledgement is not received from the handler,
                then it will be retried with exponential backoff according to the settings
                Structure is documented below.
         :param pulumi.Input[str] schedule: Describes the schedule on which the job will be executed.
         :param pulumi.Input[str] time_zone: Specifies the time zone to be used in interpreting schedule.
                The value of this field must be a time zone name from the tz database.
-
-        The **app_engine_http_target** object supports the following:
-
-          * `appEngineRouting` (`pulumi.Input[dict]`) - App Engine Routing setting for the job.
-            Structure is documented below.
-            * `instance` (`pulumi.Input[str]`) - App instance.
-              By default, the job is sent to an instance which is available when the job is attempted.
-            * `service` (`pulumi.Input[str]`) - App service.
-              By default, the job is sent to the service which is the default service when the job is attempted.
-            * `version` (`pulumi.Input[str]`) - App version.
-              By default, the job is sent to the version which is the default version when the job is attempted.
-
-          * `body` (`pulumi.Input[str]`) - HTTP request body.
-            A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
-            It is an error to set body on a job with an incompatible HttpMethod.
-          * `headers` (`pulumi.Input[dict]`) - This map contains the header field names and values.
-            Repeated headers are not supported, but a header value can contain commas.
-          * `httpMethod` (`pulumi.Input[str]`) - Which HTTP method to use for the request.
-          * `relativeUri` (`pulumi.Input[str]`) - The relative URI.
-            The relative URL must begin with "/" and must be a valid HTTP relative URL.
-            It can contain a path, query string arguments, and \# fragments.
-            If the relative URL is empty, then the root path "/" will be used.
-            No spaces are allowed, and the maximum length allowed is 2083 characters
-
-        The **http_target** object supports the following:
-
-          * `body` (`pulumi.Input[str]`) - HTTP request body.
-            A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
-            It is an error to set body on a job with an incompatible HttpMethod.
-          * `headers` (`pulumi.Input[dict]`) - This map contains the header field names and values.
-            Repeated headers are not supported, but a header value can contain commas.
-          * `httpMethod` (`pulumi.Input[str]`) - Which HTTP method to use for the request.
-          * `oauthToken` (`pulumi.Input[dict]`) - Contains information needed for generating an OAuth token.
-            This type of authorization should be used when sending requests to a GCP endpoint.
-            Structure is documented below.
-            * `scope` (`pulumi.Input[str]`) - OAuth scope to be used for generating OAuth access token. If not specified,
-              "https://www.googleapis.com/auth/cloud-platform" will be used.
-            * `service_account_email` (`pulumi.Input[str]`) - Service account email to be used for generating OAuth token.
-              The service account must be within the same project as the job.
-
-          * `oidcToken` (`pulumi.Input[dict]`) - Contains information needed for generating an OpenID Connect token.
-            This type of authorization should be used when sending requests to third party endpoints or Cloud Run.
-            Structure is documented below.
-            * `audience` (`pulumi.Input[str]`) - Audience to be used when generating OIDC token. If not specified,
-              the URI specified in target will be used.
-            * `service_account_email` (`pulumi.Input[str]`) - Service account email to be used for generating OAuth token.
-              The service account must be within the same project as the job.
-
-          * `uri` (`pulumi.Input[str]`) - The full URI path that the request will be sent to.
-
-        The **pubsub_target** object supports the following:
-
-          * `attributes` (`pulumi.Input[dict]`) - Attributes for PubsubMessage.
-            Pubsub message must contain either non-empty data, or at least one attribute.
-          * `data` (`pulumi.Input[str]`) - The message payload for PubsubMessage.
-            Pubsub message must contain either non-empty data, or at least one attribute.
-          * `topicName` (`pulumi.Input[str]`) - The full resource name for the Cloud Pub/Sub topic to which
-            messages will be published when a job is delivered. ~>**NOTE:**
-            The topic name must be in the same format as required by PubSub's
-            PublishRequest.name, e.g. `projects/my-project/topics/my-topic`.
-
-        The **retry_config** object supports the following:
-
-          * `maxBackoffDuration` (`pulumi.Input[str]`) - The maximum amount of time to wait before retrying a job after it fails.
-            A duration in seconds with up to nine fractional digits, terminated by 's'.
-          * `maxDoublings` (`pulumi.Input[float]`) - The time between retries will double maxDoublings times.
-            A job's retry interval starts at minBackoffDuration,
-            then doubles maxDoublings times, then increases linearly,
-            and finally retries retries at intervals of maxBackoffDuration up to retryCount times.
-          * `maxRetryDuration` (`pulumi.Input[str]`) - The time limit for retrying a failed job, measured from time when an execution was first attempted.
-            If specified with retryCount, the job will be retried until both limits are reached.
-            A duration in seconds with up to nine fractional digits, terminated by 's'.
-          * `minBackoffDuration` (`pulumi.Input[str]`) - The minimum amount of time to wait before retrying a job after it fails.
-            A duration in seconds with up to nine fractional digits, terminated by 's'.
-          * `retryCount` (`pulumi.Input[float]`) - The number of attempts that the system will make to run a
-            job using the exponential backoff procedure described by maxDoublings.
-            Values greater than 5 and negative values are not allowed.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -443,8 +188,118 @@ class Job(pulumi.CustomResource):
         __props__["time_zone"] = time_zone
         return Job(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="appEngineHttpTarget")
+    def app_engine_http_target(self) -> Optional['outputs.JobAppEngineHttpTarget']:
+        """
+        App Engine HTTP target.
+        If the job providers a App Engine HTTP target the cron will
+        send a request to the service instance
+        Structure is documented below.
+        """
+        return pulumi.get(self, "app_engine_http_target")
+
+    @property
+    @pulumi.getter(name="attemptDeadline")
+    def attempt_deadline(self) -> Optional[str]:
+        """
+        The deadline for job attempts. If the request handler does not respond by this deadline then the request is
+        cancelled and the attempt is marked as a DEADLINE_EXCEEDED failure. The failed attempt can be viewed in
+        execution logs. Cloud Scheduler will retry the job according to the RetryConfig.
+        The allowed duration for this deadline is:
+        * For HTTP targets, between 15 seconds and 30 minutes.
+        * For App Engine HTTP targets, between 15 seconds and 24 hours.
+        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+        """
+        return pulumi.get(self, "attempt_deadline")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        A human-readable description for the job.
+        This string must not contain more than 500 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="httpTarget")
+    def http_target(self) -> Optional['outputs.JobHttpTarget']:
+        """
+        HTTP target.
+        If the job providers a http_target the cron will
+        send a request to the targeted url
+        Structure is documented below.
+        """
+        return pulumi.get(self, "http_target")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the job.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="pubsubTarget")
+    def pubsub_target(self) -> Optional['outputs.JobPubsubTarget']:
+        """
+        Pub/Sub target
+        If the job providers a Pub/Sub target the cron will publish
+        a message to the provided topic
+        Structure is documented below.
+        """
+        return pulumi.get(self, "pubsub_target")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        Region where the scheduler job resides. If it is not provided, Terraform will use the provider default.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="retryConfig")
+    def retry_config(self) -> Optional['outputs.JobRetryConfig']:
+        """
+        By default, if a job does not complete successfully,
+        meaning that an acknowledgement is not received from the handler,
+        then it will be retried with exponential backoff according to the settings
+        Structure is documented below.
+        """
+        return pulumi.get(self, "retry_config")
+
+    @property
+    @pulumi.getter
+    def schedule(self) -> Optional[str]:
+        """
+        Describes the schedule on which the job will be executed.
+        """
+        return pulumi.get(self, "schedule")
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> Optional[str]:
+        """
+        Specifies the time zone to be used in interpreting schedule.
+        The value of this field must be a time zone name from the tz database.
+        """
+        return pulumi.get(self, "time_zone")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

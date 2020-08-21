@@ -9,3 +9,5 @@ from .secret_iam_binding import *
 from .secret_iam_member import *
 from .secret_iam_policy import *
 from .secret_version import *
+from ._inputs import *
+from . import outputs

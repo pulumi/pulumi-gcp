@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
 
+__all__ = [
+    'GetRegistryImageResult',
+    'AwaitableGetRegistryImageResult',
+    'get_registry_image',
+]
 
+@pulumi.output_type
 class GetRegistryImageResult:
     """
     A collection of values returned by getRegistryImage.
@@ -16,28 +22,63 @@ class GetRegistryImageResult:
     def __init__(__self__, digest=None, id=None, image_url=None, name=None, project=None, region=None, tag=None):
         if digest and not isinstance(digest, str):
             raise TypeError("Expected argument 'digest' to be a str")
-        __self__.digest = digest
+        pulumi.set(__self__, "digest", digest)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if image_url and not isinstance(image_url, str):
+            raise TypeError("Expected argument 'image_url' to be a str")
+        pulumi.set(__self__, "image_url", image_url)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if project and not isinstance(project, str):
+            raise TypeError("Expected argument 'project' to be a str")
+        pulumi.set(__self__, "project", project)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
+        if tag and not isinstance(tag, str):
+            raise TypeError("Expected argument 'tag' to be a str")
+        pulumi.set(__self__, "tag", tag)
+
+    @property
+    @pulumi.getter
+    def digest(self) -> Optional[str]:
+        return pulumi.get(self, "digest")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if image_url and not isinstance(image_url, str):
-            raise TypeError("Expected argument 'image_url' to be a str")
-        __self__.image_url = image_url
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
-        if project and not isinstance(project, str):
-            raise TypeError("Expected argument 'project' to be a str")
-        __self__.project = project
-        if region and not isinstance(region, str):
-            raise TypeError("Expected argument 'region' to be a str")
-        __self__.region = region
-        if tag and not isinstance(tag, str):
-            raise TypeError("Expected argument 'tag' to be a str")
-        __self__.tag = tag
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="imageUrl")
+    def image_url(self) -> str:
+        return pulumi.get(self, "image_url")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def tag(self) -> Optional[str]:
+        return pulumi.get(self, "tag")
 
 
 class AwaitableGetRegistryImageResult(GetRegistryImageResult):
@@ -55,7 +96,12 @@ class AwaitableGetRegistryImageResult(GetRegistryImageResult):
             tag=self.tag)
 
 
-def get_registry_image(digest=None, name=None, project=None, region=None, tag=None, opts=None):
+def get_registry_image(digest: Optional[str] = None,
+                       name: Optional[str] = None,
+                       project: Optional[str] = None,
+                       region: Optional[str] = None,
+                       tag: Optional[str] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegistryImageResult:
     """
     This data source fetches the project name, and provides the appropriate URLs to use for container registry for this project.
 
@@ -71,13 +117,13 @@ def get_registry_image(digest=None, name=None, project=None, region=None, tag=No
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('gcp:container/getRegistryImage:getRegistryImage', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('gcp:container/getRegistryImage:getRegistryImage', __args__, opts=opts, typ=GetRegistryImageResult).value
 
     return AwaitableGetRegistryImageResult(
-        digest=__ret__.get('digest'),
-        id=__ret__.get('id'),
-        image_url=__ret__.get('imageUrl'),
-        name=__ret__.get('name'),
-        project=__ret__.get('project'),
-        region=__ret__.get('region'),
-        tag=__ret__.get('tag'))
+        digest=__ret__.digest,
+        id=__ret__.id,
+        image_url=__ret__.image_url,
+        name=__ret__.name,
+        project=__ret__.project,
+        region=__ret__.region,
+        tag=__ret__.tag)

@@ -26,3 +26,5 @@ from .web_type_app_enging_iam_policy import *
 from .web_type_compute_iam_binding import *
 from .web_type_compute_iam_member import *
 from .web_type_compute_iam_policy import *
+from ._inputs import *
+from . import outputs

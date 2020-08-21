@@ -5,37 +5,26 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['Table']
 
 
 class Table(pulumi.CustomResource):
-    column_families: pulumi.Output[list]
-    """
-    A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
-
-      * `family` (`str`) - The name of the column family.
-    """
-    instance_name: pulumi.Output[str]
-    """
-    The name of the Bigtable instance.
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the table.
-    """
-    project: pulumi.Output[str]
-    """
-    The ID of the project in which the resource belongs. If it
-    is not provided, the provider project is used.
-    """
-    split_keys: pulumi.Output[list]
-    """
-    A list of predefined keys to split the table on.
-    !> **Warning:** Modifying the `split_keys` of an existing table will cause the provider
-    to delete/recreate the entire `bigtable.Table` resource.
-    """
-    def __init__(__self__, resource_name, opts=None, column_families=None, instance_name=None, name=None, project=None, split_keys=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 column_families: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['TableColumnFamilyArgs']]]]] = None,
+                 instance_name: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 split_keys: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Creates a Google Cloud Bigtable table inside an instance. For more information see
         [the official documentation](https://cloud.google.com/bigtable/) and
@@ -43,18 +32,14 @@ class Table(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] column_families: A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['TableColumnFamilyArgs']]]] column_families: A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
         :param pulumi.Input[str] instance_name: The name of the Bigtable instance.
         :param pulumi.Input[str] name: The name of the table.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[list] split_keys: A list of predefined keys to split the table on.
+        :param pulumi.Input[List[pulumi.Input[str]]] split_keys: A list of predefined keys to split the table on.
                !> **Warning:** Modifying the `split_keys` of an existing table will cause the provider
                to delete/recreate the entire `bigtable.Table` resource.
-
-        The **column_families** object supports the following:
-
-          * `family` (`pulumi.Input[str]`) - The name of the column family.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -87,26 +72,29 @@ class Table(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, column_families=None, instance_name=None, name=None, project=None, split_keys=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            column_families: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['TableColumnFamilyArgs']]]]] = None,
+            instance_name: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            split_keys: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'Table':
         """
         Get an existing Table resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] column_families: A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['TableColumnFamilyArgs']]]] column_families: A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
         :param pulumi.Input[str] instance_name: The name of the Bigtable instance.
         :param pulumi.Input[str] name: The name of the table.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[list] split_keys: A list of predefined keys to split the table on.
+        :param pulumi.Input[List[pulumi.Input[str]]] split_keys: A list of predefined keys to split the table on.
                !> **Warning:** Modifying the `split_keys` of an existing table will cause the provider
                to delete/recreate the entire `bigtable.Table` resource.
-
-        The **column_families** object supports the following:
-
-          * `family` (`pulumi.Input[str]`) - The name of the column family.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -119,8 +107,52 @@ class Table(pulumi.CustomResource):
         __props__["split_keys"] = split_keys
         return Table(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="columnFamilies")
+    def column_families(self) -> Optional[List['outputs.TableColumnFamily']]:
+        """
+        A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
+        """
+        return pulumi.get(self, "column_families")
+
+    @property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> str:
+        """
+        The name of the Bigtable instance.
+        """
+        return pulumi.get(self, "instance_name")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the table.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The ID of the project in which the resource belongs. If it
+        is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="splitKeys")
+    def split_keys(self) -> Optional[List[str]]:
+        """
+        A list of predefined keys to split the table on.
+        !> **Warning:** Modifying the `split_keys` of an existing table will cause the provider
+        to delete/recreate the entire `bigtable.Table` resource.
+        """
+        return pulumi.get(self, "split_keys")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

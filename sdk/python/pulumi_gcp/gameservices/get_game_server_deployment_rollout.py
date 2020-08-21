@@ -5,10 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
 
+__all__ = [
+    'GetGameServerDeploymentRolloutResult',
+    'AwaitableGetGameServerDeploymentRolloutResult',
+    'get_game_server_deployment_rollout',
+]
 
+@pulumi.output_type
 class GetGameServerDeploymentRolloutResult:
     """
     A collection of values returned by getGameServerDeploymentRollout.
@@ -16,29 +23,59 @@ class GetGameServerDeploymentRolloutResult:
     def __init__(__self__, default_game_server_config=None, deployment_id=None, game_server_config_overrides=None, id=None, name=None, project=None):
         if default_game_server_config and not isinstance(default_game_server_config, str):
             raise TypeError("Expected argument 'default_game_server_config' to be a str")
-        __self__.default_game_server_config = default_game_server_config
+        pulumi.set(__self__, "default_game_server_config", default_game_server_config)
         if deployment_id and not isinstance(deployment_id, str):
             raise TypeError("Expected argument 'deployment_id' to be a str")
-        __self__.deployment_id = deployment_id
+        pulumi.set(__self__, "deployment_id", deployment_id)
         if game_server_config_overrides and not isinstance(game_server_config_overrides, list):
             raise TypeError("Expected argument 'game_server_config_overrides' to be a list")
-        __self__.game_server_config_overrides = game_server_config_overrides
+        pulumi.set(__self__, "game_server_config_overrides", game_server_config_overrides)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if project and not isinstance(project, str):
+            raise TypeError("Expected argument 'project' to be a str")
+        pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="defaultGameServerConfig")
+    def default_game_server_config(self) -> str:
+        return pulumi.get(self, "default_game_server_config")
+
+    @property
+    @pulumi.getter(name="deploymentId")
+    def deployment_id(self) -> str:
+        return pulumi.get(self, "deployment_id")
+
+    @property
+    @pulumi.getter(name="gameServerConfigOverrides")
+    def game_server_config_overrides(self) -> List['outputs.GetGameServerDeploymentRolloutGameServerConfigOverrideResult']:
+        return pulumi.get(self, "game_server_config_overrides")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
-        if project and not isinstance(project, str):
-            raise TypeError("Expected argument 'project' to be a str")
-        __self__.project = project
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
         """
+        return pulumi.get(self, "project")
 
 
 class AwaitableGetGameServerDeploymentRolloutResult(GetGameServerDeploymentRolloutResult):
@@ -55,7 +92,8 @@ class AwaitableGetGameServerDeploymentRolloutResult(GetGameServerDeploymentRollo
             project=self.project)
 
 
-def get_game_server_deployment_rollout(deployment_id=None, opts=None):
+def get_game_server_deployment_rollout(deployment_id: Optional[str] = None,
+                                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGameServerDeploymentRolloutResult:
     """
     Use this data source to get the rollout state.
 
@@ -70,12 +108,12 @@ def get_game_server_deployment_rollout(deployment_id=None, opts=None):
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('gcp:gameservices/getGameServerDeploymentRollout:getGameServerDeploymentRollout', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('gcp:gameservices/getGameServerDeploymentRollout:getGameServerDeploymentRollout', __args__, opts=opts, typ=GetGameServerDeploymentRolloutResult).value
 
     return AwaitableGetGameServerDeploymentRolloutResult(
-        default_game_server_config=__ret__.get('defaultGameServerConfig'),
-        deployment_id=__ret__.get('deploymentId'),
-        game_server_config_overrides=__ret__.get('gameServerConfigOverrides'),
-        id=__ret__.get('id'),
-        name=__ret__.get('name'),
-        project=__ret__.get('project'))
+        default_game_server_config=__ret__.default_game_server_config,
+        deployment_id=__ret__.deployment_id,
+        game_server_config_overrides=__ret__.game_server_config_overrides,
+        id=__ret__.id,
+        name=__ret__.name,
+        project=__ret__.project)

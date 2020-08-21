@@ -5,39 +5,21 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['Folder']
 
 
 class Folder(pulumi.CustomResource):
-    create_time: pulumi.Output[str]
-    """
-    Timestamp when the Folder was created. Assigned by the server.
-    A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-    """
-    display_name: pulumi.Output[str]
-    """
-    The folder’s display name.
-    A folder’s display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters.
-    """
-    folder_id: pulumi.Output[str]
-    """
-    The folder id from the name "folders/{folder_id}"
-    """
-    lifecycle_state: pulumi.Output[str]
-    """
-    The lifecycle state of the folder such as `ACTIVE` or `DELETE_REQUESTED`.
-    """
-    name: pulumi.Output[str]
-    """
-    The resource name of the Folder. Its format is folders/{folder_id}.
-    """
-    parent: pulumi.Output[str]
-    """
-    The resource name of the parent Folder or Organization.
-    Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
-    """
-    def __init__(__self__, resource_name, opts=None, display_name=None, parent=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 parent: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Allows management of a Google Cloud Platform folder. For more information see
         [the official documentation](https://cloud.google.com/resource-manager/docs/creating-managing-folders)
@@ -94,13 +76,21 @@ class Folder(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, create_time=None, display_name=None, folder_id=None, lifecycle_state=None, name=None, parent=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
+            display_name: Optional[pulumi.Input[str]] = None,
+            folder_id: Optional[pulumi.Input[str]] = None,
+            lifecycle_state: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            parent: Optional[pulumi.Input[str]] = None) -> 'Folder':
         """
         Get an existing Folder resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Timestamp when the Folder was created. Assigned by the server.
                A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
@@ -124,8 +114,60 @@ class Folder(pulumi.CustomResource):
         __props__["parent"] = parent
         return Folder(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        Timestamp when the Folder was created. Assigned by the server.
+        A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        The folder’s display name.
+        A folder’s display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="folderId")
+    def folder_id(self) -> str:
+        """
+        The folder id from the name "folders/{folder_id}"
+        """
+        return pulumi.get(self, "folder_id")
+
+    @property
+    @pulumi.getter(name="lifecycleState")
+    def lifecycle_state(self) -> str:
+        """
+        The lifecycle state of the folder such as `ACTIVE` or `DELETE_REQUESTED`.
+        """
+        return pulumi.get(self, "lifecycle_state")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The resource name of the Folder. Its format is folders/{folder_id}.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def parent(self) -> str:
+        """
+        The resource name of the parent Folder or Organization.
+        Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
+        """
+        return pulumi.get(self, "parent")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

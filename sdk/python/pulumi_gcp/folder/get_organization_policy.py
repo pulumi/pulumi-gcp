@@ -5,10 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
 
+__all__ = [
+    'GetOrganizationPolicyResult',
+    'AwaitableGetOrganizationPolicyResult',
+    'get_organization_policy',
+]
 
+@pulumi.output_type
 class GetOrganizationPolicyResult:
     """
     A collection of values returned by getOrganizationPolicy.
@@ -16,34 +23,79 @@ class GetOrganizationPolicyResult:
     def __init__(__self__, boolean_policies=None, constraint=None, etag=None, folder=None, id=None, list_policies=None, restore_policies=None, update_time=None, version=None):
         if boolean_policies and not isinstance(boolean_policies, list):
             raise TypeError("Expected argument 'boolean_policies' to be a list")
-        __self__.boolean_policies = boolean_policies
+        pulumi.set(__self__, "boolean_policies", boolean_policies)
         if constraint and not isinstance(constraint, str):
             raise TypeError("Expected argument 'constraint' to be a str")
-        __self__.constraint = constraint
+        pulumi.set(__self__, "constraint", constraint)
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
-        __self__.etag = etag
+        pulumi.set(__self__, "etag", etag)
         if folder and not isinstance(folder, str):
             raise TypeError("Expected argument 'folder' to be a str")
-        __self__.folder = folder
+        pulumi.set(__self__, "folder", folder)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if list_policies and not isinstance(list_policies, list):
+            raise TypeError("Expected argument 'list_policies' to be a list")
+        pulumi.set(__self__, "list_policies", list_policies)
+        if restore_policies and not isinstance(restore_policies, list):
+            raise TypeError("Expected argument 'restore_policies' to be a list")
+        pulumi.set(__self__, "restore_policies", restore_policies)
+        if update_time and not isinstance(update_time, str):
+            raise TypeError("Expected argument 'update_time' to be a str")
+        pulumi.set(__self__, "update_time", update_time)
+        if version and not isinstance(version, float):
+            raise TypeError("Expected argument 'version' to be a float")
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="booleanPolicies")
+    def boolean_policies(self) -> List['outputs.GetOrganizationPolicyBooleanPolicyResult']:
+        return pulumi.get(self, "boolean_policies")
+
+    @property
+    @pulumi.getter
+    def constraint(self) -> str:
+        return pulumi.get(self, "constraint")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> str:
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter
+    def folder(self) -> str:
+        return pulumi.get(self, "folder")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if list_policies and not isinstance(list_policies, list):
-            raise TypeError("Expected argument 'list_policies' to be a list")
-        __self__.list_policies = list_policies
-        if restore_policies and not isinstance(restore_policies, list):
-            raise TypeError("Expected argument 'restore_policies' to be a list")
-        __self__.restore_policies = restore_policies
-        if update_time and not isinstance(update_time, str):
-            raise TypeError("Expected argument 'update_time' to be a str")
-        __self__.update_time = update_time
-        if version and not isinstance(version, float):
-            raise TypeError("Expected argument 'version' to be a float")
-        __self__.version = version
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="listPolicies")
+    def list_policies(self) -> List['outputs.GetOrganizationPolicyListPolicyResult']:
+        return pulumi.get(self, "list_policies")
+
+    @property
+    @pulumi.getter(name="restorePolicies")
+    def restore_policies(self) -> List['outputs.GetOrganizationPolicyRestorePolicyResult']:
+        return pulumi.get(self, "restore_policies")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter
+    def version(self) -> float:
+        return pulumi.get(self, "version")
 
 
 class AwaitableGetOrganizationPolicyResult(GetOrganizationPolicyResult):
@@ -63,7 +115,9 @@ class AwaitableGetOrganizationPolicyResult(GetOrganizationPolicyResult):
             version=self.version)
 
 
-def get_organization_policy(constraint=None, folder=None, opts=None):
+def get_organization_policy(constraint: Optional[str] = None,
+                            folder: Optional[str] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOrganizationPolicyResult:
     """
     Allows management of Organization policies for a Google Folder. For more information see
     [the official
@@ -80,15 +134,15 @@ def get_organization_policy(constraint=None, folder=None, opts=None):
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('gcp:folder/getOrganizationPolicy:getOrganizationPolicy', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('gcp:folder/getOrganizationPolicy:getOrganizationPolicy', __args__, opts=opts, typ=GetOrganizationPolicyResult).value
 
     return AwaitableGetOrganizationPolicyResult(
-        boolean_policies=__ret__.get('booleanPolicies'),
-        constraint=__ret__.get('constraint'),
-        etag=__ret__.get('etag'),
-        folder=__ret__.get('folder'),
-        id=__ret__.get('id'),
-        list_policies=__ret__.get('listPolicies'),
-        restore_policies=__ret__.get('restorePolicies'),
-        update_time=__ret__.get('updateTime'),
-        version=__ret__.get('version'))
+        boolean_policies=__ret__.boolean_policies,
+        constraint=__ret__.constraint,
+        etag=__ret__.etag,
+        folder=__ret__.folder,
+        id=__ret__.id,
+        list_policies=__ret__.list_policies,
+        restore_policies=__ret__.restore_policies,
+        update_time=__ret__.update_time,
+        version=__ret__.version)

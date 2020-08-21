@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
 
+__all__ = [
+    'GetKMSSecretCiphertextResult',
+    'AwaitableGetKMSSecretCiphertextResult',
+    'get_kms_secret_ciphertext',
+]
 
+@pulumi.output_type
 class GetKMSSecretCiphertextResult:
     """
     A collection of values returned by getKMSSecretCiphertext.
@@ -16,22 +22,42 @@ class GetKMSSecretCiphertextResult:
     def __init__(__self__, ciphertext=None, crypto_key=None, id=None, plaintext=None):
         if ciphertext and not isinstance(ciphertext, str):
             raise TypeError("Expected argument 'ciphertext' to be a str")
-        __self__.ciphertext = ciphertext
+        pulumi.set(__self__, "ciphertext", ciphertext)
+        if crypto_key and not isinstance(crypto_key, str):
+            raise TypeError("Expected argument 'crypto_key' to be a str")
+        pulumi.set(__self__, "crypto_key", crypto_key)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if plaintext and not isinstance(plaintext, str):
+            raise TypeError("Expected argument 'plaintext' to be a str")
+        pulumi.set(__self__, "plaintext", plaintext)
+
+    @property
+    @pulumi.getter
+    def ciphertext(self) -> str:
         """
         Contains the result of encrypting the provided plaintext, encoded in base64.
         """
-        if crypto_key and not isinstance(crypto_key, str):
-            raise TypeError("Expected argument 'crypto_key' to be a str")
-        __self__.crypto_key = crypto_key
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "ciphertext")
+
+    @property
+    @pulumi.getter(name="cryptoKey")
+    def crypto_key(self) -> str:
+        return pulumi.get(self, "crypto_key")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if plaintext and not isinstance(plaintext, str):
-            raise TypeError("Expected argument 'plaintext' to be a str")
-        __self__.plaintext = plaintext
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def plaintext(self) -> str:
+        return pulumi.get(self, "plaintext")
 
 
 class AwaitableGetKMSSecretCiphertextResult(GetKMSSecretCiphertextResult):
@@ -46,7 +72,9 @@ class AwaitableGetKMSSecretCiphertextResult(GetKMSSecretCiphertextResult):
             plaintext=self.plaintext)
 
 
-def get_kms_secret_ciphertext(crypto_key=None, plaintext=None, opts=None):
+def get_kms_secret_ciphertext(crypto_key: Optional[str] = None,
+                              plaintext: Optional[str] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKMSSecretCiphertextResult:
     """
     !> **Warning:** This data source is deprecated. Use the `kms.SecretCiphertext` **resource** instead.
 
@@ -74,10 +102,10 @@ def get_kms_secret_ciphertext(crypto_key=None, plaintext=None, opts=None):
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('gcp:kms/getKMSSecretCiphertext:getKMSSecretCiphertext', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('gcp:kms/getKMSSecretCiphertext:getKMSSecretCiphertext', __args__, opts=opts, typ=GetKMSSecretCiphertextResult).value
 
     return AwaitableGetKMSSecretCiphertextResult(
-        ciphertext=__ret__.get('ciphertext'),
-        crypto_key=__ret__.get('cryptoKey'),
-        id=__ret__.get('id'),
-        plaintext=__ret__.get('plaintext'))
+        ciphertext=__ret__.ciphertext,
+        crypto_key=__ret__.crypto_key,
+        id=__ret__.id,
+        plaintext=__ret__.plaintext)

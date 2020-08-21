@@ -9,3 +9,5 @@ from .iam_binding import *
 from .iam_member import *
 from .iam_policy import *
 from .organization_policy import *
+from ._inputs import *
+from . import outputs

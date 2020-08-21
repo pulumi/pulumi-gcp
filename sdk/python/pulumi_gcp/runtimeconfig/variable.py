@@ -5,41 +5,24 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['Variable']
 
 
 class Variable(pulumi.CustomResource):
-    name: pulumi.Output[str]
-    """
-    The name of the variable to manage. Note that variable
-    names can be hierarchical using slashes (e.g. "prod-variables/hostname").
-    """
-    parent: pulumi.Output[str]
-    """
-    The name of the RuntimeConfig resource containing this
-    variable.
-    """
-    project: pulumi.Output[str]
-    """
-    The ID of the project in which the resource belongs. If it
-    is not provided, the provider project is used.
-    """
-    text: pulumi.Output[str]
-    """
-    or `value` - (Required) The content to associate with the variable.
-    Exactly one of `text` or `variable` must be specified. If `text` is specified,
-    it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
-    is specified, it must be base64 encoded and less than 4096 bytes in length.
-    """
-    update_time: pulumi.Output[str]
-    """
-    (Computed) The timestamp in RFC3339 UTC "Zulu" format,
-    accurate to nanoseconds, representing when the variable was last updated.
-    Example: "2016-10-09T12:33:37.578138407Z".
-    """
-    value: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, name=None, parent=None, project=None, text=None, value=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 parent: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 text: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a RuntimeConfig variable in Google Cloud. For more information, see the
         [official documentation](https://cloud.google.com/deployment-manager/runtime-configurator/),
@@ -91,13 +74,21 @@ class Variable(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, name=None, parent=None, project=None, text=None, update_time=None, value=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            parent: Optional[pulumi.Input[str]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            text: Optional[pulumi.Input[str]] = None,
+            update_time: Optional[pulumi.Input[str]] = None,
+            value: Optional[pulumi.Input[str]] = None) -> 'Variable':
         """
         Get an existing Variable resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the variable to manage. Note that variable
                names can be hierarchical using slashes (e.g. "prod-variables/hostname").
@@ -125,8 +116,62 @@ class Variable(pulumi.CustomResource):
         __props__["value"] = value
         return Variable(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the variable to manage. Note that variable
+        names can be hierarchical using slashes (e.g. "prod-variables/hostname").
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def parent(self) -> str:
+        """
+        The name of the RuntimeConfig resource containing this
+        variable.
+        """
+        return pulumi.get(self, "parent")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The ID of the project in which the resource belongs. If it
+        is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def text(self) -> Optional[str]:
+        """
+        or `value` - (Required) The content to associate with the variable.
+        Exactly one of `text` or `variable` must be specified. If `text` is specified,
+        it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
+        is specified, it must be base64 encoded and less than 4096 bytes in length.
+        """
+        return pulumi.get(self, "text")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        """
+        (Computed) The timestamp in RFC3339 UTC "Zulu" format,
+        accurate to nanoseconds, representing when the variable was last updated.
+        Example: "2016-10-09T12:33:37.578138407Z".
+        """
+        return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        return pulumi.get(self, "value")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

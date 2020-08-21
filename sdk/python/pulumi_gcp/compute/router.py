@@ -5,75 +5,27 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['Router']
 
 
 class Router(pulumi.CustomResource):
-    bgp: pulumi.Output[dict]
-    """
-    BGP information specific to this router.
-    Structure is documented below.
-
-      * `advertise_mode` (`str`) - User-specified flag to indicate which mode to use for advertisement.
-        Default value is `DEFAULT`.
-        Possible values are `DEFAULT` and `CUSTOM`.
-      * `advertised_groups` (`list`) - User-specified list of prefix groups to advertise in custom mode.
-        This field can only be populated if advertiseMode is CUSTOM and
-        is advertised to all peers of the router. These groups will be
-        advertised in addition to any specified prefixes. Leave this field
-        blank to advertise no custom groups.
-        This enum field has the one valid value: ALL_SUBNETS
-      * `advertised_ip_ranges` (`list`) - User-specified list of individual IP ranges to advertise in
-        custom mode. This field can only be populated if advertiseMode
-        is CUSTOM and is advertised to all peers of the router. These IP
-        ranges will be advertised in addition to any specified groups.
-        Leave this field blank to advertise no custom IP ranges.
-        Structure is documented below.
-        * `description` (`str`) - User-specified description for the IP range.
-        * `range` (`str`) - The IP range to advertise. The value must be a
-          CIDR-formatted string.
-
-      * `asn` (`float`) - Local BGP Autonomous System Number (ASN). Must be an RFC6996
-        private ASN, either 16-bit or 32-bit. The value will be fixed for
-        this router resource. All VPN tunnels that link to this router
-        will have the same local ASN.
-    """
-    creation_timestamp: pulumi.Output[str]
-    """
-    Creation timestamp in RFC3339 text format.
-    """
-    description: pulumi.Output[str]
-    """
-    User-specified description for the IP range.
-    """
-    name: pulumi.Output[str]
-    """
-    Name of the resource. The name must be 1-63 characters long, and
-    comply with RFC1035. Specifically, the name must be 1-63 characters
-    long and match the regular expression `a-z?`
-    which means the first character must be a lowercase letter, and all
-    following characters must be a dash, lowercase letter, or digit,
-    except the last character, which cannot be a dash.
-    """
-    network: pulumi.Output[str]
-    """
-    A reference to the network to which this router belongs.
-    """
-    project: pulumi.Output[str]
-    """
-    The ID of the project in which the resource belongs.
-    If it is not provided, the provider project is used.
-    """
-    region: pulumi.Output[str]
-    """
-    Region where the router resides.
-    """
-    self_link: pulumi.Output[str]
-    """
-    The URI of the created resource.
-    """
-    def __init__(__self__, resource_name, opts=None, bgp=None, description=None, name=None, network=None, project=None, region=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 bgp: Optional[pulumi.Input[pulumi.InputType['RouterBgpArgs']]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 network: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Represents a Router resource.
 
@@ -87,7 +39,7 @@ class Router(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] bgp: BGP information specific to this router.
+        :param pulumi.Input[pulumi.InputType['RouterBgpArgs']] bgp: BGP information specific to this router.
                Structure is documented below.
         :param pulumi.Input[str] description: User-specified description for the IP range.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and
@@ -100,32 +52,6 @@ class Router(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where the router resides.
-
-        The **bgp** object supports the following:
-
-          * `advertise_mode` (`pulumi.Input[str]`) - User-specified flag to indicate which mode to use for advertisement.
-            Default value is `DEFAULT`.
-            Possible values are `DEFAULT` and `CUSTOM`.
-          * `advertised_groups` (`pulumi.Input[list]`) - User-specified list of prefix groups to advertise in custom mode.
-            This field can only be populated if advertiseMode is CUSTOM and
-            is advertised to all peers of the router. These groups will be
-            advertised in addition to any specified prefixes. Leave this field
-            blank to advertise no custom groups.
-            This enum field has the one valid value: ALL_SUBNETS
-          * `advertised_ip_ranges` (`pulumi.Input[list]`) - User-specified list of individual IP ranges to advertise in
-            custom mode. This field can only be populated if advertiseMode
-            is CUSTOM and is advertised to all peers of the router. These IP
-            ranges will be advertised in addition to any specified groups.
-            Leave this field blank to advertise no custom IP ranges.
-            Structure is documented below.
-            * `description` (`pulumi.Input[str]`) - User-specified description for the IP range.
-            * `range` (`pulumi.Input[str]`) - The IP range to advertise. The value must be a
-              CIDR-formatted string.
-
-          * `asn` (`pulumi.Input[float]`) - Local BGP Autonomous System Number (ASN). Must be an RFC6996
-            private ASN, either 16-bit or 32-bit. The value will be fixed for
-            this router resource. All VPN tunnels that link to this router
-            will have the same local ASN.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -161,15 +87,25 @@ class Router(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, bgp=None, creation_timestamp=None, description=None, name=None, network=None, project=None, region=None, self_link=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bgp: Optional[pulumi.Input[pulumi.InputType['RouterBgpArgs']]] = None,
+            creation_timestamp: Optional[pulumi.Input[str]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            network: Optional[pulumi.Input[str]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            self_link: Optional[pulumi.Input[str]] = None) -> 'Router':
         """
         Get an existing Router resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] bgp: BGP information specific to this router.
+        :param pulumi.Input[pulumi.InputType['RouterBgpArgs']] bgp: BGP information specific to this router.
                Structure is documented below.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: User-specified description for the IP range.
@@ -184,32 +120,6 @@ class Router(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where the router resides.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-
-        The **bgp** object supports the following:
-
-          * `advertise_mode` (`pulumi.Input[str]`) - User-specified flag to indicate which mode to use for advertisement.
-            Default value is `DEFAULT`.
-            Possible values are `DEFAULT` and `CUSTOM`.
-          * `advertised_groups` (`pulumi.Input[list]`) - User-specified list of prefix groups to advertise in custom mode.
-            This field can only be populated if advertiseMode is CUSTOM and
-            is advertised to all peers of the router. These groups will be
-            advertised in addition to any specified prefixes. Leave this field
-            blank to advertise no custom groups.
-            This enum field has the one valid value: ALL_SUBNETS
-          * `advertised_ip_ranges` (`pulumi.Input[list]`) - User-specified list of individual IP ranges to advertise in
-            custom mode. This field can only be populated if advertiseMode
-            is CUSTOM and is advertised to all peers of the router. These IP
-            ranges will be advertised in addition to any specified groups.
-            Leave this field blank to advertise no custom IP ranges.
-            Structure is documented below.
-            * `description` (`pulumi.Input[str]`) - User-specified description for the IP range.
-            * `range` (`pulumi.Input[str]`) - The IP range to advertise. The value must be a
-              CIDR-formatted string.
-
-          * `asn` (`pulumi.Input[float]`) - Local BGP Autonomous System Number (ASN). Must be an RFC6996
-            private ASN, either 16-bit or 32-bit. The value will be fixed for
-            this router resource. All VPN tunnels that link to this router
-            will have the same local ASN.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -225,8 +135,80 @@ class Router(pulumi.CustomResource):
         __props__["self_link"] = self_link
         return Router(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def bgp(self) -> Optional['outputs.RouterBgp']:
+        """
+        BGP information specific to this router.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bgp")
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> str:
+        """
+        Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        User-specified description for the IP range.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the resource. The name must be 1-63 characters long, and
+        comply with RFC1035. Specifically, the name must be 1-63 characters
+        long and match the regular expression `a-z?`
+        which means the first character must be a lowercase letter, and all
+        following characters must be a dash, lowercase letter, or digit,
+        except the last character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def network(self) -> str:
+        """
+        A reference to the network to which this router belongs.
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        Region where the router resides.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> str:
+        """
+        The URI of the created resource.
+        """
+        return pulumi.get(self, "self_link")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

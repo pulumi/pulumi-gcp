@@ -5,38 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['Namespace']
 
 
 class Namespace(pulumi.CustomResource):
-    labels: pulumi.Output[dict]
-    """
-    Resource labels associated with this Namespace. No more than 64 user
-    labels can be associated with a given resource. Label keys and values can
-    be no longer than 63 characters.
-    """
-    location: pulumi.Output[str]
-    """
-    The location for the Namespace.
-    A full list of valid locations can be found by running
-    `gcloud beta service-directory locations list`.
-    """
-    name: pulumi.Output[str]
-    """
-    The resource name for the namespace in the format 'projects/*/locations/*/namespaces/*'.
-    """
-    namespace_id: pulumi.Output[str]
-    """
-    The Resource ID must be 1-63 characters long, including digits,
-    lowercase letters or the hyphen character.
-    """
-    project: pulumi.Output[str]
-    """
-    The ID of the project in which the resource belongs.
-    If it is not provided, the provider project is used.
-    """
-    def __init__(__self__, resource_name, opts=None, labels=None, location=None, namespace_id=None, project=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 namespace_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         A container for `services`. Namespaces allow administrators to group services
         together and define permissions for a collection of services.
@@ -51,7 +36,7 @@ class Namespace(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] labels: Resource labels associated with this Namespace. No more than 64 user
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels associated with this Namespace. No more than 64 user
                labels can be associated with a given resource. Label keys and values can
                be no longer than 63 characters.
         :param pulumi.Input[str] location: The location for the Namespace.
@@ -95,15 +80,22 @@ class Namespace(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, labels=None, location=None, name=None, namespace_id=None, project=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            location: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            namespace_id: Optional[pulumi.Input[str]] = None,
+            project: Optional[pulumi.Input[str]] = None) -> 'Namespace':
         """
         Get an existing Namespace resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] labels: Resource labels associated with this Namespace. No more than 64 user
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels associated with this Namespace. No more than 64 user
                labels can be associated with a given resource. Label keys and values can
                be no longer than 63 characters.
         :param pulumi.Input[str] location: The location for the Namespace.
@@ -126,8 +118,55 @@ class Namespace(pulumi.CustomResource):
         __props__["project"] = project
         return Namespace(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[Mapping[str, str]]:
+        """
+        Resource labels associated with this Namespace. No more than 64 user
+        labels can be associated with a given resource. Label keys and values can
+        be no longer than 63 characters.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        The location for the Namespace.
+        A full list of valid locations can be found by running
+        `gcloud beta service-directory locations list`.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The resource name for the namespace in the format 'projects/*/locations/*/namespaces/*'.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="namespaceId")
+    def namespace_id(self) -> str:
+        """
+        The Resource ID must be 1-63 characters long, including digits,
+        lowercase letters or the hyphen character.
+        """
+        return pulumi.get(self, "namespace_id")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

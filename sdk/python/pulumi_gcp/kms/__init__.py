@@ -19,3 +19,5 @@ from .key_ring_iam_policy import *
 from .key_ring_import_job import *
 from .registry import *
 from .secret_ciphertext import *
+from ._inputs import *
+from . import outputs

@@ -5,38 +5,25 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['CryptoKeyIAMBinding']
 
 
 class CryptoKeyIAMBinding(pulumi.CustomResource):
-    condition: pulumi.Output[dict]
-    """
-    An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
-    Structure is documented below.
-
-      * `description` (`str`) - An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-      * `expression` (`str`) - Textual representation of an expression in Common Expression Language syntax.
-      * `title` (`str`) - A title for the expression, i.e. a short string describing its purpose.
-    """
-    crypto_key_id: pulumi.Output[str]
-    """
-    The crypto key ID, in the form
-    `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
-    `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
-    the provider's project setting will be used as a fallback.
-    """
-    etag: pulumi.Output[str]
-    """
-    (Computed) The etag of the project's IAM policy.
-    """
-    members: pulumi.Output[list]
-    role: pulumi.Output[str]
-    """
-    The role that should be applied. Note that custom roles must be of the format
-    `[projects|organizations]/{parent-name}/roles/{role-name}`.
-    """
-    def __init__(__self__, resource_name, opts=None, condition=None, crypto_key_id=None, members=None, role=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['CryptoKeyIAMBindingConditionArgs']]] = None,
+                 crypto_key_id: Optional[pulumi.Input[str]] = None,
+                 members: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 role: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Three different resources help you manage your IAM policy for KMS crypto key. Each of these resources serves a different use case:
 
@@ -56,7 +43,7 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[pulumi.InputType['CryptoKeyIAMBindingConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] crypto_key_id: The crypto key ID, in the form
                `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
@@ -64,12 +51,6 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
                the provider's project setting will be used as a fallback.
         :param pulumi.Input[str] role: The role that should be applied. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
-
-        The **condition** object supports the following:
-
-          * `description` (`pulumi.Input[str]`) - An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-          * `expression` (`pulumi.Input[str]`) - Textual representation of an expression in Common Expression Language syntax.
-          * `title` (`pulumi.Input[str]`) - A title for the expression, i.e. a short string describing its purpose.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -106,15 +87,22 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, condition=None, crypto_key_id=None, etag=None, members=None, role=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['CryptoKeyIAMBindingConditionArgs']]] = None,
+            crypto_key_id: Optional[pulumi.Input[str]] = None,
+            etag: Optional[pulumi.Input[str]] = None,
+            members: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            role: Optional[pulumi.Input[str]] = None) -> 'CryptoKeyIAMBinding':
         """
         Get an existing CryptoKeyIAMBinding resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[pulumi.InputType['CryptoKeyIAMBindingConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] crypto_key_id: The crypto key ID, in the form
                `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
@@ -123,12 +111,6 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
         :param pulumi.Input[str] etag: (Computed) The etag of the project's IAM policy.
         :param pulumi.Input[str] role: The role that should be applied. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
-
-        The **condition** object supports the following:
-
-          * `description` (`pulumi.Input[str]`) - An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-          * `expression` (`pulumi.Input[str]`) - Textual representation of an expression in Common Expression Language syntax.
-          * `title` (`pulumi.Input[str]`) - A title for the expression, i.e. a short string describing its purpose.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -141,8 +123,51 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
         __props__["role"] = role
         return CryptoKeyIAMBinding(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional['outputs.CryptoKeyIAMBindingCondition']:
+        """
+        An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter(name="cryptoKeyId")
+    def crypto_key_id(self) -> str:
+        """
+        The crypto key ID, in the form
+        `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
+        `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
+        the provider's project setting will be used as a fallback.
+        """
+        return pulumi.get(self, "crypto_key_id")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> str:
+        """
+        (Computed) The etag of the project's IAM policy.
+        """
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter
+    def members(self) -> List[str]:
+        return pulumi.get(self, "members")
+
+    @property
+    @pulumi.getter
+    def role(self) -> str:
+        """
+        The role that should be applied. Note that custom roles must be of the format
+        `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        """
+        return pulumi.get(self, "role")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+
