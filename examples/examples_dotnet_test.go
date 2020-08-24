@@ -4,7 +4,7 @@
 package examples
 
 import (
-	"path"
+	"path/filepath"
 	"testing"
 
 	"github.com/pulumi/pulumi/pkg/v2/testing/integration"
@@ -25,7 +25,7 @@ func getCSBaseOptions(t *testing.T) integration.ProgramTestOptions {
 func TestAccAppServiceCs(t *testing.T) {
 	test := getCSBaseOptions(t).
 		With(integration.ProgramTestOptions{
-			Dir: path.Join(getCwd(t), "serverless-cs"),
+			Dir: filepath.Join(getCwd(t), "serverless-cs"),
 			// One change is known to occur during refresh of the resources in this example:
 			// BucketObject has a source change
 			ExpectRefreshChanges: true,

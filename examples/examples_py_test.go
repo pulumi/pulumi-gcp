@@ -4,7 +4,6 @@
 package examples
 
 import (
-	"path"
 	"path/filepath"
 	"testing"
 
@@ -25,7 +24,7 @@ func getPythonBaseOptions(t *testing.T) integration.ProgramTestOptions {
 func TestAccDatasourcePy(t *testing.T) {
 	test := getPythonBaseOptions(t).
 		With(integration.ProgramTestOptions{
-			Dir:           path.Join(getCwd(t), "datasource-py"),
+			Dir:           filepath.Join(getCwd(t), "datasource-py"),
 			RunUpdateTest: true,
 		})
 
@@ -35,7 +34,7 @@ func TestAccDatasourcePy(t *testing.T) {
 func TestAccBucketPy(t *testing.T) {
 	test := getPythonBaseOptions(t).
 		With(integration.ProgramTestOptions{
-			Dir:           path.Join(getCwd(t), "bucket-py"),
+			Dir:           filepath.Join(getCwd(t), "bucket-py"),
 			RunUpdateTest: true,
 		})
 
@@ -45,8 +44,25 @@ func TestAccBucketPy(t *testing.T) {
 func TestAccMinimalPy(t *testing.T) {
 	test := getPythonBaseOptions(t).
 		With(integration.ProgramTestOptions{
-			Dir: path.Join(getCwd(t), "minimal-py"),
+			Dir: filepath.Join(getCwd(t), "minimal-py"),
 		})
 
 	integration.ProgramTest(t, &test)
+}
+
+func TestAccWebserver(t *testing.T) {
+	skipIfShort(t)
+	for _, dir := range []string{"webserver-py", "webserver-py-old"} {
+		t.Run(dir, func(t *testing.T) {
+			test := getPythonBaseOptions(t).
+				With(integration.ProgramTestOptions{
+					Dir: filepath.Join(getCwd(t), dir),
+					// TODO[pulumi/pulumi-gcp#414]: Set RunUpdateTest to true.
+					RunUpdateTest:        dir != "webserver-py",
+					ExpectRefreshChanges: true,
+				})
+
+			integration.ProgramTest(t, &test)
+		})
+	}
 }
