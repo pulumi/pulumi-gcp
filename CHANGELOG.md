@@ -2,10 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to Pulumi v2.9.0, which adds type annotations and input/output classes to Python
-* Upgrade to pulumi-terraform-bridge v2.7.1
+_(none)_
 
 ---
+
+## 3.20.0 (2020-08-24)
+* Upgrade to Pulumi v2.9.0, which adds type annotations and input/output classes to Python
+* Upgrade to pulumi-terraform-bridge v2.7.1
 
 ## 3.19.0 (2020-08-18)
 * Upgrade to v3.35.0 of the Google Beta Terraform Provider
