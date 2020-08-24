@@ -4,7 +4,7 @@
 package examples
 
 import (
-	"path"
+	"path/filepath"
 	"testing"
 
 	"github.com/pulumi/pulumi/pkg/v2/testing/integration"
@@ -26,7 +26,7 @@ func TestAccWebserver(t *testing.T) {
 	skipIfShort(t)
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
-			Dir: path.Join(getCwd(t), "webserver"),
+			Dir: filepath.Join(getCwd(t), "webserver"),
 			// TODO[pulumi/pulumi-terraform#241] This test currently triggers a bug in refresh, so we'll skip
 			// running the refresh step for now.
 			SkipRefresh:   true,
@@ -40,7 +40,7 @@ func TestAccLoadbalancer(t *testing.T) {
 	skipIfShort(t)
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
-			Dir: path.Join(getCwd(t), "loadbalancer"),
+			Dir: filepath.Join(getCwd(t), "loadbalancer"),
 			// TODO[pulumi/pulumi-terraform#241] This test currently triggers a bug in refresh, so we'll skip
 			// running the refresh step for now.
 			SkipRefresh:   true,
@@ -54,7 +54,7 @@ func TestAccLoadbalancer(t *testing.T) {
 func TestAccTopic(t *testing.T) {
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
-			Dir:           path.Join(getCwd(t), "topic"),
+			Dir:           filepath.Join(getCwd(t), "topic"),
 			RunUpdateTest: true,
 			// One change is known to occur during refresh of the resources in this example:
 			// * `~  gcp:storage:Bucket f-bucket updated changes: + websites`
@@ -67,7 +67,7 @@ func TestAccTopic(t *testing.T) {
 func TestAccBucket(t *testing.T) {
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
-			Dir:           path.Join(getCwd(t), "bucket"),
+			Dir:           filepath.Join(getCwd(t), "bucket"),
 			RunUpdateTest: true,
 			// One change is known to occur during refresh of the resources in this example:
 			// * `~  gcp:storage:Bucket f-bucket updated changes: + websites`
@@ -80,7 +80,7 @@ func TestAccBucket(t *testing.T) {
 func TestAccMinimal(t *testing.T) {
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
-			Dir: path.Join(getCwd(t), "minimal"),
+			Dir: filepath.Join(getCwd(t), "minimal"),
 		})
 
 	integration.ProgramTest(t, &test)
@@ -89,7 +89,7 @@ func TestAccMinimal(t *testing.T) {
 func TestAccServerless(t *testing.T) {
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
-			Dir:           path.Join(getCwd(t), "serverless"),
+			Dir:           filepath.Join(getCwd(t), "serverless"),
 			RunUpdateTest: true,
 			// One change is known to occur during refresh of the resources in this example:
 			// * `~  gcp:storage:Bucket f-bucket updated changes: + websites`
