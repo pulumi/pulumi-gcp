@@ -56,9 +56,8 @@ func TestAccWebserver(t *testing.T) {
 		t.Run(dir, func(t *testing.T) {
 			test := getPythonBaseOptions(t).
 				With(integration.ProgramTestOptions{
-					Dir: filepath.Join(getCwd(t), dir),
-					// TODO[pulumi/pulumi-gcp#414]: Set RunUpdateTest to true.
-					RunUpdateTest:        dir != "webserver-py",
+					Dir:                  filepath.Join(getCwd(t), dir),
+					RunUpdateTest:        true,
 					ExpectRefreshChanges: true,
 				})
 
