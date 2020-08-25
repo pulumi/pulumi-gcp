@@ -185,11 +185,33 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
 			// Access Context Manager
-			"google_access_context_manager_access_level":      {Tok: gcpResource(gcpAccessContextManager, "AccessLevel")},
-			"google_access_context_manager_access_policy":     {Tok: gcpResource(gcpAccessContextManager, "AccessPolicy")},
-			"google_access_context_manager_service_perimeter": {Tok: gcpResource(gcpAccessContextManager, "ServicePerimeter")},
+			"google_access_context_manager_access_level": {
+				Tok: gcpResource(gcpAccessContextManager, "AccessLevel"),
+			},
+			"google_access_context_manager_access_policy": {
+				Tok: gcpResource(gcpAccessContextManager, "AccessPolicy"),
+			},
+			"google_access_context_manager_service_perimeter": {
+				Tok: gcpResource(gcpAccessContextManager, "ServicePerimeter"),
+			},
 			"google_access_context_manager_service_perimeter_resource": {
 				Tok: gcpResource(gcpAccessContextManager, "ServicePerimeterResource"),
+			},
+			"google_access_context_manager_service_perimeters": {
+				Tok: gcpResource(gcpAccessContextManager, "ServicePerimeters"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"service_perimeters": {
+						CSharpName: "ServicePerimeterDetails",
+					},
+				},
+			},
+			"google_access_context_manager_access_levels": {
+				Tok: gcpResource(gcpAccessContextManager, "AccessLevels"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"access_levels": {
+						CSharpName: "AccessLevelDetails",
+					},
+				},
 			},
 
 			// AppEngine
@@ -233,6 +255,24 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: gcpResource(gcpBigQuery, "DatasetIamPolicy"),
 				Docs: &tfbridge.DocInfo{
 					Source: "bigquery_dataset_iam.html.markdown",
+				},
+			},
+			"google_bigquery_table_iam_policy": {
+				Tok: gcpResource(gcpBigQuery, "IamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "bigquery_table_iam.html.markdown",
+				},
+			},
+			"google_bigquery_table_iam_binding": {
+				Tok: gcpResource(gcpBigQuery, "IamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "bigquery_table_iam.html.markdown",
+				},
+			},
+			"google_bigquery_table_iam_member": {
+				Tok: gcpResource(gcpBigQuery, "IamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "bigquery_table_iam.html.markdown",
 				},
 			},
 
@@ -392,7 +432,8 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "google_folder_organization_policy.html.markdown",
 				},
 			},
-			"google_folder_iam_audit_config": {Tok: gcpResource(gcpFolder, "IamAuditConfig")},
+			"google_folder_iam_audit_config":         {Tok: gcpResource(gcpFolder, "IamAuditConfig")},
+			"google_folder_access_approval_settings": {Tok: gcpResource(gcpFolder, "AccessApprovalSettings")},
 
 			"google_organization_policy": {
 				Tok: gcpResource(gcpOrganization, "Policy"),
@@ -426,6 +467,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"google_organization_iam_audit_config": {
 				Tok: gcpResource(gcpOrganization, "IamAuditConfig"),
+			},
+			"google_organization_access_approval_settings": {
+				Tok: gcpResource(gcpOrganization, "AccessApprovalSettings"),
 			},
 			"google_project": {
 				Tok: gcpResource(gcpOrganization, "Project"),
@@ -485,6 +529,9 @@ func Provider() tfbridge.ProviderInfo {
 				Docs: &tfbridge.DocInfo{
 					Source: "google_project.html.markdown",
 				},
+			},
+			"google_project_access_approval_settings": {
+				Tok: gcpResource(gcpProject, "AccessApprovalSettings"),
 			},
 			"google_service_account": {
 				Tok: gcpResource(gcpServiceAccount, "Account"),
@@ -1544,7 +1591,8 @@ func Provider() tfbridge.ProviderInfo {
 			"google_cloud_asset_project_feed":      {Tok: gcpResource(gcpCloudAsset, "ProjectFeed")},
 
 			// ActiveDirectory
-			"google_active_directory_domain": {Tok: gcpResource(gcpActiveDirectory, "Domain")},
+			"google_active_directory_domain":       {Tok: gcpResource(gcpActiveDirectory, "Domain")},
+			"google_active_directory_domain_trust": {Tok: gcpResource(gcpActiveDirectory, "DomainTrust")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"google_billing_account": {

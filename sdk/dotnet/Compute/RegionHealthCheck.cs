@@ -53,6 +53,13 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// A nested object resource
+        /// Structure is documented below.
+        /// </summary>
+        [Output("grpcHealthCheck")]
+        public Output<Outputs.RegionHealthCheckGrpcHealthCheck?> GrpcHealthCheck { get; private set; } = null!;
+
+        /// <summary>
         /// A so-far unhealthy instance will be marked healthy after this many
         /// consecutive successes. The default value is 2.
         /// </summary>
@@ -214,6 +221,13 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// A nested object resource
+        /// Structure is documented below.
+        /// </summary>
+        [Input("grpcHealthCheck")]
+        public Input<Inputs.RegionHealthCheckGrpcHealthCheckArgs>? GrpcHealthCheck { get; set; }
+
+        /// <summary>
         /// A so-far unhealthy instance will be marked healthy after this many
         /// consecutive successes. The default value is 2.
         /// </summary>
@@ -328,6 +342,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// A nested object resource
+        /// Structure is documented below.
+        /// </summary>
+        [Input("grpcHealthCheck")]
+        public Input<Inputs.RegionHealthCheckGrpcHealthCheckGetArgs>? GrpcHealthCheck { get; set; }
 
         /// <summary>
         /// A so-far unhealthy instance will be marked healthy after this many

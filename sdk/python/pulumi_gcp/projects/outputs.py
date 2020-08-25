@@ -10,6 +10,7 @@ from .. import _utilities, _tables
 from . import outputs
 
 __all__ = [
+    'AccessApprovalSettingsEnrolledService',
     'IAMAuditConfigAuditLogConfig',
     'IAMBindingCondition',
     'IAMMemberCondition',
@@ -25,6 +26,29 @@ __all__ = [
     'GetOrganizationPolicyRestorePolicyResult',
     'GetProjectProjectResult',
 ]
+
+@pulumi.output_type
+class AccessApprovalSettingsEnrolledService(dict):
+    def __init__(__self__, *,
+                 cloud_product: str,
+                 enrollment_level: Optional[str] = None):
+        pulumi.set(__self__, "cloud_product", cloud_product)
+        if enrollment_level is not None:
+            pulumi.set(__self__, "enrollment_level", enrollment_level)
+
+    @property
+    @pulumi.getter(name="cloudProduct")
+    def cloud_product(self) -> str:
+        return pulumi.get(self, "cloud_product")
+
+    @property
+    @pulumi.getter(name="enrollmentLevel")
+    def enrollment_level(self) -> Optional[str]:
+        return pulumi.get(self, "enrollment_level")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
 
 @pulumi.output_type
 class IAMAuditConfigAuditLogConfig(dict):

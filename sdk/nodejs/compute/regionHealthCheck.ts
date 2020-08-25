@@ -70,6 +70,11 @@ export class RegionHealthCheck extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * A nested object resource
+     * Structure is documented below.
+     */
+    public readonly grpcHealthCheck!: pulumi.Output<outputs.compute.RegionHealthCheckGrpcHealthCheck | undefined>;
+    /**
      * A so-far unhealthy instance will be marked healthy after this many
      * consecutive successes. The default value is 2.
      */
@@ -158,6 +163,7 @@ export class RegionHealthCheck extends pulumi.CustomResource {
             inputs["checkIntervalSec"] = state ? state.checkIntervalSec : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["grpcHealthCheck"] = state ? state.grpcHealthCheck : undefined;
             inputs["healthyThreshold"] = state ? state.healthyThreshold : undefined;
             inputs["http2HealthCheck"] = state ? state.http2HealthCheck : undefined;
             inputs["httpHealthCheck"] = state ? state.httpHealthCheck : undefined;
@@ -176,6 +182,7 @@ export class RegionHealthCheck extends pulumi.CustomResource {
             const args = argsOrState as RegionHealthCheckArgs | undefined;
             inputs["checkIntervalSec"] = args ? args.checkIntervalSec : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["grpcHealthCheck"] = args ? args.grpcHealthCheck : undefined;
             inputs["healthyThreshold"] = args ? args.healthyThreshold : undefined;
             inputs["http2HealthCheck"] = args ? args.http2HealthCheck : undefined;
             inputs["httpHealthCheck"] = args ? args.httpHealthCheck : undefined;
@@ -221,6 +228,11 @@ export interface RegionHealthCheckState {
      * you create the resource.
      */
     readonly description?: pulumi.Input<string>;
+    /**
+     * A nested object resource
+     * Structure is documented below.
+     */
+    readonly grpcHealthCheck?: pulumi.Input<inputs.compute.RegionHealthCheckGrpcHealthCheck>;
     /**
      * A so-far unhealthy instance will be marked healthy after this many
      * consecutive successes. The default value is 2.
@@ -310,6 +322,11 @@ export interface RegionHealthCheckArgs {
      * you create the resource.
      */
     readonly description?: pulumi.Input<string>;
+    /**
+     * A nested object resource
+     * Structure is documented below.
+     */
+    readonly grpcHealthCheck?: pulumi.Input<inputs.compute.RegionHealthCheckGrpcHealthCheck>;
     /**
      * A so-far unhealthy instance will be marked healthy after this many
      * consecutive successes. The default value is 2.

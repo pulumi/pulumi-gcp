@@ -1110,6 +1110,1260 @@ func (o AccessLevelCustomExprPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type AccessLevelsAccessLevel struct {
+	// A set of predefined conditions for the access level and a combining function.
+	// Structure is documented below.
+	Basic *AccessLevelsAccessLevelBasic `pulumi:"basic"`
+	// Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
+	// See CEL spec at: https://github.com/google/cel-spec.
+	// Structure is documented below.
+	Custom *AccessLevelsAccessLevelCustom `pulumi:"custom"`
+	// Description of the expression
+	Description *string `pulumi:"description"`
+	// Resource name for the Access Level. The shortName component must begin
+	// with a letter and only include alphanumeric and '_'.
+	// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
+	Name string `pulumi:"name"`
+	// Title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
+}
+
+// AccessLevelsAccessLevelInput is an input type that accepts AccessLevelsAccessLevelArgs and AccessLevelsAccessLevelOutput values.
+// You can construct a concrete instance of `AccessLevelsAccessLevelInput` via:
+//
+//          AccessLevelsAccessLevelArgs{...}
+type AccessLevelsAccessLevelInput interface {
+	pulumi.Input
+
+	ToAccessLevelsAccessLevelOutput() AccessLevelsAccessLevelOutput
+	ToAccessLevelsAccessLevelOutputWithContext(context.Context) AccessLevelsAccessLevelOutput
+}
+
+type AccessLevelsAccessLevelArgs struct {
+	// A set of predefined conditions for the access level and a combining function.
+	// Structure is documented below.
+	Basic AccessLevelsAccessLevelBasicPtrInput `pulumi:"basic"`
+	// Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
+	// See CEL spec at: https://github.com/google/cel-spec.
+	// Structure is documented below.
+	Custom AccessLevelsAccessLevelCustomPtrInput `pulumi:"custom"`
+	// Description of the expression
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Resource name for the Access Level. The shortName component must begin
+	// with a letter and only include alphanumeric and '_'.
+	// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
+	Name pulumi.StringInput `pulumi:"name"`
+	// Title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (AccessLevelsAccessLevelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessLevelsAccessLevel)(nil)).Elem()
+}
+
+func (i AccessLevelsAccessLevelArgs) ToAccessLevelsAccessLevelOutput() AccessLevelsAccessLevelOutput {
+	return i.ToAccessLevelsAccessLevelOutputWithContext(context.Background())
+}
+
+func (i AccessLevelsAccessLevelArgs) ToAccessLevelsAccessLevelOutputWithContext(ctx context.Context) AccessLevelsAccessLevelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelsAccessLevelOutput)
+}
+
+// AccessLevelsAccessLevelArrayInput is an input type that accepts AccessLevelsAccessLevelArray and AccessLevelsAccessLevelArrayOutput values.
+// You can construct a concrete instance of `AccessLevelsAccessLevelArrayInput` via:
+//
+//          AccessLevelsAccessLevelArray{ AccessLevelsAccessLevelArgs{...} }
+type AccessLevelsAccessLevelArrayInput interface {
+	pulumi.Input
+
+	ToAccessLevelsAccessLevelArrayOutput() AccessLevelsAccessLevelArrayOutput
+	ToAccessLevelsAccessLevelArrayOutputWithContext(context.Context) AccessLevelsAccessLevelArrayOutput
+}
+
+type AccessLevelsAccessLevelArray []AccessLevelsAccessLevelInput
+
+func (AccessLevelsAccessLevelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessLevelsAccessLevel)(nil)).Elem()
+}
+
+func (i AccessLevelsAccessLevelArray) ToAccessLevelsAccessLevelArrayOutput() AccessLevelsAccessLevelArrayOutput {
+	return i.ToAccessLevelsAccessLevelArrayOutputWithContext(context.Background())
+}
+
+func (i AccessLevelsAccessLevelArray) ToAccessLevelsAccessLevelArrayOutputWithContext(ctx context.Context) AccessLevelsAccessLevelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelsAccessLevelArrayOutput)
+}
+
+type AccessLevelsAccessLevelOutput struct{ *pulumi.OutputState }
+
+func (AccessLevelsAccessLevelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessLevelsAccessLevel)(nil)).Elem()
+}
+
+func (o AccessLevelsAccessLevelOutput) ToAccessLevelsAccessLevelOutput() AccessLevelsAccessLevelOutput {
+	return o
+}
+
+func (o AccessLevelsAccessLevelOutput) ToAccessLevelsAccessLevelOutputWithContext(ctx context.Context) AccessLevelsAccessLevelOutput {
+	return o
+}
+
+// A set of predefined conditions for the access level and a combining function.
+// Structure is documented below.
+func (o AccessLevelsAccessLevelOutput) Basic() AccessLevelsAccessLevelBasicPtrOutput {
+	return o.ApplyT(func(v AccessLevelsAccessLevel) *AccessLevelsAccessLevelBasic { return v.Basic }).(AccessLevelsAccessLevelBasicPtrOutput)
+}
+
+// Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
+// See CEL spec at: https://github.com/google/cel-spec.
+// Structure is documented below.
+func (o AccessLevelsAccessLevelOutput) Custom() AccessLevelsAccessLevelCustomPtrOutput {
+	return o.ApplyT(func(v AccessLevelsAccessLevel) *AccessLevelsAccessLevelCustom { return v.Custom }).(AccessLevelsAccessLevelCustomPtrOutput)
+}
+
+// Description of the expression
+func (o AccessLevelsAccessLevelOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessLevelsAccessLevel) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Resource name for the Access Level. The shortName component must begin
+// with a letter and only include alphanumeric and '_'.
+// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
+func (o AccessLevelsAccessLevelOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessLevelsAccessLevel) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Title for the expression, i.e. a short string describing its purpose.
+func (o AccessLevelsAccessLevelOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessLevelsAccessLevel) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type AccessLevelsAccessLevelArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessLevelsAccessLevelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessLevelsAccessLevel)(nil)).Elem()
+}
+
+func (o AccessLevelsAccessLevelArrayOutput) ToAccessLevelsAccessLevelArrayOutput() AccessLevelsAccessLevelArrayOutput {
+	return o
+}
+
+func (o AccessLevelsAccessLevelArrayOutput) ToAccessLevelsAccessLevelArrayOutputWithContext(ctx context.Context) AccessLevelsAccessLevelArrayOutput {
+	return o
+}
+
+func (o AccessLevelsAccessLevelArrayOutput) Index(i pulumi.IntInput) AccessLevelsAccessLevelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessLevelsAccessLevel {
+		return vs[0].([]AccessLevelsAccessLevel)[vs[1].(int)]
+	}).(AccessLevelsAccessLevelOutput)
+}
+
+type AccessLevelsAccessLevelBasic struct {
+	// How the conditions list should be combined to determine if a request
+	// is granted this AccessLevel. If AND is used, each Condition in
+	// conditions must be satisfied for the AccessLevel to be applied. If
+	// OR is used, at least one Condition in conditions must be satisfied
+	// for the AccessLevel to be applied.
+	// Default value is `AND`.
+	// Possible values are `AND` and `OR`.
+	CombiningFunction *string `pulumi:"combiningFunction"`
+	// A set of requirements for the AccessLevel to be granted.
+	// Structure is documented below.
+	Conditions []AccessLevelsAccessLevelBasicCondition `pulumi:"conditions"`
+}
+
+// AccessLevelsAccessLevelBasicInput is an input type that accepts AccessLevelsAccessLevelBasicArgs and AccessLevelsAccessLevelBasicOutput values.
+// You can construct a concrete instance of `AccessLevelsAccessLevelBasicInput` via:
+//
+//          AccessLevelsAccessLevelBasicArgs{...}
+type AccessLevelsAccessLevelBasicInput interface {
+	pulumi.Input
+
+	ToAccessLevelsAccessLevelBasicOutput() AccessLevelsAccessLevelBasicOutput
+	ToAccessLevelsAccessLevelBasicOutputWithContext(context.Context) AccessLevelsAccessLevelBasicOutput
+}
+
+type AccessLevelsAccessLevelBasicArgs struct {
+	// How the conditions list should be combined to determine if a request
+	// is granted this AccessLevel. If AND is used, each Condition in
+	// conditions must be satisfied for the AccessLevel to be applied. If
+	// OR is used, at least one Condition in conditions must be satisfied
+	// for the AccessLevel to be applied.
+	// Default value is `AND`.
+	// Possible values are `AND` and `OR`.
+	CombiningFunction pulumi.StringPtrInput `pulumi:"combiningFunction"`
+	// A set of requirements for the AccessLevel to be granted.
+	// Structure is documented below.
+	Conditions AccessLevelsAccessLevelBasicConditionArrayInput `pulumi:"conditions"`
+}
+
+func (AccessLevelsAccessLevelBasicArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessLevelsAccessLevelBasic)(nil)).Elem()
+}
+
+func (i AccessLevelsAccessLevelBasicArgs) ToAccessLevelsAccessLevelBasicOutput() AccessLevelsAccessLevelBasicOutput {
+	return i.ToAccessLevelsAccessLevelBasicOutputWithContext(context.Background())
+}
+
+func (i AccessLevelsAccessLevelBasicArgs) ToAccessLevelsAccessLevelBasicOutputWithContext(ctx context.Context) AccessLevelsAccessLevelBasicOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelsAccessLevelBasicOutput)
+}
+
+func (i AccessLevelsAccessLevelBasicArgs) ToAccessLevelsAccessLevelBasicPtrOutput() AccessLevelsAccessLevelBasicPtrOutput {
+	return i.ToAccessLevelsAccessLevelBasicPtrOutputWithContext(context.Background())
+}
+
+func (i AccessLevelsAccessLevelBasicArgs) ToAccessLevelsAccessLevelBasicPtrOutputWithContext(ctx context.Context) AccessLevelsAccessLevelBasicPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelsAccessLevelBasicOutput).ToAccessLevelsAccessLevelBasicPtrOutputWithContext(ctx)
+}
+
+// AccessLevelsAccessLevelBasicPtrInput is an input type that accepts AccessLevelsAccessLevelBasicArgs, AccessLevelsAccessLevelBasicPtr and AccessLevelsAccessLevelBasicPtrOutput values.
+// You can construct a concrete instance of `AccessLevelsAccessLevelBasicPtrInput` via:
+//
+//          AccessLevelsAccessLevelBasicArgs{...}
+//
+//  or:
+//
+//          nil
+type AccessLevelsAccessLevelBasicPtrInput interface {
+	pulumi.Input
+
+	ToAccessLevelsAccessLevelBasicPtrOutput() AccessLevelsAccessLevelBasicPtrOutput
+	ToAccessLevelsAccessLevelBasicPtrOutputWithContext(context.Context) AccessLevelsAccessLevelBasicPtrOutput
+}
+
+type accessLevelsAccessLevelBasicPtrType AccessLevelsAccessLevelBasicArgs
+
+func AccessLevelsAccessLevelBasicPtr(v *AccessLevelsAccessLevelBasicArgs) AccessLevelsAccessLevelBasicPtrInput {
+	return (*accessLevelsAccessLevelBasicPtrType)(v)
+}
+
+func (*accessLevelsAccessLevelBasicPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessLevelsAccessLevelBasic)(nil)).Elem()
+}
+
+func (i *accessLevelsAccessLevelBasicPtrType) ToAccessLevelsAccessLevelBasicPtrOutput() AccessLevelsAccessLevelBasicPtrOutput {
+	return i.ToAccessLevelsAccessLevelBasicPtrOutputWithContext(context.Background())
+}
+
+func (i *accessLevelsAccessLevelBasicPtrType) ToAccessLevelsAccessLevelBasicPtrOutputWithContext(ctx context.Context) AccessLevelsAccessLevelBasicPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelsAccessLevelBasicPtrOutput)
+}
+
+type AccessLevelsAccessLevelBasicOutput struct{ *pulumi.OutputState }
+
+func (AccessLevelsAccessLevelBasicOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessLevelsAccessLevelBasic)(nil)).Elem()
+}
+
+func (o AccessLevelsAccessLevelBasicOutput) ToAccessLevelsAccessLevelBasicOutput() AccessLevelsAccessLevelBasicOutput {
+	return o
+}
+
+func (o AccessLevelsAccessLevelBasicOutput) ToAccessLevelsAccessLevelBasicOutputWithContext(ctx context.Context) AccessLevelsAccessLevelBasicOutput {
+	return o
+}
+
+func (o AccessLevelsAccessLevelBasicOutput) ToAccessLevelsAccessLevelBasicPtrOutput() AccessLevelsAccessLevelBasicPtrOutput {
+	return o.ToAccessLevelsAccessLevelBasicPtrOutputWithContext(context.Background())
+}
+
+func (o AccessLevelsAccessLevelBasicOutput) ToAccessLevelsAccessLevelBasicPtrOutputWithContext(ctx context.Context) AccessLevelsAccessLevelBasicPtrOutput {
+	return o.ApplyT(func(v AccessLevelsAccessLevelBasic) *AccessLevelsAccessLevelBasic {
+		return &v
+	}).(AccessLevelsAccessLevelBasicPtrOutput)
+}
+
+// How the conditions list should be combined to determine if a request
+// is granted this AccessLevel. If AND is used, each Condition in
+// conditions must be satisfied for the AccessLevel to be applied. If
+// OR is used, at least one Condition in conditions must be satisfied
+// for the AccessLevel to be applied.
+// Default value is `AND`.
+// Possible values are `AND` and `OR`.
+func (o AccessLevelsAccessLevelBasicOutput) CombiningFunction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessLevelsAccessLevelBasic) *string { return v.CombiningFunction }).(pulumi.StringPtrOutput)
+}
+
+// A set of requirements for the AccessLevel to be granted.
+// Structure is documented below.
+func (o AccessLevelsAccessLevelBasicOutput) Conditions() AccessLevelsAccessLevelBasicConditionArrayOutput {
+	return o.ApplyT(func(v AccessLevelsAccessLevelBasic) []AccessLevelsAccessLevelBasicCondition { return v.Conditions }).(AccessLevelsAccessLevelBasicConditionArrayOutput)
+}
+
+type AccessLevelsAccessLevelBasicPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessLevelsAccessLevelBasicPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessLevelsAccessLevelBasic)(nil)).Elem()
+}
+
+func (o AccessLevelsAccessLevelBasicPtrOutput) ToAccessLevelsAccessLevelBasicPtrOutput() AccessLevelsAccessLevelBasicPtrOutput {
+	return o
+}
+
+func (o AccessLevelsAccessLevelBasicPtrOutput) ToAccessLevelsAccessLevelBasicPtrOutputWithContext(ctx context.Context) AccessLevelsAccessLevelBasicPtrOutput {
+	return o
+}
+
+func (o AccessLevelsAccessLevelBasicPtrOutput) Elem() AccessLevelsAccessLevelBasicOutput {
+	return o.ApplyT(func(v *AccessLevelsAccessLevelBasic) AccessLevelsAccessLevelBasic { return *v }).(AccessLevelsAccessLevelBasicOutput)
+}
+
+// How the conditions list should be combined to determine if a request
+// is granted this AccessLevel. If AND is used, each Condition in
+// conditions must be satisfied for the AccessLevel to be applied. If
+// OR is used, at least one Condition in conditions must be satisfied
+// for the AccessLevel to be applied.
+// Default value is `AND`.
+// Possible values are `AND` and `OR`.
+func (o AccessLevelsAccessLevelBasicPtrOutput) CombiningFunction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessLevelsAccessLevelBasic) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CombiningFunction
+	}).(pulumi.StringPtrOutput)
+}
+
+// A set of requirements for the AccessLevel to be granted.
+// Structure is documented below.
+func (o AccessLevelsAccessLevelBasicPtrOutput) Conditions() AccessLevelsAccessLevelBasicConditionArrayOutput {
+	return o.ApplyT(func(v *AccessLevelsAccessLevelBasic) []AccessLevelsAccessLevelBasicCondition {
+		if v == nil {
+			return nil
+		}
+		return v.Conditions
+	}).(AccessLevelsAccessLevelBasicConditionArrayOutput)
+}
+
+type AccessLevelsAccessLevelBasicCondition struct {
+	// Device specific restrictions, all restrictions must hold for
+	// the Condition to be true. If not specified, all devices are
+	// allowed.
+	// Structure is documented below.
+	DevicePolicy *AccessLevelsAccessLevelBasicConditionDevicePolicy `pulumi:"devicePolicy"`
+	// A list of CIDR block IP subnetwork specification. May be IPv4
+	// or IPv6.
+	// Note that for a CIDR IP address block, the specified IP address
+	// portion must be properly truncated (i.e. all the host bits must
+	// be zero) or the input is considered malformed. For example,
+	// "192.0.2.0/24" is accepted but "192.0.2.1/24" is not. Similarly,
+	// for IPv6, "2001:db8::/32" is accepted whereas "2001:db8::1/32"
+	// is not. The originating IP of a request must be in one of the
+	// listed subnets in order for this Condition to be true.
+	// If empty, all IP addresses are allowed.
+	IpSubnetworks []string `pulumi:"ipSubnetworks"`
+	// An allowed list of members (users, service accounts).
+	// Using groups is not supported yet.
+	// The signed-in user originating the request must be a part of one
+	// of the provided members. If not specified, a request may come
+	// from any user (logged in/not logged in, not present in any
+	// groups, etc.).
+	// Formats: `user:{emailid}`, `serviceAccount:{emailid}`
+	Members []string `pulumi:"members"`
+	// Whether to negate the Condition. If true, the Condition becomes
+	// a NAND over its non-empty fields, each field must be false for
+	// the Condition overall to be satisfied. Defaults to false.
+	Negate *bool `pulumi:"negate"`
+	// The request must originate from one of the provided
+	// countries/regions.
+	// Format: A valid ISO 3166-1 alpha-2 code.
+	Regions []string `pulumi:"regions"`
+	// A list of other access levels defined in the same Policy,
+	// referenced by resource name. Referencing an AccessLevel which
+	// does not exist is an error. All access levels listed must be
+	// granted for the Condition to be true.
+	// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
+	RequiredAccessLevels []string `pulumi:"requiredAccessLevels"`
+}
+
+// AccessLevelsAccessLevelBasicConditionInput is an input type that accepts AccessLevelsAccessLevelBasicConditionArgs and AccessLevelsAccessLevelBasicConditionOutput values.
+// You can construct a concrete instance of `AccessLevelsAccessLevelBasicConditionInput` via:
+//
+//          AccessLevelsAccessLevelBasicConditionArgs{...}
+type AccessLevelsAccessLevelBasicConditionInput interface {
+	pulumi.Input
+
+	ToAccessLevelsAccessLevelBasicConditionOutput() AccessLevelsAccessLevelBasicConditionOutput
+	ToAccessLevelsAccessLevelBasicConditionOutputWithContext(context.Context) AccessLevelsAccessLevelBasicConditionOutput
+}
+
+type AccessLevelsAccessLevelBasicConditionArgs struct {
+	// Device specific restrictions, all restrictions must hold for
+	// the Condition to be true. If not specified, all devices are
+	// allowed.
+	// Structure is documented below.
+	DevicePolicy AccessLevelsAccessLevelBasicConditionDevicePolicyPtrInput `pulumi:"devicePolicy"`
+	// A list of CIDR block IP subnetwork specification. May be IPv4
+	// or IPv6.
+	// Note that for a CIDR IP address block, the specified IP address
+	// portion must be properly truncated (i.e. all the host bits must
+	// be zero) or the input is considered malformed. For example,
+	// "192.0.2.0/24" is accepted but "192.0.2.1/24" is not. Similarly,
+	// for IPv6, "2001:db8::/32" is accepted whereas "2001:db8::1/32"
+	// is not. The originating IP of a request must be in one of the
+	// listed subnets in order for this Condition to be true.
+	// If empty, all IP addresses are allowed.
+	IpSubnetworks pulumi.StringArrayInput `pulumi:"ipSubnetworks"`
+	// An allowed list of members (users, service accounts).
+	// Using groups is not supported yet.
+	// The signed-in user originating the request must be a part of one
+	// of the provided members. If not specified, a request may come
+	// from any user (logged in/not logged in, not present in any
+	// groups, etc.).
+	// Formats: `user:{emailid}`, `serviceAccount:{emailid}`
+	Members pulumi.StringArrayInput `pulumi:"members"`
+	// Whether to negate the Condition. If true, the Condition becomes
+	// a NAND over its non-empty fields, each field must be false for
+	// the Condition overall to be satisfied. Defaults to false.
+	Negate pulumi.BoolPtrInput `pulumi:"negate"`
+	// The request must originate from one of the provided
+	// countries/regions.
+	// Format: A valid ISO 3166-1 alpha-2 code.
+	Regions pulumi.StringArrayInput `pulumi:"regions"`
+	// A list of other access levels defined in the same Policy,
+	// referenced by resource name. Referencing an AccessLevel which
+	// does not exist is an error. All access levels listed must be
+	// granted for the Condition to be true.
+	// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
+	RequiredAccessLevels pulumi.StringArrayInput `pulumi:"requiredAccessLevels"`
+}
+
+func (AccessLevelsAccessLevelBasicConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessLevelsAccessLevelBasicCondition)(nil)).Elem()
+}
+
+func (i AccessLevelsAccessLevelBasicConditionArgs) ToAccessLevelsAccessLevelBasicConditionOutput() AccessLevelsAccessLevelBasicConditionOutput {
+	return i.ToAccessLevelsAccessLevelBasicConditionOutputWithContext(context.Background())
+}
+
+func (i AccessLevelsAccessLevelBasicConditionArgs) ToAccessLevelsAccessLevelBasicConditionOutputWithContext(ctx context.Context) AccessLevelsAccessLevelBasicConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelsAccessLevelBasicConditionOutput)
+}
+
+// AccessLevelsAccessLevelBasicConditionArrayInput is an input type that accepts AccessLevelsAccessLevelBasicConditionArray and AccessLevelsAccessLevelBasicConditionArrayOutput values.
+// You can construct a concrete instance of `AccessLevelsAccessLevelBasicConditionArrayInput` via:
+//
+//          AccessLevelsAccessLevelBasicConditionArray{ AccessLevelsAccessLevelBasicConditionArgs{...} }
+type AccessLevelsAccessLevelBasicConditionArrayInput interface {
+	pulumi.Input
+
+	ToAccessLevelsAccessLevelBasicConditionArrayOutput() AccessLevelsAccessLevelBasicConditionArrayOutput
+	ToAccessLevelsAccessLevelBasicConditionArrayOutputWithContext(context.Context) AccessLevelsAccessLevelBasicConditionArrayOutput
+}
+
+type AccessLevelsAccessLevelBasicConditionArray []AccessLevelsAccessLevelBasicConditionInput
+
+func (AccessLevelsAccessLevelBasicConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessLevelsAccessLevelBasicCondition)(nil)).Elem()
+}
+
+func (i AccessLevelsAccessLevelBasicConditionArray) ToAccessLevelsAccessLevelBasicConditionArrayOutput() AccessLevelsAccessLevelBasicConditionArrayOutput {
+	return i.ToAccessLevelsAccessLevelBasicConditionArrayOutputWithContext(context.Background())
+}
+
+func (i AccessLevelsAccessLevelBasicConditionArray) ToAccessLevelsAccessLevelBasicConditionArrayOutputWithContext(ctx context.Context) AccessLevelsAccessLevelBasicConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelsAccessLevelBasicConditionArrayOutput)
+}
+
+type AccessLevelsAccessLevelBasicConditionOutput struct{ *pulumi.OutputState }
+
+func (AccessLevelsAccessLevelBasicConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessLevelsAccessLevelBasicCondition)(nil)).Elem()
+}
+
+func (o AccessLevelsAccessLevelBasicConditionOutput) ToAccessLevelsAccessLevelBasicConditionOutput() AccessLevelsAccessLevelBasicConditionOutput {
+	return o
+}
+
+func (o AccessLevelsAccessLevelBasicConditionOutput) ToAccessLevelsAccessLevelBasicConditionOutputWithContext(ctx context.Context) AccessLevelsAccessLevelBasicConditionOutput {
+	return o
+}
+
+// Device specific restrictions, all restrictions must hold for
+// the Condition to be true. If not specified, all devices are
+// allowed.
+// Structure is documented below.
+func (o AccessLevelsAccessLevelBasicConditionOutput) DevicePolicy() AccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput {
+	return o.ApplyT(func(v AccessLevelsAccessLevelBasicCondition) *AccessLevelsAccessLevelBasicConditionDevicePolicy {
+		return v.DevicePolicy
+	}).(AccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput)
+}
+
+// A list of CIDR block IP subnetwork specification. May be IPv4
+// or IPv6.
+// Note that for a CIDR IP address block, the specified IP address
+// portion must be properly truncated (i.e. all the host bits must
+// be zero) or the input is considered malformed. For example,
+// "192.0.2.0/24" is accepted but "192.0.2.1/24" is not. Similarly,
+// for IPv6, "2001:db8::/32" is accepted whereas "2001:db8::1/32"
+// is not. The originating IP of a request must be in one of the
+// listed subnets in order for this Condition to be true.
+// If empty, all IP addresses are allowed.
+func (o AccessLevelsAccessLevelBasicConditionOutput) IpSubnetworks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessLevelsAccessLevelBasicCondition) []string { return v.IpSubnetworks }).(pulumi.StringArrayOutput)
+}
+
+// An allowed list of members (users, service accounts).
+// Using groups is not supported yet.
+// The signed-in user originating the request must be a part of one
+// of the provided members. If not specified, a request may come
+// from any user (logged in/not logged in, not present in any
+// groups, etc.).
+// Formats: `user:{emailid}`, `serviceAccount:{emailid}`
+func (o AccessLevelsAccessLevelBasicConditionOutput) Members() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessLevelsAccessLevelBasicCondition) []string { return v.Members }).(pulumi.StringArrayOutput)
+}
+
+// Whether to negate the Condition. If true, the Condition becomes
+// a NAND over its non-empty fields, each field must be false for
+// the Condition overall to be satisfied. Defaults to false.
+func (o AccessLevelsAccessLevelBasicConditionOutput) Negate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessLevelsAccessLevelBasicCondition) *bool { return v.Negate }).(pulumi.BoolPtrOutput)
+}
+
+// The request must originate from one of the provided
+// countries/regions.
+// Format: A valid ISO 3166-1 alpha-2 code.
+func (o AccessLevelsAccessLevelBasicConditionOutput) Regions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessLevelsAccessLevelBasicCondition) []string { return v.Regions }).(pulumi.StringArrayOutput)
+}
+
+// A list of other access levels defined in the same Policy,
+// referenced by resource name. Referencing an AccessLevel which
+// does not exist is an error. All access levels listed must be
+// granted for the Condition to be true.
+// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
+func (o AccessLevelsAccessLevelBasicConditionOutput) RequiredAccessLevels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessLevelsAccessLevelBasicCondition) []string { return v.RequiredAccessLevels }).(pulumi.StringArrayOutput)
+}
+
+type AccessLevelsAccessLevelBasicConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessLevelsAccessLevelBasicConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessLevelsAccessLevelBasicCondition)(nil)).Elem()
+}
+
+func (o AccessLevelsAccessLevelBasicConditionArrayOutput) ToAccessLevelsAccessLevelBasicConditionArrayOutput() AccessLevelsAccessLevelBasicConditionArrayOutput {
+	return o
+}
+
+func (o AccessLevelsAccessLevelBasicConditionArrayOutput) ToAccessLevelsAccessLevelBasicConditionArrayOutputWithContext(ctx context.Context) AccessLevelsAccessLevelBasicConditionArrayOutput {
+	return o
+}
+
+func (o AccessLevelsAccessLevelBasicConditionArrayOutput) Index(i pulumi.IntInput) AccessLevelsAccessLevelBasicConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessLevelsAccessLevelBasicCondition {
+		return vs[0].([]AccessLevelsAccessLevelBasicCondition)[vs[1].(int)]
+	}).(AccessLevelsAccessLevelBasicConditionOutput)
+}
+
+type AccessLevelsAccessLevelBasicConditionDevicePolicy struct {
+	// A list of allowed device management levels.
+	// An empty list allows all management levels.
+	// Each value may be one of `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, and `COMPLETE`.
+	AllowedDeviceManagementLevels []string `pulumi:"allowedDeviceManagementLevels"`
+	// A list of allowed encryptions statuses.
+	// An empty list allows all statuses.
+	// Each value may be one of `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, and `ENCRYPTED`.
+	AllowedEncryptionStatuses []string `pulumi:"allowedEncryptionStatuses"`
+	// A list of allowed OS versions.
+	// An empty list allows all types and all versions.
+	// Structure is documented below.
+	OsConstraints []AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint `pulumi:"osConstraints"`
+	// Whether the device needs to be approved by the customer admin.
+	RequireAdminApproval *bool `pulumi:"requireAdminApproval"`
+	// Whether the device needs to be corp owned.
+	RequireCorpOwned *bool `pulumi:"requireCorpOwned"`
+	// Whether or not screenlock is required for the DevicePolicy
+	// to be true. Defaults to false.
+	RequireScreenLock *bool `pulumi:"requireScreenLock"`
+}
+
+// AccessLevelsAccessLevelBasicConditionDevicePolicyInput is an input type that accepts AccessLevelsAccessLevelBasicConditionDevicePolicyArgs and AccessLevelsAccessLevelBasicConditionDevicePolicyOutput values.
+// You can construct a concrete instance of `AccessLevelsAccessLevelBasicConditionDevicePolicyInput` via:
+//
+//          AccessLevelsAccessLevelBasicConditionDevicePolicyArgs{...}
+type AccessLevelsAccessLevelBasicConditionDevicePolicyInput interface {
+	pulumi.Input
+
+	ToAccessLevelsAccessLevelBasicConditionDevicePolicyOutput() AccessLevelsAccessLevelBasicConditionDevicePolicyOutput
+	ToAccessLevelsAccessLevelBasicConditionDevicePolicyOutputWithContext(context.Context) AccessLevelsAccessLevelBasicConditionDevicePolicyOutput
+}
+
+type AccessLevelsAccessLevelBasicConditionDevicePolicyArgs struct {
+	// A list of allowed device management levels.
+	// An empty list allows all management levels.
+	// Each value may be one of `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, and `COMPLETE`.
+	AllowedDeviceManagementLevels pulumi.StringArrayInput `pulumi:"allowedDeviceManagementLevels"`
+	// A list of allowed encryptions statuses.
+	// An empty list allows all statuses.
+	// Each value may be one of `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, and `ENCRYPTED`.
+	AllowedEncryptionStatuses pulumi.StringArrayInput `pulumi:"allowedEncryptionStatuses"`
+	// A list of allowed OS versions.
+	// An empty list allows all types and all versions.
+	// Structure is documented below.
+	OsConstraints AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrayInput `pulumi:"osConstraints"`
+	// Whether the device needs to be approved by the customer admin.
+	RequireAdminApproval pulumi.BoolPtrInput `pulumi:"requireAdminApproval"`
+	// Whether the device needs to be corp owned.
+	RequireCorpOwned pulumi.BoolPtrInput `pulumi:"requireCorpOwned"`
+	// Whether or not screenlock is required for the DevicePolicy
+	// to be true. Defaults to false.
+	RequireScreenLock pulumi.BoolPtrInput `pulumi:"requireScreenLock"`
+}
+
+func (AccessLevelsAccessLevelBasicConditionDevicePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessLevelsAccessLevelBasicConditionDevicePolicy)(nil)).Elem()
+}
+
+func (i AccessLevelsAccessLevelBasicConditionDevicePolicyArgs) ToAccessLevelsAccessLevelBasicConditionDevicePolicyOutput() AccessLevelsAccessLevelBasicConditionDevicePolicyOutput {
+	return i.ToAccessLevelsAccessLevelBasicConditionDevicePolicyOutputWithContext(context.Background())
+}
+
+func (i AccessLevelsAccessLevelBasicConditionDevicePolicyArgs) ToAccessLevelsAccessLevelBasicConditionDevicePolicyOutputWithContext(ctx context.Context) AccessLevelsAccessLevelBasicConditionDevicePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelsAccessLevelBasicConditionDevicePolicyOutput)
+}
+
+func (i AccessLevelsAccessLevelBasicConditionDevicePolicyArgs) ToAccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput() AccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput {
+	return i.ToAccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i AccessLevelsAccessLevelBasicConditionDevicePolicyArgs) ToAccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutputWithContext(ctx context.Context) AccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelsAccessLevelBasicConditionDevicePolicyOutput).ToAccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutputWithContext(ctx)
+}
+
+// AccessLevelsAccessLevelBasicConditionDevicePolicyPtrInput is an input type that accepts AccessLevelsAccessLevelBasicConditionDevicePolicyArgs, AccessLevelsAccessLevelBasicConditionDevicePolicyPtr and AccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput values.
+// You can construct a concrete instance of `AccessLevelsAccessLevelBasicConditionDevicePolicyPtrInput` via:
+//
+//          AccessLevelsAccessLevelBasicConditionDevicePolicyArgs{...}
+//
+//  or:
+//
+//          nil
+type AccessLevelsAccessLevelBasicConditionDevicePolicyPtrInput interface {
+	pulumi.Input
+
+	ToAccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput() AccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput
+	ToAccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutputWithContext(context.Context) AccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput
+}
+
+type accessLevelsAccessLevelBasicConditionDevicePolicyPtrType AccessLevelsAccessLevelBasicConditionDevicePolicyArgs
+
+func AccessLevelsAccessLevelBasicConditionDevicePolicyPtr(v *AccessLevelsAccessLevelBasicConditionDevicePolicyArgs) AccessLevelsAccessLevelBasicConditionDevicePolicyPtrInput {
+	return (*accessLevelsAccessLevelBasicConditionDevicePolicyPtrType)(v)
+}
+
+func (*accessLevelsAccessLevelBasicConditionDevicePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessLevelsAccessLevelBasicConditionDevicePolicy)(nil)).Elem()
+}
+
+func (i *accessLevelsAccessLevelBasicConditionDevicePolicyPtrType) ToAccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput() AccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput {
+	return i.ToAccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *accessLevelsAccessLevelBasicConditionDevicePolicyPtrType) ToAccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutputWithContext(ctx context.Context) AccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput)
+}
+
+type AccessLevelsAccessLevelBasicConditionDevicePolicyOutput struct{ *pulumi.OutputState }
+
+func (AccessLevelsAccessLevelBasicConditionDevicePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessLevelsAccessLevelBasicConditionDevicePolicy)(nil)).Elem()
+}
+
+func (o AccessLevelsAccessLevelBasicConditionDevicePolicyOutput) ToAccessLevelsAccessLevelBasicConditionDevicePolicyOutput() AccessLevelsAccessLevelBasicConditionDevicePolicyOutput {
+	return o
+}
+
+func (o AccessLevelsAccessLevelBasicConditionDevicePolicyOutput) ToAccessLevelsAccessLevelBasicConditionDevicePolicyOutputWithContext(ctx context.Context) AccessLevelsAccessLevelBasicConditionDevicePolicyOutput {
+	return o
+}
+
+func (o AccessLevelsAccessLevelBasicConditionDevicePolicyOutput) ToAccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput() AccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput {
+	return o.ToAccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o AccessLevelsAccessLevelBasicConditionDevicePolicyOutput) ToAccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutputWithContext(ctx context.Context) AccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput {
+	return o.ApplyT(func(v AccessLevelsAccessLevelBasicConditionDevicePolicy) *AccessLevelsAccessLevelBasicConditionDevicePolicy {
+		return &v
+	}).(AccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput)
+}
+
+// A list of allowed device management levels.
+// An empty list allows all management levels.
+// Each value may be one of `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, and `COMPLETE`.
+func (o AccessLevelsAccessLevelBasicConditionDevicePolicyOutput) AllowedDeviceManagementLevels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessLevelsAccessLevelBasicConditionDevicePolicy) []string {
+		return v.AllowedDeviceManagementLevels
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of allowed encryptions statuses.
+// An empty list allows all statuses.
+// Each value may be one of `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, and `ENCRYPTED`.
+func (o AccessLevelsAccessLevelBasicConditionDevicePolicyOutput) AllowedEncryptionStatuses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessLevelsAccessLevelBasicConditionDevicePolicy) []string { return v.AllowedEncryptionStatuses }).(pulumi.StringArrayOutput)
+}
+
+// A list of allowed OS versions.
+// An empty list allows all types and all versions.
+// Structure is documented below.
+func (o AccessLevelsAccessLevelBasicConditionDevicePolicyOutput) OsConstraints() AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput {
+	return o.ApplyT(func(v AccessLevelsAccessLevelBasicConditionDevicePolicy) []AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint {
+		return v.OsConstraints
+	}).(AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput)
+}
+
+// Whether the device needs to be approved by the customer admin.
+func (o AccessLevelsAccessLevelBasicConditionDevicePolicyOutput) RequireAdminApproval() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessLevelsAccessLevelBasicConditionDevicePolicy) *bool { return v.RequireAdminApproval }).(pulumi.BoolPtrOutput)
+}
+
+// Whether the device needs to be corp owned.
+func (o AccessLevelsAccessLevelBasicConditionDevicePolicyOutput) RequireCorpOwned() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessLevelsAccessLevelBasicConditionDevicePolicy) *bool { return v.RequireCorpOwned }).(pulumi.BoolPtrOutput)
+}
+
+// Whether or not screenlock is required for the DevicePolicy
+// to be true. Defaults to false.
+func (o AccessLevelsAccessLevelBasicConditionDevicePolicyOutput) RequireScreenLock() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessLevelsAccessLevelBasicConditionDevicePolicy) *bool { return v.RequireScreenLock }).(pulumi.BoolPtrOutput)
+}
+
+type AccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessLevelsAccessLevelBasicConditionDevicePolicy)(nil)).Elem()
+}
+
+func (o AccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput) ToAccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput() AccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput {
+	return o
+}
+
+func (o AccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput) ToAccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutputWithContext(ctx context.Context) AccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput {
+	return o
+}
+
+func (o AccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput) Elem() AccessLevelsAccessLevelBasicConditionDevicePolicyOutput {
+	return o.ApplyT(func(v *AccessLevelsAccessLevelBasicConditionDevicePolicy) AccessLevelsAccessLevelBasicConditionDevicePolicy {
+		return *v
+	}).(AccessLevelsAccessLevelBasicConditionDevicePolicyOutput)
+}
+
+// A list of allowed device management levels.
+// An empty list allows all management levels.
+// Each value may be one of `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, and `COMPLETE`.
+func (o AccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput) AllowedDeviceManagementLevels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AccessLevelsAccessLevelBasicConditionDevicePolicy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedDeviceManagementLevels
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of allowed encryptions statuses.
+// An empty list allows all statuses.
+// Each value may be one of `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, and `ENCRYPTED`.
+func (o AccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput) AllowedEncryptionStatuses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AccessLevelsAccessLevelBasicConditionDevicePolicy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedEncryptionStatuses
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of allowed OS versions.
+// An empty list allows all types and all versions.
+// Structure is documented below.
+func (o AccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput) OsConstraints() AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput {
+	return o.ApplyT(func(v *AccessLevelsAccessLevelBasicConditionDevicePolicy) []AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint {
+		if v == nil {
+			return nil
+		}
+		return v.OsConstraints
+	}).(AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput)
+}
+
+// Whether the device needs to be approved by the customer admin.
+func (o AccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput) RequireAdminApproval() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccessLevelsAccessLevelBasicConditionDevicePolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RequireAdminApproval
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether the device needs to be corp owned.
+func (o AccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput) RequireCorpOwned() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccessLevelsAccessLevelBasicConditionDevicePolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RequireCorpOwned
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether or not screenlock is required for the DevicePolicy
+// to be true. Defaults to false.
+func (o AccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput) RequireScreenLock() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccessLevelsAccessLevelBasicConditionDevicePolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RequireScreenLock
+	}).(pulumi.BoolPtrOutput)
+}
+
+type AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint struct {
+	// The minimum allowed OS version. If not set, any version
+	// of this OS satisfies the constraint.
+	// Format: "major.minor.patch" such as "10.5.301", "9.2.1".
+	MinimumVersion *string `pulumi:"minimumVersion"`
+	// The operating system type of the device.
+	// Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, and `DESKTOP_CHROME_OS`.
+	OsType string `pulumi:"osType"`
+}
+
+// AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintInput is an input type that accepts AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs and AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintOutput values.
+// You can construct a concrete instance of `AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintInput` via:
+//
+//          AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs{...}
+type AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintInput interface {
+	pulumi.Input
+
+	ToAccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintOutput() AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintOutput
+	ToAccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintOutputWithContext(context.Context) AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintOutput
+}
+
+type AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs struct {
+	// The minimum allowed OS version. If not set, any version
+	// of this OS satisfies the constraint.
+	// Format: "major.minor.patch" such as "10.5.301", "9.2.1".
+	MinimumVersion pulumi.StringPtrInput `pulumi:"minimumVersion"`
+	// The operating system type of the device.
+	// Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, and `DESKTOP_CHROME_OS`.
+	OsType pulumi.StringInput `pulumi:"osType"`
+}
+
+func (AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint)(nil)).Elem()
+}
+
+func (i AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs) ToAccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintOutput() AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintOutput {
+	return i.ToAccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintOutputWithContext(context.Background())
+}
+
+func (i AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs) ToAccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintOutputWithContext(ctx context.Context) AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintOutput)
+}
+
+// AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrayInput is an input type that accepts AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArray and AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput values.
+// You can construct a concrete instance of `AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrayInput` via:
+//
+//          AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArray{ AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs{...} }
+type AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrayInput interface {
+	pulumi.Input
+
+	ToAccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput() AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput
+	ToAccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrayOutputWithContext(context.Context) AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput
+}
+
+type AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArray []AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintInput
+
+func (AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint)(nil)).Elem()
+}
+
+func (i AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArray) ToAccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput() AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput {
+	return i.ToAccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrayOutputWithContext(context.Background())
+}
+
+func (i AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArray) ToAccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrayOutputWithContext(ctx context.Context) AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput)
+}
+
+type AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintOutput struct{ *pulumi.OutputState }
+
+func (AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint)(nil)).Elem()
+}
+
+func (o AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintOutput) ToAccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintOutput() AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintOutput {
+	return o
+}
+
+func (o AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintOutput) ToAccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintOutputWithContext(ctx context.Context) AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintOutput {
+	return o
+}
+
+// The minimum allowed OS version. If not set, any version
+// of this OS satisfies the constraint.
+// Format: "major.minor.patch" such as "10.5.301", "9.2.1".
+func (o AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintOutput) MinimumVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint) *string { return v.MinimumVersion }).(pulumi.StringPtrOutput)
+}
+
+// The operating system type of the device.
+// Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, and `DESKTOP_CHROME_OS`.
+func (o AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintOutput) OsType() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint) string { return v.OsType }).(pulumi.StringOutput)
+}
+
+type AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint)(nil)).Elem()
+}
+
+func (o AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput) ToAccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput() AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput {
+	return o
+}
+
+func (o AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput) ToAccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrayOutputWithContext(ctx context.Context) AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput {
+	return o
+}
+
+func (o AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput) Index(i pulumi.IntInput) AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint {
+		return vs[0].([]AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint)[vs[1].(int)]
+	}).(AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintOutput)
+}
+
+type AccessLevelsAccessLevelCustom struct {
+	// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
+	// This page details the objects and attributes that are used to the build the CEL expressions for
+	// custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+	// Structure is documented below.
+	Expr AccessLevelsAccessLevelCustomExpr `pulumi:"expr"`
+}
+
+// AccessLevelsAccessLevelCustomInput is an input type that accepts AccessLevelsAccessLevelCustomArgs and AccessLevelsAccessLevelCustomOutput values.
+// You can construct a concrete instance of `AccessLevelsAccessLevelCustomInput` via:
+//
+//          AccessLevelsAccessLevelCustomArgs{...}
+type AccessLevelsAccessLevelCustomInput interface {
+	pulumi.Input
+
+	ToAccessLevelsAccessLevelCustomOutput() AccessLevelsAccessLevelCustomOutput
+	ToAccessLevelsAccessLevelCustomOutputWithContext(context.Context) AccessLevelsAccessLevelCustomOutput
+}
+
+type AccessLevelsAccessLevelCustomArgs struct {
+	// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
+	// This page details the objects and attributes that are used to the build the CEL expressions for
+	// custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+	// Structure is documented below.
+	Expr AccessLevelsAccessLevelCustomExprInput `pulumi:"expr"`
+}
+
+func (AccessLevelsAccessLevelCustomArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessLevelsAccessLevelCustom)(nil)).Elem()
+}
+
+func (i AccessLevelsAccessLevelCustomArgs) ToAccessLevelsAccessLevelCustomOutput() AccessLevelsAccessLevelCustomOutput {
+	return i.ToAccessLevelsAccessLevelCustomOutputWithContext(context.Background())
+}
+
+func (i AccessLevelsAccessLevelCustomArgs) ToAccessLevelsAccessLevelCustomOutputWithContext(ctx context.Context) AccessLevelsAccessLevelCustomOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelsAccessLevelCustomOutput)
+}
+
+func (i AccessLevelsAccessLevelCustomArgs) ToAccessLevelsAccessLevelCustomPtrOutput() AccessLevelsAccessLevelCustomPtrOutput {
+	return i.ToAccessLevelsAccessLevelCustomPtrOutputWithContext(context.Background())
+}
+
+func (i AccessLevelsAccessLevelCustomArgs) ToAccessLevelsAccessLevelCustomPtrOutputWithContext(ctx context.Context) AccessLevelsAccessLevelCustomPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelsAccessLevelCustomOutput).ToAccessLevelsAccessLevelCustomPtrOutputWithContext(ctx)
+}
+
+// AccessLevelsAccessLevelCustomPtrInput is an input type that accepts AccessLevelsAccessLevelCustomArgs, AccessLevelsAccessLevelCustomPtr and AccessLevelsAccessLevelCustomPtrOutput values.
+// You can construct a concrete instance of `AccessLevelsAccessLevelCustomPtrInput` via:
+//
+//          AccessLevelsAccessLevelCustomArgs{...}
+//
+//  or:
+//
+//          nil
+type AccessLevelsAccessLevelCustomPtrInput interface {
+	pulumi.Input
+
+	ToAccessLevelsAccessLevelCustomPtrOutput() AccessLevelsAccessLevelCustomPtrOutput
+	ToAccessLevelsAccessLevelCustomPtrOutputWithContext(context.Context) AccessLevelsAccessLevelCustomPtrOutput
+}
+
+type accessLevelsAccessLevelCustomPtrType AccessLevelsAccessLevelCustomArgs
+
+func AccessLevelsAccessLevelCustomPtr(v *AccessLevelsAccessLevelCustomArgs) AccessLevelsAccessLevelCustomPtrInput {
+	return (*accessLevelsAccessLevelCustomPtrType)(v)
+}
+
+func (*accessLevelsAccessLevelCustomPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessLevelsAccessLevelCustom)(nil)).Elem()
+}
+
+func (i *accessLevelsAccessLevelCustomPtrType) ToAccessLevelsAccessLevelCustomPtrOutput() AccessLevelsAccessLevelCustomPtrOutput {
+	return i.ToAccessLevelsAccessLevelCustomPtrOutputWithContext(context.Background())
+}
+
+func (i *accessLevelsAccessLevelCustomPtrType) ToAccessLevelsAccessLevelCustomPtrOutputWithContext(ctx context.Context) AccessLevelsAccessLevelCustomPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelsAccessLevelCustomPtrOutput)
+}
+
+type AccessLevelsAccessLevelCustomOutput struct{ *pulumi.OutputState }
+
+func (AccessLevelsAccessLevelCustomOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessLevelsAccessLevelCustom)(nil)).Elem()
+}
+
+func (o AccessLevelsAccessLevelCustomOutput) ToAccessLevelsAccessLevelCustomOutput() AccessLevelsAccessLevelCustomOutput {
+	return o
+}
+
+func (o AccessLevelsAccessLevelCustomOutput) ToAccessLevelsAccessLevelCustomOutputWithContext(ctx context.Context) AccessLevelsAccessLevelCustomOutput {
+	return o
+}
+
+func (o AccessLevelsAccessLevelCustomOutput) ToAccessLevelsAccessLevelCustomPtrOutput() AccessLevelsAccessLevelCustomPtrOutput {
+	return o.ToAccessLevelsAccessLevelCustomPtrOutputWithContext(context.Background())
+}
+
+func (o AccessLevelsAccessLevelCustomOutput) ToAccessLevelsAccessLevelCustomPtrOutputWithContext(ctx context.Context) AccessLevelsAccessLevelCustomPtrOutput {
+	return o.ApplyT(func(v AccessLevelsAccessLevelCustom) *AccessLevelsAccessLevelCustom {
+		return &v
+	}).(AccessLevelsAccessLevelCustomPtrOutput)
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
+// This page details the objects and attributes that are used to the build the CEL expressions for
+// custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+// Structure is documented below.
+func (o AccessLevelsAccessLevelCustomOutput) Expr() AccessLevelsAccessLevelCustomExprOutput {
+	return o.ApplyT(func(v AccessLevelsAccessLevelCustom) AccessLevelsAccessLevelCustomExpr { return v.Expr }).(AccessLevelsAccessLevelCustomExprOutput)
+}
+
+type AccessLevelsAccessLevelCustomPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessLevelsAccessLevelCustomPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessLevelsAccessLevelCustom)(nil)).Elem()
+}
+
+func (o AccessLevelsAccessLevelCustomPtrOutput) ToAccessLevelsAccessLevelCustomPtrOutput() AccessLevelsAccessLevelCustomPtrOutput {
+	return o
+}
+
+func (o AccessLevelsAccessLevelCustomPtrOutput) ToAccessLevelsAccessLevelCustomPtrOutputWithContext(ctx context.Context) AccessLevelsAccessLevelCustomPtrOutput {
+	return o
+}
+
+func (o AccessLevelsAccessLevelCustomPtrOutput) Elem() AccessLevelsAccessLevelCustomOutput {
+	return o.ApplyT(func(v *AccessLevelsAccessLevelCustom) AccessLevelsAccessLevelCustom { return *v }).(AccessLevelsAccessLevelCustomOutput)
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
+// This page details the objects and attributes that are used to the build the CEL expressions for
+// custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+// Structure is documented below.
+func (o AccessLevelsAccessLevelCustomPtrOutput) Expr() AccessLevelsAccessLevelCustomExprPtrOutput {
+	return o.ApplyT(func(v *AccessLevelsAccessLevelCustom) *AccessLevelsAccessLevelCustomExpr {
+		if v == nil {
+			return nil
+		}
+		return &v.Expr
+	}).(AccessLevelsAccessLevelCustomExprPtrOutput)
+}
+
+type AccessLevelsAccessLevelCustomExpr struct {
+	// Description of the expression
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
+	Location *string `pulumi:"location"`
+	// Title for the expression, i.e. a short string describing its purpose.
+	Title *string `pulumi:"title"`
+}
+
+// AccessLevelsAccessLevelCustomExprInput is an input type that accepts AccessLevelsAccessLevelCustomExprArgs and AccessLevelsAccessLevelCustomExprOutput values.
+// You can construct a concrete instance of `AccessLevelsAccessLevelCustomExprInput` via:
+//
+//          AccessLevelsAccessLevelCustomExprArgs{...}
+type AccessLevelsAccessLevelCustomExprInput interface {
+	pulumi.Input
+
+	ToAccessLevelsAccessLevelCustomExprOutput() AccessLevelsAccessLevelCustomExprOutput
+	ToAccessLevelsAccessLevelCustomExprOutputWithContext(context.Context) AccessLevelsAccessLevelCustomExprOutput
+}
+
+type AccessLevelsAccessLevelCustomExprArgs struct {
+	// Description of the expression
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// Title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringPtrInput `pulumi:"title"`
+}
+
+func (AccessLevelsAccessLevelCustomExprArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessLevelsAccessLevelCustomExpr)(nil)).Elem()
+}
+
+func (i AccessLevelsAccessLevelCustomExprArgs) ToAccessLevelsAccessLevelCustomExprOutput() AccessLevelsAccessLevelCustomExprOutput {
+	return i.ToAccessLevelsAccessLevelCustomExprOutputWithContext(context.Background())
+}
+
+func (i AccessLevelsAccessLevelCustomExprArgs) ToAccessLevelsAccessLevelCustomExprOutputWithContext(ctx context.Context) AccessLevelsAccessLevelCustomExprOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelsAccessLevelCustomExprOutput)
+}
+
+func (i AccessLevelsAccessLevelCustomExprArgs) ToAccessLevelsAccessLevelCustomExprPtrOutput() AccessLevelsAccessLevelCustomExprPtrOutput {
+	return i.ToAccessLevelsAccessLevelCustomExprPtrOutputWithContext(context.Background())
+}
+
+func (i AccessLevelsAccessLevelCustomExprArgs) ToAccessLevelsAccessLevelCustomExprPtrOutputWithContext(ctx context.Context) AccessLevelsAccessLevelCustomExprPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelsAccessLevelCustomExprOutput).ToAccessLevelsAccessLevelCustomExprPtrOutputWithContext(ctx)
+}
+
+// AccessLevelsAccessLevelCustomExprPtrInput is an input type that accepts AccessLevelsAccessLevelCustomExprArgs, AccessLevelsAccessLevelCustomExprPtr and AccessLevelsAccessLevelCustomExprPtrOutput values.
+// You can construct a concrete instance of `AccessLevelsAccessLevelCustomExprPtrInput` via:
+//
+//          AccessLevelsAccessLevelCustomExprArgs{...}
+//
+//  or:
+//
+//          nil
+type AccessLevelsAccessLevelCustomExprPtrInput interface {
+	pulumi.Input
+
+	ToAccessLevelsAccessLevelCustomExprPtrOutput() AccessLevelsAccessLevelCustomExprPtrOutput
+	ToAccessLevelsAccessLevelCustomExprPtrOutputWithContext(context.Context) AccessLevelsAccessLevelCustomExprPtrOutput
+}
+
+type accessLevelsAccessLevelCustomExprPtrType AccessLevelsAccessLevelCustomExprArgs
+
+func AccessLevelsAccessLevelCustomExprPtr(v *AccessLevelsAccessLevelCustomExprArgs) AccessLevelsAccessLevelCustomExprPtrInput {
+	return (*accessLevelsAccessLevelCustomExprPtrType)(v)
+}
+
+func (*accessLevelsAccessLevelCustomExprPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessLevelsAccessLevelCustomExpr)(nil)).Elem()
+}
+
+func (i *accessLevelsAccessLevelCustomExprPtrType) ToAccessLevelsAccessLevelCustomExprPtrOutput() AccessLevelsAccessLevelCustomExprPtrOutput {
+	return i.ToAccessLevelsAccessLevelCustomExprPtrOutputWithContext(context.Background())
+}
+
+func (i *accessLevelsAccessLevelCustomExprPtrType) ToAccessLevelsAccessLevelCustomExprPtrOutputWithContext(ctx context.Context) AccessLevelsAccessLevelCustomExprPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelsAccessLevelCustomExprPtrOutput)
+}
+
+type AccessLevelsAccessLevelCustomExprOutput struct{ *pulumi.OutputState }
+
+func (AccessLevelsAccessLevelCustomExprOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessLevelsAccessLevelCustomExpr)(nil)).Elem()
+}
+
+func (o AccessLevelsAccessLevelCustomExprOutput) ToAccessLevelsAccessLevelCustomExprOutput() AccessLevelsAccessLevelCustomExprOutput {
+	return o
+}
+
+func (o AccessLevelsAccessLevelCustomExprOutput) ToAccessLevelsAccessLevelCustomExprOutputWithContext(ctx context.Context) AccessLevelsAccessLevelCustomExprOutput {
+	return o
+}
+
+func (o AccessLevelsAccessLevelCustomExprOutput) ToAccessLevelsAccessLevelCustomExprPtrOutput() AccessLevelsAccessLevelCustomExprPtrOutput {
+	return o.ToAccessLevelsAccessLevelCustomExprPtrOutputWithContext(context.Background())
+}
+
+func (o AccessLevelsAccessLevelCustomExprOutput) ToAccessLevelsAccessLevelCustomExprPtrOutputWithContext(ctx context.Context) AccessLevelsAccessLevelCustomExprPtrOutput {
+	return o.ApplyT(func(v AccessLevelsAccessLevelCustomExpr) *AccessLevelsAccessLevelCustomExpr {
+		return &v
+	}).(AccessLevelsAccessLevelCustomExprPtrOutput)
+}
+
+// Description of the expression
+func (o AccessLevelsAccessLevelCustomExprOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessLevelsAccessLevelCustomExpr) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o AccessLevelsAccessLevelCustomExprOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessLevelsAccessLevelCustomExpr) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
+func (o AccessLevelsAccessLevelCustomExprOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessLevelsAccessLevelCustomExpr) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Title for the expression, i.e. a short string describing its purpose.
+func (o AccessLevelsAccessLevelCustomExprOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessLevelsAccessLevelCustomExpr) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type AccessLevelsAccessLevelCustomExprPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessLevelsAccessLevelCustomExprPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessLevelsAccessLevelCustomExpr)(nil)).Elem()
+}
+
+func (o AccessLevelsAccessLevelCustomExprPtrOutput) ToAccessLevelsAccessLevelCustomExprPtrOutput() AccessLevelsAccessLevelCustomExprPtrOutput {
+	return o
+}
+
+func (o AccessLevelsAccessLevelCustomExprPtrOutput) ToAccessLevelsAccessLevelCustomExprPtrOutputWithContext(ctx context.Context) AccessLevelsAccessLevelCustomExprPtrOutput {
+	return o
+}
+
+func (o AccessLevelsAccessLevelCustomExprPtrOutput) Elem() AccessLevelsAccessLevelCustomExprOutput {
+	return o.ApplyT(func(v *AccessLevelsAccessLevelCustomExpr) AccessLevelsAccessLevelCustomExpr { return *v }).(AccessLevelsAccessLevelCustomExprOutput)
+}
+
+// Description of the expression
+func (o AccessLevelsAccessLevelCustomExprPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessLevelsAccessLevelCustomExpr) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o AccessLevelsAccessLevelCustomExprPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessLevelsAccessLevelCustomExpr) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
+func (o AccessLevelsAccessLevelCustomExprPtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessLevelsAccessLevelCustomExpr) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// Title for the expression, i.e. a short string describing its purpose.
+func (o AccessLevelsAccessLevelCustomExprPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessLevelsAccessLevelCustomExpr) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type ServicePerimeterSpec struct {
 	// A list of AccessLevel resource names that allow resources within
 	// the ServicePerimeter to be accessed from the internet.
@@ -1938,6 +3192,1110 @@ func (o ServicePerimeterStatusVpcAccessibleServicesPtrOutput) EnableRestriction(
 	}).(pulumi.BoolPtrOutput)
 }
 
+type ServicePerimetersServicePerimeter struct {
+	// -
+	// Time the AccessPolicy was created in UTC.
+	CreateTime *string `pulumi:"createTime"`
+	// Description of the ServicePerimeter and its use. Does not affect
+	// behavior.
+	Description *string `pulumi:"description"`
+	// Resource name for the ServicePerimeter. The shortName component must
+	// begin with a letter and only include alphanumeric and '_'.
+	// Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
+	Name string `pulumi:"name"`
+	// Specifies the type of the Perimeter. There are two types: regular and
+	// bridge. Regular Service Perimeter contains resources, access levels,
+	// and restricted services. Every resource can be in at most
+	// ONE regular Service Perimeter.
+	// In addition to being in a regular service perimeter, a resource can also
+	// be in zero or more perimeter bridges. A perimeter bridge only contains
+	// resources. Cross project operations are permitted if all effected
+	// resources share some perimeter (whether bridge or regular). Perimeter
+	// Bridge does not contain access levels or services: those are governed
+	// entirely by the regular perimeter that resource is in.
+	// Perimeter Bridges are typically useful when building more complex
+	// topologies with many independent perimeters that need to share some data
+	// with a common perimeter, but should not be able to share data among
+	// themselves.
+	// Default value is `PERIMETER_TYPE_REGULAR`.
+	// Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
+	PerimeterType *string `pulumi:"perimeterType"`
+	// Proposed (or dry run) ServicePerimeter configuration.
+	// This configuration allows to specify and test ServicePerimeter configuration
+	// without enforcing actual access restrictions. Only allowed to be set when
+	// the `useExplicitDryRunSpec` flag is set.
+	// Structure is documented below.
+	Spec *ServicePerimetersServicePerimeterSpec `pulumi:"spec"`
+	// ServicePerimeter configuration. Specifies sets of resources,
+	// restricted services and access levels that determine
+	// perimeter content and boundaries.
+	// Structure is documented below.
+	Status *ServicePerimetersServicePerimeterStatus `pulumi:"status"`
+	// Human readable title. Must be unique within the Policy.
+	Title string `pulumi:"title"`
+	// -
+	// Time the AccessPolicy was updated in UTC.
+	UpdateTime *string `pulumi:"updateTime"`
+	// Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists
+	// for all Service Perimeters, and that spec is identical to the status for those
+	// Service Perimeters. When this flag is set, it inhibits the generation of the
+	// implicit spec, thereby allowing the user to explicitly provide a
+	// configuration ("spec") to use in a dry-run version of the Service Perimeter.
+	// This allows the user to test changes to the enforced config ("status") without
+	// actually enforcing them. This testing is done through analyzing the differences
+	// between currently enforced and suggested restrictions. useExplicitDryRunSpec must
+	// bet set to True if any of the fields in the spec are set to non-default values.
+	UseExplicitDryRunSpec *bool `pulumi:"useExplicitDryRunSpec"`
+}
+
+// ServicePerimetersServicePerimeterInput is an input type that accepts ServicePerimetersServicePerimeterArgs and ServicePerimetersServicePerimeterOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterInput` via:
+//
+//          ServicePerimetersServicePerimeterArgs{...}
+type ServicePerimetersServicePerimeterInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterOutput() ServicePerimetersServicePerimeterOutput
+	ToServicePerimetersServicePerimeterOutputWithContext(context.Context) ServicePerimetersServicePerimeterOutput
+}
+
+type ServicePerimetersServicePerimeterArgs struct {
+	// -
+	// Time the AccessPolicy was created in UTC.
+	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
+	// Description of the ServicePerimeter and its use. Does not affect
+	// behavior.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Resource name for the ServicePerimeter. The shortName component must
+	// begin with a letter and only include alphanumeric and '_'.
+	// Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
+	Name pulumi.StringInput `pulumi:"name"`
+	// Specifies the type of the Perimeter. There are two types: regular and
+	// bridge. Regular Service Perimeter contains resources, access levels,
+	// and restricted services. Every resource can be in at most
+	// ONE regular Service Perimeter.
+	// In addition to being in a regular service perimeter, a resource can also
+	// be in zero or more perimeter bridges. A perimeter bridge only contains
+	// resources. Cross project operations are permitted if all effected
+	// resources share some perimeter (whether bridge or regular). Perimeter
+	// Bridge does not contain access levels or services: those are governed
+	// entirely by the regular perimeter that resource is in.
+	// Perimeter Bridges are typically useful when building more complex
+	// topologies with many independent perimeters that need to share some data
+	// with a common perimeter, but should not be able to share data among
+	// themselves.
+	// Default value is `PERIMETER_TYPE_REGULAR`.
+	// Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
+	PerimeterType pulumi.StringPtrInput `pulumi:"perimeterType"`
+	// Proposed (or dry run) ServicePerimeter configuration.
+	// This configuration allows to specify and test ServicePerimeter configuration
+	// without enforcing actual access restrictions. Only allowed to be set when
+	// the `useExplicitDryRunSpec` flag is set.
+	// Structure is documented below.
+	Spec ServicePerimetersServicePerimeterSpecPtrInput `pulumi:"spec"`
+	// ServicePerimeter configuration. Specifies sets of resources,
+	// restricted services and access levels that determine
+	// perimeter content and boundaries.
+	// Structure is documented below.
+	Status ServicePerimetersServicePerimeterStatusPtrInput `pulumi:"status"`
+	// Human readable title. Must be unique within the Policy.
+	Title pulumi.StringInput `pulumi:"title"`
+	// -
+	// Time the AccessPolicy was updated in UTC.
+	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
+	// Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists
+	// for all Service Perimeters, and that spec is identical to the status for those
+	// Service Perimeters. When this flag is set, it inhibits the generation of the
+	// implicit spec, thereby allowing the user to explicitly provide a
+	// configuration ("spec") to use in a dry-run version of the Service Perimeter.
+	// This allows the user to test changes to the enforced config ("status") without
+	// actually enforcing them. This testing is done through analyzing the differences
+	// between currently enforced and suggested restrictions. useExplicitDryRunSpec must
+	// bet set to True if any of the fields in the spec are set to non-default values.
+	UseExplicitDryRunSpec pulumi.BoolPtrInput `pulumi:"useExplicitDryRunSpec"`
+}
+
+func (ServicePerimetersServicePerimeterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeter)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterArgs) ToServicePerimetersServicePerimeterOutput() ServicePerimetersServicePerimeterOutput {
+	return i.ToServicePerimetersServicePerimeterOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterArgs) ToServicePerimetersServicePerimeterOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterOutput)
+}
+
+// ServicePerimetersServicePerimeterArrayInput is an input type that accepts ServicePerimetersServicePerimeterArray and ServicePerimetersServicePerimeterArrayOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterArrayInput` via:
+//
+//          ServicePerimetersServicePerimeterArray{ ServicePerimetersServicePerimeterArgs{...} }
+type ServicePerimetersServicePerimeterArrayInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterArrayOutput() ServicePerimetersServicePerimeterArrayOutput
+	ToServicePerimetersServicePerimeterArrayOutputWithContext(context.Context) ServicePerimetersServicePerimeterArrayOutput
+}
+
+type ServicePerimetersServicePerimeterArray []ServicePerimetersServicePerimeterInput
+
+func (ServicePerimetersServicePerimeterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimetersServicePerimeter)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterArray) ToServicePerimetersServicePerimeterArrayOutput() ServicePerimetersServicePerimeterArrayOutput {
+	return i.ToServicePerimetersServicePerimeterArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterArray) ToServicePerimetersServicePerimeterArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterArrayOutput)
+}
+
+type ServicePerimetersServicePerimeterOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeter)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterOutput) ToServicePerimetersServicePerimeterOutput() ServicePerimetersServicePerimeterOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterOutput) ToServicePerimetersServicePerimeterOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterOutput {
+	return o
+}
+
+// -
+// Time the AccessPolicy was created in UTC.
+func (o ServicePerimetersServicePerimeterOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeter) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
+}
+
+// Description of the ServicePerimeter and its use. Does not affect
+// behavior.
+func (o ServicePerimetersServicePerimeterOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeter) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Resource name for the ServicePerimeter. The shortName component must
+// begin with a letter and only include alphanumeric and '_'.
+// Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
+func (o ServicePerimetersServicePerimeterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Specifies the type of the Perimeter. There are two types: regular and
+// bridge. Regular Service Perimeter contains resources, access levels,
+// and restricted services. Every resource can be in at most
+// ONE regular Service Perimeter.
+// In addition to being in a regular service perimeter, a resource can also
+// be in zero or more perimeter bridges. A perimeter bridge only contains
+// resources. Cross project operations are permitted if all effected
+// resources share some perimeter (whether bridge or regular). Perimeter
+// Bridge does not contain access levels or services: those are governed
+// entirely by the regular perimeter that resource is in.
+// Perimeter Bridges are typically useful when building more complex
+// topologies with many independent perimeters that need to share some data
+// with a common perimeter, but should not be able to share data among
+// themselves.
+// Default value is `PERIMETER_TYPE_REGULAR`.
+// Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
+func (o ServicePerimetersServicePerimeterOutput) PerimeterType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeter) *string { return v.PerimeterType }).(pulumi.StringPtrOutput)
+}
+
+// Proposed (or dry run) ServicePerimeter configuration.
+// This configuration allows to specify and test ServicePerimeter configuration
+// without enforcing actual access restrictions. Only allowed to be set when
+// the `useExplicitDryRunSpec` flag is set.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterOutput) Spec() ServicePerimetersServicePerimeterSpecPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeter) *ServicePerimetersServicePerimeterSpec { return v.Spec }).(ServicePerimetersServicePerimeterSpecPtrOutput)
+}
+
+// ServicePerimeter configuration. Specifies sets of resources,
+// restricted services and access levels that determine
+// perimeter content and boundaries.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterOutput) Status() ServicePerimetersServicePerimeterStatusPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeter) *ServicePerimetersServicePerimeterStatus { return v.Status }).(ServicePerimetersServicePerimeterStatusPtrOutput)
+}
+
+// Human readable title. Must be unique within the Policy.
+func (o ServicePerimetersServicePerimeterOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeter) string { return v.Title }).(pulumi.StringOutput)
+}
+
+// -
+// Time the AccessPolicy was updated in UTC.
+func (o ServicePerimetersServicePerimeterOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeter) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
+}
+
+// Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists
+// for all Service Perimeters, and that spec is identical to the status for those
+// Service Perimeters. When this flag is set, it inhibits the generation of the
+// implicit spec, thereby allowing the user to explicitly provide a
+// configuration ("spec") to use in a dry-run version of the Service Perimeter.
+// This allows the user to test changes to the enforced config ("status") without
+// actually enforcing them. This testing is done through analyzing the differences
+// between currently enforced and suggested restrictions. useExplicitDryRunSpec must
+// bet set to True if any of the fields in the spec are set to non-default values.
+func (o ServicePerimetersServicePerimeterOutput) UseExplicitDryRunSpec() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeter) *bool { return v.UseExplicitDryRunSpec }).(pulumi.BoolPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimetersServicePerimeter)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterArrayOutput) ToServicePerimetersServicePerimeterArrayOutput() ServicePerimetersServicePerimeterArrayOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterArrayOutput) ToServicePerimetersServicePerimeterArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterArrayOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterArrayOutput) Index(i pulumi.IntInput) ServicePerimetersServicePerimeterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimetersServicePerimeter {
+		return vs[0].([]ServicePerimetersServicePerimeter)[vs[1].(int)]
+	}).(ServicePerimetersServicePerimeterOutput)
+}
+
+type ServicePerimetersServicePerimeterSpec struct {
+	// A list of AccessLevel resource names that allow resources within
+	// the ServicePerimeter to be accessed from the internet.
+	// AccessLevels listed must be in the same policy as this
+	// ServicePerimeter. Referencing a nonexistent AccessLevel is a
+	// syntax error. If no AccessLevel names are listed, resources within
+	// the perimeter can only be accessed via GCP calls with request
+	// origins within the perimeter. For Service Perimeter Bridge, must
+	// be empty.
+	// Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
+	AccessLevels []string `pulumi:"accessLevels"`
+	// A list of GCP resources that are inside of the service perimeter.
+	// Currently only projects are allowed.
+	// Format: projects/{project_number}
+	Resources []string `pulumi:"resources"`
+	// GCP services that are subject to the Service Perimeter
+	// restrictions. Must contain a list of services. For example, if
+	// `storage.googleapis.com` is specified, access to the storage
+	// buckets inside the perimeter must meet the perimeter's access
+	// restrictions.
+	RestrictedServices []string `pulumi:"restrictedServices"`
+	// Specifies how APIs are allowed to communicate within the Service
+	// Perimeter.
+	// Structure is documented below.
+	VpcAccessibleServices *ServicePerimetersServicePerimeterSpecVpcAccessibleServices `pulumi:"vpcAccessibleServices"`
+}
+
+// ServicePerimetersServicePerimeterSpecInput is an input type that accepts ServicePerimetersServicePerimeterSpecArgs and ServicePerimetersServicePerimeterSpecOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecInput` via:
+//
+//          ServicePerimetersServicePerimeterSpecArgs{...}
+type ServicePerimetersServicePerimeterSpecInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterSpecOutput() ServicePerimetersServicePerimeterSpecOutput
+	ToServicePerimetersServicePerimeterSpecOutputWithContext(context.Context) ServicePerimetersServicePerimeterSpecOutput
+}
+
+type ServicePerimetersServicePerimeterSpecArgs struct {
+	// A list of AccessLevel resource names that allow resources within
+	// the ServicePerimeter to be accessed from the internet.
+	// AccessLevels listed must be in the same policy as this
+	// ServicePerimeter. Referencing a nonexistent AccessLevel is a
+	// syntax error. If no AccessLevel names are listed, resources within
+	// the perimeter can only be accessed via GCP calls with request
+	// origins within the perimeter. For Service Perimeter Bridge, must
+	// be empty.
+	// Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
+	AccessLevels pulumi.StringArrayInput `pulumi:"accessLevels"`
+	// A list of GCP resources that are inside of the service perimeter.
+	// Currently only projects are allowed.
+	// Format: projects/{project_number}
+	Resources pulumi.StringArrayInput `pulumi:"resources"`
+	// GCP services that are subject to the Service Perimeter
+	// restrictions. Must contain a list of services. For example, if
+	// `storage.googleapis.com` is specified, access to the storage
+	// buckets inside the perimeter must meet the perimeter's access
+	// restrictions.
+	RestrictedServices pulumi.StringArrayInput `pulumi:"restrictedServices"`
+	// Specifies how APIs are allowed to communicate within the Service
+	// Perimeter.
+	// Structure is documented below.
+	VpcAccessibleServices ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrInput `pulumi:"vpcAccessibleServices"`
+}
+
+func (ServicePerimetersServicePerimeterSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterSpec)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterSpecArgs) ToServicePerimetersServicePerimeterSpecOutput() ServicePerimetersServicePerimeterSpecOutput {
+	return i.ToServicePerimetersServicePerimeterSpecOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterSpecArgs) ToServicePerimetersServicePerimeterSpecOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecOutput)
+}
+
+func (i ServicePerimetersServicePerimeterSpecArgs) ToServicePerimetersServicePerimeterSpecPtrOutput() ServicePerimetersServicePerimeterSpecPtrOutput {
+	return i.ToServicePerimetersServicePerimeterSpecPtrOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterSpecArgs) ToServicePerimetersServicePerimeterSpecPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecOutput).ToServicePerimetersServicePerimeterSpecPtrOutputWithContext(ctx)
+}
+
+// ServicePerimetersServicePerimeterSpecPtrInput is an input type that accepts ServicePerimetersServicePerimeterSpecArgs, ServicePerimetersServicePerimeterSpecPtr and ServicePerimetersServicePerimeterSpecPtrOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecPtrInput` via:
+//
+//          ServicePerimetersServicePerimeterSpecArgs{...}
+//
+//  or:
+//
+//          nil
+type ServicePerimetersServicePerimeterSpecPtrInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterSpecPtrOutput() ServicePerimetersServicePerimeterSpecPtrOutput
+	ToServicePerimetersServicePerimeterSpecPtrOutputWithContext(context.Context) ServicePerimetersServicePerimeterSpecPtrOutput
+}
+
+type servicePerimetersServicePerimeterSpecPtrType ServicePerimetersServicePerimeterSpecArgs
+
+func ServicePerimetersServicePerimeterSpecPtr(v *ServicePerimetersServicePerimeterSpecArgs) ServicePerimetersServicePerimeterSpecPtrInput {
+	return (*servicePerimetersServicePerimeterSpecPtrType)(v)
+}
+
+func (*servicePerimetersServicePerimeterSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimetersServicePerimeterSpec)(nil)).Elem()
+}
+
+func (i *servicePerimetersServicePerimeterSpecPtrType) ToServicePerimetersServicePerimeterSpecPtrOutput() ServicePerimetersServicePerimeterSpecPtrOutput {
+	return i.ToServicePerimetersServicePerimeterSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *servicePerimetersServicePerimeterSpecPtrType) ToServicePerimetersServicePerimeterSpecPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterSpec)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterSpecOutput) ToServicePerimetersServicePerimeterSpecOutput() ServicePerimetersServicePerimeterSpecOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecOutput) ToServicePerimetersServicePerimeterSpecOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecOutput) ToServicePerimetersServicePerimeterSpecPtrOutput() ServicePerimetersServicePerimeterSpecPtrOutput {
+	return o.ToServicePerimetersServicePerimeterSpecPtrOutputWithContext(context.Background())
+}
+
+func (o ServicePerimetersServicePerimeterSpecOutput) ToServicePerimetersServicePerimeterSpecPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpec) *ServicePerimetersServicePerimeterSpec {
+		return &v
+	}).(ServicePerimetersServicePerimeterSpecPtrOutput)
+}
+
+// A list of AccessLevel resource names that allow resources within
+// the ServicePerimeter to be accessed from the internet.
+// AccessLevels listed must be in the same policy as this
+// ServicePerimeter. Referencing a nonexistent AccessLevel is a
+// syntax error. If no AccessLevel names are listed, resources within
+// the perimeter can only be accessed via GCP calls with request
+// origins within the perimeter. For Service Perimeter Bridge, must
+// be empty.
+// Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
+func (o ServicePerimetersServicePerimeterSpecOutput) AccessLevels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpec) []string { return v.AccessLevels }).(pulumi.StringArrayOutput)
+}
+
+// A list of GCP resources that are inside of the service perimeter.
+// Currently only projects are allowed.
+// Format: projects/{project_number}
+func (o ServicePerimetersServicePerimeterSpecOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpec) []string { return v.Resources }).(pulumi.StringArrayOutput)
+}
+
+// GCP services that are subject to the Service Perimeter
+// restrictions. Must contain a list of services. For example, if
+// `storage.googleapis.com` is specified, access to the storage
+// buckets inside the perimeter must meet the perimeter's access
+// restrictions.
+func (o ServicePerimetersServicePerimeterSpecOutput) RestrictedServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpec) []string { return v.RestrictedServices }).(pulumi.StringArrayOutput)
+}
+
+// Specifies how APIs are allowed to communicate within the Service
+// Perimeter.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterSpecOutput) VpcAccessibleServices() ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpec) *ServicePerimetersServicePerimeterSpecVpcAccessibleServices {
+		return v.VpcAccessibleServices
+	}).(ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimetersServicePerimeterSpec)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterSpecPtrOutput) ToServicePerimetersServicePerimeterSpecPtrOutput() ServicePerimetersServicePerimeterSpecPtrOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecPtrOutput) ToServicePerimetersServicePerimeterSpecPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecPtrOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecPtrOutput) Elem() ServicePerimetersServicePerimeterSpecOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpec) ServicePerimetersServicePerimeterSpec { return *v }).(ServicePerimetersServicePerimeterSpecOutput)
+}
+
+// A list of AccessLevel resource names that allow resources within
+// the ServicePerimeter to be accessed from the internet.
+// AccessLevels listed must be in the same policy as this
+// ServicePerimeter. Referencing a nonexistent AccessLevel is a
+// syntax error. If no AccessLevel names are listed, resources within
+// the perimeter can only be accessed via GCP calls with request
+// origins within the perimeter. For Service Perimeter Bridge, must
+// be empty.
+// Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
+func (o ServicePerimetersServicePerimeterSpecPtrOutput) AccessLevels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessLevels
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of GCP resources that are inside of the service perimeter.
+// Currently only projects are allowed.
+// Format: projects/{project_number}
+func (o ServicePerimetersServicePerimeterSpecPtrOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Resources
+	}).(pulumi.StringArrayOutput)
+}
+
+// GCP services that are subject to the Service Perimeter
+// restrictions. Must contain a list of services. For example, if
+// `storage.googleapis.com` is specified, access to the storage
+// buckets inside the perimeter must meet the perimeter's access
+// restrictions.
+func (o ServicePerimetersServicePerimeterSpecPtrOutput) RestrictedServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.RestrictedServices
+	}).(pulumi.StringArrayOutput)
+}
+
+// Specifies how APIs are allowed to communicate within the Service
+// Perimeter.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterSpecPtrOutput) VpcAccessibleServices() ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpec) *ServicePerimetersServicePerimeterSpecVpcAccessibleServices {
+		if v == nil {
+			return nil
+		}
+		return v.VpcAccessibleServices
+	}).(ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecVpcAccessibleServices struct {
+	// The list of APIs usable within the Service Perimeter.
+	// Must be empty unless `enableRestriction` is True.
+	AllowedServices []string `pulumi:"allowedServices"`
+	// Whether to restrict API calls within the Service Perimeter to the
+	// list of APIs specified in 'allowedServices'.
+	EnableRestriction *bool `pulumi:"enableRestriction"`
+}
+
+// ServicePerimetersServicePerimeterSpecVpcAccessibleServicesInput is an input type that accepts ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgs and ServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecVpcAccessibleServicesInput` via:
+//
+//          ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgs{...}
+type ServicePerimetersServicePerimeterSpecVpcAccessibleServicesInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutput() ServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutput
+	ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutputWithContext(context.Context) ServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutput
+}
+
+type ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgs struct {
+	// The list of APIs usable within the Service Perimeter.
+	// Must be empty unless `enableRestriction` is True.
+	AllowedServices pulumi.StringArrayInput `pulumi:"allowedServices"`
+	// Whether to restrict API calls within the Service Perimeter to the
+	// list of APIs specified in 'allowedServices'.
+	EnableRestriction pulumi.BoolPtrInput `pulumi:"enableRestriction"`
+}
+
+func (ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterSpecVpcAccessibleServices)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgs) ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutput() ServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutput {
+	return i.ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgs) ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutput)
+}
+
+func (i ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgs) ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput() ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput {
+	return i.ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgs) ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutput).ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutputWithContext(ctx)
+}
+
+// ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrInput is an input type that accepts ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgs, ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtr and ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrInput` via:
+//
+//          ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgs{...}
+//
+//  or:
+//
+//          nil
+type ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput() ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput
+	ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutputWithContext(context.Context) ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput
+}
+
+type servicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrType ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgs
+
+func ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtr(v *ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgs) ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrInput {
+	return (*servicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrType)(v)
+}
+
+func (*servicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimetersServicePerimeterSpecVpcAccessibleServices)(nil)).Elem()
+}
+
+func (i *servicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrType) ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput() ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput {
+	return i.ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutputWithContext(context.Background())
+}
+
+func (i *servicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrType) ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterSpecVpcAccessibleServices)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutput) ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutput() ServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutput) ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutput) ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput() ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput {
+	return o.ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutputWithContext(context.Background())
+}
+
+func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutput) ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecVpcAccessibleServices) *ServicePerimetersServicePerimeterSpecVpcAccessibleServices {
+		return &v
+	}).(ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput)
+}
+
+// The list of APIs usable within the Service Perimeter.
+// Must be empty unless `enableRestriction` is True.
+func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutput) AllowedServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecVpcAccessibleServices) []string { return v.AllowedServices }).(pulumi.StringArrayOutput)
+}
+
+// Whether to restrict API calls within the Service Perimeter to the
+// list of APIs specified in 'allowedServices'.
+func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutput) EnableRestriction() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecVpcAccessibleServices) *bool { return v.EnableRestriction }).(pulumi.BoolPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimetersServicePerimeterSpecVpcAccessibleServices)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput) ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput() ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput) ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput) Elem() ServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecVpcAccessibleServices) ServicePerimetersServicePerimeterSpecVpcAccessibleServices {
+		return *v
+	}).(ServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutput)
+}
+
+// The list of APIs usable within the Service Perimeter.
+// Must be empty unless `enableRestriction` is True.
+func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput) AllowedServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecVpcAccessibleServices) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedServices
+	}).(pulumi.StringArrayOutput)
+}
+
+// Whether to restrict API calls within the Service Perimeter to the
+// list of APIs specified in 'allowedServices'.
+func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput) EnableRestriction() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecVpcAccessibleServices) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableRestriction
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterStatus struct {
+	// A list of AccessLevel resource names that allow resources within
+	// the ServicePerimeter to be accessed from the internet.
+	// AccessLevels listed must be in the same policy as this
+	// ServicePerimeter. Referencing a nonexistent AccessLevel is a
+	// syntax error. If no AccessLevel names are listed, resources within
+	// the perimeter can only be accessed via GCP calls with request
+	// origins within the perimeter. For Service Perimeter Bridge, must
+	// be empty.
+	// Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
+	AccessLevels []string `pulumi:"accessLevels"`
+	// A list of GCP resources that are inside of the service perimeter.
+	// Currently only projects are allowed.
+	// Format: projects/{project_number}
+	Resources []string `pulumi:"resources"`
+	// GCP services that are subject to the Service Perimeter
+	// restrictions. Must contain a list of services. For example, if
+	// `storage.googleapis.com` is specified, access to the storage
+	// buckets inside the perimeter must meet the perimeter's access
+	// restrictions.
+	RestrictedServices []string `pulumi:"restrictedServices"`
+	// Specifies how APIs are allowed to communicate within the Service
+	// Perimeter.
+	// Structure is documented below.
+	VpcAccessibleServices *ServicePerimetersServicePerimeterStatusVpcAccessibleServices `pulumi:"vpcAccessibleServices"`
+}
+
+// ServicePerimetersServicePerimeterStatusInput is an input type that accepts ServicePerimetersServicePerimeterStatusArgs and ServicePerimetersServicePerimeterStatusOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusInput` via:
+//
+//          ServicePerimetersServicePerimeterStatusArgs{...}
+type ServicePerimetersServicePerimeterStatusInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterStatusOutput() ServicePerimetersServicePerimeterStatusOutput
+	ToServicePerimetersServicePerimeterStatusOutputWithContext(context.Context) ServicePerimetersServicePerimeterStatusOutput
+}
+
+type ServicePerimetersServicePerimeterStatusArgs struct {
+	// A list of AccessLevel resource names that allow resources within
+	// the ServicePerimeter to be accessed from the internet.
+	// AccessLevels listed must be in the same policy as this
+	// ServicePerimeter. Referencing a nonexistent AccessLevel is a
+	// syntax error. If no AccessLevel names are listed, resources within
+	// the perimeter can only be accessed via GCP calls with request
+	// origins within the perimeter. For Service Perimeter Bridge, must
+	// be empty.
+	// Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
+	AccessLevels pulumi.StringArrayInput `pulumi:"accessLevels"`
+	// A list of GCP resources that are inside of the service perimeter.
+	// Currently only projects are allowed.
+	// Format: projects/{project_number}
+	Resources pulumi.StringArrayInput `pulumi:"resources"`
+	// GCP services that are subject to the Service Perimeter
+	// restrictions. Must contain a list of services. For example, if
+	// `storage.googleapis.com` is specified, access to the storage
+	// buckets inside the perimeter must meet the perimeter's access
+	// restrictions.
+	RestrictedServices pulumi.StringArrayInput `pulumi:"restrictedServices"`
+	// Specifies how APIs are allowed to communicate within the Service
+	// Perimeter.
+	// Structure is documented below.
+	VpcAccessibleServices ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrInput `pulumi:"vpcAccessibleServices"`
+}
+
+func (ServicePerimetersServicePerimeterStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterStatus)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterStatusArgs) ToServicePerimetersServicePerimeterStatusOutput() ServicePerimetersServicePerimeterStatusOutput {
+	return i.ToServicePerimetersServicePerimeterStatusOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterStatusArgs) ToServicePerimetersServicePerimeterStatusOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusOutput)
+}
+
+func (i ServicePerimetersServicePerimeterStatusArgs) ToServicePerimetersServicePerimeterStatusPtrOutput() ServicePerimetersServicePerimeterStatusPtrOutput {
+	return i.ToServicePerimetersServicePerimeterStatusPtrOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterStatusArgs) ToServicePerimetersServicePerimeterStatusPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusOutput).ToServicePerimetersServicePerimeterStatusPtrOutputWithContext(ctx)
+}
+
+// ServicePerimetersServicePerimeterStatusPtrInput is an input type that accepts ServicePerimetersServicePerimeterStatusArgs, ServicePerimetersServicePerimeterStatusPtr and ServicePerimetersServicePerimeterStatusPtrOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusPtrInput` via:
+//
+//          ServicePerimetersServicePerimeterStatusArgs{...}
+//
+//  or:
+//
+//          nil
+type ServicePerimetersServicePerimeterStatusPtrInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterStatusPtrOutput() ServicePerimetersServicePerimeterStatusPtrOutput
+	ToServicePerimetersServicePerimeterStatusPtrOutputWithContext(context.Context) ServicePerimetersServicePerimeterStatusPtrOutput
+}
+
+type servicePerimetersServicePerimeterStatusPtrType ServicePerimetersServicePerimeterStatusArgs
+
+func ServicePerimetersServicePerimeterStatusPtr(v *ServicePerimetersServicePerimeterStatusArgs) ServicePerimetersServicePerimeterStatusPtrInput {
+	return (*servicePerimetersServicePerimeterStatusPtrType)(v)
+}
+
+func (*servicePerimetersServicePerimeterStatusPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimetersServicePerimeterStatus)(nil)).Elem()
+}
+
+func (i *servicePerimetersServicePerimeterStatusPtrType) ToServicePerimetersServicePerimeterStatusPtrOutput() ServicePerimetersServicePerimeterStatusPtrOutput {
+	return i.ToServicePerimetersServicePerimeterStatusPtrOutputWithContext(context.Background())
+}
+
+func (i *servicePerimetersServicePerimeterStatusPtrType) ToServicePerimetersServicePerimeterStatusPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterStatus)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterStatusOutput) ToServicePerimetersServicePerimeterStatusOutput() ServicePerimetersServicePerimeterStatusOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusOutput) ToServicePerimetersServicePerimeterStatusOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusOutput) ToServicePerimetersServicePerimeterStatusPtrOutput() ServicePerimetersServicePerimeterStatusPtrOutput {
+	return o.ToServicePerimetersServicePerimeterStatusPtrOutputWithContext(context.Background())
+}
+
+func (o ServicePerimetersServicePerimeterStatusOutput) ToServicePerimetersServicePerimeterStatusPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatus) *ServicePerimetersServicePerimeterStatus {
+		return &v
+	}).(ServicePerimetersServicePerimeterStatusPtrOutput)
+}
+
+// A list of AccessLevel resource names that allow resources within
+// the ServicePerimeter to be accessed from the internet.
+// AccessLevels listed must be in the same policy as this
+// ServicePerimeter. Referencing a nonexistent AccessLevel is a
+// syntax error. If no AccessLevel names are listed, resources within
+// the perimeter can only be accessed via GCP calls with request
+// origins within the perimeter. For Service Perimeter Bridge, must
+// be empty.
+// Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
+func (o ServicePerimetersServicePerimeterStatusOutput) AccessLevels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatus) []string { return v.AccessLevels }).(pulumi.StringArrayOutput)
+}
+
+// A list of GCP resources that are inside of the service perimeter.
+// Currently only projects are allowed.
+// Format: projects/{project_number}
+func (o ServicePerimetersServicePerimeterStatusOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatus) []string { return v.Resources }).(pulumi.StringArrayOutput)
+}
+
+// GCP services that are subject to the Service Perimeter
+// restrictions. Must contain a list of services. For example, if
+// `storage.googleapis.com` is specified, access to the storage
+// buckets inside the perimeter must meet the perimeter's access
+// restrictions.
+func (o ServicePerimetersServicePerimeterStatusOutput) RestrictedServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatus) []string { return v.RestrictedServices }).(pulumi.StringArrayOutput)
+}
+
+// Specifies how APIs are allowed to communicate within the Service
+// Perimeter.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterStatusOutput) VpcAccessibleServices() ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatus) *ServicePerimetersServicePerimeterStatusVpcAccessibleServices {
+		return v.VpcAccessibleServices
+	}).(ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimetersServicePerimeterStatus)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterStatusPtrOutput) ToServicePerimetersServicePerimeterStatusPtrOutput() ServicePerimetersServicePerimeterStatusPtrOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusPtrOutput) ToServicePerimetersServicePerimeterStatusPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusPtrOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusPtrOutput) Elem() ServicePerimetersServicePerimeterStatusOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatus) ServicePerimetersServicePerimeterStatus { return *v }).(ServicePerimetersServicePerimeterStatusOutput)
+}
+
+// A list of AccessLevel resource names that allow resources within
+// the ServicePerimeter to be accessed from the internet.
+// AccessLevels listed must be in the same policy as this
+// ServicePerimeter. Referencing a nonexistent AccessLevel is a
+// syntax error. If no AccessLevel names are listed, resources within
+// the perimeter can only be accessed via GCP calls with request
+// origins within the perimeter. For Service Perimeter Bridge, must
+// be empty.
+// Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
+func (o ServicePerimetersServicePerimeterStatusPtrOutput) AccessLevels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatus) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessLevels
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of GCP resources that are inside of the service perimeter.
+// Currently only projects are allowed.
+// Format: projects/{project_number}
+func (o ServicePerimetersServicePerimeterStatusPtrOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatus) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Resources
+	}).(pulumi.StringArrayOutput)
+}
+
+// GCP services that are subject to the Service Perimeter
+// restrictions. Must contain a list of services. For example, if
+// `storage.googleapis.com` is specified, access to the storage
+// buckets inside the perimeter must meet the perimeter's access
+// restrictions.
+func (o ServicePerimetersServicePerimeterStatusPtrOutput) RestrictedServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatus) []string {
+		if v == nil {
+			return nil
+		}
+		return v.RestrictedServices
+	}).(pulumi.StringArrayOutput)
+}
+
+// Specifies how APIs are allowed to communicate within the Service
+// Perimeter.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterStatusPtrOutput) VpcAccessibleServices() ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatus) *ServicePerimetersServicePerimeterStatusVpcAccessibleServices {
+		if v == nil {
+			return nil
+		}
+		return v.VpcAccessibleServices
+	}).(ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusVpcAccessibleServices struct {
+	// The list of APIs usable within the Service Perimeter.
+	// Must be empty unless `enableRestriction` is True.
+	AllowedServices []string `pulumi:"allowedServices"`
+	// Whether to restrict API calls within the Service Perimeter to the
+	// list of APIs specified in 'allowedServices'.
+	EnableRestriction *bool `pulumi:"enableRestriction"`
+}
+
+// ServicePerimetersServicePerimeterStatusVpcAccessibleServicesInput is an input type that accepts ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs and ServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusVpcAccessibleServicesInput` via:
+//
+//          ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs{...}
+type ServicePerimetersServicePerimeterStatusVpcAccessibleServicesInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutput() ServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutput
+	ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutputWithContext(context.Context) ServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutput
+}
+
+type ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs struct {
+	// The list of APIs usable within the Service Perimeter.
+	// Must be empty unless `enableRestriction` is True.
+	AllowedServices pulumi.StringArrayInput `pulumi:"allowedServices"`
+	// Whether to restrict API calls within the Service Perimeter to the
+	// list of APIs specified in 'allowedServices'.
+	EnableRestriction pulumi.BoolPtrInput `pulumi:"enableRestriction"`
+}
+
+func (ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterStatusVpcAccessibleServices)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs) ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutput() ServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutput {
+	return i.ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs) ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutput)
+}
+
+func (i ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs) ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput() ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput {
+	return i.ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs) ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutput).ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutputWithContext(ctx)
+}
+
+// ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrInput is an input type that accepts ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs, ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtr and ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrInput` via:
+//
+//          ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs{...}
+//
+//  or:
+//
+//          nil
+type ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput() ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput
+	ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutputWithContext(context.Context) ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput
+}
+
+type servicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrType ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs
+
+func ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtr(v *ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs) ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrInput {
+	return (*servicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrType)(v)
+}
+
+func (*servicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimetersServicePerimeterStatusVpcAccessibleServices)(nil)).Elem()
+}
+
+func (i *servicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrType) ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput() ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput {
+	return i.ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutputWithContext(context.Background())
+}
+
+func (i *servicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrType) ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterStatusVpcAccessibleServices)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutput) ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutput() ServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutput) ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutput) ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput() ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput {
+	return o.ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutputWithContext(context.Background())
+}
+
+func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutput) ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusVpcAccessibleServices) *ServicePerimetersServicePerimeterStatusVpcAccessibleServices {
+		return &v
+	}).(ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput)
+}
+
+// The list of APIs usable within the Service Perimeter.
+// Must be empty unless `enableRestriction` is True.
+func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutput) AllowedServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusVpcAccessibleServices) []string {
+		return v.AllowedServices
+	}).(pulumi.StringArrayOutput)
+}
+
+// Whether to restrict API calls within the Service Perimeter to the
+// list of APIs specified in 'allowedServices'.
+func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutput) EnableRestriction() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusVpcAccessibleServices) *bool { return v.EnableRestriction }).(pulumi.BoolPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimetersServicePerimeterStatusVpcAccessibleServices)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput) ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput() ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput) ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput) Elem() ServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusVpcAccessibleServices) ServicePerimetersServicePerimeterStatusVpcAccessibleServices {
+		return *v
+	}).(ServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutput)
+}
+
+// The list of APIs usable within the Service Perimeter.
+// Must be empty unless `enableRestriction` is True.
+func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput) AllowedServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusVpcAccessibleServices) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedServices
+	}).(pulumi.StringArrayOutput)
+}
+
+// Whether to restrict API calls within the Service Perimeter to the
+// list of APIs specified in 'allowedServices'.
+func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput) EnableRestriction() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusVpcAccessibleServices) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableRestriction
+	}).(pulumi.BoolPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AccessLevelBasicOutput{})
 	pulumi.RegisterOutputType(AccessLevelBasicPtrOutput{})
@@ -1951,6 +4309,20 @@ func init() {
 	pulumi.RegisterOutputType(AccessLevelCustomPtrOutput{})
 	pulumi.RegisterOutputType(AccessLevelCustomExprOutput{})
 	pulumi.RegisterOutputType(AccessLevelCustomExprPtrOutput{})
+	pulumi.RegisterOutputType(AccessLevelsAccessLevelOutput{})
+	pulumi.RegisterOutputType(AccessLevelsAccessLevelArrayOutput{})
+	pulumi.RegisterOutputType(AccessLevelsAccessLevelBasicOutput{})
+	pulumi.RegisterOutputType(AccessLevelsAccessLevelBasicPtrOutput{})
+	pulumi.RegisterOutputType(AccessLevelsAccessLevelBasicConditionOutput{})
+	pulumi.RegisterOutputType(AccessLevelsAccessLevelBasicConditionArrayOutput{})
+	pulumi.RegisterOutputType(AccessLevelsAccessLevelBasicConditionDevicePolicyOutput{})
+	pulumi.RegisterOutputType(AccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput{})
+	pulumi.RegisterOutputType(AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintOutput{})
+	pulumi.RegisterOutputType(AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput{})
+	pulumi.RegisterOutputType(AccessLevelsAccessLevelCustomOutput{})
+	pulumi.RegisterOutputType(AccessLevelsAccessLevelCustomPtrOutput{})
+	pulumi.RegisterOutputType(AccessLevelsAccessLevelCustomExprOutput{})
+	pulumi.RegisterOutputType(AccessLevelsAccessLevelCustomExprPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterSpecOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterSpecPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterSpecVpcAccessibleServicesOutput{})
@@ -1959,4 +4331,14 @@ func init() {
 	pulumi.RegisterOutputType(ServicePerimeterStatusPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterStatusVpcAccessibleServicesOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterStatusVpcAccessibleServicesPtrOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterArrayOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecPtrOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusPtrOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput{})
 }

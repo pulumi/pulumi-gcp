@@ -8,6 +8,8 @@ namespace Pulumi.Gcp
     public static class Config
     {
         private static readonly Pulumi.Config __config = new Pulumi.Config("gcp");
+        public static string? AccessApprovalCustomEndpoint { get; set; } = __config.Get("accessApprovalCustomEndpoint");
+
         public static string? AccessContextManagerCustomEndpoint { get; set; } = __config.Get("accessContextManagerCustomEndpoint");
 
         public static string? AccessToken { get; set; } = __config.Get("accessToken");

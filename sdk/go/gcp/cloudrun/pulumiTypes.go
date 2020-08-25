@@ -2650,7 +2650,7 @@ type ServiceTemplateSpecContainer struct {
 	Ports []ServiceTemplateSpecContainerPort `pulumi:"ports"`
 	// Compute Resources required by this container. Used to set values such as max memory
 	// More info:
-	// https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+	// https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits
 	// Structure is documented below.
 	Resources *ServiceTemplateSpecContainerResources `pulumi:"resources"`
 	// -
@@ -2720,7 +2720,7 @@ type ServiceTemplateSpecContainerArgs struct {
 	Ports ServiceTemplateSpecContainerPortArrayInput `pulumi:"ports"`
 	// Compute Resources required by this container. Used to set values such as max memory
 	// More info:
-	// https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+	// https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits
 	// Structure is documented below.
 	Resources ServiceTemplateSpecContainerResourcesPtrInput `pulumi:"resources"`
 	// -
@@ -2847,7 +2847,7 @@ func (o ServiceTemplateSpecContainerOutput) Ports() ServiceTemplateSpecContainer
 
 // Compute Resources required by this container. Used to set values such as max memory
 // More info:
-// https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+// https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits
 // Structure is documented below.
 func (o ServiceTemplateSpecContainerOutput) Resources() ServiceTemplateSpecContainerResourcesPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateSpecContainer) *ServiceTemplateSpecContainerResources { return v.Resources }).(ServiceTemplateSpecContainerResourcesPtrOutput)

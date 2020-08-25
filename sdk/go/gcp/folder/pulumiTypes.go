@@ -10,6 +10,106 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+type AccessApprovalSettingsEnrolledService struct {
+	CloudProduct    string  `pulumi:"cloudProduct"`
+	EnrollmentLevel *string `pulumi:"enrollmentLevel"`
+}
+
+// AccessApprovalSettingsEnrolledServiceInput is an input type that accepts AccessApprovalSettingsEnrolledServiceArgs and AccessApprovalSettingsEnrolledServiceOutput values.
+// You can construct a concrete instance of `AccessApprovalSettingsEnrolledServiceInput` via:
+//
+//          AccessApprovalSettingsEnrolledServiceArgs{...}
+type AccessApprovalSettingsEnrolledServiceInput interface {
+	pulumi.Input
+
+	ToAccessApprovalSettingsEnrolledServiceOutput() AccessApprovalSettingsEnrolledServiceOutput
+	ToAccessApprovalSettingsEnrolledServiceOutputWithContext(context.Context) AccessApprovalSettingsEnrolledServiceOutput
+}
+
+type AccessApprovalSettingsEnrolledServiceArgs struct {
+	CloudProduct    pulumi.StringInput    `pulumi:"cloudProduct"`
+	EnrollmentLevel pulumi.StringPtrInput `pulumi:"enrollmentLevel"`
+}
+
+func (AccessApprovalSettingsEnrolledServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApprovalSettingsEnrolledService)(nil)).Elem()
+}
+
+func (i AccessApprovalSettingsEnrolledServiceArgs) ToAccessApprovalSettingsEnrolledServiceOutput() AccessApprovalSettingsEnrolledServiceOutput {
+	return i.ToAccessApprovalSettingsEnrolledServiceOutputWithContext(context.Background())
+}
+
+func (i AccessApprovalSettingsEnrolledServiceArgs) ToAccessApprovalSettingsEnrolledServiceOutputWithContext(ctx context.Context) AccessApprovalSettingsEnrolledServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApprovalSettingsEnrolledServiceOutput)
+}
+
+// AccessApprovalSettingsEnrolledServiceArrayInput is an input type that accepts AccessApprovalSettingsEnrolledServiceArray and AccessApprovalSettingsEnrolledServiceArrayOutput values.
+// You can construct a concrete instance of `AccessApprovalSettingsEnrolledServiceArrayInput` via:
+//
+//          AccessApprovalSettingsEnrolledServiceArray{ AccessApprovalSettingsEnrolledServiceArgs{...} }
+type AccessApprovalSettingsEnrolledServiceArrayInput interface {
+	pulumi.Input
+
+	ToAccessApprovalSettingsEnrolledServiceArrayOutput() AccessApprovalSettingsEnrolledServiceArrayOutput
+	ToAccessApprovalSettingsEnrolledServiceArrayOutputWithContext(context.Context) AccessApprovalSettingsEnrolledServiceArrayOutput
+}
+
+type AccessApprovalSettingsEnrolledServiceArray []AccessApprovalSettingsEnrolledServiceInput
+
+func (AccessApprovalSettingsEnrolledServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessApprovalSettingsEnrolledService)(nil)).Elem()
+}
+
+func (i AccessApprovalSettingsEnrolledServiceArray) ToAccessApprovalSettingsEnrolledServiceArrayOutput() AccessApprovalSettingsEnrolledServiceArrayOutput {
+	return i.ToAccessApprovalSettingsEnrolledServiceArrayOutputWithContext(context.Background())
+}
+
+func (i AccessApprovalSettingsEnrolledServiceArray) ToAccessApprovalSettingsEnrolledServiceArrayOutputWithContext(ctx context.Context) AccessApprovalSettingsEnrolledServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApprovalSettingsEnrolledServiceArrayOutput)
+}
+
+type AccessApprovalSettingsEnrolledServiceOutput struct{ *pulumi.OutputState }
+
+func (AccessApprovalSettingsEnrolledServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApprovalSettingsEnrolledService)(nil)).Elem()
+}
+
+func (o AccessApprovalSettingsEnrolledServiceOutput) ToAccessApprovalSettingsEnrolledServiceOutput() AccessApprovalSettingsEnrolledServiceOutput {
+	return o
+}
+
+func (o AccessApprovalSettingsEnrolledServiceOutput) ToAccessApprovalSettingsEnrolledServiceOutputWithContext(ctx context.Context) AccessApprovalSettingsEnrolledServiceOutput {
+	return o
+}
+
+func (o AccessApprovalSettingsEnrolledServiceOutput) CloudProduct() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessApprovalSettingsEnrolledService) string { return v.CloudProduct }).(pulumi.StringOutput)
+}
+
+func (o AccessApprovalSettingsEnrolledServiceOutput) EnrollmentLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessApprovalSettingsEnrolledService) *string { return v.EnrollmentLevel }).(pulumi.StringPtrOutput)
+}
+
+type AccessApprovalSettingsEnrolledServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessApprovalSettingsEnrolledServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessApprovalSettingsEnrolledService)(nil)).Elem()
+}
+
+func (o AccessApprovalSettingsEnrolledServiceArrayOutput) ToAccessApprovalSettingsEnrolledServiceArrayOutput() AccessApprovalSettingsEnrolledServiceArrayOutput {
+	return o
+}
+
+func (o AccessApprovalSettingsEnrolledServiceArrayOutput) ToAccessApprovalSettingsEnrolledServiceArrayOutputWithContext(ctx context.Context) AccessApprovalSettingsEnrolledServiceArrayOutput {
+	return o
+}
+
+func (o AccessApprovalSettingsEnrolledServiceArrayOutput) Index(i pulumi.IntInput) AccessApprovalSettingsEnrolledServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessApprovalSettingsEnrolledService {
+		return vs[0].([]AccessApprovalSettingsEnrolledService)[vs[1].(int)]
+	}).(AccessApprovalSettingsEnrolledServiceOutput)
+}
+
 type IAMBindingCondition struct {
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
@@ -1673,6 +1773,8 @@ func (o GetOrganizationPolicyRestorePolicyArrayOutput) Index(i pulumi.IntInput) 
 }
 
 func init() {
+	pulumi.RegisterOutputType(AccessApprovalSettingsEnrolledServiceOutput{})
+	pulumi.RegisterOutputType(AccessApprovalSettingsEnrolledServiceArrayOutput{})
 	pulumi.RegisterOutputType(IAMBindingConditionOutput{})
 	pulumi.RegisterOutputType(IAMBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(IAMMemberConditionOutput{})

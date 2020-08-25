@@ -46,6 +46,7 @@ __all__ = [
     'GlobalForwardingRuleMetadataFilter',
     'GlobalForwardingRuleMetadataFilterFilterLabel',
     'HaVpnGatewayVpnInterface',
+    'HealthCheckGrpcHealthCheck',
     'HealthCheckHttp2HealthCheck',
     'HealthCheckHttpHealthCheck',
     'HealthCheckHttpsHealthCheck',
@@ -136,6 +137,7 @@ __all__ = [
     'RegionBackendServiceOutlierDetectionInterval',
     'RegionDiskDiskEncryptionKey',
     'RegionDiskSourceSnapshotEncryptionKey',
+    'RegionHealthCheckGrpcHealthCheck',
     'RegionHealthCheckHttp2HealthCheck',
     'RegionHealthCheckHttpHealthCheck',
     'RegionHealthCheckHttpsHealthCheck',
@@ -2744,6 +2746,98 @@ class HaVpnGatewayVpnInterface(dict):
 
 
 @pulumi.output_type
+class HealthCheckGrpcHealthCheck(dict):
+    def __init__(__self__, *,
+                 grpc_service_name: Optional[str] = None,
+                 port: Optional[float] = None,
+                 port_name: Optional[str] = None,
+                 port_specification: Optional[str] = None):
+        """
+        :param str grpc_service_name: The gRPC service name for the health check.
+               The value of grpcServiceName has the following meanings by convention:
+               - Empty serviceName means the overall status of all services at the backend.
+               - Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
+               The grpcServiceName can only be ASCII.
+        :param float port: The port number for the health check request.
+               Must be specified if portName and portSpecification are not set
+               or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+        :param str port_name: Port name as defined in InstanceGroup#NamedPort#name. If both port and
+               port_name are defined, port takes precedence.
+        :param str port_specification: Specifies how port is selected for health checking, can be one of the
+               following values:
+               * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+               * `USE_NAMED_PORT`: The `portName` is used for health checking.
+               * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+               network endpoint is used for health checking. For other backends, the
+               port or named port specified in the Backend Service is used for health
+               checking.
+               If not specified, gRPC health check follows behavior specified in `port` and
+               `portName` fields.
+               Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
+        """
+        if grpc_service_name is not None:
+            pulumi.set(__self__, "grpc_service_name", grpc_service_name)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if port_name is not None:
+            pulumi.set(__self__, "port_name", port_name)
+        if port_specification is not None:
+            pulumi.set(__self__, "port_specification", port_specification)
+
+    @property
+    @pulumi.getter(name="grpcServiceName")
+    def grpc_service_name(self) -> Optional[str]:
+        """
+        The gRPC service name for the health check.
+        The value of grpcServiceName has the following meanings by convention:
+        - Empty serviceName means the overall status of all services at the backend.
+        - Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
+        The grpcServiceName can only be ASCII.
+        """
+        return pulumi.get(self, "grpc_service_name")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[float]:
+        """
+        The port number for the health check request.
+        Must be specified if portName and portSpecification are not set
+        or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="portName")
+    def port_name(self) -> Optional[str]:
+        """
+        Port name as defined in InstanceGroup#NamedPort#name. If both port and
+        port_name are defined, port takes precedence.
+        """
+        return pulumi.get(self, "port_name")
+
+    @property
+    @pulumi.getter(name="portSpecification")
+    def port_specification(self) -> Optional[str]:
+        """
+        Specifies how port is selected for health checking, can be one of the
+        following values:
+        * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+        * `USE_NAMED_PORT`: The `portName` is used for health checking.
+        * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+        network endpoint is used for health checking. For other backends, the
+        port or named port specified in the Backend Service is used for health
+        checking.
+        If not specified, gRPC health check follows behavior specified in `port` and
+        `portName` fields.
+        Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
+        """
+        return pulumi.get(self, "port_specification")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
 class HealthCheckHttp2HealthCheck(dict):
     def __init__(__self__, *,
                  host: Optional[str] = None,
@@ -2757,8 +2851,9 @@ class HealthCheckHttp2HealthCheck(dict):
         :param str host: The value of the host header in the HTTP2 health check request.
                If left empty (default value), the public IP on behalf of which this health
                check is performed will be used.
-        :param float port: The TCP port number for the HTTP2 health check request.
-               The default value is 443.
+        :param float port: The port number for the health check request.
+               Must be specified if portName and portSpecification are not set
+               or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
         :param str port_name: Port name as defined in InstanceGroup#NamedPort#name. If both port and
                port_name are defined, port takes precedence.
         :param str port_specification: Specifies how port is selected for health checking, can be one of the
@@ -2769,7 +2864,7 @@ class HealthCheckHttp2HealthCheck(dict):
                network endpoint is used for health checking. For other backends, the
                port or named port specified in the Backend Service is used for health
                checking.
-               If not specified, HTTP2 health check follows behavior specified in `port` and
+               If not specified, gRPC health check follows behavior specified in `port` and
                `portName` fields.
                Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
         :param str proxy_header: Specifies the type of proxy header to append before sending data to the
@@ -2811,8 +2906,9 @@ class HealthCheckHttp2HealthCheck(dict):
     @pulumi.getter
     def port(self) -> Optional[float]:
         """
-        The TCP port number for the HTTP2 health check request.
-        The default value is 443.
+        The port number for the health check request.
+        Must be specified if portName and portSpecification are not set
+        or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
         """
         return pulumi.get(self, "port")
 
@@ -2837,7 +2933,7 @@ class HealthCheckHttp2HealthCheck(dict):
         network endpoint is used for health checking. For other backends, the
         port or named port specified in the Backend Service is used for health
         checking.
-        If not specified, HTTP2 health check follows behavior specified in `port` and
+        If not specified, gRPC health check follows behavior specified in `port` and
         `portName` fields.
         Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
         """
@@ -2891,8 +2987,9 @@ class HealthCheckHttpHealthCheck(dict):
         :param str host: The value of the host header in the HTTP2 health check request.
                If left empty (default value), the public IP on behalf of which this health
                check is performed will be used.
-        :param float port: The TCP port number for the HTTP2 health check request.
-               The default value is 443.
+        :param float port: The port number for the health check request.
+               Must be specified if portName and portSpecification are not set
+               or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
         :param str port_name: Port name as defined in InstanceGroup#NamedPort#name. If both port and
                port_name are defined, port takes precedence.
         :param str port_specification: Specifies how port is selected for health checking, can be one of the
@@ -2903,7 +3000,7 @@ class HealthCheckHttpHealthCheck(dict):
                network endpoint is used for health checking. For other backends, the
                port or named port specified in the Backend Service is used for health
                checking.
-               If not specified, HTTP2 health check follows behavior specified in `port` and
+               If not specified, gRPC health check follows behavior specified in `port` and
                `portName` fields.
                Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
         :param str proxy_header: Specifies the type of proxy header to append before sending data to the
@@ -2945,8 +3042,9 @@ class HealthCheckHttpHealthCheck(dict):
     @pulumi.getter
     def port(self) -> Optional[float]:
         """
-        The TCP port number for the HTTP2 health check request.
-        The default value is 443.
+        The port number for the health check request.
+        Must be specified if portName and portSpecification are not set
+        or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
         """
         return pulumi.get(self, "port")
 
@@ -2971,7 +3069,7 @@ class HealthCheckHttpHealthCheck(dict):
         network endpoint is used for health checking. For other backends, the
         port or named port specified in the Backend Service is used for health
         checking.
-        If not specified, HTTP2 health check follows behavior specified in `port` and
+        If not specified, gRPC health check follows behavior specified in `port` and
         `portName` fields.
         Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
         """
@@ -3025,8 +3123,9 @@ class HealthCheckHttpsHealthCheck(dict):
         :param str host: The value of the host header in the HTTP2 health check request.
                If left empty (default value), the public IP on behalf of which this health
                check is performed will be used.
-        :param float port: The TCP port number for the HTTP2 health check request.
-               The default value is 443.
+        :param float port: The port number for the health check request.
+               Must be specified if portName and portSpecification are not set
+               or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
         :param str port_name: Port name as defined in InstanceGroup#NamedPort#name. If both port and
                port_name are defined, port takes precedence.
         :param str port_specification: Specifies how port is selected for health checking, can be one of the
@@ -3037,7 +3136,7 @@ class HealthCheckHttpsHealthCheck(dict):
                network endpoint is used for health checking. For other backends, the
                port or named port specified in the Backend Service is used for health
                checking.
-               If not specified, HTTP2 health check follows behavior specified in `port` and
+               If not specified, gRPC health check follows behavior specified in `port` and
                `portName` fields.
                Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
         :param str proxy_header: Specifies the type of proxy header to append before sending data to the
@@ -3079,8 +3178,9 @@ class HealthCheckHttpsHealthCheck(dict):
     @pulumi.getter
     def port(self) -> Optional[float]:
         """
-        The TCP port number for the HTTP2 health check request.
-        The default value is 443.
+        The port number for the health check request.
+        Must be specified if portName and portSpecification are not set
+        or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
         """
         return pulumi.get(self, "port")
 
@@ -3105,7 +3205,7 @@ class HealthCheckHttpsHealthCheck(dict):
         network endpoint is used for health checking. For other backends, the
         port or named port specified in the Backend Service is used for health
         checking.
-        If not specified, HTTP2 health check follows behavior specified in `port` and
+        If not specified, gRPC health check follows behavior specified in `port` and
         `portName` fields.
         Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
         """
@@ -3179,8 +3279,9 @@ class HealthCheckSslHealthCheck(dict):
                  request: Optional[str] = None,
                  response: Optional[str] = None):
         """
-        :param float port: The TCP port number for the HTTP2 health check request.
-               The default value is 443.
+        :param float port: The port number for the health check request.
+               Must be specified if portName and portSpecification are not set
+               or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
         :param str port_name: Port name as defined in InstanceGroup#NamedPort#name. If both port and
                port_name are defined, port takes precedence.
         :param str port_specification: Specifies how port is selected for health checking, can be one of the
@@ -3191,7 +3292,7 @@ class HealthCheckSslHealthCheck(dict):
                network endpoint is used for health checking. For other backends, the
                port or named port specified in the Backend Service is used for health
                checking.
-               If not specified, HTTP2 health check follows behavior specified in `port` and
+               If not specified, gRPC health check follows behavior specified in `port` and
                `portName` fields.
                Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
         :param str proxy_header: Specifies the type of proxy header to append before sending data to the
@@ -3223,8 +3324,9 @@ class HealthCheckSslHealthCheck(dict):
     @pulumi.getter
     def port(self) -> Optional[float]:
         """
-        The TCP port number for the HTTP2 health check request.
-        The default value is 443.
+        The port number for the health check request.
+        Must be specified if portName and portSpecification are not set
+        or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
         """
         return pulumi.get(self, "port")
 
@@ -3249,7 +3351,7 @@ class HealthCheckSslHealthCheck(dict):
         network endpoint is used for health checking. For other backends, the
         port or named port specified in the Backend Service is used for health
         checking.
-        If not specified, HTTP2 health check follows behavior specified in `port` and
+        If not specified, gRPC health check follows behavior specified in `port` and
         `portName` fields.
         Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
         """
@@ -3301,8 +3403,9 @@ class HealthCheckTcpHealthCheck(dict):
                  request: Optional[str] = None,
                  response: Optional[str] = None):
         """
-        :param float port: The TCP port number for the HTTP2 health check request.
-               The default value is 443.
+        :param float port: The port number for the health check request.
+               Must be specified if portName and portSpecification are not set
+               or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
         :param str port_name: Port name as defined in InstanceGroup#NamedPort#name. If both port and
                port_name are defined, port takes precedence.
         :param str port_specification: Specifies how port is selected for health checking, can be one of the
@@ -3313,7 +3416,7 @@ class HealthCheckTcpHealthCheck(dict):
                network endpoint is used for health checking. For other backends, the
                port or named port specified in the Backend Service is used for health
                checking.
-               If not specified, HTTP2 health check follows behavior specified in `port` and
+               If not specified, gRPC health check follows behavior specified in `port` and
                `portName` fields.
                Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
         :param str proxy_header: Specifies the type of proxy header to append before sending data to the
@@ -3345,8 +3448,9 @@ class HealthCheckTcpHealthCheck(dict):
     @pulumi.getter
     def port(self) -> Optional[float]:
         """
-        The TCP port number for the HTTP2 health check request.
-        The default value is 443.
+        The port number for the health check request.
+        Must be specified if portName and portSpecification are not set
+        or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
         """
         return pulumi.get(self, "port")
 
@@ -3371,7 +3475,7 @@ class HealthCheckTcpHealthCheck(dict):
         network endpoint is used for health checking. For other backends, the
         port or named port specified in the Backend Service is used for health
         checking.
-        If not specified, HTTP2 health check follows behavior specified in `port` and
+        If not specified, gRPC health check follows behavior specified in `port` and
         `portName` fields.
         Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
         """
@@ -5038,6 +5142,7 @@ class InstanceSchedulingNodeAffinity(dict):
         :param str key: The key for the node affinity label.
         :param str operator: The operator. Can be `IN` for node-affinities
                or `NOT_IN` for anti-affinities.
+        :param List[str] values: The values for the node affinity label.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "operator", operator)
@@ -5063,6 +5168,9 @@ class InstanceSchedulingNodeAffinity(dict):
     @property
     @pulumi.getter
     def values(self) -> List[str]:
+        """
+        The values for the node affinity label.
+        """
         return pulumi.get(self, "values")
 
     def _translate_property(self, prop):
@@ -7997,6 +8105,98 @@ class RegionDiskSourceSnapshotEncryptionKey(dict):
 
 
 @pulumi.output_type
+class RegionHealthCheckGrpcHealthCheck(dict):
+    def __init__(__self__, *,
+                 grpc_service_name: Optional[str] = None,
+                 port: Optional[float] = None,
+                 port_name: Optional[str] = None,
+                 port_specification: Optional[str] = None):
+        """
+        :param str grpc_service_name: The gRPC service name for the health check.
+               The value of grpcServiceName has the following meanings by convention:
+               - Empty serviceName means the overall status of all services at the backend.
+               - Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
+               The grpcServiceName can only be ASCII.
+        :param float port: The port number for the health check request.
+               Must be specified if portName and portSpecification are not set
+               or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+        :param str port_name: Port name as defined in InstanceGroup#NamedPort#name. If both port and
+               port_name are defined, port takes precedence.
+        :param str port_specification: Specifies how port is selected for health checking, can be one of the
+               following values:
+               * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+               * `USE_NAMED_PORT`: The `portName` is used for health checking.
+               * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+               network endpoint is used for health checking. For other backends, the
+               port or named port specified in the Backend Service is used for health
+               checking.
+               If not specified, gRPC health check follows behavior specified in `port` and
+               `portName` fields.
+               Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
+        """
+        if grpc_service_name is not None:
+            pulumi.set(__self__, "grpc_service_name", grpc_service_name)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if port_name is not None:
+            pulumi.set(__self__, "port_name", port_name)
+        if port_specification is not None:
+            pulumi.set(__self__, "port_specification", port_specification)
+
+    @property
+    @pulumi.getter(name="grpcServiceName")
+    def grpc_service_name(self) -> Optional[str]:
+        """
+        The gRPC service name for the health check.
+        The value of grpcServiceName has the following meanings by convention:
+        - Empty serviceName means the overall status of all services at the backend.
+        - Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
+        The grpcServiceName can only be ASCII.
+        """
+        return pulumi.get(self, "grpc_service_name")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[float]:
+        """
+        The port number for the health check request.
+        Must be specified if portName and portSpecification are not set
+        or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="portName")
+    def port_name(self) -> Optional[str]:
+        """
+        Port name as defined in InstanceGroup#NamedPort#name. If both port and
+        port_name are defined, port takes precedence.
+        """
+        return pulumi.get(self, "port_name")
+
+    @property
+    @pulumi.getter(name="portSpecification")
+    def port_specification(self) -> Optional[str]:
+        """
+        Specifies how port is selected for health checking, can be one of the
+        following values:
+        * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+        * `USE_NAMED_PORT`: The `portName` is used for health checking.
+        * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+        network endpoint is used for health checking. For other backends, the
+        port or named port specified in the Backend Service is used for health
+        checking.
+        If not specified, gRPC health check follows behavior specified in `port` and
+        `portName` fields.
+        Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
+        """
+        return pulumi.get(self, "port_specification")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
 class RegionHealthCheckHttp2HealthCheck(dict):
     def __init__(__self__, *,
                  host: Optional[str] = None,
@@ -8010,8 +8210,9 @@ class RegionHealthCheckHttp2HealthCheck(dict):
         :param str host: The value of the host header in the HTTP2 health check request.
                If left empty (default value), the public IP on behalf of which this health
                check is performed will be used.
-        :param float port: The TCP port number for the HTTP2 health check request.
-               The default value is 443.
+        :param float port: The port number for the health check request.
+               Must be specified if portName and portSpecification are not set
+               or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
         :param str port_name: Port name as defined in InstanceGroup#NamedPort#name. If both port and
                port_name are defined, port takes precedence.
         :param str port_specification: Specifies how port is selected for health checking, can be one of the
@@ -8022,7 +8223,7 @@ class RegionHealthCheckHttp2HealthCheck(dict):
                network endpoint is used for health checking. For other backends, the
                port or named port specified in the Backend Service is used for health
                checking.
-               If not specified, HTTP2 health check follows behavior specified in `port` and
+               If not specified, gRPC health check follows behavior specified in `port` and
                `portName` fields.
                Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
         :param str proxy_header: Specifies the type of proxy header to append before sending data to the
@@ -8064,8 +8265,9 @@ class RegionHealthCheckHttp2HealthCheck(dict):
     @pulumi.getter
     def port(self) -> Optional[float]:
         """
-        The TCP port number for the HTTP2 health check request.
-        The default value is 443.
+        The port number for the health check request.
+        Must be specified if portName and portSpecification are not set
+        or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
         """
         return pulumi.get(self, "port")
 
@@ -8090,7 +8292,7 @@ class RegionHealthCheckHttp2HealthCheck(dict):
         network endpoint is used for health checking. For other backends, the
         port or named port specified in the Backend Service is used for health
         checking.
-        If not specified, HTTP2 health check follows behavior specified in `port` and
+        If not specified, gRPC health check follows behavior specified in `port` and
         `portName` fields.
         Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
         """
@@ -8144,8 +8346,9 @@ class RegionHealthCheckHttpHealthCheck(dict):
         :param str host: The value of the host header in the HTTP2 health check request.
                If left empty (default value), the public IP on behalf of which this health
                check is performed will be used.
-        :param float port: The TCP port number for the HTTP2 health check request.
-               The default value is 443.
+        :param float port: The port number for the health check request.
+               Must be specified if portName and portSpecification are not set
+               or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
         :param str port_name: Port name as defined in InstanceGroup#NamedPort#name. If both port and
                port_name are defined, port takes precedence.
         :param str port_specification: Specifies how port is selected for health checking, can be one of the
@@ -8156,7 +8359,7 @@ class RegionHealthCheckHttpHealthCheck(dict):
                network endpoint is used for health checking. For other backends, the
                port or named port specified in the Backend Service is used for health
                checking.
-               If not specified, HTTP2 health check follows behavior specified in `port` and
+               If not specified, gRPC health check follows behavior specified in `port` and
                `portName` fields.
                Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
         :param str proxy_header: Specifies the type of proxy header to append before sending data to the
@@ -8198,8 +8401,9 @@ class RegionHealthCheckHttpHealthCheck(dict):
     @pulumi.getter
     def port(self) -> Optional[float]:
         """
-        The TCP port number for the HTTP2 health check request.
-        The default value is 443.
+        The port number for the health check request.
+        Must be specified if portName and portSpecification are not set
+        or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
         """
         return pulumi.get(self, "port")
 
@@ -8224,7 +8428,7 @@ class RegionHealthCheckHttpHealthCheck(dict):
         network endpoint is used for health checking. For other backends, the
         port or named port specified in the Backend Service is used for health
         checking.
-        If not specified, HTTP2 health check follows behavior specified in `port` and
+        If not specified, gRPC health check follows behavior specified in `port` and
         `portName` fields.
         Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
         """
@@ -8278,8 +8482,9 @@ class RegionHealthCheckHttpsHealthCheck(dict):
         :param str host: The value of the host header in the HTTP2 health check request.
                If left empty (default value), the public IP on behalf of which this health
                check is performed will be used.
-        :param float port: The TCP port number for the HTTP2 health check request.
-               The default value is 443.
+        :param float port: The port number for the health check request.
+               Must be specified if portName and portSpecification are not set
+               or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
         :param str port_name: Port name as defined in InstanceGroup#NamedPort#name. If both port and
                port_name are defined, port takes precedence.
         :param str port_specification: Specifies how port is selected for health checking, can be one of the
@@ -8290,7 +8495,7 @@ class RegionHealthCheckHttpsHealthCheck(dict):
                network endpoint is used for health checking. For other backends, the
                port or named port specified in the Backend Service is used for health
                checking.
-               If not specified, HTTP2 health check follows behavior specified in `port` and
+               If not specified, gRPC health check follows behavior specified in `port` and
                `portName` fields.
                Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
         :param str proxy_header: Specifies the type of proxy header to append before sending data to the
@@ -8332,8 +8537,9 @@ class RegionHealthCheckHttpsHealthCheck(dict):
     @pulumi.getter
     def port(self) -> Optional[float]:
         """
-        The TCP port number for the HTTP2 health check request.
-        The default value is 443.
+        The port number for the health check request.
+        Must be specified if portName and portSpecification are not set
+        or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
         """
         return pulumi.get(self, "port")
 
@@ -8358,7 +8564,7 @@ class RegionHealthCheckHttpsHealthCheck(dict):
         network endpoint is used for health checking. For other backends, the
         port or named port specified in the Backend Service is used for health
         checking.
-        If not specified, HTTP2 health check follows behavior specified in `port` and
+        If not specified, gRPC health check follows behavior specified in `port` and
         `portName` fields.
         Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
         """
@@ -8432,8 +8638,9 @@ class RegionHealthCheckSslHealthCheck(dict):
                  request: Optional[str] = None,
                  response: Optional[str] = None):
         """
-        :param float port: The TCP port number for the HTTP2 health check request.
-               The default value is 443.
+        :param float port: The port number for the health check request.
+               Must be specified if portName and portSpecification are not set
+               or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
         :param str port_name: Port name as defined in InstanceGroup#NamedPort#name. If both port and
                port_name are defined, port takes precedence.
         :param str port_specification: Specifies how port is selected for health checking, can be one of the
@@ -8444,7 +8651,7 @@ class RegionHealthCheckSslHealthCheck(dict):
                network endpoint is used for health checking. For other backends, the
                port or named port specified in the Backend Service is used for health
                checking.
-               If not specified, HTTP2 health check follows behavior specified in `port` and
+               If not specified, gRPC health check follows behavior specified in `port` and
                `portName` fields.
                Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
         :param str proxy_header: Specifies the type of proxy header to append before sending data to the
@@ -8476,8 +8683,9 @@ class RegionHealthCheckSslHealthCheck(dict):
     @pulumi.getter
     def port(self) -> Optional[float]:
         """
-        The TCP port number for the HTTP2 health check request.
-        The default value is 443.
+        The port number for the health check request.
+        Must be specified if portName and portSpecification are not set
+        or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
         """
         return pulumi.get(self, "port")
 
@@ -8502,7 +8710,7 @@ class RegionHealthCheckSslHealthCheck(dict):
         network endpoint is used for health checking. For other backends, the
         port or named port specified in the Backend Service is used for health
         checking.
-        If not specified, HTTP2 health check follows behavior specified in `port` and
+        If not specified, gRPC health check follows behavior specified in `port` and
         `portName` fields.
         Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
         """
@@ -8554,8 +8762,9 @@ class RegionHealthCheckTcpHealthCheck(dict):
                  request: Optional[str] = None,
                  response: Optional[str] = None):
         """
-        :param float port: The TCP port number for the HTTP2 health check request.
-               The default value is 443.
+        :param float port: The port number for the health check request.
+               Must be specified if portName and portSpecification are not set
+               or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
         :param str port_name: Port name as defined in InstanceGroup#NamedPort#name. If both port and
                port_name are defined, port takes precedence.
         :param str port_specification: Specifies how port is selected for health checking, can be one of the
@@ -8566,7 +8775,7 @@ class RegionHealthCheckTcpHealthCheck(dict):
                network endpoint is used for health checking. For other backends, the
                port or named port specified in the Backend Service is used for health
                checking.
-               If not specified, HTTP2 health check follows behavior specified in `port` and
+               If not specified, gRPC health check follows behavior specified in `port` and
                `portName` fields.
                Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
         :param str proxy_header: Specifies the type of proxy header to append before sending data to the
@@ -8598,8 +8807,9 @@ class RegionHealthCheckTcpHealthCheck(dict):
     @pulumi.getter
     def port(self) -> Optional[float]:
         """
-        The TCP port number for the HTTP2 health check request.
-        The default value is 443.
+        The port number for the health check request.
+        Must be specified if portName and portSpecification are not set
+        or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
         """
         return pulumi.get(self, "port")
 
@@ -8624,7 +8834,7 @@ class RegionHealthCheckTcpHealthCheck(dict):
         network endpoint is used for health checking. For other backends, the
         port or named port specified in the Backend Service is used for health
         checking.
-        If not specified, HTTP2 health check follows behavior specified in `port` and
+        If not specified, gRPC health check follows behavior specified in `port` and
         `portName` fields.
         Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
         """
@@ -13911,8 +14121,6 @@ class SubnetworkLogConfig(dict):
                Toggles the aggregation interval for collecting flow logs. Increasing the
                interval time will reduce the amount of generated flow logs for long
                lasting connections. Default is an interval of 5 seconds per connection.
-               Possible values are INTERVAL_5_SEC, INTERVAL_30_SEC, INTERVAL_1_MIN,
-               INTERVAL_5_MIN, INTERVAL_10_MIN, INTERVAL_15_MIN
                Default value is `INTERVAL_5_SEC`.
                Possible values are `INTERVAL_5_SEC`, `INTERVAL_30_SEC`, `INTERVAL_1_MIN`, `INTERVAL_5_MIN`, `INTERVAL_10_MIN`, and `INTERVAL_15_MIN`.
         :param float flow_sampling: Can only be specified if VPC flow logging for this subnetwork is enabled.
@@ -13941,8 +14149,6 @@ class SubnetworkLogConfig(dict):
         Toggles the aggregation interval for collecting flow logs. Increasing the
         interval time will reduce the amount of generated flow logs for long
         lasting connections. Default is an interval of 5 seconds per connection.
-        Possible values are INTERVAL_5_SEC, INTERVAL_30_SEC, INTERVAL_1_MIN,
-        INTERVAL_5_MIN, INTERVAL_10_MIN, INTERVAL_15_MIN
         Default value is `INTERVAL_5_SEC`.
         Possible values are `INTERVAL_5_SEC`, `INTERVAL_30_SEC`, `INTERVAL_1_MIN`, `INTERVAL_5_MIN`, `INTERVAL_10_MIN`, and `INTERVAL_15_MIN`.
         """

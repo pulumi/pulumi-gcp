@@ -38,6 +38,7 @@ export class Provider extends pulumi.ProviderResource {
     constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let inputs: pulumi.Inputs = {};
         {
+            inputs["accessApprovalCustomEndpoint"] = args ? args.accessApprovalCustomEndpoint : undefined;
             inputs["accessContextManagerCustomEndpoint"] = args ? args.accessContextManagerCustomEndpoint : undefined;
             inputs["accessToken"] = args ? args.accessToken : undefined;
             inputs["activeDirectoryCustomEndpoint"] = args ? args.activeDirectoryCustomEndpoint : undefined;
@@ -137,6 +138,7 @@ export class Provider extends pulumi.ProviderResource {
  * The set of arguments for constructing a Provider resource.
  */
 export interface ProviderArgs {
+    readonly accessApprovalCustomEndpoint?: pulumi.Input<string>;
     readonly accessContextManagerCustomEndpoint?: pulumi.Input<string>;
     readonly accessToken?: pulumi.Input<string>;
     readonly activeDirectoryCustomEndpoint?: pulumi.Input<string>;

@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Storage.Outputs
         /// </summary>
         public readonly string? CreatedBefore;
         /// <summary>
-        /// [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `STANDARD`, `DURABLE_REDUCED_AVAILABILITY`.
+        /// [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`, `STANDARD`, `DURABLE_REDUCED_AVAILABILITY`.
         /// </summary>
         public readonly ImmutableArray<string> MatchesStorageClasses;
         /// <summary>

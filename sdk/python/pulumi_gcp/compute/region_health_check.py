@@ -19,6 +19,7 @@ class RegionHealthCheck(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  check_interval_sec: Optional[pulumi.Input[float]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 grpc_health_check: Optional[pulumi.Input[pulumi.InputType['RegionHealthCheckGrpcHealthCheckArgs']]] = None,
                  healthy_threshold: Optional[pulumi.Input[float]] = None,
                  http2_health_check: Optional[pulumi.Input[pulumi.InputType['RegionHealthCheckHttp2HealthCheckArgs']]] = None,
                  http_health_check: Optional[pulumi.Input[pulumi.InputType['RegionHealthCheckHttpHealthCheckArgs']]] = None,
@@ -61,6 +62,8 @@ class RegionHealthCheck(pulumi.CustomResource):
                seconds.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
+        :param pulumi.Input[pulumi.InputType['RegionHealthCheckGrpcHealthCheckArgs']] grpc_health_check: A nested object resource
+               Structure is documented below.
         :param pulumi.Input[float] healthy_threshold: A so-far unhealthy instance will be marked healthy after this many
                consecutive successes. The default value is 2.
         :param pulumi.Input[pulumi.InputType['RegionHealthCheckHttp2HealthCheckArgs']] http2_health_check: A nested object resource
@@ -110,6 +113,7 @@ class RegionHealthCheck(pulumi.CustomResource):
 
             __props__['check_interval_sec'] = check_interval_sec
             __props__['description'] = description
+            __props__['grpc_health_check'] = grpc_health_check
             __props__['healthy_threshold'] = healthy_threshold
             __props__['http2_health_check'] = http2_health_check
             __props__['http_health_check'] = http_health_check
@@ -138,6 +142,7 @@ class RegionHealthCheck(pulumi.CustomResource):
             check_interval_sec: Optional[pulumi.Input[float]] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            grpc_health_check: Optional[pulumi.Input[pulumi.InputType['RegionHealthCheckGrpcHealthCheckArgs']]] = None,
             healthy_threshold: Optional[pulumi.Input[float]] = None,
             http2_health_check: Optional[pulumi.Input[pulumi.InputType['RegionHealthCheckHttp2HealthCheckArgs']]] = None,
             http_health_check: Optional[pulumi.Input[pulumi.InputType['RegionHealthCheckHttpHealthCheckArgs']]] = None,
@@ -164,6 +169,8 @@ class RegionHealthCheck(pulumi.CustomResource):
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
+        :param pulumi.Input[pulumi.InputType['RegionHealthCheckGrpcHealthCheckArgs']] grpc_health_check: A nested object resource
+               Structure is documented below.
         :param pulumi.Input[float] healthy_threshold: A so-far unhealthy instance will be marked healthy after this many
                consecutive successes. The default value is 2.
         :param pulumi.Input[pulumi.InputType['RegionHealthCheckHttp2HealthCheckArgs']] http2_health_check: A nested object resource
@@ -203,6 +210,7 @@ class RegionHealthCheck(pulumi.CustomResource):
         __props__["check_interval_sec"] = check_interval_sec
         __props__["creation_timestamp"] = creation_timestamp
         __props__["description"] = description
+        __props__["grpc_health_check"] = grpc_health_check
         __props__["healthy_threshold"] = healthy_threshold
         __props__["http2_health_check"] = http2_health_check
         __props__["http_health_check"] = http_health_check
@@ -244,6 +252,15 @@ class RegionHealthCheck(pulumi.CustomResource):
         you create the resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="grpcHealthCheck")
+    def grpc_health_check(self) -> Optional['outputs.RegionHealthCheckGrpcHealthCheck']:
+        """
+        A nested object resource
+        Structure is documented below.
+        """
+        return pulumi.get(self, "grpc_health_check")
 
     @property
     @pulumi.getter(name="healthyThreshold")

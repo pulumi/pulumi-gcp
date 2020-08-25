@@ -17,6 +17,7 @@ class Provider(pulumi.ProviderResource):
     def __init__(__self__,
                  resource_name,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 access_approval_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  access_context_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  access_token: Optional[pulumi.Input[str]] = None,
                  active_directory_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -129,6 +130,7 @@ class Provider(pulumi.ProviderResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['access_approval_custom_endpoint'] = access_approval_custom_endpoint
             __props__['access_context_manager_custom_endpoint'] = access_context_manager_custom_endpoint
             __props__['access_token'] = access_token
             __props__['active_directory_custom_endpoint'] = active_directory_custom_endpoint

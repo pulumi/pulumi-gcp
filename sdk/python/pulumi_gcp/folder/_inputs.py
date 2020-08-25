@@ -9,6 +9,7 @@ from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
 
 __all__ = [
+    'AccessApprovalSettingsEnrolledServiceArgs',
     'IAMBindingConditionArgs',
     'IAMMemberConditionArgs',
     'IamAuditConfigAuditLogConfigArgs',
@@ -18,6 +19,34 @@ __all__ = [
     'OrganizationPolicyListPolicyDenyArgs',
     'OrganizationPolicyRestorePolicyArgs',
 ]
+
+@pulumi.input_type
+class AccessApprovalSettingsEnrolledServiceArgs:
+    def __init__(__self__, *,
+                 cloud_product: pulumi.Input[str],
+                 enrollment_level: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "cloud_product", cloud_product)
+        if enrollment_level is not None:
+            pulumi.set(__self__, "enrollment_level", enrollment_level)
+
+    @property
+    @pulumi.getter(name="cloudProduct")
+    def cloud_product(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "cloud_product")
+
+    @cloud_product.setter
+    def cloud_product(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cloud_product", value)
+
+    @property
+    @pulumi.getter(name="enrollmentLevel")
+    def enrollment_level(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "enrollment_level")
+
+    @enrollment_level.setter
+    def enrollment_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "enrollment_level", value)
+
 
 @pulumi.input_type
 class IAMBindingConditionArgs:

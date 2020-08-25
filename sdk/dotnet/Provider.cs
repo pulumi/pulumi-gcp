@@ -44,6 +44,9 @@ namespace Pulumi.Gcp
 
     public sealed class ProviderArgs : Pulumi.ResourceArgs
     {
+        [Input("accessApprovalCustomEndpoint")]
+        public Input<string>? AccessApprovalCustomEndpoint { get; set; }
+
         [Input("accessContextManagerCustomEndpoint")]
         public Input<string>? AccessContextManagerCustomEndpoint { get; set; }
 

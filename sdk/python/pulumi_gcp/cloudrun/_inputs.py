@@ -1139,7 +1139,7 @@ class ServiceTemplateSpecContainerArgs:
                Structure is documented below.
         :param pulumi.Input['ServiceTemplateSpecContainerResourcesArgs'] resources: Compute Resources required by this container. Used to set values such as max memory
                More info:
-               https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+               https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits
                Structure is documented below.
         :param pulumi.Input[str] working_dir: -
                (Optional, Deprecated)
@@ -1276,7 +1276,7 @@ class ServiceTemplateSpecContainerArgs:
         """
         Compute Resources required by this container. Used to set values such as max memory
         More info:
-        https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+        https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits
         Structure is documented below.
         """
         return pulumi.get(self, "resources")

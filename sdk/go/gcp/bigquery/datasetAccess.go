@@ -28,6 +28,9 @@ import (
 type DatasetAccess struct {
 	pulumi.CustomResourceState
 
+	// If true, represents that that the iam_member in the config was translated to a different member type by the API, and is
+	// stored in state as a different member type
+	ApiUpdatedMember pulumi.BoolOutput `pulumi:"apiUpdatedMember"`
 	// The ID of the dataset containing this table.
 	DatasetId pulumi.StringOutput `pulumi:"datasetId"`
 	// A domain to grant access to. Any users signed in with the
@@ -93,6 +96,9 @@ func GetDatasetAccess(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DatasetAccess resources.
 type datasetAccessState struct {
+	// If true, represents that that the iam_member in the config was translated to a different member type by the API, and is
+	// stored in state as a different member type
+	ApiUpdatedMember *bool `pulumi:"apiUpdatedMember"`
 	// The ID of the dataset containing this table.
 	DatasetId *string `pulumi:"datasetId"`
 	// A domain to grant access to. Any users signed in with the
@@ -128,6 +134,9 @@ type datasetAccessState struct {
 }
 
 type DatasetAccessState struct {
+	// If true, represents that that the iam_member in the config was translated to a different member type by the API, and is
+	// stored in state as a different member type
+	ApiUpdatedMember pulumi.BoolPtrInput
 	// The ID of the dataset containing this table.
 	DatasetId pulumi.StringPtrInput
 	// A domain to grant access to. Any users signed in with the

@@ -100,6 +100,7 @@ class DatasetAccess(pulumi.CustomResource):
             __props__['special_group'] = special_group
             __props__['user_by_email'] = user_by_email
             __props__['view'] = view
+            __props__['api_updated_member'] = None
         super(DatasetAccess, __self__).__init__(
             'gcp:bigquery/datasetAccess:DatasetAccess',
             resource_name,
@@ -110,6 +111,7 @@ class DatasetAccess(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            api_updated_member: Optional[pulumi.Input[bool]] = None,
             dataset_id: Optional[pulumi.Input[str]] = None,
             domain: Optional[pulumi.Input[str]] = None,
             group_by_email: Optional[pulumi.Input[str]] = None,
@@ -126,6 +128,8 @@ class DatasetAccess(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] api_updated_member: If true, represents that that the iam_member in the config was translated to a different member type by the API, and is
+               stored in state as a different member type
         :param pulumi.Input[str] dataset_id: The ID of the dataset containing this table.
         :param pulumi.Input[str] domain: A domain to grant access to. Any users signed in with the
                domain specified will be granted the specified access
@@ -154,6 +158,7 @@ class DatasetAccess(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["api_updated_member"] = api_updated_member
         __props__["dataset_id"] = dataset_id
         __props__["domain"] = domain
         __props__["group_by_email"] = group_by_email
@@ -164,6 +169,15 @@ class DatasetAccess(pulumi.CustomResource):
         __props__["user_by_email"] = user_by_email
         __props__["view"] = view
         return DatasetAccess(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="apiUpdatedMember")
+    def api_updated_member(self) -> bool:
+        """
+        If true, represents that that the iam_member in the config was translated to a different member type by the API, and is
+        stored in state as a different member type
+        """
+        return pulumi.get(self, "api_updated_member")
 
     @property
     @pulumi.getter(name="datasetId")

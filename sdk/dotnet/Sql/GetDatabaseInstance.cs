@@ -27,6 +27,12 @@ namespace Pulumi.Gcp.Sql
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// </summary>
+        [Input("project")]
+        public string? Project { get; set; }
+
         public GetDatabaseInstanceArgs()
         {
         }
@@ -67,7 +73,7 @@ namespace Pulumi.Gcp.Sql
         /// The first private (`PRIVATE`) IPv4 address assigned.
         /// </summary>
         public readonly string PrivateIpAddress;
-        public readonly string Project;
+        public readonly string? Project;
         /// <summary>
         /// The first public (`PRIMARY`) IPv4 address assigned.
         /// </summary>
@@ -117,7 +123,7 @@ namespace Pulumi.Gcp.Sql
 
             string privateIpAddress,
 
-            string project,
+            string? project,
 
             string publicIpAddress,
 

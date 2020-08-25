@@ -144,18 +144,37 @@ class BudgetAllUpdatesRule(dict):
 @pulumi.output_type
 class BudgetAmount(dict):
     def __init__(__self__, *,
-                 specified_amount: 'outputs.BudgetAmountSpecifiedAmount'):
+                 last_period_amount: Optional[bool] = None,
+                 specified_amount: Optional['outputs.BudgetAmountSpecifiedAmount'] = None):
         """
+        :param bool last_period_amount: Configures a budget amount that is automatically set to 100% of
+               last period's spend.
+               Boolean. Set value to true to use. Do not set to false, instead
+               use the `specified_amount` block.
         :param 'BudgetAmountSpecifiedAmountArgs' specified_amount: A specified amount to use as the budget. currencyCode is
                optional. If specified, it must match the currency of the
                billing account. The currencyCode is provided on output.
                Structure is documented below.
         """
-        pulumi.set(__self__, "specified_amount", specified_amount)
+        if last_period_amount is not None:
+            pulumi.set(__self__, "last_period_amount", last_period_amount)
+        if specified_amount is not None:
+            pulumi.set(__self__, "specified_amount", specified_amount)
+
+    @property
+    @pulumi.getter(name="lastPeriodAmount")
+    def last_period_amount(self) -> Optional[bool]:
+        """
+        Configures a budget amount that is automatically set to 100% of
+        last period's spend.
+        Boolean. Set value to true to use. Do not set to false, instead
+        use the `specified_amount` block.
+        """
+        return pulumi.get(self, "last_period_amount")
 
     @property
     @pulumi.getter(name="specifiedAmount")
-    def specified_amount(self) -> 'outputs.BudgetAmountSpecifiedAmount':
+    def specified_amount(self) -> Optional['outputs.BudgetAmountSpecifiedAmount']:
         """
         A specified amount to use as the budget. currencyCode is
         optional. If specified, it must match the currency of the

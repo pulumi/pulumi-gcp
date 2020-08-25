@@ -21,6 +21,8 @@ func LookupDatabaseInstance(ctx *pulumi.Context, args *LookupDatabaseInstanceArg
 type LookupDatabaseInstanceArgs struct {
 	// The name of the instance.
 	Name string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	Project *string `pulumi:"project"`
 }
 
 // A collection of values returned by getDatabaseInstance.
@@ -41,8 +43,8 @@ type LookupDatabaseInstanceResult struct {
 	// A name for this whitelist entry.
 	Name string `pulumi:"name"`
 	// The first private (`PRIVATE`) IPv4 address assigned.
-	PrivateIpAddress string `pulumi:"privateIpAddress"`
-	Project          string `pulumi:"project"`
+	PrivateIpAddress string  `pulumi:"privateIpAddress"`
+	Project          *string `pulumi:"project"`
 	// The first public (`PRIMARY`) IPv4 address assigned.
 	PublicIpAddress string `pulumi:"publicIpAddress"`
 	Region          string `pulumi:"region"`

@@ -20,8 +20,9 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? Host;
         /// <summary>
-        /// The TCP port number for the HTTP2 health check request.
-        /// The default value is 443.
+        /// The port number for the health check request.
+        /// Must be specified if portName and portSpecification are not set
+        /// or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
         /// </summary>
         public readonly int? Port;
         /// <summary>
@@ -38,7 +39,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// network endpoint is used for health checking. For other backends, the
         /// port or named port specified in the Backend Service is used for health
         /// checking.
-        /// If not specified, HTTP2 health check follows behavior specified in `port` and
+        /// If not specified, gRPC health check follows behavior specified in `port` and
         /// `portName` fields.
         /// Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
         /// </summary>
