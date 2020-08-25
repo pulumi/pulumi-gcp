@@ -6921,13 +6921,16 @@ func (o HaVpnGatewayVpnInterfaceArrayOutput) Index(i pulumi.IntInput) HaVpnGatew
 	}).(HaVpnGatewayVpnInterfaceOutput)
 }
 
-type HealthCheckHttp2HealthCheck struct {
-	// The value of the host header in the HTTP2 health check request.
-	// If left empty (default value), the public IP on behalf of which this health
-	// check is performed will be used.
-	Host *string `pulumi:"host"`
-	// The TCP port number for the HTTP2 health check request.
-	// The default value is 443.
+type HealthCheckGrpcHealthCheck struct {
+	// The gRPC service name for the health check.
+	// The value of grpcServiceName has the following meanings by convention:
+	// - Empty serviceName means the overall status of all services at the backend.
+	// - Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
+	//   The grpcServiceName can only be ASCII.
+	GrpcServiceName *string `pulumi:"grpcServiceName"`
+	// The port number for the health check request.
+	// Must be specified if portName and portSpecification are not set
+	// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
 	Port *int `pulumi:"port"`
 	// Port name as defined in InstanceGroup#NamedPort#name. If both port and
 	// portName are defined, port takes precedence.
@@ -6940,7 +6943,261 @@ type HealthCheckHttp2HealthCheck struct {
 	//   network endpoint is used for health checking. For other backends, the
 	//   port or named port specified in the Backend Service is used for health
 	//   checking.
-	//   If not specified, HTTP2 health check follows behavior specified in `port` and
+	//   If not specified, gRPC health check follows behavior specified in `port` and
+	//   `portName` fields.
+	//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
+	PortSpecification *string `pulumi:"portSpecification"`
+}
+
+// HealthCheckGrpcHealthCheckInput is an input type that accepts HealthCheckGrpcHealthCheckArgs and HealthCheckGrpcHealthCheckOutput values.
+// You can construct a concrete instance of `HealthCheckGrpcHealthCheckInput` via:
+//
+//          HealthCheckGrpcHealthCheckArgs{...}
+type HealthCheckGrpcHealthCheckInput interface {
+	pulumi.Input
+
+	ToHealthCheckGrpcHealthCheckOutput() HealthCheckGrpcHealthCheckOutput
+	ToHealthCheckGrpcHealthCheckOutputWithContext(context.Context) HealthCheckGrpcHealthCheckOutput
+}
+
+type HealthCheckGrpcHealthCheckArgs struct {
+	// The gRPC service name for the health check.
+	// The value of grpcServiceName has the following meanings by convention:
+	// - Empty serviceName means the overall status of all services at the backend.
+	// - Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
+	//   The grpcServiceName can only be ASCII.
+	GrpcServiceName pulumi.StringPtrInput `pulumi:"grpcServiceName"`
+	// The port number for the health check request.
+	// Must be specified if portName and portSpecification are not set
+	// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Port name as defined in InstanceGroup#NamedPort#name. If both port and
+	// portName are defined, port takes precedence.
+	PortName pulumi.StringPtrInput `pulumi:"portName"`
+	// Specifies how port is selected for health checking, can be one of the
+	// following values:
+	// * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+	// * `USE_NAMED_PORT`: The `portName` is used for health checking.
+	// * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+	//   network endpoint is used for health checking. For other backends, the
+	//   port or named port specified in the Backend Service is used for health
+	//   checking.
+	//   If not specified, gRPC health check follows behavior specified in `port` and
+	//   `portName` fields.
+	//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
+	PortSpecification pulumi.StringPtrInput `pulumi:"portSpecification"`
+}
+
+func (HealthCheckGrpcHealthCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HealthCheckGrpcHealthCheck)(nil)).Elem()
+}
+
+func (i HealthCheckGrpcHealthCheckArgs) ToHealthCheckGrpcHealthCheckOutput() HealthCheckGrpcHealthCheckOutput {
+	return i.ToHealthCheckGrpcHealthCheckOutputWithContext(context.Background())
+}
+
+func (i HealthCheckGrpcHealthCheckArgs) ToHealthCheckGrpcHealthCheckOutputWithContext(ctx context.Context) HealthCheckGrpcHealthCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HealthCheckGrpcHealthCheckOutput)
+}
+
+func (i HealthCheckGrpcHealthCheckArgs) ToHealthCheckGrpcHealthCheckPtrOutput() HealthCheckGrpcHealthCheckPtrOutput {
+	return i.ToHealthCheckGrpcHealthCheckPtrOutputWithContext(context.Background())
+}
+
+func (i HealthCheckGrpcHealthCheckArgs) ToHealthCheckGrpcHealthCheckPtrOutputWithContext(ctx context.Context) HealthCheckGrpcHealthCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HealthCheckGrpcHealthCheckOutput).ToHealthCheckGrpcHealthCheckPtrOutputWithContext(ctx)
+}
+
+// HealthCheckGrpcHealthCheckPtrInput is an input type that accepts HealthCheckGrpcHealthCheckArgs, HealthCheckGrpcHealthCheckPtr and HealthCheckGrpcHealthCheckPtrOutput values.
+// You can construct a concrete instance of `HealthCheckGrpcHealthCheckPtrInput` via:
+//
+//          HealthCheckGrpcHealthCheckArgs{...}
+//
+//  or:
+//
+//          nil
+type HealthCheckGrpcHealthCheckPtrInput interface {
+	pulumi.Input
+
+	ToHealthCheckGrpcHealthCheckPtrOutput() HealthCheckGrpcHealthCheckPtrOutput
+	ToHealthCheckGrpcHealthCheckPtrOutputWithContext(context.Context) HealthCheckGrpcHealthCheckPtrOutput
+}
+
+type healthCheckGrpcHealthCheckPtrType HealthCheckGrpcHealthCheckArgs
+
+func HealthCheckGrpcHealthCheckPtr(v *HealthCheckGrpcHealthCheckArgs) HealthCheckGrpcHealthCheckPtrInput {
+	return (*healthCheckGrpcHealthCheckPtrType)(v)
+}
+
+func (*healthCheckGrpcHealthCheckPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HealthCheckGrpcHealthCheck)(nil)).Elem()
+}
+
+func (i *healthCheckGrpcHealthCheckPtrType) ToHealthCheckGrpcHealthCheckPtrOutput() HealthCheckGrpcHealthCheckPtrOutput {
+	return i.ToHealthCheckGrpcHealthCheckPtrOutputWithContext(context.Background())
+}
+
+func (i *healthCheckGrpcHealthCheckPtrType) ToHealthCheckGrpcHealthCheckPtrOutputWithContext(ctx context.Context) HealthCheckGrpcHealthCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HealthCheckGrpcHealthCheckPtrOutput)
+}
+
+type HealthCheckGrpcHealthCheckOutput struct{ *pulumi.OutputState }
+
+func (HealthCheckGrpcHealthCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HealthCheckGrpcHealthCheck)(nil)).Elem()
+}
+
+func (o HealthCheckGrpcHealthCheckOutput) ToHealthCheckGrpcHealthCheckOutput() HealthCheckGrpcHealthCheckOutput {
+	return o
+}
+
+func (o HealthCheckGrpcHealthCheckOutput) ToHealthCheckGrpcHealthCheckOutputWithContext(ctx context.Context) HealthCheckGrpcHealthCheckOutput {
+	return o
+}
+
+func (o HealthCheckGrpcHealthCheckOutput) ToHealthCheckGrpcHealthCheckPtrOutput() HealthCheckGrpcHealthCheckPtrOutput {
+	return o.ToHealthCheckGrpcHealthCheckPtrOutputWithContext(context.Background())
+}
+
+func (o HealthCheckGrpcHealthCheckOutput) ToHealthCheckGrpcHealthCheckPtrOutputWithContext(ctx context.Context) HealthCheckGrpcHealthCheckPtrOutput {
+	return o.ApplyT(func(v HealthCheckGrpcHealthCheck) *HealthCheckGrpcHealthCheck {
+		return &v
+	}).(HealthCheckGrpcHealthCheckPtrOutput)
+}
+
+// The gRPC service name for the health check.
+// The value of grpcServiceName has the following meanings by convention:
+// - Empty serviceName means the overall status of all services at the backend.
+// - Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
+//   The grpcServiceName can only be ASCII.
+func (o HealthCheckGrpcHealthCheckOutput) GrpcServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HealthCheckGrpcHealthCheck) *string { return v.GrpcServiceName }).(pulumi.StringPtrOutput)
+}
+
+// The port number for the health check request.
+// Must be specified if portName and portSpecification are not set
+// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
+func (o HealthCheckGrpcHealthCheckOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v HealthCheckGrpcHealthCheck) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// Port name as defined in InstanceGroup#NamedPort#name. If both port and
+// portName are defined, port takes precedence.
+func (o HealthCheckGrpcHealthCheckOutput) PortName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HealthCheckGrpcHealthCheck) *string { return v.PortName }).(pulumi.StringPtrOutput)
+}
+
+// Specifies how port is selected for health checking, can be one of the
+// following values:
+// * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+// * `USE_NAMED_PORT`: The `portName` is used for health checking.
+// * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+//   network endpoint is used for health checking. For other backends, the
+//   port or named port specified in the Backend Service is used for health
+//   checking.
+//   If not specified, gRPC health check follows behavior specified in `port` and
+//   `portName` fields.
+//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
+func (o HealthCheckGrpcHealthCheckOutput) PortSpecification() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HealthCheckGrpcHealthCheck) *string { return v.PortSpecification }).(pulumi.StringPtrOutput)
+}
+
+type HealthCheckGrpcHealthCheckPtrOutput struct{ *pulumi.OutputState }
+
+func (HealthCheckGrpcHealthCheckPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HealthCheckGrpcHealthCheck)(nil)).Elem()
+}
+
+func (o HealthCheckGrpcHealthCheckPtrOutput) ToHealthCheckGrpcHealthCheckPtrOutput() HealthCheckGrpcHealthCheckPtrOutput {
+	return o
+}
+
+func (o HealthCheckGrpcHealthCheckPtrOutput) ToHealthCheckGrpcHealthCheckPtrOutputWithContext(ctx context.Context) HealthCheckGrpcHealthCheckPtrOutput {
+	return o
+}
+
+func (o HealthCheckGrpcHealthCheckPtrOutput) Elem() HealthCheckGrpcHealthCheckOutput {
+	return o.ApplyT(func(v *HealthCheckGrpcHealthCheck) HealthCheckGrpcHealthCheck { return *v }).(HealthCheckGrpcHealthCheckOutput)
+}
+
+// The gRPC service name for the health check.
+// The value of grpcServiceName has the following meanings by convention:
+// - Empty serviceName means the overall status of all services at the backend.
+// - Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
+//   The grpcServiceName can only be ASCII.
+func (o HealthCheckGrpcHealthCheckPtrOutput) GrpcServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HealthCheckGrpcHealthCheck) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GrpcServiceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The port number for the health check request.
+// Must be specified if portName and portSpecification are not set
+// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
+func (o HealthCheckGrpcHealthCheckPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HealthCheckGrpcHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// Port name as defined in InstanceGroup#NamedPort#name. If both port and
+// portName are defined, port takes precedence.
+func (o HealthCheckGrpcHealthCheckPtrOutput) PortName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HealthCheckGrpcHealthCheck) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PortName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies how port is selected for health checking, can be one of the
+// following values:
+// * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+// * `USE_NAMED_PORT`: The `portName` is used for health checking.
+// * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+//   network endpoint is used for health checking. For other backends, the
+//   port or named port specified in the Backend Service is used for health
+//   checking.
+//   If not specified, gRPC health check follows behavior specified in `port` and
+//   `portName` fields.
+//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
+func (o HealthCheckGrpcHealthCheckPtrOutput) PortSpecification() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HealthCheckGrpcHealthCheck) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PortSpecification
+	}).(pulumi.StringPtrOutput)
+}
+
+type HealthCheckHttp2HealthCheck struct {
+	// The value of the host header in the HTTP2 health check request.
+	// If left empty (default value), the public IP on behalf of which this health
+	// check is performed will be used.
+	Host *string `pulumi:"host"`
+	// The port number for the health check request.
+	// Must be specified if portName and portSpecification are not set
+	// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
+	Port *int `pulumi:"port"`
+	// Port name as defined in InstanceGroup#NamedPort#name. If both port and
+	// portName are defined, port takes precedence.
+	PortName *string `pulumi:"portName"`
+	// Specifies how port is selected for health checking, can be one of the
+	// following values:
+	// * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+	// * `USE_NAMED_PORT`: The `portName` is used for health checking.
+	// * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+	//   network endpoint is used for health checking. For other backends, the
+	//   port or named port specified in the Backend Service is used for health
+	//   checking.
+	//   If not specified, gRPC health check follows behavior specified in `port` and
 	//   `portName` fields.
 	//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 	PortSpecification *string `pulumi:"portSpecification"`
@@ -6974,8 +7231,9 @@ type HealthCheckHttp2HealthCheckArgs struct {
 	// If left empty (default value), the public IP on behalf of which this health
 	// check is performed will be used.
 	Host pulumi.StringPtrInput `pulumi:"host"`
-	// The TCP port number for the HTTP2 health check request.
-	// The default value is 443.
+	// The port number for the health check request.
+	// Must be specified if portName and portSpecification are not set
+	// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// Port name as defined in InstanceGroup#NamedPort#name. If both port and
 	// portName are defined, port takes precedence.
@@ -6988,7 +7246,7 @@ type HealthCheckHttp2HealthCheckArgs struct {
 	//   network endpoint is used for health checking. For other backends, the
 	//   port or named port specified in the Backend Service is used for health
 	//   checking.
-	//   If not specified, HTTP2 health check follows behavior specified in `port` and
+	//   If not specified, gRPC health check follows behavior specified in `port` and
 	//   `portName` fields.
 	//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 	PortSpecification pulumi.StringPtrInput `pulumi:"portSpecification"`
@@ -7090,8 +7348,9 @@ func (o HealthCheckHttp2HealthCheckOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HealthCheckHttp2HealthCheck) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
-// The TCP port number for the HTTP2 health check request.
-// The default value is 443.
+// The port number for the health check request.
+// Must be specified if portName and portSpecification are not set
+// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
 func (o HealthCheckHttp2HealthCheckOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v HealthCheckHttp2HealthCheck) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -7110,7 +7369,7 @@ func (o HealthCheckHttp2HealthCheckOutput) PortName() pulumi.StringPtrOutput {
 //   network endpoint is used for health checking. For other backends, the
 //   port or named port specified in the Backend Service is used for health
 //   checking.
-//   If not specified, HTTP2 health check follows behavior specified in `port` and
+//   If not specified, gRPC health check follows behavior specified in `port` and
 //   `portName` fields.
 //   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 func (o HealthCheckHttp2HealthCheckOutput) PortSpecification() pulumi.StringPtrOutput {
@@ -7168,8 +7427,9 @@ func (o HealthCheckHttp2HealthCheckPtrOutput) Host() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The TCP port number for the HTTP2 health check request.
-// The default value is 443.
+// The port number for the health check request.
+// Must be specified if portName and portSpecification are not set
+// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
 func (o HealthCheckHttp2HealthCheckPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *HealthCheckHttp2HealthCheck) *int {
 		if v == nil {
@@ -7198,7 +7458,7 @@ func (o HealthCheckHttp2HealthCheckPtrOutput) PortName() pulumi.StringPtrOutput 
 //   network endpoint is used for health checking. For other backends, the
 //   port or named port specified in the Backend Service is used for health
 //   checking.
-//   If not specified, HTTP2 health check follows behavior specified in `port` and
+//   If not specified, gRPC health check follows behavior specified in `port` and
 //   `portName` fields.
 //   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 func (o HealthCheckHttp2HealthCheckPtrOutput) PortSpecification() pulumi.StringPtrOutput {
@@ -7251,8 +7511,9 @@ type HealthCheckHttpHealthCheck struct {
 	// If left empty (default value), the public IP on behalf of which this health
 	// check is performed will be used.
 	Host *string `pulumi:"host"`
-	// The TCP port number for the HTTP2 health check request.
-	// The default value is 443.
+	// The port number for the health check request.
+	// Must be specified if portName and portSpecification are not set
+	// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
 	Port *int `pulumi:"port"`
 	// Port name as defined in InstanceGroup#NamedPort#name. If both port and
 	// portName are defined, port takes precedence.
@@ -7265,7 +7526,7 @@ type HealthCheckHttpHealthCheck struct {
 	//   network endpoint is used for health checking. For other backends, the
 	//   port or named port specified in the Backend Service is used for health
 	//   checking.
-	//   If not specified, HTTP2 health check follows behavior specified in `port` and
+	//   If not specified, gRPC health check follows behavior specified in `port` and
 	//   `portName` fields.
 	//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 	PortSpecification *string `pulumi:"portSpecification"`
@@ -7299,8 +7560,9 @@ type HealthCheckHttpHealthCheckArgs struct {
 	// If left empty (default value), the public IP on behalf of which this health
 	// check is performed will be used.
 	Host pulumi.StringPtrInput `pulumi:"host"`
-	// The TCP port number for the HTTP2 health check request.
-	// The default value is 443.
+	// The port number for the health check request.
+	// Must be specified if portName and portSpecification are not set
+	// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// Port name as defined in InstanceGroup#NamedPort#name. If both port and
 	// portName are defined, port takes precedence.
@@ -7313,7 +7575,7 @@ type HealthCheckHttpHealthCheckArgs struct {
 	//   network endpoint is used for health checking. For other backends, the
 	//   port or named port specified in the Backend Service is used for health
 	//   checking.
-	//   If not specified, HTTP2 health check follows behavior specified in `port` and
+	//   If not specified, gRPC health check follows behavior specified in `port` and
 	//   `portName` fields.
 	//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 	PortSpecification pulumi.StringPtrInput `pulumi:"portSpecification"`
@@ -7415,8 +7677,9 @@ func (o HealthCheckHttpHealthCheckOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HealthCheckHttpHealthCheck) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
-// The TCP port number for the HTTP2 health check request.
-// The default value is 443.
+// The port number for the health check request.
+// Must be specified if portName and portSpecification are not set
+// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
 func (o HealthCheckHttpHealthCheckOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v HealthCheckHttpHealthCheck) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -7435,7 +7698,7 @@ func (o HealthCheckHttpHealthCheckOutput) PortName() pulumi.StringPtrOutput {
 //   network endpoint is used for health checking. For other backends, the
 //   port or named port specified in the Backend Service is used for health
 //   checking.
-//   If not specified, HTTP2 health check follows behavior specified in `port` and
+//   If not specified, gRPC health check follows behavior specified in `port` and
 //   `portName` fields.
 //   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 func (o HealthCheckHttpHealthCheckOutput) PortSpecification() pulumi.StringPtrOutput {
@@ -7493,8 +7756,9 @@ func (o HealthCheckHttpHealthCheckPtrOutput) Host() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The TCP port number for the HTTP2 health check request.
-// The default value is 443.
+// The port number for the health check request.
+// Must be specified if portName and portSpecification are not set
+// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
 func (o HealthCheckHttpHealthCheckPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *HealthCheckHttpHealthCheck) *int {
 		if v == nil {
@@ -7523,7 +7787,7 @@ func (o HealthCheckHttpHealthCheckPtrOutput) PortName() pulumi.StringPtrOutput {
 //   network endpoint is used for health checking. For other backends, the
 //   port or named port specified in the Backend Service is used for health
 //   checking.
-//   If not specified, HTTP2 health check follows behavior specified in `port` and
+//   If not specified, gRPC health check follows behavior specified in `port` and
 //   `portName` fields.
 //   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 func (o HealthCheckHttpHealthCheckPtrOutput) PortSpecification() pulumi.StringPtrOutput {
@@ -7576,8 +7840,9 @@ type HealthCheckHttpsHealthCheck struct {
 	// If left empty (default value), the public IP on behalf of which this health
 	// check is performed will be used.
 	Host *string `pulumi:"host"`
-	// The TCP port number for the HTTP2 health check request.
-	// The default value is 443.
+	// The port number for the health check request.
+	// Must be specified if portName and portSpecification are not set
+	// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
 	Port *int `pulumi:"port"`
 	// Port name as defined in InstanceGroup#NamedPort#name. If both port and
 	// portName are defined, port takes precedence.
@@ -7590,7 +7855,7 @@ type HealthCheckHttpsHealthCheck struct {
 	//   network endpoint is used for health checking. For other backends, the
 	//   port or named port specified in the Backend Service is used for health
 	//   checking.
-	//   If not specified, HTTP2 health check follows behavior specified in `port` and
+	//   If not specified, gRPC health check follows behavior specified in `port` and
 	//   `portName` fields.
 	//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 	PortSpecification *string `pulumi:"portSpecification"`
@@ -7624,8 +7889,9 @@ type HealthCheckHttpsHealthCheckArgs struct {
 	// If left empty (default value), the public IP on behalf of which this health
 	// check is performed will be used.
 	Host pulumi.StringPtrInput `pulumi:"host"`
-	// The TCP port number for the HTTP2 health check request.
-	// The default value is 443.
+	// The port number for the health check request.
+	// Must be specified if portName and portSpecification are not set
+	// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// Port name as defined in InstanceGroup#NamedPort#name. If both port and
 	// portName are defined, port takes precedence.
@@ -7638,7 +7904,7 @@ type HealthCheckHttpsHealthCheckArgs struct {
 	//   network endpoint is used for health checking. For other backends, the
 	//   port or named port specified in the Backend Service is used for health
 	//   checking.
-	//   If not specified, HTTP2 health check follows behavior specified in `port` and
+	//   If not specified, gRPC health check follows behavior specified in `port` and
 	//   `portName` fields.
 	//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 	PortSpecification pulumi.StringPtrInput `pulumi:"portSpecification"`
@@ -7740,8 +8006,9 @@ func (o HealthCheckHttpsHealthCheckOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HealthCheckHttpsHealthCheck) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
-// The TCP port number for the HTTP2 health check request.
-// The default value is 443.
+// The port number for the health check request.
+// Must be specified if portName and portSpecification are not set
+// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
 func (o HealthCheckHttpsHealthCheckOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v HealthCheckHttpsHealthCheck) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -7760,7 +8027,7 @@ func (o HealthCheckHttpsHealthCheckOutput) PortName() pulumi.StringPtrOutput {
 //   network endpoint is used for health checking. For other backends, the
 //   port or named port specified in the Backend Service is used for health
 //   checking.
-//   If not specified, HTTP2 health check follows behavior specified in `port` and
+//   If not specified, gRPC health check follows behavior specified in `port` and
 //   `portName` fields.
 //   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 func (o HealthCheckHttpsHealthCheckOutput) PortSpecification() pulumi.StringPtrOutput {
@@ -7818,8 +8085,9 @@ func (o HealthCheckHttpsHealthCheckPtrOutput) Host() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The TCP port number for the HTTP2 health check request.
-// The default value is 443.
+// The port number for the health check request.
+// Must be specified if portName and portSpecification are not set
+// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
 func (o HealthCheckHttpsHealthCheckPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *HealthCheckHttpsHealthCheck) *int {
 		if v == nil {
@@ -7848,7 +8116,7 @@ func (o HealthCheckHttpsHealthCheckPtrOutput) PortName() pulumi.StringPtrOutput 
 //   network endpoint is used for health checking. For other backends, the
 //   port or named port specified in the Backend Service is used for health
 //   checking.
-//   If not specified, HTTP2 health check follows behavior specified in `port` and
+//   If not specified, gRPC health check follows behavior specified in `port` and
 //   `portName` fields.
 //   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 func (o HealthCheckHttpsHealthCheckPtrOutput) PortSpecification() pulumi.StringPtrOutput {
@@ -8032,8 +8300,9 @@ func (o HealthCheckLogConfigPtrOutput) Enable() pulumi.BoolPtrOutput {
 }
 
 type HealthCheckSslHealthCheck struct {
-	// The TCP port number for the HTTP2 health check request.
-	// The default value is 443.
+	// The port number for the health check request.
+	// Must be specified if portName and portSpecification are not set
+	// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
 	Port *int `pulumi:"port"`
 	// Port name as defined in InstanceGroup#NamedPort#name. If both port and
 	// portName are defined, port takes precedence.
@@ -8046,7 +8315,7 @@ type HealthCheckSslHealthCheck struct {
 	//   network endpoint is used for health checking. For other backends, the
 	//   port or named port specified in the Backend Service is used for health
 	//   checking.
-	//   If not specified, HTTP2 health check follows behavior specified in `port` and
+	//   If not specified, gRPC health check follows behavior specified in `port` and
 	//   `portName` fields.
 	//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 	PortSpecification *string `pulumi:"portSpecification"`
@@ -8078,8 +8347,9 @@ type HealthCheckSslHealthCheckInput interface {
 }
 
 type HealthCheckSslHealthCheckArgs struct {
-	// The TCP port number for the HTTP2 health check request.
-	// The default value is 443.
+	// The port number for the health check request.
+	// Must be specified if portName and portSpecification are not set
+	// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// Port name as defined in InstanceGroup#NamedPort#name. If both port and
 	// portName are defined, port takes precedence.
@@ -8092,7 +8362,7 @@ type HealthCheckSslHealthCheckArgs struct {
 	//   network endpoint is used for health checking. For other backends, the
 	//   port or named port specified in the Backend Service is used for health
 	//   checking.
-	//   If not specified, HTTP2 health check follows behavior specified in `port` and
+	//   If not specified, gRPC health check follows behavior specified in `port` and
 	//   `portName` fields.
 	//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 	PortSpecification pulumi.StringPtrInput `pulumi:"portSpecification"`
@@ -8189,8 +8459,9 @@ func (o HealthCheckSslHealthCheckOutput) ToHealthCheckSslHealthCheckPtrOutputWit
 	}).(HealthCheckSslHealthCheckPtrOutput)
 }
 
-// The TCP port number for the HTTP2 health check request.
-// The default value is 443.
+// The port number for the health check request.
+// Must be specified if portName and portSpecification are not set
+// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
 func (o HealthCheckSslHealthCheckOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v HealthCheckSslHealthCheck) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -8209,7 +8480,7 @@ func (o HealthCheckSslHealthCheckOutput) PortName() pulumi.StringPtrOutput {
 //   network endpoint is used for health checking. For other backends, the
 //   port or named port specified in the Backend Service is used for health
 //   checking.
-//   If not specified, HTTP2 health check follows behavior specified in `port` and
+//   If not specified, gRPC health check follows behavior specified in `port` and
 //   `portName` fields.
 //   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 func (o HealthCheckSslHealthCheckOutput) PortSpecification() pulumi.StringPtrOutput {
@@ -8257,8 +8528,9 @@ func (o HealthCheckSslHealthCheckPtrOutput) Elem() HealthCheckSslHealthCheckOutp
 	return o.ApplyT(func(v *HealthCheckSslHealthCheck) HealthCheckSslHealthCheck { return *v }).(HealthCheckSslHealthCheckOutput)
 }
 
-// The TCP port number for the HTTP2 health check request.
-// The default value is 443.
+// The port number for the health check request.
+// Must be specified if portName and portSpecification are not set
+// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
 func (o HealthCheckSslHealthCheckPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *HealthCheckSslHealthCheck) *int {
 		if v == nil {
@@ -8287,7 +8559,7 @@ func (o HealthCheckSslHealthCheckPtrOutput) PortName() pulumi.StringPtrOutput {
 //   network endpoint is used for health checking. For other backends, the
 //   port or named port specified in the Backend Service is used for health
 //   checking.
-//   If not specified, HTTP2 health check follows behavior specified in `port` and
+//   If not specified, gRPC health check follows behavior specified in `port` and
 //   `portName` fields.
 //   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 func (o HealthCheckSslHealthCheckPtrOutput) PortSpecification() pulumi.StringPtrOutput {
@@ -8338,8 +8610,9 @@ func (o HealthCheckSslHealthCheckPtrOutput) Response() pulumi.StringPtrOutput {
 }
 
 type HealthCheckTcpHealthCheck struct {
-	// The TCP port number for the HTTP2 health check request.
-	// The default value is 443.
+	// The port number for the health check request.
+	// Must be specified if portName and portSpecification are not set
+	// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
 	Port *int `pulumi:"port"`
 	// Port name as defined in InstanceGroup#NamedPort#name. If both port and
 	// portName are defined, port takes precedence.
@@ -8352,7 +8625,7 @@ type HealthCheckTcpHealthCheck struct {
 	//   network endpoint is used for health checking. For other backends, the
 	//   port or named port specified in the Backend Service is used for health
 	//   checking.
-	//   If not specified, HTTP2 health check follows behavior specified in `port` and
+	//   If not specified, gRPC health check follows behavior specified in `port` and
 	//   `portName` fields.
 	//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 	PortSpecification *string `pulumi:"portSpecification"`
@@ -8384,8 +8657,9 @@ type HealthCheckTcpHealthCheckInput interface {
 }
 
 type HealthCheckTcpHealthCheckArgs struct {
-	// The TCP port number for the HTTP2 health check request.
-	// The default value is 443.
+	// The port number for the health check request.
+	// Must be specified if portName and portSpecification are not set
+	// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// Port name as defined in InstanceGroup#NamedPort#name. If both port and
 	// portName are defined, port takes precedence.
@@ -8398,7 +8672,7 @@ type HealthCheckTcpHealthCheckArgs struct {
 	//   network endpoint is used for health checking. For other backends, the
 	//   port or named port specified in the Backend Service is used for health
 	//   checking.
-	//   If not specified, HTTP2 health check follows behavior specified in `port` and
+	//   If not specified, gRPC health check follows behavior specified in `port` and
 	//   `portName` fields.
 	//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 	PortSpecification pulumi.StringPtrInput `pulumi:"portSpecification"`
@@ -8495,8 +8769,9 @@ func (o HealthCheckTcpHealthCheckOutput) ToHealthCheckTcpHealthCheckPtrOutputWit
 	}).(HealthCheckTcpHealthCheckPtrOutput)
 }
 
-// The TCP port number for the HTTP2 health check request.
-// The default value is 443.
+// The port number for the health check request.
+// Must be specified if portName and portSpecification are not set
+// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
 func (o HealthCheckTcpHealthCheckOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v HealthCheckTcpHealthCheck) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -8515,7 +8790,7 @@ func (o HealthCheckTcpHealthCheckOutput) PortName() pulumi.StringPtrOutput {
 //   network endpoint is used for health checking. For other backends, the
 //   port or named port specified in the Backend Service is used for health
 //   checking.
-//   If not specified, HTTP2 health check follows behavior specified in `port` and
+//   If not specified, gRPC health check follows behavior specified in `port` and
 //   `portName` fields.
 //   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 func (o HealthCheckTcpHealthCheckOutput) PortSpecification() pulumi.StringPtrOutput {
@@ -8563,8 +8838,9 @@ func (o HealthCheckTcpHealthCheckPtrOutput) Elem() HealthCheckTcpHealthCheckOutp
 	return o.ApplyT(func(v *HealthCheckTcpHealthCheck) HealthCheckTcpHealthCheck { return *v }).(HealthCheckTcpHealthCheckOutput)
 }
 
-// The TCP port number for the HTTP2 health check request.
-// The default value is 443.
+// The port number for the health check request.
+// Must be specified if portName and portSpecification are not set
+// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
 func (o HealthCheckTcpHealthCheckPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *HealthCheckTcpHealthCheck) *int {
 		if v == nil {
@@ -8593,7 +8869,7 @@ func (o HealthCheckTcpHealthCheckPtrOutput) PortName() pulumi.StringPtrOutput {
 //   network endpoint is used for health checking. For other backends, the
 //   port or named port specified in the Backend Service is used for health
 //   checking.
-//   If not specified, HTTP2 health check follows behavior specified in `port` and
+//   If not specified, gRPC health check follows behavior specified in `port` and
 //   `portName` fields.
 //   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 func (o HealthCheckTcpHealthCheckPtrOutput) PortSpecification() pulumi.StringPtrOutput {
@@ -13698,8 +13974,9 @@ type InstanceSchedulingNodeAffinity struct {
 	Key string `pulumi:"key"`
 	// The operator. Can be `IN` for node-affinities
 	// or `NOT_IN` for anti-affinities.
-	Operator string   `pulumi:"operator"`
-	Values   []string `pulumi:"values"`
+	Operator string `pulumi:"operator"`
+	// The values for the node affinity label.
+	Values []string `pulumi:"values"`
 }
 
 // InstanceSchedulingNodeAffinityInput is an input type that accepts InstanceSchedulingNodeAffinityArgs and InstanceSchedulingNodeAffinityOutput values.
@@ -13718,8 +13995,9 @@ type InstanceSchedulingNodeAffinityArgs struct {
 	Key pulumi.StringInput `pulumi:"key"`
 	// The operator. Can be `IN` for node-affinities
 	// or `NOT_IN` for anti-affinities.
-	Operator pulumi.StringInput      `pulumi:"operator"`
-	Values   pulumi.StringArrayInput `pulumi:"values"`
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// The values for the node affinity label.
+	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
 func (InstanceSchedulingNodeAffinityArgs) ElementType() reflect.Type {
@@ -13784,6 +14062,7 @@ func (o InstanceSchedulingNodeAffinityOutput) Operator() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceSchedulingNodeAffinity) string { return v.Operator }).(pulumi.StringOutput)
 }
 
+// The values for the node affinity label.
 func (o InstanceSchedulingNodeAffinityOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v InstanceSchedulingNodeAffinity) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -22617,13 +22896,16 @@ func (o RegionDiskSourceSnapshotEncryptionKeyPtrOutput) Sha256() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-type RegionHealthCheckHttp2HealthCheck struct {
-	// The value of the host header in the HTTP2 health check request.
-	// If left empty (default value), the public IP on behalf of which this health
-	// check is performed will be used.
-	Host *string `pulumi:"host"`
-	// The TCP port number for the HTTP2 health check request.
-	// The default value is 443.
+type RegionHealthCheckGrpcHealthCheck struct {
+	// The gRPC service name for the health check.
+	// The value of grpcServiceName has the following meanings by convention:
+	// - Empty serviceName means the overall status of all services at the backend.
+	// - Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
+	//   The grpcServiceName can only be ASCII.
+	GrpcServiceName *string `pulumi:"grpcServiceName"`
+	// The port number for the health check request.
+	// Must be specified if portName and portSpecification are not set
+	// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
 	Port *int `pulumi:"port"`
 	// Port name as defined in InstanceGroup#NamedPort#name. If both port and
 	// portName are defined, port takes precedence.
@@ -22636,7 +22918,261 @@ type RegionHealthCheckHttp2HealthCheck struct {
 	//   network endpoint is used for health checking. For other backends, the
 	//   port or named port specified in the Backend Service is used for health
 	//   checking.
-	//   If not specified, HTTP2 health check follows behavior specified in `port` and
+	//   If not specified, gRPC health check follows behavior specified in `port` and
+	//   `portName` fields.
+	//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
+	PortSpecification *string `pulumi:"portSpecification"`
+}
+
+// RegionHealthCheckGrpcHealthCheckInput is an input type that accepts RegionHealthCheckGrpcHealthCheckArgs and RegionHealthCheckGrpcHealthCheckOutput values.
+// You can construct a concrete instance of `RegionHealthCheckGrpcHealthCheckInput` via:
+//
+//          RegionHealthCheckGrpcHealthCheckArgs{...}
+type RegionHealthCheckGrpcHealthCheckInput interface {
+	pulumi.Input
+
+	ToRegionHealthCheckGrpcHealthCheckOutput() RegionHealthCheckGrpcHealthCheckOutput
+	ToRegionHealthCheckGrpcHealthCheckOutputWithContext(context.Context) RegionHealthCheckGrpcHealthCheckOutput
+}
+
+type RegionHealthCheckGrpcHealthCheckArgs struct {
+	// The gRPC service name for the health check.
+	// The value of grpcServiceName has the following meanings by convention:
+	// - Empty serviceName means the overall status of all services at the backend.
+	// - Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
+	//   The grpcServiceName can only be ASCII.
+	GrpcServiceName pulumi.StringPtrInput `pulumi:"grpcServiceName"`
+	// The port number for the health check request.
+	// Must be specified if portName and portSpecification are not set
+	// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Port name as defined in InstanceGroup#NamedPort#name. If both port and
+	// portName are defined, port takes precedence.
+	PortName pulumi.StringPtrInput `pulumi:"portName"`
+	// Specifies how port is selected for health checking, can be one of the
+	// following values:
+	// * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+	// * `USE_NAMED_PORT`: The `portName` is used for health checking.
+	// * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+	//   network endpoint is used for health checking. For other backends, the
+	//   port or named port specified in the Backend Service is used for health
+	//   checking.
+	//   If not specified, gRPC health check follows behavior specified in `port` and
+	//   `portName` fields.
+	//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
+	PortSpecification pulumi.StringPtrInput `pulumi:"portSpecification"`
+}
+
+func (RegionHealthCheckGrpcHealthCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionHealthCheckGrpcHealthCheck)(nil)).Elem()
+}
+
+func (i RegionHealthCheckGrpcHealthCheckArgs) ToRegionHealthCheckGrpcHealthCheckOutput() RegionHealthCheckGrpcHealthCheckOutput {
+	return i.ToRegionHealthCheckGrpcHealthCheckOutputWithContext(context.Background())
+}
+
+func (i RegionHealthCheckGrpcHealthCheckArgs) ToRegionHealthCheckGrpcHealthCheckOutputWithContext(ctx context.Context) RegionHealthCheckGrpcHealthCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionHealthCheckGrpcHealthCheckOutput)
+}
+
+func (i RegionHealthCheckGrpcHealthCheckArgs) ToRegionHealthCheckGrpcHealthCheckPtrOutput() RegionHealthCheckGrpcHealthCheckPtrOutput {
+	return i.ToRegionHealthCheckGrpcHealthCheckPtrOutputWithContext(context.Background())
+}
+
+func (i RegionHealthCheckGrpcHealthCheckArgs) ToRegionHealthCheckGrpcHealthCheckPtrOutputWithContext(ctx context.Context) RegionHealthCheckGrpcHealthCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionHealthCheckGrpcHealthCheckOutput).ToRegionHealthCheckGrpcHealthCheckPtrOutputWithContext(ctx)
+}
+
+// RegionHealthCheckGrpcHealthCheckPtrInput is an input type that accepts RegionHealthCheckGrpcHealthCheckArgs, RegionHealthCheckGrpcHealthCheckPtr and RegionHealthCheckGrpcHealthCheckPtrOutput values.
+// You can construct a concrete instance of `RegionHealthCheckGrpcHealthCheckPtrInput` via:
+//
+//          RegionHealthCheckGrpcHealthCheckArgs{...}
+//
+//  or:
+//
+//          nil
+type RegionHealthCheckGrpcHealthCheckPtrInput interface {
+	pulumi.Input
+
+	ToRegionHealthCheckGrpcHealthCheckPtrOutput() RegionHealthCheckGrpcHealthCheckPtrOutput
+	ToRegionHealthCheckGrpcHealthCheckPtrOutputWithContext(context.Context) RegionHealthCheckGrpcHealthCheckPtrOutput
+}
+
+type regionHealthCheckGrpcHealthCheckPtrType RegionHealthCheckGrpcHealthCheckArgs
+
+func RegionHealthCheckGrpcHealthCheckPtr(v *RegionHealthCheckGrpcHealthCheckArgs) RegionHealthCheckGrpcHealthCheckPtrInput {
+	return (*regionHealthCheckGrpcHealthCheckPtrType)(v)
+}
+
+func (*regionHealthCheckGrpcHealthCheckPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionHealthCheckGrpcHealthCheck)(nil)).Elem()
+}
+
+func (i *regionHealthCheckGrpcHealthCheckPtrType) ToRegionHealthCheckGrpcHealthCheckPtrOutput() RegionHealthCheckGrpcHealthCheckPtrOutput {
+	return i.ToRegionHealthCheckGrpcHealthCheckPtrOutputWithContext(context.Background())
+}
+
+func (i *regionHealthCheckGrpcHealthCheckPtrType) ToRegionHealthCheckGrpcHealthCheckPtrOutputWithContext(ctx context.Context) RegionHealthCheckGrpcHealthCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionHealthCheckGrpcHealthCheckPtrOutput)
+}
+
+type RegionHealthCheckGrpcHealthCheckOutput struct{ *pulumi.OutputState }
+
+func (RegionHealthCheckGrpcHealthCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionHealthCheckGrpcHealthCheck)(nil)).Elem()
+}
+
+func (o RegionHealthCheckGrpcHealthCheckOutput) ToRegionHealthCheckGrpcHealthCheckOutput() RegionHealthCheckGrpcHealthCheckOutput {
+	return o
+}
+
+func (o RegionHealthCheckGrpcHealthCheckOutput) ToRegionHealthCheckGrpcHealthCheckOutputWithContext(ctx context.Context) RegionHealthCheckGrpcHealthCheckOutput {
+	return o
+}
+
+func (o RegionHealthCheckGrpcHealthCheckOutput) ToRegionHealthCheckGrpcHealthCheckPtrOutput() RegionHealthCheckGrpcHealthCheckPtrOutput {
+	return o.ToRegionHealthCheckGrpcHealthCheckPtrOutputWithContext(context.Background())
+}
+
+func (o RegionHealthCheckGrpcHealthCheckOutput) ToRegionHealthCheckGrpcHealthCheckPtrOutputWithContext(ctx context.Context) RegionHealthCheckGrpcHealthCheckPtrOutput {
+	return o.ApplyT(func(v RegionHealthCheckGrpcHealthCheck) *RegionHealthCheckGrpcHealthCheck {
+		return &v
+	}).(RegionHealthCheckGrpcHealthCheckPtrOutput)
+}
+
+// The gRPC service name for the health check.
+// The value of grpcServiceName has the following meanings by convention:
+// - Empty serviceName means the overall status of all services at the backend.
+// - Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
+//   The grpcServiceName can only be ASCII.
+func (o RegionHealthCheckGrpcHealthCheckOutput) GrpcServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionHealthCheckGrpcHealthCheck) *string { return v.GrpcServiceName }).(pulumi.StringPtrOutput)
+}
+
+// The port number for the health check request.
+// Must be specified if portName and portSpecification are not set
+// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
+func (o RegionHealthCheckGrpcHealthCheckOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RegionHealthCheckGrpcHealthCheck) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// Port name as defined in InstanceGroup#NamedPort#name. If both port and
+// portName are defined, port takes precedence.
+func (o RegionHealthCheckGrpcHealthCheckOutput) PortName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionHealthCheckGrpcHealthCheck) *string { return v.PortName }).(pulumi.StringPtrOutput)
+}
+
+// Specifies how port is selected for health checking, can be one of the
+// following values:
+// * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+// * `USE_NAMED_PORT`: The `portName` is used for health checking.
+// * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+//   network endpoint is used for health checking. For other backends, the
+//   port or named port specified in the Backend Service is used for health
+//   checking.
+//   If not specified, gRPC health check follows behavior specified in `port` and
+//   `portName` fields.
+//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
+func (o RegionHealthCheckGrpcHealthCheckOutput) PortSpecification() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionHealthCheckGrpcHealthCheck) *string { return v.PortSpecification }).(pulumi.StringPtrOutput)
+}
+
+type RegionHealthCheckGrpcHealthCheckPtrOutput struct{ *pulumi.OutputState }
+
+func (RegionHealthCheckGrpcHealthCheckPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionHealthCheckGrpcHealthCheck)(nil)).Elem()
+}
+
+func (o RegionHealthCheckGrpcHealthCheckPtrOutput) ToRegionHealthCheckGrpcHealthCheckPtrOutput() RegionHealthCheckGrpcHealthCheckPtrOutput {
+	return o
+}
+
+func (o RegionHealthCheckGrpcHealthCheckPtrOutput) ToRegionHealthCheckGrpcHealthCheckPtrOutputWithContext(ctx context.Context) RegionHealthCheckGrpcHealthCheckPtrOutput {
+	return o
+}
+
+func (o RegionHealthCheckGrpcHealthCheckPtrOutput) Elem() RegionHealthCheckGrpcHealthCheckOutput {
+	return o.ApplyT(func(v *RegionHealthCheckGrpcHealthCheck) RegionHealthCheckGrpcHealthCheck { return *v }).(RegionHealthCheckGrpcHealthCheckOutput)
+}
+
+// The gRPC service name for the health check.
+// The value of grpcServiceName has the following meanings by convention:
+// - Empty serviceName means the overall status of all services at the backend.
+// - Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
+//   The grpcServiceName can only be ASCII.
+func (o RegionHealthCheckGrpcHealthCheckPtrOutput) GrpcServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionHealthCheckGrpcHealthCheck) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GrpcServiceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The port number for the health check request.
+// Must be specified if portName and portSpecification are not set
+// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
+func (o RegionHealthCheckGrpcHealthCheckPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RegionHealthCheckGrpcHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// Port name as defined in InstanceGroup#NamedPort#name. If both port and
+// portName are defined, port takes precedence.
+func (o RegionHealthCheckGrpcHealthCheckPtrOutput) PortName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionHealthCheckGrpcHealthCheck) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PortName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies how port is selected for health checking, can be one of the
+// following values:
+// * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+// * `USE_NAMED_PORT`: The `portName` is used for health checking.
+// * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+//   network endpoint is used for health checking. For other backends, the
+//   port or named port specified in the Backend Service is used for health
+//   checking.
+//   If not specified, gRPC health check follows behavior specified in `port` and
+//   `portName` fields.
+//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
+func (o RegionHealthCheckGrpcHealthCheckPtrOutput) PortSpecification() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionHealthCheckGrpcHealthCheck) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PortSpecification
+	}).(pulumi.StringPtrOutput)
+}
+
+type RegionHealthCheckHttp2HealthCheck struct {
+	// The value of the host header in the HTTP2 health check request.
+	// If left empty (default value), the public IP on behalf of which this health
+	// check is performed will be used.
+	Host *string `pulumi:"host"`
+	// The port number for the health check request.
+	// Must be specified if portName and portSpecification are not set
+	// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
+	Port *int `pulumi:"port"`
+	// Port name as defined in InstanceGroup#NamedPort#name. If both port and
+	// portName are defined, port takes precedence.
+	PortName *string `pulumi:"portName"`
+	// Specifies how port is selected for health checking, can be one of the
+	// following values:
+	// * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+	// * `USE_NAMED_PORT`: The `portName` is used for health checking.
+	// * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+	//   network endpoint is used for health checking. For other backends, the
+	//   port or named port specified in the Backend Service is used for health
+	//   checking.
+	//   If not specified, gRPC health check follows behavior specified in `port` and
 	//   `portName` fields.
 	//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 	PortSpecification *string `pulumi:"portSpecification"`
@@ -22670,8 +23206,9 @@ type RegionHealthCheckHttp2HealthCheckArgs struct {
 	// If left empty (default value), the public IP on behalf of which this health
 	// check is performed will be used.
 	Host pulumi.StringPtrInput `pulumi:"host"`
-	// The TCP port number for the HTTP2 health check request.
-	// The default value is 443.
+	// The port number for the health check request.
+	// Must be specified if portName and portSpecification are not set
+	// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// Port name as defined in InstanceGroup#NamedPort#name. If both port and
 	// portName are defined, port takes precedence.
@@ -22684,7 +23221,7 @@ type RegionHealthCheckHttp2HealthCheckArgs struct {
 	//   network endpoint is used for health checking. For other backends, the
 	//   port or named port specified in the Backend Service is used for health
 	//   checking.
-	//   If not specified, HTTP2 health check follows behavior specified in `port` and
+	//   If not specified, gRPC health check follows behavior specified in `port` and
 	//   `portName` fields.
 	//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 	PortSpecification pulumi.StringPtrInput `pulumi:"portSpecification"`
@@ -22786,8 +23323,9 @@ func (o RegionHealthCheckHttp2HealthCheckOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionHealthCheckHttp2HealthCheck) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
-// The TCP port number for the HTTP2 health check request.
-// The default value is 443.
+// The port number for the health check request.
+// Must be specified if portName and portSpecification are not set
+// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
 func (o RegionHealthCheckHttp2HealthCheckOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RegionHealthCheckHttp2HealthCheck) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -22806,7 +23344,7 @@ func (o RegionHealthCheckHttp2HealthCheckOutput) PortName() pulumi.StringPtrOutp
 //   network endpoint is used for health checking. For other backends, the
 //   port or named port specified in the Backend Service is used for health
 //   checking.
-//   If not specified, HTTP2 health check follows behavior specified in `port` and
+//   If not specified, gRPC health check follows behavior specified in `port` and
 //   `portName` fields.
 //   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 func (o RegionHealthCheckHttp2HealthCheckOutput) PortSpecification() pulumi.StringPtrOutput {
@@ -22864,8 +23402,9 @@ func (o RegionHealthCheckHttp2HealthCheckPtrOutput) Host() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The TCP port number for the HTTP2 health check request.
-// The default value is 443.
+// The port number for the health check request.
+// Must be specified if portName and portSpecification are not set
+// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
 func (o RegionHealthCheckHttp2HealthCheckPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RegionHealthCheckHttp2HealthCheck) *int {
 		if v == nil {
@@ -22894,7 +23433,7 @@ func (o RegionHealthCheckHttp2HealthCheckPtrOutput) PortName() pulumi.StringPtrO
 //   network endpoint is used for health checking. For other backends, the
 //   port or named port specified in the Backend Service is used for health
 //   checking.
-//   If not specified, HTTP2 health check follows behavior specified in `port` and
+//   If not specified, gRPC health check follows behavior specified in `port` and
 //   `portName` fields.
 //   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 func (o RegionHealthCheckHttp2HealthCheckPtrOutput) PortSpecification() pulumi.StringPtrOutput {
@@ -22947,8 +23486,9 @@ type RegionHealthCheckHttpHealthCheck struct {
 	// If left empty (default value), the public IP on behalf of which this health
 	// check is performed will be used.
 	Host *string `pulumi:"host"`
-	// The TCP port number for the HTTP2 health check request.
-	// The default value is 443.
+	// The port number for the health check request.
+	// Must be specified if portName and portSpecification are not set
+	// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
 	Port *int `pulumi:"port"`
 	// Port name as defined in InstanceGroup#NamedPort#name. If both port and
 	// portName are defined, port takes precedence.
@@ -22961,7 +23501,7 @@ type RegionHealthCheckHttpHealthCheck struct {
 	//   network endpoint is used for health checking. For other backends, the
 	//   port or named port specified in the Backend Service is used for health
 	//   checking.
-	//   If not specified, HTTP2 health check follows behavior specified in `port` and
+	//   If not specified, gRPC health check follows behavior specified in `port` and
 	//   `portName` fields.
 	//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 	PortSpecification *string `pulumi:"portSpecification"`
@@ -22995,8 +23535,9 @@ type RegionHealthCheckHttpHealthCheckArgs struct {
 	// If left empty (default value), the public IP on behalf of which this health
 	// check is performed will be used.
 	Host pulumi.StringPtrInput `pulumi:"host"`
-	// The TCP port number for the HTTP2 health check request.
-	// The default value is 443.
+	// The port number for the health check request.
+	// Must be specified if portName and portSpecification are not set
+	// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// Port name as defined in InstanceGroup#NamedPort#name. If both port and
 	// portName are defined, port takes precedence.
@@ -23009,7 +23550,7 @@ type RegionHealthCheckHttpHealthCheckArgs struct {
 	//   network endpoint is used for health checking. For other backends, the
 	//   port or named port specified in the Backend Service is used for health
 	//   checking.
-	//   If not specified, HTTP2 health check follows behavior specified in `port` and
+	//   If not specified, gRPC health check follows behavior specified in `port` and
 	//   `portName` fields.
 	//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 	PortSpecification pulumi.StringPtrInput `pulumi:"portSpecification"`
@@ -23111,8 +23652,9 @@ func (o RegionHealthCheckHttpHealthCheckOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionHealthCheckHttpHealthCheck) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
-// The TCP port number for the HTTP2 health check request.
-// The default value is 443.
+// The port number for the health check request.
+// Must be specified if portName and portSpecification are not set
+// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
 func (o RegionHealthCheckHttpHealthCheckOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RegionHealthCheckHttpHealthCheck) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -23131,7 +23673,7 @@ func (o RegionHealthCheckHttpHealthCheckOutput) PortName() pulumi.StringPtrOutpu
 //   network endpoint is used for health checking. For other backends, the
 //   port or named port specified in the Backend Service is used for health
 //   checking.
-//   If not specified, HTTP2 health check follows behavior specified in `port` and
+//   If not specified, gRPC health check follows behavior specified in `port` and
 //   `portName` fields.
 //   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 func (o RegionHealthCheckHttpHealthCheckOutput) PortSpecification() pulumi.StringPtrOutput {
@@ -23189,8 +23731,9 @@ func (o RegionHealthCheckHttpHealthCheckPtrOutput) Host() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// The TCP port number for the HTTP2 health check request.
-// The default value is 443.
+// The port number for the health check request.
+// Must be specified if portName and portSpecification are not set
+// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
 func (o RegionHealthCheckHttpHealthCheckPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RegionHealthCheckHttpHealthCheck) *int {
 		if v == nil {
@@ -23219,7 +23762,7 @@ func (o RegionHealthCheckHttpHealthCheckPtrOutput) PortName() pulumi.StringPtrOu
 //   network endpoint is used for health checking. For other backends, the
 //   port or named port specified in the Backend Service is used for health
 //   checking.
-//   If not specified, HTTP2 health check follows behavior specified in `port` and
+//   If not specified, gRPC health check follows behavior specified in `port` and
 //   `portName` fields.
 //   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 func (o RegionHealthCheckHttpHealthCheckPtrOutput) PortSpecification() pulumi.StringPtrOutput {
@@ -23272,8 +23815,9 @@ type RegionHealthCheckHttpsHealthCheck struct {
 	// If left empty (default value), the public IP on behalf of which this health
 	// check is performed will be used.
 	Host *string `pulumi:"host"`
-	// The TCP port number for the HTTP2 health check request.
-	// The default value is 443.
+	// The port number for the health check request.
+	// Must be specified if portName and portSpecification are not set
+	// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
 	Port *int `pulumi:"port"`
 	// Port name as defined in InstanceGroup#NamedPort#name. If both port and
 	// portName are defined, port takes precedence.
@@ -23286,7 +23830,7 @@ type RegionHealthCheckHttpsHealthCheck struct {
 	//   network endpoint is used for health checking. For other backends, the
 	//   port or named port specified in the Backend Service is used for health
 	//   checking.
-	//   If not specified, HTTP2 health check follows behavior specified in `port` and
+	//   If not specified, gRPC health check follows behavior specified in `port` and
 	//   `portName` fields.
 	//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 	PortSpecification *string `pulumi:"portSpecification"`
@@ -23320,8 +23864,9 @@ type RegionHealthCheckHttpsHealthCheckArgs struct {
 	// If left empty (default value), the public IP on behalf of which this health
 	// check is performed will be used.
 	Host pulumi.StringPtrInput `pulumi:"host"`
-	// The TCP port number for the HTTP2 health check request.
-	// The default value is 443.
+	// The port number for the health check request.
+	// Must be specified if portName and portSpecification are not set
+	// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// Port name as defined in InstanceGroup#NamedPort#name. If both port and
 	// portName are defined, port takes precedence.
@@ -23334,7 +23879,7 @@ type RegionHealthCheckHttpsHealthCheckArgs struct {
 	//   network endpoint is used for health checking. For other backends, the
 	//   port or named port specified in the Backend Service is used for health
 	//   checking.
-	//   If not specified, HTTP2 health check follows behavior specified in `port` and
+	//   If not specified, gRPC health check follows behavior specified in `port` and
 	//   `portName` fields.
 	//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 	PortSpecification pulumi.StringPtrInput `pulumi:"portSpecification"`
@@ -23436,8 +23981,9 @@ func (o RegionHealthCheckHttpsHealthCheckOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionHealthCheckHttpsHealthCheck) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
-// The TCP port number for the HTTP2 health check request.
-// The default value is 443.
+// The port number for the health check request.
+// Must be specified if portName and portSpecification are not set
+// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
 func (o RegionHealthCheckHttpsHealthCheckOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RegionHealthCheckHttpsHealthCheck) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -23456,7 +24002,7 @@ func (o RegionHealthCheckHttpsHealthCheckOutput) PortName() pulumi.StringPtrOutp
 //   network endpoint is used for health checking. For other backends, the
 //   port or named port specified in the Backend Service is used for health
 //   checking.
-//   If not specified, HTTP2 health check follows behavior specified in `port` and
+//   If not specified, gRPC health check follows behavior specified in `port` and
 //   `portName` fields.
 //   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 func (o RegionHealthCheckHttpsHealthCheckOutput) PortSpecification() pulumi.StringPtrOutput {
@@ -23514,8 +24060,9 @@ func (o RegionHealthCheckHttpsHealthCheckPtrOutput) Host() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The TCP port number for the HTTP2 health check request.
-// The default value is 443.
+// The port number for the health check request.
+// Must be specified if portName and portSpecification are not set
+// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
 func (o RegionHealthCheckHttpsHealthCheckPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RegionHealthCheckHttpsHealthCheck) *int {
 		if v == nil {
@@ -23544,7 +24091,7 @@ func (o RegionHealthCheckHttpsHealthCheckPtrOutput) PortName() pulumi.StringPtrO
 //   network endpoint is used for health checking. For other backends, the
 //   port or named port specified in the Backend Service is used for health
 //   checking.
-//   If not specified, HTTP2 health check follows behavior specified in `port` and
+//   If not specified, gRPC health check follows behavior specified in `port` and
 //   `portName` fields.
 //   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 func (o RegionHealthCheckHttpsHealthCheckPtrOutput) PortSpecification() pulumi.StringPtrOutput {
@@ -23728,8 +24275,9 @@ func (o RegionHealthCheckLogConfigPtrOutput) Enable() pulumi.BoolPtrOutput {
 }
 
 type RegionHealthCheckSslHealthCheck struct {
-	// The TCP port number for the HTTP2 health check request.
-	// The default value is 443.
+	// The port number for the health check request.
+	// Must be specified if portName and portSpecification are not set
+	// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
 	Port *int `pulumi:"port"`
 	// Port name as defined in InstanceGroup#NamedPort#name. If both port and
 	// portName are defined, port takes precedence.
@@ -23742,7 +24290,7 @@ type RegionHealthCheckSslHealthCheck struct {
 	//   network endpoint is used for health checking. For other backends, the
 	//   port or named port specified in the Backend Service is used for health
 	//   checking.
-	//   If not specified, HTTP2 health check follows behavior specified in `port` and
+	//   If not specified, gRPC health check follows behavior specified in `port` and
 	//   `portName` fields.
 	//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 	PortSpecification *string `pulumi:"portSpecification"`
@@ -23774,8 +24322,9 @@ type RegionHealthCheckSslHealthCheckInput interface {
 }
 
 type RegionHealthCheckSslHealthCheckArgs struct {
-	// The TCP port number for the HTTP2 health check request.
-	// The default value is 443.
+	// The port number for the health check request.
+	// Must be specified if portName and portSpecification are not set
+	// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// Port name as defined in InstanceGroup#NamedPort#name. If both port and
 	// portName are defined, port takes precedence.
@@ -23788,7 +24337,7 @@ type RegionHealthCheckSslHealthCheckArgs struct {
 	//   network endpoint is used for health checking. For other backends, the
 	//   port or named port specified in the Backend Service is used for health
 	//   checking.
-	//   If not specified, HTTP2 health check follows behavior specified in `port` and
+	//   If not specified, gRPC health check follows behavior specified in `port` and
 	//   `portName` fields.
 	//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 	PortSpecification pulumi.StringPtrInput `pulumi:"portSpecification"`
@@ -23885,8 +24434,9 @@ func (o RegionHealthCheckSslHealthCheckOutput) ToRegionHealthCheckSslHealthCheck
 	}).(RegionHealthCheckSslHealthCheckPtrOutput)
 }
 
-// The TCP port number for the HTTP2 health check request.
-// The default value is 443.
+// The port number for the health check request.
+// Must be specified if portName and portSpecification are not set
+// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
 func (o RegionHealthCheckSslHealthCheckOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RegionHealthCheckSslHealthCheck) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -23905,7 +24455,7 @@ func (o RegionHealthCheckSslHealthCheckOutput) PortName() pulumi.StringPtrOutput
 //   network endpoint is used for health checking. For other backends, the
 //   port or named port specified in the Backend Service is used for health
 //   checking.
-//   If not specified, HTTP2 health check follows behavior specified in `port` and
+//   If not specified, gRPC health check follows behavior specified in `port` and
 //   `portName` fields.
 //   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 func (o RegionHealthCheckSslHealthCheckOutput) PortSpecification() pulumi.StringPtrOutput {
@@ -23953,8 +24503,9 @@ func (o RegionHealthCheckSslHealthCheckPtrOutput) Elem() RegionHealthCheckSslHea
 	return o.ApplyT(func(v *RegionHealthCheckSslHealthCheck) RegionHealthCheckSslHealthCheck { return *v }).(RegionHealthCheckSslHealthCheckOutput)
 }
 
-// The TCP port number for the HTTP2 health check request.
-// The default value is 443.
+// The port number for the health check request.
+// Must be specified if portName and portSpecification are not set
+// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
 func (o RegionHealthCheckSslHealthCheckPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RegionHealthCheckSslHealthCheck) *int {
 		if v == nil {
@@ -23983,7 +24534,7 @@ func (o RegionHealthCheckSslHealthCheckPtrOutput) PortName() pulumi.StringPtrOut
 //   network endpoint is used for health checking. For other backends, the
 //   port or named port specified in the Backend Service is used for health
 //   checking.
-//   If not specified, HTTP2 health check follows behavior specified in `port` and
+//   If not specified, gRPC health check follows behavior specified in `port` and
 //   `portName` fields.
 //   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 func (o RegionHealthCheckSslHealthCheckPtrOutput) PortSpecification() pulumi.StringPtrOutput {
@@ -24034,8 +24585,9 @@ func (o RegionHealthCheckSslHealthCheckPtrOutput) Response() pulumi.StringPtrOut
 }
 
 type RegionHealthCheckTcpHealthCheck struct {
-	// The TCP port number for the HTTP2 health check request.
-	// The default value is 443.
+	// The port number for the health check request.
+	// Must be specified if portName and portSpecification are not set
+	// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
 	Port *int `pulumi:"port"`
 	// Port name as defined in InstanceGroup#NamedPort#name. If both port and
 	// portName are defined, port takes precedence.
@@ -24048,7 +24600,7 @@ type RegionHealthCheckTcpHealthCheck struct {
 	//   network endpoint is used for health checking. For other backends, the
 	//   port or named port specified in the Backend Service is used for health
 	//   checking.
-	//   If not specified, HTTP2 health check follows behavior specified in `port` and
+	//   If not specified, gRPC health check follows behavior specified in `port` and
 	//   `portName` fields.
 	//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 	PortSpecification *string `pulumi:"portSpecification"`
@@ -24080,8 +24632,9 @@ type RegionHealthCheckTcpHealthCheckInput interface {
 }
 
 type RegionHealthCheckTcpHealthCheckArgs struct {
-	// The TCP port number for the HTTP2 health check request.
-	// The default value is 443.
+	// The port number for the health check request.
+	// Must be specified if portName and portSpecification are not set
+	// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// Port name as defined in InstanceGroup#NamedPort#name. If both port and
 	// portName are defined, port takes precedence.
@@ -24094,7 +24647,7 @@ type RegionHealthCheckTcpHealthCheckArgs struct {
 	//   network endpoint is used for health checking. For other backends, the
 	//   port or named port specified in the Backend Service is used for health
 	//   checking.
-	//   If not specified, HTTP2 health check follows behavior specified in `port` and
+	//   If not specified, gRPC health check follows behavior specified in `port` and
 	//   `portName` fields.
 	//   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 	PortSpecification pulumi.StringPtrInput `pulumi:"portSpecification"`
@@ -24191,8 +24744,9 @@ func (o RegionHealthCheckTcpHealthCheckOutput) ToRegionHealthCheckTcpHealthCheck
 	}).(RegionHealthCheckTcpHealthCheckPtrOutput)
 }
 
-// The TCP port number for the HTTP2 health check request.
-// The default value is 443.
+// The port number for the health check request.
+// Must be specified if portName and portSpecification are not set
+// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
 func (o RegionHealthCheckTcpHealthCheckOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RegionHealthCheckTcpHealthCheck) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -24211,7 +24765,7 @@ func (o RegionHealthCheckTcpHealthCheckOutput) PortName() pulumi.StringPtrOutput
 //   network endpoint is used for health checking. For other backends, the
 //   port or named port specified in the Backend Service is used for health
 //   checking.
-//   If not specified, HTTP2 health check follows behavior specified in `port` and
+//   If not specified, gRPC health check follows behavior specified in `port` and
 //   `portName` fields.
 //   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 func (o RegionHealthCheckTcpHealthCheckOutput) PortSpecification() pulumi.StringPtrOutput {
@@ -24259,8 +24813,9 @@ func (o RegionHealthCheckTcpHealthCheckPtrOutput) Elem() RegionHealthCheckTcpHea
 	return o.ApplyT(func(v *RegionHealthCheckTcpHealthCheck) RegionHealthCheckTcpHealthCheck { return *v }).(RegionHealthCheckTcpHealthCheckOutput)
 }
 
-// The TCP port number for the HTTP2 health check request.
-// The default value is 443.
+// The port number for the health check request.
+// Must be specified if portName and portSpecification are not set
+// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
 func (o RegionHealthCheckTcpHealthCheckPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RegionHealthCheckTcpHealthCheck) *int {
 		if v == nil {
@@ -24289,7 +24844,7 @@ func (o RegionHealthCheckTcpHealthCheckPtrOutput) PortName() pulumi.StringPtrOut
 //   network endpoint is used for health checking. For other backends, the
 //   port or named port specified in the Backend Service is used for health
 //   checking.
-//   If not specified, HTTP2 health check follows behavior specified in `port` and
+//   If not specified, gRPC health check follows behavior specified in `port` and
 //   `portName` fields.
 //   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
 func (o RegionHealthCheckTcpHealthCheckPtrOutput) PortSpecification() pulumi.StringPtrOutput {
@@ -40080,8 +40635,6 @@ type SubnetworkLogConfig struct {
 	// Toggles the aggregation interval for collecting flow logs. Increasing the
 	// interval time will reduce the amount of generated flow logs for long
 	// lasting connections. Default is an interval of 5 seconds per connection.
-	// Possible values are INTERVAL_5_SEC, INTERVAL_30_SEC, INTERVAL_1_MIN,
-	// INTERVAL_5_MIN, INTERVAL_10_MIN, INTERVAL_15_MIN
 	// Default value is `INTERVAL_5_SEC`.
 	// Possible values are `INTERVAL_5_SEC`, `INTERVAL_30_SEC`, `INTERVAL_1_MIN`, `INTERVAL_5_MIN`, `INTERVAL_10_MIN`, and `INTERVAL_15_MIN`.
 	AggregationInterval *string `pulumi:"aggregationInterval"`
@@ -40115,8 +40668,6 @@ type SubnetworkLogConfigArgs struct {
 	// Toggles the aggregation interval for collecting flow logs. Increasing the
 	// interval time will reduce the amount of generated flow logs for long
 	// lasting connections. Default is an interval of 5 seconds per connection.
-	// Possible values are INTERVAL_5_SEC, INTERVAL_30_SEC, INTERVAL_1_MIN,
-	// INTERVAL_5_MIN, INTERVAL_10_MIN, INTERVAL_15_MIN
 	// Default value is `INTERVAL_5_SEC`.
 	// Possible values are `INTERVAL_5_SEC`, `INTERVAL_30_SEC`, `INTERVAL_1_MIN`, `INTERVAL_5_MIN`, `INTERVAL_10_MIN`, and `INTERVAL_15_MIN`.
 	AggregationInterval pulumi.StringPtrInput `pulumi:"aggregationInterval"`
@@ -40215,8 +40766,6 @@ func (o SubnetworkLogConfigOutput) ToSubnetworkLogConfigPtrOutputWithContext(ctx
 // Toggles the aggregation interval for collecting flow logs. Increasing the
 // interval time will reduce the amount of generated flow logs for long
 // lasting connections. Default is an interval of 5 seconds per connection.
-// Possible values are INTERVAL_5_SEC, INTERVAL_30_SEC, INTERVAL_1_MIN,
-// INTERVAL_5_MIN, INTERVAL_10_MIN, INTERVAL_15_MIN
 // Default value is `INTERVAL_5_SEC`.
 // Possible values are `INTERVAL_5_SEC`, `INTERVAL_30_SEC`, `INTERVAL_1_MIN`, `INTERVAL_5_MIN`, `INTERVAL_10_MIN`, and `INTERVAL_15_MIN`.
 func (o SubnetworkLogConfigOutput) AggregationInterval() pulumi.StringPtrOutput {
@@ -40263,8 +40812,6 @@ func (o SubnetworkLogConfigPtrOutput) Elem() SubnetworkLogConfigOutput {
 // Toggles the aggregation interval for collecting flow logs. Increasing the
 // interval time will reduce the amount of generated flow logs for long
 // lasting connections. Default is an interval of 5 seconds per connection.
-// Possible values are INTERVAL_5_SEC, INTERVAL_30_SEC, INTERVAL_1_MIN,
-// INTERVAL_5_MIN, INTERVAL_10_MIN, INTERVAL_15_MIN
 // Default value is `INTERVAL_5_SEC`.
 // Possible values are `INTERVAL_5_SEC`, `INTERVAL_30_SEC`, `INTERVAL_1_MIN`, `INTERVAL_5_MIN`, `INTERVAL_10_MIN`, and `INTERVAL_15_MIN`.
 func (o SubnetworkLogConfigPtrOutput) AggregationInterval() pulumi.StringPtrOutput {
@@ -59707,6 +60254,8 @@ func init() {
 	pulumi.RegisterOutputType(GlobalForwardingRuleMetadataFilterFilterLabelArrayOutput{})
 	pulumi.RegisterOutputType(HaVpnGatewayVpnInterfaceOutput{})
 	pulumi.RegisterOutputType(HaVpnGatewayVpnInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(HealthCheckGrpcHealthCheckOutput{})
+	pulumi.RegisterOutputType(HealthCheckGrpcHealthCheckPtrOutput{})
 	pulumi.RegisterOutputType(HealthCheckHttp2HealthCheckOutput{})
 	pulumi.RegisterOutputType(HealthCheckHttp2HealthCheckPtrOutput{})
 	pulumi.RegisterOutputType(HealthCheckHttpHealthCheckOutput{})
@@ -59887,6 +60436,8 @@ func init() {
 	pulumi.RegisterOutputType(RegionDiskDiskEncryptionKeyPtrOutput{})
 	pulumi.RegisterOutputType(RegionDiskSourceSnapshotEncryptionKeyOutput{})
 	pulumi.RegisterOutputType(RegionDiskSourceSnapshotEncryptionKeyPtrOutput{})
+	pulumi.RegisterOutputType(RegionHealthCheckGrpcHealthCheckOutput{})
+	pulumi.RegisterOutputType(RegionHealthCheckGrpcHealthCheckPtrOutput{})
 	pulumi.RegisterOutputType(RegionHealthCheckHttp2HealthCheckOutput{})
 	pulumi.RegisterOutputType(RegionHealthCheckHttp2HealthCheckPtrOutput{})
 	pulumi.RegisterOutputType(RegionHealthCheckHttpHealthCheckOutput{})

@@ -27,6 +27,10 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         [Input("values", required: true)]
         private InputList<string>? _values;
+
+        /// <summary>
+        /// The values for the node affinity label.
+        /// </summary>
         public InputList<string> Values
         {
             get => _values ?? (_values = new InputList<string>());

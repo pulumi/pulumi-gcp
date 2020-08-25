@@ -170,18 +170,41 @@ class BudgetAllUpdatesRuleArgs:
 @pulumi.input_type
 class BudgetAmountArgs:
     def __init__(__self__, *,
-                 specified_amount: pulumi.Input['BudgetAmountSpecifiedAmountArgs']):
+                 last_period_amount: Optional[pulumi.Input[bool]] = None,
+                 specified_amount: Optional[pulumi.Input['BudgetAmountSpecifiedAmountArgs']] = None):
         """
+        :param pulumi.Input[bool] last_period_amount: Configures a budget amount that is automatically set to 100% of
+               last period's spend.
+               Boolean. Set value to true to use. Do not set to false, instead
+               use the `specified_amount` block.
         :param pulumi.Input['BudgetAmountSpecifiedAmountArgs'] specified_amount: A specified amount to use as the budget. currencyCode is
                optional. If specified, it must match the currency of the
                billing account. The currencyCode is provided on output.
                Structure is documented below.
         """
-        pulumi.set(__self__, "specified_amount", specified_amount)
+        if last_period_amount is not None:
+            pulumi.set(__self__, "last_period_amount", last_period_amount)
+        if specified_amount is not None:
+            pulumi.set(__self__, "specified_amount", specified_amount)
+
+    @property
+    @pulumi.getter(name="lastPeriodAmount")
+    def last_period_amount(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Configures a budget amount that is automatically set to 100% of
+        last period's spend.
+        Boolean. Set value to true to use. Do not set to false, instead
+        use the `specified_amount` block.
+        """
+        return pulumi.get(self, "last_period_amount")
+
+    @last_period_amount.setter
+    def last_period_amount(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "last_period_amount", value)
 
     @property
     @pulumi.getter(name="specifiedAmount")
-    def specified_amount(self) -> pulumi.Input['BudgetAmountSpecifiedAmountArgs']:
+    def specified_amount(self) -> Optional[pulumi.Input['BudgetAmountSpecifiedAmountArgs']]:
         """
         A specified amount to use as the budget. currencyCode is
         optional. If specified, it must match the currency of the
@@ -191,7 +214,7 @@ class BudgetAmountArgs:
         return pulumi.get(self, "specified_amount")
 
     @specified_amount.setter
-    def specified_amount(self, value: pulumi.Input['BudgetAmountSpecifiedAmountArgs']):
+    def specified_amount(self, value: Optional[pulumi.Input['BudgetAmountSpecifiedAmountArgs']]):
         pulumi.set(self, "specified_amount", value)
 
 

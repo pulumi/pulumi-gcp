@@ -29,6 +29,13 @@ namespace Pulumi.Gcp.BigQuery
     public partial class DatasetAccess : Pulumi.CustomResource
     {
         /// <summary>
+        /// If true, represents that that the iam_member in the config was translated to a different member type by the API, and is
+        /// stored in state as a different member type
+        /// </summary>
+        [Output("apiUpdatedMember")]
+        public Output<bool> ApiUpdatedMember { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the dataset containing this table.
         /// </summary>
         [Output("datasetId")]
@@ -217,6 +224,13 @@ namespace Pulumi.Gcp.BigQuery
 
     public sealed class DatasetAccessState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// If true, represents that that the iam_member in the config was translated to a different member type by the API, and is
+        /// stored in state as a different member type
+        /// </summary>
+        [Input("apiUpdatedMember")]
+        public Input<bool>? ApiUpdatedMember { get; set; }
+
         /// <summary>
         /// The ID of the dataset containing this table.
         /// </summary>

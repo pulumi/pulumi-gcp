@@ -8,6 +8,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi/config"
 )
 
+func GetAccessApprovalCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:accessApprovalCustomEndpoint")
+}
 func GetAccessContextManagerCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:accessContextManagerCustomEndpoint")
 }

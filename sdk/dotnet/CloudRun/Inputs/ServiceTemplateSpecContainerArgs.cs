@@ -111,7 +111,7 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         /// <summary>
         /// Compute Resources required by this container. Used to set values such as max memory
         /// More info:
-        /// https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+        /// https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits
         /// Structure is documented below.
         /// </summary>
         [Input("resources")]

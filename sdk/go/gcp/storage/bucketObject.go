@@ -54,7 +54,7 @@ type BucketObject struct {
 	// if `content` is not.
 	Source pulumi.AssetOrArchiveOutput `pulumi:"source"`
 	// The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
-	// Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`. If not provided, this defaults to the bucket's default
+	// Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
 	// storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
 	StorageClass pulumi.StringOutput `pulumi:"storageClass"`
 }
@@ -125,7 +125,7 @@ type bucketObjectState struct {
 	// if `content` is not.
 	Source pulumi.AssetOrArchive `pulumi:"source"`
 	// The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
-	// Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`. If not provided, this defaults to the bucket's default
+	// Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
 	// storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
 	StorageClass *string `pulumi:"storageClass"`
 }
@@ -166,7 +166,7 @@ type BucketObjectState struct {
 	// if `content` is not.
 	Source pulumi.AssetOrArchiveInput
 	// The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
-	// Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`. If not provided, this defaults to the bucket's default
+	// Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
 	// storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
 	StorageClass pulumi.StringPtrInput
 }
@@ -200,7 +200,7 @@ type bucketObjectArgs struct {
 	// if `content` is not.
 	Source pulumi.AssetOrArchive `pulumi:"source"`
 	// The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
-	// Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`. If not provided, this defaults to the bucket's default
+	// Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
 	// storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
 	StorageClass *string `pulumi:"storageClass"`
 }
@@ -231,7 +231,7 @@ type BucketObjectArgs struct {
 	// if `content` is not.
 	Source pulumi.AssetOrArchiveInput
 	// The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
-	// Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`. If not provided, this defaults to the bucket's default
+	// Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
 	// storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
 	StorageClass pulumi.StringPtrInput
 }

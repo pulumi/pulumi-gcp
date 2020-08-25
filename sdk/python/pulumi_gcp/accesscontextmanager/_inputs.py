@@ -15,10 +15,22 @@ __all__ = [
     'AccessLevelBasicConditionDevicePolicyOsConstraintArgs',
     'AccessLevelCustomArgs',
     'AccessLevelCustomExprArgs',
+    'AccessLevelsAccessLevelArgs',
+    'AccessLevelsAccessLevelBasicArgs',
+    'AccessLevelsAccessLevelBasicConditionArgs',
+    'AccessLevelsAccessLevelBasicConditionDevicePolicyArgs',
+    'AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs',
+    'AccessLevelsAccessLevelCustomArgs',
+    'AccessLevelsAccessLevelCustomExprArgs',
     'ServicePerimeterSpecArgs',
     'ServicePerimeterSpecVpcAccessibleServicesArgs',
     'ServicePerimeterStatusArgs',
     'ServicePerimeterStatusVpcAccessibleServicesArgs',
+    'ServicePerimetersServicePerimeterArgs',
+    'ServicePerimetersServicePerimeterSpecArgs',
+    'ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgs',
+    'ServicePerimetersServicePerimeterStatusArgs',
+    'ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs',
 ]
 
 @pulumi.input_type
@@ -488,6 +500,567 @@ class AccessLevelCustomExprArgs:
 
 
 @pulumi.input_type
+class AccessLevelsAccessLevelArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 basic: Optional[pulumi.Input['AccessLevelsAccessLevelBasicArgs']] = None,
+                 custom: Optional[pulumi.Input['AccessLevelsAccessLevelCustomArgs']] = None,
+                 description: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Resource name for the Access Level. The short_name component must begin
+               with a letter and only include alphanumeric and '_'.
+               Format: accessPolicies/{policy_id}/accessLevels/{short_name}
+        :param pulumi.Input[str] title: Title for the expression, i.e. a short string describing its purpose.
+        :param pulumi.Input['AccessLevelsAccessLevelBasicArgs'] basic: A set of predefined conditions for the access level and a combining function.
+               Structure is documented below.
+        :param pulumi.Input['AccessLevelsAccessLevelCustomArgs'] custom: Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
+               See CEL spec at: https://github.com/google/cel-spec.
+               Structure is documented below.
+        :param pulumi.Input[str] description: Description of the expression
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "title", title)
+        if basic is not None:
+            pulumi.set(__self__, "basic", basic)
+        if custom is not None:
+            pulumi.set(__self__, "custom", custom)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Resource name for the Access Level. The short_name component must begin
+        with a letter and only include alphanumeric and '_'.
+        Format: accessPolicies/{policy_id}/accessLevels/{short_name}
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        """
+        Title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def basic(self) -> Optional[pulumi.Input['AccessLevelsAccessLevelBasicArgs']]:
+        """
+        A set of predefined conditions for the access level and a combining function.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "basic")
+
+    @basic.setter
+    def basic(self, value: Optional[pulumi.Input['AccessLevelsAccessLevelBasicArgs']]):
+        pulumi.set(self, "basic", value)
+
+    @property
+    @pulumi.getter
+    def custom(self) -> Optional[pulumi.Input['AccessLevelsAccessLevelCustomArgs']]:
+        """
+        Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
+        See CEL spec at: https://github.com/google/cel-spec.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "custom")
+
+    @custom.setter
+    def custom(self, value: Optional[pulumi.Input['AccessLevelsAccessLevelCustomArgs']]):
+        pulumi.set(self, "custom", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the expression
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class AccessLevelsAccessLevelBasicArgs:
+    def __init__(__self__, *,
+                 conditions: pulumi.Input[List[pulumi.Input['AccessLevelsAccessLevelBasicConditionArgs']]],
+                 combining_function: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[List[pulumi.Input['AccessLevelsAccessLevelBasicConditionArgs']]] conditions: A set of requirements for the AccessLevel to be granted.
+               Structure is documented below.
+        :param pulumi.Input[str] combining_function: How the conditions list should be combined to determine if a request
+               is granted this AccessLevel. If AND is used, each Condition in
+               conditions must be satisfied for the AccessLevel to be applied. If
+               OR is used, at least one Condition in conditions must be satisfied
+               for the AccessLevel to be applied.
+               Default value is `AND`.
+               Possible values are `AND` and `OR`.
+        """
+        pulumi.set(__self__, "conditions", conditions)
+        if combining_function is not None:
+            pulumi.set(__self__, "combining_function", combining_function)
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> pulumi.Input[List[pulumi.Input['AccessLevelsAccessLevelBasicConditionArgs']]]:
+        """
+        A set of requirements for the AccessLevel to be granted.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "conditions")
+
+    @conditions.setter
+    def conditions(self, value: pulumi.Input[List[pulumi.Input['AccessLevelsAccessLevelBasicConditionArgs']]]):
+        pulumi.set(self, "conditions", value)
+
+    @property
+    @pulumi.getter(name="combiningFunction")
+    def combining_function(self) -> Optional[pulumi.Input[str]]:
+        """
+        How the conditions list should be combined to determine if a request
+        is granted this AccessLevel. If AND is used, each Condition in
+        conditions must be satisfied for the AccessLevel to be applied. If
+        OR is used, at least one Condition in conditions must be satisfied
+        for the AccessLevel to be applied.
+        Default value is `AND`.
+        Possible values are `AND` and `OR`.
+        """
+        return pulumi.get(self, "combining_function")
+
+    @combining_function.setter
+    def combining_function(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "combining_function", value)
+
+
+@pulumi.input_type
+class AccessLevelsAccessLevelBasicConditionArgs:
+    def __init__(__self__, *,
+                 device_policy: Optional[pulumi.Input['AccessLevelsAccessLevelBasicConditionDevicePolicyArgs']] = None,
+                 ip_subnetworks: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 members: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 negate: Optional[pulumi.Input[bool]] = None,
+                 regions: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 required_access_levels: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input['AccessLevelsAccessLevelBasicConditionDevicePolicyArgs'] device_policy: Device specific restrictions, all restrictions must hold for
+               the Condition to be true. If not specified, all devices are
+               allowed.
+               Structure is documented below.
+        :param pulumi.Input[List[pulumi.Input[str]]] ip_subnetworks: A list of CIDR block IP subnetwork specification. May be IPv4
+               or IPv6.
+               Note that for a CIDR IP address block, the specified IP address
+               portion must be properly truncated (i.e. all the host bits must
+               be zero) or the input is considered malformed. For example,
+               "192.0.2.0/24" is accepted but "192.0.2.1/24" is not. Similarly,
+               for IPv6, "2001:db8::/32" is accepted whereas "2001:db8::1/32"
+               is not. The originating IP of a request must be in one of the
+               listed subnets in order for this Condition to be true.
+               If empty, all IP addresses are allowed.
+        :param pulumi.Input[List[pulumi.Input[str]]] members: An allowed list of members (users, service accounts).
+               Using groups is not supported yet.
+               The signed-in user originating the request must be a part of one
+               of the provided members. If not specified, a request may come
+               from any user (logged in/not logged in, not present in any
+               groups, etc.).
+               Formats: `user:{emailid}`, `serviceAccount:{emailid}`
+        :param pulumi.Input[bool] negate: Whether to negate the Condition. If true, the Condition becomes
+               a NAND over its non-empty fields, each field must be false for
+               the Condition overall to be satisfied. Defaults to false.
+        :param pulumi.Input[List[pulumi.Input[str]]] regions: The request must originate from one of the provided
+               countries/regions.
+               Format: A valid ISO 3166-1 alpha-2 code.
+        :param pulumi.Input[List[pulumi.Input[str]]] required_access_levels: A list of other access levels defined in the same Policy,
+               referenced by resource name. Referencing an AccessLevel which
+               does not exist is an error. All access levels listed must be
+               granted for the Condition to be true.
+               Format: accessPolicies/{policy_id}/accessLevels/{short_name}
+        """
+        if device_policy is not None:
+            pulumi.set(__self__, "device_policy", device_policy)
+        if ip_subnetworks is not None:
+            pulumi.set(__self__, "ip_subnetworks", ip_subnetworks)
+        if members is not None:
+            pulumi.set(__self__, "members", members)
+        if negate is not None:
+            pulumi.set(__self__, "negate", negate)
+        if regions is not None:
+            pulumi.set(__self__, "regions", regions)
+        if required_access_levels is not None:
+            pulumi.set(__self__, "required_access_levels", required_access_levels)
+
+    @property
+    @pulumi.getter(name="devicePolicy")
+    def device_policy(self) -> Optional[pulumi.Input['AccessLevelsAccessLevelBasicConditionDevicePolicyArgs']]:
+        """
+        Device specific restrictions, all restrictions must hold for
+        the Condition to be true. If not specified, all devices are
+        allowed.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "device_policy")
+
+    @device_policy.setter
+    def device_policy(self, value: Optional[pulumi.Input['AccessLevelsAccessLevelBasicConditionDevicePolicyArgs']]):
+        pulumi.set(self, "device_policy", value)
+
+    @property
+    @pulumi.getter(name="ipSubnetworks")
+    def ip_subnetworks(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+        """
+        A list of CIDR block IP subnetwork specification. May be IPv4
+        or IPv6.
+        Note that for a CIDR IP address block, the specified IP address
+        portion must be properly truncated (i.e. all the host bits must
+        be zero) or the input is considered malformed. For example,
+        "192.0.2.0/24" is accepted but "192.0.2.1/24" is not. Similarly,
+        for IPv6, "2001:db8::/32" is accepted whereas "2001:db8::1/32"
+        is not. The originating IP of a request must be in one of the
+        listed subnets in order for this Condition to be true.
+        If empty, all IP addresses are allowed.
+        """
+        return pulumi.get(self, "ip_subnetworks")
+
+    @ip_subnetworks.setter
+    def ip_subnetworks(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "ip_subnetworks", value)
+
+    @property
+    @pulumi.getter
+    def members(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+        """
+        An allowed list of members (users, service accounts).
+        Using groups is not supported yet.
+        The signed-in user originating the request must be a part of one
+        of the provided members. If not specified, a request may come
+        from any user (logged in/not logged in, not present in any
+        groups, etc.).
+        Formats: `user:{emailid}`, `serviceAccount:{emailid}`
+        """
+        return pulumi.get(self, "members")
+
+    @members.setter
+    def members(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "members", value)
+
+    @property
+    @pulumi.getter
+    def negate(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to negate the Condition. If true, the Condition becomes
+        a NAND over its non-empty fields, each field must be false for
+        the Condition overall to be satisfied. Defaults to false.
+        """
+        return pulumi.get(self, "negate")
+
+    @negate.setter
+    def negate(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "negate", value)
+
+    @property
+    @pulumi.getter
+    def regions(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+        """
+        The request must originate from one of the provided
+        countries/regions.
+        Format: A valid ISO 3166-1 alpha-2 code.
+        """
+        return pulumi.get(self, "regions")
+
+    @regions.setter
+    def regions(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "regions", value)
+
+    @property
+    @pulumi.getter(name="requiredAccessLevels")
+    def required_access_levels(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+        """
+        A list of other access levels defined in the same Policy,
+        referenced by resource name. Referencing an AccessLevel which
+        does not exist is an error. All access levels listed must be
+        granted for the Condition to be true.
+        Format: accessPolicies/{policy_id}/accessLevels/{short_name}
+        """
+        return pulumi.get(self, "required_access_levels")
+
+    @required_access_levels.setter
+    def required_access_levels(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "required_access_levels", value)
+
+
+@pulumi.input_type
+class AccessLevelsAccessLevelBasicConditionDevicePolicyArgs:
+    def __init__(__self__, *,
+                 allowed_device_management_levels: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 allowed_encryption_statuses: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 os_constraints: Optional[pulumi.Input[List[pulumi.Input['AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs']]]] = None,
+                 require_admin_approval: Optional[pulumi.Input[bool]] = None,
+                 require_corp_owned: Optional[pulumi.Input[bool]] = None,
+                 require_screen_lock: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[List[pulumi.Input[str]]] allowed_device_management_levels: A list of allowed device management levels.
+               An empty list allows all management levels.
+               Each value may be one of `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, and `COMPLETE`.
+        :param pulumi.Input[List[pulumi.Input[str]]] allowed_encryption_statuses: A list of allowed encryptions statuses.
+               An empty list allows all statuses.
+               Each value may be one of `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, and `ENCRYPTED`.
+        :param pulumi.Input[List[pulumi.Input['AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs']]] os_constraints: A list of allowed OS versions.
+               An empty list allows all types and all versions.
+               Structure is documented below.
+        :param pulumi.Input[bool] require_admin_approval: Whether the device needs to be approved by the customer admin.
+        :param pulumi.Input[bool] require_corp_owned: Whether the device needs to be corp owned.
+        :param pulumi.Input[bool] require_screen_lock: Whether or not screenlock is required for the DevicePolicy
+               to be true. Defaults to false.
+        """
+        if allowed_device_management_levels is not None:
+            pulumi.set(__self__, "allowed_device_management_levels", allowed_device_management_levels)
+        if allowed_encryption_statuses is not None:
+            pulumi.set(__self__, "allowed_encryption_statuses", allowed_encryption_statuses)
+        if os_constraints is not None:
+            pulumi.set(__self__, "os_constraints", os_constraints)
+        if require_admin_approval is not None:
+            pulumi.set(__self__, "require_admin_approval", require_admin_approval)
+        if require_corp_owned is not None:
+            pulumi.set(__self__, "require_corp_owned", require_corp_owned)
+        if require_screen_lock is not None:
+            pulumi.set(__self__, "require_screen_lock", require_screen_lock)
+
+    @property
+    @pulumi.getter(name="allowedDeviceManagementLevels")
+    def allowed_device_management_levels(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+        """
+        A list of allowed device management levels.
+        An empty list allows all management levels.
+        Each value may be one of `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, and `COMPLETE`.
+        """
+        return pulumi.get(self, "allowed_device_management_levels")
+
+    @allowed_device_management_levels.setter
+    def allowed_device_management_levels(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_device_management_levels", value)
+
+    @property
+    @pulumi.getter(name="allowedEncryptionStatuses")
+    def allowed_encryption_statuses(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+        """
+        A list of allowed encryptions statuses.
+        An empty list allows all statuses.
+        Each value may be one of `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, and `ENCRYPTED`.
+        """
+        return pulumi.get(self, "allowed_encryption_statuses")
+
+    @allowed_encryption_statuses.setter
+    def allowed_encryption_statuses(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_encryption_statuses", value)
+
+    @property
+    @pulumi.getter(name="osConstraints")
+    def os_constraints(self) -> Optional[pulumi.Input[List[pulumi.Input['AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs']]]]:
+        """
+        A list of allowed OS versions.
+        An empty list allows all types and all versions.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "os_constraints")
+
+    @os_constraints.setter
+    def os_constraints(self, value: Optional[pulumi.Input[List[pulumi.Input['AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs']]]]):
+        pulumi.set(self, "os_constraints", value)
+
+    @property
+    @pulumi.getter(name="requireAdminApproval")
+    def require_admin_approval(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the device needs to be approved by the customer admin.
+        """
+        return pulumi.get(self, "require_admin_approval")
+
+    @require_admin_approval.setter
+    def require_admin_approval(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "require_admin_approval", value)
+
+    @property
+    @pulumi.getter(name="requireCorpOwned")
+    def require_corp_owned(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the device needs to be corp owned.
+        """
+        return pulumi.get(self, "require_corp_owned")
+
+    @require_corp_owned.setter
+    def require_corp_owned(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "require_corp_owned", value)
+
+    @property
+    @pulumi.getter(name="requireScreenLock")
+    def require_screen_lock(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not screenlock is required for the DevicePolicy
+        to be true. Defaults to false.
+        """
+        return pulumi.get(self, "require_screen_lock")
+
+    @require_screen_lock.setter
+    def require_screen_lock(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "require_screen_lock", value)
+
+
+@pulumi.input_type
+class AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs:
+    def __init__(__self__, *,
+                 os_type: pulumi.Input[str],
+                 minimum_version: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] os_type: The operating system type of the device.
+               Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, and `DESKTOP_CHROME_OS`.
+        :param pulumi.Input[str] minimum_version: The minimum allowed OS version. If not set, any version
+               of this OS satisfies the constraint.
+               Format: "major.minor.patch" such as "10.5.301", "9.2.1".
+        """
+        pulumi.set(__self__, "os_type", os_type)
+        if minimum_version is not None:
+            pulumi.set(__self__, "minimum_version", minimum_version)
+
+    @property
+    @pulumi.getter(name="osType")
+    def os_type(self) -> pulumi.Input[str]:
+        """
+        The operating system type of the device.
+        Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, and `DESKTOP_CHROME_OS`.
+        """
+        return pulumi.get(self, "os_type")
+
+    @os_type.setter
+    def os_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "os_type", value)
+
+    @property
+    @pulumi.getter(name="minimumVersion")
+    def minimum_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The minimum allowed OS version. If not set, any version
+        of this OS satisfies the constraint.
+        Format: "major.minor.patch" such as "10.5.301", "9.2.1".
+        """
+        return pulumi.get(self, "minimum_version")
+
+    @minimum_version.setter
+    def minimum_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "minimum_version", value)
+
+
+@pulumi.input_type
+class AccessLevelsAccessLevelCustomArgs:
+    def __init__(__self__, *,
+                 expr: pulumi.Input['AccessLevelsAccessLevelCustomExprArgs']):
+        """
+        :param pulumi.Input['AccessLevelsAccessLevelCustomExprArgs'] expr: Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
+               This page details the objects and attributes that are used to the build the CEL expressions for
+               custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "expr", expr)
+
+    @property
+    @pulumi.getter
+    def expr(self) -> pulumi.Input['AccessLevelsAccessLevelCustomExprArgs']:
+        """
+        Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
+        This page details the objects and attributes that are used to the build the CEL expressions for
+        custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "expr")
+
+    @expr.setter
+    def expr(self, value: pulumi.Input['AccessLevelsAccessLevelCustomExprArgs']):
+        pulumi.set(self, "expr", value)
+
+
+@pulumi.input_type
+class AccessLevelsAccessLevelCustomExprArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 title: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
+        :param pulumi.Input[str] description: Description of the expression
+        :param pulumi.Input[str] location: String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
+        :param pulumi.Input[str] title: Title for the expression, i.e. a short string describing its purpose.
+        """
+        pulumi.set(__self__, "expression", expression)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the expression
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        Title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
+
+
+@pulumi.input_type
 class ServicePerimeterSpecArgs:
     def __init__(__self__, *,
                  access_levels: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -738,6 +1311,517 @@ class ServicePerimeterStatusArgs:
 
 @pulumi.input_type
 class ServicePerimeterStatusVpcAccessibleServicesArgs:
+    def __init__(__self__, *,
+                 allowed_services: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 enable_restriction: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[List[pulumi.Input[str]]] allowed_services: The list of APIs usable within the Service Perimeter.
+               Must be empty unless `enableRestriction` is True.
+        :param pulumi.Input[bool] enable_restriction: Whether to restrict API calls within the Service Perimeter to the
+               list of APIs specified in 'allowedServices'.
+        """
+        if allowed_services is not None:
+            pulumi.set(__self__, "allowed_services", allowed_services)
+        if enable_restriction is not None:
+            pulumi.set(__self__, "enable_restriction", enable_restriction)
+
+    @property
+    @pulumi.getter(name="allowedServices")
+    def allowed_services(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+        """
+        The list of APIs usable within the Service Perimeter.
+        Must be empty unless `enableRestriction` is True.
+        """
+        return pulumi.get(self, "allowed_services")
+
+    @allowed_services.setter
+    def allowed_services(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_services", value)
+
+    @property
+    @pulumi.getter(name="enableRestriction")
+    def enable_restriction(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to restrict API calls within the Service Perimeter to the
+        list of APIs specified in 'allowedServices'.
+        """
+        return pulumi.get(self, "enable_restriction")
+
+    @enable_restriction.setter
+    def enable_restriction(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_restriction", value)
+
+
+@pulumi.input_type
+class ServicePerimetersServicePerimeterArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 create_time: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 perimeter_type: Optional[pulumi.Input[str]] = None,
+                 spec: Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecArgs']] = None,
+                 status: Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusArgs']] = None,
+                 update_time: Optional[pulumi.Input[str]] = None,
+                 use_explicit_dry_run_spec: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] name: Resource name for the ServicePerimeter. The short_name component must
+               begin with a letter and only include alphanumeric and '_'.
+               Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
+        :param pulumi.Input[str] title: Human readable title. Must be unique within the Policy.
+        :param pulumi.Input[str] create_time: -
+               Time the AccessPolicy was created in UTC.
+        :param pulumi.Input[str] description: Description of the ServicePerimeter and its use. Does not affect
+               behavior.
+        :param pulumi.Input[str] perimeter_type: Specifies the type of the Perimeter. There are two types: regular and
+               bridge. Regular Service Perimeter contains resources, access levels,
+               and restricted services. Every resource can be in at most
+               ONE regular Service Perimeter.
+               In addition to being in a regular service perimeter, a resource can also
+               be in zero or more perimeter bridges. A perimeter bridge only contains
+               resources. Cross project operations are permitted if all effected
+               resources share some perimeter (whether bridge or regular). Perimeter
+               Bridge does not contain access levels or services: those are governed
+               entirely by the regular perimeter that resource is in.
+               Perimeter Bridges are typically useful when building more complex
+               topologies with many independent perimeters that need to share some data
+               with a common perimeter, but should not be able to share data among
+               themselves.
+               Default value is `PERIMETER_TYPE_REGULAR`.
+               Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
+        :param pulumi.Input['ServicePerimetersServicePerimeterSpecArgs'] spec: Proposed (or dry run) ServicePerimeter configuration.
+               This configuration allows to specify and test ServicePerimeter configuration
+               without enforcing actual access restrictions. Only allowed to be set when
+               the `useExplicitDryRunSpec` flag is set.
+               Structure is documented below.
+        :param pulumi.Input['ServicePerimetersServicePerimeterStatusArgs'] status: ServicePerimeter configuration. Specifies sets of resources,
+               restricted services and access levels that determine
+               perimeter content and boundaries.
+               Structure is documented below.
+        :param pulumi.Input[str] update_time: -
+               Time the AccessPolicy was updated in UTC.
+        :param pulumi.Input[bool] use_explicit_dry_run_spec: Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists
+               for all Service Perimeters, and that spec is identical to the status for those
+               Service Perimeters. When this flag is set, it inhibits the generation of the
+               implicit spec, thereby allowing the user to explicitly provide a
+               configuration ("spec") to use in a dry-run version of the Service Perimeter.
+               This allows the user to test changes to the enforced config ("status") without
+               actually enforcing them. This testing is done through analyzing the differences
+               between currently enforced and suggested restrictions. useExplicitDryRunSpec must
+               bet set to True if any of the fields in the spec are set to non-default values.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "title", title)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if perimeter_type is not None:
+            pulumi.set(__self__, "perimeter_type", perimeter_type)
+        if spec is not None:
+            pulumi.set(__self__, "spec", spec)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+        if use_explicit_dry_run_spec is not None:
+            pulumi.set(__self__, "use_explicit_dry_run_spec", use_explicit_dry_run_spec)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Resource name for the ServicePerimeter. The short_name component must
+        begin with a letter and only include alphanumeric and '_'.
+        Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        """
+        Human readable title. Must be unique within the Policy.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        -
+        Time the AccessPolicy was created in UTC.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the ServicePerimeter and its use. Does not affect
+        behavior.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="perimeterType")
+    def perimeter_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the type of the Perimeter. There are two types: regular and
+        bridge. Regular Service Perimeter contains resources, access levels,
+        and restricted services. Every resource can be in at most
+        ONE regular Service Perimeter.
+        In addition to being in a regular service perimeter, a resource can also
+        be in zero or more perimeter bridges. A perimeter bridge only contains
+        resources. Cross project operations are permitted if all effected
+        resources share some perimeter (whether bridge or regular). Perimeter
+        Bridge does not contain access levels or services: those are governed
+        entirely by the regular perimeter that resource is in.
+        Perimeter Bridges are typically useful when building more complex
+        topologies with many independent perimeters that need to share some data
+        with a common perimeter, but should not be able to share data among
+        themselves.
+        Default value is `PERIMETER_TYPE_REGULAR`.
+        Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
+        """
+        return pulumi.get(self, "perimeter_type")
+
+    @perimeter_type.setter
+    def perimeter_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "perimeter_type", value)
+
+    @property
+    @pulumi.getter
+    def spec(self) -> Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecArgs']]:
+        """
+        Proposed (or dry run) ServicePerimeter configuration.
+        This configuration allows to specify and test ServicePerimeter configuration
+        without enforcing actual access restrictions. Only allowed to be set when
+        the `useExplicitDryRunSpec` flag is set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "spec")
+
+    @spec.setter
+    def spec(self, value: Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecArgs']]):
+        pulumi.set(self, "spec", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusArgs']]:
+        """
+        ServicePerimeter configuration. Specifies sets of resources,
+        restricted services and access levels that determine
+        perimeter content and boundaries.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusArgs']]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        -
+        Time the AccessPolicy was updated in UTC.
+        """
+        return pulumi.get(self, "update_time")
+
+    @update_time.setter
+    def update_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update_time", value)
+
+    @property
+    @pulumi.getter(name="useExplicitDryRunSpec")
+    def use_explicit_dry_run_spec(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists
+        for all Service Perimeters, and that spec is identical to the status for those
+        Service Perimeters. When this flag is set, it inhibits the generation of the
+        implicit spec, thereby allowing the user to explicitly provide a
+        configuration ("spec") to use in a dry-run version of the Service Perimeter.
+        This allows the user to test changes to the enforced config ("status") without
+        actually enforcing them. This testing is done through analyzing the differences
+        between currently enforced and suggested restrictions. useExplicitDryRunSpec must
+        bet set to True if any of the fields in the spec are set to non-default values.
+        """
+        return pulumi.get(self, "use_explicit_dry_run_spec")
+
+    @use_explicit_dry_run_spec.setter
+    def use_explicit_dry_run_spec(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_explicit_dry_run_spec", value)
+
+
+@pulumi.input_type
+class ServicePerimetersServicePerimeterSpecArgs:
+    def __init__(__self__, *,
+                 access_levels: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 resources: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 restricted_services: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 vpc_accessible_services: Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgs']] = None):
+        """
+        :param pulumi.Input[List[pulumi.Input[str]]] access_levels: A list of AccessLevel resource names that allow resources within
+               the ServicePerimeter to be accessed from the internet.
+               AccessLevels listed must be in the same policy as this
+               ServicePerimeter. Referencing a nonexistent AccessLevel is a
+               syntax error. If no AccessLevel names are listed, resources within
+               the perimeter can only be accessed via GCP calls with request
+               origins within the perimeter. For Service Perimeter Bridge, must
+               be empty.
+               Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
+        :param pulumi.Input[List[pulumi.Input[str]]] resources: A list of GCP resources that are inside of the service perimeter.
+               Currently only projects are allowed.
+               Format: projects/{project_number}
+        :param pulumi.Input[List[pulumi.Input[str]]] restricted_services: GCP services that are subject to the Service Perimeter
+               restrictions. Must contain a list of services. For example, if
+               `storage.googleapis.com` is specified, access to the storage
+               buckets inside the perimeter must meet the perimeter's access
+               restrictions.
+        :param pulumi.Input['ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgs'] vpc_accessible_services: Specifies how APIs are allowed to communicate within the Service
+               Perimeter.
+               Structure is documented below.
+        """
+        if access_levels is not None:
+            pulumi.set(__self__, "access_levels", access_levels)
+        if resources is not None:
+            pulumi.set(__self__, "resources", resources)
+        if restricted_services is not None:
+            pulumi.set(__self__, "restricted_services", restricted_services)
+        if vpc_accessible_services is not None:
+            pulumi.set(__self__, "vpc_accessible_services", vpc_accessible_services)
+
+    @property
+    @pulumi.getter(name="accessLevels")
+    def access_levels(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+        """
+        A list of AccessLevel resource names that allow resources within
+        the ServicePerimeter to be accessed from the internet.
+        AccessLevels listed must be in the same policy as this
+        ServicePerimeter. Referencing a nonexistent AccessLevel is a
+        syntax error. If no AccessLevel names are listed, resources within
+        the perimeter can only be accessed via GCP calls with request
+        origins within the perimeter. For Service Perimeter Bridge, must
+        be empty.
+        Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
+        """
+        return pulumi.get(self, "access_levels")
+
+    @access_levels.setter
+    def access_levels(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "access_levels", value)
+
+    @property
+    @pulumi.getter
+    def resources(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+        """
+        A list of GCP resources that are inside of the service perimeter.
+        Currently only projects are allowed.
+        Format: projects/{project_number}
+        """
+        return pulumi.get(self, "resources")
+
+    @resources.setter
+    def resources(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "resources", value)
+
+    @property
+    @pulumi.getter(name="restrictedServices")
+    def restricted_services(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+        """
+        GCP services that are subject to the Service Perimeter
+        restrictions. Must contain a list of services. For example, if
+        `storage.googleapis.com` is specified, access to the storage
+        buckets inside the perimeter must meet the perimeter's access
+        restrictions.
+        """
+        return pulumi.get(self, "restricted_services")
+
+    @restricted_services.setter
+    def restricted_services(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "restricted_services", value)
+
+    @property
+    @pulumi.getter(name="vpcAccessibleServices")
+    def vpc_accessible_services(self) -> Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgs']]:
+        """
+        Specifies how APIs are allowed to communicate within the Service
+        Perimeter.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "vpc_accessible_services")
+
+    @vpc_accessible_services.setter
+    def vpc_accessible_services(self, value: Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgs']]):
+        pulumi.set(self, "vpc_accessible_services", value)
+
+
+@pulumi.input_type
+class ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgs:
+    def __init__(__self__, *,
+                 allowed_services: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 enable_restriction: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[List[pulumi.Input[str]]] allowed_services: The list of APIs usable within the Service Perimeter.
+               Must be empty unless `enableRestriction` is True.
+        :param pulumi.Input[bool] enable_restriction: Whether to restrict API calls within the Service Perimeter to the
+               list of APIs specified in 'allowedServices'.
+        """
+        if allowed_services is not None:
+            pulumi.set(__self__, "allowed_services", allowed_services)
+        if enable_restriction is not None:
+            pulumi.set(__self__, "enable_restriction", enable_restriction)
+
+    @property
+    @pulumi.getter(name="allowedServices")
+    def allowed_services(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+        """
+        The list of APIs usable within the Service Perimeter.
+        Must be empty unless `enableRestriction` is True.
+        """
+        return pulumi.get(self, "allowed_services")
+
+    @allowed_services.setter
+    def allowed_services(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_services", value)
+
+    @property
+    @pulumi.getter(name="enableRestriction")
+    def enable_restriction(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to restrict API calls within the Service Perimeter to the
+        list of APIs specified in 'allowedServices'.
+        """
+        return pulumi.get(self, "enable_restriction")
+
+    @enable_restriction.setter
+    def enable_restriction(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_restriction", value)
+
+
+@pulumi.input_type
+class ServicePerimetersServicePerimeterStatusArgs:
+    def __init__(__self__, *,
+                 access_levels: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 resources: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 restricted_services: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 vpc_accessible_services: Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs']] = None):
+        """
+        :param pulumi.Input[List[pulumi.Input[str]]] access_levels: A list of AccessLevel resource names that allow resources within
+               the ServicePerimeter to be accessed from the internet.
+               AccessLevels listed must be in the same policy as this
+               ServicePerimeter. Referencing a nonexistent AccessLevel is a
+               syntax error. If no AccessLevel names are listed, resources within
+               the perimeter can only be accessed via GCP calls with request
+               origins within the perimeter. For Service Perimeter Bridge, must
+               be empty.
+               Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
+        :param pulumi.Input[List[pulumi.Input[str]]] resources: A list of GCP resources that are inside of the service perimeter.
+               Currently only projects are allowed.
+               Format: projects/{project_number}
+        :param pulumi.Input[List[pulumi.Input[str]]] restricted_services: GCP services that are subject to the Service Perimeter
+               restrictions. Must contain a list of services. For example, if
+               `storage.googleapis.com` is specified, access to the storage
+               buckets inside the perimeter must meet the perimeter's access
+               restrictions.
+        :param pulumi.Input['ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs'] vpc_accessible_services: Specifies how APIs are allowed to communicate within the Service
+               Perimeter.
+               Structure is documented below.
+        """
+        if access_levels is not None:
+            pulumi.set(__self__, "access_levels", access_levels)
+        if resources is not None:
+            pulumi.set(__self__, "resources", resources)
+        if restricted_services is not None:
+            pulumi.set(__self__, "restricted_services", restricted_services)
+        if vpc_accessible_services is not None:
+            pulumi.set(__self__, "vpc_accessible_services", vpc_accessible_services)
+
+    @property
+    @pulumi.getter(name="accessLevels")
+    def access_levels(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+        """
+        A list of AccessLevel resource names that allow resources within
+        the ServicePerimeter to be accessed from the internet.
+        AccessLevels listed must be in the same policy as this
+        ServicePerimeter. Referencing a nonexistent AccessLevel is a
+        syntax error. If no AccessLevel names are listed, resources within
+        the perimeter can only be accessed via GCP calls with request
+        origins within the perimeter. For Service Perimeter Bridge, must
+        be empty.
+        Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
+        """
+        return pulumi.get(self, "access_levels")
+
+    @access_levels.setter
+    def access_levels(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "access_levels", value)
+
+    @property
+    @pulumi.getter
+    def resources(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+        """
+        A list of GCP resources that are inside of the service perimeter.
+        Currently only projects are allowed.
+        Format: projects/{project_number}
+        """
+        return pulumi.get(self, "resources")
+
+    @resources.setter
+    def resources(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "resources", value)
+
+    @property
+    @pulumi.getter(name="restrictedServices")
+    def restricted_services(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+        """
+        GCP services that are subject to the Service Perimeter
+        restrictions. Must contain a list of services. For example, if
+        `storage.googleapis.com` is specified, access to the storage
+        buckets inside the perimeter must meet the perimeter's access
+        restrictions.
+        """
+        return pulumi.get(self, "restricted_services")
+
+    @restricted_services.setter
+    def restricted_services(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "restricted_services", value)
+
+    @property
+    @pulumi.getter(name="vpcAccessibleServices")
+    def vpc_accessible_services(self) -> Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs']]:
+        """
+        Specifies how APIs are allowed to communicate within the Service
+        Perimeter.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "vpc_accessible_services")
+
+    @vpc_accessible_services.setter
+    def vpc_accessible_services(self, value: Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs']]):
+        pulumi.set(self, "vpc_accessible_services", value)
+
+
+@pulumi.input_type
+class ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs:
     def __init__(__self__, *,
                  allowed_services: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  enable_restriction: Optional[pulumi.Input[bool]] = None):

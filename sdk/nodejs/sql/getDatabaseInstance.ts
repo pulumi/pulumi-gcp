@@ -19,6 +19,7 @@ export function getDatabaseInstance(args: GetDatabaseInstanceArgs, opts?: pulumi
     }
     return pulumi.runtime.invoke("gcp:sql/getDatabaseInstance:getDatabaseInstance", {
         "name": args.name,
+        "project": args.project,
     }, opts);
 }
 
@@ -30,6 +31,10 @@ export interface GetDatabaseInstanceArgs {
      * The name of the instance.
      */
     readonly name: string;
+    /**
+     * The ID of the project in which the resource belongs.
+     */
+    readonly project?: string;
 }
 
 /**
@@ -67,7 +72,7 @@ export interface GetDatabaseInstanceResult {
      * The first private (`PRIVATE`) IPv4 address assigned.
      */
     readonly privateIpAddress: string;
-    readonly project: string;
+    readonly project?: string;
     /**
      * The first public (`PRIMARY`) IPv4 address assigned.
      */

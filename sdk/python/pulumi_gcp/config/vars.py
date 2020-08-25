@@ -10,6 +10,7 @@ from .. import _utilities, _tables
 from . import outputs
 
 __all__ = [
+    'access_approval_custom_endpoint',
     'access_context_manager_custom_endpoint',
     'access_token',
     'active_directory_custom_endpoint',
@@ -96,6 +97,8 @@ __all__ = [
 ]
 
 __config__ = pulumi.Config('gcp')
+
+access_approval_custom_endpoint = __config__.get('accessApprovalCustomEndpoint')
 
 access_context_manager_custom_endpoint = __config__.get('accessContextManagerCustomEndpoint')
 

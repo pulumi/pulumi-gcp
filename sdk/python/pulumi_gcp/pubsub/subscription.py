@@ -19,6 +19,7 @@ class Subscription(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ack_deadline_seconds: Optional[pulumi.Input[float]] = None,
                  dead_letter_policy: Optional[pulumi.Input[pulumi.InputType['SubscriptionDeadLetterPolicyArgs']]] = None,
+                 enable_message_ordering: Optional[pulumi.Input[bool]] = None,
                  expiration_policy: Optional[pulumi.Input[pulumi.InputType['SubscriptionExpirationPolicyArgs']]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -68,6 +69,9 @@ class Subscription(pulumi.CustomResource):
                service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
                permission to Acknowledge() messages on this subscription.
                Structure is documented below.
+        :param pulumi.Input[bool] enable_message_ordering: If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
+               the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they
+               may be delivered in any order.
         :param pulumi.Input[pulumi.InputType['SubscriptionExpirationPolicyArgs']] expiration_policy: A policy that specifies the conditions for this subscription's expiration.
                A subscription is considered active as long as any connected subscriber
                is successfully consuming messages from the subscription or is issuing
@@ -121,6 +125,7 @@ class Subscription(pulumi.CustomResource):
 
             __props__['ack_deadline_seconds'] = ack_deadline_seconds
             __props__['dead_letter_policy'] = dead_letter_policy
+            __props__['enable_message_ordering'] = enable_message_ordering
             __props__['expiration_policy'] = expiration_policy
             __props__['filter'] = filter
             __props__['labels'] = labels
@@ -145,6 +150,7 @@ class Subscription(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             ack_deadline_seconds: Optional[pulumi.Input[float]] = None,
             dead_letter_policy: Optional[pulumi.Input[pulumi.InputType['SubscriptionDeadLetterPolicyArgs']]] = None,
+            enable_message_ordering: Optional[pulumi.Input[bool]] = None,
             expiration_policy: Optional[pulumi.Input[pulumi.InputType['SubscriptionExpirationPolicyArgs']]] = None,
             filter: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -185,6 +191,9 @@ class Subscription(pulumi.CustomResource):
                service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
                permission to Acknowledge() messages on this subscription.
                Structure is documented below.
+        :param pulumi.Input[bool] enable_message_ordering: If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
+               the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they
+               may be delivered in any order.
         :param pulumi.Input[pulumi.InputType['SubscriptionExpirationPolicyArgs']] expiration_policy: A policy that specifies the conditions for this subscription's expiration.
                A subscription is considered active as long as any connected subscriber
                is successfully consuming messages from the subscription or is issuing
@@ -225,6 +234,7 @@ class Subscription(pulumi.CustomResource):
 
         __props__["ack_deadline_seconds"] = ack_deadline_seconds
         __props__["dead_letter_policy"] = dead_letter_policy
+        __props__["enable_message_ordering"] = enable_message_ordering
         __props__["expiration_policy"] = expiration_policy
         __props__["filter"] = filter
         __props__["labels"] = labels
@@ -273,6 +283,16 @@ class Subscription(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "dead_letter_policy")
+
+    @property
+    @pulumi.getter(name="enableMessageOrdering")
+    def enable_message_ordering(self) -> Optional[bool]:
+        """
+        If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
+        the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they
+        may be delivered in any order.
+        """
+        return pulumi.get(self, "enable_message_ordering")
 
     @property
     @pulumi.getter(name="expirationPolicy")

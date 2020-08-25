@@ -39,6 +39,9 @@ type RegionHealthCheck struct {
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// A nested object resource
+	// Structure is documented below.
+	GrpcHealthCheck RegionHealthCheckGrpcHealthCheckPtrOutput `pulumi:"grpcHealthCheck"`
 	// A so-far unhealthy instance will be marked healthy after this many
 	// consecutive successes. The default value is 2.
 	HealthyThreshold pulumi.IntPtrOutput `pulumi:"healthyThreshold"`
@@ -122,6 +125,9 @@ type regionHealthCheckState struct {
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
 	Description *string `pulumi:"description"`
+	// A nested object resource
+	// Structure is documented below.
+	GrpcHealthCheck *RegionHealthCheckGrpcHealthCheck `pulumi:"grpcHealthCheck"`
 	// A so-far unhealthy instance will be marked healthy after this many
 	// consecutive successes. The default value is 2.
 	HealthyThreshold *int `pulumi:"healthyThreshold"`
@@ -178,6 +184,9 @@ type RegionHealthCheckState struct {
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
 	Description pulumi.StringPtrInput
+	// A nested object resource
+	// Structure is documented below.
+	GrpcHealthCheck RegionHealthCheckGrpcHealthCheckPtrInput
 	// A so-far unhealthy instance will be marked healthy after this many
 	// consecutive successes. The default value is 2.
 	HealthyThreshold pulumi.IntPtrInput
@@ -236,6 +245,9 @@ type regionHealthCheckArgs struct {
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
 	Description *string `pulumi:"description"`
+	// A nested object resource
+	// Structure is documented below.
+	GrpcHealthCheck *RegionHealthCheckGrpcHealthCheck `pulumi:"grpcHealthCheck"`
 	// A so-far unhealthy instance will be marked healthy after this many
 	// consecutive successes. The default value is 2.
 	HealthyThreshold *int `pulumi:"healthyThreshold"`
@@ -287,6 +299,9 @@ type RegionHealthCheckArgs struct {
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
 	Description pulumi.StringPtrInput
+	// A nested object resource
+	// Structure is documented below.
+	GrpcHealthCheck RegionHealthCheckGrpcHealthCheckPtrInput
 	// A so-far unhealthy instance will be marked healthy after this many
 	// consecutive successes. The default value is 2.
 	HealthyThreshold pulumi.IntPtrInput

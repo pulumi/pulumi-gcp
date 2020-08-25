@@ -12,6 +12,9 @@ from .dataset_iam_binding import *
 from .dataset_iam_member import *
 from .dataset_iam_policy import *
 from .get_default_service_account import *
+from .iam_binding import *
+from .iam_member import *
+from .iam_policy import *
 from .job import *
 from .reservation import *
 from .table import *

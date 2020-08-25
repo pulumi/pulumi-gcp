@@ -158,6 +158,182 @@ export namespace accesscontextmanager {
         title?: string;
     }
 
+    export interface AccessLevelsAccessLevel {
+        /**
+         * A set of predefined conditions for the access level and a combining function.
+         * Structure is documented below.
+         */
+        basic?: outputs.accesscontextmanager.AccessLevelsAccessLevelBasic;
+        /**
+         * Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
+         * See CEL spec at: https://github.com/google/cel-spec.
+         * Structure is documented below.
+         */
+        custom?: outputs.accesscontextmanager.AccessLevelsAccessLevelCustom;
+        /**
+         * Description of the expression
+         */
+        description?: string;
+        /**
+         * Resource name for the Access Level. The shortName component must begin
+         * with a letter and only include alphanumeric and '_'.
+         * Format: accessPolicies/{policy_id}/accessLevels/{short_name}
+         */
+        name: string;
+        /**
+         * Title for the expression, i.e. a short string describing its purpose.
+         */
+        title: string;
+    }
+
+    export interface AccessLevelsAccessLevelBasic {
+        /**
+         * How the conditions list should be combined to determine if a request
+         * is granted this AccessLevel. If AND is used, each Condition in
+         * conditions must be satisfied for the AccessLevel to be applied. If
+         * OR is used, at least one Condition in conditions must be satisfied
+         * for the AccessLevel to be applied.
+         * Default value is `AND`.
+         * Possible values are `AND` and `OR`.
+         */
+        combiningFunction?: string;
+        /**
+         * A set of requirements for the AccessLevel to be granted.
+         * Structure is documented below.
+         */
+        conditions: outputs.accesscontextmanager.AccessLevelsAccessLevelBasicCondition[];
+    }
+
+    export interface AccessLevelsAccessLevelBasicCondition {
+        /**
+         * Device specific restrictions, all restrictions must hold for
+         * the Condition to be true. If not specified, all devices are
+         * allowed.
+         * Structure is documented below.
+         */
+        devicePolicy?: outputs.accesscontextmanager.AccessLevelsAccessLevelBasicConditionDevicePolicy;
+        /**
+         * A list of CIDR block IP subnetwork specification. May be IPv4
+         * or IPv6.
+         * Note that for a CIDR IP address block, the specified IP address
+         * portion must be properly truncated (i.e. all the host bits must
+         * be zero) or the input is considered malformed. For example,
+         * "192.0.2.0/24" is accepted but "192.0.2.1/24" is not. Similarly,
+         * for IPv6, "2001:db8::/32" is accepted whereas "2001:db8::1/32"
+         * is not. The originating IP of a request must be in one of the
+         * listed subnets in order for this Condition to be true.
+         * If empty, all IP addresses are allowed.
+         */
+        ipSubnetworks?: string[];
+        /**
+         * An allowed list of members (users, service accounts).
+         * Using groups is not supported yet.
+         * The signed-in user originating the request must be a part of one
+         * of the provided members. If not specified, a request may come
+         * from any user (logged in/not logged in, not present in any
+         * groups, etc.).
+         * Formats: `user:{emailid}`, `serviceAccount:{emailid}`
+         */
+        members?: string[];
+        /**
+         * Whether to negate the Condition. If true, the Condition becomes
+         * a NAND over its non-empty fields, each field must be false for
+         * the Condition overall to be satisfied. Defaults to false.
+         */
+        negate?: boolean;
+        /**
+         * The request must originate from one of the provided
+         * countries/regions.
+         * Format: A valid ISO 3166-1 alpha-2 code.
+         */
+        regions?: string[];
+        /**
+         * A list of other access levels defined in the same Policy,
+         * referenced by resource name. Referencing an AccessLevel which
+         * does not exist is an error. All access levels listed must be
+         * granted for the Condition to be true.
+         * Format: accessPolicies/{policy_id}/accessLevels/{short_name}
+         */
+        requiredAccessLevels?: string[];
+    }
+
+    export interface AccessLevelsAccessLevelBasicConditionDevicePolicy {
+        /**
+         * A list of allowed device management levels.
+         * An empty list allows all management levels.
+         * Each value may be one of `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, and `COMPLETE`.
+         */
+        allowedDeviceManagementLevels?: string[];
+        /**
+         * A list of allowed encryptions statuses.
+         * An empty list allows all statuses.
+         * Each value may be one of `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, and `ENCRYPTED`.
+         */
+        allowedEncryptionStatuses?: string[];
+        /**
+         * A list of allowed OS versions.
+         * An empty list allows all types and all versions.
+         * Structure is documented below.
+         */
+        osConstraints?: outputs.accesscontextmanager.AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint[];
+        /**
+         * Whether the device needs to be approved by the customer admin.
+         */
+        requireAdminApproval?: boolean;
+        /**
+         * Whether the device needs to be corp owned.
+         */
+        requireCorpOwned?: boolean;
+        /**
+         * Whether or not screenlock is required for the DevicePolicy
+         * to be true. Defaults to false.
+         */
+        requireScreenLock?: boolean;
+    }
+
+    export interface AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint {
+        /**
+         * The minimum allowed OS version. If not set, any version
+         * of this OS satisfies the constraint.
+         * Format: "major.minor.patch" such as "10.5.301", "9.2.1".
+         */
+        minimumVersion?: string;
+        /**
+         * The operating system type of the device.
+         * Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, and `DESKTOP_CHROME_OS`.
+         */
+        osType: string;
+    }
+
+    export interface AccessLevelsAccessLevelCustom {
+        /**
+         * Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
+         * This page details the objects and attributes that are used to the build the CEL expressions for
+         * custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+         * Structure is documented below.
+         */
+        expr: outputs.accesscontextmanager.AccessLevelsAccessLevelCustomExpr;
+    }
+
+    export interface AccessLevelsAccessLevelCustomExpr {
+        /**
+         * Description of the expression
+         */
+        description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: string;
+        /**
+         * String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
+         */
+        location?: string;
+        /**
+         * Title for the expression, i.e. a short string describing its purpose.
+         */
+        title?: string;
+    }
+
     export interface ServicePerimeterSpec {
         /**
          * A list of AccessLevel resource names that allow resources within
@@ -242,6 +418,176 @@ export namespace accesscontextmanager {
     }
 
     export interface ServicePerimeterStatusVpcAccessibleServices {
+        /**
+         * The list of APIs usable within the Service Perimeter.
+         * Must be empty unless `enableRestriction` is True.
+         */
+        allowedServices?: string[];
+        /**
+         * Whether to restrict API calls within the Service Perimeter to the
+         * list of APIs specified in 'allowedServices'.
+         */
+        enableRestriction?: boolean;
+    }
+
+    export interface ServicePerimetersServicePerimeter {
+        /**
+         * -
+         * Time the AccessPolicy was created in UTC.
+         */
+        createTime: string;
+        /**
+         * Description of the ServicePerimeter and its use. Does not affect
+         * behavior.
+         */
+        description?: string;
+        /**
+         * Resource name for the ServicePerimeter. The shortName component must
+         * begin with a letter and only include alphanumeric and '_'.
+         * Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
+         */
+        name: string;
+        /**
+         * Specifies the type of the Perimeter. There are two types: regular and
+         * bridge. Regular Service Perimeter contains resources, access levels,
+         * and restricted services. Every resource can be in at most
+         * ONE regular Service Perimeter.
+         * In addition to being in a regular service perimeter, a resource can also
+         * be in zero or more perimeter bridges. A perimeter bridge only contains
+         * resources. Cross project operations are permitted if all effected
+         * resources share some perimeter (whether bridge or regular). Perimeter
+         * Bridge does not contain access levels or services: those are governed
+         * entirely by the regular perimeter that resource is in.
+         * Perimeter Bridges are typically useful when building more complex
+         * topologies with many independent perimeters that need to share some data
+         * with a common perimeter, but should not be able to share data among
+         * themselves.
+         * Default value is `PERIMETER_TYPE_REGULAR`.
+         * Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
+         */
+        perimeterType?: string;
+        /**
+         * Proposed (or dry run) ServicePerimeter configuration.
+         * This configuration allows to specify and test ServicePerimeter configuration
+         * without enforcing actual access restrictions. Only allowed to be set when
+         * the `useExplicitDryRunSpec` flag is set.
+         * Structure is documented below.
+         */
+        spec?: outputs.accesscontextmanager.ServicePerimetersServicePerimeterSpec;
+        /**
+         * ServicePerimeter configuration. Specifies sets of resources,
+         * restricted services and access levels that determine
+         * perimeter content and boundaries.
+         * Structure is documented below.
+         */
+        status?: outputs.accesscontextmanager.ServicePerimetersServicePerimeterStatus;
+        /**
+         * Human readable title. Must be unique within the Policy.
+         */
+        title: string;
+        /**
+         * -
+         * Time the AccessPolicy was updated in UTC.
+         */
+        updateTime: string;
+        /**
+         * Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists
+         * for all Service Perimeters, and that spec is identical to the status for those
+         * Service Perimeters. When this flag is set, it inhibits the generation of the
+         * implicit spec, thereby allowing the user to explicitly provide a
+         * configuration ("spec") to use in a dry-run version of the Service Perimeter.
+         * This allows the user to test changes to the enforced config ("status") without
+         * actually enforcing them. This testing is done through analyzing the differences
+         * between currently enforced and suggested restrictions. useExplicitDryRunSpec must
+         * bet set to True if any of the fields in the spec are set to non-default values.
+         */
+        useExplicitDryRunSpec?: boolean;
+    }
+
+    export interface ServicePerimetersServicePerimeterSpec {
+        /**
+         * A list of AccessLevel resource names that allow resources within
+         * the ServicePerimeter to be accessed from the internet.
+         * AccessLevels listed must be in the same policy as this
+         * ServicePerimeter. Referencing a nonexistent AccessLevel is a
+         * syntax error. If no AccessLevel names are listed, resources within
+         * the perimeter can only be accessed via GCP calls with request
+         * origins within the perimeter. For Service Perimeter Bridge, must
+         * be empty.
+         * Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
+         */
+        accessLevels?: string[];
+        /**
+         * A list of GCP resources that are inside of the service perimeter.
+         * Currently only projects are allowed.
+         * Format: projects/{project_number}
+         */
+        resources?: string[];
+        /**
+         * GCP services that are subject to the Service Perimeter
+         * restrictions. Must contain a list of services. For example, if
+         * `storage.googleapis.com` is specified, access to the storage
+         * buckets inside the perimeter must meet the perimeter's access
+         * restrictions.
+         */
+        restrictedServices?: string[];
+        /**
+         * Specifies how APIs are allowed to communicate within the Service
+         * Perimeter.
+         * Structure is documented below.
+         */
+        vpcAccessibleServices?: outputs.accesscontextmanager.ServicePerimetersServicePerimeterSpecVpcAccessibleServices;
+    }
+
+    export interface ServicePerimetersServicePerimeterSpecVpcAccessibleServices {
+        /**
+         * The list of APIs usable within the Service Perimeter.
+         * Must be empty unless `enableRestriction` is True.
+         */
+        allowedServices?: string[];
+        /**
+         * Whether to restrict API calls within the Service Perimeter to the
+         * list of APIs specified in 'allowedServices'.
+         */
+        enableRestriction?: boolean;
+    }
+
+    export interface ServicePerimetersServicePerimeterStatus {
+        /**
+         * A list of AccessLevel resource names that allow resources within
+         * the ServicePerimeter to be accessed from the internet.
+         * AccessLevels listed must be in the same policy as this
+         * ServicePerimeter. Referencing a nonexistent AccessLevel is a
+         * syntax error. If no AccessLevel names are listed, resources within
+         * the perimeter can only be accessed via GCP calls with request
+         * origins within the perimeter. For Service Perimeter Bridge, must
+         * be empty.
+         * Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
+         */
+        accessLevels?: string[];
+        /**
+         * A list of GCP resources that are inside of the service perimeter.
+         * Currently only projects are allowed.
+         * Format: projects/{project_number}
+         */
+        resources?: string[];
+        /**
+         * GCP services that are subject to the Service Perimeter
+         * restrictions. Must contain a list of services. For example, if
+         * `storage.googleapis.com` is specified, access to the storage
+         * buckets inside the perimeter must meet the perimeter's access
+         * restrictions.
+         */
+        restrictedServices?: string[];
+        /**
+         * Specifies how APIs are allowed to communicate within the Service
+         * Perimeter.
+         * Structure is documented below.
+         */
+        vpcAccessibleServices?: outputs.accesscontextmanager.ServicePerimetersServicePerimeterStatusVpcAccessibleServices;
+    }
+
+    export interface ServicePerimetersServicePerimeterStatusVpcAccessibleServices {
         /**
          * The list of APIs usable within the Service Perimeter.
          * Must be empty unless `enableRestriction` is True.
@@ -1176,6 +1522,36 @@ export namespace bigquery {
         title: string;
     }
 
+    export interface IamBindingCondition {
+        /**
+         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         */
+        description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: string;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
+        title: string;
+    }
+
+    export interface IamMemberCondition {
+        /**
+         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         */
+        description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: string;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
+        title: string;
+    }
+
     export interface JobCopy {
         /**
          * Specifies whether the job is allowed to create new tables. The following values are supported:
@@ -1992,12 +2368,19 @@ export namespace billing {
 
     export interface BudgetAmount {
         /**
+         * Configures a budget amount that is automatically set to 100% of
+         * last period's spend.
+         * Boolean. Set value to true to use. Do not set to false, instead
+         * use the `specifiedAmount` block.
+         */
+        lastPeriodAmount?: boolean;
+        /**
          * A specified amount to use as the budget. currencyCode is
          * optional. If specified, it must match the currency of the
          * billing account. The currencyCode is provided on output.
          * Structure is documented below.
          */
-        specifiedAmount: outputs.billing.BudgetAmountSpecifiedAmount;
+        specifiedAmount?: outputs.billing.BudgetAmountSpecifiedAmount;
     }
 
     export interface BudgetAmountSpecifiedAmount {
@@ -3188,7 +3571,7 @@ export namespace cloudrun {
         /**
          * Compute Resources required by this container. Used to set values such as max memory
          * More info:
-         * https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+         * https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits
          * Structure is documented below.
          */
         resources: outputs.cloudrun.ServiceTemplateSpecContainerResources;
@@ -5071,16 +5454,19 @@ export namespace compute {
         ipAddress?: string;
     }
 
-    export interface HealthCheckHttp2HealthCheck {
+    export interface HealthCheckGrpcHealthCheck {
         /**
-         * The value of the host header in the HTTP2 health check request.
-         * If left empty (default value), the public IP on behalf of which this health
-         * check is performed will be used.
+         * The gRPC service name for the health check.
+         * The value of grpcServiceName has the following meanings by convention:
+         * - Empty serviceName means the overall status of all services at the backend.
+         * - Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
+         * The grpcServiceName can only be ASCII.
          */
-        host?: string;
+        grpcServiceName?: string;
         /**
-         * The TCP port number for the HTTP2 health check request.
-         * The default value is 443.
+         * The port number for the health check request.
+         * Must be specified if portName and portSpecification are not set
+         * or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
          */
         port?: number;
         /**
@@ -5097,7 +5483,41 @@ export namespace compute {
          * network endpoint is used for health checking. For other backends, the
          * port or named port specified in the Backend Service is used for health
          * checking.
-         * If not specified, HTTP2 health check follows behavior specified in `port` and
+         * If not specified, gRPC health check follows behavior specified in `port` and
+         * `portName` fields.
+         * Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
+         */
+        portSpecification?: string;
+    }
+
+    export interface HealthCheckHttp2HealthCheck {
+        /**
+         * The value of the host header in the HTTP2 health check request.
+         * If left empty (default value), the public IP on behalf of which this health
+         * check is performed will be used.
+         */
+        host?: string;
+        /**
+         * The port number for the health check request.
+         * Must be specified if portName and portSpecification are not set
+         * or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
+         */
+        port?: number;
+        /**
+         * Port name as defined in InstanceGroup#NamedPort#name. If both port and
+         * portName are defined, port takes precedence.
+         */
+        portName?: string;
+        /**
+         * Specifies how port is selected for health checking, can be one of the
+         * following values:
+         * * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+         * * `USE_NAMED_PORT`: The `portName` is used for health checking.
+         * * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+         * network endpoint is used for health checking. For other backends, the
+         * port or named port specified in the Backend Service is used for health
+         * checking.
+         * If not specified, gRPC health check follows behavior specified in `port` and
          * `portName` fields.
          * Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
          */
@@ -5130,8 +5550,9 @@ export namespace compute {
          */
         host?: string;
         /**
-         * The TCP port number for the HTTP2 health check request.
-         * The default value is 443.
+         * The port number for the health check request.
+         * Must be specified if portName and portSpecification are not set
+         * or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
          */
         port?: number;
         /**
@@ -5148,7 +5569,7 @@ export namespace compute {
          * network endpoint is used for health checking. For other backends, the
          * port or named port specified in the Backend Service is used for health
          * checking.
-         * If not specified, HTTP2 health check follows behavior specified in `port` and
+         * If not specified, gRPC health check follows behavior specified in `port` and
          * `portName` fields.
          * Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
          */
@@ -5181,8 +5602,9 @@ export namespace compute {
          */
         host?: string;
         /**
-         * The TCP port number for the HTTP2 health check request.
-         * The default value is 443.
+         * The port number for the health check request.
+         * Must be specified if portName and portSpecification are not set
+         * or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
          */
         port?: number;
         /**
@@ -5199,7 +5621,7 @@ export namespace compute {
          * network endpoint is used for health checking. For other backends, the
          * port or named port specified in the Backend Service is used for health
          * checking.
-         * If not specified, HTTP2 health check follows behavior specified in `port` and
+         * If not specified, gRPC health check follows behavior specified in `port` and
          * `portName` fields.
          * Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
          */
@@ -5234,8 +5656,9 @@ export namespace compute {
 
     export interface HealthCheckSslHealthCheck {
         /**
-         * The TCP port number for the HTTP2 health check request.
-         * The default value is 443.
+         * The port number for the health check request.
+         * Must be specified if portName and portSpecification are not set
+         * or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
          */
         port?: number;
         /**
@@ -5252,7 +5675,7 @@ export namespace compute {
          * network endpoint is used for health checking. For other backends, the
          * port or named port specified in the Backend Service is used for health
          * checking.
-         * If not specified, HTTP2 health check follows behavior specified in `port` and
+         * If not specified, gRPC health check follows behavior specified in `port` and
          * `portName` fields.
          * Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
          */
@@ -5281,8 +5704,9 @@ export namespace compute {
 
     export interface HealthCheckTcpHealthCheck {
         /**
-         * The TCP port number for the HTTP2 health check request.
-         * The default value is 443.
+         * The port number for the health check request.
+         * Must be specified if portName and portSpecification are not set
+         * or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
          */
         port?: number;
         /**
@@ -5299,7 +5723,7 @@ export namespace compute {
          * network endpoint is used for health checking. For other backends, the
          * port or named port specified in the Backend Service is used for health
          * checking.
-         * If not specified, HTTP2 health check follows behavior specified in `port` and
+         * If not specified, gRPC health check follows behavior specified in `port` and
          * `portName` fields.
          * Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
          */
@@ -5826,6 +6250,9 @@ export namespace compute {
          * or `NOT_IN` for anti-affinities.
          */
         operator: string;
+        /**
+         * The values for the node affinity label.
+         */
         values: string[];
     }
 
@@ -6897,16 +7324,19 @@ export namespace compute {
         sha256: string;
     }
 
-    export interface RegionHealthCheckHttp2HealthCheck {
+    export interface RegionHealthCheckGrpcHealthCheck {
         /**
-         * The value of the host header in the HTTP2 health check request.
-         * If left empty (default value), the public IP on behalf of which this health
-         * check is performed will be used.
+         * The gRPC service name for the health check.
+         * The value of grpcServiceName has the following meanings by convention:
+         * - Empty serviceName means the overall status of all services at the backend.
+         * - Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
+         * The grpcServiceName can only be ASCII.
          */
-        host?: string;
+        grpcServiceName?: string;
         /**
-         * The TCP port number for the HTTP2 health check request.
-         * The default value is 443.
+         * The port number for the health check request.
+         * Must be specified if portName and portSpecification are not set
+         * or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
          */
         port?: number;
         /**
@@ -6923,7 +7353,41 @@ export namespace compute {
          * network endpoint is used for health checking. For other backends, the
          * port or named port specified in the Backend Service is used for health
          * checking.
-         * If not specified, HTTP2 health check follows behavior specified in `port` and
+         * If not specified, gRPC health check follows behavior specified in `port` and
+         * `portName` fields.
+         * Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
+         */
+        portSpecification?: string;
+    }
+
+    export interface RegionHealthCheckHttp2HealthCheck {
+        /**
+         * The value of the host header in the HTTP2 health check request.
+         * If left empty (default value), the public IP on behalf of which this health
+         * check is performed will be used.
+         */
+        host?: string;
+        /**
+         * The port number for the health check request.
+         * Must be specified if portName and portSpecification are not set
+         * or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
+         */
+        port?: number;
+        /**
+         * Port name as defined in InstanceGroup#NamedPort#name. If both port and
+         * portName are defined, port takes precedence.
+         */
+        portName?: string;
+        /**
+         * Specifies how port is selected for health checking, can be one of the
+         * following values:
+         * * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+         * * `USE_NAMED_PORT`: The `portName` is used for health checking.
+         * * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+         * network endpoint is used for health checking. For other backends, the
+         * port or named port specified in the Backend Service is used for health
+         * checking.
+         * If not specified, gRPC health check follows behavior specified in `port` and
          * `portName` fields.
          * Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
          */
@@ -6956,8 +7420,9 @@ export namespace compute {
          */
         host?: string;
         /**
-         * The TCP port number for the HTTP2 health check request.
-         * The default value is 443.
+         * The port number for the health check request.
+         * Must be specified if portName and portSpecification are not set
+         * or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
          */
         port?: number;
         /**
@@ -6974,7 +7439,7 @@ export namespace compute {
          * network endpoint is used for health checking. For other backends, the
          * port or named port specified in the Backend Service is used for health
          * checking.
-         * If not specified, HTTP2 health check follows behavior specified in `port` and
+         * If not specified, gRPC health check follows behavior specified in `port` and
          * `portName` fields.
          * Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
          */
@@ -7007,8 +7472,9 @@ export namespace compute {
          */
         host?: string;
         /**
-         * The TCP port number for the HTTP2 health check request.
-         * The default value is 443.
+         * The port number for the health check request.
+         * Must be specified if portName and portSpecification are not set
+         * or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
          */
         port?: number;
         /**
@@ -7025,7 +7491,7 @@ export namespace compute {
          * network endpoint is used for health checking. For other backends, the
          * port or named port specified in the Backend Service is used for health
          * checking.
-         * If not specified, HTTP2 health check follows behavior specified in `port` and
+         * If not specified, gRPC health check follows behavior specified in `port` and
          * `portName` fields.
          * Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
          */
@@ -7060,8 +7526,9 @@ export namespace compute {
 
     export interface RegionHealthCheckSslHealthCheck {
         /**
-         * The TCP port number for the HTTP2 health check request.
-         * The default value is 443.
+         * The port number for the health check request.
+         * Must be specified if portName and portSpecification are not set
+         * or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
          */
         port?: number;
         /**
@@ -7078,7 +7545,7 @@ export namespace compute {
          * network endpoint is used for health checking. For other backends, the
          * port or named port specified in the Backend Service is used for health
          * checking.
-         * If not specified, HTTP2 health check follows behavior specified in `port` and
+         * If not specified, gRPC health check follows behavior specified in `port` and
          * `portName` fields.
          * Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
          */
@@ -7107,8 +7574,9 @@ export namespace compute {
 
     export interface RegionHealthCheckTcpHealthCheck {
         /**
-         * The TCP port number for the HTTP2 health check request.
-         * The default value is 443.
+         * The port number for the health check request.
+         * Must be specified if portName and portSpecification are not set
+         * or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
          */
         port?: number;
         /**
@@ -7125,7 +7593,7 @@ export namespace compute {
          * network endpoint is used for health checking. For other backends, the
          * port or named port specified in the Backend Service is used for health
          * checking.
-         * If not specified, HTTP2 health check follows behavior specified in `port` and
+         * If not specified, gRPC health check follows behavior specified in `port` and
          * `portName` fields.
          * Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
          */
@@ -9089,8 +9557,6 @@ export namespace compute {
          * Toggles the aggregation interval for collecting flow logs. Increasing the
          * interval time will reduce the amount of generated flow logs for long
          * lasting connections. Default is an interval of 5 seconds per connection.
-         * Possible values are INTERVAL_5_SEC, INTERVAL_30_SEC, INTERVAL_1_MIN,
-         * INTERVAL_5_MIN, INTERVAL_10_MIN, INTERVAL_15_MIN
          * Default value is `INTERVAL_5_SEC`.
          * Possible values are `INTERVAL_5_SEC`, `INTERVAL_30_SEC`, `INTERVAL_1_MIN`, `INTERVAL_5_MIN`, `INTERVAL_10_MIN`, and `INTERVAL_15_MIN`.
          */
@@ -13890,6 +14356,11 @@ export namespace firestore {
 }
 
 export namespace folder {
+    export interface AccessApprovalSettingsEnrolledService {
+        cloudProduct: string;
+        enrollmentLevel?: string;
+    }
+
     export interface GetOrganizationPolicyBooleanPolicy {
         enforced: boolean;
     }
@@ -16386,6 +16857,11 @@ export namespace notebooks {
 }
 
 export namespace organizations {
+    export interface AccessApprovalSettingsEnrolledService {
+        cloudProduct: string;
+        enrollmentLevel?: string;
+    }
+
     export interface GetIAMPolicyAuditConfig {
         /**
          * A nested block that defines the operations you'd like to log.
@@ -17567,6 +18043,11 @@ export namespace osconfig {
 }
 
 export namespace projects {
+    export interface AccessApprovalSettingsEnrolledService {
+        cloudProduct: string;
+        enrollmentLevel?: string;
+    }
+
     export interface GetOrganizationPolicyBooleanPolicy {
         enforced: boolean;
     }
@@ -18551,7 +19032,7 @@ export namespace storage {
 
     export interface BucketLifecycleRuleAction {
         /**
-         * The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
+         * The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
          */
         storageClass?: string;
         /**
@@ -18570,7 +19051,7 @@ export namespace storage {
          */
         createdBefore?: string;
         /**
-         * [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `STANDARD`, `DURABLE_REDUCED_AVAILABILITY`.
+         * [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`, `STANDARD`, `DURABLE_REDUCED_AVAILABILITY`.
          */
         matchesStorageClasses?: string[];
         /**

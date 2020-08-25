@@ -22,6 +22,9 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// or `NOT_IN` for anti-affinities.
         /// </summary>
         public readonly string Operator;
+        /// <summary>
+        /// The values for the node affinity label.
+        /// </summary>
         public readonly ImmutableArray<string> Values;
 
         [OutputConstructor]

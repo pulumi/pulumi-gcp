@@ -44,6 +44,7 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
+	AccessApprovalCustomEndpoint         *string           `pulumi:"accessApprovalCustomEndpoint"`
 	AccessContextManagerCustomEndpoint   *string           `pulumi:"accessContextManagerCustomEndpoint"`
 	AccessToken                          *string           `pulumi:"accessToken"`
 	ActiveDirectoryCustomEndpoint        *string           `pulumi:"activeDirectoryCustomEndpoint"`
@@ -131,6 +132,7 @@ type providerArgs struct {
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
+	AccessApprovalCustomEndpoint         pulumi.StringPtrInput
 	AccessContextManagerCustomEndpoint   pulumi.StringPtrInput
 	AccessToken                          pulumi.StringPtrInput
 	ActiveDirectoryCustomEndpoint        pulumi.StringPtrInput

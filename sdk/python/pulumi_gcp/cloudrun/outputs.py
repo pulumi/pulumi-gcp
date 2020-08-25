@@ -944,7 +944,7 @@ class ServiceTemplateSpecContainer(dict):
                Structure is documented below.
         :param 'ServiceTemplateSpecContainerResourcesArgs' resources: Compute Resources required by this container. Used to set values such as max memory
                More info:
-               https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+               https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits
                Structure is documented below.
         :param str working_dir: -
                (Optional, Deprecated)
@@ -1051,7 +1051,7 @@ class ServiceTemplateSpecContainer(dict):
         """
         Compute Resources required by this container. Used to set values such as max memory
         More info:
-        https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+        https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits
         Structure is documented below.
         """
         return pulumi.get(self, "resources")

@@ -524,11 +524,16 @@ func (o BudgetAllUpdatesRulePtrOutput) SchemaVersion() pulumi.StringPtrOutput {
 }
 
 type BudgetAmount struct {
+	// Configures a budget amount that is automatically set to 100% of
+	// last period's spend.
+	// Boolean. Set value to true to use. Do not set to false, instead
+	// use the `specifiedAmount` block.
+	LastPeriodAmount *bool `pulumi:"lastPeriodAmount"`
 	// A specified amount to use as the budget. currencyCode is
 	// optional. If specified, it must match the currency of the
 	// billing account. The currencyCode is provided on output.
 	// Structure is documented below.
-	SpecifiedAmount BudgetAmountSpecifiedAmount `pulumi:"specifiedAmount"`
+	SpecifiedAmount *BudgetAmountSpecifiedAmount `pulumi:"specifiedAmount"`
 }
 
 // BudgetAmountInput is an input type that accepts BudgetAmountArgs and BudgetAmountOutput values.
@@ -543,11 +548,16 @@ type BudgetAmountInput interface {
 }
 
 type BudgetAmountArgs struct {
+	// Configures a budget amount that is automatically set to 100% of
+	// last period's spend.
+	// Boolean. Set value to true to use. Do not set to false, instead
+	// use the `specifiedAmount` block.
+	LastPeriodAmount pulumi.BoolPtrInput `pulumi:"lastPeriodAmount"`
 	// A specified amount to use as the budget. currencyCode is
 	// optional. If specified, it must match the currency of the
 	// billing account. The currencyCode is provided on output.
 	// Structure is documented below.
-	SpecifiedAmount BudgetAmountSpecifiedAmountInput `pulumi:"specifiedAmount"`
+	SpecifiedAmount BudgetAmountSpecifiedAmountPtrInput `pulumi:"specifiedAmount"`
 }
 
 func (BudgetAmountArgs) ElementType() reflect.Type {
@@ -627,12 +637,20 @@ func (o BudgetAmountOutput) ToBudgetAmountPtrOutputWithContext(ctx context.Conte
 	}).(BudgetAmountPtrOutput)
 }
 
+// Configures a budget amount that is automatically set to 100% of
+// last period's spend.
+// Boolean. Set value to true to use. Do not set to false, instead
+// use the `specifiedAmount` block.
+func (o BudgetAmountOutput) LastPeriodAmount() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BudgetAmount) *bool { return v.LastPeriodAmount }).(pulumi.BoolPtrOutput)
+}
+
 // A specified amount to use as the budget. currencyCode is
 // optional. If specified, it must match the currency of the
 // billing account. The currencyCode is provided on output.
 // Structure is documented below.
-func (o BudgetAmountOutput) SpecifiedAmount() BudgetAmountSpecifiedAmountOutput {
-	return o.ApplyT(func(v BudgetAmount) BudgetAmountSpecifiedAmount { return v.SpecifiedAmount }).(BudgetAmountSpecifiedAmountOutput)
+func (o BudgetAmountOutput) SpecifiedAmount() BudgetAmountSpecifiedAmountPtrOutput {
+	return o.ApplyT(func(v BudgetAmount) *BudgetAmountSpecifiedAmount { return v.SpecifiedAmount }).(BudgetAmountSpecifiedAmountPtrOutput)
 }
 
 type BudgetAmountPtrOutput struct{ *pulumi.OutputState }
@@ -653,6 +671,19 @@ func (o BudgetAmountPtrOutput) Elem() BudgetAmountOutput {
 	return o.ApplyT(func(v *BudgetAmount) BudgetAmount { return *v }).(BudgetAmountOutput)
 }
 
+// Configures a budget amount that is automatically set to 100% of
+// last period's spend.
+// Boolean. Set value to true to use. Do not set to false, instead
+// use the `specifiedAmount` block.
+func (o BudgetAmountPtrOutput) LastPeriodAmount() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BudgetAmount) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.LastPeriodAmount
+	}).(pulumi.BoolPtrOutput)
+}
+
 // A specified amount to use as the budget. currencyCode is
 // optional. If specified, it must match the currency of the
 // billing account. The currencyCode is provided on output.
@@ -662,7 +693,7 @@ func (o BudgetAmountPtrOutput) SpecifiedAmount() BudgetAmountSpecifiedAmountPtrO
 		if v == nil {
 			return nil
 		}
-		return &v.SpecifiedAmount
+		return v.SpecifiedAmount
 	}).(BudgetAmountSpecifiedAmountPtrOutput)
 }
 

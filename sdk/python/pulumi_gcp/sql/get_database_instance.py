@@ -145,7 +145,7 @@ class GetDatabaseInstanceResult:
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> Optional[str]:
         return pulumi.get(self, "project")
 
     @property
@@ -236,15 +236,18 @@ class AwaitableGetDatabaseInstanceResult(GetDatabaseInstanceResult):
 
 
 def get_database_instance(name: Optional[str] = None,
+                          project: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseInstanceResult:
     """
     Use this data source to get information about a Cloud SQL instance
 
 
     :param str name: The name of the instance.
+    :param str project: The ID of the project in which the resource belongs.
     """
     __args__ = dict()
     __args__['name'] = name
+    __args__['project'] = project
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:

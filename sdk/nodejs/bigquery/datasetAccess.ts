@@ -52,6 +52,11 @@ export class DatasetAccess extends pulumi.CustomResource {
     }
 
     /**
+     * If true, represents that that the iam_member in the config was translated to a different member type by the API, and is
+     * stored in state as a different member type
+     */
+    public /*out*/ readonly apiUpdatedMember!: pulumi.Output<boolean>;
+    /**
      * The ID of the dataset containing this table.
      */
     public readonly datasetId!: pulumi.Output<string>;
@@ -114,6 +119,7 @@ export class DatasetAccess extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as DatasetAccessState | undefined;
+            inputs["apiUpdatedMember"] = state ? state.apiUpdatedMember : undefined;
             inputs["datasetId"] = state ? state.datasetId : undefined;
             inputs["domain"] = state ? state.domain : undefined;
             inputs["groupByEmail"] = state ? state.groupByEmail : undefined;
@@ -137,6 +143,7 @@ export class DatasetAccess extends pulumi.CustomResource {
             inputs["specialGroup"] = args ? args.specialGroup : undefined;
             inputs["userByEmail"] = args ? args.userByEmail : undefined;
             inputs["view"] = args ? args.view : undefined;
+            inputs["apiUpdatedMember"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -153,6 +160,11 @@ export class DatasetAccess extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DatasetAccess resources.
  */
 export interface DatasetAccessState {
+    /**
+     * If true, represents that that the iam_member in the config was translated to a different member type by the API, and is
+     * stored in state as a different member type
+     */
+    readonly apiUpdatedMember?: pulumi.Input<boolean>;
     /**
      * The ID of the dataset containing this table.
      */

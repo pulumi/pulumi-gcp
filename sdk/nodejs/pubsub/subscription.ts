@@ -76,6 +76,12 @@ export class Subscription extends pulumi.CustomResource {
      */
     public readonly deadLetterPolicy!: pulumi.Output<outputs.pubsub.SubscriptionDeadLetterPolicy | undefined>;
     /**
+     * If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
+     * the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they
+     * may be delivered in any order.
+     */
+    public readonly enableMessageOrdering!: pulumi.Output<boolean | undefined>;
+    /**
      * A policy that specifies the conditions for this subscription's expiration.
      * A subscription is considered active as long as any connected subscriber
      * is successfully consuming messages from the subscription or is issuing
@@ -151,6 +157,7 @@ export class Subscription extends pulumi.CustomResource {
             const state = argsOrState as SubscriptionState | undefined;
             inputs["ackDeadlineSeconds"] = state ? state.ackDeadlineSeconds : undefined;
             inputs["deadLetterPolicy"] = state ? state.deadLetterPolicy : undefined;
+            inputs["enableMessageOrdering"] = state ? state.enableMessageOrdering : undefined;
             inputs["expirationPolicy"] = state ? state.expirationPolicy : undefined;
             inputs["filter"] = state ? state.filter : undefined;
             inputs["labels"] = state ? state.labels : undefined;
@@ -168,6 +175,7 @@ export class Subscription extends pulumi.CustomResource {
             }
             inputs["ackDeadlineSeconds"] = args ? args.ackDeadlineSeconds : undefined;
             inputs["deadLetterPolicy"] = args ? args.deadLetterPolicy : undefined;
+            inputs["enableMessageOrdering"] = args ? args.enableMessageOrdering : undefined;
             inputs["expirationPolicy"] = args ? args.expirationPolicy : undefined;
             inputs["filter"] = args ? args.filter : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -223,6 +231,12 @@ export interface SubscriptionState {
      * Structure is documented below.
      */
     readonly deadLetterPolicy?: pulumi.Input<inputs.pubsub.SubscriptionDeadLetterPolicy>;
+    /**
+     * If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
+     * the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they
+     * may be delivered in any order.
+     */
+    readonly enableMessageOrdering?: pulumi.Input<boolean>;
     /**
      * A policy that specifies the conditions for this subscription's expiration.
      * A subscription is considered active as long as any connected subscriber
@@ -319,6 +333,12 @@ export interface SubscriptionArgs {
      * Structure is documented below.
      */
     readonly deadLetterPolicy?: pulumi.Input<inputs.pubsub.SubscriptionDeadLetterPolicy>;
+    /**
+     * If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
+     * the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they
+     * may be delivered in any order.
+     */
+    readonly enableMessageOrdering?: pulumi.Input<boolean>;
     /**
      * A policy that specifies the conditions for this subscription's expiration.
      * A subscription is considered active as long as any connected subscriber

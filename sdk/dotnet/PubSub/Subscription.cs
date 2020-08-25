@@ -57,6 +57,14 @@ namespace Pulumi.Gcp.PubSub
         public Output<Outputs.SubscriptionDeadLetterPolicy?> DeadLetterPolicy { get; private set; } = null!;
 
         /// <summary>
+        /// If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
+        /// the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they
+        /// may be delivered in any order.
+        /// </summary>
+        [Output("enableMessageOrdering")]
+        public Output<bool?> EnableMessageOrdering { get; private set; } = null!;
+
+        /// <summary>
         /// A policy that specifies the conditions for this subscription's expiration.
         /// A subscription is considered active as long as any connected subscriber
         /// is successfully consuming messages from the subscription or is issuing
@@ -217,6 +225,14 @@ namespace Pulumi.Gcp.PubSub
         public Input<Inputs.SubscriptionDeadLetterPolicyArgs>? DeadLetterPolicy { get; set; }
 
         /// <summary>
+        /// If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
+        /// the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they
+        /// may be delivered in any order.
+        /// </summary>
+        [Input("enableMessageOrdering")]
+        public Input<bool>? EnableMessageOrdering { get; set; }
+
+        /// <summary>
         /// A policy that specifies the conditions for this subscription's expiration.
         /// A subscription is considered active as long as any connected subscriber
         /// is successfully consuming messages from the subscription or is issuing
@@ -339,6 +355,14 @@ namespace Pulumi.Gcp.PubSub
         /// </summary>
         [Input("deadLetterPolicy")]
         public Input<Inputs.SubscriptionDeadLetterPolicyGetArgs>? DeadLetterPolicy { get; set; }
+
+        /// <summary>
+        /// If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
+        /// the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they
+        /// may be delivered in any order.
+        /// </summary>
+        [Input("enableMessageOrdering")]
+        public Input<bool>? EnableMessageOrdering { get; set; }
 
         /// <summary>
         /// A policy that specifies the conditions for this subscription's expiration.

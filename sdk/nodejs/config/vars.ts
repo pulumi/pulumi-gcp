@@ -8,6 +8,7 @@ import * as utilities from "../utilities";
 
 let __config = new pulumi.Config("gcp");
 
+export let accessApprovalCustomEndpoint: string | undefined = __config.get("accessApprovalCustomEndpoint");
 export let accessContextManagerCustomEndpoint: string | undefined = __config.get("accessContextManagerCustomEndpoint");
 export let accessToken: string | undefined = __config.get("accessToken");
 export let activeDirectoryCustomEndpoint: string | undefined = __config.get("activeDirectoryCustomEndpoint");
