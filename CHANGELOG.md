@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v3.36.0 of the Google Beta Terraform Provider
+_(none)_
 
 ---
+
+## 3.21.0 (2020-08-25)
+* Upgrade to v3.36.0 of the Google Beta Terraform Provider
 
 ## 3.20.0 (2020-08-24)
 * Upgrade to Pulumi v2.9.0, which adds type annotations and input/output classes to Python
