@@ -15,7 +15,7 @@ __all__ = ['Subscription']
 
 class Subscription(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ack_deadline_seconds: Optional[pulumi.Input[float]] = None,
                  dead_letter_policy: Optional[pulumi.Input[pulumi.InputType['SubscriptionDeadLetterPolicyArgs']]] = None,
@@ -249,7 +249,7 @@ class Subscription(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ackDeadlineSeconds")
-    def ack_deadline_seconds(self) -> float:
+    def ack_deadline_seconds(self) -> pulumi.Output[float]:
         """
         This value is the maximum time after a subscriber receives a message
         before the subscriber should acknowledge the message. After message
@@ -271,7 +271,7 @@ class Subscription(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deadLetterPolicy")
-    def dead_letter_policy(self) -> Optional['outputs.SubscriptionDeadLetterPolicy']:
+    def dead_letter_policy(self) -> pulumi.Output[Optional['outputs.SubscriptionDeadLetterPolicy']]:
         """
         A policy that specifies the conditions for dead lettering messages in
         this subscription. If dead_letter_policy is not set, dead lettering
@@ -286,7 +286,7 @@ class Subscription(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableMessageOrdering")
-    def enable_message_ordering(self) -> Optional[bool]:
+    def enable_message_ordering(self) -> pulumi.Output[Optional[bool]]:
         """
         If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
         the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they
@@ -296,7 +296,7 @@ class Subscription(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="expirationPolicy")
-    def expiration_policy(self) -> 'outputs.SubscriptionExpirationPolicy':
+    def expiration_policy(self) -> pulumi.Output['outputs.SubscriptionExpirationPolicy']:
         """
         A policy that specifies the conditions for this subscription's expiration.
         A subscription is considered active as long as any connected subscriber
@@ -311,7 +311,7 @@ class Subscription(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def filter(self) -> Optional[str]:
+    def filter(self) -> pulumi.Output[Optional[str]]:
         """
         The subscription only delivers the messages that match the filter.
         Pub/Sub automatically acknowledges the messages that don't match the filter. You can filter messages
@@ -322,7 +322,7 @@ class Subscription(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, str]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A set of key/value label pairs to assign to this Subscription.
         """
@@ -330,7 +330,7 @@ class Subscription(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="messageRetentionDuration")
-    def message_retention_duration(self) -> Optional[str]:
+    def message_retention_duration(self) -> pulumi.Output[Optional[str]]:
         """
         How long to retain unacknowledged messages in the subscription's
         backlog, from the moment a message is published. If
@@ -345,7 +345,7 @@ class Subscription(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the subscription.
         """
@@ -353,12 +353,12 @@ class Subscription(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def path(self) -> str:
+    def path(self) -> pulumi.Output[str]:
         return pulumi.get(self, "path")
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -367,7 +367,7 @@ class Subscription(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pushConfig")
-    def push_config(self) -> Optional['outputs.SubscriptionPushConfig']:
+    def push_config(self) -> pulumi.Output[Optional['outputs.SubscriptionPushConfig']]:
         """
         If push delivery is used with this subscription, this field is used to
         configure it. An empty pushConfig signifies that the subscriber will
@@ -378,7 +378,7 @@ class Subscription(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="retainAckedMessages")
-    def retain_acked_messages(self) -> Optional[bool]:
+    def retain_acked_messages(self) -> pulumi.Output[Optional[bool]]:
         """
         Indicates whether to retain acknowledged messages. If `true`, then
         messages are not expunged from the subscription's backlog, even if
@@ -389,7 +389,7 @@ class Subscription(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def topic(self) -> str:
+    def topic(self) -> pulumi.Output[str]:
         """
         A reference to a Topic resource.
         """

@@ -15,7 +15,7 @@ __all__ = ['DatasetIamMember']
 
 class DatasetIamMember(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  condition: Optional[pulumi.Input[pulumi.InputType['DatasetIamMemberConditionArgs']]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
@@ -117,12 +117,12 @@ class DatasetIamMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional['outputs.DatasetIamMemberCondition']:
+    def condition(self) -> pulumi.Output[Optional['outputs.DatasetIamMemberCondition']]:
         return pulumi.get(self, "condition")
 
     @property
     @pulumi.getter(name="datasetId")
-    def dataset_id(self) -> str:
+    def dataset_id(self) -> pulumi.Output[str]:
         """
         The dataset ID, in the form
         `{project_id}/{location_name}/{dataset_name}` or
@@ -133,7 +133,7 @@ class DatasetIamMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def etag(self) -> str:
+    def etag(self) -> pulumi.Output[str]:
         """
         (Computed) The etag of the dataset's IAM policy.
         """
@@ -141,12 +141,12 @@ class DatasetIamMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def member(self) -> str:
+    def member(self) -> pulumi.Output[str]:
         return pulumi.get(self, "member")
 
     @property
     @pulumi.getter
-    def role(self) -> str:
+    def role(self) -> pulumi.Output[str]:
         """
         The role that should be applied. Only one
         `healthcare.DatasetIamBinding` can be used per role. Note that custom roles must be of the format

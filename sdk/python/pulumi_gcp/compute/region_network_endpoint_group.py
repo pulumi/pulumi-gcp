@@ -15,7 +15,7 @@ __all__ = ['RegionNetworkEndpointGroup']
 
 class RegionNetworkEndpointGroup(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_engine: Optional[pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupAppEngineArgs']]] = None,
                  cloud_function: Optional[pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupCloudFunctionArgs']]] = None,
@@ -154,7 +154,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="appEngine")
-    def app_engine(self) -> Optional['outputs.RegionNetworkEndpointGroupAppEngine']:
+    def app_engine(self) -> pulumi.Output[Optional['outputs.RegionNetworkEndpointGroupAppEngine']]:
         """
         Only valid when networkEndpointType is "SERVERLESS".
         Only one of cloud_run, app_engine or cloud_function may be set.
@@ -164,7 +164,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cloudFunction")
-    def cloud_function(self) -> Optional['outputs.RegionNetworkEndpointGroupCloudFunction']:
+    def cloud_function(self) -> pulumi.Output[Optional['outputs.RegionNetworkEndpointGroupCloudFunction']]:
         """
         Only valid when networkEndpointType is "SERVERLESS".
         Only one of cloud_run, app_engine or cloud_function may be set.
@@ -174,7 +174,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cloudRun")
-    def cloud_run(self) -> Optional['outputs.RegionNetworkEndpointGroupCloudRun']:
+    def cloud_run(self) -> pulumi.Output[Optional['outputs.RegionNetworkEndpointGroupCloudRun']]:
         """
         Only valid when networkEndpointType is "SERVERLESS".
         Only one of cloud_run, app_engine or cloud_function may be set.
@@ -184,7 +184,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         An optional description of this resource. Provide this property when
         you create the resource.
@@ -193,7 +193,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the resource; provided by the client when the resource is
         created. The name must be 1-63 characters long, and comply with
@@ -207,7 +207,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkEndpointType")
-    def network_endpoint_type(self) -> Optional[str]:
+    def network_endpoint_type(self) -> pulumi.Output[Optional[str]]:
         """
         Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
         Default value is `SERVERLESS`.
@@ -217,7 +217,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -226,7 +226,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         A reference to the region where the Serverless NEGs Reside.
         """
@@ -234,7 +234,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         """
         The URI of the created resource.
         """

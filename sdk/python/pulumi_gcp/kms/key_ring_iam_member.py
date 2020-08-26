@@ -15,7 +15,7 @@ __all__ = ['KeyRingIAMMember']
 
 class KeyRingIAMMember(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  condition: Optional[pulumi.Input[pulumi.InputType['KeyRingIAMMemberConditionArgs']]] = None,
                  key_ring_id: Optional[pulumi.Input[str]] = None,
@@ -121,7 +121,7 @@ class KeyRingIAMMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional['outputs.KeyRingIAMMemberCondition']:
+    def condition(self) -> pulumi.Output[Optional['outputs.KeyRingIAMMemberCondition']]:
         """
         An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
@@ -130,7 +130,7 @@ class KeyRingIAMMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def etag(self) -> str:
+    def etag(self) -> pulumi.Output[str]:
         """
         (Computed) The etag of the key ring's IAM policy.
         """
@@ -138,7 +138,7 @@ class KeyRingIAMMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="keyRingId")
-    def key_ring_id(self) -> str:
+    def key_ring_id(self) -> pulumi.Output[str]:
         """
         The key ring ID, in the form
         `{project_id}/{location_name}/{key_ring_name}` or
@@ -149,12 +149,12 @@ class KeyRingIAMMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def member(self) -> str:
+    def member(self) -> pulumi.Output[str]:
         return pulumi.get(self, "member")
 
     @property
     @pulumi.getter
-    def role(self) -> str:
+    def role(self) -> pulumi.Output[str]:
         """
         The role that should be applied. Only one
         `kms.KeyRingIAMBinding` can be used per role. Note that custom roles must be of the format

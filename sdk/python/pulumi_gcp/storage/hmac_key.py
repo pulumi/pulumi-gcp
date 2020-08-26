@@ -13,7 +13,7 @@ __all__ = ['HmacKey']
 
 class HmacKey(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_account_email: Optional[pulumi.Input[str]] = None,
@@ -126,7 +126,7 @@ class HmacKey(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accessId")
-    def access_id(self) -> str:
+    def access_id(self) -> pulumi.Output[str]:
         """
         The access ID of the HMAC Key.
         """
@@ -134,7 +134,7 @@ class HmacKey(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -143,7 +143,7 @@ class HmacKey(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def secret(self) -> str:
+    def secret(self) -> pulumi.Output[str]:
         """
         HMAC secret key material.
         """
@@ -151,7 +151,7 @@ class HmacKey(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceAccountEmail")
-    def service_account_email(self) -> str:
+    def service_account_email(self) -> pulumi.Output[str]:
         """
         The email address of the key's associated service account.
         """
@@ -159,7 +159,7 @@ class HmacKey(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def state(self) -> Optional[str]:
+    def state(self) -> pulumi.Output[Optional[str]]:
         """
         The state of the key. Can be set to one of ACTIVE, INACTIVE.
         Default value is `ACTIVE`.
@@ -169,7 +169,7 @@ class HmacKey(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="timeCreated")
-    def time_created(self) -> str:
+    def time_created(self) -> pulumi.Output[str]:
         """
         'The creation time of the HMAC key in RFC 3339 format. '
         """
@@ -177,7 +177,7 @@ class HmacKey(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def updated(self) -> str:
+    def updated(self) -> pulumi.Output[str]:
         """
         'The last modification time of the HMAC key metadata in RFC 3339 format.'
         """

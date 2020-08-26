@@ -15,7 +15,7 @@ __all__ = ['Subnetwork']
 
 class Subnetwork(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
@@ -247,7 +247,7 @@ class Subnetwork(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> str:
+    def creation_timestamp(self) -> pulumi.Output[str]:
         """
         Creation timestamp in RFC3339 text format.
         """
@@ -255,7 +255,7 @@ class Subnetwork(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         An optional description of this resource. Provide this property when
         you create the resource. This field can be set only at resource
@@ -265,7 +265,7 @@ class Subnetwork(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def fingerprint(self) -> str:
+    def fingerprint(self) -> pulumi.Output[str]:
         """
         Fingerprint of this resource. This field is used internally during updates of this resource.
         """
@@ -273,7 +273,7 @@ class Subnetwork(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="gatewayAddress")
-    def gateway_address(self) -> str:
+    def gateway_address(self) -> pulumi.Output[str]:
         """
         The gateway address for default routes to reach destination addresses outside this subnetwork.
         """
@@ -281,7 +281,7 @@ class Subnetwork(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipCidrRange")
-    def ip_cidr_range(self) -> str:
+    def ip_cidr_range(self) -> pulumi.Output[str]:
         """
         The range of IP addresses belonging to this subnetwork secondary
         range. Provide this property when you create the subnetwork.
@@ -292,7 +292,7 @@ class Subnetwork(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="logConfig")
-    def log_config(self) -> Optional['outputs.SubnetworkLogConfig']:
+    def log_config(self) -> pulumi.Output[Optional['outputs.SubnetworkLogConfig']]:
         """
         Denotes the logging options for the subnetwork flow logs. If logging is enabled
         logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
@@ -303,7 +303,7 @@ class Subnetwork(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the resource, provided by the client when initially
         creating the resource. The name must be 1-63 characters long, and
@@ -317,7 +317,7 @@ class Subnetwork(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def network(self) -> str:
+    def network(self) -> pulumi.Output[str]:
         """
         The network this subnet belongs to.
         Only networks that are in the distributed mode can have subnetworks.
@@ -326,7 +326,7 @@ class Subnetwork(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="privateIpGoogleAccess")
-    def private_ip_google_access(self) -> Optional[bool]:
+    def private_ip_google_access(self) -> pulumi.Output[Optional[bool]]:
         """
         When enabled, VMs in this subnetwork without external IP addresses can
         access Google APIs and services by using Private Google Access.
@@ -335,7 +335,7 @@ class Subnetwork(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -344,7 +344,7 @@ class Subnetwork(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def purpose(self) -> str:
+    def purpose(self) -> pulumi.Output[str]:
         """
         The purpose of the resource. This field can be either PRIVATE
         or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to
@@ -358,7 +358,7 @@ class Subnetwork(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The GCP region for this subnetwork.
         """
@@ -366,7 +366,7 @@ class Subnetwork(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def role(self) -> Optional[str]:
+    def role(self) -> pulumi.Output[Optional[str]]:
         """
         The role of subnetwork. Currently, this field is only used when
         purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE
@@ -379,7 +379,7 @@ class Subnetwork(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="secondaryIpRanges")
-    def secondary_ip_ranges(self) -> List['outputs.SubnetworkSecondaryIpRange']:
+    def secondary_ip_ranges(self) -> pulumi.Output[List['outputs.SubnetworkSecondaryIpRange']]:
         """
         An array of configurations for secondary IP ranges for VM instances
         contained in this subnetwork. The primary IP of such VM must belong
@@ -390,7 +390,7 @@ class Subnetwork(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         """
         The URI of the created resource.
         """

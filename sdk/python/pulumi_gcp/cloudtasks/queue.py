@@ -15,7 +15,7 @@ __all__ = ['Queue']
 
 class Queue(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_engine_routing_override: Optional[pulumi.Input[pulumi.InputType['QueueAppEngineRoutingOverrideArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -131,7 +131,7 @@ class Queue(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="appEngineRoutingOverride")
-    def app_engine_routing_override(self) -> Optional['outputs.QueueAppEngineRoutingOverride']:
+    def app_engine_routing_override(self) -> pulumi.Output[Optional['outputs.QueueAppEngineRoutingOverride']]:
         """
         Overrides for task-level appEngineRouting. These settings apply only
         to App Engine tasks in this queue
@@ -141,7 +141,7 @@ class Queue(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def location(self) -> str:
+    def location(self) -> pulumi.Output[str]:
         """
         The location of the queue
         """
@@ -149,7 +149,7 @@ class Queue(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The queue name.
         """
@@ -157,7 +157,7 @@ class Queue(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -166,7 +166,7 @@ class Queue(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="rateLimits")
-    def rate_limits(self) -> 'outputs.QueueRateLimits':
+    def rate_limits(self) -> pulumi.Output['outputs.QueueRateLimits']:
         """
         Rate limits for task dispatches.
         The queue's actual dispatch rate is the result of:
@@ -181,7 +181,7 @@ class Queue(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="retryConfig")
-    def retry_config(self) -> 'outputs.QueueRetryConfig':
+    def retry_config(self) -> pulumi.Output['outputs.QueueRetryConfig']:
         """
         Settings that determine the retry behavior.
         Structure is documented below.

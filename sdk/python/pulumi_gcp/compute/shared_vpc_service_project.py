@@ -13,7 +13,7 @@ __all__ = ['SharedVPCServiceProject']
 
 class SharedVPCServiceProject(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  host_project: Optional[pulumi.Input[str]] = None,
                  service_project: Optional[pulumi.Input[str]] = None,
@@ -90,7 +90,7 @@ class SharedVPCServiceProject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hostProject")
-    def host_project(self) -> str:
+    def host_project(self) -> pulumi.Output[str]:
         """
         The ID of a host project to associate.
         """
@@ -98,7 +98,7 @@ class SharedVPCServiceProject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceProject")
-    def service_project(self) -> str:
+    def service_project(self) -> pulumi.Output[str]:
         """
         The ID of the project that will serve as a Shared VPC service project.
         """

@@ -15,7 +15,7 @@ __all__ = ['Slo']
 
 class Slo(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  basic_sli: Optional[pulumi.Input[pulumi.InputType['SloBasicSliArgs']]] = None,
                  calendar_period: Optional[pulumi.Input[str]] = None,
@@ -205,7 +205,7 @@ class Slo(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="basicSli")
-    def basic_sli(self) -> Optional['outputs.SloBasicSli']:
+    def basic_sli(self) -> pulumi.Output[Optional['outputs.SloBasicSli']]:
         """
         Basic Service-Level Indicator (SLI) on a well-known service type.
         Performance will be computed on the basis of pre-defined metrics.
@@ -219,7 +219,7 @@ class Slo(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="calendarPeriod")
-    def calendar_period(self) -> Optional[str]:
+    def calendar_period(self) -> pulumi.Output[Optional[str]]:
         """
         A calendar period, semantically "since the start of the current
         <calendarPeriod>".
@@ -229,7 +229,7 @@ class Slo(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[str]:
+    def display_name(self) -> pulumi.Output[Optional[str]]:
         """
         Name used for UI elements listing this SLO.
         """
@@ -237,7 +237,7 @@ class Slo(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def goal(self) -> float:
+    def goal(self) -> pulumi.Output[float]:
         """
         The fraction of service that must be good in order for this objective
         to be met. 0 < goal <= 0.999
@@ -246,7 +246,7 @@ class Slo(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The full resource name for this service. The syntax is:
         projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME]
@@ -255,7 +255,7 @@ class Slo(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -264,7 +264,7 @@ class Slo(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="requestBasedSli")
-    def request_based_sli(self) -> Optional['outputs.SloRequestBasedSli']:
+    def request_based_sli(self) -> pulumi.Output[Optional['outputs.SloRequestBasedSli']]:
         """
         A request-based SLI defines a SLI for which atomic units of
         service are counted directly.
@@ -279,7 +279,7 @@ class Slo(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="rollingPeriodDays")
-    def rolling_period_days(self) -> Optional[float]:
+    def rolling_period_days(self) -> pulumi.Output[Optional[float]]:
         """
         A rolling time period, semantically "in the past X days".
         Must be between 1 to 30 days, inclusive.
@@ -288,7 +288,7 @@ class Slo(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def service(self) -> str:
+    def service(self) -> pulumi.Output[str]:
         """
         ID of the service to which this SLO belongs.
         """
@@ -296,7 +296,7 @@ class Slo(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sloId")
-    def slo_id(self) -> str:
+    def slo_id(self) -> pulumi.Output[str]:
         """
         The id to use for this ServiceLevelObjective. If omitted, an id will be generated instead.
         """
@@ -304,7 +304,7 @@ class Slo(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="windowsBasedSli")
-    def windows_based_sli(self) -> Optional['outputs.SloWindowsBasedSli']:
+    def windows_based_sli(self) -> pulumi.Output[Optional['outputs.SloWindowsBasedSli']]:
         """
         A windows-based SLI defines the criteria for time windows.
         good_service is defined based off the count of these time windows

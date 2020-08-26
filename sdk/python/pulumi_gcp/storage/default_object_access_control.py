@@ -15,7 +15,7 @@ __all__ = ['DefaultObjectAccessControl']
 
 class DefaultObjectAccessControl(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
                  entity: Optional[pulumi.Input[str]] = None,
@@ -157,7 +157,7 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def bucket(self) -> str:
+    def bucket(self) -> pulumi.Output[str]:
         """
         The name of the bucket.
         """
@@ -165,7 +165,7 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def domain(self) -> str:
+    def domain(self) -> pulumi.Output[str]:
         """
         The domain associated with the entity.
         """
@@ -173,7 +173,7 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def email(self) -> str:
+    def email(self) -> pulumi.Output[str]:
         """
         The email address associated with the entity.
         """
@@ -181,7 +181,7 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def entity(self) -> str:
+    def entity(self) -> pulumi.Output[str]:
         """
         The entity holding the permission, in one of the following forms:
         * user-{{userId}}
@@ -197,7 +197,7 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="entityId")
-    def entity_id(self) -> str:
+    def entity_id(self) -> pulumi.Output[str]:
         """
         The ID for the entity
         """
@@ -205,7 +205,7 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def generation(self) -> float:
+    def generation(self) -> pulumi.Output[float]:
         """
         The content generation of the object, if applied to an object.
         """
@@ -213,7 +213,7 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def object(self) -> Optional[str]:
+    def object(self) -> pulumi.Output[Optional[str]]:
         """
         The name of the object, if applied to an object.
         """
@@ -221,7 +221,7 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="projectTeam")
-    def project_team(self) -> 'outputs.DefaultObjectAccessControlProjectTeam':
+    def project_team(self) -> pulumi.Output['outputs.DefaultObjectAccessControlProjectTeam']:
         """
         The project team associated with the entity
         """
@@ -229,7 +229,7 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def role(self) -> str:
+    def role(self) -> pulumi.Output[str]:
         """
         The access permission for the entity.
         Possible values are `OWNER` and `READER`.

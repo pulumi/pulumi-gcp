@@ -13,7 +13,7 @@ __all__ = ['Repository']
 
 class Repository(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  format: Optional[pulumi.Input[str]] = None,
@@ -153,7 +153,7 @@ class Repository(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> str:
+    def create_time(self) -> pulumi.Output[str]:
         """
         The time when the repository was created.
         """
@@ -161,7 +161,7 @@ class Repository(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The user-provided description of the repository.
         """
@@ -169,7 +169,7 @@ class Repository(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def format(self) -> str:
+    def format(self) -> pulumi.Output[str]:
         """
         The format of packages that are stored in the repoitory.
         Possible values are `DOCKER`.
@@ -178,7 +178,7 @@ class Repository(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kmsKeyName")
-    def kms_key_name(self) -> Optional[str]:
+    def kms_key_name(self) -> pulumi.Output[Optional[str]]:
         """
         The Cloud KMS resource name of the customer managed encryption key that’s
         used to encrypt the contents of the Repository. Has the form:
@@ -189,7 +189,7 @@ class Repository(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, str]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Labels with user-defined metadata.
         This field may contain up to 64 entries. Label keys and values may be no
@@ -201,7 +201,7 @@ class Repository(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def location(self) -> str:
+    def location(self) -> pulumi.Output[str]:
         """
         The name of the location this repository is located in.
         """
@@ -209,7 +209,7 @@ class Repository(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1"
         """
@@ -217,7 +217,7 @@ class Repository(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -226,7 +226,7 @@ class Repository(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="repositoryId")
-    def repository_id(self) -> str:
+    def repository_id(self) -> pulumi.Output[str]:
         """
         The last part of the repository name, for example:
         "repo1"
@@ -235,7 +235,7 @@ class Repository(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> str:
+    def update_time(self) -> pulumi.Output[str]:
         """
         The time when the repository was last updated.
         """

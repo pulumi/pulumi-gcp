@@ -13,7 +13,7 @@ __all__ = ['BillingAccountExclusion']
 
 class BillingAccountExclusion(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  billing_account: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -112,7 +112,7 @@ class BillingAccountExclusion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="billingAccount")
-    def billing_account(self) -> str:
+    def billing_account(self) -> pulumi.Output[str]:
         """
         The billing account to create the exclusion for.
         """
@@ -120,7 +120,7 @@ class BillingAccountExclusion(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A human-readable description.
         """
@@ -128,7 +128,7 @@ class BillingAccountExclusion(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def disabled(self) -> Optional[bool]:
+    def disabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether this exclusion rule should be disabled or not. This defaults to
         false.
@@ -137,7 +137,7 @@ class BillingAccountExclusion(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def filter(self) -> str:
+    def filter(self) -> pulumi.Output[str]:
         """
         The filter to apply when excluding logs. Only log entries that match the filter are excluded.
         See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced-filters) for information on how to
@@ -147,7 +147,7 @@ class BillingAccountExclusion(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the logging exclusion.
         """

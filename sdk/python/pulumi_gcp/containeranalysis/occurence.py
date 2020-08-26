@@ -15,7 +15,7 @@ __all__ = ['Occurence']
 
 class Occurence(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  attestation: Optional[pulumi.Input[pulumi.InputType['OccurenceAttestationArgs']]] = None,
                  note_name: Optional[pulumi.Input[str]] = None,
@@ -157,7 +157,7 @@ class Occurence(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def attestation(self) -> 'outputs.OccurenceAttestation':
+    def attestation(self) -> pulumi.Output['outputs.OccurenceAttestation']:
         """
         Occurrence that represents a single "attestation". The authenticity
         of an attestation can be verified using the attached signature.
@@ -173,7 +173,7 @@ class Occurence(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> str:
+    def create_time(self) -> pulumi.Output[str]:
         """
         The time when the repository was created.
         """
@@ -181,7 +181,7 @@ class Occurence(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def kind(self) -> str:
+    def kind(self) -> pulumi.Output[str]:
         """
         The note kind which explicitly denotes which of the occurrence details are specified. This field can be used as a filter
         in list requests.
@@ -190,7 +190,7 @@ class Occurence(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the occurrence.
         """
@@ -198,7 +198,7 @@ class Occurence(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="noteName")
-    def note_name(self) -> str:
+    def note_name(self) -> pulumi.Output[str]:
         """
         The analysis note associated with this occurrence, in the form of
         projects/[PROJECT]/notes/[NOTE_ID]. This field can be used as a
@@ -208,7 +208,7 @@ class Occurence(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -217,7 +217,7 @@ class Occurence(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def remediation(self) -> Optional[str]:
+    def remediation(self) -> pulumi.Output[Optional[str]]:
         """
         A description of actions that can be taken to remedy the note.
         """
@@ -225,7 +225,7 @@ class Occurence(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceUri")
-    def resource_uri(self) -> str:
+    def resource_uri(self) -> pulumi.Output[str]:
         """
         Required. Immutable. A URI that represents the resource for which
         the occurrence applies. For example,
@@ -235,7 +235,7 @@ class Occurence(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> str:
+    def update_time(self) -> pulumi.Output[str]:
         """
         The time when the repository was last updated.
         """

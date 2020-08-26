@@ -13,7 +13,7 @@ __all__ = ['SshPublicKey']
 
 class SshPublicKey(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  expiration_time_usec: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
@@ -101,7 +101,7 @@ class SshPublicKey(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="expirationTimeUsec")
-    def expiration_time_usec(self) -> Optional[str]:
+    def expiration_time_usec(self) -> pulumi.Output[Optional[str]]:
         """
         An expiration time in microseconds since epoch.
         """
@@ -109,7 +109,7 @@ class SshPublicKey(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def fingerprint(self) -> str:
+    def fingerprint(self) -> pulumi.Output[str]:
         """
         The SHA-256 fingerprint of the SSH public key.
         """
@@ -117,7 +117,7 @@ class SshPublicKey(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def key(self) -> str:
+    def key(self) -> pulumi.Output[str]:
         """
         Public key text in SSH format, defined by RFC4253 section 6.6.
         """
@@ -125,7 +125,7 @@ class SshPublicKey(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def user(self) -> str:
+    def user(self) -> pulumi.Output[str]:
         """
         The user email.
         """

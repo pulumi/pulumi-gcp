@@ -13,7 +13,7 @@ __all__ = ['Folder']
 
 class Folder(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -116,7 +116,7 @@ class Folder(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> str:
+    def create_time(self) -> pulumi.Output[str]:
         """
         Timestamp when the Folder was created. Assigned by the server.
         A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
@@ -125,7 +125,7 @@ class Folder(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> str:
+    def display_name(self) -> pulumi.Output[str]:
         """
         The folder’s display name.
         A folder’s display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters.
@@ -134,7 +134,7 @@ class Folder(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="folderId")
-    def folder_id(self) -> str:
+    def folder_id(self) -> pulumi.Output[str]:
         """
         The folder id from the name "folders/{folder_id}"
         """
@@ -142,7 +142,7 @@ class Folder(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lifecycleState")
-    def lifecycle_state(self) -> str:
+    def lifecycle_state(self) -> pulumi.Output[str]:
         """
         The lifecycle state of the folder such as `ACTIVE` or `DELETE_REQUESTED`.
         """
@@ -150,7 +150,7 @@ class Folder(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The resource name of the Folder. Its format is folders/{folder_id}.
         """
@@ -158,7 +158,7 @@ class Folder(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def parent(self) -> str:
+    def parent(self) -> pulumi.Output[str]:
         """
         The resource name of the parent Folder or Organization.
         Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.

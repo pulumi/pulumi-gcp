@@ -15,7 +15,7 @@ __all__ = ['DicomStore']
 
 class DicomStore(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dataset: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -128,7 +128,7 @@ class DicomStore(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def dataset(self) -> str:
+    def dataset(self) -> pulumi.Output[str]:
         """
         Identifies the dataset addressed by this request. Must be in the format
         'projects/{project}/locations/{location}/datasets/{dataset}'
@@ -137,7 +137,7 @@ class DicomStore(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, str]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         User-supplied key-value pairs used to organize DICOM stores.
         Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
@@ -152,7 +152,7 @@ class DicomStore(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The resource name for the DicomStore.
         ** Changing this property may recreate the Dicom store (removing all data) **
@@ -161,7 +161,7 @@ class DicomStore(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="notificationConfig")
-    def notification_config(self) -> Optional['outputs.DicomStoreNotificationConfig']:
+    def notification_config(self) -> pulumi.Output[Optional['outputs.DicomStoreNotificationConfig']]:
         """
         A nested object resource
         Structure is documented below.
@@ -170,7 +170,7 @@ class DicomStore(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         """
         The fully qualified name of this dataset
         """

@@ -13,7 +13,7 @@ __all__ = ['Agent']
 
 class Agent(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_version: Optional[pulumi.Input[str]] = None,
                  avatar_uri: Optional[pulumi.Input[str]] = None,
@@ -211,7 +211,7 @@ class Agent(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="apiVersion")
-    def api_version(self) -> str:
+    def api_version(self) -> pulumi.Output[str]:
         """
         API version displayed in Dialogflow console. If not specified, V2 API is assumed. Clients are free to query
         different service endpoints for different API versions. However, bots connectors and webhook calls will follow
@@ -225,7 +225,7 @@ class Agent(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="avatarUri")
-    def avatar_uri(self) -> Optional[str]:
+    def avatar_uri(self) -> pulumi.Output[Optional[str]]:
         """
         The URI of the agent's avatar, which are used throughout the Dialogflow console. When an image URL is entered
         into this field, the Dialogflow will save the image in the backend. The address of the backend image returned
@@ -235,7 +235,7 @@ class Agent(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="avatarUriBackend")
-    def avatar_uri_backend(self) -> str:
+    def avatar_uri_backend(self) -> pulumi.Output[str]:
         """
         The URI of the agent's avatar as returned from the API. Output only. To provide an image URL for the agent avatar, the
         [avatarUri] field can be used.
@@ -244,7 +244,7 @@ class Agent(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="classificationThreshold")
-    def classification_threshold(self) -> Optional[float]:
+    def classification_threshold(self) -> pulumi.Output[Optional[float]]:
         """
         To filter out false positive results and still get variety in matched natural language inputs for your agent,
         you can tune the machine learning classification threshold. If the returned score value is less than the threshold
@@ -256,7 +256,7 @@ class Agent(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultLanguageCode")
-    def default_language_code(self) -> str:
+    def default_language_code(self) -> pulumi.Output[str]:
         """
         The default language of the agent as a language tag. [See Language Support](https://cloud.google.com/dialogflow/docs/reference/language)
         for a list of the currently supported language codes. This field cannot be updated after creation.
@@ -265,7 +265,7 @@ class Agent(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
         """
@@ -273,7 +273,7 @@ class Agent(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> str:
+    def display_name(self) -> pulumi.Output[str]:
         """
         The name of this agent.
         """
@@ -281,7 +281,7 @@ class Agent(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableLogging")
-    def enable_logging(self) -> Optional[bool]:
+    def enable_logging(self) -> pulumi.Output[Optional[bool]]:
         """
         Determines whether this agent should log conversation queries.
         """
@@ -289,7 +289,7 @@ class Agent(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="matchMode")
-    def match_mode(self) -> str:
+    def match_mode(self) -> pulumi.Output[str]:
         """
         Determines how intents are detected from user queries.
         * MATCH_MODE_HYBRID: Best for agents with a small number of examples in intents and/or wide use of templates
@@ -302,7 +302,7 @@ class Agent(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -311,7 +311,7 @@ class Agent(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="supportedLanguageCodes")
-    def supported_language_codes(self) -> Optional[List[str]]:
+    def supported_language_codes(self) -> pulumi.Output[Optional[List[str]]]:
         """
         The list of all languages supported by this agent (except for the defaultLanguageCode).
         """
@@ -319,7 +319,7 @@ class Agent(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tier(self) -> Optional[str]:
+    def tier(self) -> pulumi.Output[Optional[str]]:
         """
         The agent tier. If not specified, TIER_STANDARD is assumed.
         * TIER_STANDARD: Standard tier.
@@ -332,7 +332,7 @@ class Agent(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="timeZone")
-    def time_zone(self) -> str:
+    def time_zone(self) -> pulumi.Output[str]:
         """
         The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
         Europe/Paris.

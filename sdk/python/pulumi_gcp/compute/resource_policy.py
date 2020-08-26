@@ -15,7 +15,7 @@ __all__ = ['ResourcePolicy']
 
 class ResourcePolicy(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  group_placement_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyGroupPlacementPolicyArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -123,7 +123,7 @@ class ResourcePolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupPlacementPolicy")
-    def group_placement_policy(self) -> Optional['outputs.ResourcePolicyGroupPlacementPolicy']:
+    def group_placement_policy(self) -> pulumi.Output[Optional['outputs.ResourcePolicyGroupPlacementPolicy']]:
         """
         Policy for creating snapshots of persistent disks.
         Structure is documented below.
@@ -132,7 +132,7 @@ class ResourcePolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the resource, provided by the client when initially creating
         the resource. The resource name must be 1-63 characters long, and comply
@@ -146,7 +146,7 @@ class ResourcePolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -155,7 +155,7 @@ class ResourcePolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         Region where resource policy resides.
         """
@@ -163,7 +163,7 @@ class ResourcePolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         """
         The URI of the created resource.
         """
@@ -171,7 +171,7 @@ class ResourcePolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="snapshotSchedulePolicy")
-    def snapshot_schedule_policy(self) -> Optional['outputs.ResourcePolicySnapshotSchedulePolicy']:
+    def snapshot_schedule_policy(self) -> pulumi.Output[Optional['outputs.ResourcePolicySnapshotSchedulePolicy']]:
         """
         Policy for creating snapshots of persistent disks.
         Structure is documented below.

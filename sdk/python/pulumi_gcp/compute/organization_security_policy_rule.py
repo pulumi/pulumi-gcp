@@ -15,7 +15,7 @@ __all__ = ['OrganizationSecurityPolicyRule']
 
 class OrganizationSecurityPolicyRule(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -158,7 +158,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def action(self) -> str:
+    def action(self) -> pulumi.Output[str]:
         """
         The Action to perform when the client connection triggers the rule. Can currently be either
         "allow", "deny" or "goto_next".
@@ -167,7 +167,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A description of the rule.
         """
@@ -175,7 +175,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def direction(self) -> Optional[str]:
+    def direction(self) -> pulumi.Output[Optional[str]]:
         """
         The direction in which this rule applies. If unspecified an INGRESS rule is created.
         Possible values are `INGRESS` and `EGRESS`.
@@ -184,7 +184,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableLogging")
-    def enable_logging(self) -> Optional[bool]:
+    def enable_logging(self) -> pulumi.Output[Optional[bool]]:
         """
         Denotes whether to enable logging for a particular rule.
         If logging is enabled, logs will be exported to the
@@ -194,7 +194,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def match(self) -> 'outputs.OrganizationSecurityPolicyRuleMatch':
+    def match(self) -> pulumi.Output['outputs.OrganizationSecurityPolicyRuleMatch']:
         """
         A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
         Structure is documented below.
@@ -203,7 +203,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="policyId")
-    def policy_id(self) -> str:
+    def policy_id(self) -> pulumi.Output[str]:
         """
         The ID of the OrganizationSecurityPolicy this rule applies to.
         """
@@ -211,7 +211,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def preview(self) -> Optional[bool]:
+    def preview(self) -> pulumi.Output[Optional[bool]]:
         """
         If set to true, the specified action is not enforced.
         """
@@ -219,7 +219,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def priority(self) -> float:
+    def priority(self) -> pulumi.Output[float]:
         """
         An integer indicating the priority of a rule in the list. The priority must be a value
         between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
@@ -229,7 +229,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="targetResources")
-    def target_resources(self) -> Optional[List[str]]:
+    def target_resources(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A list of network resource URLs to which this rule applies.
         This field allows you to control which network's VMs get
@@ -240,7 +240,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="targetServiceAccounts")
-    def target_service_accounts(self) -> Optional[List[str]]:
+    def target_service_accounts(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A list of service accounts indicating the sets of
         instances that are applied with this rule.

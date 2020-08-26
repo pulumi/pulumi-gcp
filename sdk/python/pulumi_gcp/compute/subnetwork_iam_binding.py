@@ -15,7 +15,7 @@ __all__ = ['SubnetworkIAMBinding']
 
 class SubnetworkIAMBinding(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  condition: Optional[pulumi.Input[pulumi.InputType['SubnetworkIAMBindingConditionArgs']]] = None,
                  members: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -135,7 +135,7 @@ class SubnetworkIAMBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional['outputs.SubnetworkIAMBindingCondition']:
+    def condition(self) -> pulumi.Output[Optional['outputs.SubnetworkIAMBindingCondition']]:
         """
         ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
@@ -144,7 +144,7 @@ class SubnetworkIAMBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def etag(self) -> str:
+    def etag(self) -> pulumi.Output[str]:
         """
         (Computed) The etag of the IAM policy.
         """
@@ -152,12 +152,12 @@ class SubnetworkIAMBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def members(self) -> List[str]:
+    def members(self) -> pulumi.Output[List[str]]:
         return pulumi.get(self, "members")
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -166,7 +166,7 @@ class SubnetworkIAMBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The GCP region for this subnetwork.
         Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -177,7 +177,7 @@ class SubnetworkIAMBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def role(self) -> str:
+    def role(self) -> pulumi.Output[str]:
         """
         The role that should be applied. Only one
         `compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
@@ -187,7 +187,7 @@ class SubnetworkIAMBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def subnetwork(self) -> str:
+    def subnetwork(self) -> pulumi.Output[str]:
         """
         Used to find the parent resource to bind the IAM policy to
         """

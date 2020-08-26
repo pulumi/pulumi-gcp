@@ -13,7 +13,7 @@ __all__ = ['BucketACL']
 
 class BucketACL(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
                  default_acl: Optional[pulumi.Input[str]] = None,
@@ -102,7 +102,7 @@ class BucketACL(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def bucket(self) -> str:
+    def bucket(self) -> pulumi.Output[str]:
         """
         The name of the bucket it applies to.
         """
@@ -110,7 +110,7 @@ class BucketACL(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultAcl")
-    def default_acl(self) -> Optional[str]:
+    def default_acl(self) -> pulumi.Output[Optional[str]]:
         """
         Configure this ACL to be the default ACL.
         """
@@ -118,7 +118,7 @@ class BucketACL(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="predefinedAcl")
-    def predefined_acl(self) -> Optional[str]:
+    def predefined_acl(self) -> pulumi.Output[Optional[str]]:
         """
         The [canned GCS ACL](https://cloud.google.com/storage/docs/access-control/lists#predefined-acl) to apply. Must be set if `role_entity` is not.
         """
@@ -126,7 +126,7 @@ class BucketACL(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="roleEntities")
-    def role_entities(self) -> List[str]:
+    def role_entities(self) -> pulumi.Output[List[str]]:
         """
         List of role/entity pairs in the form `ROLE:entity`. See [GCS Bucket ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)  for more details. Must be set if `predefined_acl` is not.
         """

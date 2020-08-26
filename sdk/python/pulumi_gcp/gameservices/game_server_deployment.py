@@ -13,7 +13,7 @@ __all__ = ['GameServerDeployment']
 
 class GameServerDeployment(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deployment_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -117,7 +117,7 @@ class GameServerDeployment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deploymentId")
-    def deployment_id(self) -> str:
+    def deployment_id(self) -> pulumi.Output[str]:
         """
         A unique id for the deployment.
         """
@@ -125,7 +125,7 @@ class GameServerDeployment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Human readable description of the game server deployment.
         """
@@ -133,7 +133,7 @@ class GameServerDeployment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, str]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The labels associated with this game server deployment. Each label is a
         key-value pair.
@@ -142,7 +142,7 @@ class GameServerDeployment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def location(self) -> Optional[str]:
+    def location(self) -> pulumi.Output[Optional[str]]:
         """
         Location of the Deployment.
         """
@@ -150,7 +150,7 @@ class GameServerDeployment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The resource id of the game server deployment, eg:
         'projects/{project_id}/locations/{location}/gameServerDeployments/{deployment_id}'. For example,
@@ -160,7 +160,7 @@ class GameServerDeployment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.

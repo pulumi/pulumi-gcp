@@ -13,7 +13,7 @@ __all__ = ['ProjectMetadata']
 
 class ProjectMetadata(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -91,7 +91,7 @@ class ProjectMetadata(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def metadata(self) -> Mapping[str, str]:
+    def metadata(self) -> pulumi.Output[Mapping[str, str]]:
         """
         A series of key value pairs.
         """
@@ -99,7 +99,7 @@ class ProjectMetadata(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs. If it
         is not provided, the provider project is used.

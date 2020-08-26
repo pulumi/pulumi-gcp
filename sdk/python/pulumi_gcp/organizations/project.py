@@ -13,7 +13,7 @@ __all__ = ['Project']
 
 class Project(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_create_network: Optional[pulumi.Input[bool]] = None,
                  billing_account: Optional[pulumi.Input[str]] = None,
@@ -163,7 +163,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoCreateNetwork")
-    def auto_create_network(self) -> Optional[bool]:
+    def auto_create_network(self) -> pulumi.Output[Optional[bool]]:
         """
         Create the 'default' network automatically.  Default `true`.
         If set to `false`, the default network will be deleted.  Note that, for quota purposes, you
@@ -174,7 +174,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="billingAccount")
-    def billing_account(self) -> Optional[str]:
+    def billing_account(self) -> pulumi.Output[Optional[str]]:
         """
         The alphanumeric ID of the billing account this project
         belongs to. The user or service account performing this operation with the provider
@@ -186,7 +186,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="folderId")
-    def folder_id(self) -> str:
+    def folder_id(self) -> pulumi.Output[str]:
         """
         The numeric ID of the folder this project should be
         created under. Only one of `org_id` or `folder_id` may be
@@ -198,7 +198,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, str]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A set of key/value label pairs to assign to the project.
         """
@@ -206,7 +206,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The display name of the project.
         """
@@ -214,7 +214,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def number(self) -> str:
+    def number(self) -> pulumi.Output[str]:
         """
         The numeric identifier of the project.
         """
@@ -222,7 +222,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> str:
+    def org_id(self) -> pulumi.Output[str]:
         """
         The numeric ID of the organization this project belongs to.
         Changing this forces a new project to be created.  Only one of
@@ -235,7 +235,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    def project_id(self) -> pulumi.Output[str]:
         """
         The project ID. Changing this forces a new project to be created.
         """
@@ -243,7 +243,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="skipDelete")
-    def skip_delete(self) -> bool:
+    def skip_delete(self) -> pulumi.Output[bool]:
         """
         If true, the resource can be deleted
         without deleting the Project via the Google API.

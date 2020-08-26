@@ -15,7 +15,7 @@ __all__ = ['Secret']
 
 class Secret(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -131,7 +131,7 @@ class Secret(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> str:
+    def create_time(self) -> pulumi.Output[str]:
         """
         The time at which the Secret was created.
         """
@@ -139,7 +139,7 @@ class Secret(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, str]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The labels assigned to this Secret.
         Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
@@ -154,7 +154,7 @@ class Secret(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The resource name of the Secret. Format: 'projects/{{project}}/secrets/{{secret_id}}'
         """
@@ -162,7 +162,7 @@ class Secret(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -171,7 +171,7 @@ class Secret(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def replication(self) -> 'outputs.SecretReplication':
+    def replication(self) -> pulumi.Output['outputs.SecretReplication']:
         """
         The replication policy of the secret data attached to the Secret. It cannot be changed
         after the Secret has been created.
@@ -181,7 +181,7 @@ class Secret(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="secretId")
-    def secret_id(self) -> str:
+    def secret_id(self) -> pulumi.Output[str]:
         """
         This must be unique within the project.
         """

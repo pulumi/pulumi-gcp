@@ -13,7 +13,7 @@ __all__ = ['ObjectACL']
 
 class ObjectACL(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
                  object: Optional[pulumi.Input[str]] = None,
@@ -107,7 +107,7 @@ class ObjectACL(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def bucket(self) -> str:
+    def bucket(self) -> pulumi.Output[str]:
         """
         The name of the bucket the object is stored in.
         """
@@ -115,7 +115,7 @@ class ObjectACL(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def object(self) -> str:
+    def object(self) -> pulumi.Output[str]:
         """
         The name of the object to apply the acl to.
         """
@@ -123,7 +123,7 @@ class ObjectACL(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="predefinedAcl")
-    def predefined_acl(self) -> Optional[str]:
+    def predefined_acl(self) -> pulumi.Output[Optional[str]]:
         """
         The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `role_entity` is not.
         """
@@ -131,7 +131,7 @@ class ObjectACL(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="roleEntities")
-    def role_entities(self) -> List[str]:
+    def role_entities(self) -> pulumi.Output[List[str]]:
         """
         List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
         Must be set if `predefined_acl` is not.

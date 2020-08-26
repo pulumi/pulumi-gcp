@@ -13,7 +13,7 @@ __all__ = ['NetworkPeeringRoutesConfig']
 
 class NetworkPeeringRoutesConfig(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  export_custom_routes: Optional[pulumi.Input[bool]] = None,
                  import_custom_routes: Optional[pulumi.Input[bool]] = None,
@@ -118,7 +118,7 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="exportCustomRoutes")
-    def export_custom_routes(self) -> bool:
+    def export_custom_routes(self) -> pulumi.Output[bool]:
         """
         Whether to export the custom routes to the peer network.
         """
@@ -126,7 +126,7 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="importCustomRoutes")
-    def import_custom_routes(self) -> bool:
+    def import_custom_routes(self) -> pulumi.Output[bool]:
         """
         Whether to import the custom routes to the peer network.
         """
@@ -134,7 +134,7 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def network(self) -> str:
+    def network(self) -> pulumi.Output[str]:
         """
         The name of the primary network for the peering.
         """
@@ -142,7 +142,7 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def peering(self) -> str:
+    def peering(self) -> pulumi.Output[str]:
         """
         Name of the peering.
         """
@@ -150,7 +150,7 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.

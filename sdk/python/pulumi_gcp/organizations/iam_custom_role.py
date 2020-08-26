@@ -13,7 +13,7 @@ __all__ = ['IAMCustomRole']
 
 class IAMCustomRole(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
@@ -133,7 +133,7 @@ class IAMCustomRole(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def deleted(self) -> bool:
+    def deleted(self) -> pulumi.Output[bool]:
         """
         (Optional) The current deleted state of the role.
         """
@@ -141,7 +141,7 @@ class IAMCustomRole(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A human-readable description for the role.
         """
@@ -149,7 +149,7 @@ class IAMCustomRole(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the role in the format `organizations/{{org_id}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
         """
@@ -157,7 +157,7 @@ class IAMCustomRole(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> str:
+    def org_id(self) -> pulumi.Output[str]:
         """
         The numeric ID of the organization in which you want to create a custom role.
         """
@@ -165,7 +165,7 @@ class IAMCustomRole(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def permissions(self) -> List[str]:
+    def permissions(self) -> pulumi.Output[List[str]]:
         """
         The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
         """
@@ -173,7 +173,7 @@ class IAMCustomRole(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="roleId")
-    def role_id(self) -> str:
+    def role_id(self) -> pulumi.Output[str]:
         """
         The role id to use for this role.
         """
@@ -181,7 +181,7 @@ class IAMCustomRole(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def stage(self) -> Optional[str]:
+    def stage(self) -> pulumi.Output[Optional[str]]:
         """
         The current launch stage of the role.
         Defaults to `GA`.
@@ -191,7 +191,7 @@ class IAMCustomRole(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def title(self) -> str:
+    def title(self) -> pulumi.Output[str]:
         """
         A human-readable title for the role.
         """

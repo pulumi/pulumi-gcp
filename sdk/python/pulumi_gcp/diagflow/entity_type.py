@@ -15,7 +15,7 @@ __all__ = ['EntityType']
 
 class EntityType(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_fuzzy_extraction: Optional[pulumi.Input[bool]] = None,
@@ -129,7 +129,7 @@ class EntityType(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> str:
+    def display_name(self) -> pulumi.Output[str]:
         """
         The name of this entity type to be displayed on the console.
         """
@@ -137,7 +137,7 @@ class EntityType(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableFuzzyExtraction")
-    def enable_fuzzy_extraction(self) -> Optional[bool]:
+    def enable_fuzzy_extraction(self) -> pulumi.Output[Optional[bool]]:
         """
         Enables fuzzy entity extraction during classification.
         """
@@ -145,7 +145,7 @@ class EntityType(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def entities(self) -> Optional[List['outputs.EntityTypeEntity']]:
+    def entities(self) -> pulumi.Output[Optional[List['outputs.EntityTypeEntity']]]:
         """
         The collection of entity entries associated with the entity type.
         Structure is documented below.
@@ -154,7 +154,7 @@ class EntityType(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def kind(self) -> str:
+    def kind(self) -> pulumi.Output[str]:
         """
         Indicates the kind of entity type.
         * KIND_MAP: Map entity types allow mapping of a group of synonyms to a reference value.
@@ -167,7 +167,7 @@ class EntityType(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The unique identifier of the entity type. Format: projects/<Project ID>/agent/entityTypes/<Entity type ID>.
         """
@@ -175,7 +175,7 @@ class EntityType(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.

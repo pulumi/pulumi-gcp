@@ -15,7 +15,7 @@ __all__ = ['AccountIamMember']
 
 class AccountIamMember(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  billing_account_id: Optional[pulumi.Input[str]] = None,
                  condition: Optional[pulumi.Input[pulumi.InputType['AccountIamMemberConditionArgs']]] = None,
@@ -106,7 +106,7 @@ class AccountIamMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="billingAccountId")
-    def billing_account_id(self) -> str:
+    def billing_account_id(self) -> pulumi.Output[str]:
         """
         The billing account id.
         """
@@ -114,12 +114,12 @@ class AccountIamMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional['outputs.AccountIamMemberCondition']:
+    def condition(self) -> pulumi.Output[Optional['outputs.AccountIamMemberCondition']]:
         return pulumi.get(self, "condition")
 
     @property
     @pulumi.getter
-    def etag(self) -> str:
+    def etag(self) -> pulumi.Output[str]:
         """
         (Computed) The etag of the billing account's IAM policy.
         """
@@ -127,7 +127,7 @@ class AccountIamMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def member(self) -> str:
+    def member(self) -> pulumi.Output[str]:
         """
         The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
         """
@@ -135,7 +135,7 @@ class AccountIamMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def role(self) -> str:
+    def role(self) -> pulumi.Output[str]:
         """
         The role that should be applied.
         """

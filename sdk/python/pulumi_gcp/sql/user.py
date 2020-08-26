@@ -13,7 +13,7 @@ __all__ = ['User']
 
 class User(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  host: Optional[pulumi.Input[str]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
@@ -111,7 +111,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def host(self) -> Optional[str]:
+    def host(self) -> pulumi.Output[Optional[str]]:
         """
         The host the user can connect from. This is only supported
         for MySQL instances. Don't set this field for PostgreSQL instances.
@@ -121,7 +121,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def instance(self) -> str:
+    def instance(self) -> pulumi.Output[str]:
         """
         The name of the Cloud SQL instance. Changing this
         forces a new resource to be created.
@@ -130,7 +130,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the user. Changing this forces a new resource
         to be created.
@@ -139,7 +139,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def password(self) -> Optional[str]:
+    def password(self) -> pulumi.Output[Optional[str]]:
         """
         The password for the user. Can be updated. For Postgres
         instances this is a Required field.
@@ -148,7 +148,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs. If it
         is not provided, the provider project is used.

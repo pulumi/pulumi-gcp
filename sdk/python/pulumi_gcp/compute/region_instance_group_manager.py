@@ -15,7 +15,7 @@ __all__ = ['RegionInstanceGroupManager']
 
 class RegionInstanceGroupManager(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_healing_policies: Optional[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerAutoHealingPoliciesArgs']]] = None,
                  base_instance_name: Optional[pulumi.Input[str]] = None,
@@ -210,7 +210,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoHealingPolicies")
-    def auto_healing_policies(self) -> Optional['outputs.RegionInstanceGroupManagerAutoHealingPolicies']:
+    def auto_healing_policies(self) -> pulumi.Output[Optional['outputs.RegionInstanceGroupManagerAutoHealingPolicies']]:
         """
         The autohealing policies for this managed instance
         group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
@@ -219,7 +219,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="baseInstanceName")
-    def base_instance_name(self) -> str:
+    def base_instance_name(self) -> pulumi.Output[str]:
         """
         The base instance name to use for
         instances in this group. The value must be a valid
@@ -232,7 +232,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         An optional textual description of the instance
         group manager.
@@ -241,7 +241,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="distributionPolicyZones")
-    def distribution_policy_zones(self) -> List[str]:
+    def distribution_policy_zones(self) -> pulumi.Output[List[str]]:
         """
         The distribution policy for this managed instance
         group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
@@ -250,7 +250,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def fingerprint(self) -> str:
+    def fingerprint(self) -> pulumi.Output[str]:
         """
         The fingerprint of the instance group manager.
         """
@@ -258,7 +258,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceGroup")
-    def instance_group(self) -> str:
+    def instance_group(self) -> pulumi.Output[str]:
         """
         The full URL of the instance group created by the manager.
         """
@@ -266,7 +266,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         - Version name.
         """
@@ -274,7 +274,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="namedPorts")
-    def named_ports(self) -> Optional[List['outputs.RegionInstanceGroupManagerNamedPort']]:
+    def named_ports(self) -> pulumi.Output[Optional[List['outputs.RegionInstanceGroupManagerNamedPort']]]:
         """
         The named port configuration. See the section below
         for details on configuration.
@@ -283,7 +283,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs. If it
         is not provided, the provider project is used.
@@ -292,7 +292,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region where the managed instance group resides.
         """
@@ -300,7 +300,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         """
         The URL of the created resource.
         """
@@ -308,7 +308,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="statefulDisks")
-    def stateful_disks(self) -> Optional[List['outputs.RegionInstanceGroupManagerStatefulDisk']]:
+    def stateful_disks(self) -> pulumi.Output[Optional[List['outputs.RegionInstanceGroupManagerStatefulDisk']]]:
         """
         Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `update_policy`.
         """
@@ -316,7 +316,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="targetPools")
-    def target_pools(self) -> Optional[List[str]]:
+    def target_pools(self) -> pulumi.Output[Optional[List[str]]]:
         """
         The full URL of all target pools to which new
         instances in the group are added. Updating the target pools attribute does
@@ -326,7 +326,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="targetSize")
-    def target_size(self) -> float:
+    def target_size(self) -> pulumi.Output[float]:
         """
         - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
         """
@@ -334,7 +334,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="updatePolicy")
-    def update_policy(self) -> 'outputs.RegionInstanceGroupManagerUpdatePolicy':
+    def update_policy(self) -> pulumi.Output['outputs.RegionInstanceGroupManagerUpdatePolicy']:
         """
         The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
         """
@@ -342,7 +342,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def versions(self) -> List['outputs.RegionInstanceGroupManagerVersion']:
+    def versions(self) -> pulumi.Output[List['outputs.RegionInstanceGroupManagerVersion']]:
         """
         Application versions managed by this instance group. Each
         version deals with a specific instance template, allowing canary release scenarios.
@@ -352,7 +352,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="waitForInstances")
-    def wait_for_instances(self) -> Optional[bool]:
+    def wait_for_instances(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to wait for all instances to be created/updated before
         returning. Note that if this is set to true and the operation does not succeed, the provider will

@@ -15,7 +15,7 @@ __all__ = ['RepositoryIamBinding']
 
 class RepositoryIamBinding(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  condition: Optional[pulumi.Input[pulumi.InputType['RepositoryIamBindingConditionArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -127,12 +127,12 @@ class RepositoryIamBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional['outputs.RepositoryIamBindingCondition']:
+    def condition(self) -> pulumi.Output[Optional['outputs.RepositoryIamBindingCondition']]:
         return pulumi.get(self, "condition")
 
     @property
     @pulumi.getter
-    def etag(self) -> str:
+    def etag(self) -> pulumi.Output[str]:
         """
         (Computed) The etag of the IAM policy.
         """
@@ -140,7 +140,7 @@ class RepositoryIamBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def location(self) -> str:
+    def location(self) -> pulumi.Output[str]:
         """
         The name of the location this repository is located in.
         Used to find the parent resource to bind the IAM policy to
@@ -149,12 +149,12 @@ class RepositoryIamBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def members(self) -> List[str]:
+    def members(self) -> pulumi.Output[List[str]]:
         return pulumi.get(self, "members")
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -163,7 +163,7 @@ class RepositoryIamBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def repository(self) -> str:
+    def repository(self) -> pulumi.Output[str]:
         """
         Used to find the parent resource to bind the IAM policy to
         """
@@ -171,7 +171,7 @@ class RepositoryIamBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def role(self) -> str:
+    def role(self) -> pulumi.Output[str]:
         """
         The role that should be applied. Only one
         `artifactregistry.RepositoryIamBinding` can be used per role. Note that custom roles must be of the format

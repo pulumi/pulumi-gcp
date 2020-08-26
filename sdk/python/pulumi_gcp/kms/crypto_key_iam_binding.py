@@ -15,7 +15,7 @@ __all__ = ['CryptoKeyIAMBinding']
 
 class CryptoKeyIAMBinding(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  condition: Optional[pulumi.Input[pulumi.InputType['CryptoKeyIAMBindingConditionArgs']]] = None,
                  crypto_key_id: Optional[pulumi.Input[str]] = None,
@@ -125,7 +125,7 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional['outputs.CryptoKeyIAMBindingCondition']:
+    def condition(self) -> pulumi.Output[Optional['outputs.CryptoKeyIAMBindingCondition']]:
         """
         An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
@@ -134,7 +134,7 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cryptoKeyId")
-    def crypto_key_id(self) -> str:
+    def crypto_key_id(self) -> pulumi.Output[str]:
         """
         The crypto key ID, in the form
         `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
@@ -145,7 +145,7 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def etag(self) -> str:
+    def etag(self) -> pulumi.Output[str]:
         """
         (Computed) The etag of the project's IAM policy.
         """
@@ -153,12 +153,12 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def members(self) -> List[str]:
+    def members(self) -> pulumi.Output[List[str]]:
         return pulumi.get(self, "members")
 
     @property
     @pulumi.getter
-    def role(self) -> str:
+    def role(self) -> pulumi.Output[str]:
         """
         The role that should be applied. Note that custom roles must be of the format
         `[projects|organizations]/{parent-name}/roles/{role-name}`.

@@ -13,7 +13,7 @@ __all__ = ['FlexTemplateJob']
 
 class FlexTemplateJob(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  container_spec_gcs_path: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -124,7 +124,7 @@ class FlexTemplateJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="containerSpecGcsPath")
-    def container_spec_gcs_path(self) -> str:
+    def container_spec_gcs_path(self) -> pulumi.Output[str]:
         """
         The GCS path to the Dataflow job Flex
         Template.
@@ -133,7 +133,7 @@ class FlexTemplateJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="jobId")
-    def job_id(self) -> str:
+    def job_id(self) -> pulumi.Output[str]:
         """
         The unique ID of this job.
         """
@@ -141,7 +141,7 @@ class FlexTemplateJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, Any]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         User labels to be specified for the job. Keys and values
         should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
@@ -153,7 +153,7 @@ class FlexTemplateJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         A unique name for the resource, required by Dataflow.
         """
@@ -161,12 +161,12 @@ class FlexTemplateJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="onDelete")
-    def on_delete(self) -> Optional[str]:
+    def on_delete(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "on_delete")
 
     @property
     @pulumi.getter
-    def parameters(self) -> Optional[Mapping[str, Any]]:
+    def parameters(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         Key/Value pairs to be passed to the Dataflow job (as
         used in the template).
@@ -175,7 +175,7 @@ class FlexTemplateJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The project in which the resource belongs. If it is not
         provided, the provider project is used.
@@ -184,7 +184,7 @@ class FlexTemplateJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def state(self) -> str:
+    def state(self) -> pulumi.Output[str]:
         """
         The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
         """

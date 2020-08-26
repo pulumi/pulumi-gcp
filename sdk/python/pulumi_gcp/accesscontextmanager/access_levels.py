@@ -15,7 +15,7 @@ __all__ = ['AccessLevels']
 
 class AccessLevels(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_levels: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['AccessLevelsAccessLevelArgs']]]]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -97,7 +97,7 @@ class AccessLevels(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accessLevels")
-    def access_levels(self) -> Optional[List['outputs.AccessLevelsAccessLevel']]:
+    def access_levels(self) -> pulumi.Output[Optional[List['outputs.AccessLevelsAccessLevel']]]:
         """
         The desired Access Levels that should replace all existing Access Levels in the Access Policy.
         Structure is documented below.
@@ -106,7 +106,7 @@ class AccessLevels(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def parent(self) -> str:
+    def parent(self) -> pulumi.Output[str]:
         """
         The AccessPolicy this AccessLevel lives in.
         Format: accessPolicies/{policy_id}

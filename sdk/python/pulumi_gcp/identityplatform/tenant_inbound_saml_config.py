@@ -15,7 +15,7 @@ __all__ = ['TenantInboundSamlConfig']
 
 class TenantInboundSamlConfig(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
@@ -137,7 +137,7 @@ class TenantInboundSamlConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> str:
+    def display_name(self) -> pulumi.Output[str]:
         """
         Human friendly display name.
         """
@@ -145,7 +145,7 @@ class TenantInboundSamlConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enabled(self) -> Optional[bool]:
+    def enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         If this config allows users to sign in with the provider.
         """
@@ -153,7 +153,7 @@ class TenantInboundSamlConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="idpConfig")
-    def idp_config(self) -> 'outputs.TenantInboundSamlConfigIdpConfig':
+    def idp_config(self) -> pulumi.Output['outputs.TenantInboundSamlConfigIdpConfig']:
         """
         SAML IdP configuration when the project acts as the relying party
         Structure is documented below.
@@ -162,7 +162,7 @@ class TenantInboundSamlConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters,
         hyphens, underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an
@@ -172,7 +172,7 @@ class TenantInboundSamlConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -181,7 +181,7 @@ class TenantInboundSamlConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="spConfig")
-    def sp_config(self) -> 'outputs.TenantInboundSamlConfigSpConfig':
+    def sp_config(self) -> pulumi.Output['outputs.TenantInboundSamlConfigSpConfig']:
         """
         SAML SP (Service Provider) configuration when the project acts as the relying party to receive
         and accept an authentication assertion issued by a SAML identity provider.
@@ -191,7 +191,7 @@ class TenantInboundSamlConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tenant(self) -> str:
+    def tenant(self) -> pulumi.Output[str]:
         """
         The name of the tenant where this inbound SAML config resource exists
         """

@@ -13,7 +13,7 @@ __all__ = ['Connection']
 
 class Connection(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  reserved_peering_ranges: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -105,7 +105,7 @@ class Connection(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def network(self) -> str:
+    def network(self) -> pulumi.Output[str]:
         """
         Name of VPC network connected with service producers using VPC peering.
         """
@@ -113,12 +113,12 @@ class Connection(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def peering(self) -> str:
+    def peering(self) -> pulumi.Output[str]:
         return pulumi.get(self, "peering")
 
     @property
     @pulumi.getter(name="reservedPeeringRanges")
-    def reserved_peering_ranges(self) -> List[str]:
+    def reserved_peering_ranges(self) -> pulumi.Output[List[str]]:
         """
         Named IP address range(s) of PEERING type reserved for
         this service provider. Note that invoking this method with a different range when connection
@@ -128,7 +128,7 @@ class Connection(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def service(self) -> str:
+    def service(self) -> pulumi.Output[str]:
         """
         Provider peering service that is managing peering connectivity for a
         service provider organization. For Google services that support this functionality it is

@@ -15,7 +15,7 @@ __all__ = ['IAMMember']
 
 class IAMMember(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  condition: Optional[pulumi.Input[pulumi.InputType['IAMMemberConditionArgs']]] = None,
                  folder: Optional[pulumi.Input[str]] = None,
@@ -93,27 +93,27 @@ class IAMMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional['outputs.IAMMemberCondition']:
+    def condition(self) -> pulumi.Output[Optional['outputs.IAMMemberCondition']]:
         return pulumi.get(self, "condition")
 
     @property
     @pulumi.getter
-    def etag(self) -> str:
+    def etag(self) -> pulumi.Output[str]:
         return pulumi.get(self, "etag")
 
     @property
     @pulumi.getter
-    def folder(self) -> str:
+    def folder(self) -> pulumi.Output[str]:
         return pulumi.get(self, "folder")
 
     @property
     @pulumi.getter
-    def member(self) -> str:
+    def member(self) -> pulumi.Output[str]:
         return pulumi.get(self, "member")
 
     @property
     @pulumi.getter
-    def role(self) -> str:
+    def role(self) -> pulumi.Output[str]:
         return pulumi.get(self, "role")
 
     def translate_output_property(self, prop):

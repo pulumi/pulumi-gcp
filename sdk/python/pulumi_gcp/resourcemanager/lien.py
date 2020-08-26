@@ -13,7 +13,7 @@ __all__ = ['Lien']
 
 class Lien(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  origin: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -129,7 +129,7 @@ class Lien(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> str:
+    def create_time(self) -> pulumi.Output[str]:
         """
         Time of creation
         """
@@ -137,7 +137,7 @@ class Lien(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         A system-generated unique identifier for this Lien.
         """
@@ -145,7 +145,7 @@ class Lien(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def origin(self) -> str:
+    def origin(self) -> pulumi.Output[str]:
         """
         A stable, user-visible/meaningful string identifying the origin
         of the Lien, intended to be inspected programmatically. Maximum length of
@@ -155,7 +155,7 @@ class Lien(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def parent(self) -> str:
+    def parent(self) -> pulumi.Output[str]:
         """
         A reference to the resource this Lien is attached to.
         The server will validate the parent against those for which Liens are supported.
@@ -166,7 +166,7 @@ class Lien(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def reason(self) -> str:
+    def reason(self) -> pulumi.Output[str]:
         """
         Concise user-visible strings indicating why an action cannot be performed
         on a resource. Maximum length of 200 characters.
@@ -175,7 +175,7 @@ class Lien(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def restrictions(self) -> List[str]:
+    def restrictions(self) -> pulumi.Output[List[str]]:
         """
         The types of operations which should be blocked as a result of this Lien.
         Each value should correspond to an IAM permission. The server will validate

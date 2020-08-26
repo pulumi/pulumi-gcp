@@ -15,7 +15,7 @@ __all__ = ['Policy']
 
 class Policy(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  boolean_policy: Optional[pulumi.Input[pulumi.InputType['PolicyBooleanPolicyArgs']]] = None,
                  constraint: Optional[pulumi.Input[str]] = None,
@@ -120,7 +120,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="booleanPolicy")
-    def boolean_policy(self) -> Optional['outputs.PolicyBooleanPolicy']:
+    def boolean_policy(self) -> pulumi.Output[Optional['outputs.PolicyBooleanPolicy']]:
         """
         A boolean policy is a constraint that is either enforced or not. Structure is documented below.
         """
@@ -128,7 +128,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def constraint(self) -> str:
+    def constraint(self) -> pulumi.Output[str]:
         """
         The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
         """
@@ -136,7 +136,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def etag(self) -> str:
+    def etag(self) -> pulumi.Output[str]:
         """
         (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
         """
@@ -144,7 +144,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="listPolicy")
-    def list_policy(self) -> Optional['outputs.PolicyListPolicy']:
+    def list_policy(self) -> pulumi.Output[Optional['outputs.PolicyListPolicy']]:
         """
         A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
         """
@@ -152,7 +152,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> str:
+    def org_id(self) -> pulumi.Output[str]:
         """
         The numeric ID of the organization to set the policy for.
         """
@@ -160,7 +160,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="restorePolicy")
-    def restore_policy(self) -> Optional['outputs.PolicyRestorePolicy']:
+    def restore_policy(self) -> pulumi.Output[Optional['outputs.PolicyRestorePolicy']]:
         """
         A restore policy is a constraint to restore the default policy. Structure is documented below.
         """
@@ -168,7 +168,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> str:
+    def update_time(self) -> pulumi.Output[str]:
         """
         (Computed) The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds, representing when the variable was last updated. Example: "2016-10-09T12:33:37.578138407Z".
         """
@@ -176,7 +176,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def version(self) -> float:
+    def version(self) -> pulumi.Output[float]:
         """
         Version of the Policy. Default version is 0.
         """

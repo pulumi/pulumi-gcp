@@ -15,7 +15,7 @@ __all__ = ['UptimeCheckConfig']
 
 class UptimeCheckConfig(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  content_matchers: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['UptimeCheckConfigContentMatcherArgs']]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -165,7 +165,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="contentMatchers")
-    def content_matchers(self) -> Optional[List['outputs.UptimeCheckConfigContentMatcher']]:
+    def content_matchers(self) -> pulumi.Output[Optional[List['outputs.UptimeCheckConfigContentMatcher']]]:
         """
         The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
         Structure is documented below.
@@ -174,7 +174,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> str:
+    def display_name(self) -> pulumi.Output[str]:
         """
         A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
         """
@@ -182,7 +182,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="httpCheck")
-    def http_check(self) -> Optional['outputs.UptimeCheckConfigHttpCheck']:
+    def http_check(self) -> pulumi.Output[Optional['outputs.UptimeCheckConfigHttpCheck']]:
         """
         Contains information needed to make an HTTP or HTTPS check.
         Structure is documented below.
@@ -191,7 +191,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="monitoredResource")
-    def monitored_resource(self) -> Optional['outputs.UptimeCheckConfigMonitoredResource']:
+    def monitored_resource(self) -> pulumi.Output[Optional['outputs.UptimeCheckConfigMonitoredResource']]:
         """
         The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptime_url  gce_instance  gae_app  aws_ec2_instance  aws_elb_load_balancer
         Structure is documented below.
@@ -200,7 +200,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         A unique resource name for this UptimeCheckConfig. The format is
         projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
@@ -209,7 +209,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def period(self) -> Optional[str]:
+    def period(self) -> pulumi.Output[Optional[str]]:
         """
         How often, in seconds, the uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 300s.
         """
@@ -217,7 +217,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -226,7 +226,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceGroup")
-    def resource_group(self) -> Optional['outputs.UptimeCheckConfigResourceGroup']:
+    def resource_group(self) -> pulumi.Output[Optional['outputs.UptimeCheckConfigResourceGroup']]:
         """
         The group resource associated with the configuration.
         Structure is documented below.
@@ -235,7 +235,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selectedRegions")
-    def selected_regions(self) -> Optional[List[str]]:
+    def selected_regions(self) -> pulumi.Output[Optional[List[str]]]:
         """
         The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions to include a minimum of 3 locations must be provided, or an error message is returned. Not specifying this field will result in uptime checks running from all regions.
         """
@@ -243,7 +243,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tcpCheck")
-    def tcp_check(self) -> Optional['outputs.UptimeCheckConfigTcpCheck']:
+    def tcp_check(self) -> pulumi.Output[Optional['outputs.UptimeCheckConfigTcpCheck']]:
         """
         Contains information needed to make a TCP check.
         Structure is documented below.
@@ -252,7 +252,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def timeout(self) -> str:
+    def timeout(self) -> pulumi.Output[str]:
         """
         The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Accepted formats https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration
         """
@@ -260,7 +260,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="uptimeCheckId")
-    def uptime_check_id(self) -> str:
+    def uptime_check_id(self) -> pulumi.Output[str]:
         """
         The id of the uptime check
         """

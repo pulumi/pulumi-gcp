@@ -13,7 +13,7 @@ __all__ = ['BucketObject']
 
 class BucketObject(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
                  cache_control: Optional[pulumi.Input[str]] = None,
@@ -173,7 +173,7 @@ class BucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def bucket(self) -> str:
+    def bucket(self) -> pulumi.Output[str]:
         """
         The name of the containing bucket.
         """
@@ -181,7 +181,7 @@ class BucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cacheControl")
-    def cache_control(self) -> Optional[str]:
+    def cache_control(self) -> pulumi.Output[Optional[str]]:
         """
         [Cache-Control](https://tools.ietf.org/html/rfc7234#section-5.2)
         directive to specify caching behavior of object data. If omitted and object is accessible to all anonymous users, the default will be public, max-age=3600
@@ -190,7 +190,7 @@ class BucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def content(self) -> Optional[str]:
+    def content(self) -> pulumi.Output[Optional[str]]:
         """
         Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
         """
@@ -198,7 +198,7 @@ class BucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="contentDisposition")
-    def content_disposition(self) -> Optional[str]:
+    def content_disposition(self) -> pulumi.Output[Optional[str]]:
         """
         [Content-Disposition](https://tools.ietf.org/html/rfc6266) of the object data.
         """
@@ -206,7 +206,7 @@ class BucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="contentEncoding")
-    def content_encoding(self) -> Optional[str]:
+    def content_encoding(self) -> pulumi.Output[Optional[str]]:
         """
         [Content-Encoding](https://tools.ietf.org/html/rfc7231#section-3.1.2.2) of the object data.
         """
@@ -214,7 +214,7 @@ class BucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="contentLanguage")
-    def content_language(self) -> Optional[str]:
+    def content_language(self) -> pulumi.Output[Optional[str]]:
         """
         [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object data.
         """
@@ -222,7 +222,7 @@ class BucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="contentType")
-    def content_type(self) -> str:
+    def content_type(self) -> pulumi.Output[str]:
         """
         [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
         """
@@ -230,7 +230,7 @@ class BucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def crc32c(self) -> str:
+    def crc32c(self) -> pulumi.Output[str]:
         """
         (Computed) Base 64 CRC32 hash of the uploaded data.
         """
@@ -238,12 +238,12 @@ class BucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="detectMd5hash")
-    def detect_md5hash(self) -> Optional[str]:
+    def detect_md5hash(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "detect_md5hash")
 
     @property
     @pulumi.getter
-    def md5hash(self) -> str:
+    def md5hash(self) -> pulumi.Output[str]:
         """
         (Computed) Base 64 MD5 hash of the uploaded data.
         """
@@ -251,7 +251,7 @@ class BucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="mediaLink")
-    def media_link(self) -> str:
+    def media_link(self) -> pulumi.Output[str]:
         """
         (Computed) A url reference to download this object.
         """
@@ -259,7 +259,7 @@ class BucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[Mapping[str, str]]:
+    def metadata(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         User-provided metadata, in key/value pairs.
         """
@@ -267,7 +267,7 @@ class BucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the object. If you're interpolating the name of this object, see `output_name` instead.
         """
@@ -275,7 +275,7 @@ class BucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="outputName")
-    def output_name(self) -> str:
+    def output_name(self) -> pulumi.Output[str]:
         """
         (Computed) The name of the object. Use this field in interpolations with `storage.ObjectACL` to recreate
         `storage.ObjectACL` resources when your `storage.BucketObject` is recreated.
@@ -284,7 +284,7 @@ class BucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         """
         (Computed) A url reference to this object.
         """
@@ -292,7 +292,7 @@ class BucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def source(self) -> Optional[Union[pulumi.Asset, pulumi.Archive]]:
+    def source(self) -> pulumi.Output[Optional[Union[pulumi.Asset, pulumi.Archive]]]:
         """
         A path to the data you want to upload. Must be defined
         if `content` is not.
@@ -301,7 +301,7 @@ class BucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="storageClass")
-    def storage_class(self) -> str:
+    def storage_class(self) -> pulumi.Output[str]:
         """
         The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
         Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default

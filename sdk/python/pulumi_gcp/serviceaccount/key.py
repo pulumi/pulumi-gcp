@@ -13,7 +13,7 @@ __all__ = ['Key']
 
 class Key(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  key_algorithm: Optional[pulumi.Input[str]] = None,
                  private_key_type: Optional[pulumi.Input[str]] = None,
@@ -133,7 +133,7 @@ class Key(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="keyAlgorithm")
-    def key_algorithm(self) -> Optional[str]:
+    def key_algorithm(self) -> pulumi.Output[Optional[str]]:
         """
         The algorithm used to generate the key. KEY_ALG_RSA_2048 is the default algorithm.
         Valid values are listed at
@@ -144,7 +144,7 @@ class Key(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name used for this key pair
         """
@@ -152,7 +152,7 @@ class Key(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="privateKey")
-    def private_key(self) -> str:
+    def private_key(self) -> pulumi.Output[str]:
         """
         The private key in JSON format, base64 encoded. This is what you normally get as a file when creating
         service account keys through the CLI or web console. This is only populated when creating a new key.
@@ -161,7 +161,7 @@ class Key(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="privateKeyType")
-    def private_key_type(self) -> Optional[str]:
+    def private_key_type(self) -> pulumi.Output[Optional[str]]:
         """
         The output format of the private key. TYPE_GOOGLE_CREDENTIALS_FILE is the default output format.
         """
@@ -169,7 +169,7 @@ class Key(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="publicKey")
-    def public_key(self) -> str:
+    def public_key(self) -> pulumi.Output[str]:
         """
         The public key, base64 encoded
         """
@@ -177,7 +177,7 @@ class Key(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="publicKeyData")
-    def public_key_data(self) -> Optional[str]:
+    def public_key_data(self) -> pulumi.Output[Optional[str]]:
         """
         Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with `public_key_type` and `private_key_type`.
         """
@@ -185,7 +185,7 @@ class Key(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="publicKeyType")
-    def public_key_type(self) -> Optional[str]:
+    def public_key_type(self) -> pulumi.Output[Optional[str]]:
         """
         The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
         """
@@ -193,7 +193,7 @@ class Key(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceAccountId")
-    def service_account_id(self) -> str:
+    def service_account_id(self) -> pulumi.Output[str]:
         """
         The Service account id of the Key Pair. This can be a string in the format
         `{ACCOUNT}` or `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`, where `{ACCOUNT}` is the email address or
@@ -203,7 +203,7 @@ class Key(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="validAfter")
-    def valid_after(self) -> str:
+    def valid_after(self) -> pulumi.Output[str]:
         """
         The key can be used after this timestamp. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         """
@@ -211,7 +211,7 @@ class Key(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="validBefore")
-    def valid_before(self) -> str:
+    def valid_before(self) -> pulumi.Output[str]:
         """
         The key can be used before this timestamp.
         A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".

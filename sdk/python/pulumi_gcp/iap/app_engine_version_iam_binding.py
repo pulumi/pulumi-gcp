@@ -15,7 +15,7 @@ __all__ = ['AppEngineVersionIamBinding']
 
 class AppEngineVersionIamBinding(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
                  condition: Optional[pulumi.Input[pulumi.InputType['AppEngineVersionIamBindingConditionArgs']]] = None,
@@ -139,7 +139,7 @@ class AppEngineVersionIamBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="appId")
-    def app_id(self) -> str:
+    def app_id(self) -> pulumi.Output[str]:
         """
         Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
         """
@@ -147,7 +147,7 @@ class AppEngineVersionIamBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional['outputs.AppEngineVersionIamBindingCondition']:
+    def condition(self) -> pulumi.Output[Optional['outputs.AppEngineVersionIamBindingCondition']]:
         """
         An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
@@ -156,7 +156,7 @@ class AppEngineVersionIamBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def etag(self) -> str:
+    def etag(self) -> pulumi.Output[str]:
         """
         (Computed) The etag of the IAM policy.
         """
@@ -164,12 +164,12 @@ class AppEngineVersionIamBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def members(self) -> List[str]:
+    def members(self) -> pulumi.Output[List[str]]:
         return pulumi.get(self, "members")
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -178,7 +178,7 @@ class AppEngineVersionIamBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def role(self) -> str:
+    def role(self) -> pulumi.Output[str]:
         """
         The role that should be applied. Only one
         `iap.AppEngineVersionIamBinding` can be used per role. Note that custom roles must be of the format
@@ -188,7 +188,7 @@ class AppEngineVersionIamBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def service(self) -> str:
+    def service(self) -> pulumi.Output[str]:
         """
         Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
         """
@@ -196,7 +196,7 @@ class AppEngineVersionIamBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="versionId")
-    def version_id(self) -> str:
+    def version_id(self) -> pulumi.Output[str]:
         """
         Version id of the App Engine application Used to find the parent resource to bind the IAM policy to
         """

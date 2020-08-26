@@ -15,7 +15,7 @@ __all__ = ['Policy']
 
 class Policy(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admission_whitelist_patterns: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['PolicyAdmissionWhitelistPatternArgs']]]]] = None,
                  cluster_admission_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['PolicyClusterAdmissionRuleArgs']]]]] = None,
@@ -141,7 +141,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="admissionWhitelistPatterns")
-    def admission_whitelist_patterns(self) -> Optional[List['outputs.PolicyAdmissionWhitelistPattern']]:
+    def admission_whitelist_patterns(self) -> pulumi.Output[Optional[List['outputs.PolicyAdmissionWhitelistPattern']]]:
         """
         A whitelist of image patterns to exclude from admission rules. If an
         image's name matches a whitelist pattern, the image's admission
@@ -152,7 +152,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterAdmissionRules")
-    def cluster_admission_rules(self) -> Optional[List['outputs.PolicyClusterAdmissionRule']]:
+    def cluster_admission_rules(self) -> pulumi.Output[Optional[List['outputs.PolicyClusterAdmissionRule']]]:
         """
         Per-cluster admission rules. An admission rule specifies either that
         all container images used in a pod creation request must be attested
@@ -164,7 +164,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultAdmissionRule")
-    def default_admission_rule(self) -> 'outputs.PolicyDefaultAdmissionRule':
+    def default_admission_rule(self) -> pulumi.Output['outputs.PolicyDefaultAdmissionRule']:
         """
         Default admission rule for a cluster without a per-cluster admission
         rule.
@@ -174,7 +174,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A descriptive comment.
         """
@@ -182,7 +182,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="globalPolicyEvaluationMode")
-    def global_policy_evaluation_mode(self) -> str:
+    def global_policy_evaluation_mode(self) -> pulumi.Output[str]:
         """
         Controls the evaluation of a Google-maintained global admission policy
         for common system-level images. Images not covered by the global
@@ -193,7 +193,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.

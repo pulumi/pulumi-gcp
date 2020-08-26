@@ -15,7 +15,7 @@ __all__ = ['JobIAMBinding']
 
 class JobIAMBinding(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  condition: Optional[pulumi.Input[pulumi.InputType['JobIAMBindingConditionArgs']]] = None,
                  job_id: Optional[pulumi.Input[str]] = None,
@@ -125,12 +125,12 @@ class JobIAMBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional['outputs.JobIAMBindingCondition']:
+    def condition(self) -> pulumi.Output[Optional['outputs.JobIAMBindingCondition']]:
         return pulumi.get(self, "condition")
 
     @property
     @pulumi.getter
-    def etag(self) -> str:
+    def etag(self) -> pulumi.Output[str]:
         """
         (Computed) The etag of the jobs's IAM policy.
         """
@@ -138,17 +138,17 @@ class JobIAMBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="jobId")
-    def job_id(self) -> str:
+    def job_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "job_id")
 
     @property
     @pulumi.getter
-    def members(self) -> List[str]:
+    def members(self) -> pulumi.Output[List[str]]:
         return pulumi.get(self, "members")
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The project in which the job belongs. If it
         is not provided, the provider will use a default.
@@ -157,7 +157,7 @@ class JobIAMBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which the job belongs. If it
         is not provided, the provider will use a default.
@@ -166,7 +166,7 @@ class JobIAMBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def role(self) -> str:
+    def role(self) -> pulumi.Output[str]:
         """
         The role that should be applied. Only one
         `dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format

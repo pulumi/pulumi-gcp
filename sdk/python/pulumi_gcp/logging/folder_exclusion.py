@@ -13,7 +13,7 @@ __all__ = ['FolderExclusion']
 
 class FolderExclusion(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
@@ -114,7 +114,7 @@ class FolderExclusion(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A human-readable description.
         """
@@ -122,7 +122,7 @@ class FolderExclusion(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def disabled(self) -> Optional[bool]:
+    def disabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether this exclusion rule should be disabled or not. This defaults to
         false.
@@ -131,7 +131,7 @@ class FolderExclusion(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def filter(self) -> str:
+    def filter(self) -> pulumi.Output[str]:
         """
         The filter to apply when excluding logs. Only log entries that match the filter are excluded.
         See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced-filters) for information on how to
@@ -141,7 +141,7 @@ class FolderExclusion(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def folder(self) -> str:
+    def folder(self) -> pulumi.Output[str]:
         """
         The folder to be exported to the sink. Note that either [FOLDER_ID] or "folders/[FOLDER_ID]" is
         accepted.
@@ -150,7 +150,7 @@ class FolderExclusion(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the logging exclusion.
         """

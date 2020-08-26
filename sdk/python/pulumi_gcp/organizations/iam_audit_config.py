@@ -15,7 +15,7 @@ __all__ = ['IamAuditConfig']
 
 class IamAuditConfig(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  audit_log_configs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['IamAuditConfigAuditLogConfigArgs']]]]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
@@ -97,7 +97,7 @@ class IamAuditConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="auditLogConfigs")
-    def audit_log_configs(self) -> List['outputs.IamAuditConfigAuditLogConfig']:
+    def audit_log_configs(self) -> pulumi.Output[List['outputs.IamAuditConfigAuditLogConfig']]:
         """
         The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
         """
@@ -105,7 +105,7 @@ class IamAuditConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def etag(self) -> str:
+    def etag(self) -> pulumi.Output[str]:
         """
         The etag of iam policy
         """
@@ -113,7 +113,7 @@ class IamAuditConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> str:
+    def org_id(self) -> pulumi.Output[str]:
         """
         The numeric ID of the organization in which you want to manage the audit logging config.
         """
@@ -121,7 +121,7 @@ class IamAuditConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def service(self) -> str:
+    def service(self) -> pulumi.Output[str]:
         """
         Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_organization\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
         """

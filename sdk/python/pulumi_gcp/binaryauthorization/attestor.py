@@ -15,7 +15,7 @@ __all__ = ['Attestor']
 
 class Attestor(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  attestation_authority_note: Optional[pulumi.Input[pulumi.InputType['AttestorAttestationAuthorityNoteArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -109,7 +109,7 @@ class Attestor(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="attestationAuthorityNote")
-    def attestation_authority_note(self) -> 'outputs.AttestorAttestationAuthorityNote':
+    def attestation_authority_note(self) -> pulumi.Output['outputs.AttestorAttestationAuthorityNote']:
         """
         A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
         Structure is documented below.
@@ -118,7 +118,7 @@ class Attestor(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A descriptive comment. This field may be updated. The field may be
         displayed in chooser dialogs.
@@ -127,7 +127,7 @@ class Attestor(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The resource name.
         """
@@ -135,7 +135,7 @@ class Attestor(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.

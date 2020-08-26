@@ -13,7 +13,7 @@ __all__ = ['Instance']
 
 class Instance(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alternative_location_id: Optional[pulumi.Input[str]] = None,
                  authorized_network: Optional[pulumi.Input[str]] = None,
@@ -237,7 +237,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="alternativeLocationId")
-    def alternative_location_id(self) -> str:
+    def alternative_location_id(self) -> pulumi.Output[str]:
         """
         Only applicable to STANDARD_HA tier which protects the instance
         against zonal failures by provisioning it across two zones.
@@ -248,7 +248,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="authorizedNetwork")
-    def authorized_network(self) -> str:
+    def authorized_network(self) -> pulumi.Output[str]:
         """
         The full name of the Google Compute Engine network to which the
         instance is connected. If left unspecified, the default network
@@ -258,7 +258,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="connectMode")
-    def connect_mode(self) -> Optional[str]:
+    def connect_mode(self) -> pulumi.Output[Optional[str]]:
         """
         The connection mode of the Redis instance.
         Default value is `DIRECT_PEERING`.
@@ -268,7 +268,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> str:
+    def create_time(self) -> pulumi.Output[str]:
         """
         The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
         """
@@ -276,7 +276,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="currentLocationId")
-    def current_location_id(self) -> str:
+    def current_location_id(self) -> pulumi.Output[str]:
         """
         The current zone where the Redis endpoint is placed. For Basic Tier instances, this will always be the same as the
         [locationId] provided by the user at creation time. For Standard Tier instances, this can be either [locationId] or
@@ -286,7 +286,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[str]:
+    def display_name(self) -> pulumi.Output[Optional[str]]:
         """
         An arbitrary and optional user-provided name for the instance.
         """
@@ -294,7 +294,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def host(self) -> str:
+    def host(self) -> pulumi.Output[str]:
         """
         Hostname or IP address of the exposed Redis endpoint used by clients to connect to the service.
         """
@@ -302,7 +302,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, str]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Resource labels to represent user provided metadata.
         """
@@ -310,7 +310,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="locationId")
-    def location_id(self) -> str:
+    def location_id(self) -> pulumi.Output[str]:
         """
         The zone where the instance will be provisioned. If not provided,
         the service will choose a zone for the instance. For STANDARD_HA tier,
@@ -322,7 +322,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="memorySizeGb")
-    def memory_size_gb(self) -> float:
+    def memory_size_gb(self) -> pulumi.Output[float]:
         """
         Redis memory size in GiB.
         """
@@ -330,7 +330,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The ID of the instance or a fully qualified identifier for the instance.
         """
@@ -338,7 +338,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="persistenceIamIdentity")
-    def persistence_iam_identity(self) -> str:
+    def persistence_iam_identity(self) -> pulumi.Output[str]:
         """
         Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
         "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export
@@ -348,7 +348,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> float:
+    def port(self) -> pulumi.Output[float]:
         """
         The port number of the exposed Redis endpoint.
         """
@@ -356,7 +356,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -365,7 +365,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="redisConfigs")
-    def redis_configs(self) -> Optional[Mapping[str, str]]:
+    def redis_configs(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Redis configuration parameters, according to http://redis.io/topics/config.
         Please check Memorystore documentation for the list of supported parameters:
@@ -375,7 +375,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="redisVersion")
-    def redis_version(self) -> str:
+    def redis_version(self) -> pulumi.Output[str]:
         """
         The version of Redis software. If not provided, latest supported
         version will be used. Currently, the supported values are:
@@ -387,7 +387,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The name of the Redis region of the instance.
         """
@@ -395,7 +395,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="reservedIpRange")
-    def reserved_ip_range(self) -> str:
+    def reserved_ip_range(self) -> pulumi.Output[str]:
         """
         The CIDR range of internal addresses that are reserved for this
         instance. If not provided, the service will choose an unused /29
@@ -407,7 +407,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tier(self) -> Optional[str]:
+    def tier(self) -> pulumi.Output[Optional[str]]:
         """
         The service tier of the instance. Must be one of these values:
         - BASIC: standalone instance

@@ -15,7 +15,7 @@ __all__ = ['ServiceIamMember']
 
 class ServiceIamMember(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  condition: Optional[pulumi.Input[pulumi.InputType['ServiceIamMemberConditionArgs']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
@@ -109,12 +109,12 @@ class ServiceIamMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional['outputs.ServiceIamMemberCondition']:
+    def condition(self) -> pulumi.Output[Optional['outputs.ServiceIamMemberCondition']]:
         return pulumi.get(self, "condition")
 
     @property
     @pulumi.getter
-    def etag(self) -> str:
+    def etag(self) -> pulumi.Output[str]:
         """
         (Computed) The etag of the IAM policy.
         """
@@ -122,12 +122,12 @@ class ServiceIamMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def member(self) -> str:
+    def member(self) -> pulumi.Output[str]:
         return pulumi.get(self, "member")
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Used to find the parent resource to bind the IAM policy to
         """
@@ -135,7 +135,7 @@ class ServiceIamMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def role(self) -> str:
+    def role(self) -> pulumi.Output[str]:
         """
         The role that should be applied. Only one
         `servicedirectory.ServiceIamBinding` can be used per role. Note that custom roles must be of the format

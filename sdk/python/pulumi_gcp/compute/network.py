@@ -13,7 +13,7 @@ __all__ = ['Network']
 
 class Network(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_create_subnetworks: Optional[pulumi.Input[bool]] = None,
                  delete_default_routes_on_create: Optional[pulumi.Input[bool]] = None,
@@ -155,7 +155,7 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoCreateSubnetworks")
-    def auto_create_subnetworks(self) -> Optional[bool]:
+    def auto_create_subnetworks(self) -> pulumi.Output[Optional[bool]]:
         """
         When set to `true`, the network is created in "auto subnet mode" and
         it will create a subnet for each region automatically across the
@@ -167,7 +167,7 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deleteDefaultRoutesOnCreate")
-    def delete_default_routes_on_create(self) -> Optional[bool]:
+    def delete_default_routes_on_create(self) -> pulumi.Output[Optional[bool]]:
         """
         If set to `true`, default routes (`0.0.0.0/0`) will be deleted
         immediately after network creation. Defaults to `false`.
@@ -176,7 +176,7 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         An optional description of this resource. The resource must be
         recreated to modify this field.
@@ -185,7 +185,7 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="gatewayIpv4")
-    def gateway_ipv4(self) -> str:
+    def gateway_ipv4(self) -> pulumi.Output[str]:
         """
         The gateway address for default routing out of the network. This value is selected by GCP.
         """
@@ -193,7 +193,7 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the resource. Provided by the client when the resource is
         created. The name must be 1-63 characters long, and comply with
@@ -207,7 +207,7 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -216,7 +216,7 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="routingMode")
-    def routing_mode(self) -> str:
+    def routing_mode(self) -> pulumi.Output[str]:
         """
         The network-wide routing mode to use. If set to `REGIONAL`, this
         network's cloud routers will only advertise routes with subnetworks
@@ -229,7 +229,7 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         """
         The URI of the created resource.
         """

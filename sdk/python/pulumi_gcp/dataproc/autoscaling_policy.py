@@ -15,7 +15,7 @@ __all__ = ['AutoscalingPolicy']
 
 class AutoscalingPolicy(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  basic_algorithm: Optional[pulumi.Input[pulumi.InputType['AutoscalingPolicyBasicAlgorithmArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -127,7 +127,7 @@ class AutoscalingPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="basicAlgorithm")
-    def basic_algorithm(self) -> Optional['outputs.AutoscalingPolicyBasicAlgorithm']:
+    def basic_algorithm(self) -> pulumi.Output[Optional['outputs.AutoscalingPolicyBasicAlgorithm']]:
         """
         Basic algorithm for autoscaling.
         Structure is documented below.
@@ -136,7 +136,7 @@ class AutoscalingPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def location(self) -> Optional[str]:
+    def location(self) -> pulumi.Output[Optional[str]]:
         """
         The  location where the autoscaling poicy should reside.
         The default value is `global`.
@@ -145,7 +145,7 @@ class AutoscalingPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The "resource name" of the autoscaling policy.
         """
@@ -153,7 +153,7 @@ class AutoscalingPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="policyId")
-    def policy_id(self) -> str:
+    def policy_id(self) -> pulumi.Output[str]:
         """
         The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
         and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
@@ -163,7 +163,7 @@ class AutoscalingPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -172,7 +172,7 @@ class AutoscalingPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="secondaryWorkerConfig")
-    def secondary_worker_config(self) -> Optional['outputs.AutoscalingPolicySecondaryWorkerConfig']:
+    def secondary_worker_config(self) -> pulumi.Output[Optional['outputs.AutoscalingPolicySecondaryWorkerConfig']]:
         """
         Describes how the autoscaler will operate for secondary workers.
         Structure is documented below.
@@ -181,7 +181,7 @@ class AutoscalingPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="workerConfig")
-    def worker_config(self) -> Optional['outputs.AutoscalingPolicyWorkerConfig']:
+    def worker_config(self) -> pulumi.Output[Optional['outputs.AutoscalingPolicyWorkerConfig']]:
         """
         Describes how the autoscaler will operate for primary workers.
         Structure is documented below.

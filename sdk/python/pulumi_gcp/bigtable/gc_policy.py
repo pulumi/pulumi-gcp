@@ -15,7 +15,7 @@ __all__ = ['GCPolicy']
 
 class GCPolicy(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  column_family: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
@@ -119,7 +119,7 @@ class GCPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="columnFamily")
-    def column_family(self) -> str:
+    def column_family(self) -> pulumi.Output[str]:
         """
         The name of the column family.
         """
@@ -127,7 +127,7 @@ class GCPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> str:
+    def instance_name(self) -> pulumi.Output[str]:
         """
         The name of the Bigtable instance.
         """
@@ -135,7 +135,7 @@ class GCPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxAges")
-    def max_ages(self) -> Optional[List['outputs.GCPolicyMaxAge']]:
+    def max_ages(self) -> pulumi.Output[Optional[List['outputs.GCPolicyMaxAge']]]:
         """
         GC policy that applies to all cells older than the given age.
         """
@@ -143,7 +143,7 @@ class GCPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxVersions")
-    def max_versions(self) -> Optional[List['outputs.GCPolicyMaxVersion']]:
+    def max_versions(self) -> pulumi.Output[Optional[List['outputs.GCPolicyMaxVersion']]]:
         """
         GC policy that applies to all versions of a cell except for the most recent.
         """
@@ -151,7 +151,7 @@ class GCPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def mode(self) -> Optional[str]:
+    def mode(self) -> pulumi.Output[Optional[str]]:
         """
         If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
         """
@@ -159,7 +159,7 @@ class GCPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         """
@@ -167,7 +167,7 @@ class GCPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def table(self) -> str:
+    def table(self) -> pulumi.Output[str]:
         """
         The name of the table.
         """

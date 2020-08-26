@@ -15,7 +15,7 @@ __all__ = ['ConnectivityTest']
 
 class ConnectivityTest(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input[pulumi.InputType['ConnectivityTestDestinationArgs']]] = None,
@@ -203,7 +203,7 @@ class ConnectivityTest(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The user-supplied description of the Connectivity Test.
         Maximum of 512 characters.
@@ -212,7 +212,7 @@ class ConnectivityTest(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def destination(self) -> 'outputs.ConnectivityTestDestination':
+    def destination(self) -> pulumi.Output['outputs.ConnectivityTestDestination']:
         """
         Required. Destination specification of the Connectivity Test.
         You can use a combination of destination IP address, Compute
@@ -234,7 +234,7 @@ class ConnectivityTest(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, str]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Resource labels to represent user-provided metadata.
         """
@@ -242,7 +242,7 @@ class ConnectivityTest(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Unique name for the connectivity test.
         """
@@ -250,7 +250,7 @@ class ConnectivityTest(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -259,7 +259,7 @@ class ConnectivityTest(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def protocol(self) -> Optional[str]:
+    def protocol(self) -> pulumi.Output[Optional[str]]:
         """
         IP Protocol of the test. When not provided, "TCP" is assumed.
         """
@@ -267,7 +267,7 @@ class ConnectivityTest(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="relatedProjects")
-    def related_projects(self) -> Optional[List[str]]:
+    def related_projects(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Other projects that may be relevant for reachability analysis.
         This is applicable to scenarios where a test can cross project
@@ -277,7 +277,7 @@ class ConnectivityTest(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def source(self) -> 'outputs.ConnectivityTestSource':
+    def source(self) -> pulumi.Output['outputs.ConnectivityTestSource']:
         """
         Required. Source specification of the Connectivity Test.
         You can use a combination of source IP address, virtual machine

@@ -13,7 +13,7 @@ __all__ = ['Endpoint']
 
 class Endpoint(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address: Optional[pulumi.Input[str]] = None,
                  endpoint_id: Optional[pulumi.Input[str]] = None,
@@ -123,7 +123,7 @@ class Endpoint(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def address(self) -> Optional[str]:
+    def address(self) -> pulumi.Output[Optional[str]]:
         """
         IPv4 or IPv6 address of the endpoint.
         """
@@ -131,7 +131,7 @@ class Endpoint(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="endpointId")
-    def endpoint_id(self) -> str:
+    def endpoint_id(self) -> pulumi.Output[str]:
         """
         The Resource ID must be 1-63 characters long, including digits,
         lowercase letters or the hyphen character.
@@ -140,7 +140,7 @@ class Endpoint(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[Mapping[str, str]]:
+    def metadata(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Metadata for the endpoint. This data can be consumed
         by service clients. The entire metadata dictionary may contain
@@ -151,7 +151,7 @@ class Endpoint(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The resource name for the endpoint in the format 'projects/*/locations/*/namespaces/*/services/*/endpoints/*'.
         """
@@ -159,7 +159,7 @@ class Endpoint(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[float]:
+    def port(self) -> pulumi.Output[Optional[float]]:
         """
         Port that the endpoint is running on, must be in the
         range of [0, 65535]. If unspecified, the default is 0.
@@ -168,7 +168,7 @@ class Endpoint(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def service(self) -> str:
+    def service(self) -> pulumi.Output[str]:
         """
         The resource name of the service that this endpoint provides.
         """

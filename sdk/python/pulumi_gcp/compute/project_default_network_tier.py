@@ -13,7 +13,7 @@ __all__ = ['ProjectDefaultNetworkTier']
 
 class ProjectDefaultNetworkTier(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  network_tier: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -90,7 +90,7 @@ class ProjectDefaultNetworkTier(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkTier")
-    def network_tier(self) -> str:
+    def network_tier(self) -> pulumi.Output[str]:
         """
         The default network tier to be configured for the project.
         This field can take the following values: `PREMIUM` or `STANDARD`.
@@ -99,7 +99,7 @@ class ProjectDefaultNetworkTier(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs. If it
         is not provided, the provider project is used.

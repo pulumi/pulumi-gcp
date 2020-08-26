@@ -13,7 +13,7 @@ __all__ = ['SharedVPCHostProject']
 
 class SharedVPCHostProject(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -81,7 +81,7 @@ class SharedVPCHostProject(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project that will serve as a Shared VPC host project
         """

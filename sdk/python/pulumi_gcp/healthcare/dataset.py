@@ -13,7 +13,7 @@ __all__ = ['Dataset']
 
 class Dataset(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -111,7 +111,7 @@ class Dataset(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def location(self) -> str:
+    def location(self) -> pulumi.Output[str]:
         """
         The location for the Dataset.
         """
@@ -119,7 +119,7 @@ class Dataset(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The resource name for the Dataset.
         """
@@ -127,7 +127,7 @@ class Dataset(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -136,7 +136,7 @@ class Dataset(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         """
         The fully qualified name of this dataset
         """
@@ -144,7 +144,7 @@ class Dataset(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="timeZone")
-    def time_zone(self) -> str:
+    def time_zone(self) -> pulumi.Output[str]:
         """
         The default timezone used by this dataset. Must be a either a valid IANA time zone name such as
         "America/New_York" or empty, which defaults to UTC. This is used for parsing times in resources

@@ -13,7 +13,7 @@ __all__ = ['OrganizationSecurityPolicy']
 
 class OrganizationSecurityPolicy(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -112,7 +112,7 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A textual description for the organization security policy.
         """
@@ -120,7 +120,7 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> str:
+    def display_name(self) -> pulumi.Output[str]:
         """
         A textual name of the security policy.
         """
@@ -128,7 +128,7 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def fingerprint(self) -> str:
+    def fingerprint(self) -> pulumi.Output[str]:
         """
         Fingerprint of this resource. This field is used internally during updates of this resource.
         """
@@ -136,7 +136,7 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def parent(self) -> str:
+    def parent(self) -> pulumi.Output[str]:
         """
         The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
         Format: organizations/{organization_id} or folders/{folder_id}
@@ -145,7 +145,7 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="policyId")
-    def policy_id(self) -> str:
+    def policy_id(self) -> pulumi.Output[str]:
         """
         The unique identifier for the resource. This identifier is defined by the server.
         """
@@ -153,7 +153,7 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[str]:
+    def type(self) -> pulumi.Output[Optional[str]]:
         """
         The type indicates the intended use of the security policy.
         For organization security policies, the only supported type

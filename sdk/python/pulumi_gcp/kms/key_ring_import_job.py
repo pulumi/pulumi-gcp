@@ -15,7 +15,7 @@ __all__ = ['KeyRingImportJob']
 
 class KeyRingImportJob(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  import_job_id: Optional[pulumi.Input[str]] = None,
                  import_method: Optional[pulumi.Input[str]] = None,
@@ -130,7 +130,7 @@ class KeyRingImportJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def attestation(self) -> 'outputs.KeyRingImportJobAttestation':
+    def attestation(self) -> pulumi.Output['outputs.KeyRingImportJobAttestation']:
         """
         Statement that was generated and signed by the key creator (for example, an HSM) at key creation time. Use this
         statement to verify attributes of the key as stored on the HSM, independently of Google. Only present if the chosen
@@ -140,7 +140,7 @@ class KeyRingImportJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="expireTime")
-    def expire_time(self) -> str:
+    def expire_time(self) -> pulumi.Output[str]:
         """
         The time at which this resource is scheduled for expiration and can no longer be used. This is in RFC3339 text format.
         """
@@ -148,7 +148,7 @@ class KeyRingImportJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="importJobId")
-    def import_job_id(self) -> str:
+    def import_job_id(self) -> pulumi.Output[str]:
         """
         It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
         """
@@ -156,7 +156,7 @@ class KeyRingImportJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="importMethod")
-    def import_method(self) -> str:
+    def import_method(self) -> pulumi.Output[str]:
         """
         The wrapping method to be used for incoming key material.
         Possible values are `RSA_OAEP_3072_SHA1_AES_256` and `RSA_OAEP_4096_SHA1_AES_256`.
@@ -165,7 +165,7 @@ class KeyRingImportJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="keyRing")
-    def key_ring(self) -> str:
+    def key_ring(self) -> pulumi.Output[str]:
         """
         The KeyRing that this import job belongs to.
         Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
@@ -174,7 +174,7 @@ class KeyRingImportJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The resource name for this ImportJob in the format projects/*/locations/*/keyRings/*/importJobs/*.
         """
@@ -182,7 +182,7 @@ class KeyRingImportJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="protectionLevel")
-    def protection_level(self) -> str:
+    def protection_level(self) -> pulumi.Output[str]:
         """
         The protection level of the ImportJob. This must match the protectionLevel of the
         versionTemplate on the CryptoKey you attempt to import into.
@@ -192,7 +192,7 @@ class KeyRingImportJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="publicKey")
-    def public_key(self) -> 'outputs.KeyRingImportJobPublicKey':
+    def public_key(self) -> pulumi.Output['outputs.KeyRingImportJobPublicKey']:
         """
         The public key with which to wrap key material prior to import. Only returned if state is 'ACTIVE'.
         """
@@ -200,7 +200,7 @@ class KeyRingImportJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def state(self) -> str:
+    def state(self) -> pulumi.Output[str]:
         """
         The current state of the ImportJob, indicating if it can be used.
         """

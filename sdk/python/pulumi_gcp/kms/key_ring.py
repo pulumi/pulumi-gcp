@@ -13,7 +13,7 @@ __all__ = ['KeyRing']
 
 class KeyRing(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -106,7 +106,7 @@ class KeyRing(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def location(self) -> str:
+    def location(self) -> pulumi.Output[str]:
         """
         The location for the KeyRing.
         A full list of valid locations can be found by running `gcloud kms locations list`.
@@ -115,7 +115,7 @@ class KeyRing(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The resource name for the KeyRing.
         """
@@ -123,7 +123,7 @@ class KeyRing(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -132,7 +132,7 @@ class KeyRing(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         return pulumi.get(self, "self_link")
 
     def translate_output_property(self, prop):

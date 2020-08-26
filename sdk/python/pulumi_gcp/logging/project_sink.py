@@ -15,7 +15,7 @@ __all__ = ['ProjectSink']
 
 class ProjectSink(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bigquery_options: Optional[pulumi.Input[pulumi.InputType['ProjectSinkBigqueryOptionsArgs']]] = None,
                  destination: Optional[pulumi.Input[str]] = None,
@@ -142,7 +142,7 @@ class ProjectSink(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="bigqueryOptions")
-    def bigquery_options(self) -> 'outputs.ProjectSinkBigqueryOptions':
+    def bigquery_options(self) -> pulumi.Output['outputs.ProjectSinkBigqueryOptions']:
         """
         Options that affect sinks exporting data to BigQuery. Structure documented below.
         """
@@ -150,7 +150,7 @@ class ProjectSink(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def destination(self) -> str:
+    def destination(self) -> pulumi.Output[str]:
         """
         The destination of the sink (or, in other words, where logs are written to). Can be a
         Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
@@ -163,7 +163,7 @@ class ProjectSink(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def filter(self) -> Optional[str]:
+    def filter(self) -> pulumi.Output[Optional[str]]:
         """
         The filter to apply when exporting logs. Only log entries that match the filter are exported.
         See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
@@ -173,7 +173,7 @@ class ProjectSink(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the logging sink.
         """
@@ -181,7 +181,7 @@ class ProjectSink(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project to create the sink in. If omitted, the project associated with the provider is
         used.
@@ -190,7 +190,7 @@ class ProjectSink(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="uniqueWriterIdentity")
-    def unique_writer_identity(self) -> Optional[bool]:
+    def unique_writer_identity(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether or not to create a unique identity associated with this sink. If `false`
         (the default), then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
@@ -201,7 +201,7 @@ class ProjectSink(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="writerIdentity")
-    def writer_identity(self) -> str:
+    def writer_identity(self) -> pulumi.Output[str]:
         """
         The identity associated with this sink. This identity must be granted write access to the
         configured `destination`.

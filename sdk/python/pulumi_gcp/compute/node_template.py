@@ -15,7 +15,7 @@ __all__ = ['NodeTemplate']
 
 class NodeTemplate(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cpu_overcommit_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -161,7 +161,7 @@ class NodeTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cpuOvercommitType")
-    def cpu_overcommit_type(self) -> Optional[str]:
+    def cpu_overcommit_type(self) -> pulumi.Output[Optional[str]]:
         """
         CPU overcommit. Default value: "NONE" Possible values: ["ENABLED", "NONE"]
         """
@@ -169,7 +169,7 @@ class NodeTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> str:
+    def creation_timestamp(self) -> pulumi.Output[str]:
         """
         Creation timestamp in RFC3339 text format.
         """
@@ -177,7 +177,7 @@ class NodeTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         An optional textual description of the resource.
         """
@@ -185,7 +185,7 @@ class NodeTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the resource.
         """
@@ -193,7 +193,7 @@ class NodeTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nodeAffinityLabels")
-    def node_affinity_labels(self) -> Optional[Mapping[str, str]]:
+    def node_affinity_labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Labels to use for node affinity, which will be used in
         instance scheduling.
@@ -202,7 +202,7 @@ class NodeTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nodeType")
-    def node_type(self) -> Optional[str]:
+    def node_type(self) -> pulumi.Output[Optional[str]]:
         """
         Node type to use for nodes group that are created from this template.
         Only one of nodeTypeFlexibility and nodeType can be specified.
@@ -211,7 +211,7 @@ class NodeTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nodeTypeFlexibility")
-    def node_type_flexibility(self) -> Optional['outputs.NodeTemplateNodeTypeFlexibility']:
+    def node_type_flexibility(self) -> pulumi.Output[Optional['outputs.NodeTemplateNodeTypeFlexibility']]:
         """
         Flexible properties for the desired node type. Node groups that
         use this node template will create nodes of a type that matches
@@ -223,7 +223,7 @@ class NodeTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -232,7 +232,7 @@ class NodeTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         Region where nodes using the node template will be created.
         If it is not provided, the provider region is used.
@@ -241,7 +241,7 @@ class NodeTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         """
         The URI of the created resource.
         """
@@ -249,7 +249,7 @@ class NodeTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serverBinding")
-    def server_binding(self) -> 'outputs.NodeTemplateServerBinding':
+    def server_binding(self) -> pulumi.Output['outputs.NodeTemplateServerBinding']:
         """
         The server binding policy for nodes using this template. Determines
         where the nodes should restart following a maintenance event.

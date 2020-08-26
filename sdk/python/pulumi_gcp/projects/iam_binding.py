@@ -15,7 +15,7 @@ __all__ = ['IAMBinding']
 
 class IAMBinding(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  condition: Optional[pulumi.Input[pulumi.InputType['IAMBindingConditionArgs']]] = None,
                  members: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -118,7 +118,7 @@ class IAMBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional['outputs.IAMBindingCondition']:
+    def condition(self) -> pulumi.Output[Optional['outputs.IAMBindingCondition']]:
         """
         An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
@@ -127,7 +127,7 @@ class IAMBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def etag(self) -> str:
+    def etag(self) -> pulumi.Output[str]:
         """
         (Computed) The etag of the project's IAM policy.
         """
@@ -135,12 +135,12 @@ class IAMBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def members(self) -> List[str]:
+    def members(self) -> pulumi.Output[List[str]]:
         return pulumi.get(self, "members")
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
         Required for `projects.IAMPolicy` - you must explicitly set the project, and it
@@ -150,7 +150,7 @@ class IAMBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def role(self) -> str:
+    def role(self) -> pulumi.Output[str]:
         """
         The role that should be applied. Only one
         `projects.IAMBinding` can be used per role. Note that custom roles must be of the format

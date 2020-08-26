@@ -13,7 +13,7 @@ __all__ = ['Instance']
 
 class Instance(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -140,7 +140,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def config(self) -> str:
+    def config(self) -> pulumi.Output[str]:
         """
         The name of the instance's configuration (similar but not
         quite the same as a region) which defines defines the geographic placement and
@@ -153,7 +153,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> str:
+    def display_name(self) -> pulumi.Output[str]:
         """
         The descriptive name for this instance as it appears in UIs. Must be
         unique per project and between 4 and 30 characters in length.
@@ -162,7 +162,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, str]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         An object containing a list of "key": value pairs.
         Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -171,7 +171,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         A unique identifier for the instance, which cannot be changed after
         the instance is created. The name must be between 6 and 30 characters
@@ -181,7 +181,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="numNodes")
-    def num_nodes(self) -> Optional[float]:
+    def num_nodes(self) -> pulumi.Output[Optional[float]]:
         """
         The number of nodes allocated to this instance.
         """
@@ -189,7 +189,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -198,7 +198,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def state(self) -> str:
+    def state(self) -> pulumi.Output[str]:
         """
         Instance status: 'CREATING' or 'READY'.
         """

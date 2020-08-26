@@ -15,7 +15,7 @@ __all__ = ['ServicePerimeters']
 
 class ServicePerimeters(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  service_perimeters: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ServicePerimetersServicePerimeterArgs']]]]] = None,
@@ -97,7 +97,7 @@ class ServicePerimeters(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def parent(self) -> str:
+    def parent(self) -> pulumi.Output[str]:
         """
         The AccessPolicy this ServicePerimeter lives in.
         Format: accessPolicies/{policy_id}
@@ -106,7 +106,7 @@ class ServicePerimeters(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="servicePerimeters")
-    def service_perimeters(self) -> Optional[List['outputs.ServicePerimetersServicePerimeter']]:
+    def service_perimeters(self) -> pulumi.Output[Optional[List['outputs.ServicePerimetersServicePerimeter']]]:
         """
         The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy.
         Structure is documented below.

@@ -13,7 +13,7 @@ __all__ = ['Database']
 
 class Database(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  charset: Optional[pulumi.Input[str]] = None,
                  collation: Optional[pulumi.Input[str]] = None,
@@ -128,7 +128,7 @@ class Database(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def charset(self) -> str:
+    def charset(self) -> pulumi.Output[str]:
         """
         The charset value. See MySQL's
         [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
@@ -140,7 +140,7 @@ class Database(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def collation(self) -> str:
+    def collation(self) -> pulumi.Output[str]:
         """
         The collation value. See MySQL's
         [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
@@ -152,7 +152,7 @@ class Database(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def instance(self) -> str:
+    def instance(self) -> pulumi.Output[str]:
         """
         The name of the Cloud SQL instance. This does not include the project
         ID.
@@ -161,7 +161,7 @@ class Database(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the database in the Cloud SQL instance.
         This does not include the project ID or instance name.
@@ -170,7 +170,7 @@ class Database(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -179,7 +179,7 @@ class Database(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         """
         The URI of the created resource.
         """

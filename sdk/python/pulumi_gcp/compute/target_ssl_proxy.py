@@ -13,7 +13,7 @@ __all__ = ['TargetSSLProxy']
 
 class TargetSSLProxy(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backend_service: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -163,7 +163,7 @@ class TargetSSLProxy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="backendService")
-    def backend_service(self) -> str:
+    def backend_service(self) -> pulumi.Output[str]:
         """
         A reference to the BackendService resource.
         """
@@ -171,7 +171,7 @@ class TargetSSLProxy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> str:
+    def creation_timestamp(self) -> pulumi.Output[str]:
         """
         Creation timestamp in RFC3339 text format.
         """
@@ -179,7 +179,7 @@ class TargetSSLProxy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         An optional description of this resource.
         """
@@ -187,7 +187,7 @@ class TargetSSLProxy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the resource. Provided by the client when the resource is
         created. The name must be 1-63 characters long, and comply with
@@ -201,7 +201,7 @@ class TargetSSLProxy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -210,7 +210,7 @@ class TargetSSLProxy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="proxyHeader")
-    def proxy_header(self) -> Optional[str]:
+    def proxy_header(self) -> pulumi.Output[Optional[str]]:
         """
         Specifies the type of proxy header to append before sending data to
         the backend.
@@ -221,7 +221,7 @@ class TargetSSLProxy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="proxyId")
-    def proxy_id(self) -> float:
+    def proxy_id(self) -> pulumi.Output[float]:
         """
         The unique identifier for the resource.
         """
@@ -229,7 +229,7 @@ class TargetSSLProxy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         """
         The URI of the created resource.
         """
@@ -237,7 +237,7 @@ class TargetSSLProxy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sslCertificates")
-    def ssl_certificates(self) -> str:
+    def ssl_certificates(self) -> pulumi.Output[str]:
         """
         A list of SslCertificate resources that are used to authenticate
         connections between users and the load balancer. Currently, exactly
@@ -247,7 +247,7 @@ class TargetSSLProxy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sslPolicy")
-    def ssl_policy(self) -> Optional[str]:
+    def ssl_policy(self) -> pulumi.Output[Optional[str]]:
         """
         A reference to the SslPolicy resource that will be associated with
         the TargetSslProxy resource. If not set, the TargetSslProxy

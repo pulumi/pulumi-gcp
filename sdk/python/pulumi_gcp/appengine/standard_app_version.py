@@ -15,7 +15,7 @@ __all__ = ['StandardAppVersion']
 
 class StandardAppVersion(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  automatic_scaling: Optional[pulumi.Input[pulumi.InputType['StandardAppVersionAutomaticScalingArgs']]] = None,
                  basic_scaling: Optional[pulumi.Input[pulumi.InputType['StandardAppVersionBasicScalingArgs']]] = None,
@@ -226,7 +226,7 @@ class StandardAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="automaticScaling")
-    def automatic_scaling(self) -> Optional['outputs.StandardAppVersionAutomaticScaling']:
+    def automatic_scaling(self) -> pulumi.Output[Optional['outputs.StandardAppVersionAutomaticScaling']]:
         """
         Automatic scaling is based on request rate, response latencies, and other application metrics.
         Structure is documented below.
@@ -235,7 +235,7 @@ class StandardAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="basicScaling")
-    def basic_scaling(self) -> Optional['outputs.StandardAppVersionBasicScaling']:
+    def basic_scaling(self) -> pulumi.Output[Optional['outputs.StandardAppVersionBasicScaling']]:
         """
         Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
         Structure is documented below.
@@ -244,7 +244,7 @@ class StandardAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deleteServiceOnDestroy")
-    def delete_service_on_destroy(self) -> Optional[bool]:
+    def delete_service_on_destroy(self) -> pulumi.Output[Optional[bool]]:
         """
         If set to `true`, the service will be deleted if it is the last version.
         """
@@ -252,7 +252,7 @@ class StandardAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def deployment(self) -> 'outputs.StandardAppVersionDeployment':
+    def deployment(self) -> pulumi.Output['outputs.StandardAppVersionDeployment']:
         """
         Code and application artifacts that make up this version.
         Structure is documented below.
@@ -261,7 +261,7 @@ class StandardAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def entrypoint(self) -> Optional['outputs.StandardAppVersionEntrypoint']:
+    def entrypoint(self) -> pulumi.Output[Optional['outputs.StandardAppVersionEntrypoint']]:
         """
         The entrypoint for the application.
         Structure is documented below.
@@ -270,7 +270,7 @@ class StandardAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="envVariables")
-    def env_variables(self) -> Optional[Mapping[str, str]]:
+    def env_variables(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Environment variables available to the application.
         """
@@ -278,7 +278,7 @@ class StandardAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def handlers(self) -> List['outputs.StandardAppVersionHandler']:
+    def handlers(self) -> pulumi.Output[List['outputs.StandardAppVersionHandler']]:
         """
         An ordered list of URL-matching patterns that should be applied to incoming requests.
         The first matching URL handles the request and other request handlers are not attempted.
@@ -288,7 +288,7 @@ class StandardAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="inboundServices")
-    def inbound_services(self) -> Optional[List[str]]:
+    def inbound_services(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A list of the types of messages that this application is able to receive.
         Each value may be one of `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, and `INBOUND_SERVICE_WARMUP`.
@@ -297,7 +297,7 @@ class StandardAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceClass")
-    def instance_class(self) -> str:
+    def instance_class(self) -> pulumi.Output[str]:
         """
         Instance class that is used to run this version. Valid values are
         AutomaticScaling: F1, F2, F4, F4_1G
@@ -308,7 +308,7 @@ class StandardAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def libraries(self) -> Optional[List['outputs.StandardAppVersionLibrary']]:
+    def libraries(self) -> pulumi.Output[Optional[List['outputs.StandardAppVersionLibrary']]]:
         """
         Configuration for third-party Python runtime libraries that are required by the application.
         Structure is documented below.
@@ -317,7 +317,7 @@ class StandardAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="manualScaling")
-    def manual_scaling(self) -> Optional['outputs.StandardAppVersionManualScaling']:
+    def manual_scaling(self) -> pulumi.Output[Optional['outputs.StandardAppVersionManualScaling']]:
         """
         A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
         Structure is documented below.
@@ -326,7 +326,7 @@ class StandardAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the library. Example "django".
         """
@@ -334,7 +334,7 @@ class StandardAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="noopOnDestroy")
-    def noop_on_destroy(self) -> Optional[bool]:
+    def noop_on_destroy(self) -> pulumi.Output[Optional[bool]]:
         """
         If set to `true`, the application version will not be deleted.
         """
@@ -342,7 +342,7 @@ class StandardAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -351,7 +351,7 @@ class StandardAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def runtime(self) -> str:
+    def runtime(self) -> pulumi.Output[str]:
         """
         Desired runtime. Example python27.
         """
@@ -359,7 +359,7 @@ class StandardAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="runtimeApiVersion")
-    def runtime_api_version(self) -> Optional[str]:
+    def runtime_api_version(self) -> pulumi.Output[Optional[str]]:
         """
         The version of the API in the given runtime environment.
         Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
@@ -368,7 +368,7 @@ class StandardAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def service(self) -> str:
+    def service(self) -> pulumi.Output[str]:
         """
         AppEngine service resource
         """
@@ -376,7 +376,7 @@ class StandardAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def threadsafe(self) -> Optional[bool]:
+    def threadsafe(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether multiple requests can be dispatched to this version at once.
         """
@@ -384,7 +384,7 @@ class StandardAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="versionId")
-    def version_id(self) -> Optional[str]:
+    def version_id(self) -> pulumi.Output[Optional[str]]:
         """
         Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
         """

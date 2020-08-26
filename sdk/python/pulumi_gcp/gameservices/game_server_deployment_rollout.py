@@ -15,7 +15,7 @@ __all__ = ['GameServerDeploymentRollout']
 
 class GameServerDeploymentRollout(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  default_game_server_config: Optional[pulumi.Input[str]] = None,
                  deployment_id: Optional[pulumi.Input[str]] = None,
@@ -125,7 +125,7 @@ class GameServerDeploymentRollout(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultGameServerConfig")
-    def default_game_server_config(self) -> str:
+    def default_game_server_config(self) -> pulumi.Output[str]:
         """
         This field points to the game server config that is
         applied by default to all realms and clusters. For example,
@@ -135,7 +135,7 @@ class GameServerDeploymentRollout(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deploymentId")
-    def deployment_id(self) -> str:
+    def deployment_id(self) -> pulumi.Output[str]:
         """
         The deployment to rollout the new config to. Only 1 rollout must be associated with each deployment.
         """
@@ -143,7 +143,7 @@ class GameServerDeploymentRollout(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="gameServerConfigOverrides")
-    def game_server_config_overrides(self) -> Optional[List['outputs.GameServerDeploymentRolloutGameServerConfigOverride']]:
+    def game_server_config_overrides(self) -> pulumi.Output[Optional[List['outputs.GameServerDeploymentRolloutGameServerConfigOverride']]]:
         """
         The game_server_config_overrides contains the per game server config
         overrides. The overrides are processed in the order they are listed. As
@@ -155,7 +155,7 @@ class GameServerDeploymentRollout(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The resource id of the game server deployment eg:
         'projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout'.
@@ -164,7 +164,7 @@ class GameServerDeploymentRollout(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.

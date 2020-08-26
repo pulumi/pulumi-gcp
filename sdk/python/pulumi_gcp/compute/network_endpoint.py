@@ -13,7 +13,7 @@ __all__ = ['NetworkEndpoint']
 
 class NetworkEndpoint(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  instance: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
@@ -133,7 +133,7 @@ class NetworkEndpoint(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def instance(self) -> str:
+    def instance(self) -> pulumi.Output[str]:
         """
         The name for a specific VM instance that the IP address belongs to.
         This is required for network endpoints of type GCE_VM_IP_PORT.
@@ -143,7 +143,7 @@ class NetworkEndpoint(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> str:
+    def ip_address(self) -> pulumi.Output[str]:
         """
         IPv4 address of network endpoint. The IP address must belong
         to a VM in GCE (either the primary IP or as part of an aliased IP
@@ -153,7 +153,7 @@ class NetworkEndpoint(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkEndpointGroup")
-    def network_endpoint_group(self) -> str:
+    def network_endpoint_group(self) -> pulumi.Output[str]:
         """
         The network endpoint group this endpoint is part of.
         """
@@ -161,7 +161,7 @@ class NetworkEndpoint(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> float:
+    def port(self) -> pulumi.Output[float]:
         """
         Port number of network endpoint.
         """
@@ -169,7 +169,7 @@ class NetworkEndpoint(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -178,7 +178,7 @@ class NetworkEndpoint(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def zone(self) -> str:
+    def zone(self) -> pulumi.Output[str]:
         """
         Zone where the containing network endpoint group is located.
         """

@@ -13,7 +13,7 @@ __all__ = ['Address']
 
 class Address(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address: Optional[pulumi.Input[str]] = None,
                  address_type: Optional[pulumi.Input[str]] = None,
@@ -206,7 +206,7 @@ class Address(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def address(self) -> str:
+    def address(self) -> pulumi.Output[str]:
         """
         The static external IP address represented by this resource. Only
         IPv4 is supported. An address may only be specified for INTERNAL
@@ -217,7 +217,7 @@ class Address(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="addressType")
-    def address_type(self) -> Optional[str]:
+    def address_type(self) -> pulumi.Output[Optional[str]]:
         """
         The type of address to reserve.
         Default value is `EXTERNAL`.
@@ -227,7 +227,7 @@ class Address(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> str:
+    def creation_timestamp(self) -> pulumi.Output[str]:
         """
         Creation timestamp in RFC3339 text format.
         """
@@ -235,7 +235,7 @@ class Address(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         An optional description of this resource.
         """
@@ -243,7 +243,7 @@ class Address(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="labelFingerprint")
-    def label_fingerprint(self) -> str:
+    def label_fingerprint(self) -> pulumi.Output[str]:
         """
         The fingerprint used for optimistic locking of this resource. Used internally during updates.
         """
@@ -251,7 +251,7 @@ class Address(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, str]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Labels to apply to this address.  A list of key->value pairs.
         """
@@ -259,7 +259,7 @@ class Address(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the resource. The name must be 1-63 characters long, and
         comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -272,7 +272,7 @@ class Address(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkTier")
-    def network_tier(self) -> str:
+    def network_tier(self) -> pulumi.Output[str]:
         """
         The networking tier used for configuring this address. If this field is not
         specified, it is assumed to be PREMIUM.
@@ -282,7 +282,7 @@ class Address(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -291,7 +291,7 @@ class Address(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def purpose(self) -> str:
+    def purpose(self) -> pulumi.Output[str]:
         """
         The purpose of this resource, which can be one of the following values:
         - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
@@ -303,7 +303,7 @@ class Address(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The Region in which the created address should reside.
         If it is not provided, the provider region is used.
@@ -312,7 +312,7 @@ class Address(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         """
         The URI of the created resource.
         """
@@ -320,7 +320,7 @@ class Address(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def subnetwork(self) -> str:
+    def subnetwork(self) -> pulumi.Output[str]:
         """
         The URL of the subnetwork in which to reserve the address. If an IP
         address is specified, it must be within the subnetwork's IP range.
@@ -331,7 +331,7 @@ class Address(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def users(self) -> List[str]:
+    def users(self) -> pulumi.Output[List[str]]:
         """
         The URLs of the resources that are using this address.
         """

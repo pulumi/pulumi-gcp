@@ -15,7 +15,7 @@ __all__ = ['BackendService']
 
 class BackendService(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  affinity_cookie_ttl_sec: Optional[pulumi.Input[float]] = None,
                  backends: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['BackendServiceBackendArgs']]]]] = None,
@@ -354,7 +354,7 @@ class BackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="affinityCookieTtlSec")
-    def affinity_cookie_ttl_sec(self) -> Optional[float]:
+    def affinity_cookie_ttl_sec(self) -> pulumi.Output[Optional[float]]:
         """
         Lifetime of cookies in seconds if session_affinity is
         GENERATED_COOKIE. If set to 0, the cookie is non-persistent and lasts
@@ -366,7 +366,7 @@ class BackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def backends(self) -> Optional[List['outputs.BackendServiceBackend']]:
+    def backends(self) -> pulumi.Output[Optional[List['outputs.BackendServiceBackend']]]:
         """
         The set of backends that serve this BackendService.
         Structure is documented below.
@@ -375,7 +375,7 @@ class BackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cdnPolicy")
-    def cdn_policy(self) -> 'outputs.BackendServiceCdnPolicy':
+    def cdn_policy(self) -> pulumi.Output['outputs.BackendServiceCdnPolicy']:
         """
         Cloud CDN configuration for this BackendService.
         Structure is documented below.
@@ -384,7 +384,7 @@ class BackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="circuitBreakers")
-    def circuit_breakers(self) -> Optional['outputs.BackendServiceCircuitBreakers']:
+    def circuit_breakers(self) -> pulumi.Output[Optional['outputs.BackendServiceCircuitBreakers']]:
         """
         Settings controlling the volume of connections to a backend service. This field
         is applicable only when the load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
@@ -394,7 +394,7 @@ class BackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="connectionDrainingTimeoutSec")
-    def connection_draining_timeout_sec(self) -> Optional[float]:
+    def connection_draining_timeout_sec(self) -> pulumi.Output[Optional[float]]:
         """
         Time for which instance will be drained (not accept new
         connections, but still work to finish started).
@@ -403,7 +403,7 @@ class BackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="consistentHash")
-    def consistent_hash(self) -> Optional['outputs.BackendServiceConsistentHash']:
+    def consistent_hash(self) -> pulumi.Output[Optional['outputs.BackendServiceConsistentHash']]:
         """
         Consistent Hash-based load balancing can be used to provide soft session
         affinity based on HTTP headers, cookies or other properties. This load balancing
@@ -419,7 +419,7 @@ class BackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> str:
+    def creation_timestamp(self) -> pulumi.Output[str]:
         """
         Creation timestamp in RFC3339 text format.
         """
@@ -427,7 +427,7 @@ class BackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="customRequestHeaders")
-    def custom_request_headers(self) -> Optional[List[str]]:
+    def custom_request_headers(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Headers that the HTTP/S load balancer should add to proxied
         requests.
@@ -436,7 +436,7 @@ class BackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         An optional description of this resource.
         Provide this property when you create the resource.
@@ -445,7 +445,7 @@ class BackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableCdn")
-    def enable_cdn(self) -> Optional[bool]:
+    def enable_cdn(self) -> pulumi.Output[Optional[bool]]:
         """
         If true, enable Cloud CDN for this BackendService.
         """
@@ -453,7 +453,7 @@ class BackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def fingerprint(self) -> str:
+    def fingerprint(self) -> pulumi.Output[str]:
         """
         Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
         """
@@ -461,7 +461,7 @@ class BackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="healthChecks")
-    def health_checks(self) -> Optional[str]:
+    def health_checks(self) -> pulumi.Output[Optional[str]]:
         """
         The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
         for health checking this BackendService. Currently at most one health
@@ -473,7 +473,7 @@ class BackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def iap(self) -> Optional['outputs.BackendServiceIap']:
+    def iap(self) -> pulumi.Output[Optional['outputs.BackendServiceIap']]:
         """
         Settings for enabling Cloud Identity Aware Proxy
         Structure is documented below.
@@ -482,7 +482,7 @@ class BackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="loadBalancingScheme")
-    def load_balancing_scheme(self) -> Optional[str]:
+    def load_balancing_scheme(self) -> pulumi.Output[Optional[str]]:
         """
         Indicates whether the backend service will be used with internal or
         external load balancing. A backend service created for one type of
@@ -494,7 +494,7 @@ class BackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="localityLbPolicy")
-    def locality_lb_policy(self) -> Optional[str]:
+    def locality_lb_policy(self) -> pulumi.Output[Optional[str]]:
         """
         The load balancing algorithm used within the scope of the locality.
         The possible values are -
@@ -524,7 +524,7 @@ class BackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="logConfig")
-    def log_config(self) -> 'outputs.BackendServiceLogConfig':
+    def log_config(self) -> pulumi.Output['outputs.BackendServiceLogConfig']:
         """
         This field denotes the logging options for the load balancer traffic served by this backend service.
         If logging is enabled, logs will be exported to Stackdriver.
@@ -534,7 +534,7 @@ class BackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the cookie.
         """
@@ -542,7 +542,7 @@ class BackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="outlierDetection")
-    def outlier_detection(self) -> Optional['outputs.BackendServiceOutlierDetection']:
+    def outlier_detection(self) -> pulumi.Output[Optional['outputs.BackendServiceOutlierDetection']]:
         """
         Settings controlling eviction of unhealthy hosts from the load balancing pool.
         This field is applicable only when the load_balancing_scheme is set
@@ -553,7 +553,7 @@ class BackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="portName")
-    def port_name(self) -> str:
+    def port_name(self) -> pulumi.Output[str]:
         """
         Name of backend port. The same name should appear in the instance
         groups referenced by this service. Required when the load balancing
@@ -563,7 +563,7 @@ class BackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -572,7 +572,7 @@ class BackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def protocol(self) -> str:
+    def protocol(self) -> pulumi.Output[str]:
         """
         The protocol this BackendService uses to communicate with backends.
         The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
@@ -583,7 +583,7 @@ class BackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityPolicy")
-    def security_policy(self) -> Optional[str]:
+    def security_policy(self) -> pulumi.Output[Optional[str]]:
         """
         The security policy associated with this backend service.
         """
@@ -591,7 +591,7 @@ class BackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         """
         The URI of the created resource.
         """
@@ -599,7 +599,7 @@ class BackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sessionAffinity")
-    def session_affinity(self) -> str:
+    def session_affinity(self) -> pulumi.Output[str]:
         """
         Type of session affinity to use. The default is NONE. Session affinity is
         not applicable if the protocol is UDP.
@@ -609,7 +609,7 @@ class BackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="timeoutSec")
-    def timeout_sec(self) -> float:
+    def timeout_sec(self) -> pulumi.Output[float]:
         """
         How many seconds to wait for the backend before considering it a
         failed request. Default is 30 seconds. Valid range is [1, 86400].

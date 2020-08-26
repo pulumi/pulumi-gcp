@@ -15,7 +15,7 @@ __all__ = ['IamAuditConfig']
 
 class IamAuditConfig(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  audit_log_configs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['IamAuditConfigAuditLogConfigArgs']]]]] = None,
                  folder: Optional[pulumi.Input[str]] = None,
@@ -94,7 +94,7 @@ class IamAuditConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="auditLogConfigs")
-    def audit_log_configs(self) -> List['outputs.IamAuditConfigAuditLogConfig']:
+    def audit_log_configs(self) -> pulumi.Output[List['outputs.IamAuditConfigAuditLogConfig']]:
         """
         The configuration for logging of each type of permission. This can be specified multiple times.
         """
@@ -102,7 +102,7 @@ class IamAuditConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def etag(self) -> str:
+    def etag(self) -> pulumi.Output[str]:
         """
         The etag of iam policy
         """
@@ -110,12 +110,12 @@ class IamAuditConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def folder(self) -> str:
+    def folder(self) -> pulumi.Output[str]:
         return pulumi.get(self, "folder")
 
     @property
     @pulumi.getter
-    def service(self) -> str:
+    def service(self) -> pulumi.Output[str]:
         """
         Service which will be enabled for audit logging. The special value allServices covers all services.
         """

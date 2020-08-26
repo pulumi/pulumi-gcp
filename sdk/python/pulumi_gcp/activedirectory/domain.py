@@ -13,7 +13,7 @@ __all__ = ['Domain']
 
 class Domain(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin: Optional[pulumi.Input[str]] = None,
                  authorized_networks: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -144,7 +144,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def admin(self) -> Optional[str]:
+    def admin(self) -> pulumi.Output[Optional[str]]:
         """
         The name of delegated administrator account used to perform Active Directory operations.
         If not specified, setupadmin will be used.
@@ -153,7 +153,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="authorizedNetworks")
-    def authorized_networks(self) -> Optional[List[str]]:
+    def authorized_networks(self) -> pulumi.Output[Optional[List[str]]]:
         """
         The full names of the Google Compute Engine networks the domain instance is connected to. The domain is only available on networks listed in authorizedNetworks.
         If CIDR subnets overlap between networks, domain creation will fail.
@@ -162,7 +162,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="domainName")
-    def domain_name(self) -> str:
+    def domain_name(self) -> pulumi.Output[str]:
         """
         The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
         https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
@@ -171,7 +171,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def fqdn(self) -> str:
+    def fqdn(self) -> pulumi.Output[str]:
         """
         The fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would
         be chosen for an Active Directory set up on an internal network.
@@ -180,7 +180,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, str]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Resource labels that can contain user-provided metadata
         """
@@ -188,7 +188,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def locations(self) -> List[str]:
+    def locations(self) -> pulumi.Output[List[str]]:
         """
         Locations where domain needs to be provisioned. [regions][compute/docs/regions-zones/]
         e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
@@ -197,7 +197,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The unique name of the domain using the format: 'projects/{project}/locations/global/domains/{domainName}'.
         """
@@ -205,7 +205,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -214,7 +214,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="reservedIpRange")
-    def reserved_ip_range(self) -> str:
+    def reserved_ip_range(self) -> pulumi.Output[str]:
         """
         The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger.
         Ranges must be unique and non-overlapping with existing subnets in authorizedNetworks

@@ -13,7 +13,7 @@ __all__ = ['Namespace']
 
 class Namespace(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -120,7 +120,7 @@ class Namespace(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, str]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Resource labels associated with this Namespace. No more than 64 user
         labels can be associated with a given resource. Label keys and values can
@@ -130,7 +130,7 @@ class Namespace(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def location(self) -> str:
+    def location(self) -> pulumi.Output[str]:
         """
         The location for the Namespace.
         A full list of valid locations can be found by running
@@ -140,7 +140,7 @@ class Namespace(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The resource name for the namespace in the format 'projects/*/locations/*/namespaces/*'.
         """
@@ -148,7 +148,7 @@ class Namespace(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="namespaceId")
-    def namespace_id(self) -> str:
+    def namespace_id(self) -> pulumi.Output[str]:
         """
         The Resource ID must be 1-63 characters long, including digits,
         lowercase letters or the hyphen character.
@@ -157,7 +157,7 @@ class Namespace(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.

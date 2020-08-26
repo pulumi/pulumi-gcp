@@ -19,7 +19,7 @@ class Registry(pulumi.CustomResource):
     warnings.warn("gcp.kms.Registry has been deprecated in favor of gcp.iot.Registry", DeprecationWarning)
 
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  credentials: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['RegistryCredentialArgs']]]]] = None,
                  event_notification_configs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['RegistryEventNotificationConfigItemArgs']]]]] = None,
@@ -164,7 +164,7 @@ class Registry(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def credentials(self) -> Optional[List['outputs.RegistryCredential']]:
+    def credentials(self) -> pulumi.Output[Optional[List['outputs.RegistryCredential']]]:
         """
         List of public key certificates to authenticate devices.
         The structure is documented below.
@@ -173,7 +173,7 @@ class Registry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="eventNotificationConfigs")
-    def event_notification_configs(self) -> List['outputs.RegistryEventNotificationConfigItem']:
+    def event_notification_configs(self) -> pulumi.Output[List['outputs.RegistryEventNotificationConfigItem']]:
         """
         List of configurations for event notifications, such as PubSub topics
         to publish device events to.
@@ -183,7 +183,7 @@ class Registry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="httpConfig")
-    def http_config(self) -> 'outputs.RegistryHttpConfig':
+    def http_config(self) -> pulumi.Output['outputs.RegistryHttpConfig']:
         """
         Activate or deactivate HTTP.
         The structure is documented below.
@@ -192,7 +192,7 @@ class Registry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="logLevel")
-    def log_level(self) -> Optional[str]:
+    def log_level(self) -> pulumi.Output[Optional[str]]:
         """
         The default logging verbosity for activity from devices in this
         registry. Specifies which events should be written to logs. For
@@ -206,7 +206,7 @@ class Registry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="mqttConfig")
-    def mqtt_config(self) -> 'outputs.RegistryMqttConfig':
+    def mqtt_config(self) -> pulumi.Output['outputs.RegistryMqttConfig']:
         """
         Activate or deactivate MQTT.
         The structure is documented below.
@@ -215,7 +215,7 @@ class Registry(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         A unique name for the resource, required by device registry.
         """
@@ -223,7 +223,7 @@ class Registry(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -232,7 +232,7 @@ class Registry(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which the created registry should reside.
         If it is not provided, the provider region is used.
@@ -241,7 +241,7 @@ class Registry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="stateNotificationConfig")
-    def state_notification_config(self) -> Optional['outputs.RegistryStateNotificationConfig']:
+    def state_notification_config(self) -> pulumi.Output[Optional['outputs.RegistryStateNotificationConfig']]:
         """
         A PubSub topic to publish device state updates.
         The structure is documented below.

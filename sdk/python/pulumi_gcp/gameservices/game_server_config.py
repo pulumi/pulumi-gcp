@@ -15,7 +15,7 @@ __all__ = ['GameServerConfig']
 
 class GameServerConfig(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config_id: Optional[pulumi.Input[str]] = None,
                  deployment_id: Optional[pulumi.Input[str]] = None,
@@ -143,7 +143,7 @@ class GameServerConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="configId")
-    def config_id(self) -> str:
+    def config_id(self) -> pulumi.Output[str]:
         """
         A unique id for the deployment config.
         """
@@ -151,7 +151,7 @@ class GameServerConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deploymentId")
-    def deployment_id(self) -> str:
+    def deployment_id(self) -> pulumi.Output[str]:
         """
         A unique id for the deployment.
         """
@@ -159,7 +159,7 @@ class GameServerConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The description of the game server config.
         """
@@ -167,7 +167,7 @@ class GameServerConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="fleetConfigs")
-    def fleet_configs(self) -> List['outputs.GameServerConfigFleetConfig']:
+    def fleet_configs(self) -> pulumi.Output[List['outputs.GameServerConfigFleetConfig']]:
         """
         The fleet config contains list of fleet specs. In the Single Cloud, there
         will be only one.
@@ -177,7 +177,7 @@ class GameServerConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, str]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Set of labels to group by.
         """
@@ -185,7 +185,7 @@ class GameServerConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def location(self) -> Optional[str]:
+    def location(self) -> pulumi.Output[Optional[str]]:
         """
         Location of the Deployment.
         """
@@ -193,7 +193,7 @@ class GameServerConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the ScalingConfig
         """
@@ -201,7 +201,7 @@ class GameServerConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -210,7 +210,7 @@ class GameServerConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="scalingConfigs")
-    def scaling_configs(self) -> Optional[List['outputs.GameServerConfigScalingConfig']]:
+    def scaling_configs(self) -> pulumi.Output[Optional[List['outputs.GameServerConfigScalingConfig']]]:
         """
         Optional. This contains the autoscaling settings.
         Structure is documented below.

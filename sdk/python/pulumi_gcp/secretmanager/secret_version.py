@@ -13,7 +13,7 @@ __all__ = ['SecretVersion']
 
 class SecretVersion(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  secret: Optional[pulumi.Input[str]] = None,
@@ -106,7 +106,7 @@ class SecretVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> str:
+    def create_time(self) -> pulumi.Output[str]:
         """
         The time at which the Secret was created.
         """
@@ -114,7 +114,7 @@ class SecretVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="destroyTime")
-    def destroy_time(self) -> str:
+    def destroy_time(self) -> pulumi.Output[str]:
         """
         The time at which the Secret was destroyed. Only present if state is DESTROYED.
         """
@@ -122,7 +122,7 @@ class SecretVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enabled(self) -> Optional[bool]:
+    def enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         The current state of the SecretVersion.
         """
@@ -130,7 +130,7 @@ class SecretVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The resource name of the SecretVersion. Format: 'projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}'
         """
@@ -138,7 +138,7 @@ class SecretVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def secret(self) -> str:
+    def secret(self) -> pulumi.Output[str]:
         """
         Secret Manager secret resource
         """
@@ -146,7 +146,7 @@ class SecretVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="secretData")
-    def secret_data(self) -> Optional[str]:
+    def secret_data(self) -> pulumi.Output[Optional[str]]:
         """
         The secret data. Must be no larger than 64KiB.
         **Note**: This property is sensitive and will not be displayed in the plan.

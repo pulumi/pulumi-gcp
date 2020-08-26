@@ -13,7 +13,7 @@ __all__ = ['AttachedDisk']
 
 class AttachedDisk(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  device_name: Optional[pulumi.Input[str]] = None,
                  disk: Optional[pulumi.Input[str]] = None,
@@ -141,7 +141,7 @@ class AttachedDisk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deviceName")
-    def device_name(self) -> str:
+    def device_name(self) -> pulumi.Output[str]:
         """
         Specifies a unique device name of your choice that is
         reflected into the /dev/disk/by-id/google-* tree of a Linux operating
@@ -153,7 +153,7 @@ class AttachedDisk(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def disk(self) -> str:
+    def disk(self) -> pulumi.Output[str]:
         """
         `name` or `self_link` of the disk that will be attached.
         """
@@ -161,7 +161,7 @@ class AttachedDisk(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def instance(self) -> str:
+    def instance(self) -> pulumi.Output[str]:
         """
         `name` or `self_link` of the compute instance that the disk will be attached to.
         If the `self_link` is provided then `zone` and `project` are extracted from the
@@ -172,7 +172,7 @@ class AttachedDisk(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def mode(self) -> Optional[str]:
+    def mode(self) -> pulumi.Output[Optional[str]]:
         """
         The mode in which to attach this disk, either READ_WRITE or
         READ_ONLY. If not specified, the default is to attach the disk in
@@ -182,7 +182,7 @@ class AttachedDisk(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The project that the referenced compute instance is a part of. If `instance` is referenced by its
         `self_link` the project defined in the link will take precedence.
@@ -191,7 +191,7 @@ class AttachedDisk(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def zone(self) -> str:
+    def zone(self) -> pulumi.Output[str]:
         """
         The zone that the referenced compute instance is located within. If `instance` is referenced by its
         `self_link` the zone defined in the link will take precedence.

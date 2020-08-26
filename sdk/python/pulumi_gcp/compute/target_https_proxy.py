@@ -13,7 +13,7 @@ __all__ = ['TargetHttpsProxy']
 
 class TargetHttpsProxy(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -170,7 +170,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> str:
+    def creation_timestamp(self) -> pulumi.Output[str]:
         """
         Creation timestamp in RFC3339 text format.
         """
@@ -178,7 +178,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         An optional description of this resource.
         """
@@ -186,7 +186,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the resource. Provided by the client when the resource is
         created. The name must be 1-63 characters long, and comply with
@@ -200,7 +200,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -209,7 +209,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="proxyId")
-    def proxy_id(self) -> float:
+    def proxy_id(self) -> pulumi.Output[float]:
         """
         The unique identifier for the resource.
         """
@@ -217,7 +217,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="quicOverride")
-    def quic_override(self) -> Optional[str]:
+    def quic_override(self) -> pulumi.Output[Optional[str]]:
         """
         Specifies the QUIC override policy for this resource. This determines
         whether the load balancer will attempt to negotiate QUIC with clients
@@ -231,7 +231,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         """
         The URI of the created resource.
         """
@@ -239,7 +239,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sslCertificates")
-    def ssl_certificates(self) -> List[str]:
+    def ssl_certificates(self) -> pulumi.Output[List[str]]:
         """
         A list of SslCertificate resources that are used to authenticate
         connections between users and the load balancer. At least one SSL
@@ -249,7 +249,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sslPolicy")
-    def ssl_policy(self) -> Optional[str]:
+    def ssl_policy(self) -> pulumi.Output[Optional[str]]:
         """
         A reference to the SslPolicy resource that will be associated with
         the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
@@ -259,7 +259,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="urlMap")
-    def url_map(self) -> str:
+    def url_map(self) -> pulumi.Output[str]:
         """
         A reference to the UrlMap resource that defines the mapping from URL
         to the BackendService.

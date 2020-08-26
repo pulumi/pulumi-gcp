@@ -15,7 +15,7 @@ __all__ = ['SecurityPolicy']
 
 class SecurityPolicy(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -109,7 +109,7 @@ class SecurityPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         An optional description of this rule. Max size is 64.
         """
@@ -117,7 +117,7 @@ class SecurityPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def fingerprint(self) -> str:
+    def fingerprint(self) -> pulumi.Output[str]:
         """
         Fingerprint of this resource.
         """
@@ -125,7 +125,7 @@ class SecurityPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the security policy.
         """
@@ -133,7 +133,7 @@ class SecurityPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The project in which the resource belongs. If it
         is not provided, the provider project is used.
@@ -142,7 +142,7 @@ class SecurityPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def rules(self) -> List['outputs.SecurityPolicyRule']:
+    def rules(self) -> pulumi.Output[List['outputs.SecurityPolicyRule']]:
         """
         The set of rules that belong to this policy. There must always be a default
         rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
@@ -152,7 +152,7 @@ class SecurityPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         """
         The URI of the created resource.
         """

@@ -15,7 +15,7 @@ __all__ = ['Function']
 
 class Function(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  available_memory_mb: Optional[pulumi.Input[float]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -212,7 +212,7 @@ class Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="availableMemoryMb")
-    def available_memory_mb(self) -> Optional[float]:
+    def available_memory_mb(self) -> pulumi.Output[Optional[float]]:
         """
         Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, and 2048MB.
         """
@@ -220,7 +220,7 @@ class Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Description of the function.
         """
@@ -228,7 +228,7 @@ class Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="entryPoint")
-    def entry_point(self) -> Optional[str]:
+    def entry_point(self) -> pulumi.Output[Optional[str]]:
         """
         Name of the function that will be executed when the Google Cloud Function is triggered.
         """
@@ -236,7 +236,7 @@ class Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="environmentVariables")
-    def environment_variables(self) -> Optional[Mapping[str, Any]]:
+    def environment_variables(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         A set of key/value environment variable pairs to assign to the function.
         """
@@ -244,7 +244,7 @@ class Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="eventTrigger")
-    def event_trigger(self) -> 'outputs.FunctionEventTrigger':
+    def event_trigger(self) -> pulumi.Output['outputs.FunctionEventTrigger']:
         """
         A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
         """
@@ -252,7 +252,7 @@ class Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="httpsTriggerUrl")
-    def https_trigger_url(self) -> str:
+    def https_trigger_url(self) -> pulumi.Output[str]:
         """
         URL which triggers function execution. Returned only if `trigger_http` is used.
         """
@@ -260,7 +260,7 @@ class Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ingressSettings")
-    def ingress_settings(self) -> Optional[str]:
+    def ingress_settings(self) -> pulumi.Output[Optional[str]]:
         """
         String value that controls what traffic can reach the function. Allowed values are ALLOW_ALL and ALLOW_INTERNAL_ONLY. Changes to this field will recreate the cloud function.
         """
@@ -268,7 +268,7 @@ class Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, Any]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
         """
@@ -276,7 +276,7 @@ class Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxInstances")
-    def max_instances(self) -> Optional[float]:
+    def max_instances(self) -> pulumi.Output[Optional[float]]:
         """
         The limit on the maximum number of function instances that may coexist at a given time.
         """
@@ -284,7 +284,7 @@ class Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         A user-defined name of the function. Function names must be unique globally.
         """
@@ -292,7 +292,7 @@ class Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         Project of the function. If it is not provided, the provider project is used.
         """
@@ -300,7 +300,7 @@ class Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
         """
@@ -308,7 +308,7 @@ class Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def runtime(self) -> str:
+    def runtime(self) -> pulumi.Output[str]:
         """
         The runtime in which the function is going to run.
         Eg. `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`, `"go113"`.
@@ -317,7 +317,7 @@ class Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceAccountEmail")
-    def service_account_email(self) -> str:
+    def service_account_email(self) -> pulumi.Output[str]:
         """
         If provided, the self-provided service account to run the function with.
         """
@@ -325,7 +325,7 @@ class Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceArchiveBucket")
-    def source_archive_bucket(self) -> Optional[str]:
+    def source_archive_bucket(self) -> pulumi.Output[Optional[str]]:
         """
         The GCS bucket containing the zip archive which contains the function.
         """
@@ -333,7 +333,7 @@ class Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceArchiveObject")
-    def source_archive_object(self) -> Optional[str]:
+    def source_archive_object(self) -> pulumi.Output[Optional[str]]:
         """
         The source archive object (file) in archive bucket.
         """
@@ -341,7 +341,7 @@ class Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceRepository")
-    def source_repository(self) -> Optional['outputs.FunctionSourceRepository']:
+    def source_repository(self) -> pulumi.Output[Optional['outputs.FunctionSourceRepository']]:
         """
         Represents parameters related to source repository where a function is hosted.
         Cannot be set alongside `source_archive_bucket` or `source_archive_object`. Structure is documented below.
@@ -350,7 +350,7 @@ class Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def timeout(self) -> Optional[float]:
+    def timeout(self) -> pulumi.Output[Optional[float]]:
         """
         Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
         """
@@ -358,7 +358,7 @@ class Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="triggerHttp")
-    def trigger_http(self) -> Optional[bool]:
+    def trigger_http(self) -> pulumi.Output[Optional[bool]]:
         """
         Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `trigger_bucket` and `trigger_topic`.
         """
@@ -366,7 +366,7 @@ class Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vpcConnector")
-    def vpc_connector(self) -> Optional[str]:
+    def vpc_connector(self) -> pulumi.Output[Optional[str]]:
         """
         The VPC Network Connector that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network connector resource. The format of this field is `projects/*/locations/*/connectors/*`.
         """
@@ -374,7 +374,7 @@ class Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vpcConnectorEgressSettings")
-    def vpc_connector_egress_settings(self) -> str:
+    def vpc_connector_egress_settings(self) -> pulumi.Output[str]:
         """
         The egress settings for the connector, controlling what traffic is diverted through it. Allowed values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`. Defaults to `PRIVATE_RANGES_ONLY`. If unset, this field preserves the previously set value.
         """

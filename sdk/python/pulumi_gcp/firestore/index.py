@@ -15,7 +15,7 @@ __all__ = ['Index']
 
 class Index(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  collection: Optional[pulumi.Input[str]] = None,
                  database: Optional[pulumi.Input[str]] = None,
@@ -136,7 +136,7 @@ class Index(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def collection(self) -> str:
+    def collection(self) -> pulumi.Output[str]:
         """
         The collection being indexed.
         """
@@ -144,7 +144,7 @@ class Index(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def database(self) -> Optional[str]:
+    def database(self) -> pulumi.Output[Optional[str]]:
         """
         The Firestore database id. Defaults to `"(default)"`.
         """
@@ -152,7 +152,7 @@ class Index(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def fields(self) -> List['outputs.IndexField']:
+    def fields(self) -> pulumi.Output[List['outputs.IndexField']]:
         """
         The fields supported by this index. The last field entry is always for
         the field path `__name__`. If, on creation, `__name__` was not
@@ -166,7 +166,7 @@ class Index(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         A server defined name for this index. Format:
         'projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}'
@@ -175,7 +175,7 @@ class Index(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -184,7 +184,7 @@ class Index(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="queryScope")
-    def query_scope(self) -> Optional[str]:
+    def query_scope(self) -> pulumi.Output[Optional[str]]:
         """
         The scope at which a query is run.
         Default value is `COLLECTION`.

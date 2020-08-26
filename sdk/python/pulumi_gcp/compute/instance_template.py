@@ -15,7 +15,7 @@ __all__ = ['InstanceTemplate']
 
 class InstanceTemplate(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  can_ip_forward: Optional[pulumi.Input[bool]] = None,
                  confidential_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceTemplateConfidentialInstanceConfigArgs']]] = None,
@@ -262,7 +262,7 @@ class InstanceTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="canIpForward")
-    def can_ip_forward(self) -> Optional[bool]:
+    def can_ip_forward(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to allow sending and receiving of
         packets with non-matching source or destination IPs. This defaults to false.
@@ -271,7 +271,7 @@ class InstanceTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="confidentialInstanceConfig")
-    def confidential_instance_config(self) -> 'outputs.InstanceTemplateConfidentialInstanceConfig':
+    def confidential_instance_config(self) -> pulumi.Output['outputs.InstanceTemplateConfidentialInstanceConfig']:
         """
         The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
         to create.
@@ -280,7 +280,7 @@ class InstanceTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A brief description of this resource.
         """
@@ -288,7 +288,7 @@ class InstanceTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def disks(self) -> List['outputs.InstanceTemplateDisk']:
+    def disks(self) -> pulumi.Output[List['outputs.InstanceTemplateDisk']]:
         """
         Disks to attach to instances created from this template.
         This can be specified multiple times for multiple disks. Structure is
@@ -298,7 +298,7 @@ class InstanceTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableDisplay")
-    def enable_display(self) -> Optional[bool]:
+    def enable_display(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
         **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
@@ -307,7 +307,7 @@ class InstanceTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="guestAccelerators")
-    def guest_accelerators(self) -> Optional[List['outputs.InstanceTemplateGuestAccelerator']]:
+    def guest_accelerators(self) -> pulumi.Output[Optional[List['outputs.InstanceTemplateGuestAccelerator']]]:
         """
         List of the type and count of accelerator cards attached to the instance. Structure documented below.
         """
@@ -315,7 +315,7 @@ class InstanceTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceDescription")
-    def instance_description(self) -> Optional[str]:
+    def instance_description(self) -> pulumi.Output[Optional[str]]:
         """
         A brief description to use for instances
         created from this template.
@@ -324,7 +324,7 @@ class InstanceTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, str]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A set of key/value label pairs to assign to instances
         created from this template,
@@ -333,7 +333,7 @@ class InstanceTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="machineType")
-    def machine_type(self) -> str:
+    def machine_type(self) -> pulumi.Output[str]:
         """
         The machine type to create.
         """
@@ -341,7 +341,7 @@ class InstanceTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[Mapping[str, Any]]:
+    def metadata(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         Metadata key/value pairs to make available from
         within instances created from this template.
@@ -350,7 +350,7 @@ class InstanceTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="metadataFingerprint")
-    def metadata_fingerprint(self) -> str:
+    def metadata_fingerprint(self) -> pulumi.Output[str]:
         """
         The unique fingerprint of the metadata.
         """
@@ -358,7 +358,7 @@ class InstanceTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="metadataStartupScript")
-    def metadata_startup_script(self) -> Optional[str]:
+    def metadata_startup_script(self) -> pulumi.Output[Optional[str]]:
         """
         An alternative to using the
         startup-script metadata key, mostly to match the compute_instance resource.
@@ -369,7 +369,7 @@ class InstanceTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minCpuPlatform")
-    def min_cpu_platform(self) -> Optional[str]:
+    def min_cpu_platform(self) -> pulumi.Output[Optional[str]]:
         """
         Specifies a minimum CPU platform. Applicable values are the friendly names of CPU platforms, such as
         `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
@@ -378,7 +378,7 @@ class InstanceTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the instance template. If you leave
         this blank, the provider will auto-generate a unique name.
@@ -387,7 +387,7 @@ class InstanceTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="namePrefix")
-    def name_prefix(self) -> str:
+    def name_prefix(self) -> pulumi.Output[str]:
         """
         Creates a unique name beginning with the specified
         prefix. Conflicts with `name`.
@@ -396,7 +396,7 @@ class InstanceTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkInterfaces")
-    def network_interfaces(self) -> Optional[List['outputs.InstanceTemplateNetworkInterface']]:
+    def network_interfaces(self) -> pulumi.Output[Optional[List['outputs.InstanceTemplateNetworkInterface']]]:
         """
         Networks to attach to instances created from
         this template. This can be specified multiple times for multiple networks.
@@ -406,7 +406,7 @@ class InstanceTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs. If it
         is not provided, the provider project is used.
@@ -415,7 +415,7 @@ class InstanceTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         An instance template is a global resource that is not
         bound to a zone or a region. However, you can still specify some regional
@@ -428,7 +428,7 @@ class InstanceTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def scheduling(self) -> 'outputs.InstanceTemplateScheduling':
+    def scheduling(self) -> pulumi.Output['outputs.InstanceTemplateScheduling']:
         """
         The scheduling strategy to use. More details about
         this configuration option are detailed below.
@@ -437,7 +437,7 @@ class InstanceTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         """
         The URI of the created resource.
         """
@@ -445,7 +445,7 @@ class InstanceTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> Optional['outputs.InstanceTemplateServiceAccount']:
+    def service_account(self) -> pulumi.Output[Optional['outputs.InstanceTemplateServiceAccount']]:
         """
         Service account to attach to the instance. Structure is documented below.
         """
@@ -453,7 +453,7 @@ class InstanceTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="shieldedInstanceConfig")
-    def shielded_instance_config(self) -> 'outputs.InstanceTemplateShieldedInstanceConfig':
+    def shielded_instance_config(self) -> pulumi.Output['outputs.InstanceTemplateShieldedInstanceConfig']:
         """
         Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
         **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
@@ -462,7 +462,7 @@ class InstanceTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Tags to attach to the instance.
         """
@@ -470,7 +470,7 @@ class InstanceTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tagsFingerprint")
-    def tags_fingerprint(self) -> str:
+    def tags_fingerprint(self) -> pulumi.Output[str]:
         """
         The unique fingerprint of the tags.
         """

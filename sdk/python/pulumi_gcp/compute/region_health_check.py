@@ -15,7 +15,7 @@ __all__ = ['RegionHealthCheck']
 
 class RegionHealthCheck(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  check_interval_sec: Optional[pulumi.Input[float]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -229,7 +229,7 @@ class RegionHealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="checkIntervalSec")
-    def check_interval_sec(self) -> Optional[float]:
+    def check_interval_sec(self) -> pulumi.Output[Optional[float]]:
         """
         How often (in seconds) to send a health check. The default value is 5
         seconds.
@@ -238,7 +238,7 @@ class RegionHealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> str:
+    def creation_timestamp(self) -> pulumi.Output[str]:
         """
         Creation timestamp in RFC3339 text format.
         """
@@ -246,7 +246,7 @@ class RegionHealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         An optional description of this resource. Provide this property when
         you create the resource.
@@ -255,7 +255,7 @@ class RegionHealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="grpcHealthCheck")
-    def grpc_health_check(self) -> Optional['outputs.RegionHealthCheckGrpcHealthCheck']:
+    def grpc_health_check(self) -> pulumi.Output[Optional['outputs.RegionHealthCheckGrpcHealthCheck']]:
         """
         A nested object resource
         Structure is documented below.
@@ -264,7 +264,7 @@ class RegionHealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="healthyThreshold")
-    def healthy_threshold(self) -> Optional[float]:
+    def healthy_threshold(self) -> pulumi.Output[Optional[float]]:
         """
         A so-far unhealthy instance will be marked healthy after this many
         consecutive successes. The default value is 2.
@@ -273,7 +273,7 @@ class RegionHealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="http2HealthCheck")
-    def http2_health_check(self) -> Optional['outputs.RegionHealthCheckHttp2HealthCheck']:
+    def http2_health_check(self) -> pulumi.Output[Optional['outputs.RegionHealthCheckHttp2HealthCheck']]:
         """
         A nested object resource
         Structure is documented below.
@@ -282,7 +282,7 @@ class RegionHealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="httpHealthCheck")
-    def http_health_check(self) -> Optional['outputs.RegionHealthCheckHttpHealthCheck']:
+    def http_health_check(self) -> pulumi.Output[Optional['outputs.RegionHealthCheckHttpHealthCheck']]:
         """
         A nested object resource
         Structure is documented below.
@@ -291,7 +291,7 @@ class RegionHealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="httpsHealthCheck")
-    def https_health_check(self) -> Optional['outputs.RegionHealthCheckHttpsHealthCheck']:
+    def https_health_check(self) -> pulumi.Output[Optional['outputs.RegionHealthCheckHttpsHealthCheck']]:
         """
         A nested object resource
         Structure is documented below.
@@ -300,7 +300,7 @@ class RegionHealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="logConfig")
-    def log_config(self) -> Optional['outputs.RegionHealthCheckLogConfig']:
+    def log_config(self) -> pulumi.Output[Optional['outputs.RegionHealthCheckLogConfig']]:
         """
         Configure logging on this health check.  Structure is documented below.
         """
@@ -308,7 +308,7 @@ class RegionHealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the resource. Provided by the client when the resource is
         created. The name must be 1-63 characters long, and comply with
@@ -322,7 +322,7 @@ class RegionHealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -331,7 +331,7 @@ class RegionHealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The Region in which the created health check should reside.
         If it is not provided, the provider region is used.
@@ -340,7 +340,7 @@ class RegionHealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         """
         The URI of the created resource.
         """
@@ -348,7 +348,7 @@ class RegionHealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sslHealthCheck")
-    def ssl_health_check(self) -> Optional['outputs.RegionHealthCheckSslHealthCheck']:
+    def ssl_health_check(self) -> pulumi.Output[Optional['outputs.RegionHealthCheckSslHealthCheck']]:
         """
         A nested object resource
         Structure is documented below.
@@ -357,7 +357,7 @@ class RegionHealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tcpHealthCheck")
-    def tcp_health_check(self) -> Optional['outputs.RegionHealthCheckTcpHealthCheck']:
+    def tcp_health_check(self) -> pulumi.Output[Optional['outputs.RegionHealthCheckTcpHealthCheck']]:
         """
         A nested object resource
         Structure is documented below.
@@ -366,7 +366,7 @@ class RegionHealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="timeoutSec")
-    def timeout_sec(self) -> Optional[float]:
+    def timeout_sec(self) -> pulumi.Output[Optional[float]]:
         """
         How long (in seconds) to wait before claiming failure.
         The default value is 5 seconds.  It is invalid for timeoutSec to have
@@ -376,7 +376,7 @@ class RegionHealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> pulumi.Output[str]:
         """
         The type of the health check. One of HTTP, HTTP2, HTTPS, TCP, or SSL.
         """
@@ -384,7 +384,7 @@ class RegionHealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="unhealthyThreshold")
-    def unhealthy_threshold(self) -> Optional[float]:
+    def unhealthy_threshold(self) -> pulumi.Output[Optional[float]]:
         """
         A so-far healthy instance will be marked unhealthy after this many
         consecutive failures. The default value is 2.

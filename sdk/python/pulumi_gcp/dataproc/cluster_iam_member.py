@@ -15,7 +15,7 @@ __all__ = ['ClusterIAMMember']
 
 class ClusterIAMMember(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster: Optional[pulumi.Input[str]] = None,
                  condition: Optional[pulumi.Input[pulumi.InputType['ClusterIAMMemberConditionArgs']]] = None,
@@ -127,7 +127,7 @@ class ClusterIAMMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def cluster(self) -> str:
+    def cluster(self) -> pulumi.Output[str]:
         """
         The name or relative resource id of the cluster to manage IAM policies for.
         """
@@ -135,12 +135,12 @@ class ClusterIAMMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional['outputs.ClusterIAMMemberCondition']:
+    def condition(self) -> pulumi.Output[Optional['outputs.ClusterIAMMemberCondition']]:
         return pulumi.get(self, "condition")
 
     @property
     @pulumi.getter
-    def etag(self) -> str:
+    def etag(self) -> pulumi.Output[str]:
         """
         (Computed) The etag of the clusters's IAM policy.
         """
@@ -148,12 +148,12 @@ class ClusterIAMMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def member(self) -> str:
+    def member(self) -> pulumi.Output[str]:
         return pulumi.get(self, "member")
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The project in which the cluster belongs. If it
         is not provided, the provider will use a default.
@@ -162,7 +162,7 @@ class ClusterIAMMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region in which the cluster belongs. If it
         is not provided, the provider will use a default.
@@ -171,7 +171,7 @@ class ClusterIAMMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def role(self) -> str:
+    def role(self) -> pulumi.Output[str]:
         """
         The role that should be applied. Only one
         `dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format

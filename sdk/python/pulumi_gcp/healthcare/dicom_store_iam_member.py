@@ -15,7 +15,7 @@ __all__ = ['DicomStoreIamMember']
 
 class DicomStoreIamMember(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  condition: Optional[pulumi.Input[pulumi.InputType['DicomStoreIamMemberConditionArgs']]] = None,
                  dicom_store_id: Optional[pulumi.Input[str]] = None,
@@ -117,12 +117,12 @@ class DicomStoreIamMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional['outputs.DicomStoreIamMemberCondition']:
+    def condition(self) -> pulumi.Output[Optional['outputs.DicomStoreIamMemberCondition']]:
         return pulumi.get(self, "condition")
 
     @property
     @pulumi.getter(name="dicomStoreId")
-    def dicom_store_id(self) -> str:
+    def dicom_store_id(self) -> pulumi.Output[str]:
         """
         The DICOM store ID, in the form
         `{project_id}/{location_name}/{dataset_name}/{dicom_store_name}` or
@@ -133,7 +133,7 @@ class DicomStoreIamMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def etag(self) -> str:
+    def etag(self) -> pulumi.Output[str]:
         """
         (Computed) The etag of the DICOM store's IAM policy.
         """
@@ -141,12 +141,12 @@ class DicomStoreIamMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def member(self) -> str:
+    def member(self) -> pulumi.Output[str]:
         return pulumi.get(self, "member")
 
     @property
     @pulumi.getter
-    def role(self) -> str:
+    def role(self) -> pulumi.Output[str]:
         """
         The role that should be applied. Only one
         `healthcare.DicomStoreIamBinding` can be used per role. Note that custom roles must be of the format

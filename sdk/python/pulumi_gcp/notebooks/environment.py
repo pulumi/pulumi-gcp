@@ -15,7 +15,7 @@ __all__ = ['Environment']
 
 class Environment(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  container_image: Optional[pulumi.Input[pulumi.InputType['EnvironmentContainerImageArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -132,7 +132,7 @@ class Environment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="containerImage")
-    def container_image(self) -> Optional['outputs.EnvironmentContainerImage']:
+    def container_image(self) -> pulumi.Output[Optional['outputs.EnvironmentContainerImage']]:
         """
         Use a container image to start the notebook instance.
         Structure is documented below.
@@ -141,7 +141,7 @@ class Environment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> str:
+    def create_time(self) -> pulumi.Output[str]:
         """
         Instance creation time
         """
@@ -149,7 +149,7 @@ class Environment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A brief description of this environment.
         """
@@ -157,7 +157,7 @@ class Environment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[str]:
+    def display_name(self) -> pulumi.Output[Optional[str]]:
         """
         Display name of this environment for the UI.
         """
@@ -165,7 +165,7 @@ class Environment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def location(self) -> str:
+    def location(self) -> pulumi.Output[str]:
         """
         A reference to the zone where the machine resides.
         """
@@ -173,7 +173,7 @@ class Environment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name specified for the Environment instance.
         Format: projects/{project_id}/locations/{location}/environments/{environmentId}
@@ -182,7 +182,7 @@ class Environment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="postStartupScript")
-    def post_startup_script(self) -> Optional[str]:
+    def post_startup_script(self) -> pulumi.Output[Optional[str]]:
         """
         Path to a Bash script that automatically runs after a notebook instance fully boots up.
         The path must be a URL or Cloud Storage path. Example: "gs://path-to-file/file-name"
@@ -191,7 +191,7 @@ class Environment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The name of the Google Cloud project that this VM image belongs to.
         Format: projects/{project_id}
@@ -200,7 +200,7 @@ class Environment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vmImage")
-    def vm_image(self) -> Optional['outputs.EnvironmentVmImage']:
+    def vm_image(self) -> pulumi.Output[Optional['outputs.EnvironmentVmImage']]:
         """
         Use a Compute Engine VM image to start the notebook instance.
         Structure is documented below.

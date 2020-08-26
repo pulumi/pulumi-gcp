@@ -15,7 +15,7 @@ __all__ = ['OrganizationSink']
 
 class OrganizationSink(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bigquery_options: Optional[pulumi.Input[pulumi.InputType['OrganizationSinkBigqueryOptionsArgs']]] = None,
                  destination: Optional[pulumi.Input[str]] = None,
@@ -127,7 +127,7 @@ class OrganizationSink(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="bigqueryOptions")
-    def bigquery_options(self) -> 'outputs.OrganizationSinkBigqueryOptions':
+    def bigquery_options(self) -> pulumi.Output['outputs.OrganizationSinkBigqueryOptions']:
         """
         Options that affect sinks exporting data to BigQuery. Structure documented below.
         """
@@ -135,7 +135,7 @@ class OrganizationSink(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def destination(self) -> str:
+    def destination(self) -> pulumi.Output[str]:
         """
         The destination of the sink (or, in other words, where logs are written to). Can be a
         Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
@@ -144,7 +144,7 @@ class OrganizationSink(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def filter(self) -> Optional[str]:
+    def filter(self) -> pulumi.Output[Optional[str]]:
         """
         The filter to apply when exporting logs. Only log entries that match the filter are exported.
         See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
@@ -154,7 +154,7 @@ class OrganizationSink(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="includeChildren")
-    def include_children(self) -> Optional[bool]:
+    def include_children(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether or not to include children organizations in the sink export. If true, logs
         associated with child projects are also exported; otherwise only logs relating to the provided organization are included.
@@ -163,7 +163,7 @@ class OrganizationSink(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the logging sink.
         """
@@ -171,7 +171,7 @@ class OrganizationSink(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> str:
+    def org_id(self) -> pulumi.Output[str]:
         """
         The numeric ID of the organization to be exported to the sink.
         """
@@ -179,7 +179,7 @@ class OrganizationSink(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="writerIdentity")
-    def writer_identity(self) -> str:
+    def writer_identity(self) -> pulumi.Output[str]:
         """
         The identity associated with this sink. This identity must be granted write access to the
         configured `destination`.

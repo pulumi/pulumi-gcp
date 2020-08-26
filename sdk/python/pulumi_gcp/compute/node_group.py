@@ -15,7 +15,7 @@ __all__ = ['NodeGroup']
 
 class NodeGroup(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  autoscaling_policy: Optional[pulumi.Input[pulumi.InputType['NodeGroupAutoscalingPolicyArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -144,7 +144,7 @@ class NodeGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoscalingPolicy")
-    def autoscaling_policy(self) -> 'outputs.NodeGroupAutoscalingPolicy':
+    def autoscaling_policy(self) -> pulumi.Output['outputs.NodeGroupAutoscalingPolicy']:
         """
         -
         If you use sole-tenant nodes for your workloads, you can use the node
@@ -155,7 +155,7 @@ class NodeGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> str:
+    def creation_timestamp(self) -> pulumi.Output[str]:
         """
         Creation timestamp in RFC3339 text format.
         """
@@ -163,7 +163,7 @@ class NodeGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         An optional textual description of the resource.
         """
@@ -171,7 +171,7 @@ class NodeGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the resource.
         """
@@ -179,7 +179,7 @@ class NodeGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nodeTemplate")
-    def node_template(self) -> str:
+    def node_template(self) -> pulumi.Output[str]:
         """
         The URL of the node template to which this node group belongs.
         """
@@ -187,7 +187,7 @@ class NodeGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -196,7 +196,7 @@ class NodeGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         """
         The URI of the created resource.
         """
@@ -204,7 +204,7 @@ class NodeGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def size(self) -> float:
+    def size(self) -> pulumi.Output[float]:
         """
         The total number of nodes in the node group.
         """
@@ -212,7 +212,7 @@ class NodeGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def zone(self) -> str:
+    def zone(self) -> pulumi.Output[str]:
         """
         Zone where this node group is located
         """

@@ -15,7 +15,7 @@ __all__ = ['DatasetIamBinding']
 
 class DatasetIamBinding(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  condition: Optional[pulumi.Input[pulumi.InputType['DatasetIamBindingConditionArgs']]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
@@ -123,12 +123,12 @@ class DatasetIamBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional['outputs.DatasetIamBindingCondition']:
+    def condition(self) -> pulumi.Output[Optional['outputs.DatasetIamBindingCondition']]:
         return pulumi.get(self, "condition")
 
     @property
     @pulumi.getter(name="datasetId")
-    def dataset_id(self) -> str:
+    def dataset_id(self) -> pulumi.Output[str]:
         """
         The dataset ID.
         """
@@ -136,7 +136,7 @@ class DatasetIamBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def etag(self) -> str:
+    def etag(self) -> pulumi.Output[str]:
         """
         (Computed) The etag of the dataset's IAM policy.
         """
@@ -144,17 +144,17 @@ class DatasetIamBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def members(self) -> List[str]:
+    def members(self) -> pulumi.Output[List[str]]:
         return pulumi.get(self, "members")
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter
-    def role(self) -> str:
+    def role(self) -> pulumi.Output[str]:
         """
         The role that should be applied. Only one
         `bigquery.DatasetIamBinding` can be used per role. Note that custom roles must be of the format

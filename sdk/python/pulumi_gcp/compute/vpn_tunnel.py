@@ -13,7 +13,7 @@ __all__ = ['VPNTunnel']
 
 class VPNTunnel(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ike_version: Optional[pulumi.Input[float]] = None,
@@ -253,7 +253,7 @@ class VPNTunnel(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> str:
+    def creation_timestamp(self) -> pulumi.Output[str]:
         """
         Creation timestamp in RFC3339 text format.
         """
@@ -261,7 +261,7 @@ class VPNTunnel(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         An optional description of this resource.
         """
@@ -269,7 +269,7 @@ class VPNTunnel(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="detailedStatus")
-    def detailed_status(self) -> str:
+    def detailed_status(self) -> pulumi.Output[str]:
         """
         Detailed status message for the VPN tunnel.
         """
@@ -277,7 +277,7 @@ class VPNTunnel(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ikeVersion")
-    def ike_version(self) -> Optional[float]:
+    def ike_version(self) -> pulumi.Output[Optional[float]]:
         """
         IKE protocol version to use when establishing the VPN tunnel with
         peer VPN gateway.
@@ -287,7 +287,7 @@ class VPNTunnel(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="labelFingerprint")
-    def label_fingerprint(self) -> str:
+    def label_fingerprint(self) -> pulumi.Output[str]:
         """
         The fingerprint used for optimistic locking of this resource. Used internally during updates.
         """
@@ -295,7 +295,7 @@ class VPNTunnel(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, str]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Labels to apply to this VpnTunnel.
         """
@@ -303,7 +303,7 @@ class VPNTunnel(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="localTrafficSelectors")
-    def local_traffic_selectors(self) -> List[str]:
+    def local_traffic_selectors(self) -> pulumi.Output[List[str]]:
         """
         Local traffic selector to use when establishing the VPN tunnel with
         peer VPN gateway. The value should be a CIDR formatted string,
@@ -314,7 +314,7 @@ class VPNTunnel(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the resource. The name must be 1-63 characters long, and
         comply with RFC1035. Specifically, the name must be 1-63
@@ -328,7 +328,7 @@ class VPNTunnel(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="peerExternalGateway")
-    def peer_external_gateway(self) -> Optional[str]:
+    def peer_external_gateway(self) -> pulumi.Output[Optional[str]]:
         """
         URL of the peer side external VPN gateway to which this VPN tunnel is connected.
         """
@@ -336,7 +336,7 @@ class VPNTunnel(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="peerExternalGatewayInterface")
-    def peer_external_gateway_interface(self) -> Optional[float]:
+    def peer_external_gateway_interface(self) -> pulumi.Output[Optional[float]]:
         """
         The interface ID of the external VPN gateway to which this VPN tunnel is connected.
         """
@@ -344,7 +344,7 @@ class VPNTunnel(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="peerGcpGateway")
-    def peer_gcp_gateway(self) -> Optional[str]:
+    def peer_gcp_gateway(self) -> pulumi.Output[Optional[str]]:
         """
         URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected.
         If provided, the VPN tunnel will automatically use the same vpn_gateway_interface
@@ -355,7 +355,7 @@ class VPNTunnel(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="peerIp")
-    def peer_ip(self) -> str:
+    def peer_ip(self) -> pulumi.Output[str]:
         """
         IP address of the peer VPN gateway. Only IPv4 is supported.
         """
@@ -363,7 +363,7 @@ class VPNTunnel(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -372,7 +372,7 @@ class VPNTunnel(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region where the tunnel is located. If unset, is set to the region of `target_vpn_gateway`.
         """
@@ -380,7 +380,7 @@ class VPNTunnel(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="remoteTrafficSelectors")
-    def remote_traffic_selectors(self) -> List[str]:
+    def remote_traffic_selectors(self) -> pulumi.Output[List[str]]:
         """
         Remote traffic selector to use when establishing the VPN tunnel with
         peer VPN gateway. The value should be a CIDR formatted string,
@@ -391,7 +391,7 @@ class VPNTunnel(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def router(self) -> Optional[str]:
+    def router(self) -> pulumi.Output[Optional[str]]:
         """
         URL of router resource to be used for dynamic routing.
         """
@@ -399,7 +399,7 @@ class VPNTunnel(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         """
         The URI of the created resource.
         """
@@ -407,7 +407,7 @@ class VPNTunnel(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sharedSecret")
-    def shared_secret(self) -> str:
+    def shared_secret(self) -> pulumi.Output[str]:
         """
         Shared secret used to set the secure session between the Cloud VPN
         gateway and the peer VPN gateway.
@@ -417,7 +417,7 @@ class VPNTunnel(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sharedSecretHash")
-    def shared_secret_hash(self) -> str:
+    def shared_secret_hash(self) -> pulumi.Output[str]:
         """
         Hash of the shared secret.
         """
@@ -425,7 +425,7 @@ class VPNTunnel(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="targetVpnGateway")
-    def target_vpn_gateway(self) -> Optional[str]:
+    def target_vpn_gateway(self) -> pulumi.Output[Optional[str]]:
         """
         URL of the Target VPN gateway with which this VPN tunnel is
         associated.
@@ -434,7 +434,7 @@ class VPNTunnel(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tunnelId")
-    def tunnel_id(self) -> str:
+    def tunnel_id(self) -> pulumi.Output[str]:
         """
         The unique identifier for the resource. This identifier is defined by the server.
         """
@@ -442,7 +442,7 @@ class VPNTunnel(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vpnGateway")
-    def vpn_gateway(self) -> Optional[str]:
+    def vpn_gateway(self) -> pulumi.Output[Optional[str]]:
         """
         URL of the VPN gateway with which this VPN tunnel is associated.
         This must be used if a High Availability VPN gateway resource is created.
@@ -452,7 +452,7 @@ class VPNTunnel(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vpnGatewayInterface")
-    def vpn_gateway_interface(self) -> Optional[float]:
+    def vpn_gateway_interface(self) -> pulumi.Output[Optional[float]]:
         """
         The interface ID of the VPN gateway with which this VPN tunnel is associated.
         """

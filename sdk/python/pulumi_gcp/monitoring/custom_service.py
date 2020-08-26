@@ -15,7 +15,7 @@ __all__ = ['CustomService']
 
 class CustomService(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -115,7 +115,7 @@ class CustomService(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[str]:
+    def display_name(self) -> pulumi.Output[Optional[str]]:
         """
         Name used for UI elements listing this Service.
         """
@@ -123,7 +123,7 @@ class CustomService(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The full resource name for this service. The syntax is: projects/[PROJECT_ID]/services/[SERVICE_ID].
         """
@@ -131,7 +131,7 @@ class CustomService(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -140,7 +140,7 @@ class CustomService(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceId")
-    def service_id(self) -> str:
+    def service_id(self) -> pulumi.Output[str]:
         """
         An optional service ID to use. If not given, the server will generate a
         service ID.
@@ -149,7 +149,7 @@ class CustomService(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def telemetry(self) -> Optional['outputs.CustomServiceTelemetry']:
+    def telemetry(self) -> pulumi.Output[Optional['outputs.CustomServiceTelemetry']]:
         """
         Configuration for how to query telemetry on a Service.
         Structure is documented below.

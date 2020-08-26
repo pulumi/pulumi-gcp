@@ -13,7 +13,7 @@ __all__ = ['NetworkPeering']
 
 class NetworkPeering(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  export_custom_routes: Optional[pulumi.Input[bool]] = None,
                  export_subnet_routes_with_public_ip: Optional[pulumi.Input[bool]] = None,
@@ -132,7 +132,7 @@ class NetworkPeering(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="exportCustomRoutes")
-    def export_custom_routes(self) -> Optional[bool]:
+    def export_custom_routes(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to export the custom routes to the peer network. Defaults to `false`.
         """
@@ -140,7 +140,7 @@ class NetworkPeering(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="exportSubnetRoutesWithPublicIp")
-    def export_subnet_routes_with_public_ip(self) -> Optional[bool]:
+    def export_subnet_routes_with_public_ip(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
         """
@@ -148,7 +148,7 @@ class NetworkPeering(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="importCustomRoutes")
-    def import_custom_routes(self) -> Optional[bool]:
+    def import_custom_routes(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to import the custom routes from the peer network. Defaults to `false`.
         """
@@ -156,7 +156,7 @@ class NetworkPeering(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="importSubnetRoutesWithPublicIp")
-    def import_subnet_routes_with_public_ip(self) -> Optional[bool]:
+    def import_subnet_routes_with_public_ip(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
         """
@@ -164,7 +164,7 @@ class NetworkPeering(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the peering.
         """
@@ -172,7 +172,7 @@ class NetworkPeering(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def network(self) -> str:
+    def network(self) -> pulumi.Output[str]:
         """
         The primary network of the peering.
         """
@@ -180,7 +180,7 @@ class NetworkPeering(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="peerNetwork")
-    def peer_network(self) -> str:
+    def peer_network(self) -> pulumi.Output[str]:
         """
         The peer network in the peering. The peer network
         may belong to a different project.
@@ -189,7 +189,7 @@ class NetworkPeering(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def state(self) -> str:
+    def state(self) -> pulumi.Output[str]:
         """
         State for the peering, either `ACTIVE` or `INACTIVE`. The peering is
         `ACTIVE` when there's a matching configuration in the peer network.
@@ -198,7 +198,7 @@ class NetworkPeering(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="stateDetails")
-    def state_details(self) -> str:
+    def state_details(self) -> pulumi.Output[str]:
         """
         Details about the current state of the peering.
         """

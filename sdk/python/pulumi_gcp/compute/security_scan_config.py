@@ -15,7 +15,7 @@ __all__ = ['SecurityScanConfig']
 
 class SecurityScanConfig(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authentication: Optional[pulumi.Input[pulumi.InputType['SecurityScanConfigAuthenticationArgs']]] = None,
                  blacklist_patterns: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -170,7 +170,7 @@ class SecurityScanConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def authentication(self) -> Optional['outputs.SecurityScanConfigAuthentication']:
+    def authentication(self) -> pulumi.Output[Optional['outputs.SecurityScanConfigAuthentication']]:
         """
         The authentication configuration.
         If specified, service will use the authentication configuration during scanning.
@@ -180,7 +180,7 @@ class SecurityScanConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="blacklistPatterns")
-    def blacklist_patterns(self) -> Optional[List[str]]:
+    def blacklist_patterns(self) -> pulumi.Output[Optional[List[str]]]:
         """
         The blacklist URL patterns as described in
         https://cloud.google.com/security-scanner/docs/excluded-urls
@@ -189,7 +189,7 @@ class SecurityScanConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> str:
+    def display_name(self) -> pulumi.Output[str]:
         """
         The user provider display name of the ScanConfig.
         """
@@ -197,7 +197,7 @@ class SecurityScanConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="exportToSecurityCommandCenter")
-    def export_to_security_command_center(self) -> Optional[str]:
+    def export_to_security_command_center(self) -> pulumi.Output[Optional[str]]:
         """
         Controls export of scan configurations and results to Cloud Security Command Center.
         Default value is `ENABLED`.
@@ -207,7 +207,7 @@ class SecurityScanConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxQps")
-    def max_qps(self) -> Optional[float]:
+    def max_qps(self) -> pulumi.Output[Optional[float]]:
         """
         The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
         Defaults to 15.
@@ -216,7 +216,7 @@ class SecurityScanConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         A server defined name for this index. Format: 'projects/{{project}}/scanConfigs/{{server_generated_id}}'
         """
@@ -224,7 +224,7 @@ class SecurityScanConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -233,7 +233,7 @@ class SecurityScanConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def schedule(self) -> Optional['outputs.SecurityScanConfigSchedule']:
+    def schedule(self) -> pulumi.Output[Optional['outputs.SecurityScanConfigSchedule']]:
         """
         The schedule of the ScanConfig
         Structure is documented below.
@@ -242,7 +242,7 @@ class SecurityScanConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="startingUrls")
-    def starting_urls(self) -> List[str]:
+    def starting_urls(self) -> pulumi.Output[List[str]]:
         """
         The starting URLs from which the scanner finds site pages.
         """
@@ -250,7 +250,7 @@ class SecurityScanConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="targetPlatforms")
-    def target_platforms(self) -> Optional[List[str]]:
+    def target_platforms(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
         Each value may be one of `APP_ENGINE` and `COMPUTE`.
@@ -259,7 +259,7 @@ class SecurityScanConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userAgent")
-    def user_agent(self) -> Optional[str]:
+    def user_agent(self) -> pulumi.Output[Optional[str]]:
         """
         Type of the user agents used for scanning
         Default value is `CHROME_LINUX`.

@@ -15,7 +15,7 @@ __all__ = ['RegionDisk']
 
 class RegionDisk(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['RegionDiskDiskEncryptionKeyArgs']]] = None,
@@ -272,7 +272,7 @@ class RegionDisk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> str:
+    def creation_timestamp(self) -> pulumi.Output[str]:
         """
         Creation timestamp in RFC3339 text format.
         """
@@ -280,7 +280,7 @@ class RegionDisk(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         An optional description of this resource. Provide this property when
         you create the resource.
@@ -289,7 +289,7 @@ class RegionDisk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="diskEncryptionKey")
-    def disk_encryption_key(self) -> Optional['outputs.RegionDiskDiskEncryptionKey']:
+    def disk_encryption_key(self) -> pulumi.Output[Optional['outputs.RegionDiskDiskEncryptionKey']]:
         """
         Encrypts the disk using a customer-supplied encryption key.
         After you encrypt a disk with a customer-supplied key, you must
@@ -306,7 +306,7 @@ class RegionDisk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="labelFingerprint")
-    def label_fingerprint(self) -> str:
+    def label_fingerprint(self) -> pulumi.Output[str]:
         """
         The fingerprint used for optimistic locking of this resource. Used internally during updates.
         """
@@ -314,7 +314,7 @@ class RegionDisk(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, str]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Labels to apply to this disk.  A list of key->value pairs.
         """
@@ -322,7 +322,7 @@ class RegionDisk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lastAttachTimestamp")
-    def last_attach_timestamp(self) -> str:
+    def last_attach_timestamp(self) -> pulumi.Output[str]:
         """
         Last attach timestamp in RFC3339 text format.
         """
@@ -330,7 +330,7 @@ class RegionDisk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lastDetachTimestamp")
-    def last_detach_timestamp(self) -> str:
+    def last_detach_timestamp(self) -> pulumi.Output[str]:
         """
         Last detach timestamp in RFC3339 text format.
         """
@@ -338,7 +338,7 @@ class RegionDisk(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the resource. Provided by the client when the resource is
         created. The name must be 1-63 characters long, and comply with
@@ -352,7 +352,7 @@ class RegionDisk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="physicalBlockSizeBytes")
-    def physical_block_size_bytes(self) -> float:
+    def physical_block_size_bytes(self) -> pulumi.Output[float]:
         """
         Physical block size of the persistent disk, in bytes. If not present
         in a request, a default value is used. Currently supported sizes
@@ -364,7 +364,7 @@ class RegionDisk(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -373,7 +373,7 @@ class RegionDisk(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         A reference to the region where the disk resides.
         """
@@ -381,7 +381,7 @@ class RegionDisk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="replicaZones")
-    def replica_zones(self) -> List[str]:
+    def replica_zones(self) -> pulumi.Output[List[str]]:
         """
         URLs of the zones where the disk should be replicated to.
         """
@@ -389,7 +389,7 @@ class RegionDisk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         """
         The URI of the created resource.
         """
@@ -397,7 +397,7 @@ class RegionDisk(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def size(self) -> float:
+    def size(self) -> pulumi.Output[float]:
         """
         Size of the persistent disk, specified in GB. You can specify this
         field when creating a persistent disk using the sourceImage or
@@ -411,7 +411,7 @@ class RegionDisk(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def snapshot(self) -> Optional[str]:
+    def snapshot(self) -> pulumi.Output[Optional[str]]:
         """
         The source snapshot used to create this disk. You can provide this as
         a partial or full URL to the resource. For example, the following are
@@ -425,7 +425,7 @@ class RegionDisk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceSnapshotEncryptionKey")
-    def source_snapshot_encryption_key(self) -> Optional['outputs.RegionDiskSourceSnapshotEncryptionKey']:
+    def source_snapshot_encryption_key(self) -> pulumi.Output[Optional['outputs.RegionDiskSourceSnapshotEncryptionKey']]:
         """
         The customer-supplied encryption key of the source snapshot. Required
         if the source snapshot is protected by a customer-supplied encryption
@@ -436,7 +436,7 @@ class RegionDisk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceSnapshotId")
-    def source_snapshot_id(self) -> str:
+    def source_snapshot_id(self) -> pulumi.Output[str]:
         """
         The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create
         this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and
@@ -446,7 +446,7 @@ class RegionDisk(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[str]:
+    def type(self) -> pulumi.Output[Optional[str]]:
         """
         URL of the disk type resource describing which disk type to use to
         create the disk. Provide this when creating the disk.
@@ -455,7 +455,7 @@ class RegionDisk(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def users(self) -> List[str]:
+    def users(self) -> pulumi.Output[List[str]]:
         """
         Links to the users of the disk (attached instances) in form: project/zones/zone/instances/instance
         """

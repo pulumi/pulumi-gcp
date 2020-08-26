@@ -15,7 +15,7 @@ __all__ = ['TagTemplate']
 
 class TagTemplate(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  fields: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['TagTemplateFieldArgs']]]]] = None,
@@ -127,7 +127,7 @@ class TagTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[str]:
+    def display_name(self) -> pulumi.Output[Optional[str]]:
         """
         The display name for this template.
         """
@@ -135,7 +135,7 @@ class TagTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def fields(self) -> List['outputs.TagTemplateField']:
+    def fields(self) -> pulumi.Output[List['outputs.TagTemplateField']]:
         """
         Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields.
         Structure is documented below.
@@ -144,7 +144,7 @@ class TagTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="forceDelete")
-    def force_delete(self) -> Optional[bool]:
+    def force_delete(self) -> pulumi.Output[Optional[bool]]:
         """
         This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
         """
@@ -152,7 +152,7 @@ class TagTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         -
         The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
@@ -161,7 +161,7 @@ class TagTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -170,7 +170,7 @@ class TagTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         Template location region.
         """
@@ -178,7 +178,7 @@ class TagTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tagTemplateId")
-    def tag_template_id(self) -> str:
+    def tag_template_id(self) -> pulumi.Output[str]:
         """
         The id of the tag template to create.
         """

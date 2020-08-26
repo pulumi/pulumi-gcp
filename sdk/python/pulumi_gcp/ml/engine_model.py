@@ -15,7 +15,7 @@ __all__ = ['EngineModel']
 
 class EngineModel(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  default_version: Optional[pulumi.Input[pulumi.InputType['EngineModelDefaultVersionArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -130,7 +130,7 @@ class EngineModel(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultVersion")
-    def default_version(self) -> Optional['outputs.EngineModelDefaultVersion']:
+    def default_version(self) -> pulumi.Output[Optional['outputs.EngineModelDefaultVersion']]:
         """
         The default version of the model. This version will be used to handle
         prediction requests that do not specify a version.
@@ -140,7 +140,7 @@ class EngineModel(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The description specified for the model when it was created.
         """
@@ -148,7 +148,7 @@ class EngineModel(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, str]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         One or more labels that you can add, to organize your models.
         """
@@ -156,7 +156,7 @@ class EngineModel(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name specified for the version when it was created.
         """
@@ -164,7 +164,7 @@ class EngineModel(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="onlinePredictionConsoleLogging")
-    def online_prediction_console_logging(self) -> Optional[bool]:
+    def online_prediction_console_logging(self) -> pulumi.Output[Optional[bool]]:
         """
         If true, online prediction nodes send stderr and stdout streams to Stackdriver Logging
         """
@@ -172,7 +172,7 @@ class EngineModel(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="onlinePredictionLogging")
-    def online_prediction_logging(self) -> Optional[bool]:
+    def online_prediction_logging(self) -> pulumi.Output[Optional[bool]]:
         """
         If true, online prediction access logs are sent to StackDriver Logging.
         """
@@ -180,7 +180,7 @@ class EngineModel(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -189,7 +189,7 @@ class EngineModel(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def regions(self) -> Optional[str]:
+    def regions(self) -> pulumi.Output[Optional[str]]:
         """
         The list of regions where the model is going to be deployed.
         Currently only one region per model is supported

@@ -15,7 +15,7 @@ __all__ = ['IAMBinding']
 
 class IAMBinding(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  condition: Optional[pulumi.Input[pulumi.InputType['IAMBindingConditionArgs']]] = None,
                  members: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -117,7 +117,7 @@ class IAMBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional['outputs.IAMBindingCondition']:
+    def condition(self) -> pulumi.Output[Optional['outputs.IAMBindingCondition']]:
         """
         An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
@@ -126,7 +126,7 @@ class IAMBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def etag(self) -> str:
+    def etag(self) -> pulumi.Output[str]:
         """
         (Computed) The etag of the service account IAM policy.
         """
@@ -134,12 +134,12 @@ class IAMBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def members(self) -> List[str]:
+    def members(self) -> pulumi.Output[List[str]]:
         return pulumi.get(self, "members")
 
     @property
     @pulumi.getter
-    def role(self) -> str:
+    def role(self) -> pulumi.Output[str]:
         """
         The role that should be applied. Only one
         `serviceAccount.IAMBinding` can be used per role. Note that custom roles must be of the format
@@ -149,7 +149,7 @@ class IAMBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceAccountId")
-    def service_account_id(self) -> str:
+    def service_account_id(self) -> pulumi.Output[str]:
         """
         The fully-qualified name of the service account to apply policy to.
         """

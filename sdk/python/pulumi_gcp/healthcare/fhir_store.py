@@ -15,7 +15,7 @@ __all__ = ['FhirStore']
 
 class FhirStore(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dataset: Optional[pulumi.Input[str]] = None,
                  disable_referential_integrity: Optional[pulumi.Input[bool]] = None,
@@ -220,7 +220,7 @@ class FhirStore(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def dataset(self) -> str:
+    def dataset(self) -> pulumi.Output[str]:
         """
         Identifies the dataset addressed by this request. Must be in the format
         'projects/{project}/locations/{location}/datasets/{dataset}'
@@ -229,7 +229,7 @@ class FhirStore(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="disableReferentialIntegrity")
-    def disable_referential_integrity(self) -> Optional[bool]:
+    def disable_referential_integrity(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store
         creation. The default value is false, meaning that the API will enforce referential integrity and fail the
@@ -242,7 +242,7 @@ class FhirStore(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="disableResourceVersioning")
-    def disable_resource_versioning(self) -> Optional[bool]:
+    def disable_resource_versioning(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to disable resource versioning for this FHIR store. This field can not be changed after the creation
         of FHIR store. If set to false, which is the default behavior, all write operations will cause historical
@@ -255,7 +255,7 @@ class FhirStore(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableHistoryImport")
-    def enable_history_import(self) -> Optional[bool]:
+    def enable_history_import(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to allow the bulk import API to accept history bundles and directly insert historical resource
         versions into the FHIR store. Importing resource histories creates resource interactions that appear to have
@@ -268,7 +268,7 @@ class FhirStore(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableUpdateCreate")
-    def enable_update_create(self) -> Optional[bool]:
+    def enable_update_create(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether this FHIR store has the updateCreate capability. This determines if the client can use an Update
         operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through
@@ -281,7 +281,7 @@ class FhirStore(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, str]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         User-supplied key-value pairs used to organize FHIR stores.
         Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
@@ -296,7 +296,7 @@ class FhirStore(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The resource name for the FhirStore.
         ** Changing this property may recreate the FHIR store (removing all data) **
@@ -305,7 +305,7 @@ class FhirStore(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="notificationConfig")
-    def notification_config(self) -> Optional['outputs.FhirStoreNotificationConfig']:
+    def notification_config(self) -> pulumi.Output[Optional['outputs.FhirStoreNotificationConfig']]:
         """
         A nested object resource
         Structure is documented below.
@@ -314,7 +314,7 @@ class FhirStore(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         """
         The fully qualified name of this dataset
         """
@@ -322,7 +322,7 @@ class FhirStore(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="streamConfigs")
-    def stream_configs(self) -> Optional[List['outputs.FhirStoreStreamConfig']]:
+    def stream_configs(self) -> pulumi.Output[Optional[List['outputs.FhirStoreStreamConfig']]]:
         """
         A list of streaming configs that configure the destinations of streaming export for every resource mutation in
         this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next
@@ -336,7 +336,7 @@ class FhirStore(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def version(self) -> Optional[str]:
+    def version(self) -> pulumi.Output[Optional[str]]:
         """
         The FHIR specification version.
         Default value is `STU3`.

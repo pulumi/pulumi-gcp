@@ -15,7 +15,7 @@ __all__ = ['Budget']
 
 class Budget(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  all_updates_rule: Optional[pulumi.Input[pulumi.InputType['BudgetAllUpdatesRuleArgs']]] = None,
                  amount: Optional[pulumi.Input[pulumi.InputType['BudgetAmountArgs']]] = None,
@@ -142,7 +142,7 @@ class Budget(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allUpdatesRule")
-    def all_updates_rule(self) -> Optional['outputs.BudgetAllUpdatesRule']:
+    def all_updates_rule(self) -> pulumi.Output[Optional['outputs.BudgetAllUpdatesRule']]:
         """
         Defines notifications that are sent on every update to the
         billing account's spend, regardless of the thresholds defined
@@ -153,7 +153,7 @@ class Budget(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def amount(self) -> 'outputs.BudgetAmount':
+    def amount(self) -> pulumi.Output['outputs.BudgetAmount']:
         """
         The budgeted amount for each usage period.
         Structure is documented below.
@@ -162,7 +162,7 @@ class Budget(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="billingAccount")
-    def billing_account(self) -> str:
+    def billing_account(self) -> pulumi.Output[str]:
         """
         ID of the billing account to set a budget on.
         """
@@ -170,7 +170,7 @@ class Budget(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="budgetFilter")
-    def budget_filter(self) -> Optional['outputs.BudgetBudgetFilter']:
+    def budget_filter(self) -> pulumi.Output[Optional['outputs.BudgetBudgetFilter']]:
         """
         Filters that define which resources are used to compute the actual
         spend against the budget.
@@ -180,7 +180,7 @@ class Budget(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[str]:
+    def display_name(self) -> pulumi.Output[Optional[str]]:
         """
         User data for display name in UI. Must be <= 60 chars.
         """
@@ -188,7 +188,7 @@ class Budget(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Resource name of the budget. The resource name implies the scope of a budget. Values are of the form
         billingAccounts/{billingAccountId}/budgets/{budgetId}.
@@ -197,7 +197,7 @@ class Budget(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="thresholdRules")
-    def threshold_rules(self) -> List['outputs.BudgetThresholdRule']:
+    def threshold_rules(self) -> pulumi.Output[List['outputs.BudgetThresholdRule']]:
         """
         Rules that trigger alerts (notifications of thresholds being
         crossed) when spend exceeds the specified percentages of the

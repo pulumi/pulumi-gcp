@@ -15,7 +15,7 @@ __all__ = ['DomainMapping']
 
 class DomainMapping(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[pulumi.InputType['DomainMappingMetadataArgs']]] = None,
@@ -123,7 +123,7 @@ class DomainMapping(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def location(self) -> str:
+    def location(self) -> pulumi.Output[str]:
         """
         The location of the cloud run instance. eg us-central1
         """
@@ -131,7 +131,7 @@ class DomainMapping(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def metadata(self) -> 'outputs.DomainMappingMetadata':
+    def metadata(self) -> pulumi.Output['outputs.DomainMappingMetadata']:
         """
         Metadata associated with this DomainMapping.
         Structure is documented below.
@@ -140,7 +140,7 @@ class DomainMapping(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name should be a verified domain
         """
@@ -148,7 +148,7 @@ class DomainMapping(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -157,7 +157,7 @@ class DomainMapping(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def spec(self) -> 'outputs.DomainMappingSpec':
+    def spec(self) -> pulumi.Output['outputs.DomainMappingSpec']:
         """
         The spec for this DomainMapping.
         Structure is documented below.
@@ -166,7 +166,7 @@ class DomainMapping(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> 'outputs.DomainMappingStatus':
+    def status(self) -> pulumi.Output['outputs.DomainMappingStatus']:
         """
         The current status of the DomainMapping.
         """

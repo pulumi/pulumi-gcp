@@ -13,7 +13,7 @@ __all__ = ['OrganizationExclusion']
 
 class OrganizationExclusion(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
@@ -112,7 +112,7 @@ class OrganizationExclusion(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A human-readable description.
         """
@@ -120,7 +120,7 @@ class OrganizationExclusion(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def disabled(self) -> Optional[bool]:
+    def disabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether this exclusion rule should be disabled or not. This defaults to
         false.
@@ -129,7 +129,7 @@ class OrganizationExclusion(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def filter(self) -> str:
+    def filter(self) -> pulumi.Output[str]:
         """
         The filter to apply when excluding logs. Only log entries that match the filter are excluded.
         See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced-filters) for information on how to
@@ -139,7 +139,7 @@ class OrganizationExclusion(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the logging exclusion.
         """
@@ -147,7 +147,7 @@ class OrganizationExclusion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> str:
+    def org_id(self) -> pulumi.Output[str]:
         """
         The organization to create the exclusion in.
         """

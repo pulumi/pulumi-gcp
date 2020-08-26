@@ -15,7 +15,7 @@ __all__ = ['Deployment']
 
 class Deployment(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  create_policy: Optional[pulumi.Input[str]] = None,
                  delete_policy: Optional[pulumi.Input[str]] = None,
@@ -195,7 +195,7 @@ class Deployment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createPolicy")
-    def create_policy(self) -> Optional[str]:
+    def create_policy(self) -> pulumi.Output[Optional[str]]:
         """
         Set the policy to use for creating new resources. Only used on
         create and update. Valid values are `CREATE_OR_ACQUIRE` (default) or
@@ -209,7 +209,7 @@ class Deployment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deletePolicy")
-    def delete_policy(self) -> Optional[str]:
+    def delete_policy(self) -> pulumi.Output[Optional[str]]:
         """
         Set the policy to use for deleting new resources on update/delete.
         Valid values are `DELETE` (default) or `ABANDON`. If `DELETE`,
@@ -224,7 +224,7 @@ class Deployment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deploymentId")
-    def deployment_id(self) -> str:
+    def deployment_id(self) -> pulumi.Output[str]:
         """
         Unique identifier for deployment. Output only.
         """
@@ -232,7 +232,7 @@ class Deployment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Optional user-provided description of deployment.
         """
@@ -240,7 +240,7 @@ class Deployment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[List['outputs.DeploymentLabel']]:
+    def labels(self) -> pulumi.Output[Optional[List['outputs.DeploymentLabel']]]:
         """
         Key-value pairs to apply to this labels.
         Structure is documented below.
@@ -249,7 +249,7 @@ class Deployment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def manifest(self) -> str:
+    def manifest(self) -> pulumi.Output[str]:
         """
         Output only. URL of the manifest representing the last manifest that was successfully deployed.
         """
@@ -257,7 +257,7 @@ class Deployment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the template to import, as declared in the YAML
         configuration.
@@ -266,7 +266,7 @@ class Deployment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def preview(self) -> Optional[bool]:
+    def preview(self) -> pulumi.Output[Optional[bool]]:
         """
         If set to true, a deployment is created with "shell" resources
         that are not actually instantiated. This allows you to preview a
@@ -281,7 +281,7 @@ class Deployment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -290,7 +290,7 @@ class Deployment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         """
         Output only. Server defined URL for the resource.
         """
@@ -298,7 +298,7 @@ class Deployment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def target(self) -> 'outputs.DeploymentTarget':
+    def target(self) -> pulumi.Output['outputs.DeploymentTarget']:
         """
         Parameters that define your deployment, including the deployment
         configuration and relevant templates.

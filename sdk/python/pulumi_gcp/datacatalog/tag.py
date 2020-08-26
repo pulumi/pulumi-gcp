@@ -15,7 +15,7 @@ __all__ = ['Tag']
 
 class Tag(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  column: Optional[pulumi.Input[str]] = None,
                  fields: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['TagFieldArgs']]]]] = None,
@@ -134,7 +134,7 @@ class Tag(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def column(self) -> Optional[str]:
+    def column(self) -> pulumi.Output[Optional[str]]:
         """
         Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an
         individual column based on that schema.
@@ -145,7 +145,7 @@ class Tag(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def fields(self) -> List['outputs.TagField']:
+    def fields(self) -> pulumi.Output[List['outputs.TagField']]:
         """
         This maps the ID of a tag field to the value of and additional information about that field.
         Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
@@ -155,7 +155,7 @@ class Tag(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The resource name of the tag in URL format. Example:
         projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}/tags/{tag_id} or
@@ -166,7 +166,7 @@ class Tag(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def parent(self) -> Optional[str]:
+    def parent(self) -> pulumi.Output[Optional[str]]:
         """
         The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
         all entries in that group.
@@ -175,7 +175,7 @@ class Tag(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def template(self) -> str:
+    def template(self) -> pulumi.Output[str]:
         """
         The resource name of the tag template that this tag uses. Example:
         projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}
@@ -185,7 +185,7 @@ class Tag(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="templateDisplayname")
-    def template_displayname(self) -> str:
+    def template_displayname(self) -> pulumi.Output[str]:
         """
         The display name of the tag template.
         """

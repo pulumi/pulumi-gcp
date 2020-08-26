@@ -15,7 +15,7 @@ __all__ = ['Cluster']
 
 class Cluster(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  addons_config: Optional[pulumi.Input[pulumi.InputType['ClusterAddonsConfigArgs']]] = None,
                  authenticator_groups_config: Optional[pulumi.Input[pulumi.InputType['ClusterAuthenticatorGroupsConfigArgs']]] = None,
@@ -578,7 +578,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="addonsConfig")
-    def addons_config(self) -> 'outputs.ClusterAddonsConfig':
+    def addons_config(self) -> pulumi.Output['outputs.ClusterAddonsConfig']:
         """
         The configuration for addons supported by GKE.
         Structure is documented below.
@@ -587,7 +587,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="authenticatorGroupsConfig")
-    def authenticator_groups_config(self) -> 'outputs.ClusterAuthenticatorGroupsConfig':
+    def authenticator_groups_config(self) -> pulumi.Output['outputs.ClusterAuthenticatorGroupsConfig']:
         """
         Configuration for the
         [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
@@ -597,7 +597,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterAutoscaling")
-    def cluster_autoscaling(self) -> 'outputs.ClusterClusterAutoscaling':
+    def cluster_autoscaling(self) -> pulumi.Output['outputs.ClusterClusterAutoscaling']:
         """
         Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
         automatically adjust the size of the cluster and create/delete node pools based
@@ -609,7 +609,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterIpv4Cidr")
-    def cluster_ipv4_cidr(self) -> str:
+    def cluster_ipv4_cidr(self) -> pulumi.Output[str]:
         """
         The IP address range of the Kubernetes pods
         in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
@@ -620,7 +620,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterTelemetry")
-    def cluster_telemetry(self) -> 'outputs.ClusterClusterTelemetry':
+    def cluster_telemetry(self) -> pulumi.Output['outputs.ClusterClusterTelemetry']:
         """
         ) Configuration for
         [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
@@ -630,7 +630,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="databaseEncryption")
-    def database_encryption(self) -> 'outputs.ClusterDatabaseEncryption':
+    def database_encryption(self) -> pulumi.Output['outputs.ClusterDatabaseEncryption']:
         """
         Structure is documented below.
         """
@@ -638,7 +638,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultMaxPodsPerNode")
-    def default_max_pods_per_node(self) -> float:
+    def default_max_pods_per_node(self) -> pulumi.Output[float]:
         """
         The default maximum number of pods
         per node in this cluster. This doesn't work on "routes-based" clusters, clusters
@@ -649,7 +649,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultSnatStatus")
-    def default_snat_status(self) -> 'outputs.ClusterDefaultSnatStatus':
+    def default_snat_status(self) -> pulumi.Output['outputs.ClusterDefaultSnatStatus']:
         """
         )
         [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig).
@@ -658,7 +658,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Description of the cluster.
         """
@@ -666,7 +666,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableBinaryAuthorization")
-    def enable_binary_authorization(self) -> Optional[bool]:
+    def enable_binary_authorization(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable Binary Authorization for this cluster.
         If enabled, all container images will be validated by Google Binary Authorization.
@@ -675,7 +675,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableIntranodeVisibility")
-    def enable_intranode_visibility(self) -> Optional[bool]:
+    def enable_intranode_visibility(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
         """
@@ -683,7 +683,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableKubernetesAlpha")
-    def enable_kubernetes_alpha(self) -> Optional[bool]:
+    def enable_kubernetes_alpha(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to enable Kubernetes Alpha features for
         this cluster. Note that when this option is enabled, the cluster cannot be upgraded
@@ -693,7 +693,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableLegacyAbac")
-    def enable_legacy_abac(self) -> Optional[bool]:
+    def enable_legacy_abac(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether the ABAC authorizer is enabled for this cluster.
         When enabled, identities in the system, including service accounts, nodes, and controllers,
@@ -704,7 +704,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableShieldedNodes")
-    def enable_shielded_nodes(self) -> Optional[bool]:
+    def enable_shielded_nodes(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `false`.
         """
@@ -712,7 +712,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableTpu")
-    def enable_tpu(self) -> Optional[bool]:
+    def enable_tpu(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to enable Cloud TPU resources in this cluster.
         See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
@@ -721,7 +721,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def endpoint(self) -> str:
+    def endpoint(self) -> pulumi.Output[str]:
         """
         The IP address of this cluster's Kubernetes master.
         """
@@ -729,7 +729,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="initialNodeCount")
-    def initial_node_count(self) -> Optional[float]:
+    def initial_node_count(self) -> pulumi.Output[Optional[float]]:
         """
         The number of nodes to create in this
         cluster's default node pool. In regional or multi-zonal clusters, this is the
@@ -742,7 +742,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceGroupUrls")
-    def instance_group_urls(self) -> List[str]:
+    def instance_group_urls(self) -> pulumi.Output[List[str]]:
         """
         List of instance group URLs which have been assigned
         to the cluster.
@@ -751,7 +751,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipAllocationPolicy")
-    def ip_allocation_policy(self) -> Optional['outputs.ClusterIpAllocationPolicy']:
+    def ip_allocation_policy(self) -> pulumi.Output[Optional['outputs.ClusterIpAllocationPolicy']]:
         """
         Configuration of cluster IP allocation for
         VPC-native clusters. Adding this block enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
@@ -762,7 +762,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="labelFingerprint")
-    def label_fingerprint(self) -> str:
+    def label_fingerprint(self) -> pulumi.Output[str]:
         """
         The fingerprint of the set of labels for this cluster.
         """
@@ -770,7 +770,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def location(self) -> str:
+    def location(self) -> pulumi.Output[str]:
         """
         The location (region or zone) in which the cluster
         master will be created, as well as the default node location. If you specify a
@@ -783,7 +783,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="loggingService")
-    def logging_service(self) -> str:
+    def logging_service(self) -> pulumi.Output[str]:
         """
         The logging service that the cluster should
         write logs to. Available options include `logging.googleapis.com`(Legacy Stackdriver),
@@ -793,7 +793,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maintenancePolicy")
-    def maintenance_policy(self) -> Optional['outputs.ClusterMaintenancePolicy']:
+    def maintenance_policy(self) -> pulumi.Output[Optional['outputs.ClusterMaintenancePolicy']]:
         """
         The maintenance policy to use for the cluster. Structure is
         documented below.
@@ -802,7 +802,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="masterAuth")
-    def master_auth(self) -> 'outputs.ClusterMasterAuth':
+    def master_auth(self) -> pulumi.Output['outputs.ClusterMasterAuth']:
         """
         The authentication information for accessing the
         Kubernetes master. Some values in this block are only returned by the API if
@@ -815,7 +815,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="masterAuthorizedNetworksConfig")
-    def master_authorized_networks_config(self) -> Optional['outputs.ClusterMasterAuthorizedNetworksConfig']:
+    def master_authorized_networks_config(self) -> pulumi.Output[Optional['outputs.ClusterMasterAuthorizedNetworksConfig']]:
         """
         The desired configuration options
         for master authorized networks. Omit the nested `cidr_blocks` attribute to disallow
@@ -825,7 +825,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="masterVersion")
-    def master_version(self) -> str:
+    def master_version(self) -> pulumi.Output[str]:
         """
         The current version of the master in the cluster. This may
         be different than the `min_master_version` set in the config if the master
@@ -835,7 +835,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minMasterVersion")
-    def min_master_version(self) -> Optional[str]:
+    def min_master_version(self) -> pulumi.Output[Optional[str]]:
         """
         The minimum version of the master. GKE
         will auto-update the master to new versions, so this does not guarantee the
@@ -851,7 +851,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="monitoringService")
-    def monitoring_service(self) -> str:
+    def monitoring_service(self) -> pulumi.Output[str]:
         """
         The monitoring service that the cluster
         should write metrics to.
@@ -865,7 +865,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the cluster, unique within the project and
         location.
@@ -874,7 +874,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def network(self) -> Optional[str]:
+    def network(self) -> pulumi.Output[Optional[str]]:
         """
         The name or self_link of the Google Compute Engine
         network to which the cluster is connected. For Shared VPC, set this to the self link of the
@@ -884,7 +884,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkPolicy")
-    def network_policy(self) -> 'outputs.ClusterNetworkPolicy':
+    def network_policy(self) -> pulumi.Output['outputs.ClusterNetworkPolicy']:
         """
         Configuration options for the
         [NetworkPolicy](https://kubernetes.io/docs/concepts/services-networking/networkpolicies/)
@@ -894,7 +894,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkingMode")
-    def networking_mode(self) -> str:
+    def networking_mode(self) -> pulumi.Output[str]:
         """
         Determines whether alias IPs or routes will be used for pod IPs in the cluster.
         Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
@@ -904,7 +904,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nodeConfig")
-    def node_config(self) -> 'outputs.ClusterNodeConfig':
+    def node_config(self) -> pulumi.Output['outputs.ClusterNodeConfig']:
         """
         Parameters used in creating the default node pool.
         Generally, this field should not be used at the same time as a
@@ -916,7 +916,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nodeLocations")
-    def node_locations(self) -> List[str]:
+    def node_locations(self) -> pulumi.Output[List[str]]:
         """
         The list of zones in which the cluster's nodes
         are located. Nodes must be in the region of their regional cluster or in the
@@ -927,7 +927,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nodePools")
-    def node_pools(self) -> List['outputs.ClusterNodePool']:
+    def node_pools(self) -> pulumi.Output[List['outputs.ClusterNodePool']]:
         """
         List of node pools associated with this cluster.
         See container.NodePool for schema.
@@ -940,7 +940,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nodeVersion")
-    def node_version(self) -> str:
+    def node_version(self) -> pulumi.Output[str]:
         """
         The Kubernetes version on the nodes. Must either be unset
         or set to the same value as `min_master_version` on create. Defaults to the default
@@ -955,12 +955,12 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def operation(self) -> str:
+    def operation(self) -> pulumi.Output[str]:
         return pulumi.get(self, "operation")
 
     @property
     @pulumi.getter(name="podSecurityPolicyConfig")
-    def pod_security_policy_config(self) -> Optional['outputs.ClusterPodSecurityPolicyConfig']:
+    def pod_security_policy_config(self) -> pulumi.Output[Optional['outputs.ClusterPodSecurityPolicyConfig']]:
         """
         Configuration for the
         [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
@@ -970,7 +970,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="privateClusterConfig")
-    def private_cluster_config(self) -> 'outputs.ClusterPrivateClusterConfig':
+    def private_cluster_config(self) -> pulumi.Output['outputs.ClusterPrivateClusterConfig']:
         """
         Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
         clusters with private nodes. Structure is documented below.
@@ -979,7 +979,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs. If it
         is not provided, the provider project is used.
@@ -988,7 +988,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="releaseChannel")
-    def release_channel(self) -> 'outputs.ClusterReleaseChannel':
+    def release_channel(self) -> pulumi.Output['outputs.ClusterReleaseChannel']:
         """
         Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
         feature, which provide more control over automatic upgrades of your GKE clusters.
@@ -1004,7 +1004,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="removeDefaultNodePool")
-    def remove_default_node_pool(self) -> Optional[bool]:
+    def remove_default_node_pool(self) -> pulumi.Output[Optional[bool]]:
         """
         If `true`, deletes the default node
         pool upon cluster creation. If you're using `container.NodePool`
@@ -1015,7 +1015,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceLabels")
-    def resource_labels(self) -> Optional[Mapping[str, str]]:
+    def resource_labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
         """
@@ -1023,7 +1023,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceUsageExportConfig")
-    def resource_usage_export_config(self) -> Optional['outputs.ClusterResourceUsageExportConfig']:
+    def resource_usage_export_config(self) -> pulumi.Output[Optional['outputs.ClusterResourceUsageExportConfig']]:
         """
         Configuration for the
         [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
@@ -1033,7 +1033,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="servicesIpv4Cidr")
-    def services_ipv4_cidr(self) -> str:
+    def services_ipv4_cidr(self) -> pulumi.Output[str]:
         """
         The IP address range of the Kubernetes services in this
         cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
@@ -1044,7 +1044,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def subnetwork(self) -> str:
+    def subnetwork(self) -> pulumi.Output[str]:
         """
         The name or self_link of the Google Compute Engine
         subnetwork in which the cluster's instances are launched.
@@ -1053,7 +1053,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tpuIpv4CidrBlock")
-    def tpu_ipv4_cidr_block(self) -> str:
+    def tpu_ipv4_cidr_block(self) -> pulumi.Output[str]:
         """
         The IP address range of the Cloud TPUs in this cluster, in
         [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
@@ -1063,7 +1063,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="verticalPodAutoscaling")
-    def vertical_pod_autoscaling(self) -> Optional['outputs.ClusterVerticalPodAutoscaling']:
+    def vertical_pod_autoscaling(self) -> pulumi.Output[Optional['outputs.ClusterVerticalPodAutoscaling']]:
         """
         Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
         Structure is documented below.
@@ -1072,7 +1072,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="workloadIdentityConfig")
-    def workload_identity_config(self) -> Optional['outputs.ClusterWorkloadIdentityConfig']:
+    def workload_identity_config(self) -> pulumi.Output[Optional['outputs.ClusterWorkloadIdentityConfig']]:
         """
         Workload Identity allows Kubernetes service accounts to act as a user-managed
         [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).

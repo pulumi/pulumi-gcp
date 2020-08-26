@@ -15,7 +15,7 @@ __all__ = ['Instance']
 
 class Instance(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  clusters: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceClusterArgs']]]]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
@@ -121,7 +121,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def clusters(self) -> List['outputs.InstanceCluster']:
+    def clusters(self) -> pulumi.Output[List['outputs.InstanceCluster']]:
         """
         A block of cluster configuration options. This can be specified at least once, and up to 4 times.
         See structure below.
@@ -130,7 +130,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[bool]:
+    def deletion_protection(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether or not to allow this provider to destroy the instance. Unless this field is set to false
         in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
@@ -139,7 +139,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> str:
+    def display_name(self) -> pulumi.Output[str]:
         """
         The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
         """
@@ -147,7 +147,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[str]:
+    def instance_type(self) -> pulumi.Output[Optional[str]]:
         """
         The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
         """
@@ -155,7 +155,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, str]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
         """
@@ -163,7 +163,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance.
         """
@@ -171,7 +171,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs. If it
         is not provided, the provider project is used.

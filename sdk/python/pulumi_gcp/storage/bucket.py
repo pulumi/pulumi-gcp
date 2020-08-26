@@ -15,7 +15,7 @@ __all__ = ['Bucket']
 
 class Bucket(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket_policy_only: Optional[pulumi.Input[bool]] = None,
                  cors: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['BucketCorArgs']]]]] = None,
@@ -190,7 +190,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="bucketPolicyOnly")
-    def bucket_policy_only(self) -> bool:
+    def bucket_policy_only(self) -> pulumi.Output[bool]:
         """
         Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket.
         """
@@ -198,7 +198,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def cors(self) -> Optional[List['outputs.BucketCor']]:
+    def cors(self) -> pulumi.Output[Optional[List['outputs.BucketCor']]]:
         """
         The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         """
@@ -206,12 +206,12 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultEventBasedHold")
-    def default_event_based_hold(self) -> Optional[bool]:
+    def default_event_based_hold(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "default_event_based_hold")
 
     @property
     @pulumi.getter
-    def encryption(self) -> Optional['outputs.BucketEncryption']:
+    def encryption(self) -> pulumi.Output[Optional['outputs.BucketEncryption']]:
         """
         The bucket's encryption configuration.
         """
@@ -219,7 +219,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="forceDestroy")
-    def force_destroy(self) -> Optional[bool]:
+    def force_destroy(self) -> pulumi.Output[Optional[bool]]:
         """
         When deleting a bucket, this
         boolean option will delete all contained objects. If you try to delete a
@@ -229,7 +229,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, str]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A set of key/value label pairs to assign to the bucket.
         """
@@ -237,7 +237,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lifecycleRules")
-    def lifecycle_rules(self) -> Optional[List['outputs.BucketLifecycleRule']]:
+    def lifecycle_rules(self) -> pulumi.Output[Optional[List['outputs.BucketLifecycleRule']]]:
         """
         The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         """
@@ -245,7 +245,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def location(self) -> Optional[str]:
+    def location(self) -> pulumi.Output[Optional[str]]:
         """
         The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
         """
@@ -253,7 +253,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def logging(self) -> Optional['outputs.BucketLogging']:
+    def logging(self) -> pulumi.Output[Optional['outputs.BucketLogging']]:
         """
         The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration.
         """
@@ -261,7 +261,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the bucket.
         """
@@ -269,7 +269,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs. If it
         is not provided, the provider project is used.
@@ -278,7 +278,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="requesterPays")
-    def requester_pays(self) -> Optional[bool]:
+    def requester_pays(self) -> pulumi.Output[Optional[bool]]:
         """
         Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
         """
@@ -286,7 +286,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="retentionPolicy")
-    def retention_policy(self) -> Optional['outputs.BucketRetentionPolicy']:
+    def retention_policy(self) -> pulumi.Output[Optional['outputs.BucketRetentionPolicy']]:
         """
         Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
         """
@@ -294,7 +294,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         """
         The URI of the created resource.
         """
@@ -302,7 +302,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="storageClass")
-    def storage_class(self) -> Optional[str]:
+    def storage_class(self) -> pulumi.Output[Optional[str]]:
         """
         The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
         """
@@ -310,7 +310,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def url(self) -> str:
+    def url(self) -> pulumi.Output[str]:
         """
         The base URL of the bucket, in the format `gs://<bucket-name>`.
         """
@@ -318,7 +318,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def versioning(self) -> Optional['outputs.BucketVersioning']:
+    def versioning(self) -> pulumi.Output[Optional['outputs.BucketVersioning']]:
         """
         The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.
         """
@@ -326,7 +326,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def website(self) -> Optional['outputs.BucketWebsite']:
+    def website(self) -> pulumi.Output[Optional['outputs.BucketWebsite']]:
         """
         Configuration if the bucket acts as a website. Structure is documented below.
         """

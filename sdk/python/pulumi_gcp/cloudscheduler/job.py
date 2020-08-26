@@ -15,7 +15,7 @@ __all__ = ['Job']
 
 class Job(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_engine_http_target: Optional[pulumi.Input[pulumi.InputType['JobAppEngineHttpTargetArgs']]] = None,
                  attempt_deadline: Optional[pulumi.Input[str]] = None,
@@ -190,7 +190,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="appEngineHttpTarget")
-    def app_engine_http_target(self) -> Optional['outputs.JobAppEngineHttpTarget']:
+    def app_engine_http_target(self) -> pulumi.Output[Optional['outputs.JobAppEngineHttpTarget']]:
         """
         App Engine HTTP target.
         If the job providers a App Engine HTTP target the cron will
@@ -201,7 +201,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="attemptDeadline")
-    def attempt_deadline(self) -> Optional[str]:
+    def attempt_deadline(self) -> pulumi.Output[Optional[str]]:
         """
         The deadline for job attempts. If the request handler does not respond by this deadline then the request is
         cancelled and the attempt is marked as a DEADLINE_EXCEEDED failure. The failed attempt can be viewed in
@@ -215,7 +215,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A human-readable description for the job.
         This string must not contain more than 500 characters.
@@ -224,7 +224,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="httpTarget")
-    def http_target(self) -> Optional['outputs.JobHttpTarget']:
+    def http_target(self) -> pulumi.Output[Optional['outputs.JobHttpTarget']]:
         """
         HTTP target.
         If the job providers a http_target the cron will
@@ -235,7 +235,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the job.
         """
@@ -243,7 +243,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -252,7 +252,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pubsubTarget")
-    def pubsub_target(self) -> Optional['outputs.JobPubsubTarget']:
+    def pubsub_target(self) -> pulumi.Output[Optional['outputs.JobPubsubTarget']]:
         """
         Pub/Sub target
         If the job providers a Pub/Sub target the cron will publish
@@ -263,7 +263,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         Region where the scheduler job resides. If it is not provided, Terraform will use the provider default.
         """
@@ -271,7 +271,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="retryConfig")
-    def retry_config(self) -> Optional['outputs.JobRetryConfig']:
+    def retry_config(self) -> pulumi.Output[Optional['outputs.JobRetryConfig']]:
         """
         By default, if a job does not complete successfully,
         meaning that an acknowledgement is not received from the handler,
@@ -282,7 +282,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def schedule(self) -> Optional[str]:
+    def schedule(self) -> pulumi.Output[Optional[str]]:
         """
         Describes the schedule on which the job will be executed.
         """
@@ -290,7 +290,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="timeZone")
-    def time_zone(self) -> Optional[str]:
+    def time_zone(self) -> pulumi.Output[Optional[str]]:
         """
         Specifies the time zone to be used in interpreting schedule.
         The value of this field must be a time zone name from the tz database.

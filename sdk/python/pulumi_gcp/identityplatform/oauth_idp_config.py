@@ -13,7 +13,7 @@ __all__ = ['OauthIdpConfig']
 
 class OauthIdpConfig(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
                  client_secret: Optional[pulumi.Input[str]] = None,
@@ -121,7 +121,7 @@ class OauthIdpConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clientId")
-    def client_id(self) -> str:
+    def client_id(self) -> pulumi.Output[str]:
         """
         The client id of an OAuth client.
         """
@@ -129,7 +129,7 @@ class OauthIdpConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clientSecret")
-    def client_secret(self) -> Optional[str]:
+    def client_secret(self) -> pulumi.Output[Optional[str]]:
         """
         The client secret of the OAuth client, to enable OIDC code flow.
         """
@@ -137,7 +137,7 @@ class OauthIdpConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[str]:
+    def display_name(self) -> pulumi.Output[Optional[str]]:
         """
         Human friendly display name.
         """
@@ -145,7 +145,7 @@ class OauthIdpConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enabled(self) -> Optional[bool]:
+    def enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         If this config allows users to sign in with the provider.
         """
@@ -153,7 +153,7 @@ class OauthIdpConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def issuer(self) -> str:
+    def issuer(self) -> pulumi.Output[str]:
         """
         For OIDC Idps, the issuer identifier.
         """
@@ -161,7 +161,7 @@ class OauthIdpConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the OauthIdpConfig. Must start with `oidc.`.
         """
@@ -169,7 +169,7 @@ class OauthIdpConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.

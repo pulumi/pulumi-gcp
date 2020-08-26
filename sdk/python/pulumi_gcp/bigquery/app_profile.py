@@ -15,7 +15,7 @@ __all__ = ['AppProfile']
 
 class AppProfile(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_profile_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -128,7 +128,7 @@ class AppProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="appProfileId")
-    def app_profile_id(self) -> str:
+    def app_profile_id(self) -> pulumi.Output[str]:
         """
         The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
         """
@@ -136,7 +136,7 @@ class AppProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Long form description of the use case for this app profile.
         """
@@ -144,7 +144,7 @@ class AppProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ignoreWarnings")
-    def ignore_warnings(self) -> Optional[bool]:
+    def ignore_warnings(self) -> pulumi.Output[Optional[bool]]:
         """
         If true, ignore safety checks when deleting/updating the app profile.
         """
@@ -152,7 +152,7 @@ class AppProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def instance(self) -> Optional[str]:
+    def instance(self) -> pulumi.Output[Optional[str]]:
         """
         The name of the instance to create the app profile within.
         """
@@ -160,7 +160,7 @@ class AppProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="multiClusterRoutingUseAny")
-    def multi_cluster_routing_use_any(self) -> Optional[bool]:
+    def multi_cluster_routing_use_any(self) -> pulumi.Output[Optional[bool]]:
         """
         If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available
         in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes
@@ -170,7 +170,7 @@ class AppProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The unique name of the requested app profile. Values are of the form
         'projects/<project>/instances/<instance>/appProfiles/<appProfileId>'.
@@ -179,7 +179,7 @@ class AppProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -188,7 +188,7 @@ class AppProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="singleClusterRouting")
-    def single_cluster_routing(self) -> Optional['outputs.AppProfileSingleClusterRouting']:
+    def single_cluster_routing(self) -> pulumi.Output[Optional['outputs.AppProfileSingleClusterRouting']]:
         """
         Use a single-cluster routing policy.
         Structure is documented below.

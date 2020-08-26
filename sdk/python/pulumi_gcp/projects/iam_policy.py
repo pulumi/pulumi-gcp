@@ -13,7 +13,7 @@ __all__ = ['IAMPolicy']
 
 class IAMPolicy(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  policy_data: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -104,7 +104,7 @@ class IAMPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def etag(self) -> str:
+    def etag(self) -> pulumi.Output[str]:
         """
         (Computed) The etag of the project's IAM policy.
         """
@@ -112,7 +112,7 @@ class IAMPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="policyData")
-    def policy_data(self) -> str:
+    def policy_data(self) -> pulumi.Output[str]:
         """
         The `organizations.getIAMPolicy` data source that represents
         the IAM policy that will be applied to the project. The policy will be
@@ -122,7 +122,7 @@ class IAMPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
         Required for `projects.IAMPolicy` - you must explicitly set the project, and it

@@ -13,7 +13,7 @@ __all__ = ['Service']
 
 class Service(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
@@ -109,7 +109,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[Mapping[str, str]]:
+    def metadata(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Metadata for the service. This data can be consumed
         by service clients. The entire metadata dictionary may contain
@@ -120,7 +120,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The resource name for the service in the format 'projects/*/locations/*/namespaces/*/services/*'.
         """
@@ -128,7 +128,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def namespace(self) -> str:
+    def namespace(self) -> pulumi.Output[str]:
         """
         The resource name of the namespace this service will belong to.
         """
@@ -136,7 +136,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceId")
-    def service_id(self) -> str:
+    def service_id(self) -> pulumi.Output[str]:
         """
         The Resource ID must be 1-63 characters long, including digits,
         lowercase letters or the hyphen character.

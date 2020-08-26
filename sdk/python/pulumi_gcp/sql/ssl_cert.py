@@ -13,7 +13,7 @@ __all__ = ['SslCert']
 
 class SslCert(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  common_name: Optional[pulumi.Input[str]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
@@ -125,7 +125,7 @@ class SslCert(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def cert(self) -> str:
+    def cert(self) -> pulumi.Output[str]:
         """
         The actual certificate data for this client certificate.
         """
@@ -133,7 +133,7 @@ class SslCert(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="certSerialNumber")
-    def cert_serial_number(self) -> str:
+    def cert_serial_number(self) -> pulumi.Output[str]:
         """
         The serial number extracted from the certificate data.
         """
@@ -141,7 +141,7 @@ class SslCert(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="commonName")
-    def common_name(self) -> str:
+    def common_name(self) -> pulumi.Output[str]:
         """
         The common name to be used in the certificate to identify the
         client. Constrained to [a-zA-Z.-_ ]+. Changing this forces a new resource to be created.
@@ -150,7 +150,7 @@ class SslCert(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> str:
+    def create_time(self) -> pulumi.Output[str]:
         """
         The time when the certificate was created in RFC 3339 format,
         for example 2012-11-15T16:19:00.094Z.
@@ -159,7 +159,7 @@ class SslCert(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="expirationTime")
-    def expiration_time(self) -> str:
+    def expiration_time(self) -> pulumi.Output[str]:
         """
         The time when the certificate expires in RFC 3339 format,
         for example 2012-11-15T16:19:00.094Z.
@@ -168,7 +168,7 @@ class SslCert(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def instance(self) -> str:
+    def instance(self) -> pulumi.Output[str]:
         """
         The name of the Cloud SQL instance. Changing this
         forces a new resource to be created.
@@ -177,7 +177,7 @@ class SslCert(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="privateKey")
-    def private_key(self) -> str:
+    def private_key(self) -> pulumi.Output[str]:
         """
         The private key associated with the client certificate.
         """
@@ -185,7 +185,7 @@ class SslCert(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs. If it
         is not provided, the provider project is used.
@@ -194,7 +194,7 @@ class SslCert(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serverCaCert")
-    def server_ca_cert(self) -> str:
+    def server_ca_cert(self) -> pulumi.Output[str]:
         """
         The CA cert of the server this client cert was generated from.
         """
@@ -202,7 +202,7 @@ class SslCert(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sha1Fingerprint")
-    def sha1_fingerprint(self) -> str:
+    def sha1_fingerprint(self) -> pulumi.Output[str]:
         """
         The SHA1 Fingerprint of the certificate.
         """

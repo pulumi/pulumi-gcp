@@ -15,7 +15,7 @@ __all__ = ['GuestPolicies']
 
 class GuestPolicies(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  assignment: Optional[pulumi.Input[pulumi.InputType['GuestPoliciesAssignmentArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -173,7 +173,7 @@ class GuestPolicies(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def assignment(self) -> 'outputs.GuestPoliciesAssignment':
+    def assignment(self) -> pulumi.Output['outputs.GuestPoliciesAssignment']:
         """
         Specifies the VM instances that are assigned to this policy. This allows you to target sets
         or groups of VM instances by different parameters such as labels, names, OS, or zones.
@@ -188,7 +188,7 @@ class GuestPolicies(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> str:
+    def create_time(self) -> pulumi.Output[str]:
         """
         Time this guest policy was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example:
         "2014-10-02T15:01:23.045123456Z".
@@ -197,7 +197,7 @@ class GuestPolicies(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Description of the guest policy. Length of the description is limited to 1024 characters.
         """
@@ -205,7 +205,7 @@ class GuestPolicies(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def etag(self) -> str:
+    def etag(self) -> pulumi.Output[str]:
         """
         The etag for this guest policy. If this is provided on update, it must match the server's etag.
         """
@@ -213,7 +213,7 @@ class GuestPolicies(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="guestPolicyId")
-    def guest_policy_id(self) -> str:
+    def guest_policy_id(self) -> pulumi.Output[str]:
         """
         The logical name of the guest policy in the project with the following restrictions:
         * Must contain only lowercase letters, numbers, and hyphens.
@@ -226,7 +226,7 @@ class GuestPolicies(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
         Names are also used to identify resources which helps to determine whether guest policies have conflicts.
@@ -237,7 +237,7 @@ class GuestPolicies(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="packageRepositories")
-    def package_repositories(self) -> Optional[List['outputs.GuestPoliciesPackageRepository']]:
+    def package_repositories(self) -> pulumi.Output[Optional[List['outputs.GuestPoliciesPackageRepository']]]:
         """
         A list of package repositories to configure on the VM instance.
         This is done before any other configs are applied so they can use these repos.
@@ -248,7 +248,7 @@ class GuestPolicies(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def packages(self) -> Optional[List['outputs.GuestPoliciesPackage']]:
+    def packages(self) -> pulumi.Output[Optional[List['outputs.GuestPoliciesPackage']]]:
         """
         The software packages to be managed by this policy.
         Structure is documented below.
@@ -257,7 +257,7 @@ class GuestPolicies(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -266,7 +266,7 @@ class GuestPolicies(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def recipes(self) -> Optional[List['outputs.GuestPoliciesRecipe']]:
+    def recipes(self) -> pulumi.Output[Optional[List['outputs.GuestPoliciesRecipe']]]:
         """
         A list of Recipes to install on the VM instance.
         Structure is documented below.
@@ -275,7 +275,7 @@ class GuestPolicies(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> str:
+    def update_time(self) -> pulumi.Output[str]:
         """
         Last time this guest policy was updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example:
         "2014-10-02T15:01:23.045123456Z".

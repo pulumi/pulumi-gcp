@@ -15,7 +15,7 @@ __all__ = ['RegionBackendService']
 
 class RegionBackendService(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  affinity_cookie_ttl_sec: Optional[pulumi.Input[float]] = None,
                  backends: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['RegionBackendServiceBackendArgs']]]]] = None,
@@ -342,7 +342,7 @@ class RegionBackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="affinityCookieTtlSec")
-    def affinity_cookie_ttl_sec(self) -> Optional[float]:
+    def affinity_cookie_ttl_sec(self) -> pulumi.Output[Optional[float]]:
         """
         Lifetime of cookies in seconds if session_affinity is
         GENERATED_COOKIE. If set to 0, the cookie is non-persistent and lasts
@@ -354,7 +354,7 @@ class RegionBackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def backends(self) -> Optional[List['outputs.RegionBackendServiceBackend']]:
+    def backends(self) -> pulumi.Output[Optional[List['outputs.RegionBackendServiceBackend']]]:
         """
         The set of backends that serve this RegionBackendService.
         Structure is documented below.
@@ -363,7 +363,7 @@ class RegionBackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="circuitBreakers")
-    def circuit_breakers(self) -> Optional['outputs.RegionBackendServiceCircuitBreakers']:
+    def circuit_breakers(self) -> pulumi.Output[Optional['outputs.RegionBackendServiceCircuitBreakers']]:
         """
         Settings controlling the volume of connections to a backend service. This field
         is applicable only when the `load_balancing_scheme` is set to INTERNAL_MANAGED
@@ -374,7 +374,7 @@ class RegionBackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="connectionDrainingTimeoutSec")
-    def connection_draining_timeout_sec(self) -> Optional[float]:
+    def connection_draining_timeout_sec(self) -> pulumi.Output[Optional[float]]:
         """
         Time for which instance will be drained (not accept new
         connections, but still work to finish started).
@@ -383,7 +383,7 @@ class RegionBackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="consistentHash")
-    def consistent_hash(self) -> Optional['outputs.RegionBackendServiceConsistentHash']:
+    def consistent_hash(self) -> pulumi.Output[Optional['outputs.RegionBackendServiceConsistentHash']]:
         """
         Consistent Hash-based load balancing can be used to provide soft session
         affinity based on HTTP headers, cookies or other properties. This load balancing
@@ -397,7 +397,7 @@ class RegionBackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> str:
+    def creation_timestamp(self) -> pulumi.Output[str]:
         """
         Creation timestamp in RFC3339 text format.
         """
@@ -405,7 +405,7 @@ class RegionBackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         An optional description of this resource.
         Provide this property when you create the resource.
@@ -414,7 +414,7 @@ class RegionBackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="failoverPolicy")
-    def failover_policy(self) -> Optional['outputs.RegionBackendServiceFailoverPolicy']:
+    def failover_policy(self) -> pulumi.Output[Optional['outputs.RegionBackendServiceFailoverPolicy']]:
         """
         Policy for failovers.
         Structure is documented below.
@@ -423,7 +423,7 @@ class RegionBackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def fingerprint(self) -> str:
+    def fingerprint(self) -> pulumi.Output[str]:
         """
         Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
         """
@@ -431,7 +431,7 @@ class RegionBackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="healthChecks")
-    def health_checks(self) -> str:
+    def health_checks(self) -> pulumi.Output[str]:
         """
         The set of URLs to HealthCheck resources for health checking
         this RegionBackendService. Currently at most one health
@@ -441,7 +441,7 @@ class RegionBackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="loadBalancingScheme")
-    def load_balancing_scheme(self) -> Optional[str]:
+    def load_balancing_scheme(self) -> pulumi.Output[Optional[str]]:
         """
         Indicates what kind of load balancing this regional backend service
         will be used for. A backend service created for one type of load
@@ -453,7 +453,7 @@ class RegionBackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="localityLbPolicy")
-    def locality_lb_policy(self) -> Optional[str]:
+    def locality_lb_policy(self) -> pulumi.Output[Optional[str]]:
         """
         The load balancing algorithm used within the scope of the locality.
         The possible values are -
@@ -483,7 +483,7 @@ class RegionBackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="logConfig")
-    def log_config(self) -> Optional['outputs.RegionBackendServiceLogConfig']:
+    def log_config(self) -> pulumi.Output[Optional['outputs.RegionBackendServiceLogConfig']]:
         """
         This field denotes the logging options for the load balancer traffic served by this backend service.
         If logging is enabled, logs will be exported to Stackdriver.
@@ -493,7 +493,7 @@ class RegionBackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the cookie.
         """
@@ -501,7 +501,7 @@ class RegionBackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def network(self) -> Optional[str]:
+    def network(self) -> pulumi.Output[Optional[str]]:
         """
         The URL of the network to which this backend service belongs.
         This field can only be specified when the load balancing scheme is set to INTERNAL.
@@ -510,7 +510,7 @@ class RegionBackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="outlierDetection")
-    def outlier_detection(self) -> Optional['outputs.RegionBackendServiceOutlierDetection']:
+    def outlier_detection(self) -> pulumi.Output[Optional['outputs.RegionBackendServiceOutlierDetection']]:
         """
         Settings controlling eviction of unhealthy hosts from the load balancing pool.
         This field is applicable only when the `load_balancing_scheme` is set
@@ -521,7 +521,7 @@ class RegionBackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="portName")
-    def port_name(self) -> str:
+    def port_name(self) -> pulumi.Output[str]:
         """
         A named port on a backend instance group representing the port for
         communication to the backend VMs in that group. Required when the
@@ -535,7 +535,7 @@ class RegionBackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -544,7 +544,7 @@ class RegionBackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def protocol(self) -> str:
+    def protocol(self) -> pulumi.Output[str]:
         """
         The protocol this RegionBackendService uses to communicate with backends.
         The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
@@ -555,7 +555,7 @@ class RegionBackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The Region in which the created backend service should reside.
         If it is not provided, the provider region is used.
@@ -564,7 +564,7 @@ class RegionBackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         """
         The URI of the created resource.
         """
@@ -572,7 +572,7 @@ class RegionBackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sessionAffinity")
-    def session_affinity(self) -> str:
+    def session_affinity(self) -> pulumi.Output[str]:
         """
         Type of session affinity to use. The default is NONE. Session affinity is
         not applicable if the protocol is UDP.
@@ -582,7 +582,7 @@ class RegionBackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="timeoutSec")
-    def timeout_sec(self) -> float:
+    def timeout_sec(self) -> pulumi.Output[float]:
         """
         How many seconds to wait for the backend before considering it a
         failed request. Default is 30 seconds. Valid range is [1, 86400].

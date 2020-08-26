@@ -15,7 +15,7 @@ __all__ = ['RegionPerInstanceConfig']
 
 class RegionPerInstanceConfig(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  minimal_action: Optional[pulumi.Input[str]] = None,
                  most_disruptive_allowed_action: Optional[pulumi.Input[str]] = None,
@@ -159,7 +159,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minimalAction")
-    def minimal_action(self) -> Optional[str]:
+    def minimal_action(self) -> pulumi.Output[Optional[str]]:
         """
         The minimal action to perform on the instance during an update.
         Default is `NONE`. Possible values are:
@@ -172,7 +172,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="mostDisruptiveAllowedAction")
-    def most_disruptive_allowed_action(self) -> Optional[str]:
+    def most_disruptive_allowed_action(self) -> pulumi.Output[Optional[str]]:
         """
         The most disruptive action to perform on the instance during an update.
         Default is `REPLACE`. Possible values are:
@@ -185,7 +185,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name for this per-instance config and its corresponding instance.
         """
@@ -193,7 +193,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="preservedState")
-    def preserved_state(self) -> Optional['outputs.RegionPerInstanceConfigPreservedState']:
+    def preserved_state(self) -> pulumi.Output[Optional['outputs.RegionPerInstanceConfigPreservedState']]:
         """
         The preserved state for this instance.
         Structure is documented below.
@@ -202,7 +202,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -211,7 +211,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         Region where the containing instance group manager is located
         """
@@ -219,7 +219,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="regionInstanceGroupManager")
-    def region_instance_group_manager(self) -> str:
+    def region_instance_group_manager(self) -> pulumi.Output[str]:
         """
         The region instance group manager this instance config is part of.
         """
@@ -227,7 +227,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="removeInstanceStateOnDestroy")
-    def remove_instance_state_on_destroy(self) -> Optional[bool]:
+    def remove_instance_state_on_destroy(self) -> pulumi.Output[Optional[bool]]:
         """
         When true, deleting this config will immediately remove any specified state from the underlying instance.
         When false, deleting this config will *not* immediately remove any state from the underlying instance.

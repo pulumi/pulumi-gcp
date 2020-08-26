@@ -13,7 +13,7 @@ __all__ = ['SecretCiphertext']
 
 class SecretCiphertext(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  additional_authenticated_data: Optional[pulumi.Input[str]] = None,
                  crypto_key: Optional[pulumi.Input[str]] = None,
@@ -115,7 +115,7 @@ class SecretCiphertext(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="additionalAuthenticatedData")
-    def additional_authenticated_data(self) -> Optional[str]:
+    def additional_authenticated_data(self) -> pulumi.Output[Optional[str]]:
         """
         The additional authenticated data used for integrity checks during encryption and decryption.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -124,7 +124,7 @@ class SecretCiphertext(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ciphertext(self) -> str:
+    def ciphertext(self) -> pulumi.Output[str]:
         """
         Contains the result of encrypting the provided plaintext, encoded in base64.
         """
@@ -132,7 +132,7 @@ class SecretCiphertext(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cryptoKey")
-    def crypto_key(self) -> str:
+    def crypto_key(self) -> pulumi.Output[str]:
         """
         The full name of the CryptoKey that will be used to encrypt the provided plaintext.
         Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`
@@ -141,7 +141,7 @@ class SecretCiphertext(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def plaintext(self) -> str:
+    def plaintext(self) -> pulumi.Output[str]:
         """
         The plaintext to be encrypted.
         **Note**: This property is sensitive and will not be displayed in the plan.

@@ -15,7 +15,7 @@ __all__ = ['FolderSink']
 
 class FolderSink(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bigquery_options: Optional[pulumi.Input[pulumi.InputType['FolderSinkBigqueryOptionsArgs']]] = None,
                  destination: Optional[pulumi.Input[str]] = None,
@@ -137,7 +137,7 @@ class FolderSink(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="bigqueryOptions")
-    def bigquery_options(self) -> 'outputs.FolderSinkBigqueryOptions':
+    def bigquery_options(self) -> pulumi.Output['outputs.FolderSinkBigqueryOptions']:
         """
         Options that affect sinks exporting data to BigQuery. Structure documented below.
         """
@@ -145,7 +145,7 @@ class FolderSink(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def destination(self) -> str:
+    def destination(self) -> pulumi.Output[str]:
         """
         The destination of the sink (or, in other words, where logs are written to). Can be a
         Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
@@ -158,7 +158,7 @@ class FolderSink(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def filter(self) -> Optional[str]:
+    def filter(self) -> pulumi.Output[Optional[str]]:
         """
         The filter to apply when exporting logs. Only log entries that match the filter are exported.
         See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
@@ -168,7 +168,7 @@ class FolderSink(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def folder(self) -> str:
+    def folder(self) -> pulumi.Output[str]:
         """
         The folder to be exported to the sink. Note that either [FOLDER_ID] or "folders/[FOLDER_ID]" is
         accepted.
@@ -177,7 +177,7 @@ class FolderSink(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="includeChildren")
-    def include_children(self) -> Optional[bool]:
+    def include_children(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether or not to include children folders in the sink export. If true, logs
         associated with child projects are also exported; otherwise only logs relating to the provided folder are included.
@@ -186,7 +186,7 @@ class FolderSink(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the logging sink.
         """
@@ -194,7 +194,7 @@ class FolderSink(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="writerIdentity")
-    def writer_identity(self) -> str:
+    def writer_identity(self) -> pulumi.Output[str]:
         """
         The identity associated with this sink. This identity must be granted write access to the
         configured `destination`.
