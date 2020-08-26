@@ -13,7 +13,7 @@ __all__ = ['Source']
 
 class Source(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -114,7 +114,7 @@ class Source(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The description of the source (max of 1024 characters).
         """
@@ -122,7 +122,7 @@ class Source(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> str:
+    def display_name(self) -> pulumi.Output[str]:
         """
         The source’s display name. A source’s display name must be unique
         amongst its siblings, for example, two sources with the same parent
@@ -134,7 +134,7 @@ class Source(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The resource name of this source, in the format 'organizations/{{organization}}/sources/{{source}}'.
         """
@@ -142,7 +142,7 @@ class Source(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def organization(self) -> str:
+    def organization(self) -> pulumi.Output[str]:
         """
         The organization whose Cloud Security Command Center the Source
         lives in.

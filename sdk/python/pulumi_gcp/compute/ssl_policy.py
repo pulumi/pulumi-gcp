@@ -13,7 +13,7 @@ __all__ = ['SSLPolicy']
 
 class SSLPolicy(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_features: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -180,7 +180,7 @@ class SSLPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> str:
+    def creation_timestamp(self) -> pulumi.Output[str]:
         """
         Creation timestamp in RFC3339 text format.
         """
@@ -188,7 +188,7 @@ class SSLPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="customFeatures")
-    def custom_features(self) -> Optional[List[str]]:
+    def custom_features(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Profile specifies the set of SSL features that can be used by the
         load balancer when negotiating SSL with clients. This can be one of
@@ -204,7 +204,7 @@ class SSLPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         An optional description of this resource.
         """
@@ -212,7 +212,7 @@ class SSLPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enabledFeatures")
-    def enabled_features(self) -> List[str]:
+    def enabled_features(self) -> pulumi.Output[List[str]]:
         """
         The list of features enabled in the SSL policy.
         """
@@ -220,7 +220,7 @@ class SSLPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def fingerprint(self) -> str:
+    def fingerprint(self) -> pulumi.Output[str]:
         """
         Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
         """
@@ -228,7 +228,7 @@ class SSLPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minTlsVersion")
-    def min_tls_version(self) -> Optional[str]:
+    def min_tls_version(self) -> pulumi.Output[Optional[str]]:
         """
         The minimum version of SSL protocol that can be used by the clients
         to establish a connection with the load balancer.
@@ -239,7 +239,7 @@ class SSLPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the resource. Provided by the client when the resource is
         created. The name must be 1-63 characters long, and comply with
@@ -253,7 +253,7 @@ class SSLPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def profile(self) -> Optional[str]:
+    def profile(self) -> pulumi.Output[Optional[str]]:
         """
         Profile specifies the set of SSL features that can be used by the
         load balancer when negotiating SSL with clients. If using `CUSTOM`,
@@ -269,7 +269,7 @@ class SSLPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -278,7 +278,7 @@ class SSLPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         """
         The URI of the created resource.
         """

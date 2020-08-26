@@ -15,7 +15,7 @@ __all__ = ['PerInstanceConfig']
 
 class PerInstanceConfig(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  instance_group_manager: Optional[pulumi.Input[str]] = None,
                  minimal_action: Optional[pulumi.Input[str]] = None,
@@ -158,7 +158,7 @@ class PerInstanceConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceGroupManager")
-    def instance_group_manager(self) -> str:
+    def instance_group_manager(self) -> pulumi.Output[str]:
         """
         The instance group manager this instance config is part of.
         """
@@ -166,7 +166,7 @@ class PerInstanceConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minimalAction")
-    def minimal_action(self) -> Optional[str]:
+    def minimal_action(self) -> pulumi.Output[Optional[str]]:
         """
         The minimal action to perform on the instance during an update.
         Default is `NONE`. Possible values are:
@@ -179,7 +179,7 @@ class PerInstanceConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="mostDisruptiveAllowedAction")
-    def most_disruptive_allowed_action(self) -> Optional[str]:
+    def most_disruptive_allowed_action(self) -> pulumi.Output[Optional[str]]:
         """
         The most disruptive action to perform on the instance during an update.
         Default is `REPLACE`. Possible values are:
@@ -192,7 +192,7 @@ class PerInstanceConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name for this per-instance config and its corresponding instance.
         """
@@ -200,7 +200,7 @@ class PerInstanceConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="preservedState")
-    def preserved_state(self) -> Optional['outputs.PerInstanceConfigPreservedState']:
+    def preserved_state(self) -> pulumi.Output[Optional['outputs.PerInstanceConfigPreservedState']]:
         """
         The preserved state for this instance.
         Structure is documented below.
@@ -209,7 +209,7 @@ class PerInstanceConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -218,7 +218,7 @@ class PerInstanceConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="removeInstanceStateOnDestroy")
-    def remove_instance_state_on_destroy(self) -> Optional[bool]:
+    def remove_instance_state_on_destroy(self) -> pulumi.Output[Optional[bool]]:
         """
         When true, deleting this config will immediately remove any specified state from the underlying instance.
         When false, deleting this config will *not* immediately remove any state from the underlying instance.
@@ -228,7 +228,7 @@ class PerInstanceConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def zone(self) -> str:
+    def zone(self) -> pulumi.Output[str]:
         """
         Zone where the containing instance group manager is located
         """

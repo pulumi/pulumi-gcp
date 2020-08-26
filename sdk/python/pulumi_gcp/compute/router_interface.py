@@ -13,7 +13,7 @@ __all__ = ['RouterInterface']
 
 class RouterInterface(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  interconnect_attachment: Optional[pulumi.Input[str]] = None,
                  ip_range: Optional[pulumi.Input[str]] = None,
@@ -136,7 +136,7 @@ class RouterInterface(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="interconnectAttachment")
-    def interconnect_attachment(self) -> Optional[str]:
+    def interconnect_attachment(self) -> pulumi.Output[Optional[str]]:
         """
         The name or resource link to the
         VLAN interconnect for this interface. Changing this forces a new interface to
@@ -147,7 +147,7 @@ class RouterInterface(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipRange")
-    def ip_range(self) -> Optional[str]:
+    def ip_range(self) -> pulumi.Output[Optional[str]]:
         """
         IP address and range of the interface. The IP range must be
         in the RFC3927 link-local IP space. Changing this forces a new interface to be created.
@@ -156,7 +156,7 @@ class RouterInterface(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         A unique name for the interface, required by GCE. Changing
         this forces a new interface to be created.
@@ -165,7 +165,7 @@ class RouterInterface(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which this interface's router belongs. If it
         is not provided, the provider project is used. Changing this forces a new interface to be created.
@@ -174,7 +174,7 @@ class RouterInterface(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region this interface's router sits in. If not specified,
         the project region will be used. Changing this forces a new interface to be
@@ -184,7 +184,7 @@ class RouterInterface(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def router(self) -> str:
+    def router(self) -> pulumi.Output[str]:
         """
         The name of the router this interface will be attached to.
         Changing this forces a new interface to be created.
@@ -193,7 +193,7 @@ class RouterInterface(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vpnTunnel")
-    def vpn_tunnel(self) -> Optional[str]:
+    def vpn_tunnel(self) -> pulumi.Output[Optional[str]]:
         """
         The name or resource link to the VPN tunnel this
         interface will be linked to. Changing this forces a new interface to be created. Only

@@ -15,7 +15,7 @@ __all__ = ['Firewall']
 
 class Firewall(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allows: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallAllowArgs']]]]] = None,
                  denies: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallDenyArgs']]]]] = None,
@@ -329,7 +329,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def allows(self) -> Optional[List['outputs.FirewallAllow']]:
+    def allows(self) -> pulumi.Output[Optional[List['outputs.FirewallAllow']]]:
         """
         The list of ALLOW rules specified by this firewall. Each rule
         specifies a protocol and port-range tuple that describes a permitted
@@ -340,7 +340,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> str:
+    def creation_timestamp(self) -> pulumi.Output[str]:
         """
         Creation timestamp in RFC3339 text format.
         """
@@ -348,7 +348,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def denies(self) -> Optional[List['outputs.FirewallDeny']]:
+    def denies(self) -> pulumi.Output[Optional[List['outputs.FirewallDeny']]]:
         """
         The list of DENY rules specified by this firewall. Each rule specifies
         a protocol and port-range tuple that describes a denied connection.
@@ -358,7 +358,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         An optional description of this resource. Provide this property when
         you create the resource.
@@ -367,7 +367,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="destinationRanges")
-    def destination_ranges(self) -> List[str]:
+    def destination_ranges(self) -> pulumi.Output[List[str]]:
         """
         If destination ranges are specified, the firewall will apply only to
         traffic that has destination IP address in these ranges. These ranges
@@ -377,7 +377,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def direction(self) -> str:
+    def direction(self) -> pulumi.Output[str]:
         """
         Direction of traffic to which this firewall applies; default is
         INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
@@ -389,7 +389,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def disabled(self) -> Optional[bool]:
+    def disabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Denotes whether the firewall rule is disabled, i.e not applied to the
         network it is associated with. When set to true, the firewall rule is
@@ -400,7 +400,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableLogging")
-    def enable_logging(self) -> bool:
+    def enable_logging(self) -> pulumi.Output[bool]:
         """
         This field denotes whether to enable logging for a particular firewall rule.
         If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `log_config`
@@ -409,7 +409,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="logConfig")
-    def log_config(self) -> Optional['outputs.FirewallLogConfig']:
+    def log_config(self) -> pulumi.Output[Optional['outputs.FirewallLogConfig']]:
         """
         This field denotes the logging options for a particular firewall rule.
         If defined, logging is enabled, and logs will be exported to Cloud Logging.
@@ -419,7 +419,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the resource. Provided by the client when the resource is
         created. The name must be 1-63 characters long, and comply with
@@ -433,7 +433,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def network(self) -> str:
+    def network(self) -> pulumi.Output[str]:
         """
         The name or self_link of the network to attach this firewall to.
         """
@@ -441,7 +441,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def priority(self) -> Optional[float]:
+    def priority(self) -> pulumi.Output[Optional[float]]:
         """
         Priority for this rule. This is an integer between 0 and 65535, both
         inclusive. When not specified, the value assumed is 1000. Relative
@@ -454,7 +454,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -463,7 +463,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         """
         The URI of the created resource.
         """
@@ -471,7 +471,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceRanges")
-    def source_ranges(self) -> List[str]:
+    def source_ranges(self) -> pulumi.Output[List[str]]:
         """
         If source ranges are specified, the firewall will apply only to
         traffic that has source IP address in these ranges. These ranges must
@@ -486,7 +486,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceServiceAccounts")
-    def source_service_accounts(self) -> Optional[List[str]]:
+    def source_service_accounts(self) -> pulumi.Output[Optional[List[str]]]:
         """
         If source service accounts are specified, the firewall will apply only
         to traffic originating from an instance with a service account in this
@@ -504,7 +504,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceTags")
-    def source_tags(self) -> Optional[List[str]]:
+    def source_tags(self) -> pulumi.Output[Optional[List[str]]]:
         """
         If source tags are specified, the firewall will apply only to traffic
         with source IP that belongs to a tag listed in source tags. Source
@@ -520,7 +520,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="targetServiceAccounts")
-    def target_service_accounts(self) -> Optional[List[str]]:
+    def target_service_accounts(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A list of service accounts indicating sets of instances located in the
         network that may make network connections as specified in allowed[].
@@ -533,7 +533,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="targetTags")
-    def target_tags(self) -> Optional[List[str]]:
+    def target_tags(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A list of instance tags indicating sets of instances located in the
         network that may make network connections as specified in allowed[].

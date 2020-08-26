@@ -15,7 +15,7 @@ __all__ = ['Policy']
 
 class Policy(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alternative_name_server_config: Optional[pulumi.Input[pulumi.InputType['PolicyAlternativeNameServerConfigArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -138,7 +138,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="alternativeNameServerConfig")
-    def alternative_name_server_config(self) -> Optional['outputs.PolicyAlternativeNameServerConfig']:
+    def alternative_name_server_config(self) -> pulumi.Output[Optional['outputs.PolicyAlternativeNameServerConfig']]:
         """
         Sets an alternative name server for the associated networks.
         When specified, all DNS queries are forwarded to a name server that you choose.
@@ -149,7 +149,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A textual description field. Defaults to 'Managed by Pulumi'.
         """
@@ -157,7 +157,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableInboundForwarding")
-    def enable_inbound_forwarding(self) -> Optional[bool]:
+    def enable_inbound_forwarding(self) -> pulumi.Output[Optional[bool]]:
         """
         Allows networks bound to this policy to receive DNS queries sent
         by VMs or applications over VPN connections. When enabled, a
@@ -168,7 +168,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableLogging")
-    def enable_logging(self) -> Optional[bool]:
+    def enable_logging(self) -> pulumi.Output[Optional[bool]]:
         """
         Controls whether logging is enabled for the networks bound to this policy.
         Defaults to no logging if not set.
@@ -177,7 +177,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         User assigned name for this policy.
         """
@@ -185,7 +185,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def networks(self) -> Optional[List['outputs.PolicyNetwork']]:
+    def networks(self) -> pulumi.Output[Optional[List['outputs.PolicyNetwork']]]:
         """
         List of network names specifying networks to which this policy is applied.
         Structure is documented below.
@@ -194,7 +194,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.

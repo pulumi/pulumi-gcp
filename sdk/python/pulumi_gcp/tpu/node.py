@@ -15,7 +15,7 @@ __all__ = ['Node']
 
 class Node(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  accelerator_type: Optional[pulumi.Input[str]] = None,
                  cidr_block: Optional[pulumi.Input[str]] = None,
@@ -179,7 +179,7 @@ class Node(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="acceleratorType")
-    def accelerator_type(self) -> str:
+    def accelerator_type(self) -> pulumi.Output[str]:
         """
         The type of hardware accelerators associated with this node.
         """
@@ -187,7 +187,7 @@ class Node(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cidrBlock")
-    def cidr_block(self) -> str:
+    def cidr_block(self) -> pulumi.Output[str]:
         """
         The CIDR block that the TPU node will use when selecting an IP
         address. This CIDR block must be a /29 block; the Compute Engine
@@ -202,7 +202,7 @@ class Node(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The user-supplied description of the TPU. Maximum of 512 characters.
         """
@@ -210,7 +210,7 @@ class Node(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, str]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Resource labels to represent user provided metadata.
         """
@@ -218,7 +218,7 @@ class Node(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The immutable name of the TPU.
         """
@@ -226,7 +226,7 @@ class Node(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def network(self) -> str:
+    def network(self) -> pulumi.Output[str]:
         """
         The name of a network to peer the TPU node to. It must be a
         preexisting Compute Engine network inside of the project on which
@@ -237,7 +237,7 @@ class Node(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkEndpoints")
-    def network_endpoints(self) -> List['outputs.NodeNetworkEndpoint']:
+    def network_endpoints(self) -> pulumi.Output[List['outputs.NodeNetworkEndpoint']]:
         """
         The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the
         node first reach out to the first (index 0) entry.
@@ -246,7 +246,7 @@ class Node(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -255,7 +255,7 @@ class Node(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="schedulingConfig")
-    def scheduling_config(self) -> Optional['outputs.NodeSchedulingConfig']:
+    def scheduling_config(self) -> pulumi.Output[Optional['outputs.NodeSchedulingConfig']]:
         """
         Sets the scheduling options for this TPU instance.
         Structure is documented below.
@@ -264,7 +264,7 @@ class Node(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> str:
+    def service_account(self) -> pulumi.Output[str]:
         """
         The service account used to run the tensor flow services within the node. To share resources, including Google Cloud
         Storage data, with the Tensorflow job running in the Node, this account must have permissions to that data.
@@ -273,7 +273,7 @@ class Node(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tensorflowVersion")
-    def tensorflow_version(self) -> str:
+    def tensorflow_version(self) -> pulumi.Output[str]:
         """
         The version of Tensorflow running in the Node.
         """
@@ -281,7 +281,7 @@ class Node(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def zone(self) -> str:
+    def zone(self) -> pulumi.Output[str]:
         """
         The GCP location for the TPU.
         """

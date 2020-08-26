@@ -15,7 +15,7 @@ __all__ = ['DatabaseInstance']
 
 class DatabaseInstance(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  database_version: Optional[pulumi.Input[str]] = None,
                  encryption_key_name: Optional[pulumi.Input[str]] = None,
@@ -231,7 +231,7 @@ class DatabaseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="connectionName")
-    def connection_name(self) -> str:
+    def connection_name(self) -> pulumi.Output[str]:
         """
         The connection name of the instance to be used in
         connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
@@ -240,7 +240,7 @@ class DatabaseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="databaseVersion")
-    def database_version(self) -> Optional[str]:
+    def database_version(self) -> pulumi.Output[Optional[str]]:
         """
         The MySQL, PostgreSQL or
         SQL Server (beta) version to use. Supported values include `MYSQL_5_6`,
@@ -253,7 +253,7 @@ class DatabaseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="encryptionKeyName")
-    def encryption_key_name(self) -> str:
+    def encryption_key_name(self) -> pulumi.Output[str]:
         """
         The full path to the encryption key used for the CMEK disk encryption.  Setting
         up disk encryption currently requires manual steps outside of this provider.
@@ -268,7 +268,7 @@ class DatabaseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="firstIpAddress")
-    def first_ip_address(self) -> str:
+    def first_ip_address(self) -> pulumi.Output[str]:
         """
         The first IPv4 address of any type assigned.
         """
@@ -276,12 +276,12 @@ class DatabaseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipAddresses")
-    def ip_addresses(self) -> List['outputs.DatabaseInstanceIpAddress']:
+    def ip_addresses(self) -> pulumi.Output[List['outputs.DatabaseInstanceIpAddress']]:
         return pulumi.get(self, "ip_addresses")
 
     @property
     @pulumi.getter(name="masterInstanceName")
-    def master_instance_name(self) -> str:
+    def master_instance_name(self) -> pulumi.Output[str]:
         """
         The name of the instance that will act as
         the master in the replication setup. Note, this requires the master to have
@@ -291,7 +291,7 @@ class DatabaseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         A name for this whitelist entry.
         """
@@ -299,7 +299,7 @@ class DatabaseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="privateIpAddress")
-    def private_ip_address(self) -> str:
+    def private_ip_address(self) -> pulumi.Output[str]:
         """
         The first private (`PRIVATE`) IPv4 address assigned.
         """
@@ -307,7 +307,7 @@ class DatabaseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs. If it
         is not provided, the provider project is used.
@@ -316,7 +316,7 @@ class DatabaseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="publicIpAddress")
-    def public_ip_address(self) -> str:
+    def public_ip_address(self) -> pulumi.Output[str]:
         """
         The first public (`PRIMARY`) IPv4 address assigned.
         """
@@ -324,7 +324,7 @@ class DatabaseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region the instance will sit in. Note, Cloud SQL is not
         available in all regions - choose from one of the options listed [here](https://cloud.google.com/sql/docs/mysql/instance-locations).
@@ -337,7 +337,7 @@ class DatabaseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="replicaConfiguration")
-    def replica_configuration(self) -> 'outputs.DatabaseInstanceReplicaConfiguration':
+    def replica_configuration(self) -> pulumi.Output['outputs.DatabaseInstanceReplicaConfiguration']:
         """
         The configuration for replication. The
         configuration is detailed below.
@@ -346,7 +346,7 @@ class DatabaseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="rootPassword")
-    def root_password(self) -> Optional[str]:
+    def root_password(self) -> pulumi.Output[Optional[str]]:
         """
         Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
         """
@@ -354,7 +354,7 @@ class DatabaseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         """
         The URI of the created resource.
         """
@@ -362,12 +362,12 @@ class DatabaseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serverCaCert")
-    def server_ca_cert(self) -> 'outputs.DatabaseInstanceServerCaCert':
+    def server_ca_cert(self) -> pulumi.Output['outputs.DatabaseInstanceServerCaCert']:
         return pulumi.get(self, "server_ca_cert")
 
     @property
     @pulumi.getter(name="serviceAccountEmailAddress")
-    def service_account_email_address(self) -> str:
+    def service_account_email_address(self) -> pulumi.Output[str]:
         """
         The service account email address assigned to the
         instance.
@@ -376,7 +376,7 @@ class DatabaseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def settings(self) -> 'outputs.DatabaseInstanceSettings':
+    def settings(self) -> pulumi.Output['outputs.DatabaseInstanceSettings']:
         """
         The settings to use for the database. The
         configuration is detailed below.

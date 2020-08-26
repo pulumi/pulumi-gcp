@@ -15,7 +15,7 @@ __all__ = ['Entry']
 
 class Entry(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -201,7 +201,7 @@ class Entry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="bigqueryDateShardedSpec")
-    def bigquery_date_sharded_spec(self) -> 'outputs.EntryBigqueryDateShardedSpec':
+    def bigquery_date_sharded_spec(self) -> pulumi.Output['outputs.EntryBigqueryDateShardedSpec']:
         """
         Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD. Context:
         https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
@@ -210,7 +210,7 @@ class Entry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="bigqueryTableSpec")
-    def bigquery_table_spec(self) -> 'outputs.EntryBigqueryTableSpec':
+    def bigquery_table_spec(self) -> pulumi.Output['outputs.EntryBigqueryTableSpec']:
         """
         Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
         """
@@ -218,7 +218,7 @@ class Entry(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Entry description, which can consist of several sentences or paragraphs that describe entry contents.
         """
@@ -226,7 +226,7 @@ class Entry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[str]:
+    def display_name(self) -> pulumi.Output[Optional[str]]:
         """
         Display information such as title and description. A short name to identify the entry,
         for example, "Analytics Data - Jan 2011".
@@ -235,7 +235,7 @@ class Entry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="entryGroup")
-    def entry_group(self) -> str:
+    def entry_group(self) -> pulumi.Output[str]:
         """
         The name of the entry group this entry is in.
         """
@@ -243,7 +243,7 @@ class Entry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="entryId")
-    def entry_id(self) -> str:
+    def entry_id(self) -> pulumi.Output[str]:
         """
         The id of the entry to create.
         """
@@ -251,7 +251,7 @@ class Entry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="gcsFilesetSpec")
-    def gcs_fileset_spec(self) -> Optional['outputs.EntryGcsFilesetSpec']:
+    def gcs_fileset_spec(self) -> pulumi.Output[Optional['outputs.EntryGcsFilesetSpec']]:
         """
         Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
         Structure is documented below.
@@ -260,7 +260,7 @@ class Entry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="integratedSystem")
-    def integrated_system(self) -> str:
+    def integrated_system(self) -> pulumi.Output[str]:
         """
         This field indicates the entry's source system that Data Catalog integrates with, such as BigQuery or Pub/Sub.
         """
@@ -268,7 +268,7 @@ class Entry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="linkedResource")
-    def linked_resource(self) -> str:
+    def linked_resource(self) -> pulumi.Output[str]:
         """
         The resource this metadata entry refers to.
         For Google Cloud Platform resources, linkedResource is the full name of the resource.
@@ -281,7 +281,7 @@ class Entry(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The Data Catalog resource name of the entry in URL format. Example:
         projects/{project_id}/locations/{location}/entryGroups/{entryGroupId}/entries/{entryId}. Note that this Entry and its
@@ -291,7 +291,7 @@ class Entry(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def schema(self) -> Optional[str]:
+    def schema(self) -> pulumi.Output[Optional[str]]:
         """
         Schema of the entry (e.g. BigQuery, GoogleSQL, Avro schema), as a json string. An entry might not have any schema
         attached to it. See
@@ -302,7 +302,7 @@ class Entry(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[str]:
+    def type(self) -> pulumi.Output[Optional[str]]:
         """
         The type of the entry. Only used for Entries with types in the EntryType enum.
         Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use userSpecifiedType.
@@ -312,7 +312,7 @@ class Entry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userSpecifiedSystem")
-    def user_specified_system(self) -> Optional[str]:
+    def user_specified_system(self) -> pulumi.Output[Optional[str]]:
         """
         This field indicates the entry's source system that Data Catalog does not integrate with.
         userSpecifiedSystem strings must begin with a letter or underscore and can only contain letters, numbers,
@@ -322,7 +322,7 @@ class Entry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userSpecifiedType")
-    def user_specified_type(self) -> Optional[str]:
+    def user_specified_type(self) -> pulumi.Output[Optional[str]]:
         """
         Entry type if it does not fit any of the input-allowed values listed in EntryType enum above.
         When creating an entry, users should check the enum values first, if nothing matches the entry

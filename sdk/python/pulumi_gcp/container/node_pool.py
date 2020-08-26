@@ -15,7 +15,7 @@ __all__ = ['NodePool']
 
 class NodePool(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  autoscaling: Optional[pulumi.Input[pulumi.InputType['NodePoolAutoscalingArgs']]] = None,
                  cluster: Optional[pulumi.Input[str]] = None,
@@ -207,7 +207,7 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def autoscaling(self) -> Optional['outputs.NodePoolAutoscaling']:
+    def autoscaling(self) -> pulumi.Output[Optional['outputs.NodePoolAutoscaling']]:
         """
         Configuration required by cluster autoscaler to adjust
         the size of the node pool to the current cluster usage. Structure is documented below.
@@ -216,7 +216,7 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def cluster(self) -> str:
+    def cluster(self) -> pulumi.Output[str]:
         """
         The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters.
         """
@@ -224,7 +224,7 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="initialNodeCount")
-    def initial_node_count(self) -> float:
+    def initial_node_count(self) -> pulumi.Output[float]:
         """
         The initial number of nodes for the pool. In regional or multi-zonal clusters, this is the number of nodes per zone.
         Changing this will force recreation of the resource.
@@ -233,7 +233,7 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceGroupUrls")
-    def instance_group_urls(self) -> List[str]:
+    def instance_group_urls(self) -> pulumi.Output[List[str]]:
         """
         The resource URLs of the managed instance groups associated with this node pool.
         """
@@ -241,7 +241,7 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def location(self) -> str:
+    def location(self) -> pulumi.Output[str]:
         """
         The location (region or zone) of the cluster.
         """
@@ -249,7 +249,7 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def management(self) -> 'outputs.NodePoolManagement':
+    def management(self) -> pulumi.Output['outputs.NodePoolManagement']:
         """
         Node management configuration, wherein auto-repair and
         auto-upgrade is configured. Structure is documented below.
@@ -258,7 +258,7 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxPodsPerNode")
-    def max_pods_per_node(self) -> float:
+    def max_pods_per_node(self) -> pulumi.Output[float]:
         """
         The maximum number of pods per node in this node pool.
         Note that this does not work on node pools which are "route-based" - that is, node
@@ -270,7 +270,7 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the node pool. If left blank, the provider will
         auto-generate a unique name.
@@ -279,7 +279,7 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="namePrefix")
-    def name_prefix(self) -> str:
+    def name_prefix(self) -> pulumi.Output[str]:
         """
         Creates a unique name for the node pool beginning
         with the specified prefix. Conflicts with `name`.
@@ -288,7 +288,7 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nodeConfig")
-    def node_config(self) -> 'outputs.NodePoolNodeConfig':
+    def node_config(self) -> pulumi.Output['outputs.NodePoolNodeConfig']:
         """
         The node configuration of the pool. See
         container.Cluster for schema.
@@ -297,7 +297,7 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nodeCount")
-    def node_count(self) -> float:
+    def node_count(self) -> pulumi.Output[float]:
         """
         The number of nodes per instance group. This field can be used to
         update the number of nodes per instance group but should not be used alongside `autoscaling`.
@@ -306,7 +306,7 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nodeLocations")
-    def node_locations(self) -> List[str]:
+    def node_locations(self) -> pulumi.Output[List[str]]:
         """
         The list of zones in which the node pool's nodes should be located. Nodes must
         be in the region of their regional cluster or in the same region as their
@@ -317,7 +317,7 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which to create the node pool. If blank,
         the provider-configured project will be used.
@@ -326,7 +326,7 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="upgradeSettings")
-    def upgrade_settings(self) -> 'outputs.NodePoolUpgradeSettings':
+    def upgrade_settings(self) -> pulumi.Output['outputs.NodePoolUpgradeSettings']:
         """
         Specify node upgrade settings to change how many nodes GKE attempts to
         upgrade at once. The number of nodes upgraded simultaneously is the sum of `max_surge` and `max_unavailable`.
@@ -336,7 +336,7 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def version(self) -> str:
+    def version(self) -> pulumi.Output[str]:
         """
         The Kubernetes version for the nodes in this pool. Note that if this field
         and `auto_upgrade` are both specified, they will fight each other for what the node version should

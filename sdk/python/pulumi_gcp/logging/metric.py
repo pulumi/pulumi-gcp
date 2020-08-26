@@ -15,7 +15,7 @@ __all__ = ['Metric']
 
 class Metric(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket_options: Optional[pulumi.Input[pulumi.InputType['MetricBucketOptionsArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -169,7 +169,7 @@ class Metric(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="bucketOptions")
-    def bucket_options(self) -> Optional['outputs.MetricBucketOptions']:
+    def bucket_options(self) -> pulumi.Output[Optional['outputs.MetricBucketOptions']]:
         """
         The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
         describes the bucket boundaries used to create a histogram of the extracted values.
@@ -179,7 +179,7 @@ class Metric(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A description of this metric, which is used in documentation. The maximum length of the
         description is 8000 characters.
@@ -188,7 +188,7 @@ class Metric(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def filter(self) -> str:
+    def filter(self) -> pulumi.Output[str]:
         """
         An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
         is used to match log entries.
@@ -197,7 +197,7 @@ class Metric(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="labelExtractors")
-    def label_extractors(self) -> Optional[Mapping[str, str]]:
+    def label_extractors(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A map from a label key string to an extractor expression which is used to extract data from a log
         entry field and assign as the label value. Each label key specified in the LabelDescriptor must
@@ -208,7 +208,7 @@ class Metric(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="metricDescriptor")
-    def metric_descriptor(self) -> 'outputs.MetricMetricDescriptor':
+    def metric_descriptor(self) -> pulumi.Output['outputs.MetricMetricDescriptor']:
         """
         The metric descriptor associated with the logs-based metric.
         Structure is documented below.
@@ -217,7 +217,7 @@ class Metric(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The client-assigned metric identifier. Examples - "error_count", "nginx/requests".
         Metric identifiers are limited to 100 characters and can include only the following
@@ -229,7 +229,7 @@ class Metric(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -238,7 +238,7 @@ class Metric(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="valueExtractor")
-    def value_extractor(self) -> Optional[str]:
+    def value_extractor(self) -> pulumi.Output[Optional[str]]:
         """
         A valueExtractor is required when using a distribution logs-based metric to extract the values to
         record from a log entry. Two functions are supported for value extraction - EXTRACT(field) or

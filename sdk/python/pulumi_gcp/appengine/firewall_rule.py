@@ -13,7 +13,7 @@ __all__ = ['FirewallRule']
 
 class FirewallRule(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -122,7 +122,7 @@ class FirewallRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def action(self) -> str:
+    def action(self) -> pulumi.Output[str]:
         """
         The action to take if this rule matches.
         Possible values are `UNSPECIFIED_ACTION`, `ALLOW`, and `DENY`.
@@ -131,7 +131,7 @@ class FirewallRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         An optional string description of this rule.
         """
@@ -139,7 +139,7 @@ class FirewallRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def priority(self) -> Optional[float]:
+    def priority(self) -> pulumi.Output[Optional[float]]:
         """
         A positive integer that defines the order of rule evaluation.
         Rules with the lowest priority are evaluated first.
@@ -151,7 +151,7 @@ class FirewallRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -160,7 +160,7 @@ class FirewallRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceRange")
-    def source_range(self) -> str:
+    def source_range(self) -> pulumi.Output[str]:
         """
         IP address or range, defined using CIDR notation, of requests that this rule applies to.
         """

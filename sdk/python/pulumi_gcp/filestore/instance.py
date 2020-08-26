@@ -15,7 +15,7 @@ __all__ = ['Instance']
 
 class Instance(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  file_shares: Optional[pulumi.Input[pulumi.InputType['InstanceFileSharesArgs']]] = None,
@@ -155,7 +155,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> str:
+    def create_time(self) -> pulumi.Output[str]:
         """
         Creation timestamp in RFC3339 text format.
         """
@@ -163,7 +163,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A description of the instance.
         """
@@ -171,7 +171,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def etag(self) -> str:
+    def etag(self) -> pulumi.Output[str]:
         """
         Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
         """
@@ -179,7 +179,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="fileShares")
-    def file_shares(self) -> 'outputs.InstanceFileShares':
+    def file_shares(self) -> pulumi.Output['outputs.InstanceFileShares']:
         """
         File system shares on the instance. For this version, only a
         single file share is supported.
@@ -189,7 +189,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, str]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Resource labels to represent user-provided metadata.
         """
@@ -197,7 +197,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the fileshare (16 characters or less)
         """
@@ -205,7 +205,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def networks(self) -> List['outputs.InstanceNetwork']:
+    def networks(self) -> pulumi.Output[List['outputs.InstanceNetwork']]:
         """
         VPC networks to which the instance is connected. For this version,
         only a single network is supported.
@@ -215,7 +215,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -224,7 +224,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tier(self) -> str:
+    def tier(self) -> pulumi.Output[str]:
         """
         The service tier of the instance.
         Possible values are `TIER_UNSPECIFIED`, `STANDARD`, `PREMIUM`, `BASIC_HDD`, `BASIC_SSD`, and `HIGH_SCALE_SSD`.
@@ -233,7 +233,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def zone(self) -> str:
+    def zone(self) -> pulumi.Output[str]:
         """
         The name of the Filestore zone of the instance.
         """

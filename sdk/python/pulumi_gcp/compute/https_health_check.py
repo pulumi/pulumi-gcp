@@ -13,7 +13,7 @@ __all__ = ['HttpsHealthCheck']
 
 class HttpsHealthCheck(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  check_interval_sec: Optional[pulumi.Input[float]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -184,7 +184,7 @@ class HttpsHealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="checkIntervalSec")
-    def check_interval_sec(self) -> Optional[float]:
+    def check_interval_sec(self) -> pulumi.Output[Optional[float]]:
         """
         How often (in seconds) to send a health check. The default value is 5
         seconds.
@@ -193,7 +193,7 @@ class HttpsHealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> str:
+    def creation_timestamp(self) -> pulumi.Output[str]:
         """
         Creation timestamp in RFC3339 text format.
         """
@@ -201,7 +201,7 @@ class HttpsHealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         An optional description of this resource. Provide this property when
         you create the resource.
@@ -210,7 +210,7 @@ class HttpsHealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="healthyThreshold")
-    def healthy_threshold(self) -> Optional[float]:
+    def healthy_threshold(self) -> pulumi.Output[Optional[float]]:
         """
         A so-far unhealthy instance will be marked healthy after this many
         consecutive successes. The default value is 2.
@@ -219,7 +219,7 @@ class HttpsHealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def host(self) -> Optional[str]:
+    def host(self) -> pulumi.Output[Optional[str]]:
         """
         The value of the host header in the HTTPS health check request. If
         left empty (default value), the public IP on behalf of which this
@@ -229,7 +229,7 @@ class HttpsHealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the resource. Provided by the client when the resource is
         created. The name must be 1-63 characters long, and comply with
@@ -243,7 +243,7 @@ class HttpsHealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[float]:
+    def port(self) -> pulumi.Output[Optional[float]]:
         """
         The TCP port number for the HTTPS health check request.
         The default value is 80.
@@ -252,7 +252,7 @@ class HttpsHealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -261,7 +261,7 @@ class HttpsHealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="requestPath")
-    def request_path(self) -> Optional[str]:
+    def request_path(self) -> pulumi.Output[Optional[str]]:
         """
         The request path of the HTTPS health check request.
         The default value is /.
@@ -270,7 +270,7 @@ class HttpsHealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         """
         The URI of the created resource.
         """
@@ -278,7 +278,7 @@ class HttpsHealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="timeoutSec")
-    def timeout_sec(self) -> Optional[float]:
+    def timeout_sec(self) -> pulumi.Output[Optional[float]]:
         """
         How long (in seconds) to wait before claiming failure.
         The default value is 5 seconds.  It is invalid for timeoutSec to have
@@ -288,7 +288,7 @@ class HttpsHealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="unhealthyThreshold")
-    def unhealthy_threshold(self) -> Optional[float]:
+    def unhealthy_threshold(self) -> pulumi.Output[Optional[float]]:
         """
         A so-far healthy instance will be marked unhealthy after this many
         consecutive failures. The default value is 2.

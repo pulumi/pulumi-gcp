@@ -15,7 +15,7 @@ __all__ = ['Hl7StoreIamMember']
 
 class Hl7StoreIamMember(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  condition: Optional[pulumi.Input[pulumi.InputType['Hl7StoreIamMemberConditionArgs']]] = None,
                  hl7_v2_store_id: Optional[pulumi.Input[str]] = None,
@@ -117,12 +117,12 @@ class Hl7StoreIamMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional['outputs.Hl7StoreIamMemberCondition']:
+    def condition(self) -> pulumi.Output[Optional['outputs.Hl7StoreIamMemberCondition']]:
         return pulumi.get(self, "condition")
 
     @property
     @pulumi.getter
-    def etag(self) -> str:
+    def etag(self) -> pulumi.Output[str]:
         """
         (Computed) The etag of the HL7v2 store's IAM policy.
         """
@@ -130,7 +130,7 @@ class Hl7StoreIamMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hl7V2StoreId")
-    def hl7_v2_store_id(self) -> str:
+    def hl7_v2_store_id(self) -> pulumi.Output[str]:
         """
         The HL7v2 store ID, in the form
         `{project_id}/{location_name}/{dataset_name}/{hl7_v2_store_name}` or
@@ -141,12 +141,12 @@ class Hl7StoreIamMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def member(self) -> str:
+    def member(self) -> pulumi.Output[str]:
         return pulumi.get(self, "member")
 
     @property
     @pulumi.getter
-    def role(self) -> str:
+    def role(self) -> pulumi.Output[str]:
         """
         The role that should be applied. Only one
         `healthcare.Hl7StoreIamBinding` can be used per role. Note that custom roles must be of the format

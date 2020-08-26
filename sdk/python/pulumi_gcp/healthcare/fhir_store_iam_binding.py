@@ -15,7 +15,7 @@ __all__ = ['FhirStoreIamBinding']
 
 class FhirStoreIamBinding(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  condition: Optional[pulumi.Input[pulumi.InputType['FhirStoreIamBindingConditionArgs']]] = None,
                  fhir_store_id: Optional[pulumi.Input[str]] = None,
@@ -117,12 +117,12 @@ class FhirStoreIamBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional['outputs.FhirStoreIamBindingCondition']:
+    def condition(self) -> pulumi.Output[Optional['outputs.FhirStoreIamBindingCondition']]:
         return pulumi.get(self, "condition")
 
     @property
     @pulumi.getter
-    def etag(self) -> str:
+    def etag(self) -> pulumi.Output[str]:
         """
         (Computed) The etag of the FHIR store's IAM policy.
         """
@@ -130,7 +130,7 @@ class FhirStoreIamBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="fhirStoreId")
-    def fhir_store_id(self) -> str:
+    def fhir_store_id(self) -> pulumi.Output[str]:
         """
         The FHIR store ID, in the form
         `{project_id}/{location_name}/{dataset_name}/{fhir_store_name}` or
@@ -141,12 +141,12 @@ class FhirStoreIamBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def members(self) -> List[str]:
+    def members(self) -> pulumi.Output[List[str]]:
         return pulumi.get(self, "members")
 
     @property
     @pulumi.getter
-    def role(self) -> str:
+    def role(self) -> pulumi.Output[str]:
         """
         The role that should be applied. Only one
         `healthcare.FhirStoreIamBinding` can be used per role. Note that custom roles must be of the format

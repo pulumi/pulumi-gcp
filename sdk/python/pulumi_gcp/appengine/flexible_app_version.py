@@ -15,7 +15,7 @@ __all__ = ['FlexibleAppVersion']
 
 class FlexibleAppVersion(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_config: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionApiConfigArgs']]] = None,
                  automatic_scaling: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionAutomaticScalingArgs']]] = None,
@@ -309,7 +309,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="apiConfig")
-    def api_config(self) -> Optional['outputs.FlexibleAppVersionApiConfig']:
+    def api_config(self) -> pulumi.Output[Optional['outputs.FlexibleAppVersionApiConfig']]:
         """
         Serving configuration for Google Cloud Endpoints.
         Structure is documented below.
@@ -318,7 +318,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="automaticScaling")
-    def automatic_scaling(self) -> Optional['outputs.FlexibleAppVersionAutomaticScaling']:
+    def automatic_scaling(self) -> pulumi.Output[Optional['outputs.FlexibleAppVersionAutomaticScaling']]:
         """
         Automatic scaling is based on request rate, response latencies, and other application metrics.
         Structure is documented below.
@@ -327,7 +327,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="betaSettings")
-    def beta_settings(self) -> Optional[Mapping[str, str]]:
+    def beta_settings(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Metadata settings that are supplied to this version to enable beta runtime features.
         """
@@ -335,7 +335,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultExpiration")
-    def default_expiration(self) -> Optional[str]:
+    def default_expiration(self) -> pulumi.Output[Optional[str]]:
         """
         Duration that static files should be cached by web proxies and browsers.
         Only applicable if the corresponding StaticFilesHandler does not specify its own expiration time.
@@ -344,7 +344,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deleteServiceOnDestroy")
-    def delete_service_on_destroy(self) -> Optional[bool]:
+    def delete_service_on_destroy(self) -> pulumi.Output[Optional[bool]]:
         """
         If set to `true`, the service will be deleted if it is the last version.
         """
@@ -352,7 +352,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def deployment(self) -> Optional['outputs.FlexibleAppVersionDeployment']:
+    def deployment(self) -> pulumi.Output[Optional['outputs.FlexibleAppVersionDeployment']]:
         """
         Code and application artifacts that make up this version.
         Structure is documented below.
@@ -361,7 +361,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="endpointsApiService")
-    def endpoints_api_service(self) -> Optional['outputs.FlexibleAppVersionEndpointsApiService']:
+    def endpoints_api_service(self) -> pulumi.Output[Optional['outputs.FlexibleAppVersionEndpointsApiService']]:
         """
         Code and application artifacts that make up this version.
         Structure is documented below.
@@ -370,7 +370,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def entrypoint(self) -> Optional['outputs.FlexibleAppVersionEntrypoint']:
+    def entrypoint(self) -> pulumi.Output[Optional['outputs.FlexibleAppVersionEntrypoint']]:
         """
         The entrypoint for the application.
         Structure is documented below.
@@ -379,7 +379,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="envVariables")
-    def env_variables(self) -> Optional[Mapping[str, str]]:
+    def env_variables(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
         """
@@ -387,7 +387,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def handlers(self) -> List['outputs.FlexibleAppVersionHandler']:
+    def handlers(self) -> pulumi.Output[List['outputs.FlexibleAppVersionHandler']]:
         """
         An ordered list of URL-matching patterns that should be applied to incoming requests.
         The first matching URL handles the request and other request handlers are not attempted.
@@ -397,7 +397,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="inboundServices")
-    def inbound_services(self) -> Optional[List[str]]:
+    def inbound_services(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A list of the types of messages that this application is able to receive.
         Each value may be one of `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, and `INBOUND_SERVICE_WARMUP`.
@@ -406,7 +406,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceClass")
-    def instance_class(self) -> Optional[str]:
+    def instance_class(self) -> pulumi.Output[Optional[str]]:
         """
         Instance class that is used to run this version. Valid values are
         AutomaticScaling: F1, F2, F4, F4_1G
@@ -417,7 +417,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="livenessCheck")
-    def liveness_check(self) -> 'outputs.FlexibleAppVersionLivenessCheck':
+    def liveness_check(self) -> pulumi.Output['outputs.FlexibleAppVersionLivenessCheck']:
         """
         Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances.
         Structure is documented below.
@@ -426,7 +426,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="manualScaling")
-    def manual_scaling(self) -> Optional['outputs.FlexibleAppVersionManualScaling']:
+    def manual_scaling(self) -> pulumi.Output[Optional['outputs.FlexibleAppVersionManualScaling']]:
         """
         A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
         Structure is documented below.
@@ -435,7 +435,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         """
@@ -443,7 +443,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def network(self) -> Optional['outputs.FlexibleAppVersionNetwork']:
+    def network(self) -> pulumi.Output[Optional['outputs.FlexibleAppVersionNetwork']]:
         """
         Extra network settings
         Structure is documented below.
@@ -452,7 +452,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nobuildFilesRegex")
-    def nobuild_files_regex(self) -> Optional[str]:
+    def nobuild_files_regex(self) -> pulumi.Output[Optional[str]]:
         """
         Files that match this pattern will not be built into this version. Only applicable for Go runtimes.
         """
@@ -460,7 +460,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="noopOnDestroy")
-    def noop_on_destroy(self) -> Optional[bool]:
+    def noop_on_destroy(self) -> pulumi.Output[Optional[bool]]:
         """
         If set to `true`, the application version will not be deleted.
         """
@@ -468,7 +468,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -477,7 +477,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="readinessCheck")
-    def readiness_check(self) -> 'outputs.FlexibleAppVersionReadinessCheck':
+    def readiness_check(self) -> pulumi.Output['outputs.FlexibleAppVersionReadinessCheck']:
         """
         Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
         Structure is documented below.
@@ -486,7 +486,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def resources(self) -> Optional['outputs.FlexibleAppVersionResources']:
+    def resources(self) -> pulumi.Output[Optional['outputs.FlexibleAppVersionResources']]:
         """
         Machine resources for a version.
         Structure is documented below.
@@ -495,7 +495,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def runtime(self) -> str:
+    def runtime(self) -> pulumi.Output[str]:
         """
         Desired runtime. Example python27.
         """
@@ -503,7 +503,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="runtimeApiVersion")
-    def runtime_api_version(self) -> str:
+    def runtime_api_version(self) -> pulumi.Output[str]:
         """
         The version of the API in the given runtime environment.
         Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
@@ -512,7 +512,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="runtimeChannel")
-    def runtime_channel(self) -> Optional[str]:
+    def runtime_channel(self) -> pulumi.Output[Optional[str]]:
         """
         The channel of the runtime to use. Only available for some runtimes.
         """
@@ -520,7 +520,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="runtimeMainExecutablePath")
-    def runtime_main_executable_path(self) -> Optional[str]:
+    def runtime_main_executable_path(self) -> pulumi.Output[Optional[str]]:
         """
         The path or name of the app's main executable.
         """
@@ -528,7 +528,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def service(self) -> str:
+    def service(self) -> pulumi.Output[str]:
         """
         AppEngine service resource
         """
@@ -536,7 +536,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="servingStatus")
-    def serving_status(self) -> Optional[str]:
+    def serving_status(self) -> pulumi.Output[Optional[str]]:
         """
         Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
         Default value is `SERVING`.
@@ -546,7 +546,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="versionId")
-    def version_id(self) -> Optional[str]:
+    def version_id(self) -> pulumi.Output[Optional[str]]:
         """
         Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens.
         Reserved names,"default", "latest", and any name with the prefix "ah-".
@@ -555,7 +555,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vpcAccessConnector")
-    def vpc_access_connector(self) -> Optional['outputs.FlexibleAppVersionVpcAccessConnector']:
+    def vpc_access_connector(self) -> pulumi.Output[Optional['outputs.FlexibleAppVersionVpcAccessConnector']]:
         """
         Enables VPC connectivity for standard apps.
         Structure is documented below.

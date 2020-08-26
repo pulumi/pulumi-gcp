@@ -15,7 +15,7 @@ __all__ = ['Autoscaler']
 
 class Autoscaler(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  autoscaling_policy: Optional[pulumi.Input[pulumi.InputType['AutoscalerAutoscalingPolicyArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -151,7 +151,7 @@ class Autoscaler(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoscalingPolicy")
-    def autoscaling_policy(self) -> 'outputs.AutoscalerAutoscalingPolicy':
+    def autoscaling_policy(self) -> pulumi.Output['outputs.AutoscalerAutoscalingPolicy']:
         """
         The configuration parameters for the autoscaling algorithm. You can
         define one or more of the policies for an autoscaler: cpuUtilization,
@@ -164,7 +164,7 @@ class Autoscaler(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> str:
+    def creation_timestamp(self) -> pulumi.Output[str]:
         """
         Creation timestamp in RFC3339 text format.
         """
@@ -172,7 +172,7 @@ class Autoscaler(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         An optional description of this resource.
         """
@@ -180,7 +180,7 @@ class Autoscaler(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The identifier (type) of the Stackdriver Monitoring metric.
         The metric cannot have negative values.
@@ -190,7 +190,7 @@ class Autoscaler(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -199,7 +199,7 @@ class Autoscaler(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         """
         The URI of the created resource.
         """
@@ -207,7 +207,7 @@ class Autoscaler(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def target(self) -> str:
+    def target(self) -> pulumi.Output[str]:
         """
         Fraction of backend capacity utilization (set in HTTP(s) load
         balancing configuration) that autoscaler should maintain. Must
@@ -217,7 +217,7 @@ class Autoscaler(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def zone(self) -> str:
+    def zone(self) -> pulumi.Output[str]:
         """
         URL of the zone where the instance group resides.
         """

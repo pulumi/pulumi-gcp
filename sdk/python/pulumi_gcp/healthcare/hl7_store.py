@@ -15,7 +15,7 @@ __all__ = ['Hl7Store']
 
 class Hl7Store(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dataset: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -155,7 +155,7 @@ class Hl7Store(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def dataset(self) -> str:
+    def dataset(self) -> pulumi.Output[str]:
         """
         Identifies the dataset addressed by this request. Must be in the format
         'projects/{project}/locations/{location}/datasets/{dataset}'
@@ -164,7 +164,7 @@ class Hl7Store(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, str]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         User-supplied key-value pairs used to organize HL7v2 stores.
         Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
@@ -179,7 +179,7 @@ class Hl7Store(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The resource name for the Hl7V2Store.
         ** Changing this property may recreate the Hl7v2 store (removing all data) **
@@ -188,7 +188,7 @@ class Hl7Store(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="notificationConfig")
-    def notification_config(self) -> Optional['outputs.Hl7StoreNotificationConfig']:
+    def notification_config(self) -> pulumi.Output[Optional['outputs.Hl7StoreNotificationConfig']]:
         """
         -
         (Optional, Deprecated)
@@ -199,7 +199,7 @@ class Hl7Store(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="notificationConfigs")
-    def notification_configs(self) -> Optional[List['outputs.Hl7StoreNotificationConfigs']]:
+    def notification_configs(self) -> pulumi.Output[Optional[List['outputs.Hl7StoreNotificationConfigs']]]:
         """
         A list of notification configs. Each configuration uses a filter to determine whether to publish a
         message (both Ingest & Create) on the corresponding notification destination. Only the message name
@@ -210,7 +210,7 @@ class Hl7Store(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="parserConfig")
-    def parser_config(self) -> Optional['outputs.Hl7StoreParserConfig']:
+    def parser_config(self) -> pulumi.Output[Optional['outputs.Hl7StoreParserConfig']]:
         """
         A nested object resource
         Structure is documented below.
@@ -219,7 +219,7 @@ class Hl7Store(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         """
         The fully qualified name of this dataset
         """

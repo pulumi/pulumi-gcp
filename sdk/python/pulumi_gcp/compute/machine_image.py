@@ -13,7 +13,7 @@ __all__ = ['MachineImage']
 
 class MachineImage(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -109,7 +109,7 @@ class MachineImage(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A text description of the resource.
         """
@@ -117,7 +117,7 @@ class MachineImage(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the resource.
         """
@@ -125,7 +125,7 @@ class MachineImage(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -134,7 +134,7 @@ class MachineImage(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         """
         The URI of the created resource.
         """
@@ -142,7 +142,7 @@ class MachineImage(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceInstance")
-    def source_instance(self) -> str:
+    def source_instance(self) -> pulumi.Output[str]:
         """
         The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
         """

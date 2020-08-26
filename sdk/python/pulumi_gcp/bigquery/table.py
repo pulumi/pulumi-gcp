@@ -15,7 +15,7 @@ __all__ = ['Table']
 
 class Table(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  clusterings: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
@@ -248,7 +248,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def clusterings(self) -> Optional[List[str]]:
+    def clusterings(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Specifies column names to use for data clustering.
         Up to four top-level columns are allowed, and should be specified in
@@ -258,7 +258,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="creationTime")
-    def creation_time(self) -> float:
+    def creation_time(self) -> pulumi.Output[float]:
         """
         The time when this table was created, in milliseconds since the epoch.
         """
@@ -266,7 +266,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="datasetId")
-    def dataset_id(self) -> str:
+    def dataset_id(self) -> pulumi.Output[str]:
         """
         The dataset ID to create the table in.
         Changing this forces a new resource to be created.
@@ -275,7 +275,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The field description.
         """
@@ -283,7 +283,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="encryptionConfiguration")
-    def encryption_configuration(self) -> Optional['outputs.TableEncryptionConfiguration']:
+    def encryption_configuration(self) -> pulumi.Output[Optional['outputs.TableEncryptionConfiguration']]:
         """
         Specifies how the table should be encrypted.
         If left blank, the table will be encrypted with a Google-managed key; that process
@@ -293,7 +293,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def etag(self) -> str:
+    def etag(self) -> pulumi.Output[str]:
         """
         A hash of the resource.
         """
@@ -301,7 +301,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="expirationTime")
-    def expiration_time(self) -> float:
+    def expiration_time(self) -> pulumi.Output[float]:
         """
         The time when this table expires, in
         milliseconds since the epoch. If not present, the table will persist
@@ -312,7 +312,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="externalDataConfiguration")
-    def external_data_configuration(self) -> Optional['outputs.TableExternalDataConfiguration']:
+    def external_data_configuration(self) -> pulumi.Output[Optional['outputs.TableExternalDataConfiguration']]:
         """
         Describes the data format,
         location, and other properties of a table stored outside of BigQuery.
@@ -323,7 +323,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="friendlyName")
-    def friendly_name(self) -> Optional[str]:
+    def friendly_name(self) -> pulumi.Output[Optional[str]]:
         """
         A descriptive name for the table.
         """
@@ -331,7 +331,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, str]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A mapping of labels to assign to the resource.
         """
@@ -339,7 +339,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lastModifiedTime")
-    def last_modified_time(self) -> float:
+    def last_modified_time(self) -> pulumi.Output[float]:
         """
         The time when this table was last modified, in milliseconds since the epoch.
         """
@@ -347,7 +347,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def location(self) -> str:
+    def location(self) -> pulumi.Output[str]:
         """
         The geographic location where the table resides. This value is inherited from the dataset.
         """
@@ -355,7 +355,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="numBytes")
-    def num_bytes(self) -> float:
+    def num_bytes(self) -> pulumi.Output[float]:
         """
         The size of this table in bytes, excluding any data in the streaming buffer.
         """
@@ -363,7 +363,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="numLongTermBytes")
-    def num_long_term_bytes(self) -> float:
+    def num_long_term_bytes(self) -> pulumi.Output[float]:
         """
         The number of bytes in the table that are considered "long-term storage".
         """
@@ -371,7 +371,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="numRows")
-    def num_rows(self) -> float:
+    def num_rows(self) -> pulumi.Output[float]:
         """
         The number of rows of data in this table, excluding any data in the streaming buffer.
         """
@@ -379,7 +379,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs. If it
         is not provided, the provider project is used.
@@ -388,7 +388,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="rangePartitioning")
-    def range_partitioning(self) -> Optional['outputs.TableRangePartitioning']:
+    def range_partitioning(self) -> pulumi.Output[Optional['outputs.TableRangePartitioning']]:
         """
         If specified, configures range-based
         partitioning for this table. Structure is documented below.
@@ -397,7 +397,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def schema(self) -> str:
+    def schema(self) -> pulumi.Output[str]:
         """
         A JSON schema for the external table. Schema is required
         for CSV and JSON formats if autodetect is not on. Schema is disallowed
@@ -415,7 +415,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         """
         The URI of the created resource.
         """
@@ -423,7 +423,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tableId")
-    def table_id(self) -> str:
+    def table_id(self) -> pulumi.Output[str]:
         """
         A unique ID for the resource.
         Changing this forces a new resource to be created.
@@ -432,7 +432,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="timePartitioning")
-    def time_partitioning(self) -> Optional['outputs.TableTimePartitioning']:
+    def time_partitioning(self) -> pulumi.Output[Optional['outputs.TableTimePartitioning']]:
         """
         If specified, configures time-based
         partitioning for this table. Structure is documented below.
@@ -441,7 +441,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> pulumi.Output[str]:
         """
         The only type supported is DAY, which will generate
         one partition per day based on data loading time.
@@ -450,7 +450,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def view(self) -> Optional['outputs.TableView']:
+    def view(self) -> pulumi.Output[Optional['outputs.TableView']]:
         """
         If specified, configures this table as a view.
         Structure is documented below.

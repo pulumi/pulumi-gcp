@@ -13,7 +13,7 @@ __all__ = ['Connector']
 
 class Connector(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
                  max_throughput: Optional[pulumi.Input[float]] = None,
@@ -133,7 +133,7 @@ class Connector(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipCidrRange")
-    def ip_cidr_range(self) -> str:
+    def ip_cidr_range(self) -> pulumi.Output[str]:
         """
         The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
         """
@@ -141,7 +141,7 @@ class Connector(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxThroughput")
-    def max_throughput(self) -> Optional[float]:
+    def max_throughput(self) -> pulumi.Output[Optional[float]]:
         """
         Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 1000.
         """
@@ -149,7 +149,7 @@ class Connector(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minThroughput")
-    def min_throughput(self) -> Optional[float]:
+    def min_throughput(self) -> pulumi.Output[Optional[float]]:
         """
         Minimum throughput of the connector in Mbps. Default and min is 200.
         """
@@ -157,7 +157,7 @@ class Connector(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the resource (Max 25 characters).
         """
@@ -165,7 +165,7 @@ class Connector(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def network(self) -> str:
+    def network(self) -> pulumi.Output[str]:
         """
         Name of a VPC network.
         """
@@ -173,7 +173,7 @@ class Connector(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -182,7 +182,7 @@ class Connector(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         Region where the VPC Access connector resides
         """
@@ -190,7 +190,7 @@ class Connector(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         """
         The fully qualified name of this VPC connector
         """
@@ -198,7 +198,7 @@ class Connector(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def state(self) -> str:
+    def state(self) -> pulumi.Output[str]:
         """
         State of the VPC access connector.
         """

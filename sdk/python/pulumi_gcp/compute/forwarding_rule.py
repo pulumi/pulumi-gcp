@@ -13,7 +13,7 @@ __all__ = ['ForwardingRule']
 
 class ForwardingRule(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  all_ports: Optional[pulumi.Input[bool]] = None,
                  allow_global_access: Optional[pulumi.Input[bool]] = None,
@@ -391,7 +391,7 @@ class ForwardingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allPorts")
-    def all_ports(self) -> Optional[bool]:
+    def all_ports(self) -> pulumi.Output[Optional[bool]]:
         """
         For internal TCP/UDP load balancing (i.e. load balancing scheme is
         INTERNAL and protocol is TCP/UDP), set this to true to allow packets
@@ -403,7 +403,7 @@ class ForwardingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowGlobalAccess")
-    def allow_global_access(self) -> Optional[bool]:
+    def allow_global_access(self) -> pulumi.Output[Optional[bool]]:
         """
         If true, clients can access ILB from all regions.
         Otherwise only allows from the local region the ILB is located at.
@@ -412,7 +412,7 @@ class ForwardingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="backendService")
-    def backend_service(self) -> Optional[str]:
+    def backend_service(self) -> pulumi.Output[Optional[str]]:
         """
         A BackendService to receive the matched traffic. This is used only
         for INTERNAL load balancing.
@@ -421,7 +421,7 @@ class ForwardingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> str:
+    def creation_timestamp(self) -> pulumi.Output[str]:
         """
         Creation timestamp in RFC3339 text format.
         """
@@ -429,7 +429,7 @@ class ForwardingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         An optional description of this resource. Provide this property when
         you create the resource.
@@ -438,7 +438,7 @@ class ForwardingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> str:
+    def ip_address(self) -> pulumi.Output[str]:
         """
         The IP address that this forwarding rule is serving on behalf of.
         Addresses are restricted based on the forwarding rule's load balancing
@@ -465,7 +465,7 @@ class ForwardingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipProtocol")
-    def ip_protocol(self) -> str:
+    def ip_protocol(self) -> pulumi.Output[str]:
         """
         The IP protocol to which this rule applies.
         When the load balancing scheme is INTERNAL, only TCP and UDP are
@@ -476,7 +476,7 @@ class ForwardingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="isMirroringCollector")
-    def is_mirroring_collector(self) -> Optional[bool]:
+    def is_mirroring_collector(self) -> pulumi.Output[Optional[bool]]:
         """
         Indicates whether or not this load balancer can be used
         as a collector for packet mirroring. To prevent mirroring loops,
@@ -489,7 +489,7 @@ class ForwardingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="labelFingerprint")
-    def label_fingerprint(self) -> str:
+    def label_fingerprint(self) -> pulumi.Output[str]:
         """
         The fingerprint used for optimistic locking of this resource. Used internally during updates.
         """
@@ -497,7 +497,7 @@ class ForwardingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, str]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Labels to apply to this forwarding rule.  A list of key->value pairs.
         """
@@ -505,7 +505,7 @@ class ForwardingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="loadBalancingScheme")
-    def load_balancing_scheme(self) -> Optional[str]:
+    def load_balancing_scheme(self) -> pulumi.Output[Optional[str]]:
         """
         This signifies what the ForwardingRule will be used for and can be
         EXTERNAL, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
@@ -521,7 +521,7 @@ class ForwardingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the resource; provided by the client when the resource is
         created. The name must be 1-63 characters long, and comply with
@@ -535,7 +535,7 @@ class ForwardingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def network(self) -> str:
+    def network(self) -> pulumi.Output[str]:
         """
         For internal load balancing, this field identifies the network that
         the load balanced IP should belong to for this Forwarding Rule. If
@@ -546,7 +546,7 @@ class ForwardingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkTier")
-    def network_tier(self) -> str:
+    def network_tier(self) -> pulumi.Output[str]:
         """
         The networking tier used for configuring this address. If this field is not
         specified, it is assumed to be PREMIUM.
@@ -556,7 +556,7 @@ class ForwardingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="portRange")
-    def port_range(self) -> Optional[str]:
+    def port_range(self) -> pulumi.Output[Optional[str]]:
         """
         This field is used along with the target field for TargetHttpProxy,
         TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway,
@@ -579,7 +579,7 @@ class ForwardingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ports(self) -> Optional[List[str]]:
+    def ports(self) -> pulumi.Output[Optional[List[str]]]:
         """
         This field is used along with the backend_service field for internal
         load balancing.
@@ -593,7 +593,7 @@ class ForwardingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -602,7 +602,7 @@ class ForwardingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         A reference to the region where the regional forwarding rule resides.
         This field is not applicable to global forwarding rules.
@@ -611,7 +611,7 @@ class ForwardingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         """
         The URI of the created resource.
         """
@@ -619,7 +619,7 @@ class ForwardingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceLabel")
-    def service_label(self) -> Optional[str]:
+    def service_label(self) -> pulumi.Output[Optional[str]]:
         """
         An optional prefix to the service name for this Forwarding Rule.
         If specified, will be the first label of the fully qualified service
@@ -636,7 +636,7 @@ class ForwardingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> str:
+    def service_name(self) -> pulumi.Output[str]:
         """
         The internal fully qualified service name for this Forwarding Rule. This field is only used for INTERNAL load balancing.
         """
@@ -644,7 +644,7 @@ class ForwardingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def subnetwork(self) -> str:
+    def subnetwork(self) -> pulumi.Output[str]:
         """
         The subnetwork that the load balanced IP should belong to for this
         Forwarding Rule.  This field is only used for INTERNAL load balancing.
@@ -656,7 +656,7 @@ class ForwardingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def target(self) -> Optional[str]:
+    def target(self) -> pulumi.Output[Optional[str]]:
         """
         The URL of the target resource to receive the matched traffic.
         The target must live in the same region as the forwarding rule.

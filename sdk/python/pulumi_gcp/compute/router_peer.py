@@ -15,7 +15,7 @@ __all__ = ['RouterPeer']
 
 class RouterPeer(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  advertise_mode: Optional[pulumi.Input[str]] = None,
                  advertised_groups: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -211,7 +211,7 @@ class RouterPeer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="advertiseMode")
-    def advertise_mode(self) -> Optional[str]:
+    def advertise_mode(self) -> pulumi.Output[Optional[str]]:
         """
         User-specified flag to indicate which mode to use for advertisement.
         Valid values of this enum field are: `DEFAULT`, `CUSTOM`
@@ -222,7 +222,7 @@ class RouterPeer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="advertisedGroups")
-    def advertised_groups(self) -> Optional[List[str]]:
+    def advertised_groups(self) -> pulumi.Output[Optional[List[str]]]:
         """
         User-specified list of prefix groups to advertise in custom
         mode, which can take one of the following options:
@@ -234,7 +234,7 @@ class RouterPeer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="advertisedIpRanges")
-    def advertised_ip_ranges(self) -> Optional[List['outputs.RouterPeerAdvertisedIpRange']]:
+    def advertised_ip_ranges(self) -> pulumi.Output[Optional[List['outputs.RouterPeerAdvertisedIpRange']]]:
         """
         User-specified list of individual IP ranges to advertise in
         custom mode. This field can only be populated if advertiseMode
@@ -247,7 +247,7 @@ class RouterPeer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="advertisedRoutePriority")
-    def advertised_route_priority(self) -> Optional[float]:
+    def advertised_route_priority(self) -> pulumi.Output[Optional[float]]:
         """
         The priority of routes advertised to this BGP peer.
         Where there is more than one matching route of maximum
@@ -257,7 +257,7 @@ class RouterPeer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def interface(self) -> str:
+    def interface(self) -> pulumi.Output[str]:
         """
         Name of the interface the BGP peer is associated with.
         """
@@ -265,7 +265,7 @@ class RouterPeer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> str:
+    def ip_address(self) -> pulumi.Output[str]:
         """
         IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
         """
@@ -273,7 +273,7 @@ class RouterPeer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="managementType")
-    def management_type(self) -> str:
+    def management_type(self) -> pulumi.Output[str]:
         """
         The resource that configures and manages this BGP peer. * 'MANAGED_BY_USER' is the default value and can be managed by
         you or other users * 'MANAGED_BY_ATTACHMENT' is a BGP peer that is configured and managed by Cloud Interconnect,
@@ -284,7 +284,7 @@ class RouterPeer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of this BGP peer. The name must be 1-63 characters long,
         and comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -297,7 +297,7 @@ class RouterPeer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="peerAsn")
-    def peer_asn(self) -> float:
+    def peer_asn(self) -> pulumi.Output[float]:
         """
         Peer BGP Autonomous System Number (ASN).
         Each BGP interface may use a different value.
@@ -306,7 +306,7 @@ class RouterPeer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="peerIpAddress")
-    def peer_ip_address(self) -> str:
+    def peer_ip_address(self) -> pulumi.Output[str]:
         """
         IP address of the BGP interface outside Google Cloud Platform.
         Only IPv4 is supported.
@@ -315,7 +315,7 @@ class RouterPeer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -324,7 +324,7 @@ class RouterPeer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         Region where the router and BgpPeer reside.
         If it is not provided, the provider region is used.
@@ -333,7 +333,7 @@ class RouterPeer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def router(self) -> str:
+    def router(self) -> pulumi.Output[str]:
         """
         The name of the Cloud Router in which this BgpPeer will be configured.
         """

@@ -15,7 +15,7 @@ __all__ = ['SubscriptionIAMBinding']
 
 class SubscriptionIAMBinding(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  condition: Optional[pulumi.Input[pulumi.InputType['SubscriptionIAMBindingConditionArgs']]] = None,
                  members: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -119,12 +119,12 @@ class SubscriptionIAMBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional['outputs.SubscriptionIAMBindingCondition']:
+    def condition(self) -> pulumi.Output[Optional['outputs.SubscriptionIAMBindingCondition']]:
         return pulumi.get(self, "condition")
 
     @property
     @pulumi.getter
-    def etag(self) -> str:
+    def etag(self) -> pulumi.Output[str]:
         """
         (Computed) The etag of the subscription's IAM policy.
         """
@@ -132,12 +132,12 @@ class SubscriptionIAMBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def members(self) -> List[str]:
+    def members(self) -> pulumi.Output[List[str]]:
         return pulumi.get(self, "members")
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The project in which the resource belongs. If it
         is not provided, the provider project is used.
@@ -146,7 +146,7 @@ class SubscriptionIAMBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def role(self) -> str:
+    def role(self) -> pulumi.Output[str]:
         """
         The role that should be applied. Only one
         `pubsub.SubscriptionIAMBinding` can be used per role. Note that custom roles must be of the format
@@ -156,7 +156,7 @@ class SubscriptionIAMBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def subscription(self) -> str:
+    def subscription(self) -> pulumi.Output[str]:
         """
         The subscription name or id to bind to attach IAM policy to.
         """

@@ -15,7 +15,7 @@ __all__ = ['ServicePerimeter']
 
 class ServicePerimeter(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -213,7 +213,7 @@ class ServicePerimeter(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> str:
+    def create_time(self) -> pulumi.Output[str]:
         """
         Time the AccessPolicy was created in UTC.
         """
@@ -221,7 +221,7 @@ class ServicePerimeter(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Description of the ServicePerimeter and its use. Does not affect
         behavior.
@@ -230,7 +230,7 @@ class ServicePerimeter(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Resource name for the ServicePerimeter. The short_name component must
         begin with a letter and only include alphanumeric and '_'.
@@ -240,7 +240,7 @@ class ServicePerimeter(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def parent(self) -> str:
+    def parent(self) -> pulumi.Output[str]:
         """
         The AccessPolicy this ServicePerimeter lives in.
         Format: accessPolicies/{policy_id}
@@ -249,7 +249,7 @@ class ServicePerimeter(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="perimeterType")
-    def perimeter_type(self) -> Optional[str]:
+    def perimeter_type(self) -> pulumi.Output[Optional[str]]:
         """
         Specifies the type of the Perimeter. There are two types: regular and
         bridge. Regular Service Perimeter contains resources, access levels,
@@ -272,7 +272,7 @@ class ServicePerimeter(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def spec(self) -> Optional['outputs.ServicePerimeterSpec']:
+    def spec(self) -> pulumi.Output[Optional['outputs.ServicePerimeterSpec']]:
         """
         Proposed (or dry run) ServicePerimeter configuration.
         This configuration allows to specify and test ServicePerimeter configuration
@@ -284,7 +284,7 @@ class ServicePerimeter(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> Optional['outputs.ServicePerimeterStatus']:
+    def status(self) -> pulumi.Output[Optional['outputs.ServicePerimeterStatus']]:
         """
         ServicePerimeter configuration. Specifies sets of resources,
         restricted services and access levels that determine
@@ -295,7 +295,7 @@ class ServicePerimeter(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def title(self) -> str:
+    def title(self) -> pulumi.Output[str]:
         """
         Human readable title. Must be unique within the Policy.
         """
@@ -303,7 +303,7 @@ class ServicePerimeter(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> str:
+    def update_time(self) -> pulumi.Output[str]:
         """
         Time the AccessPolicy was updated in UTC.
         """
@@ -311,7 +311,7 @@ class ServicePerimeter(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="useExplicitDryRunSpec")
-    def use_explicit_dry_run_spec(self) -> Optional[bool]:
+    def use_explicit_dry_run_spec(self) -> pulumi.Output[Optional[bool]]:
         """
         Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists
         for all Service Perimeters, and that spec is identical to the status for those

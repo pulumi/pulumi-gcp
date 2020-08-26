@@ -15,7 +15,7 @@ __all__ = ['InterconnectAttachment']
 
 class InterconnectAttachment(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_enabled: Optional[pulumi.Input[bool]] = None,
                  bandwidth: Optional[pulumi.Input[str]] = None,
@@ -248,7 +248,7 @@ class InterconnectAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="adminEnabled")
-    def admin_enabled(self) -> Optional[bool]:
+    def admin_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether the VLAN attachment is enabled or disabled.  When using
         PARTNER type this will Pre-Activate the interconnect attachment
@@ -257,7 +257,7 @@ class InterconnectAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def bandwidth(self) -> str:
+    def bandwidth(self) -> pulumi.Output[str]:
         """
         Provisioned bandwidth capacity for the interconnect attachment.
         For attachments of type DEDICATED, the user can set the bandwidth.
@@ -270,7 +270,7 @@ class InterconnectAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="candidateSubnets")
-    def candidate_subnets(self) -> Optional[List[str]]:
+    def candidate_subnets(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Up to 16 candidate prefixes that can be used to restrict the allocation
         of cloudRouterIpAddress and customerRouterIpAddress for this attachment.
@@ -284,7 +284,7 @@ class InterconnectAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cloudRouterIpAddress")
-    def cloud_router_ip_address(self) -> str:
+    def cloud_router_ip_address(self) -> pulumi.Output[str]:
         """
         IPv4 address + prefix length to be configured on Cloud Router Interface for this interconnect attachment.
         """
@@ -292,7 +292,7 @@ class InterconnectAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> str:
+    def creation_timestamp(self) -> pulumi.Output[str]:
         """
         Creation timestamp in RFC3339 text format.
         """
@@ -300,7 +300,7 @@ class InterconnectAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="customerRouterIpAddress")
-    def customer_router_ip_address(self) -> str:
+    def customer_router_ip_address(self) -> pulumi.Output[str]:
         """
         IPv4 address + prefix length to be configured on the customer router subinterface for this interconnect attachment.
         """
@@ -308,7 +308,7 @@ class InterconnectAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         An optional description of this resource.
         """
@@ -316,7 +316,7 @@ class InterconnectAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="edgeAvailabilityDomain")
-    def edge_availability_domain(self) -> str:
+    def edge_availability_domain(self) -> pulumi.Output[str]:
         """
         Desired availability domain for the attachment. Only available for type
         PARTNER, at creation time. For improved reliability, customers should
@@ -329,7 +329,7 @@ class InterconnectAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="googleReferenceId")
-    def google_reference_id(self) -> str:
+    def google_reference_id(self) -> pulumi.Output[str]:
         """
         Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity
         issues.
@@ -338,7 +338,7 @@ class InterconnectAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def interconnect(self) -> Optional[str]:
+    def interconnect(self) -> pulumi.Output[Optional[str]]:
         """
         URL of the underlying Interconnect object that this attachment's
         traffic will traverse through. Required if type is DEDICATED, must not
@@ -348,7 +348,7 @@ class InterconnectAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the resource. Provided by the client when the resource is created. The
         name must be 1-63 characters long, and comply with RFC1035. Specifically, the
@@ -361,7 +361,7 @@ class InterconnectAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pairingKey")
-    def pairing_key(self) -> str:
+    def pairing_key(self) -> pulumi.Output[str]:
         """
         [Output only for type PARTNER. Not present for DEDICATED]. The opaque identifier of an PARTNER attachment used to
         initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
@@ -370,7 +370,7 @@ class InterconnectAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="partnerAsn")
-    def partner_asn(self) -> str:
+    def partner_asn(self) -> pulumi.Output[str]:
         """
         [Output only for type PARTNER. Not present for DEDICATED]. Optional BGP ASN for the router that should be supplied by a
         layer 3 Partner if they configured BGP on behalf of the customer.
@@ -379,7 +379,7 @@ class InterconnectAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="privateInterconnectInfo")
-    def private_interconnect_info(self) -> 'outputs.InterconnectAttachmentPrivateInterconnectInfo':
+    def private_interconnect_info(self) -> pulumi.Output['outputs.InterconnectAttachmentPrivateInterconnectInfo']:
         """
         Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached
         to is of type DEDICATED.
@@ -388,7 +388,7 @@ class InterconnectAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -397,7 +397,7 @@ class InterconnectAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         Region where the regional interconnect attachment resides.
         """
@@ -405,7 +405,7 @@ class InterconnectAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def router(self) -> str:
+    def router(self) -> pulumi.Output[str]:
         """
         URL of the cloud router to be used for dynamic routing. This router must be in
         the same region as this InterconnectAttachment. The InterconnectAttachment will
@@ -416,7 +416,7 @@ class InterconnectAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         """
         The URI of the created resource.
         """
@@ -424,7 +424,7 @@ class InterconnectAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def state(self) -> str:
+    def state(self) -> pulumi.Output[str]:
         """
         [Output Only] The current state of this attachment's functionality.
         """
@@ -432,7 +432,7 @@ class InterconnectAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> pulumi.Output[str]:
         """
         The type of InterconnectAttachment you wish to create. Defaults to
         DEDICATED.
@@ -442,7 +442,7 @@ class InterconnectAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vlanTag8021q")
-    def vlan_tag8021q(self) -> float:
+    def vlan_tag8021q(self) -> pulumi.Output[float]:
         """
         The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. When
         using PARTNER type this will be managed upstream.

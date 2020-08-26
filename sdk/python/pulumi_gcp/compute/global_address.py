@@ -13,7 +13,7 @@ __all__ = ['GlobalAddress']
 
 class GlobalAddress(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address: Optional[pulumi.Input[str]] = None,
                  address_type: Optional[pulumi.Input[str]] = None,
@@ -192,7 +192,7 @@ class GlobalAddress(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def address(self) -> str:
+    def address(self) -> pulumi.Output[str]:
         """
         The IP address or beginning of the address range represented by this
         resource. This can be supplied as an input to reserve a specific
@@ -202,7 +202,7 @@ class GlobalAddress(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="addressType")
-    def address_type(self) -> Optional[str]:
+    def address_type(self) -> pulumi.Output[Optional[str]]:
         """
         The type of the address to reserve.
         * EXTERNAL indicates public/external single IP address.
@@ -214,7 +214,7 @@ class GlobalAddress(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> str:
+    def creation_timestamp(self) -> pulumi.Output[str]:
         """
         Creation timestamp in RFC3339 text format.
         """
@@ -222,7 +222,7 @@ class GlobalAddress(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         An optional description of this resource.
         """
@@ -230,7 +230,7 @@ class GlobalAddress(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipVersion")
-    def ip_version(self) -> Optional[str]:
+    def ip_version(self) -> pulumi.Output[Optional[str]]:
         """
         The IP Version that will be used by this address. The default value is `IPV4`.
         Possible values are `IPV4` and `IPV6`.
@@ -239,7 +239,7 @@ class GlobalAddress(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="labelFingerprint")
-    def label_fingerprint(self) -> str:
+    def label_fingerprint(self) -> pulumi.Output[str]:
         """
         The fingerprint used for optimistic locking of this resource. Used internally during updates.
         """
@@ -247,7 +247,7 @@ class GlobalAddress(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, str]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Labels to apply to this address.  A list of key->value pairs.
         """
@@ -255,7 +255,7 @@ class GlobalAddress(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the resource. Provided by the client when the resource is
         created. The name must be 1-63 characters long, and comply with
@@ -269,7 +269,7 @@ class GlobalAddress(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def network(self) -> Optional[str]:
+    def network(self) -> pulumi.Output[Optional[str]]:
         """
         The URL of the network in which to reserve the IP range. The IP range
         must be in RFC1918 space. The network cannot be deleted if there are
@@ -280,7 +280,7 @@ class GlobalAddress(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="prefixLength")
-    def prefix_length(self) -> Optional[float]:
+    def prefix_length(self) -> pulumi.Output[Optional[float]]:
         """
         The prefix length of the IP range. If not present, it means the
         address field is a single IP address.
@@ -290,7 +290,7 @@ class GlobalAddress(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -299,7 +299,7 @@ class GlobalAddress(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def purpose(self) -> Optional[str]:
+    def purpose(self) -> pulumi.Output[Optional[str]]:
         """
         The purpose of the resource. For global internal addresses it can be
         * VPC_PEERING - for peer networks
@@ -310,7 +310,7 @@ class GlobalAddress(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         """
         The URI of the created resource.
         """

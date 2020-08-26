@@ -15,7 +15,7 @@ __all__ = ['Table']
 
 class Table(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  column_families: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['TableColumnFamilyArgs']]]]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
@@ -109,7 +109,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="columnFamilies")
-    def column_families(self) -> Optional[List['outputs.TableColumnFamily']]:
+    def column_families(self) -> pulumi.Output[Optional[List['outputs.TableColumnFamily']]]:
         """
         A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
         """
@@ -117,7 +117,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> str:
+    def instance_name(self) -> pulumi.Output[str]:
         """
         The name of the Bigtable instance.
         """
@@ -125,7 +125,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the table.
         """
@@ -133,7 +133,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs. If it
         is not provided, the provider project is used.
@@ -142,7 +142,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="splitKeys")
-    def split_keys(self) -> Optional[List[str]]:
+    def split_keys(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A list of predefined keys to split the table on.
         !> **Warning:** Modifying the `split_keys` of an existing table will cause the provider

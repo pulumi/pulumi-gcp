@@ -15,7 +15,7 @@ __all__ = ['AlertPolicy']
 
 class AlertPolicy(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  combiner: Optional[pulumi.Input[str]] = None,
                  conditions: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['AlertPolicyConditionArgs']]]]] = None,
@@ -198,7 +198,7 @@ class AlertPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def combiner(self) -> str:
+    def combiner(self) -> pulumi.Output[str]:
         """
         How to combine the results of multiple conditions to
         determine if an incident should be opened.
@@ -208,7 +208,7 @@ class AlertPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def conditions(self) -> List['outputs.AlertPolicyCondition']:
+    def conditions(self) -> pulumi.Output[List['outputs.AlertPolicyCondition']]:
         """
         A list of conditions for the policy. The conditions are combined by
         AND or OR according to the combiner field. If the combined conditions
@@ -220,7 +220,7 @@ class AlertPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="creationRecord")
-    def creation_record(self) -> 'outputs.AlertPolicyCreationRecord':
+    def creation_record(self) -> pulumi.Output['outputs.AlertPolicyCreationRecord']:
         """
         A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be
         ignored.
@@ -229,7 +229,7 @@ class AlertPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> str:
+    def display_name(self) -> pulumi.Output[str]:
         """
         A short name or phrase used to identify the
         condition in dashboards, notifications, and
@@ -241,7 +241,7 @@ class AlertPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def documentation(self) -> Optional['outputs.AlertPolicyDocumentation']:
+    def documentation(self) -> pulumi.Output[Optional['outputs.AlertPolicyDocumentation']]:
         """
         A short name or phrase used to identify the policy in dashboards,
         notifications, and incidents. To avoid confusion, don't use the same
@@ -253,7 +253,7 @@ class AlertPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enabled(self) -> Optional[bool]:
+    def enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether or not the policy is enabled. The default is true.
         """
@@ -261,7 +261,7 @@ class AlertPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         -
         The unique resource name for this condition.
@@ -275,7 +275,7 @@ class AlertPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="notificationChannels")
-    def notification_channels(self) -> Optional[List[str]]:
+    def notification_channels(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Identifies the notification channels to which notifications should be
         sent when incidents are opened or closed or when new violations occur
@@ -289,7 +289,7 @@ class AlertPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -298,7 +298,7 @@ class AlertPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userLabels")
-    def user_labels(self) -> Optional[Mapping[str, str]]:
+    def user_labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         This field is intended to be used for organizing and identifying the AlertPolicy
         objects.The field can contain up to 64 entries. Each key and value is limited

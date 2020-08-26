@@ -13,7 +13,7 @@ __all__ = ['BillingAccountBucketConfig']
 
 class BillingAccountBucketConfig(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  billing_account: Optional[pulumi.Input[str]] = None,
                  bucket_id: Optional[pulumi.Input[str]] = None,
@@ -115,7 +115,7 @@ class BillingAccountBucketConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="billingAccount")
-    def billing_account(self) -> str:
+    def billing_account(self) -> pulumi.Output[str]:
         """
         The parent resource that contains the logging bucket.
         """
@@ -123,7 +123,7 @@ class BillingAccountBucketConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="bucketId")
-    def bucket_id(self) -> str:
+    def bucket_id(self) -> pulumi.Output[str]:
         """
         The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
         """
@@ -131,7 +131,7 @@ class BillingAccountBucketConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> str:
+    def description(self) -> pulumi.Output[str]:
         """
         Describes this bucket.
         """
@@ -139,7 +139,7 @@ class BillingAccountBucketConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lifecycleState")
-    def lifecycle_state(self) -> str:
+    def lifecycle_state(self) -> pulumi.Output[str]:
         """
         The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
         """
@@ -147,7 +147,7 @@ class BillingAccountBucketConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def location(self) -> str:
+    def location(self) -> pulumi.Output[str]:
         """
         The location of the bucket. The supported locations are: "global" "us-central1"
         """
@@ -155,7 +155,7 @@ class BillingAccountBucketConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
         """
@@ -163,7 +163,7 @@ class BillingAccountBucketConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="retentionDays")
-    def retention_days(self) -> Optional[float]:
+    def retention_days(self) -> pulumi.Output[Optional[float]]:
         """
         Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
         """

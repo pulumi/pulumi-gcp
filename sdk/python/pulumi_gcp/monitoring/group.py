@@ -13,7 +13,7 @@ __all__ = ['Group']
 
 class Group(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
@@ -130,7 +130,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> str:
+    def display_name(self) -> pulumi.Output[str]:
         """
         A user-assigned name for this group, used only for display
         purposes.
@@ -139,7 +139,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def filter(self) -> str:
+    def filter(self) -> pulumi.Output[str]:
         """
         The filter used to determine which monitored resources
         belong to this group.
@@ -148,7 +148,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="isCluster")
-    def is_cluster(self) -> Optional[bool]:
+    def is_cluster(self) -> pulumi.Output[Optional[bool]]:
         """
         If true, the members of this group are considered to be a
         cluster. The system can perform additional analysis on
@@ -158,7 +158,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         A unique identifier for this group. The format is "projects/{project_id_or_number}/groups/{group_id}".
         """
@@ -166,7 +166,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="parentName")
-    def parent_name(self) -> Optional[str]:
+    def parent_name(self) -> pulumi.Output[Optional[str]]:
         """
         The name of the group's parent, if it has one. The format is
         "projects/{project_id_or_number}/groups/{group_id}". For
@@ -176,7 +176,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.

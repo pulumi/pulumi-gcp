@@ -15,7 +15,7 @@ __all__ = ['GroupMembership']
 
 class GroupMembership(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  group: Optional[pulumi.Input[str]] = None,
                  member_key: Optional[pulumi.Input[pulumi.InputType['GroupMembershipMemberKeyArgs']]] = None,
@@ -121,7 +121,7 @@ class GroupMembership(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> str:
+    def create_time(self) -> pulumi.Output[str]:
         """
         The time when the Membership was created.
         """
@@ -129,7 +129,7 @@ class GroupMembership(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def group(self) -> str:
+    def group(self) -> pulumi.Output[str]:
         """
         The name of the Group to create this membership in.
         """
@@ -137,7 +137,7 @@ class GroupMembership(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="memberKey")
-    def member_key(self) -> 'outputs.GroupMembershipMemberKey':
+    def member_key(self) -> pulumi.Output['outputs.GroupMembershipMemberKey']:
         """
         EntityKey of the member.
         Structure is documented below.
@@ -146,7 +146,7 @@ class GroupMembership(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
         Possible values are `OWNER`, `MANAGER`, and `MEMBER`.
@@ -155,7 +155,7 @@ class GroupMembership(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="preferredMemberKey")
-    def preferred_member_key(self) -> 'outputs.GroupMembershipPreferredMemberKey':
+    def preferred_member_key(self) -> pulumi.Output['outputs.GroupMembershipPreferredMemberKey']:
         """
         EntityKey of the member.
         Structure is documented below.
@@ -164,7 +164,7 @@ class GroupMembership(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def roles(self) -> List['outputs.GroupMembershipRole']:
+    def roles(self) -> pulumi.Output[List['outputs.GroupMembershipRole']]:
         """
         The MembershipRoles that apply to the Membership.
         Must not contain duplicate MembershipRoles with the same name.
@@ -174,7 +174,7 @@ class GroupMembership(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> pulumi.Output[str]:
         """
         The type of the membership.
         """
@@ -182,7 +182,7 @@ class GroupMembership(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> str:
+    def update_time(self) -> pulumi.Output[str]:
         """
         The time when the Membership was last updated.
         """

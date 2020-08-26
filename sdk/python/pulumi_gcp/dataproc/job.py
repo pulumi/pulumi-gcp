@@ -15,7 +15,7 @@ __all__ = ['Job']
 
 class Job(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
                  hadoop_config: Optional[pulumi.Input[pulumi.InputType['JobHadoopConfigArgs']]] = None,
@@ -172,7 +172,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="driverControlsFilesUri")
-    def driver_controls_files_uri(self) -> str:
+    def driver_controls_files_uri(self) -> pulumi.Output[str]:
         """
         If present, the location of miscellaneous control files which may be used as part of job setup and handling. If not present, control files may be placed in the same location as driver_output_uri.
         """
@@ -180,7 +180,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="driverOutputResourceUri")
-    def driver_output_resource_uri(self) -> str:
+    def driver_output_resource_uri(self) -> pulumi.Output[str]:
         """
         A URI pointing to the location of the stdout of the job's driver program.
         """
@@ -188,7 +188,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="forceDelete")
-    def force_delete(self) -> Optional[bool]:
+    def force_delete(self) -> pulumi.Output[Optional[bool]]:
         """
         By default, you can only delete inactive jobs within
         Dataproc. Setting this to true, and calling destroy, will ensure that the
@@ -198,7 +198,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hadoopConfig")
-    def hadoop_config(self) -> Optional['outputs.JobHadoopConfig']:
+    def hadoop_config(self) -> pulumi.Output[Optional['outputs.JobHadoopConfig']]:
         """
         The config of Hadoop job
         """
@@ -206,7 +206,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hiveConfig")
-    def hive_config(self) -> Optional['outputs.JobHiveConfig']:
+    def hive_config(self) -> pulumi.Output[Optional['outputs.JobHiveConfig']]:
         """
         The config of hive job
         """
@@ -214,7 +214,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, str]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The list of labels (key/value pairs) to add to the job.
         """
@@ -222,7 +222,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pigConfig")
-    def pig_config(self) -> Optional['outputs.JobPigConfig']:
+    def pig_config(self) -> pulumi.Output[Optional['outputs.JobPigConfig']]:
         """
         The config of pag job.
         """
@@ -230,7 +230,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def placement(self) -> 'outputs.JobPlacement':
+    def placement(self) -> pulumi.Output['outputs.JobPlacement']:
         """
         The config of job placement.
         """
@@ -238,7 +238,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The project in which the `cluster` can be found and jobs
         subsequently run against. If it is not provided, the provider project is used.
@@ -247,7 +247,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pysparkConfig")
-    def pyspark_config(self) -> Optional['outputs.JobPysparkConfig']:
+    def pyspark_config(self) -> pulumi.Output[Optional['outputs.JobPysparkConfig']]:
         """
         The config of pySpark job.
         """
@@ -255,7 +255,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def reference(self) -> 'outputs.JobReference':
+    def reference(self) -> pulumi.Output['outputs.JobReference']:
         """
         The reference of the job
         """
@@ -263,7 +263,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> Optional[str]:
+    def region(self) -> pulumi.Output[Optional[str]]:
         """
         The Cloud Dataproc region. This essentially determines which clusters are available
         for this job to be submitted to. If not specified, defaults to `global`.
@@ -272,7 +272,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def scheduling(self) -> Optional['outputs.JobScheduling']:
+    def scheduling(self) -> pulumi.Output[Optional['outputs.JobScheduling']]:
         """
         Optional. Job scheduling configuration.
         """
@@ -280,7 +280,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sparkConfig")
-    def spark_config(self) -> Optional['outputs.JobSparkConfig']:
+    def spark_config(self) -> pulumi.Output[Optional['outputs.JobSparkConfig']]:
         """
         The config of the Spark job.
         """
@@ -288,7 +288,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sparksqlConfig")
-    def sparksql_config(self) -> Optional['outputs.JobSparksqlConfig']:
+    def sparksql_config(self) -> pulumi.Output[Optional['outputs.JobSparksqlConfig']]:
         """
         The config of SparkSql job
         """
@@ -296,7 +296,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> 'outputs.JobStatus':
+    def status(self) -> pulumi.Output['outputs.JobStatus']:
         """
         The status of the job.
         """

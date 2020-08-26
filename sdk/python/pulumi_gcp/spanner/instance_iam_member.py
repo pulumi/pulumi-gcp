@@ -15,7 +15,7 @@ __all__ = ['InstanceIAMMember']
 
 class InstanceIAMMember(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  condition: Optional[pulumi.Input[pulumi.InputType['InstanceIAMMemberConditionArgs']]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
@@ -122,12 +122,12 @@ class InstanceIAMMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional['outputs.InstanceIAMMemberCondition']:
+    def condition(self) -> pulumi.Output[Optional['outputs.InstanceIAMMemberCondition']]:
         return pulumi.get(self, "condition")
 
     @property
     @pulumi.getter
-    def etag(self) -> str:
+    def etag(self) -> pulumi.Output[str]:
         """
         (Computed) The etag of the instance's IAM policy.
         """
@@ -135,7 +135,7 @@ class InstanceIAMMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def instance(self) -> str:
+    def instance(self) -> pulumi.Output[str]:
         """
         The name of the instance.
         """
@@ -143,12 +143,12 @@ class InstanceIAMMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def member(self) -> str:
+    def member(self) -> pulumi.Output[str]:
         return pulumi.get(self, "member")
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs. If it
         is not provided, the provider project is used.
@@ -157,7 +157,7 @@ class InstanceIAMMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def role(self) -> str:
+    def role(self) -> pulumi.Output[str]:
         """
         The role that should be applied. Only one
         `spanner.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format

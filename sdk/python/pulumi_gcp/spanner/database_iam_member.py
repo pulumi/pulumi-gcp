@@ -15,7 +15,7 @@ __all__ = ['DatabaseIAMMember']
 
 class DatabaseIAMMember(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  condition: Optional[pulumi.Input[pulumi.InputType['DatabaseIAMMemberConditionArgs']]] = None,
                  database: Optional[pulumi.Input[str]] = None,
@@ -130,12 +130,12 @@ class DatabaseIAMMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional['outputs.DatabaseIAMMemberCondition']:
+    def condition(self) -> pulumi.Output[Optional['outputs.DatabaseIAMMemberCondition']]:
         return pulumi.get(self, "condition")
 
     @property
     @pulumi.getter
-    def database(self) -> str:
+    def database(self) -> pulumi.Output[str]:
         """
         The name of the Spanner database.
         """
@@ -143,7 +143,7 @@ class DatabaseIAMMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def etag(self) -> str:
+    def etag(self) -> pulumi.Output[str]:
         """
         (Computed) The etag of the database's IAM policy.
         """
@@ -151,7 +151,7 @@ class DatabaseIAMMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def instance(self) -> str:
+    def instance(self) -> pulumi.Output[str]:
         """
         The name of the Spanner instance the database belongs to.
         """
@@ -159,12 +159,12 @@ class DatabaseIAMMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def member(self) -> str:
+    def member(self) -> pulumi.Output[str]:
         return pulumi.get(self, "member")
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs. If it
         is not provided, the provider project is used.
@@ -173,7 +173,7 @@ class DatabaseIAMMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def role(self) -> str:
+    def role(self) -> pulumi.Output[str]:
         """
         The role that should be applied. Only one
         `spanner.DatabaseIAMBinding` can be used per role. Note that custom roles must be of the format

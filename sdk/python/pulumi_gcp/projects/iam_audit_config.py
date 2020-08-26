@@ -15,7 +15,7 @@ __all__ = ['IAMAuditConfig']
 
 class IAMAuditConfig(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  audit_log_configs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['IAMAuditConfigAuditLogConfigArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -108,7 +108,7 @@ class IAMAuditConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="auditLogConfigs")
-    def audit_log_configs(self) -> List['outputs.IAMAuditConfigAuditLogConfig']:
+    def audit_log_configs(self) -> pulumi.Output[List['outputs.IAMAuditConfigAuditLogConfig']]:
         """
         The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
         """
@@ -116,7 +116,7 @@ class IAMAuditConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def etag(self) -> str:
+    def etag(self) -> pulumi.Output[str]:
         """
         (Computed) The etag of the project's IAM policy.
         """
@@ -124,7 +124,7 @@ class IAMAuditConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
         Required for `projects.IAMPolicy` - you must explicitly set the project, and it
@@ -134,7 +134,7 @@ class IAMAuditConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def service(self) -> str:
+    def service(self) -> pulumi.Output[str]:
         """
         Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_project\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
         """

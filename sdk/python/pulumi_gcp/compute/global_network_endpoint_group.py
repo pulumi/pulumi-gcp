@@ -13,7 +13,7 @@ __all__ = ['GlobalNetworkEndpointGroup']
 
 class GlobalNetworkEndpointGroup(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  default_port: Optional[pulumi.Input[float]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -132,7 +132,7 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultPort")
-    def default_port(self) -> Optional[float]:
+    def default_port(self) -> pulumi.Output[Optional[float]]:
         """
         The default port used if the port number is not specified in the
         network endpoint.
@@ -141,7 +141,7 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         An optional description of this resource. Provide this property when
         you create the resource.
@@ -150,7 +150,7 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the resource; provided by the client when the resource is
         created. The name must be 1-63 characters long, and comply with
@@ -164,7 +164,7 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkEndpointType")
-    def network_endpoint_type(self) -> str:
+    def network_endpoint_type(self) -> pulumi.Output[str]:
         """
         Type of network endpoints in this network endpoint group.
         Possible values are `INTERNET_IP_PORT` and `INTERNET_FQDN_PORT`.
@@ -173,7 +173,7 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -182,7 +182,7 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         """
         The URI of the created resource.
         """

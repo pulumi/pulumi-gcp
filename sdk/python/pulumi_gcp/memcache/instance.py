@@ -15,7 +15,7 @@ __all__ = ['Instance']
 
 class Instance(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authorized_network: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -170,7 +170,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="authorizedNetwork")
-    def authorized_network(self) -> Optional[str]:
+    def authorized_network(self) -> pulumi.Output[Optional[str]]:
         """
         The full name of the GCE network to connect the instance to.  If not provided,
         'default' will be used.
@@ -179,7 +179,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> str:
+    def create_time(self) -> pulumi.Output[str]:
         """
         Creation timestamp in RFC3339 text format.
         """
@@ -187,7 +187,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> str:
+    def display_name(self) -> pulumi.Output[str]:
         """
         A user-visible name for the instance.
         """
@@ -195,7 +195,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, str]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Resource labels to represent user-provided metadata.
         """
@@ -203,7 +203,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="memcacheFullVersion")
-    def memcache_full_version(self) -> str:
+    def memcache_full_version(self) -> pulumi.Output[str]:
         """
         The full version of memcached server running on this instance.
         """
@@ -211,7 +211,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="memcacheNodes")
-    def memcache_nodes(self) -> List['outputs.InstanceMemcacheNode']:
+    def memcache_nodes(self) -> pulumi.Output[List['outputs.InstanceMemcacheNode']]:
         """
         Additional information about the instance state, if available.
         """
@@ -219,7 +219,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="memcacheParameters")
-    def memcache_parameters(self) -> Optional['outputs.InstanceMemcacheParameters']:
+    def memcache_parameters(self) -> pulumi.Output[Optional['outputs.InstanceMemcacheParameters']]:
         """
         User-specified parameters for this memcache instance.
         Structure is documented below.
@@ -228,7 +228,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="memcacheVersion")
-    def memcache_version(self) -> Optional[str]:
+    def memcache_version(self) -> pulumi.Output[Optional[str]]:
         """
         The major version of Memcached software. If not provided, latest supported version will be used.
         Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
@@ -240,7 +240,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The resource name of the instance.
         """
@@ -248,7 +248,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nodeConfig")
-    def node_config(self) -> 'outputs.InstanceNodeConfig':
+    def node_config(self) -> pulumi.Output['outputs.InstanceNodeConfig']:
         """
         Configuration for memcache nodes.
         Structure is documented below.
@@ -257,7 +257,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nodeCount")
-    def node_count(self) -> float:
+    def node_count(self) -> pulumi.Output[float]:
         """
         Number of nodes in the memcache instance.
         """
@@ -265,7 +265,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -274,7 +274,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The name of the Memcache region of the instance.
         """
@@ -282,7 +282,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def zones(self) -> List[str]:
+    def zones(self) -> pulumi.Output[List[str]]:
         """
         Zones where memcache nodes should be provisioned.  If not
         provided, all zones will be used.

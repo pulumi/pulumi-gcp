@@ -13,7 +13,7 @@ __all__ = ['Brand']
 
 class Brand(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  application_title: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -116,7 +116,7 @@ class Brand(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="applicationTitle")
-    def application_title(self) -> str:
+    def application_title(self) -> pulumi.Output[str]:
         """
         Application name displayed on OAuth consent screen.
         """
@@ -124,7 +124,7 @@ class Brand(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Output only. Identifier of the brand, in the format 'projects/{project_number}/brands/{brand_id}'. NOTE: The brand
         identification corresponds to the project number as only one brand per project can be created.
@@ -133,7 +133,7 @@ class Brand(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="orgInternalOnly")
-    def org_internal_only(self) -> bool:
+    def org_internal_only(self) -> pulumi.Output[bool]:
         """
         Whether the brand is only intended for usage inside the GSuite organization only.
         """
@@ -141,7 +141,7 @@ class Brand(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -150,7 +150,7 @@ class Brand(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="supportEmail")
-    def support_email(self) -> str:
+    def support_email(self) -> pulumi.Output[str]:
         """
         Support email displayed on the OAuth consent screen. Can be either a
         user or group email. When a user email is specified, the caller must

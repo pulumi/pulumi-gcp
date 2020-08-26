@@ -15,7 +15,7 @@ __all__ = ['Provider']
 
 class Provider(pulumi.ProviderResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_approval_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  access_context_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,

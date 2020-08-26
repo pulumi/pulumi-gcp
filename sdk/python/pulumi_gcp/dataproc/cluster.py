@@ -15,7 +15,7 @@ __all__ = ['Cluster']
 
 class Cluster(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_config: Optional[pulumi.Input[pulumi.InputType['ClusterClusterConfigArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -118,7 +118,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterConfig")
-    def cluster_config(self) -> 'outputs.ClusterClusterConfig':
+    def cluster_config(self) -> pulumi.Output['outputs.ClusterClusterConfig']:
         """
         Allows you to configure various aspects of the cluster.
         Structure defined below.
@@ -127,7 +127,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, str]:
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         The list of labels (key/value pairs) to be applied to
         instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
@@ -137,7 +137,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the cluster, unique within the project and
         zone.
@@ -146,7 +146,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the `cluster` will exist. If it
         is not provided, the provider project is used.
@@ -155,7 +155,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> Optional[str]:
+    def region(self) -> pulumi.Output[Optional[str]]:
         """
         The region in which the cluster and associated nodes will be created in.
         Defaults to `global`.

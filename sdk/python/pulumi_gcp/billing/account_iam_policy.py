@@ -13,7 +13,7 @@ __all__ = ['AccountIamPolicy']
 
 class AccountIamPolicy(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  billing_account_id: Optional[pulumi.Input[str]] = None,
                  policy_data: Optional[pulumi.Input[str]] = None,
@@ -100,7 +100,7 @@ class AccountIamPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="billingAccountId")
-    def billing_account_id(self) -> str:
+    def billing_account_id(self) -> pulumi.Output[str]:
         """
         The billing account id.
         """
@@ -108,12 +108,12 @@ class AccountIamPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def etag(self) -> str:
+    def etag(self) -> pulumi.Output[str]:
         return pulumi.get(self, "etag")
 
     @property
     @pulumi.getter(name="policyData")
-    def policy_data(self) -> str:
+    def policy_data(self) -> pulumi.Output[str]:
         """
         The `organizations.getIAMPolicy` data source that represents
         the IAM policy that will be applied to the billing account. This policy overrides any existing

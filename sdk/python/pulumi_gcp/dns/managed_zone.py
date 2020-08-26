@@ -15,7 +15,7 @@ __all__ = ['ManagedZone']
 
 class ManagedZone(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dns_name: Optional[pulumi.Input[str]] = None,
@@ -189,7 +189,7 @@ class ManagedZone(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> str:
+    def description(self) -> pulumi.Output[str]:
         """
         A textual description field. Defaults to 'Managed by Pulumi'.
         """
@@ -197,7 +197,7 @@ class ManagedZone(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dnsName")
-    def dns_name(self) -> str:
+    def dns_name(self) -> pulumi.Output[str]:
         """
         The DNS name of this managed zone, for instance "example.com.".
         """
@@ -205,7 +205,7 @@ class ManagedZone(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dnssecConfig")
-    def dnssec_config(self) -> Optional['outputs.ManagedZoneDnssecConfig']:
+    def dnssec_config(self) -> pulumi.Output[Optional['outputs.ManagedZoneDnssecConfig']]:
         """
         DNSSEC configuration
         Structure is documented below.
@@ -214,7 +214,7 @@ class ManagedZone(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="forwardingConfig")
-    def forwarding_config(self) -> Optional['outputs.ManagedZoneForwardingConfig']:
+    def forwarding_config(self) -> pulumi.Output[Optional['outputs.ManagedZoneForwardingConfig']]:
         """
         The presence for this field indicates that outbound forwarding is enabled
         for this zone. The value of this field contains the set of destinations
@@ -225,7 +225,7 @@ class ManagedZone(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, str]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A set of key/value label pairs to assign to this ManagedZone.
         """
@@ -233,7 +233,7 @@ class ManagedZone(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         User assigned name for this resource.
         Must be unique within the project.
@@ -242,7 +242,7 @@ class ManagedZone(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nameServers")
-    def name_servers(self) -> List[str]:
+    def name_servers(self) -> pulumi.Output[List[str]]:
         """
         Delegate your managed_zone to these virtual name servers; defined by the server
         """
@@ -250,7 +250,7 @@ class ManagedZone(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="peeringConfig")
-    def peering_config(self) -> Optional['outputs.ManagedZonePeeringConfig']:
+    def peering_config(self) -> pulumi.Output[Optional['outputs.ManagedZonePeeringConfig']]:
         """
         The presence of this field indicates that DNS Peering is enabled for this
         zone. The value of this field contains the network to peer with.
@@ -260,7 +260,7 @@ class ManagedZone(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="privateVisibilityConfig")
-    def private_visibility_config(self) -> Optional['outputs.ManagedZonePrivateVisibilityConfig']:
+    def private_visibility_config(self) -> pulumi.Output[Optional['outputs.ManagedZonePrivateVisibilityConfig']]:
         """
         For privately visible zones, the set of Virtual Private Cloud
         resources that the zone is visible from.
@@ -270,7 +270,7 @@ class ManagedZone(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -279,7 +279,7 @@ class ManagedZone(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="reverseLookup")
-    def reverse_lookup(self) -> Optional[bool]:
+    def reverse_lookup(self) -> pulumi.Output[Optional[bool]]:
         """
         Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
         lookup queries using automatically configured records for VPC resources. This only applies
@@ -289,7 +289,7 @@ class ManagedZone(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceDirectoryConfig")
-    def service_directory_config(self) -> Optional['outputs.ManagedZoneServiceDirectoryConfig']:
+    def service_directory_config(self) -> pulumi.Output[Optional['outputs.ManagedZoneServiceDirectoryConfig']]:
         """
         The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.  Structure is documented below.
         """
@@ -297,7 +297,7 @@ class ManagedZone(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def visibility(self) -> Optional[str]:
+    def visibility(self) -> pulumi.Output[Optional[str]]:
         """
         The zone's visibility: public zones are exposed to the Internet,
         while private zones are visible only to Virtual Private Cloud resources.

@@ -15,7 +15,7 @@ __all__ = ['ConfigIamBinding']
 
 class ConfigIamBinding(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  condition: Optional[pulumi.Input[pulumi.InputType['ConfigIamBindingConditionArgs']]] = None,
                  config: Optional[pulumi.Input[str]] = None,
@@ -119,12 +119,12 @@ class ConfigIamBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional['outputs.ConfigIamBindingCondition']:
+    def condition(self) -> pulumi.Output[Optional['outputs.ConfigIamBindingCondition']]:
         return pulumi.get(self, "condition")
 
     @property
     @pulumi.getter
-    def config(self) -> str:
+    def config(self) -> pulumi.Output[str]:
         """
         Used to find the parent resource to bind the IAM policy to
         """
@@ -132,7 +132,7 @@ class ConfigIamBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def etag(self) -> str:
+    def etag(self) -> pulumi.Output[str]:
         """
         (Computed) The etag of the IAM policy.
         """
@@ -140,12 +140,12 @@ class ConfigIamBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def members(self) -> List[str]:
+    def members(self) -> pulumi.Output[List[str]]:
         return pulumi.get(self, "members")
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -154,7 +154,7 @@ class ConfigIamBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def role(self) -> str:
+    def role(self) -> pulumi.Output[str]:
         """
         The role that should be applied. Only one
         `runtimeconfig.ConfigIamBinding` can be used per role. Note that custom roles must be of the format

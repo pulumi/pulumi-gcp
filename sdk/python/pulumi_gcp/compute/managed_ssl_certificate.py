@@ -15,7 +15,7 @@ __all__ = ['ManagedSslCertificate']
 
 class ManagedSslCertificate(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate_id: Optional[pulumi.Input[float]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -173,7 +173,7 @@ class ManagedSslCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="certificateId")
-    def certificate_id(self) -> float:
+    def certificate_id(self) -> pulumi.Output[float]:
         """
         The unique identifier for the resource.
         """
@@ -181,7 +181,7 @@ class ManagedSslCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> str:
+    def creation_timestamp(self) -> pulumi.Output[str]:
         """
         Creation timestamp in RFC3339 text format.
         """
@@ -189,7 +189,7 @@ class ManagedSslCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         An optional description of this resource.
         """
@@ -197,7 +197,7 @@ class ManagedSslCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="expireTime")
-    def expire_time(self) -> str:
+    def expire_time(self) -> pulumi.Output[str]:
         """
         Expire time of the certificate.
         """
@@ -205,7 +205,7 @@ class ManagedSslCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def managed(self) -> Optional['outputs.ManagedSslCertificateManaged']:
+    def managed(self) -> pulumi.Output[Optional['outputs.ManagedSslCertificateManaged']]:
         """
         Properties relevant to a managed certificate.  These will be used if the
         certificate is managed (as indicated by a value of `MANAGED` in `type`).
@@ -215,7 +215,7 @@ class ManagedSslCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the resource. Provided by the client when the resource is
         created. The name must be 1-63 characters long, and comply with
@@ -229,7 +229,7 @@ class ManagedSslCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -238,7 +238,7 @@ class ManagedSslCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         """
         The URI of the created resource.
         """
@@ -246,7 +246,7 @@ class ManagedSslCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="subjectAlternativeNames")
-    def subject_alternative_names(self) -> List[str]:
+    def subject_alternative_names(self) -> pulumi.Output[List[str]]:
         """
         Domains associated with the certificate via Subject Alternative Name.
         """
@@ -254,7 +254,7 @@ class ManagedSslCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[str]:
+    def type(self) -> pulumi.Output[Optional[str]]:
         """
         Enum field whose value is always `MANAGED` - used to signal to the API
         which type this is.

@@ -15,7 +15,7 @@ __all__ = ['Trigger']
 
 class Trigger(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  build: Optional[pulumi.Input[pulumi.InputType['TriggerBuildArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -207,7 +207,7 @@ class Trigger(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def build(self) -> Optional['outputs.TriggerBuild']:
+    def build(self) -> pulumi.Output[Optional['outputs.TriggerBuild']]:
         """
         Contents of the build template. Either a filename or build template must be provided.
         Structure is documented below.
@@ -216,7 +216,7 @@ class Trigger(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> str:
+    def create_time(self) -> pulumi.Output[str]:
         """
         Time when the trigger was created.
         """
@@ -224,7 +224,7 @@ class Trigger(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Human-readable description of the trigger.
         """
@@ -232,7 +232,7 @@ class Trigger(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def disabled(self) -> Optional[bool]:
+    def disabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether the trigger is disabled or not. If true, the trigger will never result in a build.
         """
@@ -240,7 +240,7 @@ class Trigger(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def filename(self) -> Optional[str]:
+    def filename(self) -> pulumi.Output[Optional[str]]:
         """
         Path, from the source root, to a file whose contents is used for the template. Either a filename or build template must be provided.
         """
@@ -248,7 +248,7 @@ class Trigger(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def github(self) -> Optional['outputs.TriggerGithub']:
+    def github(self) -> pulumi.Output[Optional['outputs.TriggerGithub']]:
         """
         Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
         One of `trigger_template` or `github` must be provided.
@@ -258,7 +258,7 @@ class Trigger(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ignoredFiles")
-    def ignored_files(self) -> Optional[List[str]]:
+    def ignored_files(self) -> pulumi.Output[Optional[List[str]]]:
         """
         ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
         extended with support for `**`.
@@ -272,7 +272,7 @@ class Trigger(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="includedFiles")
-    def included_files(self) -> Optional[List[str]]:
+    def included_files(self) -> pulumi.Output[Optional[List[str]]]:
         """
         ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
         extended with support for `**`.
@@ -288,7 +288,7 @@ class Trigger(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the volume to mount.
         Volume names must be unique per build step and must be valid names for
@@ -298,7 +298,7 @@ class Trigger(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -307,7 +307,7 @@ class Trigger(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def substitutions(self) -> Optional[Mapping[str, str]]:
+    def substitutions(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Substitutions to use in a triggered build. Should only be used with triggers.run
         """
@@ -315,7 +315,7 @@ class Trigger(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Tags for annotation of a Build. These are not docker tags.
         """
@@ -323,7 +323,7 @@ class Trigger(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="triggerId")
-    def trigger_id(self) -> str:
+    def trigger_id(self) -> pulumi.Output[str]:
         """
         The unique identifier for the trigger.
         """
@@ -331,7 +331,7 @@ class Trigger(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="triggerTemplate")
-    def trigger_template(self) -> Optional['outputs.TriggerTriggerTemplate']:
+    def trigger_template(self) -> pulumi.Output[Optional['outputs.TriggerTriggerTemplate']]:
         """
         Template describing the types of source changes to trigger a build.
         Branch and tag names in trigger templates are interpreted as regular

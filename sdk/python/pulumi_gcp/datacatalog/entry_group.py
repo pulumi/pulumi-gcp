@@ -13,7 +13,7 @@ __all__ = ['EntryGroup']
 
 class EntryGroup(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -116,7 +116,7 @@ class EntryGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Entry group description, which can consist of several sentences or paragraphs that describe entry group contents.
         """
@@ -124,7 +124,7 @@ class EntryGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[str]:
+    def display_name(self) -> pulumi.Output[Optional[str]]:
         """
         A short name to identify the entry group, for example, "analytics data - jan 2011".
         """
@@ -132,7 +132,7 @@ class EntryGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="entryGroupId")
-    def entry_group_id(self) -> str:
+    def entry_group_id(self) -> pulumi.Output[str]:
         """
         The id of the entry group to create. The id must begin with a letter or underscore,
         contain only English letters, numbers and underscores, and be at most 64 characters.
@@ -141,7 +141,7 @@ class EntryGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The resource name of the entry group in URL format. Example:
         projects/{project}/locations/{location}/entryGroups/{entryGroupId}
@@ -150,7 +150,7 @@ class EntryGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -159,7 +159,7 @@ class EntryGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         EntryGroup location region.
         """

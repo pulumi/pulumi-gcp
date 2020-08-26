@@ -15,7 +15,7 @@ __all__ = ['Dataset']
 
 class Dataset(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  accesses: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DatasetAccessArgs']]]]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
@@ -183,7 +183,7 @@ class Dataset(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def accesses(self) -> List['outputs.DatasetAccess']:
+    def accesses(self) -> pulumi.Output[List['outputs.DatasetAccess']]:
         """
         An array of objects that define dataset access for one or more entities.
         Structure is documented below.
@@ -192,7 +192,7 @@ class Dataset(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="creationTime")
-    def creation_time(self) -> float:
+    def creation_time(self) -> pulumi.Output[float]:
         """
         The time when this dataset was created, in milliseconds since the epoch.
         """
@@ -200,7 +200,7 @@ class Dataset(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="datasetId")
-    def dataset_id(self) -> str:
+    def dataset_id(self) -> pulumi.Output[str]:
         """
         The ID of the dataset containing this table.
         """
@@ -208,7 +208,7 @@ class Dataset(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultEncryptionConfiguration")
-    def default_encryption_configuration(self) -> Optional['outputs.DatasetDefaultEncryptionConfiguration']:
+    def default_encryption_configuration(self) -> pulumi.Output[Optional['outputs.DatasetDefaultEncryptionConfiguration']]:
         """
         The default encryption key for all tables in the dataset. Once this property is set,
         all newly-created partitioned tables in the dataset will have encryption key set to
@@ -219,7 +219,7 @@ class Dataset(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultPartitionExpirationMs")
-    def default_partition_expiration_ms(self) -> Optional[float]:
+    def default_partition_expiration_ms(self) -> pulumi.Output[Optional[float]]:
         """
         The default partition expiration for all partitioned tables in
         the dataset, in milliseconds.
@@ -228,7 +228,7 @@ class Dataset(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultTableExpirationMs")
-    def default_table_expiration_ms(self) -> Optional[float]:
+    def default_table_expiration_ms(self) -> pulumi.Output[Optional[float]]:
         """
         The default lifetime of all tables in the dataset, in milliseconds.
         The minimum value is 3600000 milliseconds (one hour).
@@ -237,7 +237,7 @@ class Dataset(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deleteContentsOnDestroy")
-    def delete_contents_on_destroy(self) -> Optional[bool]:
+    def delete_contents_on_destroy(self) -> pulumi.Output[Optional[bool]]:
         """
         If set to `true`, delete all the tables in the
         dataset when destroying the resource; otherwise,
@@ -247,7 +247,7 @@ class Dataset(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A user-friendly description of the dataset
         """
@@ -255,7 +255,7 @@ class Dataset(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def etag(self) -> str:
+    def etag(self) -> pulumi.Output[str]:
         """
         A hash of the resource.
         """
@@ -263,7 +263,7 @@ class Dataset(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="friendlyName")
-    def friendly_name(self) -> Optional[str]:
+    def friendly_name(self) -> pulumi.Output[Optional[str]]:
         """
         A descriptive name for the dataset
         """
@@ -271,7 +271,7 @@ class Dataset(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, str]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The labels associated with this dataset. You can use these to
         organize and group your datasets
@@ -280,7 +280,7 @@ class Dataset(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lastModifiedTime")
-    def last_modified_time(self) -> float:
+    def last_modified_time(self) -> pulumi.Output[float]:
         """
         The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
         """
@@ -288,7 +288,7 @@ class Dataset(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def location(self) -> Optional[str]:
+    def location(self) -> pulumi.Output[Optional[str]]:
         """
         The geographic location where the dataset should reside.
         See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
@@ -297,7 +297,7 @@ class Dataset(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -306,7 +306,7 @@ class Dataset(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         """
         The URI of the created resource.
         """

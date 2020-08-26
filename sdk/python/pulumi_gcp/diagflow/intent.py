@@ -15,7 +15,7 @@ __all__ = ['Intent']
 
 class Intent(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input[str]] = None,
                  default_response_platforms: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -200,7 +200,7 @@ class Intent(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def action(self) -> str:
+    def action(self) -> pulumi.Output[str]:
         """
         The name of the action associated with the intent.
         Note: The action name must not contain whitespaces.
@@ -209,7 +209,7 @@ class Intent(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultResponsePlatforms")
-    def default_response_platforms(self) -> Optional[List[str]]:
+    def default_response_platforms(self) -> pulumi.Output[Optional[List[str]]]:
         """
         The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
         (i.e. default platform).
@@ -219,7 +219,7 @@ class Intent(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> str:
+    def display_name(self) -> pulumi.Output[str]:
         """
         The name of this intent to be displayed on the console.
         """
@@ -227,7 +227,7 @@ class Intent(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def events(self) -> Optional[List[str]]:
+    def events(self) -> pulumi.Output[Optional[List[str]]]:
         """
         The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of
         the contexts must be present in the active user session for an event to trigger this intent. See the
@@ -237,7 +237,7 @@ class Intent(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="followupIntentInfos")
-    def followup_intent_infos(self) -> List['outputs.IntentFollowupIntentInfo']:
+    def followup_intent_infos(self) -> pulumi.Output[List['outputs.IntentFollowupIntentInfo']]:
         """
         Information about all followup intents that have this intent as a direct or indirect parent. We populate this field only
         in the output.
@@ -246,7 +246,7 @@ class Intent(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="inputContextNames")
-    def input_context_names(self) -> Optional[List[str]]:
+    def input_context_names(self) -> pulumi.Output[Optional[List[str]]]:
         """
         The list of context names required for this intent to be triggered.
         Format: projects/<Project ID>/agent/sessions/-/contexts/<Context ID>.
@@ -255,7 +255,7 @@ class Intent(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="isFallback")
-    def is_fallback(self) -> bool:
+    def is_fallback(self) -> pulumi.Output[bool]:
         """
         Indicates whether this is a fallback intent.
         """
@@ -263,7 +263,7 @@ class Intent(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="mlDisabled")
-    def ml_disabled(self) -> bool:
+    def ml_disabled(self) -> pulumi.Output[bool]:
         """
         Indicates whether Machine Learning is disabled for the intent.
         Note: If mlDisabled setting is set to true, then this intent is not taken into account during inference in ML
@@ -273,7 +273,7 @@ class Intent(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The unique identifier of this intent. Format: projects/<Project ID>/agent/intents/<Intent ID>.
         """
@@ -281,7 +281,7 @@ class Intent(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="parentFollowupIntentName")
-    def parent_followup_intent_name(self) -> str:
+    def parent_followup_intent_name(self) -> pulumi.Output[str]:
         """
         The unique identifier of the parent intent in the chain of followup intents.
         Format: projects/<Project ID>/agent/intents/<Intent ID>.
@@ -290,7 +290,7 @@ class Intent(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def priority(self) -> float:
+    def priority(self) -> pulumi.Output[float]:
         """
         The priority of this intent. Higher numbers represent higher priorities.
         - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds
@@ -301,7 +301,7 @@ class Intent(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -310,7 +310,7 @@ class Intent(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resetContexts")
-    def reset_contexts(self) -> bool:
+    def reset_contexts(self) -> pulumi.Output[bool]:
         """
         Indicates whether to delete all contexts in the current session when this intent is matched.
         """
@@ -318,7 +318,7 @@ class Intent(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="rootFollowupIntentName")
-    def root_followup_intent_name(self) -> str:
+    def root_followup_intent_name(self) -> pulumi.Output[str]:
         """
         The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup intents
         chain for this intent. Format: projects/<Project ID>/agent/intents/<Intent ID>.
@@ -327,7 +327,7 @@ class Intent(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="webhookState")
-    def webhook_state(self) -> str:
+    def webhook_state(self) -> pulumi.Output[str]:
         """
         Indicates whether webhooks are enabled for the intent.
         * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.

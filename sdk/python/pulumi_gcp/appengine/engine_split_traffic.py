@@ -15,7 +15,7 @@ __all__ = ['EngineSplitTraffic']
 
 class EngineSplitTraffic(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  migrate_traffic: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -107,7 +107,7 @@ class EngineSplitTraffic(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="migrateTraffic")
-    def migrate_traffic(self) -> Optional[bool]:
+    def migrate_traffic(self) -> pulumi.Output[Optional[bool]]:
         """
         If set to true traffic will be migrated to this version.
         """
@@ -115,7 +115,7 @@ class EngineSplitTraffic(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -124,7 +124,7 @@ class EngineSplitTraffic(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def service(self) -> str:
+    def service(self) -> pulumi.Output[str]:
         """
         The name of the service these settings apply to.
         """
@@ -132,7 +132,7 @@ class EngineSplitTraffic(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def split(self) -> 'outputs.EngineSplitTrafficSplit':
+    def split(self) -> pulumi.Output['outputs.EngineSplitTrafficSplit']:
         """
         Mapping that defines fractional HTTP traffic diversion to different versions within the service.
         Structure is documented below.

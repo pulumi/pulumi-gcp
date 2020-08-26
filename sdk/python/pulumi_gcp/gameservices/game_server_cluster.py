@@ -15,7 +15,7 @@ __all__ = ['GameServerCluster']
 
 class GameServerCluster(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  connection_info: Optional[pulumi.Input[pulumi.InputType['GameServerClusterConnectionInfoArgs']]] = None,
@@ -139,7 +139,7 @@ class GameServerCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> str:
+    def cluster_id(self) -> pulumi.Output[str]:
         """
         Required. The resource name of the game server cluster
         """
@@ -147,7 +147,7 @@ class GameServerCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="connectionInfo")
-    def connection_info(self) -> 'outputs.GameServerClusterConnectionInfo':
+    def connection_info(self) -> pulumi.Output['outputs.GameServerClusterConnectionInfo']:
         """
         Game server cluster connection information. This information is used to
         manage game server clusters.
@@ -157,7 +157,7 @@ class GameServerCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Human readable description of the cluster.
         """
@@ -165,7 +165,7 @@ class GameServerCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, str]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The labels associated with this game server cluster. Each label is a
         key-value pair.
@@ -174,7 +174,7 @@ class GameServerCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def location(self) -> Optional[str]:
+    def location(self) -> pulumi.Output[Optional[str]]:
         """
         Location of the Cluster.
         """
@@ -182,7 +182,7 @@ class GameServerCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The resource id of the game server cluster, eg:
         'projects/{project_id}/locations/{location}/realms/{realm_id}/gameServerClusters/{cluster_id}'. For example,
@@ -192,7 +192,7 @@ class GameServerCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -201,7 +201,7 @@ class GameServerCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="realmId")
-    def realm_id(self) -> str:
+    def realm_id(self) -> pulumi.Output[str]:
         """
         The realm id of the game server realm.
         """

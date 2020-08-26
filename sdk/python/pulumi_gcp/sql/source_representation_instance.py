@@ -13,7 +13,7 @@ __all__ = ['SourceRepresentationInstance']
 
 class SourceRepresentationInstance(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  database_version: Optional[pulumi.Input[str]] = None,
                  host: Optional[pulumi.Input[str]] = None,
@@ -121,7 +121,7 @@ class SourceRepresentationInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="databaseVersion")
-    def database_version(self) -> str:
+    def database_version(self) -> pulumi.Output[str]:
         """
         The MySQL version running on your source database server.
         Possible values are `MYSQL_5_6` and `MYSQL_5_7`.
@@ -130,7 +130,7 @@ class SourceRepresentationInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def host(self) -> str:
+    def host(self) -> pulumi.Output[str]:
         """
         The externally accessible IPv4 address for the source database server.
         """
@@ -138,7 +138,7 @@ class SourceRepresentationInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the source representation instance. Use any valid Cloud SQL instance name.
         """
@@ -146,7 +146,7 @@ class SourceRepresentationInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[float]:
+    def port(self) -> pulumi.Output[Optional[float]]:
         """
         The externally accessible port for the source database server.
         Defaults to 3306.
@@ -155,7 +155,7 @@ class SourceRepresentationInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -164,7 +164,7 @@ class SourceRepresentationInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The Region in which the created instance should reside.
         If it is not provided, the provider region is used.

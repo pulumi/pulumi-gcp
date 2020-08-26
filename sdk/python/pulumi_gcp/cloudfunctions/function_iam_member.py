@@ -15,7 +15,7 @@ __all__ = ['FunctionIamMember']
 
 class FunctionIamMember(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cloud_function: Optional[pulumi.Input[str]] = None,
                  condition: Optional[pulumi.Input[pulumi.InputType['FunctionIamMemberConditionArgs']]] = None,
@@ -129,7 +129,7 @@ class FunctionIamMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cloudFunction")
-    def cloud_function(self) -> str:
+    def cloud_function(self) -> pulumi.Output[str]:
         """
         Used to find the parent resource to bind the IAM policy to
         """
@@ -137,12 +137,12 @@ class FunctionIamMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional['outputs.FunctionIamMemberCondition']:
+    def condition(self) -> pulumi.Output[Optional['outputs.FunctionIamMemberCondition']]:
         return pulumi.get(self, "condition")
 
     @property
     @pulumi.getter
-    def etag(self) -> str:
+    def etag(self) -> pulumi.Output[str]:
         """
         (Computed) The etag of the IAM policy.
         """
@@ -150,12 +150,12 @@ class FunctionIamMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def member(self) -> str:
+    def member(self) -> pulumi.Output[str]:
         return pulumi.get(self, "member")
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -164,7 +164,7 @@ class FunctionIamMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The location of this cloud function. Used to find the parent resource to bind the IAM policy to. If not specified,
         the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
@@ -174,7 +174,7 @@ class FunctionIamMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def role(self) -> str:
+    def role(self) -> pulumi.Output[str]:
         """
         The role that should be applied. Only one
         `cloudfunctions.FunctionIamBinding` can be used per role. Note that custom roles must be of the format

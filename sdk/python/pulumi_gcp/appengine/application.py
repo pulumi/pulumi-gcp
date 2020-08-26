@@ -15,7 +15,7 @@ __all__ = ['Application']
 
 class Application(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auth_domain: Optional[pulumi.Input[str]] = None,
                  database_type: Optional[pulumi.Input[str]] = None,
@@ -155,7 +155,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="appId")
-    def app_id(self) -> str:
+    def app_id(self) -> pulumi.Output[str]:
         """
         Identifier of the app, usually `{PROJECT_ID}`
         """
@@ -163,7 +163,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="authDomain")
-    def auth_domain(self) -> str:
+    def auth_domain(self) -> pulumi.Output[str]:
         """
         The domain to authenticate users with when using App Engine's User API.
         """
@@ -171,7 +171,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="codeBucket")
-    def code_bucket(self) -> str:
+    def code_bucket(self) -> pulumi.Output[str]:
         """
         The GCS bucket code is being stored in for this app.
         """
@@ -179,7 +179,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="databaseType")
-    def database_type(self) -> str:
+    def database_type(self) -> pulumi.Output[str]:
         """
         The type of the Cloud Firestore or Cloud Datastore database associated with this application.
         """
@@ -187,7 +187,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultBucket")
-    def default_bucket(self) -> str:
+    def default_bucket(self) -> pulumi.Output[str]:
         """
         The GCS bucket content is being stored in for this app.
         """
@@ -195,7 +195,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultHostname")
-    def default_hostname(self) -> str:
+    def default_hostname(self) -> pulumi.Output[str]:
         """
         The default hostname for this app.
         """
@@ -203,7 +203,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="featureSettings")
-    def feature_settings(self) -> 'outputs.ApplicationFeatureSettings':
+    def feature_settings(self) -> pulumi.Output['outputs.ApplicationFeatureSettings']:
         """
         A block of optional settings to configure specific App Engine features:
         """
@@ -211,7 +211,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="gcrDomain")
-    def gcr_domain(self) -> str:
+    def gcr_domain(self) -> pulumi.Output[str]:
         """
         The GCR domain used for storing managed Docker images for this app.
         """
@@ -219,7 +219,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def iap(self) -> 'outputs.ApplicationIap':
+    def iap(self) -> pulumi.Output['outputs.ApplicationIap']:
         """
         Settings for enabling Cloud Identity Aware Proxy
         """
@@ -227,7 +227,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="locationId")
-    def location_id(self) -> str:
+    def location_id(self) -> pulumi.Output[str]:
         """
         The [location](https://cloud.google.com/appengine/docs/locations)
         to serve the app from.
@@ -236,7 +236,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Unique name of the app, usually `apps/{PROJECT_ID}`
         """
@@ -244,7 +244,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The project ID to create the application under.
         ~>**NOTE:** GCP only accepts project ID, not project number. If you are using number,
@@ -254,7 +254,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="servingStatus")
-    def serving_status(self) -> str:
+    def serving_status(self) -> pulumi.Output[str]:
         """
         The serving status of the app.
         """
@@ -262,7 +262,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="urlDispatchRules")
-    def url_dispatch_rules(self) -> List['outputs.ApplicationUrlDispatchRule']:
+    def url_dispatch_rules(self) -> pulumi.Output[List['outputs.ApplicationUrlDispatchRule']]:
         """
         A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
         """

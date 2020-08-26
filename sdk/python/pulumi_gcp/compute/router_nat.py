@@ -15,7 +15,7 @@ __all__ = ['RouterNat']
 
 class RouterNat(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  drain_nat_ips: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  icmp_idle_timeout_sec: Optional[pulumi.Input[float]] = None,
@@ -215,7 +215,7 @@ class RouterNat(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="drainNatIps")
-    def drain_nat_ips(self) -> Optional[List[str]]:
+    def drain_nat_ips(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A list of URLs of the IP resources to be drained. These IPs must be
         valid static external IPs that have been assigned to the NAT.
@@ -224,7 +224,7 @@ class RouterNat(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="icmpIdleTimeoutSec")
-    def icmp_idle_timeout_sec(self) -> Optional[float]:
+    def icmp_idle_timeout_sec(self) -> pulumi.Output[Optional[float]]:
         """
         Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
         """
@@ -232,7 +232,7 @@ class RouterNat(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="logConfig")
-    def log_config(self) -> Optional['outputs.RouterNatLogConfig']:
+    def log_config(self) -> pulumi.Output[Optional['outputs.RouterNatLogConfig']]:
         """
         Configuration for logging on NAT
         Structure is documented below.
@@ -241,7 +241,7 @@ class RouterNat(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minPortsPerVm")
-    def min_ports_per_vm(self) -> Optional[float]:
+    def min_ports_per_vm(self) -> pulumi.Output[Optional[float]]:
         """
         Minimum number of ports allocated to a VM from this NAT.
         """
@@ -249,7 +249,7 @@ class RouterNat(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Self-link of subnetwork to NAT
         """
@@ -257,7 +257,7 @@ class RouterNat(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="natIpAllocateOption")
-    def nat_ip_allocate_option(self) -> str:
+    def nat_ip_allocate_option(self) -> pulumi.Output[str]:
         """
         How external IPs should be allocated for this NAT. Valid values are
         `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
@@ -268,7 +268,7 @@ class RouterNat(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="natIps")
-    def nat_ips(self) -> Optional[List[str]]:
+    def nat_ips(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Self-links of NAT IPs. Only valid if natIpAllocateOption
         is set to MANUAL_ONLY.
@@ -277,7 +277,7 @@ class RouterNat(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -286,7 +286,7 @@ class RouterNat(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         Region where the router and NAT reside.
         """
@@ -294,7 +294,7 @@ class RouterNat(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def router(self) -> str:
+    def router(self) -> pulumi.Output[str]:
         """
         The name of the Cloud Router in which this NAT will be configured.
         """
@@ -302,7 +302,7 @@ class RouterNat(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceSubnetworkIpRangesToNat")
-    def source_subnetwork_ip_ranges_to_nat(self) -> str:
+    def source_subnetwork_ip_ranges_to_nat(self) -> pulumi.Output[str]:
         """
         How NAT should be configured per Subnetwork.
         If `ALL_SUBNETWORKS_ALL_IP_RANGES`, all of the
@@ -320,7 +320,7 @@ class RouterNat(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def subnetworks(self) -> Optional[List['outputs.RouterNatSubnetwork']]:
+    def subnetworks(self) -> pulumi.Output[Optional[List['outputs.RouterNatSubnetwork']]]:
         """
         One or more subnetwork NAT configurations. Only used if
         `source_subnetwork_ip_ranges_to_nat` is set to `LIST_OF_SUBNETWORKS`
@@ -330,7 +330,7 @@ class RouterNat(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tcpEstablishedIdleTimeoutSec")
-    def tcp_established_idle_timeout_sec(self) -> Optional[float]:
+    def tcp_established_idle_timeout_sec(self) -> pulumi.Output[Optional[float]]:
         """
         Timeout (in seconds) for TCP established connections.
         Defaults to 1200s if not set.
@@ -339,7 +339,7 @@ class RouterNat(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tcpTransitoryIdleTimeoutSec")
-    def tcp_transitory_idle_timeout_sec(self) -> Optional[float]:
+    def tcp_transitory_idle_timeout_sec(self) -> pulumi.Output[Optional[float]]:
         """
         Timeout (in seconds) for TCP transitory connections.
         Defaults to 30s if not set.
@@ -348,7 +348,7 @@ class RouterNat(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="udpIdleTimeoutSec")
-    def udp_idle_timeout_sec(self) -> Optional[float]:
+    def udp_idle_timeout_sec(self) -> pulumi.Output[Optional[float]]:
         """
         Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
         """

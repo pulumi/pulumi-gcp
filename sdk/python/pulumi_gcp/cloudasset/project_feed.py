@@ -15,7 +15,7 @@ __all__ = ['ProjectFeed']
 
 class ProjectFeed(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  asset_names: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  asset_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -153,7 +153,7 @@ class ProjectFeed(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="assetNames")
-    def asset_names(self) -> Optional[List[str]]:
+    def asset_names(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A list of the full names of the assets to receive updates. You must specify either or both of
         assetNames and assetTypes. Only asset updates matching specified assetNames and assetTypes are
@@ -164,7 +164,7 @@ class ProjectFeed(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="assetTypes")
-    def asset_types(self) -> Optional[List[str]]:
+    def asset_types(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A list of types of the assets to receive updates. You must specify either or both of assetNames
         and assetTypes. Only asset updates matching specified assetNames and assetTypes are exported to
@@ -176,7 +176,7 @@ class ProjectFeed(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="billingProject")
-    def billing_project(self) -> Optional[str]:
+    def billing_project(self) -> pulumi.Output[Optional[str]]:
         """
         The project whose identity will be used when sending messages to the
         destination pubsub topic. It also specifies the project for API
@@ -187,7 +187,7 @@ class ProjectFeed(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="contentType")
-    def content_type(self) -> Optional[str]:
+    def content_type(self) -> pulumi.Output[Optional[str]]:
         """
         Asset content type. If not specified, no content but the asset name and type will be returned.
         Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
@@ -196,7 +196,7 @@ class ProjectFeed(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="feedId")
-    def feed_id(self) -> str:
+    def feed_id(self) -> pulumi.Output[str]:
         """
         This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
         """
@@ -204,7 +204,7 @@ class ProjectFeed(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="feedOutputConfig")
-    def feed_output_config(self) -> 'outputs.ProjectFeedFeedOutputConfig':
+    def feed_output_config(self) -> pulumi.Output['outputs.ProjectFeedFeedOutputConfig']:
         """
         Output configuration for asset feed destination.
         Structure is documented below.
@@ -213,7 +213,7 @@ class ProjectFeed(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The format will be projects/{projectNumber}/feeds/{client-assigned_feed_identifier}.
         """
@@ -221,7 +221,7 @@ class ProjectFeed(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.

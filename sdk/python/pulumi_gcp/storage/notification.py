@@ -13,7 +13,7 @@ __all__ = ['Notification']
 
 class Notification(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
                  custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -136,7 +136,7 @@ class Notification(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def bucket(self) -> str:
+    def bucket(self) -> pulumi.Output[str]:
         """
         The name of the bucket.
         """
@@ -144,7 +144,7 @@ class Notification(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="customAttributes")
-    def custom_attributes(self) -> Optional[Mapping[str, str]]:
+    def custom_attributes(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A set of key/value attribute pairs to attach to each Cloud PubSub message published for this notification subscription
         """
@@ -152,7 +152,7 @@ class Notification(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="eventTypes")
-    def event_types(self) -> Optional[List[str]]:
+    def event_types(self) -> pulumi.Output[Optional[List[str]]]:
         """
         List of event type filters for this notification config. If not specified, Cloud Storage will send notifications for all event types. The valid types are: `"OBJECT_FINALIZE"`, `"OBJECT_METADATA_UPDATE"`, `"OBJECT_DELETE"`, `"OBJECT_ARCHIVE"`
         """
@@ -160,7 +160,7 @@ class Notification(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="notificationId")
-    def notification_id(self) -> str:
+    def notification_id(self) -> pulumi.Output[str]:
         """
         The ID of the created notification.
         """
@@ -168,7 +168,7 @@ class Notification(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="objectNamePrefix")
-    def object_name_prefix(self) -> Optional[str]:
+    def object_name_prefix(self) -> pulumi.Output[Optional[str]]:
         """
         Specifies a prefix path filter for this notification config. Cloud Storage will only send notifications for objects in this bucket whose names begin with the specified prefix.
         """
@@ -176,7 +176,7 @@ class Notification(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="payloadFormat")
-    def payload_format(self) -> str:
+    def payload_format(self) -> pulumi.Output[str]:
         """
         The desired content of the Payload. One of `"JSON_API_V1"` or `"NONE"`.
         """
@@ -184,7 +184,7 @@ class Notification(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         """
         The URI of the created resource.
         """
@@ -192,7 +192,7 @@ class Notification(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def topic(self) -> str:
+    def topic(self) -> pulumi.Output[str]:
         """
         The Cloud PubSub topic to which this subscription publishes. Expects either the 
         topic name, assumed to belong to the default GCP provider project, or the project-level name,

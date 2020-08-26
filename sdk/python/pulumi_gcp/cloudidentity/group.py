@@ -15,7 +15,7 @@ __all__ = ['Group']
 
 class Group(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -132,7 +132,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> str:
+    def create_time(self) -> pulumi.Output[str]:
         """
         The time when the Group was created.
         """
@@ -140,7 +140,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         An extended description to help users determine the purpose of a Group.
         Must not be longer than 4,096 characters.
@@ -149,7 +149,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[str]:
+    def display_name(self) -> pulumi.Output[Optional[str]]:
         """
         The display name of the Group.
         """
@@ -157,7 +157,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupKey")
-    def group_key(self) -> 'outputs.GroupGroupKey':
+    def group_key(self) -> pulumi.Output['outputs.GroupGroupKey']:
         """
         EntityKey of the Group.
         Structure is documented below.
@@ -166,7 +166,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, str]:
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         The labels that apply to the Group.
         Must not contain more than one entry. Must contain the entry
@@ -177,7 +177,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Resource name of the Group in the format: groups/{group_id}, where group_id is the unique ID assigned to the Group.
         """
@@ -185,7 +185,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def parent(self) -> str:
+    def parent(self) -> pulumi.Output[str]:
         """
         The resource name of the entity under which this Group resides in the
         Cloud Identity resource hierarchy.
@@ -196,7 +196,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> str:
+    def update_time(self) -> pulumi.Output[str]:
         """
         The time when the Group was last updated.
         """

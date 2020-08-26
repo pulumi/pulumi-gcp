@@ -15,7 +15,7 @@ __all__ = ['AccessLevel']
 
 class AccessLevel(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  basic: Optional[pulumi.Input[pulumi.InputType['AccessLevelBasicArgs']]] = None,
                  custom: Optional[pulumi.Input[pulumi.InputType['AccessLevelCustomArgs']]] = None,
@@ -130,7 +130,7 @@ class AccessLevel(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def basic(self) -> Optional['outputs.AccessLevelBasic']:
+    def basic(self) -> pulumi.Output[Optional['outputs.AccessLevelBasic']]:
         """
         A set of predefined conditions for the access level and a combining function.
         Structure is documented below.
@@ -139,7 +139,7 @@ class AccessLevel(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def custom(self) -> Optional['outputs.AccessLevelCustom']:
+    def custom(self) -> pulumi.Output[Optional['outputs.AccessLevelCustom']]:
         """
         Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
         See CEL spec at: https://github.com/google/cel-spec.
@@ -149,7 +149,7 @@ class AccessLevel(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Description of the expression
         """
@@ -157,7 +157,7 @@ class AccessLevel(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Resource name for the Access Level. The short_name component must begin
         with a letter and only include alphanumeric and '_'.
@@ -167,7 +167,7 @@ class AccessLevel(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def parent(self) -> str:
+    def parent(self) -> pulumi.Output[str]:
         """
         The AccessPolicy this AccessLevel lives in.
         Format: accessPolicies/{policy_id}
@@ -176,7 +176,7 @@ class AccessLevel(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def title(self) -> str:
+    def title(self) -> pulumi.Output[str]:
         """
         Title for the expression, i.e. a short string describing its purpose.
         """

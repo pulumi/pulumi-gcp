@@ -15,7 +15,7 @@ __all__ = ['IAMBinding']
 
 class IAMBinding(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  condition: Optional[pulumi.Input[pulumi.InputType['IAMBindingConditionArgs']]] = None,
                  folder: Optional[pulumi.Input[str]] = None,
@@ -126,12 +126,12 @@ class IAMBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional['outputs.IAMBindingCondition']:
+    def condition(self) -> pulumi.Output[Optional['outputs.IAMBindingCondition']]:
         return pulumi.get(self, "condition")
 
     @property
     @pulumi.getter
-    def etag(self) -> str:
+    def etag(self) -> pulumi.Output[str]:
         """
         (Computed) The etag of the folder's IAM policy.
         """
@@ -139,7 +139,7 @@ class IAMBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def folder(self) -> str:
+    def folder(self) -> pulumi.Output[str]:
         """
         The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
         """
@@ -147,7 +147,7 @@ class IAMBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def members(self) -> List[str]:
+    def members(self) -> pulumi.Output[List[str]]:
         """
         An array of identities that will be granted the privilege in the `role`.
         Each entry can have one of the following values:
@@ -161,7 +161,7 @@ class IAMBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def role(self) -> str:
+    def role(self) -> pulumi.Output[str]:
         """
         The role that should be applied. Only one
         `folder.IAMBinding` can be used per role. Note that custom roles must be of the format

@@ -13,7 +13,7 @@ __all__ = ['TenantDefaultSupportedIdpConfig']
 
 class TenantDefaultSupportedIdpConfig(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
                  client_secret: Optional[pulumi.Input[str]] = None,
@@ -143,7 +143,7 @@ class TenantDefaultSupportedIdpConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clientId")
-    def client_id(self) -> str:
+    def client_id(self) -> pulumi.Output[str]:
         """
         OAuth client ID
         """
@@ -151,7 +151,7 @@ class TenantDefaultSupportedIdpConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clientSecret")
-    def client_secret(self) -> str:
+    def client_secret(self) -> pulumi.Output[str]:
         """
         OAuth client secret
         """
@@ -159,7 +159,7 @@ class TenantDefaultSupportedIdpConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enabled(self) -> Optional[bool]:
+    def enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         If this IDP allows the user to sign in
         """
@@ -167,7 +167,7 @@ class TenantDefaultSupportedIdpConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="idpId")
-    def idp_id(self) -> str:
+    def idp_id(self) -> pulumi.Output[str]:
         """
         ID of the IDP. Possible values include:
         * `apple.com`
@@ -185,7 +185,7 @@ class TenantDefaultSupportedIdpConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the default supported IDP config resource
         """
@@ -193,7 +193,7 @@ class TenantDefaultSupportedIdpConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -202,7 +202,7 @@ class TenantDefaultSupportedIdpConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tenant(self) -> str:
+    def tenant(self) -> pulumi.Output[str]:
         """
         The name of the tenant where this DefaultSupportedIdpConfig resource exists
         """

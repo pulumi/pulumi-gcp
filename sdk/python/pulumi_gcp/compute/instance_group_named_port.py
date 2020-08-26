@@ -13,7 +13,7 @@ __all__ = ['InstanceGroupNamedPort']
 
 class InstanceGroupNamedPort(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  group: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -116,7 +116,7 @@ class InstanceGroupNamedPort(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def group(self) -> str:
+    def group(self) -> pulumi.Output[str]:
         """
         The name of the instance group.
         """
@@ -124,7 +124,7 @@ class InstanceGroupNamedPort(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name for this named port. The name must be 1-63 characters
         long, and comply with RFC1035.
@@ -133,7 +133,7 @@ class InstanceGroupNamedPort(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> float:
+    def port(self) -> pulumi.Output[float]:
         """
         The port number, which can be a value between 1 and 65535.
         """
@@ -141,7 +141,7 @@ class InstanceGroupNamedPort(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -150,7 +150,7 @@ class InstanceGroupNamedPort(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def zone(self) -> str:
+    def zone(self) -> pulumi.Output[str]:
         """
         The zone of the instance group.
         """

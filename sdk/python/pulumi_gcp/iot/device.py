@@ -15,7 +15,7 @@ __all__ = ['Device']
 
 class Device(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  blocked: Optional[pulumi.Input[bool]] = None,
                  credentials: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DeviceCredentialArgs']]]]] = None,
@@ -168,7 +168,7 @@ class Device(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def blocked(self) -> Optional[bool]:
+    def blocked(self) -> pulumi.Output[Optional[bool]]:
         """
         If a device is blocked, connections or requests from this device will fail.
         """
@@ -176,7 +176,7 @@ class Device(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def config(self) -> 'outputs.DeviceConfig':
+    def config(self) -> pulumi.Output['outputs.DeviceConfig']:
         """
         The most recent device configuration, which is eventually sent from Cloud IoT Core to the device.
         """
@@ -184,7 +184,7 @@ class Device(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def credentials(self) -> Optional[List['outputs.DeviceCredential']]:
+    def credentials(self) -> pulumi.Output[Optional[List['outputs.DeviceCredential']]]:
         """
         The credentials used to authenticate this device.
         Structure is documented below.
@@ -193,7 +193,7 @@ class Device(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="gatewayConfig")
-    def gateway_config(self) -> Optional['outputs.DeviceGatewayConfig']:
+    def gateway_config(self) -> pulumi.Output[Optional['outputs.DeviceGatewayConfig']]:
         """
         Gateway-related configuration and state.
         Structure is documented below.
@@ -202,7 +202,7 @@ class Device(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lastConfigAckTime")
-    def last_config_ack_time(self) -> str:
+    def last_config_ack_time(self) -> pulumi.Output[str]:
         """
         The last time a cloud-to-device config version acknowledgment was received from the device.
         """
@@ -210,7 +210,7 @@ class Device(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lastConfigSendTime")
-    def last_config_send_time(self) -> str:
+    def last_config_send_time(self) -> pulumi.Output[str]:
         """
         The last time a cloud-to-device config version was sent to the device.
         """
@@ -218,7 +218,7 @@ class Device(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lastErrorStatus")
-    def last_error_status(self) -> 'outputs.DeviceLastErrorStatus':
+    def last_error_status(self) -> pulumi.Output['outputs.DeviceLastErrorStatus']:
         """
         The error message of the most recent error, such as a failure to publish to Cloud Pub/Sub.
         """
@@ -226,7 +226,7 @@ class Device(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lastErrorTime")
-    def last_error_time(self) -> str:
+    def last_error_time(self) -> pulumi.Output[str]:
         """
         The time the most recent error occurred, such as a failure to publish to Cloud Pub/Sub.
         """
@@ -234,7 +234,7 @@ class Device(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lastEventTime")
-    def last_event_time(self) -> str:
+    def last_event_time(self) -> pulumi.Output[str]:
         """
         The last time a telemetry event was received.
         """
@@ -242,7 +242,7 @@ class Device(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lastHeartbeatTime")
-    def last_heartbeat_time(self) -> str:
+    def last_heartbeat_time(self) -> pulumi.Output[str]:
         """
         The last time an MQTT PINGREQ was received.
         """
@@ -250,7 +250,7 @@ class Device(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lastStateTime")
-    def last_state_time(self) -> str:
+    def last_state_time(self) -> pulumi.Output[str]:
         """
         The last time a state event was received.
         """
@@ -258,7 +258,7 @@ class Device(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="logLevel")
-    def log_level(self) -> Optional[str]:
+    def log_level(self) -> pulumi.Output[Optional[str]]:
         """
         The logging verbosity for device activity.
         Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
@@ -267,7 +267,7 @@ class Device(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[Mapping[str, str]]:
+    def metadata(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The metadata key-value pairs assigned to the device.
         """
@@ -275,7 +275,7 @@ class Device(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         A unique name for the resource.
         """
@@ -283,7 +283,7 @@ class Device(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="numId")
-    def num_id(self) -> str:
+    def num_id(self) -> pulumi.Output[str]:
         """
         A server-defined unique numeric ID for the device. This is a more compact way to identify devices, and it is globally
         unique.
@@ -292,7 +292,7 @@ class Device(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def registry(self) -> str:
+    def registry(self) -> pulumi.Output[str]:
         """
         The name of the device registry where this device should be created.
         """
@@ -300,7 +300,7 @@ class Device(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def state(self) -> 'outputs.DeviceState':
+    def state(self) -> pulumi.Output['outputs.DeviceState']:
         """
         The state most recently received from the device.
         """

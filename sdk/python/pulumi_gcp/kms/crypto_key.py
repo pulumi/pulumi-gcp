@@ -15,7 +15,7 @@ __all__ = ['CryptoKey']
 
 class CryptoKey(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  key_ring: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -144,7 +144,7 @@ class CryptoKey(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="keyRing")
-    def key_ring(self) -> str:
+    def key_ring(self) -> pulumi.Output[str]:
         """
         The KeyRing that this key belongs to.
         Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
@@ -153,7 +153,7 @@ class CryptoKey(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, str]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Labels with user-defined metadata to apply to this resource.
         """
@@ -161,7 +161,7 @@ class CryptoKey(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The resource name for the CryptoKey.
         """
@@ -169,7 +169,7 @@ class CryptoKey(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def purpose(self) -> Optional[str]:
+    def purpose(self) -> pulumi.Output[Optional[str]]:
         """
         The immutable purpose of this CryptoKey. See the
         [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
@@ -181,7 +181,7 @@ class CryptoKey(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="rotationPeriod")
-    def rotation_period(self) -> Optional[str]:
+    def rotation_period(self) -> pulumi.Output[Optional[str]]:
         """
         Every time this period passes, generate a new CryptoKeyVersion and set it as the primary.
         The first rotation will take place after the specified period. The rotation period has
@@ -192,12 +192,12 @@ class CryptoKey(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         return pulumi.get(self, "self_link")
 
     @property
     @pulumi.getter(name="versionTemplate")
-    def version_template(self) -> 'outputs.CryptoKeyVersionTemplate':
+    def version_template(self) -> pulumi.Output['outputs.CryptoKeyVersionTemplate']:
         """
         A template describing settings for new crypto key versions.
         Structure is documented below.

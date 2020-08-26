@@ -15,7 +15,7 @@ __all__ = ['InstanceGroup']
 
 class InstanceGroup(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  instances: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -139,7 +139,7 @@ class InstanceGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         An optional textual description of the instance
         group.
@@ -148,7 +148,7 @@ class InstanceGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def instances(self) -> List[str]:
+    def instances(self) -> pulumi.Output[List[str]]:
         """
         List of instances in the group. They should be given
         as either self_link or id. When adding instances they must all be in the same
@@ -158,7 +158,7 @@ class InstanceGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name which the port will be mapped to.
         """
@@ -166,7 +166,7 @@ class InstanceGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="namedPorts")
-    def named_ports(self) -> Optional[List['outputs.InstanceGroupNamedPort']]:
+    def named_ports(self) -> pulumi.Output[Optional[List['outputs.InstanceGroupNamedPort']]]:
         """
         The named port configuration. See the section below
         for details on configuration.
@@ -175,7 +175,7 @@ class InstanceGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def network(self) -> str:
+    def network(self) -> pulumi.Output[str]:
         """
         The URL of the network the instance group is in. If
         this is different from the network where the instances are in, the creation
@@ -186,7 +186,7 @@ class InstanceGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs. If it
         is not provided, the provider project is used.
@@ -195,7 +195,7 @@ class InstanceGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         """
         The URI of the created resource.
         """
@@ -203,7 +203,7 @@ class InstanceGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def size(self) -> float:
+    def size(self) -> pulumi.Output[float]:
         """
         The number of instances in the group.
         """
@@ -211,7 +211,7 @@ class InstanceGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def zone(self) -> str:
+    def zone(self) -> pulumi.Output[str]:
         """
         The zone that this instance group should be created in.
         """

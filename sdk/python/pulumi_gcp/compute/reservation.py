@@ -15,7 +15,7 @@ __all__ = ['Reservation']
 
 class Reservation(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -160,7 +160,7 @@ class Reservation(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def commitment(self) -> str:
+    def commitment(self) -> pulumi.Output[str]:
         """
         Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
         """
@@ -168,7 +168,7 @@ class Reservation(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> str:
+    def creation_timestamp(self) -> pulumi.Output[str]:
         """
         Creation timestamp in RFC3339 text format.
         """
@@ -176,7 +176,7 @@ class Reservation(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         An optional description of this resource.
         """
@@ -184,7 +184,7 @@ class Reservation(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the resource. Provided by the client when the resource is
         created. The name must be 1-63 characters long, and comply with
@@ -198,7 +198,7 @@ class Reservation(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -207,7 +207,7 @@ class Reservation(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         """
         The URI of the created resource.
         """
@@ -215,7 +215,7 @@ class Reservation(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="specificReservation")
-    def specific_reservation(self) -> 'outputs.ReservationSpecificReservation':
+    def specific_reservation(self) -> pulumi.Output['outputs.ReservationSpecificReservation']:
         """
         Reservation for instances with specific machine shapes.
         Structure is documented below.
@@ -224,7 +224,7 @@ class Reservation(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="specificReservationRequired")
-    def specific_reservation_required(self) -> Optional[bool]:
+    def specific_reservation_required(self) -> pulumi.Output[Optional[bool]]:
         """
         When set to true, only VMs that target this reservation by name can
         consume this reservation. Otherwise, it can be consumed by VMs with
@@ -234,7 +234,7 @@ class Reservation(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> str:
+    def status(self) -> pulumi.Output[str]:
         """
         The status of the reservation.
         """
@@ -242,7 +242,7 @@ class Reservation(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def zone(self) -> str:
+    def zone(self) -> pulumi.Output[str]:
         """
         The zone where the reservation is made.
         """

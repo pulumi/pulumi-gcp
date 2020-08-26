@@ -13,7 +13,7 @@ __all__ = ['Variable']
 
 class Variable(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -118,7 +118,7 @@ class Variable(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the variable to manage. Note that variable
         names can be hierarchical using slashes (e.g. "prod-variables/hostname").
@@ -127,7 +127,7 @@ class Variable(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def parent(self) -> str:
+    def parent(self) -> pulumi.Output[str]:
         """
         The name of the RuntimeConfig resource containing this
         variable.
@@ -136,7 +136,7 @@ class Variable(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs. If it
         is not provided, the provider project is used.
@@ -145,7 +145,7 @@ class Variable(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def text(self) -> Optional[str]:
+    def text(self) -> pulumi.Output[Optional[str]]:
         """
         or `value` - (Required) The content to associate with the variable.
         Exactly one of `text` or `variable` must be specified. If `text` is specified,
@@ -156,7 +156,7 @@ class Variable(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> str:
+    def update_time(self) -> pulumi.Output[str]:
         """
         (Computed) The timestamp in RFC3339 UTC "Zulu" format,
         accurate to nanoseconds, representing when the variable was last updated.
@@ -166,7 +166,7 @@ class Variable(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def value(self) -> Optional[str]:
+    def value(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "value")
 
     def translate_output_property(self, prop):

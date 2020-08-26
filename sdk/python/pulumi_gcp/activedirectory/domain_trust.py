@@ -13,7 +13,7 @@ __all__ = ['DomainTrust']
 
 class DomainTrust(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -148,7 +148,7 @@ class DomainTrust(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def domain(self) -> str:
+    def domain(self) -> pulumi.Output[str]:
         """
         The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
         https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
@@ -157,7 +157,7 @@ class DomainTrust(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -166,7 +166,7 @@ class DomainTrust(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selectiveAuthentication")
-    def selective_authentication(self) -> Optional[bool]:
+    def selective_authentication(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether the trusted side has forest/domain wide access or selective access to an approved set of resources.
         """
@@ -174,7 +174,7 @@ class DomainTrust(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="targetDnsIpAddresses")
-    def target_dns_ip_addresses(self) -> List[str]:
+    def target_dns_ip_addresses(self) -> pulumi.Output[List[str]]:
         """
         The target DNS server IP addresses which can resolve the remote domain involved in the trust.
         """
@@ -182,7 +182,7 @@ class DomainTrust(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="targetDomainName")
-    def target_domain_name(self) -> str:
+    def target_domain_name(self) -> pulumi.Output[str]:
         """
         The fully qualified target domain name which will be in trust with the current domain.
         """
@@ -190,7 +190,7 @@ class DomainTrust(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="trustDirection")
-    def trust_direction(self) -> str:
+    def trust_direction(self) -> pulumi.Output[str]:
         """
         The trust direction, which decides if the current domain is trusted, trusting, or both.
         Possible values are `INBOUND`, `OUTBOUND`, and `BIDIRECTIONAL`.
@@ -199,7 +199,7 @@ class DomainTrust(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="trustHandshakeSecret")
-    def trust_handshake_secret(self) -> str:
+    def trust_handshake_secret(self) -> pulumi.Output[str]:
         """
         The trust secret used for the handshake with the target domain. This will not be stored.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -208,7 +208,7 @@ class DomainTrust(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="trustType")
-    def trust_type(self) -> str:
+    def trust_type(self) -> pulumi.Output[str]:
         """
         The type of trust represented by the trust resource.
         Possible values are `FOREST` and `EXTERNAL`.

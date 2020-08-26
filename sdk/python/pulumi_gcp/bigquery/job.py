@@ -15,7 +15,7 @@ __all__ = ['Job']
 
 class Job(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  copy: Optional[pulumi.Input[pulumi.InputType['JobCopyArgs']]] = None,
                  extract: Optional[pulumi.Input[pulumi.InputType['JobExtractArgs']]] = None,
@@ -146,7 +146,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def copy(self) -> Optional['outputs.JobCopy']:
+    def copy(self) -> pulumi.Output[Optional['outputs.JobCopy']]:
         """
         Copies a table.
         Structure is documented below.
@@ -155,7 +155,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def extract(self) -> Optional['outputs.JobExtract']:
+    def extract(self) -> pulumi.Output[Optional['outputs.JobExtract']]:
         """
         Configures an extract job.
         Structure is documented below.
@@ -164,7 +164,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="jobId")
-    def job_id(self) -> str:
+    def job_id(self) -> pulumi.Output[str]:
         """
         The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
         """
@@ -172,7 +172,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="jobTimeoutMs")
-    def job_timeout_ms(self) -> Optional[str]:
+    def job_timeout_ms(self) -> pulumi.Output[Optional[str]]:
         """
         Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
         """
@@ -180,7 +180,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="jobType")
-    def job_type(self) -> str:
+    def job_type(self) -> pulumi.Output[str]:
         """
         The type of the job.
         """
@@ -188,7 +188,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, str]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The labels associated with this job. You can use these to organize and group your jobs.
         """
@@ -196,7 +196,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def load(self) -> Optional['outputs.JobLoad']:
+    def load(self) -> pulumi.Output[Optional['outputs.JobLoad']]:
         """
         Configures a load job.
         Structure is documented below.
@@ -205,7 +205,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def location(self) -> Optional[str]:
+    def location(self) -> pulumi.Output[Optional[str]]:
         """
         The geographic location of the job. The default value is US.
         """
@@ -213,7 +213,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -222,7 +222,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def query(self) -> Optional['outputs.JobQuery']:
+    def query(self) -> pulumi.Output[Optional['outputs.JobQuery']]:
         """
         Configures a query job.
         Structure is documented below.
@@ -231,7 +231,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userEmail")
-    def user_email(self) -> str:
+    def user_email(self) -> pulumi.Output[str]:
         """
         Email address of the user who ran the job.
         """

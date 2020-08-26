@@ -15,7 +15,7 @@ __all__ = ['URLMap']
 
 class URLMap(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  default_route_action: Optional[pulumi.Input[pulumi.InputType['URLMapDefaultRouteActionArgs']]] = None,
                  default_service: Optional[pulumi.Input[str]] = None,
@@ -190,7 +190,7 @@ class URLMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> str:
+    def creation_timestamp(self) -> pulumi.Output[str]:
         """
         Creation timestamp in RFC3339 text format.
         """
@@ -198,7 +198,7 @@ class URLMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultRouteAction")
-    def default_route_action(self) -> Optional['outputs.URLMapDefaultRouteAction']:
+    def default_route_action(self) -> pulumi.Output[Optional['outputs.URLMapDefaultRouteAction']]:
         """
         defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
         advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
@@ -211,7 +211,7 @@ class URLMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultService")
-    def default_service(self) -> Optional[str]:
+    def default_service(self) -> pulumi.Output[Optional[str]]:
         """
         The backend service or backend bucket to use when none of the given paths match.
         """
@@ -219,7 +219,7 @@ class URLMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultUrlRedirect")
-    def default_url_redirect(self) -> Optional['outputs.URLMapDefaultUrlRedirect']:
+    def default_url_redirect(self) -> pulumi.Output[Optional['outputs.URLMapDefaultUrlRedirect']]:
         """
         When none of the specified hostRules match, the request is redirected to a URL specified
         by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
@@ -230,7 +230,7 @@ class URLMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Description of this test case.
         """
@@ -238,7 +238,7 @@ class URLMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def fingerprint(self) -> str:
+    def fingerprint(self) -> pulumi.Output[str]:
         """
         Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
         """
@@ -246,7 +246,7 @@ class URLMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="headerAction")
-    def header_action(self) -> Optional['outputs.URLMapHeaderAction']:
+    def header_action(self) -> pulumi.Output[Optional['outputs.URLMapHeaderAction']]:
         """
         Specifies changes to request and response headers that need to take effect for
         the selected backendService.
@@ -258,7 +258,7 @@ class URLMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hostRules")
-    def host_rules(self) -> Optional[List['outputs.URLMapHostRule']]:
+    def host_rules(self) -> pulumi.Output[Optional[List['outputs.URLMapHostRule']]]:
         """
         The list of HostRules to use against the URL.
         Structure is documented below.
@@ -267,7 +267,7 @@ class URLMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="mapId")
-    def map_id(self) -> float:
+    def map_id(self) -> pulumi.Output[float]:
         """
         The unique identifier for the resource.
         """
@@ -275,7 +275,7 @@ class URLMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the query parameter to match. The query parameter must exist in the
         request, in the absence of which the request match fails.
@@ -284,7 +284,7 @@ class URLMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pathMatchers")
-    def path_matchers(self) -> Optional[List['outputs.URLMapPathMatcher']]:
+    def path_matchers(self) -> pulumi.Output[Optional[List['outputs.URLMapPathMatcher']]]:
         """
         The name of the PathMatcher to use to match the path portion of the URL if the
         hostRule matches the URL's host portion.
@@ -293,7 +293,7 @@ class URLMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -302,7 +302,7 @@ class URLMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         """
         The URI of the created resource.
         """
@@ -310,7 +310,7 @@ class URLMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tests(self) -> Optional[List['outputs.URLMapTest']]:
+    def tests(self) -> pulumi.Output[Optional[List['outputs.URLMapTest']]]:
         """
         The list of expected URL mapping tests. Request to update this UrlMap will
         succeed only if all of the test cases pass. You can specify a maximum of 100

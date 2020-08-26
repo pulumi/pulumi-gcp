@@ -15,7 +15,7 @@ __all__ = ['Snapshot']
 
 class Snapshot(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -199,7 +199,7 @@ class Snapshot(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> str:
+    def creation_timestamp(self) -> pulumi.Output[str]:
         """
         Creation timestamp in RFC3339 text format.
         """
@@ -207,7 +207,7 @@ class Snapshot(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         An optional description of this resource.
         """
@@ -215,7 +215,7 @@ class Snapshot(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="diskSizeGb")
-    def disk_size_gb(self) -> float:
+    def disk_size_gb(self) -> pulumi.Output[float]:
         """
         Size of the snapshot, specified in GB.
         """
@@ -223,7 +223,7 @@ class Snapshot(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="labelFingerprint")
-    def label_fingerprint(self) -> str:
+    def label_fingerprint(self) -> pulumi.Output[str]:
         """
         The fingerprint used for optimistic locking of this resource. Used internally during updates.
         """
@@ -231,7 +231,7 @@ class Snapshot(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, str]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Labels to apply to this Snapshot.
         """
@@ -239,7 +239,7 @@ class Snapshot(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def licenses(self) -> List[str]:
+    def licenses(self) -> pulumi.Output[List[str]]:
         """
         A list of public visible licenses that apply to this snapshot. This can be because the original image had licenses
         attached (such as a Windows image). snapshotEncryptionKey nested object Encrypts the snapshot using a customer-supplied
@@ -249,7 +249,7 @@ class Snapshot(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the resource; provided by the client when the resource is
         created. The name must be 1-63 characters long, and comply with
@@ -263,7 +263,7 @@ class Snapshot(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -272,7 +272,7 @@ class Snapshot(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         """
         The URI of the created resource.
         """
@@ -280,7 +280,7 @@ class Snapshot(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="snapshotEncryptionKey")
-    def snapshot_encryption_key(self) -> Optional['outputs.SnapshotSnapshotEncryptionKey']:
+    def snapshot_encryption_key(self) -> pulumi.Output[Optional['outputs.SnapshotSnapshotEncryptionKey']]:
         """
         The customer-supplied encryption key of the snapshot. Required if the
         source snapshot is protected by a customer-supplied encryption key.
@@ -290,7 +290,7 @@ class Snapshot(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="snapshotId")
-    def snapshot_id(self) -> float:
+    def snapshot_id(self) -> pulumi.Output[float]:
         """
         The unique identifier for the resource.
         """
@@ -298,7 +298,7 @@ class Snapshot(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceDisk")
-    def source_disk(self) -> str:
+    def source_disk(self) -> pulumi.Output[str]:
         """
         A reference to the disk used to create this snapshot.
         """
@@ -306,7 +306,7 @@ class Snapshot(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceDiskEncryptionKey")
-    def source_disk_encryption_key(self) -> Optional['outputs.SnapshotSourceDiskEncryptionKey']:
+    def source_disk_encryption_key(self) -> pulumi.Output[Optional['outputs.SnapshotSourceDiskEncryptionKey']]:
         """
         The customer-supplied encryption key of the source snapshot. Required
         if the source snapshot is protected by a customer-supplied encryption
@@ -317,12 +317,12 @@ class Snapshot(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceDiskLink")
-    def source_disk_link(self) -> str:
+    def source_disk_link(self) -> pulumi.Output[str]:
         return pulumi.get(self, "source_disk_link")
 
     @property
     @pulumi.getter(name="storageBytes")
-    def storage_bytes(self) -> float:
+    def storage_bytes(self) -> pulumi.Output[float]:
         """
         A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot
         creation/deletion.
@@ -331,7 +331,7 @@ class Snapshot(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def zone(self) -> str:
+    def zone(self) -> pulumi.Output[str]:
         """
         A reference to the zone where the disk is hosted.
         """

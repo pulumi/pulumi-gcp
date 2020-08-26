@@ -13,7 +13,7 @@ __all__ = ['Database']
 
 class Database(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ddls: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
@@ -106,7 +106,7 @@ class Database(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ddls(self) -> Optional[List[str]]:
+    def ddls(self) -> pulumi.Output[Optional[List[str]]]:
         """
         An optional list of DDL statements to run inside the newly created
         database. Statements can create tables, indexes, etc. These statements
@@ -117,7 +117,7 @@ class Database(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def instance(self) -> str:
+    def instance(self) -> pulumi.Output[str]:
         """
         The instance to create the database on.
         """
@@ -125,7 +125,7 @@ class Database(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         A unique identifier for the database, which cannot be changed after
         the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
@@ -134,7 +134,7 @@ class Database(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -143,7 +143,7 @@ class Database(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def state(self) -> str:
+    def state(self) -> pulumi.Output[str]:
         """
         An explanation of the status of the database.
         """

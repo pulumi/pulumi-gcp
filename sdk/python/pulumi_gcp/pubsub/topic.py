@@ -15,7 +15,7 @@ __all__ = ['Topic']
 
 class Topic(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -123,7 +123,7 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kmsKeyName")
-    def kms_key_name(self) -> Optional[str]:
+    def kms_key_name(self) -> pulumi.Output[Optional[str]]:
         """
         The resource name of the Cloud KMS CryptoKey to be used to protect access
         to messages published on this topic. Your project's PubSub service account
@@ -135,7 +135,7 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, str]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A set of key/value label pairs to assign to this Topic.
         """
@@ -143,7 +143,7 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="messageStoragePolicy")
-    def message_storage_policy(self) -> 'outputs.TopicMessageStoragePolicy':
+    def message_storage_policy(self) -> pulumi.Output['outputs.TopicMessageStoragePolicy']:
         """
         Policy constraining the set of Google Cloud Platform regions where
         messages published to the topic may be stored. If not present, then no
@@ -154,7 +154,7 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the topic.
         """
@@ -162,7 +162,7 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.

@@ -15,7 +15,7 @@ __all__ = ['TransferJob']
 
 class TransferJob(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -130,7 +130,7 @@ class TransferJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="creationTime")
-    def creation_time(self) -> str:
+    def creation_time(self) -> pulumi.Output[str]:
         """
         When the Transfer Job was created.
         """
@@ -138,7 +138,7 @@ class TransferJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deletionTime")
-    def deletion_time(self) -> str:
+    def deletion_time(self) -> pulumi.Output[str]:
         """
         When the Transfer Job was deleted.
         """
@@ -146,7 +146,7 @@ class TransferJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> str:
+    def description(self) -> pulumi.Output[str]:
         """
         Unique description to identify the Transfer Job.
         """
@@ -154,7 +154,7 @@ class TransferJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lastModificationTime")
-    def last_modification_time(self) -> str:
+    def last_modification_time(self) -> pulumi.Output[str]:
         """
         When the Transfer Job was last modified.
         """
@@ -162,7 +162,7 @@ class TransferJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the Transfer Job.
         """
@@ -170,7 +170,7 @@ class TransferJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The project in which the resource belongs. If it
         is not provided, the provider project is used.
@@ -179,7 +179,7 @@ class TransferJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def schedule(self) -> 'outputs.TransferJobSchedule':
+    def schedule(self) -> pulumi.Output['outputs.TransferJobSchedule']:
         """
         Schedule specification defining when the Transfer Job should be scheduled to start, end and and what time to run. Structure documented below.
         """
@@ -187,7 +187,7 @@ class TransferJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> Optional[str]:
+    def status(self) -> pulumi.Output[Optional[str]]:
         """
         Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
         """
@@ -195,7 +195,7 @@ class TransferJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="transferSpec")
-    def transfer_spec(self) -> 'outputs.TransferJobTransferSpec':
+    def transfer_spec(self) -> pulumi.Output['outputs.TransferJobTransferSpec']:
         """
         Transfer specification. Structure documented below.
         """

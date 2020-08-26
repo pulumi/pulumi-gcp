@@ -13,7 +13,7 @@ __all__ = ['DataTransferConfig']
 
 class DataTransferConfig(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  data_refresh_window_days: Optional[pulumi.Input[float]] = None,
                  data_source_id: Optional[pulumi.Input[str]] = None,
@@ -180,7 +180,7 @@ class DataTransferConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dataRefreshWindowDays")
-    def data_refresh_window_days(self) -> Optional[float]:
+    def data_refresh_window_days(self) -> pulumi.Output[Optional[float]]:
         """
         The number of days to look back to automatically refresh the data.
         For example, if dataRefreshWindowDays = 10, then every day BigQuery
@@ -192,7 +192,7 @@ class DataTransferConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dataSourceId")
-    def data_source_id(self) -> str:
+    def data_source_id(self) -> pulumi.Output[str]:
         """
         The data source id. Cannot be changed once the transfer config is created.
         """
@@ -200,7 +200,7 @@ class DataTransferConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="destinationDatasetId")
-    def destination_dataset_id(self) -> str:
+    def destination_dataset_id(self) -> pulumi.Output[str]:
         """
         The BigQuery target dataset id.
         """
@@ -208,7 +208,7 @@ class DataTransferConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def disabled(self) -> Optional[bool]:
+    def disabled(self) -> pulumi.Output[Optional[bool]]:
         """
         When set to true, no runs are scheduled for a given transfer.
         """
@@ -216,7 +216,7 @@ class DataTransferConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> str:
+    def display_name(self) -> pulumi.Output[str]:
         """
         The user specified display name for the transfer config.
         """
@@ -224,7 +224,7 @@ class DataTransferConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def location(self) -> Optional[str]:
+    def location(self) -> pulumi.Output[Optional[str]]:
         """
         The geographic location where the transfer config should reside.
         Examples: US, EU, asia-northeast1. The default value is US.
@@ -233,7 +233,7 @@ class DataTransferConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The resource name of the transfer config. Transfer config names have the form
         projects/{projectId}/locations/{location}/transferConfigs/{configId}. Where configId is usually a uuid, but this is not
@@ -243,7 +243,7 @@ class DataTransferConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def params(self) -> Mapping[str, str]:
+    def params(self) -> pulumi.Output[Mapping[str, str]]:
         """
         These parameters are specific to each data source.
         """
@@ -251,7 +251,7 @@ class DataTransferConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -260,7 +260,7 @@ class DataTransferConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def schedule(self) -> Optional[str]:
+    def schedule(self) -> pulumi.Output[Optional[str]]:
         """
         Data transfer schedule. If the data source does not support a custom
         schedule, this should be empty. If it is empty, the default value for
@@ -275,7 +275,7 @@ class DataTransferConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceAccountName")
-    def service_account_name(self) -> Optional[str]:
+    def service_account_name(self) -> pulumi.Output[Optional[str]]:
         """
         Optional service account name. If this field is set, transfer config will
         be created with this service account credentials. It requires that

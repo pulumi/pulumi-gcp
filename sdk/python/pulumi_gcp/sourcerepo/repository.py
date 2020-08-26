@@ -15,7 +15,7 @@ __all__ = ['Repository']
 
 class Repository(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -111,7 +111,7 @@ class Repository(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Resource name of the repository, of the form `{{repo}}`.
         The repo name may contain slashes. eg, `name/with/slash`
@@ -120,7 +120,7 @@ class Repository(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -129,7 +129,7 @@ class Repository(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pubsubConfigs")
-    def pubsub_configs(self) -> Optional[List['outputs.RepositoryPubsubConfig']]:
+    def pubsub_configs(self) -> pulumi.Output[Optional[List['outputs.RepositoryPubsubConfig']]]:
         """
         How this repository publishes a change in the repository through Cloud Pub/Sub.
         Keyed by the topic names.
@@ -139,7 +139,7 @@ class Repository(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def size(self) -> float:
+    def size(self) -> pulumi.Output[float]:
         """
         The disk usage of the repo, in bytes.
         """
@@ -147,7 +147,7 @@ class Repository(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def url(self) -> str:
+    def url(self) -> pulumi.Output[str]:
         """
         URL to clone the repository from Google Cloud Source Repositories.
         """

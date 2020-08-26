@@ -15,7 +15,7 @@ __all__ = ['InstanceFromTemplate']
 
 class InstanceFromTemplate(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_stopping_for_update: Optional[pulumi.Input[bool]] = None,
                  attached_disks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceFromTemplateAttachedDiskArgs']]]]] = None,
@@ -286,7 +286,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowStoppingForUpdate")
-    def allow_stopping_for_update(self) -> bool:
+    def allow_stopping_for_update(self) -> pulumi.Output[bool]:
         """
         If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
         stopping the instance without setting this field, the update will fail.
@@ -295,7 +295,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="attachedDisks")
-    def attached_disks(self) -> List['outputs.InstanceFromTemplateAttachedDisk']:
+    def attached_disks(self) -> pulumi.Output[List['outputs.InstanceFromTemplateAttachedDisk']]:
         """
         List of disks attached to the instance
         """
@@ -303,7 +303,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="bootDisk")
-    def boot_disk(self) -> 'outputs.InstanceFromTemplateBootDisk':
+    def boot_disk(self) -> pulumi.Output['outputs.InstanceFromTemplateBootDisk']:
         """
         The boot disk for the instance.
         """
@@ -311,7 +311,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="canIpForward")
-    def can_ip_forward(self) -> bool:
+    def can_ip_forward(self) -> pulumi.Output[bool]:
         """
         Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
         """
@@ -319,7 +319,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="confidentialInstanceConfig")
-    def confidential_instance_config(self) -> 'outputs.InstanceFromTemplateConfidentialInstanceConfig':
+    def confidential_instance_config(self) -> pulumi.Output['outputs.InstanceFromTemplateConfidentialInstanceConfig']:
         """
         The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
         to create.
@@ -328,7 +328,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cpuPlatform")
-    def cpu_platform(self) -> str:
+    def cpu_platform(self) -> pulumi.Output[str]:
         """
         The CPU platform used by this instance.
         """
@@ -336,7 +336,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="currentStatus")
-    def current_status(self) -> str:
+    def current_status(self) -> pulumi.Output[str]:
         """
         Current status of the instance.
         """
@@ -344,7 +344,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> bool:
+    def deletion_protection(self) -> pulumi.Output[bool]:
         """
         Whether deletion protection is enabled on this instance.
         """
@@ -352,7 +352,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> str:
+    def description(self) -> pulumi.Output[str]:
         """
         A brief description of the resource.
         """
@@ -360,7 +360,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="desiredStatus")
-    def desired_status(self) -> str:
+    def desired_status(self) -> pulumi.Output[str]:
         """
         Desired status of the instance. Either "RUNNING" or "TERMINATED".
         """
@@ -368,7 +368,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableDisplay")
-    def enable_display(self) -> bool:
+    def enable_display(self) -> pulumi.Output[bool]:
         """
         Whether the instance has virtual displays enabled.
         """
@@ -376,7 +376,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="guestAccelerators")
-    def guest_accelerators(self) -> List['outputs.InstanceFromTemplateGuestAccelerator']:
+    def guest_accelerators(self) -> pulumi.Output[List['outputs.InstanceFromTemplateGuestAccelerator']]:
         """
         List of the type and count of accelerator cards attached to the instance.
         """
@@ -384,7 +384,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def hostname(self) -> str:
+    def hostname(self) -> pulumi.Output[str]:
         """
         A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
         labels 1-63 characters long matching the regular expression [a-z]([-a-z0-9]*[a-z0-9]), concatenated with periods. The
@@ -394,7 +394,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> str:
+    def instance_id(self) -> pulumi.Output[str]:
         """
         The server-assigned unique identifier of this instance.
         """
@@ -402,7 +402,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="labelFingerprint")
-    def label_fingerprint(self) -> str:
+    def label_fingerprint(self) -> pulumi.Output[str]:
         """
         The unique fingerprint of the labels.
         """
@@ -410,7 +410,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, str]:
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         A set of key/value label pairs assigned to the instance.
         """
@@ -418,7 +418,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="machineType")
-    def machine_type(self) -> str:
+    def machine_type(self) -> pulumi.Output[str]:
         """
         The machine type to create.
         """
@@ -426,7 +426,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def metadata(self) -> Mapping[str, str]:
+    def metadata(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Metadata key/value pairs made available within the instance.
         """
@@ -434,7 +434,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="metadataFingerprint")
-    def metadata_fingerprint(self) -> str:
+    def metadata_fingerprint(self) -> pulumi.Output[str]:
         """
         The unique fingerprint of the metadata.
         """
@@ -442,7 +442,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="metadataStartupScript")
-    def metadata_startup_script(self) -> str:
+    def metadata_startup_script(self) -> pulumi.Output[str]:
         """
         Metadata startup scripts made available within the instance.
         """
@@ -450,7 +450,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minCpuPlatform")
-    def min_cpu_platform(self) -> str:
+    def min_cpu_platform(self) -> pulumi.Output[str]:
         """
         The minimum CPU platform specified for the VM instance.
         """
@@ -458,7 +458,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         A unique name for the resource, required by GCE.
         Changing this forces a new resource to be created.
@@ -467,7 +467,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkInterfaces")
-    def network_interfaces(self) -> List['outputs.InstanceFromTemplateNetworkInterface']:
+    def network_interfaces(self) -> pulumi.Output[List['outputs.InstanceFromTemplateNetworkInterface']]:
         """
         The networks attached to the instance.
         """
@@ -475,7 +475,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
         self_link nor project are provided, the provider project is used.
@@ -484,7 +484,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourcePolicies")
-    def resource_policies(self) -> str:
+    def resource_policies(self) -> pulumi.Output[str]:
         """
         A list of short names or self_links of resource policies to attach to the instance. Modifying this list will cause the
         instance to recreate. Currently a max of 1 resource policy is supported.
@@ -493,7 +493,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def scheduling(self) -> 'outputs.InstanceFromTemplateScheduling':
+    def scheduling(self) -> pulumi.Output['outputs.InstanceFromTemplateScheduling']:
         """
         The scheduling strategy being used by the instance.
         """
@@ -501,7 +501,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="scratchDisks")
-    def scratch_disks(self) -> List['outputs.InstanceFromTemplateScratchDisk']:
+    def scratch_disks(self) -> pulumi.Output[List['outputs.InstanceFromTemplateScratchDisk']]:
         """
         The scratch disks attached to the instance.
         """
@@ -509,7 +509,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         """
         The URI of the created resource.
         """
@@ -517,7 +517,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> 'outputs.InstanceFromTemplateServiceAccount':
+    def service_account(self) -> pulumi.Output['outputs.InstanceFromTemplateServiceAccount']:
         """
         The service account to attach to the instance.
         """
@@ -525,7 +525,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="shieldedInstanceConfig")
-    def shielded_instance_config(self) -> 'outputs.InstanceFromTemplateShieldedInstanceConfig':
+    def shielded_instance_config(self) -> pulumi.Output['outputs.InstanceFromTemplateShieldedInstanceConfig']:
         """
         The shielded vm config being used by the instance.
         """
@@ -533,7 +533,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceInstanceTemplate")
-    def source_instance_template(self) -> str:
+    def source_instance_template(self) -> pulumi.Output[str]:
         """
         Name or self link of an instance
         template to create the instance based on.
@@ -542,7 +542,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> List[str]:
+    def tags(self) -> pulumi.Output[List[str]]:
         """
         The list of tags attached to the instance.
         """
@@ -550,7 +550,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tagsFingerprint")
-    def tags_fingerprint(self) -> str:
+    def tags_fingerprint(self) -> pulumi.Output[str]:
         """
         The unique fingerprint of the tags.
         """
@@ -558,7 +558,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def zone(self) -> str:
+    def zone(self) -> pulumi.Output[str]:
         """
         The zone that the machine should be created in. If not
         set, the provider zone is used.

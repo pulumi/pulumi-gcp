@@ -15,7 +15,7 @@ __all__ = ['ExternalVpnGateway']
 
 class ExternalVpnGateway(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  interfaces: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ExternalVpnGatewayInterfaceArgs']]]]] = None,
@@ -127,7 +127,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         An optional description of this resource.
         """
@@ -135,7 +135,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def interfaces(self) -> Optional[List['outputs.ExternalVpnGatewayInterface']]:
+    def interfaces(self) -> pulumi.Output[Optional[List['outputs.ExternalVpnGatewayInterface']]]:
         """
         A list of interfaces on this external VPN gateway.
         Structure is documented below.
@@ -144,7 +144,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the resource. Provided by the client when the resource is
         created. The name must be 1-63 characters long, and comply with
@@ -158,7 +158,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -167,7 +167,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="redundancyType")
-    def redundancy_type(self) -> Optional[str]:
+    def redundancy_type(self) -> pulumi.Output[Optional[str]]:
         """
         Indicates the redundancy type of this external VPN gateway
         Possible values are `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, and `TWO_IPS_REDUNDANCY`.
@@ -176,7 +176,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         """
         The URI of the created resource.
         """

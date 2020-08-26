@@ -15,7 +15,7 @@ __all__ = ['MetricDescriptor']
 
 class MetricDescriptor(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -204,7 +204,7 @@ class MetricDescriptor(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> str:
+    def description(self) -> pulumi.Output[str]:
         """
         A human-readable description for the label.
         """
@@ -212,7 +212,7 @@ class MetricDescriptor(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> str:
+    def display_name(self) -> pulumi.Output[str]:
         """
         A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
         """
@@ -220,7 +220,7 @@ class MetricDescriptor(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[List['outputs.MetricDescriptorLabel']]:
+    def labels(self) -> pulumi.Output[Optional[List['outputs.MetricDescriptorLabel']]]:
         """
         The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
         Structure is documented below.
@@ -229,7 +229,7 @@ class MetricDescriptor(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="launchStage")
-    def launch_stage(self) -> Optional[str]:
+    def launch_stage(self) -> pulumi.Output[Optional[str]]:
         """
         The launch stage of the metric definition.
         Possible values are `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
@@ -238,7 +238,7 @@ class MetricDescriptor(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional['outputs.MetricDescriptorMetadata']:
+    def metadata(self) -> pulumi.Output[Optional['outputs.MetricDescriptorMetadata']]:
         """
         Metadata which can be used to guide usage of the metric.
         Structure is documented below.
@@ -247,7 +247,7 @@ class MetricDescriptor(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="metricKind")
-    def metric_kind(self) -> str:
+    def metric_kind(self) -> pulumi.Output[str]:
         """
         Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
         Possible values are `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, and `CUMULATIVE`.
@@ -256,7 +256,7 @@ class MetricDescriptor(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="monitoredResourceTypes")
-    def monitored_resource_types(self) -> List[str]:
+    def monitored_resource_types(self) -> pulumi.Output[List[str]]:
         """
         If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that
         is associated with this metric type can only be associated with one of the monitored resource types listed here. This
@@ -267,7 +267,7 @@ class MetricDescriptor(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The resource name of the metric descriptor.
         """
@@ -275,7 +275,7 @@ class MetricDescriptor(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -284,7 +284,7 @@ class MetricDescriptor(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> pulumi.Output[str]:
         """
         The metric type, including its DNS name prefix. The type is not URL-encoded. All service defined metrics must be prefixed with the service name, in the format of {service name}/{relative metric name}, such as cloudsql.googleapis.com/database/cpu/utilization. The relative metric name must have only upper and lower-case letters, digits, '/' and underscores '_' are allowed. Additionally, the maximum number of characters allowed for the relative_metric_name is 100. All user-defined metric types have the DNS name custom.googleapis.com, external.googleapis.com, or logging.googleapis.com/user/.
         """
@@ -292,7 +292,7 @@ class MetricDescriptor(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def unit(self) -> Optional[str]:
+    def unit(self) -> pulumi.Output[Optional[str]]:
         """
         The units in which the metric value is reported. It is only applicable if the
         valueType is INT64, DOUBLE, or DISTRIBUTION. The unit defines the representation of
@@ -316,7 +316,7 @@ class MetricDescriptor(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="valueType")
-    def value_type(self) -> str:
+    def value_type(self) -> pulumi.Output[str]:
         """
         The type of data that can be assigned to the label.
         Default value is `STRING`.

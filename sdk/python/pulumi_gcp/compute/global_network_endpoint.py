@@ -13,7 +13,7 @@ __all__ = ['GlobalNetworkEndpoint']
 
 class GlobalNetworkEndpoint(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  fqdn: Optional[pulumi.Input[str]] = None,
                  global_network_endpoint_group: Optional[pulumi.Input[str]] = None,
@@ -115,7 +115,7 @@ class GlobalNetworkEndpoint(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def fqdn(self) -> Optional[str]:
+    def fqdn(self) -> pulumi.Output[Optional[str]]:
         """
         Fully qualified domain name of network endpoint.
         This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
@@ -124,7 +124,7 @@ class GlobalNetworkEndpoint(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="globalNetworkEndpointGroup")
-    def global_network_endpoint_group(self) -> str:
+    def global_network_endpoint_group(self) -> pulumi.Output[str]:
         """
         The global network endpoint group this endpoint is part of.
         """
@@ -132,7 +132,7 @@ class GlobalNetworkEndpoint(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> Optional[str]:
+    def ip_address(self) -> pulumi.Output[Optional[str]]:
         """
         IPv4 address external endpoint.
         """
@@ -140,7 +140,7 @@ class GlobalNetworkEndpoint(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> float:
+    def port(self) -> pulumi.Output[float]:
         """
         Port number of the external endpoint.
         """
@@ -148,7 +148,7 @@ class GlobalNetworkEndpoint(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.

@@ -15,7 +15,7 @@ __all__ = ['Instance']
 
 class Instance(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
@@ -201,7 +201,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> str:
+    def create_time(self) -> pulumi.Output[str]:
         """
         The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
         """
@@ -209,7 +209,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         An optional description of the instance.
         """
@@ -217,7 +217,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableStackdriverLogging")
-    def enable_stackdriver_logging(self) -> Optional[bool]:
+    def enable_stackdriver_logging(self) -> pulumi.Output[Optional[bool]]:
         """
         Option to enable Stackdriver Logging.
         """
@@ -225,7 +225,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableStackdriverMonitoring")
-    def enable_stackdriver_monitoring(self) -> Optional[bool]:
+    def enable_stackdriver_monitoring(self) -> pulumi.Output[Optional[bool]]:
         """
         Option to enable Stackdriver Monitoring.
         """
@@ -233,7 +233,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, str]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The resource labels for instance to use to annotate any related underlying resources,
         such as Compute Engine VMs.
@@ -242,7 +242,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The ID of the instance or a fully qualified identifier for the instance.
         """
@@ -250,7 +250,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkConfig")
-    def network_config(self) -> Optional['outputs.InstanceNetworkConfig']:
+    def network_config(self) -> pulumi.Output[Optional['outputs.InstanceNetworkConfig']]:
         """
         Network configuration options. These are required when a private Data Fusion instance is to be created.
         Structure is documented below.
@@ -259,7 +259,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def options(self) -> Optional[Mapping[str, str]]:
+    def options(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Map of additional options used to configure the behavior of Data Fusion instance.
         """
@@ -267,7 +267,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="privateInstance")
-    def private_instance(self) -> Optional[bool]:
+    def private_instance(self) -> pulumi.Output[Optional[bool]]:
         """
         Specifies whether the Data Fusion instance should be private. If set to
         true, all Data Fusion nodes will have private IP addresses and will not be
@@ -277,7 +277,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -286,7 +286,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region of the Data Fusion instance.
         """
@@ -294,7 +294,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> str:
+    def service_account(self) -> pulumi.Output[str]:
         """
         Service account which will be used to access resources in the customer project.
         """
@@ -302,7 +302,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceEndpoint")
-    def service_endpoint(self) -> str:
+    def service_endpoint(self) -> pulumi.Output[str]:
         """
         Endpoint on which the Data Fusion UI and REST APIs are accessible.
         """
@@ -310,7 +310,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def state(self) -> str:
+    def state(self) -> pulumi.Output[str]:
         """
         The current state of this Data Fusion instance. - CREATING: Instance is being created - RUNNING: Instance is running and
         ready for requests - FAILED: Instance creation failed - DELETING: Instance is being deleted - UPGRADING: Instance is
@@ -320,7 +320,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="stateMessage")
-    def state_message(self) -> str:
+    def state_message(self) -> pulumi.Output[str]:
         """
         Additional information about the current state of this Data Fusion instance if available.
         """
@@ -328,7 +328,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> pulumi.Output[str]:
         """
         Represents the type of Data Fusion instance. Each type is configured with
         the default settings for processing and memory.
@@ -343,7 +343,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> str:
+    def update_time(self) -> pulumi.Output[str]:
         """
         The time the instance was last updated in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
         """
@@ -351,7 +351,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def version(self) -> str:
+    def version(self) -> pulumi.Output[str]:
         """
         Current version of the Data Fusion.
         """

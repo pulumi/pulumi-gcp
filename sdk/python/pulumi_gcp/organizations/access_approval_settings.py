@@ -15,7 +15,7 @@ __all__ = ['AccessApprovalSettings']
 
 class AccessApprovalSettings(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  enrolled_services: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['AccessApprovalSettingsEnrolledServiceArgs']]]]] = None,
                  notification_emails: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -108,7 +108,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enrolledAncestor")
-    def enrolled_ancestor(self) -> bool:
+    def enrolled_ancestor(self) -> pulumi.Output[bool]:
         """
         This field will always be unset for the organization since organizations do not have ancestors.
         """
@@ -116,7 +116,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enrolledServices")
-    def enrolled_services(self) -> List['outputs.AccessApprovalSettingsEnrolledService']:
+    def enrolled_services(self) -> pulumi.Output[List['outputs.AccessApprovalSettingsEnrolledService']]:
         """
         A list of Google Cloud Services for which the given resource has Access Approval enrolled. Access requests for the
         resource given by name against any of these services contained here will be required to have explicit approval.
@@ -127,7 +127,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The resource name of the settings. Format is "organizations/{organization_id}/accessApprovalSettings"
         """
@@ -135,7 +135,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="notificationEmails")
-    def notification_emails(self) -> List[str]:
+    def notification_emails(self) -> pulumi.Output[List[str]]:
         """
         A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
         a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
@@ -145,7 +145,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="organizationId")
-    def organization_id(self) -> str:
+    def organization_id(self) -> pulumi.Output[str]:
         """
         ID of the organization of the access approval settings.
         """

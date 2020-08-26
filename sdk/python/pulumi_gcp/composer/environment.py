@@ -15,7 +15,7 @@ __all__ = ['Environment']
 
 class Environment(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['EnvironmentConfigArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -140,7 +140,7 @@ class Environment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def config(self) -> 'outputs.EnvironmentConfig':
+    def config(self) -> pulumi.Output['outputs.EnvironmentConfig']:
         """
         Configuration parameters for this environment  Structure is documented below.
         """
@@ -148,7 +148,7 @@ class Environment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, str]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         User-defined labels for this environment. The labels map can contain
         no more than 64 entries. Entries of the labels map are UTF8 strings
@@ -164,7 +164,7 @@ class Environment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the environment
         """
@@ -172,7 +172,7 @@ class Environment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -181,7 +181,7 @@ class Environment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> Optional[str]:
+    def region(self) -> pulumi.Output[Optional[str]]:
         """
         The location or Compute Engine region for the environment.
         """

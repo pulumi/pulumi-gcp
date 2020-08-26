@@ -13,7 +13,7 @@ __all__ = ['RecordSet']
 
 class RecordSet(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  managed_zone: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -125,7 +125,7 @@ class RecordSet(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="managedZone")
-    def managed_zone(self) -> str:
+    def managed_zone(self) -> pulumi.Output[str]:
         """
         The name of the zone in which this record set will
         reside.
@@ -134,7 +134,7 @@ class RecordSet(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The DNS name this record set will apply to.
         """
@@ -142,7 +142,7 @@ class RecordSet(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs. If it
         is not provided, the provider project is used.
@@ -151,7 +151,7 @@ class RecordSet(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def rrdatas(self) -> List[str]:
+    def rrdatas(self) -> pulumi.Output[List[str]]:
         """
         The string data for the records in this record set
         whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\"\"` inside the provider configuration string (e.g. `"first255characters\"\"morecharacters"`).
@@ -160,7 +160,7 @@ class RecordSet(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ttl(self) -> float:
+    def ttl(self) -> pulumi.Output[float]:
         """
         The time-to-live of this record set (seconds).
         """
@@ -168,7 +168,7 @@ class RecordSet(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> pulumi.Output[str]:
         """
         The DNS record set type.
         """

@@ -13,7 +13,7 @@ __all__ = ['BucketAccessControl']
 
 class BucketAccessControl(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
                  entity: Optional[pulumi.Input[str]] = None,
@@ -150,7 +150,7 @@ class BucketAccessControl(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def bucket(self) -> str:
+    def bucket(self) -> pulumi.Output[str]:
         """
         The name of the bucket.
         """
@@ -158,7 +158,7 @@ class BucketAccessControl(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def domain(self) -> str:
+    def domain(self) -> pulumi.Output[str]:
         """
         The domain associated with the entity.
         """
@@ -166,7 +166,7 @@ class BucketAccessControl(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def email(self) -> str:
+    def email(self) -> pulumi.Output[str]:
         """
         The email address associated with the entity.
         """
@@ -174,7 +174,7 @@ class BucketAccessControl(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def entity(self) -> str:
+    def entity(self) -> pulumi.Output[str]:
         """
         The entity holding the permission, in one of the following forms:
         user-userId
@@ -196,7 +196,7 @@ class BucketAccessControl(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def role(self) -> Optional[str]:
+    def role(self) -> pulumi.Output[Optional[str]]:
         """
         The access permission for the entity.
         Possible values are `OWNER`, `READER`, and `WRITER`.

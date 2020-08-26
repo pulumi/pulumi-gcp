@@ -15,7 +15,7 @@ __all__ = ['Note']
 
 class Note(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  attestation_authority: Optional[pulumi.Input[pulumi.InputType['NoteAttestationAuthorityArgs']]] = None,
                  expiration_time: Optional[pulumi.Input[str]] = None,
@@ -163,7 +163,7 @@ class Note(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="attestationAuthority")
-    def attestation_authority(self) -> 'outputs.NoteAttestationAuthority':
+    def attestation_authority(self) -> pulumi.Output['outputs.NoteAttestationAuthority']:
         """
         Note kind that represents a logical attestation "role" or "authority".
         For example, an organization might have one AttestationAuthority for
@@ -180,7 +180,7 @@ class Note(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> str:
+    def create_time(self) -> pulumi.Output[str]:
         """
         The time this note was created.
         """
@@ -188,7 +188,7 @@ class Note(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="expirationTime")
-    def expiration_time(self) -> Optional[str]:
+    def expiration_time(self) -> pulumi.Output[Optional[str]]:
         """
         Time of expiration for this note. Leave empty if note does not expire.
         """
@@ -196,7 +196,7 @@ class Note(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def kind(self) -> str:
+    def kind(self) -> pulumi.Output[str]:
         """
         The type of analysis this note describes
         """
@@ -204,7 +204,7 @@ class Note(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="longDescription")
-    def long_description(self) -> Optional[str]:
+    def long_description(self) -> pulumi.Output[Optional[str]]:
         """
         A detailed description of the note
         """
@@ -212,7 +212,7 @@ class Note(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the note.
         """
@@ -220,7 +220,7 @@ class Note(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -229,7 +229,7 @@ class Note(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="relatedNoteNames")
-    def related_note_names(self) -> Optional[List[str]]:
+    def related_note_names(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Names of other notes related to this note.
         """
@@ -237,7 +237,7 @@ class Note(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="relatedUrls")
-    def related_urls(self) -> Optional[List['outputs.NoteRelatedUrl']]:
+    def related_urls(self) -> pulumi.Output[Optional[List['outputs.NoteRelatedUrl']]]:
         """
         URLs associated with this note and related metadata.
         Structure is documented below.
@@ -246,7 +246,7 @@ class Note(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="shortDescription")
-    def short_description(self) -> Optional[str]:
+    def short_description(self) -> pulumi.Output[Optional[str]]:
         """
         A one sentence description of the note.
         """
@@ -254,7 +254,7 @@ class Note(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> str:
+    def update_time(self) -> pulumi.Output[str]:
         """
         The time this note was last updated.
         """

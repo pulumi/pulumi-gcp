@@ -13,7 +13,7 @@ __all__ = ['Route']
 
 class Route(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dest_range: Optional[pulumi.Input[str]] = None,
@@ -248,7 +248,7 @@ class Route(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         An optional description of this resource. Provide this property
         when you create the resource.
@@ -257,7 +257,7 @@ class Route(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="destRange")
-    def dest_range(self) -> str:
+    def dest_range(self) -> pulumi.Output[str]:
         """
         The destination range of outgoing packets that this route applies to.
         Only IPv4 is supported.
@@ -266,7 +266,7 @@ class Route(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the resource. Provided by the client when the resource is
         created. The name must be 1-63 characters long, and comply with
@@ -280,7 +280,7 @@ class Route(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def network(self) -> str:
+    def network(self) -> pulumi.Output[str]:
         """
         The network that this route applies to.
         """
@@ -288,7 +288,7 @@ class Route(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nextHopGateway")
-    def next_hop_gateway(self) -> Optional[str]:
+    def next_hop_gateway(self) -> pulumi.Output[Optional[str]]:
         """
         URL to a gateway that should handle matching packets.
         Currently, you can only specify the internet gateway, using a full or
@@ -302,7 +302,7 @@ class Route(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nextHopIlb")
-    def next_hop_ilb(self) -> Optional[str]:
+    def next_hop_ilb(self) -> pulumi.Output[Optional[str]]:
         """
         The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets.
         You can only specify the forwarding rule as a partial or full URL. For example, the following are all valid URLs:
@@ -314,7 +314,7 @@ class Route(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nextHopInstance")
-    def next_hop_instance(self) -> Optional[str]:
+    def next_hop_instance(self) -> pulumi.Output[Optional[str]]:
         """
         URL to an instance that should handle matching packets.
         You can specify this as a full or partial URL. For example:
@@ -327,7 +327,7 @@ class Route(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nextHopInstanceZone")
-    def next_hop_instance_zone(self) -> Optional[str]:
+    def next_hop_instance_zone(self) -> pulumi.Output[Optional[str]]:
         """
         (Optional when `next_hop_instance` is
         specified)  The zone of the instance specified in
@@ -338,7 +338,7 @@ class Route(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nextHopIp")
-    def next_hop_ip(self) -> str:
+    def next_hop_ip(self) -> pulumi.Output[str]:
         """
         Network IP address of an instance that should handle matching packets.
         """
@@ -346,7 +346,7 @@ class Route(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nextHopNetwork")
-    def next_hop_network(self) -> str:
+    def next_hop_network(self) -> pulumi.Output[str]:
         """
         URL to a Network that should handle matching packets.
         """
@@ -354,7 +354,7 @@ class Route(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nextHopVpnTunnel")
-    def next_hop_vpn_tunnel(self) -> Optional[str]:
+    def next_hop_vpn_tunnel(self) -> pulumi.Output[Optional[str]]:
         """
         URL to a VpnTunnel that should handle matching packets.
         """
@@ -362,7 +362,7 @@ class Route(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def priority(self) -> Optional[float]:
+    def priority(self) -> pulumi.Output[Optional[float]]:
         """
         The priority of this route. Priority is used to break ties in cases
         where there is more than one matching route of equal prefix length.
@@ -374,7 +374,7 @@ class Route(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -383,7 +383,7 @@ class Route(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> str:
+    def self_link(self) -> pulumi.Output[str]:
         """
         The URI of the created resource.
         """
@@ -391,7 +391,7 @@ class Route(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A list of instance tags to which this route applies.
         """

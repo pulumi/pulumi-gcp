@@ -15,7 +15,7 @@ __all__ = ['PacketMirroring']
 
 class PacketMirroring(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  collector_ilb: Optional[pulumi.Input[pulumi.InputType['PacketMirroringCollectorIlbArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -165,7 +165,7 @@ class PacketMirroring(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="collectorIlb")
-    def collector_ilb(self) -> 'outputs.PacketMirroringCollectorIlb':
+    def collector_ilb(self) -> pulumi.Output['outputs.PacketMirroringCollectorIlb']:
         """
         The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
         that will be used as collector for mirrored traffic. The
@@ -177,7 +177,7 @@ class PacketMirroring(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A human-readable description of the rule.
         """
@@ -185,7 +185,7 @@ class PacketMirroring(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def filter(self) -> Optional['outputs.PacketMirroringFilter']:
+    def filter(self) -> pulumi.Output[Optional['outputs.PacketMirroringFilter']]:
         """
         A filter for mirrored traffic.  If unset, all traffic is mirrored.
         Structure is documented below.
@@ -194,7 +194,7 @@ class PacketMirroring(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="mirroredResources")
-    def mirrored_resources(self) -> 'outputs.PacketMirroringMirroredResources':
+    def mirrored_resources(self) -> pulumi.Output['outputs.PacketMirroringMirroredResources']:
         """
         A means of specifying which resources to mirror.
         Structure is documented below.
@@ -203,7 +203,7 @@ class PacketMirroring(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the packet mirroring rule
         """
@@ -211,7 +211,7 @@ class PacketMirroring(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def network(self) -> 'outputs.PacketMirroringNetwork':
+    def network(self) -> pulumi.Output['outputs.PacketMirroringNetwork']:
         """
         Specifies the mirrored VPC network. Only packets in this network
         will be mirrored. All mirrored VMs should have a NIC in the given
@@ -222,7 +222,7 @@ class PacketMirroring(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def priority(self) -> float:
+    def priority(self) -> pulumi.Output[float]:
         """
         Since only one rule can be active at a time, priority is
         used to break ties in the case of two rules that apply to
@@ -232,7 +232,7 @@ class PacketMirroring(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -241,7 +241,7 @@ class PacketMirroring(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The Region in which the created address should reside.
         If it is not provided, the provider region is used.
