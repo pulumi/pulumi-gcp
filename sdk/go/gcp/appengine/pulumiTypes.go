@@ -6086,7 +6086,7 @@ func (o StandardAppVersionDeploymentPtrOutput) Zip() StandardAppVersionDeploymen
 }
 
 type StandardAppVersionDeploymentFile struct {
-	// Name of the library. Example "django".
+	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
 	Name string `pulumi:"name"`
 	// SHA1 checksum of the file
 	Sha1Sum *string `pulumi:"sha1Sum"`
@@ -6106,7 +6106,7 @@ type StandardAppVersionDeploymentFileInput interface {
 }
 
 type StandardAppVersionDeploymentFileArgs struct {
-	// Name of the library. Example "django".
+	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
 	Name pulumi.StringInput `pulumi:"name"`
 	// SHA1 checksum of the file
 	Sha1Sum pulumi.StringPtrInput `pulumi:"sha1Sum"`
@@ -6165,7 +6165,7 @@ func (o StandardAppVersionDeploymentFileOutput) ToStandardAppVersionDeploymentFi
 	return o
 }
 
-// Name of the library. Example "django".
+// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
 func (o StandardAppVersionDeploymentFileOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v StandardAppVersionDeploymentFile) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -7053,7 +7053,7 @@ func (o StandardAppVersionHandlerStaticFilesPtrOutput) UploadPathRegex() pulumi.
 }
 
 type StandardAppVersionLibrary struct {
-	// Name of the library. Example "django".
+	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
 	Name *string `pulumi:"name"`
 	// Version of the library to select, or "latest".
 	Version *string `pulumi:"version"`
@@ -7071,7 +7071,7 @@ type StandardAppVersionLibraryInput interface {
 }
 
 type StandardAppVersionLibraryArgs struct {
-	// Name of the library. Example "django".
+	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Version of the library to select, or "latest".
 	Version pulumi.StringPtrInput `pulumi:"version"`
@@ -7128,7 +7128,7 @@ func (o StandardAppVersionLibraryOutput) ToStandardAppVersionLibraryOutputWithCo
 	return o
 }
 
-// Name of the library. Example "django".
+// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
 func (o StandardAppVersionLibraryOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StandardAppVersionLibrary) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -7297,6 +7297,137 @@ func (o StandardAppVersionManualScalingPtrOutput) Instances() pulumi.IntPtrOutpu
 	}).(pulumi.IntPtrOutput)
 }
 
+type StandardAppVersionVpcAccessConnector struct {
+	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+	Name string `pulumi:"name"`
+}
+
+// StandardAppVersionVpcAccessConnectorInput is an input type that accepts StandardAppVersionVpcAccessConnectorArgs and StandardAppVersionVpcAccessConnectorOutput values.
+// You can construct a concrete instance of `StandardAppVersionVpcAccessConnectorInput` via:
+//
+//          StandardAppVersionVpcAccessConnectorArgs{...}
+type StandardAppVersionVpcAccessConnectorInput interface {
+	pulumi.Input
+
+	ToStandardAppVersionVpcAccessConnectorOutput() StandardAppVersionVpcAccessConnectorOutput
+	ToStandardAppVersionVpcAccessConnectorOutputWithContext(context.Context) StandardAppVersionVpcAccessConnectorOutput
+}
+
+type StandardAppVersionVpcAccessConnectorArgs struct {
+	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (StandardAppVersionVpcAccessConnectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StandardAppVersionVpcAccessConnector)(nil)).Elem()
+}
+
+func (i StandardAppVersionVpcAccessConnectorArgs) ToStandardAppVersionVpcAccessConnectorOutput() StandardAppVersionVpcAccessConnectorOutput {
+	return i.ToStandardAppVersionVpcAccessConnectorOutputWithContext(context.Background())
+}
+
+func (i StandardAppVersionVpcAccessConnectorArgs) ToStandardAppVersionVpcAccessConnectorOutputWithContext(ctx context.Context) StandardAppVersionVpcAccessConnectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionVpcAccessConnectorOutput)
+}
+
+func (i StandardAppVersionVpcAccessConnectorArgs) ToStandardAppVersionVpcAccessConnectorPtrOutput() StandardAppVersionVpcAccessConnectorPtrOutput {
+	return i.ToStandardAppVersionVpcAccessConnectorPtrOutputWithContext(context.Background())
+}
+
+func (i StandardAppVersionVpcAccessConnectorArgs) ToStandardAppVersionVpcAccessConnectorPtrOutputWithContext(ctx context.Context) StandardAppVersionVpcAccessConnectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionVpcAccessConnectorOutput).ToStandardAppVersionVpcAccessConnectorPtrOutputWithContext(ctx)
+}
+
+// StandardAppVersionVpcAccessConnectorPtrInput is an input type that accepts StandardAppVersionVpcAccessConnectorArgs, StandardAppVersionVpcAccessConnectorPtr and StandardAppVersionVpcAccessConnectorPtrOutput values.
+// You can construct a concrete instance of `StandardAppVersionVpcAccessConnectorPtrInput` via:
+//
+//          StandardAppVersionVpcAccessConnectorArgs{...}
+//
+//  or:
+//
+//          nil
+type StandardAppVersionVpcAccessConnectorPtrInput interface {
+	pulumi.Input
+
+	ToStandardAppVersionVpcAccessConnectorPtrOutput() StandardAppVersionVpcAccessConnectorPtrOutput
+	ToStandardAppVersionVpcAccessConnectorPtrOutputWithContext(context.Context) StandardAppVersionVpcAccessConnectorPtrOutput
+}
+
+type standardAppVersionVpcAccessConnectorPtrType StandardAppVersionVpcAccessConnectorArgs
+
+func StandardAppVersionVpcAccessConnectorPtr(v *StandardAppVersionVpcAccessConnectorArgs) StandardAppVersionVpcAccessConnectorPtrInput {
+	return (*standardAppVersionVpcAccessConnectorPtrType)(v)
+}
+
+func (*standardAppVersionVpcAccessConnectorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StandardAppVersionVpcAccessConnector)(nil)).Elem()
+}
+
+func (i *standardAppVersionVpcAccessConnectorPtrType) ToStandardAppVersionVpcAccessConnectorPtrOutput() StandardAppVersionVpcAccessConnectorPtrOutput {
+	return i.ToStandardAppVersionVpcAccessConnectorPtrOutputWithContext(context.Background())
+}
+
+func (i *standardAppVersionVpcAccessConnectorPtrType) ToStandardAppVersionVpcAccessConnectorPtrOutputWithContext(ctx context.Context) StandardAppVersionVpcAccessConnectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionVpcAccessConnectorPtrOutput)
+}
+
+type StandardAppVersionVpcAccessConnectorOutput struct{ *pulumi.OutputState }
+
+func (StandardAppVersionVpcAccessConnectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StandardAppVersionVpcAccessConnector)(nil)).Elem()
+}
+
+func (o StandardAppVersionVpcAccessConnectorOutput) ToStandardAppVersionVpcAccessConnectorOutput() StandardAppVersionVpcAccessConnectorOutput {
+	return o
+}
+
+func (o StandardAppVersionVpcAccessConnectorOutput) ToStandardAppVersionVpcAccessConnectorOutputWithContext(ctx context.Context) StandardAppVersionVpcAccessConnectorOutput {
+	return o
+}
+
+func (o StandardAppVersionVpcAccessConnectorOutput) ToStandardAppVersionVpcAccessConnectorPtrOutput() StandardAppVersionVpcAccessConnectorPtrOutput {
+	return o.ToStandardAppVersionVpcAccessConnectorPtrOutputWithContext(context.Background())
+}
+
+func (o StandardAppVersionVpcAccessConnectorOutput) ToStandardAppVersionVpcAccessConnectorPtrOutputWithContext(ctx context.Context) StandardAppVersionVpcAccessConnectorPtrOutput {
+	return o.ApplyT(func(v StandardAppVersionVpcAccessConnector) *StandardAppVersionVpcAccessConnector {
+		return &v
+	}).(StandardAppVersionVpcAccessConnectorPtrOutput)
+}
+
+// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+func (o StandardAppVersionVpcAccessConnectorOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v StandardAppVersionVpcAccessConnector) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type StandardAppVersionVpcAccessConnectorPtrOutput struct{ *pulumi.OutputState }
+
+func (StandardAppVersionVpcAccessConnectorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StandardAppVersionVpcAccessConnector)(nil)).Elem()
+}
+
+func (o StandardAppVersionVpcAccessConnectorPtrOutput) ToStandardAppVersionVpcAccessConnectorPtrOutput() StandardAppVersionVpcAccessConnectorPtrOutput {
+	return o
+}
+
+func (o StandardAppVersionVpcAccessConnectorPtrOutput) ToStandardAppVersionVpcAccessConnectorPtrOutputWithContext(ctx context.Context) StandardAppVersionVpcAccessConnectorPtrOutput {
+	return o
+}
+
+func (o StandardAppVersionVpcAccessConnectorPtrOutput) Elem() StandardAppVersionVpcAccessConnectorOutput {
+	return o.ApplyT(func(v *StandardAppVersionVpcAccessConnector) StandardAppVersionVpcAccessConnector { return *v }).(StandardAppVersionVpcAccessConnectorOutput)
+}
+
+// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+func (o StandardAppVersionVpcAccessConnectorPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StandardAppVersionVpcAccessConnector) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ApplicationFeatureSettingsOutput{})
 	pulumi.RegisterOutputType(ApplicationFeatureSettingsPtrOutput{})
@@ -7382,4 +7513,6 @@ func init() {
 	pulumi.RegisterOutputType(StandardAppVersionLibraryArrayOutput{})
 	pulumi.RegisterOutputType(StandardAppVersionManualScalingOutput{})
 	pulumi.RegisterOutputType(StandardAppVersionManualScalingPtrOutput{})
+	pulumi.RegisterOutputType(StandardAppVersionVpcAccessConnectorOutput{})
+	pulumi.RegisterOutputType(StandardAppVersionVpcAccessConnectorPtrOutput{})
 }

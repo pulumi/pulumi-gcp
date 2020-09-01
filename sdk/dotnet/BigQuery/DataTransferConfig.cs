@@ -73,6 +73,13 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Pub/Sub topic where notifications will be sent after transfer runs
+        /// associated with this transfer config finish.
+        /// </summary>
+        [Output("notificationPubsubTopic")]
+        public Output<string?> NotificationPubsubTopic { get; private set; } = null!;
+
+        /// <summary>
         /// These parameters are specific to each data source.
         /// </summary>
         [Output("params")]
@@ -193,6 +200,13 @@ namespace Pulumi.Gcp.BigQuery
         [Input("location")]
         public Input<string>? Location { get; set; }
 
+        /// <summary>
+        /// Pub/Sub topic where notifications will be sent after transfer runs
+        /// associated with this transfer config finish.
+        /// </summary>
+        [Input("notificationPubsubTopic")]
+        public Input<string>? NotificationPubsubTopic { get; set; }
+
         [Input("params", required: true)]
         private InputMap<string>? _params;
 
@@ -288,6 +302,13 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Pub/Sub topic where notifications will be sent after transfer runs
+        /// associated with this transfer config finish.
+        /// </summary>
+        [Input("notificationPubsubTopic")]
+        public Input<string>? NotificationPubsubTopic { get; set; }
 
         [Input("params")]
         private InputMap<string>? _params;

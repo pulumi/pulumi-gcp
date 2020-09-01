@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly int? DiskSizeGb;
         /// <summary>
         /// Type of the disk attached to each node
-        /// (e.g. 'pd-standard' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+        /// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
         /// </summary>
         public readonly string? DiskType;
         /// <summary>
@@ -38,9 +38,22 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string? ImageType;
         /// <summary>
+        /// )
+        /// Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ClusterNodePoolNodeConfigKubeletConfig? KubeletConfig;
+        /// <summary>
         /// The Kubernetes labels (key/value pairs) to be applied to each node.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Labels;
+        /// <summary>
+        /// )
+        /// Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+        /// Note that validations happen all server side. All attributes are optional.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ClusterNodePoolNodeConfigLinuxNodeConfig? LinuxNodeConfig;
         /// <summary>
         /// The amount of local SSD disks that will be
         /// attached to each cluster node. Defaults to 0.
@@ -132,7 +145,11 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string? imageType,
 
+            Outputs.ClusterNodePoolNodeConfigKubeletConfig? kubeletConfig,
+
             ImmutableDictionary<string, string>? labels,
+
+            Outputs.ClusterNodePoolNodeConfigLinuxNodeConfig? linuxNodeConfig,
 
             int? localSsdCount,
 
@@ -163,7 +180,9 @@ namespace Pulumi.Gcp.Container.Outputs
             DiskType = diskType;
             GuestAccelerators = guestAccelerators;
             ImageType = imageType;
+            KubeletConfig = kubeletConfig;
             Labels = labels;
+            LinuxNodeConfig = linuxNodeConfig;
             LocalSsdCount = localSsdCount;
             MachineType = machineType;
             Metadata = metadata;

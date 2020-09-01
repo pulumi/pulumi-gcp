@@ -32,6 +32,9 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("imageType")]
         public Input<string>? ImageType { get; set; }
 
+        [Input("kubeletConfig")]
+        public Input<Inputs.NodePoolNodeConfigKubeletConfigArgs>? KubeletConfig { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
         public InputMap<string> Labels
@@ -39,6 +42,9 @@ namespace Pulumi.Gcp.Container.Inputs
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
+
+        [Input("linuxNodeConfig")]
+        public Input<Inputs.NodePoolNodeConfigLinuxNodeConfigArgs>? LinuxNodeConfig { get; set; }
 
         [Input("localSsdCount")]
         public Input<int>? LocalSsdCount { get; set; }

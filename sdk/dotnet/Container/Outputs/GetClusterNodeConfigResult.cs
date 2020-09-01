@@ -18,7 +18,9 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly string DiskType;
         public readonly ImmutableArray<Outputs.GetClusterNodeConfigGuestAcceleratorResult> GuestAccelerators;
         public readonly string ImageType;
+        public readonly ImmutableArray<Outputs.GetClusterNodeConfigKubeletConfigResult> KubeletConfigs;
         public readonly ImmutableDictionary<string, string> Labels;
+        public readonly ImmutableArray<Outputs.GetClusterNodeConfigLinuxNodeConfigResult> LinuxNodeConfigs;
         public readonly int LocalSsdCount;
         public readonly string MachineType;
         public readonly ImmutableDictionary<string, string> Metadata;
@@ -44,7 +46,11 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string imageType,
 
+            ImmutableArray<Outputs.GetClusterNodeConfigKubeletConfigResult> kubeletConfigs,
+
             ImmutableDictionary<string, string> labels,
+
+            ImmutableArray<Outputs.GetClusterNodeConfigLinuxNodeConfigResult> linuxNodeConfigs,
 
             int localSsdCount,
 
@@ -75,7 +81,9 @@ namespace Pulumi.Gcp.Container.Outputs
             DiskType = diskType;
             GuestAccelerators = guestAccelerators;
             ImageType = imageType;
+            KubeletConfigs = kubeletConfigs;
             Labels = labels;
+            LinuxNodeConfigs = linuxNodeConfigs;
             LocalSsdCount = localSsdCount;
             MachineType = machineType;
             Metadata = metadata;

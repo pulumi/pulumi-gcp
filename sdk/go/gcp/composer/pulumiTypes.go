@@ -11,9 +11,10 @@ import (
 )
 
 type EnvironmentConfig struct {
-	AirflowUri   *string `pulumi:"airflowUri"`
-	DagGcsPrefix *string `pulumi:"dagGcsPrefix"`
-	GkeCluster   *string `pulumi:"gkeCluster"`
+	AirflowUri     *string                          `pulumi:"airflowUri"`
+	DagGcsPrefix   *string                          `pulumi:"dagGcsPrefix"`
+	DatabaseConfig *EnvironmentConfigDatabaseConfig `pulumi:"databaseConfig"`
+	GkeCluster     *string                          `pulumi:"gkeCluster"`
 	// The configuration used for the Kubernetes Engine cluster.  Structure is documented below.
 	NodeConfig *EnvironmentConfigNodeConfig `pulumi:"nodeConfig"`
 	// The number of nodes in the Kubernetes Engine cluster that
@@ -22,7 +23,8 @@ type EnvironmentConfig struct {
 	// The configuration used for the Private IP Cloud Composer environment. Structure is documented below.
 	PrivateEnvironmentConfig *EnvironmentConfigPrivateEnvironmentConfig `pulumi:"privateEnvironmentConfig"`
 	// The configuration settings for software inside the environment.  Structure is documented below.
-	SoftwareConfig *EnvironmentConfigSoftwareConfig `pulumi:"softwareConfig"`
+	SoftwareConfig  *EnvironmentConfigSoftwareConfig  `pulumi:"softwareConfig"`
+	WebServerConfig *EnvironmentConfigWebServerConfig `pulumi:"webServerConfig"`
 	// The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
 	WebServerNetworkAccessControl *EnvironmentConfigWebServerNetworkAccessControl `pulumi:"webServerNetworkAccessControl"`
 }
@@ -39,9 +41,10 @@ type EnvironmentConfigInput interface {
 }
 
 type EnvironmentConfigArgs struct {
-	AirflowUri   pulumi.StringPtrInput `pulumi:"airflowUri"`
-	DagGcsPrefix pulumi.StringPtrInput `pulumi:"dagGcsPrefix"`
-	GkeCluster   pulumi.StringPtrInput `pulumi:"gkeCluster"`
+	AirflowUri     pulumi.StringPtrInput                   `pulumi:"airflowUri"`
+	DagGcsPrefix   pulumi.StringPtrInput                   `pulumi:"dagGcsPrefix"`
+	DatabaseConfig EnvironmentConfigDatabaseConfigPtrInput `pulumi:"databaseConfig"`
+	GkeCluster     pulumi.StringPtrInput                   `pulumi:"gkeCluster"`
 	// The configuration used for the Kubernetes Engine cluster.  Structure is documented below.
 	NodeConfig EnvironmentConfigNodeConfigPtrInput `pulumi:"nodeConfig"`
 	// The number of nodes in the Kubernetes Engine cluster that
@@ -50,7 +53,8 @@ type EnvironmentConfigArgs struct {
 	// The configuration used for the Private IP Cloud Composer environment. Structure is documented below.
 	PrivateEnvironmentConfig EnvironmentConfigPrivateEnvironmentConfigPtrInput `pulumi:"privateEnvironmentConfig"`
 	// The configuration settings for software inside the environment.  Structure is documented below.
-	SoftwareConfig EnvironmentConfigSoftwareConfigPtrInput `pulumi:"softwareConfig"`
+	SoftwareConfig  EnvironmentConfigSoftwareConfigPtrInput  `pulumi:"softwareConfig"`
+	WebServerConfig EnvironmentConfigWebServerConfigPtrInput `pulumi:"webServerConfig"`
 	// The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
 	WebServerNetworkAccessControl EnvironmentConfigWebServerNetworkAccessControlPtrInput `pulumi:"webServerNetworkAccessControl"`
 }
@@ -139,6 +143,10 @@ func (o EnvironmentConfigOutput) DagGcsPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *string { return v.DagGcsPrefix }).(pulumi.StringPtrOutput)
 }
 
+func (o EnvironmentConfigOutput) DatabaseConfig() EnvironmentConfigDatabaseConfigPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigDatabaseConfig { return v.DatabaseConfig }).(EnvironmentConfigDatabaseConfigPtrOutput)
+}
+
 func (o EnvironmentConfigOutput) GkeCluster() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *string { return v.GkeCluster }).(pulumi.StringPtrOutput)
 }
@@ -164,6 +172,10 @@ func (o EnvironmentConfigOutput) PrivateEnvironmentConfig() EnvironmentConfigPri
 // The configuration settings for software inside the environment.  Structure is documented below.
 func (o EnvironmentConfigOutput) SoftwareConfig() EnvironmentConfigSoftwareConfigPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigSoftwareConfig { return v.SoftwareConfig }).(EnvironmentConfigSoftwareConfigPtrOutput)
+}
+
+func (o EnvironmentConfigOutput) WebServerConfig() EnvironmentConfigWebServerConfigPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigWebServerConfig { return v.WebServerConfig }).(EnvironmentConfigWebServerConfigPtrOutput)
 }
 
 // The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
@@ -207,6 +219,15 @@ func (o EnvironmentConfigPtrOutput) DagGcsPrefix() pulumi.StringPtrOutput {
 		}
 		return v.DagGcsPrefix
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o EnvironmentConfigPtrOutput) DatabaseConfig() EnvironmentConfigDatabaseConfigPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfig) *EnvironmentConfigDatabaseConfig {
+		if v == nil {
+			return nil
+		}
+		return v.DatabaseConfig
+	}).(EnvironmentConfigDatabaseConfigPtrOutput)
 }
 
 func (o EnvironmentConfigPtrOutput) GkeCluster() pulumi.StringPtrOutput {
@@ -259,6 +280,15 @@ func (o EnvironmentConfigPtrOutput) SoftwareConfig() EnvironmentConfigSoftwareCo
 	}).(EnvironmentConfigSoftwareConfigPtrOutput)
 }
 
+func (o EnvironmentConfigPtrOutput) WebServerConfig() EnvironmentConfigWebServerConfigPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfig) *EnvironmentConfigWebServerConfig {
+		if v == nil {
+			return nil
+		}
+		return v.WebServerConfig
+	}).(EnvironmentConfigWebServerConfigPtrOutput)
+}
+
 // The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
 func (o EnvironmentConfigPtrOutput) WebServerNetworkAccessControl() EnvironmentConfigWebServerNetworkAccessControlPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) *EnvironmentConfigWebServerNetworkAccessControl {
@@ -269,6 +299,149 @@ func (o EnvironmentConfigPtrOutput) WebServerNetworkAccessControl() EnvironmentC
 	}).(EnvironmentConfigWebServerNetworkAccessControlPtrOutput)
 }
 
+type EnvironmentConfigDatabaseConfig struct {
+	// Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2,
+	// composer-n1-webserver-4 or composer-n1-webserver-8.
+	// Value custom is returned only in response, if Airflow web server parameters were
+	// manually changed to a non-standard values.
+	MachineType string `pulumi:"machineType"`
+}
+
+// EnvironmentConfigDatabaseConfigInput is an input type that accepts EnvironmentConfigDatabaseConfigArgs and EnvironmentConfigDatabaseConfigOutput values.
+// You can construct a concrete instance of `EnvironmentConfigDatabaseConfigInput` via:
+//
+//          EnvironmentConfigDatabaseConfigArgs{...}
+type EnvironmentConfigDatabaseConfigInput interface {
+	pulumi.Input
+
+	ToEnvironmentConfigDatabaseConfigOutput() EnvironmentConfigDatabaseConfigOutput
+	ToEnvironmentConfigDatabaseConfigOutputWithContext(context.Context) EnvironmentConfigDatabaseConfigOutput
+}
+
+type EnvironmentConfigDatabaseConfigArgs struct {
+	// Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2,
+	// composer-n1-webserver-4 or composer-n1-webserver-8.
+	// Value custom is returned only in response, if Airflow web server parameters were
+	// manually changed to a non-standard values.
+	MachineType pulumi.StringInput `pulumi:"machineType"`
+}
+
+func (EnvironmentConfigDatabaseConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentConfigDatabaseConfig)(nil)).Elem()
+}
+
+func (i EnvironmentConfigDatabaseConfigArgs) ToEnvironmentConfigDatabaseConfigOutput() EnvironmentConfigDatabaseConfigOutput {
+	return i.ToEnvironmentConfigDatabaseConfigOutputWithContext(context.Background())
+}
+
+func (i EnvironmentConfigDatabaseConfigArgs) ToEnvironmentConfigDatabaseConfigOutputWithContext(ctx context.Context) EnvironmentConfigDatabaseConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigDatabaseConfigOutput)
+}
+
+func (i EnvironmentConfigDatabaseConfigArgs) ToEnvironmentConfigDatabaseConfigPtrOutput() EnvironmentConfigDatabaseConfigPtrOutput {
+	return i.ToEnvironmentConfigDatabaseConfigPtrOutputWithContext(context.Background())
+}
+
+func (i EnvironmentConfigDatabaseConfigArgs) ToEnvironmentConfigDatabaseConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigDatabaseConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigDatabaseConfigOutput).ToEnvironmentConfigDatabaseConfigPtrOutputWithContext(ctx)
+}
+
+// EnvironmentConfigDatabaseConfigPtrInput is an input type that accepts EnvironmentConfigDatabaseConfigArgs, EnvironmentConfigDatabaseConfigPtr and EnvironmentConfigDatabaseConfigPtrOutput values.
+// You can construct a concrete instance of `EnvironmentConfigDatabaseConfigPtrInput` via:
+//
+//          EnvironmentConfigDatabaseConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type EnvironmentConfigDatabaseConfigPtrInput interface {
+	pulumi.Input
+
+	ToEnvironmentConfigDatabaseConfigPtrOutput() EnvironmentConfigDatabaseConfigPtrOutput
+	ToEnvironmentConfigDatabaseConfigPtrOutputWithContext(context.Context) EnvironmentConfigDatabaseConfigPtrOutput
+}
+
+type environmentConfigDatabaseConfigPtrType EnvironmentConfigDatabaseConfigArgs
+
+func EnvironmentConfigDatabaseConfigPtr(v *EnvironmentConfigDatabaseConfigArgs) EnvironmentConfigDatabaseConfigPtrInput {
+	return (*environmentConfigDatabaseConfigPtrType)(v)
+}
+
+func (*environmentConfigDatabaseConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentConfigDatabaseConfig)(nil)).Elem()
+}
+
+func (i *environmentConfigDatabaseConfigPtrType) ToEnvironmentConfigDatabaseConfigPtrOutput() EnvironmentConfigDatabaseConfigPtrOutput {
+	return i.ToEnvironmentConfigDatabaseConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *environmentConfigDatabaseConfigPtrType) ToEnvironmentConfigDatabaseConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigDatabaseConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigDatabaseConfigPtrOutput)
+}
+
+type EnvironmentConfigDatabaseConfigOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentConfigDatabaseConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentConfigDatabaseConfig)(nil)).Elem()
+}
+
+func (o EnvironmentConfigDatabaseConfigOutput) ToEnvironmentConfigDatabaseConfigOutput() EnvironmentConfigDatabaseConfigOutput {
+	return o
+}
+
+func (o EnvironmentConfigDatabaseConfigOutput) ToEnvironmentConfigDatabaseConfigOutputWithContext(ctx context.Context) EnvironmentConfigDatabaseConfigOutput {
+	return o
+}
+
+func (o EnvironmentConfigDatabaseConfigOutput) ToEnvironmentConfigDatabaseConfigPtrOutput() EnvironmentConfigDatabaseConfigPtrOutput {
+	return o.ToEnvironmentConfigDatabaseConfigPtrOutputWithContext(context.Background())
+}
+
+func (o EnvironmentConfigDatabaseConfigOutput) ToEnvironmentConfigDatabaseConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigDatabaseConfigPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfigDatabaseConfig) *EnvironmentConfigDatabaseConfig {
+		return &v
+	}).(EnvironmentConfigDatabaseConfigPtrOutput)
+}
+
+// Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2,
+// composer-n1-webserver-4 or composer-n1-webserver-8.
+// Value custom is returned only in response, if Airflow web server parameters were
+// manually changed to a non-standard values.
+func (o EnvironmentConfigDatabaseConfigOutput) MachineType() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvironmentConfigDatabaseConfig) string { return v.MachineType }).(pulumi.StringOutput)
+}
+
+type EnvironmentConfigDatabaseConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentConfigDatabaseConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentConfigDatabaseConfig)(nil)).Elem()
+}
+
+func (o EnvironmentConfigDatabaseConfigPtrOutput) ToEnvironmentConfigDatabaseConfigPtrOutput() EnvironmentConfigDatabaseConfigPtrOutput {
+	return o
+}
+
+func (o EnvironmentConfigDatabaseConfigPtrOutput) ToEnvironmentConfigDatabaseConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigDatabaseConfigPtrOutput {
+	return o
+}
+
+func (o EnvironmentConfigDatabaseConfigPtrOutput) Elem() EnvironmentConfigDatabaseConfigOutput {
+	return o.ApplyT(func(v *EnvironmentConfigDatabaseConfig) EnvironmentConfigDatabaseConfig { return *v }).(EnvironmentConfigDatabaseConfigOutput)
+}
+
+// Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2,
+// composer-n1-webserver-4 or composer-n1-webserver-8.
+// Value custom is returned only in response, if Airflow web server parameters were
+// manually changed to a non-standard values.
+func (o EnvironmentConfigDatabaseConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfigDatabaseConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MachineType
+	}).(pulumi.StringPtrOutput)
+}
+
 type EnvironmentConfigNodeConfig struct {
 	// The disk size in GB used for node VMs. Minimum size is 20GB.
 	// If unspecified, defaults to 100GB. Cannot be updated.
@@ -277,10 +450,10 @@ type EnvironmentConfigNodeConfig struct {
 	// Structure is documented below.
 	// Cannot be updated.
 	IpAllocationPolicy *EnvironmentConfigNodeConfigIpAllocationPolicy `pulumi:"ipAllocationPolicy"`
-	// The Compute Engine machine type used for cluster instances,
-	// specified as a name or relative resource name. For example:
-	// "projects/{project}/zones/{zone}/machineTypes/{machineType}". Must belong to the enclosing environment's project and
-	// region/zone.
+	// Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2,
+	// composer-n1-webserver-4 or composer-n1-webserver-8.
+	// Value custom is returned only in response, if Airflow web server parameters were
+	// manually changed to a non-standard values.
 	MachineType *string `pulumi:"machineType"`
 	// The Compute Engine network to be used for machine
 	// communications, specified as a self-link, relative resource name
@@ -332,10 +505,10 @@ type EnvironmentConfigNodeConfigArgs struct {
 	// Structure is documented below.
 	// Cannot be updated.
 	IpAllocationPolicy EnvironmentConfigNodeConfigIpAllocationPolicyPtrInput `pulumi:"ipAllocationPolicy"`
-	// The Compute Engine machine type used for cluster instances,
-	// specified as a name or relative resource name. For example:
-	// "projects/{project}/zones/{zone}/machineTypes/{machineType}". Must belong to the enclosing environment's project and
-	// region/zone.
+	// Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2,
+	// composer-n1-webserver-4 or composer-n1-webserver-8.
+	// Value custom is returned only in response, if Airflow web server parameters were
+	// manually changed to a non-standard values.
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
 	// The Compute Engine network to be used for machine
 	// communications, specified as a self-link, relative resource name
@@ -460,10 +633,10 @@ func (o EnvironmentConfigNodeConfigOutput) IpAllocationPolicy() EnvironmentConfi
 	}).(EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput)
 }
 
-// The Compute Engine machine type used for cluster instances,
-// specified as a name or relative resource name. For example:
-// "projects/{project}/zones/{zone}/machineTypes/{machineType}". Must belong to the enclosing environment's project and
-// region/zone.
+// Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2,
+// composer-n1-webserver-4 or composer-n1-webserver-8.
+// Value custom is returned only in response, if Airflow web server parameters were
+// manually changed to a non-standard values.
 func (o EnvironmentConfigNodeConfigOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
 }
@@ -556,10 +729,10 @@ func (o EnvironmentConfigNodeConfigPtrOutput) IpAllocationPolicy() EnvironmentCo
 	}).(EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput)
 }
 
-// The Compute Engine machine type used for cluster instances,
-// specified as a name or relative resource name. For example:
-// "projects/{project}/zones/{zone}/machineTypes/{machineType}". Must belong to the enclosing environment's project and
-// region/zone.
+// Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2,
+// composer-n1-webserver-4 or composer-n1-webserver-8.
+// Value custom is returned only in response, if Airflow web server parameters were
+// manually changed to a non-standard values.
 func (o EnvironmentConfigNodeConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigNodeConfig) *string {
 		if v == nil {
@@ -1452,6 +1625,149 @@ func (o EnvironmentConfigSoftwareConfigPtrOutput) PythonVersion() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+type EnvironmentConfigWebServerConfig struct {
+	// Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2,
+	// composer-n1-webserver-4 or composer-n1-webserver-8.
+	// Value custom is returned only in response, if Airflow web server parameters were
+	// manually changed to a non-standard values.
+	MachineType string `pulumi:"machineType"`
+}
+
+// EnvironmentConfigWebServerConfigInput is an input type that accepts EnvironmentConfigWebServerConfigArgs and EnvironmentConfigWebServerConfigOutput values.
+// You can construct a concrete instance of `EnvironmentConfigWebServerConfigInput` via:
+//
+//          EnvironmentConfigWebServerConfigArgs{...}
+type EnvironmentConfigWebServerConfigInput interface {
+	pulumi.Input
+
+	ToEnvironmentConfigWebServerConfigOutput() EnvironmentConfigWebServerConfigOutput
+	ToEnvironmentConfigWebServerConfigOutputWithContext(context.Context) EnvironmentConfigWebServerConfigOutput
+}
+
+type EnvironmentConfigWebServerConfigArgs struct {
+	// Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2,
+	// composer-n1-webserver-4 or composer-n1-webserver-8.
+	// Value custom is returned only in response, if Airflow web server parameters were
+	// manually changed to a non-standard values.
+	MachineType pulumi.StringInput `pulumi:"machineType"`
+}
+
+func (EnvironmentConfigWebServerConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentConfigWebServerConfig)(nil)).Elem()
+}
+
+func (i EnvironmentConfigWebServerConfigArgs) ToEnvironmentConfigWebServerConfigOutput() EnvironmentConfigWebServerConfigOutput {
+	return i.ToEnvironmentConfigWebServerConfigOutputWithContext(context.Background())
+}
+
+func (i EnvironmentConfigWebServerConfigArgs) ToEnvironmentConfigWebServerConfigOutputWithContext(ctx context.Context) EnvironmentConfigWebServerConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigWebServerConfigOutput)
+}
+
+func (i EnvironmentConfigWebServerConfigArgs) ToEnvironmentConfigWebServerConfigPtrOutput() EnvironmentConfigWebServerConfigPtrOutput {
+	return i.ToEnvironmentConfigWebServerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i EnvironmentConfigWebServerConfigArgs) ToEnvironmentConfigWebServerConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigWebServerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigWebServerConfigOutput).ToEnvironmentConfigWebServerConfigPtrOutputWithContext(ctx)
+}
+
+// EnvironmentConfigWebServerConfigPtrInput is an input type that accepts EnvironmentConfigWebServerConfigArgs, EnvironmentConfigWebServerConfigPtr and EnvironmentConfigWebServerConfigPtrOutput values.
+// You can construct a concrete instance of `EnvironmentConfigWebServerConfigPtrInput` via:
+//
+//          EnvironmentConfigWebServerConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type EnvironmentConfigWebServerConfigPtrInput interface {
+	pulumi.Input
+
+	ToEnvironmentConfigWebServerConfigPtrOutput() EnvironmentConfigWebServerConfigPtrOutput
+	ToEnvironmentConfigWebServerConfigPtrOutputWithContext(context.Context) EnvironmentConfigWebServerConfigPtrOutput
+}
+
+type environmentConfigWebServerConfigPtrType EnvironmentConfigWebServerConfigArgs
+
+func EnvironmentConfigWebServerConfigPtr(v *EnvironmentConfigWebServerConfigArgs) EnvironmentConfigWebServerConfigPtrInput {
+	return (*environmentConfigWebServerConfigPtrType)(v)
+}
+
+func (*environmentConfigWebServerConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentConfigWebServerConfig)(nil)).Elem()
+}
+
+func (i *environmentConfigWebServerConfigPtrType) ToEnvironmentConfigWebServerConfigPtrOutput() EnvironmentConfigWebServerConfigPtrOutput {
+	return i.ToEnvironmentConfigWebServerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *environmentConfigWebServerConfigPtrType) ToEnvironmentConfigWebServerConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigWebServerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigWebServerConfigPtrOutput)
+}
+
+type EnvironmentConfigWebServerConfigOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentConfigWebServerConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentConfigWebServerConfig)(nil)).Elem()
+}
+
+func (o EnvironmentConfigWebServerConfigOutput) ToEnvironmentConfigWebServerConfigOutput() EnvironmentConfigWebServerConfigOutput {
+	return o
+}
+
+func (o EnvironmentConfigWebServerConfigOutput) ToEnvironmentConfigWebServerConfigOutputWithContext(ctx context.Context) EnvironmentConfigWebServerConfigOutput {
+	return o
+}
+
+func (o EnvironmentConfigWebServerConfigOutput) ToEnvironmentConfigWebServerConfigPtrOutput() EnvironmentConfigWebServerConfigPtrOutput {
+	return o.ToEnvironmentConfigWebServerConfigPtrOutputWithContext(context.Background())
+}
+
+func (o EnvironmentConfigWebServerConfigOutput) ToEnvironmentConfigWebServerConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigWebServerConfigPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfigWebServerConfig) *EnvironmentConfigWebServerConfig {
+		return &v
+	}).(EnvironmentConfigWebServerConfigPtrOutput)
+}
+
+// Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2,
+// composer-n1-webserver-4 or composer-n1-webserver-8.
+// Value custom is returned only in response, if Airflow web server parameters were
+// manually changed to a non-standard values.
+func (o EnvironmentConfigWebServerConfigOutput) MachineType() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvironmentConfigWebServerConfig) string { return v.MachineType }).(pulumi.StringOutput)
+}
+
+type EnvironmentConfigWebServerConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentConfigWebServerConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentConfigWebServerConfig)(nil)).Elem()
+}
+
+func (o EnvironmentConfigWebServerConfigPtrOutput) ToEnvironmentConfigWebServerConfigPtrOutput() EnvironmentConfigWebServerConfigPtrOutput {
+	return o
+}
+
+func (o EnvironmentConfigWebServerConfigPtrOutput) ToEnvironmentConfigWebServerConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigWebServerConfigPtrOutput {
+	return o
+}
+
+func (o EnvironmentConfigWebServerConfigPtrOutput) Elem() EnvironmentConfigWebServerConfigOutput {
+	return o.ApplyT(func(v *EnvironmentConfigWebServerConfig) EnvironmentConfigWebServerConfig { return *v }).(EnvironmentConfigWebServerConfigOutput)
+}
+
+// Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2,
+// composer-n1-webserver-4 or composer-n1-webserver-8.
+// Value custom is returned only in response, if Airflow web server parameters were
+// manually changed to a non-standard values.
+func (o EnvironmentConfigWebServerConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfigWebServerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MachineType
+	}).(pulumi.StringPtrOutput)
+}
+
 type EnvironmentConfigWebServerNetworkAccessControl struct {
 	// -
 	// A collection of allowed IP ranges with descriptions. Structure is documented below.
@@ -1815,6 +2131,8 @@ func (o GetImageVersionsImageVersionArrayOutput) Index(i pulumi.IntInput) GetIma
 func init() {
 	pulumi.RegisterOutputType(EnvironmentConfigOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigPtrOutput{})
+	pulumi.RegisterOutputType(EnvironmentConfigDatabaseConfigOutput{})
+	pulumi.RegisterOutputType(EnvironmentConfigDatabaseConfigPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigNodeConfigOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigNodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigNodeConfigIpAllocationPolicyOutput{})
@@ -1823,6 +2141,8 @@ func init() {
 	pulumi.RegisterOutputType(EnvironmentConfigPrivateEnvironmentConfigPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigSoftwareConfigOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigSoftwareConfigPtrOutput{})
+	pulumi.RegisterOutputType(EnvironmentConfigWebServerConfigOutput{})
+	pulumi.RegisterOutputType(EnvironmentConfigWebServerConfigPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigWebServerNetworkAccessControlOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigWebServerNetworkAccessControlPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput{})

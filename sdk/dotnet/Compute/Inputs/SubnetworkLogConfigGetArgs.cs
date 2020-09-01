@@ -24,6 +24,13 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? AggregationInterval { get; set; }
 
         /// <summary>
+        /// Export filter used to define which VPC flow logs should be logged, as as CEL expression. See
+        /// https://cloud.google.com/vpc/docs/flow-logs#filtering for details on how to format this field.
+        /// </summary>
+        [Input("filterExpr")]
+        public Input<string>? FilterExpr { get; set; }
+
+        /// <summary>
         /// Can only be specified if VPC flow logging for this subnetwork is enabled.
         /// The value of the field must be in [0, 1]. Set the sampling rate of VPC
         /// flow logs within the subnetwork where 1.0 means all collected logs are
@@ -38,10 +45,23 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// Configures whether metadata fields should be added to the reported VPC
         /// flow logs.
         /// Default value is `INCLUDE_ALL_METADATA`.
-        /// Possible values are `EXCLUDE_ALL_METADATA` and `INCLUDE_ALL_METADATA`.
+        /// Possible values are `EXCLUDE_ALL_METADATA`, `INCLUDE_ALL_METADATA`, and `CUSTOM_METADATA`.
         /// </summary>
         [Input("metadata")]
         public Input<string>? Metadata { get; set; }
+
+        [Input("metadataFields")]
+        private InputList<string>? _metadataFields;
+
+        /// <summary>
+        /// List of metadata fields that should be added to reported logs.
+        /// Can only be specified if VPC flow logs for this subnetwork is enabled and "metadata" is set to CUSTOM_METADATA.
+        /// </summary>
+        public InputList<string> MetadataFields
+        {
+            get => _metadataFields ?? (_metadataFields = new InputList<string>());
+            set => _metadataFields = value;
+        }
 
         public SubnetworkLogConfigGetArgs()
         {

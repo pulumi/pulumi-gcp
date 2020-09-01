@@ -139,6 +139,13 @@ export class Subscription extends pulumi.CustomResource {
      */
     public readonly retainAckedMessages!: pulumi.Output<boolean | undefined>;
     /**
+     * A policy that specifies how Pub/Sub retries message delivery for this subscription.
+     * If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers.
+     * RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
+     * Structure is documented below.
+     */
+    public readonly retryPolicy!: pulumi.Output<outputs.pubsub.SubscriptionRetryPolicy | undefined>;
+    /**
      * A reference to a Topic resource.
      */
     public readonly topic!: pulumi.Output<string>;
@@ -167,6 +174,7 @@ export class Subscription extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
             inputs["pushConfig"] = state ? state.pushConfig : undefined;
             inputs["retainAckedMessages"] = state ? state.retainAckedMessages : undefined;
+            inputs["retryPolicy"] = state ? state.retryPolicy : undefined;
             inputs["topic"] = state ? state.topic : undefined;
         } else {
             const args = argsOrState as SubscriptionArgs | undefined;
@@ -184,6 +192,7 @@ export class Subscription extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["pushConfig"] = args ? args.pushConfig : undefined;
             inputs["retainAckedMessages"] = args ? args.retainAckedMessages : undefined;
+            inputs["retryPolicy"] = args ? args.retryPolicy : undefined;
             inputs["topic"] = args ? args.topic : undefined;
             inputs["path"] = undefined /*out*/;
         }
@@ -295,6 +304,13 @@ export interface SubscriptionState {
      */
     readonly retainAckedMessages?: pulumi.Input<boolean>;
     /**
+     * A policy that specifies how Pub/Sub retries message delivery for this subscription.
+     * If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers.
+     * RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
+     * Structure is documented below.
+     */
+    readonly retryPolicy?: pulumi.Input<inputs.pubsub.SubscriptionRetryPolicy>;
+    /**
      * A reference to a Topic resource.
      */
     readonly topic?: pulumi.Input<string>;
@@ -395,6 +411,13 @@ export interface SubscriptionArgs {
      * messageRetentionDuration window.
      */
     readonly retainAckedMessages?: pulumi.Input<boolean>;
+    /**
+     * A policy that specifies how Pub/Sub retries message delivery for this subscription.
+     * If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers.
+     * RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
+     * Structure is documented below.
+     */
+    readonly retryPolicy?: pulumi.Input<inputs.pubsub.SubscriptionRetryPolicy>;
     /**
      * A reference to a Topic resource.
      */

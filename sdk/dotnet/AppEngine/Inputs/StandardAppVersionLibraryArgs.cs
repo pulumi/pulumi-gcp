@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.AppEngine.Inputs
     public sealed class StandardAppVersionLibraryArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the library. Example "django".
+        /// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -28,6 +28,7 @@ class Subscription(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  push_config: Optional[pulumi.Input[pulumi.InputType['SubscriptionPushConfigArgs']]] = None,
                  retain_acked_messages: Optional[pulumi.Input[bool]] = None,
+                 retry_policy: Optional[pulumi.Input[pulumi.InputType['SubscriptionRetryPolicyArgs']]] = None,
                  topic: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -104,6 +105,10 @@ class Subscription(pulumi.CustomResource):
                messages are not expunged from the subscription's backlog, even if
                they are acknowledged, until they fall out of the
                messageRetentionDuration window.
+        :param pulumi.Input[pulumi.InputType['SubscriptionRetryPolicyArgs']] retry_policy: A policy that specifies how Pub/Sub retries message delivery for this subscription.
+               If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers.
+               RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
+               Structure is documented below.
         :param pulumi.Input[str] topic: A reference to a Topic resource.
         """
         if __name__ is not None:
@@ -134,6 +139,7 @@ class Subscription(pulumi.CustomResource):
             __props__['project'] = project
             __props__['push_config'] = push_config
             __props__['retain_acked_messages'] = retain_acked_messages
+            __props__['retry_policy'] = retry_policy
             if topic is None:
                 raise TypeError("Missing required property 'topic'")
             __props__['topic'] = topic
@@ -160,6 +166,7 @@ class Subscription(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             push_config: Optional[pulumi.Input[pulumi.InputType['SubscriptionPushConfigArgs']]] = None,
             retain_acked_messages: Optional[pulumi.Input[bool]] = None,
+            retry_policy: Optional[pulumi.Input[pulumi.InputType['SubscriptionRetryPolicyArgs']]] = None,
             topic: Optional[pulumi.Input[str]] = None) -> 'Subscription':
         """
         Get an existing Subscription resource's state with the given name, id, and optional extra
@@ -226,6 +233,10 @@ class Subscription(pulumi.CustomResource):
                messages are not expunged from the subscription's backlog, even if
                they are acknowledged, until they fall out of the
                messageRetentionDuration window.
+        :param pulumi.Input[pulumi.InputType['SubscriptionRetryPolicyArgs']] retry_policy: A policy that specifies how Pub/Sub retries message delivery for this subscription.
+               If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers.
+               RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
+               Structure is documented below.
         :param pulumi.Input[str] topic: A reference to a Topic resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -244,6 +255,7 @@ class Subscription(pulumi.CustomResource):
         __props__["project"] = project
         __props__["push_config"] = push_config
         __props__["retain_acked_messages"] = retain_acked_messages
+        __props__["retry_policy"] = retry_policy
         __props__["topic"] = topic
         return Subscription(resource_name, opts=opts, __props__=__props__)
 
@@ -386,6 +398,17 @@ class Subscription(pulumi.CustomResource):
         messageRetentionDuration window.
         """
         return pulumi.get(self, "retain_acked_messages")
+
+    @property
+    @pulumi.getter(name="retryPolicy")
+    def retry_policy(self) -> pulumi.Output[Optional['outputs.SubscriptionRetryPolicy']]:
+        """
+        A policy that specifies how Pub/Sub retries message delivery for this subscription.
+        If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers.
+        RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
+        Structure is documented below.
+        """
+        return pulumi.get(self, "retry_policy")
 
     @property
     @pulumi.getter

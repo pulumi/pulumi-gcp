@@ -51,6 +51,7 @@ __all__ = [
     'StandardAppVersionHandlerStaticFilesArgs',
     'StandardAppVersionLibraryArgs',
     'StandardAppVersionManualScalingArgs',
+    'StandardAppVersionVpcAccessConnectorArgs',
 ]
 
 @pulumi.input_type
@@ -2347,7 +2348,7 @@ class StandardAppVersionDeploymentFileArgs:
                  source_url: pulumi.Input[str],
                  sha1_sum: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: Name of the library. Example "django".
+        :param pulumi.Input[str] name: Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         :param pulumi.Input[str] source_url: Source URL
         :param pulumi.Input[str] sha1_sum: SHA1 checksum of the file
         """
@@ -2360,7 +2361,7 @@ class StandardAppVersionDeploymentFileArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Name of the library. Example "django".
+        Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         """
         return pulumi.get(self, "name")
 
@@ -2745,7 +2746,7 @@ class StandardAppVersionLibraryArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: Name of the library. Example "django".
+        :param pulumi.Input[str] name: Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         :param pulumi.Input[str] version: Version of the library to select, or "latest".
         """
         if name is not None:
@@ -2757,7 +2758,7 @@ class StandardAppVersionLibraryArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the library. Example "django".
+        Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         """
         return pulumi.get(self, "name")
 
@@ -2802,5 +2803,27 @@ class StandardAppVersionManualScalingArgs:
     @instances.setter
     def instances(self, value: pulumi.Input[float]):
         pulumi.set(self, "instances", value)
+
+
+@pulumi.input_type
+class StandardAppVersionVpcAccessConnectorArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] name: Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
 
 

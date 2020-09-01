@@ -80,6 +80,11 @@ export class DataTransferConfig extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
+     * Pub/Sub topic where notifications will be sent after transfer runs
+     * associated with this transfer config finish.
+     */
+    public readonly notificationPubsubTopic!: pulumi.Output<string | undefined>;
+    /**
      * These parameters are specific to each data source.
      */
     public readonly params!: pulumi.Output<{[key: string]: string}>;
@@ -125,6 +130,7 @@ export class DataTransferConfig extends pulumi.CustomResource {
             inputs["displayName"] = state ? state.displayName : undefined;
             inputs["location"] = state ? state.location : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["notificationPubsubTopic"] = state ? state.notificationPubsubTopic : undefined;
             inputs["params"] = state ? state.params : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["schedule"] = state ? state.schedule : undefined;
@@ -149,6 +155,7 @@ export class DataTransferConfig extends pulumi.CustomResource {
             inputs["disabled"] = args ? args.disabled : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["location"] = args ? args.location : undefined;
+            inputs["notificationPubsubTopic"] = args ? args.notificationPubsubTopic : undefined;
             inputs["params"] = args ? args.params : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["schedule"] = args ? args.schedule : undefined;
@@ -205,6 +212,11 @@ export interface DataTransferConfigState {
      * required. The name is ignored when creating a transfer config.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * Pub/Sub topic where notifications will be sent after transfer runs
+     * associated with this transfer config finish.
+     */
+    readonly notificationPubsubTopic?: pulumi.Input<string>;
     /**
      * These parameters are specific to each data source.
      */
@@ -266,6 +278,11 @@ export interface DataTransferConfigArgs {
      * Examples: US, EU, asia-northeast1. The default value is US.
      */
     readonly location?: pulumi.Input<string>;
+    /**
+     * Pub/Sub topic where notifications will be sent after transfer runs
+     * associated with this transfer config finish.
+     */
+    readonly notificationPubsubTopic?: pulumi.Input<string>;
     /**
      * These parameters are specific to each data source.
      */

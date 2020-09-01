@@ -21,6 +21,7 @@ class DataTransferConfig(pulumi.CustomResource):
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 notification_pubsub_topic: Optional[pulumi.Input[str]] = None,
                  params: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[str]] = None,
@@ -53,6 +54,8 @@ class DataTransferConfig(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The user specified display name for the transfer config.
         :param pulumi.Input[str] location: The geographic location where the transfer config should reside.
                Examples: US, EU, asia-northeast1. The default value is US.
+        :param pulumi.Input[str] notification_pubsub_topic: Pub/Sub topic where notifications will be sent after transfer runs
+               associated with this transfer config finish.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] params: These parameters are specific to each data source.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -97,6 +100,7 @@ class DataTransferConfig(pulumi.CustomResource):
                 raise TypeError("Missing required property 'display_name'")
             __props__['display_name'] = display_name
             __props__['location'] = location
+            __props__['notification_pubsub_topic'] = notification_pubsub_topic
             if params is None:
                 raise TypeError("Missing required property 'params'")
             __props__['params'] = params
@@ -121,6 +125,7 @@ class DataTransferConfig(pulumi.CustomResource):
             display_name: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            notification_pubsub_topic: Optional[pulumi.Input[str]] = None,
             params: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
             schedule: Optional[pulumi.Input[str]] = None,
@@ -146,6 +151,8 @@ class DataTransferConfig(pulumi.CustomResource):
         :param pulumi.Input[str] name: The resource name of the transfer config. Transfer config names have the form
                projects/{projectId}/locations/{location}/transferConfigs/{configId}. Where configId is usually a uuid, but this is not
                required. The name is ignored when creating a transfer config.
+        :param pulumi.Input[str] notification_pubsub_topic: Pub/Sub topic where notifications will be sent after transfer runs
+               associated with this transfer config finish.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] params: These parameters are specific to each data source.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -172,6 +179,7 @@ class DataTransferConfig(pulumi.CustomResource):
         __props__["display_name"] = display_name
         __props__["location"] = location
         __props__["name"] = name
+        __props__["notification_pubsub_topic"] = notification_pubsub_topic
         __props__["params"] = params
         __props__["project"] = project
         __props__["schedule"] = schedule
@@ -240,6 +248,15 @@ class DataTransferConfig(pulumi.CustomResource):
         required. The name is ignored when creating a transfer config.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="notificationPubsubTopic")
+    def notification_pubsub_topic(self) -> pulumi.Output[Optional[str]]:
+        """
+        Pub/Sub topic where notifications will be sent after transfer runs
+        associated with this transfer config finish.
+        """
+        return pulumi.get(self, "notification_pubsub_topic")
 
     @property
     @pulumi.getter

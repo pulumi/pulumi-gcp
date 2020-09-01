@@ -18,6 +18,8 @@ type Instance struct {
 	AuthorizedNetwork pulumi.StringPtrOutput `pulumi:"authorizedNetwork"`
 	// Creation timestamp in RFC3339 text format.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Endpoint for Discovery API
+	DiscoveryEndpoint pulumi.StringOutput `pulumi:"discoveryEndpoint"`
 	// A user-visible name for the instance.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Resource labels to represent user-provided metadata.
@@ -94,6 +96,8 @@ type instanceState struct {
 	AuthorizedNetwork *string `pulumi:"authorizedNetwork"`
 	// Creation timestamp in RFC3339 text format.
 	CreateTime *string `pulumi:"createTime"`
+	// Endpoint for Discovery API
+	DiscoveryEndpoint *string `pulumi:"discoveryEndpoint"`
 	// A user-visible name for the instance.
 	DisplayName *string `pulumi:"displayName"`
 	// Resource labels to represent user-provided metadata.
@@ -134,6 +138,8 @@ type InstanceState struct {
 	AuthorizedNetwork pulumi.StringPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreateTime pulumi.StringPtrInput
+	// Endpoint for Discovery API
+	DiscoveryEndpoint pulumi.StringPtrInput
 	// A user-visible name for the instance.
 	DisplayName pulumi.StringPtrInput
 	// Resource labels to represent user-provided metadata.

@@ -140,6 +140,15 @@ namespace Pulumi.Gcp.PubSub
         public Output<bool?> RetainAckedMessages { get; private set; } = null!;
 
         /// <summary>
+        /// A policy that specifies how Pub/Sub retries message delivery for this subscription.
+        /// If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers.
+        /// RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
+        /// Structure is documented below.
+        /// </summary>
+        [Output("retryPolicy")]
+        public Output<Outputs.SubscriptionRetryPolicy?> RetryPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// A reference to a Topic resource.
         /// </summary>
         [Output("topic")]
@@ -311,6 +320,15 @@ namespace Pulumi.Gcp.PubSub
         public Input<bool>? RetainAckedMessages { get; set; }
 
         /// <summary>
+        /// A policy that specifies how Pub/Sub retries message delivery for this subscription.
+        /// If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers.
+        /// RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
+        /// Structure is documented below.
+        /// </summary>
+        [Input("retryPolicy")]
+        public Input<Inputs.SubscriptionRetryPolicyArgs>? RetryPolicy { get; set; }
+
+        /// <summary>
         /// A reference to a Topic resource.
         /// </summary>
         [Input("topic", required: true)]
@@ -444,6 +462,15 @@ namespace Pulumi.Gcp.PubSub
         /// </summary>
         [Input("retainAckedMessages")]
         public Input<bool>? RetainAckedMessages { get; set; }
+
+        /// <summary>
+        /// A policy that specifies how Pub/Sub retries message delivery for this subscription.
+        /// If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers.
+        /// RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
+        /// Structure is documented below.
+        /// </summary>
+        [Input("retryPolicy")]
+        public Input<Inputs.SubscriptionRetryPolicyGetArgs>? RetryPolicy { get; set; }
 
         /// <summary>
         /// A reference to a Topic resource.

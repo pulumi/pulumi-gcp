@@ -1251,7 +1251,7 @@ export namespace appengine {
 
     export interface StandardAppVersionDeploymentFile {
         /**
-         * Name of the library. Example "django".
+         * Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
          */
         name: string;
         /**
@@ -1366,7 +1366,7 @@ export namespace appengine {
 
     export interface StandardAppVersionLibrary {
         /**
-         * Name of the library. Example "django".
+         * Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
          */
         name?: string;
         /**
@@ -1382,6 +1382,13 @@ export namespace appengine {
          * Modules API set_num_instances() you must use `lifecycle.ignore_changes = ["manualScaling"[0].instances]` to prevent drift detection.
          */
         instances: number;
+    }
+
+    export interface StandardAppVersionVpcAccessConnector {
+        /**
+         * Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+         */
+        name: string;
     }
 }
 
@@ -3968,6 +3975,7 @@ export namespace composer {
     export interface EnvironmentConfig {
         airflowUri: string;
         dagGcsPrefix: string;
+        databaseConfig: outputs.composer.EnvironmentConfigDatabaseConfig;
         gkeCluster: string;
         /**
          * The configuration used for the Kubernetes Engine cluster.  Structure is documented below.
@@ -3986,10 +3994,21 @@ export namespace composer {
          * The configuration settings for software inside the environment.  Structure is documented below.
          */
         softwareConfig: outputs.composer.EnvironmentConfigSoftwareConfig;
+        webServerConfig: outputs.composer.EnvironmentConfigWebServerConfig;
         /**
          * The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
          */
         webServerNetworkAccessControl: outputs.composer.EnvironmentConfigWebServerNetworkAccessControl;
+    }
+
+    export interface EnvironmentConfigDatabaseConfig {
+        /**
+         * Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2,
+         * composer-n1-webserver-4 or composer-n1-webserver-8.
+         * Value custom is returned only in response, if Airflow web server parameters were
+         * manually changed to a non-standard values.
+         */
+        machineType: string;
     }
 
     export interface EnvironmentConfigNodeConfig {
@@ -4005,10 +4024,10 @@ export namespace composer {
          */
         ipAllocationPolicy: outputs.composer.EnvironmentConfigNodeConfigIpAllocationPolicy;
         /**
-         * The Compute Engine machine type used for cluster instances,
-         * specified as a name or relative resource name. For example:
-         * "projects/{project}/zones/{zone}/machineTypes/{machineType}". Must belong to the enclosing environment's project and
-         * region/zone.
+         * Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2,
+         * composer-n1-webserver-4 or composer-n1-webserver-8.
+         * Value custom is returned only in response, if Airflow web server parameters were
+         * manually changed to a non-standard values.
          */
         machineType: string;
         /**
@@ -4157,6 +4176,16 @@ export namespace composer {
          * Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated.
          */
         pythonVersion: string;
+    }
+
+    export interface EnvironmentConfigWebServerConfig {
+        /**
+         * Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2,
+         * composer-n1-webserver-4 or composer-n1-webserver-8.
+         * Value custom is returned only in response, if Airflow web server parameters were
+         * manually changed to a non-standard values.
+         */
+        machineType: string;
     }
 
     export interface EnvironmentConfigWebServerNetworkAccessControl {
@@ -4946,6 +4975,18 @@ export namespace compute {
          * encryption key that protects this resource.
          */
         sha256: string;
+    }
+
+    export interface DiskIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface DiskIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
     }
 
     export interface DiskSourceImageEncryptionKey {
@@ -5758,6 +5799,36 @@ export namespace compute {
         type: string;
     }
 
+    export interface ImageIamBindingCondition {
+        /**
+         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         */
+        description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: string;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
+        title: string;
+    }
+
+    export interface ImageIamMemberCondition {
+        /**
+         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         */
+        description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: string;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
+        title: string;
+    }
+
     export interface ImageRawDisk {
         /**
          * The format used to encode and transmit the block device, which
@@ -6331,7 +6402,7 @@ export namespace compute {
         diskSizeGb?: number;
         /**
          * The GCE disk type. Can be either `"pd-ssd"`,
-         * `"local-ssd"`, or `"pd-standard"`.
+         * `"local-ssd"`, `"pd-balanced"` or `"pd-standard"`.
          */
         diskType: string;
         /**
@@ -7304,6 +7375,18 @@ export namespace compute {
          * encryption key that protects this resource.
          */
         sha256: string;
+    }
+
+    export interface RegionDiskIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface RegionDiskIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
     }
 
     export interface RegionDiskSourceSnapshotEncryptionKey {
@@ -9562,6 +9645,11 @@ export namespace compute {
          */
         aggregationInterval?: string;
         /**
+         * Export filter used to define which VPC flow logs should be logged, as as CEL expression. See
+         * https://cloud.google.com/vpc/docs/flow-logs#filtering for details on how to format this field.
+         */
+        filterExpr?: string;
+        /**
          * Can only be specified if VPC flow logging for this subnetwork is enabled.
          * The value of the field must be in [0, 1]. Set the sampling rate of VPC
          * flow logs within the subnetwork where 1.0 means all collected logs are
@@ -9574,9 +9662,14 @@ export namespace compute {
          * Configures whether metadata fields should be added to the reported VPC
          * flow logs.
          * Default value is `INCLUDE_ALL_METADATA`.
-         * Possible values are `EXCLUDE_ALL_METADATA` and `INCLUDE_ALL_METADATA`.
+         * Possible values are `EXCLUDE_ALL_METADATA`, `INCLUDE_ALL_METADATA`, and `CUSTOM_METADATA`.
          */
         metadata?: string;
+        /**
+         * List of metadata fields that should be added to reported logs.
+         * Can only be specified if VPC flow logs for this subnetwork is enabled and "metadata" is set to CUSTOM_METADATA.
+         */
+        metadataFields?: string[];
     }
 
     export interface SubnetworkSecondaryIpRange {
@@ -11907,7 +12000,7 @@ export namespace container {
         diskSizeGb: number;
         /**
          * Type of the disk attached to each node
-         * (e.g. 'pd-standard' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+         * (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
          */
         diskType: string;
         /**
@@ -11921,9 +12014,22 @@ export namespace container {
          */
         imageType: string;
         /**
+         * )
+         * Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+         * Structure is documented below.
+         */
+        kubeletConfig?: outputs.container.ClusterNodeConfigKubeletConfig;
+        /**
          * The Kubernetes labels (key/value pairs) to be applied to each node.
          */
         labels: {[key: string]: string};
+        /**
+         * )
+         * Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+         * Note that validations happen all server side. All attributes are optional.
+         * Structure is documented below.
+         */
+        linuxNodeConfig?: outputs.container.ClusterNodeConfigLinuxNodeConfig;
         /**
          * The amount of local SSD disks that will be
          * attached to each cluster node. Defaults to 0.
@@ -12013,6 +12119,36 @@ export namespace container {
          * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
          */
         type: string;
+    }
+
+    export interface ClusterNodeConfigKubeletConfig {
+        /**
+         * If true, enables CPU CFS quota enforcement for
+         * containers that specify CPU limits.
+         */
+        cpuCfsQuota?: boolean;
+        /**
+         * The CPU CFS quota period value. Specified
+         * as a sequence of decimal numbers, each with optional fraction and a unit suffix,
+         * such as `"300ms"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m",
+         * "h". The value must be a positive duration.
+         */
+        cpuCfsQuotaPeriod?: string;
+        /**
+         * The CPU management policy on the node. See
+         * [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
+         * One of `"none"` or `"static"`. Defaults to `none` when `kubeletConfig` is unset.
+         */
+        cpuManagerPolicy: string;
+    }
+
+    export interface ClusterNodeConfigLinuxNodeConfig {
+        /**
+         * The Linux kernel parameters to be applied to the nodes
+         * and all pods running on the nodes. Specified as a map from the key, such as
+         * `net.core.wmem_max`, to a string value.
+         */
+        sysctls: {[key: string]: string};
     }
 
     export interface ClusterNodeConfigSandboxConfig {
@@ -12127,7 +12263,7 @@ export namespace container {
         diskSizeGb: number;
         /**
          * Type of the disk attached to each node
-         * (e.g. 'pd-standard' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+         * (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
          */
         diskType: string;
         /**
@@ -12141,9 +12277,22 @@ export namespace container {
          */
         imageType: string;
         /**
+         * )
+         * Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+         * Structure is documented below.
+         */
+        kubeletConfig?: outputs.container.ClusterNodePoolNodeConfigKubeletConfig;
+        /**
          * The Kubernetes labels (key/value pairs) to be applied to each node.
          */
         labels: {[key: string]: string};
+        /**
+         * )
+         * Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+         * Note that validations happen all server side. All attributes are optional.
+         * Structure is documented below.
+         */
+        linuxNodeConfig?: outputs.container.ClusterNodePoolNodeConfigLinuxNodeConfig;
         /**
          * The amount of local SSD disks that will be
          * attached to each cluster node. Defaults to 0.
@@ -12233,6 +12382,36 @@ export namespace container {
          * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
          */
         type: string;
+    }
+
+    export interface ClusterNodePoolNodeConfigKubeletConfig {
+        /**
+         * If true, enables CPU CFS quota enforcement for
+         * containers that specify CPU limits.
+         */
+        cpuCfsQuota?: boolean;
+        /**
+         * The CPU CFS quota period value. Specified
+         * as a sequence of decimal numbers, each with optional fraction and a unit suffix,
+         * such as `"300ms"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m",
+         * "h". The value must be a positive duration.
+         */
+        cpuCfsQuotaPeriod?: string;
+        /**
+         * The CPU management policy on the node. See
+         * [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
+         * One of `"none"` or `"static"`. Defaults to `none` when `kubeletConfig` is unset.
+         */
+        cpuManagerPolicy: string;
+    }
+
+    export interface ClusterNodePoolNodeConfigLinuxNodeConfig {
+        /**
+         * The Linux kernel parameters to be applied to the nodes
+         * and all pods running on the nodes. Specified as a map from the key, such as
+         * `net.core.wmem_max`, to a string value.
+         */
+        sysctls: {[key: string]: string};
     }
 
     export interface ClusterNodePoolNodeConfigSandboxConfig {
@@ -12541,7 +12720,9 @@ export namespace container {
         diskType: string;
         guestAccelerators: outputs.container.GetClusterNodeConfigGuestAccelerator[];
         imageType: string;
+        kubeletConfigs: outputs.container.GetClusterNodeConfigKubeletConfig[];
         labels: {[key: string]: string};
+        linuxNodeConfigs: outputs.container.GetClusterNodeConfigLinuxNodeConfig[];
         localSsdCount: number;
         machineType: string;
         metadata: {[key: string]: string};
@@ -12559,6 +12740,16 @@ export namespace container {
     export interface GetClusterNodeConfigGuestAccelerator {
         count: number;
         type: string;
+    }
+
+    export interface GetClusterNodeConfigKubeletConfig {
+        cpuCfsQuota: boolean;
+        cpuCfsQuotaPeriod: string;
+        cpuManagerPolicy: string;
+    }
+
+    export interface GetClusterNodeConfigLinuxNodeConfig {
+        sysctls: {[key: string]: string};
     }
 
     export interface GetClusterNodeConfigSandboxConfig {
@@ -12614,7 +12805,9 @@ export namespace container {
         diskType: string;
         guestAccelerators: outputs.container.GetClusterNodePoolNodeConfigGuestAccelerator[];
         imageType: string;
+        kubeletConfigs: outputs.container.GetClusterNodePoolNodeConfigKubeletConfig[];
         labels: {[key: string]: string};
+        linuxNodeConfigs: outputs.container.GetClusterNodePoolNodeConfigLinuxNodeConfig[];
         localSsdCount: number;
         machineType: string;
         metadata: {[key: string]: string};
@@ -12632,6 +12825,16 @@ export namespace container {
     export interface GetClusterNodePoolNodeConfigGuestAccelerator {
         count: number;
         type: string;
+    }
+
+    export interface GetClusterNodePoolNodeConfigKubeletConfig {
+        cpuCfsQuota: boolean;
+        cpuCfsQuotaPeriod: string;
+        cpuManagerPolicy: string;
+    }
+
+    export interface GetClusterNodePoolNodeConfigLinuxNodeConfig {
+        sysctls: {[key: string]: string};
     }
 
     export interface GetClusterNodePoolNodeConfigSandboxConfig {
@@ -12727,7 +12930,9 @@ export namespace container {
         diskType: string;
         guestAccelerators: outputs.container.NodePoolNodeConfigGuestAccelerator[];
         imageType: string;
+        kubeletConfig?: outputs.container.NodePoolNodeConfigKubeletConfig;
         labels: {[key: string]: string};
+        linuxNodeConfig?: outputs.container.NodePoolNodeConfigLinuxNodeConfig;
         localSsdCount: number;
         machineType: string;
         metadata: {[key: string]: string};
@@ -12745,6 +12950,16 @@ export namespace container {
     export interface NodePoolNodeConfigGuestAccelerator {
         count: number;
         type: string;
+    }
+
+    export interface NodePoolNodeConfigKubeletConfig {
+        cpuCfsQuota?: boolean;
+        cpuCfsQuotaPeriod?: string;
+        cpuManagerPolicy: string;
+    }
+
+    export interface NodePoolNodeConfigLinuxNodeConfig {
+        sysctls: {[key: string]: string};
     }
 
     export interface NodePoolNodeConfigSandboxConfig {
@@ -18278,6 +18493,19 @@ export namespace pubsub {
          * iam.serviceAccounts.actAs permission for the service account.
          */
         serviceAccountEmail: string;
+    }
+
+    export interface SubscriptionRetryPolicy {
+        /**
+         * The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds.
+         * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+         */
+        maximumBackoff: string;
+        /**
+         * The minimum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 10 seconds.
+         * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+         */
+        minimumBackoff: string;
     }
 
     export interface TopicIAMBindingCondition {

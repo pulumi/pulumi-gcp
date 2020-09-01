@@ -15,6 +15,7 @@ __all__ = [
     'SubscriptionIAMMemberConditionArgs',
     'SubscriptionPushConfigArgs',
     'SubscriptionPushConfigOidcTokenArgs',
+    'SubscriptionRetryPolicyArgs',
     'TopicIAMBindingConditionArgs',
     'TopicIAMMemberConditionArgs',
     'TopicMessageStoragePolicyArgs',
@@ -345,6 +346,49 @@ class SubscriptionPushConfigOidcTokenArgs:
     @audience.setter
     def audience(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "audience", value)
+
+
+@pulumi.input_type
+class SubscriptionRetryPolicyArgs:
+    def __init__(__self__, *,
+                 maximum_backoff: Optional[pulumi.Input[str]] = None,
+                 minimum_backoff: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] maximum_backoff: The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds.
+               A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        :param pulumi.Input[str] minimum_backoff: The minimum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 10 seconds.
+               A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        """
+        if maximum_backoff is not None:
+            pulumi.set(__self__, "maximum_backoff", maximum_backoff)
+        if minimum_backoff is not None:
+            pulumi.set(__self__, "minimum_backoff", minimum_backoff)
+
+    @property
+    @pulumi.getter(name="maximumBackoff")
+    def maximum_backoff(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds.
+        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "maximum_backoff")
+
+    @maximum_backoff.setter
+    def maximum_backoff(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "maximum_backoff", value)
+
+    @property
+    @pulumi.getter(name="minimumBackoff")
+    def minimum_backoff(self) -> Optional[pulumi.Input[str]]:
+        """
+        The minimum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 10 seconds.
+        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "minimum_backoff")
+
+    @minimum_backoff.setter
+    def minimum_backoff(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "minimum_backoff", value)
 
 
 @pulumi.input_type

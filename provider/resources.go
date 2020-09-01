@@ -737,6 +737,60 @@ func Provider() tfbridge.ProviderInfo {
 			"google_compute_per_instance_config":        {Tok: gcpResource(gcpCompute, "PerInstanceConfig")},
 			"google_compute_region_per_instance_config": {Tok: gcpResource(gcpCompute, "RegionPerInstanceConfig")},
 			"google_compute_machine_image":              {Tok: gcpResource(gcpCompute, "MachineImage")},
+			"google_compute_image_iam_binding": {
+				Tok: gcpResource(gcpCompute, "ImageIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "compute_image_iam.html.markdown",
+				},
+			},
+			"google_compute_image_iam_member": {
+				Tok: gcpResource(gcpCompute, "ImageIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "compute_image_iam.html.markdown",
+				},
+			},
+			"google_compute_image_iam_policy": {
+				Tok: gcpResource(gcpCompute, "ImageIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "compute_image_iam.html.markdown",
+				},
+			},
+			"google_compute_disk_iam_binding": {
+				Tok: gcpResource(gcpCompute, "DiskIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "compute_disk_iam.html.markdown",
+				},
+			},
+			"google_compute_disk_iam_member": {
+				Tok: gcpResource(gcpCompute, "DiskIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "compute_disk_iam.html.markdown",
+				},
+			},
+			"google_compute_disk_iam_policy": {
+				Tok: gcpResource(gcpCompute, "DiskIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "compute_disk_iam.html.markdown",
+				},
+			},
+			"google_compute_region_disk_iam_binding": {
+				Tok: gcpResource(gcpCompute, "RegionDiskIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "compute_disk_iam.html.markdown",
+				},
+			},
+			"google_compute_region_disk_iam_member": {
+				Tok: gcpResource(gcpCompute, "RegionDiskIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "compute_disk_iam.html.markdown",
+				},
+			},
+			"google_compute_region_disk_iam_policy": {
+				Tok: gcpResource(gcpCompute, "RegionDiskIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "compute_disk_iam.html.markdown",
+				},
+			},
 			"google_compute_organization_security_policy_rule": {
 				Tok: gcpResource(gcpCompute, "OrganizationSecurityPolicyRule"),
 			},

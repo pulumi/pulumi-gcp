@@ -25,6 +25,12 @@ namespace Pulumi.Gcp.Memcache
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// Endpoint for Discovery API
+        /// </summary>
+        [Output("discoveryEndpoint")]
+        public Output<string> DiscoveryEndpoint { get; private set; } = null!;
+
+        /// <summary>
         /// A user-visible name for the instance.
         /// </summary>
         [Output("displayName")]
@@ -256,6 +262,12 @@ namespace Pulumi.Gcp.Memcache
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Endpoint for Discovery API
+        /// </summary>
+        [Input("discoveryEndpoint")]
+        public Input<string>? DiscoveryEndpoint { get; set; }
 
         /// <summary>
         /// A user-visible name for the instance.

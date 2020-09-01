@@ -91,6 +91,7 @@ class Instance(pulumi.CustomResource):
             __props__['region'] = region
             __props__['zones'] = zones
             __props__['create_time'] = None
+            __props__['discovery_endpoint'] = None
             __props__['memcache_full_version'] = None
             __props__['memcache_nodes'] = None
         super(Instance, __self__).__init__(
@@ -105,6 +106,7 @@ class Instance(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             authorized_network: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
+            discovery_endpoint: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             memcache_full_version: Optional[pulumi.Input[str]] = None,
@@ -127,6 +129,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] authorized_network: The full name of the GCE network to connect the instance to.  If not provided,
                'default' will be used.
         :param pulumi.Input[str] create_time: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[str] discovery_endpoint: Endpoint for Discovery API
         :param pulumi.Input[str] display_name: A user-visible name for the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
         :param pulumi.Input[str] memcache_full_version: The full version of memcached server running on this instance.
@@ -154,6 +157,7 @@ class Instance(pulumi.CustomResource):
 
         __props__["authorized_network"] = authorized_network
         __props__["create_time"] = create_time
+        __props__["discovery_endpoint"] = discovery_endpoint
         __props__["display_name"] = display_name
         __props__["labels"] = labels
         __props__["memcache_full_version"] = memcache_full_version
@@ -184,6 +188,14 @@ class Instance(pulumi.CustomResource):
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="discoveryEndpoint")
+    def discovery_endpoint(self) -> pulumi.Output[str]:
+        """
+        Endpoint for Discovery API
+        """
+        return pulumi.get(self, "discovery_endpoint")
 
     @property
     @pulumi.getter(name="displayName")

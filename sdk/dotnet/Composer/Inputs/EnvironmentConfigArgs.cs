@@ -18,6 +18,9 @@ namespace Pulumi.Gcp.Composer.Inputs
         [Input("dagGcsPrefix")]
         public Input<string>? DagGcsPrefix { get; set; }
 
+        [Input("databaseConfig")]
+        public Input<Inputs.EnvironmentConfigDatabaseConfigArgs>? DatabaseConfig { get; set; }
+
         [Input("gkeCluster")]
         public Input<string>? GkeCluster { get; set; }
 
@@ -45,6 +48,9 @@ namespace Pulumi.Gcp.Composer.Inputs
         /// </summary>
         [Input("softwareConfig")]
         public Input<Inputs.EnvironmentConfigSoftwareConfigArgs>? SoftwareConfig { get; set; }
+
+        [Input("webServerConfig")]
+        public Input<Inputs.EnvironmentConfigWebServerConfigArgs>? WebServerConfig { get; set; }
 
         /// <summary>
         /// The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.

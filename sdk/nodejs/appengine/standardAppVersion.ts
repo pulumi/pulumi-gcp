@@ -105,7 +105,7 @@ export class StandardAppVersion extends pulumi.CustomResource {
      */
     public readonly manualScaling!: pulumi.Output<outputs.appengine.StandardAppVersionManualScaling | undefined>;
     /**
-     * Name of the library. Example "django".
+     * Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -138,6 +138,11 @@ export class StandardAppVersion extends pulumi.CustomResource {
      * Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
      */
     public readonly versionId!: pulumi.Output<string | undefined>;
+    /**
+     * Enables VPC connectivity for standard apps.
+     * Structure is documented below.
+     */
+    public readonly vpcAccessConnector!: pulumi.Output<outputs.appengine.StandardAppVersionVpcAccessConnector | undefined>;
 
     /**
      * Create a StandardAppVersion resource with the given unique name, arguments, and options.
@@ -170,6 +175,7 @@ export class StandardAppVersion extends pulumi.CustomResource {
             inputs["service"] = state ? state.service : undefined;
             inputs["threadsafe"] = state ? state.threadsafe : undefined;
             inputs["versionId"] = state ? state.versionId : undefined;
+            inputs["vpcAccessConnector"] = state ? state.vpcAccessConnector : undefined;
         } else {
             const args = argsOrState as StandardAppVersionArgs | undefined;
             if (!args || args.deployment === undefined) {
@@ -199,6 +205,7 @@ export class StandardAppVersion extends pulumi.CustomResource {
             inputs["service"] = args ? args.service : undefined;
             inputs["threadsafe"] = args ? args.threadsafe : undefined;
             inputs["versionId"] = args ? args.versionId : undefined;
+            inputs["vpcAccessConnector"] = args ? args.vpcAccessConnector : undefined;
             inputs["name"] = undefined /*out*/;
         }
         if (!opts) {
@@ -273,7 +280,7 @@ export interface StandardAppVersionState {
      */
     readonly manualScaling?: pulumi.Input<inputs.appengine.StandardAppVersionManualScaling>;
     /**
-     * Name of the library. Example "django".
+     * Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -306,6 +313,11 @@ export interface StandardAppVersionState {
      * Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
      */
     readonly versionId?: pulumi.Input<string>;
+    /**
+     * Enables VPC connectivity for standard apps.
+     * Structure is documented below.
+     */
+    readonly vpcAccessConnector?: pulumi.Input<inputs.appengine.StandardAppVersionVpcAccessConnector>;
 }
 
 /**
@@ -398,4 +410,9 @@ export interface StandardAppVersionArgs {
      * Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
      */
     readonly versionId?: pulumi.Input<string>;
+    /**
+     * Enables VPC connectivity for standard apps.
+     * Structure is documented below.
+     */
+    readonly vpcAccessConnector?: pulumi.Input<inputs.appengine.StandardAppVersionVpcAccessConnector>;
 }

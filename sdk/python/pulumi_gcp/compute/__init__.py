@@ -12,6 +12,9 @@ from .backend_bucket_signed_url_key import *
 from .backend_service import *
 from .backend_service_signed_url_key import *
 from .disk import *
+from .disk_iam_binding import *
+from .disk_iam_member import *
+from .disk_iam_policy import *
 from .disk_resource_policy_attachment import *
 from .external_vpn_gateway import *
 from .firewall import *
@@ -49,6 +52,9 @@ from .health_check import *
 from .http_health_check import *
 from .https_health_check import *
 from .image import *
+from .image_iam_binding import *
+from .image_iam_member import *
+from .image_iam_policy import *
 from .instance import *
 from .instance_from_template import *
 from .instance_group import *
@@ -80,6 +86,9 @@ from .project_metadata_item import *
 from .region_autoscaler import *
 from .region_backend_service import *
 from .region_disk import *
+from .region_disk_iam_binding import *
+from .region_disk_iam_member import *
+from .region_disk_iam_policy import *
 from .region_disk_resource_policy_attachment import *
 from .region_health_check import *
 from .region_instance_group_manager import *

@@ -28,10 +28,10 @@ namespace Pulumi.Gcp.Composer.Inputs
         public Input<Inputs.EnvironmentConfigNodeConfigIpAllocationPolicyGetArgs>? IpAllocationPolicy { get; set; }
 
         /// <summary>
-        /// The Compute Engine machine type used for cluster instances,
-        /// specified as a name or relative resource name. For example:
-        /// "projects/{project}/zones/{zone}/machineTypes/{machineType}". Must belong to the enclosing environment's project and
-        /// region/zone.
+        /// Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2,
+        /// composer-n1-webserver-4 or composer-n1-webserver-8.
+        /// Value custom is returned only in response, if Airflow web server parameters were
+        /// manually changed to a non-standard values.
         /// </summary>
         [Input("machineType")]
         public Input<string>? MachineType { get; set; }
