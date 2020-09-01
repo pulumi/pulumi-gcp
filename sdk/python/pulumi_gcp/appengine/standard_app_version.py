@@ -35,6 +35,7 @@ class StandardAppVersion(pulumi.CustomResource):
                  service: Optional[pulumi.Input[str]] = None,
                  threadsafe: Optional[pulumi.Input[bool]] = None,
                  version_id: Optional[pulumi.Input[str]] = None,
+                 vpc_access_connector: Optional[pulumi.Input[pulumi.InputType['StandardAppVersionVpcAccessConnectorArgs']]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -86,6 +87,8 @@ class StandardAppVersion(pulumi.CustomResource):
         :param pulumi.Input[str] service: AppEngine service resource
         :param pulumi.Input[bool] threadsafe: Whether multiple requests can be dispatched to this version at once.
         :param pulumi.Input[str] version_id: Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
+        :param pulumi.Input[pulumi.InputType['StandardAppVersionVpcAccessConnectorArgs']] vpc_access_connector: Enables VPC connectivity for standard apps.
+               Structure is documented below.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -128,6 +131,7 @@ class StandardAppVersion(pulumi.CustomResource):
             __props__['service'] = service
             __props__['threadsafe'] = threadsafe
             __props__['version_id'] = version_id
+            __props__['vpc_access_connector'] = vpc_access_connector
             __props__['name'] = None
         super(StandardAppVersion, __self__).__init__(
             'gcp:appengine/standardAppVersion:StandardAppVersion',
@@ -157,7 +161,8 @@ class StandardAppVersion(pulumi.CustomResource):
             runtime_api_version: Optional[pulumi.Input[str]] = None,
             service: Optional[pulumi.Input[str]] = None,
             threadsafe: Optional[pulumi.Input[bool]] = None,
-            version_id: Optional[pulumi.Input[str]] = None) -> 'StandardAppVersion':
+            version_id: Optional[pulumi.Input[str]] = None,
+            vpc_access_connector: Optional[pulumi.Input[pulumi.InputType['StandardAppVersionVpcAccessConnectorArgs']]] = None) -> 'StandardAppVersion':
         """
         Get an existing StandardAppVersion resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -188,7 +193,7 @@ class StandardAppVersion(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['StandardAppVersionManualScalingArgs']] manual_scaling: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
                Structure is documented below.
-        :param pulumi.Input[str] name: Name of the library. Example "django".
+        :param pulumi.Input[str] name: Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         :param pulumi.Input[bool] noop_on_destroy: If set to `true`, the application version will not be deleted.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -198,6 +203,8 @@ class StandardAppVersion(pulumi.CustomResource):
         :param pulumi.Input[str] service: AppEngine service resource
         :param pulumi.Input[bool] threadsafe: Whether multiple requests can be dispatched to this version at once.
         :param pulumi.Input[str] version_id: Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
+        :param pulumi.Input[pulumi.InputType['StandardAppVersionVpcAccessConnectorArgs']] vpc_access_connector: Enables VPC connectivity for standard apps.
+               Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -222,6 +229,7 @@ class StandardAppVersion(pulumi.CustomResource):
         __props__["service"] = service
         __props__["threadsafe"] = threadsafe
         __props__["version_id"] = version_id
+        __props__["vpc_access_connector"] = vpc_access_connector
         return StandardAppVersion(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -328,7 +336,7 @@ class StandardAppVersion(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the library. Example "django".
+        Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         """
         return pulumi.get(self, "name")
 
@@ -389,6 +397,15 @@ class StandardAppVersion(pulumi.CustomResource):
         Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
         """
         return pulumi.get(self, "version_id")
+
+    @property
+    @pulumi.getter(name="vpcAccessConnector")
+    def vpc_access_connector(self) -> pulumi.Output[Optional['outputs.StandardAppVersionVpcAccessConnector']]:
+        """
+        Enables VPC connectivity for standard apps.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "vpc_access_connector")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

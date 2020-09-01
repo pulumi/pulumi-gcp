@@ -5655,6 +5655,318 @@ func (o DiskDiskEncryptionKeyPtrOutput) Sha256() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type DiskIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// DiskIamBindingConditionInput is an input type that accepts DiskIamBindingConditionArgs and DiskIamBindingConditionOutput values.
+// You can construct a concrete instance of `DiskIamBindingConditionInput` via:
+//
+//          DiskIamBindingConditionArgs{...}
+type DiskIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToDiskIamBindingConditionOutput() DiskIamBindingConditionOutput
+	ToDiskIamBindingConditionOutputWithContext(context.Context) DiskIamBindingConditionOutput
+}
+
+type DiskIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (DiskIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskIamBindingCondition)(nil)).Elem()
+}
+
+func (i DiskIamBindingConditionArgs) ToDiskIamBindingConditionOutput() DiskIamBindingConditionOutput {
+	return i.ToDiskIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i DiskIamBindingConditionArgs) ToDiskIamBindingConditionOutputWithContext(ctx context.Context) DiskIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskIamBindingConditionOutput)
+}
+
+func (i DiskIamBindingConditionArgs) ToDiskIamBindingConditionPtrOutput() DiskIamBindingConditionPtrOutput {
+	return i.ToDiskIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i DiskIamBindingConditionArgs) ToDiskIamBindingConditionPtrOutputWithContext(ctx context.Context) DiskIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskIamBindingConditionOutput).ToDiskIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// DiskIamBindingConditionPtrInput is an input type that accepts DiskIamBindingConditionArgs, DiskIamBindingConditionPtr and DiskIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `DiskIamBindingConditionPtrInput` via:
+//
+//          DiskIamBindingConditionArgs{...}
+//
+//  or:
+//
+//          nil
+type DiskIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToDiskIamBindingConditionPtrOutput() DiskIamBindingConditionPtrOutput
+	ToDiskIamBindingConditionPtrOutputWithContext(context.Context) DiskIamBindingConditionPtrOutput
+}
+
+type diskIamBindingConditionPtrType DiskIamBindingConditionArgs
+
+func DiskIamBindingConditionPtr(v *DiskIamBindingConditionArgs) DiskIamBindingConditionPtrInput {
+	return (*diskIamBindingConditionPtrType)(v)
+}
+
+func (*diskIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiskIamBindingCondition)(nil)).Elem()
+}
+
+func (i *diskIamBindingConditionPtrType) ToDiskIamBindingConditionPtrOutput() DiskIamBindingConditionPtrOutput {
+	return i.ToDiskIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *diskIamBindingConditionPtrType) ToDiskIamBindingConditionPtrOutputWithContext(ctx context.Context) DiskIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskIamBindingConditionPtrOutput)
+}
+
+type DiskIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (DiskIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskIamBindingCondition)(nil)).Elem()
+}
+
+func (o DiskIamBindingConditionOutput) ToDiskIamBindingConditionOutput() DiskIamBindingConditionOutput {
+	return o
+}
+
+func (o DiskIamBindingConditionOutput) ToDiskIamBindingConditionOutputWithContext(ctx context.Context) DiskIamBindingConditionOutput {
+	return o
+}
+
+func (o DiskIamBindingConditionOutput) ToDiskIamBindingConditionPtrOutput() DiskIamBindingConditionPtrOutput {
+	return o.ToDiskIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o DiskIamBindingConditionOutput) ToDiskIamBindingConditionPtrOutputWithContext(ctx context.Context) DiskIamBindingConditionPtrOutput {
+	return o.ApplyT(func(v DiskIamBindingCondition) *DiskIamBindingCondition {
+		return &v
+	}).(DiskIamBindingConditionPtrOutput)
+}
+func (o DiskIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiskIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o DiskIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v DiskIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o DiskIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v DiskIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type DiskIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (DiskIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiskIamBindingCondition)(nil)).Elem()
+}
+
+func (o DiskIamBindingConditionPtrOutput) ToDiskIamBindingConditionPtrOutput() DiskIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o DiskIamBindingConditionPtrOutput) ToDiskIamBindingConditionPtrOutputWithContext(ctx context.Context) DiskIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o DiskIamBindingConditionPtrOutput) Elem() DiskIamBindingConditionOutput {
+	return o.ApplyT(func(v *DiskIamBindingCondition) DiskIamBindingCondition { return *v }).(DiskIamBindingConditionOutput)
+}
+
+func (o DiskIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiskIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DiskIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiskIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DiskIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiskIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type DiskIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// DiskIamMemberConditionInput is an input type that accepts DiskIamMemberConditionArgs and DiskIamMemberConditionOutput values.
+// You can construct a concrete instance of `DiskIamMemberConditionInput` via:
+//
+//          DiskIamMemberConditionArgs{...}
+type DiskIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToDiskIamMemberConditionOutput() DiskIamMemberConditionOutput
+	ToDiskIamMemberConditionOutputWithContext(context.Context) DiskIamMemberConditionOutput
+}
+
+type DiskIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (DiskIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskIamMemberCondition)(nil)).Elem()
+}
+
+func (i DiskIamMemberConditionArgs) ToDiskIamMemberConditionOutput() DiskIamMemberConditionOutput {
+	return i.ToDiskIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i DiskIamMemberConditionArgs) ToDiskIamMemberConditionOutputWithContext(ctx context.Context) DiskIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskIamMemberConditionOutput)
+}
+
+func (i DiskIamMemberConditionArgs) ToDiskIamMemberConditionPtrOutput() DiskIamMemberConditionPtrOutput {
+	return i.ToDiskIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i DiskIamMemberConditionArgs) ToDiskIamMemberConditionPtrOutputWithContext(ctx context.Context) DiskIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskIamMemberConditionOutput).ToDiskIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// DiskIamMemberConditionPtrInput is an input type that accepts DiskIamMemberConditionArgs, DiskIamMemberConditionPtr and DiskIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `DiskIamMemberConditionPtrInput` via:
+//
+//          DiskIamMemberConditionArgs{...}
+//
+//  or:
+//
+//          nil
+type DiskIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToDiskIamMemberConditionPtrOutput() DiskIamMemberConditionPtrOutput
+	ToDiskIamMemberConditionPtrOutputWithContext(context.Context) DiskIamMemberConditionPtrOutput
+}
+
+type diskIamMemberConditionPtrType DiskIamMemberConditionArgs
+
+func DiskIamMemberConditionPtr(v *DiskIamMemberConditionArgs) DiskIamMemberConditionPtrInput {
+	return (*diskIamMemberConditionPtrType)(v)
+}
+
+func (*diskIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiskIamMemberCondition)(nil)).Elem()
+}
+
+func (i *diskIamMemberConditionPtrType) ToDiskIamMemberConditionPtrOutput() DiskIamMemberConditionPtrOutput {
+	return i.ToDiskIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *diskIamMemberConditionPtrType) ToDiskIamMemberConditionPtrOutputWithContext(ctx context.Context) DiskIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskIamMemberConditionPtrOutput)
+}
+
+type DiskIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (DiskIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskIamMemberCondition)(nil)).Elem()
+}
+
+func (o DiskIamMemberConditionOutput) ToDiskIamMemberConditionOutput() DiskIamMemberConditionOutput {
+	return o
+}
+
+func (o DiskIamMemberConditionOutput) ToDiskIamMemberConditionOutputWithContext(ctx context.Context) DiskIamMemberConditionOutput {
+	return o
+}
+
+func (o DiskIamMemberConditionOutput) ToDiskIamMemberConditionPtrOutput() DiskIamMemberConditionPtrOutput {
+	return o.ToDiskIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o DiskIamMemberConditionOutput) ToDiskIamMemberConditionPtrOutputWithContext(ctx context.Context) DiskIamMemberConditionPtrOutput {
+	return o.ApplyT(func(v DiskIamMemberCondition) *DiskIamMemberCondition {
+		return &v
+	}).(DiskIamMemberConditionPtrOutput)
+}
+func (o DiskIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiskIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o DiskIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v DiskIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o DiskIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v DiskIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type DiskIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (DiskIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiskIamMemberCondition)(nil)).Elem()
+}
+
+func (o DiskIamMemberConditionPtrOutput) ToDiskIamMemberConditionPtrOutput() DiskIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o DiskIamMemberConditionPtrOutput) ToDiskIamMemberConditionPtrOutputWithContext(ctx context.Context) DiskIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o DiskIamMemberConditionPtrOutput) Elem() DiskIamMemberConditionOutput {
+	return o.ApplyT(func(v *DiskIamMemberCondition) DiskIamMemberCondition { return *v }).(DiskIamMemberConditionOutput)
+}
+
+func (o DiskIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiskIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DiskIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiskIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DiskIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiskIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type DiskSourceImageEncryptionKey struct {
 	// The self link of the encryption key used to encrypt the disk. Also called KmsKeyName
 	// in the cloud console. Your project's Compute Engine System service account
@@ -9017,6 +9329,344 @@ func (o ImageGuestOsFeatureArrayOutput) Index(i pulumi.IntInput) ImageGuestOsFea
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ImageGuestOsFeature {
 		return vs[0].([]ImageGuestOsFeature)[vs[1].(int)]
 	}).(ImageGuestOsFeatureOutput)
+}
+
+type ImageIamBindingCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
+}
+
+// ImageIamBindingConditionInput is an input type that accepts ImageIamBindingConditionArgs and ImageIamBindingConditionOutput values.
+// You can construct a concrete instance of `ImageIamBindingConditionInput` via:
+//
+//          ImageIamBindingConditionArgs{...}
+type ImageIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToImageIamBindingConditionOutput() ImageIamBindingConditionOutput
+	ToImageIamBindingConditionOutputWithContext(context.Context) ImageIamBindingConditionOutput
+}
+
+type ImageIamBindingConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (ImageIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageIamBindingCondition)(nil)).Elem()
+}
+
+func (i ImageIamBindingConditionArgs) ToImageIamBindingConditionOutput() ImageIamBindingConditionOutput {
+	return i.ToImageIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i ImageIamBindingConditionArgs) ToImageIamBindingConditionOutputWithContext(ctx context.Context) ImageIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageIamBindingConditionOutput)
+}
+
+func (i ImageIamBindingConditionArgs) ToImageIamBindingConditionPtrOutput() ImageIamBindingConditionPtrOutput {
+	return i.ToImageIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i ImageIamBindingConditionArgs) ToImageIamBindingConditionPtrOutputWithContext(ctx context.Context) ImageIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageIamBindingConditionOutput).ToImageIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// ImageIamBindingConditionPtrInput is an input type that accepts ImageIamBindingConditionArgs, ImageIamBindingConditionPtr and ImageIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `ImageIamBindingConditionPtrInput` via:
+//
+//          ImageIamBindingConditionArgs{...}
+//
+//  or:
+//
+//          nil
+type ImageIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToImageIamBindingConditionPtrOutput() ImageIamBindingConditionPtrOutput
+	ToImageIamBindingConditionPtrOutputWithContext(context.Context) ImageIamBindingConditionPtrOutput
+}
+
+type imageIamBindingConditionPtrType ImageIamBindingConditionArgs
+
+func ImageIamBindingConditionPtr(v *ImageIamBindingConditionArgs) ImageIamBindingConditionPtrInput {
+	return (*imageIamBindingConditionPtrType)(v)
+}
+
+func (*imageIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageIamBindingCondition)(nil)).Elem()
+}
+
+func (i *imageIamBindingConditionPtrType) ToImageIamBindingConditionPtrOutput() ImageIamBindingConditionPtrOutput {
+	return i.ToImageIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *imageIamBindingConditionPtrType) ToImageIamBindingConditionPtrOutputWithContext(ctx context.Context) ImageIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageIamBindingConditionPtrOutput)
+}
+
+type ImageIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (ImageIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageIamBindingCondition)(nil)).Elem()
+}
+
+func (o ImageIamBindingConditionOutput) ToImageIamBindingConditionOutput() ImageIamBindingConditionOutput {
+	return o
+}
+
+func (o ImageIamBindingConditionOutput) ToImageIamBindingConditionOutputWithContext(ctx context.Context) ImageIamBindingConditionOutput {
+	return o
+}
+
+func (o ImageIamBindingConditionOutput) ToImageIamBindingConditionPtrOutput() ImageIamBindingConditionPtrOutput {
+	return o.ToImageIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o ImageIamBindingConditionOutput) ToImageIamBindingConditionPtrOutputWithContext(ctx context.Context) ImageIamBindingConditionPtrOutput {
+	return o.ApplyT(func(v ImageIamBindingCondition) *ImageIamBindingCondition {
+		return &v
+	}).(ImageIamBindingConditionPtrOutput)
+}
+
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+func (o ImageIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o ImageIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v ImageIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o ImageIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ImageIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type ImageIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (ImageIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageIamBindingCondition)(nil)).Elem()
+}
+
+func (o ImageIamBindingConditionPtrOutput) ToImageIamBindingConditionPtrOutput() ImageIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o ImageIamBindingConditionPtrOutput) ToImageIamBindingConditionPtrOutputWithContext(ctx context.Context) ImageIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o ImageIamBindingConditionPtrOutput) Elem() ImageIamBindingConditionOutput {
+	return o.ApplyT(func(v *ImageIamBindingCondition) ImageIamBindingCondition { return *v }).(ImageIamBindingConditionOutput)
+}
+
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+func (o ImageIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o ImageIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o ImageIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type ImageIamMemberCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
+}
+
+// ImageIamMemberConditionInput is an input type that accepts ImageIamMemberConditionArgs and ImageIamMemberConditionOutput values.
+// You can construct a concrete instance of `ImageIamMemberConditionInput` via:
+//
+//          ImageIamMemberConditionArgs{...}
+type ImageIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToImageIamMemberConditionOutput() ImageIamMemberConditionOutput
+	ToImageIamMemberConditionOutputWithContext(context.Context) ImageIamMemberConditionOutput
+}
+
+type ImageIamMemberConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (ImageIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageIamMemberCondition)(nil)).Elem()
+}
+
+func (i ImageIamMemberConditionArgs) ToImageIamMemberConditionOutput() ImageIamMemberConditionOutput {
+	return i.ToImageIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i ImageIamMemberConditionArgs) ToImageIamMemberConditionOutputWithContext(ctx context.Context) ImageIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageIamMemberConditionOutput)
+}
+
+func (i ImageIamMemberConditionArgs) ToImageIamMemberConditionPtrOutput() ImageIamMemberConditionPtrOutput {
+	return i.ToImageIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i ImageIamMemberConditionArgs) ToImageIamMemberConditionPtrOutputWithContext(ctx context.Context) ImageIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageIamMemberConditionOutput).ToImageIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// ImageIamMemberConditionPtrInput is an input type that accepts ImageIamMemberConditionArgs, ImageIamMemberConditionPtr and ImageIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `ImageIamMemberConditionPtrInput` via:
+//
+//          ImageIamMemberConditionArgs{...}
+//
+//  or:
+//
+//          nil
+type ImageIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToImageIamMemberConditionPtrOutput() ImageIamMemberConditionPtrOutput
+	ToImageIamMemberConditionPtrOutputWithContext(context.Context) ImageIamMemberConditionPtrOutput
+}
+
+type imageIamMemberConditionPtrType ImageIamMemberConditionArgs
+
+func ImageIamMemberConditionPtr(v *ImageIamMemberConditionArgs) ImageIamMemberConditionPtrInput {
+	return (*imageIamMemberConditionPtrType)(v)
+}
+
+func (*imageIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageIamMemberCondition)(nil)).Elem()
+}
+
+func (i *imageIamMemberConditionPtrType) ToImageIamMemberConditionPtrOutput() ImageIamMemberConditionPtrOutput {
+	return i.ToImageIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *imageIamMemberConditionPtrType) ToImageIamMemberConditionPtrOutputWithContext(ctx context.Context) ImageIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageIamMemberConditionPtrOutput)
+}
+
+type ImageIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (ImageIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageIamMemberCondition)(nil)).Elem()
+}
+
+func (o ImageIamMemberConditionOutput) ToImageIamMemberConditionOutput() ImageIamMemberConditionOutput {
+	return o
+}
+
+func (o ImageIamMemberConditionOutput) ToImageIamMemberConditionOutputWithContext(ctx context.Context) ImageIamMemberConditionOutput {
+	return o
+}
+
+func (o ImageIamMemberConditionOutput) ToImageIamMemberConditionPtrOutput() ImageIamMemberConditionPtrOutput {
+	return o.ToImageIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o ImageIamMemberConditionOutput) ToImageIamMemberConditionPtrOutputWithContext(ctx context.Context) ImageIamMemberConditionPtrOutput {
+	return o.ApplyT(func(v ImageIamMemberCondition) *ImageIamMemberCondition {
+		return &v
+	}).(ImageIamMemberConditionPtrOutput)
+}
+
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+func (o ImageIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o ImageIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v ImageIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o ImageIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ImageIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type ImageIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (ImageIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageIamMemberCondition)(nil)).Elem()
+}
+
+func (o ImageIamMemberConditionPtrOutput) ToImageIamMemberConditionPtrOutput() ImageIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o ImageIamMemberConditionPtrOutput) ToImageIamMemberConditionPtrOutputWithContext(ctx context.Context) ImageIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o ImageIamMemberConditionPtrOutput) Elem() ImageIamMemberConditionOutput {
+	return o.ApplyT(func(v *ImageIamMemberCondition) ImageIamMemberCondition { return *v }).(ImageIamMemberConditionOutput)
+}
+
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+func (o ImageIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o ImageIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o ImageIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
 }
 
 type ImageRawDisk struct {
@@ -14671,7 +15321,7 @@ type InstanceTemplateDisk struct {
 	// the size must be exactly 375GB.
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
 	// The GCE disk type. Can be either `"pd-ssd"`,
-	// `"local-ssd"`, or `"pd-standard"`.
+	// `"local-ssd"`, `"pd-balanced"` or `"pd-standard"`.
 	DiskType *string `pulumi:"diskType"`
 	// Specifies the disk interface to use for attaching
 	// this disk.
@@ -14730,7 +15380,7 @@ type InstanceTemplateDiskArgs struct {
 	// the size must be exactly 375GB.
 	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
 	// The GCE disk type. Can be either `"pd-ssd"`,
-	// `"local-ssd"`, or `"pd-standard"`.
+	// `"local-ssd"`, `"pd-balanced"` or `"pd-standard"`.
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// Specifies the disk interface to use for attaching
 	// this disk.
@@ -14846,7 +15496,7 @@ func (o InstanceTemplateDiskOutput) DiskSizeGb() pulumi.IntPtrOutput {
 }
 
 // The GCE disk type. Can be either `"pd-ssd"`,
-// `"local-ssd"`, or `"pd-standard"`.
+// `"local-ssd"`, `"pd-balanced"` or `"pd-standard"`.
 func (o InstanceTemplateDiskOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceTemplateDisk) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
@@ -22712,6 +23362,318 @@ func (o RegionDiskDiskEncryptionKeyPtrOutput) Sha256() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Sha256
+	}).(pulumi.StringPtrOutput)
+}
+
+type RegionDiskIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// RegionDiskIamBindingConditionInput is an input type that accepts RegionDiskIamBindingConditionArgs and RegionDiskIamBindingConditionOutput values.
+// You can construct a concrete instance of `RegionDiskIamBindingConditionInput` via:
+//
+//          RegionDiskIamBindingConditionArgs{...}
+type RegionDiskIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToRegionDiskIamBindingConditionOutput() RegionDiskIamBindingConditionOutput
+	ToRegionDiskIamBindingConditionOutputWithContext(context.Context) RegionDiskIamBindingConditionOutput
+}
+
+type RegionDiskIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (RegionDiskIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionDiskIamBindingCondition)(nil)).Elem()
+}
+
+func (i RegionDiskIamBindingConditionArgs) ToRegionDiskIamBindingConditionOutput() RegionDiskIamBindingConditionOutput {
+	return i.ToRegionDiskIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i RegionDiskIamBindingConditionArgs) ToRegionDiskIamBindingConditionOutputWithContext(ctx context.Context) RegionDiskIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskIamBindingConditionOutput)
+}
+
+func (i RegionDiskIamBindingConditionArgs) ToRegionDiskIamBindingConditionPtrOutput() RegionDiskIamBindingConditionPtrOutput {
+	return i.ToRegionDiskIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i RegionDiskIamBindingConditionArgs) ToRegionDiskIamBindingConditionPtrOutputWithContext(ctx context.Context) RegionDiskIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskIamBindingConditionOutput).ToRegionDiskIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// RegionDiskIamBindingConditionPtrInput is an input type that accepts RegionDiskIamBindingConditionArgs, RegionDiskIamBindingConditionPtr and RegionDiskIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `RegionDiskIamBindingConditionPtrInput` via:
+//
+//          RegionDiskIamBindingConditionArgs{...}
+//
+//  or:
+//
+//          nil
+type RegionDiskIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToRegionDiskIamBindingConditionPtrOutput() RegionDiskIamBindingConditionPtrOutput
+	ToRegionDiskIamBindingConditionPtrOutputWithContext(context.Context) RegionDiskIamBindingConditionPtrOutput
+}
+
+type regionDiskIamBindingConditionPtrType RegionDiskIamBindingConditionArgs
+
+func RegionDiskIamBindingConditionPtr(v *RegionDiskIamBindingConditionArgs) RegionDiskIamBindingConditionPtrInput {
+	return (*regionDiskIamBindingConditionPtrType)(v)
+}
+
+func (*regionDiskIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionDiskIamBindingCondition)(nil)).Elem()
+}
+
+func (i *regionDiskIamBindingConditionPtrType) ToRegionDiskIamBindingConditionPtrOutput() RegionDiskIamBindingConditionPtrOutput {
+	return i.ToRegionDiskIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *regionDiskIamBindingConditionPtrType) ToRegionDiskIamBindingConditionPtrOutputWithContext(ctx context.Context) RegionDiskIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskIamBindingConditionPtrOutput)
+}
+
+type RegionDiskIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (RegionDiskIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionDiskIamBindingCondition)(nil)).Elem()
+}
+
+func (o RegionDiskIamBindingConditionOutput) ToRegionDiskIamBindingConditionOutput() RegionDiskIamBindingConditionOutput {
+	return o
+}
+
+func (o RegionDiskIamBindingConditionOutput) ToRegionDiskIamBindingConditionOutputWithContext(ctx context.Context) RegionDiskIamBindingConditionOutput {
+	return o
+}
+
+func (o RegionDiskIamBindingConditionOutput) ToRegionDiskIamBindingConditionPtrOutput() RegionDiskIamBindingConditionPtrOutput {
+	return o.ToRegionDiskIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o RegionDiskIamBindingConditionOutput) ToRegionDiskIamBindingConditionPtrOutputWithContext(ctx context.Context) RegionDiskIamBindingConditionPtrOutput {
+	return o.ApplyT(func(v RegionDiskIamBindingCondition) *RegionDiskIamBindingCondition {
+		return &v
+	}).(RegionDiskIamBindingConditionPtrOutput)
+}
+func (o RegionDiskIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionDiskIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o RegionDiskIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v RegionDiskIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o RegionDiskIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v RegionDiskIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type RegionDiskIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (RegionDiskIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionDiskIamBindingCondition)(nil)).Elem()
+}
+
+func (o RegionDiskIamBindingConditionPtrOutput) ToRegionDiskIamBindingConditionPtrOutput() RegionDiskIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o RegionDiskIamBindingConditionPtrOutput) ToRegionDiskIamBindingConditionPtrOutputWithContext(ctx context.Context) RegionDiskIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o RegionDiskIamBindingConditionPtrOutput) Elem() RegionDiskIamBindingConditionOutput {
+	return o.ApplyT(func(v *RegionDiskIamBindingCondition) RegionDiskIamBindingCondition { return *v }).(RegionDiskIamBindingConditionOutput)
+}
+
+func (o RegionDiskIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionDiskIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RegionDiskIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionDiskIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RegionDiskIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionDiskIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type RegionDiskIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// RegionDiskIamMemberConditionInput is an input type that accepts RegionDiskIamMemberConditionArgs and RegionDiskIamMemberConditionOutput values.
+// You can construct a concrete instance of `RegionDiskIamMemberConditionInput` via:
+//
+//          RegionDiskIamMemberConditionArgs{...}
+type RegionDiskIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToRegionDiskIamMemberConditionOutput() RegionDiskIamMemberConditionOutput
+	ToRegionDiskIamMemberConditionOutputWithContext(context.Context) RegionDiskIamMemberConditionOutput
+}
+
+type RegionDiskIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (RegionDiskIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionDiskIamMemberCondition)(nil)).Elem()
+}
+
+func (i RegionDiskIamMemberConditionArgs) ToRegionDiskIamMemberConditionOutput() RegionDiskIamMemberConditionOutput {
+	return i.ToRegionDiskIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i RegionDiskIamMemberConditionArgs) ToRegionDiskIamMemberConditionOutputWithContext(ctx context.Context) RegionDiskIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskIamMemberConditionOutput)
+}
+
+func (i RegionDiskIamMemberConditionArgs) ToRegionDiskIamMemberConditionPtrOutput() RegionDiskIamMemberConditionPtrOutput {
+	return i.ToRegionDiskIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i RegionDiskIamMemberConditionArgs) ToRegionDiskIamMemberConditionPtrOutputWithContext(ctx context.Context) RegionDiskIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskIamMemberConditionOutput).ToRegionDiskIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// RegionDiskIamMemberConditionPtrInput is an input type that accepts RegionDiskIamMemberConditionArgs, RegionDiskIamMemberConditionPtr and RegionDiskIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `RegionDiskIamMemberConditionPtrInput` via:
+//
+//          RegionDiskIamMemberConditionArgs{...}
+//
+//  or:
+//
+//          nil
+type RegionDiskIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToRegionDiskIamMemberConditionPtrOutput() RegionDiskIamMemberConditionPtrOutput
+	ToRegionDiskIamMemberConditionPtrOutputWithContext(context.Context) RegionDiskIamMemberConditionPtrOutput
+}
+
+type regionDiskIamMemberConditionPtrType RegionDiskIamMemberConditionArgs
+
+func RegionDiskIamMemberConditionPtr(v *RegionDiskIamMemberConditionArgs) RegionDiskIamMemberConditionPtrInput {
+	return (*regionDiskIamMemberConditionPtrType)(v)
+}
+
+func (*regionDiskIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionDiskIamMemberCondition)(nil)).Elem()
+}
+
+func (i *regionDiskIamMemberConditionPtrType) ToRegionDiskIamMemberConditionPtrOutput() RegionDiskIamMemberConditionPtrOutput {
+	return i.ToRegionDiskIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *regionDiskIamMemberConditionPtrType) ToRegionDiskIamMemberConditionPtrOutputWithContext(ctx context.Context) RegionDiskIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskIamMemberConditionPtrOutput)
+}
+
+type RegionDiskIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (RegionDiskIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionDiskIamMemberCondition)(nil)).Elem()
+}
+
+func (o RegionDiskIamMemberConditionOutput) ToRegionDiskIamMemberConditionOutput() RegionDiskIamMemberConditionOutput {
+	return o
+}
+
+func (o RegionDiskIamMemberConditionOutput) ToRegionDiskIamMemberConditionOutputWithContext(ctx context.Context) RegionDiskIamMemberConditionOutput {
+	return o
+}
+
+func (o RegionDiskIamMemberConditionOutput) ToRegionDiskIamMemberConditionPtrOutput() RegionDiskIamMemberConditionPtrOutput {
+	return o.ToRegionDiskIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o RegionDiskIamMemberConditionOutput) ToRegionDiskIamMemberConditionPtrOutputWithContext(ctx context.Context) RegionDiskIamMemberConditionPtrOutput {
+	return o.ApplyT(func(v RegionDiskIamMemberCondition) *RegionDiskIamMemberCondition {
+		return &v
+	}).(RegionDiskIamMemberConditionPtrOutput)
+}
+func (o RegionDiskIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionDiskIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o RegionDiskIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v RegionDiskIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o RegionDiskIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v RegionDiskIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type RegionDiskIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (RegionDiskIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionDiskIamMemberCondition)(nil)).Elem()
+}
+
+func (o RegionDiskIamMemberConditionPtrOutput) ToRegionDiskIamMemberConditionPtrOutput() RegionDiskIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o RegionDiskIamMemberConditionPtrOutput) ToRegionDiskIamMemberConditionPtrOutputWithContext(ctx context.Context) RegionDiskIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o RegionDiskIamMemberConditionPtrOutput) Elem() RegionDiskIamMemberConditionOutput {
+	return o.ApplyT(func(v *RegionDiskIamMemberCondition) RegionDiskIamMemberCondition { return *v }).(RegionDiskIamMemberConditionOutput)
+}
+
+func (o RegionDiskIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionDiskIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RegionDiskIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionDiskIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RegionDiskIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionDiskIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -40638,6 +41600,9 @@ type SubnetworkLogConfig struct {
 	// Default value is `INTERVAL_5_SEC`.
 	// Possible values are `INTERVAL_5_SEC`, `INTERVAL_30_SEC`, `INTERVAL_1_MIN`, `INTERVAL_5_MIN`, `INTERVAL_10_MIN`, and `INTERVAL_15_MIN`.
 	AggregationInterval *string `pulumi:"aggregationInterval"`
+	// Export filter used to define which VPC flow logs should be logged, as as CEL expression. See
+	// https://cloud.google.com/vpc/docs/flow-logs#filtering for details on how to format this field.
+	FilterExpr *string `pulumi:"filterExpr"`
 	// Can only be specified if VPC flow logging for this subnetwork is enabled.
 	// The value of the field must be in [0, 1]. Set the sampling rate of VPC
 	// flow logs within the subnetwork where 1.0 means all collected logs are
@@ -40648,8 +41613,11 @@ type SubnetworkLogConfig struct {
 	// Configures whether metadata fields should be added to the reported VPC
 	// flow logs.
 	// Default value is `INCLUDE_ALL_METADATA`.
-	// Possible values are `EXCLUDE_ALL_METADATA` and `INCLUDE_ALL_METADATA`.
+	// Possible values are `EXCLUDE_ALL_METADATA`, `INCLUDE_ALL_METADATA`, and `CUSTOM_METADATA`.
 	Metadata *string `pulumi:"metadata"`
+	// List of metadata fields that should be added to reported logs.
+	// Can only be specified if VPC flow logs for this subnetwork is enabled and "metadata" is set to CUSTOM_METADATA.
+	MetadataFields []string `pulumi:"metadataFields"`
 }
 
 // SubnetworkLogConfigInput is an input type that accepts SubnetworkLogConfigArgs and SubnetworkLogConfigOutput values.
@@ -40671,6 +41639,9 @@ type SubnetworkLogConfigArgs struct {
 	// Default value is `INTERVAL_5_SEC`.
 	// Possible values are `INTERVAL_5_SEC`, `INTERVAL_30_SEC`, `INTERVAL_1_MIN`, `INTERVAL_5_MIN`, `INTERVAL_10_MIN`, and `INTERVAL_15_MIN`.
 	AggregationInterval pulumi.StringPtrInput `pulumi:"aggregationInterval"`
+	// Export filter used to define which VPC flow logs should be logged, as as CEL expression. See
+	// https://cloud.google.com/vpc/docs/flow-logs#filtering for details on how to format this field.
+	FilterExpr pulumi.StringPtrInput `pulumi:"filterExpr"`
 	// Can only be specified if VPC flow logging for this subnetwork is enabled.
 	// The value of the field must be in [0, 1]. Set the sampling rate of VPC
 	// flow logs within the subnetwork where 1.0 means all collected logs are
@@ -40681,8 +41652,11 @@ type SubnetworkLogConfigArgs struct {
 	// Configures whether metadata fields should be added to the reported VPC
 	// flow logs.
 	// Default value is `INCLUDE_ALL_METADATA`.
-	// Possible values are `EXCLUDE_ALL_METADATA` and `INCLUDE_ALL_METADATA`.
+	// Possible values are `EXCLUDE_ALL_METADATA`, `INCLUDE_ALL_METADATA`, and `CUSTOM_METADATA`.
 	Metadata pulumi.StringPtrInput `pulumi:"metadata"`
+	// List of metadata fields that should be added to reported logs.
+	// Can only be specified if VPC flow logs for this subnetwork is enabled and "metadata" is set to CUSTOM_METADATA.
+	MetadataFields pulumi.StringArrayInput `pulumi:"metadataFields"`
 }
 
 func (SubnetworkLogConfigArgs) ElementType() reflect.Type {
@@ -40772,6 +41746,12 @@ func (o SubnetworkLogConfigOutput) AggregationInterval() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v SubnetworkLogConfig) *string { return v.AggregationInterval }).(pulumi.StringPtrOutput)
 }
 
+// Export filter used to define which VPC flow logs should be logged, as as CEL expression. See
+// https://cloud.google.com/vpc/docs/flow-logs#filtering for details on how to format this field.
+func (o SubnetworkLogConfigOutput) FilterExpr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubnetworkLogConfig) *string { return v.FilterExpr }).(pulumi.StringPtrOutput)
+}
+
 // Can only be specified if VPC flow logging for this subnetwork is enabled.
 // The value of the field must be in [0, 1]. Set the sampling rate of VPC
 // flow logs within the subnetwork where 1.0 means all collected logs are
@@ -40785,9 +41765,15 @@ func (o SubnetworkLogConfigOutput) FlowSampling() pulumi.Float64PtrOutput {
 // Configures whether metadata fields should be added to the reported VPC
 // flow logs.
 // Default value is `INCLUDE_ALL_METADATA`.
-// Possible values are `EXCLUDE_ALL_METADATA` and `INCLUDE_ALL_METADATA`.
+// Possible values are `EXCLUDE_ALL_METADATA`, `INCLUDE_ALL_METADATA`, and `CUSTOM_METADATA`.
 func (o SubnetworkLogConfigOutput) Metadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubnetworkLogConfig) *string { return v.Metadata }).(pulumi.StringPtrOutput)
+}
+
+// List of metadata fields that should be added to reported logs.
+// Can only be specified if VPC flow logs for this subnetwork is enabled and "metadata" is set to CUSTOM_METADATA.
+func (o SubnetworkLogConfigOutput) MetadataFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SubnetworkLogConfig) []string { return v.MetadataFields }).(pulumi.StringArrayOutput)
 }
 
 type SubnetworkLogConfigPtrOutput struct{ *pulumi.OutputState }
@@ -40823,6 +41809,17 @@ func (o SubnetworkLogConfigPtrOutput) AggregationInterval() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// Export filter used to define which VPC flow logs should be logged, as as CEL expression. See
+// https://cloud.google.com/vpc/docs/flow-logs#filtering for details on how to format this field.
+func (o SubnetworkLogConfigPtrOutput) FilterExpr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetworkLogConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FilterExpr
+	}).(pulumi.StringPtrOutput)
+}
+
 // Can only be specified if VPC flow logging for this subnetwork is enabled.
 // The value of the field must be in [0, 1]. Set the sampling rate of VPC
 // flow logs within the subnetwork where 1.0 means all collected logs are
@@ -40841,7 +41838,7 @@ func (o SubnetworkLogConfigPtrOutput) FlowSampling() pulumi.Float64PtrOutput {
 // Configures whether metadata fields should be added to the reported VPC
 // flow logs.
 // Default value is `INCLUDE_ALL_METADATA`.
-// Possible values are `EXCLUDE_ALL_METADATA` and `INCLUDE_ALL_METADATA`.
+// Possible values are `EXCLUDE_ALL_METADATA`, `INCLUDE_ALL_METADATA`, and `CUSTOM_METADATA`.
 func (o SubnetworkLogConfigPtrOutput) Metadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SubnetworkLogConfig) *string {
 		if v == nil {
@@ -40849,6 +41846,17 @@ func (o SubnetworkLogConfigPtrOutput) Metadata() pulumi.StringPtrOutput {
 		}
 		return v.Metadata
 	}).(pulumi.StringPtrOutput)
+}
+
+// List of metadata fields that should be added to reported logs.
+// Can only be specified if VPC flow logs for this subnetwork is enabled and "metadata" is set to CUSTOM_METADATA.
+func (o SubnetworkLogConfigPtrOutput) MetadataFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SubnetworkLogConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.MetadataFields
+	}).(pulumi.StringArrayOutput)
 }
 
 type SubnetworkSecondaryIpRange struct {
@@ -60236,6 +61244,10 @@ func init() {
 	pulumi.RegisterOutputType(BackendServiceOutlierDetectionIntervalPtrOutput{})
 	pulumi.RegisterOutputType(DiskDiskEncryptionKeyOutput{})
 	pulumi.RegisterOutputType(DiskDiskEncryptionKeyPtrOutput{})
+	pulumi.RegisterOutputType(DiskIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(DiskIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(DiskIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(DiskIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(DiskSourceImageEncryptionKeyOutput{})
 	pulumi.RegisterOutputType(DiskSourceImageEncryptionKeyPtrOutput{})
 	pulumi.RegisterOutputType(DiskSourceSnapshotEncryptionKeyOutput{})
@@ -60270,6 +61282,10 @@ func init() {
 	pulumi.RegisterOutputType(HealthCheckTcpHealthCheckPtrOutput{})
 	pulumi.RegisterOutputType(ImageGuestOsFeatureOutput{})
 	pulumi.RegisterOutputType(ImageGuestOsFeatureArrayOutput{})
+	pulumi.RegisterOutputType(ImageIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(ImageIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(ImageIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(ImageIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(ImageRawDiskOutput{})
 	pulumi.RegisterOutputType(ImageRawDiskPtrOutput{})
 	pulumi.RegisterOutputType(InstanceAttachedDiskOutput{})
@@ -60434,6 +61450,10 @@ func init() {
 	pulumi.RegisterOutputType(RegionBackendServiceOutlierDetectionIntervalPtrOutput{})
 	pulumi.RegisterOutputType(RegionDiskDiskEncryptionKeyOutput{})
 	pulumi.RegisterOutputType(RegionDiskDiskEncryptionKeyPtrOutput{})
+	pulumi.RegisterOutputType(RegionDiskIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(RegionDiskIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(RegionDiskIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(RegionDiskIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(RegionDiskSourceSnapshotEncryptionKeyOutput{})
 	pulumi.RegisterOutputType(RegionDiskSourceSnapshotEncryptionKeyPtrOutput{})
 	pulumi.RegisterOutputType(RegionHealthCheckGrpcHealthCheckOutput{})

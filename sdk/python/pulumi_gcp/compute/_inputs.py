@@ -36,6 +36,8 @@ __all__ = [
     'BackendServiceOutlierDetectionBaseEjectionTimeArgs',
     'BackendServiceOutlierDetectionIntervalArgs',
     'DiskDiskEncryptionKeyArgs',
+    'DiskIamBindingConditionArgs',
+    'DiskIamMemberConditionArgs',
     'DiskSourceImageEncryptionKeyArgs',
     'DiskSourceSnapshotEncryptionKeyArgs',
     'ExternalVpnGatewayInterfaceArgs',
@@ -53,6 +55,8 @@ __all__ = [
     'HealthCheckSslHealthCheckArgs',
     'HealthCheckTcpHealthCheckArgs',
     'ImageGuestOsFeatureArgs',
+    'ImageIamBindingConditionArgs',
+    'ImageIamMemberConditionArgs',
     'ImageRawDiskArgs',
     'InstanceAttachedDiskArgs',
     'InstanceBootDiskArgs',
@@ -135,6 +139,8 @@ __all__ = [
     'RegionBackendServiceOutlierDetectionBaseEjectionTimeArgs',
     'RegionBackendServiceOutlierDetectionIntervalArgs',
     'RegionDiskDiskEncryptionKeyArgs',
+    'RegionDiskIamBindingConditionArgs',
+    'RegionDiskIamMemberConditionArgs',
     'RegionDiskSourceSnapshotEncryptionKeyArgs',
     'RegionHealthCheckGrpcHealthCheckArgs',
     'RegionHealthCheckHttp2HealthCheckArgs',
@@ -2610,6 +2616,84 @@ class DiskDiskEncryptionKeyArgs:
 
 
 @pulumi.input_type
+class DiskIamBindingConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class DiskIamMemberConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
 class DiskSourceImageEncryptionKeyArgs:
     def __init__(__self__, *,
                  kms_key_self_link: Optional[pulumi.Input[str]] = None,
@@ -3988,6 +4072,112 @@ class ImageGuestOsFeatureArgs:
     @type.setter
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class ImageIamBindingConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
+        :param pulumi.Input[str] title: A title for the expression, i.e. a short string describing its purpose.
+        :param pulumi.Input[str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class ImageIamMemberConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
+        :param pulumi.Input[str] title: A title for the expression, i.e. a short string describing its purpose.
+        :param pulumi.Input[str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
 
 @pulumi.input_type
@@ -6167,7 +6357,7 @@ class InstanceTemplateDiskArgs:
                specified, it will inherit the size of its base image. For SCRATCH disks,
                the size must be exactly 375GB.
         :param pulumi.Input[str] disk_type: The GCE disk type. Can be either `"pd-ssd"`,
-               `"local-ssd"`, or `"pd-standard"`.
+               `"local-ssd"`, `"pd-balanced"` or `"pd-standard"`.
         :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching
                this disk.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to instances
@@ -6297,7 +6487,7 @@ class InstanceTemplateDiskArgs:
     def disk_type(self) -> Optional[pulumi.Input[str]]:
         """
         The GCE disk type. Can be either `"pd-ssd"`,
-        `"local-ssd"`, or `"pd-standard"`.
+        `"local-ssd"`, `"pd-balanced"` or `"pd-standard"`.
         """
         return pulumi.get(self, "disk_type")
 
@@ -9326,6 +9516,84 @@ class RegionDiskDiskEncryptionKeyArgs:
     @sha256.setter
     def sha256(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "sha256", value)
+
+
+@pulumi.input_type
+class RegionDiskIamBindingConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class RegionDiskIamMemberConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
 
 @pulumi.input_type
@@ -16383,8 +16651,10 @@ class SubnetworkIAMMemberConditionArgs:
 class SubnetworkLogConfigArgs:
     def __init__(__self__, *,
                  aggregation_interval: Optional[pulumi.Input[str]] = None,
+                 filter_expr: Optional[pulumi.Input[str]] = None,
                  flow_sampling: Optional[pulumi.Input[float]] = None,
-                 metadata: Optional[pulumi.Input[str]] = None):
+                 metadata: Optional[pulumi.Input[str]] = None,
+                 metadata_fields: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] aggregation_interval: Can only be specified if VPC flow logging for this subnetwork is enabled.
                Toggles the aggregation interval for collecting flow logs. Increasing the
@@ -16392,6 +16662,8 @@ class SubnetworkLogConfigArgs:
                lasting connections. Default is an interval of 5 seconds per connection.
                Default value is `INTERVAL_5_SEC`.
                Possible values are `INTERVAL_5_SEC`, `INTERVAL_30_SEC`, `INTERVAL_1_MIN`, `INTERVAL_5_MIN`, `INTERVAL_10_MIN`, and `INTERVAL_15_MIN`.
+        :param pulumi.Input[str] filter_expr: Export filter used to define which VPC flow logs should be logged, as as CEL expression. See
+               https://cloud.google.com/vpc/docs/flow-logs#filtering for details on how to format this field.
         :param pulumi.Input[float] flow_sampling: Can only be specified if VPC flow logging for this subnetwork is enabled.
                The value of the field must be in [0, 1]. Set the sampling rate of VPC
                flow logs within the subnetwork where 1.0 means all collected logs are
@@ -16401,14 +16673,20 @@ class SubnetworkLogConfigArgs:
                Configures whether metadata fields should be added to the reported VPC
                flow logs.
                Default value is `INCLUDE_ALL_METADATA`.
-               Possible values are `EXCLUDE_ALL_METADATA` and `INCLUDE_ALL_METADATA`.
+               Possible values are `EXCLUDE_ALL_METADATA`, `INCLUDE_ALL_METADATA`, and `CUSTOM_METADATA`.
+        :param pulumi.Input[List[pulumi.Input[str]]] metadata_fields: List of metadata fields that should be added to reported logs.
+               Can only be specified if VPC flow logs for this subnetwork is enabled and "metadata" is set to CUSTOM_METADATA.
         """
         if aggregation_interval is not None:
             pulumi.set(__self__, "aggregation_interval", aggregation_interval)
+        if filter_expr is not None:
+            pulumi.set(__self__, "filter_expr", filter_expr)
         if flow_sampling is not None:
             pulumi.set(__self__, "flow_sampling", flow_sampling)
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
+        if metadata_fields is not None:
+            pulumi.set(__self__, "metadata_fields", metadata_fields)
 
     @property
     @pulumi.getter(name="aggregationInterval")
@@ -16426,6 +16704,19 @@ class SubnetworkLogConfigArgs:
     @aggregation_interval.setter
     def aggregation_interval(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "aggregation_interval", value)
+
+    @property
+    @pulumi.getter(name="filterExpr")
+    def filter_expr(self) -> Optional[pulumi.Input[str]]:
+        """
+        Export filter used to define which VPC flow logs should be logged, as as CEL expression. See
+        https://cloud.google.com/vpc/docs/flow-logs#filtering for details on how to format this field.
+        """
+        return pulumi.get(self, "filter_expr")
+
+    @filter_expr.setter
+    def filter_expr(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "filter_expr", value)
 
     @property
     @pulumi.getter(name="flowSampling")
@@ -16451,13 +16742,26 @@ class SubnetworkLogConfigArgs:
         Configures whether metadata fields should be added to the reported VPC
         flow logs.
         Default value is `INCLUDE_ALL_METADATA`.
-        Possible values are `EXCLUDE_ALL_METADATA` and `INCLUDE_ALL_METADATA`.
+        Possible values are `EXCLUDE_ALL_METADATA`, `INCLUDE_ALL_METADATA`, and `CUSTOM_METADATA`.
         """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
     def metadata(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "metadata", value)
+
+    @property
+    @pulumi.getter(name="metadataFields")
+    def metadata_fields(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+        """
+        List of metadata fields that should be added to reported logs.
+        Can only be specified if VPC flow logs for this subnetwork is enabled and "metadata" is set to CUSTOM_METADATA.
+        """
+        return pulumi.get(self, "metadata_fields")
+
+    @metadata_fields.setter
+    def metadata_fields(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "metadata_fields", value)
 
 
 @pulumi.input_type

@@ -37,6 +37,8 @@ __all__ = [
     'BackendServiceOutlierDetectionBaseEjectionTime',
     'BackendServiceOutlierDetectionInterval',
     'DiskDiskEncryptionKey',
+    'DiskIamBindingCondition',
+    'DiskIamMemberCondition',
     'DiskSourceImageEncryptionKey',
     'DiskSourceSnapshotEncryptionKey',
     'ExternalVpnGatewayInterface',
@@ -54,6 +56,8 @@ __all__ = [
     'HealthCheckSslHealthCheck',
     'HealthCheckTcpHealthCheck',
     'ImageGuestOsFeature',
+    'ImageIamBindingCondition',
+    'ImageIamMemberCondition',
     'ImageRawDisk',
     'InstanceAttachedDisk',
     'InstanceBootDisk',
@@ -136,6 +140,8 @@ __all__ = [
     'RegionBackendServiceOutlierDetectionBaseEjectionTime',
     'RegionBackendServiceOutlierDetectionInterval',
     'RegionDiskDiskEncryptionKey',
+    'RegionDiskIamBindingCondition',
+    'RegionDiskIamMemberCondition',
     'RegionDiskSourceSnapshotEncryptionKey',
     'RegionHealthCheckGrpcHealthCheck',
     'RegionHealthCheckHttp2HealthCheck',
@@ -2341,6 +2347,66 @@ class DiskDiskEncryptionKey(dict):
 
 
 @pulumi.output_type
+class DiskIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class DiskIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
 class DiskSourceImageEncryptionKey(dict):
     def __init__(__self__, *,
                  kms_key_self_link: Optional[str] = None,
@@ -3535,6 +3601,94 @@ class ImageGuestOsFeature(dict):
         Possible values are `MULTI_IP_SUBNET`, `SECURE_BOOT`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, and `WINDOWS`.
         """
         return pulumi.get(self, "type")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ImageIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        """
+        :param str expression: Textual representation of an expression in Common Expression Language syntax.
+        :param str title: A title for the expression, i.e. a short string describing its purpose.
+        :param str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        """
+        return pulumi.get(self, "description")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ImageIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        """
+        :param str expression: Textual representation of an expression in Common Expression Language syntax.
+        :param str title: A title for the expression, i.e. a short string describing its purpose.
+        :param str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        """
+        return pulumi.get(self, "description")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -5332,7 +5486,7 @@ class InstanceTemplateDisk(dict):
                specified, it will inherit the size of its base image. For SCRATCH disks,
                the size must be exactly 375GB.
         :param str disk_type: The GCE disk type. Can be either `"pd-ssd"`,
-               `"local-ssd"`, or `"pd-standard"`.
+               `"local-ssd"`, `"pd-balanced"` or `"pd-standard"`.
         :param str interface: Specifies the disk interface to use for attaching
                this disk.
         :param Mapping[str, str] labels: A set of key/value label pairs to assign to instances
@@ -5438,7 +5592,7 @@ class InstanceTemplateDisk(dict):
     def disk_type(self) -> Optional[str]:
         """
         The GCE disk type. Can be either `"pd-ssd"`,
-        `"local-ssd"`, or `"pd-standard"`.
+        `"local-ssd"`, `"pd-balanced"` or `"pd-standard"`.
         """
         return pulumi.get(self, "disk_type")
 
@@ -8047,6 +8201,66 @@ class RegionDiskDiskEncryptionKey(dict):
         encryption key that protects this resource.
         """
         return pulumi.get(self, "sha256")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class RegionDiskIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class RegionDiskIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -14114,8 +14328,10 @@ class SubnetworkIAMMemberCondition(dict):
 class SubnetworkLogConfig(dict):
     def __init__(__self__, *,
                  aggregation_interval: Optional[str] = None,
+                 filter_expr: Optional[str] = None,
                  flow_sampling: Optional[float] = None,
-                 metadata: Optional[str] = None):
+                 metadata: Optional[str] = None,
+                 metadata_fields: Optional[List[str]] = None):
         """
         :param str aggregation_interval: Can only be specified if VPC flow logging for this subnetwork is enabled.
                Toggles the aggregation interval for collecting flow logs. Increasing the
@@ -14123,6 +14339,8 @@ class SubnetworkLogConfig(dict):
                lasting connections. Default is an interval of 5 seconds per connection.
                Default value is `INTERVAL_5_SEC`.
                Possible values are `INTERVAL_5_SEC`, `INTERVAL_30_SEC`, `INTERVAL_1_MIN`, `INTERVAL_5_MIN`, `INTERVAL_10_MIN`, and `INTERVAL_15_MIN`.
+        :param str filter_expr: Export filter used to define which VPC flow logs should be logged, as as CEL expression. See
+               https://cloud.google.com/vpc/docs/flow-logs#filtering for details on how to format this field.
         :param float flow_sampling: Can only be specified if VPC flow logging for this subnetwork is enabled.
                The value of the field must be in [0, 1]. Set the sampling rate of VPC
                flow logs within the subnetwork where 1.0 means all collected logs are
@@ -14132,14 +14350,20 @@ class SubnetworkLogConfig(dict):
                Configures whether metadata fields should be added to the reported VPC
                flow logs.
                Default value is `INCLUDE_ALL_METADATA`.
-               Possible values are `EXCLUDE_ALL_METADATA` and `INCLUDE_ALL_METADATA`.
+               Possible values are `EXCLUDE_ALL_METADATA`, `INCLUDE_ALL_METADATA`, and `CUSTOM_METADATA`.
+        :param List[str] metadata_fields: List of metadata fields that should be added to reported logs.
+               Can only be specified if VPC flow logs for this subnetwork is enabled and "metadata" is set to CUSTOM_METADATA.
         """
         if aggregation_interval is not None:
             pulumi.set(__self__, "aggregation_interval", aggregation_interval)
+        if filter_expr is not None:
+            pulumi.set(__self__, "filter_expr", filter_expr)
         if flow_sampling is not None:
             pulumi.set(__self__, "flow_sampling", flow_sampling)
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
+        if metadata_fields is not None:
+            pulumi.set(__self__, "metadata_fields", metadata_fields)
 
     @property
     @pulumi.getter(name="aggregationInterval")
@@ -14153,6 +14377,15 @@ class SubnetworkLogConfig(dict):
         Possible values are `INTERVAL_5_SEC`, `INTERVAL_30_SEC`, `INTERVAL_1_MIN`, `INTERVAL_5_MIN`, `INTERVAL_10_MIN`, and `INTERVAL_15_MIN`.
         """
         return pulumi.get(self, "aggregation_interval")
+
+    @property
+    @pulumi.getter(name="filterExpr")
+    def filter_expr(self) -> Optional[str]:
+        """
+        Export filter used to define which VPC flow logs should be logged, as as CEL expression. See
+        https://cloud.google.com/vpc/docs/flow-logs#filtering for details on how to format this field.
+        """
+        return pulumi.get(self, "filter_expr")
 
     @property
     @pulumi.getter(name="flowSampling")
@@ -14174,9 +14407,18 @@ class SubnetworkLogConfig(dict):
         Configures whether metadata fields should be added to the reported VPC
         flow logs.
         Default value is `INCLUDE_ALL_METADATA`.
-        Possible values are `EXCLUDE_ALL_METADATA` and `INCLUDE_ALL_METADATA`.
+        Possible values are `EXCLUDE_ALL_METADATA`, `INCLUDE_ALL_METADATA`, and `CUSTOM_METADATA`.
         """
         return pulumi.get(self, "metadata")
+
+    @property
+    @pulumi.getter(name="metadataFields")
+    def metadata_fields(self) -> Optional[List[str]]:
+        """
+        List of metadata fields that should be added to reported logs.
+        Can only be specified if VPC flow logs for this subnetwork is enabled and "metadata" is set to CUSTOM_METADATA.
+        """
+        return pulumi.get(self, "metadata_fields")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

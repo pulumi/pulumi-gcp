@@ -38,6 +38,8 @@ __all__ = [
     'ClusterNetworkPolicy',
     'ClusterNodeConfig',
     'ClusterNodeConfigGuestAccelerator',
+    'ClusterNodeConfigKubeletConfig',
+    'ClusterNodeConfigLinuxNodeConfig',
     'ClusterNodeConfigSandboxConfig',
     'ClusterNodeConfigShieldedInstanceConfig',
     'ClusterNodeConfigTaint',
@@ -47,6 +49,8 @@ __all__ = [
     'ClusterNodePoolManagement',
     'ClusterNodePoolNodeConfig',
     'ClusterNodePoolNodeConfigGuestAccelerator',
+    'ClusterNodePoolNodeConfigKubeletConfig',
+    'ClusterNodePoolNodeConfigLinuxNodeConfig',
     'ClusterNodePoolNodeConfigSandboxConfig',
     'ClusterNodePoolNodeConfigShieldedInstanceConfig',
     'ClusterNodePoolNodeConfigTaint',
@@ -64,6 +68,8 @@ __all__ = [
     'NodePoolManagement',
     'NodePoolNodeConfig',
     'NodePoolNodeConfigGuestAccelerator',
+    'NodePoolNodeConfigKubeletConfig',
+    'NodePoolNodeConfigLinuxNodeConfig',
     'NodePoolNodeConfigSandboxConfig',
     'NodePoolNodeConfigShieldedInstanceConfig',
     'NodePoolNodeConfigTaint',
@@ -98,6 +104,8 @@ __all__ = [
     'GetClusterNetworkPolicyResult',
     'GetClusterNodeConfigResult',
     'GetClusterNodeConfigGuestAcceleratorResult',
+    'GetClusterNodeConfigKubeletConfigResult',
+    'GetClusterNodeConfigLinuxNodeConfigResult',
     'GetClusterNodeConfigSandboxConfigResult',
     'GetClusterNodeConfigShieldedInstanceConfigResult',
     'GetClusterNodeConfigTaintResult',
@@ -107,6 +115,8 @@ __all__ = [
     'GetClusterNodePoolManagementResult',
     'GetClusterNodePoolNodeConfigResult',
     'GetClusterNodePoolNodeConfigGuestAcceleratorResult',
+    'GetClusterNodePoolNodeConfigKubeletConfigResult',
+    'GetClusterNodePoolNodeConfigLinuxNodeConfigResult',
     'GetClusterNodePoolNodeConfigSandboxConfigResult',
     'GetClusterNodePoolNodeConfigShieldedInstanceConfigResult',
     'GetClusterNodePoolNodeConfigTaintResult',
@@ -1154,7 +1164,9 @@ class ClusterNodeConfig(dict):
                  disk_type: Optional[str] = None,
                  guest_accelerators: Optional[List['outputs.ClusterNodeConfigGuestAccelerator']] = None,
                  image_type: Optional[str] = None,
+                 kubelet_config: Optional['outputs.ClusterNodeConfigKubeletConfig'] = None,
                  labels: Optional[Mapping[str, str]] = None,
+                 linux_node_config: Optional['outputs.ClusterNodeConfigLinuxNodeConfig'] = None,
                  local_ssd_count: Optional[float] = None,
                  machine_type: Optional[str] = None,
                  metadata: Optional[Mapping[str, str]] = None,
@@ -1172,12 +1184,19 @@ class ClusterNodeConfig(dict):
         :param float disk_size_gb: Size of the disk attached to each node, specified
                in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
         :param str disk_type: Type of the disk attached to each node
-               (e.g. 'pd-standard' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+               (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
         :param List['ClusterNodeConfigGuestAcceleratorArgs'] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
                Structure documented below.
         :param str image_type: The image type to use for this node. Note that changing the image type
                will delete and recreate all nodes in the node pool.
+        :param 'ClusterNodeConfigKubeletConfigArgs' kubelet_config: )
+               Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+               Structure is documented below.
         :param Mapping[str, str] labels: The Kubernetes labels (key/value pairs) to be applied to each node.
+        :param 'ClusterNodeConfigLinuxNodeConfigArgs' linux_node_config: )
+               Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+               Note that validations happen all server side. All attributes are optional.
+               Structure is documented below.
         :param float local_ssd_count: The amount of local SSD disks that will be
                attached to each cluster node. Defaults to 0.
         :param str machine_type: The name of a Google Compute Engine machine type.
@@ -1231,8 +1250,12 @@ class ClusterNodeConfig(dict):
             pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         if image_type is not None:
             pulumi.set(__self__, "image_type", image_type)
+        if kubelet_config is not None:
+            pulumi.set(__self__, "kubelet_config", kubelet_config)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if linux_node_config is not None:
+            pulumi.set(__self__, "linux_node_config", linux_node_config)
         if local_ssd_count is not None:
             pulumi.set(__self__, "local_ssd_count", local_ssd_count)
         if machine_type is not None:
@@ -1280,7 +1303,7 @@ class ClusterNodeConfig(dict):
     def disk_type(self) -> Optional[str]:
         """
         Type of the disk attached to each node
-        (e.g. 'pd-standard' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+        (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
         """
         return pulumi.get(self, "disk_type")
 
@@ -1303,12 +1326,33 @@ class ClusterNodeConfig(dict):
         return pulumi.get(self, "image_type")
 
     @property
+    @pulumi.getter(name="kubeletConfig")
+    def kubelet_config(self) -> Optional['outputs.ClusterNodeConfigKubeletConfig']:
+        """
+        )
+        Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "kubelet_config")
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[Mapping[str, str]]:
         """
         The Kubernetes labels (key/value pairs) to be applied to each node.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="linuxNodeConfig")
+    def linux_node_config(self) -> Optional['outputs.ClusterNodeConfigLinuxNodeConfig']:
+        """
+        )
+        Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+        Note that validations happen all server side. All attributes are optional.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "linux_node_config")
 
     @property
     @pulumi.getter(name="localSsdCount")
@@ -1467,6 +1511,88 @@ class ClusterNodeConfigGuestAccelerator(dict):
         The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
         """
         return pulumi.get(self, "type")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ClusterNodeConfigKubeletConfig(dict):
+    def __init__(__self__, *,
+                 cpu_manager_policy: str,
+                 cpu_cfs_quota: Optional[bool] = None,
+                 cpu_cfs_quota_period: Optional[str] = None):
+        """
+        :param str cpu_manager_policy: The CPU management policy on the node. See
+               [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
+               One of `"none"` or `"static"`. Defaults to `none` when `kubelet_config` is unset.
+        :param bool cpu_cfs_quota: If true, enables CPU CFS quota enforcement for
+               containers that specify CPU limits.
+        :param str cpu_cfs_quota_period: The CPU CFS quota period value. Specified
+               as a sequence of decimal numbers, each with optional fraction and a unit suffix,
+               such as `"300ms"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m",
+               "h". The value must be a positive duration.
+        """
+        pulumi.set(__self__, "cpu_manager_policy", cpu_manager_policy)
+        if cpu_cfs_quota is not None:
+            pulumi.set(__self__, "cpu_cfs_quota", cpu_cfs_quota)
+        if cpu_cfs_quota_period is not None:
+            pulumi.set(__self__, "cpu_cfs_quota_period", cpu_cfs_quota_period)
+
+    @property
+    @pulumi.getter(name="cpuManagerPolicy")
+    def cpu_manager_policy(self) -> str:
+        """
+        The CPU management policy on the node. See
+        [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
+        One of `"none"` or `"static"`. Defaults to `none` when `kubelet_config` is unset.
+        """
+        return pulumi.get(self, "cpu_manager_policy")
+
+    @property
+    @pulumi.getter(name="cpuCfsQuota")
+    def cpu_cfs_quota(self) -> Optional[bool]:
+        """
+        If true, enables CPU CFS quota enforcement for
+        containers that specify CPU limits.
+        """
+        return pulumi.get(self, "cpu_cfs_quota")
+
+    @property
+    @pulumi.getter(name="cpuCfsQuotaPeriod")
+    def cpu_cfs_quota_period(self) -> Optional[str]:
+        """
+        The CPU CFS quota period value. Specified
+        as a sequence of decimal numbers, each with optional fraction and a unit suffix,
+        such as `"300ms"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m",
+        "h". The value must be a positive duration.
+        """
+        return pulumi.get(self, "cpu_cfs_quota_period")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ClusterNodeConfigLinuxNodeConfig(dict):
+    def __init__(__self__, *,
+                 sysctls: Mapping[str, str]):
+        """
+        :param Mapping[str, str] sysctls: The Linux kernel parameters to be applied to the nodes
+               and all pods running on the nodes. Specified as a map from the key, such as
+               `net.core.wmem_max`, to a string value.
+        """
+        pulumi.set(__self__, "sysctls", sysctls)
+
+    @property
+    @pulumi.getter
+    def sysctls(self) -> Mapping[str, str]:
+        """
+        The Linux kernel parameters to be applied to the nodes
+        and all pods running on the nodes. Specified as a map from the key, such as
+        `net.core.wmem_max`, to a string value.
+        """
+        return pulumi.get(self, "sysctls")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -1811,7 +1937,9 @@ class ClusterNodePoolNodeConfig(dict):
                  disk_type: Optional[str] = None,
                  guest_accelerators: Optional[List['outputs.ClusterNodePoolNodeConfigGuestAccelerator']] = None,
                  image_type: Optional[str] = None,
+                 kubelet_config: Optional['outputs.ClusterNodePoolNodeConfigKubeletConfig'] = None,
                  labels: Optional[Mapping[str, str]] = None,
+                 linux_node_config: Optional['outputs.ClusterNodePoolNodeConfigLinuxNodeConfig'] = None,
                  local_ssd_count: Optional[float] = None,
                  machine_type: Optional[str] = None,
                  metadata: Optional[Mapping[str, str]] = None,
@@ -1829,12 +1957,19 @@ class ClusterNodePoolNodeConfig(dict):
         :param float disk_size_gb: Size of the disk attached to each node, specified
                in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
         :param str disk_type: Type of the disk attached to each node
-               (e.g. 'pd-standard' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+               (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
         :param List['ClusterNodePoolNodeConfigGuestAcceleratorArgs'] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
                Structure documented below.
         :param str image_type: The image type to use for this node. Note that changing the image type
                will delete and recreate all nodes in the node pool.
+        :param 'ClusterNodePoolNodeConfigKubeletConfigArgs' kubelet_config: )
+               Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+               Structure is documented below.
         :param Mapping[str, str] labels: The Kubernetes labels (key/value pairs) to be applied to each node.
+        :param 'ClusterNodePoolNodeConfigLinuxNodeConfigArgs' linux_node_config: )
+               Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+               Note that validations happen all server side. All attributes are optional.
+               Structure is documented below.
         :param float local_ssd_count: The amount of local SSD disks that will be
                attached to each cluster node. Defaults to 0.
         :param str machine_type: The name of a Google Compute Engine machine type.
@@ -1888,8 +2023,12 @@ class ClusterNodePoolNodeConfig(dict):
             pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         if image_type is not None:
             pulumi.set(__self__, "image_type", image_type)
+        if kubelet_config is not None:
+            pulumi.set(__self__, "kubelet_config", kubelet_config)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if linux_node_config is not None:
+            pulumi.set(__self__, "linux_node_config", linux_node_config)
         if local_ssd_count is not None:
             pulumi.set(__self__, "local_ssd_count", local_ssd_count)
         if machine_type is not None:
@@ -1937,7 +2076,7 @@ class ClusterNodePoolNodeConfig(dict):
     def disk_type(self) -> Optional[str]:
         """
         Type of the disk attached to each node
-        (e.g. 'pd-standard' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+        (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
         """
         return pulumi.get(self, "disk_type")
 
@@ -1960,12 +2099,33 @@ class ClusterNodePoolNodeConfig(dict):
         return pulumi.get(self, "image_type")
 
     @property
+    @pulumi.getter(name="kubeletConfig")
+    def kubelet_config(self) -> Optional['outputs.ClusterNodePoolNodeConfigKubeletConfig']:
+        """
+        )
+        Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "kubelet_config")
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[Mapping[str, str]]:
         """
         The Kubernetes labels (key/value pairs) to be applied to each node.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="linuxNodeConfig")
+    def linux_node_config(self) -> Optional['outputs.ClusterNodePoolNodeConfigLinuxNodeConfig']:
+        """
+        )
+        Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+        Note that validations happen all server side. All attributes are optional.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "linux_node_config")
 
     @property
     @pulumi.getter(name="localSsdCount")
@@ -2124,6 +2284,88 @@ class ClusterNodePoolNodeConfigGuestAccelerator(dict):
         The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
         """
         return pulumi.get(self, "type")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ClusterNodePoolNodeConfigKubeletConfig(dict):
+    def __init__(__self__, *,
+                 cpu_manager_policy: str,
+                 cpu_cfs_quota: Optional[bool] = None,
+                 cpu_cfs_quota_period: Optional[str] = None):
+        """
+        :param str cpu_manager_policy: The CPU management policy on the node. See
+               [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
+               One of `"none"` or `"static"`. Defaults to `none` when `kubelet_config` is unset.
+        :param bool cpu_cfs_quota: If true, enables CPU CFS quota enforcement for
+               containers that specify CPU limits.
+        :param str cpu_cfs_quota_period: The CPU CFS quota period value. Specified
+               as a sequence of decimal numbers, each with optional fraction and a unit suffix,
+               such as `"300ms"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m",
+               "h". The value must be a positive duration.
+        """
+        pulumi.set(__self__, "cpu_manager_policy", cpu_manager_policy)
+        if cpu_cfs_quota is not None:
+            pulumi.set(__self__, "cpu_cfs_quota", cpu_cfs_quota)
+        if cpu_cfs_quota_period is not None:
+            pulumi.set(__self__, "cpu_cfs_quota_period", cpu_cfs_quota_period)
+
+    @property
+    @pulumi.getter(name="cpuManagerPolicy")
+    def cpu_manager_policy(self) -> str:
+        """
+        The CPU management policy on the node. See
+        [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
+        One of `"none"` or `"static"`. Defaults to `none` when `kubelet_config` is unset.
+        """
+        return pulumi.get(self, "cpu_manager_policy")
+
+    @property
+    @pulumi.getter(name="cpuCfsQuota")
+    def cpu_cfs_quota(self) -> Optional[bool]:
+        """
+        If true, enables CPU CFS quota enforcement for
+        containers that specify CPU limits.
+        """
+        return pulumi.get(self, "cpu_cfs_quota")
+
+    @property
+    @pulumi.getter(name="cpuCfsQuotaPeriod")
+    def cpu_cfs_quota_period(self) -> Optional[str]:
+        """
+        The CPU CFS quota period value. Specified
+        as a sequence of decimal numbers, each with optional fraction and a unit suffix,
+        such as `"300ms"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m",
+        "h". The value must be a positive duration.
+        """
+        return pulumi.get(self, "cpu_cfs_quota_period")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ClusterNodePoolNodeConfigLinuxNodeConfig(dict):
+    def __init__(__self__, *,
+                 sysctls: Mapping[str, str]):
+        """
+        :param Mapping[str, str] sysctls: The Linux kernel parameters to be applied to the nodes
+               and all pods running on the nodes. Specified as a map from the key, such as
+               `net.core.wmem_max`, to a string value.
+        """
+        pulumi.set(__self__, "sysctls", sysctls)
+
+    @property
+    @pulumi.getter
+    def sysctls(self) -> Mapping[str, str]:
+        """
+        The Linux kernel parameters to be applied to the nodes
+        and all pods running on the nodes. Specified as a map from the key, such as
+        `net.core.wmem_max`, to a string value.
+        """
+        return pulumi.get(self, "sysctls")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -2662,7 +2904,9 @@ class NodePoolNodeConfig(dict):
                  disk_type: Optional[str] = None,
                  guest_accelerators: Optional[List['outputs.NodePoolNodeConfigGuestAccelerator']] = None,
                  image_type: Optional[str] = None,
+                 kubelet_config: Optional['outputs.NodePoolNodeConfigKubeletConfig'] = None,
                  labels: Optional[Mapping[str, str]] = None,
+                 linux_node_config: Optional['outputs.NodePoolNodeConfigLinuxNodeConfig'] = None,
                  local_ssd_count: Optional[float] = None,
                  machine_type: Optional[str] = None,
                  metadata: Optional[Mapping[str, str]] = None,
@@ -2685,8 +2929,12 @@ class NodePoolNodeConfig(dict):
             pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         if image_type is not None:
             pulumi.set(__self__, "image_type", image_type)
+        if kubelet_config is not None:
+            pulumi.set(__self__, "kubelet_config", kubelet_config)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if linux_node_config is not None:
+            pulumi.set(__self__, "linux_node_config", linux_node_config)
         if local_ssd_count is not None:
             pulumi.set(__self__, "local_ssd_count", local_ssd_count)
         if machine_type is not None:
@@ -2738,9 +2986,19 @@ class NodePoolNodeConfig(dict):
         return pulumi.get(self, "image_type")
 
     @property
+    @pulumi.getter(name="kubeletConfig")
+    def kubelet_config(self) -> Optional['outputs.NodePoolNodeConfigKubeletConfig']:
+        return pulumi.get(self, "kubelet_config")
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="linuxNodeConfig")
+    def linux_node_config(self) -> Optional['outputs.NodePoolNodeConfigLinuxNodeConfig']:
+        return pulumi.get(self, "linux_node_config")
 
     @property
     @pulumi.getter(name="localSsdCount")
@@ -2823,6 +3081,52 @@ class NodePoolNodeConfigGuestAccelerator(dict):
     @pulumi.getter
     def type(self) -> str:
         return pulumi.get(self, "type")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class NodePoolNodeConfigKubeletConfig(dict):
+    def __init__(__self__, *,
+                 cpu_manager_policy: str,
+                 cpu_cfs_quota: Optional[bool] = None,
+                 cpu_cfs_quota_period: Optional[str] = None):
+        pulumi.set(__self__, "cpu_manager_policy", cpu_manager_policy)
+        if cpu_cfs_quota is not None:
+            pulumi.set(__self__, "cpu_cfs_quota", cpu_cfs_quota)
+        if cpu_cfs_quota_period is not None:
+            pulumi.set(__self__, "cpu_cfs_quota_period", cpu_cfs_quota_period)
+
+    @property
+    @pulumi.getter(name="cpuManagerPolicy")
+    def cpu_manager_policy(self) -> str:
+        return pulumi.get(self, "cpu_manager_policy")
+
+    @property
+    @pulumi.getter(name="cpuCfsQuota")
+    def cpu_cfs_quota(self) -> Optional[bool]:
+        return pulumi.get(self, "cpu_cfs_quota")
+
+    @property
+    @pulumi.getter(name="cpuCfsQuotaPeriod")
+    def cpu_cfs_quota_period(self) -> Optional[str]:
+        return pulumi.get(self, "cpu_cfs_quota_period")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class NodePoolNodeConfigLinuxNodeConfig(dict):
+    def __init__(__self__, *,
+                 sysctls: Mapping[str, str]):
+        pulumi.set(__self__, "sysctls", sysctls)
+
+    @property
+    @pulumi.getter
+    def sysctls(self) -> Mapping[str, str]:
+        return pulumi.get(self, "sysctls")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -3521,7 +3825,9 @@ class GetClusterNodeConfigResult(dict):
                  disk_type: str,
                  guest_accelerators: List['outputs.GetClusterNodeConfigGuestAcceleratorResult'],
                  image_type: str,
+                 kubelet_configs: List['outputs.GetClusterNodeConfigKubeletConfigResult'],
                  labels: Mapping[str, str],
+                 linux_node_configs: List['outputs.GetClusterNodeConfigLinuxNodeConfigResult'],
                  local_ssd_count: float,
                  machine_type: str,
                  metadata: Mapping[str, str],
@@ -3539,7 +3845,9 @@ class GetClusterNodeConfigResult(dict):
         pulumi.set(__self__, "disk_type", disk_type)
         pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         pulumi.set(__self__, "image_type", image_type)
+        pulumi.set(__self__, "kubelet_configs", kubelet_configs)
         pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "linux_node_configs", linux_node_configs)
         pulumi.set(__self__, "local_ssd_count", local_ssd_count)
         pulumi.set(__self__, "machine_type", machine_type)
         pulumi.set(__self__, "metadata", metadata)
@@ -3579,9 +3887,19 @@ class GetClusterNodeConfigResult(dict):
         return pulumi.get(self, "image_type")
 
     @property
+    @pulumi.getter(name="kubeletConfigs")
+    def kubelet_configs(self) -> List['outputs.GetClusterNodeConfigKubeletConfigResult']:
+        return pulumi.get(self, "kubelet_configs")
+
+    @property
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="linuxNodeConfigs")
+    def linux_node_configs(self) -> List['outputs.GetClusterNodeConfigLinuxNodeConfigResult']:
+        return pulumi.get(self, "linux_node_configs")
 
     @property
     @pulumi.getter(name="localSsdCount")
@@ -3661,6 +3979,44 @@ class GetClusterNodeConfigGuestAcceleratorResult(dict):
     @pulumi.getter
     def type(self) -> str:
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetClusterNodeConfigKubeletConfigResult(dict):
+    def __init__(__self__, *,
+                 cpu_cfs_quota: bool,
+                 cpu_cfs_quota_period: str,
+                 cpu_manager_policy: str):
+        pulumi.set(__self__, "cpu_cfs_quota", cpu_cfs_quota)
+        pulumi.set(__self__, "cpu_cfs_quota_period", cpu_cfs_quota_period)
+        pulumi.set(__self__, "cpu_manager_policy", cpu_manager_policy)
+
+    @property
+    @pulumi.getter(name="cpuCfsQuota")
+    def cpu_cfs_quota(self) -> bool:
+        return pulumi.get(self, "cpu_cfs_quota")
+
+    @property
+    @pulumi.getter(name="cpuCfsQuotaPeriod")
+    def cpu_cfs_quota_period(self) -> str:
+        return pulumi.get(self, "cpu_cfs_quota_period")
+
+    @property
+    @pulumi.getter(name="cpuManagerPolicy")
+    def cpu_manager_policy(self) -> str:
+        return pulumi.get(self, "cpu_manager_policy")
+
+
+@pulumi.output_type
+class GetClusterNodeConfigLinuxNodeConfigResult(dict):
+    def __init__(__self__, *,
+                 sysctls: Mapping[str, str]):
+        pulumi.set(__self__, "sysctls", sysctls)
+
+    @property
+    @pulumi.getter
+    def sysctls(self) -> Mapping[str, str]:
+        return pulumi.get(self, "sysctls")
 
 
 @pulumi.output_type
@@ -3873,7 +4229,9 @@ class GetClusterNodePoolNodeConfigResult(dict):
                  disk_type: str,
                  guest_accelerators: List['outputs.GetClusterNodePoolNodeConfigGuestAcceleratorResult'],
                  image_type: str,
+                 kubelet_configs: List['outputs.GetClusterNodePoolNodeConfigKubeletConfigResult'],
                  labels: Mapping[str, str],
+                 linux_node_configs: List['outputs.GetClusterNodePoolNodeConfigLinuxNodeConfigResult'],
                  local_ssd_count: float,
                  machine_type: str,
                  metadata: Mapping[str, str],
@@ -3891,7 +4249,9 @@ class GetClusterNodePoolNodeConfigResult(dict):
         pulumi.set(__self__, "disk_type", disk_type)
         pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         pulumi.set(__self__, "image_type", image_type)
+        pulumi.set(__self__, "kubelet_configs", kubelet_configs)
         pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "linux_node_configs", linux_node_configs)
         pulumi.set(__self__, "local_ssd_count", local_ssd_count)
         pulumi.set(__self__, "machine_type", machine_type)
         pulumi.set(__self__, "metadata", metadata)
@@ -3931,9 +4291,19 @@ class GetClusterNodePoolNodeConfigResult(dict):
         return pulumi.get(self, "image_type")
 
     @property
+    @pulumi.getter(name="kubeletConfigs")
+    def kubelet_configs(self) -> List['outputs.GetClusterNodePoolNodeConfigKubeletConfigResult']:
+        return pulumi.get(self, "kubelet_configs")
+
+    @property
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="linuxNodeConfigs")
+    def linux_node_configs(self) -> List['outputs.GetClusterNodePoolNodeConfigLinuxNodeConfigResult']:
+        return pulumi.get(self, "linux_node_configs")
 
     @property
     @pulumi.getter(name="localSsdCount")
@@ -4013,6 +4383,44 @@ class GetClusterNodePoolNodeConfigGuestAcceleratorResult(dict):
     @pulumi.getter
     def type(self) -> str:
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetClusterNodePoolNodeConfigKubeletConfigResult(dict):
+    def __init__(__self__, *,
+                 cpu_cfs_quota: bool,
+                 cpu_cfs_quota_period: str,
+                 cpu_manager_policy: str):
+        pulumi.set(__self__, "cpu_cfs_quota", cpu_cfs_quota)
+        pulumi.set(__self__, "cpu_cfs_quota_period", cpu_cfs_quota_period)
+        pulumi.set(__self__, "cpu_manager_policy", cpu_manager_policy)
+
+    @property
+    @pulumi.getter(name="cpuCfsQuota")
+    def cpu_cfs_quota(self) -> bool:
+        return pulumi.get(self, "cpu_cfs_quota")
+
+    @property
+    @pulumi.getter(name="cpuCfsQuotaPeriod")
+    def cpu_cfs_quota_period(self) -> str:
+        return pulumi.get(self, "cpu_cfs_quota_period")
+
+    @property
+    @pulumi.getter(name="cpuManagerPolicy")
+    def cpu_manager_policy(self) -> str:
+        return pulumi.get(self, "cpu_manager_policy")
+
+
+@pulumi.output_type
+class GetClusterNodePoolNodeConfigLinuxNodeConfigResult(dict):
+    def __init__(__self__, *,
+                 sysctls: Mapping[str, str]):
+        pulumi.set(__self__, "sysctls", sysctls)
+
+    @property
+    @pulumi.getter
+    def sysctls(self) -> Mapping[str, str]:
+        return pulumi.get(self, "sysctls")
 
 
 @pulumi.output_type

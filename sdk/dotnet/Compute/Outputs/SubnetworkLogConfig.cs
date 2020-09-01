@@ -23,6 +23,11 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? AggregationInterval;
         /// <summary>
+        /// Export filter used to define which VPC flow logs should be logged, as as CEL expression. See
+        /// https://cloud.google.com/vpc/docs/flow-logs#filtering for details on how to format this field.
+        /// </summary>
+        public readonly string? FilterExpr;
+        /// <summary>
         /// Can only be specified if VPC flow logging for this subnetwork is enabled.
         /// The value of the field must be in [0, 1]. Set the sampling rate of VPC
         /// flow logs within the subnetwork where 1.0 means all collected logs are
@@ -35,21 +40,32 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// Configures whether metadata fields should be added to the reported VPC
         /// flow logs.
         /// Default value is `INCLUDE_ALL_METADATA`.
-        /// Possible values are `EXCLUDE_ALL_METADATA` and `INCLUDE_ALL_METADATA`.
+        /// Possible values are `EXCLUDE_ALL_METADATA`, `INCLUDE_ALL_METADATA`, and `CUSTOM_METADATA`.
         /// </summary>
         public readonly string? Metadata;
+        /// <summary>
+        /// List of metadata fields that should be added to reported logs.
+        /// Can only be specified if VPC flow logs for this subnetwork is enabled and "metadata" is set to CUSTOM_METADATA.
+        /// </summary>
+        public readonly ImmutableArray<string> MetadataFields;
 
         [OutputConstructor]
         private SubnetworkLogConfig(
             string? aggregationInterval,
 
+            string? filterExpr,
+
             double? flowSampling,
 
-            string? metadata)
+            string? metadata,
+
+            ImmutableArray<string> metadataFields)
         {
             AggregationInterval = aggregationInterval;
+            FilterExpr = filterExpr;
             FlowSampling = flowSampling;
             Metadata = metadata;
+            MetadataFields = metadataFields;
         }
     }
 }

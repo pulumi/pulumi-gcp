@@ -104,7 +104,7 @@ namespace Pulumi.Gcp.AppEngine
         public Output<Outputs.StandardAppVersionManualScaling?> ManualScaling { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the library. Example "django".
+        /// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -152,6 +152,13 @@ namespace Pulumi.Gcp.AppEngine
         /// </summary>
         [Output("versionId")]
         public Output<string?> VersionId { get; private set; } = null!;
+
+        /// <summary>
+        /// Enables VPC connectivity for standard apps.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("vpcAccessConnector")]
+        public Output<Outputs.StandardAppVersionVpcAccessConnector?> VpcAccessConnector { get; private set; } = null!;
 
 
         /// <summary>
@@ -345,6 +352,13 @@ namespace Pulumi.Gcp.AppEngine
         [Input("versionId")]
         public Input<string>? VersionId { get; set; }
 
+        /// <summary>
+        /// Enables VPC connectivity for standard apps.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("vpcAccessConnector")]
+        public Input<Inputs.StandardAppVersionVpcAccessConnectorArgs>? VpcAccessConnector { get; set; }
+
         public StandardAppVersionArgs()
         {
         }
@@ -455,7 +469,7 @@ namespace Pulumi.Gcp.AppEngine
         public Input<Inputs.StandardAppVersionManualScalingGetArgs>? ManualScaling { get; set; }
 
         /// <summary>
-        /// Name of the library. Example "django".
+        /// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -503,6 +517,13 @@ namespace Pulumi.Gcp.AppEngine
         /// </summary>
         [Input("versionId")]
         public Input<string>? VersionId { get; set; }
+
+        /// <summary>
+        /// Enables VPC connectivity for standard apps.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("vpcAccessConnector")]
+        public Input<Inputs.StandardAppVersionVpcAccessConnectorGetArgs>? VpcAccessConnector { get; set; }
 
         public StandardAppVersionState()
         {

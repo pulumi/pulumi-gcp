@@ -15,6 +15,7 @@ namespace Pulumi.Gcp.Composer.Outputs
     {
         public readonly string? AirflowUri;
         public readonly string? DagGcsPrefix;
+        public readonly Outputs.EnvironmentConfigDatabaseConfig? DatabaseConfig;
         public readonly string? GkeCluster;
         /// <summary>
         /// The configuration used for the Kubernetes Engine cluster.  Structure is documented below.
@@ -33,6 +34,7 @@ namespace Pulumi.Gcp.Composer.Outputs
         /// The configuration settings for software inside the environment.  Structure is documented below.
         /// </summary>
         public readonly Outputs.EnvironmentConfigSoftwareConfig? SoftwareConfig;
+        public readonly Outputs.EnvironmentConfigWebServerConfig? WebServerConfig;
         /// <summary>
         /// The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
         /// </summary>
@@ -44,6 +46,8 @@ namespace Pulumi.Gcp.Composer.Outputs
 
             string? dagGcsPrefix,
 
+            Outputs.EnvironmentConfigDatabaseConfig? databaseConfig,
+
             string? gkeCluster,
 
             Outputs.EnvironmentConfigNodeConfig? nodeConfig,
@@ -54,15 +58,19 @@ namespace Pulumi.Gcp.Composer.Outputs
 
             Outputs.EnvironmentConfigSoftwareConfig? softwareConfig,
 
+            Outputs.EnvironmentConfigWebServerConfig? webServerConfig,
+
             Outputs.EnvironmentConfigWebServerNetworkAccessControl? webServerNetworkAccessControl)
         {
             AirflowUri = airflowUri;
             DagGcsPrefix = dagGcsPrefix;
+            DatabaseConfig = databaseConfig;
             GkeCluster = gkeCluster;
             NodeConfig = nodeConfig;
             NodeCount = nodeCount;
             PrivateEnvironmentConfig = privateEnvironmentConfig;
             SoftwareConfig = softwareConfig;
+            WebServerConfig = webServerConfig;
             WebServerNetworkAccessControl = webServerNetworkAccessControl;
         }
     }

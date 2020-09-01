@@ -4177,7 +4177,7 @@ type ClusterNodeConfig struct {
 	// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
 	// Type of the disk attached to each node
-	// (e.g. 'pd-standard' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+	// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
 	DiskType *string `pulumi:"diskType"`
 	// List of the type and count of accelerator cards attached to the instance.
 	// Structure documented below.
@@ -4185,8 +4185,17 @@ type ClusterNodeConfig struct {
 	// The image type to use for this node. Note that changing the image type
 	// will delete and recreate all nodes in the node pool.
 	ImageType *string `pulumi:"imageType"`
+	// )
+	// Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+	// Structure is documented below.
+	KubeletConfig *ClusterNodeConfigKubeletConfig `pulumi:"kubeletConfig"`
 	// The Kubernetes labels (key/value pairs) to be applied to each node.
 	Labels map[string]string `pulumi:"labels"`
+	// )
+	// Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+	// Note that validations happen all server side. All attributes are optional.
+	// Structure is documented below.
+	LinuxNodeConfig *ClusterNodeConfigLinuxNodeConfig `pulumi:"linuxNodeConfig"`
 	// The amount of local SSD disks that will be
 	// attached to each cluster node. Defaults to 0.
 	LocalSsdCount *int `pulumi:"localSsdCount"`
@@ -4261,7 +4270,7 @@ type ClusterNodeConfigArgs struct {
 	// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
 	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
 	// Type of the disk attached to each node
-	// (e.g. 'pd-standard' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+	// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// List of the type and count of accelerator cards attached to the instance.
 	// Structure documented below.
@@ -4269,8 +4278,17 @@ type ClusterNodeConfigArgs struct {
 	// The image type to use for this node. Note that changing the image type
 	// will delete and recreate all nodes in the node pool.
 	ImageType pulumi.StringPtrInput `pulumi:"imageType"`
+	// )
+	// Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+	// Structure is documented below.
+	KubeletConfig ClusterNodeConfigKubeletConfigPtrInput `pulumi:"kubeletConfig"`
 	// The Kubernetes labels (key/value pairs) to be applied to each node.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// )
+	// Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+	// Note that validations happen all server side. All attributes are optional.
+	// Structure is documented below.
+	LinuxNodeConfig ClusterNodeConfigLinuxNodeConfigPtrInput `pulumi:"linuxNodeConfig"`
 	// The amount of local SSD disks that will be
 	// attached to each cluster node. Defaults to 0.
 	LocalSsdCount pulumi.IntPtrInput `pulumi:"localSsdCount"`
@@ -4416,7 +4434,7 @@ func (o ClusterNodeConfigOutput) DiskSizeGb() pulumi.IntPtrOutput {
 }
 
 // Type of the disk attached to each node
-// (e.g. 'pd-standard' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
 func (o ClusterNodeConfigOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
@@ -4433,9 +4451,24 @@ func (o ClusterNodeConfigOutput) ImageType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.ImageType }).(pulumi.StringPtrOutput)
 }
 
+// )
+// Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+// Structure is documented below.
+func (o ClusterNodeConfigOutput) KubeletConfig() ClusterNodeConfigKubeletConfigPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigKubeletConfig { return v.KubeletConfig }).(ClusterNodeConfigKubeletConfigPtrOutput)
+}
+
 // The Kubernetes labels (key/value pairs) to be applied to each node.
 func (o ClusterNodeConfigOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// )
+// Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+// Note that validations happen all server side. All attributes are optional.
+// Structure is documented below.
+func (o ClusterNodeConfigOutput) LinuxNodeConfig() ClusterNodeConfigLinuxNodeConfigPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigLinuxNodeConfig { return v.LinuxNodeConfig }).(ClusterNodeConfigLinuxNodeConfigPtrOutput)
 }
 
 // The amount of local SSD disks that will be
@@ -4568,7 +4601,7 @@ func (o ClusterNodeConfigPtrOutput) DiskSizeGb() pulumi.IntPtrOutput {
 }
 
 // Type of the disk attached to each node
-// (e.g. 'pd-standard' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
 func (o ClusterNodeConfigPtrOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) *string {
 		if v == nil {
@@ -4600,6 +4633,18 @@ func (o ClusterNodeConfigPtrOutput) ImageType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// )
+// Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+// Structure is documented below.
+func (o ClusterNodeConfigPtrOutput) KubeletConfig() ClusterNodeConfigKubeletConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfig) *ClusterNodeConfigKubeletConfig {
+		if v == nil {
+			return nil
+		}
+		return v.KubeletConfig
+	}).(ClusterNodeConfigKubeletConfigPtrOutput)
+}
+
 // The Kubernetes labels (key/value pairs) to be applied to each node.
 func (o ClusterNodeConfigPtrOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) map[string]string {
@@ -4608,6 +4653,19 @@ func (o ClusterNodeConfigPtrOutput) Labels() pulumi.StringMapOutput {
 		}
 		return v.Labels
 	}).(pulumi.StringMapOutput)
+}
+
+// )
+// Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+// Note that validations happen all server side. All attributes are optional.
+// Structure is documented below.
+func (o ClusterNodeConfigPtrOutput) LinuxNodeConfig() ClusterNodeConfigLinuxNodeConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfig) *ClusterNodeConfigLinuxNodeConfig {
+		if v == nil {
+			return nil
+		}
+		return v.LinuxNodeConfig
+	}).(ClusterNodeConfigLinuxNodeConfigPtrOutput)
 }
 
 // The amount of local SSD disks that will be
@@ -4864,6 +4922,338 @@ func (o ClusterNodeConfigGuestAcceleratorArrayOutput) Index(i pulumi.IntInput) C
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNodeConfigGuestAccelerator {
 		return vs[0].([]ClusterNodeConfigGuestAccelerator)[vs[1].(int)]
 	}).(ClusterNodeConfigGuestAcceleratorOutput)
+}
+
+type ClusterNodeConfigKubeletConfig struct {
+	// If true, enables CPU CFS quota enforcement for
+	// containers that specify CPU limits.
+	CpuCfsQuota *bool `pulumi:"cpuCfsQuota"`
+	// The CPU CFS quota period value. Specified
+	// as a sequence of decimal numbers, each with optional fraction and a unit suffix,
+	// such as `"300ms"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m",
+	// "h". The value must be a positive duration.
+	CpuCfsQuotaPeriod *string `pulumi:"cpuCfsQuotaPeriod"`
+	// The CPU management policy on the node. See
+	// [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
+	// One of `"none"` or `"static"`. Defaults to `none` when `kubeletConfig` is unset.
+	CpuManagerPolicy string `pulumi:"cpuManagerPolicy"`
+}
+
+// ClusterNodeConfigKubeletConfigInput is an input type that accepts ClusterNodeConfigKubeletConfigArgs and ClusterNodeConfigKubeletConfigOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigKubeletConfigInput` via:
+//
+//          ClusterNodeConfigKubeletConfigArgs{...}
+type ClusterNodeConfigKubeletConfigInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigKubeletConfigOutput() ClusterNodeConfigKubeletConfigOutput
+	ToClusterNodeConfigKubeletConfigOutputWithContext(context.Context) ClusterNodeConfigKubeletConfigOutput
+}
+
+type ClusterNodeConfigKubeletConfigArgs struct {
+	// If true, enables CPU CFS quota enforcement for
+	// containers that specify CPU limits.
+	CpuCfsQuota pulumi.BoolPtrInput `pulumi:"cpuCfsQuota"`
+	// The CPU CFS quota period value. Specified
+	// as a sequence of decimal numbers, each with optional fraction and a unit suffix,
+	// such as `"300ms"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m",
+	// "h". The value must be a positive duration.
+	CpuCfsQuotaPeriod pulumi.StringPtrInput `pulumi:"cpuCfsQuotaPeriod"`
+	// The CPU management policy on the node. See
+	// [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
+	// One of `"none"` or `"static"`. Defaults to `none` when `kubeletConfig` is unset.
+	CpuManagerPolicy pulumi.StringInput `pulumi:"cpuManagerPolicy"`
+}
+
+func (ClusterNodeConfigKubeletConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigKubeletConfig)(nil)).Elem()
+}
+
+func (i ClusterNodeConfigKubeletConfigArgs) ToClusterNodeConfigKubeletConfigOutput() ClusterNodeConfigKubeletConfigOutput {
+	return i.ToClusterNodeConfigKubeletConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigKubeletConfigArgs) ToClusterNodeConfigKubeletConfigOutputWithContext(ctx context.Context) ClusterNodeConfigKubeletConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigKubeletConfigOutput)
+}
+
+func (i ClusterNodeConfigKubeletConfigArgs) ToClusterNodeConfigKubeletConfigPtrOutput() ClusterNodeConfigKubeletConfigPtrOutput {
+	return i.ToClusterNodeConfigKubeletConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigKubeletConfigArgs) ToClusterNodeConfigKubeletConfigPtrOutputWithContext(ctx context.Context) ClusterNodeConfigKubeletConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigKubeletConfigOutput).ToClusterNodeConfigKubeletConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterNodeConfigKubeletConfigPtrInput is an input type that accepts ClusterNodeConfigKubeletConfigArgs, ClusterNodeConfigKubeletConfigPtr and ClusterNodeConfigKubeletConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigKubeletConfigPtrInput` via:
+//
+//          ClusterNodeConfigKubeletConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ClusterNodeConfigKubeletConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigKubeletConfigPtrOutput() ClusterNodeConfigKubeletConfigPtrOutput
+	ToClusterNodeConfigKubeletConfigPtrOutputWithContext(context.Context) ClusterNodeConfigKubeletConfigPtrOutput
+}
+
+type clusterNodeConfigKubeletConfigPtrType ClusterNodeConfigKubeletConfigArgs
+
+func ClusterNodeConfigKubeletConfigPtr(v *ClusterNodeConfigKubeletConfigArgs) ClusterNodeConfigKubeletConfigPtrInput {
+	return (*clusterNodeConfigKubeletConfigPtrType)(v)
+}
+
+func (*clusterNodeConfigKubeletConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeConfigKubeletConfig)(nil)).Elem()
+}
+
+func (i *clusterNodeConfigKubeletConfigPtrType) ToClusterNodeConfigKubeletConfigPtrOutput() ClusterNodeConfigKubeletConfigPtrOutput {
+	return i.ToClusterNodeConfigKubeletConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodeConfigKubeletConfigPtrType) ToClusterNodeConfigKubeletConfigPtrOutputWithContext(ctx context.Context) ClusterNodeConfigKubeletConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigKubeletConfigPtrOutput)
+}
+
+type ClusterNodeConfigKubeletConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigKubeletConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigKubeletConfig)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigKubeletConfigOutput) ToClusterNodeConfigKubeletConfigOutput() ClusterNodeConfigKubeletConfigOutput {
+	return o
+}
+
+func (o ClusterNodeConfigKubeletConfigOutput) ToClusterNodeConfigKubeletConfigOutputWithContext(ctx context.Context) ClusterNodeConfigKubeletConfigOutput {
+	return o
+}
+
+func (o ClusterNodeConfigKubeletConfigOutput) ToClusterNodeConfigKubeletConfigPtrOutput() ClusterNodeConfigKubeletConfigPtrOutput {
+	return o.ToClusterNodeConfigKubeletConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodeConfigKubeletConfigOutput) ToClusterNodeConfigKubeletConfigPtrOutputWithContext(ctx context.Context) ClusterNodeConfigKubeletConfigPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfigKubeletConfig) *ClusterNodeConfigKubeletConfig {
+		return &v
+	}).(ClusterNodeConfigKubeletConfigPtrOutput)
+}
+
+// If true, enables CPU CFS quota enforcement for
+// containers that specify CPU limits.
+func (o ClusterNodeConfigKubeletConfigOutput) CpuCfsQuota() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfigKubeletConfig) *bool { return v.CpuCfsQuota }).(pulumi.BoolPtrOutput)
+}
+
+// The CPU CFS quota period value. Specified
+// as a sequence of decimal numbers, each with optional fraction and a unit suffix,
+// such as `"300ms"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m",
+// "h". The value must be a positive duration.
+func (o ClusterNodeConfigKubeletConfigOutput) CpuCfsQuotaPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfigKubeletConfig) *string { return v.CpuCfsQuotaPeriod }).(pulumi.StringPtrOutput)
+}
+
+// The CPU management policy on the node. See
+// [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
+// One of `"none"` or `"static"`. Defaults to `none` when `kubeletConfig` is unset.
+func (o ClusterNodeConfigKubeletConfigOutput) CpuManagerPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodeConfigKubeletConfig) string { return v.CpuManagerPolicy }).(pulumi.StringOutput)
+}
+
+type ClusterNodeConfigKubeletConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigKubeletConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeConfigKubeletConfig)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigKubeletConfigPtrOutput) ToClusterNodeConfigKubeletConfigPtrOutput() ClusterNodeConfigKubeletConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodeConfigKubeletConfigPtrOutput) ToClusterNodeConfigKubeletConfigPtrOutputWithContext(ctx context.Context) ClusterNodeConfigKubeletConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodeConfigKubeletConfigPtrOutput) Elem() ClusterNodeConfigKubeletConfigOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigKubeletConfig) ClusterNodeConfigKubeletConfig { return *v }).(ClusterNodeConfigKubeletConfigOutput)
+}
+
+// If true, enables CPU CFS quota enforcement for
+// containers that specify CPU limits.
+func (o ClusterNodeConfigKubeletConfigPtrOutput) CpuCfsQuota() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigKubeletConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CpuCfsQuota
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The CPU CFS quota period value. Specified
+// as a sequence of decimal numbers, each with optional fraction and a unit suffix,
+// such as `"300ms"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m",
+// "h". The value must be a positive duration.
+func (o ClusterNodeConfigKubeletConfigPtrOutput) CpuCfsQuotaPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigKubeletConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CpuCfsQuotaPeriod
+	}).(pulumi.StringPtrOutput)
+}
+
+// The CPU management policy on the node. See
+// [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
+// One of `"none"` or `"static"`. Defaults to `none` when `kubeletConfig` is unset.
+func (o ClusterNodeConfigKubeletConfigPtrOutput) CpuManagerPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigKubeletConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CpuManagerPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterNodeConfigLinuxNodeConfig struct {
+	// The Linux kernel parameters to be applied to the nodes
+	// and all pods running on the nodes. Specified as a map from the key, such as
+	// `net.core.wmem_max`, to a string value.
+	Sysctls map[string]string `pulumi:"sysctls"`
+}
+
+// ClusterNodeConfigLinuxNodeConfigInput is an input type that accepts ClusterNodeConfigLinuxNodeConfigArgs and ClusterNodeConfigLinuxNodeConfigOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigLinuxNodeConfigInput` via:
+//
+//          ClusterNodeConfigLinuxNodeConfigArgs{...}
+type ClusterNodeConfigLinuxNodeConfigInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigLinuxNodeConfigOutput() ClusterNodeConfigLinuxNodeConfigOutput
+	ToClusterNodeConfigLinuxNodeConfigOutputWithContext(context.Context) ClusterNodeConfigLinuxNodeConfigOutput
+}
+
+type ClusterNodeConfigLinuxNodeConfigArgs struct {
+	// The Linux kernel parameters to be applied to the nodes
+	// and all pods running on the nodes. Specified as a map from the key, such as
+	// `net.core.wmem_max`, to a string value.
+	Sysctls pulumi.StringMapInput `pulumi:"sysctls"`
+}
+
+func (ClusterNodeConfigLinuxNodeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigLinuxNodeConfig)(nil)).Elem()
+}
+
+func (i ClusterNodeConfigLinuxNodeConfigArgs) ToClusterNodeConfigLinuxNodeConfigOutput() ClusterNodeConfigLinuxNodeConfigOutput {
+	return i.ToClusterNodeConfigLinuxNodeConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigLinuxNodeConfigArgs) ToClusterNodeConfigLinuxNodeConfigOutputWithContext(ctx context.Context) ClusterNodeConfigLinuxNodeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigLinuxNodeConfigOutput)
+}
+
+func (i ClusterNodeConfigLinuxNodeConfigArgs) ToClusterNodeConfigLinuxNodeConfigPtrOutput() ClusterNodeConfigLinuxNodeConfigPtrOutput {
+	return i.ToClusterNodeConfigLinuxNodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigLinuxNodeConfigArgs) ToClusterNodeConfigLinuxNodeConfigPtrOutputWithContext(ctx context.Context) ClusterNodeConfigLinuxNodeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigLinuxNodeConfigOutput).ToClusterNodeConfigLinuxNodeConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterNodeConfigLinuxNodeConfigPtrInput is an input type that accepts ClusterNodeConfigLinuxNodeConfigArgs, ClusterNodeConfigLinuxNodeConfigPtr and ClusterNodeConfigLinuxNodeConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigLinuxNodeConfigPtrInput` via:
+//
+//          ClusterNodeConfigLinuxNodeConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ClusterNodeConfigLinuxNodeConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigLinuxNodeConfigPtrOutput() ClusterNodeConfigLinuxNodeConfigPtrOutput
+	ToClusterNodeConfigLinuxNodeConfigPtrOutputWithContext(context.Context) ClusterNodeConfigLinuxNodeConfigPtrOutput
+}
+
+type clusterNodeConfigLinuxNodeConfigPtrType ClusterNodeConfigLinuxNodeConfigArgs
+
+func ClusterNodeConfigLinuxNodeConfigPtr(v *ClusterNodeConfigLinuxNodeConfigArgs) ClusterNodeConfigLinuxNodeConfigPtrInput {
+	return (*clusterNodeConfigLinuxNodeConfigPtrType)(v)
+}
+
+func (*clusterNodeConfigLinuxNodeConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeConfigLinuxNodeConfig)(nil)).Elem()
+}
+
+func (i *clusterNodeConfigLinuxNodeConfigPtrType) ToClusterNodeConfigLinuxNodeConfigPtrOutput() ClusterNodeConfigLinuxNodeConfigPtrOutput {
+	return i.ToClusterNodeConfigLinuxNodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodeConfigLinuxNodeConfigPtrType) ToClusterNodeConfigLinuxNodeConfigPtrOutputWithContext(ctx context.Context) ClusterNodeConfigLinuxNodeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigLinuxNodeConfigPtrOutput)
+}
+
+type ClusterNodeConfigLinuxNodeConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigLinuxNodeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigLinuxNodeConfig)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigLinuxNodeConfigOutput) ToClusterNodeConfigLinuxNodeConfigOutput() ClusterNodeConfigLinuxNodeConfigOutput {
+	return o
+}
+
+func (o ClusterNodeConfigLinuxNodeConfigOutput) ToClusterNodeConfigLinuxNodeConfigOutputWithContext(ctx context.Context) ClusterNodeConfigLinuxNodeConfigOutput {
+	return o
+}
+
+func (o ClusterNodeConfigLinuxNodeConfigOutput) ToClusterNodeConfigLinuxNodeConfigPtrOutput() ClusterNodeConfigLinuxNodeConfigPtrOutput {
+	return o.ToClusterNodeConfigLinuxNodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodeConfigLinuxNodeConfigOutput) ToClusterNodeConfigLinuxNodeConfigPtrOutputWithContext(ctx context.Context) ClusterNodeConfigLinuxNodeConfigPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfigLinuxNodeConfig) *ClusterNodeConfigLinuxNodeConfig {
+		return &v
+	}).(ClusterNodeConfigLinuxNodeConfigPtrOutput)
+}
+
+// The Linux kernel parameters to be applied to the nodes
+// and all pods running on the nodes. Specified as a map from the key, such as
+// `net.core.wmem_max`, to a string value.
+func (o ClusterNodeConfigLinuxNodeConfigOutput) Sysctls() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ClusterNodeConfigLinuxNodeConfig) map[string]string { return v.Sysctls }).(pulumi.StringMapOutput)
+}
+
+type ClusterNodeConfigLinuxNodeConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigLinuxNodeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeConfigLinuxNodeConfig)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigLinuxNodeConfigPtrOutput) ToClusterNodeConfigLinuxNodeConfigPtrOutput() ClusterNodeConfigLinuxNodeConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodeConfigLinuxNodeConfigPtrOutput) ToClusterNodeConfigLinuxNodeConfigPtrOutputWithContext(ctx context.Context) ClusterNodeConfigLinuxNodeConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodeConfigLinuxNodeConfigPtrOutput) Elem() ClusterNodeConfigLinuxNodeConfigOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigLinuxNodeConfig) ClusterNodeConfigLinuxNodeConfig { return *v }).(ClusterNodeConfigLinuxNodeConfigOutput)
+}
+
+// The Linux kernel parameters to be applied to the nodes
+// and all pods running on the nodes. Specified as a map from the key, such as
+// `net.core.wmem_max`, to a string value.
+func (o ClusterNodeConfigLinuxNodeConfigPtrOutput) Sysctls() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigLinuxNodeConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Sysctls
+	}).(pulumi.StringMapOutput)
 }
 
 type ClusterNodeConfigSandboxConfig struct {
@@ -5923,7 +6313,7 @@ type ClusterNodePoolNodeConfig struct {
 	// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
 	// Type of the disk attached to each node
-	// (e.g. 'pd-standard' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+	// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
 	DiskType *string `pulumi:"diskType"`
 	// List of the type and count of accelerator cards attached to the instance.
 	// Structure documented below.
@@ -5931,8 +6321,17 @@ type ClusterNodePoolNodeConfig struct {
 	// The image type to use for this node. Note that changing the image type
 	// will delete and recreate all nodes in the node pool.
 	ImageType *string `pulumi:"imageType"`
+	// )
+	// Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+	// Structure is documented below.
+	KubeletConfig *ClusterNodePoolNodeConfigKubeletConfig `pulumi:"kubeletConfig"`
 	// The Kubernetes labels (key/value pairs) to be applied to each node.
 	Labels map[string]string `pulumi:"labels"`
+	// )
+	// Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+	// Note that validations happen all server side. All attributes are optional.
+	// Structure is documented below.
+	LinuxNodeConfig *ClusterNodePoolNodeConfigLinuxNodeConfig `pulumi:"linuxNodeConfig"`
 	// The amount of local SSD disks that will be
 	// attached to each cluster node. Defaults to 0.
 	LocalSsdCount *int `pulumi:"localSsdCount"`
@@ -6007,7 +6406,7 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
 	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
 	// Type of the disk attached to each node
-	// (e.g. 'pd-standard' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+	// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// List of the type and count of accelerator cards attached to the instance.
 	// Structure documented below.
@@ -6015,8 +6414,17 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// The image type to use for this node. Note that changing the image type
 	// will delete and recreate all nodes in the node pool.
 	ImageType pulumi.StringPtrInput `pulumi:"imageType"`
+	// )
+	// Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+	// Structure is documented below.
+	KubeletConfig ClusterNodePoolNodeConfigKubeletConfigPtrInput `pulumi:"kubeletConfig"`
 	// The Kubernetes labels (key/value pairs) to be applied to each node.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// )
+	// Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+	// Note that validations happen all server side. All attributes are optional.
+	// Structure is documented below.
+	LinuxNodeConfig ClusterNodePoolNodeConfigLinuxNodeConfigPtrInput `pulumi:"linuxNodeConfig"`
 	// The amount of local SSD disks that will be
 	// attached to each cluster node. Defaults to 0.
 	LocalSsdCount pulumi.IntPtrInput `pulumi:"localSsdCount"`
@@ -6162,7 +6570,7 @@ func (o ClusterNodePoolNodeConfigOutput) DiskSizeGb() pulumi.IntPtrOutput {
 }
 
 // Type of the disk attached to each node
-// (e.g. 'pd-standard' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
 func (o ClusterNodePoolNodeConfigOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
@@ -6181,9 +6589,24 @@ func (o ClusterNodePoolNodeConfigOutput) ImageType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.ImageType }).(pulumi.StringPtrOutput)
 }
 
+// )
+// Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+// Structure is documented below.
+func (o ClusterNodePoolNodeConfigOutput) KubeletConfig() ClusterNodePoolNodeConfigKubeletConfigPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigKubeletConfig { return v.KubeletConfig }).(ClusterNodePoolNodeConfigKubeletConfigPtrOutput)
+}
+
 // The Kubernetes labels (key/value pairs) to be applied to each node.
 func (o ClusterNodePoolNodeConfigOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// )
+// Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+// Note that validations happen all server side. All attributes are optional.
+// Structure is documented below.
+func (o ClusterNodePoolNodeConfigOutput) LinuxNodeConfig() ClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigLinuxNodeConfig { return v.LinuxNodeConfig }).(ClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput)
 }
 
 // The amount of local SSD disks that will be
@@ -6320,7 +6743,7 @@ func (o ClusterNodePoolNodeConfigPtrOutput) DiskSizeGb() pulumi.IntPtrOutput {
 }
 
 // Type of the disk attached to each node
-// (e.g. 'pd-standard' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
 func (o ClusterNodePoolNodeConfigPtrOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *string {
 		if v == nil {
@@ -6352,6 +6775,18 @@ func (o ClusterNodePoolNodeConfigPtrOutput) ImageType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// )
+// Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+// Structure is documented below.
+func (o ClusterNodePoolNodeConfigPtrOutput) KubeletConfig() ClusterNodePoolNodeConfigKubeletConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigKubeletConfig {
+		if v == nil {
+			return nil
+		}
+		return v.KubeletConfig
+	}).(ClusterNodePoolNodeConfigKubeletConfigPtrOutput)
+}
+
 // The Kubernetes labels (key/value pairs) to be applied to each node.
 func (o ClusterNodePoolNodeConfigPtrOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) map[string]string {
@@ -6360,6 +6795,19 @@ func (o ClusterNodePoolNodeConfigPtrOutput) Labels() pulumi.StringMapOutput {
 		}
 		return v.Labels
 	}).(pulumi.StringMapOutput)
+}
+
+// )
+// Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+// Note that validations happen all server side. All attributes are optional.
+// Structure is documented below.
+func (o ClusterNodePoolNodeConfigPtrOutput) LinuxNodeConfig() ClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigLinuxNodeConfig {
+		if v == nil {
+			return nil
+		}
+		return v.LinuxNodeConfig
+	}).(ClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput)
 }
 
 // The amount of local SSD disks that will be
@@ -6616,6 +7064,338 @@ func (o ClusterNodePoolNodeConfigGuestAcceleratorArrayOutput) Index(i pulumi.Int
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNodePoolNodeConfigGuestAccelerator {
 		return vs[0].([]ClusterNodePoolNodeConfigGuestAccelerator)[vs[1].(int)]
 	}).(ClusterNodePoolNodeConfigGuestAcceleratorOutput)
+}
+
+type ClusterNodePoolNodeConfigKubeletConfig struct {
+	// If true, enables CPU CFS quota enforcement for
+	// containers that specify CPU limits.
+	CpuCfsQuota *bool `pulumi:"cpuCfsQuota"`
+	// The CPU CFS quota period value. Specified
+	// as a sequence of decimal numbers, each with optional fraction and a unit suffix,
+	// such as `"300ms"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m",
+	// "h". The value must be a positive duration.
+	CpuCfsQuotaPeriod *string `pulumi:"cpuCfsQuotaPeriod"`
+	// The CPU management policy on the node. See
+	// [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
+	// One of `"none"` or `"static"`. Defaults to `none` when `kubeletConfig` is unset.
+	CpuManagerPolicy string `pulumi:"cpuManagerPolicy"`
+}
+
+// ClusterNodePoolNodeConfigKubeletConfigInput is an input type that accepts ClusterNodePoolNodeConfigKubeletConfigArgs and ClusterNodePoolNodeConfigKubeletConfigOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigKubeletConfigInput` via:
+//
+//          ClusterNodePoolNodeConfigKubeletConfigArgs{...}
+type ClusterNodePoolNodeConfigKubeletConfigInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigKubeletConfigOutput() ClusterNodePoolNodeConfigKubeletConfigOutput
+	ToClusterNodePoolNodeConfigKubeletConfigOutputWithContext(context.Context) ClusterNodePoolNodeConfigKubeletConfigOutput
+}
+
+type ClusterNodePoolNodeConfigKubeletConfigArgs struct {
+	// If true, enables CPU CFS quota enforcement for
+	// containers that specify CPU limits.
+	CpuCfsQuota pulumi.BoolPtrInput `pulumi:"cpuCfsQuota"`
+	// The CPU CFS quota period value. Specified
+	// as a sequence of decimal numbers, each with optional fraction and a unit suffix,
+	// such as `"300ms"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m",
+	// "h". The value must be a positive duration.
+	CpuCfsQuotaPeriod pulumi.StringPtrInput `pulumi:"cpuCfsQuotaPeriod"`
+	// The CPU management policy on the node. See
+	// [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
+	// One of `"none"` or `"static"`. Defaults to `none` when `kubeletConfig` is unset.
+	CpuManagerPolicy pulumi.StringInput `pulumi:"cpuManagerPolicy"`
+}
+
+func (ClusterNodePoolNodeConfigKubeletConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigKubeletConfig)(nil)).Elem()
+}
+
+func (i ClusterNodePoolNodeConfigKubeletConfigArgs) ToClusterNodePoolNodeConfigKubeletConfigOutput() ClusterNodePoolNodeConfigKubeletConfigOutput {
+	return i.ToClusterNodePoolNodeConfigKubeletConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigKubeletConfigArgs) ToClusterNodePoolNodeConfigKubeletConfigOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigKubeletConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigKubeletConfigOutput)
+}
+
+func (i ClusterNodePoolNodeConfigKubeletConfigArgs) ToClusterNodePoolNodeConfigKubeletConfigPtrOutput() ClusterNodePoolNodeConfigKubeletConfigPtrOutput {
+	return i.ToClusterNodePoolNodeConfigKubeletConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigKubeletConfigArgs) ToClusterNodePoolNodeConfigKubeletConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigKubeletConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigKubeletConfigOutput).ToClusterNodePoolNodeConfigKubeletConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterNodePoolNodeConfigKubeletConfigPtrInput is an input type that accepts ClusterNodePoolNodeConfigKubeletConfigArgs, ClusterNodePoolNodeConfigKubeletConfigPtr and ClusterNodePoolNodeConfigKubeletConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigKubeletConfigPtrInput` via:
+//
+//          ClusterNodePoolNodeConfigKubeletConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ClusterNodePoolNodeConfigKubeletConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigKubeletConfigPtrOutput() ClusterNodePoolNodeConfigKubeletConfigPtrOutput
+	ToClusterNodePoolNodeConfigKubeletConfigPtrOutputWithContext(context.Context) ClusterNodePoolNodeConfigKubeletConfigPtrOutput
+}
+
+type clusterNodePoolNodeConfigKubeletConfigPtrType ClusterNodePoolNodeConfigKubeletConfigArgs
+
+func ClusterNodePoolNodeConfigKubeletConfigPtr(v *ClusterNodePoolNodeConfigKubeletConfigArgs) ClusterNodePoolNodeConfigKubeletConfigPtrInput {
+	return (*clusterNodePoolNodeConfigKubeletConfigPtrType)(v)
+}
+
+func (*clusterNodePoolNodeConfigKubeletConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolNodeConfigKubeletConfig)(nil)).Elem()
+}
+
+func (i *clusterNodePoolNodeConfigKubeletConfigPtrType) ToClusterNodePoolNodeConfigKubeletConfigPtrOutput() ClusterNodePoolNodeConfigKubeletConfigPtrOutput {
+	return i.ToClusterNodePoolNodeConfigKubeletConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodePoolNodeConfigKubeletConfigPtrType) ToClusterNodePoolNodeConfigKubeletConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigKubeletConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigKubeletConfigPtrOutput)
+}
+
+type ClusterNodePoolNodeConfigKubeletConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigKubeletConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigKubeletConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigKubeletConfigOutput) ToClusterNodePoolNodeConfigKubeletConfigOutput() ClusterNodePoolNodeConfigKubeletConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigKubeletConfigOutput) ToClusterNodePoolNodeConfigKubeletConfigOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigKubeletConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigKubeletConfigOutput) ToClusterNodePoolNodeConfigKubeletConfigPtrOutput() ClusterNodePoolNodeConfigKubeletConfigPtrOutput {
+	return o.ToClusterNodePoolNodeConfigKubeletConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodePoolNodeConfigKubeletConfigOutput) ToClusterNodePoolNodeConfigKubeletConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigKubeletConfigPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigKubeletConfig) *ClusterNodePoolNodeConfigKubeletConfig {
+		return &v
+	}).(ClusterNodePoolNodeConfigKubeletConfigPtrOutput)
+}
+
+// If true, enables CPU CFS quota enforcement for
+// containers that specify CPU limits.
+func (o ClusterNodePoolNodeConfigKubeletConfigOutput) CpuCfsQuota() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigKubeletConfig) *bool { return v.CpuCfsQuota }).(pulumi.BoolPtrOutput)
+}
+
+// The CPU CFS quota period value. Specified
+// as a sequence of decimal numbers, each with optional fraction and a unit suffix,
+// such as `"300ms"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m",
+// "h". The value must be a positive duration.
+func (o ClusterNodePoolNodeConfigKubeletConfigOutput) CpuCfsQuotaPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigKubeletConfig) *string { return v.CpuCfsQuotaPeriod }).(pulumi.StringPtrOutput)
+}
+
+// The CPU management policy on the node. See
+// [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
+// One of `"none"` or `"static"`. Defaults to `none` when `kubeletConfig` is unset.
+func (o ClusterNodePoolNodeConfigKubeletConfigOutput) CpuManagerPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigKubeletConfig) string { return v.CpuManagerPolicy }).(pulumi.StringOutput)
+}
+
+type ClusterNodePoolNodeConfigKubeletConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigKubeletConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolNodeConfigKubeletConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigKubeletConfigPtrOutput) ToClusterNodePoolNodeConfigKubeletConfigPtrOutput() ClusterNodePoolNodeConfigKubeletConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigKubeletConfigPtrOutput) ToClusterNodePoolNodeConfigKubeletConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigKubeletConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigKubeletConfigPtrOutput) Elem() ClusterNodePoolNodeConfigKubeletConfigOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigKubeletConfig) ClusterNodePoolNodeConfigKubeletConfig { return *v }).(ClusterNodePoolNodeConfigKubeletConfigOutput)
+}
+
+// If true, enables CPU CFS quota enforcement for
+// containers that specify CPU limits.
+func (o ClusterNodePoolNodeConfigKubeletConfigPtrOutput) CpuCfsQuota() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigKubeletConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CpuCfsQuota
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The CPU CFS quota period value. Specified
+// as a sequence of decimal numbers, each with optional fraction and a unit suffix,
+// such as `"300ms"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m",
+// "h". The value must be a positive duration.
+func (o ClusterNodePoolNodeConfigKubeletConfigPtrOutput) CpuCfsQuotaPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigKubeletConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CpuCfsQuotaPeriod
+	}).(pulumi.StringPtrOutput)
+}
+
+// The CPU management policy on the node. See
+// [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
+// One of `"none"` or `"static"`. Defaults to `none` when `kubeletConfig` is unset.
+func (o ClusterNodePoolNodeConfigKubeletConfigPtrOutput) CpuManagerPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigKubeletConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CpuManagerPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterNodePoolNodeConfigLinuxNodeConfig struct {
+	// The Linux kernel parameters to be applied to the nodes
+	// and all pods running on the nodes. Specified as a map from the key, such as
+	// `net.core.wmem_max`, to a string value.
+	Sysctls map[string]string `pulumi:"sysctls"`
+}
+
+// ClusterNodePoolNodeConfigLinuxNodeConfigInput is an input type that accepts ClusterNodePoolNodeConfigLinuxNodeConfigArgs and ClusterNodePoolNodeConfigLinuxNodeConfigOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigLinuxNodeConfigInput` via:
+//
+//          ClusterNodePoolNodeConfigLinuxNodeConfigArgs{...}
+type ClusterNodePoolNodeConfigLinuxNodeConfigInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigLinuxNodeConfigOutput() ClusterNodePoolNodeConfigLinuxNodeConfigOutput
+	ToClusterNodePoolNodeConfigLinuxNodeConfigOutputWithContext(context.Context) ClusterNodePoolNodeConfigLinuxNodeConfigOutput
+}
+
+type ClusterNodePoolNodeConfigLinuxNodeConfigArgs struct {
+	// The Linux kernel parameters to be applied to the nodes
+	// and all pods running on the nodes. Specified as a map from the key, such as
+	// `net.core.wmem_max`, to a string value.
+	Sysctls pulumi.StringMapInput `pulumi:"sysctls"`
+}
+
+func (ClusterNodePoolNodeConfigLinuxNodeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigLinuxNodeConfig)(nil)).Elem()
+}
+
+func (i ClusterNodePoolNodeConfigLinuxNodeConfigArgs) ToClusterNodePoolNodeConfigLinuxNodeConfigOutput() ClusterNodePoolNodeConfigLinuxNodeConfigOutput {
+	return i.ToClusterNodePoolNodeConfigLinuxNodeConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigLinuxNodeConfigArgs) ToClusterNodePoolNodeConfigLinuxNodeConfigOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigLinuxNodeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigLinuxNodeConfigOutput)
+}
+
+func (i ClusterNodePoolNodeConfigLinuxNodeConfigArgs) ToClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput() ClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput {
+	return i.ToClusterNodePoolNodeConfigLinuxNodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigLinuxNodeConfigArgs) ToClusterNodePoolNodeConfigLinuxNodeConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigLinuxNodeConfigOutput).ToClusterNodePoolNodeConfigLinuxNodeConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterNodePoolNodeConfigLinuxNodeConfigPtrInput is an input type that accepts ClusterNodePoolNodeConfigLinuxNodeConfigArgs, ClusterNodePoolNodeConfigLinuxNodeConfigPtr and ClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigLinuxNodeConfigPtrInput` via:
+//
+//          ClusterNodePoolNodeConfigLinuxNodeConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ClusterNodePoolNodeConfigLinuxNodeConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput() ClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput
+	ToClusterNodePoolNodeConfigLinuxNodeConfigPtrOutputWithContext(context.Context) ClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput
+}
+
+type clusterNodePoolNodeConfigLinuxNodeConfigPtrType ClusterNodePoolNodeConfigLinuxNodeConfigArgs
+
+func ClusterNodePoolNodeConfigLinuxNodeConfigPtr(v *ClusterNodePoolNodeConfigLinuxNodeConfigArgs) ClusterNodePoolNodeConfigLinuxNodeConfigPtrInput {
+	return (*clusterNodePoolNodeConfigLinuxNodeConfigPtrType)(v)
+}
+
+func (*clusterNodePoolNodeConfigLinuxNodeConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolNodeConfigLinuxNodeConfig)(nil)).Elem()
+}
+
+func (i *clusterNodePoolNodeConfigLinuxNodeConfigPtrType) ToClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput() ClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput {
+	return i.ToClusterNodePoolNodeConfigLinuxNodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodePoolNodeConfigLinuxNodeConfigPtrType) ToClusterNodePoolNodeConfigLinuxNodeConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput)
+}
+
+type ClusterNodePoolNodeConfigLinuxNodeConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigLinuxNodeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigLinuxNodeConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigLinuxNodeConfigOutput) ToClusterNodePoolNodeConfigLinuxNodeConfigOutput() ClusterNodePoolNodeConfigLinuxNodeConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigLinuxNodeConfigOutput) ToClusterNodePoolNodeConfigLinuxNodeConfigOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigLinuxNodeConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigLinuxNodeConfigOutput) ToClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput() ClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput {
+	return o.ToClusterNodePoolNodeConfigLinuxNodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodePoolNodeConfigLinuxNodeConfigOutput) ToClusterNodePoolNodeConfigLinuxNodeConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigLinuxNodeConfig) *ClusterNodePoolNodeConfigLinuxNodeConfig {
+		return &v
+	}).(ClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput)
+}
+
+// The Linux kernel parameters to be applied to the nodes
+// and all pods running on the nodes. Specified as a map from the key, such as
+// `net.core.wmem_max`, to a string value.
+func (o ClusterNodePoolNodeConfigLinuxNodeConfigOutput) Sysctls() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigLinuxNodeConfig) map[string]string { return v.Sysctls }).(pulumi.StringMapOutput)
+}
+
+type ClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolNodeConfigLinuxNodeConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput) ToClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput() ClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput) ToClusterNodePoolNodeConfigLinuxNodeConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput) Elem() ClusterNodePoolNodeConfigLinuxNodeConfigOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigLinuxNodeConfig) ClusterNodePoolNodeConfigLinuxNodeConfig { return *v }).(ClusterNodePoolNodeConfigLinuxNodeConfigOutput)
+}
+
+// The Linux kernel parameters to be applied to the nodes
+// and all pods running on the nodes. Specified as a map from the key, such as
+// `net.core.wmem_max`, to a string value.
+func (o ClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput) Sysctls() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigLinuxNodeConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Sysctls
+	}).(pulumi.StringMapOutput)
 }
 
 type ClusterNodePoolNodeConfigSandboxConfig struct {
@@ -8923,7 +9703,9 @@ type NodePoolNodeConfig struct {
 	DiskType               *string                                   `pulumi:"diskType"`
 	GuestAccelerators      []NodePoolNodeConfigGuestAccelerator      `pulumi:"guestAccelerators"`
 	ImageType              *string                                   `pulumi:"imageType"`
+	KubeletConfig          *NodePoolNodeConfigKubeletConfig          `pulumi:"kubeletConfig"`
 	Labels                 map[string]string                         `pulumi:"labels"`
+	LinuxNodeConfig        *NodePoolNodeConfigLinuxNodeConfig        `pulumi:"linuxNodeConfig"`
 	LocalSsdCount          *int                                      `pulumi:"localSsdCount"`
 	MachineType            *string                                   `pulumi:"machineType"`
 	Metadata               map[string]string                         `pulumi:"metadata"`
@@ -8955,7 +9737,9 @@ type NodePoolNodeConfigArgs struct {
 	DiskType               pulumi.StringPtrInput                            `pulumi:"diskType"`
 	GuestAccelerators      NodePoolNodeConfigGuestAcceleratorArrayInput     `pulumi:"guestAccelerators"`
 	ImageType              pulumi.StringPtrInput                            `pulumi:"imageType"`
+	KubeletConfig          NodePoolNodeConfigKubeletConfigPtrInput          `pulumi:"kubeletConfig"`
 	Labels                 pulumi.StringMapInput                            `pulumi:"labels"`
+	LinuxNodeConfig        NodePoolNodeConfigLinuxNodeConfigPtrInput        `pulumi:"linuxNodeConfig"`
 	LocalSsdCount          pulumi.IntPtrInput                               `pulumi:"localSsdCount"`
 	MachineType            pulumi.StringPtrInput                            `pulumi:"machineType"`
 	Metadata               pulumi.StringMapInput                            `pulumi:"metadata"`
@@ -9066,8 +9850,16 @@ func (o NodePoolNodeConfigOutput) ImageType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolNodeConfig) *string { return v.ImageType }).(pulumi.StringPtrOutput)
 }
 
+func (o NodePoolNodeConfigOutput) KubeletConfig() NodePoolNodeConfigKubeletConfigPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfig) *NodePoolNodeConfigKubeletConfig { return v.KubeletConfig }).(NodePoolNodeConfigKubeletConfigPtrOutput)
+}
+
 func (o NodePoolNodeConfigOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v NodePoolNodeConfig) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+func (o NodePoolNodeConfigOutput) LinuxNodeConfig() NodePoolNodeConfigLinuxNodeConfigPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfig) *NodePoolNodeConfigLinuxNodeConfig { return v.LinuxNodeConfig }).(NodePoolNodeConfigLinuxNodeConfigPtrOutput)
 }
 
 func (o NodePoolNodeConfigOutput) LocalSsdCount() pulumi.IntPtrOutput {
@@ -9181,6 +9973,15 @@ func (o NodePoolNodeConfigPtrOutput) ImageType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o NodePoolNodeConfigPtrOutput) KubeletConfig() NodePoolNodeConfigKubeletConfigPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfig) *NodePoolNodeConfigKubeletConfig {
+		if v == nil {
+			return nil
+		}
+		return v.KubeletConfig
+	}).(NodePoolNodeConfigKubeletConfigPtrOutput)
+}
+
 func (o NodePoolNodeConfigPtrOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *NodePoolNodeConfig) map[string]string {
 		if v == nil {
@@ -9188,6 +9989,15 @@ func (o NodePoolNodeConfigPtrOutput) Labels() pulumi.StringMapOutput {
 		}
 		return v.Labels
 	}).(pulumi.StringMapOutput)
+}
+
+func (o NodePoolNodeConfigPtrOutput) LinuxNodeConfig() NodePoolNodeConfigLinuxNodeConfigPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfig) *NodePoolNodeConfigLinuxNodeConfig {
+		if v == nil {
+			return nil
+		}
+		return v.LinuxNodeConfig
+	}).(NodePoolNodeConfigLinuxNodeConfigPtrOutput)
 }
 
 func (o NodePoolNodeConfigPtrOutput) LocalSsdCount() pulumi.IntPtrOutput {
@@ -9396,6 +10206,288 @@ func (o NodePoolNodeConfigGuestAcceleratorArrayOutput) Index(i pulumi.IntInput) 
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodePoolNodeConfigGuestAccelerator {
 		return vs[0].([]NodePoolNodeConfigGuestAccelerator)[vs[1].(int)]
 	}).(NodePoolNodeConfigGuestAcceleratorOutput)
+}
+
+type NodePoolNodeConfigKubeletConfig struct {
+	CpuCfsQuota       *bool   `pulumi:"cpuCfsQuota"`
+	CpuCfsQuotaPeriod *string `pulumi:"cpuCfsQuotaPeriod"`
+	CpuManagerPolicy  string  `pulumi:"cpuManagerPolicy"`
+}
+
+// NodePoolNodeConfigKubeletConfigInput is an input type that accepts NodePoolNodeConfigKubeletConfigArgs and NodePoolNodeConfigKubeletConfigOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigKubeletConfigInput` via:
+//
+//          NodePoolNodeConfigKubeletConfigArgs{...}
+type NodePoolNodeConfigKubeletConfigInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigKubeletConfigOutput() NodePoolNodeConfigKubeletConfigOutput
+	ToNodePoolNodeConfigKubeletConfigOutputWithContext(context.Context) NodePoolNodeConfigKubeletConfigOutput
+}
+
+type NodePoolNodeConfigKubeletConfigArgs struct {
+	CpuCfsQuota       pulumi.BoolPtrInput   `pulumi:"cpuCfsQuota"`
+	CpuCfsQuotaPeriod pulumi.StringPtrInput `pulumi:"cpuCfsQuotaPeriod"`
+	CpuManagerPolicy  pulumi.StringInput    `pulumi:"cpuManagerPolicy"`
+}
+
+func (NodePoolNodeConfigKubeletConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigKubeletConfig)(nil)).Elem()
+}
+
+func (i NodePoolNodeConfigKubeletConfigArgs) ToNodePoolNodeConfigKubeletConfigOutput() NodePoolNodeConfigKubeletConfigOutput {
+	return i.ToNodePoolNodeConfigKubeletConfigOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigKubeletConfigArgs) ToNodePoolNodeConfigKubeletConfigOutputWithContext(ctx context.Context) NodePoolNodeConfigKubeletConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigKubeletConfigOutput)
+}
+
+func (i NodePoolNodeConfigKubeletConfigArgs) ToNodePoolNodeConfigKubeletConfigPtrOutput() NodePoolNodeConfigKubeletConfigPtrOutput {
+	return i.ToNodePoolNodeConfigKubeletConfigPtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigKubeletConfigArgs) ToNodePoolNodeConfigKubeletConfigPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigKubeletConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigKubeletConfigOutput).ToNodePoolNodeConfigKubeletConfigPtrOutputWithContext(ctx)
+}
+
+// NodePoolNodeConfigKubeletConfigPtrInput is an input type that accepts NodePoolNodeConfigKubeletConfigArgs, NodePoolNodeConfigKubeletConfigPtr and NodePoolNodeConfigKubeletConfigPtrOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigKubeletConfigPtrInput` via:
+//
+//          NodePoolNodeConfigKubeletConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type NodePoolNodeConfigKubeletConfigPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigKubeletConfigPtrOutput() NodePoolNodeConfigKubeletConfigPtrOutput
+	ToNodePoolNodeConfigKubeletConfigPtrOutputWithContext(context.Context) NodePoolNodeConfigKubeletConfigPtrOutput
+}
+
+type nodePoolNodeConfigKubeletConfigPtrType NodePoolNodeConfigKubeletConfigArgs
+
+func NodePoolNodeConfigKubeletConfigPtr(v *NodePoolNodeConfigKubeletConfigArgs) NodePoolNodeConfigKubeletConfigPtrInput {
+	return (*nodePoolNodeConfigKubeletConfigPtrType)(v)
+}
+
+func (*nodePoolNodeConfigKubeletConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolNodeConfigKubeletConfig)(nil)).Elem()
+}
+
+func (i *nodePoolNodeConfigKubeletConfigPtrType) ToNodePoolNodeConfigKubeletConfigPtrOutput() NodePoolNodeConfigKubeletConfigPtrOutput {
+	return i.ToNodePoolNodeConfigKubeletConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolNodeConfigKubeletConfigPtrType) ToNodePoolNodeConfigKubeletConfigPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigKubeletConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigKubeletConfigPtrOutput)
+}
+
+type NodePoolNodeConfigKubeletConfigOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigKubeletConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigKubeletConfig)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigKubeletConfigOutput) ToNodePoolNodeConfigKubeletConfigOutput() NodePoolNodeConfigKubeletConfigOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigKubeletConfigOutput) ToNodePoolNodeConfigKubeletConfigOutputWithContext(ctx context.Context) NodePoolNodeConfigKubeletConfigOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigKubeletConfigOutput) ToNodePoolNodeConfigKubeletConfigPtrOutput() NodePoolNodeConfigKubeletConfigPtrOutput {
+	return o.ToNodePoolNodeConfigKubeletConfigPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolNodeConfigKubeletConfigOutput) ToNodePoolNodeConfigKubeletConfigPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigKubeletConfigPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigKubeletConfig) *NodePoolNodeConfigKubeletConfig {
+		return &v
+	}).(NodePoolNodeConfigKubeletConfigPtrOutput)
+}
+func (o NodePoolNodeConfigKubeletConfigOutput) CpuCfsQuota() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigKubeletConfig) *bool { return v.CpuCfsQuota }).(pulumi.BoolPtrOutput)
+}
+
+func (o NodePoolNodeConfigKubeletConfigOutput) CpuCfsQuotaPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigKubeletConfig) *string { return v.CpuCfsQuotaPeriod }).(pulumi.StringPtrOutput)
+}
+
+func (o NodePoolNodeConfigKubeletConfigOutput) CpuManagerPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigKubeletConfig) string { return v.CpuManagerPolicy }).(pulumi.StringOutput)
+}
+
+type NodePoolNodeConfigKubeletConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigKubeletConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolNodeConfigKubeletConfig)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigKubeletConfigPtrOutput) ToNodePoolNodeConfigKubeletConfigPtrOutput() NodePoolNodeConfigKubeletConfigPtrOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigKubeletConfigPtrOutput) ToNodePoolNodeConfigKubeletConfigPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigKubeletConfigPtrOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigKubeletConfigPtrOutput) Elem() NodePoolNodeConfigKubeletConfigOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigKubeletConfig) NodePoolNodeConfigKubeletConfig { return *v }).(NodePoolNodeConfigKubeletConfigOutput)
+}
+
+func (o NodePoolNodeConfigKubeletConfigPtrOutput) CpuCfsQuota() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigKubeletConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CpuCfsQuota
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o NodePoolNodeConfigKubeletConfigPtrOutput) CpuCfsQuotaPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigKubeletConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CpuCfsQuotaPeriod
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o NodePoolNodeConfigKubeletConfigPtrOutput) CpuManagerPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigKubeletConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CpuManagerPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+type NodePoolNodeConfigLinuxNodeConfig struct {
+	Sysctls map[string]string `pulumi:"sysctls"`
+}
+
+// NodePoolNodeConfigLinuxNodeConfigInput is an input type that accepts NodePoolNodeConfigLinuxNodeConfigArgs and NodePoolNodeConfigLinuxNodeConfigOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigLinuxNodeConfigInput` via:
+//
+//          NodePoolNodeConfigLinuxNodeConfigArgs{...}
+type NodePoolNodeConfigLinuxNodeConfigInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigLinuxNodeConfigOutput() NodePoolNodeConfigLinuxNodeConfigOutput
+	ToNodePoolNodeConfigLinuxNodeConfigOutputWithContext(context.Context) NodePoolNodeConfigLinuxNodeConfigOutput
+}
+
+type NodePoolNodeConfigLinuxNodeConfigArgs struct {
+	Sysctls pulumi.StringMapInput `pulumi:"sysctls"`
+}
+
+func (NodePoolNodeConfigLinuxNodeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigLinuxNodeConfig)(nil)).Elem()
+}
+
+func (i NodePoolNodeConfigLinuxNodeConfigArgs) ToNodePoolNodeConfigLinuxNodeConfigOutput() NodePoolNodeConfigLinuxNodeConfigOutput {
+	return i.ToNodePoolNodeConfigLinuxNodeConfigOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigLinuxNodeConfigArgs) ToNodePoolNodeConfigLinuxNodeConfigOutputWithContext(ctx context.Context) NodePoolNodeConfigLinuxNodeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigLinuxNodeConfigOutput)
+}
+
+func (i NodePoolNodeConfigLinuxNodeConfigArgs) ToNodePoolNodeConfigLinuxNodeConfigPtrOutput() NodePoolNodeConfigLinuxNodeConfigPtrOutput {
+	return i.ToNodePoolNodeConfigLinuxNodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigLinuxNodeConfigArgs) ToNodePoolNodeConfigLinuxNodeConfigPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigLinuxNodeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigLinuxNodeConfigOutput).ToNodePoolNodeConfigLinuxNodeConfigPtrOutputWithContext(ctx)
+}
+
+// NodePoolNodeConfigLinuxNodeConfigPtrInput is an input type that accepts NodePoolNodeConfigLinuxNodeConfigArgs, NodePoolNodeConfigLinuxNodeConfigPtr and NodePoolNodeConfigLinuxNodeConfigPtrOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigLinuxNodeConfigPtrInput` via:
+//
+//          NodePoolNodeConfigLinuxNodeConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type NodePoolNodeConfigLinuxNodeConfigPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigLinuxNodeConfigPtrOutput() NodePoolNodeConfigLinuxNodeConfigPtrOutput
+	ToNodePoolNodeConfigLinuxNodeConfigPtrOutputWithContext(context.Context) NodePoolNodeConfigLinuxNodeConfigPtrOutput
+}
+
+type nodePoolNodeConfigLinuxNodeConfigPtrType NodePoolNodeConfigLinuxNodeConfigArgs
+
+func NodePoolNodeConfigLinuxNodeConfigPtr(v *NodePoolNodeConfigLinuxNodeConfigArgs) NodePoolNodeConfigLinuxNodeConfigPtrInput {
+	return (*nodePoolNodeConfigLinuxNodeConfigPtrType)(v)
+}
+
+func (*nodePoolNodeConfigLinuxNodeConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolNodeConfigLinuxNodeConfig)(nil)).Elem()
+}
+
+func (i *nodePoolNodeConfigLinuxNodeConfigPtrType) ToNodePoolNodeConfigLinuxNodeConfigPtrOutput() NodePoolNodeConfigLinuxNodeConfigPtrOutput {
+	return i.ToNodePoolNodeConfigLinuxNodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolNodeConfigLinuxNodeConfigPtrType) ToNodePoolNodeConfigLinuxNodeConfigPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigLinuxNodeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigLinuxNodeConfigPtrOutput)
+}
+
+type NodePoolNodeConfigLinuxNodeConfigOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigLinuxNodeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigLinuxNodeConfig)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigLinuxNodeConfigOutput) ToNodePoolNodeConfigLinuxNodeConfigOutput() NodePoolNodeConfigLinuxNodeConfigOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigLinuxNodeConfigOutput) ToNodePoolNodeConfigLinuxNodeConfigOutputWithContext(ctx context.Context) NodePoolNodeConfigLinuxNodeConfigOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigLinuxNodeConfigOutput) ToNodePoolNodeConfigLinuxNodeConfigPtrOutput() NodePoolNodeConfigLinuxNodeConfigPtrOutput {
+	return o.ToNodePoolNodeConfigLinuxNodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolNodeConfigLinuxNodeConfigOutput) ToNodePoolNodeConfigLinuxNodeConfigPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigLinuxNodeConfigPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigLinuxNodeConfig) *NodePoolNodeConfigLinuxNodeConfig {
+		return &v
+	}).(NodePoolNodeConfigLinuxNodeConfigPtrOutput)
+}
+func (o NodePoolNodeConfigLinuxNodeConfigOutput) Sysctls() pulumi.StringMapOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigLinuxNodeConfig) map[string]string { return v.Sysctls }).(pulumi.StringMapOutput)
+}
+
+type NodePoolNodeConfigLinuxNodeConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigLinuxNodeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolNodeConfigLinuxNodeConfig)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigLinuxNodeConfigPtrOutput) ToNodePoolNodeConfigLinuxNodeConfigPtrOutput() NodePoolNodeConfigLinuxNodeConfigPtrOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigLinuxNodeConfigPtrOutput) ToNodePoolNodeConfigLinuxNodeConfigPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigLinuxNodeConfigPtrOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigLinuxNodeConfigPtrOutput) Elem() NodePoolNodeConfigLinuxNodeConfigOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigLinuxNodeConfig) NodePoolNodeConfigLinuxNodeConfig { return *v }).(NodePoolNodeConfigLinuxNodeConfigOutput)
+}
+
+func (o NodePoolNodeConfigLinuxNodeConfigPtrOutput) Sysctls() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigLinuxNodeConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Sysctls
+	}).(pulumi.StringMapOutput)
 }
 
 type NodePoolNodeConfigSandboxConfig struct {
@@ -12833,7 +13925,9 @@ type GetClusterNodeConfig struct {
 	DiskType                string                                       `pulumi:"diskType"`
 	GuestAccelerators       []GetClusterNodeConfigGuestAccelerator       `pulumi:"guestAccelerators"`
 	ImageType               string                                       `pulumi:"imageType"`
+	KubeletConfigs          []GetClusterNodeConfigKubeletConfig          `pulumi:"kubeletConfigs"`
 	Labels                  map[string]string                            `pulumi:"labels"`
+	LinuxNodeConfigs        []GetClusterNodeConfigLinuxNodeConfig        `pulumi:"linuxNodeConfigs"`
 	LocalSsdCount           int                                          `pulumi:"localSsdCount"`
 	MachineType             string                                       `pulumi:"machineType"`
 	Metadata                map[string]string                            `pulumi:"metadata"`
@@ -12865,7 +13959,9 @@ type GetClusterNodeConfigArgs struct {
 	DiskType                pulumi.StringInput                                   `pulumi:"diskType"`
 	GuestAccelerators       GetClusterNodeConfigGuestAcceleratorArrayInput       `pulumi:"guestAccelerators"`
 	ImageType               pulumi.StringInput                                   `pulumi:"imageType"`
+	KubeletConfigs          GetClusterNodeConfigKubeletConfigArrayInput          `pulumi:"kubeletConfigs"`
 	Labels                  pulumi.StringMapInput                                `pulumi:"labels"`
+	LinuxNodeConfigs        GetClusterNodeConfigLinuxNodeConfigArrayInput        `pulumi:"linuxNodeConfigs"`
 	LocalSsdCount           pulumi.IntInput                                      `pulumi:"localSsdCount"`
 	MachineType             pulumi.StringInput                                   `pulumi:"machineType"`
 	Metadata                pulumi.StringMapInput                                `pulumi:"metadata"`
@@ -12951,8 +14047,16 @@ func (o GetClusterNodeConfigOutput) ImageType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodeConfig) string { return v.ImageType }).(pulumi.StringOutput)
 }
 
+func (o GetClusterNodeConfigOutput) KubeletConfigs() GetClusterNodeConfigKubeletConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfig) []GetClusterNodeConfigKubeletConfig { return v.KubeletConfigs }).(GetClusterNodeConfigKubeletConfigArrayOutput)
+}
+
 func (o GetClusterNodeConfigOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetClusterNodeConfig) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+func (o GetClusterNodeConfigOutput) LinuxNodeConfigs() GetClusterNodeConfigLinuxNodeConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfig) []GetClusterNodeConfigLinuxNodeConfig { return v.LinuxNodeConfigs }).(GetClusterNodeConfigLinuxNodeConfigArrayOutput)
 }
 
 func (o GetClusterNodeConfigOutput) LocalSsdCount() pulumi.IntOutput {
@@ -13125,6 +14229,206 @@ func (o GetClusterNodeConfigGuestAcceleratorArrayOutput) Index(i pulumi.IntInput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigGuestAccelerator {
 		return vs[0].([]GetClusterNodeConfigGuestAccelerator)[vs[1].(int)]
 	}).(GetClusterNodeConfigGuestAcceleratorOutput)
+}
+
+type GetClusterNodeConfigKubeletConfig struct {
+	CpuCfsQuota       bool   `pulumi:"cpuCfsQuota"`
+	CpuCfsQuotaPeriod string `pulumi:"cpuCfsQuotaPeriod"`
+	CpuManagerPolicy  string `pulumi:"cpuManagerPolicy"`
+}
+
+// GetClusterNodeConfigKubeletConfigInput is an input type that accepts GetClusterNodeConfigKubeletConfigArgs and GetClusterNodeConfigKubeletConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigKubeletConfigInput` via:
+//
+//          GetClusterNodeConfigKubeletConfigArgs{...}
+type GetClusterNodeConfigKubeletConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigKubeletConfigOutput() GetClusterNodeConfigKubeletConfigOutput
+	ToGetClusterNodeConfigKubeletConfigOutputWithContext(context.Context) GetClusterNodeConfigKubeletConfigOutput
+}
+
+type GetClusterNodeConfigKubeletConfigArgs struct {
+	CpuCfsQuota       pulumi.BoolInput   `pulumi:"cpuCfsQuota"`
+	CpuCfsQuotaPeriod pulumi.StringInput `pulumi:"cpuCfsQuotaPeriod"`
+	CpuManagerPolicy  pulumi.StringInput `pulumi:"cpuManagerPolicy"`
+}
+
+func (GetClusterNodeConfigKubeletConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigKubeletConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigKubeletConfigArgs) ToGetClusterNodeConfigKubeletConfigOutput() GetClusterNodeConfigKubeletConfigOutput {
+	return i.ToGetClusterNodeConfigKubeletConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigKubeletConfigArgs) ToGetClusterNodeConfigKubeletConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigKubeletConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigKubeletConfigOutput)
+}
+
+// GetClusterNodeConfigKubeletConfigArrayInput is an input type that accepts GetClusterNodeConfigKubeletConfigArray and GetClusterNodeConfigKubeletConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigKubeletConfigArrayInput` via:
+//
+//          GetClusterNodeConfigKubeletConfigArray{ GetClusterNodeConfigKubeletConfigArgs{...} }
+type GetClusterNodeConfigKubeletConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigKubeletConfigArrayOutput() GetClusterNodeConfigKubeletConfigArrayOutput
+	ToGetClusterNodeConfigKubeletConfigArrayOutputWithContext(context.Context) GetClusterNodeConfigKubeletConfigArrayOutput
+}
+
+type GetClusterNodeConfigKubeletConfigArray []GetClusterNodeConfigKubeletConfigInput
+
+func (GetClusterNodeConfigKubeletConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigKubeletConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigKubeletConfigArray) ToGetClusterNodeConfigKubeletConfigArrayOutput() GetClusterNodeConfigKubeletConfigArrayOutput {
+	return i.ToGetClusterNodeConfigKubeletConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigKubeletConfigArray) ToGetClusterNodeConfigKubeletConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigKubeletConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigKubeletConfigArrayOutput)
+}
+
+type GetClusterNodeConfigKubeletConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigKubeletConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigKubeletConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigKubeletConfigOutput) ToGetClusterNodeConfigKubeletConfigOutput() GetClusterNodeConfigKubeletConfigOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigKubeletConfigOutput) ToGetClusterNodeConfigKubeletConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigKubeletConfigOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigKubeletConfigOutput) CpuCfsQuota() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfig) bool { return v.CpuCfsQuota }).(pulumi.BoolOutput)
+}
+
+func (o GetClusterNodeConfigKubeletConfigOutput) CpuCfsQuotaPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfig) string { return v.CpuCfsQuotaPeriod }).(pulumi.StringOutput)
+}
+
+func (o GetClusterNodeConfigKubeletConfigOutput) CpuManagerPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfig) string { return v.CpuManagerPolicy }).(pulumi.StringOutput)
+}
+
+type GetClusterNodeConfigKubeletConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigKubeletConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigKubeletConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigKubeletConfigArrayOutput) ToGetClusterNodeConfigKubeletConfigArrayOutput() GetClusterNodeConfigKubeletConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigKubeletConfigArrayOutput) ToGetClusterNodeConfigKubeletConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigKubeletConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigKubeletConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigKubeletConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigKubeletConfig {
+		return vs[0].([]GetClusterNodeConfigKubeletConfig)[vs[1].(int)]
+	}).(GetClusterNodeConfigKubeletConfigOutput)
+}
+
+type GetClusterNodeConfigLinuxNodeConfig struct {
+	Sysctls map[string]string `pulumi:"sysctls"`
+}
+
+// GetClusterNodeConfigLinuxNodeConfigInput is an input type that accepts GetClusterNodeConfigLinuxNodeConfigArgs and GetClusterNodeConfigLinuxNodeConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigLinuxNodeConfigInput` via:
+//
+//          GetClusterNodeConfigLinuxNodeConfigArgs{...}
+type GetClusterNodeConfigLinuxNodeConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigLinuxNodeConfigOutput() GetClusterNodeConfigLinuxNodeConfigOutput
+	ToGetClusterNodeConfigLinuxNodeConfigOutputWithContext(context.Context) GetClusterNodeConfigLinuxNodeConfigOutput
+}
+
+type GetClusterNodeConfigLinuxNodeConfigArgs struct {
+	Sysctls pulumi.StringMapInput `pulumi:"sysctls"`
+}
+
+func (GetClusterNodeConfigLinuxNodeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigLinuxNodeConfigArgs) ToGetClusterNodeConfigLinuxNodeConfigOutput() GetClusterNodeConfigLinuxNodeConfigOutput {
+	return i.ToGetClusterNodeConfigLinuxNodeConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigLinuxNodeConfigArgs) ToGetClusterNodeConfigLinuxNodeConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigLinuxNodeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigLinuxNodeConfigOutput)
+}
+
+// GetClusterNodeConfigLinuxNodeConfigArrayInput is an input type that accepts GetClusterNodeConfigLinuxNodeConfigArray and GetClusterNodeConfigLinuxNodeConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigLinuxNodeConfigArrayInput` via:
+//
+//          GetClusterNodeConfigLinuxNodeConfigArray{ GetClusterNodeConfigLinuxNodeConfigArgs{...} }
+type GetClusterNodeConfigLinuxNodeConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigLinuxNodeConfigArrayOutput() GetClusterNodeConfigLinuxNodeConfigArrayOutput
+	ToGetClusterNodeConfigLinuxNodeConfigArrayOutputWithContext(context.Context) GetClusterNodeConfigLinuxNodeConfigArrayOutput
+}
+
+type GetClusterNodeConfigLinuxNodeConfigArray []GetClusterNodeConfigLinuxNodeConfigInput
+
+func (GetClusterNodeConfigLinuxNodeConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigLinuxNodeConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigLinuxNodeConfigArray) ToGetClusterNodeConfigLinuxNodeConfigArrayOutput() GetClusterNodeConfigLinuxNodeConfigArrayOutput {
+	return i.ToGetClusterNodeConfigLinuxNodeConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigLinuxNodeConfigArray) ToGetClusterNodeConfigLinuxNodeConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigLinuxNodeConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigLinuxNodeConfigArrayOutput)
+}
+
+type GetClusterNodeConfigLinuxNodeConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigLinuxNodeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigOutput) ToGetClusterNodeConfigLinuxNodeConfigOutput() GetClusterNodeConfigLinuxNodeConfigOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigOutput) ToGetClusterNodeConfigLinuxNodeConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigLinuxNodeConfigOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigOutput) Sysctls() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigLinuxNodeConfig) map[string]string { return v.Sysctls }).(pulumi.StringMapOutput)
+}
+
+type GetClusterNodeConfigLinuxNodeConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigLinuxNodeConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigLinuxNodeConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigArrayOutput) ToGetClusterNodeConfigLinuxNodeConfigArrayOutput() GetClusterNodeConfigLinuxNodeConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigArrayOutput) ToGetClusterNodeConfigLinuxNodeConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigLinuxNodeConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigLinuxNodeConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigLinuxNodeConfig {
+		return vs[0].([]GetClusterNodeConfigLinuxNodeConfig)[vs[1].(int)]
+	}).(GetClusterNodeConfigLinuxNodeConfigOutput)
 }
 
 type GetClusterNodeConfigSandboxConfig struct {
@@ -13890,7 +15194,9 @@ type GetClusterNodePoolNodeConfig struct {
 	DiskType                string                                               `pulumi:"diskType"`
 	GuestAccelerators       []GetClusterNodePoolNodeConfigGuestAccelerator       `pulumi:"guestAccelerators"`
 	ImageType               string                                               `pulumi:"imageType"`
+	KubeletConfigs          []GetClusterNodePoolNodeConfigKubeletConfig          `pulumi:"kubeletConfigs"`
 	Labels                  map[string]string                                    `pulumi:"labels"`
+	LinuxNodeConfigs        []GetClusterNodePoolNodeConfigLinuxNodeConfig        `pulumi:"linuxNodeConfigs"`
 	LocalSsdCount           int                                                  `pulumi:"localSsdCount"`
 	MachineType             string                                               `pulumi:"machineType"`
 	Metadata                map[string]string                                    `pulumi:"metadata"`
@@ -13922,7 +15228,9 @@ type GetClusterNodePoolNodeConfigArgs struct {
 	DiskType                pulumi.StringInput                                           `pulumi:"diskType"`
 	GuestAccelerators       GetClusterNodePoolNodeConfigGuestAcceleratorArrayInput       `pulumi:"guestAccelerators"`
 	ImageType               pulumi.StringInput                                           `pulumi:"imageType"`
+	KubeletConfigs          GetClusterNodePoolNodeConfigKubeletConfigArrayInput          `pulumi:"kubeletConfigs"`
 	Labels                  pulumi.StringMapInput                                        `pulumi:"labels"`
+	LinuxNodeConfigs        GetClusterNodePoolNodeConfigLinuxNodeConfigArrayInput        `pulumi:"linuxNodeConfigs"`
 	LocalSsdCount           pulumi.IntInput                                              `pulumi:"localSsdCount"`
 	MachineType             pulumi.StringInput                                           `pulumi:"machineType"`
 	Metadata                pulumi.StringMapInput                                        `pulumi:"metadata"`
@@ -14010,8 +15318,20 @@ func (o GetClusterNodePoolNodeConfigOutput) ImageType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) string { return v.ImageType }).(pulumi.StringOutput)
 }
 
+func (o GetClusterNodePoolNodeConfigOutput) KubeletConfigs() GetClusterNodePoolNodeConfigKubeletConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigKubeletConfig {
+		return v.KubeletConfigs
+	}).(GetClusterNodePoolNodeConfigKubeletConfigArrayOutput)
+}
+
 func (o GetClusterNodePoolNodeConfigOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+func (o GetClusterNodePoolNodeConfigOutput) LinuxNodeConfigs() GetClusterNodePoolNodeConfigLinuxNodeConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigLinuxNodeConfig {
+		return v.LinuxNodeConfigs
+	}).(GetClusterNodePoolNodeConfigLinuxNodeConfigArrayOutput)
 }
 
 func (o GetClusterNodePoolNodeConfigOutput) LocalSsdCount() pulumi.IntOutput {
@@ -14186,6 +15506,206 @@ func (o GetClusterNodePoolNodeConfigGuestAcceleratorArrayOutput) Index(i pulumi.
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigGuestAccelerator {
 		return vs[0].([]GetClusterNodePoolNodeConfigGuestAccelerator)[vs[1].(int)]
 	}).(GetClusterNodePoolNodeConfigGuestAcceleratorOutput)
+}
+
+type GetClusterNodePoolNodeConfigKubeletConfig struct {
+	CpuCfsQuota       bool   `pulumi:"cpuCfsQuota"`
+	CpuCfsQuotaPeriod string `pulumi:"cpuCfsQuotaPeriod"`
+	CpuManagerPolicy  string `pulumi:"cpuManagerPolicy"`
+}
+
+// GetClusterNodePoolNodeConfigKubeletConfigInput is an input type that accepts GetClusterNodePoolNodeConfigKubeletConfigArgs and GetClusterNodePoolNodeConfigKubeletConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigKubeletConfigInput` via:
+//
+//          GetClusterNodePoolNodeConfigKubeletConfigArgs{...}
+type GetClusterNodePoolNodeConfigKubeletConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigKubeletConfigOutput() GetClusterNodePoolNodeConfigKubeletConfigOutput
+	ToGetClusterNodePoolNodeConfigKubeletConfigOutputWithContext(context.Context) GetClusterNodePoolNodeConfigKubeletConfigOutput
+}
+
+type GetClusterNodePoolNodeConfigKubeletConfigArgs struct {
+	CpuCfsQuota       pulumi.BoolInput   `pulumi:"cpuCfsQuota"`
+	CpuCfsQuotaPeriod pulumi.StringInput `pulumi:"cpuCfsQuotaPeriod"`
+	CpuManagerPolicy  pulumi.StringInput `pulumi:"cpuManagerPolicy"`
+}
+
+func (GetClusterNodePoolNodeConfigKubeletConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigKubeletConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigKubeletConfigArgs) ToGetClusterNodePoolNodeConfigKubeletConfigOutput() GetClusterNodePoolNodeConfigKubeletConfigOutput {
+	return i.ToGetClusterNodePoolNodeConfigKubeletConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigKubeletConfigArgs) ToGetClusterNodePoolNodeConfigKubeletConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigKubeletConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigKubeletConfigOutput)
+}
+
+// GetClusterNodePoolNodeConfigKubeletConfigArrayInput is an input type that accepts GetClusterNodePoolNodeConfigKubeletConfigArray and GetClusterNodePoolNodeConfigKubeletConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigKubeletConfigArrayInput` via:
+//
+//          GetClusterNodePoolNodeConfigKubeletConfigArray{ GetClusterNodePoolNodeConfigKubeletConfigArgs{...} }
+type GetClusterNodePoolNodeConfigKubeletConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigKubeletConfigArrayOutput() GetClusterNodePoolNodeConfigKubeletConfigArrayOutput
+	ToGetClusterNodePoolNodeConfigKubeletConfigArrayOutputWithContext(context.Context) GetClusterNodePoolNodeConfigKubeletConfigArrayOutput
+}
+
+type GetClusterNodePoolNodeConfigKubeletConfigArray []GetClusterNodePoolNodeConfigKubeletConfigInput
+
+func (GetClusterNodePoolNodeConfigKubeletConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigKubeletConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigKubeletConfigArray) ToGetClusterNodePoolNodeConfigKubeletConfigArrayOutput() GetClusterNodePoolNodeConfigKubeletConfigArrayOutput {
+	return i.ToGetClusterNodePoolNodeConfigKubeletConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigKubeletConfigArray) ToGetClusterNodePoolNodeConfigKubeletConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigKubeletConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigKubeletConfigArrayOutput)
+}
+
+type GetClusterNodePoolNodeConfigKubeletConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigKubeletConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigKubeletConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigKubeletConfigOutput) ToGetClusterNodePoolNodeConfigKubeletConfigOutput() GetClusterNodePoolNodeConfigKubeletConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigKubeletConfigOutput) ToGetClusterNodePoolNodeConfigKubeletConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigKubeletConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigKubeletConfigOutput) CpuCfsQuota() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigKubeletConfig) bool { return v.CpuCfsQuota }).(pulumi.BoolOutput)
+}
+
+func (o GetClusterNodePoolNodeConfigKubeletConfigOutput) CpuCfsQuotaPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigKubeletConfig) string { return v.CpuCfsQuotaPeriod }).(pulumi.StringOutput)
+}
+
+func (o GetClusterNodePoolNodeConfigKubeletConfigOutput) CpuManagerPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigKubeletConfig) string { return v.CpuManagerPolicy }).(pulumi.StringOutput)
+}
+
+type GetClusterNodePoolNodeConfigKubeletConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigKubeletConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigKubeletConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigKubeletConfigArrayOutput) ToGetClusterNodePoolNodeConfigKubeletConfigArrayOutput() GetClusterNodePoolNodeConfigKubeletConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigKubeletConfigArrayOutput) ToGetClusterNodePoolNodeConfigKubeletConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigKubeletConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigKubeletConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNodeConfigKubeletConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigKubeletConfig {
+		return vs[0].([]GetClusterNodePoolNodeConfigKubeletConfig)[vs[1].(int)]
+	}).(GetClusterNodePoolNodeConfigKubeletConfigOutput)
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfig struct {
+	Sysctls map[string]string `pulumi:"sysctls"`
+}
+
+// GetClusterNodePoolNodeConfigLinuxNodeConfigInput is an input type that accepts GetClusterNodePoolNodeConfigLinuxNodeConfigArgs and GetClusterNodePoolNodeConfigLinuxNodeConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigLinuxNodeConfigInput` via:
+//
+//          GetClusterNodePoolNodeConfigLinuxNodeConfigArgs{...}
+type GetClusterNodePoolNodeConfigLinuxNodeConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigLinuxNodeConfigOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigOutput
+	ToGetClusterNodePoolNodeConfigLinuxNodeConfigOutputWithContext(context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigOutput
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigArgs struct {
+	Sysctls pulumi.StringMapInput `pulumi:"sysctls"`
+}
+
+func (GetClusterNodePoolNodeConfigLinuxNodeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigLinuxNodeConfigArgs) ToGetClusterNodePoolNodeConfigLinuxNodeConfigOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigOutput {
+	return i.ToGetClusterNodePoolNodeConfigLinuxNodeConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigLinuxNodeConfigArgs) ToGetClusterNodePoolNodeConfigLinuxNodeConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigLinuxNodeConfigOutput)
+}
+
+// GetClusterNodePoolNodeConfigLinuxNodeConfigArrayInput is an input type that accepts GetClusterNodePoolNodeConfigLinuxNodeConfigArray and GetClusterNodePoolNodeConfigLinuxNodeConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigLinuxNodeConfigArrayInput` via:
+//
+//          GetClusterNodePoolNodeConfigLinuxNodeConfigArray{ GetClusterNodePoolNodeConfigLinuxNodeConfigArgs{...} }
+type GetClusterNodePoolNodeConfigLinuxNodeConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigLinuxNodeConfigArrayOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigArrayOutput
+	ToGetClusterNodePoolNodeConfigLinuxNodeConfigArrayOutputWithContext(context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigArrayOutput
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigArray []GetClusterNodePoolNodeConfigLinuxNodeConfigInput
+
+func (GetClusterNodePoolNodeConfigLinuxNodeConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigLinuxNodeConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigLinuxNodeConfigArray) ToGetClusterNodePoolNodeConfigLinuxNodeConfigArrayOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigArrayOutput {
+	return i.ToGetClusterNodePoolNodeConfigLinuxNodeConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigLinuxNodeConfigArray) ToGetClusterNodePoolNodeConfigLinuxNodeConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigLinuxNodeConfigArrayOutput)
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigLinuxNodeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigOutput) ToGetClusterNodePoolNodeConfigLinuxNodeConfigOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigOutput) ToGetClusterNodePoolNodeConfigLinuxNodeConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigOutput) Sysctls() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigLinuxNodeConfig) map[string]string { return v.Sysctls }).(pulumi.StringMapOutput)
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigLinuxNodeConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigLinuxNodeConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigArrayOutput) ToGetClusterNodePoolNodeConfigLinuxNodeConfigArrayOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigArrayOutput) ToGetClusterNodePoolNodeConfigLinuxNodeConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNodeConfigLinuxNodeConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigLinuxNodeConfig {
+		return vs[0].([]GetClusterNodePoolNodeConfigLinuxNodeConfig)[vs[1].(int)]
+	}).(GetClusterNodePoolNodeConfigLinuxNodeConfigOutput)
 }
 
 type GetClusterNodePoolNodeConfigSandboxConfig struct {
@@ -15543,6 +17063,10 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigGuestAcceleratorOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigGuestAcceleratorArrayOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigKubeletConfigOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigKubeletConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigLinuxNodeConfigOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigLinuxNodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigSandboxConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigSandboxConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigShieldedInstanceConfigOutput{})
@@ -15561,6 +17085,10 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigGuestAcceleratorOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigGuestAcceleratorArrayOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigKubeletConfigOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigKubeletConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigLinuxNodeConfigOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigSandboxConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigSandboxConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigShieldedInstanceConfigOutput{})
@@ -15595,6 +17123,10 @@ func init() {
 	pulumi.RegisterOutputType(NodePoolNodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigGuestAcceleratorOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigGuestAcceleratorArrayOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigKubeletConfigOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigKubeletConfigPtrOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigLinuxNodeConfigOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigLinuxNodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigSandboxConfigOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigSandboxConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigShieldedInstanceConfigOutput{})
@@ -15663,6 +17195,10 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodeConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigGuestAcceleratorOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigGuestAcceleratorArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigKubeletConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigKubeletConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigLinuxNodeConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigLinuxNodeConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigSandboxConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigSandboxConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigShieldedInstanceConfigOutput{})
@@ -15681,6 +17217,10 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigGuestAcceleratorOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigGuestAcceleratorArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigKubeletConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigKubeletConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigLinuxNodeConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigLinuxNodeConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigSandboxConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigSandboxConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigShieldedInstanceConfigOutput{})

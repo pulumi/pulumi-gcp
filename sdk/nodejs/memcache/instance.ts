@@ -44,6 +44,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * Endpoint for Discovery API
+     */
+    public /*out*/ readonly discoveryEndpoint!: pulumi.Output<string>;
+    /**
      * A user-visible name for the instance.
      */
     public readonly displayName!: pulumi.Output<string>;
@@ -114,6 +118,7 @@ export class Instance extends pulumi.CustomResource {
             const state = argsOrState as InstanceState | undefined;
             inputs["authorizedNetwork"] = state ? state.authorizedNetwork : undefined;
             inputs["createTime"] = state ? state.createTime : undefined;
+            inputs["discoveryEndpoint"] = state ? state.discoveryEndpoint : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["memcacheFullVersion"] = state ? state.memcacheFullVersion : undefined;
@@ -149,6 +154,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["zones"] = args ? args.zones : undefined;
             inputs["createTime"] = undefined /*out*/;
+            inputs["discoveryEndpoint"] = undefined /*out*/;
             inputs["memcacheFullVersion"] = undefined /*out*/;
             inputs["memcacheNodes"] = undefined /*out*/;
         }
@@ -176,6 +182,10 @@ export interface InstanceState {
      * Creation timestamp in RFC3339 text format.
      */
     readonly createTime?: pulumi.Input<string>;
+    /**
+     * Endpoint for Discovery API
+     */
+    readonly discoveryEndpoint?: pulumi.Input<string>;
     /**
      * A user-visible name for the instance.
      */

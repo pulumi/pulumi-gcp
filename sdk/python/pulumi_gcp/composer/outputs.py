@@ -11,10 +11,12 @@ from . import outputs
 
 __all__ = [
     'EnvironmentConfig',
+    'EnvironmentConfigDatabaseConfig',
     'EnvironmentConfigNodeConfig',
     'EnvironmentConfigNodeConfigIpAllocationPolicy',
     'EnvironmentConfigPrivateEnvironmentConfig',
     'EnvironmentConfigSoftwareConfig',
+    'EnvironmentConfigWebServerConfig',
     'EnvironmentConfigWebServerNetworkAccessControl',
     'EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange',
     'GetImageVersionsImageVersionResult',
@@ -25,11 +27,13 @@ class EnvironmentConfig(dict):
     def __init__(__self__, *,
                  airflow_uri: Optional[str] = None,
                  dag_gcs_prefix: Optional[str] = None,
+                 database_config: Optional['outputs.EnvironmentConfigDatabaseConfig'] = None,
                  gke_cluster: Optional[str] = None,
                  node_config: Optional['outputs.EnvironmentConfigNodeConfig'] = None,
                  node_count: Optional[float] = None,
                  private_environment_config: Optional['outputs.EnvironmentConfigPrivateEnvironmentConfig'] = None,
                  software_config: Optional['outputs.EnvironmentConfigSoftwareConfig'] = None,
+                 web_server_config: Optional['outputs.EnvironmentConfigWebServerConfig'] = None,
                  web_server_network_access_control: Optional['outputs.EnvironmentConfigWebServerNetworkAccessControl'] = None):
         """
         :param 'EnvironmentConfigNodeConfigArgs' node_config: The configuration used for the Kubernetes Engine cluster.  Structure is documented below.
@@ -43,6 +47,8 @@ class EnvironmentConfig(dict):
             pulumi.set(__self__, "airflow_uri", airflow_uri)
         if dag_gcs_prefix is not None:
             pulumi.set(__self__, "dag_gcs_prefix", dag_gcs_prefix)
+        if database_config is not None:
+            pulumi.set(__self__, "database_config", database_config)
         if gke_cluster is not None:
             pulumi.set(__self__, "gke_cluster", gke_cluster)
         if node_config is not None:
@@ -53,6 +59,8 @@ class EnvironmentConfig(dict):
             pulumi.set(__self__, "private_environment_config", private_environment_config)
         if software_config is not None:
             pulumi.set(__self__, "software_config", software_config)
+        if web_server_config is not None:
+            pulumi.set(__self__, "web_server_config", web_server_config)
         if web_server_network_access_control is not None:
             pulumi.set(__self__, "web_server_network_access_control", web_server_network_access_control)
 
@@ -65,6 +73,11 @@ class EnvironmentConfig(dict):
     @pulumi.getter(name="dagGcsPrefix")
     def dag_gcs_prefix(self) -> Optional[str]:
         return pulumi.get(self, "dag_gcs_prefix")
+
+    @property
+    @pulumi.getter(name="databaseConfig")
+    def database_config(self) -> Optional['outputs.EnvironmentConfigDatabaseConfig']:
+        return pulumi.get(self, "database_config")
 
     @property
     @pulumi.getter(name="gkeCluster")
@@ -105,12 +118,44 @@ class EnvironmentConfig(dict):
         return pulumi.get(self, "software_config")
 
     @property
+    @pulumi.getter(name="webServerConfig")
+    def web_server_config(self) -> Optional['outputs.EnvironmentConfigWebServerConfig']:
+        return pulumi.get(self, "web_server_config")
+
+    @property
     @pulumi.getter(name="webServerNetworkAccessControl")
     def web_server_network_access_control(self) -> Optional['outputs.EnvironmentConfigWebServerNetworkAccessControl']:
         """
         The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
         """
         return pulumi.get(self, "web_server_network_access_control")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class EnvironmentConfigDatabaseConfig(dict):
+    def __init__(__self__, *,
+                 machine_type: str):
+        """
+        :param str machine_type: Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2,
+               composer-n1-webserver-4 or composer-n1-webserver-8.
+               Value custom is returned only in response, if Airflow web server parameters were
+               manually changed to a non-standard values.
+        """
+        pulumi.set(__self__, "machine_type", machine_type)
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> str:
+        """
+        Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2,
+        composer-n1-webserver-4 or composer-n1-webserver-8.
+        Value custom is returned only in response, if Airflow web server parameters were
+        manually changed to a non-standard values.
+        """
+        return pulumi.get(self, "machine_type")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -138,10 +183,10 @@ class EnvironmentConfigNodeConfig(dict):
         :param 'EnvironmentConfigNodeConfigIpAllocationPolicyArgs' ip_allocation_policy: Configuration for controlling how IPs are allocated in the GKE cluster.
                Structure is documented below.
                Cannot be updated.
-        :param str machine_type: The Compute Engine machine type used for cluster instances,
-               specified as a name or relative resource name. For example:
-               "projects/{project}/zones/{zone}/machineTypes/{machineType}". Must belong to the enclosing environment's project and
-               region/zone.
+        :param str machine_type: Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2,
+               composer-n1-webserver-4 or composer-n1-webserver-8.
+               Value custom is returned only in response, if Airflow web server parameters were
+               manually changed to a non-standard values.
         :param str network: The Compute Engine network to be used for machine
                communications, specified as a self-link, relative resource name
                (e.g. "projects/{project}/global/networks/{network}"), by name.
@@ -214,10 +259,10 @@ class EnvironmentConfigNodeConfig(dict):
     @pulumi.getter(name="machineType")
     def machine_type(self) -> Optional[str]:
         """
-        The Compute Engine machine type used for cluster instances,
-        specified as a name or relative resource name. For example:
-        "projects/{project}/zones/{zone}/machineTypes/{machineType}". Must belong to the enclosing environment's project and
-        region/zone.
+        Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2,
+        composer-n1-webserver-4 or composer-n1-webserver-8.
+        Value custom is returned only in response, if Airflow web server parameters were
+        manually changed to a non-standard values.
         """
         return pulumi.get(self, "machine_type")
 
@@ -551,6 +596,33 @@ class EnvironmentConfigSoftwareConfig(dict):
         Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated.
         """
         return pulumi.get(self, "python_version")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class EnvironmentConfigWebServerConfig(dict):
+    def __init__(__self__, *,
+                 machine_type: str):
+        """
+        :param str machine_type: Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2,
+               composer-n1-webserver-4 or composer-n1-webserver-8.
+               Value custom is returned only in response, if Airflow web server parameters were
+               manually changed to a non-standard values.
+        """
+        pulumi.set(__self__, "machine_type", machine_type)
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> str:
+        """
+        Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2,
+        composer-n1-webserver-4 or composer-n1-webserver-8.
+        Value custom is returned only in response, if Airflow web server parameters were
+        manually changed to a non-standard values.
+        """
+        return pulumi.get(self, "machine_type")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

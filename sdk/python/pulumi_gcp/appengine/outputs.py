@@ -52,6 +52,7 @@ __all__ = [
     'StandardAppVersionHandlerStaticFiles',
     'StandardAppVersionLibrary',
     'StandardAppVersionManualScaling',
+    'StandardAppVersionVpcAccessConnector',
 ]
 
 @pulumi.output_type
@@ -1962,7 +1963,7 @@ class StandardAppVersionDeploymentFile(dict):
                  source_url: str,
                  sha1_sum: Optional[str] = None):
         """
-        :param str name: Name of the library. Example "django".
+        :param str name: Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         :param str source_url: Source URL
         :param str sha1_sum: SHA1 checksum of the file
         """
@@ -1975,7 +1976,7 @@ class StandardAppVersionDeploymentFile(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the library. Example "django".
+        Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         """
         return pulumi.get(self, "name")
 
@@ -2294,7 +2295,7 @@ class StandardAppVersionLibrary(dict):
                  name: Optional[str] = None,
                  version: Optional[str] = None):
         """
-        :param str name: Name of the library. Example "django".
+        :param str name: Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         :param str version: Version of the library to select, or "latest".
         """
         if name is not None:
@@ -2306,7 +2307,7 @@ class StandardAppVersionLibrary(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Name of the library. Example "django".
+        Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         """
         return pulumi.get(self, "name")
 
@@ -2342,6 +2343,27 @@ class StandardAppVersionManualScaling(dict):
         Modules API set_num_instances() you must use `lifecycle.ignore_changes = ["manual_scaling"[0].instances]` to prevent drift detection.
         """
         return pulumi.get(self, "instances")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class StandardAppVersionVpcAccessConnector(dict):
+    def __init__(__self__, *,
+                 name: str):
+        """
+        :param str name: Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+        """
+        return pulumi.get(self, "name")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -44,6 +44,9 @@ type DataTransferConfig struct {
 	// projects/{projectId}/locations/{location}/transferConfigs/{configId}. Where configId is usually a uuid, but this is not
 	// required. The name is ignored when creating a transfer config.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Pub/Sub topic where notifications will be sent after transfer runs
+	// associated with this transfer config finish.
+	NotificationPubsubTopic pulumi.StringPtrOutput `pulumi:"notificationPubsubTopic"`
 	// These parameters are specific to each data source.
 	Params pulumi.StringMapOutput `pulumi:"params"`
 	// The ID of the project in which the resource belongs.
@@ -125,6 +128,9 @@ type dataTransferConfigState struct {
 	// projects/{projectId}/locations/{location}/transferConfigs/{configId}. Where configId is usually a uuid, but this is not
 	// required. The name is ignored when creating a transfer config.
 	Name *string `pulumi:"name"`
+	// Pub/Sub topic where notifications will be sent after transfer runs
+	// associated with this transfer config finish.
+	NotificationPubsubTopic *string `pulumi:"notificationPubsubTopic"`
 	// These parameters are specific to each data source.
 	Params map[string]string `pulumi:"params"`
 	// The ID of the project in which the resource belongs.
@@ -167,6 +173,9 @@ type DataTransferConfigState struct {
 	// projects/{projectId}/locations/{location}/transferConfigs/{configId}. Where configId is usually a uuid, but this is not
 	// required. The name is ignored when creating a transfer config.
 	Name pulumi.StringPtrInput
+	// Pub/Sub topic where notifications will be sent after transfer runs
+	// associated with this transfer config finish.
+	NotificationPubsubTopic pulumi.StringPtrInput
 	// These parameters are specific to each data source.
 	Params pulumi.StringMapInput
 	// The ID of the project in which the resource belongs.
@@ -209,6 +218,9 @@ type dataTransferConfigArgs struct {
 	// The geographic location where the transfer config should reside.
 	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location *string `pulumi:"location"`
+	// Pub/Sub topic where notifications will be sent after transfer runs
+	// associated with this transfer config finish.
+	NotificationPubsubTopic *string `pulumi:"notificationPubsubTopic"`
 	// These parameters are specific to each data source.
 	Params map[string]string `pulumi:"params"`
 	// The ID of the project in which the resource belongs.
@@ -248,6 +260,9 @@ type DataTransferConfigArgs struct {
 	// The geographic location where the transfer config should reside.
 	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location pulumi.StringPtrInput
+	// Pub/Sub topic where notifications will be sent after transfer runs
+	// associated with this transfer config finish.
+	NotificationPubsubTopic pulumi.StringPtrInput
 	// These parameters are specific to each data source.
 	Params pulumi.StringMapInput
 	// The ID of the project in which the resource belongs.

@@ -16,6 +16,7 @@ __all__ = [
     'SubscriptionIAMMemberCondition',
     'SubscriptionPushConfig',
     'SubscriptionPushConfigOidcToken',
+    'SubscriptionRetryPolicy',
     'TopicIAMBindingCondition',
     'TopicIAMMemberCondition',
     'TopicMessageStoragePolicy',
@@ -305,6 +306,44 @@ class SubscriptionPushConfigOidcToken(dict):
         Note: if not specified, the Push endpoint URL will be used.
         """
         return pulumi.get(self, "audience")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class SubscriptionRetryPolicy(dict):
+    def __init__(__self__, *,
+                 maximum_backoff: Optional[str] = None,
+                 minimum_backoff: Optional[str] = None):
+        """
+        :param str maximum_backoff: The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds.
+               A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        :param str minimum_backoff: The minimum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 10 seconds.
+               A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        """
+        if maximum_backoff is not None:
+            pulumi.set(__self__, "maximum_backoff", maximum_backoff)
+        if minimum_backoff is not None:
+            pulumi.set(__self__, "minimum_backoff", minimum_backoff)
+
+    @property
+    @pulumi.getter(name="maximumBackoff")
+    def maximum_backoff(self) -> Optional[str]:
+        """
+        The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds.
+        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "maximum_backoff")
+
+    @property
+    @pulumi.getter(name="minimumBackoff")
+    def minimum_backoff(self) -> Optional[str]:
+        """
+        The minimum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 10 seconds.
+        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "minimum_backoff")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

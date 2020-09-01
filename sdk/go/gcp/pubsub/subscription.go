@@ -93,6 +93,11 @@ type Subscription struct {
 	// they are acknowledged, until they fall out of the
 	// messageRetentionDuration window.
 	RetainAckedMessages pulumi.BoolPtrOutput `pulumi:"retainAckedMessages"`
+	// A policy that specifies how Pub/Sub retries message delivery for this subscription.
+	// If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers.
+	// RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
+	// Structure is documented below.
+	RetryPolicy SubscriptionRetryPolicyPtrOutput `pulumi:"retryPolicy"`
 	// A reference to a Topic resource.
 	Topic pulumi.StringOutput `pulumi:"topic"`
 }
@@ -198,6 +203,11 @@ type subscriptionState struct {
 	// they are acknowledged, until they fall out of the
 	// messageRetentionDuration window.
 	RetainAckedMessages *bool `pulumi:"retainAckedMessages"`
+	// A policy that specifies how Pub/Sub retries message delivery for this subscription.
+	// If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers.
+	// RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
+	// Structure is documented below.
+	RetryPolicy *SubscriptionRetryPolicy `pulumi:"retryPolicy"`
 	// A reference to a Topic resource.
 	Topic *string `pulumi:"topic"`
 }
@@ -273,6 +283,11 @@ type SubscriptionState struct {
 	// they are acknowledged, until they fall out of the
 	// messageRetentionDuration window.
 	RetainAckedMessages pulumi.BoolPtrInput
+	// A policy that specifies how Pub/Sub retries message delivery for this subscription.
+	// If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers.
+	// RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
+	// Structure is documented below.
+	RetryPolicy SubscriptionRetryPolicyPtrInput
 	// A reference to a Topic resource.
 	Topic pulumi.StringPtrInput
 }
@@ -351,6 +366,11 @@ type subscriptionArgs struct {
 	// they are acknowledged, until they fall out of the
 	// messageRetentionDuration window.
 	RetainAckedMessages *bool `pulumi:"retainAckedMessages"`
+	// A policy that specifies how Pub/Sub retries message delivery for this subscription.
+	// If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers.
+	// RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
+	// Structure is documented below.
+	RetryPolicy *SubscriptionRetryPolicy `pulumi:"retryPolicy"`
 	// A reference to a Topic resource.
 	Topic string `pulumi:"topic"`
 }
@@ -426,6 +446,11 @@ type SubscriptionArgs struct {
 	// they are acknowledged, until they fall out of the
 	// messageRetentionDuration window.
 	RetainAckedMessages pulumi.BoolPtrInput
+	// A policy that specifies how Pub/Sub retries message delivery for this subscription.
+	// If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers.
+	// RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
+	// Structure is documented below.
+	RetryPolicy SubscriptionRetryPolicyPtrInput
 	// A reference to a Topic resource.
 	Topic pulumi.StringInput
 }

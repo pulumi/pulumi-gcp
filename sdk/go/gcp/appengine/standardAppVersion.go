@@ -59,7 +59,7 @@ type StandardAppVersion struct {
 	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
 	// Structure is documented below.
 	ManualScaling StandardAppVersionManualScalingPtrOutput `pulumi:"manualScaling"`
-	// Name of the library. Example "django".
+	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// If set to `true`, the application version will not be deleted.
 	NoopOnDestroy pulumi.BoolPtrOutput `pulumi:"noopOnDestroy"`
@@ -77,6 +77,9 @@ type StandardAppVersion struct {
 	Threadsafe pulumi.BoolPtrOutput `pulumi:"threadsafe"`
 	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
 	VersionId pulumi.StringPtrOutput `pulumi:"versionId"`
+	// Enables VPC connectivity for standard apps.
+	// Structure is documented below.
+	VpcAccessConnector StandardAppVersionVpcAccessConnectorPtrOutput `pulumi:"vpcAccessConnector"`
 }
 
 // NewStandardAppVersion registers a new resource with the given unique name, arguments, and options.
@@ -150,7 +153,7 @@ type standardAppVersionState struct {
 	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
 	// Structure is documented below.
 	ManualScaling *StandardAppVersionManualScaling `pulumi:"manualScaling"`
-	// Name of the library. Example "django".
+	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
 	Name *string `pulumi:"name"`
 	// If set to `true`, the application version will not be deleted.
 	NoopOnDestroy *bool `pulumi:"noopOnDestroy"`
@@ -168,6 +171,9 @@ type standardAppVersionState struct {
 	Threadsafe *bool `pulumi:"threadsafe"`
 	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
 	VersionId *string `pulumi:"versionId"`
+	// Enables VPC connectivity for standard apps.
+	// Structure is documented below.
+	VpcAccessConnector *StandardAppVersionVpcAccessConnector `pulumi:"vpcAccessConnector"`
 }
 
 type StandardAppVersionState struct {
@@ -205,7 +211,7 @@ type StandardAppVersionState struct {
 	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
 	// Structure is documented below.
 	ManualScaling StandardAppVersionManualScalingPtrInput
-	// Name of the library. Example "django".
+	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
 	Name pulumi.StringPtrInput
 	// If set to `true`, the application version will not be deleted.
 	NoopOnDestroy pulumi.BoolPtrInput
@@ -223,6 +229,9 @@ type StandardAppVersionState struct {
 	Threadsafe pulumi.BoolPtrInput
 	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
 	VersionId pulumi.StringPtrInput
+	// Enables VPC connectivity for standard apps.
+	// Structure is documented below.
+	VpcAccessConnector StandardAppVersionVpcAccessConnectorPtrInput
 }
 
 func (StandardAppVersionState) ElementType() reflect.Type {
@@ -280,6 +289,9 @@ type standardAppVersionArgs struct {
 	Threadsafe *bool `pulumi:"threadsafe"`
 	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
 	VersionId *string `pulumi:"versionId"`
+	// Enables VPC connectivity for standard apps.
+	// Structure is documented below.
+	VpcAccessConnector *StandardAppVersionVpcAccessConnector `pulumi:"vpcAccessConnector"`
 }
 
 // The set of arguments for constructing a StandardAppVersion resource.
@@ -334,6 +346,9 @@ type StandardAppVersionArgs struct {
 	Threadsafe pulumi.BoolPtrInput
 	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
 	VersionId pulumi.StringPtrInput
+	// Enables VPC connectivity for standard apps.
+	// Structure is documented below.
+	VpcAccessConnector StandardAppVersionVpcAccessConnectorPtrInput
 }
 
 func (StandardAppVersionArgs) ElementType() reflect.Type {

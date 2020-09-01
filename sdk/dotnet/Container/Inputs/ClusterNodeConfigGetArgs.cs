@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.Container.Inputs
 
         /// <summary>
         /// Type of the disk attached to each node
-        /// (e.g. 'pd-standard' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+        /// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
         /// </summary>
         [Input("diskType")]
         public Input<string>? DiskType { get; set; }
@@ -52,6 +52,14 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("imageType")]
         public Input<string>? ImageType { get; set; }
 
+        /// <summary>
+        /// )
+        /// Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+        /// Structure is documented below.
+        /// </summary>
+        [Input("kubeletConfig")]
+        public Input<Inputs.ClusterNodeConfigKubeletConfigGetArgs>? KubeletConfig { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -63,6 +71,15 @@ namespace Pulumi.Gcp.Container.Inputs
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
+
+        /// <summary>
+        /// )
+        /// Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+        /// Note that validations happen all server side. All attributes are optional.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("linuxNodeConfig")]
+        public Input<Inputs.ClusterNodeConfigLinuxNodeConfigGetArgs>? LinuxNodeConfig { get; set; }
 
         /// <summary>
         /// The amount of local SSD disks that will be

@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.AppEngine.Outputs
     public sealed class StandardAppVersionDeploymentFile
     {
         /// <summary>
-        /// Name of the library. Example "django".
+        /// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         /// </summary>
         public readonly string Name;
         /// <summary>

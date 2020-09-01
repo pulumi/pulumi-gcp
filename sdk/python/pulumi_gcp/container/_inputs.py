@@ -37,6 +37,8 @@ __all__ = [
     'ClusterNetworkPolicyArgs',
     'ClusterNodeConfigArgs',
     'ClusterNodeConfigGuestAcceleratorArgs',
+    'ClusterNodeConfigKubeletConfigArgs',
+    'ClusterNodeConfigLinuxNodeConfigArgs',
     'ClusterNodeConfigSandboxConfigArgs',
     'ClusterNodeConfigShieldedInstanceConfigArgs',
     'ClusterNodeConfigTaintArgs',
@@ -46,6 +48,8 @@ __all__ = [
     'ClusterNodePoolManagementArgs',
     'ClusterNodePoolNodeConfigArgs',
     'ClusterNodePoolNodeConfigGuestAcceleratorArgs',
+    'ClusterNodePoolNodeConfigKubeletConfigArgs',
+    'ClusterNodePoolNodeConfigLinuxNodeConfigArgs',
     'ClusterNodePoolNodeConfigSandboxConfigArgs',
     'ClusterNodePoolNodeConfigShieldedInstanceConfigArgs',
     'ClusterNodePoolNodeConfigTaintArgs',
@@ -63,6 +67,8 @@ __all__ = [
     'NodePoolManagementArgs',
     'NodePoolNodeConfigArgs',
     'NodePoolNodeConfigGuestAcceleratorArgs',
+    'NodePoolNodeConfigKubeletConfigArgs',
+    'NodePoolNodeConfigLinuxNodeConfigArgs',
     'NodePoolNodeConfigSandboxConfigArgs',
     'NodePoolNodeConfigShieldedInstanceConfigArgs',
     'NodePoolNodeConfigTaintArgs',
@@ -1252,7 +1258,9 @@ class ClusterNodeConfigArgs:
                  disk_type: Optional[pulumi.Input[str]] = None,
                  guest_accelerators: Optional[pulumi.Input[List[pulumi.Input['ClusterNodeConfigGuestAcceleratorArgs']]]] = None,
                  image_type: Optional[pulumi.Input[str]] = None,
+                 kubelet_config: Optional[pulumi.Input['ClusterNodeConfigKubeletConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 linux_node_config: Optional[pulumi.Input['ClusterNodeConfigLinuxNodeConfigArgs']] = None,
                  local_ssd_count: Optional[pulumi.Input[float]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1270,12 +1278,19 @@ class ClusterNodeConfigArgs:
         :param pulumi.Input[float] disk_size_gb: Size of the disk attached to each node, specified
                in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
         :param pulumi.Input[str] disk_type: Type of the disk attached to each node
-               (e.g. 'pd-standard' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+               (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
         :param pulumi.Input[List[pulumi.Input['ClusterNodeConfigGuestAcceleratorArgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
                Structure documented below.
         :param pulumi.Input[str] image_type: The image type to use for this node. Note that changing the image type
                will delete and recreate all nodes in the node pool.
+        :param pulumi.Input['ClusterNodeConfigKubeletConfigArgs'] kubelet_config: )
+               Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The Kubernetes labels (key/value pairs) to be applied to each node.
+        :param pulumi.Input['ClusterNodeConfigLinuxNodeConfigArgs'] linux_node_config: )
+               Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+               Note that validations happen all server side. All attributes are optional.
+               Structure is documented below.
         :param pulumi.Input[float] local_ssd_count: The amount of local SSD disks that will be
                attached to each cluster node. Defaults to 0.
         :param pulumi.Input[str] machine_type: The name of a Google Compute Engine machine type.
@@ -1329,8 +1344,12 @@ class ClusterNodeConfigArgs:
             pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         if image_type is not None:
             pulumi.set(__self__, "image_type", image_type)
+        if kubelet_config is not None:
+            pulumi.set(__self__, "kubelet_config", kubelet_config)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if linux_node_config is not None:
+            pulumi.set(__self__, "linux_node_config", linux_node_config)
         if local_ssd_count is not None:
             pulumi.set(__self__, "local_ssd_count", local_ssd_count)
         if machine_type is not None:
@@ -1386,7 +1405,7 @@ class ClusterNodeConfigArgs:
     def disk_type(self) -> Optional[pulumi.Input[str]]:
         """
         Type of the disk attached to each node
-        (e.g. 'pd-standard' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+        (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
         """
         return pulumi.get(self, "disk_type")
 
@@ -1421,6 +1440,20 @@ class ClusterNodeConfigArgs:
         pulumi.set(self, "image_type", value)
 
     @property
+    @pulumi.getter(name="kubeletConfig")
+    def kubelet_config(self) -> Optional[pulumi.Input['ClusterNodeConfigKubeletConfigArgs']]:
+        """
+        )
+        Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "kubelet_config")
+
+    @kubelet_config.setter
+    def kubelet_config(self, value: Optional[pulumi.Input['ClusterNodeConfigKubeletConfigArgs']]):
+        pulumi.set(self, "kubelet_config", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -1431,6 +1464,21 @@ class ClusterNodeConfigArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="linuxNodeConfig")
+    def linux_node_config(self) -> Optional[pulumi.Input['ClusterNodeConfigLinuxNodeConfigArgs']]:
+        """
+        )
+        Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+        Note that validations happen all server side. All attributes are optional.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "linux_node_config")
+
+    @linux_node_config.setter
+    def linux_node_config(self, value: Optional[pulumi.Input['ClusterNodeConfigLinuxNodeConfigArgs']]):
+        pulumi.set(self, "linux_node_config", value)
 
     @property
     @pulumi.getter(name="localSsdCount")
@@ -1642,6 +1690,98 @@ class ClusterNodeConfigGuestAcceleratorArgs:
     @type.setter
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class ClusterNodeConfigKubeletConfigArgs:
+    def __init__(__self__, *,
+                 cpu_manager_policy: pulumi.Input[str],
+                 cpu_cfs_quota: Optional[pulumi.Input[bool]] = None,
+                 cpu_cfs_quota_period: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] cpu_manager_policy: The CPU management policy on the node. See
+               [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
+               One of `"none"` or `"static"`. Defaults to `none` when `kubelet_config` is unset.
+        :param pulumi.Input[bool] cpu_cfs_quota: If true, enables CPU CFS quota enforcement for
+               containers that specify CPU limits.
+        :param pulumi.Input[str] cpu_cfs_quota_period: The CPU CFS quota period value. Specified
+               as a sequence of decimal numbers, each with optional fraction and a unit suffix,
+               such as `"300ms"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m",
+               "h". The value must be a positive duration.
+        """
+        pulumi.set(__self__, "cpu_manager_policy", cpu_manager_policy)
+        if cpu_cfs_quota is not None:
+            pulumi.set(__self__, "cpu_cfs_quota", cpu_cfs_quota)
+        if cpu_cfs_quota_period is not None:
+            pulumi.set(__self__, "cpu_cfs_quota_period", cpu_cfs_quota_period)
+
+    @property
+    @pulumi.getter(name="cpuManagerPolicy")
+    def cpu_manager_policy(self) -> pulumi.Input[str]:
+        """
+        The CPU management policy on the node. See
+        [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
+        One of `"none"` or `"static"`. Defaults to `none` when `kubelet_config` is unset.
+        """
+        return pulumi.get(self, "cpu_manager_policy")
+
+    @cpu_manager_policy.setter
+    def cpu_manager_policy(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cpu_manager_policy", value)
+
+    @property
+    @pulumi.getter(name="cpuCfsQuota")
+    def cpu_cfs_quota(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, enables CPU CFS quota enforcement for
+        containers that specify CPU limits.
+        """
+        return pulumi.get(self, "cpu_cfs_quota")
+
+    @cpu_cfs_quota.setter
+    def cpu_cfs_quota(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "cpu_cfs_quota", value)
+
+    @property
+    @pulumi.getter(name="cpuCfsQuotaPeriod")
+    def cpu_cfs_quota_period(self) -> Optional[pulumi.Input[str]]:
+        """
+        The CPU CFS quota period value. Specified
+        as a sequence of decimal numbers, each with optional fraction and a unit suffix,
+        such as `"300ms"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m",
+        "h". The value must be a positive duration.
+        """
+        return pulumi.get(self, "cpu_cfs_quota_period")
+
+    @cpu_cfs_quota_period.setter
+    def cpu_cfs_quota_period(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cpu_cfs_quota_period", value)
+
+
+@pulumi.input_type
+class ClusterNodeConfigLinuxNodeConfigArgs:
+    def __init__(__self__, *,
+                 sysctls: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] sysctls: The Linux kernel parameters to be applied to the nodes
+               and all pods running on the nodes. Specified as a map from the key, such as
+               `net.core.wmem_max`, to a string value.
+        """
+        pulumi.set(__self__, "sysctls", sysctls)
+
+    @property
+    @pulumi.getter
+    def sysctls(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
+        """
+        The Linux kernel parameters to be applied to the nodes
+        and all pods running on the nodes. Specified as a map from the key, such as
+        `net.core.wmem_max`, to a string value.
+        """
+        return pulumi.get(self, "sysctls")
+
+    @sysctls.setter
+    def sysctls(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
+        pulumi.set(self, "sysctls", value)
 
 
 @pulumi.input_type
@@ -2054,7 +2194,9 @@ class ClusterNodePoolNodeConfigArgs:
                  disk_type: Optional[pulumi.Input[str]] = None,
                  guest_accelerators: Optional[pulumi.Input[List[pulumi.Input['ClusterNodePoolNodeConfigGuestAcceleratorArgs']]]] = None,
                  image_type: Optional[pulumi.Input[str]] = None,
+                 kubelet_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigKubeletConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 linux_node_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigArgs']] = None,
                  local_ssd_count: Optional[pulumi.Input[float]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -2072,12 +2214,19 @@ class ClusterNodePoolNodeConfigArgs:
         :param pulumi.Input[float] disk_size_gb: Size of the disk attached to each node, specified
                in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
         :param pulumi.Input[str] disk_type: Type of the disk attached to each node
-               (e.g. 'pd-standard' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+               (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
         :param pulumi.Input[List[pulumi.Input['ClusterNodePoolNodeConfigGuestAcceleratorArgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
                Structure documented below.
         :param pulumi.Input[str] image_type: The image type to use for this node. Note that changing the image type
                will delete and recreate all nodes in the node pool.
+        :param pulumi.Input['ClusterNodePoolNodeConfigKubeletConfigArgs'] kubelet_config: )
+               Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The Kubernetes labels (key/value pairs) to be applied to each node.
+        :param pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigArgs'] linux_node_config: )
+               Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+               Note that validations happen all server side. All attributes are optional.
+               Structure is documented below.
         :param pulumi.Input[float] local_ssd_count: The amount of local SSD disks that will be
                attached to each cluster node. Defaults to 0.
         :param pulumi.Input[str] machine_type: The name of a Google Compute Engine machine type.
@@ -2131,8 +2280,12 @@ class ClusterNodePoolNodeConfigArgs:
             pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         if image_type is not None:
             pulumi.set(__self__, "image_type", image_type)
+        if kubelet_config is not None:
+            pulumi.set(__self__, "kubelet_config", kubelet_config)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if linux_node_config is not None:
+            pulumi.set(__self__, "linux_node_config", linux_node_config)
         if local_ssd_count is not None:
             pulumi.set(__self__, "local_ssd_count", local_ssd_count)
         if machine_type is not None:
@@ -2188,7 +2341,7 @@ class ClusterNodePoolNodeConfigArgs:
     def disk_type(self) -> Optional[pulumi.Input[str]]:
         """
         Type of the disk attached to each node
-        (e.g. 'pd-standard' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+        (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
         """
         return pulumi.get(self, "disk_type")
 
@@ -2223,6 +2376,20 @@ class ClusterNodePoolNodeConfigArgs:
         pulumi.set(self, "image_type", value)
 
     @property
+    @pulumi.getter(name="kubeletConfig")
+    def kubelet_config(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigKubeletConfigArgs']]:
+        """
+        )
+        Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "kubelet_config")
+
+    @kubelet_config.setter
+    def kubelet_config(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigKubeletConfigArgs']]):
+        pulumi.set(self, "kubelet_config", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -2233,6 +2400,21 @@ class ClusterNodePoolNodeConfigArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="linuxNodeConfig")
+    def linux_node_config(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigArgs']]:
+        """
+        )
+        Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+        Note that validations happen all server side. All attributes are optional.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "linux_node_config")
+
+    @linux_node_config.setter
+    def linux_node_config(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigArgs']]):
+        pulumi.set(self, "linux_node_config", value)
 
     @property
     @pulumi.getter(name="localSsdCount")
@@ -2444,6 +2626,98 @@ class ClusterNodePoolNodeConfigGuestAcceleratorArgs:
     @type.setter
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class ClusterNodePoolNodeConfigKubeletConfigArgs:
+    def __init__(__self__, *,
+                 cpu_manager_policy: pulumi.Input[str],
+                 cpu_cfs_quota: Optional[pulumi.Input[bool]] = None,
+                 cpu_cfs_quota_period: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] cpu_manager_policy: The CPU management policy on the node. See
+               [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
+               One of `"none"` or `"static"`. Defaults to `none` when `kubelet_config` is unset.
+        :param pulumi.Input[bool] cpu_cfs_quota: If true, enables CPU CFS quota enforcement for
+               containers that specify CPU limits.
+        :param pulumi.Input[str] cpu_cfs_quota_period: The CPU CFS quota period value. Specified
+               as a sequence of decimal numbers, each with optional fraction and a unit suffix,
+               such as `"300ms"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m",
+               "h". The value must be a positive duration.
+        """
+        pulumi.set(__self__, "cpu_manager_policy", cpu_manager_policy)
+        if cpu_cfs_quota is not None:
+            pulumi.set(__self__, "cpu_cfs_quota", cpu_cfs_quota)
+        if cpu_cfs_quota_period is not None:
+            pulumi.set(__self__, "cpu_cfs_quota_period", cpu_cfs_quota_period)
+
+    @property
+    @pulumi.getter(name="cpuManagerPolicy")
+    def cpu_manager_policy(self) -> pulumi.Input[str]:
+        """
+        The CPU management policy on the node. See
+        [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
+        One of `"none"` or `"static"`. Defaults to `none` when `kubelet_config` is unset.
+        """
+        return pulumi.get(self, "cpu_manager_policy")
+
+    @cpu_manager_policy.setter
+    def cpu_manager_policy(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cpu_manager_policy", value)
+
+    @property
+    @pulumi.getter(name="cpuCfsQuota")
+    def cpu_cfs_quota(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, enables CPU CFS quota enforcement for
+        containers that specify CPU limits.
+        """
+        return pulumi.get(self, "cpu_cfs_quota")
+
+    @cpu_cfs_quota.setter
+    def cpu_cfs_quota(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "cpu_cfs_quota", value)
+
+    @property
+    @pulumi.getter(name="cpuCfsQuotaPeriod")
+    def cpu_cfs_quota_period(self) -> Optional[pulumi.Input[str]]:
+        """
+        The CPU CFS quota period value. Specified
+        as a sequence of decimal numbers, each with optional fraction and a unit suffix,
+        such as `"300ms"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m",
+        "h". The value must be a positive duration.
+        """
+        return pulumi.get(self, "cpu_cfs_quota_period")
+
+    @cpu_cfs_quota_period.setter
+    def cpu_cfs_quota_period(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cpu_cfs_quota_period", value)
+
+
+@pulumi.input_type
+class ClusterNodePoolNodeConfigLinuxNodeConfigArgs:
+    def __init__(__self__, *,
+                 sysctls: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] sysctls: The Linux kernel parameters to be applied to the nodes
+               and all pods running on the nodes. Specified as a map from the key, such as
+               `net.core.wmem_max`, to a string value.
+        """
+        pulumi.set(__self__, "sysctls", sysctls)
+
+    @property
+    @pulumi.getter
+    def sysctls(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
+        """
+        The Linux kernel parameters to be applied to the nodes
+        and all pods running on the nodes. Specified as a map from the key, such as
+        `net.core.wmem_max`, to a string value.
+        """
+        return pulumi.get(self, "sysctls")
+
+    @sysctls.setter
+    def sysctls(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
+        pulumi.set(self, "sysctls", value)
 
 
 @pulumi.input_type
@@ -3050,7 +3324,9 @@ class NodePoolNodeConfigArgs:
                  disk_type: Optional[pulumi.Input[str]] = None,
                  guest_accelerators: Optional[pulumi.Input[List[pulumi.Input['NodePoolNodeConfigGuestAcceleratorArgs']]]] = None,
                  image_type: Optional[pulumi.Input[str]] = None,
+                 kubelet_config: Optional[pulumi.Input['NodePoolNodeConfigKubeletConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 linux_node_config: Optional[pulumi.Input['NodePoolNodeConfigLinuxNodeConfigArgs']] = None,
                  local_ssd_count: Optional[pulumi.Input[float]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -3073,8 +3349,12 @@ class NodePoolNodeConfigArgs:
             pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         if image_type is not None:
             pulumi.set(__self__, "image_type", image_type)
+        if kubelet_config is not None:
+            pulumi.set(__self__, "kubelet_config", kubelet_config)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if linux_node_config is not None:
+            pulumi.set(__self__, "linux_node_config", linux_node_config)
         if local_ssd_count is not None:
             pulumi.set(__self__, "local_ssd_count", local_ssd_count)
         if machine_type is not None:
@@ -3146,6 +3426,15 @@ class NodePoolNodeConfigArgs:
         pulumi.set(self, "image_type", value)
 
     @property
+    @pulumi.getter(name="kubeletConfig")
+    def kubelet_config(self) -> Optional[pulumi.Input['NodePoolNodeConfigKubeletConfigArgs']]:
+        return pulumi.get(self, "kubelet_config")
+
+    @kubelet_config.setter
+    def kubelet_config(self, value: Optional[pulumi.Input['NodePoolNodeConfigKubeletConfigArgs']]):
+        pulumi.set(self, "kubelet_config", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "labels")
@@ -3153,6 +3442,15 @@ class NodePoolNodeConfigArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="linuxNodeConfig")
+    def linux_node_config(self) -> Optional[pulumi.Input['NodePoolNodeConfigLinuxNodeConfigArgs']]:
+        return pulumi.get(self, "linux_node_config")
+
+    @linux_node_config.setter
+    def linux_node_config(self, value: Optional[pulumi.Input['NodePoolNodeConfigLinuxNodeConfigArgs']]):
+        pulumi.set(self, "linux_node_config", value)
 
     @property
     @pulumi.getter(name="localSsdCount")
@@ -3288,6 +3586,62 @@ class NodePoolNodeConfigGuestAcceleratorArgs:
     @type.setter
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class NodePoolNodeConfigKubeletConfigArgs:
+    def __init__(__self__, *,
+                 cpu_manager_policy: pulumi.Input[str],
+                 cpu_cfs_quota: Optional[pulumi.Input[bool]] = None,
+                 cpu_cfs_quota_period: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "cpu_manager_policy", cpu_manager_policy)
+        if cpu_cfs_quota is not None:
+            pulumi.set(__self__, "cpu_cfs_quota", cpu_cfs_quota)
+        if cpu_cfs_quota_period is not None:
+            pulumi.set(__self__, "cpu_cfs_quota_period", cpu_cfs_quota_period)
+
+    @property
+    @pulumi.getter(name="cpuManagerPolicy")
+    def cpu_manager_policy(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "cpu_manager_policy")
+
+    @cpu_manager_policy.setter
+    def cpu_manager_policy(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cpu_manager_policy", value)
+
+    @property
+    @pulumi.getter(name="cpuCfsQuota")
+    def cpu_cfs_quota(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "cpu_cfs_quota")
+
+    @cpu_cfs_quota.setter
+    def cpu_cfs_quota(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "cpu_cfs_quota", value)
+
+    @property
+    @pulumi.getter(name="cpuCfsQuotaPeriod")
+    def cpu_cfs_quota_period(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cpu_cfs_quota_period")
+
+    @cpu_cfs_quota_period.setter
+    def cpu_cfs_quota_period(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cpu_cfs_quota_period", value)
+
+
+@pulumi.input_type
+class NodePoolNodeConfigLinuxNodeConfigArgs:
+    def __init__(__self__, *,
+                 sysctls: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
+        pulumi.set(__self__, "sysctls", sysctls)
+
+    @property
+    @pulumi.getter
+    def sysctls(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
+        return pulumi.get(self, "sysctls")
+
+    @sysctls.setter
+    def sysctls(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
+        pulumi.set(self, "sysctls", value)
 
 
 @pulumi.input_type

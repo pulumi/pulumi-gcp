@@ -1114,6 +1114,164 @@ func (o SubscriptionPushConfigOidcTokenPtrOutput) ServiceAccountEmail() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
+type SubscriptionRetryPolicy struct {
+	// The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	MaximumBackoff *string `pulumi:"maximumBackoff"`
+	// The minimum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 10 seconds.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	MinimumBackoff *string `pulumi:"minimumBackoff"`
+}
+
+// SubscriptionRetryPolicyInput is an input type that accepts SubscriptionRetryPolicyArgs and SubscriptionRetryPolicyOutput values.
+// You can construct a concrete instance of `SubscriptionRetryPolicyInput` via:
+//
+//          SubscriptionRetryPolicyArgs{...}
+type SubscriptionRetryPolicyInput interface {
+	pulumi.Input
+
+	ToSubscriptionRetryPolicyOutput() SubscriptionRetryPolicyOutput
+	ToSubscriptionRetryPolicyOutputWithContext(context.Context) SubscriptionRetryPolicyOutput
+}
+
+type SubscriptionRetryPolicyArgs struct {
+	// The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	MaximumBackoff pulumi.StringPtrInput `pulumi:"maximumBackoff"`
+	// The minimum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 10 seconds.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	MinimumBackoff pulumi.StringPtrInput `pulumi:"minimumBackoff"`
+}
+
+func (SubscriptionRetryPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionRetryPolicy)(nil)).Elem()
+}
+
+func (i SubscriptionRetryPolicyArgs) ToSubscriptionRetryPolicyOutput() SubscriptionRetryPolicyOutput {
+	return i.ToSubscriptionRetryPolicyOutputWithContext(context.Background())
+}
+
+func (i SubscriptionRetryPolicyArgs) ToSubscriptionRetryPolicyOutputWithContext(ctx context.Context) SubscriptionRetryPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionRetryPolicyOutput)
+}
+
+func (i SubscriptionRetryPolicyArgs) ToSubscriptionRetryPolicyPtrOutput() SubscriptionRetryPolicyPtrOutput {
+	return i.ToSubscriptionRetryPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i SubscriptionRetryPolicyArgs) ToSubscriptionRetryPolicyPtrOutputWithContext(ctx context.Context) SubscriptionRetryPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionRetryPolicyOutput).ToSubscriptionRetryPolicyPtrOutputWithContext(ctx)
+}
+
+// SubscriptionRetryPolicyPtrInput is an input type that accepts SubscriptionRetryPolicyArgs, SubscriptionRetryPolicyPtr and SubscriptionRetryPolicyPtrOutput values.
+// You can construct a concrete instance of `SubscriptionRetryPolicyPtrInput` via:
+//
+//          SubscriptionRetryPolicyArgs{...}
+//
+//  or:
+//
+//          nil
+type SubscriptionRetryPolicyPtrInput interface {
+	pulumi.Input
+
+	ToSubscriptionRetryPolicyPtrOutput() SubscriptionRetryPolicyPtrOutput
+	ToSubscriptionRetryPolicyPtrOutputWithContext(context.Context) SubscriptionRetryPolicyPtrOutput
+}
+
+type subscriptionRetryPolicyPtrType SubscriptionRetryPolicyArgs
+
+func SubscriptionRetryPolicyPtr(v *SubscriptionRetryPolicyArgs) SubscriptionRetryPolicyPtrInput {
+	return (*subscriptionRetryPolicyPtrType)(v)
+}
+
+func (*subscriptionRetryPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionRetryPolicy)(nil)).Elem()
+}
+
+func (i *subscriptionRetryPolicyPtrType) ToSubscriptionRetryPolicyPtrOutput() SubscriptionRetryPolicyPtrOutput {
+	return i.ToSubscriptionRetryPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *subscriptionRetryPolicyPtrType) ToSubscriptionRetryPolicyPtrOutputWithContext(ctx context.Context) SubscriptionRetryPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionRetryPolicyPtrOutput)
+}
+
+type SubscriptionRetryPolicyOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionRetryPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionRetryPolicy)(nil)).Elem()
+}
+
+func (o SubscriptionRetryPolicyOutput) ToSubscriptionRetryPolicyOutput() SubscriptionRetryPolicyOutput {
+	return o
+}
+
+func (o SubscriptionRetryPolicyOutput) ToSubscriptionRetryPolicyOutputWithContext(ctx context.Context) SubscriptionRetryPolicyOutput {
+	return o
+}
+
+func (o SubscriptionRetryPolicyOutput) ToSubscriptionRetryPolicyPtrOutput() SubscriptionRetryPolicyPtrOutput {
+	return o.ToSubscriptionRetryPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o SubscriptionRetryPolicyOutput) ToSubscriptionRetryPolicyPtrOutputWithContext(ctx context.Context) SubscriptionRetryPolicyPtrOutput {
+	return o.ApplyT(func(v SubscriptionRetryPolicy) *SubscriptionRetryPolicy {
+		return &v
+	}).(SubscriptionRetryPolicyPtrOutput)
+}
+
+// The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds.
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+func (o SubscriptionRetryPolicyOutput) MaximumBackoff() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubscriptionRetryPolicy) *string { return v.MaximumBackoff }).(pulumi.StringPtrOutput)
+}
+
+// The minimum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 10 seconds.
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+func (o SubscriptionRetryPolicyOutput) MinimumBackoff() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubscriptionRetryPolicy) *string { return v.MinimumBackoff }).(pulumi.StringPtrOutput)
+}
+
+type SubscriptionRetryPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionRetryPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionRetryPolicy)(nil)).Elem()
+}
+
+func (o SubscriptionRetryPolicyPtrOutput) ToSubscriptionRetryPolicyPtrOutput() SubscriptionRetryPolicyPtrOutput {
+	return o
+}
+
+func (o SubscriptionRetryPolicyPtrOutput) ToSubscriptionRetryPolicyPtrOutputWithContext(ctx context.Context) SubscriptionRetryPolicyPtrOutput {
+	return o
+}
+
+func (o SubscriptionRetryPolicyPtrOutput) Elem() SubscriptionRetryPolicyOutput {
+	return o.ApplyT(func(v *SubscriptionRetryPolicy) SubscriptionRetryPolicy { return *v }).(SubscriptionRetryPolicyOutput)
+}
+
+// The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds.
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+func (o SubscriptionRetryPolicyPtrOutput) MaximumBackoff() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionRetryPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaximumBackoff
+	}).(pulumi.StringPtrOutput)
+}
+
+// The minimum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 10 seconds.
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+func (o SubscriptionRetryPolicyPtrOutput) MinimumBackoff() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionRetryPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinimumBackoff
+	}).(pulumi.StringPtrOutput)
+}
+
 type TopicIAMBindingCondition struct {
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
@@ -1590,6 +1748,8 @@ func init() {
 	pulumi.RegisterOutputType(SubscriptionPushConfigPtrOutput{})
 	pulumi.RegisterOutputType(SubscriptionPushConfigOidcTokenOutput{})
 	pulumi.RegisterOutputType(SubscriptionPushConfigOidcTokenPtrOutput{})
+	pulumi.RegisterOutputType(SubscriptionRetryPolicyOutput{})
+	pulumi.RegisterOutputType(SubscriptionRetryPolicyPtrOutput{})
 	pulumi.RegisterOutputType(TopicIAMBindingConditionOutput{})
 	pulumi.RegisterOutputType(TopicIAMBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(TopicIAMMemberConditionOutput{})
