@@ -23,6 +23,7 @@ __all__ = [
     'bigquery_reservation_custom_endpoint',
     'bigtable_custom_endpoint',
     'billing_custom_endpoint',
+    'billing_project',
     'binary_authorization_custom_endpoint',
     'cloud_asset_custom_endpoint',
     'cloud_billing_custom_endpoint',
@@ -42,6 +43,7 @@ __all__ = [
     'credentials',
     'data_catalog_custom_endpoint',
     'data_fusion_custom_endpoint',
+    'data_loss_prevention_custom_endpoint',
     'dataflow_custom_endpoint',
     'dataproc_beta_custom_endpoint',
     'dataproc_custom_endpoint',
@@ -124,6 +126,8 @@ bigtable_custom_endpoint = __config__.get('bigtableCustomEndpoint')
 
 billing_custom_endpoint = __config__.get('billingCustomEndpoint')
 
+billing_project = __config__.get('billingProject')
+
 binary_authorization_custom_endpoint = __config__.get('binaryAuthorizationCustomEndpoint')
 
 cloud_asset_custom_endpoint = __config__.get('cloudAssetCustomEndpoint')
@@ -161,6 +165,8 @@ credentials = __config__.get('credentials') or _utilities.get_env('GOOGLE_CREDEN
 data_catalog_custom_endpoint = __config__.get('dataCatalogCustomEndpoint')
 
 data_fusion_custom_endpoint = __config__.get('dataFusionCustomEndpoint')
+
+data_loss_prevention_custom_endpoint = __config__.get('dataLossPreventionCustomEndpoint')
 
 dataflow_custom_endpoint = __config__.get('dataflowCustomEndpoint')
 

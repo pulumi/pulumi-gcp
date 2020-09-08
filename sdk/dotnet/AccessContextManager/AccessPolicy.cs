@@ -22,6 +22,12 @@ namespace Pulumi.Gcp.AccessContextManager
     /// * How-to Guides
     ///     * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
     /// 
+    /// &gt; **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
+    /// you must specify a `billing_project` and set `user_project_override` to true
+    /// in the provider configuration. Otherwise the ACM API will return a 403 error.
+    /// Your account must have the `serviceusage.services.use` permission on the
+    /// `billing_project` you defined.
+    /// 
     /// ## Example Usage
     /// </summary>
     public partial class AccessPolicy : Pulumi.CustomResource

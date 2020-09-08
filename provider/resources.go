@@ -41,6 +41,7 @@ const (
 	gcpDataCatalog          = "DataCatalog"          // Data Catalog resources
 	gcpDataFlow             = "Dataflow"             // DataFlow resources
 	gcpDataFusion           = "DataFusion"           // DataFusion resources
+	gcpDataLoss             = "DataLoss"             // DataLoss resources
 	gcpDataProc             = "Dataproc"             // DataProc resources
 	gcpDatastore            = "Datastore"            // Datastore resources
 	gcpDeploymentManager    = "DeploymentManager"    // DeploymentManager resources
@@ -523,6 +524,9 @@ func Provider() tfbridge.ProviderInfo {
 						CSharpName: "ServiceName",
 					},
 				},
+			},
+			"google_project_service_identity": {
+				Tok: gcpResource(gcpProject, "ServiceIdentity"),
 			},
 			"google_project_usage_export_bucket": {
 				Tok: gcpResource(gcpProject, "UsageExportBucket"),
@@ -1629,8 +1633,15 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Notebook
 			"google_notebooks_environment": {Tok: gcpResource(gcpNotebooks, "Environment")},
-			"google_notebooks_instance":    {Tok: gcpResource(gcpNotebooks, "Instance")},
-			"google_notebooks_location":    {Tok: gcpResource(gcpNotebooks, "Location")},
+			"google_notebooks_instance": {
+				Tok: gcpResource(gcpNotebooks, "Instance"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"instance_owners": {
+						MaxItemsOne: boolRef(true),
+					},
+				},
+			},
+			"google_notebooks_location": {Tok: gcpResource(gcpNotebooks, "Location")},
 
 			// CloudIdentity
 			"google_cloud_identity_group_membership": {Tok: gcpResource(gcpCloudIdentity, "GroupMembership")},
@@ -1647,6 +1658,17 @@ func Provider() tfbridge.ProviderInfo {
 			// ActiveDirectory
 			"google_active_directory_domain":       {Tok: gcpResource(gcpActiveDirectory, "Domain")},
 			"google_active_directory_domain_trust": {Tok: gcpResource(gcpActiveDirectory, "DomainTrust")},
+
+			// DataLoss
+			"google_data_loss_prevention_inspect_template": {
+				Tok: gcpResource(gcpDataLoss, "PreventionInspectTemplate"),
+			},
+			"google_data_loss_prevention_job_trigger": {
+				Tok: gcpResource(gcpDataLoss, "PreventionJobTrigger"),
+			},
+			"google_data_loss_prevention_stored_info_type": {
+				Tok: gcpResource(gcpDataLoss, "PreventionStoredInfoType"),
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"google_billing_account": {

@@ -13,6 +13,7 @@ __all__ = [
     'AppProfileSingleClusterRouting',
     'ConnectionCloudSql',
     'ConnectionCloudSqlCredential',
+    'DataTransferConfigSensitiveParams',
     'DatasetAccess',
     'DatasetAccessView',
     'DatasetDefaultEncryptionConfiguration',
@@ -170,6 +171,29 @@ class ConnectionCloudSqlCredential(dict):
         Username for database.
         """
         return pulumi.get(self, "username")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class DataTransferConfigSensitiveParams(dict):
+    def __init__(__self__, *,
+                 secret_access_key: str):
+        """
+        :param str secret_access_key: The Secret Access Key of the AWS account transferring data from.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        pulumi.set(__self__, "secret_access_key", secret_access_key)
+
+    @property
+    @pulumi.getter(name="secretAccessKey")
+    def secret_access_key(self) -> str:
+        """
+        The Secret Access Key of the AWS account transferring data from.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "secret_access_key")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

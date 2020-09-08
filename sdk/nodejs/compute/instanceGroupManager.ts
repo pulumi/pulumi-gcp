@@ -80,6 +80,7 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      * for details on configuration.
      */
     public readonly namedPorts!: pulumi.Output<outputs.compute.InstanceGroupManagerNamedPort[] | undefined>;
+    public /*out*/ readonly operation!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
@@ -144,6 +145,7 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             inputs["instanceGroup"] = state ? state.instanceGroup : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["namedPorts"] = state ? state.namedPorts : undefined;
+            inputs["operation"] = state ? state.operation : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
             inputs["statefulDisks"] = state ? state.statefulDisks : undefined;
@@ -176,6 +178,7 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             inputs["zone"] = args ? args.zone : undefined;
             inputs["fingerprint"] = undefined /*out*/;
             inputs["instanceGroup"] = undefined /*out*/;
+            inputs["operation"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
         if (!opts) {
@@ -229,6 +232,7 @@ export interface InstanceGroupManagerState {
      * for details on configuration.
      */
     readonly namedPorts?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupManagerNamedPort>[]>;
+    readonly operation?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.

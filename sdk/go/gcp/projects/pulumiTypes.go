@@ -1805,6 +1805,12 @@ func (o GetOrganizationPolicyRestorePolicyArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetProjectProject struct {
+	CreateTime     string            `pulumi:"createTime"`
+	Labels         map[string]string `pulumi:"labels"`
+	LifecycleState string            `pulumi:"lifecycleState"`
+	Name           string            `pulumi:"name"`
+	Number         string            `pulumi:"number"`
+	Parent         map[string]string `pulumi:"parent"`
 	// The project id of the project.
 	ProjectId string `pulumi:"projectId"`
 }
@@ -1821,6 +1827,12 @@ type GetProjectProjectInput interface {
 }
 
 type GetProjectProjectArgs struct {
+	CreateTime     pulumi.StringInput    `pulumi:"createTime"`
+	Labels         pulumi.StringMapInput `pulumi:"labels"`
+	LifecycleState pulumi.StringInput    `pulumi:"lifecycleState"`
+	Name           pulumi.StringInput    `pulumi:"name"`
+	Number         pulumi.StringInput    `pulumi:"number"`
+	Parent         pulumi.StringMapInput `pulumi:"parent"`
 	// The project id of the project.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
 }
@@ -1874,6 +1886,30 @@ func (o GetProjectProjectOutput) ToGetProjectProjectOutput() GetProjectProjectOu
 
 func (o GetProjectProjectOutput) ToGetProjectProjectOutputWithContext(ctx context.Context) GetProjectProjectOutput {
 	return o
+}
+
+func (o GetProjectProjectOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectProject) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o GetProjectProjectOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetProjectProject) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+func (o GetProjectProjectOutput) LifecycleState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectProject) string { return v.LifecycleState }).(pulumi.StringOutput)
+}
+
+func (o GetProjectProjectOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectProject) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetProjectProjectOutput) Number() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectProject) string { return v.Number }).(pulumi.StringOutput)
+}
+
+func (o GetProjectProjectOutput) Parent() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetProjectProject) map[string]string { return v.Parent }).(pulumi.StringMapOutput)
 }
 
 // The project id of the project.

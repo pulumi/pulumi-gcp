@@ -28,6 +28,8 @@ class Service(pulumi.CustomResource):
         For a list of services available, visit the
         [API library page](https://console.cloud.google.com/apis/library) or run `gcloud services list`.
 
+        Requires [Service Usage API](https://console.cloud.google.com/apis/library/serviceusage.googleapis.com).
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] disable_dependent_services: If `true`, services that are enabled and which depend on this service should also be disabled when this service is destroyed.

@@ -22,6 +22,12 @@ import (
 // * How-to Guides
 //     * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
 //
+// > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
+// you must specify a `billingProject` and set `userProjectOverride` to true
+// in the provider configuration. Otherwise the ACM API will return a 403 error.
+// Your account must have the `serviceusage.services.use` permission on the
+// `billingProject` you defined.
+//
 // ## Example Usage
 type AccessPolicy struct {
 	pulumi.CustomResourceState

@@ -12,6 +12,7 @@ __all__ = [
     'AppProfileSingleClusterRoutingArgs',
     'ConnectionCloudSqlArgs',
     'ConnectionCloudSqlCredentialArgs',
+    'DataTransferConfigSensitiveParamsArgs',
     'DatasetAccessArgs',
     'DatasetAccessViewArgs',
     'DatasetDefaultEncryptionConfigurationArgs',
@@ -195,6 +196,30 @@ class ConnectionCloudSqlCredentialArgs:
     @username.setter
     def username(self, value: pulumi.Input[str]):
         pulumi.set(self, "username", value)
+
+
+@pulumi.input_type
+class DataTransferConfigSensitiveParamsArgs:
+    def __init__(__self__, *,
+                 secret_access_key: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] secret_access_key: The Secret Access Key of the AWS account transferring data from.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        pulumi.set(__self__, "secret_access_key", secret_access_key)
+
+    @property
+    @pulumi.getter(name="secretAccessKey")
+    def secret_access_key(self) -> pulumi.Input[str]:
+        """
+        The Secret Access Key of the AWS account transferring data from.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "secret_access_key")
+
+    @secret_access_key.setter
+    def secret_access_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "secret_access_key", value)
 
 
 @pulumi.input_type

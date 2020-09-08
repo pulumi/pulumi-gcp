@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -13,6 +15,9 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.locations.transferConfigs/create)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/)
+ *
+ * > **Warning:** All arguments including `sensitive_params.secret_access_key` will be stored in the raw
+ * state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
  *
  * ## Example Usage
  */
@@ -105,6 +110,16 @@ export class DataTransferConfig extends pulumi.CustomResource {
      */
     public readonly schedule!: pulumi.Output<string | undefined>;
     /**
+     * Different parameters are configured primarily using the the `params` field on this
+     * resource. This block contains the parameters which contain secrets or passwords so that they can be marked
+     * sensitive and hidden from plan output. The name of the field, eg: secret_access_key, will be the key
+     * in the `params` map in the api request.
+     * Credentials may not be specified in both locations and will cause an error. Changing from one location
+     * to a different credential configuration in the config will require an apply to update state.
+     * Structure is documented below.
+     */
+    public readonly sensitiveParams!: pulumi.Output<outputs.bigquery.DataTransferConfigSensitiveParams | undefined>;
+    /**
      * Optional service account name. If this field is set, transfer config will
      * be created with this service account credentials. It requires that
      * requesting user calling this API has permissions to act as this service account.
@@ -134,6 +149,7 @@ export class DataTransferConfig extends pulumi.CustomResource {
             inputs["params"] = state ? state.params : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["schedule"] = state ? state.schedule : undefined;
+            inputs["sensitiveParams"] = state ? state.sensitiveParams : undefined;
             inputs["serviceAccountName"] = state ? state.serviceAccountName : undefined;
         } else {
             const args = argsOrState as DataTransferConfigArgs | undefined;
@@ -159,6 +175,7 @@ export class DataTransferConfig extends pulumi.CustomResource {
             inputs["params"] = args ? args.params : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["schedule"] = args ? args.schedule : undefined;
+            inputs["sensitiveParams"] = args ? args.sensitiveParams : undefined;
             inputs["serviceAccountName"] = args ? args.serviceAccountName : undefined;
             inputs["name"] = undefined /*out*/;
         }
@@ -238,6 +255,16 @@ export interface DataTransferConfigState {
      */
     readonly schedule?: pulumi.Input<string>;
     /**
+     * Different parameters are configured primarily using the the `params` field on this
+     * resource. This block contains the parameters which contain secrets or passwords so that they can be marked
+     * sensitive and hidden from plan output. The name of the field, eg: secret_access_key, will be the key
+     * in the `params` map in the api request.
+     * Credentials may not be specified in both locations and will cause an error. Changing from one location
+     * to a different credential configuration in the config will require an apply to update state.
+     * Structure is documented below.
+     */
+    readonly sensitiveParams?: pulumi.Input<inputs.bigquery.DataTransferConfigSensitiveParams>;
+    /**
      * Optional service account name. If this field is set, transfer config will
      * be created with this service account credentials. It requires that
      * requesting user calling this API has permissions to act as this service account.
@@ -303,6 +330,16 @@ export interface DataTransferConfigArgs {
      * NOTE: the granularity should be at least 8 hours, or less frequent.
      */
     readonly schedule?: pulumi.Input<string>;
+    /**
+     * Different parameters are configured primarily using the the `params` field on this
+     * resource. This block contains the parameters which contain secrets or passwords so that they can be marked
+     * sensitive and hidden from plan output. The name of the field, eg: secret_access_key, will be the key
+     * in the `params` map in the api request.
+     * Credentials may not be specified in both locations and will cause an error. Changing from one location
+     * to a different credential configuration in the config will require an apply to update state.
+     * Structure is documented below.
+     */
+    readonly sensitiveParams?: pulumi.Input<inputs.bigquery.DataTransferConfigSensitiveParams>;
     /**
      * Optional service account name. If this field is set, transfer config will
      * be created with this service account credentials. It requires that

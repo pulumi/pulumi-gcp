@@ -111,6 +111,7 @@ class InstanceGroupManager(pulumi.CustomResource):
             __props__['zone'] = zone
             __props__['fingerprint'] = None
             __props__['instance_group'] = None
+            __props__['operation'] = None
             __props__['self_link'] = None
         super(InstanceGroupManager, __self__).__init__(
             'gcp:compute/instanceGroupManager:InstanceGroupManager',
@@ -129,6 +130,7 @@ class InstanceGroupManager(pulumi.CustomResource):
             instance_group: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             named_ports: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceGroupManagerNamedPortArgs']]]]] = None,
+            operation: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             stateful_disks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceGroupManagerStatefulDiskArgs']]]]] = None,
@@ -189,6 +191,7 @@ class InstanceGroupManager(pulumi.CustomResource):
         __props__["instance_group"] = instance_group
         __props__["name"] = name
         __props__["named_ports"] = named_ports
+        __props__["operation"] = operation
         __props__["project"] = project
         __props__["self_link"] = self_link
         __props__["stateful_disks"] = stateful_disks
@@ -263,6 +266,11 @@ class InstanceGroupManager(pulumi.CustomResource):
         for details on configuration.
         """
         return pulumi.get(self, "named_ports")
+
+    @property
+    @pulumi.getter
+    def operation(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "operation")
 
     @property
     @pulumi.getter

@@ -19,6 +19,9 @@ import (
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/)
 //
+// > **Warning:** All arguments including `sensitive_params.secret_access_key` will be stored in the raw
+// state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+//
 // ## Example Usage
 type DataTransferConfig struct {
 	pulumi.CustomResourceState
@@ -61,6 +64,14 @@ type DataTransferConfig struct {
 	// https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
 	// NOTE: the granularity should be at least 8 hours, or less frequent.
 	Schedule pulumi.StringPtrOutput `pulumi:"schedule"`
+	// Different parameters are configured primarily using the the `params` field on this
+	// resource. This block contains the parameters which contain secrets or passwords so that they can be marked
+	// sensitive and hidden from plan output. The name of the field, eg: secret_access_key, will be the key
+	// in the `params` map in the api request.
+	// Credentials may not be specified in both locations and will cause an error. Changing from one location
+	// to a different credential configuration in the config will require an apply to update state.
+	// Structure is documented below.
+	SensitiveParams DataTransferConfigSensitiveParamsPtrOutput `pulumi:"sensitiveParams"`
 	// Optional service account name. If this field is set, transfer config will
 	// be created with this service account credentials. It requires that
 	// requesting user calling this API has permissions to act as this service account.
@@ -145,6 +156,14 @@ type dataTransferConfigState struct {
 	// https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
 	// NOTE: the granularity should be at least 8 hours, or less frequent.
 	Schedule *string `pulumi:"schedule"`
+	// Different parameters are configured primarily using the the `params` field on this
+	// resource. This block contains the parameters which contain secrets or passwords so that they can be marked
+	// sensitive and hidden from plan output. The name of the field, eg: secret_access_key, will be the key
+	// in the `params` map in the api request.
+	// Credentials may not be specified in both locations and will cause an error. Changing from one location
+	// to a different credential configuration in the config will require an apply to update state.
+	// Structure is documented below.
+	SensitiveParams *DataTransferConfigSensitiveParams `pulumi:"sensitiveParams"`
 	// Optional service account name. If this field is set, transfer config will
 	// be created with this service account credentials. It requires that
 	// requesting user calling this API has permissions to act as this service account.
@@ -190,6 +209,14 @@ type DataTransferConfigState struct {
 	// https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
 	// NOTE: the granularity should be at least 8 hours, or less frequent.
 	Schedule pulumi.StringPtrInput
+	// Different parameters are configured primarily using the the `params` field on this
+	// resource. This block contains the parameters which contain secrets or passwords so that they can be marked
+	// sensitive and hidden from plan output. The name of the field, eg: secret_access_key, will be the key
+	// in the `params` map in the api request.
+	// Credentials may not be specified in both locations and will cause an error. Changing from one location
+	// to a different credential configuration in the config will require an apply to update state.
+	// Structure is documented below.
+	SensitiveParams DataTransferConfigSensitiveParamsPtrInput
 	// Optional service account name. If this field is set, transfer config will
 	// be created with this service account credentials. It requires that
 	// requesting user calling this API has permissions to act as this service account.
@@ -235,6 +262,14 @@ type dataTransferConfigArgs struct {
 	// https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
 	// NOTE: the granularity should be at least 8 hours, or less frequent.
 	Schedule *string `pulumi:"schedule"`
+	// Different parameters are configured primarily using the the `params` field on this
+	// resource. This block contains the parameters which contain secrets or passwords so that they can be marked
+	// sensitive and hidden from plan output. The name of the field, eg: secret_access_key, will be the key
+	// in the `params` map in the api request.
+	// Credentials may not be specified in both locations and will cause an error. Changing from one location
+	// to a different credential configuration in the config will require an apply to update state.
+	// Structure is documented below.
+	SensitiveParams *DataTransferConfigSensitiveParams `pulumi:"sensitiveParams"`
 	// Optional service account name. If this field is set, transfer config will
 	// be created with this service account credentials. It requires that
 	// requesting user calling this API has permissions to act as this service account.
@@ -277,6 +312,14 @@ type DataTransferConfigArgs struct {
 	// https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
 	// NOTE: the granularity should be at least 8 hours, or less frequent.
 	Schedule pulumi.StringPtrInput
+	// Different parameters are configured primarily using the the `params` field on this
+	// resource. This block contains the parameters which contain secrets or passwords so that they can be marked
+	// sensitive and hidden from plan output. The name of the field, eg: secret_access_key, will be the key
+	// in the `params` map in the api request.
+	// Credentials may not be specified in both locations and will cause an error. Changing from one location
+	// to a different credential configuration in the config will require an apply to update state.
+	// Structure is documented below.
+	SensitiveParams DataTransferConfigSensitiveParamsPtrInput
 	// Optional service account name. If this field is set, transfer config will
 	// be created with this service account credentials. It requires that
 	// requesting user calling this API has permissions to act as this service account.

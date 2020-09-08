@@ -31,6 +31,7 @@ class Bucket(pulumi.CustomResource):
                  requester_pays: Optional[pulumi.Input[bool]] = None,
                  retention_policy: Optional[pulumi.Input[pulumi.InputType['BucketRetentionPolicyArgs']]] = None,
                  storage_class: Optional[pulumi.Input[str]] = None,
+                 uniform_bucket_level_access: Optional[pulumi.Input[bool]] = None,
                  versioning: Optional[pulumi.Input[pulumi.InputType['BucketVersioningArgs']]] = None,
                  website: Optional[pulumi.Input[pulumi.InputType['BucketWebsiteArgs']]] = None,
                  __props__=None,
@@ -54,7 +55,7 @@ class Bucket(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] bucket_policy_only: Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket.
+        :param pulumi.Input[bool] bucket_policy_only: Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket. This field will be removed in the next major release of the provider.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['BucketCorArgs']]]] cors: The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input[pulumi.InputType['BucketEncryptionArgs']] encryption: The bucket's encryption configuration.
         :param pulumi.Input[bool] force_destroy: When deleting a bucket, this
@@ -70,6 +71,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[bool] requester_pays: Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
         :param pulumi.Input[pulumi.InputType['BucketRetentionPolicyArgs']] retention_policy: Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
         :param pulumi.Input[str] storage_class: The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
+        :param pulumi.Input[bool] uniform_bucket_level_access: Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
         :param pulumi.Input[pulumi.InputType['BucketVersioningArgs']] versioning: The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.
         :param pulumi.Input[pulumi.InputType['BucketWebsiteArgs']] website: Configuration if the bucket acts as a website. Structure is documented below.
         """
@@ -90,6 +92,9 @@ class Bucket(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            if bucket_policy_only is not None:
+                warnings.warn("Please use the uniform_bucket_level_access as this field has been renamed by Google.", DeprecationWarning)
+                pulumi.log.warn("bucket_policy_only is deprecated: Please use the uniform_bucket_level_access as this field has been renamed by Google.")
             __props__['bucket_policy_only'] = bucket_policy_only
             __props__['cors'] = cors
             __props__['default_event_based_hold'] = default_event_based_hold
@@ -104,6 +109,7 @@ class Bucket(pulumi.CustomResource):
             __props__['requester_pays'] = requester_pays
             __props__['retention_policy'] = retention_policy
             __props__['storage_class'] = storage_class
+            __props__['uniform_bucket_level_access'] = uniform_bucket_level_access
             __props__['versioning'] = versioning
             __props__['website'] = website
             __props__['self_link'] = None
@@ -133,6 +139,7 @@ class Bucket(pulumi.CustomResource):
             retention_policy: Optional[pulumi.Input[pulumi.InputType['BucketRetentionPolicyArgs']]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             storage_class: Optional[pulumi.Input[str]] = None,
+            uniform_bucket_level_access: Optional[pulumi.Input[bool]] = None,
             url: Optional[pulumi.Input[str]] = None,
             versioning: Optional[pulumi.Input[pulumi.InputType['BucketVersioningArgs']]] = None,
             website: Optional[pulumi.Input[pulumi.InputType['BucketWebsiteArgs']]] = None) -> 'Bucket':
@@ -143,7 +150,7 @@ class Bucket(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] bucket_policy_only: Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket.
+        :param pulumi.Input[bool] bucket_policy_only: Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket. This field will be removed in the next major release of the provider.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['BucketCorArgs']]]] cors: The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input[pulumi.InputType['BucketEncryptionArgs']] encryption: The bucket's encryption configuration.
         :param pulumi.Input[bool] force_destroy: When deleting a bucket, this
@@ -160,6 +167,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['BucketRetentionPolicyArgs']] retention_policy: Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] storage_class: The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
+        :param pulumi.Input[bool] uniform_bucket_level_access: Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
         :param pulumi.Input[str] url: The base URL of the bucket, in the format `gs://<bucket-name>`.
         :param pulumi.Input[pulumi.InputType['BucketVersioningArgs']] versioning: The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.
         :param pulumi.Input[pulumi.InputType['BucketWebsiteArgs']] website: Configuration if the bucket acts as a website. Structure is documented below.
@@ -183,6 +191,7 @@ class Bucket(pulumi.CustomResource):
         __props__["retention_policy"] = retention_policy
         __props__["self_link"] = self_link
         __props__["storage_class"] = storage_class
+        __props__["uniform_bucket_level_access"] = uniform_bucket_level_access
         __props__["url"] = url
         __props__["versioning"] = versioning
         __props__["website"] = website
@@ -192,7 +201,7 @@ class Bucket(pulumi.CustomResource):
     @pulumi.getter(name="bucketPolicyOnly")
     def bucket_policy_only(self) -> pulumi.Output[bool]:
         """
-        Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket.
+        Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket. This field will be removed in the next major release of the provider.
         """
         return pulumi.get(self, "bucket_policy_only")
 
@@ -307,6 +316,14 @@ class Bucket(pulumi.CustomResource):
         The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
         """
         return pulumi.get(self, "storage_class")
+
+    @property
+    @pulumi.getter(name="uniformBucketLevelAccess")
+    def uniform_bucket_level_access(self) -> pulumi.Output[bool]:
+        """
+        Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
+        """
+        return pulumi.get(self, "uniform_bucket_level_access")
 
     @property
     @pulumi.getter

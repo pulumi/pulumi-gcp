@@ -658,6 +658,8 @@ github.com/pulumi/terraform-provider-google-beta v0.0.0-20200825104851-1e2672f4c
 github.com/pulumi/terraform-provider-google-beta v0.0.0-20200825104851-1e2672f4c815/go.mod h1:4c8kWZMLN9uu4T9eH52Vec2LgtTBGZuGkSDk57abL+0=
 github.com/pulumi/terraform-provider-google-beta v0.0.0-20200901104943-0cc173628c26 h1:pf2ONpLTRIjZZiiB0+n6Cyn0jVd0nJe6CIOKUqlQBvA=
 github.com/pulumi/terraform-provider-google-beta v0.0.0-20200901104943-0cc173628c26/go.mod h1:4c8kWZMLN9uu4T9eH52Vec2LgtTBGZuGkSDk57abL+0=
+github.com/pulumi/terraform-provider-google-beta v0.0.0-20200908214130-18d05cb5731c h1:2ZedMkG+a/NL+Hc7JW+koYgkU5rEuF+j2h8a0uRlDDM=
+github.com/pulumi/terraform-provider-google-beta v0.0.0-20200908214130-18d05cb5731c/go.mod h1:4c8kWZMLN9uu4T9eH52Vec2LgtTBGZuGkSDk57abL+0=
 github.com/pulumi/tf2pulumi v0.8.1-0.20200610210702-8e5d1a569c4a h1:CUbap8oEhlXRiqVBcAGiW63iXuDY7iIwQLM4r7y8lw8=
 github.com/pulumi/tf2pulumi v0.8.1-0.20200610210702-8e5d1a569c4a/go.mod h1:lE39suxXfTqjNHg8PxtPUdek3wnTTdnoYXVpQdFGmEo=
 github.com/pulumi/tf2pulumi v0.8.1-0.20200630203740-1846524be4ec h1:C0l29EHsfhH+reeRSmqr0sIzJipQpXssof3YZurRrVo=

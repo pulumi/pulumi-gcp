@@ -49,7 +49,7 @@ export class Instance extends pulumi.CustomResource {
     public readonly bootDiskSizeGb!: pulumi.Output<number | undefined>;
     /**
      * Possible disk types for notebook instances.
-     * Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
+     * Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
      */
     public readonly bootDiskType!: pulumi.Output<string | undefined>;
     /**
@@ -75,7 +75,7 @@ export class Instance extends pulumi.CustomResource {
     public readonly dataDiskSizeGb!: pulumi.Output<number | undefined>;
     /**
      * Possible disk types for notebook instances.
-     * Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
+     * Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
      */
     public readonly dataDiskType!: pulumi.Output<string | undefined>;
     /**
@@ -89,7 +89,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly installGpuDriver!: pulumi.Output<boolean | undefined>;
     /**
-     * The owner of this instance after creation.
+     * The list of owners of this instance after creation.
      * Format: alias@example.com.
      * Currently supports one owner only.
      * If not specified, all of the service account users of
@@ -291,7 +291,7 @@ export interface InstanceState {
     readonly bootDiskSizeGb?: pulumi.Input<number>;
     /**
      * Possible disk types for notebook instances.
-     * Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
+     * Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
      */
     readonly bootDiskType?: pulumi.Input<string>;
     /**
@@ -317,7 +317,7 @@ export interface InstanceState {
     readonly dataDiskSizeGb?: pulumi.Input<number>;
     /**
      * Possible disk types for notebook instances.
-     * Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
+     * Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
      */
     readonly dataDiskType?: pulumi.Input<string>;
     /**
@@ -331,7 +331,7 @@ export interface InstanceState {
      */
     readonly installGpuDriver?: pulumi.Input<boolean>;
     /**
-     * The owner of this instance after creation.
+     * The list of owners of this instance after creation.
      * Format: alias@example.com.
      * Currently supports one owner only.
      * If not specified, all of the service account users of
@@ -444,7 +444,7 @@ export interface InstanceArgs {
     readonly bootDiskSizeGb?: pulumi.Input<number>;
     /**
      * Possible disk types for notebook instances.
-     * Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
+     * Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
      */
     readonly bootDiskType?: pulumi.Input<string>;
     /**
@@ -470,7 +470,7 @@ export interface InstanceArgs {
     readonly dataDiskSizeGb?: pulumi.Input<number>;
     /**
      * Possible disk types for notebook instances.
-     * Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
+     * Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
      */
     readonly dataDiskType?: pulumi.Input<string>;
     /**
@@ -484,7 +484,7 @@ export interface InstanceArgs {
      */
     readonly installGpuDriver?: pulumi.Input<boolean>;
     /**
-     * The owner of this instance after creation.
+     * The list of owners of this instance after creation.
      * Format: alias@example.com.
      * Currently supports one owner only.
      * If not specified, all of the service account users of

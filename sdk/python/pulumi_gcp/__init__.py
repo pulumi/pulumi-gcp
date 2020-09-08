@@ -32,6 +32,7 @@ from . import (
     datacatalog,
     dataflow,
     datafusion,
+    dataloss,
     dataproc,
     datastore,
     deploymentmanager,

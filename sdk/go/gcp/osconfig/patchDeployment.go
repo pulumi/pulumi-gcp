@@ -60,6 +60,9 @@ type PatchDeployment struct {
 	// Schedule recurring executions.
 	// Structure is documented below.
 	RecurringSchedule PatchDeploymentRecurringSchedulePtrOutput `pulumi:"recurringSchedule"`
+	// Rollout strategy of the patch job.
+	// Structure is documented below.
+	Rollout PatchDeploymentRolloutPtrOutput `pulumi:"rollout"`
 	// Time the patch deployment was last updated. Timestamp is in RFC3339 text format. A timestamp in RFC3339 UTC "Zulu"
 	// format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -136,6 +139,9 @@ type patchDeploymentState struct {
 	// Schedule recurring executions.
 	// Structure is documented below.
 	RecurringSchedule *PatchDeploymentRecurringSchedule `pulumi:"recurringSchedule"`
+	// Rollout strategy of the patch job.
+	// Structure is documented below.
+	Rollout *PatchDeploymentRollout `pulumi:"rollout"`
 	// Time the patch deployment was last updated. Timestamp is in RFC3339 text format. A timestamp in RFC3339 UTC "Zulu"
 	// format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	UpdateTime *string `pulumi:"updateTime"`
@@ -179,6 +185,9 @@ type PatchDeploymentState struct {
 	// Schedule recurring executions.
 	// Structure is documented below.
 	RecurringSchedule PatchDeploymentRecurringSchedulePtrInput
+	// Rollout strategy of the patch job.
+	// Structure is documented below.
+	Rollout PatchDeploymentRolloutPtrInput
 	// Time the patch deployment was last updated. Timestamp is in RFC3339 text format. A timestamp in RFC3339 UTC "Zulu"
 	// format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	UpdateTime pulumi.StringPtrInput
@@ -216,6 +225,9 @@ type patchDeploymentArgs struct {
 	// Schedule recurring executions.
 	// Structure is documented below.
 	RecurringSchedule *PatchDeploymentRecurringSchedule `pulumi:"recurringSchedule"`
+	// Rollout strategy of the patch job.
+	// Structure is documented below.
+	Rollout *PatchDeploymentRollout `pulumi:"rollout"`
 }
 
 // The set of arguments for constructing a PatchDeployment resource.
@@ -247,6 +259,9 @@ type PatchDeploymentArgs struct {
 	// Schedule recurring executions.
 	// Structure is documented below.
 	RecurringSchedule PatchDeploymentRecurringSchedulePtrInput
+	// Rollout strategy of the patch job.
+	// Structure is documented below.
+	Rollout PatchDeploymentRolloutPtrInput
 }
 
 func (PatchDeploymentArgs) ElementType() reflect.Type {

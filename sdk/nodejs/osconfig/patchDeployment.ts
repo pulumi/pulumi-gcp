@@ -106,6 +106,11 @@ export class PatchDeployment extends pulumi.CustomResource {
      */
     public readonly recurringSchedule!: pulumi.Output<outputs.osconfig.PatchDeploymentRecurringSchedule | undefined>;
     /**
+     * Rollout strategy of the patch job.
+     * Structure is documented below.
+     */
+    public readonly rollout!: pulumi.Output<outputs.osconfig.PatchDeploymentRollout | undefined>;
+    /**
      * Time the patch deployment was last updated. Timestamp is in RFC3339 text format. A timestamp in RFC3339 UTC "Zulu"
      * format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
      */
@@ -134,6 +139,7 @@ export class PatchDeployment extends pulumi.CustomResource {
             inputs["patchDeploymentId"] = state ? state.patchDeploymentId : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["recurringSchedule"] = state ? state.recurringSchedule : undefined;
+            inputs["rollout"] = state ? state.rollout : undefined;
             inputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as PatchDeploymentArgs | undefined;
@@ -151,6 +157,7 @@ export class PatchDeployment extends pulumi.CustomResource {
             inputs["patchDeploymentId"] = args ? args.patchDeploymentId : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["recurringSchedule"] = args ? args.recurringSchedule : undefined;
+            inputs["rollout"] = args ? args.rollout : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["lastExecuteTime"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
@@ -231,6 +238,11 @@ export interface PatchDeploymentState {
      */
     readonly recurringSchedule?: pulumi.Input<inputs.osconfig.PatchDeploymentRecurringSchedule>;
     /**
+     * Rollout strategy of the patch job.
+     * Structure is documented below.
+     */
+    readonly rollout?: pulumi.Input<inputs.osconfig.PatchDeploymentRollout>;
+    /**
      * Time the patch deployment was last updated. Timestamp is in RFC3339 text format. A timestamp in RFC3339 UTC "Zulu"
      * format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
      */
@@ -284,4 +296,9 @@ export interface PatchDeploymentArgs {
      * Structure is documented below.
      */
     readonly recurringSchedule?: pulumi.Input<inputs.osconfig.PatchDeploymentRecurringSchedule>;
+    /**
+     * Rollout strategy of the patch job.
+     * Structure is documented below.
+     */
+    readonly rollout?: pulumi.Input<inputs.osconfig.PatchDeploymentRollout>;
 }

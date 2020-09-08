@@ -23,7 +23,7 @@ type Instance struct {
 	// If not specified, this defaults to 100.
 	BootDiskSizeGb pulumi.IntPtrOutput `pulumi:"bootDiskSizeGb"`
 	// Possible disk types for notebook instances.
-	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
+	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
 	BootDiskType pulumi.StringPtrOutput `pulumi:"bootDiskType"`
 	// Use a container image to start the notebook instance.
 	// Structure is documented below.
@@ -39,7 +39,7 @@ type Instance struct {
 	// If not specified, this defaults to 100.
 	DataDiskSizeGb pulumi.IntPtrOutput `pulumi:"dataDiskSizeGb"`
 	// Possible disk types for notebook instances.
-	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
+	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
 	DataDiskType pulumi.StringPtrOutput `pulumi:"dataDiskType"`
 	// Disk encryption method used on the boot and data disks, defaults to GMEK.
 	// Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
@@ -47,7 +47,7 @@ type Instance struct {
 	// Indicates that this is a boot disk. The virtual machine will
 	// use the first partition of the disk for its root filesystem.
 	InstallGpuDriver pulumi.BoolPtrOutput `pulumi:"installGpuDriver"`
-	// The owner of this instance after creation.
+	// The list of owners of this instance after creation.
 	// Format: alias@example.com.
 	// Currently supports one owner only.
 	// If not specified, all of the service account users of
@@ -148,7 +148,7 @@ type instanceState struct {
 	// If not specified, this defaults to 100.
 	BootDiskSizeGb *int `pulumi:"bootDiskSizeGb"`
 	// Possible disk types for notebook instances.
-	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
+	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
 	BootDiskType *string `pulumi:"bootDiskType"`
 	// Use a container image to start the notebook instance.
 	// Structure is documented below.
@@ -164,7 +164,7 @@ type instanceState struct {
 	// If not specified, this defaults to 100.
 	DataDiskSizeGb *int `pulumi:"dataDiskSizeGb"`
 	// Possible disk types for notebook instances.
-	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
+	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
 	DataDiskType *string `pulumi:"dataDiskType"`
 	// Disk encryption method used on the boot and data disks, defaults to GMEK.
 	// Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
@@ -172,7 +172,7 @@ type instanceState struct {
 	// Indicates that this is a boot disk. The virtual machine will
 	// use the first partition of the disk for its root filesystem.
 	InstallGpuDriver *bool `pulumi:"installGpuDriver"`
-	// The owner of this instance after creation.
+	// The list of owners of this instance after creation.
 	// Format: alias@example.com.
 	// Currently supports one owner only.
 	// If not specified, all of the service account users of
@@ -240,7 +240,7 @@ type InstanceState struct {
 	// If not specified, this defaults to 100.
 	BootDiskSizeGb pulumi.IntPtrInput
 	// Possible disk types for notebook instances.
-	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
+	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
 	BootDiskType pulumi.StringPtrInput
 	// Use a container image to start the notebook instance.
 	// Structure is documented below.
@@ -256,7 +256,7 @@ type InstanceState struct {
 	// If not specified, this defaults to 100.
 	DataDiskSizeGb pulumi.IntPtrInput
 	// Possible disk types for notebook instances.
-	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
+	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
 	DataDiskType pulumi.StringPtrInput
 	// Disk encryption method used on the boot and data disks, defaults to GMEK.
 	// Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
@@ -264,7 +264,7 @@ type InstanceState struct {
 	// Indicates that this is a boot disk. The virtual machine will
 	// use the first partition of the disk for its root filesystem.
 	InstallGpuDriver pulumi.BoolPtrInput
-	// The owner of this instance after creation.
+	// The list of owners of this instance after creation.
 	// Format: alias@example.com.
 	// Currently supports one owner only.
 	// If not specified, all of the service account users of
@@ -336,7 +336,7 @@ type instanceArgs struct {
 	// If not specified, this defaults to 100.
 	BootDiskSizeGb *int `pulumi:"bootDiskSizeGb"`
 	// Possible disk types for notebook instances.
-	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
+	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
 	BootDiskType *string `pulumi:"bootDiskType"`
 	// Use a container image to start the notebook instance.
 	// Structure is documented below.
@@ -352,7 +352,7 @@ type instanceArgs struct {
 	// If not specified, this defaults to 100.
 	DataDiskSizeGb *int `pulumi:"dataDiskSizeGb"`
 	// Possible disk types for notebook instances.
-	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
+	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
 	DataDiskType *string `pulumi:"dataDiskType"`
 	// Disk encryption method used on the boot and data disks, defaults to GMEK.
 	// Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
@@ -360,7 +360,7 @@ type instanceArgs struct {
 	// Indicates that this is a boot disk. The virtual machine will
 	// use the first partition of the disk for its root filesystem.
 	InstallGpuDriver *bool `pulumi:"installGpuDriver"`
-	// The owner of this instance after creation.
+	// The list of owners of this instance after creation.
 	// Format: alias@example.com.
 	// Currently supports one owner only.
 	// If not specified, all of the service account users of
@@ -425,7 +425,7 @@ type InstanceArgs struct {
 	// If not specified, this defaults to 100.
 	BootDiskSizeGb pulumi.IntPtrInput
 	// Possible disk types for notebook instances.
-	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
+	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
 	BootDiskType pulumi.StringPtrInput
 	// Use a container image to start the notebook instance.
 	// Structure is documented below.
@@ -441,7 +441,7 @@ type InstanceArgs struct {
 	// If not specified, this defaults to 100.
 	DataDiskSizeGb pulumi.IntPtrInput
 	// Possible disk types for notebook instances.
-	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
+	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
 	DataDiskType pulumi.StringPtrInput
 	// Disk encryption method used on the boot and data disks, defaults to GMEK.
 	// Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
@@ -449,7 +449,7 @@ type InstanceArgs struct {
 	// Indicates that this is a boot disk. The virtual machine will
 	// use the first partition of the disk for its root filesystem.
 	InstallGpuDriver pulumi.BoolPtrInput
-	// The owner of this instance after creation.
+	// The list of owners of this instance after creation.
 	// Format: alias@example.com.
 	// Currently supports one owner only.
 	// If not specified, all of the service account users of

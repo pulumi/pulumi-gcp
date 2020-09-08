@@ -43,6 +43,7 @@ type InstanceGroupManager struct {
 	// The named port configuration. See the section below
 	// for details on configuration.
 	NamedPorts InstanceGroupManagerNamedPortArrayOutput `pulumi:"namedPorts"`
+	Operation  pulumi.StringOutput                      `pulumi:"operation"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -127,6 +128,7 @@ type instanceGroupManagerState struct {
 	// The named port configuration. See the section below
 	// for details on configuration.
 	NamedPorts []InstanceGroupManagerNamedPort `pulumi:"namedPorts"`
+	Operation  *string                         `pulumi:"operation"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -178,6 +180,7 @@ type InstanceGroupManagerState struct {
 	// The named port configuration. See the section below
 	// for details on configuration.
 	NamedPorts InstanceGroupManagerNamedPortArrayInput
+	Operation  pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput

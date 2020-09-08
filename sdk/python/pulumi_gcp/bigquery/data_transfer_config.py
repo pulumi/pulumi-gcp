@@ -7,6 +7,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
 __all__ = ['DataTransferConfig']
 
@@ -25,6 +27,7 @@ class DataTransferConfig(pulumi.CustomResource):
                  params: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[str]] = None,
+                 sensitive_params: Optional[pulumi.Input[pulumi.InputType['DataTransferConfigSensitiveParamsArgs']]] = None,
                  service_account_name: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -38,6 +41,9 @@ class DataTransferConfig(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.locations.transferConfigs/create)
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/)
+
+        > **Warning:** All arguments including `sensitive_params.secret_access_key` will be stored in the raw
+        state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
 
         ## Example Usage
 
@@ -67,6 +73,13 @@ class DataTransferConfig(pulumi.CustomResource):
                about the format here:
                https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
                NOTE: the granularity should be at least 8 hours, or less frequent.
+        :param pulumi.Input[pulumi.InputType['DataTransferConfigSensitiveParamsArgs']] sensitive_params: Different parameters are configured primarily using the the `params` field on this
+               resource. This block contains the parameters which contain secrets or passwords so that they can be marked
+               sensitive and hidden from plan output. The name of the field, eg: secret_access_key, will be the key
+               in the `params` map in the api request.
+               Credentials may not be specified in both locations and will cause an error. Changing from one location
+               to a different credential configuration in the config will require an apply to update state.
+               Structure is documented below.
         :param pulumi.Input[str] service_account_name: Optional service account name. If this field is set, transfer config will
                be created with this service account credentials. It requires that
                requesting user calling this API has permissions to act as this service account.
@@ -106,6 +119,7 @@ class DataTransferConfig(pulumi.CustomResource):
             __props__['params'] = params
             __props__['project'] = project
             __props__['schedule'] = schedule
+            __props__['sensitive_params'] = sensitive_params
             __props__['service_account_name'] = service_account_name
             __props__['name'] = None
         super(DataTransferConfig, __self__).__init__(
@@ -129,6 +143,7 @@ class DataTransferConfig(pulumi.CustomResource):
             params: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
             schedule: Optional[pulumi.Input[str]] = None,
+            sensitive_params: Optional[pulumi.Input[pulumi.InputType['DataTransferConfigSensitiveParamsArgs']]] = None,
             service_account_name: Optional[pulumi.Input[str]] = None) -> 'DataTransferConfig':
         """
         Get an existing DataTransferConfig resource's state with the given name, id, and optional extra
@@ -164,6 +179,13 @@ class DataTransferConfig(pulumi.CustomResource):
                about the format here:
                https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
                NOTE: the granularity should be at least 8 hours, or less frequent.
+        :param pulumi.Input[pulumi.InputType['DataTransferConfigSensitiveParamsArgs']] sensitive_params: Different parameters are configured primarily using the the `params` field on this
+               resource. This block contains the parameters which contain secrets or passwords so that they can be marked
+               sensitive and hidden from plan output. The name of the field, eg: secret_access_key, will be the key
+               in the `params` map in the api request.
+               Credentials may not be specified in both locations and will cause an error. Changing from one location
+               to a different credential configuration in the config will require an apply to update state.
+               Structure is documented below.
         :param pulumi.Input[str] service_account_name: Optional service account name. If this field is set, transfer config will
                be created with this service account credentials. It requires that
                requesting user calling this API has permissions to act as this service account.
@@ -183,6 +205,7 @@ class DataTransferConfig(pulumi.CustomResource):
         __props__["params"] = params
         __props__["project"] = project
         __props__["schedule"] = schedule
+        __props__["sensitive_params"] = sensitive_params
         __props__["service_account_name"] = service_account_name
         return DataTransferConfig(resource_name, opts=opts, __props__=__props__)
 
@@ -289,6 +312,20 @@ class DataTransferConfig(pulumi.CustomResource):
         NOTE: the granularity should be at least 8 hours, or less frequent.
         """
         return pulumi.get(self, "schedule")
+
+    @property
+    @pulumi.getter(name="sensitiveParams")
+    def sensitive_params(self) -> pulumi.Output[Optional['outputs.DataTransferConfigSensitiveParams']]:
+        """
+        Different parameters are configured primarily using the the `params` field on this
+        resource. This block contains the parameters which contain secrets or passwords so that they can be marked
+        sensitive and hidden from plan output. The name of the field, eg: secret_access_key, will be the key
+        in the `params` map in the api request.
+        Credentials may not be specified in both locations and will cause an error. Changing from one location
+        to a different credential configuration in the config will require an apply to update state.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sensitive_params")
 
     @property
     @pulumi.getter(name="serviceAccountName")

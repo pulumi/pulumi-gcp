@@ -51,6 +51,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["bigqueryReservationCustomEndpoint"] = args ? args.bigqueryReservationCustomEndpoint : undefined;
             inputs["bigtableCustomEndpoint"] = args ? args.bigtableCustomEndpoint : undefined;
             inputs["billingCustomEndpoint"] = args ? args.billingCustomEndpoint : undefined;
+            inputs["billingProject"] = args ? args.billingProject : undefined;
             inputs["binaryAuthorizationCustomEndpoint"] = args ? args.binaryAuthorizationCustomEndpoint : undefined;
             inputs["cloudAssetCustomEndpoint"] = args ? args.cloudAssetCustomEndpoint : undefined;
             inputs["cloudBillingCustomEndpoint"] = args ? args.cloudBillingCustomEndpoint : undefined;
@@ -70,6 +71,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["credentials"] = (args ? args.credentials : undefined) || utilities.getEnv("GOOGLE_CREDENTIALS", "GOOGLE_CLOUD_KEYFILE_JSON", "GCLOUD_KEYFILE_JSON");
             inputs["dataCatalogCustomEndpoint"] = args ? args.dataCatalogCustomEndpoint : undefined;
             inputs["dataFusionCustomEndpoint"] = args ? args.dataFusionCustomEndpoint : undefined;
+            inputs["dataLossPreventionCustomEndpoint"] = args ? args.dataLossPreventionCustomEndpoint : undefined;
             inputs["dataflowCustomEndpoint"] = args ? args.dataflowCustomEndpoint : undefined;
             inputs["dataprocBetaCustomEndpoint"] = args ? args.dataprocBetaCustomEndpoint : undefined;
             inputs["dataprocCustomEndpoint"] = args ? args.dataprocCustomEndpoint : undefined;
@@ -151,6 +153,7 @@ export interface ProviderArgs {
     readonly bigqueryReservationCustomEndpoint?: pulumi.Input<string>;
     readonly bigtableCustomEndpoint?: pulumi.Input<string>;
     readonly billingCustomEndpoint?: pulumi.Input<string>;
+    readonly billingProject?: pulumi.Input<string>;
     readonly binaryAuthorizationCustomEndpoint?: pulumi.Input<string>;
     readonly cloudAssetCustomEndpoint?: pulumi.Input<string>;
     readonly cloudBillingCustomEndpoint?: pulumi.Input<string>;
@@ -170,6 +173,7 @@ export interface ProviderArgs {
     readonly credentials?: pulumi.Input<string>;
     readonly dataCatalogCustomEndpoint?: pulumi.Input<string>;
     readonly dataFusionCustomEndpoint?: pulumi.Input<string>;
+    readonly dataLossPreventionCustomEndpoint?: pulumi.Input<string>;
     readonly dataflowCustomEndpoint?: pulumi.Input<string>;
     readonly dataprocBetaCustomEndpoint?: pulumi.Input<string>;
     readonly dataprocCustomEndpoint?: pulumi.Input<string>;

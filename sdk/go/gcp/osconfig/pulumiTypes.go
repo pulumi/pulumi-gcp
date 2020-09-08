@@ -9543,6 +9543,330 @@ func (o PatchDeploymentRecurringScheduleWeeklyPtrOutput) DayOfWeek() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+type PatchDeploymentRollout struct {
+	// The maximum number (or percentage) of VMs per zone to disrupt at any given moment. The number of VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up.
+	// During patching, a VM is considered disrupted from the time the agent is notified to begin until patching has completed. This disruption time includes the time to complete reboot and any post-patch steps.
+	// A VM contributes to the disruption budget if its patching operation fails either when applying the patches, running pre or post patch steps, or if it fails to respond with a success notification before timing out. VMs that are not running or do not have an active agent do not count toward this disruption budget.
+	// For zone-by-zone rollouts, if the disruption budget in a zone is exceeded, the patch job stops, because continuing to the next zone requires completion of the patch process in the previous zone.
+	// For example, if the disruption budget has a fixed value of 10, and 8 VMs fail to patch in the current zone, the patch job continues to patch 2 VMs at a time until the zone is completed. When that zone is completed successfully, patching begins with 10 VMs at a time in the next zone. If 10 VMs in the next zone fail to patch, the patch job stops.
+	// Structure is documented below.
+	DisruptionBudget PatchDeploymentRolloutDisruptionBudget `pulumi:"disruptionBudget"`
+	// Mode of the patch rollout.
+	// Possible values are `ZONE_BY_ZONE` and `CONCURRENT_ZONES`.
+	Mode string `pulumi:"mode"`
+}
+
+// PatchDeploymentRolloutInput is an input type that accepts PatchDeploymentRolloutArgs and PatchDeploymentRolloutOutput values.
+// You can construct a concrete instance of `PatchDeploymentRolloutInput` via:
+//
+//          PatchDeploymentRolloutArgs{...}
+type PatchDeploymentRolloutInput interface {
+	pulumi.Input
+
+	ToPatchDeploymentRolloutOutput() PatchDeploymentRolloutOutput
+	ToPatchDeploymentRolloutOutputWithContext(context.Context) PatchDeploymentRolloutOutput
+}
+
+type PatchDeploymentRolloutArgs struct {
+	// The maximum number (or percentage) of VMs per zone to disrupt at any given moment. The number of VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up.
+	// During patching, a VM is considered disrupted from the time the agent is notified to begin until patching has completed. This disruption time includes the time to complete reboot and any post-patch steps.
+	// A VM contributes to the disruption budget if its patching operation fails either when applying the patches, running pre or post patch steps, or if it fails to respond with a success notification before timing out. VMs that are not running or do not have an active agent do not count toward this disruption budget.
+	// For zone-by-zone rollouts, if the disruption budget in a zone is exceeded, the patch job stops, because continuing to the next zone requires completion of the patch process in the previous zone.
+	// For example, if the disruption budget has a fixed value of 10, and 8 VMs fail to patch in the current zone, the patch job continues to patch 2 VMs at a time until the zone is completed. When that zone is completed successfully, patching begins with 10 VMs at a time in the next zone. If 10 VMs in the next zone fail to patch, the patch job stops.
+	// Structure is documented below.
+	DisruptionBudget PatchDeploymentRolloutDisruptionBudgetInput `pulumi:"disruptionBudget"`
+	// Mode of the patch rollout.
+	// Possible values are `ZONE_BY_ZONE` and `CONCURRENT_ZONES`.
+	Mode pulumi.StringInput `pulumi:"mode"`
+}
+
+func (PatchDeploymentRolloutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PatchDeploymentRollout)(nil)).Elem()
+}
+
+func (i PatchDeploymentRolloutArgs) ToPatchDeploymentRolloutOutput() PatchDeploymentRolloutOutput {
+	return i.ToPatchDeploymentRolloutOutputWithContext(context.Background())
+}
+
+func (i PatchDeploymentRolloutArgs) ToPatchDeploymentRolloutOutputWithContext(ctx context.Context) PatchDeploymentRolloutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentRolloutOutput)
+}
+
+func (i PatchDeploymentRolloutArgs) ToPatchDeploymentRolloutPtrOutput() PatchDeploymentRolloutPtrOutput {
+	return i.ToPatchDeploymentRolloutPtrOutputWithContext(context.Background())
+}
+
+func (i PatchDeploymentRolloutArgs) ToPatchDeploymentRolloutPtrOutputWithContext(ctx context.Context) PatchDeploymentRolloutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentRolloutOutput).ToPatchDeploymentRolloutPtrOutputWithContext(ctx)
+}
+
+// PatchDeploymentRolloutPtrInput is an input type that accepts PatchDeploymentRolloutArgs, PatchDeploymentRolloutPtr and PatchDeploymentRolloutPtrOutput values.
+// You can construct a concrete instance of `PatchDeploymentRolloutPtrInput` via:
+//
+//          PatchDeploymentRolloutArgs{...}
+//
+//  or:
+//
+//          nil
+type PatchDeploymentRolloutPtrInput interface {
+	pulumi.Input
+
+	ToPatchDeploymentRolloutPtrOutput() PatchDeploymentRolloutPtrOutput
+	ToPatchDeploymentRolloutPtrOutputWithContext(context.Context) PatchDeploymentRolloutPtrOutput
+}
+
+type patchDeploymentRolloutPtrType PatchDeploymentRolloutArgs
+
+func PatchDeploymentRolloutPtr(v *PatchDeploymentRolloutArgs) PatchDeploymentRolloutPtrInput {
+	return (*patchDeploymentRolloutPtrType)(v)
+}
+
+func (*patchDeploymentRolloutPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PatchDeploymentRollout)(nil)).Elem()
+}
+
+func (i *patchDeploymentRolloutPtrType) ToPatchDeploymentRolloutPtrOutput() PatchDeploymentRolloutPtrOutput {
+	return i.ToPatchDeploymentRolloutPtrOutputWithContext(context.Background())
+}
+
+func (i *patchDeploymentRolloutPtrType) ToPatchDeploymentRolloutPtrOutputWithContext(ctx context.Context) PatchDeploymentRolloutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentRolloutPtrOutput)
+}
+
+type PatchDeploymentRolloutOutput struct{ *pulumi.OutputState }
+
+func (PatchDeploymentRolloutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PatchDeploymentRollout)(nil)).Elem()
+}
+
+func (o PatchDeploymentRolloutOutput) ToPatchDeploymentRolloutOutput() PatchDeploymentRolloutOutput {
+	return o
+}
+
+func (o PatchDeploymentRolloutOutput) ToPatchDeploymentRolloutOutputWithContext(ctx context.Context) PatchDeploymentRolloutOutput {
+	return o
+}
+
+func (o PatchDeploymentRolloutOutput) ToPatchDeploymentRolloutPtrOutput() PatchDeploymentRolloutPtrOutput {
+	return o.ToPatchDeploymentRolloutPtrOutputWithContext(context.Background())
+}
+
+func (o PatchDeploymentRolloutOutput) ToPatchDeploymentRolloutPtrOutputWithContext(ctx context.Context) PatchDeploymentRolloutPtrOutput {
+	return o.ApplyT(func(v PatchDeploymentRollout) *PatchDeploymentRollout {
+		return &v
+	}).(PatchDeploymentRolloutPtrOutput)
+}
+
+// The maximum number (or percentage) of VMs per zone to disrupt at any given moment. The number of VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up.
+// During patching, a VM is considered disrupted from the time the agent is notified to begin until patching has completed. This disruption time includes the time to complete reboot and any post-patch steps.
+// A VM contributes to the disruption budget if its patching operation fails either when applying the patches, running pre or post patch steps, or if it fails to respond with a success notification before timing out. VMs that are not running or do not have an active agent do not count toward this disruption budget.
+// For zone-by-zone rollouts, if the disruption budget in a zone is exceeded, the patch job stops, because continuing to the next zone requires completion of the patch process in the previous zone.
+// For example, if the disruption budget has a fixed value of 10, and 8 VMs fail to patch in the current zone, the patch job continues to patch 2 VMs at a time until the zone is completed. When that zone is completed successfully, patching begins with 10 VMs at a time in the next zone. If 10 VMs in the next zone fail to patch, the patch job stops.
+// Structure is documented below.
+func (o PatchDeploymentRolloutOutput) DisruptionBudget() PatchDeploymentRolloutDisruptionBudgetOutput {
+	return o.ApplyT(func(v PatchDeploymentRollout) PatchDeploymentRolloutDisruptionBudget { return v.DisruptionBudget }).(PatchDeploymentRolloutDisruptionBudgetOutput)
+}
+
+// Mode of the patch rollout.
+// Possible values are `ZONE_BY_ZONE` and `CONCURRENT_ZONES`.
+func (o PatchDeploymentRolloutOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v PatchDeploymentRollout) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+type PatchDeploymentRolloutPtrOutput struct{ *pulumi.OutputState }
+
+func (PatchDeploymentRolloutPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PatchDeploymentRollout)(nil)).Elem()
+}
+
+func (o PatchDeploymentRolloutPtrOutput) ToPatchDeploymentRolloutPtrOutput() PatchDeploymentRolloutPtrOutput {
+	return o
+}
+
+func (o PatchDeploymentRolloutPtrOutput) ToPatchDeploymentRolloutPtrOutputWithContext(ctx context.Context) PatchDeploymentRolloutPtrOutput {
+	return o
+}
+
+func (o PatchDeploymentRolloutPtrOutput) Elem() PatchDeploymentRolloutOutput {
+	return o.ApplyT(func(v *PatchDeploymentRollout) PatchDeploymentRollout { return *v }).(PatchDeploymentRolloutOutput)
+}
+
+// The maximum number (or percentage) of VMs per zone to disrupt at any given moment. The number of VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up.
+// During patching, a VM is considered disrupted from the time the agent is notified to begin until patching has completed. This disruption time includes the time to complete reboot and any post-patch steps.
+// A VM contributes to the disruption budget if its patching operation fails either when applying the patches, running pre or post patch steps, or if it fails to respond with a success notification before timing out. VMs that are not running or do not have an active agent do not count toward this disruption budget.
+// For zone-by-zone rollouts, if the disruption budget in a zone is exceeded, the patch job stops, because continuing to the next zone requires completion of the patch process in the previous zone.
+// For example, if the disruption budget has a fixed value of 10, and 8 VMs fail to patch in the current zone, the patch job continues to patch 2 VMs at a time until the zone is completed. When that zone is completed successfully, patching begins with 10 VMs at a time in the next zone. If 10 VMs in the next zone fail to patch, the patch job stops.
+// Structure is documented below.
+func (o PatchDeploymentRolloutPtrOutput) DisruptionBudget() PatchDeploymentRolloutDisruptionBudgetPtrOutput {
+	return o.ApplyT(func(v *PatchDeploymentRollout) *PatchDeploymentRolloutDisruptionBudget {
+		if v == nil {
+			return nil
+		}
+		return &v.DisruptionBudget
+	}).(PatchDeploymentRolloutDisruptionBudgetPtrOutput)
+}
+
+// Mode of the patch rollout.
+// Possible values are `ZONE_BY_ZONE` and `CONCURRENT_ZONES`.
+func (o PatchDeploymentRolloutPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PatchDeploymentRollout) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+type PatchDeploymentRolloutDisruptionBudget struct {
+	// Specifies a fixed value.
+	Fixed *int `pulumi:"fixed"`
+	// Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
+	Percentage *int `pulumi:"percentage"`
+}
+
+// PatchDeploymentRolloutDisruptionBudgetInput is an input type that accepts PatchDeploymentRolloutDisruptionBudgetArgs and PatchDeploymentRolloutDisruptionBudgetOutput values.
+// You can construct a concrete instance of `PatchDeploymentRolloutDisruptionBudgetInput` via:
+//
+//          PatchDeploymentRolloutDisruptionBudgetArgs{...}
+type PatchDeploymentRolloutDisruptionBudgetInput interface {
+	pulumi.Input
+
+	ToPatchDeploymentRolloutDisruptionBudgetOutput() PatchDeploymentRolloutDisruptionBudgetOutput
+	ToPatchDeploymentRolloutDisruptionBudgetOutputWithContext(context.Context) PatchDeploymentRolloutDisruptionBudgetOutput
+}
+
+type PatchDeploymentRolloutDisruptionBudgetArgs struct {
+	// Specifies a fixed value.
+	Fixed pulumi.IntPtrInput `pulumi:"fixed"`
+	// Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
+	Percentage pulumi.IntPtrInput `pulumi:"percentage"`
+}
+
+func (PatchDeploymentRolloutDisruptionBudgetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PatchDeploymentRolloutDisruptionBudget)(nil)).Elem()
+}
+
+func (i PatchDeploymentRolloutDisruptionBudgetArgs) ToPatchDeploymentRolloutDisruptionBudgetOutput() PatchDeploymentRolloutDisruptionBudgetOutput {
+	return i.ToPatchDeploymentRolloutDisruptionBudgetOutputWithContext(context.Background())
+}
+
+func (i PatchDeploymentRolloutDisruptionBudgetArgs) ToPatchDeploymentRolloutDisruptionBudgetOutputWithContext(ctx context.Context) PatchDeploymentRolloutDisruptionBudgetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentRolloutDisruptionBudgetOutput)
+}
+
+func (i PatchDeploymentRolloutDisruptionBudgetArgs) ToPatchDeploymentRolloutDisruptionBudgetPtrOutput() PatchDeploymentRolloutDisruptionBudgetPtrOutput {
+	return i.ToPatchDeploymentRolloutDisruptionBudgetPtrOutputWithContext(context.Background())
+}
+
+func (i PatchDeploymentRolloutDisruptionBudgetArgs) ToPatchDeploymentRolloutDisruptionBudgetPtrOutputWithContext(ctx context.Context) PatchDeploymentRolloutDisruptionBudgetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentRolloutDisruptionBudgetOutput).ToPatchDeploymentRolloutDisruptionBudgetPtrOutputWithContext(ctx)
+}
+
+// PatchDeploymentRolloutDisruptionBudgetPtrInput is an input type that accepts PatchDeploymentRolloutDisruptionBudgetArgs, PatchDeploymentRolloutDisruptionBudgetPtr and PatchDeploymentRolloutDisruptionBudgetPtrOutput values.
+// You can construct a concrete instance of `PatchDeploymentRolloutDisruptionBudgetPtrInput` via:
+//
+//          PatchDeploymentRolloutDisruptionBudgetArgs{...}
+//
+//  or:
+//
+//          nil
+type PatchDeploymentRolloutDisruptionBudgetPtrInput interface {
+	pulumi.Input
+
+	ToPatchDeploymentRolloutDisruptionBudgetPtrOutput() PatchDeploymentRolloutDisruptionBudgetPtrOutput
+	ToPatchDeploymentRolloutDisruptionBudgetPtrOutputWithContext(context.Context) PatchDeploymentRolloutDisruptionBudgetPtrOutput
+}
+
+type patchDeploymentRolloutDisruptionBudgetPtrType PatchDeploymentRolloutDisruptionBudgetArgs
+
+func PatchDeploymentRolloutDisruptionBudgetPtr(v *PatchDeploymentRolloutDisruptionBudgetArgs) PatchDeploymentRolloutDisruptionBudgetPtrInput {
+	return (*patchDeploymentRolloutDisruptionBudgetPtrType)(v)
+}
+
+func (*patchDeploymentRolloutDisruptionBudgetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PatchDeploymentRolloutDisruptionBudget)(nil)).Elem()
+}
+
+func (i *patchDeploymentRolloutDisruptionBudgetPtrType) ToPatchDeploymentRolloutDisruptionBudgetPtrOutput() PatchDeploymentRolloutDisruptionBudgetPtrOutput {
+	return i.ToPatchDeploymentRolloutDisruptionBudgetPtrOutputWithContext(context.Background())
+}
+
+func (i *patchDeploymentRolloutDisruptionBudgetPtrType) ToPatchDeploymentRolloutDisruptionBudgetPtrOutputWithContext(ctx context.Context) PatchDeploymentRolloutDisruptionBudgetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentRolloutDisruptionBudgetPtrOutput)
+}
+
+type PatchDeploymentRolloutDisruptionBudgetOutput struct{ *pulumi.OutputState }
+
+func (PatchDeploymentRolloutDisruptionBudgetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PatchDeploymentRolloutDisruptionBudget)(nil)).Elem()
+}
+
+func (o PatchDeploymentRolloutDisruptionBudgetOutput) ToPatchDeploymentRolloutDisruptionBudgetOutput() PatchDeploymentRolloutDisruptionBudgetOutput {
+	return o
+}
+
+func (o PatchDeploymentRolloutDisruptionBudgetOutput) ToPatchDeploymentRolloutDisruptionBudgetOutputWithContext(ctx context.Context) PatchDeploymentRolloutDisruptionBudgetOutput {
+	return o
+}
+
+func (o PatchDeploymentRolloutDisruptionBudgetOutput) ToPatchDeploymentRolloutDisruptionBudgetPtrOutput() PatchDeploymentRolloutDisruptionBudgetPtrOutput {
+	return o.ToPatchDeploymentRolloutDisruptionBudgetPtrOutputWithContext(context.Background())
+}
+
+func (o PatchDeploymentRolloutDisruptionBudgetOutput) ToPatchDeploymentRolloutDisruptionBudgetPtrOutputWithContext(ctx context.Context) PatchDeploymentRolloutDisruptionBudgetPtrOutput {
+	return o.ApplyT(func(v PatchDeploymentRolloutDisruptionBudget) *PatchDeploymentRolloutDisruptionBudget {
+		return &v
+	}).(PatchDeploymentRolloutDisruptionBudgetPtrOutput)
+}
+
+// Specifies a fixed value.
+func (o PatchDeploymentRolloutDisruptionBudgetOutput) Fixed() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PatchDeploymentRolloutDisruptionBudget) *int { return v.Fixed }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
+func (o PatchDeploymentRolloutDisruptionBudgetOutput) Percentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PatchDeploymentRolloutDisruptionBudget) *int { return v.Percentage }).(pulumi.IntPtrOutput)
+}
+
+type PatchDeploymentRolloutDisruptionBudgetPtrOutput struct{ *pulumi.OutputState }
+
+func (PatchDeploymentRolloutDisruptionBudgetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PatchDeploymentRolloutDisruptionBudget)(nil)).Elem()
+}
+
+func (o PatchDeploymentRolloutDisruptionBudgetPtrOutput) ToPatchDeploymentRolloutDisruptionBudgetPtrOutput() PatchDeploymentRolloutDisruptionBudgetPtrOutput {
+	return o
+}
+
+func (o PatchDeploymentRolloutDisruptionBudgetPtrOutput) ToPatchDeploymentRolloutDisruptionBudgetPtrOutputWithContext(ctx context.Context) PatchDeploymentRolloutDisruptionBudgetPtrOutput {
+	return o
+}
+
+func (o PatchDeploymentRolloutDisruptionBudgetPtrOutput) Elem() PatchDeploymentRolloutDisruptionBudgetOutput {
+	return o.ApplyT(func(v *PatchDeploymentRolloutDisruptionBudget) PatchDeploymentRolloutDisruptionBudget { return *v }).(PatchDeploymentRolloutDisruptionBudgetOutput)
+}
+
+// Specifies a fixed value.
+func (o PatchDeploymentRolloutDisruptionBudgetPtrOutput) Fixed() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PatchDeploymentRolloutDisruptionBudget) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Fixed
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
+func (o PatchDeploymentRolloutDisruptionBudgetPtrOutput) Percentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PatchDeploymentRolloutDisruptionBudget) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Percentage
+	}).(pulumi.IntPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(GuestPoliciesAssignmentOutput{})
 	pulumi.RegisterOutputType(GuestPoliciesAssignmentPtrOutput{})
@@ -9652,4 +9976,8 @@ func init() {
 	pulumi.RegisterOutputType(PatchDeploymentRecurringScheduleTimeZonePtrOutput{})
 	pulumi.RegisterOutputType(PatchDeploymentRecurringScheduleWeeklyOutput{})
 	pulumi.RegisterOutputType(PatchDeploymentRecurringScheduleWeeklyPtrOutput{})
+	pulumi.RegisterOutputType(PatchDeploymentRolloutOutput{})
+	pulumi.RegisterOutputType(PatchDeploymentRolloutPtrOutput{})
+	pulumi.RegisterOutputType(PatchDeploymentRolloutDisruptionBudgetOutput{})
+	pulumi.RegisterOutputType(PatchDeploymentRolloutDisruptionBudgetPtrOutput{})
 }

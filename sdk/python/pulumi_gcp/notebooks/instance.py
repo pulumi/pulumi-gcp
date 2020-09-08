@@ -59,7 +59,7 @@ class Instance(pulumi.CustomResource):
                up to a maximum of 64000 GB (64 TB). The minimum recommended value is 100 GB.
                If not specified, this defaults to 100.
         :param pulumi.Input[str] boot_disk_type: Possible disk types for notebook instances.
-               Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
+               Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
         :param pulumi.Input[pulumi.InputType['InstanceContainerImageArgs']] container_image: Use a container image to start the notebook instance.
                Structure is documented below.
         :param pulumi.Input[str] create_time: Instance creation time
@@ -70,12 +70,12 @@ class Instance(pulumi.CustomResource):
                You can choose the size of the data disk based on how big your notebooks and data are.
                If not specified, this defaults to 100.
         :param pulumi.Input[str] data_disk_type: Possible disk types for notebook instances.
-               Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
+               Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
         :param pulumi.Input[str] disk_encryption: Disk encryption method used on the boot and data disks, defaults to GMEK.
                Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
         :param pulumi.Input[bool] install_gpu_driver: Indicates that this is a boot disk. The virtual machine will
                use the first partition of the disk for its root filesystem.
-        :param pulumi.Input[str] instance_owners: The owner of this instance after creation.
+        :param pulumi.Input[str] instance_owners: The list of owners of this instance after creation.
                Format: alias@example.com.
                Currently supports one owner only.
                If not specified, all of the service account users of
@@ -214,7 +214,7 @@ class Instance(pulumi.CustomResource):
                up to a maximum of 64000 GB (64 TB). The minimum recommended value is 100 GB.
                If not specified, this defaults to 100.
         :param pulumi.Input[str] boot_disk_type: Possible disk types for notebook instances.
-               Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
+               Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
         :param pulumi.Input[pulumi.InputType['InstanceContainerImageArgs']] container_image: Use a container image to start the notebook instance.
                Structure is documented below.
         :param pulumi.Input[str] create_time: Instance creation time
@@ -225,12 +225,12 @@ class Instance(pulumi.CustomResource):
                You can choose the size of the data disk based on how big your notebooks and data are.
                If not specified, this defaults to 100.
         :param pulumi.Input[str] data_disk_type: Possible disk types for notebook instances.
-               Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
+               Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
         :param pulumi.Input[str] disk_encryption: Disk encryption method used on the boot and data disks, defaults to GMEK.
                Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
         :param pulumi.Input[bool] install_gpu_driver: Indicates that this is a boot disk. The virtual machine will
                use the first partition of the disk for its root filesystem.
-        :param pulumi.Input[str] instance_owners: The owner of this instance after creation.
+        :param pulumi.Input[str] instance_owners: The list of owners of this instance after creation.
                Format: alias@example.com.
                Currently supports one owner only.
                If not specified, all of the service account users of
@@ -328,7 +328,7 @@ class Instance(pulumi.CustomResource):
     def boot_disk_type(self) -> pulumi.Output[Optional[str]]:
         """
         Possible disk types for notebook instances.
-        Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
+        Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
         """
         return pulumi.get(self, "boot_disk_type")
 
@@ -374,7 +374,7 @@ class Instance(pulumi.CustomResource):
     def data_disk_type(self) -> pulumi.Output[Optional[str]]:
         """
         Possible disk types for notebook instances.
-        Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
+        Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
         """
         return pulumi.get(self, "data_disk_type")
 
@@ -400,7 +400,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="instanceOwners")
     def instance_owners(self) -> pulumi.Output[Optional[str]]:
         """
-        The owner of this instance after creation.
+        The list of owners of this instance after creation.
         Format: alias@example.com.
         Currently supports one owner only.
         If not specified, all of the service account users of

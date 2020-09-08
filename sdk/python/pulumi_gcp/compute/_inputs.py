@@ -6264,8 +6264,11 @@ class InstanceShieldedInstanceConfigArgs:
                  enable_vtpm: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[bool] enable_integrity_monitoring: -- Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
+               **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         :param pulumi.Input[bool] enable_secure_boot: -- Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
+               **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         :param pulumi.Input[bool] enable_vtpm: -- Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
+               **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         """
         if enable_integrity_monitoring is not None:
             pulumi.set(__self__, "enable_integrity_monitoring", enable_integrity_monitoring)
@@ -6279,6 +6282,7 @@ class InstanceShieldedInstanceConfigArgs:
     def enable_integrity_monitoring(self) -> Optional[pulumi.Input[bool]]:
         """
         -- Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
+        **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         """
         return pulumi.get(self, "enable_integrity_monitoring")
 
@@ -6291,6 +6295,7 @@ class InstanceShieldedInstanceConfigArgs:
     def enable_secure_boot(self) -> Optional[pulumi.Input[bool]]:
         """
         -- Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
+        **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         """
         return pulumi.get(self, "enable_secure_boot")
 
@@ -6303,6 +6308,7 @@ class InstanceShieldedInstanceConfigArgs:
     def enable_vtpm(self) -> Optional[pulumi.Input[bool]]:
         """
         -- Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
+        **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         """
         return pulumi.get(self, "enable_vtpm")
 
