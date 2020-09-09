@@ -127,7 +127,7 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly triggerHttp!: pulumi.Output<boolean | undefined>;
     /**
-     * The VPC Network Connector that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network connector resource. The format of this field is `projects/*&#47;locations/*&#47;connectors/*`.
+     * The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*&#47;locations/*&#47;connectors/*`.
      */
     public readonly vpcConnector!: pulumi.Output<string | undefined>;
     /**
@@ -289,7 +289,7 @@ export interface FunctionState {
      */
     readonly triggerHttp?: pulumi.Input<boolean>;
     /**
-     * The VPC Network Connector that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network connector resource. The format of this field is `projects/*&#47;locations/*&#47;connectors/*`.
+     * The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*&#47;locations/*&#47;connectors/*`.
      */
     readonly vpcConnector?: pulumi.Input<string>;
     /**
@@ -381,7 +381,7 @@ export interface FunctionArgs {
      */
     readonly triggerHttp?: pulumi.Input<boolean>;
     /**
-     * The VPC Network Connector that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network connector resource. The format of this field is `projects/*&#47;locations/*&#47;connectors/*`.
+     * The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*&#47;locations/*&#47;connectors/*`.
      */
     readonly vpcConnector?: pulumi.Input<string>;
     /**

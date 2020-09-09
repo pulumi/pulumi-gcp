@@ -105,6 +105,13 @@ namespace Pulumi.Gcp.OsConfig
         public Output<Outputs.PatchDeploymentRecurringSchedule?> RecurringSchedule { get; private set; } = null!;
 
         /// <summary>
+        /// Rollout strategy of the patch job.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("rollout")]
+        public Output<Outputs.PatchDeploymentRollout?> Rollout { get; private set; } = null!;
+
+        /// <summary>
         /// Time the patch deployment was last updated. Timestamp is in RFC3339 text format. A timestamp in RFC3339 UTC "Zulu"
         /// format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         /// </summary>
@@ -216,6 +223,13 @@ namespace Pulumi.Gcp.OsConfig
         [Input("recurringSchedule")]
         public Input<Inputs.PatchDeploymentRecurringScheduleArgs>? RecurringSchedule { get; set; }
 
+        /// <summary>
+        /// Rollout strategy of the patch job.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("rollout")]
+        public Input<Inputs.PatchDeploymentRolloutArgs>? Rollout { get; set; }
+
         public PatchDeploymentArgs()
         {
         }
@@ -303,6 +317,13 @@ namespace Pulumi.Gcp.OsConfig
         /// </summary>
         [Input("recurringSchedule")]
         public Input<Inputs.PatchDeploymentRecurringScheduleGetArgs>? RecurringSchedule { get; set; }
+
+        /// <summary>
+        /// Rollout strategy of the patch job.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("rollout")]
+        public Input<Inputs.PatchDeploymentRolloutGetArgs>? Rollout { get; set; }
 
         /// <summary>
         /// Time the patch deployment was last updated. Timestamp is in RFC3339 text format. A timestamp in RFC3339 UTC "Zulu"

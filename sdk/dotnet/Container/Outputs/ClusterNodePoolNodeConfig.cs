@@ -44,7 +44,8 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.ClusterNodePoolNodeConfigKubeletConfig? KubeletConfig;
         /// <summary>
-        /// The Kubernetes labels (key/value pairs) to be applied to each node.
+        /// The Kubernetes labels (key/value pairs) to be applied to each node. The kubernetes.io/ and k8s.io/ prefixes are
+        /// reserved by Kubernetes Core components and cannot be specified.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Labels;
         /// <summary>

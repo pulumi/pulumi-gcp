@@ -25,6 +25,7 @@ class PatchDeployment(pulumi.CustomResource):
                  patch_deployment_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  recurring_schedule: Optional[pulumi.Input[pulumi.InputType['PatchDeploymentRecurringScheduleArgs']]] = None,
+                 rollout: Optional[pulumi.Input[pulumi.InputType['PatchDeploymentRolloutArgs']]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -61,6 +62,8 @@ class PatchDeployment(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['PatchDeploymentRecurringScheduleArgs']] recurring_schedule: Schedule recurring executions.
                Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['PatchDeploymentRolloutArgs']] rollout: Rollout strategy of the patch job.
+               Structure is documented below.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -91,6 +94,7 @@ class PatchDeployment(pulumi.CustomResource):
             __props__['patch_deployment_id'] = patch_deployment_id
             __props__['project'] = project
             __props__['recurring_schedule'] = recurring_schedule
+            __props__['rollout'] = rollout
             __props__['create_time'] = None
             __props__['last_execute_time'] = None
             __props__['name'] = None
@@ -116,6 +120,7 @@ class PatchDeployment(pulumi.CustomResource):
             patch_deployment_id: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             recurring_schedule: Optional[pulumi.Input[pulumi.InputType['PatchDeploymentRecurringScheduleArgs']]] = None,
+            rollout: Optional[pulumi.Input[pulumi.InputType['PatchDeploymentRolloutArgs']]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'PatchDeployment':
         """
         Get an existing PatchDeployment resource's state with the given name, id, and optional extra
@@ -150,6 +155,8 @@ class PatchDeployment(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['PatchDeploymentRecurringScheduleArgs']] recurring_schedule: Schedule recurring executions.
                Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['PatchDeploymentRolloutArgs']] rollout: Rollout strategy of the patch job.
+               Structure is documented below.
         :param pulumi.Input[str] update_time: Time the patch deployment was last updated. Timestamp is in RFC3339 text format. A timestamp in RFC3339 UTC "Zulu"
                format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         """
@@ -168,6 +175,7 @@ class PatchDeployment(pulumi.CustomResource):
         __props__["patch_deployment_id"] = patch_deployment_id
         __props__["project"] = project
         __props__["recurring_schedule"] = recurring_schedule
+        __props__["rollout"] = rollout
         __props__["update_time"] = update_time
         return PatchDeployment(resource_name, opts=opts, __props__=__props__)
 
@@ -273,6 +281,15 @@ class PatchDeployment(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "recurring_schedule")
+
+    @property
+    @pulumi.getter
+    def rollout(self) -> pulumi.Output[Optional['outputs.PatchDeploymentRollout']]:
+        """
+        Rollout strategy of the patch job.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rollout")
 
     @property
     @pulumi.getter(name="updateTime")

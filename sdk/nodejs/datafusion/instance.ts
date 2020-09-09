@@ -16,40 +16,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
  *
  * ## Example Usage
- * ### Data Fusion Instance Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as google_beta from "@pulumi/google-beta";
- *
- * const basicInstance = new google_beta.datafusion.Instance("basic_instance", {
- *     region: "us-central1",
- *     type: "BASIC",
- * });
- * ```
- * ### Data Fusion Instance Full
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as google_beta from "@pulumi/google-beta";
- *
- * const extendedInstance = new google_beta.datafusion.Instance("extended_instance", {
- *     description: "My Data Fusion instance",
- *     enableStackdriverLogging: true,
- *     enableStackdriverMonitoring: true,
- *     labels: {
- *         example_key: "example_value",
- *     },
- *     networkConfig: {
- *         ipAllocation: "10.89.48.0/22",
- *         network: "default",
- *     },
- *     privateInstance: true,
- *     region: "us-central1",
- *     type: "BASIC",
- *     version: "6.1.1",
- * });
- * ```
  */
 export class Instance extends pulumi.CustomResource {
     /**

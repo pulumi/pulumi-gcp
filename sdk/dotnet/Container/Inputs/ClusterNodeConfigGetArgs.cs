@@ -64,7 +64,8 @@ namespace Pulumi.Gcp.Container.Inputs
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// The Kubernetes labels (key/value pairs) to be applied to each node.
+        /// The Kubernetes labels (key/value pairs) to be applied to each node. The kubernetes.io/ and k8s.io/ prefixes are
+        /// reserved by Kubernetes Core components and cannot be specified.
         /// </summary>
         public InputMap<string> Labels
         {

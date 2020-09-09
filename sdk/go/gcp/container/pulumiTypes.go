@@ -4189,7 +4189,8 @@ type ClusterNodeConfig struct {
 	// Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 	// Structure is documented below.
 	KubeletConfig *ClusterNodeConfigKubeletConfig `pulumi:"kubeletConfig"`
-	// The Kubernetes labels (key/value pairs) to be applied to each node.
+	// The Kubernetes labels (key/value pairs) to be applied to each node. The kubernetes.io/ and k8s.io/ prefixes are
+	// reserved by Kubernetes Core components and cannot be specified.
 	Labels map[string]string `pulumi:"labels"`
 	// )
 	// Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
@@ -4282,7 +4283,8 @@ type ClusterNodeConfigArgs struct {
 	// Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 	// Structure is documented below.
 	KubeletConfig ClusterNodeConfigKubeletConfigPtrInput `pulumi:"kubeletConfig"`
-	// The Kubernetes labels (key/value pairs) to be applied to each node.
+	// The Kubernetes labels (key/value pairs) to be applied to each node. The kubernetes.io/ and k8s.io/ prefixes are
+	// reserved by Kubernetes Core components and cannot be specified.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// )
 	// Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
@@ -4458,7 +4460,8 @@ func (o ClusterNodeConfigOutput) KubeletConfig() ClusterNodeConfigKubeletConfigP
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigKubeletConfig { return v.KubeletConfig }).(ClusterNodeConfigKubeletConfigPtrOutput)
 }
 
-// The Kubernetes labels (key/value pairs) to be applied to each node.
+// The Kubernetes labels (key/value pairs) to be applied to each node. The kubernetes.io/ and k8s.io/ prefixes are
+// reserved by Kubernetes Core components and cannot be specified.
 func (o ClusterNodeConfigOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -4645,7 +4648,8 @@ func (o ClusterNodeConfigPtrOutput) KubeletConfig() ClusterNodeConfigKubeletConf
 	}).(ClusterNodeConfigKubeletConfigPtrOutput)
 }
 
-// The Kubernetes labels (key/value pairs) to be applied to each node.
+// The Kubernetes labels (key/value pairs) to be applied to each node. The kubernetes.io/ and k8s.io/ prefixes are
+// reserved by Kubernetes Core components and cannot be specified.
 func (o ClusterNodeConfigPtrOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) map[string]string {
 		if v == nil {
@@ -6325,7 +6329,8 @@ type ClusterNodePoolNodeConfig struct {
 	// Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 	// Structure is documented below.
 	KubeletConfig *ClusterNodePoolNodeConfigKubeletConfig `pulumi:"kubeletConfig"`
-	// The Kubernetes labels (key/value pairs) to be applied to each node.
+	// The Kubernetes labels (key/value pairs) to be applied to each node. The kubernetes.io/ and k8s.io/ prefixes are
+	// reserved by Kubernetes Core components and cannot be specified.
 	Labels map[string]string `pulumi:"labels"`
 	// )
 	// Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
@@ -6418,7 +6423,8 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 	// Structure is documented below.
 	KubeletConfig ClusterNodePoolNodeConfigKubeletConfigPtrInput `pulumi:"kubeletConfig"`
-	// The Kubernetes labels (key/value pairs) to be applied to each node.
+	// The Kubernetes labels (key/value pairs) to be applied to each node. The kubernetes.io/ and k8s.io/ prefixes are
+	// reserved by Kubernetes Core components and cannot be specified.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// )
 	// Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
@@ -6596,7 +6602,8 @@ func (o ClusterNodePoolNodeConfigOutput) KubeletConfig() ClusterNodePoolNodeConf
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigKubeletConfig { return v.KubeletConfig }).(ClusterNodePoolNodeConfigKubeletConfigPtrOutput)
 }
 
-// The Kubernetes labels (key/value pairs) to be applied to each node.
+// The Kubernetes labels (key/value pairs) to be applied to each node. The kubernetes.io/ and k8s.io/ prefixes are
+// reserved by Kubernetes Core components and cannot be specified.
 func (o ClusterNodePoolNodeConfigOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -6787,7 +6794,8 @@ func (o ClusterNodePoolNodeConfigPtrOutput) KubeletConfig() ClusterNodePoolNodeC
 	}).(ClusterNodePoolNodeConfigKubeletConfigPtrOutput)
 }
 
-// The Kubernetes labels (key/value pairs) to be applied to each node.
+// The Kubernetes labels (key/value pairs) to be applied to each node. The kubernetes.io/ and k8s.io/ prefixes are
+// reserved by Kubernetes Core components and cannot be specified.
 func (o ClusterNodePoolNodeConfigPtrOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) map[string]string {
 		if v == nil {

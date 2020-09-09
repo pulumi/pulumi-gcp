@@ -142,7 +142,7 @@ namespace Pulumi.Gcp.CloudFunctions
         public Output<bool?> TriggerHttp { get; private set; } = null!;
 
         /// <summary>
-        /// The VPC Network Connector that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network connector resource. The format of this field is `projects/*/locations/*/connectors/*`.
+        /// The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*/locations/*/connectors/*`.
         /// </summary>
         [Output("vpcConnector")]
         public Output<string?> VpcConnector { get; private set; } = null!;
@@ -328,7 +328,7 @@ namespace Pulumi.Gcp.CloudFunctions
         public Input<bool>? TriggerHttp { get; set; }
 
         /// <summary>
-        /// The VPC Network Connector that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network connector resource. The format of this field is `projects/*/locations/*/connectors/*`.
+        /// The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*/locations/*/connectors/*`.
         /// </summary>
         [Input("vpcConnector")]
         public Input<string>? VpcConnector { get; set; }
@@ -475,7 +475,7 @@ namespace Pulumi.Gcp.CloudFunctions
         public Input<bool>? TriggerHttp { get; set; }
 
         /// <summary>
-        /// The VPC Network Connector that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network connector resource. The format of this field is `projects/*/locations/*/connectors/*`.
+        /// The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*/locations/*/connectors/*`.
         /// </summary>
         [Input("vpcConnector")]
         public Input<string>? VpcConnector { get; set; }

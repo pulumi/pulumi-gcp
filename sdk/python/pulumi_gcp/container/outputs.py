@@ -1192,7 +1192,8 @@ class ClusterNodeConfig(dict):
         :param 'ClusterNodeConfigKubeletConfigArgs' kubelet_config: )
                Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
                Structure is documented below.
-        :param Mapping[str, str] labels: The Kubernetes labels (key/value pairs) to be applied to each node.
+        :param Mapping[str, str] labels: The Kubernetes labels (key/value pairs) to be applied to each node. The kubernetes.io/ and k8s.io/ prefixes are
+               reserved by Kubernetes Core components and cannot be specified.
         :param 'ClusterNodeConfigLinuxNodeConfigArgs' linux_node_config: )
                Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
                Note that validations happen all server side. All attributes are optional.
@@ -1339,7 +1340,8 @@ class ClusterNodeConfig(dict):
     @pulumi.getter
     def labels(self) -> Optional[Mapping[str, str]]:
         """
-        The Kubernetes labels (key/value pairs) to be applied to each node.
+        The Kubernetes labels (key/value pairs) to be applied to each node. The kubernetes.io/ and k8s.io/ prefixes are
+        reserved by Kubernetes Core components and cannot be specified.
         """
         return pulumi.get(self, "labels")
 
@@ -1965,7 +1967,8 @@ class ClusterNodePoolNodeConfig(dict):
         :param 'ClusterNodePoolNodeConfigKubeletConfigArgs' kubelet_config: )
                Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
                Structure is documented below.
-        :param Mapping[str, str] labels: The Kubernetes labels (key/value pairs) to be applied to each node.
+        :param Mapping[str, str] labels: The Kubernetes labels (key/value pairs) to be applied to each node. The kubernetes.io/ and k8s.io/ prefixes are
+               reserved by Kubernetes Core components and cannot be specified.
         :param 'ClusterNodePoolNodeConfigLinuxNodeConfigArgs' linux_node_config: )
                Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
                Note that validations happen all server side. All attributes are optional.
@@ -2112,7 +2115,8 @@ class ClusterNodePoolNodeConfig(dict):
     @pulumi.getter
     def labels(self) -> Optional[Mapping[str, str]]:
         """
-        The Kubernetes labels (key/value pairs) to be applied to each node.
+        The Kubernetes labels (key/value pairs) to be applied to each node. The kubernetes.io/ and k8s.io/ prefixes are
+        reserved by Kubernetes Core components and cannot be specified.
         """
         return pulumi.get(self, "labels")
 

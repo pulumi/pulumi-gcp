@@ -57,6 +57,7 @@ type providerArgs struct {
 	BigqueryReservationCustomEndpoint    *string           `pulumi:"bigqueryReservationCustomEndpoint"`
 	BigtableCustomEndpoint               *string           `pulumi:"bigtableCustomEndpoint"`
 	BillingCustomEndpoint                *string           `pulumi:"billingCustomEndpoint"`
+	BillingProject                       *string           `pulumi:"billingProject"`
 	BinaryAuthorizationCustomEndpoint    *string           `pulumi:"binaryAuthorizationCustomEndpoint"`
 	CloudAssetCustomEndpoint             *string           `pulumi:"cloudAssetCustomEndpoint"`
 	CloudBillingCustomEndpoint           *string           `pulumi:"cloudBillingCustomEndpoint"`
@@ -76,6 +77,7 @@ type providerArgs struct {
 	Credentials                          *string           `pulumi:"credentials"`
 	DataCatalogCustomEndpoint            *string           `pulumi:"dataCatalogCustomEndpoint"`
 	DataFusionCustomEndpoint             *string           `pulumi:"dataFusionCustomEndpoint"`
+	DataLossPreventionCustomEndpoint     *string           `pulumi:"dataLossPreventionCustomEndpoint"`
 	DataflowCustomEndpoint               *string           `pulumi:"dataflowCustomEndpoint"`
 	DataprocBetaCustomEndpoint           *string           `pulumi:"dataprocBetaCustomEndpoint"`
 	DataprocCustomEndpoint               *string           `pulumi:"dataprocCustomEndpoint"`
@@ -145,6 +147,7 @@ type ProviderArgs struct {
 	BigqueryReservationCustomEndpoint    pulumi.StringPtrInput
 	BigtableCustomEndpoint               pulumi.StringPtrInput
 	BillingCustomEndpoint                pulumi.StringPtrInput
+	BillingProject                       pulumi.StringPtrInput
 	BinaryAuthorizationCustomEndpoint    pulumi.StringPtrInput
 	CloudAssetCustomEndpoint             pulumi.StringPtrInput
 	CloudBillingCustomEndpoint           pulumi.StringPtrInput
@@ -164,6 +167,7 @@ type ProviderArgs struct {
 	Credentials                          pulumi.StringPtrInput
 	DataCatalogCustomEndpoint            pulumi.StringPtrInput
 	DataFusionCustomEndpoint             pulumi.StringPtrInput
+	DataLossPreventionCustomEndpoint     pulumi.StringPtrInput
 	DataflowCustomEndpoint               pulumi.StringPtrInput
 	DataprocBetaCustomEndpoint           pulumi.StringPtrInput
 	DataprocCustomEndpoint               pulumi.StringPtrInput

@@ -12,10 +12,12 @@ import * as utilities from "../utilities";
  * [API](https://cloud.google.com/storage/docs/json_api/v1/notifications).
  *
  * In order to enable notifications, a special Google Cloud Storage service account unique to the project
- * must have the IAM permission "projects.topics.publish" for a Cloud Pub/Sub topic in the project. To get the service
- * account's email address, use the `gcp.storage.getProjectServiceAccount` datasource's `emailAddress` value, and see below
- * for an example of enabling notifications by granting the correct IAM permission. See
- * [the notifications documentation](https://cloud.google.com/storage/docs/gsutil/commands/notification) for more details.
+ * must exist and have the IAM permission "projects.topics.publish" for a Cloud Pub/Sub topic in the project.
+ * This service account is not created automatically when a project is created.
+ * To ensure the service account exists and obtain its email address for use in granting the correct IAM permission, use the
+ * [`gcp.storage.getProjectServiceAccount`](https://www.terraform.io/docs/providers/google/d/storage_project_service_account.html)
+ * datasource's `emailAddress` value, and see below for an example of enabling notifications by granting the correct IAM permission.
+ * See [the notifications documentation](https://cloud.google.com/storage/docs/gsutil/commands/notification) for more details.
  *
  * > **NOTE**: This resource can affect your storage IAM policy. If you are using this in the same config as your storage IAM policy resources, consider
  * making this resource dependent on those IAM resources via `dependsOn`. This will safeguard against errors due to IAM race conditions.
@@ -77,7 +79,7 @@ export class Notification extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * The Cloud PubSub topic to which this subscription publishes. Expects either the 
+     * The Cloud PubSub topic to which this subscription publishes. Expects either the
      * topic name, assumed to belong to the default GCP provider project, or the project-level name,
      * i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
      * you will need to use the project-level name.
@@ -168,7 +170,7 @@ export interface NotificationState {
      */
     readonly selfLink?: pulumi.Input<string>;
     /**
-     * The Cloud PubSub topic to which this subscription publishes. Expects either the 
+     * The Cloud PubSub topic to which this subscription publishes. Expects either the
      * topic name, assumed to belong to the default GCP provider project, or the project-level name,
      * i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
      * you will need to use the project-level name.
@@ -201,7 +203,7 @@ export interface NotificationArgs {
      */
     readonly payloadFormat: pulumi.Input<string>;
     /**
-     * The Cloud PubSub topic to which this subscription publishes. Expects either the 
+     * The Cloud PubSub topic to which this subscription publishes. Expects either the
      * topic name, assumed to belong to the default GCP provider project, or the project-level name,
      * i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
      * you will need to use the project-level name.

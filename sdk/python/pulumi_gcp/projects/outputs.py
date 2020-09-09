@@ -435,11 +435,53 @@ class GetOrganizationPolicyRestorePolicyResult(dict):
 @pulumi.output_type
 class GetProjectProjectResult(dict):
     def __init__(__self__, *,
+                 create_time: str,
+                 labels: Mapping[str, str],
+                 lifecycle_state: str,
+                 name: str,
+                 number: str,
+                 parent: Mapping[str, str],
                  project_id: str):
         """
         :param str project_id: The project id of the project.
         """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "lifecycle_state", lifecycle_state)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "number", number)
+        pulumi.set(__self__, "parent", parent)
         pulumi.set(__self__, "project_id", project_id)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="lifecycleState")
+    def lifecycle_state(self) -> str:
+        return pulumi.get(self, "lifecycle_state")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def number(self) -> str:
+        return pulumi.get(self, "number")
+
+    @property
+    @pulumi.getter
+    def parent(self) -> Mapping[str, str]:
+        return pulumi.get(self, "parent")
 
     @property
     @pulumi.getter(name="projectId")

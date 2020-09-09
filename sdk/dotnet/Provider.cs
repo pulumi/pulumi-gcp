@@ -83,6 +83,9 @@ namespace Pulumi.Gcp
         [Input("billingCustomEndpoint")]
         public Input<string>? BillingCustomEndpoint { get; set; }
 
+        [Input("billingProject")]
+        public Input<string>? BillingProject { get; set; }
+
         [Input("binaryAuthorizationCustomEndpoint")]
         public Input<string>? BinaryAuthorizationCustomEndpoint { get; set; }
 
@@ -139,6 +142,9 @@ namespace Pulumi.Gcp
 
         [Input("dataFusionCustomEndpoint")]
         public Input<string>? DataFusionCustomEndpoint { get; set; }
+
+        [Input("dataLossPreventionCustomEndpoint")]
+        public Input<string>? DataLossPreventionCustomEndpoint { get; set; }
 
         [Input("dataflowCustomEndpoint")]
         public Input<string>? DataflowCustomEndpoint { get; set; }

@@ -109,6 +109,7 @@ type Instance struct {
 	ServiceAccount InstanceServiceAccountPtrOutput `pulumi:"serviceAccount"`
 	// Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
 	// **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+	// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
 	ShieldedInstanceConfig InstanceShieldedInstanceConfigOutput `pulumi:"shieldedInstanceConfig"`
 	// A list of network tags to attach to the instance.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
@@ -247,6 +248,7 @@ type instanceState struct {
 	ServiceAccount *InstanceServiceAccount `pulumi:"serviceAccount"`
 	// Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
 	// **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+	// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
 	ShieldedInstanceConfig *InstanceShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
 	// A list of network tags to attach to the instance.
 	Tags []string `pulumi:"tags"`
@@ -349,6 +351,7 @@ type InstanceState struct {
 	ServiceAccount InstanceServiceAccountPtrInput
 	// Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
 	// **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+	// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
 	ShieldedInstanceConfig InstanceShieldedInstanceConfigPtrInput
 	// A list of network tags to attach to the instance.
 	Tags pulumi.StringArrayInput
@@ -443,6 +446,7 @@ type instanceArgs struct {
 	ServiceAccount *InstanceServiceAccount `pulumi:"serviceAccount"`
 	// Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
 	// **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+	// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
 	ShieldedInstanceConfig *InstanceShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
 	// A list of network tags to attach to the instance.
 	Tags []string `pulumi:"tags"`
@@ -532,6 +536,7 @@ type InstanceArgs struct {
 	ServiceAccount InstanceServiceAccountPtrInput
 	// Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
 	// **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+	// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
 	ShieldedInstanceConfig InstanceShieldedInstanceConfigPtrInput
 	// A list of network tags to attach to the instance.
 	Tags pulumi.StringArrayInput

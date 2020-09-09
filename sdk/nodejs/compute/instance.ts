@@ -191,6 +191,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
      * **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+     * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
      */
     public readonly shieldedInstanceConfig!: pulumi.Output<outputs.compute.InstanceShieldedInstanceConfig>;
     /**
@@ -462,6 +463,7 @@ export interface InstanceState {
     /**
      * Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
      * **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+     * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
      */
     readonly shieldedInstanceConfig?: pulumi.Input<inputs.compute.InstanceShieldedInstanceConfig>;
     /**
@@ -609,6 +611,7 @@ export interface InstanceArgs {
     /**
      * Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
      * **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+     * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
      */
     readonly shieldedInstanceConfig?: pulumi.Input<inputs.compute.InstanceShieldedInstanceConfig>;
     /**

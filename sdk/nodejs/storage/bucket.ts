@@ -51,7 +51,9 @@ export class Bucket extends pulumi.CustomResource {
     }
 
     /**
-     * Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket.
+     * Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket. This field will be removed in the next major release of the provider.
+     *
+     * @deprecated Please use the uniform_bucket_level_access as this field has been renamed by Google.
      */
     public readonly bucketPolicyOnly!: pulumi.Output<boolean>;
     /**
@@ -111,6 +113,10 @@ export class Bucket extends pulumi.CustomResource {
      */
     public readonly storageClass!: pulumi.Output<string | undefined>;
     /**
+     * Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
+     */
+    public readonly uniformBucketLevelAccess!: pulumi.Output<boolean>;
+    /**
      * The base URL of the bucket, in the format `gs://<bucket-name>`.
      */
     public /*out*/ readonly url!: pulumi.Output<string>;
@@ -150,6 +156,7 @@ export class Bucket extends pulumi.CustomResource {
             inputs["retentionPolicy"] = state ? state.retentionPolicy : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
             inputs["storageClass"] = state ? state.storageClass : undefined;
+            inputs["uniformBucketLevelAccess"] = state ? state.uniformBucketLevelAccess : undefined;
             inputs["url"] = state ? state.url : undefined;
             inputs["versioning"] = state ? state.versioning : undefined;
             inputs["website"] = state ? state.website : undefined;
@@ -169,6 +176,7 @@ export class Bucket extends pulumi.CustomResource {
             inputs["requesterPays"] = args ? args.requesterPays : undefined;
             inputs["retentionPolicy"] = args ? args.retentionPolicy : undefined;
             inputs["storageClass"] = args ? args.storageClass : undefined;
+            inputs["uniformBucketLevelAccess"] = args ? args.uniformBucketLevelAccess : undefined;
             inputs["versioning"] = args ? args.versioning : undefined;
             inputs["website"] = args ? args.website : undefined;
             inputs["selfLink"] = undefined /*out*/;
@@ -190,7 +198,9 @@ export class Bucket extends pulumi.CustomResource {
  */
 export interface BucketState {
     /**
-     * Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket.
+     * Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket. This field will be removed in the next major release of the provider.
+     *
+     * @deprecated Please use the uniform_bucket_level_access as this field has been renamed by Google.
      */
     readonly bucketPolicyOnly?: pulumi.Input<boolean>;
     /**
@@ -250,6 +260,10 @@ export interface BucketState {
      */
     readonly storageClass?: pulumi.Input<string>;
     /**
+     * Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
+     */
+    readonly uniformBucketLevelAccess?: pulumi.Input<boolean>;
+    /**
      * The base URL of the bucket, in the format `gs://<bucket-name>`.
      */
     readonly url?: pulumi.Input<string>;
@@ -268,7 +282,9 @@ export interface BucketState {
  */
 export interface BucketArgs {
     /**
-     * Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket.
+     * Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket. This field will be removed in the next major release of the provider.
+     *
+     * @deprecated Please use the uniform_bucket_level_access as this field has been renamed by Google.
      */
     readonly bucketPolicyOnly?: pulumi.Input<boolean>;
     /**
@@ -323,6 +339,10 @@ export interface BucketArgs {
      * The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
      */
     readonly storageClass?: pulumi.Input<string>;
+    /**
+     * Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
+     */
+    readonly uniformBucketLevelAccess?: pulumi.Input<boolean>;
     /**
      * The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.
      */

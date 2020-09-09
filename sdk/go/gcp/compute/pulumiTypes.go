@@ -15006,10 +15006,13 @@ func (o InstanceServiceAccountPtrOutput) Scopes() pulumi.StringArrayOutput {
 
 type InstanceShieldedInstanceConfig struct {
 	// -- Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
+	// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
 	EnableIntegrityMonitoring *bool `pulumi:"enableIntegrityMonitoring"`
 	// -- Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
+	// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
 	EnableSecureBoot *bool `pulumi:"enableSecureBoot"`
 	// -- Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
+	// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
 	EnableVtpm *bool `pulumi:"enableVtpm"`
 }
 
@@ -15026,10 +15029,13 @@ type InstanceShieldedInstanceConfigInput interface {
 
 type InstanceShieldedInstanceConfigArgs struct {
 	// -- Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
+	// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
 	EnableIntegrityMonitoring pulumi.BoolPtrInput `pulumi:"enableIntegrityMonitoring"`
 	// -- Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
+	// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
 	EnableSecureBoot pulumi.BoolPtrInput `pulumi:"enableSecureBoot"`
 	// -- Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
+	// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
 	EnableVtpm pulumi.BoolPtrInput `pulumi:"enableVtpm"`
 }
 
@@ -15111,16 +15117,19 @@ func (o InstanceShieldedInstanceConfigOutput) ToInstanceShieldedInstanceConfigPt
 }
 
 // -- Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
+// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
 func (o InstanceShieldedInstanceConfigOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceShieldedInstanceConfig) *bool { return v.EnableIntegrityMonitoring }).(pulumi.BoolPtrOutput)
 }
 
 // -- Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
+// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
 func (o InstanceShieldedInstanceConfigOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceShieldedInstanceConfig) *bool { return v.EnableSecureBoot }).(pulumi.BoolPtrOutput)
 }
 
 // -- Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
+// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
 func (o InstanceShieldedInstanceConfigOutput) EnableVtpm() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceShieldedInstanceConfig) *bool { return v.EnableVtpm }).(pulumi.BoolPtrOutput)
 }
@@ -15144,6 +15153,7 @@ func (o InstanceShieldedInstanceConfigPtrOutput) Elem() InstanceShieldedInstance
 }
 
 // -- Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
+// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
 func (o InstanceShieldedInstanceConfigPtrOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InstanceShieldedInstanceConfig) *bool {
 		if v == nil {
@@ -15154,6 +15164,7 @@ func (o InstanceShieldedInstanceConfigPtrOutput) EnableIntegrityMonitoring() pul
 }
 
 // -- Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
+// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
 func (o InstanceShieldedInstanceConfigPtrOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InstanceShieldedInstanceConfig) *bool {
 		if v == nil {
@@ -15164,6 +15175,7 @@ func (o InstanceShieldedInstanceConfigPtrOutput) EnableSecureBoot() pulumi.BoolP
 }
 
 // -- Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
+// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
 func (o InstanceShieldedInstanceConfigPtrOutput) EnableVtpm() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InstanceShieldedInstanceConfig) *bool {
 		if v == nil {

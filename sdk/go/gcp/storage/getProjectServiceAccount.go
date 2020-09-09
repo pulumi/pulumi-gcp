@@ -7,13 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Get the email address of a project's unique Google Cloud Storage service account.
-//
-// Each Google Cloud project has a unique service account for use with Google Cloud Storage. Only this
-// special service account can be used to set up `storage.Notification` resources.
-//
-// For more information see
-// [the API reference](https://cloud.google.com/storage/docs/json_api/v1/projects/serviceAccount).
 func GetProjectServiceAccount(ctx *pulumi.Context, args *GetProjectServiceAccountArgs, opts ...pulumi.InvokeOption) (*GetProjectServiceAccountResult, error) {
 	var rv GetProjectServiceAccountResult
 	err := ctx.Invoke("gcp:storage/getProjectServiceAccount:getProjectServiceAccount", args, &rv, opts...)

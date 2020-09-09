@@ -13,6 +13,7 @@ from .iam_member import *
 from .iam_policy import *
 from .organization_policy import *
 from .service import *
+from .service_identity import *
 from .usage_export_bucket import *
 from ._inputs import *
 from . import outputs

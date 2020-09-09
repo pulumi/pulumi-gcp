@@ -1452,6 +1452,14 @@ export namespace bigquery {
         username: pulumi.Input<string>;
     }
 
+    export interface DataTransferConfigSensitiveParams {
+        /**
+         * The Secret Access Key of the AWS account transferring data from.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        secretAccessKey: pulumi.Input<string>;
+    }
+
     export interface DatasetAccess {
         /**
          * A domain to grant access to. Any users signed in with the
@@ -5877,14 +5885,17 @@ export namespace compute {
     export interface InstanceShieldedInstanceConfig {
         /**
          * -- Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
+         * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
          */
         enableIntegrityMonitoring?: pulumi.Input<boolean>;
         /**
          * -- Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
+         * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
          */
         enableSecureBoot?: pulumi.Input<boolean>;
         /**
          * -- Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
+         * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
          */
         enableVtpm?: pulumi.Input<boolean>;
     }
@@ -11540,7 +11551,8 @@ export namespace container {
          */
         kubeletConfig?: pulumi.Input<inputs.container.ClusterNodeConfigKubeletConfig>;
         /**
-         * The Kubernetes labels (key/value pairs) to be applied to each node.
+         * The Kubernetes labels (key/value pairs) to be applied to each node. The kubernetes.io/ and k8s.io/ prefixes are
+         * reserved by Kubernetes Core components and cannot be specified.
          */
         labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
@@ -11803,7 +11815,8 @@ export namespace container {
          */
         kubeletConfig?: pulumi.Input<inputs.container.ClusterNodePoolNodeConfigKubeletConfig>;
         /**
-         * The Kubernetes labels (key/value pairs) to be applied to each node.
+         * The Kubernetes labels (key/value pairs) to be applied to each node. The kubernetes.io/ and k8s.io/ prefixes are
+         * reserved by Kubernetes Core components and cannot be specified.
          */
         labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
@@ -12455,6 +12468,641 @@ export namespace datafusion {
          * project the network should specified in the form of projects/{host-project-id}/global/networks/{network}
          */
         network: pulumi.Input<string>;
+    }
+}
+
+export namespace dataloss {
+    export interface PreventionInspectTemplateInspectConfig {
+        /**
+         * List of options defining data content to scan. If empty, text, images, and other content will be included.
+         * Each value may be one of `CONTENT_TEXT` and `CONTENT_IMAGE`.
+         */
+        contentOptions?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Set of infoTypes for which findings would affect this rule.
+         * Structure is documented below.
+         */
+        excludeInfoTypes?: pulumi.Input<boolean>;
+        /**
+         * When true, a contextual quote from the data that triggered a finding is included in the response.
+         */
+        includeQuote?: pulumi.Input<boolean>;
+        /**
+         * If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
+         * Structure is documented below.
+         */
+        infoTypes?: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfigInfoType>[]>;
+        /**
+         * Configuration to control the number of findings returned.
+         * Structure is documented below.
+         */
+        limits?: pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfigLimits>;
+        /**
+         * Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info
+         * Default value is `POSSIBLE`.
+         * Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
+         */
+        minLikelihood?: pulumi.Input<string>;
+        /**
+         * Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end,
+         * other rules are executed in the order they are specified for each info type.
+         * Structure is documented below.
+         */
+        ruleSets?: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfigRuleSet>[]>;
+    }
+
+    export interface PreventionInspectTemplateInspectConfigInfoType {
+        /**
+         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+         * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         */
+        name: pulumi.Input<string>;
+    }
+
+    export interface PreventionInspectTemplateInspectConfigLimits {
+        /**
+         * Configuration of findings limit given for specified infoTypes.
+         * Structure is documented below.
+         */
+        maxFindingsPerInfoTypes?: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType>[]>;
+        /**
+         * Max number of findings that will be returned for each item scanned. The maximum returned is 2000.
+         */
+        maxFindingsPerItem: pulumi.Input<number>;
+        /**
+         * Max number of findings that will be returned per request/job. The maximum returned is 2000.
+         */
+        maxFindingsPerRequest: pulumi.Input<number>;
+    }
+
+    export interface PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType {
+        /**
+         * Type of information the findings limit applies to. Only one limit per infoType should be provided. If InfoTypeLimit does
+         * not have an infoType, the DLP API applies the limit against all infoTypes that are found but not
+         * specified in another InfoTypeLimit.
+         * Structure is documented below.
+         */
+        infoType: pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType>;
+        /**
+         * Max findings limit for the given infoType.
+         */
+        maxFindings: pulumi.Input<number>;
+    }
+
+    export interface PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType {
+        /**
+         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+         * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         */
+        name: pulumi.Input<string>;
+    }
+
+    export interface PreventionInspectTemplateInspectConfigRuleSet {
+        /**
+         * If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
+         * Structure is documented below.
+         */
+        infoTypes: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoType>[]>;
+        /**
+         * Set of rules to be applied to infoTypes. The rules are applied in order.
+         * Structure is documented below.
+         */
+        rules: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfigRuleSetRule>[]>;
+    }
+
+    export interface PreventionInspectTemplateInspectConfigRuleSetInfoType {
+        /**
+         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+         * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         */
+        name: pulumi.Input<string>;
+    }
+
+    export interface PreventionInspectTemplateInspectConfigRuleSetRule {
+        /**
+         * The rule that specifies conditions when findings of infoTypes specified in InspectionRuleSet are removed from results.
+         * Structure is documented below.
+         */
+        exclusionRule?: pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule>;
+        /**
+         * Hotword-based detection rule.
+         * Structure is documented below.
+         */
+        hotwordRule?: pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule>;
+    }
+
+    export interface PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule {
+        /**
+         * Dictionary which defines the rule.
+         * Structure is documented below.
+         */
+        dictionary?: pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary>;
+        /**
+         * Set of infoTypes for which findings would affect this rule.
+         * Structure is documented below.
+         */
+        excludeInfoTypes?: pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes>;
+        /**
+         * How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
+         * Possible values are `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, and `MATCHING_TYPE_INVERSE_MATCH`.
+         */
+        matchingType: pulumi.Input<string>;
+        /**
+         * Regular expression which defines the rule.
+         * Structure is documented below.
+         */
+        regex?: pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegex>;
+    }
+
+    export interface PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary {
+        /**
+         * Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
+         * Structure is documented below.
+         */
+        cloudStoragePath?: pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath>;
+        /**
+         * List of words or phrases to search for.
+         * Structure is documented below.
+         */
+        wordList?: pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordList>;
+    }
+
+    export interface PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath {
+        /**
+         * A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
+         */
+        path: pulumi.Input<string>;
+    }
+
+    export interface PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordList {
+        /**
+         * Words or phrases defining the dictionary. The dictionary must contain at least one
+         * phrase and every phrase must contain at least 2 characters that are letters or digits.
+         */
+        words: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes {
+        /**
+         * If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
+         * Structure is documented below.
+         */
+        infoTypes: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType>[]>;
+    }
+
+    export interface PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType {
+        /**
+         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+         * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         */
+        name: pulumi.Input<string>;
+    }
+
+    export interface PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegex {
+        /**
+         * The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+         */
+        groupIndexes?: pulumi.Input<pulumi.Input<number>[]>;
+        /**
+         * Pattern defining the regular expression.
+         * Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+         */
+        pattern: pulumi.Input<string>;
+    }
+
+    export interface PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule {
+        /**
+         * Regular expression pattern defining what qualifies as a hotword.
+         * Structure is documented below.
+         */
+        hotwordRegex: pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex>;
+        /**
+         * Likelihood adjustment to apply to all matching findings.
+         * Structure is documented below.
+         */
+        likelihoodAdjustment: pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment>;
+        /**
+         * Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
+         * exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be
+         * used to match substrings of the finding itself. For example, the certainty of a phone number regex
+         * `(\d{3}) \d{3}-\d{4}` could be adjusted upwards if the area code is known to be the local area code of a company
+         * office using the hotword regex `(xxx)`, where `xxx` is the area code in question.
+         * Structure is documented below.
+         */
+        proximity: pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity>;
+    }
+
+    export interface PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex {
+        /**
+         * The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+         */
+        groupIndexes?: pulumi.Input<pulumi.Input<number>[]>;
+        /**
+         * Pattern defining the regular expression.
+         * Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+         */
+        pattern: pulumi.Input<string>;
+    }
+
+    export interface PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment {
+        /**
+         * Set the likelihood of a finding to a fixed value. Either this or relativeLikelihood can be set.
+         * Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
+         */
+        fixedLikelihood?: pulumi.Input<string>;
+        /**
+         * Increase or decrease the likelihood by the specified number of levels. For example,
+         * if a finding would be POSSIBLE without the detection rule and relativeLikelihood is 1,
+         * then it is upgraded to LIKELY, while a value of -1 would downgrade it to UNLIKELY.
+         * Likelihood may never drop below VERY_UNLIKELY or exceed VERY_LIKELY, so applying an
+         * adjustment of 1 followed by an adjustment of -1 when base likelihood is VERY_LIKELY
+         * will result in a final likelihood of LIKELY. Either this or fixedLikelihood can be set.
+         */
+        relativeLikelihood?: pulumi.Input<number>;
+    }
+
+    export interface PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity {
+        /**
+         * Number of characters after the finding to consider. Either this or windowBefore must be specified
+         */
+        windowAfter?: pulumi.Input<number>;
+        /**
+         * Number of characters before the finding to consider. Either this or windowAfter must be specified
+         */
+        windowBefore?: pulumi.Input<number>;
+    }
+
+    export interface PreventionJobTriggerInspectJob {
+        /**
+         * A task to execute on the completion of a job.
+         * Structure is documented below.
+         */
+        actions: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionJobTriggerInspectJobAction>[]>;
+        /**
+         * The name of the template to run when this job is triggered.
+         */
+        inspectTemplateName: pulumi.Input<string>;
+        /**
+         * Information on where to inspect
+         * Structure is documented below.
+         */
+        storageConfig: pulumi.Input<inputs.dataloss.PreventionJobTriggerInspectJobStorageConfig>;
+    }
+
+    export interface PreventionJobTriggerInspectJobAction {
+        /**
+         * Schedule for triggered jobs
+         * Structure is documented below.
+         */
+        saveFindings: pulumi.Input<inputs.dataloss.PreventionJobTriggerInspectJobActionSaveFindings>;
+    }
+
+    export interface PreventionJobTriggerInspectJobActionSaveFindings {
+        /**
+         * Information on where to store output
+         * Structure is documented below.
+         */
+        outputConfig: pulumi.Input<inputs.dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig>;
+    }
+
+    export interface PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig {
+        /**
+         * Schema used for writing the findings for Inspect jobs. This field is only used for
+         * Inspect and must be unspecified for Risk jobs. Columns are derived from the Finding
+         * object. If appending to an existing table, any columns from the predefined schema
+         * that are missing will be added. No columns in the existing table will be deleted.
+         * If unspecified, then all available columns will be used for a new table or an (existing)
+         * table with no schema, and no changes will be made to an existing table that has a schema.
+         * Only for use with external storage.
+         * Possible values are `BASIC_COLUMNS`, `GCS_COLUMNS`, `DATASTORE_COLUMNS`, `BIG_QUERY_COLUMNS`, and `ALL_COLUMNS`.
+         */
+        outputSchema?: pulumi.Input<string>;
+        /**
+         * Information on the location of the target BigQuery Table.
+         * Structure is documented below.
+         */
+        table: pulumi.Input<inputs.dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable>;
+    }
+
+    export interface PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable {
+        /**
+         * Dataset ID of the table.
+         */
+        datasetId: pulumi.Input<string>;
+        /**
+         * The Google Cloud Platform project ID of the project containing the table.
+         */
+        projectId: pulumi.Input<string>;
+        /**
+         * Name of the table. If is not set a new one will be generated for you with the following format:
+         * `dlp_googleapis_yyyy_mm_dd_[dlpJobId]`. Pacific timezone will be used for generating the date details.
+         */
+        tableId?: pulumi.Input<string>;
+    }
+
+    export interface PreventionJobTriggerInspectJobStorageConfig {
+        /**
+         * Options defining BigQuery table and row identifiers.
+         * Structure is documented below.
+         */
+        bigQueryOptions?: pulumi.Input<inputs.dataloss.PreventionJobTriggerInspectJobStorageConfigBigQueryOptions>;
+        /**
+         * Options defining a file or a set of files within a Google Cloud Storage bucket.
+         * Structure is documented below.
+         */
+        cloudStorageOptions?: pulumi.Input<inputs.dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions>;
+        /**
+         * Options defining a data set within Google Cloud Datastore.
+         * Structure is documented below.
+         */
+        datastoreOptions?: pulumi.Input<inputs.dataloss.PreventionJobTriggerInspectJobStorageConfigDatastoreOptions>;
+        /**
+         * Information on where to inspect
+         * Structure is documented below.
+         */
+        timespanConfig?: pulumi.Input<inputs.dataloss.PreventionJobTriggerInspectJobStorageConfigTimespanConfig>;
+    }
+
+    export interface PreventionJobTriggerInspectJobStorageConfigBigQueryOptions {
+        /**
+         * Set of files to scan.
+         * Structure is documented below.
+         */
+        tableReference: pulumi.Input<inputs.dataloss.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference>;
+    }
+
+    export interface PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference {
+        /**
+         * Dataset ID of the table.
+         */
+        datasetId: pulumi.Input<string>;
+        /**
+         * The Google Cloud Platform project ID of the project containing the table.
+         */
+        projectId: pulumi.Input<string>;
+        /**
+         * Name of the table. If is not set a new one will be generated for you with the following format:
+         * `dlp_googleapis_yyyy_mm_dd_[dlpJobId]`. Pacific timezone will be used for generating the date details.
+         */
+        tableId: pulumi.Input<string>;
+    }
+
+    export interface PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions {
+        /**
+         * Max number of bytes to scan from a file. If a scanned file's size is bigger than this value
+         * then the rest of the bytes are omitted.
+         */
+        bytesLimitPerFile?: pulumi.Input<number>;
+        /**
+         * Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down.
+         * Must be between 0 and 100, inclusively. Both 0 and 100 means no limit.
+         */
+        bytesLimitPerFilePercent?: pulumi.Input<number>;
+        /**
+         * Set of files to scan.
+         * Structure is documented below.
+         */
+        fileSet: pulumi.Input<inputs.dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet>;
+        /**
+         * List of file type groups to include in the scan. If empty, all files are scanned and available data
+         * format processors are applied. In addition, the binary content of the selected files is always scanned as well.
+         * Images are scanned only as binary if the specified region does not support image inspection and no fileTypes were specified.
+         * Each value may be one of `BINARY_FILE`, `TEXT_FILE`, `IMAGE`, `WORD`, `PDF`, `AVRO`, `CSV`, and `TSV`.
+         */
+        fileTypes?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Limits the number of files to scan to this percentage of the input FileSet. Number of files scanned is rounded down.
+         * Must be between 0 and 100, inclusively. Both 0 and 100 means no limit.
+         */
+        filesLimitPercent?: pulumi.Input<number>;
+        /**
+         * How to sample bytes if not all bytes are scanned. Meaningful only when used in conjunction with bytesLimitPerFile.
+         * If not specified, scanning would start from the top.
+         * Possible values are `TOP` and `RANDOM_START`.
+         */
+        sampleMethod?: pulumi.Input<string>;
+    }
+
+    export interface PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet {
+        /**
+         * The regex-filtered set of files to scan.
+         * Structure is documented below.
+         */
+        regexFileSet?: pulumi.Input<inputs.dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet>;
+        /**
+         * The Cloud Storage url of the file(s) to scan, in the format `gs://<bucket>/<path>`. Trailing wildcard
+         * in the path is allowed.
+         * If the url ends in a trailing slash, the bucket or directory represented by the url will be scanned
+         * non-recursively (content in sub-directories will not be scanned). This means that `gs://mybucket/` is
+         * equivalent to `gs://mybucket/*`, and `gs://mybucket/directory/` is equivalent to `gs://mybucket/directory/*`.
+         */
+        url?: pulumi.Input<string>;
+    }
+
+    export interface PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet {
+        /**
+         * The name of a Cloud Storage bucket.
+         */
+        bucketName: pulumi.Input<string>;
+        /**
+         * A list of regular expressions matching file paths to exclude. All files in the bucket that match at
+         * least one of these regular expressions will be excluded from the scan.
+         */
+        excludeRegexes?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * A list of regular expressions matching file paths to include. All files in the bucket
+         * that match at least one of these regular expressions will be included in the set of files,
+         * except for those that also match an item in excludeRegex. Leaving this field empty will
+         * match all files by default (this is equivalent to including .* in the list)
+         */
+        includeRegexes?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface PreventionJobTriggerInspectJobStorageConfigDatastoreOptions {
+        /**
+         * A representation of a Datastore kind.
+         * Structure is documented below.
+         */
+        kind: pulumi.Input<inputs.dataloss.PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind>;
+        /**
+         * Datastore partition ID. A partition ID identifies a grouping of entities. The grouping
+         * is always by project and namespace, however the namespace ID may be empty.
+         * Structure is documented below.
+         */
+        partitionId: pulumi.Input<inputs.dataloss.PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId>;
+    }
+
+    export interface PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind {
+        /**
+         * The name of the Datastore kind.
+         */
+        name: pulumi.Input<string>;
+    }
+
+    export interface PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId {
+        /**
+         * If not empty, the ID of the namespace to which the entities belong.
+         */
+        namespaceId?: pulumi.Input<string>;
+        /**
+         * The Google Cloud Platform project ID of the project containing the table.
+         */
+        projectId: pulumi.Input<string>;
+    }
+
+    export interface PreventionJobTriggerInspectJobStorageConfigTimespanConfig {
+        /**
+         * When the job is started by a JobTrigger we will automatically figure out a valid startTime to avoid
+         * scanning files that have not been modified since the last time the JobTrigger executed. This will
+         * be based on the time of the execution of the last run of the JobTrigger.
+         */
+        enableAutoPopulationOfTimespanConfig?: pulumi.Input<boolean>;
+        /**
+         * Exclude files or rows newer than this value. If set to zero, no upper time limit is applied.
+         */
+        endTime?: pulumi.Input<string>;
+        /**
+         * Exclude files or rows older than this value.
+         */
+        startTime?: pulumi.Input<string>;
+        /**
+         * Information on where to inspect
+         * Structure is documented below.
+         */
+        timestampField: pulumi.Input<inputs.dataloss.PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField>;
+    }
+
+    export interface PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField {
+        /**
+         * The name of the Datastore kind.
+         */
+        name: pulumi.Input<string>;
+    }
+
+    export interface PreventionJobTriggerTrigger {
+        /**
+         * Schedule for triggered jobs
+         * Structure is documented below.
+         */
+        schedule?: pulumi.Input<inputs.dataloss.PreventionJobTriggerTriggerSchedule>;
+    }
+
+    export interface PreventionJobTriggerTriggerSchedule {
+        /**
+         * With this option a job is started a regular periodic basis. For example: every day (86400 seconds).
+         * A scheduled start time will be skipped if the previous execution has not ended when its scheduled time occurs.
+         * This value must be set to a time duration greater than or equal to 1 day and can be no longer than 60 days.
+         * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+         */
+        recurrencePeriodDuration?: pulumi.Input<string>;
+    }
+
+    export interface PreventionStoredInfoTypeDictionary {
+        /**
+         * Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
+         * Structure is documented below.
+         */
+        cloudStoragePath?: pulumi.Input<inputs.dataloss.PreventionStoredInfoTypeDictionaryCloudStoragePath>;
+        /**
+         * List of words or phrases to search for.
+         * Structure is documented below.
+         */
+        wordList?: pulumi.Input<inputs.dataloss.PreventionStoredInfoTypeDictionaryWordList>;
+    }
+
+    export interface PreventionStoredInfoTypeDictionaryCloudStoragePath {
+        /**
+         * A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
+         */
+        path: pulumi.Input<string>;
+    }
+
+    export interface PreventionStoredInfoTypeDictionaryWordList {
+        /**
+         * Words or phrases defining the dictionary. The dictionary must contain at least one
+         * phrase and every phrase must contain at least 2 characters that are letters or digits.
+         */
+        words: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface PreventionStoredInfoTypeLargeCustomDictionary {
+        /**
+         * Field in a BigQuery table where each cell represents a dictionary phrase.
+         * Structure is documented below.
+         */
+        bigQueryField?: pulumi.Input<inputs.dataloss.PreventionStoredInfoTypeLargeCustomDictionaryBigQueryField>;
+        /**
+         * Set of files containing newline-delimited lists of dictionary phrases.
+         * Structure is documented below.
+         */
+        cloudStorageFileSet?: pulumi.Input<inputs.dataloss.PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet>;
+        /**
+         * Location to store dictionary artifacts in Google Cloud Storage. These files will only be accessible by project owners and the DLP API.
+         * If any of these artifacts are modified, the dictionary is considered invalid and can no longer be used.
+         * Structure is documented below.
+         */
+        outputPath: pulumi.Input<inputs.dataloss.PreventionStoredInfoTypeLargeCustomDictionaryOutputPath>;
+    }
+
+    export interface PreventionStoredInfoTypeLargeCustomDictionaryBigQueryField {
+        /**
+         * Designated field in the BigQuery table.
+         * Structure is documented below.
+         */
+        field: pulumi.Input<inputs.dataloss.PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldField>;
+        /**
+         * Field in a BigQuery table where each cell represents a dictionary phrase.
+         * Structure is documented below.
+         */
+        table: pulumi.Input<inputs.dataloss.PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTable>;
+    }
+
+    export interface PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldField {
+        /**
+         * Name describing the field.
+         */
+        name: pulumi.Input<string>;
+    }
+
+    export interface PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTable {
+        /**
+         * The dataset ID of the table.
+         */
+        datasetId: pulumi.Input<string>;
+        /**
+         * The Google Cloud Platform project ID of the project containing the table.
+         */
+        projectId: pulumi.Input<string>;
+        /**
+         * The name of the table.
+         */
+        tableId: pulumi.Input<string>;
+    }
+
+    export interface PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet {
+        /**
+         * The url, in the format `gs://<bucket>/<path>`. Trailing wildcard in the path is allowed.
+         */
+        url: pulumi.Input<string>;
+    }
+
+    export interface PreventionStoredInfoTypeLargeCustomDictionaryOutputPath {
+        /**
+         * A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
+         */
+        path: pulumi.Input<string>;
+    }
+
+    export interface PreventionStoredInfoTypeRegex {
+        /**
+         * The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+         */
+        groupIndexes?: pulumi.Input<pulumi.Input<number>[]>;
+        /**
+         * Pattern defining the regular expression.
+         * Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+         */
+        pattern: pulumi.Input<string>;
     }
 }
 
@@ -17241,6 +17889,34 @@ export namespace osconfig {
          * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
          */
         dayOfWeek: pulumi.Input<string>;
+    }
+
+    export interface PatchDeploymentRollout {
+        /**
+         * The maximum number (or percentage) of VMs per zone to disrupt at any given moment. The number of VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up.
+         * During patching, a VM is considered disrupted from the time the agent is notified to begin until patching has completed. This disruption time includes the time to complete reboot and any post-patch steps.
+         * A VM contributes to the disruption budget if its patching operation fails either when applying the patches, running pre or post patch steps, or if it fails to respond with a success notification before timing out. VMs that are not running or do not have an active agent do not count toward this disruption budget.
+         * For zone-by-zone rollouts, if the disruption budget in a zone is exceeded, the patch job stops, because continuing to the next zone requires completion of the patch process in the previous zone.
+         * For example, if the disruption budget has a fixed value of 10, and 8 VMs fail to patch in the current zone, the patch job continues to patch 2 VMs at a time until the zone is completed. When that zone is completed successfully, patching begins with 10 VMs at a time in the next zone. If 10 VMs in the next zone fail to patch, the patch job stops.
+         * Structure is documented below.
+         */
+        disruptionBudget: pulumi.Input<inputs.osconfig.PatchDeploymentRolloutDisruptionBudget>;
+        /**
+         * Mode of the patch rollout.
+         * Possible values are `ZONE_BY_ZONE` and `CONCURRENT_ZONES`.
+         */
+        mode: pulumi.Input<string>;
+    }
+
+    export interface PatchDeploymentRolloutDisruptionBudget {
+        /**
+         * Specifies a fixed value.
+         */
+        fixed?: pulumi.Input<number>;
+        /**
+         * Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
+         */
+        percentage?: pulumi.Input<number>;
     }
 }
 

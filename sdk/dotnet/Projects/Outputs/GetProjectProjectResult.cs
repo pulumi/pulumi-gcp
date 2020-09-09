@@ -13,14 +13,39 @@ namespace Pulumi.Gcp.Projects.Outputs
     [OutputType]
     public sealed class GetProjectProjectResult
     {
+        public readonly string CreateTime;
+        public readonly ImmutableDictionary<string, string> Labels;
+        public readonly string LifecycleState;
+        public readonly string Name;
+        public readonly string Number;
+        public readonly ImmutableDictionary<string, string> Parent;
         /// <summary>
         /// The project id of the project.
         /// </summary>
         public readonly string ProjectId;
 
         [OutputConstructor]
-        private GetProjectProjectResult(string projectId)
+        private GetProjectProjectResult(
+            string createTime,
+
+            ImmutableDictionary<string, string> labels,
+
+            string lifecycleState,
+
+            string name,
+
+            string number,
+
+            ImmutableDictionary<string, string> parent,
+
+            string projectId)
         {
+            CreateTime = createTime;
+            Labels = labels;
+            LifecycleState = lifecycleState;
+            Name = name;
+            Number = number;
+            Parent = parent;
             ProjectId = projectId;
         }
     }

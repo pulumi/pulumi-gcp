@@ -32,10 +32,12 @@ class Notification(pulumi.CustomResource):
         [API](https://cloud.google.com/storage/docs/json_api/v1/notifications).
 
         In order to enable notifications, a special Google Cloud Storage service account unique to the project
-        must have the IAM permission "projects.topics.publish" for a Cloud Pub/Sub topic in the project. To get the service
-        account's email address, use the `storage.getProjectServiceAccount` datasource's `email_address` value, and see below
-        for an example of enabling notifications by granting the correct IAM permission. See
-        [the notifications documentation](https://cloud.google.com/storage/docs/gsutil/commands/notification) for more details.
+        must exist and have the IAM permission "projects.topics.publish" for a Cloud Pub/Sub topic in the project.
+        This service account is not created automatically when a project is created.
+        To ensure the service account exists and obtain its email address for use in granting the correct IAM permission, use the
+        [`storage.getProjectServiceAccount`](https://www.terraform.io/docs/providers/google/d/storage_project_service_account.html)
+        datasource's `email_address` value, and see below for an example of enabling notifications by granting the correct IAM permission.
+        See [the notifications documentation](https://cloud.google.com/storage/docs/gsutil/commands/notification) for more details.
 
         > **NOTE**: This resource can affect your storage IAM policy. If you are using this in the same config as your storage IAM policy resources, consider
         making this resource dependent on those IAM resources via `depends_on`. This will safeguard against errors due to IAM race conditions.
@@ -47,7 +49,7 @@ class Notification(pulumi.CustomResource):
         :param pulumi.Input[List[pulumi.Input[str]]] event_types: List of event type filters for this notification config. If not specified, Cloud Storage will send notifications for all event types. The valid types are: `"OBJECT_FINALIZE"`, `"OBJECT_METADATA_UPDATE"`, `"OBJECT_DELETE"`, `"OBJECT_ARCHIVE"`
         :param pulumi.Input[str] object_name_prefix: Specifies a prefix path filter for this notification config. Cloud Storage will only send notifications for objects in this bucket whose names begin with the specified prefix.
         :param pulumi.Input[str] payload_format: The desired content of the Payload. One of `"JSON_API_V1"` or `"NONE"`.
-        :param pulumi.Input[str] topic: The Cloud PubSub topic to which this subscription publishes. Expects either the 
+        :param pulumi.Input[str] topic: The Cloud PubSub topic to which this subscription publishes. Expects either the
                topic name, assumed to belong to the default GCP provider project, or the project-level name,
                i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
                you will need to use the project-level name.
@@ -115,7 +117,7 @@ class Notification(pulumi.CustomResource):
         :param pulumi.Input[str] object_name_prefix: Specifies a prefix path filter for this notification config. Cloud Storage will only send notifications for objects in this bucket whose names begin with the specified prefix.
         :param pulumi.Input[str] payload_format: The desired content of the Payload. One of `"JSON_API_V1"` or `"NONE"`.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[str] topic: The Cloud PubSub topic to which this subscription publishes. Expects either the 
+        :param pulumi.Input[str] topic: The Cloud PubSub topic to which this subscription publishes. Expects either the
                topic name, assumed to belong to the default GCP provider project, or the project-level name,
                i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
                you will need to use the project-level name.
@@ -194,7 +196,7 @@ class Notification(pulumi.CustomResource):
     @pulumi.getter
     def topic(self) -> pulumi.Output[str]:
         """
-        The Cloud PubSub topic to which this subscription publishes. Expects either the 
+        The Cloud PubSub topic to which this subscription publishes. Expects either the
         topic name, assumed to belong to the default GCP provider project, or the project-level name,
         i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
         you will need to use the project-level name.

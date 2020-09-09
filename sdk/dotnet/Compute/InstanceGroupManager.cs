@@ -71,6 +71,9 @@ namespace Pulumi.Gcp.Compute
         [Output("namedPorts")]
         public Output<ImmutableArray<Outputs.InstanceGroupManagerNamedPort>> NamedPorts { get; private set; } = null!;
 
+        [Output("operation")]
+        public Output<string> Operation { get; private set; } = null!;
+
         /// <summary>
         /// The ID of the project in which the resource belongs. If it
         /// is not provided, the provider project is used.
@@ -359,6 +362,9 @@ namespace Pulumi.Gcp.Compute
             get => _namedPorts ?? (_namedPorts = new InputList<Inputs.InstanceGroupManagerNamedPortGetArgs>());
             set => _namedPorts = value;
         }
+
+        [Input("operation")]
+        public Input<string>? Operation { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs. If it

@@ -30,6 +30,7 @@ class Provider(pulumi.ProviderResource):
                  bigquery_reservation_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  bigtable_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  billing_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 billing_project: Optional[pulumi.Input[str]] = None,
                  binary_authorization_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_asset_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_billing_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -49,6 +50,7 @@ class Provider(pulumi.ProviderResource):
                  credentials: Optional[pulumi.Input[str]] = None,
                  data_catalog_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  data_fusion_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 data_loss_prevention_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataflow_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataproc_beta_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataproc_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -143,6 +145,7 @@ class Provider(pulumi.ProviderResource):
             __props__['bigquery_reservation_custom_endpoint'] = bigquery_reservation_custom_endpoint
             __props__['bigtable_custom_endpoint'] = bigtable_custom_endpoint
             __props__['billing_custom_endpoint'] = billing_custom_endpoint
+            __props__['billing_project'] = billing_project
             __props__['binary_authorization_custom_endpoint'] = binary_authorization_custom_endpoint
             __props__['cloud_asset_custom_endpoint'] = cloud_asset_custom_endpoint
             __props__['cloud_billing_custom_endpoint'] = cloud_billing_custom_endpoint
@@ -164,6 +167,7 @@ class Provider(pulumi.ProviderResource):
             __props__['credentials'] = credentials
             __props__['data_catalog_custom_endpoint'] = data_catalog_custom_endpoint
             __props__['data_fusion_custom_endpoint'] = data_fusion_custom_endpoint
+            __props__['data_loss_prevention_custom_endpoint'] = data_loss_prevention_custom_endpoint
             __props__['dataflow_custom_endpoint'] = dataflow_custom_endpoint
             __props__['dataproc_beta_custom_endpoint'] = dataproc_beta_custom_endpoint
             __props__['dataproc_custom_endpoint'] = dataproc_custom_endpoint

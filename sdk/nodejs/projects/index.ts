@@ -12,4 +12,5 @@ export * from "./iammember";
 export * from "./iampolicy";
 export * from "./organizationPolicy";
 export * from "./service";
+export * from "./serviceIdentity";
 export * from "./usageExportBucket";

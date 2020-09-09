@@ -514,6 +514,141 @@ func (o ConnectionCloudSqlCredentialPtrOutput) Username() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+type DataTransferConfigSensitiveParams struct {
+	// The Secret Access Key of the AWS account transferring data from.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	SecretAccessKey string `pulumi:"secretAccessKey"`
+}
+
+// DataTransferConfigSensitiveParamsInput is an input type that accepts DataTransferConfigSensitiveParamsArgs and DataTransferConfigSensitiveParamsOutput values.
+// You can construct a concrete instance of `DataTransferConfigSensitiveParamsInput` via:
+//
+//          DataTransferConfigSensitiveParamsArgs{...}
+type DataTransferConfigSensitiveParamsInput interface {
+	pulumi.Input
+
+	ToDataTransferConfigSensitiveParamsOutput() DataTransferConfigSensitiveParamsOutput
+	ToDataTransferConfigSensitiveParamsOutputWithContext(context.Context) DataTransferConfigSensitiveParamsOutput
+}
+
+type DataTransferConfigSensitiveParamsArgs struct {
+	// The Secret Access Key of the AWS account transferring data from.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	SecretAccessKey pulumi.StringInput `pulumi:"secretAccessKey"`
+}
+
+func (DataTransferConfigSensitiveParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataTransferConfigSensitiveParams)(nil)).Elem()
+}
+
+func (i DataTransferConfigSensitiveParamsArgs) ToDataTransferConfigSensitiveParamsOutput() DataTransferConfigSensitiveParamsOutput {
+	return i.ToDataTransferConfigSensitiveParamsOutputWithContext(context.Background())
+}
+
+func (i DataTransferConfigSensitiveParamsArgs) ToDataTransferConfigSensitiveParamsOutputWithContext(ctx context.Context) DataTransferConfigSensitiveParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataTransferConfigSensitiveParamsOutput)
+}
+
+func (i DataTransferConfigSensitiveParamsArgs) ToDataTransferConfigSensitiveParamsPtrOutput() DataTransferConfigSensitiveParamsPtrOutput {
+	return i.ToDataTransferConfigSensitiveParamsPtrOutputWithContext(context.Background())
+}
+
+func (i DataTransferConfigSensitiveParamsArgs) ToDataTransferConfigSensitiveParamsPtrOutputWithContext(ctx context.Context) DataTransferConfigSensitiveParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataTransferConfigSensitiveParamsOutput).ToDataTransferConfigSensitiveParamsPtrOutputWithContext(ctx)
+}
+
+// DataTransferConfigSensitiveParamsPtrInput is an input type that accepts DataTransferConfigSensitiveParamsArgs, DataTransferConfigSensitiveParamsPtr and DataTransferConfigSensitiveParamsPtrOutput values.
+// You can construct a concrete instance of `DataTransferConfigSensitiveParamsPtrInput` via:
+//
+//          DataTransferConfigSensitiveParamsArgs{...}
+//
+//  or:
+//
+//          nil
+type DataTransferConfigSensitiveParamsPtrInput interface {
+	pulumi.Input
+
+	ToDataTransferConfigSensitiveParamsPtrOutput() DataTransferConfigSensitiveParamsPtrOutput
+	ToDataTransferConfigSensitiveParamsPtrOutputWithContext(context.Context) DataTransferConfigSensitiveParamsPtrOutput
+}
+
+type dataTransferConfigSensitiveParamsPtrType DataTransferConfigSensitiveParamsArgs
+
+func DataTransferConfigSensitiveParamsPtr(v *DataTransferConfigSensitiveParamsArgs) DataTransferConfigSensitiveParamsPtrInput {
+	return (*dataTransferConfigSensitiveParamsPtrType)(v)
+}
+
+func (*dataTransferConfigSensitiveParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataTransferConfigSensitiveParams)(nil)).Elem()
+}
+
+func (i *dataTransferConfigSensitiveParamsPtrType) ToDataTransferConfigSensitiveParamsPtrOutput() DataTransferConfigSensitiveParamsPtrOutput {
+	return i.ToDataTransferConfigSensitiveParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *dataTransferConfigSensitiveParamsPtrType) ToDataTransferConfigSensitiveParamsPtrOutputWithContext(ctx context.Context) DataTransferConfigSensitiveParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataTransferConfigSensitiveParamsPtrOutput)
+}
+
+type DataTransferConfigSensitiveParamsOutput struct{ *pulumi.OutputState }
+
+func (DataTransferConfigSensitiveParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataTransferConfigSensitiveParams)(nil)).Elem()
+}
+
+func (o DataTransferConfigSensitiveParamsOutput) ToDataTransferConfigSensitiveParamsOutput() DataTransferConfigSensitiveParamsOutput {
+	return o
+}
+
+func (o DataTransferConfigSensitiveParamsOutput) ToDataTransferConfigSensitiveParamsOutputWithContext(ctx context.Context) DataTransferConfigSensitiveParamsOutput {
+	return o
+}
+
+func (o DataTransferConfigSensitiveParamsOutput) ToDataTransferConfigSensitiveParamsPtrOutput() DataTransferConfigSensitiveParamsPtrOutput {
+	return o.ToDataTransferConfigSensitiveParamsPtrOutputWithContext(context.Background())
+}
+
+func (o DataTransferConfigSensitiveParamsOutput) ToDataTransferConfigSensitiveParamsPtrOutputWithContext(ctx context.Context) DataTransferConfigSensitiveParamsPtrOutput {
+	return o.ApplyT(func(v DataTransferConfigSensitiveParams) *DataTransferConfigSensitiveParams {
+		return &v
+	}).(DataTransferConfigSensitiveParamsPtrOutput)
+}
+
+// The Secret Access Key of the AWS account transferring data from.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o DataTransferConfigSensitiveParamsOutput) SecretAccessKey() pulumi.StringOutput {
+	return o.ApplyT(func(v DataTransferConfigSensitiveParams) string { return v.SecretAccessKey }).(pulumi.StringOutput)
+}
+
+type DataTransferConfigSensitiveParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (DataTransferConfigSensitiveParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataTransferConfigSensitiveParams)(nil)).Elem()
+}
+
+func (o DataTransferConfigSensitiveParamsPtrOutput) ToDataTransferConfigSensitiveParamsPtrOutput() DataTransferConfigSensitiveParamsPtrOutput {
+	return o
+}
+
+func (o DataTransferConfigSensitiveParamsPtrOutput) ToDataTransferConfigSensitiveParamsPtrOutputWithContext(ctx context.Context) DataTransferConfigSensitiveParamsPtrOutput {
+	return o
+}
+
+func (o DataTransferConfigSensitiveParamsPtrOutput) Elem() DataTransferConfigSensitiveParamsOutput {
+	return o.ApplyT(func(v *DataTransferConfigSensitiveParams) DataTransferConfigSensitiveParams { return *v }).(DataTransferConfigSensitiveParamsOutput)
+}
+
+// The Secret Access Key of the AWS account transferring data from.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o DataTransferConfigSensitiveParamsPtrOutput) SecretAccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataTransferConfigSensitiveParams) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretAccessKey
+	}).(pulumi.StringPtrOutput)
+}
+
 type DatasetAccessType struct {
 	// A domain to grant access to. Any users signed in with the
 	// domain specified will be granted the specified access
@@ -7393,6 +7528,8 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionCloudSqlPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionCloudSqlCredentialOutput{})
 	pulumi.RegisterOutputType(ConnectionCloudSqlCredentialPtrOutput{})
+	pulumi.RegisterOutputType(DataTransferConfigSensitiveParamsOutput{})
+	pulumi.RegisterOutputType(DataTransferConfigSensitiveParamsPtrOutput{})
 	pulumi.RegisterOutputType(DatasetAccessTypeOutput{})
 	pulumi.RegisterOutputType(DatasetAccessTypeArrayOutput{})
 	pulumi.RegisterOutputType(DatasetAccessViewOutput{})

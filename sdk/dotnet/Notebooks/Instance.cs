@@ -30,7 +30,7 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// Possible disk types for notebook instances.
-        /// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
+        /// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
         /// </summary>
         [Output("bootDiskType")]
         public Output<string?> BootDiskType { get; private set; } = null!;
@@ -66,7 +66,7 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// Possible disk types for notebook instances.
-        /// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
+        /// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
         /// </summary>
         [Output("dataDiskType")]
         public Output<string?> DataDiskType { get; private set; } = null!;
@@ -86,7 +86,7 @@ namespace Pulumi.Gcp.Notebooks
         public Output<bool?> InstallGpuDriver { get; private set; } = null!;
 
         /// <summary>
-        /// The owner of this instance after creation.
+        /// The list of owners of this instance after creation.
         /// Format: alias@example.com.
         /// Currently supports one owner only.
         /// If not specified, all of the service account users of
@@ -281,7 +281,7 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// Possible disk types for notebook instances.
-        /// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
+        /// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
         /// </summary>
         [Input("bootDiskType")]
         public Input<string>? BootDiskType { get; set; }
@@ -317,7 +317,7 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// Possible disk types for notebook instances.
-        /// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
+        /// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
         /// </summary>
         [Input("dataDiskType")]
         public Input<string>? DataDiskType { get; set; }
@@ -337,7 +337,7 @@ namespace Pulumi.Gcp.Notebooks
         public Input<bool>? InstallGpuDriver { get; set; }
 
         /// <summary>
-        /// The owner of this instance after creation.
+        /// The list of owners of this instance after creation.
         /// Format: alias@example.com.
         /// Currently supports one owner only.
         /// If not specified, all of the service account users of
@@ -493,7 +493,7 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// Possible disk types for notebook instances.
-        /// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
+        /// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
         /// </summary>
         [Input("bootDiskType")]
         public Input<string>? BootDiskType { get; set; }
@@ -529,7 +529,7 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// Possible disk types for notebook instances.
-        /// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
+        /// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
         /// </summary>
         [Input("dataDiskType")]
         public Input<string>? DataDiskType { get; set; }
@@ -549,7 +549,7 @@ namespace Pulumi.Gcp.Notebooks
         public Input<bool>? InstallGpuDriver { get; set; }
 
         /// <summary>
-        /// The owner of this instance after creation.
+        /// The list of owners of this instance after creation.
         /// Format: alias@example.com.
         /// Currently supports one owner only.
         /// If not specified, all of the service account users of

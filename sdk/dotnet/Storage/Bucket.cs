@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.Storage
     public partial class Bucket : Pulumi.CustomResource
     {
         /// <summary>
-        /// Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket.
+        /// Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket. This field will be removed in the next major release of the provider.
         /// </summary>
         [Output("bucketPolicyOnly")]
         public Output<bool> BucketPolicyOnly { get; private set; } = null!;
@@ -118,6 +118,12 @@ namespace Pulumi.Gcp.Storage
         public Output<string?> StorageClass { get; private set; } = null!;
 
         /// <summary>
+        /// Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
+        /// </summary>
+        [Output("uniformBucketLevelAccess")]
+        public Output<bool> UniformBucketLevelAccess { get; private set; } = null!;
+
+        /// <summary>
         /// The base URL of the bucket, in the format `gs://&lt;bucket-name&gt;`.
         /// </summary>
         [Output("url")]
@@ -182,7 +188,7 @@ namespace Pulumi.Gcp.Storage
     public sealed class BucketArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket.
+        /// Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket. This field will be removed in the next major release of the provider.
         /// </summary>
         [Input("bucketPolicyOnly")]
         public Input<bool>? BucketPolicyOnly { get; set; }
@@ -284,6 +290,12 @@ namespace Pulumi.Gcp.Storage
         public Input<string>? StorageClass { get; set; }
 
         /// <summary>
+        /// Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
+        /// </summary>
+        [Input("uniformBucketLevelAccess")]
+        public Input<bool>? UniformBucketLevelAccess { get; set; }
+
+        /// <summary>
         /// The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.
         /// </summary>
         [Input("versioning")]
@@ -303,7 +315,7 @@ namespace Pulumi.Gcp.Storage
     public sealed class BucketState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket.
+        /// Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket. This field will be removed in the next major release of the provider.
         /// </summary>
         [Input("bucketPolicyOnly")]
         public Input<bool>? BucketPolicyOnly { get; set; }
@@ -409,6 +421,12 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         [Input("storageClass")]
         public Input<string>? StorageClass { get; set; }
+
+        /// <summary>
+        /// Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
+        /// </summary>
+        [Input("uniformBucketLevelAccess")]
+        public Input<bool>? UniformBucketLevelAccess { get; set; }
 
         /// <summary>
         /// The base URL of the bucket, in the format `gs://&lt;bucket-name&gt;`.

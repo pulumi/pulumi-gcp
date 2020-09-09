@@ -26,7 +26,9 @@ import (
 type Bucket struct {
 	pulumi.CustomResourceState
 
-	// Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket.
+	// Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket. This field will be removed in the next major release of the provider.
+	//
+	// Deprecated: Please use the uniform_bucket_level_access as this field has been renamed by Google.
 	BucketPolicyOnly pulumi.BoolOutput `pulumi:"bucketPolicyOnly"`
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	Cors                  BucketCorArrayOutput `pulumi:"cors"`
@@ -58,6 +60,8 @@ type Bucket struct {
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
 	StorageClass pulumi.StringPtrOutput `pulumi:"storageClass"`
+	// Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
+	UniformBucketLevelAccess pulumi.BoolOutput `pulumi:"uniformBucketLevelAccess"`
 	// The base URL of the bucket, in the format `gs://<bucket-name>`.
 	Url pulumi.StringOutput `pulumi:"url"`
 	// The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.
@@ -94,7 +98,9 @@ func GetBucket(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Bucket resources.
 type bucketState struct {
-	// Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket.
+	// Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket. This field will be removed in the next major release of the provider.
+	//
+	// Deprecated: Please use the uniform_bucket_level_access as this field has been renamed by Google.
 	BucketPolicyOnly *bool `pulumi:"bucketPolicyOnly"`
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	Cors                  []BucketCor `pulumi:"cors"`
@@ -126,6 +132,8 @@ type bucketState struct {
 	SelfLink *string `pulumi:"selfLink"`
 	// The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
 	StorageClass *string `pulumi:"storageClass"`
+	// Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
+	UniformBucketLevelAccess *bool `pulumi:"uniformBucketLevelAccess"`
 	// The base URL of the bucket, in the format `gs://<bucket-name>`.
 	Url *string `pulumi:"url"`
 	// The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.
@@ -135,7 +143,9 @@ type bucketState struct {
 }
 
 type BucketState struct {
-	// Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket.
+	// Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket. This field will be removed in the next major release of the provider.
+	//
+	// Deprecated: Please use the uniform_bucket_level_access as this field has been renamed by Google.
 	BucketPolicyOnly pulumi.BoolPtrInput
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	Cors                  BucketCorArrayInput
@@ -167,6 +177,8 @@ type BucketState struct {
 	SelfLink pulumi.StringPtrInput
 	// The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
 	StorageClass pulumi.StringPtrInput
+	// Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
+	UniformBucketLevelAccess pulumi.BoolPtrInput
 	// The base URL of the bucket, in the format `gs://<bucket-name>`.
 	Url pulumi.StringPtrInput
 	// The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.
@@ -180,7 +192,9 @@ func (BucketState) ElementType() reflect.Type {
 }
 
 type bucketArgs struct {
-	// Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket.
+	// Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket. This field will be removed in the next major release of the provider.
+	//
+	// Deprecated: Please use the uniform_bucket_level_access as this field has been renamed by Google.
 	BucketPolicyOnly *bool `pulumi:"bucketPolicyOnly"`
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	Cors                  []BucketCor `pulumi:"cors"`
@@ -210,6 +224,8 @@ type bucketArgs struct {
 	RetentionPolicy *BucketRetentionPolicy `pulumi:"retentionPolicy"`
 	// The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
 	StorageClass *string `pulumi:"storageClass"`
+	// Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
+	UniformBucketLevelAccess *bool `pulumi:"uniformBucketLevelAccess"`
 	// The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.
 	Versioning *BucketVersioning `pulumi:"versioning"`
 	// Configuration if the bucket acts as a website. Structure is documented below.
@@ -218,7 +234,9 @@ type bucketArgs struct {
 
 // The set of arguments for constructing a Bucket resource.
 type BucketArgs struct {
-	// Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket.
+	// Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket. This field will be removed in the next major release of the provider.
+	//
+	// Deprecated: Please use the uniform_bucket_level_access as this field has been renamed by Google.
 	BucketPolicyOnly pulumi.BoolPtrInput
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	Cors                  BucketCorArrayInput
@@ -248,6 +266,8 @@ type BucketArgs struct {
 	RetentionPolicy BucketRetentionPolicyPtrInput
 	// The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
 	StorageClass pulumi.StringPtrInput
+	// Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
+	UniformBucketLevelAccess pulumi.BoolPtrInput
 	// The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.
 	Versioning BucketVersioningPtrInput
 	// Configuration if the bucket acts as a website. Structure is documented below.

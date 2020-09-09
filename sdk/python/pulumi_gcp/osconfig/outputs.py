@@ -64,6 +64,8 @@ __all__ = [
     'PatchDeploymentRecurringScheduleTimeOfDay',
     'PatchDeploymentRecurringScheduleTimeZone',
     'PatchDeploymentRecurringScheduleWeekly',
+    'PatchDeploymentRollout',
+    'PatchDeploymentRolloutDisruptionBudget',
 ]
 
 @pulumi.output_type
@@ -3021,6 +3023,84 @@ class PatchDeploymentRecurringScheduleWeekly(dict):
         Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
         """
         return pulumi.get(self, "day_of_week")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class PatchDeploymentRollout(dict):
+    def __init__(__self__, *,
+                 disruption_budget: 'outputs.PatchDeploymentRolloutDisruptionBudget',
+                 mode: str):
+        """
+        :param 'PatchDeploymentRolloutDisruptionBudgetArgs' disruption_budget: The maximum number (or percentage) of VMs per zone to disrupt at any given moment. The number of VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up.
+               During patching, a VM is considered disrupted from the time the agent is notified to begin until patching has completed. This disruption time includes the time to complete reboot and any post-patch steps.
+               A VM contributes to the disruption budget if its patching operation fails either when applying the patches, running pre or post patch steps, or if it fails to respond with a success notification before timing out. VMs that are not running or do not have an active agent do not count toward this disruption budget.
+               For zone-by-zone rollouts, if the disruption budget in a zone is exceeded, the patch job stops, because continuing to the next zone requires completion of the patch process in the previous zone.
+               For example, if the disruption budget has a fixed value of 10, and 8 VMs fail to patch in the current zone, the patch job continues to patch 2 VMs at a time until the zone is completed. When that zone is completed successfully, patching begins with 10 VMs at a time in the next zone. If 10 VMs in the next zone fail to patch, the patch job stops.
+               Structure is documented below.
+        :param str mode: Mode of the patch rollout.
+               Possible values are `ZONE_BY_ZONE` and `CONCURRENT_ZONES`.
+        """
+        pulumi.set(__self__, "disruption_budget", disruption_budget)
+        pulumi.set(__self__, "mode", mode)
+
+    @property
+    @pulumi.getter(name="disruptionBudget")
+    def disruption_budget(self) -> 'outputs.PatchDeploymentRolloutDisruptionBudget':
+        """
+        The maximum number (or percentage) of VMs per zone to disrupt at any given moment. The number of VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up.
+        During patching, a VM is considered disrupted from the time the agent is notified to begin until patching has completed. This disruption time includes the time to complete reboot and any post-patch steps.
+        A VM contributes to the disruption budget if its patching operation fails either when applying the patches, running pre or post patch steps, or if it fails to respond with a success notification before timing out. VMs that are not running or do not have an active agent do not count toward this disruption budget.
+        For zone-by-zone rollouts, if the disruption budget in a zone is exceeded, the patch job stops, because continuing to the next zone requires completion of the patch process in the previous zone.
+        For example, if the disruption budget has a fixed value of 10, and 8 VMs fail to patch in the current zone, the patch job continues to patch 2 VMs at a time until the zone is completed. When that zone is completed successfully, patching begins with 10 VMs at a time in the next zone. If 10 VMs in the next zone fail to patch, the patch job stops.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "disruption_budget")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> str:
+        """
+        Mode of the patch rollout.
+        Possible values are `ZONE_BY_ZONE` and `CONCURRENT_ZONES`.
+        """
+        return pulumi.get(self, "mode")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class PatchDeploymentRolloutDisruptionBudget(dict):
+    def __init__(__self__, *,
+                 fixed: Optional[float] = None,
+                 percentage: Optional[float] = None):
+        """
+        :param float fixed: Specifies a fixed value.
+        :param float percentage: Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
+        """
+        if fixed is not None:
+            pulumi.set(__self__, "fixed", fixed)
+        if percentage is not None:
+            pulumi.set(__self__, "percentage", percentage)
+
+    @property
+    @pulumi.getter
+    def fixed(self) -> Optional[float]:
+        """
+        Specifies a fixed value.
+        """
+        return pulumi.get(self, "fixed")
+
+    @property
+    @pulumi.getter
+    def percentage(self) -> Optional[float]:
+        """
+        Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
+        """
+        return pulumi.get(self, "percentage")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

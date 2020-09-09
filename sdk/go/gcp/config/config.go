@@ -47,6 +47,9 @@ func GetBigtableCustomEndpoint(ctx *pulumi.Context) string {
 func GetBillingCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:billingCustomEndpoint")
 }
+func GetBillingProject(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:billingProject")
+}
 func GetBinaryAuthorizationCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:binaryAuthorizationCustomEndpoint")
 }
@@ -107,6 +110,9 @@ func GetDataCatalogCustomEndpoint(ctx *pulumi.Context) string {
 }
 func GetDataFusionCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:dataFusionCustomEndpoint")
+}
+func GetDataLossPreventionCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:dataLossPreventionCustomEndpoint")
 }
 func GetDataflowCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:dataflowCustomEndpoint")
