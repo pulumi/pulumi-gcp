@@ -115,7 +115,7 @@ namespace Pulumi.Gcp.Iot
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new Alias { Type = "gcp:kms/registry:Registry"},
+                    new Pulumi.Alias { Type = "gcp:kms/registry:Registry"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
