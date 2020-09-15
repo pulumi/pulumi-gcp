@@ -24,6 +24,7 @@ class Snapshot(pulumi.CustomResource):
                  snapshot_encryption_key: Optional[pulumi.Input[pulumi.InputType['SnapshotSnapshotEncryptionKeyArgs']]] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
                  source_disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['SnapshotSourceDiskEncryptionKeyArgs']]] = None,
+                 storage_locations: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -74,6 +75,7 @@ class Snapshot(pulumi.CustomResource):
                if the source snapshot is protected by a customer-supplied encryption
                key.
                Structure is documented below.
+        :param pulumi.Input[List[pulumi.Input[str]]] storage_locations: Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
         :param pulumi.Input[str] zone: A reference to the zone where the disk is hosted.
         """
         if __name__ is not None:
@@ -102,6 +104,7 @@ class Snapshot(pulumi.CustomResource):
                 raise TypeError("Missing required property 'source_disk'")
             __props__['source_disk'] = source_disk
             __props__['source_disk_encryption_key'] = source_disk_encryption_key
+            __props__['storage_locations'] = storage_locations
             __props__['zone'] = zone
             __props__['creation_timestamp'] = None
             __props__['disk_size_gb'] = None
@@ -136,6 +139,7 @@ class Snapshot(pulumi.CustomResource):
             source_disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['SnapshotSourceDiskEncryptionKeyArgs']]] = None,
             source_disk_link: Optional[pulumi.Input[str]] = None,
             storage_bytes: Optional[pulumi.Input[float]] = None,
+            storage_locations: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'Snapshot':
         """
         Get an existing Snapshot resource's state with the given name, id, and optional extra
@@ -173,6 +177,7 @@ class Snapshot(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[float] storage_bytes: A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot
                creation/deletion.
+        :param pulumi.Input[List[pulumi.Input[str]]] storage_locations: Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
         :param pulumi.Input[str] zone: A reference to the zone where the disk is hosted.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -194,6 +199,7 @@ class Snapshot(pulumi.CustomResource):
         __props__["source_disk_encryption_key"] = source_disk_encryption_key
         __props__["source_disk_link"] = source_disk_link
         __props__["storage_bytes"] = storage_bytes
+        __props__["storage_locations"] = storage_locations
         __props__["zone"] = zone
         return Snapshot(resource_name, opts=opts, __props__=__props__)
 
@@ -328,6 +334,14 @@ class Snapshot(pulumi.CustomResource):
         creation/deletion.
         """
         return pulumi.get(self, "storage_bytes")
+
+    @property
+    @pulumi.getter(name="storageLocations")
+    def storage_locations(self) -> pulumi.Output[List[str]]:
+        """
+        Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
+        """
+        return pulumi.get(self, "storage_locations")
 
     @property
     @pulumi.getter

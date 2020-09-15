@@ -139,6 +139,12 @@ namespace Pulumi.Gcp.Compute
         public Output<int> StorageBytes { get; private set; } = null!;
 
         /// <summary>
+        /// Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
+        /// </summary>
+        [Output("storageLocations")]
+        public Output<ImmutableArray<string>> StorageLocations { get; private set; } = null!;
+
+        /// <summary>
         /// A reference to the zone where the disk is hosted.
         /// </summary>
         [Output("zone")]
@@ -249,6 +255,18 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("sourceDiskEncryptionKey")]
         public Input<Inputs.SnapshotSourceDiskEncryptionKeyArgs>? SourceDiskEncryptionKey { get; set; }
+
+        [Input("storageLocations")]
+        private InputList<string>? _storageLocations;
+
+        /// <summary>
+        /// Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
+        /// </summary>
+        public InputList<string> StorageLocations
+        {
+            get => _storageLocations ?? (_storageLocations = new InputList<string>());
+            set => _storageLocations = value;
+        }
 
         /// <summary>
         /// A reference to the zone where the disk is hosted.
@@ -376,6 +394,18 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("storageBytes")]
         public Input<int>? StorageBytes { get; set; }
+
+        [Input("storageLocations")]
+        private InputList<string>? _storageLocations;
+
+        /// <summary>
+        /// Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
+        /// </summary>
+        public InputList<string> StorageLocations
+        {
+            get => _storageLocations ?? (_storageLocations = new InputList<string>());
+            set => _storageLocations = value;
+        }
 
         /// <summary>
         /// A reference to the zone where the disk is hosted.

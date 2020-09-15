@@ -83,6 +83,11 @@ export class TargetInstance extends pulumi.CustomResource {
      */
     public readonly natPolicy!: pulumi.Output<string | undefined>;
     /**
+     * The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to
+     * the network that the default network interface belongs to.
+     */
+    public readonly network!: pulumi.Output<string | undefined>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -113,6 +118,7 @@ export class TargetInstance extends pulumi.CustomResource {
             inputs["instance"] = state ? state.instance : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["natPolicy"] = state ? state.natPolicy : undefined;
+            inputs["network"] = state ? state.network : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
             inputs["zone"] = state ? state.zone : undefined;
@@ -125,6 +131,7 @@ export class TargetInstance extends pulumi.CustomResource {
             inputs["instance"] = args ? args.instance : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["natPolicy"] = args ? args.natPolicy : undefined;
+            inputs["network"] = args ? args.network : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["zone"] = args ? args.zone : undefined;
             inputs["creationTimestamp"] = undefined /*out*/;
@@ -180,6 +187,11 @@ export interface TargetInstanceState {
      */
     readonly natPolicy?: pulumi.Input<string>;
     /**
+     * The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to
+     * the network that the default network interface belongs to.
+     */
+    readonly network?: pulumi.Input<string>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -228,6 +240,11 @@ export interface TargetInstanceArgs {
      * Possible values are `NO_NAT`.
      */
     readonly natPolicy?: pulumi.Input<string>;
+    /**
+     * The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to
+     * the network that the default network interface belongs to.
+     */
+    readonly network?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

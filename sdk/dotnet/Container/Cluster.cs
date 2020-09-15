@@ -390,6 +390,12 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.ClusterResourceUsageExportConfig?> ResourceUsageExportConfig { get; private set; } = null!;
 
         /// <summary>
+        /// The server-defined URL for the resource.
+        /// </summary>
+        [Output("selfLink")]
+        public Output<string> SelfLink { get; private set; } = null!;
+
+        /// <summary>
         /// The IP address range of the Kubernetes services in this
         /// cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
         /// notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
@@ -1248,6 +1254,12 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("resourceUsageExportConfig")]
         public Input<Inputs.ClusterResourceUsageExportConfigGetArgs>? ResourceUsageExportConfig { get; set; }
+
+        /// <summary>
+        /// The server-defined URL for the resource.
+        /// </summary>
+        [Input("selfLink")]
+        public Input<string>? SelfLink { get; set; }
 
         /// <summary>
         /// The IP address range of the Kubernetes services in this

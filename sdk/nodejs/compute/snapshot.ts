@@ -132,6 +132,10 @@ export class Snapshot extends pulumi.CustomResource {
      */
     public /*out*/ readonly storageBytes!: pulumi.Output<number>;
     /**
+     * Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
+     */
+    public readonly storageLocations!: pulumi.Output<string[]>;
+    /**
      * A reference to the zone where the disk is hosted.
      */
     public readonly zone!: pulumi.Output<string>;
@@ -163,6 +167,7 @@ export class Snapshot extends pulumi.CustomResource {
             inputs["sourceDiskEncryptionKey"] = state ? state.sourceDiskEncryptionKey : undefined;
             inputs["sourceDiskLink"] = state ? state.sourceDiskLink : undefined;
             inputs["storageBytes"] = state ? state.storageBytes : undefined;
+            inputs["storageLocations"] = state ? state.storageLocations : undefined;
             inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as SnapshotArgs | undefined;
@@ -176,6 +181,7 @@ export class Snapshot extends pulumi.CustomResource {
             inputs["snapshotEncryptionKey"] = args ? args.snapshotEncryptionKey : undefined;
             inputs["sourceDisk"] = args ? args.sourceDisk : undefined;
             inputs["sourceDiskEncryptionKey"] = args ? args.sourceDiskEncryptionKey : undefined;
+            inputs["storageLocations"] = args ? args.storageLocations : undefined;
             inputs["zone"] = args ? args.zone : undefined;
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["diskSizeGb"] = undefined /*out*/;
@@ -274,6 +280,10 @@ export interface SnapshotState {
      */
     readonly storageBytes?: pulumi.Input<number>;
     /**
+     * Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
+     */
+    readonly storageLocations?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * A reference to the zone where the disk is hosted.
      */
     readonly zone?: pulumi.Input<string>;
@@ -323,6 +333,10 @@ export interface SnapshotArgs {
      * Structure is documented below.
      */
     readonly sourceDiskEncryptionKey?: pulumi.Input<inputs.compute.SnapshotSourceDiskEncryptionKey>;
+    /**
+     * Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
+     */
+    readonly storageLocations?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A reference to the zone where the disk is hosted.
      */

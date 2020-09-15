@@ -13,12 +13,25 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class SnapshotSnapshotEncryptionKeyGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The name of the encryption key that is stored in Google Cloud KMS.
+        /// </summary>
+        [Input("kmsKeySelfLink")]
+        public Input<string>? KmsKeySelfLink { get; set; }
+
+        /// <summary>
+        /// The service account used for the encryption request for the given KMS key.
+        /// If absent, the Compute Engine Service Agent service account is used.
+        /// </summary>
+        [Input("kmsKeyServiceAccount")]
+        public Input<string>? KmsKeyServiceAccount { get; set; }
+
+        /// <summary>
         /// Specifies a 256-bit customer-supplied encryption key, encoded in
         /// RFC 4648 base64 to either encrypt or decrypt this resource.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        [Input("rawKey", required: true)]
-        public Input<string> RawKey { get; set; } = null!;
+        [Input("rawKey")]
+        public Input<string>? RawKey { get; set; }
 
         /// <summary>
         /// -

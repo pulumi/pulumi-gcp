@@ -214,6 +214,8 @@ type Cluster struct {
 	// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
 	// Structure is documented below.
 	ResourceUsageExportConfig ClusterResourceUsageExportConfigPtrOutput `pulumi:"resourceUsageExportConfig"`
+	// The server-defined URL for the resource.
+	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// The IP address range of the Kubernetes services in this
 	// cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
 	// notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
@@ -456,6 +458,8 @@ type clusterState struct {
 	// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
 	// Structure is documented below.
 	ResourceUsageExportConfig *ClusterResourceUsageExportConfig `pulumi:"resourceUsageExportConfig"`
+	// The server-defined URL for the resource.
+	SelfLink *string `pulumi:"selfLink"`
 	// The IP address range of the Kubernetes services in this
 	// cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
 	// notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
@@ -671,6 +675,8 @@ type ClusterState struct {
 	// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
 	// Structure is documented below.
 	ResourceUsageExportConfig ClusterResourceUsageExportConfigPtrInput
+	// The server-defined URL for the resource.
+	SelfLink pulumi.StringPtrInput
 	// The IP address range of the Kubernetes services in this
 	// cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
 	// notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last

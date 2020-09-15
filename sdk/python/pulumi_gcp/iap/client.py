@@ -27,6 +27,12 @@ class Client(pulumi.CustomResource):
         manually created via the GCP console. This restriction is due to the existing APIs and not lack of support
         in this tool.
 
+        To get more information about Client, see:
+
+        * [API documentation](https://cloud.google.com/iap/docs/reference/rest/v1/projects.brands.identityAwareProxyClients)
+        * How-to Guides
+            * [Setting up IAP Client](https://cloud.google.com/iap/docs/authentication-howto)
+
         > **Warning:** All arguments including `secret` will be stored in the raw
         state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
 

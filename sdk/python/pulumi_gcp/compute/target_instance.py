@@ -19,6 +19,7 @@ class TargetInstance(pulumi.CustomResource):
                  instance: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nat_policy: Optional[pulumi.Input[str]] = None,
+                 network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -60,6 +61,8 @@ class TargetInstance(pulumi.CustomResource):
                Currently only NO_NAT (default value) is supported.
                Default value is `NO_NAT`.
                Possible values are `NO_NAT`.
+        :param pulumi.Input[str] network: The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to
+               the network that the default network interface belongs to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] zone: URL of the zone where the target instance resides.
@@ -87,6 +90,7 @@ class TargetInstance(pulumi.CustomResource):
             __props__['instance'] = instance
             __props__['name'] = name
             __props__['nat_policy'] = nat_policy
+            __props__['network'] = network
             __props__['project'] = project
             __props__['zone'] = zone
             __props__['creation_timestamp'] = None
@@ -106,6 +110,7 @@ class TargetInstance(pulumi.CustomResource):
             instance: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             nat_policy: Optional[pulumi.Input[str]] = None,
+            network: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'TargetInstance':
@@ -135,6 +140,8 @@ class TargetInstance(pulumi.CustomResource):
                Currently only NO_NAT (default value) is supported.
                Default value is `NO_NAT`.
                Possible values are `NO_NAT`.
+        :param pulumi.Input[str] network: The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to
+               the network that the default network interface belongs to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -149,6 +156,7 @@ class TargetInstance(pulumi.CustomResource):
         __props__["instance"] = instance
         __props__["name"] = name
         __props__["nat_policy"] = nat_policy
+        __props__["network"] = network
         __props__["project"] = project
         __props__["self_link"] = self_link
         __props__["zone"] = zone
@@ -207,6 +215,15 @@ class TargetInstance(pulumi.CustomResource):
         Possible values are `NO_NAT`.
         """
         return pulumi.get(self, "nat_policy")
+
+    @property
+    @pulumi.getter
+    def network(self) -> pulumi.Output[Optional[str]]:
+        """
+        The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to
+        the network that the default network interface belongs to.
+        """
+        return pulumi.get(self, "network")
 
     @property
     @pulumi.getter

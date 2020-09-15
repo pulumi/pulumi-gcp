@@ -86,6 +86,7 @@ type LookupClusterResult struct {
 	RemoveDefaultNodePool           bool                                       `pulumi:"removeDefaultNodePool"`
 	ResourceLabels                  map[string]string                          `pulumi:"resourceLabels"`
 	ResourceUsageExportConfigs      []GetClusterResourceUsageExportConfig      `pulumi:"resourceUsageExportConfigs"`
+	SelfLink                        string                                     `pulumi:"selfLink"`
 	ServicesIpv4Cidr                string                                     `pulumi:"servicesIpv4Cidr"`
 	Subnetwork                      string                                     `pulumi:"subnetwork"`
 	TpuIpv4CidrBlock                string                                     `pulumi:"tpuIpv4CidrBlock"`

@@ -22,6 +22,11 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? KmsKeySelfLink;
         /// <summary>
+        /// The service account used for the encryption request for the given KMS key.
+        /// If absent, the Compute Engine Service Agent service account is used.
+        /// </summary>
+        public readonly string? KmsKeyServiceAccount;
+        /// <summary>
         /// Specifies a 256-bit customer-supplied encryption key, encoded in
         /// RFC 4648 base64 to either encrypt or decrypt this resource.
         /// </summary>
@@ -37,11 +42,14 @@ namespace Pulumi.Gcp.Compute.Outputs
         private DiskSourceImageEncryptionKey(
             string? kmsKeySelfLink,
 
+            string? kmsKeyServiceAccount,
+
             string? rawKey,
 
             string? sha256)
         {
             KmsKeySelfLink = kmsKeySelfLink;
+            KmsKeyServiceAccount = kmsKeyServiceAccount;
             RawKey = rawKey;
             Sha256 = sha256;
         }

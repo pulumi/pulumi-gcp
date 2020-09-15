@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class SnapshotSourceDiskEncryptionKey
     {
         /// <summary>
+        /// The service account used for the encryption request for the given KMS key.
+        /// If absent, the Compute Engine Service Agent service account is used.
+        /// </summary>
+        public readonly string? KmsKeyServiceAccount;
+        /// <summary>
         /// Specifies a 256-bit customer-supplied encryption key, encoded in
         /// RFC 4648 base64 to either encrypt or decrypt this resource.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -21,8 +26,12 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly string? RawKey;
 
         [OutputConstructor]
-        private SnapshotSourceDiskEncryptionKey(string? rawKey)
+        private SnapshotSourceDiskEncryptionKey(
+            string? kmsKeyServiceAccount,
+
+            string? rawKey)
         {
+            KmsKeyServiceAccount = kmsKeyServiceAccount;
             RawKey = rawKey;
         }
     }

@@ -111,6 +111,7 @@ export interface GetClusterResult {
     readonly removeDefaultNodePool: boolean;
     readonly resourceLabels: {[key: string]: string};
     readonly resourceUsageExportConfigs: outputs.container.GetClusterResourceUsageExportConfig[];
+    readonly selfLink: string;
     readonly servicesIpv4Cidr: string;
     readonly subnetwork: string;
     readonly tpuIpv4CidrBlock: string;
