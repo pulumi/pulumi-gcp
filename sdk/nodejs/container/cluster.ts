@@ -325,6 +325,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly resourceUsageExportConfig!: pulumi.Output<outputs.container.ClusterResourceUsageExportConfig | undefined>;
     /**
+     * The server-defined URL for the resource.
+     */
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    /**
      * The IP address range of the Kubernetes services in this
      * cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
      * notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
@@ -410,6 +414,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["removeDefaultNodePool"] = state ? state.removeDefaultNodePool : undefined;
             inputs["resourceLabels"] = state ? state.resourceLabels : undefined;
             inputs["resourceUsageExportConfig"] = state ? state.resourceUsageExportConfig : undefined;
+            inputs["selfLink"] = state ? state.selfLink : undefined;
             inputs["servicesIpv4Cidr"] = state ? state.servicesIpv4Cidr : undefined;
             inputs["subnetwork"] = state ? state.subnetwork : undefined;
             inputs["tpuIpv4CidrBlock"] = state ? state.tpuIpv4CidrBlock : undefined;
@@ -464,6 +469,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["labelFingerprint"] = undefined /*out*/;
             inputs["masterVersion"] = undefined /*out*/;
             inputs["operation"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
             inputs["servicesIpv4Cidr"] = undefined /*out*/;
             inputs["tpuIpv4CidrBlock"] = undefined /*out*/;
         }
@@ -761,6 +767,10 @@ export interface ClusterState {
      * Structure is documented below.
      */
     readonly resourceUsageExportConfig?: pulumi.Input<inputs.container.ClusterResourceUsageExportConfig>;
+    /**
+     * The server-defined URL for the resource.
+     */
+    readonly selfLink?: pulumi.Input<string>;
     /**
      * The IP address range of the Kubernetes services in this
      * cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)

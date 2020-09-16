@@ -289,6 +289,7 @@ class Cluster(pulumi.CustomResource):
             __props__['label_fingerprint'] = None
             __props__['master_version'] = None
             __props__['operation'] = None
+            __props__['self_link'] = None
             __props__['services_ipv4_cidr'] = None
             __props__['tpu_ipv4_cidr_block'] = None
         super(Cluster, __self__).__init__(
@@ -345,6 +346,7 @@ class Cluster(pulumi.CustomResource):
             remove_default_node_pool: Optional[pulumi.Input[bool]] = None,
             resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             resource_usage_export_config: Optional[pulumi.Input[pulumi.InputType['ClusterResourceUsageExportConfigArgs']]] = None,
+            self_link: Optional[pulumi.Input[str]] = None,
             services_ipv4_cidr: Optional[pulumi.Input[str]] = None,
             subnetwork: Optional[pulumi.Input[str]] = None,
             tpu_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
@@ -506,6 +508,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ClusterResourceUsageExportConfigArgs']] resource_usage_export_config: Configuration for the
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
+        :param pulumi.Input[str] self_link: The server-defined URL for the resource.
         :param pulumi.Input[str] services_ipv4_cidr: The IP address range of the Kubernetes services in this
                cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
                notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
@@ -569,6 +572,7 @@ class Cluster(pulumi.CustomResource):
         __props__["remove_default_node_pool"] = remove_default_node_pool
         __props__["resource_labels"] = resource_labels
         __props__["resource_usage_export_config"] = resource_usage_export_config
+        __props__["self_link"] = self_link
         __props__["services_ipv4_cidr"] = services_ipv4_cidr
         __props__["subnetwork"] = subnetwork
         __props__["tpu_ipv4_cidr_block"] = tpu_ipv4_cidr_block
@@ -1030,6 +1034,14 @@ class Cluster(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "resource_usage_export_config")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> pulumi.Output[str]:
+        """
+        The server-defined URL for the resource.
+        """
+        return pulumi.get(self, "self_link")
 
     @property
     @pulumi.getter(name="servicesIpv4Cidr")

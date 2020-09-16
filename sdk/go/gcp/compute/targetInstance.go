@@ -51,6 +51,9 @@ type TargetInstance struct {
 	// Default value is `NO_NAT`.
 	// Possible values are `NO_NAT`.
 	NatPolicy pulumi.StringPtrOutput `pulumi:"natPolicy"`
+	// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to
+	// the network that the default network interface belongs to.
+	Network pulumi.StringPtrOutput `pulumi:"network"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -115,6 +118,9 @@ type targetInstanceState struct {
 	// Default value is `NO_NAT`.
 	// Possible values are `NO_NAT`.
 	NatPolicy *string `pulumi:"natPolicy"`
+	// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to
+	// the network that the default network interface belongs to.
+	Network *string `pulumi:"network"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -149,6 +155,9 @@ type TargetInstanceState struct {
 	// Default value is `NO_NAT`.
 	// Possible values are `NO_NAT`.
 	NatPolicy pulumi.StringPtrInput
+	// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to
+	// the network that the default network interface belongs to.
+	Network pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -185,6 +194,9 @@ type targetInstanceArgs struct {
 	// Default value is `NO_NAT`.
 	// Possible values are `NO_NAT`.
 	NatPolicy *string `pulumi:"natPolicy"`
+	// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to
+	// the network that the default network interface belongs to.
+	Network *string `pulumi:"network"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -216,6 +228,9 @@ type TargetInstanceArgs struct {
 	// Default value is `NO_NAT`.
 	// Possible values are `NO_NAT`.
 	NatPolicy pulumi.StringPtrInput
+	// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to
+	// the network that the default network interface belongs to.
+	Network pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput

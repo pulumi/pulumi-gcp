@@ -20,7 +20,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, additional_zones=None, addons_configs=None, authenticator_groups_configs=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, cluster_telemetries=None, database_encryptions=None, default_max_pods_per_node=None, default_snat_statuses=None, description=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, id=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policies=None, label_fingerprint=None, location=None, logging_service=None, maintenance_policies=None, master_authorized_networks_configs=None, master_auths=None, master_version=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policies=None, networking_mode=None, node_configs=None, node_locations=None, node_pools=None, node_version=None, operation=None, pod_security_policy_configs=None, private_cluster_configs=None, project=None, region=None, release_channels=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_configs=None, services_ipv4_cidr=None, subnetwork=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscalings=None, workload_identity_configs=None, zone=None):
+    def __init__(__self__, additional_zones=None, addons_configs=None, authenticator_groups_configs=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, cluster_telemetries=None, database_encryptions=None, default_max_pods_per_node=None, default_snat_statuses=None, description=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, id=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policies=None, label_fingerprint=None, location=None, logging_service=None, maintenance_policies=None, master_authorized_networks_configs=None, master_auths=None, master_version=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policies=None, networking_mode=None, node_configs=None, node_locations=None, node_pools=None, node_version=None, operation=None, pod_security_policy_configs=None, private_cluster_configs=None, project=None, region=None, release_channels=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_configs=None, self_link=None, services_ipv4_cidr=None, subnetwork=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscalings=None, workload_identity_configs=None, zone=None):
         if additional_zones and not isinstance(additional_zones, list):
             raise TypeError("Expected argument 'additional_zones' to be a list")
         pulumi.set(__self__, "additional_zones", additional_zones)
@@ -162,6 +162,9 @@ class GetClusterResult:
         if resource_usage_export_configs and not isinstance(resource_usage_export_configs, list):
             raise TypeError("Expected argument 'resource_usage_export_configs' to be a list")
         pulumi.set(__self__, "resource_usage_export_configs", resource_usage_export_configs)
+        if self_link and not isinstance(self_link, str):
+            raise TypeError("Expected argument 'self_link' to be a str")
+        pulumi.set(__self__, "self_link", self_link)
         if services_ipv4_cidr and not isinstance(services_ipv4_cidr, str):
             raise TypeError("Expected argument 'services_ipv4_cidr' to be a str")
         pulumi.set(__self__, "services_ipv4_cidr", services_ipv4_cidr)
@@ -420,6 +423,11 @@ class GetClusterResult:
         return pulumi.get(self, "resource_usage_export_configs")
 
     @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> str:
+        return pulumi.get(self, "self_link")
+
+    @property
     @pulumi.getter(name="servicesIpv4Cidr")
     def services_ipv4_cidr(self) -> str:
         return pulumi.get(self, "services_ipv4_cidr")
@@ -503,6 +511,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             remove_default_node_pool=self.remove_default_node_pool,
             resource_labels=self.resource_labels,
             resource_usage_export_configs=self.resource_usage_export_configs,
+            self_link=self.self_link,
             services_ipv4_cidr=self.services_ipv4_cidr,
             subnetwork=self.subnetwork,
             tpu_ipv4_cidr_block=self.tpu_ipv4_cidr_block,
@@ -592,6 +601,7 @@ def get_cluster(location: Optional[str] = None,
         remove_default_node_pool=__ret__.remove_default_node_pool,
         resource_labels=__ret__.resource_labels,
         resource_usage_export_configs=__ret__.resource_usage_export_configs,
+        self_link=__ret__.self_link,
         services_ipv4_cidr=__ret__.services_ipv4_cidr,
         subnetwork=__ret__.subnetwork,
         tpu_ipv4_cidr_block=__ret__.tpu_ipv4_cidr_block,

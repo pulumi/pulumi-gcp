@@ -80,6 +80,8 @@ type Snapshot struct {
 	// A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot
 	// creation/deletion.
 	StorageBytes pulumi.IntOutput `pulumi:"storageBytes"`
+	// Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
+	StorageLocations pulumi.StringArrayOutput `pulumi:"storageLocations"`
 	// A reference to the zone where the disk is hosted.
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
@@ -159,6 +161,8 @@ type snapshotState struct {
 	// A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot
 	// creation/deletion.
 	StorageBytes *int `pulumi:"storageBytes"`
+	// Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
+	StorageLocations []string `pulumi:"storageLocations"`
 	// A reference to the zone where the disk is hosted.
 	Zone *string `pulumi:"zone"`
 }
@@ -208,6 +212,8 @@ type SnapshotState struct {
 	// A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot
 	// creation/deletion.
 	StorageBytes pulumi.IntPtrInput
+	// Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
+	StorageLocations pulumi.StringArrayInput
 	// A reference to the zone where the disk is hosted.
 	Zone pulumi.StringPtrInput
 }
@@ -243,6 +249,8 @@ type snapshotArgs struct {
 	// key.
 	// Structure is documented below.
 	SourceDiskEncryptionKey *SnapshotSourceDiskEncryptionKey `pulumi:"sourceDiskEncryptionKey"`
+	// Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
+	StorageLocations []string `pulumi:"storageLocations"`
 	// A reference to the zone where the disk is hosted.
 	Zone *string `pulumi:"zone"`
 }
@@ -275,6 +283,8 @@ type SnapshotArgs struct {
 	// key.
 	// Structure is documented below.
 	SourceDiskEncryptionKey SnapshotSourceDiskEncryptionKeyPtrInput
+	// Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
+	StorageLocations pulumi.StringArrayInput
 	// A reference to the zone where the disk is hosted.
 	Zone pulumi.StringPtrInput
 }

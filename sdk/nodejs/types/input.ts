@@ -4854,6 +4854,11 @@ export namespace compute {
          */
         kmsKeySelfLink?: pulumi.Input<string>;
         /**
+         * The service account used for the encryption request for the given KMS key.
+         * If absent, the Compute Engine Service Agent service account is used.
+         */
+        kmsKeyServiceAccount?: pulumi.Input<string>;
+        /**
          * Specifies a 256-bit customer-supplied encryption key, encoded in
          * RFC 4648 base64 to either encrypt or decrypt this resource.
          */
@@ -4887,6 +4892,11 @@ export namespace compute {
          * See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
          */
         kmsKeySelfLink?: pulumi.Input<string>;
+        /**
+         * The service account used for the encryption request for the given KMS key.
+         * If absent, the Compute Engine Service Agent service account is used.
+         */
+        kmsKeyServiceAccount?: pulumi.Input<string>;
         /**
          * Specifies a 256-bit customer-supplied encryption key, encoded in
          * RFC 4648 base64 to either encrypt or decrypt this resource.
@@ -9117,11 +9127,20 @@ export namespace compute {
 
     export interface SnapshotSnapshotEncryptionKey {
         /**
+         * The name of the encryption key that is stored in Google Cloud KMS.
+         */
+        kmsKeySelfLink?: pulumi.Input<string>;
+        /**
+         * The service account used for the encryption request for the given KMS key.
+         * If absent, the Compute Engine Service Agent service account is used.
+         */
+        kmsKeyServiceAccount?: pulumi.Input<string>;
+        /**
          * Specifies a 256-bit customer-supplied encryption key, encoded in
          * RFC 4648 base64 to either encrypt or decrypt this resource.
          * **Note**: This property is sensitive and will not be displayed in the plan.
          */
-        rawKey: pulumi.Input<string>;
+        rawKey?: pulumi.Input<string>;
         /**
          * -
          * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
@@ -9131,6 +9150,11 @@ export namespace compute {
     }
 
     export interface SnapshotSourceDiskEncryptionKey {
+        /**
+         * The service account used for the encryption request for the given KMS key.
+         * If absent, the Compute Engine Service Agent service account is used.
+         */
+        kmsKeyServiceAccount?: pulumi.Input<string>;
         /**
          * Specifies a 256-bit customer-supplied encryption key, encoded in
          * RFC 4648 base64 to either encrypt or decrypt this resource.

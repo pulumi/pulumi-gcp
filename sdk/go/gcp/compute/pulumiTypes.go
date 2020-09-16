@@ -5465,6 +5465,9 @@ type DiskDiskEncryptionKey struct {
 	// `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
 	// See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
 	KmsKeySelfLink *string `pulumi:"kmsKeySelfLink"`
+	// The service account used for the encryption request for the given KMS key.
+	// If absent, the Compute Engine Service Agent service account is used.
+	KmsKeyServiceAccount *string `pulumi:"kmsKeyServiceAccount"`
 	// Specifies a 256-bit customer-supplied encryption key, encoded in
 	// RFC 4648 base64 to either encrypt or decrypt this resource.
 	RawKey *string `pulumi:"rawKey"`
@@ -5492,6 +5495,9 @@ type DiskDiskEncryptionKeyArgs struct {
 	// `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
 	// See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
 	KmsKeySelfLink pulumi.StringPtrInput `pulumi:"kmsKeySelfLink"`
+	// The service account used for the encryption request for the given KMS key.
+	// If absent, the Compute Engine Service Agent service account is used.
+	KmsKeyServiceAccount pulumi.StringPtrInput `pulumi:"kmsKeyServiceAccount"`
 	// Specifies a 256-bit customer-supplied encryption key, encoded in
 	// RFC 4648 base64 to either encrypt or decrypt this resource.
 	RawKey pulumi.StringPtrInput `pulumi:"rawKey"`
@@ -5587,6 +5593,12 @@ func (o DiskDiskEncryptionKeyOutput) KmsKeySelfLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DiskDiskEncryptionKey) *string { return v.KmsKeySelfLink }).(pulumi.StringPtrOutput)
 }
 
+// The service account used for the encryption request for the given KMS key.
+// If absent, the Compute Engine Service Agent service account is used.
+func (o DiskDiskEncryptionKeyOutput) KmsKeyServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiskDiskEncryptionKey) *string { return v.KmsKeyServiceAccount }).(pulumi.StringPtrOutput)
+}
+
 // Specifies a 256-bit customer-supplied encryption key, encoded in
 // RFC 4648 base64 to either encrypt or decrypt this resource.
 func (o DiskDiskEncryptionKeyOutput) RawKey() pulumi.StringPtrOutput {
@@ -5629,6 +5641,17 @@ func (o DiskDiskEncryptionKeyPtrOutput) KmsKeySelfLink() pulumi.StringPtrOutput 
 			return nil
 		}
 		return v.KmsKeySelfLink
+	}).(pulumi.StringPtrOutput)
+}
+
+// The service account used for the encryption request for the given KMS key.
+// If absent, the Compute Engine Service Agent service account is used.
+func (o DiskDiskEncryptionKeyPtrOutput) KmsKeyServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiskDiskEncryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyServiceAccount
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5974,6 +5997,9 @@ type DiskSourceImageEncryptionKey struct {
 	// `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
 	// See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
 	KmsKeySelfLink *string `pulumi:"kmsKeySelfLink"`
+	// The service account used for the encryption request for the given KMS key.
+	// If absent, the Compute Engine Service Agent service account is used.
+	KmsKeyServiceAccount *string `pulumi:"kmsKeyServiceAccount"`
 	// Specifies a 256-bit customer-supplied encryption key, encoded in
 	// RFC 4648 base64 to either encrypt or decrypt this resource.
 	RawKey *string `pulumi:"rawKey"`
@@ -6001,6 +6027,9 @@ type DiskSourceImageEncryptionKeyArgs struct {
 	// `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
 	// See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
 	KmsKeySelfLink pulumi.StringPtrInput `pulumi:"kmsKeySelfLink"`
+	// The service account used for the encryption request for the given KMS key.
+	// If absent, the Compute Engine Service Agent service account is used.
+	KmsKeyServiceAccount pulumi.StringPtrInput `pulumi:"kmsKeyServiceAccount"`
 	// Specifies a 256-bit customer-supplied encryption key, encoded in
 	// RFC 4648 base64 to either encrypt or decrypt this resource.
 	RawKey pulumi.StringPtrInput `pulumi:"rawKey"`
@@ -6096,6 +6125,12 @@ func (o DiskSourceImageEncryptionKeyOutput) KmsKeySelfLink() pulumi.StringPtrOut
 	return o.ApplyT(func(v DiskSourceImageEncryptionKey) *string { return v.KmsKeySelfLink }).(pulumi.StringPtrOutput)
 }
 
+// The service account used for the encryption request for the given KMS key.
+// If absent, the Compute Engine Service Agent service account is used.
+func (o DiskSourceImageEncryptionKeyOutput) KmsKeyServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiskSourceImageEncryptionKey) *string { return v.KmsKeyServiceAccount }).(pulumi.StringPtrOutput)
+}
+
 // Specifies a 256-bit customer-supplied encryption key, encoded in
 // RFC 4648 base64 to either encrypt or decrypt this resource.
 func (o DiskSourceImageEncryptionKeyOutput) RawKey() pulumi.StringPtrOutput {
@@ -6138,6 +6173,17 @@ func (o DiskSourceImageEncryptionKeyPtrOutput) KmsKeySelfLink() pulumi.StringPtr
 			return nil
 		}
 		return v.KmsKeySelfLink
+	}).(pulumi.StringPtrOutput)
+}
+
+// The service account used for the encryption request for the given KMS key.
+// If absent, the Compute Engine Service Agent service account is used.
+func (o DiskSourceImageEncryptionKeyPtrOutput) KmsKeyServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiskSourceImageEncryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyServiceAccount
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -40962,10 +41008,15 @@ func (o SecurityScanConfigSchedulePtrOutput) ScheduleTime() pulumi.StringPtrOutp
 }
 
 type SnapshotSnapshotEncryptionKey struct {
+	// The name of the encryption key that is stored in Google Cloud KMS.
+	KmsKeySelfLink *string `pulumi:"kmsKeySelfLink"`
+	// The service account used for the encryption request for the given KMS key.
+	// If absent, the Compute Engine Service Agent service account is used.
+	KmsKeyServiceAccount *string `pulumi:"kmsKeyServiceAccount"`
 	// Specifies a 256-bit customer-supplied encryption key, encoded in
 	// RFC 4648 base64 to either encrypt or decrypt this resource.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	RawKey string `pulumi:"rawKey"`
+	RawKey *string `pulumi:"rawKey"`
 	// -
 	// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
 	// encryption key that protects this resource.
@@ -40984,10 +41035,15 @@ type SnapshotSnapshotEncryptionKeyInput interface {
 }
 
 type SnapshotSnapshotEncryptionKeyArgs struct {
+	// The name of the encryption key that is stored in Google Cloud KMS.
+	KmsKeySelfLink pulumi.StringPtrInput `pulumi:"kmsKeySelfLink"`
+	// The service account used for the encryption request for the given KMS key.
+	// If absent, the Compute Engine Service Agent service account is used.
+	KmsKeyServiceAccount pulumi.StringPtrInput `pulumi:"kmsKeyServiceAccount"`
 	// Specifies a 256-bit customer-supplied encryption key, encoded in
 	// RFC 4648 base64 to either encrypt or decrypt this resource.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	RawKey pulumi.StringInput `pulumi:"rawKey"`
+	RawKey pulumi.StringPtrInput `pulumi:"rawKey"`
 	// -
 	// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
 	// encryption key that protects this resource.
@@ -41071,11 +41127,22 @@ func (o SnapshotSnapshotEncryptionKeyOutput) ToSnapshotSnapshotEncryptionKeyPtrO
 	}).(SnapshotSnapshotEncryptionKeyPtrOutput)
 }
 
+// The name of the encryption key that is stored in Google Cloud KMS.
+func (o SnapshotSnapshotEncryptionKeyOutput) KmsKeySelfLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SnapshotSnapshotEncryptionKey) *string { return v.KmsKeySelfLink }).(pulumi.StringPtrOutput)
+}
+
+// The service account used for the encryption request for the given KMS key.
+// If absent, the Compute Engine Service Agent service account is used.
+func (o SnapshotSnapshotEncryptionKeyOutput) KmsKeyServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SnapshotSnapshotEncryptionKey) *string { return v.KmsKeyServiceAccount }).(pulumi.StringPtrOutput)
+}
+
 // Specifies a 256-bit customer-supplied encryption key, encoded in
 // RFC 4648 base64 to either encrypt or decrypt this resource.
 // **Note**: This property is sensitive and will not be displayed in the plan.
-func (o SnapshotSnapshotEncryptionKeyOutput) RawKey() pulumi.StringOutput {
-	return o.ApplyT(func(v SnapshotSnapshotEncryptionKey) string { return v.RawKey }).(pulumi.StringOutput)
+func (o SnapshotSnapshotEncryptionKeyOutput) RawKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SnapshotSnapshotEncryptionKey) *string { return v.RawKey }).(pulumi.StringPtrOutput)
 }
 
 // -
@@ -41103,6 +41170,27 @@ func (o SnapshotSnapshotEncryptionKeyPtrOutput) Elem() SnapshotSnapshotEncryptio
 	return o.ApplyT(func(v *SnapshotSnapshotEncryptionKey) SnapshotSnapshotEncryptionKey { return *v }).(SnapshotSnapshotEncryptionKeyOutput)
 }
 
+// The name of the encryption key that is stored in Google Cloud KMS.
+func (o SnapshotSnapshotEncryptionKeyPtrOutput) KmsKeySelfLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SnapshotSnapshotEncryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeySelfLink
+	}).(pulumi.StringPtrOutput)
+}
+
+// The service account used for the encryption request for the given KMS key.
+// If absent, the Compute Engine Service Agent service account is used.
+func (o SnapshotSnapshotEncryptionKeyPtrOutput) KmsKeyServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SnapshotSnapshotEncryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
 // Specifies a 256-bit customer-supplied encryption key, encoded in
 // RFC 4648 base64 to either encrypt or decrypt this resource.
 // **Note**: This property is sensitive and will not be displayed in the plan.
@@ -41111,7 +41199,7 @@ func (o SnapshotSnapshotEncryptionKeyPtrOutput) RawKey() pulumi.StringPtrOutput 
 		if v == nil {
 			return nil
 		}
-		return &v.RawKey
+		return v.RawKey
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -41128,6 +41216,9 @@ func (o SnapshotSnapshotEncryptionKeyPtrOutput) Sha256() pulumi.StringPtrOutput 
 }
 
 type SnapshotSourceDiskEncryptionKey struct {
+	// The service account used for the encryption request for the given KMS key.
+	// If absent, the Compute Engine Service Agent service account is used.
+	KmsKeyServiceAccount *string `pulumi:"kmsKeyServiceAccount"`
 	// Specifies a 256-bit customer-supplied encryption key, encoded in
 	// RFC 4648 base64 to either encrypt or decrypt this resource.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -41146,6 +41237,9 @@ type SnapshotSourceDiskEncryptionKeyInput interface {
 }
 
 type SnapshotSourceDiskEncryptionKeyArgs struct {
+	// The service account used for the encryption request for the given KMS key.
+	// If absent, the Compute Engine Service Agent service account is used.
+	KmsKeyServiceAccount pulumi.StringPtrInput `pulumi:"kmsKeyServiceAccount"`
 	// Specifies a 256-bit customer-supplied encryption key, encoded in
 	// RFC 4648 base64 to either encrypt or decrypt this resource.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -41229,6 +41323,12 @@ func (o SnapshotSourceDiskEncryptionKeyOutput) ToSnapshotSourceDiskEncryptionKey
 	}).(SnapshotSourceDiskEncryptionKeyPtrOutput)
 }
 
+// The service account used for the encryption request for the given KMS key.
+// If absent, the Compute Engine Service Agent service account is used.
+func (o SnapshotSourceDiskEncryptionKeyOutput) KmsKeyServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SnapshotSourceDiskEncryptionKey) *string { return v.KmsKeyServiceAccount }).(pulumi.StringPtrOutput)
+}
+
 // Specifies a 256-bit customer-supplied encryption key, encoded in
 // RFC 4648 base64 to either encrypt or decrypt this resource.
 // **Note**: This property is sensitive and will not be displayed in the plan.
@@ -41252,6 +41352,17 @@ func (o SnapshotSourceDiskEncryptionKeyPtrOutput) ToSnapshotSourceDiskEncryption
 
 func (o SnapshotSourceDiskEncryptionKeyPtrOutput) Elem() SnapshotSourceDiskEncryptionKeyOutput {
 	return o.ApplyT(func(v *SnapshotSourceDiskEncryptionKey) SnapshotSourceDiskEncryptionKey { return *v }).(SnapshotSourceDiskEncryptionKeyOutput)
+}
+
+// The service account used for the encryption request for the given KMS key.
+// If absent, the Compute Engine Service Agent service account is used.
+func (o SnapshotSourceDiskEncryptionKeyPtrOutput) KmsKeyServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SnapshotSourceDiskEncryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyServiceAccount
+	}).(pulumi.StringPtrOutput)
 }
 
 // Specifies a 256-bit customer-supplied encryption key, encoded in

@@ -72,6 +72,13 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> NatPolicy { get; private set; } = null!;
 
         /// <summary>
+        /// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to
+        /// the network that the default network interface belongs to.
+        /// </summary>
+        [Output("network")]
+        public Output<string?> Network { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -175,6 +182,13 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? NatPolicy { get; set; }
 
         /// <summary>
+        /// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to
+        /// the network that the default network interface belongs to.
+        /// </summary>
+        [Input("network")]
+        public Input<string>? Network { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -237,6 +251,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("natPolicy")]
         public Input<string>? NatPolicy { get; set; }
+
+        /// <summary>
+        /// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to
+        /// the network that the default network interface belongs to.
+        /// </summary>
+        [Input("network")]
+        public Input<string>? Network { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
