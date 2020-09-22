@@ -89,9 +89,7 @@ class ClusterAddonsConfigArgs:
                  kalm_config: Optional[pulumi.Input['ClusterAddonsConfigKalmConfigArgs']] = None,
                  network_policy_config: Optional[pulumi.Input['ClusterAddonsConfigNetworkPolicyConfigArgs']] = None):
         """
-        :param pulumi.Input['ClusterAddonsConfigCloudrunConfigArgs'] cloudrun_config: .
-               The status of the CloudRun addon. It is disabled by default.
-               Set `disabled = false` to enable.
+        :param pulumi.Input['ClusterAddonsConfigCloudrunConfigArgs'] cloudrun_config: . Structure is documented below.
         :param pulumi.Input['ClusterAddonsConfigConfigConnectorConfigArgs'] config_connector_config: .
                The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
         :param pulumi.Input['ClusterAddonsConfigDnsCacheConfigArgs'] dns_cache_config: .
@@ -142,9 +140,7 @@ class ClusterAddonsConfigArgs:
     @pulumi.getter(name="cloudrunConfig")
     def cloudrun_config(self) -> Optional[pulumi.Input['ClusterAddonsConfigCloudrunConfigArgs']]:
         """
-        .
-        The status of the CloudRun addon. It is disabled by default.
-        Set `disabled = false` to enable.
+        . Structure is documented below.
         """
         return pulumi.get(self, "cloudrun_config")
 
@@ -270,12 +266,17 @@ class ClusterAddonsConfigArgs:
 @pulumi.input_type
 class ClusterAddonsConfigCloudrunConfigArgs:
     def __init__(__self__, *,
-                 disabled: pulumi.Input[bool]):
+                 disabled: pulumi.Input[bool],
+                 load_balancer_type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] disabled: The status of the Istio addon, which makes it easy to set up Istio for services in a
                cluster. It is disabled by default. Set `disabled = false` to enable.
+        :param pulumi.Input[str] load_balancer_type: The load balancer type of CloudRun ingress service. It is external load balancer by default.
+               Set `load_balancer_type=LOAD_BALANCER_TYPE_INTERNAL` to configure it as internal load balancer.
         """
         pulumi.set(__self__, "disabled", disabled)
+        if load_balancer_type is not None:
+            pulumi.set(__self__, "load_balancer_type", load_balancer_type)
 
     @property
     @pulumi.getter
@@ -289,6 +290,19 @@ class ClusterAddonsConfigCloudrunConfigArgs:
     @disabled.setter
     def disabled(self, value: pulumi.Input[bool]):
         pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter(name="loadBalancerType")
+    def load_balancer_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The load balancer type of CloudRun ingress service. It is external load balancer by default.
+        Set `load_balancer_type=LOAD_BALANCER_TYPE_INTERNAL` to configure it as internal load balancer.
+        """
+        return pulumi.get(self, "load_balancer_type")
+
+    @load_balancer_type.setter
+    def load_balancer_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "load_balancer_type", value)
 
 
 @pulumi.input_type
@@ -1283,13 +1297,11 @@ class ClusterNodeConfigArgs:
                Structure documented below.
         :param pulumi.Input[str] image_type: The image type to use for this node. Note that changing the image type
                will delete and recreate all nodes in the node pool.
-        :param pulumi.Input['ClusterNodeConfigKubeletConfigArgs'] kubelet_config: )
-               Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+        :param pulumi.Input['ClusterNodeConfigKubeletConfigArgs'] kubelet_config: Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The Kubernetes labels (key/value pairs) to be applied to each node. The kubernetes.io/ and k8s.io/ prefixes are
                reserved by Kubernetes Core components and cannot be specified.
-        :param pulumi.Input['ClusterNodeConfigLinuxNodeConfigArgs'] linux_node_config: )
-               Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+        :param pulumi.Input['ClusterNodeConfigLinuxNodeConfigArgs'] linux_node_config: Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
                Note that validations happen all server side. All attributes are optional.
                Structure is documented below.
         :param pulumi.Input[float] local_ssd_count: The amount of local SSD disks that will be
@@ -1444,7 +1456,6 @@ class ClusterNodeConfigArgs:
     @pulumi.getter(name="kubeletConfig")
     def kubelet_config(self) -> Optional[pulumi.Input['ClusterNodeConfigKubeletConfigArgs']]:
         """
-        )
         Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
         Structure is documented below.
         """
@@ -1471,7 +1482,6 @@ class ClusterNodeConfigArgs:
     @pulumi.getter(name="linuxNodeConfig")
     def linux_node_config(self) -> Optional[pulumi.Input['ClusterNodeConfigLinuxNodeConfigArgs']]:
         """
-        )
         Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
         Note that validations happen all server side. All attributes are optional.
         Structure is documented below.
@@ -2221,13 +2231,11 @@ class ClusterNodePoolNodeConfigArgs:
                Structure documented below.
         :param pulumi.Input[str] image_type: The image type to use for this node. Note that changing the image type
                will delete and recreate all nodes in the node pool.
-        :param pulumi.Input['ClusterNodePoolNodeConfigKubeletConfigArgs'] kubelet_config: )
-               Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+        :param pulumi.Input['ClusterNodePoolNodeConfigKubeletConfigArgs'] kubelet_config: Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The Kubernetes labels (key/value pairs) to be applied to each node. The kubernetes.io/ and k8s.io/ prefixes are
                reserved by Kubernetes Core components and cannot be specified.
-        :param pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigArgs'] linux_node_config: )
-               Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+        :param pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigArgs'] linux_node_config: Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
                Note that validations happen all server side. All attributes are optional.
                Structure is documented below.
         :param pulumi.Input[float] local_ssd_count: The amount of local SSD disks that will be
@@ -2382,7 +2390,6 @@ class ClusterNodePoolNodeConfigArgs:
     @pulumi.getter(name="kubeletConfig")
     def kubelet_config(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigKubeletConfigArgs']]:
         """
-        )
         Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
         Structure is documented below.
         """
@@ -2409,7 +2416,6 @@ class ClusterNodePoolNodeConfigArgs:
     @pulumi.getter(name="linuxNodeConfig")
     def linux_node_config(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigArgs']]:
         """
-        )
         Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
         Note that validations happen all server side. All attributes are optional.
         Structure is documented below.
@@ -2941,6 +2947,9 @@ class ClusterPrivateClusterConfigArgs:
                creating a private endpoint on the cluster. In a private cluster, nodes only
                have RFC 1918 private addresses and communicate with the master's private
                endpoint via private networking.
+        :param pulumi.Input['ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs'] master_global_access_config: Controls cluster master global
+               access settings. If unset, the provider will no longer manage this field and will
+               not modify the previously-set value. Structure is documented below.
         :param pulumi.Input[str] master_ipv4_cidr_block: The IP range in CIDR notation to use for
                the hosted master network. This range will be used for assigning private IP
                addresses to the cluster master(s) and the ILB VIP. This range must not overlap
@@ -2999,6 +3008,11 @@ class ClusterPrivateClusterConfigArgs:
     @property
     @pulumi.getter(name="masterGlobalAccessConfig")
     def master_global_access_config(self) -> Optional[pulumi.Input['ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs']]:
+        """
+        Controls cluster master global
+        access settings. If unset, the provider will no longer manage this field and will
+        not modify the previously-set value. Structure is documented below.
+        """
         return pulumi.get(self, "master_global_access_config")
 
     @master_global_access_config.setter

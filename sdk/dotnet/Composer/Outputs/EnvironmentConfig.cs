@@ -15,6 +15,9 @@ namespace Pulumi.Gcp.Composer.Outputs
     {
         public readonly string? AirflowUri;
         public readonly string? DagGcsPrefix;
+        /// <summary>
+        /// The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
+        /// </summary>
         public readonly Outputs.EnvironmentConfigDatabaseConfig? DatabaseConfig;
         public readonly string? GkeCluster;
         /// <summary>
@@ -34,6 +37,9 @@ namespace Pulumi.Gcp.Composer.Outputs
         /// The configuration settings for software inside the environment.  Structure is documented below.
         /// </summary>
         public readonly Outputs.EnvironmentConfigSoftwareConfig? SoftwareConfig;
+        /// <summary>
+        /// The configuration settings for the Airflow web server App Engine instance.
+        /// </summary>
         public readonly Outputs.EnvironmentConfigWebServerConfig? WebServerConfig;
         /// <summary>
         /// The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.

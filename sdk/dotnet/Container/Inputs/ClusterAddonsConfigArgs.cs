@@ -13,9 +13,7 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class ClusterAddonsConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// .
-        /// The status of the CloudRun addon. It is disabled by default.
-        /// Set `disabled = false` to enable.
+        /// . Structure is documented below.
         /// </summary>
         [Input("cloudrunConfig")]
         public Input<Inputs.ClusterAddonsConfigCloudrunConfigArgs>? CloudrunConfig { get; set; }

@@ -95,6 +95,9 @@ class GetDatabaseInstanceResult:
     @property
     @pulumi.getter(name="encryptionKeyName")
     def encryption_key_name(self) -> str:
+        """
+        The full path to the encryption key used for the CMEK disk encryption.
+        """
         return pulumi.get(self, "encryption_key_name")
 
     @property

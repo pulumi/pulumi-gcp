@@ -9,6 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Memcache
 {
+    /// <summary>
+    /// A Google Cloud Memcache instance.
+    /// 
+    /// To get more information about Instance, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/memorystore/docs/memcached/reference/rest)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/memcache/docs/creating-instances)
+    /// 
+    /// ## Example Usage
+    /// </summary>
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>

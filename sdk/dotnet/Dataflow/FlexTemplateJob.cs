@@ -9,6 +9,34 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Dataflow
 {
+    /// <summary>
+    /// Creates a [Flex Template](https://cloud.google.com/dataflow/docs/guides/templates/using-flex-templates)
+    /// job on Dataflow, which is an implementation of Apache Beam running on Google
+    /// Compute Engine. For more information see the official documentation for [Beam](https://beam.apache.org)
+    /// and [Dataflow](https://cloud.google.com/dataflow/).
+    /// 
+    /// ## Note on "destroy" / "apply"
+    /// 
+    /// There are many types of Dataflow jobs.  Some Dataflow jobs run constantly,
+    /// getting new data from (e.g.) a GCS bucket, and outputting data continuously.
+    /// Some jobs process a set amount of data then terminate. All jobs can fail while
+    /// running due to programming errors or other issues. In this way, Dataflow jobs
+    /// are different from most other provider / Google resources.
+    /// 
+    /// The Dataflow resource is considered 'existing' while it is in a nonterminal
+    /// state.  If it reaches a terminal state (e.g. 'FAILED', 'COMPLETE',
+    /// 'CANCELLED'), it will be recreated on the next 'apply'.  This is as expected for
+    /// jobs which run continuously, but may surprise users who use this resource for
+    /// other kinds of Dataflow jobs.
+    /// 
+    /// A Dataflow job which is 'destroyed' may be "cancelled" or "drained".  If
+    /// "cancelled", the job terminates - any data written remains where it is, but no
+    /// new data will be processed.  If "drained", no new data will enter the pipeline,
+    /// but any data currently in the pipeline will finish being processed.  The default
+    /// is "cancelled", but if a user sets `on_delete` to `"drain"` in the
+    /// configuration, you may experience a long wait for your `pulumi destroy` to
+    /// complete.
+    /// </summary>
     public partial class FlexTemplateJob : Pulumi.CustomResource
     {
         /// <summary>
@@ -40,6 +68,10 @@ namespace Pulumi.Gcp.Dataflow
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// One of "drain" or "cancel". Specifies behavior of
+        /// deletion during `pulumi destroy`.  See above note.
+        /// </summary>
         [Output("onDelete")]
         public Output<string?> OnDelete { get; private set; } = null!;
 
@@ -138,6 +170,10 @@ namespace Pulumi.Gcp.Dataflow
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// One of "drain" or "cancel". Specifies behavior of
+        /// deletion during `pulumi destroy`.  See above note.
+        /// </summary>
         [Input("onDelete")]
         public Input<string>? OnDelete { get; set; }
 
@@ -203,6 +239,10 @@ namespace Pulumi.Gcp.Dataflow
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// One of "drain" or "cancel". Specifies behavior of
+        /// deletion during `pulumi destroy`.  See above note.
+        /// </summary>
         [Input("onDelete")]
         public Input<string>? OnDelete { get; set; }
 

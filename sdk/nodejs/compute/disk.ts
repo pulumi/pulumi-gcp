@@ -136,9 +136,11 @@ export class Disk extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Resource policies applied to this disk for automatic snapshot creations. ~>**NOTE** This value does not support updating
-     * the resource policy, as resource policies can not be updated more than one at a time. Use
-     * ['google_compute_disk_resource_policy_attachment'](https://www.terraform.io/docs/providers/google/r/compute_disk_resource_policy_attachment.html)
+     * Resource policies applied to this disk for automatic snapshot creations.
+     * ~>**NOTE** This value does not support updating the
+     * resource policy, as resource policies can not be updated more than
+     * one at a time. Use
+     * `gcp.compute.DiskResourcePolicyAttachment`
      * to allow for updating the resource policy attached to the disk.
      */
     public readonly resourcePolicies!: pulumi.Output<string[]>;
@@ -354,9 +356,11 @@ export interface DiskState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * Resource policies applied to this disk for automatic snapshot creations. ~>**NOTE** This value does not support updating
-     * the resource policy, as resource policies can not be updated more than one at a time. Use
-     * ['google_compute_disk_resource_policy_attachment'](https://www.terraform.io/docs/providers/google/r/compute_disk_resource_policy_attachment.html)
+     * Resource policies applied to this disk for automatic snapshot creations.
+     * ~>**NOTE** This value does not support updating the
+     * resource policy, as resource policies can not be updated more than
+     * one at a time. Use
+     * `gcp.compute.DiskResourcePolicyAttachment`
      * to allow for updating the resource policy attached to the disk.
      */
     readonly resourcePolicies?: pulumi.Input<pulumi.Input<string>[]>;
@@ -487,9 +491,11 @@ export interface DiskArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * Resource policies applied to this disk for automatic snapshot creations. ~>**NOTE** This value does not support updating
-     * the resource policy, as resource policies can not be updated more than one at a time. Use
-     * ['google_compute_disk_resource_policy_attachment'](https://www.terraform.io/docs/providers/google/r/compute_disk_resource_policy_attachment.html)
+     * Resource policies applied to this disk for automatic snapshot creations.
+     * ~>**NOTE** This value does not support updating the
+     * resource policy, as resource policies can not be updated more than
+     * one at a time. Use
+     * `gcp.compute.DiskResourcePolicyAttachment`
      * to allow for updating the resource policy attached to the disk.
      */
     readonly resourcePolicies?: pulumi.Input<pulumi.Input<string>[]>;

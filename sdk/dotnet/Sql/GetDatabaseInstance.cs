@@ -50,6 +50,9 @@ namespace Pulumi.Gcp.Sql
         /// The MySQL, PostgreSQL or SQL Server (beta) version to use.
         /// </summary>
         public readonly string DatabaseVersion;
+        /// <summary>
+        /// The full path to the encryption key used for the CMEK disk encryption.
+        /// </summary>
         public readonly string EncryptionKeyName;
         /// <summary>
         /// The first IPv4 address of any type assigned.

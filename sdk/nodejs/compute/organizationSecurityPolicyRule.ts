@@ -6,6 +6,17 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * A rule for the OrganizationSecurityPolicy.
+ *
+ * To get more information about OrganizationSecurityPolicyRule, see:
+ *
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies/addRule)
+ * * How-to Guides
+ *     * [Creating firewall rules](https://cloud.google.com/vpc/docs/using-firewall-policies#create-rules)
+ *
+ * ## Example Usage
+ */
 export class OrganizationSecurityPolicyRule extends pulumi.CustomResource {
     /**
      * Get an existing OrganizationSecurityPolicyRule resource's state with the given name, ID, and optional extra

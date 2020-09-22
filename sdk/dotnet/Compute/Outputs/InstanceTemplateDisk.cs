@@ -49,8 +49,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? DiskType;
         /// <summary>
-        /// Specifies the disk interface to use for attaching
-        /// this disk.
+        /// Specifies the disk interface to use for attaching this disk, 
+        /// which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI
+        /// and the request will fail if you attempt to attach a persistent disk in any other format
+        /// than SCSI. Local SSDs can use either NVME or SCSI.
         /// </summary>
         public readonly string? Interface;
         /// <summary>
@@ -67,7 +69,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// <summary>
         /// The name (**not self_link**)
         /// of the disk (such as those managed by `gcp.compute.Disk`) to attach.
-        /// &gt; **Note:** Either `source` or `source_image` is **required** when creating a new instance except for when creating a local SSD. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+        /// &gt; **Note:** Either `source` or `source_image` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
         /// </summary>
         public readonly string? Source;
         /// <summary>
@@ -77,7 +79,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
         /// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
         /// `{project}/{image}`, `{family}`, or `{image}`.
-        /// &gt; **Note:** Either `source` or `source_image` is **required** when creating a new instance except for when creating a local SSD. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+        /// &gt; **Note:** Either `source` or `source_image` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
         /// </summary>
         public readonly string? SourceImage;
         /// <summary>

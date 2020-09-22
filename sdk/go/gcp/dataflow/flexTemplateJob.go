@@ -10,6 +10,32 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Creates a [Flex Template](https://cloud.google.com/dataflow/docs/guides/templates/using-flex-templates)
+// job on Dataflow, which is an implementation of Apache Beam running on Google
+// Compute Engine. For more information see the official documentation for [Beam](https://beam.apache.org)
+// and [Dataflow](https://cloud.google.com/dataflow/).
+//
+// ## Note on "destroy" / "apply"
+//
+// There are many types of Dataflow jobs.  Some Dataflow jobs run constantly,
+// getting new data from (e.g.) a GCS bucket, and outputting data continuously.
+// Some jobs process a set amount of data then terminate. All jobs can fail while
+// running due to programming errors or other issues. In this way, Dataflow jobs
+// are different from most other provider / Google resources.
+//
+// The Dataflow resource is considered 'existing' while it is in a nonterminal
+// state.  If it reaches a terminal state (e.g. 'FAILED', 'COMPLETE',
+// 'CANCELLED'), it will be recreated on the next 'apply'.  This is as expected for
+// jobs which run continuously, but may surprise users who use this resource for
+// other kinds of Dataflow jobs.
+//
+// A Dataflow job which is 'destroyed' may be "cancelled" or "drained".  If
+// "cancelled", the job terminates - any data written remains where it is, but no
+// new data will be processed.  If "drained", no new data will enter the pipeline,
+// but any data currently in the pipeline will finish being processed.  The default
+// is "cancelled", but if a user sets `onDelete` to `"drain"` in the
+// configuration, you may experience a long wait for your `pulumi destroy` to
+// complete.
 type FlexTemplateJob struct {
 	pulumi.CustomResourceState
 
@@ -25,7 +51,9 @@ type FlexTemplateJob struct {
 	// labels will be ignored to prevent diffs on re-apply.
 	Labels pulumi.MapOutput `pulumi:"labels"`
 	// A unique name for the resource, required by Dataflow.
-	Name     pulumi.StringOutput    `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// One of "drain" or "cancel". Specifies behavior of
+	// deletion during `pulumi destroy`.  See above note.
 	OnDelete pulumi.StringPtrOutput `pulumi:"onDelete"`
 	// Key/Value pairs to be passed to the Dataflow job (as
 	// used in the template).
@@ -80,7 +108,9 @@ type flexTemplateJobState struct {
 	// labels will be ignored to prevent diffs on re-apply.
 	Labels map[string]interface{} `pulumi:"labels"`
 	// A unique name for the resource, required by Dataflow.
-	Name     *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// One of "drain" or "cancel". Specifies behavior of
+	// deletion during `pulumi destroy`.  See above note.
 	OnDelete *string `pulumi:"onDelete"`
 	// Key/Value pairs to be passed to the Dataflow job (as
 	// used in the template).
@@ -105,7 +135,9 @@ type FlexTemplateJobState struct {
 	// labels will be ignored to prevent diffs on re-apply.
 	Labels pulumi.MapInput
 	// A unique name for the resource, required by Dataflow.
-	Name     pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// One of "drain" or "cancel". Specifies behavior of
+	// deletion during `pulumi destroy`.  See above note.
 	OnDelete pulumi.StringPtrInput
 	// Key/Value pairs to be passed to the Dataflow job (as
 	// used in the template).
@@ -132,7 +164,9 @@ type flexTemplateJobArgs struct {
 	// labels will be ignored to prevent diffs on re-apply.
 	Labels map[string]interface{} `pulumi:"labels"`
 	// A unique name for the resource, required by Dataflow.
-	Name     *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// One of "drain" or "cancel". Specifies behavior of
+	// deletion during `pulumi destroy`.  See above note.
 	OnDelete *string `pulumi:"onDelete"`
 	// Key/Value pairs to be passed to the Dataflow job (as
 	// used in the template).
@@ -154,7 +188,9 @@ type FlexTemplateJobArgs struct {
 	// labels will be ignored to prevent diffs on re-apply.
 	Labels pulumi.MapInput
 	// A unique name for the resource, required by Dataflow.
-	Name     pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// One of "drain" or "cancel". Specifies behavior of
+	// deletion during `pulumi destroy`.  See above note.
 	OnDelete pulumi.StringPtrInput
 	// Key/Value pairs to be passed to the Dataflow job (as
 	// used in the template).

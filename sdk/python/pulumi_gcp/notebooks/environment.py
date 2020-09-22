@@ -29,7 +29,16 @@ class Environment(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a Environment resource with the given unique name, props, and options.
+        A Cloud AI Platform Notebook environment.
+
+        To get more information about Environment, see:
+
+        * [API documentation](https://cloud.google.com/ai-platform/notebooks/docs/reference/rest)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
+
+        ## Example Usage
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['EnvironmentContainerImageArgs']] container_image: Use a container image to start the notebook instance.

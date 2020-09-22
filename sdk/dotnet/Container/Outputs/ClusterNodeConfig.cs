@@ -38,7 +38,6 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string? ImageType;
         /// <summary>
-        /// )
         /// Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
         /// Structure is documented below.
         /// </summary>
@@ -49,7 +48,6 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Labels;
         /// <summary>
-        /// )
         /// Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
         /// Note that validations happen all server side. All attributes are optional.
         /// Structure is documented below.

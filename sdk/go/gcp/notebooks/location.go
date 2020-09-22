@@ -9,6 +9,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Represents a Location resource.
 type Location struct {
 	pulumi.CustomResourceState
 

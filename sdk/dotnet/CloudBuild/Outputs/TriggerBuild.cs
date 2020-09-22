@@ -14,10 +14,15 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
     public sealed class TriggerBuild
     {
         /// <summary>
+        /// Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.TriggerBuildArtifacts? Artifacts;
+        /// <summary>
         /// A list of images to be pushed upon the successful completion of all build steps.
-        /// The images are pushed using the builder service account's credentials.
+        /// The images will be pushed using the builder service account's credentials.
         /// The digests of the pushed images will be stored in the Build resource's results field.
-        /// If any of the images fail to be pushed, the build status is marked FAILURE.
+        /// If any of the images fail to be pushed, the build is marked FAILURE.
         /// </summary>
         public readonly ImmutableArray<string> Images;
         /// <summary>
@@ -25,6 +30,11 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
         /// Logs file names will be of the format ${logsBucket}/log-${build_id}.txt.
         /// </summary>
         public readonly string? LogsBucket;
+        /// <summary>
+        /// Special options for this build.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.TriggerBuildOptions? Options;
         /// <summary>
         /// TTL in queue for this build. If provided and the build is enqueued longer than this value,
         /// the build will expire and the build status will be EXPIRED.
@@ -66,9 +76,13 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
 
         [OutputConstructor]
         private TriggerBuild(
+            Outputs.TriggerBuildArtifacts? artifacts,
+
             ImmutableArray<string> images,
 
             string? logsBucket,
+
+            Outputs.TriggerBuildOptions? options,
 
             string? queueTtl,
 
@@ -84,8 +98,10 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
 
             string? timeout)
         {
+            Artifacts = artifacts;
             Images = images;
             LogsBucket = logsBucket;
+            Options = options;
             QueueTtl = queueTtl;
             Secrets = secrets;
             Source = source;

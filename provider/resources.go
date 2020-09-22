@@ -724,6 +724,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_compute_target_ssl_proxy":    {Tok: gcpResource(gcpCompute, "TargetSSLProxy")},
 			"google_compute_target_tcp_proxy":    {Tok: gcpResource(gcpCompute, "TargetTCPProxy")},
 			"google_compute_target_pool":         {Tok: gcpResource(gcpCompute, "TargetPool")},
+			"google_compute_target_grpc_proxy":   {Tok: gcpResource(gcpCompute, "TargetGrpcProxy")},
 			"google_compute_url_map":             {Tok: gcpResource(gcpCompute, "URLMap")},
 			"google_compute_vpn_gateway":         {Tok: gcpResource(gcpCompute, "VPNGateway")},
 			"google_compute_vpn_tunnel":          {Tok: gcpResource(gcpCompute, "VPNTunnel")},
@@ -1841,6 +1842,9 @@ func Provider() tfbridge.ProviderInfo {
 				Docs: &tfbridge.DocInfo{
 					Source: "datasource_compute_region_instance_group.html.markdown",
 				},
+			},
+			"google_compute_region_ssl_certificate": {
+				Tok: gcpDataSource(gcpCompute, "getRegionSslCertificate"),
 			},
 			"google_compute_instance_group": {
 				Tok: gcpDataSource(gcpCompute, "getInstanceGroup"),

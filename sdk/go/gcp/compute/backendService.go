@@ -127,7 +127,7 @@ type BackendService struct {
 	// The protocol this BackendService uses to communicate with backends.
 	// The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
 	// types and may result in errors if used with the GA API.
-	// Possible values are `HTTP`, `HTTPS`, `HTTP2`, `TCP`, and `SSL`.
+	// Possible values are `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, and `GRPC`.
 	Protocol pulumi.StringOutput `pulumi:"protocol"`
 	// The security policy associated with this backend service.
 	SecurityPolicy pulumi.StringPtrOutput `pulumi:"securityPolicy"`
@@ -271,7 +271,7 @@ type backendServiceState struct {
 	// The protocol this BackendService uses to communicate with backends.
 	// The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
 	// types and may result in errors if used with the GA API.
-	// Possible values are `HTTP`, `HTTPS`, `HTTP2`, `TCP`, and `SSL`.
+	// Possible values are `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, and `GRPC`.
 	Protocol *string `pulumi:"protocol"`
 	// The security policy associated with this backend service.
 	SecurityPolicy *string `pulumi:"securityPolicy"`
@@ -388,7 +388,7 @@ type BackendServiceState struct {
 	// The protocol this BackendService uses to communicate with backends.
 	// The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
 	// types and may result in errors if used with the GA API.
-	// Possible values are `HTTP`, `HTTPS`, `HTTP2`, `TCP`, and `SSL`.
+	// Possible values are `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, and `GRPC`.
 	Protocol pulumi.StringPtrInput
 	// The security policy associated with this backend service.
 	SecurityPolicy pulumi.StringPtrInput
@@ -505,7 +505,7 @@ type backendServiceArgs struct {
 	// The protocol this BackendService uses to communicate with backends.
 	// The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
 	// types and may result in errors if used with the GA API.
-	// Possible values are `HTTP`, `HTTPS`, `HTTP2`, `TCP`, and `SSL`.
+	// Possible values are `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, and `GRPC`.
 	Protocol *string `pulumi:"protocol"`
 	// The security policy associated with this backend service.
 	SecurityPolicy *string `pulumi:"securityPolicy"`
@@ -617,7 +617,7 @@ type BackendServiceArgs struct {
 	// The protocol this BackendService uses to communicate with backends.
 	// The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
 	// types and may result in errors if used with the GA API.
-	// Possible values are `HTTP`, `HTTPS`, `HTTP2`, `TCP`, and `SSL`.
+	// Possible values are `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, and `GRPC`.
 	Protocol pulumi.StringPtrInput
 	// The security policy associated with this backend service.
 	SecurityPolicy pulumi.StringPtrInput

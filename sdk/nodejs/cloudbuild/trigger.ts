@@ -96,8 +96,8 @@ export class Trigger extends pulumi.CustomResource {
     public readonly includedFiles!: pulumi.Output<string[] | undefined>;
     /**
      * Name of the volume to mount.
-     * Volume names must be unique per build step and must be valid names for
-     * Docker volumes. Each named volume must be used by at least two build steps.
+     * Volume names must be unique per build step and must be valid names for Docker volumes.
+     * Each named volume must be used by at least two build steps.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -236,8 +236,8 @@ export interface TriggerState {
     readonly includedFiles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Name of the volume to mount.
-     * Volume names must be unique per build step and must be valid names for
-     * Docker volumes. Each named volume must be used by at least two build steps.
+     * Volume names must be unique per build step and must be valid names for Docker volumes.
+     * Each named volume must be used by at least two build steps.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -319,8 +319,8 @@ export interface TriggerArgs {
     readonly includedFiles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Name of the volume to mount.
-     * Volume names must be unique per build step and must be valid names for
-     * Docker volumes. Each named volume must be used by at least two build steps.
+     * Volume names must be unique per build step and must be valid names for Docker volumes.
+     * Each named volume must be used by at least two build steps.
      */
     readonly name?: pulumi.Input<string>;
     /**

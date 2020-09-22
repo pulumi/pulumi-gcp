@@ -23,7 +23,18 @@ class Database(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a Database resource with the given unique name, props, and options.
+        A Cloud Spanner Database which is hosted on a Spanner instance.
+
+        To get more information about Database, see:
+
+        * [API documentation](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances.databases)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/spanner/)
+
+        > **Warning:** It is strongly recommended to set `lifecycle { prevent_destroy = true }` on databases in order to prevent accidental data loss.
+
+        ## Example Usage
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[List[pulumi.Input[str]]] ddls: An optional list of DDL statements to run inside the newly created

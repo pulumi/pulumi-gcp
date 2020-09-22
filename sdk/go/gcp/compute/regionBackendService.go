@@ -120,7 +120,7 @@ type RegionBackendService struct {
 	// The protocol this RegionBackendService uses to communicate with backends.
 	// The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
 	// types and may result in errors if used with the GA API.
-	// Possible values are `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, and `UDP`.
+	// Possible values are `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, and `GRPC`.
 	Protocol pulumi.StringOutput `pulumi:"protocol"`
 	// The Region in which the created backend service should reside.
 	// If it is not provided, the provider region is used.
@@ -264,7 +264,7 @@ type regionBackendServiceState struct {
 	// The protocol this RegionBackendService uses to communicate with backends.
 	// The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
 	// types and may result in errors if used with the GA API.
-	// Possible values are `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, and `UDP`.
+	// Possible values are `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, and `GRPC`.
 	Protocol *string `pulumi:"protocol"`
 	// The Region in which the created backend service should reside.
 	// If it is not provided, the provider region is used.
@@ -378,7 +378,7 @@ type RegionBackendServiceState struct {
 	// The protocol this RegionBackendService uses to communicate with backends.
 	// The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
 	// types and may result in errors if used with the GA API.
-	// Possible values are `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, and `UDP`.
+	// Possible values are `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, and `GRPC`.
 	Protocol pulumi.StringPtrInput
 	// The Region in which the created backend service should reside.
 	// If it is not provided, the provider region is used.
@@ -492,7 +492,7 @@ type regionBackendServiceArgs struct {
 	// The protocol this RegionBackendService uses to communicate with backends.
 	// The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
 	// types and may result in errors if used with the GA API.
-	// Possible values are `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, and `UDP`.
+	// Possible values are `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, and `GRPC`.
 	Protocol *string `pulumi:"protocol"`
 	// The Region in which the created backend service should reside.
 	// If it is not provided, the provider region is used.
@@ -601,7 +601,7 @@ type RegionBackendServiceArgs struct {
 	// The protocol this RegionBackendService uses to communicate with backends.
 	// The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
 	// types and may result in errors if used with the GA API.
-	// Possible values are `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, and `UDP`.
+	// Possible values are `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, and `GRPC`.
 	Protocol pulumi.StringPtrInput
 	// The Region in which the created backend service should reside.
 	// If it is not provided, the provider region is used.

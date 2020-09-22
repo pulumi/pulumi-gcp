@@ -2680,10 +2680,15 @@ export namespace cloudasset {
 export namespace cloudbuild {
     export interface TriggerBuild {
         /**
+         * Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
+         * Structure is documented below.
+         */
+        artifacts?: outputs.cloudbuild.TriggerBuildArtifacts;
+        /**
          * A list of images to be pushed upon the successful completion of all build steps.
-         * The images are pushed using the builder service account's credentials.
+         * The images will be pushed using the builder service account's credentials.
          * The digests of the pushed images will be stored in the Build resource's results field.
-         * If any of the images fail to be pushed, the build status is marked FAILURE.
+         * If any of the images fail to be pushed, the build is marked FAILURE.
          */
         images?: string[];
         /**
@@ -2691,6 +2696,11 @@ export namespace cloudbuild {
          * Logs file names will be of the format ${logsBucket}/log-${build_id}.txt.
          */
         logsBucket?: string;
+        /**
+         * Special options for this build.
+         * Structure is documented below.
+         */
+        options?: outputs.cloudbuild.TriggerBuildOptions;
         /**
          * TTL in queue for this build. If provided and the build is enqueued longer than this value,
          * the build will expire and the build status will be EXPIRED.
@@ -2731,16 +2741,159 @@ export namespace cloudbuild {
         timeout?: string;
     }
 
+    export interface TriggerBuildArtifacts {
+        /**
+         * A list of images to be pushed upon the successful completion of all build steps.
+         * The images will be pushed using the builder service account's credentials.
+         * The digests of the pushed images will be stored in the Build resource's results field.
+         * If any of the images fail to be pushed, the build is marked FAILURE.
+         */
+        images?: string[];
+        /**
+         * A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps.
+         * Files in the workspace matching specified paths globs will be uploaded to the
+         * Cloud Storage location using the builder service account's credentials.
+         * The location and generation of the uploaded objects will be stored in the Build resource's results field.
+         * If any objects fail to be pushed, the build is marked FAILURE.
+         * Structure is documented below.
+         */
+        objects?: outputs.cloudbuild.TriggerBuildArtifactsObjects;
+    }
+
+    export interface TriggerBuildArtifactsObjects {
+        /**
+         * Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
+         * Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
+         * this location as a prefix.
+         */
+        location?: string;
+        /**
+         * Path globs used to match files in the build's workspace.
+         */
+        paths?: string[];
+        /**
+         * -
+         * Output only. Stores timing information for pushing all artifact objects.
+         * Structure is documented below.
+         */
+        timing: outputs.cloudbuild.TriggerBuildArtifactsObjectsTiming;
+    }
+
+    export interface TriggerBuildArtifactsObjectsTiming {
+        /**
+         * End of time span.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
+         * nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
+        endTime?: string;
+        /**
+         * Start of time span.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
+         * nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
+        startTime?: string;
+    }
+
+    export interface TriggerBuildOptions {
+        /**
+         * Requested disk size for the VM that runs the build. Note that this is NOT "disk free";
+         * some of the space will be used by the operating system and build utilities.
+         * Also note that this is the minimum disk size that will be allocated for the build --
+         * the build may run with a larger disk than requested. At present, the maximum disk size
+         * is 1000GB; builds that request more than the maximum are rejected with an error.
+         */
+        diskSizeGb?: number;
+        /**
+         * Option to specify whether or not to apply bash style string operations to the substitutions.
+         * NOTE this is always enabled for triggered builds and cannot be overridden in the build configuration file.
+         */
+        dynamicSubstitutions?: boolean;
+        /**
+         * A list of global environment variable definitions that will exist for all build steps
+         * in this build. If a variable is defined in both globally and in a build step,
+         * the variable will use the build step value.
+         * The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
+         */
+        envs?: string[];
+        /**
+         * Option to define build log streaming behavior to Google Cloud Storage.
+         * Possible values are `STREAM_DEFAULT`, `STREAM_ON`, and `STREAM_OFF`.
+         */
+        logStreamingOption?: string;
+        /**
+         * Option to specify the logging mode, which determines if and where build logs are stored.
+         * Possible values are `LOGGING_UNSPECIFIED`, `LEGACY`, `GCS_ONLY`, `STACKDRIVER_ONLY`, and `NONE`.
+         */
+        logging?: string;
+        /**
+         * Compute Engine machine type on which to run the build.
+         * Possible values are `UNSPECIFIED`, `N1_HIGHCPU_8`, and `N1_HIGHCPU_32`.
+         */
+        machineType?: string;
+        /**
+         * Requested verifiability options.
+         * Possible values are `NOT_VERIFIED` and `VERIFIED`.
+         */
+        requestedVerifyOption?: string;
+        /**
+         * A list of global environment variables, which are encrypted using a Cloud Key Management
+         * Service crypto key. These values must be specified in the build's Secret. These variables
+         * will be available to all build steps in this build.
+         */
+        secretEnvs?: string[];
+        /**
+         * Requested hash for SourceProvenance.
+         * Each value may be one of `NONE`, `SHA256`, and `MD5`.
+         */
+        sourceProvenanceHashes?: string[];
+        /**
+         * Option to specify behavior when there is an error in the substitution checks.
+         * NOTE this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden
+         * in the build configuration file.
+         * Possible values are `MUST_MATCH` and `ALLOW_LOOSE`.
+         */
+        substitutionOption?: string;
+        /**
+         * Global list of volumes to mount for ALL build steps
+         * Each volume is created as an empty volume prior to starting the build process.
+         * Upon completion of the build, volumes and their contents are discarded. Global
+         * volume names and paths cannot conflict with the volumes defined a build step.
+         * Using a global volume in a build with only one step is not valid as it is indicative
+         * of a build request with an incorrect configuration.
+         * Structure is documented below.
+         */
+        volumes?: outputs.cloudbuild.TriggerBuildOptionsVolume[];
+        /**
+         * Option to specify a WorkerPool for the build. Format projects/{project}/workerPools/{workerPool}
+         * This field is experimental.
+         */
+        workerPool?: string;
+    }
+
+    export interface TriggerBuildOptionsVolume {
+        /**
+         * Name of the volume to mount.
+         * Volume names must be unique per build step and must be valid names for Docker volumes.
+         * Each named volume must be used by at least two build steps.
+         */
+        name?: string;
+        /**
+         * Path at which to mount the volume.
+         * Paths must be absolute and cannot conflict with other volume paths on the same
+         * build step or with certain reserved volume paths.
+         */
+        path?: string;
+    }
+
     export interface TriggerBuildSecret {
         /**
          * Cloud KMS key name to use to decrypt these envs.
          */
         kmsKeyName: string;
         /**
-         * A list of environment variables which are encrypted using
-         * a Cloud Key
-         * Management Service crypto key. These values must be specified in
-         * the build's `Secret`.
+         * A list of global environment variables, which are encrypted using a Cloud Key Management
+         * Service crypto key. These values must be specified in the build's Secret. These variables
+         * will be available to all build steps in this build.
          */
         secretEnv?: {[key: string]: string};
     }
@@ -2851,10 +3004,10 @@ export namespace cloudbuild {
          */
         entrypoint?: string;
         /**
-         * A list of environment variable definitions to be used when
-         * running a step.
-         * The elements are of the form "KEY=VALUE" for the environment variable
-         * "KEY" being given the value "VALUE".
+         * A list of global environment variable definitions that will exist for all build steps
+         * in this build. If a variable is defined in both globally and in a build step,
+         * the variable will use the build step value.
+         * The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
          */
         envs?: string[];
         /**
@@ -2864,15 +3017,14 @@ export namespace cloudbuild {
         id?: string;
         /**
          * Name of the volume to mount.
-         * Volume names must be unique per build step and must be valid names for
-         * Docker volumes. Each named volume must be used by at least two build steps.
+         * Volume names must be unique per build step and must be valid names for Docker volumes.
+         * Each named volume must be used by at least two build steps.
          */
         name: string;
         /**
-         * A list of environment variables which are encrypted using
-         * a Cloud Key
-         * Management Service crypto key. These values must be specified in
-         * the build's `Secret`.
+         * A list of global environment variables, which are encrypted using a Cloud Key Management
+         * Service crypto key. These values must be specified in the build's Secret. These variables
+         * will be available to all build steps in this build.
          */
         secretEnvs?: string[];
         /**
@@ -2883,17 +3035,18 @@ export namespace cloudbuild {
          */
         timeout?: string;
         /**
-         * Output only. Stores timing information for executing this
-         * build step.
+         * -
+         * Output only. Stores timing information for pushing all artifact objects.
+         * Structure is documented below.
          */
         timing?: string;
         /**
-         * List of volumes to mount into the build step.
-         * Each volume is created as an empty volume prior to execution of the
-         * build step. Upon completion of the build, volumes and their contents
-         * are discarded.
-         * Using a named volume in only one step is not valid as it is
-         * indicative of a build request with an incorrect configuration.
+         * Global list of volumes to mount for ALL build steps
+         * Each volume is created as an empty volume prior to starting the build process.
+         * Upon completion of the build, volumes and their contents are discarded. Global
+         * volume names and paths cannot conflict with the volumes defined a build step.
+         * Using a global volume in a build with only one step is not valid as it is indicative
+         * of a build request with an incorrect configuration.
          * Structure is documented below.
          */
         volumes?: outputs.cloudbuild.TriggerBuildStepVolume[];
@@ -2910,14 +3063,14 @@ export namespace cloudbuild {
     export interface TriggerBuildStepVolume {
         /**
          * Name of the volume to mount.
-         * Volume names must be unique per build step and must be valid names for
-         * Docker volumes. Each named volume must be used by at least two build steps.
+         * Volume names must be unique per build step and must be valid names for Docker volumes.
+         * Each named volume must be used by at least two build steps.
          */
         name: string;
         /**
          * Path at which to mount the volume.
-         * Paths must be absolute and cannot conflict with other volume paths on
-         * the same build step or with certain reserved volume paths.
+         * Paths must be absolute and cannot conflict with other volume paths on the same
+         * build step or with certain reserved volume paths.
          */
         path: string;
     }
@@ -2925,8 +3078,8 @@ export namespace cloudbuild {
     export interface TriggerGithub {
         /**
          * Name of the volume to mount.
-         * Volume names must be unique per build step and must be valid names for
-         * Docker volumes. Each named volume must be used by at least two build steps.
+         * Volume names must be unique per build step and must be valid names for Docker volumes.
+         * Each named volume must be used by at least two build steps.
          */
         name?: string;
         /**
@@ -3983,6 +4136,9 @@ export namespace composer {
     export interface EnvironmentConfig {
         airflowUri: string;
         dagGcsPrefix: string;
+        /**
+         * The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
+         */
         databaseConfig: outputs.composer.EnvironmentConfigDatabaseConfig;
         gkeCluster: string;
         /**
@@ -4002,6 +4158,9 @@ export namespace composer {
          * The configuration settings for software inside the environment.  Structure is documented below.
          */
         softwareConfig: outputs.composer.EnvironmentConfigSoftwareConfig;
+        /**
+         * The configuration settings for the Airflow web server App Engine instance.
+         */
         webServerConfig: outputs.composer.EnvironmentConfigWebServerConfig;
         /**
          * The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
@@ -4281,6 +4440,11 @@ export namespace compute {
          * Possible values are `OFF`, `ONLY_UP`, and `ON`.
          */
         mode?: string;
+        /**
+         * Defines scale down controls to reduce the risk of response latency
+         * and outages due to abrupt scale-in events
+         * Structure is documented below.
+         */
         scaleDownControl: outputs.compute.AutoscalarAutoscalingPolicyScaleDownControl;
     }
 
@@ -4446,6 +4610,11 @@ export namespace compute {
          * Possible values are `OFF`, `ONLY_UP`, and `ON`.
          */
         mode?: string;
+        /**
+         * Defines scale down controls to reduce the risk of response latency
+         * and outages due to abrupt scale-in events
+         * Structure is documented below.
+         */
         scaleDownControl: outputs.compute.AutoscalerAutoscalingPolicyScaleDownControl;
     }
 
@@ -5083,7 +5252,7 @@ export namespace compute {
          * The IP protocol to which this rule applies. The protocol type is
          * required when creating a firewall rule. This value can either be
          * one of the following well known protocol strings (tcp, udp,
-         * icmp, esp, ah, sctp, ipip), or the IP protocol number.
+         * icmp, esp, ah, sctp, ipip, all), or the IP protocol number.
          */
         protocol: string;
     }
@@ -5102,7 +5271,7 @@ export namespace compute {
          * The IP protocol to which this rule applies. The protocol type is
          * required when creating a firewall rule. This value can either be
          * one of the following well known protocol strings (tcp, udp,
-         * icmp, esp, ah, sctp, ipip), or the IP protocol number.
+         * icmp, esp, ah, sctp, ipip, all), or the IP protocol number.
          */
         protocol: string;
     }
@@ -6427,8 +6596,10 @@ export namespace compute {
          */
         diskType: string;
         /**
-         * Specifies the disk interface to use for attaching
-         * this disk.
+         * Specifies the disk interface to use for attaching this disk, 
+         * which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI
+         * and the request will fail if you attempt to attach a persistent disk in any other format
+         * than SCSI. Local SSDs can use either NVME or SCSI.
          */
         interface: string;
         /**
@@ -6445,7 +6616,7 @@ export namespace compute {
         /**
          * The name (**not self_link**)
          * of the disk (such as those managed by `gcp.compute.Disk`) to attach.
-         * > **Note:** Either `source` or `sourceImage` is **required** when creating a new instance except for when creating a local SSD. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+         * > **Note:** Either `source` or `sourceImage` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
          */
         source?: string;
         /**
@@ -6455,7 +6626,7 @@ export namespace compute {
          * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
          * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
          * `{project}/{image}`, `{family}`, or `{image}`.
-         * > **Note:** Either `source` or `sourceImage` is **required** when creating a new instance except for when creating a local SSD. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+         * > **Note:** Either `source` or `sourceImage` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
          */
         sourceImage: string;
         /**
@@ -6908,6 +7079,11 @@ export namespace compute {
          * Possible values are `OFF`, `ONLY_UP`, and `ON`.
          */
         mode?: string;
+        /**
+         * Defines scale down controls to reduce the risk of response latency
+         * and outages due to abrupt scale-in events
+         * Structure is documented below.
+         */
         scaleDownControl?: outputs.compute.RegionAutoscalerAutoscalingPolicyScaleDownControl;
     }
 
@@ -11674,9 +11850,7 @@ export namespace config {
 export namespace container {
     export interface ClusterAddonsConfig {
         /**
-         * .
-         * The status of the CloudRun addon. It is disabled by default.
-         * Set `disabled = false` to enable.
+         * . Structure is documented below.
          */
         cloudrunConfig: outputs.container.ClusterAddonsConfigCloudrunConfig;
         /**
@@ -11737,6 +11911,11 @@ export namespace container {
          * cluster. It is disabled by default. Set `disabled = false` to enable.
          */
         disabled: boolean;
+        /**
+         * The load balancer type of CloudRun ingress service. It is external load balancer by default.
+         * Set `load_balancer_type=LOAD_BALANCER_TYPE_INTERNAL` to configure it as internal load balancer.
+         */
+        loadBalancerType?: string;
     }
 
     export interface ClusterAddonsConfigConfigConnectorConfig {
@@ -12049,7 +12228,6 @@ export namespace container {
          */
         imageType: string;
         /**
-         * )
          * Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
          * Structure is documented below.
          */
@@ -12060,7 +12238,6 @@ export namespace container {
          */
         labels: {[key: string]: string};
         /**
-         * )
          * Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
          * Note that validations happen all server side. All attributes are optional.
          * Structure is documented below.
@@ -12313,7 +12490,6 @@ export namespace container {
          */
         imageType: string;
         /**
-         * )
          * Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
          * Structure is documented below.
          */
@@ -12324,7 +12500,6 @@ export namespace container {
          */
         labels: {[key: string]: string};
         /**
-         * )
          * Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
          * Note that validations happen all server side. All attributes are optional.
          * Structure is documented below.
@@ -12525,6 +12700,11 @@ export namespace container {
          * endpoint via private networking.
          */
         enablePrivateNodes?: boolean;
+        /**
+         * Controls cluster master global
+         * access settings. If unset, the provider will no longer manage this field and will
+         * not modify the previously-set value. Structure is documented below.
+         */
         masterGlobalAccessConfig: outputs.container.ClusterPrivateClusterConfigMasterGlobalAccessConfig;
         /**
          * The IP range in CIDR notation to use for
@@ -12624,6 +12804,7 @@ export namespace container {
 
     export interface GetClusterAddonsConfigCloudrunConfig {
         disabled: boolean;
+        loadBalancerType: string;
     }
 
     export interface GetClusterAddonsConfigConfigConnectorConfig {
@@ -14057,6 +14238,8 @@ export namespace dataproc {
     export interface ClusterClusterConfig {
         /**
          * The autoscaling policy config associated with the cluster.
+         * Note that once set, if `autoscalingConfig` is the only field set in `clusterConfig`, it can
+         * only be removed by setting `policyUri = ""`, rather than removing the whole block.
          * Structure defined below.
          */
         autoscalingConfig?: outputs.dataproc.ClusterClusterConfigAutoscalingConfig;
@@ -15158,6 +15341,10 @@ export namespace filestore {
          * The name of the fileshare (16 characters or less)
          */
         name: string;
+        /**
+         * Nfs Export Options. There is a limit of 10 export options per file share.
+         * Structure is documented below.
+         */
         nfsExportOptions?: outputs.filestore.InstanceFileSharesNfsExportOption[];
     }
 
@@ -19574,7 +19761,7 @@ export namespace sql {
         enabled?: boolean;
         location?: string;
         /**
-         * True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation.
+         * True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL instances.
          */
         pointInTimeRecoveryEnabled?: boolean;
         /**

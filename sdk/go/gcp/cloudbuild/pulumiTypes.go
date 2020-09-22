@@ -11,14 +11,20 @@ import (
 )
 
 type TriggerBuild struct {
+	// Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
+	// Structure is documented below.
+	Artifacts *TriggerBuildArtifacts `pulumi:"artifacts"`
 	// A list of images to be pushed upon the successful completion of all build steps.
-	// The images are pushed using the builder service account's credentials.
+	// The images will be pushed using the builder service account's credentials.
 	// The digests of the pushed images will be stored in the Build resource's results field.
-	// If any of the images fail to be pushed, the build status is marked FAILURE.
+	// If any of the images fail to be pushed, the build is marked FAILURE.
 	Images []string `pulumi:"images"`
 	// Google Cloud Storage bucket where logs should be written.
 	// Logs file names will be of the format ${logsBucket}/log-${build_id}.txt.
 	LogsBucket *string `pulumi:"logsBucket"`
+	// Special options for this build.
+	// Structure is documented below.
+	Options *TriggerBuildOptions `pulumi:"options"`
 	// TTL in queue for this build. If provided and the build is enqueued longer than this value,
 	// the build will expire and the build status will be EXPIRED.
 	// The TTL starts ticking from createTime.
@@ -57,14 +63,20 @@ type TriggerBuildInput interface {
 }
 
 type TriggerBuildArgs struct {
+	// Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
+	// Structure is documented below.
+	Artifacts TriggerBuildArtifactsPtrInput `pulumi:"artifacts"`
 	// A list of images to be pushed upon the successful completion of all build steps.
-	// The images are pushed using the builder service account's credentials.
+	// The images will be pushed using the builder service account's credentials.
 	// The digests of the pushed images will be stored in the Build resource's results field.
-	// If any of the images fail to be pushed, the build status is marked FAILURE.
+	// If any of the images fail to be pushed, the build is marked FAILURE.
 	Images pulumi.StringArrayInput `pulumi:"images"`
 	// Google Cloud Storage bucket where logs should be written.
 	// Logs file names will be of the format ${logsBucket}/log-${build_id}.txt.
 	LogsBucket pulumi.StringPtrInput `pulumi:"logsBucket"`
+	// Special options for this build.
+	// Structure is documented below.
+	Options TriggerBuildOptionsPtrInput `pulumi:"options"`
 	// TTL in queue for this build. If provided and the build is enqueued longer than this value,
 	// the build will expire and the build status will be EXPIRED.
 	// The TTL starts ticking from createTime.
@@ -168,10 +180,16 @@ func (o TriggerBuildOutput) ToTriggerBuildPtrOutputWithContext(ctx context.Conte
 	}).(TriggerBuildPtrOutput)
 }
 
+// Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
+// Structure is documented below.
+func (o TriggerBuildOutput) Artifacts() TriggerBuildArtifactsPtrOutput {
+	return o.ApplyT(func(v TriggerBuild) *TriggerBuildArtifacts { return v.Artifacts }).(TriggerBuildArtifactsPtrOutput)
+}
+
 // A list of images to be pushed upon the successful completion of all build steps.
-// The images are pushed using the builder service account's credentials.
+// The images will be pushed using the builder service account's credentials.
 // The digests of the pushed images will be stored in the Build resource's results field.
-// If any of the images fail to be pushed, the build status is marked FAILURE.
+// If any of the images fail to be pushed, the build is marked FAILURE.
 func (o TriggerBuildOutput) Images() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TriggerBuild) []string { return v.Images }).(pulumi.StringArrayOutput)
 }
@@ -180,6 +198,12 @@ func (o TriggerBuildOutput) Images() pulumi.StringArrayOutput {
 // Logs file names will be of the format ${logsBucket}/log-${build_id}.txt.
 func (o TriggerBuildOutput) LogsBucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerBuild) *string { return v.LogsBucket }).(pulumi.StringPtrOutput)
+}
+
+// Special options for this build.
+// Structure is documented below.
+func (o TriggerBuildOutput) Options() TriggerBuildOptionsPtrOutput {
+	return o.ApplyT(func(v TriggerBuild) *TriggerBuildOptions { return v.Options }).(TriggerBuildOptionsPtrOutput)
 }
 
 // TTL in queue for this build. If provided and the build is enqueued longer than this value,
@@ -245,10 +269,21 @@ func (o TriggerBuildPtrOutput) Elem() TriggerBuildOutput {
 	return o.ApplyT(func(v *TriggerBuild) TriggerBuild { return *v }).(TriggerBuildOutput)
 }
 
+// Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
+// Structure is documented below.
+func (o TriggerBuildPtrOutput) Artifacts() TriggerBuildArtifactsPtrOutput {
+	return o.ApplyT(func(v *TriggerBuild) *TriggerBuildArtifacts {
+		if v == nil {
+			return nil
+		}
+		return v.Artifacts
+	}).(TriggerBuildArtifactsPtrOutput)
+}
+
 // A list of images to be pushed upon the successful completion of all build steps.
-// The images are pushed using the builder service account's credentials.
+// The images will be pushed using the builder service account's credentials.
 // The digests of the pushed images will be stored in the Build resource's results field.
-// If any of the images fail to be pushed, the build status is marked FAILURE.
+// If any of the images fail to be pushed, the build is marked FAILURE.
 func (o TriggerBuildPtrOutput) Images() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TriggerBuild) []string {
 		if v == nil {
@@ -267,6 +302,17 @@ func (o TriggerBuildPtrOutput) LogsBucket() pulumi.StringPtrOutput {
 		}
 		return v.LogsBucket
 	}).(pulumi.StringPtrOutput)
+}
+
+// Special options for this build.
+// Structure is documented below.
+func (o TriggerBuildPtrOutput) Options() TriggerBuildOptionsPtrOutput {
+	return o.ApplyT(func(v *TriggerBuild) *TriggerBuildOptions {
+		if v == nil {
+			return nil
+		}
+		return v.Options
+	}).(TriggerBuildOptionsPtrOutput)
 }
 
 // TTL in queue for this build. If provided and the build is enqueued longer than this value,
@@ -349,13 +395,1103 @@ func (o TriggerBuildPtrOutput) Timeout() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type TriggerBuildArtifacts struct {
+	// A list of images to be pushed upon the successful completion of all build steps.
+	// The images will be pushed using the builder service account's credentials.
+	// The digests of the pushed images will be stored in the Build resource's results field.
+	// If any of the images fail to be pushed, the build is marked FAILURE.
+	Images []string `pulumi:"images"`
+	// A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps.
+	// Files in the workspace matching specified paths globs will be uploaded to the
+	// Cloud Storage location using the builder service account's credentials.
+	// The location and generation of the uploaded objects will be stored in the Build resource's results field.
+	// If any objects fail to be pushed, the build is marked FAILURE.
+	// Structure is documented below.
+	Objects *TriggerBuildArtifactsObjects `pulumi:"objects"`
+}
+
+// TriggerBuildArtifactsInput is an input type that accepts TriggerBuildArtifactsArgs and TriggerBuildArtifactsOutput values.
+// You can construct a concrete instance of `TriggerBuildArtifactsInput` via:
+//
+//          TriggerBuildArtifactsArgs{...}
+type TriggerBuildArtifactsInput interface {
+	pulumi.Input
+
+	ToTriggerBuildArtifactsOutput() TriggerBuildArtifactsOutput
+	ToTriggerBuildArtifactsOutputWithContext(context.Context) TriggerBuildArtifactsOutput
+}
+
+type TriggerBuildArtifactsArgs struct {
+	// A list of images to be pushed upon the successful completion of all build steps.
+	// The images will be pushed using the builder service account's credentials.
+	// The digests of the pushed images will be stored in the Build resource's results field.
+	// If any of the images fail to be pushed, the build is marked FAILURE.
+	Images pulumi.StringArrayInput `pulumi:"images"`
+	// A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps.
+	// Files in the workspace matching specified paths globs will be uploaded to the
+	// Cloud Storage location using the builder service account's credentials.
+	// The location and generation of the uploaded objects will be stored in the Build resource's results field.
+	// If any objects fail to be pushed, the build is marked FAILURE.
+	// Structure is documented below.
+	Objects TriggerBuildArtifactsObjectsPtrInput `pulumi:"objects"`
+}
+
+func (TriggerBuildArtifactsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerBuildArtifacts)(nil)).Elem()
+}
+
+func (i TriggerBuildArtifactsArgs) ToTriggerBuildArtifactsOutput() TriggerBuildArtifactsOutput {
+	return i.ToTriggerBuildArtifactsOutputWithContext(context.Background())
+}
+
+func (i TriggerBuildArtifactsArgs) ToTriggerBuildArtifactsOutputWithContext(ctx context.Context) TriggerBuildArtifactsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildArtifactsOutput)
+}
+
+func (i TriggerBuildArtifactsArgs) ToTriggerBuildArtifactsPtrOutput() TriggerBuildArtifactsPtrOutput {
+	return i.ToTriggerBuildArtifactsPtrOutputWithContext(context.Background())
+}
+
+func (i TriggerBuildArtifactsArgs) ToTriggerBuildArtifactsPtrOutputWithContext(ctx context.Context) TriggerBuildArtifactsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildArtifactsOutput).ToTriggerBuildArtifactsPtrOutputWithContext(ctx)
+}
+
+// TriggerBuildArtifactsPtrInput is an input type that accepts TriggerBuildArtifactsArgs, TriggerBuildArtifactsPtr and TriggerBuildArtifactsPtrOutput values.
+// You can construct a concrete instance of `TriggerBuildArtifactsPtrInput` via:
+//
+//          TriggerBuildArtifactsArgs{...}
+//
+//  or:
+//
+//          nil
+type TriggerBuildArtifactsPtrInput interface {
+	pulumi.Input
+
+	ToTriggerBuildArtifactsPtrOutput() TriggerBuildArtifactsPtrOutput
+	ToTriggerBuildArtifactsPtrOutputWithContext(context.Context) TriggerBuildArtifactsPtrOutput
+}
+
+type triggerBuildArtifactsPtrType TriggerBuildArtifactsArgs
+
+func TriggerBuildArtifactsPtr(v *TriggerBuildArtifactsArgs) TriggerBuildArtifactsPtrInput {
+	return (*triggerBuildArtifactsPtrType)(v)
+}
+
+func (*triggerBuildArtifactsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerBuildArtifacts)(nil)).Elem()
+}
+
+func (i *triggerBuildArtifactsPtrType) ToTriggerBuildArtifactsPtrOutput() TriggerBuildArtifactsPtrOutput {
+	return i.ToTriggerBuildArtifactsPtrOutputWithContext(context.Background())
+}
+
+func (i *triggerBuildArtifactsPtrType) ToTriggerBuildArtifactsPtrOutputWithContext(ctx context.Context) TriggerBuildArtifactsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildArtifactsPtrOutput)
+}
+
+type TriggerBuildArtifactsOutput struct{ *pulumi.OutputState }
+
+func (TriggerBuildArtifactsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerBuildArtifacts)(nil)).Elem()
+}
+
+func (o TriggerBuildArtifactsOutput) ToTriggerBuildArtifactsOutput() TriggerBuildArtifactsOutput {
+	return o
+}
+
+func (o TriggerBuildArtifactsOutput) ToTriggerBuildArtifactsOutputWithContext(ctx context.Context) TriggerBuildArtifactsOutput {
+	return o
+}
+
+func (o TriggerBuildArtifactsOutput) ToTriggerBuildArtifactsPtrOutput() TriggerBuildArtifactsPtrOutput {
+	return o.ToTriggerBuildArtifactsPtrOutputWithContext(context.Background())
+}
+
+func (o TriggerBuildArtifactsOutput) ToTriggerBuildArtifactsPtrOutputWithContext(ctx context.Context) TriggerBuildArtifactsPtrOutput {
+	return o.ApplyT(func(v TriggerBuildArtifacts) *TriggerBuildArtifacts {
+		return &v
+	}).(TriggerBuildArtifactsPtrOutput)
+}
+
+// A list of images to be pushed upon the successful completion of all build steps.
+// The images will be pushed using the builder service account's credentials.
+// The digests of the pushed images will be stored in the Build resource's results field.
+// If any of the images fail to be pushed, the build is marked FAILURE.
+func (o TriggerBuildArtifactsOutput) Images() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TriggerBuildArtifacts) []string { return v.Images }).(pulumi.StringArrayOutput)
+}
+
+// A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps.
+// Files in the workspace matching specified paths globs will be uploaded to the
+// Cloud Storage location using the builder service account's credentials.
+// The location and generation of the uploaded objects will be stored in the Build resource's results field.
+// If any objects fail to be pushed, the build is marked FAILURE.
+// Structure is documented below.
+func (o TriggerBuildArtifactsOutput) Objects() TriggerBuildArtifactsObjectsPtrOutput {
+	return o.ApplyT(func(v TriggerBuildArtifacts) *TriggerBuildArtifactsObjects { return v.Objects }).(TriggerBuildArtifactsObjectsPtrOutput)
+}
+
+type TriggerBuildArtifactsPtrOutput struct{ *pulumi.OutputState }
+
+func (TriggerBuildArtifactsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerBuildArtifacts)(nil)).Elem()
+}
+
+func (o TriggerBuildArtifactsPtrOutput) ToTriggerBuildArtifactsPtrOutput() TriggerBuildArtifactsPtrOutput {
+	return o
+}
+
+func (o TriggerBuildArtifactsPtrOutput) ToTriggerBuildArtifactsPtrOutputWithContext(ctx context.Context) TriggerBuildArtifactsPtrOutput {
+	return o
+}
+
+func (o TriggerBuildArtifactsPtrOutput) Elem() TriggerBuildArtifactsOutput {
+	return o.ApplyT(func(v *TriggerBuildArtifacts) TriggerBuildArtifacts { return *v }).(TriggerBuildArtifactsOutput)
+}
+
+// A list of images to be pushed upon the successful completion of all build steps.
+// The images will be pushed using the builder service account's credentials.
+// The digests of the pushed images will be stored in the Build resource's results field.
+// If any of the images fail to be pushed, the build is marked FAILURE.
+func (o TriggerBuildArtifactsPtrOutput) Images() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TriggerBuildArtifacts) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Images
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps.
+// Files in the workspace matching specified paths globs will be uploaded to the
+// Cloud Storage location using the builder service account's credentials.
+// The location and generation of the uploaded objects will be stored in the Build resource's results field.
+// If any objects fail to be pushed, the build is marked FAILURE.
+// Structure is documented below.
+func (o TriggerBuildArtifactsPtrOutput) Objects() TriggerBuildArtifactsObjectsPtrOutput {
+	return o.ApplyT(func(v *TriggerBuildArtifacts) *TriggerBuildArtifactsObjects {
+		if v == nil {
+			return nil
+		}
+		return v.Objects
+	}).(TriggerBuildArtifactsObjectsPtrOutput)
+}
+
+type TriggerBuildArtifactsObjects struct {
+	// Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
+	// Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
+	// this location as a prefix.
+	Location *string `pulumi:"location"`
+	// Path globs used to match files in the build's workspace.
+	Paths []string `pulumi:"paths"`
+	// -
+	// Output only. Stores timing information for pushing all artifact objects.
+	// Structure is documented below.
+	Timing *TriggerBuildArtifactsObjectsTiming `pulumi:"timing"`
+}
+
+// TriggerBuildArtifactsObjectsInput is an input type that accepts TriggerBuildArtifactsObjectsArgs and TriggerBuildArtifactsObjectsOutput values.
+// You can construct a concrete instance of `TriggerBuildArtifactsObjectsInput` via:
+//
+//          TriggerBuildArtifactsObjectsArgs{...}
+type TriggerBuildArtifactsObjectsInput interface {
+	pulumi.Input
+
+	ToTriggerBuildArtifactsObjectsOutput() TriggerBuildArtifactsObjectsOutput
+	ToTriggerBuildArtifactsObjectsOutputWithContext(context.Context) TriggerBuildArtifactsObjectsOutput
+}
+
+type TriggerBuildArtifactsObjectsArgs struct {
+	// Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
+	// Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
+	// this location as a prefix.
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// Path globs used to match files in the build's workspace.
+	Paths pulumi.StringArrayInput `pulumi:"paths"`
+	// -
+	// Output only. Stores timing information for pushing all artifact objects.
+	// Structure is documented below.
+	Timing TriggerBuildArtifactsObjectsTimingPtrInput `pulumi:"timing"`
+}
+
+func (TriggerBuildArtifactsObjectsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerBuildArtifactsObjects)(nil)).Elem()
+}
+
+func (i TriggerBuildArtifactsObjectsArgs) ToTriggerBuildArtifactsObjectsOutput() TriggerBuildArtifactsObjectsOutput {
+	return i.ToTriggerBuildArtifactsObjectsOutputWithContext(context.Background())
+}
+
+func (i TriggerBuildArtifactsObjectsArgs) ToTriggerBuildArtifactsObjectsOutputWithContext(ctx context.Context) TriggerBuildArtifactsObjectsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildArtifactsObjectsOutput)
+}
+
+func (i TriggerBuildArtifactsObjectsArgs) ToTriggerBuildArtifactsObjectsPtrOutput() TriggerBuildArtifactsObjectsPtrOutput {
+	return i.ToTriggerBuildArtifactsObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i TriggerBuildArtifactsObjectsArgs) ToTriggerBuildArtifactsObjectsPtrOutputWithContext(ctx context.Context) TriggerBuildArtifactsObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildArtifactsObjectsOutput).ToTriggerBuildArtifactsObjectsPtrOutputWithContext(ctx)
+}
+
+// TriggerBuildArtifactsObjectsPtrInput is an input type that accepts TriggerBuildArtifactsObjectsArgs, TriggerBuildArtifactsObjectsPtr and TriggerBuildArtifactsObjectsPtrOutput values.
+// You can construct a concrete instance of `TriggerBuildArtifactsObjectsPtrInput` via:
+//
+//          TriggerBuildArtifactsObjectsArgs{...}
+//
+//  or:
+//
+//          nil
+type TriggerBuildArtifactsObjectsPtrInput interface {
+	pulumi.Input
+
+	ToTriggerBuildArtifactsObjectsPtrOutput() TriggerBuildArtifactsObjectsPtrOutput
+	ToTriggerBuildArtifactsObjectsPtrOutputWithContext(context.Context) TriggerBuildArtifactsObjectsPtrOutput
+}
+
+type triggerBuildArtifactsObjectsPtrType TriggerBuildArtifactsObjectsArgs
+
+func TriggerBuildArtifactsObjectsPtr(v *TriggerBuildArtifactsObjectsArgs) TriggerBuildArtifactsObjectsPtrInput {
+	return (*triggerBuildArtifactsObjectsPtrType)(v)
+}
+
+func (*triggerBuildArtifactsObjectsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerBuildArtifactsObjects)(nil)).Elem()
+}
+
+func (i *triggerBuildArtifactsObjectsPtrType) ToTriggerBuildArtifactsObjectsPtrOutput() TriggerBuildArtifactsObjectsPtrOutput {
+	return i.ToTriggerBuildArtifactsObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i *triggerBuildArtifactsObjectsPtrType) ToTriggerBuildArtifactsObjectsPtrOutputWithContext(ctx context.Context) TriggerBuildArtifactsObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildArtifactsObjectsPtrOutput)
+}
+
+type TriggerBuildArtifactsObjectsOutput struct{ *pulumi.OutputState }
+
+func (TriggerBuildArtifactsObjectsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerBuildArtifactsObjects)(nil)).Elem()
+}
+
+func (o TriggerBuildArtifactsObjectsOutput) ToTriggerBuildArtifactsObjectsOutput() TriggerBuildArtifactsObjectsOutput {
+	return o
+}
+
+func (o TriggerBuildArtifactsObjectsOutput) ToTriggerBuildArtifactsObjectsOutputWithContext(ctx context.Context) TriggerBuildArtifactsObjectsOutput {
+	return o
+}
+
+func (o TriggerBuildArtifactsObjectsOutput) ToTriggerBuildArtifactsObjectsPtrOutput() TriggerBuildArtifactsObjectsPtrOutput {
+	return o.ToTriggerBuildArtifactsObjectsPtrOutputWithContext(context.Background())
+}
+
+func (o TriggerBuildArtifactsObjectsOutput) ToTriggerBuildArtifactsObjectsPtrOutputWithContext(ctx context.Context) TriggerBuildArtifactsObjectsPtrOutput {
+	return o.ApplyT(func(v TriggerBuildArtifactsObjects) *TriggerBuildArtifactsObjects {
+		return &v
+	}).(TriggerBuildArtifactsObjectsPtrOutput)
+}
+
+// Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
+// Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
+// this location as a prefix.
+func (o TriggerBuildArtifactsObjectsOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerBuildArtifactsObjects) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Path globs used to match files in the build's workspace.
+func (o TriggerBuildArtifactsObjectsOutput) Paths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TriggerBuildArtifactsObjects) []string { return v.Paths }).(pulumi.StringArrayOutput)
+}
+
+// -
+// Output only. Stores timing information for pushing all artifact objects.
+// Structure is documented below.
+func (o TriggerBuildArtifactsObjectsOutput) Timing() TriggerBuildArtifactsObjectsTimingPtrOutput {
+	return o.ApplyT(func(v TriggerBuildArtifactsObjects) *TriggerBuildArtifactsObjectsTiming { return v.Timing }).(TriggerBuildArtifactsObjectsTimingPtrOutput)
+}
+
+type TriggerBuildArtifactsObjectsPtrOutput struct{ *pulumi.OutputState }
+
+func (TriggerBuildArtifactsObjectsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerBuildArtifactsObjects)(nil)).Elem()
+}
+
+func (o TriggerBuildArtifactsObjectsPtrOutput) ToTriggerBuildArtifactsObjectsPtrOutput() TriggerBuildArtifactsObjectsPtrOutput {
+	return o
+}
+
+func (o TriggerBuildArtifactsObjectsPtrOutput) ToTriggerBuildArtifactsObjectsPtrOutputWithContext(ctx context.Context) TriggerBuildArtifactsObjectsPtrOutput {
+	return o
+}
+
+func (o TriggerBuildArtifactsObjectsPtrOutput) Elem() TriggerBuildArtifactsObjectsOutput {
+	return o.ApplyT(func(v *TriggerBuildArtifactsObjects) TriggerBuildArtifactsObjects { return *v }).(TriggerBuildArtifactsObjectsOutput)
+}
+
+// Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
+// Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
+// this location as a prefix.
+func (o TriggerBuildArtifactsObjectsPtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerBuildArtifactsObjects) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// Path globs used to match files in the build's workspace.
+func (o TriggerBuildArtifactsObjectsPtrOutput) Paths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TriggerBuildArtifactsObjects) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Paths
+	}).(pulumi.StringArrayOutput)
+}
+
+// -
+// Output only. Stores timing information for pushing all artifact objects.
+// Structure is documented below.
+func (o TriggerBuildArtifactsObjectsPtrOutput) Timing() TriggerBuildArtifactsObjectsTimingPtrOutput {
+	return o.ApplyT(func(v *TriggerBuildArtifactsObjects) *TriggerBuildArtifactsObjectsTiming {
+		if v == nil {
+			return nil
+		}
+		return v.Timing
+	}).(TriggerBuildArtifactsObjectsTimingPtrOutput)
+}
+
+type TriggerBuildArtifactsObjectsTiming struct {
+	// End of time span.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
+	// nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	EndTime *string `pulumi:"endTime"`
+	// Start of time span.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
+	// nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	StartTime *string `pulumi:"startTime"`
+}
+
+// TriggerBuildArtifactsObjectsTimingInput is an input type that accepts TriggerBuildArtifactsObjectsTimingArgs and TriggerBuildArtifactsObjectsTimingOutput values.
+// You can construct a concrete instance of `TriggerBuildArtifactsObjectsTimingInput` via:
+//
+//          TriggerBuildArtifactsObjectsTimingArgs{...}
+type TriggerBuildArtifactsObjectsTimingInput interface {
+	pulumi.Input
+
+	ToTriggerBuildArtifactsObjectsTimingOutput() TriggerBuildArtifactsObjectsTimingOutput
+	ToTriggerBuildArtifactsObjectsTimingOutputWithContext(context.Context) TriggerBuildArtifactsObjectsTimingOutput
+}
+
+type TriggerBuildArtifactsObjectsTimingArgs struct {
+	// End of time span.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
+	// nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
+	// Start of time span.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
+	// nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+}
+
+func (TriggerBuildArtifactsObjectsTimingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerBuildArtifactsObjectsTiming)(nil)).Elem()
+}
+
+func (i TriggerBuildArtifactsObjectsTimingArgs) ToTriggerBuildArtifactsObjectsTimingOutput() TriggerBuildArtifactsObjectsTimingOutput {
+	return i.ToTriggerBuildArtifactsObjectsTimingOutputWithContext(context.Background())
+}
+
+func (i TriggerBuildArtifactsObjectsTimingArgs) ToTriggerBuildArtifactsObjectsTimingOutputWithContext(ctx context.Context) TriggerBuildArtifactsObjectsTimingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildArtifactsObjectsTimingOutput)
+}
+
+func (i TriggerBuildArtifactsObjectsTimingArgs) ToTriggerBuildArtifactsObjectsTimingPtrOutput() TriggerBuildArtifactsObjectsTimingPtrOutput {
+	return i.ToTriggerBuildArtifactsObjectsTimingPtrOutputWithContext(context.Background())
+}
+
+func (i TriggerBuildArtifactsObjectsTimingArgs) ToTriggerBuildArtifactsObjectsTimingPtrOutputWithContext(ctx context.Context) TriggerBuildArtifactsObjectsTimingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildArtifactsObjectsTimingOutput).ToTriggerBuildArtifactsObjectsTimingPtrOutputWithContext(ctx)
+}
+
+// TriggerBuildArtifactsObjectsTimingPtrInput is an input type that accepts TriggerBuildArtifactsObjectsTimingArgs, TriggerBuildArtifactsObjectsTimingPtr and TriggerBuildArtifactsObjectsTimingPtrOutput values.
+// You can construct a concrete instance of `TriggerBuildArtifactsObjectsTimingPtrInput` via:
+//
+//          TriggerBuildArtifactsObjectsTimingArgs{...}
+//
+//  or:
+//
+//          nil
+type TriggerBuildArtifactsObjectsTimingPtrInput interface {
+	pulumi.Input
+
+	ToTriggerBuildArtifactsObjectsTimingPtrOutput() TriggerBuildArtifactsObjectsTimingPtrOutput
+	ToTriggerBuildArtifactsObjectsTimingPtrOutputWithContext(context.Context) TriggerBuildArtifactsObjectsTimingPtrOutput
+}
+
+type triggerBuildArtifactsObjectsTimingPtrType TriggerBuildArtifactsObjectsTimingArgs
+
+func TriggerBuildArtifactsObjectsTimingPtr(v *TriggerBuildArtifactsObjectsTimingArgs) TriggerBuildArtifactsObjectsTimingPtrInput {
+	return (*triggerBuildArtifactsObjectsTimingPtrType)(v)
+}
+
+func (*triggerBuildArtifactsObjectsTimingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerBuildArtifactsObjectsTiming)(nil)).Elem()
+}
+
+func (i *triggerBuildArtifactsObjectsTimingPtrType) ToTriggerBuildArtifactsObjectsTimingPtrOutput() TriggerBuildArtifactsObjectsTimingPtrOutput {
+	return i.ToTriggerBuildArtifactsObjectsTimingPtrOutputWithContext(context.Background())
+}
+
+func (i *triggerBuildArtifactsObjectsTimingPtrType) ToTriggerBuildArtifactsObjectsTimingPtrOutputWithContext(ctx context.Context) TriggerBuildArtifactsObjectsTimingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildArtifactsObjectsTimingPtrOutput)
+}
+
+type TriggerBuildArtifactsObjectsTimingOutput struct{ *pulumi.OutputState }
+
+func (TriggerBuildArtifactsObjectsTimingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerBuildArtifactsObjectsTiming)(nil)).Elem()
+}
+
+func (o TriggerBuildArtifactsObjectsTimingOutput) ToTriggerBuildArtifactsObjectsTimingOutput() TriggerBuildArtifactsObjectsTimingOutput {
+	return o
+}
+
+func (o TriggerBuildArtifactsObjectsTimingOutput) ToTriggerBuildArtifactsObjectsTimingOutputWithContext(ctx context.Context) TriggerBuildArtifactsObjectsTimingOutput {
+	return o
+}
+
+func (o TriggerBuildArtifactsObjectsTimingOutput) ToTriggerBuildArtifactsObjectsTimingPtrOutput() TriggerBuildArtifactsObjectsTimingPtrOutput {
+	return o.ToTriggerBuildArtifactsObjectsTimingPtrOutputWithContext(context.Background())
+}
+
+func (o TriggerBuildArtifactsObjectsTimingOutput) ToTriggerBuildArtifactsObjectsTimingPtrOutputWithContext(ctx context.Context) TriggerBuildArtifactsObjectsTimingPtrOutput {
+	return o.ApplyT(func(v TriggerBuildArtifactsObjectsTiming) *TriggerBuildArtifactsObjectsTiming {
+		return &v
+	}).(TriggerBuildArtifactsObjectsTimingPtrOutput)
+}
+
+// End of time span.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
+// nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o TriggerBuildArtifactsObjectsTimingOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerBuildArtifactsObjectsTiming) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+}
+
+// Start of time span.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
+// nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o TriggerBuildArtifactsObjectsTimingOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerBuildArtifactsObjectsTiming) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+type TriggerBuildArtifactsObjectsTimingPtrOutput struct{ *pulumi.OutputState }
+
+func (TriggerBuildArtifactsObjectsTimingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerBuildArtifactsObjectsTiming)(nil)).Elem()
+}
+
+func (o TriggerBuildArtifactsObjectsTimingPtrOutput) ToTriggerBuildArtifactsObjectsTimingPtrOutput() TriggerBuildArtifactsObjectsTimingPtrOutput {
+	return o
+}
+
+func (o TriggerBuildArtifactsObjectsTimingPtrOutput) ToTriggerBuildArtifactsObjectsTimingPtrOutputWithContext(ctx context.Context) TriggerBuildArtifactsObjectsTimingPtrOutput {
+	return o
+}
+
+func (o TriggerBuildArtifactsObjectsTimingPtrOutput) Elem() TriggerBuildArtifactsObjectsTimingOutput {
+	return o.ApplyT(func(v *TriggerBuildArtifactsObjectsTiming) TriggerBuildArtifactsObjectsTiming { return *v }).(TriggerBuildArtifactsObjectsTimingOutput)
+}
+
+// End of time span.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
+// nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o TriggerBuildArtifactsObjectsTimingPtrOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerBuildArtifactsObjectsTiming) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Start of time span.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
+// nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o TriggerBuildArtifactsObjectsTimingPtrOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerBuildArtifactsObjectsTiming) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+type TriggerBuildOptions struct {
+	// Requested disk size for the VM that runs the build. Note that this is NOT "disk free";
+	// some of the space will be used by the operating system and build utilities.
+	// Also note that this is the minimum disk size that will be allocated for the build --
+	// the build may run with a larger disk than requested. At present, the maximum disk size
+	// is 1000GB; builds that request more than the maximum are rejected with an error.
+	DiskSizeGb *int `pulumi:"diskSizeGb"`
+	// Option to specify whether or not to apply bash style string operations to the substitutions.
+	// NOTE this is always enabled for triggered builds and cannot be overridden in the build configuration file.
+	DynamicSubstitutions *bool `pulumi:"dynamicSubstitutions"`
+	// A list of global environment variable definitions that will exist for all build steps
+	// in this build. If a variable is defined in both globally and in a build step,
+	// the variable will use the build step value.
+	// The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
+	Envs []string `pulumi:"envs"`
+	// Option to define build log streaming behavior to Google Cloud Storage.
+	// Possible values are `STREAM_DEFAULT`, `STREAM_ON`, and `STREAM_OFF`.
+	LogStreamingOption *string `pulumi:"logStreamingOption"`
+	// Option to specify the logging mode, which determines if and where build logs are stored.
+	// Possible values are `LOGGING_UNSPECIFIED`, `LEGACY`, `GCS_ONLY`, `STACKDRIVER_ONLY`, and `NONE`.
+	Logging *string `pulumi:"logging"`
+	// Compute Engine machine type on which to run the build.
+	// Possible values are `UNSPECIFIED`, `N1_HIGHCPU_8`, and `N1_HIGHCPU_32`.
+	MachineType *string `pulumi:"machineType"`
+	// Requested verifiability options.
+	// Possible values are `NOT_VERIFIED` and `VERIFIED`.
+	RequestedVerifyOption *string `pulumi:"requestedVerifyOption"`
+	// A list of global environment variables, which are encrypted using a Cloud Key Management
+	// Service crypto key. These values must be specified in the build's Secret. These variables
+	// will be available to all build steps in this build.
+	SecretEnvs []string `pulumi:"secretEnvs"`
+	// Requested hash for SourceProvenance.
+	// Each value may be one of `NONE`, `SHA256`, and `MD5`.
+	SourceProvenanceHashes []string `pulumi:"sourceProvenanceHashes"`
+	// Option to specify behavior when there is an error in the substitution checks.
+	// NOTE this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden
+	// in the build configuration file.
+	// Possible values are `MUST_MATCH` and `ALLOW_LOOSE`.
+	SubstitutionOption *string `pulumi:"substitutionOption"`
+	// Global list of volumes to mount for ALL build steps
+	// Each volume is created as an empty volume prior to starting the build process.
+	// Upon completion of the build, volumes and their contents are discarded. Global
+	// volume names and paths cannot conflict with the volumes defined a build step.
+	// Using a global volume in a build with only one step is not valid as it is indicative
+	// of a build request with an incorrect configuration.
+	// Structure is documented below.
+	Volumes []TriggerBuildOptionsVolume `pulumi:"volumes"`
+	// Option to specify a WorkerPool for the build. Format projects/{project}/workerPools/{workerPool}
+	// This field is experimental.
+	WorkerPool *string `pulumi:"workerPool"`
+}
+
+// TriggerBuildOptionsInput is an input type that accepts TriggerBuildOptionsArgs and TriggerBuildOptionsOutput values.
+// You can construct a concrete instance of `TriggerBuildOptionsInput` via:
+//
+//          TriggerBuildOptionsArgs{...}
+type TriggerBuildOptionsInput interface {
+	pulumi.Input
+
+	ToTriggerBuildOptionsOutput() TriggerBuildOptionsOutput
+	ToTriggerBuildOptionsOutputWithContext(context.Context) TriggerBuildOptionsOutput
+}
+
+type TriggerBuildOptionsArgs struct {
+	// Requested disk size for the VM that runs the build. Note that this is NOT "disk free";
+	// some of the space will be used by the operating system and build utilities.
+	// Also note that this is the minimum disk size that will be allocated for the build --
+	// the build may run with a larger disk than requested. At present, the maximum disk size
+	// is 1000GB; builds that request more than the maximum are rejected with an error.
+	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
+	// Option to specify whether or not to apply bash style string operations to the substitutions.
+	// NOTE this is always enabled for triggered builds and cannot be overridden in the build configuration file.
+	DynamicSubstitutions pulumi.BoolPtrInput `pulumi:"dynamicSubstitutions"`
+	// A list of global environment variable definitions that will exist for all build steps
+	// in this build. If a variable is defined in both globally and in a build step,
+	// the variable will use the build step value.
+	// The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
+	Envs pulumi.StringArrayInput `pulumi:"envs"`
+	// Option to define build log streaming behavior to Google Cloud Storage.
+	// Possible values are `STREAM_DEFAULT`, `STREAM_ON`, and `STREAM_OFF`.
+	LogStreamingOption pulumi.StringPtrInput `pulumi:"logStreamingOption"`
+	// Option to specify the logging mode, which determines if and where build logs are stored.
+	// Possible values are `LOGGING_UNSPECIFIED`, `LEGACY`, `GCS_ONLY`, `STACKDRIVER_ONLY`, and `NONE`.
+	Logging pulumi.StringPtrInput `pulumi:"logging"`
+	// Compute Engine machine type on which to run the build.
+	// Possible values are `UNSPECIFIED`, `N1_HIGHCPU_8`, and `N1_HIGHCPU_32`.
+	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
+	// Requested verifiability options.
+	// Possible values are `NOT_VERIFIED` and `VERIFIED`.
+	RequestedVerifyOption pulumi.StringPtrInput `pulumi:"requestedVerifyOption"`
+	// A list of global environment variables, which are encrypted using a Cloud Key Management
+	// Service crypto key. These values must be specified in the build's Secret. These variables
+	// will be available to all build steps in this build.
+	SecretEnvs pulumi.StringArrayInput `pulumi:"secretEnvs"`
+	// Requested hash for SourceProvenance.
+	// Each value may be one of `NONE`, `SHA256`, and `MD5`.
+	SourceProvenanceHashes pulumi.StringArrayInput `pulumi:"sourceProvenanceHashes"`
+	// Option to specify behavior when there is an error in the substitution checks.
+	// NOTE this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden
+	// in the build configuration file.
+	// Possible values are `MUST_MATCH` and `ALLOW_LOOSE`.
+	SubstitutionOption pulumi.StringPtrInput `pulumi:"substitutionOption"`
+	// Global list of volumes to mount for ALL build steps
+	// Each volume is created as an empty volume prior to starting the build process.
+	// Upon completion of the build, volumes and their contents are discarded. Global
+	// volume names and paths cannot conflict with the volumes defined a build step.
+	// Using a global volume in a build with only one step is not valid as it is indicative
+	// of a build request with an incorrect configuration.
+	// Structure is documented below.
+	Volumes TriggerBuildOptionsVolumeArrayInput `pulumi:"volumes"`
+	// Option to specify a WorkerPool for the build. Format projects/{project}/workerPools/{workerPool}
+	// This field is experimental.
+	WorkerPool pulumi.StringPtrInput `pulumi:"workerPool"`
+}
+
+func (TriggerBuildOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerBuildOptions)(nil)).Elem()
+}
+
+func (i TriggerBuildOptionsArgs) ToTriggerBuildOptionsOutput() TriggerBuildOptionsOutput {
+	return i.ToTriggerBuildOptionsOutputWithContext(context.Background())
+}
+
+func (i TriggerBuildOptionsArgs) ToTriggerBuildOptionsOutputWithContext(ctx context.Context) TriggerBuildOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildOptionsOutput)
+}
+
+func (i TriggerBuildOptionsArgs) ToTriggerBuildOptionsPtrOutput() TriggerBuildOptionsPtrOutput {
+	return i.ToTriggerBuildOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i TriggerBuildOptionsArgs) ToTriggerBuildOptionsPtrOutputWithContext(ctx context.Context) TriggerBuildOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildOptionsOutput).ToTriggerBuildOptionsPtrOutputWithContext(ctx)
+}
+
+// TriggerBuildOptionsPtrInput is an input type that accepts TriggerBuildOptionsArgs, TriggerBuildOptionsPtr and TriggerBuildOptionsPtrOutput values.
+// You can construct a concrete instance of `TriggerBuildOptionsPtrInput` via:
+//
+//          TriggerBuildOptionsArgs{...}
+//
+//  or:
+//
+//          nil
+type TriggerBuildOptionsPtrInput interface {
+	pulumi.Input
+
+	ToTriggerBuildOptionsPtrOutput() TriggerBuildOptionsPtrOutput
+	ToTriggerBuildOptionsPtrOutputWithContext(context.Context) TriggerBuildOptionsPtrOutput
+}
+
+type triggerBuildOptionsPtrType TriggerBuildOptionsArgs
+
+func TriggerBuildOptionsPtr(v *TriggerBuildOptionsArgs) TriggerBuildOptionsPtrInput {
+	return (*triggerBuildOptionsPtrType)(v)
+}
+
+func (*triggerBuildOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerBuildOptions)(nil)).Elem()
+}
+
+func (i *triggerBuildOptionsPtrType) ToTriggerBuildOptionsPtrOutput() TriggerBuildOptionsPtrOutput {
+	return i.ToTriggerBuildOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *triggerBuildOptionsPtrType) ToTriggerBuildOptionsPtrOutputWithContext(ctx context.Context) TriggerBuildOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildOptionsPtrOutput)
+}
+
+type TriggerBuildOptionsOutput struct{ *pulumi.OutputState }
+
+func (TriggerBuildOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerBuildOptions)(nil)).Elem()
+}
+
+func (o TriggerBuildOptionsOutput) ToTriggerBuildOptionsOutput() TriggerBuildOptionsOutput {
+	return o
+}
+
+func (o TriggerBuildOptionsOutput) ToTriggerBuildOptionsOutputWithContext(ctx context.Context) TriggerBuildOptionsOutput {
+	return o
+}
+
+func (o TriggerBuildOptionsOutput) ToTriggerBuildOptionsPtrOutput() TriggerBuildOptionsPtrOutput {
+	return o.ToTriggerBuildOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o TriggerBuildOptionsOutput) ToTriggerBuildOptionsPtrOutputWithContext(ctx context.Context) TriggerBuildOptionsPtrOutput {
+	return o.ApplyT(func(v TriggerBuildOptions) *TriggerBuildOptions {
+		return &v
+	}).(TriggerBuildOptionsPtrOutput)
+}
+
+// Requested disk size for the VM that runs the build. Note that this is NOT "disk free";
+// some of the space will be used by the operating system and build utilities.
+// Also note that this is the minimum disk size that will be allocated for the build --
+// the build may run with a larger disk than requested. At present, the maximum disk size
+// is 1000GB; builds that request more than the maximum are rejected with an error.
+func (o TriggerBuildOptionsOutput) DiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TriggerBuildOptions) *int { return v.DiskSizeGb }).(pulumi.IntPtrOutput)
+}
+
+// Option to specify whether or not to apply bash style string operations to the substitutions.
+// NOTE this is always enabled for triggered builds and cannot be overridden in the build configuration file.
+func (o TriggerBuildOptionsOutput) DynamicSubstitutions() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TriggerBuildOptions) *bool { return v.DynamicSubstitutions }).(pulumi.BoolPtrOutput)
+}
+
+// A list of global environment variable definitions that will exist for all build steps
+// in this build. If a variable is defined in both globally and in a build step,
+// the variable will use the build step value.
+// The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
+func (o TriggerBuildOptionsOutput) Envs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TriggerBuildOptions) []string { return v.Envs }).(pulumi.StringArrayOutput)
+}
+
+// Option to define build log streaming behavior to Google Cloud Storage.
+// Possible values are `STREAM_DEFAULT`, `STREAM_ON`, and `STREAM_OFF`.
+func (o TriggerBuildOptionsOutput) LogStreamingOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerBuildOptions) *string { return v.LogStreamingOption }).(pulumi.StringPtrOutput)
+}
+
+// Option to specify the logging mode, which determines if and where build logs are stored.
+// Possible values are `LOGGING_UNSPECIFIED`, `LEGACY`, `GCS_ONLY`, `STACKDRIVER_ONLY`, and `NONE`.
+func (o TriggerBuildOptionsOutput) Logging() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerBuildOptions) *string { return v.Logging }).(pulumi.StringPtrOutput)
+}
+
+// Compute Engine machine type on which to run the build.
+// Possible values are `UNSPECIFIED`, `N1_HIGHCPU_8`, and `N1_HIGHCPU_32`.
+func (o TriggerBuildOptionsOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerBuildOptions) *string { return v.MachineType }).(pulumi.StringPtrOutput)
+}
+
+// Requested verifiability options.
+// Possible values are `NOT_VERIFIED` and `VERIFIED`.
+func (o TriggerBuildOptionsOutput) RequestedVerifyOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerBuildOptions) *string { return v.RequestedVerifyOption }).(pulumi.StringPtrOutput)
+}
+
+// A list of global environment variables, which are encrypted using a Cloud Key Management
+// Service crypto key. These values must be specified in the build's Secret. These variables
+// will be available to all build steps in this build.
+func (o TriggerBuildOptionsOutput) SecretEnvs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TriggerBuildOptions) []string { return v.SecretEnvs }).(pulumi.StringArrayOutput)
+}
+
+// Requested hash for SourceProvenance.
+// Each value may be one of `NONE`, `SHA256`, and `MD5`.
+func (o TriggerBuildOptionsOutput) SourceProvenanceHashes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TriggerBuildOptions) []string { return v.SourceProvenanceHashes }).(pulumi.StringArrayOutput)
+}
+
+// Option to specify behavior when there is an error in the substitution checks.
+// NOTE this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden
+// in the build configuration file.
+// Possible values are `MUST_MATCH` and `ALLOW_LOOSE`.
+func (o TriggerBuildOptionsOutput) SubstitutionOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerBuildOptions) *string { return v.SubstitutionOption }).(pulumi.StringPtrOutput)
+}
+
+// Global list of volumes to mount for ALL build steps
+// Each volume is created as an empty volume prior to starting the build process.
+// Upon completion of the build, volumes and their contents are discarded. Global
+// volume names and paths cannot conflict with the volumes defined a build step.
+// Using a global volume in a build with only one step is not valid as it is indicative
+// of a build request with an incorrect configuration.
+// Structure is documented below.
+func (o TriggerBuildOptionsOutput) Volumes() TriggerBuildOptionsVolumeArrayOutput {
+	return o.ApplyT(func(v TriggerBuildOptions) []TriggerBuildOptionsVolume { return v.Volumes }).(TriggerBuildOptionsVolumeArrayOutput)
+}
+
+// Option to specify a WorkerPool for the build. Format projects/{project}/workerPools/{workerPool}
+// This field is experimental.
+func (o TriggerBuildOptionsOutput) WorkerPool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerBuildOptions) *string { return v.WorkerPool }).(pulumi.StringPtrOutput)
+}
+
+type TriggerBuildOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (TriggerBuildOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerBuildOptions)(nil)).Elem()
+}
+
+func (o TriggerBuildOptionsPtrOutput) ToTriggerBuildOptionsPtrOutput() TriggerBuildOptionsPtrOutput {
+	return o
+}
+
+func (o TriggerBuildOptionsPtrOutput) ToTriggerBuildOptionsPtrOutputWithContext(ctx context.Context) TriggerBuildOptionsPtrOutput {
+	return o
+}
+
+func (o TriggerBuildOptionsPtrOutput) Elem() TriggerBuildOptionsOutput {
+	return o.ApplyT(func(v *TriggerBuildOptions) TriggerBuildOptions { return *v }).(TriggerBuildOptionsOutput)
+}
+
+// Requested disk size for the VM that runs the build. Note that this is NOT "disk free";
+// some of the space will be used by the operating system and build utilities.
+// Also note that this is the minimum disk size that will be allocated for the build --
+// the build may run with a larger disk than requested. At present, the maximum disk size
+// is 1000GB; builds that request more than the maximum are rejected with an error.
+func (o TriggerBuildOptionsPtrOutput) DiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TriggerBuildOptions) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DiskSizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// Option to specify whether or not to apply bash style string operations to the substitutions.
+// NOTE this is always enabled for triggered builds and cannot be overridden in the build configuration file.
+func (o TriggerBuildOptionsPtrOutput) DynamicSubstitutions() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TriggerBuildOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DynamicSubstitutions
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A list of global environment variable definitions that will exist for all build steps
+// in this build. If a variable is defined in both globally and in a build step,
+// the variable will use the build step value.
+// The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
+func (o TriggerBuildOptionsPtrOutput) Envs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TriggerBuildOptions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Envs
+	}).(pulumi.StringArrayOutput)
+}
+
+// Option to define build log streaming behavior to Google Cloud Storage.
+// Possible values are `STREAM_DEFAULT`, `STREAM_ON`, and `STREAM_OFF`.
+func (o TriggerBuildOptionsPtrOutput) LogStreamingOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerBuildOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogStreamingOption
+	}).(pulumi.StringPtrOutput)
+}
+
+// Option to specify the logging mode, which determines if and where build logs are stored.
+// Possible values are `LOGGING_UNSPECIFIED`, `LEGACY`, `GCS_ONLY`, `STACKDRIVER_ONLY`, and `NONE`.
+func (o TriggerBuildOptionsPtrOutput) Logging() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerBuildOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Logging
+	}).(pulumi.StringPtrOutput)
+}
+
+// Compute Engine machine type on which to run the build.
+// Possible values are `UNSPECIFIED`, `N1_HIGHCPU_8`, and `N1_HIGHCPU_32`.
+func (o TriggerBuildOptionsPtrOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerBuildOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MachineType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Requested verifiability options.
+// Possible values are `NOT_VERIFIED` and `VERIFIED`.
+func (o TriggerBuildOptionsPtrOutput) RequestedVerifyOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerBuildOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RequestedVerifyOption
+	}).(pulumi.StringPtrOutput)
+}
+
+// A list of global environment variables, which are encrypted using a Cloud Key Management
+// Service crypto key. These values must be specified in the build's Secret. These variables
+// will be available to all build steps in this build.
+func (o TriggerBuildOptionsPtrOutput) SecretEnvs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TriggerBuildOptions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretEnvs
+	}).(pulumi.StringArrayOutput)
+}
+
+// Requested hash for SourceProvenance.
+// Each value may be one of `NONE`, `SHA256`, and `MD5`.
+func (o TriggerBuildOptionsPtrOutput) SourceProvenanceHashes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TriggerBuildOptions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceProvenanceHashes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Option to specify behavior when there is an error in the substitution checks.
+// NOTE this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden
+// in the build configuration file.
+// Possible values are `MUST_MATCH` and `ALLOW_LOOSE`.
+func (o TriggerBuildOptionsPtrOutput) SubstitutionOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerBuildOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubstitutionOption
+	}).(pulumi.StringPtrOutput)
+}
+
+// Global list of volumes to mount for ALL build steps
+// Each volume is created as an empty volume prior to starting the build process.
+// Upon completion of the build, volumes and their contents are discarded. Global
+// volume names and paths cannot conflict with the volumes defined a build step.
+// Using a global volume in a build with only one step is not valid as it is indicative
+// of a build request with an incorrect configuration.
+// Structure is documented below.
+func (o TriggerBuildOptionsPtrOutput) Volumes() TriggerBuildOptionsVolumeArrayOutput {
+	return o.ApplyT(func(v *TriggerBuildOptions) []TriggerBuildOptionsVolume {
+		if v == nil {
+			return nil
+		}
+		return v.Volumes
+	}).(TriggerBuildOptionsVolumeArrayOutput)
+}
+
+// Option to specify a WorkerPool for the build. Format projects/{project}/workerPools/{workerPool}
+// This field is experimental.
+func (o TriggerBuildOptionsPtrOutput) WorkerPool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerBuildOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkerPool
+	}).(pulumi.StringPtrOutput)
+}
+
+type TriggerBuildOptionsVolume struct {
+	// Name of the volume to mount.
+	// Volume names must be unique per build step and must be valid names for Docker volumes.
+	// Each named volume must be used by at least two build steps.
+	Name *string `pulumi:"name"`
+	// Path at which to mount the volume.
+	// Paths must be absolute and cannot conflict with other volume paths on the same
+	// build step or with certain reserved volume paths.
+	Path *string `pulumi:"path"`
+}
+
+// TriggerBuildOptionsVolumeInput is an input type that accepts TriggerBuildOptionsVolumeArgs and TriggerBuildOptionsVolumeOutput values.
+// You can construct a concrete instance of `TriggerBuildOptionsVolumeInput` via:
+//
+//          TriggerBuildOptionsVolumeArgs{...}
+type TriggerBuildOptionsVolumeInput interface {
+	pulumi.Input
+
+	ToTriggerBuildOptionsVolumeOutput() TriggerBuildOptionsVolumeOutput
+	ToTriggerBuildOptionsVolumeOutputWithContext(context.Context) TriggerBuildOptionsVolumeOutput
+}
+
+type TriggerBuildOptionsVolumeArgs struct {
+	// Name of the volume to mount.
+	// Volume names must be unique per build step and must be valid names for Docker volumes.
+	// Each named volume must be used by at least two build steps.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Path at which to mount the volume.
+	// Paths must be absolute and cannot conflict with other volume paths on the same
+	// build step or with certain reserved volume paths.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+}
+
+func (TriggerBuildOptionsVolumeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerBuildOptionsVolume)(nil)).Elem()
+}
+
+func (i TriggerBuildOptionsVolumeArgs) ToTriggerBuildOptionsVolumeOutput() TriggerBuildOptionsVolumeOutput {
+	return i.ToTriggerBuildOptionsVolumeOutputWithContext(context.Background())
+}
+
+func (i TriggerBuildOptionsVolumeArgs) ToTriggerBuildOptionsVolumeOutputWithContext(ctx context.Context) TriggerBuildOptionsVolumeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildOptionsVolumeOutput)
+}
+
+// TriggerBuildOptionsVolumeArrayInput is an input type that accepts TriggerBuildOptionsVolumeArray and TriggerBuildOptionsVolumeArrayOutput values.
+// You can construct a concrete instance of `TriggerBuildOptionsVolumeArrayInput` via:
+//
+//          TriggerBuildOptionsVolumeArray{ TriggerBuildOptionsVolumeArgs{...} }
+type TriggerBuildOptionsVolumeArrayInput interface {
+	pulumi.Input
+
+	ToTriggerBuildOptionsVolumeArrayOutput() TriggerBuildOptionsVolumeArrayOutput
+	ToTriggerBuildOptionsVolumeArrayOutputWithContext(context.Context) TriggerBuildOptionsVolumeArrayOutput
+}
+
+type TriggerBuildOptionsVolumeArray []TriggerBuildOptionsVolumeInput
+
+func (TriggerBuildOptionsVolumeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TriggerBuildOptionsVolume)(nil)).Elem()
+}
+
+func (i TriggerBuildOptionsVolumeArray) ToTriggerBuildOptionsVolumeArrayOutput() TriggerBuildOptionsVolumeArrayOutput {
+	return i.ToTriggerBuildOptionsVolumeArrayOutputWithContext(context.Background())
+}
+
+func (i TriggerBuildOptionsVolumeArray) ToTriggerBuildOptionsVolumeArrayOutputWithContext(ctx context.Context) TriggerBuildOptionsVolumeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildOptionsVolumeArrayOutput)
+}
+
+type TriggerBuildOptionsVolumeOutput struct{ *pulumi.OutputState }
+
+func (TriggerBuildOptionsVolumeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerBuildOptionsVolume)(nil)).Elem()
+}
+
+func (o TriggerBuildOptionsVolumeOutput) ToTriggerBuildOptionsVolumeOutput() TriggerBuildOptionsVolumeOutput {
+	return o
+}
+
+func (o TriggerBuildOptionsVolumeOutput) ToTriggerBuildOptionsVolumeOutputWithContext(ctx context.Context) TriggerBuildOptionsVolumeOutput {
+	return o
+}
+
+// Name of the volume to mount.
+// Volume names must be unique per build step and must be valid names for Docker volumes.
+// Each named volume must be used by at least two build steps.
+func (o TriggerBuildOptionsVolumeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerBuildOptionsVolume) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Path at which to mount the volume.
+// Paths must be absolute and cannot conflict with other volume paths on the same
+// build step or with certain reserved volume paths.
+func (o TriggerBuildOptionsVolumeOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerBuildOptionsVolume) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+type TriggerBuildOptionsVolumeArrayOutput struct{ *pulumi.OutputState }
+
+func (TriggerBuildOptionsVolumeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TriggerBuildOptionsVolume)(nil)).Elem()
+}
+
+func (o TriggerBuildOptionsVolumeArrayOutput) ToTriggerBuildOptionsVolumeArrayOutput() TriggerBuildOptionsVolumeArrayOutput {
+	return o
+}
+
+func (o TriggerBuildOptionsVolumeArrayOutput) ToTriggerBuildOptionsVolumeArrayOutputWithContext(ctx context.Context) TriggerBuildOptionsVolumeArrayOutput {
+	return o
+}
+
+func (o TriggerBuildOptionsVolumeArrayOutput) Index(i pulumi.IntInput) TriggerBuildOptionsVolumeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TriggerBuildOptionsVolume {
+		return vs[0].([]TriggerBuildOptionsVolume)[vs[1].(int)]
+	}).(TriggerBuildOptionsVolumeOutput)
+}
+
 type TriggerBuildSecret struct {
 	// Cloud KMS key name to use to decrypt these envs.
 	KmsKeyName string `pulumi:"kmsKeyName"`
-	// A list of environment variables which are encrypted using
-	// a Cloud Key
-	// Management Service crypto key. These values must be specified in
-	// the build's `Secret`.
+	// A list of global environment variables, which are encrypted using a Cloud Key Management
+	// Service crypto key. These values must be specified in the build's Secret. These variables
+	// will be available to all build steps in this build.
 	SecretEnv map[string]string `pulumi:"secretEnv"`
 }
 
@@ -373,10 +1509,9 @@ type TriggerBuildSecretInput interface {
 type TriggerBuildSecretArgs struct {
 	// Cloud KMS key name to use to decrypt these envs.
 	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
-	// A list of environment variables which are encrypted using
-	// a Cloud Key
-	// Management Service crypto key. These values must be specified in
-	// the build's `Secret`.
+	// A list of global environment variables, which are encrypted using a Cloud Key Management
+	// Service crypto key. These values must be specified in the build's Secret. These variables
+	// will be available to all build steps in this build.
 	SecretEnv pulumi.StringMapInput `pulumi:"secretEnv"`
 }
 
@@ -436,10 +1571,9 @@ func (o TriggerBuildSecretOutput) KmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v TriggerBuildSecret) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
 
-// A list of environment variables which are encrypted using
-// a Cloud Key
-// Management Service crypto key. These values must be specified in
-// the build's `Secret`.
+// A list of global environment variables, which are encrypted using a Cloud Key Management
+// Service crypto key. These values must be specified in the build's Secret. These variables
+// will be available to all build steps in this build.
 func (o TriggerBuildSecretOutput) SecretEnv() pulumi.StringMapOutput {
 	return o.ApplyT(func(v TriggerBuildSecret) map[string]string { return v.SecretEnv }).(pulumi.StringMapOutput)
 }
@@ -1136,37 +2270,37 @@ type TriggerBuildStep struct {
 	// default entrypoint.
 	// If unset, the image's default entrypoint is used
 	Entrypoint *string `pulumi:"entrypoint"`
-	// A list of environment variable definitions to be used when
-	// running a step.
-	// The elements are of the form "KEY=VALUE" for the environment variable
-	// "KEY" being given the value "VALUE".
+	// A list of global environment variable definitions that will exist for all build steps
+	// in this build. If a variable is defined in both globally and in a build step,
+	// the variable will use the build step value.
+	// The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
 	Envs []string `pulumi:"envs"`
 	// Unique identifier for this build step, used in `waitFor` to
 	// reference this build step as a dependency.
 	Id *string `pulumi:"id"`
 	// Name of the volume to mount.
-	// Volume names must be unique per build step and must be valid names for
-	// Docker volumes. Each named volume must be used by at least two build steps.
+	// Volume names must be unique per build step and must be valid names for Docker volumes.
+	// Each named volume must be used by at least two build steps.
 	Name string `pulumi:"name"`
-	// A list of environment variables which are encrypted using
-	// a Cloud Key
-	// Management Service crypto key. These values must be specified in
-	// the build's `Secret`.
+	// A list of global environment variables, which are encrypted using a Cloud Key Management
+	// Service crypto key. These values must be specified in the build's Secret. These variables
+	// will be available to all build steps in this build.
 	SecretEnvs []string `pulumi:"secretEnvs"`
 	// Time limit for executing this build step. If not defined,
 	// the step has no
 	// time limit and will be allowed to continue to run until either it
 	// completes or the build itself times out.
 	Timeout *string `pulumi:"timeout"`
-	// Output only. Stores timing information for executing this
-	// build step.
+	// -
+	// Output only. Stores timing information for pushing all artifact objects.
+	// Structure is documented below.
 	Timing *string `pulumi:"timing"`
-	// List of volumes to mount into the build step.
-	// Each volume is created as an empty volume prior to execution of the
-	// build step. Upon completion of the build, volumes and their contents
-	// are discarded.
-	// Using a named volume in only one step is not valid as it is
-	// indicative of a build request with an incorrect configuration.
+	// Global list of volumes to mount for ALL build steps
+	// Each volume is created as an empty volume prior to starting the build process.
+	// Upon completion of the build, volumes and their contents are discarded. Global
+	// volume names and paths cannot conflict with the volumes defined a build step.
+	// Using a global volume in a build with only one step is not valid as it is indicative
+	// of a build request with an incorrect configuration.
 	// Structure is documented below.
 	Volumes []TriggerBuildStepVolume `pulumi:"volumes"`
 	// The ID(s) of the step(s) that this build step depends on.
@@ -1209,37 +2343,37 @@ type TriggerBuildStepArgs struct {
 	// default entrypoint.
 	// If unset, the image's default entrypoint is used
 	Entrypoint pulumi.StringPtrInput `pulumi:"entrypoint"`
-	// A list of environment variable definitions to be used when
-	// running a step.
-	// The elements are of the form "KEY=VALUE" for the environment variable
-	// "KEY" being given the value "VALUE".
+	// A list of global environment variable definitions that will exist for all build steps
+	// in this build. If a variable is defined in both globally and in a build step,
+	// the variable will use the build step value.
+	// The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
 	Envs pulumi.StringArrayInput `pulumi:"envs"`
 	// Unique identifier for this build step, used in `waitFor` to
 	// reference this build step as a dependency.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Name of the volume to mount.
-	// Volume names must be unique per build step and must be valid names for
-	// Docker volumes. Each named volume must be used by at least two build steps.
+	// Volume names must be unique per build step and must be valid names for Docker volumes.
+	// Each named volume must be used by at least two build steps.
 	Name pulumi.StringInput `pulumi:"name"`
-	// A list of environment variables which are encrypted using
-	// a Cloud Key
-	// Management Service crypto key. These values must be specified in
-	// the build's `Secret`.
+	// A list of global environment variables, which are encrypted using a Cloud Key Management
+	// Service crypto key. These values must be specified in the build's Secret. These variables
+	// will be available to all build steps in this build.
 	SecretEnvs pulumi.StringArrayInput `pulumi:"secretEnvs"`
 	// Time limit for executing this build step. If not defined,
 	// the step has no
 	// time limit and will be allowed to continue to run until either it
 	// completes or the build itself times out.
 	Timeout pulumi.StringPtrInput `pulumi:"timeout"`
-	// Output only. Stores timing information for executing this
-	// build step.
+	// -
+	// Output only. Stores timing information for pushing all artifact objects.
+	// Structure is documented below.
 	Timing pulumi.StringPtrInput `pulumi:"timing"`
-	// List of volumes to mount into the build step.
-	// Each volume is created as an empty volume prior to execution of the
-	// build step. Upon completion of the build, volumes and their contents
-	// are discarded.
-	// Using a named volume in only one step is not valid as it is
-	// indicative of a build request with an incorrect configuration.
+	// Global list of volumes to mount for ALL build steps
+	// Each volume is created as an empty volume prior to starting the build process.
+	// Upon completion of the build, volumes and their contents are discarded. Global
+	// volume names and paths cannot conflict with the volumes defined a build step.
+	// Using a global volume in a build with only one step is not valid as it is indicative
+	// of a build request with an incorrect configuration.
 	// Structure is documented below.
 	Volumes TriggerBuildStepVolumeArrayInput `pulumi:"volumes"`
 	// The ID(s) of the step(s) that this build step depends on.
@@ -1330,10 +2464,10 @@ func (o TriggerBuildStepOutput) Entrypoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerBuildStep) *string { return v.Entrypoint }).(pulumi.StringPtrOutput)
 }
 
-// A list of environment variable definitions to be used when
-// running a step.
-// The elements are of the form "KEY=VALUE" for the environment variable
-// "KEY" being given the value "VALUE".
+// A list of global environment variable definitions that will exist for all build steps
+// in this build. If a variable is defined in both globally and in a build step,
+// the variable will use the build step value.
+// The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
 func (o TriggerBuildStepOutput) Envs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TriggerBuildStep) []string { return v.Envs }).(pulumi.StringArrayOutput)
 }
@@ -1345,16 +2479,15 @@ func (o TriggerBuildStepOutput) Id() pulumi.StringPtrOutput {
 }
 
 // Name of the volume to mount.
-// Volume names must be unique per build step and must be valid names for
-// Docker volumes. Each named volume must be used by at least two build steps.
+// Volume names must be unique per build step and must be valid names for Docker volumes.
+// Each named volume must be used by at least two build steps.
 func (o TriggerBuildStepOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v TriggerBuildStep) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// A list of environment variables which are encrypted using
-// a Cloud Key
-// Management Service crypto key. These values must be specified in
-// the build's `Secret`.
+// A list of global environment variables, which are encrypted using a Cloud Key Management
+// Service crypto key. These values must be specified in the build's Secret. These variables
+// will be available to all build steps in this build.
 func (o TriggerBuildStepOutput) SecretEnvs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TriggerBuildStep) []string { return v.SecretEnvs }).(pulumi.StringArrayOutput)
 }
@@ -1367,18 +2500,19 @@ func (o TriggerBuildStepOutput) Timeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerBuildStep) *string { return v.Timeout }).(pulumi.StringPtrOutput)
 }
 
-// Output only. Stores timing information for executing this
-// build step.
+// -
+// Output only. Stores timing information for pushing all artifact objects.
+// Structure is documented below.
 func (o TriggerBuildStepOutput) Timing() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerBuildStep) *string { return v.Timing }).(pulumi.StringPtrOutput)
 }
 
-// List of volumes to mount into the build step.
-// Each volume is created as an empty volume prior to execution of the
-// build step. Upon completion of the build, volumes and their contents
-// are discarded.
-// Using a named volume in only one step is not valid as it is
-// indicative of a build request with an incorrect configuration.
+// Global list of volumes to mount for ALL build steps
+// Each volume is created as an empty volume prior to starting the build process.
+// Upon completion of the build, volumes and their contents are discarded. Global
+// volume names and paths cannot conflict with the volumes defined a build step.
+// Using a global volume in a build with only one step is not valid as it is indicative
+// of a build request with an incorrect configuration.
 // Structure is documented below.
 func (o TriggerBuildStepOutput) Volumes() TriggerBuildStepVolumeArrayOutput {
 	return o.ApplyT(func(v TriggerBuildStep) []TriggerBuildStepVolume { return v.Volumes }).(TriggerBuildStepVolumeArrayOutput)
@@ -1415,12 +2549,12 @@ func (o TriggerBuildStepArrayOutput) Index(i pulumi.IntInput) TriggerBuildStepOu
 
 type TriggerBuildStepVolume struct {
 	// Name of the volume to mount.
-	// Volume names must be unique per build step and must be valid names for
-	// Docker volumes. Each named volume must be used by at least two build steps.
+	// Volume names must be unique per build step and must be valid names for Docker volumes.
+	// Each named volume must be used by at least two build steps.
 	Name string `pulumi:"name"`
 	// Path at which to mount the volume.
-	// Paths must be absolute and cannot conflict with other volume paths on
-	// the same build step or with certain reserved volume paths.
+	// Paths must be absolute and cannot conflict with other volume paths on the same
+	// build step or with certain reserved volume paths.
 	Path string `pulumi:"path"`
 }
 
@@ -1437,12 +2571,12 @@ type TriggerBuildStepVolumeInput interface {
 
 type TriggerBuildStepVolumeArgs struct {
 	// Name of the volume to mount.
-	// Volume names must be unique per build step and must be valid names for
-	// Docker volumes. Each named volume must be used by at least two build steps.
+	// Volume names must be unique per build step and must be valid names for Docker volumes.
+	// Each named volume must be used by at least two build steps.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Path at which to mount the volume.
-	// Paths must be absolute and cannot conflict with other volume paths on
-	// the same build step or with certain reserved volume paths.
+	// Paths must be absolute and cannot conflict with other volume paths on the same
+	// build step or with certain reserved volume paths.
 	Path pulumi.StringInput `pulumi:"path"`
 }
 
@@ -1498,15 +2632,15 @@ func (o TriggerBuildStepVolumeOutput) ToTriggerBuildStepVolumeOutputWithContext(
 }
 
 // Name of the volume to mount.
-// Volume names must be unique per build step and must be valid names for
-// Docker volumes. Each named volume must be used by at least two build steps.
+// Volume names must be unique per build step and must be valid names for Docker volumes.
+// Each named volume must be used by at least two build steps.
 func (o TriggerBuildStepVolumeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v TriggerBuildStepVolume) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Path at which to mount the volume.
-// Paths must be absolute and cannot conflict with other volume paths on
-// the same build step or with certain reserved volume paths.
+// Paths must be absolute and cannot conflict with other volume paths on the same
+// build step or with certain reserved volume paths.
 func (o TriggerBuildStepVolumeOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v TriggerBuildStepVolume) string { return v.Path }).(pulumi.StringOutput)
 }
@@ -1533,8 +2667,8 @@ func (o TriggerBuildStepVolumeArrayOutput) Index(i pulumi.IntInput) TriggerBuild
 
 type TriggerGithub struct {
 	// Name of the volume to mount.
-	// Volume names must be unique per build step and must be valid names for
-	// Docker volumes. Each named volume must be used by at least two build steps.
+	// Volume names must be unique per build step and must be valid names for Docker volumes.
+	// Each named volume must be used by at least two build steps.
 	Name *string `pulumi:"name"`
 	// Owner of the repository. For example: The owner for
 	// https://github.com/googlecloudplatform/cloud-builders is "googlecloudplatform".
@@ -1560,8 +2694,8 @@ type TriggerGithubInput interface {
 
 type TriggerGithubArgs struct {
 	// Name of the volume to mount.
-	// Volume names must be unique per build step and must be valid names for
-	// Docker volumes. Each named volume must be used by at least two build steps.
+	// Volume names must be unique per build step and must be valid names for Docker volumes.
+	// Each named volume must be used by at least two build steps.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Owner of the repository. For example: The owner for
 	// https://github.com/googlecloudplatform/cloud-builders is "googlecloudplatform".
@@ -1652,8 +2786,8 @@ func (o TriggerGithubOutput) ToTriggerGithubPtrOutputWithContext(ctx context.Con
 }
 
 // Name of the volume to mount.
-// Volume names must be unique per build step and must be valid names for
-// Docker volumes. Each named volume must be used by at least two build steps.
+// Volume names must be unique per build step and must be valid names for Docker volumes.
+// Each named volume must be used by at least two build steps.
 func (o TriggerGithubOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerGithub) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -1695,8 +2829,8 @@ func (o TriggerGithubPtrOutput) Elem() TriggerGithubOutput {
 }
 
 // Name of the volume to mount.
-// Volume names must be unique per build step and must be valid names for
-// Docker volumes. Each named volume must be used by at least two build steps.
+// Volume names must be unique per build step and must be valid names for Docker volumes.
+// Each named volume must be used by at least two build steps.
 func (o TriggerGithubPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerGithub) *string {
 		if v == nil {
@@ -2381,6 +3515,16 @@ func (o TriggerTriggerTemplatePtrOutput) TagName() pulumi.StringPtrOutput {
 func init() {
 	pulumi.RegisterOutputType(TriggerBuildOutput{})
 	pulumi.RegisterOutputType(TriggerBuildPtrOutput{})
+	pulumi.RegisterOutputType(TriggerBuildArtifactsOutput{})
+	pulumi.RegisterOutputType(TriggerBuildArtifactsPtrOutput{})
+	pulumi.RegisterOutputType(TriggerBuildArtifactsObjectsOutput{})
+	pulumi.RegisterOutputType(TriggerBuildArtifactsObjectsPtrOutput{})
+	pulumi.RegisterOutputType(TriggerBuildArtifactsObjectsTimingOutput{})
+	pulumi.RegisterOutputType(TriggerBuildArtifactsObjectsTimingPtrOutput{})
+	pulumi.RegisterOutputType(TriggerBuildOptionsOutput{})
+	pulumi.RegisterOutputType(TriggerBuildOptionsPtrOutput{})
+	pulumi.RegisterOutputType(TriggerBuildOptionsVolumeOutput{})
+	pulumi.RegisterOutputType(TriggerBuildOptionsVolumeArrayOutput{})
 	pulumi.RegisterOutputType(TriggerBuildSecretOutput{})
 	pulumi.RegisterOutputType(TriggerBuildSecretArrayOutput{})
 	pulumi.RegisterOutputType(TriggerBuildSourceOutput{})

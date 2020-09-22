@@ -4,6 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Represents a Location resource.
+ */
 export class Location extends pulumi.CustomResource {
     /**
      * Get an existing Location resource's state with the given name, ID, and optional extra

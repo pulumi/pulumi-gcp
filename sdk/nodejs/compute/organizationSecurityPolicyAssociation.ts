@@ -4,6 +4,17 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * An association for the OrganizationSecurityPolicy.
+ *
+ * To get more information about OrganizationSecurityPolicyAssociation, see:
+ *
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies/addAssociation)
+ * * How-to Guides
+ *     * [Associating a policy with the organization or folder](https://cloud.google.com/vpc/docs/using-firewall-policies#associate)
+ *
+ * ## Example Usage
+ */
 export class OrganizationSecurityPolicyAssociation extends pulumi.CustomResource {
     /**
      * Get an existing OrganizationSecurityPolicyAssociation resource's state with the given name, ID, and optional extra

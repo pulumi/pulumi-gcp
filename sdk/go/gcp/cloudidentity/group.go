@@ -10,6 +10,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// A Cloud Identity resource representing a Group.
+//
+// ## Example Usage
 type Group struct {
 	pulumi.CustomResourceState
 

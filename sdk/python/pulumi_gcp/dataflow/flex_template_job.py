@@ -25,7 +25,33 @@ class FlexTemplateJob(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a FlexTemplateJob resource with the given unique name, props, and options.
+        Creates a [Flex Template](https://cloud.google.com/dataflow/docs/guides/templates/using-flex-templates)
+        job on Dataflow, which is an implementation of Apache Beam running on Google
+        Compute Engine. For more information see the official documentation for [Beam](https://beam.apache.org)
+        and [Dataflow](https://cloud.google.com/dataflow/).
+
+        ## Note on "destroy" / "apply"
+
+        There are many types of Dataflow jobs.  Some Dataflow jobs run constantly,
+        getting new data from (e.g.) a GCS bucket, and outputting data continuously.
+        Some jobs process a set amount of data then terminate. All jobs can fail while
+        running due to programming errors or other issues. In this way, Dataflow jobs
+        are different from most other provider / Google resources.
+
+        The Dataflow resource is considered 'existing' while it is in a nonterminal
+        state.  If it reaches a terminal state (e.g. 'FAILED', 'COMPLETE',
+        'CANCELLED'), it will be recreated on the next 'apply'.  This is as expected for
+        jobs which run continuously, but may surprise users who use this resource for
+        other kinds of Dataflow jobs.
+
+        A Dataflow job which is 'destroyed' may be "cancelled" or "drained".  If
+        "cancelled", the job terminates - any data written remains where it is, but no
+        new data will be processed.  If "drained", no new data will enter the pipeline,
+        but any data currently in the pipeline will finish being processed.  The default
+        is "cancelled", but if a user sets `on_delete` to `"drain"` in the
+        configuration, you may experience a long wait for your `pulumi destroy` to
+        complete.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] container_spec_gcs_path: The GCS path to the Dataflow job Flex
@@ -36,6 +62,8 @@ class FlexTemplateJob(pulumi.CustomResource):
                that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
                labels will be ignored to prevent diffs on re-apply.
         :param pulumi.Input[str] name: A unique name for the resource, required by Dataflow.
+        :param pulumi.Input[str] on_delete: One of "drain" or "cancel". Specifies behavior of
+               deletion during `pulumi destroy`.  See above note.
         :param pulumi.Input[Mapping[str, Any]] parameters: Key/Value pairs to be passed to the Dataflow job (as
                used in the template).
         :param pulumi.Input[str] project: The project in which the resource belongs. If it is not
@@ -102,6 +130,8 @@ class FlexTemplateJob(pulumi.CustomResource):
                that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
                labels will be ignored to prevent diffs on re-apply.
         :param pulumi.Input[str] name: A unique name for the resource, required by Dataflow.
+        :param pulumi.Input[str] on_delete: One of "drain" or "cancel". Specifies behavior of
+               deletion during `pulumi destroy`.  See above note.
         :param pulumi.Input[Mapping[str, Any]] parameters: Key/Value pairs to be passed to the Dataflow job (as
                used in the template).
         :param pulumi.Input[str] project: The project in which the resource belongs. If it is not
@@ -162,6 +192,10 @@ class FlexTemplateJob(pulumi.CustomResource):
     @property
     @pulumi.getter(name="onDelete")
     def on_delete(self) -> pulumi.Output[Optional[str]]:
+        """
+        One of "drain" or "cancel". Specifies behavior of
+        deletion during `pulumi destroy`.  See above note.
+        """
         return pulumi.get(self, "on_delete")
 
     @property

@@ -9,6 +9,24 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Kms
 {
+    /// <summary>
+    /// A `KeyRingImportJob` can be used to create `CryptoKeys` and `CryptoKeyVersions` using pre-existing
+    /// key material, generated outside of Cloud KMS. A `KeyRingImportJob` expires 3 days after it is created.
+    /// Once expired, Cloud KMS will no longer be able to import or unwrap any key material that
+    /// was wrapped with the `KeyRingImportJob`'s public key.
+    /// 
+    /// &gt; **Note:** KeyRingImportJobs cannot be deleted from Google Cloud Platform.
+    /// Destroying a KeyRingImportJob will remove it from state but
+    /// *will not delete the resource on the server.*
+    /// 
+    /// To get more information about KeyRingImportJob, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.importJobs)
+    /// * How-to Guides
+    ///     * [Importing a key](https://cloud.google.com/kms/docs/importing-a-key)
+    /// 
+    /// ## Example Usage
+    /// </summary>
     public partial class KeyRingImportJob : Pulumi.CustomResource
     {
         /// <summary>

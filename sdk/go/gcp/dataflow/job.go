@@ -61,6 +61,8 @@ type Job struct {
 	TempGcsLocation pulumi.StringOutput `pulumi:"tempGcsLocation"`
 	// The GCS path to the Dataflow job template.
 	TemplateGcsPath pulumi.StringOutput `pulumi:"templateGcsPath"`
+	// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
+	TransformNameMapping pulumi.MapOutput `pulumi:"transformNameMapping"`
 	// The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The zone in which the created job should run. If it is not provided, the provider zone is used.
@@ -138,6 +140,8 @@ type jobState struct {
 	TempGcsLocation *string `pulumi:"tempGcsLocation"`
 	// The GCS path to the Dataflow job template.
 	TemplateGcsPath *string `pulumi:"templateGcsPath"`
+	// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
+	TransformNameMapping map[string]interface{} `pulumi:"transformNameMapping"`
 	// The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)
 	Type *string `pulumi:"type"`
 	// The zone in which the created job should run. If it is not provided, the provider zone is used.
@@ -182,6 +186,8 @@ type JobState struct {
 	TempGcsLocation pulumi.StringPtrInput
 	// The GCS path to the Dataflow job template.
 	TemplateGcsPath pulumi.StringPtrInput
+	// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
+	TransformNameMapping pulumi.MapInput
 	// The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)
 	Type pulumi.StringPtrInput
 	// The zone in which the created job should run. If it is not provided, the provider zone is used.
@@ -226,6 +232,8 @@ type jobArgs struct {
 	TempGcsLocation string `pulumi:"tempGcsLocation"`
 	// The GCS path to the Dataflow job template.
 	TemplateGcsPath string `pulumi:"templateGcsPath"`
+	// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
+	TransformNameMapping map[string]interface{} `pulumi:"transformNameMapping"`
 	// The zone in which the created job should run. If it is not provided, the provider zone is used.
 	Zone *string `pulumi:"zone"`
 }
@@ -265,6 +273,8 @@ type JobArgs struct {
 	TempGcsLocation pulumi.StringInput
 	// The GCS path to the Dataflow job template.
 	TemplateGcsPath pulumi.StringInput
+	// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
+	TransformNameMapping pulumi.MapInput
 	// The zone in which the created job should run. If it is not provided, the provider zone is used.
 	Zone pulumi.StringPtrInput
 }

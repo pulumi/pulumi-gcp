@@ -1180,7 +1180,7 @@ type DatabaseInstanceSettingsBackupConfiguration struct {
 	// True if backup configuration is enabled.
 	Enabled  *bool   `pulumi:"enabled"`
 	Location *string `pulumi:"location"`
-	// True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation.
+	// True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL instances.
 	PointInTimeRecoveryEnabled *bool `pulumi:"pointInTimeRecoveryEnabled"`
 	// `HH:MM` format time indicating when backup
 	// configuration starts.
@@ -1206,7 +1206,7 @@ type DatabaseInstanceSettingsBackupConfigurationArgs struct {
 	// True if backup configuration is enabled.
 	Enabled  pulumi.BoolPtrInput   `pulumi:"enabled"`
 	Location pulumi.StringPtrInput `pulumi:"location"`
-	// True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation.
+	// True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL instances.
 	PointInTimeRecoveryEnabled pulumi.BoolPtrInput `pulumi:"pointInTimeRecoveryEnabled"`
 	// `HH:MM` format time indicating when backup
 	// configuration starts.
@@ -1306,7 +1306,7 @@ func (o DatabaseInstanceSettingsBackupConfigurationOutput) Location() pulumi.Str
 	return o.ApplyT(func(v DatabaseInstanceSettingsBackupConfiguration) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation.
+// True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL instances.
 func (o DatabaseInstanceSettingsBackupConfigurationOutput) PointInTimeRecoveryEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsBackupConfiguration) *bool { return v.PointInTimeRecoveryEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -1368,7 +1368,7 @@ func (o DatabaseInstanceSettingsBackupConfigurationPtrOutput) Location() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-// True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation.
+// True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL instances.
 func (o DatabaseInstanceSettingsBackupConfigurationPtrOutput) PointInTimeRecoveryEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettingsBackupConfiguration) *bool {
 		if v == nil {

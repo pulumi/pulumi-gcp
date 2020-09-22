@@ -25,7 +25,10 @@ class GroupMembership(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a GroupMembership resource with the given unique name, props, and options.
+        A Membership defines a relationship between a Group and an entity belonging to that Group, referred to as a "member".
+
+        ## Example Usage
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] group: The name of the Group to create this membership in.

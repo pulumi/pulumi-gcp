@@ -18,11 +18,20 @@ namespace Pulumi.Gcp.Container.Outputs
         /// cluster. It is disabled by default. Set `disabled = false` to enable.
         /// </summary>
         public readonly bool Disabled;
+        /// <summary>
+        /// The load balancer type of CloudRun ingress service. It is external load balancer by default.
+        /// Set `load_balancer_type=LOAD_BALANCER_TYPE_INTERNAL` to configure it as internal load balancer.
+        /// </summary>
+        public readonly string? LoadBalancerType;
 
         [OutputConstructor]
-        private ClusterAddonsConfigCloudrunConfig(bool disabled)
+        private ClusterAddonsConfigCloudrunConfig(
+            bool disabled,
+
+            string? loadBalancerType)
         {
             Disabled = disabled;
+            LoadBalancerType = loadBalancerType;
         }
     }
 }

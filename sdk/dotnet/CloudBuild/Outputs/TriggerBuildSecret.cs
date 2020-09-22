@@ -18,10 +18,9 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
         /// </summary>
         public readonly string KmsKeyName;
         /// <summary>
-        /// A list of environment variables which are encrypted using
-        /// a Cloud Key
-        /// Management Service crypto key. These values must be specified in
-        /// the build's `Secret`.
+        /// A list of global environment variables, which are encrypted using a Cloud Key Management
+        /// Service crypto key. These values must be specified in the build's Secret. These variables
+        /// will be available to all build steps in this build.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? SecretEnv;
 

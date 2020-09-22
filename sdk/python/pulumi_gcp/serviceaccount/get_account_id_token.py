@@ -96,7 +96,22 @@ def get_account_id_token(delegates: Optional[List[str]] = None,
                          target_service_account: Optional[str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountIdTokenResult:
     """
-    Use this data source to access information about an existing resource.
+    This data source provides a Google OpenID Connect (`oidc`) `id_token`.  Tokens issued from this data source are typically used to call external services that accept OIDC tokens for authentication (e.g. [Google Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service)).
+
+    For more information see
+    [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#IDToken).
+
+    ## Example Usage
+
+    ### ServiceAccount JSON Credential File.
+      `serviceAccount.getAccountIdToken` will use the configured provider credentials
+
+    ### Service Account Impersonation.
+      `serviceAccount.getAccountAccessToken` will use background impersonated credentials provided by `serviceAccount.getAccountAccessToken`.
+
+      Note: to use the following, you must grant `target_service_account` the
+      `roles/iam.serviceAccountTokenCreator` role on itself.
+
 
     :param List[str] delegates: Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.   Used only when using impersonation mode.
     :param bool include_email: Include the verified email in the claim. Used only when using impersonation mode.

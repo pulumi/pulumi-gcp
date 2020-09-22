@@ -100,9 +100,11 @@ class Disk(pulumi.CustomResource):
                the supported values for the caller's project.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[List[pulumi.Input[str]]] resource_policies: Resource policies applied to this disk for automatic snapshot creations. ~>**NOTE** This value does not support updating
-               the resource policy, as resource policies can not be updated more than one at a time. Use
-               ['google_compute_disk_resource_policy_attachment'](https://www.terraform.io/docs/providers/google/r/compute_disk_resource_policy_attachment.html)
+        :param pulumi.Input[List[pulumi.Input[str]]] resource_policies: Resource policies applied to this disk for automatic snapshot creations.
+               ~>**NOTE** This value does not support updating the
+               resource policy, as resource policies can not be updated more than
+               one at a time. Use
+               `compute.DiskResourcePolicyAttachment`
                to allow for updating the resource policy attached to the disk.
         :param pulumi.Input[float] size: Size of the persistent disk, specified in GB. You can specify this
                field when creating a persistent disk using the `image` or
@@ -248,9 +250,11 @@ class Disk(pulumi.CustomResource):
                the supported values for the caller's project.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[List[pulumi.Input[str]]] resource_policies: Resource policies applied to this disk for automatic snapshot creations. ~>**NOTE** This value does not support updating
-               the resource policy, as resource policies can not be updated more than one at a time. Use
-               ['google_compute_disk_resource_policy_attachment'](https://www.terraform.io/docs/providers/google/r/compute_disk_resource_policy_attachment.html)
+        :param pulumi.Input[List[pulumi.Input[str]]] resource_policies: Resource policies applied to this disk for automatic snapshot creations.
+               ~>**NOTE** This value does not support updating the
+               resource policy, as resource policies can not be updated more than
+               one at a time. Use
+               `compute.DiskResourcePolicyAttachment`
                to allow for updating the resource policy attached to the disk.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[float] size: Size of the persistent disk, specified in GB. You can specify this
@@ -435,9 +439,11 @@ class Disk(pulumi.CustomResource):
     @pulumi.getter(name="resourcePolicies")
     def resource_policies(self) -> pulumi.Output[List[str]]:
         """
-        Resource policies applied to this disk for automatic snapshot creations. ~>**NOTE** This value does not support updating
-        the resource policy, as resource policies can not be updated more than one at a time. Use
-        ['google_compute_disk_resource_policy_attachment'](https://www.terraform.io/docs/providers/google/r/compute_disk_resource_policy_attachment.html)
+        Resource policies applied to this disk for automatic snapshot creations.
+        ~>**NOTE** This value does not support updating the
+        resource policy, as resource policies can not be updated more than
+        one at a time. Use
+        `compute.DiskResourcePolicyAttachment`
         to allow for updating the resource policy attached to the disk.
         """
         return pulumi.get(self, "resource_policies")

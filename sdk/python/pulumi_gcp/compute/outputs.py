@@ -400,6 +400,9 @@ class AutoscalarAutoscalingPolicy(dict):
         :param str mode: Defines operating mode for this policy.
                Default value is `ON`.
                Possible values are `OFF`, `ONLY_UP`, and `ON`.
+        :param 'AutoscalarAutoscalingPolicyScaleDownControlArgs' scale_down_control: Defines scale down controls to reduce the risk of response latency
+               and outages due to abrupt scale-in events
+               Structure is documented below.
         """
         pulumi.set(__self__, "max_replicas", max_replicas)
         pulumi.set(__self__, "min_replicas", min_replicas)
@@ -496,6 +499,11 @@ class AutoscalarAutoscalingPolicy(dict):
     @property
     @pulumi.getter(name="scaleDownControl")
     def scale_down_control(self) -> Optional['outputs.AutoscalarAutoscalingPolicyScaleDownControl']:
+        """
+        Defines scale down controls to reduce the risk of response latency
+        and outages due to abrupt scale-in events
+        Structure is documented below.
+        """
         return pulumi.get(self, "scale_down_control")
 
     def _translate_property(self, prop):
@@ -827,6 +835,9 @@ class AutoscalerAutoscalingPolicy(dict):
         :param str mode: Defines operating mode for this policy.
                Default value is `ON`.
                Possible values are `OFF`, `ONLY_UP`, and `ON`.
+        :param 'AutoscalerAutoscalingPolicyScaleDownControlArgs' scale_down_control: Defines scale down controls to reduce the risk of response latency
+               and outages due to abrupt scale-in events
+               Structure is documented below.
         """
         pulumi.set(__self__, "max_replicas", max_replicas)
         pulumi.set(__self__, "min_replicas", min_replicas)
@@ -923,6 +934,11 @@ class AutoscalerAutoscalingPolicy(dict):
     @property
     @pulumi.getter(name="scaleDownControl")
     def scale_down_control(self) -> Optional['outputs.AutoscalerAutoscalingPolicyScaleDownControl']:
+        """
+        Defines scale down controls to reduce the risk of response latency
+        and outages due to abrupt scale-in events
+        Structure is documented below.
+        """
         return pulumi.get(self, "scale_down_control")
 
     def _translate_property(self, prop):
@@ -2611,7 +2627,7 @@ class FirewallAllow(dict):
         :param str protocol: The IP protocol to which this rule applies. The protocol type is
                required when creating a firewall rule. This value can either be
                one of the following well known protocol strings (tcp, udp,
-               icmp, esp, ah, sctp, ipip), or the IP protocol number.
+               icmp, esp, ah, sctp, ipip, all), or the IP protocol number.
         :param List[str] ports: An optional list of ports to which this rule applies. This field
                is only applicable for UDP or TCP protocol. Each entry must be
                either an integer or a range. If not specified, this rule
@@ -2630,7 +2646,7 @@ class FirewallAllow(dict):
         The IP protocol to which this rule applies. The protocol type is
         required when creating a firewall rule. This value can either be
         one of the following well known protocol strings (tcp, udp,
-        icmp, esp, ah, sctp, ipip), or the IP protocol number.
+        icmp, esp, ah, sctp, ipip, all), or the IP protocol number.
         """
         return pulumi.get(self, "protocol")
 
@@ -2660,7 +2676,7 @@ class FirewallDeny(dict):
         :param str protocol: The IP protocol to which this rule applies. The protocol type is
                required when creating a firewall rule. This value can either be
                one of the following well known protocol strings (tcp, udp,
-               icmp, esp, ah, sctp, ipip), or the IP protocol number.
+               icmp, esp, ah, sctp, ipip, all), or the IP protocol number.
         :param List[str] ports: An optional list of ports to which this rule applies. This field
                is only applicable for UDP or TCP protocol. Each entry must be
                either an integer or a range. If not specified, this rule
@@ -2679,7 +2695,7 @@ class FirewallDeny(dict):
         The IP protocol to which this rule applies. The protocol type is
         required when creating a firewall rule. This value can either be
         one of the following well known protocol strings (tcp, udp,
-        icmp, esp, ah, sctp, ipip), or the IP protocol number.
+        icmp, esp, ah, sctp, ipip, all), or the IP protocol number.
         """
         return pulumi.get(self, "protocol")
 
@@ -5521,8 +5537,10 @@ class InstanceTemplateDisk(dict):
                the size must be exactly 375GB.
         :param str disk_type: The GCE disk type. Can be either `"pd-ssd"`,
                `"local-ssd"`, `"pd-balanced"` or `"pd-standard"`.
-        :param str interface: Specifies the disk interface to use for attaching
-               this disk.
+        :param str interface: Specifies the disk interface to use for attaching this disk, 
+               which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI
+               and the request will fail if you attempt to attach a persistent disk in any other format
+               than SCSI. Local SSDs can use either NVME or SCSI.
         :param Mapping[str, str] labels: A set of key/value label pairs to assign to instances
                created from this template,
         :param str mode: The mode in which to attach this disk, either READ_WRITE
@@ -5530,14 +5548,14 @@ class InstanceTemplateDisk(dict):
                read-write mode.
         :param str source: The name (**not self_link**)
                of the disk (such as those managed by `compute.Disk`) to attach.
-               > **Note:** Either `source` or `source_image` is **required** when creating a new instance except for when creating a local SSD. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+               > **Note:** Either `source` or `source_image` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
         :param str source_image: The image from which to
                initialize this disk. This can be one of: the image's `self_link`,
                `projects/{project}/global/images/{image}`,
                `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
                `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
                `{project}/{image}`, `{family}`, or `{image}`.
-               > **Note:** Either `source` or `source_image` is **required** when creating a new instance except for when creating a local SSD. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+               > **Note:** Either `source` or `source_image` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
         :param str type: The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
         """
         if auto_delete is not None:
@@ -5634,8 +5652,10 @@ class InstanceTemplateDisk(dict):
     @pulumi.getter
     def interface(self) -> Optional[str]:
         """
-        Specifies the disk interface to use for attaching
-        this disk.
+        Specifies the disk interface to use for attaching this disk, 
+        which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI
+        and the request will fail if you attempt to attach a persistent disk in any other format
+        than SCSI. Local SSDs can use either NVME or SCSI.
         """
         return pulumi.get(self, "interface")
 
@@ -5664,7 +5684,7 @@ class InstanceTemplateDisk(dict):
         """
         The name (**not self_link**)
         of the disk (such as those managed by `compute.Disk`) to attach.
-        > **Note:** Either `source` or `source_image` is **required** when creating a new instance except for when creating a local SSD. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+        > **Note:** Either `source` or `source_image` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
         """
         return pulumi.get(self, "source")
 
@@ -5678,7 +5698,7 @@ class InstanceTemplateDisk(dict):
         `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
         `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
         `{project}/{image}`, `{family}`, or `{image}`.
-        > **Note:** Either `source` or `source_image` is **required** when creating a new instance except for when creating a local SSD. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+        > **Note:** Either `source` or `source_image` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
         """
         return pulumi.get(self, "source_image")
 
@@ -6856,6 +6876,9 @@ class RegionAutoscalerAutoscalingPolicy(dict):
         :param str mode: Defines operating mode for this policy.
                Default value is `ON`.
                Possible values are `OFF`, `ONLY_UP`, and `ON`.
+        :param 'RegionAutoscalerAutoscalingPolicyScaleDownControlArgs' scale_down_control: Defines scale down controls to reduce the risk of response latency
+               and outages due to abrupt scale-in events
+               Structure is documented below.
         """
         pulumi.set(__self__, "max_replicas", max_replicas)
         pulumi.set(__self__, "min_replicas", min_replicas)
@@ -6952,6 +6975,11 @@ class RegionAutoscalerAutoscalingPolicy(dict):
     @property
     @pulumi.getter(name="scaleDownControl")
     def scale_down_control(self) -> Optional['outputs.RegionAutoscalerAutoscalingPolicyScaleDownControl']:
+        """
+        Defines scale down controls to reduce the risk of response latency
+        and outages due to abrupt scale-in events
+        Structure is documented below.
+        """
         return pulumi.get(self, "scale_down_control")
 
     def _translate_property(self, prop):

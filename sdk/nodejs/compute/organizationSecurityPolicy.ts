@@ -4,6 +4,17 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Organization security policies are used to control incoming/outgoing traffic.
+ *
+ * To get more information about OrganizationSecurityPolicy, see:
+ *
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies)
+ * * How-to Guides
+ *     * [Creating a firewall policy](https://cloud.google.com/vpc/docs/using-firewall-policies#create-policy)
+ *
+ * ## Example Usage
+ */
 export class OrganizationSecurityPolicy extends pulumi.CustomResource {
     /**
      * Get an existing OrganizationSecurityPolicy resource's state with the given name, ID, and optional extra

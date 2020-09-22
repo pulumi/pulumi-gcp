@@ -25,7 +25,9 @@ namespace Pulumi.Gcp.Compute
     public partial class NodeTemplate : Pulumi.CustomResource
     {
         /// <summary>
-        /// CPU overcommit. Default value: "NONE" Possible values: ["ENABLED", "NONE"]
+        /// CPU overcommit.
+        /// Default value is `NONE`.
+        /// Possible values are `ENABLED` and `NONE`.
         /// </summary>
         [Output("cpuOvercommitType")]
         public Output<string?> CpuOvercommitType { get; private set; } = null!;
@@ -147,7 +149,9 @@ namespace Pulumi.Gcp.Compute
     public sealed class NodeTemplateArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// CPU overcommit. Default value: "NONE" Possible values: ["ENABLED", "NONE"]
+        /// CPU overcommit.
+        /// Default value is `NONE`.
+        /// Possible values are `ENABLED` and `NONE`.
         /// </summary>
         [Input("cpuOvercommitType")]
         public Input<string>? CpuOvercommitType { get; set; }
@@ -224,7 +228,9 @@ namespace Pulumi.Gcp.Compute
     public sealed class NodeTemplateState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// CPU overcommit. Default value: "NONE" Possible values: ["ENABLED", "NONE"]
+        /// CPU overcommit.
+        /// Default value is `NONE`.
+        /// Possible values are `ENABLED` and `NONE`.
         /// </summary>
         [Input("cpuOvercommitType")]
         public Input<string>? CpuOvercommitType { get; set; }

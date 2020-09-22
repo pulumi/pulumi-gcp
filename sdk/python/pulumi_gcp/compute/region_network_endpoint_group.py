@@ -29,7 +29,16 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a RegionNetworkEndpointGroup resource with the given unique name, props, and options.
+        A regional NEG that can support Serverless Products.
+
+        To get more information about RegionNetworkEndpointGroup, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionNetworkEndpointGroups)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/serverless-neg-concepts)
+
+        ## Example Usage
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupAppEngineArgs']] app_engine: Only valid when networkEndpointType is "SERVERLESS".

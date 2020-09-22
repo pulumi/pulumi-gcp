@@ -9,6 +9,21 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Notebooks
 {
+    /// <summary>
+    /// A Cloud AI Platform Notebook instance.
+    /// 
+    /// &gt; **Note:** Due to limitations of the Notebooks Instance API, many fields
+    /// in this resource do not properly detect drift. These fields will also not
+    /// appear in state once imported.
+    /// 
+    /// To get more information about Instance, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/ai-platform/notebooks/docs/reference/rest)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
+    /// 
+    /// ## Example Usage
+    /// </summary>
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>
@@ -79,8 +94,9 @@ namespace Pulumi.Gcp.Notebooks
         public Output<string?> DiskEncryption { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates that this is a boot disk. The virtual machine will
-        /// use the first partition of the disk for its root filesystem.
+        /// Whether the end user authorizes Google Cloud to install GPU driver
+        /// on this instance. If this field is empty or set to false, the GPU driver
+        /// won't be installed. Only applicable to instances with GPUs.
         /// </summary>
         [Output("installGpuDriver")]
         public Output<bool?> InstallGpuDriver { get; private set; } = null!;
@@ -330,8 +346,9 @@ namespace Pulumi.Gcp.Notebooks
         public Input<string>? DiskEncryption { get; set; }
 
         /// <summary>
-        /// Indicates that this is a boot disk. The virtual machine will
-        /// use the first partition of the disk for its root filesystem.
+        /// Whether the end user authorizes Google Cloud to install GPU driver
+        /// on this instance. If this field is empty or set to false, the GPU driver
+        /// won't be installed. Only applicable to instances with GPUs.
         /// </summary>
         [Input("installGpuDriver")]
         public Input<bool>? InstallGpuDriver { get; set; }
@@ -542,8 +559,9 @@ namespace Pulumi.Gcp.Notebooks
         public Input<string>? DiskEncryption { get; set; }
 
         /// <summary>
-        /// Indicates that this is a boot disk. The virtual machine will
-        /// use the first partition of the disk for its root filesystem.
+        /// Whether the end user authorizes Google Cloud to install GPU driver
+        /// on this instance. If this field is empty or set to false, the GPU driver
+        /// won't be installed. Only applicable to instances with GPUs.
         /// </summary>
         [Input("installGpuDriver")]
         public Input<bool>? InstallGpuDriver { get; set; }

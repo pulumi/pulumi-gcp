@@ -51,8 +51,13 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly cluster!: pulumi.Output<string>;
     /**
-     * The initial number of nodes for the pool. In regional or multi-zonal clusters, this is the number of nodes per zone.
-     * Changing this will force recreation of the resource.
+     * The initial number of nodes for the pool. In
+     * regional or multi-zonal clusters, this is the number of nodes per zone. Changing
+     * this will force recreation of the resource. WARNING: Resizing your node pool manually
+     * may change this value in your existing cluster, which will trigger destruction
+     * and recreation on the next provider run (to rectify the discrepancy).  If you don't
+     * need this value, don't set it.  If you do need it, you can use a lifecycle block to
+     * ignore subsqeuent changes to this field.
      */
     public readonly initialNodeCount!: pulumi.Output<number>;
     /**
@@ -197,8 +202,13 @@ export interface NodePoolState {
      */
     readonly cluster?: pulumi.Input<string>;
     /**
-     * The initial number of nodes for the pool. In regional or multi-zonal clusters, this is the number of nodes per zone.
-     * Changing this will force recreation of the resource.
+     * The initial number of nodes for the pool. In
+     * regional or multi-zonal clusters, this is the number of nodes per zone. Changing
+     * this will force recreation of the resource. WARNING: Resizing your node pool manually
+     * may change this value in your existing cluster, which will trigger destruction
+     * and recreation on the next provider run (to rectify the discrepancy).  If you don't
+     * need this value, don't set it.  If you do need it, you can use a lifecycle block to
+     * ignore subsqeuent changes to this field.
      */
     readonly initialNodeCount?: pulumi.Input<number>;
     /**
@@ -285,8 +295,13 @@ export interface NodePoolArgs {
      */
     readonly cluster: pulumi.Input<string>;
     /**
-     * The initial number of nodes for the pool. In regional or multi-zonal clusters, this is the number of nodes per zone.
-     * Changing this will force recreation of the resource.
+     * The initial number of nodes for the pool. In
+     * regional or multi-zonal clusters, this is the number of nodes per zone. Changing
+     * this will force recreation of the resource. WARNING: Resizing your node pool manually
+     * may change this value in your existing cluster, which will trigger destruction
+     * and recreation on the next provider run (to rectify the discrepancy).  If you don't
+     * need this value, don't set it.  If you do need it, you can use a lifecycle block to
+     * ignore subsqeuent changes to this field.
      */
     readonly initialNodeCount?: pulumi.Input<number>;
     /**

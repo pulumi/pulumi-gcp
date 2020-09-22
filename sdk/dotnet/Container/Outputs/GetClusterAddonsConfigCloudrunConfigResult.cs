@@ -14,11 +14,16 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class GetClusterAddonsConfigCloudrunConfigResult
     {
         public readonly bool Disabled;
+        public readonly string LoadBalancerType;
 
         [OutputConstructor]
-        private GetClusterAddonsConfigCloudrunConfigResult(bool disabled)
+        private GetClusterAddonsConfigCloudrunConfigResult(
+            bool disabled,
+
+            string loadBalancerType)
         {
             Disabled = disabled;
+            LoadBalancerType = loadBalancerType;
         }
     }
 }

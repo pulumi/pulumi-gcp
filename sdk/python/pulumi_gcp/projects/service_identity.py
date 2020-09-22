@@ -21,7 +21,17 @@ class ServiceIdentity(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a ServiceIdentity resource with the given unique name, props, and options.
+        Generate service identity for a service.
+
+        > **Note**: Once created, this resource cannot be updated or destroyed. These
+        actions are a no-op.
+
+        To get more information about Service Identity, see:
+
+        * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services/generateServiceIdentity)
+
+        ## Example Usage
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.

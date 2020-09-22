@@ -57,7 +57,7 @@ namespace Pulumi.Gcp.Container
         public Output<string> ClusterIpv4Cidr { get; private set; } = null!;
 
         /// <summary>
-        /// ) Configuration for
+        /// Configuration for
         /// [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
         /// Structure is documented below.
         /// </summary>
@@ -80,7 +80,6 @@ namespace Pulumi.Gcp.Container
         public Output<int> DefaultMaxPodsPerNode { get; private set; } = null!;
 
         /// <summary>
-        /// )
         /// [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig).
         /// </summary>
         [Output("defaultSnatStatus")]
@@ -515,7 +514,7 @@ namespace Pulumi.Gcp.Container
         public Input<string>? ClusterIpv4Cidr { get; set; }
 
         /// <summary>
-        /// ) Configuration for
+        /// Configuration for
         /// [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
         /// Structure is documented below.
         /// </summary>
@@ -538,7 +537,6 @@ namespace Pulumi.Gcp.Container
         public Input<int>? DefaultMaxPodsPerNode { get; set; }
 
         /// <summary>
-        /// )
         /// [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig).
         /// </summary>
         [Input("defaultSnatStatus")]
@@ -899,7 +897,7 @@ namespace Pulumi.Gcp.Container
         public Input<string>? ClusterIpv4Cidr { get; set; }
 
         /// <summary>
-        /// ) Configuration for
+        /// Configuration for
         /// [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
         /// Structure is documented below.
         /// </summary>
@@ -922,7 +920,6 @@ namespace Pulumi.Gcp.Container
         public Input<int>? DefaultMaxPodsPerNode { get; set; }
 
         /// <summary>
-        /// )
         /// [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig).
         /// </summary>
         [Input("defaultSnatStatus")]

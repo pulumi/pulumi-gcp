@@ -6,6 +6,17 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * A Google Cloud Memcache instance.
+ *
+ * To get more information about Instance, see:
+ *
+ * * [API documentation](https://cloud.google.com/memorystore/docs/memcached/reference/rest)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/memcache/docs/creating-instances)
+ *
+ * ## Example Usage
+ */
 export class Instance extends pulumi.CustomResource {
     /**
      * Get an existing Instance resource's state with the given name, ID, and optional extra

@@ -401,6 +401,8 @@ class ClusterClusterConfigArgs:
                  worker_config: Optional[pulumi.Input['ClusterClusterConfigWorkerConfigArgs']] = None):
         """
         :param pulumi.Input['ClusterClusterConfigAutoscalingConfigArgs'] autoscaling_config: The autoscaling policy config associated with the cluster.
+               Note that once set, if `autoscaling_config` is the only field set in `cluster_config`, it can
+               only be removed by setting `policy_uri = ""`, rather than removing the whole block.
                Structure defined below.
         :param pulumi.Input['ClusterClusterConfigEncryptionConfigArgs'] encryption_config: The Customer managed encryption keys settings for the cluster.
                Structure defined below.
@@ -462,6 +464,8 @@ class ClusterClusterConfigArgs:
     def autoscaling_config(self) -> Optional[pulumi.Input['ClusterClusterConfigAutoscalingConfigArgs']]:
         """
         The autoscaling policy config associated with the cluster.
+        Note that once set, if `autoscaling_config` is the only field set in `cluster_config`, it can
+        only be removed by setting `policy_uri = ""`, rather than removing the whole block.
         Structure defined below.
         """
         return pulumi.get(self, "autoscaling_config")

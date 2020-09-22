@@ -39,7 +39,7 @@ type Cluster struct {
 	// automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
 	// only work for routes-based clusters, where `ipAllocationPolicy` is not defined.
 	ClusterIpv4Cidr pulumi.StringOutput `pulumi:"clusterIpv4Cidr"`
-	// ) Configuration for
+	// Configuration for
 	// [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
 	// Structure is documented below.
 	ClusterTelemetry ClusterClusterTelemetryOutput `pulumi:"clusterTelemetry"`
@@ -50,7 +50,6 @@ type Cluster struct {
 	// that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
 	// for more information.
 	DefaultMaxPodsPerNode pulumi.IntOutput `pulumi:"defaultMaxPodsPerNode"`
-	// )
 	// [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig).
 	DefaultSnatStatus ClusterDefaultSnatStatusOutput `pulumi:"defaultSnatStatus"`
 	// Description of the cluster.
@@ -283,7 +282,7 @@ type clusterState struct {
 	// automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
 	// only work for routes-based clusters, where `ipAllocationPolicy` is not defined.
 	ClusterIpv4Cidr *string `pulumi:"clusterIpv4Cidr"`
-	// ) Configuration for
+	// Configuration for
 	// [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
 	// Structure is documented below.
 	ClusterTelemetry *ClusterClusterTelemetry `pulumi:"clusterTelemetry"`
@@ -294,7 +293,6 @@ type clusterState struct {
 	// that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
 	// for more information.
 	DefaultMaxPodsPerNode *int `pulumi:"defaultMaxPodsPerNode"`
-	// )
 	// [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig).
 	DefaultSnatStatus *ClusterDefaultSnatStatus `pulumi:"defaultSnatStatus"`
 	// Description of the cluster.
@@ -500,7 +498,7 @@ type ClusterState struct {
 	// automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
 	// only work for routes-based clusters, where `ipAllocationPolicy` is not defined.
 	ClusterIpv4Cidr pulumi.StringPtrInput
-	// ) Configuration for
+	// Configuration for
 	// [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
 	// Structure is documented below.
 	ClusterTelemetry ClusterClusterTelemetryPtrInput
@@ -511,7 +509,6 @@ type ClusterState struct {
 	// that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
 	// for more information.
 	DefaultMaxPodsPerNode pulumi.IntPtrInput
-	// )
 	// [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig).
 	DefaultSnatStatus ClusterDefaultSnatStatusPtrInput
 	// Description of the cluster.
@@ -721,7 +718,7 @@ type clusterArgs struct {
 	// automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
 	// only work for routes-based clusters, where `ipAllocationPolicy` is not defined.
 	ClusterIpv4Cidr *string `pulumi:"clusterIpv4Cidr"`
-	// ) Configuration for
+	// Configuration for
 	// [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
 	// Structure is documented below.
 	ClusterTelemetry *ClusterClusterTelemetry `pulumi:"clusterTelemetry"`
@@ -732,7 +729,6 @@ type clusterArgs struct {
 	// that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
 	// for more information.
 	DefaultMaxPodsPerNode *int `pulumi:"defaultMaxPodsPerNode"`
-	// )
 	// [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig).
 	DefaultSnatStatus *ClusterDefaultSnatStatus `pulumi:"defaultSnatStatus"`
 	// Description of the cluster.
@@ -916,7 +912,7 @@ type ClusterArgs struct {
 	// automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
 	// only work for routes-based clusters, where `ipAllocationPolicy` is not defined.
 	ClusterIpv4Cidr pulumi.StringPtrInput
-	// ) Configuration for
+	// Configuration for
 	// [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
 	// Structure is documented below.
 	ClusterTelemetry ClusterClusterTelemetryPtrInput
@@ -927,7 +923,6 @@ type ClusterArgs struct {
 	// that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
 	// for more information.
 	DefaultMaxPodsPerNode pulumi.IntPtrInput
-	// )
 	// [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig).
 	DefaultSnatStatus ClusterDefaultSnatStatusPtrInput
 	// Description of the cluster.

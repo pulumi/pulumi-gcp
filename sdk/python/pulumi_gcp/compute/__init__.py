@@ -36,6 +36,7 @@ from .get_network import *
 from .get_network_endpoint_group import *
 from .get_node_types import *
 from .get_region_instance_group import *
+from .get_region_ssl_certificate import *
 from .get_regions import *
 from .get_resource_policy import *
 from .get_router import *
@@ -116,6 +117,7 @@ from .subnetwork import *
 from .subnetwork_iam_binding import *
 from .subnetwork_iam_member import *
 from .subnetwork_iam_policy import *
+from .target_grpc_proxy import *
 from .target_http_proxy import *
 from .target_https_proxy import *
 from .target_instance import *

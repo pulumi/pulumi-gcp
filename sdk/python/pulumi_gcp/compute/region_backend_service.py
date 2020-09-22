@@ -131,7 +131,7 @@ class RegionBackendService(pulumi.CustomResource):
         :param pulumi.Input[str] protocol: The protocol this RegionBackendService uses to communicate with backends.
                The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
                types and may result in errors if used with the GA API.
-               Possible values are `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, and `UDP`.
+               Possible values are `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, and `GRPC`.
         :param pulumi.Input[str] region: The Region in which the created backend service should reside.
                If it is not provided, the provider region is used.
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
@@ -301,7 +301,7 @@ class RegionBackendService(pulumi.CustomResource):
         :param pulumi.Input[str] protocol: The protocol this RegionBackendService uses to communicate with backends.
                The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
                types and may result in errors if used with the GA API.
-               Possible values are `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, and `UDP`.
+               Possible values are `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, and `GRPC`.
         :param pulumi.Input[str] region: The Region in which the created backend service should reside.
                If it is not provided, the provider region is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -549,7 +549,7 @@ class RegionBackendService(pulumi.CustomResource):
         The protocol this RegionBackendService uses to communicate with backends.
         The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
         types and may result in errors if used with the GA API.
-        Possible values are `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, and `UDP`.
+        Possible values are `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, and `GRPC`.
         """
         return pulumi.get(self, "protocol")
 

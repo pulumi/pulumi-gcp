@@ -55,8 +55,8 @@ type Trigger struct {
 	// a build.
 	IncludedFiles pulumi.StringArrayOutput `pulumi:"includedFiles"`
 	// Name of the volume to mount.
-	// Volume names must be unique per build step and must be valid names for
-	// Docker volumes. Each named volume must be used by at least two build steps.
+	// Volume names must be unique per build step and must be valid names for Docker volumes.
+	// Each named volume must be used by at least two build steps.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -138,8 +138,8 @@ type triggerState struct {
 	// a build.
 	IncludedFiles []string `pulumi:"includedFiles"`
 	// Name of the volume to mount.
-	// Volume names must be unique per build step and must be valid names for
-	// Docker volumes. Each named volume must be used by at least two build steps.
+	// Volume names must be unique per build step and must be valid names for Docker volumes.
+	// Each named volume must be used by at least two build steps.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -194,8 +194,8 @@ type TriggerState struct {
 	// a build.
 	IncludedFiles pulumi.StringArrayInput
 	// Name of the volume to mount.
-	// Volume names must be unique per build step and must be valid names for
-	// Docker volumes. Each named volume must be used by at least two build steps.
+	// Volume names must be unique per build step and must be valid names for Docker volumes.
+	// Each named volume must be used by at least two build steps.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -252,8 +252,8 @@ type triggerArgs struct {
 	// a build.
 	IncludedFiles []string `pulumi:"includedFiles"`
 	// Name of the volume to mount.
-	// Volume names must be unique per build step and must be valid names for
-	// Docker volumes. Each named volume must be used by at least two build steps.
+	// Volume names must be unique per build step and must be valid names for Docker volumes.
+	// Each named volume must be used by at least two build steps.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -305,8 +305,8 @@ type TriggerArgs struct {
 	// a build.
 	IncludedFiles pulumi.StringArrayInput
 	// Name of the volume to mount.
-	// Volume names must be unique per build step and must be valid names for
-	// Docker volumes. Each named volume must be used by at least two build steps.
+	// Volume names must be unique per build step and must be valid names for Docker volumes.
+	// Each named volume must be used by at least two build steps.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

@@ -6,6 +6,17 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * A Cloud AI Platform Notebook environment.
+ *
+ * To get more information about Environment, see:
+ *
+ * * [API documentation](https://cloud.google.com/ai-platform/notebooks/docs/reference/rest)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
+ *
+ * ## Example Usage
+ */
 export class Environment extends pulumi.CustomResource {
     /**
      * Get an existing Environment resource's state with the given name, ID, and optional extra

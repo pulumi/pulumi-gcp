@@ -30,6 +30,7 @@ class Job(pulumi.CustomResource):
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  temp_gcs_location: Optional[pulumi.Input[str]] = None,
                  template_gcs_path: Optional[pulumi.Input[str]] = None,
+                 transform_name_mapping: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -67,6 +68,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] subnetwork: The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
         :param pulumi.Input[str] temp_gcs_location: A writeable location on GCS for the Dataflow job to dump its temporary data.
         :param pulumi.Input[str] template_gcs_path: The GCS path to the Dataflow job template.
+        :param pulumi.Input[Mapping[str, Any]] transform_name_mapping: Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
         :param pulumi.Input[str] zone: The zone in which the created job should run. If it is not provided, the provider zone is used.
         """
         if __name__ is not None:
@@ -105,6 +107,7 @@ class Job(pulumi.CustomResource):
             if template_gcs_path is None:
                 raise TypeError("Missing required property 'template_gcs_path'")
             __props__['template_gcs_path'] = template_gcs_path
+            __props__['transform_name_mapping'] = transform_name_mapping
             __props__['zone'] = zone
             __props__['job_id'] = None
             __props__['state'] = None
@@ -136,6 +139,7 @@ class Job(pulumi.CustomResource):
             subnetwork: Optional[pulumi.Input[str]] = None,
             temp_gcs_location: Optional[pulumi.Input[str]] = None,
             template_gcs_path: Optional[pulumi.Input[str]] = None,
+            transform_name_mapping: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             type: Optional[pulumi.Input[str]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'Job':
         """
@@ -165,6 +169,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] subnetwork: The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
         :param pulumi.Input[str] temp_gcs_location: A writeable location on GCS for the Dataflow job to dump its temporary data.
         :param pulumi.Input[str] template_gcs_path: The GCS path to the Dataflow job template.
+        :param pulumi.Input[Mapping[str, Any]] transform_name_mapping: Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
         :param pulumi.Input[str] type: The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)
         :param pulumi.Input[str] zone: The zone in which the created job should run. If it is not provided, the provider zone is used.
         """
@@ -189,6 +194,7 @@ class Job(pulumi.CustomResource):
         __props__["subnetwork"] = subnetwork
         __props__["temp_gcs_location"] = temp_gcs_location
         __props__["template_gcs_path"] = template_gcs_path
+        __props__["transform_name_mapping"] = transform_name_mapping
         __props__["type"] = type
         __props__["zone"] = zone
         return Job(resource_name, opts=opts, __props__=__props__)
@@ -331,6 +337,14 @@ class Job(pulumi.CustomResource):
         The GCS path to the Dataflow job template.
         """
         return pulumi.get(self, "template_gcs_path")
+
+    @property
+    @pulumi.getter(name="transformNameMapping")
+    def transform_name_mapping(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
+        """
+        return pulumi.get(self, "transform_name_mapping")
 
     @property
     @pulumi.getter
