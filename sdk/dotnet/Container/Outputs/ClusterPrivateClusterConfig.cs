@@ -27,6 +27,11 @@ namespace Pulumi.Gcp.Container.Outputs
         /// endpoint via private networking.
         /// </summary>
         public readonly bool? EnablePrivateNodes;
+        /// <summary>
+        /// Controls cluster master global
+        /// access settings. If unset, the provider will no longer manage this field and will
+        /// not modify the previously-set value. Structure is documented below.
+        /// </summary>
         public readonly Outputs.ClusterPrivateClusterConfigMasterGlobalAccessConfig? MasterGlobalAccessConfig;
         /// <summary>
         /// The IP range in CIDR notation to use for

@@ -18,6 +18,9 @@ namespace Pulumi.Gcp.Composer.Inputs
         [Input("dagGcsPrefix")]
         public Input<string>? DagGcsPrefix { get; set; }
 
+        /// <summary>
+        /// The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
+        /// </summary>
         [Input("databaseConfig")]
         public Input<Inputs.EnvironmentConfigDatabaseConfigGetArgs>? DatabaseConfig { get; set; }
 
@@ -49,6 +52,9 @@ namespace Pulumi.Gcp.Composer.Inputs
         [Input("softwareConfig")]
         public Input<Inputs.EnvironmentConfigSoftwareConfigGetArgs>? SoftwareConfig { get; set; }
 
+        /// <summary>
+        /// The configuration settings for the Airflow web server App Engine instance.
+        /// </summary>
         [Input("webServerConfig")]
         public Input<Inputs.EnvironmentConfigWebServerConfigGetArgs>? WebServerConfig { get; set; }
 

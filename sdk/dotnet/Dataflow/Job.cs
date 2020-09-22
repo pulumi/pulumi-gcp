@@ -130,6 +130,12 @@ namespace Pulumi.Gcp.Dataflow
         public Output<string> TemplateGcsPath { get; private set; } = null!;
 
         /// <summary>
+        /// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
+        /// </summary>
+        [Output("transformNameMapping")]
+        public Output<ImmutableDictionary<string, object>?> TransformNameMapping { get; private set; } = null!;
+
+        /// <summary>
         /// The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)
         /// </summary>
         [Output("type")]
@@ -298,6 +304,18 @@ namespace Pulumi.Gcp.Dataflow
         [Input("templateGcsPath", required: true)]
         public Input<string> TemplateGcsPath { get; set; } = null!;
 
+        [Input("transformNameMapping")]
+        private InputMap<object>? _transformNameMapping;
+
+        /// <summary>
+        /// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
+        /// </summary>
+        public InputMap<object> TransformNameMapping
+        {
+            get => _transformNameMapping ?? (_transformNameMapping = new InputMap<object>());
+            set => _transformNameMapping = value;
+        }
+
         /// <summary>
         /// The zone in which the created job should run. If it is not provided, the provider zone is used.
         /// </summary>
@@ -433,6 +451,18 @@ namespace Pulumi.Gcp.Dataflow
         /// </summary>
         [Input("templateGcsPath")]
         public Input<string>? TemplateGcsPath { get; set; }
+
+        [Input("transformNameMapping")]
+        private InputMap<object>? _transformNameMapping;
+
+        /// <summary>
+        /// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
+        /// </summary>
+        public InputMap<object> TransformNameMapping
+        {
+            get => _transformNameMapping ?? (_transformNameMapping = new InputMap<object>());
+            set => _transformNameMapping = value;
+        }
 
         /// <summary>
         /// The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)

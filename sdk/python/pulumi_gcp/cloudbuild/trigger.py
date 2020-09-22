@@ -70,8 +70,8 @@ class Trigger(pulumi.CustomResource):
                those files matches a includedFiles glob. If not, then we do not trigger
                a build.
         :param pulumi.Input[str] name: Name of the volume to mount.
-               Volume names must be unique per build step and must be valid names for
-               Docker volumes. Each named volume must be used by at least two build steps.
+               Volume names must be unique per build step and must be valid names for Docker volumes.
+               Each named volume must be used by at least two build steps.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] substitutions: Substitutions to use in a triggered build. Should only be used with triggers.run
@@ -171,8 +171,8 @@ class Trigger(pulumi.CustomResource):
                those files matches a includedFiles glob. If not, then we do not trigger
                a build.
         :param pulumi.Input[str] name: Name of the volume to mount.
-               Volume names must be unique per build step and must be valid names for
-               Docker volumes. Each named volume must be used by at least two build steps.
+               Volume names must be unique per build step and must be valid names for Docker volumes.
+               Each named volume must be used by at least two build steps.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] substitutions: Substitutions to use in a triggered build. Should only be used with triggers.run
@@ -291,8 +291,8 @@ class Trigger(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         Name of the volume to mount.
-        Volume names must be unique per build step and must be valid names for
-        Docker volumes. Each named volume must be used by at least two build steps.
+        Volume names must be unique per build step and must be valid names for Docker volumes.
+        Each named volume must be used by at least two build steps.
         """
         return pulumi.get(self, "name")
 

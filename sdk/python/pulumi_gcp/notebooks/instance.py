@@ -48,7 +48,20 @@ class Instance(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a Instance resource with the given unique name, props, and options.
+        A Cloud AI Platform Notebook instance.
+
+        > **Note:** Due to limitations of the Notebooks Instance API, many fields
+        in this resource do not properly detect drift. These fields will also not
+        appear in state once imported.
+
+        To get more information about Instance, see:
+
+        * [API documentation](https://cloud.google.com/ai-platform/notebooks/docs/reference/rest)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
+
+        ## Example Usage
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['InstanceAcceleratorConfigArgs']] accelerator_config: The hardware accelerator used on this instance. If you use accelerators,
@@ -73,8 +86,9 @@ class Instance(pulumi.CustomResource):
                Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
         :param pulumi.Input[str] disk_encryption: Disk encryption method used on the boot and data disks, defaults to GMEK.
                Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
-        :param pulumi.Input[bool] install_gpu_driver: Indicates that this is a boot disk. The virtual machine will
-               use the first partition of the disk for its root filesystem.
+        :param pulumi.Input[bool] install_gpu_driver: Whether the end user authorizes Google Cloud to install GPU driver
+               on this instance. If this field is empty or set to false, the GPU driver
+               won't be installed. Only applicable to instances with GPUs.
         :param pulumi.Input[str] instance_owners: The list of owners of this instance after creation.
                Format: alias@example.com.
                Currently supports one owner only.
@@ -228,8 +242,9 @@ class Instance(pulumi.CustomResource):
                Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
         :param pulumi.Input[str] disk_encryption: Disk encryption method used on the boot and data disks, defaults to GMEK.
                Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
-        :param pulumi.Input[bool] install_gpu_driver: Indicates that this is a boot disk. The virtual machine will
-               use the first partition of the disk for its root filesystem.
+        :param pulumi.Input[bool] install_gpu_driver: Whether the end user authorizes Google Cloud to install GPU driver
+               on this instance. If this field is empty or set to false, the GPU driver
+               won't be installed. Only applicable to instances with GPUs.
         :param pulumi.Input[str] instance_owners: The list of owners of this instance after creation.
                Format: alias@example.com.
                Currently supports one owner only.
@@ -391,8 +406,9 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="installGpuDriver")
     def install_gpu_driver(self) -> pulumi.Output[Optional[bool]]:
         """
-        Indicates that this is a boot disk. The virtual machine will
-        use the first partition of the disk for its root filesystem.
+        Whether the end user authorizes Google Cloud to install GPU driver
+        on this instance. If this field is empty or set to false, the GPU driver
+        won't be installed. Only applicable to instances with GPUs.
         """
         return pulumi.get(self, "install_gpu_driver")
 

@@ -6,6 +6,11 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * A Membership defines a relationship between a Group and an entity belonging to that Group, referred to as a "member".
+ *
+ * ## Example Usage
+ */
 export class GroupMembership extends pulumi.CustomResource {
     /**
      * Get an existing GroupMembership resource's state with the given name, ID, and optional extra

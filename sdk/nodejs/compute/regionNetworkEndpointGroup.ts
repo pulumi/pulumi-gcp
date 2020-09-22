@@ -6,6 +6,17 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * A regional NEG that can support Serverless Products.
+ *
+ * To get more information about RegionNetworkEndpointGroup, see:
+ *
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionNetworkEndpointGroups)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/serverless-neg-concepts)
+ *
+ * ## Example Usage
+ */
 export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
     /**
      * Get an existing RegionNetworkEndpointGroup resource's state with the given name, ID, and optional extra

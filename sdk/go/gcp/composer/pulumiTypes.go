@@ -11,8 +11,9 @@ import (
 )
 
 type EnvironmentConfig struct {
-	AirflowUri     *string                          `pulumi:"airflowUri"`
-	DagGcsPrefix   *string                          `pulumi:"dagGcsPrefix"`
+	AirflowUri   *string `pulumi:"airflowUri"`
+	DagGcsPrefix *string `pulumi:"dagGcsPrefix"`
+	// The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
 	DatabaseConfig *EnvironmentConfigDatabaseConfig `pulumi:"databaseConfig"`
 	GkeCluster     *string                          `pulumi:"gkeCluster"`
 	// The configuration used for the Kubernetes Engine cluster.  Structure is documented below.
@@ -23,7 +24,8 @@ type EnvironmentConfig struct {
 	// The configuration used for the Private IP Cloud Composer environment. Structure is documented below.
 	PrivateEnvironmentConfig *EnvironmentConfigPrivateEnvironmentConfig `pulumi:"privateEnvironmentConfig"`
 	// The configuration settings for software inside the environment.  Structure is documented below.
-	SoftwareConfig  *EnvironmentConfigSoftwareConfig  `pulumi:"softwareConfig"`
+	SoftwareConfig *EnvironmentConfigSoftwareConfig `pulumi:"softwareConfig"`
+	// The configuration settings for the Airflow web server App Engine instance.
 	WebServerConfig *EnvironmentConfigWebServerConfig `pulumi:"webServerConfig"`
 	// The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
 	WebServerNetworkAccessControl *EnvironmentConfigWebServerNetworkAccessControl `pulumi:"webServerNetworkAccessControl"`
@@ -41,8 +43,9 @@ type EnvironmentConfigInput interface {
 }
 
 type EnvironmentConfigArgs struct {
-	AirflowUri     pulumi.StringPtrInput                   `pulumi:"airflowUri"`
-	DagGcsPrefix   pulumi.StringPtrInput                   `pulumi:"dagGcsPrefix"`
+	AirflowUri   pulumi.StringPtrInput `pulumi:"airflowUri"`
+	DagGcsPrefix pulumi.StringPtrInput `pulumi:"dagGcsPrefix"`
+	// The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
 	DatabaseConfig EnvironmentConfigDatabaseConfigPtrInput `pulumi:"databaseConfig"`
 	GkeCluster     pulumi.StringPtrInput                   `pulumi:"gkeCluster"`
 	// The configuration used for the Kubernetes Engine cluster.  Structure is documented below.
@@ -53,7 +56,8 @@ type EnvironmentConfigArgs struct {
 	// The configuration used for the Private IP Cloud Composer environment. Structure is documented below.
 	PrivateEnvironmentConfig EnvironmentConfigPrivateEnvironmentConfigPtrInput `pulumi:"privateEnvironmentConfig"`
 	// The configuration settings for software inside the environment.  Structure is documented below.
-	SoftwareConfig  EnvironmentConfigSoftwareConfigPtrInput  `pulumi:"softwareConfig"`
+	SoftwareConfig EnvironmentConfigSoftwareConfigPtrInput `pulumi:"softwareConfig"`
+	// The configuration settings for the Airflow web server App Engine instance.
 	WebServerConfig EnvironmentConfigWebServerConfigPtrInput `pulumi:"webServerConfig"`
 	// The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
 	WebServerNetworkAccessControl EnvironmentConfigWebServerNetworkAccessControlPtrInput `pulumi:"webServerNetworkAccessControl"`
@@ -143,6 +147,7 @@ func (o EnvironmentConfigOutput) DagGcsPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *string { return v.DagGcsPrefix }).(pulumi.StringPtrOutput)
 }
 
+// The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
 func (o EnvironmentConfigOutput) DatabaseConfig() EnvironmentConfigDatabaseConfigPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigDatabaseConfig { return v.DatabaseConfig }).(EnvironmentConfigDatabaseConfigPtrOutput)
 }
@@ -174,6 +179,7 @@ func (o EnvironmentConfigOutput) SoftwareConfig() EnvironmentConfigSoftwareConfi
 	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigSoftwareConfig { return v.SoftwareConfig }).(EnvironmentConfigSoftwareConfigPtrOutput)
 }
 
+// The configuration settings for the Airflow web server App Engine instance.
 func (o EnvironmentConfigOutput) WebServerConfig() EnvironmentConfigWebServerConfigPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigWebServerConfig { return v.WebServerConfig }).(EnvironmentConfigWebServerConfigPtrOutput)
 }
@@ -221,6 +227,7 @@ func (o EnvironmentConfigPtrOutput) DagGcsPrefix() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
 func (o EnvironmentConfigPtrOutput) DatabaseConfig() EnvironmentConfigDatabaseConfigPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) *EnvironmentConfigDatabaseConfig {
 		if v == nil {
@@ -280,6 +287,7 @@ func (o EnvironmentConfigPtrOutput) SoftwareConfig() EnvironmentConfigSoftwareCo
 	}).(EnvironmentConfigSoftwareConfigPtrOutput)
 }
 
+// The configuration settings for the Airflow web server App Engine instance.
 func (o EnvironmentConfigPtrOutput) WebServerConfig() EnvironmentConfigWebServerConfigPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) *EnvironmentConfigWebServerConfig {
 		if v == nil {

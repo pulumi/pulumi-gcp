@@ -9,10 +9,21 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
+    /// <summary>
+    /// Three different resources help you manage your IAM policy for Compute Engine Image. Each of these resources serves a different use case:
+    /// 
+    /// * `gcp.compute.ImageIamPolicy`: Authoritative. Sets the IAM policy for the image and replaces any existing policy already attached.
+    /// * `gcp.compute.ImageIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the image are preserved.
+    /// * `gcp.compute.ImageIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the image are preserved.
+    /// 
+    /// &gt; **Note:** `gcp.compute.ImageIamPolicy` **cannot** be used in conjunction with `gcp.compute.ImageIamBinding` and `gcp.compute.ImageIamMember` or they will fight over what your policy should be.
+    /// 
+    /// &gt; **Note:** `gcp.compute.ImageIamBinding` resources **can be** used in conjunction with `gcp.compute.ImageIamMember` resources **only if** they do not grant privilege to the same role.
+    /// </summary>
     public partial class ImageIamMember : Pulumi.CustomResource
     {
         /// <summary>
-        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         /// Structure is documented below.
         /// </summary>
         [Output("condition")]
@@ -95,7 +106,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class ImageIamMemberArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         /// Structure is documented below.
         /// </summary>
         [Input("condition")]
@@ -133,7 +144,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class ImageIamMemberState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         /// Structure is documented below.
         /// </summary>
         [Input("condition")]

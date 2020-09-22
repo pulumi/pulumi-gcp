@@ -15,6 +15,8 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     {
         /// <summary>
         /// The autoscaling policy config associated with the cluster.
+        /// Note that once set, if `autoscaling_config` is the only field set in `cluster_config`, it can
+        /// only be removed by setting `policy_uri = ""`, rather than removing the whole block.
         /// Structure defined below.
         /// </summary>
         public readonly Outputs.ClusterClusterConfigAutoscalingConfig? AutoscalingConfig;

@@ -10,6 +10,19 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// A Cloud AI Platform Notebook instance.
+//
+// > **Note:** Due to limitations of the Notebooks Instance API, many fields
+// in this resource do not properly detect drift. These fields will also not
+// appear in state once imported.
+//
+// To get more information about Instance, see:
+//
+// * [API documentation](https://cloud.google.com/ai-platform/notebooks/docs/reference/rest)
+// * How-to Guides
+//     * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
+//
+// ## Example Usage
 type Instance struct {
 	pulumi.CustomResourceState
 
@@ -44,8 +57,9 @@ type Instance struct {
 	// Disk encryption method used on the boot and data disks, defaults to GMEK.
 	// Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
 	DiskEncryption pulumi.StringPtrOutput `pulumi:"diskEncryption"`
-	// Indicates that this is a boot disk. The virtual machine will
-	// use the first partition of the disk for its root filesystem.
+	// Whether the end user authorizes Google Cloud to install GPU driver
+	// on this instance. If this field is empty or set to false, the GPU driver
+	// won't be installed. Only applicable to instances with GPUs.
 	InstallGpuDriver pulumi.BoolPtrOutput `pulumi:"installGpuDriver"`
 	// The list of owners of this instance after creation.
 	// Format: alias@example.com.
@@ -169,8 +183,9 @@ type instanceState struct {
 	// Disk encryption method used on the boot and data disks, defaults to GMEK.
 	// Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
 	DiskEncryption *string `pulumi:"diskEncryption"`
-	// Indicates that this is a boot disk. The virtual machine will
-	// use the first partition of the disk for its root filesystem.
+	// Whether the end user authorizes Google Cloud to install GPU driver
+	// on this instance. If this field is empty or set to false, the GPU driver
+	// won't be installed. Only applicable to instances with GPUs.
 	InstallGpuDriver *bool `pulumi:"installGpuDriver"`
 	// The list of owners of this instance after creation.
 	// Format: alias@example.com.
@@ -261,8 +276,9 @@ type InstanceState struct {
 	// Disk encryption method used on the boot and data disks, defaults to GMEK.
 	// Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
 	DiskEncryption pulumi.StringPtrInput
-	// Indicates that this is a boot disk. The virtual machine will
-	// use the first partition of the disk for its root filesystem.
+	// Whether the end user authorizes Google Cloud to install GPU driver
+	// on this instance. If this field is empty or set to false, the GPU driver
+	// won't be installed. Only applicable to instances with GPUs.
 	InstallGpuDriver pulumi.BoolPtrInput
 	// The list of owners of this instance after creation.
 	// Format: alias@example.com.
@@ -357,8 +373,9 @@ type instanceArgs struct {
 	// Disk encryption method used on the boot and data disks, defaults to GMEK.
 	// Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
 	DiskEncryption *string `pulumi:"diskEncryption"`
-	// Indicates that this is a boot disk. The virtual machine will
-	// use the first partition of the disk for its root filesystem.
+	// Whether the end user authorizes Google Cloud to install GPU driver
+	// on this instance. If this field is empty or set to false, the GPU driver
+	// won't be installed. Only applicable to instances with GPUs.
 	InstallGpuDriver *bool `pulumi:"installGpuDriver"`
 	// The list of owners of this instance after creation.
 	// Format: alias@example.com.
@@ -446,8 +463,9 @@ type InstanceArgs struct {
 	// Disk encryption method used on the boot and data disks, defaults to GMEK.
 	// Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
 	DiskEncryption pulumi.StringPtrInput
-	// Indicates that this is a boot disk. The virtual machine will
-	// use the first partition of the disk for its root filesystem.
+	// Whether the end user authorizes Google Cloud to install GPU driver
+	// on this instance. If this field is empty or set to false, the GPU driver
+	// won't be installed. Only applicable to instances with GPUs.
 	InstallGpuDriver pulumi.BoolPtrInput
 	// The list of owners of this instance after creation.
 	// Format: alias@example.com.

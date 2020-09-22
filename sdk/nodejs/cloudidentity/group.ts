@@ -6,6 +6,11 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * A Cloud Identity resource representing a Group.
+ *
+ * ## Example Usage
+ */
 export class Group extends pulumi.CustomResource {
     /**
      * Get an existing Group resource's state with the given name, ID, and optional extra

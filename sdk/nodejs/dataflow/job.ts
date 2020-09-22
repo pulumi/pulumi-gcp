@@ -117,6 +117,10 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly templateGcsPath!: pulumi.Output<string>;
     /**
+     * Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
+     */
+    public readonly transformNameMapping!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
      * The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
@@ -154,6 +158,7 @@ export class Job extends pulumi.CustomResource {
             inputs["subnetwork"] = state ? state.subnetwork : undefined;
             inputs["tempGcsLocation"] = state ? state.tempGcsLocation : undefined;
             inputs["templateGcsPath"] = state ? state.templateGcsPath : undefined;
+            inputs["transformNameMapping"] = state ? state.transformNameMapping : undefined;
             inputs["type"] = state ? state.type : undefined;
             inputs["zone"] = state ? state.zone : undefined;
         } else {
@@ -179,6 +184,7 @@ export class Job extends pulumi.CustomResource {
             inputs["subnetwork"] = args ? args.subnetwork : undefined;
             inputs["tempGcsLocation"] = args ? args.tempGcsLocation : undefined;
             inputs["templateGcsPath"] = args ? args.templateGcsPath : undefined;
+            inputs["transformNameMapping"] = args ? args.transformNameMapping : undefined;
             inputs["zone"] = args ? args.zone : undefined;
             inputs["jobId"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
@@ -271,6 +277,10 @@ export interface JobState {
      */
     readonly templateGcsPath?: pulumi.Input<string>;
     /**
+     * Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
+     */
+    readonly transformNameMapping?: pulumi.Input<{[key: string]: any}>;
+    /**
      * The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)
      */
     readonly type?: pulumi.Input<string>;
@@ -347,6 +357,10 @@ export interface JobArgs {
      * The GCS path to the Dataflow job template.
      */
     readonly templateGcsPath: pulumi.Input<string>;
+    /**
+     * Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
+     */
+    readonly transformNameMapping?: pulumi.Input<{[key: string]: any}>;
     /**
      * The zone in which the created job should run. If it is not provided, the provider zone is used.
      */

@@ -14,9 +14,7 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterAddonsConfig
     {
         /// <summary>
-        /// .
-        /// The status of the CloudRun addon. It is disabled by default.
-        /// Set `disabled = false` to enable.
+        /// . Structure is documented below.
         /// </summary>
         public readonly Outputs.ClusterAddonsConfigCloudrunConfig? CloudrunConfig;
         /// <summary>

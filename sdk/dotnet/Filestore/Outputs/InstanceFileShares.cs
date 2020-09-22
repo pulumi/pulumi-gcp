@@ -22,6 +22,10 @@ namespace Pulumi.Gcp.Filestore.Outputs
         /// The name of the fileshare (16 characters or less)
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Nfs Export Options. There is a limit of 10 export options per file share.
+        /// Structure is documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.InstanceFileSharesNfsExportOption> NfsExportOptions;
 
         [OutputConstructor]

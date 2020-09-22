@@ -36,11 +36,13 @@ class EnvironmentConfig(dict):
                  web_server_config: Optional['outputs.EnvironmentConfigWebServerConfig'] = None,
                  web_server_network_access_control: Optional['outputs.EnvironmentConfigWebServerNetworkAccessControl'] = None):
         """
+        :param 'EnvironmentConfigDatabaseConfigArgs' database_config: The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
         :param 'EnvironmentConfigNodeConfigArgs' node_config: The configuration used for the Kubernetes Engine cluster.  Structure is documented below.
         :param float node_count: The number of nodes in the Kubernetes Engine cluster that
                will be used to run this environment.
         :param 'EnvironmentConfigPrivateEnvironmentConfigArgs' private_environment_config: The configuration used for the Private IP Cloud Composer environment. Structure is documented below.
         :param 'EnvironmentConfigSoftwareConfigArgs' software_config: The configuration settings for software inside the environment.  Structure is documented below.
+        :param 'EnvironmentConfigWebServerConfigArgs' web_server_config: The configuration settings for the Airflow web server App Engine instance.
         :param 'EnvironmentConfigWebServerNetworkAccessControlArgs' web_server_network_access_control: The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
         """
         if airflow_uri is not None:
@@ -77,6 +79,9 @@ class EnvironmentConfig(dict):
     @property
     @pulumi.getter(name="databaseConfig")
     def database_config(self) -> Optional['outputs.EnvironmentConfigDatabaseConfig']:
+        """
+        The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
+        """
         return pulumi.get(self, "database_config")
 
     @property
@@ -120,6 +125,9 @@ class EnvironmentConfig(dict):
     @property
     @pulumi.getter(name="webServerConfig")
     def web_server_config(self) -> Optional['outputs.EnvironmentConfigWebServerConfig']:
+        """
+        The configuration settings for the Airflow web server App Engine instance.
+        """
         return pulumi.get(self, "web_server_config")
 
     @property

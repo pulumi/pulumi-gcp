@@ -4,6 +4,19 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * A Cloud Spanner Database which is hosted on a Spanner instance.
+ *
+ * To get more information about Database, see:
+ *
+ * * [API documentation](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances.databases)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/spanner/)
+ *
+ * > **Warning:** It is strongly recommended to set `lifecycle { preventDestroy = true }` on databases in order to prevent accidental data loss.
+ *
+ * ## Example Usage
+ */
 export class Database extends pulumi.CustomResource {
     /**
      * Get an existing Database resource's state with the given name, ID, and optional extra

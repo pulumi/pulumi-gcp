@@ -10,6 +10,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Generate service identity for a service.
+//
+// > **Note**: Once created, this resource cannot be updated or destroyed. These
+// actions are a no-op.
+//
+// To get more information about Service Identity, see:
+//
+// * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services/generateServiceIdentity)
+//
+// ## Example Usage
 type ServiceIdentity struct {
 	pulumi.CustomResourceState
 

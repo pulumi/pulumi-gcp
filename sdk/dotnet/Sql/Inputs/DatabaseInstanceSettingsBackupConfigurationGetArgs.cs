@@ -30,7 +30,7 @@ namespace Pulumi.Gcp.Sql.Inputs
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation.
+        /// True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL instances.
         /// </summary>
         [Input("pointInTimeRecoveryEnabled")]
         public Input<bool>? PointInTimeRecoveryEnabled { get; set; }

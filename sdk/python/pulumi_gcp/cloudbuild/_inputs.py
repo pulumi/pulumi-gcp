@@ -10,6 +10,11 @@ from .. import _utilities, _tables
 
 __all__ = [
     'TriggerBuildArgs',
+    'TriggerBuildArtifactsArgs',
+    'TriggerBuildArtifactsObjectsArgs',
+    'TriggerBuildArtifactsObjectsTimingArgs',
+    'TriggerBuildOptionsArgs',
+    'TriggerBuildOptionsVolumeArgs',
     'TriggerBuildSecretArgs',
     'TriggerBuildSourceArgs',
     'TriggerBuildSourceRepoSourceArgs',
@@ -26,8 +31,10 @@ __all__ = [
 class TriggerBuildArgs:
     def __init__(__self__, *,
                  steps: pulumi.Input[List[pulumi.Input['TriggerBuildStepArgs']]],
+                 artifacts: Optional[pulumi.Input['TriggerBuildArtifactsArgs']] = None,
                  images: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  logs_bucket: Optional[pulumi.Input[str]] = None,
+                 options: Optional[pulumi.Input['TriggerBuildOptionsArgs']] = None,
                  queue_ttl: Optional[pulumi.Input[str]] = None,
                  secrets: Optional[pulumi.Input[List[pulumi.Input['TriggerBuildSecretArgs']]]] = None,
                  source: Optional[pulumi.Input['TriggerBuildSourceArgs']] = None,
@@ -37,12 +44,16 @@ class TriggerBuildArgs:
         """
         :param pulumi.Input[List[pulumi.Input['TriggerBuildStepArgs']]] steps: The operations to be performed on the workspace.
                Structure is documented below.
+        :param pulumi.Input['TriggerBuildArtifactsArgs'] artifacts: Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
+               Structure is documented below.
         :param pulumi.Input[List[pulumi.Input[str]]] images: A list of images to be pushed upon the successful completion of all build steps.
-               The images are pushed using the builder service account's credentials.
+               The images will be pushed using the builder service account's credentials.
                The digests of the pushed images will be stored in the Build resource's results field.
-               If any of the images fail to be pushed, the build status is marked FAILURE.
+               If any of the images fail to be pushed, the build is marked FAILURE.
         :param pulumi.Input[str] logs_bucket: Google Cloud Storage bucket where logs should be written.
                Logs file names will be of the format ${logsBucket}/log-${build_id}.txt.
+        :param pulumi.Input['TriggerBuildOptionsArgs'] options: Special options for this build.
+               Structure is documented below.
         :param pulumi.Input[str] queue_ttl: TTL in queue for this build. If provided and the build is enqueued longer than this value,
                the build will expire and the build status will be EXPIRED.
                The TTL starts ticking from createTime.
@@ -60,10 +71,14 @@ class TriggerBuildArgs:
                completes or the build itself times out.
         """
         pulumi.set(__self__, "steps", steps)
+        if artifacts is not None:
+            pulumi.set(__self__, "artifacts", artifacts)
         if images is not None:
             pulumi.set(__self__, "images", images)
         if logs_bucket is not None:
             pulumi.set(__self__, "logs_bucket", logs_bucket)
+        if options is not None:
+            pulumi.set(__self__, "options", options)
         if queue_ttl is not None:
             pulumi.set(__self__, "queue_ttl", queue_ttl)
         if secrets is not None:
@@ -92,12 +107,25 @@ class TriggerBuildArgs:
 
     @property
     @pulumi.getter
+    def artifacts(self) -> Optional[pulumi.Input['TriggerBuildArtifactsArgs']]:
+        """
+        Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "artifacts")
+
+    @artifacts.setter
+    def artifacts(self, value: Optional[pulumi.Input['TriggerBuildArtifactsArgs']]):
+        pulumi.set(self, "artifacts", value)
+
+    @property
+    @pulumi.getter
     def images(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
         """
         A list of images to be pushed upon the successful completion of all build steps.
-        The images are pushed using the builder service account's credentials.
+        The images will be pushed using the builder service account's credentials.
         The digests of the pushed images will be stored in the Build resource's results field.
-        If any of the images fail to be pushed, the build status is marked FAILURE.
+        If any of the images fail to be pushed, the build is marked FAILURE.
         """
         return pulumi.get(self, "images")
 
@@ -117,6 +145,19 @@ class TriggerBuildArgs:
     @logs_bucket.setter
     def logs_bucket(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "logs_bucket", value)
+
+    @property
+    @pulumi.getter
+    def options(self) -> Optional[pulumi.Input['TriggerBuildOptionsArgs']]:
+        """
+        Special options for this build.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "options")
+
+    @options.setter
+    def options(self, value: Optional[pulumi.Input['TriggerBuildOptionsArgs']]):
+        pulumi.set(self, "options", value)
 
     @property
     @pulumi.getter(name="queueTtl")
@@ -201,16 +242,476 @@ class TriggerBuildArgs:
 
 
 @pulumi.input_type
+class TriggerBuildArtifactsArgs:
+    def __init__(__self__, *,
+                 images: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 objects: Optional[pulumi.Input['TriggerBuildArtifactsObjectsArgs']] = None):
+        """
+        :param pulumi.Input[List[pulumi.Input[str]]] images: A list of images to be pushed upon the successful completion of all build steps.
+               The images will be pushed using the builder service account's credentials.
+               The digests of the pushed images will be stored in the Build resource's results field.
+               If any of the images fail to be pushed, the build is marked FAILURE.
+        :param pulumi.Input['TriggerBuildArtifactsObjectsArgs'] objects: A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps.
+               Files in the workspace matching specified paths globs will be uploaded to the
+               Cloud Storage location using the builder service account's credentials.
+               The location and generation of the uploaded objects will be stored in the Build resource's results field.
+               If any objects fail to be pushed, the build is marked FAILURE.
+               Structure is documented below.
+        """
+        if images is not None:
+            pulumi.set(__self__, "images", images)
+        if objects is not None:
+            pulumi.set(__self__, "objects", objects)
+
+    @property
+    @pulumi.getter
+    def images(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+        """
+        A list of images to be pushed upon the successful completion of all build steps.
+        The images will be pushed using the builder service account's credentials.
+        The digests of the pushed images will be stored in the Build resource's results field.
+        If any of the images fail to be pushed, the build is marked FAILURE.
+        """
+        return pulumi.get(self, "images")
+
+    @images.setter
+    def images(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "images", value)
+
+    @property
+    @pulumi.getter
+    def objects(self) -> Optional[pulumi.Input['TriggerBuildArtifactsObjectsArgs']]:
+        """
+        A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps.
+        Files in the workspace matching specified paths globs will be uploaded to the
+        Cloud Storage location using the builder service account's credentials.
+        The location and generation of the uploaded objects will be stored in the Build resource's results field.
+        If any objects fail to be pushed, the build is marked FAILURE.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "objects")
+
+    @objects.setter
+    def objects(self, value: Optional[pulumi.Input['TriggerBuildArtifactsObjectsArgs']]):
+        pulumi.set(self, "objects", value)
+
+
+@pulumi.input_type
+class TriggerBuildArtifactsObjectsArgs:
+    def __init__(__self__, *,
+                 location: Optional[pulumi.Input[str]] = None,
+                 paths: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 timing: Optional[pulumi.Input['TriggerBuildArtifactsObjectsTimingArgs']] = None):
+        """
+        :param pulumi.Input[str] location: Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
+               Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
+               this location as a prefix.
+        :param pulumi.Input[List[pulumi.Input[str]]] paths: Path globs used to match files in the build's workspace.
+        :param pulumi.Input['TriggerBuildArtifactsObjectsTimingArgs'] timing: -
+               Output only. Stores timing information for pushing all artifact objects.
+               Structure is documented below.
+        """
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if paths is not None:
+            pulumi.set(__self__, "paths", paths)
+        if timing is not None:
+            pulumi.set(__self__, "timing", timing)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
+        Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
+        this location as a prefix.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def paths(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+        """
+        Path globs used to match files in the build's workspace.
+        """
+        return pulumi.get(self, "paths")
+
+    @paths.setter
+    def paths(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "paths", value)
+
+    @property
+    @pulumi.getter
+    def timing(self) -> Optional[pulumi.Input['TriggerBuildArtifactsObjectsTimingArgs']]:
+        """
+        -
+        Output only. Stores timing information for pushing all artifact objects.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "timing")
+
+    @timing.setter
+    def timing(self, value: Optional[pulumi.Input['TriggerBuildArtifactsObjectsTimingArgs']]):
+        pulumi.set(self, "timing", value)
+
+
+@pulumi.input_type
+class TriggerBuildArtifactsObjectsTimingArgs:
+    def __init__(__self__, *,
+                 end_time: Optional[pulumi.Input[str]] = None,
+                 start_time: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] end_time: End of time span.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
+               nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[str] start_time: Start of time span.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
+               nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        End of time span.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
+        nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "end_time")
+
+    @end_time.setter
+    def end_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "end_time", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Start of time span.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
+        nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "start_time", value)
+
+
+@pulumi.input_type
+class TriggerBuildOptionsArgs:
+    def __init__(__self__, *,
+                 disk_size_gb: Optional[pulumi.Input[float]] = None,
+                 dynamic_substitutions: Optional[pulumi.Input[bool]] = None,
+                 envs: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 log_streaming_option: Optional[pulumi.Input[str]] = None,
+                 logging: Optional[pulumi.Input[str]] = None,
+                 machine_type: Optional[pulumi.Input[str]] = None,
+                 requested_verify_option: Optional[pulumi.Input[str]] = None,
+                 secret_envs: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 source_provenance_hashes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 substitution_option: Optional[pulumi.Input[str]] = None,
+                 volumes: Optional[pulumi.Input[List[pulumi.Input['TriggerBuildOptionsVolumeArgs']]]] = None,
+                 worker_pool: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[float] disk_size_gb: Requested disk size for the VM that runs the build. Note that this is NOT "disk free";
+               some of the space will be used by the operating system and build utilities.
+               Also note that this is the minimum disk size that will be allocated for the build --
+               the build may run with a larger disk than requested. At present, the maximum disk size
+               is 1000GB; builds that request more than the maximum are rejected with an error.
+        :param pulumi.Input[bool] dynamic_substitutions: Option to specify whether or not to apply bash style string operations to the substitutions.
+               NOTE this is always enabled for triggered builds and cannot be overridden in the build configuration file.
+        :param pulumi.Input[List[pulumi.Input[str]]] envs: A list of global environment variable definitions that will exist for all build steps
+               in this build. If a variable is defined in both globally and in a build step,
+               the variable will use the build step value.
+               The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
+        :param pulumi.Input[str] log_streaming_option: Option to define build log streaming behavior to Google Cloud Storage.
+               Possible values are `STREAM_DEFAULT`, `STREAM_ON`, and `STREAM_OFF`.
+        :param pulumi.Input[str] logging: Option to specify the logging mode, which determines if and where build logs are stored.
+               Possible values are `LOGGING_UNSPECIFIED`, `LEGACY`, `GCS_ONLY`, `STACKDRIVER_ONLY`, and `NONE`.
+        :param pulumi.Input[str] machine_type: Compute Engine machine type on which to run the build.
+               Possible values are `UNSPECIFIED`, `N1_HIGHCPU_8`, and `N1_HIGHCPU_32`.
+        :param pulumi.Input[str] requested_verify_option: Requested verifiability options.
+               Possible values are `NOT_VERIFIED` and `VERIFIED`.
+        :param pulumi.Input[List[pulumi.Input[str]]] secret_envs: A list of global environment variables, which are encrypted using a Cloud Key Management
+               Service crypto key. These values must be specified in the build's Secret. These variables
+               will be available to all build steps in this build.
+        :param pulumi.Input[List[pulumi.Input[str]]] source_provenance_hashes: Requested hash for SourceProvenance.
+               Each value may be one of `NONE`, `SHA256`, and `MD5`.
+        :param pulumi.Input[str] substitution_option: Option to specify behavior when there is an error in the substitution checks.
+               NOTE this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden
+               in the build configuration file.
+               Possible values are `MUST_MATCH` and `ALLOW_LOOSE`.
+        :param pulumi.Input[List[pulumi.Input['TriggerBuildOptionsVolumeArgs']]] volumes: Global list of volumes to mount for ALL build steps
+               Each volume is created as an empty volume prior to starting the build process.
+               Upon completion of the build, volumes and their contents are discarded. Global
+               volume names and paths cannot conflict with the volumes defined a build step.
+               Using a global volume in a build with only one step is not valid as it is indicative
+               of a build request with an incorrect configuration.
+               Structure is documented below.
+        :param pulumi.Input[str] worker_pool: Option to specify a WorkerPool for the build. Format projects/{project}/workerPools/{workerPool}
+               This field is experimental.
+        """
+        if disk_size_gb is not None:
+            pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if dynamic_substitutions is not None:
+            pulumi.set(__self__, "dynamic_substitutions", dynamic_substitutions)
+        if envs is not None:
+            pulumi.set(__self__, "envs", envs)
+        if log_streaming_option is not None:
+            pulumi.set(__self__, "log_streaming_option", log_streaming_option)
+        if logging is not None:
+            pulumi.set(__self__, "logging", logging)
+        if machine_type is not None:
+            pulumi.set(__self__, "machine_type", machine_type)
+        if requested_verify_option is not None:
+            pulumi.set(__self__, "requested_verify_option", requested_verify_option)
+        if secret_envs is not None:
+            pulumi.set(__self__, "secret_envs", secret_envs)
+        if source_provenance_hashes is not None:
+            pulumi.set(__self__, "source_provenance_hashes", source_provenance_hashes)
+        if substitution_option is not None:
+            pulumi.set(__self__, "substitution_option", substitution_option)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
+        if worker_pool is not None:
+            pulumi.set(__self__, "worker_pool", worker_pool)
+
+    @property
+    @pulumi.getter(name="diskSizeGb")
+    def disk_size_gb(self) -> Optional[pulumi.Input[float]]:
+        """
+        Requested disk size for the VM that runs the build. Note that this is NOT "disk free";
+        some of the space will be used by the operating system and build utilities.
+        Also note that this is the minimum disk size that will be allocated for the build --
+        the build may run with a larger disk than requested. At present, the maximum disk size
+        is 1000GB; builds that request more than the maximum are rejected with an error.
+        """
+        return pulumi.get(self, "disk_size_gb")
+
+    @disk_size_gb.setter
+    def disk_size_gb(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "disk_size_gb", value)
+
+    @property
+    @pulumi.getter(name="dynamicSubstitutions")
+    def dynamic_substitutions(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Option to specify whether or not to apply bash style string operations to the substitutions.
+        NOTE this is always enabled for triggered builds and cannot be overridden in the build configuration file.
+        """
+        return pulumi.get(self, "dynamic_substitutions")
+
+    @dynamic_substitutions.setter
+    def dynamic_substitutions(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "dynamic_substitutions", value)
+
+    @property
+    @pulumi.getter
+    def envs(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+        """
+        A list of global environment variable definitions that will exist for all build steps
+        in this build. If a variable is defined in both globally and in a build step,
+        the variable will use the build step value.
+        The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
+        """
+        return pulumi.get(self, "envs")
+
+    @envs.setter
+    def envs(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "envs", value)
+
+    @property
+    @pulumi.getter(name="logStreamingOption")
+    def log_streaming_option(self) -> Optional[pulumi.Input[str]]:
+        """
+        Option to define build log streaming behavior to Google Cloud Storage.
+        Possible values are `STREAM_DEFAULT`, `STREAM_ON`, and `STREAM_OFF`.
+        """
+        return pulumi.get(self, "log_streaming_option")
+
+    @log_streaming_option.setter
+    def log_streaming_option(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "log_streaming_option", value)
+
+    @property
+    @pulumi.getter
+    def logging(self) -> Optional[pulumi.Input[str]]:
+        """
+        Option to specify the logging mode, which determines if and where build logs are stored.
+        Possible values are `LOGGING_UNSPECIFIED`, `LEGACY`, `GCS_ONLY`, `STACKDRIVER_ONLY`, and `NONE`.
+        """
+        return pulumi.get(self, "logging")
+
+    @logging.setter
+    def logging(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "logging", value)
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Compute Engine machine type on which to run the build.
+        Possible values are `UNSPECIFIED`, `N1_HIGHCPU_8`, and `N1_HIGHCPU_32`.
+        """
+        return pulumi.get(self, "machine_type")
+
+    @machine_type.setter
+    def machine_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "machine_type", value)
+
+    @property
+    @pulumi.getter(name="requestedVerifyOption")
+    def requested_verify_option(self) -> Optional[pulumi.Input[str]]:
+        """
+        Requested verifiability options.
+        Possible values are `NOT_VERIFIED` and `VERIFIED`.
+        """
+        return pulumi.get(self, "requested_verify_option")
+
+    @requested_verify_option.setter
+    def requested_verify_option(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "requested_verify_option", value)
+
+    @property
+    @pulumi.getter(name="secretEnvs")
+    def secret_envs(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+        """
+        A list of global environment variables, which are encrypted using a Cloud Key Management
+        Service crypto key. These values must be specified in the build's Secret. These variables
+        will be available to all build steps in this build.
+        """
+        return pulumi.get(self, "secret_envs")
+
+    @secret_envs.setter
+    def secret_envs(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "secret_envs", value)
+
+    @property
+    @pulumi.getter(name="sourceProvenanceHashes")
+    def source_provenance_hashes(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+        """
+        Requested hash for SourceProvenance.
+        Each value may be one of `NONE`, `SHA256`, and `MD5`.
+        """
+        return pulumi.get(self, "source_provenance_hashes")
+
+    @source_provenance_hashes.setter
+    def source_provenance_hashes(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "source_provenance_hashes", value)
+
+    @property
+    @pulumi.getter(name="substitutionOption")
+    def substitution_option(self) -> Optional[pulumi.Input[str]]:
+        """
+        Option to specify behavior when there is an error in the substitution checks.
+        NOTE this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden
+        in the build configuration file.
+        Possible values are `MUST_MATCH` and `ALLOW_LOOSE`.
+        """
+        return pulumi.get(self, "substitution_option")
+
+    @substitution_option.setter
+    def substitution_option(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "substitution_option", value)
+
+    @property
+    @pulumi.getter
+    def volumes(self) -> Optional[pulumi.Input[List[pulumi.Input['TriggerBuildOptionsVolumeArgs']]]]:
+        """
+        Global list of volumes to mount for ALL build steps
+        Each volume is created as an empty volume prior to starting the build process.
+        Upon completion of the build, volumes and their contents are discarded. Global
+        volume names and paths cannot conflict with the volumes defined a build step.
+        Using a global volume in a build with only one step is not valid as it is indicative
+        of a build request with an incorrect configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "volumes")
+
+    @volumes.setter
+    def volumes(self, value: Optional[pulumi.Input[List[pulumi.Input['TriggerBuildOptionsVolumeArgs']]]]):
+        pulumi.set(self, "volumes", value)
+
+    @property
+    @pulumi.getter(name="workerPool")
+    def worker_pool(self) -> Optional[pulumi.Input[str]]:
+        """
+        Option to specify a WorkerPool for the build. Format projects/{project}/workerPools/{workerPool}
+        This field is experimental.
+        """
+        return pulumi.get(self, "worker_pool")
+
+    @worker_pool.setter
+    def worker_pool(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "worker_pool", value)
+
+
+@pulumi.input_type
+class TriggerBuildOptionsVolumeArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 path: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Name of the volume to mount.
+               Volume names must be unique per build step and must be valid names for Docker volumes.
+               Each named volume must be used by at least two build steps.
+        :param pulumi.Input[str] path: Path at which to mount the volume.
+               Paths must be absolute and cannot conflict with other volume paths on the same
+               build step or with certain reserved volume paths.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the volume to mount.
+        Volume names must be unique per build step and must be valid names for Docker volumes.
+        Each named volume must be used by at least two build steps.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path at which to mount the volume.
+        Paths must be absolute and cannot conflict with other volume paths on the same
+        build step or with certain reserved volume paths.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+
+@pulumi.input_type
 class TriggerBuildSecretArgs:
     def __init__(__self__, *,
                  kms_key_name: pulumi.Input[str],
                  secret_env: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] kms_key_name: Cloud KMS key name to use to decrypt these envs.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] secret_env: A list of environment variables which are encrypted using
-               a Cloud Key
-               Management Service crypto key. These values must be specified in
-               the build's `Secret`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] secret_env: A list of global environment variables, which are encrypted using a Cloud Key Management
+               Service crypto key. These values must be specified in the build's Secret. These variables
+               will be available to all build steps in this build.
         """
         pulumi.set(__self__, "kms_key_name", kms_key_name)
         if secret_env is not None:
@@ -232,10 +733,9 @@ class TriggerBuildSecretArgs:
     @pulumi.getter(name="secretEnv")
     def secret_env(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        A list of environment variables which are encrypted using
-        a Cloud Key
-        Management Service crypto key. These values must be specified in
-        the build's `Secret`.
+        A list of global environment variables, which are encrypted using a Cloud Key Management
+        Service crypto key. These values must be specified in the build's Secret. These variables
+        will be available to all build steps in this build.
         """
         return pulumi.get(self, "secret_env")
 
@@ -520,8 +1020,8 @@ class TriggerBuildStepArgs:
                  wait_fors: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] name: Name of the volume to mount.
-               Volume names must be unique per build step and must be valid names for
-               Docker volumes. Each named volume must be used by at least two build steps.
+               Volume names must be unique per build step and must be valid names for Docker volumes.
+               Each named volume must be used by at least two build steps.
         :param pulumi.Input[List[pulumi.Input[str]]] args: A list of arguments that will be presented to the step when it is started.
                If the image used to run the step's container has an entrypoint, the args
                are used as arguments to that entrypoint. If the image does not define an
@@ -539,28 +1039,28 @@ class TriggerBuildStepArgs:
         :param pulumi.Input[str] entrypoint: Entrypoint to be used instead of the build step image's
                default entrypoint.
                If unset, the image's default entrypoint is used
-        :param pulumi.Input[List[pulumi.Input[str]]] envs: A list of environment variable definitions to be used when
-               running a step.
-               The elements are of the form "KEY=VALUE" for the environment variable
-               "KEY" being given the value "VALUE".
+        :param pulumi.Input[List[pulumi.Input[str]]] envs: A list of global environment variable definitions that will exist for all build steps
+               in this build. If a variable is defined in both globally and in a build step,
+               the variable will use the build step value.
+               The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
         :param pulumi.Input[str] id: Unique identifier for this build step, used in `wait_for` to
                reference this build step as a dependency.
-        :param pulumi.Input[List[pulumi.Input[str]]] secret_envs: A list of environment variables which are encrypted using
-               a Cloud Key
-               Management Service crypto key. These values must be specified in
-               the build's `Secret`.
+        :param pulumi.Input[List[pulumi.Input[str]]] secret_envs: A list of global environment variables, which are encrypted using a Cloud Key Management
+               Service crypto key. These values must be specified in the build's Secret. These variables
+               will be available to all build steps in this build.
         :param pulumi.Input[str] timeout: Time limit for executing this build step. If not defined,
                the step has no
                time limit and will be allowed to continue to run until either it
                completes or the build itself times out.
-        :param pulumi.Input[str] timing: Output only. Stores timing information for executing this
-               build step.
-        :param pulumi.Input[List[pulumi.Input['TriggerBuildStepVolumeArgs']]] volumes: List of volumes to mount into the build step.
-               Each volume is created as an empty volume prior to execution of the
-               build step. Upon completion of the build, volumes and their contents
-               are discarded.
-               Using a named volume in only one step is not valid as it is
-               indicative of a build request with an incorrect configuration.
+        :param pulumi.Input[str] timing: -
+               Output only. Stores timing information for pushing all artifact objects.
+               Structure is documented below.
+        :param pulumi.Input[List[pulumi.Input['TriggerBuildStepVolumeArgs']]] volumes: Global list of volumes to mount for ALL build steps
+               Each volume is created as an empty volume prior to starting the build process.
+               Upon completion of the build, volumes and their contents are discarded. Global
+               volume names and paths cannot conflict with the volumes defined a build step.
+               Using a global volume in a build with only one step is not valid as it is indicative
+               of a build request with an incorrect configuration.
                Structure is documented below.
         :param pulumi.Input[List[pulumi.Input[str]]] wait_fors: The ID(s) of the step(s) that this build step depends on.
                This build step will not start until all the build steps in `wait_for`
@@ -595,8 +1095,8 @@ class TriggerBuildStepArgs:
     def name(self) -> pulumi.Input[str]:
         """
         Name of the volume to mount.
-        Volume names must be unique per build step and must be valid names for
-        Docker volumes. Each named volume must be used by at least two build steps.
+        Volume names must be unique per build step and must be valid names for Docker volumes.
+        Each named volume must be used by at least two build steps.
         """
         return pulumi.get(self, "name")
 
@@ -658,10 +1158,10 @@ class TriggerBuildStepArgs:
     @pulumi.getter
     def envs(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
         """
-        A list of environment variable definitions to be used when
-        running a step.
-        The elements are of the form "KEY=VALUE" for the environment variable
-        "KEY" being given the value "VALUE".
+        A list of global environment variable definitions that will exist for all build steps
+        in this build. If a variable is defined in both globally and in a build step,
+        the variable will use the build step value.
+        The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
         """
         return pulumi.get(self, "envs")
 
@@ -686,10 +1186,9 @@ class TriggerBuildStepArgs:
     @pulumi.getter(name="secretEnvs")
     def secret_envs(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
         """
-        A list of environment variables which are encrypted using
-        a Cloud Key
-        Management Service crypto key. These values must be specified in
-        the build's `Secret`.
+        A list of global environment variables, which are encrypted using a Cloud Key Management
+        Service crypto key. These values must be specified in the build's Secret. These variables
+        will be available to all build steps in this build.
         """
         return pulumi.get(self, "secret_envs")
 
@@ -716,8 +1215,9 @@ class TriggerBuildStepArgs:
     @pulumi.getter
     def timing(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. Stores timing information for executing this
-        build step.
+        -
+        Output only. Stores timing information for pushing all artifact objects.
+        Structure is documented below.
         """
         return pulumi.get(self, "timing")
 
@@ -729,12 +1229,12 @@ class TriggerBuildStepArgs:
     @pulumi.getter
     def volumes(self) -> Optional[pulumi.Input[List[pulumi.Input['TriggerBuildStepVolumeArgs']]]]:
         """
-        List of volumes to mount into the build step.
-        Each volume is created as an empty volume prior to execution of the
-        build step. Upon completion of the build, volumes and their contents
-        are discarded.
-        Using a named volume in only one step is not valid as it is
-        indicative of a build request with an incorrect configuration.
+        Global list of volumes to mount for ALL build steps
+        Each volume is created as an empty volume prior to starting the build process.
+        Upon completion of the build, volumes and their contents are discarded. Global
+        volume names and paths cannot conflict with the volumes defined a build step.
+        Using a global volume in a build with only one step is not valid as it is indicative
+        of a build request with an incorrect configuration.
         Structure is documented below.
         """
         return pulumi.get(self, "volumes")
@@ -767,11 +1267,11 @@ class TriggerBuildStepVolumeArgs:
                  path: pulumi.Input[str]):
         """
         :param pulumi.Input[str] name: Name of the volume to mount.
-               Volume names must be unique per build step and must be valid names for
-               Docker volumes. Each named volume must be used by at least two build steps.
+               Volume names must be unique per build step and must be valid names for Docker volumes.
+               Each named volume must be used by at least two build steps.
         :param pulumi.Input[str] path: Path at which to mount the volume.
-               Paths must be absolute and cannot conflict with other volume paths on
-               the same build step or with certain reserved volume paths.
+               Paths must be absolute and cannot conflict with other volume paths on the same
+               build step or with certain reserved volume paths.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "path", path)
@@ -781,8 +1281,8 @@ class TriggerBuildStepVolumeArgs:
     def name(self) -> pulumi.Input[str]:
         """
         Name of the volume to mount.
-        Volume names must be unique per build step and must be valid names for
-        Docker volumes. Each named volume must be used by at least two build steps.
+        Volume names must be unique per build step and must be valid names for Docker volumes.
+        Each named volume must be used by at least two build steps.
         """
         return pulumi.get(self, "name")
 
@@ -795,8 +1295,8 @@ class TriggerBuildStepVolumeArgs:
     def path(self) -> pulumi.Input[str]:
         """
         Path at which to mount the volume.
-        Paths must be absolute and cannot conflict with other volume paths on
-        the same build step or with certain reserved volume paths.
+        Paths must be absolute and cannot conflict with other volume paths on the same
+        build step or with certain reserved volume paths.
         """
         return pulumi.get(self, "path")
 
@@ -814,8 +1314,8 @@ class TriggerGithubArgs:
                  push: Optional[pulumi.Input['TriggerGithubPushArgs']] = None):
         """
         :param pulumi.Input[str] name: Name of the volume to mount.
-               Volume names must be unique per build step and must be valid names for
-               Docker volumes. Each named volume must be used by at least two build steps.
+               Volume names must be unique per build step and must be valid names for Docker volumes.
+               Each named volume must be used by at least two build steps.
         :param pulumi.Input[str] owner: Owner of the repository. For example: The owner for
                https://github.com/googlecloudplatform/cloud-builders is "googlecloudplatform".
         :param pulumi.Input['TriggerGithubPullRequestArgs'] pull_request: filter to match changes in pull requests.  Specify only one of pullRequest or push.
@@ -837,8 +1337,8 @@ class TriggerGithubArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the volume to mount.
-        Volume names must be unique per build step and must be valid names for
-        Docker volumes. Each named volume must be used by at least two build steps.
+        Volume names must be unique per build step and must be valid names for Docker volumes.
+        Each named volume must be used by at least two build steps.
         """
         return pulumi.get(self, "name")
 

@@ -26,7 +26,10 @@ class Group(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a Group resource with the given unique name, props, and options.
+        A Cloud Identity resource representing a Group.
+
+        ## Example Usage
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An extended description to help users determine the purpose of a Group.

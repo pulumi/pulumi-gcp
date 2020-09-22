@@ -642,7 +642,7 @@ class DatabaseInstanceSettingsBackupConfigurationArgs:
                `settings.backup_configuration.enabled` is false, this must be as well.
                Cannot be used with Postgres.
         :param pulumi.Input[bool] enabled: True if backup configuration is enabled.
-        :param pulumi.Input[bool] point_in_time_recovery_enabled: True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation.
+        :param pulumi.Input[bool] point_in_time_recovery_enabled: True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL instances.
         :param pulumi.Input[str] start_time: `HH:MM` format time indicating when backup
                configuration starts.
         """
@@ -696,7 +696,7 @@ class DatabaseInstanceSettingsBackupConfigurationArgs:
     @pulumi.getter(name="pointInTimeRecoveryEnabled")
     def point_in_time_recovery_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation.
+        True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL instances.
         """
         return pulumi.get(self, "point_in_time_recovery_enabled")
 

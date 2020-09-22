@@ -29,7 +29,18 @@ class GuestPolicies(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a GuestPolicies resource with the given unique name, props, and options.
+        An OS Config resource representing a guest configuration policy. These policies represent
+        the desired state for VM instance guest environments including packages to install or remove,
+        package repository configurations, and software to install.
+
+        To get more information about GuestPolicies, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/osconfig/rest)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/compute/docs/os-config-management)
+
+        ## Example Usage
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['GuestPoliciesAssignmentArgs']] assignment: Specifies the VM instances that are assigned to this policy. This allows you to target sets

@@ -12,14 +12,21 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
 
     public sealed class TriggerBuildGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("artifacts")]
+        public Input<Inputs.TriggerBuildArtifactsGetArgs>? Artifacts { get; set; }
+
         [Input("images")]
         private InputList<string>? _images;
 
         /// <summary>
         /// A list of images to be pushed upon the successful completion of all build steps.
-        /// The images are pushed using the builder service account's credentials.
+        /// The images will be pushed using the builder service account's credentials.
         /// The digests of the pushed images will be stored in the Build resource's results field.
-        /// If any of the images fail to be pushed, the build status is marked FAILURE.
+        /// If any of the images fail to be pushed, the build is marked FAILURE.
         /// </summary>
         public InputList<string> Images
         {
@@ -33,6 +40,13 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         /// </summary>
         [Input("logsBucket")]
         public Input<string>? LogsBucket { get; set; }
+
+        /// <summary>
+        /// Special options for this build.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("options")]
+        public Input<Inputs.TriggerBuildOptionsGetArgs>? Options { get; set; }
 
         /// <summary>
         /// TTL in queue for this build. If provided and the build is enqueued longer than this value,

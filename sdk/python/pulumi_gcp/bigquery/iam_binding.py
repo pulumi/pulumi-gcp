@@ -27,10 +27,19 @@ class IamBinding(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a IamBinding resource with the given unique name, props, and options.
+        Three different resources help you manage your IAM policy for BigQuery Table. Each of these resources serves a different use case:
+
+        * `bigquery.IamPolicy`: Authoritative. Sets the IAM policy for the table and replaces any existing policy already attached.
+        * `bigquery.IamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the table are preserved.
+        * `bigquery.IamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the table are preserved.
+
+        > **Note:** `bigquery.IamPolicy` **cannot** be used in conjunction with `bigquery.IamBinding` and `bigquery.IamMember` or they will fight over what your policy should be.
+
+        > **Note:** `bigquery.IamBinding` resources **can be** used in conjunction with `bigquery.IamMember` resources **only if** they do not grant privilege to the same role.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['IamBindingConditionArgs']] condition: ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[pulumi.InputType['IamBindingConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -94,7 +103,7 @@ class IamBinding(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['IamBindingConditionArgs']] condition: ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[pulumi.InputType['IamBindingConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -120,7 +129,7 @@ class IamBinding(pulumi.CustomResource):
     @pulumi.getter
     def condition(self) -> pulumi.Output[Optional['outputs.IamBindingCondition']]:
         """
-        ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
         """
         return pulumi.get(self, "condition")

@@ -89,7 +89,7 @@ class Cluster(pulumi.CustomResource):
                in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
                automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
                only work for routes-based clusters, where `ip_allocation_policy` is not defined.
-        :param pulumi.Input[pulumi.InputType['ClusterClusterTelemetryArgs']] cluster_telemetry: ) Configuration for
+        :param pulumi.Input[pulumi.InputType['ClusterClusterTelemetryArgs']] cluster_telemetry: Configuration for
                [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterDatabaseEncryptionArgs']] database_encryption: Structure is documented below.
@@ -97,8 +97,7 @@ class Cluster(pulumi.CustomResource):
                per node in this cluster. This doesn't work on "routes-based" clusters, clusters
                that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
                for more information.
-        :param pulumi.Input[pulumi.InputType['ClusterDefaultSnatStatusArgs']] default_snat_status: )
-               [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig).
+        :param pulumi.Input[pulumi.InputType['ClusterDefaultSnatStatusArgs']] default_snat_status: [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig).
         :param pulumi.Input[str] description: Description of the cluster.
         :param pulumi.Input[bool] enable_binary_authorization: Enable Binary Authorization for this cluster.
                If enabled, all container images will be validated by Google Binary Authorization.
@@ -373,7 +372,7 @@ class Cluster(pulumi.CustomResource):
                in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
                automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
                only work for routes-based clusters, where `ip_allocation_policy` is not defined.
-        :param pulumi.Input[pulumi.InputType['ClusterClusterTelemetryArgs']] cluster_telemetry: ) Configuration for
+        :param pulumi.Input[pulumi.InputType['ClusterClusterTelemetryArgs']] cluster_telemetry: Configuration for
                [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterDatabaseEncryptionArgs']] database_encryption: Structure is documented below.
@@ -381,8 +380,7 @@ class Cluster(pulumi.CustomResource):
                per node in this cluster. This doesn't work on "routes-based" clusters, clusters
                that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
                for more information.
-        :param pulumi.Input[pulumi.InputType['ClusterDefaultSnatStatusArgs']] default_snat_status: )
-               [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig).
+        :param pulumi.Input[pulumi.InputType['ClusterDefaultSnatStatusArgs']] default_snat_status: [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig).
         :param pulumi.Input[str] description: Description of the cluster.
         :param pulumi.Input[bool] enable_binary_authorization: Enable Binary Authorization for this cluster.
                If enabled, all container images will be validated by Google Binary Authorization.
@@ -626,7 +624,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="clusterTelemetry")
     def cluster_telemetry(self) -> pulumi.Output['outputs.ClusterClusterTelemetry']:
         """
-        ) Configuration for
+        Configuration for
         [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
         Structure is documented below.
         """
@@ -655,7 +653,6 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="defaultSnatStatus")
     def default_snat_status(self) -> pulumi.Output['outputs.ClusterDefaultSnatStatus']:
         """
-        )
         [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig).
         """
         return pulumi.get(self, "default_snat_status")

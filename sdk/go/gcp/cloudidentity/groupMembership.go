@@ -10,6 +10,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// A Membership defines a relationship between a Group and an entity belonging to that Group, referred to as a "member".
+//
+// ## Example Usage
 type GroupMembership struct {
 	pulumi.CustomResourceState
 

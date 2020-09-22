@@ -14,16 +14,16 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
     {
         /// <summary>
         /// Name of the volume to mount.
-        /// Volume names must be unique per build step and must be valid names for
-        /// Docker volumes. Each named volume must be used by at least two build steps.
+        /// Volume names must be unique per build step and must be valid names for Docker volumes.
+        /// Each named volume must be used by at least two build steps.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
         /// Path at which to mount the volume.
-        /// Paths must be absolute and cannot conflict with other volume paths on
-        /// the same build step or with certain reserved volume paths.
+        /// Paths must be absolute and cannot conflict with other volume paths on the same
+        /// build step or with certain reserved volume paths.
         /// </summary>
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;

@@ -909,6 +909,8 @@ func (o AutoscalingPolicyWorkerConfigPtrOutput) Weight() pulumi.IntPtrOutput {
 
 type ClusterClusterConfig struct {
 	// The autoscaling policy config associated with the cluster.
+	// Note that once set, if `autoscalingConfig` is the only field set in `clusterConfig`, it can
+	// only be removed by setting `policyUri = ""`, rather than removing the whole block.
 	// Structure defined below.
 	AutoscalingConfig *ClusterClusterConfigAutoscalingConfig `pulumi:"autoscalingConfig"`
 	Bucket            *string                                `pulumi:"bucket"`
@@ -965,6 +967,8 @@ type ClusterClusterConfigInput interface {
 
 type ClusterClusterConfigArgs struct {
 	// The autoscaling policy config associated with the cluster.
+	// Note that once set, if `autoscalingConfig` is the only field set in `clusterConfig`, it can
+	// only be removed by setting `policyUri = ""`, rather than removing the whole block.
 	// Structure defined below.
 	AutoscalingConfig ClusterClusterConfigAutoscalingConfigPtrInput `pulumi:"autoscalingConfig"`
 	Bucket            pulumi.StringPtrInput                         `pulumi:"bucket"`
@@ -1086,6 +1090,8 @@ func (o ClusterClusterConfigOutput) ToClusterClusterConfigPtrOutputWithContext(c
 }
 
 // The autoscaling policy config associated with the cluster.
+// Note that once set, if `autoscalingConfig` is the only field set in `clusterConfig`, it can
+// only be removed by setting `policyUri = ""`, rather than removing the whole block.
 // Structure defined below.
 func (o ClusterClusterConfigOutput) AutoscalingConfig() ClusterClusterConfigAutoscalingConfigPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfig) *ClusterClusterConfigAutoscalingConfig { return v.AutoscalingConfig }).(ClusterClusterConfigAutoscalingConfigPtrOutput)
@@ -1189,6 +1195,8 @@ func (o ClusterClusterConfigPtrOutput) Elem() ClusterClusterConfigOutput {
 }
 
 // The autoscaling policy config associated with the cluster.
+// Note that once set, if `autoscalingConfig` is the only field set in `clusterConfig`, it can
+// only be removed by setting `policyUri = ""`, rather than removing the whole block.
 // Structure defined below.
 func (o ClusterClusterConfigPtrOutput) AutoscalingConfig() ClusterClusterConfigAutoscalingConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterConfig) *ClusterClusterConfigAutoscalingConfig {

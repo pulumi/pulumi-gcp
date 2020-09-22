@@ -10,10 +10,19 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Three different resources help you manage your IAM policy for Compute Engine Image. Each of these resources serves a different use case:
+//
+// * `compute.ImageIamPolicy`: Authoritative. Sets the IAM policy for the image and replaces any existing policy already attached.
+// * `compute.ImageIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the image are preserved.
+// * `compute.ImageIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the image are preserved.
+//
+// > **Note:** `compute.ImageIamPolicy` **cannot** be used in conjunction with `compute.ImageIamBinding` and `compute.ImageIamMember` or they will fight over what your policy should be.
+//
+// > **Note:** `compute.ImageIamBinding` resources **can be** used in conjunction with `compute.ImageIamMember` resources **only if** they do not grant privilege to the same role.
 type ImageIamBinding struct {
 	pulumi.CustomResourceState
 
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition ImageIamBindingConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
@@ -67,7 +76,7 @@ func GetImageIamBinding(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ImageIamBinding resources.
 type imageIamBindingState struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *ImageIamBindingCondition `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
@@ -85,7 +94,7 @@ type imageIamBindingState struct {
 }
 
 type ImageIamBindingState struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition ImageIamBindingConditionPtrInput
 	// (Computed) The etag of the IAM policy.
@@ -107,7 +116,7 @@ func (ImageIamBindingState) ElementType() reflect.Type {
 }
 
 type imageIamBindingArgs struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *ImageIamBindingCondition `pulumi:"condition"`
 	// Used to find the parent resource to bind the IAM policy to
@@ -124,7 +133,7 @@ type imageIamBindingArgs struct {
 
 // The set of arguments for constructing a ImageIamBinding resource.
 type ImageIamBindingArgs struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition ImageIamBindingConditionPtrInput
 	// Used to find the parent resource to bind the IAM policy to

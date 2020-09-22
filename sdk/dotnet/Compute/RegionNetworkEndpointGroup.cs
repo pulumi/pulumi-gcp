@@ -9,6 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
+    /// <summary>
+    /// A regional NEG that can support Serverless Products.
+    /// 
+    /// To get more information about RegionNetworkEndpointGroup, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionNetworkEndpointGroups)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/serverless-neg-concepts)
+    /// 
+    /// ## Example Usage
+    /// </summary>
     public partial class RegionNetworkEndpointGroup : Pulumi.CustomResource
     {
         /// <summary>

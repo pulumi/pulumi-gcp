@@ -9,6 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Notebooks
 {
+    /// <summary>
+    /// A Cloud AI Platform Notebook environment.
+    /// 
+    /// To get more information about Environment, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/ai-platform/notebooks/docs/reference/rest)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
+    /// 
+    /// ## Example Usage
+    /// </summary>
     public partial class Environment : Pulumi.CustomResource
     {
         /// <summary>

@@ -9,6 +9,9 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Notebooks
 {
+    /// <summary>
+    /// Represents a Location resource.
+    /// </summary>
     public partial class Location : Pulumi.CustomResource
     {
         /// <summary>

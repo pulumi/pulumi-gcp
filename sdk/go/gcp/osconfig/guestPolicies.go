@@ -10,6 +10,17 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// An OS Config resource representing a guest configuration policy. These policies represent
+// the desired state for VM instance guest environments including packages to install or remove,
+// package repository configurations, and software to install.
+//
+// To get more information about GuestPolicies, see:
+//
+// * [API documentation](https://cloud.google.com/compute/docs/osconfig/rest)
+// * How-to Guides
+//     * [Official Documentation](https://cloud.google.com/compute/docs/os-config-management)
+//
+// ## Example Usage
 type GuestPolicies struct {
 	pulumi.CustomResourceState
 

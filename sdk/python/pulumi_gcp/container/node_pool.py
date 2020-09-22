@@ -46,8 +46,13 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['NodePoolAutoscalingArgs']] autoscaling: Configuration required by cluster autoscaler to adjust
                the size of the node pool to the current cluster usage. Structure is documented below.
         :param pulumi.Input[str] cluster: The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters.
-        :param pulumi.Input[float] initial_node_count: The initial number of nodes for the pool. In regional or multi-zonal clusters, this is the number of nodes per zone.
-               Changing this will force recreation of the resource.
+        :param pulumi.Input[float] initial_node_count: The initial number of nodes for the pool. In
+               regional or multi-zonal clusters, this is the number of nodes per zone. Changing
+               this will force recreation of the resource. WARNING: Resizing your node pool manually
+               may change this value in your existing cluster, which will trigger destruction
+               and recreation on the next provider run (to rectify the discrepancy).  If you don't
+               need this value, don't set it.  If you do need it, you can use a lifecycle block to
+               ignore subsqeuent changes to this field.
         :param pulumi.Input[str] location: The location (region or zone) of the cluster.
         :param pulumi.Input[pulumi.InputType['NodePoolManagementArgs']] management: Node management configuration, wherein auto-repair and
                auto-upgrade is configured. Structure is documented below.
@@ -149,8 +154,13 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['NodePoolAutoscalingArgs']] autoscaling: Configuration required by cluster autoscaler to adjust
                the size of the node pool to the current cluster usage. Structure is documented below.
         :param pulumi.Input[str] cluster: The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters.
-        :param pulumi.Input[float] initial_node_count: The initial number of nodes for the pool. In regional or multi-zonal clusters, this is the number of nodes per zone.
-               Changing this will force recreation of the resource.
+        :param pulumi.Input[float] initial_node_count: The initial number of nodes for the pool. In
+               regional or multi-zonal clusters, this is the number of nodes per zone. Changing
+               this will force recreation of the resource. WARNING: Resizing your node pool manually
+               may change this value in your existing cluster, which will trigger destruction
+               and recreation on the next provider run (to rectify the discrepancy).  If you don't
+               need this value, don't set it.  If you do need it, you can use a lifecycle block to
+               ignore subsqeuent changes to this field.
         :param pulumi.Input[List[pulumi.Input[str]]] instance_group_urls: The resource URLs of the managed instance groups associated with this node pool.
         :param pulumi.Input[str] location: The location (region or zone) of the cluster.
         :param pulumi.Input[pulumi.InputType['NodePoolManagementArgs']] management: Node management configuration, wherein auto-repair and
@@ -226,8 +236,13 @@ class NodePool(pulumi.CustomResource):
     @pulumi.getter(name="initialNodeCount")
     def initial_node_count(self) -> pulumi.Output[float]:
         """
-        The initial number of nodes for the pool. In regional or multi-zonal clusters, this is the number of nodes per zone.
-        Changing this will force recreation of the resource.
+        The initial number of nodes for the pool. In
+        regional or multi-zonal clusters, this is the number of nodes per zone. Changing
+        this will force recreation of the resource. WARNING: Resizing your node pool manually
+        may change this value in your existing cluster, which will trigger destruction
+        and recreation on the next provider run (to rectify the discrepancy).  If you don't
+        need this value, don't set it.  If you do need it, you can use a lifecycle block to
+        ignore subsqeuent changes to this field.
         """
         return pulumi.get(self, "initial_node_count")
 

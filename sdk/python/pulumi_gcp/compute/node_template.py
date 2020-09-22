@@ -44,7 +44,9 @@ class NodeTemplate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cpu_overcommit_type: CPU overcommit. Default value: "NONE" Possible values: ["ENABLED", "NONE"]
+        :param pulumi.Input[str] cpu_overcommit_type: CPU overcommit.
+               Default value is `NONE`.
+               Possible values are `ENABLED` and `NONE`.
         :param pulumi.Input[str] description: An optional textual description of the resource.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] node_affinity_labels: Labels to use for node affinity, which will be used in
@@ -120,7 +122,9 @@ class NodeTemplate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cpu_overcommit_type: CPU overcommit. Default value: "NONE" Possible values: ["ENABLED", "NONE"]
+        :param pulumi.Input[str] cpu_overcommit_type: CPU overcommit.
+               Default value is `NONE`.
+               Possible values are `ENABLED` and `NONE`.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional textual description of the resource.
         :param pulumi.Input[str] name: Name of the resource.
@@ -163,7 +167,9 @@ class NodeTemplate(pulumi.CustomResource):
     @pulumi.getter(name="cpuOvercommitType")
     def cpu_overcommit_type(self) -> pulumi.Output[Optional[str]]:
         """
-        CPU overcommit. Default value: "NONE" Possible values: ["ENABLED", "NONE"]
+        CPU overcommit.
+        Default value is `NONE`.
+        Possible values are `ENABLED` and `NONE`.
         """
         return pulumi.get(self, "cpu_overcommit_type")
 

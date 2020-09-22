@@ -89,8 +89,8 @@ namespace Pulumi.Gcp.CloudBuild
 
         /// <summary>
         /// Name of the volume to mount.
-        /// Volume names must be unique per build step and must be valid names for
-        /// Docker volumes. Each named volume must be used by at least two build steps.
+        /// Volume names must be unique per build step and must be valid names for Docker volumes.
+        /// Each named volume must be used by at least two build steps.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -250,8 +250,8 @@ namespace Pulumi.Gcp.CloudBuild
 
         /// <summary>
         /// Name of the volume to mount.
-        /// Volume names must be unique per build step and must be valid names for
-        /// Docker volumes. Each named volume must be used by at least two build steps.
+        /// Volume names must be unique per build step and must be valid names for Docker volumes.
+        /// Each named volume must be used by at least two build steps.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -384,8 +384,8 @@ namespace Pulumi.Gcp.CloudBuild
 
         /// <summary>
         /// Name of the volume to mount.
-        /// Volume names must be unique per build step and must be valid names for
-        /// Docker volumes. Each named volume must be used by at least two build steps.
+        /// Volume names must be unique per build step and must be valid names for Docker volumes.
+        /// Each named volume must be used by at least two build steps.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -61,8 +61,7 @@ class TargetInstance(pulumi.CustomResource):
                Currently only NO_NAT (default value) is supported.
                Default value is `NO_NAT`.
                Possible values are `NO_NAT`.
-        :param pulumi.Input[str] network: The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to
-               the network that the default network interface belongs to.
+        :param pulumi.Input[str] network: The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] zone: URL of the zone where the target instance resides.
@@ -140,8 +139,7 @@ class TargetInstance(pulumi.CustomResource):
                Currently only NO_NAT (default value) is supported.
                Default value is `NO_NAT`.
                Possible values are `NO_NAT`.
-        :param pulumi.Input[str] network: The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to
-               the network that the default network interface belongs to.
+        :param pulumi.Input[str] network: The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -220,8 +218,7 @@ class TargetInstance(pulumi.CustomResource):
     @pulumi.getter
     def network(self) -> pulumi.Output[Optional[str]]:
         """
-        The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to
-        the network that the default network interface belongs to.
+        The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
         """
         return pulumi.get(self, "network")
 

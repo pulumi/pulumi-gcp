@@ -10,6 +10,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// A Google Cloud Memcache instance.
+//
+// To get more information about Instance, see:
+//
+// * [API documentation](https://cloud.google.com/memorystore/docs/memcached/reference/rest)
+// * How-to Guides
+//     * [Official Documentation](https://cloud.google.com/memcache/docs/creating-instances)
+//
+// ## Example Usage
 type Instance struct {
 	pulumi.CustomResourceState
 

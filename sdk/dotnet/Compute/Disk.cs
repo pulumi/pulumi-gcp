@@ -135,9 +135,11 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Resource policies applied to this disk for automatic snapshot creations. ~&gt;**NOTE** This value does not support updating
-        /// the resource policy, as resource policies can not be updated more than one at a time. Use
-        /// ['google_compute_disk_resource_policy_attachment'](https://www.terraform.io/docs/providers/google/r/compute_disk_resource_policy_attachment.html)
+        /// Resource policies applied to this disk for automatic snapshot creations.
+        /// ~&gt;**NOTE** This value does not support updating the
+        /// resource policy, as resource policies can not be updated more than
+        /// one at a time. Use
+        /// `gcp.compute.DiskResourcePolicyAttachment`
         /// to allow for updating the resource policy attached to the disk.
         /// </summary>
         [Output("resourcePolicies")]
@@ -353,9 +355,11 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _resourcePolicies;
 
         /// <summary>
-        /// Resource policies applied to this disk for automatic snapshot creations. ~&gt;**NOTE** This value does not support updating
-        /// the resource policy, as resource policies can not be updated more than one at a time. Use
-        /// ['google_compute_disk_resource_policy_attachment'](https://www.terraform.io/docs/providers/google/r/compute_disk_resource_policy_attachment.html)
+        /// Resource policies applied to this disk for automatic snapshot creations.
+        /// ~&gt;**NOTE** This value does not support updating the
+        /// resource policy, as resource policies can not be updated more than
+        /// one at a time. Use
+        /// `gcp.compute.DiskResourcePolicyAttachment`
         /// to allow for updating the resource policy attached to the disk.
         /// </summary>
         public InputList<string> ResourcePolicies
@@ -531,9 +535,11 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _resourcePolicies;
 
         /// <summary>
-        /// Resource policies applied to this disk for automatic snapshot creations. ~&gt;**NOTE** This value does not support updating
-        /// the resource policy, as resource policies can not be updated more than one at a time. Use
-        /// ['google_compute_disk_resource_policy_attachment'](https://www.terraform.io/docs/providers/google/r/compute_disk_resource_policy_attachment.html)
+        /// Resource policies applied to this disk for automatic snapshot creations.
+        /// ~&gt;**NOTE** This value does not support updating the
+        /// resource policy, as resource policies can not be updated more than
+        /// one at a time. Use
+        /// `gcp.compute.DiskResourcePolicyAttachment`
         /// to allow for updating the resource policy attached to the disk.
         /// </summary>
         public InputList<string> ResourcePolicies

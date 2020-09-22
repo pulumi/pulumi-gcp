@@ -21,7 +21,8 @@ class Location(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a Location resource with the given unique name, props, and options.
+        Represents a Location resource.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: Name of the Location resource.

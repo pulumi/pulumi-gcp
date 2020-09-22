@@ -9,6 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.CloudIdentity
 {
+    /// <summary>
+    /// A Cloud Identity resource representing a Group.
+    /// 
+    /// ## Example Usage
+    /// </summary>
     public partial class Group : Pulumi.CustomResource
     {
         /// <summary>

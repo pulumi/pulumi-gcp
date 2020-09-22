@@ -49,6 +49,9 @@ export interface GetDatabaseInstanceResult {
      * The MySQL, PostgreSQL or SQL Server (beta) version to use.
      */
     readonly databaseVersion: string;
+    /**
+     * The full path to the encryption key used for the CMEK disk encryption.
+     */
     readonly encryptionKeyName: string;
     /**
      * The first IPv4 address of any type assigned.

@@ -26,10 +26,19 @@ class ImageIamMember(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a ImageIamMember resource with the given unique name, props, and options.
+        Three different resources help you manage your IAM policy for Compute Engine Image. Each of these resources serves a different use case:
+
+        * `compute.ImageIamPolicy`: Authoritative. Sets the IAM policy for the image and replaces any existing policy already attached.
+        * `compute.ImageIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the image are preserved.
+        * `compute.ImageIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the image are preserved.
+
+        > **Note:** `compute.ImageIamPolicy` **cannot** be used in conjunction with `compute.ImageIamBinding` and `compute.ImageIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `compute.ImageIamBinding` resources **can be** used in conjunction with `compute.ImageIamMember` resources **only if** they do not grant privilege to the same role.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ImageIamMemberConditionArgs']] condition: ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[pulumi.InputType['ImageIamMemberConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] image: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -90,7 +99,7 @@ class ImageIamMember(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ImageIamMemberConditionArgs']] condition: ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[pulumi.InputType['ImageIamMemberConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[str] image: Used to find the parent resource to bind the IAM policy to
@@ -116,7 +125,7 @@ class ImageIamMember(pulumi.CustomResource):
     @pulumi.getter
     def condition(self) -> pulumi.Output[Optional['outputs.ImageIamMemberCondition']]:
         """
-        ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
         """
         return pulumi.get(self, "condition")

@@ -9,6 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.CloudIdentity
 {
+    /// <summary>
+    /// A Membership defines a relationship between a Group and an entity belonging to that Group, referred to as a "member".
+    /// 
+    /// ## Example Usage
+    /// </summary>
     public partial class GroupMembership : Pulumi.CustomResource
     {
         /// <summary>

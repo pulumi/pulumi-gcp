@@ -40,10 +40,10 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
         /// </summary>
         public readonly string? Entrypoint;
         /// <summary>
-        /// A list of environment variable definitions to be used when
-        /// running a step.
-        /// The elements are of the form "KEY=VALUE" for the environment variable
-        /// "KEY" being given the value "VALUE".
+        /// A list of global environment variable definitions that will exist for all build steps
+        /// in this build. If a variable is defined in both globally and in a build step,
+        /// the variable will use the build step value.
+        /// The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
         /// </summary>
         public readonly ImmutableArray<string> Envs;
         /// <summary>
@@ -53,15 +53,14 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
         public readonly string? Id;
         /// <summary>
         /// Name of the volume to mount.
-        /// Volume names must be unique per build step and must be valid names for
-        /// Docker volumes. Each named volume must be used by at least two build steps.
+        /// Volume names must be unique per build step and must be valid names for Docker volumes.
+        /// Each named volume must be used by at least two build steps.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// A list of environment variables which are encrypted using
-        /// a Cloud Key
-        /// Management Service crypto key. These values must be specified in
-        /// the build's `Secret`.
+        /// A list of global environment variables, which are encrypted using a Cloud Key Management
+        /// Service crypto key. These values must be specified in the build's Secret. These variables
+        /// will be available to all build steps in this build.
         /// </summary>
         public readonly ImmutableArray<string> SecretEnvs;
         /// <summary>
@@ -72,17 +71,18 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
         /// </summary>
         public readonly string? Timeout;
         /// <summary>
-        /// Output only. Stores timing information for executing this
-        /// build step.
+        /// -
+        /// Output only. Stores timing information for pushing all artifact objects.
+        /// Structure is documented below.
         /// </summary>
         public readonly string? Timing;
         /// <summary>
-        /// List of volumes to mount into the build step.
-        /// Each volume is created as an empty volume prior to execution of the
-        /// build step. Upon completion of the build, volumes and their contents
-        /// are discarded.
-        /// Using a named volume in only one step is not valid as it is
-        /// indicative of a build request with an incorrect configuration.
+        /// Global list of volumes to mount for ALL build steps
+        /// Each volume is created as an empty volume prior to starting the build process.
+        /// Upon completion of the build, volumes and their contents are discarded. Global
+        /// volume names and paths cannot conflict with the volumes defined a build step.
+        /// Using a global volume in a build with only one step is not valid as it is indicative
+        /// of a build request with an incorrect configuration.
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.TriggerBuildStepVolume> Volumes;

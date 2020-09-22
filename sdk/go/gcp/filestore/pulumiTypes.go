@@ -15,7 +15,9 @@ type InstanceFileShares struct {
 	// for the standard tier, or 2560 GiB for the premium tier.
 	CapacityGb int `pulumi:"capacityGb"`
 	// The name of the fileshare (16 characters or less)
-	Name             string                              `pulumi:"name"`
+	Name string `pulumi:"name"`
+	// Nfs Export Options. There is a limit of 10 export options per file share.
+	// Structure is documented below.
 	NfsExportOptions []InstanceFileSharesNfsExportOption `pulumi:"nfsExportOptions"`
 }
 
@@ -35,7 +37,9 @@ type InstanceFileSharesArgs struct {
 	// for the standard tier, or 2560 GiB for the premium tier.
 	CapacityGb pulumi.IntInput `pulumi:"capacityGb"`
 	// The name of the fileshare (16 characters or less)
-	Name             pulumi.StringInput                          `pulumi:"name"`
+	Name pulumi.StringInput `pulumi:"name"`
+	// Nfs Export Options. There is a limit of 10 export options per file share.
+	// Structure is documented below.
 	NfsExportOptions InstanceFileSharesNfsExportOptionArrayInput `pulumi:"nfsExportOptions"`
 }
 
@@ -127,6 +131,8 @@ func (o InstanceFileSharesOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceFileShares) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Nfs Export Options. There is a limit of 10 export options per file share.
+// Structure is documented below.
 func (o InstanceFileSharesOutput) NfsExportOptions() InstanceFileSharesNfsExportOptionArrayOutput {
 	return o.ApplyT(func(v InstanceFileShares) []InstanceFileSharesNfsExportOption { return v.NfsExportOptions }).(InstanceFileSharesNfsExportOptionArrayOutput)
 }
@@ -170,6 +176,8 @@ func (o InstanceFileSharesPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Nfs Export Options. There is a limit of 10 export options per file share.
+// Structure is documented below.
 func (o InstanceFileSharesPtrOutput) NfsExportOptions() InstanceFileSharesNfsExportOptionArrayOutput {
 	return o.ApplyT(func(v *InstanceFileShares) []InstanceFileSharesNfsExportOption {
 		if v == nil {

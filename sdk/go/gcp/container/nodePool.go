@@ -23,8 +23,13 @@ type NodePool struct {
 	Autoscaling NodePoolAutoscalingPtrOutput `pulumi:"autoscaling"`
 	// The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters.
 	Cluster pulumi.StringOutput `pulumi:"cluster"`
-	// The initial number of nodes for the pool. In regional or multi-zonal clusters, this is the number of nodes per zone.
-	// Changing this will force recreation of the resource.
+	// The initial number of nodes for the pool. In
+	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
+	// this will force recreation of the resource. WARNING: Resizing your node pool manually
+	// may change this value in your existing cluster, which will trigger destruction
+	// and recreation on the next provider run (to rectify the discrepancy).  If you don't
+	// need this value, don't set it.  If you do need it, you can use a lifecycle block to
+	// ignore subsqeuent changes to this field.
 	InitialNodeCount pulumi.IntOutput `pulumi:"initialNodeCount"`
 	// The resource URLs of the managed instance groups associated with this node pool.
 	InstanceGroupUrls pulumi.StringArrayOutput `pulumi:"instanceGroupUrls"`
@@ -108,8 +113,13 @@ type nodePoolState struct {
 	Autoscaling *NodePoolAutoscaling `pulumi:"autoscaling"`
 	// The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters.
 	Cluster *string `pulumi:"cluster"`
-	// The initial number of nodes for the pool. In regional or multi-zonal clusters, this is the number of nodes per zone.
-	// Changing this will force recreation of the resource.
+	// The initial number of nodes for the pool. In
+	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
+	// this will force recreation of the resource. WARNING: Resizing your node pool manually
+	// may change this value in your existing cluster, which will trigger destruction
+	// and recreation on the next provider run (to rectify the discrepancy).  If you don't
+	// need this value, don't set it.  If you do need it, you can use a lifecycle block to
+	// ignore subsqeuent changes to this field.
 	InitialNodeCount *int `pulumi:"initialNodeCount"`
 	// The resource URLs of the managed instance groups associated with this node pool.
 	InstanceGroupUrls []string `pulumi:"instanceGroupUrls"`
@@ -163,8 +173,13 @@ type NodePoolState struct {
 	Autoscaling NodePoolAutoscalingPtrInput
 	// The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters.
 	Cluster pulumi.StringPtrInput
-	// The initial number of nodes for the pool. In regional or multi-zonal clusters, this is the number of nodes per zone.
-	// Changing this will force recreation of the resource.
+	// The initial number of nodes for the pool. In
+	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
+	// this will force recreation of the resource. WARNING: Resizing your node pool manually
+	// may change this value in your existing cluster, which will trigger destruction
+	// and recreation on the next provider run (to rectify the discrepancy).  If you don't
+	// need this value, don't set it.  If you do need it, you can use a lifecycle block to
+	// ignore subsqeuent changes to this field.
 	InitialNodeCount pulumi.IntPtrInput
 	// The resource URLs of the managed instance groups associated with this node pool.
 	InstanceGroupUrls pulumi.StringArrayInput
@@ -222,8 +237,13 @@ type nodePoolArgs struct {
 	Autoscaling *NodePoolAutoscaling `pulumi:"autoscaling"`
 	// The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters.
 	Cluster string `pulumi:"cluster"`
-	// The initial number of nodes for the pool. In regional or multi-zonal clusters, this is the number of nodes per zone.
-	// Changing this will force recreation of the resource.
+	// The initial number of nodes for the pool. In
+	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
+	// this will force recreation of the resource. WARNING: Resizing your node pool manually
+	// may change this value in your existing cluster, which will trigger destruction
+	// and recreation on the next provider run (to rectify the discrepancy).  If you don't
+	// need this value, don't set it.  If you do need it, you can use a lifecycle block to
+	// ignore subsqeuent changes to this field.
 	InitialNodeCount *int `pulumi:"initialNodeCount"`
 	// The location (region or zone) of the cluster.
 	Location *string `pulumi:"location"`
@@ -276,8 +296,13 @@ type NodePoolArgs struct {
 	Autoscaling NodePoolAutoscalingPtrInput
 	// The cluster to create the node pool for. Cluster must be present in `location` provided for zonal clusters.
 	Cluster pulumi.StringInput
-	// The initial number of nodes for the pool. In regional or multi-zonal clusters, this is the number of nodes per zone.
-	// Changing this will force recreation of the resource.
+	// The initial number of nodes for the pool. In
+	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
+	// this will force recreation of the resource. WARNING: Resizing your node pool manually
+	// may change this value in your existing cluster, which will trigger destruction
+	// and recreation on the next provider run (to rectify the discrepancy).  If you don't
+	// need this value, don't set it.  If you do need it, you can use a lifecycle block to
+	// ignore subsqeuent changes to this field.
 	InitialNodeCount pulumi.IntPtrInput
 	// The location (region or zone) of the cluster.
 	Location pulumi.StringPtrInput

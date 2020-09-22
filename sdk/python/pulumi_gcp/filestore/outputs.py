@@ -25,6 +25,8 @@ class InstanceFileShares(dict):
         :param float capacity_gb: File share capacity in GiB. This must be at least 1024 GiB
                for the standard tier, or 2560 GiB for the premium tier.
         :param str name: The name of the fileshare (16 characters or less)
+        :param List['InstanceFileSharesNfsExportOptionArgs'] nfs_export_options: Nfs Export Options. There is a limit of 10 export options per file share.
+               Structure is documented below.
         """
         pulumi.set(__self__, "capacity_gb", capacity_gb)
         pulumi.set(__self__, "name", name)
@@ -51,6 +53,10 @@ class InstanceFileShares(dict):
     @property
     @pulumi.getter(name="nfsExportOptions")
     def nfs_export_options(self) -> Optional[List['outputs.InstanceFileSharesNfsExportOption']]:
+        """
+        Nfs Export Options. There is a limit of 10 export options per file share.
+        Structure is documented below.
+        """
         return pulumi.get(self, "nfs_export_options")
 
     def _translate_property(self, prop):

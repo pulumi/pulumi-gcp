@@ -32,7 +32,16 @@ class Instance(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a Instance resource with the given unique name, props, and options.
+        A Google Cloud Memcache instance.
+
+        To get more information about Instance, see:
+
+        * [API documentation](https://cloud.google.com/memorystore/docs/memcached/reference/rest)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/memcache/docs/creating-instances)
+
+        ## Example Usage
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] authorized_network: The full name of the GCE network to connect the instance to.  If not provided,

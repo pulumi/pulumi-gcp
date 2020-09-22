@@ -7,6 +7,21 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// This data source provides a Google OpenID Connect (`oidc`) `idToken`.  Tokens issued from this data source are typically used to call external services that accept OIDC tokens for authentication (e.g. [Google Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service)).
+//
+// For more information see
+// [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#IDToken).
+//
+// ## Example Usage
+//
+// ### ServiceAccount JSON Credential File.
+//   `serviceAccount.getAccountIdToken` will use the configured provider credentials
+//
+// ### Service Account Impersonation.
+//   `serviceAccount.getAccountAccessToken` will use background impersonated credentials provided by `serviceAccount.getAccountAccessToken`.
+//
+//   Note: to use the following, you must grant `targetServiceAccount` the
+//   `roles/iam.serviceAccountTokenCreator` role on itself.
 func GetAccountIdToken(ctx *pulumi.Context, args *GetAccountIdTokenArgs, opts ...pulumi.InvokeOption) (*GetAccountIdTokenResult, error) {
 	var rv GetAccountIdTokenResult
 	err := ctx.Invoke("gcp:serviceAccount/getAccountIdToken:getAccountIdToken", args, &rv, opts...)

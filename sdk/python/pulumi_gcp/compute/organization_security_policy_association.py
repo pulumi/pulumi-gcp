@@ -22,7 +22,16 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a OrganizationSecurityPolicyAssociation resource with the given unique name, props, and options.
+        An association for the OrganizationSecurityPolicy.
+
+        To get more information about OrganizationSecurityPolicyAssociation, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies/addAssociation)
+        * How-to Guides
+            * [Associating a policy with the organization or folder](https://cloud.google.com/vpc/docs/using-firewall-policies#associate)
+
+        ## Example Usage
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] attachment_id: The resource that the security policy is attached to.

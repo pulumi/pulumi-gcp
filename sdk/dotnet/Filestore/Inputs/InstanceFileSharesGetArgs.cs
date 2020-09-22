@@ -27,6 +27,11 @@ namespace Pulumi.Gcp.Filestore.Inputs
 
         [Input("nfsExportOptions")]
         private InputList<Inputs.InstanceFileSharesNfsExportOptionGetArgs>? _nfsExportOptions;
+
+        /// <summary>
+        /// Nfs Export Options. There is a limit of 10 export options per file share.
+        /// Structure is documented below.
+        /// </summary>
         public InputList<Inputs.InstanceFileSharesNfsExportOptionGetArgs> NfsExportOptions
         {
             get => _nfsExportOptions ?? (_nfsExportOptions = new InputList<Inputs.InstanceFileSharesNfsExportOptionGetArgs>());

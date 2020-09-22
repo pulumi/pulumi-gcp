@@ -4,6 +4,18 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Generate service identity for a service.
+ *
+ * > **Note**: Once created, this resource cannot be updated or destroyed. These
+ * actions are a no-op.
+ *
+ * To get more information about Service Identity, see:
+ *
+ * * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services/generateServiceIdentity)
+ *
+ * ## Example Usage
+ */
 export class ServiceIdentity extends pulumi.CustomResource {
     /**
      * Get an existing ServiceIdentity resource's state with the given name, ID, and optional extra

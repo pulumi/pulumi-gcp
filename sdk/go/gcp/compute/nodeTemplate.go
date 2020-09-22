@@ -23,7 +23,9 @@ import (
 type NodeTemplate struct {
 	pulumi.CustomResourceState
 
-	// CPU overcommit. Default value: "NONE" Possible values: ["ENABLED", "NONE"]
+	// CPU overcommit.
+	// Default value is `NONE`.
+	// Possible values are `ENABLED` and `NONE`.
 	CpuOvercommitType pulumi.StringPtrOutput `pulumi:"cpuOvercommitType"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
@@ -85,7 +87,9 @@ func GetNodeTemplate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NodeTemplate resources.
 type nodeTemplateState struct {
-	// CPU overcommit. Default value: "NONE" Possible values: ["ENABLED", "NONE"]
+	// CPU overcommit.
+	// Default value is `NONE`.
+	// Possible values are `ENABLED` and `NONE`.
 	CpuOvercommitType *string `pulumi:"cpuOvercommitType"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
@@ -120,7 +124,9 @@ type nodeTemplateState struct {
 }
 
 type NodeTemplateState struct {
-	// CPU overcommit. Default value: "NONE" Possible values: ["ENABLED", "NONE"]
+	// CPU overcommit.
+	// Default value is `NONE`.
+	// Possible values are `ENABLED` and `NONE`.
 	CpuOvercommitType pulumi.StringPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
@@ -159,7 +165,9 @@ func (NodeTemplateState) ElementType() reflect.Type {
 }
 
 type nodeTemplateArgs struct {
-	// CPU overcommit. Default value: "NONE" Possible values: ["ENABLED", "NONE"]
+	// CPU overcommit.
+	// Default value is `NONE`.
+	// Possible values are `ENABLED` and `NONE`.
 	CpuOvercommitType *string `pulumi:"cpuOvercommitType"`
 	// An optional textual description of the resource.
 	Description *string `pulumi:"description"`
@@ -191,7 +199,9 @@ type nodeTemplateArgs struct {
 
 // The set of arguments for constructing a NodeTemplate resource.
 type NodeTemplateArgs struct {
-	// CPU overcommit. Default value: "NONE" Possible values: ["ENABLED", "NONE"]
+	// CPU overcommit.
+	// Default value is `NONE`.
+	// Possible values are `ENABLED` and `NONE`.
 	CpuOvercommitType pulumi.StringPtrInput
 	// An optional textual description of the resource.
 	Description pulumi.StringPtrInput

@@ -11,9 +11,7 @@ import (
 )
 
 type ClusterAddonsConfig struct {
-	// .
-	// The status of the CloudRun addon. It is disabled by default.
-	// Set `disabled = false` to enable.
+	// . Structure is documented below.
 	CloudrunConfig *ClusterAddonsConfigCloudrunConfig `pulumi:"cloudrunConfig"`
 	// .
 	// The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
@@ -63,9 +61,7 @@ type ClusterAddonsConfigInput interface {
 }
 
 type ClusterAddonsConfigArgs struct {
-	// .
-	// The status of the CloudRun addon. It is disabled by default.
-	// Set `disabled = false` to enable.
+	// . Structure is documented below.
 	CloudrunConfig ClusterAddonsConfigCloudrunConfigPtrInput `pulumi:"cloudrunConfig"`
 	// .
 	// The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
@@ -180,9 +176,7 @@ func (o ClusterAddonsConfigOutput) ToClusterAddonsConfigPtrOutputWithContext(ctx
 	}).(ClusterAddonsConfigPtrOutput)
 }
 
-// .
-// The status of the CloudRun addon. It is disabled by default.
-// Set `disabled = false` to enable.
+// . Structure is documented below.
 func (o ClusterAddonsConfigOutput) CloudrunConfig() ClusterAddonsConfigCloudrunConfigPtrOutput {
 	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigCloudrunConfig { return v.CloudrunConfig }).(ClusterAddonsConfigCloudrunConfigPtrOutput)
 }
@@ -267,9 +261,7 @@ func (o ClusterAddonsConfigPtrOutput) Elem() ClusterAddonsConfigOutput {
 	return o.ApplyT(func(v *ClusterAddonsConfig) ClusterAddonsConfig { return *v }).(ClusterAddonsConfigOutput)
 }
 
-// .
-// The status of the CloudRun addon. It is disabled by default.
-// Set `disabled = false` to enable.
+// . Structure is documented below.
 func (o ClusterAddonsConfigPtrOutput) CloudrunConfig() ClusterAddonsConfigCloudrunConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterAddonsConfig) *ClusterAddonsConfigCloudrunConfig {
 		if v == nil {
@@ -381,6 +373,9 @@ type ClusterAddonsConfigCloudrunConfig struct {
 	// The status of the Istio addon, which makes it easy to set up Istio for services in a
 	// cluster. It is disabled by default. Set `disabled = false` to enable.
 	Disabled bool `pulumi:"disabled"`
+	// The load balancer type of CloudRun ingress service. It is external load balancer by default.
+	// Set `load_balancer_type=LOAD_BALANCER_TYPE_INTERNAL` to configure it as internal load balancer.
+	LoadBalancerType *string `pulumi:"loadBalancerType"`
 }
 
 // ClusterAddonsConfigCloudrunConfigInput is an input type that accepts ClusterAddonsConfigCloudrunConfigArgs and ClusterAddonsConfigCloudrunConfigOutput values.
@@ -398,6 +393,9 @@ type ClusterAddonsConfigCloudrunConfigArgs struct {
 	// The status of the Istio addon, which makes it easy to set up Istio for services in a
 	// cluster. It is disabled by default. Set `disabled = false` to enable.
 	Disabled pulumi.BoolInput `pulumi:"disabled"`
+	// The load balancer type of CloudRun ingress service. It is external load balancer by default.
+	// Set `load_balancer_type=LOAD_BALANCER_TYPE_INTERNAL` to configure it as internal load balancer.
+	LoadBalancerType pulumi.StringPtrInput `pulumi:"loadBalancerType"`
 }
 
 func (ClusterAddonsConfigCloudrunConfigArgs) ElementType() reflect.Type {
@@ -483,6 +481,12 @@ func (o ClusterAddonsConfigCloudrunConfigOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterAddonsConfigCloudrunConfig) bool { return v.Disabled }).(pulumi.BoolOutput)
 }
 
+// The load balancer type of CloudRun ingress service. It is external load balancer by default.
+// Set `load_balancer_type=LOAD_BALANCER_TYPE_INTERNAL` to configure it as internal load balancer.
+func (o ClusterAddonsConfigCloudrunConfigOutput) LoadBalancerType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterAddonsConfigCloudrunConfig) *string { return v.LoadBalancerType }).(pulumi.StringPtrOutput)
+}
+
 type ClusterAddonsConfigCloudrunConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterAddonsConfigCloudrunConfigPtrOutput) ElementType() reflect.Type {
@@ -510,6 +514,17 @@ func (o ClusterAddonsConfigCloudrunConfigPtrOutput) Disabled() pulumi.BoolPtrOut
 		}
 		return &v.Disabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+// The load balancer type of CloudRun ingress service. It is external load balancer by default.
+// Set `load_balancer_type=LOAD_BALANCER_TYPE_INTERNAL` to configure it as internal load balancer.
+func (o ClusterAddonsConfigCloudrunConfigPtrOutput) LoadBalancerType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterAddonsConfigCloudrunConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LoadBalancerType
+	}).(pulumi.StringPtrOutput)
 }
 
 type ClusterAddonsConfigConfigConnectorConfig struct {
@@ -4185,14 +4200,12 @@ type ClusterNodeConfig struct {
 	// The image type to use for this node. Note that changing the image type
 	// will delete and recreate all nodes in the node pool.
 	ImageType *string `pulumi:"imageType"`
-	// )
 	// Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 	// Structure is documented below.
 	KubeletConfig *ClusterNodeConfigKubeletConfig `pulumi:"kubeletConfig"`
 	// The Kubernetes labels (key/value pairs) to be applied to each node. The kubernetes.io/ and k8s.io/ prefixes are
 	// reserved by Kubernetes Core components and cannot be specified.
 	Labels map[string]string `pulumi:"labels"`
-	// )
 	// Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 	// Note that validations happen all server side. All attributes are optional.
 	// Structure is documented below.
@@ -4279,14 +4292,12 @@ type ClusterNodeConfigArgs struct {
 	// The image type to use for this node. Note that changing the image type
 	// will delete and recreate all nodes in the node pool.
 	ImageType pulumi.StringPtrInput `pulumi:"imageType"`
-	// )
 	// Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 	// Structure is documented below.
 	KubeletConfig ClusterNodeConfigKubeletConfigPtrInput `pulumi:"kubeletConfig"`
 	// The Kubernetes labels (key/value pairs) to be applied to each node. The kubernetes.io/ and k8s.io/ prefixes are
 	// reserved by Kubernetes Core components and cannot be specified.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// )
 	// Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 	// Note that validations happen all server side. All attributes are optional.
 	// Structure is documented below.
@@ -4453,7 +4464,6 @@ func (o ClusterNodeConfigOutput) ImageType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.ImageType }).(pulumi.StringPtrOutput)
 }
 
-// )
 // Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 // Structure is documented below.
 func (o ClusterNodeConfigOutput) KubeletConfig() ClusterNodeConfigKubeletConfigPtrOutput {
@@ -4466,7 +4476,6 @@ func (o ClusterNodeConfigOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// )
 // Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 // Note that validations happen all server side. All attributes are optional.
 // Structure is documented below.
@@ -4636,7 +4645,6 @@ func (o ClusterNodeConfigPtrOutput) ImageType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// )
 // Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 // Structure is documented below.
 func (o ClusterNodeConfigPtrOutput) KubeletConfig() ClusterNodeConfigKubeletConfigPtrOutput {
@@ -4659,7 +4667,6 @@ func (o ClusterNodeConfigPtrOutput) Labels() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// )
 // Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 // Note that validations happen all server side. All attributes are optional.
 // Structure is documented below.
@@ -6325,14 +6332,12 @@ type ClusterNodePoolNodeConfig struct {
 	// The image type to use for this node. Note that changing the image type
 	// will delete and recreate all nodes in the node pool.
 	ImageType *string `pulumi:"imageType"`
-	// )
 	// Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 	// Structure is documented below.
 	KubeletConfig *ClusterNodePoolNodeConfigKubeletConfig `pulumi:"kubeletConfig"`
 	// The Kubernetes labels (key/value pairs) to be applied to each node. The kubernetes.io/ and k8s.io/ prefixes are
 	// reserved by Kubernetes Core components and cannot be specified.
 	Labels map[string]string `pulumi:"labels"`
-	// )
 	// Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 	// Note that validations happen all server side. All attributes are optional.
 	// Structure is documented below.
@@ -6419,14 +6424,12 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// The image type to use for this node. Note that changing the image type
 	// will delete and recreate all nodes in the node pool.
 	ImageType pulumi.StringPtrInput `pulumi:"imageType"`
-	// )
 	// Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 	// Structure is documented below.
 	KubeletConfig ClusterNodePoolNodeConfigKubeletConfigPtrInput `pulumi:"kubeletConfig"`
 	// The Kubernetes labels (key/value pairs) to be applied to each node. The kubernetes.io/ and k8s.io/ prefixes are
 	// reserved by Kubernetes Core components and cannot be specified.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// )
 	// Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 	// Note that validations happen all server side. All attributes are optional.
 	// Structure is documented below.
@@ -6595,7 +6598,6 @@ func (o ClusterNodePoolNodeConfigOutput) ImageType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.ImageType }).(pulumi.StringPtrOutput)
 }
 
-// )
 // Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 // Structure is documented below.
 func (o ClusterNodePoolNodeConfigOutput) KubeletConfig() ClusterNodePoolNodeConfigKubeletConfigPtrOutput {
@@ -6608,7 +6610,6 @@ func (o ClusterNodePoolNodeConfigOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// )
 // Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 // Note that validations happen all server side. All attributes are optional.
 // Structure is documented below.
@@ -6782,7 +6783,6 @@ func (o ClusterNodePoolNodeConfigPtrOutput) ImageType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// )
 // Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 // Structure is documented below.
 func (o ClusterNodePoolNodeConfigPtrOutput) KubeletConfig() ClusterNodePoolNodeConfigKubeletConfigPtrOutput {
@@ -6805,7 +6805,6 @@ func (o ClusterNodePoolNodeConfigPtrOutput) Labels() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// )
 // Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 // Note that validations happen all server side. All attributes are optional.
 // Structure is documented below.
@@ -8247,7 +8246,10 @@ type ClusterPrivateClusterConfig struct {
 	// creating a private endpoint on the cluster. In a private cluster, nodes only
 	// have RFC 1918 private addresses and communicate with the master's private
 	// endpoint via private networking.
-	EnablePrivateNodes       *bool                                                `pulumi:"enablePrivateNodes"`
+	EnablePrivateNodes *bool `pulumi:"enablePrivateNodes"`
+	// Controls cluster master global
+	// access settings. If unset, the provider will no longer manage this field and will
+	// not modify the previously-set value. Structure is documented below.
 	MasterGlobalAccessConfig *ClusterPrivateClusterConfigMasterGlobalAccessConfig `pulumi:"masterGlobalAccessConfig"`
 	// The IP range in CIDR notation to use for
 	// the hosted master network. This range will be used for assigning private IP
@@ -8286,7 +8288,10 @@ type ClusterPrivateClusterConfigArgs struct {
 	// creating a private endpoint on the cluster. In a private cluster, nodes only
 	// have RFC 1918 private addresses and communicate with the master's private
 	// endpoint via private networking.
-	EnablePrivateNodes       pulumi.BoolPtrInput                                         `pulumi:"enablePrivateNodes"`
+	EnablePrivateNodes pulumi.BoolPtrInput `pulumi:"enablePrivateNodes"`
+	// Controls cluster master global
+	// access settings. If unset, the provider will no longer manage this field and will
+	// not modify the previously-set value. Structure is documented below.
 	MasterGlobalAccessConfig ClusterPrivateClusterConfigMasterGlobalAccessConfigPtrInput `pulumi:"masterGlobalAccessConfig"`
 	// The IP range in CIDR notation to use for
 	// the hosted master network. This range will be used for assigning private IP
@@ -8397,6 +8402,9 @@ func (o ClusterPrivateClusterConfigOutput) EnablePrivateNodes() pulumi.BoolPtrOu
 	return o.ApplyT(func(v ClusterPrivateClusterConfig) *bool { return v.EnablePrivateNodes }).(pulumi.BoolPtrOutput)
 }
 
+// Controls cluster master global
+// access settings. If unset, the provider will no longer manage this field and will
+// not modify the previously-set value. Structure is documented below.
 func (o ClusterPrivateClusterConfigOutput) MasterGlobalAccessConfig() ClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutput {
 	return o.ApplyT(func(v ClusterPrivateClusterConfig) *ClusterPrivateClusterConfigMasterGlobalAccessConfig {
 		return v.MasterGlobalAccessConfig
@@ -8473,6 +8481,9 @@ func (o ClusterPrivateClusterConfigPtrOutput) EnablePrivateNodes() pulumi.BoolPt
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Controls cluster master global
+// access settings. If unset, the provider will no longer manage this field and will
+// not modify the previously-set value. Structure is documented below.
 func (o ClusterPrivateClusterConfigPtrOutput) MasterGlobalAccessConfig() ClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterPrivateClusterConfig) *ClusterPrivateClusterConfigMasterGlobalAccessConfig {
 		if v == nil {
@@ -11322,7 +11333,8 @@ func (o GetClusterAddonsConfigArrayOutput) Index(i pulumi.IntInput) GetClusterAd
 }
 
 type GetClusterAddonsConfigCloudrunConfig struct {
-	Disabled bool `pulumi:"disabled"`
+	Disabled         bool   `pulumi:"disabled"`
+	LoadBalancerType string `pulumi:"loadBalancerType"`
 }
 
 // GetClusterAddonsConfigCloudrunConfigInput is an input type that accepts GetClusterAddonsConfigCloudrunConfigArgs and GetClusterAddonsConfigCloudrunConfigOutput values.
@@ -11337,7 +11349,8 @@ type GetClusterAddonsConfigCloudrunConfigInput interface {
 }
 
 type GetClusterAddonsConfigCloudrunConfigArgs struct {
-	Disabled pulumi.BoolInput `pulumi:"disabled"`
+	Disabled         pulumi.BoolInput   `pulumi:"disabled"`
+	LoadBalancerType pulumi.StringInput `pulumi:"loadBalancerType"`
 }
 
 func (GetClusterAddonsConfigCloudrunConfigArgs) ElementType() reflect.Type {
@@ -11393,6 +11406,10 @@ func (o GetClusterAddonsConfigCloudrunConfigOutput) ToGetClusterAddonsConfigClou
 
 func (o GetClusterAddonsConfigCloudrunConfigOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClusterAddonsConfigCloudrunConfig) bool { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+func (o GetClusterAddonsConfigCloudrunConfigOutput) LoadBalancerType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterAddonsConfigCloudrunConfig) string { return v.LoadBalancerType }).(pulumi.StringOutput)
 }
 
 type GetClusterAddonsConfigCloudrunConfigArrayOutput struct{ *pulumi.OutputState }

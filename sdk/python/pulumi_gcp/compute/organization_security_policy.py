@@ -23,7 +23,16 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a OrganizationSecurityPolicy resource with the given unique name, props, and options.
+        Organization security policies are used to control incoming/outgoing traffic.
+
+        To get more information about OrganizationSecurityPolicy, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies)
+        * How-to Guides
+            * [Creating a firewall policy](https://cloud.google.com/vpc/docs/using-firewall-policies#create-policy)
+
+        ## Example Usage
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A textual description for the organization security policy.

@@ -89,9 +89,11 @@ type Disk struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Resource policies applied to this disk for automatic snapshot creations. ~>**NOTE** This value does not support updating
-	// the resource policy, as resource policies can not be updated more than one at a time. Use
-	// ['google_compute_disk_resource_policy_attachment'](https://www.terraform.io/docs/providers/google/r/compute_disk_resource_policy_attachment.html)
+	// Resource policies applied to this disk for automatic snapshot creations.
+	// ~>**NOTE** This value does not support updating the
+	// resource policy, as resource policies can not be updated more than
+	// one at a time. Use
+	// `compute.DiskResourcePolicyAttachment`
 	// to allow for updating the resource policy attached to the disk.
 	ResourcePolicies pulumi.StringArrayOutput `pulumi:"resourcePolicies"`
 	// The URI of the created resource.
@@ -218,9 +220,11 @@ type diskState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Resource policies applied to this disk for automatic snapshot creations. ~>**NOTE** This value does not support updating
-	// the resource policy, as resource policies can not be updated more than one at a time. Use
-	// ['google_compute_disk_resource_policy_attachment'](https://www.terraform.io/docs/providers/google/r/compute_disk_resource_policy_attachment.html)
+	// Resource policies applied to this disk for automatic snapshot creations.
+	// ~>**NOTE** This value does not support updating the
+	// resource policy, as resource policies can not be updated more than
+	// one at a time. Use
+	// `compute.DiskResourcePolicyAttachment`
 	// to allow for updating the resource policy attached to the disk.
 	ResourcePolicies []string `pulumi:"resourcePolicies"`
 	// The URI of the created resource.
@@ -320,9 +324,11 @@ type DiskState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Resource policies applied to this disk for automatic snapshot creations. ~>**NOTE** This value does not support updating
-	// the resource policy, as resource policies can not be updated more than one at a time. Use
-	// ['google_compute_disk_resource_policy_attachment'](https://www.terraform.io/docs/providers/google/r/compute_disk_resource_policy_attachment.html)
+	// Resource policies applied to this disk for automatic snapshot creations.
+	// ~>**NOTE** This value does not support updating the
+	// resource policy, as resource policies can not be updated more than
+	// one at a time. Use
+	// `compute.DiskResourcePolicyAttachment`
 	// to allow for updating the resource policy attached to the disk.
 	ResourcePolicies pulumi.StringArrayInput
 	// The URI of the created resource.
@@ -418,9 +424,11 @@ type diskArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Resource policies applied to this disk for automatic snapshot creations. ~>**NOTE** This value does not support updating
-	// the resource policy, as resource policies can not be updated more than one at a time. Use
-	// ['google_compute_disk_resource_policy_attachment'](https://www.terraform.io/docs/providers/google/r/compute_disk_resource_policy_attachment.html)
+	// Resource policies applied to this disk for automatic snapshot creations.
+	// ~>**NOTE** This value does not support updating the
+	// resource policy, as resource policies can not be updated more than
+	// one at a time. Use
+	// `compute.DiskResourcePolicyAttachment`
 	// to allow for updating the resource policy attached to the disk.
 	ResourcePolicies []string `pulumi:"resourcePolicies"`
 	// Size of the persistent disk, specified in GB. You can specify this
@@ -501,9 +509,11 @@ type DiskArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Resource policies applied to this disk for automatic snapshot creations. ~>**NOTE** This value does not support updating
-	// the resource policy, as resource policies can not be updated more than one at a time. Use
-	// ['google_compute_disk_resource_policy_attachment'](https://www.terraform.io/docs/providers/google/r/compute_disk_resource_policy_attachment.html)
+	// Resource policies applied to this disk for automatic snapshot creations.
+	// ~>**NOTE** This value does not support updating the
+	// resource policy, as resource policies can not be updated more than
+	// one at a time. Use
+	// `compute.DiskResourcePolicyAttachment`
 	// to allow for updating the resource policy attached to the disk.
 	ResourcePolicies pulumi.StringArrayInput
 	// Size of the persistent disk, specified in GB. You can specify this

@@ -6,6 +6,21 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * A Cloud AI Platform Notebook instance.
+ *
+ * > **Note:** Due to limitations of the Notebooks Instance API, many fields
+ * in this resource do not properly detect drift. These fields will also not
+ * appear in state once imported.
+ *
+ * To get more information about Instance, see:
+ *
+ * * [API documentation](https://cloud.google.com/ai-platform/notebooks/docs/reference/rest)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
+ *
+ * ## Example Usage
+ */
 export class Instance extends pulumi.CustomResource {
     /**
      * Get an existing Instance resource's state with the given name, ID, and optional extra
@@ -84,8 +99,9 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly diskEncryption!: pulumi.Output<string | undefined>;
     /**
-     * Indicates that this is a boot disk. The virtual machine will
-     * use the first partition of the disk for its root filesystem.
+     * Whether the end user authorizes Google Cloud to install GPU driver
+     * on this instance. If this field is empty or set to false, the GPU driver
+     * won't be installed. Only applicable to instances with GPUs.
      */
     public readonly installGpuDriver!: pulumi.Output<boolean | undefined>;
     /**
@@ -326,8 +342,9 @@ export interface InstanceState {
      */
     readonly diskEncryption?: pulumi.Input<string>;
     /**
-     * Indicates that this is a boot disk. The virtual machine will
-     * use the first partition of the disk for its root filesystem.
+     * Whether the end user authorizes Google Cloud to install GPU driver
+     * on this instance. If this field is empty or set to false, the GPU driver
+     * won't be installed. Only applicable to instances with GPUs.
      */
     readonly installGpuDriver?: pulumi.Input<boolean>;
     /**
@@ -479,8 +496,9 @@ export interface InstanceArgs {
      */
     readonly diskEncryption?: pulumi.Input<string>;
     /**
-     * Indicates that this is a boot disk. The virtual machine will
-     * use the first partition of the disk for its root filesystem.
+     * Whether the end user authorizes Google Cloud to install GPU driver
+     * on this instance. If this field is empty or set to false, the GPU driver
+     * won't be installed. Only applicable to instances with GPUs.
      */
     readonly installGpuDriver?: pulumi.Input<boolean>;
     /**

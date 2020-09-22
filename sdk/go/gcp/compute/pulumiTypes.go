@@ -45,7 +45,10 @@ type AutoscalarAutoscalingPolicy struct {
 	// Defines operating mode for this policy.
 	// Default value is `ON`.
 	// Possible values are `OFF`, `ONLY_UP`, and `ON`.
-	Mode             *string                                      `pulumi:"mode"`
+	Mode *string `pulumi:"mode"`
+	// Defines scale down controls to reduce the risk of response latency
+	// and outages due to abrupt scale-in events
+	// Structure is documented below.
 	ScaleDownControl *AutoscalarAutoscalingPolicyScaleDownControl `pulumi:"scaleDownControl"`
 }
 
@@ -95,7 +98,10 @@ type AutoscalarAutoscalingPolicyArgs struct {
 	// Defines operating mode for this policy.
 	// Default value is `ON`.
 	// Possible values are `OFF`, `ONLY_UP`, and `ON`.
-	Mode             pulumi.StringPtrInput                               `pulumi:"mode"`
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// Defines scale down controls to reduce the risk of response latency
+	// and outages due to abrupt scale-in events
+	// Structure is documented below.
 	ScaleDownControl AutoscalarAutoscalingPolicyScaleDownControlPtrInput `pulumi:"scaleDownControl"`
 }
 
@@ -236,6 +242,9 @@ func (o AutoscalarAutoscalingPolicyOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AutoscalarAutoscalingPolicy) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
 
+// Defines scale down controls to reduce the risk of response latency
+// and outages due to abrupt scale-in events
+// Structure is documented below.
 func (o AutoscalarAutoscalingPolicyOutput) ScaleDownControl() AutoscalarAutoscalingPolicyScaleDownControlPtrOutput {
 	return o.ApplyT(func(v AutoscalarAutoscalingPolicy) *AutoscalarAutoscalingPolicyScaleDownControl {
 		return v.ScaleDownControl
@@ -351,6 +360,9 @@ func (o AutoscalarAutoscalingPolicyPtrOutput) Mode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Defines scale down controls to reduce the risk of response latency
+// and outages due to abrupt scale-in events
+// Structure is documented below.
 func (o AutoscalarAutoscalingPolicyPtrOutput) ScaleDownControl() AutoscalarAutoscalingPolicyScaleDownControlPtrOutput {
 	return o.ApplyT(func(v *AutoscalarAutoscalingPolicy) *AutoscalarAutoscalingPolicyScaleDownControl {
 		if v == nil {
@@ -1267,7 +1279,10 @@ type AutoscalerAutoscalingPolicy struct {
 	// Defines operating mode for this policy.
 	// Default value is `ON`.
 	// Possible values are `OFF`, `ONLY_UP`, and `ON`.
-	Mode             *string                                      `pulumi:"mode"`
+	Mode *string `pulumi:"mode"`
+	// Defines scale down controls to reduce the risk of response latency
+	// and outages due to abrupt scale-in events
+	// Structure is documented below.
 	ScaleDownControl *AutoscalerAutoscalingPolicyScaleDownControl `pulumi:"scaleDownControl"`
 }
 
@@ -1317,7 +1332,10 @@ type AutoscalerAutoscalingPolicyArgs struct {
 	// Defines operating mode for this policy.
 	// Default value is `ON`.
 	// Possible values are `OFF`, `ONLY_UP`, and `ON`.
-	Mode             pulumi.StringPtrInput                               `pulumi:"mode"`
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// Defines scale down controls to reduce the risk of response latency
+	// and outages due to abrupt scale-in events
+	// Structure is documented below.
 	ScaleDownControl AutoscalerAutoscalingPolicyScaleDownControlPtrInput `pulumi:"scaleDownControl"`
 }
 
@@ -1458,6 +1476,9 @@ func (o AutoscalerAutoscalingPolicyOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AutoscalerAutoscalingPolicy) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
 
+// Defines scale down controls to reduce the risk of response latency
+// and outages due to abrupt scale-in events
+// Structure is documented below.
 func (o AutoscalerAutoscalingPolicyOutput) ScaleDownControl() AutoscalerAutoscalingPolicyScaleDownControlPtrOutput {
 	return o.ApplyT(func(v AutoscalerAutoscalingPolicy) *AutoscalerAutoscalingPolicyScaleDownControl {
 		return v.ScaleDownControl
@@ -1573,6 +1594,9 @@ func (o AutoscalerAutoscalingPolicyPtrOutput) Mode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Defines scale down controls to reduce the risk of response latency
+// and outages due to abrupt scale-in events
+// Structure is documented below.
 func (o AutoscalerAutoscalingPolicyPtrOutput) ScaleDownControl() AutoscalerAutoscalingPolicyScaleDownControlPtrOutput {
 	return o.ApplyT(func(v *AutoscalerAutoscalingPolicy) *AutoscalerAutoscalingPolicyScaleDownControl {
 		if v == nil {
@@ -6545,7 +6569,7 @@ type FirewallAllow struct {
 	// The IP protocol to which this rule applies. The protocol type is
 	// required when creating a firewall rule. This value can either be
 	// one of the following well known protocol strings (tcp, udp,
-	// icmp, esp, ah, sctp, ipip), or the IP protocol number.
+	// icmp, esp, ah, sctp, ipip, all), or the IP protocol number.
 	Protocol string `pulumi:"protocol"`
 }
 
@@ -6571,7 +6595,7 @@ type FirewallAllowArgs struct {
 	// The IP protocol to which this rule applies. The protocol type is
 	// required when creating a firewall rule. This value can either be
 	// one of the following well known protocol strings (tcp, udp,
-	// icmp, esp, ah, sctp, ipip), or the IP protocol number.
+	// icmp, esp, ah, sctp, ipip, all), or the IP protocol number.
 	Protocol pulumi.StringInput `pulumi:"protocol"`
 }
 
@@ -6639,7 +6663,7 @@ func (o FirewallAllowOutput) Ports() pulumi.StringArrayOutput {
 // The IP protocol to which this rule applies. The protocol type is
 // required when creating a firewall rule. This value can either be
 // one of the following well known protocol strings (tcp, udp,
-// icmp, esp, ah, sctp, ipip), or the IP protocol number.
+// icmp, esp, ah, sctp, ipip, all), or the IP protocol number.
 func (o FirewallAllowOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v FirewallAllow) string { return v.Protocol }).(pulumi.StringOutput)
 }
@@ -6675,7 +6699,7 @@ type FirewallDeny struct {
 	// The IP protocol to which this rule applies. The protocol type is
 	// required when creating a firewall rule. This value can either be
 	// one of the following well known protocol strings (tcp, udp,
-	// icmp, esp, ah, sctp, ipip), or the IP protocol number.
+	// icmp, esp, ah, sctp, ipip, all), or the IP protocol number.
 	Protocol string `pulumi:"protocol"`
 }
 
@@ -6701,7 +6725,7 @@ type FirewallDenyArgs struct {
 	// The IP protocol to which this rule applies. The protocol type is
 	// required when creating a firewall rule. This value can either be
 	// one of the following well known protocol strings (tcp, udp,
-	// icmp, esp, ah, sctp, ipip), or the IP protocol number.
+	// icmp, esp, ah, sctp, ipip, all), or the IP protocol number.
 	Protocol pulumi.StringInput `pulumi:"protocol"`
 }
 
@@ -6769,7 +6793,7 @@ func (o FirewallDenyOutput) Ports() pulumi.StringArrayOutput {
 // The IP protocol to which this rule applies. The protocol type is
 // required when creating a firewall rule. This value can either be
 // one of the following well known protocol strings (tcp, udp,
-// icmp, esp, ah, sctp, ipip), or the IP protocol number.
+// icmp, esp, ah, sctp, ipip, all), or the IP protocol number.
 func (o FirewallDenyOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v FirewallDeny) string { return v.Protocol }).(pulumi.StringOutput)
 }
@@ -15381,8 +15405,10 @@ type InstanceTemplateDisk struct {
 	// The GCE disk type. Can be either `"pd-ssd"`,
 	// `"local-ssd"`, `"pd-balanced"` or `"pd-standard"`.
 	DiskType *string `pulumi:"diskType"`
-	// Specifies the disk interface to use for attaching
-	// this disk.
+	// Specifies the disk interface to use for attaching this disk,
+	// which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI
+	// and the request will fail if you attempt to attach a persistent disk in any other format
+	// than SCSI. Local SSDs can use either NVME or SCSI.
 	Interface *string `pulumi:"interface"`
 	// A set of key/value label pairs to assign to instances
 	// created from this template,
@@ -15393,7 +15419,7 @@ type InstanceTemplateDisk struct {
 	Mode *string `pulumi:"mode"`
 	// The name (**not self_link**)
 	// of the disk (such as those managed by `compute.Disk`) to attach.
-	// > **Note:** Either `source` or `sourceImage` is **required** when creating a new instance except for when creating a local SSD. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+	// > **Note:** Either `source` or `sourceImage` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
 	Source *string `pulumi:"source"`
 	// The image from which to
 	// initialize this disk. This can be one of: the image's `selfLink`,
@@ -15401,7 +15427,7 @@ type InstanceTemplateDisk struct {
 	// `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
 	// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
 	// `{project}/{image}`, `{family}`, or `{image}`.
-	// > **Note:** Either `source` or `sourceImage` is **required** when creating a new instance except for when creating a local SSD. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+	// > **Note:** Either `source` or `sourceImage` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
 	SourceImage *string `pulumi:"sourceImage"`
 	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
 	Type *string `pulumi:"type"`
@@ -15440,8 +15466,10 @@ type InstanceTemplateDiskArgs struct {
 	// The GCE disk type. Can be either `"pd-ssd"`,
 	// `"local-ssd"`, `"pd-balanced"` or `"pd-standard"`.
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
-	// Specifies the disk interface to use for attaching
-	// this disk.
+	// Specifies the disk interface to use for attaching this disk,
+	// which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI
+	// and the request will fail if you attempt to attach a persistent disk in any other format
+	// than SCSI. Local SSDs can use either NVME or SCSI.
 	Interface pulumi.StringPtrInput `pulumi:"interface"`
 	// A set of key/value label pairs to assign to instances
 	// created from this template,
@@ -15452,7 +15480,7 @@ type InstanceTemplateDiskArgs struct {
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
 	// The name (**not self_link**)
 	// of the disk (such as those managed by `compute.Disk`) to attach.
-	// > **Note:** Either `source` or `sourceImage` is **required** when creating a new instance except for when creating a local SSD. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+	// > **Note:** Either `source` or `sourceImage` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
 	Source pulumi.StringPtrInput `pulumi:"source"`
 	// The image from which to
 	// initialize this disk. This can be one of: the image's `selfLink`,
@@ -15460,7 +15488,7 @@ type InstanceTemplateDiskArgs struct {
 	// `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
 	// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
 	// `{project}/{image}`, `{family}`, or `{image}`.
-	// > **Note:** Either `source` or `sourceImage` is **required** when creating a new instance except for when creating a local SSD. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+	// > **Note:** Either `source` or `sourceImage` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
 	SourceImage pulumi.StringPtrInput `pulumi:"sourceImage"`
 	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
@@ -15559,8 +15587,10 @@ func (o InstanceTemplateDiskOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceTemplateDisk) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the disk interface to use for attaching
-// this disk.
+// Specifies the disk interface to use for attaching this disk,
+// which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI
+// and the request will fail if you attempt to attach a persistent disk in any other format
+// than SCSI. Local SSDs can use either NVME or SCSI.
 func (o InstanceTemplateDiskOutput) Interface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceTemplateDisk) *string { return v.Interface }).(pulumi.StringPtrOutput)
 }
@@ -15580,7 +15610,7 @@ func (o InstanceTemplateDiskOutput) Mode() pulumi.StringPtrOutput {
 
 // The name (**not self_link**)
 // of the disk (such as those managed by `compute.Disk`) to attach.
-// > **Note:** Either `source` or `sourceImage` is **required** when creating a new instance except for when creating a local SSD. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+// > **Note:** Either `source` or `sourceImage` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
 func (o InstanceTemplateDiskOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceTemplateDisk) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
@@ -15591,7 +15621,7 @@ func (o InstanceTemplateDiskOutput) Source() pulumi.StringPtrOutput {
 // `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
 // `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
 // `{project}/{image}`, `{family}`, or `{image}`.
-// > **Note:** Either `source` or `sourceImage` is **required** when creating a new instance except for when creating a local SSD. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+// > **Note:** Either `source` or `sourceImage` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
 func (o InstanceTemplateDiskOutput) SourceImage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceTemplateDisk) *string { return v.SourceImage }).(pulumi.StringPtrOutput)
 }
@@ -19561,7 +19591,10 @@ type RegionAutoscalerAutoscalingPolicy struct {
 	// Defines operating mode for this policy.
 	// Default value is `ON`.
 	// Possible values are `OFF`, `ONLY_UP`, and `ON`.
-	Mode             *string                                            `pulumi:"mode"`
+	Mode *string `pulumi:"mode"`
+	// Defines scale down controls to reduce the risk of response latency
+	// and outages due to abrupt scale-in events
+	// Structure is documented below.
 	ScaleDownControl *RegionAutoscalerAutoscalingPolicyScaleDownControl `pulumi:"scaleDownControl"`
 }
 
@@ -19611,7 +19644,10 @@ type RegionAutoscalerAutoscalingPolicyArgs struct {
 	// Defines operating mode for this policy.
 	// Default value is `ON`.
 	// Possible values are `OFF`, `ONLY_UP`, and `ON`.
-	Mode             pulumi.StringPtrInput                                     `pulumi:"mode"`
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// Defines scale down controls to reduce the risk of response latency
+	// and outages due to abrupt scale-in events
+	// Structure is documented below.
 	ScaleDownControl RegionAutoscalerAutoscalingPolicyScaleDownControlPtrInput `pulumi:"scaleDownControl"`
 }
 
@@ -19752,6 +19788,9 @@ func (o RegionAutoscalerAutoscalingPolicyOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionAutoscalerAutoscalingPolicy) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
 
+// Defines scale down controls to reduce the risk of response latency
+// and outages due to abrupt scale-in events
+// Structure is documented below.
 func (o RegionAutoscalerAutoscalingPolicyOutput) ScaleDownControl() RegionAutoscalerAutoscalingPolicyScaleDownControlPtrOutput {
 	return o.ApplyT(func(v RegionAutoscalerAutoscalingPolicy) *RegionAutoscalerAutoscalingPolicyScaleDownControl {
 		return v.ScaleDownControl
@@ -19867,6 +19906,9 @@ func (o RegionAutoscalerAutoscalingPolicyPtrOutput) Mode() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Defines scale down controls to reduce the risk of response latency
+// and outages due to abrupt scale-in events
+// Structure is documented below.
 func (o RegionAutoscalerAutoscalingPolicyPtrOutput) ScaleDownControl() RegionAutoscalerAutoscalingPolicyScaleDownControlPtrOutput {
 	return o.ApplyT(func(v *RegionAutoscalerAutoscalingPolicy) *RegionAutoscalerAutoscalingPolicyScaleDownControl {
 		if v == nil {
