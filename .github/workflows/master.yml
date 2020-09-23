@@ -175,7 +175,7 @@ jobs:
       uses: pulumi/action-install-pulumi-cli@releases/v1
     - name: Set PreRelease Version
       run: echo "::set-env name=GORELEASER_CURRENT_TAG::v$(pulumictl get version --language
-        generic -o)"
+        generic)"
     - name: Run GoReleaser
       uses: goreleaser/goreleaser-action@v2
       with:
