@@ -15,11 +15,21 @@ namespace Pulumi.Gcp.DataCatalog.Inputs
         [Input("tableSourceType")]
         public Input<string>? TableSourceType { get; set; }
 
-        [Input("tableSpec")]
-        public Input<Inputs.EntryBigqueryTableSpecTableSpecGetArgs>? TableSpec { get; set; }
+        [Input("tableSpecs")]
+        private InputList<Inputs.EntryBigqueryTableSpecTableSpecGetArgs>? _tableSpecs;
+        public InputList<Inputs.EntryBigqueryTableSpecTableSpecGetArgs> TableSpecs
+        {
+            get => _tableSpecs ?? (_tableSpecs = new InputList<Inputs.EntryBigqueryTableSpecTableSpecGetArgs>());
+            set => _tableSpecs = value;
+        }
 
-        [Input("viewSpec")]
-        public Input<Inputs.EntryBigqueryTableSpecViewSpecGetArgs>? ViewSpec { get; set; }
+        [Input("viewSpecs")]
+        private InputList<Inputs.EntryBigqueryTableSpecViewSpecGetArgs>? _viewSpecs;
+        public InputList<Inputs.EntryBigqueryTableSpecViewSpecGetArgs> ViewSpecs
+        {
+            get => _viewSpecs ?? (_viewSpecs = new InputList<Inputs.EntryBigqueryTableSpecViewSpecGetArgs>());
+            set => _viewSpecs = value;
+        }
 
         public EntryBigqueryTableSpecGetArgs()
         {

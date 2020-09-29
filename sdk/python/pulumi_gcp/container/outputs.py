@@ -19,7 +19,6 @@ __all__ = [
     'ClusterAddonsConfigHttpLoadBalancing',
     'ClusterAddonsConfigIstioConfig',
     'ClusterAddonsConfigKalmConfig',
-    'ClusterAddonsConfigKubernetesDashboard',
     'ClusterAddonsConfigNetworkPolicyConfig',
     'ClusterAuthenticatorGroupsConfig',
     'ClusterClusterAutoscaling',
@@ -85,7 +84,6 @@ __all__ = [
     'GetClusterAddonsConfigHttpLoadBalancingResult',
     'GetClusterAddonsConfigIstioConfigResult',
     'GetClusterAddonsConfigKalmConfigResult',
-    'GetClusterAddonsConfigKubernetesDashboardResult',
     'GetClusterAddonsConfigNetworkPolicyConfigResult',
     'GetClusterAuthenticatorGroupsConfigResult',
     'GetClusterClusterAutoscalingResult',
@@ -144,7 +142,6 @@ class ClusterAddonsConfig(dict):
                  http_load_balancing: Optional['outputs.ClusterAddonsConfigHttpLoadBalancing'] = None,
                  istio_config: Optional['outputs.ClusterAddonsConfigIstioConfig'] = None,
                  kalm_config: Optional['outputs.ClusterAddonsConfigKalmConfig'] = None,
-                 kubernetes_dashboard: Optional['outputs.ClusterAddonsConfigKubernetesDashboard'] = None,
                  network_policy_config: Optional['outputs.ClusterAddonsConfigNetworkPolicyConfig'] = None):
         """
         :param 'ClusterAddonsConfigCloudrunConfigArgs' cloudrun_config: . Structure is documented below.
@@ -191,8 +188,6 @@ class ClusterAddonsConfig(dict):
             pulumi.set(__self__, "istio_config", istio_config)
         if kalm_config is not None:
             pulumi.set(__self__, "kalm_config", kalm_config)
-        if kubernetes_dashboard is not None:
-            pulumi.set(__self__, "kubernetes_dashboard", kubernetes_dashboard)
         if network_policy_config is not None:
             pulumi.set(__self__, "network_policy_config", network_policy_config)
 
@@ -272,11 +267,6 @@ class ClusterAddonsConfig(dict):
         Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set `enabled = true` to enable.
         """
         return pulumi.get(self, "kalm_config")
-
-    @property
-    @pulumi.getter(name="kubernetesDashboard")
-    def kubernetes_dashboard(self) -> Optional['outputs.ClusterAddonsConfigKubernetesDashboard']:
-        return pulumi.get(self, "kubernetes_dashboard")
 
     @property
     @pulumi.getter(name="networkPolicyConfig")
@@ -500,30 +490,6 @@ class ClusterAddonsConfigKalmConfig(dict):
         If enabled, pods must be valid under a PodSecurityPolicy to be created.
         """
         return pulumi.get(self, "enabled")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-
-@pulumi.output_type
-class ClusterAddonsConfigKubernetesDashboard(dict):
-    def __init__(__self__, *,
-                 disabled: Optional[bool] = None):
-        """
-        :param bool disabled: The status of the Istio addon, which makes it easy to set up Istio for services in a
-               cluster. It is disabled by default. Set `disabled = false` to enable.
-        """
-        if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
-
-    @property
-    @pulumi.getter
-    def disabled(self) -> Optional[bool]:
-        """
-        The status of the Istio addon, which makes it easy to set up Istio for services in a
-        cluster. It is disabled by default. Set `disabled = false` to enable.
-        """
-        return pulumi.get(self, "disabled")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -845,10 +811,8 @@ class ClusterIpAllocationPolicy(dict):
     def __init__(__self__, *,
                  cluster_ipv4_cidr_block: Optional[str] = None,
                  cluster_secondary_range_name: Optional[str] = None,
-                 node_ipv4_cidr_block: Optional[str] = None,
                  services_ipv4_cidr_block: Optional[str] = None,
-                 services_secondary_range_name: Optional[str] = None,
-                 subnetwork_name: Optional[str] = None):
+                 services_secondary_range_name: Optional[str] = None):
         """
         :param str cluster_ipv4_cidr_block: The IP address range for the cluster pod IPs.
                Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
@@ -872,14 +836,10 @@ class ClusterIpAllocationPolicy(dict):
             pulumi.set(__self__, "cluster_ipv4_cidr_block", cluster_ipv4_cidr_block)
         if cluster_secondary_range_name is not None:
             pulumi.set(__self__, "cluster_secondary_range_name", cluster_secondary_range_name)
-        if node_ipv4_cidr_block is not None:
-            pulumi.set(__self__, "node_ipv4_cidr_block", node_ipv4_cidr_block)
         if services_ipv4_cidr_block is not None:
             pulumi.set(__self__, "services_ipv4_cidr_block", services_ipv4_cidr_block)
         if services_secondary_range_name is not None:
             pulumi.set(__self__, "services_secondary_range_name", services_secondary_range_name)
-        if subnetwork_name is not None:
-            pulumi.set(__self__, "subnetwork_name", subnetwork_name)
 
     @property
     @pulumi.getter(name="clusterIpv4CidrBlock")
@@ -904,11 +864,6 @@ class ClusterIpAllocationPolicy(dict):
         return pulumi.get(self, "cluster_secondary_range_name")
 
     @property
-    @pulumi.getter(name="nodeIpv4CidrBlock")
-    def node_ipv4_cidr_block(self) -> Optional[str]:
-        return pulumi.get(self, "node_ipv4_cidr_block")
-
-    @property
     @pulumi.getter(name="servicesIpv4CidrBlock")
     def services_ipv4_cidr_block(self) -> Optional[str]:
         """
@@ -930,11 +885,6 @@ class ClusterIpAllocationPolicy(dict):
         GKE-managed one.
         """
         return pulumi.get(self, "services_secondary_range_name")
-
-    @property
-    @pulumi.getter(name="subnetworkName")
-    def subnetwork_name(self) -> Optional[str]:
-        return pulumi.get(self, "subnetwork_name")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -3329,7 +3279,6 @@ class GetClusterAddonsConfigResult(dict):
                  http_load_balancings: Sequence['outputs.GetClusterAddonsConfigHttpLoadBalancingResult'],
                  istio_configs: Sequence['outputs.GetClusterAddonsConfigIstioConfigResult'],
                  kalm_configs: Sequence['outputs.GetClusterAddonsConfigKalmConfigResult'],
-                 kubernetes_dashboards: Sequence['outputs.GetClusterAddonsConfigKubernetesDashboardResult'],
                  network_policy_configs: Sequence['outputs.GetClusterAddonsConfigNetworkPolicyConfigResult']):
         pulumi.set(__self__, "cloudrun_configs", cloudrun_configs)
         pulumi.set(__self__, "config_connector_configs", config_connector_configs)
@@ -3339,7 +3288,6 @@ class GetClusterAddonsConfigResult(dict):
         pulumi.set(__self__, "http_load_balancings", http_load_balancings)
         pulumi.set(__self__, "istio_configs", istio_configs)
         pulumi.set(__self__, "kalm_configs", kalm_configs)
-        pulumi.set(__self__, "kubernetes_dashboards", kubernetes_dashboards)
         pulumi.set(__self__, "network_policy_configs", network_policy_configs)
 
     @property
@@ -3381,11 +3329,6 @@ class GetClusterAddonsConfigResult(dict):
     @pulumi.getter(name="kalmConfigs")
     def kalm_configs(self) -> Sequence['outputs.GetClusterAddonsConfigKalmConfigResult']:
         return pulumi.get(self, "kalm_configs")
-
-    @property
-    @pulumi.getter(name="kubernetesDashboards")
-    def kubernetes_dashboards(self) -> Sequence['outputs.GetClusterAddonsConfigKubernetesDashboardResult']:
-        return pulumi.get(self, "kubernetes_dashboards")
 
     @property
     @pulumi.getter(name="networkPolicyConfigs")
@@ -3501,18 +3444,6 @@ class GetClusterAddonsConfigKalmConfigResult(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         return pulumi.get(self, "enabled")
-
-
-@pulumi.output_type
-class GetClusterAddonsConfigKubernetesDashboardResult(dict):
-    def __init__(__self__, *,
-                 disabled: bool):
-        pulumi.set(__self__, "disabled", disabled)
-
-    @property
-    @pulumi.getter
-    def disabled(self) -> bool:
-        return pulumi.get(self, "disabled")
 
 
 @pulumi.output_type
@@ -3672,16 +3603,12 @@ class GetClusterIpAllocationPolicyResult(dict):
     def __init__(__self__, *,
                  cluster_ipv4_cidr_block: str,
                  cluster_secondary_range_name: str,
-                 node_ipv4_cidr_block: str,
                  services_ipv4_cidr_block: str,
-                 services_secondary_range_name: str,
-                 subnetwork_name: str):
+                 services_secondary_range_name: str):
         pulumi.set(__self__, "cluster_ipv4_cidr_block", cluster_ipv4_cidr_block)
         pulumi.set(__self__, "cluster_secondary_range_name", cluster_secondary_range_name)
-        pulumi.set(__self__, "node_ipv4_cidr_block", node_ipv4_cidr_block)
         pulumi.set(__self__, "services_ipv4_cidr_block", services_ipv4_cidr_block)
         pulumi.set(__self__, "services_secondary_range_name", services_secondary_range_name)
-        pulumi.set(__self__, "subnetwork_name", subnetwork_name)
 
     @property
     @pulumi.getter(name="clusterIpv4CidrBlock")
@@ -3694,11 +3621,6 @@ class GetClusterIpAllocationPolicyResult(dict):
         return pulumi.get(self, "cluster_secondary_range_name")
 
     @property
-    @pulumi.getter(name="nodeIpv4CidrBlock")
-    def node_ipv4_cidr_block(self) -> str:
-        return pulumi.get(self, "node_ipv4_cidr_block")
-
-    @property
     @pulumi.getter(name="servicesIpv4CidrBlock")
     def services_ipv4_cidr_block(self) -> str:
         return pulumi.get(self, "services_ipv4_cidr_block")
@@ -3707,11 +3629,6 @@ class GetClusterIpAllocationPolicyResult(dict):
     @pulumi.getter(name="servicesSecondaryRangeName")
     def services_secondary_range_name(self) -> str:
         return pulumi.get(self, "services_secondary_range_name")
-
-    @property
-    @pulumi.getter(name="subnetworkName")
-    def subnetwork_name(self) -> str:
-        return pulumi.get(self, "subnetwork_name")
 
 
 @pulumi.output_type

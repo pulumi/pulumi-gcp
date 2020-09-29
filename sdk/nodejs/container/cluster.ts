@@ -82,6 +82,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly databaseEncryption!: pulumi.Output<outputs.container.ClusterDatabaseEncryption>;
     /**
+     * The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+     */
+    public readonly datapathProvider!: pulumi.Output<string>;
+    /**
      * The default maximum number of pods
      * per node in this cluster. This doesn't work on "routes-based" clusters, clusters
      * that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
@@ -375,6 +379,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["clusterIpv4Cidr"] = state ? state.clusterIpv4Cidr : undefined;
             inputs["clusterTelemetry"] = state ? state.clusterTelemetry : undefined;
             inputs["databaseEncryption"] = state ? state.databaseEncryption : undefined;
+            inputs["datapathProvider"] = state ? state.datapathProvider : undefined;
             inputs["defaultMaxPodsPerNode"] = state ? state.defaultMaxPodsPerNode : undefined;
             inputs["defaultSnatStatus"] = state ? state.defaultSnatStatus : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -427,6 +432,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["clusterIpv4Cidr"] = args ? args.clusterIpv4Cidr : undefined;
             inputs["clusterTelemetry"] = args ? args.clusterTelemetry : undefined;
             inputs["databaseEncryption"] = args ? args.databaseEncryption : undefined;
+            inputs["datapathProvider"] = args ? args.datapathProvider : undefined;
             inputs["defaultMaxPodsPerNode"] = args ? args.defaultMaxPodsPerNode : undefined;
             inputs["defaultSnatStatus"] = args ? args.defaultSnatStatus : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -523,6 +529,10 @@ export interface ClusterState {
      * Structure is documented below.
      */
     readonly databaseEncryption?: pulumi.Input<inputs.container.ClusterDatabaseEncryption>;
+    /**
+     * The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+     */
+    readonly datapathProvider?: pulumi.Input<string>;
     /**
      * The default maximum number of pods
      * per node in this cluster. This doesn't work on "routes-based" clusters, clusters
@@ -840,6 +850,10 @@ export interface ClusterArgs {
      * Structure is documented below.
      */
     readonly databaseEncryption?: pulumi.Input<inputs.container.ClusterDatabaseEncryption>;
+    /**
+     * The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+     */
+    readonly datapathProvider?: pulumi.Input<string>;
     /**
      * The default maximum number of pods
      * per node in this cluster. This doesn't work on "routes-based" clusters, clusters

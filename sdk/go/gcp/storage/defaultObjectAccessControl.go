@@ -57,7 +57,7 @@ type DefaultObjectAccessControl struct {
 	// The name of the object, if applied to an object.
 	Object pulumi.StringPtrOutput `pulumi:"object"`
 	// The project team associated with the entity
-	ProjectTeam DefaultObjectAccessControlProjectTeamOutput `pulumi:"projectTeam"`
+	ProjectTeams DefaultObjectAccessControlProjectTeamArrayOutput `pulumi:"projectTeams"`
 	// The access permission for the entity.
 	// Possible values are `OWNER` and `READER`.
 	Role pulumi.StringOutput `pulumi:"role"`
@@ -123,7 +123,7 @@ type defaultObjectAccessControlState struct {
 	// The name of the object, if applied to an object.
 	Object *string `pulumi:"object"`
 	// The project team associated with the entity
-	ProjectTeam *DefaultObjectAccessControlProjectTeam `pulumi:"projectTeam"`
+	ProjectTeams []DefaultObjectAccessControlProjectTeam `pulumi:"projectTeams"`
 	// The access permission for the entity.
 	// Possible values are `OWNER` and `READER`.
 	Role *string `pulumi:"role"`
@@ -153,7 +153,7 @@ type DefaultObjectAccessControlState struct {
 	// The name of the object, if applied to an object.
 	Object pulumi.StringPtrInput
 	// The project team associated with the entity
-	ProjectTeam DefaultObjectAccessControlProjectTeamPtrInput
+	ProjectTeams DefaultObjectAccessControlProjectTeamArrayInput
 	// The access permission for the entity.
 	// Possible values are `OWNER` and `READER`.
 	Role pulumi.StringPtrInput

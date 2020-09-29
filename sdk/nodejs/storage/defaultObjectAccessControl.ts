@@ -96,7 +96,7 @@ export class DefaultObjectAccessControl extends pulumi.CustomResource {
     /**
      * The project team associated with the entity
      */
-    public /*out*/ readonly projectTeam!: pulumi.Output<outputs.storage.DefaultObjectAccessControlProjectTeam>;
+    public /*out*/ readonly projectTeams!: pulumi.Output<outputs.storage.DefaultObjectAccessControlProjectTeam[]>;
     /**
      * The access permission for the entity.
      * Possible values are `OWNER` and `READER`.
@@ -122,7 +122,7 @@ export class DefaultObjectAccessControl extends pulumi.CustomResource {
             inputs["entityId"] = state ? state.entityId : undefined;
             inputs["generation"] = state ? state.generation : undefined;
             inputs["object"] = state ? state.object : undefined;
-            inputs["projectTeam"] = state ? state.projectTeam : undefined;
+            inputs["projectTeams"] = state ? state.projectTeams : undefined;
             inputs["role"] = state ? state.role : undefined;
         } else {
             const args = argsOrState as DefaultObjectAccessControlArgs | undefined;
@@ -143,7 +143,7 @@ export class DefaultObjectAccessControl extends pulumi.CustomResource {
             inputs["email"] = undefined /*out*/;
             inputs["entityId"] = undefined /*out*/;
             inputs["generation"] = undefined /*out*/;
-            inputs["projectTeam"] = undefined /*out*/;
+            inputs["projectTeams"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -199,7 +199,7 @@ export interface DefaultObjectAccessControlState {
     /**
      * The project team associated with the entity
      */
-    readonly projectTeam?: pulumi.Input<inputs.storage.DefaultObjectAccessControlProjectTeam>;
+    readonly projectTeams?: pulumi.Input<pulumi.Input<inputs.storage.DefaultObjectAccessControlProjectTeam>[]>;
     /**
      * The access permission for the entity.
      * Possible values are `OWNER` and `READER`.

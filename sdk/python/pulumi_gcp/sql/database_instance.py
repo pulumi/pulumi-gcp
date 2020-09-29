@@ -130,7 +130,7 @@ class DatabaseInstance(pulumi.CustomResource):
             __props__['private_ip_address'] = None
             __props__['public_ip_address'] = None
             __props__['self_link'] = None
-            __props__['server_ca_cert'] = None
+            __props__['server_ca_certs'] = None
             __props__['service_account_email_address'] = None
         super(DatabaseInstance, __self__).__init__(
             'gcp:sql/databaseInstance:DatabaseInstance',
@@ -156,7 +156,7 @@ class DatabaseInstance(pulumi.CustomResource):
             replica_configuration: Optional[pulumi.Input[pulumi.InputType['DatabaseInstanceReplicaConfigurationArgs']]] = None,
             root_password: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
-            server_ca_cert: Optional[pulumi.Input[pulumi.InputType['DatabaseInstanceServerCaCertArgs']]] = None,
+            server_ca_certs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseInstanceServerCaCertArgs']]]]] = None,
             service_account_email_address: Optional[pulumi.Input[str]] = None,
             settings: Optional[pulumi.Input[pulumi.InputType['DatabaseInstanceSettingsArgs']]] = None) -> 'DatabaseInstance':
         """
@@ -224,7 +224,7 @@ class DatabaseInstance(pulumi.CustomResource):
         __props__["replica_configuration"] = replica_configuration
         __props__["root_password"] = root_password
         __props__["self_link"] = self_link
-        __props__["server_ca_cert"] = server_ca_cert
+        __props__["server_ca_certs"] = server_ca_certs
         __props__["service_account_email_address"] = service_account_email_address
         __props__["settings"] = settings
         return DatabaseInstance(resource_name, opts=opts, __props__=__props__)
@@ -361,9 +361,9 @@ class DatabaseInstance(pulumi.CustomResource):
         return pulumi.get(self, "self_link")
 
     @property
-    @pulumi.getter(name="serverCaCert")
-    def server_ca_cert(self) -> pulumi.Output['outputs.DatabaseInstanceServerCaCert']:
-        return pulumi.get(self, "server_ca_cert")
+    @pulumi.getter(name="serverCaCerts")
+    def server_ca_certs(self) -> pulumi.Output[Sequence['outputs.DatabaseInstanceServerCaCert']]:
+        return pulumi.get(self, "server_ca_certs")
 
     @property
     @pulumi.getter(name="serviceAccountEmailAddress")

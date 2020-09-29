@@ -26,6 +26,7 @@ class Node(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  scheduling_config: Optional[pulumi.Input[pulumi.InputType['NodeSchedulingConfigArgs']]] = None,
                  tensorflow_version: Optional[pulumi.Input[str]] = None,
+                 use_service_networking: Optional[pulumi.Input[bool]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -35,7 +36,7 @@ class Node(pulumi.CustomResource):
 
         To get more information about Node, see:
 
-        * [API documentation](https://cloud.google.com/tpu/docs/reference/rest/)
+        * [API documentation](https://cloud.google.com/tpu/docs/reference/rest/v1/projects.locations.nodes)
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/tpu/docs/)
 
@@ -64,6 +65,10 @@ class Node(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['NodeSchedulingConfigArgs']] scheduling_config: Sets the scheduling options for this TPU instance.
                Structure is documented below.
         :param pulumi.Input[str] tensorflow_version: The version of Tensorflow running in the Node.
+        :param pulumi.Input[bool] use_service_networking: Whether the VPC peering for the node is set up through Service Networking API.
+               The VPC Peering should be set up before provisioning the node. If this field is set,
+               cidr_block field should not be specified. If the network that you want to peer the
+               TPU Node to is a Shared VPC network, the node must be created with this this field enabled.
         :param pulumi.Input[str] zone: The GCP location for the TPU.
         """
         if __name__ is not None:
@@ -86,8 +91,6 @@ class Node(pulumi.CustomResource):
             if accelerator_type is None:
                 raise TypeError("Missing required property 'accelerator_type'")
             __props__['accelerator_type'] = accelerator_type
-            if cidr_block is None:
-                raise TypeError("Missing required property 'cidr_block'")
             __props__['cidr_block'] = cidr_block
             __props__['description'] = description
             __props__['labels'] = labels
@@ -98,6 +101,7 @@ class Node(pulumi.CustomResource):
             if tensorflow_version is None:
                 raise TypeError("Missing required property 'tensorflow_version'")
             __props__['tensorflow_version'] = tensorflow_version
+            __props__['use_service_networking'] = use_service_networking
             if zone is None:
                 raise TypeError("Missing required property 'zone'")
             __props__['zone'] = zone
@@ -124,6 +128,7 @@ class Node(pulumi.CustomResource):
             scheduling_config: Optional[pulumi.Input[pulumi.InputType['NodeSchedulingConfigArgs']]] = None,
             service_account: Optional[pulumi.Input[str]] = None,
             tensorflow_version: Optional[pulumi.Input[str]] = None,
+            use_service_networking: Optional[pulumi.Input[bool]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'Node':
         """
         Get an existing Node resource's state with the given name, id, and optional extra
@@ -157,6 +162,10 @@ class Node(pulumi.CustomResource):
         :param pulumi.Input[str] service_account: The service account used to run the tensor flow services within the node. To share resources, including Google Cloud
                Storage data, with the Tensorflow job running in the Node, this account must have permissions to that data.
         :param pulumi.Input[str] tensorflow_version: The version of Tensorflow running in the Node.
+        :param pulumi.Input[bool] use_service_networking: Whether the VPC peering for the node is set up through Service Networking API.
+               The VPC Peering should be set up before provisioning the node. If this field is set,
+               cidr_block field should not be specified. If the network that you want to peer the
+               TPU Node to is a Shared VPC network, the node must be created with this this field enabled.
         :param pulumi.Input[str] zone: The GCP location for the TPU.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -174,6 +183,7 @@ class Node(pulumi.CustomResource):
         __props__["scheduling_config"] = scheduling_config
         __props__["service_account"] = service_account
         __props__["tensorflow_version"] = tensorflow_version
+        __props__["use_service_networking"] = use_service_networking
         __props__["zone"] = zone
         return Node(resource_name, opts=opts, __props__=__props__)
 
@@ -278,6 +288,17 @@ class Node(pulumi.CustomResource):
         The version of Tensorflow running in the Node.
         """
         return pulumi.get(self, "tensorflow_version")
+
+    @property
+    @pulumi.getter(name="useServiceNetworking")
+    def use_service_networking(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether the VPC peering for the node is set up through Service Networking API.
+        The VPC Peering should be set up before provisioning the node. If this field is set,
+        cidr_block field should not be specified. If the network that you want to peer the
+        TPU Node to is a Shared VPC network, the node must be created with this this field enabled.
+        """
+        return pulumi.get(self, "use_service_networking")
 
     @property
     @pulumi.getter

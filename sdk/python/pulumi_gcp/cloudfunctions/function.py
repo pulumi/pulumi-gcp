@@ -63,7 +63,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] environment_variables: A set of key/value environment variable pairs to assign to the function.
         :param pulumi.Input[pulumi.InputType['FunctionEventTriggerArgs']] event_trigger: A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
         :param pulumi.Input[str] https_trigger_url: URL which triggers function execution. Returned only if `trigger_http` is used.
-        :param pulumi.Input[str] ingress_settings: String value that controls what traffic can reach the function. Allowed values are ALLOW_ALL and ALLOW_INTERNAL_ONLY. Changes to this field will recreate the cloud function.
+        :param pulumi.Input[str] ingress_settings: String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Changes to this field will recreate the cloud function.
         :param pulumi.Input[Mapping[str, Any]] labels: A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
         :param pulumi.Input[int] max_instances: The limit on the maximum number of function instances that may coexist at a given time.
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must be unique globally.
@@ -165,7 +165,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] environment_variables: A set of key/value environment variable pairs to assign to the function.
         :param pulumi.Input[pulumi.InputType['FunctionEventTriggerArgs']] event_trigger: A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
         :param pulumi.Input[str] https_trigger_url: URL which triggers function execution. Returned only if `trigger_http` is used.
-        :param pulumi.Input[str] ingress_settings: String value that controls what traffic can reach the function. Allowed values are ALLOW_ALL and ALLOW_INTERNAL_ONLY. Changes to this field will recreate the cloud function.
+        :param pulumi.Input[str] ingress_settings: String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Changes to this field will recreate the cloud function.
         :param pulumi.Input[Mapping[str, Any]] labels: A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
         :param pulumi.Input[int] max_instances: The limit on the maximum number of function instances that may coexist at a given time.
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must be unique globally.
@@ -262,7 +262,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter(name="ingressSettings")
     def ingress_settings(self) -> pulumi.Output[Optional[str]]:
         """
-        String value that controls what traffic can reach the function. Allowed values are ALLOW_ALL and ALLOW_INTERNAL_ONLY. Changes to this field will recreate the cloud function.
+        String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Changes to this field will recreate the cloud function.
         """
         return pulumi.get(self, "ingress_settings")
 

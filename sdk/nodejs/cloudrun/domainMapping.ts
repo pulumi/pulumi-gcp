@@ -71,7 +71,7 @@ export class DomainMapping extends pulumi.CustomResource {
     /**
      * The current status of the DomainMapping.
      */
-    public /*out*/ readonly status!: pulumi.Output<outputs.cloudrun.DomainMappingStatus>;
+    public /*out*/ readonly statuses!: pulumi.Output<outputs.cloudrun.DomainMappingStatus[]>;
 
     /**
      * Create a DomainMapping resource with the given unique name, arguments, and options.
@@ -90,7 +90,7 @@ export class DomainMapping extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["spec"] = state ? state.spec : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            inputs["statuses"] = state ? state.statuses : undefined;
         } else {
             const args = argsOrState as DomainMappingArgs | undefined;
             if (!args || args.location === undefined) {
@@ -107,7 +107,7 @@ export class DomainMapping extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["spec"] = args ? args.spec : undefined;
-            inputs["status"] = undefined /*out*/;
+            inputs["statuses"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -150,7 +150,7 @@ export interface DomainMappingState {
     /**
      * The current status of the DomainMapping.
      */
-    readonly status?: pulumi.Input<inputs.cloudrun.DomainMappingStatus>;
+    readonly statuses?: pulumi.Input<pulumi.Input<inputs.cloudrun.DomainMappingStatus>[]>;
 }
 
 /**

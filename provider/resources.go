@@ -6,10 +6,9 @@ import (
 	"strings"
 	"unicode"
 
-	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	google "github.com/hashicorp/terraform-provider-google-beta/google-beta"
 	"github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfbridge"
-	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfshim/sdk-v1"
+	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v2/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v2/go/common/tokens"
 )
@@ -135,7 +134,7 @@ func boolRef(b bool) *bool {
 
 // Provider returns additional overlaid schema and metadata associated with the gcp package.
 func Provider() tfbridge.ProviderInfo {
-	p := shimv1.NewProvider(google.Provider().(*schema.Provider))
+	p := shimv2.NewProvider(google.Provider())
 	prov := tfbridge.ProviderInfo{
 		P:              p,
 		Name:           "google-beta",

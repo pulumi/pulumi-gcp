@@ -87,7 +87,7 @@ export class Service extends pulumi.CustomResource {
     /**
      * The current status of the Service.
      */
-    public /*out*/ readonly status!: pulumi.Output<outputs.cloudrun.ServiceStatus>;
+    public /*out*/ readonly statuses!: pulumi.Output<outputs.cloudrun.ServiceStatus[]>;
     /**
      * template holds the latest specification for the Revision to
      * be stamped out. The template references the container image, and may also
@@ -125,7 +125,7 @@ export class Service extends pulumi.CustomResource {
             inputs["metadata"] = state ? state.metadata : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            inputs["statuses"] = state ? state.statuses : undefined;
             inputs["template"] = state ? state.template : undefined;
             inputs["traffics"] = state ? state.traffics : undefined;
         } else {
@@ -140,7 +140,7 @@ export class Service extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["template"] = args ? args.template : undefined;
             inputs["traffics"] = args ? args.traffics : undefined;
-            inputs["status"] = undefined /*out*/;
+            inputs["statuses"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -187,7 +187,7 @@ export interface ServiceState {
     /**
      * The current status of the Service.
      */
-    readonly status?: pulumi.Input<inputs.cloudrun.ServiceStatus>;
+    readonly statuses?: pulumi.Input<pulumi.Input<inputs.cloudrun.ServiceStatus>[]>;
     /**
      * template holds the latest specification for the Revision to
      * be stamped out. The template references the container image, and may also

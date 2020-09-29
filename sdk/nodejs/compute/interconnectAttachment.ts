@@ -123,7 +123,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      * Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached
      * to is of type DEDICATED.
      */
-    public /*out*/ readonly privateInterconnectInfo!: pulumi.Output<outputs.compute.InterconnectAttachmentPrivateInterconnectInfo>;
+    public /*out*/ readonly privateInterconnectInfos!: pulumi.Output<outputs.compute.InterconnectAttachmentPrivateInterconnectInfo[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -185,7 +185,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["pairingKey"] = state ? state.pairingKey : undefined;
             inputs["partnerAsn"] = state ? state.partnerAsn : undefined;
-            inputs["privateInterconnectInfo"] = state ? state.privateInterconnectInfo : undefined;
+            inputs["privateInterconnectInfos"] = state ? state.privateInterconnectInfos : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["router"] = state ? state.router : undefined;
@@ -216,7 +216,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             inputs["googleReferenceId"] = undefined /*out*/;
             inputs["pairingKey"] = undefined /*out*/;
             inputs["partnerAsn"] = undefined /*out*/;
-            inputs["privateInterconnectInfo"] = undefined /*out*/;
+            inputs["privateInterconnectInfos"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
         }
@@ -318,7 +318,7 @@ export interface InterconnectAttachmentState {
      * Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached
      * to is of type DEDICATED.
      */
-    readonly privateInterconnectInfo?: pulumi.Input<inputs.compute.InterconnectAttachmentPrivateInterconnectInfo>;
+    readonly privateInterconnectInfos?: pulumi.Input<pulumi.Input<inputs.compute.InterconnectAttachmentPrivateInterconnectInfo>[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

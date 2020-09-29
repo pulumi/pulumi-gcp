@@ -104,7 +104,7 @@ class Service(pulumi.CustomResource):
             __props__['project'] = project
             __props__['template'] = template
             __props__['traffics'] = traffics
-            __props__['status'] = None
+            __props__['statuses'] = None
         super(Service, __self__).__init__(
             'gcp:cloudrun/service:Service',
             resource_name,
@@ -120,7 +120,7 @@ class Service(pulumi.CustomResource):
             metadata: Optional[pulumi.Input[pulumi.InputType['ServiceMetadataArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            status: Optional[pulumi.Input[pulumi.InputType['ServiceStatusArgs']]] = None,
+            statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceStatusArgs']]]]] = None,
             template: Optional[pulumi.Input[pulumi.InputType['ServiceTemplateArgs']]] = None,
             traffics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficArgs']]]]] = None) -> 'Service':
         """
@@ -142,7 +142,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the port.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['ServiceStatusArgs']] status: The current status of the Service.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceStatusArgs']]]] statuses: The current status of the Service.
         :param pulumi.Input[pulumi.InputType['ServiceTemplateArgs']] template: template holds the latest specification for the Revision to
                be stamped out. The template references the container image, and may also
                include labels and annotations that should be attached to the Revision.
@@ -166,7 +166,7 @@ class Service(pulumi.CustomResource):
         __props__["metadata"] = metadata
         __props__["name"] = name
         __props__["project"] = project
-        __props__["status"] = status
+        __props__["statuses"] = statuses
         __props__["template"] = template
         __props__["traffics"] = traffics
         return Service(resource_name, opts=opts, __props__=__props__)
@@ -220,11 +220,11 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> pulumi.Output['outputs.ServiceStatus']:
+    def statuses(self) -> pulumi.Output[Sequence['outputs.ServiceStatus']]:
         """
         The current status of the Service.
         """
-        return pulumi.get(self, "status")
+        return pulumi.get(self, "statuses")
 
     @property
     @pulumi.getter

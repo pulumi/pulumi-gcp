@@ -301,13 +301,13 @@ class TriggerBuildArtifactsObjectsArgs:
     def __init__(__self__, *,
                  location: Optional[pulumi.Input[str]] = None,
                  paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 timing: Optional[pulumi.Input['TriggerBuildArtifactsObjectsTimingArgs']] = None):
+                 timings: Optional[pulumi.Input[Sequence[pulumi.Input['TriggerBuildArtifactsObjectsTimingArgs']]]] = None):
         """
         :param pulumi.Input[str] location: Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
                Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
                this location as a prefix.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: Path globs used to match files in the build's workspace.
-        :param pulumi.Input['TriggerBuildArtifactsObjectsTimingArgs'] timing: -
+        :param pulumi.Input[Sequence[pulumi.Input['TriggerBuildArtifactsObjectsTimingArgs']]] timings: -
                Output only. Stores timing information for pushing all artifact objects.
                Structure is documented below.
         """
@@ -315,8 +315,8 @@ class TriggerBuildArtifactsObjectsArgs:
             pulumi.set(__self__, "location", location)
         if paths is not None:
             pulumi.set(__self__, "paths", paths)
-        if timing is not None:
-            pulumi.set(__self__, "timing", timing)
+        if timings is not None:
+            pulumi.set(__self__, "timings", timings)
 
     @property
     @pulumi.getter
@@ -346,17 +346,17 @@ class TriggerBuildArtifactsObjectsArgs:
 
     @property
     @pulumi.getter
-    def timing(self) -> Optional[pulumi.Input['TriggerBuildArtifactsObjectsTimingArgs']]:
+    def timings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TriggerBuildArtifactsObjectsTimingArgs']]]]:
         """
         -
         Output only. Stores timing information for pushing all artifact objects.
         Structure is documented below.
         """
-        return pulumi.get(self, "timing")
+        return pulumi.get(self, "timings")
 
-    @timing.setter
-    def timing(self, value: Optional[pulumi.Input['TriggerBuildArtifactsObjectsTimingArgs']]):
-        pulumi.set(self, "timing", value)
+    @timings.setter
+    def timings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TriggerBuildArtifactsObjectsTimingArgs']]]]):
+        pulumi.set(self, "timings", value)
 
 
 @pulumi.input_type

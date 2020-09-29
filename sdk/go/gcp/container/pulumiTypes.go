@@ -39,8 +39,7 @@ type ClusterAddonsConfig struct {
 	IstioConfig *ClusterAddonsConfigIstioConfig `pulumi:"istioConfig"`
 	// .
 	// Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set `enabled = true` to enable.
-	KalmConfig          *ClusterAddonsConfigKalmConfig          `pulumi:"kalmConfig"`
-	KubernetesDashboard *ClusterAddonsConfigKubernetesDashboard `pulumi:"kubernetesDashboard"`
+	KalmConfig *ClusterAddonsConfigKalmConfig `pulumi:"kalmConfig"`
 	// Whether we should enable the network policy addon
 	// for the master.  This must be enabled in order to enable network policy for the nodes.
 	// To enable this, you must also define a `networkPolicy` block,
@@ -90,8 +89,7 @@ type ClusterAddonsConfigArgs struct {
 	IstioConfig ClusterAddonsConfigIstioConfigPtrInput `pulumi:"istioConfig"`
 	// .
 	// Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set `enabled = true` to enable.
-	KalmConfig          ClusterAddonsConfigKalmConfigPtrInput          `pulumi:"kalmConfig"`
-	KubernetesDashboard ClusterAddonsConfigKubernetesDashboardPtrInput `pulumi:"kubernetesDashboard"`
+	KalmConfig ClusterAddonsConfigKalmConfigPtrInput `pulumi:"kalmConfig"`
 	// Whether we should enable the network policy addon
 	// for the master.  This must be enabled in order to enable network policy for the nodes.
 	// To enable this, you must also define a `networkPolicy` block,
@@ -235,10 +233,6 @@ func (o ClusterAddonsConfigOutput) KalmConfig() ClusterAddonsConfigKalmConfigPtr
 	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigKalmConfig { return v.KalmConfig }).(ClusterAddonsConfigKalmConfigPtrOutput)
 }
 
-func (o ClusterAddonsConfigOutput) KubernetesDashboard() ClusterAddonsConfigKubernetesDashboardPtrOutput {
-	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigKubernetesDashboard { return v.KubernetesDashboard }).(ClusterAddonsConfigKubernetesDashboardPtrOutput)
-}
-
 // Whether we should enable the network policy addon
 // for the master.  This must be enabled in order to enable network policy for the nodes.
 // To enable this, you must also define a `networkPolicy` block,
@@ -358,15 +352,6 @@ func (o ClusterAddonsConfigPtrOutput) KalmConfig() ClusterAddonsConfigKalmConfig
 		}
 		return v.KalmConfig
 	}).(ClusterAddonsConfigKalmConfigPtrOutput)
-}
-
-func (o ClusterAddonsConfigPtrOutput) KubernetesDashboard() ClusterAddonsConfigKubernetesDashboardPtrOutput {
-	return o.ApplyT(func(v *ClusterAddonsConfig) *ClusterAddonsConfigKubernetesDashboard {
-		if v == nil {
-			return nil
-		}
-		return v.KubernetesDashboard
-	}).(ClusterAddonsConfigKubernetesDashboardPtrOutput)
 }
 
 // Whether we should enable the network policy addon
@@ -1507,141 +1492,6 @@ func (o ClusterAddonsConfigKalmConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 			return nil
 		}
 		return &v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-type ClusterAddonsConfigKubernetesDashboard struct {
-	// The status of the Istio addon, which makes it easy to set up Istio for services in a
-	// cluster. It is disabled by default. Set `disabled = false` to enable.
-	Disabled *bool `pulumi:"disabled"`
-}
-
-// ClusterAddonsConfigKubernetesDashboardInput is an input type that accepts ClusterAddonsConfigKubernetesDashboardArgs and ClusterAddonsConfigKubernetesDashboardOutput values.
-// You can construct a concrete instance of `ClusterAddonsConfigKubernetesDashboardInput` via:
-//
-//          ClusterAddonsConfigKubernetesDashboardArgs{...}
-type ClusterAddonsConfigKubernetesDashboardInput interface {
-	pulumi.Input
-
-	ToClusterAddonsConfigKubernetesDashboardOutput() ClusterAddonsConfigKubernetesDashboardOutput
-	ToClusterAddonsConfigKubernetesDashboardOutputWithContext(context.Context) ClusterAddonsConfigKubernetesDashboardOutput
-}
-
-type ClusterAddonsConfigKubernetesDashboardArgs struct {
-	// The status of the Istio addon, which makes it easy to set up Istio for services in a
-	// cluster. It is disabled by default. Set `disabled = false` to enable.
-	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
-}
-
-func (ClusterAddonsConfigKubernetesDashboardArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterAddonsConfigKubernetesDashboard)(nil)).Elem()
-}
-
-func (i ClusterAddonsConfigKubernetesDashboardArgs) ToClusterAddonsConfigKubernetesDashboardOutput() ClusterAddonsConfigKubernetesDashboardOutput {
-	return i.ToClusterAddonsConfigKubernetesDashboardOutputWithContext(context.Background())
-}
-
-func (i ClusterAddonsConfigKubernetesDashboardArgs) ToClusterAddonsConfigKubernetesDashboardOutputWithContext(ctx context.Context) ClusterAddonsConfigKubernetesDashboardOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigKubernetesDashboardOutput)
-}
-
-func (i ClusterAddonsConfigKubernetesDashboardArgs) ToClusterAddonsConfigKubernetesDashboardPtrOutput() ClusterAddonsConfigKubernetesDashboardPtrOutput {
-	return i.ToClusterAddonsConfigKubernetesDashboardPtrOutputWithContext(context.Background())
-}
-
-func (i ClusterAddonsConfigKubernetesDashboardArgs) ToClusterAddonsConfigKubernetesDashboardPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigKubernetesDashboardPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigKubernetesDashboardOutput).ToClusterAddonsConfigKubernetesDashboardPtrOutputWithContext(ctx)
-}
-
-// ClusterAddonsConfigKubernetesDashboardPtrInput is an input type that accepts ClusterAddonsConfigKubernetesDashboardArgs, ClusterAddonsConfigKubernetesDashboardPtr and ClusterAddonsConfigKubernetesDashboardPtrOutput values.
-// You can construct a concrete instance of `ClusterAddonsConfigKubernetesDashboardPtrInput` via:
-//
-//          ClusterAddonsConfigKubernetesDashboardArgs{...}
-//
-//  or:
-//
-//          nil
-type ClusterAddonsConfigKubernetesDashboardPtrInput interface {
-	pulumi.Input
-
-	ToClusterAddonsConfigKubernetesDashboardPtrOutput() ClusterAddonsConfigKubernetesDashboardPtrOutput
-	ToClusterAddonsConfigKubernetesDashboardPtrOutputWithContext(context.Context) ClusterAddonsConfigKubernetesDashboardPtrOutput
-}
-
-type clusterAddonsConfigKubernetesDashboardPtrType ClusterAddonsConfigKubernetesDashboardArgs
-
-func ClusterAddonsConfigKubernetesDashboardPtr(v *ClusterAddonsConfigKubernetesDashboardArgs) ClusterAddonsConfigKubernetesDashboardPtrInput {
-	return (*clusterAddonsConfigKubernetesDashboardPtrType)(v)
-}
-
-func (*clusterAddonsConfigKubernetesDashboardPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterAddonsConfigKubernetesDashboard)(nil)).Elem()
-}
-
-func (i *clusterAddonsConfigKubernetesDashboardPtrType) ToClusterAddonsConfigKubernetesDashboardPtrOutput() ClusterAddonsConfigKubernetesDashboardPtrOutput {
-	return i.ToClusterAddonsConfigKubernetesDashboardPtrOutputWithContext(context.Background())
-}
-
-func (i *clusterAddonsConfigKubernetesDashboardPtrType) ToClusterAddonsConfigKubernetesDashboardPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigKubernetesDashboardPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigKubernetesDashboardPtrOutput)
-}
-
-type ClusterAddonsConfigKubernetesDashboardOutput struct{ *pulumi.OutputState }
-
-func (ClusterAddonsConfigKubernetesDashboardOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterAddonsConfigKubernetesDashboard)(nil)).Elem()
-}
-
-func (o ClusterAddonsConfigKubernetesDashboardOutput) ToClusterAddonsConfigKubernetesDashboardOutput() ClusterAddonsConfigKubernetesDashboardOutput {
-	return o
-}
-
-func (o ClusterAddonsConfigKubernetesDashboardOutput) ToClusterAddonsConfigKubernetesDashboardOutputWithContext(ctx context.Context) ClusterAddonsConfigKubernetesDashboardOutput {
-	return o
-}
-
-func (o ClusterAddonsConfigKubernetesDashboardOutput) ToClusterAddonsConfigKubernetesDashboardPtrOutput() ClusterAddonsConfigKubernetesDashboardPtrOutput {
-	return o.ToClusterAddonsConfigKubernetesDashboardPtrOutputWithContext(context.Background())
-}
-
-func (o ClusterAddonsConfigKubernetesDashboardOutput) ToClusterAddonsConfigKubernetesDashboardPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigKubernetesDashboardPtrOutput {
-	return o.ApplyT(func(v ClusterAddonsConfigKubernetesDashboard) *ClusterAddonsConfigKubernetesDashboard {
-		return &v
-	}).(ClusterAddonsConfigKubernetesDashboardPtrOutput)
-}
-
-// The status of the Istio addon, which makes it easy to set up Istio for services in a
-// cluster. It is disabled by default. Set `disabled = false` to enable.
-func (o ClusterAddonsConfigKubernetesDashboardOutput) Disabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ClusterAddonsConfigKubernetesDashboard) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
-}
-
-type ClusterAddonsConfigKubernetesDashboardPtrOutput struct{ *pulumi.OutputState }
-
-func (ClusterAddonsConfigKubernetesDashboardPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterAddonsConfigKubernetesDashboard)(nil)).Elem()
-}
-
-func (o ClusterAddonsConfigKubernetesDashboardPtrOutput) ToClusterAddonsConfigKubernetesDashboardPtrOutput() ClusterAddonsConfigKubernetesDashboardPtrOutput {
-	return o
-}
-
-func (o ClusterAddonsConfigKubernetesDashboardPtrOutput) ToClusterAddonsConfigKubernetesDashboardPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigKubernetesDashboardPtrOutput {
-	return o
-}
-
-func (o ClusterAddonsConfigKubernetesDashboardPtrOutput) Elem() ClusterAddonsConfigKubernetesDashboardOutput {
-	return o.ApplyT(func(v *ClusterAddonsConfigKubernetesDashboard) ClusterAddonsConfigKubernetesDashboard { return *v }).(ClusterAddonsConfigKubernetesDashboardOutput)
-}
-
-// The status of the Istio addon, which makes it easy to set up Istio for services in a
-// cluster. It is disabled by default. Set `disabled = false` to enable.
-func (o ClusterAddonsConfigKubernetesDashboardPtrOutput) Disabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ClusterAddonsConfigKubernetesDashboard) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Disabled
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -2896,7 +2746,6 @@ type ClusterIpAllocationPolicy struct {
 	// range in the cluster's subnetwork to use for pod IP addresses. Alternatively,
 	// `clusterIpv4CidrBlock` can be used to automatically create a GKE-managed one.
 	ClusterSecondaryRangeName *string `pulumi:"clusterSecondaryRangeName"`
-	NodeIpv4CidrBlock         *string `pulumi:"nodeIpv4CidrBlock"`
 	// The IP address range of the services IPs in this cluster.
 	// Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
 	// to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14)
@@ -2908,7 +2757,6 @@ type ClusterIpAllocationPolicy struct {
 	// Alternatively, `servicesIpv4CidrBlock` can be used to automatically create a
 	// GKE-managed one.
 	ServicesSecondaryRangeName *string `pulumi:"servicesSecondaryRangeName"`
-	SubnetworkName             *string `pulumi:"subnetworkName"`
 }
 
 // ClusterIpAllocationPolicyInput is an input type that accepts ClusterIpAllocationPolicyArgs and ClusterIpAllocationPolicyOutput values.
@@ -2933,7 +2781,6 @@ type ClusterIpAllocationPolicyArgs struct {
 	// range in the cluster's subnetwork to use for pod IP addresses. Alternatively,
 	// `clusterIpv4CidrBlock` can be used to automatically create a GKE-managed one.
 	ClusterSecondaryRangeName pulumi.StringPtrInput `pulumi:"clusterSecondaryRangeName"`
-	NodeIpv4CidrBlock         pulumi.StringPtrInput `pulumi:"nodeIpv4CidrBlock"`
 	// The IP address range of the services IPs in this cluster.
 	// Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
 	// to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14)
@@ -2945,7 +2792,6 @@ type ClusterIpAllocationPolicyArgs struct {
 	// Alternatively, `servicesIpv4CidrBlock` can be used to automatically create a
 	// GKE-managed one.
 	ServicesSecondaryRangeName pulumi.StringPtrInput `pulumi:"servicesSecondaryRangeName"`
-	SubnetworkName             pulumi.StringPtrInput `pulumi:"subnetworkName"`
 }
 
 func (ClusterIpAllocationPolicyArgs) ElementType() reflect.Type {
@@ -3041,10 +2887,6 @@ func (o ClusterIpAllocationPolicyOutput) ClusterSecondaryRangeName() pulumi.Stri
 	return o.ApplyT(func(v ClusterIpAllocationPolicy) *string { return v.ClusterSecondaryRangeName }).(pulumi.StringPtrOutput)
 }
 
-func (o ClusterIpAllocationPolicyOutput) NodeIpv4CidrBlock() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterIpAllocationPolicy) *string { return v.NodeIpv4CidrBlock }).(pulumi.StringPtrOutput)
-}
-
 // The IP address range of the services IPs in this cluster.
 // Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
 // to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14)
@@ -3060,10 +2902,6 @@ func (o ClusterIpAllocationPolicyOutput) ServicesIpv4CidrBlock() pulumi.StringPt
 // GKE-managed one.
 func (o ClusterIpAllocationPolicyOutput) ServicesSecondaryRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterIpAllocationPolicy) *string { return v.ServicesSecondaryRangeName }).(pulumi.StringPtrOutput)
-}
-
-func (o ClusterIpAllocationPolicyOutput) SubnetworkName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterIpAllocationPolicy) *string { return v.SubnetworkName }).(pulumi.StringPtrOutput)
 }
 
 type ClusterIpAllocationPolicyPtrOutput struct{ *pulumi.OutputState }
@@ -3110,15 +2948,6 @@ func (o ClusterIpAllocationPolicyPtrOutput) ClusterSecondaryRangeName() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ClusterIpAllocationPolicyPtrOutput) NodeIpv4CidrBlock() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClusterIpAllocationPolicy) *string {
-		if v == nil {
-			return nil
-		}
-		return v.NodeIpv4CidrBlock
-	}).(pulumi.StringPtrOutput)
-}
-
 // The IP address range of the services IPs in this cluster.
 // Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
 // to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14)
@@ -3143,15 +2972,6 @@ func (o ClusterIpAllocationPolicyPtrOutput) ServicesSecondaryRangeName() pulumi.
 			return nil
 		}
 		return v.ServicesSecondaryRangeName
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ClusterIpAllocationPolicyPtrOutput) SubnetworkName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClusterIpAllocationPolicy) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SubnetworkName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -11363,7 +11183,6 @@ type GetClusterAddonsConfig struct {
 	HttpLoadBalancings                []GetClusterAddonsConfigHttpLoadBalancing                `pulumi:"httpLoadBalancings"`
 	IstioConfigs                      []GetClusterAddonsConfigIstioConfig                      `pulumi:"istioConfigs"`
 	KalmConfigs                       []GetClusterAddonsConfigKalmConfig                       `pulumi:"kalmConfigs"`
-	KubernetesDashboards              []GetClusterAddonsConfigKubernetesDashboard              `pulumi:"kubernetesDashboards"`
 	NetworkPolicyConfigs              []GetClusterAddonsConfigNetworkPolicyConfig              `pulumi:"networkPolicyConfigs"`
 }
 
@@ -11387,7 +11206,6 @@ type GetClusterAddonsConfigArgs struct {
 	HttpLoadBalancings                GetClusterAddonsConfigHttpLoadBalancingArrayInput                `pulumi:"httpLoadBalancings"`
 	IstioConfigs                      GetClusterAddonsConfigIstioConfigArrayInput                      `pulumi:"istioConfigs"`
 	KalmConfigs                       GetClusterAddonsConfigKalmConfigArrayInput                       `pulumi:"kalmConfigs"`
-	KubernetesDashboards              GetClusterAddonsConfigKubernetesDashboardArrayInput              `pulumi:"kubernetesDashboards"`
 	NetworkPolicyConfigs              GetClusterAddonsConfigNetworkPolicyConfigArrayInput              `pulumi:"networkPolicyConfigs"`
 }
 
@@ -11478,12 +11296,6 @@ func (o GetClusterAddonsConfigOutput) IstioConfigs() GetClusterAddonsConfigIstio
 
 func (o GetClusterAddonsConfigOutput) KalmConfigs() GetClusterAddonsConfigKalmConfigArrayOutput {
 	return o.ApplyT(func(v GetClusterAddonsConfig) []GetClusterAddonsConfigKalmConfig { return v.KalmConfigs }).(GetClusterAddonsConfigKalmConfigArrayOutput)
-}
-
-func (o GetClusterAddonsConfigOutput) KubernetesDashboards() GetClusterAddonsConfigKubernetesDashboardArrayOutput {
-	return o.ApplyT(func(v GetClusterAddonsConfig) []GetClusterAddonsConfigKubernetesDashboard {
-		return v.KubernetesDashboards
-	}).(GetClusterAddonsConfigKubernetesDashboardArrayOutput)
 }
 
 func (o GetClusterAddonsConfigOutput) NetworkPolicyConfigs() GetClusterAddonsConfigNetworkPolicyConfigArrayOutput {
@@ -12274,100 +12086,6 @@ func (o GetClusterAddonsConfigKalmConfigArrayOutput) Index(i pulumi.IntInput) Ge
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAddonsConfigKalmConfig {
 		return vs[0].([]GetClusterAddonsConfigKalmConfig)[vs[1].(int)]
 	}).(GetClusterAddonsConfigKalmConfigOutput)
-}
-
-type GetClusterAddonsConfigKubernetesDashboard struct {
-	Disabled bool `pulumi:"disabled"`
-}
-
-// GetClusterAddonsConfigKubernetesDashboardInput is an input type that accepts GetClusterAddonsConfigKubernetesDashboardArgs and GetClusterAddonsConfigKubernetesDashboardOutput values.
-// You can construct a concrete instance of `GetClusterAddonsConfigKubernetesDashboardInput` via:
-//
-//          GetClusterAddonsConfigKubernetesDashboardArgs{...}
-type GetClusterAddonsConfigKubernetesDashboardInput interface {
-	pulumi.Input
-
-	ToGetClusterAddonsConfigKubernetesDashboardOutput() GetClusterAddonsConfigKubernetesDashboardOutput
-	ToGetClusterAddonsConfigKubernetesDashboardOutputWithContext(context.Context) GetClusterAddonsConfigKubernetesDashboardOutput
-}
-
-type GetClusterAddonsConfigKubernetesDashboardArgs struct {
-	Disabled pulumi.BoolInput `pulumi:"disabled"`
-}
-
-func (GetClusterAddonsConfigKubernetesDashboardArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetClusterAddonsConfigKubernetesDashboard)(nil)).Elem()
-}
-
-func (i GetClusterAddonsConfigKubernetesDashboardArgs) ToGetClusterAddonsConfigKubernetesDashboardOutput() GetClusterAddonsConfigKubernetesDashboardOutput {
-	return i.ToGetClusterAddonsConfigKubernetesDashboardOutputWithContext(context.Background())
-}
-
-func (i GetClusterAddonsConfigKubernetesDashboardArgs) ToGetClusterAddonsConfigKubernetesDashboardOutputWithContext(ctx context.Context) GetClusterAddonsConfigKubernetesDashboardOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAddonsConfigKubernetesDashboardOutput)
-}
-
-// GetClusterAddonsConfigKubernetesDashboardArrayInput is an input type that accepts GetClusterAddonsConfigKubernetesDashboardArray and GetClusterAddonsConfigKubernetesDashboardArrayOutput values.
-// You can construct a concrete instance of `GetClusterAddonsConfigKubernetesDashboardArrayInput` via:
-//
-//          GetClusterAddonsConfigKubernetesDashboardArray{ GetClusterAddonsConfigKubernetesDashboardArgs{...} }
-type GetClusterAddonsConfigKubernetesDashboardArrayInput interface {
-	pulumi.Input
-
-	ToGetClusterAddonsConfigKubernetesDashboardArrayOutput() GetClusterAddonsConfigKubernetesDashboardArrayOutput
-	ToGetClusterAddonsConfigKubernetesDashboardArrayOutputWithContext(context.Context) GetClusterAddonsConfigKubernetesDashboardArrayOutput
-}
-
-type GetClusterAddonsConfigKubernetesDashboardArray []GetClusterAddonsConfigKubernetesDashboardInput
-
-func (GetClusterAddonsConfigKubernetesDashboardArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetClusterAddonsConfigKubernetesDashboard)(nil)).Elem()
-}
-
-func (i GetClusterAddonsConfigKubernetesDashboardArray) ToGetClusterAddonsConfigKubernetesDashboardArrayOutput() GetClusterAddonsConfigKubernetesDashboardArrayOutput {
-	return i.ToGetClusterAddonsConfigKubernetesDashboardArrayOutputWithContext(context.Background())
-}
-
-func (i GetClusterAddonsConfigKubernetesDashboardArray) ToGetClusterAddonsConfigKubernetesDashboardArrayOutputWithContext(ctx context.Context) GetClusterAddonsConfigKubernetesDashboardArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAddonsConfigKubernetesDashboardArrayOutput)
-}
-
-type GetClusterAddonsConfigKubernetesDashboardOutput struct{ *pulumi.OutputState }
-
-func (GetClusterAddonsConfigKubernetesDashboardOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetClusterAddonsConfigKubernetesDashboard)(nil)).Elem()
-}
-
-func (o GetClusterAddonsConfigKubernetesDashboardOutput) ToGetClusterAddonsConfigKubernetesDashboardOutput() GetClusterAddonsConfigKubernetesDashboardOutput {
-	return o
-}
-
-func (o GetClusterAddonsConfigKubernetesDashboardOutput) ToGetClusterAddonsConfigKubernetesDashboardOutputWithContext(ctx context.Context) GetClusterAddonsConfigKubernetesDashboardOutput {
-	return o
-}
-
-func (o GetClusterAddonsConfigKubernetesDashboardOutput) Disabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetClusterAddonsConfigKubernetesDashboard) bool { return v.Disabled }).(pulumi.BoolOutput)
-}
-
-type GetClusterAddonsConfigKubernetesDashboardArrayOutput struct{ *pulumi.OutputState }
-
-func (GetClusterAddonsConfigKubernetesDashboardArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetClusterAddonsConfigKubernetesDashboard)(nil)).Elem()
-}
-
-func (o GetClusterAddonsConfigKubernetesDashboardArrayOutput) ToGetClusterAddonsConfigKubernetesDashboardArrayOutput() GetClusterAddonsConfigKubernetesDashboardArrayOutput {
-	return o
-}
-
-func (o GetClusterAddonsConfigKubernetesDashboardArrayOutput) ToGetClusterAddonsConfigKubernetesDashboardArrayOutputWithContext(ctx context.Context) GetClusterAddonsConfigKubernetesDashboardArrayOutput {
-	return o
-}
-
-func (o GetClusterAddonsConfigKubernetesDashboardArrayOutput) Index(i pulumi.IntInput) GetClusterAddonsConfigKubernetesDashboardOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAddonsConfigKubernetesDashboard {
-		return vs[0].([]GetClusterAddonsConfigKubernetesDashboard)[vs[1].(int)]
-	}).(GetClusterAddonsConfigKubernetesDashboardOutput)
 }
 
 type GetClusterAddonsConfigNetworkPolicyConfig struct {
@@ -13177,10 +12895,8 @@ func (o GetClusterDefaultSnatStatusArrayOutput) Index(i pulumi.IntInput) GetClus
 type GetClusterIpAllocationPolicy struct {
 	ClusterIpv4CidrBlock       string `pulumi:"clusterIpv4CidrBlock"`
 	ClusterSecondaryRangeName  string `pulumi:"clusterSecondaryRangeName"`
-	NodeIpv4CidrBlock          string `pulumi:"nodeIpv4CidrBlock"`
 	ServicesIpv4CidrBlock      string `pulumi:"servicesIpv4CidrBlock"`
 	ServicesSecondaryRangeName string `pulumi:"servicesSecondaryRangeName"`
-	SubnetworkName             string `pulumi:"subnetworkName"`
 }
 
 // GetClusterIpAllocationPolicyInput is an input type that accepts GetClusterIpAllocationPolicyArgs and GetClusterIpAllocationPolicyOutput values.
@@ -13197,10 +12913,8 @@ type GetClusterIpAllocationPolicyInput interface {
 type GetClusterIpAllocationPolicyArgs struct {
 	ClusterIpv4CidrBlock       pulumi.StringInput `pulumi:"clusterIpv4CidrBlock"`
 	ClusterSecondaryRangeName  pulumi.StringInput `pulumi:"clusterSecondaryRangeName"`
-	NodeIpv4CidrBlock          pulumi.StringInput `pulumi:"nodeIpv4CidrBlock"`
 	ServicesIpv4CidrBlock      pulumi.StringInput `pulumi:"servicesIpv4CidrBlock"`
 	ServicesSecondaryRangeName pulumi.StringInput `pulumi:"servicesSecondaryRangeName"`
-	SubnetworkName             pulumi.StringInput `pulumi:"subnetworkName"`
 }
 
 func (GetClusterIpAllocationPolicyArgs) ElementType() reflect.Type {
@@ -13262,20 +12976,12 @@ func (o GetClusterIpAllocationPolicyOutput) ClusterSecondaryRangeName() pulumi.S
 	return o.ApplyT(func(v GetClusterIpAllocationPolicy) string { return v.ClusterSecondaryRangeName }).(pulumi.StringOutput)
 }
 
-func (o GetClusterIpAllocationPolicyOutput) NodeIpv4CidrBlock() pulumi.StringOutput {
-	return o.ApplyT(func(v GetClusterIpAllocationPolicy) string { return v.NodeIpv4CidrBlock }).(pulumi.StringOutput)
-}
-
 func (o GetClusterIpAllocationPolicyOutput) ServicesIpv4CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterIpAllocationPolicy) string { return v.ServicesIpv4CidrBlock }).(pulumi.StringOutput)
 }
 
 func (o GetClusterIpAllocationPolicyOutput) ServicesSecondaryRangeName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterIpAllocationPolicy) string { return v.ServicesSecondaryRangeName }).(pulumi.StringOutput)
-}
-
-func (o GetClusterIpAllocationPolicyOutput) SubnetworkName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetClusterIpAllocationPolicy) string { return v.SubnetworkName }).(pulumi.StringOutput)
 }
 
 type GetClusterIpAllocationPolicyArrayOutput struct{ *pulumi.OutputState }
@@ -17230,8 +16936,6 @@ func init() {
 	pulumi.RegisterOutputType(ClusterAddonsConfigIstioConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigKalmConfigOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigKalmConfigPtrOutput{})
-	pulumi.RegisterOutputType(ClusterAddonsConfigKubernetesDashboardOutput{})
-	pulumi.RegisterOutputType(ClusterAddonsConfigKubernetesDashboardPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigNetworkPolicyConfigOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigNetworkPolicyConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAuthenticatorGroupsConfigOutput{})
@@ -17362,8 +17066,6 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterAddonsConfigIstioConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigKalmConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigKalmConfigArrayOutput{})
-	pulumi.RegisterOutputType(GetClusterAddonsConfigKubernetesDashboardOutput{})
-	pulumi.RegisterOutputType(GetClusterAddonsConfigKubernetesDashboardArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigNetworkPolicyConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigNetworkPolicyConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAuthenticatorGroupsConfigOutput{})

@@ -44,6 +44,13 @@ namespace Pulumi.Gcp.Dns
         public Output<Outputs.ManagedZoneDnssecConfig?> DnssecConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Set this true to delete all records in the zone.
+        /// The `dnssec_config` block supports:
+        /// </summary>
+        [Output("forceDestroy")]
+        public Output<bool?> ForceDestroy { get; private set; } = null!;
+
+        /// <summary>
         /// The presence for this field indicates that outbound forwarding is enabled
         /// for this zone. The value of this field contains the set of destinations
         /// to forward to.
@@ -183,6 +190,13 @@ namespace Pulumi.Gcp.Dns
         public Input<Inputs.ManagedZoneDnssecConfigArgs>? DnssecConfig { get; set; }
 
         /// <summary>
+        /// Set this true to delete all records in the zone.
+        /// The `dnssec_config` block supports:
+        /// </summary>
+        [Input("forceDestroy")]
+        public Input<bool>? ForceDestroy { get; set; }
+
+        /// <summary>
         /// The presence for this field indicates that outbound forwarding is enabled
         /// for this zone. The value of this field contains the set of destinations
         /// to forward to.
@@ -282,6 +296,13 @@ namespace Pulumi.Gcp.Dns
         /// </summary>
         [Input("dnssecConfig")]
         public Input<Inputs.ManagedZoneDnssecConfigGetArgs>? DnssecConfig { get; set; }
+
+        /// <summary>
+        /// Set this true to delete all records in the zone.
+        /// The `dnssec_config` block supports:
+        /// </summary>
+        [Input("forceDestroy")]
+        public Input<bool>? ForceDestroy { get; set; }
 
         /// <summary>
         /// The presence for this field indicates that outbound forwarding is enabled

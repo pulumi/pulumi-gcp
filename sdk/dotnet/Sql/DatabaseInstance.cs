@@ -147,8 +147,8 @@ namespace Pulumi.Gcp.Sql
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
 
-        [Output("serverCaCert")]
-        public Output<Outputs.DatabaseInstanceServerCaCert> ServerCaCert { get; private set; } = null!;
+        [Output("serverCaCerts")]
+        public Output<ImmutableArray<Outputs.DatabaseInstanceServerCaCert>> ServerCaCerts { get; private set; } = null!;
 
         /// <summary>
         /// The service account email address assigned to the
@@ -401,8 +401,13 @@ namespace Pulumi.Gcp.Sql
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
 
-        [Input("serverCaCert")]
-        public Input<Inputs.DatabaseInstanceServerCaCertGetArgs>? ServerCaCert { get; set; }
+        [Input("serverCaCerts")]
+        private InputList<Inputs.DatabaseInstanceServerCaCertGetArgs>? _serverCaCerts;
+        public InputList<Inputs.DatabaseInstanceServerCaCertGetArgs> ServerCaCerts
+        {
+            get => _serverCaCerts ?? (_serverCaCerts = new InputList<Inputs.DatabaseInstanceServerCaCertGetArgs>());
+            set => _serverCaCerts = value;
+        }
 
         /// <summary>
         /// The service account email address assigned to the

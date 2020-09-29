@@ -46,8 +46,8 @@ namespace Pulumi.Gcp.Monitoring
         /// A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be
         /// ignored.
         /// </summary>
-        [Output("creationRecord")]
-        public Output<Outputs.AlertPolicyCreationRecord> CreationRecord { get; private set; } = null!;
+        [Output("creationRecords")]
+        public Output<ImmutableArray<Outputs.AlertPolicyCreationRecord>> CreationRecords { get; private set; } = null!;
 
         /// <summary>
         /// A short name or phrase used to identify the
@@ -284,12 +284,18 @@ namespace Pulumi.Gcp.Monitoring
             set => _conditions = value;
         }
 
+        [Input("creationRecords")]
+        private InputList<Inputs.AlertPolicyCreationRecordGetArgs>? _creationRecords;
+
         /// <summary>
         /// A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be
         /// ignored.
         /// </summary>
-        [Input("creationRecord")]
-        public Input<Inputs.AlertPolicyCreationRecordGetArgs>? CreationRecord { get; set; }
+        public InputList<Inputs.AlertPolicyCreationRecordGetArgs> CreationRecords
+        {
+            get => _creationRecords ?? (_creationRecords = new InputList<Inputs.AlertPolicyCreationRecordGetArgs>());
+            set => _creationRecords = value;
+        }
 
         /// <summary>
         /// A short name or phrase used to identify the

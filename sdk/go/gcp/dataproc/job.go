@@ -52,7 +52,7 @@ type Job struct {
 	// The config of SparkSql job
 	SparksqlConfig JobSparksqlConfigPtrOutput `pulumi:"sparksqlConfig"`
 	// The status of the job.
-	Status JobStatusOutput `pulumi:"status"`
+	Statuses JobStatusArrayOutput `pulumi:"statuses"`
 }
 
 // NewJob registers a new resource with the given unique name, arguments, and options.
@@ -121,7 +121,7 @@ type jobState struct {
 	// The config of SparkSql job
 	SparksqlConfig *JobSparksqlConfig `pulumi:"sparksqlConfig"`
 	// The status of the job.
-	Status *JobStatus `pulumi:"status"`
+	Statuses []JobStatus `pulumi:"statuses"`
 }
 
 type JobState struct {
@@ -160,7 +160,7 @@ type JobState struct {
 	// The config of SparkSql job
 	SparksqlConfig JobSparksqlConfigPtrInput
 	// The status of the job.
-	Status JobStatusPtrInput
+	Statuses JobStatusArrayInput
 }
 
 func (JobState) ElementType() reflect.Type {

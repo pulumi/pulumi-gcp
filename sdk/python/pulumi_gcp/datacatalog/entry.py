@@ -108,8 +108,8 @@ class Entry(pulumi.CustomResource):
             __props__['type'] = type
             __props__['user_specified_system'] = user_specified_system
             __props__['user_specified_type'] = user_specified_type
-            __props__['bigquery_date_sharded_spec'] = None
-            __props__['bigquery_table_spec'] = None
+            __props__['bigquery_date_sharded_specs'] = None
+            __props__['bigquery_table_specs'] = None
             __props__['integrated_system'] = None
             __props__['name'] = None
         super(Entry, __self__).__init__(
@@ -122,8 +122,8 @@ class Entry(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bigquery_date_sharded_spec: Optional[pulumi.Input[pulumi.InputType['EntryBigqueryDateShardedSpecArgs']]] = None,
-            bigquery_table_spec: Optional[pulumi.Input[pulumi.InputType['EntryBigqueryTableSpecArgs']]] = None,
+            bigquery_date_sharded_specs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EntryBigqueryDateShardedSpecArgs']]]]] = None,
+            bigquery_table_specs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EntryBigqueryTableSpecArgs']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             entry_group: Optional[pulumi.Input[str]] = None,
@@ -143,9 +143,9 @@ class Entry(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['EntryBigqueryDateShardedSpecArgs']] bigquery_date_sharded_spec: Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD. Context:
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EntryBigqueryDateShardedSpecArgs']]]] bigquery_date_sharded_specs: Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD. Context:
                https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
-        :param pulumi.Input[pulumi.InputType['EntryBigqueryTableSpecArgs']] bigquery_table_spec: Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EntryBigqueryTableSpecArgs']]]] bigquery_table_specs: Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
         :param pulumi.Input[str] description: Entry description, which can consist of several sentences or paragraphs that describe entry contents.
         :param pulumi.Input[str] display_name: Display information such as title and description. A short name to identify the entry,
                for example, "Analytics Data - Jan 2011".
@@ -183,8 +183,8 @@ class Entry(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["bigquery_date_sharded_spec"] = bigquery_date_sharded_spec
-        __props__["bigquery_table_spec"] = bigquery_table_spec
+        __props__["bigquery_date_sharded_specs"] = bigquery_date_sharded_specs
+        __props__["bigquery_table_specs"] = bigquery_table_specs
         __props__["description"] = description
         __props__["display_name"] = display_name
         __props__["entry_group"] = entry_group
@@ -200,21 +200,21 @@ class Entry(pulumi.CustomResource):
         return Entry(resource_name, opts=opts, __props__=__props__)
 
     @property
-    @pulumi.getter(name="bigqueryDateShardedSpec")
-    def bigquery_date_sharded_spec(self) -> pulumi.Output['outputs.EntryBigqueryDateShardedSpec']:
+    @pulumi.getter(name="bigqueryDateShardedSpecs")
+    def bigquery_date_sharded_specs(self) -> pulumi.Output[Sequence['outputs.EntryBigqueryDateShardedSpec']]:
         """
         Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD. Context:
         https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
         """
-        return pulumi.get(self, "bigquery_date_sharded_spec")
+        return pulumi.get(self, "bigquery_date_sharded_specs")
 
     @property
-    @pulumi.getter(name="bigqueryTableSpec")
-    def bigquery_table_spec(self) -> pulumi.Output['outputs.EntryBigqueryTableSpec']:
+    @pulumi.getter(name="bigqueryTableSpecs")
+    def bigquery_table_specs(self) -> pulumi.Output[Sequence['outputs.EntryBigqueryTableSpec']]:
         """
         Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
         """
-        return pulumi.get(self, "bigquery_table_spec")
+        return pulumi.get(self, "bigquery_table_specs")
 
     @property
     @pulumi.getter

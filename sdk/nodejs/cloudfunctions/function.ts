@@ -73,7 +73,7 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly httpsTriggerUrl!: pulumi.Output<string>;
     /**
-     * String value that controls what traffic can reach the function. Allowed values are ALLOW_ALL and ALLOW_INTERNAL_ONLY. Changes to this field will recreate the cloud function.
+     * String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Changes to this field will recreate the cloud function.
      */
     public readonly ingressSettings!: pulumi.Output<string | undefined>;
     /**
@@ -235,7 +235,7 @@ export interface FunctionState {
      */
     readonly httpsTriggerUrl?: pulumi.Input<string>;
     /**
-     * String value that controls what traffic can reach the function. Allowed values are ALLOW_ALL and ALLOW_INTERNAL_ONLY. Changes to this field will recreate the cloud function.
+     * String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Changes to this field will recreate the cloud function.
      */
     readonly ingressSettings?: pulumi.Input<string>;
     /**
@@ -327,7 +327,7 @@ export interface FunctionArgs {
      */
     readonly httpsTriggerUrl?: pulumi.Input<string>;
     /**
-     * String value that controls what traffic can reach the function. Allowed values are ALLOW_ALL and ALLOW_INTERNAL_ONLY. Changes to this field will recreate the cloud function.
+     * String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Changes to this field will recreate the cloud function.
      */
     readonly ingressSettings?: pulumi.Input<string>;
     /**

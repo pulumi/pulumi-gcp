@@ -73,9 +73,6 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("kalmConfig")]
         public Input<Inputs.ClusterAddonsConfigKalmConfigArgs>? KalmConfig { get; set; }
 
-        [Input("kubernetesDashboard")]
-        public Input<Inputs.ClusterAddonsConfigKubernetesDashboardArgs>? KubernetesDashboard { get; set; }
-
         /// <summary>
         /// Whether we should enable the network policy addon
         /// for the master.  This must be enabled in order to enable network policy for the nodes.

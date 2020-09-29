@@ -881,45 +881,29 @@ func (i KeyRingImportJobAttestationArgs) ToKeyRingImportJobAttestationOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(KeyRingImportJobAttestationOutput)
 }
 
-func (i KeyRingImportJobAttestationArgs) ToKeyRingImportJobAttestationPtrOutput() KeyRingImportJobAttestationPtrOutput {
-	return i.ToKeyRingImportJobAttestationPtrOutputWithContext(context.Background())
-}
-
-func (i KeyRingImportJobAttestationArgs) ToKeyRingImportJobAttestationPtrOutputWithContext(ctx context.Context) KeyRingImportJobAttestationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyRingImportJobAttestationOutput).ToKeyRingImportJobAttestationPtrOutputWithContext(ctx)
-}
-
-// KeyRingImportJobAttestationPtrInput is an input type that accepts KeyRingImportJobAttestationArgs, KeyRingImportJobAttestationPtr and KeyRingImportJobAttestationPtrOutput values.
-// You can construct a concrete instance of `KeyRingImportJobAttestationPtrInput` via:
+// KeyRingImportJobAttestationArrayInput is an input type that accepts KeyRingImportJobAttestationArray and KeyRingImportJobAttestationArrayOutput values.
+// You can construct a concrete instance of `KeyRingImportJobAttestationArrayInput` via:
 //
-//          KeyRingImportJobAttestationArgs{...}
-//
-//  or:
-//
-//          nil
-type KeyRingImportJobAttestationPtrInput interface {
+//          KeyRingImportJobAttestationArray{ KeyRingImportJobAttestationArgs{...} }
+type KeyRingImportJobAttestationArrayInput interface {
 	pulumi.Input
 
-	ToKeyRingImportJobAttestationPtrOutput() KeyRingImportJobAttestationPtrOutput
-	ToKeyRingImportJobAttestationPtrOutputWithContext(context.Context) KeyRingImportJobAttestationPtrOutput
+	ToKeyRingImportJobAttestationArrayOutput() KeyRingImportJobAttestationArrayOutput
+	ToKeyRingImportJobAttestationArrayOutputWithContext(context.Context) KeyRingImportJobAttestationArrayOutput
 }
 
-type keyRingImportJobAttestationPtrType KeyRingImportJobAttestationArgs
+type KeyRingImportJobAttestationArray []KeyRingImportJobAttestationInput
 
-func KeyRingImportJobAttestationPtr(v *KeyRingImportJobAttestationArgs) KeyRingImportJobAttestationPtrInput {
-	return (*keyRingImportJobAttestationPtrType)(v)
+func (KeyRingImportJobAttestationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KeyRingImportJobAttestation)(nil)).Elem()
 }
 
-func (*keyRingImportJobAttestationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**KeyRingImportJobAttestation)(nil)).Elem()
+func (i KeyRingImportJobAttestationArray) ToKeyRingImportJobAttestationArrayOutput() KeyRingImportJobAttestationArrayOutput {
+	return i.ToKeyRingImportJobAttestationArrayOutputWithContext(context.Background())
 }
 
-func (i *keyRingImportJobAttestationPtrType) ToKeyRingImportJobAttestationPtrOutput() KeyRingImportJobAttestationPtrOutput {
-	return i.ToKeyRingImportJobAttestationPtrOutputWithContext(context.Background())
-}
-
-func (i *keyRingImportJobAttestationPtrType) ToKeyRingImportJobAttestationPtrOutputWithContext(ctx context.Context) KeyRingImportJobAttestationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyRingImportJobAttestationPtrOutput)
+func (i KeyRingImportJobAttestationArray) ToKeyRingImportJobAttestationArrayOutputWithContext(ctx context.Context) KeyRingImportJobAttestationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyRingImportJobAttestationArrayOutput)
 }
 
 type KeyRingImportJobAttestationOutput struct{ *pulumi.OutputState }
@@ -936,15 +920,6 @@ func (o KeyRingImportJobAttestationOutput) ToKeyRingImportJobAttestationOutputWi
 	return o
 }
 
-func (o KeyRingImportJobAttestationOutput) ToKeyRingImportJobAttestationPtrOutput() KeyRingImportJobAttestationPtrOutput {
-	return o.ToKeyRingImportJobAttestationPtrOutputWithContext(context.Background())
-}
-
-func (o KeyRingImportJobAttestationOutput) ToKeyRingImportJobAttestationPtrOutputWithContext(ctx context.Context) KeyRingImportJobAttestationPtrOutput {
-	return o.ApplyT(func(v KeyRingImportJobAttestation) *KeyRingImportJobAttestation {
-		return &v
-	}).(KeyRingImportJobAttestationPtrOutput)
-}
 func (o KeyRingImportJobAttestationOutput) Content() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeyRingImportJobAttestation) *string { return v.Content }).(pulumi.StringPtrOutput)
 }
@@ -953,40 +928,24 @@ func (o KeyRingImportJobAttestationOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeyRingImportJobAttestation) *string { return v.Format }).(pulumi.StringPtrOutput)
 }
 
-type KeyRingImportJobAttestationPtrOutput struct{ *pulumi.OutputState }
+type KeyRingImportJobAttestationArrayOutput struct{ *pulumi.OutputState }
 
-func (KeyRingImportJobAttestationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**KeyRingImportJobAttestation)(nil)).Elem()
+func (KeyRingImportJobAttestationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KeyRingImportJobAttestation)(nil)).Elem()
 }
 
-func (o KeyRingImportJobAttestationPtrOutput) ToKeyRingImportJobAttestationPtrOutput() KeyRingImportJobAttestationPtrOutput {
+func (o KeyRingImportJobAttestationArrayOutput) ToKeyRingImportJobAttestationArrayOutput() KeyRingImportJobAttestationArrayOutput {
 	return o
 }
 
-func (o KeyRingImportJobAttestationPtrOutput) ToKeyRingImportJobAttestationPtrOutputWithContext(ctx context.Context) KeyRingImportJobAttestationPtrOutput {
+func (o KeyRingImportJobAttestationArrayOutput) ToKeyRingImportJobAttestationArrayOutputWithContext(ctx context.Context) KeyRingImportJobAttestationArrayOutput {
 	return o
 }
 
-func (o KeyRingImportJobAttestationPtrOutput) Elem() KeyRingImportJobAttestationOutput {
-	return o.ApplyT(func(v *KeyRingImportJobAttestation) KeyRingImportJobAttestation { return *v }).(KeyRingImportJobAttestationOutput)
-}
-
-func (o KeyRingImportJobAttestationPtrOutput) Content() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KeyRingImportJobAttestation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Content
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o KeyRingImportJobAttestationPtrOutput) Format() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KeyRingImportJobAttestation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Format
-	}).(pulumi.StringPtrOutput)
+func (o KeyRingImportJobAttestationArrayOutput) Index(i pulumi.IntInput) KeyRingImportJobAttestationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KeyRingImportJobAttestation {
+		return vs[0].([]KeyRingImportJobAttestation)[vs[1].(int)]
+	}).(KeyRingImportJobAttestationOutput)
 }
 
 type KeyRingImportJobPublicKey struct {
@@ -1020,45 +979,29 @@ func (i KeyRingImportJobPublicKeyArgs) ToKeyRingImportJobPublicKeyOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(KeyRingImportJobPublicKeyOutput)
 }
 
-func (i KeyRingImportJobPublicKeyArgs) ToKeyRingImportJobPublicKeyPtrOutput() KeyRingImportJobPublicKeyPtrOutput {
-	return i.ToKeyRingImportJobPublicKeyPtrOutputWithContext(context.Background())
-}
-
-func (i KeyRingImportJobPublicKeyArgs) ToKeyRingImportJobPublicKeyPtrOutputWithContext(ctx context.Context) KeyRingImportJobPublicKeyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyRingImportJobPublicKeyOutput).ToKeyRingImportJobPublicKeyPtrOutputWithContext(ctx)
-}
-
-// KeyRingImportJobPublicKeyPtrInput is an input type that accepts KeyRingImportJobPublicKeyArgs, KeyRingImportJobPublicKeyPtr and KeyRingImportJobPublicKeyPtrOutput values.
-// You can construct a concrete instance of `KeyRingImportJobPublicKeyPtrInput` via:
+// KeyRingImportJobPublicKeyArrayInput is an input type that accepts KeyRingImportJobPublicKeyArray and KeyRingImportJobPublicKeyArrayOutput values.
+// You can construct a concrete instance of `KeyRingImportJobPublicKeyArrayInput` via:
 //
-//          KeyRingImportJobPublicKeyArgs{...}
-//
-//  or:
-//
-//          nil
-type KeyRingImportJobPublicKeyPtrInput interface {
+//          KeyRingImportJobPublicKeyArray{ KeyRingImportJobPublicKeyArgs{...} }
+type KeyRingImportJobPublicKeyArrayInput interface {
 	pulumi.Input
 
-	ToKeyRingImportJobPublicKeyPtrOutput() KeyRingImportJobPublicKeyPtrOutput
-	ToKeyRingImportJobPublicKeyPtrOutputWithContext(context.Context) KeyRingImportJobPublicKeyPtrOutput
+	ToKeyRingImportJobPublicKeyArrayOutput() KeyRingImportJobPublicKeyArrayOutput
+	ToKeyRingImportJobPublicKeyArrayOutputWithContext(context.Context) KeyRingImportJobPublicKeyArrayOutput
 }
 
-type keyRingImportJobPublicKeyPtrType KeyRingImportJobPublicKeyArgs
+type KeyRingImportJobPublicKeyArray []KeyRingImportJobPublicKeyInput
 
-func KeyRingImportJobPublicKeyPtr(v *KeyRingImportJobPublicKeyArgs) KeyRingImportJobPublicKeyPtrInput {
-	return (*keyRingImportJobPublicKeyPtrType)(v)
+func (KeyRingImportJobPublicKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KeyRingImportJobPublicKey)(nil)).Elem()
 }
 
-func (*keyRingImportJobPublicKeyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**KeyRingImportJobPublicKey)(nil)).Elem()
+func (i KeyRingImportJobPublicKeyArray) ToKeyRingImportJobPublicKeyArrayOutput() KeyRingImportJobPublicKeyArrayOutput {
+	return i.ToKeyRingImportJobPublicKeyArrayOutputWithContext(context.Background())
 }
 
-func (i *keyRingImportJobPublicKeyPtrType) ToKeyRingImportJobPublicKeyPtrOutput() KeyRingImportJobPublicKeyPtrOutput {
-	return i.ToKeyRingImportJobPublicKeyPtrOutputWithContext(context.Background())
-}
-
-func (i *keyRingImportJobPublicKeyPtrType) ToKeyRingImportJobPublicKeyPtrOutputWithContext(ctx context.Context) KeyRingImportJobPublicKeyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyRingImportJobPublicKeyPtrOutput)
+func (i KeyRingImportJobPublicKeyArray) ToKeyRingImportJobPublicKeyArrayOutputWithContext(ctx context.Context) KeyRingImportJobPublicKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyRingImportJobPublicKeyArrayOutput)
 }
 
 type KeyRingImportJobPublicKeyOutput struct{ *pulumi.OutputState }
@@ -1075,49 +1018,33 @@ func (o KeyRingImportJobPublicKeyOutput) ToKeyRingImportJobPublicKeyOutputWithCo
 	return o
 }
 
-func (o KeyRingImportJobPublicKeyOutput) ToKeyRingImportJobPublicKeyPtrOutput() KeyRingImportJobPublicKeyPtrOutput {
-	return o.ToKeyRingImportJobPublicKeyPtrOutputWithContext(context.Background())
-}
-
-func (o KeyRingImportJobPublicKeyOutput) ToKeyRingImportJobPublicKeyPtrOutputWithContext(ctx context.Context) KeyRingImportJobPublicKeyPtrOutput {
-	return o.ApplyT(func(v KeyRingImportJobPublicKey) *KeyRingImportJobPublicKey {
-		return &v
-	}).(KeyRingImportJobPublicKeyPtrOutput)
-}
 func (o KeyRingImportJobPublicKeyOutput) Pem() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeyRingImportJobPublicKey) *string { return v.Pem }).(pulumi.StringPtrOutput)
 }
 
-type KeyRingImportJobPublicKeyPtrOutput struct{ *pulumi.OutputState }
+type KeyRingImportJobPublicKeyArrayOutput struct{ *pulumi.OutputState }
 
-func (KeyRingImportJobPublicKeyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**KeyRingImportJobPublicKey)(nil)).Elem()
+func (KeyRingImportJobPublicKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KeyRingImportJobPublicKey)(nil)).Elem()
 }
 
-func (o KeyRingImportJobPublicKeyPtrOutput) ToKeyRingImportJobPublicKeyPtrOutput() KeyRingImportJobPublicKeyPtrOutput {
+func (o KeyRingImportJobPublicKeyArrayOutput) ToKeyRingImportJobPublicKeyArrayOutput() KeyRingImportJobPublicKeyArrayOutput {
 	return o
 }
 
-func (o KeyRingImportJobPublicKeyPtrOutput) ToKeyRingImportJobPublicKeyPtrOutputWithContext(ctx context.Context) KeyRingImportJobPublicKeyPtrOutput {
+func (o KeyRingImportJobPublicKeyArrayOutput) ToKeyRingImportJobPublicKeyArrayOutputWithContext(ctx context.Context) KeyRingImportJobPublicKeyArrayOutput {
 	return o
 }
 
-func (o KeyRingImportJobPublicKeyPtrOutput) Elem() KeyRingImportJobPublicKeyOutput {
-	return o.ApplyT(func(v *KeyRingImportJobPublicKey) KeyRingImportJobPublicKey { return *v }).(KeyRingImportJobPublicKeyOutput)
-}
-
-func (o KeyRingImportJobPublicKeyPtrOutput) Pem() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KeyRingImportJobPublicKey) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Pem
-	}).(pulumi.StringPtrOutput)
+func (o KeyRingImportJobPublicKeyArrayOutput) Index(i pulumi.IntInput) KeyRingImportJobPublicKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KeyRingImportJobPublicKey {
+		return vs[0].([]KeyRingImportJobPublicKey)[vs[1].(int)]
+	}).(KeyRingImportJobPublicKeyOutput)
 }
 
 type RegistryCredential struct {
 	// A public key certificate format and data.
-	PublicKeyCertificate RegistryCredentialPublicKeyCertificate `pulumi:"publicKeyCertificate"`
+	PublicKeyCertificate map[string]interface{} `pulumi:"publicKeyCertificate"`
 }
 
 // RegistryCredentialInput is an input type that accepts RegistryCredentialArgs and RegistryCredentialOutput values.
@@ -1133,7 +1060,7 @@ type RegistryCredentialInput interface {
 
 type RegistryCredentialArgs struct {
 	// A public key certificate format and data.
-	PublicKeyCertificate RegistryCredentialPublicKeyCertificateInput `pulumi:"publicKeyCertificate"`
+	PublicKeyCertificate pulumi.MapInput `pulumi:"publicKeyCertificate"`
 }
 
 func (RegistryCredentialArgs) ElementType() reflect.Type {
@@ -1188,8 +1115,8 @@ func (o RegistryCredentialOutput) ToRegistryCredentialOutputWithContext(ctx cont
 }
 
 // A public key certificate format and data.
-func (o RegistryCredentialOutput) PublicKeyCertificate() RegistryCredentialPublicKeyCertificateOutput {
-	return o.ApplyT(func(v RegistryCredential) RegistryCredentialPublicKeyCertificate { return v.PublicKeyCertificate }).(RegistryCredentialPublicKeyCertificateOutput)
+func (o RegistryCredentialOutput) PublicKeyCertificate() pulumi.MapOutput {
+	return o.ApplyT(func(v RegistryCredential) map[string]interface{} { return v.PublicKeyCertificate }).(pulumi.MapOutput)
 }
 
 type RegistryCredentialArrayOutput struct{ *pulumi.OutputState }
@@ -1210,67 +1137,6 @@ func (o RegistryCredentialArrayOutput) Index(i pulumi.IntInput) RegistryCredenti
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegistryCredential {
 		return vs[0].([]RegistryCredential)[vs[1].(int)]
 	}).(RegistryCredentialOutput)
-}
-
-type RegistryCredentialPublicKeyCertificate struct {
-	// The certificate data.
-	Certificate string `pulumi:"certificate"`
-	// The field allows only `X509_CERTIFICATE_PEM`.
-	Format string `pulumi:"format"`
-}
-
-// RegistryCredentialPublicKeyCertificateInput is an input type that accepts RegistryCredentialPublicKeyCertificateArgs and RegistryCredentialPublicKeyCertificateOutput values.
-// You can construct a concrete instance of `RegistryCredentialPublicKeyCertificateInput` via:
-//
-//          RegistryCredentialPublicKeyCertificateArgs{...}
-type RegistryCredentialPublicKeyCertificateInput interface {
-	pulumi.Input
-
-	ToRegistryCredentialPublicKeyCertificateOutput() RegistryCredentialPublicKeyCertificateOutput
-	ToRegistryCredentialPublicKeyCertificateOutputWithContext(context.Context) RegistryCredentialPublicKeyCertificateOutput
-}
-
-type RegistryCredentialPublicKeyCertificateArgs struct {
-	// The certificate data.
-	Certificate pulumi.StringInput `pulumi:"certificate"`
-	// The field allows only `X509_CERTIFICATE_PEM`.
-	Format pulumi.StringInput `pulumi:"format"`
-}
-
-func (RegistryCredentialPublicKeyCertificateArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegistryCredentialPublicKeyCertificate)(nil)).Elem()
-}
-
-func (i RegistryCredentialPublicKeyCertificateArgs) ToRegistryCredentialPublicKeyCertificateOutput() RegistryCredentialPublicKeyCertificateOutput {
-	return i.ToRegistryCredentialPublicKeyCertificateOutputWithContext(context.Background())
-}
-
-func (i RegistryCredentialPublicKeyCertificateArgs) ToRegistryCredentialPublicKeyCertificateOutputWithContext(ctx context.Context) RegistryCredentialPublicKeyCertificateOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegistryCredentialPublicKeyCertificateOutput)
-}
-
-type RegistryCredentialPublicKeyCertificateOutput struct{ *pulumi.OutputState }
-
-func (RegistryCredentialPublicKeyCertificateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegistryCredentialPublicKeyCertificate)(nil)).Elem()
-}
-
-func (o RegistryCredentialPublicKeyCertificateOutput) ToRegistryCredentialPublicKeyCertificateOutput() RegistryCredentialPublicKeyCertificateOutput {
-	return o
-}
-
-func (o RegistryCredentialPublicKeyCertificateOutput) ToRegistryCredentialPublicKeyCertificateOutputWithContext(ctx context.Context) RegistryCredentialPublicKeyCertificateOutput {
-	return o
-}
-
-// The certificate data.
-func (o RegistryCredentialPublicKeyCertificateOutput) Certificate() pulumi.StringOutput {
-	return o.ApplyT(func(v RegistryCredentialPublicKeyCertificate) string { return v.Certificate }).(pulumi.StringOutput)
-}
-
-// The field allows only `X509_CERTIFICATE_PEM`.
-func (o RegistryCredentialPublicKeyCertificateOutput) Format() pulumi.StringOutput {
-	return o.ApplyT(func(v RegistryCredentialPublicKeyCertificate) string { return v.Format }).(pulumi.StringOutput)
 }
 
 type RegistryEventNotificationConfigItem struct {
@@ -1391,399 +1257,6 @@ func (o RegistryEventNotificationConfigItemArrayOutput) Index(i pulumi.IntInput)
 	}).(RegistryEventNotificationConfigItemOutput)
 }
 
-type RegistryHttpConfig struct {
-	// The field allows `HTTP_ENABLED` or `HTTP_DISABLED`.
-	HttpEnabledState string `pulumi:"httpEnabledState"`
-}
-
-// RegistryHttpConfigInput is an input type that accepts RegistryHttpConfigArgs and RegistryHttpConfigOutput values.
-// You can construct a concrete instance of `RegistryHttpConfigInput` via:
-//
-//          RegistryHttpConfigArgs{...}
-type RegistryHttpConfigInput interface {
-	pulumi.Input
-
-	ToRegistryHttpConfigOutput() RegistryHttpConfigOutput
-	ToRegistryHttpConfigOutputWithContext(context.Context) RegistryHttpConfigOutput
-}
-
-type RegistryHttpConfigArgs struct {
-	// The field allows `HTTP_ENABLED` or `HTTP_DISABLED`.
-	HttpEnabledState pulumi.StringInput `pulumi:"httpEnabledState"`
-}
-
-func (RegistryHttpConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegistryHttpConfig)(nil)).Elem()
-}
-
-func (i RegistryHttpConfigArgs) ToRegistryHttpConfigOutput() RegistryHttpConfigOutput {
-	return i.ToRegistryHttpConfigOutputWithContext(context.Background())
-}
-
-func (i RegistryHttpConfigArgs) ToRegistryHttpConfigOutputWithContext(ctx context.Context) RegistryHttpConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegistryHttpConfigOutput)
-}
-
-func (i RegistryHttpConfigArgs) ToRegistryHttpConfigPtrOutput() RegistryHttpConfigPtrOutput {
-	return i.ToRegistryHttpConfigPtrOutputWithContext(context.Background())
-}
-
-func (i RegistryHttpConfigArgs) ToRegistryHttpConfigPtrOutputWithContext(ctx context.Context) RegistryHttpConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegistryHttpConfigOutput).ToRegistryHttpConfigPtrOutputWithContext(ctx)
-}
-
-// RegistryHttpConfigPtrInput is an input type that accepts RegistryHttpConfigArgs, RegistryHttpConfigPtr and RegistryHttpConfigPtrOutput values.
-// You can construct a concrete instance of `RegistryHttpConfigPtrInput` via:
-//
-//          RegistryHttpConfigArgs{...}
-//
-//  or:
-//
-//          nil
-type RegistryHttpConfigPtrInput interface {
-	pulumi.Input
-
-	ToRegistryHttpConfigPtrOutput() RegistryHttpConfigPtrOutput
-	ToRegistryHttpConfigPtrOutputWithContext(context.Context) RegistryHttpConfigPtrOutput
-}
-
-type registryHttpConfigPtrType RegistryHttpConfigArgs
-
-func RegistryHttpConfigPtr(v *RegistryHttpConfigArgs) RegistryHttpConfigPtrInput {
-	return (*registryHttpConfigPtrType)(v)
-}
-
-func (*registryHttpConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RegistryHttpConfig)(nil)).Elem()
-}
-
-func (i *registryHttpConfigPtrType) ToRegistryHttpConfigPtrOutput() RegistryHttpConfigPtrOutput {
-	return i.ToRegistryHttpConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *registryHttpConfigPtrType) ToRegistryHttpConfigPtrOutputWithContext(ctx context.Context) RegistryHttpConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegistryHttpConfigPtrOutput)
-}
-
-type RegistryHttpConfigOutput struct{ *pulumi.OutputState }
-
-func (RegistryHttpConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegistryHttpConfig)(nil)).Elem()
-}
-
-func (o RegistryHttpConfigOutput) ToRegistryHttpConfigOutput() RegistryHttpConfigOutput {
-	return o
-}
-
-func (o RegistryHttpConfigOutput) ToRegistryHttpConfigOutputWithContext(ctx context.Context) RegistryHttpConfigOutput {
-	return o
-}
-
-func (o RegistryHttpConfigOutput) ToRegistryHttpConfigPtrOutput() RegistryHttpConfigPtrOutput {
-	return o.ToRegistryHttpConfigPtrOutputWithContext(context.Background())
-}
-
-func (o RegistryHttpConfigOutput) ToRegistryHttpConfigPtrOutputWithContext(ctx context.Context) RegistryHttpConfigPtrOutput {
-	return o.ApplyT(func(v RegistryHttpConfig) *RegistryHttpConfig {
-		return &v
-	}).(RegistryHttpConfigPtrOutput)
-}
-
-// The field allows `HTTP_ENABLED` or `HTTP_DISABLED`.
-func (o RegistryHttpConfigOutput) HttpEnabledState() pulumi.StringOutput {
-	return o.ApplyT(func(v RegistryHttpConfig) string { return v.HttpEnabledState }).(pulumi.StringOutput)
-}
-
-type RegistryHttpConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (RegistryHttpConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RegistryHttpConfig)(nil)).Elem()
-}
-
-func (o RegistryHttpConfigPtrOutput) ToRegistryHttpConfigPtrOutput() RegistryHttpConfigPtrOutput {
-	return o
-}
-
-func (o RegistryHttpConfigPtrOutput) ToRegistryHttpConfigPtrOutputWithContext(ctx context.Context) RegistryHttpConfigPtrOutput {
-	return o
-}
-
-func (o RegistryHttpConfigPtrOutput) Elem() RegistryHttpConfigOutput {
-	return o.ApplyT(func(v *RegistryHttpConfig) RegistryHttpConfig { return *v }).(RegistryHttpConfigOutput)
-}
-
-// The field allows `HTTP_ENABLED` or `HTTP_DISABLED`.
-func (o RegistryHttpConfigPtrOutput) HttpEnabledState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RegistryHttpConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.HttpEnabledState
-	}).(pulumi.StringPtrOutput)
-}
-
-type RegistryMqttConfig struct {
-	// The field allows `MQTT_ENABLED` or `MQTT_DISABLED`.
-	MqttEnabledState string `pulumi:"mqttEnabledState"`
-}
-
-// RegistryMqttConfigInput is an input type that accepts RegistryMqttConfigArgs and RegistryMqttConfigOutput values.
-// You can construct a concrete instance of `RegistryMqttConfigInput` via:
-//
-//          RegistryMqttConfigArgs{...}
-type RegistryMqttConfigInput interface {
-	pulumi.Input
-
-	ToRegistryMqttConfigOutput() RegistryMqttConfigOutput
-	ToRegistryMqttConfigOutputWithContext(context.Context) RegistryMqttConfigOutput
-}
-
-type RegistryMqttConfigArgs struct {
-	// The field allows `MQTT_ENABLED` or `MQTT_DISABLED`.
-	MqttEnabledState pulumi.StringInput `pulumi:"mqttEnabledState"`
-}
-
-func (RegistryMqttConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegistryMqttConfig)(nil)).Elem()
-}
-
-func (i RegistryMqttConfigArgs) ToRegistryMqttConfigOutput() RegistryMqttConfigOutput {
-	return i.ToRegistryMqttConfigOutputWithContext(context.Background())
-}
-
-func (i RegistryMqttConfigArgs) ToRegistryMqttConfigOutputWithContext(ctx context.Context) RegistryMqttConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegistryMqttConfigOutput)
-}
-
-func (i RegistryMqttConfigArgs) ToRegistryMqttConfigPtrOutput() RegistryMqttConfigPtrOutput {
-	return i.ToRegistryMqttConfigPtrOutputWithContext(context.Background())
-}
-
-func (i RegistryMqttConfigArgs) ToRegistryMqttConfigPtrOutputWithContext(ctx context.Context) RegistryMqttConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegistryMqttConfigOutput).ToRegistryMqttConfigPtrOutputWithContext(ctx)
-}
-
-// RegistryMqttConfigPtrInput is an input type that accepts RegistryMqttConfigArgs, RegistryMqttConfigPtr and RegistryMqttConfigPtrOutput values.
-// You can construct a concrete instance of `RegistryMqttConfigPtrInput` via:
-//
-//          RegistryMqttConfigArgs{...}
-//
-//  or:
-//
-//          nil
-type RegistryMqttConfigPtrInput interface {
-	pulumi.Input
-
-	ToRegistryMqttConfigPtrOutput() RegistryMqttConfigPtrOutput
-	ToRegistryMqttConfigPtrOutputWithContext(context.Context) RegistryMqttConfigPtrOutput
-}
-
-type registryMqttConfigPtrType RegistryMqttConfigArgs
-
-func RegistryMqttConfigPtr(v *RegistryMqttConfigArgs) RegistryMqttConfigPtrInput {
-	return (*registryMqttConfigPtrType)(v)
-}
-
-func (*registryMqttConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RegistryMqttConfig)(nil)).Elem()
-}
-
-func (i *registryMqttConfigPtrType) ToRegistryMqttConfigPtrOutput() RegistryMqttConfigPtrOutput {
-	return i.ToRegistryMqttConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *registryMqttConfigPtrType) ToRegistryMqttConfigPtrOutputWithContext(ctx context.Context) RegistryMqttConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegistryMqttConfigPtrOutput)
-}
-
-type RegistryMqttConfigOutput struct{ *pulumi.OutputState }
-
-func (RegistryMqttConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegistryMqttConfig)(nil)).Elem()
-}
-
-func (o RegistryMqttConfigOutput) ToRegistryMqttConfigOutput() RegistryMqttConfigOutput {
-	return o
-}
-
-func (o RegistryMqttConfigOutput) ToRegistryMqttConfigOutputWithContext(ctx context.Context) RegistryMqttConfigOutput {
-	return o
-}
-
-func (o RegistryMqttConfigOutput) ToRegistryMqttConfigPtrOutput() RegistryMqttConfigPtrOutput {
-	return o.ToRegistryMqttConfigPtrOutputWithContext(context.Background())
-}
-
-func (o RegistryMqttConfigOutput) ToRegistryMqttConfigPtrOutputWithContext(ctx context.Context) RegistryMqttConfigPtrOutput {
-	return o.ApplyT(func(v RegistryMqttConfig) *RegistryMqttConfig {
-		return &v
-	}).(RegistryMqttConfigPtrOutput)
-}
-
-// The field allows `MQTT_ENABLED` or `MQTT_DISABLED`.
-func (o RegistryMqttConfigOutput) MqttEnabledState() pulumi.StringOutput {
-	return o.ApplyT(func(v RegistryMqttConfig) string { return v.MqttEnabledState }).(pulumi.StringOutput)
-}
-
-type RegistryMqttConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (RegistryMqttConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RegistryMqttConfig)(nil)).Elem()
-}
-
-func (o RegistryMqttConfigPtrOutput) ToRegistryMqttConfigPtrOutput() RegistryMqttConfigPtrOutput {
-	return o
-}
-
-func (o RegistryMqttConfigPtrOutput) ToRegistryMqttConfigPtrOutputWithContext(ctx context.Context) RegistryMqttConfigPtrOutput {
-	return o
-}
-
-func (o RegistryMqttConfigPtrOutput) Elem() RegistryMqttConfigOutput {
-	return o.ApplyT(func(v *RegistryMqttConfig) RegistryMqttConfig { return *v }).(RegistryMqttConfigOutput)
-}
-
-// The field allows `MQTT_ENABLED` or `MQTT_DISABLED`.
-func (o RegistryMqttConfigPtrOutput) MqttEnabledState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RegistryMqttConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.MqttEnabledState
-	}).(pulumi.StringPtrOutput)
-}
-
-type RegistryStateNotificationConfig struct {
-	// PubSub topic name to publish device events.
-	PubsubTopicName string `pulumi:"pubsubTopicName"`
-}
-
-// RegistryStateNotificationConfigInput is an input type that accepts RegistryStateNotificationConfigArgs and RegistryStateNotificationConfigOutput values.
-// You can construct a concrete instance of `RegistryStateNotificationConfigInput` via:
-//
-//          RegistryStateNotificationConfigArgs{...}
-type RegistryStateNotificationConfigInput interface {
-	pulumi.Input
-
-	ToRegistryStateNotificationConfigOutput() RegistryStateNotificationConfigOutput
-	ToRegistryStateNotificationConfigOutputWithContext(context.Context) RegistryStateNotificationConfigOutput
-}
-
-type RegistryStateNotificationConfigArgs struct {
-	// PubSub topic name to publish device events.
-	PubsubTopicName pulumi.StringInput `pulumi:"pubsubTopicName"`
-}
-
-func (RegistryStateNotificationConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegistryStateNotificationConfig)(nil)).Elem()
-}
-
-func (i RegistryStateNotificationConfigArgs) ToRegistryStateNotificationConfigOutput() RegistryStateNotificationConfigOutput {
-	return i.ToRegistryStateNotificationConfigOutputWithContext(context.Background())
-}
-
-func (i RegistryStateNotificationConfigArgs) ToRegistryStateNotificationConfigOutputWithContext(ctx context.Context) RegistryStateNotificationConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegistryStateNotificationConfigOutput)
-}
-
-func (i RegistryStateNotificationConfigArgs) ToRegistryStateNotificationConfigPtrOutput() RegistryStateNotificationConfigPtrOutput {
-	return i.ToRegistryStateNotificationConfigPtrOutputWithContext(context.Background())
-}
-
-func (i RegistryStateNotificationConfigArgs) ToRegistryStateNotificationConfigPtrOutputWithContext(ctx context.Context) RegistryStateNotificationConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegistryStateNotificationConfigOutput).ToRegistryStateNotificationConfigPtrOutputWithContext(ctx)
-}
-
-// RegistryStateNotificationConfigPtrInput is an input type that accepts RegistryStateNotificationConfigArgs, RegistryStateNotificationConfigPtr and RegistryStateNotificationConfigPtrOutput values.
-// You can construct a concrete instance of `RegistryStateNotificationConfigPtrInput` via:
-//
-//          RegistryStateNotificationConfigArgs{...}
-//
-//  or:
-//
-//          nil
-type RegistryStateNotificationConfigPtrInput interface {
-	pulumi.Input
-
-	ToRegistryStateNotificationConfigPtrOutput() RegistryStateNotificationConfigPtrOutput
-	ToRegistryStateNotificationConfigPtrOutputWithContext(context.Context) RegistryStateNotificationConfigPtrOutput
-}
-
-type registryStateNotificationConfigPtrType RegistryStateNotificationConfigArgs
-
-func RegistryStateNotificationConfigPtr(v *RegistryStateNotificationConfigArgs) RegistryStateNotificationConfigPtrInput {
-	return (*registryStateNotificationConfigPtrType)(v)
-}
-
-func (*registryStateNotificationConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RegistryStateNotificationConfig)(nil)).Elem()
-}
-
-func (i *registryStateNotificationConfigPtrType) ToRegistryStateNotificationConfigPtrOutput() RegistryStateNotificationConfigPtrOutput {
-	return i.ToRegistryStateNotificationConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *registryStateNotificationConfigPtrType) ToRegistryStateNotificationConfigPtrOutputWithContext(ctx context.Context) RegistryStateNotificationConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegistryStateNotificationConfigPtrOutput)
-}
-
-type RegistryStateNotificationConfigOutput struct{ *pulumi.OutputState }
-
-func (RegistryStateNotificationConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegistryStateNotificationConfig)(nil)).Elem()
-}
-
-func (o RegistryStateNotificationConfigOutput) ToRegistryStateNotificationConfigOutput() RegistryStateNotificationConfigOutput {
-	return o
-}
-
-func (o RegistryStateNotificationConfigOutput) ToRegistryStateNotificationConfigOutputWithContext(ctx context.Context) RegistryStateNotificationConfigOutput {
-	return o
-}
-
-func (o RegistryStateNotificationConfigOutput) ToRegistryStateNotificationConfigPtrOutput() RegistryStateNotificationConfigPtrOutput {
-	return o.ToRegistryStateNotificationConfigPtrOutputWithContext(context.Background())
-}
-
-func (o RegistryStateNotificationConfigOutput) ToRegistryStateNotificationConfigPtrOutputWithContext(ctx context.Context) RegistryStateNotificationConfigPtrOutput {
-	return o.ApplyT(func(v RegistryStateNotificationConfig) *RegistryStateNotificationConfig {
-		return &v
-	}).(RegistryStateNotificationConfigPtrOutput)
-}
-
-// PubSub topic name to publish device events.
-func (o RegistryStateNotificationConfigOutput) PubsubTopicName() pulumi.StringOutput {
-	return o.ApplyT(func(v RegistryStateNotificationConfig) string { return v.PubsubTopicName }).(pulumi.StringOutput)
-}
-
-type RegistryStateNotificationConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (RegistryStateNotificationConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RegistryStateNotificationConfig)(nil)).Elem()
-}
-
-func (o RegistryStateNotificationConfigPtrOutput) ToRegistryStateNotificationConfigPtrOutput() RegistryStateNotificationConfigPtrOutput {
-	return o
-}
-
-func (o RegistryStateNotificationConfigPtrOutput) ToRegistryStateNotificationConfigPtrOutputWithContext(ctx context.Context) RegistryStateNotificationConfigPtrOutput {
-	return o
-}
-
-func (o RegistryStateNotificationConfigPtrOutput) Elem() RegistryStateNotificationConfigOutput {
-	return o.ApplyT(func(v *RegistryStateNotificationConfig) RegistryStateNotificationConfig { return *v }).(RegistryStateNotificationConfigOutput)
-}
-
-// PubSub topic name to publish device events.
-func (o RegistryStateNotificationConfigPtrOutput) PubsubTopicName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RegistryStateNotificationConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PubsubTopicName
-	}).(pulumi.StringPtrOutput)
-}
-
 type GetKMSCryptoKeyVersionPublicKey struct {
 	// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
 	Algorithm string `pulumi:"algorithm"`
@@ -1821,6 +1294,31 @@ func (i GetKMSCryptoKeyVersionPublicKeyArgs) ToGetKMSCryptoKeyVersionPublicKeyOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetKMSCryptoKeyVersionPublicKeyOutput)
 }
 
+// GetKMSCryptoKeyVersionPublicKeyArrayInput is an input type that accepts GetKMSCryptoKeyVersionPublicKeyArray and GetKMSCryptoKeyVersionPublicKeyArrayOutput values.
+// You can construct a concrete instance of `GetKMSCryptoKeyVersionPublicKeyArrayInput` via:
+//
+//          GetKMSCryptoKeyVersionPublicKeyArray{ GetKMSCryptoKeyVersionPublicKeyArgs{...} }
+type GetKMSCryptoKeyVersionPublicKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetKMSCryptoKeyVersionPublicKeyArrayOutput() GetKMSCryptoKeyVersionPublicKeyArrayOutput
+	ToGetKMSCryptoKeyVersionPublicKeyArrayOutputWithContext(context.Context) GetKMSCryptoKeyVersionPublicKeyArrayOutput
+}
+
+type GetKMSCryptoKeyVersionPublicKeyArray []GetKMSCryptoKeyVersionPublicKeyInput
+
+func (GetKMSCryptoKeyVersionPublicKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKMSCryptoKeyVersionPublicKey)(nil)).Elem()
+}
+
+func (i GetKMSCryptoKeyVersionPublicKeyArray) ToGetKMSCryptoKeyVersionPublicKeyArrayOutput() GetKMSCryptoKeyVersionPublicKeyArrayOutput {
+	return i.ToGetKMSCryptoKeyVersionPublicKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetKMSCryptoKeyVersionPublicKeyArray) ToGetKMSCryptoKeyVersionPublicKeyArrayOutputWithContext(ctx context.Context) GetKMSCryptoKeyVersionPublicKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKMSCryptoKeyVersionPublicKeyArrayOutput)
+}
+
 type GetKMSCryptoKeyVersionPublicKeyOutput struct{ *pulumi.OutputState }
 
 func (GetKMSCryptoKeyVersionPublicKeyOutput) ElementType() reflect.Type {
@@ -1843,6 +1341,26 @@ func (o GetKMSCryptoKeyVersionPublicKeyOutput) Algorithm() pulumi.StringOutput {
 // The public key, encoded in PEM format. For more information, see the RFC 7468 sections for General Considerations and Textual Encoding of Subject Public Key Info.
 func (o GetKMSCryptoKeyVersionPublicKeyOutput) Pem() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKMSCryptoKeyVersionPublicKey) string { return v.Pem }).(pulumi.StringOutput)
+}
+
+type GetKMSCryptoKeyVersionPublicKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKMSCryptoKeyVersionPublicKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKMSCryptoKeyVersionPublicKey)(nil)).Elem()
+}
+
+func (o GetKMSCryptoKeyVersionPublicKeyArrayOutput) ToGetKMSCryptoKeyVersionPublicKeyArrayOutput() GetKMSCryptoKeyVersionPublicKeyArrayOutput {
+	return o
+}
+
+func (o GetKMSCryptoKeyVersionPublicKeyArrayOutput) ToGetKMSCryptoKeyVersionPublicKeyArrayOutputWithContext(ctx context.Context) GetKMSCryptoKeyVersionPublicKeyArrayOutput {
+	return o
+}
+
+func (o GetKMSCryptoKeyVersionPublicKeyArrayOutput) Index(i pulumi.IntInput) GetKMSCryptoKeyVersionPublicKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKMSCryptoKeyVersionPublicKey {
+		return vs[0].([]GetKMSCryptoKeyVersionPublicKey)[vs[1].(int)]
+	}).(GetKMSCryptoKeyVersionPublicKeyOutput)
 }
 
 type GetKMSCryptoKeyVersionTemplate struct {
@@ -1957,21 +1475,15 @@ func init() {
 	pulumi.RegisterOutputType(KeyRingIAMMemberConditionOutput{})
 	pulumi.RegisterOutputType(KeyRingIAMMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(KeyRingImportJobAttestationOutput{})
-	pulumi.RegisterOutputType(KeyRingImportJobAttestationPtrOutput{})
+	pulumi.RegisterOutputType(KeyRingImportJobAttestationArrayOutput{})
 	pulumi.RegisterOutputType(KeyRingImportJobPublicKeyOutput{})
-	pulumi.RegisterOutputType(KeyRingImportJobPublicKeyPtrOutput{})
+	pulumi.RegisterOutputType(KeyRingImportJobPublicKeyArrayOutput{})
 	pulumi.RegisterOutputType(RegistryCredentialOutput{})
 	pulumi.RegisterOutputType(RegistryCredentialArrayOutput{})
-	pulumi.RegisterOutputType(RegistryCredentialPublicKeyCertificateOutput{})
 	pulumi.RegisterOutputType(RegistryEventNotificationConfigItemOutput{})
 	pulumi.RegisterOutputType(RegistryEventNotificationConfigItemArrayOutput{})
-	pulumi.RegisterOutputType(RegistryHttpConfigOutput{})
-	pulumi.RegisterOutputType(RegistryHttpConfigPtrOutput{})
-	pulumi.RegisterOutputType(RegistryMqttConfigOutput{})
-	pulumi.RegisterOutputType(RegistryMqttConfigPtrOutput{})
-	pulumi.RegisterOutputType(RegistryStateNotificationConfigOutput{})
-	pulumi.RegisterOutputType(RegistryStateNotificationConfigPtrOutput{})
 	pulumi.RegisterOutputType(GetKMSCryptoKeyVersionPublicKeyOutput{})
+	pulumi.RegisterOutputType(GetKMSCryptoKeyVersionPublicKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetKMSCryptoKeyVersionTemplateOutput{})
 	pulumi.RegisterOutputType(GetKMSCryptoKeyVersionTemplateArrayOutput{})
 }

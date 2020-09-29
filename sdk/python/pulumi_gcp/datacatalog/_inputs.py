@@ -69,14 +69,14 @@ class EntryBigqueryDateShardedSpecArgs:
 class EntryBigqueryTableSpecArgs:
     def __init__(__self__, *,
                  table_source_type: Optional[pulumi.Input[str]] = None,
-                 table_spec: Optional[pulumi.Input['EntryBigqueryTableSpecTableSpecArgs']] = None,
-                 view_spec: Optional[pulumi.Input['EntryBigqueryTableSpecViewSpecArgs']] = None):
+                 table_specs: Optional[pulumi.Input[Sequence[pulumi.Input['EntryBigqueryTableSpecTableSpecArgs']]]] = None,
+                 view_specs: Optional[pulumi.Input[Sequence[pulumi.Input['EntryBigqueryTableSpecViewSpecArgs']]]] = None):
         if table_source_type is not None:
             pulumi.set(__self__, "table_source_type", table_source_type)
-        if table_spec is not None:
-            pulumi.set(__self__, "table_spec", table_spec)
-        if view_spec is not None:
-            pulumi.set(__self__, "view_spec", view_spec)
+        if table_specs is not None:
+            pulumi.set(__self__, "table_specs", table_specs)
+        if view_specs is not None:
+            pulumi.set(__self__, "view_specs", view_specs)
 
     @property
     @pulumi.getter(name="tableSourceType")
@@ -88,22 +88,22 @@ class EntryBigqueryTableSpecArgs:
         pulumi.set(self, "table_source_type", value)
 
     @property
-    @pulumi.getter(name="tableSpec")
-    def table_spec(self) -> Optional[pulumi.Input['EntryBigqueryTableSpecTableSpecArgs']]:
-        return pulumi.get(self, "table_spec")
+    @pulumi.getter(name="tableSpecs")
+    def table_specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EntryBigqueryTableSpecTableSpecArgs']]]]:
+        return pulumi.get(self, "table_specs")
 
-    @table_spec.setter
-    def table_spec(self, value: Optional[pulumi.Input['EntryBigqueryTableSpecTableSpecArgs']]):
-        pulumi.set(self, "table_spec", value)
+    @table_specs.setter
+    def table_specs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EntryBigqueryTableSpecTableSpecArgs']]]]):
+        pulumi.set(self, "table_specs", value)
 
     @property
-    @pulumi.getter(name="viewSpec")
-    def view_spec(self) -> Optional[pulumi.Input['EntryBigqueryTableSpecViewSpecArgs']]:
-        return pulumi.get(self, "view_spec")
+    @pulumi.getter(name="viewSpecs")
+    def view_specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EntryBigqueryTableSpecViewSpecArgs']]]]:
+        return pulumi.get(self, "view_specs")
 
-    @view_spec.setter
-    def view_spec(self, value: Optional[pulumi.Input['EntryBigqueryTableSpecViewSpecArgs']]):
-        pulumi.set(self, "view_spec", value)
+    @view_specs.setter
+    def view_specs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EntryBigqueryTableSpecViewSpecArgs']]]]):
+        pulumi.set(self, "view_specs", value)
 
 
 @pulumi.input_type

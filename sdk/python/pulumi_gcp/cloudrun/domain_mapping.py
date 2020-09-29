@@ -75,7 +75,7 @@ class DomainMapping(pulumi.CustomResource):
             if spec is None:
                 raise TypeError("Missing required property 'spec'")
             __props__['spec'] = spec
-            __props__['status'] = None
+            __props__['statuses'] = None
         super(DomainMapping, __self__).__init__(
             'gcp:cloudrun/domainMapping:DomainMapping',
             resource_name,
@@ -91,7 +91,7 @@ class DomainMapping(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             spec: Optional[pulumi.Input[pulumi.InputType['DomainMappingSpecArgs']]] = None,
-            status: Optional[pulumi.Input[pulumi.InputType['DomainMappingStatusArgs']]] = None) -> 'DomainMapping':
+            statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainMappingStatusArgs']]]]] = None) -> 'DomainMapping':
         """
         Get an existing DomainMapping resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -107,7 +107,7 @@ class DomainMapping(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['DomainMappingSpecArgs']] spec: The spec for this DomainMapping.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['DomainMappingStatusArgs']] status: The current status of the DomainMapping.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainMappingStatusArgs']]]] statuses: The current status of the DomainMapping.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -118,7 +118,7 @@ class DomainMapping(pulumi.CustomResource):
         __props__["name"] = name
         __props__["project"] = project
         __props__["spec"] = spec
-        __props__["status"] = status
+        __props__["statuses"] = statuses
         return DomainMapping(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -166,11 +166,11 @@ class DomainMapping(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> pulumi.Output['outputs.DomainMappingStatus']:
+    def statuses(self) -> pulumi.Output[Sequence['outputs.DomainMappingStatus']]:
         """
         The current status of the DomainMapping.
         """
-        return pulumi.get(self, "status")
+        return pulumi.get(self, "statuses")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

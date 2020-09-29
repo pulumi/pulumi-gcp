@@ -20,10 +20,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, additional_zones=None, addons_configs=None, authenticator_groups_configs=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, cluster_telemetries=None, database_encryptions=None, default_max_pods_per_node=None, default_snat_statuses=None, description=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, id=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policies=None, label_fingerprint=None, location=None, logging_service=None, maintenance_policies=None, master_authorized_networks_configs=None, master_auths=None, master_version=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policies=None, networking_mode=None, node_configs=None, node_locations=None, node_pools=None, node_version=None, operation=None, pod_security_policy_configs=None, private_cluster_configs=None, project=None, region=None, release_channels=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_configs=None, self_link=None, services_ipv4_cidr=None, subnetwork=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscalings=None, workload_identity_configs=None, zone=None):
-        if additional_zones and not isinstance(additional_zones, list):
-            raise TypeError("Expected argument 'additional_zones' to be a list")
-        pulumi.set(__self__, "additional_zones", additional_zones)
+    def __init__(__self__, addons_configs=None, authenticator_groups_configs=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, cluster_telemetries=None, database_encryptions=None, datapath_provider=None, default_max_pods_per_node=None, default_snat_statuses=None, description=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, id=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policies=None, label_fingerprint=None, location=None, logging_service=None, maintenance_policies=None, master_authorized_networks_configs=None, master_auths=None, master_version=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policies=None, networking_mode=None, node_configs=None, node_locations=None, node_pools=None, node_version=None, operation=None, pod_security_policy_configs=None, private_cluster_configs=None, project=None, release_channels=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_configs=None, self_link=None, services_ipv4_cidr=None, subnetwork=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscalings=None, workload_identity_configs=None):
         if addons_configs and not isinstance(addons_configs, list):
             raise TypeError("Expected argument 'addons_configs' to be a list")
         pulumi.set(__self__, "addons_configs", addons_configs)
@@ -42,6 +39,9 @@ class GetClusterResult:
         if database_encryptions and not isinstance(database_encryptions, list):
             raise TypeError("Expected argument 'database_encryptions' to be a list")
         pulumi.set(__self__, "database_encryptions", database_encryptions)
+        if datapath_provider and not isinstance(datapath_provider, str):
+            raise TypeError("Expected argument 'datapath_provider' to be a str")
+        pulumi.set(__self__, "datapath_provider", datapath_provider)
         if default_max_pods_per_node and not isinstance(default_max_pods_per_node, int):
             raise TypeError("Expected argument 'default_max_pods_per_node' to be a int")
         pulumi.set(__self__, "default_max_pods_per_node", default_max_pods_per_node)
@@ -147,9 +147,6 @@ class GetClusterResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
-        if region and not isinstance(region, str):
-            raise TypeError("Expected argument 'region' to be a str")
-        pulumi.set(__self__, "region", region)
         if release_channels and not isinstance(release_channels, list):
             raise TypeError("Expected argument 'release_channels' to be a list")
         pulumi.set(__self__, "release_channels", release_channels)
@@ -180,14 +177,6 @@ class GetClusterResult:
         if workload_identity_configs and not isinstance(workload_identity_configs, list):
             raise TypeError("Expected argument 'workload_identity_configs' to be a list")
         pulumi.set(__self__, "workload_identity_configs", workload_identity_configs)
-        if zone and not isinstance(zone, str):
-            raise TypeError("Expected argument 'zone' to be a str")
-        pulumi.set(__self__, "zone", zone)
-
-    @property
-    @pulumi.getter(name="additionalZones")
-    def additional_zones(self) -> Sequence[str]:
-        return pulumi.get(self, "additional_zones")
 
     @property
     @pulumi.getter(name="addonsConfigs")
@@ -218,6 +207,11 @@ class GetClusterResult:
     @pulumi.getter(name="databaseEncryptions")
     def database_encryptions(self) -> Sequence['outputs.GetClusterDatabaseEncryptionResult']:
         return pulumi.get(self, "database_encryptions")
+
+    @property
+    @pulumi.getter(name="datapathProvider")
+    def datapath_provider(self) -> str:
+        return pulumi.get(self, "datapath_provider")
 
     @property
     @pulumi.getter(name="defaultMaxPodsPerNode")
@@ -398,11 +392,6 @@ class GetClusterResult:
         return pulumi.get(self, "project")
 
     @property
-    @pulumi.getter
-    def region(self) -> Optional[str]:
-        return pulumi.get(self, "region")
-
-    @property
     @pulumi.getter(name="releaseChannels")
     def release_channels(self) -> Sequence['outputs.GetClusterReleaseChannelResult']:
         return pulumi.get(self, "release_channels")
@@ -452,11 +441,6 @@ class GetClusterResult:
     def workload_identity_configs(self) -> Sequence['outputs.GetClusterWorkloadIdentityConfigResult']:
         return pulumi.get(self, "workload_identity_configs")
 
-    @property
-    @pulumi.getter
-    def zone(self) -> Optional[str]:
-        return pulumi.get(self, "zone")
-
 
 class AwaitableGetClusterResult(GetClusterResult):
     # pylint: disable=using-constant-test
@@ -464,13 +448,13 @@ class AwaitableGetClusterResult(GetClusterResult):
         if False:
             yield self
         return GetClusterResult(
-            additional_zones=self.additional_zones,
             addons_configs=self.addons_configs,
             authenticator_groups_configs=self.authenticator_groups_configs,
             cluster_autoscalings=self.cluster_autoscalings,
             cluster_ipv4_cidr=self.cluster_ipv4_cidr,
             cluster_telemetries=self.cluster_telemetries,
             database_encryptions=self.database_encryptions,
+            datapath_provider=self.datapath_provider,
             default_max_pods_per_node=self.default_max_pods_per_node,
             default_snat_statuses=self.default_snat_statuses,
             description=self.description,
@@ -506,7 +490,6 @@ class AwaitableGetClusterResult(GetClusterResult):
             pod_security_policy_configs=self.pod_security_policy_configs,
             private_cluster_configs=self.private_cluster_configs,
             project=self.project,
-            region=self.region,
             release_channels=self.release_channels,
             remove_default_node_pool=self.remove_default_node_pool,
             resource_labels=self.resource_labels,
@@ -516,15 +499,12 @@ class AwaitableGetClusterResult(GetClusterResult):
             subnetwork=self.subnetwork,
             tpu_ipv4_cidr_block=self.tpu_ipv4_cidr_block,
             vertical_pod_autoscalings=self.vertical_pod_autoscalings,
-            workload_identity_configs=self.workload_identity_configs,
-            zone=self.zone)
+            workload_identity_configs=self.workload_identity_configs)
 
 
 def get_cluster(location: Optional[str] = None,
                 name: Optional[str] = None,
                 project: Optional[str] = None,
-                region: Optional[str] = None,
-                zone: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterResult:
     """
     Get info about a GKE cluster from its name and location.
@@ -536,17 +516,11 @@ def get_cluster(location: Optional[str] = None,
     :param str name: The name of the cluster.
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
-    :param str region: The region this cluster has been created in. Deprecated
-           in favour of `location`.
-    :param str zone: The zone this cluster has been created in. Deprecated in
-           favour of `location`.
     """
     __args__ = dict()
     __args__['location'] = location
     __args__['name'] = name
     __args__['project'] = project
-    __args__['region'] = region
-    __args__['zone'] = zone
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -554,13 +528,13 @@ def get_cluster(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:container/getCluster:getCluster', __args__, opts=opts, typ=GetClusterResult).value
 
     return AwaitableGetClusterResult(
-        additional_zones=__ret__.additional_zones,
         addons_configs=__ret__.addons_configs,
         authenticator_groups_configs=__ret__.authenticator_groups_configs,
         cluster_autoscalings=__ret__.cluster_autoscalings,
         cluster_ipv4_cidr=__ret__.cluster_ipv4_cidr,
         cluster_telemetries=__ret__.cluster_telemetries,
         database_encryptions=__ret__.database_encryptions,
+        datapath_provider=__ret__.datapath_provider,
         default_max_pods_per_node=__ret__.default_max_pods_per_node,
         default_snat_statuses=__ret__.default_snat_statuses,
         description=__ret__.description,
@@ -596,7 +570,6 @@ def get_cluster(location: Optional[str] = None,
         pod_security_policy_configs=__ret__.pod_security_policy_configs,
         private_cluster_configs=__ret__.private_cluster_configs,
         project=__ret__.project,
-        region=__ret__.region,
         release_channels=__ret__.release_channels,
         remove_default_node_pool=__ret__.remove_default_node_pool,
         resource_labels=__ret__.resource_labels,
@@ -606,5 +579,4 @@ def get_cluster(location: Optional[str] = None,
         subnetwork=__ret__.subnetwork,
         tpu_ipv4_cidr_block=__ret__.tpu_ipv4_cidr_block,
         vertical_pod_autoscalings=__ret__.vertical_pod_autoscalings,
-        workload_identity_configs=__ret__.workload_identity_configs,
-        zone=__ret__.zone)
+        workload_identity_configs=__ret__.workload_identity_configs)

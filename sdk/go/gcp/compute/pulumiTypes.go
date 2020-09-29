@@ -9303,7 +9303,7 @@ func (o HealthCheckTcpHealthCheckPtrOutput) Response() pulumi.StringPtrOutput {
 
 type ImageGuestOsFeature struct {
 	// The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
-	// Possible values are `MULTI_IP_SUBNET`, `SECURE_BOOT`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, and `WINDOWS`.
+	// Possible values are `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, and `WINDOWS`.
 	Type string `pulumi:"type"`
 }
 
@@ -9320,7 +9320,7 @@ type ImageGuestOsFeatureInput interface {
 
 type ImageGuestOsFeatureArgs struct {
 	// The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
-	// Possible values are `MULTI_IP_SUBNET`, `SECURE_BOOT`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, and `WINDOWS`.
+	// Possible values are `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, and `WINDOWS`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -9376,7 +9376,7 @@ func (o ImageGuestOsFeatureOutput) ToImageGuestOsFeatureOutputWithContext(ctx co
 }
 
 // The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
-// Possible values are `MULTI_IP_SUBNET`, `SECURE_BOOT`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, and `WINDOWS`.
+// Possible values are `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, and `WINDOWS`.
 func (o ImageGuestOsFeatureOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ImageGuestOsFeature) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -17046,45 +17046,29 @@ func (i InterconnectAttachmentPrivateInterconnectInfoArgs) ToInterconnectAttachm
 	return pulumi.ToOutputWithContext(ctx, i).(InterconnectAttachmentPrivateInterconnectInfoOutput)
 }
 
-func (i InterconnectAttachmentPrivateInterconnectInfoArgs) ToInterconnectAttachmentPrivateInterconnectInfoPtrOutput() InterconnectAttachmentPrivateInterconnectInfoPtrOutput {
-	return i.ToInterconnectAttachmentPrivateInterconnectInfoPtrOutputWithContext(context.Background())
-}
-
-func (i InterconnectAttachmentPrivateInterconnectInfoArgs) ToInterconnectAttachmentPrivateInterconnectInfoPtrOutputWithContext(ctx context.Context) InterconnectAttachmentPrivateInterconnectInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InterconnectAttachmentPrivateInterconnectInfoOutput).ToInterconnectAttachmentPrivateInterconnectInfoPtrOutputWithContext(ctx)
-}
-
-// InterconnectAttachmentPrivateInterconnectInfoPtrInput is an input type that accepts InterconnectAttachmentPrivateInterconnectInfoArgs, InterconnectAttachmentPrivateInterconnectInfoPtr and InterconnectAttachmentPrivateInterconnectInfoPtrOutput values.
-// You can construct a concrete instance of `InterconnectAttachmentPrivateInterconnectInfoPtrInput` via:
+// InterconnectAttachmentPrivateInterconnectInfoArrayInput is an input type that accepts InterconnectAttachmentPrivateInterconnectInfoArray and InterconnectAttachmentPrivateInterconnectInfoArrayOutput values.
+// You can construct a concrete instance of `InterconnectAttachmentPrivateInterconnectInfoArrayInput` via:
 //
-//          InterconnectAttachmentPrivateInterconnectInfoArgs{...}
-//
-//  or:
-//
-//          nil
-type InterconnectAttachmentPrivateInterconnectInfoPtrInput interface {
+//          InterconnectAttachmentPrivateInterconnectInfoArray{ InterconnectAttachmentPrivateInterconnectInfoArgs{...} }
+type InterconnectAttachmentPrivateInterconnectInfoArrayInput interface {
 	pulumi.Input
 
-	ToInterconnectAttachmentPrivateInterconnectInfoPtrOutput() InterconnectAttachmentPrivateInterconnectInfoPtrOutput
-	ToInterconnectAttachmentPrivateInterconnectInfoPtrOutputWithContext(context.Context) InterconnectAttachmentPrivateInterconnectInfoPtrOutput
+	ToInterconnectAttachmentPrivateInterconnectInfoArrayOutput() InterconnectAttachmentPrivateInterconnectInfoArrayOutput
+	ToInterconnectAttachmentPrivateInterconnectInfoArrayOutputWithContext(context.Context) InterconnectAttachmentPrivateInterconnectInfoArrayOutput
 }
 
-type interconnectAttachmentPrivateInterconnectInfoPtrType InterconnectAttachmentPrivateInterconnectInfoArgs
+type InterconnectAttachmentPrivateInterconnectInfoArray []InterconnectAttachmentPrivateInterconnectInfoInput
 
-func InterconnectAttachmentPrivateInterconnectInfoPtr(v *InterconnectAttachmentPrivateInterconnectInfoArgs) InterconnectAttachmentPrivateInterconnectInfoPtrInput {
-	return (*interconnectAttachmentPrivateInterconnectInfoPtrType)(v)
+func (InterconnectAttachmentPrivateInterconnectInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterconnectAttachmentPrivateInterconnectInfo)(nil)).Elem()
 }
 
-func (*interconnectAttachmentPrivateInterconnectInfoPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**InterconnectAttachmentPrivateInterconnectInfo)(nil)).Elem()
+func (i InterconnectAttachmentPrivateInterconnectInfoArray) ToInterconnectAttachmentPrivateInterconnectInfoArrayOutput() InterconnectAttachmentPrivateInterconnectInfoArrayOutput {
+	return i.ToInterconnectAttachmentPrivateInterconnectInfoArrayOutputWithContext(context.Background())
 }
 
-func (i *interconnectAttachmentPrivateInterconnectInfoPtrType) ToInterconnectAttachmentPrivateInterconnectInfoPtrOutput() InterconnectAttachmentPrivateInterconnectInfoPtrOutput {
-	return i.ToInterconnectAttachmentPrivateInterconnectInfoPtrOutputWithContext(context.Background())
-}
-
-func (i *interconnectAttachmentPrivateInterconnectInfoPtrType) ToInterconnectAttachmentPrivateInterconnectInfoPtrOutputWithContext(ctx context.Context) InterconnectAttachmentPrivateInterconnectInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InterconnectAttachmentPrivateInterconnectInfoPtrOutput)
+func (i InterconnectAttachmentPrivateInterconnectInfoArray) ToInterconnectAttachmentPrivateInterconnectInfoArrayOutputWithContext(ctx context.Context) InterconnectAttachmentPrivateInterconnectInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterconnectAttachmentPrivateInterconnectInfoArrayOutput)
 }
 
 type InterconnectAttachmentPrivateInterconnectInfoOutput struct{ *pulumi.OutputState }
@@ -17101,46 +17085,28 @@ func (o InterconnectAttachmentPrivateInterconnectInfoOutput) ToInterconnectAttac
 	return o
 }
 
-func (o InterconnectAttachmentPrivateInterconnectInfoOutput) ToInterconnectAttachmentPrivateInterconnectInfoPtrOutput() InterconnectAttachmentPrivateInterconnectInfoPtrOutput {
-	return o.ToInterconnectAttachmentPrivateInterconnectInfoPtrOutputWithContext(context.Background())
-}
-
-func (o InterconnectAttachmentPrivateInterconnectInfoOutput) ToInterconnectAttachmentPrivateInterconnectInfoPtrOutputWithContext(ctx context.Context) InterconnectAttachmentPrivateInterconnectInfoPtrOutput {
-	return o.ApplyT(func(v InterconnectAttachmentPrivateInterconnectInfo) *InterconnectAttachmentPrivateInterconnectInfo {
-		return &v
-	}).(InterconnectAttachmentPrivateInterconnectInfoPtrOutput)
-}
 func (o InterconnectAttachmentPrivateInterconnectInfoOutput) Tag8021q() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InterconnectAttachmentPrivateInterconnectInfo) *int { return v.Tag8021q }).(pulumi.IntPtrOutput)
 }
 
-type InterconnectAttachmentPrivateInterconnectInfoPtrOutput struct{ *pulumi.OutputState }
+type InterconnectAttachmentPrivateInterconnectInfoArrayOutput struct{ *pulumi.OutputState }
 
-func (InterconnectAttachmentPrivateInterconnectInfoPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**InterconnectAttachmentPrivateInterconnectInfo)(nil)).Elem()
+func (InterconnectAttachmentPrivateInterconnectInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterconnectAttachmentPrivateInterconnectInfo)(nil)).Elem()
 }
 
-func (o InterconnectAttachmentPrivateInterconnectInfoPtrOutput) ToInterconnectAttachmentPrivateInterconnectInfoPtrOutput() InterconnectAttachmentPrivateInterconnectInfoPtrOutput {
+func (o InterconnectAttachmentPrivateInterconnectInfoArrayOutput) ToInterconnectAttachmentPrivateInterconnectInfoArrayOutput() InterconnectAttachmentPrivateInterconnectInfoArrayOutput {
 	return o
 }
 
-func (o InterconnectAttachmentPrivateInterconnectInfoPtrOutput) ToInterconnectAttachmentPrivateInterconnectInfoPtrOutputWithContext(ctx context.Context) InterconnectAttachmentPrivateInterconnectInfoPtrOutput {
+func (o InterconnectAttachmentPrivateInterconnectInfoArrayOutput) ToInterconnectAttachmentPrivateInterconnectInfoArrayOutputWithContext(ctx context.Context) InterconnectAttachmentPrivateInterconnectInfoArrayOutput {
 	return o
 }
 
-func (o InterconnectAttachmentPrivateInterconnectInfoPtrOutput) Elem() InterconnectAttachmentPrivateInterconnectInfoOutput {
-	return o.ApplyT(func(v *InterconnectAttachmentPrivateInterconnectInfo) InterconnectAttachmentPrivateInterconnectInfo {
-		return *v
+func (o InterconnectAttachmentPrivateInterconnectInfoArrayOutput) Index(i pulumi.IntInput) InterconnectAttachmentPrivateInterconnectInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InterconnectAttachmentPrivateInterconnectInfo {
+		return vs[0].([]InterconnectAttachmentPrivateInterconnectInfo)[vs[1].(int)]
 	}).(InterconnectAttachmentPrivateInterconnectInfoOutput)
-}
-
-func (o InterconnectAttachmentPrivateInterconnectInfoPtrOutput) Tag8021q() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *InterconnectAttachmentPrivateInterconnectInfo) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Tag8021q
-	}).(pulumi.IntPtrOutput)
 }
 
 type ManagedSslCertificateManaged struct {
@@ -61546,7 +61512,7 @@ func init() {
 	pulumi.RegisterOutputType(InstanceTemplateShieldedInstanceConfigOutput{})
 	pulumi.RegisterOutputType(InstanceTemplateShieldedInstanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(InterconnectAttachmentPrivateInterconnectInfoOutput{})
-	pulumi.RegisterOutputType(InterconnectAttachmentPrivateInterconnectInfoPtrOutput{})
+	pulumi.RegisterOutputType(InterconnectAttachmentPrivateInterconnectInfoArrayOutput{})
 	pulumi.RegisterOutputType(ManagedSslCertificateManagedOutput{})
 	pulumi.RegisterOutputType(ManagedSslCertificateManagedPtrOutput{})
 	pulumi.RegisterOutputType(MangedSslCertificateManagedOutput{})

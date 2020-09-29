@@ -18,7 +18,6 @@ __all__ = [
     'ClusterAddonsConfigHttpLoadBalancingArgs',
     'ClusterAddonsConfigIstioConfigArgs',
     'ClusterAddonsConfigKalmConfigArgs',
-    'ClusterAddonsConfigKubernetesDashboardArgs',
     'ClusterAddonsConfigNetworkPolicyConfigArgs',
     'ClusterAuthenticatorGroupsConfigArgs',
     'ClusterClusterAutoscalingArgs',
@@ -88,7 +87,6 @@ class ClusterAddonsConfigArgs:
                  http_load_balancing: Optional[pulumi.Input['ClusterAddonsConfigHttpLoadBalancingArgs']] = None,
                  istio_config: Optional[pulumi.Input['ClusterAddonsConfigIstioConfigArgs']] = None,
                  kalm_config: Optional[pulumi.Input['ClusterAddonsConfigKalmConfigArgs']] = None,
-                 kubernetes_dashboard: Optional[pulumi.Input['ClusterAddonsConfigKubernetesDashboardArgs']] = None,
                  network_policy_config: Optional[pulumi.Input['ClusterAddonsConfigNetworkPolicyConfigArgs']] = None):
         """
         :param pulumi.Input['ClusterAddonsConfigCloudrunConfigArgs'] cloudrun_config: . Structure is documented below.
@@ -135,8 +133,6 @@ class ClusterAddonsConfigArgs:
             pulumi.set(__self__, "istio_config", istio_config)
         if kalm_config is not None:
             pulumi.set(__self__, "kalm_config", kalm_config)
-        if kubernetes_dashboard is not None:
-            pulumi.set(__self__, "kubernetes_dashboard", kubernetes_dashboard)
         if network_policy_config is not None:
             pulumi.set(__self__, "network_policy_config", network_policy_config)
 
@@ -248,15 +244,6 @@ class ClusterAddonsConfigArgs:
     @kalm_config.setter
     def kalm_config(self, value: Optional[pulumi.Input['ClusterAddonsConfigKalmConfigArgs']]):
         pulumi.set(self, "kalm_config", value)
-
-    @property
-    @pulumi.getter(name="kubernetesDashboard")
-    def kubernetes_dashboard(self) -> Optional[pulumi.Input['ClusterAddonsConfigKubernetesDashboardArgs']]:
-        return pulumi.get(self, "kubernetes_dashboard")
-
-    @kubernetes_dashboard.setter
-    def kubernetes_dashboard(self, value: Optional[pulumi.Input['ClusterAddonsConfigKubernetesDashboardArgs']]):
-        pulumi.set(self, "kubernetes_dashboard", value)
 
     @property
     @pulumi.getter(name="networkPolicyConfig")
@@ -500,31 +487,6 @@ class ClusterAddonsConfigKalmConfigArgs:
     @enabled.setter
     def enabled(self, value: pulumi.Input[bool]):
         pulumi.set(self, "enabled", value)
-
-
-@pulumi.input_type
-class ClusterAddonsConfigKubernetesDashboardArgs:
-    def __init__(__self__, *,
-                 disabled: Optional[pulumi.Input[bool]] = None):
-        """
-        :param pulumi.Input[bool] disabled: The status of the Istio addon, which makes it easy to set up Istio for services in a
-               cluster. It is disabled by default. Set `disabled = false` to enable.
-        """
-        if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
-
-    @property
-    @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        The status of the Istio addon, which makes it easy to set up Istio for services in a
-        cluster. It is disabled by default. Set `disabled = false` to enable.
-        """
-        return pulumi.get(self, "disabled")
-
-    @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "disabled", value)
 
 
 @pulumi.input_type
@@ -883,10 +845,8 @@ class ClusterIpAllocationPolicyArgs:
     def __init__(__self__, *,
                  cluster_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  cluster_secondary_range_name: Optional[pulumi.Input[str]] = None,
-                 node_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  services_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
-                 services_secondary_range_name: Optional[pulumi.Input[str]] = None,
-                 subnetwork_name: Optional[pulumi.Input[str]] = None):
+                 services_secondary_range_name: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] cluster_ipv4_cidr_block: The IP address range for the cluster pod IPs.
                Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
@@ -910,14 +870,10 @@ class ClusterIpAllocationPolicyArgs:
             pulumi.set(__self__, "cluster_ipv4_cidr_block", cluster_ipv4_cidr_block)
         if cluster_secondary_range_name is not None:
             pulumi.set(__self__, "cluster_secondary_range_name", cluster_secondary_range_name)
-        if node_ipv4_cidr_block is not None:
-            pulumi.set(__self__, "node_ipv4_cidr_block", node_ipv4_cidr_block)
         if services_ipv4_cidr_block is not None:
             pulumi.set(__self__, "services_ipv4_cidr_block", services_ipv4_cidr_block)
         if services_secondary_range_name is not None:
             pulumi.set(__self__, "services_secondary_range_name", services_secondary_range_name)
-        if subnetwork_name is not None:
-            pulumi.set(__self__, "subnetwork_name", subnetwork_name)
 
     @property
     @pulumi.getter(name="clusterIpv4CidrBlock")
@@ -950,15 +906,6 @@ class ClusterIpAllocationPolicyArgs:
         pulumi.set(self, "cluster_secondary_range_name", value)
 
     @property
-    @pulumi.getter(name="nodeIpv4CidrBlock")
-    def node_ipv4_cidr_block(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "node_ipv4_cidr_block")
-
-    @node_ipv4_cidr_block.setter
-    def node_ipv4_cidr_block(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "node_ipv4_cidr_block", value)
-
-    @property
     @pulumi.getter(name="servicesIpv4CidrBlock")
     def services_ipv4_cidr_block(self) -> Optional[pulumi.Input[str]]:
         """
@@ -988,15 +935,6 @@ class ClusterIpAllocationPolicyArgs:
     @services_secondary_range_name.setter
     def services_secondary_range_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "services_secondary_range_name", value)
-
-    @property
-    @pulumi.getter(name="subnetworkName")
-    def subnetwork_name(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "subnetwork_name")
-
-    @subnetwork_name.setter
-    def subnetwork_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "subnetwork_name", value)
 
 
 @pulumi.input_type

@@ -114,8 +114,8 @@ namespace Pulumi.Gcp.Dataproc
         /// <summary>
         /// The status of the job.
         /// </summary>
-        [Output("status")]
-        public Output<Outputs.JobStatus> Status { get; private set; } = null!;
+        [Output("statuses")]
+        public Output<ImmutableArray<Outputs.JobStatus>> Statuses { get; private set; } = null!;
 
 
         /// <summary>
@@ -358,11 +358,17 @@ namespace Pulumi.Gcp.Dataproc
         [Input("sparksqlConfig")]
         public Input<Inputs.JobSparksqlConfigGetArgs>? SparksqlConfig { get; set; }
 
+        [Input("statuses")]
+        private InputList<Inputs.JobStatusGetArgs>? _statuses;
+
         /// <summary>
         /// The status of the job.
         /// </summary>
-        [Input("status")]
-        public Input<Inputs.JobStatusGetArgs>? Status { get; set; }
+        public InputList<Inputs.JobStatusGetArgs> Statuses
+        {
+            get => _statuses ?? (_statuses = new InputList<Inputs.JobStatusGetArgs>());
+            set => _statuses = value;
+        }
 
         public JobState()
         {

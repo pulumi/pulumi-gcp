@@ -108,7 +108,7 @@ class AlertPolicy(pulumi.CustomResource):
             __props__['notification_channels'] = notification_channels
             __props__['project'] = project
             __props__['user_labels'] = user_labels
-            __props__['creation_record'] = None
+            __props__['creation_records'] = None
             __props__['name'] = None
         super(AlertPolicy, __self__).__init__(
             'gcp:monitoring/alertPolicy:AlertPolicy',
@@ -122,7 +122,7 @@ class AlertPolicy(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             combiner: Optional[pulumi.Input[str]] = None,
             conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertPolicyConditionArgs']]]]] = None,
-            creation_record: Optional[pulumi.Input[pulumi.InputType['AlertPolicyCreationRecordArgs']]] = None,
+            creation_records: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertPolicyCreationRecordArgs']]]]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             documentation: Optional[pulumi.Input[pulumi.InputType['AlertPolicyDocumentationArgs']]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
@@ -145,7 +145,7 @@ class AlertPolicy(pulumi.CustomResource):
                evaluate to true, then an incident is created. A policy can have from
                one to six conditions.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['AlertPolicyCreationRecordArgs']] creation_record: A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertPolicyCreationRecordArgs']]]] creation_records: A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be
                ignored.
         :param pulumi.Input[str] display_name: A short name or phrase used to identify the
                condition in dashboards, notifications, and
@@ -186,7 +186,7 @@ class AlertPolicy(pulumi.CustomResource):
 
         __props__["combiner"] = combiner
         __props__["conditions"] = conditions
-        __props__["creation_record"] = creation_record
+        __props__["creation_records"] = creation_records
         __props__["display_name"] = display_name
         __props__["documentation"] = documentation
         __props__["enabled"] = enabled
@@ -219,13 +219,13 @@ class AlertPolicy(pulumi.CustomResource):
         return pulumi.get(self, "conditions")
 
     @property
-    @pulumi.getter(name="creationRecord")
-    def creation_record(self) -> pulumi.Output['outputs.AlertPolicyCreationRecord']:
+    @pulumi.getter(name="creationRecords")
+    def creation_records(self) -> pulumi.Output[Sequence['outputs.AlertPolicyCreationRecord']]:
         """
         A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be
         ignored.
         """
-        return pulumi.get(self, "creation_record")
+        return pulumi.get(self, "creation_records")
 
     @property
     @pulumi.getter(name="displayName")

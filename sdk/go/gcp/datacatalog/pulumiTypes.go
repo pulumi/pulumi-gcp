@@ -45,45 +45,29 @@ func (i EntryBigqueryDateShardedSpecArgs) ToEntryBigqueryDateShardedSpecOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(EntryBigqueryDateShardedSpecOutput)
 }
 
-func (i EntryBigqueryDateShardedSpecArgs) ToEntryBigqueryDateShardedSpecPtrOutput() EntryBigqueryDateShardedSpecPtrOutput {
-	return i.ToEntryBigqueryDateShardedSpecPtrOutputWithContext(context.Background())
-}
-
-func (i EntryBigqueryDateShardedSpecArgs) ToEntryBigqueryDateShardedSpecPtrOutputWithContext(ctx context.Context) EntryBigqueryDateShardedSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EntryBigqueryDateShardedSpecOutput).ToEntryBigqueryDateShardedSpecPtrOutputWithContext(ctx)
-}
-
-// EntryBigqueryDateShardedSpecPtrInput is an input type that accepts EntryBigqueryDateShardedSpecArgs, EntryBigqueryDateShardedSpecPtr and EntryBigqueryDateShardedSpecPtrOutput values.
-// You can construct a concrete instance of `EntryBigqueryDateShardedSpecPtrInput` via:
+// EntryBigqueryDateShardedSpecArrayInput is an input type that accepts EntryBigqueryDateShardedSpecArray and EntryBigqueryDateShardedSpecArrayOutput values.
+// You can construct a concrete instance of `EntryBigqueryDateShardedSpecArrayInput` via:
 //
-//          EntryBigqueryDateShardedSpecArgs{...}
-//
-//  or:
-//
-//          nil
-type EntryBigqueryDateShardedSpecPtrInput interface {
+//          EntryBigqueryDateShardedSpecArray{ EntryBigqueryDateShardedSpecArgs{...} }
+type EntryBigqueryDateShardedSpecArrayInput interface {
 	pulumi.Input
 
-	ToEntryBigqueryDateShardedSpecPtrOutput() EntryBigqueryDateShardedSpecPtrOutput
-	ToEntryBigqueryDateShardedSpecPtrOutputWithContext(context.Context) EntryBigqueryDateShardedSpecPtrOutput
+	ToEntryBigqueryDateShardedSpecArrayOutput() EntryBigqueryDateShardedSpecArrayOutput
+	ToEntryBigqueryDateShardedSpecArrayOutputWithContext(context.Context) EntryBigqueryDateShardedSpecArrayOutput
 }
 
-type entryBigqueryDateShardedSpecPtrType EntryBigqueryDateShardedSpecArgs
+type EntryBigqueryDateShardedSpecArray []EntryBigqueryDateShardedSpecInput
 
-func EntryBigqueryDateShardedSpecPtr(v *EntryBigqueryDateShardedSpecArgs) EntryBigqueryDateShardedSpecPtrInput {
-	return (*entryBigqueryDateShardedSpecPtrType)(v)
+func (EntryBigqueryDateShardedSpecArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EntryBigqueryDateShardedSpec)(nil)).Elem()
 }
 
-func (*entryBigqueryDateShardedSpecPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EntryBigqueryDateShardedSpec)(nil)).Elem()
+func (i EntryBigqueryDateShardedSpecArray) ToEntryBigqueryDateShardedSpecArrayOutput() EntryBigqueryDateShardedSpecArrayOutput {
+	return i.ToEntryBigqueryDateShardedSpecArrayOutputWithContext(context.Background())
 }
 
-func (i *entryBigqueryDateShardedSpecPtrType) ToEntryBigqueryDateShardedSpecPtrOutput() EntryBigqueryDateShardedSpecPtrOutput {
-	return i.ToEntryBigqueryDateShardedSpecPtrOutputWithContext(context.Background())
-}
-
-func (i *entryBigqueryDateShardedSpecPtrType) ToEntryBigqueryDateShardedSpecPtrOutputWithContext(ctx context.Context) EntryBigqueryDateShardedSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EntryBigqueryDateShardedSpecPtrOutput)
+func (i EntryBigqueryDateShardedSpecArray) ToEntryBigqueryDateShardedSpecArrayOutputWithContext(ctx context.Context) EntryBigqueryDateShardedSpecArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntryBigqueryDateShardedSpecArrayOutput)
 }
 
 type EntryBigqueryDateShardedSpecOutput struct{ *pulumi.OutputState }
@@ -100,15 +84,6 @@ func (o EntryBigqueryDateShardedSpecOutput) ToEntryBigqueryDateShardedSpecOutput
 	return o
 }
 
-func (o EntryBigqueryDateShardedSpecOutput) ToEntryBigqueryDateShardedSpecPtrOutput() EntryBigqueryDateShardedSpecPtrOutput {
-	return o.ToEntryBigqueryDateShardedSpecPtrOutputWithContext(context.Background())
-}
-
-func (o EntryBigqueryDateShardedSpecOutput) ToEntryBigqueryDateShardedSpecPtrOutputWithContext(ctx context.Context) EntryBigqueryDateShardedSpecPtrOutput {
-	return o.ApplyT(func(v EntryBigqueryDateShardedSpec) *EntryBigqueryDateShardedSpec {
-		return &v
-	}).(EntryBigqueryDateShardedSpecPtrOutput)
-}
 func (o EntryBigqueryDateShardedSpecOutput) Dataset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EntryBigqueryDateShardedSpec) *string { return v.Dataset }).(pulumi.StringPtrOutput)
 }
@@ -121,55 +96,30 @@ func (o EntryBigqueryDateShardedSpecOutput) TablePrefix() pulumi.StringPtrOutput
 	return o.ApplyT(func(v EntryBigqueryDateShardedSpec) *string { return v.TablePrefix }).(pulumi.StringPtrOutput)
 }
 
-type EntryBigqueryDateShardedSpecPtrOutput struct{ *pulumi.OutputState }
+type EntryBigqueryDateShardedSpecArrayOutput struct{ *pulumi.OutputState }
 
-func (EntryBigqueryDateShardedSpecPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EntryBigqueryDateShardedSpec)(nil)).Elem()
+func (EntryBigqueryDateShardedSpecArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EntryBigqueryDateShardedSpec)(nil)).Elem()
 }
 
-func (o EntryBigqueryDateShardedSpecPtrOutput) ToEntryBigqueryDateShardedSpecPtrOutput() EntryBigqueryDateShardedSpecPtrOutput {
+func (o EntryBigqueryDateShardedSpecArrayOutput) ToEntryBigqueryDateShardedSpecArrayOutput() EntryBigqueryDateShardedSpecArrayOutput {
 	return o
 }
 
-func (o EntryBigqueryDateShardedSpecPtrOutput) ToEntryBigqueryDateShardedSpecPtrOutputWithContext(ctx context.Context) EntryBigqueryDateShardedSpecPtrOutput {
+func (o EntryBigqueryDateShardedSpecArrayOutput) ToEntryBigqueryDateShardedSpecArrayOutputWithContext(ctx context.Context) EntryBigqueryDateShardedSpecArrayOutput {
 	return o
 }
 
-func (o EntryBigqueryDateShardedSpecPtrOutput) Elem() EntryBigqueryDateShardedSpecOutput {
-	return o.ApplyT(func(v *EntryBigqueryDateShardedSpec) EntryBigqueryDateShardedSpec { return *v }).(EntryBigqueryDateShardedSpecOutput)
-}
-
-func (o EntryBigqueryDateShardedSpecPtrOutput) Dataset() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EntryBigqueryDateShardedSpec) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Dataset
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o EntryBigqueryDateShardedSpecPtrOutput) ShardCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *EntryBigqueryDateShardedSpec) *int {
-		if v == nil {
-			return nil
-		}
-		return v.ShardCount
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o EntryBigqueryDateShardedSpecPtrOutput) TablePrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EntryBigqueryDateShardedSpec) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TablePrefix
-	}).(pulumi.StringPtrOutput)
+func (o EntryBigqueryDateShardedSpecArrayOutput) Index(i pulumi.IntInput) EntryBigqueryDateShardedSpecOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EntryBigqueryDateShardedSpec {
+		return vs[0].([]EntryBigqueryDateShardedSpec)[vs[1].(int)]
+	}).(EntryBigqueryDateShardedSpecOutput)
 }
 
 type EntryBigqueryTableSpec struct {
-	TableSourceType *string                          `pulumi:"tableSourceType"`
-	TableSpec       *EntryBigqueryTableSpecTableSpec `pulumi:"tableSpec"`
-	ViewSpec        *EntryBigqueryTableSpecViewSpec  `pulumi:"viewSpec"`
+	TableSourceType *string                           `pulumi:"tableSourceType"`
+	TableSpecs      []EntryBigqueryTableSpecTableSpec `pulumi:"tableSpecs"`
+	ViewSpecs       []EntryBigqueryTableSpecViewSpec  `pulumi:"viewSpecs"`
 }
 
 // EntryBigqueryTableSpecInput is an input type that accepts EntryBigqueryTableSpecArgs and EntryBigqueryTableSpecOutput values.
@@ -184,9 +134,9 @@ type EntryBigqueryTableSpecInput interface {
 }
 
 type EntryBigqueryTableSpecArgs struct {
-	TableSourceType pulumi.StringPtrInput                   `pulumi:"tableSourceType"`
-	TableSpec       EntryBigqueryTableSpecTableSpecPtrInput `pulumi:"tableSpec"`
-	ViewSpec        EntryBigqueryTableSpecViewSpecPtrInput  `pulumi:"viewSpec"`
+	TableSourceType pulumi.StringPtrInput                     `pulumi:"tableSourceType"`
+	TableSpecs      EntryBigqueryTableSpecTableSpecArrayInput `pulumi:"tableSpecs"`
+	ViewSpecs       EntryBigqueryTableSpecViewSpecArrayInput  `pulumi:"viewSpecs"`
 }
 
 func (EntryBigqueryTableSpecArgs) ElementType() reflect.Type {
@@ -201,45 +151,29 @@ func (i EntryBigqueryTableSpecArgs) ToEntryBigqueryTableSpecOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(EntryBigqueryTableSpecOutput)
 }
 
-func (i EntryBigqueryTableSpecArgs) ToEntryBigqueryTableSpecPtrOutput() EntryBigqueryTableSpecPtrOutput {
-	return i.ToEntryBigqueryTableSpecPtrOutputWithContext(context.Background())
-}
-
-func (i EntryBigqueryTableSpecArgs) ToEntryBigqueryTableSpecPtrOutputWithContext(ctx context.Context) EntryBigqueryTableSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EntryBigqueryTableSpecOutput).ToEntryBigqueryTableSpecPtrOutputWithContext(ctx)
-}
-
-// EntryBigqueryTableSpecPtrInput is an input type that accepts EntryBigqueryTableSpecArgs, EntryBigqueryTableSpecPtr and EntryBigqueryTableSpecPtrOutput values.
-// You can construct a concrete instance of `EntryBigqueryTableSpecPtrInput` via:
+// EntryBigqueryTableSpecArrayInput is an input type that accepts EntryBigqueryTableSpecArray and EntryBigqueryTableSpecArrayOutput values.
+// You can construct a concrete instance of `EntryBigqueryTableSpecArrayInput` via:
 //
-//          EntryBigqueryTableSpecArgs{...}
-//
-//  or:
-//
-//          nil
-type EntryBigqueryTableSpecPtrInput interface {
+//          EntryBigqueryTableSpecArray{ EntryBigqueryTableSpecArgs{...} }
+type EntryBigqueryTableSpecArrayInput interface {
 	pulumi.Input
 
-	ToEntryBigqueryTableSpecPtrOutput() EntryBigqueryTableSpecPtrOutput
-	ToEntryBigqueryTableSpecPtrOutputWithContext(context.Context) EntryBigqueryTableSpecPtrOutput
+	ToEntryBigqueryTableSpecArrayOutput() EntryBigqueryTableSpecArrayOutput
+	ToEntryBigqueryTableSpecArrayOutputWithContext(context.Context) EntryBigqueryTableSpecArrayOutput
 }
 
-type entryBigqueryTableSpecPtrType EntryBigqueryTableSpecArgs
+type EntryBigqueryTableSpecArray []EntryBigqueryTableSpecInput
 
-func EntryBigqueryTableSpecPtr(v *EntryBigqueryTableSpecArgs) EntryBigqueryTableSpecPtrInput {
-	return (*entryBigqueryTableSpecPtrType)(v)
+func (EntryBigqueryTableSpecArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EntryBigqueryTableSpec)(nil)).Elem()
 }
 
-func (*entryBigqueryTableSpecPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EntryBigqueryTableSpec)(nil)).Elem()
+func (i EntryBigqueryTableSpecArray) ToEntryBigqueryTableSpecArrayOutput() EntryBigqueryTableSpecArrayOutput {
+	return i.ToEntryBigqueryTableSpecArrayOutputWithContext(context.Background())
 }
 
-func (i *entryBigqueryTableSpecPtrType) ToEntryBigqueryTableSpecPtrOutput() EntryBigqueryTableSpecPtrOutput {
-	return i.ToEntryBigqueryTableSpecPtrOutputWithContext(context.Background())
-}
-
-func (i *entryBigqueryTableSpecPtrType) ToEntryBigqueryTableSpecPtrOutputWithContext(ctx context.Context) EntryBigqueryTableSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EntryBigqueryTableSpecPtrOutput)
+func (i EntryBigqueryTableSpecArray) ToEntryBigqueryTableSpecArrayOutputWithContext(ctx context.Context) EntryBigqueryTableSpecArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntryBigqueryTableSpecArrayOutput)
 }
 
 type EntryBigqueryTableSpecOutput struct{ *pulumi.OutputState }
@@ -256,70 +190,36 @@ func (o EntryBigqueryTableSpecOutput) ToEntryBigqueryTableSpecOutputWithContext(
 	return o
 }
 
-func (o EntryBigqueryTableSpecOutput) ToEntryBigqueryTableSpecPtrOutput() EntryBigqueryTableSpecPtrOutput {
-	return o.ToEntryBigqueryTableSpecPtrOutputWithContext(context.Background())
-}
-
-func (o EntryBigqueryTableSpecOutput) ToEntryBigqueryTableSpecPtrOutputWithContext(ctx context.Context) EntryBigqueryTableSpecPtrOutput {
-	return o.ApplyT(func(v EntryBigqueryTableSpec) *EntryBigqueryTableSpec {
-		return &v
-	}).(EntryBigqueryTableSpecPtrOutput)
-}
 func (o EntryBigqueryTableSpecOutput) TableSourceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EntryBigqueryTableSpec) *string { return v.TableSourceType }).(pulumi.StringPtrOutput)
 }
 
-func (o EntryBigqueryTableSpecOutput) TableSpec() EntryBigqueryTableSpecTableSpecPtrOutput {
-	return o.ApplyT(func(v EntryBigqueryTableSpec) *EntryBigqueryTableSpecTableSpec { return v.TableSpec }).(EntryBigqueryTableSpecTableSpecPtrOutput)
+func (o EntryBigqueryTableSpecOutput) TableSpecs() EntryBigqueryTableSpecTableSpecArrayOutput {
+	return o.ApplyT(func(v EntryBigqueryTableSpec) []EntryBigqueryTableSpecTableSpec { return v.TableSpecs }).(EntryBigqueryTableSpecTableSpecArrayOutput)
 }
 
-func (o EntryBigqueryTableSpecOutput) ViewSpec() EntryBigqueryTableSpecViewSpecPtrOutput {
-	return o.ApplyT(func(v EntryBigqueryTableSpec) *EntryBigqueryTableSpecViewSpec { return v.ViewSpec }).(EntryBigqueryTableSpecViewSpecPtrOutput)
+func (o EntryBigqueryTableSpecOutput) ViewSpecs() EntryBigqueryTableSpecViewSpecArrayOutput {
+	return o.ApplyT(func(v EntryBigqueryTableSpec) []EntryBigqueryTableSpecViewSpec { return v.ViewSpecs }).(EntryBigqueryTableSpecViewSpecArrayOutput)
 }
 
-type EntryBigqueryTableSpecPtrOutput struct{ *pulumi.OutputState }
+type EntryBigqueryTableSpecArrayOutput struct{ *pulumi.OutputState }
 
-func (EntryBigqueryTableSpecPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EntryBigqueryTableSpec)(nil)).Elem()
+func (EntryBigqueryTableSpecArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EntryBigqueryTableSpec)(nil)).Elem()
 }
 
-func (o EntryBigqueryTableSpecPtrOutput) ToEntryBigqueryTableSpecPtrOutput() EntryBigqueryTableSpecPtrOutput {
+func (o EntryBigqueryTableSpecArrayOutput) ToEntryBigqueryTableSpecArrayOutput() EntryBigqueryTableSpecArrayOutput {
 	return o
 }
 
-func (o EntryBigqueryTableSpecPtrOutput) ToEntryBigqueryTableSpecPtrOutputWithContext(ctx context.Context) EntryBigqueryTableSpecPtrOutput {
+func (o EntryBigqueryTableSpecArrayOutput) ToEntryBigqueryTableSpecArrayOutputWithContext(ctx context.Context) EntryBigqueryTableSpecArrayOutput {
 	return o
 }
 
-func (o EntryBigqueryTableSpecPtrOutput) Elem() EntryBigqueryTableSpecOutput {
-	return o.ApplyT(func(v *EntryBigqueryTableSpec) EntryBigqueryTableSpec { return *v }).(EntryBigqueryTableSpecOutput)
-}
-
-func (o EntryBigqueryTableSpecPtrOutput) TableSourceType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EntryBigqueryTableSpec) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TableSourceType
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o EntryBigqueryTableSpecPtrOutput) TableSpec() EntryBigqueryTableSpecTableSpecPtrOutput {
-	return o.ApplyT(func(v *EntryBigqueryTableSpec) *EntryBigqueryTableSpecTableSpec {
-		if v == nil {
-			return nil
-		}
-		return v.TableSpec
-	}).(EntryBigqueryTableSpecTableSpecPtrOutput)
-}
-
-func (o EntryBigqueryTableSpecPtrOutput) ViewSpec() EntryBigqueryTableSpecViewSpecPtrOutput {
-	return o.ApplyT(func(v *EntryBigqueryTableSpec) *EntryBigqueryTableSpecViewSpec {
-		if v == nil {
-			return nil
-		}
-		return v.ViewSpec
-	}).(EntryBigqueryTableSpecViewSpecPtrOutput)
+func (o EntryBigqueryTableSpecArrayOutput) Index(i pulumi.IntInput) EntryBigqueryTableSpecOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EntryBigqueryTableSpec {
+		return vs[0].([]EntryBigqueryTableSpec)[vs[1].(int)]
+	}).(EntryBigqueryTableSpecOutput)
 }
 
 type EntryBigqueryTableSpecTableSpec struct {
@@ -353,45 +253,29 @@ func (i EntryBigqueryTableSpecTableSpecArgs) ToEntryBigqueryTableSpecTableSpecOu
 	return pulumi.ToOutputWithContext(ctx, i).(EntryBigqueryTableSpecTableSpecOutput)
 }
 
-func (i EntryBigqueryTableSpecTableSpecArgs) ToEntryBigqueryTableSpecTableSpecPtrOutput() EntryBigqueryTableSpecTableSpecPtrOutput {
-	return i.ToEntryBigqueryTableSpecTableSpecPtrOutputWithContext(context.Background())
-}
-
-func (i EntryBigqueryTableSpecTableSpecArgs) ToEntryBigqueryTableSpecTableSpecPtrOutputWithContext(ctx context.Context) EntryBigqueryTableSpecTableSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EntryBigqueryTableSpecTableSpecOutput).ToEntryBigqueryTableSpecTableSpecPtrOutputWithContext(ctx)
-}
-
-// EntryBigqueryTableSpecTableSpecPtrInput is an input type that accepts EntryBigqueryTableSpecTableSpecArgs, EntryBigqueryTableSpecTableSpecPtr and EntryBigqueryTableSpecTableSpecPtrOutput values.
-// You can construct a concrete instance of `EntryBigqueryTableSpecTableSpecPtrInput` via:
+// EntryBigqueryTableSpecTableSpecArrayInput is an input type that accepts EntryBigqueryTableSpecTableSpecArray and EntryBigqueryTableSpecTableSpecArrayOutput values.
+// You can construct a concrete instance of `EntryBigqueryTableSpecTableSpecArrayInput` via:
 //
-//          EntryBigqueryTableSpecTableSpecArgs{...}
-//
-//  or:
-//
-//          nil
-type EntryBigqueryTableSpecTableSpecPtrInput interface {
+//          EntryBigqueryTableSpecTableSpecArray{ EntryBigqueryTableSpecTableSpecArgs{...} }
+type EntryBigqueryTableSpecTableSpecArrayInput interface {
 	pulumi.Input
 
-	ToEntryBigqueryTableSpecTableSpecPtrOutput() EntryBigqueryTableSpecTableSpecPtrOutput
-	ToEntryBigqueryTableSpecTableSpecPtrOutputWithContext(context.Context) EntryBigqueryTableSpecTableSpecPtrOutput
+	ToEntryBigqueryTableSpecTableSpecArrayOutput() EntryBigqueryTableSpecTableSpecArrayOutput
+	ToEntryBigqueryTableSpecTableSpecArrayOutputWithContext(context.Context) EntryBigqueryTableSpecTableSpecArrayOutput
 }
 
-type entryBigqueryTableSpecTableSpecPtrType EntryBigqueryTableSpecTableSpecArgs
+type EntryBigqueryTableSpecTableSpecArray []EntryBigqueryTableSpecTableSpecInput
 
-func EntryBigqueryTableSpecTableSpecPtr(v *EntryBigqueryTableSpecTableSpecArgs) EntryBigqueryTableSpecTableSpecPtrInput {
-	return (*entryBigqueryTableSpecTableSpecPtrType)(v)
+func (EntryBigqueryTableSpecTableSpecArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EntryBigqueryTableSpecTableSpec)(nil)).Elem()
 }
 
-func (*entryBigqueryTableSpecTableSpecPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EntryBigqueryTableSpecTableSpec)(nil)).Elem()
+func (i EntryBigqueryTableSpecTableSpecArray) ToEntryBigqueryTableSpecTableSpecArrayOutput() EntryBigqueryTableSpecTableSpecArrayOutput {
+	return i.ToEntryBigqueryTableSpecTableSpecArrayOutputWithContext(context.Background())
 }
 
-func (i *entryBigqueryTableSpecTableSpecPtrType) ToEntryBigqueryTableSpecTableSpecPtrOutput() EntryBigqueryTableSpecTableSpecPtrOutput {
-	return i.ToEntryBigqueryTableSpecTableSpecPtrOutputWithContext(context.Background())
-}
-
-func (i *entryBigqueryTableSpecTableSpecPtrType) ToEntryBigqueryTableSpecTableSpecPtrOutputWithContext(ctx context.Context) EntryBigqueryTableSpecTableSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EntryBigqueryTableSpecTableSpecPtrOutput)
+func (i EntryBigqueryTableSpecTableSpecArray) ToEntryBigqueryTableSpecTableSpecArrayOutputWithContext(ctx context.Context) EntryBigqueryTableSpecTableSpecArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntryBigqueryTableSpecTableSpecArrayOutput)
 }
 
 type EntryBigqueryTableSpecTableSpecOutput struct{ *pulumi.OutputState }
@@ -408,44 +292,28 @@ func (o EntryBigqueryTableSpecTableSpecOutput) ToEntryBigqueryTableSpecTableSpec
 	return o
 }
 
-func (o EntryBigqueryTableSpecTableSpecOutput) ToEntryBigqueryTableSpecTableSpecPtrOutput() EntryBigqueryTableSpecTableSpecPtrOutput {
-	return o.ToEntryBigqueryTableSpecTableSpecPtrOutputWithContext(context.Background())
-}
-
-func (o EntryBigqueryTableSpecTableSpecOutput) ToEntryBigqueryTableSpecTableSpecPtrOutputWithContext(ctx context.Context) EntryBigqueryTableSpecTableSpecPtrOutput {
-	return o.ApplyT(func(v EntryBigqueryTableSpecTableSpec) *EntryBigqueryTableSpecTableSpec {
-		return &v
-	}).(EntryBigqueryTableSpecTableSpecPtrOutput)
-}
 func (o EntryBigqueryTableSpecTableSpecOutput) GroupedEntry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EntryBigqueryTableSpecTableSpec) *string { return v.GroupedEntry }).(pulumi.StringPtrOutput)
 }
 
-type EntryBigqueryTableSpecTableSpecPtrOutput struct{ *pulumi.OutputState }
+type EntryBigqueryTableSpecTableSpecArrayOutput struct{ *pulumi.OutputState }
 
-func (EntryBigqueryTableSpecTableSpecPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EntryBigqueryTableSpecTableSpec)(nil)).Elem()
+func (EntryBigqueryTableSpecTableSpecArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EntryBigqueryTableSpecTableSpec)(nil)).Elem()
 }
 
-func (o EntryBigqueryTableSpecTableSpecPtrOutput) ToEntryBigqueryTableSpecTableSpecPtrOutput() EntryBigqueryTableSpecTableSpecPtrOutput {
+func (o EntryBigqueryTableSpecTableSpecArrayOutput) ToEntryBigqueryTableSpecTableSpecArrayOutput() EntryBigqueryTableSpecTableSpecArrayOutput {
 	return o
 }
 
-func (o EntryBigqueryTableSpecTableSpecPtrOutput) ToEntryBigqueryTableSpecTableSpecPtrOutputWithContext(ctx context.Context) EntryBigqueryTableSpecTableSpecPtrOutput {
+func (o EntryBigqueryTableSpecTableSpecArrayOutput) ToEntryBigqueryTableSpecTableSpecArrayOutputWithContext(ctx context.Context) EntryBigqueryTableSpecTableSpecArrayOutput {
 	return o
 }
 
-func (o EntryBigqueryTableSpecTableSpecPtrOutput) Elem() EntryBigqueryTableSpecTableSpecOutput {
-	return o.ApplyT(func(v *EntryBigqueryTableSpecTableSpec) EntryBigqueryTableSpecTableSpec { return *v }).(EntryBigqueryTableSpecTableSpecOutput)
-}
-
-func (o EntryBigqueryTableSpecTableSpecPtrOutput) GroupedEntry() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EntryBigqueryTableSpecTableSpec) *string {
-		if v == nil {
-			return nil
-		}
-		return v.GroupedEntry
-	}).(pulumi.StringPtrOutput)
+func (o EntryBigqueryTableSpecTableSpecArrayOutput) Index(i pulumi.IntInput) EntryBigqueryTableSpecTableSpecOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EntryBigqueryTableSpecTableSpec {
+		return vs[0].([]EntryBigqueryTableSpecTableSpec)[vs[1].(int)]
+	}).(EntryBigqueryTableSpecTableSpecOutput)
 }
 
 type EntryBigqueryTableSpecViewSpec struct {
@@ -479,45 +347,29 @@ func (i EntryBigqueryTableSpecViewSpecArgs) ToEntryBigqueryTableSpecViewSpecOutp
 	return pulumi.ToOutputWithContext(ctx, i).(EntryBigqueryTableSpecViewSpecOutput)
 }
 
-func (i EntryBigqueryTableSpecViewSpecArgs) ToEntryBigqueryTableSpecViewSpecPtrOutput() EntryBigqueryTableSpecViewSpecPtrOutput {
-	return i.ToEntryBigqueryTableSpecViewSpecPtrOutputWithContext(context.Background())
-}
-
-func (i EntryBigqueryTableSpecViewSpecArgs) ToEntryBigqueryTableSpecViewSpecPtrOutputWithContext(ctx context.Context) EntryBigqueryTableSpecViewSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EntryBigqueryTableSpecViewSpecOutput).ToEntryBigqueryTableSpecViewSpecPtrOutputWithContext(ctx)
-}
-
-// EntryBigqueryTableSpecViewSpecPtrInput is an input type that accepts EntryBigqueryTableSpecViewSpecArgs, EntryBigqueryTableSpecViewSpecPtr and EntryBigqueryTableSpecViewSpecPtrOutput values.
-// You can construct a concrete instance of `EntryBigqueryTableSpecViewSpecPtrInput` via:
+// EntryBigqueryTableSpecViewSpecArrayInput is an input type that accepts EntryBigqueryTableSpecViewSpecArray and EntryBigqueryTableSpecViewSpecArrayOutput values.
+// You can construct a concrete instance of `EntryBigqueryTableSpecViewSpecArrayInput` via:
 //
-//          EntryBigqueryTableSpecViewSpecArgs{...}
-//
-//  or:
-//
-//          nil
-type EntryBigqueryTableSpecViewSpecPtrInput interface {
+//          EntryBigqueryTableSpecViewSpecArray{ EntryBigqueryTableSpecViewSpecArgs{...} }
+type EntryBigqueryTableSpecViewSpecArrayInput interface {
 	pulumi.Input
 
-	ToEntryBigqueryTableSpecViewSpecPtrOutput() EntryBigqueryTableSpecViewSpecPtrOutput
-	ToEntryBigqueryTableSpecViewSpecPtrOutputWithContext(context.Context) EntryBigqueryTableSpecViewSpecPtrOutput
+	ToEntryBigqueryTableSpecViewSpecArrayOutput() EntryBigqueryTableSpecViewSpecArrayOutput
+	ToEntryBigqueryTableSpecViewSpecArrayOutputWithContext(context.Context) EntryBigqueryTableSpecViewSpecArrayOutput
 }
 
-type entryBigqueryTableSpecViewSpecPtrType EntryBigqueryTableSpecViewSpecArgs
+type EntryBigqueryTableSpecViewSpecArray []EntryBigqueryTableSpecViewSpecInput
 
-func EntryBigqueryTableSpecViewSpecPtr(v *EntryBigqueryTableSpecViewSpecArgs) EntryBigqueryTableSpecViewSpecPtrInput {
-	return (*entryBigqueryTableSpecViewSpecPtrType)(v)
+func (EntryBigqueryTableSpecViewSpecArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EntryBigqueryTableSpecViewSpec)(nil)).Elem()
 }
 
-func (*entryBigqueryTableSpecViewSpecPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EntryBigqueryTableSpecViewSpec)(nil)).Elem()
+func (i EntryBigqueryTableSpecViewSpecArray) ToEntryBigqueryTableSpecViewSpecArrayOutput() EntryBigqueryTableSpecViewSpecArrayOutput {
+	return i.ToEntryBigqueryTableSpecViewSpecArrayOutputWithContext(context.Background())
 }
 
-func (i *entryBigqueryTableSpecViewSpecPtrType) ToEntryBigqueryTableSpecViewSpecPtrOutput() EntryBigqueryTableSpecViewSpecPtrOutput {
-	return i.ToEntryBigqueryTableSpecViewSpecPtrOutputWithContext(context.Background())
-}
-
-func (i *entryBigqueryTableSpecViewSpecPtrType) ToEntryBigqueryTableSpecViewSpecPtrOutputWithContext(ctx context.Context) EntryBigqueryTableSpecViewSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EntryBigqueryTableSpecViewSpecPtrOutput)
+func (i EntryBigqueryTableSpecViewSpecArray) ToEntryBigqueryTableSpecViewSpecArrayOutputWithContext(ctx context.Context) EntryBigqueryTableSpecViewSpecArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntryBigqueryTableSpecViewSpecArrayOutput)
 }
 
 type EntryBigqueryTableSpecViewSpecOutput struct{ *pulumi.OutputState }
@@ -534,44 +386,28 @@ func (o EntryBigqueryTableSpecViewSpecOutput) ToEntryBigqueryTableSpecViewSpecOu
 	return o
 }
 
-func (o EntryBigqueryTableSpecViewSpecOutput) ToEntryBigqueryTableSpecViewSpecPtrOutput() EntryBigqueryTableSpecViewSpecPtrOutput {
-	return o.ToEntryBigqueryTableSpecViewSpecPtrOutputWithContext(context.Background())
-}
-
-func (o EntryBigqueryTableSpecViewSpecOutput) ToEntryBigqueryTableSpecViewSpecPtrOutputWithContext(ctx context.Context) EntryBigqueryTableSpecViewSpecPtrOutput {
-	return o.ApplyT(func(v EntryBigqueryTableSpecViewSpec) *EntryBigqueryTableSpecViewSpec {
-		return &v
-	}).(EntryBigqueryTableSpecViewSpecPtrOutput)
-}
 func (o EntryBigqueryTableSpecViewSpecOutput) ViewQuery() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EntryBigqueryTableSpecViewSpec) *string { return v.ViewQuery }).(pulumi.StringPtrOutput)
 }
 
-type EntryBigqueryTableSpecViewSpecPtrOutput struct{ *pulumi.OutputState }
+type EntryBigqueryTableSpecViewSpecArrayOutput struct{ *pulumi.OutputState }
 
-func (EntryBigqueryTableSpecViewSpecPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EntryBigqueryTableSpecViewSpec)(nil)).Elem()
+func (EntryBigqueryTableSpecViewSpecArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EntryBigqueryTableSpecViewSpec)(nil)).Elem()
 }
 
-func (o EntryBigqueryTableSpecViewSpecPtrOutput) ToEntryBigqueryTableSpecViewSpecPtrOutput() EntryBigqueryTableSpecViewSpecPtrOutput {
+func (o EntryBigqueryTableSpecViewSpecArrayOutput) ToEntryBigqueryTableSpecViewSpecArrayOutput() EntryBigqueryTableSpecViewSpecArrayOutput {
 	return o
 }
 
-func (o EntryBigqueryTableSpecViewSpecPtrOutput) ToEntryBigqueryTableSpecViewSpecPtrOutputWithContext(ctx context.Context) EntryBigqueryTableSpecViewSpecPtrOutput {
+func (o EntryBigqueryTableSpecViewSpecArrayOutput) ToEntryBigqueryTableSpecViewSpecArrayOutputWithContext(ctx context.Context) EntryBigqueryTableSpecViewSpecArrayOutput {
 	return o
 }
 
-func (o EntryBigqueryTableSpecViewSpecPtrOutput) Elem() EntryBigqueryTableSpecViewSpecOutput {
-	return o.ApplyT(func(v *EntryBigqueryTableSpecViewSpec) EntryBigqueryTableSpecViewSpec { return *v }).(EntryBigqueryTableSpecViewSpecOutput)
-}
-
-func (o EntryBigqueryTableSpecViewSpecPtrOutput) ViewQuery() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EntryBigqueryTableSpecViewSpec) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ViewQuery
-	}).(pulumi.StringPtrOutput)
+func (o EntryBigqueryTableSpecViewSpecArrayOutput) Index(i pulumi.IntInput) EntryBigqueryTableSpecViewSpecOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EntryBigqueryTableSpecViewSpec {
+		return vs[0].([]EntryBigqueryTableSpecViewSpec)[vs[1].(int)]
+	}).(EntryBigqueryTableSpecViewSpecOutput)
 }
 
 type EntryGcsFilesetSpec struct {
@@ -1850,13 +1686,13 @@ func (o TagTemplateFieldTypeEnumTypeAllowedValueArrayOutput) Index(i pulumi.IntI
 
 func init() {
 	pulumi.RegisterOutputType(EntryBigqueryDateShardedSpecOutput{})
-	pulumi.RegisterOutputType(EntryBigqueryDateShardedSpecPtrOutput{})
+	pulumi.RegisterOutputType(EntryBigqueryDateShardedSpecArrayOutput{})
 	pulumi.RegisterOutputType(EntryBigqueryTableSpecOutput{})
-	pulumi.RegisterOutputType(EntryBigqueryTableSpecPtrOutput{})
+	pulumi.RegisterOutputType(EntryBigqueryTableSpecArrayOutput{})
 	pulumi.RegisterOutputType(EntryBigqueryTableSpecTableSpecOutput{})
-	pulumi.RegisterOutputType(EntryBigqueryTableSpecTableSpecPtrOutput{})
+	pulumi.RegisterOutputType(EntryBigqueryTableSpecTableSpecArrayOutput{})
 	pulumi.RegisterOutputType(EntryBigqueryTableSpecViewSpecOutput{})
-	pulumi.RegisterOutputType(EntryBigqueryTableSpecViewSpecPtrOutput{})
+	pulumi.RegisterOutputType(EntryBigqueryTableSpecViewSpecArrayOutput{})
 	pulumi.RegisterOutputType(EntryGcsFilesetSpecOutput{})
 	pulumi.RegisterOutputType(EntryGcsFilesetSpecPtrOutput{})
 	pulumi.RegisterOutputType(EntryGcsFilesetSpecSampleGcsFileSpecOutput{})

@@ -62,7 +62,7 @@ export interface GetKMSCryptoKeyVersionResult {
     /**
      * If the enclosing CryptoKey has purpose `ASYMMETRIC_SIGN` or `ASYMMETRIC_DECRYPT`, this block contains details about the public key associated to this CryptoKeyVersion. Structure is documented below.
      */
-    readonly publicKey: outputs.kms.GetKMSCryptoKeyVersionPublicKey;
+    readonly publicKeys: outputs.kms.GetKMSCryptoKeyVersionPublicKey[];
     /**
      * The current state of the CryptoKeyVersion. See the [state reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions#CryptoKeyVersion.CryptoKeyVersionState) for possible outputs.
      */

@@ -121,7 +121,7 @@ class InterconnectAttachment(pulumi.CustomResource):
             __props__['google_reference_id'] = None
             __props__['pairing_key'] = None
             __props__['partner_asn'] = None
-            __props__['private_interconnect_info'] = None
+            __props__['private_interconnect_infos'] = None
             __props__['self_link'] = None
             __props__['state'] = None
         super(InterconnectAttachment, __self__).__init__(
@@ -147,7 +147,7 @@ class InterconnectAttachment(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             pairing_key: Optional[pulumi.Input[str]] = None,
             partner_asn: Optional[pulumi.Input[str]] = None,
-            private_interconnect_info: Optional[pulumi.Input[pulumi.InputType['InterconnectAttachmentPrivateInterconnectInfoArgs']]] = None,
+            private_interconnect_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InterconnectAttachmentPrivateInterconnectInfoArgs']]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             router: Optional[pulumi.Input[str]] = None,
@@ -202,7 +202,7 @@ class InterconnectAttachment(pulumi.CustomResource):
                initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
         :param pulumi.Input[str] partner_asn: [Output only for type PARTNER. Not present for DEDICATED]. Optional BGP ASN for the router that should be supplied by a
                layer 3 Partner if they configured BGP on behalf of the customer.
-        :param pulumi.Input[pulumi.InputType['InterconnectAttachmentPrivateInterconnectInfoArgs']] private_interconnect_info: Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InterconnectAttachmentPrivateInterconnectInfoArgs']]]] private_interconnect_infos: Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached
                to is of type DEDICATED.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -236,7 +236,7 @@ class InterconnectAttachment(pulumi.CustomResource):
         __props__["name"] = name
         __props__["pairing_key"] = pairing_key
         __props__["partner_asn"] = partner_asn
-        __props__["private_interconnect_info"] = private_interconnect_info
+        __props__["private_interconnect_infos"] = private_interconnect_infos
         __props__["project"] = project
         __props__["region"] = region
         __props__["router"] = router
@@ -378,13 +378,13 @@ class InterconnectAttachment(pulumi.CustomResource):
         return pulumi.get(self, "partner_asn")
 
     @property
-    @pulumi.getter(name="privateInterconnectInfo")
-    def private_interconnect_info(self) -> pulumi.Output['outputs.InterconnectAttachmentPrivateInterconnectInfo']:
+    @pulumi.getter(name="privateInterconnectInfos")
+    def private_interconnect_infos(self) -> pulumi.Output[Sequence['outputs.InterconnectAttachmentPrivateInterconnectInfo']]:
         """
         Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached
         to is of type DEDICATED.
         """
-        return pulumi.get(self, "private_interconnect_info")
+        return pulumi.get(self, "private_interconnect_infos")
 
     @property
     @pulumi.getter

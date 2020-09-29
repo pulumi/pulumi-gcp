@@ -60,7 +60,7 @@ export class Registry extends pulumi.CustomResource {
      * Activate or deactivate HTTP.
      * The structure is documented below.
      */
-    public readonly httpConfig!: pulumi.Output<outputs.iot.RegistryHttpConfig>;
+    public readonly httpConfig!: pulumi.Output<{[key: string]: any}>;
     /**
      * The default logging verbosity for activity from devices in this
      * registry. Specifies which events should be written to logs. For
@@ -75,7 +75,7 @@ export class Registry extends pulumi.CustomResource {
      * Activate or deactivate MQTT.
      * The structure is documented below.
      */
-    public readonly mqttConfig!: pulumi.Output<outputs.iot.RegistryMqttConfig>;
+    public readonly mqttConfig!: pulumi.Output<{[key: string]: any}>;
     /**
      * A unique name for the resource, required by device registry.
      */
@@ -94,7 +94,7 @@ export class Registry extends pulumi.CustomResource {
      * A PubSub topic to publish device state updates.
      * The structure is documented below.
      */
-    public readonly stateNotificationConfig!: pulumi.Output<outputs.iot.RegistryStateNotificationConfig | undefined>;
+    public readonly stateNotificationConfig!: pulumi.Output<{[key: string]: any} | undefined>;
 
     /**
      * Create a Registry resource with the given unique name, arguments, and options.
@@ -161,7 +161,7 @@ export interface RegistryState {
      * Activate or deactivate HTTP.
      * The structure is documented below.
      */
-    readonly httpConfig?: pulumi.Input<inputs.iot.RegistryHttpConfig>;
+    readonly httpConfig?: pulumi.Input<{[key: string]: any}>;
     /**
      * The default logging verbosity for activity from devices in this
      * registry. Specifies which events should be written to logs. For
@@ -176,7 +176,7 @@ export interface RegistryState {
      * Activate or deactivate MQTT.
      * The structure is documented below.
      */
-    readonly mqttConfig?: pulumi.Input<inputs.iot.RegistryMqttConfig>;
+    readonly mqttConfig?: pulumi.Input<{[key: string]: any}>;
     /**
      * A unique name for the resource, required by device registry.
      */
@@ -195,7 +195,7 @@ export interface RegistryState {
      * A PubSub topic to publish device state updates.
      * The structure is documented below.
      */
-    readonly stateNotificationConfig?: pulumi.Input<inputs.iot.RegistryStateNotificationConfig>;
+    readonly stateNotificationConfig?: pulumi.Input<{[key: string]: any}>;
 }
 
 /**
@@ -217,7 +217,7 @@ export interface RegistryArgs {
      * Activate or deactivate HTTP.
      * The structure is documented below.
      */
-    readonly httpConfig?: pulumi.Input<inputs.iot.RegistryHttpConfig>;
+    readonly httpConfig?: pulumi.Input<{[key: string]: any}>;
     /**
      * The default logging verbosity for activity from devices in this
      * registry. Specifies which events should be written to logs. For
@@ -232,7 +232,7 @@ export interface RegistryArgs {
      * Activate or deactivate MQTT.
      * The structure is documented below.
      */
-    readonly mqttConfig?: pulumi.Input<inputs.iot.RegistryMqttConfig>;
+    readonly mqttConfig?: pulumi.Input<{[key: string]: any}>;
     /**
      * A unique name for the resource, required by device registry.
      */
@@ -251,5 +251,5 @@ export interface RegistryArgs {
      * A PubSub topic to publish device state updates.
      * The structure is documented below.
      */
-    readonly stateNotificationConfig?: pulumi.Input<inputs.iot.RegistryStateNotificationConfig>;
+    readonly stateNotificationConfig?: pulumi.Input<{[key: string]: any}>;
 }

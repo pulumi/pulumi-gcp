@@ -29,9 +29,9 @@ type Entry struct {
 
 	// Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD. Context:
 	// https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
-	BigqueryDateShardedSpec EntryBigqueryDateShardedSpecOutput `pulumi:"bigqueryDateShardedSpec"`
+	BigqueryDateShardedSpecs EntryBigqueryDateShardedSpecArrayOutput `pulumi:"bigqueryDateShardedSpecs"`
 	// Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
-	BigqueryTableSpec EntryBigqueryTableSpecOutput `pulumi:"bigqueryTableSpec"`
+	BigqueryTableSpecs EntryBigqueryTableSpecArrayOutput `pulumi:"bigqueryTableSpecs"`
 	// Entry description, which can consist of several sentences or paragraphs that describe entry contents.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Display information such as title and description. A short name to identify the entry,
@@ -114,9 +114,9 @@ func GetEntry(ctx *pulumi.Context,
 type entryState struct {
 	// Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD. Context:
 	// https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
-	BigqueryDateShardedSpec *EntryBigqueryDateShardedSpec `pulumi:"bigqueryDateShardedSpec"`
+	BigqueryDateShardedSpecs []EntryBigqueryDateShardedSpec `pulumi:"bigqueryDateShardedSpecs"`
 	// Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
-	BigqueryTableSpec *EntryBigqueryTableSpec `pulumi:"bigqueryTableSpec"`
+	BigqueryTableSpecs []EntryBigqueryTableSpec `pulumi:"bigqueryTableSpecs"`
 	// Entry description, which can consist of several sentences or paragraphs that describe entry contents.
 	Description *string `pulumi:"description"`
 	// Display information such as title and description. A short name to identify the entry,
@@ -166,9 +166,9 @@ type entryState struct {
 type EntryState struct {
 	// Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD. Context:
 	// https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
-	BigqueryDateShardedSpec EntryBigqueryDateShardedSpecPtrInput
+	BigqueryDateShardedSpecs EntryBigqueryDateShardedSpecArrayInput
 	// Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
-	BigqueryTableSpec EntryBigqueryTableSpecPtrInput
+	BigqueryTableSpecs EntryBigqueryTableSpecArrayInput
 	// Entry description, which can consist of several sentences or paragraphs that describe entry contents.
 	Description pulumi.StringPtrInput
 	// Display information such as title and description. A short name to identify the entry,

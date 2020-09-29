@@ -309,7 +309,6 @@ class BucketLifecycleRuleConditionArgs:
     def __init__(__self__, *,
                  age: Optional[pulumi.Input[int]] = None,
                  created_before: Optional[pulumi.Input[str]] = None,
-                 is_live: Optional[pulumi.Input[bool]] = None,
                  matches_storage_classes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  num_newer_versions: Optional[pulumi.Input[int]] = None,
                  with_state: Optional[pulumi.Input[str]] = None):
@@ -324,8 +323,6 @@ class BucketLifecycleRuleConditionArgs:
             pulumi.set(__self__, "age", age)
         if created_before is not None:
             pulumi.set(__self__, "created_before", created_before)
-        if is_live is not None:
-            pulumi.set(__self__, "is_live", is_live)
         if matches_storage_classes is not None:
             pulumi.set(__self__, "matches_storage_classes", matches_storage_classes)
         if num_newer_versions is not None:
@@ -356,15 +353,6 @@ class BucketLifecycleRuleConditionArgs:
     @created_before.setter
     def created_before(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "created_before", value)
-
-    @property
-    @pulumi.getter(name="isLive")
-    def is_live(self) -> Optional[pulumi.Input[bool]]:
-        return pulumi.get(self, "is_live")
-
-    @is_live.setter
-    def is_live(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "is_live", value)
 
     @property
     @pulumi.getter(name="matchesStorageClasses")

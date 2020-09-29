@@ -63,7 +63,7 @@ namespace Pulumi.Gcp.Kms
         /// <summary>
         /// If the enclosing CryptoKey has purpose `ASYMMETRIC_SIGN` or `ASYMMETRIC_DECRYPT`, this block contains details about the public key associated to this CryptoKeyVersion. Structure is documented below.
         /// </summary>
-        public readonly Outputs.GetKMSCryptoKeyVersionPublicKeyResult PublicKey;
+        public readonly ImmutableArray<Outputs.GetKMSCryptoKeyVersionPublicKeyResult> PublicKeys;
         /// <summary>
         /// The current state of the CryptoKeyVersion. See the [state reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions#CryptoKeyVersion.CryptoKeyVersionState) for possible outputs.
         /// </summary>
@@ -80,7 +80,7 @@ namespace Pulumi.Gcp.Kms
 
             string protectionLevel,
 
-            Outputs.GetKMSCryptoKeyVersionPublicKeyResult publicKey,
+            ImmutableArray<Outputs.GetKMSCryptoKeyVersionPublicKeyResult> publicKeys,
 
             string state,
 
@@ -90,7 +90,7 @@ namespace Pulumi.Gcp.Kms
             CryptoKey = cryptoKey;
             Id = id;
             ProtectionLevel = protectionLevel;
-            PublicKey = publicKey;
+            PublicKeys = publicKeys;
             State = state;
             Version = version;
         }

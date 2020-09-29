@@ -23,6 +23,7 @@ class Cluster(pulumi.CustomResource):
                  cluster_ipv4_cidr: Optional[pulumi.Input[str]] = None,
                  cluster_telemetry: Optional[pulumi.Input[pulumi.InputType['ClusterClusterTelemetryArgs']]] = None,
                  database_encryption: Optional[pulumi.Input[pulumi.InputType['ClusterDatabaseEncryptionArgs']]] = None,
+                 datapath_provider: Optional[pulumi.Input[str]] = None,
                  default_max_pods_per_node: Optional[pulumi.Input[int]] = None,
                  default_snat_status: Optional[pulumi.Input[pulumi.InputType['ClusterDefaultSnatStatusArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -93,6 +94,7 @@ class Cluster(pulumi.CustomResource):
                [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterDatabaseEncryptionArgs']] database_encryption: Structure is documented below.
+        :param pulumi.Input[str] datapath_provider: The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
         :param pulumi.Input[int] default_max_pods_per_node: The default maximum number of pods
                per node in this cluster. This doesn't work on "routes-based" clusters, clusters
                that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
@@ -247,6 +249,7 @@ class Cluster(pulumi.CustomResource):
             __props__['cluster_ipv4_cidr'] = cluster_ipv4_cidr
             __props__['cluster_telemetry'] = cluster_telemetry
             __props__['database_encryption'] = database_encryption
+            __props__['datapath_provider'] = datapath_provider
             __props__['default_max_pods_per_node'] = default_max_pods_per_node
             __props__['default_snat_status'] = default_snat_status
             __props__['description'] = description
@@ -307,6 +310,7 @@ class Cluster(pulumi.CustomResource):
             cluster_ipv4_cidr: Optional[pulumi.Input[str]] = None,
             cluster_telemetry: Optional[pulumi.Input[pulumi.InputType['ClusterClusterTelemetryArgs']]] = None,
             database_encryption: Optional[pulumi.Input[pulumi.InputType['ClusterDatabaseEncryptionArgs']]] = None,
+            datapath_provider: Optional[pulumi.Input[str]] = None,
             default_max_pods_per_node: Optional[pulumi.Input[int]] = None,
             default_snat_status: Optional[pulumi.Input[pulumi.InputType['ClusterDefaultSnatStatusArgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -376,6 +380,7 @@ class Cluster(pulumi.CustomResource):
                [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterDatabaseEncryptionArgs']] database_encryption: Structure is documented below.
+        :param pulumi.Input[str] datapath_provider: The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
         :param pulumi.Input[int] default_max_pods_per_node: The default maximum number of pods
                per node in this cluster. This doesn't work on "routes-based" clusters, clusters
                that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
@@ -532,6 +537,7 @@ class Cluster(pulumi.CustomResource):
         __props__["cluster_ipv4_cidr"] = cluster_ipv4_cidr
         __props__["cluster_telemetry"] = cluster_telemetry
         __props__["database_encryption"] = database_encryption
+        __props__["datapath_provider"] = datapath_provider
         __props__["default_max_pods_per_node"] = default_max_pods_per_node
         __props__["default_snat_status"] = default_snat_status
         __props__["description"] = description
@@ -637,6 +643,14 @@ class Cluster(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "database_encryption")
+
+    @property
+    @pulumi.getter(name="datapathProvider")
+    def datapath_provider(self) -> pulumi.Output[str]:
+        """
+        The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+        """
+        return pulumi.get(self, "datapath_provider")
 
     @property
     @pulumi.getter(name="defaultMaxPodsPerNode")

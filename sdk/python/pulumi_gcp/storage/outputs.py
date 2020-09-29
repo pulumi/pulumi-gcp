@@ -268,7 +268,6 @@ class BucketLifecycleRuleCondition(dict):
     def __init__(__self__, *,
                  age: Optional[int] = None,
                  created_before: Optional[str] = None,
-                 is_live: Optional[bool] = None,
                  matches_storage_classes: Optional[Sequence[str]] = None,
                  num_newer_versions: Optional[int] = None,
                  with_state: Optional[str] = None):
@@ -283,8 +282,6 @@ class BucketLifecycleRuleCondition(dict):
             pulumi.set(__self__, "age", age)
         if created_before is not None:
             pulumi.set(__self__, "created_before", created_before)
-        if is_live is not None:
-            pulumi.set(__self__, "is_live", is_live)
         if matches_storage_classes is not None:
             pulumi.set(__self__, "matches_storage_classes", matches_storage_classes)
         if num_newer_versions is not None:
@@ -307,11 +304,6 @@ class BucketLifecycleRuleCondition(dict):
         Creation date of an object in RFC 3339 (e.g. `2017-06-13`) to satisfy this condition.
         """
         return pulumi.get(self, "created_before")
-
-    @property
-    @pulumi.getter(name="isLive")
-    def is_live(self) -> Optional[bool]:
-        return pulumi.get(self, "is_live")
 
     @property
     @pulumi.getter(name="matchesStorageClasses")

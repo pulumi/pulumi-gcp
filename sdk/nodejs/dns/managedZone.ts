@@ -61,6 +61,11 @@ export class ManagedZone extends pulumi.CustomResource {
      */
     public readonly dnssecConfig!: pulumi.Output<outputs.dns.ManagedZoneDnssecConfig | undefined>;
     /**
+     * Set this true to delete all records in the zone.
+     * The `dnssecConfig` block supports:
+     */
+    public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
+    /**
      * The presence for this field indicates that outbound forwarding is enabled
      * for this zone. The value of this field contains the set of destinations
      * to forward to.
@@ -130,6 +135,7 @@ export class ManagedZone extends pulumi.CustomResource {
             inputs["description"] = state ? state.description : undefined;
             inputs["dnsName"] = state ? state.dnsName : undefined;
             inputs["dnssecConfig"] = state ? state.dnssecConfig : undefined;
+            inputs["forceDestroy"] = state ? state.forceDestroy : undefined;
             inputs["forwardingConfig"] = state ? state.forwardingConfig : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -148,6 +154,7 @@ export class ManagedZone extends pulumi.CustomResource {
             inputs["description"] = (args ? args.description : undefined) || "Managed by Pulumi";
             inputs["dnsName"] = args ? args.dnsName : undefined;
             inputs["dnssecConfig"] = args ? args.dnssecConfig : undefined;
+            inputs["forceDestroy"] = args ? args.forceDestroy : undefined;
             inputs["forwardingConfig"] = args ? args.forwardingConfig : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -187,6 +194,11 @@ export interface ManagedZoneState {
      * Structure is documented below.
      */
     readonly dnssecConfig?: pulumi.Input<inputs.dns.ManagedZoneDnssecConfig>;
+    /**
+     * Set this true to delete all records in the zone.
+     * The `dnssecConfig` block supports:
+     */
+    readonly forceDestroy?: pulumi.Input<boolean>;
     /**
      * The presence for this field indicates that outbound forwarding is enabled
      * for this zone. The value of this field contains the set of destinations
@@ -260,6 +272,11 @@ export interface ManagedZoneArgs {
      * Structure is documented below.
      */
     readonly dnssecConfig?: pulumi.Input<inputs.dns.ManagedZoneDnssecConfig>;
+    /**
+     * Set this true to delete all records in the zone.
+     * The `dnssecConfig` block supports:
+     */
+    readonly forceDestroy?: pulumi.Input<boolean>;
     /**
      * The presence for this field indicates that outbound forwarding is enabled
      * for this zone. The value of this field contains the set of destinations

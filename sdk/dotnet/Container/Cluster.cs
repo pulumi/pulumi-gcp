@@ -71,6 +71,12 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.ClusterDatabaseEncryption> DatabaseEncryption { get; private set; } = null!;
 
         /// <summary>
+        /// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+        /// </summary>
+        [Output("datapathProvider")]
+        public Output<string> DatapathProvider { get; private set; } = null!;
+
+        /// <summary>
         /// The default maximum number of pods
         /// per node in this cluster. This doesn't work on "routes-based" clusters, clusters
         /// that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
@@ -528,6 +534,12 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterDatabaseEncryptionArgs>? DatabaseEncryption { get; set; }
 
         /// <summary>
+        /// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+        /// </summary>
+        [Input("datapathProvider")]
+        public Input<string>? DatapathProvider { get; set; }
+
+        /// <summary>
         /// The default maximum number of pods
         /// per node in this cluster. This doesn't work on "routes-based" clusters, clusters
         /// that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
@@ -909,6 +921,12 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("databaseEncryption")]
         public Input<Inputs.ClusterDatabaseEncryptionGetArgs>? DatabaseEncryption { get; set; }
+
+        /// <summary>
+        /// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+        /// </summary>
+        [Input("datapathProvider")]
+        public Input<string>? DatapathProvider { get; set; }
 
         /// <summary>
         /// The default maximum number of pods

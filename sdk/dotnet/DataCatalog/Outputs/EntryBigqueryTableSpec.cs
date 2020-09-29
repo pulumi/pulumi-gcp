@@ -14,20 +14,20 @@ namespace Pulumi.Gcp.DataCatalog.Outputs
     public sealed class EntryBigqueryTableSpec
     {
         public readonly string? TableSourceType;
-        public readonly Outputs.EntryBigqueryTableSpecTableSpec? TableSpec;
-        public readonly Outputs.EntryBigqueryTableSpecViewSpec? ViewSpec;
+        public readonly ImmutableArray<Outputs.EntryBigqueryTableSpecTableSpec> TableSpecs;
+        public readonly ImmutableArray<Outputs.EntryBigqueryTableSpecViewSpec> ViewSpecs;
 
         [OutputConstructor]
         private EntryBigqueryTableSpec(
             string? tableSourceType,
 
-            Outputs.EntryBigqueryTableSpecTableSpec? tableSpec,
+            ImmutableArray<Outputs.EntryBigqueryTableSpecTableSpec> tableSpecs,
 
-            Outputs.EntryBigqueryTableSpecViewSpec? viewSpec)
+            ImmutableArray<Outputs.EntryBigqueryTableSpecViewSpec> viewSpecs)
         {
             TableSourceType = tableSourceType;
-            TableSpec = tableSpec;
-            ViewSpec = viewSpec;
+            TableSpecs = tableSpecs;
+            ViewSpecs = viewSpecs;
         }
     }
 }

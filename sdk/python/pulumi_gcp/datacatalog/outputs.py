@@ -61,14 +61,14 @@ class EntryBigqueryDateShardedSpec(dict):
 class EntryBigqueryTableSpec(dict):
     def __init__(__self__, *,
                  table_source_type: Optional[str] = None,
-                 table_spec: Optional['outputs.EntryBigqueryTableSpecTableSpec'] = None,
-                 view_spec: Optional['outputs.EntryBigqueryTableSpecViewSpec'] = None):
+                 table_specs: Optional[Sequence['outputs.EntryBigqueryTableSpecTableSpec']] = None,
+                 view_specs: Optional[Sequence['outputs.EntryBigqueryTableSpecViewSpec']] = None):
         if table_source_type is not None:
             pulumi.set(__self__, "table_source_type", table_source_type)
-        if table_spec is not None:
-            pulumi.set(__self__, "table_spec", table_spec)
-        if view_spec is not None:
-            pulumi.set(__self__, "view_spec", view_spec)
+        if table_specs is not None:
+            pulumi.set(__self__, "table_specs", table_specs)
+        if view_specs is not None:
+            pulumi.set(__self__, "view_specs", view_specs)
 
     @property
     @pulumi.getter(name="tableSourceType")
@@ -76,14 +76,14 @@ class EntryBigqueryTableSpec(dict):
         return pulumi.get(self, "table_source_type")
 
     @property
-    @pulumi.getter(name="tableSpec")
-    def table_spec(self) -> Optional['outputs.EntryBigqueryTableSpecTableSpec']:
-        return pulumi.get(self, "table_spec")
+    @pulumi.getter(name="tableSpecs")
+    def table_specs(self) -> Optional[Sequence['outputs.EntryBigqueryTableSpecTableSpec']]:
+        return pulumi.get(self, "table_specs")
 
     @property
-    @pulumi.getter(name="viewSpec")
-    def view_spec(self) -> Optional['outputs.EntryBigqueryTableSpecViewSpec']:
-        return pulumi.get(self, "view_spec")
+    @pulumi.getter(name="viewSpecs")
+    def view_specs(self) -> Optional[Sequence['outputs.EntryBigqueryTableSpecViewSpec']]:
+        return pulumi.get(self, "view_specs")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

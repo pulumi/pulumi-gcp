@@ -62,7 +62,7 @@ namespace Pulumi.Gcp.CloudFunctions
         public Output<string> HttpsTriggerUrl { get; private set; } = null!;
 
         /// <summary>
-        /// String value that controls what traffic can reach the function. Allowed values are ALLOW_ALL and ALLOW_INTERNAL_ONLY. Changes to this field will recreate the cloud function.
+        /// String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Changes to this field will recreate the cloud function.
         /// </summary>
         [Output("ingressSettings")]
         public Output<string?> IngressSettings { get; private set; } = null!;
@@ -242,7 +242,7 @@ namespace Pulumi.Gcp.CloudFunctions
         public Input<string>? HttpsTriggerUrl { get; set; }
 
         /// <summary>
-        /// String value that controls what traffic can reach the function. Allowed values are ALLOW_ALL and ALLOW_INTERNAL_ONLY. Changes to this field will recreate the cloud function.
+        /// String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Changes to this field will recreate the cloud function.
         /// </summary>
         [Input("ingressSettings")]
         public Input<string>? IngressSettings { get; set; }
@@ -389,7 +389,7 @@ namespace Pulumi.Gcp.CloudFunctions
         public Input<string>? HttpsTriggerUrl { get; set; }
 
         /// <summary>
-        /// String value that controls what traffic can reach the function. Allowed values are ALLOW_ALL and ALLOW_INTERNAL_ONLY. Changes to this field will recreate the cloud function.
+        /// String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Changes to this field will recreate the cloud function.
         /// </summary>
         [Input("ingressSettings")]
         public Input<string>? IngressSettings { get; set; }

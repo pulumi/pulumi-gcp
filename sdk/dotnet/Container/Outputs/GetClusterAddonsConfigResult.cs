@@ -21,7 +21,6 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly ImmutableArray<Outputs.GetClusterAddonsConfigHttpLoadBalancingResult> HttpLoadBalancings;
         public readonly ImmutableArray<Outputs.GetClusterAddonsConfigIstioConfigResult> IstioConfigs;
         public readonly ImmutableArray<Outputs.GetClusterAddonsConfigKalmConfigResult> KalmConfigs;
-        public readonly ImmutableArray<Outputs.GetClusterAddonsConfigKubernetesDashboardResult> KubernetesDashboards;
         public readonly ImmutableArray<Outputs.GetClusterAddonsConfigNetworkPolicyConfigResult> NetworkPolicyConfigs;
 
         [OutputConstructor]
@@ -42,8 +41,6 @@ namespace Pulumi.Gcp.Container.Outputs
 
             ImmutableArray<Outputs.GetClusterAddonsConfigKalmConfigResult> kalmConfigs,
 
-            ImmutableArray<Outputs.GetClusterAddonsConfigKubernetesDashboardResult> kubernetesDashboards,
-
             ImmutableArray<Outputs.GetClusterAddonsConfigNetworkPolicyConfigResult> networkPolicyConfigs)
         {
             CloudrunConfigs = cloudrunConfigs;
@@ -54,7 +51,6 @@ namespace Pulumi.Gcp.Container.Outputs
             HttpLoadBalancings = httpLoadBalancings;
             IstioConfigs = istioConfigs;
             KalmConfigs = kalmConfigs;
-            KubernetesDashboards = kubernetesDashboards;
             NetworkPolicyConfigs = networkPolicyConfigs;
         }
     }

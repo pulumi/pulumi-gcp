@@ -57,7 +57,7 @@ export class KeyRingImportJob extends pulumi.CustomResource {
      * statement to verify attributes of the key as stored on the HSM, independently of Google. Only present if the chosen
      * ImportMethod is one with a protection level of HSM.
      */
-    public /*out*/ readonly attestation!: pulumi.Output<outputs.kms.KeyRingImportJobAttestation>;
+    public /*out*/ readonly attestations!: pulumi.Output<outputs.kms.KeyRingImportJobAttestation[]>;
     /**
      * The time at which this resource is scheduled for expiration and can no longer be used. This is in RFC3339 text format.
      */
@@ -89,7 +89,7 @@ export class KeyRingImportJob extends pulumi.CustomResource {
     /**
      * The public key with which to wrap key material prior to import. Only returned if state is 'ACTIVE'.
      */
-    public /*out*/ readonly publicKey!: pulumi.Output<outputs.kms.KeyRingImportJobPublicKey>;
+    public /*out*/ readonly publicKeys!: pulumi.Output<outputs.kms.KeyRingImportJobPublicKey[]>;
     /**
      * The current state of the ImportJob, indicating if it can be used.
      */
@@ -107,14 +107,14 @@ export class KeyRingImportJob extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as KeyRingImportJobState | undefined;
-            inputs["attestation"] = state ? state.attestation : undefined;
+            inputs["attestations"] = state ? state.attestations : undefined;
             inputs["expireTime"] = state ? state.expireTime : undefined;
             inputs["importJobId"] = state ? state.importJobId : undefined;
             inputs["importMethod"] = state ? state.importMethod : undefined;
             inputs["keyRing"] = state ? state.keyRing : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["protectionLevel"] = state ? state.protectionLevel : undefined;
-            inputs["publicKey"] = state ? state.publicKey : undefined;
+            inputs["publicKeys"] = state ? state.publicKeys : undefined;
             inputs["state"] = state ? state.state : undefined;
         } else {
             const args = argsOrState as KeyRingImportJobArgs | undefined;
@@ -134,10 +134,10 @@ export class KeyRingImportJob extends pulumi.CustomResource {
             inputs["importMethod"] = args ? args.importMethod : undefined;
             inputs["keyRing"] = args ? args.keyRing : undefined;
             inputs["protectionLevel"] = args ? args.protectionLevel : undefined;
-            inputs["attestation"] = undefined /*out*/;
+            inputs["attestations"] = undefined /*out*/;
             inputs["expireTime"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
-            inputs["publicKey"] = undefined /*out*/;
+            inputs["publicKeys"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
         }
         if (!opts) {
@@ -160,7 +160,7 @@ export interface KeyRingImportJobState {
      * statement to verify attributes of the key as stored on the HSM, independently of Google. Only present if the chosen
      * ImportMethod is one with a protection level of HSM.
      */
-    readonly attestation?: pulumi.Input<inputs.kms.KeyRingImportJobAttestation>;
+    readonly attestations?: pulumi.Input<pulumi.Input<inputs.kms.KeyRingImportJobAttestation>[]>;
     /**
      * The time at which this resource is scheduled for expiration and can no longer be used. This is in RFC3339 text format.
      */
@@ -192,7 +192,7 @@ export interface KeyRingImportJobState {
     /**
      * The public key with which to wrap key material prior to import. Only returned if state is 'ACTIVE'.
      */
-    readonly publicKey?: pulumi.Input<inputs.kms.KeyRingImportJobPublicKey>;
+    readonly publicKeys?: pulumi.Input<pulumi.Input<inputs.kms.KeyRingImportJobPublicKey>[]>;
     /**
      * The current state of the ImportJob, indicating if it can be used.
      */

@@ -587,7 +587,7 @@ type TriggerBuildArtifactsObjects struct {
 	// -
 	// Output only. Stores timing information for pushing all artifact objects.
 	// Structure is documented below.
-	Timing *TriggerBuildArtifactsObjectsTiming `pulumi:"timing"`
+	Timings []TriggerBuildArtifactsObjectsTiming `pulumi:"timings"`
 }
 
 // TriggerBuildArtifactsObjectsInput is an input type that accepts TriggerBuildArtifactsObjectsArgs and TriggerBuildArtifactsObjectsOutput values.
@@ -611,7 +611,7 @@ type TriggerBuildArtifactsObjectsArgs struct {
 	// -
 	// Output only. Stores timing information for pushing all artifact objects.
 	// Structure is documented below.
-	Timing TriggerBuildArtifactsObjectsTimingPtrInput `pulumi:"timing"`
+	Timings TriggerBuildArtifactsObjectsTimingArrayInput `pulumi:"timings"`
 }
 
 func (TriggerBuildArtifactsObjectsArgs) ElementType() reflect.Type {
@@ -706,8 +706,8 @@ func (o TriggerBuildArtifactsObjectsOutput) Paths() pulumi.StringArrayOutput {
 // -
 // Output only. Stores timing information for pushing all artifact objects.
 // Structure is documented below.
-func (o TriggerBuildArtifactsObjectsOutput) Timing() TriggerBuildArtifactsObjectsTimingPtrOutput {
-	return o.ApplyT(func(v TriggerBuildArtifactsObjects) *TriggerBuildArtifactsObjectsTiming { return v.Timing }).(TriggerBuildArtifactsObjectsTimingPtrOutput)
+func (o TriggerBuildArtifactsObjectsOutput) Timings() TriggerBuildArtifactsObjectsTimingArrayOutput {
+	return o.ApplyT(func(v TriggerBuildArtifactsObjects) []TriggerBuildArtifactsObjectsTiming { return v.Timings }).(TriggerBuildArtifactsObjectsTimingArrayOutput)
 }
 
 type TriggerBuildArtifactsObjectsPtrOutput struct{ *pulumi.OutputState }
@@ -753,13 +753,13 @@ func (o TriggerBuildArtifactsObjectsPtrOutput) Paths() pulumi.StringArrayOutput 
 // -
 // Output only. Stores timing information for pushing all artifact objects.
 // Structure is documented below.
-func (o TriggerBuildArtifactsObjectsPtrOutput) Timing() TriggerBuildArtifactsObjectsTimingPtrOutput {
-	return o.ApplyT(func(v *TriggerBuildArtifactsObjects) *TriggerBuildArtifactsObjectsTiming {
+func (o TriggerBuildArtifactsObjectsPtrOutput) Timings() TriggerBuildArtifactsObjectsTimingArrayOutput {
+	return o.ApplyT(func(v *TriggerBuildArtifactsObjects) []TriggerBuildArtifactsObjectsTiming {
 		if v == nil {
 			return nil
 		}
-		return v.Timing
-	}).(TriggerBuildArtifactsObjectsTimingPtrOutput)
+		return v.Timings
+	}).(TriggerBuildArtifactsObjectsTimingArrayOutput)
 }
 
 type TriggerBuildArtifactsObjectsTiming struct {
@@ -807,45 +807,29 @@ func (i TriggerBuildArtifactsObjectsTimingArgs) ToTriggerBuildArtifactsObjectsTi
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildArtifactsObjectsTimingOutput)
 }
 
-func (i TriggerBuildArtifactsObjectsTimingArgs) ToTriggerBuildArtifactsObjectsTimingPtrOutput() TriggerBuildArtifactsObjectsTimingPtrOutput {
-	return i.ToTriggerBuildArtifactsObjectsTimingPtrOutputWithContext(context.Background())
-}
-
-func (i TriggerBuildArtifactsObjectsTimingArgs) ToTriggerBuildArtifactsObjectsTimingPtrOutputWithContext(ctx context.Context) TriggerBuildArtifactsObjectsTimingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildArtifactsObjectsTimingOutput).ToTriggerBuildArtifactsObjectsTimingPtrOutputWithContext(ctx)
-}
-
-// TriggerBuildArtifactsObjectsTimingPtrInput is an input type that accepts TriggerBuildArtifactsObjectsTimingArgs, TriggerBuildArtifactsObjectsTimingPtr and TriggerBuildArtifactsObjectsTimingPtrOutput values.
-// You can construct a concrete instance of `TriggerBuildArtifactsObjectsTimingPtrInput` via:
+// TriggerBuildArtifactsObjectsTimingArrayInput is an input type that accepts TriggerBuildArtifactsObjectsTimingArray and TriggerBuildArtifactsObjectsTimingArrayOutput values.
+// You can construct a concrete instance of `TriggerBuildArtifactsObjectsTimingArrayInput` via:
 //
-//          TriggerBuildArtifactsObjectsTimingArgs{...}
-//
-//  or:
-//
-//          nil
-type TriggerBuildArtifactsObjectsTimingPtrInput interface {
+//          TriggerBuildArtifactsObjectsTimingArray{ TriggerBuildArtifactsObjectsTimingArgs{...} }
+type TriggerBuildArtifactsObjectsTimingArrayInput interface {
 	pulumi.Input
 
-	ToTriggerBuildArtifactsObjectsTimingPtrOutput() TriggerBuildArtifactsObjectsTimingPtrOutput
-	ToTriggerBuildArtifactsObjectsTimingPtrOutputWithContext(context.Context) TriggerBuildArtifactsObjectsTimingPtrOutput
+	ToTriggerBuildArtifactsObjectsTimingArrayOutput() TriggerBuildArtifactsObjectsTimingArrayOutput
+	ToTriggerBuildArtifactsObjectsTimingArrayOutputWithContext(context.Context) TriggerBuildArtifactsObjectsTimingArrayOutput
 }
 
-type triggerBuildArtifactsObjectsTimingPtrType TriggerBuildArtifactsObjectsTimingArgs
+type TriggerBuildArtifactsObjectsTimingArray []TriggerBuildArtifactsObjectsTimingInput
 
-func TriggerBuildArtifactsObjectsTimingPtr(v *TriggerBuildArtifactsObjectsTimingArgs) TriggerBuildArtifactsObjectsTimingPtrInput {
-	return (*triggerBuildArtifactsObjectsTimingPtrType)(v)
+func (TriggerBuildArtifactsObjectsTimingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TriggerBuildArtifactsObjectsTiming)(nil)).Elem()
 }
 
-func (*triggerBuildArtifactsObjectsTimingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TriggerBuildArtifactsObjectsTiming)(nil)).Elem()
+func (i TriggerBuildArtifactsObjectsTimingArray) ToTriggerBuildArtifactsObjectsTimingArrayOutput() TriggerBuildArtifactsObjectsTimingArrayOutput {
+	return i.ToTriggerBuildArtifactsObjectsTimingArrayOutputWithContext(context.Background())
 }
 
-func (i *triggerBuildArtifactsObjectsTimingPtrType) ToTriggerBuildArtifactsObjectsTimingPtrOutput() TriggerBuildArtifactsObjectsTimingPtrOutput {
-	return i.ToTriggerBuildArtifactsObjectsTimingPtrOutputWithContext(context.Background())
-}
-
-func (i *triggerBuildArtifactsObjectsTimingPtrType) ToTriggerBuildArtifactsObjectsTimingPtrOutputWithContext(ctx context.Context) TriggerBuildArtifactsObjectsTimingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildArtifactsObjectsTimingPtrOutput)
+func (i TriggerBuildArtifactsObjectsTimingArray) ToTriggerBuildArtifactsObjectsTimingArrayOutputWithContext(ctx context.Context) TriggerBuildArtifactsObjectsTimingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildArtifactsObjectsTimingArrayOutput)
 }
 
 type TriggerBuildArtifactsObjectsTimingOutput struct{ *pulumi.OutputState }
@@ -862,16 +846,6 @@ func (o TriggerBuildArtifactsObjectsTimingOutput) ToTriggerBuildArtifactsObjects
 	return o
 }
 
-func (o TriggerBuildArtifactsObjectsTimingOutput) ToTriggerBuildArtifactsObjectsTimingPtrOutput() TriggerBuildArtifactsObjectsTimingPtrOutput {
-	return o.ToTriggerBuildArtifactsObjectsTimingPtrOutputWithContext(context.Background())
-}
-
-func (o TriggerBuildArtifactsObjectsTimingOutput) ToTriggerBuildArtifactsObjectsTimingPtrOutputWithContext(ctx context.Context) TriggerBuildArtifactsObjectsTimingPtrOutput {
-	return o.ApplyT(func(v TriggerBuildArtifactsObjectsTiming) *TriggerBuildArtifactsObjectsTiming {
-		return &v
-	}).(TriggerBuildArtifactsObjectsTimingPtrOutput)
-}
-
 // End of time span.
 // A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
 // nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -886,46 +860,24 @@ func (o TriggerBuildArtifactsObjectsTimingOutput) StartTime() pulumi.StringPtrOu
 	return o.ApplyT(func(v TriggerBuildArtifactsObjectsTiming) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }
 
-type TriggerBuildArtifactsObjectsTimingPtrOutput struct{ *pulumi.OutputState }
+type TriggerBuildArtifactsObjectsTimingArrayOutput struct{ *pulumi.OutputState }
 
-func (TriggerBuildArtifactsObjectsTimingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TriggerBuildArtifactsObjectsTiming)(nil)).Elem()
+func (TriggerBuildArtifactsObjectsTimingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TriggerBuildArtifactsObjectsTiming)(nil)).Elem()
 }
 
-func (o TriggerBuildArtifactsObjectsTimingPtrOutput) ToTriggerBuildArtifactsObjectsTimingPtrOutput() TriggerBuildArtifactsObjectsTimingPtrOutput {
+func (o TriggerBuildArtifactsObjectsTimingArrayOutput) ToTriggerBuildArtifactsObjectsTimingArrayOutput() TriggerBuildArtifactsObjectsTimingArrayOutput {
 	return o
 }
 
-func (o TriggerBuildArtifactsObjectsTimingPtrOutput) ToTriggerBuildArtifactsObjectsTimingPtrOutputWithContext(ctx context.Context) TriggerBuildArtifactsObjectsTimingPtrOutput {
+func (o TriggerBuildArtifactsObjectsTimingArrayOutput) ToTriggerBuildArtifactsObjectsTimingArrayOutputWithContext(ctx context.Context) TriggerBuildArtifactsObjectsTimingArrayOutput {
 	return o
 }
 
-func (o TriggerBuildArtifactsObjectsTimingPtrOutput) Elem() TriggerBuildArtifactsObjectsTimingOutput {
-	return o.ApplyT(func(v *TriggerBuildArtifactsObjectsTiming) TriggerBuildArtifactsObjectsTiming { return *v }).(TriggerBuildArtifactsObjectsTimingOutput)
-}
-
-// End of time span.
-// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-// nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-func (o TriggerBuildArtifactsObjectsTimingPtrOutput) EndTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TriggerBuildArtifactsObjectsTiming) *string {
-		if v == nil {
-			return nil
-		}
-		return v.EndTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Start of time span.
-// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-// nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-func (o TriggerBuildArtifactsObjectsTimingPtrOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TriggerBuildArtifactsObjectsTiming) *string {
-		if v == nil {
-			return nil
-		}
-		return v.StartTime
-	}).(pulumi.StringPtrOutput)
+func (o TriggerBuildArtifactsObjectsTimingArrayOutput) Index(i pulumi.IntInput) TriggerBuildArtifactsObjectsTimingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TriggerBuildArtifactsObjectsTiming {
+		return vs[0].([]TriggerBuildArtifactsObjectsTiming)[vs[1].(int)]
+	}).(TriggerBuildArtifactsObjectsTimingOutput)
 }
 
 type TriggerBuildOptions struct {
@@ -3520,7 +3472,7 @@ func init() {
 	pulumi.RegisterOutputType(TriggerBuildArtifactsObjectsOutput{})
 	pulumi.RegisterOutputType(TriggerBuildArtifactsObjectsPtrOutput{})
 	pulumi.RegisterOutputType(TriggerBuildArtifactsObjectsTimingOutput{})
-	pulumi.RegisterOutputType(TriggerBuildArtifactsObjectsTimingPtrOutput{})
+	pulumi.RegisterOutputType(TriggerBuildArtifactsObjectsTimingArrayOutput{})
 	pulumi.RegisterOutputType(TriggerBuildOptionsOutput{})
 	pulumi.RegisterOutputType(TriggerBuildOptionsPtrOutput{})
 	pulumi.RegisterOutputType(TriggerBuildOptionsVolumeOutput{})

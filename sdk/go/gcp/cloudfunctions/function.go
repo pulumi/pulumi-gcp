@@ -37,7 +37,7 @@ type Function struct {
 	EventTrigger FunctionEventTriggerOutput `pulumi:"eventTrigger"`
 	// URL which triggers function execution. Returned only if `triggerHttp` is used.
 	HttpsTriggerUrl pulumi.StringOutput `pulumi:"httpsTriggerUrl"`
-	// String value that controls what traffic can reach the function. Allowed values are ALLOW_ALL and ALLOW_INTERNAL_ONLY. Changes to this field will recreate the cloud function.
+	// String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Changes to this field will recreate the cloud function.
 	IngressSettings pulumi.StringPtrOutput `pulumi:"ingressSettings"`
 	// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
 	Labels pulumi.MapOutput `pulumi:"labels"`
@@ -114,7 +114,7 @@ type functionState struct {
 	EventTrigger *FunctionEventTrigger `pulumi:"eventTrigger"`
 	// URL which triggers function execution. Returned only if `triggerHttp` is used.
 	HttpsTriggerUrl *string `pulumi:"httpsTriggerUrl"`
-	// String value that controls what traffic can reach the function. Allowed values are ALLOW_ALL and ALLOW_INTERNAL_ONLY. Changes to this field will recreate the cloud function.
+	// String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Changes to this field will recreate the cloud function.
 	IngressSettings *string `pulumi:"ingressSettings"`
 	// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
 	Labels map[string]interface{} `pulumi:"labels"`
@@ -161,7 +161,7 @@ type FunctionState struct {
 	EventTrigger FunctionEventTriggerPtrInput
 	// URL which triggers function execution. Returned only if `triggerHttp` is used.
 	HttpsTriggerUrl pulumi.StringPtrInput
-	// String value that controls what traffic can reach the function. Allowed values are ALLOW_ALL and ALLOW_INTERNAL_ONLY. Changes to this field will recreate the cloud function.
+	// String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Changes to this field will recreate the cloud function.
 	IngressSettings pulumi.StringPtrInput
 	// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
 	Labels pulumi.MapInput
@@ -212,7 +212,7 @@ type functionArgs struct {
 	EventTrigger *FunctionEventTrigger `pulumi:"eventTrigger"`
 	// URL which triggers function execution. Returned only if `triggerHttp` is used.
 	HttpsTriggerUrl *string `pulumi:"httpsTriggerUrl"`
-	// String value that controls what traffic can reach the function. Allowed values are ALLOW_ALL and ALLOW_INTERNAL_ONLY. Changes to this field will recreate the cloud function.
+	// String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Changes to this field will recreate the cloud function.
 	IngressSettings *string `pulumi:"ingressSettings"`
 	// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
 	Labels map[string]interface{} `pulumi:"labels"`
@@ -260,7 +260,7 @@ type FunctionArgs struct {
 	EventTrigger FunctionEventTriggerPtrInput
 	// URL which triggers function execution. Returned only if `triggerHttp` is used.
 	HttpsTriggerUrl pulumi.StringPtrInput
-	// String value that controls what traffic can reach the function. Allowed values are ALLOW_ALL and ALLOW_INTERNAL_ONLY. Changes to this field will recreate the cloud function.
+	// String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Changes to this field will recreate the cloud function.
 	IngressSettings pulumi.StringPtrInput
 	// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
 	Labels pulumi.MapInput

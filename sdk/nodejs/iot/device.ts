@@ -52,7 +52,7 @@ export class Device extends pulumi.CustomResource {
     /**
      * The most recent device configuration, which is eventually sent from Cloud IoT Core to the device.
      */
-    public /*out*/ readonly config!: pulumi.Output<outputs.iot.DeviceConfig>;
+    public /*out*/ readonly configs!: pulumi.Output<outputs.iot.DeviceConfig[]>;
     /**
      * The credentials used to authenticate this device.
      * Structure is documented below.
@@ -74,7 +74,7 @@ export class Device extends pulumi.CustomResource {
     /**
      * The error message of the most recent error, such as a failure to publish to Cloud Pub/Sub.
      */
-    public /*out*/ readonly lastErrorStatus!: pulumi.Output<outputs.iot.DeviceLastErrorStatus>;
+    public /*out*/ readonly lastErrorStatuses!: pulumi.Output<outputs.iot.DeviceLastErrorStatus[]>;
     /**
      * The time the most recent error occurred, such as a failure to publish to Cloud Pub/Sub.
      */
@@ -116,7 +116,7 @@ export class Device extends pulumi.CustomResource {
     /**
      * The state most recently received from the device.
      */
-    public /*out*/ readonly state!: pulumi.Output<outputs.iot.DeviceState>;
+    public /*out*/ readonly states!: pulumi.Output<outputs.iot.DeviceState[]>;
 
     /**
      * Create a Device resource with the given unique name, arguments, and options.
@@ -131,12 +131,12 @@ export class Device extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as DeviceState | undefined;
             inputs["blocked"] = state ? state.blocked : undefined;
-            inputs["config"] = state ? state.config : undefined;
+            inputs["configs"] = state ? state.configs : undefined;
             inputs["credentials"] = state ? state.credentials : undefined;
             inputs["gatewayConfig"] = state ? state.gatewayConfig : undefined;
             inputs["lastConfigAckTime"] = state ? state.lastConfigAckTime : undefined;
             inputs["lastConfigSendTime"] = state ? state.lastConfigSendTime : undefined;
-            inputs["lastErrorStatus"] = state ? state.lastErrorStatus : undefined;
+            inputs["lastErrorStatuses"] = state ? state.lastErrorStatuses : undefined;
             inputs["lastErrorTime"] = state ? state.lastErrorTime : undefined;
             inputs["lastEventTime"] = state ? state.lastEventTime : undefined;
             inputs["lastHeartbeatTime"] = state ? state.lastHeartbeatTime : undefined;
@@ -146,7 +146,7 @@ export class Device extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["numId"] = state ? state.numId : undefined;
             inputs["registry"] = state ? state.registry : undefined;
-            inputs["state"] = state ? state.state : undefined;
+            inputs["states"] = state ? state.states : undefined;
         } else {
             const args = argsOrState as DeviceArgs | undefined;
             if (!args || args.registry === undefined) {
@@ -159,16 +159,16 @@ export class Device extends pulumi.CustomResource {
             inputs["metadata"] = args ? args.metadata : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["registry"] = args ? args.registry : undefined;
-            inputs["config"] = undefined /*out*/;
+            inputs["configs"] = undefined /*out*/;
             inputs["lastConfigAckTime"] = undefined /*out*/;
             inputs["lastConfigSendTime"] = undefined /*out*/;
-            inputs["lastErrorStatus"] = undefined /*out*/;
+            inputs["lastErrorStatuses"] = undefined /*out*/;
             inputs["lastErrorTime"] = undefined /*out*/;
             inputs["lastEventTime"] = undefined /*out*/;
             inputs["lastHeartbeatTime"] = undefined /*out*/;
             inputs["lastStateTime"] = undefined /*out*/;
             inputs["numId"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            inputs["states"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -192,7 +192,7 @@ export interface DeviceState {
     /**
      * The most recent device configuration, which is eventually sent from Cloud IoT Core to the device.
      */
-    readonly config?: pulumi.Input<inputs.iot.DeviceConfig>;
+    readonly configs?: pulumi.Input<pulumi.Input<inputs.iot.DeviceConfig>[]>;
     /**
      * The credentials used to authenticate this device.
      * Structure is documented below.
@@ -214,7 +214,7 @@ export interface DeviceState {
     /**
      * The error message of the most recent error, such as a failure to publish to Cloud Pub/Sub.
      */
-    readonly lastErrorStatus?: pulumi.Input<inputs.iot.DeviceLastErrorStatus>;
+    readonly lastErrorStatuses?: pulumi.Input<pulumi.Input<inputs.iot.DeviceLastErrorStatus>[]>;
     /**
      * The time the most recent error occurred, such as a failure to publish to Cloud Pub/Sub.
      */
@@ -256,7 +256,7 @@ export interface DeviceState {
     /**
      * The state most recently received from the device.
      */
-    readonly state?: pulumi.Input<inputs.iot.DeviceState>;
+    readonly states?: pulumi.Input<pulumi.Input<inputs.iot.DeviceState>[]>;
 }
 
 /**

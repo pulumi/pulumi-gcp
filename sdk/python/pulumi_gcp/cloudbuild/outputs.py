@@ -256,13 +256,13 @@ class TriggerBuildArtifactsObjects(dict):
     def __init__(__self__, *,
                  location: Optional[str] = None,
                  paths: Optional[Sequence[str]] = None,
-                 timing: Optional['outputs.TriggerBuildArtifactsObjectsTiming'] = None):
+                 timings: Optional[Sequence['outputs.TriggerBuildArtifactsObjectsTiming']] = None):
         """
         :param str location: Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
                Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
                this location as a prefix.
         :param Sequence[str] paths: Path globs used to match files in the build's workspace.
-        :param 'TriggerBuildArtifactsObjectsTimingArgs' timing: -
+        :param Sequence['TriggerBuildArtifactsObjectsTimingArgs'] timings: -
                Output only. Stores timing information for pushing all artifact objects.
                Structure is documented below.
         """
@@ -270,8 +270,8 @@ class TriggerBuildArtifactsObjects(dict):
             pulumi.set(__self__, "location", location)
         if paths is not None:
             pulumi.set(__self__, "paths", paths)
-        if timing is not None:
-            pulumi.set(__self__, "timing", timing)
+        if timings is not None:
+            pulumi.set(__self__, "timings", timings)
 
     @property
     @pulumi.getter
@@ -293,13 +293,13 @@ class TriggerBuildArtifactsObjects(dict):
 
     @property
     @pulumi.getter
-    def timing(self) -> Optional['outputs.TriggerBuildArtifactsObjectsTiming']:
+    def timings(self) -> Optional[Sequence['outputs.TriggerBuildArtifactsObjectsTiming']]:
         """
         -
         Output only. Stores timing information for pushing all artifact objects.
         Structure is documented below.
         """
-        return pulumi.get(self, "timing")
+        return pulumi.get(self, "timings")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
