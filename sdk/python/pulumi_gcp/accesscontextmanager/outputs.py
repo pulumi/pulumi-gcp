@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -37,10 +37,10 @@ __all__ = [
 @pulumi.output_type
 class AccessLevelBasic(dict):
     def __init__(__self__, *,
-                 conditions: List['outputs.AccessLevelBasicCondition'],
+                 conditions: Sequence['outputs.AccessLevelBasicCondition'],
                  combining_function: Optional[str] = None):
         """
-        :param List['AccessLevelBasicConditionArgs'] conditions: A set of requirements for the AccessLevel to be granted.
+        :param Sequence['AccessLevelBasicConditionArgs'] conditions: A set of requirements for the AccessLevel to be granted.
                Structure is documented below.
         :param str combining_function: How the conditions list should be combined to determine if a request
                is granted this AccessLevel. If AND is used, each Condition in
@@ -56,7 +56,7 @@ class AccessLevelBasic(dict):
 
     @property
     @pulumi.getter
-    def conditions(self) -> List['outputs.AccessLevelBasicCondition']:
+    def conditions(self) -> Sequence['outputs.AccessLevelBasicCondition']:
         """
         A set of requirements for the AccessLevel to be granted.
         Structure is documented below.
@@ -85,17 +85,17 @@ class AccessLevelBasic(dict):
 class AccessLevelBasicCondition(dict):
     def __init__(__self__, *,
                  device_policy: Optional['outputs.AccessLevelBasicConditionDevicePolicy'] = None,
-                 ip_subnetworks: Optional[List[str]] = None,
-                 members: Optional[List[str]] = None,
+                 ip_subnetworks: Optional[Sequence[str]] = None,
+                 members: Optional[Sequence[str]] = None,
                  negate: Optional[bool] = None,
-                 regions: Optional[List[str]] = None,
-                 required_access_levels: Optional[List[str]] = None):
+                 regions: Optional[Sequence[str]] = None,
+                 required_access_levels: Optional[Sequence[str]] = None):
         """
         :param 'AccessLevelBasicConditionDevicePolicyArgs' device_policy: Device specific restrictions, all restrictions must hold for
                the Condition to be true. If not specified, all devices are
                allowed.
                Structure is documented below.
-        :param List[str] ip_subnetworks: A list of CIDR block IP subnetwork specification. May be IPv4
+        :param Sequence[str] ip_subnetworks: A list of CIDR block IP subnetwork specification. May be IPv4
                or IPv6.
                Note that for a CIDR IP address block, the specified IP address
                portion must be properly truncated (i.e. all the host bits must
@@ -105,7 +105,7 @@ class AccessLevelBasicCondition(dict):
                is not. The originating IP of a request must be in one of the
                listed subnets in order for this Condition to be true.
                If empty, all IP addresses are allowed.
-        :param List[str] members: An allowed list of members (users, service accounts).
+        :param Sequence[str] members: An allowed list of members (users, service accounts).
                Using groups is not supported yet.
                The signed-in user originating the request must be a part of one
                of the provided members. If not specified, a request may come
@@ -115,10 +115,10 @@ class AccessLevelBasicCondition(dict):
         :param bool negate: Whether to negate the Condition. If true, the Condition becomes
                a NAND over its non-empty fields, each field must be false for
                the Condition overall to be satisfied. Defaults to false.
-        :param List[str] regions: The request must originate from one of the provided
+        :param Sequence[str] regions: The request must originate from one of the provided
                countries/regions.
                Format: A valid ISO 3166-1 alpha-2 code.
-        :param List[str] required_access_levels: A list of other access levels defined in the same Policy,
+        :param Sequence[str] required_access_levels: A list of other access levels defined in the same Policy,
                referenced by resource name. Referencing an AccessLevel which
                does not exist is an error. All access levels listed must be
                granted for the Condition to be true.
@@ -150,7 +150,7 @@ class AccessLevelBasicCondition(dict):
 
     @property
     @pulumi.getter(name="ipSubnetworks")
-    def ip_subnetworks(self) -> Optional[List[str]]:
+    def ip_subnetworks(self) -> Optional[Sequence[str]]:
         """
         A list of CIDR block IP subnetwork specification. May be IPv4
         or IPv6.
@@ -167,7 +167,7 @@ class AccessLevelBasicCondition(dict):
 
     @property
     @pulumi.getter
-    def members(self) -> Optional[List[str]]:
+    def members(self) -> Optional[Sequence[str]]:
         """
         An allowed list of members (users, service accounts).
         Using groups is not supported yet.
@@ -191,7 +191,7 @@ class AccessLevelBasicCondition(dict):
 
     @property
     @pulumi.getter
-    def regions(self) -> Optional[List[str]]:
+    def regions(self) -> Optional[Sequence[str]]:
         """
         The request must originate from one of the provided
         countries/regions.
@@ -201,7 +201,7 @@ class AccessLevelBasicCondition(dict):
 
     @property
     @pulumi.getter(name="requiredAccessLevels")
-    def required_access_levels(self) -> Optional[List[str]]:
+    def required_access_levels(self) -> Optional[Sequence[str]]:
         """
         A list of other access levels defined in the same Policy,
         referenced by resource name. Referencing an AccessLevel which
@@ -218,20 +218,20 @@ class AccessLevelBasicCondition(dict):
 @pulumi.output_type
 class AccessLevelBasicConditionDevicePolicy(dict):
     def __init__(__self__, *,
-                 allowed_device_management_levels: Optional[List[str]] = None,
-                 allowed_encryption_statuses: Optional[List[str]] = None,
-                 os_constraints: Optional[List['outputs.AccessLevelBasicConditionDevicePolicyOsConstraint']] = None,
+                 allowed_device_management_levels: Optional[Sequence[str]] = None,
+                 allowed_encryption_statuses: Optional[Sequence[str]] = None,
+                 os_constraints: Optional[Sequence['outputs.AccessLevelBasicConditionDevicePolicyOsConstraint']] = None,
                  require_admin_approval: Optional[bool] = None,
                  require_corp_owned: Optional[bool] = None,
                  require_screen_lock: Optional[bool] = None):
         """
-        :param List[str] allowed_device_management_levels: A list of allowed device management levels.
+        :param Sequence[str] allowed_device_management_levels: A list of allowed device management levels.
                An empty list allows all management levels.
                Each value may be one of `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, and `COMPLETE`.
-        :param List[str] allowed_encryption_statuses: A list of allowed encryptions statuses.
+        :param Sequence[str] allowed_encryption_statuses: A list of allowed encryptions statuses.
                An empty list allows all statuses.
                Each value may be one of `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, and `ENCRYPTED`.
-        :param List['AccessLevelBasicConditionDevicePolicyOsConstraintArgs'] os_constraints: A list of allowed OS versions.
+        :param Sequence['AccessLevelBasicConditionDevicePolicyOsConstraintArgs'] os_constraints: A list of allowed OS versions.
                An empty list allows all types and all versions.
                Structure is documented below.
         :param bool require_admin_approval: Whether the device needs to be approved by the customer admin.
@@ -254,7 +254,7 @@ class AccessLevelBasicConditionDevicePolicy(dict):
 
     @property
     @pulumi.getter(name="allowedDeviceManagementLevels")
-    def allowed_device_management_levels(self) -> Optional[List[str]]:
+    def allowed_device_management_levels(self) -> Optional[Sequence[str]]:
         """
         A list of allowed device management levels.
         An empty list allows all management levels.
@@ -264,7 +264,7 @@ class AccessLevelBasicConditionDevicePolicy(dict):
 
     @property
     @pulumi.getter(name="allowedEncryptionStatuses")
-    def allowed_encryption_statuses(self) -> Optional[List[str]]:
+    def allowed_encryption_statuses(self) -> Optional[Sequence[str]]:
         """
         A list of allowed encryptions statuses.
         An empty list allows all statuses.
@@ -274,7 +274,7 @@ class AccessLevelBasicConditionDevicePolicy(dict):
 
     @property
     @pulumi.getter(name="osConstraints")
-    def os_constraints(self) -> Optional[List['outputs.AccessLevelBasicConditionDevicePolicyOsConstraint']]:
+    def os_constraints(self) -> Optional[Sequence['outputs.AccessLevelBasicConditionDevicePolicyOsConstraint']]:
         """
         A list of allowed OS versions.
         An empty list allows all types and all versions.
@@ -515,10 +515,10 @@ class AccessLevelsAccessLevel(dict):
 @pulumi.output_type
 class AccessLevelsAccessLevelBasic(dict):
     def __init__(__self__, *,
-                 conditions: List['outputs.AccessLevelsAccessLevelBasicCondition'],
+                 conditions: Sequence['outputs.AccessLevelsAccessLevelBasicCondition'],
                  combining_function: Optional[str] = None):
         """
-        :param List['AccessLevelsAccessLevelBasicConditionArgs'] conditions: A set of requirements for the AccessLevel to be granted.
+        :param Sequence['AccessLevelsAccessLevelBasicConditionArgs'] conditions: A set of requirements for the AccessLevel to be granted.
                Structure is documented below.
         :param str combining_function: How the conditions list should be combined to determine if a request
                is granted this AccessLevel. If AND is used, each Condition in
@@ -534,7 +534,7 @@ class AccessLevelsAccessLevelBasic(dict):
 
     @property
     @pulumi.getter
-    def conditions(self) -> List['outputs.AccessLevelsAccessLevelBasicCondition']:
+    def conditions(self) -> Sequence['outputs.AccessLevelsAccessLevelBasicCondition']:
         """
         A set of requirements for the AccessLevel to be granted.
         Structure is documented below.
@@ -563,17 +563,17 @@ class AccessLevelsAccessLevelBasic(dict):
 class AccessLevelsAccessLevelBasicCondition(dict):
     def __init__(__self__, *,
                  device_policy: Optional['outputs.AccessLevelsAccessLevelBasicConditionDevicePolicy'] = None,
-                 ip_subnetworks: Optional[List[str]] = None,
-                 members: Optional[List[str]] = None,
+                 ip_subnetworks: Optional[Sequence[str]] = None,
+                 members: Optional[Sequence[str]] = None,
                  negate: Optional[bool] = None,
-                 regions: Optional[List[str]] = None,
-                 required_access_levels: Optional[List[str]] = None):
+                 regions: Optional[Sequence[str]] = None,
+                 required_access_levels: Optional[Sequence[str]] = None):
         """
         :param 'AccessLevelsAccessLevelBasicConditionDevicePolicyArgs' device_policy: Device specific restrictions, all restrictions must hold for
                the Condition to be true. If not specified, all devices are
                allowed.
                Structure is documented below.
-        :param List[str] ip_subnetworks: A list of CIDR block IP subnetwork specification. May be IPv4
+        :param Sequence[str] ip_subnetworks: A list of CIDR block IP subnetwork specification. May be IPv4
                or IPv6.
                Note that for a CIDR IP address block, the specified IP address
                portion must be properly truncated (i.e. all the host bits must
@@ -583,7 +583,7 @@ class AccessLevelsAccessLevelBasicCondition(dict):
                is not. The originating IP of a request must be in one of the
                listed subnets in order for this Condition to be true.
                If empty, all IP addresses are allowed.
-        :param List[str] members: An allowed list of members (users, service accounts).
+        :param Sequence[str] members: An allowed list of members (users, service accounts).
                Using groups is not supported yet.
                The signed-in user originating the request must be a part of one
                of the provided members. If not specified, a request may come
@@ -593,10 +593,10 @@ class AccessLevelsAccessLevelBasicCondition(dict):
         :param bool negate: Whether to negate the Condition. If true, the Condition becomes
                a NAND over its non-empty fields, each field must be false for
                the Condition overall to be satisfied. Defaults to false.
-        :param List[str] regions: The request must originate from one of the provided
+        :param Sequence[str] regions: The request must originate from one of the provided
                countries/regions.
                Format: A valid ISO 3166-1 alpha-2 code.
-        :param List[str] required_access_levels: A list of other access levels defined in the same Policy,
+        :param Sequence[str] required_access_levels: A list of other access levels defined in the same Policy,
                referenced by resource name. Referencing an AccessLevel which
                does not exist is an error. All access levels listed must be
                granted for the Condition to be true.
@@ -628,7 +628,7 @@ class AccessLevelsAccessLevelBasicCondition(dict):
 
     @property
     @pulumi.getter(name="ipSubnetworks")
-    def ip_subnetworks(self) -> Optional[List[str]]:
+    def ip_subnetworks(self) -> Optional[Sequence[str]]:
         """
         A list of CIDR block IP subnetwork specification. May be IPv4
         or IPv6.
@@ -645,7 +645,7 @@ class AccessLevelsAccessLevelBasicCondition(dict):
 
     @property
     @pulumi.getter
-    def members(self) -> Optional[List[str]]:
+    def members(self) -> Optional[Sequence[str]]:
         """
         An allowed list of members (users, service accounts).
         Using groups is not supported yet.
@@ -669,7 +669,7 @@ class AccessLevelsAccessLevelBasicCondition(dict):
 
     @property
     @pulumi.getter
-    def regions(self) -> Optional[List[str]]:
+    def regions(self) -> Optional[Sequence[str]]:
         """
         The request must originate from one of the provided
         countries/regions.
@@ -679,7 +679,7 @@ class AccessLevelsAccessLevelBasicCondition(dict):
 
     @property
     @pulumi.getter(name="requiredAccessLevels")
-    def required_access_levels(self) -> Optional[List[str]]:
+    def required_access_levels(self) -> Optional[Sequence[str]]:
         """
         A list of other access levels defined in the same Policy,
         referenced by resource name. Referencing an AccessLevel which
@@ -696,20 +696,20 @@ class AccessLevelsAccessLevelBasicCondition(dict):
 @pulumi.output_type
 class AccessLevelsAccessLevelBasicConditionDevicePolicy(dict):
     def __init__(__self__, *,
-                 allowed_device_management_levels: Optional[List[str]] = None,
-                 allowed_encryption_statuses: Optional[List[str]] = None,
-                 os_constraints: Optional[List['outputs.AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint']] = None,
+                 allowed_device_management_levels: Optional[Sequence[str]] = None,
+                 allowed_encryption_statuses: Optional[Sequence[str]] = None,
+                 os_constraints: Optional[Sequence['outputs.AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint']] = None,
                  require_admin_approval: Optional[bool] = None,
                  require_corp_owned: Optional[bool] = None,
                  require_screen_lock: Optional[bool] = None):
         """
-        :param List[str] allowed_device_management_levels: A list of allowed device management levels.
+        :param Sequence[str] allowed_device_management_levels: A list of allowed device management levels.
                An empty list allows all management levels.
                Each value may be one of `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, and `COMPLETE`.
-        :param List[str] allowed_encryption_statuses: A list of allowed encryptions statuses.
+        :param Sequence[str] allowed_encryption_statuses: A list of allowed encryptions statuses.
                An empty list allows all statuses.
                Each value may be one of `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, and `ENCRYPTED`.
-        :param List['AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs'] os_constraints: A list of allowed OS versions.
+        :param Sequence['AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs'] os_constraints: A list of allowed OS versions.
                An empty list allows all types and all versions.
                Structure is documented below.
         :param bool require_admin_approval: Whether the device needs to be approved by the customer admin.
@@ -732,7 +732,7 @@ class AccessLevelsAccessLevelBasicConditionDevicePolicy(dict):
 
     @property
     @pulumi.getter(name="allowedDeviceManagementLevels")
-    def allowed_device_management_levels(self) -> Optional[List[str]]:
+    def allowed_device_management_levels(self) -> Optional[Sequence[str]]:
         """
         A list of allowed device management levels.
         An empty list allows all management levels.
@@ -742,7 +742,7 @@ class AccessLevelsAccessLevelBasicConditionDevicePolicy(dict):
 
     @property
     @pulumi.getter(name="allowedEncryptionStatuses")
-    def allowed_encryption_statuses(self) -> Optional[List[str]]:
+    def allowed_encryption_statuses(self) -> Optional[Sequence[str]]:
         """
         A list of allowed encryptions statuses.
         An empty list allows all statuses.
@@ -752,7 +752,7 @@ class AccessLevelsAccessLevelBasicConditionDevicePolicy(dict):
 
     @property
     @pulumi.getter(name="osConstraints")
-    def os_constraints(self) -> Optional[List['outputs.AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint']]:
+    def os_constraints(self) -> Optional[Sequence['outputs.AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint']]:
         """
         A list of allowed OS versions.
         An empty list allows all types and all versions.
@@ -915,12 +915,12 @@ class AccessLevelsAccessLevelCustomExpr(dict):
 @pulumi.output_type
 class ServicePerimeterSpec(dict):
     def __init__(__self__, *,
-                 access_levels: Optional[List[str]] = None,
-                 resources: Optional[List[str]] = None,
-                 restricted_services: Optional[List[str]] = None,
+                 access_levels: Optional[Sequence[str]] = None,
+                 resources: Optional[Sequence[str]] = None,
+                 restricted_services: Optional[Sequence[str]] = None,
                  vpc_accessible_services: Optional['outputs.ServicePerimeterSpecVpcAccessibleServices'] = None):
         """
-        :param List[str] access_levels: A list of AccessLevel resource names that allow resources within
+        :param Sequence[str] access_levels: A list of AccessLevel resource names that allow resources within
                the ServicePerimeter to be accessed from the internet.
                AccessLevels listed must be in the same policy as this
                ServicePerimeter. Referencing a nonexistent AccessLevel is a
@@ -929,10 +929,10 @@ class ServicePerimeterSpec(dict):
                origins within the perimeter. For Service Perimeter Bridge, must
                be empty.
                Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
-        :param List[str] resources: A list of GCP resources that are inside of the service perimeter.
+        :param Sequence[str] resources: A list of GCP resources that are inside of the service perimeter.
                Currently only projects are allowed.
                Format: projects/{project_number}
-        :param List[str] restricted_services: GCP services that are subject to the Service Perimeter
+        :param Sequence[str] restricted_services: GCP services that are subject to the Service Perimeter
                restrictions. Must contain a list of services. For example, if
                `storage.googleapis.com` is specified, access to the storage
                buckets inside the perimeter must meet the perimeter's access
@@ -952,7 +952,7 @@ class ServicePerimeterSpec(dict):
 
     @property
     @pulumi.getter(name="accessLevels")
-    def access_levels(self) -> Optional[List[str]]:
+    def access_levels(self) -> Optional[Sequence[str]]:
         """
         A list of AccessLevel resource names that allow resources within
         the ServicePerimeter to be accessed from the internet.
@@ -968,7 +968,7 @@ class ServicePerimeterSpec(dict):
 
     @property
     @pulumi.getter
-    def resources(self) -> Optional[List[str]]:
+    def resources(self) -> Optional[Sequence[str]]:
         """
         A list of GCP resources that are inside of the service perimeter.
         Currently only projects are allowed.
@@ -978,7 +978,7 @@ class ServicePerimeterSpec(dict):
 
     @property
     @pulumi.getter(name="restrictedServices")
-    def restricted_services(self) -> Optional[List[str]]:
+    def restricted_services(self) -> Optional[Sequence[str]]:
         """
         GCP services that are subject to the Service Perimeter
         restrictions. Must contain a list of services. For example, if
@@ -1005,10 +1005,10 @@ class ServicePerimeterSpec(dict):
 @pulumi.output_type
 class ServicePerimeterSpecVpcAccessibleServices(dict):
     def __init__(__self__, *,
-                 allowed_services: Optional[List[str]] = None,
+                 allowed_services: Optional[Sequence[str]] = None,
                  enable_restriction: Optional[bool] = None):
         """
-        :param List[str] allowed_services: The list of APIs usable within the Service Perimeter.
+        :param Sequence[str] allowed_services: The list of APIs usable within the Service Perimeter.
                Must be empty unless `enableRestriction` is True.
         :param bool enable_restriction: Whether to restrict API calls within the Service Perimeter to the
                list of APIs specified in 'allowedServices'.
@@ -1020,7 +1020,7 @@ class ServicePerimeterSpecVpcAccessibleServices(dict):
 
     @property
     @pulumi.getter(name="allowedServices")
-    def allowed_services(self) -> Optional[List[str]]:
+    def allowed_services(self) -> Optional[Sequence[str]]:
         """
         The list of APIs usable within the Service Perimeter.
         Must be empty unless `enableRestriction` is True.
@@ -1043,12 +1043,12 @@ class ServicePerimeterSpecVpcAccessibleServices(dict):
 @pulumi.output_type
 class ServicePerimeterStatus(dict):
     def __init__(__self__, *,
-                 access_levels: Optional[List[str]] = None,
-                 resources: Optional[List[str]] = None,
-                 restricted_services: Optional[List[str]] = None,
+                 access_levels: Optional[Sequence[str]] = None,
+                 resources: Optional[Sequence[str]] = None,
+                 restricted_services: Optional[Sequence[str]] = None,
                  vpc_accessible_services: Optional['outputs.ServicePerimeterStatusVpcAccessibleServices'] = None):
         """
-        :param List[str] access_levels: A list of AccessLevel resource names that allow resources within
+        :param Sequence[str] access_levels: A list of AccessLevel resource names that allow resources within
                the ServicePerimeter to be accessed from the internet.
                AccessLevels listed must be in the same policy as this
                ServicePerimeter. Referencing a nonexistent AccessLevel is a
@@ -1057,10 +1057,10 @@ class ServicePerimeterStatus(dict):
                origins within the perimeter. For Service Perimeter Bridge, must
                be empty.
                Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
-        :param List[str] resources: A list of GCP resources that are inside of the service perimeter.
+        :param Sequence[str] resources: A list of GCP resources that are inside of the service perimeter.
                Currently only projects are allowed.
                Format: projects/{project_number}
-        :param List[str] restricted_services: GCP services that are subject to the Service Perimeter
+        :param Sequence[str] restricted_services: GCP services that are subject to the Service Perimeter
                restrictions. Must contain a list of services. For example, if
                `storage.googleapis.com` is specified, access to the storage
                buckets inside the perimeter must meet the perimeter's access
@@ -1080,7 +1080,7 @@ class ServicePerimeterStatus(dict):
 
     @property
     @pulumi.getter(name="accessLevels")
-    def access_levels(self) -> Optional[List[str]]:
+    def access_levels(self) -> Optional[Sequence[str]]:
         """
         A list of AccessLevel resource names that allow resources within
         the ServicePerimeter to be accessed from the internet.
@@ -1096,7 +1096,7 @@ class ServicePerimeterStatus(dict):
 
     @property
     @pulumi.getter
-    def resources(self) -> Optional[List[str]]:
+    def resources(self) -> Optional[Sequence[str]]:
         """
         A list of GCP resources that are inside of the service perimeter.
         Currently only projects are allowed.
@@ -1106,7 +1106,7 @@ class ServicePerimeterStatus(dict):
 
     @property
     @pulumi.getter(name="restrictedServices")
-    def restricted_services(self) -> Optional[List[str]]:
+    def restricted_services(self) -> Optional[Sequence[str]]:
         """
         GCP services that are subject to the Service Perimeter
         restrictions. Must contain a list of services. For example, if
@@ -1133,10 +1133,10 @@ class ServicePerimeterStatus(dict):
 @pulumi.output_type
 class ServicePerimeterStatusVpcAccessibleServices(dict):
     def __init__(__self__, *,
-                 allowed_services: Optional[List[str]] = None,
+                 allowed_services: Optional[Sequence[str]] = None,
                  enable_restriction: Optional[bool] = None):
         """
-        :param List[str] allowed_services: The list of APIs usable within the Service Perimeter.
+        :param Sequence[str] allowed_services: The list of APIs usable within the Service Perimeter.
                Must be empty unless `enableRestriction` is True.
         :param bool enable_restriction: Whether to restrict API calls within the Service Perimeter to the
                list of APIs specified in 'allowedServices'.
@@ -1148,7 +1148,7 @@ class ServicePerimeterStatusVpcAccessibleServices(dict):
 
     @property
     @pulumi.getter(name="allowedServices")
-    def allowed_services(self) -> Optional[List[str]]:
+    def allowed_services(self) -> Optional[Sequence[str]]:
         """
         The list of APIs usable within the Service Perimeter.
         Must be empty unless `enableRestriction` is True.
@@ -1357,12 +1357,12 @@ class ServicePerimetersServicePerimeter(dict):
 @pulumi.output_type
 class ServicePerimetersServicePerimeterSpec(dict):
     def __init__(__self__, *,
-                 access_levels: Optional[List[str]] = None,
-                 resources: Optional[List[str]] = None,
-                 restricted_services: Optional[List[str]] = None,
+                 access_levels: Optional[Sequence[str]] = None,
+                 resources: Optional[Sequence[str]] = None,
+                 restricted_services: Optional[Sequence[str]] = None,
                  vpc_accessible_services: Optional['outputs.ServicePerimetersServicePerimeterSpecVpcAccessibleServices'] = None):
         """
-        :param List[str] access_levels: A list of AccessLevel resource names that allow resources within
+        :param Sequence[str] access_levels: A list of AccessLevel resource names that allow resources within
                the ServicePerimeter to be accessed from the internet.
                AccessLevels listed must be in the same policy as this
                ServicePerimeter. Referencing a nonexistent AccessLevel is a
@@ -1371,10 +1371,10 @@ class ServicePerimetersServicePerimeterSpec(dict):
                origins within the perimeter. For Service Perimeter Bridge, must
                be empty.
                Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
-        :param List[str] resources: A list of GCP resources that are inside of the service perimeter.
+        :param Sequence[str] resources: A list of GCP resources that are inside of the service perimeter.
                Currently only projects are allowed.
                Format: projects/{project_number}
-        :param List[str] restricted_services: GCP services that are subject to the Service Perimeter
+        :param Sequence[str] restricted_services: GCP services that are subject to the Service Perimeter
                restrictions. Must contain a list of services. For example, if
                `storage.googleapis.com` is specified, access to the storage
                buckets inside the perimeter must meet the perimeter's access
@@ -1394,7 +1394,7 @@ class ServicePerimetersServicePerimeterSpec(dict):
 
     @property
     @pulumi.getter(name="accessLevels")
-    def access_levels(self) -> Optional[List[str]]:
+    def access_levels(self) -> Optional[Sequence[str]]:
         """
         A list of AccessLevel resource names that allow resources within
         the ServicePerimeter to be accessed from the internet.
@@ -1410,7 +1410,7 @@ class ServicePerimetersServicePerimeterSpec(dict):
 
     @property
     @pulumi.getter
-    def resources(self) -> Optional[List[str]]:
+    def resources(self) -> Optional[Sequence[str]]:
         """
         A list of GCP resources that are inside of the service perimeter.
         Currently only projects are allowed.
@@ -1420,7 +1420,7 @@ class ServicePerimetersServicePerimeterSpec(dict):
 
     @property
     @pulumi.getter(name="restrictedServices")
-    def restricted_services(self) -> Optional[List[str]]:
+    def restricted_services(self) -> Optional[Sequence[str]]:
         """
         GCP services that are subject to the Service Perimeter
         restrictions. Must contain a list of services. For example, if
@@ -1447,10 +1447,10 @@ class ServicePerimetersServicePerimeterSpec(dict):
 @pulumi.output_type
 class ServicePerimetersServicePerimeterSpecVpcAccessibleServices(dict):
     def __init__(__self__, *,
-                 allowed_services: Optional[List[str]] = None,
+                 allowed_services: Optional[Sequence[str]] = None,
                  enable_restriction: Optional[bool] = None):
         """
-        :param List[str] allowed_services: The list of APIs usable within the Service Perimeter.
+        :param Sequence[str] allowed_services: The list of APIs usable within the Service Perimeter.
                Must be empty unless `enableRestriction` is True.
         :param bool enable_restriction: Whether to restrict API calls within the Service Perimeter to the
                list of APIs specified in 'allowedServices'.
@@ -1462,7 +1462,7 @@ class ServicePerimetersServicePerimeterSpecVpcAccessibleServices(dict):
 
     @property
     @pulumi.getter(name="allowedServices")
-    def allowed_services(self) -> Optional[List[str]]:
+    def allowed_services(self) -> Optional[Sequence[str]]:
         """
         The list of APIs usable within the Service Perimeter.
         Must be empty unless `enableRestriction` is True.
@@ -1485,12 +1485,12 @@ class ServicePerimetersServicePerimeterSpecVpcAccessibleServices(dict):
 @pulumi.output_type
 class ServicePerimetersServicePerimeterStatus(dict):
     def __init__(__self__, *,
-                 access_levels: Optional[List[str]] = None,
-                 resources: Optional[List[str]] = None,
-                 restricted_services: Optional[List[str]] = None,
+                 access_levels: Optional[Sequence[str]] = None,
+                 resources: Optional[Sequence[str]] = None,
+                 restricted_services: Optional[Sequence[str]] = None,
                  vpc_accessible_services: Optional['outputs.ServicePerimetersServicePerimeterStatusVpcAccessibleServices'] = None):
         """
-        :param List[str] access_levels: A list of AccessLevel resource names that allow resources within
+        :param Sequence[str] access_levels: A list of AccessLevel resource names that allow resources within
                the ServicePerimeter to be accessed from the internet.
                AccessLevels listed must be in the same policy as this
                ServicePerimeter. Referencing a nonexistent AccessLevel is a
@@ -1499,10 +1499,10 @@ class ServicePerimetersServicePerimeterStatus(dict):
                origins within the perimeter. For Service Perimeter Bridge, must
                be empty.
                Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
-        :param List[str] resources: A list of GCP resources that are inside of the service perimeter.
+        :param Sequence[str] resources: A list of GCP resources that are inside of the service perimeter.
                Currently only projects are allowed.
                Format: projects/{project_number}
-        :param List[str] restricted_services: GCP services that are subject to the Service Perimeter
+        :param Sequence[str] restricted_services: GCP services that are subject to the Service Perimeter
                restrictions. Must contain a list of services. For example, if
                `storage.googleapis.com` is specified, access to the storage
                buckets inside the perimeter must meet the perimeter's access
@@ -1522,7 +1522,7 @@ class ServicePerimetersServicePerimeterStatus(dict):
 
     @property
     @pulumi.getter(name="accessLevels")
-    def access_levels(self) -> Optional[List[str]]:
+    def access_levels(self) -> Optional[Sequence[str]]:
         """
         A list of AccessLevel resource names that allow resources within
         the ServicePerimeter to be accessed from the internet.
@@ -1538,7 +1538,7 @@ class ServicePerimetersServicePerimeterStatus(dict):
 
     @property
     @pulumi.getter
-    def resources(self) -> Optional[List[str]]:
+    def resources(self) -> Optional[Sequence[str]]:
         """
         A list of GCP resources that are inside of the service perimeter.
         Currently only projects are allowed.
@@ -1548,7 +1548,7 @@ class ServicePerimetersServicePerimeterStatus(dict):
 
     @property
     @pulumi.getter(name="restrictedServices")
-    def restricted_services(self) -> Optional[List[str]]:
+    def restricted_services(self) -> Optional[Sequence[str]]:
         """
         GCP services that are subject to the Service Perimeter
         restrictions. Must contain a list of services. For example, if
@@ -1575,10 +1575,10 @@ class ServicePerimetersServicePerimeterStatus(dict):
 @pulumi.output_type
 class ServicePerimetersServicePerimeterStatusVpcAccessibleServices(dict):
     def __init__(__self__, *,
-                 allowed_services: Optional[List[str]] = None,
+                 allowed_services: Optional[Sequence[str]] = None,
                  enable_restriction: Optional[bool] = None):
         """
-        :param List[str] allowed_services: The list of APIs usable within the Service Perimeter.
+        :param Sequence[str] allowed_services: The list of APIs usable within the Service Perimeter.
                Must be empty unless `enableRestriction` is True.
         :param bool enable_restriction: Whether to restrict API calls within the Service Perimeter to the
                list of APIs specified in 'allowedServices'.
@@ -1590,7 +1590,7 @@ class ServicePerimetersServicePerimeterStatusVpcAccessibleServices(dict):
 
     @property
     @pulumi.getter(name="allowedServices")
-    def allowed_services(self) -> Optional[List[str]]:
+    def allowed_services(self) -> Optional[Sequence[str]]:
         """
         The list of APIs usable within the Service Perimeter.
         Must be empty unless `enableRestriction` is True.

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -39,8 +39,8 @@ class GetKMSCryptoKeyVersionResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
-        if version and not isinstance(version, float):
-            raise TypeError("Expected argument 'version' to be a float")
+        if version and not isinstance(version, int):
+            raise TypeError("Expected argument 'version' to be a int")
         pulumi.set(__self__, "version", version)
 
     @property
@@ -90,7 +90,7 @@ class GetKMSCryptoKeyVersionResult:
 
     @property
     @pulumi.getter
-    def version(self) -> Optional[float]:
+    def version(self) -> Optional[int]:
         return pulumi.get(self, "version")
 
 
@@ -110,7 +110,7 @@ class AwaitableGetKMSCryptoKeyVersionResult(GetKMSCryptoKeyVersionResult):
 
 
 def get_kms_crypto_key_version(crypto_key: Optional[str] = None,
-                               version: Optional[float] = None,
+                               version: Optional[int] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKMSCryptoKeyVersionResult:
     """
     Provides access to a Google Cloud Platform KMS CryptoKeyVersion. For more information see
@@ -122,7 +122,7 @@ def get_kms_crypto_key_version(crypto_key: Optional[str] = None,
 
 
     :param str crypto_key: The `self_link` of the Google Cloud Platform CryptoKey to which the key version belongs.
-    :param float version: The version number for this CryptoKeyVersion. Defaults to `1`.
+    :param int version: The version number for this CryptoKeyVersion. Defaults to `1`.
     """
     __args__ = dict()
     __args__['cryptoKey'] = crypto_key

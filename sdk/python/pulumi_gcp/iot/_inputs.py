@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -239,9 +239,9 @@ class DeviceGatewayConfigArgs:
 @pulumi.input_type
 class DeviceLastErrorStatusArgs:
     def __init__(__self__, *,
-                 details: Optional[pulumi.Input[List[pulumi.Input[Mapping[str, Any]]]]] = None,
+                 details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
                  message: Optional[pulumi.Input[str]] = None,
-                 number: Optional[pulumi.Input[float]] = None):
+                 number: Optional[pulumi.Input[int]] = None):
         if details is not None:
             pulumi.set(__self__, "details", details)
         if message is not None:
@@ -251,11 +251,11 @@ class DeviceLastErrorStatusArgs:
 
     @property
     @pulumi.getter
-    def details(self) -> Optional[pulumi.Input[List[pulumi.Input[Mapping[str, Any]]]]]:
+    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]:
         return pulumi.get(self, "details")
 
     @details.setter
-    def details(self, value: Optional[pulumi.Input[List[pulumi.Input[Mapping[str, Any]]]]]):
+    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]):
         pulumi.set(self, "details", value)
 
     @property
@@ -269,11 +269,11 @@ class DeviceLastErrorStatusArgs:
 
     @property
     @pulumi.getter
-    def number(self) -> Optional[pulumi.Input[float]]:
+    def number(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "number")
 
     @number.setter
-    def number(self, value: Optional[pulumi.Input[float]]):
+    def number(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "number", value)
 
 

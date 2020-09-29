@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -23,8 +23,8 @@ class GetCertificateResult:
         if certificate and not isinstance(certificate, str):
             raise TypeError("Expected argument 'certificate' to be a str")
         pulumi.set(__self__, "certificate", certificate)
-        if certificate_id and not isinstance(certificate_id, float):
-            raise TypeError("Expected argument 'certificate_id' to be a float")
+        if certificate_id and not isinstance(certificate_id, int):
+            raise TypeError("Expected argument 'certificate_id' to be a int")
         pulumi.set(__self__, "certificate_id", certificate_id)
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
@@ -58,7 +58,7 @@ class GetCertificateResult:
 
     @property
     @pulumi.getter(name="certificateId")
-    def certificate_id(self) -> float:
+    def certificate_id(self) -> int:
         return pulumi.get(self, "certificate_id")
 
     @property

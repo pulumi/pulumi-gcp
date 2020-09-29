@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['GlobalNetworkEndpoint']
@@ -18,7 +18,7 @@ class GlobalNetworkEndpoint(pulumi.CustomResource):
                  fqdn: Optional[pulumi.Input[str]] = None,
                  global_network_endpoint_group: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
-                 port: Optional[pulumi.Input[float]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -42,7 +42,7 @@ class GlobalNetworkEndpoint(pulumi.CustomResource):
                This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
         :param pulumi.Input[str] global_network_endpoint_group: The global network endpoint group this endpoint is part of.
         :param pulumi.Input[str] ip_address: IPv4 address external endpoint.
-        :param pulumi.Input[float] port: Port number of the external endpoint.
+        :param pulumi.Input[int] port: Port number of the external endpoint.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -85,7 +85,7 @@ class GlobalNetworkEndpoint(pulumi.CustomResource):
             fqdn: Optional[pulumi.Input[str]] = None,
             global_network_endpoint_group: Optional[pulumi.Input[str]] = None,
             ip_address: Optional[pulumi.Input[str]] = None,
-            port: Optional[pulumi.Input[float]] = None,
+            port: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None) -> 'GlobalNetworkEndpoint':
         """
         Get an existing GlobalNetworkEndpoint resource's state with the given name, id, and optional extra
@@ -98,7 +98,7 @@ class GlobalNetworkEndpoint(pulumi.CustomResource):
                This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
         :param pulumi.Input[str] global_network_endpoint_group: The global network endpoint group this endpoint is part of.
         :param pulumi.Input[str] ip_address: IPv4 address external endpoint.
-        :param pulumi.Input[float] port: Port number of the external endpoint.
+        :param pulumi.Input[int] port: Port number of the external endpoint.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -140,7 +140,7 @@ class GlobalNetworkEndpoint(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> pulumi.Output[float]:
+    def port(self) -> pulumi.Output[int]:
         """
         Port number of the external endpoint.
         """

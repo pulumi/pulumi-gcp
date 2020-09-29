@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -142,7 +142,7 @@ class AlertPolicyCondition(dict):
 class AlertPolicyConditionConditionAbsent(dict):
     def __init__(__self__, *,
                  duration: str,
-                 aggregations: Optional[List['outputs.AlertPolicyConditionConditionAbsentAggregation']] = None,
+                 aggregations: Optional[Sequence['outputs.AlertPolicyConditionConditionAbsentAggregation']] = None,
                  filter: Optional[str] = None,
                  trigger: Optional['outputs.AlertPolicyConditionConditionAbsentTrigger'] = None):
         """
@@ -161,7 +161,7 @@ class AlertPolicyConditionConditionAbsent(dict):
                generate spurious alerts, but short enough
                that unhealthy states are detected and
                alerted on quickly.
-        :param List['AlertPolicyConditionConditionAbsentAggregationArgs'] aggregations: Specifies the alignment of data points in
+        :param Sequence['AlertPolicyConditionConditionAbsentAggregationArgs'] aggregations: Specifies the alignment of data points in
                individual time series as well as how to
                combine the retrieved time series together
                (such as when aggregating multiple streams
@@ -229,7 +229,7 @@ class AlertPolicyConditionConditionAbsent(dict):
 
     @property
     @pulumi.getter
-    def aggregations(self) -> Optional[List['outputs.AlertPolicyConditionConditionAbsentAggregation']]:
+    def aggregations(self) -> Optional[Sequence['outputs.AlertPolicyConditionConditionAbsentAggregation']]:
         """
         Specifies the alignment of data points in
         individual time series as well as how to
@@ -292,7 +292,7 @@ class AlertPolicyConditionConditionAbsentAggregation(dict):
     def __init__(__self__, *,
                  alignment_period: Optional[str] = None,
                  cross_series_reducer: Optional[str] = None,
-                 group_by_fields: Optional[List[str]] = None,
+                 group_by_fields: Optional[Sequence[str]] = None,
                  per_series_aligner: Optional[str] = None):
         """
         :param str alignment_period: The alignment period for per-time
@@ -327,7 +327,7 @@ class AlertPolicyConditionConditionAbsentAggregation(dict):
                specified; otherwise, an error is
                returned.
                Possible values are `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, and `REDUCE_PERCENTILE_05`.
-        :param List[str] group_by_fields: The set of fields to preserve when
+        :param Sequence[str] group_by_fields: The set of fields to preserve when
                crossSeriesReducer is specified.
                The groupByFields determine how
                the time series are partitioned
@@ -428,7 +428,7 @@ class AlertPolicyConditionConditionAbsentAggregation(dict):
 
     @property
     @pulumi.getter(name="groupByFields")
-    def group_by_fields(self) -> Optional[List[str]]:
+    def group_by_fields(self) -> Optional[Sequence[str]]:
         """
         The set of fields to preserve when
         crossSeriesReducer is specified.
@@ -490,10 +490,10 @@ class AlertPolicyConditionConditionAbsentAggregation(dict):
 @pulumi.output_type
 class AlertPolicyConditionConditionAbsentTrigger(dict):
     def __init__(__self__, *,
-                 count: Optional[float] = None,
+                 count: Optional[int] = None,
                  percent: Optional[float] = None):
         """
-        :param float count: The absolute number of time series
+        :param int count: The absolute number of time series
                that must fail the predicate for the
                condition to be triggered.
         :param float percent: The percentage of time series that
@@ -507,7 +507,7 @@ class AlertPolicyConditionConditionAbsentTrigger(dict):
 
     @property
     @pulumi.getter
-    def count(self) -> Optional[float]:
+    def count(self) -> Optional[int]:
         """
         The absolute number of time series
         that must fail the predicate for the
@@ -534,8 +534,8 @@ class AlertPolicyConditionConditionThreshold(dict):
     def __init__(__self__, *,
                  comparison: str,
                  duration: str,
-                 aggregations: Optional[List['outputs.AlertPolicyConditionConditionThresholdAggregation']] = None,
-                 denominator_aggregations: Optional[List['outputs.AlertPolicyConditionConditionThresholdDenominatorAggregation']] = None,
+                 aggregations: Optional[Sequence['outputs.AlertPolicyConditionConditionThresholdAggregation']] = None,
+                 denominator_aggregations: Optional[Sequence['outputs.AlertPolicyConditionConditionThresholdDenominatorAggregation']] = None,
                  denominator_filter: Optional[str] = None,
                  filter: Optional[str] = None,
                  threshold_value: Optional[float] = None,
@@ -565,7 +565,7 @@ class AlertPolicyConditionConditionThreshold(dict):
                generate spurious alerts, but short enough
                that unhealthy states are detected and
                alerted on quickly.
-        :param List['AlertPolicyConditionConditionThresholdAggregationArgs'] aggregations: Specifies the alignment of data points in
+        :param Sequence['AlertPolicyConditionConditionThresholdAggregationArgs'] aggregations: Specifies the alignment of data points in
                individual time series as well as how to
                combine the retrieved time series together
                (such as when aggregating multiple streams
@@ -579,7 +579,7 @@ class AlertPolicyConditionConditionThreshold(dict):
                ListTimeSeries method when debugging this
                field.
                Structure is documented below.
-        :param List['AlertPolicyConditionConditionThresholdDenominatorAggregationArgs'] denominator_aggregations: Specifies the alignment of data points in
+        :param Sequence['AlertPolicyConditionConditionThresholdDenominatorAggregationArgs'] denominator_aggregations: Specifies the alignment of data points in
                individual time series selected by
                denominatorFilter as well as how to combine
                the retrieved time series together (such as
@@ -690,7 +690,7 @@ class AlertPolicyConditionConditionThreshold(dict):
 
     @property
     @pulumi.getter
-    def aggregations(self) -> Optional[List['outputs.AlertPolicyConditionConditionThresholdAggregation']]:
+    def aggregations(self) -> Optional[Sequence['outputs.AlertPolicyConditionConditionThresholdAggregation']]:
         """
         Specifies the alignment of data points in
         individual time series as well as how to
@@ -711,7 +711,7 @@ class AlertPolicyConditionConditionThreshold(dict):
 
     @property
     @pulumi.getter(name="denominatorAggregations")
-    def denominator_aggregations(self) -> Optional[List['outputs.AlertPolicyConditionConditionThresholdDenominatorAggregation']]:
+    def denominator_aggregations(self) -> Optional[Sequence['outputs.AlertPolicyConditionConditionThresholdDenominatorAggregation']]:
         """
         Specifies the alignment of data points in
         individual time series selected by
@@ -808,7 +808,7 @@ class AlertPolicyConditionConditionThresholdAggregation(dict):
     def __init__(__self__, *,
                  alignment_period: Optional[str] = None,
                  cross_series_reducer: Optional[str] = None,
-                 group_by_fields: Optional[List[str]] = None,
+                 group_by_fields: Optional[Sequence[str]] = None,
                  per_series_aligner: Optional[str] = None):
         """
         :param str alignment_period: The alignment period for per-time
@@ -843,7 +843,7 @@ class AlertPolicyConditionConditionThresholdAggregation(dict):
                specified; otherwise, an error is
                returned.
                Possible values are `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, and `REDUCE_PERCENTILE_05`.
-        :param List[str] group_by_fields: The set of fields to preserve when
+        :param Sequence[str] group_by_fields: The set of fields to preserve when
                crossSeriesReducer is specified.
                The groupByFields determine how
                the time series are partitioned
@@ -944,7 +944,7 @@ class AlertPolicyConditionConditionThresholdAggregation(dict):
 
     @property
     @pulumi.getter(name="groupByFields")
-    def group_by_fields(self) -> Optional[List[str]]:
+    def group_by_fields(self) -> Optional[Sequence[str]]:
         """
         The set of fields to preserve when
         crossSeriesReducer is specified.
@@ -1008,7 +1008,7 @@ class AlertPolicyConditionConditionThresholdDenominatorAggregation(dict):
     def __init__(__self__, *,
                  alignment_period: Optional[str] = None,
                  cross_series_reducer: Optional[str] = None,
-                 group_by_fields: Optional[List[str]] = None,
+                 group_by_fields: Optional[Sequence[str]] = None,
                  per_series_aligner: Optional[str] = None):
         """
         :param str alignment_period: The alignment period for per-time
@@ -1043,7 +1043,7 @@ class AlertPolicyConditionConditionThresholdDenominatorAggregation(dict):
                specified; otherwise, an error is
                returned.
                Possible values are `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, and `REDUCE_PERCENTILE_05`.
-        :param List[str] group_by_fields: The set of fields to preserve when
+        :param Sequence[str] group_by_fields: The set of fields to preserve when
                crossSeriesReducer is specified.
                The groupByFields determine how
                the time series are partitioned
@@ -1144,7 +1144,7 @@ class AlertPolicyConditionConditionThresholdDenominatorAggregation(dict):
 
     @property
     @pulumi.getter(name="groupByFields")
-    def group_by_fields(self) -> Optional[List[str]]:
+    def group_by_fields(self) -> Optional[Sequence[str]]:
         """
         The set of fields to preserve when
         crossSeriesReducer is specified.
@@ -1206,10 +1206,10 @@ class AlertPolicyConditionConditionThresholdDenominatorAggregation(dict):
 @pulumi.output_type
 class AlertPolicyConditionConditionThresholdTrigger(dict):
     def __init__(__self__, *,
-                 count: Optional[float] = None,
+                 count: Optional[int] = None,
                  percent: Optional[float] = None):
         """
-        :param float count: The absolute number of time series
+        :param int count: The absolute number of time series
                that must fail the predicate for the
                condition to be triggered.
         :param float percent: The percentage of time series that
@@ -1223,7 +1223,7 @@ class AlertPolicyConditionConditionThresholdTrigger(dict):
 
     @property
     @pulumi.getter
-    def count(self) -> Optional[float]:
+    def count(self) -> Optional[int]:
         """
         The absolute number of time series
         that must fail the predicate for the
@@ -1476,25 +1476,25 @@ class NotificationChannelSensitiveLabels(dict):
 class SloBasicSli(dict):
     def __init__(__self__, *,
                  latency: 'outputs.SloBasicSliLatency',
-                 locations: Optional[List[str]] = None,
-                 methods: Optional[List[str]] = None,
-                 versions: Optional[List[str]] = None):
+                 locations: Optional[Sequence[str]] = None,
+                 methods: Optional[Sequence[str]] = None,
+                 versions: Optional[Sequence[str]] = None):
         """
         :param 'SloBasicSliLatencyArgs' latency: Parameters for a latency threshold SLI.
                Structure is documented below.
-        :param List[str] locations: An optional set of locations to which this SLI is relevant.
+        :param Sequence[str] locations: An optional set of locations to which this SLI is relevant.
                Telemetry from other locations will not be used to calculate
                performance for this SLI. If omitted, this SLI applies to all
                locations in which the Service has activity. For service types
                that don't support breaking down by location, setting this
                field will result in an error.
-        :param List[str] methods: An optional set of RPCs to which this SLI is relevant.
+        :param Sequence[str] methods: An optional set of RPCs to which this SLI is relevant.
                Telemetry from other methods will not be used to calculate
                performance for this SLI. If omitted, this SLI applies to all
                the Service's methods. For service types that don't support
                breaking down by method, setting this field will result in an
                error.
-        :param List[str] versions: The set of API versions to which this SLI is relevant.
+        :param Sequence[str] versions: The set of API versions to which this SLI is relevant.
                Telemetry from other API versions will not be used to
                calculate performance for this SLI. If omitted,
                this SLI applies to all API versions. For service types
@@ -1520,7 +1520,7 @@ class SloBasicSli(dict):
 
     @property
     @pulumi.getter
-    def locations(self) -> Optional[List[str]]:
+    def locations(self) -> Optional[Sequence[str]]:
         """
         An optional set of locations to which this SLI is relevant.
         Telemetry from other locations will not be used to calculate
@@ -1533,7 +1533,7 @@ class SloBasicSli(dict):
 
     @property
     @pulumi.getter
-    def methods(self) -> Optional[List[str]]:
+    def methods(self) -> Optional[Sequence[str]]:
         """
         An optional set of RPCs to which this SLI is relevant.
         Telemetry from other methods will not be used to calculate
@@ -1546,7 +1546,7 @@ class SloBasicSli(dict):
 
     @property
     @pulumi.getter
-    def versions(self) -> Optional[List[str]]:
+    def versions(self) -> Optional[Sequence[str]]:
         """
         The set of API versions to which this SLI is relevant.
         Telemetry from other API versions will not be used to
@@ -1693,13 +1693,13 @@ class SloRequestBasedSliDistributionCut(dict):
 @pulumi.output_type
 class SloRequestBasedSliDistributionCutRange(dict):
     def __init__(__self__, *,
-                 max: Optional[float] = None,
-                 min: Optional[float] = None):
+                 max: Optional[int] = None,
+                 min: Optional[int] = None):
         """
-        :param float max: max value for the range (inclusive). If not given,
+        :param int max: max value for the range (inclusive). If not given,
                will be set to "infinity", defining an open range
                ">= range.min"
-        :param float min: Min value for the range (inclusive). If not given,
+        :param int min: Min value for the range (inclusive). If not given,
                will be set to "-infinity", defining an open range
                "< range.max"
         """
@@ -1710,7 +1710,7 @@ class SloRequestBasedSliDistributionCutRange(dict):
 
     @property
     @pulumi.getter
-    def max(self) -> Optional[float]:
+    def max(self) -> Optional[int]:
         """
         max value for the range (inclusive). If not given,
         will be set to "infinity", defining an open range
@@ -1720,7 +1720,7 @@ class SloRequestBasedSliDistributionCutRange(dict):
 
     @property
     @pulumi.getter
-    def min(self) -> Optional[float]:
+    def min(self) -> Optional[int]:
         """
         Min value for the range (inclusive). If not given,
         will be set to "-infinity", defining an open range
@@ -1988,25 +1988,25 @@ class SloWindowsBasedSliGoodTotalRatioThreshold(dict):
 class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance(dict):
     def __init__(__self__, *,
                  latency: 'outputs.SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency',
-                 locations: Optional[List[str]] = None,
-                 methods: Optional[List[str]] = None,
-                 versions: Optional[List[str]] = None):
+                 locations: Optional[Sequence[str]] = None,
+                 methods: Optional[Sequence[str]] = None,
+                 versions: Optional[Sequence[str]] = None):
         """
         :param 'SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgs' latency: Parameters for a latency threshold SLI.
                Structure is documented below.
-        :param List[str] locations: An optional set of locations to which this SLI is relevant.
+        :param Sequence[str] locations: An optional set of locations to which this SLI is relevant.
                Telemetry from other locations will not be used to calculate
                performance for this SLI. If omitted, this SLI applies to all
                locations in which the Service has activity. For service types
                that don't support breaking down by location, setting this
                field will result in an error.
-        :param List[str] methods: An optional set of RPCs to which this SLI is relevant.
+        :param Sequence[str] methods: An optional set of RPCs to which this SLI is relevant.
                Telemetry from other methods will not be used to calculate
                performance for this SLI. If omitted, this SLI applies to all
                the Service's methods. For service types that don't support
                breaking down by method, setting this field will result in an
                error.
-        :param List[str] versions: The set of API versions to which this SLI is relevant.
+        :param Sequence[str] versions: The set of API versions to which this SLI is relevant.
                Telemetry from other API versions will not be used to
                calculate performance for this SLI. If omitted,
                this SLI applies to all API versions. For service types
@@ -2032,7 +2032,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance(dict):
 
     @property
     @pulumi.getter
-    def locations(self) -> Optional[List[str]]:
+    def locations(self) -> Optional[Sequence[str]]:
         """
         An optional set of locations to which this SLI is relevant.
         Telemetry from other locations will not be used to calculate
@@ -2045,7 +2045,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance(dict):
 
     @property
     @pulumi.getter
-    def methods(self) -> Optional[List[str]]:
+    def methods(self) -> Optional[Sequence[str]]:
         """
         An optional set of RPCs to which this SLI is relevant.
         Telemetry from other methods will not be used to calculate
@@ -2058,7 +2058,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance(dict):
 
     @property
     @pulumi.getter
-    def versions(self) -> Optional[List[str]]:
+    def versions(self) -> Optional[Sequence[str]]:
         """
         The set of API versions to which this SLI is relevant.
         Telemetry from other API versions will not be used to
@@ -2205,13 +2205,13 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut(dict):
 @pulumi.output_type
 class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange(dict):
     def __init__(__self__, *,
-                 max: Optional[float] = None,
-                 min: Optional[float] = None):
+                 max: Optional[int] = None,
+                 min: Optional[int] = None):
         """
-        :param float max: max value for the range (inclusive). If not given,
+        :param int max: max value for the range (inclusive). If not given,
                will be set to "infinity", defining an open range
                ">= range.min"
-        :param float min: Min value for the range (inclusive). If not given,
+        :param int min: Min value for the range (inclusive). If not given,
                will be set to "-infinity", defining an open range
                "< range.max"
         """
@@ -2222,7 +2222,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange(d
 
     @property
     @pulumi.getter
-    def max(self) -> Optional[float]:
+    def max(self) -> Optional[int]:
         """
         max value for the range (inclusive). If not given,
         will be set to "infinity", defining an open range
@@ -2232,7 +2232,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange(d
 
     @property
     @pulumi.getter
-    def min(self) -> Optional[float]:
+    def min(self) -> Optional[int]:
         """
         Min value for the range (inclusive). If not given,
         will be set to "-infinity", defining an open range
@@ -2383,13 +2383,13 @@ class SloWindowsBasedSliMetricMeanInRange(dict):
 @pulumi.output_type
 class SloWindowsBasedSliMetricMeanInRangeRange(dict):
     def __init__(__self__, *,
-                 max: Optional[float] = None,
-                 min: Optional[float] = None):
+                 max: Optional[int] = None,
+                 min: Optional[int] = None):
         """
-        :param float max: max value for the range (inclusive). If not given,
+        :param int max: max value for the range (inclusive). If not given,
                will be set to "infinity", defining an open range
                ">= range.min"
-        :param float min: Min value for the range (inclusive). If not given,
+        :param int min: Min value for the range (inclusive). If not given,
                will be set to "-infinity", defining an open range
                "< range.max"
         """
@@ -2400,7 +2400,7 @@ class SloWindowsBasedSliMetricMeanInRangeRange(dict):
 
     @property
     @pulumi.getter
-    def max(self) -> Optional[float]:
+    def max(self) -> Optional[int]:
         """
         max value for the range (inclusive). If not given,
         will be set to "infinity", defining an open range
@@ -2410,7 +2410,7 @@ class SloWindowsBasedSliMetricMeanInRangeRange(dict):
 
     @property
     @pulumi.getter
-    def min(self) -> Optional[float]:
+    def min(self) -> Optional[int]:
         """
         Min value for the range (inclusive). If not given,
         will be set to "-infinity", defining an open range
@@ -2481,13 +2481,13 @@ class SloWindowsBasedSliMetricSumInRange(dict):
 @pulumi.output_type
 class SloWindowsBasedSliMetricSumInRangeRange(dict):
     def __init__(__self__, *,
-                 max: Optional[float] = None,
-                 min: Optional[float] = None):
+                 max: Optional[int] = None,
+                 min: Optional[int] = None):
         """
-        :param float max: max value for the range (inclusive). If not given,
+        :param int max: max value for the range (inclusive). If not given,
                will be set to "infinity", defining an open range
                ">= range.min"
-        :param float min: Min value for the range (inclusive). If not given,
+        :param int min: Min value for the range (inclusive). If not given,
                will be set to "-infinity", defining an open range
                "< range.max"
         """
@@ -2498,7 +2498,7 @@ class SloWindowsBasedSliMetricSumInRangeRange(dict):
 
     @property
     @pulumi.getter
-    def max(self) -> Optional[float]:
+    def max(self) -> Optional[int]:
         """
         max value for the range (inclusive). If not given,
         will be set to "infinity", defining an open range
@@ -2508,7 +2508,7 @@ class SloWindowsBasedSliMetricSumInRangeRange(dict):
 
     @property
     @pulumi.getter
-    def min(self) -> Optional[float]:
+    def min(self) -> Optional[int]:
         """
         Min value for the range (inclusive). If not given,
         will be set to "-infinity", defining an open range
@@ -2566,7 +2566,7 @@ class UptimeCheckConfigHttpCheck(dict):
                  headers: Optional[Mapping[str, str]] = None,
                  mask_headers: Optional[bool] = None,
                  path: Optional[str] = None,
-                 port: Optional[float] = None,
+                 port: Optional[int] = None,
                  request_method: Optional[str] = None,
                  use_ssl: Optional[bool] = None,
                  validate_ssl: Optional[bool] = None):
@@ -2579,7 +2579,7 @@ class UptimeCheckConfigHttpCheck(dict):
         :param Mapping[str, str] headers: The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
         :param bool mask_headers: Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if mask_headers is set to True then the headers will be obscured with ******.
         :param str path: The path to the page to run the check against. Will be combined with the host (specified within the MonitoredResource) and port to construct the full URL. Optional (defaults to "/").
-        :param float port: The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
+        :param int port: The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
         :param str request_method: The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then requestMethod defaults to GET.
                Default value is `GET`.
                Possible values are `METHOD_UNSPECIFIED`, `GET`, and `POST`.
@@ -2659,7 +2659,7 @@ class UptimeCheckConfigHttpCheck(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[float]:
+    def port(self) -> Optional[int]:
         """
         The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
         """
@@ -2800,15 +2800,15 @@ class UptimeCheckConfigResourceGroup(dict):
 @pulumi.output_type
 class UptimeCheckConfigTcpCheck(dict):
     def __init__(__self__, *,
-                 port: float):
+                 port: int):
         """
-        :param float port: The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
+        :param int port: The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
         """
         pulumi.set(__self__, "port", port)
 
     @property
     @pulumi.getter
-    def port(self) -> float:
+    def port(self) -> int:
         """
         The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
         """

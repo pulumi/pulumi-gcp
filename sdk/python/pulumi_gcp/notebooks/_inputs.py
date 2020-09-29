@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -115,10 +115,10 @@ class EnvironmentVmImageArgs:
 @pulumi.input_type
 class InstanceAcceleratorConfigArgs:
     def __init__(__self__, *,
-                 core_count: pulumi.Input[float],
+                 core_count: pulumi.Input[int],
                  type: pulumi.Input[str]):
         """
-        :param pulumi.Input[float] core_count: Count of cores of this accelerator.
+        :param pulumi.Input[int] core_count: Count of cores of this accelerator.
         :param pulumi.Input[str] type: Type of this accelerator.
                Possible values are `ACCELERATOR_TYPE_UNSPECIFIED`, `NVIDIA_TESLA_K80`, `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`, `TPU_V2`, and `TPU_V3`.
         """
@@ -127,14 +127,14 @@ class InstanceAcceleratorConfigArgs:
 
     @property
     @pulumi.getter(name="coreCount")
-    def core_count(self) -> pulumi.Input[float]:
+    def core_count(self) -> pulumi.Input[int]:
         """
         Count of cores of this accelerator.
         """
         return pulumi.get(self, "core_count")
 
     @core_count.setter
-    def core_count(self, value: pulumi.Input[float]):
+    def core_count(self, value: pulumi.Input[int]):
         pulumi.set(self, "core_count", value)
 
     @property

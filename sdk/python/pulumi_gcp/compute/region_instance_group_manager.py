@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -20,16 +20,16 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                  auto_healing_policies: Optional[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerAutoHealingPoliciesArgs']]] = None,
                  base_instance_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 distribution_policy_zones: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 distribution_policy_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 named_ports: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerNamedPortArgs']]]]] = None,
+                 named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerNamedPortArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 stateful_disks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerStatefulDiskArgs']]]]] = None,
-                 target_pools: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 target_size: Optional[pulumi.Input[float]] = None,
+                 stateful_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerStatefulDiskArgs']]]]] = None,
+                 target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 target_size: Optional[pulumi.Input[int]] = None,
                  update_policy: Optional[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerUpdatePolicyArgs']]] = None,
-                 versions: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerVersionArgs']]]]] = None,
+                 versions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerVersionArgs']]]]] = None,
                  wait_for_instances: Optional[pulumi.Input[bool]] = None,
                  __props__=None,
                  __name__=None,
@@ -56,21 +56,21 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                name.
         :param pulumi.Input[str] description: An optional textual description of the instance
                group manager.
-        :param pulumi.Input[List[pulumi.Input[str]]] distribution_policy_zones: The distribution policy for this managed instance
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] distribution_policy_zones: The distribution policy for this managed instance
                group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
         :param pulumi.Input[str] name: - Version name.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerNamedPortArgs']]]] named_ports: The named port configuration. See the section below
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerNamedPortArgs']]]] named_ports: The named port configuration. See the section below
                for details on configuration.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region where the managed instance group resides.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerStatefulDiskArgs']]]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `update_policy`.
-        :param pulumi.Input[List[pulumi.Input[str]]] target_pools: The full URL of all target pools to which new
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerStatefulDiskArgs']]]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `update_policy`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_pools: The full URL of all target pools to which new
                instances in the group are added. Updating the target pools attribute does
                not affect existing instances.
-        :param pulumi.Input[float] target_size: - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+        :param pulumi.Input[int] target_size: - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
         :param pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerUpdatePolicyArgs']] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerVersionArgs']]]] versions: Application versions managed by this instance group. Each
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerVersionArgs']]]] versions: Application versions managed by this instance group. Each
                version deals with a specific instance template, allowing canary release scenarios.
                Structure is documented below.
         :param pulumi.Input[bool] wait_for_instances: Whether to wait for all instances to be created/updated before
@@ -130,19 +130,19 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
             auto_healing_policies: Optional[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerAutoHealingPoliciesArgs']]] = None,
             base_instance_name: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            distribution_policy_zones: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            distribution_policy_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             fingerprint: Optional[pulumi.Input[str]] = None,
             instance_group: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            named_ports: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerNamedPortArgs']]]]] = None,
+            named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerNamedPortArgs']]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
-            stateful_disks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerStatefulDiskArgs']]]]] = None,
-            target_pools: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            target_size: Optional[pulumi.Input[float]] = None,
+            stateful_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerStatefulDiskArgs']]]]] = None,
+            target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            target_size: Optional[pulumi.Input[int]] = None,
             update_policy: Optional[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerUpdatePolicyArgs']]] = None,
-            versions: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerVersionArgs']]]]] = None,
+            versions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerVersionArgs']]]]] = None,
             wait_for_instances: Optional[pulumi.Input[bool]] = None) -> 'RegionInstanceGroupManager':
         """
         Get an existing RegionInstanceGroupManager resource's state with the given name, id, and optional extra
@@ -161,24 +161,24 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                name.
         :param pulumi.Input[str] description: An optional textual description of the instance
                group manager.
-        :param pulumi.Input[List[pulumi.Input[str]]] distribution_policy_zones: The distribution policy for this managed instance
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] distribution_policy_zones: The distribution policy for this managed instance
                group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
         :param pulumi.Input[str] fingerprint: The fingerprint of the instance group manager.
         :param pulumi.Input[str] instance_group: The full URL of the instance group created by the manager.
         :param pulumi.Input[str] name: - Version name.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerNamedPortArgs']]]] named_ports: The named port configuration. See the section below
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerNamedPortArgs']]]] named_ports: The named port configuration. See the section below
                for details on configuration.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region where the managed instance group resides.
         :param pulumi.Input[str] self_link: The URL of the created resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerStatefulDiskArgs']]]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `update_policy`.
-        :param pulumi.Input[List[pulumi.Input[str]]] target_pools: The full URL of all target pools to which new
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerStatefulDiskArgs']]]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `update_policy`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_pools: The full URL of all target pools to which new
                instances in the group are added. Updating the target pools attribute does
                not affect existing instances.
-        :param pulumi.Input[float] target_size: - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+        :param pulumi.Input[int] target_size: - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
         :param pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerUpdatePolicyArgs']] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerVersionArgs']]]] versions: Application versions managed by this instance group. Each
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerVersionArgs']]]] versions: Application versions managed by this instance group. Each
                version deals with a specific instance template, allowing canary release scenarios.
                Structure is documented below.
         :param pulumi.Input[bool] wait_for_instances: Whether to wait for all instances to be created/updated before
@@ -241,7 +241,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="distributionPolicyZones")
-    def distribution_policy_zones(self) -> pulumi.Output[List[str]]:
+    def distribution_policy_zones(self) -> pulumi.Output[Sequence[str]]:
         """
         The distribution policy for this managed instance
         group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
@@ -274,7 +274,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="namedPorts")
-    def named_ports(self) -> pulumi.Output[Optional[List['outputs.RegionInstanceGroupManagerNamedPort']]]:
+    def named_ports(self) -> pulumi.Output[Optional[Sequence['outputs.RegionInstanceGroupManagerNamedPort']]]:
         """
         The named port configuration. See the section below
         for details on configuration.
@@ -308,7 +308,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="statefulDisks")
-    def stateful_disks(self) -> pulumi.Output[Optional[List['outputs.RegionInstanceGroupManagerStatefulDisk']]]:
+    def stateful_disks(self) -> pulumi.Output[Optional[Sequence['outputs.RegionInstanceGroupManagerStatefulDisk']]]:
         """
         Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `update_policy`.
         """
@@ -316,7 +316,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="targetPools")
-    def target_pools(self) -> pulumi.Output[Optional[List[str]]]:
+    def target_pools(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The full URL of all target pools to which new
         instances in the group are added. Updating the target pools attribute does
@@ -326,7 +326,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="targetSize")
-    def target_size(self) -> pulumi.Output[float]:
+    def target_size(self) -> pulumi.Output[int]:
         """
         - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
         """
@@ -342,7 +342,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def versions(self) -> pulumi.Output[List['outputs.RegionInstanceGroupManagerVersion']]:
+    def versions(self) -> pulumi.Output[Sequence['outputs.RegionInstanceGroupManagerVersion']]:
         """
         Application versions managed by this instance group. Each
         version deals with a specific instance template, allowing canary release scenarios.

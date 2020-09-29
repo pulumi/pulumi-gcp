@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -31,23 +31,23 @@ __all__ = [
 @pulumi.output_type
 class TriggerBuild(dict):
     def __init__(__self__, *,
-                 steps: List['outputs.TriggerBuildStep'],
+                 steps: Sequence['outputs.TriggerBuildStep'],
                  artifacts: Optional['outputs.TriggerBuildArtifacts'] = None,
-                 images: Optional[List[str]] = None,
+                 images: Optional[Sequence[str]] = None,
                  logs_bucket: Optional[str] = None,
                  options: Optional['outputs.TriggerBuildOptions'] = None,
                  queue_ttl: Optional[str] = None,
-                 secrets: Optional[List['outputs.TriggerBuildSecret']] = None,
+                 secrets: Optional[Sequence['outputs.TriggerBuildSecret']] = None,
                  source: Optional['outputs.TriggerBuildSource'] = None,
                  substitutions: Optional[Mapping[str, str]] = None,
-                 tags: Optional[List[str]] = None,
+                 tags: Optional[Sequence[str]] = None,
                  timeout: Optional[str] = None):
         """
-        :param List['TriggerBuildStepArgs'] steps: The operations to be performed on the workspace.
+        :param Sequence['TriggerBuildStepArgs'] steps: The operations to be performed on the workspace.
                Structure is documented below.
         :param 'TriggerBuildArtifactsArgs' artifacts: Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
                Structure is documented below.
-        :param List[str] images: A list of images to be pushed upon the successful completion of all build steps.
+        :param Sequence[str] images: A list of images to be pushed upon the successful completion of all build steps.
                The images will be pushed using the builder service account's credentials.
                The digests of the pushed images will be stored in the Build resource's results field.
                If any of the images fail to be pushed, the build is marked FAILURE.
@@ -59,13 +59,13 @@ class TriggerBuild(dict):
                the build will expire and the build status will be EXPIRED.
                The TTL starts ticking from createTime.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-        :param List['TriggerBuildSecretArgs'] secrets: Secrets to decrypt using Cloud Key Management Service.
+        :param Sequence['TriggerBuildSecretArgs'] secrets: Secrets to decrypt using Cloud Key Management Service.
                Structure is documented below.
         :param 'TriggerBuildSourceArgs' source: The location of the source files to build.
                One of `storageSource` or `repoSource` must be provided.
                Structure is documented below.
         :param Mapping[str, str] substitutions: Substitutions to use in a triggered build. Should only be used with triggers.run
-        :param List[str] tags: Tags for annotation of a Build. These are not docker tags.
+        :param Sequence[str] tags: Tags for annotation of a Build. These are not docker tags.
         :param str timeout: Time limit for executing this build step. If not defined,
                the step has no
                time limit and will be allowed to continue to run until either it
@@ -95,7 +95,7 @@ class TriggerBuild(dict):
 
     @property
     @pulumi.getter
-    def steps(self) -> List['outputs.TriggerBuildStep']:
+    def steps(self) -> Sequence['outputs.TriggerBuildStep']:
         """
         The operations to be performed on the workspace.
         Structure is documented below.
@@ -113,7 +113,7 @@ class TriggerBuild(dict):
 
     @property
     @pulumi.getter
-    def images(self) -> Optional[List[str]]:
+    def images(self) -> Optional[Sequence[str]]:
         """
         A list of images to be pushed upon the successful completion of all build steps.
         The images will be pushed using the builder service account's credentials.
@@ -153,7 +153,7 @@ class TriggerBuild(dict):
 
     @property
     @pulumi.getter
-    def secrets(self) -> Optional[List['outputs.TriggerBuildSecret']]:
+    def secrets(self) -> Optional[Sequence['outputs.TriggerBuildSecret']]:
         """
         Secrets to decrypt using Cloud Key Management Service.
         Structure is documented below.
@@ -180,7 +180,7 @@ class TriggerBuild(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> Optional[Sequence[str]]:
         """
         Tags for annotation of a Build. These are not docker tags.
         """
@@ -204,10 +204,10 @@ class TriggerBuild(dict):
 @pulumi.output_type
 class TriggerBuildArtifacts(dict):
     def __init__(__self__, *,
-                 images: Optional[List[str]] = None,
+                 images: Optional[Sequence[str]] = None,
                  objects: Optional['outputs.TriggerBuildArtifactsObjects'] = None):
         """
-        :param List[str] images: A list of images to be pushed upon the successful completion of all build steps.
+        :param Sequence[str] images: A list of images to be pushed upon the successful completion of all build steps.
                The images will be pushed using the builder service account's credentials.
                The digests of the pushed images will be stored in the Build resource's results field.
                If any of the images fail to be pushed, the build is marked FAILURE.
@@ -225,7 +225,7 @@ class TriggerBuildArtifacts(dict):
 
     @property
     @pulumi.getter
-    def images(self) -> Optional[List[str]]:
+    def images(self) -> Optional[Sequence[str]]:
         """
         A list of images to be pushed upon the successful completion of all build steps.
         The images will be pushed using the builder service account's credentials.
@@ -255,13 +255,13 @@ class TriggerBuildArtifacts(dict):
 class TriggerBuildArtifactsObjects(dict):
     def __init__(__self__, *,
                  location: Optional[str] = None,
-                 paths: Optional[List[str]] = None,
+                 paths: Optional[Sequence[str]] = None,
                  timing: Optional['outputs.TriggerBuildArtifactsObjectsTiming'] = None):
         """
         :param str location: Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
                Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
                this location as a prefix.
-        :param List[str] paths: Path globs used to match files in the build's workspace.
+        :param Sequence[str] paths: Path globs used to match files in the build's workspace.
         :param 'TriggerBuildArtifactsObjectsTimingArgs' timing: -
                Output only. Stores timing information for pushing all artifact objects.
                Structure is documented below.
@@ -285,7 +285,7 @@ class TriggerBuildArtifactsObjects(dict):
 
     @property
     @pulumi.getter
-    def paths(self) -> Optional[List[str]]:
+    def paths(self) -> Optional[Sequence[str]]:
         """
         Path globs used to match files in the build's workspace.
         """
@@ -350,27 +350,27 @@ class TriggerBuildArtifactsObjectsTiming(dict):
 @pulumi.output_type
 class TriggerBuildOptions(dict):
     def __init__(__self__, *,
-                 disk_size_gb: Optional[float] = None,
+                 disk_size_gb: Optional[int] = None,
                  dynamic_substitutions: Optional[bool] = None,
-                 envs: Optional[List[str]] = None,
+                 envs: Optional[Sequence[str]] = None,
                  log_streaming_option: Optional[str] = None,
                  logging: Optional[str] = None,
                  machine_type: Optional[str] = None,
                  requested_verify_option: Optional[str] = None,
-                 secret_envs: Optional[List[str]] = None,
-                 source_provenance_hashes: Optional[List[str]] = None,
+                 secret_envs: Optional[Sequence[str]] = None,
+                 source_provenance_hashes: Optional[Sequence[str]] = None,
                  substitution_option: Optional[str] = None,
-                 volumes: Optional[List['outputs.TriggerBuildOptionsVolume']] = None,
+                 volumes: Optional[Sequence['outputs.TriggerBuildOptionsVolume']] = None,
                  worker_pool: Optional[str] = None):
         """
-        :param float disk_size_gb: Requested disk size for the VM that runs the build. Note that this is NOT "disk free";
+        :param int disk_size_gb: Requested disk size for the VM that runs the build. Note that this is NOT "disk free";
                some of the space will be used by the operating system and build utilities.
                Also note that this is the minimum disk size that will be allocated for the build --
                the build may run with a larger disk than requested. At present, the maximum disk size
                is 1000GB; builds that request more than the maximum are rejected with an error.
         :param bool dynamic_substitutions: Option to specify whether or not to apply bash style string operations to the substitutions.
                NOTE this is always enabled for triggered builds and cannot be overridden in the build configuration file.
-        :param List[str] envs: A list of global environment variable definitions that will exist for all build steps
+        :param Sequence[str] envs: A list of global environment variable definitions that will exist for all build steps
                in this build. If a variable is defined in both globally and in a build step,
                the variable will use the build step value.
                The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
@@ -382,16 +382,16 @@ class TriggerBuildOptions(dict):
                Possible values are `UNSPECIFIED`, `N1_HIGHCPU_8`, and `N1_HIGHCPU_32`.
         :param str requested_verify_option: Requested verifiability options.
                Possible values are `NOT_VERIFIED` and `VERIFIED`.
-        :param List[str] secret_envs: A list of global environment variables, which are encrypted using a Cloud Key Management
+        :param Sequence[str] secret_envs: A list of global environment variables, which are encrypted using a Cloud Key Management
                Service crypto key. These values must be specified in the build's Secret. These variables
                will be available to all build steps in this build.
-        :param List[str] source_provenance_hashes: Requested hash for SourceProvenance.
+        :param Sequence[str] source_provenance_hashes: Requested hash for SourceProvenance.
                Each value may be one of `NONE`, `SHA256`, and `MD5`.
         :param str substitution_option: Option to specify behavior when there is an error in the substitution checks.
                NOTE this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden
                in the build configuration file.
                Possible values are `MUST_MATCH` and `ALLOW_LOOSE`.
-        :param List['TriggerBuildOptionsVolumeArgs'] volumes: Global list of volumes to mount for ALL build steps
+        :param Sequence['TriggerBuildOptionsVolumeArgs'] volumes: Global list of volumes to mount for ALL build steps
                Each volume is created as an empty volume prior to starting the build process.
                Upon completion of the build, volumes and their contents are discarded. Global
                volume names and paths cannot conflict with the volumes defined a build step.
@@ -428,7 +428,7 @@ class TriggerBuildOptions(dict):
 
     @property
     @pulumi.getter(name="diskSizeGb")
-    def disk_size_gb(self) -> Optional[float]:
+    def disk_size_gb(self) -> Optional[int]:
         """
         Requested disk size for the VM that runs the build. Note that this is NOT "disk free";
         some of the space will be used by the operating system and build utilities.
@@ -449,7 +449,7 @@ class TriggerBuildOptions(dict):
 
     @property
     @pulumi.getter
-    def envs(self) -> Optional[List[str]]:
+    def envs(self) -> Optional[Sequence[str]]:
         """
         A list of global environment variable definitions that will exist for all build steps
         in this build. If a variable is defined in both globally and in a build step,
@@ -496,7 +496,7 @@ class TriggerBuildOptions(dict):
 
     @property
     @pulumi.getter(name="secretEnvs")
-    def secret_envs(self) -> Optional[List[str]]:
+    def secret_envs(self) -> Optional[Sequence[str]]:
         """
         A list of global environment variables, which are encrypted using a Cloud Key Management
         Service crypto key. These values must be specified in the build's Secret. These variables
@@ -506,7 +506,7 @@ class TriggerBuildOptions(dict):
 
     @property
     @pulumi.getter(name="sourceProvenanceHashes")
-    def source_provenance_hashes(self) -> Optional[List[str]]:
+    def source_provenance_hashes(self) -> Optional[Sequence[str]]:
         """
         Requested hash for SourceProvenance.
         Each value may be one of `NONE`, `SHA256`, and `MD5`.
@@ -526,7 +526,7 @@ class TriggerBuildOptions(dict):
 
     @property
     @pulumi.getter
-    def volumes(self) -> Optional[List['outputs.TriggerBuildOptionsVolume']]:
+    def volumes(self) -> Optional[Sequence['outputs.TriggerBuildOptionsVolume']]:
         """
         Global list of volumes to mount for ALL build steps
         Each volume is created as an empty volume prior to starting the build process.
@@ -851,21 +851,21 @@ class TriggerBuildSourceStorageSource(dict):
 class TriggerBuildStep(dict):
     def __init__(__self__, *,
                  name: str,
-                 args: Optional[List[str]] = None,
+                 args: Optional[Sequence[str]] = None,
                  dir: Optional[str] = None,
                  entrypoint: Optional[str] = None,
-                 envs: Optional[List[str]] = None,
+                 envs: Optional[Sequence[str]] = None,
                  id: Optional[str] = None,
-                 secret_envs: Optional[List[str]] = None,
+                 secret_envs: Optional[Sequence[str]] = None,
                  timeout: Optional[str] = None,
                  timing: Optional[str] = None,
-                 volumes: Optional[List['outputs.TriggerBuildStepVolume']] = None,
-                 wait_fors: Optional[List[str]] = None):
+                 volumes: Optional[Sequence['outputs.TriggerBuildStepVolume']] = None,
+                 wait_fors: Optional[Sequence[str]] = None):
         """
         :param str name: Name of the volume to mount.
                Volume names must be unique per build step and must be valid names for Docker volumes.
                Each named volume must be used by at least two build steps.
-        :param List[str] args: A list of arguments that will be presented to the step when it is started.
+        :param Sequence[str] args: A list of arguments that will be presented to the step when it is started.
                If the image used to run the step's container has an entrypoint, the args
                are used as arguments to that entrypoint. If the image does not define an
                entrypoint, the first element in args is used as the entrypoint, and the
@@ -882,13 +882,13 @@ class TriggerBuildStep(dict):
         :param str entrypoint: Entrypoint to be used instead of the build step image's
                default entrypoint.
                If unset, the image's default entrypoint is used
-        :param List[str] envs: A list of global environment variable definitions that will exist for all build steps
+        :param Sequence[str] envs: A list of global environment variable definitions that will exist for all build steps
                in this build. If a variable is defined in both globally and in a build step,
                the variable will use the build step value.
                The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
         :param str id: Unique identifier for this build step, used in `wait_for` to
                reference this build step as a dependency.
-        :param List[str] secret_envs: A list of global environment variables, which are encrypted using a Cloud Key Management
+        :param Sequence[str] secret_envs: A list of global environment variables, which are encrypted using a Cloud Key Management
                Service crypto key. These values must be specified in the build's Secret. These variables
                will be available to all build steps in this build.
         :param str timeout: Time limit for executing this build step. If not defined,
@@ -898,14 +898,14 @@ class TriggerBuildStep(dict):
         :param str timing: -
                Output only. Stores timing information for pushing all artifact objects.
                Structure is documented below.
-        :param List['TriggerBuildStepVolumeArgs'] volumes: Global list of volumes to mount for ALL build steps
+        :param Sequence['TriggerBuildStepVolumeArgs'] volumes: Global list of volumes to mount for ALL build steps
                Each volume is created as an empty volume prior to starting the build process.
                Upon completion of the build, volumes and their contents are discarded. Global
                volume names and paths cannot conflict with the volumes defined a build step.
                Using a global volume in a build with only one step is not valid as it is indicative
                of a build request with an incorrect configuration.
                Structure is documented below.
-        :param List[str] wait_fors: The ID(s) of the step(s) that this build step depends on.
+        :param Sequence[str] wait_fors: The ID(s) of the step(s) that this build step depends on.
                This build step will not start until all the build steps in `wait_for`
                have completed successfully. If `wait_for` is empty, this build step
                will start when all previous build steps in the `Build.Steps` list
@@ -945,7 +945,7 @@ class TriggerBuildStep(dict):
 
     @property
     @pulumi.getter
-    def args(self) -> Optional[List[str]]:
+    def args(self) -> Optional[Sequence[str]]:
         """
         A list of arguments that will be presented to the step when it is started.
         If the image used to run the step's container has an entrypoint, the args
@@ -983,7 +983,7 @@ class TriggerBuildStep(dict):
 
     @property
     @pulumi.getter
-    def envs(self) -> Optional[List[str]]:
+    def envs(self) -> Optional[Sequence[str]]:
         """
         A list of global environment variable definitions that will exist for all build steps
         in this build. If a variable is defined in both globally and in a build step,
@@ -1003,7 +1003,7 @@ class TriggerBuildStep(dict):
 
     @property
     @pulumi.getter(name="secretEnvs")
-    def secret_envs(self) -> Optional[List[str]]:
+    def secret_envs(self) -> Optional[Sequence[str]]:
         """
         A list of global environment variables, which are encrypted using a Cloud Key Management
         Service crypto key. These values must be specified in the build's Secret. These variables
@@ -1034,7 +1034,7 @@ class TriggerBuildStep(dict):
 
     @property
     @pulumi.getter
-    def volumes(self) -> Optional[List['outputs.TriggerBuildStepVolume']]:
+    def volumes(self) -> Optional[Sequence['outputs.TriggerBuildStepVolume']]:
         """
         Global list of volumes to mount for ALL build steps
         Each volume is created as an empty volume prior to starting the build process.
@@ -1048,7 +1048,7 @@ class TriggerBuildStep(dict):
 
     @property
     @pulumi.getter(name="waitFors")
-    def wait_fors(self) -> Optional[List[str]]:
+    def wait_fors(self) -> Optional[Sequence[str]]:
         """
         The ID(s) of the step(s) that this build step depends on.
         This build step will not start until all the build steps in `wait_for`

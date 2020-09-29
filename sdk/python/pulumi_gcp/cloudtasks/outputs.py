@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -83,17 +83,17 @@ class QueueAppEngineRoutingOverride(dict):
 @pulumi.output_type
 class QueueRateLimits(dict):
     def __init__(__self__, *,
-                 max_burst_size: Optional[float] = None,
-                 max_concurrent_dispatches: Optional[float] = None,
+                 max_burst_size: Optional[int] = None,
+                 max_concurrent_dispatches: Optional[int] = None,
                  max_dispatches_per_second: Optional[float] = None):
         """
-        :param float max_burst_size: -
+        :param int max_burst_size: -
                The max burst size.
                Max burst size limits how fast tasks in queue are processed when many tasks are
                in the queue and the rate is high. This field allows the queue to have a high
                rate so processing starts shortly after a task is enqueued, but still limits
                resource usage when many tasks are enqueued in a short period of time.
-        :param float max_concurrent_dispatches: The maximum number of concurrent tasks that Cloud Tasks allows to
+        :param int max_concurrent_dispatches: The maximum number of concurrent tasks that Cloud Tasks allows to
                be dispatched for this queue. After this threshold has been
                reached, Cloud Tasks stops dispatching tasks until the number of
                concurrent requests decreases.
@@ -109,7 +109,7 @@ class QueueRateLimits(dict):
 
     @property
     @pulumi.getter(name="maxBurstSize")
-    def max_burst_size(self) -> Optional[float]:
+    def max_burst_size(self) -> Optional[int]:
         """
         -
         The max burst size.
@@ -122,7 +122,7 @@ class QueueRateLimits(dict):
 
     @property
     @pulumi.getter(name="maxConcurrentDispatches")
-    def max_concurrent_dispatches(self) -> Optional[float]:
+    def max_concurrent_dispatches(self) -> Optional[int]:
         """
         The maximum number of concurrent tasks that Cloud Tasks allows to
         be dispatched for this queue. After this threshold has been
@@ -147,13 +147,13 @@ class QueueRateLimits(dict):
 @pulumi.output_type
 class QueueRetryConfig(dict):
     def __init__(__self__, *,
-                 max_attempts: Optional[float] = None,
+                 max_attempts: Optional[int] = None,
                  max_backoff: Optional[str] = None,
-                 max_doublings: Optional[float] = None,
+                 max_doublings: Optional[int] = None,
                  max_retry_duration: Optional[str] = None,
                  min_backoff: Optional[str] = None):
         """
-        :param float max_attempts: Number of attempts per task.
+        :param int max_attempts: Number of attempts per task.
                Cloud Tasks will attempt the task maxAttempts times (that is, if
                the first attempt fails, then there will be maxAttempts - 1
                retries). Must be >= -1.
@@ -163,7 +163,7 @@ class QueueRetryConfig(dict):
         :param str max_backoff: A task will be scheduled for retry between minBackoff and
                maxBackoff duration after it fails, if the queue's RetryConfig
                specifies that the task should be retried.
-        :param float max_doublings: The time between retries will double maxDoublings times.
+        :param int max_doublings: The time between retries will double maxDoublings times.
                A task's retry interval starts at minBackoff, then doubles maxDoublings times,
                then increases linearly, and finally retries retries at intervals of maxBackoff
                up to maxAttempts times.
@@ -190,7 +190,7 @@ class QueueRetryConfig(dict):
 
     @property
     @pulumi.getter(name="maxAttempts")
-    def max_attempts(self) -> Optional[float]:
+    def max_attempts(self) -> Optional[int]:
         """
         Number of attempts per task.
         Cloud Tasks will attempt the task maxAttempts times (that is, if
@@ -214,7 +214,7 @@ class QueueRetryConfig(dict):
 
     @property
     @pulumi.getter(name="maxDoublings")
-    def max_doublings(self) -> Optional[float]:
+    def max_doublings(self) -> Optional[int]:
         """
         The time between retries will double maxDoublings times.
         A task's retry interval starts at minBackoff, then doubles maxDoublings times,

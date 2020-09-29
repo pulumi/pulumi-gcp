@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,14 +18,14 @@ class Intent(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input[str]] = None,
-                 default_response_platforms: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 default_response_platforms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 events: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 input_context_names: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 events: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 input_context_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  is_fallback: Optional[pulumi.Input[bool]] = None,
                  ml_disabled: Optional[pulumi.Input[bool]] = None,
                  parent_followup_intent_name: Optional[pulumi.Input[str]] = None,
-                 priority: Optional[pulumi.Input[float]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reset_contexts: Optional[pulumi.Input[bool]] = None,
                  webhook_state: Optional[pulumi.Input[str]] = None,
@@ -48,14 +48,14 @@ class Intent(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: The name of the action associated with the intent.
                Note: The action name must not contain whitespaces.
-        :param pulumi.Input[List[pulumi.Input[str]]] default_response_platforms: The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] default_response_platforms: The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
                (i.e. default platform).
                Each value may be one of `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, and `GOOGLE_HANGOUTS`.
         :param pulumi.Input[str] display_name: The name of this intent to be displayed on the console.
-        :param pulumi.Input[List[pulumi.Input[str]]] events: The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] events: The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of
                the contexts must be present in the active user session for an event to trigger this intent. See the
                [events reference](https://cloud.google.com/dialogflow/docs/events-overview) for more details.
-        :param pulumi.Input[List[pulumi.Input[str]]] input_context_names: The list of context names required for this intent to be triggered.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] input_context_names: The list of context names required for this intent to be triggered.
                Format: projects/<Project ID>/agent/sessions/-/contexts/<Context ID>.
         :param pulumi.Input[bool] is_fallback: Indicates whether this is a fallback intent.
         :param pulumi.Input[bool] ml_disabled: Indicates whether Machine Learning is disabled for the intent.
@@ -63,7 +63,7 @@ class Intent(pulumi.CustomResource):
                ONLY match mode. Also, auto-markup in the UI is turned off.
         :param pulumi.Input[str] parent_followup_intent_name: The unique identifier of the parent intent in the chain of followup intents.
                Format: projects/<Project ID>/agent/intents/<Intent ID>.
-        :param pulumi.Input[float] priority: The priority of this intent. Higher numbers represent higher priorities.
+        :param pulumi.Input[int] priority: The priority of this intent. Higher numbers represent higher priorities.
                - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds
                to the Normal priority in the console.
                - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
@@ -121,16 +121,16 @@ class Intent(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             action: Optional[pulumi.Input[str]] = None,
-            default_response_platforms: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            default_response_platforms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
-            events: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            followup_intent_infos: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['IntentFollowupIntentInfoArgs']]]]] = None,
-            input_context_names: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            events: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            followup_intent_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntentFollowupIntentInfoArgs']]]]] = None,
+            input_context_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             is_fallback: Optional[pulumi.Input[bool]] = None,
             ml_disabled: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             parent_followup_intent_name: Optional[pulumi.Input[str]] = None,
-            priority: Optional[pulumi.Input[float]] = None,
+            priority: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
             reset_contexts: Optional[pulumi.Input[bool]] = None,
             root_followup_intent_name: Optional[pulumi.Input[str]] = None,
@@ -144,16 +144,16 @@ class Intent(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: The name of the action associated with the intent.
                Note: The action name must not contain whitespaces.
-        :param pulumi.Input[List[pulumi.Input[str]]] default_response_platforms: The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] default_response_platforms: The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
                (i.e. default platform).
                Each value may be one of `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, and `GOOGLE_HANGOUTS`.
         :param pulumi.Input[str] display_name: The name of this intent to be displayed on the console.
-        :param pulumi.Input[List[pulumi.Input[str]]] events: The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] events: The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of
                the contexts must be present in the active user session for an event to trigger this intent. See the
                [events reference](https://cloud.google.com/dialogflow/docs/events-overview) for more details.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['IntentFollowupIntentInfoArgs']]]] followup_intent_infos: Information about all followup intents that have this intent as a direct or indirect parent. We populate this field only
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntentFollowupIntentInfoArgs']]]] followup_intent_infos: Information about all followup intents that have this intent as a direct or indirect parent. We populate this field only
                in the output.
-        :param pulumi.Input[List[pulumi.Input[str]]] input_context_names: The list of context names required for this intent to be triggered.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] input_context_names: The list of context names required for this intent to be triggered.
                Format: projects/<Project ID>/agent/sessions/-/contexts/<Context ID>.
         :param pulumi.Input[bool] is_fallback: Indicates whether this is a fallback intent.
         :param pulumi.Input[bool] ml_disabled: Indicates whether Machine Learning is disabled for the intent.
@@ -162,7 +162,7 @@ class Intent(pulumi.CustomResource):
         :param pulumi.Input[str] name: The unique identifier of this intent. Format: projects/<Project ID>/agent/intents/<Intent ID>.
         :param pulumi.Input[str] parent_followup_intent_name: The unique identifier of the parent intent in the chain of followup intents.
                Format: projects/<Project ID>/agent/intents/<Intent ID>.
-        :param pulumi.Input[float] priority: The priority of this intent. Higher numbers represent higher priorities.
+        :param pulumi.Input[int] priority: The priority of this intent. Higher numbers represent higher priorities.
                - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds
                to the Normal priority in the console.
                - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
@@ -209,7 +209,7 @@ class Intent(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultResponsePlatforms")
-    def default_response_platforms(self) -> pulumi.Output[Optional[List[str]]]:
+    def default_response_platforms(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
         (i.e. default platform).
@@ -227,7 +227,7 @@ class Intent(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def events(self) -> pulumi.Output[Optional[List[str]]]:
+    def events(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of
         the contexts must be present in the active user session for an event to trigger this intent. See the
@@ -237,7 +237,7 @@ class Intent(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="followupIntentInfos")
-    def followup_intent_infos(self) -> pulumi.Output[List['outputs.IntentFollowupIntentInfo']]:
+    def followup_intent_infos(self) -> pulumi.Output[Sequence['outputs.IntentFollowupIntentInfo']]:
         """
         Information about all followup intents that have this intent as a direct or indirect parent. We populate this field only
         in the output.
@@ -246,7 +246,7 @@ class Intent(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="inputContextNames")
-    def input_context_names(self) -> pulumi.Output[Optional[List[str]]]:
+    def input_context_names(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The list of context names required for this intent to be triggered.
         Format: projects/<Project ID>/agent/sessions/-/contexts/<Context ID>.
@@ -290,7 +290,7 @@ class Intent(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def priority(self) -> pulumi.Output[float]:
+    def priority(self) -> pulumi.Output[int]:
         """
         The priority of this intent. Higher numbers represent higher priorities.
         - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['NetworkEndpointGroup']
@@ -15,7 +15,7 @@ class NetworkEndpointGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_port: Optional[pulumi.Input[float]] = None,
+                 default_port: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -48,7 +48,7 @@ class NetworkEndpointGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] default_port: The default port used if the port number is not specified in the
+        :param pulumi.Input[int] default_port: The default port used if the port number is not specified in the
                network endpoint.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
@@ -108,14 +108,14 @@ class NetworkEndpointGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            default_port: Optional[pulumi.Input[float]] = None,
+            default_port: Optional[pulumi.Input[int]] = None,
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
             network_endpoint_type: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
-            size: Optional[pulumi.Input[float]] = None,
+            size: Optional[pulumi.Input[int]] = None,
             subnetwork: Optional[pulumi.Input[str]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'NetworkEndpointGroup':
         """
@@ -125,7 +125,7 @@ class NetworkEndpointGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] default_port: The default port used if the port number is not specified in the
+        :param pulumi.Input[int] default_port: The default port used if the port number is not specified in the
                network endpoint.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
@@ -144,7 +144,7 @@ class NetworkEndpointGroup(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[float] size: Number of network endpoints in the network endpoint group.
+        :param pulumi.Input[int] size: Number of network endpoints in the network endpoint group.
         :param pulumi.Input[str] subnetwork: Optional subnetwork to which all network endpoints in the NEG belong.
         :param pulumi.Input[str] zone: Zone where the network endpoint group is located.
         """
@@ -166,7 +166,7 @@ class NetworkEndpointGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultPort")
-    def default_port(self) -> pulumi.Output[Optional[float]]:
+    def default_port(self) -> pulumi.Output[Optional[int]]:
         """
         The default port used if the port number is not specified in the
         network endpoint.
@@ -234,7 +234,7 @@ class NetworkEndpointGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def size(self) -> pulumi.Output[float]:
+    def size(self) -> pulumi.Output[int]:
         """
         Number of network endpoints in the network endpoint group.
         """

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['Domain']
@@ -16,10 +16,10 @@ class Domain(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin: Optional[pulumi.Input[str]] = None,
-                 authorized_networks: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 authorized_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 locations: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reserved_ip_range: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -40,12 +40,12 @@ class Domain(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] admin: The name of delegated administrator account used to perform Active Directory operations.
                If not specified, setupadmin will be used.
-        :param pulumi.Input[List[pulumi.Input[str]]] authorized_networks: The full names of the Google Compute Engine networks the domain instance is connected to. The domain is only available on networks listed in authorizedNetworks.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_networks: The full names of the Google Compute Engine networks the domain instance is connected to. The domain is only available on networks listed in authorizedNetworks.
                If CIDR subnets overlap between networks, domain creation will fail.
         :param pulumi.Input[str] domain_name: The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
                https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels that can contain user-provided metadata
-        :param pulumi.Input[List[pulumi.Input[str]]] locations: Locations where domain needs to be provisioned. [regions][compute/docs/regions-zones/]
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: Locations where domain needs to be provisioned. [regions][compute/docs/regions-zones/]
                e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -95,11 +95,11 @@ class Domain(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             admin: Optional[pulumi.Input[str]] = None,
-            authorized_networks: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            authorized_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             domain_name: Optional[pulumi.Input[str]] = None,
             fqdn: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            locations: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             reserved_ip_range: Optional[pulumi.Input[str]] = None) -> 'Domain':
@@ -112,14 +112,14 @@ class Domain(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] admin: The name of delegated administrator account used to perform Active Directory operations.
                If not specified, setupadmin will be used.
-        :param pulumi.Input[List[pulumi.Input[str]]] authorized_networks: The full names of the Google Compute Engine networks the domain instance is connected to. The domain is only available on networks listed in authorizedNetworks.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_networks: The full names of the Google Compute Engine networks the domain instance is connected to. The domain is only available on networks listed in authorizedNetworks.
                If CIDR subnets overlap between networks, domain creation will fail.
         :param pulumi.Input[str] domain_name: The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
                https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
         :param pulumi.Input[str] fqdn: The fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would
                be chosen for an Active Directory set up on an internal network.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels that can contain user-provided metadata
-        :param pulumi.Input[List[pulumi.Input[str]]] locations: Locations where domain needs to be provisioned. [regions][compute/docs/regions-zones/]
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: Locations where domain needs to be provisioned. [regions][compute/docs/regions-zones/]
                e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
         :param pulumi.Input[str] name: The unique name of the domain using the format: 'projects/{project}/locations/global/domains/{domainName}'.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -153,7 +153,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="authorizedNetworks")
-    def authorized_networks(self) -> pulumi.Output[Optional[List[str]]]:
+    def authorized_networks(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The full names of the Google Compute Engine networks the domain instance is connected to. The domain is only available on networks listed in authorizedNetworks.
         If CIDR subnets overlap between networks, domain creation will fail.
@@ -188,7 +188,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def locations(self) -> pulumi.Output[List[str]]:
+    def locations(self) -> pulumi.Output[Sequence[str]]:
         """
         Locations where domain needs to be provisioned. [regions][compute/docs/regions-zones/]
         e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.

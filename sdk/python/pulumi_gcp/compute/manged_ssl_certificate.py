@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -21,7 +21,7 @@ class MangedSslCertificate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 certificate_id: Optional[pulumi.Input[float]] = None,
+                 certificate_id: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  managed: Optional[pulumi.Input[pulumi.InputType['MangedSslCertificateManagedArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -34,7 +34,7 @@ class MangedSslCertificate(pulumi.CustomResource):
         Create a MangedSslCertificate resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] certificate_id: The unique identifier for the resource.
+        :param pulumi.Input[int] certificate_id: The unique identifier for the resource.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[pulumi.InputType['MangedSslCertificateManagedArgs']] managed: Properties relevant to a managed certificate. These will be used if the certificate is managed (as indicated by a value
                of 'MANAGED' in 'type').
@@ -84,7 +84,7 @@ class MangedSslCertificate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            certificate_id: Optional[pulumi.Input[float]] = None,
+            certificate_id: Optional[pulumi.Input[int]] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             expire_time: Optional[pulumi.Input[str]] = None,
@@ -92,7 +92,7 @@ class MangedSslCertificate(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
-            subject_alternative_names: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            subject_alternative_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'MangedSslCertificate':
         """
         Get an existing MangedSslCertificate resource's state with the given name, id, and optional extra
@@ -101,7 +101,7 @@ class MangedSslCertificate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] certificate_id: The unique identifier for the resource.
+        :param pulumi.Input[int] certificate_id: The unique identifier for the resource.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] expire_time: Expire time of the certificate.
@@ -112,7 +112,7 @@ class MangedSslCertificate(pulumi.CustomResource):
                '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
                must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. These are in the same
                namespace as the managed SSL certificates.
-        :param pulumi.Input[List[pulumi.Input[str]]] subject_alternative_names: Domains associated with the certificate via Subject Alternative Name.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subject_alternative_names: Domains associated with the certificate via Subject Alternative Name.
         :param pulumi.Input[str] type: Enum field whose value is always 'MANAGED' - used to signal to the API which type this is. Default value: "MANAGED"
                Possible values: ["MANAGED"]
         """
@@ -134,7 +134,7 @@ class MangedSslCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="certificateId")
-    def certificate_id(self) -> pulumi.Output[float]:
+    def certificate_id(self) -> pulumi.Output[int]:
         """
         The unique identifier for the resource.
         """
@@ -197,7 +197,7 @@ class MangedSslCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="subjectAlternativeNames")
-    def subject_alternative_names(self) -> pulumi.Output[List[str]]:
+    def subject_alternative_names(self) -> pulumi.Output[Sequence[str]]:
         """
         Domains associated with the certificate via Subject Alternative Name.
         """

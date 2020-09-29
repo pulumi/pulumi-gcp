@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -27,7 +27,7 @@ class Subnetwork(pulumi.CustomResource):
                  purpose: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
-                 secondary_ip_ranges: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SubnetworkSecondaryIpRangeArgs']]]]] = None,
+                 secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetworkSecondaryIpRangeArgs']]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -104,7 +104,7 @@ class Subnetwork(pulumi.CustomResource):
                for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that
                is ready to be promoted to ACTIVE or is currently draining.
                Possible values are `ACTIVE` and `BACKUP`.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SubnetworkSecondaryIpRangeArgs']]]] secondary_ip_ranges: An array of configurations for secondary IP ranges for VM instances
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetworkSecondaryIpRangeArgs']]]] secondary_ip_ranges: An array of configurations for secondary IP ranges for VM instances
                contained in this subnetwork. The primary IP of such VM must belong
                to the primary ipCidrRange of the subnetwork. The alias IPs may belong
                to either primary or secondary ranges. Structure is documented below.
@@ -168,7 +168,7 @@ class Subnetwork(pulumi.CustomResource):
             purpose: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             role: Optional[pulumi.Input[str]] = None,
-            secondary_ip_ranges: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SubnetworkSecondaryIpRangeArgs']]]]] = None,
+            secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetworkSecondaryIpRangeArgs']]]]] = None,
             self_link: Optional[pulumi.Input[str]] = None) -> 'Subnetwork':
         """
         Get an existing Subnetwork resource's state with the given name, id, and optional extra
@@ -218,7 +218,7 @@ class Subnetwork(pulumi.CustomResource):
                for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that
                is ready to be promoted to ACTIVE or is currently draining.
                Possible values are `ACTIVE` and `BACKUP`.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SubnetworkSecondaryIpRangeArgs']]]] secondary_ip_ranges: An array of configurations for secondary IP ranges for VM instances
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetworkSecondaryIpRangeArgs']]]] secondary_ip_ranges: An array of configurations for secondary IP ranges for VM instances
                contained in this subnetwork. The primary IP of such VM must belong
                to the primary ipCidrRange of the subnetwork. The alias IPs may belong
                to either primary or secondary ranges. Structure is documented below.
@@ -379,7 +379,7 @@ class Subnetwork(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="secondaryIpRanges")
-    def secondary_ip_ranges(self) -> pulumi.Output[List['outputs.SubnetworkSecondaryIpRange']]:
+    def secondary_ip_ranges(self) -> pulumi.Output[Sequence['outputs.SubnetworkSecondaryIpRange']]:
         """
         An array of configurations for secondary IP ranges for VM instances
         contained in this subnetwork. The primary IP of such VM must belong

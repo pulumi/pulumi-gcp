@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -19,7 +19,7 @@ class IAMBinding(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  condition: Optional[pulumi.Input[pulumi.InputType['IAMBindingConditionArgs']]] = None,
                  folder: Optional[pulumi.Input[str]] = None,
-                 members: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -39,7 +39,7 @@ class IAMBinding(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] folder: The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
-        :param pulumi.Input[List[pulumi.Input[str]]] members: An array of identities that will be granted the privilege in the `role`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: An array of identities that will be granted the privilege in the `role`.
                Each entry can have one of the following values:
                * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice@gmail.com.
                * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
@@ -91,7 +91,7 @@ class IAMBinding(pulumi.CustomResource):
             condition: Optional[pulumi.Input[pulumi.InputType['IAMBindingConditionArgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             folder: Optional[pulumi.Input[str]] = None,
-            members: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             role: Optional[pulumi.Input[str]] = None) -> 'IAMBinding':
         """
         Get an existing IAMBinding resource's state with the given name, id, and optional extra
@@ -102,7 +102,7 @@ class IAMBinding(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] etag: (Computed) The etag of the folder's IAM policy.
         :param pulumi.Input[str] folder: The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
-        :param pulumi.Input[List[pulumi.Input[str]]] members: An array of identities that will be granted the privilege in the `role`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: An array of identities that will be granted the privilege in the `role`.
                Each entry can have one of the following values:
                * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice@gmail.com.
                * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
@@ -147,7 +147,7 @@ class IAMBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def members(self) -> pulumi.Output[List[str]]:
+    def members(self) -> pulumi.Output[Sequence[str]]:
         """
         An array of identities that will be granted the privilege in the `role`.
         Each entry can have one of the following values:

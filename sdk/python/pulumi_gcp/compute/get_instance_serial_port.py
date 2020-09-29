@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -29,8 +29,8 @@ class GetInstanceSerialPortResult:
         if instance and not isinstance(instance, str):
             raise TypeError("Expected argument 'instance' to be a str")
         pulumi.set(__self__, "instance", instance)
-        if port and not isinstance(port, float):
-            raise TypeError("Expected argument 'port' to be a float")
+        if port and not isinstance(port, int):
+            raise TypeError("Expected argument 'port' to be a int")
         pulumi.set(__self__, "port", port)
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
@@ -62,7 +62,7 @@ class GetInstanceSerialPortResult:
 
     @property
     @pulumi.getter
-    def port(self) -> float:
+    def port(self) -> int:
         return pulumi.get(self, "port")
 
     @property
@@ -91,7 +91,7 @@ class AwaitableGetInstanceSerialPortResult(GetInstanceSerialPortResult):
 
 
 def get_instance_serial_port(instance: Optional[str] = None,
-                             port: Optional[float] = None,
+                             port: Optional[int] = None,
                              project: Optional[str] = None,
                              zone: Optional[str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceSerialPortResult:
@@ -101,7 +101,7 @@ def get_instance_serial_port(instance: Optional[str] = None,
 
 
     :param str instance: The name of the Compute Instance to read output from.
-    :param float port: The number of the serial port to read output from. Possible values are 1-4.
+    :param int port: The number of the serial port to read output from. Possible values are 1-4.
     :param str project: The project in which the Compute Instance exists. If it
            is not provided, the provider project is used.
     :param str zone: The zone in which the Compute Instance exists.

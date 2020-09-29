@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -22,12 +22,12 @@ class Trigger(pulumi.CustomResource):
                  disabled: Optional[pulumi.Input[bool]] = None,
                  filename: Optional[pulumi.Input[str]] = None,
                  github: Optional[pulumi.Input[pulumi.InputType['TriggerGithubArgs']]] = None,
-                 ignored_files: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 included_files: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 ignored_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 included_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  substitutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  trigger_template: Optional[pulumi.Input[pulumi.InputType['TriggerTriggerTemplateArgs']]] = None,
                  __props__=None,
                  __name__=None,
@@ -53,14 +53,14 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['TriggerGithubArgs']] github: Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
                One of `trigger_template` or `github` must be provided.
                Structure is documented below.
-        :param pulumi.Input[List[pulumi.Input[str]]] ignored_files: ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ignored_files: ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
                extended with support for `**`.
                If ignoredFiles and changed files are both empty, then they are not
                used to determine whether or not to trigger a build.
                If ignoredFiles is not empty, then we ignore any files that match any
                of the ignored_file globs. If the change has no files that are outside
                of the ignoredFiles globs, then we do not trigger a build.
-        :param pulumi.Input[List[pulumi.Input[str]]] included_files: ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] included_files: ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
                extended with support for `**`.
                If any of the files altered in the commit pass the ignoredFiles filter
                and includedFiles is empty, then as far as this filter is concerned, we
@@ -75,7 +75,7 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] substitutions: Substitutions to use in a triggered build. Should only be used with triggers.run
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: Tags for annotation of a Build. These are not docker tags.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags for annotation of a Build. These are not docker tags.
         :param pulumi.Input[pulumi.InputType['TriggerTriggerTemplateArgs']] trigger_template: Template describing the types of source changes to trigger a build.
                Branch and tag names in trigger templates are interpreted as regular
                expressions. Any branch or tag change that matches that regular
@@ -130,12 +130,12 @@ class Trigger(pulumi.CustomResource):
             disabled: Optional[pulumi.Input[bool]] = None,
             filename: Optional[pulumi.Input[str]] = None,
             github: Optional[pulumi.Input[pulumi.InputType['TriggerGithubArgs']]] = None,
-            ignored_files: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            included_files: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            ignored_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            included_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             substitutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             trigger_id: Optional[pulumi.Input[str]] = None,
             trigger_template: Optional[pulumi.Input[pulumi.InputType['TriggerTriggerTemplateArgs']]] = None) -> 'Trigger':
         """
@@ -154,14 +154,14 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['TriggerGithubArgs']] github: Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
                One of `trigger_template` or `github` must be provided.
                Structure is documented below.
-        :param pulumi.Input[List[pulumi.Input[str]]] ignored_files: ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ignored_files: ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
                extended with support for `**`.
                If ignoredFiles and changed files are both empty, then they are not
                used to determine whether or not to trigger a build.
                If ignoredFiles is not empty, then we ignore any files that match any
                of the ignored_file globs. If the change has no files that are outside
                of the ignoredFiles globs, then we do not trigger a build.
-        :param pulumi.Input[List[pulumi.Input[str]]] included_files: ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] included_files: ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
                extended with support for `**`.
                If any of the files altered in the commit pass the ignoredFiles filter
                and includedFiles is empty, then as far as this filter is concerned, we
@@ -176,7 +176,7 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] substitutions: Substitutions to use in a triggered build. Should only be used with triggers.run
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: Tags for annotation of a Build. These are not docker tags.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags for annotation of a Build. These are not docker tags.
         :param pulumi.Input[str] trigger_id: The unique identifier for the trigger.
         :param pulumi.Input[pulumi.InputType['TriggerTriggerTemplateArgs']] trigger_template: Template describing the types of source changes to trigger a build.
                Branch and tag names in trigger templates are interpreted as regular
@@ -258,7 +258,7 @@ class Trigger(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ignoredFiles")
-    def ignored_files(self) -> pulumi.Output[Optional[List[str]]]:
+    def ignored_files(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
         extended with support for `**`.
@@ -272,7 +272,7 @@ class Trigger(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="includedFiles")
-    def included_files(self) -> pulumi.Output[Optional[List[str]]]:
+    def included_files(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
         extended with support for `**`.
@@ -315,7 +315,7 @@ class Trigger(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[List[str]]]:
+    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         Tags for annotation of a Build. These are not docker tags.
         """

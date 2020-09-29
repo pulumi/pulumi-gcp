@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['ForwardingRule']
@@ -28,7 +28,7 @@ class ForwardingRule(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  network_tier: Optional[pulumi.Input[str]] = None,
                  port_range: Optional[pulumi.Input[str]] = None,
-                 ports: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  service_label: Optional[pulumi.Input[str]] = None,
@@ -133,7 +133,7 @@ class ForwardingRule(pulumi.CustomResource):
                * TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
                1883, 5222
                * TargetVpnGateway: 500, 4500
-        :param pulumi.Input[List[pulumi.Input[str]]] ports: This field is used along with the backend_service field for internal
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: This field is used along with the backend_service field for internal
                load balancing.
                When the load balancing scheme is INTERNAL, a single port or a comma
                separated list of ports can be configured. Only packets addressed to
@@ -229,7 +229,7 @@ class ForwardingRule(pulumi.CustomResource):
             network: Optional[pulumi.Input[str]] = None,
             network_tier: Optional[pulumi.Input[str]] = None,
             port_range: Optional[pulumi.Input[str]] = None,
-            ports: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
@@ -327,7 +327,7 @@ class ForwardingRule(pulumi.CustomResource):
                * TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
                1883, 5222
                * TargetVpnGateway: 500, 4500
-        :param pulumi.Input[List[pulumi.Input[str]]] ports: This field is used along with the backend_service field for internal
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: This field is used along with the backend_service field for internal
                load balancing.
                When the load balancing scheme is INTERNAL, a single port or a comma
                separated list of ports can be configured. Only packets addressed to
@@ -579,7 +579,7 @@ class ForwardingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ports(self) -> pulumi.Output[Optional[List[str]]]:
+    def ports(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         This field is used along with the backend_service field for internal
         load balancing.

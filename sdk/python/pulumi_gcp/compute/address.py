@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['Address']
@@ -140,7 +140,7 @@ class Address(pulumi.CustomResource):
             region: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             subnetwork: Optional[pulumi.Input[str]] = None,
-            users: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'Address':
+            users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Address':
         """
         Get an existing Address resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -182,7 +182,7 @@ class Address(pulumi.CustomResource):
                address is specified, it must be within the subnetwork's IP range.
                This field can only be used with INTERNAL type with
                GCE_ENDPOINT/DNS_RESOLVER purposes.
-        :param pulumi.Input[List[pulumi.Input[str]]] users: The URLs of the resources that are using this address.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] users: The URLs of the resources that are using this address.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -331,7 +331,7 @@ class Address(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def users(self) -> pulumi.Output[List[str]]:
+    def users(self) -> pulumi.Output[Sequence[str]]:
         """
         The URLs of the resources that are using this address.
         """

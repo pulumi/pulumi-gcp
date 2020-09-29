@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -116,16 +116,16 @@ class SecretReplication(dict):
 @pulumi.output_type
 class SecretReplicationUserManaged(dict):
     def __init__(__self__, *,
-                 replicas: List['outputs.SecretReplicationUserManagedReplica']):
+                 replicas: Sequence['outputs.SecretReplicationUserManagedReplica']):
         """
-        :param List['SecretReplicationUserManagedReplicaArgs'] replicas: The list of Replicas for this Secret. Cannot be empty.
+        :param Sequence['SecretReplicationUserManagedReplicaArgs'] replicas: The list of Replicas for this Secret. Cannot be empty.
                Structure is documented below.
         """
         pulumi.set(__self__, "replicas", replicas)
 
     @property
     @pulumi.getter
-    def replicas(self) -> List['outputs.SecretReplicationUserManagedReplica']:
+    def replicas(self) -> Sequence['outputs.SecretReplicationUserManagedReplica']:
         """
         The list of Replicas for this Secret. Cannot be empty.
         Structure is documented below.

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -29,7 +29,7 @@ __all__ = [
 class EntryBigqueryDateShardedSpec(dict):
     def __init__(__self__, *,
                  dataset: Optional[str] = None,
-                 shard_count: Optional[float] = None,
+                 shard_count: Optional[int] = None,
                  table_prefix: Optional[str] = None):
         if dataset is not None:
             pulumi.set(__self__, "dataset", dataset)
@@ -45,7 +45,7 @@ class EntryBigqueryDateShardedSpec(dict):
 
     @property
     @pulumi.getter(name="shardCount")
-    def shard_count(self) -> Optional[float]:
+    def shard_count(self) -> Optional[int]:
         return pulumi.get(self, "shard_count")
 
     @property
@@ -124,10 +124,10 @@ class EntryBigqueryTableSpecViewSpec(dict):
 @pulumi.output_type
 class EntryGcsFilesetSpec(dict):
     def __init__(__self__, *,
-                 file_patterns: List[str],
-                 sample_gcs_file_specs: Optional[List['outputs.EntryGcsFilesetSpecSampleGcsFileSpec']] = None):
+                 file_patterns: Sequence[str],
+                 sample_gcs_file_specs: Optional[Sequence['outputs.EntryGcsFilesetSpecSampleGcsFileSpec']] = None):
         """
-        :param List[str] file_patterns: Patterns to identify a set of files in Google Cloud Storage.
+        :param Sequence[str] file_patterns: Patterns to identify a set of files in Google Cloud Storage.
                See [Cloud Storage documentation](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames)
                for more information. Note that bucket wildcards are currently not supported. Examples of valid filePatterns:
                * gs://bucket_name/dir/*: matches all files within bucket_name/dir directory.
@@ -138,7 +138,7 @@ class EntryGcsFilesetSpec(dict):
                * gs://bucket_name/[a-m].txt: matches files that contain a, b, ... or m followed by .txt in bucket_name
                * gs://bucket_name/a/*/b: matches all files in bucket_name that match a/*/b pattern, such as a/c/b, a/d/b
                * gs://another_bucket/a.txt: matches gs://another_bucket/a.txt
-        :param List['EntryGcsFilesetSpecSampleGcsFileSpecArgs'] sample_gcs_file_specs: -
+        :param Sequence['EntryGcsFilesetSpecSampleGcsFileSpecArgs'] sample_gcs_file_specs: -
                Sample files contained in this fileset, not all files contained in this fileset are represented here.
                Structure is documented below.
         """
@@ -148,7 +148,7 @@ class EntryGcsFilesetSpec(dict):
 
     @property
     @pulumi.getter(name="filePatterns")
-    def file_patterns(self) -> List[str]:
+    def file_patterns(self) -> Sequence[str]:
         """
         Patterns to identify a set of files in Google Cloud Storage.
         See [Cloud Storage documentation](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames)
@@ -166,7 +166,7 @@ class EntryGcsFilesetSpec(dict):
 
     @property
     @pulumi.getter(name="sampleGcsFileSpecs")
-    def sample_gcs_file_specs(self) -> Optional[List['outputs.EntryGcsFilesetSpecSampleGcsFileSpec']]:
+    def sample_gcs_file_specs(self) -> Optional[Sequence['outputs.EntryGcsFilesetSpecSampleGcsFileSpec']]:
         """
         -
         Sample files contained in this fileset, not all files contained in this fileset are represented here.
@@ -182,11 +182,11 @@ class EntryGcsFilesetSpec(dict):
 class EntryGcsFilesetSpecSampleGcsFileSpec(dict):
     def __init__(__self__, *,
                  file_path: Optional[str] = None,
-                 size_bytes: Optional[float] = None):
+                 size_bytes: Optional[int] = None):
         """
         :param str file_path: -
                The full file path
-        :param float size_bytes: -
+        :param int size_bytes: -
                The size of the file, in bytes.
         """
         if file_path is not None:
@@ -205,7 +205,7 @@ class EntryGcsFilesetSpecSampleGcsFileSpec(dict):
 
     @property
     @pulumi.getter(name="sizeBytes")
-    def size_bytes(self) -> Optional[float]:
+    def size_bytes(self) -> Optional[int]:
         """
         -
         The size of the file, in bytes.
@@ -284,7 +284,7 @@ class TagField(dict):
                  display_name: Optional[str] = None,
                  double_value: Optional[float] = None,
                  enum_value: Optional[str] = None,
-                 order: Optional[float] = None,
+                 order: Optional[int] = None,
                  string_value: Optional[str] = None,
                  timestamp_value: Optional[str] = None):
         """
@@ -295,7 +295,7 @@ class TagField(dict):
         :param float double_value: Holds the value for a tag field with double type.
         :param str enum_value: Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.
                Structure is documented below.
-        :param float order: -
+        :param int order: -
                The order of this field with respect to other fields in this tag. For example, a higher value can indicate
                a more important field. The value can be negative. Multiple fields can have the same order, and field orders
                within a tag do not have to be sequential.
@@ -362,7 +362,7 @@ class TagField(dict):
 
     @property
     @pulumi.getter
-    def order(self) -> Optional[float]:
+    def order(self) -> Optional[int]:
         """
         -
         The order of this field with respect to other fields in this tag. For example, a higher value can indicate
@@ -399,7 +399,7 @@ class TagTemplateField(dict):
                  display_name: Optional[str] = None,
                  is_required: Optional[bool] = None,
                  name: Optional[str] = None,
-                 order: Optional[float] = None):
+                 order: Optional[int] = None):
         """
         :param str field_id: The identifier for this object. Format specified above.
         :param 'TagTemplateFieldTypeArgs' type: The type of value this tag field can contain.
@@ -408,7 +408,7 @@ class TagTemplateField(dict):
         :param bool is_required: Whether this is a required field. Defaults to false.
         :param str name: -
                The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
-        :param float order: The order of this field with respect to other fields in this tag template.
+        :param int order: The order of this field with respect to other fields in this tag template.
                A higher value indicates a more important field. The value can be negative.
                Multiple fields can have the same order, and field orders within a tag do not have to be sequential.
         """
@@ -467,7 +467,7 @@ class TagTemplateField(dict):
 
     @property
     @pulumi.getter
-    def order(self) -> Optional[float]:
+    def order(self) -> Optional[int]:
         """
         The order of this field with respect to other fields in this tag template.
         A higher value indicates a more important field. The value can be negative.
@@ -524,9 +524,9 @@ class TagTemplateFieldType(dict):
 @pulumi.output_type
 class TagTemplateFieldTypeEnumType(dict):
     def __init__(__self__, *,
-                 allowed_values: List['outputs.TagTemplateFieldTypeEnumTypeAllowedValue']):
+                 allowed_values: Sequence['outputs.TagTemplateFieldTypeEnumTypeAllowedValue']):
         """
-        :param List['TagTemplateFieldTypeEnumTypeAllowedValueArgs'] allowed_values: The set of allowed values for this enum. The display names of the
+        :param Sequence['TagTemplateFieldTypeEnumTypeAllowedValueArgs'] allowed_values: The set of allowed values for this enum. The display names of the
                values must be case-insensitively unique within this set. Currently,
                enum values can only be added to the list of allowed values. Deletion
                and renaming of enum values are not supported.
@@ -537,7 +537,7 @@ class TagTemplateFieldTypeEnumType(dict):
 
     @property
     @pulumi.getter(name="allowedValues")
-    def allowed_values(self) -> List['outputs.TagTemplateFieldTypeEnumTypeAllowedValue']:
+    def allowed_values(self) -> Sequence['outputs.TagTemplateFieldTypeEnumTypeAllowedValue']:
         """
         The set of allowed values for this enum. The display names of the
         values must be case-insensitively unique within this set. Currently,

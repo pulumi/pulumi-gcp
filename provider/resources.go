@@ -9,6 +9,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	google "github.com/hashicorp/terraform-provider-google-beta/google-beta"
 	"github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfbridge"
+	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfshim/sdk-v1"
 	"github.com/pulumi/pulumi/sdk/v2/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v2/go/common/tokens"
 )
@@ -134,7 +135,7 @@ func boolRef(b bool) *bool {
 
 // Provider returns additional overlaid schema and metadata associated with the gcp package.
 func Provider() tfbridge.ProviderInfo {
-	p := google.Provider().(*schema.Provider)
+	p := shimv1.NewProvider(google.Provider().(*schema.Provider))
 	prov := tfbridge.ProviderInfo{
 		P:              p,
 		Name:           "google-beta",
@@ -374,7 +375,7 @@ func Provider() tfbridge.ProviderInfo {
 				Fields: map[string]*tfbridge.SchemaInfo{
 					// Name must start with a letter followed by up to 62 letters, numbers, or
 					// hyphens, and cannot end with a hyphen
-					"name": tfbridge.AutoName("name", 63),
+					"name": tfbridge.AutoName("name", 63, "-"),
 				},
 			},
 			"google_cloudfunctions_function_iam_binding": {
@@ -1107,7 +1108,7 @@ func Provider() tfbridge.ProviderInfo {
 					// Bucket names must contain 3 to 63 characters. Names containing dots can
 					// contain up to 222 characters, but each dot-separated component can be no
 					// longer than 63 characters.
-					"name": tfbridge.AutoName("name", 222),
+					"name": tfbridge.AutoName("name", 222, "-"),
 				},
 			},
 			"google_storage_bucket_acl": {Tok: gcpResource(gcpStorage, "BucketACL")},
@@ -2183,24 +2184,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 	})
 
-	// For all resources with name properties, we will add an auto-name property.  Make sure to skip those that
-	// already have a name mapping entry, since those may have custom overrides set above (e.g., for length).
-	const gcpName = "name"
-	for resname, res := range prov.Resources {
-		if schema := p.ResourcesMap[resname]; schema != nil {
-			// Only apply auto-name to input properties (Optional || Required) named `name`
-			if tfs, has := schema.Schema[gcpName]; has && (tfs.Optional || tfs.Required) {
-				if _, hasfield := res.Fields[gcpName]; !hasfield {
-					if res.Fields == nil {
-						res.Fields = make(map[string]*tfbridge.SchemaInfo)
-					}
-					// Use conservative options that apply broadly for Google Cloud Platform.  See
-					// details.
-					res.Fields[gcpName] = tfbridge.AutoName(gcpName, 255)
-				}
-			}
-		}
-	}
+	prov.SetAutonaming(255, "-")
 
 	return prov
 }

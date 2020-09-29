@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -111,7 +111,7 @@ class ObjectAccessControl(pulumi.CustomResource):
             email: Optional[pulumi.Input[str]] = None,
             entity: Optional[pulumi.Input[str]] = None,
             entity_id: Optional[pulumi.Input[str]] = None,
-            generation: Optional[pulumi.Input[float]] = None,
+            generation: Optional[pulumi.Input[int]] = None,
             object: Optional[pulumi.Input[str]] = None,
             project_team: Optional[pulumi.Input[pulumi.InputType['ObjectAccessControlProjectTeamArgs']]] = None,
             role: Optional[pulumi.Input[str]] = None) -> 'ObjectAccessControl':
@@ -135,7 +135,7 @@ class ObjectAccessControl(pulumi.CustomResource):
                * allUsers
                * allAuthenticatedUsers
         :param pulumi.Input[str] entity_id: The ID for the entity
-        :param pulumi.Input[float] generation: The content generation of the object, if applied to an object.
+        :param pulumi.Input[int] generation: The content generation of the object, if applied to an object.
         :param pulumi.Input[str] object: The name of the object to apply the access control to.
         :param pulumi.Input[pulumi.InputType['ObjectAccessControlProjectTeamArgs']] project_team: The project team associated with the entity
         :param pulumi.Input[str] role: The access permission for the entity.
@@ -206,7 +206,7 @@ class ObjectAccessControl(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def generation(self) -> pulumi.Output[float]:
+    def generation(self) -> pulumi.Output[int]:
         """
         The content generation of the object, if applied to an object.
         """

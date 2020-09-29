@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,7 +18,7 @@ class Device(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  blocked: Optional[pulumi.Input[bool]] = None,
-                 credentials: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DeviceCredentialArgs']]]]] = None,
+                 credentials: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceCredentialArgs']]]]] = None,
                  gateway_config: Optional[pulumi.Input[pulumi.InputType['DeviceGatewayConfigArgs']]] = None,
                  log_level: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -41,7 +41,7 @@ class Device(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] blocked: If a device is blocked, connections or requests from this device will fail.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DeviceCredentialArgs']]]] credentials: The credentials used to authenticate this device.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceCredentialArgs']]]] credentials: The credentials used to authenticate this device.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['DeviceGatewayConfigArgs']] gateway_config: Gateway-related configuration and state.
                Structure is documented below.
@@ -99,7 +99,7 @@ class Device(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             blocked: Optional[pulumi.Input[bool]] = None,
             config: Optional[pulumi.Input[pulumi.InputType['DeviceConfigArgs']]] = None,
-            credentials: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DeviceCredentialArgs']]]]] = None,
+            credentials: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceCredentialArgs']]]]] = None,
             gateway_config: Optional[pulumi.Input[pulumi.InputType['DeviceGatewayConfigArgs']]] = None,
             last_config_ack_time: Optional[pulumi.Input[str]] = None,
             last_config_send_time: Optional[pulumi.Input[str]] = None,
@@ -123,7 +123,7 @@ class Device(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] blocked: If a device is blocked, connections or requests from this device will fail.
         :param pulumi.Input[pulumi.InputType['DeviceConfigArgs']] config: The most recent device configuration, which is eventually sent from Cloud IoT Core to the device.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DeviceCredentialArgs']]]] credentials: The credentials used to authenticate this device.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceCredentialArgs']]]] credentials: The credentials used to authenticate this device.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['DeviceGatewayConfigArgs']] gateway_config: Gateway-related configuration and state.
                Structure is documented below.
@@ -184,7 +184,7 @@ class Device(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def credentials(self) -> pulumi.Output[Optional[List['outputs.DeviceCredential']]]:
+    def credentials(self) -> pulumi.Output[Optional[Sequence['outputs.DeviceCredential']]]:
         """
         The credentials used to authenticate this device.
         Structure is documented below.

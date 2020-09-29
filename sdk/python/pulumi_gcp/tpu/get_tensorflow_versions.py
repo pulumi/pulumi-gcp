@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -48,7 +48,7 @@ class GetTensorflowVersionsResult:
 
     @property
     @pulumi.getter
-    def versions(self) -> List[str]:
+    def versions(self) -> Sequence[str]:
         """
         The list of TensorFlow versions available for the given project and zone.
         """

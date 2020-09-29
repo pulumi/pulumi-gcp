@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -17,11 +17,11 @@ class Table(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 clusterings: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 clusterings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  encryption_configuration: Optional[pulumi.Input[pulumi.InputType['TableEncryptionConfigurationArgs']]] = None,
-                 expiration_time: Optional[pulumi.Input[float]] = None,
+                 expiration_time: Optional[pulumi.Input[int]] = None,
                  external_data_configuration: Optional[pulumi.Input[pulumi.InputType['TableExternalDataConfigurationArgs']]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -41,7 +41,7 @@ class Table(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] clusterings: Specifies column names to use for data clustering.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] clusterings: Specifies column names to use for data clustering.
                Up to four top-level columns are allowed, and should be specified in
                descending priority order.
         :param pulumi.Input[str] dataset_id: The dataset ID to create the table in.
@@ -50,7 +50,7 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['TableEncryptionConfigurationArgs']] encryption_configuration: Specifies how the table should be encrypted.
                If left blank, the table will be encrypted with a Google-managed key; that process
                is transparent to the user.  Structure is documented below.
-        :param pulumi.Input[float] expiration_time: The time when this table expires, in
+        :param pulumi.Input[int] expiration_time: The time when this table expires, in
                milliseconds since the epoch. If not present, the table will persist
                indefinitely. Expired tables will be deleted and their storage
                reclaimed.
@@ -136,21 +136,21 @@ class Table(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            clusterings: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            creation_time: Optional[pulumi.Input[float]] = None,
+            clusterings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            creation_time: Optional[pulumi.Input[int]] = None,
             dataset_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             encryption_configuration: Optional[pulumi.Input[pulumi.InputType['TableEncryptionConfigurationArgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
-            expiration_time: Optional[pulumi.Input[float]] = None,
+            expiration_time: Optional[pulumi.Input[int]] = None,
             external_data_configuration: Optional[pulumi.Input[pulumi.InputType['TableExternalDataConfigurationArgs']]] = None,
             friendly_name: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            last_modified_time: Optional[pulumi.Input[float]] = None,
+            last_modified_time: Optional[pulumi.Input[int]] = None,
             location: Optional[pulumi.Input[str]] = None,
-            num_bytes: Optional[pulumi.Input[float]] = None,
-            num_long_term_bytes: Optional[pulumi.Input[float]] = None,
-            num_rows: Optional[pulumi.Input[float]] = None,
+            num_bytes: Optional[pulumi.Input[int]] = None,
+            num_long_term_bytes: Optional[pulumi.Input[int]] = None,
+            num_rows: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
             range_partitioning: Optional[pulumi.Input[pulumi.InputType['TableRangePartitioningArgs']]] = None,
             schema: Optional[pulumi.Input[str]] = None,
@@ -166,10 +166,10 @@ class Table(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] clusterings: Specifies column names to use for data clustering.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] clusterings: Specifies column names to use for data clustering.
                Up to four top-level columns are allowed, and should be specified in
                descending priority order.
-        :param pulumi.Input[float] creation_time: The time when this table was created, in milliseconds since the epoch.
+        :param pulumi.Input[int] creation_time: The time when this table was created, in milliseconds since the epoch.
         :param pulumi.Input[str] dataset_id: The dataset ID to create the table in.
                Changing this forces a new resource to be created.
         :param pulumi.Input[str] description: The field description.
@@ -177,7 +177,7 @@ class Table(pulumi.CustomResource):
                If left blank, the table will be encrypted with a Google-managed key; that process
                is transparent to the user.  Structure is documented below.
         :param pulumi.Input[str] etag: A hash of the resource.
-        :param pulumi.Input[float] expiration_time: The time when this table expires, in
+        :param pulumi.Input[int] expiration_time: The time when this table expires, in
                milliseconds since the epoch. If not present, the table will persist
                indefinitely. Expired tables will be deleted and their storage
                reclaimed.
@@ -187,11 +187,11 @@ class Table(pulumi.CustomResource):
                if it were a standard BigQuery table. Structure is documented below.
         :param pulumi.Input[str] friendly_name: A descriptive name for the table.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A mapping of labels to assign to the resource.
-        :param pulumi.Input[float] last_modified_time: The time when this table was last modified, in milliseconds since the epoch.
+        :param pulumi.Input[int] last_modified_time: The time when this table was last modified, in milliseconds since the epoch.
         :param pulumi.Input[str] location: The geographic location where the table resides. This value is inherited from the dataset.
-        :param pulumi.Input[float] num_bytes: The size of this table in bytes, excluding any data in the streaming buffer.
-        :param pulumi.Input[float] num_long_term_bytes: The number of bytes in the table that are considered "long-term storage".
-        :param pulumi.Input[float] num_rows: The number of rows of data in this table, excluding any data in the streaming buffer.
+        :param pulumi.Input[int] num_bytes: The size of this table in bytes, excluding any data in the streaming buffer.
+        :param pulumi.Input[int] num_long_term_bytes: The number of bytes in the table that are considered "long-term storage".
+        :param pulumi.Input[int] num_rows: The number of rows of data in this table, excluding any data in the streaming buffer.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['TableRangePartitioningArgs']] range_partitioning: If specified, configures range-based
@@ -248,7 +248,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def clusterings(self) -> pulumi.Output[Optional[List[str]]]:
+    def clusterings(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         Specifies column names to use for data clustering.
         Up to four top-level columns are allowed, and should be specified in
@@ -258,7 +258,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="creationTime")
-    def creation_time(self) -> pulumi.Output[float]:
+    def creation_time(self) -> pulumi.Output[int]:
         """
         The time when this table was created, in milliseconds since the epoch.
         """
@@ -301,7 +301,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="expirationTime")
-    def expiration_time(self) -> pulumi.Output[float]:
+    def expiration_time(self) -> pulumi.Output[int]:
         """
         The time when this table expires, in
         milliseconds since the epoch. If not present, the table will persist
@@ -339,7 +339,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lastModifiedTime")
-    def last_modified_time(self) -> pulumi.Output[float]:
+    def last_modified_time(self) -> pulumi.Output[int]:
         """
         The time when this table was last modified, in milliseconds since the epoch.
         """
@@ -355,7 +355,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="numBytes")
-    def num_bytes(self) -> pulumi.Output[float]:
+    def num_bytes(self) -> pulumi.Output[int]:
         """
         The size of this table in bytes, excluding any data in the streaming buffer.
         """
@@ -363,7 +363,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="numLongTermBytes")
-    def num_long_term_bytes(self) -> pulumi.Output[float]:
+    def num_long_term_bytes(self) -> pulumi.Output[int]:
         """
         The number of bytes in the table that are considered "long-term storage".
         """
@@ -371,7 +371,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="numRows")
-    def num_rows(self) -> pulumi.Output[float]:
+    def num_rows(self) -> pulumi.Output[int]:
         """
         The number of rows of data in this table, excluding any data in the streaming buffer.
         """

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -86,7 +86,7 @@ class GetNetworkResult:
 
     @property
     @pulumi.getter(name="subnetworksSelfLinks")
-    def subnetworks_self_links(self) -> List[str]:
+    def subnetworks_self_links(self) -> Sequence[str]:
         """
         the list of subnetworks which belong to the network
         """

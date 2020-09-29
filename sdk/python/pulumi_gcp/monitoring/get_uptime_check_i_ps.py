@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -38,7 +38,7 @@ class GetUptimeCheckIPsResult:
 
     @property
     @pulumi.getter(name="uptimeCheckIps")
-    def uptime_check_ips(self) -> List['outputs.GetUptimeCheckIPsUptimeCheckIpResult']:
+    def uptime_check_ips(self) -> Sequence['outputs.GetUptimeCheckIPsUptimeCheckIpResult']:
         """
         A list of uptime check IPs used by Stackdriver Monitoring. Each `uptime_check_ip` contains:
         """

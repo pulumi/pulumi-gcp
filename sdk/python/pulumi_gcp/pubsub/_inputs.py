@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -25,7 +25,7 @@ __all__ = [
 class SubscriptionDeadLetterPolicyArgs:
     def __init__(__self__, *,
                  dead_letter_topic: Optional[pulumi.Input[str]] = None,
-                 max_delivery_attempts: Optional[pulumi.Input[float]] = None):
+                 max_delivery_attempts: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] dead_letter_topic: The name of the topic to which dead letter messages should be published.
                Format is `projects/{project}/topics/{topic}`.
@@ -36,7 +36,7 @@ class SubscriptionDeadLetterPolicyArgs:
                The operation will fail if the topic does not exist.
                Users should ensure that there is a subscription attached to this topic
                since messages published to a topic with no subscriptions are lost.
-        :param pulumi.Input[float] max_delivery_attempts: The maximum number of delivery attempts for any message. The value must be
+        :param pulumi.Input[int] max_delivery_attempts: The maximum number of delivery attempts for any message. The value must be
                between 5 and 100.
                The number of delivery attempts is defined as 1 + (the sum of number of
                NACKs and number of times the acknowledgement deadline has been exceeded for the message).
@@ -72,7 +72,7 @@ class SubscriptionDeadLetterPolicyArgs:
 
     @property
     @pulumi.getter(name="maxDeliveryAttempts")
-    def max_delivery_attempts(self) -> Optional[pulumi.Input[float]]:
+    def max_delivery_attempts(self) -> Optional[pulumi.Input[int]]:
         """
         The maximum number of delivery attempts for any message. The value must be
         between 5 and 100.
@@ -86,7 +86,7 @@ class SubscriptionDeadLetterPolicyArgs:
         return pulumi.get(self, "max_delivery_attempts")
 
     @max_delivery_attempts.setter
-    def max_delivery_attempts(self, value: Optional[pulumi.Input[float]]):
+    def max_delivery_attempts(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_delivery_attempts", value)
 
 
@@ -472,9 +472,9 @@ class TopicIAMMemberConditionArgs:
 @pulumi.input_type
 class TopicMessageStoragePolicyArgs:
     def __init__(__self__, *,
-                 allowed_persistence_regions: pulumi.Input[List[pulumi.Input[str]]]):
+                 allowed_persistence_regions: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] allowed_persistence_regions: A list of IDs of GCP regions where messages that are published to
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_persistence_regions: A list of IDs of GCP regions where messages that are published to
                the topic may be persisted in storage. Messages published by
                publishers running in non-allowed GCP regions (or running outside
                of GCP altogether) will be routed for storage in one of the
@@ -485,7 +485,7 @@ class TopicMessageStoragePolicyArgs:
 
     @property
     @pulumi.getter(name="allowedPersistenceRegions")
-    def allowed_persistence_regions(self) -> pulumi.Input[List[pulumi.Input[str]]]:
+    def allowed_persistence_regions(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         A list of IDs of GCP regions where messages that are published to
         the topic may be persisted in storage. Messages published by
@@ -497,7 +497,7 @@ class TopicMessageStoragePolicyArgs:
         return pulumi.get(self, "allowed_persistence_regions")
 
     @allowed_persistence_regions.setter
-    def allowed_persistence_regions(self, value: pulumi.Input[List[pulumi.Input[str]]]):
+    def allowed_persistence_regions(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "allowed_persistence_regions", value)
 
 

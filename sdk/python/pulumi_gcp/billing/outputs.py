@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -82,11 +82,11 @@ class AccountIamMemberCondition(dict):
 @pulumi.output_type
 class BudgetAllUpdatesRule(dict):
     def __init__(__self__, *,
-                 monitoring_notification_channels: Optional[List[str]] = None,
+                 monitoring_notification_channels: Optional[Sequence[str]] = None,
                  pubsub_topic: Optional[str] = None,
                  schema_version: Optional[str] = None):
         """
-        :param List[str] monitoring_notification_channels: The full resource name of a monitoring notification
+        :param Sequence[str] monitoring_notification_channels: The full resource name of a monitoring notification
                channel in the form
                projects/{project_id}/notificationChannels/{channel_id}.
                A maximum of 5 channels are allowed.
@@ -107,7 +107,7 @@ class BudgetAllUpdatesRule(dict):
 
     @property
     @pulumi.getter(name="monitoringNotificationChannels")
-    def monitoring_notification_channels(self) -> Optional[List[str]]:
+    def monitoring_notification_channels(self) -> Optional[Sequence[str]]:
         """
         The full resource name of a monitoring notification
         channel in the form
@@ -191,11 +191,11 @@ class BudgetAmount(dict):
 class BudgetAmountSpecifiedAmount(dict):
     def __init__(__self__, *,
                  currency_code: Optional[str] = None,
-                 nanos: Optional[float] = None,
+                 nanos: Optional[int] = None,
                  units: Optional[str] = None):
         """
         :param str currency_code: The 3-letter currency code defined in ISO 4217.
-        :param float nanos: Number of nano (10^-9) units of the amount.
+        :param int nanos: Number of nano (10^-9) units of the amount.
                The value must be between -999,999,999 and +999,999,999
                inclusive. If units is positive, nanos must be positive or
                zero. If units is zero, nanos can be positive, zero, or
@@ -222,7 +222,7 @@ class BudgetAmountSpecifiedAmount(dict):
 
     @property
     @pulumi.getter
-    def nanos(self) -> Optional[float]:
+    def nanos(self) -> Optional[int]:
         """
         Number of nano (10^-9) units of the amount.
         The value must be between -999,999,999 and +999,999,999
@@ -251,20 +251,20 @@ class BudgetAmountSpecifiedAmount(dict):
 class BudgetBudgetFilter(dict):
     def __init__(__self__, *,
                  credit_types_treatment: Optional[str] = None,
-                 projects: Optional[List[str]] = None,
-                 services: Optional[List[str]] = None):
+                 projects: Optional[Sequence[str]] = None,
+                 services: Optional[Sequence[str]] = None):
         """
         :param str credit_types_treatment: Specifies how credits should be treated when determining spend
                for threshold calculations.
                Default value is `INCLUDE_ALL_CREDITS`.
                Possible values are `INCLUDE_ALL_CREDITS` and `EXCLUDE_ALL_CREDITS`.
-        :param List[str] projects: A set of projects of the form projects/{project_id},
+        :param Sequence[str] projects: A set of projects of the form projects/{project_id},
                specifying that usage from only this set of projects should be
                included in the budget. If omitted, the report will include
                all usage for the billing account, regardless of which project
                the usage occurred on. Only zero or one project can be
                specified currently.
-        :param List[str] services: A set of services of the form services/{service_id},
+        :param Sequence[str] services: A set of services of the form services/{service_id},
                specifying that usage from only this set of services should be
                included in the budget. If omitted, the report will include
                usage for all the services. The service names are available
@@ -291,7 +291,7 @@ class BudgetBudgetFilter(dict):
 
     @property
     @pulumi.getter
-    def projects(self) -> Optional[List[str]]:
+    def projects(self) -> Optional[Sequence[str]]:
         """
         A set of projects of the form projects/{project_id},
         specifying that usage from only this set of projects should be
@@ -304,7 +304,7 @@ class BudgetBudgetFilter(dict):
 
     @property
     @pulumi.getter
-    def services(self) -> Optional[List[str]]:
+    def services(self) -> Optional[Sequence[str]]:
         """
         A set of services of the form services/{service_id},
         specifying that usage from only this set of services should be

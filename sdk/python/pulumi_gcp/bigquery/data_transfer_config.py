@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -17,7 +17,7 @@ class DataTransferConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_refresh_window_days: Optional[pulumi.Input[float]] = None,
+                 data_refresh_window_days: Optional[pulumi.Input[int]] = None,
                  data_source_id: Optional[pulumi.Input[str]] = None,
                  destination_dataset_id: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
@@ -49,7 +49,7 @@ class DataTransferConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] data_refresh_window_days: The number of days to look back to automatically refresh the data.
+        :param pulumi.Input[int] data_refresh_window_days: The number of days to look back to automatically refresh the data.
                For example, if dataRefreshWindowDays = 10, then every day BigQuery
                reingests data for [today-10, today-1], rather than ingesting data for
                just [today-1]. Only valid if the data source supports the feature.
@@ -132,7 +132,7 @@ class DataTransferConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            data_refresh_window_days: Optional[pulumi.Input[float]] = None,
+            data_refresh_window_days: Optional[pulumi.Input[int]] = None,
             data_source_id: Optional[pulumi.Input[str]] = None,
             destination_dataset_id: Optional[pulumi.Input[str]] = None,
             disabled: Optional[pulumi.Input[bool]] = None,
@@ -152,7 +152,7 @@ class DataTransferConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] data_refresh_window_days: The number of days to look back to automatically refresh the data.
+        :param pulumi.Input[int] data_refresh_window_days: The number of days to look back to automatically refresh the data.
                For example, if dataRefreshWindowDays = 10, then every day BigQuery
                reingests data for [today-10, today-1], rather than ingesting data for
                just [today-1]. Only valid if the data source supports the feature.
@@ -211,7 +211,7 @@ class DataTransferConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dataRefreshWindowDays")
-    def data_refresh_window_days(self) -> pulumi.Output[Optional[float]]:
+    def data_refresh_window_days(self) -> pulumi.Output[Optional[int]]:
         """
         The number of days to look back to automatically refresh the data.
         For example, if dataRefreshWindowDays = 10, then every day BigQuery

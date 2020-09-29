@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -25,7 +25,7 @@ class AttestorAttestationAuthorityNote(dict):
     def __init__(__self__, *,
                  note_reference: str,
                  delegation_service_account_email: Optional[str] = None,
-                 public_keys: Optional[List['outputs.AttestorAttestationAuthorityNotePublicKey']] = None):
+                 public_keys: Optional[Sequence['outputs.AttestorAttestationAuthorityNotePublicKey']] = None):
         """
         :param str note_reference: The resource name of a ATTESTATION_AUTHORITY Note, created by the
                user. If the Note is in a different project from the Attestor, it
@@ -44,7 +44,7 @@ class AttestorAttestationAuthorityNote(dict):
                callers should not make any other assumptions about the service
                account email; future versions may use an email based on a
                different naming pattern.
-        :param List['AttestorAttestationAuthorityNotePublicKeyArgs'] public_keys: Public keys that verify attestations signed by this attestor. This
+        :param Sequence['AttestorAttestationAuthorityNotePublicKeyArgs'] public_keys: Public keys that verify attestations signed by this attestor. This
                field may be updated.
                If this field is non-empty, one of the specified public keys must
                verify that an attestation was signed by this attestor for the
@@ -92,7 +92,7 @@ class AttestorAttestationAuthorityNote(dict):
 
     @property
     @pulumi.getter(name="publicKeys")
-    def public_keys(self) -> Optional[List['outputs.AttestorAttestationAuthorityNotePublicKey']]:
+    def public_keys(self) -> Optional[Sequence['outputs.AttestorAttestationAuthorityNotePublicKey']]:
         """
         Public keys that verify attestations signed by this attestor. This
         field may be updated.
@@ -340,14 +340,14 @@ class PolicyClusterAdmissionRule(dict):
                  cluster: str,
                  enforcement_mode: str,
                  evaluation_mode: str,
-                 require_attestations_bies: Optional[List[str]] = None):
+                 require_attestations_bies: Optional[Sequence[str]] = None):
         """
         :param str cluster: The identifier for this object. Format specified above.
         :param str enforcement_mode: The action when a pod creation is denied by the admission rule.
                Possible values are `ENFORCED_BLOCK_AND_AUDIT_LOG` and `DRYRUN_AUDIT_LOG_ONLY`.
         :param str evaluation_mode: How this admission rule will be evaluated.
                Possible values are `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, and `ALWAYS_DENY`.
-        :param List[str] require_attestations_bies: The resource names of the attestors that must attest to a
+        :param Sequence[str] require_attestations_bies: The resource names of the attestors that must attest to a
                container image. If the attestor is in a different project from the
                policy, it should be specified in the format `projects/*/attestors/*`.
                Each attestor must exist before a policy can reference it. To add an
@@ -390,7 +390,7 @@ class PolicyClusterAdmissionRule(dict):
 
     @property
     @pulumi.getter(name="requireAttestationsBies")
-    def require_attestations_bies(self) -> Optional[List[str]]:
+    def require_attestations_bies(self) -> Optional[Sequence[str]]:
         """
         The resource names of the attestors that must attest to a
         container image. If the attestor is in a different project from the
@@ -412,13 +412,13 @@ class PolicyDefaultAdmissionRule(dict):
     def __init__(__self__, *,
                  enforcement_mode: str,
                  evaluation_mode: str,
-                 require_attestations_bies: Optional[List[str]] = None):
+                 require_attestations_bies: Optional[Sequence[str]] = None):
         """
         :param str enforcement_mode: The action when a pod creation is denied by the admission rule.
                Possible values are `ENFORCED_BLOCK_AND_AUDIT_LOG` and `DRYRUN_AUDIT_LOG_ONLY`.
         :param str evaluation_mode: How this admission rule will be evaluated.
                Possible values are `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, and `ALWAYS_DENY`.
-        :param List[str] require_attestations_bies: The resource names of the attestors that must attest to a
+        :param Sequence[str] require_attestations_bies: The resource names of the attestors that must attest to a
                container image. If the attestor is in a different project from the
                policy, it should be specified in the format `projects/*/attestors/*`.
                Each attestor must exist before a policy can reference it. To add an
@@ -452,7 +452,7 @@ class PolicyDefaultAdmissionRule(dict):
 
     @property
     @pulumi.getter(name="requireAttestationsBies")
-    def require_attestations_bies(self) -> Optional[List[str]]:
+    def require_attestations_bies(self) -> Optional[Sequence[str]]:
         """
         The resource names of the attestors that must attest to a
         container image. If the attestor is in a different project from the

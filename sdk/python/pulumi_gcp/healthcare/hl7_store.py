@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -21,7 +21,7 @@ class Hl7Store(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_config: Optional[pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigArgs']]] = None,
-                 notification_configs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigsArgs']]]]] = None,
+                 notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigsArgs']]]]] = None,
                  parser_config: Optional[pulumi.Input[pulumi.InputType['Hl7StoreParserConfigArgs']]] = None,
                  __props__=None,
                  __name__=None,
@@ -56,7 +56,7 @@ class Hl7Store(pulumi.CustomResource):
                (Optional, Deprecated)
                A nested object resource
                Structure is documented below.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigsArgs']]]] notification_configs: A list of notification configs. Each configuration uses a filter to determine whether to publish a
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigsArgs']]]] notification_configs: A list of notification configs. Each configuration uses a filter to determine whether to publish a
                message (both Ingest & Create) on the corresponding notification destination. Only the message name
                is sent as part of the notification. Supplied by the client.
                Structure is documented below.
@@ -106,7 +106,7 @@ class Hl7Store(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             notification_config: Optional[pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigArgs']]] = None,
-            notification_configs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigsArgs']]]]] = None,
+            notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigsArgs']]]]] = None,
             parser_config: Optional[pulumi.Input[pulumi.InputType['Hl7StoreParserConfigArgs']]] = None,
             self_link: Optional[pulumi.Input[str]] = None) -> 'Hl7Store':
         """
@@ -132,7 +132,7 @@ class Hl7Store(pulumi.CustomResource):
                (Optional, Deprecated)
                A nested object resource
                Structure is documented below.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigsArgs']]]] notification_configs: A list of notification configs. Each configuration uses a filter to determine whether to publish a
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigsArgs']]]] notification_configs: A list of notification configs. Each configuration uses a filter to determine whether to publish a
                message (both Ingest & Create) on the corresponding notification destination. Only the message name
                is sent as part of the notification. Supplied by the client.
                Structure is documented below.
@@ -199,7 +199,7 @@ class Hl7Store(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="notificationConfigs")
-    def notification_configs(self) -> pulumi.Output[Optional[List['outputs.Hl7StoreNotificationConfigs']]]:
+    def notification_configs(self) -> pulumi.Output[Optional[Sequence['outputs.Hl7StoreNotificationConfigs']]]:
         """
         A list of notification configs. Each configuration uses a filter to determine whether to publish a
         message (both Ingest & Create) on the corresponding notification destination. Only the message name

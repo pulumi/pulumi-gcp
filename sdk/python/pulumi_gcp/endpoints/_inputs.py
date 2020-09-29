@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -19,7 +19,7 @@ __all__ = [
 @pulumi.input_type
 class ServiceApiArgs:
     def __init__(__self__, *,
-                 methods: Optional[pulumi.Input[List[pulumi.Input['ServiceApiMethodArgs']]]] = None,
+                 methods: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceApiMethodArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  syntax: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None):
@@ -34,11 +34,11 @@ class ServiceApiArgs:
 
     @property
     @pulumi.getter
-    def methods(self) -> Optional[pulumi.Input[List[pulumi.Input['ServiceApiMethodArgs']]]]:
+    def methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceApiMethodArgs']]]]:
         return pulumi.get(self, "methods")
 
     @methods.setter
-    def methods(self, value: Optional[pulumi.Input[List[pulumi.Input['ServiceApiMethodArgs']]]]):
+    def methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceApiMethodArgs']]]]):
         pulumi.set(self, "methods", value)
 
     @property

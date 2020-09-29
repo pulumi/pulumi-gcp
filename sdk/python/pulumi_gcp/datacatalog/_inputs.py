@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -28,7 +28,7 @@ __all__ = [
 class EntryBigqueryDateShardedSpecArgs:
     def __init__(__self__, *,
                  dataset: Optional[pulumi.Input[str]] = None,
-                 shard_count: Optional[pulumi.Input[float]] = None,
+                 shard_count: Optional[pulumi.Input[int]] = None,
                  table_prefix: Optional[pulumi.Input[str]] = None):
         if dataset is not None:
             pulumi.set(__self__, "dataset", dataset)
@@ -48,11 +48,11 @@ class EntryBigqueryDateShardedSpecArgs:
 
     @property
     @pulumi.getter(name="shardCount")
-    def shard_count(self) -> Optional[pulumi.Input[float]]:
+    def shard_count(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "shard_count")
 
     @shard_count.setter
-    def shard_count(self, value: Optional[pulumi.Input[float]]):
+    def shard_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "shard_count", value)
 
     @property
@@ -143,10 +143,10 @@ class EntryBigqueryTableSpecViewSpecArgs:
 @pulumi.input_type
 class EntryGcsFilesetSpecArgs:
     def __init__(__self__, *,
-                 file_patterns: pulumi.Input[List[pulumi.Input[str]]],
-                 sample_gcs_file_specs: Optional[pulumi.Input[List[pulumi.Input['EntryGcsFilesetSpecSampleGcsFileSpecArgs']]]] = None):
+                 file_patterns: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 sample_gcs_file_specs: Optional[pulumi.Input[Sequence[pulumi.Input['EntryGcsFilesetSpecSampleGcsFileSpecArgs']]]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] file_patterns: Patterns to identify a set of files in Google Cloud Storage.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] file_patterns: Patterns to identify a set of files in Google Cloud Storage.
                See [Cloud Storage documentation](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames)
                for more information. Note that bucket wildcards are currently not supported. Examples of valid filePatterns:
                * gs://bucket_name/dir/*: matches all files within bucket_name/dir directory.
@@ -157,7 +157,7 @@ class EntryGcsFilesetSpecArgs:
                * gs://bucket_name/[a-m].txt: matches files that contain a, b, ... or m followed by .txt in bucket_name
                * gs://bucket_name/a/*/b: matches all files in bucket_name that match a/*/b pattern, such as a/c/b, a/d/b
                * gs://another_bucket/a.txt: matches gs://another_bucket/a.txt
-        :param pulumi.Input[List[pulumi.Input['EntryGcsFilesetSpecSampleGcsFileSpecArgs']]] sample_gcs_file_specs: -
+        :param pulumi.Input[Sequence[pulumi.Input['EntryGcsFilesetSpecSampleGcsFileSpecArgs']]] sample_gcs_file_specs: -
                Sample files contained in this fileset, not all files contained in this fileset are represented here.
                Structure is documented below.
         """
@@ -167,7 +167,7 @@ class EntryGcsFilesetSpecArgs:
 
     @property
     @pulumi.getter(name="filePatterns")
-    def file_patterns(self) -> pulumi.Input[List[pulumi.Input[str]]]:
+    def file_patterns(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         Patterns to identify a set of files in Google Cloud Storage.
         See [Cloud Storage documentation](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames)
@@ -184,12 +184,12 @@ class EntryGcsFilesetSpecArgs:
         return pulumi.get(self, "file_patterns")
 
     @file_patterns.setter
-    def file_patterns(self, value: pulumi.Input[List[pulumi.Input[str]]]):
+    def file_patterns(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "file_patterns", value)
 
     @property
     @pulumi.getter(name="sampleGcsFileSpecs")
-    def sample_gcs_file_specs(self) -> Optional[pulumi.Input[List[pulumi.Input['EntryGcsFilesetSpecSampleGcsFileSpecArgs']]]]:
+    def sample_gcs_file_specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EntryGcsFilesetSpecSampleGcsFileSpecArgs']]]]:
         """
         -
         Sample files contained in this fileset, not all files contained in this fileset are represented here.
@@ -198,7 +198,7 @@ class EntryGcsFilesetSpecArgs:
         return pulumi.get(self, "sample_gcs_file_specs")
 
     @sample_gcs_file_specs.setter
-    def sample_gcs_file_specs(self, value: Optional[pulumi.Input[List[pulumi.Input['EntryGcsFilesetSpecSampleGcsFileSpecArgs']]]]):
+    def sample_gcs_file_specs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EntryGcsFilesetSpecSampleGcsFileSpecArgs']]]]):
         pulumi.set(self, "sample_gcs_file_specs", value)
 
 
@@ -206,11 +206,11 @@ class EntryGcsFilesetSpecArgs:
 class EntryGcsFilesetSpecSampleGcsFileSpecArgs:
     def __init__(__self__, *,
                  file_path: Optional[pulumi.Input[str]] = None,
-                 size_bytes: Optional[pulumi.Input[float]] = None):
+                 size_bytes: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] file_path: -
                The full file path
-        :param pulumi.Input[float] size_bytes: -
+        :param pulumi.Input[int] size_bytes: -
                The size of the file, in bytes.
         """
         if file_path is not None:
@@ -233,7 +233,7 @@ class EntryGcsFilesetSpecSampleGcsFileSpecArgs:
 
     @property
     @pulumi.getter(name="sizeBytes")
-    def size_bytes(self) -> Optional[pulumi.Input[float]]:
+    def size_bytes(self) -> Optional[pulumi.Input[int]]:
         """
         -
         The size of the file, in bytes.
@@ -241,7 +241,7 @@ class EntryGcsFilesetSpecSampleGcsFileSpecArgs:
         return pulumi.get(self, "size_bytes")
 
     @size_bytes.setter
-    def size_bytes(self, value: Optional[pulumi.Input[float]]):
+    def size_bytes(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "size_bytes", value)
 
 
@@ -331,7 +331,7 @@ class TagFieldArgs:
                  display_name: Optional[pulumi.Input[str]] = None,
                  double_value: Optional[pulumi.Input[float]] = None,
                  enum_value: Optional[pulumi.Input[str]] = None,
-                 order: Optional[pulumi.Input[float]] = None,
+                 order: Optional[pulumi.Input[int]] = None,
                  string_value: Optional[pulumi.Input[str]] = None,
                  timestamp_value: Optional[pulumi.Input[str]] = None):
         """
@@ -342,7 +342,7 @@ class TagFieldArgs:
         :param pulumi.Input[float] double_value: Holds the value for a tag field with double type.
         :param pulumi.Input[str] enum_value: Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.
                Structure is documented below.
-        :param pulumi.Input[float] order: -
+        :param pulumi.Input[int] order: -
                The order of this field with respect to other fields in this tag. For example, a higher value can indicate
                a more important field. The value can be negative. Multiple fields can have the same order, and field orders
                within a tag do not have to be sequential.
@@ -429,7 +429,7 @@ class TagFieldArgs:
 
     @property
     @pulumi.getter
-    def order(self) -> Optional[pulumi.Input[float]]:
+    def order(self) -> Optional[pulumi.Input[int]]:
         """
         -
         The order of this field with respect to other fields in this tag. For example, a higher value can indicate
@@ -439,7 +439,7 @@ class TagFieldArgs:
         return pulumi.get(self, "order")
 
     @order.setter
-    def order(self, value: Optional[pulumi.Input[float]]):
+    def order(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "order", value)
 
     @property
@@ -475,7 +475,7 @@ class TagTemplateFieldArgs:
                  display_name: Optional[pulumi.Input[str]] = None,
                  is_required: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 order: Optional[pulumi.Input[float]] = None):
+                 order: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] field_id: The identifier for this object. Format specified above.
         :param pulumi.Input['TagTemplateFieldTypeArgs'] type: The type of value this tag field can contain.
@@ -484,7 +484,7 @@ class TagTemplateFieldArgs:
         :param pulumi.Input[bool] is_required: Whether this is a required field. Defaults to false.
         :param pulumi.Input[str] name: -
                The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
-        :param pulumi.Input[float] order: The order of this field with respect to other fields in this tag template.
+        :param pulumi.Input[int] order: The order of this field with respect to other fields in this tag template.
                A higher value indicates a more important field. The value can be negative.
                Multiple fields can have the same order, and field orders within a tag do not have to be sequential.
         """
@@ -563,7 +563,7 @@ class TagTemplateFieldArgs:
 
     @property
     @pulumi.getter
-    def order(self) -> Optional[pulumi.Input[float]]:
+    def order(self) -> Optional[pulumi.Input[int]]:
         """
         The order of this field with respect to other fields in this tag template.
         A higher value indicates a more important field. The value can be negative.
@@ -572,7 +572,7 @@ class TagTemplateFieldArgs:
         return pulumi.get(self, "order")
 
     @order.setter
-    def order(self, value: Optional[pulumi.Input[float]]):
+    def order(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "order", value)
 
 
@@ -626,9 +626,9 @@ class TagTemplateFieldTypeArgs:
 @pulumi.input_type
 class TagTemplateFieldTypeEnumTypeArgs:
     def __init__(__self__, *,
-                 allowed_values: pulumi.Input[List[pulumi.Input['TagTemplateFieldTypeEnumTypeAllowedValueArgs']]]):
+                 allowed_values: pulumi.Input[Sequence[pulumi.Input['TagTemplateFieldTypeEnumTypeAllowedValueArgs']]]):
         """
-        :param pulumi.Input[List[pulumi.Input['TagTemplateFieldTypeEnumTypeAllowedValueArgs']]] allowed_values: The set of allowed values for this enum. The display names of the
+        :param pulumi.Input[Sequence[pulumi.Input['TagTemplateFieldTypeEnumTypeAllowedValueArgs']]] allowed_values: The set of allowed values for this enum. The display names of the
                values must be case-insensitively unique within this set. Currently,
                enum values can only be added to the list of allowed values. Deletion
                and renaming of enum values are not supported.
@@ -639,7 +639,7 @@ class TagTemplateFieldTypeEnumTypeArgs:
 
     @property
     @pulumi.getter(name="allowedValues")
-    def allowed_values(self) -> pulumi.Input[List[pulumi.Input['TagTemplateFieldTypeEnumTypeAllowedValueArgs']]]:
+    def allowed_values(self) -> pulumi.Input[Sequence[pulumi.Input['TagTemplateFieldTypeEnumTypeAllowedValueArgs']]]:
         """
         The set of allowed values for this enum. The display names of the
         values must be case-insensitively unique within this set. Currently,
@@ -651,7 +651,7 @@ class TagTemplateFieldTypeEnumTypeArgs:
         return pulumi.get(self, "allowed_values")
 
     @allowed_values.setter
-    def allowed_values(self, value: pulumi.Input[List[pulumi.Input['TagTemplateFieldTypeEnumTypeAllowedValueArgs']]]):
+    def allowed_values(self, value: pulumi.Input[Sequence[pulumi.Input['TagTemplateFieldTypeEnumTypeAllowedValueArgs']]]):
         pulumi.set(self, "allowed_values", value)
 
 

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -204,15 +204,15 @@ class AutoscalingPolicyBasicAlgorithmYarnConfig(dict):
 @pulumi.output_type
 class AutoscalingPolicySecondaryWorkerConfig(dict):
     def __init__(__self__, *,
-                 max_instances: Optional[float] = None,
-                 min_instances: Optional[float] = None,
-                 weight: Optional[float] = None):
+                 max_instances: Optional[int] = None,
+                 min_instances: Optional[int] = None,
+                 weight: Optional[int] = None):
         """
-        :param float max_instances: Maximum number of instances for this group. Note that by default, clusters will not use
+        :param int max_instances: Maximum number of instances for this group. Note that by default, clusters will not use
                secondary workers. Required for secondary workers if the minimum secondary instances is set.
                Bounds: [minInstances, ). Defaults to 0.
-        :param float min_instances: Minimum number of instances for this group. Bounds: [0, maxInstances]. Defaults to 0.
-        :param float weight: Weight for the instance group, which is used to determine the fraction of total workers
+        :param int min_instances: Minimum number of instances for this group. Bounds: [0, maxInstances]. Defaults to 0.
+        :param int weight: Weight for the instance group, which is used to determine the fraction of total workers
                in the cluster from this instance group. For example, if primary workers have weight 2,
                and secondary workers have weight 1, the cluster will have approximately 2 primary workers
                for each secondary worker.
@@ -234,7 +234,7 @@ class AutoscalingPolicySecondaryWorkerConfig(dict):
 
     @property
     @pulumi.getter(name="maxInstances")
-    def max_instances(self) -> Optional[float]:
+    def max_instances(self) -> Optional[int]:
         """
         Maximum number of instances for this group. Note that by default, clusters will not use
         secondary workers. Required for secondary workers if the minimum secondary instances is set.
@@ -244,7 +244,7 @@ class AutoscalingPolicySecondaryWorkerConfig(dict):
 
     @property
     @pulumi.getter(name="minInstances")
-    def min_instances(self) -> Optional[float]:
+    def min_instances(self) -> Optional[int]:
         """
         Minimum number of instances for this group. Bounds: [0, maxInstances]. Defaults to 0.
         """
@@ -252,7 +252,7 @@ class AutoscalingPolicySecondaryWorkerConfig(dict):
 
     @property
     @pulumi.getter
-    def weight(self) -> Optional[float]:
+    def weight(self) -> Optional[int]:
         """
         Weight for the instance group, which is used to determine the fraction of total workers
         in the cluster from this instance group. For example, if primary workers have weight 2,
@@ -276,15 +276,15 @@ class AutoscalingPolicySecondaryWorkerConfig(dict):
 @pulumi.output_type
 class AutoscalingPolicyWorkerConfig(dict):
     def __init__(__self__, *,
-                 max_instances: float,
-                 min_instances: Optional[float] = None,
-                 weight: Optional[float] = None):
+                 max_instances: int,
+                 min_instances: Optional[int] = None,
+                 weight: Optional[int] = None):
         """
-        :param float max_instances: Maximum number of instances for this group. Note that by default, clusters will not use
+        :param int max_instances: Maximum number of instances for this group. Note that by default, clusters will not use
                secondary workers. Required for secondary workers if the minimum secondary instances is set.
                Bounds: [minInstances, ). Defaults to 0.
-        :param float min_instances: Minimum number of instances for this group. Bounds: [0, maxInstances]. Defaults to 0.
-        :param float weight: Weight for the instance group, which is used to determine the fraction of total workers
+        :param int min_instances: Minimum number of instances for this group. Bounds: [0, maxInstances]. Defaults to 0.
+        :param int weight: Weight for the instance group, which is used to determine the fraction of total workers
                in the cluster from this instance group. For example, if primary workers have weight 2,
                and secondary workers have weight 1, the cluster will have approximately 2 primary workers
                for each secondary worker.
@@ -305,7 +305,7 @@ class AutoscalingPolicyWorkerConfig(dict):
 
     @property
     @pulumi.getter(name="maxInstances")
-    def max_instances(self) -> float:
+    def max_instances(self) -> int:
         """
         Maximum number of instances for this group. Note that by default, clusters will not use
         secondary workers. Required for secondary workers if the minimum secondary instances is set.
@@ -315,7 +315,7 @@ class AutoscalingPolicyWorkerConfig(dict):
 
     @property
     @pulumi.getter(name="minInstances")
-    def min_instances(self) -> Optional[float]:
+    def min_instances(self) -> Optional[int]:
         """
         Minimum number of instances for this group. Bounds: [0, maxInstances]. Defaults to 0.
         """
@@ -323,7 +323,7 @@ class AutoscalingPolicyWorkerConfig(dict):
 
     @property
     @pulumi.getter
-    def weight(self) -> Optional[float]:
+    def weight(self) -> Optional[int]:
         """
         Weight for the instance group, which is used to determine the fraction of total workers
         in the cluster from this instance group. For example, if primary workers have weight 2,
@@ -352,7 +352,7 @@ class ClusterClusterConfig(dict):
                  encryption_config: Optional['outputs.ClusterClusterConfigEncryptionConfig'] = None,
                  endpoint_config: Optional['outputs.ClusterClusterConfigEndpointConfig'] = None,
                  gce_cluster_config: Optional['outputs.ClusterClusterConfigGceClusterConfig'] = None,
-                 initialization_actions: Optional[List['outputs.ClusterClusterConfigInitializationAction']] = None,
+                 initialization_actions: Optional[Sequence['outputs.ClusterClusterConfigInitializationAction']] = None,
                  lifecycle_config: Optional['outputs.ClusterClusterConfigLifecycleConfig'] = None,
                  master_config: Optional['outputs.ClusterClusterConfigMasterConfig'] = None,
                  preemptible_worker_config: Optional['outputs.ClusterClusterConfigPreemptibleWorkerConfig'] = None,
@@ -372,7 +372,7 @@ class ClusterClusterConfig(dict):
                - - -
         :param 'ClusterClusterConfigGceClusterConfigArgs' gce_cluster_config: Common config settings for resources of Google Compute Engine cluster
                instances, applicable to all instances in the cluster. Structure defined below.
-        :param List['ClusterClusterConfigInitializationActionArgs'] initialization_actions: Commands to execute on each node after config is completed.
+        :param Sequence['ClusterClusterConfigInitializationActionArgs'] initialization_actions: Commands to execute on each node after config is completed.
                You can specify multiple versions of these. Structure defined below.
         :param 'ClusterClusterConfigLifecycleConfigArgs' lifecycle_config: The settings for auto deletion cluster schedule.
                Structure defined below.
@@ -466,7 +466,7 @@ class ClusterClusterConfig(dict):
 
     @property
     @pulumi.getter(name="initializationActions")
-    def initialization_actions(self) -> Optional[List['outputs.ClusterClusterConfigInitializationAction']]:
+    def initialization_actions(self) -> Optional[Sequence['outputs.ClusterClusterConfigInitializationAction']]:
         """
         Commands to execute on each node after config is completed.
         You can specify multiple versions of these. Structure defined below.
@@ -626,9 +626,9 @@ class ClusterClusterConfigGceClusterConfig(dict):
                  metadata: Optional[Mapping[str, str]] = None,
                  network: Optional[str] = None,
                  service_account: Optional[str] = None,
-                 service_account_scopes: Optional[List[str]] = None,
+                 service_account_scopes: Optional[Sequence[str]] = None,
                  subnetwork: Optional[str] = None,
-                 tags: Optional[List[str]] = None,
+                 tags: Optional[Sequence[str]] = None,
                  zone: Optional[str] = None):
         """
         :param bool internal_ip_only: By default, clusters are not restricted to internal IP addresses, 
@@ -643,14 +643,14 @@ class ClusterClusterConfigGceClusterConfig(dict):
                If neither is specified, this defaults to the "default" network.
         :param str service_account: The service account to be used by the Node VMs.
                If not specified, the "default" service account is used.
-        :param List[str] service_account_scopes: The set of Google API scopes
+        :param Sequence[str] service_account_scopes: The set of Google API scopes
                to be made available on all of the node VMs under the `service_account`
                specified. These can be	either FQDNs, or scope aliases. The following scopes
                must be set if any other scopes are set. They're necessary to ensure the
                correct functioning ofthe cluster, and are set automatically by the API:
         :param str subnetwork: The name or self_link of the Google Compute Engine
                subnetwork the cluster will be part of. Conflicts with `network`.
-        :param List[str] tags: The list of instance tags applied to instances in the cluster.
+        :param Sequence[str] tags: The list of instance tags applied to instances in the cluster.
                Tags are used to identify valid sources or targets for network firewalls.
         :param str zone: The GCP zone where your data is stored and used (i.e. where
                the master and the worker nodes will be created in). If `region` is set to 'global' (default)
@@ -719,7 +719,7 @@ class ClusterClusterConfigGceClusterConfig(dict):
 
     @property
     @pulumi.getter(name="serviceAccountScopes")
-    def service_account_scopes(self) -> Optional[List[str]]:
+    def service_account_scopes(self) -> Optional[Sequence[str]]:
         """
         The set of Google API scopes
         to be made available on all of the node VMs under the `service_account`
@@ -740,7 +740,7 @@ class ClusterClusterConfigGceClusterConfig(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> Optional[Sequence[str]]:
         """
         The list of instance tags applied to instances in the cluster.
         Tags are used to identify valid sources or targets for network firewalls.
@@ -769,11 +769,11 @@ class ClusterClusterConfigGceClusterConfig(dict):
 class ClusterClusterConfigInitializationAction(dict):
     def __init__(__self__, *,
                  script: str,
-                 timeout_sec: Optional[float] = None):
+                 timeout_sec: Optional[int] = None):
         """
         :param str script: The script to be executed during initialization of the cluster.
                The script must be a GCS file with a gs:// prefix.
-        :param float timeout_sec: The maximum duration (in seconds) which `script` is
+        :param int timeout_sec: The maximum duration (in seconds) which `script` is
                allowed to take to execute its action. GCP will default to a predetermined
                computed value if not set (currently 300).
         """
@@ -792,7 +792,7 @@ class ClusterClusterConfigInitializationAction(dict):
 
     @property
     @pulumi.getter(name="timeoutSec")
-    def timeout_sec(self) -> Optional[float]:
+    def timeout_sec(self) -> Optional[int]:
         """
         The maximum duration (in seconds) which `script` is
         allowed to take to execute its action. GCP will default to a predetermined
@@ -855,15 +855,15 @@ class ClusterClusterConfigLifecycleConfig(dict):
 @pulumi.output_type
 class ClusterClusterConfigMasterConfig(dict):
     def __init__(__self__, *,
-                 accelerators: Optional[List['outputs.ClusterClusterConfigMasterConfigAccelerator']] = None,
+                 accelerators: Optional[Sequence['outputs.ClusterClusterConfigMasterConfigAccelerator']] = None,
                  disk_config: Optional['outputs.ClusterClusterConfigMasterConfigDiskConfig'] = None,
                  image_uri: Optional[str] = None,
-                 instance_names: Optional[List[str]] = None,
+                 instance_names: Optional[Sequence[str]] = None,
                  machine_type: Optional[str] = None,
                  min_cpu_platform: Optional[str] = None,
-                 num_instances: Optional[float] = None):
+                 num_instances: Optional[int] = None):
         """
-        :param List['ClusterClusterConfigMasterConfigAcceleratorArgs'] accelerators: The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
+        :param Sequence['ClusterClusterConfigMasterConfigAcceleratorArgs'] accelerators: The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
         :param 'ClusterClusterConfigMasterConfigDiskConfigArgs' disk_config: Disk Config
         :param str image_uri: The URI for the image to use for this worker.  See [the guide](https://cloud.google.com/dataproc/docs/guides/dataproc-images)
                for more information.
@@ -874,7 +874,7 @@ class ClusterClusterConfigMasterConfig(dict):
                for the master. If not specified, GCP will default to a predetermined computed value
                for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
                for details about which CPU families are available (and defaulted) for each zone.
-        :param float num_instances: Specifies the number of preemptible nodes to create.
+        :param int num_instances: Specifies the number of preemptible nodes to create.
                Defaults to 0.
         """
         if accelerators is not None:
@@ -894,7 +894,7 @@ class ClusterClusterConfigMasterConfig(dict):
 
     @property
     @pulumi.getter
-    def accelerators(self) -> Optional[List['outputs.ClusterClusterConfigMasterConfigAccelerator']]:
+    def accelerators(self) -> Optional[Sequence['outputs.ClusterClusterConfigMasterConfigAccelerator']]:
         """
         The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
         """
@@ -919,7 +919,7 @@ class ClusterClusterConfigMasterConfig(dict):
 
     @property
     @pulumi.getter(name="instanceNames")
-    def instance_names(self) -> Optional[List[str]]:
+    def instance_names(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "instance_names")
 
     @property
@@ -945,7 +945,7 @@ class ClusterClusterConfigMasterConfig(dict):
 
     @property
     @pulumi.getter(name="numInstances")
-    def num_instances(self) -> Optional[float]:
+    def num_instances(self) -> Optional[int]:
         """
         Specifies the number of preemptible nodes to create.
         Defaults to 0.
@@ -959,10 +959,10 @@ class ClusterClusterConfigMasterConfig(dict):
 @pulumi.output_type
 class ClusterClusterConfigMasterConfigAccelerator(dict):
     def __init__(__self__, *,
-                 accelerator_count: float,
+                 accelerator_count: int,
                  accelerator_type: str):
         """
-        :param float accelerator_count: The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
+        :param int accelerator_count: The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
         :param str accelerator_type: The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
         """
         pulumi.set(__self__, "accelerator_count", accelerator_count)
@@ -970,7 +970,7 @@ class ClusterClusterConfigMasterConfigAccelerator(dict):
 
     @property
     @pulumi.getter(name="acceleratorCount")
-    def accelerator_count(self) -> float:
+    def accelerator_count(self) -> int:
         """
         The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
         """
@@ -991,17 +991,17 @@ class ClusterClusterConfigMasterConfigAccelerator(dict):
 @pulumi.output_type
 class ClusterClusterConfigMasterConfigDiskConfig(dict):
     def __init__(__self__, *,
-                 boot_disk_size_gb: Optional[float] = None,
+                 boot_disk_size_gb: Optional[int] = None,
                  boot_disk_type: Optional[str] = None,
-                 num_local_ssds: Optional[float] = None):
+                 num_local_ssds: Optional[int] = None):
         """
-        :param float boot_disk_size_gb: Size of the primary disk attached to each preemptible worker node, specified
+        :param int boot_disk_size_gb: Size of the primary disk attached to each preemptible worker node, specified
                in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
                computed value if not set (currently 500GB). Note: If SSDs are not
                attached, it also contains the HDFS data blocks and Hadoop working directories.
         :param str boot_disk_type: The disk type of the primary disk attached to each preemptible worker node.
                One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
-        :param float num_local_ssds: The amount of local SSD disks that will be
+        :param int num_local_ssds: The amount of local SSD disks that will be
                attached to each preemptible worker node. Defaults to 0.
         """
         if boot_disk_size_gb is not None:
@@ -1013,7 +1013,7 @@ class ClusterClusterConfigMasterConfigDiskConfig(dict):
 
     @property
     @pulumi.getter(name="bootDiskSizeGb")
-    def boot_disk_size_gb(self) -> Optional[float]:
+    def boot_disk_size_gb(self) -> Optional[int]:
         """
         Size of the primary disk attached to each preemptible worker node, specified
         in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
@@ -1033,7 +1033,7 @@ class ClusterClusterConfigMasterConfigDiskConfig(dict):
 
     @property
     @pulumi.getter(name="numLocalSsds")
-    def num_local_ssds(self) -> Optional[float]:
+    def num_local_ssds(self) -> Optional[int]:
         """
         The amount of local SSD disks that will be
         attached to each preemptible worker node. Defaults to 0.
@@ -1048,11 +1048,11 @@ class ClusterClusterConfigMasterConfigDiskConfig(dict):
 class ClusterClusterConfigPreemptibleWorkerConfig(dict):
     def __init__(__self__, *,
                  disk_config: Optional['outputs.ClusterClusterConfigPreemptibleWorkerConfigDiskConfig'] = None,
-                 instance_names: Optional[List[str]] = None,
-                 num_instances: Optional[float] = None):
+                 instance_names: Optional[Sequence[str]] = None,
+                 num_instances: Optional[int] = None):
         """
         :param 'ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs' disk_config: Disk Config
-        :param float num_instances: Specifies the number of preemptible nodes to create.
+        :param int num_instances: Specifies the number of preemptible nodes to create.
                Defaults to 0.
         """
         if disk_config is not None:
@@ -1072,12 +1072,12 @@ class ClusterClusterConfigPreemptibleWorkerConfig(dict):
 
     @property
     @pulumi.getter(name="instanceNames")
-    def instance_names(self) -> Optional[List[str]]:
+    def instance_names(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "instance_names")
 
     @property
     @pulumi.getter(name="numInstances")
-    def num_instances(self) -> Optional[float]:
+    def num_instances(self) -> Optional[int]:
         """
         Specifies the number of preemptible nodes to create.
         Defaults to 0.
@@ -1091,17 +1091,17 @@ class ClusterClusterConfigPreemptibleWorkerConfig(dict):
 @pulumi.output_type
 class ClusterClusterConfigPreemptibleWorkerConfigDiskConfig(dict):
     def __init__(__self__, *,
-                 boot_disk_size_gb: Optional[float] = None,
+                 boot_disk_size_gb: Optional[int] = None,
                  boot_disk_type: Optional[str] = None,
-                 num_local_ssds: Optional[float] = None):
+                 num_local_ssds: Optional[int] = None):
         """
-        :param float boot_disk_size_gb: Size of the primary disk attached to each preemptible worker node, specified
+        :param int boot_disk_size_gb: Size of the primary disk attached to each preemptible worker node, specified
                in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
                computed value if not set (currently 500GB). Note: If SSDs are not
                attached, it also contains the HDFS data blocks and Hadoop working directories.
         :param str boot_disk_type: The disk type of the primary disk attached to each preemptible worker node.
                One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
-        :param float num_local_ssds: The amount of local SSD disks that will be
+        :param int num_local_ssds: The amount of local SSD disks that will be
                attached to each preemptible worker node. Defaults to 0.
         """
         if boot_disk_size_gb is not None:
@@ -1113,7 +1113,7 @@ class ClusterClusterConfigPreemptibleWorkerConfigDiskConfig(dict):
 
     @property
     @pulumi.getter(name="bootDiskSizeGb")
-    def boot_disk_size_gb(self) -> Optional[float]:
+    def boot_disk_size_gb(self) -> Optional[int]:
         """
         Size of the primary disk attached to each preemptible worker node, specified
         in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
@@ -1133,7 +1133,7 @@ class ClusterClusterConfigPreemptibleWorkerConfigDiskConfig(dict):
 
     @property
     @pulumi.getter(name="numLocalSsds")
-    def num_local_ssds(self) -> Optional[float]:
+    def num_local_ssds(self) -> Optional[int]:
         """
         The amount of local SSD disks that will be
         attached to each preemptible worker node. Defaults to 0.
@@ -1180,7 +1180,7 @@ class ClusterClusterConfigSecurityConfigKerberosConfig(dict):
                  keystore_password_uri: Optional[str] = None,
                  keystore_uri: Optional[str] = None,
                  realm: Optional[str] = None,
-                 tgt_lifetime_hours: Optional[float] = None,
+                 tgt_lifetime_hours: Optional[int] = None,
                  truststore_password_uri: Optional[str] = None,
                  truststore_uri: Optional[str] = None):
         """
@@ -1209,7 +1209,7 @@ class ClusterClusterConfigSecurityConfigKerberosConfig(dict):
                If not provided, Dataproc will provide a self-signed certificate.
         :param str realm: The name of the on-cluster Kerberos realm. If not specified, the
                uppercased domain of hostnames will be the realm.
-        :param float tgt_lifetime_hours: The lifetime of the ticket granting ticket, in hours.
+        :param int tgt_lifetime_hours: The lifetime of the ticket granting ticket, in hours.
         :param str truststore_password_uri: The Cloud Storage URI of a KMS encrypted file
                containing the password to the user provided truststore. For the self-signed
                certificate, this password is generated by Dataproc.
@@ -1356,7 +1356,7 @@ class ClusterClusterConfigSecurityConfigKerberosConfig(dict):
 
     @property
     @pulumi.getter(name="tgtLifetimeHours")
-    def tgt_lifetime_hours(self) -> Optional[float]:
+    def tgt_lifetime_hours(self) -> Optional[int]:
         """
         The lifetime of the ticket granting ticket, in hours.
         """
@@ -1389,7 +1389,7 @@ class ClusterClusterConfigSecurityConfigKerberosConfig(dict):
 class ClusterClusterConfigSoftwareConfig(dict):
     def __init__(__self__, *,
                  image_version: Optional[str] = None,
-                 optional_components: Optional[List[str]] = None,
+                 optional_components: Optional[Sequence[str]] = None,
                  override_properties: Optional[Mapping[str, str]] = None,
                  properties: Optional[Mapping[str, Any]] = None):
         """
@@ -1398,7 +1398,7 @@ class ClusterClusterConfigSoftwareConfig(dict):
                installed onto the nodes when you create clusters. If not specified, defaults to the
                latest version. For a list of valid versions see
                [Cloud Dataproc versions](https://cloud.google.com/dataproc/docs/concepts/dataproc-versions)
-        :param List[str] optional_components: The set of optional components to activate on the cluster. 
+        :param Sequence[str] optional_components: The set of optional components to activate on the cluster. 
                Accepted values are:
                * ANACONDA
                * DRUID
@@ -1439,7 +1439,7 @@ class ClusterClusterConfigSoftwareConfig(dict):
 
     @property
     @pulumi.getter(name="optionalComponents")
-    def optional_components(self) -> Optional[List[str]]:
+    def optional_components(self) -> Optional[Sequence[str]]:
         """
         The set of optional components to activate on the cluster. 
         Accepted values are:
@@ -1480,15 +1480,15 @@ class ClusterClusterConfigSoftwareConfig(dict):
 @pulumi.output_type
 class ClusterClusterConfigWorkerConfig(dict):
     def __init__(__self__, *,
-                 accelerators: Optional[List['outputs.ClusterClusterConfigWorkerConfigAccelerator']] = None,
+                 accelerators: Optional[Sequence['outputs.ClusterClusterConfigWorkerConfigAccelerator']] = None,
                  disk_config: Optional['outputs.ClusterClusterConfigWorkerConfigDiskConfig'] = None,
                  image_uri: Optional[str] = None,
-                 instance_names: Optional[List[str]] = None,
+                 instance_names: Optional[Sequence[str]] = None,
                  machine_type: Optional[str] = None,
                  min_cpu_platform: Optional[str] = None,
-                 num_instances: Optional[float] = None):
+                 num_instances: Optional[int] = None):
         """
-        :param List['ClusterClusterConfigWorkerConfigAcceleratorArgs'] accelerators: The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
+        :param Sequence['ClusterClusterConfigWorkerConfigAcceleratorArgs'] accelerators: The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
         :param 'ClusterClusterConfigWorkerConfigDiskConfigArgs' disk_config: Disk Config
         :param str image_uri: The URI for the image to use for this worker.  See [the guide](https://cloud.google.com/dataproc/docs/guides/dataproc-images)
                for more information.
@@ -1499,7 +1499,7 @@ class ClusterClusterConfigWorkerConfig(dict):
                for the master. If not specified, GCP will default to a predetermined computed value
                for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
                for details about which CPU families are available (and defaulted) for each zone.
-        :param float num_instances: Specifies the number of preemptible nodes to create.
+        :param int num_instances: Specifies the number of preemptible nodes to create.
                Defaults to 0.
         """
         if accelerators is not None:
@@ -1519,7 +1519,7 @@ class ClusterClusterConfigWorkerConfig(dict):
 
     @property
     @pulumi.getter
-    def accelerators(self) -> Optional[List['outputs.ClusterClusterConfigWorkerConfigAccelerator']]:
+    def accelerators(self) -> Optional[Sequence['outputs.ClusterClusterConfigWorkerConfigAccelerator']]:
         """
         The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
         """
@@ -1544,7 +1544,7 @@ class ClusterClusterConfigWorkerConfig(dict):
 
     @property
     @pulumi.getter(name="instanceNames")
-    def instance_names(self) -> Optional[List[str]]:
+    def instance_names(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "instance_names")
 
     @property
@@ -1570,7 +1570,7 @@ class ClusterClusterConfigWorkerConfig(dict):
 
     @property
     @pulumi.getter(name="numInstances")
-    def num_instances(self) -> Optional[float]:
+    def num_instances(self) -> Optional[int]:
         """
         Specifies the number of preemptible nodes to create.
         Defaults to 0.
@@ -1584,10 +1584,10 @@ class ClusterClusterConfigWorkerConfig(dict):
 @pulumi.output_type
 class ClusterClusterConfigWorkerConfigAccelerator(dict):
     def __init__(__self__, *,
-                 accelerator_count: float,
+                 accelerator_count: int,
                  accelerator_type: str):
         """
-        :param float accelerator_count: The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
+        :param int accelerator_count: The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
         :param str accelerator_type: The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
         """
         pulumi.set(__self__, "accelerator_count", accelerator_count)
@@ -1595,7 +1595,7 @@ class ClusterClusterConfigWorkerConfigAccelerator(dict):
 
     @property
     @pulumi.getter(name="acceleratorCount")
-    def accelerator_count(self) -> float:
+    def accelerator_count(self) -> int:
         """
         The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
         """
@@ -1616,17 +1616,17 @@ class ClusterClusterConfigWorkerConfigAccelerator(dict):
 @pulumi.output_type
 class ClusterClusterConfigWorkerConfigDiskConfig(dict):
     def __init__(__self__, *,
-                 boot_disk_size_gb: Optional[float] = None,
+                 boot_disk_size_gb: Optional[int] = None,
                  boot_disk_type: Optional[str] = None,
-                 num_local_ssds: Optional[float] = None):
+                 num_local_ssds: Optional[int] = None):
         """
-        :param float boot_disk_size_gb: Size of the primary disk attached to each preemptible worker node, specified
+        :param int boot_disk_size_gb: Size of the primary disk attached to each preemptible worker node, specified
                in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
                computed value if not set (currently 500GB). Note: If SSDs are not
                attached, it also contains the HDFS data blocks and Hadoop working directories.
         :param str boot_disk_type: The disk type of the primary disk attached to each preemptible worker node.
                One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
-        :param float num_local_ssds: The amount of local SSD disks that will be
+        :param int num_local_ssds: The amount of local SSD disks that will be
                attached to each preemptible worker node. Defaults to 0.
         """
         if boot_disk_size_gb is not None:
@@ -1638,7 +1638,7 @@ class ClusterClusterConfigWorkerConfigDiskConfig(dict):
 
     @property
     @pulumi.getter(name="bootDiskSizeGb")
-    def boot_disk_size_gb(self) -> Optional[float]:
+    def boot_disk_size_gb(self) -> Optional[int]:
         """
         Size of the primary disk attached to each preemptible worker node, specified
         in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
@@ -1658,7 +1658,7 @@ class ClusterClusterConfigWorkerConfigDiskConfig(dict):
 
     @property
     @pulumi.getter(name="numLocalSsds")
-    def num_local_ssds(self) -> Optional[float]:
+    def num_local_ssds(self) -> Optional[int]:
         """
         The amount of local SSD disks that will be
         attached to each preemptible worker node. Defaults to 0.
@@ -1732,19 +1732,19 @@ class ClusterIAMMemberCondition(dict):
 @pulumi.output_type
 class JobHadoopConfig(dict):
     def __init__(__self__, *,
-                 archive_uris: Optional[List[str]] = None,
-                 args: Optional[List[str]] = None,
-                 file_uris: Optional[List[str]] = None,
-                 jar_file_uris: Optional[List[str]] = None,
+                 archive_uris: Optional[Sequence[str]] = None,
+                 args: Optional[Sequence[str]] = None,
+                 file_uris: Optional[Sequence[str]] = None,
+                 jar_file_uris: Optional[Sequence[str]] = None,
                  logging_config: Optional['outputs.JobHadoopConfigLoggingConfig'] = None,
                  main_class: Optional[str] = None,
                  main_jar_file_uri: Optional[str] = None,
                  properties: Optional[Mapping[str, str]] = None):
         """
-        :param List[str] archive_uris: HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
-        :param List[str] args: The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
-        :param List[str] file_uris: HCFS URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
-        :param List[str] jar_file_uris: HCFS URIs of jar files to be added to the Spark CLASSPATH.
+        :param Sequence[str] archive_uris: HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
+        :param Sequence[str] args: The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+        :param Sequence[str] file_uris: HCFS URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
+        :param Sequence[str] jar_file_uris: HCFS URIs of jar files to be added to the Spark CLASSPATH.
         :param str main_class: The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in `jar_file_uris`. Conflicts with `main_jar_file_uri`
         :param str main_jar_file_uri: The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'. Conflicts with `main_class`
         :param Mapping[str, str] properties: A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
@@ -1768,7 +1768,7 @@ class JobHadoopConfig(dict):
 
     @property
     @pulumi.getter(name="archiveUris")
-    def archive_uris(self) -> Optional[List[str]]:
+    def archive_uris(self) -> Optional[Sequence[str]]:
         """
         HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
         """
@@ -1776,7 +1776,7 @@ class JobHadoopConfig(dict):
 
     @property
     @pulumi.getter
-    def args(self) -> Optional[List[str]]:
+    def args(self) -> Optional[Sequence[str]]:
         """
         The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
         """
@@ -1784,7 +1784,7 @@ class JobHadoopConfig(dict):
 
     @property
     @pulumi.getter(name="fileUris")
-    def file_uris(self) -> Optional[List[str]]:
+    def file_uris(self) -> Optional[Sequence[str]]:
         """
         HCFS URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
         """
@@ -1792,7 +1792,7 @@ class JobHadoopConfig(dict):
 
     @property
     @pulumi.getter(name="jarFileUris")
-    def jar_file_uris(self) -> Optional[List[str]]:
+    def jar_file_uris(self) -> Optional[Sequence[str]]:
         """
         HCFS URIs of jar files to be added to the Spark CLASSPATH.
         """
@@ -1850,18 +1850,18 @@ class JobHadoopConfigLoggingConfig(dict):
 class JobHiveConfig(dict):
     def __init__(__self__, *,
                  continue_on_failure: Optional[bool] = None,
-                 jar_file_uris: Optional[List[str]] = None,
+                 jar_file_uris: Optional[Sequence[str]] = None,
                  properties: Optional[Mapping[str, str]] = None,
                  query_file_uri: Optional[str] = None,
-                 query_lists: Optional[List[str]] = None,
+                 query_lists: Optional[Sequence[str]] = None,
                  script_variables: Optional[Mapping[str, str]] = None):
         """
         :param bool continue_on_failure: Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries. Defaults to false.
-        :param List[str] jar_file_uris: HCFS URIs of jar files to be added to the Spark CLASSPATH.
+        :param Sequence[str] jar_file_uris: HCFS URIs of jar files to be added to the Spark CLASSPATH.
         :param Mapping[str, str] properties: A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
         :param str query_file_uri: The HCFS URI of the script that contains SQL queries.
                Conflicts with `query_list`
-        :param List[str] query_lists: The list of SQL queries or statements to execute as part of the job.
+        :param Sequence[str] query_lists: The list of SQL queries or statements to execute as part of the job.
                Conflicts with `query_file_uri`
         :param Mapping[str, str] script_variables: Mapping of query variable names to values (equivalent to the Spark SQL command: `SET name="value";`).
         """
@@ -1888,7 +1888,7 @@ class JobHiveConfig(dict):
 
     @property
     @pulumi.getter(name="jarFileUris")
-    def jar_file_uris(self) -> Optional[List[str]]:
+    def jar_file_uris(self) -> Optional[Sequence[str]]:
         """
         HCFS URIs of jar files to be added to the Spark CLASSPATH.
         """
@@ -1913,7 +1913,7 @@ class JobHiveConfig(dict):
 
     @property
     @pulumi.getter(name="queryLists")
-    def query_lists(self) -> Optional[List[str]]:
+    def query_lists(self) -> Optional[Sequence[str]]:
         """
         The list of SQL queries or statements to execute as part of the job.
         Conflicts with `query_file_uri`
@@ -1996,19 +1996,19 @@ class JobIAMMemberCondition(dict):
 class JobPigConfig(dict):
     def __init__(__self__, *,
                  continue_on_failure: Optional[bool] = None,
-                 jar_file_uris: Optional[List[str]] = None,
+                 jar_file_uris: Optional[Sequence[str]] = None,
                  logging_config: Optional['outputs.JobPigConfigLoggingConfig'] = None,
                  properties: Optional[Mapping[str, str]] = None,
                  query_file_uri: Optional[str] = None,
-                 query_lists: Optional[List[str]] = None,
+                 query_lists: Optional[Sequence[str]] = None,
                  script_variables: Optional[Mapping[str, str]] = None):
         """
         :param bool continue_on_failure: Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries. Defaults to false.
-        :param List[str] jar_file_uris: HCFS URIs of jar files to be added to the Spark CLASSPATH.
+        :param Sequence[str] jar_file_uris: HCFS URIs of jar files to be added to the Spark CLASSPATH.
         :param Mapping[str, str] properties: A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
         :param str query_file_uri: The HCFS URI of the script that contains SQL queries.
                Conflicts with `query_list`
-        :param List[str] query_lists: The list of SQL queries or statements to execute as part of the job.
+        :param Sequence[str] query_lists: The list of SQL queries or statements to execute as part of the job.
                Conflicts with `query_file_uri`
         :param Mapping[str, str] script_variables: Mapping of query variable names to values (equivalent to the Spark SQL command: `SET name="value";`).
         """
@@ -2037,7 +2037,7 @@ class JobPigConfig(dict):
 
     @property
     @pulumi.getter(name="jarFileUris")
-    def jar_file_uris(self) -> Optional[List[str]]:
+    def jar_file_uris(self) -> Optional[Sequence[str]]:
         """
         HCFS URIs of jar files to be added to the Spark CLASSPATH.
         """
@@ -2067,7 +2067,7 @@ class JobPigConfig(dict):
 
     @property
     @pulumi.getter(name="queryLists")
-    def query_lists(self) -> Optional[List[str]]:
+    def query_lists(self) -> Optional[Sequence[str]]:
         """
         The list of SQL queries or statements to execute as part of the job.
         Conflicts with `query_file_uri`
@@ -2128,21 +2128,21 @@ class JobPlacement(dict):
 class JobPysparkConfig(dict):
     def __init__(__self__, *,
                  main_python_file_uri: str,
-                 archive_uris: Optional[List[str]] = None,
-                 args: Optional[List[str]] = None,
-                 file_uris: Optional[List[str]] = None,
-                 jar_file_uris: Optional[List[str]] = None,
+                 archive_uris: Optional[Sequence[str]] = None,
+                 args: Optional[Sequence[str]] = None,
+                 file_uris: Optional[Sequence[str]] = None,
+                 jar_file_uris: Optional[Sequence[str]] = None,
                  logging_config: Optional['outputs.JobPysparkConfigLoggingConfig'] = None,
                  properties: Optional[Mapping[str, str]] = None,
-                 python_file_uris: Optional[List[str]] = None):
+                 python_file_uris: Optional[Sequence[str]] = None):
         """
         :param str main_python_file_uri: The HCFS URI of the main Python file to use as the driver. Must be a .py file.
-        :param List[str] archive_uris: HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
-        :param List[str] args: The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
-        :param List[str] file_uris: HCFS URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
-        :param List[str] jar_file_uris: HCFS URIs of jar files to be added to the Spark CLASSPATH.
+        :param Sequence[str] archive_uris: HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
+        :param Sequence[str] args: The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+        :param Sequence[str] file_uris: HCFS URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
+        :param Sequence[str] jar_file_uris: HCFS URIs of jar files to be added to the Spark CLASSPATH.
         :param Mapping[str, str] properties: A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
-        :param List[str] python_file_uris: HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
+        :param Sequence[str] python_file_uris: HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
         """
         pulumi.set(__self__, "main_python_file_uri", main_python_file_uri)
         if archive_uris is not None:
@@ -2170,7 +2170,7 @@ class JobPysparkConfig(dict):
 
     @property
     @pulumi.getter(name="archiveUris")
-    def archive_uris(self) -> Optional[List[str]]:
+    def archive_uris(self) -> Optional[Sequence[str]]:
         """
         HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
         """
@@ -2178,7 +2178,7 @@ class JobPysparkConfig(dict):
 
     @property
     @pulumi.getter
-    def args(self) -> Optional[List[str]]:
+    def args(self) -> Optional[Sequence[str]]:
         """
         The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
         """
@@ -2186,7 +2186,7 @@ class JobPysparkConfig(dict):
 
     @property
     @pulumi.getter(name="fileUris")
-    def file_uris(self) -> Optional[List[str]]:
+    def file_uris(self) -> Optional[Sequence[str]]:
         """
         HCFS URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
         """
@@ -2194,7 +2194,7 @@ class JobPysparkConfig(dict):
 
     @property
     @pulumi.getter(name="jarFileUris")
-    def jar_file_uris(self) -> Optional[List[str]]:
+    def jar_file_uris(self) -> Optional[Sequence[str]]:
         """
         HCFS URIs of jar files to be added to the Spark CLASSPATH.
         """
@@ -2215,7 +2215,7 @@ class JobPysparkConfig(dict):
 
     @property
     @pulumi.getter(name="pythonFileUris")
-    def python_file_uris(self) -> Optional[List[str]]:
+    def python_file_uris(self) -> Optional[Sequence[str]]:
         """
         HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
         """
@@ -2259,12 +2259,12 @@ class JobReference(dict):
 @pulumi.output_type
 class JobScheduling(dict):
     def __init__(__self__, *,
-                 max_failures_per_hour: float):
+                 max_failures_per_hour: int):
         pulumi.set(__self__, "max_failures_per_hour", max_failures_per_hour)
 
     @property
     @pulumi.getter(name="maxFailuresPerHour")
-    def max_failures_per_hour(self) -> float:
+    def max_failures_per_hour(self) -> int:
         return pulumi.get(self, "max_failures_per_hour")
 
     def _translate_property(self, prop):
@@ -2274,19 +2274,19 @@ class JobScheduling(dict):
 @pulumi.output_type
 class JobSparkConfig(dict):
     def __init__(__self__, *,
-                 archive_uris: Optional[List[str]] = None,
-                 args: Optional[List[str]] = None,
-                 file_uris: Optional[List[str]] = None,
-                 jar_file_uris: Optional[List[str]] = None,
+                 archive_uris: Optional[Sequence[str]] = None,
+                 args: Optional[Sequence[str]] = None,
+                 file_uris: Optional[Sequence[str]] = None,
+                 jar_file_uris: Optional[Sequence[str]] = None,
                  logging_config: Optional['outputs.JobSparkConfigLoggingConfig'] = None,
                  main_class: Optional[str] = None,
                  main_jar_file_uri: Optional[str] = None,
                  properties: Optional[Mapping[str, str]] = None):
         """
-        :param List[str] archive_uris: HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
-        :param List[str] args: The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
-        :param List[str] file_uris: HCFS URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
-        :param List[str] jar_file_uris: HCFS URIs of jar files to be added to the Spark CLASSPATH.
+        :param Sequence[str] archive_uris: HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
+        :param Sequence[str] args: The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+        :param Sequence[str] file_uris: HCFS URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
+        :param Sequence[str] jar_file_uris: HCFS URIs of jar files to be added to the Spark CLASSPATH.
         :param str main_class: The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in `jar_file_uris`. Conflicts with `main_jar_file_uri`
         :param str main_jar_file_uri: The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'. Conflicts with `main_class`
         :param Mapping[str, str] properties: A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
@@ -2310,7 +2310,7 @@ class JobSparkConfig(dict):
 
     @property
     @pulumi.getter(name="archiveUris")
-    def archive_uris(self) -> Optional[List[str]]:
+    def archive_uris(self) -> Optional[Sequence[str]]:
         """
         HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
         """
@@ -2318,7 +2318,7 @@ class JobSparkConfig(dict):
 
     @property
     @pulumi.getter
-    def args(self) -> Optional[List[str]]:
+    def args(self) -> Optional[Sequence[str]]:
         """
         The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
         """
@@ -2326,7 +2326,7 @@ class JobSparkConfig(dict):
 
     @property
     @pulumi.getter(name="fileUris")
-    def file_uris(self) -> Optional[List[str]]:
+    def file_uris(self) -> Optional[Sequence[str]]:
         """
         HCFS URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
         """
@@ -2334,7 +2334,7 @@ class JobSparkConfig(dict):
 
     @property
     @pulumi.getter(name="jarFileUris")
-    def jar_file_uris(self) -> Optional[List[str]]:
+    def jar_file_uris(self) -> Optional[Sequence[str]]:
         """
         HCFS URIs of jar files to be added to the Spark CLASSPATH.
         """
@@ -2391,18 +2391,18 @@ class JobSparkConfigLoggingConfig(dict):
 @pulumi.output_type
 class JobSparksqlConfig(dict):
     def __init__(__self__, *,
-                 jar_file_uris: Optional[List[str]] = None,
+                 jar_file_uris: Optional[Sequence[str]] = None,
                  logging_config: Optional['outputs.JobSparksqlConfigLoggingConfig'] = None,
                  properties: Optional[Mapping[str, str]] = None,
                  query_file_uri: Optional[str] = None,
-                 query_lists: Optional[List[str]] = None,
+                 query_lists: Optional[Sequence[str]] = None,
                  script_variables: Optional[Mapping[str, str]] = None):
         """
-        :param List[str] jar_file_uris: HCFS URIs of jar files to be added to the Spark CLASSPATH.
+        :param Sequence[str] jar_file_uris: HCFS URIs of jar files to be added to the Spark CLASSPATH.
         :param Mapping[str, str] properties: A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
         :param str query_file_uri: The HCFS URI of the script that contains SQL queries.
                Conflicts with `query_list`
-        :param List[str] query_lists: The list of SQL queries or statements to execute as part of the job.
+        :param Sequence[str] query_lists: The list of SQL queries or statements to execute as part of the job.
                Conflicts with `query_file_uri`
         :param Mapping[str, str] script_variables: Mapping of query variable names to values (equivalent to the Spark SQL command: `SET name="value";`).
         """
@@ -2421,7 +2421,7 @@ class JobSparksqlConfig(dict):
 
     @property
     @pulumi.getter(name="jarFileUris")
-    def jar_file_uris(self) -> Optional[List[str]]:
+    def jar_file_uris(self) -> Optional[Sequence[str]]:
         """
         HCFS URIs of jar files to be added to the Spark CLASSPATH.
         """
@@ -2451,7 +2451,7 @@ class JobSparksqlConfig(dict):
 
     @property
     @pulumi.getter(name="queryLists")
-    def query_lists(self) -> Optional[List[str]]:
+    def query_lists(self) -> Optional[Sequence[str]]:
         """
         The list of SQL queries or statements to execute as part of the job.
         Conflicts with `query_file_uri`

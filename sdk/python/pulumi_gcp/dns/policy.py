@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -22,7 +22,7 @@ class Policy(pulumi.CustomResource):
                  enable_inbound_forwarding: Optional[pulumi.Input[bool]] = None,
                  enable_logging: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 networks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['PolicyNetworkArgs']]]]] = None,
+                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyNetworkArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -53,7 +53,7 @@ class Policy(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_logging: Controls whether logging is enabled for the networks bound to this policy.
                Defaults to no logging if not set.
         :param pulumi.Input[str] name: User assigned name for this policy.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['PolicyNetworkArgs']]]] networks: List of network names specifying networks to which this policy is applied.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyNetworkArgs']]]] networks: List of network names specifying networks to which this policy is applied.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -97,7 +97,7 @@ class Policy(pulumi.CustomResource):
             enable_inbound_forwarding: Optional[pulumi.Input[bool]] = None,
             enable_logging: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            networks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['PolicyNetworkArgs']]]]] = None,
+            networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyNetworkArgs']]]]] = None,
             project: Optional[pulumi.Input[str]] = None) -> 'Policy':
         """
         Get an existing Policy resource's state with the given name, id, and optional extra
@@ -118,7 +118,7 @@ class Policy(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_logging: Controls whether logging is enabled for the networks bound to this policy.
                Defaults to no logging if not set.
         :param pulumi.Input[str] name: User assigned name for this policy.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['PolicyNetworkArgs']]]] networks: List of network names specifying networks to which this policy is applied.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyNetworkArgs']]]] networks: List of network names specifying networks to which this policy is applied.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -185,7 +185,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def networks(self) -> pulumi.Output[Optional[List['outputs.PolicyNetwork']]]:
+    def networks(self) -> pulumi.Output[Optional[Sequence['outputs.PolicyNetwork']]]:
         """
         List of network names specifying networks to which this policy is applied.
         Structure is documented below.

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['DomainTrust']
@@ -18,7 +18,7 @@ class DomainTrust(pulumi.CustomResource):
                  domain: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  selective_authentication: Optional[pulumi.Input[bool]] = None,
-                 target_dns_ip_addresses: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 target_dns_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  target_domain_name: Optional[pulumi.Input[str]] = None,
                  trust_direction: Optional[pulumi.Input[str]] = None,
                  trust_handshake_secret: Optional[pulumi.Input[str]] = None,
@@ -47,7 +47,7 @@ class DomainTrust(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[bool] selective_authentication: Whether the trusted side has forest/domain wide access or selective access to an approved set of resources.
-        :param pulumi.Input[List[pulumi.Input[str]]] target_dns_ip_addresses: The target DNS server IP addresses which can resolve the remote domain involved in the trust.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_dns_ip_addresses: The target DNS server IP addresses which can resolve the remote domain involved in the trust.
         :param pulumi.Input[str] target_domain_name: The fully qualified target domain name which will be in trust with the current domain.
         :param pulumi.Input[str] trust_direction: The trust direction, which decides if the current domain is trusted, trusting, or both.
                Possible values are `INBOUND`, `OUTBOUND`, and `BIDIRECTIONAL`.
@@ -106,7 +106,7 @@ class DomainTrust(pulumi.CustomResource):
             domain: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             selective_authentication: Optional[pulumi.Input[bool]] = None,
-            target_dns_ip_addresses: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            target_dns_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             target_domain_name: Optional[pulumi.Input[str]] = None,
             trust_direction: Optional[pulumi.Input[str]] = None,
             trust_handshake_secret: Optional[pulumi.Input[str]] = None,
@@ -123,7 +123,7 @@ class DomainTrust(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[bool] selective_authentication: Whether the trusted side has forest/domain wide access or selective access to an approved set of resources.
-        :param pulumi.Input[List[pulumi.Input[str]]] target_dns_ip_addresses: The target DNS server IP addresses which can resolve the remote domain involved in the trust.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_dns_ip_addresses: The target DNS server IP addresses which can resolve the remote domain involved in the trust.
         :param pulumi.Input[str] target_domain_name: The fully qualified target domain name which will be in trust with the current domain.
         :param pulumi.Input[str] trust_direction: The trust direction, which decides if the current domain is trusted, trusting, or both.
                Possible values are `INBOUND`, `OUTBOUND`, and `BIDIRECTIONAL`.
@@ -174,7 +174,7 @@ class DomainTrust(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="targetDnsIpAddresses")
-    def target_dns_ip_addresses(self) -> pulumi.Output[List[str]]:
+    def target_dns_ip_addresses(self) -> pulumi.Output[Sequence[str]]:
         """
         The target DNS server IP addresses which can resolve the remote domain involved in the trust.
         """

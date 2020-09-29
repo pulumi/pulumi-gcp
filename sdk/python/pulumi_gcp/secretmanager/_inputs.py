@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -138,16 +138,16 @@ class SecretReplicationArgs:
 @pulumi.input_type
 class SecretReplicationUserManagedArgs:
     def __init__(__self__, *,
-                 replicas: pulumi.Input[List[pulumi.Input['SecretReplicationUserManagedReplicaArgs']]]):
+                 replicas: pulumi.Input[Sequence[pulumi.Input['SecretReplicationUserManagedReplicaArgs']]]):
         """
-        :param pulumi.Input[List[pulumi.Input['SecretReplicationUserManagedReplicaArgs']]] replicas: The list of Replicas for this Secret. Cannot be empty.
+        :param pulumi.Input[Sequence[pulumi.Input['SecretReplicationUserManagedReplicaArgs']]] replicas: The list of Replicas for this Secret. Cannot be empty.
                Structure is documented below.
         """
         pulumi.set(__self__, "replicas", replicas)
 
     @property
     @pulumi.getter
-    def replicas(self) -> pulumi.Input[List[pulumi.Input['SecretReplicationUserManagedReplicaArgs']]]:
+    def replicas(self) -> pulumi.Input[Sequence[pulumi.Input['SecretReplicationUserManagedReplicaArgs']]]:
         """
         The list of Replicas for this Secret. Cannot be empty.
         Structure is documented below.
@@ -155,7 +155,7 @@ class SecretReplicationUserManagedArgs:
         return pulumi.get(self, "replicas")
 
     @replicas.setter
-    def replicas(self, value: pulumi.Input[List[pulumi.Input['SecretReplicationUserManagedReplicaArgs']]]):
+    def replicas(self, value: pulumi.Input[Sequence[pulumi.Input['SecretReplicationUserManagedReplicaArgs']]]):
         pulumi.set(self, "replicas", value)
 
 

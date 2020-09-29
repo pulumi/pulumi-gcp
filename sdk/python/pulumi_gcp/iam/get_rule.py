@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -46,7 +46,7 @@ class GetRuleResult:
 
     @property
     @pulumi.getter(name="includedPermissions")
-    def included_permissions(self) -> List[str]:
+    def included_permissions(self) -> Sequence[str]:
         """
         specifies the list of one or more permissions to include in the custom role, such as - `iam.roles.get`
         """

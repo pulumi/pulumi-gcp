@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -20,44 +20,44 @@ __all__ = [
 @pulumi.input_type
 class GCPolicyMaxAgeArgs:
     def __init__(__self__, *,
-                 days: pulumi.Input[float]):
+                 days: pulumi.Input[int]):
         """
-        :param pulumi.Input[float] days: Number of days before applying GC policy.
+        :param pulumi.Input[int] days: Number of days before applying GC policy.
         """
         pulumi.set(__self__, "days", days)
 
     @property
     @pulumi.getter
-    def days(self) -> pulumi.Input[float]:
+    def days(self) -> pulumi.Input[int]:
         """
         Number of days before applying GC policy.
         """
         return pulumi.get(self, "days")
 
     @days.setter
-    def days(self, value: pulumi.Input[float]):
+    def days(self, value: pulumi.Input[int]):
         pulumi.set(self, "days", value)
 
 
 @pulumi.input_type
 class GCPolicyMaxVersionArgs:
     def __init__(__self__, *,
-                 number: pulumi.Input[float]):
+                 number: pulumi.Input[int]):
         """
-        :param pulumi.Input[float] number: Number of version before applying the GC policy.
+        :param pulumi.Input[int] number: Number of version before applying the GC policy.
         """
         pulumi.set(__self__, "number", number)
 
     @property
     @pulumi.getter
-    def number(self) -> pulumi.Input[float]:
+    def number(self) -> pulumi.Input[int]:
         """
         Number of version before applying the GC policy.
         """
         return pulumi.get(self, "number")
 
     @number.setter
-    def number(self, value: pulumi.Input[float]):
+    def number(self, value: pulumi.Input[int]):
         pulumi.set(self, "number", value)
 
 
@@ -66,14 +66,14 @@ class InstanceClusterArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[str],
                  zone: pulumi.Input[str],
-                 num_nodes: Optional[pulumi.Input[float]] = None,
+                 num_nodes: Optional[pulumi.Input[int]] = None,
                  storage_type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] cluster_id: The ID of the Cloud Bigtable cluster.
         :param pulumi.Input[str] zone: The zone to create the Cloud Bigtable cluster in. Each
                cluster must have a different zone in the same region. Zones that support
                Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
-        :param pulumi.Input[float] num_nodes: The number of nodes in your Cloud Bigtable cluster.
+        :param pulumi.Input[int] num_nodes: The number of nodes in your Cloud Bigtable cluster.
                Required, with a minimum of `1` for a `PRODUCTION` instance. Must be left unset
                for a `DEVELOPMENT` instance.
         :param pulumi.Input[str] storage_type: The storage type to use. One of `"SSD"` or
@@ -114,7 +114,7 @@ class InstanceClusterArgs:
 
     @property
     @pulumi.getter(name="numNodes")
-    def num_nodes(self) -> Optional[pulumi.Input[float]]:
+    def num_nodes(self) -> Optional[pulumi.Input[int]]:
         """
         The number of nodes in your Cloud Bigtable cluster.
         Required, with a minimum of `1` for a `PRODUCTION` instance. Must be left unset
@@ -123,7 +123,7 @@ class InstanceClusterArgs:
         return pulumi.get(self, "num_nodes")
 
     @num_nodes.setter
-    def num_nodes(self, value: Optional[pulumi.Input[float]]):
+    def num_nodes(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "num_nodes", value)
 
     @property

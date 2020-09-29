@@ -11414,6 +11414,7 @@ export namespace container {
          * Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set `enabled = true` to enable.
          */
         kalmConfig?: pulumi.Input<inputs.container.ClusterAddonsConfigKalmConfig>;
+        kubernetesDashboard?: pulumi.Input<inputs.container.ClusterAddonsConfigKubernetesDashboard>;
         /**
          * Whether we should enable the network policy addon
          * for the master.  This must be enabled in order to enable network policy for the nodes.
@@ -11496,6 +11497,14 @@ export namespace container {
          * If enabled, pods must be valid under a PodSecurityPolicy to be created.
          */
         enabled: pulumi.Input<boolean>;
+    }
+
+    export interface ClusterAddonsConfigKubernetesDashboard {
+        /**
+         * The status of the Istio addon, which makes it easy to set up Istio for services in a
+         * cluster. It is disabled by default. Set `disabled = false` to enable.
+         */
+        disabled?: pulumi.Input<boolean>;
     }
 
     export interface ClusterAddonsConfigNetworkPolicyConfig {
@@ -11624,6 +11633,7 @@ export namespace container {
          * `clusterIpv4CidrBlock` can be used to automatically create a GKE-managed one.
          */
         clusterSecondaryRangeName?: pulumi.Input<string>;
+        nodeIpv4CidrBlock?: pulumi.Input<string>;
         /**
          * The IP address range of the services IPs in this cluster.
          * Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
@@ -11639,6 +11649,7 @@ export namespace container {
          * GKE-managed one.
          */
         servicesSecondaryRangeName?: pulumi.Input<string>;
+        subnetworkName?: pulumi.Input<string>;
     }
 
     export interface ClusterMaintenancePolicy {
@@ -18889,6 +18900,7 @@ export namespace storage {
          * Creation date of an object in RFC 3339 (e.g. `2017-06-13`) to satisfy this condition.
          */
         createdBefore?: pulumi.Input<string>;
+        isLive?: pulumi.Input<boolean>;
         /**
          * [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`, `STANDARD`, `DURABLE_REDUCED_AVAILABILITY`.
          */

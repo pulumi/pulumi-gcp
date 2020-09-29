@@ -58,6 +58,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set `enabled = true` to enable.
         /// </summary>
         public readonly Outputs.ClusterAddonsConfigKalmConfig? KalmConfig;
+        public readonly Outputs.ClusterAddonsConfigKubernetesDashboard? KubernetesDashboard;
         /// <summary>
         /// Whether we should enable the network policy addon
         /// for the master.  This must be enabled in order to enable network policy for the nodes.
@@ -86,6 +87,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             Outputs.ClusterAddonsConfigKalmConfig? kalmConfig,
 
+            Outputs.ClusterAddonsConfigKubernetesDashboard? kubernetesDashboard,
+
             Outputs.ClusterAddonsConfigNetworkPolicyConfig? networkPolicyConfig)
         {
             CloudrunConfig = cloudrunConfig;
@@ -96,6 +99,7 @@ namespace Pulumi.Gcp.Container.Outputs
             HttpLoadBalancing = httpLoadBalancing;
             IstioConfig = istioConfig;
             KalmConfig = kalmConfig;
+            KubernetesDashboard = kubernetesDashboard;
             NetworkPolicyConfig = networkPolicyConfig;
         }
     }

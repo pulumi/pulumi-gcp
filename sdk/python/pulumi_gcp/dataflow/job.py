@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['Job']
@@ -15,11 +15,11 @@ class Job(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 additional_experiments: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 additional_experiments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ip_configuration: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
-                 max_workers: Optional[pulumi.Input[float]] = None,
+                 max_workers: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  on_delete: Optional[pulumi.Input[str]] = None,
@@ -50,14 +50,14 @@ class Job(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] additional_experiments: List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_experiments: List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
         :param pulumi.Input[str] ip_configuration: The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
         :param pulumi.Input[Mapping[str, Any]] labels: User labels to be specified for the job. Keys and values should follow the restrictions
                specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
                **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
                Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
         :param pulumi.Input[str] machine_type: The machine type to use for the job.
-        :param pulumi.Input[float] max_workers: The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
+        :param pulumi.Input[int] max_workers: The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
         :param pulumi.Input[str] name: A unique name for the resource, required by Dataflow.
         :param pulumi.Input[str] network: The network to which VMs will be assigned. If it is not provided, "default" will be used.
         :param pulumi.Input[str] on_delete: One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
@@ -122,12 +122,12 @@ class Job(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            additional_experiments: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            additional_experiments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             ip_configuration: Optional[pulumi.Input[str]] = None,
             job_id: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             machine_type: Optional[pulumi.Input[str]] = None,
-            max_workers: Optional[pulumi.Input[float]] = None,
+            max_workers: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
             on_delete: Optional[pulumi.Input[str]] = None,
@@ -149,7 +149,7 @@ class Job(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] additional_experiments: List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_experiments: List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
         :param pulumi.Input[str] ip_configuration: The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
         :param pulumi.Input[str] job_id: The unique ID of this job.
         :param pulumi.Input[Mapping[str, Any]] labels: User labels to be specified for the job. Keys and values should follow the restrictions
@@ -157,7 +157,7 @@ class Job(pulumi.CustomResource):
                **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
                Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
         :param pulumi.Input[str] machine_type: The machine type to use for the job.
-        :param pulumi.Input[float] max_workers: The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
+        :param pulumi.Input[int] max_workers: The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
         :param pulumi.Input[str] name: A unique name for the resource, required by Dataflow.
         :param pulumi.Input[str] network: The network to which VMs will be assigned. If it is not provided, "default" will be used.
         :param pulumi.Input[str] on_delete: One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
@@ -201,7 +201,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="additionalExperiments")
-    def additional_experiments(self) -> pulumi.Output[Optional[List[str]]]:
+    def additional_experiments(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
         """
@@ -244,7 +244,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxWorkers")
-    def max_workers(self) -> pulumi.Output[Optional[float]]:
+    def max_workers(self) -> pulumi.Output[Optional[int]]:
         """
         The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
         """

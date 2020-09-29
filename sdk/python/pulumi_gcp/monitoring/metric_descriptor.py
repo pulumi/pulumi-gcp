@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -19,7 +19,7 @@ class MetricDescriptor(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MetricDescriptorLabelArgs']]]]] = None,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricDescriptorLabelArgs']]]]] = None,
                  launch_stage: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[pulumi.InputType['MetricDescriptorMetadataArgs']]] = None,
                  metric_kind: Optional[pulumi.Input[str]] = None,
@@ -45,7 +45,7 @@ class MetricDescriptor(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A human-readable description for the label.
         :param pulumi.Input[str] display_name: A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['MetricDescriptorLabelArgs']]]] labels: The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricDescriptorLabelArgs']]]] labels: The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
                Structure is documented below.
         :param pulumi.Input[str] launch_stage: The launch stage of the metric definition.
                Possible values are `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
@@ -128,11 +128,11 @@ class MetricDescriptor(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
-            labels: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MetricDescriptorLabelArgs']]]]] = None,
+            labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricDescriptorLabelArgs']]]]] = None,
             launch_stage: Optional[pulumi.Input[str]] = None,
             metadata: Optional[pulumi.Input[pulumi.InputType['MetricDescriptorMetadataArgs']]] = None,
             metric_kind: Optional[pulumi.Input[str]] = None,
-            monitored_resource_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            monitored_resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
@@ -147,7 +147,7 @@ class MetricDescriptor(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A human-readable description for the label.
         :param pulumi.Input[str] display_name: A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['MetricDescriptorLabelArgs']]]] labels: The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricDescriptorLabelArgs']]]] labels: The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
                Structure is documented below.
         :param pulumi.Input[str] launch_stage: The launch stage of the metric definition.
                Possible values are `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
@@ -155,7 +155,7 @@ class MetricDescriptor(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] metric_kind: Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
                Possible values are `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, and `CUMULATIVE`.
-        :param pulumi.Input[List[pulumi.Input[str]]] monitored_resource_types: If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] monitored_resource_types: If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that
                is associated with this metric type can only be associated with one of the monitored resource types listed here. This
                field allows time series to be associated with the intersection of this metric type and the monitored resource types in
                this list.
@@ -220,7 +220,7 @@ class MetricDescriptor(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Optional[List['outputs.MetricDescriptorLabel']]]:
+    def labels(self) -> pulumi.Output[Optional[Sequence['outputs.MetricDescriptorLabel']]]:
         """
         The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
         Structure is documented below.
@@ -256,7 +256,7 @@ class MetricDescriptor(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="monitoredResourceTypes")
-    def monitored_resource_types(self) -> pulumi.Output[List[str]]:
+    def monitored_resource_types(self) -> pulumi.Output[Sequence[str]]:
         """
         If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that
         is associated with this metric type can only be associated with one of the monitored resource types listed here. This

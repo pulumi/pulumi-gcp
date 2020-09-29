@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -33,7 +33,7 @@ class GetGroupsResult:
 
     @property
     @pulumi.getter
-    def groups(self) -> List['outputs.GetGroupsGroupResult']:
+    def groups(self) -> Sequence['outputs.GetGroupsGroupResult']:
         """
         The list of groups under the provided customer or namespace. Structure is documented below.
         """

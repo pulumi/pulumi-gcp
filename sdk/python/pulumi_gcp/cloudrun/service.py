@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -23,7 +23,7 @@ class Service(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  template: Optional[pulumi.Input[pulumi.InputType['ServiceTemplateArgs']]] = None,
-                 traffics: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ServiceTrafficArgs']]]]] = None,
+                 traffics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficArgs']]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -74,7 +74,7 @@ class Service(pulumi.CustomResource):
                Cloud Run does not currently support referencing a build that is
                responsible for materializing the container image from source.
                Structure is documented below.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ServiceTrafficArgs']]]] traffics: Traffic specifies how to distribute traffic over a collection of Knative Revisions
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficArgs']]]] traffics: Traffic specifies how to distribute traffic over a collection of Knative Revisions
                and Configurations
                Structure is documented below.
         """
@@ -122,7 +122,7 @@ class Service(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[pulumi.InputType['ServiceStatusArgs']]] = None,
             template: Optional[pulumi.Input[pulumi.InputType['ServiceTemplateArgs']]] = None,
-            traffics: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ServiceTrafficArgs']]]]] = None) -> 'Service':
+            traffics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficArgs']]]]] = None) -> 'Service':
         """
         Get an existing Service resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -153,7 +153,7 @@ class Service(pulumi.CustomResource):
                Cloud Run does not currently support referencing a build that is
                responsible for materializing the container image from source.
                Structure is documented below.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ServiceTrafficArgs']]]] traffics: Traffic specifies how to distribute traffic over a collection of Knative Revisions
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficArgs']]]] traffics: Traffic specifies how to distribute traffic over a collection of Knative Revisions
                and Configurations
                Structure is documented below.
         """
@@ -245,7 +245,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def traffics(self) -> pulumi.Output[List['outputs.ServiceTraffic']]:
+    def traffics(self) -> pulumi.Output[Sequence['outputs.ServiceTraffic']]:
         """
         Traffic specifies how to distribute traffic over a collection of Knative Revisions
         and Configurations

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -96,7 +96,7 @@ class HaVpnGateway(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
-            vpn_interfaces: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['HaVpnGatewayVpnInterfaceArgs']]]]] = None) -> 'HaVpnGateway':
+            vpn_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HaVpnGatewayVpnInterfaceArgs']]]]] = None) -> 'HaVpnGateway':
         """
         Get an existing HaVpnGateway resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -117,7 +117,7 @@ class HaVpnGateway(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region this gateway should sit in.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['HaVpnGatewayVpnInterfaceArgs']]]] vpn_interfaces: A list of interfaces on this VPN gateway.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HaVpnGatewayVpnInterfaceArgs']]]] vpn_interfaces: A list of interfaces on this VPN gateway.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -189,7 +189,7 @@ class HaVpnGateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vpnInterfaces")
-    def vpn_interfaces(self) -> pulumi.Output[List['outputs.HaVpnGatewayVpnInterface']]:
+    def vpn_interfaces(self) -> pulumi.Output[Sequence['outputs.HaVpnGatewayVpnInterface']]:
         """
         A list of interfaces on this VPN gateway.
         """

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -58,11 +58,11 @@ class DeploymentLabelArgs:
 class DeploymentTargetArgs:
     def __init__(__self__, *,
                  config: pulumi.Input['DeploymentTargetConfigArgs'],
-                 imports: Optional[pulumi.Input[List[pulumi.Input['DeploymentTargetImportArgs']]]] = None):
+                 imports: Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentTargetImportArgs']]]] = None):
         """
         :param pulumi.Input['DeploymentTargetConfigArgs'] config: The root configuration file to use for this deployment.
                Structure is documented below.
-        :param pulumi.Input[List[pulumi.Input['DeploymentTargetImportArgs']]] imports: Specifies import files for this configuration. This can be
+        :param pulumi.Input[Sequence[pulumi.Input['DeploymentTargetImportArgs']]] imports: Specifies import files for this configuration. This can be
                used to import templates or other files. For example, you might
                import a text file in order to use the file in a template.
                Structure is documented below.
@@ -86,7 +86,7 @@ class DeploymentTargetArgs:
 
     @property
     @pulumi.getter
-    def imports(self) -> Optional[pulumi.Input[List[pulumi.Input['DeploymentTargetImportArgs']]]]:
+    def imports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentTargetImportArgs']]]]:
         """
         Specifies import files for this configuration. This can be
         used to import templates or other files. For example, you might
@@ -96,7 +96,7 @@ class DeploymentTargetArgs:
         return pulumi.get(self, "imports")
 
     @imports.setter
-    def imports(self, value: Optional[pulumi.Input[List[pulumi.Input['DeploymentTargetImportArgs']]]]):
+    def imports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentTargetImportArgs']]]]):
         pulumi.set(self, "imports", value)
 
 

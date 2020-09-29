@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -130,7 +130,7 @@ class IAMMemberConditionArgs:
 class IamAuditConfigAuditLogConfigArgs:
     def __init__(__self__, *,
                  log_type: pulumi.Input[str],
-                 exempted_members: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 exempted_members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         pulumi.set(__self__, "log_type", log_type)
         if exempted_members is not None:
             pulumi.set(__self__, "exempted_members", exempted_members)
@@ -146,11 +146,11 @@ class IamAuditConfigAuditLogConfigArgs:
 
     @property
     @pulumi.getter(name="exemptedMembers")
-    def exempted_members(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def exempted_members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "exempted_members")
 
     @exempted_members.setter
-    def exempted_members(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def exempted_members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "exempted_members", value)
 
 
@@ -249,10 +249,10 @@ class OrganizationPolicyListPolicyArgs:
 class OrganizationPolicyListPolicyAllowArgs:
     def __init__(__self__, *,
                  all: Optional[pulumi.Input[bool]] = None,
-                 values: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[bool] all: The policy allows or denies all values.
-        :param pulumi.Input[List[pulumi.Input[str]]] values: The policy can define specific values that are allowed or denied.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: The policy can define specific values that are allowed or denied.
         """
         if all is not None:
             pulumi.set(__self__, "all", all)
@@ -273,14 +273,14 @@ class OrganizationPolicyListPolicyAllowArgs:
 
     @property
     @pulumi.getter
-    def values(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The policy can define specific values that are allowed or denied.
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "values", value)
 
 
@@ -288,10 +288,10 @@ class OrganizationPolicyListPolicyAllowArgs:
 class OrganizationPolicyListPolicyDenyArgs:
     def __init__(__self__, *,
                  all: Optional[pulumi.Input[bool]] = None,
-                 values: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[bool] all: The policy allows or denies all values.
-        :param pulumi.Input[List[pulumi.Input[str]]] values: The policy can define specific values that are allowed or denied.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: The policy can define specific values that are allowed or denied.
         """
         if all is not None:
             pulumi.set(__self__, "all", all)
@@ -312,14 +312,14 @@ class OrganizationPolicyListPolicyDenyArgs:
 
     @property
     @pulumi.getter
-    def values(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The policy can define specific values that are allowed or denied.
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "values", value)
 
 

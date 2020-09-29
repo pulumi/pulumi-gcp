@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -17,11 +17,11 @@ class Dataset(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accesses: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DatasetAccessArgs']]]]] = None,
+                 accesses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetAccessArgs']]]]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  default_encryption_configuration: Optional[pulumi.Input[pulumi.InputType['DatasetDefaultEncryptionConfigurationArgs']]] = None,
-                 default_partition_expiration_ms: Optional[pulumi.Input[float]] = None,
-                 default_table_expiration_ms: Optional[pulumi.Input[float]] = None,
+                 default_partition_expiration_ms: Optional[pulumi.Input[int]] = None,
+                 default_table_expiration_ms: Optional[pulumi.Input[int]] = None,
                  delete_contents_on_destroy: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
@@ -44,16 +44,16 @@ class Dataset(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DatasetAccessArgs']]]] accesses: An array of objects that define dataset access for one or more entities.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetAccessArgs']]]] accesses: An array of objects that define dataset access for one or more entities.
                Structure is documented below.
         :param pulumi.Input[str] dataset_id: The ID of the dataset containing this table.
         :param pulumi.Input[pulumi.InputType['DatasetDefaultEncryptionConfigurationArgs']] default_encryption_configuration: The default encryption key for all tables in the dataset. Once this property is set,
                all newly-created partitioned tables in the dataset will have encryption key set to
                this value, unless table creation request (or query) overrides the key.
                Structure is documented below.
-        :param pulumi.Input[float] default_partition_expiration_ms: The default partition expiration for all partitioned tables in
+        :param pulumi.Input[int] default_partition_expiration_ms: The default partition expiration for all partitioned tables in
                the dataset, in milliseconds.
-        :param pulumi.Input[float] default_table_expiration_ms: The default lifetime of all tables in the dataset, in milliseconds.
+        :param pulumi.Input[int] default_table_expiration_ms: The default lifetime of all tables in the dataset, in milliseconds.
                The minimum value is 3600000 milliseconds (one hour).
         :param pulumi.Input[bool] delete_contents_on_destroy: If set to `true`, delete all the tables in the
                dataset when destroying the resource; otherwise,
@@ -111,18 +111,18 @@ class Dataset(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            accesses: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DatasetAccessArgs']]]]] = None,
-            creation_time: Optional[pulumi.Input[float]] = None,
+            accesses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetAccessArgs']]]]] = None,
+            creation_time: Optional[pulumi.Input[int]] = None,
             dataset_id: Optional[pulumi.Input[str]] = None,
             default_encryption_configuration: Optional[pulumi.Input[pulumi.InputType['DatasetDefaultEncryptionConfigurationArgs']]] = None,
-            default_partition_expiration_ms: Optional[pulumi.Input[float]] = None,
-            default_table_expiration_ms: Optional[pulumi.Input[float]] = None,
+            default_partition_expiration_ms: Optional[pulumi.Input[int]] = None,
+            default_table_expiration_ms: Optional[pulumi.Input[int]] = None,
             delete_contents_on_destroy: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             friendly_name: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            last_modified_time: Optional[pulumi.Input[float]] = None,
+            last_modified_time: Optional[pulumi.Input[int]] = None,
             location: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None) -> 'Dataset':
@@ -133,17 +133,17 @@ class Dataset(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DatasetAccessArgs']]]] accesses: An array of objects that define dataset access for one or more entities.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetAccessArgs']]]] accesses: An array of objects that define dataset access for one or more entities.
                Structure is documented below.
-        :param pulumi.Input[float] creation_time: The time when this dataset was created, in milliseconds since the epoch.
+        :param pulumi.Input[int] creation_time: The time when this dataset was created, in milliseconds since the epoch.
         :param pulumi.Input[str] dataset_id: The ID of the dataset containing this table.
         :param pulumi.Input[pulumi.InputType['DatasetDefaultEncryptionConfigurationArgs']] default_encryption_configuration: The default encryption key for all tables in the dataset. Once this property is set,
                all newly-created partitioned tables in the dataset will have encryption key set to
                this value, unless table creation request (or query) overrides the key.
                Structure is documented below.
-        :param pulumi.Input[float] default_partition_expiration_ms: The default partition expiration for all partitioned tables in
+        :param pulumi.Input[int] default_partition_expiration_ms: The default partition expiration for all partitioned tables in
                the dataset, in milliseconds.
-        :param pulumi.Input[float] default_table_expiration_ms: The default lifetime of all tables in the dataset, in milliseconds.
+        :param pulumi.Input[int] default_table_expiration_ms: The default lifetime of all tables in the dataset, in milliseconds.
                The minimum value is 3600000 milliseconds (one hour).
         :param pulumi.Input[bool] delete_contents_on_destroy: If set to `true`, delete all the tables in the
                dataset when destroying the resource; otherwise,
@@ -153,7 +153,7 @@ class Dataset(pulumi.CustomResource):
         :param pulumi.Input[str] friendly_name: A descriptive name for the dataset
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this dataset. You can use these to
                organize and group your datasets
-        :param pulumi.Input[float] last_modified_time: The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
+        :param pulumi.Input[int] last_modified_time: The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
         :param pulumi.Input[str] location: The geographic location where the dataset should reside.
                See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -183,7 +183,7 @@ class Dataset(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def accesses(self) -> pulumi.Output[List['outputs.DatasetAccess']]:
+    def accesses(self) -> pulumi.Output[Sequence['outputs.DatasetAccess']]:
         """
         An array of objects that define dataset access for one or more entities.
         Structure is documented below.
@@ -192,7 +192,7 @@ class Dataset(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="creationTime")
-    def creation_time(self) -> pulumi.Output[float]:
+    def creation_time(self) -> pulumi.Output[int]:
         """
         The time when this dataset was created, in milliseconds since the epoch.
         """
@@ -219,7 +219,7 @@ class Dataset(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultPartitionExpirationMs")
-    def default_partition_expiration_ms(self) -> pulumi.Output[Optional[float]]:
+    def default_partition_expiration_ms(self) -> pulumi.Output[Optional[int]]:
         """
         The default partition expiration for all partitioned tables in
         the dataset, in milliseconds.
@@ -228,7 +228,7 @@ class Dataset(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultTableExpirationMs")
-    def default_table_expiration_ms(self) -> pulumi.Output[Optional[float]]:
+    def default_table_expiration_ms(self) -> pulumi.Output[Optional[int]]:
         """
         The default lifetime of all tables in the dataset, in milliseconds.
         The minimum value is 3600000 milliseconds (one hour).
@@ -280,7 +280,7 @@ class Dataset(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lastModifiedTime")
-    def last_modified_time(self) -> pulumi.Output[float]:
+    def last_modified_time(self) -> pulumi.Output[int]:
         """
         The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
         """

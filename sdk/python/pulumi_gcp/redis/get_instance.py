@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -50,8 +50,8 @@ class GetInstanceResult:
         if location_id and not isinstance(location_id, str):
             raise TypeError("Expected argument 'location_id' to be a str")
         pulumi.set(__self__, "location_id", location_id)
-        if memory_size_gb and not isinstance(memory_size_gb, float):
-            raise TypeError("Expected argument 'memory_size_gb' to be a float")
+        if memory_size_gb and not isinstance(memory_size_gb, int):
+            raise TypeError("Expected argument 'memory_size_gb' to be a int")
         pulumi.set(__self__, "memory_size_gb", memory_size_gb)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
@@ -59,8 +59,8 @@ class GetInstanceResult:
         if persistence_iam_identity and not isinstance(persistence_iam_identity, str):
             raise TypeError("Expected argument 'persistence_iam_identity' to be a str")
         pulumi.set(__self__, "persistence_iam_identity", persistence_iam_identity)
-        if port and not isinstance(port, float):
-            raise TypeError("Expected argument 'port' to be a float")
+        if port and not isinstance(port, int):
+            raise TypeError("Expected argument 'port' to be a int")
         pulumi.set(__self__, "port", port)
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
@@ -140,7 +140,7 @@ class GetInstanceResult:
 
     @property
     @pulumi.getter(name="memorySizeGb")
-    def memory_size_gb(self) -> float:
+    def memory_size_gb(self) -> int:
         return pulumi.get(self, "memory_size_gb")
 
     @property
@@ -155,7 +155,7 @@ class GetInstanceResult:
 
     @property
     @pulumi.getter
-    def port(self) -> float:
+    def port(self) -> int:
         """
         The port number of the exposed Redis endpoint.
         """

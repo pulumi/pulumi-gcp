@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,7 +18,7 @@ class WebBackendServiceIamBinding(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  condition: Optional[pulumi.Input[pulumi.InputType['WebBackendServiceIamBindingConditionArgs']]] = None,
-                 members: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  web_backend_service: Optional[pulumi.Input[str]] = None,
@@ -88,7 +88,7 @@ class WebBackendServiceIamBinding(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             condition: Optional[pulumi.Input[pulumi.InputType['WebBackendServiceIamBindingConditionArgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
-            members: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
             role: Optional[pulumi.Input[str]] = None,
             web_backend_service: Optional[pulumi.Input[str]] = None) -> 'WebBackendServiceIamBinding':
@@ -140,7 +140,7 @@ class WebBackendServiceIamBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def members(self) -> pulumi.Output[List[str]]:
+    def members(self) -> pulumi.Output[Sequence[str]]:
         return pulumi.get(self, "members")
 
     @property

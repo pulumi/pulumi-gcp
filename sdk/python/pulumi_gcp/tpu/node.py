@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -119,7 +119,7 @@ class Node(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
-            network_endpoints: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['NodeNetworkEndpointArgs']]]]] = None,
+            network_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodeNetworkEndpointArgs']]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
             scheduling_config: Optional[pulumi.Input[pulumi.InputType['NodeSchedulingConfigArgs']]] = None,
             service_account: Optional[pulumi.Input[str]] = None,
@@ -148,7 +148,7 @@ class Node(pulumi.CustomResource):
                preexisting Compute Engine network inside of the project on which
                this API has been activated. If none is provided, "default" will be
                used.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['NodeNetworkEndpointArgs']]]] network_endpoints: The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodeNetworkEndpointArgs']]]] network_endpoints: The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the
                node first reach out to the first (index 0) entry.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -237,7 +237,7 @@ class Node(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkEndpoints")
-    def network_endpoints(self) -> pulumi.Output[List['outputs.NodeNetworkEndpoint']]:
+    def network_endpoints(self) -> pulumi.Output[Sequence['outputs.NodeNetworkEndpoint']]:
         """
         The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the
         node first reach out to the first (index 0) entry.

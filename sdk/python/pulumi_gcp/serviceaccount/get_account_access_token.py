@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -49,7 +49,7 @@ class GetAccountAccessTokenResult:
 
     @property
     @pulumi.getter
-    def delegates(self) -> Optional[List[str]]:
+    def delegates(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "delegates")
 
     @property
@@ -67,7 +67,7 @@ class GetAccountAccessTokenResult:
 
     @property
     @pulumi.getter
-    def scopes(self) -> List[str]:
+    def scopes(self) -> Sequence[str]:
         return pulumi.get(self, "scopes")
 
     @property
@@ -90,9 +90,9 @@ class AwaitableGetAccountAccessTokenResult(GetAccountAccessTokenResult):
             target_service_account=self.target_service_account)
 
 
-def get_account_access_token(delegates: Optional[List[str]] = None,
+def get_account_access_token(delegates: Optional[Sequence[str]] = None,
                              lifetime: Optional[str] = None,
-                             scopes: Optional[List[str]] = None,
+                             scopes: Optional[Sequence[str]] = None,
                              target_service_account: Optional[str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountAccessTokenResult:
     """
@@ -102,9 +102,9 @@ def get_account_access_token(delegates: Optional[List[str]] = None,
     [the official documentation](https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials) as well as [iamcredentials.generateAccessToken()](https://cloud.google.com/iam/credentials/reference/rest/v1/projects.serviceAccounts/generateAccessToken)
 
 
-    :param List[str] delegates: Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.  (e.g. `["projects/-/serviceAccounts/delegate-svc-account@project-id.iam.gserviceaccount.com"]`)
+    :param Sequence[str] delegates: Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.  (e.g. `["projects/-/serviceAccounts/delegate-svc-account@project-id.iam.gserviceaccount.com"]`)
     :param str lifetime: Lifetime of the impersonated token (defaults to its max: `3600s`).
-    :param List[str] scopes: The scopes the new credential should have (e.g. `["storage-ro", "cloud-platform"]`)
+    :param Sequence[str] scopes: The scopes the new credential should have (e.g. `["storage-ro", "cloud-platform"]`)
     :param str target_service_account: The service account _to_ impersonate (e.g. `service_B@your-project-id.iam.gserviceaccount.com`)
     """
     __args__ = dict()

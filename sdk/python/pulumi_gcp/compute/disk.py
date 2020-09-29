@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -22,10 +22,10 @@ class Disk(pulumi.CustomResource):
                  image: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 physical_block_size_bytes: Optional[pulumi.Input[float]] = None,
+                 physical_block_size_bytes: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 resource_policies: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 size: Optional[pulumi.Input[float]] = None,
+                 resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 size: Optional[pulumi.Input[int]] = None,
                  snapshot: Optional[pulumi.Input[str]] = None,
                  source_image_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskSourceImageEncryptionKeyArgs']]] = None,
                  source_snapshot_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskSourceSnapshotEncryptionKeyArgs']]] = None,
@@ -93,20 +93,20 @@ class Disk(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-        :param pulumi.Input[float] physical_block_size_bytes: Physical block size of the persistent disk, in bytes. If not present
+        :param pulumi.Input[int] physical_block_size_bytes: Physical block size of the persistent disk, in bytes. If not present
                in a request, a default value is used. Currently supported sizes
                are 4096 and 16384, other sizes may be added in the future.
                If an unsupported value is requested, the error message will list
                the supported values for the caller's project.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[List[pulumi.Input[str]]] resource_policies: Resource policies applied to this disk for automatic snapshot creations.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this disk for automatic snapshot creations.
                ~>**NOTE** This value does not support updating the
                resource policy, as resource policies can not be updated more than
                one at a time. Use
                `compute.DiskResourcePolicyAttachment`
                to allow for updating the resource policy attached to the disk.
-        :param pulumi.Input[float] size: Size of the persistent disk, specified in GB. You can specify this
+        :param pulumi.Input[int] size: Size of the persistent disk, specified in GB. You can specify this
                field when creating a persistent disk using the `image` or
                `snapshot` parameter, or specify it alone to create an empty
                persistent disk.
@@ -190,18 +190,18 @@ class Disk(pulumi.CustomResource):
             last_attach_timestamp: Optional[pulumi.Input[str]] = None,
             last_detach_timestamp: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            physical_block_size_bytes: Optional[pulumi.Input[float]] = None,
+            physical_block_size_bytes: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            resource_policies: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
-            size: Optional[pulumi.Input[float]] = None,
+            size: Optional[pulumi.Input[int]] = None,
             snapshot: Optional[pulumi.Input[str]] = None,
             source_image_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskSourceImageEncryptionKeyArgs']]] = None,
             source_image_id: Optional[pulumi.Input[str]] = None,
             source_snapshot_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskSourceSnapshotEncryptionKeyArgs']]] = None,
             source_snapshot_id: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
-            users: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'Disk':
         """
         Get an existing Disk resource's state with the given name, id, and optional extra
@@ -243,21 +243,21 @@ class Disk(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-        :param pulumi.Input[float] physical_block_size_bytes: Physical block size of the persistent disk, in bytes. If not present
+        :param pulumi.Input[int] physical_block_size_bytes: Physical block size of the persistent disk, in bytes. If not present
                in a request, a default value is used. Currently supported sizes
                are 4096 and 16384, other sizes may be added in the future.
                If an unsupported value is requested, the error message will list
                the supported values for the caller's project.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[List[pulumi.Input[str]]] resource_policies: Resource policies applied to this disk for automatic snapshot creations.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this disk for automatic snapshot creations.
                ~>**NOTE** This value does not support updating the
                resource policy, as resource policies can not be updated more than
                one at a time. Use
                `compute.DiskResourcePolicyAttachment`
                to allow for updating the resource policy attached to the disk.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[float] size: Size of the persistent disk, specified in GB. You can specify this
+        :param pulumi.Input[int] size: Size of the persistent disk, specified in GB. You can specify this
                field when creating a persistent disk using the `image` or
                `snapshot` parameter, or specify it alone to create an empty
                persistent disk.
@@ -287,7 +287,7 @@ class Disk(pulumi.CustomResource):
                recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.
         :param pulumi.Input[str] type: URL of the disk type resource describing which disk type to use to
                create the disk. Provide this when creating the disk.
-        :param pulumi.Input[List[pulumi.Input[str]]] users: Links to the users of the disk (attached instances) in form: project/zones/zone/instances/instance
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] users: Links to the users of the disk (attached instances) in form: project/zones/zone/instances/instance
         :param pulumi.Input[str] zone: A reference to the zone where the disk resides.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -416,7 +416,7 @@ class Disk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="physicalBlockSizeBytes")
-    def physical_block_size_bytes(self) -> pulumi.Output[float]:
+    def physical_block_size_bytes(self) -> pulumi.Output[int]:
         """
         Physical block size of the persistent disk, in bytes. If not present
         in a request, a default value is used. Currently supported sizes
@@ -437,7 +437,7 @@ class Disk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourcePolicies")
-    def resource_policies(self) -> pulumi.Output[List[str]]:
+    def resource_policies(self) -> pulumi.Output[Sequence[str]]:
         """
         Resource policies applied to this disk for automatic snapshot creations.
         ~>**NOTE** This value does not support updating the
@@ -458,7 +458,7 @@ class Disk(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def size(self) -> pulumi.Output[float]:
+    def size(self) -> pulumi.Output[int]:
         """
         Size of the persistent disk, specified in GB. You can specify this
         field when creating a persistent disk using the `image` or
@@ -537,7 +537,7 @@ class Disk(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def users(self) -> pulumi.Output[List[str]]:
+    def users(self) -> pulumi.Output[Sequence[str]]:
         """
         Links to the users of the disk (attached instances) in form: project/zones/zone/instances/instance
         """

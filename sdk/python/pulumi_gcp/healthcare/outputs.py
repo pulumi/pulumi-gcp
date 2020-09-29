@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -274,7 +274,7 @@ class FhirStoreNotificationConfig(dict):
 class FhirStoreStreamConfig(dict):
     def __init__(__self__, *,
                  bigquery_destination: 'outputs.FhirStoreStreamConfigBigqueryDestination',
-                 resource_types: Optional[List[str]] = None):
+                 resource_types: Optional[Sequence[str]] = None):
         """
         :param 'FhirStoreStreamConfigBigqueryDestinationArgs' bigquery_destination: The destination BigQuery structure that contains both the dataset location and corresponding schema config.
                The output is organized in one table per resource type. The server reuses the existing tables (if any) that
@@ -282,7 +282,7 @@ class FhirStoreStreamConfig(dict):
                resource type, the server attempts to create one.
                See the [streaming config reference](https://cloud.google.com/healthcare/docs/reference/rest/v1beta1/projects.locations.datasets.fhirStores#streamconfig) for more details.
                Structure is documented below.
-        :param List[str] resource_types: Supply a FHIR resource type (such as "Patient" or "Observation"). See
+        :param Sequence[str] resource_types: Supply a FHIR resource type (such as "Patient" or "Observation"). See
                https://www.hl7.org/fhir/valueset-resource-types.html for a list of all FHIR resource types. The server treats
                an empty list as an intent to stream all the supported resource types in this FHIR store.
         """
@@ -305,7 +305,7 @@ class FhirStoreStreamConfig(dict):
 
     @property
     @pulumi.getter(name="resourceTypes")
-    def resource_types(self) -> Optional[List[str]]:
+    def resource_types(self) -> Optional[Sequence[str]]:
         """
         Supply a FHIR resource type (such as "Patient" or "Observation"). See
         https://www.hl7.org/fhir/valueset-resource-types.html for a list of all FHIR resource types. The server treats
@@ -354,10 +354,10 @@ class FhirStoreStreamConfigBigqueryDestination(dict):
 @pulumi.output_type
 class FhirStoreStreamConfigBigqueryDestinationSchemaConfig(dict):
     def __init__(__self__, *,
-                 recursive_structure_depth: float,
+                 recursive_structure_depth: int,
                  schema_type: Optional[str] = None):
         """
-        :param float recursive_structure_depth: The depth for all recursive structures in the output analytics schema. For example, concept in the CodeSystem
+        :param int recursive_structure_depth: The depth for all recursive structures in the output analytics schema. For example, concept in the CodeSystem
                resource is a recursive structure; when the depth is 2, the CodeSystem table will have a column called
                concept.concept but not concept.concept.concept. If not specified or set to 0, the server will use the default
                value 2. The maximum depth allowed is 5.
@@ -373,7 +373,7 @@ class FhirStoreStreamConfigBigqueryDestinationSchemaConfig(dict):
 
     @property
     @pulumi.getter(name="recursiveStructureDepth")
-    def recursive_structure_depth(self) -> float:
+    def recursive_structure_depth(self) -> int:
         """
         The depth for all recursive structures in the output analytics schema. For example, concept in the CodeSystem
         resource is a recursive structure; when the depth is 2, the CodeSystem table will have a column called

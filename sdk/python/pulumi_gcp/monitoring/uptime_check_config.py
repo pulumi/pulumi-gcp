@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -17,14 +17,14 @@ class UptimeCheckConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 content_matchers: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['UptimeCheckConfigContentMatcherArgs']]]]] = None,
+                 content_matchers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UptimeCheckConfigContentMatcherArgs']]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  http_check: Optional[pulumi.Input[pulumi.InputType['UptimeCheckConfigHttpCheckArgs']]] = None,
                  monitored_resource: Optional[pulumi.Input[pulumi.InputType['UptimeCheckConfigMonitoredResourceArgs']]] = None,
                  period: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  resource_group: Optional[pulumi.Input[pulumi.InputType['UptimeCheckConfigResourceGroupArgs']]] = None,
-                 selected_regions: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 selected_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tcp_check: Optional[pulumi.Input[pulumi.InputType['UptimeCheckConfigTcpCheckArgs']]] = None,
                  timeout: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -46,7 +46,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['UptimeCheckConfigContentMatcherArgs']]]] content_matchers: The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UptimeCheckConfigContentMatcherArgs']]]] content_matchers: The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
                Structure is documented below.
         :param pulumi.Input[str] display_name: A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
         :param pulumi.Input[pulumi.InputType['UptimeCheckConfigHttpCheckArgs']] http_check: Contains information needed to make an HTTP or HTTPS check.
@@ -58,7 +58,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['UptimeCheckConfigResourceGroupArgs']] resource_group: The group resource associated with the configuration.
                Structure is documented below.
-        :param pulumi.Input[List[pulumi.Input[str]]] selected_regions: The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions to include a minimum of 3 locations must be provided, or an error message is returned. Not specifying this field will result in uptime checks running from all regions.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] selected_regions: The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions to include a minimum of 3 locations must be provided, or an error message is returned. Not specifying this field will result in uptime checks running from all regions.
         :param pulumi.Input[pulumi.InputType['UptimeCheckConfigTcpCheckArgs']] tcp_check: Contains information needed to make a TCP check.
                Structure is documented below.
         :param pulumi.Input[str] timeout: The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Accepted formats https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration
@@ -106,7 +106,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            content_matchers: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['UptimeCheckConfigContentMatcherArgs']]]]] = None,
+            content_matchers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UptimeCheckConfigContentMatcherArgs']]]]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             http_check: Optional[pulumi.Input[pulumi.InputType['UptimeCheckConfigHttpCheckArgs']]] = None,
             monitored_resource: Optional[pulumi.Input[pulumi.InputType['UptimeCheckConfigMonitoredResourceArgs']]] = None,
@@ -114,7 +114,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
             period: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             resource_group: Optional[pulumi.Input[pulumi.InputType['UptimeCheckConfigResourceGroupArgs']]] = None,
-            selected_regions: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            selected_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tcp_check: Optional[pulumi.Input[pulumi.InputType['UptimeCheckConfigTcpCheckArgs']]] = None,
             timeout: Optional[pulumi.Input[str]] = None,
             uptime_check_id: Optional[pulumi.Input[str]] = None) -> 'UptimeCheckConfig':
@@ -125,7 +125,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['UptimeCheckConfigContentMatcherArgs']]]] content_matchers: The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UptimeCheckConfigContentMatcherArgs']]]] content_matchers: The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
                Structure is documented below.
         :param pulumi.Input[str] display_name: A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
         :param pulumi.Input[pulumi.InputType['UptimeCheckConfigHttpCheckArgs']] http_check: Contains information needed to make an HTTP or HTTPS check.
@@ -139,7 +139,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['UptimeCheckConfigResourceGroupArgs']] resource_group: The group resource associated with the configuration.
                Structure is documented below.
-        :param pulumi.Input[List[pulumi.Input[str]]] selected_regions: The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions to include a minimum of 3 locations must be provided, or an error message is returned. Not specifying this field will result in uptime checks running from all regions.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] selected_regions: The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions to include a minimum of 3 locations must be provided, or an error message is returned. Not specifying this field will result in uptime checks running from all regions.
         :param pulumi.Input[pulumi.InputType['UptimeCheckConfigTcpCheckArgs']] tcp_check: Contains information needed to make a TCP check.
                Structure is documented below.
         :param pulumi.Input[str] timeout: The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Accepted formats https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration
@@ -165,7 +165,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="contentMatchers")
-    def content_matchers(self) -> pulumi.Output[Optional[List['outputs.UptimeCheckConfigContentMatcher']]]:
+    def content_matchers(self) -> pulumi.Output[Optional[Sequence['outputs.UptimeCheckConfigContentMatcher']]]:
         """
         The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
         Structure is documented below.
@@ -235,7 +235,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selectedRegions")
-    def selected_regions(self) -> pulumi.Output[Optional[List[str]]]:
+    def selected_regions(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions to include a minimum of 3 locations must be provided, or an error message is returned. Not specifying this field will result in uptime checks running from all regions.
         """

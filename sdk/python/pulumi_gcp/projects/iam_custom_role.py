@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['IAMCustomRole']
@@ -16,7 +16,7 @@ class IAMCustomRole(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 permissions: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role_id: Optional[pulumi.Input[str]] = None,
                  stage: Optional[pulumi.Input[str]] = None,
@@ -40,7 +40,7 @@ class IAMCustomRole(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A human-readable description for the role.
-        :param pulumi.Input[List[pulumi.Input[str]]] permissions: The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
         :param pulumi.Input[str] project: The project that the service account will be created in.
                Defaults to the provider project configuration.
         :param pulumi.Input[str] role_id: The camel case role id to use for this role. Cannot contain `-` characters.
@@ -93,7 +93,7 @@ class IAMCustomRole(pulumi.CustomResource):
             deleted: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            permissions: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
             role_id: Optional[pulumi.Input[str]] = None,
             stage: Optional[pulumi.Input[str]] = None,
@@ -108,7 +108,7 @@ class IAMCustomRole(pulumi.CustomResource):
         :param pulumi.Input[bool] deleted: (Optional) The current deleted state of the role.
         :param pulumi.Input[str] description: A human-readable description for the role.
         :param pulumi.Input[str] name: The name of the role in the format `projects/{{project}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
-        :param pulumi.Input[List[pulumi.Input[str]]] permissions: The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
         :param pulumi.Input[str] project: The project that the service account will be created in.
                Defaults to the provider project configuration.
         :param pulumi.Input[str] role_id: The camel case role id to use for this role. Cannot contain `-` characters.
@@ -157,7 +157,7 @@ class IAMCustomRole(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def permissions(self) -> pulumi.Output[List[str]]:
+    def permissions(self) -> pulumi.Output[Sequence[str]]:
         """
         The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
         """

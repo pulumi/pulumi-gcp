@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['Endpoint']
@@ -18,7 +18,7 @@ class Endpoint(pulumi.CustomResource):
                  address: Optional[pulumi.Input[str]] = None,
                  endpoint_id: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 port: Optional[pulumi.Input[float]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
                  service: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -43,7 +43,7 @@ class Endpoint(pulumi.CustomResource):
                by service clients. The entire metadata dictionary may contain
                up to 512 characters, spread across all key-value pairs.
                Metadata that goes beyond any these limits will be rejected.
-        :param pulumi.Input[float] port: Port that the endpoint is running on, must be in the
+        :param pulumi.Input[int] port: Port that the endpoint is running on, must be in the
                range of [0, 65535]. If unspecified, the default is 0.
         :param pulumi.Input[str] service: The resource name of the service that this endpoint provides.
         """
@@ -88,7 +88,7 @@ class Endpoint(pulumi.CustomResource):
             endpoint_id: Optional[pulumi.Input[str]] = None,
             metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            port: Optional[pulumi.Input[float]] = None,
+            port: Optional[pulumi.Input[int]] = None,
             service: Optional[pulumi.Input[str]] = None) -> 'Endpoint':
         """
         Get an existing Endpoint resource's state with the given name, id, and optional extra
@@ -105,7 +105,7 @@ class Endpoint(pulumi.CustomResource):
                up to 512 characters, spread across all key-value pairs.
                Metadata that goes beyond any these limits will be rejected.
         :param pulumi.Input[str] name: The resource name for the endpoint in the format 'projects/*/locations/*/namespaces/*/services/*/endpoints/*'.
-        :param pulumi.Input[float] port: Port that the endpoint is running on, must be in the
+        :param pulumi.Input[int] port: Port that the endpoint is running on, must be in the
                range of [0, 65535]. If unspecified, the default is 0.
         :param pulumi.Input[str] service: The resource name of the service that this endpoint provides.
         """
@@ -159,7 +159,7 @@ class Endpoint(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> pulumi.Output[Optional[float]]:
+    def port(self) -> pulumi.Output[Optional[int]]:
         """
         Port that the endpoint is running on, must be in the
         range of [0, 65535]. If unspecified, the default is 0.

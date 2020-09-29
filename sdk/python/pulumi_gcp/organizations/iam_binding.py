@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,7 +18,7 @@ class IAMBinding(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  condition: Optional[pulumi.Input[pulumi.InputType['IAMBindingConditionArgs']]] = None,
-                 members: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -38,7 +38,7 @@ class IAMBinding(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] members: A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
         :param pulumi.Input[str] org_id: The numeric ID of the organization in which you want to create a custom role.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
@@ -84,7 +84,7 @@ class IAMBinding(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             condition: Optional[pulumi.Input[pulumi.InputType['IAMBindingConditionArgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
-            members: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
             role: Optional[pulumi.Input[str]] = None) -> 'IAMBinding':
         """
@@ -95,7 +95,7 @@ class IAMBinding(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] etag: (Computed) The etag of the organization's IAM policy.
-        :param pulumi.Input[List[pulumi.Input[str]]] members: A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
         :param pulumi.Input[str] org_id: The numeric ID of the organization in which you want to create a custom role.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
@@ -127,7 +127,7 @@ class IAMBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def members(self) -> pulumi.Output[List[str]]:
+    def members(self) -> pulumi.Output[Sequence[str]]:
         """
         A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
         """

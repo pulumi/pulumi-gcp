@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -46,7 +46,7 @@ class GetGroupMembershipsResult:
 
     @property
     @pulumi.getter
-    def memberships(self) -> List['outputs.GetGroupMembershipsMembershipResult']:
+    def memberships(self) -> Sequence['outputs.GetGroupMembershipsMembershipResult']:
         """
         The list of memberships under the given group. Structure is documented below.
         """

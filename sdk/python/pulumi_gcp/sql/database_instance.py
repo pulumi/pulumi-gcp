@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -146,7 +146,7 @@ class DatabaseInstance(pulumi.CustomResource):
             database_version: Optional[pulumi.Input[str]] = None,
             encryption_key_name: Optional[pulumi.Input[str]] = None,
             first_ip_address: Optional[pulumi.Input[str]] = None,
-            ip_addresses: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DatabaseInstanceIpAddressArgs']]]]] = None,
+            ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseInstanceIpAddressArgs']]]]] = None,
             master_instance_name: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             private_ip_address: Optional[pulumi.Input[str]] = None,
@@ -276,7 +276,7 @@ class DatabaseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipAddresses")
-    def ip_addresses(self) -> pulumi.Output[List['outputs.DatabaseInstanceIpAddress']]:
+    def ip_addresses(self) -> pulumi.Output[Sequence['outputs.DatabaseInstanceIpAddress']]:
         return pulumi.get(self, "ip_addresses")
 
     @property

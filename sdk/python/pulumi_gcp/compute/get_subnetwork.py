@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -124,7 +124,7 @@ class GetSubnetworkResult:
 
     @property
     @pulumi.getter(name="secondaryIpRanges")
-    def secondary_ip_ranges(self) -> List['outputs.GetSubnetworkSecondaryIpRangeResult']:
+    def secondary_ip_ranges(self) -> Sequence['outputs.GetSubnetworkSecondaryIpRangeResult']:
         """
         An array of configurations for secondary IP ranges for
         VM instances contained in this subnetwork. Structure is documented below.

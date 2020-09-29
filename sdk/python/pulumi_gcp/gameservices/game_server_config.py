@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -20,11 +20,11 @@ class GameServerConfig(pulumi.CustomResource):
                  config_id: Optional[pulumi.Input[str]] = None,
                  deployment_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 fleet_configs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['GameServerConfigFleetConfigArgs']]]]] = None,
+                 fleet_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GameServerConfigFleetConfigArgs']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 scaling_configs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['GameServerConfigScalingConfigArgs']]]]] = None,
+                 scaling_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GameServerConfigScalingConfigArgs']]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -44,14 +44,14 @@ class GameServerConfig(pulumi.CustomResource):
         :param pulumi.Input[str] config_id: A unique id for the deployment config.
         :param pulumi.Input[str] deployment_id: A unique id for the deployment.
         :param pulumi.Input[str] description: The description of the game server config.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['GameServerConfigFleetConfigArgs']]]] fleet_configs: The fleet config contains list of fleet specs. In the Single Cloud, there
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GameServerConfigFleetConfigArgs']]]] fleet_configs: The fleet config contains list of fleet specs. In the Single Cloud, there
                will be only one.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels to group by.
         :param pulumi.Input[str] location: Location of the Deployment.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['GameServerConfigScalingConfigArgs']]]] scaling_configs: Optional. This contains the autoscaling settings.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GameServerConfigScalingConfigArgs']]]] scaling_configs: Optional. This contains the autoscaling settings.
                Structure is documented below.
         """
         if __name__ is not None:
@@ -99,12 +99,12 @@ class GameServerConfig(pulumi.CustomResource):
             config_id: Optional[pulumi.Input[str]] = None,
             deployment_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            fleet_configs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['GameServerConfigFleetConfigArgs']]]]] = None,
+            fleet_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GameServerConfigFleetConfigArgs']]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            scaling_configs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['GameServerConfigScalingConfigArgs']]]]] = None) -> 'GameServerConfig':
+            scaling_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GameServerConfigScalingConfigArgs']]]]] = None) -> 'GameServerConfig':
         """
         Get an existing GameServerConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -115,7 +115,7 @@ class GameServerConfig(pulumi.CustomResource):
         :param pulumi.Input[str] config_id: A unique id for the deployment config.
         :param pulumi.Input[str] deployment_id: A unique id for the deployment.
         :param pulumi.Input[str] description: The description of the game server config.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['GameServerConfigFleetConfigArgs']]]] fleet_configs: The fleet config contains list of fleet specs. In the Single Cloud, there
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GameServerConfigFleetConfigArgs']]]] fleet_configs: The fleet config contains list of fleet specs. In the Single Cloud, there
                will be only one.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels to group by.
@@ -123,7 +123,7 @@ class GameServerConfig(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the ScalingConfig
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['GameServerConfigScalingConfigArgs']]]] scaling_configs: Optional. This contains the autoscaling settings.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GameServerConfigScalingConfigArgs']]]] scaling_configs: Optional. This contains the autoscaling settings.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -167,7 +167,7 @@ class GameServerConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="fleetConfigs")
-    def fleet_configs(self) -> pulumi.Output[List['outputs.GameServerConfigFleetConfig']]:
+    def fleet_configs(self) -> pulumi.Output[Sequence['outputs.GameServerConfigFleetConfig']]:
         """
         The fleet config contains list of fleet specs. In the Single Cloud, there
         will be only one.
@@ -210,7 +210,7 @@ class GameServerConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="scalingConfigs")
-    def scaling_configs(self) -> pulumi.Output[Optional[List['outputs.GameServerConfigScalingConfig']]]:
+    def scaling_configs(self) -> pulumi.Output[Optional[Sequence['outputs.GameServerConfigScalingConfig']]]:
         """
         Optional. This contains the autoscaling settings.
         Structure is documented below.

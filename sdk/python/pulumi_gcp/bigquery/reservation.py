@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['Reservation']
@@ -19,7 +19,7 @@ class Reservation(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 slot_capacity: Optional[pulumi.Input[float]] = None,
+                 slot_capacity: Optional[pulumi.Input[int]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -44,7 +44,7 @@ class Reservation(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the reservation. This field must only contain alphanumeric characters or dash.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[float] slot_capacity: Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
+        :param pulumi.Input[int] slot_capacity: Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
                unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
         """
         if __name__ is not None:
@@ -85,7 +85,7 @@ class Reservation(pulumi.CustomResource):
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            slot_capacity: Optional[pulumi.Input[float]] = None) -> 'Reservation':
+            slot_capacity: Optional[pulumi.Input[int]] = None) -> 'Reservation':
         """
         Get an existing Reservation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -101,7 +101,7 @@ class Reservation(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the reservation. This field must only contain alphanumeric characters or dash.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[float] slot_capacity: Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
+        :param pulumi.Input[int] slot_capacity: Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
                unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -153,7 +153,7 @@ class Reservation(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="slotCapacity")
-    def slot_capacity(self) -> pulumi.Output[float]:
+    def slot_capacity(self) -> pulumi.Output[int]:
         """
         Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
         unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.

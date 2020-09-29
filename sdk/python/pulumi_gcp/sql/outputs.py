@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -71,10 +71,10 @@ class DatabaseInstanceReplicaConfiguration(dict):
                  ca_certificate: Optional[str] = None,
                  client_certificate: Optional[str] = None,
                  client_key: Optional[str] = None,
-                 connect_retry_interval: Optional[float] = None,
+                 connect_retry_interval: Optional[int] = None,
                  dump_file_path: Optional[str] = None,
                  failover_target: Optional[bool] = None,
-                 master_heartbeat_period: Optional[float] = None,
+                 master_heartbeat_period: Optional[int] = None,
                  password: Optional[str] = None,
                  ssl_cipher: Optional[str] = None,
                  username: Optional[str] = None,
@@ -86,7 +86,7 @@ class DatabaseInstanceReplicaConfiguration(dict):
                certificate.
         :param str client_key: PEM representation of the slave's private key. The
                corresponding public key in encoded in the `client_certificate`.
-        :param float connect_retry_interval: The number of seconds
+        :param int connect_retry_interval: The number of seconds
                between connect retries.
         :param str dump_file_path: Path to a SQL file in GCS from which slave
                instances are created. Format is `gs://bucket/filename`.
@@ -94,7 +94,7 @@ class DatabaseInstanceReplicaConfiguration(dict):
                If the field is set to true the replica will be designated as a failover replica.
                If the master instance fails, the replica instance will be promoted as
                the new master instance.
-        :param float master_heartbeat_period: Time in ms between replication
+        :param int master_heartbeat_period: Time in ms between replication
                heartbeats.
         :param str password: Password for the replication connection.
         :param str username: Username for replication connection.
@@ -153,7 +153,7 @@ class DatabaseInstanceReplicaConfiguration(dict):
 
     @property
     @pulumi.getter(name="connectRetryInterval")
-    def connect_retry_interval(self) -> Optional[float]:
+    def connect_retry_interval(self) -> Optional[int]:
         """
         The number of seconds
         between connect retries.
@@ -182,7 +182,7 @@ class DatabaseInstanceReplicaConfiguration(dict):
 
     @property
     @pulumi.getter(name="masterHeartbeatPeriod")
-    def master_heartbeat_period(self) -> Optional[float]:
+    def master_heartbeat_period(self) -> Optional[int]:
         """
         Time in ms between replication
         heartbeats.
@@ -284,13 +284,13 @@ class DatabaseInstanceSettings(dict):
     def __init__(__self__, *,
                  tier: str,
                  activation_policy: Optional[str] = None,
-                 authorized_gae_applications: Optional[List[str]] = None,
+                 authorized_gae_applications: Optional[Sequence[str]] = None,
                  availability_type: Optional[str] = None,
                  backup_configuration: Optional['outputs.DatabaseInstanceSettingsBackupConfiguration'] = None,
                  crash_safe_replication: Optional[bool] = None,
-                 database_flags: Optional[List['outputs.DatabaseInstanceSettingsDatabaseFlag']] = None,
+                 database_flags: Optional[Sequence['outputs.DatabaseInstanceSettingsDatabaseFlag']] = None,
                  disk_autoresize: Optional[bool] = None,
-                 disk_size: Optional[float] = None,
+                 disk_size: Optional[int] = None,
                  disk_type: Optional[str] = None,
                  ip_configuration: Optional['outputs.DatabaseInstanceSettingsIpConfiguration'] = None,
                  location_preference: Optional['outputs.DatabaseInstanceSettingsLocationPreference'] = None,
@@ -298,14 +298,14 @@ class DatabaseInstanceSettings(dict):
                  pricing_plan: Optional[str] = None,
                  replication_type: Optional[str] = None,
                  user_labels: Optional[Mapping[str, str]] = None,
-                 version: Optional[float] = None):
+                 version: Optional[int] = None):
         """
         :param str tier: The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
                for more details and supported versions. Postgres supports only shared-core machine types such as `db-f1-micro`,
                and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
         :param str activation_policy: This specifies when the instance should be
                active. Can be either `ALWAYS`, `NEVER` or `ON_DEMAND`.
-        :param List[str] authorized_gae_applications: This property is only applicable to First Generation instances.
+        :param Sequence[str] authorized_gae_applications: This property is only applicable to First Generation instances.
                First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
                for information on how to upgrade to Second Generation instances.
                A list of Google App Engine (GAE) project names that are allowed to access this instance.
@@ -319,7 +319,7 @@ class DatabaseInstanceSettings(dict):
                Specific to read instances, indicates
                when crash-safe replication flags are enabled.
         :param bool disk_autoresize: Configuration to increase storage size automatically.  Note that future `pulumi apply` calls will attempt to resize the disk to the value specified in `disk_size` - if this is set, do not set `disk_size`.
-        :param float disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased.
+        :param int disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased.
         :param str disk_type: The type of data disk: PD_SSD or PD_HDD.
         :param str pricing_plan: Pricing plan for this instance, can only be `PER_USE`.
         :param str replication_type: This property is only applicable to First Generation instances.
@@ -383,7 +383,7 @@ class DatabaseInstanceSettings(dict):
 
     @property
     @pulumi.getter(name="authorizedGaeApplications")
-    def authorized_gae_applications(self) -> Optional[List[str]]:
+    def authorized_gae_applications(self) -> Optional[Sequence[str]]:
         """
         This property is only applicable to First Generation instances.
         First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
@@ -422,7 +422,7 @@ class DatabaseInstanceSettings(dict):
 
     @property
     @pulumi.getter(name="databaseFlags")
-    def database_flags(self) -> Optional[List['outputs.DatabaseInstanceSettingsDatabaseFlag']]:
+    def database_flags(self) -> Optional[Sequence['outputs.DatabaseInstanceSettingsDatabaseFlag']]:
         return pulumi.get(self, "database_flags")
 
     @property
@@ -435,7 +435,7 @@ class DatabaseInstanceSettings(dict):
 
     @property
     @pulumi.getter(name="diskSize")
-    def disk_size(self) -> Optional[float]:
+    def disk_size(self) -> Optional[int]:
         """
         The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased.
         """
@@ -493,7 +493,7 @@ class DatabaseInstanceSettings(dict):
 
     @property
     @pulumi.getter
-    def version(self) -> Optional[float]:
+    def version(self) -> Optional[int]:
         return pulumi.get(self, "version")
 
     def _translate_property(self, prop):
@@ -611,7 +611,7 @@ class DatabaseInstanceSettingsDatabaseFlag(dict):
 @pulumi.output_type
 class DatabaseInstanceSettingsIpConfiguration(dict):
     def __init__(__self__, *,
-                 authorized_networks: Optional[List['outputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork']] = None,
+                 authorized_networks: Optional[Sequence['outputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork']] = None,
                  ipv4_enabled: Optional[bool] = None,
                  private_network: Optional[str] = None,
                  require_ssl: Optional[bool] = None):
@@ -638,7 +638,7 @@ class DatabaseInstanceSettingsIpConfiguration(dict):
 
     @property
     @pulumi.getter(name="authorizedNetworks")
-    def authorized_networks(self) -> Optional[List['outputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork']]:
+    def authorized_networks(self) -> Optional[Sequence['outputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork']]:
         return pulumi.get(self, "authorized_networks")
 
     @property
@@ -768,12 +768,12 @@ class DatabaseInstanceSettingsLocationPreference(dict):
 @pulumi.output_type
 class DatabaseInstanceSettingsMaintenanceWindow(dict):
     def __init__(__self__, *,
-                 day: Optional[float] = None,
-                 hour: Optional[float] = None,
+                 day: Optional[int] = None,
+                 hour: Optional[int] = None,
                  update_track: Optional[str] = None):
         """
-        :param float day: Day of week (`1-7`), starting on Monday
-        :param float hour: Hour of day (`0-23`), ignored if `day` not set
+        :param int day: Day of week (`1-7`), starting on Monday
+        :param int hour: Hour of day (`0-23`), ignored if `day` not set
         :param str update_track: Receive updates earlier (`canary`) or later
                (`stable`)
         """
@@ -786,7 +786,7 @@ class DatabaseInstanceSettingsMaintenanceWindow(dict):
 
     @property
     @pulumi.getter
-    def day(self) -> Optional[float]:
+    def day(self) -> Optional[int]:
         """
         Day of week (`1-7`), starting on Monday
         """
@@ -794,7 +794,7 @@ class DatabaseInstanceSettingsMaintenanceWindow(dict):
 
     @property
     @pulumi.getter
-    def hour(self) -> Optional[float]:
+    def hour(self) -> Optional[int]:
         """
         Hour of day (`0-23`), ignored if `day` not set
         """
@@ -907,10 +907,10 @@ class GetDatabaseInstanceReplicaConfigurationResult(dict):
                  ca_certificate: str,
                  client_certificate: str,
                  client_key: str,
-                 connect_retry_interval: float,
+                 connect_retry_interval: int,
                  dump_file_path: str,
                  failover_target: bool,
-                 master_heartbeat_period: float,
+                 master_heartbeat_period: int,
                  password: str,
                  ssl_cipher: str,
                  username: str,
@@ -919,10 +919,10 @@ class GetDatabaseInstanceReplicaConfigurationResult(dict):
         :param str ca_certificate: PEM representation of the trusted CA's x509 certificate.
         :param str client_certificate: PEM representation of the slave's x509 certificate.
         :param str client_key: PEM representation of the slave's private key.
-        :param float connect_retry_interval: The number of seconds between connect retries.
+        :param int connect_retry_interval: The number of seconds between connect retries.
         :param str dump_file_path: Path to a SQL file in GCS from which slave instances are created.
         :param bool failover_target: Specifies if the replica is the failover target.
-        :param float master_heartbeat_period: Time in ms between replication heartbeats.
+        :param int master_heartbeat_period: Time in ms between replication heartbeats.
         :param str password: Password for the replication connection.
         :param str username: Username for replication connection.
         :param bool verify_server_certificate: True if the master's common name value is checked during the SSL handshake.
@@ -965,7 +965,7 @@ class GetDatabaseInstanceReplicaConfigurationResult(dict):
 
     @property
     @pulumi.getter(name="connectRetryInterval")
-    def connect_retry_interval(self) -> float:
+    def connect_retry_interval(self) -> int:
         """
         The number of seconds between connect retries.
         """
@@ -989,7 +989,7 @@ class GetDatabaseInstanceReplicaConfigurationResult(dict):
 
     @property
     @pulumi.getter(name="masterHeartbeatPeriod")
-    def master_heartbeat_period(self) -> float:
+    def master_heartbeat_period(self) -> int:
         """
         Time in ms between replication heartbeats.
         """
@@ -1077,26 +1077,26 @@ class GetDatabaseInstanceServerCaCertResult(dict):
 class GetDatabaseInstanceSettingResult(dict):
     def __init__(__self__, *,
                  activation_policy: str,
-                 authorized_gae_applications: List[str],
+                 authorized_gae_applications: Sequence[str],
                  availability_type: str,
-                 backup_configurations: List['outputs.GetDatabaseInstanceSettingBackupConfigurationResult'],
+                 backup_configurations: Sequence['outputs.GetDatabaseInstanceSettingBackupConfigurationResult'],
                  crash_safe_replication: bool,
-                 database_flags: List['outputs.GetDatabaseInstanceSettingDatabaseFlagResult'],
+                 database_flags: Sequence['outputs.GetDatabaseInstanceSettingDatabaseFlagResult'],
                  disk_autoresize: bool,
-                 disk_size: float,
+                 disk_size: int,
                  disk_type: str,
-                 ip_configurations: List['outputs.GetDatabaseInstanceSettingIpConfigurationResult'],
-                 location_preferences: List['outputs.GetDatabaseInstanceSettingLocationPreferenceResult'],
-                 maintenance_windows: List['outputs.GetDatabaseInstanceSettingMaintenanceWindowResult'],
+                 ip_configurations: Sequence['outputs.GetDatabaseInstanceSettingIpConfigurationResult'],
+                 location_preferences: Sequence['outputs.GetDatabaseInstanceSettingLocationPreferenceResult'],
+                 maintenance_windows: Sequence['outputs.GetDatabaseInstanceSettingMaintenanceWindowResult'],
                  pricing_plan: str,
                  replication_type: str,
                  tier: str,
                  user_labels: Mapping[str, str],
-                 version: float):
+                 version: int):
         """
         :param str activation_policy: This specifies when the instance should be
                active. Can be either `ALWAYS`, `NEVER` or `ON_DEMAND`.
-        :param List[str] authorized_gae_applications: (Deprecated) This property is only applicable to First Generation instances.
+        :param Sequence[str] authorized_gae_applications: (Deprecated) This property is only applicable to First Generation instances.
                First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
                for information on how to upgrade to Second Generation instances.
                A list of Google App Engine (GAE) project names that are allowed to access this instance.
@@ -1105,7 +1105,7 @@ class GetDatabaseInstanceSettingResult(dict):
         :param bool crash_safe_replication: (Deprecated) This property is only applicable to First Generation instances.
                First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
         :param bool disk_autoresize: Configuration to increase storage size automatically.
-        :param float disk_size: The size of data disk, in GB.
+        :param int disk_size: The size of data disk, in GB.
         :param str disk_type: The type of data disk.
         :param str pricing_plan: Pricing plan for this instance.
         :param str replication_type: This property is only applicable to First Generation instances.
@@ -1142,7 +1142,7 @@ class GetDatabaseInstanceSettingResult(dict):
 
     @property
     @pulumi.getter(name="authorizedGaeApplications")
-    def authorized_gae_applications(self) -> List[str]:
+    def authorized_gae_applications(self) -> Sequence[str]:
         """
         (Deprecated) This property is only applicable to First Generation instances.
         First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
@@ -1162,7 +1162,7 @@ class GetDatabaseInstanceSettingResult(dict):
 
     @property
     @pulumi.getter(name="backupConfigurations")
-    def backup_configurations(self) -> List['outputs.GetDatabaseInstanceSettingBackupConfigurationResult']:
+    def backup_configurations(self) -> Sequence['outputs.GetDatabaseInstanceSettingBackupConfigurationResult']:
         return pulumi.get(self, "backup_configurations")
 
     @property
@@ -1176,7 +1176,7 @@ class GetDatabaseInstanceSettingResult(dict):
 
     @property
     @pulumi.getter(name="databaseFlags")
-    def database_flags(self) -> List['outputs.GetDatabaseInstanceSettingDatabaseFlagResult']:
+    def database_flags(self) -> Sequence['outputs.GetDatabaseInstanceSettingDatabaseFlagResult']:
         return pulumi.get(self, "database_flags")
 
     @property
@@ -1189,7 +1189,7 @@ class GetDatabaseInstanceSettingResult(dict):
 
     @property
     @pulumi.getter(name="diskSize")
-    def disk_size(self) -> float:
+    def disk_size(self) -> int:
         """
         The size of data disk, in GB.
         """
@@ -1205,17 +1205,17 @@ class GetDatabaseInstanceSettingResult(dict):
 
     @property
     @pulumi.getter(name="ipConfigurations")
-    def ip_configurations(self) -> List['outputs.GetDatabaseInstanceSettingIpConfigurationResult']:
+    def ip_configurations(self) -> Sequence['outputs.GetDatabaseInstanceSettingIpConfigurationResult']:
         return pulumi.get(self, "ip_configurations")
 
     @property
     @pulumi.getter(name="locationPreferences")
-    def location_preferences(self) -> List['outputs.GetDatabaseInstanceSettingLocationPreferenceResult']:
+    def location_preferences(self) -> Sequence['outputs.GetDatabaseInstanceSettingLocationPreferenceResult']:
         return pulumi.get(self, "location_preferences")
 
     @property
     @pulumi.getter(name="maintenanceWindows")
-    def maintenance_windows(self) -> List['outputs.GetDatabaseInstanceSettingMaintenanceWindowResult']:
+    def maintenance_windows(self) -> Sequence['outputs.GetDatabaseInstanceSettingMaintenanceWindowResult']:
         return pulumi.get(self, "maintenance_windows")
 
     @property
@@ -1253,7 +1253,7 @@ class GetDatabaseInstanceSettingResult(dict):
 
     @property
     @pulumi.getter
-    def version(self) -> float:
+    def version(self) -> int:
         return pulumi.get(self, "version")
 
 
@@ -1343,7 +1343,7 @@ class GetDatabaseInstanceSettingDatabaseFlagResult(dict):
 @pulumi.output_type
 class GetDatabaseInstanceSettingIpConfigurationResult(dict):
     def __init__(__self__, *,
-                 authorized_networks: List['outputs.GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkResult'],
+                 authorized_networks: Sequence['outputs.GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkResult'],
                  ipv4_enabled: bool,
                  private_network: str,
                  require_ssl: bool):
@@ -1359,7 +1359,7 @@ class GetDatabaseInstanceSettingIpConfigurationResult(dict):
 
     @property
     @pulumi.getter(name="authorizedNetworks")
-    def authorized_networks(self) -> List['outputs.GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkResult']:
+    def authorized_networks(self) -> Sequence['outputs.GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkResult']:
         return pulumi.get(self, "authorized_networks")
 
     @property
@@ -1461,12 +1461,12 @@ class GetDatabaseInstanceSettingLocationPreferenceResult(dict):
 @pulumi.output_type
 class GetDatabaseInstanceSettingMaintenanceWindowResult(dict):
     def __init__(__self__, *,
-                 day: float,
-                 hour: float,
+                 day: int,
+                 hour: int,
                  update_track: str):
         """
-        :param float day: Day of week (`1-7`), starting on Monday.
-        :param float hour: Hour of day (`0-23`), ignored if `day` not set.
+        :param int day: Day of week (`1-7`), starting on Monday.
+        :param int hour: Hour of day (`0-23`), ignored if `day` not set.
         :param str update_track: Receive updates earlier (`canary`) or later (`stable`).
         """
         pulumi.set(__self__, "day", day)
@@ -1475,7 +1475,7 @@ class GetDatabaseInstanceSettingMaintenanceWindowResult(dict):
 
     @property
     @pulumi.getter
-    def day(self) -> float:
+    def day(self) -> int:
         """
         Day of week (`1-7`), starting on Monday.
         """
@@ -1483,7 +1483,7 @@ class GetDatabaseInstanceSettingMaintenanceWindowResult(dict):
 
     @property
     @pulumi.getter
-    def hour(self) -> float:
+    def hour(self) -> int:
         """
         Hour of day (`0-23`), ignored if `day` not set.
         """

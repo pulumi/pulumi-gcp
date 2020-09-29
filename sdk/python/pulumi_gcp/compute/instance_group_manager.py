@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -21,13 +21,13 @@ class InstanceGroupManager(pulumi.CustomResource):
                  base_instance_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 named_ports: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceGroupManagerNamedPortArgs']]]]] = None,
+                 named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerNamedPortArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 stateful_disks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceGroupManagerStatefulDiskArgs']]]]] = None,
-                 target_pools: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 target_size: Optional[pulumi.Input[float]] = None,
+                 stateful_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerStatefulDiskArgs']]]]] = None,
+                 target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 target_size: Optional[pulumi.Input[int]] = None,
                  update_policy: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerUpdatePolicyArgs']]] = None,
-                 versions: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceGroupManagerVersionArgs']]]]] = None,
+                 versions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerVersionArgs']]]]] = None,
                  wait_for_instances: Optional[pulumi.Input[bool]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -56,17 +56,17 @@ class InstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[str] description: An optional textual description of the instance
                group manager.
         :param pulumi.Input[str] name: - Version name.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceGroupManagerNamedPortArgs']]]] named_ports: The named port configuration. See the section below
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerNamedPortArgs']]]] named_ports: The named port configuration. See the section below
                for details on configuration.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceGroupManagerStatefulDiskArgs']]]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
-        :param pulumi.Input[List[pulumi.Input[str]]] target_pools: The full URL of all target pools to which new
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerStatefulDiskArgs']]]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_pools: The full URL of all target pools to which new
                instances in the group are added. Updating the target pools attribute does
                not affect existing instances.
-        :param pulumi.Input[float] target_size: - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+        :param pulumi.Input[int] target_size: - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
         :param pulumi.Input[pulumi.InputType['InstanceGroupManagerUpdatePolicyArgs']] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceGroupManagerVersionArgs']]]] versions: Application versions managed by this instance group. Each
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerVersionArgs']]]] versions: Application versions managed by this instance group. Each
                version deals with a specific instance template, allowing canary release scenarios.
                Structure is documented below.
         :param pulumi.Input[bool] wait_for_instances: Whether to wait for all instances to be created/updated before
@@ -129,15 +129,15 @@ class InstanceGroupManager(pulumi.CustomResource):
             fingerprint: Optional[pulumi.Input[str]] = None,
             instance_group: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            named_ports: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceGroupManagerNamedPortArgs']]]]] = None,
+            named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerNamedPortArgs']]]]] = None,
             operation: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
-            stateful_disks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceGroupManagerStatefulDiskArgs']]]]] = None,
-            target_pools: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            target_size: Optional[pulumi.Input[float]] = None,
+            stateful_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerStatefulDiskArgs']]]]] = None,
+            target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            target_size: Optional[pulumi.Input[int]] = None,
             update_policy: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerUpdatePolicyArgs']]] = None,
-            versions: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceGroupManagerVersionArgs']]]]] = None,
+            versions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerVersionArgs']]]]] = None,
             wait_for_instances: Optional[pulumi.Input[bool]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'InstanceGroupManager':
         """
@@ -160,18 +160,18 @@ class InstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[str] fingerprint: The fingerprint of the instance group manager.
         :param pulumi.Input[str] instance_group: The full URL of the instance group created by the manager.
         :param pulumi.Input[str] name: - Version name.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceGroupManagerNamedPortArgs']]]] named_ports: The named port configuration. See the section below
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerNamedPortArgs']]]] named_ports: The named port configuration. See the section below
                for details on configuration.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URL of the created resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceGroupManagerStatefulDiskArgs']]]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
-        :param pulumi.Input[List[pulumi.Input[str]]] target_pools: The full URL of all target pools to which new
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerStatefulDiskArgs']]]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_pools: The full URL of all target pools to which new
                instances in the group are added. Updating the target pools attribute does
                not affect existing instances.
-        :param pulumi.Input[float] target_size: - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+        :param pulumi.Input[int] target_size: - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
         :param pulumi.Input[pulumi.InputType['InstanceGroupManagerUpdatePolicyArgs']] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceGroupManagerVersionArgs']]]] versions: Application versions managed by this instance group. Each
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerVersionArgs']]]] versions: Application versions managed by this instance group. Each
                version deals with a specific instance template, allowing canary release scenarios.
                Structure is documented below.
         :param pulumi.Input[bool] wait_for_instances: Whether to wait for all instances to be created/updated before
@@ -260,7 +260,7 @@ class InstanceGroupManager(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="namedPorts")
-    def named_ports(self) -> pulumi.Output[Optional[List['outputs.InstanceGroupManagerNamedPort']]]:
+    def named_ports(self) -> pulumi.Output[Optional[Sequence['outputs.InstanceGroupManagerNamedPort']]]:
         """
         The named port configuration. See the section below
         for details on configuration.
@@ -291,7 +291,7 @@ class InstanceGroupManager(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="statefulDisks")
-    def stateful_disks(self) -> pulumi.Output[Optional[List['outputs.InstanceGroupManagerStatefulDisk']]]:
+    def stateful_disks(self) -> pulumi.Output[Optional[Sequence['outputs.InstanceGroupManagerStatefulDisk']]]:
         """
         Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
         """
@@ -299,7 +299,7 @@ class InstanceGroupManager(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="targetPools")
-    def target_pools(self) -> pulumi.Output[Optional[List[str]]]:
+    def target_pools(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The full URL of all target pools to which new
         instances in the group are added. Updating the target pools attribute does
@@ -309,7 +309,7 @@ class InstanceGroupManager(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="targetSize")
-    def target_size(self) -> pulumi.Output[float]:
+    def target_size(self) -> pulumi.Output[int]:
         """
         - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
         """
@@ -325,7 +325,7 @@ class InstanceGroupManager(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def versions(self) -> pulumi.Output[List['outputs.InstanceGroupManagerVersion']]:
+    def versions(self) -> pulumi.Output[Sequence['outputs.InstanceGroupManagerVersion']]:
         """
         Application versions managed by this instance group. Each
         version deals with a specific instance template, allowing canary release scenarios.

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -19,7 +19,7 @@ class Repository(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 pubsub_configs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['RepositoryPubsubConfigArgs']]]]] = None,
+                 pubsub_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepositoryPubsubConfigArgs']]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -40,7 +40,7 @@ class Repository(pulumi.CustomResource):
                The repo name may contain slashes. eg, `name/with/slash`
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['RepositoryPubsubConfigArgs']]]] pubsub_configs: How this repository publishes a change in the repository through Cloud Pub/Sub.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepositoryPubsubConfigArgs']]]] pubsub_configs: How this repository publishes a change in the repository through Cloud Pub/Sub.
                Keyed by the topic names.
                Structure is documented below.
         """
@@ -78,8 +78,8 @@ class Repository(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            pubsub_configs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['RepositoryPubsubConfigArgs']]]]] = None,
-            size: Optional[pulumi.Input[float]] = None,
+            pubsub_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepositoryPubsubConfigArgs']]]]] = None,
+            size: Optional[pulumi.Input[int]] = None,
             url: Optional[pulumi.Input[str]] = None) -> 'Repository':
         """
         Get an existing Repository resource's state with the given name, id, and optional extra
@@ -92,10 +92,10 @@ class Repository(pulumi.CustomResource):
                The repo name may contain slashes. eg, `name/with/slash`
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['RepositoryPubsubConfigArgs']]]] pubsub_configs: How this repository publishes a change in the repository through Cloud Pub/Sub.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepositoryPubsubConfigArgs']]]] pubsub_configs: How this repository publishes a change in the repository through Cloud Pub/Sub.
                Keyed by the topic names.
                Structure is documented below.
-        :param pulumi.Input[float] size: The disk usage of the repo, in bytes.
+        :param pulumi.Input[int] size: The disk usage of the repo, in bytes.
         :param pulumi.Input[str] url: URL to clone the repository from Google Cloud Source Repositories.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -129,7 +129,7 @@ class Repository(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pubsubConfigs")
-    def pubsub_configs(self) -> pulumi.Output[Optional[List['outputs.RepositoryPubsubConfig']]]:
+    def pubsub_configs(self) -> pulumi.Output[Optional[Sequence['outputs.RepositoryPubsubConfig']]]:
         """
         How this repository publishes a change in the repository through Cloud Pub/Sub.
         Keyed by the topic names.
@@ -139,7 +139,7 @@ class Repository(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def size(self) -> pulumi.Output[float]:
+    def size(self) -> pulumi.Output[int]:
         """
         The disk usage of the repo, in bytes.
         """

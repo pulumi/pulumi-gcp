@@ -24,6 +24,9 @@ namespace Pulumi.Gcp.Storage.Inputs
         [Input("createdBefore")]
         public Input<string>? CreatedBefore { get; set; }
 
+        [Input("isLive")]
+        public Input<bool>? IsLive { get; set; }
+
         [Input("matchesStorageClasses")]
         private InputList<string>? _matchesStorageClasses;
 

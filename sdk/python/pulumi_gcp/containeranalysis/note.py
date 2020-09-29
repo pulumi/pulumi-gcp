@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -22,8 +22,8 @@ class Note(pulumi.CustomResource):
                  long_description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 related_note_names: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 related_urls: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['NoteRelatedUrlArgs']]]]] = None,
+                 related_note_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 related_urls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NoteRelatedUrlArgs']]]]] = None,
                  short_description: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -58,8 +58,8 @@ class Note(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the note.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[List[pulumi.Input[str]]] related_note_names: Names of other notes related to this note.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['NoteRelatedUrlArgs']]]] related_urls: URLs associated with this note and related metadata.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] related_note_names: Names of other notes related to this note.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NoteRelatedUrlArgs']]]] related_urls: URLs associated with this note and related metadata.
                Structure is documented below.
         :param pulumi.Input[str] short_description: A one sentence description of the note.
         """
@@ -110,8 +110,8 @@ class Note(pulumi.CustomResource):
             long_description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            related_note_names: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            related_urls: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['NoteRelatedUrlArgs']]]]] = None,
+            related_note_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            related_urls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NoteRelatedUrlArgs']]]]] = None,
             short_description: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Note':
         """
@@ -138,8 +138,8 @@ class Note(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the note.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[List[pulumi.Input[str]]] related_note_names: Names of other notes related to this note.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['NoteRelatedUrlArgs']]]] related_urls: URLs associated with this note and related metadata.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] related_note_names: Names of other notes related to this note.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NoteRelatedUrlArgs']]]] related_urls: URLs associated with this note and related metadata.
                Structure is documented below.
         :param pulumi.Input[str] short_description: A one sentence description of the note.
         :param pulumi.Input[str] update_time: The time this note was last updated.
@@ -229,7 +229,7 @@ class Note(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="relatedNoteNames")
-    def related_note_names(self) -> pulumi.Output[Optional[List[str]]]:
+    def related_note_names(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         Names of other notes related to this note.
         """
@@ -237,7 +237,7 @@ class Note(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="relatedUrls")
-    def related_urls(self) -> pulumi.Output[Optional[List['outputs.NoteRelatedUrl']]]:
+    def related_urls(self) -> pulumi.Output[Optional[Sequence['outputs.NoteRelatedUrl']]]:
         """
         URLs associated with this note and related metadata.
         Structure is documented below.

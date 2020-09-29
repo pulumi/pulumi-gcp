@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -26,7 +26,7 @@ __all__ = [
 class SubscriptionDeadLetterPolicy(dict):
     def __init__(__self__, *,
                  dead_letter_topic: Optional[str] = None,
-                 max_delivery_attempts: Optional[float] = None):
+                 max_delivery_attempts: Optional[int] = None):
         """
         :param str dead_letter_topic: The name of the topic to which dead letter messages should be published.
                Format is `projects/{project}/topics/{topic}`.
@@ -37,7 +37,7 @@ class SubscriptionDeadLetterPolicy(dict):
                The operation will fail if the topic does not exist.
                Users should ensure that there is a subscription attached to this topic
                since messages published to a topic with no subscriptions are lost.
-        :param float max_delivery_attempts: The maximum number of delivery attempts for any message. The value must be
+        :param int max_delivery_attempts: The maximum number of delivery attempts for any message. The value must be
                between 5 and 100.
                The number of delivery attempts is defined as 1 + (the sum of number of
                NACKs and number of times the acknowledgement deadline has been exceeded for the message).
@@ -69,7 +69,7 @@ class SubscriptionDeadLetterPolicy(dict):
 
     @property
     @pulumi.getter(name="maxDeliveryAttempts")
-    def max_delivery_attempts(self) -> Optional[float]:
+    def max_delivery_attempts(self) -> Optional[int]:
         """
         The maximum number of delivery attempts for any message. The value must be
         between 5 and 100.
@@ -412,9 +412,9 @@ class TopicIAMMemberCondition(dict):
 @pulumi.output_type
 class TopicMessageStoragePolicy(dict):
     def __init__(__self__, *,
-                 allowed_persistence_regions: List[str]):
+                 allowed_persistence_regions: Sequence[str]):
         """
-        :param List[str] allowed_persistence_regions: A list of IDs of GCP regions where messages that are published to
+        :param Sequence[str] allowed_persistence_regions: A list of IDs of GCP regions where messages that are published to
                the topic may be persisted in storage. Messages published by
                publishers running in non-allowed GCP regions (or running outside
                of GCP altogether) will be routed for storage in one of the
@@ -425,7 +425,7 @@ class TopicMessageStoragePolicy(dict):
 
     @property
     @pulumi.getter(name="allowedPersistenceRegions")
-    def allowed_persistence_regions(self) -> List[str]:
+    def allowed_persistence_regions(self) -> Sequence[str]:
         """
         A list of IDs of GCP regions where messages that are published to
         the topic may be persisted in storage. Messages published by

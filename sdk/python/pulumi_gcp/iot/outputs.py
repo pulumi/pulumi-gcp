@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -204,9 +204,9 @@ class DeviceGatewayConfig(dict):
 @pulumi.output_type
 class DeviceLastErrorStatus(dict):
     def __init__(__self__, *,
-                 details: Optional[List[Mapping[str, Any]]] = None,
+                 details: Optional[Sequence[Mapping[str, Any]]] = None,
                  message: Optional[str] = None,
-                 number: Optional[float] = None):
+                 number: Optional[int] = None):
         if details is not None:
             pulumi.set(__self__, "details", details)
         if message is not None:
@@ -216,7 +216,7 @@ class DeviceLastErrorStatus(dict):
 
     @property
     @pulumi.getter
-    def details(self) -> Optional[List[Mapping[str, Any]]]:
+    def details(self) -> Optional[Sequence[Mapping[str, Any]]]:
         return pulumi.get(self, "details")
 
     @property
@@ -226,7 +226,7 @@ class DeviceLastErrorStatus(dict):
 
     @property
     @pulumi.getter
-    def number(self) -> Optional[float]:
+    def number(self) -> Optional[int]:
         return pulumi.get(self, "number")
 
     def _translate_property(self, prop):

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -47,7 +47,7 @@ class GetCaCertsResult:
 
     @property
     @pulumi.getter
-    def certs(self) -> List['outputs.GetCaCertsCertResult']:
+    def certs(self) -> Sequence['outputs.GetCaCertsCertResult']:
         """
         A list of server CA certificates for the instance. Each contains:
         """

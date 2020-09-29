@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -23,10 +23,10 @@ class StandardAppVersion(pulumi.CustomResource):
                  deployment: Optional[pulumi.Input[pulumi.InputType['StandardAppVersionDeploymentArgs']]] = None,
                  entrypoint: Optional[pulumi.Input[pulumi.InputType['StandardAppVersionEntrypointArgs']]] = None,
                  env_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 handlers: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['StandardAppVersionHandlerArgs']]]]] = None,
-                 inbound_services: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StandardAppVersionHandlerArgs']]]]] = None,
+                 inbound_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  instance_class: Optional[pulumi.Input[str]] = None,
-                 libraries: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['StandardAppVersionLibraryArgs']]]]] = None,
+                 libraries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StandardAppVersionLibraryArgs']]]]] = None,
                  manual_scaling: Optional[pulumi.Input[pulumi.InputType['StandardAppVersionManualScalingArgs']]] = None,
                  noop_on_destroy: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -65,16 +65,16 @@ class StandardAppVersion(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['StandardAppVersionEntrypointArgs']] entrypoint: The entrypoint for the application.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] env_variables: Environment variables available to the application.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['StandardAppVersionHandlerArgs']]]] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StandardAppVersionHandlerArgs']]]] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests.
                The first matching URL handles the request and other request handlers are not attempted.
                Structure is documented below.
-        :param pulumi.Input[List[pulumi.Input[str]]] inbound_services: A list of the types of messages that this application is able to receive.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] inbound_services: A list of the types of messages that this application is able to receive.
                Each value may be one of `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, and `INBOUND_SERVICE_WARMUP`.
         :param pulumi.Input[str] instance_class: Instance class that is used to run this version. Valid values are
                AutomaticScaling: F1, F2, F4, F4_1G
                BasicScaling or ManualScaling: B1, B2, B4, B4_1G, B8
                Defaults to F1 for AutomaticScaling and B2 for ManualScaling and BasicScaling. If no scaling is specified, AutomaticScaling is chosen.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['StandardAppVersionLibraryArgs']]]] libraries: Configuration for third-party Python runtime libraries that are required by the application.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StandardAppVersionLibraryArgs']]]] libraries: Configuration for third-party Python runtime libraries that are required by the application.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['StandardAppVersionManualScalingArgs']] manual_scaling: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
                Structure is documented below.
@@ -149,10 +149,10 @@ class StandardAppVersion(pulumi.CustomResource):
             deployment: Optional[pulumi.Input[pulumi.InputType['StandardAppVersionDeploymentArgs']]] = None,
             entrypoint: Optional[pulumi.Input[pulumi.InputType['StandardAppVersionEntrypointArgs']]] = None,
             env_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            handlers: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['StandardAppVersionHandlerArgs']]]]] = None,
-            inbound_services: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StandardAppVersionHandlerArgs']]]]] = None,
+            inbound_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             instance_class: Optional[pulumi.Input[str]] = None,
-            libraries: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['StandardAppVersionLibraryArgs']]]]] = None,
+            libraries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StandardAppVersionLibraryArgs']]]]] = None,
             manual_scaling: Optional[pulumi.Input[pulumi.InputType['StandardAppVersionManualScalingArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             noop_on_destroy: Optional[pulumi.Input[bool]] = None,
@@ -180,16 +180,16 @@ class StandardAppVersion(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['StandardAppVersionEntrypointArgs']] entrypoint: The entrypoint for the application.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] env_variables: Environment variables available to the application.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['StandardAppVersionHandlerArgs']]]] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StandardAppVersionHandlerArgs']]]] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests.
                The first matching URL handles the request and other request handlers are not attempted.
                Structure is documented below.
-        :param pulumi.Input[List[pulumi.Input[str]]] inbound_services: A list of the types of messages that this application is able to receive.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] inbound_services: A list of the types of messages that this application is able to receive.
                Each value may be one of `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, and `INBOUND_SERVICE_WARMUP`.
         :param pulumi.Input[str] instance_class: Instance class that is used to run this version. Valid values are
                AutomaticScaling: F1, F2, F4, F4_1G
                BasicScaling or ManualScaling: B1, B2, B4, B4_1G, B8
                Defaults to F1 for AutomaticScaling and B2 for ManualScaling and BasicScaling. If no scaling is specified, AutomaticScaling is chosen.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['StandardAppVersionLibraryArgs']]]] libraries: Configuration for third-party Python runtime libraries that are required by the application.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StandardAppVersionLibraryArgs']]]] libraries: Configuration for third-party Python runtime libraries that are required by the application.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['StandardAppVersionManualScalingArgs']] manual_scaling: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
                Structure is documented below.
@@ -286,7 +286,7 @@ class StandardAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def handlers(self) -> pulumi.Output[List['outputs.StandardAppVersionHandler']]:
+    def handlers(self) -> pulumi.Output[Sequence['outputs.StandardAppVersionHandler']]:
         """
         An ordered list of URL-matching patterns that should be applied to incoming requests.
         The first matching URL handles the request and other request handlers are not attempted.
@@ -296,7 +296,7 @@ class StandardAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="inboundServices")
-    def inbound_services(self) -> pulumi.Output[Optional[List[str]]]:
+    def inbound_services(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         A list of the types of messages that this application is able to receive.
         Each value may be one of `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, and `INBOUND_SERVICE_WARMUP`.
@@ -316,7 +316,7 @@ class StandardAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def libraries(self) -> pulumi.Output[Optional[List['outputs.StandardAppVersionLibrary']]]:
+    def libraries(self) -> pulumi.Output[Optional[Sequence['outputs.StandardAppVersionLibrary']]]:
         """
         Configuration for third-party Python runtime libraries that are required by the application.
         Structure is documented below.

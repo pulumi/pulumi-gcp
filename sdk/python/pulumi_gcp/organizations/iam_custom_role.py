@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['IAMCustomRole']
@@ -17,7 +17,7 @@ class IAMCustomRole(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
-                 permissions: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  role_id: Optional[pulumi.Input[str]] = None,
                  stage: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None,
@@ -41,7 +41,7 @@ class IAMCustomRole(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A human-readable description for the role.
         :param pulumi.Input[str] org_id: The numeric ID of the organization in which you want to create a custom role.
-        :param pulumi.Input[List[pulumi.Input[str]]] permissions: The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
         :param pulumi.Input[str] role_id: The role id to use for this role.
         :param pulumi.Input[str] stage: The current launch stage of the role.
                Defaults to `GA`.
@@ -95,7 +95,7 @@ class IAMCustomRole(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
-            permissions: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             role_id: Optional[pulumi.Input[str]] = None,
             stage: Optional[pulumi.Input[str]] = None,
             title: Optional[pulumi.Input[str]] = None) -> 'IAMCustomRole':
@@ -110,7 +110,7 @@ class IAMCustomRole(pulumi.CustomResource):
         :param pulumi.Input[str] description: A human-readable description for the role.
         :param pulumi.Input[str] name: The name of the role in the format `organizations/{{org_id}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
         :param pulumi.Input[str] org_id: The numeric ID of the organization in which you want to create a custom role.
-        :param pulumi.Input[List[pulumi.Input[str]]] permissions: The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
         :param pulumi.Input[str] role_id: The role id to use for this role.
         :param pulumi.Input[str] stage: The current launch stage of the role.
                Defaults to `GA`.
@@ -165,7 +165,7 @@ class IAMCustomRole(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def permissions(self) -> pulumi.Output[List[str]]:
+    def permissions(self) -> pulumi.Output[Sequence[str]]:
         """
         The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
         """

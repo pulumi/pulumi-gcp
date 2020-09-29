@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -72,7 +72,7 @@ class GetBillingAccountResult:
 
     @property
     @pulumi.getter(name="projectIds")
-    def project_ids(self) -> List[str]:
+    def project_ids(self) -> Sequence[str]:
         """
         The IDs of any projects associated with the billing account.
         """

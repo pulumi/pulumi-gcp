@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -145,22 +145,22 @@ class MetricBucketOptionsArgs:
 @pulumi.input_type
 class MetricBucketOptionsExplicitBucketsArgs:
     def __init__(__self__, *,
-                 bounds: pulumi.Input[List[pulumi.Input[float]]]):
+                 bounds: pulumi.Input[Sequence[pulumi.Input[float]]]):
         """
-        :param pulumi.Input[List[pulumi.Input[float]]] bounds: The values must be monotonically increasing.
+        :param pulumi.Input[Sequence[pulumi.Input[float]]] bounds: The values must be monotonically increasing.
         """
         pulumi.set(__self__, "bounds", bounds)
 
     @property
     @pulumi.getter
-    def bounds(self) -> pulumi.Input[List[pulumi.Input[float]]]:
+    def bounds(self) -> pulumi.Input[Sequence[pulumi.Input[float]]]:
         """
         The values must be monotonically increasing.
         """
         return pulumi.get(self, "bounds")
 
     @bounds.setter
-    def bounds(self, value: pulumi.Input[List[pulumi.Input[float]]]):
+    def bounds(self, value: pulumi.Input[Sequence[pulumi.Input[float]]]):
         pulumi.set(self, "bounds", value)
 
 
@@ -168,11 +168,11 @@ class MetricBucketOptionsExplicitBucketsArgs:
 class MetricBucketOptionsExponentialBucketsArgs:
     def __init__(__self__, *,
                  growth_factor: Optional[pulumi.Input[float]] = None,
-                 num_finite_buckets: Optional[pulumi.Input[float]] = None,
+                 num_finite_buckets: Optional[pulumi.Input[int]] = None,
                  scale: Optional[pulumi.Input[float]] = None):
         """
         :param pulumi.Input[float] growth_factor: Must be greater than 1.
-        :param pulumi.Input[float] num_finite_buckets: Must be greater than 0.
+        :param pulumi.Input[int] num_finite_buckets: Must be greater than 0.
         :param pulumi.Input[float] scale: Must be greater than 0.
         """
         if growth_factor is not None:
@@ -196,14 +196,14 @@ class MetricBucketOptionsExponentialBucketsArgs:
 
     @property
     @pulumi.getter(name="numFiniteBuckets")
-    def num_finite_buckets(self) -> Optional[pulumi.Input[float]]:
+    def num_finite_buckets(self) -> Optional[pulumi.Input[int]]:
         """
         Must be greater than 0.
         """
         return pulumi.get(self, "num_finite_buckets")
 
     @num_finite_buckets.setter
-    def num_finite_buckets(self, value: Optional[pulumi.Input[float]]):
+    def num_finite_buckets(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "num_finite_buckets", value)
 
     @property
@@ -222,13 +222,13 @@ class MetricBucketOptionsExponentialBucketsArgs:
 @pulumi.input_type
 class MetricBucketOptionsLinearBucketsArgs:
     def __init__(__self__, *,
-                 num_finite_buckets: Optional[pulumi.Input[float]] = None,
+                 num_finite_buckets: Optional[pulumi.Input[int]] = None,
                  offset: Optional[pulumi.Input[float]] = None,
-                 width: Optional[pulumi.Input[float]] = None):
+                 width: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[float] num_finite_buckets: Must be greater than 0.
+        :param pulumi.Input[int] num_finite_buckets: Must be greater than 0.
         :param pulumi.Input[float] offset: Lower bound of the first bucket.
-        :param pulumi.Input[float] width: Must be greater than 0.
+        :param pulumi.Input[int] width: Must be greater than 0.
         """
         if num_finite_buckets is not None:
             pulumi.set(__self__, "num_finite_buckets", num_finite_buckets)
@@ -239,14 +239,14 @@ class MetricBucketOptionsLinearBucketsArgs:
 
     @property
     @pulumi.getter(name="numFiniteBuckets")
-    def num_finite_buckets(self) -> Optional[pulumi.Input[float]]:
+    def num_finite_buckets(self) -> Optional[pulumi.Input[int]]:
         """
         Must be greater than 0.
         """
         return pulumi.get(self, "num_finite_buckets")
 
     @num_finite_buckets.setter
-    def num_finite_buckets(self, value: Optional[pulumi.Input[float]]):
+    def num_finite_buckets(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "num_finite_buckets", value)
 
     @property
@@ -263,14 +263,14 @@ class MetricBucketOptionsLinearBucketsArgs:
 
     @property
     @pulumi.getter
-    def width(self) -> Optional[pulumi.Input[float]]:
+    def width(self) -> Optional[pulumi.Input[int]]:
         """
         Must be greater than 0.
         """
         return pulumi.get(self, "width")
 
     @width.setter
-    def width(self, value: Optional[pulumi.Input[float]]):
+    def width(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "width", value)
 
 
@@ -280,7 +280,7 @@ class MetricMetricDescriptorArgs:
                  metric_kind: pulumi.Input[str],
                  value_type: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[List[pulumi.Input['MetricMetricDescriptorLabelArgs']]]] = None,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input['MetricMetricDescriptorLabelArgs']]]] = None,
                  unit: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] metric_kind: Whether the metric records instantaneous values, changes to a value, etc.
@@ -293,7 +293,7 @@ class MetricMetricDescriptorArgs:
         :param pulumi.Input[str] display_name: A concise name for the metric, which can be displayed in user interfaces. Use sentence case
                without an ending period, for example "Request count". This field is optional but it is
                recommended to be set for any metrics associated with user-visible concepts, such as Quota.
-        :param pulumi.Input[List[pulumi.Input['MetricMetricDescriptorLabelArgs']]] labels: The set of labels that can be used to describe a specific instance of this metric type. For
+        :param pulumi.Input[Sequence[pulumi.Input['MetricMetricDescriptorLabelArgs']]] labels: The set of labels that can be used to describe a specific instance of this metric type. For
                example, the appengine.googleapis.com/http/server/response_latencies metric type has a label
                for the HTTP response code, response_code, so you can look at latencies for successful responses
                or just for responses that failed.
@@ -356,7 +356,7 @@ class MetricMetricDescriptorArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[List[pulumi.Input['MetricMetricDescriptorLabelArgs']]]]:
+    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MetricMetricDescriptorLabelArgs']]]]:
         """
         The set of labels that can be used to describe a specific instance of this metric type. For
         example, the appengine.googleapis.com/http/server/response_latencies metric type has a label
@@ -367,7 +367,7 @@ class MetricMetricDescriptorArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[List[pulumi.Input['MetricMetricDescriptorLabelArgs']]]]):
+    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MetricMetricDescriptorLabelArgs']]]]):
         pulumi.set(self, "labels", value)
 
     @property

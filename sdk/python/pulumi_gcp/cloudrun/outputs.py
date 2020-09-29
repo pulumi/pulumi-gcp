@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -40,7 +40,7 @@ class DomainMappingMetadata(dict):
     def __init__(__self__, *,
                  namespace: str,
                  annotations: Optional[Mapping[str, str]] = None,
-                 generation: Optional[float] = None,
+                 generation: Optional[int] = None,
                  labels: Optional[Mapping[str, str]] = None,
                  resource_version: Optional[str] = None,
                  self_link: Optional[str] = None,
@@ -51,7 +51,7 @@ class DomainMappingMetadata(dict):
         :param Mapping[str, str] annotations: Annotations is a key value map stored with a resource that
                may be set by external tools to store and retrieve arbitrary metadata. More
                info: http://kubernetes.io/docs/user-guide/annotations
-        :param float generation: -
+        :param int generation: -
                A sequence number representing a specific generation of the desired state.
         :param Mapping[str, str] labels: Map of string keys and values that can be used to organize and categorize
                (scope and select) objects. May match selectors of replication controllers
@@ -107,7 +107,7 @@ class DomainMappingMetadata(dict):
 
     @property
     @pulumi.getter
-    def generation(self) -> Optional[float]:
+    def generation(self) -> Optional[int]:
         """
         -
         A sequence number representing a specific generation of the desired state.
@@ -224,10 +224,10 @@ class DomainMappingSpec(dict):
 @pulumi.output_type
 class DomainMappingStatus(dict):
     def __init__(__self__, *,
-                 conditions: Optional[List['outputs.DomainMappingStatusCondition']] = None,
+                 conditions: Optional[Sequence['outputs.DomainMappingStatusCondition']] = None,
                  mapped_route_name: Optional[str] = None,
-                 observed_generation: Optional[float] = None,
-                 resource_records: Optional[List['outputs.DomainMappingStatusResourceRecord']] = None):
+                 observed_generation: Optional[int] = None,
+                 resource_records: Optional[Sequence['outputs.DomainMappingStatusResourceRecord']] = None):
         if conditions is not None:
             pulumi.set(__self__, "conditions", conditions)
         if mapped_route_name is not None:
@@ -239,7 +239,7 @@ class DomainMappingStatus(dict):
 
     @property
     @pulumi.getter
-    def conditions(self) -> Optional[List['outputs.DomainMappingStatusCondition']]:
+    def conditions(self) -> Optional[Sequence['outputs.DomainMappingStatusCondition']]:
         return pulumi.get(self, "conditions")
 
     @property
@@ -249,12 +249,12 @@ class DomainMappingStatus(dict):
 
     @property
     @pulumi.getter(name="observedGeneration")
-    def observed_generation(self) -> Optional[float]:
+    def observed_generation(self) -> Optional[int]:
         return pulumi.get(self, "observed_generation")
 
     @property
     @pulumi.getter(name="resourceRecords")
-    def resource_records(self) -> Optional[List['outputs.DomainMappingStatusResourceRecord']]:
+    def resource_records(self) -> Optional[Sequence['outputs.DomainMappingStatusResourceRecord']]:
         return pulumi.get(self, "resource_records")
 
     def _translate_property(self, prop):
@@ -403,7 +403,7 @@ class IamMemberCondition(dict):
 class ServiceMetadata(dict):
     def __init__(__self__, *,
                  annotations: Optional[Mapping[str, str]] = None,
-                 generation: Optional[float] = None,
+                 generation: Optional[int] = None,
                  labels: Optional[Mapping[str, str]] = None,
                  namespace: Optional[str] = None,
                  resource_version: Optional[str] = None,
@@ -413,7 +413,7 @@ class ServiceMetadata(dict):
         :param Mapping[str, str] annotations: Annotations is a key value map stored with a resource that
                may be set by external tools to store and retrieve arbitrary metadata. More
                info: http://kubernetes.io/docs/user-guide/annotations
-        :param float generation: -
+        :param int generation: -
                A sequence number representing a specific generation of the desired state.
         :param Mapping[str, str] labels: Map of string keys and values that can be used to organize and categorize
                (scope and select) objects. May match selectors of replication controllers
@@ -463,7 +463,7 @@ class ServiceMetadata(dict):
 
     @property
     @pulumi.getter
-    def generation(self) -> Optional[float]:
+    def generation(self) -> Optional[int]:
         """
         -
         A sequence number representing a specific generation of the desired state.
@@ -532,10 +532,10 @@ class ServiceMetadata(dict):
 @pulumi.output_type
 class ServiceStatus(dict):
     def __init__(__self__, *,
-                 conditions: Optional[List['outputs.ServiceStatusCondition']] = None,
+                 conditions: Optional[Sequence['outputs.ServiceStatusCondition']] = None,
                  latest_created_revision_name: Optional[str] = None,
                  latest_ready_revision_name: Optional[str] = None,
-                 observed_generation: Optional[float] = None,
+                 observed_generation: Optional[int] = None,
                  url: Optional[str] = None):
         if conditions is not None:
             pulumi.set(__self__, "conditions", conditions)
@@ -550,7 +550,7 @@ class ServiceStatus(dict):
 
     @property
     @pulumi.getter
-    def conditions(self) -> Optional[List['outputs.ServiceStatusCondition']]:
+    def conditions(self) -> Optional[Sequence['outputs.ServiceStatusCondition']]:
         return pulumi.get(self, "conditions")
 
     @property
@@ -565,7 +565,7 @@ class ServiceStatus(dict):
 
     @property
     @pulumi.getter(name="observedGeneration")
-    def observed_generation(self) -> Optional[float]:
+    def observed_generation(self) -> Optional[int]:
         return pulumi.get(self, "observed_generation")
 
     @property
@@ -661,7 +661,7 @@ class ServiceTemplate(dict):
 class ServiceTemplateMetadata(dict):
     def __init__(__self__, *,
                  annotations: Optional[Mapping[str, str]] = None,
-                 generation: Optional[float] = None,
+                 generation: Optional[int] = None,
                  labels: Optional[Mapping[str, str]] = None,
                  name: Optional[str] = None,
                  namespace: Optional[str] = None,
@@ -672,7 +672,7 @@ class ServiceTemplateMetadata(dict):
         :param Mapping[str, str] annotations: Annotations is a key value map stored with a resource that
                may be set by external tools to store and retrieve arbitrary metadata. More
                info: http://kubernetes.io/docs/user-guide/annotations
-        :param float generation: -
+        :param int generation: -
                A sequence number representing a specific generation of the desired state.
         :param Mapping[str, str] labels: Map of string keys and values that can be used to organize and categorize
                (scope and select) objects. May match selectors of replication controllers
@@ -725,7 +725,7 @@ class ServiceTemplateMetadata(dict):
 
     @property
     @pulumi.getter
-    def generation(self) -> Optional[float]:
+    def generation(self) -> Optional[int]:
         """
         -
         A sequence number representing a specific generation of the desired state.
@@ -802,15 +802,15 @@ class ServiceTemplateMetadata(dict):
 @pulumi.output_type
 class ServiceTemplateSpec(dict):
     def __init__(__self__, *,
-                 container_concurrency: Optional[float] = None,
-                 containers: Optional[List['outputs.ServiceTemplateSpecContainer']] = None,
+                 container_concurrency: Optional[int] = None,
+                 containers: Optional[Sequence['outputs.ServiceTemplateSpecContainer']] = None,
                  service_account_name: Optional[str] = None,
                  serving_state: Optional[str] = None,
-                 timeout_seconds: Optional[float] = None):
+                 timeout_seconds: Optional[int] = None):
         """
-        :param float container_concurrency: ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
+        :param int container_concurrency: ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
                requests per container of the Revision. Values are:
-        :param List['ServiceTemplateSpecContainerArgs'] containers: Container defines the unit of execution for this Revision.
+        :param Sequence['ServiceTemplateSpecContainerArgs'] containers: Container defines the unit of execution for this Revision.
                In the context of a Revision, we disallow a number of the fields of
                this Container, including: name, ports, and volumeMounts.
                The runtime contract is documented here:
@@ -825,7 +825,7 @@ class ServiceTemplateSpec(dict):
                are in for this Revision.
                It is expected
                that the system will manipulate this based on routability and load.
-        :param float timeout_seconds: TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
+        :param int timeout_seconds: TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
         """
         if container_concurrency is not None:
             pulumi.set(__self__, "container_concurrency", container_concurrency)
@@ -840,7 +840,7 @@ class ServiceTemplateSpec(dict):
 
     @property
     @pulumi.getter(name="containerConcurrency")
-    def container_concurrency(self) -> Optional[float]:
+    def container_concurrency(self) -> Optional[int]:
         """
         ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
         requests per container of the Revision. Values are:
@@ -849,7 +849,7 @@ class ServiceTemplateSpec(dict):
 
     @property
     @pulumi.getter
-    def containers(self) -> Optional[List['outputs.ServiceTemplateSpecContainer']]:
+    def containers(self) -> Optional[Sequence['outputs.ServiceTemplateSpecContainer']]:
         """
         Container defines the unit of execution for this Revision.
         In the context of a Revision, we disallow a number of the fields of
@@ -885,7 +885,7 @@ class ServiceTemplateSpec(dict):
 
     @property
     @pulumi.getter(name="timeoutSeconds")
-    def timeout_seconds(self) -> Optional[float]:
+    def timeout_seconds(self) -> Optional[int]:
         """
         TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
         """
@@ -899,18 +899,18 @@ class ServiceTemplateSpec(dict):
 class ServiceTemplateSpecContainer(dict):
     def __init__(__self__, *,
                  image: str,
-                 args: Optional[List[str]] = None,
-                 commands: Optional[List[str]] = None,
-                 env_froms: Optional[List['outputs.ServiceTemplateSpecContainerEnvFrom']] = None,
-                 envs: Optional[List['outputs.ServiceTemplateSpecContainerEnv']] = None,
-                 ports: Optional[List['outputs.ServiceTemplateSpecContainerPort']] = None,
+                 args: Optional[Sequence[str]] = None,
+                 commands: Optional[Sequence[str]] = None,
+                 env_froms: Optional[Sequence['outputs.ServiceTemplateSpecContainerEnvFrom']] = None,
+                 envs: Optional[Sequence['outputs.ServiceTemplateSpecContainerEnv']] = None,
+                 ports: Optional[Sequence['outputs.ServiceTemplateSpecContainerPort']] = None,
                  resources: Optional['outputs.ServiceTemplateSpecContainerResources'] = None,
                  working_dir: Optional[str] = None):
         """
         :param str image: Docker image name. This is most often a reference to a container located
                in the container registry, such as gcr.io/cloudrun/hello
                More info: https://kubernetes.io/docs/concepts/containers/images
-        :param List[str] args: Arguments to the entrypoint.
+        :param Sequence[str] args: Arguments to the entrypoint.
                The docker image's CMD is used if this is not provided.
                Variable references $(VAR_NAME) are expanded using the container's
                environment. If a variable cannot be resolved, the reference in the input
@@ -919,7 +919,7 @@ class ServiceTemplateSpecContainer(dict):
                regardless of whether the variable exists or not.
                More info:
                https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
-        :param List[str] commands: Entrypoint array. Not executed within a shell.
+        :param Sequence[str] commands: Entrypoint array. Not executed within a shell.
                The docker image's ENTRYPOINT is used if this is not provided.
                Variable references $(VAR_NAME) are expanded using the container's
                environment. If a variable cannot be resolved, the reference in the input
@@ -928,7 +928,7 @@ class ServiceTemplateSpecContainer(dict):
                regardless of whether the variable exists or not.
                More info:
                https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
-        :param List['ServiceTemplateSpecContainerEnvFromArgs'] env_froms: -
+        :param Sequence['ServiceTemplateSpecContainerEnvFromArgs'] env_froms: -
                (Optional, Deprecated)
                List of sources to populate environment variables in the container.
                All invalid keys will be reported as an event when the container is starting.
@@ -936,9 +936,9 @@ class ServiceTemplateSpecContainer(dict):
                take precedence. Values defined by an Env with a duplicate key will take
                precedence.
                Structure is documented below.
-        :param List['ServiceTemplateSpecContainerEnvArgs'] envs: List of environment variables to set in the container.
+        :param Sequence['ServiceTemplateSpecContainerEnvArgs'] envs: List of environment variables to set in the container.
                Structure is documented below.
-        :param List['ServiceTemplateSpecContainerPortArgs'] ports: List of open ports in the container.
+        :param Sequence['ServiceTemplateSpecContainerPortArgs'] ports: List of open ports in the container.
                More Info:
                https://cloud.google.com/run/docs/reference/rest/v1/RevisionSpec#ContainerPort
                Structure is documented below.
@@ -980,7 +980,7 @@ class ServiceTemplateSpecContainer(dict):
 
     @property
     @pulumi.getter
-    def args(self) -> Optional[List[str]]:
+    def args(self) -> Optional[Sequence[str]]:
         """
         Arguments to the entrypoint.
         The docker image's CMD is used if this is not provided.
@@ -996,7 +996,7 @@ class ServiceTemplateSpecContainer(dict):
 
     @property
     @pulumi.getter
-    def commands(self) -> Optional[List[str]]:
+    def commands(self) -> Optional[Sequence[str]]:
         """
         Entrypoint array. Not executed within a shell.
         The docker image's ENTRYPOINT is used if this is not provided.
@@ -1012,7 +1012,7 @@ class ServiceTemplateSpecContainer(dict):
 
     @property
     @pulumi.getter(name="envFroms")
-    def env_froms(self) -> Optional[List['outputs.ServiceTemplateSpecContainerEnvFrom']]:
+    def env_froms(self) -> Optional[Sequence['outputs.ServiceTemplateSpecContainerEnvFrom']]:
         """
         -
         (Optional, Deprecated)
@@ -1027,7 +1027,7 @@ class ServiceTemplateSpecContainer(dict):
 
     @property
     @pulumi.getter
-    def envs(self) -> Optional[List['outputs.ServiceTemplateSpecContainerEnv']]:
+    def envs(self) -> Optional[Sequence['outputs.ServiceTemplateSpecContainerEnv']]:
         """
         List of environment variables to set in the container.
         Structure is documented below.
@@ -1036,7 +1036,7 @@ class ServiceTemplateSpecContainer(dict):
 
     @property
     @pulumi.getter
-    def ports(self) -> Optional[List['outputs.ServiceTemplateSpecContainerPort']]:
+    def ports(self) -> Optional[Sequence['outputs.ServiceTemplateSpecContainerPort']]:
         """
         List of open ports in the container.
         More Info:
@@ -1287,11 +1287,11 @@ class ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference(dict):
 @pulumi.output_type
 class ServiceTemplateSpecContainerPort(dict):
     def __init__(__self__, *,
-                 container_port: float,
+                 container_port: int,
                  name: Optional[str] = None,
                  protocol: Optional[str] = None):
         """
-        :param float container_port: Port number.
+        :param int container_port: Port number.
         :param str name: Name of the port.
         :param str protocol: Protocol used on port. Defaults to TCP.
         """
@@ -1303,7 +1303,7 @@ class ServiceTemplateSpecContainerPort(dict):
 
     @property
     @pulumi.getter(name="containerPort")
-    def container_port(self) -> float:
+    def container_port(self) -> int:
         """
         Port number.
         """
@@ -1378,11 +1378,11 @@ class ServiceTemplateSpecContainerResources(dict):
 @pulumi.output_type
 class ServiceTraffic(dict):
     def __init__(__self__, *,
-                 percent: float,
+                 percent: int,
                  latest_revision: Optional[bool] = None,
                  revision_name: Optional[str] = None):
         """
-        :param float percent: Percent specifies percent of the traffic to this Revision or Configuration.
+        :param int percent: Percent specifies percent of the traffic to this Revision or Configuration.
         :param bool latest_revision: LatestRevision may be optionally provided to indicate that the latest ready
                Revision of the Configuration should be used for this traffic target. When
                provided LatestRevision must be true if RevisionName is empty; it must be
@@ -1397,7 +1397,7 @@ class ServiceTraffic(dict):
 
     @property
     @pulumi.getter
-    def percent(self) -> float:
+    def percent(self) -> int:
         """
         Percent specifies percent of the traffic to this Revision or Configuration.
         """

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -23,12 +23,12 @@ __all__ = [
 @pulumi.output_type
 class InboundSamlConfigIdpConfig(dict):
     def __init__(__self__, *,
-                 idp_certificates: List['outputs.InboundSamlConfigIdpConfigIdpCertificate'],
+                 idp_certificates: Sequence['outputs.InboundSamlConfigIdpConfigIdpCertificate'],
                  idp_entity_id: str,
                  sso_url: str,
                  sign_request: Optional[bool] = None):
         """
-        :param List['InboundSamlConfigIdpConfigIdpCertificateArgs'] idp_certificates: The IdP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
+        :param Sequence['InboundSamlConfigIdpConfigIdpCertificateArgs'] idp_certificates: The IdP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
                Structure is documented below.
         :param str idp_entity_id: Unique identifier for all SAML entities
         :param str sso_url: URL to send Authentication request to.
@@ -42,7 +42,7 @@ class InboundSamlConfigIdpConfig(dict):
 
     @property
     @pulumi.getter(name="idpCertificates")
-    def idp_certificates(self) -> List['outputs.InboundSamlConfigIdpConfigIdpCertificate']:
+    def idp_certificates(self) -> Sequence['outputs.InboundSamlConfigIdpConfigIdpCertificate']:
         """
         The IdP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
         Structure is documented below.
@@ -105,11 +105,11 @@ class InboundSamlConfigIdpConfigIdpCertificate(dict):
 class InboundSamlConfigSpConfig(dict):
     def __init__(__self__, *,
                  callback_uri: Optional[str] = None,
-                 sp_certificates: Optional[List['outputs.InboundSamlConfigSpConfigSpCertificate']] = None,
+                 sp_certificates: Optional[Sequence['outputs.InboundSamlConfigSpConfigSpCertificate']] = None,
                  sp_entity_id: Optional[str] = None):
         """
         :param str callback_uri: Callback URI where responses from IDP are handled. Must start with `https://`.
-        :param List['InboundSamlConfigSpConfigSpCertificateArgs'] sp_certificates: -
+        :param Sequence['InboundSamlConfigSpConfigSpCertificateArgs'] sp_certificates: -
                The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
                Structure is documented below.
         :param str sp_entity_id: Unique identifier for all SAML entities.
@@ -131,7 +131,7 @@ class InboundSamlConfigSpConfig(dict):
 
     @property
     @pulumi.getter(name="spCertificates")
-    def sp_certificates(self) -> Optional[List['outputs.InboundSamlConfigSpConfigSpCertificate']]:
+    def sp_certificates(self) -> Optional[Sequence['outputs.InboundSamlConfigSpConfigSpCertificate']]:
         """
         -
         The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
@@ -178,12 +178,12 @@ class InboundSamlConfigSpConfigSpCertificate(dict):
 @pulumi.output_type
 class TenantInboundSamlConfigIdpConfig(dict):
     def __init__(__self__, *,
-                 idp_certificates: List['outputs.TenantInboundSamlConfigIdpConfigIdpCertificate'],
+                 idp_certificates: Sequence['outputs.TenantInboundSamlConfigIdpConfigIdpCertificate'],
                  idp_entity_id: str,
                  sso_url: str,
                  sign_request: Optional[bool] = None):
         """
-        :param List['TenantInboundSamlConfigIdpConfigIdpCertificateArgs'] idp_certificates: The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
+        :param Sequence['TenantInboundSamlConfigIdpConfigIdpCertificateArgs'] idp_certificates: The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
                Structure is documented below.
         :param str idp_entity_id: Unique identifier for all SAML entities
         :param str sso_url: URL to send Authentication request to.
@@ -197,7 +197,7 @@ class TenantInboundSamlConfigIdpConfig(dict):
 
     @property
     @pulumi.getter(name="idpCertificates")
-    def idp_certificates(self) -> List['outputs.TenantInboundSamlConfigIdpConfigIdpCertificate']:
+    def idp_certificates(self) -> Sequence['outputs.TenantInboundSamlConfigIdpConfigIdpCertificate']:
         """
         The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
         Structure is documented below.
@@ -261,11 +261,11 @@ class TenantInboundSamlConfigSpConfig(dict):
     def __init__(__self__, *,
                  callback_uri: str,
                  sp_entity_id: str,
-                 sp_certificates: Optional[List['outputs.TenantInboundSamlConfigSpConfigSpCertificate']] = None):
+                 sp_certificates: Optional[Sequence['outputs.TenantInboundSamlConfigSpConfigSpCertificate']] = None):
         """
         :param str callback_uri: Callback URI where responses from IDP are handled. Must start with `https://`.
         :param str sp_entity_id: Unique identifier for all SAML entities.
-        :param List['TenantInboundSamlConfigSpConfigSpCertificateArgs'] sp_certificates: -
+        :param Sequence['TenantInboundSamlConfigSpConfigSpCertificateArgs'] sp_certificates: -
                The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
                Structure is documented below.
         """
@@ -292,7 +292,7 @@ class TenantInboundSamlConfigSpConfig(dict):
 
     @property
     @pulumi.getter(name="spCertificates")
-    def sp_certificates(self) -> Optional[List['outputs.TenantInboundSamlConfigSpConfigSpCertificate']]:
+    def sp_certificates(self) -> Optional[Sequence['outputs.TenantInboundSamlConfigSpConfigSpCertificate']]:
         """
         -
         The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.

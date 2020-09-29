@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -54,11 +54,11 @@ class DeploymentLabel(dict):
 class DeploymentTarget(dict):
     def __init__(__self__, *,
                  config: 'outputs.DeploymentTargetConfig',
-                 imports: Optional[List['outputs.DeploymentTargetImport']] = None):
+                 imports: Optional[Sequence['outputs.DeploymentTargetImport']] = None):
         """
         :param 'DeploymentTargetConfigArgs' config: The root configuration file to use for this deployment.
                Structure is documented below.
-        :param List['DeploymentTargetImportArgs'] imports: Specifies import files for this configuration. This can be
+        :param Sequence['DeploymentTargetImportArgs'] imports: Specifies import files for this configuration. This can be
                used to import templates or other files. For example, you might
                import a text file in order to use the file in a template.
                Structure is documented below.
@@ -78,7 +78,7 @@ class DeploymentTarget(dict):
 
     @property
     @pulumi.getter
-    def imports(self) -> Optional[List['outputs.DeploymentTargetImport']]:
+    def imports(self) -> Optional[Sequence['outputs.DeploymentTargetImport']]:
         """
         Specifies import files for this configuration. This can be
         used to import templates or other files. For example, you might

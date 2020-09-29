@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -62,27 +62,27 @@ __all__ = [
 @pulumi.output_type
 class PreventionInspectTemplateInspectConfig(dict):
     def __init__(__self__, *,
-                 content_options: Optional[List[str]] = None,
+                 content_options: Optional[Sequence[str]] = None,
                  exclude_info_types: Optional[bool] = None,
                  include_quote: Optional[bool] = None,
-                 info_types: Optional[List['outputs.PreventionInspectTemplateInspectConfigInfoType']] = None,
+                 info_types: Optional[Sequence['outputs.PreventionInspectTemplateInspectConfigInfoType']] = None,
                  limits: Optional['outputs.PreventionInspectTemplateInspectConfigLimits'] = None,
                  min_likelihood: Optional[str] = None,
-                 rule_sets: Optional[List['outputs.PreventionInspectTemplateInspectConfigRuleSet']] = None):
+                 rule_sets: Optional[Sequence['outputs.PreventionInspectTemplateInspectConfigRuleSet']] = None):
         """
-        :param List[str] content_options: List of options defining data content to scan. If empty, text, images, and other content will be included.
+        :param Sequence[str] content_options: List of options defining data content to scan. If empty, text, images, and other content will be included.
                Each value may be one of `CONTENT_TEXT` and `CONTENT_IMAGE`.
         :param bool exclude_info_types: Set of infoTypes for which findings would affect this rule.
                Structure is documented below.
         :param bool include_quote: When true, a contextual quote from the data that triggered a finding is included in the response.
-        :param List['PreventionInspectTemplateInspectConfigInfoTypeArgs'] info_types: If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
+        :param Sequence['PreventionInspectTemplateInspectConfigInfoTypeArgs'] info_types: If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
                Structure is documented below.
         :param 'PreventionInspectTemplateInspectConfigLimitsArgs' limits: Configuration to control the number of findings returned.
                Structure is documented below.
         :param str min_likelihood: Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info
                Default value is `POSSIBLE`.
                Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
-        :param List['PreventionInspectTemplateInspectConfigRuleSetArgs'] rule_sets: Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end,
+        :param Sequence['PreventionInspectTemplateInspectConfigRuleSetArgs'] rule_sets: Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end,
                other rules are executed in the order they are specified for each info type.
                Structure is documented below.
         """
@@ -103,7 +103,7 @@ class PreventionInspectTemplateInspectConfig(dict):
 
     @property
     @pulumi.getter(name="contentOptions")
-    def content_options(self) -> Optional[List[str]]:
+    def content_options(self) -> Optional[Sequence[str]]:
         """
         List of options defining data content to scan. If empty, text, images, and other content will be included.
         Each value may be one of `CONTENT_TEXT` and `CONTENT_IMAGE`.
@@ -129,7 +129,7 @@ class PreventionInspectTemplateInspectConfig(dict):
 
     @property
     @pulumi.getter(name="infoTypes")
-    def info_types(self) -> Optional[List['outputs.PreventionInspectTemplateInspectConfigInfoType']]:
+    def info_types(self) -> Optional[Sequence['outputs.PreventionInspectTemplateInspectConfigInfoType']]:
         """
         If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
         Structure is documented below.
@@ -157,7 +157,7 @@ class PreventionInspectTemplateInspectConfig(dict):
 
     @property
     @pulumi.getter(name="ruleSets")
-    def rule_sets(self) -> Optional[List['outputs.PreventionInspectTemplateInspectConfigRuleSet']]:
+    def rule_sets(self) -> Optional[Sequence['outputs.PreventionInspectTemplateInspectConfigRuleSet']]:
         """
         Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end,
         other rules are executed in the order they are specified for each info type.
@@ -195,13 +195,13 @@ class PreventionInspectTemplateInspectConfigInfoType(dict):
 @pulumi.output_type
 class PreventionInspectTemplateInspectConfigLimits(dict):
     def __init__(__self__, *,
-                 max_findings_per_item: float,
-                 max_findings_per_request: float,
-                 max_findings_per_info_types: Optional[List['outputs.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType']] = None):
+                 max_findings_per_item: int,
+                 max_findings_per_request: int,
+                 max_findings_per_info_types: Optional[Sequence['outputs.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType']] = None):
         """
-        :param float max_findings_per_item: Max number of findings that will be returned for each item scanned. The maximum returned is 2000.
-        :param float max_findings_per_request: Max number of findings that will be returned per request/job. The maximum returned is 2000.
-        :param List['PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArgs'] max_findings_per_info_types: Configuration of findings limit given for specified infoTypes.
+        :param int max_findings_per_item: Max number of findings that will be returned for each item scanned. The maximum returned is 2000.
+        :param int max_findings_per_request: Max number of findings that will be returned per request/job. The maximum returned is 2000.
+        :param Sequence['PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArgs'] max_findings_per_info_types: Configuration of findings limit given for specified infoTypes.
                Structure is documented below.
         """
         pulumi.set(__self__, "max_findings_per_item", max_findings_per_item)
@@ -211,7 +211,7 @@ class PreventionInspectTemplateInspectConfigLimits(dict):
 
     @property
     @pulumi.getter(name="maxFindingsPerItem")
-    def max_findings_per_item(self) -> float:
+    def max_findings_per_item(self) -> int:
         """
         Max number of findings that will be returned for each item scanned. The maximum returned is 2000.
         """
@@ -219,7 +219,7 @@ class PreventionInspectTemplateInspectConfigLimits(dict):
 
     @property
     @pulumi.getter(name="maxFindingsPerRequest")
-    def max_findings_per_request(self) -> float:
+    def max_findings_per_request(self) -> int:
         """
         Max number of findings that will be returned per request/job. The maximum returned is 2000.
         """
@@ -227,7 +227,7 @@ class PreventionInspectTemplateInspectConfigLimits(dict):
 
     @property
     @pulumi.getter(name="maxFindingsPerInfoTypes")
-    def max_findings_per_info_types(self) -> Optional[List['outputs.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType']]:
+    def max_findings_per_info_types(self) -> Optional[Sequence['outputs.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType']]:
         """
         Configuration of findings limit given for specified infoTypes.
         Structure is documented below.
@@ -242,13 +242,13 @@ class PreventionInspectTemplateInspectConfigLimits(dict):
 class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType(dict):
     def __init__(__self__, *,
                  info_type: 'outputs.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType',
-                 max_findings: float):
+                 max_findings: int):
         """
         :param 'PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs' info_type: Type of information the findings limit applies to. Only one limit per infoType should be provided. If InfoTypeLimit does
                not have an infoType, the DLP API applies the limit against all infoTypes that are found but not
                specified in another InfoTypeLimit.
                Structure is documented below.
-        :param float max_findings: Max findings limit for the given infoType.
+        :param int max_findings: Max findings limit for the given infoType.
         """
         pulumi.set(__self__, "info_type", info_type)
         pulumi.set(__self__, "max_findings", max_findings)
@@ -266,7 +266,7 @@ class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType(dict):
 
     @property
     @pulumi.getter(name="maxFindings")
-    def max_findings(self) -> float:
+    def max_findings(self) -> int:
         """
         Max findings limit for the given infoType.
         """
@@ -302,12 +302,12 @@ class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType
 @pulumi.output_type
 class PreventionInspectTemplateInspectConfigRuleSet(dict):
     def __init__(__self__, *,
-                 info_types: List['outputs.PreventionInspectTemplateInspectConfigRuleSetInfoType'],
-                 rules: List['outputs.PreventionInspectTemplateInspectConfigRuleSetRule']):
+                 info_types: Sequence['outputs.PreventionInspectTemplateInspectConfigRuleSetInfoType'],
+                 rules: Sequence['outputs.PreventionInspectTemplateInspectConfigRuleSetRule']):
         """
-        :param List['PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs'] info_types: If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
+        :param Sequence['PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs'] info_types: If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
                Structure is documented below.
-        :param List['PreventionInspectTemplateInspectConfigRuleSetRuleArgs'] rules: Set of rules to be applied to infoTypes. The rules are applied in order.
+        :param Sequence['PreventionInspectTemplateInspectConfigRuleSetRuleArgs'] rules: Set of rules to be applied to infoTypes. The rules are applied in order.
                Structure is documented below.
         """
         pulumi.set(__self__, "info_types", info_types)
@@ -315,7 +315,7 @@ class PreventionInspectTemplateInspectConfigRuleSet(dict):
 
     @property
     @pulumi.getter(name="infoTypes")
-    def info_types(self) -> List['outputs.PreventionInspectTemplateInspectConfigRuleSetInfoType']:
+    def info_types(self) -> Sequence['outputs.PreventionInspectTemplateInspectConfigRuleSetInfoType']:
         """
         If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
         Structure is documented below.
@@ -324,7 +324,7 @@ class PreventionInspectTemplateInspectConfigRuleSet(dict):
 
     @property
     @pulumi.getter
-    def rules(self) -> List['outputs.PreventionInspectTemplateInspectConfigRuleSetRule']:
+    def rules(self) -> Sequence['outputs.PreventionInspectTemplateInspectConfigRuleSetRule']:
         """
         Set of rules to be applied to infoTypes. The rules are applied in order.
         Structure is documented below.
@@ -523,16 +523,16 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCl
 @pulumi.output_type
 class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordList(dict):
     def __init__(__self__, *,
-                 words: List[str]):
+                 words: Sequence[str]):
         """
-        :param List[str] words: Words or phrases defining the dictionary. The dictionary must contain at least one
+        :param Sequence[str] words: Words or phrases defining the dictionary. The dictionary must contain at least one
                phrase and every phrase must contain at least 2 characters that are letters or digits.
         """
         pulumi.set(__self__, "words", words)
 
     @property
     @pulumi.getter
-    def words(self) -> List[str]:
+    def words(self) -> Sequence[str]:
         """
         Words or phrases defining the dictionary. The dictionary must contain at least one
         phrase and every phrase must contain at least 2 characters that are letters or digits.
@@ -546,16 +546,16 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWo
 @pulumi.output_type
 class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes(dict):
     def __init__(__self__, *,
-                 info_types: List['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType']):
+                 info_types: Sequence['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType']):
         """
-        :param List['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArgs'] info_types: If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
+        :param Sequence['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArgs'] info_types: If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
                Structure is documented below.
         """
         pulumi.set(__self__, "info_types", info_types)
 
     @property
     @pulumi.getter(name="infoTypes")
-    def info_types(self) -> List['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType']:
+    def info_types(self) -> Sequence['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType']:
         """
         If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
         Structure is documented below.
@@ -593,11 +593,11 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoT
 class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegex(dict):
     def __init__(__self__, *,
                  pattern: str,
-                 group_indexes: Optional[List[float]] = None):
+                 group_indexes: Optional[Sequence[int]] = None):
         """
         :param str pattern: Pattern defining the regular expression.
                Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
-        :param List[float] group_indexes: The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+        :param Sequence[int] group_indexes: The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
         """
         pulumi.set(__self__, "pattern", pattern)
         if group_indexes is not None:
@@ -614,7 +614,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegex(dict):
 
     @property
     @pulumi.getter(name="groupIndexes")
-    def group_indexes(self) -> Optional[List[float]]:
+    def group_indexes(self) -> Optional[Sequence[int]]:
         """
         The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
         """
@@ -685,11 +685,11 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule(dict):
 class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex(dict):
     def __init__(__self__, *,
                  pattern: str,
-                 group_indexes: Optional[List[float]] = None):
+                 group_indexes: Optional[Sequence[int]] = None):
         """
         :param str pattern: Pattern defining the regular expression.
                Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
-        :param List[float] group_indexes: The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+        :param Sequence[int] group_indexes: The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
         """
         pulumi.set(__self__, "pattern", pattern)
         if group_indexes is not None:
@@ -706,7 +706,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex(d
 
     @property
     @pulumi.getter(name="groupIndexes")
-    def group_indexes(self) -> Optional[List[float]]:
+    def group_indexes(self) -> Optional[Sequence[int]]:
         """
         The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
         """
@@ -720,11 +720,11 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex(d
 class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment(dict):
     def __init__(__self__, *,
                  fixed_likelihood: Optional[str] = None,
-                 relative_likelihood: Optional[float] = None):
+                 relative_likelihood: Optional[int] = None):
         """
         :param str fixed_likelihood: Set the likelihood of a finding to a fixed value. Either this or relative_likelihood can be set.
                Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
-        :param float relative_likelihood: Increase or decrease the likelihood by the specified number of levels. For example,
+        :param int relative_likelihood: Increase or decrease the likelihood by the specified number of levels. For example,
                if a finding would be POSSIBLE without the detection rule and relativeLikelihood is 1,
                then it is upgraded to LIKELY, while a value of -1 would downgrade it to UNLIKELY.
                Likelihood may never drop below VERY_UNLIKELY or exceed VERY_LIKELY, so applying an
@@ -747,7 +747,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdju
 
     @property
     @pulumi.getter(name="relativeLikelihood")
-    def relative_likelihood(self) -> Optional[float]:
+    def relative_likelihood(self) -> Optional[int]:
         """
         Increase or decrease the likelihood by the specified number of levels. For example,
         if a finding would be POSSIBLE without the detection rule and relativeLikelihood is 1,
@@ -765,11 +765,11 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdju
 @pulumi.output_type
 class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity(dict):
     def __init__(__self__, *,
-                 window_after: Optional[float] = None,
-                 window_before: Optional[float] = None):
+                 window_after: Optional[int] = None,
+                 window_before: Optional[int] = None):
         """
-        :param float window_after: Number of characters after the finding to consider. Either this or window_before must be specified
-        :param float window_before: Number of characters before the finding to consider. Either this or window_after must be specified
+        :param int window_after: Number of characters after the finding to consider. Either this or window_before must be specified
+        :param int window_before: Number of characters before the finding to consider. Either this or window_after must be specified
         """
         if window_after is not None:
             pulumi.set(__self__, "window_after", window_after)
@@ -778,7 +778,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity(dict
 
     @property
     @pulumi.getter(name="windowAfter")
-    def window_after(self) -> Optional[float]:
+    def window_after(self) -> Optional[int]:
         """
         Number of characters after the finding to consider. Either this or window_before must be specified
         """
@@ -786,7 +786,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity(dict
 
     @property
     @pulumi.getter(name="windowBefore")
-    def window_before(self) -> Optional[float]:
+    def window_before(self) -> Optional[int]:
         """
         Number of characters before the finding to consider. Either this or window_after must be specified
         """
@@ -799,11 +799,11 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity(dict
 @pulumi.output_type
 class PreventionJobTriggerInspectJob(dict):
     def __init__(__self__, *,
-                 actions: List['outputs.PreventionJobTriggerInspectJobAction'],
+                 actions: Sequence['outputs.PreventionJobTriggerInspectJobAction'],
                  inspect_template_name: str,
                  storage_config: 'outputs.PreventionJobTriggerInspectJobStorageConfig'):
         """
-        :param List['PreventionJobTriggerInspectJobActionArgs'] actions: A task to execute on the completion of a job.
+        :param Sequence['PreventionJobTriggerInspectJobActionArgs'] actions: A task to execute on the completion of a job.
                Structure is documented below.
         :param str inspect_template_name: The name of the template to run when this job is triggered.
         :param 'PreventionJobTriggerInspectJobStorageConfigArgs' storage_config: Information on where to inspect
@@ -815,7 +815,7 @@ class PreventionJobTriggerInspectJob(dict):
 
     @property
     @pulumi.getter
-    def actions(self) -> List['outputs.PreventionJobTriggerInspectJobAction']:
+    def actions(self) -> Sequence['outputs.PreventionJobTriggerInspectJobAction']:
         """
         A task to execute on the completion of a job.
         Structure is documented below.
@@ -1122,23 +1122,23 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference(d
 class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions(dict):
     def __init__(__self__, *,
                  file_set: 'outputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet',
-                 bytes_limit_per_file: Optional[float] = None,
-                 bytes_limit_per_file_percent: Optional[float] = None,
-                 file_types: Optional[List[str]] = None,
-                 files_limit_percent: Optional[float] = None,
+                 bytes_limit_per_file: Optional[int] = None,
+                 bytes_limit_per_file_percent: Optional[int] = None,
+                 file_types: Optional[Sequence[str]] = None,
+                 files_limit_percent: Optional[int] = None,
                  sample_method: Optional[str] = None):
         """
         :param 'PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs' file_set: Set of files to scan.
                Structure is documented below.
-        :param float bytes_limit_per_file: Max number of bytes to scan from a file. If a scanned file's size is bigger than this value
+        :param int bytes_limit_per_file: Max number of bytes to scan from a file. If a scanned file's size is bigger than this value
                then the rest of the bytes are omitted.
-        :param float bytes_limit_per_file_percent: Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down.
+        :param int bytes_limit_per_file_percent: Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down.
                Must be between 0 and 100, inclusively. Both 0 and 100 means no limit.
-        :param List[str] file_types: List of file type groups to include in the scan. If empty, all files are scanned and available data
+        :param Sequence[str] file_types: List of file type groups to include in the scan. If empty, all files are scanned and available data
                format processors are applied. In addition, the binary content of the selected files is always scanned as well.
                Images are scanned only as binary if the specified region does not support image inspection and no fileTypes were specified.
                Each value may be one of `BINARY_FILE`, `TEXT_FILE`, `IMAGE`, `WORD`, `PDF`, `AVRO`, `CSV`, and `TSV`.
-        :param float files_limit_percent: Limits the number of files to scan to this percentage of the input FileSet. Number of files scanned is rounded down.
+        :param int files_limit_percent: Limits the number of files to scan to this percentage of the input FileSet. Number of files scanned is rounded down.
                Must be between 0 and 100, inclusively. Both 0 and 100 means no limit.
         :param str sample_method: How to sample bytes if not all bytes are scanned. Meaningful only when used in conjunction with bytesLimitPerFile.
                If not specified, scanning would start from the top.
@@ -1167,7 +1167,7 @@ class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions(dict):
 
     @property
     @pulumi.getter(name="bytesLimitPerFile")
-    def bytes_limit_per_file(self) -> Optional[float]:
+    def bytes_limit_per_file(self) -> Optional[int]:
         """
         Max number of bytes to scan from a file. If a scanned file's size is bigger than this value
         then the rest of the bytes are omitted.
@@ -1176,7 +1176,7 @@ class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions(dict):
 
     @property
     @pulumi.getter(name="bytesLimitPerFilePercent")
-    def bytes_limit_per_file_percent(self) -> Optional[float]:
+    def bytes_limit_per_file_percent(self) -> Optional[int]:
         """
         Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down.
         Must be between 0 and 100, inclusively. Both 0 and 100 means no limit.
@@ -1185,7 +1185,7 @@ class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions(dict):
 
     @property
     @pulumi.getter(name="fileTypes")
-    def file_types(self) -> Optional[List[str]]:
+    def file_types(self) -> Optional[Sequence[str]]:
         """
         List of file type groups to include in the scan. If empty, all files are scanned and available data
         format processors are applied. In addition, the binary content of the selected files is always scanned as well.
@@ -1196,7 +1196,7 @@ class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions(dict):
 
     @property
     @pulumi.getter(name="filesLimitPercent")
-    def files_limit_percent(self) -> Optional[float]:
+    def files_limit_percent(self) -> Optional[int]:
         """
         Limits the number of files to scan to this percentage of the input FileSet. Number of files scanned is rounded down.
         Must be between 0 and 100, inclusively. Both 0 and 100 means no limit.
@@ -1265,13 +1265,13 @@ class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet(dict
 class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet(dict):
     def __init__(__self__, *,
                  bucket_name: str,
-                 exclude_regexes: Optional[List[str]] = None,
-                 include_regexes: Optional[List[str]] = None):
+                 exclude_regexes: Optional[Sequence[str]] = None,
+                 include_regexes: Optional[Sequence[str]] = None):
         """
         :param str bucket_name: The name of a Cloud Storage bucket.
-        :param List[str] exclude_regexes: A list of regular expressions matching file paths to exclude. All files in the bucket that match at
+        :param Sequence[str] exclude_regexes: A list of regular expressions matching file paths to exclude. All files in the bucket that match at
                least one of these regular expressions will be excluded from the scan.
-        :param List[str] include_regexes: A list of regular expressions matching file paths to include. All files in the bucket
+        :param Sequence[str] include_regexes: A list of regular expressions matching file paths to include. All files in the bucket
                that match at least one of these regular expressions will be included in the set of files,
                except for those that also match an item in excludeRegex. Leaving this field empty will
                match all files by default (this is equivalent to including .* in the list)
@@ -1292,7 +1292,7 @@ class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegex
 
     @property
     @pulumi.getter(name="excludeRegexes")
-    def exclude_regexes(self) -> Optional[List[str]]:
+    def exclude_regexes(self) -> Optional[Sequence[str]]:
         """
         A list of regular expressions matching file paths to exclude. All files in the bucket that match at
         least one of these regular expressions will be excluded from the scan.
@@ -1301,7 +1301,7 @@ class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegex
 
     @property
     @pulumi.getter(name="includeRegexes")
-    def include_regexes(self) -> Optional[List[str]]:
+    def include_regexes(self) -> Optional[Sequence[str]]:
         """
         A list of regular expressions matching file paths to include. All files in the bucket
         that match at least one of these regular expressions will be included in the set of files,
@@ -1604,16 +1604,16 @@ class PreventionStoredInfoTypeDictionaryCloudStoragePath(dict):
 @pulumi.output_type
 class PreventionStoredInfoTypeDictionaryWordList(dict):
     def __init__(__self__, *,
-                 words: List[str]):
+                 words: Sequence[str]):
         """
-        :param List[str] words: Words or phrases defining the dictionary. The dictionary must contain at least one
+        :param Sequence[str] words: Words or phrases defining the dictionary. The dictionary must contain at least one
                phrase and every phrase must contain at least 2 characters that are letters or digits.
         """
         pulumi.set(__self__, "words", words)
 
     @property
     @pulumi.getter
-    def words(self) -> List[str]:
+    def words(self) -> Sequence[str]:
         """
         Words or phrases defining the dictionary. The dictionary must contain at least one
         phrase and every phrase must contain at least 2 characters that are letters or digits.
@@ -1823,11 +1823,11 @@ class PreventionStoredInfoTypeLargeCustomDictionaryOutputPath(dict):
 class PreventionStoredInfoTypeRegex(dict):
     def __init__(__self__, *,
                  pattern: str,
-                 group_indexes: Optional[List[float]] = None):
+                 group_indexes: Optional[Sequence[int]] = None):
         """
         :param str pattern: Pattern defining the regular expression.
                Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
-        :param List[float] group_indexes: The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+        :param Sequence[int] group_indexes: The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
         """
         pulumi.set(__self__, "pattern", pattern)
         if group_indexes is not None:
@@ -1844,7 +1844,7 @@ class PreventionStoredInfoTypeRegex(dict):
 
     @property
     @pulumi.getter(name="groupIndexes")
-    def group_indexes(self) -> Optional[List[float]]:
+    def group_indexes(self) -> Optional[Sequence[int]]:
         """
         The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
         """

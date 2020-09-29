@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['ProjectBucketConfig']
@@ -19,7 +19,7 @@ class ProjectBucketConfig(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 retention_days: Optional[pulumi.Input[float]] = None,
+                 retention_days: Optional[pulumi.Input[int]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -36,7 +36,7 @@ class ProjectBucketConfig(pulumi.CustomResource):
         :param pulumi.Input[str] description: Describes this bucket.
         :param pulumi.Input[str] location: The location of the bucket. The supported locations are: "global" "us-central1"
         :param pulumi.Input[str] project: The parent resource that contains the logging bucket.
-        :param pulumi.Input[float] retention_days: Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
+        :param pulumi.Input[int] retention_days: Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -84,7 +84,7 @@ class ProjectBucketConfig(pulumi.CustomResource):
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            retention_days: Optional[pulumi.Input[float]] = None) -> 'ProjectBucketConfig':
+            retention_days: Optional[pulumi.Input[int]] = None) -> 'ProjectBucketConfig':
         """
         Get an existing ProjectBucketConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -98,7 +98,7 @@ class ProjectBucketConfig(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location of the bucket. The supported locations are: "global" "us-central1"
         :param pulumi.Input[str] name: The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
         :param pulumi.Input[str] project: The parent resource that contains the logging bucket.
-        :param pulumi.Input[float] retention_days: Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
+        :param pulumi.Input[int] retention_days: Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -163,7 +163,7 @@ class ProjectBucketConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="retentionDays")
-    def retention_days(self) -> pulumi.Output[Optional[float]]:
+    def retention_days(self) -> pulumi.Output[Optional[int]]:
         """
         Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
         """

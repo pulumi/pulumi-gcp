@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -60,7 +60,7 @@ class GetTestablePermissionsResult:
 
     @property
     @pulumi.getter
-    def permissions(self) -> List['outputs.GetTestablePermissionsPermissionResult']:
+    def permissions(self) -> Sequence['outputs.GetTestablePermissionsPermissionResult']:
         """
         A list of permissions matching the provided input. Structure is defined below.
         """
@@ -68,7 +68,7 @@ class GetTestablePermissionsResult:
 
     @property
     @pulumi.getter
-    def stages(self) -> Optional[List[str]]:
+    def stages(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "stages")
 
 
@@ -87,7 +87,7 @@ class AwaitableGetTestablePermissionsResult(GetTestablePermissionsResult):
 
 def get_testable_permissions(custom_support_level: Optional[str] = None,
                              full_resource_name: Optional[str] = None,
-                             stages: Optional[List[str]] = None,
+                             stages: Optional[Sequence[str]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTestablePermissionsResult:
     """
     Retrieve a list of testable permissions for a resource. Testable permissions mean the permissions that user can add or remove in a role at a given resource. The resource can be referenced either via the full resource name or via a URI.
@@ -95,7 +95,7 @@ def get_testable_permissions(custom_support_level: Optional[str] = None,
 
     :param str custom_support_level: The level of support for custom roles. Can be one of `"NOT_SUPPORTED"`, `"SUPPORTED"`, `"TESTING"`. Default is `"SUPPORTED"`
     :param str full_resource_name: See [full resource name documentation](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more detail.
-    :param List[str] stages: The acceptable release stages of the permission in the output. Note that `BETA` does not include permissions in `GA`, but you can specify both with `["GA", "BETA"]` for example. Can be a list of `"ALPHA"`, `"BETA"`, `"GA"`, `"DEPRECATED"`. Default is `["GA"]`.
+    :param Sequence[str] stages: The acceptable release stages of the permission in the output. Note that `BETA` does not include permissions in `GA`, but you can specify both with `["GA", "BETA"]` for example. Can be a list of `"ALPHA"`, `"BETA"`, `"GA"`, `"DEPRECATED"`. Default is `["GA"]`.
     """
     __args__ = dict()
     __args__['customSupportLevel'] = custom_support_level

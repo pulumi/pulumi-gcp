@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -23,7 +23,7 @@ class Slo(pulumi.CustomResource):
                  goal: Optional[pulumi.Input[float]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_based_sli: Optional[pulumi.Input[pulumi.InputType['SloRequestBasedSliArgs']]] = None,
-                 rolling_period_days: Optional[pulumi.Input[float]] = None,
+                 rolling_period_days: Optional[pulumi.Input[int]] = None,
                  service: Optional[pulumi.Input[str]] = None,
                  slo_id: Optional[pulumi.Input[str]] = None,
                  windows_based_sli: Optional[pulumi.Input[pulumi.InputType['SloWindowsBasedSliArgs']]] = None,
@@ -73,7 +73,7 @@ class Slo(pulumi.CustomResource):
                Exactly one of the following must be set:
                `basic_sli`, `request_based_sli`, `windows_based_sli`
                Structure is documented below.
-        :param pulumi.Input[float] rolling_period_days: A rolling time period, semantically "in the past X days".
+        :param pulumi.Input[int] rolling_period_days: A rolling time period, semantically "in the past X days".
                Must be between 1 to 30 days, inclusive.
         :param pulumi.Input[str] service: ID of the service to which this SLO belongs.
         :param pulumi.Input[str] slo_id: The id to use for this ServiceLevelObjective. If omitted, an id will be generated instead.
@@ -136,7 +136,7 @@ class Slo(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             request_based_sli: Optional[pulumi.Input[pulumi.InputType['SloRequestBasedSliArgs']]] = None,
-            rolling_period_days: Optional[pulumi.Input[float]] = None,
+            rolling_period_days: Optional[pulumi.Input[int]] = None,
             service: Optional[pulumi.Input[str]] = None,
             slo_id: Optional[pulumi.Input[str]] = None,
             windows_based_sli: Optional[pulumi.Input[pulumi.InputType['SloWindowsBasedSliArgs']]] = None) -> 'Slo':
@@ -172,7 +172,7 @@ class Slo(pulumi.CustomResource):
                Exactly one of the following must be set:
                `basic_sli`, `request_based_sli`, `windows_based_sli`
                Structure is documented below.
-        :param pulumi.Input[float] rolling_period_days: A rolling time period, semantically "in the past X days".
+        :param pulumi.Input[int] rolling_period_days: A rolling time period, semantically "in the past X days".
                Must be between 1 to 30 days, inclusive.
         :param pulumi.Input[str] service: ID of the service to which this SLO belongs.
         :param pulumi.Input[str] slo_id: The id to use for this ServiceLevelObjective. If omitted, an id will be generated instead.
@@ -279,7 +279,7 @@ class Slo(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="rollingPeriodDays")
-    def rolling_period_days(self) -> pulumi.Output[Optional[float]]:
+    def rolling_period_days(self) -> pulumi.Output[Optional[int]]:
         """
         A rolling time period, semantically "in the past X days".
         Must be between 1 to 30 days, inclusive.

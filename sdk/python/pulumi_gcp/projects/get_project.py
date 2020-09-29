@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -46,7 +46,7 @@ class GetProjectResult:
 
     @property
     @pulumi.getter
-    def projects(self) -> List['outputs.GetProjectProjectResult']:
+    def projects(self) -> Sequence['outputs.GetProjectProjectResult']:
         """
         A list of projects matching the provided filter. Structure is defined below.
         """

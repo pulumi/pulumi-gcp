@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -17,11 +17,11 @@ class Table(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 column_families: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['TableColumnFamilyArgs']]]]] = None,
+                 column_families: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TableColumnFamilyArgs']]]]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 split_keys: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 split_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -32,12 +32,12 @@ class Table(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['TableColumnFamilyArgs']]]] column_families: A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TableColumnFamilyArgs']]]] column_families: A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
         :param pulumi.Input[str] instance_name: The name of the Bigtable instance.
         :param pulumi.Input[str] name: The name of the table.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[List[pulumi.Input[str]]] split_keys: A list of predefined keys to split the table on.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] split_keys: A list of predefined keys to split the table on.
                !> **Warning:** Modifying the `split_keys` of an existing table will cause the provider
                to delete/recreate the entire `bigtable.Table` resource.
         """
@@ -75,11 +75,11 @@ class Table(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            column_families: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['TableColumnFamilyArgs']]]]] = None,
+            column_families: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TableColumnFamilyArgs']]]]] = None,
             instance_name: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            split_keys: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'Table':
+            split_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Table':
         """
         Get an existing Table resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -87,12 +87,12 @@ class Table(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['TableColumnFamilyArgs']]]] column_families: A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TableColumnFamilyArgs']]]] column_families: A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
         :param pulumi.Input[str] instance_name: The name of the Bigtable instance.
         :param pulumi.Input[str] name: The name of the table.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[List[pulumi.Input[str]]] split_keys: A list of predefined keys to split the table on.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] split_keys: A list of predefined keys to split the table on.
                !> **Warning:** Modifying the `split_keys` of an existing table will cause the provider
                to delete/recreate the entire `bigtable.Table` resource.
         """
@@ -109,7 +109,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="columnFamilies")
-    def column_families(self) -> pulumi.Output[Optional[List['outputs.TableColumnFamily']]]:
+    def column_families(self) -> pulumi.Output[Optional[Sequence['outputs.TableColumnFamily']]]:
         """
         A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
         """
@@ -142,7 +142,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="splitKeys")
-    def split_keys(self) -> pulumi.Output[Optional[List[str]]]:
+    def split_keys(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         A list of predefined keys to split the table on.
         !> **Warning:** Modifying the `split_keys` of an existing table will cause the provider

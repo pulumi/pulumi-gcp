@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -17,7 +17,7 @@ class Function(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 available_memory_mb: Optional[pulumi.Input[float]] = None,
+                 available_memory_mb: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  entry_point: Optional[pulumi.Input[str]] = None,
                  environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -25,7 +25,7 @@ class Function(pulumi.CustomResource):
                  https_trigger_url: Optional[pulumi.Input[str]] = None,
                  ingress_settings: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 max_instances: Optional[pulumi.Input[float]] = None,
+                 max_instances: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -34,7 +34,7 @@ class Function(pulumi.CustomResource):
                  source_archive_bucket: Optional[pulumi.Input[str]] = None,
                  source_archive_object: Optional[pulumi.Input[str]] = None,
                  source_repository: Optional[pulumi.Input[pulumi.InputType['FunctionSourceRepositoryArgs']]] = None,
-                 timeout: Optional[pulumi.Input[float]] = None,
+                 timeout: Optional[pulumi.Input[int]] = None,
                  trigger_http: Optional[pulumi.Input[bool]] = None,
                  vpc_connector: Optional[pulumi.Input[str]] = None,
                  vpc_connector_egress_settings: Optional[pulumi.Input[str]] = None,
@@ -57,7 +57,7 @@ class Function(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] available_memory_mb: Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, and 2048MB.
+        :param pulumi.Input[int] available_memory_mb: Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, and 2048MB.
         :param pulumi.Input[str] description: Description of the function.
         :param pulumi.Input[str] entry_point: Name of the function that will be executed when the Google Cloud Function is triggered.
         :param pulumi.Input[Mapping[str, Any]] environment_variables: A set of key/value environment variable pairs to assign to the function.
@@ -65,7 +65,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] https_trigger_url: URL which triggers function execution. Returned only if `trigger_http` is used.
         :param pulumi.Input[str] ingress_settings: String value that controls what traffic can reach the function. Allowed values are ALLOW_ALL and ALLOW_INTERNAL_ONLY. Changes to this field will recreate the cloud function.
         :param pulumi.Input[Mapping[str, Any]] labels: A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
-        :param pulumi.Input[float] max_instances: The limit on the maximum number of function instances that may coexist at a given time.
+        :param pulumi.Input[int] max_instances: The limit on the maximum number of function instances that may coexist at a given time.
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must be unique globally.
         :param pulumi.Input[str] project: Project of the function. If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
@@ -76,7 +76,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] source_archive_object: The source archive object (file) in archive bucket.
         :param pulumi.Input[pulumi.InputType['FunctionSourceRepositoryArgs']] source_repository: Represents parameters related to source repository where a function is hosted.
                Cannot be set alongside `source_archive_bucket` or `source_archive_object`. Structure is documented below.
-        :param pulumi.Input[float] timeout: Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
+        :param pulumi.Input[int] timeout: Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
         :param pulumi.Input[bool] trigger_http: Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `trigger_bucket` and `trigger_topic`.
         :param pulumi.Input[str] vpc_connector: The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*/locations/*/connectors/*`.
         :param pulumi.Input[str] vpc_connector_egress_settings: The egress settings for the connector, controlling what traffic is diverted through it. Allowed values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`. Defaults to `PRIVATE_RANGES_ONLY`. If unset, this field preserves the previously set value.
@@ -131,7 +131,7 @@ class Function(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            available_memory_mb: Optional[pulumi.Input[float]] = None,
+            available_memory_mb: Optional[pulumi.Input[int]] = None,
             description: Optional[pulumi.Input[str]] = None,
             entry_point: Optional[pulumi.Input[str]] = None,
             environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -139,7 +139,7 @@ class Function(pulumi.CustomResource):
             https_trigger_url: Optional[pulumi.Input[str]] = None,
             ingress_settings: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            max_instances: Optional[pulumi.Input[float]] = None,
+            max_instances: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
@@ -148,7 +148,7 @@ class Function(pulumi.CustomResource):
             source_archive_bucket: Optional[pulumi.Input[str]] = None,
             source_archive_object: Optional[pulumi.Input[str]] = None,
             source_repository: Optional[pulumi.Input[pulumi.InputType['FunctionSourceRepositoryArgs']]] = None,
-            timeout: Optional[pulumi.Input[float]] = None,
+            timeout: Optional[pulumi.Input[int]] = None,
             trigger_http: Optional[pulumi.Input[bool]] = None,
             vpc_connector: Optional[pulumi.Input[str]] = None,
             vpc_connector_egress_settings: Optional[pulumi.Input[str]] = None) -> 'Function':
@@ -159,7 +159,7 @@ class Function(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] available_memory_mb: Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, and 2048MB.
+        :param pulumi.Input[int] available_memory_mb: Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, and 2048MB.
         :param pulumi.Input[str] description: Description of the function.
         :param pulumi.Input[str] entry_point: Name of the function that will be executed when the Google Cloud Function is triggered.
         :param pulumi.Input[Mapping[str, Any]] environment_variables: A set of key/value environment variable pairs to assign to the function.
@@ -167,7 +167,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] https_trigger_url: URL which triggers function execution. Returned only if `trigger_http` is used.
         :param pulumi.Input[str] ingress_settings: String value that controls what traffic can reach the function. Allowed values are ALLOW_ALL and ALLOW_INTERNAL_ONLY. Changes to this field will recreate the cloud function.
         :param pulumi.Input[Mapping[str, Any]] labels: A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
-        :param pulumi.Input[float] max_instances: The limit on the maximum number of function instances that may coexist at a given time.
+        :param pulumi.Input[int] max_instances: The limit on the maximum number of function instances that may coexist at a given time.
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must be unique globally.
         :param pulumi.Input[str] project: Project of the function. If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
@@ -178,7 +178,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] source_archive_object: The source archive object (file) in archive bucket.
         :param pulumi.Input[pulumi.InputType['FunctionSourceRepositoryArgs']] source_repository: Represents parameters related to source repository where a function is hosted.
                Cannot be set alongside `source_archive_bucket` or `source_archive_object`. Structure is documented below.
-        :param pulumi.Input[float] timeout: Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
+        :param pulumi.Input[int] timeout: Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
         :param pulumi.Input[bool] trigger_http: Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `trigger_bucket` and `trigger_topic`.
         :param pulumi.Input[str] vpc_connector: The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*/locations/*/connectors/*`.
         :param pulumi.Input[str] vpc_connector_egress_settings: The egress settings for the connector, controlling what traffic is diverted through it. Allowed values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`. Defaults to `PRIVATE_RANGES_ONLY`. If unset, this field preserves the previously set value.
@@ -212,7 +212,7 @@ class Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="availableMemoryMb")
-    def available_memory_mb(self) -> pulumi.Output[Optional[float]]:
+    def available_memory_mb(self) -> pulumi.Output[Optional[int]]:
         """
         Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, and 2048MB.
         """
@@ -276,7 +276,7 @@ class Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxInstances")
-    def max_instances(self) -> pulumi.Output[Optional[float]]:
+    def max_instances(self) -> pulumi.Output[Optional[int]]:
         """
         The limit on the maximum number of function instances that may coexist at a given time.
         """
@@ -350,7 +350,7 @@ class Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def timeout(self) -> pulumi.Output[Optional[float]]:
+    def timeout(self) -> pulumi.Output[Optional[int]]:
         """
         Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
         """

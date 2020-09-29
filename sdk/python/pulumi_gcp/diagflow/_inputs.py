@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -16,10 +16,10 @@ __all__ = [
 @pulumi.input_type
 class EntityTypeEntityArgs:
     def __init__(__self__, *,
-                 synonyms: pulumi.Input[List[pulumi.Input[str]]],
+                 synonyms: pulumi.Input[Sequence[pulumi.Input[str]]],
                  value: pulumi.Input[str]):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] synonyms: A collection of value synonyms. For example, if the entity type is vegetable, and value is scallions, a synonym
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] synonyms: A collection of value synonyms. For example, if the entity type is vegetable, and value is scallions, a synonym
                could be green onions.
                For KIND_LIST entity types:
                * This collection must contain exactly one synonym equal to value.
@@ -35,7 +35,7 @@ class EntityTypeEntityArgs:
 
     @property
     @pulumi.getter
-    def synonyms(self) -> pulumi.Input[List[pulumi.Input[str]]]:
+    def synonyms(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         A collection of value synonyms. For example, if the entity type is vegetable, and value is scallions, a synonym
         could be green onions.
@@ -45,7 +45,7 @@ class EntityTypeEntityArgs:
         return pulumi.get(self, "synonyms")
 
     @synonyms.setter
-    def synonyms(self, value: pulumi.Input[List[pulumi.Input[str]]]):
+    def synonyms(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "synonyms", value)
 
     @property

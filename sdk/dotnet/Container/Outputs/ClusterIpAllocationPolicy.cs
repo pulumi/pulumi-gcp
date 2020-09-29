@@ -27,6 +27,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// `cluster_ipv4_cidr_block` can be used to automatically create a GKE-managed one.
         /// </summary>
         public readonly string? ClusterSecondaryRangeName;
+        public readonly string? NodeIpv4CidrBlock;
         /// <summary>
         /// The IP address range of the services IPs in this cluster.
         /// Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
@@ -42,6 +43,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// GKE-managed one.
         /// </summary>
         public readonly string? ServicesSecondaryRangeName;
+        public readonly string? SubnetworkName;
 
         [OutputConstructor]
         private ClusterIpAllocationPolicy(
@@ -49,14 +51,20 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string? clusterSecondaryRangeName,
 
+            string? nodeIpv4CidrBlock,
+
             string? servicesIpv4CidrBlock,
 
-            string? servicesSecondaryRangeName)
+            string? servicesSecondaryRangeName,
+
+            string? subnetworkName)
         {
             ClusterIpv4CidrBlock = clusterIpv4CidrBlock;
             ClusterSecondaryRangeName = clusterSecondaryRangeName;
+            NodeIpv4CidrBlock = nodeIpv4CidrBlock;
             ServicesIpv4CidrBlock = servicesIpv4CidrBlock;
             ServicesSecondaryRangeName = servicesSecondaryRangeName;
+            SubnetworkName = subnetworkName;
         }
     }
 }

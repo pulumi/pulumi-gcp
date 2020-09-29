@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -42,8 +42,8 @@ class GetClusterResult:
         if database_encryptions and not isinstance(database_encryptions, list):
             raise TypeError("Expected argument 'database_encryptions' to be a list")
         pulumi.set(__self__, "database_encryptions", database_encryptions)
-        if default_max_pods_per_node and not isinstance(default_max_pods_per_node, float):
-            raise TypeError("Expected argument 'default_max_pods_per_node' to be a float")
+        if default_max_pods_per_node and not isinstance(default_max_pods_per_node, int):
+            raise TypeError("Expected argument 'default_max_pods_per_node' to be a int")
         pulumi.set(__self__, "default_max_pods_per_node", default_max_pods_per_node)
         if default_snat_statuses and not isinstance(default_snat_statuses, list):
             raise TypeError("Expected argument 'default_snat_statuses' to be a list")
@@ -75,8 +75,8 @@ class GetClusterResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if initial_node_count and not isinstance(initial_node_count, float):
-            raise TypeError("Expected argument 'initial_node_count' to be a float")
+        if initial_node_count and not isinstance(initial_node_count, int):
+            raise TypeError("Expected argument 'initial_node_count' to be a int")
         pulumi.set(__self__, "initial_node_count", initial_node_count)
         if instance_group_urls and not isinstance(instance_group_urls, list):
             raise TypeError("Expected argument 'instance_group_urls' to be a list")
@@ -186,22 +186,22 @@ class GetClusterResult:
 
     @property
     @pulumi.getter(name="additionalZones")
-    def additional_zones(self) -> List[str]:
+    def additional_zones(self) -> Sequence[str]:
         return pulumi.get(self, "additional_zones")
 
     @property
     @pulumi.getter(name="addonsConfigs")
-    def addons_configs(self) -> List['outputs.GetClusterAddonsConfigResult']:
+    def addons_configs(self) -> Sequence['outputs.GetClusterAddonsConfigResult']:
         return pulumi.get(self, "addons_configs")
 
     @property
     @pulumi.getter(name="authenticatorGroupsConfigs")
-    def authenticator_groups_configs(self) -> List['outputs.GetClusterAuthenticatorGroupsConfigResult']:
+    def authenticator_groups_configs(self) -> Sequence['outputs.GetClusterAuthenticatorGroupsConfigResult']:
         return pulumi.get(self, "authenticator_groups_configs")
 
     @property
     @pulumi.getter(name="clusterAutoscalings")
-    def cluster_autoscalings(self) -> List['outputs.GetClusterClusterAutoscalingResult']:
+    def cluster_autoscalings(self) -> Sequence['outputs.GetClusterClusterAutoscalingResult']:
         return pulumi.get(self, "cluster_autoscalings")
 
     @property
@@ -211,22 +211,22 @@ class GetClusterResult:
 
     @property
     @pulumi.getter(name="clusterTelemetries")
-    def cluster_telemetries(self) -> List['outputs.GetClusterClusterTelemetryResult']:
+    def cluster_telemetries(self) -> Sequence['outputs.GetClusterClusterTelemetryResult']:
         return pulumi.get(self, "cluster_telemetries")
 
     @property
     @pulumi.getter(name="databaseEncryptions")
-    def database_encryptions(self) -> List['outputs.GetClusterDatabaseEncryptionResult']:
+    def database_encryptions(self) -> Sequence['outputs.GetClusterDatabaseEncryptionResult']:
         return pulumi.get(self, "database_encryptions")
 
     @property
     @pulumi.getter(name="defaultMaxPodsPerNode")
-    def default_max_pods_per_node(self) -> float:
+    def default_max_pods_per_node(self) -> int:
         return pulumi.get(self, "default_max_pods_per_node")
 
     @property
     @pulumi.getter(name="defaultSnatStatuses")
-    def default_snat_statuses(self) -> List['outputs.GetClusterDefaultSnatStatusResult']:
+    def default_snat_statuses(self) -> Sequence['outputs.GetClusterDefaultSnatStatusResult']:
         return pulumi.get(self, "default_snat_statuses")
 
     @property
@@ -279,17 +279,17 @@ class GetClusterResult:
 
     @property
     @pulumi.getter(name="initialNodeCount")
-    def initial_node_count(self) -> float:
+    def initial_node_count(self) -> int:
         return pulumi.get(self, "initial_node_count")
 
     @property
     @pulumi.getter(name="instanceGroupUrls")
-    def instance_group_urls(self) -> List[str]:
+    def instance_group_urls(self) -> Sequence[str]:
         return pulumi.get(self, "instance_group_urls")
 
     @property
     @pulumi.getter(name="ipAllocationPolicies")
-    def ip_allocation_policies(self) -> List['outputs.GetClusterIpAllocationPolicyResult']:
+    def ip_allocation_policies(self) -> Sequence['outputs.GetClusterIpAllocationPolicyResult']:
         return pulumi.get(self, "ip_allocation_policies")
 
     @property
@@ -309,17 +309,17 @@ class GetClusterResult:
 
     @property
     @pulumi.getter(name="maintenancePolicies")
-    def maintenance_policies(self) -> List['outputs.GetClusterMaintenancePolicyResult']:
+    def maintenance_policies(self) -> Sequence['outputs.GetClusterMaintenancePolicyResult']:
         return pulumi.get(self, "maintenance_policies")
 
     @property
     @pulumi.getter(name="masterAuthorizedNetworksConfigs")
-    def master_authorized_networks_configs(self) -> List['outputs.GetClusterMasterAuthorizedNetworksConfigResult']:
+    def master_authorized_networks_configs(self) -> Sequence['outputs.GetClusterMasterAuthorizedNetworksConfigResult']:
         return pulumi.get(self, "master_authorized_networks_configs")
 
     @property
     @pulumi.getter(name="masterAuths")
-    def master_auths(self) -> List['outputs.GetClusterMasterAuthResult']:
+    def master_auths(self) -> Sequence['outputs.GetClusterMasterAuthResult']:
         return pulumi.get(self, "master_auths")
 
     @property
@@ -349,7 +349,7 @@ class GetClusterResult:
 
     @property
     @pulumi.getter(name="networkPolicies")
-    def network_policies(self) -> List['outputs.GetClusterNetworkPolicyResult']:
+    def network_policies(self) -> Sequence['outputs.GetClusterNetworkPolicyResult']:
         return pulumi.get(self, "network_policies")
 
     @property
@@ -359,17 +359,17 @@ class GetClusterResult:
 
     @property
     @pulumi.getter(name="nodeConfigs")
-    def node_configs(self) -> List['outputs.GetClusterNodeConfigResult']:
+    def node_configs(self) -> Sequence['outputs.GetClusterNodeConfigResult']:
         return pulumi.get(self, "node_configs")
 
     @property
     @pulumi.getter(name="nodeLocations")
-    def node_locations(self) -> List[str]:
+    def node_locations(self) -> Sequence[str]:
         return pulumi.get(self, "node_locations")
 
     @property
     @pulumi.getter(name="nodePools")
-    def node_pools(self) -> List['outputs.GetClusterNodePoolResult']:
+    def node_pools(self) -> Sequence['outputs.GetClusterNodePoolResult']:
         return pulumi.get(self, "node_pools")
 
     @property
@@ -384,12 +384,12 @@ class GetClusterResult:
 
     @property
     @pulumi.getter(name="podSecurityPolicyConfigs")
-    def pod_security_policy_configs(self) -> List['outputs.GetClusterPodSecurityPolicyConfigResult']:
+    def pod_security_policy_configs(self) -> Sequence['outputs.GetClusterPodSecurityPolicyConfigResult']:
         return pulumi.get(self, "pod_security_policy_configs")
 
     @property
     @pulumi.getter(name="privateClusterConfigs")
-    def private_cluster_configs(self) -> List['outputs.GetClusterPrivateClusterConfigResult']:
+    def private_cluster_configs(self) -> Sequence['outputs.GetClusterPrivateClusterConfigResult']:
         return pulumi.get(self, "private_cluster_configs")
 
     @property
@@ -404,7 +404,7 @@ class GetClusterResult:
 
     @property
     @pulumi.getter(name="releaseChannels")
-    def release_channels(self) -> List['outputs.GetClusterReleaseChannelResult']:
+    def release_channels(self) -> Sequence['outputs.GetClusterReleaseChannelResult']:
         return pulumi.get(self, "release_channels")
 
     @property
@@ -419,7 +419,7 @@ class GetClusterResult:
 
     @property
     @pulumi.getter(name="resourceUsageExportConfigs")
-    def resource_usage_export_configs(self) -> List['outputs.GetClusterResourceUsageExportConfigResult']:
+    def resource_usage_export_configs(self) -> Sequence['outputs.GetClusterResourceUsageExportConfigResult']:
         return pulumi.get(self, "resource_usage_export_configs")
 
     @property
@@ -444,12 +444,12 @@ class GetClusterResult:
 
     @property
     @pulumi.getter(name="verticalPodAutoscalings")
-    def vertical_pod_autoscalings(self) -> List['outputs.GetClusterVerticalPodAutoscalingResult']:
+    def vertical_pod_autoscalings(self) -> Sequence['outputs.GetClusterVerticalPodAutoscalingResult']:
         return pulumi.get(self, "vertical_pod_autoscalings")
 
     @property
     @pulumi.getter(name="workloadIdentityConfigs")
-    def workload_identity_configs(self) -> List['outputs.GetClusterWorkloadIdentityConfigResult']:
+    def workload_identity_configs(self) -> Sequence['outputs.GetClusterWorkloadIdentityConfigResult']:
         return pulumi.get(self, "workload_identity_configs")
 
     @property

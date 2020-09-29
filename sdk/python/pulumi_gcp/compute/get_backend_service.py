@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -21,8 +21,8 @@ class GetBackendServiceResult:
     A collection of values returned by getBackendService.
     """
     def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policies=None, circuit_breakers=None, connection_draining_timeout_sec=None, consistent_hash=None, creation_timestamp=None, custom_request_headers=None, description=None, enable_cdn=None, fingerprint=None, health_checks=None, iaps=None, id=None, load_balancing_scheme=None, locality_lb_policy=None, log_configs=None, name=None, outlier_detections=None, port_name=None, project=None, protocol=None, security_policy=None, self_link=None, session_affinity=None, timeout_sec=None):
-        if affinity_cookie_ttl_sec and not isinstance(affinity_cookie_ttl_sec, float):
-            raise TypeError("Expected argument 'affinity_cookie_ttl_sec' to be a float")
+        if affinity_cookie_ttl_sec and not isinstance(affinity_cookie_ttl_sec, int):
+            raise TypeError("Expected argument 'affinity_cookie_ttl_sec' to be a int")
         pulumi.set(__self__, "affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
         if backends and not isinstance(backends, list):
             raise TypeError("Expected argument 'backends' to be a list")
@@ -33,8 +33,8 @@ class GetBackendServiceResult:
         if circuit_breakers and not isinstance(circuit_breakers, list):
             raise TypeError("Expected argument 'circuit_breakers' to be a list")
         pulumi.set(__self__, "circuit_breakers", circuit_breakers)
-        if connection_draining_timeout_sec and not isinstance(connection_draining_timeout_sec, float):
-            raise TypeError("Expected argument 'connection_draining_timeout_sec' to be a float")
+        if connection_draining_timeout_sec and not isinstance(connection_draining_timeout_sec, int):
+            raise TypeError("Expected argument 'connection_draining_timeout_sec' to be a int")
         pulumi.set(__self__, "connection_draining_timeout_sec", connection_draining_timeout_sec)
         if consistent_hash and not isinstance(consistent_hash, list):
             raise TypeError("Expected argument 'consistent_hash' to be a list")
@@ -96,18 +96,18 @@ class GetBackendServiceResult:
         if session_affinity and not isinstance(session_affinity, str):
             raise TypeError("Expected argument 'session_affinity' to be a str")
         pulumi.set(__self__, "session_affinity", session_affinity)
-        if timeout_sec and not isinstance(timeout_sec, float):
-            raise TypeError("Expected argument 'timeout_sec' to be a float")
+        if timeout_sec and not isinstance(timeout_sec, int):
+            raise TypeError("Expected argument 'timeout_sec' to be a int")
         pulumi.set(__self__, "timeout_sec", timeout_sec)
 
     @property
     @pulumi.getter(name="affinityCookieTtlSec")
-    def affinity_cookie_ttl_sec(self) -> float:
+    def affinity_cookie_ttl_sec(self) -> int:
         return pulumi.get(self, "affinity_cookie_ttl_sec")
 
     @property
     @pulumi.getter
-    def backends(self) -> List['outputs.GetBackendServiceBackendResult']:
+    def backends(self) -> Sequence['outputs.GetBackendServiceBackendResult']:
         """
         The set of backends that serve this Backend Service.
         """
@@ -115,17 +115,17 @@ class GetBackendServiceResult:
 
     @property
     @pulumi.getter(name="cdnPolicies")
-    def cdn_policies(self) -> List['outputs.GetBackendServiceCdnPolicyResult']:
+    def cdn_policies(self) -> Sequence['outputs.GetBackendServiceCdnPolicyResult']:
         return pulumi.get(self, "cdn_policies")
 
     @property
     @pulumi.getter(name="circuitBreakers")
-    def circuit_breakers(self) -> List['outputs.GetBackendServiceCircuitBreakerResult']:
+    def circuit_breakers(self) -> Sequence['outputs.GetBackendServiceCircuitBreakerResult']:
         return pulumi.get(self, "circuit_breakers")
 
     @property
     @pulumi.getter(name="connectionDrainingTimeoutSec")
-    def connection_draining_timeout_sec(self) -> float:
+    def connection_draining_timeout_sec(self) -> int:
         """
         Time for which instance will be drained (not accept new connections, but still work to finish started ones).
         """
@@ -133,7 +133,7 @@ class GetBackendServiceResult:
 
     @property
     @pulumi.getter(name="consistentHash")
-    def consistent_hash(self) -> List['outputs.GetBackendServiceConsistentHashResult']:
+    def consistent_hash(self) -> Sequence['outputs.GetBackendServiceConsistentHashResult']:
         return pulumi.get(self, "consistent_hash")
 
     @property
@@ -143,7 +143,7 @@ class GetBackendServiceResult:
 
     @property
     @pulumi.getter(name="customRequestHeaders")
-    def custom_request_headers(self) -> List[str]:
+    def custom_request_headers(self) -> Sequence[str]:
         return pulumi.get(self, "custom_request_headers")
 
     @property
@@ -172,7 +172,7 @@ class GetBackendServiceResult:
 
     @property
     @pulumi.getter(name="healthChecks")
-    def health_checks(self) -> List[str]:
+    def health_checks(self) -> Sequence[str]:
         """
         The set of HTTP/HTTPS health checks used by the Backend Service.
         """
@@ -180,7 +180,7 @@ class GetBackendServiceResult:
 
     @property
     @pulumi.getter
-    def iaps(self) -> List['outputs.GetBackendServiceIapResult']:
+    def iaps(self) -> Sequence['outputs.GetBackendServiceIapResult']:
         return pulumi.get(self, "iaps")
 
     @property
@@ -203,7 +203,7 @@ class GetBackendServiceResult:
 
     @property
     @pulumi.getter(name="logConfigs")
-    def log_configs(self) -> List['outputs.GetBackendServiceLogConfigResult']:
+    def log_configs(self) -> Sequence['outputs.GetBackendServiceLogConfigResult']:
         return pulumi.get(self, "log_configs")
 
     @property
@@ -213,7 +213,7 @@ class GetBackendServiceResult:
 
     @property
     @pulumi.getter(name="outlierDetections")
-    def outlier_detections(self) -> List['outputs.GetBackendServiceOutlierDetectionResult']:
+    def outlier_detections(self) -> Sequence['outputs.GetBackendServiceOutlierDetectionResult']:
         return pulumi.get(self, "outlier_detections")
 
     @property
@@ -260,7 +260,7 @@ class GetBackendServiceResult:
 
     @property
     @pulumi.getter(name="timeoutSec")
-    def timeout_sec(self) -> float:
+    def timeout_sec(self) -> int:
         """
         The number of seconds to wait for a backend to respond to a request before considering the request failed.
         """

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['Instance']
@@ -21,7 +21,7 @@ class Instance(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location_id: Optional[pulumi.Input[str]] = None,
-                 memory_size_gb: Optional[pulumi.Input[float]] = None,
+                 memory_size_gb: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -62,7 +62,7 @@ class Instance(pulumi.CustomResource):
                instances will be created across two zones for protection against
                zonal failures. If [alternativeLocationId] is also provided, it must
                be different from [locationId].
-        :param pulumi.Input[float] memory_size_gb: Redis memory size in GiB.
+        :param pulumi.Input[int] memory_size_gb: Redis memory size in GiB.
         :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -143,10 +143,10 @@ class Instance(pulumi.CustomResource):
             host: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location_id: Optional[pulumi.Input[str]] = None,
-            memory_size_gb: Optional[pulumi.Input[float]] = None,
+            memory_size_gb: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             persistence_iam_identity: Optional[pulumi.Input[str]] = None,
-            port: Optional[pulumi.Input[float]] = None,
+            port: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
             redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             redis_version: Optional[pulumi.Input[str]] = None,
@@ -182,12 +182,12 @@ class Instance(pulumi.CustomResource):
                instances will be created across two zones for protection against
                zonal failures. If [alternativeLocationId] is also provided, it must
                be different from [locationId].
-        :param pulumi.Input[float] memory_size_gb: Redis memory size in GiB.
+        :param pulumi.Input[int] memory_size_gb: Redis memory size in GiB.
         :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
         :param pulumi.Input[str] persistence_iam_identity: Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
                "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export
                operation.
-        :param pulumi.Input[float] port: The port number of the exposed Redis endpoint.
+        :param pulumi.Input[int] port: The port number of the exposed Redis endpoint.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Redis configuration parameters, according to http://redis.io/topics/config.
@@ -322,7 +322,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="memorySizeGb")
-    def memory_size_gb(self) -> pulumi.Output[float]:
+    def memory_size_gb(self) -> pulumi.Output[int]:
         """
         Redis memory size in GiB.
         """
@@ -348,7 +348,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> pulumi.Output[float]:
+    def port(self) -> pulumi.Output[int]:
         """
         The port number of the exposed Redis endpoint.
         """

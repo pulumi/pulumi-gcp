@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -449,14 +449,14 @@ class JobPubsubTargetArgs:
 class JobRetryConfigArgs:
     def __init__(__self__, *,
                  max_backoff_duration: Optional[pulumi.Input[str]] = None,
-                 max_doublings: Optional[pulumi.Input[float]] = None,
+                 max_doublings: Optional[pulumi.Input[int]] = None,
                  max_retry_duration: Optional[pulumi.Input[str]] = None,
                  min_backoff_duration: Optional[pulumi.Input[str]] = None,
-                 retry_count: Optional[pulumi.Input[float]] = None):
+                 retry_count: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] max_backoff_duration: The maximum amount of time to wait before retrying a job after it fails.
                A duration in seconds with up to nine fractional digits, terminated by 's'.
-        :param pulumi.Input[float] max_doublings: The time between retries will double maxDoublings times.
+        :param pulumi.Input[int] max_doublings: The time between retries will double maxDoublings times.
                A job's retry interval starts at minBackoffDuration,
                then doubles maxDoublings times, then increases linearly,
                and finally retries retries at intervals of maxBackoffDuration up to retryCount times.
@@ -465,7 +465,7 @@ class JobRetryConfigArgs:
                A duration in seconds with up to nine fractional digits, terminated by 's'.
         :param pulumi.Input[str] min_backoff_duration: The minimum amount of time to wait before retrying a job after it fails.
                A duration in seconds with up to nine fractional digits, terminated by 's'.
-        :param pulumi.Input[float] retry_count: The number of attempts that the system will make to run a
+        :param pulumi.Input[int] retry_count: The number of attempts that the system will make to run a
                job using the exponential backoff procedure described by maxDoublings.
                Values greater than 5 and negative values are not allowed.
         """
@@ -495,7 +495,7 @@ class JobRetryConfigArgs:
 
     @property
     @pulumi.getter(name="maxDoublings")
-    def max_doublings(self) -> Optional[pulumi.Input[float]]:
+    def max_doublings(self) -> Optional[pulumi.Input[int]]:
         """
         The time between retries will double maxDoublings times.
         A job's retry interval starts at minBackoffDuration,
@@ -505,7 +505,7 @@ class JobRetryConfigArgs:
         return pulumi.get(self, "max_doublings")
 
     @max_doublings.setter
-    def max_doublings(self, value: Optional[pulumi.Input[float]]):
+    def max_doublings(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_doublings", value)
 
     @property
@@ -537,7 +537,7 @@ class JobRetryConfigArgs:
 
     @property
     @pulumi.getter(name="retryCount")
-    def retry_count(self) -> Optional[pulumi.Input[float]]:
+    def retry_count(self) -> Optional[pulumi.Input[int]]:
         """
         The number of attempts that the system will make to run a
         job using the exponential backoff procedure described by maxDoublings.
@@ -546,7 +546,7 @@ class JobRetryConfigArgs:
         return pulumi.get(self, "retry_count")
 
     @retry_count.setter
-    def retry_count(self, value: Optional[pulumi.Input[float]]):
+    def retry_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "retry_count", value)
 
 

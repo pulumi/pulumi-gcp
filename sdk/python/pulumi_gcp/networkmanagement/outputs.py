@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -19,7 +19,7 @@ class ConnectivityTestDestination(dict):
                  instance: Optional[str] = None,
                  ip_address: Optional[str] = None,
                  network: Optional[str] = None,
-                 port: Optional[float] = None,
+                 port: Optional[int] = None,
                  project_id: Optional[str] = None):
         """
         :param str instance: A Compute Engine instance URI.
@@ -27,7 +27,7 @@ class ConnectivityTestDestination(dict):
                internal IP. An IPv6 address is only allowed when the test's
                destination is a global load balancer VIP.
         :param str network: A Compute Engine network URI.
-        :param float port: The IP protocol port of the endpoint. Only applicable when
+        :param int port: The IP protocol port of the endpoint. Only applicable when
                protocol is TCP or UDP.
         :param str project_id: Project ID where the endpoint is located. The Project ID can be
                derived from the URI if you provide a VM instance or network URI.
@@ -77,7 +77,7 @@ class ConnectivityTestDestination(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[float]:
+    def port(self) -> Optional[int]:
         """
         The IP protocol port of the endpoint. Only applicable when
         protocol is TCP or UDP.
@@ -110,7 +110,7 @@ class ConnectivityTestSource(dict):
                  ip_address: Optional[str] = None,
                  network: Optional[str] = None,
                  network_type: Optional[str] = None,
-                 port: Optional[float] = None,
+                 port: Optional[int] = None,
                  project_id: Optional[str] = None):
         """
         :param str instance: A Compute Engine instance URI.
@@ -120,7 +120,7 @@ class ConnectivityTestSource(dict):
         :param str network: A Compute Engine network URI.
         :param str network_type: Type of the network where the endpoint is located.
                Possible values are `GCP_NETWORK` and `NON_GCP_NETWORK`.
-        :param float port: The IP protocol port of the endpoint. Only applicable when
+        :param int port: The IP protocol port of the endpoint. Only applicable when
                protocol is TCP or UDP.
         :param str project_id: Project ID where the endpoint is located. The Project ID can be
                derived from the URI if you provide a VM instance or network URI.
@@ -181,7 +181,7 @@ class ConnectivityTestSource(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[float]:
+    def port(self) -> Optional[int]:
         """
         The IP protocol port of the endpoint. Only applicable when
         protocol is TCP or UDP.

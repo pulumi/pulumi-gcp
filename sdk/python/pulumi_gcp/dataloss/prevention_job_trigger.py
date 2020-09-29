@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -22,7 +22,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
                  inspect_job: Optional[pulumi.Input[pulumi.InputType['PreventionJobTriggerInspectJobArgs']]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 triggers: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['PreventionJobTriggerTriggerArgs']]]]] = None,
+                 triggers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PreventionJobTriggerTriggerArgs']]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -48,7 +48,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
         :param pulumi.Input[str] status: Whether the trigger is currently active.
                Default value is `HEALTHY`.
                Possible values are `PAUSED`, `HEALTHY`, and `CANCELLED`.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['PreventionJobTriggerTriggerArgs']]]] triggers: What event needs to occur for a new job to be started.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PreventionJobTriggerTriggerArgs']]]] triggers: What event needs to occur for a new job to be started.
                Structure is documented below.
         """
         if __name__ is not None:
@@ -97,7 +97,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             parent: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            triggers: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['PreventionJobTriggerTriggerArgs']]]]] = None) -> 'PreventionJobTrigger':
+            triggers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PreventionJobTriggerTriggerArgs']]]]] = None) -> 'PreventionJobTrigger':
         """
         Get an existing PreventionJobTrigger resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -116,7 +116,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
         :param pulumi.Input[str] status: Whether the trigger is currently active.
                Default value is `HEALTHY`.
                Possible values are `PAUSED`, `HEALTHY`, and `CANCELLED`.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['PreventionJobTriggerTriggerArgs']]]] triggers: What event needs to occur for a new job to be started.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PreventionJobTriggerTriggerArgs']]]] triggers: What event needs to occur for a new job to be started.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -195,7 +195,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def triggers(self) -> pulumi.Output[List['outputs.PreventionJobTriggerTrigger']]:
+    def triggers(self) -> pulumi.Output[Sequence['outputs.PreventionJobTriggerTrigger']]:
         """
         What event needs to occur for a new job to be started.
         Structure is documented below.

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -19,7 +19,7 @@ class GameServerDeploymentRollout(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  default_game_server_config: Optional[pulumi.Input[str]] = None,
                  deployment_id: Optional[pulumi.Input[str]] = None,
-                 game_server_config_overrides: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['GameServerDeploymentRolloutGameServerConfigOverrideArgs']]]]] = None,
+                 game_server_config_overrides: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GameServerDeploymentRolloutGameServerConfigOverrideArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -42,7 +42,7 @@ class GameServerDeploymentRollout(pulumi.CustomResource):
                applied by default to all realms and clusters. For example,
                `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
         :param pulumi.Input[str] deployment_id: The deployment to rollout the new config to. Only 1 rollout must be associated with each deployment.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['GameServerDeploymentRolloutGameServerConfigOverrideArgs']]]] game_server_config_overrides: The game_server_config_overrides contains the per game server config
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GameServerDeploymentRolloutGameServerConfigOverrideArgs']]]] game_server_config_overrides: The game_server_config_overrides contains the per game server config
                overrides. The overrides are processed in the order they are listed. As
                soon as a match is found for a cluster, the rest of the list is not
                processed.
@@ -88,7 +88,7 @@ class GameServerDeploymentRollout(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             default_game_server_config: Optional[pulumi.Input[str]] = None,
             deployment_id: Optional[pulumi.Input[str]] = None,
-            game_server_config_overrides: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['GameServerDeploymentRolloutGameServerConfigOverrideArgs']]]]] = None,
+            game_server_config_overrides: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GameServerDeploymentRolloutGameServerConfigOverrideArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None) -> 'GameServerDeploymentRollout':
         """
@@ -102,7 +102,7 @@ class GameServerDeploymentRollout(pulumi.CustomResource):
                applied by default to all realms and clusters. For example,
                `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
         :param pulumi.Input[str] deployment_id: The deployment to rollout the new config to. Only 1 rollout must be associated with each deployment.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['GameServerDeploymentRolloutGameServerConfigOverrideArgs']]]] game_server_config_overrides: The game_server_config_overrides contains the per game server config
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GameServerDeploymentRolloutGameServerConfigOverrideArgs']]]] game_server_config_overrides: The game_server_config_overrides contains the per game server config
                overrides. The overrides are processed in the order they are listed. As
                soon as a match is found for a cluster, the rest of the list is not
                processed.
@@ -143,7 +143,7 @@ class GameServerDeploymentRollout(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="gameServerConfigOverrides")
-    def game_server_config_overrides(self) -> pulumi.Output[Optional[List['outputs.GameServerDeploymentRolloutGameServerConfigOverride']]]:
+    def game_server_config_overrides(self) -> pulumi.Output[Optional[Sequence['outputs.GameServerDeploymentRolloutGameServerConfigOverride']]]:
         """
         The game_server_config_overrides contains the per game server config
         overrides. The overrides are processed in the order they are listed. As

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -20,7 +20,7 @@ __all__ = [
 @pulumi.output_type
 class ServiceApi(dict):
     def __init__(__self__, *,
-                 methods: Optional[List['outputs.ServiceApiMethod']] = None,
+                 methods: Optional[Sequence['outputs.ServiceApiMethod']] = None,
                  name: Optional[str] = None,
                  syntax: Optional[str] = None,
                  version: Optional[str] = None):
@@ -35,7 +35,7 @@ class ServiceApi(dict):
 
     @property
     @pulumi.getter
-    def methods(self) -> Optional[List['outputs.ServiceApiMethod']]:
+    def methods(self) -> Optional[Sequence['outputs.ServiceApiMethod']]:
         return pulumi.get(self, "methods")
 
     @property

@@ -770,6 +770,7 @@ type BucketLifecycleRuleCondition struct {
 	Age *int `pulumi:"age"`
 	// Creation date of an object in RFC 3339 (e.g. `2017-06-13`) to satisfy this condition.
 	CreatedBefore *string `pulumi:"createdBefore"`
+	IsLive        *bool   `pulumi:"isLive"`
 	// [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`, `STANDARD`, `DURABLE_REDUCED_AVAILABILITY`.
 	MatchesStorageClasses []string `pulumi:"matchesStorageClasses"`
 	// Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
@@ -794,6 +795,7 @@ type BucketLifecycleRuleConditionArgs struct {
 	Age pulumi.IntPtrInput `pulumi:"age"`
 	// Creation date of an object in RFC 3339 (e.g. `2017-06-13`) to satisfy this condition.
 	CreatedBefore pulumi.StringPtrInput `pulumi:"createdBefore"`
+	IsLive        pulumi.BoolPtrInput   `pulumi:"isLive"`
 	// [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`, `STANDARD`, `DURABLE_REDUCED_AVAILABILITY`.
 	MatchesStorageClasses pulumi.StringArrayInput `pulumi:"matchesStorageClasses"`
 	// Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
@@ -836,6 +838,10 @@ func (o BucketLifecycleRuleConditionOutput) Age() pulumi.IntPtrOutput {
 // Creation date of an object in RFC 3339 (e.g. `2017-06-13`) to satisfy this condition.
 func (o BucketLifecycleRuleConditionOutput) CreatedBefore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleCondition) *string { return v.CreatedBefore }).(pulumi.StringPtrOutput)
+}
+
+func (o BucketLifecycleRuleConditionOutput) IsLive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BucketLifecycleRuleCondition) *bool { return v.IsLive }).(pulumi.BoolPtrOutput)
 }
 
 // [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`, `STANDARD`, `DURABLE_REDUCED_AVAILABILITY`.

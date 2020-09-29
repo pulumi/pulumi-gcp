@@ -30,6 +30,9 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("clusterSecondaryRangeName")]
         public Input<string>? ClusterSecondaryRangeName { get; set; }
 
+        [Input("nodeIpv4CidrBlock")]
+        public Input<string>? NodeIpv4CidrBlock { get; set; }
+
         /// <summary>
         /// The IP address range of the services IPs in this cluster.
         /// Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
@@ -48,6 +51,9 @@ namespace Pulumi.Gcp.Container.Inputs
         /// </summary>
         [Input("servicesSecondaryRangeName")]
         public Input<string>? ServicesSecondaryRangeName { get; set; }
+
+        [Input("subnetworkName")]
+        public Input<string>? SubnetworkName { get; set; }
 
         public ClusterIpAllocationPolicyGetArgs()
         {

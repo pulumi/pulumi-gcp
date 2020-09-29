@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,7 +18,7 @@ class Tag(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  column: Optional[pulumi.Input[str]] = None,
-                 fields: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['TagFieldArgs']]]]] = None,
+                 fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TagFieldArgs']]]]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  template: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -43,7 +43,7 @@ class Tag(pulumi.CustomResource):
                individual column based on that schema.
                For attaching a tag to a nested column, use `.` to separate the column names. Example:
                `outer_column.inner_column`
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['TagFieldArgs']]]] fields: This maps the ID of a tag field to the value of and additional information about that field.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TagFieldArgs']]]] fields: This maps the ID of a tag field to the value of and additional information about that field.
                Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
                Structure is documented below.
         :param pulumi.Input[str] parent: The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
@@ -90,7 +90,7 @@ class Tag(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             column: Optional[pulumi.Input[str]] = None,
-            fields: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['TagFieldArgs']]]]] = None,
+            fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TagFieldArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             parent: Optional[pulumi.Input[str]] = None,
             template: Optional[pulumi.Input[str]] = None,
@@ -106,7 +106,7 @@ class Tag(pulumi.CustomResource):
                individual column based on that schema.
                For attaching a tag to a nested column, use `.` to separate the column names. Example:
                `outer_column.inner_column`
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['TagFieldArgs']]]] fields: This maps the ID of a tag field to the value of and additional information about that field.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TagFieldArgs']]]] fields: This maps the ID of a tag field to the value of and additional information about that field.
                Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
                Structure is documented below.
         :param pulumi.Input[str] name: The resource name of the tag in URL format. Example:
@@ -145,7 +145,7 @@ class Tag(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def fields(self) -> pulumi.Output[List['outputs.TagField']]:
+    def fields(self) -> pulumi.Output[Sequence['outputs.TagField']]:
         """
         This maps the ID of a tag field to the value of and additional information about that field.
         Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.

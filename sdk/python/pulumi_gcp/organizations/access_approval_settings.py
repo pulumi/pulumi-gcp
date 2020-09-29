@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -17,8 +17,8 @@ class AccessApprovalSettings(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enrolled_services: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['AccessApprovalSettingsEnrolledServiceArgs']]]]] = None,
-                 notification_emails: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 enrolled_services: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApprovalSettingsEnrolledServiceArgs']]]]] = None,
+                 notification_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -27,11 +27,11 @@ class AccessApprovalSettings(pulumi.CustomResource):
         Create a AccessApprovalSettings resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['AccessApprovalSettingsEnrolledServiceArgs']]]] enrolled_services: A list of Google Cloud Services for which the given resource has Access Approval enrolled. Access requests for the
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApprovalSettingsEnrolledServiceArgs']]]] enrolled_services: A list of Google Cloud Services for which the given resource has Access Approval enrolled. Access requests for the
                resource given by name against any of these services contained here will be required to have explicit approval.
                Enrollment can be done for individual services. A maximum of 10 enrolled services will be enforced, to be expanded as
                the set of supported services is expanded.
-        :param pulumi.Input[List[pulumi.Input[str]]] notification_emails: A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_emails: A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
                a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
                addresses are allowed.
         :param pulumi.Input[str] organization_id: ID of the organization of the access approval settings.
@@ -73,9 +73,9 @@ class AccessApprovalSettings(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             enrolled_ancestor: Optional[pulumi.Input[bool]] = None,
-            enrolled_services: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['AccessApprovalSettingsEnrolledServiceArgs']]]]] = None,
+            enrolled_services: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApprovalSettingsEnrolledServiceArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            notification_emails: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            notification_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             organization_id: Optional[pulumi.Input[str]] = None) -> 'AccessApprovalSettings':
         """
         Get an existing AccessApprovalSettings resource's state with the given name, id, and optional extra
@@ -85,12 +85,12 @@ class AccessApprovalSettings(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enrolled_ancestor: This field will always be unset for the organization since organizations do not have ancestors.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['AccessApprovalSettingsEnrolledServiceArgs']]]] enrolled_services: A list of Google Cloud Services for which the given resource has Access Approval enrolled. Access requests for the
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApprovalSettingsEnrolledServiceArgs']]]] enrolled_services: A list of Google Cloud Services for which the given resource has Access Approval enrolled. Access requests for the
                resource given by name against any of these services contained here will be required to have explicit approval.
                Enrollment can be done for individual services. A maximum of 10 enrolled services will be enforced, to be expanded as
                the set of supported services is expanded.
         :param pulumi.Input[str] name: The resource name of the settings. Format is "organizations/{organization_id}/accessApprovalSettings"
-        :param pulumi.Input[List[pulumi.Input[str]]] notification_emails: A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_emails: A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
                a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
                addresses are allowed.
         :param pulumi.Input[str] organization_id: ID of the organization of the access approval settings.
@@ -116,7 +116,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enrolledServices")
-    def enrolled_services(self) -> pulumi.Output[List['outputs.AccessApprovalSettingsEnrolledService']]:
+    def enrolled_services(self) -> pulumi.Output[Sequence['outputs.AccessApprovalSettingsEnrolledService']]:
         """
         A list of Google Cloud Services for which the given resource has Access Approval enrolled. Access requests for the
         resource given by name against any of these services contained here will be required to have explicit approval.
@@ -135,7 +135,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="notificationEmails")
-    def notification_emails(self) -> pulumi.Output[List[str]]:
+    def notification_emails(self) -> pulumi.Output[Sequence[str]]:
         """
         A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
         a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email

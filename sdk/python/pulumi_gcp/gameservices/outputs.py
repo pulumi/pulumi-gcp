@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -145,16 +145,16 @@ class GameServerConfigScalingConfig(dict):
     def __init__(__self__, *,
                  fleet_autoscaler_spec: str,
                  name: str,
-                 schedules: Optional[List['outputs.GameServerConfigScalingConfigSchedule']] = None,
-                 selectors: Optional[List['outputs.GameServerConfigScalingConfigSelector']] = None):
+                 schedules: Optional[Sequence['outputs.GameServerConfigScalingConfigSchedule']] = None,
+                 selectors: Optional[Sequence['outputs.GameServerConfigScalingConfigSelector']] = None):
         """
         :param str fleet_autoscaler_spec: Fleet autoscaler spec, which is sent to Agones.
                Example spec can be found :
                https://agones.dev/site/docs/reference/fleetautoscaler/
         :param str name: The name of the ScalingConfig
-        :param List['GameServerConfigScalingConfigScheduleArgs'] schedules: The schedules to which this scaling config applies.
+        :param Sequence['GameServerConfigScalingConfigScheduleArgs'] schedules: The schedules to which this scaling config applies.
                Structure is documented below.
-        :param List['GameServerConfigScalingConfigSelectorArgs'] selectors: Labels used to identify the clusters to which this scaling config
+        :param Sequence['GameServerConfigScalingConfigSelectorArgs'] selectors: Labels used to identify the clusters to which this scaling config
                applies. A cluster is subject to this scaling config if its labels match
                any of the selector entries.
                Structure is documented below.
@@ -186,7 +186,7 @@ class GameServerConfigScalingConfig(dict):
 
     @property
     @pulumi.getter
-    def schedules(self) -> Optional[List['outputs.GameServerConfigScalingConfigSchedule']]:
+    def schedules(self) -> Optional[Sequence['outputs.GameServerConfigScalingConfigSchedule']]:
         """
         The schedules to which this scaling config applies.
         Structure is documented below.
@@ -195,7 +195,7 @@ class GameServerConfigScalingConfig(dict):
 
     @property
     @pulumi.getter
-    def selectors(self) -> Optional[List['outputs.GameServerConfigScalingConfigSelector']]:
+    def selectors(self) -> Optional[Sequence['outputs.GameServerConfigScalingConfigSelector']]:
         """
         Labels used to identify the clusters to which this scaling config
         applies. A cluster is subject to this scaling config if its labels match
@@ -339,16 +339,16 @@ class GameServerDeploymentRolloutGameServerConfigOverride(dict):
 @pulumi.output_type
 class GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector(dict):
     def __init__(__self__, *,
-                 realms: Optional[List[str]] = None):
+                 realms: Optional[Sequence[str]] = None):
         """
-        :param List[str] realms: List of realms to match against.
+        :param Sequence[str] realms: List of realms to match against.
         """
         if realms is not None:
             pulumi.set(__self__, "realms", realms)
 
     @property
     @pulumi.getter
-    def realms(self) -> Optional[List[str]]:
+    def realms(self) -> Optional[Sequence[str]]:
         """
         List of realms to match against.
         """
@@ -362,7 +362,7 @@ class GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector(dict):
 class GetGameServerDeploymentRolloutGameServerConfigOverrideResult(dict):
     def __init__(__self__, *,
                  config_version: str,
-                 realms_selectors: List['outputs.GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorResult']):
+                 realms_selectors: Sequence['outputs.GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorResult']):
         pulumi.set(__self__, "config_version", config_version)
         pulumi.set(__self__, "realms_selectors", realms_selectors)
 
@@ -373,19 +373,19 @@ class GetGameServerDeploymentRolloutGameServerConfigOverrideResult(dict):
 
     @property
     @pulumi.getter(name="realmsSelectors")
-    def realms_selectors(self) -> List['outputs.GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorResult']:
+    def realms_selectors(self) -> Sequence['outputs.GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorResult']:
         return pulumi.get(self, "realms_selectors")
 
 
 @pulumi.output_type
 class GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorResult(dict):
     def __init__(__self__, *,
-                 realms: List[str]):
+                 realms: Sequence[str]):
         pulumi.set(__self__, "realms", realms)
 
     @property
     @pulumi.getter
-    def realms(self) -> List[str]:
+    def realms(self) -> Sequence[str]:
         return pulumi.get(self, "realms")
 
 

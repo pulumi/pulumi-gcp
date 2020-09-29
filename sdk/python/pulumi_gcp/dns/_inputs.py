@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -27,12 +27,12 @@ __all__ = [
 @pulumi.input_type
 class ManagedZoneDnssecConfigArgs:
     def __init__(__self__, *,
-                 default_key_specs: Optional[pulumi.Input[List[pulumi.Input['ManagedZoneDnssecConfigDefaultKeySpecArgs']]]] = None,
+                 default_key_specs: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZoneDnssecConfigDefaultKeySpecArgs']]]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  non_existence: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input['ManagedZoneDnssecConfigDefaultKeySpecArgs']]] default_key_specs: Specifies parameters that will be used for generating initial DnsKeys
+        :param pulumi.Input[Sequence[pulumi.Input['ManagedZoneDnssecConfigDefaultKeySpecArgs']]] default_key_specs: Specifies parameters that will be used for generating initial DnsKeys
                for this ManagedZone. If you provide a spec for keySigning or zoneSigning,
                you must also provide one for the other.
                default_key_specs can only be updated when the state is `off`.
@@ -55,7 +55,7 @@ class ManagedZoneDnssecConfigArgs:
 
     @property
     @pulumi.getter(name="defaultKeySpecs")
-    def default_key_specs(self) -> Optional[pulumi.Input[List[pulumi.Input['ManagedZoneDnssecConfigDefaultKeySpecArgs']]]]:
+    def default_key_specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZoneDnssecConfigDefaultKeySpecArgs']]]]:
         """
         Specifies parameters that will be used for generating initial DnsKeys
         for this ManagedZone. If you provide a spec for keySigning or zoneSigning,
@@ -66,7 +66,7 @@ class ManagedZoneDnssecConfigArgs:
         return pulumi.get(self, "default_key_specs")
 
     @default_key_specs.setter
-    def default_key_specs(self, value: Optional[pulumi.Input[List[pulumi.Input['ManagedZoneDnssecConfigDefaultKeySpecArgs']]]]):
+    def default_key_specs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZoneDnssecConfigDefaultKeySpecArgs']]]]):
         pulumi.set(self, "default_key_specs", value)
 
     @property
@@ -113,13 +113,13 @@ class ManagedZoneDnssecConfigArgs:
 class ManagedZoneDnssecConfigDefaultKeySpecArgs:
     def __init__(__self__, *,
                  algorithm: Optional[pulumi.Input[str]] = None,
-                 key_length: Optional[pulumi.Input[float]] = None,
+                 key_length: Optional[pulumi.Input[int]] = None,
                  key_type: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] algorithm: String mnemonic specifying the DNSSEC algorithm of this key
                Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
-        :param pulumi.Input[float] key_length: Length of the keys in bits
+        :param pulumi.Input[int] key_length: Length of the keys in bits
         :param pulumi.Input[str] key_type: Specifies whether this is a key signing key (KSK) or a zone
                signing key (ZSK). Key signing keys have the Secure Entry
                Point flag set and, when active, will only be used to sign
@@ -153,14 +153,14 @@ class ManagedZoneDnssecConfigDefaultKeySpecArgs:
 
     @property
     @pulumi.getter(name="keyLength")
-    def key_length(self) -> Optional[pulumi.Input[float]]:
+    def key_length(self) -> Optional[pulumi.Input[int]]:
         """
         Length of the keys in bits
         """
         return pulumi.get(self, "key_length")
 
     @key_length.setter
-    def key_length(self, value: Optional[pulumi.Input[float]]):
+    def key_length(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "key_length", value)
 
     @property
@@ -197,9 +197,9 @@ class ManagedZoneDnssecConfigDefaultKeySpecArgs:
 @pulumi.input_type
 class ManagedZoneForwardingConfigArgs:
     def __init__(__self__, *,
-                 target_name_servers: pulumi.Input[List[pulumi.Input['ManagedZoneForwardingConfigTargetNameServerArgs']]]):
+                 target_name_servers: pulumi.Input[Sequence[pulumi.Input['ManagedZoneForwardingConfigTargetNameServerArgs']]]):
         """
-        :param pulumi.Input[List[pulumi.Input['ManagedZoneForwardingConfigTargetNameServerArgs']]] target_name_servers: List of target name servers to forward to. Cloud DNS will
+        :param pulumi.Input[Sequence[pulumi.Input['ManagedZoneForwardingConfigTargetNameServerArgs']]] target_name_servers: List of target name servers to forward to. Cloud DNS will
                select the best available name server if more than
                one target is given.
                Structure is documented below.
@@ -208,7 +208,7 @@ class ManagedZoneForwardingConfigArgs:
 
     @property
     @pulumi.getter(name="targetNameServers")
-    def target_name_servers(self) -> pulumi.Input[List[pulumi.Input['ManagedZoneForwardingConfigTargetNameServerArgs']]]:
+    def target_name_servers(self) -> pulumi.Input[Sequence[pulumi.Input['ManagedZoneForwardingConfigTargetNameServerArgs']]]:
         """
         List of target name servers to forward to. Cloud DNS will
         select the best available name server if more than
@@ -218,7 +218,7 @@ class ManagedZoneForwardingConfigArgs:
         return pulumi.get(self, "target_name_servers")
 
     @target_name_servers.setter
-    def target_name_servers(self, value: pulumi.Input[List[pulumi.Input['ManagedZoneForwardingConfigTargetNameServerArgs']]]):
+    def target_name_servers(self, value: pulumi.Input[Sequence[pulumi.Input['ManagedZoneForwardingConfigTargetNameServerArgs']]]):
         pulumi.set(self, "target_name_servers", value)
 
 
@@ -319,22 +319,22 @@ class ManagedZonePeeringConfigTargetNetworkArgs:
 @pulumi.input_type
 class ManagedZonePrivateVisibilityConfigArgs:
     def __init__(__self__, *,
-                 networks: pulumi.Input[List[pulumi.Input['ManagedZonePrivateVisibilityConfigNetworkArgs']]]):
+                 networks: pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigNetworkArgs']]]):
         """
-        :param pulumi.Input[List[pulumi.Input['ManagedZonePrivateVisibilityConfigNetworkArgs']]] networks: The list of VPC networks that can see this zone. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigNetworkArgs']]] networks: The list of VPC networks that can see this zone. Structure is documented below.
         """
         pulumi.set(__self__, "networks", networks)
 
     @property
     @pulumi.getter
-    def networks(self) -> pulumi.Input[List[pulumi.Input['ManagedZonePrivateVisibilityConfigNetworkArgs']]]:
+    def networks(self) -> pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigNetworkArgs']]]:
         """
         The list of VPC networks that can see this zone. Structure is documented below.
         """
         return pulumi.get(self, "networks")
 
     @networks.setter
-    def networks(self, value: pulumi.Input[List[pulumi.Input['ManagedZonePrivateVisibilityConfigNetworkArgs']]]):
+    def networks(self, value: pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigNetworkArgs']]]):
         pulumi.set(self, "networks", value)
 
 
@@ -421,9 +421,9 @@ class ManagedZoneServiceDirectoryConfigNamespaceArgs:
 @pulumi.input_type
 class PolicyAlternativeNameServerConfigArgs:
     def __init__(__self__, *,
-                 target_name_servers: pulumi.Input[List[pulumi.Input['PolicyAlternativeNameServerConfigTargetNameServerArgs']]]):
+                 target_name_servers: pulumi.Input[Sequence[pulumi.Input['PolicyAlternativeNameServerConfigTargetNameServerArgs']]]):
         """
-        :param pulumi.Input[List[pulumi.Input['PolicyAlternativeNameServerConfigTargetNameServerArgs']]] target_name_servers: Sets an alternative name server for the associated networks. When specified,
+        :param pulumi.Input[Sequence[pulumi.Input['PolicyAlternativeNameServerConfigTargetNameServerArgs']]] target_name_servers: Sets an alternative name server for the associated networks. When specified,
                all DNS queries are forwarded to a name server that you choose. Names such as .internal
                are not available when an alternative name server is specified.
                Structure is documented below.
@@ -432,7 +432,7 @@ class PolicyAlternativeNameServerConfigArgs:
 
     @property
     @pulumi.getter(name="targetNameServers")
-    def target_name_servers(self) -> pulumi.Input[List[pulumi.Input['PolicyAlternativeNameServerConfigTargetNameServerArgs']]]:
+    def target_name_servers(self) -> pulumi.Input[Sequence[pulumi.Input['PolicyAlternativeNameServerConfigTargetNameServerArgs']]]:
         """
         Sets an alternative name server for the associated networks. When specified,
         all DNS queries are forwarded to a name server that you choose. Names such as .internal
@@ -442,7 +442,7 @@ class PolicyAlternativeNameServerConfigArgs:
         return pulumi.get(self, "target_name_servers")
 
     @target_name_servers.setter
-    def target_name_servers(self, value: pulumi.Input[List[pulumi.Input['PolicyAlternativeNameServerConfigTargetNameServerArgs']]]):
+    def target_name_servers(self, value: pulumi.Input[Sequence[pulumi.Input['PolicyAlternativeNameServerConfigTargetNameServerArgs']]]):
         pulumi.set(self, "target_name_servers", value)
 
 

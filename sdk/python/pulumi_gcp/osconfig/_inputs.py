@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -70,28 +70,28 @@ __all__ = [
 @pulumi.input_type
 class GuestPoliciesAssignmentArgs:
     def __init__(__self__, *,
-                 group_labels: Optional[pulumi.Input[List[pulumi.Input['GuestPoliciesAssignmentGroupLabelArgs']]]] = None,
-                 instance_name_prefixes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 instances: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 os_types: Optional[pulumi.Input[List[pulumi.Input['GuestPoliciesAssignmentOsTypeArgs']]]] = None,
-                 zones: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 group_labels: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesAssignmentGroupLabelArgs']]]] = None,
+                 instance_name_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 os_types: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesAssignmentOsTypeArgs']]]] = None,
+                 zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input['GuestPoliciesAssignmentGroupLabelArgs']]] group_labels: Targets instances matching at least one of these label sets. This allows an assignment to target disparate groups,
+        :param pulumi.Input[Sequence[pulumi.Input['GuestPoliciesAssignmentGroupLabelArgs']]] group_labels: Targets instances matching at least one of these label sets. This allows an assignment to target disparate groups,
                for example "env=prod or env=staging".
                Structure is documented below.
-        :param pulumi.Input[List[pulumi.Input[str]]] instance_name_prefixes: Targets VM instances whose name starts with one of these prefixes.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_name_prefixes: Targets VM instances whose name starts with one of these prefixes.
                Like labels, this is another way to group VM instances when targeting configs,
                for example prefix="prod-".
                Only supported for project-level policies.
-        :param pulumi.Input[List[pulumi.Input[str]]] instances: Targets any of the instances specified. Instances are specified by their URI in the form
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instances: Targets any of the instances specified. Instances are specified by their URI in the form
                zones/[ZONE]/instances/[INSTANCE_NAME].
                Instance targeting is uncommon and is supported to facilitate the management of changes
                by the instance or to target specific VM instances for development and testing.
                Only supported for project-level policies and must reference instances within this project.
-        :param pulumi.Input[List[pulumi.Input['GuestPoliciesAssignmentOsTypeArgs']]] os_types: Targets VM instances matching at least one of the following OS types.
+        :param pulumi.Input[Sequence[pulumi.Input['GuestPoliciesAssignmentOsTypeArgs']]] os_types: Targets VM instances matching at least one of the following OS types.
                VM instances must match all supplied criteria for a given OsType to be included.
                Structure is documented below.
-        :param pulumi.Input[List[pulumi.Input[str]]] zones: Targets instances in any of these zones. Leave empty to target instances in any zone.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: Targets instances in any of these zones. Leave empty to target instances in any zone.
                Zonal targeting is uncommon and is supported to facilitate the management of changes by zone.
         """
         if group_labels is not None:
@@ -107,7 +107,7 @@ class GuestPoliciesAssignmentArgs:
 
     @property
     @pulumi.getter(name="groupLabels")
-    def group_labels(self) -> Optional[pulumi.Input[List[pulumi.Input['GuestPoliciesAssignmentGroupLabelArgs']]]]:
+    def group_labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesAssignmentGroupLabelArgs']]]]:
         """
         Targets instances matching at least one of these label sets. This allows an assignment to target disparate groups,
         for example "env=prod or env=staging".
@@ -116,12 +116,12 @@ class GuestPoliciesAssignmentArgs:
         return pulumi.get(self, "group_labels")
 
     @group_labels.setter
-    def group_labels(self, value: Optional[pulumi.Input[List[pulumi.Input['GuestPoliciesAssignmentGroupLabelArgs']]]]):
+    def group_labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesAssignmentGroupLabelArgs']]]]):
         pulumi.set(self, "group_labels", value)
 
     @property
     @pulumi.getter(name="instanceNamePrefixes")
-    def instance_name_prefixes(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def instance_name_prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Targets VM instances whose name starts with one of these prefixes.
         Like labels, this is another way to group VM instances when targeting configs,
@@ -131,12 +131,12 @@ class GuestPoliciesAssignmentArgs:
         return pulumi.get(self, "instance_name_prefixes")
 
     @instance_name_prefixes.setter
-    def instance_name_prefixes(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def instance_name_prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "instance_name_prefixes", value)
 
     @property
     @pulumi.getter
-    def instances(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Targets any of the instances specified. Instances are specified by their URI in the form
         zones/[ZONE]/instances/[INSTANCE_NAME].
@@ -147,12 +147,12 @@ class GuestPoliciesAssignmentArgs:
         return pulumi.get(self, "instances")
 
     @instances.setter
-    def instances(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def instances(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "instances", value)
 
     @property
     @pulumi.getter(name="osTypes")
-    def os_types(self) -> Optional[pulumi.Input[List[pulumi.Input['GuestPoliciesAssignmentOsTypeArgs']]]]:
+    def os_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesAssignmentOsTypeArgs']]]]:
         """
         Targets VM instances matching at least one of the following OS types.
         VM instances must match all supplied criteria for a given OsType to be included.
@@ -161,12 +161,12 @@ class GuestPoliciesAssignmentArgs:
         return pulumi.get(self, "os_types")
 
     @os_types.setter
-    def os_types(self, value: Optional[pulumi.Input[List[pulumi.Input['GuestPoliciesAssignmentOsTypeArgs']]]]):
+    def os_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesAssignmentOsTypeArgs']]]]):
         pulumi.set(self, "os_types", value)
 
     @property
     @pulumi.getter
-    def zones(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Targets instances in any of these zones. Leave empty to target instances in any zone.
         Zonal targeting is uncommon and is supported to facilitate the management of changes by zone.
@@ -174,7 +174,7 @@ class GuestPoliciesAssignmentArgs:
         return pulumi.get(self, "zones")
 
     @zones.setter
-    def zones(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "zones", value)
 
 
@@ -421,13 +421,13 @@ class GuestPoliciesPackageRepositoryArgs:
 @pulumi.input_type
 class GuestPoliciesPackageRepositoryAptArgs:
     def __init__(__self__, *,
-                 components: pulumi.Input[List[pulumi.Input[str]]],
+                 components: pulumi.Input[Sequence[pulumi.Input[str]]],
                  distribution: pulumi.Input[str],
                  uri: pulumi.Input[str],
                  archive_type: Optional[pulumi.Input[str]] = None,
                  gpg_key: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] components: List of components for this repository. Must contain at least one item.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] components: List of components for this repository. Must contain at least one item.
         :param pulumi.Input[str] distribution: Distribution of this repository.
         :param pulumi.Input[str] uri: URI from which to fetch the object. It should contain both the protocol and path following the format {protocol}://{location}.
         :param pulumi.Input[str] archive_type: Type of archive files in this repository. The default behavior is DEB.
@@ -446,14 +446,14 @@ class GuestPoliciesPackageRepositoryAptArgs:
 
     @property
     @pulumi.getter
-    def components(self) -> pulumi.Input[List[pulumi.Input[str]]]:
+    def components(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         List of components for this repository. Must contain at least one item.
         """
         return pulumi.get(self, "components")
 
     @components.setter
-    def components(self, value: pulumi.Input[List[pulumi.Input[str]]]):
+    def components(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "components", value)
 
     @property
@@ -557,13 +557,13 @@ class GuestPoliciesPackageRepositoryYumArgs:
                  base_url: pulumi.Input[str],
                  id: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
-                 gpg_keys: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 gpg_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] base_url: The location of the repository directory.
         :param pulumi.Input[str] id: Id of the artifact, which the installation and update steps of this recipe can reference.
                Artifacts in a recipe cannot have the same id.
         :param pulumi.Input[str] display_name: The display name of the repository.
-        :param pulumi.Input[List[pulumi.Input[str]]] gpg_keys: URIs of GPG keys.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] gpg_keys: URIs of GPG keys.
         """
         pulumi.set(__self__, "base_url", base_url)
         pulumi.set(__self__, "id", id)
@@ -611,14 +611,14 @@ class GuestPoliciesPackageRepositoryYumArgs:
 
     @property
     @pulumi.getter(name="gpgKeys")
-    def gpg_keys(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def gpg_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         URIs of GPG keys.
         """
         return pulumi.get(self, "gpg_keys")
 
     @gpg_keys.setter
-    def gpg_keys(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def gpg_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "gpg_keys", value)
 
 
@@ -628,13 +628,13 @@ class GuestPoliciesPackageRepositoryZypperArgs:
                  base_url: pulumi.Input[str],
                  id: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
-                 gpg_keys: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 gpg_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] base_url: The location of the repository directory.
         :param pulumi.Input[str] id: Id of the artifact, which the installation and update steps of this recipe can reference.
                Artifacts in a recipe cannot have the same id.
         :param pulumi.Input[str] display_name: The display name of the repository.
-        :param pulumi.Input[List[pulumi.Input[str]]] gpg_keys: URIs of GPG keys.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] gpg_keys: URIs of GPG keys.
         """
         pulumi.set(__self__, "base_url", base_url)
         pulumi.set(__self__, "id", id)
@@ -682,14 +682,14 @@ class GuestPoliciesPackageRepositoryZypperArgs:
 
     @property
     @pulumi.getter(name="gpgKeys")
-    def gpg_keys(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def gpg_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         URIs of GPG keys.
         """
         return pulumi.get(self, "gpg_keys")
 
     @gpg_keys.setter
-    def gpg_keys(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def gpg_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "gpg_keys", value)
 
 
@@ -697,17 +697,17 @@ class GuestPoliciesPackageRepositoryZypperArgs:
 class GuestPoliciesRecipeArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
-                 artifacts: Optional[pulumi.Input[List[pulumi.Input['GuestPoliciesRecipeArtifactArgs']]]] = None,
+                 artifacts: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArtifactArgs']]]] = None,
                  desired_state: Optional[pulumi.Input[str]] = None,
-                 install_steps: Optional[pulumi.Input[List[pulumi.Input['GuestPoliciesRecipeInstallStepArgs']]]] = None,
-                 update_steps: Optional[pulumi.Input[List[pulumi.Input['GuestPoliciesRecipeUpdateStepArgs']]]] = None,
+                 install_steps: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeInstallStepArgs']]]] = None,
+                 update_steps: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeUpdateStepArgs']]]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
                Names are also used to identify resources which helps to determine whether guest policies have conflicts.
                This means that requests to create multiple recipes with the same name and version are rejected since they
                could potentially have conflicting assignments.
-        :param pulumi.Input[List[pulumi.Input['GuestPoliciesRecipeArtifactArgs']]] artifacts: Resources available to be used in the steps in the recipe.
+        :param pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArtifactArgs']]] artifacts: Resources available to be used in the steps in the recipe.
                Structure is documented below.
         :param pulumi.Input[str] desired_state: Default is INSTALLED. The desired state the agent should maintain for this recipe.
                INSTALLED: The software recipe is installed on the instance but won't be updated to new versions.
@@ -716,10 +716,10 @@ class GuestPoliciesRecipeArgs:
                REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
                Default value is `INSTALLED`.
                Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
-        :param pulumi.Input[List[pulumi.Input['GuestPoliciesRecipeInstallStepArgs']]] install_steps: Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation.
+        :param pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeInstallStepArgs']]] install_steps: Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation.
                Any steps taken (including partially completed steps) are not rolled back.
                Structure is documented below.
-        :param pulumi.Input[List[pulumi.Input['GuestPoliciesRecipeUpdateStepArgs']]] update_steps: Actions to be taken for updating this recipe. On failure it stops executing steps and does not attempt another update for this recipe.
+        :param pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeUpdateStepArgs']]] update_steps: Actions to be taken for updating this recipe. On failure it stops executing steps and does not attempt another update for this recipe.
                Any steps taken (including partially completed steps) are not rolled back.
                Structure is documented below.
         :param pulumi.Input[str] version: The version of this software recipe. Version can be up to 4 period separated numbers (e.g. 12.34.56.78).
@@ -753,7 +753,7 @@ class GuestPoliciesRecipeArgs:
 
     @property
     @pulumi.getter
-    def artifacts(self) -> Optional[pulumi.Input[List[pulumi.Input['GuestPoliciesRecipeArtifactArgs']]]]:
+    def artifacts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArtifactArgs']]]]:
         """
         Resources available to be used in the steps in the recipe.
         Structure is documented below.
@@ -761,7 +761,7 @@ class GuestPoliciesRecipeArgs:
         return pulumi.get(self, "artifacts")
 
     @artifacts.setter
-    def artifacts(self, value: Optional[pulumi.Input[List[pulumi.Input['GuestPoliciesRecipeArtifactArgs']]]]):
+    def artifacts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArtifactArgs']]]]):
         pulumi.set(self, "artifacts", value)
 
     @property
@@ -784,7 +784,7 @@ class GuestPoliciesRecipeArgs:
 
     @property
     @pulumi.getter(name="installSteps")
-    def install_steps(self) -> Optional[pulumi.Input[List[pulumi.Input['GuestPoliciesRecipeInstallStepArgs']]]]:
+    def install_steps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeInstallStepArgs']]]]:
         """
         Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation.
         Any steps taken (including partially completed steps) are not rolled back.
@@ -793,12 +793,12 @@ class GuestPoliciesRecipeArgs:
         return pulumi.get(self, "install_steps")
 
     @install_steps.setter
-    def install_steps(self, value: Optional[pulumi.Input[List[pulumi.Input['GuestPoliciesRecipeInstallStepArgs']]]]):
+    def install_steps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeInstallStepArgs']]]]):
         pulumi.set(self, "install_steps", value)
 
     @property
     @pulumi.getter(name="updateSteps")
-    def update_steps(self) -> Optional[pulumi.Input[List[pulumi.Input['GuestPoliciesRecipeUpdateStepArgs']]]]:
+    def update_steps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeUpdateStepArgs']]]]:
         """
         Actions to be taken for updating this recipe. On failure it stops executing steps and does not attempt another update for this recipe.
         Any steps taken (including partially completed steps) are not rolled back.
@@ -807,7 +807,7 @@ class GuestPoliciesRecipeArgs:
         return pulumi.get(self, "update_steps")
 
     @update_steps.setter
-    def update_steps(self, value: Optional[pulumi.Input[List[pulumi.Input['GuestPoliciesRecipeUpdateStepArgs']]]]):
+    def update_steps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeUpdateStepArgs']]]]):
         pulumi.set(self, "update_steps", value)
 
     @property
@@ -907,12 +907,12 @@ class GuestPoliciesRecipeArtifactArgs:
 class GuestPoliciesRecipeArtifactGcsArgs:
     def __init__(__self__, *,
                  bucket: Optional[pulumi.Input[str]] = None,
-                 generation: Optional[pulumi.Input[float]] = None,
+                 generation: Optional[pulumi.Input[int]] = None,
                  object: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] bucket: Bucket of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
                this value would be my-bucket.
-        :param pulumi.Input[float] generation: Must be provided if allowInsecure is false. Generation number of the Google Cloud Storage object.
+        :param pulumi.Input[int] generation: Must be provided if allowInsecure is false. Generation number of the Google Cloud Storage object.
                https://storage.googleapis.com/my-bucket/foo/bar#1234567 this value would be 1234567.
         :param pulumi.Input[str] object: Name of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
                this value would be foo/bar.
@@ -939,7 +939,7 @@ class GuestPoliciesRecipeArtifactGcsArgs:
 
     @property
     @pulumi.getter
-    def generation(self) -> Optional[pulumi.Input[float]]:
+    def generation(self) -> Optional[pulumi.Input[int]]:
         """
         Must be provided if allowInsecure is false. Generation number of the Google Cloud Storage object.
         https://storage.googleapis.com/my-bucket/foo/bar#1234567 this value would be 1234567.
@@ -947,7 +947,7 @@ class GuestPoliciesRecipeArtifactGcsArgs:
         return pulumi.get(self, "generation")
 
     @generation.setter
-    def generation(self, value: Optional[pulumi.Input[float]]):
+    def generation(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "generation", value)
 
     @property
@@ -1302,12 +1302,12 @@ class GuestPoliciesRecipeInstallStepFileCopyArgs:
 class GuestPoliciesRecipeInstallStepFileExecArgs:
     def __init__(__self__, *,
                  allowed_exit_codes: Optional[pulumi.Input[str]] = None,
-                 args: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  artifact_id: Optional[pulumi.Input[str]] = None,
                  local_path: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] allowed_exit_codes: Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
-        :param pulumi.Input[List[pulumi.Input[str]]] args: Arguments to be passed to the provided executable.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Arguments to be passed to the provided executable.
         :param pulumi.Input[str] artifact_id: The id of the relevant artifact in the recipe.
         :param pulumi.Input[str] local_path: The absolute path of the file on the local filesystem.
         """
@@ -1334,14 +1334,14 @@ class GuestPoliciesRecipeInstallStepFileExecArgs:
 
     @property
     @pulumi.getter
-    def args(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Arguments to be passed to the provided executable.
         """
         return pulumi.get(self, "args")
 
     @args.setter
-    def args(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "args", value)
 
     @property
@@ -1373,12 +1373,12 @@ class GuestPoliciesRecipeInstallStepFileExecArgs:
 class GuestPoliciesRecipeInstallStepMsiInstallationArgs:
     def __init__(__self__, *,
                  artifact_id: pulumi.Input[str],
-                 allowed_exit_codes: Optional[pulumi.Input[List[pulumi.Input[float]]]] = None,
-                 flags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 allowed_exit_codes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 flags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] artifact_id: The id of the relevant artifact in the recipe.
-        :param pulumi.Input[List[pulumi.Input[float]]] allowed_exit_codes: Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
-        :param pulumi.Input[List[pulumi.Input[str]]] flags: The flags to use when installing the MSI. Defaults to the install flag.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] allowed_exit_codes: Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] flags: The flags to use when installing the MSI. Defaults to the install flag.
         """
         pulumi.set(__self__, "artifact_id", artifact_id)
         if allowed_exit_codes is not None:
@@ -1400,26 +1400,26 @@ class GuestPoliciesRecipeInstallStepMsiInstallationArgs:
 
     @property
     @pulumi.getter(name="allowedExitCodes")
-    def allowed_exit_codes(self) -> Optional[pulumi.Input[List[pulumi.Input[float]]]]:
+    def allowed_exit_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
         """
         Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
         """
         return pulumi.get(self, "allowed_exit_codes")
 
     @allowed_exit_codes.setter
-    def allowed_exit_codes(self, value: Optional[pulumi.Input[List[pulumi.Input[float]]]]):
+    def allowed_exit_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
         pulumi.set(self, "allowed_exit_codes", value)
 
     @property
     @pulumi.getter
-    def flags(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def flags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The flags to use when installing the MSI. Defaults to the install flag.
         """
         return pulumi.get(self, "flags")
 
     @flags.setter
-    def flags(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def flags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "flags", value)
 
 
@@ -1449,11 +1449,11 @@ class GuestPoliciesRecipeInstallStepRpmInstallationArgs:
 class GuestPoliciesRecipeInstallStepScriptRunArgs:
     def __init__(__self__, *,
                  script: pulumi.Input[str],
-                 allowed_exit_codes: Optional[pulumi.Input[List[pulumi.Input[float]]]] = None,
+                 allowed_exit_codes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  interpreter: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] script: The shell script to be executed.
-        :param pulumi.Input[List[pulumi.Input[float]]] allowed_exit_codes: Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] allowed_exit_codes: Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
         :param pulumi.Input[str] interpreter: The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
                which likely only succeed for scripts with shebang lines.
                Possible values are `SHELL` and `POWERSHELL`.
@@ -1478,14 +1478,14 @@ class GuestPoliciesRecipeInstallStepScriptRunArgs:
 
     @property
     @pulumi.getter(name="allowedExitCodes")
-    def allowed_exit_codes(self) -> Optional[pulumi.Input[List[pulumi.Input[float]]]]:
+    def allowed_exit_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
         """
         Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
         """
         return pulumi.get(self, "allowed_exit_codes")
 
     @allowed_exit_codes.setter
-    def allowed_exit_codes(self, value: Optional[pulumi.Input[List[pulumi.Input[float]]]]):
+    def allowed_exit_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
         pulumi.set(self, "allowed_exit_codes", value)
 
     @property
@@ -1797,13 +1797,13 @@ class GuestPoliciesRecipeUpdateStepFileCopyArgs:
 @pulumi.input_type
 class GuestPoliciesRecipeUpdateStepFileExecArgs:
     def __init__(__self__, *,
-                 allowed_exit_codes: Optional[pulumi.Input[List[pulumi.Input[float]]]] = None,
-                 args: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 allowed_exit_codes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  artifact_id: Optional[pulumi.Input[str]] = None,
                  local_path: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input[float]]] allowed_exit_codes: Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
-        :param pulumi.Input[List[pulumi.Input[str]]] args: Arguments to be passed to the provided executable.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] allowed_exit_codes: Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Arguments to be passed to the provided executable.
         :param pulumi.Input[str] artifact_id: The id of the relevant artifact in the recipe.
         :param pulumi.Input[str] local_path: The absolute path of the file on the local filesystem.
         """
@@ -1818,26 +1818,26 @@ class GuestPoliciesRecipeUpdateStepFileExecArgs:
 
     @property
     @pulumi.getter(name="allowedExitCodes")
-    def allowed_exit_codes(self) -> Optional[pulumi.Input[List[pulumi.Input[float]]]]:
+    def allowed_exit_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
         """
         Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
         """
         return pulumi.get(self, "allowed_exit_codes")
 
     @allowed_exit_codes.setter
-    def allowed_exit_codes(self, value: Optional[pulumi.Input[List[pulumi.Input[float]]]]):
+    def allowed_exit_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
         pulumi.set(self, "allowed_exit_codes", value)
 
     @property
     @pulumi.getter
-    def args(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Arguments to be passed to the provided executable.
         """
         return pulumi.get(self, "args")
 
     @args.setter
-    def args(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "args", value)
 
     @property
@@ -1869,12 +1869,12 @@ class GuestPoliciesRecipeUpdateStepFileExecArgs:
 class GuestPoliciesRecipeUpdateStepMsiInstallationArgs:
     def __init__(__self__, *,
                  artifact_id: pulumi.Input[str],
-                 allowed_exit_codes: Optional[pulumi.Input[List[pulumi.Input[float]]]] = None,
-                 flags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 allowed_exit_codes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 flags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] artifact_id: The id of the relevant artifact in the recipe.
-        :param pulumi.Input[List[pulumi.Input[float]]] allowed_exit_codes: Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
-        :param pulumi.Input[List[pulumi.Input[str]]] flags: The flags to use when installing the MSI. Defaults to the install flag.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] allowed_exit_codes: Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] flags: The flags to use when installing the MSI. Defaults to the install flag.
         """
         pulumi.set(__self__, "artifact_id", artifact_id)
         if allowed_exit_codes is not None:
@@ -1896,26 +1896,26 @@ class GuestPoliciesRecipeUpdateStepMsiInstallationArgs:
 
     @property
     @pulumi.getter(name="allowedExitCodes")
-    def allowed_exit_codes(self) -> Optional[pulumi.Input[List[pulumi.Input[float]]]]:
+    def allowed_exit_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
         """
         Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
         """
         return pulumi.get(self, "allowed_exit_codes")
 
     @allowed_exit_codes.setter
-    def allowed_exit_codes(self, value: Optional[pulumi.Input[List[pulumi.Input[float]]]]):
+    def allowed_exit_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
         pulumi.set(self, "allowed_exit_codes", value)
 
     @property
     @pulumi.getter
-    def flags(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def flags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The flags to use when installing the MSI. Defaults to the install flag.
         """
         return pulumi.get(self, "flags")
 
     @flags.setter
-    def flags(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def flags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "flags", value)
 
 
@@ -1945,11 +1945,11 @@ class GuestPoliciesRecipeUpdateStepRpmInstallationArgs:
 class GuestPoliciesRecipeUpdateStepScriptRunArgs:
     def __init__(__self__, *,
                  script: pulumi.Input[str],
-                 allowed_exit_codes: Optional[pulumi.Input[List[pulumi.Input[float]]]] = None,
+                 allowed_exit_codes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  interpreter: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] script: The shell script to be executed.
-        :param pulumi.Input[List[pulumi.Input[float]]] allowed_exit_codes: Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] allowed_exit_codes: Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
         :param pulumi.Input[str] interpreter: The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
                which likely only succeed for scripts with shebang lines.
                Possible values are `SHELL` and `POWERSHELL`.
@@ -1974,14 +1974,14 @@ class GuestPoliciesRecipeUpdateStepScriptRunArgs:
 
     @property
     @pulumi.getter(name="allowedExitCodes")
-    def allowed_exit_codes(self) -> Optional[pulumi.Input[List[pulumi.Input[float]]]]:
+    def allowed_exit_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
         """
         Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
         """
         return pulumi.get(self, "allowed_exit_codes")
 
     @allowed_exit_codes.setter
-    def allowed_exit_codes(self, value: Optional[pulumi.Input[List[pulumi.Input[float]]]]):
+    def allowed_exit_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
         pulumi.set(self, "allowed_exit_codes", value)
 
     @property
@@ -2003,20 +2003,20 @@ class GuestPoliciesRecipeUpdateStepScriptRunArgs:
 class PatchDeploymentInstanceFilterArgs:
     def __init__(__self__, *,
                  all: Optional[pulumi.Input[bool]] = None,
-                 group_labels: Optional[pulumi.Input[List[pulumi.Input['PatchDeploymentInstanceFilterGroupLabelArgs']]]] = None,
-                 instance_name_prefixes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 instances: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 zones: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 group_labels: Optional[pulumi.Input[Sequence[pulumi.Input['PatchDeploymentInstanceFilterGroupLabelArgs']]]] = None,
+                 instance_name_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[bool] all: Target all VM instances in the project. If true, no other criteria is permitted.
-        :param pulumi.Input[List[pulumi.Input['PatchDeploymentInstanceFilterGroupLabelArgs']]] group_labels: Targets VM instances matching ANY of these GroupLabels. This allows targeting of disparate groups of VM instances.
+        :param pulumi.Input[Sequence[pulumi.Input['PatchDeploymentInstanceFilterGroupLabelArgs']]] group_labels: Targets VM instances matching ANY of these GroupLabels. This allows targeting of disparate groups of VM instances.
                Structure is documented below.
-        :param pulumi.Input[List[pulumi.Input[str]]] instance_name_prefixes: Targets VMs whose name starts with one of these prefixes. Similar to labels, this is another way to group
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_name_prefixes: Targets VMs whose name starts with one of these prefixes. Similar to labels, this is another way to group
                VMs when targeting configs, for example prefix="prod-".
-        :param pulumi.Input[List[pulumi.Input[str]]] instances: Targets any of the VM instances specified. Instances are specified by their URI in the `form zones/{{zone}}/instances/{{instance_name}}`,
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instances: Targets any of the VM instances specified. Instances are specified by their URI in the `form zones/{{zone}}/instances/{{instance_name}}`,
                `projects/{{project_id}}/zones/{{zone}}/instances/{{instance_name}}`, or
                `https://www.googleapis.com/compute/v1/projects/{{project_id}}/zones/{{zone}}/instances/{{instance_name}}`
-        :param pulumi.Input[List[pulumi.Input[str]]] zones: Targets VM instances in ANY of these zones. Leave empty to target VM instances in any zone.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: Targets VM instances in ANY of these zones. Leave empty to target VM instances in any zone.
         """
         if all is not None:
             pulumi.set(__self__, "all", all)
@@ -2043,7 +2043,7 @@ class PatchDeploymentInstanceFilterArgs:
 
     @property
     @pulumi.getter(name="groupLabels")
-    def group_labels(self) -> Optional[pulumi.Input[List[pulumi.Input['PatchDeploymentInstanceFilterGroupLabelArgs']]]]:
+    def group_labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PatchDeploymentInstanceFilterGroupLabelArgs']]]]:
         """
         Targets VM instances matching ANY of these GroupLabels. This allows targeting of disparate groups of VM instances.
         Structure is documented below.
@@ -2051,12 +2051,12 @@ class PatchDeploymentInstanceFilterArgs:
         return pulumi.get(self, "group_labels")
 
     @group_labels.setter
-    def group_labels(self, value: Optional[pulumi.Input[List[pulumi.Input['PatchDeploymentInstanceFilterGroupLabelArgs']]]]):
+    def group_labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PatchDeploymentInstanceFilterGroupLabelArgs']]]]):
         pulumi.set(self, "group_labels", value)
 
     @property
     @pulumi.getter(name="instanceNamePrefixes")
-    def instance_name_prefixes(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def instance_name_prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Targets VMs whose name starts with one of these prefixes. Similar to labels, this is another way to group
         VMs when targeting configs, for example prefix="prod-".
@@ -2064,12 +2064,12 @@ class PatchDeploymentInstanceFilterArgs:
         return pulumi.get(self, "instance_name_prefixes")
 
     @instance_name_prefixes.setter
-    def instance_name_prefixes(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def instance_name_prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "instance_name_prefixes", value)
 
     @property
     @pulumi.getter
-    def instances(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Targets any of the VM instances specified. Instances are specified by their URI in the `form zones/{{zone}}/instances/{{instance_name}}`,
         `projects/{{project_id}}/zones/{{zone}}/instances/{{instance_name}}`, or
@@ -2078,19 +2078,19 @@ class PatchDeploymentInstanceFilterArgs:
         return pulumi.get(self, "instances")
 
     @instances.setter
-    def instances(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def instances(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "instances", value)
 
     @property
     @pulumi.getter
-    def zones(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Targets VM instances in ANY of these zones. Leave empty to target VM instances in any zone.
         """
         return pulumi.get(self, "zones")
 
     @zones.setter
-    def zones(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "zones", value)
 
 
@@ -2294,12 +2294,12 @@ class PatchDeploymentPatchConfigArgs:
 @pulumi.input_type
 class PatchDeploymentPatchConfigAptArgs:
     def __init__(__self__, *,
-                 excludes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 exclusive_packages: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 excludes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 exclusive_packages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] excludes: List of KBs to exclude from update.
-        :param pulumi.Input[List[pulumi.Input[str]]] exclusive_packages: An exclusive list of packages to be updated. These are the only packages that will be updated.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excludes: List of KBs to exclude from update.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] exclusive_packages: An exclusive list of packages to be updated. These are the only packages that will be updated.
                If these packages are not installed, they will be ignored. This field cannot be specified with
                any other patch configuration fields.
         :param pulumi.Input[str] type: By changing the type to DIST, the patching is performed using apt-get dist-upgrade instead.
@@ -2314,19 +2314,19 @@ class PatchDeploymentPatchConfigAptArgs:
 
     @property
     @pulumi.getter
-    def excludes(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def excludes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List of KBs to exclude from update.
         """
         return pulumi.get(self, "excludes")
 
     @excludes.setter
-    def excludes(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def excludes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "excludes", value)
 
     @property
     @pulumi.getter(name="exclusivePackages")
-    def exclusive_packages(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def exclusive_packages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         An exclusive list of packages to be updated. These are the only packages that will be updated.
         If these packages are not installed, they will be ignored. This field cannot be specified with
@@ -2335,7 +2335,7 @@ class PatchDeploymentPatchConfigAptArgs:
         return pulumi.get(self, "exclusive_packages")
 
     @exclusive_packages.setter
-    def exclusive_packages(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def exclusive_packages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "exclusive_packages", value)
 
     @property
@@ -2420,12 +2420,12 @@ class PatchDeploymentPatchConfigPostStepArgs:
 @pulumi.input_type
 class PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgs:
     def __init__(__self__, *,
-                 allowed_success_codes: Optional[pulumi.Input[List[pulumi.Input[float]]]] = None,
+                 allowed_success_codes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  gcs_object: Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgs']] = None,
                  interpreter: Optional[pulumi.Input[str]] = None,
                  local_path: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input[float]]] allowed_success_codes: Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] allowed_success_codes: Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
         :param pulumi.Input['PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgs'] gcs_object: A Cloud Storage object containing the executable.
                Structure is documented below.
         :param pulumi.Input[str] interpreter: The script interpreter to use to run the script. If no interpreter is specified the script will
@@ -2444,14 +2444,14 @@ class PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgs:
 
     @property
     @pulumi.getter(name="allowedSuccessCodes")
-    def allowed_success_codes(self) -> Optional[pulumi.Input[List[pulumi.Input[float]]]]:
+    def allowed_success_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
         """
         Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
         """
         return pulumi.get(self, "allowed_success_codes")
 
     @allowed_success_codes.setter
-    def allowed_success_codes(self, value: Optional[pulumi.Input[List[pulumi.Input[float]]]]):
+    def allowed_success_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
         pulumi.set(self, "allowed_success_codes", value)
 
     @property
@@ -2549,12 +2549,12 @@ class PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgs:
 @pulumi.input_type
 class PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgs:
     def __init__(__self__, *,
-                 allowed_success_codes: Optional[pulumi.Input[List[pulumi.Input[float]]]] = None,
+                 allowed_success_codes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  gcs_object: Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArgs']] = None,
                  interpreter: Optional[pulumi.Input[str]] = None,
                  local_path: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input[float]]] allowed_success_codes: Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] allowed_success_codes: Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
         :param pulumi.Input['PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArgs'] gcs_object: A Cloud Storage object containing the executable.
                Structure is documented below.
         :param pulumi.Input[str] interpreter: The script interpreter to use to run the script. If no interpreter is specified the script will
@@ -2573,14 +2573,14 @@ class PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgs:
 
     @property
     @pulumi.getter(name="allowedSuccessCodes")
-    def allowed_success_codes(self) -> Optional[pulumi.Input[List[pulumi.Input[float]]]]:
+    def allowed_success_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
         """
         Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
         """
         return pulumi.get(self, "allowed_success_codes")
 
     @allowed_success_codes.setter
-    def allowed_success_codes(self, value: Optional[pulumi.Input[List[pulumi.Input[float]]]]):
+    def allowed_success_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
         pulumi.set(self, "allowed_success_codes", value)
 
     @property
@@ -2721,12 +2721,12 @@ class PatchDeploymentPatchConfigPreStepArgs:
 @pulumi.input_type
 class PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs:
     def __init__(__self__, *,
-                 allowed_success_codes: Optional[pulumi.Input[List[pulumi.Input[float]]]] = None,
+                 allowed_success_codes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  gcs_object: Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArgs']] = None,
                  interpreter: Optional[pulumi.Input[str]] = None,
                  local_path: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input[float]]] allowed_success_codes: Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] allowed_success_codes: Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
         :param pulumi.Input['PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArgs'] gcs_object: A Cloud Storage object containing the executable.
                Structure is documented below.
         :param pulumi.Input[str] interpreter: The script interpreter to use to run the script. If no interpreter is specified the script will
@@ -2745,14 +2745,14 @@ class PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs:
 
     @property
     @pulumi.getter(name="allowedSuccessCodes")
-    def allowed_success_codes(self) -> Optional[pulumi.Input[List[pulumi.Input[float]]]]:
+    def allowed_success_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
         """
         Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
         """
         return pulumi.get(self, "allowed_success_codes")
 
     @allowed_success_codes.setter
-    def allowed_success_codes(self, value: Optional[pulumi.Input[List[pulumi.Input[float]]]]):
+    def allowed_success_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
         pulumi.set(self, "allowed_success_codes", value)
 
     @property
@@ -2850,12 +2850,12 @@ class PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArgs:
 @pulumi.input_type
 class PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgs:
     def __init__(__self__, *,
-                 allowed_success_codes: Optional[pulumi.Input[List[pulumi.Input[float]]]] = None,
+                 allowed_success_codes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  gcs_object: Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectArgs']] = None,
                  interpreter: Optional[pulumi.Input[str]] = None,
                  local_path: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input[float]]] allowed_success_codes: Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] allowed_success_codes: Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
         :param pulumi.Input['PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectArgs'] gcs_object: A Cloud Storage object containing the executable.
                Structure is documented below.
         :param pulumi.Input[str] interpreter: The script interpreter to use to run the script. If no interpreter is specified the script will
@@ -2874,14 +2874,14 @@ class PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgs:
 
     @property
     @pulumi.getter(name="allowedSuccessCodes")
-    def allowed_success_codes(self) -> Optional[pulumi.Input[List[pulumi.Input[float]]]]:
+    def allowed_success_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
         """
         Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
         """
         return pulumi.get(self, "allowed_success_codes")
 
     @allowed_success_codes.setter
-    def allowed_success_codes(self, value: Optional[pulumi.Input[List[pulumi.Input[float]]]]):
+    def allowed_success_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
         pulumi.set(self, "allowed_success_codes", value)
 
     @property
@@ -2979,14 +2979,14 @@ class PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectArgs:
 @pulumi.input_type
 class PatchDeploymentPatchConfigWindowsUpdateArgs:
     def __init__(__self__, *,
-                 classifications: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 excludes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 exclusive_patches: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 classifications: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 excludes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 exclusive_patches: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] classifications: Only apply updates of these windows update classifications. If empty, all updates are applied.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] classifications: Only apply updates of these windows update classifications. If empty, all updates are applied.
                Each value may be one of `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, and `UPDATE`.
-        :param pulumi.Input[List[pulumi.Input[str]]] excludes: List of KBs to exclude from update.
-        :param pulumi.Input[List[pulumi.Input[str]]] exclusive_patches: An exclusive list of kbs to be updated. These are the only patches that will be updated.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excludes: List of KBs to exclude from update.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] exclusive_patches: An exclusive list of kbs to be updated. These are the only patches that will be updated.
                This field must not be used with other patch configurations.
         """
         if classifications is not None:
@@ -2998,7 +2998,7 @@ class PatchDeploymentPatchConfigWindowsUpdateArgs:
 
     @property
     @pulumi.getter
-    def classifications(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def classifications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Only apply updates of these windows update classifications. If empty, all updates are applied.
         Each value may be one of `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, and `UPDATE`.
@@ -3006,24 +3006,24 @@ class PatchDeploymentPatchConfigWindowsUpdateArgs:
         return pulumi.get(self, "classifications")
 
     @classifications.setter
-    def classifications(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def classifications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "classifications", value)
 
     @property
     @pulumi.getter
-    def excludes(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def excludes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List of KBs to exclude from update.
         """
         return pulumi.get(self, "excludes")
 
     @excludes.setter
-    def excludes(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def excludes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "excludes", value)
 
     @property
     @pulumi.getter(name="exclusivePatches")
-    def exclusive_patches(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def exclusive_patches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         An exclusive list of kbs to be updated. These are the only patches that will be updated.
         This field must not be used with other patch configurations.
@@ -3031,20 +3031,20 @@ class PatchDeploymentPatchConfigWindowsUpdateArgs:
         return pulumi.get(self, "exclusive_patches")
 
     @exclusive_patches.setter
-    def exclusive_patches(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def exclusive_patches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "exclusive_patches", value)
 
 
 @pulumi.input_type
 class PatchDeploymentPatchConfigYumArgs:
     def __init__(__self__, *,
-                 excludes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 exclusive_packages: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 excludes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 exclusive_packages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  minimal: Optional[pulumi.Input[bool]] = None,
                  security: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] excludes: List of KBs to exclude from update.
-        :param pulumi.Input[List[pulumi.Input[str]]] exclusive_packages: An exclusive list of packages to be updated. These are the only packages that will be updated.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excludes: List of KBs to exclude from update.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] exclusive_packages: An exclusive list of packages to be updated. These are the only packages that will be updated.
                If these packages are not installed, they will be ignored. This field cannot be specified with
                any other patch configuration fields.
         :param pulumi.Input[bool] minimal: Will cause patch to run yum update-minimal instead.
@@ -3061,19 +3061,19 @@ class PatchDeploymentPatchConfigYumArgs:
 
     @property
     @pulumi.getter
-    def excludes(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def excludes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List of KBs to exclude from update.
         """
         return pulumi.get(self, "excludes")
 
     @excludes.setter
-    def excludes(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def excludes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "excludes", value)
 
     @property
     @pulumi.getter(name="exclusivePackages")
-    def exclusive_packages(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def exclusive_packages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         An exclusive list of packages to be updated. These are the only packages that will be updated.
         If these packages are not installed, they will be ignored. This field cannot be specified with
@@ -3082,7 +3082,7 @@ class PatchDeploymentPatchConfigYumArgs:
         return pulumi.get(self, "exclusive_packages")
 
     @exclusive_packages.setter
-    def exclusive_packages(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def exclusive_packages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "exclusive_packages", value)
 
     @property
@@ -3113,18 +3113,18 @@ class PatchDeploymentPatchConfigYumArgs:
 @pulumi.input_type
 class PatchDeploymentPatchConfigZypperArgs:
     def __init__(__self__, *,
-                 categories: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 excludes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 exclusive_patches: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 severities: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 categories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 excludes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 exclusive_patches: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 severities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  with_optional: Optional[pulumi.Input[bool]] = None,
                  with_update: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] categories: Install only patches with these categories. Common categories include security, recommended, and feature.
-        :param pulumi.Input[List[pulumi.Input[str]]] excludes: List of KBs to exclude from update.
-        :param pulumi.Input[List[pulumi.Input[str]]] exclusive_patches: An exclusive list of kbs to be updated. These are the only patches that will be updated.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] categories: Install only patches with these categories. Common categories include security, recommended, and feature.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excludes: List of KBs to exclude from update.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] exclusive_patches: An exclusive list of kbs to be updated. These are the only patches that will be updated.
                This field must not be used with other patch configurations.
-        :param pulumi.Input[List[pulumi.Input[str]]] severities: Install only patches with these severities. Common severities include critical, important, moderate, and low.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] severities: Install only patches with these severities. Common severities include critical, important, moderate, and low.
         :param pulumi.Input[bool] with_optional: Adds the --with-optional flag to zypper patch.
         :param pulumi.Input[bool] with_update: Adds the --with-update flag, to zypper patch.
         """
@@ -3143,31 +3143,31 @@ class PatchDeploymentPatchConfigZypperArgs:
 
     @property
     @pulumi.getter
-    def categories(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def categories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Install only patches with these categories. Common categories include security, recommended, and feature.
         """
         return pulumi.get(self, "categories")
 
     @categories.setter
-    def categories(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def categories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "categories", value)
 
     @property
     @pulumi.getter
-    def excludes(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def excludes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List of KBs to exclude from update.
         """
         return pulumi.get(self, "excludes")
 
     @excludes.setter
-    def excludes(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def excludes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "excludes", value)
 
     @property
     @pulumi.getter(name="exclusivePatches")
-    def exclusive_patches(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def exclusive_patches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         An exclusive list of kbs to be updated. These are the only patches that will be updated.
         This field must not be used with other patch configurations.
@@ -3175,19 +3175,19 @@ class PatchDeploymentPatchConfigZypperArgs:
         return pulumi.get(self, "exclusive_patches")
 
     @exclusive_patches.setter
-    def exclusive_patches(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def exclusive_patches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "exclusive_patches", value)
 
     @property
     @pulumi.getter
-    def severities(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def severities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Install only patches with these severities. Common severities include critical, important, moderate, and low.
         """
         return pulumi.get(self, "severities")
 
     @severities.setter
-    def severities(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def severities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "severities", value)
 
     @property
@@ -3373,10 +3373,10 @@ class PatchDeploymentRecurringScheduleArgs:
 @pulumi.input_type
 class PatchDeploymentRecurringScheduleMonthlyArgs:
     def __init__(__self__, *,
-                 month_day: Optional[pulumi.Input[float]] = None,
+                 month_day: Optional[pulumi.Input[int]] = None,
                  week_day_of_month: Optional[pulumi.Input['PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs']] = None):
         """
-        :param pulumi.Input[float] month_day: One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month.
+        :param pulumi.Input[int] month_day: One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month.
                Months without the target day will be skipped. For example, a schedule to run "every month on the 31st"
                will not run in February, April, June, etc.
         :param pulumi.Input['PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs'] week_day_of_month: Week day in a month.
@@ -3389,7 +3389,7 @@ class PatchDeploymentRecurringScheduleMonthlyArgs:
 
     @property
     @pulumi.getter(name="monthDay")
-    def month_day(self) -> Optional[pulumi.Input[float]]:
+    def month_day(self) -> Optional[pulumi.Input[int]]:
         """
         One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month.
         Months without the target day will be skipped. For example, a schedule to run "every month on the 31st"
@@ -3398,7 +3398,7 @@ class PatchDeploymentRecurringScheduleMonthlyArgs:
         return pulumi.get(self, "month_day")
 
     @month_day.setter
-    def month_day(self, value: Optional[pulumi.Input[float]]):
+    def month_day(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "month_day", value)
 
     @property
@@ -3419,11 +3419,11 @@ class PatchDeploymentRecurringScheduleMonthlyArgs:
 class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs:
     def __init__(__self__, *,
                  day_of_week: pulumi.Input[str],
-                 week_ordinal: pulumi.Input[float]):
+                 week_ordinal: pulumi.Input[int]):
         """
         :param pulumi.Input[str] day_of_week: A day of the week.
                Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
-        :param pulumi.Input[float] week_ordinal: Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
+        :param pulumi.Input[int] week_ordinal: Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
         """
         pulumi.set(__self__, "day_of_week", day_of_week)
         pulumi.set(__self__, "week_ordinal", week_ordinal)
@@ -3443,30 +3443,30 @@ class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs:
 
     @property
     @pulumi.getter(name="weekOrdinal")
-    def week_ordinal(self) -> pulumi.Input[float]:
+    def week_ordinal(self) -> pulumi.Input[int]:
         """
         Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
         """
         return pulumi.get(self, "week_ordinal")
 
     @week_ordinal.setter
-    def week_ordinal(self, value: pulumi.Input[float]):
+    def week_ordinal(self, value: pulumi.Input[int]):
         pulumi.set(self, "week_ordinal", value)
 
 
 @pulumi.input_type
 class PatchDeploymentRecurringScheduleTimeOfDayArgs:
     def __init__(__self__, *,
-                 hours: Optional[pulumi.Input[float]] = None,
-                 minutes: Optional[pulumi.Input[float]] = None,
-                 nanos: Optional[pulumi.Input[float]] = None,
-                 seconds: Optional[pulumi.Input[float]] = None):
+                 hours: Optional[pulumi.Input[int]] = None,
+                 minutes: Optional[pulumi.Input[int]] = None,
+                 nanos: Optional[pulumi.Input[int]] = None,
+                 seconds: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[float] hours: Hours of day in 24 hour format. Should be from 0 to 23.
+        :param pulumi.Input[int] hours: Hours of day in 24 hour format. Should be from 0 to 23.
                An API may choose to allow the value "24:00:00" for scenarios like business closing time.
-        :param pulumi.Input[float] minutes: Minutes of hour of day. Must be from 0 to 59.
-        :param pulumi.Input[float] nanos: Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
-        :param pulumi.Input[float] seconds: Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+        :param pulumi.Input[int] minutes: Minutes of hour of day. Must be from 0 to 59.
+        :param pulumi.Input[int] nanos: Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        :param pulumi.Input[int] seconds: Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
         """
         if hours is not None:
             pulumi.set(__self__, "hours", hours)
@@ -3479,7 +3479,7 @@ class PatchDeploymentRecurringScheduleTimeOfDayArgs:
 
     @property
     @pulumi.getter
-    def hours(self) -> Optional[pulumi.Input[float]]:
+    def hours(self) -> Optional[pulumi.Input[int]]:
         """
         Hours of day in 24 hour format. Should be from 0 to 23.
         An API may choose to allow the value "24:00:00" for scenarios like business closing time.
@@ -3487,43 +3487,43 @@ class PatchDeploymentRecurringScheduleTimeOfDayArgs:
         return pulumi.get(self, "hours")
 
     @hours.setter
-    def hours(self, value: Optional[pulumi.Input[float]]):
+    def hours(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "hours", value)
 
     @property
     @pulumi.getter
-    def minutes(self) -> Optional[pulumi.Input[float]]:
+    def minutes(self) -> Optional[pulumi.Input[int]]:
         """
         Minutes of hour of day. Must be from 0 to 59.
         """
         return pulumi.get(self, "minutes")
 
     @minutes.setter
-    def minutes(self, value: Optional[pulumi.Input[float]]):
+    def minutes(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "minutes", value)
 
     @property
     @pulumi.getter
-    def nanos(self) -> Optional[pulumi.Input[float]]:
+    def nanos(self) -> Optional[pulumi.Input[int]]:
         """
         Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
         """
         return pulumi.get(self, "nanos")
 
     @nanos.setter
-    def nanos(self, value: Optional[pulumi.Input[float]]):
+    def nanos(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "nanos", value)
 
     @property
     @pulumi.getter
-    def seconds(self) -> Optional[pulumi.Input[float]]:
+    def seconds(self) -> Optional[pulumi.Input[int]]:
         """
         Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
         """
         return pulumi.get(self, "seconds")
 
     @seconds.setter
-    def seconds(self, value: Optional[pulumi.Input[float]]):
+    def seconds(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "seconds", value)
 
 
@@ -3641,11 +3641,11 @@ class PatchDeploymentRolloutArgs:
 @pulumi.input_type
 class PatchDeploymentRolloutDisruptionBudgetArgs:
     def __init__(__self__, *,
-                 fixed: Optional[pulumi.Input[float]] = None,
-                 percentage: Optional[pulumi.Input[float]] = None):
+                 fixed: Optional[pulumi.Input[int]] = None,
+                 percentage: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[float] fixed: Specifies a fixed value.
-        :param pulumi.Input[float] percentage: Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
+        :param pulumi.Input[int] fixed: Specifies a fixed value.
+        :param pulumi.Input[int] percentage: Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
         """
         if fixed is not None:
             pulumi.set(__self__, "fixed", fixed)
@@ -3654,26 +3654,26 @@ class PatchDeploymentRolloutDisruptionBudgetArgs:
 
     @property
     @pulumi.getter
-    def fixed(self) -> Optional[pulumi.Input[float]]:
+    def fixed(self) -> Optional[pulumi.Input[int]]:
         """
         Specifies a fixed value.
         """
         return pulumi.get(self, "fixed")
 
     @fixed.setter
-    def fixed(self, value: Optional[pulumi.Input[float]]):
+    def fixed(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "fixed", value)
 
     @property
     @pulumi.getter
-    def percentage(self) -> Optional[pulumi.Input[float]]:
+    def percentage(self) -> Optional[pulumi.Input[int]]:
         """
         Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
         """
         return pulumi.get(self, "percentage")
 
     @percentage.setter
-    def percentage(self, value: Optional[pulumi.Input[float]]):
+    def percentage(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "percentage", value)
 
 

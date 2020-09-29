@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -20,7 +20,7 @@ class SecurityPolicy(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SecurityPolicyRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyRuleArgs']]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -35,7 +35,7 @@ class SecurityPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the security policy.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SecurityPolicyRuleArgs']]]] rules: The set of rules that belong to this policy. There must always be a default
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyRuleArgs']]]] rules: The set of rules that belong to this policy. There must always be a default
                rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
                security policy, a default rule with action "allow" will be added. Structure is documented below.
         """
@@ -76,7 +76,7 @@ class SecurityPolicy(pulumi.CustomResource):
             fingerprint: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SecurityPolicyRuleArgs']]]]] = None,
+            rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyRuleArgs']]]]] = None,
             self_link: Optional[pulumi.Input[str]] = None) -> 'SecurityPolicy':
         """
         Get an existing SecurityPolicy resource's state with the given name, id, and optional extra
@@ -90,7 +90,7 @@ class SecurityPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the security policy.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SecurityPolicyRuleArgs']]]] rules: The set of rules that belong to this policy. There must always be a default
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyRuleArgs']]]] rules: The set of rules that belong to this policy. There must always be a default
                rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
                security policy, a default rule with action "allow" will be added. Structure is documented below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -142,7 +142,7 @@ class SecurityPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def rules(self) -> pulumi.Output[List['outputs.SecurityPolicyRule']]:
+    def rules(self) -> pulumi.Output[Sequence['outputs.SecurityPolicyRule']]:
         """
         The set of rules that belong to this policy. There must always be a default
         rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a

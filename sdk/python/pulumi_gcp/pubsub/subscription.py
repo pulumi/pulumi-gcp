@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -17,7 +17,7 @@ class Subscription(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ack_deadline_seconds: Optional[pulumi.Input[float]] = None,
+                 ack_deadline_seconds: Optional[pulumi.Input[int]] = None,
                  dead_letter_policy: Optional[pulumi.Input[pulumi.InputType['SubscriptionDeadLetterPolicyArgs']]] = None,
                  enable_message_ordering: Optional[pulumi.Input[bool]] = None,
                  expiration_policy: Optional[pulumi.Input[pulumi.InputType['SubscriptionExpirationPolicyArgs']]] = None,
@@ -47,7 +47,7 @@ class Subscription(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] ack_deadline_seconds: This value is the maximum time after a subscriber receives a message
+        :param pulumi.Input[int] ack_deadline_seconds: This value is the maximum time after a subscriber receives a message
                before the subscriber should acknowledge the message. After message
                delivery but before the ack deadline expires and before the message is
                acknowledged, it is an outstanding message and will not be delivered
@@ -154,7 +154,7 @@ class Subscription(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            ack_deadline_seconds: Optional[pulumi.Input[float]] = None,
+            ack_deadline_seconds: Optional[pulumi.Input[int]] = None,
             dead_letter_policy: Optional[pulumi.Input[pulumi.InputType['SubscriptionDeadLetterPolicyArgs']]] = None,
             enable_message_ordering: Optional[pulumi.Input[bool]] = None,
             expiration_policy: Optional[pulumi.Input[pulumi.InputType['SubscriptionExpirationPolicyArgs']]] = None,
@@ -175,7 +175,7 @@ class Subscription(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] ack_deadline_seconds: This value is the maximum time after a subscriber receives a message
+        :param pulumi.Input[int] ack_deadline_seconds: This value is the maximum time after a subscriber receives a message
                before the subscriber should acknowledge the message. After message
                delivery but before the ack deadline expires and before the message is
                acknowledged, it is an outstanding message and will not be delivered
@@ -261,7 +261,7 @@ class Subscription(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ackDeadlineSeconds")
-    def ack_deadline_seconds(self) -> pulumi.Output[float]:
+    def ack_deadline_seconds(self) -> pulumi.Output[int]:
         """
         This value is the maximum time after a subscriber receives a message
         before the subscriber should acknowledge the message. After message

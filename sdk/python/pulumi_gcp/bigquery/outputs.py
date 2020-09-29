@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -528,13 +528,13 @@ class IamMemberCondition(dict):
 @pulumi.output_type
 class JobCopy(dict):
     def __init__(__self__, *,
-                 source_tables: List['outputs.JobCopySourceTable'],
+                 source_tables: Sequence['outputs.JobCopySourceTable'],
                  create_disposition: Optional[str] = None,
                  destination_encryption_configuration: Optional['outputs.JobCopyDestinationEncryptionConfiguration'] = None,
                  destination_table: Optional['outputs.JobCopyDestinationTable'] = None,
                  write_disposition: Optional[str] = None):
         """
-        :param List['JobCopySourceTableArgs'] source_tables: Source tables to copy.
+        :param Sequence['JobCopySourceTableArgs'] source_tables: Source tables to copy.
                Structure is documented below.
         :param str create_disposition: Specifies whether the job is allowed to create new tables. The following values are supported:
                CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
@@ -567,7 +567,7 @@ class JobCopy(dict):
 
     @property
     @pulumi.getter(name="sourceTables")
-    def source_tables(self) -> List['outputs.JobCopySourceTable']:
+    def source_tables(self) -> Sequence['outputs.JobCopySourceTable']:
         """
         Source tables to copy.
         Structure is documented below.
@@ -744,7 +744,7 @@ class JobCopySourceTable(dict):
 @pulumi.output_type
 class JobExtract(dict):
     def __init__(__self__, *,
-                 destination_uris: List[str],
+                 destination_uris: Sequence[str],
                  compression: Optional[str] = None,
                  destination_format: Optional[str] = None,
                  field_delimiter: Optional[str] = None,
@@ -753,7 +753,7 @@ class JobExtract(dict):
                  source_table: Optional['outputs.JobExtractSourceTable'] = None,
                  use_avro_logical_types: Optional[bool] = None):
         """
-        :param List[str] destination_uris: A list of fully-qualified Google Cloud Storage URIs where the extracted table should be written.
+        :param Sequence[str] destination_uris: A list of fully-qualified Google Cloud Storage URIs where the extracted table should be written.
         :param str compression: The compression type to use for exported files. Possible values include GZIP, DEFLATE, SNAPPY, and NONE.
                The default value is NONE. DEFLATE and SNAPPY are only supported for Avro.
         :param str destination_format: The exported file format. Possible values include CSV, NEWLINE_DELIMITED_JSON and AVRO for tables and SAVED_MODEL for models.
@@ -786,7 +786,7 @@ class JobExtract(dict):
 
     @property
     @pulumi.getter(name="destinationUris")
-    def destination_uris(self) -> List[str]:
+    def destination_uris(self) -> Sequence[str]:
         """
         A list of fully-qualified Google Cloud Storage URIs where the extracted table should be written.
         """
@@ -952,7 +952,7 @@ class JobExtractSourceTable(dict):
 class JobLoad(dict):
     def __init__(__self__, *,
                  destination_table: 'outputs.JobLoadDestinationTable',
-                 source_uris: List[str],
+                 source_uris: Sequence[str],
                  allow_jagged_rows: Optional[bool] = None,
                  allow_quoted_newlines: Optional[bool] = None,
                  autodetect: Optional[bool] = None,
@@ -961,19 +961,19 @@ class JobLoad(dict):
                  encoding: Optional[str] = None,
                  field_delimiter: Optional[str] = None,
                  ignore_unknown_values: Optional[bool] = None,
-                 max_bad_records: Optional[float] = None,
+                 max_bad_records: Optional[int] = None,
                  null_marker: Optional[str] = None,
-                 projection_fields: Optional[List[str]] = None,
+                 projection_fields: Optional[Sequence[str]] = None,
                  quote: Optional[str] = None,
-                 schema_update_options: Optional[List[str]] = None,
-                 skip_leading_rows: Optional[float] = None,
+                 schema_update_options: Optional[Sequence[str]] = None,
+                 skip_leading_rows: Optional[int] = None,
                  source_format: Optional[str] = None,
                  time_partitioning: Optional['outputs.JobLoadTimePartitioning'] = None,
                  write_disposition: Optional[str] = None):
         """
         :param 'JobLoadDestinationTableArgs' destination_table: The destination table.
                Structure is documented below.
-        :param List[str] source_uris: The fully-qualified URIs that point to your data in Google Cloud.
+        :param Sequence[str] source_uris: The fully-qualified URIs that point to your data in Google Cloud.
                For Google Cloud Storage URIs: Each URI can contain one '*' wildcard character
                and it must come after the 'bucket' name. Size limits related to load jobs apply
                to external data sources. For Google Cloud Bigtable URIs: Exactly one URI can be
@@ -1004,26 +1004,26 @@ class JobLoad(dict):
                The default value is false. The sourceFormat property determines what BigQuery treats as an extra value:
                CSV: Trailing columns
                JSON: Named values that don't match any column names
-        :param float max_bad_records: The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value,
+        :param int max_bad_records: The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value,
                an invalid error is returned in the job result. The default value is 0, which requires that all records are valid.
         :param str null_marker: Specifies a string that represents a null value in a CSV file. The default value is the empty string. If you set this
                property to a custom value, BigQuery throws an error if an
                empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as
                an empty value.
-        :param List[str] projection_fields: If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity properties to load into BigQuery from a Cloud Datastore backup.
+        :param Sequence[str] projection_fields: If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity properties to load into BigQuery from a Cloud Datastore backup.
                Property names are case sensitive and must be top-level properties. If no properties are specified, BigQuery loads all properties.
                If any named property isn't found in the Cloud Datastore backup, an invalid error is returned in the job result.
         :param str quote: The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding,
                and then uses the first byte of the encoded string to split the data in its raw, binary state.
                The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string.
                If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
-        :param List[str] schema_update_options: Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or
+        :param Sequence[str] schema_update_options: Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or
                supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
                when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators.
                For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified:
                ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema.
                ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
-        :param float skip_leading_rows: The number of rows at the top of a CSV file that BigQuery will skip when loading the data.
+        :param int skip_leading_rows: The number of rows at the top of a CSV file that BigQuery will skip when loading the data.
                The default value is 0. This property is useful if you have header rows in the file that should be skipped.
                When autodetect is on, the behavior is the following:
                skipLeadingRows unspecified - Autodetect tries to detect headers in the first row. If they are not detected,
@@ -1093,7 +1093,7 @@ class JobLoad(dict):
 
     @property
     @pulumi.getter(name="sourceUris")
-    def source_uris(self) -> List[str]:
+    def source_uris(self) -> Sequence[str]:
         """
         The fully-qualified URIs that point to your data in Google Cloud.
         For Google Cloud Storage URIs: Each URI can contain one '*' wildcard character
@@ -1187,7 +1187,7 @@ class JobLoad(dict):
 
     @property
     @pulumi.getter(name="maxBadRecords")
-    def max_bad_records(self) -> Optional[float]:
+    def max_bad_records(self) -> Optional[int]:
         """
         The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value,
         an invalid error is returned in the job result. The default value is 0, which requires that all records are valid.
@@ -1207,7 +1207,7 @@ class JobLoad(dict):
 
     @property
     @pulumi.getter(name="projectionFields")
-    def projection_fields(self) -> Optional[List[str]]:
+    def projection_fields(self) -> Optional[Sequence[str]]:
         """
         If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity properties to load into BigQuery from a Cloud Datastore backup.
         Property names are case sensitive and must be top-level properties. If no properties are specified, BigQuery loads all properties.
@@ -1228,7 +1228,7 @@ class JobLoad(dict):
 
     @property
     @pulumi.getter(name="schemaUpdateOptions")
-    def schema_update_options(self) -> Optional[List[str]]:
+    def schema_update_options(self) -> Optional[Sequence[str]]:
         """
         Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or
         supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
@@ -1241,7 +1241,7 @@ class JobLoad(dict):
 
     @property
     @pulumi.getter(name="skipLeadingRows")
-    def skip_leading_rows(self) -> Optional[float]:
+    def skip_leading_rows(self) -> Optional[int]:
         """
         The number of rows at the top of a CSV file that BigQuery will skip when loading the data.
         The default value is 0. This property is useful if you have header rows in the file that should be skipped.
@@ -1423,15 +1423,15 @@ class JobQuery(dict):
                  destination_encryption_configuration: Optional['outputs.JobQueryDestinationEncryptionConfiguration'] = None,
                  destination_table: Optional['outputs.JobQueryDestinationTable'] = None,
                  flatten_results: Optional[bool] = None,
-                 maximum_billing_tier: Optional[float] = None,
+                 maximum_billing_tier: Optional[int] = None,
                  maximum_bytes_billed: Optional[str] = None,
                  parameter_mode: Optional[str] = None,
                  priority: Optional[str] = None,
-                 schema_update_options: Optional[List[str]] = None,
+                 schema_update_options: Optional[Sequence[str]] = None,
                  script_options: Optional['outputs.JobQueryScriptOptions'] = None,
                  use_legacy_sql: Optional[bool] = None,
                  use_query_cache: Optional[bool] = None,
-                 user_defined_function_resources: Optional[List['outputs.JobQueryUserDefinedFunctionResource']] = None,
+                 user_defined_function_resources: Optional[Sequence['outputs.JobQueryUserDefinedFunctionResource']] = None,
                  write_disposition: Optional[str] = None):
         """
         :param str query: Configures a query job.
@@ -1453,7 +1453,7 @@ class JobQuery(dict):
                Structure is documented below.
         :param bool flatten_results: If true and query uses legacy SQL dialect, flattens all nested and repeated fields in the query results.
                allowLargeResults must be true if this is set to false. For standard SQL queries, this flag is ignored and results are never flattened.
-        :param float maximum_billing_tier: Limits the billing tier for this job. Queries that have resource usage beyond this tier will fail (without incurring a charge).
+        :param int maximum_billing_tier: Limits the billing tier for this job. Queries that have resource usage beyond this tier will fail (without incurring a charge).
                If unspecified, this will be set to your project default.
         :param str maximum_bytes_billed: Limits the bytes billed for this job. Queries that will have bytes billed beyond this limit will fail (without incurring a charge).
                If unspecified, this will be set to your project default.
@@ -1461,7 +1461,7 @@ class JobQuery(dict):
         :param str priority: Specifies a priority for the query.
                Default value is `INTERACTIVE`.
                Possible values are `INTERACTIVE` and `BATCH`.
-        :param List[str] schema_update_options: Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or
+        :param Sequence[str] schema_update_options: Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or
                supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
                when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators.
                For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified:
@@ -1474,7 +1474,7 @@ class JobQuery(dict):
         :param bool use_query_cache: Whether to look for the result in the query cache. The query cache is a best-effort cache that will be flushed whenever
                tables in the query are modified. Moreover, the query cache is only available when a query does not have a destination table specified.
                The default value is true.
-        :param List['JobQueryUserDefinedFunctionResourceArgs'] user_defined_function_resources: Describes user-defined function resources used in the query.
+        :param Sequence['JobQueryUserDefinedFunctionResourceArgs'] user_defined_function_resources: Describes user-defined function resources used in the query.
                Structure is documented below.
         :param str write_disposition: Specifies the action that occurs if the destination table already exists. The following values are supported:
                WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
@@ -1589,7 +1589,7 @@ class JobQuery(dict):
 
     @property
     @pulumi.getter(name="maximumBillingTier")
-    def maximum_billing_tier(self) -> Optional[float]:
+    def maximum_billing_tier(self) -> Optional[int]:
         """
         Limits the billing tier for this job. Queries that have resource usage beyond this tier will fail (without incurring a charge).
         If unspecified, this will be set to your project default.
@@ -1625,7 +1625,7 @@ class JobQuery(dict):
 
     @property
     @pulumi.getter(name="schemaUpdateOptions")
-    def schema_update_options(self) -> Optional[List[str]]:
+    def schema_update_options(self) -> Optional[Sequence[str]]:
         """
         Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or
         supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
@@ -1666,7 +1666,7 @@ class JobQuery(dict):
 
     @property
     @pulumi.getter(name="userDefinedFunctionResources")
-    def user_defined_function_resources(self) -> Optional[List['outputs.JobQueryUserDefinedFunctionResource']]:
+    def user_defined_function_resources(self) -> Optional[Sequence['outputs.JobQueryUserDefinedFunctionResource']]:
         """
         Describes user-defined function resources used in the query.
         Structure is documented below.
@@ -1915,13 +1915,13 @@ class TableExternalDataConfiguration(dict):
     def __init__(__self__, *,
                  autodetect: bool,
                  source_format: str,
-                 source_uris: List[str],
+                 source_uris: Sequence[str],
                  compression: Optional[str] = None,
                  csv_options: Optional['outputs.TableExternalDataConfigurationCsvOptions'] = None,
                  google_sheets_options: Optional['outputs.TableExternalDataConfigurationGoogleSheetsOptions'] = None,
                  hive_partitioning_options: Optional['outputs.TableExternalDataConfigurationHivePartitioningOptions'] = None,
                  ignore_unknown_values: Optional[bool] = None,
-                 max_bad_records: Optional[float] = None,
+                 max_bad_records: Optional[int] = None,
                  schema: Optional[str] = None):
         """
         :param bool autodetect: - Let BigQuery try to autodetect the schema
@@ -1931,7 +1931,7 @@ class TableExternalDataConfiguration(dict):
                and "DATSTORE_BACKUP". To use "GOOGLE_SHEETS"
                the `scopes` must include
                "https://www.googleapis.com/auth/drive.readonly".
-        :param List[str] source_uris: A list of the fully-qualified URIs that point to
+        :param Sequence[str] source_uris: A list of the fully-qualified URIs that point to
                your data in Google Cloud.
         :param str compression: The compression type of the data source.
                Valid values are "NONE" or "GZIP".
@@ -1950,7 +1950,7 @@ class TableExternalDataConfiguration(dict):
                extra columns are treated as bad records, and if there are too
                many bad records, an invalid error is returned in the job result.
                The default value is false.
-        :param float max_bad_records: The maximum number of bad records that
+        :param int max_bad_records: The maximum number of bad records that
                BigQuery can ignore when reading data.
         :param str schema: A JSON schema for the external table. Schema is required
                for CSV and JSON formats if autodetect is not on. Schema is disallowed
@@ -2005,7 +2005,7 @@ class TableExternalDataConfiguration(dict):
 
     @property
     @pulumi.getter(name="sourceUris")
-    def source_uris(self) -> List[str]:
+    def source_uris(self) -> Sequence[str]:
         """
         A list of the fully-qualified URIs that point to
         your data in Google Cloud.
@@ -2066,7 +2066,7 @@ class TableExternalDataConfiguration(dict):
 
     @property
     @pulumi.getter(name="maxBadRecords")
-    def max_bad_records(self) -> Optional[float]:
+    def max_bad_records(self) -> Optional[int]:
         """
         The maximum number of bad records that
         BigQuery can ignore when reading data.
@@ -2103,7 +2103,7 @@ class TableExternalDataConfigurationCsvOptions(dict):
                  allow_quoted_newlines: Optional[bool] = None,
                  encoding: Optional[str] = None,
                  field_delimiter: Optional[str] = None,
-                 skip_leading_rows: Optional[float] = None):
+                 skip_leading_rows: Optional[int] = None):
         """
         :param str quote: The value that is used to quote data sections in a
                CSV file. If your data does not contain quoted sections, set the
@@ -2120,7 +2120,7 @@ class TableExternalDataConfigurationCsvOptions(dict):
         :param str encoding: The character encoding of the data. The supported
                values are UTF-8 or ISO-8859-1.
         :param str field_delimiter: The separator for fields in a CSV file.
-        :param float skip_leading_rows: The number of rows at the top of the sheet
+        :param int skip_leading_rows: The number of rows at the top of the sheet
                that BigQuery will skip when reading the data. At least one of `range` or
                `skip_leading_rows` must be set.
         """
@@ -2188,7 +2188,7 @@ class TableExternalDataConfigurationCsvOptions(dict):
 
     @property
     @pulumi.getter(name="skipLeadingRows")
-    def skip_leading_rows(self) -> Optional[float]:
+    def skip_leading_rows(self) -> Optional[int]:
         """
         The number of rows at the top of the sheet
         that BigQuery will skip when reading the data. At least one of `range` or
@@ -2204,11 +2204,11 @@ class TableExternalDataConfigurationCsvOptions(dict):
 class TableExternalDataConfigurationGoogleSheetsOptions(dict):
     def __init__(__self__, *,
                  range: Optional[str] = None,
-                 skip_leading_rows: Optional[float] = None):
+                 skip_leading_rows: Optional[int] = None):
         """
         :param str range: Information required to partition based on ranges.
                Structure is documented below.
-        :param float skip_leading_rows: The number of rows at the top of the sheet
+        :param int skip_leading_rows: The number of rows at the top of the sheet
                that BigQuery will skip when reading the data. At least one of `range` or
                `skip_leading_rows` must be set.
         """
@@ -2228,7 +2228,7 @@ class TableExternalDataConfigurationGoogleSheetsOptions(dict):
 
     @property
     @pulumi.getter(name="skipLeadingRows")
-    def skip_leading_rows(self) -> Optional[float]:
+    def skip_leading_rows(self) -> Optional[int]:
         """
         The number of rows at the top of the sheet
         that BigQuery will skip when reading the data. At least one of `range` or
@@ -2341,13 +2341,13 @@ class TableRangePartitioning(dict):
 @pulumi.output_type
 class TableRangePartitioningRange(dict):
     def __init__(__self__, *,
-                 end: float,
-                 interval: float,
-                 start: float):
+                 end: int,
+                 interval: int,
+                 start: int):
         """
-        :param float end: End of the range partitioning, exclusive.
-        :param float interval: The width of each range within the partition.
-        :param float start: Start of the range partitioning, inclusive.
+        :param int end: End of the range partitioning, exclusive.
+        :param int interval: The width of each range within the partition.
+        :param int start: Start of the range partitioning, inclusive.
         """
         pulumi.set(__self__, "end", end)
         pulumi.set(__self__, "interval", interval)
@@ -2355,7 +2355,7 @@ class TableRangePartitioningRange(dict):
 
     @property
     @pulumi.getter
-    def end(self) -> float:
+    def end(self) -> int:
         """
         End of the range partitioning, exclusive.
         """
@@ -2363,7 +2363,7 @@ class TableRangePartitioningRange(dict):
 
     @property
     @pulumi.getter
-    def interval(self) -> float:
+    def interval(self) -> int:
         """
         The width of each range within the partition.
         """
@@ -2371,7 +2371,7 @@ class TableRangePartitioningRange(dict):
 
     @property
     @pulumi.getter
-    def start(self) -> float:
+    def start(self) -> int:
         """
         Start of the range partitioning, inclusive.
         """
@@ -2385,13 +2385,13 @@ class TableRangePartitioningRange(dict):
 class TableTimePartitioning(dict):
     def __init__(__self__, *,
                  type: str,
-                 expiration_ms: Optional[float] = None,
+                 expiration_ms: Optional[int] = None,
                  field: Optional[str] = None,
                  require_partition_filter: Optional[bool] = None):
         """
         :param str type: The only type supported is DAY, which will generate
                one partition per day based on data loading time.
-        :param float expiration_ms: Number of milliseconds for which to keep the
+        :param int expiration_ms: Number of milliseconds for which to keep the
                storage for a partition.
         :param str field: The field used to determine how to create a range-based
                partition.
@@ -2418,7 +2418,7 @@ class TableTimePartitioning(dict):
 
     @property
     @pulumi.getter(name="expirationMs")
-    def expiration_ms(self) -> Optional[float]:
+    def expiration_ms(self) -> Optional[int]:
         """
         Number of milliseconds for which to keep the
         storage for a partition.

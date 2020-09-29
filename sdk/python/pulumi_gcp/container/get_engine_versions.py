@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -103,7 +103,7 @@ class GetEngineVersionsResult:
 
     @property
     @pulumi.getter(name="validMasterVersions")
-    def valid_master_versions(self) -> List[str]:
+    def valid_master_versions(self) -> Sequence[str]:
         """
         A list of versions available in the given zone for use with master instances.
         """
@@ -111,7 +111,7 @@ class GetEngineVersionsResult:
 
     @property
     @pulumi.getter(name="validNodeVersions")
-    def valid_node_versions(self) -> List[str]:
+    def valid_node_versions(self) -> Sequence[str]:
         """
         A list of versions available in the given zone for use with node instances.
         """
