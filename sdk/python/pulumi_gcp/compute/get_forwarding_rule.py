@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -137,7 +137,7 @@ class GetForwardingRuleResult:
 
     @property
     @pulumi.getter
-    def ports(self) -> List[str]:
+    def ports(self) -> Sequence[str]:
         """
         List of ports to use for internal load balancing, if this forwarding rule has any.
         """

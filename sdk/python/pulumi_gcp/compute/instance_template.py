@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -20,9 +20,9 @@ class InstanceTemplate(pulumi.CustomResource):
                  can_ip_forward: Optional[pulumi.Input[bool]] = None,
                  confidential_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceTemplateConfidentialInstanceConfigArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 disks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceTemplateDiskArgs']]]]] = None,
+                 disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceTemplateDiskArgs']]]]] = None,
                  enable_display: Optional[pulumi.Input[bool]] = None,
-                 guest_accelerators: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceTemplateGuestAcceleratorArgs']]]]] = None,
+                 guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceTemplateGuestAcceleratorArgs']]]]] = None,
                  instance_description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
@@ -31,13 +31,13 @@ class InstanceTemplate(pulumi.CustomResource):
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_prefix: Optional[pulumi.Input[str]] = None,
-                 network_interfaces: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceTemplateNetworkInterfaceArgs']]]]] = None,
+                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceTemplateNetworkInterfaceArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  scheduling: Optional[pulumi.Input[pulumi.InputType['InstanceTemplateSchedulingArgs']]] = None,
                  service_account: Optional[pulumi.Input[pulumi.InputType['InstanceTemplateServiceAccountArgs']]] = None,
                  shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceTemplateShieldedInstanceConfigArgs']]] = None,
-                 tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -54,12 +54,12 @@ class InstanceTemplate(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['InstanceTemplateConfidentialInstanceConfigArgs']] confidential_instance_config: The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
                to create.
         :param pulumi.Input[str] description: A brief description of this resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceTemplateDiskArgs']]]] disks: Disks to attach to instances created from this template.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceTemplateDiskArgs']]]] disks: Disks to attach to instances created from this template.
                This can be specified multiple times for multiple disks. Structure is
                documented below.
         :param pulumi.Input[bool] enable_display: Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
                **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceTemplateGuestAcceleratorArgs']]]] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceTemplateGuestAcceleratorArgs']]]] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
         :param pulumi.Input[str] instance_description: A brief description to use for instances
                created from this template.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to instances
@@ -77,7 +77,7 @@ class InstanceTemplate(pulumi.CustomResource):
                this blank, the provider will auto-generate a unique name.
         :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the specified
                prefix. Conflicts with `name`.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceTemplateNetworkInterfaceArgs']]]] network_interfaces: Networks to attach to instances created from
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceTemplateNetworkInterfaceArgs']]]] network_interfaces: Networks to attach to instances created from
                this template. This can be specified multiple times for multiple networks.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
@@ -93,7 +93,7 @@ class InstanceTemplate(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['InstanceTemplateServiceAccountArgs']] service_account: Service account to attach to the instance. Structure is documented below.
         :param pulumi.Input[pulumi.InputType['InstanceTemplateShieldedInstanceConfigArgs']] shielded_instance_config: Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
                **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: Tags to attach to the instance.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to attach to the instance.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -153,9 +153,9 @@ class InstanceTemplate(pulumi.CustomResource):
             can_ip_forward: Optional[pulumi.Input[bool]] = None,
             confidential_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceTemplateConfidentialInstanceConfigArgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            disks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceTemplateDiskArgs']]]]] = None,
+            disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceTemplateDiskArgs']]]]] = None,
             enable_display: Optional[pulumi.Input[bool]] = None,
-            guest_accelerators: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceTemplateGuestAcceleratorArgs']]]]] = None,
+            guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceTemplateGuestAcceleratorArgs']]]]] = None,
             instance_description: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             machine_type: Optional[pulumi.Input[str]] = None,
@@ -165,14 +165,14 @@ class InstanceTemplate(pulumi.CustomResource):
             min_cpu_platform: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             name_prefix: Optional[pulumi.Input[str]] = None,
-            network_interfaces: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceTemplateNetworkInterfaceArgs']]]]] = None,
+            network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceTemplateNetworkInterfaceArgs']]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             scheduling: Optional[pulumi.Input[pulumi.InputType['InstanceTemplateSchedulingArgs']]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             service_account: Optional[pulumi.Input[pulumi.InputType['InstanceTemplateServiceAccountArgs']]] = None,
             shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceTemplateShieldedInstanceConfigArgs']]] = None,
-            tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tags_fingerprint: Optional[pulumi.Input[str]] = None) -> 'InstanceTemplate':
         """
         Get an existing InstanceTemplate resource's state with the given name, id, and optional extra
@@ -186,12 +186,12 @@ class InstanceTemplate(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['InstanceTemplateConfidentialInstanceConfigArgs']] confidential_instance_config: The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
                to create.
         :param pulumi.Input[str] description: A brief description of this resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceTemplateDiskArgs']]]] disks: Disks to attach to instances created from this template.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceTemplateDiskArgs']]]] disks: Disks to attach to instances created from this template.
                This can be specified multiple times for multiple disks. Structure is
                documented below.
         :param pulumi.Input[bool] enable_display: Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
                **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceTemplateGuestAcceleratorArgs']]]] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceTemplateGuestAcceleratorArgs']]]] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
         :param pulumi.Input[str] instance_description: A brief description to use for instances
                created from this template.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to instances
@@ -210,7 +210,7 @@ class InstanceTemplate(pulumi.CustomResource):
                this blank, the provider will auto-generate a unique name.
         :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the specified
                prefix. Conflicts with `name`.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceTemplateNetworkInterfaceArgs']]]] network_interfaces: Networks to attach to instances created from
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceTemplateNetworkInterfaceArgs']]]] network_interfaces: Networks to attach to instances created from
                this template. This can be specified multiple times for multiple networks.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
@@ -227,7 +227,7 @@ class InstanceTemplate(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['InstanceTemplateServiceAccountArgs']] service_account: Service account to attach to the instance. Structure is documented below.
         :param pulumi.Input[pulumi.InputType['InstanceTemplateShieldedInstanceConfigArgs']] shielded_instance_config: Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
                **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: Tags to attach to the instance.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to attach to the instance.
         :param pulumi.Input[str] tags_fingerprint: The unique fingerprint of the tags.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -288,7 +288,7 @@ class InstanceTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def disks(self) -> pulumi.Output[List['outputs.InstanceTemplateDisk']]:
+    def disks(self) -> pulumi.Output[Sequence['outputs.InstanceTemplateDisk']]:
         """
         Disks to attach to instances created from this template.
         This can be specified multiple times for multiple disks. Structure is
@@ -307,7 +307,7 @@ class InstanceTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="guestAccelerators")
-    def guest_accelerators(self) -> pulumi.Output[Optional[List['outputs.InstanceTemplateGuestAccelerator']]]:
+    def guest_accelerators(self) -> pulumi.Output[Optional[Sequence['outputs.InstanceTemplateGuestAccelerator']]]:
         """
         List of the type and count of accelerator cards attached to the instance. Structure documented below.
         """
@@ -396,7 +396,7 @@ class InstanceTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkInterfaces")
-    def network_interfaces(self) -> pulumi.Output[Optional[List['outputs.InstanceTemplateNetworkInterface']]]:
+    def network_interfaces(self) -> pulumi.Output[Optional[Sequence['outputs.InstanceTemplateNetworkInterface']]]:
         """
         Networks to attach to instances created from
         this template. This can be specified multiple times for multiple networks.
@@ -462,7 +462,7 @@ class InstanceTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[List[str]]]:
+    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         Tags to attach to the instance.
         """

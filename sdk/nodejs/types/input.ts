@@ -2776,7 +2776,7 @@ export namespace cloudbuild {
          * Output only. Stores timing information for pushing all artifact objects.
          * Structure is documented below.
          */
-        timing?: pulumi.Input<inputs.cloudbuild.TriggerBuildArtifactsObjectsTiming>;
+        timings?: pulumi.Input<pulumi.Input<inputs.cloudbuild.TriggerBuildArtifactsObjectsTiming>[]>;
     }
 
     export interface TriggerBuildArtifactsObjectsTiming {
@@ -5505,7 +5505,7 @@ export namespace compute {
     export interface ImageGuestOsFeature {
         /**
          * The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
-         * Possible values are `MULTI_IP_SUBNET`, `SECURE_BOOT`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, and `WINDOWS`.
+         * Possible values are `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, and `WINDOWS`.
          */
         type: pulumi.Input<string>;
     }
@@ -12493,8 +12493,8 @@ export namespace datacatalog {
 
     export interface EntryBigqueryTableSpec {
         tableSourceType?: pulumi.Input<string>;
-        tableSpec?: pulumi.Input<inputs.datacatalog.EntryBigqueryTableSpecTableSpec>;
-        viewSpec?: pulumi.Input<inputs.datacatalog.EntryBigqueryTableSpecViewSpec>;
+        tableSpecs?: pulumi.Input<pulumi.Input<inputs.datacatalog.EntryBigqueryTableSpecTableSpec>[]>;
+        viewSpecs?: pulumi.Input<pulumi.Input<inputs.datacatalog.EntryBigqueryTableSpecViewSpec>[]>;
     }
 
     export interface EntryBigqueryTableSpecTableSpec {
@@ -15285,18 +15285,7 @@ export namespace iot {
         /**
          * A public key certificate format and data.
          */
-        publicKeyCertificate: pulumi.Input<inputs.iot.RegistryCredentialPublicKeyCertificate>;
-    }
-
-    export interface RegistryCredentialPublicKeyCertificate {
-        /**
-         * The certificate data.
-         */
-        certificate: pulumi.Input<string>;
-        /**
-         * The field allows only `X509_CERTIFICATE_PEM`.
-         */
-        format: pulumi.Input<string>;
+        publicKeyCertificate: pulumi.Input<{[key: string]: any}>;
     }
 
     export interface RegistryEventNotificationConfigItem {
@@ -15312,27 +15301,6 @@ export namespace iot {
          * item.
          */
         subfolderMatches?: pulumi.Input<string>;
-    }
-
-    export interface RegistryHttpConfig {
-        /**
-         * The field allows `HTTP_ENABLED` or `HTTP_DISABLED`.
-         */
-        httpEnabledState: pulumi.Input<string>;
-    }
-
-    export interface RegistryMqttConfig {
-        /**
-         * The field allows `MQTT_ENABLED` or `MQTT_DISABLED`.
-         */
-        mqttEnabledState: pulumi.Input<string>;
-    }
-
-    export interface RegistryStateNotificationConfig {
-        /**
-         * PubSub topic name to publish device events.
-         */
-        pubsubTopicName: pulumi.Input<string>;
     }
 }
 
@@ -15424,18 +15392,7 @@ export namespace kms {
         /**
          * A public key certificate format and data.
          */
-        publicKeyCertificate: pulumi.Input<inputs.kms.RegistryCredentialPublicKeyCertificate>;
-    }
-
-    export interface RegistryCredentialPublicKeyCertificate {
-        /**
-         * The certificate data.
-         */
-        certificate: pulumi.Input<string>;
-        /**
-         * The field allows only `X509_CERTIFICATE_PEM`.
-         */
-        format: pulumi.Input<string>;
+        publicKeyCertificate: pulumi.Input<{[key: string]: any}>;
     }
 
     export interface RegistryEventNotificationConfigItem {
@@ -15451,27 +15408,6 @@ export namespace kms {
          * item.
          */
         subfolderMatches?: pulumi.Input<string>;
-    }
-
-    export interface RegistryHttpConfig {
-        /**
-         * The field allows `HTTP_ENABLED` or `HTTP_DISABLED`.
-         */
-        httpEnabledState: pulumi.Input<string>;
-    }
-
-    export interface RegistryMqttConfig {
-        /**
-         * The field allows `MQTT_ENABLED` or `MQTT_DISABLED`.
-         */
-        mqttEnabledState: pulumi.Input<string>;
-    }
-
-    export interface RegistryStateNotificationConfig {
-        /**
-         * PubSub topic name to publish device events.
-         */
-        pubsubTopicName: pulumi.Input<string>;
     }
 }
 

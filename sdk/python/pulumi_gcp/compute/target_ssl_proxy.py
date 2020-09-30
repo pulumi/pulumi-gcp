@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['TargetSSLProxy']
@@ -109,7 +109,7 @@ class TargetSSLProxy(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             proxy_header: Optional[pulumi.Input[str]] = None,
-            proxy_id: Optional[pulumi.Input[float]] = None,
+            proxy_id: Optional[pulumi.Input[int]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             ssl_certificates: Optional[pulumi.Input[str]] = None,
             ssl_policy: Optional[pulumi.Input[str]] = None) -> 'TargetSSLProxy':
@@ -136,7 +136,7 @@ class TargetSSLProxy(pulumi.CustomResource):
                the backend.
                Default value is `NONE`.
                Possible values are `NONE` and `PROXY_V1`.
-        :param pulumi.Input[float] proxy_id: The unique identifier for the resource.
+        :param pulumi.Input[int] proxy_id: The unique identifier for the resource.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] ssl_certificates: A list of SslCertificate resources that are used to authenticate
                connections between users and the load balancer. Currently, exactly
@@ -221,7 +221,7 @@ class TargetSSLProxy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="proxyId")
-    def proxy_id(self) -> pulumi.Output[float]:
+    def proxy_id(self) -> pulumi.Output[int]:
         """
         The unique identifier for the resource.
         """

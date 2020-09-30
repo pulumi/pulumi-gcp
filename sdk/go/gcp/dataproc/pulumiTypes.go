@@ -7933,45 +7933,29 @@ func (i JobStatusArgs) ToJobStatusOutputWithContext(ctx context.Context) JobStat
 	return pulumi.ToOutputWithContext(ctx, i).(JobStatusOutput)
 }
 
-func (i JobStatusArgs) ToJobStatusPtrOutput() JobStatusPtrOutput {
-	return i.ToJobStatusPtrOutputWithContext(context.Background())
-}
-
-func (i JobStatusArgs) ToJobStatusPtrOutputWithContext(ctx context.Context) JobStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobStatusOutput).ToJobStatusPtrOutputWithContext(ctx)
-}
-
-// JobStatusPtrInput is an input type that accepts JobStatusArgs, JobStatusPtr and JobStatusPtrOutput values.
-// You can construct a concrete instance of `JobStatusPtrInput` via:
+// JobStatusArrayInput is an input type that accepts JobStatusArray and JobStatusArrayOutput values.
+// You can construct a concrete instance of `JobStatusArrayInput` via:
 //
-//          JobStatusArgs{...}
-//
-//  or:
-//
-//          nil
-type JobStatusPtrInput interface {
+//          JobStatusArray{ JobStatusArgs{...} }
+type JobStatusArrayInput interface {
 	pulumi.Input
 
-	ToJobStatusPtrOutput() JobStatusPtrOutput
-	ToJobStatusPtrOutputWithContext(context.Context) JobStatusPtrOutput
+	ToJobStatusArrayOutput() JobStatusArrayOutput
+	ToJobStatusArrayOutputWithContext(context.Context) JobStatusArrayOutput
 }
 
-type jobStatusPtrType JobStatusArgs
+type JobStatusArray []JobStatusInput
 
-func JobStatusPtr(v *JobStatusArgs) JobStatusPtrInput {
-	return (*jobStatusPtrType)(v)
+func (JobStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobStatus)(nil)).Elem()
 }
 
-func (*jobStatusPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobStatus)(nil)).Elem()
+func (i JobStatusArray) ToJobStatusArrayOutput() JobStatusArrayOutput {
+	return i.ToJobStatusArrayOutputWithContext(context.Background())
 }
 
-func (i *jobStatusPtrType) ToJobStatusPtrOutput() JobStatusPtrOutput {
-	return i.ToJobStatusPtrOutputWithContext(context.Background())
-}
-
-func (i *jobStatusPtrType) ToJobStatusPtrOutputWithContext(ctx context.Context) JobStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobStatusPtrOutput)
+func (i JobStatusArray) ToJobStatusArrayOutputWithContext(ctx context.Context) JobStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobStatusArrayOutput)
 }
 
 type JobStatusOutput struct{ *pulumi.OutputState }
@@ -7988,15 +7972,6 @@ func (o JobStatusOutput) ToJobStatusOutputWithContext(ctx context.Context) JobSt
 	return o
 }
 
-func (o JobStatusOutput) ToJobStatusPtrOutput() JobStatusPtrOutput {
-	return o.ToJobStatusPtrOutputWithContext(context.Background())
-}
-
-func (o JobStatusOutput) ToJobStatusPtrOutputWithContext(ctx context.Context) JobStatusPtrOutput {
-	return o.ApplyT(func(v JobStatus) *JobStatus {
-		return &v
-	}).(JobStatusPtrOutput)
-}
 func (o JobStatusOutput) Details() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobStatus) *string { return v.Details }).(pulumi.StringPtrOutput)
 }
@@ -8013,58 +7988,24 @@ func (o JobStatusOutput) Substate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobStatus) *string { return v.Substate }).(pulumi.StringPtrOutput)
 }
 
-type JobStatusPtrOutput struct{ *pulumi.OutputState }
+type JobStatusArrayOutput struct{ *pulumi.OutputState }
 
-func (JobStatusPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobStatus)(nil)).Elem()
+func (JobStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobStatus)(nil)).Elem()
 }
 
-func (o JobStatusPtrOutput) ToJobStatusPtrOutput() JobStatusPtrOutput {
+func (o JobStatusArrayOutput) ToJobStatusArrayOutput() JobStatusArrayOutput {
 	return o
 }
 
-func (o JobStatusPtrOutput) ToJobStatusPtrOutputWithContext(ctx context.Context) JobStatusPtrOutput {
+func (o JobStatusArrayOutput) ToJobStatusArrayOutputWithContext(ctx context.Context) JobStatusArrayOutput {
 	return o
 }
 
-func (o JobStatusPtrOutput) Elem() JobStatusOutput {
-	return o.ApplyT(func(v *JobStatus) JobStatus { return *v }).(JobStatusOutput)
-}
-
-func (o JobStatusPtrOutput) Details() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatus) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Details
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o JobStatusPtrOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatus) *string {
-		if v == nil {
-			return nil
-		}
-		return v.State
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o JobStatusPtrOutput) StateStartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatus) *string {
-		if v == nil {
-			return nil
-		}
-		return v.StateStartTime
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o JobStatusPtrOutput) Substate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatus) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Substate
-	}).(pulumi.StringPtrOutput)
+func (o JobStatusArrayOutput) Index(i pulumi.IntInput) JobStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobStatus {
+		return vs[0].([]JobStatus)[vs[1].(int)]
+	}).(JobStatusOutput)
 }
 
 func init() {
@@ -8149,5 +8090,5 @@ func init() {
 	pulumi.RegisterOutputType(JobSparksqlConfigLoggingConfigOutput{})
 	pulumi.RegisterOutputType(JobSparksqlConfigLoggingConfigPtrOutput{})
 	pulumi.RegisterOutputType(JobStatusOutput{})
-	pulumi.RegisterOutputType(JobStatusPtrOutput{})
+	pulumi.RegisterOutputType(JobStatusArrayOutput{})
 }

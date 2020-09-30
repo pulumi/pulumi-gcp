@@ -31,14 +31,14 @@ namespace Pulumi.Gcp.DataCatalog
         /// Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD. Context:
         /// https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
         /// </summary>
-        [Output("bigqueryDateShardedSpec")]
-        public Output<Outputs.EntryBigqueryDateShardedSpec> BigqueryDateShardedSpec { get; private set; } = null!;
+        [Output("bigqueryDateShardedSpecs")]
+        public Output<ImmutableArray<Outputs.EntryBigqueryDateShardedSpec>> BigqueryDateShardedSpecs { get; private set; } = null!;
 
         /// <summary>
         /// Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
         /// </summary>
-        [Output("bigqueryTableSpec")]
-        public Output<Outputs.EntryBigqueryTableSpec> BigqueryTableSpec { get; private set; } = null!;
+        [Output("bigqueryTableSpecs")]
+        public Output<ImmutableArray<Outputs.EntryBigqueryTableSpec>> BigqueryTableSpecs { get; private set; } = null!;
 
         /// <summary>
         /// Entry description, which can consist of several sentences or paragraphs that describe entry contents.
@@ -263,18 +263,30 @@ namespace Pulumi.Gcp.DataCatalog
 
     public sealed class EntryState : Pulumi.ResourceArgs
     {
+        [Input("bigqueryDateShardedSpecs")]
+        private InputList<Inputs.EntryBigqueryDateShardedSpecGetArgs>? _bigqueryDateShardedSpecs;
+
         /// <summary>
         /// Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD. Context:
         /// https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
         /// </summary>
-        [Input("bigqueryDateShardedSpec")]
-        public Input<Inputs.EntryBigqueryDateShardedSpecGetArgs>? BigqueryDateShardedSpec { get; set; }
+        public InputList<Inputs.EntryBigqueryDateShardedSpecGetArgs> BigqueryDateShardedSpecs
+        {
+            get => _bigqueryDateShardedSpecs ?? (_bigqueryDateShardedSpecs = new InputList<Inputs.EntryBigqueryDateShardedSpecGetArgs>());
+            set => _bigqueryDateShardedSpecs = value;
+        }
+
+        [Input("bigqueryTableSpecs")]
+        private InputList<Inputs.EntryBigqueryTableSpecGetArgs>? _bigqueryTableSpecs;
 
         /// <summary>
         /// Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
         /// </summary>
-        [Input("bigqueryTableSpec")]
-        public Input<Inputs.EntryBigqueryTableSpecGetArgs>? BigqueryTableSpec { get; set; }
+        public InputList<Inputs.EntryBigqueryTableSpecGetArgs> BigqueryTableSpecs
+        {
+            get => _bigqueryTableSpecs ?? (_bigqueryTableSpecs = new InputList<Inputs.EntryBigqueryTableSpecGetArgs>());
+            set => _bigqueryTableSpecs = value;
+        }
 
         /// <summary>
         /// Entry description, which can consist of several sentences or paragraphs that describe entry contents.

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,14 +18,14 @@ class SecurityScanConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authentication: Optional[pulumi.Input[pulumi.InputType['SecurityScanConfigAuthenticationArgs']]] = None,
-                 blacklist_patterns: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 blacklist_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  export_to_security_command_center: Optional[pulumi.Input[str]] = None,
-                 max_qps: Optional[pulumi.Input[float]] = None,
+                 max_qps: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[pulumi.InputType['SecurityScanConfigScheduleArgs']]] = None,
-                 starting_urls: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 target_platforms: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 starting_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 target_platforms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  user_agent: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -49,20 +49,20 @@ class SecurityScanConfig(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['SecurityScanConfigAuthenticationArgs']] authentication: The authentication configuration.
                If specified, service will use the authentication configuration during scanning.
                Structure is documented below.
-        :param pulumi.Input[List[pulumi.Input[str]]] blacklist_patterns: The blacklist URL patterns as described in
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] blacklist_patterns: The blacklist URL patterns as described in
                https://cloud.google.com/security-scanner/docs/excluded-urls
         :param pulumi.Input[str] display_name: The user provider display name of the ScanConfig.
         :param pulumi.Input[str] export_to_security_command_center: Controls export of scan configurations and results to Cloud Security Command Center.
                Default value is `ENABLED`.
                Possible values are `ENABLED` and `DISABLED`.
-        :param pulumi.Input[float] max_qps: The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
+        :param pulumi.Input[int] max_qps: The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
                Defaults to 15.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['SecurityScanConfigScheduleArgs']] schedule: The schedule of the ScanConfig
                Structure is documented below.
-        :param pulumi.Input[List[pulumi.Input[str]]] starting_urls: The starting URLs from which the scanner finds site pages.
-        :param pulumi.Input[List[pulumi.Input[str]]] target_platforms: Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] starting_urls: The starting URLs from which the scanner finds site pages.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_platforms: Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
                Each value may be one of `APP_ENGINE` and `COMPUTE`.
         :param pulumi.Input[str] user_agent: Type of the user agents used for scanning
                Default value is `CHROME_LINUX`.
@@ -111,15 +111,15 @@ class SecurityScanConfig(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             authentication: Optional[pulumi.Input[pulumi.InputType['SecurityScanConfigAuthenticationArgs']]] = None,
-            blacklist_patterns: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            blacklist_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             export_to_security_command_center: Optional[pulumi.Input[str]] = None,
-            max_qps: Optional[pulumi.Input[float]] = None,
+            max_qps: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             schedule: Optional[pulumi.Input[pulumi.InputType['SecurityScanConfigScheduleArgs']]] = None,
-            starting_urls: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            target_platforms: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            starting_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            target_platforms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             user_agent: Optional[pulumi.Input[str]] = None) -> 'SecurityScanConfig':
         """
         Get an existing SecurityScanConfig resource's state with the given name, id, and optional extra
@@ -131,21 +131,21 @@ class SecurityScanConfig(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['SecurityScanConfigAuthenticationArgs']] authentication: The authentication configuration.
                If specified, service will use the authentication configuration during scanning.
                Structure is documented below.
-        :param pulumi.Input[List[pulumi.Input[str]]] blacklist_patterns: The blacklist URL patterns as described in
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] blacklist_patterns: The blacklist URL patterns as described in
                https://cloud.google.com/security-scanner/docs/excluded-urls
         :param pulumi.Input[str] display_name: The user provider display name of the ScanConfig.
         :param pulumi.Input[str] export_to_security_command_center: Controls export of scan configurations and results to Cloud Security Command Center.
                Default value is `ENABLED`.
                Possible values are `ENABLED` and `DISABLED`.
-        :param pulumi.Input[float] max_qps: The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
+        :param pulumi.Input[int] max_qps: The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
                Defaults to 15.
         :param pulumi.Input[str] name: A server defined name for this index. Format: 'projects/{{project}}/scanConfigs/{{server_generated_id}}'
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['SecurityScanConfigScheduleArgs']] schedule: The schedule of the ScanConfig
                Structure is documented below.
-        :param pulumi.Input[List[pulumi.Input[str]]] starting_urls: The starting URLs from which the scanner finds site pages.
-        :param pulumi.Input[List[pulumi.Input[str]]] target_platforms: Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] starting_urls: The starting URLs from which the scanner finds site pages.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_platforms: Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
                Each value may be one of `APP_ENGINE` and `COMPUTE`.
         :param pulumi.Input[str] user_agent: Type of the user agents used for scanning
                Default value is `CHROME_LINUX`.
@@ -180,7 +180,7 @@ class SecurityScanConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="blacklistPatterns")
-    def blacklist_patterns(self) -> pulumi.Output[Optional[List[str]]]:
+    def blacklist_patterns(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The blacklist URL patterns as described in
         https://cloud.google.com/security-scanner/docs/excluded-urls
@@ -207,7 +207,7 @@ class SecurityScanConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxQps")
-    def max_qps(self) -> pulumi.Output[Optional[float]]:
+    def max_qps(self) -> pulumi.Output[Optional[int]]:
         """
         The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
         Defaults to 15.
@@ -242,7 +242,7 @@ class SecurityScanConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="startingUrls")
-    def starting_urls(self) -> pulumi.Output[List[str]]:
+    def starting_urls(self) -> pulumi.Output[Sequence[str]]:
         """
         The starting URLs from which the scanner finds site pages.
         """
@@ -250,7 +250,7 @@ class SecurityScanConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="targetPlatforms")
-    def target_platforms(self) -> pulumi.Output[Optional[List[str]]]:
+    def target_platforms(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
         Each value may be one of `APP_ENGINE` and `COMPUTE`.

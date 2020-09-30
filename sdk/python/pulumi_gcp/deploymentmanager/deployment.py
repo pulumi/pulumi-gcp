@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -20,7 +20,7 @@ class Deployment(pulumi.CustomResource):
                  create_policy: Optional[pulumi.Input[str]] = None,
                  delete_policy: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DeploymentLabelArgs']]]]] = None,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeploymentLabelArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  preview: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -63,7 +63,7 @@ class Deployment(pulumi.CustomResource):
                Default value is `DELETE`.
                Possible values are `ABANDON` and `DELETE`.
         :param pulumi.Input[str] description: Optional user-provided description of deployment.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DeploymentLabelArgs']]]] labels: Key-value pairs to apply to this labels.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeploymentLabelArgs']]]] labels: Key-value pairs to apply to this labels.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the template to import, as declared in the YAML
                configuration.
@@ -125,7 +125,7 @@ class Deployment(pulumi.CustomResource):
             delete_policy: Optional[pulumi.Input[str]] = None,
             deployment_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            labels: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DeploymentLabelArgs']]]]] = None,
+            labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeploymentLabelArgs']]]]] = None,
             manifest: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             preview: Optional[pulumi.Input[bool]] = None,
@@ -156,7 +156,7 @@ class Deployment(pulumi.CustomResource):
                Possible values are `ABANDON` and `DELETE`.
         :param pulumi.Input[str] deployment_id: Unique identifier for deployment. Output only.
         :param pulumi.Input[str] description: Optional user-provided description of deployment.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DeploymentLabelArgs']]]] labels: Key-value pairs to apply to this labels.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeploymentLabelArgs']]]] labels: Key-value pairs to apply to this labels.
                Structure is documented below.
         :param pulumi.Input[str] manifest: Output only. URL of the manifest representing the last manifest that was successfully deployed.
         :param pulumi.Input[str] name: The name of the template to import, as declared in the YAML
@@ -240,7 +240,7 @@ class Deployment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Optional[List['outputs.DeploymentLabel']]]:
+    def labels(self) -> pulumi.Output[Optional[Sequence['outputs.DeploymentLabel']]]:
         """
         Key-value pairs to apply to this labels.
         Structure is documented below.

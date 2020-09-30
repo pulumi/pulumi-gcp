@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -151,7 +151,7 @@ class AlertPolicyConditionArgs:
 class AlertPolicyConditionConditionAbsentArgs:
     def __init__(__self__, *,
                  duration: pulumi.Input[str],
-                 aggregations: Optional[pulumi.Input[List[pulumi.Input['AlertPolicyConditionConditionAbsentAggregationArgs']]]] = None,
+                 aggregations: Optional[pulumi.Input[Sequence[pulumi.Input['AlertPolicyConditionConditionAbsentAggregationArgs']]]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  trigger: Optional[pulumi.Input['AlertPolicyConditionConditionAbsentTriggerArgs']] = None):
         """
@@ -170,7 +170,7 @@ class AlertPolicyConditionConditionAbsentArgs:
                generate spurious alerts, but short enough
                that unhealthy states are detected and
                alerted on quickly.
-        :param pulumi.Input[List[pulumi.Input['AlertPolicyConditionConditionAbsentAggregationArgs']]] aggregations: Specifies the alignment of data points in
+        :param pulumi.Input[Sequence[pulumi.Input['AlertPolicyConditionConditionAbsentAggregationArgs']]] aggregations: Specifies the alignment of data points in
                individual time series as well as how to
                combine the retrieved time series together
                (such as when aggregating multiple streams
@@ -242,7 +242,7 @@ class AlertPolicyConditionConditionAbsentArgs:
 
     @property
     @pulumi.getter
-    def aggregations(self) -> Optional[pulumi.Input[List[pulumi.Input['AlertPolicyConditionConditionAbsentAggregationArgs']]]]:
+    def aggregations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlertPolicyConditionConditionAbsentAggregationArgs']]]]:
         """
         Specifies the alignment of data points in
         individual time series as well as how to
@@ -262,7 +262,7 @@ class AlertPolicyConditionConditionAbsentArgs:
         return pulumi.get(self, "aggregations")
 
     @aggregations.setter
-    def aggregations(self, value: Optional[pulumi.Input[List[pulumi.Input['AlertPolicyConditionConditionAbsentAggregationArgs']]]]):
+    def aggregations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlertPolicyConditionConditionAbsentAggregationArgs']]]]):
         pulumi.set(self, "aggregations", value)
 
     @property
@@ -314,7 +314,7 @@ class AlertPolicyConditionConditionAbsentAggregationArgs:
     def __init__(__self__, *,
                  alignment_period: Optional[pulumi.Input[str]] = None,
                  cross_series_reducer: Optional[pulumi.Input[str]] = None,
-                 group_by_fields: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 group_by_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  per_series_aligner: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] alignment_period: The alignment period for per-time
@@ -349,7 +349,7 @@ class AlertPolicyConditionConditionAbsentAggregationArgs:
                specified; otherwise, an error is
                returned.
                Possible values are `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, and `REDUCE_PERCENTILE_05`.
-        :param pulumi.Input[List[pulumi.Input[str]]] group_by_fields: The set of fields to preserve when
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] group_by_fields: The set of fields to preserve when
                crossSeriesReducer is specified.
                The groupByFields determine how
                the time series are partitioned
@@ -458,7 +458,7 @@ class AlertPolicyConditionConditionAbsentAggregationArgs:
 
     @property
     @pulumi.getter(name="groupByFields")
-    def group_by_fields(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def group_by_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The set of fields to preserve when
         crossSeriesReducer is specified.
@@ -489,7 +489,7 @@ class AlertPolicyConditionConditionAbsentAggregationArgs:
         return pulumi.get(self, "group_by_fields")
 
     @group_by_fields.setter
-    def group_by_fields(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def group_by_fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "group_by_fields", value)
 
     @property
@@ -525,10 +525,10 @@ class AlertPolicyConditionConditionAbsentAggregationArgs:
 @pulumi.input_type
 class AlertPolicyConditionConditionAbsentTriggerArgs:
     def __init__(__self__, *,
-                 count: Optional[pulumi.Input[float]] = None,
+                 count: Optional[pulumi.Input[int]] = None,
                  percent: Optional[pulumi.Input[float]] = None):
         """
-        :param pulumi.Input[float] count: The absolute number of time series
+        :param pulumi.Input[int] count: The absolute number of time series
                that must fail the predicate for the
                condition to be triggered.
         :param pulumi.Input[float] percent: The percentage of time series that
@@ -542,7 +542,7 @@ class AlertPolicyConditionConditionAbsentTriggerArgs:
 
     @property
     @pulumi.getter
-    def count(self) -> Optional[pulumi.Input[float]]:
+    def count(self) -> Optional[pulumi.Input[int]]:
         """
         The absolute number of time series
         that must fail the predicate for the
@@ -551,7 +551,7 @@ class AlertPolicyConditionConditionAbsentTriggerArgs:
         return pulumi.get(self, "count")
 
     @count.setter
-    def count(self, value: Optional[pulumi.Input[float]]):
+    def count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "count", value)
 
     @property
@@ -574,8 +574,8 @@ class AlertPolicyConditionConditionThresholdArgs:
     def __init__(__self__, *,
                  comparison: pulumi.Input[str],
                  duration: pulumi.Input[str],
-                 aggregations: Optional[pulumi.Input[List[pulumi.Input['AlertPolicyConditionConditionThresholdAggregationArgs']]]] = None,
-                 denominator_aggregations: Optional[pulumi.Input[List[pulumi.Input['AlertPolicyConditionConditionThresholdDenominatorAggregationArgs']]]] = None,
+                 aggregations: Optional[pulumi.Input[Sequence[pulumi.Input['AlertPolicyConditionConditionThresholdAggregationArgs']]]] = None,
+                 denominator_aggregations: Optional[pulumi.Input[Sequence[pulumi.Input['AlertPolicyConditionConditionThresholdDenominatorAggregationArgs']]]] = None,
                  denominator_filter: Optional[pulumi.Input[str]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  threshold_value: Optional[pulumi.Input[float]] = None,
@@ -605,7 +605,7 @@ class AlertPolicyConditionConditionThresholdArgs:
                generate spurious alerts, but short enough
                that unhealthy states are detected and
                alerted on quickly.
-        :param pulumi.Input[List[pulumi.Input['AlertPolicyConditionConditionThresholdAggregationArgs']]] aggregations: Specifies the alignment of data points in
+        :param pulumi.Input[Sequence[pulumi.Input['AlertPolicyConditionConditionThresholdAggregationArgs']]] aggregations: Specifies the alignment of data points in
                individual time series as well as how to
                combine the retrieved time series together
                (such as when aggregating multiple streams
@@ -619,7 +619,7 @@ class AlertPolicyConditionConditionThresholdArgs:
                ListTimeSeries method when debugging this
                field.
                Structure is documented below.
-        :param pulumi.Input[List[pulumi.Input['AlertPolicyConditionConditionThresholdDenominatorAggregationArgs']]] denominator_aggregations: Specifies the alignment of data points in
+        :param pulumi.Input[Sequence[pulumi.Input['AlertPolicyConditionConditionThresholdDenominatorAggregationArgs']]] denominator_aggregations: Specifies the alignment of data points in
                individual time series selected by
                denominatorFilter as well as how to combine
                the retrieved time series together (such as
@@ -738,7 +738,7 @@ class AlertPolicyConditionConditionThresholdArgs:
 
     @property
     @pulumi.getter
-    def aggregations(self) -> Optional[pulumi.Input[List[pulumi.Input['AlertPolicyConditionConditionThresholdAggregationArgs']]]]:
+    def aggregations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlertPolicyConditionConditionThresholdAggregationArgs']]]]:
         """
         Specifies the alignment of data points in
         individual time series as well as how to
@@ -758,12 +758,12 @@ class AlertPolicyConditionConditionThresholdArgs:
         return pulumi.get(self, "aggregations")
 
     @aggregations.setter
-    def aggregations(self, value: Optional[pulumi.Input[List[pulumi.Input['AlertPolicyConditionConditionThresholdAggregationArgs']]]]):
+    def aggregations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlertPolicyConditionConditionThresholdAggregationArgs']]]]):
         pulumi.set(self, "aggregations", value)
 
     @property
     @pulumi.getter(name="denominatorAggregations")
-    def denominator_aggregations(self) -> Optional[pulumi.Input[List[pulumi.Input['AlertPolicyConditionConditionThresholdDenominatorAggregationArgs']]]]:
+    def denominator_aggregations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlertPolicyConditionConditionThresholdDenominatorAggregationArgs']]]]:
         """
         Specifies the alignment of data points in
         individual time series selected by
@@ -786,7 +786,7 @@ class AlertPolicyConditionConditionThresholdArgs:
         return pulumi.get(self, "denominator_aggregations")
 
     @denominator_aggregations.setter
-    def denominator_aggregations(self, value: Optional[pulumi.Input[List[pulumi.Input['AlertPolicyConditionConditionThresholdDenominatorAggregationArgs']]]]):
+    def denominator_aggregations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlertPolicyConditionConditionThresholdDenominatorAggregationArgs']]]]):
         pulumi.set(self, "denominator_aggregations", value)
 
     @property
@@ -877,7 +877,7 @@ class AlertPolicyConditionConditionThresholdAggregationArgs:
     def __init__(__self__, *,
                  alignment_period: Optional[pulumi.Input[str]] = None,
                  cross_series_reducer: Optional[pulumi.Input[str]] = None,
-                 group_by_fields: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 group_by_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  per_series_aligner: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] alignment_period: The alignment period for per-time
@@ -912,7 +912,7 @@ class AlertPolicyConditionConditionThresholdAggregationArgs:
                specified; otherwise, an error is
                returned.
                Possible values are `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, and `REDUCE_PERCENTILE_05`.
-        :param pulumi.Input[List[pulumi.Input[str]]] group_by_fields: The set of fields to preserve when
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] group_by_fields: The set of fields to preserve when
                crossSeriesReducer is specified.
                The groupByFields determine how
                the time series are partitioned
@@ -1021,7 +1021,7 @@ class AlertPolicyConditionConditionThresholdAggregationArgs:
 
     @property
     @pulumi.getter(name="groupByFields")
-    def group_by_fields(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def group_by_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The set of fields to preserve when
         crossSeriesReducer is specified.
@@ -1052,7 +1052,7 @@ class AlertPolicyConditionConditionThresholdAggregationArgs:
         return pulumi.get(self, "group_by_fields")
 
     @group_by_fields.setter
-    def group_by_fields(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def group_by_fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "group_by_fields", value)
 
     @property
@@ -1090,7 +1090,7 @@ class AlertPolicyConditionConditionThresholdDenominatorAggregationArgs:
     def __init__(__self__, *,
                  alignment_period: Optional[pulumi.Input[str]] = None,
                  cross_series_reducer: Optional[pulumi.Input[str]] = None,
-                 group_by_fields: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 group_by_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  per_series_aligner: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] alignment_period: The alignment period for per-time
@@ -1125,7 +1125,7 @@ class AlertPolicyConditionConditionThresholdDenominatorAggregationArgs:
                specified; otherwise, an error is
                returned.
                Possible values are `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, and `REDUCE_PERCENTILE_05`.
-        :param pulumi.Input[List[pulumi.Input[str]]] group_by_fields: The set of fields to preserve when
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] group_by_fields: The set of fields to preserve when
                crossSeriesReducer is specified.
                The groupByFields determine how
                the time series are partitioned
@@ -1234,7 +1234,7 @@ class AlertPolicyConditionConditionThresholdDenominatorAggregationArgs:
 
     @property
     @pulumi.getter(name="groupByFields")
-    def group_by_fields(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def group_by_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The set of fields to preserve when
         crossSeriesReducer is specified.
@@ -1265,7 +1265,7 @@ class AlertPolicyConditionConditionThresholdDenominatorAggregationArgs:
         return pulumi.get(self, "group_by_fields")
 
     @group_by_fields.setter
-    def group_by_fields(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def group_by_fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "group_by_fields", value)
 
     @property
@@ -1301,10 +1301,10 @@ class AlertPolicyConditionConditionThresholdDenominatorAggregationArgs:
 @pulumi.input_type
 class AlertPolicyConditionConditionThresholdTriggerArgs:
     def __init__(__self__, *,
-                 count: Optional[pulumi.Input[float]] = None,
+                 count: Optional[pulumi.Input[int]] = None,
                  percent: Optional[pulumi.Input[float]] = None):
         """
-        :param pulumi.Input[float] count: The absolute number of time series
+        :param pulumi.Input[int] count: The absolute number of time series
                that must fail the predicate for the
                condition to be triggered.
         :param pulumi.Input[float] percent: The percentage of time series that
@@ -1318,7 +1318,7 @@ class AlertPolicyConditionConditionThresholdTriggerArgs:
 
     @property
     @pulumi.getter
-    def count(self) -> Optional[pulumi.Input[float]]:
+    def count(self) -> Optional[pulumi.Input[int]]:
         """
         The absolute number of time series
         that must fail the predicate for the
@@ -1327,7 +1327,7 @@ class AlertPolicyConditionConditionThresholdTriggerArgs:
         return pulumi.get(self, "count")
 
     @count.setter
-    def count(self, value: Optional[pulumi.Input[float]]):
+    def count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "count", value)
 
     @property
@@ -1610,25 +1610,25 @@ class NotificationChannelSensitiveLabelsArgs:
 class SloBasicSliArgs:
     def __init__(__self__, *,
                  latency: pulumi.Input['SloBasicSliLatencyArgs'],
-                 locations: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 methods: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 versions: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 methods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input['SloBasicSliLatencyArgs'] latency: Parameters for a latency threshold SLI.
                Structure is documented below.
-        :param pulumi.Input[List[pulumi.Input[str]]] locations: An optional set of locations to which this SLI is relevant.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: An optional set of locations to which this SLI is relevant.
                Telemetry from other locations will not be used to calculate
                performance for this SLI. If omitted, this SLI applies to all
                locations in which the Service has activity. For service types
                that don't support breaking down by location, setting this
                field will result in an error.
-        :param pulumi.Input[List[pulumi.Input[str]]] methods: An optional set of RPCs to which this SLI is relevant.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] methods: An optional set of RPCs to which this SLI is relevant.
                Telemetry from other methods will not be used to calculate
                performance for this SLI. If omitted, this SLI applies to all
                the Service's methods. For service types that don't support
                breaking down by method, setting this field will result in an
                error.
-        :param pulumi.Input[List[pulumi.Input[str]]] versions: The set of API versions to which this SLI is relevant.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] versions: The set of API versions to which this SLI is relevant.
                Telemetry from other API versions will not be used to
                calculate performance for this SLI. If omitted,
                this SLI applies to all API versions. For service types
@@ -1658,7 +1658,7 @@ class SloBasicSliArgs:
 
     @property
     @pulumi.getter
-    def locations(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         An optional set of locations to which this SLI is relevant.
         Telemetry from other locations will not be used to calculate
@@ -1670,12 +1670,12 @@ class SloBasicSliArgs:
         return pulumi.get(self, "locations")
 
     @locations.setter
-    def locations(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "locations", value)
 
     @property
     @pulumi.getter
-    def methods(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         An optional set of RPCs to which this SLI is relevant.
         Telemetry from other methods will not be used to calculate
@@ -1687,12 +1687,12 @@ class SloBasicSliArgs:
         return pulumi.get(self, "methods")
 
     @methods.setter
-    def methods(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "methods", value)
 
     @property
     @pulumi.getter
-    def versions(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The set of API versions to which this SLI is relevant.
         Telemetry from other API versions will not be used to
@@ -1704,7 +1704,7 @@ class SloBasicSliArgs:
         return pulumi.get(self, "versions")
 
     @versions.setter
-    def versions(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "versions", value)
 
 
@@ -1851,13 +1851,13 @@ class SloRequestBasedSliDistributionCutArgs:
 @pulumi.input_type
 class SloRequestBasedSliDistributionCutRangeArgs:
     def __init__(__self__, *,
-                 max: Optional[pulumi.Input[float]] = None,
-                 min: Optional[pulumi.Input[float]] = None):
+                 max: Optional[pulumi.Input[int]] = None,
+                 min: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[float] max: max value for the range (inclusive). If not given,
+        :param pulumi.Input[int] max: max value for the range (inclusive). If not given,
                will be set to "infinity", defining an open range
                ">= range.min"
-        :param pulumi.Input[float] min: Min value for the range (inclusive). If not given,
+        :param pulumi.Input[int] min: Min value for the range (inclusive). If not given,
                will be set to "-infinity", defining an open range
                "< range.max"
         """
@@ -1868,7 +1868,7 @@ class SloRequestBasedSliDistributionCutRangeArgs:
 
     @property
     @pulumi.getter
-    def max(self) -> Optional[pulumi.Input[float]]:
+    def max(self) -> Optional[pulumi.Input[int]]:
         """
         max value for the range (inclusive). If not given,
         will be set to "infinity", defining an open range
@@ -1877,12 +1877,12 @@ class SloRequestBasedSliDistributionCutRangeArgs:
         return pulumi.get(self, "max")
 
     @max.setter
-    def max(self, value: Optional[pulumi.Input[float]]):
+    def max(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max", value)
 
     @property
     @pulumi.getter
-    def min(self) -> Optional[pulumi.Input[float]]:
+    def min(self) -> Optional[pulumi.Input[int]]:
         """
         Min value for the range (inclusive). If not given,
         will be set to "-infinity", defining an open range
@@ -1891,7 +1891,7 @@ class SloRequestBasedSliDistributionCutRangeArgs:
         return pulumi.get(self, "min")
 
     @min.setter
-    def min(self, value: Optional[pulumi.Input[float]]):
+    def min(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "min", value)
 
 
@@ -2186,25 +2186,25 @@ class SloWindowsBasedSliGoodTotalRatioThresholdArgs:
 class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs:
     def __init__(__self__, *,
                  latency: pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgs'],
-                 locations: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 methods: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 versions: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 methods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgs'] latency: Parameters for a latency threshold SLI.
                Structure is documented below.
-        :param pulumi.Input[List[pulumi.Input[str]]] locations: An optional set of locations to which this SLI is relevant.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: An optional set of locations to which this SLI is relevant.
                Telemetry from other locations will not be used to calculate
                performance for this SLI. If omitted, this SLI applies to all
                locations in which the Service has activity. For service types
                that don't support breaking down by location, setting this
                field will result in an error.
-        :param pulumi.Input[List[pulumi.Input[str]]] methods: An optional set of RPCs to which this SLI is relevant.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] methods: An optional set of RPCs to which this SLI is relevant.
                Telemetry from other methods will not be used to calculate
                performance for this SLI. If omitted, this SLI applies to all
                the Service's methods. For service types that don't support
                breaking down by method, setting this field will result in an
                error.
-        :param pulumi.Input[List[pulumi.Input[str]]] versions: The set of API versions to which this SLI is relevant.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] versions: The set of API versions to which this SLI is relevant.
                Telemetry from other API versions will not be used to
                calculate performance for this SLI. If omitted,
                this SLI applies to all API versions. For service types
@@ -2234,7 +2234,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs:
 
     @property
     @pulumi.getter
-    def locations(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         An optional set of locations to which this SLI is relevant.
         Telemetry from other locations will not be used to calculate
@@ -2246,12 +2246,12 @@ class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs:
         return pulumi.get(self, "locations")
 
     @locations.setter
-    def locations(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "locations", value)
 
     @property
     @pulumi.getter
-    def methods(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         An optional set of RPCs to which this SLI is relevant.
         Telemetry from other methods will not be used to calculate
@@ -2263,12 +2263,12 @@ class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs:
         return pulumi.get(self, "methods")
 
     @methods.setter
-    def methods(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "methods", value)
 
     @property
     @pulumi.getter
-    def versions(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The set of API versions to which this SLI is relevant.
         Telemetry from other API versions will not be used to
@@ -2280,7 +2280,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs:
         return pulumi.get(self, "versions")
 
     @versions.setter
-    def versions(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "versions", value)
 
 
@@ -2427,13 +2427,13 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs:
 @pulumi.input_type
 class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgs:
     def __init__(__self__, *,
-                 max: Optional[pulumi.Input[float]] = None,
-                 min: Optional[pulumi.Input[float]] = None):
+                 max: Optional[pulumi.Input[int]] = None,
+                 min: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[float] max: max value for the range (inclusive). If not given,
+        :param pulumi.Input[int] max: max value for the range (inclusive). If not given,
                will be set to "infinity", defining an open range
                ">= range.min"
-        :param pulumi.Input[float] min: Min value for the range (inclusive). If not given,
+        :param pulumi.Input[int] min: Min value for the range (inclusive). If not given,
                will be set to "-infinity", defining an open range
                "< range.max"
         """
@@ -2444,7 +2444,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeAr
 
     @property
     @pulumi.getter
-    def max(self) -> Optional[pulumi.Input[float]]:
+    def max(self) -> Optional[pulumi.Input[int]]:
         """
         max value for the range (inclusive). If not given,
         will be set to "infinity", defining an open range
@@ -2453,12 +2453,12 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeAr
         return pulumi.get(self, "max")
 
     @max.setter
-    def max(self, value: Optional[pulumi.Input[float]]):
+    def max(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max", value)
 
     @property
     @pulumi.getter
-    def min(self) -> Optional[pulumi.Input[float]]:
+    def min(self) -> Optional[pulumi.Input[int]]:
         """
         Min value for the range (inclusive). If not given,
         will be set to "-infinity", defining an open range
@@ -2467,7 +2467,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeAr
         return pulumi.get(self, "min")
 
     @min.setter
-    def min(self, value: Optional[pulumi.Input[float]]):
+    def min(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "min", value)
 
 
@@ -2624,13 +2624,13 @@ class SloWindowsBasedSliMetricMeanInRangeArgs:
 @pulumi.input_type
 class SloWindowsBasedSliMetricMeanInRangeRangeArgs:
     def __init__(__self__, *,
-                 max: Optional[pulumi.Input[float]] = None,
-                 min: Optional[pulumi.Input[float]] = None):
+                 max: Optional[pulumi.Input[int]] = None,
+                 min: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[float] max: max value for the range (inclusive). If not given,
+        :param pulumi.Input[int] max: max value for the range (inclusive). If not given,
                will be set to "infinity", defining an open range
                ">= range.min"
-        :param pulumi.Input[float] min: Min value for the range (inclusive). If not given,
+        :param pulumi.Input[int] min: Min value for the range (inclusive). If not given,
                will be set to "-infinity", defining an open range
                "< range.max"
         """
@@ -2641,7 +2641,7 @@ class SloWindowsBasedSliMetricMeanInRangeRangeArgs:
 
     @property
     @pulumi.getter
-    def max(self) -> Optional[pulumi.Input[float]]:
+    def max(self) -> Optional[pulumi.Input[int]]:
         """
         max value for the range (inclusive). If not given,
         will be set to "infinity", defining an open range
@@ -2650,12 +2650,12 @@ class SloWindowsBasedSliMetricMeanInRangeRangeArgs:
         return pulumi.get(self, "max")
 
     @max.setter
-    def max(self, value: Optional[pulumi.Input[float]]):
+    def max(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max", value)
 
     @property
     @pulumi.getter
-    def min(self) -> Optional[pulumi.Input[float]]:
+    def min(self) -> Optional[pulumi.Input[int]]:
         """
         Min value for the range (inclusive). If not given,
         will be set to "-infinity", defining an open range
@@ -2664,7 +2664,7 @@ class SloWindowsBasedSliMetricMeanInRangeRangeArgs:
         return pulumi.get(self, "min")
 
     @min.setter
-    def min(self, value: Optional[pulumi.Input[float]]):
+    def min(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "min", value)
 
 
@@ -2732,13 +2732,13 @@ class SloWindowsBasedSliMetricSumInRangeArgs:
 @pulumi.input_type
 class SloWindowsBasedSliMetricSumInRangeRangeArgs:
     def __init__(__self__, *,
-                 max: Optional[pulumi.Input[float]] = None,
-                 min: Optional[pulumi.Input[float]] = None):
+                 max: Optional[pulumi.Input[int]] = None,
+                 min: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[float] max: max value for the range (inclusive). If not given,
+        :param pulumi.Input[int] max: max value for the range (inclusive). If not given,
                will be set to "infinity", defining an open range
                ">= range.min"
-        :param pulumi.Input[float] min: Min value for the range (inclusive). If not given,
+        :param pulumi.Input[int] min: Min value for the range (inclusive). If not given,
                will be set to "-infinity", defining an open range
                "< range.max"
         """
@@ -2749,7 +2749,7 @@ class SloWindowsBasedSliMetricSumInRangeRangeArgs:
 
     @property
     @pulumi.getter
-    def max(self) -> Optional[pulumi.Input[float]]:
+    def max(self) -> Optional[pulumi.Input[int]]:
         """
         max value for the range (inclusive). If not given,
         will be set to "infinity", defining an open range
@@ -2758,12 +2758,12 @@ class SloWindowsBasedSliMetricSumInRangeRangeArgs:
         return pulumi.get(self, "max")
 
     @max.setter
-    def max(self, value: Optional[pulumi.Input[float]]):
+    def max(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max", value)
 
     @property
     @pulumi.getter
-    def min(self) -> Optional[pulumi.Input[float]]:
+    def min(self) -> Optional[pulumi.Input[int]]:
         """
         Min value for the range (inclusive). If not given,
         will be set to "-infinity", defining an open range
@@ -2772,7 +2772,7 @@ class SloWindowsBasedSliMetricSumInRangeRangeArgs:
         return pulumi.get(self, "min")
 
     @min.setter
-    def min(self, value: Optional[pulumi.Input[float]]):
+    def min(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "min", value)
 
 
@@ -2827,7 +2827,7 @@ class UptimeCheckConfigHttpCheckArgs:
                  headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  mask_headers: Optional[pulumi.Input[bool]] = None,
                  path: Optional[pulumi.Input[str]] = None,
-                 port: Optional[pulumi.Input[float]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
                  request_method: Optional[pulumi.Input[str]] = None,
                  use_ssl: Optional[pulumi.Input[bool]] = None,
                  validate_ssl: Optional[pulumi.Input[bool]] = None):
@@ -2840,7 +2840,7 @@ class UptimeCheckConfigHttpCheckArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] headers: The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
         :param pulumi.Input[bool] mask_headers: Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if mask_headers is set to True then the headers will be obscured with ******.
         :param pulumi.Input[str] path: The path to the page to run the check against. Will be combined with the host (specified within the MonitoredResource) and port to construct the full URL. Optional (defaults to "/").
-        :param pulumi.Input[float] port: The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
+        :param pulumi.Input[int] port: The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
         :param pulumi.Input[str] request_method: The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then requestMethod defaults to GET.
                Default value is `GET`.
                Possible values are `METHOD_UNSPECIFIED`, `GET`, and `POST`.
@@ -2944,14 +2944,14 @@ class UptimeCheckConfigHttpCheckArgs:
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[float]]:
+    def port(self) -> Optional[pulumi.Input[int]]:
         """
         The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[float]]):
+    def port(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "port", value)
 
     @property
@@ -3113,22 +3113,22 @@ class UptimeCheckConfigResourceGroupArgs:
 @pulumi.input_type
 class UptimeCheckConfigTcpCheckArgs:
     def __init__(__self__, *,
-                 port: pulumi.Input[float]):
+                 port: pulumi.Input[int]):
         """
-        :param pulumi.Input[float] port: The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
+        :param pulumi.Input[int] port: The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
         """
         pulumi.set(__self__, "port", port)
 
     @property
     @pulumi.getter
-    def port(self) -> pulumi.Input[float]:
+    def port(self) -> pulumi.Input[int]:
         """
         The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: pulumi.Input[float]):
+    def port(self, value: pulumi.Input[int]):
         pulumi.set(self, "port", value)
 
 

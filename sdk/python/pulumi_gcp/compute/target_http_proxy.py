@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['TargetHttpProxy']
@@ -89,7 +89,7 @@ class TargetHttpProxy(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            proxy_id: Optional[pulumi.Input[float]] = None,
+            proxy_id: Optional[pulumi.Input[int]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             url_map: Optional[pulumi.Input[str]] = None) -> 'TargetHttpProxy':
         """
@@ -110,7 +110,7 @@ class TargetHttpProxy(pulumi.CustomResource):
                character, which cannot be a dash.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[float] proxy_id: The unique identifier for the resource.
+        :param pulumi.Input[int] proxy_id: The unique identifier for the resource.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] url_map: A reference to the UrlMap resource that defines the mapping from URL
                to the BackendService.
@@ -169,7 +169,7 @@ class TargetHttpProxy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="proxyId")
-    def proxy_id(self) -> pulumi.Output[float]:
+    def proxy_id(self) -> pulumi.Output[int]:
         """
         The unique identifier for the resource.
         """

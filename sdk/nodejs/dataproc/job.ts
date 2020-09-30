@@ -107,7 +107,7 @@ export class Job extends pulumi.CustomResource {
     /**
      * The status of the job.
      */
-    public /*out*/ readonly status!: pulumi.Output<outputs.dataproc.JobStatus>;
+    public /*out*/ readonly statuses!: pulumi.Output<outputs.dataproc.JobStatus[]>;
 
     /**
      * Create a Job resource with the given unique name, arguments, and options.
@@ -136,7 +136,7 @@ export class Job extends pulumi.CustomResource {
             inputs["scheduling"] = state ? state.scheduling : undefined;
             inputs["sparkConfig"] = state ? state.sparkConfig : undefined;
             inputs["sparksqlConfig"] = state ? state.sparksqlConfig : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            inputs["statuses"] = state ? state.statuses : undefined;
         } else {
             const args = argsOrState as JobArgs | undefined;
             if (!args || args.placement === undefined) {
@@ -157,7 +157,7 @@ export class Job extends pulumi.CustomResource {
             inputs["sparksqlConfig"] = args ? args.sparksqlConfig : undefined;
             inputs["driverControlsFilesUri"] = undefined /*out*/;
             inputs["driverOutputResourceUri"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            inputs["statuses"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -241,7 +241,7 @@ export interface JobState {
     /**
      * The status of the job.
      */
-    readonly status?: pulumi.Input<inputs.dataproc.JobStatus>;
+    readonly statuses?: pulumi.Input<pulumi.Input<inputs.dataproc.JobStatus>[]>;
 }
 
 /**

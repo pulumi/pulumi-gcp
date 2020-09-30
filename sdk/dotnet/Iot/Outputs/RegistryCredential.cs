@@ -16,10 +16,10 @@ namespace Pulumi.Gcp.Iot.Outputs
         /// <summary>
         /// A public key certificate format and data.
         /// </summary>
-        public readonly Outputs.RegistryCredentialPublicKeyCertificate PublicKeyCertificate;
+        public readonly ImmutableDictionary<string, object> PublicKeyCertificate;
 
         [OutputConstructor]
-        private RegistryCredential(Outputs.RegistryCredentialPublicKeyCertificate publicKeyCertificate)
+        private RegistryCredential(ImmutableDictionary<string, object> publicKeyCertificate)
         {
             PublicKeyCertificate = publicKeyCertificate;
         }

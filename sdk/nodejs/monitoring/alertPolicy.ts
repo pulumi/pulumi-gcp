@@ -65,7 +65,7 @@ export class AlertPolicy extends pulumi.CustomResource {
      * A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be
      * ignored.
      */
-    public /*out*/ readonly creationRecord!: pulumi.Output<outputs.monitoring.AlertPolicyCreationRecord>;
+    public /*out*/ readonly creationRecords!: pulumi.Output<outputs.monitoring.AlertPolicyCreationRecord[]>;
     /**
      * A short name or phrase used to identify the
      * condition in dashboards, notifications, and
@@ -134,7 +134,7 @@ export class AlertPolicy extends pulumi.CustomResource {
             const state = argsOrState as AlertPolicyState | undefined;
             inputs["combiner"] = state ? state.combiner : undefined;
             inputs["conditions"] = state ? state.conditions : undefined;
-            inputs["creationRecord"] = state ? state.creationRecord : undefined;
+            inputs["creationRecords"] = state ? state.creationRecords : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
             inputs["documentation"] = state ? state.documentation : undefined;
             inputs["enabled"] = state ? state.enabled : undefined;
@@ -161,7 +161,7 @@ export class AlertPolicy extends pulumi.CustomResource {
             inputs["notificationChannels"] = args ? args.notificationChannels : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["userLabels"] = args ? args.userLabels : undefined;
-            inputs["creationRecord"] = undefined /*out*/;
+            inputs["creationRecords"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
         }
         if (!opts) {
@@ -197,7 +197,7 @@ export interface AlertPolicyState {
      * A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be
      * ignored.
      */
-    readonly creationRecord?: pulumi.Input<inputs.monitoring.AlertPolicyCreationRecord>;
+    readonly creationRecords?: pulumi.Input<pulumi.Input<inputs.monitoring.AlertPolicyCreationRecord>[]>;
     /**
      * A short name or phrase used to identify the
      * condition in dashboards, notifications, and

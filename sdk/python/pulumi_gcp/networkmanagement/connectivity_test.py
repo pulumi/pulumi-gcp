@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -23,7 +23,7 @@ class ConnectivityTest(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
-                 related_projects: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 related_projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  source: Optional[pulumi.Input[pulumi.InputType['ConnectivityTestSourceArgs']]] = None,
                  __props__=None,
                  __name__=None,
@@ -65,7 +65,7 @@ class ConnectivityTest(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] protocol: IP Protocol of the test. When not provided, "TCP" is assumed.
-        :param pulumi.Input[List[pulumi.Input[str]]] related_projects: Other projects that may be relevant for reachability analysis.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] related_projects: Other projects that may be relevant for reachability analysis.
                This is applicable to scenarios where a test can cross project
                boundaries.
         :param pulumi.Input[pulumi.InputType['ConnectivityTestSourceArgs']] source: Required. Source specification of the Connectivity Test.
@@ -133,7 +133,7 @@ class ConnectivityTest(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             protocol: Optional[pulumi.Input[str]] = None,
-            related_projects: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            related_projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             source: Optional[pulumi.Input[pulumi.InputType['ConnectivityTestSourceArgs']]] = None) -> 'ConnectivityTest':
         """
         Get an existing ConnectivityTest resource's state with the given name, id, and optional extra
@@ -164,7 +164,7 @@ class ConnectivityTest(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] protocol: IP Protocol of the test. When not provided, "TCP" is assumed.
-        :param pulumi.Input[List[pulumi.Input[str]]] related_projects: Other projects that may be relevant for reachability analysis.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] related_projects: Other projects that may be relevant for reachability analysis.
                This is applicable to scenarios where a test can cross project
                boundaries.
         :param pulumi.Input[pulumi.InputType['ConnectivityTestSourceArgs']] source: Required. Source specification of the Connectivity Test.
@@ -267,7 +267,7 @@ class ConnectivityTest(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="relatedProjects")
-    def related_projects(self) -> pulumi.Output[Optional[List[str]]]:
+    def related_projects(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         Other projects that may be relevant for reachability analysis.
         This is applicable to scenarios where a test can cross project

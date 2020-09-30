@@ -34,8 +34,8 @@ namespace Pulumi.Gcp.Kms
         /// statement to verify attributes of the key as stored on the HSM, independently of Google. Only present if the chosen
         /// ImportMethod is one with a protection level of HSM.
         /// </summary>
-        [Output("attestation")]
-        public Output<Outputs.KeyRingImportJobAttestation> Attestation { get; private set; } = null!;
+        [Output("attestations")]
+        public Output<ImmutableArray<Outputs.KeyRingImportJobAttestation>> Attestations { get; private set; } = null!;
 
         /// <summary>
         /// The time at which this resource is scheduled for expiration and can no longer be used. This is in RFC3339 text format.
@@ -80,8 +80,8 @@ namespace Pulumi.Gcp.Kms
         /// <summary>
         /// The public key with which to wrap key material prior to import. Only returned if state is 'ACTIVE'.
         /// </summary>
-        [Output("publicKey")]
-        public Output<Outputs.KeyRingImportJobPublicKey> PublicKey { get; private set; } = null!;
+        [Output("publicKeys")]
+        public Output<ImmutableArray<Outputs.KeyRingImportJobPublicKey>> PublicKeys { get; private set; } = null!;
 
         /// <summary>
         /// The current state of the ImportJob, indicating if it can be used.
@@ -170,13 +170,19 @@ namespace Pulumi.Gcp.Kms
 
     public sealed class KeyRingImportJobState : Pulumi.ResourceArgs
     {
+        [Input("attestations")]
+        private InputList<Inputs.KeyRingImportJobAttestationGetArgs>? _attestations;
+
         /// <summary>
         /// Statement that was generated and signed by the key creator (for example, an HSM) at key creation time. Use this
         /// statement to verify attributes of the key as stored on the HSM, independently of Google. Only present if the chosen
         /// ImportMethod is one with a protection level of HSM.
         /// </summary>
-        [Input("attestation")]
-        public Input<Inputs.KeyRingImportJobAttestationGetArgs>? Attestation { get; set; }
+        public InputList<Inputs.KeyRingImportJobAttestationGetArgs> Attestations
+        {
+            get => _attestations ?? (_attestations = new InputList<Inputs.KeyRingImportJobAttestationGetArgs>());
+            set => _attestations = value;
+        }
 
         /// <summary>
         /// The time at which this resource is scheduled for expiration and can no longer be used. This is in RFC3339 text format.
@@ -218,11 +224,17 @@ namespace Pulumi.Gcp.Kms
         [Input("protectionLevel")]
         public Input<string>? ProtectionLevel { get; set; }
 
+        [Input("publicKeys")]
+        private InputList<Inputs.KeyRingImportJobPublicKeyGetArgs>? _publicKeys;
+
         /// <summary>
         /// The public key with which to wrap key material prior to import. Only returned if state is 'ACTIVE'.
         /// </summary>
-        [Input("publicKey")]
-        public Input<Inputs.KeyRingImportJobPublicKeyGetArgs>? PublicKey { get; set; }
+        public InputList<Inputs.KeyRingImportJobPublicKeyGetArgs> PublicKeys
+        {
+            get => _publicKeys ?? (_publicKeys = new InputList<Inputs.KeyRingImportJobPublicKeyGetArgs>());
+            set => _publicKeys = value;
+        }
 
         /// <summary>
         /// The current state of the ImportJob, indicating if it can be used.

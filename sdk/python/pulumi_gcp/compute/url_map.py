@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -22,11 +22,11 @@ class URLMap(pulumi.CustomResource):
                  default_url_redirect: Optional[pulumi.Input[pulumi.InputType['URLMapDefaultUrlRedirectArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  header_action: Optional[pulumi.Input[pulumi.InputType['URLMapHeaderActionArgs']]] = None,
-                 host_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['URLMapHostRuleArgs']]]]] = None,
+                 host_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['URLMapHostRuleArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 path_matchers: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['URLMapPathMatcherArgs']]]]] = None,
+                 path_matchers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['URLMapPathMatcherArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 tests: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['URLMapTestArgs']]]]] = None,
+                 tests: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['URLMapTestArgs']]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -59,15 +59,15 @@ class URLMap(pulumi.CustomResource):
                headerAction specified here take effect before headerAction in the enclosing
                HttpRouteRule, PathMatcher and UrlMap.
                Structure is documented below.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['URLMapHostRuleArgs']]]] host_rules: The list of HostRules to use against the URL.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['URLMapHostRuleArgs']]]] host_rules: The list of HostRules to use against the URL.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the query parameter to match. The query parameter must exist in the
                request, in the absence of which the request match fails.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['URLMapPathMatcherArgs']]]] path_matchers: The name of the PathMatcher to use to match the path portion of the URL if the
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['URLMapPathMatcherArgs']]]] path_matchers: The name of the PathMatcher to use to match the path portion of the URL if the
                hostRule matches the URL's host portion.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['URLMapTestArgs']]]] tests: The list of expected URL mapping tests. Request to update this UrlMap will
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['URLMapTestArgs']]]] tests: The list of expected URL mapping tests. Request to update this UrlMap will
                succeed only if all of the test cases pass. You can specify a maximum of 100
                tests per UrlMap.
                Structure is documented below.
@@ -120,13 +120,13 @@ class URLMap(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             fingerprint: Optional[pulumi.Input[str]] = None,
             header_action: Optional[pulumi.Input[pulumi.InputType['URLMapHeaderActionArgs']]] = None,
-            host_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['URLMapHostRuleArgs']]]]] = None,
-            map_id: Optional[pulumi.Input[float]] = None,
+            host_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['URLMapHostRuleArgs']]]]] = None,
+            map_id: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            path_matchers: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['URLMapPathMatcherArgs']]]]] = None,
+            path_matchers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['URLMapPathMatcherArgs']]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
-            tests: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['URLMapTestArgs']]]]] = None) -> 'URLMap':
+            tests: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['URLMapTestArgs']]]]] = None) -> 'URLMap':
         """
         Get an existing URLMap resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -153,17 +153,17 @@ class URLMap(pulumi.CustomResource):
                headerAction specified here take effect before headerAction in the enclosing
                HttpRouteRule, PathMatcher and UrlMap.
                Structure is documented below.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['URLMapHostRuleArgs']]]] host_rules: The list of HostRules to use against the URL.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['URLMapHostRuleArgs']]]] host_rules: The list of HostRules to use against the URL.
                Structure is documented below.
-        :param pulumi.Input[float] map_id: The unique identifier for the resource.
+        :param pulumi.Input[int] map_id: The unique identifier for the resource.
         :param pulumi.Input[str] name: The name of the query parameter to match. The query parameter must exist in the
                request, in the absence of which the request match fails.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['URLMapPathMatcherArgs']]]] path_matchers: The name of the PathMatcher to use to match the path portion of the URL if the
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['URLMapPathMatcherArgs']]]] path_matchers: The name of the PathMatcher to use to match the path portion of the URL if the
                hostRule matches the URL's host portion.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['URLMapTestArgs']]]] tests: The list of expected URL mapping tests. Request to update this UrlMap will
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['URLMapTestArgs']]]] tests: The list of expected URL mapping tests. Request to update this UrlMap will
                succeed only if all of the test cases pass. You can specify a maximum of 100
                tests per UrlMap.
                Structure is documented below.
@@ -258,7 +258,7 @@ class URLMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hostRules")
-    def host_rules(self) -> pulumi.Output[Optional[List['outputs.URLMapHostRule']]]:
+    def host_rules(self) -> pulumi.Output[Optional[Sequence['outputs.URLMapHostRule']]]:
         """
         The list of HostRules to use against the URL.
         Structure is documented below.
@@ -267,7 +267,7 @@ class URLMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="mapId")
-    def map_id(self) -> pulumi.Output[float]:
+    def map_id(self) -> pulumi.Output[int]:
         """
         The unique identifier for the resource.
         """
@@ -284,7 +284,7 @@ class URLMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pathMatchers")
-    def path_matchers(self) -> pulumi.Output[Optional[List['outputs.URLMapPathMatcher']]]:
+    def path_matchers(self) -> pulumi.Output[Optional[Sequence['outputs.URLMapPathMatcher']]]:
         """
         The name of the PathMatcher to use to match the path portion of the URL if the
         hostRule matches the URL's host portion.
@@ -310,7 +310,7 @@ class URLMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tests(self) -> pulumi.Output[Optional[List['outputs.URLMapTest']]]:
+    def tests(self) -> pulumi.Output[Optional[Sequence['outputs.URLMapTest']]]:
         """
         The list of expected URL mapping tests. Request to update this UrlMap will
         succeed only if all of the test cases pass. You can specify a maximum of 100

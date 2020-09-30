@@ -74,8 +74,8 @@ namespace Pulumi.Gcp.CloudRun
         /// <summary>
         /// The current status of the Service.
         /// </summary>
-        [Output("status")]
-        public Output<Outputs.ServiceStatus> Status { get; private set; } = null!;
+        [Output("statuses")]
+        public Output<ImmutableArray<Outputs.ServiceStatus>> Statuses { get; private set; } = null!;
 
         /// <summary>
         /// template holds the latest specification for the Revision to
@@ -256,11 +256,17 @@ namespace Pulumi.Gcp.CloudRun
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        [Input("statuses")]
+        private InputList<Inputs.ServiceStatusGetArgs>? _statuses;
+
         /// <summary>
         /// The current status of the Service.
         /// </summary>
-        [Input("status")]
-        public Input<Inputs.ServiceStatusGetArgs>? Status { get; set; }
+        public InputList<Inputs.ServiceStatusGetArgs> Statuses
+        {
+            get => _statuses ?? (_statuses = new InputList<Inputs.ServiceStatusGetArgs>());
+            set => _statuses = value;
+        }
 
         /// <summary>
         /// template holds the latest specification for the Revision to

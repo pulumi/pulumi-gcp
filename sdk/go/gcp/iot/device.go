@@ -25,7 +25,7 @@ type Device struct {
 	// If a device is blocked, connections or requests from this device will fail.
 	Blocked pulumi.BoolPtrOutput `pulumi:"blocked"`
 	// The most recent device configuration, which is eventually sent from Cloud IoT Core to the device.
-	Config DeviceConfigOutput `pulumi:"config"`
+	Configs DeviceConfigArrayOutput `pulumi:"configs"`
 	// The credentials used to authenticate this device.
 	// Structure is documented below.
 	Credentials DeviceCredentialArrayOutput `pulumi:"credentials"`
@@ -37,7 +37,7 @@ type Device struct {
 	// The last time a cloud-to-device config version was sent to the device.
 	LastConfigSendTime pulumi.StringOutput `pulumi:"lastConfigSendTime"`
 	// The error message of the most recent error, such as a failure to publish to Cloud Pub/Sub.
-	LastErrorStatus DeviceLastErrorStatusOutput `pulumi:"lastErrorStatus"`
+	LastErrorStatuses DeviceLastErrorStatusArrayOutput `pulumi:"lastErrorStatuses"`
 	// The time the most recent error occurred, such as a failure to publish to Cloud Pub/Sub.
 	LastErrorTime pulumi.StringOutput `pulumi:"lastErrorTime"`
 	// The last time a telemetry event was received.
@@ -59,7 +59,7 @@ type Device struct {
 	// The name of the device registry where this device should be created.
 	Registry pulumi.StringOutput `pulumi:"registry"`
 	// The state most recently received from the device.
-	State DeviceStateTypeOutput `pulumi:"state"`
+	States DeviceStateTypeArrayOutput `pulumi:"states"`
 }
 
 // NewDevice registers a new resource with the given unique name, arguments, and options.
@@ -96,7 +96,7 @@ type deviceState struct {
 	// If a device is blocked, connections or requests from this device will fail.
 	Blocked *bool `pulumi:"blocked"`
 	// The most recent device configuration, which is eventually sent from Cloud IoT Core to the device.
-	Config *DeviceConfig `pulumi:"config"`
+	Configs []DeviceConfig `pulumi:"configs"`
 	// The credentials used to authenticate this device.
 	// Structure is documented below.
 	Credentials []DeviceCredential `pulumi:"credentials"`
@@ -108,7 +108,7 @@ type deviceState struct {
 	// The last time a cloud-to-device config version was sent to the device.
 	LastConfigSendTime *string `pulumi:"lastConfigSendTime"`
 	// The error message of the most recent error, such as a failure to publish to Cloud Pub/Sub.
-	LastErrorStatus *DeviceLastErrorStatus `pulumi:"lastErrorStatus"`
+	LastErrorStatuses []DeviceLastErrorStatus `pulumi:"lastErrorStatuses"`
 	// The time the most recent error occurred, such as a failure to publish to Cloud Pub/Sub.
 	LastErrorTime *string `pulumi:"lastErrorTime"`
 	// The last time a telemetry event was received.
@@ -130,14 +130,14 @@ type deviceState struct {
 	// The name of the device registry where this device should be created.
 	Registry *string `pulumi:"registry"`
 	// The state most recently received from the device.
-	State *DeviceStateType `pulumi:"state"`
+	States []DeviceStateType `pulumi:"states"`
 }
 
 type DeviceState struct {
 	// If a device is blocked, connections or requests from this device will fail.
 	Blocked pulumi.BoolPtrInput
 	// The most recent device configuration, which is eventually sent from Cloud IoT Core to the device.
-	Config DeviceConfigPtrInput
+	Configs DeviceConfigArrayInput
 	// The credentials used to authenticate this device.
 	// Structure is documented below.
 	Credentials DeviceCredentialArrayInput
@@ -149,7 +149,7 @@ type DeviceState struct {
 	// The last time a cloud-to-device config version was sent to the device.
 	LastConfigSendTime pulumi.StringPtrInput
 	// The error message of the most recent error, such as a failure to publish to Cloud Pub/Sub.
-	LastErrorStatus DeviceLastErrorStatusPtrInput
+	LastErrorStatuses DeviceLastErrorStatusArrayInput
 	// The time the most recent error occurred, such as a failure to publish to Cloud Pub/Sub.
 	LastErrorTime pulumi.StringPtrInput
 	// The last time a telemetry event was received.
@@ -171,7 +171,7 @@ type DeviceState struct {
 	// The name of the device registry where this device should be created.
 	Registry pulumi.StringPtrInput
 	// The state most recently received from the device.
-	State DeviceStateTypePtrInput
+	States DeviceStateTypeArrayInput
 }
 
 func (DeviceState) ElementType() reflect.Type {

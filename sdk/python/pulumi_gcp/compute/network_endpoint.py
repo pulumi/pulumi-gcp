@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['NetworkEndpoint']
@@ -18,7 +18,7 @@ class NetworkEndpoint(pulumi.CustomResource):
                  instance: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  network_endpoint_group: Optional[pulumi.Input[str]] = None,
-                 port: Optional[pulumi.Input[float]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -48,7 +48,7 @@ class NetworkEndpoint(pulumi.CustomResource):
                to a VM in GCE (either the primary IP or as part of an aliased IP
                range).
         :param pulumi.Input[str] network_endpoint_group: The network endpoint group this endpoint is part of.
-        :param pulumi.Input[float] port: Port number of network endpoint.
+        :param pulumi.Input[int] port: Port number of network endpoint.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] zone: Zone where the containing network endpoint group is located.
@@ -97,7 +97,7 @@ class NetworkEndpoint(pulumi.CustomResource):
             instance: Optional[pulumi.Input[str]] = None,
             ip_address: Optional[pulumi.Input[str]] = None,
             network_endpoint_group: Optional[pulumi.Input[str]] = None,
-            port: Optional[pulumi.Input[float]] = None,
+            port: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'NetworkEndpoint':
         """
@@ -114,7 +114,7 @@ class NetworkEndpoint(pulumi.CustomResource):
                to a VM in GCE (either the primary IP or as part of an aliased IP
                range).
         :param pulumi.Input[str] network_endpoint_group: The network endpoint group this endpoint is part of.
-        :param pulumi.Input[float] port: Port number of network endpoint.
+        :param pulumi.Input[int] port: Port number of network endpoint.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] zone: Zone where the containing network endpoint group is located.
@@ -161,7 +161,7 @@ class NetworkEndpoint(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> pulumi.Output[float]:
+    def port(self) -> pulumi.Output[int]:
         """
         Port number of network endpoint.
         """

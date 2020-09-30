@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['FirewallRule']
@@ -17,7 +17,7 @@ class FirewallRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 priority: Optional[pulumi.Input[float]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  source_range: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -40,7 +40,7 @@ class FirewallRule(pulumi.CustomResource):
         :param pulumi.Input[str] action: The action to take if this rule matches.
                Possible values are `UNSPECIFIED_ACTION`, `ALLOW`, and `DENY`.
         :param pulumi.Input[str] description: An optional string description of this rule.
-        :param pulumi.Input[float] priority: A positive integer that defines the order of rule evaluation.
+        :param pulumi.Input[int] priority: A positive integer that defines the order of rule evaluation.
                Rules with the lowest priority are evaluated first.
                A default rule at priority Int32.MaxValue matches all IPv4 and
                IPv6 traffic when no previous rule matches. Only the action of
@@ -87,7 +87,7 @@ class FirewallRule(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             action: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            priority: Optional[pulumi.Input[float]] = None,
+            priority: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
             source_range: Optional[pulumi.Input[str]] = None) -> 'FirewallRule':
         """
@@ -100,7 +100,7 @@ class FirewallRule(pulumi.CustomResource):
         :param pulumi.Input[str] action: The action to take if this rule matches.
                Possible values are `UNSPECIFIED_ACTION`, `ALLOW`, and `DENY`.
         :param pulumi.Input[str] description: An optional string description of this rule.
-        :param pulumi.Input[float] priority: A positive integer that defines the order of rule evaluation.
+        :param pulumi.Input[int] priority: A positive integer that defines the order of rule evaluation.
                Rules with the lowest priority are evaluated first.
                A default rule at priority Int32.MaxValue matches all IPv4 and
                IPv6 traffic when no previous rule matches. Only the action of
@@ -139,7 +139,7 @@ class FirewallRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def priority(self) -> pulumi.Output[Optional[float]]:
+    def priority(self) -> pulumi.Output[Optional[int]]:
         """
         A positive integer that defines the order of rule evaluation.
         Rules with the lowest priority are evaluated first.

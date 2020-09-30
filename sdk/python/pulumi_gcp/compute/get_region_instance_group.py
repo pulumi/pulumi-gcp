@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -39,8 +39,8 @@ class GetRegionInstanceGroupResult:
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
-        if size and not isinstance(size, float):
-            raise TypeError("Expected argument 'size' to be a float")
+        if size and not isinstance(size, int):
+            raise TypeError("Expected argument 'size' to be a int")
         pulumi.set(__self__, "size", size)
 
     @property
@@ -53,7 +53,7 @@ class GetRegionInstanceGroupResult:
 
     @property
     @pulumi.getter
-    def instances(self) -> List['outputs.GetRegionInstanceGroupInstanceResult']:
+    def instances(self) -> Sequence['outputs.GetRegionInstanceGroupInstanceResult']:
         """
         List of instances in the group, as a list of resources, each containing:
         """
@@ -84,7 +84,7 @@ class GetRegionInstanceGroupResult:
 
     @property
     @pulumi.getter
-    def size(self) -> float:
+    def size(self) -> int:
         """
         The number of instances in the group.
         """

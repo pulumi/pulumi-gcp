@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -131,7 +131,7 @@ class GetInstanceResult:
 
     @property
     @pulumi.getter(name="attachedDisks")
-    def attached_disks(self) -> List['outputs.GetInstanceAttachedDiskResult']:
+    def attached_disks(self) -> Sequence['outputs.GetInstanceAttachedDiskResult']:
         """
         List of disks attached to the instance. Structure is documented below.
         """
@@ -139,7 +139,7 @@ class GetInstanceResult:
 
     @property
     @pulumi.getter(name="bootDisks")
-    def boot_disks(self) -> List['outputs.GetInstanceBootDiskResult']:
+    def boot_disks(self) -> Sequence['outputs.GetInstanceBootDiskResult']:
         """
         The boot disk for the instance. Structure is documented below.
         """
@@ -155,7 +155,7 @@ class GetInstanceResult:
 
     @property
     @pulumi.getter(name="confidentialInstanceConfigs")
-    def confidential_instance_configs(self) -> List['outputs.GetInstanceConfidentialInstanceConfigResult']:
+    def confidential_instance_configs(self) -> Sequence['outputs.GetInstanceConfidentialInstanceConfigResult']:
         return pulumi.get(self, "confidential_instance_configs")
 
     @property
@@ -199,7 +199,7 @@ class GetInstanceResult:
 
     @property
     @pulumi.getter(name="guestAccelerators")
-    def guest_accelerators(self) -> List['outputs.GetInstanceGuestAcceleratorResult']:
+    def guest_accelerators(self) -> Sequence['outputs.GetInstanceGuestAcceleratorResult']:
         """
         List of the type and count of accelerator cards attached to the instance. Structure is documented below.
         """
@@ -286,7 +286,7 @@ class GetInstanceResult:
 
     @property
     @pulumi.getter(name="networkInterfaces")
-    def network_interfaces(self) -> List['outputs.GetInstanceNetworkInterfaceResult']:
+    def network_interfaces(self) -> Sequence['outputs.GetInstanceNetworkInterfaceResult']:
         """
         The networks attached to the instance. Structure is documented below.
         """
@@ -299,12 +299,12 @@ class GetInstanceResult:
 
     @property
     @pulumi.getter(name="resourcePolicies")
-    def resource_policies(self) -> List[str]:
+    def resource_policies(self) -> Sequence[str]:
         return pulumi.get(self, "resource_policies")
 
     @property
     @pulumi.getter
-    def schedulings(self) -> List['outputs.GetInstanceSchedulingResult']:
+    def schedulings(self) -> Sequence['outputs.GetInstanceSchedulingResult']:
         """
         The scheduling strategy being used by the instance.
         """
@@ -312,7 +312,7 @@ class GetInstanceResult:
 
     @property
     @pulumi.getter(name="scratchDisks")
-    def scratch_disks(self) -> List['outputs.GetInstanceScratchDiskResult']:
+    def scratch_disks(self) -> Sequence['outputs.GetInstanceScratchDiskResult']:
         """
         The scratch disks attached to the instance. Structure is documented below.
         """
@@ -328,7 +328,7 @@ class GetInstanceResult:
 
     @property
     @pulumi.getter(name="serviceAccounts")
-    def service_accounts(self) -> List['outputs.GetInstanceServiceAccountResult']:
+    def service_accounts(self) -> Sequence['outputs.GetInstanceServiceAccountResult']:
         """
         The service account to attach to the instance. Structure is documented below.
         """
@@ -336,7 +336,7 @@ class GetInstanceResult:
 
     @property
     @pulumi.getter(name="shieldedInstanceConfigs")
-    def shielded_instance_configs(self) -> List['outputs.GetInstanceShieldedInstanceConfigResult']:
+    def shielded_instance_configs(self) -> Sequence['outputs.GetInstanceShieldedInstanceConfigResult']:
         """
         The shielded vm config being used by the instance. Structure is documented below.
         """
@@ -344,7 +344,7 @@ class GetInstanceResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> List[str]:
+    def tags(self) -> Sequence[str]:
         """
         The list of tags attached to the instance.
         """

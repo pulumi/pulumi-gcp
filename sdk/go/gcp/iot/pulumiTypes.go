@@ -47,45 +47,29 @@ func (i DeviceConfigArgs) ToDeviceConfigOutputWithContext(ctx context.Context) D
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceConfigOutput)
 }
 
-func (i DeviceConfigArgs) ToDeviceConfigPtrOutput() DeviceConfigPtrOutput {
-	return i.ToDeviceConfigPtrOutputWithContext(context.Background())
-}
-
-func (i DeviceConfigArgs) ToDeviceConfigPtrOutputWithContext(ctx context.Context) DeviceConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeviceConfigOutput).ToDeviceConfigPtrOutputWithContext(ctx)
-}
-
-// DeviceConfigPtrInput is an input type that accepts DeviceConfigArgs, DeviceConfigPtr and DeviceConfigPtrOutput values.
-// You can construct a concrete instance of `DeviceConfigPtrInput` via:
+// DeviceConfigArrayInput is an input type that accepts DeviceConfigArray and DeviceConfigArrayOutput values.
+// You can construct a concrete instance of `DeviceConfigArrayInput` via:
 //
-//          DeviceConfigArgs{...}
-//
-//  or:
-//
-//          nil
-type DeviceConfigPtrInput interface {
+//          DeviceConfigArray{ DeviceConfigArgs{...} }
+type DeviceConfigArrayInput interface {
 	pulumi.Input
 
-	ToDeviceConfigPtrOutput() DeviceConfigPtrOutput
-	ToDeviceConfigPtrOutputWithContext(context.Context) DeviceConfigPtrOutput
+	ToDeviceConfigArrayOutput() DeviceConfigArrayOutput
+	ToDeviceConfigArrayOutputWithContext(context.Context) DeviceConfigArrayOutput
 }
 
-type deviceConfigPtrType DeviceConfigArgs
+type DeviceConfigArray []DeviceConfigInput
 
-func DeviceConfigPtr(v *DeviceConfigArgs) DeviceConfigPtrInput {
-	return (*deviceConfigPtrType)(v)
+func (DeviceConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeviceConfig)(nil)).Elem()
 }
 
-func (*deviceConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DeviceConfig)(nil)).Elem()
+func (i DeviceConfigArray) ToDeviceConfigArrayOutput() DeviceConfigArrayOutput {
+	return i.ToDeviceConfigArrayOutputWithContext(context.Background())
 }
 
-func (i *deviceConfigPtrType) ToDeviceConfigPtrOutput() DeviceConfigPtrOutput {
-	return i.ToDeviceConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *deviceConfigPtrType) ToDeviceConfigPtrOutputWithContext(ctx context.Context) DeviceConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeviceConfigPtrOutput)
+func (i DeviceConfigArray) ToDeviceConfigArrayOutputWithContext(ctx context.Context) DeviceConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceConfigArrayOutput)
 }
 
 type DeviceConfigOutput struct{ *pulumi.OutputState }
@@ -102,15 +86,6 @@ func (o DeviceConfigOutput) ToDeviceConfigOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o DeviceConfigOutput) ToDeviceConfigPtrOutput() DeviceConfigPtrOutput {
-	return o.ToDeviceConfigPtrOutputWithContext(context.Background())
-}
-
-func (o DeviceConfigOutput) ToDeviceConfigPtrOutputWithContext(ctx context.Context) DeviceConfigPtrOutput {
-	return o.ApplyT(func(v DeviceConfig) *DeviceConfig {
-		return &v
-	}).(DeviceConfigPtrOutput)
-}
 func (o DeviceConfigOutput) BinaryData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceConfig) *string { return v.BinaryData }).(pulumi.StringPtrOutput)
 }
@@ -127,58 +102,24 @@ func (o DeviceConfigOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceConfig) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
-type DeviceConfigPtrOutput struct{ *pulumi.OutputState }
+type DeviceConfigArrayOutput struct{ *pulumi.OutputState }
 
-func (DeviceConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DeviceConfig)(nil)).Elem()
+func (DeviceConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeviceConfig)(nil)).Elem()
 }
 
-func (o DeviceConfigPtrOutput) ToDeviceConfigPtrOutput() DeviceConfigPtrOutput {
+func (o DeviceConfigArrayOutput) ToDeviceConfigArrayOutput() DeviceConfigArrayOutput {
 	return o
 }
 
-func (o DeviceConfigPtrOutput) ToDeviceConfigPtrOutputWithContext(ctx context.Context) DeviceConfigPtrOutput {
+func (o DeviceConfigArrayOutput) ToDeviceConfigArrayOutputWithContext(ctx context.Context) DeviceConfigArrayOutput {
 	return o
 }
 
-func (o DeviceConfigPtrOutput) Elem() DeviceConfigOutput {
-	return o.ApplyT(func(v *DeviceConfig) DeviceConfig { return *v }).(DeviceConfigOutput)
-}
-
-func (o DeviceConfigPtrOutput) BinaryData() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DeviceConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.BinaryData
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o DeviceConfigPtrOutput) CloudUpdateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DeviceConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CloudUpdateTime
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o DeviceConfigPtrOutput) DeviceAckTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DeviceConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DeviceAckTime
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o DeviceConfigPtrOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DeviceConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Version
-	}).(pulumi.StringPtrOutput)
+func (o DeviceConfigArrayOutput) Index(i pulumi.IntInput) DeviceConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeviceConfig {
+		return vs[0].([]DeviceConfig)[vs[1].(int)]
+	}).(DeviceConfigOutput)
 }
 
 type DeviceCredential struct {
@@ -597,45 +538,29 @@ func (i DeviceLastErrorStatusArgs) ToDeviceLastErrorStatusOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceLastErrorStatusOutput)
 }
 
-func (i DeviceLastErrorStatusArgs) ToDeviceLastErrorStatusPtrOutput() DeviceLastErrorStatusPtrOutput {
-	return i.ToDeviceLastErrorStatusPtrOutputWithContext(context.Background())
-}
-
-func (i DeviceLastErrorStatusArgs) ToDeviceLastErrorStatusPtrOutputWithContext(ctx context.Context) DeviceLastErrorStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeviceLastErrorStatusOutput).ToDeviceLastErrorStatusPtrOutputWithContext(ctx)
-}
-
-// DeviceLastErrorStatusPtrInput is an input type that accepts DeviceLastErrorStatusArgs, DeviceLastErrorStatusPtr and DeviceLastErrorStatusPtrOutput values.
-// You can construct a concrete instance of `DeviceLastErrorStatusPtrInput` via:
+// DeviceLastErrorStatusArrayInput is an input type that accepts DeviceLastErrorStatusArray and DeviceLastErrorStatusArrayOutput values.
+// You can construct a concrete instance of `DeviceLastErrorStatusArrayInput` via:
 //
-//          DeviceLastErrorStatusArgs{...}
-//
-//  or:
-//
-//          nil
-type DeviceLastErrorStatusPtrInput interface {
+//          DeviceLastErrorStatusArray{ DeviceLastErrorStatusArgs{...} }
+type DeviceLastErrorStatusArrayInput interface {
 	pulumi.Input
 
-	ToDeviceLastErrorStatusPtrOutput() DeviceLastErrorStatusPtrOutput
-	ToDeviceLastErrorStatusPtrOutputWithContext(context.Context) DeviceLastErrorStatusPtrOutput
+	ToDeviceLastErrorStatusArrayOutput() DeviceLastErrorStatusArrayOutput
+	ToDeviceLastErrorStatusArrayOutputWithContext(context.Context) DeviceLastErrorStatusArrayOutput
 }
 
-type deviceLastErrorStatusPtrType DeviceLastErrorStatusArgs
+type DeviceLastErrorStatusArray []DeviceLastErrorStatusInput
 
-func DeviceLastErrorStatusPtr(v *DeviceLastErrorStatusArgs) DeviceLastErrorStatusPtrInput {
-	return (*deviceLastErrorStatusPtrType)(v)
+func (DeviceLastErrorStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeviceLastErrorStatus)(nil)).Elem()
 }
 
-func (*deviceLastErrorStatusPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DeviceLastErrorStatus)(nil)).Elem()
+func (i DeviceLastErrorStatusArray) ToDeviceLastErrorStatusArrayOutput() DeviceLastErrorStatusArrayOutput {
+	return i.ToDeviceLastErrorStatusArrayOutputWithContext(context.Background())
 }
 
-func (i *deviceLastErrorStatusPtrType) ToDeviceLastErrorStatusPtrOutput() DeviceLastErrorStatusPtrOutput {
-	return i.ToDeviceLastErrorStatusPtrOutputWithContext(context.Background())
-}
-
-func (i *deviceLastErrorStatusPtrType) ToDeviceLastErrorStatusPtrOutputWithContext(ctx context.Context) DeviceLastErrorStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeviceLastErrorStatusPtrOutput)
+func (i DeviceLastErrorStatusArray) ToDeviceLastErrorStatusArrayOutputWithContext(ctx context.Context) DeviceLastErrorStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceLastErrorStatusArrayOutput)
 }
 
 type DeviceLastErrorStatusOutput struct{ *pulumi.OutputState }
@@ -652,15 +577,6 @@ func (o DeviceLastErrorStatusOutput) ToDeviceLastErrorStatusOutputWithContext(ct
 	return o
 }
 
-func (o DeviceLastErrorStatusOutput) ToDeviceLastErrorStatusPtrOutput() DeviceLastErrorStatusPtrOutput {
-	return o.ToDeviceLastErrorStatusPtrOutputWithContext(context.Background())
-}
-
-func (o DeviceLastErrorStatusOutput) ToDeviceLastErrorStatusPtrOutputWithContext(ctx context.Context) DeviceLastErrorStatusPtrOutput {
-	return o.ApplyT(func(v DeviceLastErrorStatus) *DeviceLastErrorStatus {
-		return &v
-	}).(DeviceLastErrorStatusPtrOutput)
-}
 func (o DeviceLastErrorStatusOutput) Details() pulumi.MapArrayOutput {
 	return o.ApplyT(func(v DeviceLastErrorStatus) []map[string]interface{} { return v.Details }).(pulumi.MapArrayOutput)
 }
@@ -673,49 +589,24 @@ func (o DeviceLastErrorStatusOutput) Number() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DeviceLastErrorStatus) *int { return v.Number }).(pulumi.IntPtrOutput)
 }
 
-type DeviceLastErrorStatusPtrOutput struct{ *pulumi.OutputState }
+type DeviceLastErrorStatusArrayOutput struct{ *pulumi.OutputState }
 
-func (DeviceLastErrorStatusPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DeviceLastErrorStatus)(nil)).Elem()
+func (DeviceLastErrorStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeviceLastErrorStatus)(nil)).Elem()
 }
 
-func (o DeviceLastErrorStatusPtrOutput) ToDeviceLastErrorStatusPtrOutput() DeviceLastErrorStatusPtrOutput {
+func (o DeviceLastErrorStatusArrayOutput) ToDeviceLastErrorStatusArrayOutput() DeviceLastErrorStatusArrayOutput {
 	return o
 }
 
-func (o DeviceLastErrorStatusPtrOutput) ToDeviceLastErrorStatusPtrOutputWithContext(ctx context.Context) DeviceLastErrorStatusPtrOutput {
+func (o DeviceLastErrorStatusArrayOutput) ToDeviceLastErrorStatusArrayOutputWithContext(ctx context.Context) DeviceLastErrorStatusArrayOutput {
 	return o
 }
 
-func (o DeviceLastErrorStatusPtrOutput) Elem() DeviceLastErrorStatusOutput {
-	return o.ApplyT(func(v *DeviceLastErrorStatus) DeviceLastErrorStatus { return *v }).(DeviceLastErrorStatusOutput)
-}
-
-func (o DeviceLastErrorStatusPtrOutput) Details() pulumi.MapArrayOutput {
-	return o.ApplyT(func(v *DeviceLastErrorStatus) []map[string]interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.Details
-	}).(pulumi.MapArrayOutput)
-}
-
-func (o DeviceLastErrorStatusPtrOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DeviceLastErrorStatus) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Message
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o DeviceLastErrorStatusPtrOutput) Number() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DeviceLastErrorStatus) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Number
-	}).(pulumi.IntPtrOutput)
+func (o DeviceLastErrorStatusArrayOutput) Index(i pulumi.IntInput) DeviceLastErrorStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeviceLastErrorStatus {
+		return vs[0].([]DeviceLastErrorStatus)[vs[1].(int)]
+	}).(DeviceLastErrorStatusOutput)
 }
 
 type DeviceStateType struct {
@@ -751,45 +642,29 @@ func (i DeviceStateTypeArgs) ToDeviceStateTypeOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceStateTypeOutput)
 }
 
-func (i DeviceStateTypeArgs) ToDeviceStateTypePtrOutput() DeviceStateTypePtrOutput {
-	return i.ToDeviceStateTypePtrOutputWithContext(context.Background())
-}
-
-func (i DeviceStateTypeArgs) ToDeviceStateTypePtrOutputWithContext(ctx context.Context) DeviceStateTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeviceStateTypeOutput).ToDeviceStateTypePtrOutputWithContext(ctx)
-}
-
-// DeviceStateTypePtrInput is an input type that accepts DeviceStateTypeArgs, DeviceStateTypePtr and DeviceStateTypePtrOutput values.
-// You can construct a concrete instance of `DeviceStateTypePtrInput` via:
+// DeviceStateTypeArrayInput is an input type that accepts DeviceStateTypeArray and DeviceStateTypeArrayOutput values.
+// You can construct a concrete instance of `DeviceStateTypeArrayInput` via:
 //
-//          DeviceStateTypeArgs{...}
-//
-//  or:
-//
-//          nil
-type DeviceStateTypePtrInput interface {
+//          DeviceStateTypeArray{ DeviceStateTypeArgs{...} }
+type DeviceStateTypeArrayInput interface {
 	pulumi.Input
 
-	ToDeviceStateTypePtrOutput() DeviceStateTypePtrOutput
-	ToDeviceStateTypePtrOutputWithContext(context.Context) DeviceStateTypePtrOutput
+	ToDeviceStateTypeArrayOutput() DeviceStateTypeArrayOutput
+	ToDeviceStateTypeArrayOutputWithContext(context.Context) DeviceStateTypeArrayOutput
 }
 
-type deviceStateTypePtrType DeviceStateTypeArgs
+type DeviceStateTypeArray []DeviceStateTypeInput
 
-func DeviceStateTypePtr(v *DeviceStateTypeArgs) DeviceStateTypePtrInput {
-	return (*deviceStateTypePtrType)(v)
+func (DeviceStateTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeviceStateType)(nil)).Elem()
 }
 
-func (*deviceStateTypePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DeviceStateType)(nil)).Elem()
+func (i DeviceStateTypeArray) ToDeviceStateTypeArrayOutput() DeviceStateTypeArrayOutput {
+	return i.ToDeviceStateTypeArrayOutputWithContext(context.Background())
 }
 
-func (i *deviceStateTypePtrType) ToDeviceStateTypePtrOutput() DeviceStateTypePtrOutput {
-	return i.ToDeviceStateTypePtrOutputWithContext(context.Background())
-}
-
-func (i *deviceStateTypePtrType) ToDeviceStateTypePtrOutputWithContext(ctx context.Context) DeviceStateTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeviceStateTypePtrOutput)
+func (i DeviceStateTypeArray) ToDeviceStateTypeArrayOutputWithContext(ctx context.Context) DeviceStateTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceStateTypeArrayOutput)
 }
 
 type DeviceStateTypeOutput struct{ *pulumi.OutputState }
@@ -806,15 +681,6 @@ func (o DeviceStateTypeOutput) ToDeviceStateTypeOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o DeviceStateTypeOutput) ToDeviceStateTypePtrOutput() DeviceStateTypePtrOutput {
-	return o.ToDeviceStateTypePtrOutputWithContext(context.Background())
-}
-
-func (o DeviceStateTypeOutput) ToDeviceStateTypePtrOutputWithContext(ctx context.Context) DeviceStateTypePtrOutput {
-	return o.ApplyT(func(v DeviceStateType) *DeviceStateType {
-		return &v
-	}).(DeviceStateTypePtrOutput)
-}
 func (o DeviceStateTypeOutput) BinaryData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceStateType) *string { return v.BinaryData }).(pulumi.StringPtrOutput)
 }
@@ -823,45 +689,29 @@ func (o DeviceStateTypeOutput) UpdateTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceStateType) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
 }
 
-type DeviceStateTypePtrOutput struct{ *pulumi.OutputState }
+type DeviceStateTypeArrayOutput struct{ *pulumi.OutputState }
 
-func (DeviceStateTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DeviceStateType)(nil)).Elem()
+func (DeviceStateTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeviceStateType)(nil)).Elem()
 }
 
-func (o DeviceStateTypePtrOutput) ToDeviceStateTypePtrOutput() DeviceStateTypePtrOutput {
+func (o DeviceStateTypeArrayOutput) ToDeviceStateTypeArrayOutput() DeviceStateTypeArrayOutput {
 	return o
 }
 
-func (o DeviceStateTypePtrOutput) ToDeviceStateTypePtrOutputWithContext(ctx context.Context) DeviceStateTypePtrOutput {
+func (o DeviceStateTypeArrayOutput) ToDeviceStateTypeArrayOutputWithContext(ctx context.Context) DeviceStateTypeArrayOutput {
 	return o
 }
 
-func (o DeviceStateTypePtrOutput) Elem() DeviceStateTypeOutput {
-	return o.ApplyT(func(v *DeviceStateType) DeviceStateType { return *v }).(DeviceStateTypeOutput)
-}
-
-func (o DeviceStateTypePtrOutput) BinaryData() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DeviceStateType) *string {
-		if v == nil {
-			return nil
-		}
-		return v.BinaryData
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o DeviceStateTypePtrOutput) UpdateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DeviceStateType) *string {
-		if v == nil {
-			return nil
-		}
-		return v.UpdateTime
-	}).(pulumi.StringPtrOutput)
+func (o DeviceStateTypeArrayOutput) Index(i pulumi.IntInput) DeviceStateTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeviceStateType {
+		return vs[0].([]DeviceStateType)[vs[1].(int)]
+	}).(DeviceStateTypeOutput)
 }
 
 type RegistryCredential struct {
 	// A public key certificate format and data.
-	PublicKeyCertificate RegistryCredentialPublicKeyCertificate `pulumi:"publicKeyCertificate"`
+	PublicKeyCertificate map[string]interface{} `pulumi:"publicKeyCertificate"`
 }
 
 // RegistryCredentialInput is an input type that accepts RegistryCredentialArgs and RegistryCredentialOutput values.
@@ -877,7 +727,7 @@ type RegistryCredentialInput interface {
 
 type RegistryCredentialArgs struct {
 	// A public key certificate format and data.
-	PublicKeyCertificate RegistryCredentialPublicKeyCertificateInput `pulumi:"publicKeyCertificate"`
+	PublicKeyCertificate pulumi.MapInput `pulumi:"publicKeyCertificate"`
 }
 
 func (RegistryCredentialArgs) ElementType() reflect.Type {
@@ -932,8 +782,8 @@ func (o RegistryCredentialOutput) ToRegistryCredentialOutputWithContext(ctx cont
 }
 
 // A public key certificate format and data.
-func (o RegistryCredentialOutput) PublicKeyCertificate() RegistryCredentialPublicKeyCertificateOutput {
-	return o.ApplyT(func(v RegistryCredential) RegistryCredentialPublicKeyCertificate { return v.PublicKeyCertificate }).(RegistryCredentialPublicKeyCertificateOutput)
+func (o RegistryCredentialOutput) PublicKeyCertificate() pulumi.MapOutput {
+	return o.ApplyT(func(v RegistryCredential) map[string]interface{} { return v.PublicKeyCertificate }).(pulumi.MapOutput)
 }
 
 type RegistryCredentialArrayOutput struct{ *pulumi.OutputState }
@@ -954,67 +804,6 @@ func (o RegistryCredentialArrayOutput) Index(i pulumi.IntInput) RegistryCredenti
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegistryCredential {
 		return vs[0].([]RegistryCredential)[vs[1].(int)]
 	}).(RegistryCredentialOutput)
-}
-
-type RegistryCredentialPublicKeyCertificate struct {
-	// The certificate data.
-	Certificate string `pulumi:"certificate"`
-	// The field allows only `X509_CERTIFICATE_PEM`.
-	Format string `pulumi:"format"`
-}
-
-// RegistryCredentialPublicKeyCertificateInput is an input type that accepts RegistryCredentialPublicKeyCertificateArgs and RegistryCredentialPublicKeyCertificateOutput values.
-// You can construct a concrete instance of `RegistryCredentialPublicKeyCertificateInput` via:
-//
-//          RegistryCredentialPublicKeyCertificateArgs{...}
-type RegistryCredentialPublicKeyCertificateInput interface {
-	pulumi.Input
-
-	ToRegistryCredentialPublicKeyCertificateOutput() RegistryCredentialPublicKeyCertificateOutput
-	ToRegistryCredentialPublicKeyCertificateOutputWithContext(context.Context) RegistryCredentialPublicKeyCertificateOutput
-}
-
-type RegistryCredentialPublicKeyCertificateArgs struct {
-	// The certificate data.
-	Certificate pulumi.StringInput `pulumi:"certificate"`
-	// The field allows only `X509_CERTIFICATE_PEM`.
-	Format pulumi.StringInput `pulumi:"format"`
-}
-
-func (RegistryCredentialPublicKeyCertificateArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegistryCredentialPublicKeyCertificate)(nil)).Elem()
-}
-
-func (i RegistryCredentialPublicKeyCertificateArgs) ToRegistryCredentialPublicKeyCertificateOutput() RegistryCredentialPublicKeyCertificateOutput {
-	return i.ToRegistryCredentialPublicKeyCertificateOutputWithContext(context.Background())
-}
-
-func (i RegistryCredentialPublicKeyCertificateArgs) ToRegistryCredentialPublicKeyCertificateOutputWithContext(ctx context.Context) RegistryCredentialPublicKeyCertificateOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegistryCredentialPublicKeyCertificateOutput)
-}
-
-type RegistryCredentialPublicKeyCertificateOutput struct{ *pulumi.OutputState }
-
-func (RegistryCredentialPublicKeyCertificateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegistryCredentialPublicKeyCertificate)(nil)).Elem()
-}
-
-func (o RegistryCredentialPublicKeyCertificateOutput) ToRegistryCredentialPublicKeyCertificateOutput() RegistryCredentialPublicKeyCertificateOutput {
-	return o
-}
-
-func (o RegistryCredentialPublicKeyCertificateOutput) ToRegistryCredentialPublicKeyCertificateOutputWithContext(ctx context.Context) RegistryCredentialPublicKeyCertificateOutput {
-	return o
-}
-
-// The certificate data.
-func (o RegistryCredentialPublicKeyCertificateOutput) Certificate() pulumi.StringOutput {
-	return o.ApplyT(func(v RegistryCredentialPublicKeyCertificate) string { return v.Certificate }).(pulumi.StringOutput)
-}
-
-// The field allows only `X509_CERTIFICATE_PEM`.
-func (o RegistryCredentialPublicKeyCertificateOutput) Format() pulumi.StringOutput {
-	return o.ApplyT(func(v RegistryCredentialPublicKeyCertificate) string { return v.Format }).(pulumi.StringOutput)
 }
 
 type RegistryEventNotificationConfigItem struct {
@@ -1135,420 +924,20 @@ func (o RegistryEventNotificationConfigItemArrayOutput) Index(i pulumi.IntInput)
 	}).(RegistryEventNotificationConfigItemOutput)
 }
 
-type RegistryHttpConfig struct {
-	// The field allows `HTTP_ENABLED` or `HTTP_DISABLED`.
-	HttpEnabledState string `pulumi:"httpEnabledState"`
-}
-
-// RegistryHttpConfigInput is an input type that accepts RegistryHttpConfigArgs and RegistryHttpConfigOutput values.
-// You can construct a concrete instance of `RegistryHttpConfigInput` via:
-//
-//          RegistryHttpConfigArgs{...}
-type RegistryHttpConfigInput interface {
-	pulumi.Input
-
-	ToRegistryHttpConfigOutput() RegistryHttpConfigOutput
-	ToRegistryHttpConfigOutputWithContext(context.Context) RegistryHttpConfigOutput
-}
-
-type RegistryHttpConfigArgs struct {
-	// The field allows `HTTP_ENABLED` or `HTTP_DISABLED`.
-	HttpEnabledState pulumi.StringInput `pulumi:"httpEnabledState"`
-}
-
-func (RegistryHttpConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegistryHttpConfig)(nil)).Elem()
-}
-
-func (i RegistryHttpConfigArgs) ToRegistryHttpConfigOutput() RegistryHttpConfigOutput {
-	return i.ToRegistryHttpConfigOutputWithContext(context.Background())
-}
-
-func (i RegistryHttpConfigArgs) ToRegistryHttpConfigOutputWithContext(ctx context.Context) RegistryHttpConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegistryHttpConfigOutput)
-}
-
-func (i RegistryHttpConfigArgs) ToRegistryHttpConfigPtrOutput() RegistryHttpConfigPtrOutput {
-	return i.ToRegistryHttpConfigPtrOutputWithContext(context.Background())
-}
-
-func (i RegistryHttpConfigArgs) ToRegistryHttpConfigPtrOutputWithContext(ctx context.Context) RegistryHttpConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegistryHttpConfigOutput).ToRegistryHttpConfigPtrOutputWithContext(ctx)
-}
-
-// RegistryHttpConfigPtrInput is an input type that accepts RegistryHttpConfigArgs, RegistryHttpConfigPtr and RegistryHttpConfigPtrOutput values.
-// You can construct a concrete instance of `RegistryHttpConfigPtrInput` via:
-//
-//          RegistryHttpConfigArgs{...}
-//
-//  or:
-//
-//          nil
-type RegistryHttpConfigPtrInput interface {
-	pulumi.Input
-
-	ToRegistryHttpConfigPtrOutput() RegistryHttpConfigPtrOutput
-	ToRegistryHttpConfigPtrOutputWithContext(context.Context) RegistryHttpConfigPtrOutput
-}
-
-type registryHttpConfigPtrType RegistryHttpConfigArgs
-
-func RegistryHttpConfigPtr(v *RegistryHttpConfigArgs) RegistryHttpConfigPtrInput {
-	return (*registryHttpConfigPtrType)(v)
-}
-
-func (*registryHttpConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RegistryHttpConfig)(nil)).Elem()
-}
-
-func (i *registryHttpConfigPtrType) ToRegistryHttpConfigPtrOutput() RegistryHttpConfigPtrOutput {
-	return i.ToRegistryHttpConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *registryHttpConfigPtrType) ToRegistryHttpConfigPtrOutputWithContext(ctx context.Context) RegistryHttpConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegistryHttpConfigPtrOutput)
-}
-
-type RegistryHttpConfigOutput struct{ *pulumi.OutputState }
-
-func (RegistryHttpConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegistryHttpConfig)(nil)).Elem()
-}
-
-func (o RegistryHttpConfigOutput) ToRegistryHttpConfigOutput() RegistryHttpConfigOutput {
-	return o
-}
-
-func (o RegistryHttpConfigOutput) ToRegistryHttpConfigOutputWithContext(ctx context.Context) RegistryHttpConfigOutput {
-	return o
-}
-
-func (o RegistryHttpConfigOutput) ToRegistryHttpConfigPtrOutput() RegistryHttpConfigPtrOutput {
-	return o.ToRegistryHttpConfigPtrOutputWithContext(context.Background())
-}
-
-func (o RegistryHttpConfigOutput) ToRegistryHttpConfigPtrOutputWithContext(ctx context.Context) RegistryHttpConfigPtrOutput {
-	return o.ApplyT(func(v RegistryHttpConfig) *RegistryHttpConfig {
-		return &v
-	}).(RegistryHttpConfigPtrOutput)
-}
-
-// The field allows `HTTP_ENABLED` or `HTTP_DISABLED`.
-func (o RegistryHttpConfigOutput) HttpEnabledState() pulumi.StringOutput {
-	return o.ApplyT(func(v RegistryHttpConfig) string { return v.HttpEnabledState }).(pulumi.StringOutput)
-}
-
-type RegistryHttpConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (RegistryHttpConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RegistryHttpConfig)(nil)).Elem()
-}
-
-func (o RegistryHttpConfigPtrOutput) ToRegistryHttpConfigPtrOutput() RegistryHttpConfigPtrOutput {
-	return o
-}
-
-func (o RegistryHttpConfigPtrOutput) ToRegistryHttpConfigPtrOutputWithContext(ctx context.Context) RegistryHttpConfigPtrOutput {
-	return o
-}
-
-func (o RegistryHttpConfigPtrOutput) Elem() RegistryHttpConfigOutput {
-	return o.ApplyT(func(v *RegistryHttpConfig) RegistryHttpConfig { return *v }).(RegistryHttpConfigOutput)
-}
-
-// The field allows `HTTP_ENABLED` or `HTTP_DISABLED`.
-func (o RegistryHttpConfigPtrOutput) HttpEnabledState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RegistryHttpConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.HttpEnabledState
-	}).(pulumi.StringPtrOutput)
-}
-
-type RegistryMqttConfig struct {
-	// The field allows `MQTT_ENABLED` or `MQTT_DISABLED`.
-	MqttEnabledState string `pulumi:"mqttEnabledState"`
-}
-
-// RegistryMqttConfigInput is an input type that accepts RegistryMqttConfigArgs and RegistryMqttConfigOutput values.
-// You can construct a concrete instance of `RegistryMqttConfigInput` via:
-//
-//          RegistryMqttConfigArgs{...}
-type RegistryMqttConfigInput interface {
-	pulumi.Input
-
-	ToRegistryMqttConfigOutput() RegistryMqttConfigOutput
-	ToRegistryMqttConfigOutputWithContext(context.Context) RegistryMqttConfigOutput
-}
-
-type RegistryMqttConfigArgs struct {
-	// The field allows `MQTT_ENABLED` or `MQTT_DISABLED`.
-	MqttEnabledState pulumi.StringInput `pulumi:"mqttEnabledState"`
-}
-
-func (RegistryMqttConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegistryMqttConfig)(nil)).Elem()
-}
-
-func (i RegistryMqttConfigArgs) ToRegistryMqttConfigOutput() RegistryMqttConfigOutput {
-	return i.ToRegistryMqttConfigOutputWithContext(context.Background())
-}
-
-func (i RegistryMqttConfigArgs) ToRegistryMqttConfigOutputWithContext(ctx context.Context) RegistryMqttConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegistryMqttConfigOutput)
-}
-
-func (i RegistryMqttConfigArgs) ToRegistryMqttConfigPtrOutput() RegistryMqttConfigPtrOutput {
-	return i.ToRegistryMqttConfigPtrOutputWithContext(context.Background())
-}
-
-func (i RegistryMqttConfigArgs) ToRegistryMqttConfigPtrOutputWithContext(ctx context.Context) RegistryMqttConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegistryMqttConfigOutput).ToRegistryMqttConfigPtrOutputWithContext(ctx)
-}
-
-// RegistryMqttConfigPtrInput is an input type that accepts RegistryMqttConfigArgs, RegistryMqttConfigPtr and RegistryMqttConfigPtrOutput values.
-// You can construct a concrete instance of `RegistryMqttConfigPtrInput` via:
-//
-//          RegistryMqttConfigArgs{...}
-//
-//  or:
-//
-//          nil
-type RegistryMqttConfigPtrInput interface {
-	pulumi.Input
-
-	ToRegistryMqttConfigPtrOutput() RegistryMqttConfigPtrOutput
-	ToRegistryMqttConfigPtrOutputWithContext(context.Context) RegistryMqttConfigPtrOutput
-}
-
-type registryMqttConfigPtrType RegistryMqttConfigArgs
-
-func RegistryMqttConfigPtr(v *RegistryMqttConfigArgs) RegistryMqttConfigPtrInput {
-	return (*registryMqttConfigPtrType)(v)
-}
-
-func (*registryMqttConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RegistryMqttConfig)(nil)).Elem()
-}
-
-func (i *registryMqttConfigPtrType) ToRegistryMqttConfigPtrOutput() RegistryMqttConfigPtrOutput {
-	return i.ToRegistryMqttConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *registryMqttConfigPtrType) ToRegistryMqttConfigPtrOutputWithContext(ctx context.Context) RegistryMqttConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegistryMqttConfigPtrOutput)
-}
-
-type RegistryMqttConfigOutput struct{ *pulumi.OutputState }
-
-func (RegistryMqttConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegistryMqttConfig)(nil)).Elem()
-}
-
-func (o RegistryMqttConfigOutput) ToRegistryMqttConfigOutput() RegistryMqttConfigOutput {
-	return o
-}
-
-func (o RegistryMqttConfigOutput) ToRegistryMqttConfigOutputWithContext(ctx context.Context) RegistryMqttConfigOutput {
-	return o
-}
-
-func (o RegistryMqttConfigOutput) ToRegistryMqttConfigPtrOutput() RegistryMqttConfigPtrOutput {
-	return o.ToRegistryMqttConfigPtrOutputWithContext(context.Background())
-}
-
-func (o RegistryMqttConfigOutput) ToRegistryMqttConfigPtrOutputWithContext(ctx context.Context) RegistryMqttConfigPtrOutput {
-	return o.ApplyT(func(v RegistryMqttConfig) *RegistryMqttConfig {
-		return &v
-	}).(RegistryMqttConfigPtrOutput)
-}
-
-// The field allows `MQTT_ENABLED` or `MQTT_DISABLED`.
-func (o RegistryMqttConfigOutput) MqttEnabledState() pulumi.StringOutput {
-	return o.ApplyT(func(v RegistryMqttConfig) string { return v.MqttEnabledState }).(pulumi.StringOutput)
-}
-
-type RegistryMqttConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (RegistryMqttConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RegistryMqttConfig)(nil)).Elem()
-}
-
-func (o RegistryMqttConfigPtrOutput) ToRegistryMqttConfigPtrOutput() RegistryMqttConfigPtrOutput {
-	return o
-}
-
-func (o RegistryMqttConfigPtrOutput) ToRegistryMqttConfigPtrOutputWithContext(ctx context.Context) RegistryMqttConfigPtrOutput {
-	return o
-}
-
-func (o RegistryMqttConfigPtrOutput) Elem() RegistryMqttConfigOutput {
-	return o.ApplyT(func(v *RegistryMqttConfig) RegistryMqttConfig { return *v }).(RegistryMqttConfigOutput)
-}
-
-// The field allows `MQTT_ENABLED` or `MQTT_DISABLED`.
-func (o RegistryMqttConfigPtrOutput) MqttEnabledState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RegistryMqttConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.MqttEnabledState
-	}).(pulumi.StringPtrOutput)
-}
-
-type RegistryStateNotificationConfig struct {
-	// PubSub topic name to publish device events.
-	PubsubTopicName string `pulumi:"pubsubTopicName"`
-}
-
-// RegistryStateNotificationConfigInput is an input type that accepts RegistryStateNotificationConfigArgs and RegistryStateNotificationConfigOutput values.
-// You can construct a concrete instance of `RegistryStateNotificationConfigInput` via:
-//
-//          RegistryStateNotificationConfigArgs{...}
-type RegistryStateNotificationConfigInput interface {
-	pulumi.Input
-
-	ToRegistryStateNotificationConfigOutput() RegistryStateNotificationConfigOutput
-	ToRegistryStateNotificationConfigOutputWithContext(context.Context) RegistryStateNotificationConfigOutput
-}
-
-type RegistryStateNotificationConfigArgs struct {
-	// PubSub topic name to publish device events.
-	PubsubTopicName pulumi.StringInput `pulumi:"pubsubTopicName"`
-}
-
-func (RegistryStateNotificationConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegistryStateNotificationConfig)(nil)).Elem()
-}
-
-func (i RegistryStateNotificationConfigArgs) ToRegistryStateNotificationConfigOutput() RegistryStateNotificationConfigOutput {
-	return i.ToRegistryStateNotificationConfigOutputWithContext(context.Background())
-}
-
-func (i RegistryStateNotificationConfigArgs) ToRegistryStateNotificationConfigOutputWithContext(ctx context.Context) RegistryStateNotificationConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegistryStateNotificationConfigOutput)
-}
-
-func (i RegistryStateNotificationConfigArgs) ToRegistryStateNotificationConfigPtrOutput() RegistryStateNotificationConfigPtrOutput {
-	return i.ToRegistryStateNotificationConfigPtrOutputWithContext(context.Background())
-}
-
-func (i RegistryStateNotificationConfigArgs) ToRegistryStateNotificationConfigPtrOutputWithContext(ctx context.Context) RegistryStateNotificationConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegistryStateNotificationConfigOutput).ToRegistryStateNotificationConfigPtrOutputWithContext(ctx)
-}
-
-// RegistryStateNotificationConfigPtrInput is an input type that accepts RegistryStateNotificationConfigArgs, RegistryStateNotificationConfigPtr and RegistryStateNotificationConfigPtrOutput values.
-// You can construct a concrete instance of `RegistryStateNotificationConfigPtrInput` via:
-//
-//          RegistryStateNotificationConfigArgs{...}
-//
-//  or:
-//
-//          nil
-type RegistryStateNotificationConfigPtrInput interface {
-	pulumi.Input
-
-	ToRegistryStateNotificationConfigPtrOutput() RegistryStateNotificationConfigPtrOutput
-	ToRegistryStateNotificationConfigPtrOutputWithContext(context.Context) RegistryStateNotificationConfigPtrOutput
-}
-
-type registryStateNotificationConfigPtrType RegistryStateNotificationConfigArgs
-
-func RegistryStateNotificationConfigPtr(v *RegistryStateNotificationConfigArgs) RegistryStateNotificationConfigPtrInput {
-	return (*registryStateNotificationConfigPtrType)(v)
-}
-
-func (*registryStateNotificationConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RegistryStateNotificationConfig)(nil)).Elem()
-}
-
-func (i *registryStateNotificationConfigPtrType) ToRegistryStateNotificationConfigPtrOutput() RegistryStateNotificationConfigPtrOutput {
-	return i.ToRegistryStateNotificationConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *registryStateNotificationConfigPtrType) ToRegistryStateNotificationConfigPtrOutputWithContext(ctx context.Context) RegistryStateNotificationConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegistryStateNotificationConfigPtrOutput)
-}
-
-type RegistryStateNotificationConfigOutput struct{ *pulumi.OutputState }
-
-func (RegistryStateNotificationConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegistryStateNotificationConfig)(nil)).Elem()
-}
-
-func (o RegistryStateNotificationConfigOutput) ToRegistryStateNotificationConfigOutput() RegistryStateNotificationConfigOutput {
-	return o
-}
-
-func (o RegistryStateNotificationConfigOutput) ToRegistryStateNotificationConfigOutputWithContext(ctx context.Context) RegistryStateNotificationConfigOutput {
-	return o
-}
-
-func (o RegistryStateNotificationConfigOutput) ToRegistryStateNotificationConfigPtrOutput() RegistryStateNotificationConfigPtrOutput {
-	return o.ToRegistryStateNotificationConfigPtrOutputWithContext(context.Background())
-}
-
-func (o RegistryStateNotificationConfigOutput) ToRegistryStateNotificationConfigPtrOutputWithContext(ctx context.Context) RegistryStateNotificationConfigPtrOutput {
-	return o.ApplyT(func(v RegistryStateNotificationConfig) *RegistryStateNotificationConfig {
-		return &v
-	}).(RegistryStateNotificationConfigPtrOutput)
-}
-
-// PubSub topic name to publish device events.
-func (o RegistryStateNotificationConfigOutput) PubsubTopicName() pulumi.StringOutput {
-	return o.ApplyT(func(v RegistryStateNotificationConfig) string { return v.PubsubTopicName }).(pulumi.StringOutput)
-}
-
-type RegistryStateNotificationConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (RegistryStateNotificationConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RegistryStateNotificationConfig)(nil)).Elem()
-}
-
-func (o RegistryStateNotificationConfigPtrOutput) ToRegistryStateNotificationConfigPtrOutput() RegistryStateNotificationConfigPtrOutput {
-	return o
-}
-
-func (o RegistryStateNotificationConfigPtrOutput) ToRegistryStateNotificationConfigPtrOutputWithContext(ctx context.Context) RegistryStateNotificationConfigPtrOutput {
-	return o
-}
-
-func (o RegistryStateNotificationConfigPtrOutput) Elem() RegistryStateNotificationConfigOutput {
-	return o.ApplyT(func(v *RegistryStateNotificationConfig) RegistryStateNotificationConfig { return *v }).(RegistryStateNotificationConfigOutput)
-}
-
-// PubSub topic name to publish device events.
-func (o RegistryStateNotificationConfigPtrOutput) PubsubTopicName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RegistryStateNotificationConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PubsubTopicName
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterOutputType(DeviceConfigOutput{})
-	pulumi.RegisterOutputType(DeviceConfigPtrOutput{})
+	pulumi.RegisterOutputType(DeviceConfigArrayOutput{})
 	pulumi.RegisterOutputType(DeviceCredentialOutput{})
 	pulumi.RegisterOutputType(DeviceCredentialArrayOutput{})
 	pulumi.RegisterOutputType(DeviceCredentialPublicKeyOutput{})
 	pulumi.RegisterOutputType(DeviceGatewayConfigOutput{})
 	pulumi.RegisterOutputType(DeviceGatewayConfigPtrOutput{})
 	pulumi.RegisterOutputType(DeviceLastErrorStatusOutput{})
-	pulumi.RegisterOutputType(DeviceLastErrorStatusPtrOutput{})
+	pulumi.RegisterOutputType(DeviceLastErrorStatusArrayOutput{})
 	pulumi.RegisterOutputType(DeviceStateTypeOutput{})
-	pulumi.RegisterOutputType(DeviceStateTypePtrOutput{})
+	pulumi.RegisterOutputType(DeviceStateTypeArrayOutput{})
 	pulumi.RegisterOutputType(RegistryCredentialOutput{})
 	pulumi.RegisterOutputType(RegistryCredentialArrayOutput{})
-	pulumi.RegisterOutputType(RegistryCredentialPublicKeyCertificateOutput{})
 	pulumi.RegisterOutputType(RegistryEventNotificationConfigItemOutput{})
 	pulumi.RegisterOutputType(RegistryEventNotificationConfigItemArrayOutput{})
-	pulumi.RegisterOutputType(RegistryHttpConfigOutput{})
-	pulumi.RegisterOutputType(RegistryHttpConfigPtrOutput{})
-	pulumi.RegisterOutputType(RegistryMqttConfigOutput{})
-	pulumi.RegisterOutputType(RegistryMqttConfigPtrOutput{})
-	pulumi.RegisterOutputType(RegistryStateNotificationConfigOutput{})
-	pulumi.RegisterOutputType(RegistryStateNotificationConfigPtrOutput{})
 }

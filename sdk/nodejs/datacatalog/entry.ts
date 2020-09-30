@@ -54,11 +54,11 @@ export class Entry extends pulumi.CustomResource {
      * Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD. Context:
      * https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
      */
-    public /*out*/ readonly bigqueryDateShardedSpec!: pulumi.Output<outputs.datacatalog.EntryBigqueryDateShardedSpec>;
+    public /*out*/ readonly bigqueryDateShardedSpecs!: pulumi.Output<outputs.datacatalog.EntryBigqueryDateShardedSpec[]>;
     /**
      * Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
      */
-    public /*out*/ readonly bigqueryTableSpec!: pulumi.Output<outputs.datacatalog.EntryBigqueryTableSpec>;
+    public /*out*/ readonly bigqueryTableSpecs!: pulumi.Output<outputs.datacatalog.EntryBigqueryTableSpec[]>;
     /**
      * Entry description, which can consist of several sentences or paragraphs that describe entry contents.
      */
@@ -140,8 +140,8 @@ export class Entry extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as EntryState | undefined;
-            inputs["bigqueryDateShardedSpec"] = state ? state.bigqueryDateShardedSpec : undefined;
-            inputs["bigqueryTableSpec"] = state ? state.bigqueryTableSpec : undefined;
+            inputs["bigqueryDateShardedSpecs"] = state ? state.bigqueryDateShardedSpecs : undefined;
+            inputs["bigqueryTableSpecs"] = state ? state.bigqueryTableSpecs : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
             inputs["entryGroup"] = state ? state.entryGroup : undefined;
@@ -172,8 +172,8 @@ export class Entry extends pulumi.CustomResource {
             inputs["type"] = args ? args.type : undefined;
             inputs["userSpecifiedSystem"] = args ? args.userSpecifiedSystem : undefined;
             inputs["userSpecifiedType"] = args ? args.userSpecifiedType : undefined;
-            inputs["bigqueryDateShardedSpec"] = undefined /*out*/;
-            inputs["bigqueryTableSpec"] = undefined /*out*/;
+            inputs["bigqueryDateShardedSpecs"] = undefined /*out*/;
+            inputs["bigqueryTableSpecs"] = undefined /*out*/;
             inputs["integratedSystem"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
         }
@@ -196,11 +196,11 @@ export interface EntryState {
      * Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD. Context:
      * https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
      */
-    readonly bigqueryDateShardedSpec?: pulumi.Input<inputs.datacatalog.EntryBigqueryDateShardedSpec>;
+    readonly bigqueryDateShardedSpecs?: pulumi.Input<pulumi.Input<inputs.datacatalog.EntryBigqueryDateShardedSpec>[]>;
     /**
      * Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
      */
-    readonly bigqueryTableSpec?: pulumi.Input<inputs.datacatalog.EntryBigqueryTableSpec>;
+    readonly bigqueryTableSpecs?: pulumi.Input<pulumi.Input<inputs.datacatalog.EntryBigqueryTableSpec>[]>;
     /**
      * Entry description, which can consist of several sentences or paragraphs that describe entry contents.
      */

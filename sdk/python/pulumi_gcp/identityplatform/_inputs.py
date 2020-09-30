@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -22,12 +22,12 @@ __all__ = [
 @pulumi.input_type
 class InboundSamlConfigIdpConfigArgs:
     def __init__(__self__, *,
-                 idp_certificates: pulumi.Input[List[pulumi.Input['InboundSamlConfigIdpConfigIdpCertificateArgs']]],
+                 idp_certificates: pulumi.Input[Sequence[pulumi.Input['InboundSamlConfigIdpConfigIdpCertificateArgs']]],
                  idp_entity_id: pulumi.Input[str],
                  sso_url: pulumi.Input[str],
                  sign_request: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input['InboundSamlConfigIdpConfigIdpCertificateArgs']]] idp_certificates: The IdP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
+        :param pulumi.Input[Sequence[pulumi.Input['InboundSamlConfigIdpConfigIdpCertificateArgs']]] idp_certificates: The IdP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
                Structure is documented below.
         :param pulumi.Input[str] idp_entity_id: Unique identifier for all SAML entities
         :param pulumi.Input[str] sso_url: URL to send Authentication request to.
@@ -41,7 +41,7 @@ class InboundSamlConfigIdpConfigArgs:
 
     @property
     @pulumi.getter(name="idpCertificates")
-    def idp_certificates(self) -> pulumi.Input[List[pulumi.Input['InboundSamlConfigIdpConfigIdpCertificateArgs']]]:
+    def idp_certificates(self) -> pulumi.Input[Sequence[pulumi.Input['InboundSamlConfigIdpConfigIdpCertificateArgs']]]:
         """
         The IdP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
         Structure is documented below.
@@ -49,7 +49,7 @@ class InboundSamlConfigIdpConfigArgs:
         return pulumi.get(self, "idp_certificates")
 
     @idp_certificates.setter
-    def idp_certificates(self, value: pulumi.Input[List[pulumi.Input['InboundSamlConfigIdpConfigIdpCertificateArgs']]]):
+    def idp_certificates(self, value: pulumi.Input[Sequence[pulumi.Input['InboundSamlConfigIdpConfigIdpCertificateArgs']]]):
         pulumi.set(self, "idp_certificates", value)
 
     @property
@@ -118,11 +118,11 @@ class InboundSamlConfigIdpConfigIdpCertificateArgs:
 class InboundSamlConfigSpConfigArgs:
     def __init__(__self__, *,
                  callback_uri: Optional[pulumi.Input[str]] = None,
-                 sp_certificates: Optional[pulumi.Input[List[pulumi.Input['InboundSamlConfigSpConfigSpCertificateArgs']]]] = None,
+                 sp_certificates: Optional[pulumi.Input[Sequence[pulumi.Input['InboundSamlConfigSpConfigSpCertificateArgs']]]] = None,
                  sp_entity_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] callback_uri: Callback URI where responses from IDP are handled. Must start with `https://`.
-        :param pulumi.Input[List[pulumi.Input['InboundSamlConfigSpConfigSpCertificateArgs']]] sp_certificates: -
+        :param pulumi.Input[Sequence[pulumi.Input['InboundSamlConfigSpConfigSpCertificateArgs']]] sp_certificates: -
                The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
                Structure is documented below.
         :param pulumi.Input[str] sp_entity_id: Unique identifier for all SAML entities.
@@ -148,7 +148,7 @@ class InboundSamlConfigSpConfigArgs:
 
     @property
     @pulumi.getter(name="spCertificates")
-    def sp_certificates(self) -> Optional[pulumi.Input[List[pulumi.Input['InboundSamlConfigSpConfigSpCertificateArgs']]]]:
+    def sp_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InboundSamlConfigSpConfigSpCertificateArgs']]]]:
         """
         -
         The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
@@ -157,7 +157,7 @@ class InboundSamlConfigSpConfigArgs:
         return pulumi.get(self, "sp_certificates")
 
     @sp_certificates.setter
-    def sp_certificates(self, value: Optional[pulumi.Input[List[pulumi.Input['InboundSamlConfigSpConfigSpCertificateArgs']]]]):
+    def sp_certificates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InboundSamlConfigSpConfigSpCertificateArgs']]]]):
         pulumi.set(self, "sp_certificates", value)
 
     @property
@@ -201,12 +201,12 @@ class InboundSamlConfigSpConfigSpCertificateArgs:
 @pulumi.input_type
 class TenantInboundSamlConfigIdpConfigArgs:
     def __init__(__self__, *,
-                 idp_certificates: pulumi.Input[List[pulumi.Input['TenantInboundSamlConfigIdpConfigIdpCertificateArgs']]],
+                 idp_certificates: pulumi.Input[Sequence[pulumi.Input['TenantInboundSamlConfigIdpConfigIdpCertificateArgs']]],
                  idp_entity_id: pulumi.Input[str],
                  sso_url: pulumi.Input[str],
                  sign_request: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input['TenantInboundSamlConfigIdpConfigIdpCertificateArgs']]] idp_certificates: The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
+        :param pulumi.Input[Sequence[pulumi.Input['TenantInboundSamlConfigIdpConfigIdpCertificateArgs']]] idp_certificates: The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
                Structure is documented below.
         :param pulumi.Input[str] idp_entity_id: Unique identifier for all SAML entities
         :param pulumi.Input[str] sso_url: URL to send Authentication request to.
@@ -220,7 +220,7 @@ class TenantInboundSamlConfigIdpConfigArgs:
 
     @property
     @pulumi.getter(name="idpCertificates")
-    def idp_certificates(self) -> pulumi.Input[List[pulumi.Input['TenantInboundSamlConfigIdpConfigIdpCertificateArgs']]]:
+    def idp_certificates(self) -> pulumi.Input[Sequence[pulumi.Input['TenantInboundSamlConfigIdpConfigIdpCertificateArgs']]]:
         """
         The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
         Structure is documented below.
@@ -228,7 +228,7 @@ class TenantInboundSamlConfigIdpConfigArgs:
         return pulumi.get(self, "idp_certificates")
 
     @idp_certificates.setter
-    def idp_certificates(self, value: pulumi.Input[List[pulumi.Input['TenantInboundSamlConfigIdpConfigIdpCertificateArgs']]]):
+    def idp_certificates(self, value: pulumi.Input[Sequence[pulumi.Input['TenantInboundSamlConfigIdpConfigIdpCertificateArgs']]]):
         pulumi.set(self, "idp_certificates", value)
 
     @property
@@ -298,11 +298,11 @@ class TenantInboundSamlConfigSpConfigArgs:
     def __init__(__self__, *,
                  callback_uri: pulumi.Input[str],
                  sp_entity_id: pulumi.Input[str],
-                 sp_certificates: Optional[pulumi.Input[List[pulumi.Input['TenantInboundSamlConfigSpConfigSpCertificateArgs']]]] = None):
+                 sp_certificates: Optional[pulumi.Input[Sequence[pulumi.Input['TenantInboundSamlConfigSpConfigSpCertificateArgs']]]] = None):
         """
         :param pulumi.Input[str] callback_uri: Callback URI where responses from IDP are handled. Must start with `https://`.
         :param pulumi.Input[str] sp_entity_id: Unique identifier for all SAML entities.
-        :param pulumi.Input[List[pulumi.Input['TenantInboundSamlConfigSpConfigSpCertificateArgs']]] sp_certificates: -
+        :param pulumi.Input[Sequence[pulumi.Input['TenantInboundSamlConfigSpConfigSpCertificateArgs']]] sp_certificates: -
                The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
                Structure is documented below.
         """
@@ -337,7 +337,7 @@ class TenantInboundSamlConfigSpConfigArgs:
 
     @property
     @pulumi.getter(name="spCertificates")
-    def sp_certificates(self) -> Optional[pulumi.Input[List[pulumi.Input['TenantInboundSamlConfigSpConfigSpCertificateArgs']]]]:
+    def sp_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TenantInboundSamlConfigSpConfigSpCertificateArgs']]]]:
         """
         -
         The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
@@ -346,7 +346,7 @@ class TenantInboundSamlConfigSpConfigArgs:
         return pulumi.get(self, "sp_certificates")
 
     @sp_certificates.setter
-    def sp_certificates(self, value: Optional[pulumi.Input[List[pulumi.Input['TenantInboundSamlConfigSpConfigSpCertificateArgs']]]]):
+    def sp_certificates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TenantInboundSamlConfigSpConfigSpCertificateArgs']]]]):
         pulumi.set(self, "sp_certificates", value)
 
 

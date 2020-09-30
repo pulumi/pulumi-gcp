@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -112,10 +112,10 @@ class IAMMemberCondition(dict):
 class IamAuditConfigAuditLogConfig(dict):
     def __init__(__self__, *,
                  log_type: str,
-                 exempted_members: Optional[List[str]] = None):
+                 exempted_members: Optional[Sequence[str]] = None):
         """
         :param str log_type: Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
-        :param List[str] exempted_members: Identities that do not cause logging for this type of permission.
+        :param Sequence[str] exempted_members: Identities that do not cause logging for this type of permission.
                Each entry can have one of the following values:
                * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
                * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
@@ -136,7 +136,7 @@ class IamAuditConfigAuditLogConfig(dict):
 
     @property
     @pulumi.getter(name="exemptedMembers")
-    def exempted_members(self) -> Optional[List[str]]:
+    def exempted_members(self) -> Optional[Sequence[str]]:
         """
         Identities that do not cause logging for this type of permission.
         Each entry can have one of the following values:
@@ -232,10 +232,10 @@ class PolicyListPolicy(dict):
 class PolicyListPolicyAllow(dict):
     def __init__(__self__, *,
                  all: Optional[bool] = None,
-                 values: Optional[List[str]] = None):
+                 values: Optional[Sequence[str]] = None):
         """
         :param bool all: The policy allows or denies all values.
-        :param List[str] values: The policy can define specific values that are allowed or denied.
+        :param Sequence[str] values: The policy can define specific values that are allowed or denied.
         """
         if all is not None:
             pulumi.set(__self__, "all", all)
@@ -252,7 +252,7 @@ class PolicyListPolicyAllow(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> Optional[List[str]]:
+    def values(self) -> Optional[Sequence[str]]:
         """
         The policy can define specific values that are allowed or denied.
         """
@@ -266,10 +266,10 @@ class PolicyListPolicyAllow(dict):
 class PolicyListPolicyDeny(dict):
     def __init__(__self__, *,
                  all: Optional[bool] = None,
-                 values: Optional[List[str]] = None):
+                 values: Optional[Sequence[str]] = None):
         """
         :param bool all: The policy allows or denies all values.
-        :param List[str] values: The policy can define specific values that are allowed or denied.
+        :param Sequence[str] values: The policy can define specific values that are allowed or denied.
         """
         if all is not None:
             pulumi.set(__self__, "all", all)
@@ -286,7 +286,7 @@ class PolicyListPolicyDeny(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> Optional[List[str]]:
+    def values(self) -> Optional[Sequence[str]]:
         """
         The policy can define specific values that are allowed or denied.
         """
@@ -320,10 +320,10 @@ class PolicyRestorePolicy(dict):
 @pulumi.output_type
 class GetIAMPolicyAuditConfigResult(dict):
     def __init__(__self__, *,
-                 audit_log_configs: List['outputs.GetIAMPolicyAuditConfigAuditLogConfigResult'],
+                 audit_log_configs: Sequence['outputs.GetIAMPolicyAuditConfigAuditLogConfigResult'],
                  service: str):
         """
-        :param List['GetIAMPolicyAuditConfigAuditLogConfigArgs'] audit_log_configs: A nested block that defines the operations you'd like to log.
+        :param Sequence['GetIAMPolicyAuditConfigAuditLogConfigArgs'] audit_log_configs: A nested block that defines the operations you'd like to log.
         :param str service: Defines a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
         """
         pulumi.set(__self__, "audit_log_configs", audit_log_configs)
@@ -331,7 +331,7 @@ class GetIAMPolicyAuditConfigResult(dict):
 
     @property
     @pulumi.getter(name="auditLogConfigs")
-    def audit_log_configs(self) -> List['outputs.GetIAMPolicyAuditConfigAuditLogConfigResult']:
+    def audit_log_configs(self) -> Sequence['outputs.GetIAMPolicyAuditConfigAuditLogConfigResult']:
         """
         A nested block that defines the operations you'd like to log.
         """
@@ -350,10 +350,10 @@ class GetIAMPolicyAuditConfigResult(dict):
 class GetIAMPolicyAuditConfigAuditLogConfigResult(dict):
     def __init__(__self__, *,
                  log_type: str,
-                 exempted_members: Optional[List[str]] = None):
+                 exempted_members: Optional[Sequence[str]] = None):
         """
         :param str log_type: Defines the logging level. `DATA_READ`, `DATA_WRITE` and `ADMIN_READ` capture different types of events. See [the audit configuration documentation](https://cloud.google.com/resource-manager/reference/rest/Shared.Types/AuditConfig) for more details.
-        :param List[str] exempted_members: Specifies the identities that are exempt from these types of logging operations. Follows the same format of the `members` array for `binding`.
+        :param Sequence[str] exempted_members: Specifies the identities that are exempt from these types of logging operations. Follows the same format of the `members` array for `binding`.
         """
         pulumi.set(__self__, "log_type", log_type)
         if exempted_members is not None:
@@ -369,7 +369,7 @@ class GetIAMPolicyAuditConfigAuditLogConfigResult(dict):
 
     @property
     @pulumi.getter(name="exemptedMembers")
-    def exempted_members(self) -> Optional[List[str]]:
+    def exempted_members(self) -> Optional[Sequence[str]]:
         """
         Specifies the identities that are exempt from these types of logging operations. Follows the same format of the `members` array for `binding`.
         """
@@ -379,11 +379,11 @@ class GetIAMPolicyAuditConfigAuditLogConfigResult(dict):
 @pulumi.output_type
 class GetIAMPolicyBindingResult(dict):
     def __init__(__self__, *,
-                 members: List[str],
+                 members: Sequence[str],
                  role: str,
                  condition: Optional['outputs.GetIAMPolicyBindingConditionResult'] = None):
         """
-        :param List[str] members: An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+        :param Sequence[str] members: An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account. It **can't** be used with the `organizations.Project` resource.
                * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account. It **can't** be used with the `organizations.Project` resource.
@@ -403,7 +403,7 @@ class GetIAMPolicyBindingResult(dict):
 
     @property
     @pulumi.getter
-    def members(self) -> List[str]:
+    def members(self) -> Sequence[str]:
         """
         An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
         Each entry can have one of the following values:

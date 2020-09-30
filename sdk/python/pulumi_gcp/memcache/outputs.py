@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -19,7 +19,7 @@ class InstanceMemcacheNode(dict):
     def __init__(__self__, *,
                  host: Optional[str] = None,
                  node_id: Optional[str] = None,
-                 port: Optional[float] = None,
+                 port: Optional[int] = None,
                  state: Optional[str] = None,
                  zone: Optional[str] = None):
         if host is not None:
@@ -45,7 +45,7 @@ class InstanceMemcacheNode(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[float]:
+    def port(self) -> Optional[int]:
         return pulumi.get(self, "port")
 
     @property
@@ -101,18 +101,18 @@ class InstanceMemcacheParameters(dict):
 @pulumi.output_type
 class InstanceNodeConfig(dict):
     def __init__(__self__, *,
-                 cpu_count: float,
-                 memory_size_mb: float):
+                 cpu_count: int,
+                 memory_size_mb: int):
         """
-        :param float cpu_count: Number of CPUs per node.
-        :param float memory_size_mb: Memory size in Mebibytes for each memcache node.
+        :param int cpu_count: Number of CPUs per node.
+        :param int memory_size_mb: Memory size in Mebibytes for each memcache node.
         """
         pulumi.set(__self__, "cpu_count", cpu_count)
         pulumi.set(__self__, "memory_size_mb", memory_size_mb)
 
     @property
     @pulumi.getter(name="cpuCount")
-    def cpu_count(self) -> float:
+    def cpu_count(self) -> int:
         """
         Number of CPUs per node.
         """
@@ -120,7 +120,7 @@ class InstanceNodeConfig(dict):
 
     @property
     @pulumi.getter(name="memorySizeMb")
-    def memory_size_mb(self) -> float:
+    def memory_size_mb(self) -> int:
         """
         Memory size in Mebibytes for each memcache node.
         """

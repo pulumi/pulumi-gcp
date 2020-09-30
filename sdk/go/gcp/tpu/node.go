@@ -14,7 +14,7 @@ import (
 //
 // To get more information about Node, see:
 //
-// * [API documentation](https://cloud.google.com/tpu/docs/reference/rest/)
+// * [API documentation](https://cloud.google.com/tpu/docs/reference/rest/v1/projects.locations.nodes)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/tpu/docs/)
 //
@@ -58,6 +58,11 @@ type Node struct {
 	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
 	// The version of Tensorflow running in the Node.
 	TensorflowVersion pulumi.StringOutput `pulumi:"tensorflowVersion"`
+	// Whether the VPC peering for the node is set up through Service Networking API.
+	// The VPC Peering should be set up before provisioning the node. If this field is set,
+	// cidrBlock field should not be specified. If the network that you want to peer the
+	// TPU Node to is a Shared VPC network, the node must be created with this this field enabled.
+	UseServiceNetworking pulumi.BoolPtrOutput `pulumi:"useServiceNetworking"`
 	// The GCP location for the TPU.
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
@@ -67,9 +72,6 @@ func NewNode(ctx *pulumi.Context,
 	name string, args *NodeArgs, opts ...pulumi.ResourceOption) (*Node, error) {
 	if args == nil || args.AcceleratorType == nil {
 		return nil, errors.New("missing required argument 'AcceleratorType'")
-	}
-	if args == nil || args.CidrBlock == nil {
-		return nil, errors.New("missing required argument 'CidrBlock'")
 	}
 	if args == nil || args.TensorflowVersion == nil {
 		return nil, errors.New("missing required argument 'TensorflowVersion'")
@@ -138,6 +140,11 @@ type nodeState struct {
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// The version of Tensorflow running in the Node.
 	TensorflowVersion *string `pulumi:"tensorflowVersion"`
+	// Whether the VPC peering for the node is set up through Service Networking API.
+	// The VPC Peering should be set up before provisioning the node. If this field is set,
+	// cidrBlock field should not be specified. If the network that you want to peer the
+	// TPU Node to is a Shared VPC network, the node must be created with this this field enabled.
+	UseServiceNetworking *bool `pulumi:"useServiceNetworking"`
 	// The GCP location for the TPU.
 	Zone *string `pulumi:"zone"`
 }
@@ -179,6 +186,11 @@ type NodeState struct {
 	ServiceAccount pulumi.StringPtrInput
 	// The version of Tensorflow running in the Node.
 	TensorflowVersion pulumi.StringPtrInput
+	// Whether the VPC peering for the node is set up through Service Networking API.
+	// The VPC Peering should be set up before provisioning the node. If this field is set,
+	// cidrBlock field should not be specified. If the network that you want to peer the
+	// TPU Node to is a Shared VPC network, the node must be created with this this field enabled.
+	UseServiceNetworking pulumi.BoolPtrInput
 	// The GCP location for the TPU.
 	Zone pulumi.StringPtrInput
 }
@@ -198,7 +210,7 @@ type nodeArgs struct {
 	// currently existing TPU node, the CIDR block conflicts with any
 	// subnetworks in the user's provided network, or the provided network
 	// is peered with another network that is using that CIDR block.
-	CidrBlock string `pulumi:"cidrBlock"`
+	CidrBlock *string `pulumi:"cidrBlock"`
 	// The user-supplied description of the TPU. Maximum of 512 characters.
 	Description *string `pulumi:"description"`
 	// Resource labels to represent user provided metadata.
@@ -218,6 +230,11 @@ type nodeArgs struct {
 	SchedulingConfig *NodeSchedulingConfig `pulumi:"schedulingConfig"`
 	// The version of Tensorflow running in the Node.
 	TensorflowVersion string `pulumi:"tensorflowVersion"`
+	// Whether the VPC peering for the node is set up through Service Networking API.
+	// The VPC Peering should be set up before provisioning the node. If this field is set,
+	// cidrBlock field should not be specified. If the network that you want to peer the
+	// TPU Node to is a Shared VPC network, the node must be created with this this field enabled.
+	UseServiceNetworking *bool `pulumi:"useServiceNetworking"`
 	// The GCP location for the TPU.
 	Zone string `pulumi:"zone"`
 }
@@ -234,7 +251,7 @@ type NodeArgs struct {
 	// currently existing TPU node, the CIDR block conflicts with any
 	// subnetworks in the user's provided network, or the provided network
 	// is peered with another network that is using that CIDR block.
-	CidrBlock pulumi.StringInput
+	CidrBlock pulumi.StringPtrInput
 	// The user-supplied description of the TPU. Maximum of 512 characters.
 	Description pulumi.StringPtrInput
 	// Resource labels to represent user provided metadata.
@@ -254,6 +271,11 @@ type NodeArgs struct {
 	SchedulingConfig NodeSchedulingConfigPtrInput
 	// The version of Tensorflow running in the Node.
 	TensorflowVersion pulumi.StringInput
+	// Whether the VPC peering for the node is set up through Service Networking API.
+	// The VPC Peering should be set up before provisioning the node. If this field is set,
+	// cidrBlock field should not be specified. If the network that you want to peer the
+	// TPU Node to is a Shared VPC network, the node must be created with this this field enabled.
+	UseServiceNetworking pulumi.BoolPtrInput
 	// The GCP location for the TPU.
 	Zone pulumi.StringInput
 }

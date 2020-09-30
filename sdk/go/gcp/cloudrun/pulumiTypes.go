@@ -557,45 +557,29 @@ func (i DomainMappingStatusArgs) ToDomainMappingStatusOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(DomainMappingStatusOutput)
 }
 
-func (i DomainMappingStatusArgs) ToDomainMappingStatusPtrOutput() DomainMappingStatusPtrOutput {
-	return i.ToDomainMappingStatusPtrOutputWithContext(context.Background())
-}
-
-func (i DomainMappingStatusArgs) ToDomainMappingStatusPtrOutputWithContext(ctx context.Context) DomainMappingStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainMappingStatusOutput).ToDomainMappingStatusPtrOutputWithContext(ctx)
-}
-
-// DomainMappingStatusPtrInput is an input type that accepts DomainMappingStatusArgs, DomainMappingStatusPtr and DomainMappingStatusPtrOutput values.
-// You can construct a concrete instance of `DomainMappingStatusPtrInput` via:
+// DomainMappingStatusArrayInput is an input type that accepts DomainMappingStatusArray and DomainMappingStatusArrayOutput values.
+// You can construct a concrete instance of `DomainMappingStatusArrayInput` via:
 //
-//          DomainMappingStatusArgs{...}
-//
-//  or:
-//
-//          nil
-type DomainMappingStatusPtrInput interface {
+//          DomainMappingStatusArray{ DomainMappingStatusArgs{...} }
+type DomainMappingStatusArrayInput interface {
 	pulumi.Input
 
-	ToDomainMappingStatusPtrOutput() DomainMappingStatusPtrOutput
-	ToDomainMappingStatusPtrOutputWithContext(context.Context) DomainMappingStatusPtrOutput
+	ToDomainMappingStatusArrayOutput() DomainMappingStatusArrayOutput
+	ToDomainMappingStatusArrayOutputWithContext(context.Context) DomainMappingStatusArrayOutput
 }
 
-type domainMappingStatusPtrType DomainMappingStatusArgs
+type DomainMappingStatusArray []DomainMappingStatusInput
 
-func DomainMappingStatusPtr(v *DomainMappingStatusArgs) DomainMappingStatusPtrInput {
-	return (*domainMappingStatusPtrType)(v)
+func (DomainMappingStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DomainMappingStatus)(nil)).Elem()
 }
 
-func (*domainMappingStatusPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DomainMappingStatus)(nil)).Elem()
+func (i DomainMappingStatusArray) ToDomainMappingStatusArrayOutput() DomainMappingStatusArrayOutput {
+	return i.ToDomainMappingStatusArrayOutputWithContext(context.Background())
 }
 
-func (i *domainMappingStatusPtrType) ToDomainMappingStatusPtrOutput() DomainMappingStatusPtrOutput {
-	return i.ToDomainMappingStatusPtrOutputWithContext(context.Background())
-}
-
-func (i *domainMappingStatusPtrType) ToDomainMappingStatusPtrOutputWithContext(ctx context.Context) DomainMappingStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainMappingStatusPtrOutput)
+func (i DomainMappingStatusArray) ToDomainMappingStatusArrayOutputWithContext(ctx context.Context) DomainMappingStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainMappingStatusArrayOutput)
 }
 
 type DomainMappingStatusOutput struct{ *pulumi.OutputState }
@@ -612,15 +596,6 @@ func (o DomainMappingStatusOutput) ToDomainMappingStatusOutputWithContext(ctx co
 	return o
 }
 
-func (o DomainMappingStatusOutput) ToDomainMappingStatusPtrOutput() DomainMappingStatusPtrOutput {
-	return o.ToDomainMappingStatusPtrOutputWithContext(context.Background())
-}
-
-func (o DomainMappingStatusOutput) ToDomainMappingStatusPtrOutputWithContext(ctx context.Context) DomainMappingStatusPtrOutput {
-	return o.ApplyT(func(v DomainMappingStatus) *DomainMappingStatus {
-		return &v
-	}).(DomainMappingStatusPtrOutput)
-}
 func (o DomainMappingStatusOutput) Conditions() DomainMappingStatusConditionArrayOutput {
 	return o.ApplyT(func(v DomainMappingStatus) []DomainMappingStatusCondition { return v.Conditions }).(DomainMappingStatusConditionArrayOutput)
 }
@@ -637,58 +612,24 @@ func (o DomainMappingStatusOutput) ResourceRecords() DomainMappingStatusResource
 	return o.ApplyT(func(v DomainMappingStatus) []DomainMappingStatusResourceRecord { return v.ResourceRecords }).(DomainMappingStatusResourceRecordArrayOutput)
 }
 
-type DomainMappingStatusPtrOutput struct{ *pulumi.OutputState }
+type DomainMappingStatusArrayOutput struct{ *pulumi.OutputState }
 
-func (DomainMappingStatusPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DomainMappingStatus)(nil)).Elem()
+func (DomainMappingStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DomainMappingStatus)(nil)).Elem()
 }
 
-func (o DomainMappingStatusPtrOutput) ToDomainMappingStatusPtrOutput() DomainMappingStatusPtrOutput {
+func (o DomainMappingStatusArrayOutput) ToDomainMappingStatusArrayOutput() DomainMappingStatusArrayOutput {
 	return o
 }
 
-func (o DomainMappingStatusPtrOutput) ToDomainMappingStatusPtrOutputWithContext(ctx context.Context) DomainMappingStatusPtrOutput {
+func (o DomainMappingStatusArrayOutput) ToDomainMappingStatusArrayOutputWithContext(ctx context.Context) DomainMappingStatusArrayOutput {
 	return o
 }
 
-func (o DomainMappingStatusPtrOutput) Elem() DomainMappingStatusOutput {
-	return o.ApplyT(func(v *DomainMappingStatus) DomainMappingStatus { return *v }).(DomainMappingStatusOutput)
-}
-
-func (o DomainMappingStatusPtrOutput) Conditions() DomainMappingStatusConditionArrayOutput {
-	return o.ApplyT(func(v *DomainMappingStatus) []DomainMappingStatusCondition {
-		if v == nil {
-			return nil
-		}
-		return v.Conditions
-	}).(DomainMappingStatusConditionArrayOutput)
-}
-
-func (o DomainMappingStatusPtrOutput) MappedRouteName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DomainMappingStatus) *string {
-		if v == nil {
-			return nil
-		}
-		return v.MappedRouteName
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o DomainMappingStatusPtrOutput) ObservedGeneration() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DomainMappingStatus) *int {
-		if v == nil {
-			return nil
-		}
-		return v.ObservedGeneration
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o DomainMappingStatusPtrOutput) ResourceRecords() DomainMappingStatusResourceRecordArrayOutput {
-	return o.ApplyT(func(v *DomainMappingStatus) []DomainMappingStatusResourceRecord {
-		if v == nil {
-			return nil
-		}
-		return v.ResourceRecords
-	}).(DomainMappingStatusResourceRecordArrayOutput)
+func (o DomainMappingStatusArrayOutput) Index(i pulumi.IntInput) DomainMappingStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DomainMappingStatus {
+		return vs[0].([]DomainMappingStatus)[vs[1].(int)]
+	}).(DomainMappingStatusOutput)
 }
 
 type DomainMappingStatusCondition struct {
@@ -1580,45 +1521,29 @@ func (i ServiceStatusArgs) ToServiceStatusOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceStatusOutput)
 }
 
-func (i ServiceStatusArgs) ToServiceStatusPtrOutput() ServiceStatusPtrOutput {
-	return i.ToServiceStatusPtrOutputWithContext(context.Background())
-}
-
-func (i ServiceStatusArgs) ToServiceStatusPtrOutputWithContext(ctx context.Context) ServiceStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceStatusOutput).ToServiceStatusPtrOutputWithContext(ctx)
-}
-
-// ServiceStatusPtrInput is an input type that accepts ServiceStatusArgs, ServiceStatusPtr and ServiceStatusPtrOutput values.
-// You can construct a concrete instance of `ServiceStatusPtrInput` via:
+// ServiceStatusArrayInput is an input type that accepts ServiceStatusArray and ServiceStatusArrayOutput values.
+// You can construct a concrete instance of `ServiceStatusArrayInput` via:
 //
-//          ServiceStatusArgs{...}
-//
-//  or:
-//
-//          nil
-type ServiceStatusPtrInput interface {
+//          ServiceStatusArray{ ServiceStatusArgs{...} }
+type ServiceStatusArrayInput interface {
 	pulumi.Input
 
-	ToServiceStatusPtrOutput() ServiceStatusPtrOutput
-	ToServiceStatusPtrOutputWithContext(context.Context) ServiceStatusPtrOutput
+	ToServiceStatusArrayOutput() ServiceStatusArrayOutput
+	ToServiceStatusArrayOutputWithContext(context.Context) ServiceStatusArrayOutput
 }
 
-type serviceStatusPtrType ServiceStatusArgs
+type ServiceStatusArray []ServiceStatusInput
 
-func ServiceStatusPtr(v *ServiceStatusArgs) ServiceStatusPtrInput {
-	return (*serviceStatusPtrType)(v)
+func (ServiceStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceStatus)(nil)).Elem()
 }
 
-func (*serviceStatusPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServiceStatus)(nil)).Elem()
+func (i ServiceStatusArray) ToServiceStatusArrayOutput() ServiceStatusArrayOutput {
+	return i.ToServiceStatusArrayOutputWithContext(context.Background())
 }
 
-func (i *serviceStatusPtrType) ToServiceStatusPtrOutput() ServiceStatusPtrOutput {
-	return i.ToServiceStatusPtrOutputWithContext(context.Background())
-}
-
-func (i *serviceStatusPtrType) ToServiceStatusPtrOutputWithContext(ctx context.Context) ServiceStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceStatusPtrOutput)
+func (i ServiceStatusArray) ToServiceStatusArrayOutputWithContext(ctx context.Context) ServiceStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceStatusArrayOutput)
 }
 
 type ServiceStatusOutput struct{ *pulumi.OutputState }
@@ -1635,15 +1560,6 @@ func (o ServiceStatusOutput) ToServiceStatusOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o ServiceStatusOutput) ToServiceStatusPtrOutput() ServiceStatusPtrOutput {
-	return o.ToServiceStatusPtrOutputWithContext(context.Background())
-}
-
-func (o ServiceStatusOutput) ToServiceStatusPtrOutputWithContext(ctx context.Context) ServiceStatusPtrOutput {
-	return o.ApplyT(func(v ServiceStatus) *ServiceStatus {
-		return &v
-	}).(ServiceStatusPtrOutput)
-}
 func (o ServiceStatusOutput) Conditions() ServiceStatusConditionArrayOutput {
 	return o.ApplyT(func(v ServiceStatus) []ServiceStatusCondition { return v.Conditions }).(ServiceStatusConditionArrayOutput)
 }
@@ -1664,67 +1580,24 @@ func (o ServiceStatusOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceStatus) *string { return v.Url }).(pulumi.StringPtrOutput)
 }
 
-type ServiceStatusPtrOutput struct{ *pulumi.OutputState }
+type ServiceStatusArrayOutput struct{ *pulumi.OutputState }
 
-func (ServiceStatusPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServiceStatus)(nil)).Elem()
+func (ServiceStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceStatus)(nil)).Elem()
 }
 
-func (o ServiceStatusPtrOutput) ToServiceStatusPtrOutput() ServiceStatusPtrOutput {
+func (o ServiceStatusArrayOutput) ToServiceStatusArrayOutput() ServiceStatusArrayOutput {
 	return o
 }
 
-func (o ServiceStatusPtrOutput) ToServiceStatusPtrOutputWithContext(ctx context.Context) ServiceStatusPtrOutput {
+func (o ServiceStatusArrayOutput) ToServiceStatusArrayOutputWithContext(ctx context.Context) ServiceStatusArrayOutput {
 	return o
 }
 
-func (o ServiceStatusPtrOutput) Elem() ServiceStatusOutput {
-	return o.ApplyT(func(v *ServiceStatus) ServiceStatus { return *v }).(ServiceStatusOutput)
-}
-
-func (o ServiceStatusPtrOutput) Conditions() ServiceStatusConditionArrayOutput {
-	return o.ApplyT(func(v *ServiceStatus) []ServiceStatusCondition {
-		if v == nil {
-			return nil
-		}
-		return v.Conditions
-	}).(ServiceStatusConditionArrayOutput)
-}
-
-func (o ServiceStatusPtrOutput) LatestCreatedRevisionName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServiceStatus) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LatestCreatedRevisionName
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ServiceStatusPtrOutput) LatestReadyRevisionName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServiceStatus) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LatestReadyRevisionName
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ServiceStatusPtrOutput) ObservedGeneration() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceStatus) *int {
-		if v == nil {
-			return nil
-		}
-		return v.ObservedGeneration
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o ServiceStatusPtrOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServiceStatus) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Url
-	}).(pulumi.StringPtrOutput)
+func (o ServiceStatusArrayOutput) Index(i pulumi.IntInput) ServiceStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceStatus {
+		return vs[0].([]ServiceStatus)[vs[1].(int)]
+	}).(ServiceStatusOutput)
 }
 
 type ServiceStatusCondition struct {
@@ -4137,7 +4010,7 @@ func init() {
 	pulumi.RegisterOutputType(DomainMappingSpecOutput{})
 	pulumi.RegisterOutputType(DomainMappingSpecPtrOutput{})
 	pulumi.RegisterOutputType(DomainMappingStatusOutput{})
-	pulumi.RegisterOutputType(DomainMappingStatusPtrOutput{})
+	pulumi.RegisterOutputType(DomainMappingStatusArrayOutput{})
 	pulumi.RegisterOutputType(DomainMappingStatusConditionOutput{})
 	pulumi.RegisterOutputType(DomainMappingStatusConditionArrayOutput{})
 	pulumi.RegisterOutputType(DomainMappingStatusResourceRecordOutput{})
@@ -4149,7 +4022,7 @@ func init() {
 	pulumi.RegisterOutputType(ServiceMetadataOutput{})
 	pulumi.RegisterOutputType(ServiceMetadataPtrOutput{})
 	pulumi.RegisterOutputType(ServiceStatusOutput{})
-	pulumi.RegisterOutputType(ServiceStatusPtrOutput{})
+	pulumi.RegisterOutputType(ServiceStatusArrayOutput{})
 	pulumi.RegisterOutputType(ServiceStatusConditionOutput{})
 	pulumi.RegisterOutputType(ServiceStatusConditionArrayOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateOutput{})

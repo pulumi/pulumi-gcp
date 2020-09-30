@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -17,8 +17,8 @@ class ProjectFeed(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 asset_names: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 asset_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 asset_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 asset_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  billing_project: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  feed_id: Optional[pulumi.Input[str]] = None,
@@ -40,11 +40,11 @@ class ProjectFeed(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] asset_names: A list of the full names of the assets to receive updates. You must specify either or both of
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] asset_names: A list of the full names of the assets to receive updates. You must specify either or both of
                assetNames and assetTypes. Only asset updates matching specified assetNames and assetTypes are
                exported to the feed. For example: //compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1.
                See https://cloud.google.com/apis/design/resourceNames#fullResourceName for more info.
-        :param pulumi.Input[List[pulumi.Input[str]]] asset_types: A list of types of the assets to receive updates. You must specify either or both of assetNames
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] asset_types: A list of types of the assets to receive updates. You must specify either or both of assetNames
                and assetTypes. Only asset updates matching specified assetNames and assetTypes are exported to
                the feed. For example: "compute.googleapis.com/Disk"
                See https://cloud.google.com/asset-inventory/docs/supported-asset-types for a list of all
@@ -100,8 +100,8 @@ class ProjectFeed(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            asset_names: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            asset_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            asset_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            asset_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             billing_project: Optional[pulumi.Input[str]] = None,
             content_type: Optional[pulumi.Input[str]] = None,
             feed_id: Optional[pulumi.Input[str]] = None,
@@ -115,11 +115,11 @@ class ProjectFeed(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] asset_names: A list of the full names of the assets to receive updates. You must specify either or both of
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] asset_names: A list of the full names of the assets to receive updates. You must specify either or both of
                assetNames and assetTypes. Only asset updates matching specified assetNames and assetTypes are
                exported to the feed. For example: //compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1.
                See https://cloud.google.com/apis/design/resourceNames#fullResourceName for more info.
-        :param pulumi.Input[List[pulumi.Input[str]]] asset_types: A list of types of the assets to receive updates. You must specify either or both of assetNames
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] asset_types: A list of types of the assets to receive updates. You must specify either or both of assetNames
                and assetTypes. Only asset updates matching specified assetNames and assetTypes are exported to
                the feed. For example: "compute.googleapis.com/Disk"
                See https://cloud.google.com/asset-inventory/docs/supported-asset-types for a list of all
@@ -153,7 +153,7 @@ class ProjectFeed(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="assetNames")
-    def asset_names(self) -> pulumi.Output[Optional[List[str]]]:
+    def asset_names(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         A list of the full names of the assets to receive updates. You must specify either or both of
         assetNames and assetTypes. Only asset updates matching specified assetNames and assetTypes are
@@ -164,7 +164,7 @@ class ProjectFeed(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="assetTypes")
-    def asset_types(self) -> pulumi.Output[Optional[List[str]]]:
+    def asset_types(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         A list of types of the assets to receive updates. You must specify either or both of assetNames
         and assetTypes. Only asset updates matching specified assetNames and assetTypes are exported to

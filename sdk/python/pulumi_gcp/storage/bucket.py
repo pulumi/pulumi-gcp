@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,12 +18,12 @@ class Bucket(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket_policy_only: Optional[pulumi.Input[bool]] = None,
-                 cors: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['BucketCorArgs']]]]] = None,
+                 cors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorArgs']]]]] = None,
                  default_event_based_hold: Optional[pulumi.Input[bool]] = None,
                  encryption: Optional[pulumi.Input[pulumi.InputType['BucketEncryptionArgs']]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 lifecycle_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['BucketLifecycleRuleArgs']]]]] = None,
+                 lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketLifecycleRuleArgs']]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  logging: Optional[pulumi.Input[pulumi.InputType['BucketLoggingArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -56,13 +56,13 @@ class Bucket(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] bucket_policy_only: Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket. This field will be removed in the next major release of the provider.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['BucketCorArgs']]]] cors: The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorArgs']]]] cors: The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input[pulumi.InputType['BucketEncryptionArgs']] encryption: The bucket's encryption configuration.
         :param pulumi.Input[bool] force_destroy: When deleting a bucket, this
                boolean option will delete all contained objects. If you try to delete a
                bucket that contains objects, the provider will fail that run.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the bucket.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['BucketLifecycleRuleArgs']]]] lifecycle_rules: The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketLifecycleRuleArgs']]]] lifecycle_rules: The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input[str] location: The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
         :param pulumi.Input[pulumi.InputType['BucketLoggingArgs']] logging: The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration.
         :param pulumi.Input[str] name: The name of the bucket.
@@ -125,12 +125,12 @@ class Bucket(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             bucket_policy_only: Optional[pulumi.Input[bool]] = None,
-            cors: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['BucketCorArgs']]]]] = None,
+            cors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorArgs']]]]] = None,
             default_event_based_hold: Optional[pulumi.Input[bool]] = None,
             encryption: Optional[pulumi.Input[pulumi.InputType['BucketEncryptionArgs']]] = None,
             force_destroy: Optional[pulumi.Input[bool]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            lifecycle_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['BucketLifecycleRuleArgs']]]]] = None,
+            lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketLifecycleRuleArgs']]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             logging: Optional[pulumi.Input[pulumi.InputType['BucketLoggingArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -151,13 +151,13 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] bucket_policy_only: Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket. This field will be removed in the next major release of the provider.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['BucketCorArgs']]]] cors: The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorArgs']]]] cors: The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input[pulumi.InputType['BucketEncryptionArgs']] encryption: The bucket's encryption configuration.
         :param pulumi.Input[bool] force_destroy: When deleting a bucket, this
                boolean option will delete all contained objects. If you try to delete a
                bucket that contains objects, the provider will fail that run.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the bucket.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['BucketLifecycleRuleArgs']]]] lifecycle_rules: The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketLifecycleRuleArgs']]]] lifecycle_rules: The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input[str] location: The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
         :param pulumi.Input[pulumi.InputType['BucketLoggingArgs']] logging: The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration.
         :param pulumi.Input[str] name: The name of the bucket.
@@ -207,7 +207,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def cors(self) -> pulumi.Output[Optional[List['outputs.BucketCor']]]:
+    def cors(self) -> pulumi.Output[Optional[Sequence['outputs.BucketCor']]]:
         """
         The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         """
@@ -246,7 +246,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lifecycleRules")
-    def lifecycle_rules(self) -> pulumi.Output[Optional[List['outputs.BucketLifecycleRule']]]:
+    def lifecycle_rules(self) -> pulumi.Output[Optional[Sequence['outputs.BucketLifecycleRule']]]:
         """
         The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         """

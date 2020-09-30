@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -59,7 +59,7 @@ class GetBackendBucketResult:
 
     @property
     @pulumi.getter(name="cdnPolicies")
-    def cdn_policies(self) -> List['outputs.GetBackendBucketCdnPolicyResult']:
+    def cdn_policies(self) -> Sequence['outputs.GetBackendBucketCdnPolicyResult']:
         """
         Cloud CDN configuration for this Backend Bucket. Structure is documented below.
         """

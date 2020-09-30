@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -20,6 +20,7 @@ class ManagedZone(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  dns_name: Optional[pulumi.Input[str]] = None,
                  dnssec_config: Optional[pulumi.Input[pulumi.InputType['ManagedZoneDnssecConfigArgs']]] = None,
+                 force_destroy: Optional[pulumi.Input[bool]] = None,
                  forwarding_config: Optional[pulumi.Input[pulumi.InputType['ManagedZoneForwardingConfigArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -51,6 +52,8 @@ class ManagedZone(pulumi.CustomResource):
         :param pulumi.Input[str] dns_name: The DNS name of this managed zone, for instance "example.com.".
         :param pulumi.Input[pulumi.InputType['ManagedZoneDnssecConfigArgs']] dnssec_config: DNSSEC configuration
                Structure is documented below.
+        :param pulumi.Input[bool] force_destroy: Set this true to delete all records in the zone.
+               The `dnssec_config` block supports:
         :param pulumi.Input[pulumi.InputType['ManagedZoneForwardingConfigArgs']] forwarding_config: The presence for this field indicates that outbound forwarding is enabled
                for this zone. The value of this field contains the set of destinations
                to forward to.
@@ -99,6 +102,7 @@ class ManagedZone(pulumi.CustomResource):
                 raise TypeError("Missing required property 'dns_name'")
             __props__['dns_name'] = dns_name
             __props__['dnssec_config'] = dnssec_config
+            __props__['force_destroy'] = force_destroy
             __props__['forwarding_config'] = forwarding_config
             __props__['labels'] = labels
             __props__['name'] = name
@@ -122,10 +126,11 @@ class ManagedZone(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             dns_name: Optional[pulumi.Input[str]] = None,
             dnssec_config: Optional[pulumi.Input[pulumi.InputType['ManagedZoneDnssecConfigArgs']]] = None,
+            force_destroy: Optional[pulumi.Input[bool]] = None,
             forwarding_config: Optional[pulumi.Input[pulumi.InputType['ManagedZoneForwardingConfigArgs']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            name_servers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             peering_config: Optional[pulumi.Input[pulumi.InputType['ManagedZonePeeringConfigArgs']]] = None,
             private_visibility_config: Optional[pulumi.Input[pulumi.InputType['ManagedZonePrivateVisibilityConfigArgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -143,6 +148,8 @@ class ManagedZone(pulumi.CustomResource):
         :param pulumi.Input[str] dns_name: The DNS name of this managed zone, for instance "example.com.".
         :param pulumi.Input[pulumi.InputType['ManagedZoneDnssecConfigArgs']] dnssec_config: DNSSEC configuration
                Structure is documented below.
+        :param pulumi.Input[bool] force_destroy: Set this true to delete all records in the zone.
+               The `dnssec_config` block supports:
         :param pulumi.Input[pulumi.InputType['ManagedZoneForwardingConfigArgs']] forwarding_config: The presence for this field indicates that outbound forwarding is enabled
                for this zone. The value of this field contains the set of destinations
                to forward to.
@@ -150,7 +157,7 @@ class ManagedZone(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this ManagedZone.
         :param pulumi.Input[str] name: User assigned name for this resource.
                Must be unique within the project.
-        :param pulumi.Input[List[pulumi.Input[str]]] name_servers: Delegate your managed_zone to these virtual name servers; defined by the server
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] name_servers: Delegate your managed_zone to these virtual name servers; defined by the server
         :param pulumi.Input[pulumi.InputType['ManagedZonePeeringConfigArgs']] peering_config: The presence of this field indicates that DNS Peering is enabled for this
                zone. The value of this field contains the network to peer with.
                Structure is documented below.
@@ -175,6 +182,7 @@ class ManagedZone(pulumi.CustomResource):
         __props__["description"] = description
         __props__["dns_name"] = dns_name
         __props__["dnssec_config"] = dnssec_config
+        __props__["force_destroy"] = force_destroy
         __props__["forwarding_config"] = forwarding_config
         __props__["labels"] = labels
         __props__["name"] = name
@@ -213,6 +221,15 @@ class ManagedZone(pulumi.CustomResource):
         return pulumi.get(self, "dnssec_config")
 
     @property
+    @pulumi.getter(name="forceDestroy")
+    def force_destroy(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Set this true to delete all records in the zone.
+        The `dnssec_config` block supports:
+        """
+        return pulumi.get(self, "force_destroy")
+
+    @property
     @pulumi.getter(name="forwardingConfig")
     def forwarding_config(self) -> pulumi.Output[Optional['outputs.ManagedZoneForwardingConfig']]:
         """
@@ -242,7 +259,7 @@ class ManagedZone(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nameServers")
-    def name_servers(self) -> pulumi.Output[List[str]]:
+    def name_servers(self) -> pulumi.Output[Sequence[str]]:
         """
         Delegate your managed_zone to these virtual name servers; defined by the server
         """

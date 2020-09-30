@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -19,7 +19,7 @@ class Index(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  collection: Optional[pulumi.Input[str]] = None,
                  database: Optional[pulumi.Input[str]] = None,
-                 fields: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['IndexFieldArgs']]]]] = None,
+                 fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IndexFieldArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  query_scope: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -42,7 +42,7 @@ class Index(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] collection: The collection being indexed.
         :param pulumi.Input[str] database: The Firestore database id. Defaults to `"(default)"`.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['IndexFieldArgs']]]] fields: The fields supported by this index. The last field entry is always for
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IndexFieldArgs']]]] fields: The fields supported by this index. The last field entry is always for
                the field path `__name__`. If, on creation, `__name__` was not
                specified as the last field, it will be added automatically with the
                same direction as that of the last field defined. If the final field
@@ -94,7 +94,7 @@ class Index(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             collection: Optional[pulumi.Input[str]] = None,
             database: Optional[pulumi.Input[str]] = None,
-            fields: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['IndexFieldArgs']]]]] = None,
+            fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IndexFieldArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             query_scope: Optional[pulumi.Input[str]] = None) -> 'Index':
@@ -107,7 +107,7 @@ class Index(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] collection: The collection being indexed.
         :param pulumi.Input[str] database: The Firestore database id. Defaults to `"(default)"`.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['IndexFieldArgs']]]] fields: The fields supported by this index. The last field entry is always for
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IndexFieldArgs']]]] fields: The fields supported by this index. The last field entry is always for
                the field path `__name__`. If, on creation, `__name__` was not
                specified as the last field, it will be added automatically with the
                same direction as that of the last field defined. If the final field
@@ -152,7 +152,7 @@ class Index(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def fields(self) -> pulumi.Output[List['outputs.IndexField']]:
+    def fields(self) -> pulumi.Output[Sequence['outputs.IndexField']]:
         """
         The fields supported by this index. The last field entry is always for
         the field path `__name__`. If, on creation, `__name__` was not

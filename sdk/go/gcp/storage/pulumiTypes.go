@@ -1479,45 +1479,29 @@ func (i DefaultObjectAccessControlProjectTeamArgs) ToDefaultObjectAccessControlP
 	return pulumi.ToOutputWithContext(ctx, i).(DefaultObjectAccessControlProjectTeamOutput)
 }
 
-func (i DefaultObjectAccessControlProjectTeamArgs) ToDefaultObjectAccessControlProjectTeamPtrOutput() DefaultObjectAccessControlProjectTeamPtrOutput {
-	return i.ToDefaultObjectAccessControlProjectTeamPtrOutputWithContext(context.Background())
-}
-
-func (i DefaultObjectAccessControlProjectTeamArgs) ToDefaultObjectAccessControlProjectTeamPtrOutputWithContext(ctx context.Context) DefaultObjectAccessControlProjectTeamPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DefaultObjectAccessControlProjectTeamOutput).ToDefaultObjectAccessControlProjectTeamPtrOutputWithContext(ctx)
-}
-
-// DefaultObjectAccessControlProjectTeamPtrInput is an input type that accepts DefaultObjectAccessControlProjectTeamArgs, DefaultObjectAccessControlProjectTeamPtr and DefaultObjectAccessControlProjectTeamPtrOutput values.
-// You can construct a concrete instance of `DefaultObjectAccessControlProjectTeamPtrInput` via:
+// DefaultObjectAccessControlProjectTeamArrayInput is an input type that accepts DefaultObjectAccessControlProjectTeamArray and DefaultObjectAccessControlProjectTeamArrayOutput values.
+// You can construct a concrete instance of `DefaultObjectAccessControlProjectTeamArrayInput` via:
 //
-//          DefaultObjectAccessControlProjectTeamArgs{...}
-//
-//  or:
-//
-//          nil
-type DefaultObjectAccessControlProjectTeamPtrInput interface {
+//          DefaultObjectAccessControlProjectTeamArray{ DefaultObjectAccessControlProjectTeamArgs{...} }
+type DefaultObjectAccessControlProjectTeamArrayInput interface {
 	pulumi.Input
 
-	ToDefaultObjectAccessControlProjectTeamPtrOutput() DefaultObjectAccessControlProjectTeamPtrOutput
-	ToDefaultObjectAccessControlProjectTeamPtrOutputWithContext(context.Context) DefaultObjectAccessControlProjectTeamPtrOutput
+	ToDefaultObjectAccessControlProjectTeamArrayOutput() DefaultObjectAccessControlProjectTeamArrayOutput
+	ToDefaultObjectAccessControlProjectTeamArrayOutputWithContext(context.Context) DefaultObjectAccessControlProjectTeamArrayOutput
 }
 
-type defaultObjectAccessControlProjectTeamPtrType DefaultObjectAccessControlProjectTeamArgs
+type DefaultObjectAccessControlProjectTeamArray []DefaultObjectAccessControlProjectTeamInput
 
-func DefaultObjectAccessControlProjectTeamPtr(v *DefaultObjectAccessControlProjectTeamArgs) DefaultObjectAccessControlProjectTeamPtrInput {
-	return (*defaultObjectAccessControlProjectTeamPtrType)(v)
+func (DefaultObjectAccessControlProjectTeamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DefaultObjectAccessControlProjectTeam)(nil)).Elem()
 }
 
-func (*defaultObjectAccessControlProjectTeamPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DefaultObjectAccessControlProjectTeam)(nil)).Elem()
+func (i DefaultObjectAccessControlProjectTeamArray) ToDefaultObjectAccessControlProjectTeamArrayOutput() DefaultObjectAccessControlProjectTeamArrayOutput {
+	return i.ToDefaultObjectAccessControlProjectTeamArrayOutputWithContext(context.Background())
 }
 
-func (i *defaultObjectAccessControlProjectTeamPtrType) ToDefaultObjectAccessControlProjectTeamPtrOutput() DefaultObjectAccessControlProjectTeamPtrOutput {
-	return i.ToDefaultObjectAccessControlProjectTeamPtrOutputWithContext(context.Background())
-}
-
-func (i *defaultObjectAccessControlProjectTeamPtrType) ToDefaultObjectAccessControlProjectTeamPtrOutputWithContext(ctx context.Context) DefaultObjectAccessControlProjectTeamPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DefaultObjectAccessControlProjectTeamPtrOutput)
+func (i DefaultObjectAccessControlProjectTeamArray) ToDefaultObjectAccessControlProjectTeamArrayOutputWithContext(ctx context.Context) DefaultObjectAccessControlProjectTeamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultObjectAccessControlProjectTeamArrayOutput)
 }
 
 type DefaultObjectAccessControlProjectTeamOutput struct{ *pulumi.OutputState }
@@ -1534,15 +1518,6 @@ func (o DefaultObjectAccessControlProjectTeamOutput) ToDefaultObjectAccessContro
 	return o
 }
 
-func (o DefaultObjectAccessControlProjectTeamOutput) ToDefaultObjectAccessControlProjectTeamPtrOutput() DefaultObjectAccessControlProjectTeamPtrOutput {
-	return o.ToDefaultObjectAccessControlProjectTeamPtrOutputWithContext(context.Background())
-}
-
-func (o DefaultObjectAccessControlProjectTeamOutput) ToDefaultObjectAccessControlProjectTeamPtrOutputWithContext(ctx context.Context) DefaultObjectAccessControlProjectTeamPtrOutput {
-	return o.ApplyT(func(v DefaultObjectAccessControlProjectTeam) *DefaultObjectAccessControlProjectTeam {
-		return &v
-	}).(DefaultObjectAccessControlProjectTeamPtrOutput)
-}
 func (o DefaultObjectAccessControlProjectTeamOutput) ProjectNumber() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DefaultObjectAccessControlProjectTeam) *string { return v.ProjectNumber }).(pulumi.StringPtrOutput)
 }
@@ -1551,40 +1526,24 @@ func (o DefaultObjectAccessControlProjectTeamOutput) Team() pulumi.StringPtrOutp
 	return o.ApplyT(func(v DefaultObjectAccessControlProjectTeam) *string { return v.Team }).(pulumi.StringPtrOutput)
 }
 
-type DefaultObjectAccessControlProjectTeamPtrOutput struct{ *pulumi.OutputState }
+type DefaultObjectAccessControlProjectTeamArrayOutput struct{ *pulumi.OutputState }
 
-func (DefaultObjectAccessControlProjectTeamPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DefaultObjectAccessControlProjectTeam)(nil)).Elem()
+func (DefaultObjectAccessControlProjectTeamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DefaultObjectAccessControlProjectTeam)(nil)).Elem()
 }
 
-func (o DefaultObjectAccessControlProjectTeamPtrOutput) ToDefaultObjectAccessControlProjectTeamPtrOutput() DefaultObjectAccessControlProjectTeamPtrOutput {
+func (o DefaultObjectAccessControlProjectTeamArrayOutput) ToDefaultObjectAccessControlProjectTeamArrayOutput() DefaultObjectAccessControlProjectTeamArrayOutput {
 	return o
 }
 
-func (o DefaultObjectAccessControlProjectTeamPtrOutput) ToDefaultObjectAccessControlProjectTeamPtrOutputWithContext(ctx context.Context) DefaultObjectAccessControlProjectTeamPtrOutput {
+func (o DefaultObjectAccessControlProjectTeamArrayOutput) ToDefaultObjectAccessControlProjectTeamArrayOutputWithContext(ctx context.Context) DefaultObjectAccessControlProjectTeamArrayOutput {
 	return o
 }
 
-func (o DefaultObjectAccessControlProjectTeamPtrOutput) Elem() DefaultObjectAccessControlProjectTeamOutput {
-	return o.ApplyT(func(v *DefaultObjectAccessControlProjectTeam) DefaultObjectAccessControlProjectTeam { return *v }).(DefaultObjectAccessControlProjectTeamOutput)
-}
-
-func (o DefaultObjectAccessControlProjectTeamPtrOutput) ProjectNumber() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DefaultObjectAccessControlProjectTeam) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ProjectNumber
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o DefaultObjectAccessControlProjectTeamPtrOutput) Team() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DefaultObjectAccessControlProjectTeam) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Team
-	}).(pulumi.StringPtrOutput)
+func (o DefaultObjectAccessControlProjectTeamArrayOutput) Index(i pulumi.IntInput) DefaultObjectAccessControlProjectTeamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DefaultObjectAccessControlProjectTeam {
+		return vs[0].([]DefaultObjectAccessControlProjectTeam)[vs[1].(int)]
+	}).(DefaultObjectAccessControlProjectTeamOutput)
 }
 
 type ObjectAccessControlProjectTeam struct {
@@ -1620,45 +1579,29 @@ func (i ObjectAccessControlProjectTeamArgs) ToObjectAccessControlProjectTeamOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ObjectAccessControlProjectTeamOutput)
 }
 
-func (i ObjectAccessControlProjectTeamArgs) ToObjectAccessControlProjectTeamPtrOutput() ObjectAccessControlProjectTeamPtrOutput {
-	return i.ToObjectAccessControlProjectTeamPtrOutputWithContext(context.Background())
-}
-
-func (i ObjectAccessControlProjectTeamArgs) ToObjectAccessControlProjectTeamPtrOutputWithContext(ctx context.Context) ObjectAccessControlProjectTeamPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ObjectAccessControlProjectTeamOutput).ToObjectAccessControlProjectTeamPtrOutputWithContext(ctx)
-}
-
-// ObjectAccessControlProjectTeamPtrInput is an input type that accepts ObjectAccessControlProjectTeamArgs, ObjectAccessControlProjectTeamPtr and ObjectAccessControlProjectTeamPtrOutput values.
-// You can construct a concrete instance of `ObjectAccessControlProjectTeamPtrInput` via:
+// ObjectAccessControlProjectTeamArrayInput is an input type that accepts ObjectAccessControlProjectTeamArray and ObjectAccessControlProjectTeamArrayOutput values.
+// You can construct a concrete instance of `ObjectAccessControlProjectTeamArrayInput` via:
 //
-//          ObjectAccessControlProjectTeamArgs{...}
-//
-//  or:
-//
-//          nil
-type ObjectAccessControlProjectTeamPtrInput interface {
+//          ObjectAccessControlProjectTeamArray{ ObjectAccessControlProjectTeamArgs{...} }
+type ObjectAccessControlProjectTeamArrayInput interface {
 	pulumi.Input
 
-	ToObjectAccessControlProjectTeamPtrOutput() ObjectAccessControlProjectTeamPtrOutput
-	ToObjectAccessControlProjectTeamPtrOutputWithContext(context.Context) ObjectAccessControlProjectTeamPtrOutput
+	ToObjectAccessControlProjectTeamArrayOutput() ObjectAccessControlProjectTeamArrayOutput
+	ToObjectAccessControlProjectTeamArrayOutputWithContext(context.Context) ObjectAccessControlProjectTeamArrayOutput
 }
 
-type objectAccessControlProjectTeamPtrType ObjectAccessControlProjectTeamArgs
+type ObjectAccessControlProjectTeamArray []ObjectAccessControlProjectTeamInput
 
-func ObjectAccessControlProjectTeamPtr(v *ObjectAccessControlProjectTeamArgs) ObjectAccessControlProjectTeamPtrInput {
-	return (*objectAccessControlProjectTeamPtrType)(v)
+func (ObjectAccessControlProjectTeamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ObjectAccessControlProjectTeam)(nil)).Elem()
 }
 
-func (*objectAccessControlProjectTeamPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ObjectAccessControlProjectTeam)(nil)).Elem()
+func (i ObjectAccessControlProjectTeamArray) ToObjectAccessControlProjectTeamArrayOutput() ObjectAccessControlProjectTeamArrayOutput {
+	return i.ToObjectAccessControlProjectTeamArrayOutputWithContext(context.Background())
 }
 
-func (i *objectAccessControlProjectTeamPtrType) ToObjectAccessControlProjectTeamPtrOutput() ObjectAccessControlProjectTeamPtrOutput {
-	return i.ToObjectAccessControlProjectTeamPtrOutputWithContext(context.Background())
-}
-
-func (i *objectAccessControlProjectTeamPtrType) ToObjectAccessControlProjectTeamPtrOutputWithContext(ctx context.Context) ObjectAccessControlProjectTeamPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ObjectAccessControlProjectTeamPtrOutput)
+func (i ObjectAccessControlProjectTeamArray) ToObjectAccessControlProjectTeamArrayOutputWithContext(ctx context.Context) ObjectAccessControlProjectTeamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObjectAccessControlProjectTeamArrayOutput)
 }
 
 type ObjectAccessControlProjectTeamOutput struct{ *pulumi.OutputState }
@@ -1675,15 +1618,6 @@ func (o ObjectAccessControlProjectTeamOutput) ToObjectAccessControlProjectTeamOu
 	return o
 }
 
-func (o ObjectAccessControlProjectTeamOutput) ToObjectAccessControlProjectTeamPtrOutput() ObjectAccessControlProjectTeamPtrOutput {
-	return o.ToObjectAccessControlProjectTeamPtrOutputWithContext(context.Background())
-}
-
-func (o ObjectAccessControlProjectTeamOutput) ToObjectAccessControlProjectTeamPtrOutputWithContext(ctx context.Context) ObjectAccessControlProjectTeamPtrOutput {
-	return o.ApplyT(func(v ObjectAccessControlProjectTeam) *ObjectAccessControlProjectTeam {
-		return &v
-	}).(ObjectAccessControlProjectTeamPtrOutput)
-}
 func (o ObjectAccessControlProjectTeamOutput) ProjectNumber() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ObjectAccessControlProjectTeam) *string { return v.ProjectNumber }).(pulumi.StringPtrOutput)
 }
@@ -1692,40 +1626,24 @@ func (o ObjectAccessControlProjectTeamOutput) Team() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ObjectAccessControlProjectTeam) *string { return v.Team }).(pulumi.StringPtrOutput)
 }
 
-type ObjectAccessControlProjectTeamPtrOutput struct{ *pulumi.OutputState }
+type ObjectAccessControlProjectTeamArrayOutput struct{ *pulumi.OutputState }
 
-func (ObjectAccessControlProjectTeamPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ObjectAccessControlProjectTeam)(nil)).Elem()
+func (ObjectAccessControlProjectTeamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ObjectAccessControlProjectTeam)(nil)).Elem()
 }
 
-func (o ObjectAccessControlProjectTeamPtrOutput) ToObjectAccessControlProjectTeamPtrOutput() ObjectAccessControlProjectTeamPtrOutput {
+func (o ObjectAccessControlProjectTeamArrayOutput) ToObjectAccessControlProjectTeamArrayOutput() ObjectAccessControlProjectTeamArrayOutput {
 	return o
 }
 
-func (o ObjectAccessControlProjectTeamPtrOutput) ToObjectAccessControlProjectTeamPtrOutputWithContext(ctx context.Context) ObjectAccessControlProjectTeamPtrOutput {
+func (o ObjectAccessControlProjectTeamArrayOutput) ToObjectAccessControlProjectTeamArrayOutputWithContext(ctx context.Context) ObjectAccessControlProjectTeamArrayOutput {
 	return o
 }
 
-func (o ObjectAccessControlProjectTeamPtrOutput) Elem() ObjectAccessControlProjectTeamOutput {
-	return o.ApplyT(func(v *ObjectAccessControlProjectTeam) ObjectAccessControlProjectTeam { return *v }).(ObjectAccessControlProjectTeamOutput)
-}
-
-func (o ObjectAccessControlProjectTeamPtrOutput) ProjectNumber() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ObjectAccessControlProjectTeam) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ProjectNumber
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ObjectAccessControlProjectTeamPtrOutput) Team() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ObjectAccessControlProjectTeam) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Team
-	}).(pulumi.StringPtrOutput)
+func (o ObjectAccessControlProjectTeamArrayOutput) Index(i pulumi.IntInput) ObjectAccessControlProjectTeamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ObjectAccessControlProjectTeam {
+		return vs[0].([]ObjectAccessControlProjectTeam)[vs[1].(int)]
+	}).(ObjectAccessControlProjectTeamOutput)
 }
 
 type TransferJobSchedule struct {
@@ -3729,9 +3647,9 @@ func init() {
 	pulumi.RegisterOutputType(BucketWebsiteOutput{})
 	pulumi.RegisterOutputType(BucketWebsitePtrOutput{})
 	pulumi.RegisterOutputType(DefaultObjectAccessControlProjectTeamOutput{})
-	pulumi.RegisterOutputType(DefaultObjectAccessControlProjectTeamPtrOutput{})
+	pulumi.RegisterOutputType(DefaultObjectAccessControlProjectTeamArrayOutput{})
 	pulumi.RegisterOutputType(ObjectAccessControlProjectTeamOutput{})
-	pulumi.RegisterOutputType(ObjectAccessControlProjectTeamPtrOutput{})
+	pulumi.RegisterOutputType(ObjectAccessControlProjectTeamArrayOutput{})
 	pulumi.RegisterOutputType(TransferJobScheduleOutput{})
 	pulumi.RegisterOutputType(TransferJobSchedulePtrOutput{})
 	pulumi.RegisterOutputType(TransferJobScheduleScheduleEndDateOutput{})

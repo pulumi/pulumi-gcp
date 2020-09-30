@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -51,7 +51,7 @@ class GetRouterResult:
 
     @property
     @pulumi.getter
-    def bgps(self) -> List['outputs.GetRouterBgpResult']:
+    def bgps(self) -> Sequence['outputs.GetRouterBgpResult']:
         return pulumi.get(self, "bgps")
 
     @property

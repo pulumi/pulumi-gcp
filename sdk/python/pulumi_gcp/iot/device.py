@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,7 +18,7 @@ class Device(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  blocked: Optional[pulumi.Input[bool]] = None,
-                 credentials: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DeviceCredentialArgs']]]]] = None,
+                 credentials: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceCredentialArgs']]]]] = None,
                  gateway_config: Optional[pulumi.Input[pulumi.InputType['DeviceGatewayConfigArgs']]] = None,
                  log_level: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -41,7 +41,7 @@ class Device(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] blocked: If a device is blocked, connections or requests from this device will fail.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DeviceCredentialArgs']]]] credentials: The credentials used to authenticate this device.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceCredentialArgs']]]] credentials: The credentials used to authenticate this device.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['DeviceGatewayConfigArgs']] gateway_config: Gateway-related configuration and state.
                Structure is documented below.
@@ -77,16 +77,16 @@ class Device(pulumi.CustomResource):
             if registry is None:
                 raise TypeError("Missing required property 'registry'")
             __props__['registry'] = registry
-            __props__['config'] = None
+            __props__['configs'] = None
             __props__['last_config_ack_time'] = None
             __props__['last_config_send_time'] = None
-            __props__['last_error_status'] = None
+            __props__['last_error_statuses'] = None
             __props__['last_error_time'] = None
             __props__['last_event_time'] = None
             __props__['last_heartbeat_time'] = None
             __props__['last_state_time'] = None
             __props__['num_id'] = None
-            __props__['state'] = None
+            __props__['states'] = None
         super(Device, __self__).__init__(
             'gcp:iot/device:Device',
             resource_name,
@@ -98,12 +98,12 @@ class Device(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             blocked: Optional[pulumi.Input[bool]] = None,
-            config: Optional[pulumi.Input[pulumi.InputType['DeviceConfigArgs']]] = None,
-            credentials: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DeviceCredentialArgs']]]]] = None,
+            configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceConfigArgs']]]]] = None,
+            credentials: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceCredentialArgs']]]]] = None,
             gateway_config: Optional[pulumi.Input[pulumi.InputType['DeviceGatewayConfigArgs']]] = None,
             last_config_ack_time: Optional[pulumi.Input[str]] = None,
             last_config_send_time: Optional[pulumi.Input[str]] = None,
-            last_error_status: Optional[pulumi.Input[pulumi.InputType['DeviceLastErrorStatusArgs']]] = None,
+            last_error_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLastErrorStatusArgs']]]]] = None,
             last_error_time: Optional[pulumi.Input[str]] = None,
             last_event_time: Optional[pulumi.Input[str]] = None,
             last_heartbeat_time: Optional[pulumi.Input[str]] = None,
@@ -113,7 +113,7 @@ class Device(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             num_id: Optional[pulumi.Input[str]] = None,
             registry: Optional[pulumi.Input[str]] = None,
-            state: Optional[pulumi.Input[pulumi.InputType['DeviceStateArgs']]] = None) -> 'Device':
+            states: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceStateArgs']]]]] = None) -> 'Device':
         """
         Get an existing Device resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -122,14 +122,14 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] blocked: If a device is blocked, connections or requests from this device will fail.
-        :param pulumi.Input[pulumi.InputType['DeviceConfigArgs']] config: The most recent device configuration, which is eventually sent from Cloud IoT Core to the device.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DeviceCredentialArgs']]]] credentials: The credentials used to authenticate this device.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceConfigArgs']]]] configs: The most recent device configuration, which is eventually sent from Cloud IoT Core to the device.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceCredentialArgs']]]] credentials: The credentials used to authenticate this device.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['DeviceGatewayConfigArgs']] gateway_config: Gateway-related configuration and state.
                Structure is documented below.
         :param pulumi.Input[str] last_config_ack_time: The last time a cloud-to-device config version acknowledgment was received from the device.
         :param pulumi.Input[str] last_config_send_time: The last time a cloud-to-device config version was sent to the device.
-        :param pulumi.Input[pulumi.InputType['DeviceLastErrorStatusArgs']] last_error_status: The error message of the most recent error, such as a failure to publish to Cloud Pub/Sub.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLastErrorStatusArgs']]]] last_error_statuses: The error message of the most recent error, such as a failure to publish to Cloud Pub/Sub.
         :param pulumi.Input[str] last_error_time: The time the most recent error occurred, such as a failure to publish to Cloud Pub/Sub.
         :param pulumi.Input[str] last_event_time: The last time a telemetry event was received.
         :param pulumi.Input[str] last_heartbeat_time: The last time an MQTT PINGREQ was received.
@@ -141,19 +141,19 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[str] num_id: A server-defined unique numeric ID for the device. This is a more compact way to identify devices, and it is globally
                unique.
         :param pulumi.Input[str] registry: The name of the device registry where this device should be created.
-        :param pulumi.Input[pulumi.InputType['DeviceStateArgs']] state: The state most recently received from the device.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceStateArgs']]]] states: The state most recently received from the device.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
 
         __props__["blocked"] = blocked
-        __props__["config"] = config
+        __props__["configs"] = configs
         __props__["credentials"] = credentials
         __props__["gateway_config"] = gateway_config
         __props__["last_config_ack_time"] = last_config_ack_time
         __props__["last_config_send_time"] = last_config_send_time
-        __props__["last_error_status"] = last_error_status
+        __props__["last_error_statuses"] = last_error_statuses
         __props__["last_error_time"] = last_error_time
         __props__["last_event_time"] = last_event_time
         __props__["last_heartbeat_time"] = last_heartbeat_time
@@ -163,7 +163,7 @@ class Device(pulumi.CustomResource):
         __props__["name"] = name
         __props__["num_id"] = num_id
         __props__["registry"] = registry
-        __props__["state"] = state
+        __props__["states"] = states
         return Device(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -176,15 +176,15 @@ class Device(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def config(self) -> pulumi.Output['outputs.DeviceConfig']:
+    def configs(self) -> pulumi.Output[Sequence['outputs.DeviceConfig']]:
         """
         The most recent device configuration, which is eventually sent from Cloud IoT Core to the device.
         """
-        return pulumi.get(self, "config")
+        return pulumi.get(self, "configs")
 
     @property
     @pulumi.getter
-    def credentials(self) -> pulumi.Output[Optional[List['outputs.DeviceCredential']]]:
+    def credentials(self) -> pulumi.Output[Optional[Sequence['outputs.DeviceCredential']]]:
         """
         The credentials used to authenticate this device.
         Structure is documented below.
@@ -217,12 +217,12 @@ class Device(pulumi.CustomResource):
         return pulumi.get(self, "last_config_send_time")
 
     @property
-    @pulumi.getter(name="lastErrorStatus")
-    def last_error_status(self) -> pulumi.Output['outputs.DeviceLastErrorStatus']:
+    @pulumi.getter(name="lastErrorStatuses")
+    def last_error_statuses(self) -> pulumi.Output[Sequence['outputs.DeviceLastErrorStatus']]:
         """
         The error message of the most recent error, such as a failure to publish to Cloud Pub/Sub.
         """
-        return pulumi.get(self, "last_error_status")
+        return pulumi.get(self, "last_error_statuses")
 
     @property
     @pulumi.getter(name="lastErrorTime")
@@ -300,11 +300,11 @@ class Device(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def state(self) -> pulumi.Output['outputs.DeviceState']:
+    def states(self) -> pulumi.Output[Sequence['outputs.DeviceState']]:
         """
         The state most recently received from the device.
         """
-        return pulumi.get(self, "state")
+        return pulumi.get(self, "states")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

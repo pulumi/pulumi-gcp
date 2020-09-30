@@ -2776,7 +2776,7 @@ export namespace cloudbuild {
          * Output only. Stores timing information for pushing all artifact objects.
          * Structure is documented below.
          */
-        timing: outputs.cloudbuild.TriggerBuildArtifactsObjectsTiming;
+        timings: outputs.cloudbuild.TriggerBuildArtifactsObjectsTiming[];
     }
 
     export interface TriggerBuildArtifactsObjectsTiming {
@@ -5981,7 +5981,7 @@ export namespace compute {
     export interface ImageGuestOsFeature {
         /**
          * The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
-         * Possible values are `MULTI_IP_SUBNET`, `SECURE_BOOT`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, and `WINDOWS`.
+         * Possible values are `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, and `WINDOWS`.
          */
         type: string;
     }
@@ -12798,7 +12798,6 @@ export namespace container {
         httpLoadBalancings: outputs.container.GetClusterAddonsConfigHttpLoadBalancing[];
         istioConfigs: outputs.container.GetClusterAddonsConfigIstioConfig[];
         kalmConfigs: outputs.container.GetClusterAddonsConfigKalmConfig[];
-        kubernetesDashboards: outputs.container.GetClusterAddonsConfigKubernetesDashboard[];
         networkPolicyConfigs: outputs.container.GetClusterAddonsConfigNetworkPolicyConfig[];
     }
 
@@ -12834,10 +12833,6 @@ export namespace container {
 
     export interface GetClusterAddonsConfigKalmConfig {
         enabled: boolean;
-    }
-
-    export interface GetClusterAddonsConfigKubernetesDashboard {
-        disabled: boolean;
     }
 
     export interface GetClusterAddonsConfigNetworkPolicyConfig {
@@ -12883,10 +12878,8 @@ export namespace container {
     export interface GetClusterIpAllocationPolicy {
         clusterIpv4CidrBlock: string;
         clusterSecondaryRangeName: string;
-        nodeIpv4CidrBlock: string;
         servicesIpv4CidrBlock: string;
         servicesSecondaryRangeName: string;
-        subnetworkName: string;
     }
 
     export interface GetClusterMaintenancePolicy {
@@ -13303,8 +13296,8 @@ export namespace datacatalog {
 
     export interface EntryBigqueryTableSpec {
         tableSourceType: string;
-        tableSpec: outputs.datacatalog.EntryBigqueryTableSpecTableSpec;
-        viewSpec: outputs.datacatalog.EntryBigqueryTableSpecViewSpec;
+        tableSpecs: outputs.datacatalog.EntryBigqueryTableSpecTableSpec[];
+        viewSpecs: outputs.datacatalog.EntryBigqueryTableSpecViewSpec[];
     }
 
     export interface EntryBigqueryTableSpecTableSpec {
@@ -16254,18 +16247,7 @@ export namespace iot {
         /**
          * A public key certificate format and data.
          */
-        publicKeyCertificate: outputs.iot.RegistryCredentialPublicKeyCertificate;
-    }
-
-    export interface RegistryCredentialPublicKeyCertificate {
-        /**
-         * The certificate data.
-         */
-        certificate: string;
-        /**
-         * The field allows only `X509_CERTIFICATE_PEM`.
-         */
-        format: string;
+        publicKeyCertificate: {[key: string]: any};
     }
 
     export interface RegistryEventNotificationConfigItem {
@@ -16281,27 +16263,6 @@ export namespace iot {
          * item.
          */
         subfolderMatches?: string;
-    }
-
-    export interface RegistryHttpConfig {
-        /**
-         * The field allows `HTTP_ENABLED` or `HTTP_DISABLED`.
-         */
-        httpEnabledState: string;
-    }
-
-    export interface RegistryMqttConfig {
-        /**
-         * The field allows `MQTT_ENABLED` or `MQTT_DISABLED`.
-         */
-        mqttEnabledState: string;
-    }
-
-    export interface RegistryStateNotificationConfig {
-        /**
-         * PubSub topic name to publish device events.
-         */
-        pubsubTopicName: string;
     }
 }
 
@@ -16409,18 +16370,7 @@ export namespace kms {
         /**
          * A public key certificate format and data.
          */
-        publicKeyCertificate: outputs.kms.RegistryCredentialPublicKeyCertificate;
-    }
-
-    export interface RegistryCredentialPublicKeyCertificate {
-        /**
-         * The certificate data.
-         */
-        certificate: string;
-        /**
-         * The field allows only `X509_CERTIFICATE_PEM`.
-         */
-        format: string;
+        publicKeyCertificate: {[key: string]: any};
     }
 
     export interface RegistryEventNotificationConfigItem {
@@ -16436,27 +16386,6 @@ export namespace kms {
          * item.
          */
         subfolderMatches?: string;
-    }
-
-    export interface RegistryHttpConfig {
-        /**
-         * The field allows `HTTP_ENABLED` or `HTTP_DISABLED`.
-         */
-        httpEnabledState: string;
-    }
-
-    export interface RegistryMqttConfig {
-        /**
-         * The field allows `MQTT_ENABLED` or `MQTT_DISABLED`.
-         */
-        mqttEnabledState: string;
-    }
-
-    export interface RegistryStateNotificationConfig {
-        /**
-         * PubSub topic name to publish device events.
-         */
-        pubsubTopicName: string;
     }
 }
 

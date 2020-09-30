@@ -52,7 +52,7 @@ type Service struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The current status of the Service.
-	Status ServiceStatusOutput `pulumi:"status"`
+	Statuses ServiceStatusArrayOutput `pulumi:"statuses"`
 	// template holds the latest specification for the Revision to
 	// be stamped out. The template references the container image, and may also
 	// include labels and annotations that should be attached to the Revision.
@@ -119,7 +119,7 @@ type serviceState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The current status of the Service.
-	Status *ServiceStatus `pulumi:"status"`
+	Statuses []ServiceStatus `pulumi:"statuses"`
 	// template holds the latest specification for the Revision to
 	// be stamped out. The template references the container image, and may also
 	// include labels and annotations that should be attached to the Revision.
@@ -156,7 +156,7 @@ type ServiceState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The current status of the Service.
-	Status ServiceStatusPtrInput
+	Statuses ServiceStatusArrayInput
 	// template holds the latest specification for the Revision to
 	// be stamped out. The template references the container image, and may also
 	// include labels and annotations that should be attached to the Revision.

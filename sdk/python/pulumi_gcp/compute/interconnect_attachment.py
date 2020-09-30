@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -19,7 +19,7 @@ class InterconnectAttachment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_enabled: Optional[pulumi.Input[bool]] = None,
                  bandwidth: Optional[pulumi.Input[str]] = None,
-                 candidate_subnets: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 candidate_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  edge_availability_domain: Optional[pulumi.Input[str]] = None,
                  interconnect: Optional[pulumi.Input[str]] = None,
@@ -28,7 +28,7 @@ class InterconnectAttachment(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 vlan_tag8021q: Optional[pulumi.Input[float]] = None,
+                 vlan_tag8021q: Optional[pulumi.Input[int]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -48,7 +48,7 @@ class InterconnectAttachment(pulumi.CustomResource):
                Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED,
                Defaults to BPS_10G
                Possible values are `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, and `BPS_50G`.
-        :param pulumi.Input[List[pulumi.Input[str]]] candidate_subnets: Up to 16 candidate prefixes that can be used to restrict the allocation
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] candidate_subnets: Up to 16 candidate prefixes that can be used to restrict the allocation
                of cloudRouterIpAddress and customerRouterIpAddress for this attachment.
                All prefixes must be within link-local address space (169.254.0.0/16)
                and must be /29 or shorter (/28, /27, etc). Google will attempt to select
@@ -81,7 +81,7 @@ class InterconnectAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] type: The type of InterconnectAttachment you wish to create. Defaults to
                DEDICATED.
                Possible values are `DEDICATED`, `PARTNER`, and `PARTNER_PROVIDER`.
-        :param pulumi.Input[float] vlan_tag8021q: The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. When
+        :param pulumi.Input[int] vlan_tag8021q: The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. When
                using PARTNER type this will be managed upstream.
         """
         if __name__ is not None:
@@ -121,7 +121,7 @@ class InterconnectAttachment(pulumi.CustomResource):
             __props__['google_reference_id'] = None
             __props__['pairing_key'] = None
             __props__['partner_asn'] = None
-            __props__['private_interconnect_info'] = None
+            __props__['private_interconnect_infos'] = None
             __props__['self_link'] = None
             __props__['state'] = None
         super(InterconnectAttachment, __self__).__init__(
@@ -136,7 +136,7 @@ class InterconnectAttachment(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             admin_enabled: Optional[pulumi.Input[bool]] = None,
             bandwidth: Optional[pulumi.Input[str]] = None,
-            candidate_subnets: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            candidate_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             cloud_router_ip_address: Optional[pulumi.Input[str]] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             customer_router_ip_address: Optional[pulumi.Input[str]] = None,
@@ -147,14 +147,14 @@ class InterconnectAttachment(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             pairing_key: Optional[pulumi.Input[str]] = None,
             partner_asn: Optional[pulumi.Input[str]] = None,
-            private_interconnect_info: Optional[pulumi.Input[pulumi.InputType['InterconnectAttachmentPrivateInterconnectInfoArgs']]] = None,
+            private_interconnect_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InterconnectAttachmentPrivateInterconnectInfoArgs']]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             router: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
-            vlan_tag8021q: Optional[pulumi.Input[float]] = None) -> 'InterconnectAttachment':
+            vlan_tag8021q: Optional[pulumi.Input[int]] = None) -> 'InterconnectAttachment':
         """
         Get an existing InterconnectAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -170,7 +170,7 @@ class InterconnectAttachment(pulumi.CustomResource):
                Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED,
                Defaults to BPS_10G
                Possible values are `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, and `BPS_50G`.
-        :param pulumi.Input[List[pulumi.Input[str]]] candidate_subnets: Up to 16 candidate prefixes that can be used to restrict the allocation
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] candidate_subnets: Up to 16 candidate prefixes that can be used to restrict the allocation
                of cloudRouterIpAddress and customerRouterIpAddress for this attachment.
                All prefixes must be within link-local address space (169.254.0.0/16)
                and must be /29 or shorter (/28, /27, etc). Google will attempt to select
@@ -202,7 +202,7 @@ class InterconnectAttachment(pulumi.CustomResource):
                initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
         :param pulumi.Input[str] partner_asn: [Output only for type PARTNER. Not present for DEDICATED]. Optional BGP ASN for the router that should be supplied by a
                layer 3 Partner if they configured BGP on behalf of the customer.
-        :param pulumi.Input[pulumi.InputType['InterconnectAttachmentPrivateInterconnectInfoArgs']] private_interconnect_info: Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InterconnectAttachmentPrivateInterconnectInfoArgs']]]] private_interconnect_infos: Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached
                to is of type DEDICATED.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -216,7 +216,7 @@ class InterconnectAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] type: The type of InterconnectAttachment you wish to create. Defaults to
                DEDICATED.
                Possible values are `DEDICATED`, `PARTNER`, and `PARTNER_PROVIDER`.
-        :param pulumi.Input[float] vlan_tag8021q: The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. When
+        :param pulumi.Input[int] vlan_tag8021q: The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. When
                using PARTNER type this will be managed upstream.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -236,7 +236,7 @@ class InterconnectAttachment(pulumi.CustomResource):
         __props__["name"] = name
         __props__["pairing_key"] = pairing_key
         __props__["partner_asn"] = partner_asn
-        __props__["private_interconnect_info"] = private_interconnect_info
+        __props__["private_interconnect_infos"] = private_interconnect_infos
         __props__["project"] = project
         __props__["region"] = region
         __props__["router"] = router
@@ -270,7 +270,7 @@ class InterconnectAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="candidateSubnets")
-    def candidate_subnets(self) -> pulumi.Output[Optional[List[str]]]:
+    def candidate_subnets(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         Up to 16 candidate prefixes that can be used to restrict the allocation
         of cloudRouterIpAddress and customerRouterIpAddress for this attachment.
@@ -378,13 +378,13 @@ class InterconnectAttachment(pulumi.CustomResource):
         return pulumi.get(self, "partner_asn")
 
     @property
-    @pulumi.getter(name="privateInterconnectInfo")
-    def private_interconnect_info(self) -> pulumi.Output['outputs.InterconnectAttachmentPrivateInterconnectInfo']:
+    @pulumi.getter(name="privateInterconnectInfos")
+    def private_interconnect_infos(self) -> pulumi.Output[Sequence['outputs.InterconnectAttachmentPrivateInterconnectInfo']]:
         """
         Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached
         to is of type DEDICATED.
         """
-        return pulumi.get(self, "private_interconnect_info")
+        return pulumi.get(self, "private_interconnect_infos")
 
     @property
     @pulumi.getter
@@ -442,7 +442,7 @@ class InterconnectAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vlanTag8021q")
-    def vlan_tag8021q(self) -> pulumi.Output[float]:
+    def vlan_tag8021q(self) -> pulumi.Output[int]:
         """
         The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. When
         using PARTNER type this will be managed upstream.

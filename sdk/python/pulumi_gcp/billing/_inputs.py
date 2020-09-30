@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -99,11 +99,11 @@ class AccountIamMemberConditionArgs:
 @pulumi.input_type
 class BudgetAllUpdatesRuleArgs:
     def __init__(__self__, *,
-                 monitoring_notification_channels: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 monitoring_notification_channels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  pubsub_topic: Optional[pulumi.Input[str]] = None,
                  schema_version: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] monitoring_notification_channels: The full resource name of a monitoring notification
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] monitoring_notification_channels: The full resource name of a monitoring notification
                channel in the form
                projects/{project_id}/notificationChannels/{channel_id}.
                A maximum of 5 channels are allowed.
@@ -124,7 +124,7 @@ class BudgetAllUpdatesRuleArgs:
 
     @property
     @pulumi.getter(name="monitoringNotificationChannels")
-    def monitoring_notification_channels(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def monitoring_notification_channels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The full resource name of a monitoring notification
         channel in the form
@@ -134,7 +134,7 @@ class BudgetAllUpdatesRuleArgs:
         return pulumi.get(self, "monitoring_notification_channels")
 
     @monitoring_notification_channels.setter
-    def monitoring_notification_channels(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def monitoring_notification_channels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "monitoring_notification_channels", value)
 
     @property
@@ -222,11 +222,11 @@ class BudgetAmountArgs:
 class BudgetAmountSpecifiedAmountArgs:
     def __init__(__self__, *,
                  currency_code: Optional[pulumi.Input[str]] = None,
-                 nanos: Optional[pulumi.Input[float]] = None,
+                 nanos: Optional[pulumi.Input[int]] = None,
                  units: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] currency_code: The 3-letter currency code defined in ISO 4217.
-        :param pulumi.Input[float] nanos: Number of nano (10^-9) units of the amount.
+        :param pulumi.Input[int] nanos: Number of nano (10^-9) units of the amount.
                The value must be between -999,999,999 and +999,999,999
                inclusive. If units is positive, nanos must be positive or
                zero. If units is zero, nanos can be positive, zero, or
@@ -257,7 +257,7 @@ class BudgetAmountSpecifiedAmountArgs:
 
     @property
     @pulumi.getter
-    def nanos(self) -> Optional[pulumi.Input[float]]:
+    def nanos(self) -> Optional[pulumi.Input[int]]:
         """
         Number of nano (10^-9) units of the amount.
         The value must be between -999,999,999 and +999,999,999
@@ -270,7 +270,7 @@ class BudgetAmountSpecifiedAmountArgs:
         return pulumi.get(self, "nanos")
 
     @nanos.setter
-    def nanos(self, value: Optional[pulumi.Input[float]]):
+    def nanos(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "nanos", value)
 
     @property
@@ -291,20 +291,20 @@ class BudgetAmountSpecifiedAmountArgs:
 class BudgetBudgetFilterArgs:
     def __init__(__self__, *,
                  credit_types_treatment: Optional[pulumi.Input[str]] = None,
-                 projects: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 services: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] credit_types_treatment: Specifies how credits should be treated when determining spend
                for threshold calculations.
                Default value is `INCLUDE_ALL_CREDITS`.
                Possible values are `INCLUDE_ALL_CREDITS` and `EXCLUDE_ALL_CREDITS`.
-        :param pulumi.Input[List[pulumi.Input[str]]] projects: A set of projects of the form projects/{project_id},
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] projects: A set of projects of the form projects/{project_id},
                specifying that usage from only this set of projects should be
                included in the budget. If omitted, the report will include
                all usage for the billing account, regardless of which project
                the usage occurred on. Only zero or one project can be
                specified currently.
-        :param pulumi.Input[List[pulumi.Input[str]]] services: A set of services of the form services/{service_id},
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] services: A set of services of the form services/{service_id},
                specifying that usage from only this set of services should be
                included in the budget. If omitted, the report will include
                usage for all the services. The service names are available
@@ -335,7 +335,7 @@ class BudgetBudgetFilterArgs:
 
     @property
     @pulumi.getter
-    def projects(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def projects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A set of projects of the form projects/{project_id},
         specifying that usage from only this set of projects should be
@@ -347,12 +347,12 @@ class BudgetBudgetFilterArgs:
         return pulumi.get(self, "projects")
 
     @projects.setter
-    def projects(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def projects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "projects", value)
 
     @property
     @pulumi.getter
-    def services(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A set of services of the form services/{service_id},
         specifying that usage from only this set of services should be
@@ -364,7 +364,7 @@ class BudgetBudgetFilterArgs:
         return pulumi.get(self, "services")
 
     @services.setter
-    def services(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "services", value)
 
 

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -93,7 +93,7 @@ class Job(pulumi.CustomResource):
             __props__['sparksql_config'] = sparksql_config
             __props__['driver_controls_files_uri'] = None
             __props__['driver_output_resource_uri'] = None
-            __props__['status'] = None
+            __props__['statuses'] = None
         super(Job, __self__).__init__(
             'gcp:dataproc/job:Job',
             resource_name,
@@ -119,7 +119,7 @@ class Job(pulumi.CustomResource):
             scheduling: Optional[pulumi.Input[pulumi.InputType['JobSchedulingArgs']]] = None,
             spark_config: Optional[pulumi.Input[pulumi.InputType['JobSparkConfigArgs']]] = None,
             sparksql_config: Optional[pulumi.Input[pulumi.InputType['JobSparksqlConfigArgs']]] = None,
-            status: Optional[pulumi.Input[pulumi.InputType['JobStatusArgs']]] = None) -> 'Job':
+            statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobStatusArgs']]]]] = None) -> 'Job':
         """
         Get an existing Job resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -146,7 +146,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['JobSchedulingArgs']] scheduling: Optional. Job scheduling configuration.
         :param pulumi.Input[pulumi.InputType['JobSparkConfigArgs']] spark_config: The config of the Spark job.
         :param pulumi.Input[pulumi.InputType['JobSparksqlConfigArgs']] sparksql_config: The config of SparkSql job
-        :param pulumi.Input[pulumi.InputType['JobStatusArgs']] status: The status of the job.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobStatusArgs']]]] statuses: The status of the job.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -167,7 +167,7 @@ class Job(pulumi.CustomResource):
         __props__["scheduling"] = scheduling
         __props__["spark_config"] = spark_config
         __props__["sparksql_config"] = sparksql_config
-        __props__["status"] = status
+        __props__["statuses"] = statuses
         return Job(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -296,11 +296,11 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> pulumi.Output['outputs.JobStatus']:
+    def statuses(self) -> pulumi.Output[Sequence['outputs.JobStatus']]:
         """
         The status of the job.
         """
-        return pulumi.get(self, "status")
+        return pulumi.get(self, "statuses")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

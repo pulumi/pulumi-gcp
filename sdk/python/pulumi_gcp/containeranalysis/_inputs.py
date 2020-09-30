@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -120,11 +120,11 @@ class NoteRelatedUrlArgs:
 class OccurenceAttestationArgs:
     def __init__(__self__, *,
                  serialized_payload: pulumi.Input[str],
-                 signatures: pulumi.Input[List[pulumi.Input['OccurenceAttestationSignatureArgs']]]):
+                 signatures: pulumi.Input[Sequence[pulumi.Input['OccurenceAttestationSignatureArgs']]]):
         """
         :param pulumi.Input[str] serialized_payload: The serialized payload that is verified by one or
                more signatures. A base64-encoded string.
-        :param pulumi.Input[List[pulumi.Input['OccurenceAttestationSignatureArgs']]] signatures: One or more signatures over serializedPayload.
+        :param pulumi.Input[Sequence[pulumi.Input['OccurenceAttestationSignatureArgs']]] signatures: One or more signatures over serializedPayload.
                Verifier implementations should consider this attestation
                message verified if at least one signature verifies
                serializedPayload. See Signature in common.proto for more
@@ -149,7 +149,7 @@ class OccurenceAttestationArgs:
 
     @property
     @pulumi.getter
-    def signatures(self) -> pulumi.Input[List[pulumi.Input['OccurenceAttestationSignatureArgs']]]:
+    def signatures(self) -> pulumi.Input[Sequence[pulumi.Input['OccurenceAttestationSignatureArgs']]]:
         """
         One or more signatures over serializedPayload.
         Verifier implementations should consider this attestation
@@ -161,7 +161,7 @@ class OccurenceAttestationArgs:
         return pulumi.get(self, "signatures")
 
     @signatures.setter
-    def signatures(self, value: pulumi.Input[List[pulumi.Input['OccurenceAttestationSignatureArgs']]]):
+    def signatures(self, value: pulumi.Input[Sequence[pulumi.Input['OccurenceAttestationSignatureArgs']]]):
         pulumi.set(self, "signatures", value)
 
 

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -54,10 +54,10 @@ class AccessApprovalSettingsEnrolledService(dict):
 class IAMAuditConfigAuditLogConfig(dict):
     def __init__(__self__, *,
                  log_type: str,
-                 exempted_members: Optional[List[str]] = None):
+                 exempted_members: Optional[Sequence[str]] = None):
         """
         :param str log_type: Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
-        :param List[str] exempted_members: Identities that do not cause logging for this type of permission.  The format is the same as that for `members`.
+        :param Sequence[str] exempted_members: Identities that do not cause logging for this type of permission.  The format is the same as that for `members`.
         """
         pulumi.set(__self__, "log_type", log_type)
         if exempted_members is not None:
@@ -73,7 +73,7 @@ class IAMAuditConfigAuditLogConfig(dict):
 
     @property
     @pulumi.getter(name="exemptedMembers")
-    def exempted_members(self) -> Optional[List[str]]:
+    def exempted_members(self) -> Optional[Sequence[str]]:
         """
         Identities that do not cause logging for this type of permission.  The format is the same as that for `members`.
         """
@@ -252,10 +252,10 @@ class OrganizationPolicyListPolicy(dict):
 class OrganizationPolicyListPolicyAllow(dict):
     def __init__(__self__, *,
                  all: Optional[bool] = None,
-                 values: Optional[List[str]] = None):
+                 values: Optional[Sequence[str]] = None):
         """
         :param bool all: The policy allows or denies all values.
-        :param List[str] values: The policy can define specific values that are allowed or denied.
+        :param Sequence[str] values: The policy can define specific values that are allowed or denied.
         """
         if all is not None:
             pulumi.set(__self__, "all", all)
@@ -272,7 +272,7 @@ class OrganizationPolicyListPolicyAllow(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> Optional[List[str]]:
+    def values(self) -> Optional[Sequence[str]]:
         """
         The policy can define specific values that are allowed or denied.
         """
@@ -286,10 +286,10 @@ class OrganizationPolicyListPolicyAllow(dict):
 class OrganizationPolicyListPolicyDeny(dict):
     def __init__(__self__, *,
                  all: Optional[bool] = None,
-                 values: Optional[List[str]] = None):
+                 values: Optional[Sequence[str]] = None):
         """
         :param bool all: The policy allows or denies all values.
-        :param List[str] values: The policy can define specific values that are allowed or denied.
+        :param Sequence[str] values: The policy can define specific values that are allowed or denied.
         """
         if all is not None:
             pulumi.set(__self__, "all", all)
@@ -306,7 +306,7 @@ class OrganizationPolicyListPolicyDeny(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> Optional[List[str]]:
+    def values(self) -> Optional[Sequence[str]]:
         """
         The policy can define specific values that are allowed or denied.
         """
@@ -352,8 +352,8 @@ class GetOrganizationPolicyBooleanPolicyResult(dict):
 @pulumi.output_type
 class GetOrganizationPolicyListPolicyResult(dict):
     def __init__(__self__, *,
-                 allows: List['outputs.GetOrganizationPolicyListPolicyAllowResult'],
-                 denies: List['outputs.GetOrganizationPolicyListPolicyDenyResult'],
+                 allows: Sequence['outputs.GetOrganizationPolicyListPolicyAllowResult'],
+                 denies: Sequence['outputs.GetOrganizationPolicyListPolicyDenyResult'],
                  inherit_from_parent: bool,
                  suggested_value: str):
         pulumi.set(__self__, "allows", allows)
@@ -363,12 +363,12 @@ class GetOrganizationPolicyListPolicyResult(dict):
 
     @property
     @pulumi.getter
-    def allows(self) -> List['outputs.GetOrganizationPolicyListPolicyAllowResult']:
+    def allows(self) -> Sequence['outputs.GetOrganizationPolicyListPolicyAllowResult']:
         return pulumi.get(self, "allows")
 
     @property
     @pulumi.getter
-    def denies(self) -> List['outputs.GetOrganizationPolicyListPolicyDenyResult']:
+    def denies(self) -> Sequence['outputs.GetOrganizationPolicyListPolicyDenyResult']:
         return pulumi.get(self, "denies")
 
     @property
@@ -386,7 +386,7 @@ class GetOrganizationPolicyListPolicyResult(dict):
 class GetOrganizationPolicyListPolicyAllowResult(dict):
     def __init__(__self__, *,
                  all: bool,
-                 values: List[str]):
+                 values: Sequence[str]):
         pulumi.set(__self__, "all", all)
         pulumi.set(__self__, "values", values)
 
@@ -397,7 +397,7 @@ class GetOrganizationPolicyListPolicyAllowResult(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         return pulumi.get(self, "values")
 
 
@@ -405,7 +405,7 @@ class GetOrganizationPolicyListPolicyAllowResult(dict):
 class GetOrganizationPolicyListPolicyDenyResult(dict):
     def __init__(__self__, *,
                  all: bool,
-                 values: List[str]):
+                 values: Sequence[str]):
         pulumi.set(__self__, "all", all)
         pulumi.set(__self__, "values", values)
 
@@ -416,7 +416,7 @@ class GetOrganizationPolicyListPolicyDenyResult(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         return pulumi.get(self, "values")
 
 

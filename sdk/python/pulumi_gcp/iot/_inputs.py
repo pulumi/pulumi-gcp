@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -16,11 +16,7 @@ __all__ = [
     'DeviceLastErrorStatusArgs',
     'DeviceStateArgs',
     'RegistryCredentialArgs',
-    'RegistryCredentialPublicKeyCertificateArgs',
     'RegistryEventNotificationConfigItemArgs',
-    'RegistryHttpConfigArgs',
-    'RegistryMqttConfigArgs',
-    'RegistryStateNotificationConfigArgs',
 ]
 
 @pulumi.input_type
@@ -239,9 +235,9 @@ class DeviceGatewayConfigArgs:
 @pulumi.input_type
 class DeviceLastErrorStatusArgs:
     def __init__(__self__, *,
-                 details: Optional[pulumi.Input[List[pulumi.Input[Mapping[str, Any]]]]] = None,
+                 details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
                  message: Optional[pulumi.Input[str]] = None,
-                 number: Optional[pulumi.Input[float]] = None):
+                 number: Optional[pulumi.Input[int]] = None):
         if details is not None:
             pulumi.set(__self__, "details", details)
         if message is not None:
@@ -251,11 +247,11 @@ class DeviceLastErrorStatusArgs:
 
     @property
     @pulumi.getter
-    def details(self) -> Optional[pulumi.Input[List[pulumi.Input[Mapping[str, Any]]]]]:
+    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]:
         return pulumi.get(self, "details")
 
     @details.setter
-    def details(self, value: Optional[pulumi.Input[List[pulumi.Input[Mapping[str, Any]]]]]):
+    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]):
         pulumi.set(self, "details", value)
 
     @property
@@ -269,11 +265,11 @@ class DeviceLastErrorStatusArgs:
 
     @property
     @pulumi.getter
-    def number(self) -> Optional[pulumi.Input[float]]:
+    def number(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "number")
 
     @number.setter
-    def number(self, value: Optional[pulumi.Input[float]]):
+    def number(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "number", value)
 
 
@@ -309,60 +305,23 @@ class DeviceStateArgs:
 @pulumi.input_type
 class RegistryCredentialArgs:
     def __init__(__self__, *,
-                 public_key_certificate: pulumi.Input['RegistryCredentialPublicKeyCertificateArgs']):
+                 public_key_certificate: pulumi.Input[Mapping[str, Any]]):
         """
-        :param pulumi.Input['RegistryCredentialPublicKeyCertificateArgs'] public_key_certificate: A public key certificate format and data.
+        :param pulumi.Input[Mapping[str, Any]] public_key_certificate: A public key certificate format and data.
         """
         pulumi.set(__self__, "public_key_certificate", public_key_certificate)
 
     @property
     @pulumi.getter(name="publicKeyCertificate")
-    def public_key_certificate(self) -> pulumi.Input['RegistryCredentialPublicKeyCertificateArgs']:
+    def public_key_certificate(self) -> pulumi.Input[Mapping[str, Any]]:
         """
         A public key certificate format and data.
         """
         return pulumi.get(self, "public_key_certificate")
 
     @public_key_certificate.setter
-    def public_key_certificate(self, value: pulumi.Input['RegistryCredentialPublicKeyCertificateArgs']):
+    def public_key_certificate(self, value: pulumi.Input[Mapping[str, Any]]):
         pulumi.set(self, "public_key_certificate", value)
-
-
-@pulumi.input_type
-class RegistryCredentialPublicKeyCertificateArgs:
-    def __init__(__self__, *,
-                 certificate: pulumi.Input[str],
-                 format: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] certificate: The certificate data.
-        :param pulumi.Input[str] format: The field allows only `X509_CERTIFICATE_PEM`.
-        """
-        pulumi.set(__self__, "certificate", certificate)
-        pulumi.set(__self__, "format", format)
-
-    @property
-    @pulumi.getter
-    def certificate(self) -> pulumi.Input[str]:
-        """
-        The certificate data.
-        """
-        return pulumi.get(self, "certificate")
-
-    @certificate.setter
-    def certificate(self, value: pulumi.Input[str]):
-        pulumi.set(self, "certificate", value)
-
-    @property
-    @pulumi.getter
-    def format(self) -> pulumi.Input[str]:
-        """
-        The field allows only `X509_CERTIFICATE_PEM`.
-        """
-        return pulumi.get(self, "format")
-
-    @format.setter
-    def format(self, value: pulumi.Input[str]):
-        pulumi.set(self, "format", value)
 
 
 @pulumi.input_type
@@ -409,71 +368,5 @@ class RegistryEventNotificationConfigItemArgs:
     @subfolder_matches.setter
     def subfolder_matches(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "subfolder_matches", value)
-
-
-@pulumi.input_type
-class RegistryHttpConfigArgs:
-    def __init__(__self__, *,
-                 http_enabled_state: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] http_enabled_state: The field allows `HTTP_ENABLED` or `HTTP_DISABLED`.
-        """
-        pulumi.set(__self__, "http_enabled_state", http_enabled_state)
-
-    @property
-    @pulumi.getter(name="httpEnabledState")
-    def http_enabled_state(self) -> pulumi.Input[str]:
-        """
-        The field allows `HTTP_ENABLED` or `HTTP_DISABLED`.
-        """
-        return pulumi.get(self, "http_enabled_state")
-
-    @http_enabled_state.setter
-    def http_enabled_state(self, value: pulumi.Input[str]):
-        pulumi.set(self, "http_enabled_state", value)
-
-
-@pulumi.input_type
-class RegistryMqttConfigArgs:
-    def __init__(__self__, *,
-                 mqtt_enabled_state: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] mqtt_enabled_state: The field allows `MQTT_ENABLED` or `MQTT_DISABLED`.
-        """
-        pulumi.set(__self__, "mqtt_enabled_state", mqtt_enabled_state)
-
-    @property
-    @pulumi.getter(name="mqttEnabledState")
-    def mqtt_enabled_state(self) -> pulumi.Input[str]:
-        """
-        The field allows `MQTT_ENABLED` or `MQTT_DISABLED`.
-        """
-        return pulumi.get(self, "mqtt_enabled_state")
-
-    @mqtt_enabled_state.setter
-    def mqtt_enabled_state(self, value: pulumi.Input[str]):
-        pulumi.set(self, "mqtt_enabled_state", value)
-
-
-@pulumi.input_type
-class RegistryStateNotificationConfigArgs:
-    def __init__(__self__, *,
-                 pubsub_topic_name: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] pubsub_topic_name: PubSub topic name to publish device events.
-        """
-        pulumi.set(__self__, "pubsub_topic_name", pubsub_topic_name)
-
-    @property
-    @pulumi.getter(name="pubsubTopicName")
-    def pubsub_topic_name(self) -> pulumi.Input[str]:
-        """
-        PubSub topic name to publish device events.
-        """
-        return pulumi.get(self, "pubsub_topic_name")
-
-    @pubsub_topic_name.setter
-    def pubsub_topic_name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "pubsub_topic_name", value)
 
 

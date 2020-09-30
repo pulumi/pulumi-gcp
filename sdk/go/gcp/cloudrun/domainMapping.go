@@ -36,7 +36,7 @@ type DomainMapping struct {
 	// Structure is documented below.
 	Spec DomainMappingSpecOutput `pulumi:"spec"`
 	// The current status of the DomainMapping.
-	Status DomainMappingStatusOutput `pulumi:"status"`
+	Statuses DomainMappingStatusArrayOutput `pulumi:"statuses"`
 }
 
 // NewDomainMapping registers a new resource with the given unique name, arguments, and options.
@@ -90,7 +90,7 @@ type domainMappingState struct {
 	// Structure is documented below.
 	Spec *DomainMappingSpec `pulumi:"spec"`
 	// The current status of the DomainMapping.
-	Status *DomainMappingStatus `pulumi:"status"`
+	Statuses []DomainMappingStatus `pulumi:"statuses"`
 }
 
 type DomainMappingState struct {
@@ -108,7 +108,7 @@ type DomainMappingState struct {
 	// Structure is documented below.
 	Spec DomainMappingSpecPtrInput
 	// The current status of the DomainMapping.
-	Status DomainMappingStatusPtrInput
+	Statuses DomainMappingStatusArrayInput
 }
 
 func (DomainMappingState) ElementType() reflect.Type {

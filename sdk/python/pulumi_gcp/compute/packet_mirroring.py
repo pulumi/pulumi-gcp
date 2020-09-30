@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -23,7 +23,7 @@ class PacketMirroring(pulumi.CustomResource):
                  mirrored_resources: Optional[pulumi.Input[pulumi.InputType['PacketMirroringMirroredResourcesArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[pulumi.InputType['PacketMirroringNetworkArgs']]] = None,
-                 priority: Optional[pulumi.Input[float]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -59,7 +59,7 @@ class PacketMirroring(pulumi.CustomResource):
                will be mirrored. All mirrored VMs should have a NIC in the given
                network. All mirrored subnetworks should belong to the given network.
                Structure is documented below.
-        :param pulumi.Input[float] priority: Since only one rule can be active at a time, priority is
+        :param pulumi.Input[int] priority: Since only one rule can be active at a time, priority is
                used to break ties in the case of two rules that apply to
                the same instances.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -115,7 +115,7 @@ class PacketMirroring(pulumi.CustomResource):
             mirrored_resources: Optional[pulumi.Input[pulumi.InputType['PacketMirroringMirroredResourcesArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[pulumi.InputType['PacketMirroringNetworkArgs']]] = None,
-            priority: Optional[pulumi.Input[float]] = None,
+            priority: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None) -> 'PacketMirroring':
         """
@@ -140,7 +140,7 @@ class PacketMirroring(pulumi.CustomResource):
                will be mirrored. All mirrored VMs should have a NIC in the given
                network. All mirrored subnetworks should belong to the given network.
                Structure is documented below.
-        :param pulumi.Input[float] priority: Since only one rule can be active at a time, priority is
+        :param pulumi.Input[int] priority: Since only one rule can be active at a time, priority is
                used to break ties in the case of two rules that apply to
                the same instances.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -222,7 +222,7 @@ class PacketMirroring(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def priority(self) -> pulumi.Output[float]:
+    def priority(self) -> pulumi.Output[int]:
         """
         Since only one rule can be active at a time, priority is
         used to break ties in the case of two rules that apply to

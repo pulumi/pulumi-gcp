@@ -2546,45 +2546,29 @@ func (i AlertPolicyCreationRecordArgs) ToAlertPolicyCreationRecordOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyCreationRecordOutput)
 }
 
-func (i AlertPolicyCreationRecordArgs) ToAlertPolicyCreationRecordPtrOutput() AlertPolicyCreationRecordPtrOutput {
-	return i.ToAlertPolicyCreationRecordPtrOutputWithContext(context.Background())
-}
-
-func (i AlertPolicyCreationRecordArgs) ToAlertPolicyCreationRecordPtrOutputWithContext(ctx context.Context) AlertPolicyCreationRecordPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyCreationRecordOutput).ToAlertPolicyCreationRecordPtrOutputWithContext(ctx)
-}
-
-// AlertPolicyCreationRecordPtrInput is an input type that accepts AlertPolicyCreationRecordArgs, AlertPolicyCreationRecordPtr and AlertPolicyCreationRecordPtrOutput values.
-// You can construct a concrete instance of `AlertPolicyCreationRecordPtrInput` via:
+// AlertPolicyCreationRecordArrayInput is an input type that accepts AlertPolicyCreationRecordArray and AlertPolicyCreationRecordArrayOutput values.
+// You can construct a concrete instance of `AlertPolicyCreationRecordArrayInput` via:
 //
-//          AlertPolicyCreationRecordArgs{...}
-//
-//  or:
-//
-//          nil
-type AlertPolicyCreationRecordPtrInput interface {
+//          AlertPolicyCreationRecordArray{ AlertPolicyCreationRecordArgs{...} }
+type AlertPolicyCreationRecordArrayInput interface {
 	pulumi.Input
 
-	ToAlertPolicyCreationRecordPtrOutput() AlertPolicyCreationRecordPtrOutput
-	ToAlertPolicyCreationRecordPtrOutputWithContext(context.Context) AlertPolicyCreationRecordPtrOutput
+	ToAlertPolicyCreationRecordArrayOutput() AlertPolicyCreationRecordArrayOutput
+	ToAlertPolicyCreationRecordArrayOutputWithContext(context.Context) AlertPolicyCreationRecordArrayOutput
 }
 
-type alertPolicyCreationRecordPtrType AlertPolicyCreationRecordArgs
+type AlertPolicyCreationRecordArray []AlertPolicyCreationRecordInput
 
-func AlertPolicyCreationRecordPtr(v *AlertPolicyCreationRecordArgs) AlertPolicyCreationRecordPtrInput {
-	return (*alertPolicyCreationRecordPtrType)(v)
+func (AlertPolicyCreationRecordArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertPolicyCreationRecord)(nil)).Elem()
 }
 
-func (*alertPolicyCreationRecordPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AlertPolicyCreationRecord)(nil)).Elem()
+func (i AlertPolicyCreationRecordArray) ToAlertPolicyCreationRecordArrayOutput() AlertPolicyCreationRecordArrayOutput {
+	return i.ToAlertPolicyCreationRecordArrayOutputWithContext(context.Background())
 }
 
-func (i *alertPolicyCreationRecordPtrType) ToAlertPolicyCreationRecordPtrOutput() AlertPolicyCreationRecordPtrOutput {
-	return i.ToAlertPolicyCreationRecordPtrOutputWithContext(context.Background())
-}
-
-func (i *alertPolicyCreationRecordPtrType) ToAlertPolicyCreationRecordPtrOutputWithContext(ctx context.Context) AlertPolicyCreationRecordPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyCreationRecordPtrOutput)
+func (i AlertPolicyCreationRecordArray) ToAlertPolicyCreationRecordArrayOutputWithContext(ctx context.Context) AlertPolicyCreationRecordArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyCreationRecordArrayOutput)
 }
 
 type AlertPolicyCreationRecordOutput struct{ *pulumi.OutputState }
@@ -2601,15 +2585,6 @@ func (o AlertPolicyCreationRecordOutput) ToAlertPolicyCreationRecordOutputWithCo
 	return o
 }
 
-func (o AlertPolicyCreationRecordOutput) ToAlertPolicyCreationRecordPtrOutput() AlertPolicyCreationRecordPtrOutput {
-	return o.ToAlertPolicyCreationRecordPtrOutputWithContext(context.Background())
-}
-
-func (o AlertPolicyCreationRecordOutput) ToAlertPolicyCreationRecordPtrOutputWithContext(ctx context.Context) AlertPolicyCreationRecordPtrOutput {
-	return o.ApplyT(func(v AlertPolicyCreationRecord) *AlertPolicyCreationRecord {
-		return &v
-	}).(AlertPolicyCreationRecordPtrOutput)
-}
 func (o AlertPolicyCreationRecordOutput) MutateTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertPolicyCreationRecord) *string { return v.MutateTime }).(pulumi.StringPtrOutput)
 }
@@ -2618,40 +2593,24 @@ func (o AlertPolicyCreationRecordOutput) MutatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertPolicyCreationRecord) *string { return v.MutatedBy }).(pulumi.StringPtrOutput)
 }
 
-type AlertPolicyCreationRecordPtrOutput struct{ *pulumi.OutputState }
+type AlertPolicyCreationRecordArrayOutput struct{ *pulumi.OutputState }
 
-func (AlertPolicyCreationRecordPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AlertPolicyCreationRecord)(nil)).Elem()
+func (AlertPolicyCreationRecordArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertPolicyCreationRecord)(nil)).Elem()
 }
 
-func (o AlertPolicyCreationRecordPtrOutput) ToAlertPolicyCreationRecordPtrOutput() AlertPolicyCreationRecordPtrOutput {
+func (o AlertPolicyCreationRecordArrayOutput) ToAlertPolicyCreationRecordArrayOutput() AlertPolicyCreationRecordArrayOutput {
 	return o
 }
 
-func (o AlertPolicyCreationRecordPtrOutput) ToAlertPolicyCreationRecordPtrOutputWithContext(ctx context.Context) AlertPolicyCreationRecordPtrOutput {
+func (o AlertPolicyCreationRecordArrayOutput) ToAlertPolicyCreationRecordArrayOutputWithContext(ctx context.Context) AlertPolicyCreationRecordArrayOutput {
 	return o
 }
 
-func (o AlertPolicyCreationRecordPtrOutput) Elem() AlertPolicyCreationRecordOutput {
-	return o.ApplyT(func(v *AlertPolicyCreationRecord) AlertPolicyCreationRecord { return *v }).(AlertPolicyCreationRecordOutput)
-}
-
-func (o AlertPolicyCreationRecordPtrOutput) MutateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AlertPolicyCreationRecord) *string {
-		if v == nil {
-			return nil
-		}
-		return v.MutateTime
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o AlertPolicyCreationRecordPtrOutput) MutatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AlertPolicyCreationRecord) *string {
-		if v == nil {
-			return nil
-		}
-		return v.MutatedBy
-	}).(pulumi.StringPtrOutput)
+func (o AlertPolicyCreationRecordArrayOutput) Index(i pulumi.IntInput) AlertPolicyCreationRecordOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertPolicyCreationRecord {
+		return vs[0].([]AlertPolicyCreationRecord)[vs[1].(int)]
+	}).(AlertPolicyCreationRecordOutput)
 }
 
 type AlertPolicyDocumentation struct {
@@ -8367,7 +8326,7 @@ func init() {
 	pulumi.RegisterOutputType(AlertPolicyConditionConditionThresholdTriggerOutput{})
 	pulumi.RegisterOutputType(AlertPolicyConditionConditionThresholdTriggerPtrOutput{})
 	pulumi.RegisterOutputType(AlertPolicyCreationRecordOutput{})
-	pulumi.RegisterOutputType(AlertPolicyCreationRecordPtrOutput{})
+	pulumi.RegisterOutputType(AlertPolicyCreationRecordArrayOutput{})
 	pulumi.RegisterOutputType(AlertPolicyDocumentationOutput{})
 	pulumi.RegisterOutputType(AlertPolicyDocumentationPtrOutput{})
 	pulumi.RegisterOutputType(CustomServiceTelemetryOutput{})

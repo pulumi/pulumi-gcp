@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -17,11 +17,7 @@ __all__ = [
     'DeviceLastErrorStatus',
     'DeviceState',
     'RegistryCredential',
-    'RegistryCredentialPublicKeyCertificate',
     'RegistryEventNotificationConfigItem',
-    'RegistryHttpConfig',
-    'RegistryMqttConfig',
-    'RegistryStateNotificationConfig',
 ]
 
 @pulumi.output_type
@@ -204,9 +200,9 @@ class DeviceGatewayConfig(dict):
 @pulumi.output_type
 class DeviceLastErrorStatus(dict):
     def __init__(__self__, *,
-                 details: Optional[List[Mapping[str, Any]]] = None,
+                 details: Optional[Sequence[Mapping[str, Any]]] = None,
                  message: Optional[str] = None,
-                 number: Optional[float] = None):
+                 number: Optional[int] = None):
         if details is not None:
             pulumi.set(__self__, "details", details)
         if message is not None:
@@ -216,7 +212,7 @@ class DeviceLastErrorStatus(dict):
 
     @property
     @pulumi.getter
-    def details(self) -> Optional[List[Mapping[str, Any]]]:
+    def details(self) -> Optional[Sequence[Mapping[str, Any]]]:
         return pulumi.get(self, "details")
 
     @property
@@ -226,7 +222,7 @@ class DeviceLastErrorStatus(dict):
 
     @property
     @pulumi.getter
-    def number(self) -> Optional[float]:
+    def number(self) -> Optional[int]:
         return pulumi.get(self, "number")
 
     def _translate_property(self, prop):
@@ -260,51 +256,19 @@ class DeviceState(dict):
 @pulumi.output_type
 class RegistryCredential(dict):
     def __init__(__self__, *,
-                 public_key_certificate: 'outputs.RegistryCredentialPublicKeyCertificate'):
+                 public_key_certificate: Mapping[str, Any]):
         """
-        :param 'RegistryCredentialPublicKeyCertificateArgs' public_key_certificate: A public key certificate format and data.
+        :param Mapping[str, Any] public_key_certificate: A public key certificate format and data.
         """
         pulumi.set(__self__, "public_key_certificate", public_key_certificate)
 
     @property
     @pulumi.getter(name="publicKeyCertificate")
-    def public_key_certificate(self) -> 'outputs.RegistryCredentialPublicKeyCertificate':
+    def public_key_certificate(self) -> Mapping[str, Any]:
         """
         A public key certificate format and data.
         """
         return pulumi.get(self, "public_key_certificate")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-
-@pulumi.output_type
-class RegistryCredentialPublicKeyCertificate(dict):
-    def __init__(__self__, *,
-                 certificate: str,
-                 format: str):
-        """
-        :param str certificate: The certificate data.
-        :param str format: The field allows only `X509_CERTIFICATE_PEM`.
-        """
-        pulumi.set(__self__, "certificate", certificate)
-        pulumi.set(__self__, "format", format)
-
-    @property
-    @pulumi.getter
-    def certificate(self) -> str:
-        """
-        The certificate data.
-        """
-        return pulumi.get(self, "certificate")
-
-    @property
-    @pulumi.getter
-    def format(self) -> str:
-        """
-        The field allows only `X509_CERTIFICATE_PEM`.
-        """
-        return pulumi.get(self, "format")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -346,69 +310,6 @@ class RegistryEventNotificationConfigItem(dict):
         item.
         """
         return pulumi.get(self, "subfolder_matches")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-
-@pulumi.output_type
-class RegistryHttpConfig(dict):
-    def __init__(__self__, *,
-                 http_enabled_state: str):
-        """
-        :param str http_enabled_state: The field allows `HTTP_ENABLED` or `HTTP_DISABLED`.
-        """
-        pulumi.set(__self__, "http_enabled_state", http_enabled_state)
-
-    @property
-    @pulumi.getter(name="httpEnabledState")
-    def http_enabled_state(self) -> str:
-        """
-        The field allows `HTTP_ENABLED` or `HTTP_DISABLED`.
-        """
-        return pulumi.get(self, "http_enabled_state")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-
-@pulumi.output_type
-class RegistryMqttConfig(dict):
-    def __init__(__self__, *,
-                 mqtt_enabled_state: str):
-        """
-        :param str mqtt_enabled_state: The field allows `MQTT_ENABLED` or `MQTT_DISABLED`.
-        """
-        pulumi.set(__self__, "mqtt_enabled_state", mqtt_enabled_state)
-
-    @property
-    @pulumi.getter(name="mqttEnabledState")
-    def mqtt_enabled_state(self) -> str:
-        """
-        The field allows `MQTT_ENABLED` or `MQTT_DISABLED`.
-        """
-        return pulumi.get(self, "mqtt_enabled_state")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-
-@pulumi.output_type
-class RegistryStateNotificationConfig(dict):
-    def __init__(__self__, *,
-                 pubsub_topic_name: str):
-        """
-        :param str pubsub_topic_name: PubSub topic name to publish device events.
-        """
-        pulumi.set(__self__, "pubsub_topic_name", pubsub_topic_name)
-
-    @property
-    @pulumi.getter(name="pubsubTopicName")
-    def pubsub_topic_name(self) -> str:
-        """
-        PubSub topic name to publish device events.
-        """
-        return pulumi.get(self, "pubsub_topic_name")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

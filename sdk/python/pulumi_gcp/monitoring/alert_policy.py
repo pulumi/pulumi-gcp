@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,11 +18,11 @@ class AlertPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  combiner: Optional[pulumi.Input[str]] = None,
-                 conditions: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['AlertPolicyConditionArgs']]]]] = None,
+                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertPolicyConditionArgs']]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  documentation: Optional[pulumi.Input[pulumi.InputType['AlertPolicyDocumentationArgs']]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 notification_channels: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 notification_channels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None,
@@ -46,7 +46,7 @@ class AlertPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] combiner: How to combine the results of multiple conditions to
                determine if an incident should be opened.
                Possible values are `AND`, `OR`, and `AND_WITH_MATCHING_RESOURCE`.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['AlertPolicyConditionArgs']]]] conditions: A list of conditions for the policy. The conditions are combined by
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertPolicyConditionArgs']]]] conditions: A list of conditions for the policy. The conditions are combined by
                AND or OR according to the combiner field. If the combined conditions
                evaluate to true, then an incident is created. A policy can have from
                one to six conditions.
@@ -62,7 +62,7 @@ class AlertPolicy(pulumi.CustomResource):
                limited to 512 Unicode characters.
                Structure is documented below.
         :param pulumi.Input[bool] enabled: Whether or not the policy is enabled. The default is true.
-        :param pulumi.Input[List[pulumi.Input[str]]] notification_channels: Identifies the notification channels to which notifications should be
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_channels: Identifies the notification channels to which notifications should be
                sent when incidents are opened or closed or when new violations occur
                on an already opened incident. Each element of this array corresponds
                to the name field in each of the NotificationChannel objects that are
@@ -108,7 +108,7 @@ class AlertPolicy(pulumi.CustomResource):
             __props__['notification_channels'] = notification_channels
             __props__['project'] = project
             __props__['user_labels'] = user_labels
-            __props__['creation_record'] = None
+            __props__['creation_records'] = None
             __props__['name'] = None
         super(AlertPolicy, __self__).__init__(
             'gcp:monitoring/alertPolicy:AlertPolicy',
@@ -121,13 +121,13 @@ class AlertPolicy(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             combiner: Optional[pulumi.Input[str]] = None,
-            conditions: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['AlertPolicyConditionArgs']]]]] = None,
-            creation_record: Optional[pulumi.Input[pulumi.InputType['AlertPolicyCreationRecordArgs']]] = None,
+            conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertPolicyConditionArgs']]]]] = None,
+            creation_records: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertPolicyCreationRecordArgs']]]]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             documentation: Optional[pulumi.Input[pulumi.InputType['AlertPolicyDocumentationArgs']]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            notification_channels: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            notification_channels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
             user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'AlertPolicy':
         """
@@ -140,12 +140,12 @@ class AlertPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] combiner: How to combine the results of multiple conditions to
                determine if an incident should be opened.
                Possible values are `AND`, `OR`, and `AND_WITH_MATCHING_RESOURCE`.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['AlertPolicyConditionArgs']]]] conditions: A list of conditions for the policy. The conditions are combined by
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertPolicyConditionArgs']]]] conditions: A list of conditions for the policy. The conditions are combined by
                AND or OR according to the combiner field. If the combined conditions
                evaluate to true, then an incident is created. A policy can have from
                one to six conditions.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['AlertPolicyCreationRecordArgs']] creation_record: A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertPolicyCreationRecordArgs']]]] creation_records: A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be
                ignored.
         :param pulumi.Input[str] display_name: A short name or phrase used to identify the
                condition in dashboards, notifications, and
@@ -165,7 +165,7 @@ class AlertPolicy(pulumi.CustomResource):
                [CONDITION_ID] is assigned by Stackdriver Monitoring when
                the condition is created as part of a new or updated alerting
                policy.
-        :param pulumi.Input[List[pulumi.Input[str]]] notification_channels: Identifies the notification channels to which notifications should be
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_channels: Identifies the notification channels to which notifications should be
                sent when incidents are opened or closed or when new violations occur
                on an already opened incident. Each element of this array corresponds
                to the name field in each of the NotificationChannel objects that are
@@ -186,7 +186,7 @@ class AlertPolicy(pulumi.CustomResource):
 
         __props__["combiner"] = combiner
         __props__["conditions"] = conditions
-        __props__["creation_record"] = creation_record
+        __props__["creation_records"] = creation_records
         __props__["display_name"] = display_name
         __props__["documentation"] = documentation
         __props__["enabled"] = enabled
@@ -208,7 +208,7 @@ class AlertPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def conditions(self) -> pulumi.Output[List['outputs.AlertPolicyCondition']]:
+    def conditions(self) -> pulumi.Output[Sequence['outputs.AlertPolicyCondition']]:
         """
         A list of conditions for the policy. The conditions are combined by
         AND or OR according to the combiner field. If the combined conditions
@@ -219,13 +219,13 @@ class AlertPolicy(pulumi.CustomResource):
         return pulumi.get(self, "conditions")
 
     @property
-    @pulumi.getter(name="creationRecord")
-    def creation_record(self) -> pulumi.Output['outputs.AlertPolicyCreationRecord']:
+    @pulumi.getter(name="creationRecords")
+    def creation_records(self) -> pulumi.Output[Sequence['outputs.AlertPolicyCreationRecord']]:
         """
         A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be
         ignored.
         """
-        return pulumi.get(self, "creation_record")
+        return pulumi.get(self, "creation_records")
 
     @property
     @pulumi.getter(name="displayName")
@@ -275,7 +275,7 @@ class AlertPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="notificationChannels")
-    def notification_channels(self) -> pulumi.Output[Optional[List[str]]]:
+    def notification_channels(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         Identifies the notification channels to which notifications should be
         sent when incidents are opened or closed or when new violations occur

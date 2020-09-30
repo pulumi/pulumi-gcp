@@ -86,8 +86,8 @@ namespace Pulumi.Gcp.Storage
         /// <summary>
         /// The project team associated with the entity
         /// </summary>
-        [Output("projectTeam")]
-        public Output<Outputs.ObjectAccessControlProjectTeam> ProjectTeam { get; private set; } = null!;
+        [Output("projectTeams")]
+        public Output<ImmutableArray<Outputs.ObjectAccessControlProjectTeam>> ProjectTeams { get; private set; } = null!;
 
         /// <summary>
         /// The access permission for the entity.
@@ -232,11 +232,17 @@ namespace Pulumi.Gcp.Storage
         [Input("object")]
         public Input<string>? Object { get; set; }
 
+        [Input("projectTeams")]
+        private InputList<Inputs.ObjectAccessControlProjectTeamGetArgs>? _projectTeams;
+
         /// <summary>
         /// The project team associated with the entity
         /// </summary>
-        [Input("projectTeam")]
-        public Input<Inputs.ObjectAccessControlProjectTeamGetArgs>? ProjectTeam { get; set; }
+        public InputList<Inputs.ObjectAccessControlProjectTeamGetArgs> ProjectTeams
+        {
+            get => _projectTeams ?? (_projectTeams = new InputList<Inputs.ObjectAccessControlProjectTeamGetArgs>());
+            set => _projectTeams = value;
+        }
 
         /// <summary>
         /// The access permission for the entity.

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -20,12 +20,12 @@ class RegionUrlMap(pulumi.CustomResource):
                  default_service: Optional[pulumi.Input[str]] = None,
                  default_url_redirect: Optional[pulumi.Input[pulumi.InputType['RegionUrlMapDefaultUrlRedirectArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 host_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['RegionUrlMapHostRuleArgs']]]]] = None,
+                 host_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionUrlMapHostRuleArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 path_matchers: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['RegionUrlMapPathMatcherArgs']]]]] = None,
+                 path_matchers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionUrlMapPathMatcherArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 tests: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['RegionUrlMapTestArgs']]]]] = None,
+                 tests: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionUrlMapTestArgs']]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -45,17 +45,17 @@ class RegionUrlMap(pulumi.CustomResource):
                defaultRouteAction must not be set.
                Structure is documented below.
         :param pulumi.Input[str] description: Description of this test case.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['RegionUrlMapHostRuleArgs']]]] host_rules: The list of HostRules to use against the URL.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionUrlMapHostRuleArgs']]]] host_rules: The list of HostRules to use against the URL.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the query parameter to match. The query parameter must exist in the
                request, in the absence of which the request match fails.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['RegionUrlMapPathMatcherArgs']]]] path_matchers: The name of the PathMatcher to use to match the path portion of
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionUrlMapPathMatcherArgs']]]] path_matchers: The name of the PathMatcher to use to match the path portion of
                the URL if the hostRule matches the URL's host portion.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The Region in which the url map should reside.
                If it is not provided, the provider region is used.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['RegionUrlMapTestArgs']]]] tests: The list of expected URL mappings. Requests to update this UrlMap will
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionUrlMapTestArgs']]]] tests: The list of expected URL mappings. Requests to update this UrlMap will
                succeed only if all of the test cases pass.
                Structure is documented below.
         """
@@ -104,14 +104,14 @@ class RegionUrlMap(pulumi.CustomResource):
             default_url_redirect: Optional[pulumi.Input[pulumi.InputType['RegionUrlMapDefaultUrlRedirectArgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             fingerprint: Optional[pulumi.Input[str]] = None,
-            host_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['RegionUrlMapHostRuleArgs']]]]] = None,
-            map_id: Optional[pulumi.Input[float]] = None,
+            host_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionUrlMapHostRuleArgs']]]]] = None,
+            map_id: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            path_matchers: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['RegionUrlMapPathMatcherArgs']]]]] = None,
+            path_matchers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionUrlMapPathMatcherArgs']]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
-            tests: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['RegionUrlMapTestArgs']]]]] = None) -> 'RegionUrlMap':
+            tests: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionUrlMapTestArgs']]]]] = None) -> 'RegionUrlMap':
         """
         Get an existing RegionUrlMap resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -129,19 +129,19 @@ class RegionUrlMap(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] description: Description of this test case.
         :param pulumi.Input[str] fingerprint: Fingerprint of this resource. This field is used internally during updates of this resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['RegionUrlMapHostRuleArgs']]]] host_rules: The list of HostRules to use against the URL.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionUrlMapHostRuleArgs']]]] host_rules: The list of HostRules to use against the URL.
                Structure is documented below.
-        :param pulumi.Input[float] map_id: The unique identifier for the resource.
+        :param pulumi.Input[int] map_id: The unique identifier for the resource.
         :param pulumi.Input[str] name: The name of the query parameter to match. The query parameter must exist in the
                request, in the absence of which the request match fails.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['RegionUrlMapPathMatcherArgs']]]] path_matchers: The name of the PathMatcher to use to match the path portion of
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionUrlMapPathMatcherArgs']]]] path_matchers: The name of the PathMatcher to use to match the path portion of
                the URL if the hostRule matches the URL's host portion.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The Region in which the url map should reside.
                If it is not provided, the provider region is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['RegionUrlMapTestArgs']]]] tests: The list of expected URL mappings. Requests to update this UrlMap will
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionUrlMapTestArgs']]]] tests: The list of expected URL mappings. Requests to update this UrlMap will
                succeed only if all of the test cases pass.
                Structure is documented below.
         """
@@ -211,7 +211,7 @@ class RegionUrlMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hostRules")
-    def host_rules(self) -> pulumi.Output[Optional[List['outputs.RegionUrlMapHostRule']]]:
+    def host_rules(self) -> pulumi.Output[Optional[Sequence['outputs.RegionUrlMapHostRule']]]:
         """
         The list of HostRules to use against the URL.
         Structure is documented below.
@@ -220,7 +220,7 @@ class RegionUrlMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="mapId")
-    def map_id(self) -> pulumi.Output[float]:
+    def map_id(self) -> pulumi.Output[int]:
         """
         The unique identifier for the resource.
         """
@@ -237,7 +237,7 @@ class RegionUrlMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pathMatchers")
-    def path_matchers(self) -> pulumi.Output[Optional[List['outputs.RegionUrlMapPathMatcher']]]:
+    def path_matchers(self) -> pulumi.Output[Optional[Sequence['outputs.RegionUrlMapPathMatcher']]]:
         """
         The name of the PathMatcher to use to match the path portion of
         the URL if the hostRule matches the URL's host portion.
@@ -272,7 +272,7 @@ class RegionUrlMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tests(self) -> pulumi.Output[Optional[List['outputs.RegionUrlMapTest']]]:
+    def tests(self) -> pulumi.Output[Optional[Sequence['outputs.RegionUrlMapTest']]]:
         """
         The list of expected URL mappings. Requests to update this UrlMap will
         succeed only if all of the test cases pass.

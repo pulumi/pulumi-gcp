@@ -92,8 +92,8 @@ type DatabaseInstance struct {
 	// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
 	RootPassword pulumi.StringPtrOutput `pulumi:"rootPassword"`
 	// The URI of the created resource.
-	SelfLink     pulumi.StringOutput                `pulumi:"selfLink"`
-	ServerCaCert DatabaseInstanceServerCaCertOutput `pulumi:"serverCaCert"`
+	SelfLink      pulumi.StringOutput                     `pulumi:"selfLink"`
+	ServerCaCerts DatabaseInstanceServerCaCertArrayOutput `pulumi:"serverCaCerts"`
 	// The service account email address assigned to the
 	// instance.
 	ServiceAccountEmailAddress pulumi.StringOutput `pulumi:"serviceAccountEmailAddress"`
@@ -181,8 +181,8 @@ type databaseInstanceState struct {
 	// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
 	RootPassword *string `pulumi:"rootPassword"`
 	// The URI of the created resource.
-	SelfLink     *string                       `pulumi:"selfLink"`
-	ServerCaCert *DatabaseInstanceServerCaCert `pulumi:"serverCaCert"`
+	SelfLink      *string                        `pulumi:"selfLink"`
+	ServerCaCerts []DatabaseInstanceServerCaCert `pulumi:"serverCaCerts"`
 	// The service account email address assigned to the
 	// instance.
 	ServiceAccountEmailAddress *string `pulumi:"serviceAccountEmailAddress"`
@@ -240,8 +240,8 @@ type DatabaseInstanceState struct {
 	// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
 	RootPassword pulumi.StringPtrInput
 	// The URI of the created resource.
-	SelfLink     pulumi.StringPtrInput
-	ServerCaCert DatabaseInstanceServerCaCertPtrInput
+	SelfLink      pulumi.StringPtrInput
+	ServerCaCerts DatabaseInstanceServerCaCertArrayInput
 	// The service account email address assigned to the
 	// instance.
 	ServiceAccountEmailAddress pulumi.StringPtrInput

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -153,16 +153,16 @@ class GameServerConfigScalingConfigArgs:
     def __init__(__self__, *,
                  fleet_autoscaler_spec: pulumi.Input[str],
                  name: pulumi.Input[str],
-                 schedules: Optional[pulumi.Input[List[pulumi.Input['GameServerConfigScalingConfigScheduleArgs']]]] = None,
-                 selectors: Optional[pulumi.Input[List[pulumi.Input['GameServerConfigScalingConfigSelectorArgs']]]] = None):
+                 schedules: Optional[pulumi.Input[Sequence[pulumi.Input['GameServerConfigScalingConfigScheduleArgs']]]] = None,
+                 selectors: Optional[pulumi.Input[Sequence[pulumi.Input['GameServerConfigScalingConfigSelectorArgs']]]] = None):
         """
         :param pulumi.Input[str] fleet_autoscaler_spec: Fleet autoscaler spec, which is sent to Agones.
                Example spec can be found :
                https://agones.dev/site/docs/reference/fleetautoscaler/
         :param pulumi.Input[str] name: The name of the ScalingConfig
-        :param pulumi.Input[List[pulumi.Input['GameServerConfigScalingConfigScheduleArgs']]] schedules: The schedules to which this scaling config applies.
+        :param pulumi.Input[Sequence[pulumi.Input['GameServerConfigScalingConfigScheduleArgs']]] schedules: The schedules to which this scaling config applies.
                Structure is documented below.
-        :param pulumi.Input[List[pulumi.Input['GameServerConfigScalingConfigSelectorArgs']]] selectors: Labels used to identify the clusters to which this scaling config
+        :param pulumi.Input[Sequence[pulumi.Input['GameServerConfigScalingConfigSelectorArgs']]] selectors: Labels used to identify the clusters to which this scaling config
                applies. A cluster is subject to this scaling config if its labels match
                any of the selector entries.
                Structure is documented below.
@@ -202,7 +202,7 @@ class GameServerConfigScalingConfigArgs:
 
     @property
     @pulumi.getter
-    def schedules(self) -> Optional[pulumi.Input[List[pulumi.Input['GameServerConfigScalingConfigScheduleArgs']]]]:
+    def schedules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GameServerConfigScalingConfigScheduleArgs']]]]:
         """
         The schedules to which this scaling config applies.
         Structure is documented below.
@@ -210,12 +210,12 @@ class GameServerConfigScalingConfigArgs:
         return pulumi.get(self, "schedules")
 
     @schedules.setter
-    def schedules(self, value: Optional[pulumi.Input[List[pulumi.Input['GameServerConfigScalingConfigScheduleArgs']]]]):
+    def schedules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GameServerConfigScalingConfigScheduleArgs']]]]):
         pulumi.set(self, "schedules", value)
 
     @property
     @pulumi.getter
-    def selectors(self) -> Optional[pulumi.Input[List[pulumi.Input['GameServerConfigScalingConfigSelectorArgs']]]]:
+    def selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GameServerConfigScalingConfigSelectorArgs']]]]:
         """
         Labels used to identify the clusters to which this scaling config
         applies. A cluster is subject to this scaling config if its labels match
@@ -225,7 +225,7 @@ class GameServerConfigScalingConfigArgs:
         return pulumi.get(self, "selectors")
 
     @selectors.setter
-    def selectors(self, value: Optional[pulumi.Input[List[pulumi.Input['GameServerConfigScalingConfigSelectorArgs']]]]):
+    def selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GameServerConfigScalingConfigSelectorArgs']]]]):
         pulumi.set(self, "selectors", value)
 
 
@@ -379,23 +379,23 @@ class GameServerDeploymentRolloutGameServerConfigOverrideArgs:
 @pulumi.input_type
 class GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArgs:
     def __init__(__self__, *,
-                 realms: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 realms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] realms: List of realms to match against.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] realms: List of realms to match against.
         """
         if realms is not None:
             pulumi.set(__self__, "realms", realms)
 
     @property
     @pulumi.getter
-    def realms(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def realms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List of realms to match against.
         """
         return pulumi.get(self, "realms")
 
     @realms.setter
-    def realms(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def realms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "realms", value)
 
 

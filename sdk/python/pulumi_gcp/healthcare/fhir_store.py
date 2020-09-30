@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -25,7 +25,7 @@ class FhirStore(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_config: Optional[pulumi.Input[pulumi.InputType['FhirStoreNotificationConfigArgs']]] = None,
-                 stream_configs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['FhirStoreStreamConfigArgs']]]]] = None,
+                 stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FhirStoreStreamConfigArgs']]]]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -82,7 +82,7 @@ class FhirStore(pulumi.CustomResource):
                ** Changing this property may recreate the FHIR store (removing all data) **
         :param pulumi.Input[pulumi.InputType['FhirStoreNotificationConfigArgs']] notification_config: A nested object resource
                Structure is documented below.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['FhirStoreStreamConfigArgs']]]] stream_configs: A list of streaming configs that configure the destinations of streaming export for every resource mutation in
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FhirStoreStreamConfigArgs']]]] stream_configs: A list of streaming configs that configure the destinations of streaming export for every resource mutation in
                this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next
                resource mutation is streamed to the new location in addition to the existing ones. When a location is removed
                from the list, the server stops streaming to that location. Before adding a new config, you must add the required
@@ -142,7 +142,7 @@ class FhirStore(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             notification_config: Optional[pulumi.Input[pulumi.InputType['FhirStoreNotificationConfigArgs']]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
-            stream_configs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['FhirStoreStreamConfigArgs']]]]] = None,
+            stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FhirStoreStreamConfigArgs']]]]] = None,
             version: Optional[pulumi.Input[str]] = None) -> 'FhirStore':
         """
         Get an existing FhirStore resource's state with the given name, id, and optional extra
@@ -190,7 +190,7 @@ class FhirStore(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['FhirStoreNotificationConfigArgs']] notification_config: A nested object resource
                Structure is documented below.
         :param pulumi.Input[str] self_link: The fully qualified name of this dataset
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['FhirStoreStreamConfigArgs']]]] stream_configs: A list of streaming configs that configure the destinations of streaming export for every resource mutation in
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FhirStoreStreamConfigArgs']]]] stream_configs: A list of streaming configs that configure the destinations of streaming export for every resource mutation in
                this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next
                resource mutation is streamed to the new location in addition to the existing ones. When a location is removed
                from the list, the server stops streaming to that location. Before adding a new config, you must add the required
@@ -322,7 +322,7 @@ class FhirStore(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="streamConfigs")
-    def stream_configs(self) -> pulumi.Output[Optional[List['outputs.FhirStoreStreamConfig']]]:
+    def stream_configs(self) -> pulumi.Output[Optional[Sequence['outputs.FhirStoreStreamConfig']]]:
         """
         A list of streaming configs that configure the destinations of streaming export for every resource mutation in
         this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next

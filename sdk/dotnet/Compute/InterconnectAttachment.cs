@@ -126,8 +126,8 @@ namespace Pulumi.Gcp.Compute
         /// Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached
         /// to is of type DEDICATED.
         /// </summary>
-        [Output("privateInterconnectInfo")]
-        public Output<Outputs.InterconnectAttachmentPrivateInterconnectInfo> PrivateInterconnectInfo { get; private set; } = null!;
+        [Output("privateInterconnectInfos")]
+        public Output<ImmutableArray<Outputs.InterconnectAttachmentPrivateInterconnectInfo>> PrivateInterconnectInfos { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -451,12 +451,18 @@ namespace Pulumi.Gcp.Compute
         [Input("partnerAsn")]
         public Input<string>? PartnerAsn { get; set; }
 
+        [Input("privateInterconnectInfos")]
+        private InputList<Inputs.InterconnectAttachmentPrivateInterconnectInfoGetArgs>? _privateInterconnectInfos;
+
         /// <summary>
         /// Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached
         /// to is of type DEDICATED.
         /// </summary>
-        [Input("privateInterconnectInfo")]
-        public Input<Inputs.InterconnectAttachmentPrivateInterconnectInfoGetArgs>? PrivateInterconnectInfo { get; set; }
+        public InputList<Inputs.InterconnectAttachmentPrivateInterconnectInfoGetArgs> PrivateInterconnectInfos
+        {
+            get => _privateInterconnectInfos ?? (_privateInterconnectInfos = new InputList<Inputs.InterconnectAttachmentPrivateInterconnectInfoGetArgs>());
+            set => _privateInterconnectInfos = value;
+        }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

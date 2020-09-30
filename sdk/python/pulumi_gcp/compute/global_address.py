@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['GlobalAddress']
@@ -22,7 +22,7 @@ class GlobalAddress(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
-                 prefix_length: Optional[pulumi.Input[float]] = None,
+                 prefix_length: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  purpose: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -65,7 +65,7 @@ class GlobalAddress(pulumi.CustomResource):
                must be in RFC1918 space. The network cannot be deleted if there are
                any reserved IP ranges referring to it.
                This should only be set when using an Internal address.
-        :param pulumi.Input[float] prefix_length: The prefix length of the IP range. If not present, it means the
+        :param pulumi.Input[int] prefix_length: The prefix length of the IP range. If not present, it means the
                address field is a single IP address.
                This field is not applicable to addresses with addressType=EXTERNAL.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -124,7 +124,7 @@ class GlobalAddress(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
-            prefix_length: Optional[pulumi.Input[float]] = None,
+            prefix_length: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
             purpose: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None) -> 'GlobalAddress':
@@ -160,7 +160,7 @@ class GlobalAddress(pulumi.CustomResource):
                must be in RFC1918 space. The network cannot be deleted if there are
                any reserved IP ranges referring to it.
                This should only be set when using an Internal address.
-        :param pulumi.Input[float] prefix_length: The prefix length of the IP range. If not present, it means the
+        :param pulumi.Input[int] prefix_length: The prefix length of the IP range. If not present, it means the
                address field is a single IP address.
                This field is not applicable to addresses with addressType=EXTERNAL.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -280,7 +280,7 @@ class GlobalAddress(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="prefixLength")
-    def prefix_length(self) -> pulumi.Output[Optional[float]]:
+    def prefix_length(self) -> pulumi.Output[Optional[int]]:
         """
         The prefix length of the IP range. If not present, it means the
         address field is a single IP address.

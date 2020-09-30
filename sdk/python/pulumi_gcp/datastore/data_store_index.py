@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -20,7 +20,7 @@ class DataStoreIndex(pulumi.CustomResource):
                  ancestor: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 properties: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DataStoreIndexPropertyArgs']]]]] = None,
+                 properties: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DataStoreIndexPropertyArgs']]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -43,7 +43,7 @@ class DataStoreIndex(pulumi.CustomResource):
         :param pulumi.Input[str] kind: The entity kind which the index applies to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DataStoreIndexPropertyArgs']]]] properties: An ordered list of properties to index on.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DataStoreIndexPropertyArgs']]]] properties: An ordered list of properties to index on.
                Structure is documented below.
         """
         if __name__ is not None:
@@ -84,7 +84,7 @@ class DataStoreIndex(pulumi.CustomResource):
             index_id: Optional[pulumi.Input[str]] = None,
             kind: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            properties: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DataStoreIndexPropertyArgs']]]]] = None) -> 'DataStoreIndex':
+            properties: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DataStoreIndexPropertyArgs']]]]] = None) -> 'DataStoreIndex':
         """
         Get an existing DataStoreIndex resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -99,7 +99,7 @@ class DataStoreIndex(pulumi.CustomResource):
         :param pulumi.Input[str] kind: The entity kind which the index applies to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DataStoreIndexPropertyArgs']]]] properties: An ordered list of properties to index on.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DataStoreIndexPropertyArgs']]]] properties: An ordered list of properties to index on.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -150,7 +150,7 @@ class DataStoreIndex(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def properties(self) -> pulumi.Output[Optional[List['outputs.DataStoreIndexProperty']]]:
+    def properties(self) -> pulumi.Output[Optional[Sequence['outputs.DataStoreIndexProperty']]]:
         """
         An ordered list of properties to index on.
         Structure is documented below.

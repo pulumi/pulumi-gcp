@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -61,7 +61,7 @@ class GetSSLPolicyResult:
 
     @property
     @pulumi.getter(name="customFeatures")
-    def custom_features(self) -> List[str]:
+    def custom_features(self) -> Sequence[str]:
         """
         If the `profile` is `CUSTOM`, these are the custom encryption
         ciphers supported by the profile. If the `profile` is *not* `CUSTOM`, this
@@ -79,7 +79,7 @@ class GetSSLPolicyResult:
 
     @property
     @pulumi.getter(name="enabledFeatures")
-    def enabled_features(self) -> List[str]:
+    def enabled_features(self) -> Sequence[str]:
         """
         The set of enabled encryption ciphers as a result of the policy config
         """

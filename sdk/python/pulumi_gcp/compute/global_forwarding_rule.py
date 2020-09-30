@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -23,7 +23,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
                  ip_version: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  load_balancing_scheme: Optional[pulumi.Input[str]] = None,
-                 metadata_filters: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['GlobalForwardingRuleMetadataFilterArgs']]]]] = None,
+                 metadata_filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GlobalForwardingRuleMetadataFilterArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  port_range: Optional[pulumi.Input[str]] = None,
@@ -82,7 +82,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
                load balancing.
                Default value is `EXTERNAL`.
                Possible values are `EXTERNAL` and `INTERNAL_SELF_MANAGED`.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['GlobalForwardingRuleMetadataFilterArgs']]]] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GlobalForwardingRuleMetadataFilterArgs']]]] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing
                configuration to a limited set xDS compliant clients. In their xDS
                requests to Loadbalancer, xDS clients present node metadata. If a
                match takes place, the relevant routing configuration is made available
@@ -177,7 +177,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
             label_fingerprint: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             load_balancing_scheme: Optional[pulumi.Input[str]] = None,
-            metadata_filters: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['GlobalForwardingRuleMetadataFilterArgs']]]]] = None,
+            metadata_filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GlobalForwardingRuleMetadataFilterArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
             port_range: Optional[pulumi.Input[str]] = None,
@@ -229,7 +229,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
                load balancing.
                Default value is `EXTERNAL`.
                Possible values are `EXTERNAL` and `INTERNAL_SELF_MANAGED`.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['GlobalForwardingRuleMetadataFilterArgs']]]] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GlobalForwardingRuleMetadataFilterArgs']]]] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing
                configuration to a limited set xDS compliant clients. In their xDS
                requests to Loadbalancer, xDS clients present node metadata. If a
                match takes place, the relevant routing configuration is made available
@@ -384,7 +384,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="metadataFilters")
-    def metadata_filters(self) -> pulumi.Output[Optional[List['outputs.GlobalForwardingRuleMetadataFilter']]]:
+    def metadata_filters(self) -> pulumi.Output[Optional[Sequence['outputs.GlobalForwardingRuleMetadataFilter']]]:
         """
         Opaque filter criteria used by Loadbalancer to restrict routing
         configuration to a limited set xDS compliant clients. In their xDS

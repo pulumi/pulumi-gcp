@@ -45,6 +45,8 @@ type Cluster struct {
 	ClusterTelemetry ClusterClusterTelemetryOutput `pulumi:"clusterTelemetry"`
 	// Structure is documented below.
 	DatabaseEncryption ClusterDatabaseEncryptionOutput `pulumi:"databaseEncryption"`
+	// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+	DatapathProvider pulumi.StringOutput `pulumi:"datapathProvider"`
 	// The default maximum number of pods
 	// per node in this cluster. This doesn't work on "routes-based" clusters, clusters
 	// that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
@@ -288,6 +290,8 @@ type clusterState struct {
 	ClusterTelemetry *ClusterClusterTelemetry `pulumi:"clusterTelemetry"`
 	// Structure is documented below.
 	DatabaseEncryption *ClusterDatabaseEncryption `pulumi:"databaseEncryption"`
+	// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+	DatapathProvider *string `pulumi:"datapathProvider"`
 	// The default maximum number of pods
 	// per node in this cluster. This doesn't work on "routes-based" clusters, clusters
 	// that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
@@ -504,6 +508,8 @@ type ClusterState struct {
 	ClusterTelemetry ClusterClusterTelemetryPtrInput
 	// Structure is documented below.
 	DatabaseEncryption ClusterDatabaseEncryptionPtrInput
+	// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+	DatapathProvider pulumi.StringPtrInput
 	// The default maximum number of pods
 	// per node in this cluster. This doesn't work on "routes-based" clusters, clusters
 	// that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
@@ -724,6 +730,8 @@ type clusterArgs struct {
 	ClusterTelemetry *ClusterClusterTelemetry `pulumi:"clusterTelemetry"`
 	// Structure is documented below.
 	DatabaseEncryption *ClusterDatabaseEncryption `pulumi:"databaseEncryption"`
+	// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+	DatapathProvider *string `pulumi:"datapathProvider"`
 	// The default maximum number of pods
 	// per node in this cluster. This doesn't work on "routes-based" clusters, clusters
 	// that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
@@ -918,6 +926,8 @@ type ClusterArgs struct {
 	ClusterTelemetry ClusterClusterTelemetryPtrInput
 	// Structure is documented below.
 	DatabaseEncryption ClusterDatabaseEncryptionPtrInput
+	// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+	DatapathProvider pulumi.StringPtrInput
 	// The default maximum number of pods
 	// per node in this cluster. This doesn't work on "routes-based" clusters, clusters
 	// that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)

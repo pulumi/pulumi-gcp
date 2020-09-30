@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -20,8 +20,8 @@ class GetNetworkEndpointGroupResult:
     A collection of values returned by getNetworkEndpointGroup.
     """
     def __init__(__self__, default_port=None, description=None, id=None, name=None, network=None, network_endpoint_type=None, project=None, self_link=None, size=None, subnetwork=None, zone=None):
-        if default_port and not isinstance(default_port, float):
-            raise TypeError("Expected argument 'default_port' to be a float")
+        if default_port and not isinstance(default_port, int):
+            raise TypeError("Expected argument 'default_port' to be a int")
         pulumi.set(__self__, "default_port", default_port)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
@@ -44,8 +44,8 @@ class GetNetworkEndpointGroupResult:
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
-        if size and not isinstance(size, float):
-            raise TypeError("Expected argument 'size' to be a float")
+        if size and not isinstance(size, int):
+            raise TypeError("Expected argument 'size' to be a int")
         pulumi.set(__self__, "size", size)
         if subnetwork and not isinstance(subnetwork, str):
             raise TypeError("Expected argument 'subnetwork' to be a str")
@@ -56,7 +56,7 @@ class GetNetworkEndpointGroupResult:
 
     @property
     @pulumi.getter(name="defaultPort")
-    def default_port(self) -> float:
+    def default_port(self) -> int:
         """
         The NEG default port.
         """
@@ -111,7 +111,7 @@ class GetNetworkEndpointGroupResult:
 
     @property
     @pulumi.getter
-    def size(self) -> float:
+    def size(self) -> int:
         """
         Number of network endpoints in the network endpoint group.
         """

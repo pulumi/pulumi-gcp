@@ -21,8 +21,6 @@ export function getCluster(args: GetClusterArgs, opts?: pulumi.InvokeOptions): P
         "location": args.location,
         "name": args.name,
         "project": args.project,
-        "region": args.region,
-        "zone": args.zone,
     }, opts);
 }
 
@@ -45,29 +43,19 @@ export interface GetClusterArgs {
      * is not provided, the provider project is used.
      */
     readonly project?: string;
-    /**
-     * The region this cluster has been created in. Deprecated
-     * in favour of `location`.
-     */
-    readonly region?: string;
-    /**
-     * The zone this cluster has been created in. Deprecated in
-     * favour of `location`.
-     */
-    readonly zone?: string;
 }
 
 /**
  * A collection of values returned by getCluster.
  */
 export interface GetClusterResult {
-    readonly additionalZones: string[];
     readonly addonsConfigs: outputs.container.GetClusterAddonsConfig[];
     readonly authenticatorGroupsConfigs: outputs.container.GetClusterAuthenticatorGroupsConfig[];
     readonly clusterAutoscalings: outputs.container.GetClusterClusterAutoscaling[];
     readonly clusterIpv4Cidr: string;
     readonly clusterTelemetries: outputs.container.GetClusterClusterTelemetry[];
     readonly databaseEncryptions: outputs.container.GetClusterDatabaseEncryption[];
+    readonly datapathProvider: string;
     readonly defaultMaxPodsPerNode: number;
     readonly defaultSnatStatuses: outputs.container.GetClusterDefaultSnatStatus[];
     readonly description: string;
@@ -106,7 +94,6 @@ export interface GetClusterResult {
     readonly podSecurityPolicyConfigs: outputs.container.GetClusterPodSecurityPolicyConfig[];
     readonly privateClusterConfigs: outputs.container.GetClusterPrivateClusterConfig[];
     readonly project?: string;
-    readonly region?: string;
     readonly releaseChannels: outputs.container.GetClusterReleaseChannel[];
     readonly removeDefaultNodePool: boolean;
     readonly resourceLabels: {[key: string]: string};
@@ -117,5 +104,4 @@ export interface GetClusterResult {
     readonly tpuIpv4CidrBlock: string;
     readonly verticalPodAutoscalings: outputs.container.GetClusterVerticalPodAutoscaling[];
     readonly workloadIdentityConfigs: outputs.container.GetClusterWorkloadIdentityConfig[];
-    readonly zone?: string;
 }

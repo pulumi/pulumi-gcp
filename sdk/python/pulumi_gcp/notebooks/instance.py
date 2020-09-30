@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,12 +18,12 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  accelerator_config: Optional[pulumi.Input[pulumi.InputType['InstanceAcceleratorConfigArgs']]] = None,
-                 boot_disk_size_gb: Optional[pulumi.Input[float]] = None,
+                 boot_disk_size_gb: Optional[pulumi.Input[int]] = None,
                  boot_disk_type: Optional[pulumi.Input[str]] = None,
                  container_image: Optional[pulumi.Input[pulumi.InputType['InstanceContainerImageArgs']]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  custom_gpu_driver_path: Optional[pulumi.Input[str]] = None,
-                 data_disk_size_gb: Optional[pulumi.Input[float]] = None,
+                 data_disk_size_gb: Optional[pulumi.Input[int]] = None,
                  data_disk_type: Optional[pulumi.Input[str]] = None,
                  disk_encryption: Optional[pulumi.Input[str]] = None,
                  install_gpu_driver: Optional[pulumi.Input[bool]] = None,
@@ -68,7 +68,7 @@ class Instance(pulumi.CustomResource):
                make sure that your configuration has enough vCPUs and memory to support the
                machineType you have selected.
                Structure is documented below.
-        :param pulumi.Input[float] boot_disk_size_gb: The size of the boot disk in GB attached to this instance,
+        :param pulumi.Input[int] boot_disk_size_gb: The size of the boot disk in GB attached to this instance,
                up to a maximum of 64000 GB (64 TB). The minimum recommended value is 100 GB.
                If not specified, this defaults to 100.
         :param pulumi.Input[str] boot_disk_type: Possible disk types for notebook instances.
@@ -78,7 +78,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Instance creation time
         :param pulumi.Input[str] custom_gpu_driver_path: Specify a custom Cloud Storage path where the GPU driver is stored.
                If not specified, we'll automatically choose from official GPU drivers.
-        :param pulumi.Input[float] data_disk_size_gb: The size of the data disk in GB attached to this instance,
+        :param pulumi.Input[int] data_disk_size_gb: The size of the data disk in GB attached to this instance,
                up to a maximum of 64000 GB (64 TB).
                You can choose the size of the data disk based on how big your notebooks and data are.
                If not specified, this defaults to 100.
@@ -185,12 +185,12 @@ class Instance(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             accelerator_config: Optional[pulumi.Input[pulumi.InputType['InstanceAcceleratorConfigArgs']]] = None,
-            boot_disk_size_gb: Optional[pulumi.Input[float]] = None,
+            boot_disk_size_gb: Optional[pulumi.Input[int]] = None,
             boot_disk_type: Optional[pulumi.Input[str]] = None,
             container_image: Optional[pulumi.Input[pulumi.InputType['InstanceContainerImageArgs']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             custom_gpu_driver_path: Optional[pulumi.Input[str]] = None,
-            data_disk_size_gb: Optional[pulumi.Input[float]] = None,
+            data_disk_size_gb: Optional[pulumi.Input[int]] = None,
             data_disk_type: Optional[pulumi.Input[str]] = None,
             disk_encryption: Optional[pulumi.Input[str]] = None,
             install_gpu_driver: Optional[pulumi.Input[bool]] = None,
@@ -224,7 +224,7 @@ class Instance(pulumi.CustomResource):
                make sure that your configuration has enough vCPUs and memory to support the
                machineType you have selected.
                Structure is documented below.
-        :param pulumi.Input[float] boot_disk_size_gb: The size of the boot disk in GB attached to this instance,
+        :param pulumi.Input[int] boot_disk_size_gb: The size of the boot disk in GB attached to this instance,
                up to a maximum of 64000 GB (64 TB). The minimum recommended value is 100 GB.
                If not specified, this defaults to 100.
         :param pulumi.Input[str] boot_disk_type: Possible disk types for notebook instances.
@@ -234,7 +234,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Instance creation time
         :param pulumi.Input[str] custom_gpu_driver_path: Specify a custom Cloud Storage path where the GPU driver is stored.
                If not specified, we'll automatically choose from official GPU drivers.
-        :param pulumi.Input[float] data_disk_size_gb: The size of the data disk in GB attached to this instance,
+        :param pulumi.Input[int] data_disk_size_gb: The size of the data disk in GB attached to this instance,
                up to a maximum of 64000 GB (64 TB).
                You can choose the size of the data disk based on how big your notebooks and data are.
                If not specified, this defaults to 100.
@@ -330,7 +330,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="bootDiskSizeGb")
-    def boot_disk_size_gb(self) -> pulumi.Output[Optional[float]]:
+    def boot_disk_size_gb(self) -> pulumi.Output[Optional[int]]:
         """
         The size of the boot disk in GB attached to this instance,
         up to a maximum of 64000 GB (64 TB). The minimum recommended value is 100 GB.
@@ -375,7 +375,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dataDiskSizeGb")
-    def data_disk_size_gb(self) -> pulumi.Output[Optional[float]]:
+    def data_disk_size_gb(self) -> pulumi.Output[Optional[int]]:
         """
         The size of the data disk in GB attached to this instance,
         up to a maximum of 64000 GB (64 TB).

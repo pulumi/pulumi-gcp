@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -28,7 +28,7 @@ class EnvironmentConfigArgs:
                  database_config: Optional[pulumi.Input['EnvironmentConfigDatabaseConfigArgs']] = None,
                  gke_cluster: Optional[pulumi.Input[str]] = None,
                  node_config: Optional[pulumi.Input['EnvironmentConfigNodeConfigArgs']] = None,
-                 node_count: Optional[pulumi.Input[float]] = None,
+                 node_count: Optional[pulumi.Input[int]] = None,
                  private_environment_config: Optional[pulumi.Input['EnvironmentConfigPrivateEnvironmentConfigArgs']] = None,
                  software_config: Optional[pulumi.Input['EnvironmentConfigSoftwareConfigArgs']] = None,
                  web_server_config: Optional[pulumi.Input['EnvironmentConfigWebServerConfigArgs']] = None,
@@ -36,7 +36,7 @@ class EnvironmentConfigArgs:
         """
         :param pulumi.Input['EnvironmentConfigDatabaseConfigArgs'] database_config: The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
         :param pulumi.Input['EnvironmentConfigNodeConfigArgs'] node_config: The configuration used for the Kubernetes Engine cluster.  Structure is documented below.
-        :param pulumi.Input[float] node_count: The number of nodes in the Kubernetes Engine cluster that
+        :param pulumi.Input[int] node_count: The number of nodes in the Kubernetes Engine cluster that
                will be used to run this environment.
         :param pulumi.Input['EnvironmentConfigPrivateEnvironmentConfigArgs'] private_environment_config: The configuration used for the Private IP Cloud Composer environment. Structure is documented below.
         :param pulumi.Input['EnvironmentConfigSoftwareConfigArgs'] software_config: The configuration settings for software inside the environment.  Structure is documented below.
@@ -117,7 +117,7 @@ class EnvironmentConfigArgs:
 
     @property
     @pulumi.getter(name="nodeCount")
-    def node_count(self) -> Optional[pulumi.Input[float]]:
+    def node_count(self) -> Optional[pulumi.Input[int]]:
         """
         The number of nodes in the Kubernetes Engine cluster that
         will be used to run this environment.
@@ -125,7 +125,7 @@ class EnvironmentConfigArgs:
         return pulumi.get(self, "node_count")
 
     @node_count.setter
-    def node_count(self, value: Optional[pulumi.Input[float]]):
+    def node_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "node_count", value)
 
     @property
@@ -209,20 +209,20 @@ class EnvironmentConfigDatabaseConfigArgs:
 class EnvironmentConfigNodeConfigArgs:
     def __init__(__self__, *,
                  zone: pulumi.Input[str],
-                 disk_size_gb: Optional[pulumi.Input[float]] = None,
+                 disk_size_gb: Optional[pulumi.Input[int]] = None,
                  ip_allocation_policy: Optional[pulumi.Input['EnvironmentConfigNodeConfigIpAllocationPolicyArgs']] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
-                 oauth_scopes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 oauth_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] zone: The Compute Engine zone in which to deploy the VMs running the
                Apache Airflow software, specified as the zone name or
                relative resource name (e.g. "projects/{project}/zones/{zone}"). Must belong to the enclosing environment's project
                and region.
-        :param pulumi.Input[float] disk_size_gb: The disk size in GB used for node VMs. Minimum size is 20GB.
+        :param pulumi.Input[int] disk_size_gb: The disk size in GB used for node VMs. Minimum size is 20GB.
                If unspecified, defaults to 100GB. Cannot be updated.
         :param pulumi.Input['EnvironmentConfigNodeConfigIpAllocationPolicyArgs'] ip_allocation_policy: Configuration for controlling how IPs are allocated in the GKE cluster.
                Structure is documented below.
@@ -234,7 +234,7 @@ class EnvironmentConfigNodeConfigArgs:
         :param pulumi.Input[str] network: The Compute Engine network to be used for machine
                communications, specified as a self-link, relative resource name
                (e.g. "projects/{project}/global/networks/{network}"), by name.
-        :param pulumi.Input[List[pulumi.Input[str]]] oauth_scopes: The set of Google API scopes to be made available on all node
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] oauth_scopes: The set of Google API scopes to be made available on all node
                VMs. Cannot be updated. If empty, defaults to
                `["https://www.googleapis.com/auth/cloud-platform"]`
         :param pulumi.Input[str] service_account: The Google Cloud Platform Service Account to be used by the
@@ -246,7 +246,7 @@ class EnvironmentConfigNodeConfigArgs:
                communications, , specified as a self-link, relative resource name (e.g.
                "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided,
                network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: The list of instance tags applied to all node VMs. Tags are
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The list of instance tags applied to all node VMs. Tags are
                used to identify valid sources or targets for network
                firewalls. Each tag within the list must comply with RFC1035.
                Cannot be updated.
@@ -286,7 +286,7 @@ class EnvironmentConfigNodeConfigArgs:
 
     @property
     @pulumi.getter(name="diskSizeGb")
-    def disk_size_gb(self) -> Optional[pulumi.Input[float]]:
+    def disk_size_gb(self) -> Optional[pulumi.Input[int]]:
         """
         The disk size in GB used for node VMs. Minimum size is 20GB.
         If unspecified, defaults to 100GB. Cannot be updated.
@@ -294,7 +294,7 @@ class EnvironmentConfigNodeConfigArgs:
         return pulumi.get(self, "disk_size_gb")
 
     @disk_size_gb.setter
-    def disk_size_gb(self, value: Optional[pulumi.Input[float]]):
+    def disk_size_gb(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "disk_size_gb", value)
 
     @property
@@ -342,7 +342,7 @@ class EnvironmentConfigNodeConfigArgs:
 
     @property
     @pulumi.getter(name="oauthScopes")
-    def oauth_scopes(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def oauth_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The set of Google API scopes to be made available on all node
         VMs. Cannot be updated. If empty, defaults to
@@ -351,7 +351,7 @@ class EnvironmentConfigNodeConfigArgs:
         return pulumi.get(self, "oauth_scopes")
 
     @oauth_scopes.setter
-    def oauth_scopes(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def oauth_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "oauth_scopes", value)
 
     @property
@@ -387,7 +387,7 @@ class EnvironmentConfigNodeConfigArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The list of instance tags applied to all node VMs. Tags are
         used to identify valid sources or targets for network
@@ -397,7 +397,7 @@ class EnvironmentConfigNodeConfigArgs:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -756,9 +756,9 @@ class EnvironmentConfigWebServerConfigArgs:
 @pulumi.input_type
 class EnvironmentConfigWebServerNetworkAccessControlArgs:
     def __init__(__self__, *,
-                 allowed_ip_ranges: Optional[pulumi.Input[List[pulumi.Input['EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs']]]] = None):
+                 allowed_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs']]]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input['EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs']]] allowed_ip_ranges: -
+        :param pulumi.Input[Sequence[pulumi.Input['EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs']]] allowed_ip_ranges: -
                A collection of allowed IP ranges with descriptions. Structure is documented below.
         """
         if allowed_ip_ranges is not None:
@@ -766,7 +766,7 @@ class EnvironmentConfigWebServerNetworkAccessControlArgs:
 
     @property
     @pulumi.getter(name="allowedIpRanges")
-    def allowed_ip_ranges(self) -> Optional[pulumi.Input[List[pulumi.Input['EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs']]]]:
+    def allowed_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs']]]]:
         """
         -
         A collection of allowed IP ranges with descriptions. Structure is documented below.
@@ -774,7 +774,7 @@ class EnvironmentConfigWebServerNetworkAccessControlArgs:
         return pulumi.get(self, "allowed_ip_ranges")
 
     @allowed_ip_ranges.setter
-    def allowed_ip_ranges(self, value: Optional[pulumi.Input[List[pulumi.Input['EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs']]]]):
+    def allowed_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs']]]]):
         pulumi.set(self, "allowed_ip_ranges", value)
 
 

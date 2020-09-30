@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -86,7 +86,7 @@ class DomainMapping(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             override_strategy: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            resource_records: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DomainMappingResourceRecordArgs']]]]] = None,
+            resource_records: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainMappingResourceRecordArgs']]]]] = None,
             ssl_settings: Optional[pulumi.Input[pulumi.InputType['DomainMappingSslSettingsArgs']]] = None) -> 'DomainMapping':
         """
         Get an existing DomainMapping resource's state with the given name, id, and optional extra
@@ -103,7 +103,7 @@ class DomainMapping(pulumi.CustomResource):
                Possible values are `STRICT` and `OVERRIDE`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DomainMappingResourceRecordArgs']]]] resource_records: The resource records required to configure this domain mapping. These records must be added to the domain's DNS
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainMappingResourceRecordArgs']]]] resource_records: The resource records required to configure this domain mapping. These records must be added to the domain's DNS
                configuration in order to serve the application via this domain mapping.
         :param pulumi.Input[pulumi.InputType['DomainMappingSslSettingsArgs']] ssl_settings: SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
                Structure is documented below.
@@ -158,7 +158,7 @@ class DomainMapping(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceRecords")
-    def resource_records(self) -> pulumi.Output[List['outputs.DomainMappingResourceRecord']]:
+    def resource_records(self) -> pulumi.Output[Sequence['outputs.DomainMappingResourceRecord']]:
         """
         The resource records required to configure this domain mapping. These records must be added to the domain's DNS
         configuration in order to serve the application via this domain mapping.

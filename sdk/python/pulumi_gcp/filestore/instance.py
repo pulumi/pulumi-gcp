@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -21,7 +21,7 @@ class Instance(pulumi.CustomResource):
                  file_shares: Optional[pulumi.Input[pulumi.InputType['InstanceFileSharesArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 networks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceNetworkArgs']]]]] = None,
+                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
@@ -49,7 +49,7 @@ class Instance(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
         :param pulumi.Input[str] name: The name of the fileshare (16 characters or less)
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceNetworkArgs']]]] networks: VPC networks to which the instance is connected. For this version,
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkArgs']]]] networks: VPC networks to which the instance is connected. For this version,
                only a single network is supported.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -109,7 +109,7 @@ class Instance(pulumi.CustomResource):
             file_shares: Optional[pulumi.Input[pulumi.InputType['InstanceFileSharesArgs']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            networks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceNetworkArgs']]]]] = None,
+            networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkArgs']]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
             tier: Optional[pulumi.Input[str]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'Instance':
@@ -128,7 +128,7 @@ class Instance(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
         :param pulumi.Input[str] name: The name of the fileshare (16 characters or less)
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['InstanceNetworkArgs']]]] networks: VPC networks to which the instance is connected. For this version,
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkArgs']]]] networks: VPC networks to which the instance is connected. For this version,
                only a single network is supported.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -205,7 +205,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def networks(self) -> pulumi.Output[List['outputs.InstanceNetwork']]:
+    def networks(self) -> pulumi.Output[Sequence['outputs.InstanceNetwork']]:
         """
         VPC networks to which the instance is connected. For this version,
         only a single network is supported.

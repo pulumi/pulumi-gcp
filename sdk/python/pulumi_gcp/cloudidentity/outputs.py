@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -209,16 +209,16 @@ class GetGroupMembershipsMembershipResult(dict):
     def __init__(__self__, *,
                  create_time: str,
                  group: str,
-                 member_keys: List['outputs.GetGroupMembershipsMembershipMemberKeyResult'],
+                 member_keys: Sequence['outputs.GetGroupMembershipsMembershipMemberKeyResult'],
                  name: str,
-                 preferred_member_keys: List['outputs.GetGroupMembershipsMembershipPreferredMemberKeyResult'],
-                 roles: List['outputs.GetGroupMembershipsMembershipRoleResult'],
+                 preferred_member_keys: Sequence['outputs.GetGroupMembershipsMembershipPreferredMemberKeyResult'],
+                 roles: Sequence['outputs.GetGroupMembershipsMembershipRoleResult'],
                  type: str,
                  update_time: str):
         """
         :param str group: The parent Group resource under which to lookup the Membership names. Must be of the form groups/{group_id}.
         :param str name: The name of the MembershipRole. One of OWNER, MANAGER, MEMBER.
-        :param List['GetGroupMembershipsMembershipRoleArgs'] roles: The MembershipRoles that apply to the Membership. Structure is documented below.
+        :param Sequence['GetGroupMembershipsMembershipRoleArgs'] roles: The MembershipRoles that apply to the Membership. Structure is documented below.
         """
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "group", group)
@@ -244,7 +244,7 @@ class GetGroupMembershipsMembershipResult(dict):
 
     @property
     @pulumi.getter(name="memberKeys")
-    def member_keys(self) -> List['outputs.GetGroupMembershipsMembershipMemberKeyResult']:
+    def member_keys(self) -> Sequence['outputs.GetGroupMembershipsMembershipMemberKeyResult']:
         return pulumi.get(self, "member_keys")
 
     @property
@@ -257,12 +257,12 @@ class GetGroupMembershipsMembershipResult(dict):
 
     @property
     @pulumi.getter(name="preferredMemberKeys")
-    def preferred_member_keys(self) -> List['outputs.GetGroupMembershipsMembershipPreferredMemberKeyResult']:
+    def preferred_member_keys(self) -> Sequence['outputs.GetGroupMembershipsMembershipPreferredMemberKeyResult']:
         return pulumi.get(self, "preferred_member_keys")
 
     @property
     @pulumi.getter
-    def roles(self) -> List['outputs.GetGroupMembershipsMembershipRoleResult']:
+    def roles(self) -> Sequence['outputs.GetGroupMembershipsMembershipRoleResult']:
         """
         The MembershipRoles that apply to the Membership. Structure is documented below.
         """
@@ -381,7 +381,7 @@ class GetGroupsGroupResult(dict):
                  create_time: str,
                  description: str,
                  display_name: str,
-                 group_keys: List['outputs.GetGroupsGroupGroupKeyResult'],
+                 group_keys: Sequence['outputs.GetGroupsGroupGroupKeyResult'],
                  labels: Mapping[str, str],
                  name: str,
                  parent: str,
@@ -415,7 +415,7 @@ class GetGroupsGroupResult(dict):
 
     @property
     @pulumi.getter(name="groupKeys")
-    def group_keys(self) -> List['outputs.GetGroupsGroupGroupKeyResult']:
+    def group_keys(self) -> Sequence['outputs.GetGroupsGroupGroupKeyResult']:
         return pulumi.get(self, "group_keys")
 
     @property

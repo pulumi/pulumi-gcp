@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -18,14 +18,14 @@ __all__ = [
 @pulumi.output_type
 class InstanceFileShares(dict):
     def __init__(__self__, *,
-                 capacity_gb: float,
+                 capacity_gb: int,
                  name: str,
-                 nfs_export_options: Optional[List['outputs.InstanceFileSharesNfsExportOption']] = None):
+                 nfs_export_options: Optional[Sequence['outputs.InstanceFileSharesNfsExportOption']] = None):
         """
-        :param float capacity_gb: File share capacity in GiB. This must be at least 1024 GiB
+        :param int capacity_gb: File share capacity in GiB. This must be at least 1024 GiB
                for the standard tier, or 2560 GiB for the premium tier.
         :param str name: The name of the fileshare (16 characters or less)
-        :param List['InstanceFileSharesNfsExportOptionArgs'] nfs_export_options: Nfs Export Options. There is a limit of 10 export options per file share.
+        :param Sequence['InstanceFileSharesNfsExportOptionArgs'] nfs_export_options: Nfs Export Options. There is a limit of 10 export options per file share.
                Structure is documented below.
         """
         pulumi.set(__self__, "capacity_gb", capacity_gb)
@@ -35,7 +35,7 @@ class InstanceFileShares(dict):
 
     @property
     @pulumi.getter(name="capacityGb")
-    def capacity_gb(self) -> float:
+    def capacity_gb(self) -> int:
         """
         File share capacity in GiB. This must be at least 1024 GiB
         for the standard tier, or 2560 GiB for the premium tier.
@@ -52,7 +52,7 @@ class InstanceFileShares(dict):
 
     @property
     @pulumi.getter(name="nfsExportOptions")
-    def nfs_export_options(self) -> Optional[List['outputs.InstanceFileSharesNfsExportOption']]:
+    def nfs_export_options(self) -> Optional[Sequence['outputs.InstanceFileSharesNfsExportOption']]:
         """
         Nfs Export Options. There is a limit of 10 export options per file share.
         Structure is documented below.
@@ -67,22 +67,22 @@ class InstanceFileShares(dict):
 class InstanceFileSharesNfsExportOption(dict):
     def __init__(__self__, *,
                  access_mode: Optional[str] = None,
-                 anon_gid: Optional[float] = None,
-                 anon_uid: Optional[float] = None,
-                 ip_ranges: Optional[List[str]] = None,
+                 anon_gid: Optional[int] = None,
+                 anon_uid: Optional[int] = None,
+                 ip_ranges: Optional[Sequence[str]] = None,
                  squash_mode: Optional[str] = None):
         """
         :param str access_mode: Either READ_ONLY, for allowing only read requests on the exported directory,
                or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE.
                Default value is `READ_WRITE`.
                Possible values are `READ_ONLY` and `READ_WRITE`.
-        :param float anon_gid: An integer representing the anonymous group id with a default value of 65534.
+        :param int anon_gid: An integer representing the anonymous group id with a default value of 65534.
                Anon_gid may only be set with squashMode of ROOT_SQUASH. An error will be returned
                if this field is specified for other squashMode settings.
-        :param float anon_uid: An integer representing the anonymous user id with a default value of 65534.
+        :param int anon_uid: An integer representing the anonymous user id with a default value of 65534.
                Anon_uid may only be set with squashMode of ROOT_SQUASH. An error will be returned
                if this field is specified for other squashMode settings.
-        :param List[str] ip_ranges: List of either IPv4 addresses, or ranges in CIDR notation which may mount the file share.
+        :param Sequence[str] ip_ranges: List of either IPv4 addresses, or ranges in CIDR notation which may mount the file share.
                Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned.
                The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
         :param str squash_mode: Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
@@ -114,7 +114,7 @@ class InstanceFileSharesNfsExportOption(dict):
 
     @property
     @pulumi.getter(name="anonGid")
-    def anon_gid(self) -> Optional[float]:
+    def anon_gid(self) -> Optional[int]:
         """
         An integer representing the anonymous group id with a default value of 65534.
         Anon_gid may only be set with squashMode of ROOT_SQUASH. An error will be returned
@@ -124,7 +124,7 @@ class InstanceFileSharesNfsExportOption(dict):
 
     @property
     @pulumi.getter(name="anonUid")
-    def anon_uid(self) -> Optional[float]:
+    def anon_uid(self) -> Optional[int]:
         """
         An integer representing the anonymous user id with a default value of 65534.
         Anon_uid may only be set with squashMode of ROOT_SQUASH. An error will be returned
@@ -134,7 +134,7 @@ class InstanceFileSharesNfsExportOption(dict):
 
     @property
     @pulumi.getter(name="ipRanges")
-    def ip_ranges(self) -> Optional[List[str]]:
+    def ip_ranges(self) -> Optional[Sequence[str]]:
         """
         List of either IPv4 addresses, or ranges in CIDR notation which may mount the file share.
         Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned.
@@ -160,17 +160,17 @@ class InstanceFileSharesNfsExportOption(dict):
 @pulumi.output_type
 class InstanceNetwork(dict):
     def __init__(__self__, *,
-                 modes: List[str],
+                 modes: Sequence[str],
                  network: str,
-                 ip_addresses: Optional[List[str]] = None,
+                 ip_addresses: Optional[Sequence[str]] = None,
                  reserved_ip_range: Optional[str] = None):
         """
-        :param List[str] modes: IP versions for which the instance has
+        :param Sequence[str] modes: IP versions for which the instance has
                IP addresses assigned.
                Each value may be one of `ADDRESS_MODE_UNSPECIFIED`, `MODE_IPV4`, and `MODE_IPV6`.
         :param str network: The name of the GCE VPC network to which the
                instance is connected.
-        :param List[str] ip_addresses: -
+        :param Sequence[str] ip_addresses: -
                A list of IPv4 or IPv6 addresses.
         :param str reserved_ip_range: A /29 CIDR block that identifies the range of IP
                addresses reserved for this instance.
@@ -184,7 +184,7 @@ class InstanceNetwork(dict):
 
     @property
     @pulumi.getter
-    def modes(self) -> List[str]:
+    def modes(self) -> Sequence[str]:
         """
         IP versions for which the instance has
         IP addresses assigned.
@@ -203,7 +203,7 @@ class InstanceNetwork(dict):
 
     @property
     @pulumi.getter(name="ipAddresses")
-    def ip_addresses(self) -> Optional[List[str]]:
+    def ip_addresses(self) -> Optional[Sequence[str]]:
         """
         -
         A list of IPv4 or IPv6 addresses.

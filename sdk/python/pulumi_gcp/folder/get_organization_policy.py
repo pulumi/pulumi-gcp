@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -45,13 +45,13 @@ class GetOrganizationPolicyResult:
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
-        if version and not isinstance(version, float):
-            raise TypeError("Expected argument 'version' to be a float")
+        if version and not isinstance(version, int):
+            raise TypeError("Expected argument 'version' to be a int")
         pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter(name="booleanPolicies")
-    def boolean_policies(self) -> List['outputs.GetOrganizationPolicyBooleanPolicyResult']:
+    def boolean_policies(self) -> Sequence['outputs.GetOrganizationPolicyBooleanPolicyResult']:
         return pulumi.get(self, "boolean_policies")
 
     @property
@@ -79,12 +79,12 @@ class GetOrganizationPolicyResult:
 
     @property
     @pulumi.getter(name="listPolicies")
-    def list_policies(self) -> List['outputs.GetOrganizationPolicyListPolicyResult']:
+    def list_policies(self) -> Sequence['outputs.GetOrganizationPolicyListPolicyResult']:
         return pulumi.get(self, "list_policies")
 
     @property
     @pulumi.getter(name="restorePolicies")
-    def restore_policies(self) -> List['outputs.GetOrganizationPolicyRestorePolicyResult']:
+    def restore_policies(self) -> Sequence['outputs.GetOrganizationPolicyRestorePolicyResult']:
         return pulumi.get(self, "restore_policies")
 
     @property
@@ -94,7 +94,7 @@ class GetOrganizationPolicyResult:
 
     @property
     @pulumi.getter
-    def version(self) -> float:
+    def version(self) -> int:
         return pulumi.get(self, "version")
 
 

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['SourceRepresentationInstance']
@@ -18,7 +18,7 @@ class SourceRepresentationInstance(pulumi.CustomResource):
                  database_version: Optional[pulumi.Input[str]] = None,
                  host: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 port: Optional[pulumi.Input[float]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -39,7 +39,7 @@ class SourceRepresentationInstance(pulumi.CustomResource):
                Possible values are `MYSQL_5_6` and `MYSQL_5_7`.
         :param pulumi.Input[str] host: The externally accessible IPv4 address for the source database server.
         :param pulumi.Input[str] name: The name of the source representation instance. Use any valid Cloud SQL instance name.
-        :param pulumi.Input[float] port: The externally accessible port for the source database server.
+        :param pulumi.Input[int] port: The externally accessible port for the source database server.
                Defaults to 3306.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -86,7 +86,7 @@ class SourceRepresentationInstance(pulumi.CustomResource):
             database_version: Optional[pulumi.Input[str]] = None,
             host: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            port: Optional[pulumi.Input[float]] = None,
+            port: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None) -> 'SourceRepresentationInstance':
         """
@@ -100,7 +100,7 @@ class SourceRepresentationInstance(pulumi.CustomResource):
                Possible values are `MYSQL_5_6` and `MYSQL_5_7`.
         :param pulumi.Input[str] host: The externally accessible IPv4 address for the source database server.
         :param pulumi.Input[str] name: The name of the source representation instance. Use any valid Cloud SQL instance name.
-        :param pulumi.Input[float] port: The externally accessible port for the source database server.
+        :param pulumi.Input[int] port: The externally accessible port for the source database server.
                Defaults to 3306.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -146,7 +146,7 @@ class SourceRepresentationInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> pulumi.Output[Optional[float]]:
+    def port(self) -> pulumi.Output[Optional[int]]:
         """
         The externally accessible port for the source database server.
         Defaults to 3306.

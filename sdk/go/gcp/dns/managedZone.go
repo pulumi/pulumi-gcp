@@ -31,6 +31,9 @@ type ManagedZone struct {
 	// DNSSEC configuration
 	// Structure is documented below.
 	DnssecConfig ManagedZoneDnssecConfigPtrOutput `pulumi:"dnssecConfig"`
+	// Set this true to delete all records in the zone.
+	// The `dnssecConfig` block supports:
+	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
 	// The presence for this field indicates that outbound forwarding is enabled
 	// for this zone. The value of this field contains the set of destinations
 	// to forward to.
@@ -108,6 +111,9 @@ type managedZoneState struct {
 	// DNSSEC configuration
 	// Structure is documented below.
 	DnssecConfig *ManagedZoneDnssecConfig `pulumi:"dnssecConfig"`
+	// Set this true to delete all records in the zone.
+	// The `dnssecConfig` block supports:
+	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// The presence for this field indicates that outbound forwarding is enabled
 	// for this zone. The value of this field contains the set of destinations
 	// to forward to.
@@ -152,6 +158,9 @@ type ManagedZoneState struct {
 	// DNSSEC configuration
 	// Structure is documented below.
 	DnssecConfig ManagedZoneDnssecConfigPtrInput
+	// Set this true to delete all records in the zone.
+	// The `dnssecConfig` block supports:
+	ForceDestroy pulumi.BoolPtrInput
 	// The presence for this field indicates that outbound forwarding is enabled
 	// for this zone. The value of this field contains the set of destinations
 	// to forward to.
@@ -200,6 +209,9 @@ type managedZoneArgs struct {
 	// DNSSEC configuration
 	// Structure is documented below.
 	DnssecConfig *ManagedZoneDnssecConfig `pulumi:"dnssecConfig"`
+	// Set this true to delete all records in the zone.
+	// The `dnssecConfig` block supports:
+	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// The presence for this field indicates that outbound forwarding is enabled
 	// for this zone. The value of this field contains the set of destinations
 	// to forward to.
@@ -243,6 +255,9 @@ type ManagedZoneArgs struct {
 	// DNSSEC configuration
 	// Structure is documented below.
 	DnssecConfig ManagedZoneDnssecConfigPtrInput
+	// Set this true to delete all records in the zone.
+	// The `dnssecConfig` block supports:
+	ForceDestroy pulumi.BoolPtrInput
 	// The presence for this field indicates that outbound forwarding is enabled
 	// for this zone. The value of this field contains the set of destinations
 	// to forward to.

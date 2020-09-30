@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -30,7 +30,7 @@ class EnvironmentConfig(dict):
                  database_config: Optional['outputs.EnvironmentConfigDatabaseConfig'] = None,
                  gke_cluster: Optional[str] = None,
                  node_config: Optional['outputs.EnvironmentConfigNodeConfig'] = None,
-                 node_count: Optional[float] = None,
+                 node_count: Optional[int] = None,
                  private_environment_config: Optional['outputs.EnvironmentConfigPrivateEnvironmentConfig'] = None,
                  software_config: Optional['outputs.EnvironmentConfigSoftwareConfig'] = None,
                  web_server_config: Optional['outputs.EnvironmentConfigWebServerConfig'] = None,
@@ -38,7 +38,7 @@ class EnvironmentConfig(dict):
         """
         :param 'EnvironmentConfigDatabaseConfigArgs' database_config: The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
         :param 'EnvironmentConfigNodeConfigArgs' node_config: The configuration used for the Kubernetes Engine cluster.  Structure is documented below.
-        :param float node_count: The number of nodes in the Kubernetes Engine cluster that
+        :param int node_count: The number of nodes in the Kubernetes Engine cluster that
                will be used to run this environment.
         :param 'EnvironmentConfigPrivateEnvironmentConfigArgs' private_environment_config: The configuration used for the Private IP Cloud Composer environment. Structure is documented below.
         :param 'EnvironmentConfigSoftwareConfigArgs' software_config: The configuration settings for software inside the environment.  Structure is documented below.
@@ -99,7 +99,7 @@ class EnvironmentConfig(dict):
 
     @property
     @pulumi.getter(name="nodeCount")
-    def node_count(self) -> Optional[float]:
+    def node_count(self) -> Optional[int]:
         """
         The number of nodes in the Kubernetes Engine cluster that
         will be used to run this environment.
@@ -173,20 +173,20 @@ class EnvironmentConfigDatabaseConfig(dict):
 class EnvironmentConfigNodeConfig(dict):
     def __init__(__self__, *,
                  zone: str,
-                 disk_size_gb: Optional[float] = None,
+                 disk_size_gb: Optional[int] = None,
                  ip_allocation_policy: Optional['outputs.EnvironmentConfigNodeConfigIpAllocationPolicy'] = None,
                  machine_type: Optional[str] = None,
                  network: Optional[str] = None,
-                 oauth_scopes: Optional[List[str]] = None,
+                 oauth_scopes: Optional[Sequence[str]] = None,
                  service_account: Optional[str] = None,
                  subnetwork: Optional[str] = None,
-                 tags: Optional[List[str]] = None):
+                 tags: Optional[Sequence[str]] = None):
         """
         :param str zone: The Compute Engine zone in which to deploy the VMs running the
                Apache Airflow software, specified as the zone name or
                relative resource name (e.g. "projects/{project}/zones/{zone}"). Must belong to the enclosing environment's project
                and region.
-        :param float disk_size_gb: The disk size in GB used for node VMs. Minimum size is 20GB.
+        :param int disk_size_gb: The disk size in GB used for node VMs. Minimum size is 20GB.
                If unspecified, defaults to 100GB. Cannot be updated.
         :param 'EnvironmentConfigNodeConfigIpAllocationPolicyArgs' ip_allocation_policy: Configuration for controlling how IPs are allocated in the GKE cluster.
                Structure is documented below.
@@ -198,7 +198,7 @@ class EnvironmentConfigNodeConfig(dict):
         :param str network: The Compute Engine network to be used for machine
                communications, specified as a self-link, relative resource name
                (e.g. "projects/{project}/global/networks/{network}"), by name.
-        :param List[str] oauth_scopes: The set of Google API scopes to be made available on all node
+        :param Sequence[str] oauth_scopes: The set of Google API scopes to be made available on all node
                VMs. Cannot be updated. If empty, defaults to
                `["https://www.googleapis.com/auth/cloud-platform"]`
         :param str service_account: The Google Cloud Platform Service Account to be used by the
@@ -210,7 +210,7 @@ class EnvironmentConfigNodeConfig(dict):
                communications, , specified as a self-link, relative resource name (e.g.
                "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided,
                network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
-        :param List[str] tags: The list of instance tags applied to all node VMs. Tags are
+        :param Sequence[str] tags: The list of instance tags applied to all node VMs. Tags are
                used to identify valid sources or targets for network
                firewalls. Each tag within the list must comply with RFC1035.
                Cannot be updated.
@@ -246,7 +246,7 @@ class EnvironmentConfigNodeConfig(dict):
 
     @property
     @pulumi.getter(name="diskSizeGb")
-    def disk_size_gb(self) -> Optional[float]:
+    def disk_size_gb(self) -> Optional[int]:
         """
         The disk size in GB used for node VMs. Minimum size is 20GB.
         If unspecified, defaults to 100GB. Cannot be updated.
@@ -286,7 +286,7 @@ class EnvironmentConfigNodeConfig(dict):
 
     @property
     @pulumi.getter(name="oauthScopes")
-    def oauth_scopes(self) -> Optional[List[str]]:
+    def oauth_scopes(self) -> Optional[Sequence[str]]:
         """
         The set of Google API scopes to be made available on all node
         VMs. Cannot be updated. If empty, defaults to
@@ -319,7 +319,7 @@ class EnvironmentConfigNodeConfig(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> Optional[Sequence[str]]:
         """
         The list of instance tags applied to all node VMs. Tags are
         used to identify valid sources or targets for network
@@ -639,9 +639,9 @@ class EnvironmentConfigWebServerConfig(dict):
 @pulumi.output_type
 class EnvironmentConfigWebServerNetworkAccessControl(dict):
     def __init__(__self__, *,
-                 allowed_ip_ranges: Optional[List['outputs.EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange']] = None):
+                 allowed_ip_ranges: Optional[Sequence['outputs.EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange']] = None):
         """
-        :param List['EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs'] allowed_ip_ranges: -
+        :param Sequence['EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs'] allowed_ip_ranges: -
                A collection of allowed IP ranges with descriptions. Structure is documented below.
         """
         if allowed_ip_ranges is not None:
@@ -649,7 +649,7 @@ class EnvironmentConfigWebServerNetworkAccessControl(dict):
 
     @property
     @pulumi.getter(name="allowedIpRanges")
-    def allowed_ip_ranges(self) -> Optional[List['outputs.EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange']]:
+    def allowed_ip_ranges(self) -> Optional[Sequence['outputs.EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange']]:
         """
         -
         A collection of allowed IP ranges with descriptions. Structure is documented below.
@@ -703,10 +703,10 @@ class EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange(dict):
 class GetImageVersionsImageVersionResult(dict):
     def __init__(__self__, *,
                  image_version_id: str,
-                 supported_python_versions: List[str]):
+                 supported_python_versions: Sequence[str]):
         """
         :param str image_version_id: The string identifier of the image version, in the form: "composer-x.y.z-airflow-a.b(.c)"
-        :param List[str] supported_python_versions: Supported python versions for this image version
+        :param Sequence[str] supported_python_versions: Supported python versions for this image version
         """
         pulumi.set(__self__, "image_version_id", image_version_id)
         pulumi.set(__self__, "supported_python_versions", supported_python_versions)
@@ -721,7 +721,7 @@ class GetImageVersionsImageVersionResult(dict):
 
     @property
     @pulumi.getter(name="supportedPythonVersions")
-    def supported_python_versions(self) -> List[str]:
+    def supported_python_versions(self) -> Sequence[str]:
         """
         Supported python versions for this image version
         """

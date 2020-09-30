@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -114,11 +114,11 @@ class NoteRelatedUrl(dict):
 class OccurenceAttestation(dict):
     def __init__(__self__, *,
                  serialized_payload: str,
-                 signatures: List['outputs.OccurenceAttestationSignature']):
+                 signatures: Sequence['outputs.OccurenceAttestationSignature']):
         """
         :param str serialized_payload: The serialized payload that is verified by one or
                more signatures. A base64-encoded string.
-        :param List['OccurenceAttestationSignatureArgs'] signatures: One or more signatures over serializedPayload.
+        :param Sequence['OccurenceAttestationSignatureArgs'] signatures: One or more signatures over serializedPayload.
                Verifier implementations should consider this attestation
                message verified if at least one signature verifies
                serializedPayload. See Signature in common.proto for more
@@ -139,7 +139,7 @@ class OccurenceAttestation(dict):
 
     @property
     @pulumi.getter
-    def signatures(self) -> List['outputs.OccurenceAttestationSignature']:
+    def signatures(self) -> Sequence['outputs.OccurenceAttestationSignature']:
         """
         One or more signatures over serializedPayload.
         Verifier implementations should consider this attestation

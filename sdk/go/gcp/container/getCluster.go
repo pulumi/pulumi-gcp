@@ -28,23 +28,17 @@ type LookupClusterArgs struct {
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The region this cluster has been created in. Deprecated
-	// in favour of `location`.
-	Region *string `pulumi:"region"`
-	// The zone this cluster has been created in. Deprecated in
-	// favour of `location`.
-	Zone *string `pulumi:"zone"`
 }
 
 // A collection of values returned by getCluster.
 type LookupClusterResult struct {
-	AdditionalZones            []string                              `pulumi:"additionalZones"`
 	AddonsConfigs              []GetClusterAddonsConfig              `pulumi:"addonsConfigs"`
 	AuthenticatorGroupsConfigs []GetClusterAuthenticatorGroupsConfig `pulumi:"authenticatorGroupsConfigs"`
 	ClusterAutoscalings        []GetClusterClusterAutoscaling        `pulumi:"clusterAutoscalings"`
 	ClusterIpv4Cidr            string                                `pulumi:"clusterIpv4Cidr"`
 	ClusterTelemetries         []GetClusterClusterTelemetry          `pulumi:"clusterTelemetries"`
 	DatabaseEncryptions        []GetClusterDatabaseEncryption        `pulumi:"databaseEncryptions"`
+	DatapathProvider           string                                `pulumi:"datapathProvider"`
 	DefaultMaxPodsPerNode      int                                   `pulumi:"defaultMaxPodsPerNode"`
 	DefaultSnatStatuses        []GetClusterDefaultSnatStatus         `pulumi:"defaultSnatStatuses"`
 	Description                string                                `pulumi:"description"`
@@ -81,7 +75,6 @@ type LookupClusterResult struct {
 	PodSecurityPolicyConfigs        []GetClusterPodSecurityPolicyConfig        `pulumi:"podSecurityPolicyConfigs"`
 	PrivateClusterConfigs           []GetClusterPrivateClusterConfig           `pulumi:"privateClusterConfigs"`
 	Project                         *string                                    `pulumi:"project"`
-	Region                          *string                                    `pulumi:"region"`
 	ReleaseChannels                 []GetClusterReleaseChannel                 `pulumi:"releaseChannels"`
 	RemoveDefaultNodePool           bool                                       `pulumi:"removeDefaultNodePool"`
 	ResourceLabels                  map[string]string                          `pulumi:"resourceLabels"`
@@ -92,5 +85,4 @@ type LookupClusterResult struct {
 	TpuIpv4CidrBlock                string                                     `pulumi:"tpuIpv4CidrBlock"`
 	VerticalPodAutoscalings         []GetClusterVerticalPodAutoscaling         `pulumi:"verticalPodAutoscalings"`
 	WorkloadIdentityConfigs         []GetClusterWorkloadIdentityConfig         `pulumi:"workloadIdentityConfigs"`
-	Zone                            *string                                    `pulumi:"zone"`
 }

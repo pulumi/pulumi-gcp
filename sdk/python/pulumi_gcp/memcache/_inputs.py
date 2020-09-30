@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -19,7 +19,7 @@ class InstanceMemcacheNodeArgs:
     def __init__(__self__, *,
                  host: Optional[pulumi.Input[str]] = None,
                  node_id: Optional[pulumi.Input[str]] = None,
-                 port: Optional[pulumi.Input[float]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         if host is not None:
@@ -53,11 +53,11 @@ class InstanceMemcacheNodeArgs:
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[float]]:
+    def port(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[float]]):
+    def port(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "port", value)
 
     @property
@@ -123,37 +123,37 @@ class InstanceMemcacheParametersArgs:
 @pulumi.input_type
 class InstanceNodeConfigArgs:
     def __init__(__self__, *,
-                 cpu_count: pulumi.Input[float],
-                 memory_size_mb: pulumi.Input[float]):
+                 cpu_count: pulumi.Input[int],
+                 memory_size_mb: pulumi.Input[int]):
         """
-        :param pulumi.Input[float] cpu_count: Number of CPUs per node.
-        :param pulumi.Input[float] memory_size_mb: Memory size in Mebibytes for each memcache node.
+        :param pulumi.Input[int] cpu_count: Number of CPUs per node.
+        :param pulumi.Input[int] memory_size_mb: Memory size in Mebibytes for each memcache node.
         """
         pulumi.set(__self__, "cpu_count", cpu_count)
         pulumi.set(__self__, "memory_size_mb", memory_size_mb)
 
     @property
     @pulumi.getter(name="cpuCount")
-    def cpu_count(self) -> pulumi.Input[float]:
+    def cpu_count(self) -> pulumi.Input[int]:
         """
         Number of CPUs per node.
         """
         return pulumi.get(self, "cpu_count")
 
     @cpu_count.setter
-    def cpu_count(self, value: pulumi.Input[float]):
+    def cpu_count(self, value: pulumi.Input[int]):
         pulumi.set(self, "cpu_count", value)
 
     @property
     @pulumi.getter(name="memorySizeMb")
-    def memory_size_mb(self) -> pulumi.Input[float]:
+    def memory_size_mb(self) -> pulumi.Input[int]:
         """
         Memory size in Mebibytes for each memcache node.
         """
         return pulumi.get(self, "memory_size_mb")
 
     @memory_size_mb.setter
-    def memory_size_mb(self, value: pulumi.Input[float]):
+    def memory_size_mb(self, value: pulumi.Input[int]):
         pulumi.set(self, "memory_size_mb", value)
 
 

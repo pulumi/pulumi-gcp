@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['Instance']
@@ -19,7 +19,7 @@ class Instance(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 num_nodes: Optional[pulumi.Input[float]] = None,
+                 num_nodes: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -51,7 +51,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] name: A unique identifier for the instance, which cannot be changed after
                the instance is created. The name must be between 6 and 30 characters
                in length.
-        :param pulumi.Input[float] num_nodes: The number of nodes allocated to this instance.
+        :param pulumi.Input[int] num_nodes: The number of nodes allocated to this instance.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -97,7 +97,7 @@ class Instance(pulumi.CustomResource):
             display_name: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            num_nodes: Optional[pulumi.Input[float]] = None,
+            num_nodes: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None) -> 'Instance':
         """
@@ -120,7 +120,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] name: A unique identifier for the instance, which cannot be changed after
                the instance is created. The name must be between 6 and 30 characters
                in length.
-        :param pulumi.Input[float] num_nodes: The number of nodes allocated to this instance.
+        :param pulumi.Input[int] num_nodes: The number of nodes allocated to this instance.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] state: Instance status: 'CREATING' or 'READY'.
@@ -181,7 +181,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="numNodes")
-    def num_nodes(self) -> pulumi.Output[Optional[float]]:
+    def num_nodes(self) -> pulumi.Output[Optional[int]]:
         """
         The number of nodes allocated to this instance.
         """

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -20,15 +20,15 @@ __all__ = [
 @pulumi.output_type
 class GCPolicyMaxAge(dict):
     def __init__(__self__, *,
-                 days: float):
+                 days: int):
         """
-        :param float days: Number of days before applying GC policy.
+        :param int days: Number of days before applying GC policy.
         """
         pulumi.set(__self__, "days", days)
 
     @property
     @pulumi.getter
-    def days(self) -> float:
+    def days(self) -> int:
         """
         Number of days before applying GC policy.
         """
@@ -41,15 +41,15 @@ class GCPolicyMaxAge(dict):
 @pulumi.output_type
 class GCPolicyMaxVersion(dict):
     def __init__(__self__, *,
-                 number: float):
+                 number: int):
         """
-        :param float number: Number of version before applying the GC policy.
+        :param int number: Number of version before applying the GC policy.
         """
         pulumi.set(__self__, "number", number)
 
     @property
     @pulumi.getter
-    def number(self) -> float:
+    def number(self) -> int:
         """
         Number of version before applying the GC policy.
         """
@@ -64,14 +64,14 @@ class InstanceCluster(dict):
     def __init__(__self__, *,
                  cluster_id: str,
                  zone: str,
-                 num_nodes: Optional[float] = None,
+                 num_nodes: Optional[int] = None,
                  storage_type: Optional[str] = None):
         """
         :param str cluster_id: The ID of the Cloud Bigtable cluster.
         :param str zone: The zone to create the Cloud Bigtable cluster in. Each
                cluster must have a different zone in the same region. Zones that support
                Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
-        :param float num_nodes: The number of nodes in your Cloud Bigtable cluster.
+        :param int num_nodes: The number of nodes in your Cloud Bigtable cluster.
                Required, with a minimum of `1` for a `PRODUCTION` instance. Must be left unset
                for a `DEVELOPMENT` instance.
         :param str storage_type: The storage type to use. One of `"SSD"` or
@@ -104,7 +104,7 @@ class InstanceCluster(dict):
 
     @property
     @pulumi.getter(name="numNodes")
-    def num_nodes(self) -> Optional[float]:
+    def num_nodes(self) -> Optional[int]:
         """
         The number of nodes in your Cloud Bigtable cluster.
         Required, with a minimum of `1` for a `PRODUCTION` instance. Must be left unset

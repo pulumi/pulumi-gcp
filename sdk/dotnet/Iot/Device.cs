@@ -31,8 +31,8 @@ namespace Pulumi.Gcp.Iot
         /// <summary>
         /// The most recent device configuration, which is eventually sent from Cloud IoT Core to the device.
         /// </summary>
-        [Output("config")]
-        public Output<Outputs.DeviceConfig> Config { get; private set; } = null!;
+        [Output("configs")]
+        public Output<ImmutableArray<Outputs.DeviceConfig>> Configs { get; private set; } = null!;
 
         /// <summary>
         /// The credentials used to authenticate this device.
@@ -63,8 +63,8 @@ namespace Pulumi.Gcp.Iot
         /// <summary>
         /// The error message of the most recent error, such as a failure to publish to Cloud Pub/Sub.
         /// </summary>
-        [Output("lastErrorStatus")]
-        public Output<Outputs.DeviceLastErrorStatus> LastErrorStatus { get; private set; } = null!;
+        [Output("lastErrorStatuses")]
+        public Output<ImmutableArray<Outputs.DeviceLastErrorStatus>> LastErrorStatuses { get; private set; } = null!;
 
         /// <summary>
         /// The time the most recent error occurred, such as a failure to publish to Cloud Pub/Sub.
@@ -125,8 +125,8 @@ namespace Pulumi.Gcp.Iot
         /// <summary>
         /// The state most recently received from the device.
         /// </summary>
-        [Output("state")]
-        public Output<Outputs.DeviceState> State { get; private set; } = null!;
+        [Output("states")]
+        public Output<ImmutableArray<Outputs.DeviceState>> States { get; private set; } = null!;
 
 
         /// <summary>
@@ -244,11 +244,17 @@ namespace Pulumi.Gcp.Iot
         [Input("blocked")]
         public Input<bool>? Blocked { get; set; }
 
+        [Input("configs")]
+        private InputList<Inputs.DeviceConfigGetArgs>? _configs;
+
         /// <summary>
         /// The most recent device configuration, which is eventually sent from Cloud IoT Core to the device.
         /// </summary>
-        [Input("config")]
-        public Input<Inputs.DeviceConfigGetArgs>? Config { get; set; }
+        public InputList<Inputs.DeviceConfigGetArgs> Configs
+        {
+            get => _configs ?? (_configs = new InputList<Inputs.DeviceConfigGetArgs>());
+            set => _configs = value;
+        }
 
         [Input("credentials")]
         private InputList<Inputs.DeviceCredentialGetArgs>? _credentials;
@@ -282,11 +288,17 @@ namespace Pulumi.Gcp.Iot
         [Input("lastConfigSendTime")]
         public Input<string>? LastConfigSendTime { get; set; }
 
+        [Input("lastErrorStatuses")]
+        private InputList<Inputs.DeviceLastErrorStatusGetArgs>? _lastErrorStatuses;
+
         /// <summary>
         /// The error message of the most recent error, such as a failure to publish to Cloud Pub/Sub.
         /// </summary>
-        [Input("lastErrorStatus")]
-        public Input<Inputs.DeviceLastErrorStatusGetArgs>? LastErrorStatus { get; set; }
+        public InputList<Inputs.DeviceLastErrorStatusGetArgs> LastErrorStatuses
+        {
+            get => _lastErrorStatuses ?? (_lastErrorStatuses = new InputList<Inputs.DeviceLastErrorStatusGetArgs>());
+            set => _lastErrorStatuses = value;
+        }
 
         /// <summary>
         /// The time the most recent error occurred, such as a failure to publish to Cloud Pub/Sub.
@@ -350,11 +362,17 @@ namespace Pulumi.Gcp.Iot
         [Input("registry")]
         public Input<string>? Registry { get; set; }
 
+        [Input("states")]
+        private InputList<Inputs.DeviceStateGetArgs>? _states;
+
         /// <summary>
         /// The state most recently received from the device.
         /// </summary>
-        [Input("state")]
-        public Input<Inputs.DeviceStateGetArgs>? State { get; set; }
+        public InputList<Inputs.DeviceStateGetArgs> States
+        {
+            get => _states ?? (_states = new InputList<Inputs.DeviceStateGetArgs>());
+            set => _states = value;
+        }
 
         public DeviceState()
         {

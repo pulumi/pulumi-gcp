@@ -36,7 +36,7 @@ type AlertPolicy struct {
 	Conditions AlertPolicyConditionArrayOutput `pulumi:"conditions"`
 	// A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be
 	// ignored.
-	CreationRecord AlertPolicyCreationRecordOutput `pulumi:"creationRecord"`
+	CreationRecords AlertPolicyCreationRecordArrayOutput `pulumi:"creationRecords"`
 	// A short name or phrase used to identify the
 	// condition in dashboards, notifications, and
 	// incidents. To avoid confusion, don't use the same
@@ -127,7 +127,7 @@ type alertPolicyState struct {
 	Conditions []AlertPolicyCondition `pulumi:"conditions"`
 	// A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be
 	// ignored.
-	CreationRecord *AlertPolicyCreationRecord `pulumi:"creationRecord"`
+	CreationRecords []AlertPolicyCreationRecord `pulumi:"creationRecords"`
 	// A short name or phrase used to identify the
 	// condition in dashboards, notifications, and
 	// incidents. To avoid confusion, don't use the same
@@ -182,7 +182,7 @@ type AlertPolicyState struct {
 	Conditions AlertPolicyConditionArrayInput
 	// A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be
 	// ignored.
-	CreationRecord AlertPolicyCreationRecordPtrInput
+	CreationRecords AlertPolicyCreationRecordArrayInput
 	// A short name or phrase used to identify the
 	// condition in dashboards, notifications, and
 	// incidents. To avoid confusion, don't use the same

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -95,7 +95,7 @@ class ObjectAccessControl(pulumi.CustomResource):
             __props__['email'] = None
             __props__['entity_id'] = None
             __props__['generation'] = None
-            __props__['project_team'] = None
+            __props__['project_teams'] = None
         super(ObjectAccessControl, __self__).__init__(
             'gcp:storage/objectAccessControl:ObjectAccessControl',
             resource_name,
@@ -111,9 +111,9 @@ class ObjectAccessControl(pulumi.CustomResource):
             email: Optional[pulumi.Input[str]] = None,
             entity: Optional[pulumi.Input[str]] = None,
             entity_id: Optional[pulumi.Input[str]] = None,
-            generation: Optional[pulumi.Input[float]] = None,
+            generation: Optional[pulumi.Input[int]] = None,
             object: Optional[pulumi.Input[str]] = None,
-            project_team: Optional[pulumi.Input[pulumi.InputType['ObjectAccessControlProjectTeamArgs']]] = None,
+            project_teams: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectAccessControlProjectTeamArgs']]]]] = None,
             role: Optional[pulumi.Input[str]] = None) -> 'ObjectAccessControl':
         """
         Get an existing ObjectAccessControl resource's state with the given name, id, and optional extra
@@ -135,9 +135,9 @@ class ObjectAccessControl(pulumi.CustomResource):
                * allUsers
                * allAuthenticatedUsers
         :param pulumi.Input[str] entity_id: The ID for the entity
-        :param pulumi.Input[float] generation: The content generation of the object, if applied to an object.
+        :param pulumi.Input[int] generation: The content generation of the object, if applied to an object.
         :param pulumi.Input[str] object: The name of the object to apply the access control to.
-        :param pulumi.Input[pulumi.InputType['ObjectAccessControlProjectTeamArgs']] project_team: The project team associated with the entity
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectAccessControlProjectTeamArgs']]]] project_teams: The project team associated with the entity
         :param pulumi.Input[str] role: The access permission for the entity.
                Possible values are `OWNER` and `READER`.
         """
@@ -152,7 +152,7 @@ class ObjectAccessControl(pulumi.CustomResource):
         __props__["entity_id"] = entity_id
         __props__["generation"] = generation
         __props__["object"] = object
-        __props__["project_team"] = project_team
+        __props__["project_teams"] = project_teams
         __props__["role"] = role
         return ObjectAccessControl(resource_name, opts=opts, __props__=__props__)
 
@@ -206,7 +206,7 @@ class ObjectAccessControl(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def generation(self) -> pulumi.Output[float]:
+    def generation(self) -> pulumi.Output[int]:
         """
         The content generation of the object, if applied to an object.
         """
@@ -221,12 +221,12 @@ class ObjectAccessControl(pulumi.CustomResource):
         return pulumi.get(self, "object")
 
     @property
-    @pulumi.getter(name="projectTeam")
-    def project_team(self) -> pulumi.Output['outputs.ObjectAccessControlProjectTeam']:
+    @pulumi.getter(name="projectTeams")
+    def project_teams(self) -> pulumi.Output[Sequence['outputs.ObjectAccessControlProjectTeam']]:
         """
         The project team associated with the entity
         """
-        return pulumi.get(self, "project_team")
+        return pulumi.get(self, "project_teams")
 
     @property
     @pulumi.getter

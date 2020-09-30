@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['TargetPool']
@@ -19,7 +19,7 @@ class TargetPool(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  failover_ratio: Optional[pulumi.Input[float]] = None,
                  health_checks: Optional[pulumi.Input[str]] = None,
-                 instances: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -43,7 +43,7 @@ class TargetPool(pulumi.CustomResource):
                backup pool (which must also be set).
         :param pulumi.Input[str] health_checks: List of zero or one health check name or self_link. Only
                legacy `compute.HttpHealthCheck` is supported.
-        :param pulumi.Input[List[pulumi.Input[str]]] instances: List of instances in the pool. They can be given as
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instances: List of instances in the pool. They can be given as
                URLs, or in the form of "zone/name". Note that the instances need not exist
                at the time of target pool creation, so there is no need to use the
                interpolation to create a dependency on the instances from the
@@ -99,7 +99,7 @@ class TargetPool(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             failover_ratio: Optional[pulumi.Input[float]] = None,
             health_checks: Optional[pulumi.Input[str]] = None,
-            instances: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
@@ -119,7 +119,7 @@ class TargetPool(pulumi.CustomResource):
                backup pool (which must also be set).
         :param pulumi.Input[str] health_checks: List of zero or one health check name or self_link. Only
                legacy `compute.HttpHealthCheck` is supported.
-        :param pulumi.Input[List[pulumi.Input[str]]] instances: List of instances in the pool. They can be given as
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instances: List of instances in the pool. They can be given as
                URLs, or in the form of "zone/name". Note that the instances need not exist
                at the time of target pool creation, so there is no need to use the
                interpolation to create a dependency on the instances from the
@@ -188,7 +188,7 @@ class TargetPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def instances(self) -> pulumi.Output[List[str]]:
+    def instances(self) -> pulumi.Output[Sequence[str]]:
         """
         List of instances in the pool. They can be given as
         URLs, or in the form of "zone/name". Note that the instances need not exist

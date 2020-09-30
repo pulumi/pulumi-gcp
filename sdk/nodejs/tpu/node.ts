@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * To get more information about Node, see:
  *
- * * [API documentation](https://cloud.google.com/tpu/docs/reference/rest/)
+ * * [API documentation](https://cloud.google.com/tpu/docs/reference/rest/v1/projects.locations.nodes)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/tpu/docs/)
  *
@@ -104,6 +104,13 @@ export class Node extends pulumi.CustomResource {
      */
     public readonly tensorflowVersion!: pulumi.Output<string>;
     /**
+     * Whether the VPC peering for the node is set up through Service Networking API.
+     * The VPC Peering should be set up before provisioning the node. If this field is set,
+     * cidrBlock field should not be specified. If the network that you want to peer the
+     * TPU Node to is a Shared VPC network, the node must be created with this this field enabled.
+     */
+    public readonly useServiceNetworking!: pulumi.Output<boolean | undefined>;
+    /**
      * The GCP location for the TPU.
      */
     public readonly zone!: pulumi.Output<string>;
@@ -131,14 +138,12 @@ export class Node extends pulumi.CustomResource {
             inputs["schedulingConfig"] = state ? state.schedulingConfig : undefined;
             inputs["serviceAccount"] = state ? state.serviceAccount : undefined;
             inputs["tensorflowVersion"] = state ? state.tensorflowVersion : undefined;
+            inputs["useServiceNetworking"] = state ? state.useServiceNetworking : undefined;
             inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as NodeArgs | undefined;
             if (!args || args.acceleratorType === undefined) {
                 throw new Error("Missing required property 'acceleratorType'");
-            }
-            if (!args || args.cidrBlock === undefined) {
-                throw new Error("Missing required property 'cidrBlock'");
             }
             if (!args || args.tensorflowVersion === undefined) {
                 throw new Error("Missing required property 'tensorflowVersion'");
@@ -155,6 +160,7 @@ export class Node extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["schedulingConfig"] = args ? args.schedulingConfig : undefined;
             inputs["tensorflowVersion"] = args ? args.tensorflowVersion : undefined;
+            inputs["useServiceNetworking"] = args ? args.useServiceNetworking : undefined;
             inputs["zone"] = args ? args.zone : undefined;
             inputs["networkEndpoints"] = undefined /*out*/;
             inputs["serviceAccount"] = undefined /*out*/;
@@ -233,6 +239,13 @@ export interface NodeState {
      */
     readonly tensorflowVersion?: pulumi.Input<string>;
     /**
+     * Whether the VPC peering for the node is set up through Service Networking API.
+     * The VPC Peering should be set up before provisioning the node. If this field is set,
+     * cidrBlock field should not be specified. If the network that you want to peer the
+     * TPU Node to is a Shared VPC network, the node must be created with this this field enabled.
+     */
+    readonly useServiceNetworking?: pulumi.Input<boolean>;
+    /**
      * The GCP location for the TPU.
      */
     readonly zone?: pulumi.Input<string>;
@@ -256,7 +269,7 @@ export interface NodeArgs {
      * subnetworks in the user's provided network, or the provided network
      * is peered with another network that is using that CIDR block.
      */
-    readonly cidrBlock: pulumi.Input<string>;
+    readonly cidrBlock?: pulumi.Input<string>;
     /**
      * The user-supplied description of the TPU. Maximum of 512 characters.
      */
@@ -290,6 +303,13 @@ export interface NodeArgs {
      * The version of Tensorflow running in the Node.
      */
     readonly tensorflowVersion: pulumi.Input<string>;
+    /**
+     * Whether the VPC peering for the node is set up through Service Networking API.
+     * The VPC Peering should be set up before provisioning the node. If this field is set,
+     * cidrBlock field should not be specified. If the network that you want to peer the
+     * TPU Node to is a Shared VPC network, the node must be created with this this field enabled.
+     */
+    readonly useServiceNetworking?: pulumi.Input<boolean>;
     /**
      * The GCP location for the TPU.
      */

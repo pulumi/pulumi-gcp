@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -32,7 +32,7 @@ class GetLBIPRangesResult:
 
     @property
     @pulumi.getter(name="httpSslTcpInternals")
-    def http_ssl_tcp_internals(self) -> List[str]:
+    def http_ssl_tcp_internals(self) -> Sequence[str]:
         """
         The IP ranges used for health checks when **HTTP(S), SSL proxy, TCP proxy, and Internal load balancing** is used
         """
@@ -48,7 +48,7 @@ class GetLBIPRangesResult:
 
     @property
     @pulumi.getter
-    def networks(self) -> List[str]:
+    def networks(self) -> Sequence[str]:
         """
         The IP ranges used for health checks when **Network load balancing** is used
         """

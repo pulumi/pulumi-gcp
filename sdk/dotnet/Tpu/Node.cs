@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Tpu
     /// 
     /// To get more information about Node, see:
     /// 
-    /// * [API documentation](https://cloud.google.com/tpu/docs/reference/rest/)
+    /// * [API documentation](https://cloud.google.com/tpu/docs/reference/rest/v1/projects.locations.nodes)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/tpu/docs/)
     /// 
@@ -103,6 +103,15 @@ namespace Pulumi.Gcp.Tpu
         public Output<string> TensorflowVersion { get; private set; } = null!;
 
         /// <summary>
+        /// Whether the VPC peering for the node is set up through Service Networking API.
+        /// The VPC Peering should be set up before provisioning the node. If this field is set,
+        /// cidr_block field should not be specified. If the network that you want to peer the
+        /// TPU Node to is a Shared VPC network, the node must be created with this this field enabled.
+        /// </summary>
+        [Output("useServiceNetworking")]
+        public Output<bool?> UseServiceNetworking { get; private set; } = null!;
+
+        /// <summary>
         /// The GCP location for the TPU.
         /// </summary>
         [Output("zone")]
@@ -170,8 +179,8 @@ namespace Pulumi.Gcp.Tpu
         /// subnetworks in the user's provided network, or the provided network
         /// is peered with another network that is using that CIDR block.
         /// </summary>
-        [Input("cidrBlock", required: true)]
-        public Input<string> CidrBlock { get; set; } = null!;
+        [Input("cidrBlock")]
+        public Input<string>? CidrBlock { get; set; }
 
         /// <summary>
         /// The user-supplied description of the TPU. Maximum of 512 characters.
@@ -225,6 +234,15 @@ namespace Pulumi.Gcp.Tpu
         /// </summary>
         [Input("tensorflowVersion", required: true)]
         public Input<string> TensorflowVersion { get; set; } = null!;
+
+        /// <summary>
+        /// Whether the VPC peering for the node is set up through Service Networking API.
+        /// The VPC Peering should be set up before provisioning the node. If this field is set,
+        /// cidr_block field should not be specified. If the network that you want to peer the
+        /// TPU Node to is a Shared VPC network, the node must be created with this this field enabled.
+        /// </summary>
+        [Input("useServiceNetworking")]
+        public Input<bool>? UseServiceNetworking { get; set; }
 
         /// <summary>
         /// The GCP location for the TPU.
@@ -330,6 +348,15 @@ namespace Pulumi.Gcp.Tpu
         /// </summary>
         [Input("tensorflowVersion")]
         public Input<string>? TensorflowVersion { get; set; }
+
+        /// <summary>
+        /// Whether the VPC peering for the node is set up through Service Networking API.
+        /// The VPC Peering should be set up before provisioning the node. If this field is set,
+        /// cidr_block field should not be specified. If the network that you want to peer the
+        /// TPU Node to is a Shared VPC network, the node must be created with this this field enabled.
+        /// </summary>
+        [Input("useServiceNetworking")]
+        public Input<bool>? UseServiceNetworking { get; set; }
 
         /// <summary>
         /// The GCP location for the TPU.

@@ -142,7 +142,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
      * The URI of the created resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
-    public /*out*/ readonly serverCaCert!: pulumi.Output<outputs.sql.DatabaseInstanceServerCaCert>;
+    public /*out*/ readonly serverCaCerts!: pulumi.Output<outputs.sql.DatabaseInstanceServerCaCert[]>;
     /**
      * The service account email address assigned to the
      * instance.
@@ -180,7 +180,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             inputs["replicaConfiguration"] = state ? state.replicaConfiguration : undefined;
             inputs["rootPassword"] = state ? state.rootPassword : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
-            inputs["serverCaCert"] = state ? state.serverCaCert : undefined;
+            inputs["serverCaCerts"] = state ? state.serverCaCerts : undefined;
             inputs["serviceAccountEmailAddress"] = state ? state.serviceAccountEmailAddress : undefined;
             inputs["settings"] = state ? state.settings : undefined;
         } else {
@@ -203,7 +203,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             inputs["privateIpAddress"] = undefined /*out*/;
             inputs["publicIpAddress"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
-            inputs["serverCaCert"] = undefined /*out*/;
+            inputs["serverCaCerts"] = undefined /*out*/;
             inputs["serviceAccountEmailAddress"] = undefined /*out*/;
         }
         if (!opts) {
@@ -296,7 +296,7 @@ export interface DatabaseInstanceState {
      * The URI of the created resource.
      */
     readonly selfLink?: pulumi.Input<string>;
-    readonly serverCaCert?: pulumi.Input<inputs.sql.DatabaseInstanceServerCaCert>;
+    readonly serverCaCerts?: pulumi.Input<pulumi.Input<inputs.sql.DatabaseInstanceServerCaCert>[]>;
     /**
      * The service account email address assigned to the
      * instance.

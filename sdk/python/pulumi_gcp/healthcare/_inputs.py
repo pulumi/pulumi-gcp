@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -329,7 +329,7 @@ class FhirStoreNotificationConfigArgs:
 class FhirStoreStreamConfigArgs:
     def __init__(__self__, *,
                  bigquery_destination: pulumi.Input['FhirStoreStreamConfigBigqueryDestinationArgs'],
-                 resource_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input['FhirStoreStreamConfigBigqueryDestinationArgs'] bigquery_destination: The destination BigQuery structure that contains both the dataset location and corresponding schema config.
                The output is organized in one table per resource type. The server reuses the existing tables (if any) that
@@ -337,7 +337,7 @@ class FhirStoreStreamConfigArgs:
                resource type, the server attempts to create one.
                See the [streaming config reference](https://cloud.google.com/healthcare/docs/reference/rest/v1beta1/projects.locations.datasets.fhirStores#streamconfig) for more details.
                Structure is documented below.
-        :param pulumi.Input[List[pulumi.Input[str]]] resource_types: Supply a FHIR resource type (such as "Patient" or "Observation"). See
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_types: Supply a FHIR resource type (such as "Patient" or "Observation"). See
                https://www.hl7.org/fhir/valueset-resource-types.html for a list of all FHIR resource types. The server treats
                an empty list as an intent to stream all the supported resource types in this FHIR store.
         """
@@ -364,7 +364,7 @@ class FhirStoreStreamConfigArgs:
 
     @property
     @pulumi.getter(name="resourceTypes")
-    def resource_types(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def resource_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Supply a FHIR resource type (such as "Patient" or "Observation"). See
         https://www.hl7.org/fhir/valueset-resource-types.html for a list of all FHIR resource types. The server treats
@@ -373,7 +373,7 @@ class FhirStoreStreamConfigArgs:
         return pulumi.get(self, "resource_types")
 
     @resource_types.setter
-    def resource_types(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def resource_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "resource_types", value)
 
 
@@ -419,10 +419,10 @@ class FhirStoreStreamConfigBigqueryDestinationArgs:
 @pulumi.input_type
 class FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs:
     def __init__(__self__, *,
-                 recursive_structure_depth: pulumi.Input[float],
+                 recursive_structure_depth: pulumi.Input[int],
                  schema_type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[float] recursive_structure_depth: The depth for all recursive structures in the output analytics schema. For example, concept in the CodeSystem
+        :param pulumi.Input[int] recursive_structure_depth: The depth for all recursive structures in the output analytics schema. For example, concept in the CodeSystem
                resource is a recursive structure; when the depth is 2, the CodeSystem table will have a column called
                concept.concept but not concept.concept.concept. If not specified or set to 0, the server will use the default
                value 2. The maximum depth allowed is 5.
@@ -438,7 +438,7 @@ class FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs:
 
     @property
     @pulumi.getter(name="recursiveStructureDepth")
-    def recursive_structure_depth(self) -> pulumi.Input[float]:
+    def recursive_structure_depth(self) -> pulumi.Input[int]:
         """
         The depth for all recursive structures in the output analytics schema. For example, concept in the CodeSystem
         resource is a recursive structure; when the depth is 2, the CodeSystem table will have a column called
@@ -448,7 +448,7 @@ class FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs:
         return pulumi.get(self, "recursive_structure_depth")
 
     @recursive_structure_depth.setter
-    def recursive_structure_depth(self, value: pulumi.Input[float]):
+    def recursive_structure_depth(self, value: pulumi.Input[int]):
         pulumi.set(self, "recursive_structure_depth", value)
 
     @property

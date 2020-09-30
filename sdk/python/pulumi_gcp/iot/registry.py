@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -17,15 +17,15 @@ class Registry(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 credentials: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['RegistryCredentialArgs']]]]] = None,
-                 event_notification_configs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['RegistryEventNotificationConfigItemArgs']]]]] = None,
-                 http_config: Optional[pulumi.Input[pulumi.InputType['RegistryHttpConfigArgs']]] = None,
+                 credentials: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegistryCredentialArgs']]]]] = None,
+                 event_notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegistryEventNotificationConfigItemArgs']]]]] = None,
+                 http_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  log_level: Optional[pulumi.Input[str]] = None,
-                 mqtt_config: Optional[pulumi.Input[pulumi.InputType['RegistryMqttConfigArgs']]] = None,
+                 mqtt_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 state_notification_config: Optional[pulumi.Input[pulumi.InputType['RegistryStateNotificationConfigArgs']]] = None,
+                 state_notification_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -42,12 +42,12 @@ class Registry(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['RegistryCredentialArgs']]]] credentials: List of public key certificates to authenticate devices.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegistryCredentialArgs']]]] credentials: List of public key certificates to authenticate devices.
                The structure is documented below.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['RegistryEventNotificationConfigItemArgs']]]] event_notification_configs: List of configurations for event notifications, such as PubSub topics
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegistryEventNotificationConfigItemArgs']]]] event_notification_configs: List of configurations for event notifications, such as PubSub topics
                to publish device events to.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['RegistryHttpConfigArgs']] http_config: Activate or deactivate HTTP.
+        :param pulumi.Input[Mapping[str, Any]] http_config: Activate or deactivate HTTP.
                The structure is documented below.
         :param pulumi.Input[str] log_level: The default logging verbosity for activity from devices in this
                registry. Specifies which events should be written to logs. For
@@ -56,14 +56,14 @@ class Registry(pulumi.CustomResource):
                will also enable ERROR logging.
                Default value is `NONE`.
                Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
-        :param pulumi.Input[pulumi.InputType['RegistryMqttConfigArgs']] mqtt_config: Activate or deactivate MQTT.
+        :param pulumi.Input[Mapping[str, Any]] mqtt_config: Activate or deactivate MQTT.
                The structure is documented below.
         :param pulumi.Input[str] name: A unique name for the resource, required by device registry.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region in which the created registry should reside.
                If it is not provided, the provider region is used.
-        :param pulumi.Input[pulumi.InputType['RegistryStateNotificationConfigArgs']] state_notification_config: A PubSub topic to publish device state updates.
+        :param pulumi.Input[Mapping[str, Any]] state_notification_config: A PubSub topic to publish device state updates.
                The structure is documented below.
         """
         if __name__ is not None:
@@ -104,15 +104,15 @@ class Registry(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            credentials: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['RegistryCredentialArgs']]]]] = None,
-            event_notification_configs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['RegistryEventNotificationConfigItemArgs']]]]] = None,
-            http_config: Optional[pulumi.Input[pulumi.InputType['RegistryHttpConfigArgs']]] = None,
+            credentials: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegistryCredentialArgs']]]]] = None,
+            event_notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegistryEventNotificationConfigItemArgs']]]]] = None,
+            http_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             log_level: Optional[pulumi.Input[str]] = None,
-            mqtt_config: Optional[pulumi.Input[pulumi.InputType['RegistryMqttConfigArgs']]] = None,
+            mqtt_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            state_notification_config: Optional[pulumi.Input[pulumi.InputType['RegistryStateNotificationConfigArgs']]] = None) -> 'Registry':
+            state_notification_config: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'Registry':
         """
         Get an existing Registry resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -120,12 +120,12 @@ class Registry(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['RegistryCredentialArgs']]]] credentials: List of public key certificates to authenticate devices.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegistryCredentialArgs']]]] credentials: List of public key certificates to authenticate devices.
                The structure is documented below.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['RegistryEventNotificationConfigItemArgs']]]] event_notification_configs: List of configurations for event notifications, such as PubSub topics
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegistryEventNotificationConfigItemArgs']]]] event_notification_configs: List of configurations for event notifications, such as PubSub topics
                to publish device events to.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['RegistryHttpConfigArgs']] http_config: Activate or deactivate HTTP.
+        :param pulumi.Input[Mapping[str, Any]] http_config: Activate or deactivate HTTP.
                The structure is documented below.
         :param pulumi.Input[str] log_level: The default logging verbosity for activity from devices in this
                registry. Specifies which events should be written to logs. For
@@ -134,14 +134,14 @@ class Registry(pulumi.CustomResource):
                will also enable ERROR logging.
                Default value is `NONE`.
                Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
-        :param pulumi.Input[pulumi.InputType['RegistryMqttConfigArgs']] mqtt_config: Activate or deactivate MQTT.
+        :param pulumi.Input[Mapping[str, Any]] mqtt_config: Activate or deactivate MQTT.
                The structure is documented below.
         :param pulumi.Input[str] name: A unique name for the resource, required by device registry.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region in which the created registry should reside.
                If it is not provided, the provider region is used.
-        :param pulumi.Input[pulumi.InputType['RegistryStateNotificationConfigArgs']] state_notification_config: A PubSub topic to publish device state updates.
+        :param pulumi.Input[Mapping[str, Any]] state_notification_config: A PubSub topic to publish device state updates.
                The structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -161,7 +161,7 @@ class Registry(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def credentials(self) -> pulumi.Output[Optional[List['outputs.RegistryCredential']]]:
+    def credentials(self) -> pulumi.Output[Optional[Sequence['outputs.RegistryCredential']]]:
         """
         List of public key certificates to authenticate devices.
         The structure is documented below.
@@ -170,7 +170,7 @@ class Registry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="eventNotificationConfigs")
-    def event_notification_configs(self) -> pulumi.Output[List['outputs.RegistryEventNotificationConfigItem']]:
+    def event_notification_configs(self) -> pulumi.Output[Sequence['outputs.RegistryEventNotificationConfigItem']]:
         """
         List of configurations for event notifications, such as PubSub topics
         to publish device events to.
@@ -180,7 +180,7 @@ class Registry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="httpConfig")
-    def http_config(self) -> pulumi.Output['outputs.RegistryHttpConfig']:
+    def http_config(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Activate or deactivate HTTP.
         The structure is documented below.
@@ -203,7 +203,7 @@ class Registry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="mqttConfig")
-    def mqtt_config(self) -> pulumi.Output['outputs.RegistryMqttConfig']:
+    def mqtt_config(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Activate or deactivate MQTT.
         The structure is documented below.
@@ -238,7 +238,7 @@ class Registry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="stateNotificationConfig")
-    def state_notification_config(self) -> pulumi.Output[Optional['outputs.RegistryStateNotificationConfig']]:
+    def state_notification_config(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         A PubSub topic to publish device state updates.
         The structure is documented below.

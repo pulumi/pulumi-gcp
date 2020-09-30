@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -47,7 +47,7 @@ class GetKeysResult:
 
     @property
     @pulumi.getter(name="keySigningKeys")
-    def key_signing_keys(self) -> List['outputs.GetKeysKeySigningKeyResult']:
+    def key_signing_keys(self) -> Sequence['outputs.GetKeysKeySigningKeyResult']:
         """
         A list of Key-signing key (KSK) records. Structure is documented below. Additionally, the DS record is provided:
         """
@@ -65,7 +65,7 @@ class GetKeysResult:
 
     @property
     @pulumi.getter(name="zoneSigningKeys")
-    def zone_signing_keys(self) -> List['outputs.GetKeysZoneSigningKeyResult']:
+    def zone_signing_keys(self) -> Sequence['outputs.GetKeysZoneSigningKeyResult']:
         """
         A list of Zone-signing key (ZSK) records. Structure is documented below.
         """

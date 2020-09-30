@@ -12,11 +12,17 @@ namespace Pulumi.Gcp.Iot.Inputs
 
     public sealed class RegistryCredentialArgs : Pulumi.ResourceArgs
     {
+        [Input("publicKeyCertificate", required: true)]
+        private InputMap<object>? _publicKeyCertificate;
+
         /// <summary>
         /// A public key certificate format and data.
         /// </summary>
-        [Input("publicKeyCertificate", required: true)]
-        public Input<Inputs.RegistryCredentialPublicKeyCertificateArgs> PublicKeyCertificate { get; set; } = null!;
+        public InputMap<object> PublicKeyCertificate
+        {
+            get => _publicKeyCertificate ?? (_publicKeyCertificate = new InputMap<object>());
+            set => _publicKeyCertificate = value;
+        }
 
         public RegistryCredentialArgs()
         {

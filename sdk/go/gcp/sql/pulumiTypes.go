@@ -516,45 +516,29 @@ func (i DatabaseInstanceServerCaCertArgs) ToDatabaseInstanceServerCaCertOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceServerCaCertOutput)
 }
 
-func (i DatabaseInstanceServerCaCertArgs) ToDatabaseInstanceServerCaCertPtrOutput() DatabaseInstanceServerCaCertPtrOutput {
-	return i.ToDatabaseInstanceServerCaCertPtrOutputWithContext(context.Background())
-}
-
-func (i DatabaseInstanceServerCaCertArgs) ToDatabaseInstanceServerCaCertPtrOutputWithContext(ctx context.Context) DatabaseInstanceServerCaCertPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceServerCaCertOutput).ToDatabaseInstanceServerCaCertPtrOutputWithContext(ctx)
-}
-
-// DatabaseInstanceServerCaCertPtrInput is an input type that accepts DatabaseInstanceServerCaCertArgs, DatabaseInstanceServerCaCertPtr and DatabaseInstanceServerCaCertPtrOutput values.
-// You can construct a concrete instance of `DatabaseInstanceServerCaCertPtrInput` via:
+// DatabaseInstanceServerCaCertArrayInput is an input type that accepts DatabaseInstanceServerCaCertArray and DatabaseInstanceServerCaCertArrayOutput values.
+// You can construct a concrete instance of `DatabaseInstanceServerCaCertArrayInput` via:
 //
-//          DatabaseInstanceServerCaCertArgs{...}
-//
-//  or:
-//
-//          nil
-type DatabaseInstanceServerCaCertPtrInput interface {
+//          DatabaseInstanceServerCaCertArray{ DatabaseInstanceServerCaCertArgs{...} }
+type DatabaseInstanceServerCaCertArrayInput interface {
 	pulumi.Input
 
-	ToDatabaseInstanceServerCaCertPtrOutput() DatabaseInstanceServerCaCertPtrOutput
-	ToDatabaseInstanceServerCaCertPtrOutputWithContext(context.Context) DatabaseInstanceServerCaCertPtrOutput
+	ToDatabaseInstanceServerCaCertArrayOutput() DatabaseInstanceServerCaCertArrayOutput
+	ToDatabaseInstanceServerCaCertArrayOutputWithContext(context.Context) DatabaseInstanceServerCaCertArrayOutput
 }
 
-type databaseInstanceServerCaCertPtrType DatabaseInstanceServerCaCertArgs
+type DatabaseInstanceServerCaCertArray []DatabaseInstanceServerCaCertInput
 
-func DatabaseInstanceServerCaCertPtr(v *DatabaseInstanceServerCaCertArgs) DatabaseInstanceServerCaCertPtrInput {
-	return (*databaseInstanceServerCaCertPtrType)(v)
+func (DatabaseInstanceServerCaCertArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabaseInstanceServerCaCert)(nil)).Elem()
 }
 
-func (*databaseInstanceServerCaCertPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatabaseInstanceServerCaCert)(nil)).Elem()
+func (i DatabaseInstanceServerCaCertArray) ToDatabaseInstanceServerCaCertArrayOutput() DatabaseInstanceServerCaCertArrayOutput {
+	return i.ToDatabaseInstanceServerCaCertArrayOutputWithContext(context.Background())
 }
 
-func (i *databaseInstanceServerCaCertPtrType) ToDatabaseInstanceServerCaCertPtrOutput() DatabaseInstanceServerCaCertPtrOutput {
-	return i.ToDatabaseInstanceServerCaCertPtrOutputWithContext(context.Background())
-}
-
-func (i *databaseInstanceServerCaCertPtrType) ToDatabaseInstanceServerCaCertPtrOutputWithContext(ctx context.Context) DatabaseInstanceServerCaCertPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceServerCaCertPtrOutput)
+func (i DatabaseInstanceServerCaCertArray) ToDatabaseInstanceServerCaCertArrayOutputWithContext(ctx context.Context) DatabaseInstanceServerCaCertArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceServerCaCertArrayOutput)
 }
 
 type DatabaseInstanceServerCaCertOutput struct{ *pulumi.OutputState }
@@ -571,15 +555,6 @@ func (o DatabaseInstanceServerCaCertOutput) ToDatabaseInstanceServerCaCertOutput
 	return o
 }
 
-func (o DatabaseInstanceServerCaCertOutput) ToDatabaseInstanceServerCaCertPtrOutput() DatabaseInstanceServerCaCertPtrOutput {
-	return o.ToDatabaseInstanceServerCaCertPtrOutputWithContext(context.Background())
-}
-
-func (o DatabaseInstanceServerCaCertOutput) ToDatabaseInstanceServerCaCertPtrOutputWithContext(ctx context.Context) DatabaseInstanceServerCaCertPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceServerCaCert) *DatabaseInstanceServerCaCert {
-		return &v
-	}).(DatabaseInstanceServerCaCertPtrOutput)
-}
 func (o DatabaseInstanceServerCaCertOutput) Cert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceServerCaCert) *string { return v.Cert }).(pulumi.StringPtrOutput)
 }
@@ -602,69 +577,24 @@ func (o DatabaseInstanceServerCaCertOutput) Sha1Fingerprint() pulumi.StringPtrOu
 	return o.ApplyT(func(v DatabaseInstanceServerCaCert) *string { return v.Sha1Fingerprint }).(pulumi.StringPtrOutput)
 }
 
-type DatabaseInstanceServerCaCertPtrOutput struct{ *pulumi.OutputState }
+type DatabaseInstanceServerCaCertArrayOutput struct{ *pulumi.OutputState }
 
-func (DatabaseInstanceServerCaCertPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatabaseInstanceServerCaCert)(nil)).Elem()
+func (DatabaseInstanceServerCaCertArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabaseInstanceServerCaCert)(nil)).Elem()
 }
 
-func (o DatabaseInstanceServerCaCertPtrOutput) ToDatabaseInstanceServerCaCertPtrOutput() DatabaseInstanceServerCaCertPtrOutput {
+func (o DatabaseInstanceServerCaCertArrayOutput) ToDatabaseInstanceServerCaCertArrayOutput() DatabaseInstanceServerCaCertArrayOutput {
 	return o
 }
 
-func (o DatabaseInstanceServerCaCertPtrOutput) ToDatabaseInstanceServerCaCertPtrOutputWithContext(ctx context.Context) DatabaseInstanceServerCaCertPtrOutput {
+func (o DatabaseInstanceServerCaCertArrayOutput) ToDatabaseInstanceServerCaCertArrayOutputWithContext(ctx context.Context) DatabaseInstanceServerCaCertArrayOutput {
 	return o
 }
 
-func (o DatabaseInstanceServerCaCertPtrOutput) Elem() DatabaseInstanceServerCaCertOutput {
-	return o.ApplyT(func(v *DatabaseInstanceServerCaCert) DatabaseInstanceServerCaCert { return *v }).(DatabaseInstanceServerCaCertOutput)
-}
-
-func (o DatabaseInstanceServerCaCertPtrOutput) Cert() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DatabaseInstanceServerCaCert) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Cert
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o DatabaseInstanceServerCaCertPtrOutput) CommonName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DatabaseInstanceServerCaCert) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CommonName
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o DatabaseInstanceServerCaCertPtrOutput) CreateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DatabaseInstanceServerCaCert) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CreateTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// The [RFC 3339](https://tools.ietf.org/html/rfc3339)
-// formatted date time string indicating when this whitelist expires.
-func (o DatabaseInstanceServerCaCertPtrOutput) ExpirationTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DatabaseInstanceServerCaCert) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ExpirationTime
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o DatabaseInstanceServerCaCertPtrOutput) Sha1Fingerprint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DatabaseInstanceServerCaCert) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Sha1Fingerprint
-	}).(pulumi.StringPtrOutput)
+func (o DatabaseInstanceServerCaCertArrayOutput) Index(i pulumi.IntInput) DatabaseInstanceServerCaCertOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatabaseInstanceServerCaCert {
+		return vs[0].([]DatabaseInstanceServerCaCert)[vs[1].(int)]
+	}).(DatabaseInstanceServerCaCertOutput)
 }
 
 type DatabaseInstanceSettings struct {
@@ -3673,7 +3603,7 @@ func init() {
 	pulumi.RegisterOutputType(DatabaseInstanceReplicaConfigurationOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceReplicaConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceServerCaCertOutput{})
-	pulumi.RegisterOutputType(DatabaseInstanceServerCaCertPtrOutput{})
+	pulumi.RegisterOutputType(DatabaseInstanceServerCaCertArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsBackupConfigurationOutput{})

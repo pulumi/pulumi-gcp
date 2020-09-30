@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['Agent']
@@ -24,7 +24,7 @@ class Agent(pulumi.CustomResource):
                  enable_logging: Optional[pulumi.Input[bool]] = None,
                  match_mode: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 supported_language_codes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 supported_language_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -74,7 +74,7 @@ class Agent(pulumi.CustomResource):
                Possible values are `MATCH_MODE_HYBRID` and `MATCH_MODE_ML_ONLY`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[List[pulumi.Input[str]]] supported_language_codes: The list of all languages supported by this agent (except for the defaultLanguageCode).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] supported_language_codes: The list of all languages supported by this agent (except for the defaultLanguageCode).
         :param pulumi.Input[str] tier: The agent tier. If not specified, TIER_STANDARD is assumed.
                * TIER_STANDARD: Standard tier.
                * TIER_ENTERPRISE: Enterprise tier (Essentials).
@@ -140,7 +140,7 @@ class Agent(pulumi.CustomResource):
             enable_logging: Optional[pulumi.Input[bool]] = None,
             match_mode: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            supported_language_codes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            supported_language_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tier: Optional[pulumi.Input[str]] = None,
             time_zone: Optional[pulumi.Input[str]] = None) -> 'Agent':
         """
@@ -180,7 +180,7 @@ class Agent(pulumi.CustomResource):
                Possible values are `MATCH_MODE_HYBRID` and `MATCH_MODE_ML_ONLY`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[List[pulumi.Input[str]]] supported_language_codes: The list of all languages supported by this agent (except for the defaultLanguageCode).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] supported_language_codes: The list of all languages supported by this agent (except for the defaultLanguageCode).
         :param pulumi.Input[str] tier: The agent tier. If not specified, TIER_STANDARD is assumed.
                * TIER_STANDARD: Standard tier.
                * TIER_ENTERPRISE: Enterprise tier (Essentials).
@@ -311,7 +311,7 @@ class Agent(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="supportedLanguageCodes")
-    def supported_language_codes(self) -> pulumi.Output[Optional[List[str]]]:
+    def supported_language_codes(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The list of all languages supported by this agent (except for the defaultLanguageCode).
         """

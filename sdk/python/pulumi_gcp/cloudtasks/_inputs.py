@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -96,17 +96,17 @@ class QueueAppEngineRoutingOverrideArgs:
 @pulumi.input_type
 class QueueRateLimitsArgs:
     def __init__(__self__, *,
-                 max_burst_size: Optional[pulumi.Input[float]] = None,
-                 max_concurrent_dispatches: Optional[pulumi.Input[float]] = None,
+                 max_burst_size: Optional[pulumi.Input[int]] = None,
+                 max_concurrent_dispatches: Optional[pulumi.Input[int]] = None,
                  max_dispatches_per_second: Optional[pulumi.Input[float]] = None):
         """
-        :param pulumi.Input[float] max_burst_size: -
+        :param pulumi.Input[int] max_burst_size: -
                The max burst size.
                Max burst size limits how fast tasks in queue are processed when many tasks are
                in the queue and the rate is high. This field allows the queue to have a high
                rate so processing starts shortly after a task is enqueued, but still limits
                resource usage when many tasks are enqueued in a short period of time.
-        :param pulumi.Input[float] max_concurrent_dispatches: The maximum number of concurrent tasks that Cloud Tasks allows to
+        :param pulumi.Input[int] max_concurrent_dispatches: The maximum number of concurrent tasks that Cloud Tasks allows to
                be dispatched for this queue. After this threshold has been
                reached, Cloud Tasks stops dispatching tasks until the number of
                concurrent requests decreases.
@@ -122,7 +122,7 @@ class QueueRateLimitsArgs:
 
     @property
     @pulumi.getter(name="maxBurstSize")
-    def max_burst_size(self) -> Optional[pulumi.Input[float]]:
+    def max_burst_size(self) -> Optional[pulumi.Input[int]]:
         """
         -
         The max burst size.
@@ -134,12 +134,12 @@ class QueueRateLimitsArgs:
         return pulumi.get(self, "max_burst_size")
 
     @max_burst_size.setter
-    def max_burst_size(self, value: Optional[pulumi.Input[float]]):
+    def max_burst_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_burst_size", value)
 
     @property
     @pulumi.getter(name="maxConcurrentDispatches")
-    def max_concurrent_dispatches(self) -> Optional[pulumi.Input[float]]:
+    def max_concurrent_dispatches(self) -> Optional[pulumi.Input[int]]:
         """
         The maximum number of concurrent tasks that Cloud Tasks allows to
         be dispatched for this queue. After this threshold has been
@@ -149,7 +149,7 @@ class QueueRateLimitsArgs:
         return pulumi.get(self, "max_concurrent_dispatches")
 
     @max_concurrent_dispatches.setter
-    def max_concurrent_dispatches(self, value: Optional[pulumi.Input[float]]):
+    def max_concurrent_dispatches(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_concurrent_dispatches", value)
 
     @property
@@ -169,13 +169,13 @@ class QueueRateLimitsArgs:
 @pulumi.input_type
 class QueueRetryConfigArgs:
     def __init__(__self__, *,
-                 max_attempts: Optional[pulumi.Input[float]] = None,
+                 max_attempts: Optional[pulumi.Input[int]] = None,
                  max_backoff: Optional[pulumi.Input[str]] = None,
-                 max_doublings: Optional[pulumi.Input[float]] = None,
+                 max_doublings: Optional[pulumi.Input[int]] = None,
                  max_retry_duration: Optional[pulumi.Input[str]] = None,
                  min_backoff: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[float] max_attempts: Number of attempts per task.
+        :param pulumi.Input[int] max_attempts: Number of attempts per task.
                Cloud Tasks will attempt the task maxAttempts times (that is, if
                the first attempt fails, then there will be maxAttempts - 1
                retries). Must be >= -1.
@@ -185,7 +185,7 @@ class QueueRetryConfigArgs:
         :param pulumi.Input[str] max_backoff: A task will be scheduled for retry between minBackoff and
                maxBackoff duration after it fails, if the queue's RetryConfig
                specifies that the task should be retried.
-        :param pulumi.Input[float] max_doublings: The time between retries will double maxDoublings times.
+        :param pulumi.Input[int] max_doublings: The time between retries will double maxDoublings times.
                A task's retry interval starts at minBackoff, then doubles maxDoublings times,
                then increases linearly, and finally retries retries at intervals of maxBackoff
                up to maxAttempts times.
@@ -212,7 +212,7 @@ class QueueRetryConfigArgs:
 
     @property
     @pulumi.getter(name="maxAttempts")
-    def max_attempts(self) -> Optional[pulumi.Input[float]]:
+    def max_attempts(self) -> Optional[pulumi.Input[int]]:
         """
         Number of attempts per task.
         Cloud Tasks will attempt the task maxAttempts times (that is, if
@@ -225,7 +225,7 @@ class QueueRetryConfigArgs:
         return pulumi.get(self, "max_attempts")
 
     @max_attempts.setter
-    def max_attempts(self, value: Optional[pulumi.Input[float]]):
+    def max_attempts(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_attempts", value)
 
     @property
@@ -244,7 +244,7 @@ class QueueRetryConfigArgs:
 
     @property
     @pulumi.getter(name="maxDoublings")
-    def max_doublings(self) -> Optional[pulumi.Input[float]]:
+    def max_doublings(self) -> Optional[pulumi.Input[int]]:
         """
         The time between retries will double maxDoublings times.
         A task's retry interval starts at minBackoff, then doubles maxDoublings times,
@@ -254,7 +254,7 @@ class QueueRetryConfigArgs:
         return pulumi.get(self, "max_doublings")
 
     @max_doublings.setter
-    def max_doublings(self, value: Optional[pulumi.Input[float]]):
+    def max_doublings(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_doublings", value)
 
     @property

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -37,12 +37,12 @@ class GetIAMPolicyResult:
 
     @property
     @pulumi.getter(name="auditConfigs")
-    def audit_configs(self) -> Optional[List['outputs.GetIAMPolicyAuditConfigResult']]:
+    def audit_configs(self) -> Optional[Sequence['outputs.GetIAMPolicyAuditConfigResult']]:
         return pulumi.get(self, "audit_configs")
 
     @property
     @pulumi.getter
-    def bindings(self) -> Optional[List['outputs.GetIAMPolicyBindingResult']]:
+    def bindings(self) -> Optional[Sequence['outputs.GetIAMPolicyBindingResult']]:
         return pulumi.get(self, "bindings")
 
     @property
@@ -75,8 +75,8 @@ class AwaitableGetIAMPolicyResult(GetIAMPolicyResult):
             policy_data=self.policy_data)
 
 
-def get_iam_policy(audit_configs: Optional[List[pulumi.InputType['GetIAMPolicyAuditConfigArgs']]] = None,
-                   bindings: Optional[List[pulumi.InputType['GetIAMPolicyBindingArgs']]] = None,
+def get_iam_policy(audit_configs: Optional[Sequence[pulumi.InputType['GetIAMPolicyAuditConfigArgs']]] = None,
+                   bindings: Optional[Sequence[pulumi.InputType['GetIAMPolicyBindingArgs']]] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIAMPolicyResult:
     """
     Generates an IAM policy document that may be referenced by and applied to
@@ -91,8 +91,8 @@ def get_iam_policy(audit_configs: Optional[List[pulumi.InputType['GetIAMPolicyAu
     from another resource is the only way to apply an IAM policy to a resource.
 
 
-    :param List[pulumi.InputType['GetIAMPolicyAuditConfigArgs']] audit_configs: A nested configuration block that defines logging additional configuration for your project.
-    :param List[pulumi.InputType['GetIAMPolicyBindingArgs']] bindings: A nested configuration block (described below)
+    :param Sequence[pulumi.InputType['GetIAMPolicyAuditConfigArgs']] audit_configs: A nested configuration block that defines logging additional configuration for your project.
+    :param Sequence[pulumi.InputType['GetIAMPolicyBindingArgs']] bindings: A nested configuration block (described below)
            defining a binding to be included in the policy document. Multiple
            `binding` arguments are supported.
     """

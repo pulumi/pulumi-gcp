@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['VPNGateway']
@@ -87,7 +87,7 @@ class VPNGateway(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            gateway_id: Optional[pulumi.Input[float]] = None,
+            gateway_id: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -102,7 +102,7 @@ class VPNGateway(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
-        :param pulumi.Input[float] gateway_id: The unique identifier for the resource.
+        :param pulumi.Input[int] gateway_id: The unique identifier for the resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -148,7 +148,7 @@ class VPNGateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="gatewayId")
-    def gateway_id(self) -> pulumi.Output[float]:
+    def gateway_id(self) -> pulumi.Output[int]:
         """
         The unique identifier for the resource.
         """

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,11 +18,11 @@ class Image(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 disk_size_gb: Optional[pulumi.Input[float]] = None,
+                 disk_size_gb: Optional[pulumi.Input[int]] = None,
                  family: Optional[pulumi.Input[str]] = None,
-                 guest_os_features: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ImageGuestOsFeatureArgs']]]]] = None,
+                 guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageGuestOsFeatureArgs']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 licenses: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  raw_disk: Optional[pulumi.Input[pulumi.InputType['ImageRawDiskArgs']]] = None,
@@ -62,17 +62,17 @@ class Image(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
-        :param pulumi.Input[float] disk_size_gb: Size of the image when restored onto a persistent disk (in GB).
+        :param pulumi.Input[int] disk_size_gb: Size of the image when restored onto a persistent disk (in GB).
         :param pulumi.Input[str] family: The name of the image family to which this image belongs. You can
                create disks by specifying an image family instead of a specific
                image name. The image family always returns its latest image that is
                not deprecated. The name of the image family must comply with
                RFC1035.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ImageGuestOsFeatureArgs']]]] guest_os_features: A list of features to enable on the guest operating system.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageGuestOsFeatureArgs']]]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable images.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this Image.
-        :param pulumi.Input[List[pulumi.Input[str]]] licenses: Any applicable license URI.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: Any applicable license URI.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and
@@ -144,15 +144,15 @@ class Image(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            archive_size_bytes: Optional[pulumi.Input[float]] = None,
+            archive_size_bytes: Optional[pulumi.Input[int]] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            disk_size_gb: Optional[pulumi.Input[float]] = None,
+            disk_size_gb: Optional[pulumi.Input[int]] = None,
             family: Optional[pulumi.Input[str]] = None,
-            guest_os_features: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ImageGuestOsFeatureArgs']]]]] = None,
+            guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageGuestOsFeatureArgs']]]]] = None,
             label_fingerprint: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            licenses: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             raw_disk: Optional[pulumi.Input[pulumi.InputType['ImageRawDiskArgs']]] = None,
@@ -167,22 +167,22 @@ class Image(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] archive_size_bytes: Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
+        :param pulumi.Input[int] archive_size_bytes: Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
-        :param pulumi.Input[float] disk_size_gb: Size of the image when restored onto a persistent disk (in GB).
+        :param pulumi.Input[int] disk_size_gb: Size of the image when restored onto a persistent disk (in GB).
         :param pulumi.Input[str] family: The name of the image family to which this image belongs. You can
                create disks by specifying an image family instead of a specific
                image name. The image family always returns its latest image that is
                not deprecated. The name of the image family must comply with
                RFC1035.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ImageGuestOsFeatureArgs']]]] guest_os_features: A list of features to enable on the guest operating system.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageGuestOsFeatureArgs']]]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable images.
                Structure is documented below.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this Image.
-        :param pulumi.Input[List[pulumi.Input[str]]] licenses: Any applicable license URI.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: Any applicable license URI.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and
@@ -236,7 +236,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="archiveSizeBytes")
-    def archive_size_bytes(self) -> pulumi.Output[float]:
+    def archive_size_bytes(self) -> pulumi.Output[int]:
         """
         Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
         """
@@ -261,7 +261,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="diskSizeGb")
-    def disk_size_gb(self) -> pulumi.Output[float]:
+    def disk_size_gb(self) -> pulumi.Output[int]:
         """
         Size of the image when restored onto a persistent disk (in GB).
         """
@@ -281,7 +281,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="guestOsFeatures")
-    def guest_os_features(self) -> pulumi.Output[List['outputs.ImageGuestOsFeature']]:
+    def guest_os_features(self) -> pulumi.Output[Sequence['outputs.ImageGuestOsFeature']]:
         """
         A list of features to enable on the guest operating system.
         Applicable only for bootable images.
@@ -307,7 +307,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def licenses(self) -> pulumi.Output[List[str]]:
+    def licenses(self) -> pulumi.Output[Sequence[str]]:
         """
         Any applicable license URI.
         """

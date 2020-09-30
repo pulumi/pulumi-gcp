@@ -42,20 +42,6 @@ namespace Pulumi.Gcp.Container
         [Input("project")]
         public string? Project { get; set; }
 
-        /// <summary>
-        /// The region this cluster has been created in. Deprecated
-        /// in favour of `location`.
-        /// </summary>
-        [Input("region")]
-        public string? Region { get; set; }
-
-        /// <summary>
-        /// The zone this cluster has been created in. Deprecated in
-        /// favour of `location`.
-        /// </summary>
-        [Input("zone")]
-        public string? Zone { get; set; }
-
         public GetClusterArgs()
         {
         }
@@ -65,13 +51,13 @@ namespace Pulumi.Gcp.Container
     [OutputType]
     public sealed class GetClusterResult
     {
-        public readonly ImmutableArray<string> AdditionalZones;
         public readonly ImmutableArray<Outputs.GetClusterAddonsConfigResult> AddonsConfigs;
         public readonly ImmutableArray<Outputs.GetClusterAuthenticatorGroupsConfigResult> AuthenticatorGroupsConfigs;
         public readonly ImmutableArray<Outputs.GetClusterClusterAutoscalingResult> ClusterAutoscalings;
         public readonly string ClusterIpv4Cidr;
         public readonly ImmutableArray<Outputs.GetClusterClusterTelemetryResult> ClusterTelemetries;
         public readonly ImmutableArray<Outputs.GetClusterDatabaseEncryptionResult> DatabaseEncryptions;
+        public readonly string DatapathProvider;
         public readonly int DefaultMaxPodsPerNode;
         public readonly ImmutableArray<Outputs.GetClusterDefaultSnatStatusResult> DefaultSnatStatuses;
         public readonly string Description;
@@ -110,7 +96,6 @@ namespace Pulumi.Gcp.Container
         public readonly ImmutableArray<Outputs.GetClusterPodSecurityPolicyConfigResult> PodSecurityPolicyConfigs;
         public readonly ImmutableArray<Outputs.GetClusterPrivateClusterConfigResult> PrivateClusterConfigs;
         public readonly string? Project;
-        public readonly string? Region;
         public readonly ImmutableArray<Outputs.GetClusterReleaseChannelResult> ReleaseChannels;
         public readonly bool RemoveDefaultNodePool;
         public readonly ImmutableDictionary<string, string> ResourceLabels;
@@ -121,12 +106,9 @@ namespace Pulumi.Gcp.Container
         public readonly string TpuIpv4CidrBlock;
         public readonly ImmutableArray<Outputs.GetClusterVerticalPodAutoscalingResult> VerticalPodAutoscalings;
         public readonly ImmutableArray<Outputs.GetClusterWorkloadIdentityConfigResult> WorkloadIdentityConfigs;
-        public readonly string? Zone;
 
         [OutputConstructor]
         private GetClusterResult(
-            ImmutableArray<string> additionalZones,
-
             ImmutableArray<Outputs.GetClusterAddonsConfigResult> addonsConfigs,
 
             ImmutableArray<Outputs.GetClusterAuthenticatorGroupsConfigResult> authenticatorGroupsConfigs,
@@ -138,6 +120,8 @@ namespace Pulumi.Gcp.Container
             ImmutableArray<Outputs.GetClusterClusterTelemetryResult> clusterTelemetries,
 
             ImmutableArray<Outputs.GetClusterDatabaseEncryptionResult> databaseEncryptions,
+
+            string datapathProvider,
 
             int defaultMaxPodsPerNode,
 
@@ -209,8 +193,6 @@ namespace Pulumi.Gcp.Container
 
             string? project,
 
-            string? region,
-
             ImmutableArray<Outputs.GetClusterReleaseChannelResult> releaseChannels,
 
             bool removeDefaultNodePool,
@@ -229,17 +211,15 @@ namespace Pulumi.Gcp.Container
 
             ImmutableArray<Outputs.GetClusterVerticalPodAutoscalingResult> verticalPodAutoscalings,
 
-            ImmutableArray<Outputs.GetClusterWorkloadIdentityConfigResult> workloadIdentityConfigs,
-
-            string? zone)
+            ImmutableArray<Outputs.GetClusterWorkloadIdentityConfigResult> workloadIdentityConfigs)
         {
-            AdditionalZones = additionalZones;
             AddonsConfigs = addonsConfigs;
             AuthenticatorGroupsConfigs = authenticatorGroupsConfigs;
             ClusterAutoscalings = clusterAutoscalings;
             ClusterIpv4Cidr = clusterIpv4Cidr;
             ClusterTelemetries = clusterTelemetries;
             DatabaseEncryptions = databaseEncryptions;
+            DatapathProvider = datapathProvider;
             DefaultMaxPodsPerNode = defaultMaxPodsPerNode;
             DefaultSnatStatuses = defaultSnatStatuses;
             Description = description;
@@ -275,7 +255,6 @@ namespace Pulumi.Gcp.Container
             PodSecurityPolicyConfigs = podSecurityPolicyConfigs;
             PrivateClusterConfigs = privateClusterConfigs;
             Project = project;
-            Region = region;
             ReleaseChannels = releaseChannels;
             RemoveDefaultNodePool = removeDefaultNodePool;
             ResourceLabels = resourceLabels;
@@ -286,7 +265,6 @@ namespace Pulumi.Gcp.Container
             TpuIpv4CidrBlock = tpuIpv4CidrBlock;
             VerticalPodAutoscalings = verticalPodAutoscalings;
             WorkloadIdentityConfigs = workloadIdentityConfigs;
-            Zone = zone;
         }
     }
 }

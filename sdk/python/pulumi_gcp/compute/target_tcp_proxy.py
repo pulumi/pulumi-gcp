@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['TargetTCPProxy']
@@ -97,7 +97,7 @@ class TargetTCPProxy(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             proxy_header: Optional[pulumi.Input[str]] = None,
-            proxy_id: Optional[pulumi.Input[float]] = None,
+            proxy_id: Optional[pulumi.Input[int]] = None,
             self_link: Optional[pulumi.Input[str]] = None) -> 'TargetTCPProxy':
         """
         Get an existing TargetTCPProxy resource's state with the given name, id, and optional extra
@@ -122,7 +122,7 @@ class TargetTCPProxy(pulumi.CustomResource):
                the backend.
                Default value is `NONE`.
                Possible values are `NONE` and `PROXY_V1`.
-        :param pulumi.Input[float] proxy_id: The unique identifier for the resource.
+        :param pulumi.Input[int] proxy_id: The unique identifier for the resource.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -199,7 +199,7 @@ class TargetTCPProxy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="proxyId")
-    def proxy_id(self) -> pulumi.Output[float]:
+    def proxy_id(self) -> pulumi.Output[int]:
         """
         The unique identifier for the resource.
         """

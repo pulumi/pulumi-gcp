@@ -72,7 +72,7 @@ type InterconnectAttachment struct {
 	PartnerAsn pulumi.StringOutput `pulumi:"partnerAsn"`
 	// Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached
 	// to is of type DEDICATED.
-	PrivateInterconnectInfo InterconnectAttachmentPrivateInterconnectInfoOutput `pulumi:"privateInterconnectInfo"`
+	PrivateInterconnectInfos InterconnectAttachmentPrivateInterconnectInfoArrayOutput `pulumi:"privateInterconnectInfos"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -182,7 +182,7 @@ type interconnectAttachmentState struct {
 	PartnerAsn *string `pulumi:"partnerAsn"`
 	// Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached
 	// to is of type DEDICATED.
-	PrivateInterconnectInfo *InterconnectAttachmentPrivateInterconnectInfo `pulumi:"privateInterconnectInfo"`
+	PrivateInterconnectInfos []InterconnectAttachmentPrivateInterconnectInfo `pulumi:"privateInterconnectInfos"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -262,7 +262,7 @@ type InterconnectAttachmentState struct {
 	PartnerAsn pulumi.StringPtrInput
 	// Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached
 	// to is of type DEDICATED.
-	PrivateInterconnectInfo InterconnectAttachmentPrivateInterconnectInfoPtrInput
+	PrivateInterconnectInfos InterconnectAttachmentPrivateInterconnectInfoArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -184,13 +184,13 @@ class FunctionSourceRepository(dict):
 class GetFunctionEventTriggerResult(dict):
     def __init__(__self__, *,
                  event_type: str,
-                 failure_policies: List['outputs.GetFunctionEventTriggerFailurePolicyResult'],
+                 failure_policies: Sequence['outputs.GetFunctionEventTriggerFailurePolicyResult'],
                  resource: str):
         """
         :param str event_type: The type of event to observe. For example: `"google.storage.object.finalize"`.
                See the documentation on [calling Cloud Functions](https://cloud.google.com/functions/docs/calling/)
                for a full reference of accepted triggers.
-        :param List['GetFunctionEventTriggerFailurePolicyArgs'] failure_policies: Policy for failed executions. Structure is documented below.
+        :param Sequence['GetFunctionEventTriggerFailurePolicyArgs'] failure_policies: Policy for failed executions. Structure is documented below.
         :param str resource: The name of the resource whose events are being observed, for example, `"myBucket"`
         """
         pulumi.set(__self__, "event_type", event_type)
@@ -209,7 +209,7 @@ class GetFunctionEventTriggerResult(dict):
 
     @property
     @pulumi.getter(name="failurePolicies")
-    def failure_policies(self) -> List['outputs.GetFunctionEventTriggerFailurePolicyResult']:
+    def failure_policies(self) -> Sequence['outputs.GetFunctionEventTriggerFailurePolicyResult']:
         """
         Policy for failed executions. Structure is documented below.
         """

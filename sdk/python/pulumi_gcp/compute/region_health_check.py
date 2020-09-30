@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -17,10 +17,10 @@ class RegionHealthCheck(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 check_interval_sec: Optional[pulumi.Input[float]] = None,
+                 check_interval_sec: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  grpc_health_check: Optional[pulumi.Input[pulumi.InputType['RegionHealthCheckGrpcHealthCheckArgs']]] = None,
-                 healthy_threshold: Optional[pulumi.Input[float]] = None,
+                 healthy_threshold: Optional[pulumi.Input[int]] = None,
                  http2_health_check: Optional[pulumi.Input[pulumi.InputType['RegionHealthCheckHttp2HealthCheckArgs']]] = None,
                  http_health_check: Optional[pulumi.Input[pulumi.InputType['RegionHealthCheckHttpHealthCheckArgs']]] = None,
                  https_health_check: Optional[pulumi.Input[pulumi.InputType['RegionHealthCheckHttpsHealthCheckArgs']]] = None,
@@ -30,8 +30,8 @@ class RegionHealthCheck(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  ssl_health_check: Optional[pulumi.Input[pulumi.InputType['RegionHealthCheckSslHealthCheckArgs']]] = None,
                  tcp_health_check: Optional[pulumi.Input[pulumi.InputType['RegionHealthCheckTcpHealthCheckArgs']]] = None,
-                 timeout_sec: Optional[pulumi.Input[float]] = None,
-                 unhealthy_threshold: Optional[pulumi.Input[float]] = None,
+                 timeout_sec: Optional[pulumi.Input[int]] = None,
+                 unhealthy_threshold: Optional[pulumi.Input[int]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -58,13 +58,13 @@ class RegionHealthCheck(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] check_interval_sec: How often (in seconds) to send a health check. The default value is 5
+        :param pulumi.Input[int] check_interval_sec: How often (in seconds) to send a health check. The default value is 5
                seconds.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
         :param pulumi.Input[pulumi.InputType['RegionHealthCheckGrpcHealthCheckArgs']] grpc_health_check: A nested object resource
                Structure is documented below.
-        :param pulumi.Input[float] healthy_threshold: A so-far unhealthy instance will be marked healthy after this many
+        :param pulumi.Input[int] healthy_threshold: A so-far unhealthy instance will be marked healthy after this many
                consecutive successes. The default value is 2.
         :param pulumi.Input[pulumi.InputType['RegionHealthCheckHttp2HealthCheckArgs']] http2_health_check: A nested object resource
                Structure is documented below.
@@ -88,10 +88,10 @@ class RegionHealthCheck(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['RegionHealthCheckTcpHealthCheckArgs']] tcp_health_check: A nested object resource
                Structure is documented below.
-        :param pulumi.Input[float] timeout_sec: How long (in seconds) to wait before claiming failure.
+        :param pulumi.Input[int] timeout_sec: How long (in seconds) to wait before claiming failure.
                The default value is 5 seconds.  It is invalid for timeoutSec to have
                greater value than checkIntervalSec.
-        :param pulumi.Input[float] unhealthy_threshold: A so-far healthy instance will be marked unhealthy after this many
+        :param pulumi.Input[int] unhealthy_threshold: A so-far healthy instance will be marked unhealthy after this many
                consecutive failures. The default value is 2.
         """
         if __name__ is not None:
@@ -139,11 +139,11 @@ class RegionHealthCheck(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            check_interval_sec: Optional[pulumi.Input[float]] = None,
+            check_interval_sec: Optional[pulumi.Input[int]] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             grpc_health_check: Optional[pulumi.Input[pulumi.InputType['RegionHealthCheckGrpcHealthCheckArgs']]] = None,
-            healthy_threshold: Optional[pulumi.Input[float]] = None,
+            healthy_threshold: Optional[pulumi.Input[int]] = None,
             http2_health_check: Optional[pulumi.Input[pulumi.InputType['RegionHealthCheckHttp2HealthCheckArgs']]] = None,
             http_health_check: Optional[pulumi.Input[pulumi.InputType['RegionHealthCheckHttpHealthCheckArgs']]] = None,
             https_health_check: Optional[pulumi.Input[pulumi.InputType['RegionHealthCheckHttpsHealthCheckArgs']]] = None,
@@ -154,9 +154,9 @@ class RegionHealthCheck(pulumi.CustomResource):
             self_link: Optional[pulumi.Input[str]] = None,
             ssl_health_check: Optional[pulumi.Input[pulumi.InputType['RegionHealthCheckSslHealthCheckArgs']]] = None,
             tcp_health_check: Optional[pulumi.Input[pulumi.InputType['RegionHealthCheckTcpHealthCheckArgs']]] = None,
-            timeout_sec: Optional[pulumi.Input[float]] = None,
+            timeout_sec: Optional[pulumi.Input[int]] = None,
             type: Optional[pulumi.Input[str]] = None,
-            unhealthy_threshold: Optional[pulumi.Input[float]] = None) -> 'RegionHealthCheck':
+            unhealthy_threshold: Optional[pulumi.Input[int]] = None) -> 'RegionHealthCheck':
         """
         Get an existing RegionHealthCheck resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -164,14 +164,14 @@ class RegionHealthCheck(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] check_interval_sec: How often (in seconds) to send a health check. The default value is 5
+        :param pulumi.Input[int] check_interval_sec: How often (in seconds) to send a health check. The default value is 5
                seconds.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
         :param pulumi.Input[pulumi.InputType['RegionHealthCheckGrpcHealthCheckArgs']] grpc_health_check: A nested object resource
                Structure is documented below.
-        :param pulumi.Input[float] healthy_threshold: A so-far unhealthy instance will be marked healthy after this many
+        :param pulumi.Input[int] healthy_threshold: A so-far unhealthy instance will be marked healthy after this many
                consecutive successes. The default value is 2.
         :param pulumi.Input[pulumi.InputType['RegionHealthCheckHttp2HealthCheckArgs']] http2_health_check: A nested object resource
                Structure is documented below.
@@ -196,11 +196,11 @@ class RegionHealthCheck(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['RegionHealthCheckTcpHealthCheckArgs']] tcp_health_check: A nested object resource
                Structure is documented below.
-        :param pulumi.Input[float] timeout_sec: How long (in seconds) to wait before claiming failure.
+        :param pulumi.Input[int] timeout_sec: How long (in seconds) to wait before claiming failure.
                The default value is 5 seconds.  It is invalid for timeoutSec to have
                greater value than checkIntervalSec.
         :param pulumi.Input[str] type: The type of the health check. One of HTTP, HTTP2, HTTPS, TCP, or SSL.
-        :param pulumi.Input[float] unhealthy_threshold: A so-far healthy instance will be marked unhealthy after this many
+        :param pulumi.Input[int] unhealthy_threshold: A so-far healthy instance will be marked unhealthy after this many
                consecutive failures. The default value is 2.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -229,7 +229,7 @@ class RegionHealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="checkIntervalSec")
-    def check_interval_sec(self) -> pulumi.Output[Optional[float]]:
+    def check_interval_sec(self) -> pulumi.Output[Optional[int]]:
         """
         How often (in seconds) to send a health check. The default value is 5
         seconds.
@@ -264,7 +264,7 @@ class RegionHealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="healthyThreshold")
-    def healthy_threshold(self) -> pulumi.Output[Optional[float]]:
+    def healthy_threshold(self) -> pulumi.Output[Optional[int]]:
         """
         A so-far unhealthy instance will be marked healthy after this many
         consecutive successes. The default value is 2.
@@ -366,7 +366,7 @@ class RegionHealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="timeoutSec")
-    def timeout_sec(self) -> pulumi.Output[Optional[float]]:
+    def timeout_sec(self) -> pulumi.Output[Optional[int]]:
         """
         How long (in seconds) to wait before claiming failure.
         The default value is 5 seconds.  It is invalid for timeoutSec to have
@@ -384,7 +384,7 @@ class RegionHealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="unhealthyThreshold")
-    def unhealthy_threshold(self) -> pulumi.Output[Optional[float]]:
+    def unhealthy_threshold(self) -> pulumi.Output[Optional[int]]:
         """
         A so-far healthy instance will be marked unhealthy after this many
         consecutive failures. The default value is 2.

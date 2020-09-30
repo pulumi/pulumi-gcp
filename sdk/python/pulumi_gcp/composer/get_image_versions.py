@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -44,7 +44,7 @@ class GetImageVersionsResult:
 
     @property
     @pulumi.getter(name="imageVersions")
-    def image_versions(self) -> List['outputs.GetImageVersionsImageVersionResult']:
+    def image_versions(self) -> Sequence['outputs.GetImageVersionsImageVersionResult']:
         """
         A list of composer image versions available in the given project and location. Each `image_version` contains:
         """

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['Connector']
@@ -16,8 +16,8 @@ class Connector(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
-                 max_throughput: Optional[pulumi.Input[float]] = None,
-                 min_throughput: Optional[pulumi.Input[float]] = None,
+                 max_throughput: Optional[pulumi.Input[int]] = None,
+                 min_throughput: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -39,8 +39,8 @@ class Connector(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ip_cidr_range: The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
-        :param pulumi.Input[float] max_throughput: Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 1000.
-        :param pulumi.Input[float] min_throughput: Minimum throughput of the connector in Mbps. Default and min is 200.
+        :param pulumi.Input[int] max_throughput: Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 1000.
+        :param pulumi.Input[int] min_throughput: Minimum throughput of the connector in Mbps. Default and min is 200.
         :param pulumi.Input[str] name: The name of the resource (Max 25 characters).
         :param pulumi.Input[str] network: Name of a VPC network.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -90,8 +90,8 @@ class Connector(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             ip_cidr_range: Optional[pulumi.Input[str]] = None,
-            max_throughput: Optional[pulumi.Input[float]] = None,
-            min_throughput: Optional[pulumi.Input[float]] = None,
+            max_throughput: Optional[pulumi.Input[int]] = None,
+            min_throughput: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -106,8 +106,8 @@ class Connector(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ip_cidr_range: The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
-        :param pulumi.Input[float] max_throughput: Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 1000.
-        :param pulumi.Input[float] min_throughput: Minimum throughput of the connector in Mbps. Default and min is 200.
+        :param pulumi.Input[int] max_throughput: Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 1000.
+        :param pulumi.Input[int] min_throughput: Minimum throughput of the connector in Mbps. Default and min is 200.
         :param pulumi.Input[str] name: The name of the resource (Max 25 characters).
         :param pulumi.Input[str] network: Name of a VPC network.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -141,7 +141,7 @@ class Connector(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxThroughput")
-    def max_throughput(self) -> pulumi.Output[Optional[float]]:
+    def max_throughput(self) -> pulumi.Output[Optional[int]]:
         """
         Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 1000.
         """
@@ -149,7 +149,7 @@ class Connector(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minThroughput")
-    def min_throughput(self) -> pulumi.Output[Optional[float]]:
+    def min_throughput(self) -> pulumi.Output[Optional[int]]:
         """
         Minimum throughput of the connector in Mbps. Default and min is 200.
         """

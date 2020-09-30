@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['RegionSslCertificate']
@@ -106,7 +106,7 @@ class RegionSslCertificate(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             certificate: Optional[pulumi.Input[str]] = None,
-            certificate_id: Optional[pulumi.Input[float]] = None,
+            certificate_id: Optional[pulumi.Input[int]] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -126,7 +126,7 @@ class RegionSslCertificate(pulumi.CustomResource):
                The certificate chain must be no greater than 5 certs long.
                The chain must include at least one intermediate cert.
                **Note**: This property is sensitive and will not be displayed in the plan.
-        :param pulumi.Input[float] certificate_id: The unique identifier for the resource.
+        :param pulumi.Input[int] certificate_id: The unique identifier for the resource.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
@@ -175,7 +175,7 @@ class RegionSslCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="certificateId")
-    def certificate_id(self) -> pulumi.Output[float]:
+    def certificate_id(self) -> pulumi.Output[int]:
         """
         The unique identifier for the resource.
         """

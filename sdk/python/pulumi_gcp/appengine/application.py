@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -107,7 +107,7 @@ class Application(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             serving_status: Optional[pulumi.Input[str]] = None,
-            url_dispatch_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ApplicationUrlDispatchRuleArgs']]]]] = None) -> 'Application':
+            url_dispatch_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationUrlDispatchRuleArgs']]]]] = None) -> 'Application':
         """
         Get an existing Application resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -131,7 +131,7 @@ class Application(pulumi.CustomResource):
                ~>**NOTE:** GCP only accepts project ID, not project number. If you are using number,
                you may get a "Permission denied" error.
         :param pulumi.Input[str] serving_status: The serving status of the app.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ApplicationUrlDispatchRuleArgs']]]] url_dispatch_rules: A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationUrlDispatchRuleArgs']]]] url_dispatch_rules: A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -262,7 +262,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="urlDispatchRules")
-    def url_dispatch_rules(self) -> pulumi.Output[List['outputs.ApplicationUrlDispatchRule']]:
+    def url_dispatch_rules(self) -> pulumi.Output[Sequence['outputs.ApplicationUrlDispatchRule']]:
         """
         A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
         """

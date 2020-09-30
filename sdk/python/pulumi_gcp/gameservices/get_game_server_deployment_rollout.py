@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -52,7 +52,7 @@ class GetGameServerDeploymentRolloutResult:
 
     @property
     @pulumi.getter(name="gameServerConfigOverrides")
-    def game_server_config_overrides(self) -> List['outputs.GetGameServerDeploymentRolloutGameServerConfigOverrideResult']:
+    def game_server_config_overrides(self) -> Sequence['outputs.GetGameServerDeploymentRolloutGameServerConfigOverrideResult']:
         return pulumi.get(self, "game_server_config_overrides")
 
     @property

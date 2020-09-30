@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -19,7 +19,7 @@ class WebTypeAppEngingIamBinding(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
                  condition: Optional[pulumi.Input[pulumi.InputType['WebTypeAppEngingIamBindingConditionArgs']]] = None,
-                 members: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -89,7 +89,7 @@ class WebTypeAppEngingIamBinding(pulumi.CustomResource):
             app_id: Optional[pulumi.Input[str]] = None,
             condition: Optional[pulumi.Input[pulumi.InputType['WebTypeAppEngingIamBindingConditionArgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
-            members: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
             role: Optional[pulumi.Input[str]] = None) -> 'WebTypeAppEngingIamBinding':
         """
@@ -148,7 +148,7 @@ class WebTypeAppEngingIamBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def members(self) -> pulumi.Output[List[str]]:
+    def members(self) -> pulumi.Output[Sequence[str]]:
         return pulumi.get(self, "members")
 
     @property

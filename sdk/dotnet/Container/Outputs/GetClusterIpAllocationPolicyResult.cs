@@ -15,10 +15,8 @@ namespace Pulumi.Gcp.Container.Outputs
     {
         public readonly string ClusterIpv4CidrBlock;
         public readonly string ClusterSecondaryRangeName;
-        public readonly string NodeIpv4CidrBlock;
         public readonly string ServicesIpv4CidrBlock;
         public readonly string ServicesSecondaryRangeName;
-        public readonly string SubnetworkName;
 
         [OutputConstructor]
         private GetClusterIpAllocationPolicyResult(
@@ -26,20 +24,14 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string clusterSecondaryRangeName,
 
-            string nodeIpv4CidrBlock,
-
             string servicesIpv4CidrBlock,
 
-            string servicesSecondaryRangeName,
-
-            string subnetworkName)
+            string servicesSecondaryRangeName)
         {
             ClusterIpv4CidrBlock = clusterIpv4CidrBlock;
             ClusterSecondaryRangeName = clusterSecondaryRangeName;
-            NodeIpv4CidrBlock = nodeIpv4CidrBlock;
             ServicesIpv4CidrBlock = servicesIpv4CidrBlock;
             ServicesSecondaryRangeName = servicesSecondaryRangeName;
-            SubnetworkName = subnetworkName;
         }
     }
 }

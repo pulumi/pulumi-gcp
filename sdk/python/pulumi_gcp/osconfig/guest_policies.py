@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -21,10 +21,10 @@ class GuestPolicies(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  guest_policy_id: Optional[pulumi.Input[str]] = None,
-                 package_repositories: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['GuestPoliciesPackageRepositoryArgs']]]]] = None,
-                 packages: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['GuestPoliciesPackageArgs']]]]] = None,
+                 package_repositories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesPackageRepositoryArgs']]]]] = None,
+                 packages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesPackageArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 recipes: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['GuestPoliciesRecipeArgs']]]]] = None,
+                 recipes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesRecipeArgs']]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -59,15 +59,15 @@ class GuestPolicies(pulumi.CustomResource):
                * Must be between 1-63 characters.
                * Must end with a number or a letter.
                * Must be unique within the project.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['GuestPoliciesPackageRepositoryArgs']]]] package_repositories: A list of package repositories to configure on the VM instance.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesPackageRepositoryArgs']]]] package_repositories: A list of package repositories to configure on the VM instance.
                This is done before any other configs are applied so they can use these repos.
                Package repositories are only configured if the corresponding package manager(s) are available.
                Structure is documented below.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['GuestPoliciesPackageArgs']]]] packages: The software packages to be managed by this policy.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesPackageArgs']]]] packages: The software packages to be managed by this policy.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['GuestPoliciesRecipeArgs']]]] recipes: A list of Recipes to install on the VM instance.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesRecipeArgs']]]] recipes: A list of Recipes to install on the VM instance.
                Structure is documented below.
         """
         if __name__ is not None:
@@ -118,10 +118,10 @@ class GuestPolicies(pulumi.CustomResource):
             etag: Optional[pulumi.Input[str]] = None,
             guest_policy_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            package_repositories: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['GuestPoliciesPackageRepositoryArgs']]]]] = None,
-            packages: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['GuestPoliciesPackageArgs']]]]] = None,
+            package_repositories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesPackageRepositoryArgs']]]]] = None,
+            packages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesPackageArgs']]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            recipes: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['GuestPoliciesRecipeArgs']]]]] = None,
+            recipes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesRecipeArgs']]]]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'GuestPolicies':
         """
         Get an existing GuestPolicies resource's state with the given name, id, and optional extra
@@ -152,15 +152,15 @@ class GuestPolicies(pulumi.CustomResource):
                Names are also used to identify resources which helps to determine whether guest policies have conflicts.
                This means that requests to create multiple recipes with the same name and version are rejected since they
                could potentially have conflicting assignments.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['GuestPoliciesPackageRepositoryArgs']]]] package_repositories: A list of package repositories to configure on the VM instance.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesPackageRepositoryArgs']]]] package_repositories: A list of package repositories to configure on the VM instance.
                This is done before any other configs are applied so they can use these repos.
                Package repositories are only configured if the corresponding package manager(s) are available.
                Structure is documented below.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['GuestPoliciesPackageArgs']]]] packages: The software packages to be managed by this policy.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesPackageArgs']]]] packages: The software packages to be managed by this policy.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['GuestPoliciesRecipeArgs']]]] recipes: A list of Recipes to install on the VM instance.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesRecipeArgs']]]] recipes: A list of Recipes to install on the VM instance.
                Structure is documented below.
         :param pulumi.Input[str] update_time: Last time this guest policy was updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example:
                "2014-10-02T15:01:23.045123456Z".
@@ -248,7 +248,7 @@ class GuestPolicies(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="packageRepositories")
-    def package_repositories(self) -> pulumi.Output[Optional[List['outputs.GuestPoliciesPackageRepository']]]:
+    def package_repositories(self) -> pulumi.Output[Optional[Sequence['outputs.GuestPoliciesPackageRepository']]]:
         """
         A list of package repositories to configure on the VM instance.
         This is done before any other configs are applied so they can use these repos.
@@ -259,7 +259,7 @@ class GuestPolicies(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def packages(self) -> pulumi.Output[Optional[List['outputs.GuestPoliciesPackage']]]:
+    def packages(self) -> pulumi.Output[Optional[Sequence['outputs.GuestPoliciesPackage']]]:
         """
         The software packages to be managed by this policy.
         Structure is documented below.
@@ -277,7 +277,7 @@ class GuestPolicies(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def recipes(self) -> pulumi.Output[Optional[List['outputs.GuestPoliciesRecipe']]]:
+    def recipes(self) -> pulumi.Output[Optional[Sequence['outputs.GuestPoliciesRecipe']]]:
         """
         A list of Recipes to install on the VM instance.
         Structure is documented below.

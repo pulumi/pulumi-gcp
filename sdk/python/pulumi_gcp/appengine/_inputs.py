@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -506,13 +506,13 @@ class FlexibleAppVersionAutomaticScalingArgs:
                  cpu_utilization: pulumi.Input['FlexibleAppVersionAutomaticScalingCpuUtilizationArgs'],
                  cool_down_period: Optional[pulumi.Input[str]] = None,
                  disk_utilization: Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingDiskUtilizationArgs']] = None,
-                 max_concurrent_requests: Optional[pulumi.Input[float]] = None,
-                 max_idle_instances: Optional[pulumi.Input[float]] = None,
+                 max_concurrent_requests: Optional[pulumi.Input[int]] = None,
+                 max_idle_instances: Optional[pulumi.Input[int]] = None,
                  max_pending_latency: Optional[pulumi.Input[str]] = None,
-                 max_total_instances: Optional[pulumi.Input[float]] = None,
-                 min_idle_instances: Optional[pulumi.Input[float]] = None,
+                 max_total_instances: Optional[pulumi.Input[int]] = None,
+                 min_idle_instances: Optional[pulumi.Input[int]] = None,
                  min_pending_latency: Optional[pulumi.Input[str]] = None,
-                 min_total_instances: Optional[pulumi.Input[float]] = None,
+                 min_total_instances: Optional[pulumi.Input[int]] = None,
                  network_utilization: Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs']] = None,
                  request_utilization: Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingRequestUtilizationArgs']] = None):
         """
@@ -523,14 +523,14 @@ class FlexibleAppVersionAutomaticScalingArgs:
                during which the collected usage would not be reliable. Default: 120s
         :param pulumi.Input['FlexibleAppVersionAutomaticScalingDiskUtilizationArgs'] disk_utilization: Target scaling by disk usage.
                Structure is documented below.
-        :param pulumi.Input[float] max_concurrent_requests: Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns a new instance.
+        :param pulumi.Input[int] max_concurrent_requests: Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns a new instance.
                Defaults to a runtime-specific value.
-        :param pulumi.Input[float] max_idle_instances: Maximum number of idle instances that should be maintained for this version.
+        :param pulumi.Input[int] max_idle_instances: Maximum number of idle instances that should be maintained for this version.
         :param pulumi.Input[str] max_pending_latency: Maximum amount of time that a request should wait in the pending queue before starting a new instance to handle it.
-        :param pulumi.Input[float] max_total_instances: Maximum number of instances that should be started to handle requests for this version. Default: 20
-        :param pulumi.Input[float] min_idle_instances: Minimum number of idle instances that should be maintained for this version. Only applicable for the default version of a service.
+        :param pulumi.Input[int] max_total_instances: Maximum number of instances that should be started to handle requests for this version. Default: 20
+        :param pulumi.Input[int] min_idle_instances: Minimum number of idle instances that should be maintained for this version. Only applicable for the default version of a service.
         :param pulumi.Input[str] min_pending_latency: Minimum amount of time a request should wait in the pending queue before starting a new instance to handle it.
-        :param pulumi.Input[float] min_total_instances: Minimum number of running instances that should be maintained for this version. Default: 2
+        :param pulumi.Input[int] min_total_instances: Minimum number of running instances that should be maintained for this version. Default: 2
         :param pulumi.Input['FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs'] network_utilization: Target scaling by network usage.
                Structure is documented below.
         :param pulumi.Input['FlexibleAppVersionAutomaticScalingRequestUtilizationArgs'] request_utilization: Target scaling by request utilization.
@@ -602,7 +602,7 @@ class FlexibleAppVersionAutomaticScalingArgs:
 
     @property
     @pulumi.getter(name="maxConcurrentRequests")
-    def max_concurrent_requests(self) -> Optional[pulumi.Input[float]]:
+    def max_concurrent_requests(self) -> Optional[pulumi.Input[int]]:
         """
         Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns a new instance.
         Defaults to a runtime-specific value.
@@ -610,19 +610,19 @@ class FlexibleAppVersionAutomaticScalingArgs:
         return pulumi.get(self, "max_concurrent_requests")
 
     @max_concurrent_requests.setter
-    def max_concurrent_requests(self, value: Optional[pulumi.Input[float]]):
+    def max_concurrent_requests(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_concurrent_requests", value)
 
     @property
     @pulumi.getter(name="maxIdleInstances")
-    def max_idle_instances(self) -> Optional[pulumi.Input[float]]:
+    def max_idle_instances(self) -> Optional[pulumi.Input[int]]:
         """
         Maximum number of idle instances that should be maintained for this version.
         """
         return pulumi.get(self, "max_idle_instances")
 
     @max_idle_instances.setter
-    def max_idle_instances(self, value: Optional[pulumi.Input[float]]):
+    def max_idle_instances(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_idle_instances", value)
 
     @property
@@ -639,26 +639,26 @@ class FlexibleAppVersionAutomaticScalingArgs:
 
     @property
     @pulumi.getter(name="maxTotalInstances")
-    def max_total_instances(self) -> Optional[pulumi.Input[float]]:
+    def max_total_instances(self) -> Optional[pulumi.Input[int]]:
         """
         Maximum number of instances that should be started to handle requests for this version. Default: 20
         """
         return pulumi.get(self, "max_total_instances")
 
     @max_total_instances.setter
-    def max_total_instances(self, value: Optional[pulumi.Input[float]]):
+    def max_total_instances(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_total_instances", value)
 
     @property
     @pulumi.getter(name="minIdleInstances")
-    def min_idle_instances(self) -> Optional[pulumi.Input[float]]:
+    def min_idle_instances(self) -> Optional[pulumi.Input[int]]:
         """
         Minimum number of idle instances that should be maintained for this version. Only applicable for the default version of a service.
         """
         return pulumi.get(self, "min_idle_instances")
 
     @min_idle_instances.setter
-    def min_idle_instances(self, value: Optional[pulumi.Input[float]]):
+    def min_idle_instances(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "min_idle_instances", value)
 
     @property
@@ -675,14 +675,14 @@ class FlexibleAppVersionAutomaticScalingArgs:
 
     @property
     @pulumi.getter(name="minTotalInstances")
-    def min_total_instances(self) -> Optional[pulumi.Input[float]]:
+    def min_total_instances(self) -> Optional[pulumi.Input[int]]:
         """
         Minimum number of running instances that should be maintained for this version. Default: 2
         """
         return pulumi.get(self, "min_total_instances")
 
     @min_total_instances.setter
-    def min_total_instances(self, value: Optional[pulumi.Input[float]]):
+    def min_total_instances(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "min_total_instances", value)
 
     @property
@@ -753,15 +753,15 @@ class FlexibleAppVersionAutomaticScalingCpuUtilizationArgs:
 @pulumi.input_type
 class FlexibleAppVersionAutomaticScalingDiskUtilizationArgs:
     def __init__(__self__, *,
-                 target_read_bytes_per_second: Optional[pulumi.Input[float]] = None,
-                 target_read_ops_per_second: Optional[pulumi.Input[float]] = None,
-                 target_write_bytes_per_second: Optional[pulumi.Input[float]] = None,
-                 target_write_ops_per_second: Optional[pulumi.Input[float]] = None):
+                 target_read_bytes_per_second: Optional[pulumi.Input[int]] = None,
+                 target_read_ops_per_second: Optional[pulumi.Input[int]] = None,
+                 target_write_bytes_per_second: Optional[pulumi.Input[int]] = None,
+                 target_write_ops_per_second: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[float] target_read_bytes_per_second: Target bytes read per second.
-        :param pulumi.Input[float] target_read_ops_per_second: Target ops read per seconds.
-        :param pulumi.Input[float] target_write_bytes_per_second: Target bytes written per second.
-        :param pulumi.Input[float] target_write_ops_per_second: Target ops written per second.
+        :param pulumi.Input[int] target_read_bytes_per_second: Target bytes read per second.
+        :param pulumi.Input[int] target_read_ops_per_second: Target ops read per seconds.
+        :param pulumi.Input[int] target_write_bytes_per_second: Target bytes written per second.
+        :param pulumi.Input[int] target_write_ops_per_second: Target ops written per second.
         """
         if target_read_bytes_per_second is not None:
             pulumi.set(__self__, "target_read_bytes_per_second", target_read_bytes_per_second)
@@ -774,65 +774,65 @@ class FlexibleAppVersionAutomaticScalingDiskUtilizationArgs:
 
     @property
     @pulumi.getter(name="targetReadBytesPerSecond")
-    def target_read_bytes_per_second(self) -> Optional[pulumi.Input[float]]:
+    def target_read_bytes_per_second(self) -> Optional[pulumi.Input[int]]:
         """
         Target bytes read per second.
         """
         return pulumi.get(self, "target_read_bytes_per_second")
 
     @target_read_bytes_per_second.setter
-    def target_read_bytes_per_second(self, value: Optional[pulumi.Input[float]]):
+    def target_read_bytes_per_second(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "target_read_bytes_per_second", value)
 
     @property
     @pulumi.getter(name="targetReadOpsPerSecond")
-    def target_read_ops_per_second(self) -> Optional[pulumi.Input[float]]:
+    def target_read_ops_per_second(self) -> Optional[pulumi.Input[int]]:
         """
         Target ops read per seconds.
         """
         return pulumi.get(self, "target_read_ops_per_second")
 
     @target_read_ops_per_second.setter
-    def target_read_ops_per_second(self, value: Optional[pulumi.Input[float]]):
+    def target_read_ops_per_second(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "target_read_ops_per_second", value)
 
     @property
     @pulumi.getter(name="targetWriteBytesPerSecond")
-    def target_write_bytes_per_second(self) -> Optional[pulumi.Input[float]]:
+    def target_write_bytes_per_second(self) -> Optional[pulumi.Input[int]]:
         """
         Target bytes written per second.
         """
         return pulumi.get(self, "target_write_bytes_per_second")
 
     @target_write_bytes_per_second.setter
-    def target_write_bytes_per_second(self, value: Optional[pulumi.Input[float]]):
+    def target_write_bytes_per_second(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "target_write_bytes_per_second", value)
 
     @property
     @pulumi.getter(name="targetWriteOpsPerSecond")
-    def target_write_ops_per_second(self) -> Optional[pulumi.Input[float]]:
+    def target_write_ops_per_second(self) -> Optional[pulumi.Input[int]]:
         """
         Target ops written per second.
         """
         return pulumi.get(self, "target_write_ops_per_second")
 
     @target_write_ops_per_second.setter
-    def target_write_ops_per_second(self, value: Optional[pulumi.Input[float]]):
+    def target_write_ops_per_second(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "target_write_ops_per_second", value)
 
 
 @pulumi.input_type
 class FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs:
     def __init__(__self__, *,
-                 target_received_bytes_per_second: Optional[pulumi.Input[float]] = None,
-                 target_received_packets_per_second: Optional[pulumi.Input[float]] = None,
-                 target_sent_bytes_per_second: Optional[pulumi.Input[float]] = None,
-                 target_sent_packets_per_second: Optional[pulumi.Input[float]] = None):
+                 target_received_bytes_per_second: Optional[pulumi.Input[int]] = None,
+                 target_received_packets_per_second: Optional[pulumi.Input[int]] = None,
+                 target_sent_bytes_per_second: Optional[pulumi.Input[int]] = None,
+                 target_sent_packets_per_second: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[float] target_received_bytes_per_second: Target bytes received per second.
-        :param pulumi.Input[float] target_received_packets_per_second: Target packets received per second.
-        :param pulumi.Input[float] target_sent_bytes_per_second: Target bytes sent per second.
-        :param pulumi.Input[float] target_sent_packets_per_second: Target packets sent per second.
+        :param pulumi.Input[int] target_received_bytes_per_second: Target bytes received per second.
+        :param pulumi.Input[int] target_received_packets_per_second: Target packets received per second.
+        :param pulumi.Input[int] target_sent_bytes_per_second: Target bytes sent per second.
+        :param pulumi.Input[int] target_sent_packets_per_second: Target packets sent per second.
         """
         if target_received_bytes_per_second is not None:
             pulumi.set(__self__, "target_received_bytes_per_second", target_received_bytes_per_second)
@@ -845,50 +845,50 @@ class FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs:
 
     @property
     @pulumi.getter(name="targetReceivedBytesPerSecond")
-    def target_received_bytes_per_second(self) -> Optional[pulumi.Input[float]]:
+    def target_received_bytes_per_second(self) -> Optional[pulumi.Input[int]]:
         """
         Target bytes received per second.
         """
         return pulumi.get(self, "target_received_bytes_per_second")
 
     @target_received_bytes_per_second.setter
-    def target_received_bytes_per_second(self, value: Optional[pulumi.Input[float]]):
+    def target_received_bytes_per_second(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "target_received_bytes_per_second", value)
 
     @property
     @pulumi.getter(name="targetReceivedPacketsPerSecond")
-    def target_received_packets_per_second(self) -> Optional[pulumi.Input[float]]:
+    def target_received_packets_per_second(self) -> Optional[pulumi.Input[int]]:
         """
         Target packets received per second.
         """
         return pulumi.get(self, "target_received_packets_per_second")
 
     @target_received_packets_per_second.setter
-    def target_received_packets_per_second(self, value: Optional[pulumi.Input[float]]):
+    def target_received_packets_per_second(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "target_received_packets_per_second", value)
 
     @property
     @pulumi.getter(name="targetSentBytesPerSecond")
-    def target_sent_bytes_per_second(self) -> Optional[pulumi.Input[float]]:
+    def target_sent_bytes_per_second(self) -> Optional[pulumi.Input[int]]:
         """
         Target bytes sent per second.
         """
         return pulumi.get(self, "target_sent_bytes_per_second")
 
     @target_sent_bytes_per_second.setter
-    def target_sent_bytes_per_second(self, value: Optional[pulumi.Input[float]]):
+    def target_sent_bytes_per_second(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "target_sent_bytes_per_second", value)
 
     @property
     @pulumi.getter(name="targetSentPacketsPerSecond")
-    def target_sent_packets_per_second(self) -> Optional[pulumi.Input[float]]:
+    def target_sent_packets_per_second(self) -> Optional[pulumi.Input[int]]:
         """
         Target packets sent per second.
         """
         return pulumi.get(self, "target_sent_packets_per_second")
 
     @target_sent_packets_per_second.setter
-    def target_sent_packets_per_second(self, value: Optional[pulumi.Input[float]]):
+    def target_sent_packets_per_second(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "target_sent_packets_per_second", value)
 
 
@@ -936,14 +936,14 @@ class FlexibleAppVersionDeploymentArgs:
     def __init__(__self__, *,
                  cloud_build_options: Optional[pulumi.Input['FlexibleAppVersionDeploymentCloudBuildOptionsArgs']] = None,
                  container: Optional[pulumi.Input['FlexibleAppVersionDeploymentContainerArgs']] = None,
-                 files: Optional[pulumi.Input[List[pulumi.Input['FlexibleAppVersionDeploymentFileArgs']]]] = None,
+                 files: Optional[pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionDeploymentFileArgs']]]] = None,
                  zip: Optional[pulumi.Input['FlexibleAppVersionDeploymentZipArgs']] = None):
         """
         :param pulumi.Input['FlexibleAppVersionDeploymentCloudBuildOptionsArgs'] cloud_build_options: Options for the build operations performed as a part of the version deployment. Only applicable when creating a version using source code directly.
                Structure is documented below.
         :param pulumi.Input['FlexibleAppVersionDeploymentContainerArgs'] container: The Docker image for the container that runs the version.
                Structure is documented below.
-        :param pulumi.Input[List[pulumi.Input['FlexibleAppVersionDeploymentFileArgs']]] files: Manifest of the files stored in Google Cloud Storage that are included as part of this version.
+        :param pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionDeploymentFileArgs']]] files: Manifest of the files stored in Google Cloud Storage that are included as part of this version.
                All files must be readable using the credentials supplied with this call.
                Structure is documented below.
         :param pulumi.Input['FlexibleAppVersionDeploymentZipArgs'] zip: Zip File
@@ -986,7 +986,7 @@ class FlexibleAppVersionDeploymentArgs:
 
     @property
     @pulumi.getter
-    def files(self) -> Optional[pulumi.Input[List[pulumi.Input['FlexibleAppVersionDeploymentFileArgs']]]]:
+    def files(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionDeploymentFileArgs']]]]:
         """
         Manifest of the files stored in Google Cloud Storage that are included as part of this version.
         All files must be readable using the credentials supplied with this call.
@@ -995,7 +995,7 @@ class FlexibleAppVersionDeploymentArgs:
         return pulumi.get(self, "files")
 
     @files.setter
-    def files(self, value: Optional[pulumi.Input[List[pulumi.Input['FlexibleAppVersionDeploymentFileArgs']]]]):
+    def files(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionDeploymentFileArgs']]]]):
         pulumi.set(self, "files", value)
 
     @property
@@ -1133,10 +1133,10 @@ class FlexibleAppVersionDeploymentFileArgs:
 class FlexibleAppVersionDeploymentZipArgs:
     def __init__(__self__, *,
                  source_url: pulumi.Input[str],
-                 files_count: Optional[pulumi.Input[float]] = None):
+                 files_count: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] source_url: Source URL
-        :param pulumi.Input[float] files_count: files count
+        :param pulumi.Input[int] files_count: files count
         """
         pulumi.set(__self__, "source_url", source_url)
         if files_count is not None:
@@ -1156,14 +1156,14 @@ class FlexibleAppVersionDeploymentZipArgs:
 
     @property
     @pulumi.getter(name="filesCount")
-    def files_count(self) -> Optional[pulumi.Input[float]]:
+    def files_count(self) -> Optional[pulumi.Input[int]]:
         """
         files count
         """
         return pulumi.get(self, "files_count")
 
     @files_count.setter
-    def files_count(self, value: Optional[pulumi.Input[float]]):
+    def files_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "files_count", value)
 
 
@@ -1688,9 +1688,9 @@ class FlexibleAppVersionLivenessCheckArgs:
 @pulumi.input_type
 class FlexibleAppVersionManualScalingArgs:
     def __init__(__self__, *,
-                 instances: pulumi.Input[float]):
+                 instances: pulumi.Input[int]):
         """
-        :param pulumi.Input[float] instances: Number of instances to assign to the service at the start.
+        :param pulumi.Input[int] instances: Number of instances to assign to the service at the start.
                **Note:** When managing the number of instances at runtime through the App Engine Admin API or the (now deprecated) Python 2
                Modules API set_num_instances() you must use `lifecycle.ignore_changes = ["manual_scaling"[0].instances]` to prevent drift detection.
         """
@@ -1698,7 +1698,7 @@ class FlexibleAppVersionManualScalingArgs:
 
     @property
     @pulumi.getter
-    def instances(self) -> pulumi.Input[float]:
+    def instances(self) -> pulumi.Input[int]:
         """
         Number of instances to assign to the service at the start.
         **Note:** When managing the number of instances at runtime through the App Engine Admin API or the (now deprecated) Python 2
@@ -1707,7 +1707,7 @@ class FlexibleAppVersionManualScalingArgs:
         return pulumi.get(self, "instances")
 
     @instances.setter
-    def instances(self, value: pulumi.Input[float]):
+    def instances(self, value: pulumi.Input[int]):
         pulumi.set(self, "instances", value)
 
 
@@ -1715,13 +1715,13 @@ class FlexibleAppVersionManualScalingArgs:
 class FlexibleAppVersionNetworkArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
-                 forwarded_ports: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 forwarded_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  instance_tag: Optional[pulumi.Input[str]] = None,
                  session_affinity: Optional[pulumi.Input[bool]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
-        :param pulumi.Input[List[pulumi.Input[str]]] forwarded_ports: List of ports, or port pairs, to forward from the virtual machine to the application container.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] forwarded_ports: List of ports, or port pairs, to forward from the virtual machine to the application container.
         :param pulumi.Input[str] instance_tag: Tag to apply to the instance during creation.
         :param pulumi.Input[bool] session_affinity: Enable session affinity.
         :param pulumi.Input[str] subnetwork: Google Cloud Platform sub-network where the virtual machines are created. Specify the short name, not the resource path.
@@ -1754,14 +1754,14 @@ class FlexibleAppVersionNetworkArgs:
 
     @property
     @pulumi.getter(name="forwardedPorts")
-    def forwarded_ports(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def forwarded_ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List of ports, or port pairs, to forward from the virtual machine to the application container.
         """
         return pulumi.get(self, "forwarded_ports")
 
     @forwarded_ports.setter
-    def forwarded_ports(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def forwarded_ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "forwarded_ports", value)
 
     @property
@@ -1930,15 +1930,15 @@ class FlexibleAppVersionReadinessCheckArgs:
 @pulumi.input_type
 class FlexibleAppVersionResourcesArgs:
     def __init__(__self__, *,
-                 cpu: Optional[pulumi.Input[float]] = None,
-                 disk_gb: Optional[pulumi.Input[float]] = None,
+                 cpu: Optional[pulumi.Input[int]] = None,
+                 disk_gb: Optional[pulumi.Input[int]] = None,
                  memory_gb: Optional[pulumi.Input[float]] = None,
-                 volumes: Optional[pulumi.Input[List[pulumi.Input['FlexibleAppVersionResourcesVolumeArgs']]]] = None):
+                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionResourcesVolumeArgs']]]] = None):
         """
-        :param pulumi.Input[float] cpu: Number of CPU cores needed.
-        :param pulumi.Input[float] disk_gb: Disk size (GB) needed.
+        :param pulumi.Input[int] cpu: Number of CPU cores needed.
+        :param pulumi.Input[int] disk_gb: Disk size (GB) needed.
         :param pulumi.Input[float] memory_gb: Memory (GB) needed.
-        :param pulumi.Input[List[pulumi.Input['FlexibleAppVersionResourcesVolumeArgs']]] volumes: List of ports, or port pairs, to forward from the virtual machine to the application container.
+        :param pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionResourcesVolumeArgs']]] volumes: List of ports, or port pairs, to forward from the virtual machine to the application container.
                Structure is documented below.
         """
         if cpu is not None:
@@ -1952,26 +1952,26 @@ class FlexibleAppVersionResourcesArgs:
 
     @property
     @pulumi.getter
-    def cpu(self) -> Optional[pulumi.Input[float]]:
+    def cpu(self) -> Optional[pulumi.Input[int]]:
         """
         Number of CPU cores needed.
         """
         return pulumi.get(self, "cpu")
 
     @cpu.setter
-    def cpu(self, value: Optional[pulumi.Input[float]]):
+    def cpu(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "cpu", value)
 
     @property
     @pulumi.getter(name="diskGb")
-    def disk_gb(self) -> Optional[pulumi.Input[float]]:
+    def disk_gb(self) -> Optional[pulumi.Input[int]]:
         """
         Disk size (GB) needed.
         """
         return pulumi.get(self, "disk_gb")
 
     @disk_gb.setter
-    def disk_gb(self, value: Optional[pulumi.Input[float]]):
+    def disk_gb(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "disk_gb", value)
 
     @property
@@ -1988,7 +1988,7 @@ class FlexibleAppVersionResourcesArgs:
 
     @property
     @pulumi.getter
-    def volumes(self) -> Optional[pulumi.Input[List[pulumi.Input['FlexibleAppVersionResourcesVolumeArgs']]]]:
+    def volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionResourcesVolumeArgs']]]]:
         """
         List of ports, or port pairs, to forward from the virtual machine to the application container.
         Structure is documented below.
@@ -1996,7 +1996,7 @@ class FlexibleAppVersionResourcesArgs:
         return pulumi.get(self, "volumes")
 
     @volumes.setter
-    def volumes(self, value: Optional[pulumi.Input[List[pulumi.Input['FlexibleAppVersionResourcesVolumeArgs']]]]):
+    def volumes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionResourcesVolumeArgs']]]]):
         pulumi.set(self, "volumes", value)
 
 
@@ -2004,11 +2004,11 @@ class FlexibleAppVersionResourcesArgs:
 class FlexibleAppVersionResourcesVolumeArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
-                 size_gb: pulumi.Input[float],
+                 size_gb: pulumi.Input[int],
                  volume_type: pulumi.Input[str]):
         """
         :param pulumi.Input[str] name: Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
-        :param pulumi.Input[float] size_gb: Volume size in gigabytes.
+        :param pulumi.Input[int] size_gb: Volume size in gigabytes.
         :param pulumi.Input[str] volume_type: Underlying volume type, e.g. 'tmpfs'.
         """
         pulumi.set(__self__, "name", name)
@@ -2029,14 +2029,14 @@ class FlexibleAppVersionResourcesVolumeArgs:
 
     @property
     @pulumi.getter(name="sizeGb")
-    def size_gb(self) -> pulumi.Input[float]:
+    def size_gb(self) -> pulumi.Input[int]:
         """
         Volume size in gigabytes.
         """
         return pulumi.get(self, "size_gb")
 
     @size_gb.setter
-    def size_gb(self, value: pulumi.Input[float]):
+    def size_gb(self, value: pulumi.Input[int]):
         pulumi.set(self, "size_gb", value)
 
     @property
@@ -2077,19 +2077,19 @@ class FlexibleAppVersionVpcAccessConnectorArgs:
 @pulumi.input_type
 class StandardAppVersionAutomaticScalingArgs:
     def __init__(__self__, *,
-                 max_concurrent_requests: Optional[pulumi.Input[float]] = None,
-                 max_idle_instances: Optional[pulumi.Input[float]] = None,
+                 max_concurrent_requests: Optional[pulumi.Input[int]] = None,
+                 max_idle_instances: Optional[pulumi.Input[int]] = None,
                  max_pending_latency: Optional[pulumi.Input[str]] = None,
-                 min_idle_instances: Optional[pulumi.Input[float]] = None,
+                 min_idle_instances: Optional[pulumi.Input[int]] = None,
                  min_pending_latency: Optional[pulumi.Input[str]] = None,
                  standard_scheduler_settings: Optional[pulumi.Input['StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs']] = None):
         """
-        :param pulumi.Input[float] max_concurrent_requests: Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns a new instance.
+        :param pulumi.Input[int] max_concurrent_requests: Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns a new instance.
                Defaults to a runtime-specific value.
-        :param pulumi.Input[float] max_idle_instances: Maximum number of idle instances that should be maintained for this version.
+        :param pulumi.Input[int] max_idle_instances: Maximum number of idle instances that should be maintained for this version.
         :param pulumi.Input[str] max_pending_latency: Maximum amount of time that a request should wait in the pending queue before starting a new instance to handle it.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-        :param pulumi.Input[float] min_idle_instances: Minimum number of idle instances that should be maintained for this version. Only applicable for the default version of a service.
+        :param pulumi.Input[int] min_idle_instances: Minimum number of idle instances that should be maintained for this version. Only applicable for the default version of a service.
         :param pulumi.Input[str] min_pending_latency: Minimum amount of time a request should wait in the pending queue before starting a new instance to handle it.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         :param pulumi.Input['StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs'] standard_scheduler_settings: Scheduler settings for standard environment.
@@ -2110,7 +2110,7 @@ class StandardAppVersionAutomaticScalingArgs:
 
     @property
     @pulumi.getter(name="maxConcurrentRequests")
-    def max_concurrent_requests(self) -> Optional[pulumi.Input[float]]:
+    def max_concurrent_requests(self) -> Optional[pulumi.Input[int]]:
         """
         Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns a new instance.
         Defaults to a runtime-specific value.
@@ -2118,19 +2118,19 @@ class StandardAppVersionAutomaticScalingArgs:
         return pulumi.get(self, "max_concurrent_requests")
 
     @max_concurrent_requests.setter
-    def max_concurrent_requests(self, value: Optional[pulumi.Input[float]]):
+    def max_concurrent_requests(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_concurrent_requests", value)
 
     @property
     @pulumi.getter(name="maxIdleInstances")
-    def max_idle_instances(self) -> Optional[pulumi.Input[float]]:
+    def max_idle_instances(self) -> Optional[pulumi.Input[int]]:
         """
         Maximum number of idle instances that should be maintained for this version.
         """
         return pulumi.get(self, "max_idle_instances")
 
     @max_idle_instances.setter
-    def max_idle_instances(self, value: Optional[pulumi.Input[float]]):
+    def max_idle_instances(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_idle_instances", value)
 
     @property
@@ -2148,14 +2148,14 @@ class StandardAppVersionAutomaticScalingArgs:
 
     @property
     @pulumi.getter(name="minIdleInstances")
-    def min_idle_instances(self) -> Optional[pulumi.Input[float]]:
+    def min_idle_instances(self) -> Optional[pulumi.Input[int]]:
         """
         Minimum number of idle instances that should be maintained for this version. Only applicable for the default version of a service.
         """
         return pulumi.get(self, "min_idle_instances")
 
     @min_idle_instances.setter
-    def min_idle_instances(self, value: Optional[pulumi.Input[float]]):
+    def min_idle_instances(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "min_idle_instances", value)
 
     @property
@@ -2188,13 +2188,13 @@ class StandardAppVersionAutomaticScalingArgs:
 @pulumi.input_type
 class StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs:
     def __init__(__self__, *,
-                 max_instances: Optional[pulumi.Input[float]] = None,
-                 min_instances: Optional[pulumi.Input[float]] = None,
+                 max_instances: Optional[pulumi.Input[int]] = None,
+                 min_instances: Optional[pulumi.Input[int]] = None,
                  target_cpu_utilization: Optional[pulumi.Input[float]] = None,
                  target_throughput_utilization: Optional[pulumi.Input[float]] = None):
         """
-        :param pulumi.Input[float] max_instances: Maximum number of instances to create for this version. Must be in the range [1.0, 200.0].
-        :param pulumi.Input[float] min_instances: Minimum number of instances to run for this version. Set to zero to disable minInstances configuration.
+        :param pulumi.Input[int] max_instances: Maximum number of instances to create for this version. Must be in the range [1.0, 200.0].
+        :param pulumi.Input[int] min_instances: Minimum number of instances to run for this version. Set to zero to disable minInstances configuration.
         :param pulumi.Input[float] target_cpu_utilization: Target CPU utilization ratio to maintain when scaling. Should be a value in the range [0.50, 0.95], zero, or a negative value.
         :param pulumi.Input[float] target_throughput_utilization: Target throughput utilization ratio to maintain when scaling. Should be a value in the range [0.50, 0.95], zero, or a negative value.
         """
@@ -2209,26 +2209,26 @@ class StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs:
 
     @property
     @pulumi.getter(name="maxInstances")
-    def max_instances(self) -> Optional[pulumi.Input[float]]:
+    def max_instances(self) -> Optional[pulumi.Input[int]]:
         """
         Maximum number of instances to create for this version. Must be in the range [1.0, 200.0].
         """
         return pulumi.get(self, "max_instances")
 
     @max_instances.setter
-    def max_instances(self, value: Optional[pulumi.Input[float]]):
+    def max_instances(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_instances", value)
 
     @property
     @pulumi.getter(name="minInstances")
-    def min_instances(self) -> Optional[pulumi.Input[float]]:
+    def min_instances(self) -> Optional[pulumi.Input[int]]:
         """
         Minimum number of instances to run for this version. Set to zero to disable minInstances configuration.
         """
         return pulumi.get(self, "min_instances")
 
     @min_instances.setter
-    def min_instances(self, value: Optional[pulumi.Input[float]]):
+    def min_instances(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "min_instances", value)
 
     @property
@@ -2259,10 +2259,10 @@ class StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs:
 @pulumi.input_type
 class StandardAppVersionBasicScalingArgs:
     def __init__(__self__, *,
-                 max_instances: pulumi.Input[float],
+                 max_instances: pulumi.Input[int],
                  idle_timeout: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[float] max_instances: Maximum number of instances to create for this version. Must be in the range [1.0, 200.0].
+        :param pulumi.Input[int] max_instances: Maximum number of instances to create for this version. Must be in the range [1.0, 200.0].
         :param pulumi.Input[str] idle_timeout: Duration of time after the last request that an instance must wait before the instance is shut down.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
         """
@@ -2272,14 +2272,14 @@ class StandardAppVersionBasicScalingArgs:
 
     @property
     @pulumi.getter(name="maxInstances")
-    def max_instances(self) -> pulumi.Input[float]:
+    def max_instances(self) -> pulumi.Input[int]:
         """
         Maximum number of instances to create for this version. Must be in the range [1.0, 200.0].
         """
         return pulumi.get(self, "max_instances")
 
     @max_instances.setter
-    def max_instances(self, value: pulumi.Input[float]):
+    def max_instances(self, value: pulumi.Input[int]):
         pulumi.set(self, "max_instances", value)
 
     @property
@@ -2299,10 +2299,10 @@ class StandardAppVersionBasicScalingArgs:
 @pulumi.input_type
 class StandardAppVersionDeploymentArgs:
     def __init__(__self__, *,
-                 files: Optional[pulumi.Input[List[pulumi.Input['StandardAppVersionDeploymentFileArgs']]]] = None,
+                 files: Optional[pulumi.Input[Sequence[pulumi.Input['StandardAppVersionDeploymentFileArgs']]]] = None,
                  zip: Optional[pulumi.Input['StandardAppVersionDeploymentZipArgs']] = None):
         """
-        :param pulumi.Input[List[pulumi.Input['StandardAppVersionDeploymentFileArgs']]] files: Manifest of the files stored in Google Cloud Storage that are included as part of this version.
+        :param pulumi.Input[Sequence[pulumi.Input['StandardAppVersionDeploymentFileArgs']]] files: Manifest of the files stored in Google Cloud Storage that are included as part of this version.
                All files must be readable using the credentials supplied with this call.
                Structure is documented below.
         :param pulumi.Input['StandardAppVersionDeploymentZipArgs'] zip: Zip File
@@ -2315,7 +2315,7 @@ class StandardAppVersionDeploymentArgs:
 
     @property
     @pulumi.getter
-    def files(self) -> Optional[pulumi.Input[List[pulumi.Input['StandardAppVersionDeploymentFileArgs']]]]:
+    def files(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StandardAppVersionDeploymentFileArgs']]]]:
         """
         Manifest of the files stored in Google Cloud Storage that are included as part of this version.
         All files must be readable using the credentials supplied with this call.
@@ -2324,7 +2324,7 @@ class StandardAppVersionDeploymentArgs:
         return pulumi.get(self, "files")
 
     @files.setter
-    def files(self, value: Optional[pulumi.Input[List[pulumi.Input['StandardAppVersionDeploymentFileArgs']]]]):
+    def files(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StandardAppVersionDeploymentFileArgs']]]]):
         pulumi.set(self, "files", value)
 
     @property
@@ -2398,10 +2398,10 @@ class StandardAppVersionDeploymentFileArgs:
 class StandardAppVersionDeploymentZipArgs:
     def __init__(__self__, *,
                  source_url: pulumi.Input[str],
-                 files_count: Optional[pulumi.Input[float]] = None):
+                 files_count: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] source_url: Source URL
-        :param pulumi.Input[float] files_count: files count
+        :param pulumi.Input[int] files_count: files count
         """
         pulumi.set(__self__, "source_url", source_url)
         if files_count is not None:
@@ -2421,14 +2421,14 @@ class StandardAppVersionDeploymentZipArgs:
 
     @property
     @pulumi.getter(name="filesCount")
-    def files_count(self) -> Optional[pulumi.Input[float]]:
+    def files_count(self) -> Optional[pulumi.Input[int]]:
         """
         files count
         """
         return pulumi.get(self, "files_count")
 
     @files_count.setter
-    def files_count(self, value: Optional[pulumi.Input[float]]):
+    def files_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "files_count", value)
 
 
@@ -2782,9 +2782,9 @@ class StandardAppVersionLibraryArgs:
 @pulumi.input_type
 class StandardAppVersionManualScalingArgs:
     def __init__(__self__, *,
-                 instances: pulumi.Input[float]):
+                 instances: pulumi.Input[int]):
         """
-        :param pulumi.Input[float] instances: Number of instances to assign to the service at the start.
+        :param pulumi.Input[int] instances: Number of instances to assign to the service at the start.
                **Note:** When managing the number of instances at runtime through the App Engine Admin API or the (now deprecated) Python 2
                Modules API set_num_instances() you must use `lifecycle.ignore_changes = ["manual_scaling"[0].instances]` to prevent drift detection.
         """
@@ -2792,7 +2792,7 @@ class StandardAppVersionManualScalingArgs:
 
     @property
     @pulumi.getter
-    def instances(self) -> pulumi.Input[float]:
+    def instances(self) -> pulumi.Input[int]:
         """
         Number of instances to assign to the service at the start.
         **Note:** When managing the number of instances at runtime through the App Engine Admin API or the (now deprecated) Python 2
@@ -2801,7 +2801,7 @@ class StandardAppVersionManualScalingArgs:
         return pulumi.get(self, "instances")
 
     @instances.setter
-    def instances(self, value: pulumi.Input[float]):
+    def instances(self, value: pulumi.Input[int]):
         pulumi.set(self, "instances", value)
 
 

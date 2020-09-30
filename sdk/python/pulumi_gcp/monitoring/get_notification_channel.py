@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -95,7 +95,7 @@ class GetNotificationChannelResult:
 
     @property
     @pulumi.getter(name="sensitiveLabels")
-    def sensitive_labels(self) -> List['outputs.GetNotificationChannelSensitiveLabelResult']:
+    def sensitive_labels(self) -> Sequence['outputs.GetNotificationChannelSensitiveLabelResult']:
         return pulumi.get(self, "sensitive_labels")
 
     @property

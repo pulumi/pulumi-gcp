@@ -32,7 +32,7 @@ type Registry struct {
 	EventNotificationConfigs RegistryEventNotificationConfigItemArrayOutput `pulumi:"eventNotificationConfigs"`
 	// Activate or deactivate HTTP.
 	// The structure is documented below.
-	HttpConfig RegistryHttpConfigOutput `pulumi:"httpConfig"`
+	HttpConfig pulumi.MapOutput `pulumi:"httpConfig"`
 	// The default logging verbosity for activity from devices in this
 	// registry. Specifies which events should be written to logs. For
 	// example, if the LogLevel is ERROR, only events that terminate in
@@ -43,7 +43,7 @@ type Registry struct {
 	LogLevel pulumi.StringPtrOutput `pulumi:"logLevel"`
 	// Activate or deactivate MQTT.
 	// The structure is documented below.
-	MqttConfig RegistryMqttConfigOutput `pulumi:"mqttConfig"`
+	MqttConfig pulumi.MapOutput `pulumi:"mqttConfig"`
 	// A unique name for the resource, required by device registry.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -54,7 +54,7 @@ type Registry struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// A PubSub topic to publish device state updates.
 	// The structure is documented below.
-	StateNotificationConfig RegistryStateNotificationConfigPtrOutput `pulumi:"stateNotificationConfig"`
+	StateNotificationConfig pulumi.MapOutput `pulumi:"stateNotificationConfig"`
 }
 
 // NewRegistry registers a new resource with the given unique name, arguments, and options.
@@ -94,7 +94,7 @@ type registryState struct {
 	EventNotificationConfigs []RegistryEventNotificationConfigItem `pulumi:"eventNotificationConfigs"`
 	// Activate or deactivate HTTP.
 	// The structure is documented below.
-	HttpConfig *RegistryHttpConfig `pulumi:"httpConfig"`
+	HttpConfig map[string]interface{} `pulumi:"httpConfig"`
 	// The default logging verbosity for activity from devices in this
 	// registry. Specifies which events should be written to logs. For
 	// example, if the LogLevel is ERROR, only events that terminate in
@@ -105,7 +105,7 @@ type registryState struct {
 	LogLevel *string `pulumi:"logLevel"`
 	// Activate or deactivate MQTT.
 	// The structure is documented below.
-	MqttConfig *RegistryMqttConfig `pulumi:"mqttConfig"`
+	MqttConfig map[string]interface{} `pulumi:"mqttConfig"`
 	// A unique name for the resource, required by device registry.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -116,7 +116,7 @@ type registryState struct {
 	Region *string `pulumi:"region"`
 	// A PubSub topic to publish device state updates.
 	// The structure is documented below.
-	StateNotificationConfig *RegistryStateNotificationConfig `pulumi:"stateNotificationConfig"`
+	StateNotificationConfig map[string]interface{} `pulumi:"stateNotificationConfig"`
 }
 
 type RegistryState struct {
@@ -129,7 +129,7 @@ type RegistryState struct {
 	EventNotificationConfigs RegistryEventNotificationConfigItemArrayInput
 	// Activate or deactivate HTTP.
 	// The structure is documented below.
-	HttpConfig RegistryHttpConfigPtrInput
+	HttpConfig pulumi.MapInput
 	// The default logging verbosity for activity from devices in this
 	// registry. Specifies which events should be written to logs. For
 	// example, if the LogLevel is ERROR, only events that terminate in
@@ -140,7 +140,7 @@ type RegistryState struct {
 	LogLevel pulumi.StringPtrInput
 	// Activate or deactivate MQTT.
 	// The structure is documented below.
-	MqttConfig RegistryMqttConfigPtrInput
+	MqttConfig pulumi.MapInput
 	// A unique name for the resource, required by device registry.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -151,7 +151,7 @@ type RegistryState struct {
 	Region pulumi.StringPtrInput
 	// A PubSub topic to publish device state updates.
 	// The structure is documented below.
-	StateNotificationConfig RegistryStateNotificationConfigPtrInput
+	StateNotificationConfig pulumi.MapInput
 }
 
 func (RegistryState) ElementType() reflect.Type {
@@ -168,7 +168,7 @@ type registryArgs struct {
 	EventNotificationConfigs []RegistryEventNotificationConfigItem `pulumi:"eventNotificationConfigs"`
 	// Activate or deactivate HTTP.
 	// The structure is documented below.
-	HttpConfig *RegistryHttpConfig `pulumi:"httpConfig"`
+	HttpConfig map[string]interface{} `pulumi:"httpConfig"`
 	// The default logging verbosity for activity from devices in this
 	// registry. Specifies which events should be written to logs. For
 	// example, if the LogLevel is ERROR, only events that terminate in
@@ -179,7 +179,7 @@ type registryArgs struct {
 	LogLevel *string `pulumi:"logLevel"`
 	// Activate or deactivate MQTT.
 	// The structure is documented below.
-	MqttConfig *RegistryMqttConfig `pulumi:"mqttConfig"`
+	MqttConfig map[string]interface{} `pulumi:"mqttConfig"`
 	// A unique name for the resource, required by device registry.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -190,7 +190,7 @@ type registryArgs struct {
 	Region *string `pulumi:"region"`
 	// A PubSub topic to publish device state updates.
 	// The structure is documented below.
-	StateNotificationConfig *RegistryStateNotificationConfig `pulumi:"stateNotificationConfig"`
+	StateNotificationConfig map[string]interface{} `pulumi:"stateNotificationConfig"`
 }
 
 // The set of arguments for constructing a Registry resource.
@@ -204,7 +204,7 @@ type RegistryArgs struct {
 	EventNotificationConfigs RegistryEventNotificationConfigItemArrayInput
 	// Activate or deactivate HTTP.
 	// The structure is documented below.
-	HttpConfig RegistryHttpConfigPtrInput
+	HttpConfig pulumi.MapInput
 	// The default logging verbosity for activity from devices in this
 	// registry. Specifies which events should be written to logs. For
 	// example, if the LogLevel is ERROR, only events that terminate in
@@ -215,7 +215,7 @@ type RegistryArgs struct {
 	LogLevel pulumi.StringPtrInput
 	// Activate or deactivate MQTT.
 	// The structure is documented below.
-	MqttConfig RegistryMqttConfigPtrInput
+	MqttConfig pulumi.MapInput
 	// A unique name for the resource, required by device registry.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -226,7 +226,7 @@ type RegistryArgs struct {
 	Region pulumi.StringPtrInput
 	// A PubSub topic to publish device state updates.
 	// The structure is documented below.
-	StateNotificationConfig RegistryStateNotificationConfigPtrInput
+	StateNotificationConfig pulumi.MapInput
 }
 
 func (RegistryArgs) ElementType() reflect.Type {

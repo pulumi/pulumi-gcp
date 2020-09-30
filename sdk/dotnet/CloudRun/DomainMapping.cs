@@ -58,8 +58,8 @@ namespace Pulumi.Gcp.CloudRun
         /// <summary>
         /// The current status of the DomainMapping.
         /// </summary>
-        [Output("status")]
-        public Output<Outputs.DomainMappingStatus> Status { get; private set; } = null!;
+        [Output("statuses")]
+        public Output<ImmutableArray<Outputs.DomainMappingStatus>> Statuses { get; private set; } = null!;
 
 
         /// <summary>
@@ -180,11 +180,17 @@ namespace Pulumi.Gcp.CloudRun
         [Input("spec")]
         public Input<Inputs.DomainMappingSpecGetArgs>? Spec { get; set; }
 
+        [Input("statuses")]
+        private InputList<Inputs.DomainMappingStatusGetArgs>? _statuses;
+
         /// <summary>
         /// The current status of the DomainMapping.
         /// </summary>
-        [Input("status")]
-        public Input<Inputs.DomainMappingStatusGetArgs>? Status { get; set; }
+        public InputList<Inputs.DomainMappingStatusGetArgs> Statuses
+        {
+            get => _statuses ?? (_statuses = new InputList<Inputs.DomainMappingStatusGetArgs>());
+            set => _statuses = value;
+        }
 
         public DomainMappingState()
         {

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['Notification']
@@ -17,7 +17,7 @@ class Notification(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
                  custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 event_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 event_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  object_name_prefix: Optional[pulumi.Input[str]] = None,
                  payload_format: Optional[pulumi.Input[str]] = None,
                  topic: Optional[pulumi.Input[str]] = None,
@@ -46,7 +46,7 @@ class Notification(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket: The name of the bucket.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: A set of key/value attribute pairs to attach to each Cloud PubSub message published for this notification subscription
-        :param pulumi.Input[List[pulumi.Input[str]]] event_types: List of event type filters for this notification config. If not specified, Cloud Storage will send notifications for all event types. The valid types are: `"OBJECT_FINALIZE"`, `"OBJECT_METADATA_UPDATE"`, `"OBJECT_DELETE"`, `"OBJECT_ARCHIVE"`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] event_types: List of event type filters for this notification config. If not specified, Cloud Storage will send notifications for all event types. The valid types are: `"OBJECT_FINALIZE"`, `"OBJECT_METADATA_UPDATE"`, `"OBJECT_DELETE"`, `"OBJECT_ARCHIVE"`
         :param pulumi.Input[str] object_name_prefix: Specifies a prefix path filter for this notification config. Cloud Storage will only send notifications for objects in this bucket whose names begin with the specified prefix.
         :param pulumi.Input[str] payload_format: The desired content of the Payload. One of `"JSON_API_V1"` or `"NONE"`.
         :param pulumi.Input[str] topic: The Cloud PubSub topic to which this subscription publishes. Expects either the
@@ -97,7 +97,7 @@ class Notification(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             bucket: Optional[pulumi.Input[str]] = None,
             custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            event_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            event_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             notification_id: Optional[pulumi.Input[str]] = None,
             object_name_prefix: Optional[pulumi.Input[str]] = None,
             payload_format: Optional[pulumi.Input[str]] = None,
@@ -112,7 +112,7 @@ class Notification(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket: The name of the bucket.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: A set of key/value attribute pairs to attach to each Cloud PubSub message published for this notification subscription
-        :param pulumi.Input[List[pulumi.Input[str]]] event_types: List of event type filters for this notification config. If not specified, Cloud Storage will send notifications for all event types. The valid types are: `"OBJECT_FINALIZE"`, `"OBJECT_METADATA_UPDATE"`, `"OBJECT_DELETE"`, `"OBJECT_ARCHIVE"`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] event_types: List of event type filters for this notification config. If not specified, Cloud Storage will send notifications for all event types. The valid types are: `"OBJECT_FINALIZE"`, `"OBJECT_METADATA_UPDATE"`, `"OBJECT_DELETE"`, `"OBJECT_ARCHIVE"`
         :param pulumi.Input[str] notification_id: The ID of the created notification.
         :param pulumi.Input[str] object_name_prefix: Specifies a prefix path filter for this notification config. Cloud Storage will only send notifications for objects in this bucket whose names begin with the specified prefix.
         :param pulumi.Input[str] payload_format: The desired content of the Payload. One of `"JSON_API_V1"` or `"NONE"`.
@@ -154,7 +154,7 @@ class Notification(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="eventTypes")
-    def event_types(self) -> pulumi.Output[Optional[List[str]]]:
+    def event_types(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         List of event type filters for this notification config. If not specified, Cloud Storage will send notifications for all event types. The valid types are: `"OBJECT_FINALIZE"`, `"OBJECT_METADATA_UPDATE"`, `"OBJECT_DELETE"`, `"OBJECT_ARCHIVE"`
         """

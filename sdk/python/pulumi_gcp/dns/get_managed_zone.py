@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -73,7 +73,7 @@ class GetManagedZoneResult:
 
     @property
     @pulumi.getter(name="nameServers")
-    def name_servers(self) -> List[str]:
+    def name_servers(self) -> Sequence[str]:
         """
         The list of nameservers that will be authoritative for this
         domain. Use NS records to redirect from your DNS provider to these names,

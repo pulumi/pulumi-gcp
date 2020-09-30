@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -17,7 +17,7 @@ class IAMAuditConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 audit_log_configs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['IAMAuditConfigAuditLogConfigArgs']]]]] = None,
+                 audit_log_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IAMAuditConfigAuditLogConfigArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -37,7 +37,7 @@ class IAMAuditConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['IAMAuditConfigAuditLogConfigArgs']]]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IAMAuditConfigAuditLogConfigArgs']]]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
         :param pulumi.Input[str] project: The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
                Required for `projects.IAMPolicy` - you must explicitly set the project, and it
                will not be inferred from the provider.
@@ -78,7 +78,7 @@ class IAMAuditConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            audit_log_configs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['IAMAuditConfigAuditLogConfigArgs']]]]] = None,
+            audit_log_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IAMAuditConfigAuditLogConfigArgs']]]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             service: Optional[pulumi.Input[str]] = None) -> 'IAMAuditConfig':
@@ -89,7 +89,7 @@ class IAMAuditConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['IAMAuditConfigAuditLogConfigArgs']]]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IAMAuditConfigAuditLogConfigArgs']]]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the project's IAM policy.
         :param pulumi.Input[str] project: The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
                Required for `projects.IAMPolicy` - you must explicitly set the project, and it
@@ -108,7 +108,7 @@ class IAMAuditConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="auditLogConfigs")
-    def audit_log_configs(self) -> pulumi.Output[List['outputs.IAMAuditConfigAuditLogConfig']]:
+    def audit_log_configs(self) -> pulumi.Output[Sequence['outputs.IAMAuditConfigAuditLogConfig']]:
         """
         The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
         """

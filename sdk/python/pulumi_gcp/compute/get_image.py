@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -20,8 +20,8 @@ class GetImageResult:
     A collection of values returned by getImage.
     """
     def __init__(__self__, archive_size_bytes=None, creation_timestamp=None, description=None, disk_size_gb=None, family=None, id=None, image_encryption_key_sha256=None, image_id=None, label_fingerprint=None, labels=None, licenses=None, name=None, project=None, self_link=None, source_disk=None, source_disk_encryption_key_sha256=None, source_disk_id=None, source_image_id=None, status=None):
-        if archive_size_bytes and not isinstance(archive_size_bytes, float):
-            raise TypeError("Expected argument 'archive_size_bytes' to be a float")
+        if archive_size_bytes and not isinstance(archive_size_bytes, int):
+            raise TypeError("Expected argument 'archive_size_bytes' to be a int")
         pulumi.set(__self__, "archive_size_bytes", archive_size_bytes)
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
@@ -29,8 +29,8 @@ class GetImageResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
-        if disk_size_gb and not isinstance(disk_size_gb, float):
-            raise TypeError("Expected argument 'disk_size_gb' to be a float")
+        if disk_size_gb and not isinstance(disk_size_gb, int):
+            raise TypeError("Expected argument 'disk_size_gb' to be a int")
         pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         if family and not isinstance(family, str):
             raise TypeError("Expected argument 'family' to be a str")
@@ -80,7 +80,7 @@ class GetImageResult:
 
     @property
     @pulumi.getter(name="archiveSizeBytes")
-    def archive_size_bytes(self) -> float:
+    def archive_size_bytes(self) -> int:
         """
         The size of the image tar.gz archive stored in Google Cloud Storage in bytes.
         """
@@ -104,7 +104,7 @@ class GetImageResult:
 
     @property
     @pulumi.getter(name="diskSizeGb")
-    def disk_size_gb(self) -> float:
+    def disk_size_gb(self) -> int:
         """
         The size of the image when restored onto a persistent disk in gigabytes.
         """
@@ -162,7 +162,7 @@ class GetImageResult:
 
     @property
     @pulumi.getter
-    def licenses(self) -> List[str]:
+    def licenses(self) -> Sequence[str]:
         """
         A list of applicable license URI.
         """

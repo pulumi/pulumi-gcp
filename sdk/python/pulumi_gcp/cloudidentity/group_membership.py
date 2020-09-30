@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -20,7 +20,7 @@ class GroupMembership(pulumi.CustomResource):
                  group: Optional[pulumi.Input[str]] = None,
                  member_key: Optional[pulumi.Input[pulumi.InputType['GroupMembershipMemberKeyArgs']]] = None,
                  preferred_member_key: Optional[pulumi.Input[pulumi.InputType['GroupMembershipPreferredMemberKeyArgs']]] = None,
-                 roles: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['GroupMembershipRoleArgs']]]]] = None,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupMembershipRoleArgs']]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -36,7 +36,7 @@ class GroupMembership(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['GroupMembershipPreferredMemberKeyArgs']] preferred_member_key: EntityKey of the member.
                Structure is documented below.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['GroupMembershipRoleArgs']]]] roles: The MembershipRoles that apply to the Membership.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupMembershipRoleArgs']]]] roles: The MembershipRoles that apply to the Membership.
                Must not contain duplicate MembershipRoles with the same name.
                Structure is documented below.
         """
@@ -84,7 +84,7 @@ class GroupMembership(pulumi.CustomResource):
             member_key: Optional[pulumi.Input[pulumi.InputType['GroupMembershipMemberKeyArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             preferred_member_key: Optional[pulumi.Input[pulumi.InputType['GroupMembershipPreferredMemberKeyArgs']]] = None,
-            roles: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['GroupMembershipRoleArgs']]]]] = None,
+            roles: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupMembershipRoleArgs']]]]] = None,
             type: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'GroupMembership':
         """
@@ -102,7 +102,7 @@ class GroupMembership(pulumi.CustomResource):
                Possible values are `OWNER`, `MANAGER`, and `MEMBER`.
         :param pulumi.Input[pulumi.InputType['GroupMembershipPreferredMemberKeyArgs']] preferred_member_key: EntityKey of the member.
                Structure is documented below.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['GroupMembershipRoleArgs']]]] roles: The MembershipRoles that apply to the Membership.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupMembershipRoleArgs']]]] roles: The MembershipRoles that apply to the Membership.
                Must not contain duplicate MembershipRoles with the same name.
                Structure is documented below.
         :param pulumi.Input[str] type: The type of the membership.
@@ -167,7 +167,7 @@ class GroupMembership(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def roles(self) -> pulumi.Output[List['outputs.GroupMembershipRole']]:
+    def roles(self) -> pulumi.Output[Sequence['outputs.GroupMembershipRole']]:
         """
         The MembershipRoles that apply to the Membership.
         Must not contain duplicate MembershipRoles with the same name.

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -19,7 +19,7 @@ class ConnectivityTestDestinationArgs:
                  instance: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
-                 port: Optional[pulumi.Input[float]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
                  project_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] instance: A Compute Engine instance URI.
@@ -27,7 +27,7 @@ class ConnectivityTestDestinationArgs:
                internal IP. An IPv6 address is only allowed when the test's
                destination is a global load balancer VIP.
         :param pulumi.Input[str] network: A Compute Engine network URI.
-        :param pulumi.Input[float] port: The IP protocol port of the endpoint. Only applicable when
+        :param pulumi.Input[int] port: The IP protocol port of the endpoint. Only applicable when
                protocol is TCP or UDP.
         :param pulumi.Input[str] project_id: Project ID where the endpoint is located. The Project ID can be
                derived from the URI if you provide a VM instance or network URI.
@@ -89,7 +89,7 @@ class ConnectivityTestDestinationArgs:
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[float]]:
+    def port(self) -> Optional[pulumi.Input[int]]:
         """
         The IP protocol port of the endpoint. Only applicable when
         protocol is TCP or UDP.
@@ -97,7 +97,7 @@ class ConnectivityTestDestinationArgs:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[float]]):
+    def port(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "port", value)
 
     @property
@@ -127,7 +127,7 @@ class ConnectivityTestSourceArgs:
                  ip_address: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  network_type: Optional[pulumi.Input[str]] = None,
-                 port: Optional[pulumi.Input[float]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
                  project_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] instance: A Compute Engine instance URI.
@@ -137,7 +137,7 @@ class ConnectivityTestSourceArgs:
         :param pulumi.Input[str] network: A Compute Engine network URI.
         :param pulumi.Input[str] network_type: Type of the network where the endpoint is located.
                Possible values are `GCP_NETWORK` and `NON_GCP_NETWORK`.
-        :param pulumi.Input[float] port: The IP protocol port of the endpoint. Only applicable when
+        :param pulumi.Input[int] port: The IP protocol port of the endpoint. Only applicable when
                protocol is TCP or UDP.
         :param pulumi.Input[str] project_id: Project ID where the endpoint is located. The Project ID can be
                derived from the URI if you provide a VM instance or network URI.
@@ -214,7 +214,7 @@ class ConnectivityTestSourceArgs:
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[float]]:
+    def port(self) -> Optional[pulumi.Input[int]]:
         """
         The IP protocol port of the endpoint. Only applicable when
         protocol is TCP or UDP.
@@ -222,7 +222,7 @@ class ConnectivityTestSourceArgs:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[float]]):
+    def port(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "port", value)
 
     @property

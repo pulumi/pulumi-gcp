@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
         /// Output only. Stores timing information for pushing all artifact objects.
         /// Structure is documented below.
         /// </summary>
-        public readonly Outputs.TriggerBuildArtifactsObjectsTiming? Timing;
+        public readonly ImmutableArray<Outputs.TriggerBuildArtifactsObjectsTiming> Timings;
 
         [OutputConstructor]
         private TriggerBuildArtifactsObjects(
@@ -36,11 +36,11 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
 
             ImmutableArray<string> paths,
 
-            Outputs.TriggerBuildArtifactsObjectsTiming? timing)
+            ImmutableArray<Outputs.TriggerBuildArtifactsObjectsTiming> timings)
         {
             Location = location;
             Paths = paths;
-            Timing = timing;
+            Timings = timings;
         }
     }
 }

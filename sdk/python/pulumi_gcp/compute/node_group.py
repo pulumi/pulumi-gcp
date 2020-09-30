@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -22,7 +22,7 @@ class NodeGroup(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  node_template: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 size: Optional[pulumi.Input[float]] = None,
+                 size: Optional[pulumi.Input[int]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -54,7 +54,7 @@ class NodeGroup(pulumi.CustomResource):
         :param pulumi.Input[str] node_template: The URL of the node template to which this node group belongs.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[float] size: The total number of nodes in the node group.
+        :param pulumi.Input[int] size: The total number of nodes in the node group.
         :param pulumi.Input[str] zone: Zone where this node group is located
         """
         if __name__ is not None:
@@ -104,7 +104,7 @@ class NodeGroup(pulumi.CustomResource):
             node_template: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
-            size: Optional[pulumi.Input[float]] = None,
+            size: Optional[pulumi.Input[int]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'NodeGroup':
         """
         Get an existing NodeGroup resource's state with the given name, id, and optional extra
@@ -124,7 +124,7 @@ class NodeGroup(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[float] size: The total number of nodes in the node group.
+        :param pulumi.Input[int] size: The total number of nodes in the node group.
         :param pulumi.Input[str] zone: Zone where this node group is located
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -204,7 +204,7 @@ class NodeGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def size(self) -> pulumi.Output[float]:
+    def size(self) -> pulumi.Output[int]:
         """
         The total number of nodes in the node group.
         """

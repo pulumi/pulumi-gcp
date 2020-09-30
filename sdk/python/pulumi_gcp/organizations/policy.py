@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -22,7 +22,7 @@ class Policy(pulumi.CustomResource):
                  list_policy: Optional[pulumi.Input[pulumi.InputType['PolicyListPolicyArgs']]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  restore_policy: Optional[pulumi.Input[pulumi.InputType['PolicyRestorePolicyArgs']]] = None,
-                 version: Optional[pulumi.Input[float]] = None,
+                 version: Optional[pulumi.Input[int]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -39,7 +39,7 @@ class Policy(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['PolicyListPolicyArgs']] list_policy: A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
         :param pulumi.Input[str] org_id: The numeric ID of the organization to set the policy for.
         :param pulumi.Input[pulumi.InputType['PolicyRestorePolicyArgs']] restore_policy: A restore policy is a constraint to restore the default policy. Structure is documented below.
-        :param pulumi.Input[float] version: Version of the Policy. Default version is 0.
+        :param pulumi.Input[int] version: Version of the Policy. Default version is 0.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -87,7 +87,7 @@ class Policy(pulumi.CustomResource):
             org_id: Optional[pulumi.Input[str]] = None,
             restore_policy: Optional[pulumi.Input[pulumi.InputType['PolicyRestorePolicyArgs']]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
-            version: Optional[pulumi.Input[float]] = None) -> 'Policy':
+            version: Optional[pulumi.Input[int]] = None) -> 'Policy':
         """
         Get an existing Policy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -102,7 +102,7 @@ class Policy(pulumi.CustomResource):
         :param pulumi.Input[str] org_id: The numeric ID of the organization to set the policy for.
         :param pulumi.Input[pulumi.InputType['PolicyRestorePolicyArgs']] restore_policy: A restore policy is a constraint to restore the default policy. Structure is documented below.
         :param pulumi.Input[str] update_time: (Computed) The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds, representing when the variable was last updated. Example: "2016-10-09T12:33:37.578138407Z".
-        :param pulumi.Input[float] version: Version of the Policy. Default version is 0.
+        :param pulumi.Input[int] version: Version of the Policy. Default version is 0.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -176,7 +176,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def version(self) -> pulumi.Output[float]:
+    def version(self) -> pulumi.Output[int]:
         """
         Version of the Policy. Default version is 0.
         """

@@ -43,7 +43,7 @@ namespace Pulumi.Gcp.Kms
         /// The structure is documented below.
         /// </summary>
         [Output("httpConfig")]
-        public Output<Outputs.RegistryHttpConfig> HttpConfig { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, object>> HttpConfig { get; private set; } = null!;
 
         /// <summary>
         /// The default logging verbosity for activity from devices in this
@@ -62,7 +62,7 @@ namespace Pulumi.Gcp.Kms
         /// The structure is documented below.
         /// </summary>
         [Output("mqttConfig")]
-        public Output<Outputs.RegistryMqttConfig> MqttConfig { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, object>> MqttConfig { get; private set; } = null!;
 
         /// <summary>
         /// A unique name for the resource, required by device registry.
@@ -89,7 +89,7 @@ namespace Pulumi.Gcp.Kms
         /// The structure is documented below.
         /// </summary>
         [Output("stateNotificationConfig")]
-        public Output<Outputs.RegistryStateNotificationConfig?> StateNotificationConfig { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, object>?> StateNotificationConfig { get; private set; } = null!;
 
 
         /// <summary>
@@ -164,12 +164,18 @@ namespace Pulumi.Gcp.Kms
             set => _eventNotificationConfigs = value;
         }
 
+        [Input("httpConfig")]
+        private InputMap<object>? _httpConfig;
+
         /// <summary>
         /// Activate or deactivate HTTP.
         /// The structure is documented below.
         /// </summary>
-        [Input("httpConfig")]
-        public Input<Inputs.RegistryHttpConfigArgs>? HttpConfig { get; set; }
+        public InputMap<object> HttpConfig
+        {
+            get => _httpConfig ?? (_httpConfig = new InputMap<object>());
+            set => _httpConfig = value;
+        }
 
         /// <summary>
         /// The default logging verbosity for activity from devices in this
@@ -183,12 +189,18 @@ namespace Pulumi.Gcp.Kms
         [Input("logLevel")]
         public Input<string>? LogLevel { get; set; }
 
+        [Input("mqttConfig")]
+        private InputMap<object>? _mqttConfig;
+
         /// <summary>
         /// Activate or deactivate MQTT.
         /// The structure is documented below.
         /// </summary>
-        [Input("mqttConfig")]
-        public Input<Inputs.RegistryMqttConfigArgs>? MqttConfig { get; set; }
+        public InputMap<object> MqttConfig
+        {
+            get => _mqttConfig ?? (_mqttConfig = new InputMap<object>());
+            set => _mqttConfig = value;
+        }
 
         /// <summary>
         /// A unique name for the resource, required by device registry.
@@ -210,12 +222,18 @@ namespace Pulumi.Gcp.Kms
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        [Input("stateNotificationConfig")]
+        private InputMap<object>? _stateNotificationConfig;
+
         /// <summary>
         /// A PubSub topic to publish device state updates.
         /// The structure is documented below.
         /// </summary>
-        [Input("stateNotificationConfig")]
-        public Input<Inputs.RegistryStateNotificationConfigArgs>? StateNotificationConfig { get; set; }
+        public InputMap<object> StateNotificationConfig
+        {
+            get => _stateNotificationConfig ?? (_stateNotificationConfig = new InputMap<object>());
+            set => _stateNotificationConfig = value;
+        }
 
         public RegistryArgs()
         {
@@ -251,12 +269,18 @@ namespace Pulumi.Gcp.Kms
             set => _eventNotificationConfigs = value;
         }
 
+        [Input("httpConfig")]
+        private InputMap<object>? _httpConfig;
+
         /// <summary>
         /// Activate or deactivate HTTP.
         /// The structure is documented below.
         /// </summary>
-        [Input("httpConfig")]
-        public Input<Inputs.RegistryHttpConfigGetArgs>? HttpConfig { get; set; }
+        public InputMap<object> HttpConfig
+        {
+            get => _httpConfig ?? (_httpConfig = new InputMap<object>());
+            set => _httpConfig = value;
+        }
 
         /// <summary>
         /// The default logging verbosity for activity from devices in this
@@ -270,12 +294,18 @@ namespace Pulumi.Gcp.Kms
         [Input("logLevel")]
         public Input<string>? LogLevel { get; set; }
 
+        [Input("mqttConfig")]
+        private InputMap<object>? _mqttConfig;
+
         /// <summary>
         /// Activate or deactivate MQTT.
         /// The structure is documented below.
         /// </summary>
-        [Input("mqttConfig")]
-        public Input<Inputs.RegistryMqttConfigGetArgs>? MqttConfig { get; set; }
+        public InputMap<object> MqttConfig
+        {
+            get => _mqttConfig ?? (_mqttConfig = new InputMap<object>());
+            set => _mqttConfig = value;
+        }
 
         /// <summary>
         /// A unique name for the resource, required by device registry.
@@ -297,12 +327,18 @@ namespace Pulumi.Gcp.Kms
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        [Input("stateNotificationConfig")]
+        private InputMap<object>? _stateNotificationConfig;
+
         /// <summary>
         /// A PubSub topic to publish device state updates.
         /// The structure is documented below.
         /// </summary>
-        [Input("stateNotificationConfig")]
-        public Input<Inputs.RegistryStateNotificationConfigGetArgs>? StateNotificationConfig { get; set; }
+        public InputMap<object> StateNotificationConfig
+        {
+            get => _stateNotificationConfig ?? (_stateNotificationConfig = new InputMap<object>());
+            set => _stateNotificationConfig = value;
+        }
 
         public RegistryState()
         {
