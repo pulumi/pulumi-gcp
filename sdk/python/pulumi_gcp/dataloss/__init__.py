@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .prevention_deidentify_template import *
 from .prevention_inspect_template import *
 from .prevention_job_trigger import *
 from .prevention_stored_info_type import *

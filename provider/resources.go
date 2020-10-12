@@ -1670,6 +1670,9 @@ func Provider() tfbridge.ProviderInfo {
 			"google_data_loss_prevention_stored_info_type": {
 				Tok: gcpResource(gcpDataLoss, "PreventionStoredInfoType"),
 			},
+			"google_data_loss_prevention_deidentify_template": {
+				Tok: gcpResource(gcpDataLoss, "PreventionDeidentifyTemplate"),
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"google_billing_account": {

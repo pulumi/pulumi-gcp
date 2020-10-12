@@ -10,6 +10,1719 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+type PreventionDeidentifyTemplateDeidentifyConfig struct {
+	// Specifies free-text based transformations to be applied to the dataset.
+	// Structure is documented below.
+	InfoTypeTransformations PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations `pulumi:"infoTypeTransformations"`
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigArgs and PreventionDeidentifyTemplateDeidentifyConfigOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInput` via:
+//
+//          PreventionDeidentifyTemplateDeidentifyConfigArgs{...}
+type PreventionDeidentifyTemplateDeidentifyConfigInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigOutput() PreventionDeidentifyTemplateDeidentifyConfigOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigOutput
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigArgs struct {
+	// Specifies free-text based transformations to be applied to the dataset.
+	// Structure is documented below.
+	InfoTypeTransformations PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsInput `pulumi:"infoTypeTransformations"`
+}
+
+func (PreventionDeidentifyTemplateDeidentifyConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfig)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigArgs) ToPreventionDeidentifyTemplateDeidentifyConfigOutput() PreventionDeidentifyTemplateDeidentifyConfigOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigArgs) ToPreventionDeidentifyTemplateDeidentifyConfigOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigOutput)
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigArgs) ToPreventionDeidentifyTemplateDeidentifyConfigPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigPtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigArgs) ToPreventionDeidentifyTemplateDeidentifyConfigPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigOutput).ToPreventionDeidentifyTemplateDeidentifyConfigPtrOutputWithContext(ctx)
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigPtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigArgs, PreventionDeidentifyTemplateDeidentifyConfigPtr and PreventionDeidentifyTemplateDeidentifyConfigPtrOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigPtrInput` via:
+//
+//          PreventionDeidentifyTemplateDeidentifyConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type PreventionDeidentifyTemplateDeidentifyConfigPtrInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigPtrOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigPtrOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigPtrOutput
+}
+
+type preventionDeidentifyTemplateDeidentifyConfigPtrType PreventionDeidentifyTemplateDeidentifyConfigArgs
+
+func PreventionDeidentifyTemplateDeidentifyConfigPtr(v *PreventionDeidentifyTemplateDeidentifyConfigArgs) PreventionDeidentifyTemplateDeidentifyConfigPtrInput {
+	return (*preventionDeidentifyTemplateDeidentifyConfigPtrType)(v)
+}
+
+func (*preventionDeidentifyTemplateDeidentifyConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfig)(nil)).Elem()
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigPtrType) ToPreventionDeidentifyTemplateDeidentifyConfigPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigPtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigPtrType) ToPreventionDeidentifyTemplateDeidentifyConfigPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfig)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigOutput) ToPreventionDeidentifyTemplateDeidentifyConfigOutput() PreventionDeidentifyTemplateDeidentifyConfigOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigOutput) ToPreventionDeidentifyTemplateDeidentifyConfigOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigOutput) ToPreventionDeidentifyTemplateDeidentifyConfigPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigPtrOutput {
+	return o.ToPreventionDeidentifyTemplateDeidentifyConfigPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigOutput) ToPreventionDeidentifyTemplateDeidentifyConfigPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfig) *PreventionDeidentifyTemplateDeidentifyConfig {
+		return &v
+	}).(PreventionDeidentifyTemplateDeidentifyConfigPtrOutput)
+}
+
+// Specifies free-text based transformations to be applied to the dataset.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigOutput) InfoTypeTransformations() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfig) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations {
+		return v.InfoTypeTransformations
+	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfig)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigPtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigPtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigPtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigPtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigPtrOutput) Elem() PreventionDeidentifyTemplateDeidentifyConfigOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfig) PreventionDeidentifyTemplateDeidentifyConfig {
+		return *v
+	}).(PreventionDeidentifyTemplateDeidentifyConfigOutput)
+}
+
+// Specifies free-text based transformations to be applied to the dataset.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigPtrOutput) InfoTypeTransformations() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfig) *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations {
+		if v == nil {
+			return nil
+		}
+		return &v.InfoTypeTransformations
+	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations struct {
+	// Transformation for each infoType. Cannot specify more than one for a given infoType.
+	// Structure is documented below.
+	Transformations []PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation `pulumi:"transformations"`
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsInput` via:
+//
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs{...}
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsOutput
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs struct {
+	// Transformation for each infoType. Cannot specify more than one for a given infoType.
+	// Structure is documented below.
+	Transformations PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArrayInput `pulumi:"transformations"`
+}
+
+func (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsOutput)
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsOutput).ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutputWithContext(ctx)
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs, PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtr and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrInput` via:
+//
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs{...}
+//
+//  or:
+//
+//          nil
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput
+}
+
+type preventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrType PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs
+
+func PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtr(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrInput {
+	return (*preventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrType)(v)
+}
+
+func (*preventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations)(nil)).Elem()
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrType) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrType) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput {
+	return o.ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations) *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations {
+		return &v
+	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput)
+}
+
+// Transformation for each infoType. Cannot specify more than one for a given infoType.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsOutput) Transformations() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArrayOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations) []PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation {
+		return v.Transformations
+	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArrayOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput) Elem() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations {
+		return *v
+	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsOutput)
+}
+
+// Transformation for each infoType. Cannot specify more than one for a given infoType.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput) Transformations() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArrayOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations) []PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation {
+		if v == nil {
+			return nil
+		}
+		return v.Transformations
+	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArrayOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation struct {
+	// InfoTypes to apply the transformation to. Leaving this empty will apply the transformation to apply to
+	// all findings that correspond to infoTypes that were requested in InspectConfig.
+	// Structure is documented below.
+	InfoTypes []PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType `pulumi:"infoTypes"`
+	// Primitive transformation to apply to the infoType.
+	// Structure is documented below.
+	PrimitiveTransformation PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation `pulumi:"primitiveTransformation"`
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInput` via:
+//
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs{...}
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationOutput
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs struct {
+	// InfoTypes to apply the transformation to. Leaving this empty will apply the transformation to apply to
+	// all findings that correspond to infoTypes that were requested in InspectConfig.
+	// Structure is documented below.
+	InfoTypes PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArrayInput `pulumi:"infoTypes"`
+	// Primitive transformation to apply to the infoType.
+	// Structure is documented below.
+	PrimitiveTransformation PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationInput `pulumi:"primitiveTransformation"`
+}
+
+func (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationOutput)
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArrayInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArray and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArrayOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArrayInput` via:
+//
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArray{ PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs{...} }
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArrayInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArrayOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArrayOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArrayOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArrayOutput
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArray []PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInput
+
+func (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArray) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArrayOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArrayOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArrayOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArray) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArrayOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArrayOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationOutput {
+	return o
+}
+
+// InfoTypes to apply the transformation to. Leaving this empty will apply the transformation to apply to
+// all findings that correspond to infoTypes that were requested in InspectConfig.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationOutput) InfoTypes() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArrayOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation) []PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType {
+		return v.InfoTypes
+	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArrayOutput)
+}
+
+// Primitive transformation to apply to the infoType.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationOutput) PrimitiveTransformation() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation {
+		return v.PrimitiveTransformation
+	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArrayOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArrayOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArrayOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArrayOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArrayOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArrayOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArrayOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArrayOutput) Index(i pulumi.IntInput) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation {
+		return vs[0].([]PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation)[vs[1].(int)]
+	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType struct {
+	// Name of the information type.
+	Name string `pulumi:"name"`
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeInput` via:
+//
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs{...}
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeOutput
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs struct {
+	// Name of the information type.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeOutput)
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArrayInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArray and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArrayOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArrayInput` via:
+//
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArray{ PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs{...} }
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArrayInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArrayOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArrayOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArrayOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArrayOutput
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArray []PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeInput
+
+func (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArray) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArrayOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArrayOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArrayOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArray) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArrayOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArrayOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeOutput {
+	return o
+}
+
+// Name of the information type.
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType) string {
+		return v.Name
+	}).(pulumi.StringOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArrayOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArrayOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArrayOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArrayOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArrayOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArrayOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArrayOutput) Index(i pulumi.IntInput) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType {
+		return vs[0].([]PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType)[vs[1].(int)]
+	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation struct {
+	// Partially mask a string by replacing a given number of characters with a fixed character.
+	// Masking can start from the beginning or end of the string.
+	// Structure is documented below.
+	CharacterMaskConfig *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig `pulumi:"characterMaskConfig"`
+	// Replace each input value with a given value.
+	// Structure is documented below.
+	ReplaceConfig *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig `pulumi:"replaceConfig"`
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationInput` via:
+//
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs{...}
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationOutput
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs struct {
+	// Partially mask a string by replacing a given number of characters with a fixed character.
+	// Masking can start from the beginning or end of the string.
+	// Structure is documented below.
+	CharacterMaskConfig PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrInput `pulumi:"characterMaskConfig"`
+	// Replace each input value with a given value.
+	// Structure is documented below.
+	ReplaceConfig PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrInput `pulumi:"replaceConfig"`
+}
+
+func (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationOutput {
+	return o
+}
+
+// Partially mask a string by replacing a given number of characters with a fixed character.
+// Masking can start from the beginning or end of the string.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationOutput) CharacterMaskConfig() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation) *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig {
+		return v.CharacterMaskConfig
+	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput)
+}
+
+// Replace each input value with a given value.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationOutput) ReplaceConfig() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation) *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig {
+		return v.ReplaceConfig
+	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig struct {
+	// Characters to skip when doing deidentification of a value. These will be left alone and skipped.
+	// Structure is documented below.
+	CharactersToIgnores []PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore `pulumi:"charactersToIgnores"`
+	// Character to use to mask the sensitive values—for example, * for an alphabetic string such as a name, or 0 for a numeric string
+	// such as ZIP code or credit card number. This string must have a length of 1. If not supplied, this value defaults to * for
+	// strings, and 0 for digits.
+	MaskingCharacter *string `pulumi:"maskingCharacter"`
+	// Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.
+	NumberToMask *int `pulumi:"numberToMask"`
+	// Mask characters in reverse order. For example, if maskingCharacter is 0, numberToMask is 14, and reverseOrder is `false`, then the
+	// input string `1234-5678-9012-3456` is masked as `00000000000000-3456`.
+	ReverseOrder *bool `pulumi:"reverseOrder"`
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigInput` via:
+//
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs{...}
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigOutput
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs struct {
+	// Characters to skip when doing deidentification of a value. These will be left alone and skipped.
+	// Structure is documented below.
+	CharactersToIgnores PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayInput `pulumi:"charactersToIgnores"`
+	// Character to use to mask the sensitive values—for example, * for an alphabetic string such as a name, or 0 for a numeric string
+	// such as ZIP code or credit card number. This string must have a length of 1. If not supplied, this value defaults to * for
+	// strings, and 0 for digits.
+	MaskingCharacter pulumi.StringPtrInput `pulumi:"maskingCharacter"`
+	// Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.
+	NumberToMask pulumi.IntPtrInput `pulumi:"numberToMask"`
+	// Mask characters in reverse order. For example, if maskingCharacter is 0, numberToMask is 14, and reverseOrder is `false`, then the
+	// input string `1234-5678-9012-3456` is masked as `00000000000000-3456`.
+	ReverseOrder pulumi.BoolPtrInput `pulumi:"reverseOrder"`
+}
+
+func (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigOutput)
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigOutput).ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrOutputWithContext(ctx)
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs, PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtr and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrInput` via:
+//
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput
+}
+
+type preventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrType PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs
+
+func PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtr(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrInput {
+	return (*preventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrType)(v)
+}
+
+func (*preventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig)(nil)).Elem()
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrType) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrType) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput {
+	return o.ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig) *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig {
+		return &v
+	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput)
+}
+
+// Characters to skip when doing deidentification of a value. These will be left alone and skipped.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigOutput) CharactersToIgnores() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig) []PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore {
+		return v.CharactersToIgnores
+	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutput)
+}
+
+// Character to use to mask the sensitive values—for example, * for an alphabetic string such as a name, or 0 for a numeric string
+// such as ZIP code or credit card number. This string must have a length of 1. If not supplied, this value defaults to * for
+// strings, and 0 for digits.
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigOutput) MaskingCharacter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig) *string {
+		return v.MaskingCharacter
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigOutput) NumberToMask() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig) *int {
+		return v.NumberToMask
+	}).(pulumi.IntPtrOutput)
+}
+
+// Mask characters in reverse order. For example, if maskingCharacter is 0, numberToMask is 14, and reverseOrder is `false`, then the
+// input string `1234-5678-9012-3456` is masked as `00000000000000-3456`.
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigOutput) ReverseOrder() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig) *bool {
+		return v.ReverseOrder
+	}).(pulumi.BoolPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput) Elem() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig {
+		return *v
+	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigOutput)
+}
+
+// Characters to skip when doing deidentification of a value. These will be left alone and skipped.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput) CharactersToIgnores() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig) []PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore {
+		if v == nil {
+			return nil
+		}
+		return v.CharactersToIgnores
+	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutput)
+}
+
+// Character to use to mask the sensitive values—for example, * for an alphabetic string such as a name, or 0 for a numeric string
+// such as ZIP code or credit card number. This string must have a length of 1. If not supplied, this value defaults to * for
+// strings, and 0 for digits.
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput) MaskingCharacter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaskingCharacter
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput) NumberToMask() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumberToMask
+	}).(pulumi.IntPtrOutput)
+}
+
+// Mask characters in reverse order. For example, if maskingCharacter is 0, numberToMask is 14, and reverseOrder is `false`, then the
+// input string `1234-5678-9012-3456` is masked as `00000000000000-3456`.
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput) ReverseOrder() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ReverseOrder
+	}).(pulumi.BoolPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore struct {
+	// Characters to not transform when masking.
+	CharacterToSkip *string `pulumi:"characterToSkip"`
+	// Common characters to not transform when masking. Useful to avoid removing punctuation.
+	// Possible values are `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, and `WHITESPACE`.
+	CommonCharactersToIgnore *string `pulumi:"commonCharactersToIgnore"`
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreInput` via:
+//
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs{...}
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutput
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs struct {
+	// Characters to not transform when masking.
+	CharacterToSkip pulumi.StringPtrInput `pulumi:"characterToSkip"`
+	// Common characters to not transform when masking. Useful to avoid removing punctuation.
+	// Possible values are `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, and `WHITESPACE`.
+	CommonCharactersToIgnore pulumi.StringPtrInput `pulumi:"commonCharactersToIgnore"`
+}
+
+func (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutput)
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArray and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayInput` via:
+//
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArray{ PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs{...} }
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutput
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArray []PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreInput
+
+func (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArray) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArray) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutput {
+	return o
+}
+
+// Characters to not transform when masking.
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutput) CharacterToSkip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore) *string {
+		return v.CharacterToSkip
+	}).(pulumi.StringPtrOutput)
+}
+
+// Common characters to not transform when masking. Useful to avoid removing punctuation.
+// Possible values are `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, and `WHITESPACE`.
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutput) CommonCharactersToIgnore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore) *string {
+		return v.CommonCharactersToIgnore
+	}).(pulumi.StringPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutput) Index(i pulumi.IntInput) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore {
+		return vs[0].([]PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore)[vs[1].(int)]
+	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig struct {
+	// Replace each input value with a given value.
+	// Structure is documented below.
+	NewValue PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue `pulumi:"newValue"`
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigInput` via:
+//
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs{...}
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigOutput
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs struct {
+	// Replace each input value with a given value.
+	// Structure is documented below.
+	NewValue PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueInput `pulumi:"newValue"`
+}
+
+func (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigOutput)
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigOutput).ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrOutputWithContext(ctx)
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs, PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtr and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrInput` via:
+//
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrOutput
+}
+
+type preventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrType PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs
+
+func PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtr(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrInput {
+	return (*preventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrType)(v)
+}
+
+func (*preventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig)(nil)).Elem()
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrType) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrType) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrOutput {
+	return o.ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig) *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig {
+		return &v
+	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrOutput)
+}
+
+// Replace each input value with a given value.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigOutput) NewValue() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue {
+		return v.NewValue
+	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrOutput) Elem() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig {
+		return *v
+	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigOutput)
+}
+
+// Replace each input value with a given value.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrOutput) NewValue() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig) *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue {
+		if v == nil {
+			return nil
+		}
+		return &v.NewValue
+	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue struct {
+	// A boolean value.
+	BooleanValue *bool `pulumi:"booleanValue"`
+	// Represents a whole or partial calendar date.
+	// Structure is documented below.
+	DateValue *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue `pulumi:"dateValue"`
+	// Represents a day of the week.
+	// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+	DayOfWeekValue *string `pulumi:"dayOfWeekValue"`
+	// A float value.
+	FloatValue *float64 `pulumi:"floatValue"`
+	// An integer value.
+	IntegerValue *int `pulumi:"integerValue"`
+	// A string value.
+	StringValue *string `pulumi:"stringValue"`
+	// Represents a time of day.
+	// Structure is documented below.
+	TimeValue *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue `pulumi:"timeValue"`
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	TimestampValue *string `pulumi:"timestampValue"`
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueInput` via:
+//
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs{...}
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueOutput
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs struct {
+	// A boolean value.
+	BooleanValue pulumi.BoolPtrInput `pulumi:"booleanValue"`
+	// Represents a whole or partial calendar date.
+	// Structure is documented below.
+	DateValue PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrInput `pulumi:"dateValue"`
+	// Represents a day of the week.
+	// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+	DayOfWeekValue pulumi.StringPtrInput `pulumi:"dayOfWeekValue"`
+	// A float value.
+	FloatValue pulumi.Float64PtrInput `pulumi:"floatValue"`
+	// An integer value.
+	IntegerValue pulumi.IntPtrInput `pulumi:"integerValue"`
+	// A string value.
+	StringValue pulumi.StringPtrInput `pulumi:"stringValue"`
+	// Represents a time of day.
+	// Structure is documented below.
+	TimeValue PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrInput `pulumi:"timeValue"`
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	TimestampValue pulumi.StringPtrInput `pulumi:"timestampValue"`
+}
+
+func (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueOutput)
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueOutput).ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutputWithContext(ctx)
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs, PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtr and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrInput` via:
+//
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs{...}
+//
+//  or:
+//
+//          nil
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput
+}
+
+type preventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrType PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs
+
+func PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtr(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrInput {
+	return (*preventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrType)(v)
+}
+
+func (*preventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue)(nil)).Elem()
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrType) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutputWithContext(context.Background())
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrType) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput {
+	return o.ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutputWithContext(context.Background())
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue) *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue {
+		return &v
+	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput)
+}
+
+// A boolean value.
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueOutput) BooleanValue() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue) *bool {
+		return v.BooleanValue
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Represents a whole or partial calendar date.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueOutput) DateValue() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue) *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue {
+		return v.DateValue
+	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput)
+}
+
+// Represents a day of the week.
+// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueOutput) DayOfWeekValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue) *string {
+		return v.DayOfWeekValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// A float value.
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueOutput) FloatValue() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue) *float64 {
+		return v.FloatValue
+	}).(pulumi.Float64PtrOutput)
+}
+
+// An integer value.
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueOutput) IntegerValue() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue) *int {
+		return v.IntegerValue
+	}).(pulumi.IntPtrOutput)
+}
+
+// A string value.
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueOutput) StringValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue) *string {
+		return v.StringValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents a time of day.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueOutput) TimeValue() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue) *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue {
+		return v.TimeValue
+	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput)
+}
+
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueOutput) TimestampValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue) *string {
+		return v.TimestampValue
+	}).(pulumi.StringPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput) Elem() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue {
+		return *v
+	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueOutput)
+}
+
+// A boolean value.
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput) BooleanValue() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BooleanValue
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Represents a whole or partial calendar date.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput) DateValue() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue) *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue {
+		if v == nil {
+			return nil
+		}
+		return v.DateValue
+	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput)
+}
+
+// Represents a day of the week.
+// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput) DayOfWeekValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DayOfWeekValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// A float value.
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput) FloatValue() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.FloatValue
+	}).(pulumi.Float64PtrOutput)
+}
+
+// An integer value.
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput) IntegerValue() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IntegerValue
+	}).(pulumi.IntPtrOutput)
+}
+
+// A string value.
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput) StringValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StringValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents a time of day.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput) TimeValue() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue) *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue {
+		if v == nil {
+			return nil
+		}
+		return v.TimeValue
+	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput)
+}
+
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput) TimestampValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimestampValue
+	}).(pulumi.StringPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue struct {
+	// Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a
+	// year by itself or a year and month where the day is not significant.
+	Day *int `pulumi:"day"`
+	// Month of year. Must be from 1 to 12, or 0 if specifying a year without a month and day.
+	Month *int `pulumi:"month"`
+	// Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.
+	Year *int `pulumi:"year"`
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueInput` via:
+//
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs{...}
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs struct {
+	// Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a
+	// year by itself or a year and month where the day is not significant.
+	Day pulumi.IntPtrInput `pulumi:"day"`
+	// Month of year. Must be from 1 to 12, or 0 if specifying a year without a month and day.
+	Month pulumi.IntPtrInput `pulumi:"month"`
+	// Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.
+	Year pulumi.IntPtrInput `pulumi:"year"`
+}
+
+func (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput)
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput).ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutputWithContext(ctx)
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs, PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtr and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrInput` via:
+//
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs{...}
+//
+//  or:
+//
+//          nil
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput
+}
+
+type preventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrType PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs
+
+func PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtr(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrInput {
+	return (*preventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrType)(v)
+}
+
+func (*preventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue)(nil)).Elem()
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrType) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutputWithContext(context.Background())
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrType) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput {
+	return o.ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutputWithContext(context.Background())
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue) *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue {
+		return &v
+	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput)
+}
+
+// Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a
+// year by itself or a year and month where the day is not significant.
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput) Day() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue) *int {
+		return v.Day
+	}).(pulumi.IntPtrOutput)
+}
+
+// Month of year. Must be from 1 to 12, or 0 if specifying a year without a month and day.
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput) Month() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue) *int {
+		return v.Month
+	}).(pulumi.IntPtrOutput)
+}
+
+// Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput) Year() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue) *int {
+		return v.Year
+	}).(pulumi.IntPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput) Elem() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue {
+		return *v
+	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput)
+}
+
+// Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a
+// year by itself or a year and month where the day is not significant.
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput) Day() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Day
+	}).(pulumi.IntPtrOutput)
+}
+
+// Month of year. Must be from 1 to 12, or 0 if specifying a year without a month and day.
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput) Month() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Month
+	}).(pulumi.IntPtrOutput)
+}
+
+// Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput) Year() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Year
+	}).(pulumi.IntPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue struct {
+	// Hours of day in 24 hour format. Should be from 0 to 23.
+	Hours *int `pulumi:"hours"`
+	// Minutes of hour of day. Must be from 0 to 59.
+	Minutes *int `pulumi:"minutes"`
+	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+	Nanos *int `pulumi:"nanos"`
+	// Seconds of minutes of the time. Must normally be from 0 to 59.
+	Seconds *int `pulumi:"seconds"`
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueInput` via:
+//
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs{...}
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs struct {
+	// Hours of day in 24 hour format. Should be from 0 to 23.
+	Hours pulumi.IntPtrInput `pulumi:"hours"`
+	// Minutes of hour of day. Must be from 0 to 59.
+	Minutes pulumi.IntPtrInput `pulumi:"minutes"`
+	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
+	// Seconds of minutes of the time. Must normally be from 0 to 59.
+	Seconds pulumi.IntPtrInput `pulumi:"seconds"`
+}
+
+func (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput)
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput).ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutputWithContext(ctx)
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs, PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtr and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrInput` via:
+//
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs{...}
+//
+//  or:
+//
+//          nil
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput
+}
+
+type preventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrType PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs
+
+func PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtr(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrInput {
+	return (*preventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrType)(v)
+}
+
+func (*preventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue)(nil)).Elem()
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrType) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutputWithContext(context.Background())
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrType) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput {
+	return o.ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutputWithContext(context.Background())
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue) *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue {
+		return &v
+	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput)
+}
+
+// Hours of day in 24 hour format. Should be from 0 to 23.
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput) Hours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue) *int {
+		return v.Hours
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minutes of hour of day. Must be from 0 to 59.
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput) Minutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue) *int {
+		return v.Minutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue) *int {
+		return v.Nanos
+	}).(pulumi.IntPtrOutput)
+}
+
+// Seconds of minutes of the time. Must normally be from 0 to 59.
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput) Seconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue) *int {
+		return v.Seconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput) Elem() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue {
+		return *v
+	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput)
+}
+
+// Hours of day in 24 hour format. Should be from 0 to 23.
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput) Hours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Hours
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minutes of hour of day. Must be from 0 to 59.
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput) Minutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Minutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Nanos
+	}).(pulumi.IntPtrOutput)
+}
+
+// Seconds of minutes of the time. Must normally be from 0 to 59.
+func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput) Seconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Seconds
+	}).(pulumi.IntPtrOutput)
+}
+
 type PreventionInspectTemplateInspectConfig struct {
 	// List of options defining data content to scan. If empty, text, images, and other content will be included.
 	// Each value may be one of `CONTENT_TEXT` and `CONTENT_IMAGE`.
@@ -7050,6 +8763,27 @@ func (o PreventionStoredInfoTypeRegexPtrOutput) Pattern() pulumi.StringPtrOutput
 }
 
 func init() {
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigPtrOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArrayOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArrayOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput{})
 	pulumi.RegisterOutputType(PreventionInspectTemplateInspectConfigOutput{})
 	pulumi.RegisterOutputType(PreventionInspectTemplateInspectConfigPtrOutput{})
 	pulumi.RegisterOutputType(PreventionInspectTemplateInspectConfigInfoTypeOutput{})

@@ -5047,7 +5047,8 @@ class InstanceNetworkInterface(dict):
                empty, the address will be automatically assigned.
         :param str subnetwork: The name or self_link of the subnetwork to attach this
                interface to. The subnetwork must exist in the same region this instance will be
-               created in. Either `network` or `subnetwork` must be provided.
+               created in. If network isn't provided it will be inferred from the subnetwork.
+               Either `network` or `subnetwork` must be provided.
         :param str subnetwork_project: The project in which the subnetwork belongs.
                If the `subnetwork` is a self_link, this field is ignored in favor of the project
                defined in the subnetwork self_link. If the `subnetwork` is a name and this
@@ -5124,7 +5125,8 @@ class InstanceNetworkInterface(dict):
         """
         The name or self_link of the subnetwork to attach this
         interface to. The subnetwork must exist in the same region this instance will be
-        created in. Either `network` or `subnetwork` must be provided.
+        created in. If network isn't provided it will be inferred from the subnetwork.
+        Either `network` or `subnetwork` must be provided.
         """
         return pulumi.get(self, "subnetwork")
 

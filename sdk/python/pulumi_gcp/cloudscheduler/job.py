@@ -59,6 +59,7 @@ class Job(pulumi.CustomResource):
                The allowed duration for this deadline is:
                * For HTTP targets, between 15 seconds and 30 minutes.
                * For App Engine HTTP targets, between 15 seconds and 24 hours.
+               * **Note**: For PubSub targets, this field is ignored - setting it will introduce an unresolvable diff.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
         :param pulumi.Input[str] description: A human-readable description for the job.
                This string must not contain more than 500 characters.
@@ -148,6 +149,7 @@ class Job(pulumi.CustomResource):
                The allowed duration for this deadline is:
                * For HTTP targets, between 15 seconds and 30 minutes.
                * For App Engine HTTP targets, between 15 seconds and 24 hours.
+               * **Note**: For PubSub targets, this field is ignored - setting it will introduce an unresolvable diff.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
         :param pulumi.Input[str] description: A human-readable description for the job.
                This string must not contain more than 500 characters.
@@ -209,6 +211,7 @@ class Job(pulumi.CustomResource):
         The allowed duration for this deadline is:
         * For HTTP targets, between 15 seconds and 30 minutes.
         * For App Engine HTTP targets, between 15 seconds and 24 hours.
+        * **Note**: For PubSub targets, this field is ignored - setting it will introduce an unresolvable diff.
         A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
         """
         return pulumi.get(self, "attempt_deadline")

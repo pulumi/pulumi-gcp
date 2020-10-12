@@ -67,7 +67,8 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// <summary>
         /// The name or self_link of the subnetwork to attach this
         /// interface to. The subnetwork must exist in the same region this instance will be
-        /// created in. Either `network` or `subnetwork` must be provided.
+        /// created in. If network isn't provided it will be inferred from the subnetwork.
+        /// Either `network` or `subnetwork` must be provided.
         /// </summary>
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }

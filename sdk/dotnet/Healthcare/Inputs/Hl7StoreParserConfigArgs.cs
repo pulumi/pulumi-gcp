@@ -32,6 +32,9 @@ namespace Pulumi.Gcp.Healthcare.Inputs
         [Input("segmentTerminator")]
         public Input<string>? SegmentTerminator { get; set; }
 
+        [Input("version")]
+        public Input<string>? Version { get; set; }
+
         public Hl7StoreParserConfigArgs()
         {
         }

@@ -90,6 +90,12 @@ namespace Pulumi.Gcp.Dataflow
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// The region in which the created job should run.
+        /// </summary>
+        [Output("region")]
+        public Output<string> Region { get; private set; } = null!;
+
+        /// <summary>
         /// The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
         /// </summary>
         [Output("state")]
@@ -197,6 +203,12 @@ namespace Pulumi.Gcp.Dataflow
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The region in which the created job should run.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
         public FlexTemplateJobArgs()
         {
         }
@@ -265,6 +277,12 @@ namespace Pulumi.Gcp.Dataflow
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The region in which the created job should run.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         /// <summary>
         /// The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)

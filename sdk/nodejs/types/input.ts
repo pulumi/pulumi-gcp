@@ -5943,7 +5943,8 @@ export namespace compute {
         /**
          * The name or selfLink of the subnetwork to attach this
          * interface to. The subnetwork must exist in the same region this instance will be
-         * created in. Either `network` or `subnetwork` must be provided.
+         * created in. If network isn't provided it will be inferred from the subnetwork.
+         * Either `network` or `subnetwork` must be provided.
          */
         subnetwork?: pulumi.Input<string>;
         /**
@@ -12197,6 +12198,19 @@ export namespace container {
         maxUnavailable: pulumi.Input<number>;
     }
 
+    export interface ClusterNotificationConfig {
+        pubsub: pulumi.Input<inputs.container.ClusterNotificationConfigPubsub>;
+    }
+
+    export interface ClusterNotificationConfigPubsub {
+        /**
+         * Enable the PodSecurityPolicy controller for this cluster.
+         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         */
+        enabled: pulumi.Input<boolean>;
+        topic?: pulumi.Input<string>;
+    }
+
     export interface ClusterPodSecurityPolicyConfig {
         /**
          * Enable the PodSecurityPolicy controller for this cluster.
@@ -12676,6 +12690,174 @@ export namespace datafusion {
 }
 
 export namespace dataloss {
+    export interface PreventionDeidentifyTemplateDeidentifyConfig {
+        /**
+         * Specifies free-text based transformations to be applied to the dataset.
+         * Structure is documented below.
+         */
+        infoTypeTransformations: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations {
+        /**
+         * Transformation for each infoType. Cannot specify more than one for a given infoType.
+         * Structure is documented below.
+         */
+        transformations: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation>[]>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation {
+        /**
+         * InfoTypes to apply the transformation to. Leaving this empty will apply the transformation to apply to
+         * all findings that correspond to infoTypes that were requested in InspectConfig.
+         * Structure is documented below.
+         */
+        infoTypes?: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType>[]>;
+        /**
+         * Primitive transformation to apply to the infoType.
+         * Structure is documented below.
+         */
+        primitiveTransformation: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType {
+        /**
+         * Name of the information type.
+         */
+        name: pulumi.Input<string>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation {
+        /**
+         * Partially mask a string by replacing a given number of characters with a fixed character.
+         * Masking can start from the beginning or end of the string.
+         * Structure is documented below.
+         */
+        characterMaskConfig?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig>;
+        /**
+         * Replace each input value with a given value.
+         * Structure is documented below.
+         */
+        replaceConfig?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig {
+        /**
+         * Characters to skip when doing deidentification of a value. These will be left alone and skipped.
+         * Structure is documented below.
+         */
+        charactersToIgnores?: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore>[]>;
+        /**
+         * Character to use to mask the sensitive values—for example, * for an alphabetic string such as a name, or 0 for a numeric string
+         * such as ZIP code or credit card number. This string must have a length of 1. If not supplied, this value defaults to * for
+         * strings, and 0 for digits.
+         */
+        maskingCharacter?: pulumi.Input<string>;
+        /**
+         * Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.
+         */
+        numberToMask?: pulumi.Input<number>;
+        /**
+         * Mask characters in reverse order. For example, if maskingCharacter is 0, numberToMask is 14, and reverseOrder is `false`, then the
+         * input string `1234-5678-9012-3456` is masked as `00000000000000-3456`.
+         */
+        reverseOrder?: pulumi.Input<boolean>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore {
+        /**
+         * Characters to not transform when masking.
+         */
+        characterToSkip?: pulumi.Input<string>;
+        /**
+         * Common characters to not transform when masking. Useful to avoid removing punctuation.
+         * Possible values are `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, and `WHITESPACE`.
+         */
+        commonCharactersToIgnore?: pulumi.Input<string>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig {
+        /**
+         * Replace each input value with a given value.
+         * Structure is documented below.
+         */
+        newValue: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue {
+        /**
+         * A boolean value.
+         */
+        booleanValue?: pulumi.Input<boolean>;
+        /**
+         * Represents a whole or partial calendar date.
+         * Structure is documented below.
+         */
+        dateValue?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue>;
+        /**
+         * Represents a day of the week.
+         * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+         */
+        dayOfWeekValue?: pulumi.Input<string>;
+        /**
+         * A float value.
+         */
+        floatValue?: pulumi.Input<number>;
+        /**
+         * An integer value.
+         */
+        integerValue?: pulumi.Input<number>;
+        /**
+         * A string value.
+         */
+        stringValue?: pulumi.Input<string>;
+        /**
+         * Represents a time of day.
+         * Structure is documented below.
+         */
+        timeValue?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue>;
+        /**
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+         * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
+        timestampValue?: pulumi.Input<string>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue {
+        /**
+         * Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a
+         * year by itself or a year and month where the day is not significant.
+         */
+        day?: pulumi.Input<number>;
+        /**
+         * Month of year. Must be from 1 to 12, or 0 if specifying a year without a month and day.
+         */
+        month?: pulumi.Input<number>;
+        /**
+         * Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.
+         */
+        year?: pulumi.Input<number>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue {
+        /**
+         * Hours of day in 24 hour format. Should be from 0 to 23.
+         */
+        hours?: pulumi.Input<number>;
+        /**
+         * Minutes of hour of day. Must be from 0 to 59.
+         */
+        minutes?: pulumi.Input<number>;
+        /**
+         * Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+         */
+        nanos?: pulumi.Input<number>;
+        /**
+         * Seconds of minutes of the time. Must normally be from 0 to 59.
+         */
+        seconds?: pulumi.Input<number>;
+    }
+
     export interface PreventionInspectTemplateInspectConfig {
         /**
          * List of options defining data content to scan. If empty, text, images, and other content will be included.
@@ -14888,6 +15070,7 @@ export namespace healthcare {
          * A base64-encoded string.
          */
         segmentTerminator?: pulumi.Input<string>;
+        version?: pulumi.Input<string>;
     }
 }
 

@@ -10,6 +10,17 @@ from .. import _utilities, _tables
 from . import outputs
 
 __all__ = [
+    'PreventionDeidentifyTemplateDeidentifyConfig',
+    'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations',
+    'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation',
+    'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType',
+    'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation',
+    'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig',
+    'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore',
+    'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig',
+    'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue',
+    'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue',
+    'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue',
     'PreventionInspectTemplateInspectConfig',
     'PreventionInspectTemplateInspectConfigInfoType',
     'PreventionInspectTemplateInspectConfigLimits',
@@ -58,6 +69,497 @@ __all__ = [
     'PreventionStoredInfoTypeLargeCustomDictionaryOutputPath',
     'PreventionStoredInfoTypeRegex',
 ]
+
+@pulumi.output_type
+class PreventionDeidentifyTemplateDeidentifyConfig(dict):
+    def __init__(__self__, *,
+                 info_type_transformations: 'outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations'):
+        """
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs' info_type_transformations: Specifies free-text based transformations to be applied to the dataset.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "info_type_transformations", info_type_transformations)
+
+    @property
+    @pulumi.getter(name="infoTypeTransformations")
+    def info_type_transformations(self) -> 'outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations':
+        """
+        Specifies free-text based transformations to be applied to the dataset.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "info_type_transformations")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations(dict):
+    def __init__(__self__, *,
+                 transformations: Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation']):
+        """
+        :param Sequence['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs'] transformations: Transformation for each infoType. Cannot specify more than one for a given infoType.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "transformations", transformations)
+
+    @property
+    @pulumi.getter
+    def transformations(self) -> Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation']:
+        """
+        Transformation for each infoType. Cannot specify more than one for a given infoType.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "transformations")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation(dict):
+    def __init__(__self__, *,
+                 primitive_transformation: 'outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation',
+                 info_types: Optional[Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType']] = None):
+        """
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs' primitive_transformation: Primitive transformation to apply to the infoType.
+               Structure is documented below.
+        :param Sequence['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs'] info_types: InfoTypes to apply the transformation to. Leaving this empty will apply the transformation to apply to
+               all findings that correspond to infoTypes that were requested in InspectConfig.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "primitive_transformation", primitive_transformation)
+        if info_types is not None:
+            pulumi.set(__self__, "info_types", info_types)
+
+    @property
+    @pulumi.getter(name="primitiveTransformation")
+    def primitive_transformation(self) -> 'outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation':
+        """
+        Primitive transformation to apply to the infoType.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "primitive_transformation")
+
+    @property
+    @pulumi.getter(name="infoTypes")
+    def info_types(self) -> Optional[Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType']]:
+        """
+        InfoTypes to apply the transformation to. Leaving this empty will apply the transformation to apply to
+        all findings that correspond to infoTypes that were requested in InspectConfig.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "info_types")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType(dict):
+    def __init__(__self__, *,
+                 name: str):
+        """
+        :param str name: Name of the information type.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the information type.
+        """
+        return pulumi.get(self, "name")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation(dict):
+    def __init__(__self__, *,
+                 character_mask_config: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig'] = None,
+                 replace_config: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig'] = None):
+        """
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs' character_mask_config: Partially mask a string by replacing a given number of characters with a fixed character.
+               Masking can start from the beginning or end of the string.
+               Structure is documented below.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs' replace_config: Replace each input value with a given value.
+               Structure is documented below.
+        """
+        if character_mask_config is not None:
+            pulumi.set(__self__, "character_mask_config", character_mask_config)
+        if replace_config is not None:
+            pulumi.set(__self__, "replace_config", replace_config)
+
+    @property
+    @pulumi.getter(name="characterMaskConfig")
+    def character_mask_config(self) -> Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig']:
+        """
+        Partially mask a string by replacing a given number of characters with a fixed character.
+        Masking can start from the beginning or end of the string.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "character_mask_config")
+
+    @property
+    @pulumi.getter(name="replaceConfig")
+    def replace_config(self) -> Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig']:
+        """
+        Replace each input value with a given value.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "replace_config")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig(dict):
+    def __init__(__self__, *,
+                 characters_to_ignores: Optional[Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore']] = None,
+                 masking_character: Optional[str] = None,
+                 number_to_mask: Optional[int] = None,
+                 reverse_order: Optional[bool] = None):
+        """
+        :param Sequence['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs'] characters_to_ignores: Characters to skip when doing deidentification of a value. These will be left alone and skipped.
+               Structure is documented below.
+        :param str masking_character: Character to use to mask the sensitive values—for example, * for an alphabetic string such as a name, or 0 for a numeric string
+               such as ZIP code or credit card number. This string must have a length of 1. If not supplied, this value defaults to * for
+               strings, and 0 for digits.
+        :param int number_to_mask: Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.
+        :param bool reverse_order: Mask characters in reverse order. For example, if masking_character is 0, number_to_mask is 14, and reverse_order is `false`, then the
+               input string `1234-5678-9012-3456` is masked as `00000000000000-3456`.
+        """
+        if characters_to_ignores is not None:
+            pulumi.set(__self__, "characters_to_ignores", characters_to_ignores)
+        if masking_character is not None:
+            pulumi.set(__self__, "masking_character", masking_character)
+        if number_to_mask is not None:
+            pulumi.set(__self__, "number_to_mask", number_to_mask)
+        if reverse_order is not None:
+            pulumi.set(__self__, "reverse_order", reverse_order)
+
+    @property
+    @pulumi.getter(name="charactersToIgnores")
+    def characters_to_ignores(self) -> Optional[Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore']]:
+        """
+        Characters to skip when doing deidentification of a value. These will be left alone and skipped.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "characters_to_ignores")
+
+    @property
+    @pulumi.getter(name="maskingCharacter")
+    def masking_character(self) -> Optional[str]:
+        """
+        Character to use to mask the sensitive values—for example, * for an alphabetic string such as a name, or 0 for a numeric string
+        such as ZIP code or credit card number. This string must have a length of 1. If not supplied, this value defaults to * for
+        strings, and 0 for digits.
+        """
+        return pulumi.get(self, "masking_character")
+
+    @property
+    @pulumi.getter(name="numberToMask")
+    def number_to_mask(self) -> Optional[int]:
+        """
+        Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.
+        """
+        return pulumi.get(self, "number_to_mask")
+
+    @property
+    @pulumi.getter(name="reverseOrder")
+    def reverse_order(self) -> Optional[bool]:
+        """
+        Mask characters in reverse order. For example, if masking_character is 0, number_to_mask is 14, and reverse_order is `false`, then the
+        input string `1234-5678-9012-3456` is masked as `00000000000000-3456`.
+        """
+        return pulumi.get(self, "reverse_order")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore(dict):
+    def __init__(__self__, *,
+                 character_to_skip: Optional[str] = None,
+                 common_characters_to_ignore: Optional[str] = None):
+        """
+        :param str character_to_skip: Characters to not transform when masking.
+        :param str common_characters_to_ignore: Common characters to not transform when masking. Useful to avoid removing punctuation.
+               Possible values are `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, and `WHITESPACE`.
+        """
+        if character_to_skip is not None:
+            pulumi.set(__self__, "character_to_skip", character_to_skip)
+        if common_characters_to_ignore is not None:
+            pulumi.set(__self__, "common_characters_to_ignore", common_characters_to_ignore)
+
+    @property
+    @pulumi.getter(name="characterToSkip")
+    def character_to_skip(self) -> Optional[str]:
+        """
+        Characters to not transform when masking.
+        """
+        return pulumi.get(self, "character_to_skip")
+
+    @property
+    @pulumi.getter(name="commonCharactersToIgnore")
+    def common_characters_to_ignore(self) -> Optional[str]:
+        """
+        Common characters to not transform when masking. Useful to avoid removing punctuation.
+        Possible values are `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, and `WHITESPACE`.
+        """
+        return pulumi.get(self, "common_characters_to_ignore")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig(dict):
+    def __init__(__self__, *,
+                 new_value: 'outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue'):
+        """
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs' new_value: Replace each input value with a given value.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "new_value", new_value)
+
+    @property
+    @pulumi.getter(name="newValue")
+    def new_value(self) -> 'outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue':
+        """
+        Replace each input value with a given value.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "new_value")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue(dict):
+    def __init__(__self__, *,
+                 boolean_value: Optional[bool] = None,
+                 date_value: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue'] = None,
+                 day_of_week_value: Optional[str] = None,
+                 float_value: Optional[float] = None,
+                 integer_value: Optional[int] = None,
+                 string_value: Optional[str] = None,
+                 time_value: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue'] = None,
+                 timestamp_value: Optional[str] = None):
+        """
+        :param bool boolean_value: A boolean value.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs' date_value: Represents a whole or partial calendar date.
+               Structure is documented below.
+        :param str day_of_week_value: Represents a day of the week.
+               Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+        :param float float_value: A float value.
+        :param int integer_value: An integer value.
+        :param str string_value: A string value.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs' time_value: Represents a time of day.
+               Structure is documented below.
+        :param str timestamp_value: A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+               Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        if boolean_value is not None:
+            pulumi.set(__self__, "boolean_value", boolean_value)
+        if date_value is not None:
+            pulumi.set(__self__, "date_value", date_value)
+        if day_of_week_value is not None:
+            pulumi.set(__self__, "day_of_week_value", day_of_week_value)
+        if float_value is not None:
+            pulumi.set(__self__, "float_value", float_value)
+        if integer_value is not None:
+            pulumi.set(__self__, "integer_value", integer_value)
+        if string_value is not None:
+            pulumi.set(__self__, "string_value", string_value)
+        if time_value is not None:
+            pulumi.set(__self__, "time_value", time_value)
+        if timestamp_value is not None:
+            pulumi.set(__self__, "timestamp_value", timestamp_value)
+
+    @property
+    @pulumi.getter(name="booleanValue")
+    def boolean_value(self) -> Optional[bool]:
+        """
+        A boolean value.
+        """
+        return pulumi.get(self, "boolean_value")
+
+    @property
+    @pulumi.getter(name="dateValue")
+    def date_value(self) -> Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue']:
+        """
+        Represents a whole or partial calendar date.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "date_value")
+
+    @property
+    @pulumi.getter(name="dayOfWeekValue")
+    def day_of_week_value(self) -> Optional[str]:
+        """
+        Represents a day of the week.
+        Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+        """
+        return pulumi.get(self, "day_of_week_value")
+
+    @property
+    @pulumi.getter(name="floatValue")
+    def float_value(self) -> Optional[float]:
+        """
+        A float value.
+        """
+        return pulumi.get(self, "float_value")
+
+    @property
+    @pulumi.getter(name="integerValue")
+    def integer_value(self) -> Optional[int]:
+        """
+        An integer value.
+        """
+        return pulumi.get(self, "integer_value")
+
+    @property
+    @pulumi.getter(name="stringValue")
+    def string_value(self) -> Optional[str]:
+        """
+        A string value.
+        """
+        return pulumi.get(self, "string_value")
+
+    @property
+    @pulumi.getter(name="timeValue")
+    def time_value(self) -> Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue']:
+        """
+        Represents a time of day.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "time_value")
+
+    @property
+    @pulumi.getter(name="timestampValue")
+    def timestamp_value(self) -> Optional[str]:
+        """
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "timestamp_value")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue(dict):
+    def __init__(__self__, *,
+                 day: Optional[int] = None,
+                 month: Optional[int] = None,
+                 year: Optional[int] = None):
+        """
+        :param int day: Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a
+               year by itself or a year and month where the day is not significant.
+        :param int month: Month of year. Must be from 1 to 12, or 0 if specifying a year without a month and day.
+        :param int year: Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.
+        """
+        if day is not None:
+            pulumi.set(__self__, "day", day)
+        if month is not None:
+            pulumi.set(__self__, "month", month)
+        if year is not None:
+            pulumi.set(__self__, "year", year)
+
+    @property
+    @pulumi.getter
+    def day(self) -> Optional[int]:
+        """
+        Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a
+        year by itself or a year and month where the day is not significant.
+        """
+        return pulumi.get(self, "day")
+
+    @property
+    @pulumi.getter
+    def month(self) -> Optional[int]:
+        """
+        Month of year. Must be from 1 to 12, or 0 if specifying a year without a month and day.
+        """
+        return pulumi.get(self, "month")
+
+    @property
+    @pulumi.getter
+    def year(self) -> Optional[int]:
+        """
+        Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.
+        """
+        return pulumi.get(self, "year")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue(dict):
+    def __init__(__self__, *,
+                 hours: Optional[int] = None,
+                 minutes: Optional[int] = None,
+                 nanos: Optional[int] = None,
+                 seconds: Optional[int] = None):
+        """
+        :param int hours: Hours of day in 24 hour format. Should be from 0 to 23.
+        :param int minutes: Minutes of hour of day. Must be from 0 to 59.
+        :param int nanos: Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        :param int seconds: Seconds of minutes of the time. Must normally be from 0 to 59.
+        """
+        if hours is not None:
+            pulumi.set(__self__, "hours", hours)
+        if minutes is not None:
+            pulumi.set(__self__, "minutes", minutes)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+        if seconds is not None:
+            pulumi.set(__self__, "seconds", seconds)
+
+    @property
+    @pulumi.getter
+    def hours(self) -> Optional[int]:
+        """
+        Hours of day in 24 hour format. Should be from 0 to 23.
+        """
+        return pulumi.get(self, "hours")
+
+    @property
+    @pulumi.getter
+    def minutes(self) -> Optional[int]:
+        """
+        Minutes of hour of day. Must be from 0 to 59.
+        """
+        return pulumi.get(self, "minutes")
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[int]:
+        """
+        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        """
+        return pulumi.get(self, "nanos")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> Optional[int]:
+        """
+        Seconds of minutes of the time. Must normally be from 0 to 59.
+        """
+        return pulumi.get(self, "seconds")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
 
 @pulumi.output_type
 class PreventionInspectTemplateInspectConfig(dict):

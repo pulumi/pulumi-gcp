@@ -21,6 +21,7 @@ class FlexTemplateJob(pulumi.CustomResource):
                  on_delete: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -68,6 +69,7 @@ class FlexTemplateJob(pulumi.CustomResource):
                used in the template).
         :param pulumi.Input[str] project: The project in which the resource belongs. If it is not
                provided, the provider project is used.
+        :param pulumi.Input[str] region: The region in which the created job should run.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -94,6 +96,7 @@ class FlexTemplateJob(pulumi.CustomResource):
             __props__['on_delete'] = on_delete
             __props__['parameters'] = parameters
             __props__['project'] = project
+            __props__['region'] = region
             __props__['job_id'] = None
             __props__['state'] = None
         super(FlexTemplateJob, __self__).__init__(
@@ -113,6 +116,7 @@ class FlexTemplateJob(pulumi.CustomResource):
             on_delete: Optional[pulumi.Input[str]] = None,
             parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None) -> 'FlexTemplateJob':
         """
         Get an existing FlexTemplateJob resource's state with the given name, id, and optional extra
@@ -136,6 +140,7 @@ class FlexTemplateJob(pulumi.CustomResource):
                used in the template).
         :param pulumi.Input[str] project: The project in which the resource belongs. If it is not
                provided, the provider project is used.
+        :param pulumi.Input[str] region: The region in which the created job should run.
         :param pulumi.Input[str] state: The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -149,6 +154,7 @@ class FlexTemplateJob(pulumi.CustomResource):
         __props__["on_delete"] = on_delete
         __props__["parameters"] = parameters
         __props__["project"] = project
+        __props__["region"] = region
         __props__["state"] = state
         return FlexTemplateJob(resource_name, opts=opts, __props__=__props__)
 
@@ -215,6 +221,14 @@ class FlexTemplateJob(pulumi.CustomResource):
         provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[str]:
+        """
+        The region in which the created job should run.
+        """
+        return pulumi.get(self, "region")
 
     @property
     @pulumi.getter

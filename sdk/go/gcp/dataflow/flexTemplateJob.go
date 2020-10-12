@@ -61,6 +61,8 @@ type FlexTemplateJob struct {
 	// The project in which the resource belongs. If it is not
 	// provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The region in which the created job should run.
+	Region pulumi.StringOutput `pulumi:"region"`
 	// The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
 	State pulumi.StringOutput `pulumi:"state"`
 }
@@ -118,6 +120,8 @@ type flexTemplateJobState struct {
 	// The project in which the resource belongs. If it is not
 	// provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The region in which the created job should run.
+	Region *string `pulumi:"region"`
 	// The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
 	State *string `pulumi:"state"`
 }
@@ -145,6 +149,8 @@ type FlexTemplateJobState struct {
 	// The project in which the resource belongs. If it is not
 	// provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The region in which the created job should run.
+	Region pulumi.StringPtrInput
 	// The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
 	State pulumi.StringPtrInput
 }
@@ -174,6 +180,8 @@ type flexTemplateJobArgs struct {
 	// The project in which the resource belongs. If it is not
 	// provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The region in which the created job should run.
+	Region *string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a FlexTemplateJob resource.
@@ -198,6 +206,8 @@ type FlexTemplateJobArgs struct {
 	// The project in which the resource belongs. If it is not
 	// provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The region in which the created job should run.
+	Region pulumi.StringPtrInput
 }
 
 func (FlexTemplateJobArgs) ElementType() reflect.Type {

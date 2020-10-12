@@ -20,7 +20,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, addons_configs=None, authenticator_groups_configs=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, cluster_telemetries=None, database_encryptions=None, datapath_provider=None, default_max_pods_per_node=None, default_snat_statuses=None, description=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, id=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policies=None, label_fingerprint=None, location=None, logging_service=None, maintenance_policies=None, master_authorized_networks_configs=None, master_auths=None, master_version=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policies=None, networking_mode=None, node_configs=None, node_locations=None, node_pools=None, node_version=None, operation=None, pod_security_policy_configs=None, private_cluster_configs=None, project=None, release_channels=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_configs=None, self_link=None, services_ipv4_cidr=None, subnetwork=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscalings=None, workload_identity_configs=None):
+    def __init__(__self__, addons_configs=None, authenticator_groups_configs=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, cluster_telemetries=None, database_encryptions=None, datapath_provider=None, default_max_pods_per_node=None, default_snat_statuses=None, description=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, id=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policies=None, label_fingerprint=None, location=None, logging_service=None, maintenance_policies=None, master_authorized_networks_configs=None, master_auths=None, master_version=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policies=None, networking_mode=None, node_configs=None, node_locations=None, node_pools=None, node_version=None, notification_configs=None, operation=None, pod_security_policy_configs=None, private_cluster_configs=None, project=None, release_channels=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_configs=None, self_link=None, services_ipv4_cidr=None, subnetwork=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscalings=None, workload_identity_configs=None):
         if addons_configs and not isinstance(addons_configs, list):
             raise TypeError("Expected argument 'addons_configs' to be a list")
         pulumi.set(__self__, "addons_configs", addons_configs)
@@ -135,6 +135,9 @@ class GetClusterResult:
         if node_version and not isinstance(node_version, str):
             raise TypeError("Expected argument 'node_version' to be a str")
         pulumi.set(__self__, "node_version", node_version)
+        if notification_configs and not isinstance(notification_configs, list):
+            raise TypeError("Expected argument 'notification_configs' to be a list")
+        pulumi.set(__self__, "notification_configs", notification_configs)
         if operation and not isinstance(operation, str):
             raise TypeError("Expected argument 'operation' to be a str")
         pulumi.set(__self__, "operation", operation)
@@ -372,6 +375,11 @@ class GetClusterResult:
         return pulumi.get(self, "node_version")
 
     @property
+    @pulumi.getter(name="notificationConfigs")
+    def notification_configs(self) -> Sequence['outputs.GetClusterNotificationConfigResult']:
+        return pulumi.get(self, "notification_configs")
+
+    @property
     @pulumi.getter
     def operation(self) -> str:
         return pulumi.get(self, "operation")
@@ -486,6 +494,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             node_locations=self.node_locations,
             node_pools=self.node_pools,
             node_version=self.node_version,
+            notification_configs=self.notification_configs,
             operation=self.operation,
             pod_security_policy_configs=self.pod_security_policy_configs,
             private_cluster_configs=self.private_cluster_configs,
@@ -566,6 +575,7 @@ def get_cluster(location: Optional[str] = None,
         node_locations=__ret__.node_locations,
         node_pools=__ret__.node_pools,
         node_version=__ret__.node_version,
+        notification_configs=__ret__.notification_configs,
         operation=__ret__.operation,
         pod_security_policy_configs=__ret__.pod_security_policy_configs,
         private_cluster_configs=__ret__.private_cluster_configs,
