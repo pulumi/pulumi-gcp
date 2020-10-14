@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
     public sealed class TableView
     {
         /// <summary>
-        /// A query that BigQuery executes when the view is referenced.
+        /// A query whose result is persisted.
         /// </summary>
         public readonly string Query;
         /// <summary>

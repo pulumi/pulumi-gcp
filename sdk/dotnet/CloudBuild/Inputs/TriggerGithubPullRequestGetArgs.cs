@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
 
         /// <summary>
         /// Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
-        /// Possible values are `COMMENTS_DISABLED` and `COMMENTS_ENABLED`.
+        /// Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
         /// </summary>
         [Input("commentControl")]
         public Input<string>? CommentControl { get; set; }

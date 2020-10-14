@@ -415,11 +415,18 @@ class PolicyAlternativeNameServerConfig(dict):
 @pulumi.output_type
 class PolicyAlternativeNameServerConfigTargetNameServer(dict):
     def __init__(__self__, *,
-                 ipv4_address: str):
+                 ipv4_address: str,
+                 forwarding_path: Optional[str] = None):
         """
         :param str ipv4_address: IPv4 address to forward to.
+        :param str forwarding_path: Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
+               decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
+               to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
+               Possible values are `default` and `private`.
         """
         pulumi.set(__self__, "ipv4_address", ipv4_address)
+        if forwarding_path is not None:
+            pulumi.set(__self__, "forwarding_path", forwarding_path)
 
     @property
     @pulumi.getter(name="ipv4Address")
@@ -428,6 +435,17 @@ class PolicyAlternativeNameServerConfigTargetNameServer(dict):
         IPv4 address to forward to.
         """
         return pulumi.get(self, "ipv4_address")
+
+    @property
+    @pulumi.getter(name="forwardingPath")
+    def forwarding_path(self) -> Optional[str]:
+        """
+        Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
+        decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
+        to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
+        Possible values are `default` and `private`.
+        """
+        return pulumi.get(self, "forwarding_path")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

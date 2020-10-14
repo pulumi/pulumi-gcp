@@ -102,9 +102,11 @@ export class RegionBackendService extends pulumi.CustomResource {
     /**
      * The set of URLs to HealthCheck resources for health checking
      * this RegionBackendService. Currently at most one health
-     * check can be specified, and a health check is required.
+     * check can be specified.
+     * A health check must be specified unless the backend service uses an internet
+     * or serverless NEG as a backend.
      */
-    public readonly healthChecks!: pulumi.Output<string>;
+    public readonly healthChecks!: pulumi.Output<string | undefined>;
     /**
      * Indicates what kind of load balancing this regional backend service
      * will be used for. A backend service created for one type of load
@@ -211,7 +213,7 @@ export class RegionBackendService extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: RegionBackendServiceArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: RegionBackendServiceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RegionBackendServiceArgs | RegionBackendServiceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
@@ -241,9 +243,6 @@ export class RegionBackendService extends pulumi.CustomResource {
             inputs["timeoutSec"] = state ? state.timeoutSec : undefined;
         } else {
             const args = argsOrState as RegionBackendServiceArgs | undefined;
-            if (!args || args.healthChecks === undefined) {
-                throw new Error("Missing required property 'healthChecks'");
-            }
             inputs["affinityCookieTtlSec"] = args ? args.affinityCookieTtlSec : undefined;
             inputs["backends"] = args ? args.backends : undefined;
             inputs["circuitBreakers"] = args ? args.circuitBreakers : undefined;
@@ -339,7 +338,9 @@ export interface RegionBackendServiceState {
     /**
      * The set of URLs to HealthCheck resources for health checking
      * this RegionBackendService. Currently at most one health
-     * check can be specified, and a health check is required.
+     * check can be specified.
+     * A health check must be specified unless the backend service uses an internet
+     * or serverless NEG as a backend.
      */
     readonly healthChecks?: pulumi.Input<string>;
     /**
@@ -494,9 +495,11 @@ export interface RegionBackendServiceArgs {
     /**
      * The set of URLs to HealthCheck resources for health checking
      * this RegionBackendService. Currently at most one health
-     * check can be specified, and a health check is required.
+     * check can be specified.
+     * A health check must be specified unless the backend service uses an internet
+     * or serverless NEG as a backend.
      */
-    readonly healthChecks: pulumi.Input<string>;
+    readonly healthChecks?: pulumi.Input<string>;
     /**
      * Indicates what kind of load balancing this regional backend service
      * will be used for. A backend service created for one type of load

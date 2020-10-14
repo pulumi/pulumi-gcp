@@ -752,6 +752,318 @@ func (o TableColumnFamilyArrayOutput) Index(i pulumi.IntInput) TableColumnFamily
 	}).(TableColumnFamilyOutput)
 }
 
+type TableIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// TableIamBindingConditionInput is an input type that accepts TableIamBindingConditionArgs and TableIamBindingConditionOutput values.
+// You can construct a concrete instance of `TableIamBindingConditionInput` via:
+//
+//          TableIamBindingConditionArgs{...}
+type TableIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToTableIamBindingConditionOutput() TableIamBindingConditionOutput
+	ToTableIamBindingConditionOutputWithContext(context.Context) TableIamBindingConditionOutput
+}
+
+type TableIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (TableIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableIamBindingCondition)(nil)).Elem()
+}
+
+func (i TableIamBindingConditionArgs) ToTableIamBindingConditionOutput() TableIamBindingConditionOutput {
+	return i.ToTableIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i TableIamBindingConditionArgs) ToTableIamBindingConditionOutputWithContext(ctx context.Context) TableIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableIamBindingConditionOutput)
+}
+
+func (i TableIamBindingConditionArgs) ToTableIamBindingConditionPtrOutput() TableIamBindingConditionPtrOutput {
+	return i.ToTableIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i TableIamBindingConditionArgs) ToTableIamBindingConditionPtrOutputWithContext(ctx context.Context) TableIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableIamBindingConditionOutput).ToTableIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// TableIamBindingConditionPtrInput is an input type that accepts TableIamBindingConditionArgs, TableIamBindingConditionPtr and TableIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `TableIamBindingConditionPtrInput` via:
+//
+//          TableIamBindingConditionArgs{...}
+//
+//  or:
+//
+//          nil
+type TableIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToTableIamBindingConditionPtrOutput() TableIamBindingConditionPtrOutput
+	ToTableIamBindingConditionPtrOutputWithContext(context.Context) TableIamBindingConditionPtrOutput
+}
+
+type tableIamBindingConditionPtrType TableIamBindingConditionArgs
+
+func TableIamBindingConditionPtr(v *TableIamBindingConditionArgs) TableIamBindingConditionPtrInput {
+	return (*tableIamBindingConditionPtrType)(v)
+}
+
+func (*tableIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableIamBindingCondition)(nil)).Elem()
+}
+
+func (i *tableIamBindingConditionPtrType) ToTableIamBindingConditionPtrOutput() TableIamBindingConditionPtrOutput {
+	return i.ToTableIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *tableIamBindingConditionPtrType) ToTableIamBindingConditionPtrOutputWithContext(ctx context.Context) TableIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableIamBindingConditionPtrOutput)
+}
+
+type TableIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (TableIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableIamBindingCondition)(nil)).Elem()
+}
+
+func (o TableIamBindingConditionOutput) ToTableIamBindingConditionOutput() TableIamBindingConditionOutput {
+	return o
+}
+
+func (o TableIamBindingConditionOutput) ToTableIamBindingConditionOutputWithContext(ctx context.Context) TableIamBindingConditionOutput {
+	return o
+}
+
+func (o TableIamBindingConditionOutput) ToTableIamBindingConditionPtrOutput() TableIamBindingConditionPtrOutput {
+	return o.ToTableIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o TableIamBindingConditionOutput) ToTableIamBindingConditionPtrOutputWithContext(ctx context.Context) TableIamBindingConditionPtrOutput {
+	return o.ApplyT(func(v TableIamBindingCondition) *TableIamBindingCondition {
+		return &v
+	}).(TableIamBindingConditionPtrOutput)
+}
+func (o TableIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o TableIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v TableIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o TableIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v TableIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type TableIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (TableIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableIamBindingCondition)(nil)).Elem()
+}
+
+func (o TableIamBindingConditionPtrOutput) ToTableIamBindingConditionPtrOutput() TableIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o TableIamBindingConditionPtrOutput) ToTableIamBindingConditionPtrOutputWithContext(ctx context.Context) TableIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o TableIamBindingConditionPtrOutput) Elem() TableIamBindingConditionOutput {
+	return o.ApplyT(func(v *TableIamBindingCondition) TableIamBindingCondition { return *v }).(TableIamBindingConditionOutput)
+}
+
+func (o TableIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o TableIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o TableIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type TableIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// TableIamMemberConditionInput is an input type that accepts TableIamMemberConditionArgs and TableIamMemberConditionOutput values.
+// You can construct a concrete instance of `TableIamMemberConditionInput` via:
+//
+//          TableIamMemberConditionArgs{...}
+type TableIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToTableIamMemberConditionOutput() TableIamMemberConditionOutput
+	ToTableIamMemberConditionOutputWithContext(context.Context) TableIamMemberConditionOutput
+}
+
+type TableIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (TableIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableIamMemberCondition)(nil)).Elem()
+}
+
+func (i TableIamMemberConditionArgs) ToTableIamMemberConditionOutput() TableIamMemberConditionOutput {
+	return i.ToTableIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i TableIamMemberConditionArgs) ToTableIamMemberConditionOutputWithContext(ctx context.Context) TableIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableIamMemberConditionOutput)
+}
+
+func (i TableIamMemberConditionArgs) ToTableIamMemberConditionPtrOutput() TableIamMemberConditionPtrOutput {
+	return i.ToTableIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i TableIamMemberConditionArgs) ToTableIamMemberConditionPtrOutputWithContext(ctx context.Context) TableIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableIamMemberConditionOutput).ToTableIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// TableIamMemberConditionPtrInput is an input type that accepts TableIamMemberConditionArgs, TableIamMemberConditionPtr and TableIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `TableIamMemberConditionPtrInput` via:
+//
+//          TableIamMemberConditionArgs{...}
+//
+//  or:
+//
+//          nil
+type TableIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToTableIamMemberConditionPtrOutput() TableIamMemberConditionPtrOutput
+	ToTableIamMemberConditionPtrOutputWithContext(context.Context) TableIamMemberConditionPtrOutput
+}
+
+type tableIamMemberConditionPtrType TableIamMemberConditionArgs
+
+func TableIamMemberConditionPtr(v *TableIamMemberConditionArgs) TableIamMemberConditionPtrInput {
+	return (*tableIamMemberConditionPtrType)(v)
+}
+
+func (*tableIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableIamMemberCondition)(nil)).Elem()
+}
+
+func (i *tableIamMemberConditionPtrType) ToTableIamMemberConditionPtrOutput() TableIamMemberConditionPtrOutput {
+	return i.ToTableIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *tableIamMemberConditionPtrType) ToTableIamMemberConditionPtrOutputWithContext(ctx context.Context) TableIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableIamMemberConditionPtrOutput)
+}
+
+type TableIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (TableIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableIamMemberCondition)(nil)).Elem()
+}
+
+func (o TableIamMemberConditionOutput) ToTableIamMemberConditionOutput() TableIamMemberConditionOutput {
+	return o
+}
+
+func (o TableIamMemberConditionOutput) ToTableIamMemberConditionOutputWithContext(ctx context.Context) TableIamMemberConditionOutput {
+	return o
+}
+
+func (o TableIamMemberConditionOutput) ToTableIamMemberConditionPtrOutput() TableIamMemberConditionPtrOutput {
+	return o.ToTableIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o TableIamMemberConditionOutput) ToTableIamMemberConditionPtrOutputWithContext(ctx context.Context) TableIamMemberConditionPtrOutput {
+	return o.ApplyT(func(v TableIamMemberCondition) *TableIamMemberCondition {
+		return &v
+	}).(TableIamMemberConditionPtrOutput)
+}
+func (o TableIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o TableIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v TableIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o TableIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v TableIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type TableIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (TableIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableIamMemberCondition)(nil)).Elem()
+}
+
+func (o TableIamMemberConditionPtrOutput) ToTableIamMemberConditionPtrOutput() TableIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o TableIamMemberConditionPtrOutput) ToTableIamMemberConditionPtrOutputWithContext(ctx context.Context) TableIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o TableIamMemberConditionPtrOutput) Elem() TableIamMemberConditionOutput {
+	return o.ApplyT(func(v *TableIamMemberCondition) TableIamMemberCondition { return *v }).(TableIamMemberConditionOutput)
+}
+
+func (o TableIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o TableIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o TableIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(GCPolicyMaxAgeOutput{})
 	pulumi.RegisterOutputType(GCPolicyMaxAgeArrayOutput{})
@@ -765,4 +1077,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(TableColumnFamilyOutput{})
 	pulumi.RegisterOutputType(TableColumnFamilyArrayOutput{})
+	pulumi.RegisterOutputType(TableIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(TableIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(TableIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(TableIamMemberConditionPtrOutput{})
 }

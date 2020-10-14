@@ -57,11 +57,6 @@ class FlexTemplateJob(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] container_spec_gcs_path: The GCS path to the Dataflow job Flex
                Template.
-        :param pulumi.Input[Mapping[str, Any]] labels: User labels to be specified for the job. Keys and values
-               should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-               page. **NOTE**: Google-provided Dataflow templates often provide default labels
-               that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-               labels will be ignored to prevent diffs on re-apply.
         :param pulumi.Input[str] name: A unique name for the resource, required by Dataflow.
         :param pulumi.Input[str] on_delete: One of "drain" or "cancel". Specifies behavior of
                deletion during `pulumi destroy`.  See above note.
@@ -91,6 +86,9 @@ class FlexTemplateJob(pulumi.CustomResource):
             if container_spec_gcs_path is None:
                 raise TypeError("Missing required property 'container_spec_gcs_path'")
             __props__['container_spec_gcs_path'] = container_spec_gcs_path
+            if labels is not None:
+                warnings.warn("Deprecated until the API supports this field", DeprecationWarning)
+                pulumi.log.warn("labels is deprecated: Deprecated until the API supports this field")
             __props__['labels'] = labels
             __props__['name'] = name
             __props__['on_delete'] = on_delete
@@ -128,11 +126,6 @@ class FlexTemplateJob(pulumi.CustomResource):
         :param pulumi.Input[str] container_spec_gcs_path: The GCS path to the Dataflow job Flex
                Template.
         :param pulumi.Input[str] job_id: The unique ID of this job.
-        :param pulumi.Input[Mapping[str, Any]] labels: User labels to be specified for the job. Keys and values
-               should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-               page. **NOTE**: Google-provided Dataflow templates often provide default labels
-               that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-               labels will be ignored to prevent diffs on re-apply.
         :param pulumi.Input[str] name: A unique name for the resource, required by Dataflow.
         :param pulumi.Input[str] on_delete: One of "drain" or "cancel". Specifies behavior of
                deletion during `pulumi destroy`.  See above note.
@@ -178,13 +171,6 @@ class FlexTemplateJob(pulumi.CustomResource):
     @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
-        """
-        User labels to be specified for the job. Keys and values
-        should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-        page. **NOTE**: Google-provided Dataflow templates often provide default labels
-        that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-        labels will be ignored to prevent diffs on re-apply.
-        """
         return pulumi.get(self, "labels")
 
     @property

@@ -70,7 +70,8 @@ type BackendService struct {
 	// The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
 	// for health checking this BackendService. Currently at most one health
 	// check can be specified.
-	// A health check must be specified unless the backend service uses an internet NEG as a backend.
+	// A health check must be specified unless the backend service uses an internet
+	// or serverless NEG as a backend.
 	// For internal load balancing, a URL to a HealthCheck resource must be specified instead.
 	HealthChecks pulumi.StringPtrOutput `pulumi:"healthChecks"`
 	// Settings for enabling Cloud Identity Aware Proxy
@@ -214,7 +215,8 @@ type backendServiceState struct {
 	// The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
 	// for health checking this BackendService. Currently at most one health
 	// check can be specified.
-	// A health check must be specified unless the backend service uses an internet NEG as a backend.
+	// A health check must be specified unless the backend service uses an internet
+	// or serverless NEG as a backend.
 	// For internal load balancing, a URL to a HealthCheck resource must be specified instead.
 	HealthChecks *string `pulumi:"healthChecks"`
 	// Settings for enabling Cloud Identity Aware Proxy
@@ -331,7 +333,8 @@ type BackendServiceState struct {
 	// The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
 	// for health checking this BackendService. Currently at most one health
 	// check can be specified.
-	// A health check must be specified unless the backend service uses an internet NEG as a backend.
+	// A health check must be specified unless the backend service uses an internet
+	// or serverless NEG as a backend.
 	// For internal load balancing, a URL to a HealthCheck resource must be specified instead.
 	HealthChecks pulumi.StringPtrInput
 	// Settings for enabling Cloud Identity Aware Proxy
@@ -448,7 +451,8 @@ type backendServiceArgs struct {
 	// The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
 	// for health checking this BackendService. Currently at most one health
 	// check can be specified.
-	// A health check must be specified unless the backend service uses an internet NEG as a backend.
+	// A health check must be specified unless the backend service uses an internet
+	// or serverless NEG as a backend.
 	// For internal load balancing, a URL to a HealthCheck resource must be specified instead.
 	HealthChecks *string `pulumi:"healthChecks"`
 	// Settings for enabling Cloud Identity Aware Proxy
@@ -560,7 +564,8 @@ type BackendServiceArgs struct {
 	// The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
 	// for health checking this BackendService. Currently at most one health
 	// check can be specified.
-	// A health check must be specified unless the backend service uses an internet NEG as a backend.
+	// A health check must be specified unless the backend service uses an internet
+	// or serverless NEG as a backend.
 	// For internal load balancing, a URL to a HealthCheck resource must be specified instead.
 	HealthChecks pulumi.StringPtrInput
 	// Settings for enabling Cloud Identity Aware Proxy

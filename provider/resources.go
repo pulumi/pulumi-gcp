@@ -304,6 +304,24 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "bigtable_gc_policy.html.markdown",
 				},
 			},
+			"google_bigtable_table_iam_member": {
+				Tok: gcpResource(gcpBigTable, "TableIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "bigtable_table_iam.html.markdown",
+				},
+			},
+			"google_bigtable_table_iam_binding": {
+				Tok: gcpResource(gcpBigTable, "TableIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "bigtable_table_iam.html.markdown",
+				},
+			},
+			"google_bigtable_table_iam_policy": {
+				Tok: gcpResource(gcpBigTable, "TableIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "bigtable_table_iam.html.markdown",
+				},
+			},
 
 			// Billing
 			"google_billing_account_iam_binding": {
@@ -1759,6 +1777,9 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "datasource_compute_global_address.html.markdown",
 				},
 			},
+			"google_compute_global_forwarding_rule": {
+				Tok: gcpDataSource(gcpCompute, "getGlobalForwardingRule"),
+			},
 			"google_compute_network": {
 				Tok: gcpDataSource(gcpCompute, "getNetwork"),
 				Docs: &tfbridge.DocInfo{
@@ -2096,6 +2117,12 @@ func Provider() tfbridge.ProviderInfo {
 			"google_game_services_game_server_deployment_rollout": {
 				Tok: gcpDataSource(gcpGameServices, "getGameServerDeploymentRollout"),
 			},
+
+			// Pubsub
+			"google_pubsub_topic": {Tok: gcpDataSource(gcpPubSub, "getTopic")},
+
+			//Cloud Run
+			"google_cloud_run_service": {Tok: gcpDataSource(gcpCloudRun, "getService")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

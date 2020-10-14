@@ -449,11 +449,18 @@ class PolicyAlternativeNameServerConfigArgs:
 @pulumi.input_type
 class PolicyAlternativeNameServerConfigTargetNameServerArgs:
     def __init__(__self__, *,
-                 ipv4_address: pulumi.Input[str]):
+                 ipv4_address: pulumi.Input[str],
+                 forwarding_path: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] ipv4_address: IPv4 address to forward to.
+        :param pulumi.Input[str] forwarding_path: Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
+               decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
+               to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
+               Possible values are `default` and `private`.
         """
         pulumi.set(__self__, "ipv4_address", ipv4_address)
+        if forwarding_path is not None:
+            pulumi.set(__self__, "forwarding_path", forwarding_path)
 
     @property
     @pulumi.getter(name="ipv4Address")
@@ -466,6 +473,21 @@ class PolicyAlternativeNameServerConfigTargetNameServerArgs:
     @ipv4_address.setter
     def ipv4_address(self, value: pulumi.Input[str]):
         pulumi.set(self, "ipv4_address", value)
+
+    @property
+    @pulumi.getter(name="forwardingPath")
+    def forwarding_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
+        decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
+        to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
+        Possible values are `default` and `private`.
+        """
+        return pulumi.get(self, "forwarding_path")
+
+    @forwarding_path.setter
+    def forwarding_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "forwarding_path", value)
 
 
 @pulumi.input_type

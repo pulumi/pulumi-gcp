@@ -29,6 +29,9 @@ type Application struct {
 	// The GCS bucket code is being stored in for this app.
 	CodeBucket pulumi.StringOutput `pulumi:"codeBucket"`
 	// The type of the Cloud Firestore or Cloud Datastore database associated with this application.
+	// Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
+	// instances.  To support old instances, the value `CLOUD_DATASTORE` is accepted
+	// by the provider, but will be rejected by the API.
 	DatabaseType pulumi.StringOutput `pulumi:"databaseType"`
 	// The GCS bucket content is being stored in for this app.
 	DefaultBucket pulumi.StringOutput `pulumi:"defaultBucket"`
@@ -93,6 +96,9 @@ type applicationState struct {
 	// The GCS bucket code is being stored in for this app.
 	CodeBucket *string `pulumi:"codeBucket"`
 	// The type of the Cloud Firestore or Cloud Datastore database associated with this application.
+	// Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
+	// instances.  To support old instances, the value `CLOUD_DATASTORE` is accepted
+	// by the provider, but will be rejected by the API.
 	DatabaseType *string `pulumi:"databaseType"`
 	// The GCS bucket content is being stored in for this app.
 	DefaultBucket *string `pulumi:"defaultBucket"`
@@ -127,6 +133,9 @@ type ApplicationState struct {
 	// The GCS bucket code is being stored in for this app.
 	CodeBucket pulumi.StringPtrInput
 	// The type of the Cloud Firestore or Cloud Datastore database associated with this application.
+	// Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
+	// instances.  To support old instances, the value `CLOUD_DATASTORE` is accepted
+	// by the provider, but will be rejected by the API.
 	DatabaseType pulumi.StringPtrInput
 	// The GCS bucket content is being stored in for this app.
 	DefaultBucket pulumi.StringPtrInput
@@ -161,6 +170,9 @@ type applicationArgs struct {
 	// The domain to authenticate users with when using App Engine's User API.
 	AuthDomain *string `pulumi:"authDomain"`
 	// The type of the Cloud Firestore or Cloud Datastore database associated with this application.
+	// Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
+	// instances.  To support old instances, the value `CLOUD_DATASTORE` is accepted
+	// by the provider, but will be rejected by the API.
 	DatabaseType *string `pulumi:"databaseType"`
 	// A block of optional settings to configure specific App Engine features:
 	FeatureSettings *ApplicationFeatureSettings `pulumi:"featureSettings"`
@@ -182,6 +194,9 @@ type ApplicationArgs struct {
 	// The domain to authenticate users with when using App Engine's User API.
 	AuthDomain pulumi.StringPtrInput
 	// The type of the Cloud Firestore or Cloud Datastore database associated with this application.
+	// Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
+	// instances.  To support old instances, the value `CLOUD_DATASTORE` is accepted
+	// by the provider, but will be rejected by the API.
 	DatabaseType pulumi.StringPtrInput
 	// A block of optional settings to configure specific App Engine features:
 	FeatureSettings ApplicationFeatureSettingsPtrInput

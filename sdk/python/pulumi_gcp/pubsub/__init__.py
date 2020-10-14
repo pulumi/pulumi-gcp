@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .get_topic import *
 from .subscription import *
 from .subscription_iam_binding import *
 from .subscription_iam_member import *

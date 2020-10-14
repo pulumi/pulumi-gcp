@@ -80,7 +80,9 @@ class RegionBackendService(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] health_checks: The set of URLs to HealthCheck resources for health checking
                this RegionBackendService. Currently at most one health
-               check can be specified, and a health check is required.
+               check can be specified.
+               A health check must be specified unless the backend service uses an internet
+               or serverless NEG as a backend.
         :param pulumi.Input[str] load_balancing_scheme: Indicates what kind of load balancing this regional backend service
                will be used for. A backend service created for one type of load
                balancing cannot be used with the other(s).
@@ -164,8 +166,6 @@ class RegionBackendService(pulumi.CustomResource):
             __props__['consistent_hash'] = consistent_hash
             __props__['description'] = description
             __props__['failover_policy'] = failover_policy
-            if health_checks is None:
-                raise TypeError("Missing required property 'health_checks'")
             __props__['health_checks'] = health_checks
             __props__['load_balancing_scheme'] = load_balancing_scheme
             __props__['locality_lb_policy'] = locality_lb_policy
@@ -250,7 +250,9 @@ class RegionBackendService(pulumi.CustomResource):
         :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
         :param pulumi.Input[str] health_checks: The set of URLs to HealthCheck resources for health checking
                this RegionBackendService. Currently at most one health
-               check can be specified, and a health check is required.
+               check can be specified.
+               A health check must be specified unless the backend service uses an internet
+               or serverless NEG as a backend.
         :param pulumi.Input[str] load_balancing_scheme: Indicates what kind of load balancing this regional backend service
                will be used for. A backend service created for one type of load
                balancing cannot be used with the other(s).
@@ -431,11 +433,13 @@ class RegionBackendService(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="healthChecks")
-    def health_checks(self) -> pulumi.Output[str]:
+    def health_checks(self) -> pulumi.Output[Optional[str]]:
         """
         The set of URLs to HealthCheck resources for health checking
         this RegionBackendService. Currently at most one health
-        check can be specified, and a health check is required.
+        check can be specified.
+        A health check must be specified unless the backend service uses an internet
+        or serverless NEG as a backend.
         """
         return pulumi.get(self, "health_checks")
 

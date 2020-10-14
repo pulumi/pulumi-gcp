@@ -611,6 +611,10 @@ export namespace appengine {
     }
 
     export interface ApplicationIap {
+        /**
+         * (Optional) Whether the serving infrastructure will authenticate and authorize all incoming requests. 
+         * (default is false)
+         */
         enabled?: pulumi.Input<boolean>;
         /**
          * OAuth2 client ID to use for the authentication flow.
@@ -1472,10 +1476,9 @@ export namespace bigquery {
         groupByEmail?: pulumi.Input<string>;
         /**
          * Describes the rights granted to the user specified by the other
-         * member of the access object. Primitive, Predefined and custom
-         * roles are supported. Predefined roles that have equivalent
-         * primitive roles are swapped by the API to their Primitive
-         * counterparts. See
+         * member of the access object. Basic, predefined, and custom roles
+         * are supported. Predefined roles that have equivalent basic roles
+         * are swapped by the API to their basic counterparts. See
          * [official docs](https://cloud.google.com/bigquery/docs/access-control).
          */
         role?: pulumi.Input<string>;
@@ -2221,6 +2224,23 @@ export namespace bigquery {
         sourceUriPrefix?: pulumi.Input<string>;
     }
 
+    export interface TableMaterializedView {
+        /**
+         * Specifies whether to use BigQuery's automatic refresh for this materialized view when the base table is updated.
+         * The default value is true.
+         */
+        enableRefresh?: pulumi.Input<boolean>;
+        /**
+         * A query whose result is persisted.
+         */
+        query: pulumi.Input<string>;
+        /**
+         * The maximum frequency at which this materialized view will be refreshed.
+         * The default value is 1800000
+         */
+        refreshIntervalMs?: pulumi.Input<number>;
+    }
+
     export interface TableRangePartitioning {
         /**
          * The field used to determine how to create a range-based
@@ -2275,7 +2295,7 @@ export namespace bigquery {
 
     export interface TableView {
         /**
-         * A query that BigQuery executes when the view is referenced.
+         * A query whose result is persisted.
          */
         query: pulumi.Input<string>;
         /**
@@ -2342,6 +2362,18 @@ export namespace bigtable {
          * The name of the column family.
          */
         family: pulumi.Input<string>;
+    }
+
+    export interface TableIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface TableIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
     }
 }
 
@@ -3106,7 +3138,7 @@ export namespace cloudbuild {
         branch: pulumi.Input<string>;
         /**
          * Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
-         * Possible values are `COMMENTS_DISABLED` and `COMMENTS_ENABLED`.
+         * Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
          */
         commentControl?: pulumi.Input<string>;
         /**
@@ -14549,6 +14581,13 @@ export namespace dns {
     }
 
     export interface PolicyAlternativeNameServerConfigTargetNameServer {
+        /**
+         * Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
+         * decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
+         * to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
+         * Possible values are `default` and `private`.
+         */
+        forwardingPath?: pulumi.Input<string>;
         /**
          * IPv4 address to forward to.
          */

@@ -14,13 +14,24 @@ namespace Pulumi.Gcp.Dns.Outputs
     public sealed class PolicyAlternativeNameServerConfigTargetNameServer
     {
         /// <summary>
+        /// Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
+        /// decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
+        /// to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
+        /// Possible values are `default` and `private`.
+        /// </summary>
+        public readonly string? ForwardingPath;
+        /// <summary>
         /// IPv4 address to forward to.
         /// </summary>
         public readonly string Ipv4Address;
 
         [OutputConstructor]
-        private PolicyAlternativeNameServerConfigTargetNameServer(string ipv4Address)
+        private PolicyAlternativeNameServerConfigTargetNameServer(
+            string? forwardingPath,
+
+            string ipv4Address)
         {
+            ForwardingPath = forwardingPath;
             Ipv4Address = ipv4Address;
         }
     }

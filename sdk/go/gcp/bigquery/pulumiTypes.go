@@ -656,10 +656,9 @@ type DatasetAccessType struct {
 	// An email address of a Google Group to grant access to.
 	GroupByEmail *string `pulumi:"groupByEmail"`
 	// Describes the rights granted to the user specified by the other
-	// member of the access object. Primitive, Predefined and custom
-	// roles are supported. Predefined roles that have equivalent
-	// primitive roles are swapped by the API to their Primitive
-	// counterparts. See
+	// member of the access object. Basic, predefined, and custom roles
+	// are supported. Predefined roles that have equivalent basic roles
+	// are swapped by the API to their basic counterparts. See
 	// [official docs](https://cloud.google.com/bigquery/docs/access-control).
 	Role *string `pulumi:"role"`
 	// A special group to grant access to. Possible values include:
@@ -694,10 +693,9 @@ type DatasetAccessTypeArgs struct {
 	// An email address of a Google Group to grant access to.
 	GroupByEmail pulumi.StringPtrInput `pulumi:"groupByEmail"`
 	// Describes the rights granted to the user specified by the other
-	// member of the access object. Primitive, Predefined and custom
-	// roles are supported. Predefined roles that have equivalent
-	// primitive roles are swapped by the API to their Primitive
-	// counterparts. See
+	// member of the access object. Basic, predefined, and custom roles
+	// are supported. Predefined roles that have equivalent basic roles
+	// are swapped by the API to their basic counterparts. See
 	// [official docs](https://cloud.google.com/bigquery/docs/access-control).
 	Role pulumi.StringPtrInput `pulumi:"role"`
 	// A special group to grant access to. Possible values include:
@@ -777,10 +775,9 @@ func (o DatasetAccessTypeOutput) GroupByEmail() pulumi.StringPtrOutput {
 }
 
 // Describes the rights granted to the user specified by the other
-// member of the access object. Primitive, Predefined and custom
-// roles are supported. Predefined roles that have equivalent
-// primitive roles are swapped by the API to their Primitive
-// counterparts. See
+// member of the access object. Basic, predefined, and custom roles
+// are supported. Predefined roles that have equivalent basic roles
+// are swapped by the API to their basic counterparts. See
 // [official docs](https://cloud.google.com/bigquery/docs/access-control).
 func (o DatasetAccessTypeOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatasetAccessType) *string { return v.Role }).(pulumi.StringPtrOutput)
@@ -6832,6 +6829,183 @@ func (o TableExternalDataConfigurationHivePartitioningOptionsPtrOutput) SourceUr
 	}).(pulumi.StringPtrOutput)
 }
 
+type TableMaterializedView struct {
+	// Specifies whether to use BigQuery's automatic refresh for this materialized view when the base table is updated.
+	// The default value is true.
+	EnableRefresh *bool `pulumi:"enableRefresh"`
+	// A query whose result is persisted.
+	Query string `pulumi:"query"`
+	// The maximum frequency at which this materialized view will be refreshed.
+	// The default value is 1800000
+	RefreshIntervalMs *int `pulumi:"refreshIntervalMs"`
+}
+
+// TableMaterializedViewInput is an input type that accepts TableMaterializedViewArgs and TableMaterializedViewOutput values.
+// You can construct a concrete instance of `TableMaterializedViewInput` via:
+//
+//          TableMaterializedViewArgs{...}
+type TableMaterializedViewInput interface {
+	pulumi.Input
+
+	ToTableMaterializedViewOutput() TableMaterializedViewOutput
+	ToTableMaterializedViewOutputWithContext(context.Context) TableMaterializedViewOutput
+}
+
+type TableMaterializedViewArgs struct {
+	// Specifies whether to use BigQuery's automatic refresh for this materialized view when the base table is updated.
+	// The default value is true.
+	EnableRefresh pulumi.BoolPtrInput `pulumi:"enableRefresh"`
+	// A query whose result is persisted.
+	Query pulumi.StringInput `pulumi:"query"`
+	// The maximum frequency at which this materialized view will be refreshed.
+	// The default value is 1800000
+	RefreshIntervalMs pulumi.IntPtrInput `pulumi:"refreshIntervalMs"`
+}
+
+func (TableMaterializedViewArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableMaterializedView)(nil)).Elem()
+}
+
+func (i TableMaterializedViewArgs) ToTableMaterializedViewOutput() TableMaterializedViewOutput {
+	return i.ToTableMaterializedViewOutputWithContext(context.Background())
+}
+
+func (i TableMaterializedViewArgs) ToTableMaterializedViewOutputWithContext(ctx context.Context) TableMaterializedViewOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableMaterializedViewOutput)
+}
+
+func (i TableMaterializedViewArgs) ToTableMaterializedViewPtrOutput() TableMaterializedViewPtrOutput {
+	return i.ToTableMaterializedViewPtrOutputWithContext(context.Background())
+}
+
+func (i TableMaterializedViewArgs) ToTableMaterializedViewPtrOutputWithContext(ctx context.Context) TableMaterializedViewPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableMaterializedViewOutput).ToTableMaterializedViewPtrOutputWithContext(ctx)
+}
+
+// TableMaterializedViewPtrInput is an input type that accepts TableMaterializedViewArgs, TableMaterializedViewPtr and TableMaterializedViewPtrOutput values.
+// You can construct a concrete instance of `TableMaterializedViewPtrInput` via:
+//
+//          TableMaterializedViewArgs{...}
+//
+//  or:
+//
+//          nil
+type TableMaterializedViewPtrInput interface {
+	pulumi.Input
+
+	ToTableMaterializedViewPtrOutput() TableMaterializedViewPtrOutput
+	ToTableMaterializedViewPtrOutputWithContext(context.Context) TableMaterializedViewPtrOutput
+}
+
+type tableMaterializedViewPtrType TableMaterializedViewArgs
+
+func TableMaterializedViewPtr(v *TableMaterializedViewArgs) TableMaterializedViewPtrInput {
+	return (*tableMaterializedViewPtrType)(v)
+}
+
+func (*tableMaterializedViewPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableMaterializedView)(nil)).Elem()
+}
+
+func (i *tableMaterializedViewPtrType) ToTableMaterializedViewPtrOutput() TableMaterializedViewPtrOutput {
+	return i.ToTableMaterializedViewPtrOutputWithContext(context.Background())
+}
+
+func (i *tableMaterializedViewPtrType) ToTableMaterializedViewPtrOutputWithContext(ctx context.Context) TableMaterializedViewPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableMaterializedViewPtrOutput)
+}
+
+type TableMaterializedViewOutput struct{ *pulumi.OutputState }
+
+func (TableMaterializedViewOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableMaterializedView)(nil)).Elem()
+}
+
+func (o TableMaterializedViewOutput) ToTableMaterializedViewOutput() TableMaterializedViewOutput {
+	return o
+}
+
+func (o TableMaterializedViewOutput) ToTableMaterializedViewOutputWithContext(ctx context.Context) TableMaterializedViewOutput {
+	return o
+}
+
+func (o TableMaterializedViewOutput) ToTableMaterializedViewPtrOutput() TableMaterializedViewPtrOutput {
+	return o.ToTableMaterializedViewPtrOutputWithContext(context.Background())
+}
+
+func (o TableMaterializedViewOutput) ToTableMaterializedViewPtrOutputWithContext(ctx context.Context) TableMaterializedViewPtrOutput {
+	return o.ApplyT(func(v TableMaterializedView) *TableMaterializedView {
+		return &v
+	}).(TableMaterializedViewPtrOutput)
+}
+
+// Specifies whether to use BigQuery's automatic refresh for this materialized view when the base table is updated.
+// The default value is true.
+func (o TableMaterializedViewOutput) EnableRefresh() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TableMaterializedView) *bool { return v.EnableRefresh }).(pulumi.BoolPtrOutput)
+}
+
+// A query whose result is persisted.
+func (o TableMaterializedViewOutput) Query() pulumi.StringOutput {
+	return o.ApplyT(func(v TableMaterializedView) string { return v.Query }).(pulumi.StringOutput)
+}
+
+// The maximum frequency at which this materialized view will be refreshed.
+// The default value is 1800000
+func (o TableMaterializedViewOutput) RefreshIntervalMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TableMaterializedView) *int { return v.RefreshIntervalMs }).(pulumi.IntPtrOutput)
+}
+
+type TableMaterializedViewPtrOutput struct{ *pulumi.OutputState }
+
+func (TableMaterializedViewPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableMaterializedView)(nil)).Elem()
+}
+
+func (o TableMaterializedViewPtrOutput) ToTableMaterializedViewPtrOutput() TableMaterializedViewPtrOutput {
+	return o
+}
+
+func (o TableMaterializedViewPtrOutput) ToTableMaterializedViewPtrOutputWithContext(ctx context.Context) TableMaterializedViewPtrOutput {
+	return o
+}
+
+func (o TableMaterializedViewPtrOutput) Elem() TableMaterializedViewOutput {
+	return o.ApplyT(func(v *TableMaterializedView) TableMaterializedView { return *v }).(TableMaterializedViewOutput)
+}
+
+// Specifies whether to use BigQuery's automatic refresh for this materialized view when the base table is updated.
+// The default value is true.
+func (o TableMaterializedViewPtrOutput) EnableRefresh() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TableMaterializedView) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableRefresh
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A query whose result is persisted.
+func (o TableMaterializedViewPtrOutput) Query() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableMaterializedView) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Query
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum frequency at which this materialized view will be refreshed.
+// The default value is 1800000
+func (o TableMaterializedViewPtrOutput) RefreshIntervalMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TableMaterializedView) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RefreshIntervalMs
+	}).(pulumi.IntPtrOutput)
+}
+
 type TableRangePartitioning struct {
 	// The field used to determine how to create a range-based
 	// partition.
@@ -7368,7 +7542,7 @@ func (o TableTimePartitioningPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 type TableView struct {
-	// A query that BigQuery executes when the view is referenced.
+	// A query whose result is persisted.
 	Query string `pulumi:"query"`
 	// Specifies whether to use BigQuery's legacy SQL for this view.
 	// The default value is true. If set to false, the view will use BigQuery's standard SQL.
@@ -7387,7 +7561,7 @@ type TableViewInput interface {
 }
 
 type TableViewArgs struct {
-	// A query that BigQuery executes when the view is referenced.
+	// A query whose result is persisted.
 	Query pulumi.StringInput `pulumi:"query"`
 	// Specifies whether to use BigQuery's legacy SQL for this view.
 	// The default value is true. If set to false, the view will use BigQuery's standard SQL.
@@ -7471,7 +7645,7 @@ func (o TableViewOutput) ToTableViewPtrOutputWithContext(ctx context.Context) Ta
 	}).(TableViewPtrOutput)
 }
 
-// A query that BigQuery executes when the view is referenced.
+// A query whose result is persisted.
 func (o TableViewOutput) Query() pulumi.StringOutput {
 	return o.ApplyT(func(v TableView) string { return v.Query }).(pulumi.StringOutput)
 }
@@ -7500,7 +7674,7 @@ func (o TableViewPtrOutput) Elem() TableViewOutput {
 	return o.ApplyT(func(v *TableView) TableView { return *v }).(TableViewOutput)
 }
 
-// A query that BigQuery executes when the view is referenced.
+// A query whose result is persisted.
 func (o TableViewPtrOutput) Query() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TableView) *string {
 		if v == nil {
@@ -7588,6 +7762,8 @@ func init() {
 	pulumi.RegisterOutputType(TableExternalDataConfigurationGoogleSheetsOptionsPtrOutput{})
 	pulumi.RegisterOutputType(TableExternalDataConfigurationHivePartitioningOptionsOutput{})
 	pulumi.RegisterOutputType(TableExternalDataConfigurationHivePartitioningOptionsPtrOutput{})
+	pulumi.RegisterOutputType(TableMaterializedViewOutput{})
+	pulumi.RegisterOutputType(TableMaterializedViewPtrOutput{})
 	pulumi.RegisterOutputType(TableRangePartitioningOutput{})
 	pulumi.RegisterOutputType(TableRangePartitioningPtrOutput{})
 	pulumi.RegisterOutputType(TableRangePartitioningRangeOutput{})

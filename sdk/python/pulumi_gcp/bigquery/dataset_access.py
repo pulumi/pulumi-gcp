@@ -57,10 +57,10 @@ class DatasetAccess(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] role: Describes the rights granted to the user specified by the other
-               member of the access object. Primitive, Predefined and custom
-               roles are supported. Predefined roles that have equivalent
-               primitive roles are swapped by the API to their Primitive
-               counterparts, and will show a diff post-create. See
+               member of the access object. Basic, predefined, and custom roles are
+               supported. Predefined roles that have equivalent basic roles are
+               swapped by the API to their basic counterparts, and will show a diff
+               post-create. See
                [official docs](https://cloud.google.com/bigquery/docs/access-control).
         :param pulumi.Input[str] special_group: A special group to grant access to. Possible values include:
         :param pulumi.Input[str] user_by_email: An email address of a user to grant access to. For example:
@@ -139,10 +139,10 @@ class DatasetAccess(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] role: Describes the rights granted to the user specified by the other
-               member of the access object. Primitive, Predefined and custom
-               roles are supported. Predefined roles that have equivalent
-               primitive roles are swapped by the API to their Primitive
-               counterparts, and will show a diff post-create. See
+               member of the access object. Basic, predefined, and custom roles are
+               supported. Predefined roles that have equivalent basic roles are
+               swapped by the API to their basic counterparts, and will show a diff
+               post-create. See
                [official docs](https://cloud.google.com/bigquery/docs/access-control).
         :param pulumi.Input[str] special_group: A special group to grant access to. Possible values include:
         :param pulumi.Input[str] user_by_email: An email address of a user to grant access to. For example:
@@ -227,10 +227,10 @@ class DatasetAccess(pulumi.CustomResource):
     def role(self) -> pulumi.Output[Optional[str]]:
         """
         Describes the rights granted to the user specified by the other
-        member of the access object. Primitive, Predefined and custom
-        roles are supported. Predefined roles that have equivalent
-        primitive roles are swapped by the API to their Primitive
-        counterparts, and will show a diff post-create. See
+        member of the access object. Basic, predefined, and custom roles are
+        supported. Predefined roles that have equivalent basic roles are
+        swapped by the API to their basic counterparts, and will show a diff
+        post-create. See
         [official docs](https://cloud.google.com/bigquery/docs/access-control).
         """
         return pulumi.get(self, "role")

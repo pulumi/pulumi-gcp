@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 // Export members:
+export * from "./getTopic";
 export * from "./subscription";
 export * from "./subscriptionIAMBinding";
 export * from "./subscriptionIAMMember";

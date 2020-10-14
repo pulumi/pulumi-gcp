@@ -6,7 +6,6 @@ package compute
 import (
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
@@ -60,8 +59,10 @@ type RegionBackendService struct {
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
 	// The set of URLs to HealthCheck resources for health checking
 	// this RegionBackendService. Currently at most one health
-	// check can be specified, and a health check is required.
-	HealthChecks pulumi.StringOutput `pulumi:"healthChecks"`
+	// check can be specified.
+	// A health check must be specified unless the backend service uses an internet
+	// or serverless NEG as a backend.
+	HealthChecks pulumi.StringPtrOutput `pulumi:"healthChecks"`
 	// Indicates what kind of load balancing this regional backend service
 	// will be used for. A backend service created for one type of load
 	// balancing cannot be used with the other(s).
@@ -139,9 +140,6 @@ type RegionBackendService struct {
 // NewRegionBackendService registers a new resource with the given unique name, arguments, and options.
 func NewRegionBackendService(ctx *pulumi.Context,
 	name string, args *RegionBackendServiceArgs, opts ...pulumi.ResourceOption) (*RegionBackendService, error) {
-	if args == nil || args.HealthChecks == nil {
-		return nil, errors.New("missing required argument 'HealthChecks'")
-	}
 	if args == nil {
 		args = &RegionBackendServiceArgs{}
 	}
@@ -204,7 +202,9 @@ type regionBackendServiceState struct {
 	Fingerprint *string `pulumi:"fingerprint"`
 	// The set of URLs to HealthCheck resources for health checking
 	// this RegionBackendService. Currently at most one health
-	// check can be specified, and a health check is required.
+	// check can be specified.
+	// A health check must be specified unless the backend service uses an internet
+	// or serverless NEG as a backend.
 	HealthChecks *string `pulumi:"healthChecks"`
 	// Indicates what kind of load balancing this regional backend service
 	// will be used for. A backend service created for one type of load
@@ -318,7 +318,9 @@ type RegionBackendServiceState struct {
 	Fingerprint pulumi.StringPtrInput
 	// The set of URLs to HealthCheck resources for health checking
 	// this RegionBackendService. Currently at most one health
-	// check can be specified, and a health check is required.
+	// check can be specified.
+	// A health check must be specified unless the backend service uses an internet
+	// or serverless NEG as a backend.
 	HealthChecks pulumi.StringPtrInput
 	// Indicates what kind of load balancing this regional backend service
 	// will be used for. A backend service created for one type of load
@@ -432,8 +434,10 @@ type regionBackendServiceArgs struct {
 	FailoverPolicy *RegionBackendServiceFailoverPolicy `pulumi:"failoverPolicy"`
 	// The set of URLs to HealthCheck resources for health checking
 	// this RegionBackendService. Currently at most one health
-	// check can be specified, and a health check is required.
-	HealthChecks string `pulumi:"healthChecks"`
+	// check can be specified.
+	// A health check must be specified unless the backend service uses an internet
+	// or serverless NEG as a backend.
+	HealthChecks *string `pulumi:"healthChecks"`
 	// Indicates what kind of load balancing this regional backend service
 	// will be used for. A backend service created for one type of load
 	// balancing cannot be used with the other(s).
@@ -541,8 +545,10 @@ type RegionBackendServiceArgs struct {
 	FailoverPolicy RegionBackendServiceFailoverPolicyPtrInput
 	// The set of URLs to HealthCheck resources for health checking
 	// this RegionBackendService. Currently at most one health
-	// check can be specified, and a health check is required.
-	HealthChecks pulumi.StringInput
+	// check can be specified.
+	// A health check must be specified unless the backend service uses an internet
+	// or serverless NEG as a backend.
+	HealthChecks pulumi.StringPtrInput
 	// Indicates what kind of load balancing this regional backend service
 	// will be used for. A backend service created for one type of load
 	// balancing cannot be used with the other(s).

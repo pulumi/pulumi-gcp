@@ -24,10 +24,9 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         public readonly string? GroupByEmail;
         /// <summary>
         /// Describes the rights granted to the user specified by the other
-        /// member of the access object. Primitive, Predefined and custom
-        /// roles are supported. Predefined roles that have equivalent
-        /// primitive roles are swapped by the API to their Primitive
-        /// counterparts. See
+        /// member of the access object. Basic, predefined, and custom roles
+        /// are supported. Predefined roles that have equivalent basic roles
+        /// are swapped by the API to their basic counterparts. See
         /// [official docs](https://cloud.google.com/bigquery/docs/access-control).
         /// </summary>
         public readonly string? Role;

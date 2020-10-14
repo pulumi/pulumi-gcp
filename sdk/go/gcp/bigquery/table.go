@@ -51,6 +51,9 @@ type Table struct {
 	LastModifiedTime pulumi.IntOutput `pulumi:"lastModifiedTime"`
 	// The geographic location where the table resides. This value is inherited from the dataset.
 	Location pulumi.StringOutput `pulumi:"location"`
+	// If specified, configures this table as a materialized view.
+	// Structure is documented below.
+	MaterializedView TableMaterializedViewPtrOutput `pulumi:"materializedView"`
 	// The size of this table in bytes, excluding any data in the streaming buffer.
 	NumBytes pulumi.IntOutput `pulumi:"numBytes"`
 	// The number of bytes in the table that are considered "long-term storage".
@@ -160,6 +163,9 @@ type tableState struct {
 	LastModifiedTime *int `pulumi:"lastModifiedTime"`
 	// The geographic location where the table resides. This value is inherited from the dataset.
 	Location *string `pulumi:"location"`
+	// If specified, configures this table as a materialized view.
+	// Structure is documented below.
+	MaterializedView *TableMaterializedView `pulumi:"materializedView"`
 	// The size of this table in bytes, excluding any data in the streaming buffer.
 	NumBytes *int `pulumi:"numBytes"`
 	// The number of bytes in the table that are considered "long-term storage".
@@ -236,6 +242,9 @@ type TableState struct {
 	LastModifiedTime pulumi.IntPtrInput
 	// The geographic location where the table resides. This value is inherited from the dataset.
 	Location pulumi.StringPtrInput
+	// If specified, configures this table as a materialized view.
+	// Structure is documented below.
+	MaterializedView TableMaterializedViewPtrInput
 	// The size of this table in bytes, excluding any data in the streaming buffer.
 	NumBytes pulumi.IntPtrInput
 	// The number of bytes in the table that are considered "long-term storage".
@@ -308,6 +317,9 @@ type tableArgs struct {
 	FriendlyName *string `pulumi:"friendlyName"`
 	// A mapping of labels to assign to the resource.
 	Labels map[string]string `pulumi:"labels"`
+	// If specified, configures this table as a materialized view.
+	// Structure is documented below.
+	MaterializedView *TableMaterializedView `pulumi:"materializedView"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -366,6 +378,9 @@ type TableArgs struct {
 	FriendlyName pulumi.StringPtrInput
 	// A mapping of labels to assign to the resource.
 	Labels pulumi.StringMapInput
+	// If specified, configures this table as a materialized view.
+	// Structure is documented below.
+	MaterializedView TableMaterializedViewPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput

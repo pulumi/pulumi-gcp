@@ -3,6 +3,7 @@
 
 // Export members:
 export * from "./domainMapping";
+export * from "./getService";
 export * from "./iamBinding";
 export * from "./iamMember";
 export * from "./iamPolicy";

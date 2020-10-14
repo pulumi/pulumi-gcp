@@ -108,7 +108,7 @@ namespace Pulumi.Gcp.Compute
         public Output<int> TargetSize { get; private set; } = null!;
 
         /// <summary>
-        /// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
+        /// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
         /// </summary>
         [Output("updatePolicy")]
         public Output<Outputs.InstanceGroupManagerUpdatePolicy> UpdatePolicy { get; private set; } = null!;
@@ -266,7 +266,7 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? TargetSize { get; set; }
 
         /// <summary>
-        /// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
+        /// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
         /// </summary>
         [Input("updatePolicy")]
         public Input<Inputs.InstanceGroupManagerUpdatePolicyArgs>? UpdatePolicy { get; set; }
@@ -412,7 +412,7 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? TargetSize { get; set; }
 
         /// <summary>
-        /// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
+        /// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
         /// </summary>
         [Input("updatePolicy")]
         public Input<Inputs.InstanceGroupManagerUpdatePolicyGetArgs>? UpdatePolicy { get; set; }

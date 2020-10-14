@@ -97,10 +97,12 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The set of URLs to HealthCheck resources for health checking
         /// this RegionBackendService. Currently at most one health
-        /// check can be specified, and a health check is required.
+        /// check can be specified.
+        /// A health check must be specified unless the backend service uses an internet
+        /// or serverless NEG as a backend.
         /// </summary>
         [Output("healthChecks")]
-        public Output<string> HealthChecks { get; private set; } = null!;
+        public Output<string?> HealthChecks { get; private set; } = null!;
 
         /// <summary>
         /// Indicates what kind of load balancing this regional backend service
@@ -234,7 +236,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public RegionBackendService(string name, RegionBackendServiceArgs args, CustomResourceOptions? options = null)
+        public RegionBackendService(string name, RegionBackendServiceArgs? args = null, CustomResourceOptions? options = null)
             : base("gcp:compute/regionBackendService:RegionBackendService", name, args ?? new RegionBackendServiceArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -340,10 +342,12 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The set of URLs to HealthCheck resources for health checking
         /// this RegionBackendService. Currently at most one health
-        /// check can be specified, and a health check is required.
+        /// check can be specified.
+        /// A health check must be specified unless the backend service uses an internet
+        /// or serverless NEG as a backend.
         /// </summary>
-        [Input("healthChecks", required: true)]
-        public Input<string> HealthChecks { get; set; } = null!;
+        [Input("healthChecks")]
+        public Input<string>? HealthChecks { get; set; }
 
         /// <summary>
         /// Indicates what kind of load balancing this regional backend service
@@ -550,7 +554,9 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The set of URLs to HealthCheck resources for health checking
         /// this RegionBackendService. Currently at most one health
-        /// check can be specified, and a health check is required.
+        /// check can be specified.
+        /// A health check must be specified unless the backend service uses an internet
+        /// or serverless NEG as a backend.
         /// </summary>
         [Input("healthChecks")]
         public Input<string>? HealthChecks { get; set; }

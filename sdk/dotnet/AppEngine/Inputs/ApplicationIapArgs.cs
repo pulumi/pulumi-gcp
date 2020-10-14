@@ -12,6 +12,10 @@ namespace Pulumi.Gcp.AppEngine.Inputs
 
     public sealed class ApplicationIapArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// (Optional) Whether the serving infrastructure will authenticate and authorize all incoming requests. 
+        /// (default is false)
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 

@@ -70,10 +70,10 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// Describes the rights granted to the user specified by the other
-        /// member of the access object. Primitive, Predefined and custom
-        /// roles are supported. Predefined roles that have equivalent
-        /// primitive roles are swapped by the API to their Primitive
-        /// counterparts, and will show a diff post-create. See
+        /// member of the access object. Basic, predefined, and custom roles are
+        /// supported. Predefined roles that have equivalent basic roles are
+        /// swapped by the API to their basic counterparts, and will show a diff
+        /// post-create. See
         /// [official docs](https://cloud.google.com/bigquery/docs/access-control).
         /// </summary>
         [Output("role")]
@@ -184,10 +184,10 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// Describes the rights granted to the user specified by the other
-        /// member of the access object. Primitive, Predefined and custom
-        /// roles are supported. Predefined roles that have equivalent
-        /// primitive roles are swapped by the API to their Primitive
-        /// counterparts, and will show a diff post-create. See
+        /// member of the access object. Basic, predefined, and custom roles are
+        /// supported. Predefined roles that have equivalent basic roles are
+        /// swapped by the API to their basic counterparts, and will show a diff
+        /// post-create. See
         /// [official docs](https://cloud.google.com/bigquery/docs/access-control).
         /// </summary>
         [Input("role")]
@@ -266,10 +266,10 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// Describes the rights granted to the user specified by the other
-        /// member of the access object. Primitive, Predefined and custom
-        /// roles are supported. Predefined roles that have equivalent
-        /// primitive roles are swapped by the API to their Primitive
-        /// counterparts, and will show a diff post-create. See
+        /// member of the access object. Basic, predefined, and custom roles are
+        /// supported. Predefined roles that have equivalent basic roles are
+        /// swapped by the API to their basic counterparts, and will show a diff
+        /// post-create. See
         /// [official docs](https://cloud.google.com/bigquery/docs/access-control).
         /// </summary>
         [Input("role")]

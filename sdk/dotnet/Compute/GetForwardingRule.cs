@@ -50,64 +50,43 @@ namespace Pulumi.Gcp.Compute
     [OutputType]
     public sealed class GetForwardingRuleResult
     {
-        /// <summary>
-        /// Backend service, if this forwarding rule has one.
-        /// </summary>
+        public readonly bool AllPorts;
+        public readonly bool AllowGlobalAccess;
         public readonly string BackendService;
-        /// <summary>
-        /// Description of this forwarding rule.
-        /// </summary>
+        public readonly string CreationTimestamp;
         public readonly string Description;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// IP address of this forwarding rule.
-        /// </summary>
         public readonly string IpAddress;
-        /// <summary>
-        /// IP protocol of this forwarding rule.
-        /// </summary>
         public readonly string IpProtocol;
-        /// <summary>
-        /// Type of load balancing of this forwarding rule.
-        /// </summary>
+        public readonly bool IsMirroringCollector;
+        public readonly string LabelFingerprint;
+        public readonly ImmutableDictionary<string, string> Labels;
         public readonly string LoadBalancingScheme;
         public readonly string Name;
-        /// <summary>
-        /// Network of this forwarding rule.
-        /// </summary>
         public readonly string Network;
-        /// <summary>
-        /// Port range, if this forwarding rule has one.
-        /// </summary>
+        public readonly string NetworkTier;
         public readonly string PortRange;
-        /// <summary>
-        /// List of ports to use for internal load balancing, if this forwarding rule has any.
-        /// </summary>
         public readonly ImmutableArray<string> Ports;
-        public readonly string Project;
-        /// <summary>
-        /// Region of this forwarding rule.
-        /// </summary>
-        public readonly string Region;
-        /// <summary>
-        /// The URI of the resource.
-        /// </summary>
+        public readonly string? Project;
+        public readonly string? Region;
         public readonly string SelfLink;
-        /// <summary>
-        /// Subnetwork of this forwarding rule.
-        /// </summary>
+        public readonly string ServiceLabel;
+        public readonly string ServiceName;
         public readonly string Subnetwork;
-        /// <summary>
-        /// URL of the target pool, if this forwarding rule has one.
-        /// </summary>
         public readonly string Target;
 
         [OutputConstructor]
         private GetForwardingRuleResult(
+            bool allPorts,
+
+            bool allowGlobalAccess,
+
             string backendService,
+
+            string creationTimestamp,
 
             string description,
 
@@ -117,39 +96,60 @@ namespace Pulumi.Gcp.Compute
 
             string ipProtocol,
 
+            bool isMirroringCollector,
+
+            string labelFingerprint,
+
+            ImmutableDictionary<string, string> labels,
+
             string loadBalancingScheme,
 
             string name,
 
             string network,
 
+            string networkTier,
+
             string portRange,
 
             ImmutableArray<string> ports,
 
-            string project,
+            string? project,
 
-            string region,
+            string? region,
 
             string selfLink,
+
+            string serviceLabel,
+
+            string serviceName,
 
             string subnetwork,
 
             string target)
         {
+            AllPorts = allPorts;
+            AllowGlobalAccess = allowGlobalAccess;
             BackendService = backendService;
+            CreationTimestamp = creationTimestamp;
             Description = description;
             Id = id;
             IpAddress = ipAddress;
             IpProtocol = ipProtocol;
+            IsMirroringCollector = isMirroringCollector;
+            LabelFingerprint = labelFingerprint;
+            Labels = labels;
             LoadBalancingScheme = loadBalancingScheme;
             Name = name;
             Network = network;
+            NetworkTier = networkTier;
             PortRange = portRange;
             Ports = ports;
             Project = project;
             Region = region;
             SelfLink = selfLink;
+            ServiceLabel = serviceLabel;
+            ServiceName = serviceName;
             Subnetwork = subnetwork;
             Target = target;
         }

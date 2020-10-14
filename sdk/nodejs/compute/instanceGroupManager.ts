@@ -105,7 +105,7 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      */
     public readonly targetSize!: pulumi.Output<number>;
     /**
-     * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
+     * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
      */
     public readonly updatePolicy!: pulumi.Output<outputs.compute.InstanceGroupManagerUpdatePolicy>;
     /**
@@ -257,7 +257,7 @@ export interface InstanceGroupManagerState {
      */
     readonly targetSize?: pulumi.Input<number>;
     /**
-     * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
+     * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
      */
     readonly updatePolicy?: pulumi.Input<inputs.compute.InstanceGroupManagerUpdatePolicy>;
     /**
@@ -331,7 +331,7 @@ export interface InstanceGroupManagerArgs {
      */
     readonly targetSize?: pulumi.Input<number>;
     /**
-     * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
+     * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
      */
     readonly updatePolicy?: pulumi.Input<inputs.compute.InstanceGroupManagerUpdatePolicy>;
     /**
