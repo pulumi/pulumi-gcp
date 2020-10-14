@@ -339,6 +339,8 @@ __all__ = [
     'GetBackendServiceOutlierDetectionResult',
     'GetBackendServiceOutlierDetectionBaseEjectionTimeResult',
     'GetBackendServiceOutlierDetectionIntervalResult',
+    'GetGlobalForwardingRuleMetadataFilterResult',
+    'GetGlobalForwardingRuleMetadataFilterFilterLabelResult',
     'GetInstanceAttachedDiskResult',
     'GetInstanceBootDiskResult',
     'GetInstanceBootDiskInitializeParamResult',
@@ -20341,6 +20343,50 @@ class GetBackendServiceOutlierDetectionIntervalResult(dict):
     @pulumi.getter
     def seconds(self) -> int:
         return pulumi.get(self, "seconds")
+
+
+@pulumi.output_type
+class GetGlobalForwardingRuleMetadataFilterResult(dict):
+    def __init__(__self__, *,
+                 filter_labels: Sequence['outputs.GetGlobalForwardingRuleMetadataFilterFilterLabelResult'],
+                 filter_match_criteria: str):
+        pulumi.set(__self__, "filter_labels", filter_labels)
+        pulumi.set(__self__, "filter_match_criteria", filter_match_criteria)
+
+    @property
+    @pulumi.getter(name="filterLabels")
+    def filter_labels(self) -> Sequence['outputs.GetGlobalForwardingRuleMetadataFilterFilterLabelResult']:
+        return pulumi.get(self, "filter_labels")
+
+    @property
+    @pulumi.getter(name="filterMatchCriteria")
+    def filter_match_criteria(self) -> str:
+        return pulumi.get(self, "filter_match_criteria")
+
+
+@pulumi.output_type
+class GetGlobalForwardingRuleMetadataFilterFilterLabelResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 value: str):
+        """
+        :param str name: The name of the global forwarding rule.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the global forwarding rule.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type

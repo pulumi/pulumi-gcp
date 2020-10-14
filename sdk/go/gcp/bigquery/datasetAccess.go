@@ -45,10 +45,10 @@ type DatasetAccess struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Describes the rights granted to the user specified by the other
-	// member of the access object. Primitive, Predefined and custom
-	// roles are supported. Predefined roles that have equivalent
-	// primitive roles are swapped by the API to their Primitive
-	// counterparts, and will show a diff post-create. See
+	// member of the access object. Basic, predefined, and custom roles are
+	// supported. Predefined roles that have equivalent basic roles are
+	// swapped by the API to their basic counterparts, and will show a diff
+	// post-create. See
 	// [official docs](https://cloud.google.com/bigquery/docs/access-control).
 	Role pulumi.StringPtrOutput `pulumi:"role"`
 	// A special group to grant access to. Possible values include:
@@ -113,10 +113,10 @@ type datasetAccessState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Describes the rights granted to the user specified by the other
-	// member of the access object. Primitive, Predefined and custom
-	// roles are supported. Predefined roles that have equivalent
-	// primitive roles are swapped by the API to their Primitive
-	// counterparts, and will show a diff post-create. See
+	// member of the access object. Basic, predefined, and custom roles are
+	// supported. Predefined roles that have equivalent basic roles are
+	// swapped by the API to their basic counterparts, and will show a diff
+	// post-create. See
 	// [official docs](https://cloud.google.com/bigquery/docs/access-control).
 	Role *string `pulumi:"role"`
 	// A special group to grant access to. Possible values include:
@@ -151,10 +151,10 @@ type DatasetAccessState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Describes the rights granted to the user specified by the other
-	// member of the access object. Primitive, Predefined and custom
-	// roles are supported. Predefined roles that have equivalent
-	// primitive roles are swapped by the API to their Primitive
-	// counterparts, and will show a diff post-create. See
+	// member of the access object. Basic, predefined, and custom roles are
+	// supported. Predefined roles that have equivalent basic roles are
+	// swapped by the API to their basic counterparts, and will show a diff
+	// post-create. See
 	// [official docs](https://cloud.google.com/bigquery/docs/access-control).
 	Role pulumi.StringPtrInput
 	// A special group to grant access to. Possible values include:
@@ -190,10 +190,10 @@ type datasetAccessArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Describes the rights granted to the user specified by the other
-	// member of the access object. Primitive, Predefined and custom
-	// roles are supported. Predefined roles that have equivalent
-	// primitive roles are swapped by the API to their Primitive
-	// counterparts, and will show a diff post-create. See
+	// member of the access object. Basic, predefined, and custom roles are
+	// supported. Predefined roles that have equivalent basic roles are
+	// swapped by the API to their basic counterparts, and will show a diff
+	// post-create. See
 	// [official docs](https://cloud.google.com/bigquery/docs/access-control).
 	Role *string `pulumi:"role"`
 	// A special group to grant access to. Possible values include:
@@ -226,10 +226,10 @@ type DatasetAccessArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Describes the rights granted to the user specified by the other
-	// member of the access object. Primitive, Predefined and custom
-	// roles are supported. Predefined roles that have equivalent
-	// primitive roles are swapped by the API to their Primitive
-	// counterparts, and will show a diff post-create. See
+	// member of the access object. Basic, predefined, and custom roles are
+	// supported. Predefined roles that have equivalent basic roles are
+	// swapped by the API to their basic counterparts, and will show a diff
+	// post-create. See
 	// [official docs](https://cloud.google.com/bigquery/docs/access-control).
 	Role pulumi.StringPtrInput
 	// A special group to grant access to. Possible values include:

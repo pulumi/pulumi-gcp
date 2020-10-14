@@ -8,3 +8,6 @@ export * from "./instanceIamBinding";
 export * from "./instanceIamMember";
 export * from "./instanceIamPolicy";
 export * from "./table";
+export * from "./tableIamBinding";
+export * from "./tableIamMember";
+export * from "./tableIamPolicy";

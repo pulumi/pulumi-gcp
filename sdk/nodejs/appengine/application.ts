@@ -59,6 +59,9 @@ export class Application extends pulumi.CustomResource {
     public /*out*/ readonly codeBucket!: pulumi.Output<string>;
     /**
      * The type of the Cloud Firestore or Cloud Datastore database associated with this application.
+     * Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
+     * instances.  To support old instances, the value `CLOUD_DATASTORE` is accepted
+     * by the provider, but will be rejected by the API.
      */
     public readonly databaseType!: pulumi.Output<string>;
     /**
@@ -180,6 +183,9 @@ export interface ApplicationState {
     readonly codeBucket?: pulumi.Input<string>;
     /**
      * The type of the Cloud Firestore or Cloud Datastore database associated with this application.
+     * Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
+     * instances.  To support old instances, the value `CLOUD_DATASTORE` is accepted
+     * by the provider, but will be rejected by the API.
      */
     readonly databaseType?: pulumi.Input<string>;
     /**
@@ -237,6 +243,9 @@ export interface ApplicationArgs {
     readonly authDomain?: pulumi.Input<string>;
     /**
      * The type of the Cloud Firestore or Cloud Datastore database associated with this application.
+     * Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
+     * instances.  To support old instances, the value `CLOUD_DATASTORE` is accepted
+     * by the provider, but will be rejected by the API.
      */
     readonly databaseType?: pulumi.Input<string>;
     /**

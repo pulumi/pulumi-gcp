@@ -42,6 +42,9 @@ class Application(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auth_domain: The domain to authenticate users with when using App Engine's User API.
         :param pulumi.Input[str] database_type: The type of the Cloud Firestore or Cloud Datastore database associated with this application.
+               Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
+               instances.  To support old instances, the value `CLOUD_DATASTORE` is accepted
+               by the provider, but will be rejected by the API.
         :param pulumi.Input[pulumi.InputType['ApplicationFeatureSettingsArgs']] feature_settings: A block of optional settings to configure specific App Engine features:
         :param pulumi.Input[pulumi.InputType['ApplicationIapArgs']] iap: Settings for enabling Cloud Identity Aware Proxy
         :param pulumi.Input[str] location_id: The [location](https://cloud.google.com/appengine/docs/locations)
@@ -119,6 +122,9 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[str] auth_domain: The domain to authenticate users with when using App Engine's User API.
         :param pulumi.Input[str] code_bucket: The GCS bucket code is being stored in for this app.
         :param pulumi.Input[str] database_type: The type of the Cloud Firestore or Cloud Datastore database associated with this application.
+               Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
+               instances.  To support old instances, the value `CLOUD_DATASTORE` is accepted
+               by the provider, but will be rejected by the API.
         :param pulumi.Input[str] default_bucket: The GCS bucket content is being stored in for this app.
         :param pulumi.Input[str] default_hostname: The default hostname for this app.
         :param pulumi.Input[pulumi.InputType['ApplicationFeatureSettingsArgs']] feature_settings: A block of optional settings to configure specific App Engine features:
@@ -182,6 +188,9 @@ class Application(pulumi.CustomResource):
     def database_type(self) -> pulumi.Output[str]:
         """
         The type of the Cloud Firestore or Cloud Datastore database associated with this application.
+        Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
+        instances.  To support old instances, the value `CLOUD_DATASTORE` is accepted
+        by the provider, but will be rejected by the API.
         """
         return pulumi.get(self, "database_type")
 

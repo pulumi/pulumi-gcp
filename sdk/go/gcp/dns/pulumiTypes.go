@@ -1573,6 +1573,11 @@ func (o PolicyAlternativeNameServerConfigPtrOutput) TargetNameServers() PolicyAl
 }
 
 type PolicyAlternativeNameServerConfigTargetNameServer struct {
+	// Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
+	// decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
+	// to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
+	// Possible values are `default` and `private`.
+	ForwardingPath *string `pulumi:"forwardingPath"`
 	// IPv4 address to forward to.
 	Ipv4Address string `pulumi:"ipv4Address"`
 }
@@ -1589,6 +1594,11 @@ type PolicyAlternativeNameServerConfigTargetNameServerInput interface {
 }
 
 type PolicyAlternativeNameServerConfigTargetNameServerArgs struct {
+	// Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
+	// decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
+	// to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
+	// Possible values are `default` and `private`.
+	ForwardingPath pulumi.StringPtrInput `pulumi:"forwardingPath"`
 	// IPv4 address to forward to.
 	Ipv4Address pulumi.StringInput `pulumi:"ipv4Address"`
 }
@@ -1642,6 +1652,14 @@ func (o PolicyAlternativeNameServerConfigTargetNameServerOutput) ToPolicyAlterna
 
 func (o PolicyAlternativeNameServerConfigTargetNameServerOutput) ToPolicyAlternativeNameServerConfigTargetNameServerOutputWithContext(ctx context.Context) PolicyAlternativeNameServerConfigTargetNameServerOutput {
 	return o
+}
+
+// Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
+// decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
+// to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
+// Possible values are `default` and `private`.
+func (o PolicyAlternativeNameServerConfigTargetNameServerOutput) ForwardingPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyAlternativeNameServerConfigTargetNameServer) *string { return v.ForwardingPath }).(pulumi.StringPtrOutput)
 }
 
 // IPv4 address to forward to.

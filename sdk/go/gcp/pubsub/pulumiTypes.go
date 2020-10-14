@@ -1735,6 +1735,100 @@ func (o TopicMessageStoragePolicyPtrOutput) AllowedPersistenceRegions() pulumi.S
 	}).(pulumi.StringArrayOutput)
 }
 
+type GetTopicMessageStoragePolicy struct {
+	AllowedPersistenceRegions []string `pulumi:"allowedPersistenceRegions"`
+}
+
+// GetTopicMessageStoragePolicyInput is an input type that accepts GetTopicMessageStoragePolicyArgs and GetTopicMessageStoragePolicyOutput values.
+// You can construct a concrete instance of `GetTopicMessageStoragePolicyInput` via:
+//
+//          GetTopicMessageStoragePolicyArgs{...}
+type GetTopicMessageStoragePolicyInput interface {
+	pulumi.Input
+
+	ToGetTopicMessageStoragePolicyOutput() GetTopicMessageStoragePolicyOutput
+	ToGetTopicMessageStoragePolicyOutputWithContext(context.Context) GetTopicMessageStoragePolicyOutput
+}
+
+type GetTopicMessageStoragePolicyArgs struct {
+	AllowedPersistenceRegions pulumi.StringArrayInput `pulumi:"allowedPersistenceRegions"`
+}
+
+func (GetTopicMessageStoragePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTopicMessageStoragePolicy)(nil)).Elem()
+}
+
+func (i GetTopicMessageStoragePolicyArgs) ToGetTopicMessageStoragePolicyOutput() GetTopicMessageStoragePolicyOutput {
+	return i.ToGetTopicMessageStoragePolicyOutputWithContext(context.Background())
+}
+
+func (i GetTopicMessageStoragePolicyArgs) ToGetTopicMessageStoragePolicyOutputWithContext(ctx context.Context) GetTopicMessageStoragePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTopicMessageStoragePolicyOutput)
+}
+
+// GetTopicMessageStoragePolicyArrayInput is an input type that accepts GetTopicMessageStoragePolicyArray and GetTopicMessageStoragePolicyArrayOutput values.
+// You can construct a concrete instance of `GetTopicMessageStoragePolicyArrayInput` via:
+//
+//          GetTopicMessageStoragePolicyArray{ GetTopicMessageStoragePolicyArgs{...} }
+type GetTopicMessageStoragePolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetTopicMessageStoragePolicyArrayOutput() GetTopicMessageStoragePolicyArrayOutput
+	ToGetTopicMessageStoragePolicyArrayOutputWithContext(context.Context) GetTopicMessageStoragePolicyArrayOutput
+}
+
+type GetTopicMessageStoragePolicyArray []GetTopicMessageStoragePolicyInput
+
+func (GetTopicMessageStoragePolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTopicMessageStoragePolicy)(nil)).Elem()
+}
+
+func (i GetTopicMessageStoragePolicyArray) ToGetTopicMessageStoragePolicyArrayOutput() GetTopicMessageStoragePolicyArrayOutput {
+	return i.ToGetTopicMessageStoragePolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetTopicMessageStoragePolicyArray) ToGetTopicMessageStoragePolicyArrayOutputWithContext(ctx context.Context) GetTopicMessageStoragePolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTopicMessageStoragePolicyArrayOutput)
+}
+
+type GetTopicMessageStoragePolicyOutput struct{ *pulumi.OutputState }
+
+func (GetTopicMessageStoragePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTopicMessageStoragePolicy)(nil)).Elem()
+}
+
+func (o GetTopicMessageStoragePolicyOutput) ToGetTopicMessageStoragePolicyOutput() GetTopicMessageStoragePolicyOutput {
+	return o
+}
+
+func (o GetTopicMessageStoragePolicyOutput) ToGetTopicMessageStoragePolicyOutputWithContext(ctx context.Context) GetTopicMessageStoragePolicyOutput {
+	return o
+}
+
+func (o GetTopicMessageStoragePolicyOutput) AllowedPersistenceRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTopicMessageStoragePolicy) []string { return v.AllowedPersistenceRegions }).(pulumi.StringArrayOutput)
+}
+
+type GetTopicMessageStoragePolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTopicMessageStoragePolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTopicMessageStoragePolicy)(nil)).Elem()
+}
+
+func (o GetTopicMessageStoragePolicyArrayOutput) ToGetTopicMessageStoragePolicyArrayOutput() GetTopicMessageStoragePolicyArrayOutput {
+	return o
+}
+
+func (o GetTopicMessageStoragePolicyArrayOutput) ToGetTopicMessageStoragePolicyArrayOutputWithContext(ctx context.Context) GetTopicMessageStoragePolicyArrayOutput {
+	return o
+}
+
+func (o GetTopicMessageStoragePolicyArrayOutput) Index(i pulumi.IntInput) GetTopicMessageStoragePolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTopicMessageStoragePolicy {
+		return vs[0].([]GetTopicMessageStoragePolicy)[vs[1].(int)]
+	}).(GetTopicMessageStoragePolicyOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(SubscriptionDeadLetterPolicyOutput{})
 	pulumi.RegisterOutputType(SubscriptionDeadLetterPolicyPtrOutput{})
@@ -1756,4 +1850,6 @@ func init() {
 	pulumi.RegisterOutputType(TopicIAMMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(TopicMessageStoragePolicyOutput{})
 	pulumi.RegisterOutputType(TopicMessageStoragePolicyPtrOutput{})
+	pulumi.RegisterOutputType(GetTopicMessageStoragePolicyOutput{})
+	pulumi.RegisterOutputType(GetTopicMessageStoragePolicyArrayOutput{})
 }

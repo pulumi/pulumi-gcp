@@ -59123,6 +59123,211 @@ func (o GetBackendServiceOutlierDetectionIntervalArrayOutput) Index(i pulumi.Int
 	}).(GetBackendServiceOutlierDetectionIntervalOutput)
 }
 
+type GetGlobalForwardingRuleMetadataFilter struct {
+	FilterLabels        []GetGlobalForwardingRuleMetadataFilterFilterLabel `pulumi:"filterLabels"`
+	FilterMatchCriteria string                                             `pulumi:"filterMatchCriteria"`
+}
+
+// GetGlobalForwardingRuleMetadataFilterInput is an input type that accepts GetGlobalForwardingRuleMetadataFilterArgs and GetGlobalForwardingRuleMetadataFilterOutput values.
+// You can construct a concrete instance of `GetGlobalForwardingRuleMetadataFilterInput` via:
+//
+//          GetGlobalForwardingRuleMetadataFilterArgs{...}
+type GetGlobalForwardingRuleMetadataFilterInput interface {
+	pulumi.Input
+
+	ToGetGlobalForwardingRuleMetadataFilterOutput() GetGlobalForwardingRuleMetadataFilterOutput
+	ToGetGlobalForwardingRuleMetadataFilterOutputWithContext(context.Context) GetGlobalForwardingRuleMetadataFilterOutput
+}
+
+type GetGlobalForwardingRuleMetadataFilterArgs struct {
+	FilterLabels        GetGlobalForwardingRuleMetadataFilterFilterLabelArrayInput `pulumi:"filterLabels"`
+	FilterMatchCriteria pulumi.StringInput                                         `pulumi:"filterMatchCriteria"`
+}
+
+func (GetGlobalForwardingRuleMetadataFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalForwardingRuleMetadataFilter)(nil)).Elem()
+}
+
+func (i GetGlobalForwardingRuleMetadataFilterArgs) ToGetGlobalForwardingRuleMetadataFilterOutput() GetGlobalForwardingRuleMetadataFilterOutput {
+	return i.ToGetGlobalForwardingRuleMetadataFilterOutputWithContext(context.Background())
+}
+
+func (i GetGlobalForwardingRuleMetadataFilterArgs) ToGetGlobalForwardingRuleMetadataFilterOutputWithContext(ctx context.Context) GetGlobalForwardingRuleMetadataFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalForwardingRuleMetadataFilterOutput)
+}
+
+// GetGlobalForwardingRuleMetadataFilterArrayInput is an input type that accepts GetGlobalForwardingRuleMetadataFilterArray and GetGlobalForwardingRuleMetadataFilterArrayOutput values.
+// You can construct a concrete instance of `GetGlobalForwardingRuleMetadataFilterArrayInput` via:
+//
+//          GetGlobalForwardingRuleMetadataFilterArray{ GetGlobalForwardingRuleMetadataFilterArgs{...} }
+type GetGlobalForwardingRuleMetadataFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetGlobalForwardingRuleMetadataFilterArrayOutput() GetGlobalForwardingRuleMetadataFilterArrayOutput
+	ToGetGlobalForwardingRuleMetadataFilterArrayOutputWithContext(context.Context) GetGlobalForwardingRuleMetadataFilterArrayOutput
+}
+
+type GetGlobalForwardingRuleMetadataFilterArray []GetGlobalForwardingRuleMetadataFilterInput
+
+func (GetGlobalForwardingRuleMetadataFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGlobalForwardingRuleMetadataFilter)(nil)).Elem()
+}
+
+func (i GetGlobalForwardingRuleMetadataFilterArray) ToGetGlobalForwardingRuleMetadataFilterArrayOutput() GetGlobalForwardingRuleMetadataFilterArrayOutput {
+	return i.ToGetGlobalForwardingRuleMetadataFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetGlobalForwardingRuleMetadataFilterArray) ToGetGlobalForwardingRuleMetadataFilterArrayOutputWithContext(ctx context.Context) GetGlobalForwardingRuleMetadataFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalForwardingRuleMetadataFilterArrayOutput)
+}
+
+type GetGlobalForwardingRuleMetadataFilterOutput struct{ *pulumi.OutputState }
+
+func (GetGlobalForwardingRuleMetadataFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalForwardingRuleMetadataFilter)(nil)).Elem()
+}
+
+func (o GetGlobalForwardingRuleMetadataFilterOutput) ToGetGlobalForwardingRuleMetadataFilterOutput() GetGlobalForwardingRuleMetadataFilterOutput {
+	return o
+}
+
+func (o GetGlobalForwardingRuleMetadataFilterOutput) ToGetGlobalForwardingRuleMetadataFilterOutputWithContext(ctx context.Context) GetGlobalForwardingRuleMetadataFilterOutput {
+	return o
+}
+
+func (o GetGlobalForwardingRuleMetadataFilterOutput) FilterLabels() GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput {
+	return o.ApplyT(func(v GetGlobalForwardingRuleMetadataFilter) []GetGlobalForwardingRuleMetadataFilterFilterLabel {
+		return v.FilterLabels
+	}).(GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput)
+}
+
+func (o GetGlobalForwardingRuleMetadataFilterOutput) FilterMatchCriteria() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGlobalForwardingRuleMetadataFilter) string { return v.FilterMatchCriteria }).(pulumi.StringOutput)
+}
+
+type GetGlobalForwardingRuleMetadataFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGlobalForwardingRuleMetadataFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGlobalForwardingRuleMetadataFilter)(nil)).Elem()
+}
+
+func (o GetGlobalForwardingRuleMetadataFilterArrayOutput) ToGetGlobalForwardingRuleMetadataFilterArrayOutput() GetGlobalForwardingRuleMetadataFilterArrayOutput {
+	return o
+}
+
+func (o GetGlobalForwardingRuleMetadataFilterArrayOutput) ToGetGlobalForwardingRuleMetadataFilterArrayOutputWithContext(ctx context.Context) GetGlobalForwardingRuleMetadataFilterArrayOutput {
+	return o
+}
+
+func (o GetGlobalForwardingRuleMetadataFilterArrayOutput) Index(i pulumi.IntInput) GetGlobalForwardingRuleMetadataFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGlobalForwardingRuleMetadataFilter {
+		return vs[0].([]GetGlobalForwardingRuleMetadataFilter)[vs[1].(int)]
+	}).(GetGlobalForwardingRuleMetadataFilterOutput)
+}
+
+type GetGlobalForwardingRuleMetadataFilterFilterLabel struct {
+	// The name of the global forwarding rule.
+	Name  string `pulumi:"name"`
+	Value string `pulumi:"value"`
+}
+
+// GetGlobalForwardingRuleMetadataFilterFilterLabelInput is an input type that accepts GetGlobalForwardingRuleMetadataFilterFilterLabelArgs and GetGlobalForwardingRuleMetadataFilterFilterLabelOutput values.
+// You can construct a concrete instance of `GetGlobalForwardingRuleMetadataFilterFilterLabelInput` via:
+//
+//          GetGlobalForwardingRuleMetadataFilterFilterLabelArgs{...}
+type GetGlobalForwardingRuleMetadataFilterFilterLabelInput interface {
+	pulumi.Input
+
+	ToGetGlobalForwardingRuleMetadataFilterFilterLabelOutput() GetGlobalForwardingRuleMetadataFilterFilterLabelOutput
+	ToGetGlobalForwardingRuleMetadataFilterFilterLabelOutputWithContext(context.Context) GetGlobalForwardingRuleMetadataFilterFilterLabelOutput
+}
+
+type GetGlobalForwardingRuleMetadataFilterFilterLabelArgs struct {
+	// The name of the global forwarding rule.
+	Name  pulumi.StringInput `pulumi:"name"`
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetGlobalForwardingRuleMetadataFilterFilterLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalForwardingRuleMetadataFilterFilterLabel)(nil)).Elem()
+}
+
+func (i GetGlobalForwardingRuleMetadataFilterFilterLabelArgs) ToGetGlobalForwardingRuleMetadataFilterFilterLabelOutput() GetGlobalForwardingRuleMetadataFilterFilterLabelOutput {
+	return i.ToGetGlobalForwardingRuleMetadataFilterFilterLabelOutputWithContext(context.Background())
+}
+
+func (i GetGlobalForwardingRuleMetadataFilterFilterLabelArgs) ToGetGlobalForwardingRuleMetadataFilterFilterLabelOutputWithContext(ctx context.Context) GetGlobalForwardingRuleMetadataFilterFilterLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalForwardingRuleMetadataFilterFilterLabelOutput)
+}
+
+// GetGlobalForwardingRuleMetadataFilterFilterLabelArrayInput is an input type that accepts GetGlobalForwardingRuleMetadataFilterFilterLabelArray and GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput values.
+// You can construct a concrete instance of `GetGlobalForwardingRuleMetadataFilterFilterLabelArrayInput` via:
+//
+//          GetGlobalForwardingRuleMetadataFilterFilterLabelArray{ GetGlobalForwardingRuleMetadataFilterFilterLabelArgs{...} }
+type GetGlobalForwardingRuleMetadataFilterFilterLabelArrayInput interface {
+	pulumi.Input
+
+	ToGetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput() GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput
+	ToGetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutputWithContext(context.Context) GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput
+}
+
+type GetGlobalForwardingRuleMetadataFilterFilterLabelArray []GetGlobalForwardingRuleMetadataFilterFilterLabelInput
+
+func (GetGlobalForwardingRuleMetadataFilterFilterLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGlobalForwardingRuleMetadataFilterFilterLabel)(nil)).Elem()
+}
+
+func (i GetGlobalForwardingRuleMetadataFilterFilterLabelArray) ToGetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput() GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput {
+	return i.ToGetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutputWithContext(context.Background())
+}
+
+func (i GetGlobalForwardingRuleMetadataFilterFilterLabelArray) ToGetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutputWithContext(ctx context.Context) GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput)
+}
+
+type GetGlobalForwardingRuleMetadataFilterFilterLabelOutput struct{ *pulumi.OutputState }
+
+func (GetGlobalForwardingRuleMetadataFilterFilterLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalForwardingRuleMetadataFilterFilterLabel)(nil)).Elem()
+}
+
+func (o GetGlobalForwardingRuleMetadataFilterFilterLabelOutput) ToGetGlobalForwardingRuleMetadataFilterFilterLabelOutput() GetGlobalForwardingRuleMetadataFilterFilterLabelOutput {
+	return o
+}
+
+func (o GetGlobalForwardingRuleMetadataFilterFilterLabelOutput) ToGetGlobalForwardingRuleMetadataFilterFilterLabelOutputWithContext(ctx context.Context) GetGlobalForwardingRuleMetadataFilterFilterLabelOutput {
+	return o
+}
+
+// The name of the global forwarding rule.
+func (o GetGlobalForwardingRuleMetadataFilterFilterLabelOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGlobalForwardingRuleMetadataFilterFilterLabel) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetGlobalForwardingRuleMetadataFilterFilterLabelOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGlobalForwardingRuleMetadataFilterFilterLabel) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGlobalForwardingRuleMetadataFilterFilterLabel)(nil)).Elem()
+}
+
+func (o GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput) ToGetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput() GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput {
+	return o
+}
+
+func (o GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput) ToGetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutputWithContext(ctx context.Context) GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput {
+	return o
+}
+
+func (o GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput) Index(i pulumi.IntInput) GetGlobalForwardingRuleMetadataFilterFilterLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGlobalForwardingRuleMetadataFilterFilterLabel {
+		return vs[0].([]GetGlobalForwardingRuleMetadataFilterFilterLabel)[vs[1].(int)]
+	}).(GetGlobalForwardingRuleMetadataFilterFilterLabelOutput)
+}
+
 type GetInstanceAttachedDisk struct {
 	// Name with which the attached disk is accessible
 	// under `/dev/disk/by-id/`
@@ -61981,6 +62186,10 @@ func init() {
 	pulumi.RegisterOutputType(GetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput{})
 	pulumi.RegisterOutputType(GetBackendServiceOutlierDetectionIntervalOutput{})
 	pulumi.RegisterOutputType(GetBackendServiceOutlierDetectionIntervalArrayOutput{})
+	pulumi.RegisterOutputType(GetGlobalForwardingRuleMetadataFilterOutput{})
+	pulumi.RegisterOutputType(GetGlobalForwardingRuleMetadataFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetGlobalForwardingRuleMetadataFilterFilterLabelOutput{})
+	pulumi.RegisterOutputType(GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceAttachedDiskOutput{})
 	pulumi.RegisterOutputType(GetInstanceAttachedDiskArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceBootDiskOutput{})

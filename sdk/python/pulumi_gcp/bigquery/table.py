@@ -25,6 +25,7 @@ class Table(pulumi.CustomResource):
                  external_data_configuration: Optional[pulumi.Input[pulumi.InputType['TableExternalDataConfigurationArgs']]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 materialized_view: Optional[pulumi.Input[pulumi.InputType['TableMaterializedViewArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  range_partitioning: Optional[pulumi.Input[pulumi.InputType['TableRangePartitioningArgs']]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
@@ -60,6 +61,8 @@ class Table(pulumi.CustomResource):
                if it were a standard BigQuery table. Structure is documented below.
         :param pulumi.Input[str] friendly_name: A descriptive name for the table.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A mapping of labels to assign to the resource.
+        :param pulumi.Input[pulumi.InputType['TableMaterializedViewArgs']] materialized_view: If specified, configures this table as a materialized view.
+               Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['TableRangePartitioningArgs']] range_partitioning: If specified, configures range-based
@@ -109,6 +112,7 @@ class Table(pulumi.CustomResource):
             __props__['external_data_configuration'] = external_data_configuration
             __props__['friendly_name'] = friendly_name
             __props__['labels'] = labels
+            __props__['materialized_view'] = materialized_view
             __props__['project'] = project
             __props__['range_partitioning'] = range_partitioning
             __props__['schema'] = schema
@@ -148,6 +152,7 @@ class Table(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             last_modified_time: Optional[pulumi.Input[int]] = None,
             location: Optional[pulumi.Input[str]] = None,
+            materialized_view: Optional[pulumi.Input[pulumi.InputType['TableMaterializedViewArgs']]] = None,
             num_bytes: Optional[pulumi.Input[int]] = None,
             num_long_term_bytes: Optional[pulumi.Input[int]] = None,
             num_rows: Optional[pulumi.Input[int]] = None,
@@ -189,6 +194,8 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A mapping of labels to assign to the resource.
         :param pulumi.Input[int] last_modified_time: The time when this table was last modified, in milliseconds since the epoch.
         :param pulumi.Input[str] location: The geographic location where the table resides. This value is inherited from the dataset.
+        :param pulumi.Input[pulumi.InputType['TableMaterializedViewArgs']] materialized_view: If specified, configures this table as a materialized view.
+               Structure is documented below.
         :param pulumi.Input[int] num_bytes: The size of this table in bytes, excluding any data in the streaming buffer.
         :param pulumi.Input[int] num_long_term_bytes: The number of bytes in the table that are considered "long-term storage".
         :param pulumi.Input[int] num_rows: The number of rows of data in this table, excluding any data in the streaming buffer.
@@ -233,6 +240,7 @@ class Table(pulumi.CustomResource):
         __props__["labels"] = labels
         __props__["last_modified_time"] = last_modified_time
         __props__["location"] = location
+        __props__["materialized_view"] = materialized_view
         __props__["num_bytes"] = num_bytes
         __props__["num_long_term_bytes"] = num_long_term_bytes
         __props__["num_rows"] = num_rows
@@ -352,6 +360,15 @@ class Table(pulumi.CustomResource):
         The geographic location where the table resides. This value is inherited from the dataset.
         """
         return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="materializedView")
+    def materialized_view(self) -> pulumi.Output[Optional['outputs.TableMaterializedView']]:
+        """
+        If specified, configures this table as a materialized view.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "materialized_view")
 
     @property
     @pulumi.getter(name="numBytes")

@@ -146,6 +146,8 @@ func (o ApplicationFeatureSettingsPtrOutput) SplitHealthChecks() pulumi.BoolPtrO
 }
 
 type ApplicationIap struct {
+	// (Optional) Whether the serving infrastructure will authenticate and authorize all incoming requests.
+	// (default is false)
 	Enabled *bool `pulumi:"enabled"`
 	// OAuth2 client ID to use for the authentication flow.
 	Oauth2ClientId string `pulumi:"oauth2ClientId"`
@@ -168,6 +170,8 @@ type ApplicationIapInput interface {
 }
 
 type ApplicationIapArgs struct {
+	// (Optional) Whether the serving infrastructure will authenticate and authorize all incoming requests.
+	// (default is false)
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// OAuth2 client ID to use for the authentication flow.
 	Oauth2ClientId pulumi.StringInput `pulumi:"oauth2ClientId"`
@@ -254,6 +258,9 @@ func (o ApplicationIapOutput) ToApplicationIapPtrOutputWithContext(ctx context.C
 		return &v
 	}).(ApplicationIapPtrOutput)
 }
+
+// (Optional) Whether the serving infrastructure will authenticate and authorize all incoming requests.
+// (default is false)
 func (o ApplicationIapOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ApplicationIap) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -292,6 +299,8 @@ func (o ApplicationIapPtrOutput) Elem() ApplicationIapOutput {
 	return o.ApplyT(func(v *ApplicationIap) ApplicationIap { return *v }).(ApplicationIapOutput)
 }
 
+// (Optional) Whether the serving infrastructure will authenticate and authorize all incoming requests.
+// (default is false)
 func (o ApplicationIapPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ApplicationIap) *bool {
 		if v == nil {

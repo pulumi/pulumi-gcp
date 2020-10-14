@@ -9,5 +9,8 @@ from .instance_iam_binding import *
 from .instance_iam_member import *
 from .instance_iam_policy import *
 from .table import *
+from .table_iam_binding import *
+from .table_iam_member import *
+from .table_iam_policy import *
 from ._inputs import *
 from . import outputs

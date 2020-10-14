@@ -57,7 +57,7 @@ type InstanceGroupManager struct {
 	TargetPools pulumi.StringArrayOutput `pulumi:"targetPools"`
 	// - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
 	TargetSize pulumi.IntOutput `pulumi:"targetSize"`
-	// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
+	// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
 	UpdatePolicy InstanceGroupManagerUpdatePolicyOutput `pulumi:"updatePolicy"`
 	// Application versions managed by this instance group. Each
 	// version deals with a specific instance template, allowing canary release scenarios.
@@ -142,7 +142,7 @@ type instanceGroupManagerState struct {
 	TargetPools []string `pulumi:"targetPools"`
 	// - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
 	TargetSize *int `pulumi:"targetSize"`
-	// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
+	// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
 	UpdatePolicy *InstanceGroupManagerUpdatePolicy `pulumi:"updatePolicy"`
 	// Application versions managed by this instance group. Each
 	// version deals with a specific instance template, allowing canary release scenarios.
@@ -194,7 +194,7 @@ type InstanceGroupManagerState struct {
 	TargetPools pulumi.StringArrayInput
 	// - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
 	TargetSize pulumi.IntPtrInput
-	// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
+	// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
 	UpdatePolicy InstanceGroupManagerUpdatePolicyPtrInput
 	// Application versions managed by this instance group. Each
 	// version deals with a specific instance template, allowing canary release scenarios.
@@ -243,7 +243,7 @@ type instanceGroupManagerArgs struct {
 	TargetPools []string `pulumi:"targetPools"`
 	// - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
 	TargetSize *int `pulumi:"targetSize"`
-	// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
+	// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
 	UpdatePolicy *InstanceGroupManagerUpdatePolicy `pulumi:"updatePolicy"`
 	// Application versions managed by this instance group. Each
 	// version deals with a specific instance template, allowing canary release scenarios.
@@ -289,7 +289,7 @@ type InstanceGroupManagerArgs struct {
 	TargetPools pulumi.StringArrayInput
 	// - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
 	TargetSize pulumi.IntPtrInput
-	// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
+	// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
 	UpdatePolicy InstanceGroupManagerUpdatePolicyPtrInput
 	// Application versions managed by this instance group. Each
 	// version deals with a specific instance template, allowing canary release scenarios.

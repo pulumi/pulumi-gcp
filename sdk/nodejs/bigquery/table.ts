@@ -99,6 +99,11 @@ export class Table extends pulumi.CustomResource {
      */
     public /*out*/ readonly location!: pulumi.Output<string>;
     /**
+     * If specified, configures this table as a materialized view.
+     * Structure is documented below.
+     */
+    public readonly materializedView!: pulumi.Output<outputs.bigquery.TableMaterializedView | undefined>;
+    /**
      * The size of this table in bytes, excluding any data in the streaming buffer.
      */
     public /*out*/ readonly numBytes!: pulumi.Output<number>;
@@ -183,6 +188,7 @@ export class Table extends pulumi.CustomResource {
             inputs["labels"] = state ? state.labels : undefined;
             inputs["lastModifiedTime"] = state ? state.lastModifiedTime : undefined;
             inputs["location"] = state ? state.location : undefined;
+            inputs["materializedView"] = state ? state.materializedView : undefined;
             inputs["numBytes"] = state ? state.numBytes : undefined;
             inputs["numLongTermBytes"] = state ? state.numLongTermBytes : undefined;
             inputs["numRows"] = state ? state.numRows : undefined;
@@ -210,6 +216,7 @@ export class Table extends pulumi.CustomResource {
             inputs["externalDataConfiguration"] = args ? args.externalDataConfiguration : undefined;
             inputs["friendlyName"] = args ? args.friendlyName : undefined;
             inputs["labels"] = args ? args.labels : undefined;
+            inputs["materializedView"] = args ? args.materializedView : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["rangePartitioning"] = args ? args.rangePartitioning : undefined;
             inputs["schema"] = args ? args.schema : undefined;
@@ -300,6 +307,11 @@ export interface TableState {
      * The geographic location where the table resides. This value is inherited from the dataset.
      */
     readonly location?: pulumi.Input<string>;
+    /**
+     * If specified, configures this table as a materialized view.
+     * Structure is documented below.
+     */
+    readonly materializedView?: pulumi.Input<inputs.bigquery.TableMaterializedView>;
     /**
      * The size of this table in bytes, excluding any data in the streaming buffer.
      */
@@ -409,6 +421,11 @@ export interface TableArgs {
      * A mapping of labels to assign to the resource.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * If specified, configures this table as a materialized view.
+     * Structure is documented below.
+     */
+    readonly materializedView?: pulumi.Input<inputs.bigquery.TableMaterializedView>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.

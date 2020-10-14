@@ -48,58 +48,31 @@ export interface GetForwardingRuleArgs {
  * A collection of values returned by getForwardingRule.
  */
 export interface GetForwardingRuleResult {
-    /**
-     * Backend service, if this forwarding rule has one.
-     */
+    readonly allPorts: boolean;
+    readonly allowGlobalAccess: boolean;
     readonly backendService: string;
-    /**
-     * Description of this forwarding rule.
-     */
+    readonly creationTimestamp: string;
     readonly description: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * IP address of this forwarding rule.
-     */
     readonly ipAddress: string;
-    /**
-     * IP protocol of this forwarding rule.
-     */
     readonly ipProtocol: string;
-    /**
-     * Type of load balancing of this forwarding rule.
-     */
+    readonly isMirroringCollector: boolean;
+    readonly labelFingerprint: string;
+    readonly labels: {[key: string]: string};
     readonly loadBalancingScheme: string;
     readonly name: string;
-    /**
-     * Network of this forwarding rule.
-     */
     readonly network: string;
-    /**
-     * Port range, if this forwarding rule has one.
-     */
+    readonly networkTier: string;
     readonly portRange: string;
-    /**
-     * List of ports to use for internal load balancing, if this forwarding rule has any.
-     */
     readonly ports: string[];
-    readonly project: string;
-    /**
-     * Region of this forwarding rule.
-     */
-    readonly region: string;
-    /**
-     * The URI of the resource.
-     */
+    readonly project?: string;
+    readonly region?: string;
     readonly selfLink: string;
-    /**
-     * Subnetwork of this forwarding rule.
-     */
+    readonly serviceLabel: string;
+    readonly serviceName: string;
     readonly subnetwork: string;
-    /**
-     * URL of the target pool, if this forwarding rule has one.
-     */
     readonly target: string;
 }

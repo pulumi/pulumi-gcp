@@ -31,32 +31,29 @@ type LookupForwardingRuleArgs struct {
 
 // A collection of values returned by getForwardingRule.
 type LookupForwardingRuleResult struct {
-	// Backend service, if this forwarding rule has one.
-	BackendService string `pulumi:"backendService"`
-	// Description of this forwarding rule.
-	Description string `pulumi:"description"`
+	AllPorts          bool   `pulumi:"allPorts"`
+	AllowGlobalAccess bool   `pulumi:"allowGlobalAccess"`
+	BackendService    string `pulumi:"backendService"`
+	CreationTimestamp string `pulumi:"creationTimestamp"`
+	Description       string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// IP address of this forwarding rule.
-	IpAddress string `pulumi:"ipAddress"`
-	// IP protocol of this forwarding rule.
-	IpProtocol string `pulumi:"ipProtocol"`
-	// Type of load balancing of this forwarding rule.
-	LoadBalancingScheme string `pulumi:"loadBalancingScheme"`
-	Name                string `pulumi:"name"`
-	// Network of this forwarding rule.
-	Network string `pulumi:"network"`
-	// Port range, if this forwarding rule has one.
-	PortRange string `pulumi:"portRange"`
-	// List of ports to use for internal load balancing, if this forwarding rule has any.
-	Ports   []string `pulumi:"ports"`
-	Project string   `pulumi:"project"`
-	// Region of this forwarding rule.
-	Region string `pulumi:"region"`
-	// The URI of the resource.
-	SelfLink string `pulumi:"selfLink"`
-	// Subnetwork of this forwarding rule.
-	Subnetwork string `pulumi:"subnetwork"`
-	// URL of the target pool, if this forwarding rule has one.
-	Target string `pulumi:"target"`
+	Id                   string            `pulumi:"id"`
+	IpAddress            string            `pulumi:"ipAddress"`
+	IpProtocol           string            `pulumi:"ipProtocol"`
+	IsMirroringCollector bool              `pulumi:"isMirroringCollector"`
+	LabelFingerprint     string            `pulumi:"labelFingerprint"`
+	Labels               map[string]string `pulumi:"labels"`
+	LoadBalancingScheme  string            `pulumi:"loadBalancingScheme"`
+	Name                 string            `pulumi:"name"`
+	Network              string            `pulumi:"network"`
+	NetworkTier          string            `pulumi:"networkTier"`
+	PortRange            string            `pulumi:"portRange"`
+	Ports                []string          `pulumi:"ports"`
+	Project              *string           `pulumi:"project"`
+	Region               *string           `pulumi:"region"`
+	SelfLink             string            `pulumi:"selfLink"`
+	ServiceLabel         string            `pulumi:"serviceLabel"`
+	ServiceName          string            `pulumi:"serviceName"`
+	Subnetwork           string            `pulumi:"subnetwork"`
+	Target               string            `pulumi:"target"`
 }

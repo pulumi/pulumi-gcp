@@ -2829,7 +2829,7 @@ type TriggerGithubPullRequest struct {
 	// Regex of branches to match.  Specify only one of branch or tag.
 	Branch string `pulumi:"branch"`
 	// Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
-	// Possible values are `COMMENTS_DISABLED` and `COMMENTS_ENABLED`.
+	// Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
 	CommentControl *string `pulumi:"commentControl"`
 	// Only trigger a build if the revision regex does NOT match the revision regex.
 	InvertRegex *bool `pulumi:"invertRegex"`
@@ -2850,7 +2850,7 @@ type TriggerGithubPullRequestArgs struct {
 	// Regex of branches to match.  Specify only one of branch or tag.
 	Branch pulumi.StringInput `pulumi:"branch"`
 	// Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
-	// Possible values are `COMMENTS_DISABLED` and `COMMENTS_ENABLED`.
+	// Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
 	CommentControl pulumi.StringPtrInput `pulumi:"commentControl"`
 	// Only trigger a build if the revision regex does NOT match the revision regex.
 	InvertRegex pulumi.BoolPtrInput `pulumi:"invertRegex"`
@@ -2939,7 +2939,7 @@ func (o TriggerGithubPullRequestOutput) Branch() pulumi.StringOutput {
 }
 
 // Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
-// Possible values are `COMMENTS_DISABLED` and `COMMENTS_ENABLED`.
+// Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
 func (o TriggerGithubPullRequestOutput) CommentControl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerGithubPullRequest) *string { return v.CommentControl }).(pulumi.StringPtrOutput)
 }
@@ -2978,7 +2978,7 @@ func (o TriggerGithubPullRequestPtrOutput) Branch() pulumi.StringPtrOutput {
 }
 
 // Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
-// Possible values are `COMMENTS_DISABLED` and `COMMENTS_ENABLED`.
+// Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
 func (o TriggerGithubPullRequestPtrOutput) CommentControl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerGithubPullRequest) *string {
 		if v == nil {

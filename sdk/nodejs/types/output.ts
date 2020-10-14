@@ -611,6 +611,10 @@ export namespace appengine {
     }
 
     export interface ApplicationIap {
+        /**
+         * (Optional) Whether the serving infrastructure will authenticate and authorize all incoming requests. 
+         * (default is false)
+         */
         enabled?: boolean;
         /**
          * OAuth2 client ID to use for the authentication flow.
@@ -1472,10 +1476,9 @@ export namespace bigquery {
         groupByEmail?: string;
         /**
          * Describes the rights granted to the user specified by the other
-         * member of the access object. Primitive, Predefined and custom
-         * roles are supported. Predefined roles that have equivalent
-         * primitive roles are swapped by the API to their Primitive
-         * counterparts. See
+         * member of the access object. Basic, predefined, and custom roles
+         * are supported. Predefined roles that have equivalent basic roles
+         * are swapped by the API to their basic counterparts. See
          * [official docs](https://cloud.google.com/bigquery/docs/access-control).
          */
         role?: string;
@@ -2221,6 +2224,23 @@ export namespace bigquery {
         sourceUriPrefix?: string;
     }
 
+    export interface TableMaterializedView {
+        /**
+         * Specifies whether to use BigQuery's automatic refresh for this materialized view when the base table is updated.
+         * The default value is true.
+         */
+        enableRefresh?: boolean;
+        /**
+         * A query whose result is persisted.
+         */
+        query: string;
+        /**
+         * The maximum frequency at which this materialized view will be refreshed.
+         * The default value is 1800000
+         */
+        refreshIntervalMs?: number;
+    }
+
     export interface TableRangePartitioning {
         /**
          * The field used to determine how to create a range-based
@@ -2275,7 +2295,7 @@ export namespace bigquery {
 
     export interface TableView {
         /**
-         * A query that BigQuery executes when the view is referenced.
+         * A query whose result is persisted.
          */
         query: string;
         /**
@@ -2342,6 +2362,18 @@ export namespace bigtable {
          * The name of the column family.
          */
         family: string;
+    }
+
+    export interface TableIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface TableIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
     }
 }
 
@@ -3106,7 +3138,7 @@ export namespace cloudbuild {
         branch: string;
         /**
          * Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
-         * Possible values are `COMMENTS_DISABLED` and `COMMENTS_ENABLED`.
+         * Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
          */
         commentControl?: string;
         /**
@@ -3497,6 +3529,127 @@ export namespace cloudrun {
         name: string;
         rrdata: string;
         type?: string;
+    }
+
+    export interface GetServiceMetadata {
+        annotations: {[key: string]: string};
+        generation: number;
+        labels: {[key: string]: string};
+        namespace: string;
+        resourceVersion: string;
+        selfLink: string;
+        uid: string;
+    }
+
+    export interface GetServiceStatus {
+        conditions: outputs.cloudrun.GetServiceStatusCondition[];
+        latestCreatedRevisionName: string;
+        latestReadyRevisionName: string;
+        observedGeneration: number;
+        url: string;
+    }
+
+    export interface GetServiceStatusCondition {
+        message: string;
+        reason: string;
+        status: string;
+        type: string;
+    }
+
+    export interface GetServiceTemplate {
+        metadatas: outputs.cloudrun.GetServiceTemplateMetadata[];
+        specs: outputs.cloudrun.GetServiceTemplateSpec[];
+    }
+
+    export interface GetServiceTemplateMetadata {
+        annotations: {[key: string]: string};
+        generation: number;
+        labels: {[key: string]: string};
+        /**
+         * The name of the Cloud Run Service.
+         */
+        name: string;
+        namespace: string;
+        resourceVersion: string;
+        selfLink: string;
+        uid: string;
+    }
+
+    export interface GetServiceTemplateSpec {
+        containerConcurrency: number;
+        containers: outputs.cloudrun.GetServiceTemplateSpecContainer[];
+        serviceAccountName: string;
+        servingState: string;
+        timeoutSeconds: number;
+    }
+
+    export interface GetServiceTemplateSpecContainer {
+        args: string[];
+        commands: string[];
+        envFroms: outputs.cloudrun.GetServiceTemplateSpecContainerEnvFrom[];
+        envs: outputs.cloudrun.GetServiceTemplateSpecContainerEnv[];
+        image: string;
+        ports: outputs.cloudrun.GetServiceTemplateSpecContainerPort[];
+        resources: outputs.cloudrun.GetServiceTemplateSpecContainerResource[];
+        workingDir: string;
+    }
+
+    export interface GetServiceTemplateSpecContainerEnv {
+        /**
+         * The name of the Cloud Run Service.
+         */
+        name: string;
+        value: string;
+    }
+
+    export interface GetServiceTemplateSpecContainerEnvFrom {
+        configMapReves: outputs.cloudrun.GetServiceTemplateSpecContainerEnvFromConfigMapRef[];
+        prefix: string;
+        secretReves: outputs.cloudrun.GetServiceTemplateSpecContainerEnvFromSecretRef[];
+    }
+
+    export interface GetServiceTemplateSpecContainerEnvFromConfigMapRef {
+        localObjectReferences: outputs.cloudrun.GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference[];
+        optional: boolean;
+    }
+
+    export interface GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference {
+        /**
+         * The name of the Cloud Run Service.
+         */
+        name: string;
+    }
+
+    export interface GetServiceTemplateSpecContainerEnvFromSecretRef {
+        localObjectReferences: outputs.cloudrun.GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference[];
+        optional: boolean;
+    }
+
+    export interface GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference {
+        /**
+         * The name of the Cloud Run Service.
+         */
+        name: string;
+    }
+
+    export interface GetServiceTemplateSpecContainerPort {
+        containerPort: number;
+        /**
+         * The name of the Cloud Run Service.
+         */
+        name: string;
+        protocol: string;
+    }
+
+    export interface GetServiceTemplateSpecContainerResource {
+        limits: {[key: string]: string};
+        requests: {[key: string]: string};
+    }
+
+    export interface GetServiceTraffic {
+        latestRevision: boolean;
+        percent: number;
+        revisionName: string;
     }
 
     export interface IamBindingCondition {
@@ -5388,6 +5541,19 @@ export namespace compute {
     export interface GetBackendServiceOutlierDetectionInterval {
         nanos: number;
         seconds: number;
+    }
+
+    export interface GetGlobalForwardingRuleMetadataFilter {
+        filterLabels: outputs.compute.GetGlobalForwardingRuleMetadataFilterFilterLabel[];
+        filterMatchCriteria: string;
+    }
+
+    export interface GetGlobalForwardingRuleMetadataFilterFilterLabel {
+        /**
+         * The name of the global forwarding rule.
+         */
+        name: string;
+        value: string;
     }
 
     export interface GetInstanceAttachedDisk {
@@ -15466,6 +15632,13 @@ export namespace dns {
 
     export interface PolicyAlternativeNameServerConfigTargetNameServer {
         /**
+         * Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
+         * decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
+         * to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
+         * Possible values are `default` and `private`.
+         */
+        forwardingPath?: string;
+        /**
          * IPv4 address to forward to.
          */
         ipv4Address: string;
@@ -19405,6 +19578,10 @@ export namespace projects {
 }
 
 export namespace pubsub {
+    export interface GetTopicMessageStoragePolicy {
+        allowedPersistenceRegions: string[];
+    }
+
     export interface SubscriptionDeadLetterPolicy {
         /**
          * The name of the topic to which dead letter messages should be published.

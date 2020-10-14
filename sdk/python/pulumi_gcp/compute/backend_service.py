@@ -91,7 +91,8 @@ class BackendService(pulumi.CustomResource):
         :param pulumi.Input[str] health_checks: The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
                for health checking this BackendService. Currently at most one health
                check can be specified.
-               A health check must be specified unless the backend service uses an internet NEG as a backend.
+               A health check must be specified unless the backend service uses an internet
+               or serverless NEG as a backend.
                For internal load balancing, a URL to a HealthCheck resource must be specified instead.
         :param pulumi.Input[pulumi.InputType['BackendServiceIapArgs']] iap: Settings for enabling Cloud Identity Aware Proxy
                Structure is documented below.
@@ -264,7 +265,8 @@ class BackendService(pulumi.CustomResource):
         :param pulumi.Input[str] health_checks: The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
                for health checking this BackendService. Currently at most one health
                check can be specified.
-               A health check must be specified unless the backend service uses an internet NEG as a backend.
+               A health check must be specified unless the backend service uses an internet
+               or serverless NEG as a backend.
                For internal load balancing, a URL to a HealthCheck resource must be specified instead.
         :param pulumi.Input[pulumi.InputType['BackendServiceIapArgs']] iap: Settings for enabling Cloud Identity Aware Proxy
                Structure is documented below.
@@ -466,7 +468,8 @@ class BackendService(pulumi.CustomResource):
         The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
         for health checking this BackendService. Currently at most one health
         check can be specified.
-        A health check must be specified unless the backend service uses an internet NEG as a backend.
+        A health check must be specified unless the backend service uses an internet
+        or serverless NEG as a backend.
         For internal load balancing, a URL to a HealthCheck resource must be specified instead.
         """
         return pulumi.get(self, "health_checks")

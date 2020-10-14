@@ -70,11 +70,7 @@ export class FlexTemplateJob extends pulumi.CustomResource {
      */
     public /*out*/ readonly jobId!: pulumi.Output<string>;
     /**
-     * User labels to be specified for the job. Keys and values
-     * should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-     * page. **NOTE**: Google-provided Dataflow templates often provide default labels
-     * that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-     * labels will be ignored to prevent diffs on re-apply.
+     * @deprecated Deprecated until the API supports this field
      */
     public readonly labels!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
@@ -166,11 +162,7 @@ export interface FlexTemplateJobState {
      */
     readonly jobId?: pulumi.Input<string>;
     /**
-     * User labels to be specified for the job. Keys and values
-     * should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-     * page. **NOTE**: Google-provided Dataflow templates often provide default labels
-     * that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-     * labels will be ignored to prevent diffs on re-apply.
+     * @deprecated Deprecated until the API supports this field
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -212,11 +204,7 @@ export interface FlexTemplateJobArgs {
      */
     readonly containerSpecGcsPath: pulumi.Input<string>;
     /**
-     * User labels to be specified for the job. Keys and values
-     * should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-     * page. **NOTE**: Google-provided Dataflow templates often provide default labels
-     * that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-     * labels will be ignored to prevent diffs on re-apply.
+     * @deprecated Deprecated until the API supports this field
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
     /**

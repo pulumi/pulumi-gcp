@@ -20,6 +20,7 @@ __all__ = [
     'TopicIAMBindingCondition',
     'TopicIAMMemberCondition',
     'TopicMessageStoragePolicy',
+    'GetTopicMessageStoragePolicyResult',
 ]
 
 @pulumi.output_type
@@ -438,5 +439,17 @@ class TopicMessageStoragePolicy(dict):
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class GetTopicMessageStoragePolicyResult(dict):
+    def __init__(__self__, *,
+                 allowed_persistence_regions: Sequence[str]):
+        pulumi.set(__self__, "allowed_persistence_regions", allowed_persistence_regions)
+
+    @property
+    @pulumi.getter(name="allowedPersistenceRegions")
+    def allowed_persistence_regions(self) -> Sequence[str]:
+        return pulumi.get(self, "allowed_persistence_regions")
 
 

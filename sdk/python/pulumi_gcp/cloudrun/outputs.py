@@ -33,6 +33,22 @@ __all__ = [
     'ServiceTemplateSpecContainerPort',
     'ServiceTemplateSpecContainerResources',
     'ServiceTraffic',
+    'GetServiceMetadataResult',
+    'GetServiceStatusResult',
+    'GetServiceStatusConditionResult',
+    'GetServiceTemplateResult',
+    'GetServiceTemplateMetadataResult',
+    'GetServiceTemplateSpecResult',
+    'GetServiceTemplateSpecContainerResult',
+    'GetServiceTemplateSpecContainerEnvResult',
+    'GetServiceTemplateSpecContainerEnvFromResult',
+    'GetServiceTemplateSpecContainerEnvFromConfigMapRefResult',
+    'GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceResult',
+    'GetServiceTemplateSpecContainerEnvFromSecretRefResult',
+    'GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceResult',
+    'GetServiceTemplateSpecContainerPortResult',
+    'GetServiceTemplateSpecContainerResourceResult',
+    'GetServiceTrafficResult',
 ]
 
 @pulumi.output_type
@@ -1424,5 +1440,521 @@ class ServiceTraffic(dict):
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class GetServiceMetadataResult(dict):
+    def __init__(__self__, *,
+                 annotations: Mapping[str, str],
+                 generation: int,
+                 labels: Mapping[str, str],
+                 namespace: str,
+                 resource_version: str,
+                 self_link: str,
+                 uid: str):
+        pulumi.set(__self__, "annotations", annotations)
+        pulumi.set(__self__, "generation", generation)
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "namespace", namespace)
+        pulumi.set(__self__, "resource_version", resource_version)
+        pulumi.set(__self__, "self_link", self_link)
+        pulumi.set(__self__, "uid", uid)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Mapping[str, str]:
+        return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter
+    def generation(self) -> int:
+        return pulumi.get(self, "generation")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> str:
+        return pulumi.get(self, "namespace")
+
+    @property
+    @pulumi.getter(name="resourceVersion")
+    def resource_version(self) -> str:
+        return pulumi.get(self, "resource_version")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> str:
+        return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter
+    def uid(self) -> str:
+        return pulumi.get(self, "uid")
+
+
+@pulumi.output_type
+class GetServiceStatusResult(dict):
+    def __init__(__self__, *,
+                 conditions: Sequence['outputs.GetServiceStatusConditionResult'],
+                 latest_created_revision_name: str,
+                 latest_ready_revision_name: str,
+                 observed_generation: int,
+                 url: str):
+        pulumi.set(__self__, "conditions", conditions)
+        pulumi.set(__self__, "latest_created_revision_name", latest_created_revision_name)
+        pulumi.set(__self__, "latest_ready_revision_name", latest_ready_revision_name)
+        pulumi.set(__self__, "observed_generation", observed_generation)
+        pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> Sequence['outputs.GetServiceStatusConditionResult']:
+        return pulumi.get(self, "conditions")
+
+    @property
+    @pulumi.getter(name="latestCreatedRevisionName")
+    def latest_created_revision_name(self) -> str:
+        return pulumi.get(self, "latest_created_revision_name")
+
+    @property
+    @pulumi.getter(name="latestReadyRevisionName")
+    def latest_ready_revision_name(self) -> str:
+        return pulumi.get(self, "latest_ready_revision_name")
+
+    @property
+    @pulumi.getter(name="observedGeneration")
+    def observed_generation(self) -> int:
+        return pulumi.get(self, "observed_generation")
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        return pulumi.get(self, "url")
+
+
+@pulumi.output_type
+class GetServiceStatusConditionResult(dict):
+    def __init__(__self__, *,
+                 message: str,
+                 reason: str,
+                 status: str,
+                 type: str):
+        pulumi.set(__self__, "message", message)
+        pulumi.set(__self__, "reason", reason)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter
+    def reason(self) -> str:
+        return pulumi.get(self, "reason")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetServiceTemplateResult(dict):
+    def __init__(__self__, *,
+                 metadatas: Sequence['outputs.GetServiceTemplateMetadataResult'],
+                 specs: Sequence['outputs.GetServiceTemplateSpecResult']):
+        pulumi.set(__self__, "metadatas", metadatas)
+        pulumi.set(__self__, "specs", specs)
+
+    @property
+    @pulumi.getter
+    def metadatas(self) -> Sequence['outputs.GetServiceTemplateMetadataResult']:
+        return pulumi.get(self, "metadatas")
+
+    @property
+    @pulumi.getter
+    def specs(self) -> Sequence['outputs.GetServiceTemplateSpecResult']:
+        return pulumi.get(self, "specs")
+
+
+@pulumi.output_type
+class GetServiceTemplateMetadataResult(dict):
+    def __init__(__self__, *,
+                 annotations: Mapping[str, str],
+                 generation: int,
+                 labels: Mapping[str, str],
+                 name: str,
+                 namespace: str,
+                 resource_version: str,
+                 self_link: str,
+                 uid: str):
+        """
+        :param str name: The name of the Cloud Run Service.
+        """
+        pulumi.set(__self__, "annotations", annotations)
+        pulumi.set(__self__, "generation", generation)
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "namespace", namespace)
+        pulumi.set(__self__, "resource_version", resource_version)
+        pulumi.set(__self__, "self_link", self_link)
+        pulumi.set(__self__, "uid", uid)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Mapping[str, str]:
+        return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter
+    def generation(self) -> int:
+        return pulumi.get(self, "generation")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the Cloud Run Service.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> str:
+        return pulumi.get(self, "namespace")
+
+    @property
+    @pulumi.getter(name="resourceVersion")
+    def resource_version(self) -> str:
+        return pulumi.get(self, "resource_version")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> str:
+        return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter
+    def uid(self) -> str:
+        return pulumi.get(self, "uid")
+
+
+@pulumi.output_type
+class GetServiceTemplateSpecResult(dict):
+    def __init__(__self__, *,
+                 container_concurrency: int,
+                 containers: Sequence['outputs.GetServiceTemplateSpecContainerResult'],
+                 service_account_name: str,
+                 serving_state: str,
+                 timeout_seconds: int):
+        pulumi.set(__self__, "container_concurrency", container_concurrency)
+        pulumi.set(__self__, "containers", containers)
+        pulumi.set(__self__, "service_account_name", service_account_name)
+        pulumi.set(__self__, "serving_state", serving_state)
+        pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+
+    @property
+    @pulumi.getter(name="containerConcurrency")
+    def container_concurrency(self) -> int:
+        return pulumi.get(self, "container_concurrency")
+
+    @property
+    @pulumi.getter
+    def containers(self) -> Sequence['outputs.GetServiceTemplateSpecContainerResult']:
+        return pulumi.get(self, "containers")
+
+    @property
+    @pulumi.getter(name="serviceAccountName")
+    def service_account_name(self) -> str:
+        return pulumi.get(self, "service_account_name")
+
+    @property
+    @pulumi.getter(name="servingState")
+    def serving_state(self) -> str:
+        return pulumi.get(self, "serving_state")
+
+    @property
+    @pulumi.getter(name="timeoutSeconds")
+    def timeout_seconds(self) -> int:
+        return pulumi.get(self, "timeout_seconds")
+
+
+@pulumi.output_type
+class GetServiceTemplateSpecContainerResult(dict):
+    def __init__(__self__, *,
+                 args: Sequence[str],
+                 commands: Sequence[str],
+                 env_froms: Sequence['outputs.GetServiceTemplateSpecContainerEnvFromResult'],
+                 envs: Sequence['outputs.GetServiceTemplateSpecContainerEnvResult'],
+                 image: str,
+                 ports: Sequence['outputs.GetServiceTemplateSpecContainerPortResult'],
+                 resources: Sequence['outputs.GetServiceTemplateSpecContainerResourceResult'],
+                 working_dir: str):
+        pulumi.set(__self__, "args", args)
+        pulumi.set(__self__, "commands", commands)
+        pulumi.set(__self__, "env_froms", env_froms)
+        pulumi.set(__self__, "envs", envs)
+        pulumi.set(__self__, "image", image)
+        pulumi.set(__self__, "ports", ports)
+        pulumi.set(__self__, "resources", resources)
+        pulumi.set(__self__, "working_dir", working_dir)
+
+    @property
+    @pulumi.getter
+    def args(self) -> Sequence[str]:
+        return pulumi.get(self, "args")
+
+    @property
+    @pulumi.getter
+    def commands(self) -> Sequence[str]:
+        return pulumi.get(self, "commands")
+
+    @property
+    @pulumi.getter(name="envFroms")
+    def env_froms(self) -> Sequence['outputs.GetServiceTemplateSpecContainerEnvFromResult']:
+        return pulumi.get(self, "env_froms")
+
+    @property
+    @pulumi.getter
+    def envs(self) -> Sequence['outputs.GetServiceTemplateSpecContainerEnvResult']:
+        return pulumi.get(self, "envs")
+
+    @property
+    @pulumi.getter
+    def image(self) -> str:
+        return pulumi.get(self, "image")
+
+    @property
+    @pulumi.getter
+    def ports(self) -> Sequence['outputs.GetServiceTemplateSpecContainerPortResult']:
+        return pulumi.get(self, "ports")
+
+    @property
+    @pulumi.getter
+    def resources(self) -> Sequence['outputs.GetServiceTemplateSpecContainerResourceResult']:
+        return pulumi.get(self, "resources")
+
+    @property
+    @pulumi.getter(name="workingDir")
+    def working_dir(self) -> str:
+        return pulumi.get(self, "working_dir")
+
+
+@pulumi.output_type
+class GetServiceTemplateSpecContainerEnvResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 value: str):
+        """
+        :param str name: The name of the Cloud Run Service.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the Cloud Run Service.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetServiceTemplateSpecContainerEnvFromResult(dict):
+    def __init__(__self__, *,
+                 config_map_reves: Sequence['outputs.GetServiceTemplateSpecContainerEnvFromConfigMapRefResult'],
+                 prefix: str,
+                 secret_reves: Sequence['outputs.GetServiceTemplateSpecContainerEnvFromSecretRefResult']):
+        pulumi.set(__self__, "config_map_reves", config_map_reves)
+        pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "secret_reves", secret_reves)
+
+    @property
+    @pulumi.getter(name="configMapReves")
+    def config_map_reves(self) -> Sequence['outputs.GetServiceTemplateSpecContainerEnvFromConfigMapRefResult']:
+        return pulumi.get(self, "config_map_reves")
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> str:
+        return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter(name="secretReves")
+    def secret_reves(self) -> Sequence['outputs.GetServiceTemplateSpecContainerEnvFromSecretRefResult']:
+        return pulumi.get(self, "secret_reves")
+
+
+@pulumi.output_type
+class GetServiceTemplateSpecContainerEnvFromConfigMapRefResult(dict):
+    def __init__(__self__, *,
+                 local_object_references: Sequence['outputs.GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceResult'],
+                 optional: bool):
+        pulumi.set(__self__, "local_object_references", local_object_references)
+        pulumi.set(__self__, "optional", optional)
+
+    @property
+    @pulumi.getter(name="localObjectReferences")
+    def local_object_references(self) -> Sequence['outputs.GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceResult']:
+        return pulumi.get(self, "local_object_references")
+
+    @property
+    @pulumi.getter
+    def optional(self) -> bool:
+        return pulumi.get(self, "optional")
+
+
+@pulumi.output_type
+class GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceResult(dict):
+    def __init__(__self__, *,
+                 name: str):
+        """
+        :param str name: The name of the Cloud Run Service.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the Cloud Run Service.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetServiceTemplateSpecContainerEnvFromSecretRefResult(dict):
+    def __init__(__self__, *,
+                 local_object_references: Sequence['outputs.GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceResult'],
+                 optional: bool):
+        pulumi.set(__self__, "local_object_references", local_object_references)
+        pulumi.set(__self__, "optional", optional)
+
+    @property
+    @pulumi.getter(name="localObjectReferences")
+    def local_object_references(self) -> Sequence['outputs.GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceResult']:
+        return pulumi.get(self, "local_object_references")
+
+    @property
+    @pulumi.getter
+    def optional(self) -> bool:
+        return pulumi.get(self, "optional")
+
+
+@pulumi.output_type
+class GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceResult(dict):
+    def __init__(__self__, *,
+                 name: str):
+        """
+        :param str name: The name of the Cloud Run Service.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the Cloud Run Service.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetServiceTemplateSpecContainerPortResult(dict):
+    def __init__(__self__, *,
+                 container_port: int,
+                 name: str,
+                 protocol: str):
+        """
+        :param str name: The name of the Cloud Run Service.
+        """
+        pulumi.set(__self__, "container_port", container_port)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "protocol", protocol)
+
+    @property
+    @pulumi.getter(name="containerPort")
+    def container_port(self) -> int:
+        return pulumi.get(self, "container_port")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the Cloud Run Service.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> str:
+        return pulumi.get(self, "protocol")
+
+
+@pulumi.output_type
+class GetServiceTemplateSpecContainerResourceResult(dict):
+    def __init__(__self__, *,
+                 limits: Mapping[str, str],
+                 requests: Mapping[str, str]):
+        pulumi.set(__self__, "limits", limits)
+        pulumi.set(__self__, "requests", requests)
+
+    @property
+    @pulumi.getter
+    def limits(self) -> Mapping[str, str]:
+        return pulumi.get(self, "limits")
+
+    @property
+    @pulumi.getter
+    def requests(self) -> Mapping[str, str]:
+        return pulumi.get(self, "requests")
+
+
+@pulumi.output_type
+class GetServiceTrafficResult(dict):
+    def __init__(__self__, *,
+                 latest_revision: bool,
+                 percent: int,
+                 revision_name: str):
+        pulumi.set(__self__, "latest_revision", latest_revision)
+        pulumi.set(__self__, "percent", percent)
+        pulumi.set(__self__, "revision_name", revision_name)
+
+    @property
+    @pulumi.getter(name="latestRevision")
+    def latest_revision(self) -> bool:
+        return pulumi.get(self, "latest_revision")
+
+    @property
+    @pulumi.getter
+    def percent(self) -> int:
+        return pulumi.get(self, "percent")
+
+    @property
+    @pulumi.getter(name="revisionName")
+    def revision_name(self) -> str:
+        return pulumi.get(self, "revision_name")
 
 

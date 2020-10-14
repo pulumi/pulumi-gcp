@@ -52,13 +52,6 @@ namespace Pulumi.Gcp.Dataflow
         [Output("jobId")]
         public Output<string> JobId { get; private set; } = null!;
 
-        /// <summary>
-        /// User labels to be specified for the job. Keys and values
-        /// should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-        /// page. **NOTE**: Google-provided Dataflow templates often provide default labels
-        /// that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-        /// labels will be ignored to prevent diffs on re-apply.
-        /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>?> Labels { get; private set; } = null!;
 
@@ -156,14 +149,7 @@ namespace Pulumi.Gcp.Dataflow
 
         [Input("labels")]
         private InputMap<object>? _labels;
-
-        /// <summary>
-        /// User labels to be specified for the job. Keys and values
-        /// should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-        /// page. **NOTE**: Google-provided Dataflow templates often provide default labels
-        /// that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-        /// labels will be ignored to prevent diffs on re-apply.
-        /// </summary>
+        [Obsolete(@"Deprecated until the API supports this field")]
         public InputMap<object> Labels
         {
             get => _labels ?? (_labels = new InputMap<object>());
@@ -231,14 +217,7 @@ namespace Pulumi.Gcp.Dataflow
 
         [Input("labels")]
         private InputMap<object>? _labels;
-
-        /// <summary>
-        /// User labels to be specified for the job. Keys and values
-        /// should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-        /// page. **NOTE**: Google-provided Dataflow templates often provide default labels
-        /// that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-        /// labels will be ignored to prevent diffs on re-apply.
-        /// </summary>
+        [Obsolete(@"Deprecated until the API supports this field")]
         public InputMap<object> Labels
         {
             get => _labels ?? (_labels = new InputMap<object>());

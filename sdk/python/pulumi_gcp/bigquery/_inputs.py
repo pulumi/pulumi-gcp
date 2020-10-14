@@ -42,6 +42,7 @@ __all__ = [
     'TableExternalDataConfigurationCsvOptionsArgs',
     'TableExternalDataConfigurationGoogleSheetsOptionsArgs',
     'TableExternalDataConfigurationHivePartitioningOptionsArgs',
+    'TableMaterializedViewArgs',
     'TableRangePartitioningArgs',
     'TableRangePartitioningRangeArgs',
     'TableTimePartitioningArgs',
@@ -236,10 +237,9 @@ class DatasetAccessArgs:
                domain specified will be granted the specified access
         :param pulumi.Input[str] group_by_email: An email address of a Google Group to grant access to.
         :param pulumi.Input[str] role: Describes the rights granted to the user specified by the other
-               member of the access object. Primitive, Predefined and custom
-               roles are supported. Predefined roles that have equivalent
-               primitive roles are swapped by the API to their Primitive
-               counterparts. See
+               member of the access object. Basic, predefined, and custom roles
+               are supported. Predefined roles that have equivalent basic roles
+               are swapped by the API to their basic counterparts. See
                [official docs](https://cloud.google.com/bigquery/docs/access-control).
         :param pulumi.Input[str] special_group: A special group to grant access to. Possible values include:
         :param pulumi.Input[str] user_by_email: An email address of a user to grant access to. For example:
@@ -294,10 +294,9 @@ class DatasetAccessArgs:
     def role(self) -> Optional[pulumi.Input[str]]:
         """
         Describes the rights granted to the user specified by the other
-        member of the access object. Primitive, Predefined and custom
-        roles are supported. Predefined roles that have equivalent
-        primitive roles are swapped by the API to their Primitive
-        counterparts. See
+        member of the access object. Basic, predefined, and custom roles
+        are supported. Predefined roles that have equivalent basic roles
+        are swapped by the API to their basic counterparts. See
         [official docs](https://cloud.google.com/bigquery/docs/access-control).
         """
         return pulumi.get(self, "role")
@@ -2731,6 +2730,64 @@ class TableExternalDataConfigurationHivePartitioningOptionsArgs:
 
 
 @pulumi.input_type
+class TableMaterializedViewArgs:
+    def __init__(__self__, *,
+                 query: pulumi.Input[str],
+                 enable_refresh: Optional[pulumi.Input[bool]] = None,
+                 refresh_interval_ms: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] query: A query whose result is persisted.
+        :param pulumi.Input[bool] enable_refresh: Specifies whether to use BigQuery's automatic refresh for this materialized view when the base table is updated.
+               The default value is true.
+        :param pulumi.Input[int] refresh_interval_ms: The maximum frequency at which this materialized view will be refreshed.
+               The default value is 1800000
+        """
+        pulumi.set(__self__, "query", query)
+        if enable_refresh is not None:
+            pulumi.set(__self__, "enable_refresh", enable_refresh)
+        if refresh_interval_ms is not None:
+            pulumi.set(__self__, "refresh_interval_ms", refresh_interval_ms)
+
+    @property
+    @pulumi.getter
+    def query(self) -> pulumi.Input[str]:
+        """
+        A query whose result is persisted.
+        """
+        return pulumi.get(self, "query")
+
+    @query.setter
+    def query(self, value: pulumi.Input[str]):
+        pulumi.set(self, "query", value)
+
+    @property
+    @pulumi.getter(name="enableRefresh")
+    def enable_refresh(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to use BigQuery's automatic refresh for this materialized view when the base table is updated.
+        The default value is true.
+        """
+        return pulumi.get(self, "enable_refresh")
+
+    @enable_refresh.setter
+    def enable_refresh(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_refresh", value)
+
+    @property
+    @pulumi.getter(name="refreshIntervalMs")
+    def refresh_interval_ms(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum frequency at which this materialized view will be refreshed.
+        The default value is 1800000
+        """
+        return pulumi.get(self, "refresh_interval_ms")
+
+    @refresh_interval_ms.setter
+    def refresh_interval_ms(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "refresh_interval_ms", value)
+
+
+@pulumi.input_type
 class TableRangePartitioningArgs:
     def __init__(__self__, *,
                  field: pulumi.Input[str],
@@ -2909,7 +2966,7 @@ class TableViewArgs:
                  query: pulumi.Input[str],
                  use_legacy_sql: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] query: A query that BigQuery executes when the view is referenced.
+        :param pulumi.Input[str] query: A query whose result is persisted.
         :param pulumi.Input[bool] use_legacy_sql: Specifies whether to use BigQuery's legacy SQL for this view.
                The default value is true. If set to false, the view will use BigQuery's standard SQL.
         """
@@ -2921,7 +2978,7 @@ class TableViewArgs:
     @pulumi.getter
     def query(self) -> pulumi.Input[str]:
         """
-        A query that BigQuery executes when the view is referenced.
+        A query whose result is persisted.
         """
         return pulumi.get(self, "query")
 

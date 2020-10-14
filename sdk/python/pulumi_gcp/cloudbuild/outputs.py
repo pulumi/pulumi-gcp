@@ -1179,7 +1179,7 @@ class TriggerGithubPullRequest(dict):
         """
         :param str branch: Regex of branches to match.  Specify only one of branch or tag.
         :param str comment_control: Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
-               Possible values are `COMMENTS_DISABLED` and `COMMENTS_ENABLED`.
+               Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
         :param bool invert_regex: Only trigger a build if the revision regex does NOT match the revision regex.
         """
         pulumi.set(__self__, "branch", branch)
@@ -1201,7 +1201,7 @@ class TriggerGithubPullRequest(dict):
     def comment_control(self) -> Optional[str]:
         """
         Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
-        Possible values are `COMMENTS_DISABLED` and `COMMENTS_ENABLED`.
+        Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
         """
         return pulumi.get(self, "comment_control")
 

@@ -100,6 +100,13 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
+        /// If specified, configures this table as a materialized view.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("materializedView")]
+        public Output<Outputs.TableMaterializedView?> MaterializedView { get; private set; } = null!;
+
+        /// <summary>
         /// The size of this table in bytes, excluding any data in the streaming buffer.
         /// </summary>
         [Output("numBytes")]
@@ -299,6 +306,13 @@ namespace Pulumi.Gcp.BigQuery
         }
 
         /// <summary>
+        /// If specified, configures this table as a materialized view.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("materializedView")]
+        public Input<Inputs.TableMaterializedViewArgs>? MaterializedView { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs. If it
         /// is not provided, the provider project is used.
         /// </summary>
@@ -450,6 +464,13 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// If specified, configures this table as a materialized view.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("materializedView")]
+        public Input<Inputs.TableMaterializedViewGetArgs>? MaterializedView { get; set; }
 
         /// <summary>
         /// The size of this table in bytes, excluding any data in the streaming buffer.
