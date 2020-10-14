@@ -92,6 +92,7 @@ namespace Pulumi.Gcp.Container
         public readonly ImmutableArray<string> NodeLocations;
         public readonly ImmutableArray<Outputs.GetClusterNodePoolResult> NodePools;
         public readonly string NodeVersion;
+        public readonly ImmutableArray<Outputs.GetClusterNotificationConfigResult> NotificationConfigs;
         public readonly string Operation;
         public readonly ImmutableArray<Outputs.GetClusterPodSecurityPolicyConfigResult> PodSecurityPolicyConfigs;
         public readonly ImmutableArray<Outputs.GetClusterPrivateClusterConfigResult> PrivateClusterConfigs;
@@ -185,6 +186,8 @@ namespace Pulumi.Gcp.Container
 
             string nodeVersion,
 
+            ImmutableArray<Outputs.GetClusterNotificationConfigResult> notificationConfigs,
+
             string operation,
 
             ImmutableArray<Outputs.GetClusterPodSecurityPolicyConfigResult> podSecurityPolicyConfigs,
@@ -251,6 +254,7 @@ namespace Pulumi.Gcp.Container
             NodeLocations = nodeLocations;
             NodePools = nodePools;
             NodeVersion = nodeVersion;
+            NotificationConfigs = notificationConfigs;
             Operation = operation;
             PodSecurityPolicyConfigs = podSecurityPolicyConfigs;
             PrivateClusterConfigs = privateClusterConfigs;

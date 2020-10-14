@@ -332,6 +332,12 @@ namespace Pulumi.Gcp.Container
         [Output("nodeVersion")]
         public Output<string> NodeVersion { get; private set; } = null!;
 
+        /// <summary>
+        /// The notification config for sending cluster upgrade notifications
+        /// </summary>
+        [Output("notificationConfig")]
+        public Output<Outputs.ClusterNotificationConfig> NotificationConfig { get; private set; } = null!;
+
         [Output("operation")]
         public Output<string> Operation { get; private set; } = null!;
 
@@ -364,8 +370,8 @@ namespace Pulumi.Gcp.Container
         /// [Migrating between release channels](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#migrating_between_release_channels)
         /// for more details; the `gcp.container.getEngineVersions` datasource can provide
         /// the default version for a channel. Note that removing the `release_channel`
-        /// field from your config will cause this provider to stop managing your cluster's
-        /// release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
+        /// field from your config will cause the provider to stop managing your cluster's
+        /// release channel, but will not un-enroll it. Instead, use the `"UNSPECIFIED"`
         /// channel. Structure is documented below.
         /// </summary>
         [Output("releaseChannel")]
@@ -781,6 +787,12 @@ namespace Pulumi.Gcp.Container
         public Input<string>? NodeVersion { get; set; }
 
         /// <summary>
+        /// The notification config for sending cluster upgrade notifications
+        /// </summary>
+        [Input("notificationConfig")]
+        public Input<Inputs.ClusterNotificationConfigArgs>? NotificationConfig { get; set; }
+
+        /// <summary>
         /// Configuration for the
         /// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
         /// Structure is documented below.
@@ -809,8 +821,8 @@ namespace Pulumi.Gcp.Container
         /// [Migrating between release channels](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#migrating_between_release_channels)
         /// for more details; the `gcp.container.getEngineVersions` datasource can provide
         /// the default version for a channel. Note that removing the `release_channel`
-        /// field from your config will cause this provider to stop managing your cluster's
-        /// release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
+        /// field from your config will cause the provider to stop managing your cluster's
+        /// release channel, but will not un-enroll it. Instead, use the `"UNSPECIFIED"`
         /// channel. Structure is documented below.
         /// </summary>
         [Input("releaseChannel")]
@@ -1202,6 +1214,12 @@ namespace Pulumi.Gcp.Container
         [Input("nodeVersion")]
         public Input<string>? NodeVersion { get; set; }
 
+        /// <summary>
+        /// The notification config for sending cluster upgrade notifications
+        /// </summary>
+        [Input("notificationConfig")]
+        public Input<Inputs.ClusterNotificationConfigGetArgs>? NotificationConfig { get; set; }
+
         [Input("operation")]
         public Input<string>? Operation { get; set; }
 
@@ -1234,8 +1252,8 @@ namespace Pulumi.Gcp.Container
         /// [Migrating between release channels](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#migrating_between_release_channels)
         /// for more details; the `gcp.container.getEngineVersions` datasource can provide
         /// the default version for a channel. Note that removing the `release_channel`
-        /// field from your config will cause this provider to stop managing your cluster's
-        /// release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
+        /// field from your config will cause the provider to stop managing your cluster's
+        /// release channel, but will not un-enroll it. Instead, use the `"UNSPECIFIED"`
         /// channel. Structure is documented below.
         /// </summary>
         [Input("releaseChannel")]

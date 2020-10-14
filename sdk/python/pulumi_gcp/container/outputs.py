@@ -56,6 +56,8 @@ __all__ = [
     'ClusterNodePoolNodeConfigTaint',
     'ClusterNodePoolNodeConfigWorkloadMetadataConfig',
     'ClusterNodePoolUpgradeSettings',
+    'ClusterNotificationConfig',
+    'ClusterNotificationConfigPubsub',
     'ClusterPodSecurityPolicyConfig',
     'ClusterPrivateClusterConfig',
     'ClusterPrivateClusterConfigMasterGlobalAccessConfig',
@@ -121,6 +123,8 @@ __all__ = [
     'GetClusterNodePoolNodeConfigTaintResult',
     'GetClusterNodePoolNodeConfigWorkloadMetadataConfigResult',
     'GetClusterNodePoolUpgradeSettingResult',
+    'GetClusterNotificationConfigResult',
+    'GetClusterNotificationConfigPubsubResult',
     'GetClusterPodSecurityPolicyConfigResult',
     'GetClusterPrivateClusterConfigResult',
     'GetClusterPrivateClusterConfigMasterGlobalAccessConfigResult',
@@ -2530,6 +2534,52 @@ class ClusterNodePoolUpgradeSettings(dict):
 
 
 @pulumi.output_type
+class ClusterNotificationConfig(dict):
+    def __init__(__self__, *,
+                 pubsub: 'outputs.ClusterNotificationConfigPubsub'):
+        pulumi.set(__self__, "pubsub", pubsub)
+
+    @property
+    @pulumi.getter
+    def pubsub(self) -> 'outputs.ClusterNotificationConfigPubsub':
+        return pulumi.get(self, "pubsub")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ClusterNotificationConfigPubsub(dict):
+    def __init__(__self__, *,
+                 enabled: bool,
+                 topic: Optional[str] = None):
+        """
+        :param bool enabled: Enable the PodSecurityPolicy controller for this cluster.
+               If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if topic is not None:
+            pulumi.set(__self__, "topic", topic)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Enable the PodSecurityPolicy controller for this cluster.
+        If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def topic(self) -> Optional[str]:
+        return pulumi.get(self, "topic")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
 class ClusterPodSecurityPolicyConfig(dict):
     def __init__(__self__, *,
                  enabled: bool):
@@ -4496,6 +4546,37 @@ class GetClusterNodePoolUpgradeSettingResult(dict):
     @pulumi.getter(name="maxUnavailable")
     def max_unavailable(self) -> int:
         return pulumi.get(self, "max_unavailable")
+
+
+@pulumi.output_type
+class GetClusterNotificationConfigResult(dict):
+    def __init__(__self__, *,
+                 pubsubs: Sequence['outputs.GetClusterNotificationConfigPubsubResult']):
+        pulumi.set(__self__, "pubsubs", pubsubs)
+
+    @property
+    @pulumi.getter
+    def pubsubs(self) -> Sequence['outputs.GetClusterNotificationConfigPubsubResult']:
+        return pulumi.get(self, "pubsubs")
+
+
+@pulumi.output_type
+class GetClusterNotificationConfigPubsubResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool,
+                 topic: str):
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "topic", topic)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def topic(self) -> str:
+        return pulumi.get(self, "topic")
 
 
 @pulumi.output_type

@@ -90,6 +90,7 @@ export interface GetClusterResult {
     readonly nodeLocations: string[];
     readonly nodePools: outputs.container.GetClusterNodePool[];
     readonly nodeVersion: string;
+    readonly notificationConfigs: outputs.container.GetClusterNotificationConfig[];
     readonly operation: string;
     readonly podSecurityPolicyConfigs: outputs.container.GetClusterPodSecurityPolicyConfig[];
     readonly privateClusterConfigs: outputs.container.GetClusterPrivateClusterConfig[];

@@ -253,6 +253,7 @@
         "datafusion/index.ts",
         "datafusion/instance.ts",
         "dataloss/index.ts",
+        "dataloss/preventionDeidentifyTemplate.ts",
         "dataloss/preventionInspectTemplate.ts",
         "dataloss/preventionJobTrigger.ts",
         "dataloss/preventionStoredInfoType.ts",

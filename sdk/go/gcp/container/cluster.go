@@ -183,7 +183,9 @@ type Cluster struct {
 	// `versionPrefix` field to approximate fuzzy versions.
 	// To update nodes in other node pools, use the `version` attribute on the node pool.
 	NodeVersion pulumi.StringOutput `pulumi:"nodeVersion"`
-	Operation   pulumi.StringOutput `pulumi:"operation"`
+	// The notification config for sending cluster upgrade notifications
+	NotificationConfig ClusterNotificationConfigOutput `pulumi:"notificationConfig"`
+	Operation          pulumi.StringOutput             `pulumi:"operation"`
 	// Configuration for the
 	// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 	// Structure is documented below.
@@ -200,8 +202,8 @@ type Cluster struct {
 	// [Migrating between release channels](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#migrating_between_release_channels)
 	// for more details; the `container.getEngineVersions` datasource can provide
 	// the default version for a channel. Note that removing the `releaseChannel`
-	// field from your config will cause this provider to stop managing your cluster's
-	// release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
+	// field from your config will cause the provider to stop managing your cluster's
+	// release channel, but will not un-enroll it. Instead, use the `"UNSPECIFIED"`
 	// channel. Structure is documented below.
 	ReleaseChannel ClusterReleaseChannelOutput `pulumi:"releaseChannel"`
 	// If `true`, deletes the default node
@@ -428,7 +430,9 @@ type clusterState struct {
 	// `versionPrefix` field to approximate fuzzy versions.
 	// To update nodes in other node pools, use the `version` attribute on the node pool.
 	NodeVersion *string `pulumi:"nodeVersion"`
-	Operation   *string `pulumi:"operation"`
+	// The notification config for sending cluster upgrade notifications
+	NotificationConfig *ClusterNotificationConfig `pulumi:"notificationConfig"`
+	Operation          *string                    `pulumi:"operation"`
 	// Configuration for the
 	// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 	// Structure is documented below.
@@ -445,8 +449,8 @@ type clusterState struct {
 	// [Migrating between release channels](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#migrating_between_release_channels)
 	// for more details; the `container.getEngineVersions` datasource can provide
 	// the default version for a channel. Note that removing the `releaseChannel`
-	// field from your config will cause this provider to stop managing your cluster's
-	// release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
+	// field from your config will cause the provider to stop managing your cluster's
+	// release channel, but will not un-enroll it. Instead, use the `"UNSPECIFIED"`
 	// channel. Structure is documented below.
 	ReleaseChannel *ClusterReleaseChannel `pulumi:"releaseChannel"`
 	// If `true`, deletes the default node
@@ -646,7 +650,9 @@ type ClusterState struct {
 	// `versionPrefix` field to approximate fuzzy versions.
 	// To update nodes in other node pools, use the `version` attribute on the node pool.
 	NodeVersion pulumi.StringPtrInput
-	Operation   pulumi.StringPtrInput
+	// The notification config for sending cluster upgrade notifications
+	NotificationConfig ClusterNotificationConfigPtrInput
+	Operation          pulumi.StringPtrInput
 	// Configuration for the
 	// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 	// Structure is documented below.
@@ -663,8 +669,8 @@ type ClusterState struct {
 	// [Migrating between release channels](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#migrating_between_release_channels)
 	// for more details; the `container.getEngineVersions` datasource can provide
 	// the default version for a channel. Note that removing the `releaseChannel`
-	// field from your config will cause this provider to stop managing your cluster's
-	// release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
+	// field from your config will cause the provider to stop managing your cluster's
+	// release channel, but will not un-enroll it. Instead, use the `"UNSPECIFIED"`
 	// channel. Structure is documented below.
 	ReleaseChannel ClusterReleaseChannelPtrInput
 	// If `true`, deletes the default node
@@ -857,6 +863,8 @@ type clusterArgs struct {
 	// `versionPrefix` field to approximate fuzzy versions.
 	// To update nodes in other node pools, use the `version` attribute on the node pool.
 	NodeVersion *string `pulumi:"nodeVersion"`
+	// The notification config for sending cluster upgrade notifications
+	NotificationConfig *ClusterNotificationConfig `pulumi:"notificationConfig"`
 	// Configuration for the
 	// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 	// Structure is documented below.
@@ -873,8 +881,8 @@ type clusterArgs struct {
 	// [Migrating between release channels](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#migrating_between_release_channels)
 	// for more details; the `container.getEngineVersions` datasource can provide
 	// the default version for a channel. Note that removing the `releaseChannel`
-	// field from your config will cause this provider to stop managing your cluster's
-	// release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
+	// field from your config will cause the provider to stop managing your cluster's
+	// release channel, but will not un-enroll it. Instead, use the `"UNSPECIFIED"`
 	// channel. Structure is documented below.
 	ReleaseChannel *ClusterReleaseChannel `pulumi:"releaseChannel"`
 	// If `true`, deletes the default node
@@ -1053,6 +1061,8 @@ type ClusterArgs struct {
 	// `versionPrefix` field to approximate fuzzy versions.
 	// To update nodes in other node pools, use the `version` attribute on the node pool.
 	NodeVersion pulumi.StringPtrInput
+	// The notification config for sending cluster upgrade notifications
+	NotificationConfig ClusterNotificationConfigPtrInput
 	// Configuration for the
 	// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 	// Structure is documented below.
@@ -1069,8 +1079,8 @@ type ClusterArgs struct {
 	// [Migrating between release channels](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#migrating_between_release_channels)
 	// for more details; the `container.getEngineVersions` datasource can provide
 	// the default version for a channel. Note that removing the `releaseChannel`
-	// field from your config will cause this provider to stop managing your cluster's
-	// release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
+	// field from your config will cause the provider to stop managing your cluster's
+	// release channel, but will not un-enroll it. Instead, use the `"UNSPECIFIED"`
 	// channel. Structure is documented below.
 	ReleaseChannel ClusterReleaseChannelPtrInput
 	// If `true`, deletes the default node

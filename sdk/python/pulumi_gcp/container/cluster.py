@@ -50,6 +50,7 @@ class Cluster(pulumi.CustomResource):
                  node_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  node_pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodePoolArgs']]]]] = None,
                  node_version: Optional[pulumi.Input[str]] = None,
+                 notification_config: Optional[pulumi.Input[pulumi.InputType['ClusterNotificationConfigArgs']]] = None,
                  pod_security_policy_config: Optional[pulumi.Input[pulumi.InputType['ClusterPodSecurityPolicyConfigArgs']]] = None,
                  private_cluster_config: Optional[pulumi.Input[pulumi.InputType['ClusterPrivateClusterConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -194,6 +195,7 @@ class Cluster(pulumi.CustomResource):
                when fuzzy versions are used. See the `container.getEngineVersions` data source's
                `version_prefix` field to approximate fuzzy versions.
                To update nodes in other node pools, use the `version` attribute on the node pool.
+        :param pulumi.Input[pulumi.InputType['ClusterNotificationConfigArgs']] notification_config: The notification config for sending cluster upgrade notifications
         :param pulumi.Input[pulumi.InputType['ClusterPodSecurityPolicyConfigArgs']] pod_security_policy_config: Configuration for the
                [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
                Structure is documented below.
@@ -207,8 +209,8 @@ class Cluster(pulumi.CustomResource):
                [Migrating between release channels](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#migrating_between_release_channels)
                for more details; the `container.getEngineVersions` datasource can provide
                the default version for a channel. Note that removing the `release_channel`
-               field from your config will cause this provider to stop managing your cluster's
-               release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
+               field from your config will cause the provider to stop managing your cluster's
+               release channel, but will not un-enroll it. Instead, use the `"UNSPECIFIED"`
                channel. Structure is documented below.
         :param pulumi.Input[bool] remove_default_node_pool: If `true`, deletes the default node
                pool upon cluster creation. If you're using `container.NodePool`
@@ -276,6 +278,7 @@ class Cluster(pulumi.CustomResource):
             __props__['node_locations'] = node_locations
             __props__['node_pools'] = node_pools
             __props__['node_version'] = node_version
+            __props__['notification_config'] = notification_config
             __props__['pod_security_policy_config'] = pod_security_policy_config
             __props__['private_cluster_config'] = private_cluster_config
             __props__['project'] = project
@@ -341,6 +344,7 @@ class Cluster(pulumi.CustomResource):
             node_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             node_pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodePoolArgs']]]]] = None,
             node_version: Optional[pulumi.Input[str]] = None,
+            notification_config: Optional[pulumi.Input[pulumi.InputType['ClusterNotificationConfigArgs']]] = None,
             operation: Optional[pulumi.Input[str]] = None,
             pod_security_policy_config: Optional[pulumi.Input[pulumi.InputType['ClusterPodSecurityPolicyConfigArgs']]] = None,
             private_cluster_config: Optional[pulumi.Input[pulumi.InputType['ClusterPrivateClusterConfigArgs']]] = None,
@@ -487,6 +491,7 @@ class Cluster(pulumi.CustomResource):
                when fuzzy versions are used. See the `container.getEngineVersions` data source's
                `version_prefix` field to approximate fuzzy versions.
                To update nodes in other node pools, use the `version` attribute on the node pool.
+        :param pulumi.Input[pulumi.InputType['ClusterNotificationConfigArgs']] notification_config: The notification config for sending cluster upgrade notifications
         :param pulumi.Input[pulumi.InputType['ClusterPodSecurityPolicyConfigArgs']] pod_security_policy_config: Configuration for the
                [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
                Structure is documented below.
@@ -500,8 +505,8 @@ class Cluster(pulumi.CustomResource):
                [Migrating between release channels](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#migrating_between_release_channels)
                for more details; the `container.getEngineVersions` datasource can provide
                the default version for a channel. Note that removing the `release_channel`
-               field from your config will cause this provider to stop managing your cluster's
-               release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
+               field from your config will cause the provider to stop managing your cluster's
+               release channel, but will not un-enroll it. Instead, use the `"UNSPECIFIED"`
                channel. Structure is documented below.
         :param pulumi.Input[bool] remove_default_node_pool: If `true`, deletes the default node
                pool upon cluster creation. If you're using `container.NodePool`
@@ -568,6 +573,7 @@ class Cluster(pulumi.CustomResource):
         __props__["node_locations"] = node_locations
         __props__["node_pools"] = node_pools
         __props__["node_version"] = node_version
+        __props__["notification_config"] = notification_config
         __props__["operation"] = operation
         __props__["pod_security_policy_config"] = pod_security_policy_config
         __props__["private_cluster_config"] = private_cluster_config
@@ -969,6 +975,14 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "node_version")
 
     @property
+    @pulumi.getter(name="notificationConfig")
+    def notification_config(self) -> pulumi.Output['outputs.ClusterNotificationConfig']:
+        """
+        The notification config for sending cluster upgrade notifications
+        """
+        return pulumi.get(self, "notification_config")
+
+    @property
     @pulumi.getter
     def operation(self) -> pulumi.Output[str]:
         return pulumi.get(self, "operation")
@@ -1011,8 +1025,8 @@ class Cluster(pulumi.CustomResource):
         [Migrating between release channels](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#migrating_between_release_channels)
         for more details; the `container.getEngineVersions` datasource can provide
         the default version for a channel. Note that removing the `release_channel`
-        field from your config will cause this provider to stop managing your cluster's
-        release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
+        field from your config will cause the provider to stop managing your cluster's
+        release channel, but will not un-enroll it. Instead, use the `"UNSPECIFIED"`
         channel. Structure is documented below.
         """
         return pulumi.get(self, "release_channel")

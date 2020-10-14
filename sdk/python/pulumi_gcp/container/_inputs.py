@@ -55,6 +55,8 @@ __all__ = [
     'ClusterNodePoolNodeConfigTaintArgs',
     'ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs',
     'ClusterNodePoolUpgradeSettingsArgs',
+    'ClusterNotificationConfigArgs',
+    'ClusterNotificationConfigPubsubArgs',
     'ClusterPodSecurityPolicyConfigArgs',
     'ClusterPrivateClusterConfigArgs',
     'ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs',
@@ -2902,6 +2904,58 @@ class ClusterNodePoolUpgradeSettingsArgs:
     @max_unavailable.setter
     def max_unavailable(self, value: pulumi.Input[int]):
         pulumi.set(self, "max_unavailable", value)
+
+
+@pulumi.input_type
+class ClusterNotificationConfigArgs:
+    def __init__(__self__, *,
+                 pubsub: pulumi.Input['ClusterNotificationConfigPubsubArgs']):
+        pulumi.set(__self__, "pubsub", pubsub)
+
+    @property
+    @pulumi.getter
+    def pubsub(self) -> pulumi.Input['ClusterNotificationConfigPubsubArgs']:
+        return pulumi.get(self, "pubsub")
+
+    @pubsub.setter
+    def pubsub(self, value: pulumi.Input['ClusterNotificationConfigPubsubArgs']):
+        pulumi.set(self, "pubsub", value)
+
+
+@pulumi.input_type
+class ClusterNotificationConfigPubsubArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 topic: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Enable the PodSecurityPolicy controller for this cluster.
+               If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if topic is not None:
+            pulumi.set(__self__, "topic", topic)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Enable the PodSecurityPolicy controller for this cluster.
+        If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def topic(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "topic")
+
+    @topic.setter
+    def topic(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "topic", value)
 
 
 @pulumi.input_type

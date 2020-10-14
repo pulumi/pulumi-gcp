@@ -8101,6 +8101,282 @@ func (o ClusterNodePoolUpgradeSettingsPtrOutput) MaxUnavailable() pulumi.IntPtrO
 	}).(pulumi.IntPtrOutput)
 }
 
+type ClusterNotificationConfig struct {
+	Pubsub ClusterNotificationConfigPubsub `pulumi:"pubsub"`
+}
+
+// ClusterNotificationConfigInput is an input type that accepts ClusterNotificationConfigArgs and ClusterNotificationConfigOutput values.
+// You can construct a concrete instance of `ClusterNotificationConfigInput` via:
+//
+//          ClusterNotificationConfigArgs{...}
+type ClusterNotificationConfigInput interface {
+	pulumi.Input
+
+	ToClusterNotificationConfigOutput() ClusterNotificationConfigOutput
+	ToClusterNotificationConfigOutputWithContext(context.Context) ClusterNotificationConfigOutput
+}
+
+type ClusterNotificationConfigArgs struct {
+	Pubsub ClusterNotificationConfigPubsubInput `pulumi:"pubsub"`
+}
+
+func (ClusterNotificationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNotificationConfig)(nil)).Elem()
+}
+
+func (i ClusterNotificationConfigArgs) ToClusterNotificationConfigOutput() ClusterNotificationConfigOutput {
+	return i.ToClusterNotificationConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterNotificationConfigArgs) ToClusterNotificationConfigOutputWithContext(ctx context.Context) ClusterNotificationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNotificationConfigOutput)
+}
+
+func (i ClusterNotificationConfigArgs) ToClusterNotificationConfigPtrOutput() ClusterNotificationConfigPtrOutput {
+	return i.ToClusterNotificationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNotificationConfigArgs) ToClusterNotificationConfigPtrOutputWithContext(ctx context.Context) ClusterNotificationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNotificationConfigOutput).ToClusterNotificationConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterNotificationConfigPtrInput is an input type that accepts ClusterNotificationConfigArgs, ClusterNotificationConfigPtr and ClusterNotificationConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterNotificationConfigPtrInput` via:
+//
+//          ClusterNotificationConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ClusterNotificationConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterNotificationConfigPtrOutput() ClusterNotificationConfigPtrOutput
+	ToClusterNotificationConfigPtrOutputWithContext(context.Context) ClusterNotificationConfigPtrOutput
+}
+
+type clusterNotificationConfigPtrType ClusterNotificationConfigArgs
+
+func ClusterNotificationConfigPtr(v *ClusterNotificationConfigArgs) ClusterNotificationConfigPtrInput {
+	return (*clusterNotificationConfigPtrType)(v)
+}
+
+func (*clusterNotificationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNotificationConfig)(nil)).Elem()
+}
+
+func (i *clusterNotificationConfigPtrType) ToClusterNotificationConfigPtrOutput() ClusterNotificationConfigPtrOutput {
+	return i.ToClusterNotificationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNotificationConfigPtrType) ToClusterNotificationConfigPtrOutputWithContext(ctx context.Context) ClusterNotificationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNotificationConfigPtrOutput)
+}
+
+type ClusterNotificationConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterNotificationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNotificationConfig)(nil)).Elem()
+}
+
+func (o ClusterNotificationConfigOutput) ToClusterNotificationConfigOutput() ClusterNotificationConfigOutput {
+	return o
+}
+
+func (o ClusterNotificationConfigOutput) ToClusterNotificationConfigOutputWithContext(ctx context.Context) ClusterNotificationConfigOutput {
+	return o
+}
+
+func (o ClusterNotificationConfigOutput) ToClusterNotificationConfigPtrOutput() ClusterNotificationConfigPtrOutput {
+	return o.ToClusterNotificationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNotificationConfigOutput) ToClusterNotificationConfigPtrOutputWithContext(ctx context.Context) ClusterNotificationConfigPtrOutput {
+	return o.ApplyT(func(v ClusterNotificationConfig) *ClusterNotificationConfig {
+		return &v
+	}).(ClusterNotificationConfigPtrOutput)
+}
+func (o ClusterNotificationConfigOutput) Pubsub() ClusterNotificationConfigPubsubOutput {
+	return o.ApplyT(func(v ClusterNotificationConfig) ClusterNotificationConfigPubsub { return v.Pubsub }).(ClusterNotificationConfigPubsubOutput)
+}
+
+type ClusterNotificationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNotificationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNotificationConfig)(nil)).Elem()
+}
+
+func (o ClusterNotificationConfigPtrOutput) ToClusterNotificationConfigPtrOutput() ClusterNotificationConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNotificationConfigPtrOutput) ToClusterNotificationConfigPtrOutputWithContext(ctx context.Context) ClusterNotificationConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNotificationConfigPtrOutput) Elem() ClusterNotificationConfigOutput {
+	return o.ApplyT(func(v *ClusterNotificationConfig) ClusterNotificationConfig { return *v }).(ClusterNotificationConfigOutput)
+}
+
+func (o ClusterNotificationConfigPtrOutput) Pubsub() ClusterNotificationConfigPubsubPtrOutput {
+	return o.ApplyT(func(v *ClusterNotificationConfig) *ClusterNotificationConfigPubsub {
+		if v == nil {
+			return nil
+		}
+		return &v.Pubsub
+	}).(ClusterNotificationConfigPubsubPtrOutput)
+}
+
+type ClusterNotificationConfigPubsub struct {
+	// Enable the PodSecurityPolicy controller for this cluster.
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	Enabled bool    `pulumi:"enabled"`
+	Topic   *string `pulumi:"topic"`
+}
+
+// ClusterNotificationConfigPubsubInput is an input type that accepts ClusterNotificationConfigPubsubArgs and ClusterNotificationConfigPubsubOutput values.
+// You can construct a concrete instance of `ClusterNotificationConfigPubsubInput` via:
+//
+//          ClusterNotificationConfigPubsubArgs{...}
+type ClusterNotificationConfigPubsubInput interface {
+	pulumi.Input
+
+	ToClusterNotificationConfigPubsubOutput() ClusterNotificationConfigPubsubOutput
+	ToClusterNotificationConfigPubsubOutputWithContext(context.Context) ClusterNotificationConfigPubsubOutput
+}
+
+type ClusterNotificationConfigPubsubArgs struct {
+	// Enable the PodSecurityPolicy controller for this cluster.
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	Enabled pulumi.BoolInput      `pulumi:"enabled"`
+	Topic   pulumi.StringPtrInput `pulumi:"topic"`
+}
+
+func (ClusterNotificationConfigPubsubArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNotificationConfigPubsub)(nil)).Elem()
+}
+
+func (i ClusterNotificationConfigPubsubArgs) ToClusterNotificationConfigPubsubOutput() ClusterNotificationConfigPubsubOutput {
+	return i.ToClusterNotificationConfigPubsubOutputWithContext(context.Background())
+}
+
+func (i ClusterNotificationConfigPubsubArgs) ToClusterNotificationConfigPubsubOutputWithContext(ctx context.Context) ClusterNotificationConfigPubsubOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNotificationConfigPubsubOutput)
+}
+
+func (i ClusterNotificationConfigPubsubArgs) ToClusterNotificationConfigPubsubPtrOutput() ClusterNotificationConfigPubsubPtrOutput {
+	return i.ToClusterNotificationConfigPubsubPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNotificationConfigPubsubArgs) ToClusterNotificationConfigPubsubPtrOutputWithContext(ctx context.Context) ClusterNotificationConfigPubsubPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNotificationConfigPubsubOutput).ToClusterNotificationConfigPubsubPtrOutputWithContext(ctx)
+}
+
+// ClusterNotificationConfigPubsubPtrInput is an input type that accepts ClusterNotificationConfigPubsubArgs, ClusterNotificationConfigPubsubPtr and ClusterNotificationConfigPubsubPtrOutput values.
+// You can construct a concrete instance of `ClusterNotificationConfigPubsubPtrInput` via:
+//
+//          ClusterNotificationConfigPubsubArgs{...}
+//
+//  or:
+//
+//          nil
+type ClusterNotificationConfigPubsubPtrInput interface {
+	pulumi.Input
+
+	ToClusterNotificationConfigPubsubPtrOutput() ClusterNotificationConfigPubsubPtrOutput
+	ToClusterNotificationConfigPubsubPtrOutputWithContext(context.Context) ClusterNotificationConfigPubsubPtrOutput
+}
+
+type clusterNotificationConfigPubsubPtrType ClusterNotificationConfigPubsubArgs
+
+func ClusterNotificationConfigPubsubPtr(v *ClusterNotificationConfigPubsubArgs) ClusterNotificationConfigPubsubPtrInput {
+	return (*clusterNotificationConfigPubsubPtrType)(v)
+}
+
+func (*clusterNotificationConfigPubsubPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNotificationConfigPubsub)(nil)).Elem()
+}
+
+func (i *clusterNotificationConfigPubsubPtrType) ToClusterNotificationConfigPubsubPtrOutput() ClusterNotificationConfigPubsubPtrOutput {
+	return i.ToClusterNotificationConfigPubsubPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNotificationConfigPubsubPtrType) ToClusterNotificationConfigPubsubPtrOutputWithContext(ctx context.Context) ClusterNotificationConfigPubsubPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNotificationConfigPubsubPtrOutput)
+}
+
+type ClusterNotificationConfigPubsubOutput struct{ *pulumi.OutputState }
+
+func (ClusterNotificationConfigPubsubOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNotificationConfigPubsub)(nil)).Elem()
+}
+
+func (o ClusterNotificationConfigPubsubOutput) ToClusterNotificationConfigPubsubOutput() ClusterNotificationConfigPubsubOutput {
+	return o
+}
+
+func (o ClusterNotificationConfigPubsubOutput) ToClusterNotificationConfigPubsubOutputWithContext(ctx context.Context) ClusterNotificationConfigPubsubOutput {
+	return o
+}
+
+func (o ClusterNotificationConfigPubsubOutput) ToClusterNotificationConfigPubsubPtrOutput() ClusterNotificationConfigPubsubPtrOutput {
+	return o.ToClusterNotificationConfigPubsubPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNotificationConfigPubsubOutput) ToClusterNotificationConfigPubsubPtrOutputWithContext(ctx context.Context) ClusterNotificationConfigPubsubPtrOutput {
+	return o.ApplyT(func(v ClusterNotificationConfigPubsub) *ClusterNotificationConfigPubsub {
+		return &v
+	}).(ClusterNotificationConfigPubsubPtrOutput)
+}
+
+// Enable the PodSecurityPolicy controller for this cluster.
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+func (o ClusterNotificationConfigPubsubOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterNotificationConfigPubsub) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o ClusterNotificationConfigPubsubOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNotificationConfigPubsub) *string { return v.Topic }).(pulumi.StringPtrOutput)
+}
+
+type ClusterNotificationConfigPubsubPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNotificationConfigPubsubPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNotificationConfigPubsub)(nil)).Elem()
+}
+
+func (o ClusterNotificationConfigPubsubPtrOutput) ToClusterNotificationConfigPubsubPtrOutput() ClusterNotificationConfigPubsubPtrOutput {
+	return o
+}
+
+func (o ClusterNotificationConfigPubsubPtrOutput) ToClusterNotificationConfigPubsubPtrOutputWithContext(ctx context.Context) ClusterNotificationConfigPubsubPtrOutput {
+	return o
+}
+
+func (o ClusterNotificationConfigPubsubPtrOutput) Elem() ClusterNotificationConfigPubsubOutput {
+	return o.ApplyT(func(v *ClusterNotificationConfigPubsub) ClusterNotificationConfigPubsub { return *v }).(ClusterNotificationConfigPubsubOutput)
+}
+
+// Enable the PodSecurityPolicy controller for this cluster.
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+func (o ClusterNotificationConfigPubsubPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterNotificationConfigPubsub) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ClusterNotificationConfigPubsubPtrOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNotificationConfigPubsub) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Topic
+	}).(pulumi.StringPtrOutput)
+}
+
 type ClusterPodSecurityPolicyConfig struct {
 	// Enable the PodSecurityPolicy controller for this cluster.
 	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
@@ -16113,6 +16389,200 @@ func (o GetClusterNodePoolUpgradeSettingArrayOutput) Index(i pulumi.IntInput) Ge
 	}).(GetClusterNodePoolUpgradeSettingOutput)
 }
 
+type GetClusterNotificationConfig struct {
+	Pubsubs []GetClusterNotificationConfigPubsub `pulumi:"pubsubs"`
+}
+
+// GetClusterNotificationConfigInput is an input type that accepts GetClusterNotificationConfigArgs and GetClusterNotificationConfigOutput values.
+// You can construct a concrete instance of `GetClusterNotificationConfigInput` via:
+//
+//          GetClusterNotificationConfigArgs{...}
+type GetClusterNotificationConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNotificationConfigOutput() GetClusterNotificationConfigOutput
+	ToGetClusterNotificationConfigOutputWithContext(context.Context) GetClusterNotificationConfigOutput
+}
+
+type GetClusterNotificationConfigArgs struct {
+	Pubsubs GetClusterNotificationConfigPubsubArrayInput `pulumi:"pubsubs"`
+}
+
+func (GetClusterNotificationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNotificationConfig)(nil)).Elem()
+}
+
+func (i GetClusterNotificationConfigArgs) ToGetClusterNotificationConfigOutput() GetClusterNotificationConfigOutput {
+	return i.ToGetClusterNotificationConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNotificationConfigArgs) ToGetClusterNotificationConfigOutputWithContext(ctx context.Context) GetClusterNotificationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNotificationConfigOutput)
+}
+
+// GetClusterNotificationConfigArrayInput is an input type that accepts GetClusterNotificationConfigArray and GetClusterNotificationConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNotificationConfigArrayInput` via:
+//
+//          GetClusterNotificationConfigArray{ GetClusterNotificationConfigArgs{...} }
+type GetClusterNotificationConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNotificationConfigArrayOutput() GetClusterNotificationConfigArrayOutput
+	ToGetClusterNotificationConfigArrayOutputWithContext(context.Context) GetClusterNotificationConfigArrayOutput
+}
+
+type GetClusterNotificationConfigArray []GetClusterNotificationConfigInput
+
+func (GetClusterNotificationConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNotificationConfig)(nil)).Elem()
+}
+
+func (i GetClusterNotificationConfigArray) ToGetClusterNotificationConfigArrayOutput() GetClusterNotificationConfigArrayOutput {
+	return i.ToGetClusterNotificationConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNotificationConfigArray) ToGetClusterNotificationConfigArrayOutputWithContext(ctx context.Context) GetClusterNotificationConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNotificationConfigArrayOutput)
+}
+
+type GetClusterNotificationConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNotificationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNotificationConfig)(nil)).Elem()
+}
+
+func (o GetClusterNotificationConfigOutput) ToGetClusterNotificationConfigOutput() GetClusterNotificationConfigOutput {
+	return o
+}
+
+func (o GetClusterNotificationConfigOutput) ToGetClusterNotificationConfigOutputWithContext(ctx context.Context) GetClusterNotificationConfigOutput {
+	return o
+}
+
+func (o GetClusterNotificationConfigOutput) Pubsubs() GetClusterNotificationConfigPubsubArrayOutput {
+	return o.ApplyT(func(v GetClusterNotificationConfig) []GetClusterNotificationConfigPubsub { return v.Pubsubs }).(GetClusterNotificationConfigPubsubArrayOutput)
+}
+
+type GetClusterNotificationConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNotificationConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNotificationConfig)(nil)).Elem()
+}
+
+func (o GetClusterNotificationConfigArrayOutput) ToGetClusterNotificationConfigArrayOutput() GetClusterNotificationConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNotificationConfigArrayOutput) ToGetClusterNotificationConfigArrayOutputWithContext(ctx context.Context) GetClusterNotificationConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNotificationConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNotificationConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNotificationConfig {
+		return vs[0].([]GetClusterNotificationConfig)[vs[1].(int)]
+	}).(GetClusterNotificationConfigOutput)
+}
+
+type GetClusterNotificationConfigPubsub struct {
+	Enabled bool   `pulumi:"enabled"`
+	Topic   string `pulumi:"topic"`
+}
+
+// GetClusterNotificationConfigPubsubInput is an input type that accepts GetClusterNotificationConfigPubsubArgs and GetClusterNotificationConfigPubsubOutput values.
+// You can construct a concrete instance of `GetClusterNotificationConfigPubsubInput` via:
+//
+//          GetClusterNotificationConfigPubsubArgs{...}
+type GetClusterNotificationConfigPubsubInput interface {
+	pulumi.Input
+
+	ToGetClusterNotificationConfigPubsubOutput() GetClusterNotificationConfigPubsubOutput
+	ToGetClusterNotificationConfigPubsubOutputWithContext(context.Context) GetClusterNotificationConfigPubsubOutput
+}
+
+type GetClusterNotificationConfigPubsubArgs struct {
+	Enabled pulumi.BoolInput   `pulumi:"enabled"`
+	Topic   pulumi.StringInput `pulumi:"topic"`
+}
+
+func (GetClusterNotificationConfigPubsubArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNotificationConfigPubsub)(nil)).Elem()
+}
+
+func (i GetClusterNotificationConfigPubsubArgs) ToGetClusterNotificationConfigPubsubOutput() GetClusterNotificationConfigPubsubOutput {
+	return i.ToGetClusterNotificationConfigPubsubOutputWithContext(context.Background())
+}
+
+func (i GetClusterNotificationConfigPubsubArgs) ToGetClusterNotificationConfigPubsubOutputWithContext(ctx context.Context) GetClusterNotificationConfigPubsubOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNotificationConfigPubsubOutput)
+}
+
+// GetClusterNotificationConfigPubsubArrayInput is an input type that accepts GetClusterNotificationConfigPubsubArray and GetClusterNotificationConfigPubsubArrayOutput values.
+// You can construct a concrete instance of `GetClusterNotificationConfigPubsubArrayInput` via:
+//
+//          GetClusterNotificationConfigPubsubArray{ GetClusterNotificationConfigPubsubArgs{...} }
+type GetClusterNotificationConfigPubsubArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNotificationConfigPubsubArrayOutput() GetClusterNotificationConfigPubsubArrayOutput
+	ToGetClusterNotificationConfigPubsubArrayOutputWithContext(context.Context) GetClusterNotificationConfigPubsubArrayOutput
+}
+
+type GetClusterNotificationConfigPubsubArray []GetClusterNotificationConfigPubsubInput
+
+func (GetClusterNotificationConfigPubsubArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNotificationConfigPubsub)(nil)).Elem()
+}
+
+func (i GetClusterNotificationConfigPubsubArray) ToGetClusterNotificationConfigPubsubArrayOutput() GetClusterNotificationConfigPubsubArrayOutput {
+	return i.ToGetClusterNotificationConfigPubsubArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNotificationConfigPubsubArray) ToGetClusterNotificationConfigPubsubArrayOutputWithContext(ctx context.Context) GetClusterNotificationConfigPubsubArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNotificationConfigPubsubArrayOutput)
+}
+
+type GetClusterNotificationConfigPubsubOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNotificationConfigPubsubOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNotificationConfigPubsub)(nil)).Elem()
+}
+
+func (o GetClusterNotificationConfigPubsubOutput) ToGetClusterNotificationConfigPubsubOutput() GetClusterNotificationConfigPubsubOutput {
+	return o
+}
+
+func (o GetClusterNotificationConfigPubsubOutput) ToGetClusterNotificationConfigPubsubOutputWithContext(ctx context.Context) GetClusterNotificationConfigPubsubOutput {
+	return o
+}
+
+func (o GetClusterNotificationConfigPubsubOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNotificationConfigPubsub) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o GetClusterNotificationConfigPubsubOutput) Topic() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNotificationConfigPubsub) string { return v.Topic }).(pulumi.StringOutput)
+}
+
+type GetClusterNotificationConfigPubsubArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNotificationConfigPubsubArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNotificationConfigPubsub)(nil)).Elem()
+}
+
+func (o GetClusterNotificationConfigPubsubArrayOutput) ToGetClusterNotificationConfigPubsubArrayOutput() GetClusterNotificationConfigPubsubArrayOutput {
+	return o
+}
+
+func (o GetClusterNotificationConfigPubsubArrayOutput) ToGetClusterNotificationConfigPubsubArrayOutputWithContext(ctx context.Context) GetClusterNotificationConfigPubsubArrayOutput {
+	return o
+}
+
+func (o GetClusterNotificationConfigPubsubArrayOutput) Index(i pulumi.IntInput) GetClusterNotificationConfigPubsubOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNotificationConfigPubsub {
+		return vs[0].([]GetClusterNotificationConfigPubsub)[vs[1].(int)]
+	}).(GetClusterNotificationConfigPubsubOutput)
+}
+
 type GetClusterPodSecurityPolicyConfig struct {
 	Enabled bool `pulumi:"enabled"`
 }
@@ -17010,6 +17480,10 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolUpgradeSettingsOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolUpgradeSettingsPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNotificationConfigOutput{})
+	pulumi.RegisterOutputType(ClusterNotificationConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNotificationConfigPubsubOutput{})
+	pulumi.RegisterOutputType(ClusterNotificationConfigPubsubPtrOutput{})
 	pulumi.RegisterOutputType(ClusterPodSecurityPolicyConfigOutput{})
 	pulumi.RegisterOutputType(ClusterPodSecurityPolicyConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterPrivateClusterConfigOutput{})
@@ -17140,6 +17614,10 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigWorkloadMetadataConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolUpgradeSettingOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolUpgradeSettingArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNotificationConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNotificationConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNotificationConfigPubsubOutput{})
+	pulumi.RegisterOutputType(GetClusterNotificationConfigPubsubArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterPodSecurityPolicyConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterPodSecurityPolicyConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterPrivateClusterConfigOutput{})

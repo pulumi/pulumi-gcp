@@ -553,7 +553,8 @@ class Hl7StoreParserConfig(dict):
     def __init__(__self__, *,
                  allow_null_header: Optional[bool] = None,
                  schema: Optional[str] = None,
-                 segment_terminator: Optional[str] = None):
+                 segment_terminator: Optional[str] = None,
+                 version: Optional[str] = None):
         """
         :param bool allow_null_header: Determines whether messages with no header are allowed.
         :param str schema: JSON encoded string for schemas used to parse messages in this
@@ -567,6 +568,8 @@ class Hl7StoreParserConfig(dict):
             pulumi.set(__self__, "schema", schema)
         if segment_terminator is not None:
             pulumi.set(__self__, "segment_terminator", segment_terminator)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter(name="allowNullHeader")
@@ -593,6 +596,11 @@ class Hl7StoreParserConfig(dict):
         A base64-encoded string.
         """
         return pulumi.get(self, "segment_terminator")
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[str]:
+        return pulumi.get(self, "version")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

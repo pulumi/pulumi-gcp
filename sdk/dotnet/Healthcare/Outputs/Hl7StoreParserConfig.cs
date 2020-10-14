@@ -27,6 +27,7 @@ namespace Pulumi.Gcp.Healthcare.Outputs
         /// A base64-encoded string.
         /// </summary>
         public readonly string? SegmentTerminator;
+        public readonly string? Version;
 
         [OutputConstructor]
         private Hl7StoreParserConfig(
@@ -34,11 +35,14 @@ namespace Pulumi.Gcp.Healthcare.Outputs
 
             string? schema,
 
-            string? segmentTerminator)
+            string? segmentTerminator,
+
+            string? version)
         {
             AllowNullHeader = allowNullHeader;
             Schema = schema;
             SegmentTerminator = segmentTerminator;
+            Version = version;
         }
     }
 }

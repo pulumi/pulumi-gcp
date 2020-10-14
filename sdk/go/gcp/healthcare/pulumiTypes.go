@@ -2140,6 +2140,7 @@ type Hl7StoreParserConfig struct {
 	// Byte(s) to be used as the segment terminator. If this is unset, '\r' will be used as segment terminator.
 	// A base64-encoded string.
 	SegmentTerminator *string `pulumi:"segmentTerminator"`
+	Version           *string `pulumi:"version"`
 }
 
 // Hl7StoreParserConfigInput is an input type that accepts Hl7StoreParserConfigArgs and Hl7StoreParserConfigOutput values.
@@ -2162,6 +2163,7 @@ type Hl7StoreParserConfigArgs struct {
 	// Byte(s) to be used as the segment terminator. If this is unset, '\r' will be used as segment terminator.
 	// A base64-encoded string.
 	SegmentTerminator pulumi.StringPtrInput `pulumi:"segmentTerminator"`
+	Version           pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (Hl7StoreParserConfigArgs) ElementType() reflect.Type {
@@ -2258,6 +2260,10 @@ func (o Hl7StoreParserConfigOutput) SegmentTerminator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Hl7StoreParserConfig) *string { return v.SegmentTerminator }).(pulumi.StringPtrOutput)
 }
 
+func (o Hl7StoreParserConfigOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Hl7StoreParserConfig) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 type Hl7StoreParserConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (Hl7StoreParserConfigPtrOutput) ElementType() reflect.Type {
@@ -2305,6 +2311,15 @@ func (o Hl7StoreParserConfigPtrOutput) SegmentTerminator() pulumi.StringPtrOutpu
 			return nil
 		}
 		return v.SegmentTerminator
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o Hl7StoreParserConfigPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Hl7StoreParserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
 	}).(pulumi.StringPtrOutput)
 }
 

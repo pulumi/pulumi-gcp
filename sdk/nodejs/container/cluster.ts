@@ -281,6 +281,10 @@ export class Cluster extends pulumi.CustomResource {
      * To update nodes in other node pools, use the `version` attribute on the node pool.
      */
     public readonly nodeVersion!: pulumi.Output<string>;
+    /**
+     * The notification config for sending cluster upgrade notifications
+     */
+    public readonly notificationConfig!: pulumi.Output<outputs.container.ClusterNotificationConfig>;
     public /*out*/ readonly operation!: pulumi.Output<string>;
     /**
      * Configuration for the
@@ -305,8 +309,8 @@ export class Cluster extends pulumi.CustomResource {
      * [Migrating between release channels](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#migrating_between_release_channels)
      * for more details; the `gcp.container.getEngineVersions` datasource can provide
      * the default version for a channel. Note that removing the `releaseChannel`
-     * field from your config will cause this provider to stop managing your cluster's
-     * release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
+     * field from your config will cause the provider to stop managing your cluster's
+     * release channel, but will not un-enroll it. Instead, use the `"UNSPECIFIED"`
      * channel. Structure is documented below.
      */
     public readonly releaseChannel!: pulumi.Output<outputs.container.ClusterReleaseChannel>;
@@ -410,6 +414,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["nodeLocations"] = state ? state.nodeLocations : undefined;
             inputs["nodePools"] = state ? state.nodePools : undefined;
             inputs["nodeVersion"] = state ? state.nodeVersion : undefined;
+            inputs["notificationConfig"] = state ? state.notificationConfig : undefined;
             inputs["operation"] = state ? state.operation : undefined;
             inputs["podSecurityPolicyConfig"] = state ? state.podSecurityPolicyConfig : undefined;
             inputs["privateClusterConfig"] = state ? state.privateClusterConfig : undefined;
@@ -459,6 +464,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["nodeLocations"] = args ? args.nodeLocations : undefined;
             inputs["nodePools"] = args ? args.nodePools : undefined;
             inputs["nodeVersion"] = args ? args.nodeVersion : undefined;
+            inputs["notificationConfig"] = args ? args.notificationConfig : undefined;
             inputs["podSecurityPolicyConfig"] = args ? args.podSecurityPolicyConfig : undefined;
             inputs["privateClusterConfig"] = args ? args.privateClusterConfig : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -729,6 +735,10 @@ export interface ClusterState {
      * To update nodes in other node pools, use the `version` attribute on the node pool.
      */
     readonly nodeVersion?: pulumi.Input<string>;
+    /**
+     * The notification config for sending cluster upgrade notifications
+     */
+    readonly notificationConfig?: pulumi.Input<inputs.container.ClusterNotificationConfig>;
     readonly operation?: pulumi.Input<string>;
     /**
      * Configuration for the
@@ -753,8 +763,8 @@ export interface ClusterState {
      * [Migrating between release channels](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#migrating_between_release_channels)
      * for more details; the `gcp.container.getEngineVersions` datasource can provide
      * the default version for a channel. Note that removing the `releaseChannel`
-     * field from your config will cause this provider to stop managing your cluster's
-     * release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
+     * field from your config will cause the provider to stop managing your cluster's
+     * release channel, but will not un-enroll it. Instead, use the `"UNSPECIFIED"`
      * channel. Structure is documented below.
      */
     readonly releaseChannel?: pulumi.Input<inputs.container.ClusterReleaseChannel>;
@@ -1032,6 +1042,10 @@ export interface ClusterArgs {
      */
     readonly nodeVersion?: pulumi.Input<string>;
     /**
+     * The notification config for sending cluster upgrade notifications
+     */
+    readonly notificationConfig?: pulumi.Input<inputs.container.ClusterNotificationConfig>;
+    /**
      * Configuration for the
      * [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
      * Structure is documented below.
@@ -1054,8 +1068,8 @@ export interface ClusterArgs {
      * [Migrating between release channels](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#migrating_between_release_channels)
      * for more details; the `gcp.container.getEngineVersions` datasource can provide
      * the default version for a channel. Note that removing the `releaseChannel`
-     * field from your config will cause this provider to stop managing your cluster's
-     * release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
+     * field from your config will cause the provider to stop managing your cluster's
+     * release channel, but will not un-enroll it. Instead, use the `"UNSPECIFIED"`
      * channel. Structure is documented below.
      */
     readonly releaseChannel?: pulumi.Input<inputs.container.ClusterReleaseChannel>;

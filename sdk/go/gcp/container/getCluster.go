@@ -71,6 +71,7 @@ type LookupClusterResult struct {
 	NodeLocations                   []string                                   `pulumi:"nodeLocations"`
 	NodePools                       []GetClusterNodePool                       `pulumi:"nodePools"`
 	NodeVersion                     string                                     `pulumi:"nodeVersion"`
+	NotificationConfigs             []GetClusterNotificationConfig             `pulumi:"notificationConfigs"`
 	Operation                       string                                     `pulumi:"operation"`
 	PodSecurityPolicyConfigs        []GetClusterPodSecurityPolicyConfig        `pulumi:"podSecurityPolicyConfigs"`
 	PrivateClusterConfigs           []GetClusterPrivateClusterConfig           `pulumi:"privateClusterConfigs"`

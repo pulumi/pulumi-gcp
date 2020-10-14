@@ -14019,7 +14019,8 @@ type InstanceNetworkInterface struct {
 	NetworkIp *string `pulumi:"networkIp"`
 	// The name or selfLink of the subnetwork to attach this
 	// interface to. The subnetwork must exist in the same region this instance will be
-	// created in. Either `network` or `subnetwork` must be provided.
+	// created in. If network isn't provided it will be inferred from the subnetwork.
+	// Either `network` or `subnetwork` must be provided.
 	Subnetwork *string `pulumi:"subnetwork"`
 	// The project in which the subnetwork belongs.
 	// If the `subnetwork` is a self_link, this field is ignored in favor of the project
@@ -14062,7 +14063,8 @@ type InstanceNetworkInterfaceArgs struct {
 	NetworkIp pulumi.StringPtrInput `pulumi:"networkIp"`
 	// The name or selfLink of the subnetwork to attach this
 	// interface to. The subnetwork must exist in the same region this instance will be
-	// created in. Either `network` or `subnetwork` must be provided.
+	// created in. If network isn't provided it will be inferred from the subnetwork.
+	// Either `network` or `subnetwork` must be provided.
 	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
 	// The project in which the subnetwork belongs.
 	// If the `subnetwork` is a self_link, this field is ignored in favor of the project
@@ -14159,7 +14161,8 @@ func (o InstanceNetworkInterfaceOutput) NetworkIp() pulumi.StringPtrOutput {
 
 // The name or selfLink of the subnetwork to attach this
 // interface to. The subnetwork must exist in the same region this instance will be
-// created in. Either `network` or `subnetwork` must be provided.
+// created in. If network isn't provided it will be inferred from the subnetwork.
+// Either `network` or `subnetwork` must be provided.
 func (o InstanceNetworkInterfaceOutput) Subnetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceNetworkInterface) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
 }

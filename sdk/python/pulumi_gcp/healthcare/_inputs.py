@@ -647,7 +647,8 @@ class Hl7StoreParserConfigArgs:
     def __init__(__self__, *,
                  allow_null_header: Optional[pulumi.Input[bool]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
-                 segment_terminator: Optional[pulumi.Input[str]] = None):
+                 segment_terminator: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] allow_null_header: Determines whether messages with no header are allowed.
         :param pulumi.Input[str] schema: JSON encoded string for schemas used to parse messages in this
@@ -661,6 +662,8 @@ class Hl7StoreParserConfigArgs:
             pulumi.set(__self__, "schema", schema)
         if segment_terminator is not None:
             pulumi.set(__self__, "segment_terminator", segment_terminator)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter(name="allowNullHeader")
@@ -699,5 +702,14 @@ class Hl7StoreParserConfigArgs:
     @segment_terminator.setter
     def segment_terminator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "segment_terminator", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
 
 

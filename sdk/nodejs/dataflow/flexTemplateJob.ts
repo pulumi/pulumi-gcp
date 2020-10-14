@@ -97,6 +97,10 @@ export class FlexTemplateJob extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The region in which the created job should run.
+     */
+    public readonly region!: pulumi.Output<string>;
+    /**
      * The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
@@ -120,6 +124,7 @@ export class FlexTemplateJob extends pulumi.CustomResource {
             inputs["onDelete"] = state ? state.onDelete : undefined;
             inputs["parameters"] = state ? state.parameters : undefined;
             inputs["project"] = state ? state.project : undefined;
+            inputs["region"] = state ? state.region : undefined;
             inputs["state"] = state ? state.state : undefined;
         } else {
             const args = argsOrState as FlexTemplateJobArgs | undefined;
@@ -132,6 +137,7 @@ export class FlexTemplateJob extends pulumi.CustomResource {
             inputs["onDelete"] = args ? args.onDelete : undefined;
             inputs["parameters"] = args ? args.parameters : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["region"] = args ? args.region : undefined;
             inputs["jobId"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
         }
@@ -187,6 +193,10 @@ export interface FlexTemplateJobState {
      */
     readonly project?: pulumi.Input<string>;
     /**
+     * The region in which the created job should run.
+     */
+    readonly region?: pulumi.Input<string>;
+    /**
      * The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
      */
     readonly state?: pulumi.Input<string>;
@@ -228,4 +238,8 @@ export interface FlexTemplateJobArgs {
      * provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The region in which the created job should run.
+     */
+    readonly region?: pulumi.Input<string>;
 }
