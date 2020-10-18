@@ -5,6 +5,8 @@ CHANGELOG
 * Upgrade to v3.43.0 of the Google Beta Terraform Provider
 * Upgrade to pulumi-terraform-bridge v2.11.0
 * Upgrade to Pulumi v2.10.2
+* Upgrade to Pulumi v2.12.0 and pulumi-terraform-bridge v2.11.0
+* Upgrade to Pulumi v2.12.0 and pulumi-terraform-bridge v2.11.0
 
 ---
 
