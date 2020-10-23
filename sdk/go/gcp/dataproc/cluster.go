@@ -23,6 +23,9 @@ type Cluster struct {
 	// Allows you to configure various aspects of the cluster.
 	// Structure defined below.
 	ClusterConfig ClusterClusterConfigOutput `pulumi:"clusterConfig"`
+	// The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
+	// terraform apply
+	GracefulDecommissionTimeout pulumi.StringPtrOutput `pulumi:"gracefulDecommissionTimeout"`
 	// The list of labels (key/value pairs) to be applied to
 	// instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
 	// which is the name of the cluster.
@@ -69,6 +72,9 @@ type clusterState struct {
 	// Allows you to configure various aspects of the cluster.
 	// Structure defined below.
 	ClusterConfig *ClusterClusterConfig `pulumi:"clusterConfig"`
+	// The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
+	// terraform apply
+	GracefulDecommissionTimeout *string `pulumi:"gracefulDecommissionTimeout"`
 	// The list of labels (key/value pairs) to be applied to
 	// instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
 	// which is the name of the cluster.
@@ -88,6 +94,9 @@ type ClusterState struct {
 	// Allows you to configure various aspects of the cluster.
 	// Structure defined below.
 	ClusterConfig ClusterClusterConfigPtrInput
+	// The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
+	// terraform apply
+	GracefulDecommissionTimeout pulumi.StringPtrInput
 	// The list of labels (key/value pairs) to be applied to
 	// instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
 	// which is the name of the cluster.
@@ -111,6 +120,9 @@ type clusterArgs struct {
 	// Allows you to configure various aspects of the cluster.
 	// Structure defined below.
 	ClusterConfig *ClusterClusterConfig `pulumi:"clusterConfig"`
+	// The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
+	// terraform apply
+	GracefulDecommissionTimeout *string `pulumi:"gracefulDecommissionTimeout"`
 	// The list of labels (key/value pairs) to be applied to
 	// instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
 	// which is the name of the cluster.
@@ -131,6 +143,9 @@ type ClusterArgs struct {
 	// Allows you to configure various aspects of the cluster.
 	// Structure defined below.
 	ClusterConfig ClusterClusterConfigPtrInput
+	// The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
+	// terraform apply
+	GracefulDecommissionTimeout pulumi.StringPtrInput
 	// The list of labels (key/value pairs) to be applied to
 	// instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
 	// which is the name of the cluster.

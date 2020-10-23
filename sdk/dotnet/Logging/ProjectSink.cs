@@ -48,15 +48,20 @@ namespace Pulumi.Gcp.Logging
         public Output<string> Destination { get; private set; } = null!;
 
         /// <summary>
-        /// The filter to apply when exporting logs. Only log entries that match the filter are exported.
-        /// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+        /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusion_filters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+        /// </summary>
+        [Output("exclusions")]
+        public Output<ImmutableArray<Outputs.ProjectSinkExclusion>> Exclusions { get; private set; } = null!;
+
+        /// <summary>
+        /// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
         /// write a filter.
         /// </summary>
         [Output("filter")]
         public Output<string?> Filter { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the logging sink.
+        /// A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -155,16 +160,27 @@ namespace Pulumi.Gcp.Logging
         [Input("destination", required: true)]
         public Input<string> Destination { get; set; } = null!;
 
+        [Input("exclusions")]
+        private InputList<Inputs.ProjectSinkExclusionArgs>? _exclusions;
+
         /// <summary>
-        /// The filter to apply when exporting logs. Only log entries that match the filter are exported.
-        /// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+        /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusion_filters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ProjectSinkExclusionArgs> Exclusions
+        {
+            get => _exclusions ?? (_exclusions = new InputList<Inputs.ProjectSinkExclusionArgs>());
+            set => _exclusions = value;
+        }
+
+        /// <summary>
+        /// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
         /// write a filter.
         /// </summary>
         [Input("filter")]
         public Input<string>? Filter { get; set; }
 
         /// <summary>
-        /// The name of the logging sink.
+        /// A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -217,16 +233,27 @@ namespace Pulumi.Gcp.Logging
         [Input("destination")]
         public Input<string>? Destination { get; set; }
 
+        [Input("exclusions")]
+        private InputList<Inputs.ProjectSinkExclusionGetArgs>? _exclusions;
+
         /// <summary>
-        /// The filter to apply when exporting logs. Only log entries that match the filter are exported.
-        /// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+        /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusion_filters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ProjectSinkExclusionGetArgs> Exclusions
+        {
+            get => _exclusions ?? (_exclusions = new InputList<Inputs.ProjectSinkExclusionGetArgs>());
+            set => _exclusions = value;
+        }
+
+        /// <summary>
+        /// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
         /// write a filter.
         /// </summary>
         [Input("filter")]
         public Input<string>? Filter { get; set; }
 
         /// <summary>
-        /// The name of the logging sink.
+        /// A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

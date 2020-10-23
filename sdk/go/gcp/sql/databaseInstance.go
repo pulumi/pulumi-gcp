@@ -10,37 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Creates a new Google SQL Database Instance. For more information, see the [official documentation](https://cloud.google.com/sql/),
-// or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/instances).
-//
-// > **NOTE on `sql.DatabaseInstance`:** - First-generation instances have been
-// deprecated and should no longer be created, see [upgrade docs](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-// for more details.
-// To upgrade your First-generation instance, update your config that the instance has
-// * `settings.ip_configuration.ipv4_enabled=true`
-// * `settings.backup_configuration.enabled=true`
-// * `settings.backup_configuration.binary_log_enabled=true`.\
-//   Apply the config, then upgrade the instance in the console as described in the documentation.
-//   Once upgraded, update the following attributes in your config to the correct value according to
-//   the above documentation:
-// * `region`
-// * `databaseVersion` (if applicable)
-// * `tier`\
-//   Remove any fields that are not applicable to Second-generation instances:
-// * `settings.crash_safe_replication`
-// * `settings.replication_type`
-// * `settings.authorized_gae_applications`
-//   And change values to appropriate values for Second-generation instances for:
-// * `activationPolicy` ("ON_DEMAND" is no longer an option)
-// * `pricingPlan` ("PER_USE" is now the only valid option)
-//   Change `settings.backup_configuration.enabled` attribute back to its desired value and apply as necessary.
-//
-// > **NOTE on `sql.DatabaseInstance`:** - Second-generation instances include a
-// default 'root'@'%' user with no password. This user will be deleted by the provider on
-// instance creation. You should use `sql.User` to define a custom user with
-// a restricted host and strong password.
-//
-// ## Example Usage
 type DatabaseInstance struct {
 	pulumi.CustomResourceState
 
@@ -54,6 +23,8 @@ type DatabaseInstance struct {
 	// [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
 	// includes an up-to-date reference of supported versions.
 	DatabaseVersion pulumi.StringPtrOutput `pulumi:"databaseVersion"`
+	// Used to block Terraform from deleting a SQL Instance.
+	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// The full path to the encryption key used for the CMEK disk encryption.  Setting
 	// up disk encryption currently requires manual steps outside of this provider.
 	// The provided key must be in the same region as the SQL instance.  In order
@@ -143,6 +114,8 @@ type databaseInstanceState struct {
 	// [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
 	// includes an up-to-date reference of supported versions.
 	DatabaseVersion *string `pulumi:"databaseVersion"`
+	// Used to block Terraform from deleting a SQL Instance.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The full path to the encryption key used for the CMEK disk encryption.  Setting
 	// up disk encryption currently requires manual steps outside of this provider.
 	// The provided key must be in the same region as the SQL instance.  In order
@@ -202,6 +175,8 @@ type DatabaseInstanceState struct {
 	// [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
 	// includes an up-to-date reference of supported versions.
 	DatabaseVersion pulumi.StringPtrInput
+	// Used to block Terraform from deleting a SQL Instance.
+	DeletionProtection pulumi.BoolPtrInput
 	// The full path to the encryption key used for the CMEK disk encryption.  Setting
 	// up disk encryption currently requires manual steps outside of this provider.
 	// The provided key must be in the same region as the SQL instance.  In order
@@ -262,6 +237,8 @@ type databaseInstanceArgs struct {
 	// [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
 	// includes an up-to-date reference of supported versions.
 	DatabaseVersion *string `pulumi:"databaseVersion"`
+	// Used to block Terraform from deleting a SQL Instance.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The full path to the encryption key used for the CMEK disk encryption.  Setting
 	// up disk encryption currently requires manual steps outside of this provider.
 	// The provided key must be in the same region as the SQL instance.  In order
@@ -306,6 +283,8 @@ type DatabaseInstanceArgs struct {
 	// [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
 	// includes an up-to-date reference of supported versions.
 	DatabaseVersion pulumi.StringPtrInput
+	// Used to block Terraform from deleting a SQL Instance.
+	DeletionProtection pulumi.BoolPtrInput
 	// The full path to the encryption key used for the CMEK disk encryption.  Setting
 	// up disk encryption currently requires manual steps outside of this provider.
 	// The provided key must be in the same region as the SQL instance.  In order

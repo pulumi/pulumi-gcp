@@ -29,6 +29,13 @@ namespace Pulumi.Gcp.Dataproc
         public Output<Outputs.ClusterClusterConfig> ClusterConfig { get; private set; } = null!;
 
         /// <summary>
+        /// The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
+        /// terraform apply
+        /// </summary>
+        [Output("gracefulDecommissionTimeout")]
+        public Output<string?> GracefulDecommissionTimeout { get; private set; } = null!;
+
+        /// <summary>
         /// The list of labels (key/value pairs) to be applied to
         /// instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
         /// which is the name of the cluster.
@@ -110,6 +117,13 @@ namespace Pulumi.Gcp.Dataproc
         [Input("clusterConfig")]
         public Input<Inputs.ClusterClusterConfigArgs>? ClusterConfig { get; set; }
 
+        /// <summary>
+        /// The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
+        /// terraform apply
+        /// </summary>
+        [Input("gracefulDecommissionTimeout")]
+        public Input<string>? GracefulDecommissionTimeout { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -158,6 +172,13 @@ namespace Pulumi.Gcp.Dataproc
         /// </summary>
         [Input("clusterConfig")]
         public Input<Inputs.ClusterClusterConfigGetArgs>? ClusterConfig { get; set; }
+
+        /// <summary>
+        /// The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
+        /// terraform apply
+        /// </summary>
+        [Input("gracefulDecommissionTimeout")]
+        public Input<string>? GracefulDecommissionTimeout { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

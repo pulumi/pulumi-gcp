@@ -35,8 +35,8 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public Input<bool>? RequirePartitionFilter { get; set; }
 
         /// <summary>
-        /// The only type supported is DAY, which will generate
-        /// one partition per day based on data loading time.
+        /// The supported types are DAY, HOUR, MONTH, and YEAR,
+        /// which will generate one partition per day, hour, month, and year, respectively.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

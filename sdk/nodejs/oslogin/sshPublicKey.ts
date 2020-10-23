@@ -56,6 +56,10 @@ export class SshPublicKey extends pulumi.CustomResource {
      */
     public readonly key!: pulumi.Output<string>;
     /**
+     * The project ID of the Google Cloud Platform project.
+     */
+    public readonly project!: pulumi.Output<string | undefined>;
+    /**
      * The user email.
      */
     public readonly user!: pulumi.Output<string>;
@@ -75,6 +79,7 @@ export class SshPublicKey extends pulumi.CustomResource {
             inputs["expirationTimeUsec"] = state ? state.expirationTimeUsec : undefined;
             inputs["fingerprint"] = state ? state.fingerprint : undefined;
             inputs["key"] = state ? state.key : undefined;
+            inputs["project"] = state ? state.project : undefined;
             inputs["user"] = state ? state.user : undefined;
         } else {
             const args = argsOrState as SshPublicKeyArgs | undefined;
@@ -86,6 +91,7 @@ export class SshPublicKey extends pulumi.CustomResource {
             }
             inputs["expirationTimeUsec"] = args ? args.expirationTimeUsec : undefined;
             inputs["key"] = args ? args.key : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["user"] = args ? args.user : undefined;
             inputs["fingerprint"] = undefined /*out*/;
         }
@@ -117,6 +123,10 @@ export interface SshPublicKeyState {
      */
     readonly key?: pulumi.Input<string>;
     /**
+     * The project ID of the Google Cloud Platform project.
+     */
+    readonly project?: pulumi.Input<string>;
+    /**
      * The user email.
      */
     readonly user?: pulumi.Input<string>;
@@ -134,6 +144,10 @@ export interface SshPublicKeyArgs {
      * Public key text in SSH format, defined by RFC4253 section 6.6.
      */
     readonly key: pulumi.Input<string>;
+    /**
+     * The project ID of the Google Cloud Platform project.
+     */
+    readonly project?: pulumi.Input<string>;
     /**
      * The user email.
      */

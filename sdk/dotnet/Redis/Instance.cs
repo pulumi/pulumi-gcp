@@ -32,6 +32,13 @@ namespace Pulumi.Gcp.Redis
         public Output<string> AlternativeLocationId { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Indicates whether OSS Redis AUTH is enabled for the instance. If set to "true" AUTH is enabled on the
+        /// instance. Default value is "false" meaning AUTH is disabled.
+        /// </summary>
+        [Output("authEnabled")]
+        public Output<bool?> AuthEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// The full name of the Google Compute Engine network to which the
         /// instance is connected. If left unspecified, the default network
         /// will be used.
@@ -222,6 +229,13 @@ namespace Pulumi.Gcp.Redis
         public Input<string>? AlternativeLocationId { get; set; }
 
         /// <summary>
+        /// Optional. Indicates whether OSS Redis AUTH is enabled for the instance. If set to "true" AUTH is enabled on the
+        /// instance. Default value is "false" meaning AUTH is disabled.
+        /// </summary>
+        [Input("authEnabled")]
+        public Input<bool>? AuthEnabled { get; set; }
+
+        /// <summary>
         /// The full name of the Google Compute Engine network to which the
         /// instance is connected. If left unspecified, the default network
         /// will be used.
@@ -349,6 +363,13 @@ namespace Pulumi.Gcp.Redis
         /// </summary>
         [Input("alternativeLocationId")]
         public Input<string>? AlternativeLocationId { get; set; }
+
+        /// <summary>
+        /// Optional. Indicates whether OSS Redis AUTH is enabled for the instance. If set to "true" AUTH is enabled on the
+        /// instance. Default value is "false" meaning AUTH is disabled.
+        /// </summary>
+        [Input("authEnabled")]
+        public Input<bool>? AuthEnabled { get; set; }
 
         /// <summary>
         /// The full name of the Google Compute Engine network to which the

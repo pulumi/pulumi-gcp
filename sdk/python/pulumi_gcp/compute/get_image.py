@@ -19,7 +19,7 @@ class GetImageResult:
     """
     A collection of values returned by getImage.
     """
-    def __init__(__self__, archive_size_bytes=None, creation_timestamp=None, description=None, disk_size_gb=None, family=None, id=None, image_encryption_key_sha256=None, image_id=None, label_fingerprint=None, labels=None, licenses=None, name=None, project=None, self_link=None, source_disk=None, source_disk_encryption_key_sha256=None, source_disk_id=None, source_image_id=None, status=None):
+    def __init__(__self__, archive_size_bytes=None, creation_timestamp=None, description=None, disk_size_gb=None, family=None, filter=None, id=None, image_encryption_key_sha256=None, image_id=None, label_fingerprint=None, labels=None, licenses=None, name=None, project=None, self_link=None, source_disk=None, source_disk_encryption_key_sha256=None, source_disk_id=None, source_image_id=None, status=None):
         if archive_size_bytes and not isinstance(archive_size_bytes, int):
             raise TypeError("Expected argument 'archive_size_bytes' to be a int")
         pulumi.set(__self__, "archive_size_bytes", archive_size_bytes)
@@ -35,6 +35,9 @@ class GetImageResult:
         if family and not isinstance(family, str):
             raise TypeError("Expected argument 'family' to be a str")
         pulumi.set(__self__, "family", family)
+        if filter and not isinstance(filter, str):
+            raise TypeError("Expected argument 'filter' to be a str")
+        pulumi.set(__self__, "filter", filter)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -117,6 +120,11 @@ class GetImageResult:
         The family name of the image.
         """
         return pulumi.get(self, "family")
+
+    @property
+    @pulumi.getter
+    def filter(self) -> Optional[str]:
+        return pulumi.get(self, "filter")
 
     @property
     @pulumi.getter
@@ -243,6 +251,7 @@ class AwaitableGetImageResult(GetImageResult):
             description=self.description,
             disk_size_gb=self.disk_size_gb,
             family=self.family,
+            filter=self.filter,
             id=self.id,
             image_encryption_key_sha256=self.image_encryption_key_sha256,
             image_id=self.image_id,
@@ -260,6 +269,7 @@ class AwaitableGetImageResult(GetImageResult):
 
 
 def get_image(family: Optional[str] = None,
+              filter: Optional[str] = None,
               name: Optional[str] = None,
               project: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetImageResult:
@@ -269,16 +279,14 @@ def get_image(family: Optional[str] = None,
 
 
     :param str family: The family name of the image.
-    :param str name: or `family` - (Required) The name of a specific image or a family.
-           Exactly one of `name` of `family` must be specified. If `name` is specified, it will fetch
-           the corresponding image. If `family` is specified, it will returns the latest image
-           that is part of an image family and is not deprecated.
+    :param str name: The name of the image.
     :param str project: The project in which the resource belongs. If it is not
            provided, the provider project is used. If you are using a
            [public base image][pubimg], be sure to specify the correct Image Project.
     """
     __args__ = dict()
     __args__['family'] = family
+    __args__['filter'] = filter
     __args__['name'] = name
     __args__['project'] = project
     if opts is None:
@@ -293,6 +301,7 @@ def get_image(family: Optional[str] = None,
         description=__ret__.description,
         disk_size_gb=__ret__.disk_size_gb,
         family=__ret__.family,
+        filter=__ret__.filter,
         id=__ret__.id,
         image_encryption_key_sha256=__ret__.image_encryption_key_sha256,
         image_id=__ret__.image_id,

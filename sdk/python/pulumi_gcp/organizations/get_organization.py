@@ -124,11 +124,11 @@ def get_organization(domain: Optional[str] = None,
                      organization: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOrganizationResult:
     """
-    Use this data source to get information about a Google Cloud Organization.
+    Get information about a Google Cloud Organization. Note that you must have the `roles/resourcemanager.organizationViewer` role (or equivalent permissions) at the organization level to use this datasource.
 
 
     :param str domain: The domain name of the Organization.
-    :param str organization: The name of the Organization in the form `{organization_id}` or `organizations/{organization_id}`.
+    :param str organization: The Organization's numeric ID, including an optional `organizations/` prefix.
     """
     __args__ = dict()
     __args__['domain'] = domain

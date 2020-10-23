@@ -7,9 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Get information about a Google Cloud Redis instance. For more information see
- * the [official documentation](https://cloud.google.com/memorystore/docs/redis)
- * and [API](https://cloud.google.com/memorystore/docs/redis/apis).
+ * Get info about a Google Cloud Redis instance.
  */
 export function getInstance(args: GetInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceResult> {
     if (!opts) {
@@ -51,15 +49,12 @@ export interface GetInstanceArgs {
  */
 export interface GetInstanceResult {
     readonly alternativeLocationId: string;
+    readonly authEnabled: boolean;
     readonly authorizedNetwork: string;
     readonly connectMode: string;
     readonly createTime: string;
     readonly currentLocationId: string;
     readonly displayName: string;
-    /**
-     * Hostname or IP address of the exposed Redis endpoint used by clients
-     * to connect to the service.
-     */
     readonly host: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -70,9 +65,6 @@ export interface GetInstanceResult {
     readonly memorySizeGb: number;
     readonly name: string;
     readonly persistenceIamIdentity: string;
-    /**
-     * The port number of the exposed Redis endpoint.
-     */
     readonly port: number;
     readonly project?: string;
     readonly redisConfigs: {[key: string]: string};

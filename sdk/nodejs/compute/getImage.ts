@@ -21,6 +21,7 @@ export function getImage(args?: GetImageArgs, opts?: pulumi.InvokeOptions): Prom
     }
     return pulumi.runtime.invoke("gcp:compute/getImage:getImage", {
         "family": args.family,
+        "filter": args.filter,
         "name": args.name,
         "project": args.project,
     }, opts);
@@ -34,11 +35,9 @@ export interface GetImageArgs {
      * The family name of the image.
      */
     readonly family?: string;
+    readonly filter?: string;
     /**
-     * or `family` - (Required) The name of a specific image or a family.
-     * Exactly one of `name` of `family` must be specified. If `name` is specified, it will fetch
-     * the corresponding image. If `family` is specified, it will returns the latest image
-     * that is part of an image family and is not deprecated.
+     * The name of the image.
      */
     readonly name?: string;
     /**
@@ -73,6 +72,7 @@ export interface GetImageResult {
      * The family name of the image.
      */
     readonly family: string;
+    readonly filter?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */

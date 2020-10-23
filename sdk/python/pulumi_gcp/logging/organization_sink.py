@@ -19,6 +19,7 @@ class OrganizationSink(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bigquery_options: Optional[pulumi.Input[pulumi.InputType['OrganizationSinkBigqueryOptionsArgs']]] = None,
                  destination: Optional[pulumi.Input[str]] = None,
+                 exclusions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OrganizationSinkExclusionArgs']]]]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  include_children: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -39,6 +40,8 @@ class OrganizationSink(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['OrganizationSinkBigqueryOptionsArgs']] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
         :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a
                Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OrganizationSinkExclusionArgs']]]] exclusions: Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
+               one of exclusion_filters it will not be exported.
         :param pulumi.Input[str] filter: The filter to apply when exporting logs. Only log entries that match the filter are exported.
                See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.
@@ -68,6 +71,7 @@ class OrganizationSink(pulumi.CustomResource):
             if destination is None:
                 raise TypeError("Missing required property 'destination'")
             __props__['destination'] = destination
+            __props__['exclusions'] = exclusions
             __props__['filter'] = filter
             __props__['include_children'] = include_children
             __props__['name'] = name
@@ -87,6 +91,7 @@ class OrganizationSink(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             bigquery_options: Optional[pulumi.Input[pulumi.InputType['OrganizationSinkBigqueryOptionsArgs']]] = None,
             destination: Optional[pulumi.Input[str]] = None,
+            exclusions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OrganizationSinkExclusionArgs']]]]] = None,
             filter: Optional[pulumi.Input[str]] = None,
             include_children: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -102,6 +107,8 @@ class OrganizationSink(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['OrganizationSinkBigqueryOptionsArgs']] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
         :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a
                Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OrganizationSinkExclusionArgs']]]] exclusions: Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
+               one of exclusion_filters it will not be exported.
         :param pulumi.Input[str] filter: The filter to apply when exporting logs. Only log entries that match the filter are exported.
                See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.
@@ -118,6 +125,7 @@ class OrganizationSink(pulumi.CustomResource):
 
         __props__["bigquery_options"] = bigquery_options
         __props__["destination"] = destination
+        __props__["exclusions"] = exclusions
         __props__["filter"] = filter
         __props__["include_children"] = include_children
         __props__["name"] = name
@@ -141,6 +149,15 @@ class OrganizationSink(pulumi.CustomResource):
         Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
         """
         return pulumi.get(self, "destination")
+
+    @property
+    @pulumi.getter
+    def exclusions(self) -> pulumi.Output[Optional[Sequence['outputs.OrganizationSinkExclusion']]]:
+        """
+        Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
+        one of exclusion_filters it will not be exported.
+        """
+        return pulumi.get(self, "exclusions")
 
     @property
     @pulumi.getter

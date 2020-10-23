@@ -19,6 +19,7 @@ class FolderSink(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bigquery_options: Optional[pulumi.Input[pulumi.InputType['FolderSinkBigqueryOptionsArgs']]] = None,
                  destination: Optional[pulumi.Input[str]] = None,
+                 exclusions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FolderSinkExclusionArgs']]]]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  folder: Optional[pulumi.Input[str]] = None,
                  include_children: Optional[pulumi.Input[bool]] = None,
@@ -43,6 +44,8 @@ class FolderSink(pulumi.CustomResource):
                "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
                "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]"
                The writer associated with the sink must have access to write to the above resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FolderSinkExclusionArgs']]]] exclusions: Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
+               one of exclusion_filters it will not be exported.
         :param pulumi.Input[str] filter: The filter to apply when exporting logs. Only log entries that match the filter are exported.
                See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.
@@ -73,6 +76,7 @@ class FolderSink(pulumi.CustomResource):
             if destination is None:
                 raise TypeError("Missing required property 'destination'")
             __props__['destination'] = destination
+            __props__['exclusions'] = exclusions
             __props__['filter'] = filter
             if folder is None:
                 raise TypeError("Missing required property 'folder'")
@@ -92,6 +96,7 @@ class FolderSink(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             bigquery_options: Optional[pulumi.Input[pulumi.InputType['FolderSinkBigqueryOptionsArgs']]] = None,
             destination: Optional[pulumi.Input[str]] = None,
+            exclusions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FolderSinkExclusionArgs']]]]] = None,
             filter: Optional[pulumi.Input[str]] = None,
             folder: Optional[pulumi.Input[str]] = None,
             include_children: Optional[pulumi.Input[bool]] = None,
@@ -111,6 +116,8 @@ class FolderSink(pulumi.CustomResource):
                "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
                "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]"
                The writer associated with the sink must have access to write to the above resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FolderSinkExclusionArgs']]]] exclusions: Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
+               one of exclusion_filters it will not be exported.
         :param pulumi.Input[str] filter: The filter to apply when exporting logs. Only log entries that match the filter are exported.
                See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.
@@ -128,6 +135,7 @@ class FolderSink(pulumi.CustomResource):
 
         __props__["bigquery_options"] = bigquery_options
         __props__["destination"] = destination
+        __props__["exclusions"] = exclusions
         __props__["filter"] = filter
         __props__["folder"] = folder
         __props__["include_children"] = include_children
@@ -155,6 +163,15 @@ class FolderSink(pulumi.CustomResource):
         The writer associated with the sink must have access to write to the above resource.
         """
         return pulumi.get(self, "destination")
+
+    @property
+    @pulumi.getter
+    def exclusions(self) -> pulumi.Output[Optional[Sequence['outputs.FolderSinkExclusion']]]:
+        """
+        Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
+        one of exclusion_filters it will not be exported.
+        """
+        return pulumi.get(self, "exclusions")
 
     @property
     @pulumi.getter

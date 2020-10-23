@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Use this data source to get information about a Google Cloud Organization.
+ * Get information about a Google Cloud Organization. Note that you must have the `roles/resourcemanager.organizationViewer` role (or equivalent permissions) at the organization level to use this datasource.
  */
 export function getOrganization(args?: GetOrganizationArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationResult> {
     args = args || {};
@@ -33,7 +33,7 @@ export interface GetOrganizationArgs {
      */
     readonly domain?: string;
     /**
-     * The name of the Organization in the form `{organization_id}` or `organizations/{organization_id}`.
+     * The Organization's numeric ID, including an optional `organizations/` prefix.
      */
     readonly organization?: string;
 }

@@ -20,6 +20,7 @@ class BillingAccountSink(pulumi.CustomResource):
                  bigquery_options: Optional[pulumi.Input[pulumi.InputType['BillingAccountSinkBigqueryOptionsArgs']]] = None,
                  billing_account: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input[str]] = None,
+                 exclusions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BillingAccountSinkExclusionArgs']]]]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -45,6 +46,8 @@ class BillingAccountSink(pulumi.CustomResource):
                import pulumi
                ```
                The writer associated with the sink must have access to write to the above resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BillingAccountSinkExclusionArgs']]]] exclusions: Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
+               one of exclusion_filters it will not be exported.
         :param pulumi.Input[str] filter: The filter to apply when exporting logs. Only log entries that match the filter are exported.
                See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.
@@ -74,6 +77,7 @@ class BillingAccountSink(pulumi.CustomResource):
             if destination is None:
                 raise TypeError("Missing required property 'destination'")
             __props__['destination'] = destination
+            __props__['exclusions'] = exclusions
             __props__['filter'] = filter
             __props__['name'] = name
             __props__['writer_identity'] = None
@@ -90,6 +94,7 @@ class BillingAccountSink(pulumi.CustomResource):
             bigquery_options: Optional[pulumi.Input[pulumi.InputType['BillingAccountSinkBigqueryOptionsArgs']]] = None,
             billing_account: Optional[pulumi.Input[str]] = None,
             destination: Optional[pulumi.Input[str]] = None,
+            exclusions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BillingAccountSinkExclusionArgs']]]]] = None,
             filter: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             writer_identity: Optional[pulumi.Input[str]] = None) -> 'BillingAccountSink':
@@ -108,6 +113,8 @@ class BillingAccountSink(pulumi.CustomResource):
                import pulumi
                ```
                The writer associated with the sink must have access to write to the above resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BillingAccountSinkExclusionArgs']]]] exclusions: Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
+               one of exclusion_filters it will not be exported.
         :param pulumi.Input[str] filter: The filter to apply when exporting logs. Only log entries that match the filter are exported.
                See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.
@@ -122,6 +129,7 @@ class BillingAccountSink(pulumi.CustomResource):
         __props__["bigquery_options"] = bigquery_options
         __props__["billing_account"] = billing_account
         __props__["destination"] = destination
+        __props__["exclusions"] = exclusions
         __props__["filter"] = filter
         __props__["name"] = name
         __props__["writer_identity"] = writer_identity
@@ -155,6 +163,15 @@ class BillingAccountSink(pulumi.CustomResource):
         The writer associated with the sink must have access to write to the above resource.
         """
         return pulumi.get(self, "destination")
+
+    @property
+    @pulumi.getter
+    def exclusions(self) -> pulumi.Output[Optional[Sequence['outputs.BillingAccountSinkExclusion']]]:
+        """
+        Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
+        one of exclusion_filters it will not be exported.
+        """
+        return pulumi.get(self, "exclusions")
 
     @property
     @pulumi.getter

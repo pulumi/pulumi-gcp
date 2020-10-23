@@ -631,7 +631,7 @@ class ClusterClusterConfigGceClusterConfig(dict):
                  tags: Optional[Sequence[str]] = None,
                  zone: Optional[str] = None):
         """
-        :param bool internal_ip_only: By default, clusters are not restricted to internal IP addresses, 
+        :param bool internal_ip_only: By default, clusters are not restricted to internal IP addresses,
                and will have ephemeral external IP addresses assigned to each instance. If set to true, all
                instances in the cluster will only have internal IP addresses. Note: Private Google Access
                (also known as `privateIpGoogleAccess`) must be enabled on the subnetwork that the cluster
@@ -681,7 +681,7 @@ class ClusterClusterConfigGceClusterConfig(dict):
     @pulumi.getter(name="internalIpOnly")
     def internal_ip_only(self) -> Optional[bool]:
         """
-        By default, clusters are not restricted to internal IP addresses, 
+        By default, clusters are not restricted to internal IP addresses,
         and will have ephemeral external IP addresses assigned to each instance. If set to true, all
         instances in the cluster will only have internal IP addresses. Note: Private Google Access
         (also known as `privateIpGoogleAccess`) must be enabled on the subnetwork that the cluster
@@ -1398,7 +1398,7 @@ class ClusterClusterConfigSoftwareConfig(dict):
                installed onto the nodes when you create clusters. If not specified, defaults to the
                latest version. For a list of valid versions see
                [Cloud Dataproc versions](https://cloud.google.com/dataproc/docs/concepts/dataproc-versions)
-        :param Sequence[str] optional_components: The set of optional components to activate on the cluster. 
+        :param Sequence[str] optional_components: The set of optional components to activate on the cluster.
                Accepted values are:
                * ANACONDA
                * DRUID
@@ -1441,7 +1441,7 @@ class ClusterClusterConfigSoftwareConfig(dict):
     @pulumi.getter(name="optionalComponents")
     def optional_components(self) -> Optional[Sequence[str]]:
         """
-        The set of optional components to activate on the cluster. 
+        The set of optional components to activate on the cluster.
         Accepted values are:
         * ANACONDA
         * DRUID

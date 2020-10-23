@@ -219,8 +219,8 @@ class Table(pulumi.CustomResource):
                Changing this forces a new resource to be created.
         :param pulumi.Input[pulumi.InputType['TableTimePartitioningArgs']] time_partitioning: If specified, configures time-based
                partitioning for this table. Structure is documented below.
-        :param pulumi.Input[str] type: The only type supported is DAY, which will generate
-               one partition per day based on data loading time.
+        :param pulumi.Input[str] type: The supported types are DAY, HOUR, MONTH, and YEAR,
+               which will generate one partition per day, hour, month, and year, respectively.
         :param pulumi.Input[pulumi.InputType['TableViewArgs']] view: If specified, configures this table as a view.
                Structure is documented below.
         """
@@ -460,8 +460,8 @@ class Table(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        The only type supported is DAY, which will generate
-        one partition per day based on data loading time.
+        The supported types are DAY, HOUR, MONTH, and YEAR,
+        which will generate one partition per day, hour, month, and year, respectively.
         """
         return pulumi.get(self, "type")
 

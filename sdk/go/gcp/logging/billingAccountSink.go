@@ -42,6 +42,9 @@ type BillingAccountSink struct {
 	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringOutput `pulumi:"destination"`
+	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
+	// one of exclusion_filters it will not be exported.
+	Exclusions BillingAccountSinkExclusionArrayOutput `pulumi:"exclusions"`
 	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
 	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
@@ -108,6 +111,9 @@ type billingAccountSinkState struct {
 	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination *string `pulumi:"destination"`
+	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
+	// one of exclusion_filters it will not be exported.
+	Exclusions []BillingAccountSinkExclusion `pulumi:"exclusions"`
 	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
 	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
@@ -141,6 +147,9 @@ type BillingAccountSinkState struct {
 	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringPtrInput
+	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
+	// one of exclusion_filters it will not be exported.
+	Exclusions BillingAccountSinkExclusionArrayInput
 	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
 	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
@@ -178,6 +187,9 @@ type billingAccountSinkArgs struct {
 	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination string `pulumi:"destination"`
+	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
+	// one of exclusion_filters it will not be exported.
+	Exclusions []BillingAccountSinkExclusion `pulumi:"exclusions"`
 	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
 	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
@@ -209,6 +221,9 @@ type BillingAccountSinkArgs struct {
 	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringInput
+	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
+	// one of exclusion_filters it will not be exported.
+	Exclusions BillingAccountSinkExclusionArrayInput
 	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
 	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.

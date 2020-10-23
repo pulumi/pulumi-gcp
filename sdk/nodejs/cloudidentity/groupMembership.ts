@@ -9,6 +9,12 @@ import * as utilities from "../utilities";
 /**
  * A Membership defines a relationship between a Group and an entity belonging to that Group, referred to as a "member".
  *
+ * > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
+ * you must specify a `billingProject` and set `userProjectOverride` to true
+ * in the provider configuration. Otherwise the Cloud Identity API will return a 403 error.
+ * Your account must have the `serviceusage.services.use` permission on the
+ * `billingProject` you defined.
+ *
  * ## Example Usage
  */
 export class GroupMembership extends pulumi.CustomResource {

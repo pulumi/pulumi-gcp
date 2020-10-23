@@ -39,6 +39,9 @@ type Queue struct {
 	// Settings that determine the retry behavior.
 	// Structure is documented below.
 	RetryConfig QueueRetryConfigOutput `pulumi:"retryConfig"`
+	// Configuration options for writing logs to Stackdriver Logging.
+	// Structure is documented below.
+	StackdriverLoggingConfig QueueStackdriverLoggingConfigPtrOutput `pulumi:"stackdriverLoggingConfig"`
 }
 
 // NewQueue registers a new resource with the given unique name, arguments, and options.
@@ -95,6 +98,9 @@ type queueState struct {
 	// Settings that determine the retry behavior.
 	// Structure is documented below.
 	RetryConfig *QueueRetryConfig `pulumi:"retryConfig"`
+	// Configuration options for writing logs to Stackdriver Logging.
+	// Structure is documented below.
+	StackdriverLoggingConfig *QueueStackdriverLoggingConfig `pulumi:"stackdriverLoggingConfig"`
 }
 
 type QueueState struct {
@@ -121,6 +127,9 @@ type QueueState struct {
 	// Settings that determine the retry behavior.
 	// Structure is documented below.
 	RetryConfig QueueRetryConfigPtrInput
+	// Configuration options for writing logs to Stackdriver Logging.
+	// Structure is documented below.
+	StackdriverLoggingConfig QueueStackdriverLoggingConfigPtrInput
 }
 
 func (QueueState) ElementType() reflect.Type {
@@ -151,6 +160,9 @@ type queueArgs struct {
 	// Settings that determine the retry behavior.
 	// Structure is documented below.
 	RetryConfig *QueueRetryConfig `pulumi:"retryConfig"`
+	// Configuration options for writing logs to Stackdriver Logging.
+	// Structure is documented below.
+	StackdriverLoggingConfig *QueueStackdriverLoggingConfig `pulumi:"stackdriverLoggingConfig"`
 }
 
 // The set of arguments for constructing a Queue resource.
@@ -178,6 +190,9 @@ type QueueArgs struct {
 	// Settings that determine the retry behavior.
 	// Structure is documented below.
 	RetryConfig QueueRetryConfigPtrInput
+	// Configuration options for writing logs to Stackdriver Logging.
+	// Structure is documented below.
+	StackdriverLoggingConfig QueueStackdriverLoggingConfigPtrInput
 }
 
 func (QueueArgs) ElementType() reflect.Type {

@@ -18,6 +18,7 @@ class DatabaseInstance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  database_version: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  encryption_key_name: Optional[pulumi.Input[str]] = None,
                  master_instance_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -30,38 +31,7 @@ class DatabaseInstance(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Creates a new Google SQL Database Instance. For more information, see the [official documentation](https://cloud.google.com/sql/),
-        or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/instances).
-
-        > **NOTE on `sql.DatabaseInstance`:** - First-generation instances have been
-        deprecated and should no longer be created, see [upgrade docs](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-        for more details.
-        To upgrade your First-generation instance, update your config that the instance has
-        * `settings.ip_configuration.ipv4_enabled=true`
-        * `settings.backup_configuration.enabled=true`
-        * `settings.backup_configuration.binary_log_enabled=true`.\
-          Apply the config, then upgrade the instance in the console as described in the documentation.
-          Once upgraded, update the following attributes in your config to the correct value according to
-          the above documentation:
-        * `region`
-        * `database_version` (if applicable)
-        * `tier`\
-          Remove any fields that are not applicable to Second-generation instances:
-        * `settings.crash_safe_replication`
-        * `settings.replication_type`
-        * `settings.authorized_gae_applications`
-          And change values to appropriate values for Second-generation instances for:
-        * `activation_policy` ("ON_DEMAND" is no longer an option)
-        * `pricing_plan` ("PER_USE" is now the only valid option)
-          Change `settings.backup_configuration.enabled` attribute back to its desired value and apply as necessary.
-
-        > **NOTE on `sql.DatabaseInstance`:** - Second-generation instances include a
-        default 'root'@'%' user with no password. This user will be deleted by the provider on
-        instance creation. You should use `sql.User` to define a custom user with
-        a restricted host and strong password.
-
-        ## Example Usage
-
+        Create a DatabaseInstance resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database_version: The MySQL, PostgreSQL or
@@ -70,6 +40,7 @@ class DatabaseInstance(pulumi.CustomResource):
                `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
                [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
                includes an up-to-date reference of supported versions.
+        :param pulumi.Input[bool] deletion_protection: Used to block Terraform from deleting a SQL Instance.
         :param pulumi.Input[str] encryption_key_name: The full path to the encryption key used for the CMEK disk encryption.  Setting
                up disk encryption currently requires manual steps outside of this provider.
                The provided key must be in the same region as the SQL instance.  In order
@@ -114,6 +85,7 @@ class DatabaseInstance(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['database_version'] = database_version
+            __props__['deletion_protection'] = deletion_protection
             __props__['encryption_key_name'] = encryption_key_name
             __props__['master_instance_name'] = master_instance_name
             __props__['name'] = name
@@ -144,6 +116,7 @@ class DatabaseInstance(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             connection_name: Optional[pulumi.Input[str]] = None,
             database_version: Optional[pulumi.Input[str]] = None,
+            deletion_protection: Optional[pulumi.Input[bool]] = None,
             encryption_key_name: Optional[pulumi.Input[str]] = None,
             first_ip_address: Optional[pulumi.Input[str]] = None,
             ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseInstanceIpAddressArgs']]]]] = None,
@@ -174,6 +147,7 @@ class DatabaseInstance(pulumi.CustomResource):
                `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
                [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
                includes an up-to-date reference of supported versions.
+        :param pulumi.Input[bool] deletion_protection: Used to block Terraform from deleting a SQL Instance.
         :param pulumi.Input[str] encryption_key_name: The full path to the encryption key used for the CMEK disk encryption.  Setting
                up disk encryption currently requires manual steps outside of this provider.
                The provided key must be in the same region as the SQL instance.  In order
@@ -212,6 +186,7 @@ class DatabaseInstance(pulumi.CustomResource):
 
         __props__["connection_name"] = connection_name
         __props__["database_version"] = database_version
+        __props__["deletion_protection"] = deletion_protection
         __props__["encryption_key_name"] = encryption_key_name
         __props__["first_ip_address"] = first_ip_address
         __props__["ip_addresses"] = ip_addresses
@@ -250,6 +225,14 @@ class DatabaseInstance(pulumi.CustomResource):
         includes an up-to-date reference of supported versions.
         """
         return pulumi.get(self, "database_version")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Used to block Terraform from deleting a SQL Instance.
+        """
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter(name="encryptionKeyName")

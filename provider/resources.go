@@ -2123,6 +2123,9 @@ func Provider() tfbridge.ProviderInfo {
 
 			//Cloud Run
 			"google_cloud_run_service": {Tok: gcpDataSource(gcpCloudRun, "getService")},
+
+			//Appengine
+			"google_app_engine_default_service_account": {Tok: gcpDataSource(gcpAppEngine, "getDefaultServiceAccount")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

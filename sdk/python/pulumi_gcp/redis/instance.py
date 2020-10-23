@@ -16,6 +16,7 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alternative_location_id: Optional[pulumi.Input[str]] = None,
+                 auth_enabled: Optional[pulumi.Input[bool]] = None,
                  authorized_network: Optional[pulumi.Input[str]] = None,
                  connect_mode: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -49,6 +50,8 @@ class Instance(pulumi.CustomResource):
                against zonal failures by provisioning it across two zones.
                If provided, it must be a different zone from the one provided in
                [locationId].
+        :param pulumi.Input[bool] auth_enabled: Optional. Indicates whether OSS Redis AUTH is enabled for the instance. If set to "true" AUTH is enabled on the
+               instance. Default value is "false" meaning AUTH is disabled.
         :param pulumi.Input[str] authorized_network: The full name of the Google Compute Engine network to which the
                instance is connected. If left unspecified, the default network
                will be used.
@@ -104,6 +107,7 @@ class Instance(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['alternative_location_id'] = alternative_location_id
+            __props__['auth_enabled'] = auth_enabled
             __props__['authorized_network'] = authorized_network
             __props__['connect_mode'] = connect_mode
             __props__['display_name'] = display_name
@@ -135,6 +139,7 @@ class Instance(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             alternative_location_id: Optional[pulumi.Input[str]] = None,
+            auth_enabled: Optional[pulumi.Input[bool]] = None,
             authorized_network: Optional[pulumi.Input[str]] = None,
             connect_mode: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
@@ -164,6 +169,8 @@ class Instance(pulumi.CustomResource):
                against zonal failures by provisioning it across two zones.
                If provided, it must be a different zone from the one provided in
                [locationId].
+        :param pulumi.Input[bool] auth_enabled: Optional. Indicates whether OSS Redis AUTH is enabled for the instance. If set to "true" AUTH is enabled on the
+               instance. Default value is "false" meaning AUTH is disabled.
         :param pulumi.Input[str] authorized_network: The full name of the Google Compute Engine network to which the
                instance is connected. If left unspecified, the default network
                will be used.
@@ -215,6 +222,7 @@ class Instance(pulumi.CustomResource):
         __props__ = dict()
 
         __props__["alternative_location_id"] = alternative_location_id
+        __props__["auth_enabled"] = auth_enabled
         __props__["authorized_network"] = authorized_network
         __props__["connect_mode"] = connect_mode
         __props__["create_time"] = create_time
@@ -245,6 +253,15 @@ class Instance(pulumi.CustomResource):
         [locationId].
         """
         return pulumi.get(self, "alternative_location_id")
+
+    @property
+    @pulumi.getter(name="authEnabled")
+    def auth_enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Optional. Indicates whether OSS Redis AUTH is enabled for the instance. If set to "true" AUTH is enabled on the
+        instance. Default value is "false" meaning AUTH is disabled.
+        """
+        return pulumi.get(self, "auth_enabled")
 
     @property
     @pulumi.getter(name="authorizedNetwork")

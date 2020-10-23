@@ -19,6 +19,7 @@ class NodeGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  autoscaling_policy: Optional[pulumi.Input[pulumi.InputType['NodeGroupAutoscalingPolicyArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 maintenance_policy: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_template: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -45,11 +46,11 @@ class NodeGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['NodeGroupAutoscalingPolicyArgs']] autoscaling_policy: -
-               If you use sole-tenant nodes for your workloads, you can use the node
+        :param pulumi.Input[pulumi.InputType['NodeGroupAutoscalingPolicyArgs']] autoscaling_policy: If you use sole-tenant nodes for your workloads, you can use the node
                group autoscaler to automatically manage the sizes of your node groups.
                Structure is documented below.
         :param pulumi.Input[str] description: An optional textual description of the resource.
+        :param pulumi.Input[str] maintenance_policy: Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] node_template: The URL of the node template to which this node group belongs.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -76,6 +77,7 @@ class NodeGroup(pulumi.CustomResource):
 
             __props__['autoscaling_policy'] = autoscaling_policy
             __props__['description'] = description
+            __props__['maintenance_policy'] = maintenance_policy
             __props__['name'] = name
             if node_template is None:
                 raise TypeError("Missing required property 'node_template'")
@@ -100,6 +102,7 @@ class NodeGroup(pulumi.CustomResource):
             autoscaling_policy: Optional[pulumi.Input[pulumi.InputType['NodeGroupAutoscalingPolicyArgs']]] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            maintenance_policy: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             node_template: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -113,12 +116,12 @@ class NodeGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['NodeGroupAutoscalingPolicyArgs']] autoscaling_policy: -
-               If you use sole-tenant nodes for your workloads, you can use the node
+        :param pulumi.Input[pulumi.InputType['NodeGroupAutoscalingPolicyArgs']] autoscaling_policy: If you use sole-tenant nodes for your workloads, you can use the node
                group autoscaler to automatically manage the sizes of your node groups.
                Structure is documented below.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional textual description of the resource.
+        :param pulumi.Input[str] maintenance_policy: Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] node_template: The URL of the node template to which this node group belongs.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -134,6 +137,7 @@ class NodeGroup(pulumi.CustomResource):
         __props__["autoscaling_policy"] = autoscaling_policy
         __props__["creation_timestamp"] = creation_timestamp
         __props__["description"] = description
+        __props__["maintenance_policy"] = maintenance_policy
         __props__["name"] = name
         __props__["node_template"] = node_template
         __props__["project"] = project
@@ -146,7 +150,6 @@ class NodeGroup(pulumi.CustomResource):
     @pulumi.getter(name="autoscalingPolicy")
     def autoscaling_policy(self) -> pulumi.Output['outputs.NodeGroupAutoscalingPolicy']:
         """
-        -
         If you use sole-tenant nodes for your workloads, you can use the node
         group autoscaler to automatically manage the sizes of your node groups.
         Structure is documented below.
@@ -168,6 +171,14 @@ class NodeGroup(pulumi.CustomResource):
         An optional textual description of the resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="maintenancePolicy")
+    def maintenance_policy(self) -> pulumi.Output[Optional[str]]:
+        """
+        Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
+        """
+        return pulumi.get(self, "maintenance_policy")
 
     @property
     @pulumi.getter

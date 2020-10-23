@@ -12,6 +12,7 @@ __all__ = [
     'QueueAppEngineRoutingOverride',
     'QueueRateLimits',
     'QueueRetryConfig',
+    'QueueStackdriverLoggingConfig',
 ]
 
 @pulumi.output_type
@@ -245,6 +246,31 @@ class QueueRetryConfig(dict):
         specifies that the task should be retried.
         """
         return pulumi.get(self, "min_backoff")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class QueueStackdriverLoggingConfig(dict):
+    def __init__(__self__, *,
+                 sampling_ratio: float):
+        """
+        :param float sampling_ratio: Specifies the fraction of operations to write to Stackdriver Logging.
+               This field may contain any value between 0.0 and 1.0, inclusive. 0.0 is the
+               default and means that no operations are logged.
+        """
+        pulumi.set(__self__, "sampling_ratio", sampling_ratio)
+
+    @property
+    @pulumi.getter(name="samplingRatio")
+    def sampling_ratio(self) -> float:
+        """
+        Specifies the fraction of operations to write to Stackdriver Logging.
+        This field may contain any value between 0.0 and 1.0, inclusive. 0.0 is the
+        default and means that no operations are logged.
+        """
+        return pulumi.get(self, "sampling_ratio")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

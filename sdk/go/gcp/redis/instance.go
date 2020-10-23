@@ -27,6 +27,9 @@ type Instance struct {
 	// If provided, it must be a different zone from the one provided in
 	// [locationId].
 	AlternativeLocationId pulumi.StringOutput `pulumi:"alternativeLocationId"`
+	// Optional. Indicates whether OSS Redis AUTH is enabled for the instance. If set to "true" AUTH is enabled on the
+	// instance. Default value is "false" meaning AUTH is disabled.
+	AuthEnabled pulumi.BoolPtrOutput `pulumi:"authEnabled"`
 	// The full name of the Google Compute Engine network to which the
 	// instance is connected. If left unspecified, the default network
 	// will be used.
@@ -128,6 +131,9 @@ type instanceState struct {
 	// If provided, it must be a different zone from the one provided in
 	// [locationId].
 	AlternativeLocationId *string `pulumi:"alternativeLocationId"`
+	// Optional. Indicates whether OSS Redis AUTH is enabled for the instance. If set to "true" AUTH is enabled on the
+	// instance. Default value is "false" meaning AUTH is disabled.
+	AuthEnabled *bool `pulumi:"authEnabled"`
 	// The full name of the Google Compute Engine network to which the
 	// instance is connected. If left unspecified, the default network
 	// will be used.
@@ -199,6 +205,9 @@ type InstanceState struct {
 	// If provided, it must be a different zone from the one provided in
 	// [locationId].
 	AlternativeLocationId pulumi.StringPtrInput
+	// Optional. Indicates whether OSS Redis AUTH is enabled for the instance. If set to "true" AUTH is enabled on the
+	// instance. Default value is "false" meaning AUTH is disabled.
+	AuthEnabled pulumi.BoolPtrInput
 	// The full name of the Google Compute Engine network to which the
 	// instance is connected. If left unspecified, the default network
 	// will be used.
@@ -274,6 +283,9 @@ type instanceArgs struct {
 	// If provided, it must be a different zone from the one provided in
 	// [locationId].
 	AlternativeLocationId *string `pulumi:"alternativeLocationId"`
+	// Optional. Indicates whether OSS Redis AUTH is enabled for the instance. If set to "true" AUTH is enabled on the
+	// instance. Default value is "false" meaning AUTH is disabled.
+	AuthEnabled *bool `pulumi:"authEnabled"`
 	// The full name of the Google Compute Engine network to which the
 	// instance is connected. If left unspecified, the default network
 	// will be used.
@@ -332,6 +344,9 @@ type InstanceArgs struct {
 	// If provided, it must be a different zone from the one provided in
 	// [locationId].
 	AlternativeLocationId pulumi.StringPtrInput
+	// Optional. Indicates whether OSS Redis AUTH is enabled for the instance. If set to "true" AUTH is enabled on the
+	// instance. Default value is "false" meaning AUTH is disabled.
+	AuthEnabled pulumi.BoolPtrInput
 	// The full name of the Google Compute Engine network to which the
 	// instance is connected. If left unspecified, the default network
 	// will be used.

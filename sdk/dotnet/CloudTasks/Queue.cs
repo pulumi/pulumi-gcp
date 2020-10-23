@@ -63,6 +63,13 @@ namespace Pulumi.Gcp.CloudTasks
         [Output("retryConfig")]
         public Output<Outputs.QueueRetryConfig> RetryConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// Configuration options for writing logs to Stackdriver Logging.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("stackdriverLoggingConfig")]
+        public Output<Outputs.QueueStackdriverLoggingConfig?> StackdriverLoggingConfig { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Queue resource with the given unique name, arguments, and options.
@@ -156,6 +163,13 @@ namespace Pulumi.Gcp.CloudTasks
         [Input("retryConfig")]
         public Input<Inputs.QueueRetryConfigArgs>? RetryConfig { get; set; }
 
+        /// <summary>
+        /// Configuration options for writing logs to Stackdriver Logging.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("stackdriverLoggingConfig")]
+        public Input<Inputs.QueueStackdriverLoggingConfigArgs>? StackdriverLoggingConfig { get; set; }
+
         public QueueArgs()
         {
         }
@@ -209,6 +223,13 @@ namespace Pulumi.Gcp.CloudTasks
         /// </summary>
         [Input("retryConfig")]
         public Input<Inputs.QueueRetryConfigGetArgs>? RetryConfig { get; set; }
+
+        /// <summary>
+        /// Configuration options for writing logs to Stackdriver Logging.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("stackdriverLoggingConfig")]
+        public Input<Inputs.QueueStackdriverLoggingConfigGetArgs>? StackdriverLoggingConfig { get; set; }
 
         public QueueState()
         {

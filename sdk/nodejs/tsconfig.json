@@ -29,6 +29,7 @@
         "appengine/engineSplitTraffic.ts",
         "appengine/firewallRule.ts",
         "appengine/flexibleAppVersion.ts",
+        "appengine/getDefaultServiceAccount.ts",
         "appengine/index.ts",
         "appengine/standardAppVersion.ts",
         "artifactregistry/index.ts",

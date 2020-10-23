@@ -28,7 +28,6 @@ namespace Pulumi.Gcp.Compute
     public partial class NodeGroup : Pulumi.CustomResource
     {
         /// <summary>
-        /// -
         /// If you use sole-tenant nodes for your workloads, you can use the node
         /// group autoscaler to automatically manage the sizes of your node groups.
         /// Structure is documented below.
@@ -47,6 +46,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
+        /// </summary>
+        [Output("maintenancePolicy")]
+        public Output<string?> MaintenancePolicy { get; private set; } = null!;
 
         /// <summary>
         /// Name of the resource.
@@ -132,7 +137,6 @@ namespace Pulumi.Gcp.Compute
     public sealed class NodeGroupArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// -
         /// If you use sole-tenant nodes for your workloads, you can use the node
         /// group autoscaler to automatically manage the sizes of your node groups.
         /// Structure is documented below.
@@ -145,6 +149,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
+        /// </summary>
+        [Input("maintenancePolicy")]
+        public Input<string>? MaintenancePolicy { get; set; }
 
         /// <summary>
         /// Name of the resource.
@@ -185,7 +195,6 @@ namespace Pulumi.Gcp.Compute
     public sealed class NodeGroupState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// -
         /// If you use sole-tenant nodes for your workloads, you can use the node
         /// group autoscaler to automatically manage the sizes of your node groups.
         /// Structure is documented below.
@@ -204,6 +213,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
+        /// </summary>
+        [Input("maintenancePolicy")]
+        public Input<string>? MaintenancePolicy { get; set; }
 
         /// <summary>
         /// Name of the resource.

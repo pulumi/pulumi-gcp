@@ -50,6 +50,11 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly clusterConfig!: pulumi.Output<outputs.dataproc.ClusterClusterConfig>;
     /**
+     * The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
+     * terraform apply
+     */
+    public readonly gracefulDecommissionTimeout!: pulumi.Output<string | undefined>;
+    /**
      * The list of labels (key/value pairs) to be applied to
      * instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
      * which is the name of the cluster.
@@ -84,6 +89,7 @@ export class Cluster extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as ClusterState | undefined;
             inputs["clusterConfig"] = state ? state.clusterConfig : undefined;
+            inputs["gracefulDecommissionTimeout"] = state ? state.gracefulDecommissionTimeout : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -91,6 +97,7 @@ export class Cluster extends pulumi.CustomResource {
         } else {
             const args = argsOrState as ClusterArgs | undefined;
             inputs["clusterConfig"] = args ? args.clusterConfig : undefined;
+            inputs["gracefulDecommissionTimeout"] = args ? args.gracefulDecommissionTimeout : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -116,6 +123,11 @@ export interface ClusterState {
      * Structure defined below.
      */
     readonly clusterConfig?: pulumi.Input<inputs.dataproc.ClusterClusterConfig>;
+    /**
+     * The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
+     * terraform apply
+     */
+    readonly gracefulDecommissionTimeout?: pulumi.Input<string>;
     /**
      * The list of labels (key/value pairs) to be applied to
      * instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
@@ -148,6 +160,11 @@ export interface ClusterArgs {
      * Structure defined below.
      */
     readonly clusterConfig?: pulumi.Input<inputs.dataproc.ClusterClusterConfig>;
+    /**
+     * The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
+     * terraform apply
+     */
+    readonly gracefulDecommissionTimeout?: pulumi.Input<string>;
     /**
      * The list of labels (key/value pairs) to be applied to
      * instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`

@@ -22,10 +22,8 @@ func LookupImage(ctx *pulumi.Context, args *LookupImageArgs, opts ...pulumi.Invo
 type LookupImageArgs struct {
 	// The family name of the image.
 	Family *string `pulumi:"family"`
-	// or `family` - (Required) The name of a specific image or a family.
-	// Exactly one of `name` of `family` must be specified. If `name` is specified, it will fetch
-	// the corresponding image. If `family` is specified, it will returns the latest image
-	// that is part of an image family and is not deprecated.
+	Filter *string `pulumi:"filter"`
+	// The name of the image.
 	Name *string `pulumi:"name"`
 	// The project in which the resource belongs. If it is not
 	// provided, the provider project is used. If you are using a
@@ -44,7 +42,8 @@ type LookupImageResult struct {
 	// The size of the image when restored onto a persistent disk in gigabytes.
 	DiskSizeGb int `pulumi:"diskSizeGb"`
 	// The family name of the image.
-	Family string `pulumi:"family"`
+	Family string  `pulumi:"family"`
+	Filter *string `pulumi:"filter"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)

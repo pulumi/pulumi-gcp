@@ -30,8 +30,8 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// </summary>
         public readonly bool? RequirePartitionFilter;
         /// <summary>
-        /// The only type supported is DAY, which will generate
-        /// one partition per day based on data loading time.
+        /// The supported types are DAY, HOUR, MONTH, and YEAR,
+        /// which will generate one partition per day, hour, month, and year, respectively.
         /// </summary>
         public readonly string Type;
 

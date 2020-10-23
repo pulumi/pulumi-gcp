@@ -175,8 +175,8 @@ namespace Pulumi.Gcp.BigQuery
         public Output<Outputs.TableTimePartitioning?> TimePartitioning { get; private set; } = null!;
 
         /// <summary>
-        /// The only type supported is DAY, which will generate
-        /// one partition per day based on data loading time.
+        /// The supported types are DAY, HOUR, MONTH, and YEAR,
+        /// which will generate one partition per day, hour, month, and year, respectively.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -541,8 +541,8 @@ namespace Pulumi.Gcp.BigQuery
         public Input<Inputs.TableTimePartitioningGetArgs>? TimePartitioning { get; set; }
 
         /// <summary>
-        /// The only type supported is DAY, which will generate
-        /// one partition per day based on data loading time.
+        /// The supported types are DAY, HOUR, MONTH, and YEAR,
+        /// which will generate one partition per day, hour, month, and year, respectively.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
