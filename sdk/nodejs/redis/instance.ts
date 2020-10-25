@@ -51,6 +51,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly alternativeLocationId!: pulumi.Output<string>;
     /**
+     * Optional. Indicates whether OSS Redis AUTH is enabled for the instance. If set to "true" AUTH is enabled on the
+     * instance. Default value is "false" meaning AUTH is disabled.
+     */
+    public readonly authEnabled!: pulumi.Output<boolean | undefined>;
+    /**
      * The full name of the Google Compute Engine network to which the
      * instance is connected. If left unspecified, the default network
      * will be used.
@@ -163,6 +168,7 @@ export class Instance extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as InstanceState | undefined;
             inputs["alternativeLocationId"] = state ? state.alternativeLocationId : undefined;
+            inputs["authEnabled"] = state ? state.authEnabled : undefined;
             inputs["authorizedNetwork"] = state ? state.authorizedNetwork : undefined;
             inputs["connectMode"] = state ? state.connectMode : undefined;
             inputs["createTime"] = state ? state.createTime : undefined;
@@ -187,6 +193,7 @@ export class Instance extends pulumi.CustomResource {
                 throw new Error("Missing required property 'memorySizeGb'");
             }
             inputs["alternativeLocationId"] = args ? args.alternativeLocationId : undefined;
+            inputs["authEnabled"] = args ? args.authEnabled : undefined;
             inputs["authorizedNetwork"] = args ? args.authorizedNetwork : undefined;
             inputs["connectMode"] = args ? args.connectMode : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
@@ -228,6 +235,11 @@ export interface InstanceState {
      * [locationId].
      */
     readonly alternativeLocationId?: pulumi.Input<string>;
+    /**
+     * Optional. Indicates whether OSS Redis AUTH is enabled for the instance. If set to "true" AUTH is enabled on the
+     * instance. Default value is "false" meaning AUTH is disabled.
+     */
+    readonly authEnabled?: pulumi.Input<boolean>;
     /**
      * The full name of the Google Compute Engine network to which the
      * instance is connected. If left unspecified, the default network
@@ -340,6 +352,11 @@ export interface InstanceArgs {
      * [locationId].
      */
     readonly alternativeLocationId?: pulumi.Input<string>;
+    /**
+     * Optional. Indicates whether OSS Redis AUTH is enabled for the instance. If set to "true" AUTH is enabled on the
+     * instance. Default value is "false" meaning AUTH is disabled.
+     */
+    readonly authEnabled?: pulumi.Input<boolean>;
     /**
      * The full name of the Google Compute Engine network to which the
      * instance is connected. If left unspecified, the default network

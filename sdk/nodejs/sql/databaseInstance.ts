@@ -6,39 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Creates a new Google SQL Database Instance. For more information, see the [official documentation](https://cloud.google.com/sql/),
- * or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/instances).
- *
- * > **NOTE on `gcp.sql.DatabaseInstance`:** - First-generation instances have been
- * deprecated and should no longer be created, see [upgrade docs](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
- * for more details.
- * To upgrade your First-generation instance, update your config that the instance has
- * * `settings.ip_configuration.ipv4_enabled=true`
- * * `settings.backup_configuration.enabled=true`
- * * `settings.backup_configuration.binary_log_enabled=true`.\
- *   Apply the config, then upgrade the instance in the console as described in the documentation.
- *   Once upgraded, update the following attributes in your config to the correct value according to
- *   the above documentation:
- * * `region`
- * * `databaseVersion` (if applicable)
- * * `tier`\
- *   Remove any fields that are not applicable to Second-generation instances:
- * * `settings.crash_safe_replication`
- * * `settings.replication_type`
- * * `settings.authorized_gae_applications`
- *   And change values to appropriate values for Second-generation instances for:
- * * `activationPolicy` ("ON_DEMAND" is no longer an option)
- * * `pricingPlan` ("PER_USE" is now the only valid option)
- *   Change `settings.backup_configuration.enabled` attribute back to its desired value and apply as necessary.
- *
- * > **NOTE on `gcp.sql.DatabaseInstance`:** - Second-generation instances include a
- * default 'root'@'%' user with no password. This user will be deleted by the provider on
- * instance creation. You should use `gcp.sql.User` to define a custom user with
- * a restricted host and strong password.
- *
- * ## Example Usage
- */
 export class DatabaseInstance extends pulumi.CustomResource {
     /**
      * Get an existing DatabaseInstance resource's state with the given name, ID, and optional extra
@@ -81,6 +48,10 @@ export class DatabaseInstance extends pulumi.CustomResource {
      * includes an up-to-date reference of supported versions.
      */
     public readonly databaseVersion!: pulumi.Output<string | undefined>;
+    /**
+     * Used to block Terraform from deleting a SQL Instance.
+     */
+    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
      * The full path to the encryption key used for the CMEK disk encryption.  Setting
      * up disk encryption currently requires manual steps outside of this provider.
@@ -168,6 +139,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             const state = argsOrState as DatabaseInstanceState | undefined;
             inputs["connectionName"] = state ? state.connectionName : undefined;
             inputs["databaseVersion"] = state ? state.databaseVersion : undefined;
+            inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             inputs["encryptionKeyName"] = state ? state.encryptionKeyName : undefined;
             inputs["firstIpAddress"] = state ? state.firstIpAddress : undefined;
             inputs["ipAddresses"] = state ? state.ipAddresses : undefined;
@@ -189,6 +161,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
                 throw new Error("Missing required property 'settings'");
             }
             inputs["databaseVersion"] = args ? args.databaseVersion : undefined;
+            inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             inputs["encryptionKeyName"] = args ? args.encryptionKeyName : undefined;
             inputs["masterInstanceName"] = args ? args.masterInstanceName : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -235,6 +208,10 @@ export interface DatabaseInstanceState {
      * includes an up-to-date reference of supported versions.
      */
     readonly databaseVersion?: pulumi.Input<string>;
+    /**
+     * Used to block Terraform from deleting a SQL Instance.
+     */
+    readonly deletionProtection?: pulumi.Input<boolean>;
     /**
      * The full path to the encryption key used for the CMEK disk encryption.  Setting
      * up disk encryption currently requires manual steps outside of this provider.
@@ -322,6 +299,10 @@ export interface DatabaseInstanceArgs {
      * includes an up-to-date reference of supported versions.
      */
     readonly databaseVersion?: pulumi.Input<string>;
+    /**
+     * Used to block Terraform from deleting a SQL Instance.
+     */
+    readonly deletionProtection?: pulumi.Input<boolean>;
     /**
      * The full path to the encryption key used for the CMEK disk encryption.  Setting
      * up disk encryption currently requires manual steps outside of this provider.

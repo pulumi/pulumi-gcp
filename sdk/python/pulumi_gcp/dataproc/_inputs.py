@@ -726,7 +726,7 @@ class ClusterClusterConfigGceClusterConfigArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[bool] internal_ip_only: By default, clusters are not restricted to internal IP addresses, 
+        :param pulumi.Input[bool] internal_ip_only: By default, clusters are not restricted to internal IP addresses,
                and will have ephemeral external IP addresses assigned to each instance. If set to true, all
                instances in the cluster will only have internal IP addresses. Note: Private Google Access
                (also known as `privateIpGoogleAccess`) must be enabled on the subnetwork that the cluster
@@ -776,7 +776,7 @@ class ClusterClusterConfigGceClusterConfigArgs:
     @pulumi.getter(name="internalIpOnly")
     def internal_ip_only(self) -> Optional[pulumi.Input[bool]]:
         """
-        By default, clusters are not restricted to internal IP addresses, 
+        By default, clusters are not restricted to internal IP addresses,
         and will have ephemeral external IP addresses assigned to each instance. If set to true, all
         instances in the cluster will only have internal IP addresses. Note: Private Google Access
         (also known as `privateIpGoogleAccess`) must be enabled on the subnetwork that the cluster
@@ -1651,7 +1651,7 @@ class ClusterClusterConfigSoftwareConfigArgs:
                installed onto the nodes when you create clusters. If not specified, defaults to the
                latest version. For a list of valid versions see
                [Cloud Dataproc versions](https://cloud.google.com/dataproc/docs/concepts/dataproc-versions)
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] optional_components: The set of optional components to activate on the cluster. 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] optional_components: The set of optional components to activate on the cluster.
                Accepted values are:
                * ANACONDA
                * DRUID
@@ -1698,7 +1698,7 @@ class ClusterClusterConfigSoftwareConfigArgs:
     @pulumi.getter(name="optionalComponents")
     def optional_components(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The set of optional components to activate on the cluster. 
+        The set of optional components to activate on the cluster.
         Accepted values are:
         * ANACONDA
         * DRUID

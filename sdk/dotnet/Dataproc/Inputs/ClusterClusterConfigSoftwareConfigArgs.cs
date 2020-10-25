@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputList<string>? _optionalComponents;
 
         /// <summary>
-        /// The set of optional components to activate on the cluster. 
+        /// The set of optional components to activate on the cluster.
         /// Accepted values are:
         /// * ANACONDA
         /// * DRUID

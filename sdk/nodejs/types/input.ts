@@ -2287,8 +2287,8 @@ export namespace bigquery {
          */
         requirePartitionFilter?: pulumi.Input<boolean>;
         /**
-         * The only type supported is DAY, which will generate
-         * one partition per day based on data loading time.
+         * The supported types are DAY, HOUR, MONTH, and YEAR,
+         * which will generate one partition per day, hour, month, and year, respectively.
          */
         type: pulumi.Input<string>;
     }
@@ -4052,6 +4052,15 @@ export namespace cloudtasks {
          * specifies that the task should be retried.
          */
         minBackoff?: pulumi.Input<string>;
+    }
+
+    export interface QueueStackdriverLoggingConfig {
+        /**
+         * Specifies the fraction of operations to write to Stackdriver Logging.
+         * This field may contain any value between 0.0 and 1.0, inclusive. 0.0 is the
+         * default and means that no operations are logged.
+         */
+        samplingRatio: pulumi.Input<number>;
     }
 }
 
@@ -13736,7 +13745,7 @@ export namespace dataproc {
 
     export interface ClusterClusterConfigGceClusterConfig {
         /**
-         * By default, clusters are not restricted to internal IP addresses, 
+         * By default, clusters are not restricted to internal IP addresses,
          * and will have ephemeral external IP addresses assigned to each instance. If set to true, all
          * instances in the cluster will only have internal IP addresses. Note: Private Google Access
          * (also known as `privateIpGoogleAccess`) must be enabled on the subnetwork that the cluster
@@ -14013,7 +14022,7 @@ export namespace dataproc {
          */
         imageVersion?: pulumi.Input<string>;
         /**
-         * The set of optional components to activate on the cluster. 
+         * The set of optional components to activate on the cluster.
          * Accepted values are:
          * * ANACONDA
          * * DRUID
@@ -15644,6 +15653,21 @@ export namespace logging {
         usePartitionedTables: pulumi.Input<boolean>;
     }
 
+    export interface BillingAccountSinkExclusion {
+        description?: pulumi.Input<string>;
+        disabled?: pulumi.Input<boolean>;
+        /**
+         * The filter to apply when exporting logs. Only log entries that match the filter are exported.
+         * See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+         * write a filter.
+         */
+        filter: pulumi.Input<string>;
+        /**
+         * The name of the logging sink.
+         */
+        name: pulumi.Input<string>;
+    }
+
     export interface FolderSinkBigqueryOptions {
         /**
          * Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
@@ -15652,6 +15676,21 @@ export namespace logging {
          * has to be used instead. In both cases, tables are sharded based on UTC timezone.
          */
         usePartitionedTables: pulumi.Input<boolean>;
+    }
+
+    export interface FolderSinkExclusion {
+        description?: pulumi.Input<string>;
+        disabled?: pulumi.Input<boolean>;
+        /**
+         * The filter to apply when exporting logs. Only log entries that match the filter are exported.
+         * See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+         * write a filter.
+         */
+        filter: pulumi.Input<string>;
+        /**
+         * The name of the logging sink.
+         */
+        name: pulumi.Input<string>;
     }
 
     export interface MetricBucketOptions {
@@ -15775,6 +15814,21 @@ export namespace logging {
         usePartitionedTables: pulumi.Input<boolean>;
     }
 
+    export interface OrganizationSinkExclusion {
+        description?: pulumi.Input<string>;
+        disabled?: pulumi.Input<boolean>;
+        /**
+         * The filter to apply when exporting logs. Only log entries that match the filter are exported.
+         * See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+         * write a filter.
+         */
+        filter: pulumi.Input<string>;
+        /**
+         * The name of the logging sink.
+         */
+        name: pulumi.Input<string>;
+    }
+
     export interface ProjectSinkBigqueryOptions {
         /**
          * Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
@@ -15783,6 +15837,26 @@ export namespace logging {
          * has to be used instead. In both cases, tables are sharded based on UTC timezone.
          */
         usePartitionedTables: pulumi.Input<boolean>;
+    }
+
+    export interface ProjectSinkExclusion {
+        /**
+         * A description of this exclusion.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * If set to True, then this exclusion is disabled and it does not exclude any log entries.
+         */
+        disabled?: pulumi.Input<boolean>;
+        /**
+         * An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+         * write a filter.
+         */
+        filter: pulumi.Input<string>;
+        /**
+         * A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
+         */
+        name: pulumi.Input<string>;
     }
 }
 

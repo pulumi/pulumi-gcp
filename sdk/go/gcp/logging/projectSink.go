@@ -41,11 +41,12 @@ type ProjectSink struct {
 	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringOutput `pulumi:"destination"`
-	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
-	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusionFilters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+	Exclusions ProjectSinkExclusionArrayOutput `pulumi:"exclusions"`
+	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter pulumi.StringPtrOutput `pulumi:"filter"`
-	// The name of the logging sink.
+	// A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project to create the sink in. If omitted, the project associated with the provider is
 	// used.
@@ -110,11 +111,12 @@ type projectSinkState struct {
 	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination *string `pulumi:"destination"`
-	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
-	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusionFilters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+	Exclusions []ProjectSinkExclusion `pulumi:"exclusions"`
+	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter *string `pulumi:"filter"`
-	// The name of the logging sink.
+	// A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
 	Name *string `pulumi:"name"`
 	// The ID of the project to create the sink in. If omitted, the project associated with the provider is
 	// used.
@@ -149,11 +151,12 @@ type ProjectSinkState struct {
 	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringPtrInput
-	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
-	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusionFilters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+	Exclusions ProjectSinkExclusionArrayInput
+	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter pulumi.StringPtrInput
-	// The name of the logging sink.
+	// A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
 	Name pulumi.StringPtrInput
 	// The ID of the project to create the sink in. If omitted, the project associated with the provider is
 	// used.
@@ -192,11 +195,12 @@ type projectSinkArgs struct {
 	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination string `pulumi:"destination"`
-	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
-	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusionFilters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+	Exclusions []ProjectSinkExclusion `pulumi:"exclusions"`
+	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter *string `pulumi:"filter"`
-	// The name of the logging sink.
+	// A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
 	Name *string `pulumi:"name"`
 	// The ID of the project to create the sink in. If omitted, the project associated with the provider is
 	// used.
@@ -229,11 +233,12 @@ type ProjectSinkArgs struct {
 	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringInput
-	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
-	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusionFilters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+	Exclusions ProjectSinkExclusionArrayInput
+	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter pulumi.StringPtrInput
-	// The name of the logging sink.
+	// A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
 	Name pulumi.StringPtrInput
 	// The ID of the project to create the sink in. If omitted, the project associated with the provider is
 	// used.

@@ -19,10 +19,13 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, alternative_location_id=None, authorized_network=None, connect_mode=None, create_time=None, current_location_id=None, display_name=None, host=None, id=None, labels=None, location_id=None, memory_size_gb=None, name=None, persistence_iam_identity=None, port=None, project=None, redis_configs=None, redis_version=None, region=None, reserved_ip_range=None, tier=None):
+    def __init__(__self__, alternative_location_id=None, auth_enabled=None, authorized_network=None, connect_mode=None, create_time=None, current_location_id=None, display_name=None, host=None, id=None, labels=None, location_id=None, memory_size_gb=None, name=None, persistence_iam_identity=None, port=None, project=None, redis_configs=None, redis_version=None, region=None, reserved_ip_range=None, tier=None):
         if alternative_location_id and not isinstance(alternative_location_id, str):
             raise TypeError("Expected argument 'alternative_location_id' to be a str")
         pulumi.set(__self__, "alternative_location_id", alternative_location_id)
+        if auth_enabled and not isinstance(auth_enabled, bool):
+            raise TypeError("Expected argument 'auth_enabled' to be a bool")
+        pulumi.set(__self__, "auth_enabled", auth_enabled)
         if authorized_network and not isinstance(authorized_network, str):
             raise TypeError("Expected argument 'authorized_network' to be a str")
         pulumi.set(__self__, "authorized_network", authorized_network)
@@ -87,6 +90,11 @@ class GetInstanceResult:
         return pulumi.get(self, "alternative_location_id")
 
     @property
+    @pulumi.getter(name="authEnabled")
+    def auth_enabled(self) -> bool:
+        return pulumi.get(self, "auth_enabled")
+
+    @property
     @pulumi.getter(name="authorizedNetwork")
     def authorized_network(self) -> str:
         return pulumi.get(self, "authorized_network")
@@ -114,10 +122,6 @@ class GetInstanceResult:
     @property
     @pulumi.getter
     def host(self) -> str:
-        """
-        Hostname or IP address of the exposed Redis endpoint used by clients
-        to connect to the service.
-        """
         return pulumi.get(self, "host")
 
     @property
@@ -156,9 +160,6 @@ class GetInstanceResult:
     @property
     @pulumi.getter
     def port(self) -> int:
-        """
-        The port number of the exposed Redis endpoint.
-        """
         return pulumi.get(self, "port")
 
     @property
@@ -199,6 +200,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             yield self
         return GetInstanceResult(
             alternative_location_id=self.alternative_location_id,
+            auth_enabled=self.auth_enabled,
             authorized_network=self.authorized_network,
             connect_mode=self.connect_mode,
             create_time=self.create_time,
@@ -225,9 +227,7 @@ def get_instance(name: Optional[str] = None,
                  region: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceResult:
     """
-    Get information about a Google Cloud Redis instance. For more information see
-    the [official documentation](https://cloud.google.com/memorystore/docs/redis)
-    and [API](https://cloud.google.com/memorystore/docs/redis/apis).
+    Get info about a Google Cloud Redis instance.
 
 
     :param str name: The name of a Redis instance.
@@ -248,6 +248,7 @@ def get_instance(name: Optional[str] = None,
 
     return AwaitableGetInstanceResult(
         alternative_location_id=__ret__.alternative_location_id,
+        auth_enabled=__ret__.auth_enabled,
         authorized_network=__ret__.authorized_network,
         connect_mode=__ret__.connect_mode,
         create_time=__ret__.create_time,

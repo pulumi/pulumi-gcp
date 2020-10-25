@@ -41,6 +41,12 @@ namespace Pulumi.Gcp.OsLogin
         public Output<string> Key { get; private set; } = null!;
 
         /// <summary>
+        /// The project ID of the Google Cloud Platform project.
+        /// </summary>
+        [Output("project")]
+        public Output<string?> Project { get; private set; } = null!;
+
+        /// <summary>
         /// The user email.
         /// </summary>
         [Output("user")]
@@ -105,6 +111,12 @@ namespace Pulumi.Gcp.OsLogin
         public Input<string> Key { get; set; } = null!;
 
         /// <summary>
+        /// The project ID of the Google Cloud Platform project.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        /// <summary>
         /// The user email.
         /// </summary>
         [Input("user", required: true)]
@@ -134,6 +146,12 @@ namespace Pulumi.Gcp.OsLogin
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
+
+        /// <summary>
+        /// The project ID of the Google Cloud Platform project.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// The user email.

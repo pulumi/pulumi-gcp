@@ -74,6 +74,11 @@ export class Queue extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly retryConfig!: pulumi.Output<outputs.cloudtasks.QueueRetryConfig>;
+    /**
+     * Configuration options for writing logs to Stackdriver Logging.
+     * Structure is documented below.
+     */
+    public readonly stackdriverLoggingConfig!: pulumi.Output<outputs.cloudtasks.QueueStackdriverLoggingConfig | undefined>;
 
     /**
      * Create a Queue resource with the given unique name, arguments, and options.
@@ -93,6 +98,7 @@ export class Queue extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
             inputs["rateLimits"] = state ? state.rateLimits : undefined;
             inputs["retryConfig"] = state ? state.retryConfig : undefined;
+            inputs["stackdriverLoggingConfig"] = state ? state.stackdriverLoggingConfig : undefined;
         } else {
             const args = argsOrState as QueueArgs | undefined;
             if (!args || args.location === undefined) {
@@ -104,6 +110,7 @@ export class Queue extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["rateLimits"] = args ? args.rateLimits : undefined;
             inputs["retryConfig"] = args ? args.retryConfig : undefined;
+            inputs["stackdriverLoggingConfig"] = args ? args.stackdriverLoggingConfig : undefined;
         }
         if (!opts) {
             opts = {}
@@ -155,6 +162,11 @@ export interface QueueState {
      * Structure is documented below.
      */
     readonly retryConfig?: pulumi.Input<inputs.cloudtasks.QueueRetryConfig>;
+    /**
+     * Configuration options for writing logs to Stackdriver Logging.
+     * Structure is documented below.
+     */
+    readonly stackdriverLoggingConfig?: pulumi.Input<inputs.cloudtasks.QueueStackdriverLoggingConfig>;
 }
 
 /**
@@ -196,4 +208,9 @@ export interface QueueArgs {
      * Structure is documented below.
      */
     readonly retryConfig?: pulumi.Input<inputs.cloudtasks.QueueRetryConfig>;
+    /**
+     * Configuration options for writing logs to Stackdriver Logging.
+     * Structure is documented below.
+     */
+    readonly stackdriverLoggingConfig?: pulumi.Input<inputs.cloudtasks.QueueStackdriverLoggingConfig>;
 }

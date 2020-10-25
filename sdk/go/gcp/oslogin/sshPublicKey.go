@@ -28,6 +28,8 @@ type SshPublicKey struct {
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
 	// Public key text in SSH format, defined by RFC4253 section 6.6.
 	Key pulumi.StringOutput `pulumi:"key"`
+	// The project ID of the Google Cloud Platform project.
+	Project pulumi.StringPtrOutput `pulumi:"project"`
 	// The user email.
 	User pulumi.StringOutput `pulumi:"user"`
 }
@@ -72,6 +74,8 @@ type sshPublicKeyState struct {
 	Fingerprint *string `pulumi:"fingerprint"`
 	// Public key text in SSH format, defined by RFC4253 section 6.6.
 	Key *string `pulumi:"key"`
+	// The project ID of the Google Cloud Platform project.
+	Project *string `pulumi:"project"`
 	// The user email.
 	User *string `pulumi:"user"`
 }
@@ -83,6 +87,8 @@ type SshPublicKeyState struct {
 	Fingerprint pulumi.StringPtrInput
 	// Public key text in SSH format, defined by RFC4253 section 6.6.
 	Key pulumi.StringPtrInput
+	// The project ID of the Google Cloud Platform project.
+	Project pulumi.StringPtrInput
 	// The user email.
 	User pulumi.StringPtrInput
 }
@@ -96,6 +102,8 @@ type sshPublicKeyArgs struct {
 	ExpirationTimeUsec *string `pulumi:"expirationTimeUsec"`
 	// Public key text in SSH format, defined by RFC4253 section 6.6.
 	Key string `pulumi:"key"`
+	// The project ID of the Google Cloud Platform project.
+	Project *string `pulumi:"project"`
 	// The user email.
 	User string `pulumi:"user"`
 }
@@ -106,6 +114,8 @@ type SshPublicKeyArgs struct {
 	ExpirationTimeUsec pulumi.StringPtrInput
 	// Public key text in SSH format, defined by RFC4253 section 6.6.
 	Key pulumi.StringInput
+	// The project ID of the Google Cloud Platform project.
+	Project pulumi.StringPtrInput
 	// The user email.
 	User pulumi.StringInput
 }

@@ -698,6 +698,145 @@ func (o QueueRetryConfigPtrOutput) MinBackoff() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type QueueStackdriverLoggingConfig struct {
+	// Specifies the fraction of operations to write to Stackdriver Logging.
+	// This field may contain any value between 0.0 and 1.0, inclusive. 0.0 is the
+	// default and means that no operations are logged.
+	SamplingRatio float64 `pulumi:"samplingRatio"`
+}
+
+// QueueStackdriverLoggingConfigInput is an input type that accepts QueueStackdriverLoggingConfigArgs and QueueStackdriverLoggingConfigOutput values.
+// You can construct a concrete instance of `QueueStackdriverLoggingConfigInput` via:
+//
+//          QueueStackdriverLoggingConfigArgs{...}
+type QueueStackdriverLoggingConfigInput interface {
+	pulumi.Input
+
+	ToQueueStackdriverLoggingConfigOutput() QueueStackdriverLoggingConfigOutput
+	ToQueueStackdriverLoggingConfigOutputWithContext(context.Context) QueueStackdriverLoggingConfigOutput
+}
+
+type QueueStackdriverLoggingConfigArgs struct {
+	// Specifies the fraction of operations to write to Stackdriver Logging.
+	// This field may contain any value between 0.0 and 1.0, inclusive. 0.0 is the
+	// default and means that no operations are logged.
+	SamplingRatio pulumi.Float64Input `pulumi:"samplingRatio"`
+}
+
+func (QueueStackdriverLoggingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueueStackdriverLoggingConfig)(nil)).Elem()
+}
+
+func (i QueueStackdriverLoggingConfigArgs) ToQueueStackdriverLoggingConfigOutput() QueueStackdriverLoggingConfigOutput {
+	return i.ToQueueStackdriverLoggingConfigOutputWithContext(context.Background())
+}
+
+func (i QueueStackdriverLoggingConfigArgs) ToQueueStackdriverLoggingConfigOutputWithContext(ctx context.Context) QueueStackdriverLoggingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueueStackdriverLoggingConfigOutput)
+}
+
+func (i QueueStackdriverLoggingConfigArgs) ToQueueStackdriverLoggingConfigPtrOutput() QueueStackdriverLoggingConfigPtrOutput {
+	return i.ToQueueStackdriverLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i QueueStackdriverLoggingConfigArgs) ToQueueStackdriverLoggingConfigPtrOutputWithContext(ctx context.Context) QueueStackdriverLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueueStackdriverLoggingConfigOutput).ToQueueStackdriverLoggingConfigPtrOutputWithContext(ctx)
+}
+
+// QueueStackdriverLoggingConfigPtrInput is an input type that accepts QueueStackdriverLoggingConfigArgs, QueueStackdriverLoggingConfigPtr and QueueStackdriverLoggingConfigPtrOutput values.
+// You can construct a concrete instance of `QueueStackdriverLoggingConfigPtrInput` via:
+//
+//          QueueStackdriverLoggingConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type QueueStackdriverLoggingConfigPtrInput interface {
+	pulumi.Input
+
+	ToQueueStackdriverLoggingConfigPtrOutput() QueueStackdriverLoggingConfigPtrOutput
+	ToQueueStackdriverLoggingConfigPtrOutputWithContext(context.Context) QueueStackdriverLoggingConfigPtrOutput
+}
+
+type queueStackdriverLoggingConfigPtrType QueueStackdriverLoggingConfigArgs
+
+func QueueStackdriverLoggingConfigPtr(v *QueueStackdriverLoggingConfigArgs) QueueStackdriverLoggingConfigPtrInput {
+	return (*queueStackdriverLoggingConfigPtrType)(v)
+}
+
+func (*queueStackdriverLoggingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueueStackdriverLoggingConfig)(nil)).Elem()
+}
+
+func (i *queueStackdriverLoggingConfigPtrType) ToQueueStackdriverLoggingConfigPtrOutput() QueueStackdriverLoggingConfigPtrOutput {
+	return i.ToQueueStackdriverLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *queueStackdriverLoggingConfigPtrType) ToQueueStackdriverLoggingConfigPtrOutputWithContext(ctx context.Context) QueueStackdriverLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueueStackdriverLoggingConfigPtrOutput)
+}
+
+type QueueStackdriverLoggingConfigOutput struct{ *pulumi.OutputState }
+
+func (QueueStackdriverLoggingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueueStackdriverLoggingConfig)(nil)).Elem()
+}
+
+func (o QueueStackdriverLoggingConfigOutput) ToQueueStackdriverLoggingConfigOutput() QueueStackdriverLoggingConfigOutput {
+	return o
+}
+
+func (o QueueStackdriverLoggingConfigOutput) ToQueueStackdriverLoggingConfigOutputWithContext(ctx context.Context) QueueStackdriverLoggingConfigOutput {
+	return o
+}
+
+func (o QueueStackdriverLoggingConfigOutput) ToQueueStackdriverLoggingConfigPtrOutput() QueueStackdriverLoggingConfigPtrOutput {
+	return o.ToQueueStackdriverLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o QueueStackdriverLoggingConfigOutput) ToQueueStackdriverLoggingConfigPtrOutputWithContext(ctx context.Context) QueueStackdriverLoggingConfigPtrOutput {
+	return o.ApplyT(func(v QueueStackdriverLoggingConfig) *QueueStackdriverLoggingConfig {
+		return &v
+	}).(QueueStackdriverLoggingConfigPtrOutput)
+}
+
+// Specifies the fraction of operations to write to Stackdriver Logging.
+// This field may contain any value between 0.0 and 1.0, inclusive. 0.0 is the
+// default and means that no operations are logged.
+func (o QueueStackdriverLoggingConfigOutput) SamplingRatio() pulumi.Float64Output {
+	return o.ApplyT(func(v QueueStackdriverLoggingConfig) float64 { return v.SamplingRatio }).(pulumi.Float64Output)
+}
+
+type QueueStackdriverLoggingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (QueueStackdriverLoggingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueueStackdriverLoggingConfig)(nil)).Elem()
+}
+
+func (o QueueStackdriverLoggingConfigPtrOutput) ToQueueStackdriverLoggingConfigPtrOutput() QueueStackdriverLoggingConfigPtrOutput {
+	return o
+}
+
+func (o QueueStackdriverLoggingConfigPtrOutput) ToQueueStackdriverLoggingConfigPtrOutputWithContext(ctx context.Context) QueueStackdriverLoggingConfigPtrOutput {
+	return o
+}
+
+func (o QueueStackdriverLoggingConfigPtrOutput) Elem() QueueStackdriverLoggingConfigOutput {
+	return o.ApplyT(func(v *QueueStackdriverLoggingConfig) QueueStackdriverLoggingConfig { return *v }).(QueueStackdriverLoggingConfigOutput)
+}
+
+// Specifies the fraction of operations to write to Stackdriver Logging.
+// This field may contain any value between 0.0 and 1.0, inclusive. 0.0 is the
+// default and means that no operations are logged.
+func (o QueueStackdriverLoggingConfigPtrOutput) SamplingRatio() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *QueueStackdriverLoggingConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.SamplingRatio
+	}).(pulumi.Float64PtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(QueueAppEngineRoutingOverrideOutput{})
 	pulumi.RegisterOutputType(QueueAppEngineRoutingOverridePtrOutput{})
@@ -705,4 +844,6 @@ func init() {
 	pulumi.RegisterOutputType(QueueRateLimitsPtrOutput{})
 	pulumi.RegisterOutputType(QueueRetryConfigOutput{})
 	pulumi.RegisterOutputType(QueueRetryConfigPtrOutput{})
+	pulumi.RegisterOutputType(QueueStackdriverLoggingConfigOutput{})
+	pulumi.RegisterOutputType(QueueStackdriverLoggingConfigPtrOutput{})
 }

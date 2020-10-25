@@ -51,7 +51,6 @@ export class NodeGroup extends pulumi.CustomResource {
     }
 
     /**
-     * -
      * If you use sole-tenant nodes for your workloads, you can use the node
      * group autoscaler to automatically manage the sizes of your node groups.
      * Structure is documented below.
@@ -65,6 +64,10 @@ export class NodeGroup extends pulumi.CustomResource {
      * An optional textual description of the resource.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
+     */
+    public readonly maintenancePolicy!: pulumi.Output<string | undefined>;
     /**
      * Name of the resource.
      */
@@ -106,6 +109,7 @@ export class NodeGroup extends pulumi.CustomResource {
             inputs["autoscalingPolicy"] = state ? state.autoscalingPolicy : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["maintenancePolicy"] = state ? state.maintenancePolicy : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["nodeTemplate"] = state ? state.nodeTemplate : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -122,6 +126,7 @@ export class NodeGroup extends pulumi.CustomResource {
             }
             inputs["autoscalingPolicy"] = args ? args.autoscalingPolicy : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["nodeTemplate"] = args ? args.nodeTemplate : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -146,7 +151,6 @@ export class NodeGroup extends pulumi.CustomResource {
  */
 export interface NodeGroupState {
     /**
-     * -
      * If you use sole-tenant nodes for your workloads, you can use the node
      * group autoscaler to automatically manage the sizes of your node groups.
      * Structure is documented below.
@@ -160,6 +164,10 @@ export interface NodeGroupState {
      * An optional textual description of the resource.
      */
     readonly description?: pulumi.Input<string>;
+    /**
+     * Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
+     */
+    readonly maintenancePolicy?: pulumi.Input<string>;
     /**
      * Name of the resource.
      */
@@ -192,7 +200,6 @@ export interface NodeGroupState {
  */
 export interface NodeGroupArgs {
     /**
-     * -
      * If you use sole-tenant nodes for your workloads, you can use the node
      * group autoscaler to automatically manage the sizes of your node groups.
      * Structure is documented below.
@@ -202,6 +209,10 @@ export interface NodeGroupArgs {
      * An optional textual description of the resource.
      */
     readonly description?: pulumi.Input<string>;
+    /**
+     * Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
+     */
+    readonly maintenancePolicy?: pulumi.Input<string>;
     /**
      * Name of the resource.
      */

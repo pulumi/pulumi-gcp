@@ -24,6 +24,9 @@ type OrganizationSink struct {
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
 	Destination pulumi.StringOutput `pulumi:"destination"`
+	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
+	// one of exclusion_filters it will not be exported.
+	Exclusions OrganizationSinkExclusionArrayOutput `pulumi:"exclusions"`
 	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
 	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
@@ -79,6 +82,9 @@ type organizationSinkState struct {
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
 	Destination *string `pulumi:"destination"`
+	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
+	// one of exclusion_filters it will not be exported.
+	Exclusions []OrganizationSinkExclusion `pulumi:"exclusions"`
 	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
 	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
@@ -101,6 +107,9 @@ type OrganizationSinkState struct {
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
 	Destination pulumi.StringPtrInput
+	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
+	// one of exclusion_filters it will not be exported.
+	Exclusions OrganizationSinkExclusionArrayInput
 	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
 	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
@@ -127,6 +136,9 @@ type organizationSinkArgs struct {
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
 	Destination string `pulumi:"destination"`
+	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
+	// one of exclusion_filters it will not be exported.
+	Exclusions []OrganizationSinkExclusion `pulumi:"exclusions"`
 	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
 	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
@@ -147,6 +159,9 @@ type OrganizationSinkArgs struct {
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
 	Destination pulumi.StringInput
+	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
+	// one of exclusion_filters it will not be exported.
+	Exclusions OrganizationSinkExclusionArrayInput
 	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
 	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.

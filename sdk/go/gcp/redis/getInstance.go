@@ -7,9 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Get information about a Google Cloud Redis instance. For more information see
-// the [official documentation](https://cloud.google.com/memorystore/docs/redis)
-// and [API](https://cloud.google.com/memorystore/docs/redis/apis).
+// Get info about a Google Cloud Redis instance.
 func LookupInstance(ctx *pulumi.Context, args *LookupInstanceArgs, opts ...pulumi.InvokeOption) (*LookupInstanceResult, error) {
 	var rv LookupInstanceResult
 	err := ctx.Invoke("gcp:redis/getInstance:getInstance", args, &rv, opts...)
@@ -34,14 +32,13 @@ type LookupInstanceArgs struct {
 // A collection of values returned by getInstance.
 type LookupInstanceResult struct {
 	AlternativeLocationId string `pulumi:"alternativeLocationId"`
+	AuthEnabled           bool   `pulumi:"authEnabled"`
 	AuthorizedNetwork     string `pulumi:"authorizedNetwork"`
 	ConnectMode           string `pulumi:"connectMode"`
 	CreateTime            string `pulumi:"createTime"`
 	CurrentLocationId     string `pulumi:"currentLocationId"`
 	DisplayName           string `pulumi:"displayName"`
-	// Hostname or IP address of the exposed Redis endpoint used by clients
-	// to connect to the service.
-	Host string `pulumi:"host"`
+	Host                  string `pulumi:"host"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                     string            `pulumi:"id"`
 	Labels                 map[string]string `pulumi:"labels"`
@@ -49,12 +46,11 @@ type LookupInstanceResult struct {
 	MemorySizeGb           int               `pulumi:"memorySizeGb"`
 	Name                   string            `pulumi:"name"`
 	PersistenceIamIdentity string            `pulumi:"persistenceIamIdentity"`
-	// The port number of the exposed Redis endpoint.
-	Port            int               `pulumi:"port"`
-	Project         *string           `pulumi:"project"`
-	RedisConfigs    map[string]string `pulumi:"redisConfigs"`
-	RedisVersion    string            `pulumi:"redisVersion"`
-	Region          *string           `pulumi:"region"`
-	ReservedIpRange string            `pulumi:"reservedIpRange"`
-	Tier            string            `pulumi:"tier"`
+	Port                   int               `pulumi:"port"`
+	Project                *string           `pulumi:"project"`
+	RedisConfigs           map[string]string `pulumi:"redisConfigs"`
+	RedisVersion           string            `pulumi:"redisVersion"`
+	Region                 *string           `pulumi:"region"`
+	ReservedIpRange        string            `pulumi:"reservedIpRange"`
+	Tier                   string            `pulumi:"tier"`
 }

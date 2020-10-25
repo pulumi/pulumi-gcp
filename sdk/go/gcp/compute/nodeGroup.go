@@ -27,7 +27,6 @@ import (
 type NodeGroup struct {
 	pulumi.CustomResourceState
 
-	// -
 	// If you use sole-tenant nodes for your workloads, you can use the node
 	// group autoscaler to automatically manage the sizes of your node groups.
 	// Structure is documented below.
@@ -36,6 +35,8 @@ type NodeGroup struct {
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional textual description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
+	MaintenancePolicy pulumi.StringPtrOutput `pulumi:"maintenancePolicy"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The URL of the node template to which this node group belongs.
@@ -85,7 +86,6 @@ func GetNodeGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NodeGroup resources.
 type nodeGroupState struct {
-	// -
 	// If you use sole-tenant nodes for your workloads, you can use the node
 	// group autoscaler to automatically manage the sizes of your node groups.
 	// Structure is documented below.
@@ -94,6 +94,8 @@ type nodeGroupState struct {
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional textual description of the resource.
 	Description *string `pulumi:"description"`
+	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
+	MaintenancePolicy *string `pulumi:"maintenancePolicy"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
 	// The URL of the node template to which this node group belongs.
@@ -110,7 +112,6 @@ type nodeGroupState struct {
 }
 
 type NodeGroupState struct {
-	// -
 	// If you use sole-tenant nodes for your workloads, you can use the node
 	// group autoscaler to automatically manage the sizes of your node groups.
 	// Structure is documented below.
@@ -119,6 +120,8 @@ type NodeGroupState struct {
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional textual description of the resource.
 	Description pulumi.StringPtrInput
+	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
+	MaintenancePolicy pulumi.StringPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
 	// The URL of the node template to which this node group belongs.
@@ -139,13 +142,14 @@ func (NodeGroupState) ElementType() reflect.Type {
 }
 
 type nodeGroupArgs struct {
-	// -
 	// If you use sole-tenant nodes for your workloads, you can use the node
 	// group autoscaler to automatically manage the sizes of your node groups.
 	// Structure is documented below.
 	AutoscalingPolicy *NodeGroupAutoscalingPolicy `pulumi:"autoscalingPolicy"`
 	// An optional textual description of the resource.
 	Description *string `pulumi:"description"`
+	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
+	MaintenancePolicy *string `pulumi:"maintenancePolicy"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
 	// The URL of the node template to which this node group belongs.
@@ -161,13 +165,14 @@ type nodeGroupArgs struct {
 
 // The set of arguments for constructing a NodeGroup resource.
 type NodeGroupArgs struct {
-	// -
 	// If you use sole-tenant nodes for your workloads, you can use the node
 	// group autoscaler to automatically manage the sizes of your node groups.
 	// Structure is documented below.
 	AutoscalingPolicy NodeGroupAutoscalingPolicyPtrInput
 	// An optional textual description of the resource.
 	Description pulumi.StringPtrInput
+	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
+	MaintenancePolicy pulumi.StringPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
 	// The URL of the node template to which this node group belongs.

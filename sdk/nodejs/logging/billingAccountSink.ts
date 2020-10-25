@@ -62,6 +62,11 @@ export class BillingAccountSink extends pulumi.CustomResource {
      */
     public readonly destination!: pulumi.Output<string>;
     /**
+     * Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
+     * one of exclusion_filters it will not be exported.
+     */
+    public readonly exclusions!: pulumi.Output<outputs.logging.BillingAccountSinkExclusion[] | undefined>;
+    /**
      * The filter to apply when exporting logs. Only log entries that match the filter are exported.
      * See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
      * write a filter.
@@ -92,6 +97,7 @@ export class BillingAccountSink extends pulumi.CustomResource {
             inputs["bigqueryOptions"] = state ? state.bigqueryOptions : undefined;
             inputs["billingAccount"] = state ? state.billingAccount : undefined;
             inputs["destination"] = state ? state.destination : undefined;
+            inputs["exclusions"] = state ? state.exclusions : undefined;
             inputs["filter"] = state ? state.filter : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["writerIdentity"] = state ? state.writerIdentity : undefined;
@@ -106,6 +112,7 @@ export class BillingAccountSink extends pulumi.CustomResource {
             inputs["bigqueryOptions"] = args ? args.bigqueryOptions : undefined;
             inputs["billingAccount"] = args ? args.billingAccount : undefined;
             inputs["destination"] = args ? args.destination : undefined;
+            inputs["exclusions"] = args ? args.exclusions : undefined;
             inputs["filter"] = args ? args.filter : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["writerIdentity"] = undefined /*out*/;
@@ -142,6 +149,11 @@ export interface BillingAccountSinkState {
      * The writer associated with the sink must have access to write to the above resource.
      */
     readonly destination?: pulumi.Input<string>;
+    /**
+     * Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
+     * one of exclusion_filters it will not be exported.
+     */
+    readonly exclusions?: pulumi.Input<pulumi.Input<inputs.logging.BillingAccountSinkExclusion>[]>;
     /**
      * The filter to apply when exporting logs. Only log entries that match the filter are exported.
      * See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
@@ -180,6 +192,11 @@ export interface BillingAccountSinkArgs {
      * The writer associated with the sink must have access to write to the above resource.
      */
     readonly destination: pulumi.Input<string>;
+    /**
+     * Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
+     * one of exclusion_filters it will not be exported.
+     */
+    readonly exclusions?: pulumi.Input<pulumi.Input<inputs.logging.BillingAccountSinkExclusion>[]>;
     /**
      * The filter to apply when exporting logs. Only log entries that match the filter are exported.
      * See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to

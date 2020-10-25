@@ -10,7 +10,9 @@ from .. import _utilities, _tables
 
 __all__ = [
     'BillingAccountSinkBigqueryOptionsArgs',
+    'BillingAccountSinkExclusionArgs',
     'FolderSinkBigqueryOptionsArgs',
+    'FolderSinkExclusionArgs',
     'MetricBucketOptionsArgs',
     'MetricBucketOptionsExplicitBucketsArgs',
     'MetricBucketOptionsExponentialBucketsArgs',
@@ -18,7 +20,9 @@ __all__ = [
     'MetricMetricDescriptorArgs',
     'MetricMetricDescriptorLabelArgs',
     'OrganizationSinkBigqueryOptionsArgs',
+    'OrganizationSinkExclusionArgs',
     'ProjectSinkBigqueryOptionsArgs',
+    'ProjectSinkExclusionArgs',
 ]
 
 @pulumi.input_type
@@ -50,6 +54,71 @@ class BillingAccountSinkBigqueryOptionsArgs:
 
 
 @pulumi.input_type
+class BillingAccountSinkExclusionArgs:
+    def __init__(__self__, *,
+                 filter: pulumi.Input[str],
+                 name: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] filter: The filter to apply when exporting logs. Only log entries that match the filter are exported.
+               See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+               write a filter.
+        :param pulumi.Input[str] name: The name of the logging sink.
+        """
+        pulumi.set(__self__, "filter", filter)
+        pulumi.set(__self__, "name", name)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> pulumi.Input[str]:
+        """
+        The filter to apply when exporting logs. Only log entries that match the filter are exported.
+        See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+        write a filter.
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: pulumi.Input[str]):
+        pulumi.set(self, "filter", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the logging sink.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+
+@pulumi.input_type
 class FolderSinkBigqueryOptionsArgs:
     def __init__(__self__, *,
                  use_partitioned_tables: pulumi.Input[bool]):
@@ -75,6 +144,71 @@ class FolderSinkBigqueryOptionsArgs:
     @use_partitioned_tables.setter
     def use_partitioned_tables(self, value: pulumi.Input[bool]):
         pulumi.set(self, "use_partitioned_tables", value)
+
+
+@pulumi.input_type
+class FolderSinkExclusionArgs:
+    def __init__(__self__, *,
+                 filter: pulumi.Input[str],
+                 name: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] filter: The filter to apply when exporting logs. Only log entries that match the filter are exported.
+               See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+               write a filter.
+        :param pulumi.Input[str] name: The name of the logging sink.
+        """
+        pulumi.set(__self__, "filter", filter)
+        pulumi.set(__self__, "name", name)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> pulumi.Input[str]:
+        """
+        The filter to apply when exporting logs. Only log entries that match the filter are exported.
+        See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+        write a filter.
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: pulumi.Input[str]):
+        pulumi.set(self, "filter", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the logging sink.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
 
 
 @pulumi.input_type
@@ -474,6 +608,71 @@ class OrganizationSinkBigqueryOptionsArgs:
 
 
 @pulumi.input_type
+class OrganizationSinkExclusionArgs:
+    def __init__(__self__, *,
+                 filter: pulumi.Input[str],
+                 name: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] filter: The filter to apply when exporting logs. Only log entries that match the filter are exported.
+               See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+               write a filter.
+        :param pulumi.Input[str] name: The name of the logging sink.
+        """
+        pulumi.set(__self__, "filter", filter)
+        pulumi.set(__self__, "name", name)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> pulumi.Input[str]:
+        """
+        The filter to apply when exporting logs. Only log entries that match the filter are exported.
+        See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+        write a filter.
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: pulumi.Input[str]):
+        pulumi.set(self, "filter", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the logging sink.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+
+@pulumi.input_type
 class ProjectSinkBigqueryOptionsArgs:
     def __init__(__self__, *,
                  use_partitioned_tables: pulumi.Input[bool]):
@@ -499,5 +698,76 @@ class ProjectSinkBigqueryOptionsArgs:
     @use_partitioned_tables.setter
     def use_partitioned_tables(self, value: pulumi.Input[bool]):
         pulumi.set(self, "use_partitioned_tables", value)
+
+
+@pulumi.input_type
+class ProjectSinkExclusionArgs:
+    def __init__(__self__, *,
+                 filter: pulumi.Input[str],
+                 name: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] filter: An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+               write a filter.
+        :param pulumi.Input[str] name: A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
+        :param pulumi.Input[str] description: A description of this exclusion.
+        :param pulumi.Input[bool] disabled: If set to True, then this exclusion is disabled and it does not exclude any log entries.
+        """
+        pulumi.set(__self__, "filter", filter)
+        pulumi.set(__self__, "name", name)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> pulumi.Input[str]:
+        """
+        An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+        write a filter.
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: pulumi.Input[str]):
+        pulumi.set(self, "filter", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description of this exclusion.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to True, then this exclusion is disabled and it does not exclude any log entries.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
 
 

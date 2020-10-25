@@ -153,6 +153,130 @@ func (o BillingAccountSinkBigqueryOptionsPtrOutput) UsePartitionedTables() pulum
 	}).(pulumi.BoolPtrOutput)
 }
 
+type BillingAccountSinkExclusion struct {
+	Description *string `pulumi:"description"`
+	Disabled    *bool   `pulumi:"disabled"`
+	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
+	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+	// write a filter.
+	Filter string `pulumi:"filter"`
+	// The name of the logging sink.
+	Name string `pulumi:"name"`
+}
+
+// BillingAccountSinkExclusionInput is an input type that accepts BillingAccountSinkExclusionArgs and BillingAccountSinkExclusionOutput values.
+// You can construct a concrete instance of `BillingAccountSinkExclusionInput` via:
+//
+//          BillingAccountSinkExclusionArgs{...}
+type BillingAccountSinkExclusionInput interface {
+	pulumi.Input
+
+	ToBillingAccountSinkExclusionOutput() BillingAccountSinkExclusionOutput
+	ToBillingAccountSinkExclusionOutputWithContext(context.Context) BillingAccountSinkExclusionOutput
+}
+
+type BillingAccountSinkExclusionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Disabled    pulumi.BoolPtrInput   `pulumi:"disabled"`
+	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
+	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+	// write a filter.
+	Filter pulumi.StringInput `pulumi:"filter"`
+	// The name of the logging sink.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (BillingAccountSinkExclusionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BillingAccountSinkExclusion)(nil)).Elem()
+}
+
+func (i BillingAccountSinkExclusionArgs) ToBillingAccountSinkExclusionOutput() BillingAccountSinkExclusionOutput {
+	return i.ToBillingAccountSinkExclusionOutputWithContext(context.Background())
+}
+
+func (i BillingAccountSinkExclusionArgs) ToBillingAccountSinkExclusionOutputWithContext(ctx context.Context) BillingAccountSinkExclusionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BillingAccountSinkExclusionOutput)
+}
+
+// BillingAccountSinkExclusionArrayInput is an input type that accepts BillingAccountSinkExclusionArray and BillingAccountSinkExclusionArrayOutput values.
+// You can construct a concrete instance of `BillingAccountSinkExclusionArrayInput` via:
+//
+//          BillingAccountSinkExclusionArray{ BillingAccountSinkExclusionArgs{...} }
+type BillingAccountSinkExclusionArrayInput interface {
+	pulumi.Input
+
+	ToBillingAccountSinkExclusionArrayOutput() BillingAccountSinkExclusionArrayOutput
+	ToBillingAccountSinkExclusionArrayOutputWithContext(context.Context) BillingAccountSinkExclusionArrayOutput
+}
+
+type BillingAccountSinkExclusionArray []BillingAccountSinkExclusionInput
+
+func (BillingAccountSinkExclusionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BillingAccountSinkExclusion)(nil)).Elem()
+}
+
+func (i BillingAccountSinkExclusionArray) ToBillingAccountSinkExclusionArrayOutput() BillingAccountSinkExclusionArrayOutput {
+	return i.ToBillingAccountSinkExclusionArrayOutputWithContext(context.Background())
+}
+
+func (i BillingAccountSinkExclusionArray) ToBillingAccountSinkExclusionArrayOutputWithContext(ctx context.Context) BillingAccountSinkExclusionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BillingAccountSinkExclusionArrayOutput)
+}
+
+type BillingAccountSinkExclusionOutput struct{ *pulumi.OutputState }
+
+func (BillingAccountSinkExclusionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BillingAccountSinkExclusion)(nil)).Elem()
+}
+
+func (o BillingAccountSinkExclusionOutput) ToBillingAccountSinkExclusionOutput() BillingAccountSinkExclusionOutput {
+	return o
+}
+
+func (o BillingAccountSinkExclusionOutput) ToBillingAccountSinkExclusionOutputWithContext(ctx context.Context) BillingAccountSinkExclusionOutput {
+	return o
+}
+
+func (o BillingAccountSinkExclusionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingAccountSinkExclusion) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o BillingAccountSinkExclusionOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BillingAccountSinkExclusion) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// The filter to apply when exporting logs. Only log entries that match the filter are exported.
+// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+// write a filter.
+func (o BillingAccountSinkExclusionOutput) Filter() pulumi.StringOutput {
+	return o.ApplyT(func(v BillingAccountSinkExclusion) string { return v.Filter }).(pulumi.StringOutput)
+}
+
+// The name of the logging sink.
+func (o BillingAccountSinkExclusionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v BillingAccountSinkExclusion) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type BillingAccountSinkExclusionArrayOutput struct{ *pulumi.OutputState }
+
+func (BillingAccountSinkExclusionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BillingAccountSinkExclusion)(nil)).Elem()
+}
+
+func (o BillingAccountSinkExclusionArrayOutput) ToBillingAccountSinkExclusionArrayOutput() BillingAccountSinkExclusionArrayOutput {
+	return o
+}
+
+func (o BillingAccountSinkExclusionArrayOutput) ToBillingAccountSinkExclusionArrayOutputWithContext(ctx context.Context) BillingAccountSinkExclusionArrayOutput {
+	return o
+}
+
+func (o BillingAccountSinkExclusionArrayOutput) Index(i pulumi.IntInput) BillingAccountSinkExclusionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BillingAccountSinkExclusion {
+		return vs[0].([]BillingAccountSinkExclusion)[vs[1].(int)]
+	}).(BillingAccountSinkExclusionOutput)
+}
+
 type FolderSinkBigqueryOptions struct {
 	// Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
 	// By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned
@@ -294,6 +418,130 @@ func (o FolderSinkBigqueryOptionsPtrOutput) UsePartitionedTables() pulumi.BoolPt
 		}
 		return &v.UsePartitionedTables
 	}).(pulumi.BoolPtrOutput)
+}
+
+type FolderSinkExclusion struct {
+	Description *string `pulumi:"description"`
+	Disabled    *bool   `pulumi:"disabled"`
+	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
+	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+	// write a filter.
+	Filter string `pulumi:"filter"`
+	// The name of the logging sink.
+	Name string `pulumi:"name"`
+}
+
+// FolderSinkExclusionInput is an input type that accepts FolderSinkExclusionArgs and FolderSinkExclusionOutput values.
+// You can construct a concrete instance of `FolderSinkExclusionInput` via:
+//
+//          FolderSinkExclusionArgs{...}
+type FolderSinkExclusionInput interface {
+	pulumi.Input
+
+	ToFolderSinkExclusionOutput() FolderSinkExclusionOutput
+	ToFolderSinkExclusionOutputWithContext(context.Context) FolderSinkExclusionOutput
+}
+
+type FolderSinkExclusionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Disabled    pulumi.BoolPtrInput   `pulumi:"disabled"`
+	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
+	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+	// write a filter.
+	Filter pulumi.StringInput `pulumi:"filter"`
+	// The name of the logging sink.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (FolderSinkExclusionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FolderSinkExclusion)(nil)).Elem()
+}
+
+func (i FolderSinkExclusionArgs) ToFolderSinkExclusionOutput() FolderSinkExclusionOutput {
+	return i.ToFolderSinkExclusionOutputWithContext(context.Background())
+}
+
+func (i FolderSinkExclusionArgs) ToFolderSinkExclusionOutputWithContext(ctx context.Context) FolderSinkExclusionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FolderSinkExclusionOutput)
+}
+
+// FolderSinkExclusionArrayInput is an input type that accepts FolderSinkExclusionArray and FolderSinkExclusionArrayOutput values.
+// You can construct a concrete instance of `FolderSinkExclusionArrayInput` via:
+//
+//          FolderSinkExclusionArray{ FolderSinkExclusionArgs{...} }
+type FolderSinkExclusionArrayInput interface {
+	pulumi.Input
+
+	ToFolderSinkExclusionArrayOutput() FolderSinkExclusionArrayOutput
+	ToFolderSinkExclusionArrayOutputWithContext(context.Context) FolderSinkExclusionArrayOutput
+}
+
+type FolderSinkExclusionArray []FolderSinkExclusionInput
+
+func (FolderSinkExclusionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FolderSinkExclusion)(nil)).Elem()
+}
+
+func (i FolderSinkExclusionArray) ToFolderSinkExclusionArrayOutput() FolderSinkExclusionArrayOutput {
+	return i.ToFolderSinkExclusionArrayOutputWithContext(context.Background())
+}
+
+func (i FolderSinkExclusionArray) ToFolderSinkExclusionArrayOutputWithContext(ctx context.Context) FolderSinkExclusionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FolderSinkExclusionArrayOutput)
+}
+
+type FolderSinkExclusionOutput struct{ *pulumi.OutputState }
+
+func (FolderSinkExclusionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FolderSinkExclusion)(nil)).Elem()
+}
+
+func (o FolderSinkExclusionOutput) ToFolderSinkExclusionOutput() FolderSinkExclusionOutput {
+	return o
+}
+
+func (o FolderSinkExclusionOutput) ToFolderSinkExclusionOutputWithContext(ctx context.Context) FolderSinkExclusionOutput {
+	return o
+}
+
+func (o FolderSinkExclusionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FolderSinkExclusion) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o FolderSinkExclusionOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FolderSinkExclusion) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// The filter to apply when exporting logs. Only log entries that match the filter are exported.
+// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+// write a filter.
+func (o FolderSinkExclusionOutput) Filter() pulumi.StringOutput {
+	return o.ApplyT(func(v FolderSinkExclusion) string { return v.Filter }).(pulumi.StringOutput)
+}
+
+// The name of the logging sink.
+func (o FolderSinkExclusionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v FolderSinkExclusion) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type FolderSinkExclusionArrayOutput struct{ *pulumi.OutputState }
+
+func (FolderSinkExclusionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FolderSinkExclusion)(nil)).Elem()
+}
+
+func (o FolderSinkExclusionArrayOutput) ToFolderSinkExclusionArrayOutput() FolderSinkExclusionArrayOutput {
+	return o
+}
+
+func (o FolderSinkExclusionArrayOutput) ToFolderSinkExclusionArrayOutputWithContext(ctx context.Context) FolderSinkExclusionArrayOutput {
+	return o
+}
+
+func (o FolderSinkExclusionArrayOutput) Index(i pulumi.IntInput) FolderSinkExclusionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FolderSinkExclusion {
+		return vs[0].([]FolderSinkExclusion)[vs[1].(int)]
+	}).(FolderSinkExclusionOutput)
 }
 
 type MetricBucketOptions struct {
@@ -1480,6 +1728,130 @@ func (o OrganizationSinkBigqueryOptionsPtrOutput) UsePartitionedTables() pulumi.
 	}).(pulumi.BoolPtrOutput)
 }
 
+type OrganizationSinkExclusion struct {
+	Description *string `pulumi:"description"`
+	Disabled    *bool   `pulumi:"disabled"`
+	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
+	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+	// write a filter.
+	Filter string `pulumi:"filter"`
+	// The name of the logging sink.
+	Name string `pulumi:"name"`
+}
+
+// OrganizationSinkExclusionInput is an input type that accepts OrganizationSinkExclusionArgs and OrganizationSinkExclusionOutput values.
+// You can construct a concrete instance of `OrganizationSinkExclusionInput` via:
+//
+//          OrganizationSinkExclusionArgs{...}
+type OrganizationSinkExclusionInput interface {
+	pulumi.Input
+
+	ToOrganizationSinkExclusionOutput() OrganizationSinkExclusionOutput
+	ToOrganizationSinkExclusionOutputWithContext(context.Context) OrganizationSinkExclusionOutput
+}
+
+type OrganizationSinkExclusionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Disabled    pulumi.BoolPtrInput   `pulumi:"disabled"`
+	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
+	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+	// write a filter.
+	Filter pulumi.StringInput `pulumi:"filter"`
+	// The name of the logging sink.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (OrganizationSinkExclusionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationSinkExclusion)(nil)).Elem()
+}
+
+func (i OrganizationSinkExclusionArgs) ToOrganizationSinkExclusionOutput() OrganizationSinkExclusionOutput {
+	return i.ToOrganizationSinkExclusionOutputWithContext(context.Background())
+}
+
+func (i OrganizationSinkExclusionArgs) ToOrganizationSinkExclusionOutputWithContext(ctx context.Context) OrganizationSinkExclusionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSinkExclusionOutput)
+}
+
+// OrganizationSinkExclusionArrayInput is an input type that accepts OrganizationSinkExclusionArray and OrganizationSinkExclusionArrayOutput values.
+// You can construct a concrete instance of `OrganizationSinkExclusionArrayInput` via:
+//
+//          OrganizationSinkExclusionArray{ OrganizationSinkExclusionArgs{...} }
+type OrganizationSinkExclusionArrayInput interface {
+	pulumi.Input
+
+	ToOrganizationSinkExclusionArrayOutput() OrganizationSinkExclusionArrayOutput
+	ToOrganizationSinkExclusionArrayOutputWithContext(context.Context) OrganizationSinkExclusionArrayOutput
+}
+
+type OrganizationSinkExclusionArray []OrganizationSinkExclusionInput
+
+func (OrganizationSinkExclusionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OrganizationSinkExclusion)(nil)).Elem()
+}
+
+func (i OrganizationSinkExclusionArray) ToOrganizationSinkExclusionArrayOutput() OrganizationSinkExclusionArrayOutput {
+	return i.ToOrganizationSinkExclusionArrayOutputWithContext(context.Background())
+}
+
+func (i OrganizationSinkExclusionArray) ToOrganizationSinkExclusionArrayOutputWithContext(ctx context.Context) OrganizationSinkExclusionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSinkExclusionArrayOutput)
+}
+
+type OrganizationSinkExclusionOutput struct{ *pulumi.OutputState }
+
+func (OrganizationSinkExclusionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationSinkExclusion)(nil)).Elem()
+}
+
+func (o OrganizationSinkExclusionOutput) ToOrganizationSinkExclusionOutput() OrganizationSinkExclusionOutput {
+	return o
+}
+
+func (o OrganizationSinkExclusionOutput) ToOrganizationSinkExclusionOutputWithContext(ctx context.Context) OrganizationSinkExclusionOutput {
+	return o
+}
+
+func (o OrganizationSinkExclusionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OrganizationSinkExclusion) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o OrganizationSinkExclusionOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OrganizationSinkExclusion) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// The filter to apply when exporting logs. Only log entries that match the filter are exported.
+// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+// write a filter.
+func (o OrganizationSinkExclusionOutput) Filter() pulumi.StringOutput {
+	return o.ApplyT(func(v OrganizationSinkExclusion) string { return v.Filter }).(pulumi.StringOutput)
+}
+
+// The name of the logging sink.
+func (o OrganizationSinkExclusionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v OrganizationSinkExclusion) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type OrganizationSinkExclusionArrayOutput struct{ *pulumi.OutputState }
+
+func (OrganizationSinkExclusionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OrganizationSinkExclusion)(nil)).Elem()
+}
+
+func (o OrganizationSinkExclusionArrayOutput) ToOrganizationSinkExclusionArrayOutput() OrganizationSinkExclusionArrayOutput {
+	return o
+}
+
+func (o OrganizationSinkExclusionArrayOutput) ToOrganizationSinkExclusionArrayOutputWithContext(ctx context.Context) OrganizationSinkExclusionArrayOutput {
+	return o
+}
+
+func (o OrganizationSinkExclusionArrayOutput) Index(i pulumi.IntInput) OrganizationSinkExclusionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OrganizationSinkExclusion {
+		return vs[0].([]OrganizationSinkExclusion)[vs[1].(int)]
+	}).(OrganizationSinkExclusionOutput)
+}
+
 type ProjectSinkBigqueryOptions struct {
 	// Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
 	// By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned
@@ -1623,11 +1995,142 @@ func (o ProjectSinkBigqueryOptionsPtrOutput) UsePartitionedTables() pulumi.BoolP
 	}).(pulumi.BoolPtrOutput)
 }
 
+type ProjectSinkExclusion struct {
+	// A description of this exclusion.
+	Description *string `pulumi:"description"`
+	// If set to True, then this exclusion is disabled and it does not exclude any log entries.
+	Disabled *bool `pulumi:"disabled"`
+	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+	// write a filter.
+	Filter string `pulumi:"filter"`
+	// A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
+	Name string `pulumi:"name"`
+}
+
+// ProjectSinkExclusionInput is an input type that accepts ProjectSinkExclusionArgs and ProjectSinkExclusionOutput values.
+// You can construct a concrete instance of `ProjectSinkExclusionInput` via:
+//
+//          ProjectSinkExclusionArgs{...}
+type ProjectSinkExclusionInput interface {
+	pulumi.Input
+
+	ToProjectSinkExclusionOutput() ProjectSinkExclusionOutput
+	ToProjectSinkExclusionOutputWithContext(context.Context) ProjectSinkExclusionOutput
+}
+
+type ProjectSinkExclusionArgs struct {
+	// A description of this exclusion.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// If set to True, then this exclusion is disabled and it does not exclude any log entries.
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+	// write a filter.
+	Filter pulumi.StringInput `pulumi:"filter"`
+	// A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (ProjectSinkExclusionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectSinkExclusion)(nil)).Elem()
+}
+
+func (i ProjectSinkExclusionArgs) ToProjectSinkExclusionOutput() ProjectSinkExclusionOutput {
+	return i.ToProjectSinkExclusionOutputWithContext(context.Background())
+}
+
+func (i ProjectSinkExclusionArgs) ToProjectSinkExclusionOutputWithContext(ctx context.Context) ProjectSinkExclusionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectSinkExclusionOutput)
+}
+
+// ProjectSinkExclusionArrayInput is an input type that accepts ProjectSinkExclusionArray and ProjectSinkExclusionArrayOutput values.
+// You can construct a concrete instance of `ProjectSinkExclusionArrayInput` via:
+//
+//          ProjectSinkExclusionArray{ ProjectSinkExclusionArgs{...} }
+type ProjectSinkExclusionArrayInput interface {
+	pulumi.Input
+
+	ToProjectSinkExclusionArrayOutput() ProjectSinkExclusionArrayOutput
+	ToProjectSinkExclusionArrayOutputWithContext(context.Context) ProjectSinkExclusionArrayOutput
+}
+
+type ProjectSinkExclusionArray []ProjectSinkExclusionInput
+
+func (ProjectSinkExclusionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProjectSinkExclusion)(nil)).Elem()
+}
+
+func (i ProjectSinkExclusionArray) ToProjectSinkExclusionArrayOutput() ProjectSinkExclusionArrayOutput {
+	return i.ToProjectSinkExclusionArrayOutputWithContext(context.Background())
+}
+
+func (i ProjectSinkExclusionArray) ToProjectSinkExclusionArrayOutputWithContext(ctx context.Context) ProjectSinkExclusionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectSinkExclusionArrayOutput)
+}
+
+type ProjectSinkExclusionOutput struct{ *pulumi.OutputState }
+
+func (ProjectSinkExclusionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectSinkExclusion)(nil)).Elem()
+}
+
+func (o ProjectSinkExclusionOutput) ToProjectSinkExclusionOutput() ProjectSinkExclusionOutput {
+	return o
+}
+
+func (o ProjectSinkExclusionOutput) ToProjectSinkExclusionOutputWithContext(ctx context.Context) ProjectSinkExclusionOutput {
+	return o
+}
+
+// A description of this exclusion.
+func (o ProjectSinkExclusionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectSinkExclusion) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// If set to True, then this exclusion is disabled and it does not exclude any log entries.
+func (o ProjectSinkExclusionOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ProjectSinkExclusion) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+// write a filter.
+func (o ProjectSinkExclusionOutput) Filter() pulumi.StringOutput {
+	return o.ApplyT(func(v ProjectSinkExclusion) string { return v.Filter }).(pulumi.StringOutput)
+}
+
+// A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
+func (o ProjectSinkExclusionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ProjectSinkExclusion) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type ProjectSinkExclusionArrayOutput struct{ *pulumi.OutputState }
+
+func (ProjectSinkExclusionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProjectSinkExclusion)(nil)).Elem()
+}
+
+func (o ProjectSinkExclusionArrayOutput) ToProjectSinkExclusionArrayOutput() ProjectSinkExclusionArrayOutput {
+	return o
+}
+
+func (o ProjectSinkExclusionArrayOutput) ToProjectSinkExclusionArrayOutputWithContext(ctx context.Context) ProjectSinkExclusionArrayOutput {
+	return o
+}
+
+func (o ProjectSinkExclusionArrayOutput) Index(i pulumi.IntInput) ProjectSinkExclusionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectSinkExclusion {
+		return vs[0].([]ProjectSinkExclusion)[vs[1].(int)]
+	}).(ProjectSinkExclusionOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(BillingAccountSinkBigqueryOptionsOutput{})
 	pulumi.RegisterOutputType(BillingAccountSinkBigqueryOptionsPtrOutput{})
+	pulumi.RegisterOutputType(BillingAccountSinkExclusionOutput{})
+	pulumi.RegisterOutputType(BillingAccountSinkExclusionArrayOutput{})
 	pulumi.RegisterOutputType(FolderSinkBigqueryOptionsOutput{})
 	pulumi.RegisterOutputType(FolderSinkBigqueryOptionsPtrOutput{})
+	pulumi.RegisterOutputType(FolderSinkExclusionOutput{})
+	pulumi.RegisterOutputType(FolderSinkExclusionArrayOutput{})
 	pulumi.RegisterOutputType(MetricBucketOptionsOutput{})
 	pulumi.RegisterOutputType(MetricBucketOptionsPtrOutput{})
 	pulumi.RegisterOutputType(MetricBucketOptionsExplicitBucketsOutput{})
@@ -1642,6 +2145,10 @@ func init() {
 	pulumi.RegisterOutputType(MetricMetricDescriptorLabelArrayOutput{})
 	pulumi.RegisterOutputType(OrganizationSinkBigqueryOptionsOutput{})
 	pulumi.RegisterOutputType(OrganizationSinkBigqueryOptionsPtrOutput{})
+	pulumi.RegisterOutputType(OrganizationSinkExclusionOutput{})
+	pulumi.RegisterOutputType(OrganizationSinkExclusionArrayOutput{})
 	pulumi.RegisterOutputType(ProjectSinkBigqueryOptionsOutput{})
 	pulumi.RegisterOutputType(ProjectSinkBigqueryOptionsPtrOutput{})
+	pulumi.RegisterOutputType(ProjectSinkExclusionOutput{})
+	pulumi.RegisterOutputType(ProjectSinkExclusionArrayOutput{})
 }

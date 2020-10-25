@@ -20,13 +20,16 @@ class GetDatabaseInstanceResult:
     """
     A collection of values returned by getDatabaseInstance.
     """
-    def __init__(__self__, connection_name=None, database_version=None, encryption_key_name=None, first_ip_address=None, id=None, ip_addresses=None, master_instance_name=None, name=None, private_ip_address=None, project=None, public_ip_address=None, region=None, replica_configurations=None, root_password=None, self_link=None, server_ca_certs=None, service_account_email_address=None, settings=None):
+    def __init__(__self__, connection_name=None, database_version=None, deletion_protection=None, encryption_key_name=None, first_ip_address=None, id=None, ip_addresses=None, master_instance_name=None, name=None, private_ip_address=None, project=None, public_ip_address=None, region=None, replica_configurations=None, root_password=None, self_link=None, server_ca_certs=None, service_account_email_address=None, settings=None):
         if connection_name and not isinstance(connection_name, str):
             raise TypeError("Expected argument 'connection_name' to be a str")
         pulumi.set(__self__, "connection_name", connection_name)
         if database_version and not isinstance(database_version, str):
             raise TypeError("Expected argument 'database_version' to be a str")
         pulumi.set(__self__, "database_version", database_version)
+        if deletion_protection and not isinstance(deletion_protection, bool):
+            raise TypeError("Expected argument 'deletion_protection' to be a bool")
+        pulumi.set(__self__, "deletion_protection", deletion_protection)
         if encryption_key_name and not isinstance(encryption_key_name, str):
             raise TypeError("Expected argument 'encryption_key_name' to be a str")
         pulumi.set(__self__, "encryption_key_name", encryption_key_name)
@@ -91,6 +94,11 @@ class GetDatabaseInstanceResult:
         The MySQL, PostgreSQL or SQL Server (beta) version to use.
         """
         return pulumi.get(self, "database_version")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> bool:
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter(name="encryptionKeyName")
@@ -220,6 +228,7 @@ class AwaitableGetDatabaseInstanceResult(GetDatabaseInstanceResult):
         return GetDatabaseInstanceResult(
             connection_name=self.connection_name,
             database_version=self.database_version,
+            deletion_protection=self.deletion_protection,
             encryption_key_name=self.encryption_key_name,
             first_ip_address=self.first_ip_address,
             id=self.id,
@@ -260,6 +269,7 @@ def get_database_instance(name: Optional[str] = None,
     return AwaitableGetDatabaseInstanceResult(
         connection_name=__ret__.connection_name,
         database_version=__ret__.database_version,
+        deletion_protection=__ret__.deletion_protection,
         encryption_key_name=__ret__.encryption_key_name,
         first_ip_address=__ret__.first_ip_address,
         id=__ret__.id,

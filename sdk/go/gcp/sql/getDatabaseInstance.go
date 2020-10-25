@@ -30,7 +30,8 @@ type LookupDatabaseInstanceResult struct {
 	// The connection name of the instance to be used in connection strings.
 	ConnectionName string `pulumi:"connectionName"`
 	// The MySQL, PostgreSQL or SQL Server (beta) version to use.
-	DatabaseVersion string `pulumi:"databaseVersion"`
+	DatabaseVersion    string `pulumi:"databaseVersion"`
+	DeletionProtection bool   `pulumi:"deletionProtection"`
 	// The full path to the encryption key used for the CMEK disk encryption.
 	EncryptionKeyName string `pulumi:"encryptionKeyName"`
 	// The first IPv4 address of any type assigned.

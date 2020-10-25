@@ -86,8 +86,8 @@ type Table struct {
 	// If specified, configures time-based
 	// partitioning for this table. Structure is documented below.
 	TimePartitioning TableTimePartitioningPtrOutput `pulumi:"timePartitioning"`
-	// The only type supported is DAY, which will generate
-	// one partition per day based on data loading time.
+	// The supported types are DAY, HOUR, MONTH, and YEAR,
+	// which will generate one partition per day, hour, month, and year, respectively.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// If specified, configures this table as a view.
 	// Structure is documented below.
@@ -198,8 +198,8 @@ type tableState struct {
 	// If specified, configures time-based
 	// partitioning for this table. Structure is documented below.
 	TimePartitioning *TableTimePartitioning `pulumi:"timePartitioning"`
-	// The only type supported is DAY, which will generate
-	// one partition per day based on data loading time.
+	// The supported types are DAY, HOUR, MONTH, and YEAR,
+	// which will generate one partition per day, hour, month, and year, respectively.
 	Type *string `pulumi:"type"`
 	// If specified, configures this table as a view.
 	// Structure is documented below.
@@ -277,8 +277,8 @@ type TableState struct {
 	// If specified, configures time-based
 	// partitioning for this table. Structure is documented below.
 	TimePartitioning TableTimePartitioningPtrInput
-	// The only type supported is DAY, which will generate
-	// one partition per day based on data loading time.
+	// The supported types are DAY, HOUR, MONTH, and YEAR,
+	// which will generate one partition per day, hour, month, and year, respectively.
 	Type pulumi.StringPtrInput
 	// If specified, configures this table as a view.
 	// Structure is documented below.

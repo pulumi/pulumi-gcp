@@ -28,11 +28,11 @@ namespace Pulumi.Gcp.Compute
         [Input("family")]
         public string? Family { get; set; }
 
+        [Input("filter")]
+        public string? Filter { get; set; }
+
         /// <summary>
-        /// or `family` - (Required) The name of a specific image or a family.
-        /// Exactly one of `name` of `family` must be specified. If `name` is specified, it will fetch
-        /// the corresponding image. If `family` is specified, it will returns the latest image
-        /// that is part of an image family and is not deprecated.
+        /// The name of the image.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -74,6 +74,7 @@ namespace Pulumi.Gcp.Compute
         /// The family name of the image.
         /// </summary>
         public readonly string Family;
+        public readonly string? Filter;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -144,6 +145,8 @@ namespace Pulumi.Gcp.Compute
 
             string family,
 
+            string? filter,
+
             string id,
 
             string imageEncryptionKeySha256,
@@ -177,6 +180,7 @@ namespace Pulumi.Gcp.Compute
             Description = description;
             DiskSizeGb = diskSizeGb;
             Family = family;
+            Filter = filter;
             Id = id;
             ImageEncryptionKeySha256 = imageEncryptionKeySha256;
             ImageId = imageId;

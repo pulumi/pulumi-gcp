@@ -9,39 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Sql
 {
-    /// <summary>
-    /// Creates a new Google SQL Database Instance. For more information, see the [official documentation](https://cloud.google.com/sql/),
-    /// or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/instances).
-    /// 
-    /// &gt; **NOTE on `gcp.sql.DatabaseInstance`:** - First-generation instances have been
-    /// deprecated and should no longer be created, see [upgrade docs](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
-    /// for more details.
-    /// To upgrade your First-generation instance, update your config that the instance has
-    /// * `settings.ip_configuration.ipv4_enabled=true`
-    /// * `settings.backup_configuration.enabled=true`
-    /// * `settings.backup_configuration.binary_log_enabled=true`.\
-    ///   Apply the config, then upgrade the instance in the console as described in the documentation.
-    ///   Once upgraded, update the following attributes in your config to the correct value according to
-    ///   the above documentation:
-    /// * `region`
-    /// * `database_version` (if applicable)
-    /// * `tier`\
-    ///   Remove any fields that are not applicable to Second-generation instances:
-    /// * `settings.crash_safe_replication`
-    /// * `settings.replication_type`
-    /// * `settings.authorized_gae_applications`
-    ///   And change values to appropriate values for Second-generation instances for:
-    /// * `activation_policy` ("ON_DEMAND" is no longer an option)
-    /// * `pricing_plan` ("PER_USE" is now the only valid option)
-    ///   Change `settings.backup_configuration.enabled` attribute back to its desired value and apply as necessary.
-    /// 
-    /// &gt; **NOTE on `gcp.sql.DatabaseInstance`:** - Second-generation instances include a
-    /// default 'root'@'%' user with no password. This user will be deleted by the provider on
-    /// instance creation. You should use `gcp.sql.User` to define a custom user with
-    /// a restricted host and strong password.
-    /// 
-    /// ## Example Usage
-    /// </summary>
     public partial class DatabaseInstance : Pulumi.CustomResource
     {
         /// <summary>
@@ -61,6 +28,12 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         [Output("databaseVersion")]
         public Output<string?> DatabaseVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// Used to block Terraform from deleting a SQL Instance.
+        /// </summary>
+        [Output("deletionProtection")]
+        public Output<bool?> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
         /// The full path to the encryption key used for the CMEK disk encryption.  Setting
@@ -222,6 +195,12 @@ namespace Pulumi.Gcp.Sql
         public Input<string>? DatabaseVersion { get; set; }
 
         /// <summary>
+        /// Used to block Terraform from deleting a SQL Instance.
+        /// </summary>
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
+        /// <summary>
         /// The full path to the encryption key used for the CMEK disk encryption.  Setting
         /// up disk encryption currently requires manual steps outside of this provider.
         /// The provided key must be in the same region as the SQL instance.  In order
@@ -310,6 +289,12 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         [Input("databaseVersion")]
         public Input<string>? DatabaseVersion { get; set; }
+
+        /// <summary>
+        /// Used to block Terraform from deleting a SQL Instance.
+        /// </summary>
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
         /// The full path to the encryption key used for the CMEK disk encryption.  Setting

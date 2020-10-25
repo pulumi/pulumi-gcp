@@ -50,6 +50,7 @@ namespace Pulumi.Gcp.Sql
         /// The MySQL, PostgreSQL or SQL Server (beta) version to use.
         /// </summary>
         public readonly string DatabaseVersion;
+        public readonly bool DeletionProtection;
         /// <summary>
         /// The full path to the encryption key used for the CMEK disk encryption.
         /// </summary>
@@ -112,6 +113,8 @@ namespace Pulumi.Gcp.Sql
 
             string databaseVersion,
 
+            bool deletionProtection,
+
             string encryptionKeyName,
 
             string firstIpAddress,
@@ -146,6 +149,7 @@ namespace Pulumi.Gcp.Sql
         {
             ConnectionName = connectionName;
             DatabaseVersion = databaseVersion;
+            DeletionProtection = deletionProtection;
             EncryptionKeyName = encryptionKeyName;
             FirstIpAddress = firstIpAddress;
             Id = id;

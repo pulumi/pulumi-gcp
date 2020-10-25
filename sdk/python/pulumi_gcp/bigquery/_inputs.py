@@ -2888,8 +2888,8 @@ class TableTimePartitioningArgs:
                  field: Optional[pulumi.Input[str]] = None,
                  require_partition_filter: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] type: The only type supported is DAY, which will generate
-               one partition per day based on data loading time.
+        :param pulumi.Input[str] type: The supported types are DAY, HOUR, MONTH, and YEAR,
+               which will generate one partition per day, hour, month, and year, respectively.
         :param pulumi.Input[int] expiration_ms: Number of milliseconds for which to keep the
                storage for a partition.
         :param pulumi.Input[str] field: The field used to determine how to create a range-based
@@ -2910,8 +2910,8 @@ class TableTimePartitioningArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        The only type supported is DAY, which will generate
-        one partition per day based on data loading time.
+        The supported types are DAY, HOUR, MONTH, and YEAR,
+        which will generate one partition per day, hour, month, and year, respectively.
         """
         return pulumi.get(self, "type")
 

@@ -23,6 +23,7 @@ class Queue(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  rate_limits: Optional[pulumi.Input[pulumi.InputType['QueueRateLimitsArgs']]] = None,
                  retry_config: Optional[pulumi.Input[pulumi.InputType['QueueRetryConfigArgs']]] = None,
+                 stackdriver_logging_config: Optional[pulumi.Input[pulumi.InputType['QueueStackdriverLoggingConfigArgs']]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -50,6 +51,8 @@ class Queue(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['QueueRetryConfigArgs']] retry_config: Settings that determine the retry behavior.
                Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['QueueStackdriverLoggingConfigArgs']] stackdriver_logging_config: Configuration options for writing logs to Stackdriver Logging.
+               Structure is documented below.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -76,6 +79,7 @@ class Queue(pulumi.CustomResource):
             __props__['project'] = project
             __props__['rate_limits'] = rate_limits
             __props__['retry_config'] = retry_config
+            __props__['stackdriver_logging_config'] = stackdriver_logging_config
         super(Queue, __self__).__init__(
             'gcp:cloudtasks/queue:Queue',
             resource_name,
@@ -91,7 +95,8 @@ class Queue(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             rate_limits: Optional[pulumi.Input[pulumi.InputType['QueueRateLimitsArgs']]] = None,
-            retry_config: Optional[pulumi.Input[pulumi.InputType['QueueRetryConfigArgs']]] = None) -> 'Queue':
+            retry_config: Optional[pulumi.Input[pulumi.InputType['QueueRetryConfigArgs']]] = None,
+            stackdriver_logging_config: Optional[pulumi.Input[pulumi.InputType['QueueStackdriverLoggingConfigArgs']]] = None) -> 'Queue':
         """
         Get an existing Queue resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -116,6 +121,8 @@ class Queue(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['QueueRetryConfigArgs']] retry_config: Settings that determine the retry behavior.
                Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['QueueStackdriverLoggingConfigArgs']] stackdriver_logging_config: Configuration options for writing logs to Stackdriver Logging.
+               Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -127,6 +134,7 @@ class Queue(pulumi.CustomResource):
         __props__["project"] = project
         __props__["rate_limits"] = rate_limits
         __props__["retry_config"] = retry_config
+        __props__["stackdriver_logging_config"] = stackdriver_logging_config
         return Queue(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -187,6 +195,15 @@ class Queue(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "retry_config")
+
+    @property
+    @pulumi.getter(name="stackdriverLoggingConfig")
+    def stackdriver_logging_config(self) -> pulumi.Output[Optional['outputs.QueueStackdriverLoggingConfig']]:
+        """
+        Configuration options for writing logs to Stackdriver Logging.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "stackdriver_logging_config")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

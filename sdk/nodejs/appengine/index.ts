@@ -8,4 +8,5 @@ export * from "./domainMapping";
 export * from "./engineSplitTraffic";
 export * from "./firewallRule";
 export * from "./flexibleAppVersion";
+export * from "./getDefaultServiceAccount";
 export * from "./standardAppVersion";

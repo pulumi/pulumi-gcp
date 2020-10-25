@@ -17,6 +17,7 @@ class SshPublicKey(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  expiration_time_usec: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  user: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -36,6 +37,7 @@ class SshPublicKey(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] expiration_time_usec: An expiration time in microseconds since epoch.
         :param pulumi.Input[str] key: Public key text in SSH format, defined by RFC4253 section 6.6.
+        :param pulumi.Input[str] project: The project ID of the Google Cloud Platform project.
         :param pulumi.Input[str] user: The user email.
         """
         if __name__ is not None:
@@ -59,6 +61,7 @@ class SshPublicKey(pulumi.CustomResource):
             if key is None:
                 raise TypeError("Missing required property 'key'")
             __props__['key'] = key
+            __props__['project'] = project
             if user is None:
                 raise TypeError("Missing required property 'user'")
             __props__['user'] = user
@@ -76,6 +79,7 @@ class SshPublicKey(pulumi.CustomResource):
             expiration_time_usec: Optional[pulumi.Input[str]] = None,
             fingerprint: Optional[pulumi.Input[str]] = None,
             key: Optional[pulumi.Input[str]] = None,
+            project: Optional[pulumi.Input[str]] = None,
             user: Optional[pulumi.Input[str]] = None) -> 'SshPublicKey':
         """
         Get an existing SshPublicKey resource's state with the given name, id, and optional extra
@@ -87,6 +91,7 @@ class SshPublicKey(pulumi.CustomResource):
         :param pulumi.Input[str] expiration_time_usec: An expiration time in microseconds since epoch.
         :param pulumi.Input[str] fingerprint: The SHA-256 fingerprint of the SSH public key.
         :param pulumi.Input[str] key: Public key text in SSH format, defined by RFC4253 section 6.6.
+        :param pulumi.Input[str] project: The project ID of the Google Cloud Platform project.
         :param pulumi.Input[str] user: The user email.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -96,6 +101,7 @@ class SshPublicKey(pulumi.CustomResource):
         __props__["expiration_time_usec"] = expiration_time_usec
         __props__["fingerprint"] = fingerprint
         __props__["key"] = key
+        __props__["project"] = project
         __props__["user"] = user
         return SshPublicKey(resource_name, opts=opts, __props__=__props__)
 
@@ -122,6 +128,14 @@ class SshPublicKey(pulumi.CustomResource):
         Public key text in SSH format, defined by RFC4253 section 6.6.
         """
         return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[Optional[str]]:
+        """
+        The project ID of the Google Cloud Platform project.
+        """
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

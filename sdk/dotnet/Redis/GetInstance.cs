@@ -12,9 +12,7 @@ namespace Pulumi.Gcp.Redis
     public static class GetInstance
     {
         /// <summary>
-        /// Get information about a Google Cloud Redis instance. For more information see
-        /// the [official documentation](https://cloud.google.com/memorystore/docs/redis)
-        /// and [API](https://cloud.google.com/memorystore/docs/redis/apis).
+        /// Get info about a Google Cloud Redis instance.
         /// </summary>
         public static Task<GetInstanceResult> InvokeAsync(GetInstanceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceResult>("gcp:redis/getInstance:getInstance", args ?? new GetInstanceArgs(), options.WithVersion());
@@ -53,15 +51,12 @@ namespace Pulumi.Gcp.Redis
     public sealed class GetInstanceResult
     {
         public readonly string AlternativeLocationId;
+        public readonly bool AuthEnabled;
         public readonly string AuthorizedNetwork;
         public readonly string ConnectMode;
         public readonly string CreateTime;
         public readonly string CurrentLocationId;
         public readonly string DisplayName;
-        /// <summary>
-        /// Hostname or IP address of the exposed Redis endpoint used by clients
-        /// to connect to the service.
-        /// </summary>
         public readonly string Host;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -72,9 +67,6 @@ namespace Pulumi.Gcp.Redis
         public readonly int MemorySizeGb;
         public readonly string Name;
         public readonly string PersistenceIamIdentity;
-        /// <summary>
-        /// The port number of the exposed Redis endpoint.
-        /// </summary>
         public readonly int Port;
         public readonly string? Project;
         public readonly ImmutableDictionary<string, string> RedisConfigs;
@@ -86,6 +78,8 @@ namespace Pulumi.Gcp.Redis
         [OutputConstructor]
         private GetInstanceResult(
             string alternativeLocationId,
+
+            bool authEnabled,
 
             string authorizedNetwork,
 
@@ -126,6 +120,7 @@ namespace Pulumi.Gcp.Redis
             string tier)
         {
             AlternativeLocationId = alternativeLocationId;
+            AuthEnabled = authEnabled;
             AuthorizedNetwork = authorizedNetwork;
             ConnectMode = connectMode;
             CreateTime = createTime;

@@ -33,6 +33,13 @@ namespace Pulumi.Gcp.Logging
         public Output<string> Destination { get; private set; } = null!;
 
         /// <summary>
+        /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
+        /// one of exclusion_filters it will not be exported.
+        /// </summary>
+        [Output("exclusions")]
+        public Output<ImmutableArray<Outputs.OrganizationSinkExclusion>> Exclusions { get; private set; } = null!;
+
+        /// <summary>
         /// The filter to apply when exporting logs. Only log entries that match the filter are exported.
         /// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
         /// write a filter.
@@ -125,6 +132,19 @@ namespace Pulumi.Gcp.Logging
         [Input("destination", required: true)]
         public Input<string> Destination { get; set; } = null!;
 
+        [Input("exclusions")]
+        private InputList<Inputs.OrganizationSinkExclusionArgs>? _exclusions;
+
+        /// <summary>
+        /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
+        /// one of exclusion_filters it will not be exported.
+        /// </summary>
+        public InputList<Inputs.OrganizationSinkExclusionArgs> Exclusions
+        {
+            get => _exclusions ?? (_exclusions = new InputList<Inputs.OrganizationSinkExclusionArgs>());
+            set => _exclusions = value;
+        }
+
         /// <summary>
         /// The filter to apply when exporting logs. Only log entries that match the filter are exported.
         /// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
@@ -171,6 +191,19 @@ namespace Pulumi.Gcp.Logging
         /// </summary>
         [Input("destination")]
         public Input<string>? Destination { get; set; }
+
+        [Input("exclusions")]
+        private InputList<Inputs.OrganizationSinkExclusionGetArgs>? _exclusions;
+
+        /// <summary>
+        /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
+        /// one of exclusion_filters it will not be exported.
+        /// </summary>
+        public InputList<Inputs.OrganizationSinkExclusionGetArgs> Exclusions
+        {
+            get => _exclusions ?? (_exclusions = new InputList<Inputs.OrganizationSinkExclusionGetArgs>());
+            set => _exclusions = value;
+        }
 
         /// <summary>
         /// The filter to apply when exporting logs. Only log entries that match the filter are exported.

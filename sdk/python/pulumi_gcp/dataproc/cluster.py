@@ -18,6 +18,7 @@ class Cluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_config: Optional[pulumi.Input[pulumi.InputType['ClusterClusterConfigArgs']]] = None,
+                 graceful_decommission_timeout: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -39,6 +40,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ClusterClusterConfigArgs']] cluster_config: Allows you to configure various aspects of the cluster.
                Structure defined below.
+        :param pulumi.Input[str] graceful_decommission_timeout: The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
+               terraform apply
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The list of labels (key/value pairs) to be applied to
                instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
                which is the name of the cluster.
@@ -67,6 +70,7 @@ class Cluster(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['cluster_config'] = cluster_config
+            __props__['graceful_decommission_timeout'] = graceful_decommission_timeout
             __props__['labels'] = labels
             __props__['name'] = name
             __props__['project'] = project
@@ -82,6 +86,7 @@ class Cluster(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cluster_config: Optional[pulumi.Input[pulumi.InputType['ClusterClusterConfigArgs']]] = None,
+            graceful_decommission_timeout: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -95,6 +100,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ClusterClusterConfigArgs']] cluster_config: Allows you to configure various aspects of the cluster.
                Structure defined below.
+        :param pulumi.Input[str] graceful_decommission_timeout: The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
+               terraform apply
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The list of labels (key/value pairs) to be applied to
                instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
                which is the name of the cluster.
@@ -110,6 +117,7 @@ class Cluster(pulumi.CustomResource):
         __props__ = dict()
 
         __props__["cluster_config"] = cluster_config
+        __props__["graceful_decommission_timeout"] = graceful_decommission_timeout
         __props__["labels"] = labels
         __props__["name"] = name
         __props__["project"] = project
@@ -124,6 +132,15 @@ class Cluster(pulumi.CustomResource):
         Structure defined below.
         """
         return pulumi.get(self, "cluster_config")
+
+    @property
+    @pulumi.getter(name="gracefulDecommissionTimeout")
+    def graceful_decommission_timeout(self) -> pulumi.Output[Optional[str]]:
+        """
+        The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
+        terraform apply
+        """
+        return pulumi.get(self, "graceful_decommission_timeout")
 
     @property
     @pulumi.getter

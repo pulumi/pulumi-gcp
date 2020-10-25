@@ -154,8 +154,8 @@ export class Table extends pulumi.CustomResource {
      */
     public readonly timePartitioning!: pulumi.Output<outputs.bigquery.TableTimePartitioning | undefined>;
     /**
-     * The only type supported is DAY, which will generate
-     * one partition per day based on data loading time.
+     * The supported types are DAY, HOUR, MONTH, and YEAR,
+     * which will generate one partition per day, hour, month, and year, respectively.
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
@@ -363,8 +363,8 @@ export interface TableState {
      */
     readonly timePartitioning?: pulumi.Input<inputs.bigquery.TableTimePartitioning>;
     /**
-     * The only type supported is DAY, which will generate
-     * one partition per day based on data loading time.
+     * The supported types are DAY, HOUR, MONTH, and YEAR,
+     * which will generate one partition per day, hour, month, and year, respectively.
      */
     readonly type?: pulumi.Input<string>;
     /**

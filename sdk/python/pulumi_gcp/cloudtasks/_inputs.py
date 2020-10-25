@@ -12,6 +12,7 @@ __all__ = [
     'QueueAppEngineRoutingOverrideArgs',
     'QueueRateLimitsArgs',
     'QueueRetryConfigArgs',
+    'QueueStackdriverLoggingConfigArgs',
 ]
 
 @pulumi.input_type
@@ -287,5 +288,31 @@ class QueueRetryConfigArgs:
     @min_backoff.setter
     def min_backoff(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "min_backoff", value)
+
+
+@pulumi.input_type
+class QueueStackdriverLoggingConfigArgs:
+    def __init__(__self__, *,
+                 sampling_ratio: pulumi.Input[float]):
+        """
+        :param pulumi.Input[float] sampling_ratio: Specifies the fraction of operations to write to Stackdriver Logging.
+               This field may contain any value between 0.0 and 1.0, inclusive. 0.0 is the
+               default and means that no operations are logged.
+        """
+        pulumi.set(__self__, "sampling_ratio", sampling_ratio)
+
+    @property
+    @pulumi.getter(name="samplingRatio")
+    def sampling_ratio(self) -> pulumi.Input[float]:
+        """
+        Specifies the fraction of operations to write to Stackdriver Logging.
+        This field may contain any value between 0.0 and 1.0, inclusive. 0.0 is the
+        default and means that no operations are logged.
+        """
+        return pulumi.get(self, "sampling_ratio")
+
+    @sampling_ratio.setter
+    def sampling_ratio(self, value: pulumi.Input[float]):
+        pulumi.set(self, "sampling_ratio", value)
 
 

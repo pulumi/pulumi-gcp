@@ -12,7 +12,7 @@ namespace Pulumi.Gcp.Organizations
     public static class GetOrganization
     {
         /// <summary>
-        /// Use this data source to get information about a Google Cloud Organization.
+        /// Get information about a Google Cloud Organization. Note that you must have the `roles/resourcemanager.organizationViewer` role (or equivalent permissions) at the organization level to use this datasource.
         /// </summary>
         public static Task<GetOrganizationResult> InvokeAsync(GetOrganizationArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationResult>("gcp:organizations/getOrganization:getOrganization", args ?? new GetOrganizationArgs(), options.WithVersion());
@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.Organizations
         public string? Domain { get; set; }
 
         /// <summary>
-        /// The name of the Organization in the form `{organization_id}` or `organizations/{organization_id}`.
+        /// The Organization's numeric ID, including an optional `organizations/` prefix.
         /// </summary>
         [Input("organization")]
         public string? Organization { get; set; }

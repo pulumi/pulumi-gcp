@@ -7344,8 +7344,8 @@ type TableTimePartitioning struct {
 	// require a partition filter that can be used for partition elimination to be
 	// specified.
 	RequirePartitionFilter *bool `pulumi:"requirePartitionFilter"`
-	// The only type supported is DAY, which will generate
-	// one partition per day based on data loading time.
+	// The supported types are DAY, HOUR, MONTH, and YEAR,
+	// which will generate one partition per day, hour, month, and year, respectively.
 	Type string `pulumi:"type"`
 }
 
@@ -7371,8 +7371,8 @@ type TableTimePartitioningArgs struct {
 	// require a partition filter that can be used for partition elimination to be
 	// specified.
 	RequirePartitionFilter pulumi.BoolPtrInput `pulumi:"requirePartitionFilter"`
-	// The only type supported is DAY, which will generate
-	// one partition per day based on data loading time.
+	// The supported types are DAY, HOUR, MONTH, and YEAR,
+	// which will generate one partition per day, hour, month, and year, respectively.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -7472,8 +7472,8 @@ func (o TableTimePartitioningOutput) RequirePartitionFilter() pulumi.BoolPtrOutp
 	return o.ApplyT(func(v TableTimePartitioning) *bool { return v.RequirePartitionFilter }).(pulumi.BoolPtrOutput)
 }
 
-// The only type supported is DAY, which will generate
-// one partition per day based on data loading time.
+// The supported types are DAY, HOUR, MONTH, and YEAR,
+// which will generate one partition per day, hour, month, and year, respectively.
 func (o TableTimePartitioningOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v TableTimePartitioning) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -7530,8 +7530,8 @@ func (o TableTimePartitioningPtrOutput) RequirePartitionFilter() pulumi.BoolPtrO
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The only type supported is DAY, which will generate
-// one partition per day based on data loading time.
+// The supported types are DAY, HOUR, MONTH, and YEAR,
+// which will generate one partition per day, hour, month, and year, respectively.
 func (o TableTimePartitioningPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TableTimePartitioning) *string {
 		if v == nil {
