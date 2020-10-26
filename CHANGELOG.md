@@ -2,6 +2,11 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 4.0.0 (2020-10-26)
 * Upgrade to v3.44.0 of the Google Beta Terraform Provider
   ** PLEASE NOTE:**  
   There are a number of breaking changes to the output properties of Functions now being lists rather than single items
@@ -9,8 +14,6 @@ CHANGELOG
 * Improving the accuracy of previews leading to a more accurate understanding of what will actually change rather than assuming all output properties will change.  
   ** PLEASE NOTE:**  
   This new preview functionality can be disabled by setting `PULUMI_DISABLE_PROVIDER_PREVIEW` to `1` or `false`.
-
----
 
 ## 3.25.0 (2020-09-22)
 * Upgrade to v3.40.0 of the Google Beta Terraform Provider
