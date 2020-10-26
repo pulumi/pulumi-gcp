@@ -618,8 +618,6 @@ github.com/pulumi/pulumi/sdk/v2 v2.12.0 h1:d2BQnOvRWCbxDG5DO0bz5FkhFbymABmOxlsx0
 github.com/pulumi/pulumi/sdk/v2 v2.12.0/go.mod h1:WQ4WaHMA7mduVHAJi87iIqbWvqsuBUYccBiKK+FrayI=
 github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20200910230100-328eb4ff41df h1:kXSvfAz43o0D0gfxUqVCOP3NrfnGbptJBshVsqZlBqA=
 github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20200910230100-328eb4ff41df/go.mod h1:pVZLnLuSe/yv0XqTHFPb8xRGWPwgANT77jHeHqjXS5o=
-github.com/pulumi/terraform-provider-google-beta v0.0.0-20201014101949-4b65fd8cea2c h1:ZsZDiXYyd7bdaCFdefgqK+kgWYZht0nuG+hKzAKvjQY=
-github.com/pulumi/terraform-provider-google-beta v0.0.0-20201014101949-4b65fd8cea2c/go.mod h1:3sy4+oUxheS1xI3xBqTfal4Vn17eRRt+eKD/G2XTjeg=
 github.com/pulumi/terraform-provider-google-beta v0.0.0-20201023112941-491b533eacaf h1:IoQGiuoTlA5MJlEHCut553gckrCbkyN43YgF7bvpKJU=
 github.com/pulumi/terraform-provider-google-beta v0.0.0-20201023112941-491b533eacaf/go.mod h1:3sy4+oUxheS1xI3xBqTfal4Vn17eRRt+eKD/G2XTjeg=
 github.com/quasilyte/go-consistent v0.0.0-20190521200055-c6f3937de18c/go.mod h1:5STLWrekHfjyYwxBRVRXNOSewLJ3PWfDJd1VyTS21fI=

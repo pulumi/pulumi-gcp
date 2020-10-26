@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-gcp/provider/v3
+module github.com/pulumi/pulumi-gcp/provider/v4
 
 go 1.14
 
