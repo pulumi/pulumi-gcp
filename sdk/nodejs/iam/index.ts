@@ -4,3 +4,4 @@
 // Export members:
 export * from "./getRule";
 export * from "./getTestablePermissions";
+export * from "./workloadIdentityPool";

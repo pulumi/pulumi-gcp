@@ -8,7 +8,15 @@ from .entry_group import *
 from .entry_group_iam_binding import *
 from .entry_group_iam_member import *
 from .entry_group_iam_policy import *
+from .policy_tag import *
+from .policy_tag_iam_binding import *
+from .policy_tag_iam_member import *
+from .policy_tag_iam_policy import *
 from .tag import *
 from .tag_template import *
+from .taxonomy import *
+from .taxonomy_iam_binding import *
+from .taxonomy_iam_member import *
+from .taxonomy_iam_policy import *
 from ._inputs import *
 from . import outputs

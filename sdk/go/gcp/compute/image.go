@@ -83,18 +83,18 @@ type Image struct {
 	SourceDisk pulumi.StringPtrOutput `pulumi:"sourceDisk"`
 	// URL of the source image used to create this image. In order to create an image, you must provide the full or partial
 	// URL of one of the following:
-	// The selfLink URL
-	// This property
-	// The rawDisk.source URL
-	// The sourceDisk URL
+	// * The selfLink URL
+	// * This property
+	// * The rawDisk.source URL
+	// * The sourceDisk URL
 	SourceImage pulumi.StringPtrOutput `pulumi:"sourceImage"`
 	// URL of the source snapshot used to create this image.
 	// In order to create an image, you must provide the full or partial URL of one of the following:
-	// The selfLink URL
-	// This property
-	// The sourceImage URL
-	// The rawDisk.source URL
-	// The sourceDisk URL
+	// * The selfLink URL
+	// * This property
+	// * The sourceImage URL
+	// * The rawDisk.source URL
+	// * The sourceDisk URL
 	SourceSnapshot pulumi.StringPtrOutput `pulumi:"sourceSnapshot"`
 }
 
@@ -173,18 +173,18 @@ type imageState struct {
 	SourceDisk *string `pulumi:"sourceDisk"`
 	// URL of the source image used to create this image. In order to create an image, you must provide the full or partial
 	// URL of one of the following:
-	// The selfLink URL
-	// This property
-	// The rawDisk.source URL
-	// The sourceDisk URL
+	// * The selfLink URL
+	// * This property
+	// * The rawDisk.source URL
+	// * The sourceDisk URL
 	SourceImage *string `pulumi:"sourceImage"`
 	// URL of the source snapshot used to create this image.
 	// In order to create an image, you must provide the full or partial URL of one of the following:
-	// The selfLink URL
-	// This property
-	// The sourceImage URL
-	// The rawDisk.source URL
-	// The sourceDisk URL
+	// * The selfLink URL
+	// * This property
+	// * The sourceImage URL
+	// * The rawDisk.source URL
+	// * The sourceDisk URL
 	SourceSnapshot *string `pulumi:"sourceSnapshot"`
 }
 
@@ -236,18 +236,18 @@ type ImageState struct {
 	SourceDisk pulumi.StringPtrInput
 	// URL of the source image used to create this image. In order to create an image, you must provide the full or partial
 	// URL of one of the following:
-	// The selfLink URL
-	// This property
-	// The rawDisk.source URL
-	// The sourceDisk URL
+	// * The selfLink URL
+	// * This property
+	// * The rawDisk.source URL
+	// * The sourceDisk URL
 	SourceImage pulumi.StringPtrInput
 	// URL of the source snapshot used to create this image.
 	// In order to create an image, you must provide the full or partial URL of one of the following:
-	// The selfLink URL
-	// This property
-	// The sourceImage URL
-	// The rawDisk.source URL
-	// The sourceDisk URL
+	// * The selfLink URL
+	// * This property
+	// * The sourceImage URL
+	// * The rawDisk.source URL
+	// * The sourceDisk URL
 	SourceSnapshot pulumi.StringPtrInput
 }
 
@@ -295,18 +295,18 @@ type imageArgs struct {
 	SourceDisk *string `pulumi:"sourceDisk"`
 	// URL of the source image used to create this image. In order to create an image, you must provide the full or partial
 	// URL of one of the following:
-	// The selfLink URL
-	// This property
-	// The rawDisk.source URL
-	// The sourceDisk URL
+	// * The selfLink URL
+	// * This property
+	// * The rawDisk.source URL
+	// * The sourceDisk URL
 	SourceImage *string `pulumi:"sourceImage"`
 	// URL of the source snapshot used to create this image.
 	// In order to create an image, you must provide the full or partial URL of one of the following:
-	// The selfLink URL
-	// This property
-	// The sourceImage URL
-	// The rawDisk.source URL
-	// The sourceDisk URL
+	// * The selfLink URL
+	// * This property
+	// * The sourceImage URL
+	// * The rawDisk.source URL
+	// * The sourceDisk URL
 	SourceSnapshot *string `pulumi:"sourceSnapshot"`
 }
 
@@ -351,18 +351,18 @@ type ImageArgs struct {
 	SourceDisk pulumi.StringPtrInput
 	// URL of the source image used to create this image. In order to create an image, you must provide the full or partial
 	// URL of one of the following:
-	// The selfLink URL
-	// This property
-	// The rawDisk.source URL
-	// The sourceDisk URL
+	// * The selfLink URL
+	// * This property
+	// * The rawDisk.source URL
+	// * The sourceDisk URL
 	SourceImage pulumi.StringPtrInput
 	// URL of the source snapshot used to create this image.
 	// In order to create an image, you must provide the full or partial URL of one of the following:
-	// The selfLink URL
-	// This property
-	// The sourceImage URL
-	// The rawDisk.source URL
-	// The sourceDisk URL
+	// * The selfLink URL
+	// * This property
+	// * The sourceImage URL
+	// * The rawDisk.source URL
+	// * The sourceDisk URL
 	SourceSnapshot pulumi.StringPtrInput
 }
 

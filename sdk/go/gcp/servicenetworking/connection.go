@@ -10,10 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Manages a private VPC connection with a GCP service provider. For more information see
-// [the official documentation](https://cloud.google.com/vpc/docs/configure-private-services-access#creating-connection)
-// and
-// [API](https://cloud.google.com/service-infrastructure/docs/service-networking/reference/rest/v1/services.connections).
 type Connection struct {
 	pulumi.CustomResourceState
 

@@ -14,6 +14,13 @@ namespace Pulumi.Gcp.Billing.Outputs
     public sealed class BudgetAllUpdatesRule
     {
         /// <summary>
+        /// Boolean. When set to true, disables default notifications sent
+        /// when a threshold is exceeded. Default recipients are
+        /// those with Billing Account Administrators and Billing
+        /// Account Users IAM roles for the target account.
+        /// </summary>
+        public readonly bool? DisableDefaultIamRecipients;
+        /// <summary>
         /// The full resource name of a monitoring notification
         /// channel in the form
         /// projects/{project_id}/notificationChannels/{channel_id}.
@@ -36,12 +43,15 @@ namespace Pulumi.Gcp.Billing.Outputs
 
         [OutputConstructor]
         private BudgetAllUpdatesRule(
+            bool? disableDefaultIamRecipients,
+
             ImmutableArray<string> monitoringNotificationChannels,
 
             string? pubsubTopic,
 
             string? schemaVersion)
         {
+            DisableDefaultIamRecipients = disableDefaultIamRecipients;
             MonitoringNotificationChannels = monitoringNotificationChannels;
             PubsubTopic = pubsubTopic;
             SchemaVersion = schemaVersion;

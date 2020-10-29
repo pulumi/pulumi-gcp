@@ -53,7 +53,6 @@ class ManagedZone(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ManagedZoneDnssecConfigArgs']] dnssec_config: DNSSEC configuration
                Structure is documented below.
         :param pulumi.Input[bool] force_destroy: Set this true to delete all records in the zone.
-               The `dnssec_config` block supports:
         :param pulumi.Input[pulumi.InputType['ManagedZoneForwardingConfigArgs']] forwarding_config: The presence for this field indicates that outbound forwarding is enabled
                for this zone. The value of this field contains the set of destinations
                to forward to.
@@ -149,7 +148,6 @@ class ManagedZone(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ManagedZoneDnssecConfigArgs']] dnssec_config: DNSSEC configuration
                Structure is documented below.
         :param pulumi.Input[bool] force_destroy: Set this true to delete all records in the zone.
-               The `dnssec_config` block supports:
         :param pulumi.Input[pulumi.InputType['ManagedZoneForwardingConfigArgs']] forwarding_config: The presence for this field indicates that outbound forwarding is enabled
                for this zone. The value of this field contains the set of destinations
                to forward to.
@@ -225,7 +223,6 @@ class ManagedZone(pulumi.CustomResource):
     def force_destroy(self) -> pulumi.Output[Optional[bool]]:
         """
         Set this true to delete all records in the zone.
-        The `dnssec_config` block supports:
         """
         return pulumi.get(self, "force_destroy")
 

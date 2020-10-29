@@ -5614,6 +5614,157 @@ func (o JobQueryUserDefinedFunctionResourceArrayOutput) Index(i pulumi.IntInput)
 	}).(JobQueryUserDefinedFunctionResourceOutput)
 }
 
+type RoutineArgument struct {
+	// Defaults to FIXED_TYPE.
+	// Default value is `FIXED_TYPE`.
+	// Possible values are `FIXED_TYPE` and `ANY_TYPE`.
+	ArgumentKind *string `pulumi:"argumentKind"`
+	// A JSON schema for the data type. Required unless argumentKind = ANY_TYPE.
+	// ~>**NOTE**: Because this field expects a JSON string, any changes to the string
+	// will create a diff, even if the JSON itself hasn't changed. If the API returns
+	// a different value for the same schema, e.g. it switched the order of values
+	// or replaced STRUCT field type with RECORD field type, we currently cannot
+	// suppress the recurring diff this causes. As a workaround, we recommend using
+	// the schema as returned by the API.
+	DataType *string `pulumi:"dataType"`
+	// Specifies whether the argument is input or output. Can be set for procedures only.
+	// Possible values are `IN`, `OUT`, and `INOUT`.
+	Mode *string `pulumi:"mode"`
+	// The name of this argument. Can be absent for function return argument.
+	Name *string `pulumi:"name"`
+}
+
+// RoutineArgumentInput is an input type that accepts RoutineArgumentArgs and RoutineArgumentOutput values.
+// You can construct a concrete instance of `RoutineArgumentInput` via:
+//
+//          RoutineArgumentArgs{...}
+type RoutineArgumentInput interface {
+	pulumi.Input
+
+	ToRoutineArgumentOutput() RoutineArgumentOutput
+	ToRoutineArgumentOutputWithContext(context.Context) RoutineArgumentOutput
+}
+
+type RoutineArgumentArgs struct {
+	// Defaults to FIXED_TYPE.
+	// Default value is `FIXED_TYPE`.
+	// Possible values are `FIXED_TYPE` and `ANY_TYPE`.
+	ArgumentKind pulumi.StringPtrInput `pulumi:"argumentKind"`
+	// A JSON schema for the data type. Required unless argumentKind = ANY_TYPE.
+	// ~>**NOTE**: Because this field expects a JSON string, any changes to the string
+	// will create a diff, even if the JSON itself hasn't changed. If the API returns
+	// a different value for the same schema, e.g. it switched the order of values
+	// or replaced STRUCT field type with RECORD field type, we currently cannot
+	// suppress the recurring diff this causes. As a workaround, we recommend using
+	// the schema as returned by the API.
+	DataType pulumi.StringPtrInput `pulumi:"dataType"`
+	// Specifies whether the argument is input or output. Can be set for procedures only.
+	// Possible values are `IN`, `OUT`, and `INOUT`.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// The name of this argument. Can be absent for function return argument.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (RoutineArgumentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoutineArgument)(nil)).Elem()
+}
+
+func (i RoutineArgumentArgs) ToRoutineArgumentOutput() RoutineArgumentOutput {
+	return i.ToRoutineArgumentOutputWithContext(context.Background())
+}
+
+func (i RoutineArgumentArgs) ToRoutineArgumentOutputWithContext(ctx context.Context) RoutineArgumentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoutineArgumentOutput)
+}
+
+// RoutineArgumentArrayInput is an input type that accepts RoutineArgumentArray and RoutineArgumentArrayOutput values.
+// You can construct a concrete instance of `RoutineArgumentArrayInput` via:
+//
+//          RoutineArgumentArray{ RoutineArgumentArgs{...} }
+type RoutineArgumentArrayInput interface {
+	pulumi.Input
+
+	ToRoutineArgumentArrayOutput() RoutineArgumentArrayOutput
+	ToRoutineArgumentArrayOutputWithContext(context.Context) RoutineArgumentArrayOutput
+}
+
+type RoutineArgumentArray []RoutineArgumentInput
+
+func (RoutineArgumentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RoutineArgument)(nil)).Elem()
+}
+
+func (i RoutineArgumentArray) ToRoutineArgumentArrayOutput() RoutineArgumentArrayOutput {
+	return i.ToRoutineArgumentArrayOutputWithContext(context.Background())
+}
+
+func (i RoutineArgumentArray) ToRoutineArgumentArrayOutputWithContext(ctx context.Context) RoutineArgumentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoutineArgumentArrayOutput)
+}
+
+type RoutineArgumentOutput struct{ *pulumi.OutputState }
+
+func (RoutineArgumentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoutineArgument)(nil)).Elem()
+}
+
+func (o RoutineArgumentOutput) ToRoutineArgumentOutput() RoutineArgumentOutput {
+	return o
+}
+
+func (o RoutineArgumentOutput) ToRoutineArgumentOutputWithContext(ctx context.Context) RoutineArgumentOutput {
+	return o
+}
+
+// Defaults to FIXED_TYPE.
+// Default value is `FIXED_TYPE`.
+// Possible values are `FIXED_TYPE` and `ANY_TYPE`.
+func (o RoutineArgumentOutput) ArgumentKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RoutineArgument) *string { return v.ArgumentKind }).(pulumi.StringPtrOutput)
+}
+
+// A JSON schema for the data type. Required unless argumentKind = ANY_TYPE.
+// ~>**NOTE**: Because this field expects a JSON string, any changes to the string
+// will create a diff, even if the JSON itself hasn't changed. If the API returns
+// a different value for the same schema, e.g. it switched the order of values
+// or replaced STRUCT field type with RECORD field type, we currently cannot
+// suppress the recurring diff this causes. As a workaround, we recommend using
+// the schema as returned by the API.
+func (o RoutineArgumentOutput) DataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RoutineArgument) *string { return v.DataType }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether the argument is input or output. Can be set for procedures only.
+// Possible values are `IN`, `OUT`, and `INOUT`.
+func (o RoutineArgumentOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RoutineArgument) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// The name of this argument. Can be absent for function return argument.
+func (o RoutineArgumentOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RoutineArgument) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type RoutineArgumentArrayOutput struct{ *pulumi.OutputState }
+
+func (RoutineArgumentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RoutineArgument)(nil)).Elem()
+}
+
+func (o RoutineArgumentArrayOutput) ToRoutineArgumentArrayOutput() RoutineArgumentArrayOutput {
+	return o
+}
+
+func (o RoutineArgumentArrayOutput) ToRoutineArgumentArrayOutputWithContext(ctx context.Context) RoutineArgumentArrayOutput {
+	return o
+}
+
+func (o RoutineArgumentArrayOutput) Index(i pulumi.IntInput) RoutineArgumentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RoutineArgument {
+		return vs[0].([]RoutineArgument)[vs[1].(int)]
+	}).(RoutineArgumentOutput)
+}
+
 type TableEncryptionConfiguration struct {
 	// The self link or full name of a key which should be used to
 	// encrypt this table.  Note that the default bigquery service account will need to have
@@ -7752,6 +7903,8 @@ func init() {
 	pulumi.RegisterOutputType(JobQueryScriptOptionsPtrOutput{})
 	pulumi.RegisterOutputType(JobQueryUserDefinedFunctionResourceOutput{})
 	pulumi.RegisterOutputType(JobQueryUserDefinedFunctionResourceArrayOutput{})
+	pulumi.RegisterOutputType(RoutineArgumentOutput{})
+	pulumi.RegisterOutputType(RoutineArgumentArrayOutput{})
 	pulumi.RegisterOutputType(TableEncryptionConfigurationOutput{})
 	pulumi.RegisterOutputType(TableEncryptionConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(TableExternalDataConfigurationOutput{})

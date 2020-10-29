@@ -17,6 +17,7 @@ from .iam_member import *
 from .iam_policy import *
 from .job import *
 from .reservation import *
+from .routine import *
 from .table import *
 from ._inputs import *
 from . import outputs

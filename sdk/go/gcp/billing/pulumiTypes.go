@@ -323,6 +323,11 @@ func (o AccountIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type BudgetAllUpdatesRule struct {
+	// Boolean. When set to true, disables default notifications sent
+	// when a threshold is exceeded. Default recipients are
+	// those with Billing Account Administrators and Billing
+	// Account Users IAM roles for the target account.
+	DisableDefaultIamRecipients *bool `pulumi:"disableDefaultIamRecipients"`
 	// The full resource name of a monitoring notification
 	// channel in the form
 	// projects/{project_id}/notificationChannels/{channel_id}.
@@ -351,6 +356,11 @@ type BudgetAllUpdatesRuleInput interface {
 }
 
 type BudgetAllUpdatesRuleArgs struct {
+	// Boolean. When set to true, disables default notifications sent
+	// when a threshold is exceeded. Default recipients are
+	// those with Billing Account Administrators and Billing
+	// Account Users IAM roles for the target account.
+	DisableDefaultIamRecipients pulumi.BoolPtrInput `pulumi:"disableDefaultIamRecipients"`
 	// The full resource name of a monitoring notification
 	// channel in the form
 	// projects/{project_id}/notificationChannels/{channel_id}.
@@ -444,6 +454,14 @@ func (o BudgetAllUpdatesRuleOutput) ToBudgetAllUpdatesRulePtrOutputWithContext(c
 	}).(BudgetAllUpdatesRulePtrOutput)
 }
 
+// Boolean. When set to true, disables default notifications sent
+// when a threshold is exceeded. Default recipients are
+// those with Billing Account Administrators and Billing
+// Account Users IAM roles for the target account.
+func (o BudgetAllUpdatesRuleOutput) DisableDefaultIamRecipients() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BudgetAllUpdatesRule) *bool { return v.DisableDefaultIamRecipients }).(pulumi.BoolPtrOutput)
+}
+
 // The full resource name of a monitoring notification
 // channel in the form
 // projects/{project_id}/notificationChannels/{channel_id}.
@@ -483,6 +501,19 @@ func (o BudgetAllUpdatesRulePtrOutput) ToBudgetAllUpdatesRulePtrOutputWithContex
 
 func (o BudgetAllUpdatesRulePtrOutput) Elem() BudgetAllUpdatesRuleOutput {
 	return o.ApplyT(func(v *BudgetAllUpdatesRule) BudgetAllUpdatesRule { return *v }).(BudgetAllUpdatesRuleOutput)
+}
+
+// Boolean. When set to true, disables default notifications sent
+// when a threshold is exceeded. Default recipients are
+// those with Billing Account Administrators and Billing
+// Account Users IAM roles for the target account.
+func (o BudgetAllUpdatesRulePtrOutput) DisableDefaultIamRecipients() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BudgetAllUpdatesRule) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableDefaultIamRecipients
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The full resource name of a monitoring notification

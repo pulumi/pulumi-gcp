@@ -18,6 +18,7 @@ class Network(pulumi.CustomResource):
                  auto_create_subnetworks: Optional[pulumi.Input[bool]] = None,
                  delete_default_routes_on_create: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 mtu: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  routing_mode: Optional[pulumi.Input[str]] = None,
@@ -46,6 +47,8 @@ class Network(pulumi.CustomResource):
                immediately after network creation. Defaults to `false`.
         :param pulumi.Input[str] description: An optional description of this resource. The resource must be
                recreated to modify this field.
+        :param pulumi.Input[int] mtu: Maximum Transmission Unit in bytes. The minimum value for this field is 1460
+               and the maximum value is 1500 bytes.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -82,6 +85,7 @@ class Network(pulumi.CustomResource):
             __props__['auto_create_subnetworks'] = auto_create_subnetworks
             __props__['delete_default_routes_on_create'] = delete_default_routes_on_create
             __props__['description'] = description
+            __props__['mtu'] = mtu
             __props__['name'] = name
             __props__['project'] = project
             __props__['routing_mode'] = routing_mode
@@ -101,6 +105,7 @@ class Network(pulumi.CustomResource):
             delete_default_routes_on_create: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             gateway_ipv4: Optional[pulumi.Input[str]] = None,
+            mtu: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             routing_mode: Optional[pulumi.Input[str]] = None,
@@ -122,6 +127,8 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[str] description: An optional description of this resource. The resource must be
                recreated to modify this field.
         :param pulumi.Input[str] gateway_ipv4: The gateway address for default routing out of the network. This value is selected by GCP.
+        :param pulumi.Input[int] mtu: Maximum Transmission Unit in bytes. The minimum value for this field is 1460
+               and the maximum value is 1500 bytes.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -147,6 +154,7 @@ class Network(pulumi.CustomResource):
         __props__["delete_default_routes_on_create"] = delete_default_routes_on_create
         __props__["description"] = description
         __props__["gateway_ipv4"] = gateway_ipv4
+        __props__["mtu"] = mtu
         __props__["name"] = name
         __props__["project"] = project
         __props__["routing_mode"] = routing_mode
@@ -190,6 +198,15 @@ class Network(pulumi.CustomResource):
         The gateway address for default routing out of the network. This value is selected by GCP.
         """
         return pulumi.get(self, "gateway_ipv4")
+
+    @property
+    @pulumi.getter
+    def mtu(self) -> pulumi.Output[int]:
+        """
+        Maximum Transmission Unit in bytes. The minimum value for this field is 1460
+        and the maximum value is 1500 bytes.
+        """
+        return pulumi.get(self, "mtu")
 
     @property
     @pulumi.getter

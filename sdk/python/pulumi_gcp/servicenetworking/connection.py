@@ -22,11 +22,7 @@ class Connection(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Manages a private VPC connection with a GCP service provider. For more information see
-        [the official documentation](https://cloud.google.com/vpc/docs/configure-private-services-access#creating-connection)
-        and
-        [API](https://cloud.google.com/service-infrastructure/docs/service-networking/reference/rest/v1/services.connections).
-
+        Create a Connection resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] network: Name of VPC network connected with service producers using VPC peering.

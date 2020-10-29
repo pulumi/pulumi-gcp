@@ -99,10 +99,15 @@ class AccountIamMemberConditionArgs:
 @pulumi.input_type
 class BudgetAllUpdatesRuleArgs:
     def __init__(__self__, *,
+                 disable_default_iam_recipients: Optional[pulumi.Input[bool]] = None,
                  monitoring_notification_channels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  pubsub_topic: Optional[pulumi.Input[str]] = None,
                  schema_version: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[bool] disable_default_iam_recipients: Boolean. When set to true, disables default notifications sent
+               when a threshold is exceeded. Default recipients are
+               those with Billing Account Administrators and Billing
+               Account Users IAM roles for the target account.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] monitoring_notification_channels: The full resource name of a monitoring notification
                channel in the form
                projects/{project_id}/notificationChannels/{channel_id}.
@@ -115,12 +120,29 @@ class BudgetAllUpdatesRuleArgs:
                accepted. It represents the JSON schema as defined in
                https://cloud.google.com/billing/docs/how-to/budgets#notification_format.
         """
+        if disable_default_iam_recipients is not None:
+            pulumi.set(__self__, "disable_default_iam_recipients", disable_default_iam_recipients)
         if monitoring_notification_channels is not None:
             pulumi.set(__self__, "monitoring_notification_channels", monitoring_notification_channels)
         if pubsub_topic is not None:
             pulumi.set(__self__, "pubsub_topic", pubsub_topic)
         if schema_version is not None:
             pulumi.set(__self__, "schema_version", schema_version)
+
+    @property
+    @pulumi.getter(name="disableDefaultIamRecipients")
+    def disable_default_iam_recipients(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean. When set to true, disables default notifications sent
+        when a threshold is exceeded. Default recipients are
+        those with Billing Account Administrators and Billing
+        Account Users IAM roles for the target account.
+        """
+        return pulumi.get(self, "disable_default_iam_recipients")
+
+    @disable_default_iam_recipients.setter
+    def disable_default_iam_recipients(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_default_iam_recipients", value)
 
     @property
     @pulumi.getter(name="monitoringNotificationChannels")

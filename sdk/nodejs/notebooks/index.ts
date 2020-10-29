@@ -4,4 +4,7 @@
 // Export members:
 export * from "./environment";
 export * from "./instance";
+export * from "./instanceIamBinding";
+export * from "./instanceIamMember";
+export * from "./instanceIamPolicy";
 export * from "./location";

@@ -629,9 +629,8 @@ class ClusterClusterAutoscalingAutoProvisioningDefaults(dict):
                [official documentation](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
                for more information.
         :param Sequence[str] oauth_scopes: The set of Google API scopes to be made available
-               on all of the node VMs under the "default" service account. These can be
-               either FQDNs, or scope aliases. The following scopes are necessary to ensure
-               the correct functioning of the cluster:
+               on all of the node VMs under the "default" service account.
+               Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `service_account` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
         :param str service_account: The service account to be used by the Node VMs.
                If not specified, the "default" service account is used.
                In order to use the configured `oauth_scopes` for logging and monitoring, the service account being used needs the
@@ -662,9 +661,8 @@ class ClusterClusterAutoscalingAutoProvisioningDefaults(dict):
     def oauth_scopes(self) -> Optional[Sequence[str]]:
         """
         The set of Google API scopes to be made available
-        on all of the node VMs under the "default" service account. These can be
-        either FQDNs, or scope aliases. The following scopes are necessary to ensure
-        the correct functioning of the cluster:
+        on all of the node VMs under the "default" service account.
+        Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `service_account` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
         """
         return pulumi.get(self, "oauth_scopes")
 
@@ -1225,9 +1223,8 @@ class ClusterNodeConfig(dict):
                [official documentation](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
                for more information.
         :param Sequence[str] oauth_scopes: The set of Google API scopes to be made available
-               on all of the node VMs under the "default" service account. These can be
-               either FQDNs, or scope aliases. The following scopes are necessary to ensure
-               the correct functioning of the cluster:
+               on all of the node VMs under the "default" service account.
+               Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `service_account` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
         :param bool preemptible: A boolean that represents whether or not the underlying node VMs
                are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
                for more information. Defaults to false.
@@ -1413,9 +1410,8 @@ class ClusterNodeConfig(dict):
     def oauth_scopes(self) -> Optional[Sequence[str]]:
         """
         The set of Google API scopes to be made available
-        on all of the node VMs under the "default" service account. These can be
-        either FQDNs, or scope aliases. The following scopes are necessary to ensure
-        the correct functioning of the cluster:
+        on all of the node VMs under the "default" service account.
+        Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `service_account` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
         """
         return pulumi.get(self, "oauth_scopes")
 
@@ -1996,9 +1992,8 @@ class ClusterNodePoolNodeConfig(dict):
                [official documentation](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
                for more information.
         :param Sequence[str] oauth_scopes: The set of Google API scopes to be made available
-               on all of the node VMs under the "default" service account. These can be
-               either FQDNs, or scope aliases. The following scopes are necessary to ensure
-               the correct functioning of the cluster:
+               on all of the node VMs under the "default" service account.
+               Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `service_account` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
         :param bool preemptible: A boolean that represents whether or not the underlying node VMs
                are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
                for more information. Defaults to false.
@@ -2184,9 +2179,8 @@ class ClusterNodePoolNodeConfig(dict):
     def oauth_scopes(self) -> Optional[Sequence[str]]:
         """
         The set of Google API scopes to be made available
-        on all of the node VMs under the "default" service account. These can be
-        either FQDNs, or scope aliases. The following scopes are necessary to ensure
-        the correct functioning of the cluster:
+        on all of the node VMs under the "default" service account.
+        Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `service_account` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
         """
         return pulumi.get(self, "oauth_scopes")
 

@@ -13,7 +13,7 @@ import (
 //
 // To get more information about ExternalVpnGateway, see:
 //
-// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/externalVpnGateways)
+// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/externalVpnGateways)
 //
 // ## Example Usage
 type ExternalVpnGateway struct {

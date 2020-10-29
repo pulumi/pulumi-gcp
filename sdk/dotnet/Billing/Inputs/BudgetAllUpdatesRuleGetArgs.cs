@@ -12,6 +12,15 @@ namespace Pulumi.Gcp.Billing.Inputs
 
     public sealed class BudgetAllUpdatesRuleGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Boolean. When set to true, disables default notifications sent
+        /// when a threshold is exceeded. Default recipients are
+        /// those with Billing Account Administrators and Billing
+        /// Account Users IAM roles for the target account.
+        /// </summary>
+        [Input("disableDefaultIamRecipients")]
+        public Input<bool>? DisableDefaultIamRecipients { get; set; }
+
         [Input("monitoringNotificationChannels")]
         private InputList<string>? _monitoringNotificationChannels;
 

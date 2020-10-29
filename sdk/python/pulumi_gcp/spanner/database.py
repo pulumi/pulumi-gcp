@@ -16,6 +16,7 @@ class Database(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ddls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -65,6 +66,7 @@ class Database(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['ddls'] = ddls
+            __props__['deletion_protection'] = deletion_protection
             if instance is None:
                 raise TypeError("Missing required property 'instance'")
             __props__['instance'] = instance
@@ -82,6 +84,7 @@ class Database(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             ddls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            deletion_protection: Optional[pulumi.Input[bool]] = None,
             instance: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -109,6 +112,7 @@ class Database(pulumi.CustomResource):
         __props__ = dict()
 
         __props__["ddls"] = ddls
+        __props__["deletion_protection"] = deletion_protection
         __props__["instance"] = instance
         __props__["name"] = name
         __props__["project"] = project
@@ -125,6 +129,11 @@ class Database(pulumi.CustomResource):
         error in any statement, the database is not created.
         """
         return pulumi.get(self, "ddls")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter

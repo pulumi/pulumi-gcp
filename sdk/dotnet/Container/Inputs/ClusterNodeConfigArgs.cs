@@ -126,9 +126,8 @@ namespace Pulumi.Gcp.Container.Inputs
 
         /// <summary>
         /// The set of Google API scopes to be made available
-        /// on all of the node VMs under the "default" service account. These can be
-        /// either FQDNs, or scope aliases. The following scopes are necessary to ensure
-        /// the correct functioning of the cluster:
+        /// on all of the node VMs under the "default" service account.
+        /// Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `service_account` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
         /// </summary>
         public InputList<string> OauthScopes
         {

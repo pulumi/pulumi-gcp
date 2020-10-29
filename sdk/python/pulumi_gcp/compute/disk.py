@@ -20,6 +20,7 @@ class Disk(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskDiskEncryptionKeyArgs']]] = None,
                  image: Optional[pulumi.Input[str]] = None,
+                 interface: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  physical_block_size_bytes: Optional[pulumi.Input[int]] = None,
@@ -85,6 +86,8 @@ class Disk(pulumi.CustomResource):
                [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
                For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
                These images can be referred by family name here.
+        :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
+               value: "SCSI" Possible values: ["SCSI", "NVME"]
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -152,6 +155,7 @@ class Disk(pulumi.CustomResource):
             __props__['description'] = description
             __props__['disk_encryption_key'] = disk_encryption_key
             __props__['image'] = image
+            __props__['interface'] = interface
             __props__['labels'] = labels
             __props__['name'] = name
             __props__['physical_block_size_bytes'] = physical_block_size_bytes
@@ -185,6 +189,7 @@ class Disk(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskDiskEncryptionKeyArgs']]] = None,
             image: Optional[pulumi.Input[str]] = None,
+            interface: Optional[pulumi.Input[str]] = None,
             label_fingerprint: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             last_attach_timestamp: Optional[pulumi.Input[str]] = None,
@@ -232,6 +237,8 @@ class Disk(pulumi.CustomResource):
                [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
                For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
                These images can be referred by family name here.
+        :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
+               value: "SCSI" Possible values: ["SCSI", "NVME"]
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
         :param pulumi.Input[str] last_attach_timestamp: Last attach timestamp in RFC3339 text format.
@@ -298,6 +305,7 @@ class Disk(pulumi.CustomResource):
         __props__["description"] = description
         __props__["disk_encryption_key"] = disk_encryption_key
         __props__["image"] = image
+        __props__["interface"] = interface
         __props__["label_fingerprint"] = label_fingerprint
         __props__["labels"] = labels
         __props__["last_attach_timestamp"] = last_attach_timestamp
@@ -367,6 +375,15 @@ class Disk(pulumi.CustomResource):
         These images can be referred by family name here.
         """
         return pulumi.get(self, "image")
+
+    @property
+    @pulumi.getter
+    def interface(self) -> pulumi.Output[Optional[str]]:
+        """
+        Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
+        value: "SCSI" Possible values: ["SCSI", "NVME"]
+        """
+        return pulumi.get(self, "interface")
 
     @property
     @pulumi.getter(name="labelFingerprint")

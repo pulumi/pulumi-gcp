@@ -153,6 +153,9 @@ func GetGameServicesCustomEndpoint(ctx *pulumi.Context) string {
 func GetHealthcareCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:healthcareCustomEndpoint")
 }
+func GetIamBetaCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:iamBetaCustomEndpoint")
+}
 func GetIamCredentialsCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:iamCredentialsCustomEndpoint")
 }
@@ -164,6 +167,12 @@ func GetIapCustomEndpoint(ctx *pulumi.Context) string {
 }
 func GetIdentityPlatformCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:identityPlatformCustomEndpoint")
+}
+func GetImpersonateServiceAccount(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:impersonateServiceAccount")
+}
+func GetImpersonateServiceAccountDelegates(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:impersonateServiceAccountDelegates")
 }
 func GetKmsCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:kmsCustomEndpoint")

@@ -1991,9 +1991,8 @@ type ClusterClusterAutoscalingAutoProvisioningDefaults struct {
 	// for more information.
 	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
 	// The set of Google API scopes to be made available
-	// on all of the node VMs under the "default" service account. These can be
-	// either FQDNs, or scope aliases. The following scopes are necessary to ensure
-	// the correct functioning of the cluster:
+	// on all of the node VMs under the "default" service account.
+	// Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
 	OauthScopes []string `pulumi:"oauthScopes"`
 	// The service account to be used by the Node VMs.
 	// If not specified, the "default" service account is used.
@@ -2022,9 +2021,8 @@ type ClusterClusterAutoscalingAutoProvisioningDefaultsArgs struct {
 	// for more information.
 	MinCpuPlatform pulumi.StringPtrInput `pulumi:"minCpuPlatform"`
 	// The set of Google API scopes to be made available
-	// on all of the node VMs under the "default" service account. These can be
-	// either FQDNs, or scope aliases. The following scopes are necessary to ensure
-	// the correct functioning of the cluster:
+	// on all of the node VMs under the "default" service account.
+	// Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
 	OauthScopes pulumi.StringArrayInput `pulumi:"oauthScopes"`
 	// The service account to be used by the Node VMs.
 	// If not specified, the "default" service account is used.
@@ -2121,9 +2119,8 @@ func (o ClusterClusterAutoscalingAutoProvisioningDefaultsOutput) MinCpuPlatform(
 }
 
 // The set of Google API scopes to be made available
-// on all of the node VMs under the "default" service account. These can be
-// either FQDNs, or scope aliases. The following scopes are necessary to ensure
-// the correct functioning of the cluster:
+// on all of the node VMs under the "default" service account.
+// Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
 func (o ClusterClusterAutoscalingAutoProvisioningDefaultsOutput) OauthScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterClusterAutoscalingAutoProvisioningDefaults) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
 }
@@ -2172,9 +2169,8 @@ func (o ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput) MinCpuPlatfo
 }
 
 // The set of Google API scopes to be made available
-// on all of the node VMs under the "default" service account. These can be
-// either FQDNs, or scope aliases. The following scopes are necessary to ensure
-// the correct functioning of the cluster:
+// on all of the node VMs under the "default" service account.
+// Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
 func (o ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput) OauthScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClusterClusterAutoscalingAutoProvisioningDefaults) []string {
 		if v == nil {
@@ -4230,9 +4226,8 @@ type ClusterNodeConfig struct {
 	// for more information.
 	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
 	// The set of Google API scopes to be made available
-	// on all of the node VMs under the "default" service account. These can be
-	// either FQDNs, or scope aliases. The following scopes are necessary to ensure
-	// the correct functioning of the cluster:
+	// on all of the node VMs under the "default" service account.
+	// Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
 	OauthScopes []string `pulumi:"oauthScopes"`
 	// A boolean that represents whether or not the underlying node VMs
 	// are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
@@ -4322,9 +4317,8 @@ type ClusterNodeConfigArgs struct {
 	// for more information.
 	MinCpuPlatform pulumi.StringPtrInput `pulumi:"minCpuPlatform"`
 	// The set of Google API scopes to be made available
-	// on all of the node VMs under the "default" service account. These can be
-	// either FQDNs, or scope aliases. The following scopes are necessary to ensure
-	// the correct functioning of the cluster:
+	// on all of the node VMs under the "default" service account.
+	// Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
 	OauthScopes pulumi.StringArrayInput `pulumi:"oauthScopes"`
 	// A boolean that represents whether or not the underlying node VMs
 	// are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
@@ -4515,9 +4509,8 @@ func (o ClusterNodeConfigOutput) MinCpuPlatform() pulumi.StringPtrOutput {
 }
 
 // The set of Google API scopes to be made available
-// on all of the node VMs under the "default" service account. These can be
-// either FQDNs, or scope aliases. The following scopes are necessary to ensure
-// the correct functioning of the cluster:
+// on all of the node VMs under the "default" service account.
+// Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
 func (o ClusterNodeConfigOutput) OauthScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
 }
@@ -4731,9 +4724,8 @@ func (o ClusterNodeConfigPtrOutput) MinCpuPlatform() pulumi.StringPtrOutput {
 }
 
 // The set of Google API scopes to be made available
-// on all of the node VMs under the "default" service account. These can be
-// either FQDNs, or scope aliases. The following scopes are necessary to ensure
-// the correct functioning of the cluster:
+// on all of the node VMs under the "default" service account.
+// Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
 func (o ClusterNodeConfigPtrOutput) OauthScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) []string {
 		if v == nil {
@@ -6362,9 +6354,8 @@ type ClusterNodePoolNodeConfig struct {
 	// for more information.
 	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
 	// The set of Google API scopes to be made available
-	// on all of the node VMs under the "default" service account. These can be
-	// either FQDNs, or scope aliases. The following scopes are necessary to ensure
-	// the correct functioning of the cluster:
+	// on all of the node VMs under the "default" service account.
+	// Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
 	OauthScopes []string `pulumi:"oauthScopes"`
 	// A boolean that represents whether or not the underlying node VMs
 	// are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
@@ -6454,9 +6445,8 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// for more information.
 	MinCpuPlatform pulumi.StringPtrInput `pulumi:"minCpuPlatform"`
 	// The set of Google API scopes to be made available
-	// on all of the node VMs under the "default" service account. These can be
-	// either FQDNs, or scope aliases. The following scopes are necessary to ensure
-	// the correct functioning of the cluster:
+	// on all of the node VMs under the "default" service account.
+	// Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
 	OauthScopes pulumi.StringArrayInput `pulumi:"oauthScopes"`
 	// A boolean that represents whether or not the underlying node VMs
 	// are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
@@ -6649,9 +6639,8 @@ func (o ClusterNodePoolNodeConfigOutput) MinCpuPlatform() pulumi.StringPtrOutput
 }
 
 // The set of Google API scopes to be made available
-// on all of the node VMs under the "default" service account. These can be
-// either FQDNs, or scope aliases. The following scopes are necessary to ensure
-// the correct functioning of the cluster:
+// on all of the node VMs under the "default" service account.
+// Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
 func (o ClusterNodePoolNodeConfigOutput) OauthScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
 }
@@ -6869,9 +6858,8 @@ func (o ClusterNodePoolNodeConfigPtrOutput) MinCpuPlatform() pulumi.StringPtrOut
 }
 
 // The set of Google API scopes to be made available
-// on all of the node VMs under the "default" service account. These can be
-// either FQDNs, or scope aliases. The following scopes are necessary to ensure
-// the correct functioning of the cluster:
+// on all of the node VMs under the "default" service account.
+// Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
 func (o ClusterNodePoolNodeConfigPtrOutput) OauthScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) []string {
 		if v == nil {

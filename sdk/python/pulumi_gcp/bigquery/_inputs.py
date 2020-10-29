@@ -37,6 +37,7 @@ __all__ = [
     'JobQueryDestinationTableArgs',
     'JobQueryScriptOptionsArgs',
     'JobQueryUserDefinedFunctionResourceArgs',
+    'RoutineArgumentArgs',
     'TableEncryptionConfigurationArgs',
     'TableExternalDataConfigurationArgs',
     'TableExternalDataConfigurationCsvOptionsArgs',
@@ -2237,6 +2238,95 @@ class JobQueryUserDefinedFunctionResourceArgs:
     @resource_uri.setter
     def resource_uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "resource_uri", value)
+
+
+@pulumi.input_type
+class RoutineArgumentArgs:
+    def __init__(__self__, *,
+                 argument_kind: Optional[pulumi.Input[str]] = None,
+                 data_type: Optional[pulumi.Input[str]] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] argument_kind: Defaults to FIXED_TYPE.
+               Default value is `FIXED_TYPE`.
+               Possible values are `FIXED_TYPE` and `ANY_TYPE`.
+        :param pulumi.Input[str] data_type: A JSON schema for the data type. Required unless argumentKind = ANY_TYPE.
+               ~>**NOTE**: Because this field expects a JSON string, any changes to the string
+               will create a diff, even if the JSON itself hasn't changed. If the API returns
+               a different value for the same schema, e.g. it switched the order of values
+               or replaced STRUCT field type with RECORD field type, we currently cannot
+               suppress the recurring diff this causes. As a workaround, we recommend using
+               the schema as returned by the API.
+        :param pulumi.Input[str] mode: Specifies whether the argument is input or output. Can be set for procedures only.
+               Possible values are `IN`, `OUT`, and `INOUT`.
+        :param pulumi.Input[str] name: The name of this argument. Can be absent for function return argument.
+        """
+        if argument_kind is not None:
+            pulumi.set(__self__, "argument_kind", argument_kind)
+        if data_type is not None:
+            pulumi.set(__self__, "data_type", data_type)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="argumentKind")
+    def argument_kind(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defaults to FIXED_TYPE.
+        Default value is `FIXED_TYPE`.
+        Possible values are `FIXED_TYPE` and `ANY_TYPE`.
+        """
+        return pulumi.get(self, "argument_kind")
+
+    @argument_kind.setter
+    def argument_kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "argument_kind", value)
+
+    @property
+    @pulumi.getter(name="dataType")
+    def data_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        A JSON schema for the data type. Required unless argumentKind = ANY_TYPE.
+        ~>**NOTE**: Because this field expects a JSON string, any changes to the string
+        will create a diff, even if the JSON itself hasn't changed. If the API returns
+        a different value for the same schema, e.g. it switched the order of values
+        or replaced STRUCT field type with RECORD field type, we currently cannot
+        suppress the recurring diff this causes. As a workaround, we recommend using
+        the schema as returned by the API.
+        """
+        return pulumi.get(self, "data_type")
+
+    @data_type.setter
+    def data_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "data_type", value)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether the argument is input or output. Can be set for procedures only.
+        Possible values are `IN`, `OUT`, and `INOUT`.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of this argument. Can be absent for function return argument.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 @pulumi.input_type

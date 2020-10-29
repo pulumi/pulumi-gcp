@@ -35,6 +35,9 @@ type Network struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The gateway address for default routing out of the network. This value is selected by GCP.
 	GatewayIpv4 pulumi.StringOutput `pulumi:"gatewayIpv4"`
+	// Maximum Transmission Unit in bytes. The minimum value for this field is 1460
+	// and the maximum value is 1500 bytes.
+	Mtu pulumi.IntOutput `pulumi:"mtu"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -99,6 +102,9 @@ type networkState struct {
 	Description *string `pulumi:"description"`
 	// The gateway address for default routing out of the network. This value is selected by GCP.
 	GatewayIpv4 *string `pulumi:"gatewayIpv4"`
+	// Maximum Transmission Unit in bytes. The minimum value for this field is 1460
+	// and the maximum value is 1500 bytes.
+	Mtu *int `pulumi:"mtu"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -136,6 +142,9 @@ type NetworkState struct {
 	Description pulumi.StringPtrInput
 	// The gateway address for default routing out of the network. This value is selected by GCP.
 	GatewayIpv4 pulumi.StringPtrInput
+	// Maximum Transmission Unit in bytes. The minimum value for this field is 1460
+	// and the maximum value is 1500 bytes.
+	Mtu pulumi.IntPtrInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -175,6 +184,9 @@ type networkArgs struct {
 	// An optional description of this resource. The resource must be
 	// recreated to modify this field.
 	Description *string `pulumi:"description"`
+	// Maximum Transmission Unit in bytes. The minimum value for this field is 1460
+	// and the maximum value is 1500 bytes.
+	Mtu *int `pulumi:"mtu"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -209,6 +221,9 @@ type NetworkArgs struct {
 	// An optional description of this resource. The resource must be
 	// recreated to modify this field.
 	Description pulumi.StringPtrInput
+	// Maximum Transmission Unit in bytes. The minimum value for this field is 1460
+	// and the maximum value is 1500 bytes.
+	Mtu pulumi.IntPtrInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match

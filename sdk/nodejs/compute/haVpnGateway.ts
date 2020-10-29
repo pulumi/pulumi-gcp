@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * To get more information about HaVpnGateway, see:
  *
- * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/vpnGateways)
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/vpnGateways)
  * * How-to Guides
  *     * [Choosing a VPN](https://cloud.google.com/vpn/docs/how-to/choosing-a-vpn)
  *     * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)

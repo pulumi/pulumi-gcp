@@ -3,6 +3,7 @@
 
 // Export members:
 export * from "./accessLevel";
+export * from "./accessLevelCondition";
 export * from "./accessLevels";
 export * from "./accessPolicy";
 export * from "./servicePerimeter";

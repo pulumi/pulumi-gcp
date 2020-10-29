@@ -23,9 +23,9 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// <summary>
         /// Specifies how individual filterLabel matches within the list of filterLabels
         /// contribute towards the overall metadataFilter match. Supported values are:
-        /// - MATCH_ANY: At least one of the filterLabels must have a matching label in the
+        /// * MATCH_ANY: At least one of the filterLabels must have a matching label in the
         /// provided metadata.
-        /// - MATCH_ALL: All filterLabels must have matching labels in
+        /// * MATCH_ALL: All filterLabels must have matching labels in
         /// the provided metadata.
         /// Possible values are `MATCH_ALL` and `MATCH_ANY`.
         /// </summary>

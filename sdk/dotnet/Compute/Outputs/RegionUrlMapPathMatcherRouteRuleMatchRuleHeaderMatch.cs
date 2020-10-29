@@ -44,10 +44,13 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// <summary>
         /// The header value must be an integer and its value must be in the range specified
         /// in rangeMatch. If the header does not contain an integer, number or is empty,
-        /// the match fails. For example for a range [-5, 0]   - -3 will match.  - 0 will
-        /// not match.  - 0.25 will not match.  - -3someString will not match.   Only one of
-        /// exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
-        /// must be set.
+        /// the match fails. For example for a range [-5, 0]
+        /// * -3 will match
+        /// * 0 will not match
+        /// * 0.25 will not match
+        /// * -3someString will not match.
+        /// Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or
+        /// rangeMatch must be set.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch? RangeMatch;

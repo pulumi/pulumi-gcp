@@ -82,6 +82,13 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Image { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
+        /// value: "SCSI" Possible values: ["SCSI", "NVME"]
+        /// </summary>
+        [Output("interface")]
+        public Output<string?> Interface { get; private set; } = null!;
+
+        /// <summary>
         /// The fingerprint used for optimistic locking of this resource. Used internally during updates.
         /// </summary>
         [Output("labelFingerprint")]
@@ -310,6 +317,13 @@ namespace Pulumi.Gcp.Compute
         [Input("image")]
         public Input<string>? Image { get; set; }
 
+        /// <summary>
+        /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
+        /// value: "SCSI" Possible values: ["SCSI", "NVME"]
+        /// </summary>
+        [Input("interface")]
+        public Input<string>? Interface { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -471,6 +485,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("image")]
         public Input<string>? Image { get; set; }
+
+        /// <summary>
+        /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
+        /// value: "SCSI" Possible values: ["SCSI", "NVME"]
+        /// </summary>
+        [Input("interface")]
+        public Input<string>? Interface { get; set; }
 
         /// <summary>
         /// The fingerprint used for optimistic locking of this resource. Used internally during updates.

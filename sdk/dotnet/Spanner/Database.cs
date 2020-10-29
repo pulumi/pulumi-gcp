@@ -33,6 +33,9 @@ namespace Pulumi.Gcp.Spanner
         [Output("ddls")]
         public Output<ImmutableArray<string>> Ddls { get; private set; } = null!;
 
+        [Output("deletionProtection")]
+        public Output<bool?> DeletionProtection { get; private set; } = null!;
+
         /// <summary>
         /// The instance to create the database on.
         /// </summary>
@@ -120,6 +123,9 @@ namespace Pulumi.Gcp.Spanner
             set => _ddls = value;
         }
 
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
         /// <summary>
         /// The instance to create the database on.
         /// </summary>
@@ -161,6 +167,9 @@ namespace Pulumi.Gcp.Spanner
             get => _ddls ?? (_ddls = new InputList<string>());
             set => _ddls = value;
         }
+
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
         /// The instance to create the database on.
