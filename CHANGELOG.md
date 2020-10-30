@@ -2,12 +2,15 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 4.1.0 (2020-10-30)
 * Upgrade to v3.45.0 of the Google Beta Terraform Provider
   ** PLEASE NOTE:**  
   * Changing the `EnableMessageOrdering` of `gcp.pubsub.Subscription` will now cause the subscription to be recreated.
   * `gcp.spanner.Database` resources need `DeletionProtection` to be set to `false` before they can be deleted.
-
----
 
 ## 4.0.0 (2020-10-26)
 * Upgrade to v3.44.0 of the Google Beta Terraform Provider
