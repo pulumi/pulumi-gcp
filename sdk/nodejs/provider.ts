@@ -85,10 +85,13 @@ export class Provider extends pulumi.ProviderResource {
             inputs["firestoreCustomEndpoint"] = args ? args.firestoreCustomEndpoint : undefined;
             inputs["gameServicesCustomEndpoint"] = args ? args.gameServicesCustomEndpoint : undefined;
             inputs["healthcareCustomEndpoint"] = args ? args.healthcareCustomEndpoint : undefined;
+            inputs["iamBetaCustomEndpoint"] = args ? args.iamBetaCustomEndpoint : undefined;
             inputs["iamCredentialsCustomEndpoint"] = args ? args.iamCredentialsCustomEndpoint : undefined;
             inputs["iamCustomEndpoint"] = args ? args.iamCustomEndpoint : undefined;
             inputs["iapCustomEndpoint"] = args ? args.iapCustomEndpoint : undefined;
             inputs["identityPlatformCustomEndpoint"] = args ? args.identityPlatformCustomEndpoint : undefined;
+            inputs["impersonateServiceAccount"] = args ? args.impersonateServiceAccount : undefined;
+            inputs["impersonateServiceAccountDelegates"] = pulumi.output(args ? args.impersonateServiceAccountDelegates : undefined).apply(JSON.stringify);
             inputs["kmsCustomEndpoint"] = args ? args.kmsCustomEndpoint : undefined;
             inputs["loggingCustomEndpoint"] = args ? args.loggingCustomEndpoint : undefined;
             inputs["memcacheCustomEndpoint"] = args ? args.memcacheCustomEndpoint : undefined;
@@ -187,10 +190,13 @@ export interface ProviderArgs {
     readonly firestoreCustomEndpoint?: pulumi.Input<string>;
     readonly gameServicesCustomEndpoint?: pulumi.Input<string>;
     readonly healthcareCustomEndpoint?: pulumi.Input<string>;
+    readonly iamBetaCustomEndpoint?: pulumi.Input<string>;
     readonly iamCredentialsCustomEndpoint?: pulumi.Input<string>;
     readonly iamCustomEndpoint?: pulumi.Input<string>;
     readonly iapCustomEndpoint?: pulumi.Input<string>;
     readonly identityPlatformCustomEndpoint?: pulumi.Input<string>;
+    readonly impersonateServiceAccount?: pulumi.Input<string>;
+    readonly impersonateServiceAccountDelegates?: pulumi.Input<pulumi.Input<string>[]>;
     readonly kmsCustomEndpoint?: pulumi.Input<string>;
     readonly loggingCustomEndpoint?: pulumi.Input<string>;
     readonly memcacheCustomEndpoint?: pulumi.Input<string>;

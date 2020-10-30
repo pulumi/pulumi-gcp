@@ -38,6 +38,10 @@ class NetworkEndpointGroup(pulumi.CustomResource):
         specify IP addresses and ports, you can distribute traffic in a granular
         fashion among applications or containers running within VM instances.
 
+        Recreating a network endpoint group that's in use by another resource will give a
+        `resourceInUseByAnotherResource` error. Use `lifecycle.create_before_destroy`
+        to avoid this type of error.
+
         To get more information about NetworkEndpointGroup, see:
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/networkEndpointGroups)

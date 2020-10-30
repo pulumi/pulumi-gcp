@@ -66,8 +66,8 @@ type Address struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The purpose of this resource, which can be one of the following values:
-	// - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
-	// - SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers
+	// * GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
+	// * SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers.
 	//   This should only be set when using an Internal address.
 	//   Possible values are `GCE_ENDPOINT` and `SHARED_LOADBALANCER_VIP`.
 	Purpose pulumi.StringOutput `pulumi:"purpose"`
@@ -145,8 +145,8 @@ type addressState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The purpose of this resource, which can be one of the following values:
-	// - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
-	// - SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers
+	// * GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
+	// * SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers.
 	//   This should only be set when using an Internal address.
 	//   Possible values are `GCE_ENDPOINT` and `SHARED_LOADBALANCER_VIP`.
 	Purpose *string `pulumi:"purpose"`
@@ -197,8 +197,8 @@ type AddressState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The purpose of this resource, which can be one of the following values:
-	// - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
-	// - SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers
+	// * GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
+	// * SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers.
 	//   This should only be set when using an Internal address.
 	//   Possible values are `GCE_ENDPOINT` and `SHARED_LOADBALANCER_VIP`.
 	Purpose pulumi.StringPtrInput
@@ -249,8 +249,8 @@ type addressArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The purpose of this resource, which can be one of the following values:
-	// - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
-	// - SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers
+	// * GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
+	// * SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers.
 	//   This should only be set when using an Internal address.
 	//   Possible values are `GCE_ENDPOINT` and `SHARED_LOADBALANCER_VIP`.
 	Purpose *string `pulumi:"purpose"`
@@ -294,8 +294,8 @@ type AddressArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The purpose of this resource, which can be one of the following values:
-	// - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
-	// - SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers
+	// * GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
+	// * SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers.
 	//   This should only be set when using an Internal address.
 	//   Possible values are `GCE_ENDPOINT` and `SHARED_LOADBALANCER_VIP`.
 	Purpose pulumi.StringPtrInput

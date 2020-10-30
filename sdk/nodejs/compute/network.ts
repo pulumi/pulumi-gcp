@@ -66,6 +66,11 @@ export class Network extends pulumi.CustomResource {
      */
     public /*out*/ readonly gatewayIpv4!: pulumi.Output<string>;
     /**
+     * Maximum Transmission Unit in bytes. The minimum value for this field is 1460
+     * and the maximum value is 1500 bytes.
+     */
+    public readonly mtu!: pulumi.Output<number>;
+    /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
      * RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -110,6 +115,7 @@ export class Network extends pulumi.CustomResource {
             inputs["deleteDefaultRoutesOnCreate"] = state ? state.deleteDefaultRoutesOnCreate : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["gatewayIpv4"] = state ? state.gatewayIpv4 : undefined;
+            inputs["mtu"] = state ? state.mtu : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["routingMode"] = state ? state.routingMode : undefined;
@@ -119,6 +125,7 @@ export class Network extends pulumi.CustomResource {
             inputs["autoCreateSubnetworks"] = args ? args.autoCreateSubnetworks : undefined;
             inputs["deleteDefaultRoutesOnCreate"] = args ? args.deleteDefaultRoutesOnCreate : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["mtu"] = args ? args.mtu : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["routingMode"] = args ? args.routingMode : undefined;
@@ -162,6 +169,11 @@ export interface NetworkState {
      * The gateway address for default routing out of the network. This value is selected by GCP.
      */
     readonly gatewayIpv4?: pulumi.Input<string>;
+    /**
+     * Maximum Transmission Unit in bytes. The minimum value for this field is 1460
+     * and the maximum value is 1500 bytes.
+     */
+    readonly mtu?: pulumi.Input<number>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -214,6 +226,11 @@ export interface NetworkArgs {
      * recreated to modify this field.
      */
     readonly description?: pulumi.Input<string>;
+    /**
+     * Maximum Transmission Unit in bytes. The minimum value for this field is 1460
+     * and the maximum value is 1500 bytes.
+     */
+    readonly mtu?: pulumi.Input<number>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with

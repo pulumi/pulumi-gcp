@@ -53,6 +53,13 @@ namespace Pulumi.Gcp.Compute
         public Output<string> GatewayIpv4 { get; private set; } = null!;
 
         /// <summary>
+        /// Maximum Transmission Unit in bytes. The minimum value for this field is 1460
+        /// and the maximum value is 1500 bytes.
+        /// </summary>
+        [Output("mtu")]
+        public Output<int> Mtu { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the resource. Provided by the client when the resource is
         /// created. The name must be 1-63 characters long, and comply with
         /// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -159,6 +166,13 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Maximum Transmission Unit in bytes. The minimum value for this field is 1460
+        /// and the maximum value is 1500 bytes.
+        /// </summary>
+        [Input("mtu")]
+        public Input<int>? Mtu { get; set; }
+
+        /// <summary>
         /// Name of the resource. Provided by the client when the resource is
         /// created. The name must be 1-63 characters long, and comply with
         /// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -224,6 +238,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("gatewayIpv4")]
         public Input<string>? GatewayIpv4 { get; set; }
+
+        /// <summary>
+        /// Maximum Transmission Unit in bytes. The minimum value for this field is 1460
+        /// and the maximum value is 1500 bytes.
+        /// </summary>
+        [Input("mtu")]
+        public Input<int>? Mtu { get; set; }
 
         /// <summary>
         /// Name of the resource. Provided by the client when the resource is

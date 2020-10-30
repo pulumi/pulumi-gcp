@@ -52,6 +52,7 @@ export class Database extends pulumi.CustomResource {
      * error in any statement, the database is not created.
      */
     public readonly ddls!: pulumi.Output<string[] | undefined>;
+    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
      * The instance to create the database on.
      */
@@ -84,6 +85,7 @@ export class Database extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as DatabaseState | undefined;
             inputs["ddls"] = state ? state.ddls : undefined;
+            inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             inputs["instance"] = state ? state.instance : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -94,6 +96,7 @@ export class Database extends pulumi.CustomResource {
                 throw new Error("Missing required property 'instance'");
             }
             inputs["ddls"] = args ? args.ddls : undefined;
+            inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             inputs["instance"] = args ? args.instance : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -121,6 +124,7 @@ export interface DatabaseState {
      * error in any statement, the database is not created.
      */
     readonly ddls?: pulumi.Input<pulumi.Input<string>[]>;
+    readonly deletionProtection?: pulumi.Input<boolean>;
     /**
      * The instance to create the database on.
      */
@@ -152,6 +156,7 @@ export interface DatabaseArgs {
      * error in any statement, the database is not created.
      */
     readonly ddls?: pulumi.Input<pulumi.Input<string>[]>;
+    readonly deletionProtection?: pulumi.Input<boolean>;
     /**
      * The instance to create the database on.
      */

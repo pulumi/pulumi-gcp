@@ -28,7 +28,8 @@ type Database struct {
 	// database. Statements can create tables, indexes, etc. These statements
 	// execute atomically with the creation of the database: if there is an
 	// error in any statement, the database is not created.
-	Ddls pulumi.StringArrayOutput `pulumi:"ddls"`
+	Ddls               pulumi.StringArrayOutput `pulumi:"ddls"`
+	DeletionProtection pulumi.BoolPtrOutput     `pulumi:"deletionProtection"`
 	// The instance to create the database on.
 	Instance pulumi.StringOutput `pulumi:"instance"`
 	// A unique identifier for the database, which cannot be changed after
@@ -76,7 +77,8 @@ type databaseState struct {
 	// database. Statements can create tables, indexes, etc. These statements
 	// execute atomically with the creation of the database: if there is an
 	// error in any statement, the database is not created.
-	Ddls []string `pulumi:"ddls"`
+	Ddls               []string `pulumi:"ddls"`
+	DeletionProtection *bool    `pulumi:"deletionProtection"`
 	// The instance to create the database on.
 	Instance *string `pulumi:"instance"`
 	// A unique identifier for the database, which cannot be changed after
@@ -94,7 +96,8 @@ type DatabaseState struct {
 	// database. Statements can create tables, indexes, etc. These statements
 	// execute atomically with the creation of the database: if there is an
 	// error in any statement, the database is not created.
-	Ddls pulumi.StringArrayInput
+	Ddls               pulumi.StringArrayInput
+	DeletionProtection pulumi.BoolPtrInput
 	// The instance to create the database on.
 	Instance pulumi.StringPtrInput
 	// A unique identifier for the database, which cannot be changed after
@@ -116,7 +119,8 @@ type databaseArgs struct {
 	// database. Statements can create tables, indexes, etc. These statements
 	// execute atomically with the creation of the database: if there is an
 	// error in any statement, the database is not created.
-	Ddls []string `pulumi:"ddls"`
+	Ddls               []string `pulumi:"ddls"`
+	DeletionProtection *bool    `pulumi:"deletionProtection"`
 	// The instance to create the database on.
 	Instance string `pulumi:"instance"`
 	// A unique identifier for the database, which cannot be changed after
@@ -133,7 +137,8 @@ type DatabaseArgs struct {
 	// database. Statements can create tables, indexes, etc. These statements
 	// execute atomically with the creation of the database: if there is an
 	// error in any statement, the database is not created.
-	Ddls pulumi.StringArrayInput
+	Ddls               pulumi.StringArrayInput
+	DeletionProtection pulumi.BoolPtrInput
 	// The instance to create the database on.
 	Instance pulumi.StringInput
 	// A unique identifier for the database, which cannot be changed after

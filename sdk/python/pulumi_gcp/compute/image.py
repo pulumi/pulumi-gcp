@@ -89,17 +89,17 @@ class Image(pulumi.CustomResource):
                rawDisk.source property but not both to create an image.
         :param pulumi.Input[str] source_image: URL of the source image used to create this image. In order to create an image, you must provide the full or partial
                URL of one of the following:
-               The selfLink URL
-               This property
-               The rawDisk.source URL
-               The sourceDisk URL
+               * The selfLink URL
+               * This property
+               * The rawDisk.source URL
+               * The sourceDisk URL
         :param pulumi.Input[str] source_snapshot: URL of the source snapshot used to create this image.
                In order to create an image, you must provide the full or partial URL of one of the following:
-               The selfLink URL
-               This property
-               The sourceImage URL
-               The rawDisk.source URL
-               The sourceDisk URL
+               * The selfLink URL
+               * This property
+               * The sourceImage URL
+               * The rawDisk.source URL
+               * The sourceDisk URL
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -200,17 +200,17 @@ class Image(pulumi.CustomResource):
                rawDisk.source property but not both to create an image.
         :param pulumi.Input[str] source_image: URL of the source image used to create this image. In order to create an image, you must provide the full or partial
                URL of one of the following:
-               The selfLink URL
-               This property
-               The rawDisk.source URL
-               The sourceDisk URL
+               * The selfLink URL
+               * This property
+               * The rawDisk.source URL
+               * The sourceDisk URL
         :param pulumi.Input[str] source_snapshot: URL of the source snapshot used to create this image.
                In order to create an image, you must provide the full or partial URL of one of the following:
-               The selfLink URL
-               This property
-               The sourceImage URL
-               The rawDisk.source URL
-               The sourceDisk URL
+               * The selfLink URL
+               * This property
+               * The sourceImage URL
+               * The rawDisk.source URL
+               * The sourceDisk URL
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -369,10 +369,10 @@ class Image(pulumi.CustomResource):
         """
         URL of the source image used to create this image. In order to create an image, you must provide the full or partial
         URL of one of the following:
-        The selfLink URL
-        This property
-        The rawDisk.source URL
-        The sourceDisk URL
+        * The selfLink URL
+        * This property
+        * The rawDisk.source URL
+        * The sourceDisk URL
         """
         return pulumi.get(self, "source_image")
 
@@ -382,11 +382,11 @@ class Image(pulumi.CustomResource):
         """
         URL of the source snapshot used to create this image.
         In order to create an image, you must provide the full or partial URL of one of the following:
-        The selfLink URL
-        This property
-        The sourceImage URL
-        The rawDisk.source URL
-        The sourceDisk URL
+        * The selfLink URL
+        * This property
+        * The sourceImage URL
+        * The rawDisk.source URL
+        * The sourceDisk URL
         """
         return pulumi.get(self, "source_snapshot")
 

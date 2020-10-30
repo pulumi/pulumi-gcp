@@ -141,10 +141,10 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// URL of the source image used to create this image. In order to create an image, you must provide the full or partial
         /// URL of one of the following:
-        /// The selfLink URL
-        /// This property
-        /// The rawDisk.source URL
-        /// The sourceDisk URL
+        /// * The selfLink URL
+        /// * This property
+        /// * The rawDisk.source URL
+        /// * The sourceDisk URL
         /// </summary>
         [Output("sourceImage")]
         public Output<string?> SourceImage { get; private set; } = null!;
@@ -152,11 +152,11 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// URL of the source snapshot used to create this image.
         /// In order to create an image, you must provide the full or partial URL of one of the following:
-        /// The selfLink URL
-        /// This property
-        /// The sourceImage URL
-        /// The rawDisk.source URL
-        /// The sourceDisk URL
+        /// * The selfLink URL
+        /// * This property
+        /// * The sourceImage URL
+        /// * The rawDisk.source URL
+        /// * The sourceDisk URL
         /// </summary>
         [Output("sourceSnapshot")]
         public Output<string?> SourceSnapshot { get; private set; } = null!;
@@ -305,10 +305,10 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// URL of the source image used to create this image. In order to create an image, you must provide the full or partial
         /// URL of one of the following:
-        /// The selfLink URL
-        /// This property
-        /// The rawDisk.source URL
-        /// The sourceDisk URL
+        /// * The selfLink URL
+        /// * This property
+        /// * The rawDisk.source URL
+        /// * The sourceDisk URL
         /// </summary>
         [Input("sourceImage")]
         public Input<string>? SourceImage { get; set; }
@@ -316,11 +316,11 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// URL of the source snapshot used to create this image.
         /// In order to create an image, you must provide the full or partial URL of one of the following:
-        /// The selfLink URL
-        /// This property
-        /// The sourceImage URL
-        /// The rawDisk.source URL
-        /// The sourceDisk URL
+        /// * The selfLink URL
+        /// * This property
+        /// * The sourceImage URL
+        /// * The rawDisk.source URL
+        /// * The sourceDisk URL
         /// </summary>
         [Input("sourceSnapshot")]
         public Input<string>? SourceSnapshot { get; set; }
@@ -454,10 +454,10 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// URL of the source image used to create this image. In order to create an image, you must provide the full or partial
         /// URL of one of the following:
-        /// The selfLink URL
-        /// This property
-        /// The rawDisk.source URL
-        /// The sourceDisk URL
+        /// * The selfLink URL
+        /// * This property
+        /// * The rawDisk.source URL
+        /// * The sourceDisk URL
         /// </summary>
         [Input("sourceImage")]
         public Input<string>? SourceImage { get; set; }
@@ -465,11 +465,11 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// URL of the source snapshot used to create this image.
         /// In order to create an image, you must provide the full or partial URL of one of the following:
-        /// The selfLink URL
-        /// This property
-        /// The sourceImage URL
-        /// The rawDisk.source URL
-        /// The sourceDisk URL
+        /// * The selfLink URL
+        /// * This property
+        /// * The sourceImage URL
+        /// * The rawDisk.source URL
+        /// * The sourceDisk URL
         /// </summary>
         [Input("sourceSnapshot")]
         public Input<string>? SourceSnapshot { get; set; }

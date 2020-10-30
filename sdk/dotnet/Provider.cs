@@ -185,6 +185,9 @@ namespace Pulumi.Gcp
         [Input("healthcareCustomEndpoint")]
         public Input<string>? HealthcareCustomEndpoint { get; set; }
 
+        [Input("iamBetaCustomEndpoint")]
+        public Input<string>? IamBetaCustomEndpoint { get; set; }
+
         [Input("iamCredentialsCustomEndpoint")]
         public Input<string>? IamCredentialsCustomEndpoint { get; set; }
 
@@ -196,6 +199,17 @@ namespace Pulumi.Gcp
 
         [Input("identityPlatformCustomEndpoint")]
         public Input<string>? IdentityPlatformCustomEndpoint { get; set; }
+
+        [Input("impersonateServiceAccount")]
+        public Input<string>? ImpersonateServiceAccount { get; set; }
+
+        [Input("impersonateServiceAccountDelegates", json: true)]
+        private InputList<string>? _impersonateServiceAccountDelegates;
+        public InputList<string> ImpersonateServiceAccountDelegates
+        {
+            get => _impersonateServiceAccountDelegates ?? (_impersonateServiceAccountDelegates = new InputList<string>());
+            set => _impersonateServiceAccountDelegates = value;
+        }
 
         [Input("kmsCustomEndpoint")]
         public Input<string>? KmsCustomEndpoint { get; set; }

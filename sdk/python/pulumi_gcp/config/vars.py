@@ -57,10 +57,13 @@ __all__ = [
     'firestore_custom_endpoint',
     'game_services_custom_endpoint',
     'healthcare_custom_endpoint',
+    'iam_beta_custom_endpoint',
     'iam_credentials_custom_endpoint',
     'iam_custom_endpoint',
     'iap_custom_endpoint',
     'identity_platform_custom_endpoint',
+    'impersonate_service_account',
+    'impersonate_service_account_delegates',
     'kms_custom_endpoint',
     'logging_custom_endpoint',
     'memcache_custom_endpoint',
@@ -194,6 +197,8 @@ game_services_custom_endpoint = __config__.get('gameServicesCustomEndpoint')
 
 healthcare_custom_endpoint = __config__.get('healthcareCustomEndpoint')
 
+iam_beta_custom_endpoint = __config__.get('iamBetaCustomEndpoint')
+
 iam_credentials_custom_endpoint = __config__.get('iamCredentialsCustomEndpoint')
 
 iam_custom_endpoint = __config__.get('iamCustomEndpoint')
@@ -201,6 +206,10 @@ iam_custom_endpoint = __config__.get('iamCustomEndpoint')
 iap_custom_endpoint = __config__.get('iapCustomEndpoint')
 
 identity_platform_custom_endpoint = __config__.get('identityPlatformCustomEndpoint')
+
+impersonate_service_account = __config__.get('impersonateServiceAccount')
+
+impersonate_service_account_delegates = __config__.get('impersonateServiceAccountDelegates')
 
 kms_custom_endpoint = __config__.get('kmsCustomEndpoint')
 

@@ -62,7 +62,6 @@ export class ManagedZone extends pulumi.CustomResource {
     public readonly dnssecConfig!: pulumi.Output<outputs.dns.ManagedZoneDnssecConfig | undefined>;
     /**
      * Set this true to delete all records in the zone.
-     * The `dnssecConfig` block supports:
      */
     public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
     /**
@@ -196,7 +195,6 @@ export interface ManagedZoneState {
     readonly dnssecConfig?: pulumi.Input<inputs.dns.ManagedZoneDnssecConfig>;
     /**
      * Set this true to delete all records in the zone.
-     * The `dnssecConfig` block supports:
      */
     readonly forceDestroy?: pulumi.Input<boolean>;
     /**
@@ -274,7 +272,6 @@ export interface ManagedZoneArgs {
     readonly dnssecConfig?: pulumi.Input<inputs.dns.ManagedZoneDnssecConfig>;
     /**
      * Set this true to delete all records in the zone.
-     * The `dnssecConfig` block supports:
      */
     readonly forceDestroy?: pulumi.Input<boolean>;
     /**

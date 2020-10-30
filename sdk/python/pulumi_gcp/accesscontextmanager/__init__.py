@@ -4,6 +4,7 @@
 
 # Export this package's modules as members:
 from .access_level import *
+from .access_level_condition import *
 from .access_levels import *
 from .access_policy import *
 from .service_perimeter import *

@@ -1032,6 +1032,318 @@ func (o EntryGroupIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type PolicyTagIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// PolicyTagIamBindingConditionInput is an input type that accepts PolicyTagIamBindingConditionArgs and PolicyTagIamBindingConditionOutput values.
+// You can construct a concrete instance of `PolicyTagIamBindingConditionInput` via:
+//
+//          PolicyTagIamBindingConditionArgs{...}
+type PolicyTagIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToPolicyTagIamBindingConditionOutput() PolicyTagIamBindingConditionOutput
+	ToPolicyTagIamBindingConditionOutputWithContext(context.Context) PolicyTagIamBindingConditionOutput
+}
+
+type PolicyTagIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (PolicyTagIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyTagIamBindingCondition)(nil)).Elem()
+}
+
+func (i PolicyTagIamBindingConditionArgs) ToPolicyTagIamBindingConditionOutput() PolicyTagIamBindingConditionOutput {
+	return i.ToPolicyTagIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i PolicyTagIamBindingConditionArgs) ToPolicyTagIamBindingConditionOutputWithContext(ctx context.Context) PolicyTagIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyTagIamBindingConditionOutput)
+}
+
+func (i PolicyTagIamBindingConditionArgs) ToPolicyTagIamBindingConditionPtrOutput() PolicyTagIamBindingConditionPtrOutput {
+	return i.ToPolicyTagIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i PolicyTagIamBindingConditionArgs) ToPolicyTagIamBindingConditionPtrOutputWithContext(ctx context.Context) PolicyTagIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyTagIamBindingConditionOutput).ToPolicyTagIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// PolicyTagIamBindingConditionPtrInput is an input type that accepts PolicyTagIamBindingConditionArgs, PolicyTagIamBindingConditionPtr and PolicyTagIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `PolicyTagIamBindingConditionPtrInput` via:
+//
+//          PolicyTagIamBindingConditionArgs{...}
+//
+//  or:
+//
+//          nil
+type PolicyTagIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToPolicyTagIamBindingConditionPtrOutput() PolicyTagIamBindingConditionPtrOutput
+	ToPolicyTagIamBindingConditionPtrOutputWithContext(context.Context) PolicyTagIamBindingConditionPtrOutput
+}
+
+type policyTagIamBindingConditionPtrType PolicyTagIamBindingConditionArgs
+
+func PolicyTagIamBindingConditionPtr(v *PolicyTagIamBindingConditionArgs) PolicyTagIamBindingConditionPtrInput {
+	return (*policyTagIamBindingConditionPtrType)(v)
+}
+
+func (*policyTagIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyTagIamBindingCondition)(nil)).Elem()
+}
+
+func (i *policyTagIamBindingConditionPtrType) ToPolicyTagIamBindingConditionPtrOutput() PolicyTagIamBindingConditionPtrOutput {
+	return i.ToPolicyTagIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *policyTagIamBindingConditionPtrType) ToPolicyTagIamBindingConditionPtrOutputWithContext(ctx context.Context) PolicyTagIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyTagIamBindingConditionPtrOutput)
+}
+
+type PolicyTagIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (PolicyTagIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyTagIamBindingCondition)(nil)).Elem()
+}
+
+func (o PolicyTagIamBindingConditionOutput) ToPolicyTagIamBindingConditionOutput() PolicyTagIamBindingConditionOutput {
+	return o
+}
+
+func (o PolicyTagIamBindingConditionOutput) ToPolicyTagIamBindingConditionOutputWithContext(ctx context.Context) PolicyTagIamBindingConditionOutput {
+	return o
+}
+
+func (o PolicyTagIamBindingConditionOutput) ToPolicyTagIamBindingConditionPtrOutput() PolicyTagIamBindingConditionPtrOutput {
+	return o.ToPolicyTagIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o PolicyTagIamBindingConditionOutput) ToPolicyTagIamBindingConditionPtrOutputWithContext(ctx context.Context) PolicyTagIamBindingConditionPtrOutput {
+	return o.ApplyT(func(v PolicyTagIamBindingCondition) *PolicyTagIamBindingCondition {
+		return &v
+	}).(PolicyTagIamBindingConditionPtrOutput)
+}
+func (o PolicyTagIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyTagIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o PolicyTagIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyTagIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o PolicyTagIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyTagIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type PolicyTagIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (PolicyTagIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyTagIamBindingCondition)(nil)).Elem()
+}
+
+func (o PolicyTagIamBindingConditionPtrOutput) ToPolicyTagIamBindingConditionPtrOutput() PolicyTagIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o PolicyTagIamBindingConditionPtrOutput) ToPolicyTagIamBindingConditionPtrOutputWithContext(ctx context.Context) PolicyTagIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o PolicyTagIamBindingConditionPtrOutput) Elem() PolicyTagIamBindingConditionOutput {
+	return o.ApplyT(func(v *PolicyTagIamBindingCondition) PolicyTagIamBindingCondition { return *v }).(PolicyTagIamBindingConditionOutput)
+}
+
+func (o PolicyTagIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicyTagIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PolicyTagIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicyTagIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PolicyTagIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicyTagIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type PolicyTagIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// PolicyTagIamMemberConditionInput is an input type that accepts PolicyTagIamMemberConditionArgs and PolicyTagIamMemberConditionOutput values.
+// You can construct a concrete instance of `PolicyTagIamMemberConditionInput` via:
+//
+//          PolicyTagIamMemberConditionArgs{...}
+type PolicyTagIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToPolicyTagIamMemberConditionOutput() PolicyTagIamMemberConditionOutput
+	ToPolicyTagIamMemberConditionOutputWithContext(context.Context) PolicyTagIamMemberConditionOutput
+}
+
+type PolicyTagIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (PolicyTagIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyTagIamMemberCondition)(nil)).Elem()
+}
+
+func (i PolicyTagIamMemberConditionArgs) ToPolicyTagIamMemberConditionOutput() PolicyTagIamMemberConditionOutput {
+	return i.ToPolicyTagIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i PolicyTagIamMemberConditionArgs) ToPolicyTagIamMemberConditionOutputWithContext(ctx context.Context) PolicyTagIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyTagIamMemberConditionOutput)
+}
+
+func (i PolicyTagIamMemberConditionArgs) ToPolicyTagIamMemberConditionPtrOutput() PolicyTagIamMemberConditionPtrOutput {
+	return i.ToPolicyTagIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i PolicyTagIamMemberConditionArgs) ToPolicyTagIamMemberConditionPtrOutputWithContext(ctx context.Context) PolicyTagIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyTagIamMemberConditionOutput).ToPolicyTagIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// PolicyTagIamMemberConditionPtrInput is an input type that accepts PolicyTagIamMemberConditionArgs, PolicyTagIamMemberConditionPtr and PolicyTagIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `PolicyTagIamMemberConditionPtrInput` via:
+//
+//          PolicyTagIamMemberConditionArgs{...}
+//
+//  or:
+//
+//          nil
+type PolicyTagIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToPolicyTagIamMemberConditionPtrOutput() PolicyTagIamMemberConditionPtrOutput
+	ToPolicyTagIamMemberConditionPtrOutputWithContext(context.Context) PolicyTagIamMemberConditionPtrOutput
+}
+
+type policyTagIamMemberConditionPtrType PolicyTagIamMemberConditionArgs
+
+func PolicyTagIamMemberConditionPtr(v *PolicyTagIamMemberConditionArgs) PolicyTagIamMemberConditionPtrInput {
+	return (*policyTagIamMemberConditionPtrType)(v)
+}
+
+func (*policyTagIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyTagIamMemberCondition)(nil)).Elem()
+}
+
+func (i *policyTagIamMemberConditionPtrType) ToPolicyTagIamMemberConditionPtrOutput() PolicyTagIamMemberConditionPtrOutput {
+	return i.ToPolicyTagIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *policyTagIamMemberConditionPtrType) ToPolicyTagIamMemberConditionPtrOutputWithContext(ctx context.Context) PolicyTagIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyTagIamMemberConditionPtrOutput)
+}
+
+type PolicyTagIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (PolicyTagIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyTagIamMemberCondition)(nil)).Elem()
+}
+
+func (o PolicyTagIamMemberConditionOutput) ToPolicyTagIamMemberConditionOutput() PolicyTagIamMemberConditionOutput {
+	return o
+}
+
+func (o PolicyTagIamMemberConditionOutput) ToPolicyTagIamMemberConditionOutputWithContext(ctx context.Context) PolicyTagIamMemberConditionOutput {
+	return o
+}
+
+func (o PolicyTagIamMemberConditionOutput) ToPolicyTagIamMemberConditionPtrOutput() PolicyTagIamMemberConditionPtrOutput {
+	return o.ToPolicyTagIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o PolicyTagIamMemberConditionOutput) ToPolicyTagIamMemberConditionPtrOutputWithContext(ctx context.Context) PolicyTagIamMemberConditionPtrOutput {
+	return o.ApplyT(func(v PolicyTagIamMemberCondition) *PolicyTagIamMemberCondition {
+		return &v
+	}).(PolicyTagIamMemberConditionPtrOutput)
+}
+func (o PolicyTagIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyTagIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o PolicyTagIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyTagIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o PolicyTagIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyTagIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type PolicyTagIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (PolicyTagIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyTagIamMemberCondition)(nil)).Elem()
+}
+
+func (o PolicyTagIamMemberConditionPtrOutput) ToPolicyTagIamMemberConditionPtrOutput() PolicyTagIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o PolicyTagIamMemberConditionPtrOutput) ToPolicyTagIamMemberConditionPtrOutputWithContext(ctx context.Context) PolicyTagIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o PolicyTagIamMemberConditionPtrOutput) Elem() PolicyTagIamMemberConditionOutput {
+	return o.ApplyT(func(v *PolicyTagIamMemberCondition) PolicyTagIamMemberCondition { return *v }).(PolicyTagIamMemberConditionOutput)
+}
+
+func (o PolicyTagIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicyTagIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PolicyTagIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicyTagIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PolicyTagIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicyTagIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type TagField struct {
 	// Holds the value for a tag field with boolean type.
 	BoolValue *bool `pulumi:"boolValue"`
@@ -1684,6 +1996,318 @@ func (o TagTemplateFieldTypeEnumTypeAllowedValueArrayOutput) Index(i pulumi.IntI
 	}).(TagTemplateFieldTypeEnumTypeAllowedValueOutput)
 }
 
+type TaxonomyIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// TaxonomyIamBindingConditionInput is an input type that accepts TaxonomyIamBindingConditionArgs and TaxonomyIamBindingConditionOutput values.
+// You can construct a concrete instance of `TaxonomyIamBindingConditionInput` via:
+//
+//          TaxonomyIamBindingConditionArgs{...}
+type TaxonomyIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToTaxonomyIamBindingConditionOutput() TaxonomyIamBindingConditionOutput
+	ToTaxonomyIamBindingConditionOutputWithContext(context.Context) TaxonomyIamBindingConditionOutput
+}
+
+type TaxonomyIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (TaxonomyIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaxonomyIamBindingCondition)(nil)).Elem()
+}
+
+func (i TaxonomyIamBindingConditionArgs) ToTaxonomyIamBindingConditionOutput() TaxonomyIamBindingConditionOutput {
+	return i.ToTaxonomyIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i TaxonomyIamBindingConditionArgs) ToTaxonomyIamBindingConditionOutputWithContext(ctx context.Context) TaxonomyIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyIamBindingConditionOutput)
+}
+
+func (i TaxonomyIamBindingConditionArgs) ToTaxonomyIamBindingConditionPtrOutput() TaxonomyIamBindingConditionPtrOutput {
+	return i.ToTaxonomyIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i TaxonomyIamBindingConditionArgs) ToTaxonomyIamBindingConditionPtrOutputWithContext(ctx context.Context) TaxonomyIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyIamBindingConditionOutput).ToTaxonomyIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// TaxonomyIamBindingConditionPtrInput is an input type that accepts TaxonomyIamBindingConditionArgs, TaxonomyIamBindingConditionPtr and TaxonomyIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `TaxonomyIamBindingConditionPtrInput` via:
+//
+//          TaxonomyIamBindingConditionArgs{...}
+//
+//  or:
+//
+//          nil
+type TaxonomyIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToTaxonomyIamBindingConditionPtrOutput() TaxonomyIamBindingConditionPtrOutput
+	ToTaxonomyIamBindingConditionPtrOutputWithContext(context.Context) TaxonomyIamBindingConditionPtrOutput
+}
+
+type taxonomyIamBindingConditionPtrType TaxonomyIamBindingConditionArgs
+
+func TaxonomyIamBindingConditionPtr(v *TaxonomyIamBindingConditionArgs) TaxonomyIamBindingConditionPtrInput {
+	return (*taxonomyIamBindingConditionPtrType)(v)
+}
+
+func (*taxonomyIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaxonomyIamBindingCondition)(nil)).Elem()
+}
+
+func (i *taxonomyIamBindingConditionPtrType) ToTaxonomyIamBindingConditionPtrOutput() TaxonomyIamBindingConditionPtrOutput {
+	return i.ToTaxonomyIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *taxonomyIamBindingConditionPtrType) ToTaxonomyIamBindingConditionPtrOutputWithContext(ctx context.Context) TaxonomyIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyIamBindingConditionPtrOutput)
+}
+
+type TaxonomyIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (TaxonomyIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaxonomyIamBindingCondition)(nil)).Elem()
+}
+
+func (o TaxonomyIamBindingConditionOutput) ToTaxonomyIamBindingConditionOutput() TaxonomyIamBindingConditionOutput {
+	return o
+}
+
+func (o TaxonomyIamBindingConditionOutput) ToTaxonomyIamBindingConditionOutputWithContext(ctx context.Context) TaxonomyIamBindingConditionOutput {
+	return o
+}
+
+func (o TaxonomyIamBindingConditionOutput) ToTaxonomyIamBindingConditionPtrOutput() TaxonomyIamBindingConditionPtrOutput {
+	return o.ToTaxonomyIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o TaxonomyIamBindingConditionOutput) ToTaxonomyIamBindingConditionPtrOutputWithContext(ctx context.Context) TaxonomyIamBindingConditionPtrOutput {
+	return o.ApplyT(func(v TaxonomyIamBindingCondition) *TaxonomyIamBindingCondition {
+		return &v
+	}).(TaxonomyIamBindingConditionPtrOutput)
+}
+func (o TaxonomyIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaxonomyIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o TaxonomyIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v TaxonomyIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o TaxonomyIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v TaxonomyIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type TaxonomyIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (TaxonomyIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaxonomyIamBindingCondition)(nil)).Elem()
+}
+
+func (o TaxonomyIamBindingConditionPtrOutput) ToTaxonomyIamBindingConditionPtrOutput() TaxonomyIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o TaxonomyIamBindingConditionPtrOutput) ToTaxonomyIamBindingConditionPtrOutputWithContext(ctx context.Context) TaxonomyIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o TaxonomyIamBindingConditionPtrOutput) Elem() TaxonomyIamBindingConditionOutput {
+	return o.ApplyT(func(v *TaxonomyIamBindingCondition) TaxonomyIamBindingCondition { return *v }).(TaxonomyIamBindingConditionOutput)
+}
+
+func (o TaxonomyIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaxonomyIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o TaxonomyIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaxonomyIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o TaxonomyIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaxonomyIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type TaxonomyIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// TaxonomyIamMemberConditionInput is an input type that accepts TaxonomyIamMemberConditionArgs and TaxonomyIamMemberConditionOutput values.
+// You can construct a concrete instance of `TaxonomyIamMemberConditionInput` via:
+//
+//          TaxonomyIamMemberConditionArgs{...}
+type TaxonomyIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToTaxonomyIamMemberConditionOutput() TaxonomyIamMemberConditionOutput
+	ToTaxonomyIamMemberConditionOutputWithContext(context.Context) TaxonomyIamMemberConditionOutput
+}
+
+type TaxonomyIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (TaxonomyIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaxonomyIamMemberCondition)(nil)).Elem()
+}
+
+func (i TaxonomyIamMemberConditionArgs) ToTaxonomyIamMemberConditionOutput() TaxonomyIamMemberConditionOutput {
+	return i.ToTaxonomyIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i TaxonomyIamMemberConditionArgs) ToTaxonomyIamMemberConditionOutputWithContext(ctx context.Context) TaxonomyIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyIamMemberConditionOutput)
+}
+
+func (i TaxonomyIamMemberConditionArgs) ToTaxonomyIamMemberConditionPtrOutput() TaxonomyIamMemberConditionPtrOutput {
+	return i.ToTaxonomyIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i TaxonomyIamMemberConditionArgs) ToTaxonomyIamMemberConditionPtrOutputWithContext(ctx context.Context) TaxonomyIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyIamMemberConditionOutput).ToTaxonomyIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// TaxonomyIamMemberConditionPtrInput is an input type that accepts TaxonomyIamMemberConditionArgs, TaxonomyIamMemberConditionPtr and TaxonomyIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `TaxonomyIamMemberConditionPtrInput` via:
+//
+//          TaxonomyIamMemberConditionArgs{...}
+//
+//  or:
+//
+//          nil
+type TaxonomyIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToTaxonomyIamMemberConditionPtrOutput() TaxonomyIamMemberConditionPtrOutput
+	ToTaxonomyIamMemberConditionPtrOutputWithContext(context.Context) TaxonomyIamMemberConditionPtrOutput
+}
+
+type taxonomyIamMemberConditionPtrType TaxonomyIamMemberConditionArgs
+
+func TaxonomyIamMemberConditionPtr(v *TaxonomyIamMemberConditionArgs) TaxonomyIamMemberConditionPtrInput {
+	return (*taxonomyIamMemberConditionPtrType)(v)
+}
+
+func (*taxonomyIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaxonomyIamMemberCondition)(nil)).Elem()
+}
+
+func (i *taxonomyIamMemberConditionPtrType) ToTaxonomyIamMemberConditionPtrOutput() TaxonomyIamMemberConditionPtrOutput {
+	return i.ToTaxonomyIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *taxonomyIamMemberConditionPtrType) ToTaxonomyIamMemberConditionPtrOutputWithContext(ctx context.Context) TaxonomyIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyIamMemberConditionPtrOutput)
+}
+
+type TaxonomyIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (TaxonomyIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaxonomyIamMemberCondition)(nil)).Elem()
+}
+
+func (o TaxonomyIamMemberConditionOutput) ToTaxonomyIamMemberConditionOutput() TaxonomyIamMemberConditionOutput {
+	return o
+}
+
+func (o TaxonomyIamMemberConditionOutput) ToTaxonomyIamMemberConditionOutputWithContext(ctx context.Context) TaxonomyIamMemberConditionOutput {
+	return o
+}
+
+func (o TaxonomyIamMemberConditionOutput) ToTaxonomyIamMemberConditionPtrOutput() TaxonomyIamMemberConditionPtrOutput {
+	return o.ToTaxonomyIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o TaxonomyIamMemberConditionOutput) ToTaxonomyIamMemberConditionPtrOutputWithContext(ctx context.Context) TaxonomyIamMemberConditionPtrOutput {
+	return o.ApplyT(func(v TaxonomyIamMemberCondition) *TaxonomyIamMemberCondition {
+		return &v
+	}).(TaxonomyIamMemberConditionPtrOutput)
+}
+func (o TaxonomyIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaxonomyIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o TaxonomyIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v TaxonomyIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o TaxonomyIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v TaxonomyIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type TaxonomyIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (TaxonomyIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaxonomyIamMemberCondition)(nil)).Elem()
+}
+
+func (o TaxonomyIamMemberConditionPtrOutput) ToTaxonomyIamMemberConditionPtrOutput() TaxonomyIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o TaxonomyIamMemberConditionPtrOutput) ToTaxonomyIamMemberConditionPtrOutputWithContext(ctx context.Context) TaxonomyIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o TaxonomyIamMemberConditionPtrOutput) Elem() TaxonomyIamMemberConditionOutput {
+	return o.ApplyT(func(v *TaxonomyIamMemberCondition) TaxonomyIamMemberCondition { return *v }).(TaxonomyIamMemberConditionOutput)
+}
+
+func (o TaxonomyIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaxonomyIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o TaxonomyIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaxonomyIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o TaxonomyIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaxonomyIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(EntryBigqueryDateShardedSpecOutput{})
 	pulumi.RegisterOutputType(EntryBigqueryDateShardedSpecArrayOutput{})
@@ -1701,6 +2325,10 @@ func init() {
 	pulumi.RegisterOutputType(EntryGroupIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(EntryGroupIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(EntryGroupIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(PolicyTagIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(PolicyTagIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(PolicyTagIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(PolicyTagIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(TagFieldOutput{})
 	pulumi.RegisterOutputType(TagFieldArrayOutput{})
 	pulumi.RegisterOutputType(TagTemplateFieldOutput{})
@@ -1710,4 +2338,8 @@ func init() {
 	pulumi.RegisterOutputType(TagTemplateFieldTypeEnumTypePtrOutput{})
 	pulumi.RegisterOutputType(TagTemplateFieldTypeEnumTypeAllowedValueOutput{})
 	pulumi.RegisterOutputType(TagTemplateFieldTypeEnumTypeAllowedValueArrayOutput{})
+	pulumi.RegisterOutputType(TaxonomyIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(TaxonomyIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(TaxonomyIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(TaxonomyIamMemberConditionPtrOutput{})
 }

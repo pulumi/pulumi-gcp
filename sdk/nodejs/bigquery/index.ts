@@ -16,4 +16,5 @@ export * from "./iamMember";
 export * from "./iamPolicy";
 export * from "./job";
 export * from "./reservation";
+export * from "./routine";
 export * from "./table";

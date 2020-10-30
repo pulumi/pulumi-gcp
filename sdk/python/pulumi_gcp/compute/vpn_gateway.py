@@ -31,6 +31,9 @@ class VPNGateway(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/targetVpnGateways)
 
+        > **Warning:** Classic VPN is deprecating certain functionality on October 31, 2021. For more information,
+        see the [Classic VPN partial deprecation page](https://cloud.google.com/network-connectivity/docs/vpn/deprecations/classic-vpn-deprecation).
+
         ## Example Usage
 
         :param str resource_name: The name of the resource.

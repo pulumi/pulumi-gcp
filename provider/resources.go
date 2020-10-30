@@ -214,6 +214,9 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
+			"google_access_context_manager_access_level_condition": {
+				Tok: gcpResource(gcpAccessContextManager, "AccessLevelCondition"),
+			},
 
 			// AppEngine
 			"google_app_engine_application": {Tok: gcpResource(gcpAppEngine, "Application")},
@@ -276,6 +279,7 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "bigquery_table_iam.html.markdown",
 				},
 			},
+			"google_bigquery_routine": {Tok: gcpResource(gcpBigQuery, "Routine")},
 
 			// BigTable
 			"google_bigtable_instance": {Tok: gcpResource(gcpBigTable, "Instance")},
@@ -1620,6 +1624,54 @@ func Provider() tfbridge.ProviderInfo {
 			"google_data_catalog_tag":          {Tok: gcpResource(gcpDataCatalog, "Tag")},
 			"google_data_catalog_entry_group":  {Tok: gcpResource(gcpDataCatalog, "EntryGroup")},
 			"google_data_catalog_tag_template": {Tok: gcpResource(gcpDataCatalog, "TagTemplate")},
+			"google_data_catalog_taxonomy": {
+				Tok: gcpResource(gcpDataCatalog, "Taxonomy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "data_catalog_taxonomy.html.markdown",
+				},
+			},
+			"google_data_catalog_policy_tag": {
+				Tok: gcpResource(gcpDataCatalog, "PolicyTag"),
+				Docs: &tfbridge.DocInfo{
+					Source: "data_catalog_policy_tag.html.markdown ",
+				},
+			},
+			"google_data_catalog_taxonomy_iam_binding": {
+				Tok: gcpResource(gcpDataCatalog, "TaxonomyIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "data_catalog_taxonomy_iam.html.markdown",
+				},
+			},
+			"google_data_catalog_taxonomy_iam_member": {
+				Tok: gcpResource(gcpDataCatalog, "TaxonomyIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "data_catalog_taxonomy_iam.html.markdown",
+				},
+			},
+			"google_data_catalog_taxonomy_iam_policy": {
+				Tok: gcpResource(gcpDataCatalog, "TaxonomyIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "data_catalog_taxonomy_iam.html.markdown",
+				},
+			},
+			"google_data_catalog_policy_tag_iam_binding": {
+				Tok: gcpResource(gcpDataCatalog, "PolicyTagIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "data_catalog_policy_tag_iam.html.markdown",
+				},
+			},
+			"google_data_catalog_policy_tag_iam_member": {
+				Tok: gcpResource(gcpDataCatalog, "PolicyTagIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "data_catalog_policy_tag_iam.html.markdown",
+				},
+			},
+			"google_data_catalog_policy_tag_iam_policy": {
+				Tok: gcpResource(gcpDataCatalog, "PolicyTagIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "data_catalog_policy_tag_iam.html.markdown",
+				},
+			},
 			"google_data_catalog_entry_group_iam_binding": {
 				Tok: gcpResource(gcpDataCatalog, "EntryGroupIamBinding"),
 				Docs: &tfbridge.DocInfo{
@@ -1661,6 +1713,24 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"google_notebooks_location": {Tok: gcpResource(gcpNotebooks, "Location")},
+			"google_notebooks_instance_iam_binding": {
+				Tok: gcpResource(gcpNotebooks, "InstanceIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "notebooks_instance_iam.html.markdown",
+				},
+			},
+			"google_notebooks_instance_iam_member": {
+				Tok: gcpResource(gcpNotebooks, "InstanceIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "notebooks_instance_iam.html.markdown",
+				},
+			},
+			"google_notebooks_instance_iam_policy": {
+				Tok: gcpResource(gcpNotebooks, "InstanceIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "notebooks_instance_iam.html.markdown",
+				},
+			},
 
 			// CloudIdentity
 			"google_cloud_identity_group_membership": {Tok: gcpResource(gcpCloudIdentity, "GroupMembership")},
@@ -1691,6 +1761,9 @@ func Provider() tfbridge.ProviderInfo {
 			"google_data_loss_prevention_deidentify_template": {
 				Tok: gcpResource(gcpDataLoss, "PreventionDeidentifyTemplate"),
 			},
+
+			// IAM
+			"google_iam_workload_identity_pool": {Tok: gcpResource(gcpIAM, "WorkloadIdentityPool")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"google_billing_account": {
@@ -2126,6 +2199,9 @@ func Provider() tfbridge.ProviderInfo {
 
 			//Appengine
 			"google_app_engine_default_service_account": {Tok: gcpDataSource(gcpAppEngine, "getDefaultServiceAccount")},
+
+			// Spanner
+			"google_spanner_instance": {Tok: gcpDataSource(gcpSpanner, "getInstance")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

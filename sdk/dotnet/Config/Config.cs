@@ -102,6 +102,8 @@ namespace Pulumi.Gcp
 
         public static string? HealthcareCustomEndpoint { get; set; } = __config.Get("healthcareCustomEndpoint");
 
+        public static string? IamBetaCustomEndpoint { get; set; } = __config.Get("iamBetaCustomEndpoint");
+
         public static string? IamCredentialsCustomEndpoint { get; set; } = __config.Get("iamCredentialsCustomEndpoint");
 
         public static string? IamCustomEndpoint { get; set; } = __config.Get("iamCustomEndpoint");
@@ -109,6 +111,10 @@ namespace Pulumi.Gcp
         public static string? IapCustomEndpoint { get; set; } = __config.Get("iapCustomEndpoint");
 
         public static string? IdentityPlatformCustomEndpoint { get; set; } = __config.Get("identityPlatformCustomEndpoint");
+
+        public static string? ImpersonateServiceAccount { get; set; } = __config.Get("impersonateServiceAccount");
+
+        public static ImmutableArray<string> ImpersonateServiceAccountDelegates { get; set; } = __config.GetObject<ImmutableArray<string>>("impersonateServiceAccountDelegates");
 
         public static string? KmsCustomEndpoint { get; set; } = __config.Get("kmsCustomEndpoint");
 

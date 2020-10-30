@@ -5390,7 +5390,7 @@ class InstanceGroupManagerStatefulDiskArgs:
                  delete_rule: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] device_name: , The device name of the disk to be attached.
-        :param pulumi.Input[str] delete_rule: , A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` detatch the disk when the VM is deleted, but not delete the disk. `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently deleted from the instance group. The default is `NEVER`.
+        :param pulumi.Input[str] delete_rule: , A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the disk when the VM is deleted, but do not delete the disk. `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently deleted from the instance group. The default is `NEVER`.
         """
         pulumi.set(__self__, "device_name", device_name)
         if delete_rule is not None:
@@ -5412,7 +5412,7 @@ class InstanceGroupManagerStatefulDiskArgs:
     @pulumi.getter(name="deleteRule")
     def delete_rule(self) -> Optional[pulumi.Input[str]]:
         """
-        , A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` detatch the disk when the VM is deleted, but not delete the disk. `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently deleted from the instance group. The default is `NEVER`.
+        , A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the disk when the VM is deleted, but do not delete the disk. `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently deleted from the instance group. The default is `NEVER`.
         """
         return pulumi.get(self, "delete_rule")
 
@@ -7858,7 +7858,7 @@ class PerInstanceConfigPreservedStateDiskArgs:
                `projects/project-id/zones/zone/disks/disk-name`.
         :param pulumi.Input[str] delete_rule: A value that prescribes what should happen to the stateful disk when the VM instance is deleted.
                The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
-               `NEVER` detatch the disk when the VM is deleted, but not delete the disk.
+               `NEVER` - detach the disk when the VM is deleted, but do not delete the disk.
                `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently
                deleted from the instance group.
                Default value is `NEVER`.
@@ -7905,7 +7905,7 @@ class PerInstanceConfigPreservedStateDiskArgs:
         """
         A value that prescribes what should happen to the stateful disk when the VM instance is deleted.
         The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
-        `NEVER` detatch the disk when the VM is deleted, but not delete the disk.
+        `NEVER` - detach the disk when the VM is deleted, but do not delete the disk.
         `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently
         deleted from the instance group.
         Default value is `NEVER`.
@@ -9739,8 +9739,8 @@ class RegionHealthCheckGrpcHealthCheckArgs:
         """
         :param pulumi.Input[str] grpc_service_name: The gRPC service name for the health check.
                The value of grpcServiceName has the following meanings by convention:
-               - Empty serviceName means the overall status of all services at the backend.
-               - Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
+               * Empty serviceName means the overall status of all services at the backend.
+               * Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
                The grpcServiceName can only be ASCII.
         :param pulumi.Input[int] port: The port number for the health check request.
                Must be specified if portName and portSpecification are not set
@@ -9774,8 +9774,8 @@ class RegionHealthCheckGrpcHealthCheckArgs:
         """
         The gRPC service name for the health check.
         The value of grpcServiceName has the following meanings by convention:
-        - Empty serviceName means the overall status of all services at the backend.
-        - Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
+        * Empty serviceName means the overall status of all services at the backend.
+        * Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
         The grpcServiceName can only be ASCII.
         """
         return pulumi.get(self, "grpc_service_name")
@@ -10717,7 +10717,7 @@ class RegionInstanceGroupManagerStatefulDiskArgs:
                  delete_rule: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] device_name: , The device name of the disk to be attached.
-        :param pulumi.Input[str] delete_rule: , A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` detatch the disk when the VM is deleted, but not delete the disk. `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently deleted from the instance group. The default is `NEVER`.
+        :param pulumi.Input[str] delete_rule: , A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the disk when the VM is deleted, but do not delete the disk. `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently deleted from the instance group. The default is `NEVER`.
         """
         pulumi.set(__self__, "device_name", device_name)
         if delete_rule is not None:
@@ -10739,7 +10739,7 @@ class RegionInstanceGroupManagerStatefulDiskArgs:
     @pulumi.getter(name="deleteRule")
     def delete_rule(self) -> Optional[pulumi.Input[str]]:
         """
-        , A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` detatch the disk when the VM is deleted, but not delete the disk. `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently deleted from the instance group. The default is `NEVER`.
+        , A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the disk when the VM is deleted, but do not delete the disk. `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently deleted from the instance group. The default is `NEVER`.
         """
         return pulumi.get(self, "delete_rule")
 
@@ -11235,7 +11235,7 @@ class RegionPerInstanceConfigPreservedStateDiskArgs:
                `projects/project-id/zones/zone/disks/disk-name`.
         :param pulumi.Input[str] delete_rule: A value that prescribes what should happen to the stateful disk when the VM instance is deleted.
                The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
-               `NEVER` detatch the disk when the VM is deleted, but not delete the disk.
+               `NEVER` - detach the disk when the VM is deleted, but do not delete the disk.
                `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently
                deleted from the instance group.
                Default value is `NEVER`.
@@ -11282,7 +11282,7 @@ class RegionPerInstanceConfigPreservedStateDiskArgs:
         """
         A value that prescribes what should happen to the stateful disk when the VM instance is deleted.
         The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
-        `NEVER` detatch the disk when the VM is deleted, but not delete the disk.
+        `NEVER` - detach the disk when the VM is deleted, but do not delete the disk.
         `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently
         deleted from the instance group.
         Default value is `NEVER`.
@@ -13602,10 +13602,13 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs:
                presentMatch, exactMatch and regexMatch must be set.
         :param pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs'] range_match: The header value must be an integer and its value must be in the range specified
                in rangeMatch. If the header does not contain an integer, number or is empty,
-               the match fails. For example for a range [-5, 0]   - -3 will match.  - 0 will
-               not match.  - 0.25 will not match.  - -3someString will not match.   Only one of
-               exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
-               must be set.
+               the match fails. For example for a range [-5, 0]
+               * -3 will match
+               * 0 will not match
+               * 0.25 will not match
+               * -3someString will not match.
+               Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or
+               rangeMatch must be set.
                Structure is documented below.
         :param pulumi.Input[str] regex_match: The queryParameterMatch matches if the value of the parameter matches the
                regular expression specified by regexMatch. For the regular expression grammar,
@@ -13705,10 +13708,13 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs:
         """
         The header value must be an integer and its value must be in the range specified
         in rangeMatch. If the header does not contain an integer, number or is empty,
-        the match fails. For example for a range [-5, 0]   - -3 will match.  - 0 will
-        not match.  - 0.25 will not match.  - -3someString will not match.   Only one of
-        exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
-        must be set.
+        the match fails. For example for a range [-5, 0]
+        * -3 will match
+        * 0 will not match
+        * 0.25 will not match
+        * -3someString will not match.
+        Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or
+        rangeMatch must be set.
         Structure is documented below.
         """
         return pulumi.get(self, "range_match")
@@ -13796,9 +13802,9 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs:
                Structure is documented below.
         :param pulumi.Input[str] filter_match_criteria: Specifies how individual filterLabel matches within the list of filterLabels
                contribute towards the overall metadataFilter match. Supported values are:
-               - MATCH_ANY: At least one of the filterLabels must have a matching label in the
+               * MATCH_ANY: At least one of the filterLabels must have a matching label in the
                provided metadata.
-               - MATCH_ALL: All filterLabels must have matching labels in
+               * MATCH_ALL: All filterLabels must have matching labels in
                the provided metadata.
                Possible values are `MATCH_ALL` and `MATCH_ANY`.
         """
@@ -13826,9 +13832,9 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs:
         """
         Specifies how individual filterLabel matches within the list of filterLabels
         contribute towards the overall metadataFilter match. Supported values are:
-        - MATCH_ANY: At least one of the filterLabels must have a matching label in the
+        * MATCH_ANY: At least one of the filterLabels must have a matching label in the
         provided metadata.
-        - MATCH_ALL: All filterLabels must have matching labels in
+        * MATCH_ALL: All filterLabels must have matching labels in
         the provided metadata.
         Possible values are `MATCH_ALL` and `MATCH_ANY`.
         """
@@ -17453,20 +17459,20 @@ class URLMapDefaultRouteActionRetryPolicyArgs:
                will use the largest timeout among all backend services associated with the route.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] retry_conditions: Specfies one or more conditions when this retry rule applies. Valid values are:
-               5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
+               * 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
                or if the backend service does not respond at all, example: disconnects, reset, read timeout,
-               connection failure, and refused streams.
-               gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
-               connect-failure: Loadbalancer will retry on failures connecting to backend services,
+               * connection failure, and refused streams.
+               * gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
+               * connect-failure: Loadbalancer will retry on failures connecting to backend services,
                for example due to connection timeouts.
-               retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
+               * retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
                Currently the only retriable error supported is 409.
-               refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
+               * refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
                This reset type indicates that it is safe to retry.
-               cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
-               deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
-               resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
-               unavailable: Loadbalancer will retry if the gRPC status code in the response header is set to unavailable
+               * cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
+               * deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
+               * resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
+               * unavailable: Loadbalancer will retry if the gRPC status code in the response header is set to unavailable
         """
         if num_retries is not None:
             pulumi.set(__self__, "num_retries", num_retries)
@@ -17507,20 +17513,20 @@ class URLMapDefaultRouteActionRetryPolicyArgs:
     def retry_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Specfies one or more conditions when this retry rule applies. Valid values are:
-        5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
+        * 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
         or if the backend service does not respond at all, example: disconnects, reset, read timeout,
-        connection failure, and refused streams.
-        gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
-        connect-failure: Loadbalancer will retry on failures connecting to backend services,
+        * connection failure, and refused streams.
+        * gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
+        * connect-failure: Loadbalancer will retry on failures connecting to backend services,
         for example due to connection timeouts.
-        retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
+        * retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
         Currently the only retriable error supported is 409.
-        refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
+        * refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
         This reset type indicates that it is safe to retry.
-        cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
-        deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
-        resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
-        unavailable: Loadbalancer will retry if the gRPC status code in the response header is set to unavailable
+        * cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
+        * deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
+        * resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
+        * unavailable: Loadbalancer will retry if the gRPC status code in the response header is set to unavailable
         """
         return pulumi.get(self, "retry_conditions")
 
@@ -19019,20 +19025,20 @@ class URLMapPathMatcherDefaultRouteActionRetryPolicyArgs:
                will use the largest timeout among all backend services associated with the route.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] retry_conditions: Specfies one or more conditions when this retry rule applies. Valid values are:
-               5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
+               * 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
                or if the backend service does not respond at all, example: disconnects, reset, read timeout,
-               connection failure, and refused streams.
-               gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
-               connect-failure: Loadbalancer will retry on failures connecting to backend services,
+               * connection failure, and refused streams.
+               * gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
+               * connect-failure: Loadbalancer will retry on failures connecting to backend services,
                for example due to connection timeouts.
-               retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
+               * retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
                Currently the only retriable error supported is 409.
-               refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
+               * refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
                This reset type indicates that it is safe to retry.
-               cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
-               deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
-               resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
-               unavailable: Loadbalancer will retry if the gRPC status code in the response header is set to unavailable
+               * cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
+               * deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
+               * resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
+               * unavailable: Loadbalancer will retry if the gRPC status code in the response header is set to unavailable
         """
         if num_retries is not None:
             pulumi.set(__self__, "num_retries", num_retries)
@@ -19073,20 +19079,20 @@ class URLMapPathMatcherDefaultRouteActionRetryPolicyArgs:
     def retry_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Specfies one or more conditions when this retry rule applies. Valid values are:
-        5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
+        * 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
         or if the backend service does not respond at all, example: disconnects, reset, read timeout,
-        connection failure, and refused streams.
-        gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
-        connect-failure: Loadbalancer will retry on failures connecting to backend services,
+        * connection failure, and refused streams.
+        * gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
+        * connect-failure: Loadbalancer will retry on failures connecting to backend services,
         for example due to connection timeouts.
-        retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
+        * retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
         Currently the only retriable error supported is 409.
-        refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
+        * refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
         This reset type indicates that it is safe to retry.
-        cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
-        deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
-        resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
-        unavailable: Loadbalancer will retry if the gRPC status code in the response header is set to unavailable
+        * cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
+        * deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
+        * resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
+        * unavailable: Loadbalancer will retry if the gRPC status code in the response header is set to unavailable
         """
         return pulumi.get(self, "retry_conditions")
 
@@ -20430,20 +20436,20 @@ class URLMapPathMatcherPathRuleRouteActionRetryPolicyArgs:
                will use the largest timeout among all backend services associated with the route.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] retry_conditions: Specfies one or more conditions when this retry rule applies. Valid values are:
-               5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
+               * 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
                or if the backend service does not respond at all, example: disconnects, reset, read timeout,
-               connection failure, and refused streams.
-               gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
-               connect-failure: Loadbalancer will retry on failures connecting to backend services,
+               * connection failure, and refused streams.
+               * gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
+               * connect-failure: Loadbalancer will retry on failures connecting to backend services,
                for example due to connection timeouts.
-               retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
+               * retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
                Currently the only retriable error supported is 409.
-               refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
+               * refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
                This reset type indicates that it is safe to retry.
-               cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
-               deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
-               resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
-               unavailable: Loadbalancer will retry if the gRPC status code in the response header is set to unavailable
+               * cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
+               * deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
+               * resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
+               * unavailable: Loadbalancer will retry if the gRPC status code in the response header is set to unavailable
         """
         if num_retries is not None:
             pulumi.set(__self__, "num_retries", num_retries)
@@ -20484,20 +20490,20 @@ class URLMapPathMatcherPathRuleRouteActionRetryPolicyArgs:
     def retry_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Specfies one or more conditions when this retry rule applies. Valid values are:
-        5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
+        * 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
         or if the backend service does not respond at all, example: disconnects, reset, read timeout,
-        connection failure, and refused streams.
-        gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
-        connect-failure: Loadbalancer will retry on failures connecting to backend services,
+        * connection failure, and refused streams.
+        * gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
+        * connect-failure: Loadbalancer will retry on failures connecting to backend services,
         for example due to connection timeouts.
-        retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
+        * retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
         Currently the only retriable error supported is 409.
-        refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
+        * refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
         This reset type indicates that it is safe to retry.
-        cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
-        deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
-        resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
-        unavailable: Loadbalancer will retry if the gRPC status code in the response header is set to unavailable
+        * cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
+        * deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
+        * resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
+        * unavailable: Loadbalancer will retry if the gRPC status code in the response header is set to unavailable
         """
         return pulumi.get(self, "retry_conditions")
 
@@ -22456,20 +22462,20 @@ class URLMapPathMatcherRouteRuleRouteActionRetryPolicyArgs:
                will use the largest timeout among all backend services associated with the route.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] retry_conditions: Specfies one or more conditions when this retry rule applies. Valid values are:
-               5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
+               * 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
                or if the backend service does not respond at all, example: disconnects, reset, read timeout,
-               connection failure, and refused streams.
-               gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
-               connect-failure: Loadbalancer will retry on failures connecting to backend services,
+               * connection failure, and refused streams.
+               * gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
+               * connect-failure: Loadbalancer will retry on failures connecting to backend services,
                for example due to connection timeouts.
-               retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
+               * retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
                Currently the only retriable error supported is 409.
-               refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
+               * refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
                This reset type indicates that it is safe to retry.
-               cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
-               deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
-               resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
-               unavailable: Loadbalancer will retry if the gRPC status code in the response header is set to unavailable
+               * cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
+               * deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
+               * resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
+               * unavailable: Loadbalancer will retry if the gRPC status code in the response header is set to unavailable
         """
         pulumi.set(__self__, "num_retries", num_retries)
         if per_try_timeout is not None:
@@ -22509,20 +22515,20 @@ class URLMapPathMatcherRouteRuleRouteActionRetryPolicyArgs:
     def retry_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Specfies one or more conditions when this retry rule applies. Valid values are:
-        5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
+        * 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
         or if the backend service does not respond at all, example: disconnects, reset, read timeout,
-        connection failure, and refused streams.
-        gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
-        connect-failure: Loadbalancer will retry on failures connecting to backend services,
+        * connection failure, and refused streams.
+        * gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
+        * connect-failure: Loadbalancer will retry on failures connecting to backend services,
         for example due to connection timeouts.
-        retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
+        * retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
         Currently the only retriable error supported is 409.
-        refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
+        * refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
         This reset type indicates that it is safe to retry.
-        cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
-        deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
-        resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
-        unavailable: Loadbalancer will retry if the gRPC status code in the response header is set to unavailable
+        * cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
+        * deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
+        * resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
+        * unavailable: Loadbalancer will retry if the gRPC status code in the response header is set to unavailable
         """
         return pulumi.get(self, "retry_conditions")
 

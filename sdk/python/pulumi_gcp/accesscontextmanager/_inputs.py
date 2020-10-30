@@ -13,6 +13,8 @@ __all__ = [
     'AccessLevelBasicConditionArgs',
     'AccessLevelBasicConditionDevicePolicyArgs',
     'AccessLevelBasicConditionDevicePolicyOsConstraintArgs',
+    'AccessLevelConditionDevicePolicyArgs',
+    'AccessLevelConditionDevicePolicyOsConstraintArgs',
     'AccessLevelCustomArgs',
     'AccessLevelCustomExprArgs',
     'AccessLevelsAccessLevelArgs',
@@ -359,6 +361,167 @@ class AccessLevelBasicConditionDevicePolicyArgs:
 
 @pulumi.input_type
 class AccessLevelBasicConditionDevicePolicyOsConstraintArgs:
+    def __init__(__self__, *,
+                 os_type: pulumi.Input[str],
+                 minimum_version: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] os_type: The operating system type of the device.
+               Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, and `DESKTOP_CHROME_OS`.
+        :param pulumi.Input[str] minimum_version: The minimum allowed OS version. If not set, any version
+               of this OS satisfies the constraint.
+               Format: "major.minor.patch" such as "10.5.301", "9.2.1".
+        """
+        pulumi.set(__self__, "os_type", os_type)
+        if minimum_version is not None:
+            pulumi.set(__self__, "minimum_version", minimum_version)
+
+    @property
+    @pulumi.getter(name="osType")
+    def os_type(self) -> pulumi.Input[str]:
+        """
+        The operating system type of the device.
+        Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, and `DESKTOP_CHROME_OS`.
+        """
+        return pulumi.get(self, "os_type")
+
+    @os_type.setter
+    def os_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "os_type", value)
+
+    @property
+    @pulumi.getter(name="minimumVersion")
+    def minimum_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The minimum allowed OS version. If not set, any version
+        of this OS satisfies the constraint.
+        Format: "major.minor.patch" such as "10.5.301", "9.2.1".
+        """
+        return pulumi.get(self, "minimum_version")
+
+    @minimum_version.setter
+    def minimum_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "minimum_version", value)
+
+
+@pulumi.input_type
+class AccessLevelConditionDevicePolicyArgs:
+    def __init__(__self__, *,
+                 allowed_device_management_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 allowed_encryption_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 os_constraints: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelConditionDevicePolicyOsConstraintArgs']]]] = None,
+                 require_admin_approval: Optional[pulumi.Input[bool]] = None,
+                 require_corp_owned: Optional[pulumi.Input[bool]] = None,
+                 require_screen_lock: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_device_management_levels: A list of allowed device management levels.
+               An empty list allows all management levels.
+               Each value may be one of `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, and `COMPLETE`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_encryption_statuses: A list of allowed encryptions statuses.
+               An empty list allows all statuses.
+               Each value may be one of `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, and `ENCRYPTED`.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessLevelConditionDevicePolicyOsConstraintArgs']]] os_constraints: A list of allowed OS versions.
+               An empty list allows all types and all versions.
+               Structure is documented below.
+        :param pulumi.Input[bool] require_admin_approval: Whether the device needs to be approved by the customer admin.
+        :param pulumi.Input[bool] require_corp_owned: Whether the device needs to be corp owned.
+        :param pulumi.Input[bool] require_screen_lock: Whether or not screenlock is required for the DevicePolicy
+               to be true. Defaults to false.
+        """
+        if allowed_device_management_levels is not None:
+            pulumi.set(__self__, "allowed_device_management_levels", allowed_device_management_levels)
+        if allowed_encryption_statuses is not None:
+            pulumi.set(__self__, "allowed_encryption_statuses", allowed_encryption_statuses)
+        if os_constraints is not None:
+            pulumi.set(__self__, "os_constraints", os_constraints)
+        if require_admin_approval is not None:
+            pulumi.set(__self__, "require_admin_approval", require_admin_approval)
+        if require_corp_owned is not None:
+            pulumi.set(__self__, "require_corp_owned", require_corp_owned)
+        if require_screen_lock is not None:
+            pulumi.set(__self__, "require_screen_lock", require_screen_lock)
+
+    @property
+    @pulumi.getter(name="allowedDeviceManagementLevels")
+    def allowed_device_management_levels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of allowed device management levels.
+        An empty list allows all management levels.
+        Each value may be one of `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, and `COMPLETE`.
+        """
+        return pulumi.get(self, "allowed_device_management_levels")
+
+    @allowed_device_management_levels.setter
+    def allowed_device_management_levels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_device_management_levels", value)
+
+    @property
+    @pulumi.getter(name="allowedEncryptionStatuses")
+    def allowed_encryption_statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of allowed encryptions statuses.
+        An empty list allows all statuses.
+        Each value may be one of `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, and `ENCRYPTED`.
+        """
+        return pulumi.get(self, "allowed_encryption_statuses")
+
+    @allowed_encryption_statuses.setter
+    def allowed_encryption_statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_encryption_statuses", value)
+
+    @property
+    @pulumi.getter(name="osConstraints")
+    def os_constraints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelConditionDevicePolicyOsConstraintArgs']]]]:
+        """
+        A list of allowed OS versions.
+        An empty list allows all types and all versions.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "os_constraints")
+
+    @os_constraints.setter
+    def os_constraints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelConditionDevicePolicyOsConstraintArgs']]]]):
+        pulumi.set(self, "os_constraints", value)
+
+    @property
+    @pulumi.getter(name="requireAdminApproval")
+    def require_admin_approval(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the device needs to be approved by the customer admin.
+        """
+        return pulumi.get(self, "require_admin_approval")
+
+    @require_admin_approval.setter
+    def require_admin_approval(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "require_admin_approval", value)
+
+    @property
+    @pulumi.getter(name="requireCorpOwned")
+    def require_corp_owned(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the device needs to be corp owned.
+        """
+        return pulumi.get(self, "require_corp_owned")
+
+    @require_corp_owned.setter
+    def require_corp_owned(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "require_corp_owned", value)
+
+    @property
+    @pulumi.getter(name="requireScreenLock")
+    def require_screen_lock(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not screenlock is required for the DevicePolicy
+        to be true. Defaults to false.
+        """
+        return pulumi.get(self, "require_screen_lock")
+
+    @require_screen_lock.setter
+    def require_screen_lock(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "require_screen_lock", value)
+
+
+@pulumi.input_type
+class AccessLevelConditionDevicePolicyOsConstraintArgs:
     def __init__(__self__, *,
                  os_type: pulumi.Input[str],
                  minimum_version: Optional[pulumi.Input[str]] = None):

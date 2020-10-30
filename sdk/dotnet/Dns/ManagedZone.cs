@@ -45,7 +45,6 @@ namespace Pulumi.Gcp.Dns
 
         /// <summary>
         /// Set this true to delete all records in the zone.
-        /// The `dnssec_config` block supports:
         /// </summary>
         [Output("forceDestroy")]
         public Output<bool?> ForceDestroy { get; private set; } = null!;
@@ -191,7 +190,6 @@ namespace Pulumi.Gcp.Dns
 
         /// <summary>
         /// Set this true to delete all records in the zone.
-        /// The `dnssec_config` block supports:
         /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
@@ -299,7 +297,6 @@ namespace Pulumi.Gcp.Dns
 
         /// <summary>
         /// Set this true to delete all records in the zone.
-        /// The `dnssec_config` block supports:
         /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }

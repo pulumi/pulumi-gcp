@@ -129,6 +129,54 @@ export namespace accesscontextmanager {
         osType: string;
     }
 
+    export interface AccessLevelConditionDevicePolicy {
+        /**
+         * A list of allowed device management levels.
+         * An empty list allows all management levels.
+         * Each value may be one of `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, and `COMPLETE`.
+         */
+        allowedDeviceManagementLevels?: string[];
+        /**
+         * A list of allowed encryptions statuses.
+         * An empty list allows all statuses.
+         * Each value may be one of `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, and `ENCRYPTED`.
+         */
+        allowedEncryptionStatuses?: string[];
+        /**
+         * A list of allowed OS versions.
+         * An empty list allows all types and all versions.
+         * Structure is documented below.
+         */
+        osConstraints?: outputs.accesscontextmanager.AccessLevelConditionDevicePolicyOsConstraint[];
+        /**
+         * Whether the device needs to be approved by the customer admin.
+         */
+        requireAdminApproval?: boolean;
+        /**
+         * Whether the device needs to be corp owned.
+         */
+        requireCorpOwned?: boolean;
+        /**
+         * Whether or not screenlock is required for the DevicePolicy
+         * to be true. Defaults to false.
+         */
+        requireScreenLock?: boolean;
+    }
+
+    export interface AccessLevelConditionDevicePolicyOsConstraint {
+        /**
+         * The minimum allowed OS version. If not set, any version
+         * of this OS satisfies the constraint.
+         * Format: "major.minor.patch" such as "10.5.301", "9.2.1".
+         */
+        minimumVersion?: string;
+        /**
+         * The operating system type of the device.
+         * Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, and `DESKTOP_CHROME_OS`.
+         */
+        osType: string;
+    }
+
     export interface AccessLevelCustom {
         /**
          * Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
@@ -2063,6 +2111,34 @@ export namespace bigquery {
         resourceUri?: string;
     }
 
+    export interface RoutineArgument {
+        /**
+         * Defaults to FIXED_TYPE.
+         * Default value is `FIXED_TYPE`.
+         * Possible values are `FIXED_TYPE` and `ANY_TYPE`.
+         */
+        argumentKind?: string;
+        /**
+         * A JSON schema for the data type. Required unless argumentKind = ANY_TYPE.
+         * ~>**NOTE**: Because this field expects a JSON string, any changes to the string
+         * will create a diff, even if the JSON itself hasn't changed. If the API returns
+         * a different value for the same schema, e.g. it switched the order of values
+         * or replaced STRUCT field type with RECORD field type, we currently cannot
+         * suppress the recurring diff this causes. As a workaround, we recommend using
+         * the schema as returned by the API.
+         */
+        dataType?: string;
+        /**
+         * Specifies whether the argument is input or output. Can be set for procedures only.
+         * Possible values are `IN`, `OUT`, and `INOUT`.
+         */
+        mode?: string;
+        /**
+         * The name of this argument. Can be absent for function return argument.
+         */
+        name?: string;
+    }
+
     export interface TableEncryptionConfiguration {
         /**
          * The self link or full name of a key which should be used to
@@ -2391,6 +2467,13 @@ export namespace billing {
     }
 
     export interface BudgetAllUpdatesRule {
+        /**
+         * Boolean. When set to true, disables default notifications sent
+         * when a threshold is exceeded. Default recipients are
+         * those with Billing Account Administrators and Billing
+         * Account Users IAM roles for the target account.
+         */
+        disableDefaultIamRecipients?: boolean;
         /**
          * The full resource name of a monitoring notification
          * channel in the form
@@ -6439,7 +6522,7 @@ export namespace compute {
 
     export interface InstanceGroupManagerStatefulDisk {
         /**
-         * , A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` detatch the disk when the VM is deleted, but not delete the disk. `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently deleted from the instance group. The default is `NEVER`.
+         * , A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the disk when the VM is deleted, but do not delete the disk. `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently deleted from the instance group. The default is `NEVER`.
          */
         deleteRule?: string;
         /**
@@ -7181,7 +7264,7 @@ export namespace compute {
         /**
          * A value that prescribes what should happen to the stateful disk when the VM instance is deleted.
          * The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
-         * `NEVER` detatch the disk when the VM is deleted, but not delete the disk.
+         * `NEVER` - detach the disk when the VM is deleted, but do not delete the disk.
          * `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently
          * deleted from the instance group.
          * Default value is `NEVER`.
@@ -7784,8 +7867,8 @@ export namespace compute {
         /**
          * The gRPC service name for the health check.
          * The value of grpcServiceName has the following meanings by convention:
-         * - Empty serviceName means the overall status of all services at the backend.
-         * - Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
+         * * Empty serviceName means the overall status of all services at the backend.
+         * * Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
          * The grpcServiceName can only be ASCII.
          */
         grpcServiceName?: string;
@@ -8102,7 +8185,7 @@ export namespace compute {
 
     export interface RegionInstanceGroupManagerStatefulDisk {
         /**
-         * , A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` detatch the disk when the VM is deleted, but not delete the disk. `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently deleted from the instance group. The default is `NEVER`.
+         * , A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the disk when the VM is deleted, but do not delete the disk. `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently deleted from the instance group. The default is `NEVER`.
          */
         deleteRule?: string;
         /**
@@ -8258,7 +8341,7 @@ export namespace compute {
         /**
          * A value that prescribes what should happen to the stateful disk when the VM instance is deleted.
          * The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
-         * `NEVER` detatch the disk when the VM is deleted, but not delete the disk.
+         * `NEVER` - detach the disk when the VM is deleted, but do not delete the disk.
          * `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently
          * deleted from the instance group.
          * Default value is `NEVER`.
@@ -9050,10 +9133,13 @@ export namespace compute {
         /**
          * The header value must be an integer and its value must be in the range specified
          * in rangeMatch. If the header does not contain an integer, number or is empty,
-         * the match fails. For example for a range [-5, 0]   - -3 will match.  - 0 will
-         * not match.  - 0.25 will not match.  - -3someString will not match.   Only one of
-         * exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
-         * must be set.
+         * the match fails. For example for a range [-5, 0]
+         * * -3 will match
+         * * 0 will not match
+         * * 0.25 will not match
+         * * -3someString will not match.
+         * Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or
+         * rangeMatch must be set.
          * Structure is documented below.
          */
         rangeMatch?: outputs.compute.RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch;
@@ -9094,9 +9180,9 @@ export namespace compute {
         /**
          * Specifies how individual filterLabel matches within the list of filterLabels
          * contribute towards the overall metadataFilter match. Supported values are:
-         * - MATCH_ANY: At least one of the filterLabels must have a matching label in the
+         * * MATCH_ANY: At least one of the filterLabels must have a matching label in the
          * provided metadata.
-         * - MATCH_ALL: All filterLabels must have matching labels in
+         * * MATCH_ALL: All filterLabels must have matching labels in
          * the provided metadata.
          * Possible values are `MATCH_ALL` and `MATCH_ANY`.
          */
@@ -10242,20 +10328,20 @@ export namespace compute {
         perTryTimeout?: outputs.compute.URLMapDefaultRouteActionRetryPolicyPerTryTimeout;
         /**
          * Specfies one or more conditions when this retry rule applies. Valid values are:
-         * 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
+         * * 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
          * or if the backend service does not respond at all, example: disconnects, reset, read timeout,
-         * connection failure, and refused streams.
-         * gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
-         * connect-failure: Loadbalancer will retry on failures connecting to backend services,
+         * * connection failure, and refused streams.
+         * * gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
+         * * connect-failure: Loadbalancer will retry on failures connecting to backend services,
          * for example due to connection timeouts.
-         * retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
+         * * retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
          * Currently the only retriable error supported is 409.
-         * refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
+         * * refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
          * This reset type indicates that it is safe to retry.
-         * cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
-         * deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
-         * resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
-         * unavailable: Loadbalancer will retry if the gRPC status code in the response header is set to unavailable
+         * * cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
+         * * deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
+         * * resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
+         * * unavailable: Loadbalancer will retry if the gRPC status code in the response header is set to unavailable
          */
         retryConditions?: string[];
     }
@@ -10728,20 +10814,20 @@ export namespace compute {
         perTryTimeout?: outputs.compute.URLMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeout;
         /**
          * Specfies one or more conditions when this retry rule applies. Valid values are:
-         * 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
+         * * 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
          * or if the backend service does not respond at all, example: disconnects, reset, read timeout,
-         * connection failure, and refused streams.
-         * gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
-         * connect-failure: Loadbalancer will retry on failures connecting to backend services,
+         * * connection failure, and refused streams.
+         * * gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
+         * * connect-failure: Loadbalancer will retry on failures connecting to backend services,
          * for example due to connection timeouts.
-         * retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
+         * * retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
          * Currently the only retriable error supported is 409.
-         * refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
+         * * refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
          * This reset type indicates that it is safe to retry.
-         * cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
-         * deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
-         * resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
-         * unavailable: Loadbalancer will retry if the gRPC status code in the response header is set to unavailable
+         * * cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
+         * * deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
+         * * resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
+         * * unavailable: Loadbalancer will retry if the gRPC status code in the response header is set to unavailable
          */
         retryConditions?: string[];
     }
@@ -11167,20 +11253,20 @@ export namespace compute {
         perTryTimeout?: outputs.compute.URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout;
         /**
          * Specfies one or more conditions when this retry rule applies. Valid values are:
-         * 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
+         * * 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
          * or if the backend service does not respond at all, example: disconnects, reset, read timeout,
-         * connection failure, and refused streams.
-         * gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
-         * connect-failure: Loadbalancer will retry on failures connecting to backend services,
+         * * connection failure, and refused streams.
+         * * gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
+         * * connect-failure: Loadbalancer will retry on failures connecting to backend services,
          * for example due to connection timeouts.
-         * retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
+         * * retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
          * Currently the only retriable error supported is 409.
-         * refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
+         * * refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
          * This reset type indicates that it is safe to retry.
-         * cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
-         * deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
-         * resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
-         * unavailable: Loadbalancer will retry if the gRPC status code in the response header is set to unavailable
+         * * cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
+         * * deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
+         * * resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
+         * * unavailable: Loadbalancer will retry if the gRPC status code in the response header is set to unavailable
          */
         retryConditions?: string[];
     }
@@ -11809,20 +11895,20 @@ export namespace compute {
         perTryTimeout?: outputs.compute.URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout;
         /**
          * Specfies one or more conditions when this retry rule applies. Valid values are:
-         * 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
+         * * 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
          * or if the backend service does not respond at all, example: disconnects, reset, read timeout,
-         * connection failure, and refused streams.
-         * gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
-         * connect-failure: Loadbalancer will retry on failures connecting to backend services,
+         * * connection failure, and refused streams.
+         * * gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
+         * * connect-failure: Loadbalancer will retry on failures connecting to backend services,
          * for example due to connection timeouts.
-         * retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
+         * * retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
          * Currently the only retriable error supported is 409.
-         * refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
+         * * refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
          * This reset type indicates that it is safe to retry.
-         * cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
-         * deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
-         * resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
-         * unavailable: Loadbalancer will retry if the gRPC status code in the response header is set to unavailable
+         * * cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
+         * * deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
+         * * resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
+         * * unavailable: Loadbalancer will retry if the gRPC status code in the response header is set to unavailable
          */
         retryConditions?: string[];
     }
@@ -12207,9 +12293,8 @@ export namespace container {
         minCpuPlatform?: string;
         /**
          * The set of Google API scopes to be made available
-         * on all of the node VMs under the "default" service account. These can be
-         * either FQDNs, or scope aliases. The following scopes are necessary to ensure
-         * the correct functioning of the cluster:
+         * on all of the node VMs under the "default" service account.
+         * Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
          */
         oauthScopes: string[];
         /**
@@ -12448,9 +12533,8 @@ export namespace container {
         minCpuPlatform?: string;
         /**
          * The set of Google API scopes to be made available
-         * on all of the node VMs under the "default" service account. These can be
-         * either FQDNs, or scope aliases. The following scopes are necessary to ensure
-         * the correct functioning of the cluster:
+         * on all of the node VMs under the "default" service account.
+         * Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
          */
         oauthScopes: string[];
         /**
@@ -12710,9 +12794,8 @@ export namespace container {
         minCpuPlatform?: string;
         /**
          * The set of Google API scopes to be made available
-         * on all of the node VMs under the "default" service account. These can be
-         * either FQDNs, or scope aliases. The following scopes are necessary to ensure
-         * the correct functioning of the cluster:
+         * on all of the node VMs under the "default" service account.
+         * Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
          */
         oauthScopes: string[];
         /**
@@ -13554,6 +13637,18 @@ export namespace datacatalog {
         title: string;
     }
 
+    export interface PolicyTagIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface PolicyTagIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
     export interface TagField {
         /**
          * Holds the value for a tag field with boolean type.
@@ -13657,6 +13752,18 @@ export namespace datacatalog {
          * The display name for this template.
          */
         displayName: string;
+    }
+
+    export interface TaxonomyIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface TaxonomyIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
     }
 }
 
@@ -18279,6 +18386,18 @@ export namespace notebooks {
          * The tag of the container image. If not specified, this defaults to the latest tag.
          */
         tag?: string;
+    }
+
+    export interface InstanceIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface InstanceIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
     }
 
     export interface InstanceVmImage {

@@ -7,6 +7,7 @@ from .database import *
 from .database_iam_binding import *
 from .database_iam_member import *
 from .database_iam_policy import *
+from .get_instance import *
 from .instance import *
 from .instance_iam_binding import *
 from .instance_iam_member import *

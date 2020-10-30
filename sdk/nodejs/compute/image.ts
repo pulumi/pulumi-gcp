@@ -136,20 +136,20 @@ export class Image extends pulumi.CustomResource {
     /**
      * URL of the source image used to create this image. In order to create an image, you must provide the full or partial
      * URL of one of the following:
-     * The selfLink URL
-     * This property
-     * The rawDisk.source URL
-     * The sourceDisk URL
+     * * The selfLink URL
+     * * This property
+     * * The rawDisk.source URL
+     * * The sourceDisk URL
      */
     public readonly sourceImage!: pulumi.Output<string | undefined>;
     /**
      * URL of the source snapshot used to create this image.
      * In order to create an image, you must provide the full or partial URL of one of the following:
-     * The selfLink URL
-     * This property
-     * The sourceImage URL
-     * The rawDisk.source URL
-     * The sourceDisk URL
+     * * The selfLink URL
+     * * This property
+     * * The sourceImage URL
+     * * The rawDisk.source URL
+     * * The sourceDisk URL
      */
     public readonly sourceSnapshot!: pulumi.Output<string | undefined>;
 
@@ -291,20 +291,20 @@ export interface ImageState {
     /**
      * URL of the source image used to create this image. In order to create an image, you must provide the full or partial
      * URL of one of the following:
-     * The selfLink URL
-     * This property
-     * The rawDisk.source URL
-     * The sourceDisk URL
+     * * The selfLink URL
+     * * This property
+     * * The rawDisk.source URL
+     * * The sourceDisk URL
      */
     readonly sourceImage?: pulumi.Input<string>;
     /**
      * URL of the source snapshot used to create this image.
      * In order to create an image, you must provide the full or partial URL of one of the following:
-     * The selfLink URL
-     * This property
-     * The sourceImage URL
-     * The rawDisk.source URL
-     * The sourceDisk URL
+     * * The selfLink URL
+     * * This property
+     * * The sourceImage URL
+     * * The rawDisk.source URL
+     * * The sourceDisk URL
      */
     readonly sourceSnapshot?: pulumi.Input<string>;
 }
@@ -373,20 +373,20 @@ export interface ImageArgs {
     /**
      * URL of the source image used to create this image. In order to create an image, you must provide the full or partial
      * URL of one of the following:
-     * The selfLink URL
-     * This property
-     * The rawDisk.source URL
-     * The sourceDisk URL
+     * * The selfLink URL
+     * * This property
+     * * The rawDisk.source URL
+     * * The sourceDisk URL
      */
     readonly sourceImage?: pulumi.Input<string>;
     /**
      * URL of the source snapshot used to create this image.
      * In order to create an image, you must provide the full or partial URL of one of the following:
-     * The selfLink URL
-     * This property
-     * The sourceImage URL
-     * The rawDisk.source URL
-     * The sourceDisk URL
+     * * The selfLink URL
+     * * This property
+     * * The sourceImage URL
+     * * The rawDisk.source URL
+     * * The sourceDisk URL
      */
     readonly sourceSnapshot?: pulumi.Input<string>;
 }

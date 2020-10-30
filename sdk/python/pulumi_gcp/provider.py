@@ -63,10 +63,13 @@ class Provider(pulumi.ProviderResource):
                  firestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  game_services_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  healthcare_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 iam_beta_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iam_credentials_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iam_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iap_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  identity_platform_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 impersonate_service_account: Optional[pulumi.Input[str]] = None,
+                 impersonate_service_account_delegates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kms_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  logging_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  memcache_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -180,10 +183,13 @@ class Provider(pulumi.ProviderResource):
             __props__['firestore_custom_endpoint'] = firestore_custom_endpoint
             __props__['game_services_custom_endpoint'] = game_services_custom_endpoint
             __props__['healthcare_custom_endpoint'] = healthcare_custom_endpoint
+            __props__['iam_beta_custom_endpoint'] = iam_beta_custom_endpoint
             __props__['iam_credentials_custom_endpoint'] = iam_credentials_custom_endpoint
             __props__['iam_custom_endpoint'] = iam_custom_endpoint
             __props__['iap_custom_endpoint'] = iap_custom_endpoint
             __props__['identity_platform_custom_endpoint'] = identity_platform_custom_endpoint
+            __props__['impersonate_service_account'] = impersonate_service_account
+            __props__['impersonate_service_account_delegates'] = pulumi.Output.from_input(impersonate_service_account_delegates).apply(pulumi.runtime.to_json) if impersonate_service_account_delegates is not None else None
             __props__['kms_custom_endpoint'] = kms_custom_endpoint
             __props__['logging_custom_endpoint'] = logging_custom_endpoint
             __props__['memcache_custom_endpoint'] = memcache_custom_endpoint

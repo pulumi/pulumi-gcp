@@ -91,10 +91,13 @@ type providerArgs struct {
 	FirestoreCustomEndpoint              *string           `pulumi:"firestoreCustomEndpoint"`
 	GameServicesCustomEndpoint           *string           `pulumi:"gameServicesCustomEndpoint"`
 	HealthcareCustomEndpoint             *string           `pulumi:"healthcareCustomEndpoint"`
+	IamBetaCustomEndpoint                *string           `pulumi:"iamBetaCustomEndpoint"`
 	IamCredentialsCustomEndpoint         *string           `pulumi:"iamCredentialsCustomEndpoint"`
 	IamCustomEndpoint                    *string           `pulumi:"iamCustomEndpoint"`
 	IapCustomEndpoint                    *string           `pulumi:"iapCustomEndpoint"`
 	IdentityPlatformCustomEndpoint       *string           `pulumi:"identityPlatformCustomEndpoint"`
+	ImpersonateServiceAccount            *string           `pulumi:"impersonateServiceAccount"`
+	ImpersonateServiceAccountDelegates   []string          `pulumi:"impersonateServiceAccountDelegates"`
 	KmsCustomEndpoint                    *string           `pulumi:"kmsCustomEndpoint"`
 	LoggingCustomEndpoint                *string           `pulumi:"loggingCustomEndpoint"`
 	MemcacheCustomEndpoint               *string           `pulumi:"memcacheCustomEndpoint"`
@@ -181,10 +184,13 @@ type ProviderArgs struct {
 	FirestoreCustomEndpoint              pulumi.StringPtrInput
 	GameServicesCustomEndpoint           pulumi.StringPtrInput
 	HealthcareCustomEndpoint             pulumi.StringPtrInput
+	IamBetaCustomEndpoint                pulumi.StringPtrInput
 	IamCredentialsCustomEndpoint         pulumi.StringPtrInput
 	IamCustomEndpoint                    pulumi.StringPtrInput
 	IapCustomEndpoint                    pulumi.StringPtrInput
 	IdentityPlatformCustomEndpoint       pulumi.StringPtrInput
+	ImpersonateServiceAccount            pulumi.StringPtrInput
+	ImpersonateServiceAccountDelegates   pulumi.StringArrayInput
 	KmsCustomEndpoint                    pulumi.StringPtrInput
 	LoggingCustomEndpoint                pulumi.StringPtrInput
 	MemcacheCustomEndpoint               pulumi.StringPtrInput
