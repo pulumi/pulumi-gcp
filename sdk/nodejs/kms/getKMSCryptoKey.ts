@@ -69,5 +69,6 @@ export interface GetKMSCryptoKeyResult {
      * The self link of the created CryptoKey. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}/cryptoKeys/{cryptoKeyName}`.
      */
     readonly selfLink: string;
+    readonly skipInitialVersionCreation: boolean;
     readonly versionTemplates: outputs.kms.GetKMSCryptoKeyVersionTemplate[];
 }

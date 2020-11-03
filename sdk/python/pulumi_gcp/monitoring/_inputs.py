@@ -13,6 +13,8 @@ __all__ = [
     'AlertPolicyConditionConditionAbsentArgs',
     'AlertPolicyConditionConditionAbsentAggregationArgs',
     'AlertPolicyConditionConditionAbsentTriggerArgs',
+    'AlertPolicyConditionConditionMonitoringQueryLanguageArgs',
+    'AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs',
     'AlertPolicyConditionConditionThresholdArgs',
     'AlertPolicyConditionConditionThresholdAggregationArgs',
     'AlertPolicyConditionConditionThresholdDenominatorAggregationArgs',
@@ -54,6 +56,7 @@ class AlertPolicyConditionArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
                  condition_absent: Optional[pulumi.Input['AlertPolicyConditionConditionAbsentArgs']] = None,
+                 condition_monitoring_query_language: Optional[pulumi.Input['AlertPolicyConditionConditionMonitoringQueryLanguageArgs']] = None,
                  condition_threshold: Optional[pulumi.Input['AlertPolicyConditionConditionThresholdArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
@@ -64,6 +67,8 @@ class AlertPolicyConditionArgs:
                policy.
         :param pulumi.Input['AlertPolicyConditionConditionAbsentArgs'] condition_absent: A condition that checks that a time series
                continues to receive new data points.
+               Structure is documented below.
+        :param pulumi.Input['AlertPolicyConditionConditionMonitoringQueryLanguageArgs'] condition_monitoring_query_language: A Monitoring Query Language query that outputs a boolean stream
                Structure is documented below.
         :param pulumi.Input['AlertPolicyConditionConditionThresholdArgs'] condition_threshold: A condition that compares a time series against a
                threshold.
@@ -79,6 +84,8 @@ class AlertPolicyConditionArgs:
         pulumi.set(__self__, "display_name", display_name)
         if condition_absent is not None:
             pulumi.set(__self__, "condition_absent", condition_absent)
+        if condition_monitoring_query_language is not None:
+            pulumi.set(__self__, "condition_monitoring_query_language", condition_monitoring_query_language)
         if condition_threshold is not None:
             pulumi.set(__self__, "condition_threshold", condition_threshold)
         if name is not None:
@@ -113,6 +120,19 @@ class AlertPolicyConditionArgs:
     @condition_absent.setter
     def condition_absent(self, value: Optional[pulumi.Input['AlertPolicyConditionConditionAbsentArgs']]):
         pulumi.set(self, "condition_absent", value)
+
+    @property
+    @pulumi.getter(name="conditionMonitoringQueryLanguage")
+    def condition_monitoring_query_language(self) -> Optional[pulumi.Input['AlertPolicyConditionConditionMonitoringQueryLanguageArgs']]:
+        """
+        A Monitoring Query Language query that outputs a boolean stream
+        Structure is documented below.
+        """
+        return pulumi.get(self, "condition_monitoring_query_language")
+
+    @condition_monitoring_query_language.setter
+    def condition_monitoring_query_language(self, value: Optional[pulumi.Input['AlertPolicyConditionConditionMonitoringQueryLanguageArgs']]):
+        pulumi.set(self, "condition_monitoring_query_language", value)
 
     @property
     @pulumi.getter(name="conditionThreshold")
@@ -524,6 +544,150 @@ class AlertPolicyConditionConditionAbsentAggregationArgs:
 
 @pulumi.input_type
 class AlertPolicyConditionConditionAbsentTriggerArgs:
+    def __init__(__self__, *,
+                 count: Optional[pulumi.Input[int]] = None,
+                 percent: Optional[pulumi.Input[float]] = None):
+        """
+        :param pulumi.Input[int] count: The absolute number of time series
+               that must fail the predicate for the
+               condition to be triggered.
+        :param pulumi.Input[float] percent: The percentage of time series that
+               must fail the predicate for the
+               condition to be triggered.
+        """
+        if count is not None:
+            pulumi.set(__self__, "count", count)
+        if percent is not None:
+            pulumi.set(__self__, "percent", percent)
+
+    @property
+    @pulumi.getter
+    def count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The absolute number of time series
+        that must fail the predicate for the
+        condition to be triggered.
+        """
+        return pulumi.get(self, "count")
+
+    @count.setter
+    def count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "count", value)
+
+    @property
+    @pulumi.getter
+    def percent(self) -> Optional[pulumi.Input[float]]:
+        """
+        The percentage of time series that
+        must fail the predicate for the
+        condition to be triggered.
+        """
+        return pulumi.get(self, "percent")
+
+    @percent.setter
+    def percent(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "percent", value)
+
+
+@pulumi.input_type
+class AlertPolicyConditionConditionMonitoringQueryLanguageArgs:
+    def __init__(__self__, *,
+                 duration: pulumi.Input[str],
+                 query: pulumi.Input[str],
+                 trigger: Optional[pulumi.Input['AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs']] = None):
+        """
+        :param pulumi.Input[str] duration: The amount of time that a time series must
+               violate the threshold to be considered
+               failing. Currently, only values that are a
+               multiple of a minute--e.g., 0, 60, 120, or
+               300 seconds--are supported. If an invalid
+               value is given, an error will be returned.
+               When choosing a duration, it is useful to
+               keep in mind the frequency of the underlying
+               time series data (which may also be affected
+               by any alignments specified in the
+               aggregations field); a good duration is long
+               enough so that a single outlier does not
+               generate spurious alerts, but short enough
+               that unhealthy states are detected and
+               alerted on quickly.
+        :param pulumi.Input[str] query: Monitoring Query Language query that outputs a boolean stream.
+        :param pulumi.Input['AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs'] trigger: The number/percent of time series for which
+               the comparison must hold in order for the
+               condition to trigger. If unspecified, then
+               the condition will trigger if the comparison
+               is true for any of the time series that have
+               been identified by filter and aggregations,
+               or by the ratio, if denominator_filter and
+               denominator_aggregations are specified.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "query", query)
+        if trigger is not None:
+            pulumi.set(__self__, "trigger", trigger)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> pulumi.Input[str]:
+        """
+        The amount of time that a time series must
+        violate the threshold to be considered
+        failing. Currently, only values that are a
+        multiple of a minute--e.g., 0, 60, 120, or
+        300 seconds--are supported. If an invalid
+        value is given, an error will be returned.
+        When choosing a duration, it is useful to
+        keep in mind the frequency of the underlying
+        time series data (which may also be affected
+        by any alignments specified in the
+        aggregations field); a good duration is long
+        enough so that a single outlier does not
+        generate spurious alerts, but short enough
+        that unhealthy states are detected and
+        alerted on quickly.
+        """
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: pulumi.Input[str]):
+        pulumi.set(self, "duration", value)
+
+    @property
+    @pulumi.getter
+    def query(self) -> pulumi.Input[str]:
+        """
+        Monitoring Query Language query that outputs a boolean stream.
+        """
+        return pulumi.get(self, "query")
+
+    @query.setter
+    def query(self, value: pulumi.Input[str]):
+        pulumi.set(self, "query", value)
+
+    @property
+    @pulumi.getter
+    def trigger(self) -> Optional[pulumi.Input['AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs']]:
+        """
+        The number/percent of time series for which
+        the comparison must hold in order for the
+        condition to trigger. If unspecified, then
+        the condition will trigger if the comparison
+        is true for any of the time series that have
+        been identified by filter and aggregations,
+        or by the ratio, if denominator_filter and
+        denominator_aggregations are specified.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "trigger")
+
+    @trigger.setter
+    def trigger(self, value: Optional[pulumi.Input['AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs']]):
+        pulumi.set(self, "trigger", value)
+
+
+@pulumi.input_type
+class AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs:
     def __init__(__self__, *,
                  count: Optional[pulumi.Input[int]] = None,
                  percent: Optional[pulumi.Input[float]] = None):

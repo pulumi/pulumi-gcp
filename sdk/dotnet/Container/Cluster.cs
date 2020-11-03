@@ -65,6 +65,13 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.ClusterClusterTelemetry> ClusterTelemetry { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration
+        /// can't be changed (or added/removed) after cluster creation without deleting and recreating the entire cluster.
+        /// </summary>
+        [Output("confidentialNodes")]
+        public Output<Outputs.ClusterConfidentialNodes> ConfidentialNodes { get; private set; } = null!;
+
+        /// <summary>
         /// Structure is documented below.
         /// </summary>
         [Output("databaseEncryption")]
@@ -534,6 +541,13 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterClusterTelemetryArgs>? ClusterTelemetry { get; set; }
 
         /// <summary>
+        /// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration
+        /// can't be changed (or added/removed) after cluster creation without deleting and recreating the entire cluster.
+        /// </summary>
+        [Input("confidentialNodes")]
+        public Input<Inputs.ClusterConfidentialNodesArgs>? ConfidentialNodes { get; set; }
+
+        /// <summary>
         /// Structure is documented below.
         /// </summary>
         [Input("databaseEncryption")]
@@ -927,6 +941,13 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("clusterTelemetry")]
         public Input<Inputs.ClusterClusterTelemetryGetArgs>? ClusterTelemetry { get; set; }
+
+        /// <summary>
+        /// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration
+        /// can't be changed (or added/removed) after cluster creation without deleting and recreating the entire cluster.
+        /// </summary>
+        [Input("confidentialNodes")]
+        public Input<Inputs.ClusterConfidentialNodesGetArgs>? ConfidentialNodes { get; set; }
 
         /// <summary>
         /// Structure is documented below.

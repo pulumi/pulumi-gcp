@@ -21,6 +21,13 @@ __all__ = [
     'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs',
     'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs',
     'PreventionInspectTemplateInspectConfigArgs',
+    'PreventionInspectTemplateInspectConfigCustomInfoTypeArgs',
+    'PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryArgs',
+    'PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs',
+    'PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListArgs',
+    'PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs',
+    'PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs',
+    'PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeArgs',
     'PreventionInspectTemplateInspectConfigInfoTypeArgs',
     'PreventionInspectTemplateInspectConfigLimitsArgs',
     'PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArgs',
@@ -647,6 +654,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 class PreventionInspectTemplateInspectConfigArgs:
     def __init__(__self__, *,
                  content_options: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 custom_info_types: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeArgs']]]] = None,
                  exclude_info_types: Optional[pulumi.Input[bool]] = None,
                  include_quote: Optional[pulumi.Input[bool]] = None,
                  info_types: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigInfoTypeArgs']]]] = None,
@@ -656,6 +664,8 @@ class PreventionInspectTemplateInspectConfigArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] content_options: List of options defining data content to scan. If empty, text, images, and other content will be included.
                Each value may be one of `CONTENT_TEXT` and `CONTENT_IMAGE`.
+        :param pulumi.Input[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeArgs']]] custom_info_types: Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
+               Structure is documented below.
         :param pulumi.Input[bool] exclude_info_types: Set of infoTypes for which findings would affect this rule.
                Structure is documented below.
         :param pulumi.Input[bool] include_quote: When true, a contextual quote from the data that triggered a finding is included in the response.
@@ -672,6 +682,8 @@ class PreventionInspectTemplateInspectConfigArgs:
         """
         if content_options is not None:
             pulumi.set(__self__, "content_options", content_options)
+        if custom_info_types is not None:
+            pulumi.set(__self__, "custom_info_types", custom_info_types)
         if exclude_info_types is not None:
             pulumi.set(__self__, "exclude_info_types", exclude_info_types)
         if include_quote is not None:
@@ -697,6 +709,19 @@ class PreventionInspectTemplateInspectConfigArgs:
     @content_options.setter
     def content_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "content_options", value)
+
+    @property
+    @pulumi.getter(name="customInfoTypes")
+    def custom_info_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeArgs']]]]:
+        """
+        Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "custom_info_types")
+
+    @custom_info_types.setter
+    def custom_info_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeArgs']]]]):
+        pulumi.set(self, "custom_info_types", value)
 
     @property
     @pulumi.getter(name="excludeInfoTypes")
@@ -779,12 +804,225 @@ class PreventionInspectTemplateInspectConfigArgs:
 
 
 @pulumi.input_type
-class PreventionInspectTemplateInspectConfigInfoTypeArgs:
+class PreventionInspectTemplateInspectConfigCustomInfoTypeArgs:
+    def __init__(__self__, *,
+                 info_type: pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs'],
+                 dictionary: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryArgs']] = None,
+                 exclusion_type: Optional[pulumi.Input[str]] = None,
+                 likelihood: Optional[pulumi.Input[str]] = None,
+                 regex: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs']] = None,
+                 stored_type: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeArgs']] = None):
+        """
+        :param pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs'] info_type: CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
+               infoTypes and that infoType is specified in `info_types` field. Specifying the latter adds findings to the
+               one detected by the system. If built-in info type is not specified in `info_types` list then the name is
+               treated as a custom info type.
+               Structure is documented below.
+        :param pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryArgs'] dictionary: Dictionary which defines the rule.
+               Structure is documented below.
+        :param pulumi.Input[str] exclusion_type: If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching.
+               Possible values are `EXCLUSION_TYPE_EXCLUDE`.
+        :param pulumi.Input[str] likelihood: Likelihood to return for this CustomInfoType. This base value can be altered by a detection rule if the finding meets the criteria
+               specified by the rule.
+               Default value is `VERY_LIKELY`.
+               Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
+        :param pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs'] regex: Regular expression which defines the rule.
+               Structure is documented below.
+        :param pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeArgs'] stored_type: A reference to a StoredInfoType to use with scanning.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "info_type", info_type)
+        if dictionary is not None:
+            pulumi.set(__self__, "dictionary", dictionary)
+        if exclusion_type is not None:
+            pulumi.set(__self__, "exclusion_type", exclusion_type)
+        if likelihood is not None:
+            pulumi.set(__self__, "likelihood", likelihood)
+        if regex is not None:
+            pulumi.set(__self__, "regex", regex)
+        if stored_type is not None:
+            pulumi.set(__self__, "stored_type", stored_type)
+
+    @property
+    @pulumi.getter(name="infoType")
+    def info_type(self) -> pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs']:
+        """
+        CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
+        infoTypes and that infoType is specified in `info_types` field. Specifying the latter adds findings to the
+        one detected by the system. If built-in info type is not specified in `info_types` list then the name is
+        treated as a custom info type.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "info_type")
+
+    @info_type.setter
+    def info_type(self, value: pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs']):
+        pulumi.set(self, "info_type", value)
+
+    @property
+    @pulumi.getter
+    def dictionary(self) -> Optional[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryArgs']]:
+        """
+        Dictionary which defines the rule.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dictionary")
+
+    @dictionary.setter
+    def dictionary(self, value: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryArgs']]):
+        pulumi.set(self, "dictionary", value)
+
+    @property
+    @pulumi.getter(name="exclusionType")
+    def exclusion_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching.
+        Possible values are `EXCLUSION_TYPE_EXCLUDE`.
+        """
+        return pulumi.get(self, "exclusion_type")
+
+    @exclusion_type.setter
+    def exclusion_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "exclusion_type", value)
+
+    @property
+    @pulumi.getter
+    def likelihood(self) -> Optional[pulumi.Input[str]]:
+        """
+        Likelihood to return for this CustomInfoType. This base value can be altered by a detection rule if the finding meets the criteria
+        specified by the rule.
+        Default value is `VERY_LIKELY`.
+        Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
+        """
+        return pulumi.get(self, "likelihood")
+
+    @likelihood.setter
+    def likelihood(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "likelihood", value)
+
+    @property
+    @pulumi.getter
+    def regex(self) -> Optional[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs']]:
+        """
+        Regular expression which defines the rule.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "regex")
+
+    @regex.setter
+    def regex(self, value: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs']]):
+        pulumi.set(self, "regex", value)
+
+    @property
+    @pulumi.getter(name="storedType")
+    def stored_type(self) -> Optional[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeArgs']]:
+        """
+        A reference to a StoredInfoType to use with scanning.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "stored_type")
+
+    @stored_type.setter
+    def stored_type(self, value: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeArgs']]):
+        pulumi.set(self, "stored_type", value)
+
+
+@pulumi.input_type
+class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryArgs:
+    def __init__(__self__, *,
+                 cloud_storage_path: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs']] = None,
+                 word_list: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListArgs']] = None):
+        """
+        :param pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs'] cloud_storage_path: Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
+               Structure is documented below.
+        :param pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListArgs'] word_list: List of words or phrases to search for.
+               Structure is documented below.
+        """
+        if cloud_storage_path is not None:
+            pulumi.set(__self__, "cloud_storage_path", cloud_storage_path)
+        if word_list is not None:
+            pulumi.set(__self__, "word_list", word_list)
+
+    @property
+    @pulumi.getter(name="cloudStoragePath")
+    def cloud_storage_path(self) -> Optional[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs']]:
+        """
+        Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cloud_storage_path")
+
+    @cloud_storage_path.setter
+    def cloud_storage_path(self, value: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs']]):
+        pulumi.set(self, "cloud_storage_path", value)
+
+    @property
+    @pulumi.getter(name="wordList")
+    def word_list(self) -> Optional[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListArgs']]:
+        """
+        List of words or phrases to search for.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "word_list")
+
+    @word_list.setter
+    def word_list(self, value: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListArgs']]):
+        pulumi.set(self, "word_list", value)
+
+
+@pulumi.input_type
+class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs:
+    def __init__(__self__, *,
+                 path: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] path: A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
+        """
+        pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def path(self) -> pulumi.Input[str]:
+        """
+        A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: pulumi.Input[str]):
+        pulumi.set(self, "path", value)
+
+
+@pulumi.input_type
+class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListArgs:
+    def __init__(__self__, *,
+                 words: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] words: Words or phrases defining the dictionary. The dictionary must contain at least one
+               phrase and every phrase must contain at least 2 characters that are letters or digits.
+        """
+        pulumi.set(__self__, "words", words)
+
+    @property
+    @pulumi.getter
+    def words(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Words or phrases defining the dictionary. The dictionary must contain at least one
+        phrase and every phrase must contain at least 2 characters that are letters or digits.
+        """
+        return pulumi.get(self, "words")
+
+    @words.setter
+    def words(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "words", value)
+
+
+@pulumi.input_type
+class PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-               at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        :param pulumi.Input[str] name: Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+               or `projects/project-id/storedInfoTypes/432452342`.
         """
         pulumi.set(__self__, "name", name)
 
@@ -792,8 +1030,96 @@ class PreventionInspectTemplateInspectConfigInfoTypeArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-        at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+        or `projects/project-id/storedInfoTypes/432452342`.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs:
+    def __init__(__self__, *,
+                 pattern: pulumi.Input[str],
+                 group_indexes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
+        """
+        :param pulumi.Input[str] pattern: Pattern defining the regular expression.
+               Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] group_indexes: The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+        """
+        pulumi.set(__self__, "pattern", pattern)
+        if group_indexes is not None:
+            pulumi.set(__self__, "group_indexes", group_indexes)
+
+    @property
+    @pulumi.getter
+    def pattern(self) -> pulumi.Input[str]:
+        """
+        Pattern defining the regular expression.
+        Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+        """
+        return pulumi.get(self, "pattern")
+
+    @pattern.setter
+    def pattern(self, value: pulumi.Input[str]):
+        pulumi.set(self, "pattern", value)
+
+    @property
+    @pulumi.getter(name="groupIndexes")
+    def group_indexes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        """
+        The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+        """
+        return pulumi.get(self, "group_indexes")
+
+    @group_indexes.setter
+    def group_indexes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
+        pulumi.set(self, "group_indexes", value)
+
+
+@pulumi.input_type
+class PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] name: Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+               or `projects/project-id/storedInfoTypes/432452342`.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+        or `projects/project-id/storedInfoTypes/432452342`.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class PreventionInspectTemplateInspectConfigInfoTypeArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] name: Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+               or `projects/project-id/storedInfoTypes/432452342`.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+        or `projects/project-id/storedInfoTypes/432452342`.
         """
         return pulumi.get(self, "name")
 
@@ -863,9 +1189,10 @@ class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArgs:
                  info_type: pulumi.Input['PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs'],
                  max_findings: pulumi.Input[int]):
         """
-        :param pulumi.Input['PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs'] info_type: Type of information the findings limit applies to. Only one limit per infoType should be provided. If InfoTypeLimit does
-               not have an infoType, the DLP API applies the limit against all infoTypes that are found but not
-               specified in another InfoTypeLimit.
+        :param pulumi.Input['PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs'] info_type: CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
+               infoTypes and that infoType is specified in `info_types` field. Specifying the latter adds findings to the
+               one detected by the system. If built-in info type is not specified in `info_types` list then the name is
+               treated as a custom info type.
                Structure is documented below.
         :param pulumi.Input[int] max_findings: Max findings limit for the given infoType.
         """
@@ -876,9 +1203,10 @@ class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArgs:
     @pulumi.getter(name="infoType")
     def info_type(self) -> pulumi.Input['PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs']:
         """
-        Type of information the findings limit applies to. Only one limit per infoType should be provided. If InfoTypeLimit does
-        not have an infoType, the DLP API applies the limit against all infoTypes that are found but not
-        specified in another InfoTypeLimit.
+        CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
+        infoTypes and that infoType is specified in `info_types` field. Specifying the latter adds findings to the
+        one detected by the system. If built-in info type is not specified in `info_types` list then the name is
+        treated as a custom info type.
         Structure is documented below.
         """
         return pulumi.get(self, "info_type")
@@ -905,8 +1233,8 @@ class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType
     def __init__(__self__, *,
                  name: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-               at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        :param pulumi.Input[str] name: Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+               or `projects/project-id/storedInfoTypes/432452342`.
         """
         pulumi.set(__self__, "name", name)
 
@@ -914,8 +1242,8 @@ class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-        at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+        or `projects/project-id/storedInfoTypes/432452342`.
         """
         return pulumi.get(self, "name")
 
@@ -970,8 +1298,8 @@ class PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-               at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        :param pulumi.Input[str] name: Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+               or `projects/project-id/storedInfoTypes/432452342`.
         """
         pulumi.set(__self__, "name", name)
 
@@ -979,8 +1307,8 @@ class PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-        at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+        or `projects/project-id/storedInfoTypes/432452342`.
         """
         return pulumi.get(self, "name")
 
@@ -1228,8 +1556,8 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoT
     def __init__(__self__, *,
                  name: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-               at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        :param pulumi.Input[str] name: Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+               or `projects/project-id/storedInfoTypes/432452342`.
         """
         pulumi.set(__self__, "name", name)
 
@@ -1237,8 +1565,8 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoT
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-        at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+        or `projects/project-id/storedInfoTypes/432452342`.
         """
         return pulumi.get(self, "name")
 

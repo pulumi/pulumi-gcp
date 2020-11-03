@@ -34,7 +34,8 @@ type LookupFunctionArgs struct {
 // A collection of values returned by getFunction.
 type LookupFunctionResult struct {
 	// Available memory (in MB) to the function.
-	AvailableMemoryMb int `pulumi:"availableMemoryMb"`
+	AvailableMemoryMb         int                    `pulumi:"availableMemoryMb"`
+	BuildEnvironmentVariables map[string]interface{} `pulumi:"buildEnvironmentVariables"`
 	// Description of the function.
 	Description string `pulumi:"description"`
 	// Name of a JavaScript function that will be executed when the Google Cloud Function is triggered.

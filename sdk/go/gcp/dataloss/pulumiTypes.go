@@ -1727,6 +1727,9 @@ type PreventionInspectTemplateInspectConfig struct {
 	// List of options defining data content to scan. If empty, text, images, and other content will be included.
 	// Each value may be one of `CONTENT_TEXT` and `CONTENT_IMAGE`.
 	ContentOptions []string `pulumi:"contentOptions"`
+	// Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
+	// Structure is documented below.
+	CustomInfoTypes []PreventionInspectTemplateInspectConfigCustomInfoType `pulumi:"customInfoTypes"`
 	// Set of infoTypes for which findings would affect this rule.
 	// Structure is documented below.
 	ExcludeInfoTypes *bool `pulumi:"excludeInfoTypes"`
@@ -1763,6 +1766,9 @@ type PreventionInspectTemplateInspectConfigArgs struct {
 	// List of options defining data content to scan. If empty, text, images, and other content will be included.
 	// Each value may be one of `CONTENT_TEXT` and `CONTENT_IMAGE`.
 	ContentOptions pulumi.StringArrayInput `pulumi:"contentOptions"`
+	// Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
+	// Structure is documented below.
+	CustomInfoTypes PreventionInspectTemplateInspectConfigCustomInfoTypeArrayInput `pulumi:"customInfoTypes"`
 	// Set of infoTypes for which findings would affect this rule.
 	// Structure is documented below.
 	ExcludeInfoTypes pulumi.BoolPtrInput `pulumi:"excludeInfoTypes"`
@@ -1867,6 +1873,14 @@ func (o PreventionInspectTemplateInspectConfigOutput) ContentOptions() pulumi.St
 	return o.ApplyT(func(v PreventionInspectTemplateInspectConfig) []string { return v.ContentOptions }).(pulumi.StringArrayOutput)
 }
 
+// Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
+// Structure is documented below.
+func (o PreventionInspectTemplateInspectConfigOutput) CustomInfoTypes() PreventionInspectTemplateInspectConfigCustomInfoTypeArrayOutput {
+	return o.ApplyT(func(v PreventionInspectTemplateInspectConfig) []PreventionInspectTemplateInspectConfigCustomInfoType {
+		return v.CustomInfoTypes
+	}).(PreventionInspectTemplateInspectConfigCustomInfoTypeArrayOutput)
+}
+
 // Set of infoTypes for which findings would affect this rule.
 // Structure is documented below.
 func (o PreventionInspectTemplateInspectConfigOutput) ExcludeInfoTypes() pulumi.BoolPtrOutput {
@@ -1939,6 +1953,17 @@ func (o PreventionInspectTemplateInspectConfigPtrOutput) ContentOptions() pulumi
 	}).(pulumi.StringArrayOutput)
 }
 
+// Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
+// Structure is documented below.
+func (o PreventionInspectTemplateInspectConfigPtrOutput) CustomInfoTypes() PreventionInspectTemplateInspectConfigCustomInfoTypeArrayOutput {
+	return o.ApplyT(func(v *PreventionInspectTemplateInspectConfig) []PreventionInspectTemplateInspectConfigCustomInfoType {
+		if v == nil {
+			return nil
+		}
+		return v.CustomInfoTypes
+	}).(PreventionInspectTemplateInspectConfigCustomInfoTypeArrayOutput)
+}
+
 // Set of infoTypes for which findings would affect this rule.
 // Structure is documented below.
 func (o PreventionInspectTemplateInspectConfigPtrOutput) ExcludeInfoTypes() pulumi.BoolPtrOutput {
@@ -2006,9 +2031,978 @@ func (o PreventionInspectTemplateInspectConfigPtrOutput) RuleSets() PreventionIn
 	}).(PreventionInspectTemplateInspectConfigRuleSetArrayOutput)
 }
 
+type PreventionInspectTemplateInspectConfigCustomInfoType struct {
+	// Dictionary which defines the rule.
+	// Structure is documented below.
+	Dictionary *PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary `pulumi:"dictionary"`
+	// If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching.
+	// Possible values are `EXCLUSION_TYPE_EXCLUDE`.
+	ExclusionType *string `pulumi:"exclusionType"`
+	// CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
+	// infoTypes and that infoType is specified in `infoTypes` field. Specifying the latter adds findings to the
+	// one detected by the system. If built-in info type is not specified in `infoTypes` list then the name is
+	// treated as a custom info type.
+	// Structure is documented below.
+	InfoType PreventionInspectTemplateInspectConfigCustomInfoTypeInfoType `pulumi:"infoType"`
+	// Likelihood to return for this CustomInfoType. This base value can be altered by a detection rule if the finding meets the criteria
+	// specified by the rule.
+	// Default value is `VERY_LIKELY`.
+	// Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
+	Likelihood *string `pulumi:"likelihood"`
+	// Regular expression which defines the rule.
+	// Structure is documented below.
+	Regex *PreventionInspectTemplateInspectConfigCustomInfoTypeRegex `pulumi:"regex"`
+	// A reference to a StoredInfoType to use with scanning.
+	// Structure is documented below.
+	StoredType *PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType `pulumi:"storedType"`
+}
+
+// PreventionInspectTemplateInspectConfigCustomInfoTypeInput is an input type that accepts PreventionInspectTemplateInspectConfigCustomInfoTypeArgs and PreventionInspectTemplateInspectConfigCustomInfoTypeOutput values.
+// You can construct a concrete instance of `PreventionInspectTemplateInspectConfigCustomInfoTypeInput` via:
+//
+//          PreventionInspectTemplateInspectConfigCustomInfoTypeArgs{...}
+type PreventionInspectTemplateInspectConfigCustomInfoTypeInput interface {
+	pulumi.Input
+
+	ToPreventionInspectTemplateInspectConfigCustomInfoTypeOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeOutput
+	ToPreventionInspectTemplateInspectConfigCustomInfoTypeOutputWithContext(context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeOutput
+}
+
+type PreventionInspectTemplateInspectConfigCustomInfoTypeArgs struct {
+	// Dictionary which defines the rule.
+	// Structure is documented below.
+	Dictionary PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrInput `pulumi:"dictionary"`
+	// If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching.
+	// Possible values are `EXCLUSION_TYPE_EXCLUDE`.
+	ExclusionType pulumi.StringPtrInput `pulumi:"exclusionType"`
+	// CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
+	// infoTypes and that infoType is specified in `infoTypes` field. Specifying the latter adds findings to the
+	// one detected by the system. If built-in info type is not specified in `infoTypes` list then the name is
+	// treated as a custom info type.
+	// Structure is documented below.
+	InfoType PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeInput `pulumi:"infoType"`
+	// Likelihood to return for this CustomInfoType. This base value can be altered by a detection rule if the finding meets the criteria
+	// specified by the rule.
+	// Default value is `VERY_LIKELY`.
+	// Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
+	Likelihood pulumi.StringPtrInput `pulumi:"likelihood"`
+	// Regular expression which defines the rule.
+	// Structure is documented below.
+	Regex PreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrInput `pulumi:"regex"`
+	// A reference to a StoredInfoType to use with scanning.
+	// Structure is documented below.
+	StoredType PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrInput `pulumi:"storedType"`
+}
+
+func (PreventionInspectTemplateInspectConfigCustomInfoTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionInspectTemplateInspectConfigCustomInfoType)(nil)).Elem()
+}
+
+func (i PreventionInspectTemplateInspectConfigCustomInfoTypeArgs) ToPreventionInspectTemplateInspectConfigCustomInfoTypeOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeOutput {
+	return i.ToPreventionInspectTemplateInspectConfigCustomInfoTypeOutputWithContext(context.Background())
+}
+
+func (i PreventionInspectTemplateInspectConfigCustomInfoTypeArgs) ToPreventionInspectTemplateInspectConfigCustomInfoTypeOutputWithContext(ctx context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionInspectTemplateInspectConfigCustomInfoTypeOutput)
+}
+
+// PreventionInspectTemplateInspectConfigCustomInfoTypeArrayInput is an input type that accepts PreventionInspectTemplateInspectConfigCustomInfoTypeArray and PreventionInspectTemplateInspectConfigCustomInfoTypeArrayOutput values.
+// You can construct a concrete instance of `PreventionInspectTemplateInspectConfigCustomInfoTypeArrayInput` via:
+//
+//          PreventionInspectTemplateInspectConfigCustomInfoTypeArray{ PreventionInspectTemplateInspectConfigCustomInfoTypeArgs{...} }
+type PreventionInspectTemplateInspectConfigCustomInfoTypeArrayInput interface {
+	pulumi.Input
+
+	ToPreventionInspectTemplateInspectConfigCustomInfoTypeArrayOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeArrayOutput
+	ToPreventionInspectTemplateInspectConfigCustomInfoTypeArrayOutputWithContext(context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeArrayOutput
+}
+
+type PreventionInspectTemplateInspectConfigCustomInfoTypeArray []PreventionInspectTemplateInspectConfigCustomInfoTypeInput
+
+func (PreventionInspectTemplateInspectConfigCustomInfoTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionInspectTemplateInspectConfigCustomInfoType)(nil)).Elem()
+}
+
+func (i PreventionInspectTemplateInspectConfigCustomInfoTypeArray) ToPreventionInspectTemplateInspectConfigCustomInfoTypeArrayOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeArrayOutput {
+	return i.ToPreventionInspectTemplateInspectConfigCustomInfoTypeArrayOutputWithContext(context.Background())
+}
+
+func (i PreventionInspectTemplateInspectConfigCustomInfoTypeArray) ToPreventionInspectTemplateInspectConfigCustomInfoTypeArrayOutputWithContext(ctx context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionInspectTemplateInspectConfigCustomInfoTypeArrayOutput)
+}
+
+type PreventionInspectTemplateInspectConfigCustomInfoTypeOutput struct{ *pulumi.OutputState }
+
+func (PreventionInspectTemplateInspectConfigCustomInfoTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionInspectTemplateInspectConfigCustomInfoType)(nil)).Elem()
+}
+
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeOutput) ToPreventionInspectTemplateInspectConfigCustomInfoTypeOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeOutput {
+	return o
+}
+
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeOutput) ToPreventionInspectTemplateInspectConfigCustomInfoTypeOutputWithContext(ctx context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeOutput {
+	return o
+}
+
+// Dictionary which defines the rule.
+// Structure is documented below.
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeOutput) Dictionary() PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrOutput {
+	return o.ApplyT(func(v PreventionInspectTemplateInspectConfigCustomInfoType) *PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary {
+		return v.Dictionary
+	}).(PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrOutput)
+}
+
+// If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching.
+// Possible values are `EXCLUSION_TYPE_EXCLUDE`.
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeOutput) ExclusionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionInspectTemplateInspectConfigCustomInfoType) *string { return v.ExclusionType }).(pulumi.StringPtrOutput)
+}
+
+// CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
+// infoTypes and that infoType is specified in `infoTypes` field. Specifying the latter adds findings to the
+// one detected by the system. If built-in info type is not specified in `infoTypes` list then the name is
+// treated as a custom info type.
+// Structure is documented below.
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeOutput) InfoType() PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeOutput {
+	return o.ApplyT(func(v PreventionInspectTemplateInspectConfigCustomInfoType) PreventionInspectTemplateInspectConfigCustomInfoTypeInfoType {
+		return v.InfoType
+	}).(PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeOutput)
+}
+
+// Likelihood to return for this CustomInfoType. This base value can be altered by a detection rule if the finding meets the criteria
+// specified by the rule.
+// Default value is `VERY_LIKELY`.
+// Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeOutput) Likelihood() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionInspectTemplateInspectConfigCustomInfoType) *string { return v.Likelihood }).(pulumi.StringPtrOutput)
+}
+
+// Regular expression which defines the rule.
+// Structure is documented below.
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeOutput) Regex() PreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrOutput {
+	return o.ApplyT(func(v PreventionInspectTemplateInspectConfigCustomInfoType) *PreventionInspectTemplateInspectConfigCustomInfoTypeRegex {
+		return v.Regex
+	}).(PreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrOutput)
+}
+
+// A reference to a StoredInfoType to use with scanning.
+// Structure is documented below.
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeOutput) StoredType() PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrOutput {
+	return o.ApplyT(func(v PreventionInspectTemplateInspectConfigCustomInfoType) *PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType {
+		return v.StoredType
+	}).(PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrOutput)
+}
+
+type PreventionInspectTemplateInspectConfigCustomInfoTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (PreventionInspectTemplateInspectConfigCustomInfoTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionInspectTemplateInspectConfigCustomInfoType)(nil)).Elem()
+}
+
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeArrayOutput) ToPreventionInspectTemplateInspectConfigCustomInfoTypeArrayOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeArrayOutput {
+	return o
+}
+
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeArrayOutput) ToPreventionInspectTemplateInspectConfigCustomInfoTypeArrayOutputWithContext(ctx context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeArrayOutput {
+	return o
+}
+
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeArrayOutput) Index(i pulumi.IntInput) PreventionInspectTemplateInspectConfigCustomInfoTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PreventionInspectTemplateInspectConfigCustomInfoType {
+		return vs[0].([]PreventionInspectTemplateInspectConfigCustomInfoType)[vs[1].(int)]
+	}).(PreventionInspectTemplateInspectConfigCustomInfoTypeOutput)
+}
+
+type PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary struct {
+	// Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
+	// Structure is documented below.
+	CloudStoragePath *PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath `pulumi:"cloudStoragePath"`
+	// List of words or phrases to search for.
+	// Structure is documented below.
+	WordList *PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList `pulumi:"wordList"`
+}
+
+// PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryInput is an input type that accepts PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryArgs and PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryOutput values.
+// You can construct a concrete instance of `PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryInput` via:
+//
+//          PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryArgs{...}
+type PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryInput interface {
+	pulumi.Input
+
+	ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryOutput
+	ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryOutputWithContext(context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryOutput
+}
+
+type PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryArgs struct {
+	// Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
+	// Structure is documented below.
+	CloudStoragePath PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrInput `pulumi:"cloudStoragePath"`
+	// List of words or phrases to search for.
+	// Structure is documented below.
+	WordList PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrInput `pulumi:"wordList"`
+}
+
+func (PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary)(nil)).Elem()
+}
+
+func (i PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryArgs) ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryOutput {
+	return i.ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryOutputWithContext(context.Background())
+}
+
+func (i PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryArgs) ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryOutputWithContext(ctx context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryOutput)
+}
+
+func (i PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryArgs) ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrOutput {
+	return i.ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryArgs) ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrOutputWithContext(ctx context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryOutput).ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrOutputWithContext(ctx)
+}
+
+// PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrInput is an input type that accepts PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryArgs, PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtr and PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrOutput values.
+// You can construct a concrete instance of `PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrInput` via:
+//
+//          PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryArgs{...}
+//
+//  or:
+//
+//          nil
+type PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrInput interface {
+	pulumi.Input
+
+	ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrOutput
+	ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrOutputWithContext(context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrOutput
+}
+
+type preventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrType PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryArgs
+
+func PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtr(v *PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryArgs) PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrInput {
+	return (*preventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrType)(v)
+}
+
+func (*preventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary)(nil)).Elem()
+}
+
+func (i *preventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrType) ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrOutput {
+	return i.ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrType) ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrOutputWithContext(ctx context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrOutput)
+}
+
+type PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryOutput struct{ *pulumi.OutputState }
+
+func (PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary)(nil)).Elem()
+}
+
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryOutput) ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryOutput {
+	return o
+}
+
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryOutput) ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryOutputWithContext(ctx context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryOutput {
+	return o
+}
+
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryOutput) ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrOutput {
+	return o.ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryOutput) ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrOutputWithContext(ctx context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrOutput {
+	return o.ApplyT(func(v PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary) *PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary {
+		return &v
+	}).(PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrOutput)
+}
+
+// Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
+// Structure is documented below.
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryOutput) CloudStoragePath() PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput {
+	return o.ApplyT(func(v PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary) *PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath {
+		return v.CloudStoragePath
+	}).(PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput)
+}
+
+// List of words or phrases to search for.
+// Structure is documented below.
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryOutput) WordList() PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrOutput {
+	return o.ApplyT(func(v PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary) *PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList {
+		return v.WordList
+	}).(PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrOutput)
+}
+
+type PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary)(nil)).Elem()
+}
+
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrOutput) ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrOutput {
+	return o
+}
+
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrOutput) ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrOutputWithContext(ctx context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrOutput {
+	return o
+}
+
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrOutput) Elem() PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryOutput {
+	return o.ApplyT(func(v *PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary) PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary {
+		return *v
+	}).(PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryOutput)
+}
+
+// Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
+// Structure is documented below.
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrOutput) CloudStoragePath() PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput {
+	return o.ApplyT(func(v *PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary) *PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath {
+		if v == nil {
+			return nil
+		}
+		return v.CloudStoragePath
+	}).(PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput)
+}
+
+// List of words or phrases to search for.
+// Structure is documented below.
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrOutput) WordList() PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrOutput {
+	return o.ApplyT(func(v *PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary) *PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList {
+		if v == nil {
+			return nil
+		}
+		return v.WordList
+	}).(PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrOutput)
+}
+
+type PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath struct {
+	// A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
+	Path string `pulumi:"path"`
+}
+
+// PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathInput is an input type that accepts PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs and PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutput values.
+// You can construct a concrete instance of `PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathInput` via:
+//
+//          PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs{...}
+type PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathInput interface {
+	pulumi.Input
+
+	ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutput
+	ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutputWithContext(context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutput
+}
+
+type PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs struct {
+	// A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
+	Path pulumi.StringInput `pulumi:"path"`
+}
+
+func (PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath)(nil)).Elem()
+}
+
+func (i PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs) ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutput {
+	return i.ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutputWithContext(context.Background())
+}
+
+func (i PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs) ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutputWithContext(ctx context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutput)
+}
+
+func (i PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs) ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput {
+	return i.ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs) ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutputWithContext(ctx context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutput).ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutputWithContext(ctx)
+}
+
+// PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrInput is an input type that accepts PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs, PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtr and PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput values.
+// You can construct a concrete instance of `PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrInput` via:
+//
+//          PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs{...}
+//
+//  or:
+//
+//          nil
+type PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrInput interface {
+	pulumi.Input
+
+	ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput
+	ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutputWithContext(context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput
+}
+
+type preventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrType PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs
+
+func PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtr(v *PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs) PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrInput {
+	return (*preventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrType)(v)
+}
+
+func (*preventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath)(nil)).Elem()
+}
+
+func (i *preventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrType) ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput {
+	return i.ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrType) ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutputWithContext(ctx context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput)
+}
+
+type PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutput struct{ *pulumi.OutputState }
+
+func (PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath)(nil)).Elem()
+}
+
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutput) ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutput {
+	return o
+}
+
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutput) ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutputWithContext(ctx context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutput {
+	return o
+}
+
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutput) ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput {
+	return o.ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutput) ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutputWithContext(ctx context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput {
+	return o.ApplyT(func(v PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath) *PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath {
+		return &v
+	}).(PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput)
+}
+
+// A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath) string {
+		return v.Path
+	}).(pulumi.StringOutput)
+}
+
+type PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath)(nil)).Elem()
+}
+
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput) ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput {
+	return o
+}
+
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput) ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutputWithContext(ctx context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput {
+	return o
+}
+
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput) Elem() PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutput {
+	return o.ApplyT(func(v *PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath) PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath {
+		return *v
+	}).(PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutput)
+}
+
+// A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+type PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList struct {
+	// Words or phrases defining the dictionary. The dictionary must contain at least one
+	// phrase and every phrase must contain at least 2 characters that are letters or digits.
+	Words []string `pulumi:"words"`
+}
+
+// PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListInput is an input type that accepts PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListArgs and PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListOutput values.
+// You can construct a concrete instance of `PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListInput` via:
+//
+//          PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListArgs{...}
+type PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListInput interface {
+	pulumi.Input
+
+	ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListOutput
+	ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListOutputWithContext(context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListOutput
+}
+
+type PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListArgs struct {
+	// Words or phrases defining the dictionary. The dictionary must contain at least one
+	// phrase and every phrase must contain at least 2 characters that are letters or digits.
+	Words pulumi.StringArrayInput `pulumi:"words"`
+}
+
+func (PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList)(nil)).Elem()
+}
+
+func (i PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListArgs) ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListOutput {
+	return i.ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListOutputWithContext(context.Background())
+}
+
+func (i PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListArgs) ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListOutputWithContext(ctx context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListOutput)
+}
+
+func (i PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListArgs) ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrOutput {
+	return i.ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListArgs) ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrOutputWithContext(ctx context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListOutput).ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrOutputWithContext(ctx)
+}
+
+// PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrInput is an input type that accepts PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListArgs, PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtr and PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrOutput values.
+// You can construct a concrete instance of `PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrInput` via:
+//
+//          PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListArgs{...}
+//
+//  or:
+//
+//          nil
+type PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrInput interface {
+	pulumi.Input
+
+	ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrOutput
+	ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrOutputWithContext(context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrOutput
+}
+
+type preventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrType PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListArgs
+
+func PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtr(v *PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListArgs) PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrInput {
+	return (*preventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrType)(v)
+}
+
+func (*preventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList)(nil)).Elem()
+}
+
+func (i *preventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrType) ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrOutput {
+	return i.ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrType) ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrOutputWithContext(ctx context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrOutput)
+}
+
+type PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListOutput struct{ *pulumi.OutputState }
+
+func (PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList)(nil)).Elem()
+}
+
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListOutput) ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListOutput {
+	return o
+}
+
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListOutput) ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListOutputWithContext(ctx context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListOutput {
+	return o
+}
+
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListOutput) ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrOutput {
+	return o.ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListOutput) ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrOutputWithContext(ctx context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrOutput {
+	return o.ApplyT(func(v PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList) *PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList {
+		return &v
+	}).(PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrOutput)
+}
+
+// Words or phrases defining the dictionary. The dictionary must contain at least one
+// phrase and every phrase must contain at least 2 characters that are letters or digits.
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListOutput) Words() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList) []string {
+		return v.Words
+	}).(pulumi.StringArrayOutput)
+}
+
+type PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList)(nil)).Elem()
+}
+
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrOutput) ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrOutput {
+	return o
+}
+
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrOutput) ToPreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrOutputWithContext(ctx context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrOutput {
+	return o
+}
+
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrOutput) Elem() PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListOutput {
+	return o.ApplyT(func(v *PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList) PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList {
+		return *v
+	}).(PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListOutput)
+}
+
+// Words or phrases defining the dictionary. The dictionary must contain at least one
+// phrase and every phrase must contain at least 2 characters that are letters or digits.
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrOutput) Words() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Words
+	}).(pulumi.StringArrayOutput)
+}
+
+type PreventionInspectTemplateInspectConfigCustomInfoTypeInfoType struct {
+	// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+	// or `projects/project-id/storedInfoTypes/432452342`.
+	Name string `pulumi:"name"`
+}
+
+// PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeInput is an input type that accepts PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs and PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeOutput values.
+// You can construct a concrete instance of `PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeInput` via:
+//
+//          PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs{...}
+type PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeInput interface {
+	pulumi.Input
+
+	ToPreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeOutput
+	ToPreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeOutputWithContext(context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeOutput
+}
+
+type PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs struct {
+	// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+	// or `projects/project-id/storedInfoTypes/432452342`.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionInspectTemplateInspectConfigCustomInfoTypeInfoType)(nil)).Elem()
+}
+
+func (i PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs) ToPreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeOutput {
+	return i.ToPreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeOutputWithContext(context.Background())
+}
+
+func (i PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs) ToPreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeOutputWithContext(ctx context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeOutput)
+}
+
+type PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeOutput struct{ *pulumi.OutputState }
+
+func (PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionInspectTemplateInspectConfigCustomInfoTypeInfoType)(nil)).Elem()
+}
+
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeOutput) ToPreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeOutput {
+	return o
+}
+
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeOutput) ToPreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeOutputWithContext(ctx context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeOutput {
+	return o
+}
+
+// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+// or `projects/project-id/storedInfoTypes/432452342`.
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PreventionInspectTemplateInspectConfigCustomInfoTypeInfoType) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type PreventionInspectTemplateInspectConfigCustomInfoTypeRegex struct {
+	// The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+	GroupIndexes []int `pulumi:"groupIndexes"`
+	// Pattern defining the regular expression.
+	// Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+	Pattern string `pulumi:"pattern"`
+}
+
+// PreventionInspectTemplateInspectConfigCustomInfoTypeRegexInput is an input type that accepts PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs and PreventionInspectTemplateInspectConfigCustomInfoTypeRegexOutput values.
+// You can construct a concrete instance of `PreventionInspectTemplateInspectConfigCustomInfoTypeRegexInput` via:
+//
+//          PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs{...}
+type PreventionInspectTemplateInspectConfigCustomInfoTypeRegexInput interface {
+	pulumi.Input
+
+	ToPreventionInspectTemplateInspectConfigCustomInfoTypeRegexOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeRegexOutput
+	ToPreventionInspectTemplateInspectConfigCustomInfoTypeRegexOutputWithContext(context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeRegexOutput
+}
+
+type PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs struct {
+	// The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+	GroupIndexes pulumi.IntArrayInput `pulumi:"groupIndexes"`
+	// Pattern defining the regular expression.
+	// Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+	Pattern pulumi.StringInput `pulumi:"pattern"`
+}
+
+func (PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionInspectTemplateInspectConfigCustomInfoTypeRegex)(nil)).Elem()
+}
+
+func (i PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs) ToPreventionInspectTemplateInspectConfigCustomInfoTypeRegexOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeRegexOutput {
+	return i.ToPreventionInspectTemplateInspectConfigCustomInfoTypeRegexOutputWithContext(context.Background())
+}
+
+func (i PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs) ToPreventionInspectTemplateInspectConfigCustomInfoTypeRegexOutputWithContext(ctx context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeRegexOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionInspectTemplateInspectConfigCustomInfoTypeRegexOutput)
+}
+
+func (i PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs) ToPreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrOutput {
+	return i.ToPreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs) ToPreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrOutputWithContext(ctx context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionInspectTemplateInspectConfigCustomInfoTypeRegexOutput).ToPreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrOutputWithContext(ctx)
+}
+
+// PreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrInput is an input type that accepts PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs, PreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtr and PreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrOutput values.
+// You can construct a concrete instance of `PreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrInput` via:
+//
+//          PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs{...}
+//
+//  or:
+//
+//          nil
+type PreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrInput interface {
+	pulumi.Input
+
+	ToPreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrOutput
+	ToPreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrOutputWithContext(context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrOutput
+}
+
+type preventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrType PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs
+
+func PreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtr(v *PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs) PreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrInput {
+	return (*preventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrType)(v)
+}
+
+func (*preventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionInspectTemplateInspectConfigCustomInfoTypeRegex)(nil)).Elem()
+}
+
+func (i *preventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrType) ToPreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrOutput {
+	return i.ToPreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrType) ToPreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrOutputWithContext(ctx context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrOutput)
+}
+
+type PreventionInspectTemplateInspectConfigCustomInfoTypeRegexOutput struct{ *pulumi.OutputState }
+
+func (PreventionInspectTemplateInspectConfigCustomInfoTypeRegexOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionInspectTemplateInspectConfigCustomInfoTypeRegex)(nil)).Elem()
+}
+
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeRegexOutput) ToPreventionInspectTemplateInspectConfigCustomInfoTypeRegexOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeRegexOutput {
+	return o
+}
+
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeRegexOutput) ToPreventionInspectTemplateInspectConfigCustomInfoTypeRegexOutputWithContext(ctx context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeRegexOutput {
+	return o
+}
+
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeRegexOutput) ToPreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrOutput {
+	return o.ToPreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeRegexOutput) ToPreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrOutputWithContext(ctx context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrOutput {
+	return o.ApplyT(func(v PreventionInspectTemplateInspectConfigCustomInfoTypeRegex) *PreventionInspectTemplateInspectConfigCustomInfoTypeRegex {
+		return &v
+	}).(PreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrOutput)
+}
+
+// The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeRegexOutput) GroupIndexes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v PreventionInspectTemplateInspectConfigCustomInfoTypeRegex) []int { return v.GroupIndexes }).(pulumi.IntArrayOutput)
+}
+
+// Pattern defining the regular expression.
+// Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeRegexOutput) Pattern() pulumi.StringOutput {
+	return o.ApplyT(func(v PreventionInspectTemplateInspectConfigCustomInfoTypeRegex) string { return v.Pattern }).(pulumi.StringOutput)
+}
+
+type PreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionInspectTemplateInspectConfigCustomInfoTypeRegex)(nil)).Elem()
+}
+
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrOutput) ToPreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrOutput {
+	return o
+}
+
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrOutput) ToPreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrOutputWithContext(ctx context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrOutput {
+	return o
+}
+
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrOutput) Elem() PreventionInspectTemplateInspectConfigCustomInfoTypeRegexOutput {
+	return o.ApplyT(func(v *PreventionInspectTemplateInspectConfigCustomInfoTypeRegex) PreventionInspectTemplateInspectConfigCustomInfoTypeRegex {
+		return *v
+	}).(PreventionInspectTemplateInspectConfigCustomInfoTypeRegexOutput)
+}
+
+// The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrOutput) GroupIndexes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *PreventionInspectTemplateInspectConfigCustomInfoTypeRegex) []int {
+		if v == nil {
+			return nil
+		}
+		return v.GroupIndexes
+	}).(pulumi.IntArrayOutput)
+}
+
+// Pattern defining the regular expression.
+// Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrOutput) Pattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionInspectTemplateInspectConfigCustomInfoTypeRegex) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Pattern
+	}).(pulumi.StringPtrOutput)
+}
+
+type PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType struct {
+	// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+	// or `projects/project-id/storedInfoTypes/432452342`.
+	Name string `pulumi:"name"`
+}
+
+// PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeInput is an input type that accepts PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeArgs and PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeOutput values.
+// You can construct a concrete instance of `PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeInput` via:
+//
+//          PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeArgs{...}
+type PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeInput interface {
+	pulumi.Input
+
+	ToPreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeOutput
+	ToPreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeOutputWithContext(context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeOutput
+}
+
+type PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeArgs struct {
+	// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+	// or `projects/project-id/storedInfoTypes/432452342`.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType)(nil)).Elem()
+}
+
+func (i PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeArgs) ToPreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeOutput {
+	return i.ToPreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeOutputWithContext(context.Background())
+}
+
+func (i PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeArgs) ToPreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeOutputWithContext(ctx context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeOutput)
+}
+
+func (i PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeArgs) ToPreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrOutput {
+	return i.ToPreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrOutputWithContext(context.Background())
+}
+
+func (i PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeArgs) ToPreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrOutputWithContext(ctx context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeOutput).ToPreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrOutputWithContext(ctx)
+}
+
+// PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrInput is an input type that accepts PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeArgs, PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtr and PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrOutput values.
+// You can construct a concrete instance of `PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrInput` via:
+//
+//          PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeArgs{...}
+//
+//  or:
+//
+//          nil
+type PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrInput interface {
+	pulumi.Input
+
+	ToPreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrOutput
+	ToPreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrOutputWithContext(context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrOutput
+}
+
+type preventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrType PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeArgs
+
+func PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtr(v *PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeArgs) PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrInput {
+	return (*preventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrType)(v)
+}
+
+func (*preventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType)(nil)).Elem()
+}
+
+func (i *preventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrType) ToPreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrOutput {
+	return i.ToPreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrOutputWithContext(context.Background())
+}
+
+func (i *preventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrType) ToPreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrOutputWithContext(ctx context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrOutput)
+}
+
+type PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeOutput struct{ *pulumi.OutputState }
+
+func (PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType)(nil)).Elem()
+}
+
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeOutput) ToPreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeOutput {
+	return o
+}
+
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeOutput) ToPreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeOutputWithContext(ctx context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeOutput {
+	return o
+}
+
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeOutput) ToPreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrOutput {
+	return o.ToPreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrOutputWithContext(context.Background())
+}
+
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeOutput) ToPreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrOutputWithContext(ctx context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrOutput {
+	return o.ApplyT(func(v PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType) *PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType {
+		return &v
+	}).(PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrOutput)
+}
+
+// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+// or `projects/project-id/storedInfoTypes/432452342`.
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType)(nil)).Elem()
+}
+
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrOutput) ToPreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrOutput() PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrOutput {
+	return o
+}
+
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrOutput) ToPreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrOutputWithContext(ctx context.Context) PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrOutput {
+	return o
+}
+
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrOutput) Elem() PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeOutput {
+	return o.ApplyT(func(v *PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType) PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType {
+		return *v
+	}).(PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeOutput)
+}
+
+// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+// or `projects/project-id/storedInfoTypes/432452342`.
+func (o PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
 type PreventionInspectTemplateInspectConfigInfoType struct {
-	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+	// or `projects/project-id/storedInfoTypes/432452342`.
 	Name string `pulumi:"name"`
 }
 
@@ -2024,8 +3018,8 @@ type PreventionInspectTemplateInspectConfigInfoTypeInput interface {
 }
 
 type PreventionInspectTemplateInspectConfigInfoTypeArgs struct {
-	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+	// or `projects/project-id/storedInfoTypes/432452342`.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -2080,8 +3074,8 @@ func (o PreventionInspectTemplateInspectConfigInfoTypeOutput) ToPreventionInspec
 	return o
 }
 
-// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+// or `projects/project-id/storedInfoTypes/432452342`.
 func (o PreventionInspectTemplateInspectConfigInfoTypeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PreventionInspectTemplateInspectConfigInfoType) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -2284,9 +3278,10 @@ func (o PreventionInspectTemplateInspectConfigLimitsPtrOutput) MaxFindingsPerReq
 }
 
 type PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType struct {
-	// Type of information the findings limit applies to. Only one limit per infoType should be provided. If InfoTypeLimit does
-	// not have an infoType, the DLP API applies the limit against all infoTypes that are found but not
-	// specified in another InfoTypeLimit.
+	// CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
+	// infoTypes and that infoType is specified in `infoTypes` field. Specifying the latter adds findings to the
+	// one detected by the system. If built-in info type is not specified in `infoTypes` list then the name is
+	// treated as a custom info type.
 	// Structure is documented below.
 	InfoType PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType `pulumi:"infoType"`
 	// Max findings limit for the given infoType.
@@ -2305,9 +3300,10 @@ type PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInput int
 }
 
 type PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArgs struct {
-	// Type of information the findings limit applies to. Only one limit per infoType should be provided. If InfoTypeLimit does
-	// not have an infoType, the DLP API applies the limit against all infoTypes that are found but not
-	// specified in another InfoTypeLimit.
+	// CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
+	// infoTypes and that infoType is specified in `infoTypes` field. Specifying the latter adds findings to the
+	// one detected by the system. If built-in info type is not specified in `infoTypes` list then the name is
+	// treated as a custom info type.
 	// Structure is documented below.
 	InfoType PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeInput `pulumi:"infoType"`
 	// Max findings limit for the given infoType.
@@ -2365,9 +3361,10 @@ func (o PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeOutput
 	return o
 }
 
-// Type of information the findings limit applies to. Only one limit per infoType should be provided. If InfoTypeLimit does
-// not have an infoType, the DLP API applies the limit against all infoTypes that are found but not
-// specified in another InfoTypeLimit.
+// CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
+// infoTypes and that infoType is specified in `infoTypes` field. Specifying the latter adds findings to the
+// one detected by the system. If built-in info type is not specified in `infoTypes` list then the name is
+// treated as a custom info type.
 // Structure is documented below.
 func (o PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeOutput) InfoType() PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeOutput {
 	return o.ApplyT(func(v PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType) PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType {
@@ -2401,8 +3398,8 @@ func (o PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArrayO
 }
 
 type PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType struct {
-	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+	// or `projects/project-id/storedInfoTypes/432452342`.
 	Name string `pulumi:"name"`
 }
 
@@ -2418,8 +3415,8 @@ type PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeI
 }
 
 type PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs struct {
-	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+	// or `projects/project-id/storedInfoTypes/432452342`.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -2449,8 +3446,8 @@ func (o PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTy
 	return o
 }
 
-// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+// or `projects/project-id/storedInfoTypes/432452342`.
 func (o PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType) string {
 		return v.Name
@@ -2574,8 +3571,8 @@ func (o PreventionInspectTemplateInspectConfigRuleSetArrayOutput) Index(i pulumi
 }
 
 type PreventionInspectTemplateInspectConfigRuleSetInfoType struct {
-	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+	// or `projects/project-id/storedInfoTypes/432452342`.
 	Name string `pulumi:"name"`
 }
 
@@ -2591,8 +3588,8 @@ type PreventionInspectTemplateInspectConfigRuleSetInfoTypeInput interface {
 }
 
 type PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs struct {
-	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+	// or `projects/project-id/storedInfoTypes/432452342`.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -2647,8 +3644,8 @@ func (o PreventionInspectTemplateInspectConfigRuleSetInfoTypeOutput) ToPreventio
 	return o
 }
 
-// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+// or `projects/project-id/storedInfoTypes/432452342`.
 func (o PreventionInspectTemplateInspectConfigRuleSetInfoTypeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PreventionInspectTemplateInspectConfigRuleSetInfoType) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -3579,8 +4576,8 @@ func (o PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInf
 }
 
 type PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType struct {
-	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+	// or `projects/project-id/storedInfoTypes/432452342`.
 	Name string `pulumi:"name"`
 }
 
@@ -3596,8 +4593,8 @@ type PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTy
 }
 
 type PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArgs struct {
-	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+	// or `projects/project-id/storedInfoTypes/432452342`.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -3652,8 +4649,8 @@ func (o PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInf
 	return o
 }
 
-// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+// or `projects/project-id/storedInfoTypes/432452342`.
 func (o PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType) string {
 		return v.Name
@@ -8786,6 +9783,19 @@ func init() {
 	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput{})
 	pulumi.RegisterOutputType(PreventionInspectTemplateInspectConfigOutput{})
 	pulumi.RegisterOutputType(PreventionInspectTemplateInspectConfigPtrOutput{})
+	pulumi.RegisterOutputType(PreventionInspectTemplateInspectConfigCustomInfoTypeOutput{})
+	pulumi.RegisterOutputType(PreventionInspectTemplateInspectConfigCustomInfoTypeArrayOutput{})
+	pulumi.RegisterOutputType(PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryOutput{})
+	pulumi.RegisterOutputType(PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrOutput{})
+	pulumi.RegisterOutputType(PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutput{})
+	pulumi.RegisterOutputType(PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput{})
+	pulumi.RegisterOutputType(PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListOutput{})
+	pulumi.RegisterOutputType(PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrOutput{})
+	pulumi.RegisterOutputType(PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeOutput{})
+	pulumi.RegisterOutputType(PreventionInspectTemplateInspectConfigCustomInfoTypeRegexOutput{})
+	pulumi.RegisterOutputType(PreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrOutput{})
+	pulumi.RegisterOutputType(PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeOutput{})
+	pulumi.RegisterOutputType(PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrOutput{})
 	pulumi.RegisterOutputType(PreventionInspectTemplateInspectConfigInfoTypeOutput{})
 	pulumi.RegisterOutputType(PreventionInspectTemplateInspectConfigInfoTypeArrayOutput{})
 	pulumi.RegisterOutputType(PreventionInspectTemplateInspectConfigLimitsOutput{})

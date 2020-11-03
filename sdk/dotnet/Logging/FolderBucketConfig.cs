@@ -43,7 +43,7 @@ namespace Pulumi.Gcp.Logging
         public Output<string> LifecycleState { get; private set; } = null!;
 
         /// <summary>
-        /// The location of the bucket. The supported locations are: "global" "us-central1"
+        /// The location of the bucket.
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -125,7 +125,7 @@ namespace Pulumi.Gcp.Logging
         public Input<string> Folder { get; set; } = null!;
 
         /// <summary>
-        /// The location of the bucket. The supported locations are: "global" "us-central1"
+        /// The location of the bucket.
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -168,7 +168,7 @@ namespace Pulumi.Gcp.Logging
         public Input<string>? LifecycleState { get; set; }
 
         /// <summary>
-        /// The location of the bucket. The supported locations are: "global" "us-central1"
+        /// The location of the bucket.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

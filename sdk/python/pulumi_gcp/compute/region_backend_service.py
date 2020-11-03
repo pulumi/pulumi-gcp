@@ -87,7 +87,7 @@ class RegionBackendService(pulumi.CustomResource):
                will be used for. A backend service created for one type of load
                balancing cannot be used with the other(s).
                Default value is `INTERNAL`.
-               Possible values are `INTERNAL` and `INTERNAL_MANAGED`.
+               Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
         :param pulumi.Input[str] locality_lb_policy: The load balancing algorithm used within the scope of the locality.
                The possible values are -
                * ROUND_ROBIN - This is a simple policy in which each healthy backend
@@ -257,7 +257,7 @@ class RegionBackendService(pulumi.CustomResource):
                will be used for. A backend service created for one type of load
                balancing cannot be used with the other(s).
                Default value is `INTERNAL`.
-               Possible values are `INTERNAL` and `INTERNAL_MANAGED`.
+               Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
         :param pulumi.Input[str] locality_lb_policy: The load balancing algorithm used within the scope of the locality.
                The possible values are -
                * ROUND_ROBIN - This is a simple policy in which each healthy backend
@@ -451,7 +451,7 @@ class RegionBackendService(pulumi.CustomResource):
         will be used for. A backend service created for one type of load
         balancing cannot be used with the other(s).
         Default value is `INTERNAL`.
-        Possible values are `INTERNAL` and `INTERNAL_MANAGED`.
+        Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
         """
         return pulumi.get(self, "load_balancing_scheme")
 

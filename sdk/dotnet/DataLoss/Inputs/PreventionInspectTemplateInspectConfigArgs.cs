@@ -25,6 +25,19 @@ namespace Pulumi.Gcp.DataLoss.Inputs
             set => _contentOptions = value;
         }
 
+        [Input("customInfoTypes")]
+        private InputList<Inputs.PreventionInspectTemplateInspectConfigCustomInfoTypeArgs>? _customInfoTypes;
+
+        /// <summary>
+        /// Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.PreventionInspectTemplateInspectConfigCustomInfoTypeArgs> CustomInfoTypes
+        {
+            get => _customInfoTypes ?? (_customInfoTypes = new InputList<Inputs.PreventionInspectTemplateInspectConfigCustomInfoTypeArgs>());
+            set => _customInfoTypes = value;
+        }
+
         /// <summary>
         /// Set of infoTypes for which findings would affect this rule.
         /// Structure is documented below.

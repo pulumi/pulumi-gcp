@@ -11,6 +11,7 @@ from . import outputs
 from . import (
     accesscontextmanager,
     activedirectory,
+    apigateway,
     appengine,
     artifactregistry,
     bigquery,

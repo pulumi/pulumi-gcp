@@ -18,6 +18,7 @@ class Function(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  available_memory_mb: Optional[pulumi.Input[int]] = None,
+                 build_environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  entry_point: Optional[pulumi.Input[str]] = None,
                  environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -58,6 +59,7 @@ class Function(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] available_memory_mb: Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, and 2048MB.
+        :param pulumi.Input[Mapping[str, Any]] build_environment_variables: A set of key/value environment variable pairs available during build time.
         :param pulumi.Input[str] description: Description of the function.
         :param pulumi.Input[str] entry_point: Name of the function that will be executed when the Google Cloud Function is triggered.
         :param pulumi.Input[Mapping[str, Any]] environment_variables: A set of key/value environment variable pairs to assign to the function.
@@ -99,6 +101,7 @@ class Function(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['available_memory_mb'] = available_memory_mb
+            __props__['build_environment_variables'] = build_environment_variables
             __props__['description'] = description
             __props__['entry_point'] = entry_point
             __props__['environment_variables'] = environment_variables
@@ -132,6 +135,7 @@ class Function(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             available_memory_mb: Optional[pulumi.Input[int]] = None,
+            build_environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             entry_point: Optional[pulumi.Input[str]] = None,
             environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -160,6 +164,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] available_memory_mb: Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, and 2048MB.
+        :param pulumi.Input[Mapping[str, Any]] build_environment_variables: A set of key/value environment variable pairs available during build time.
         :param pulumi.Input[str] description: Description of the function.
         :param pulumi.Input[str] entry_point: Name of the function that will be executed when the Google Cloud Function is triggered.
         :param pulumi.Input[Mapping[str, Any]] environment_variables: A set of key/value environment variable pairs to assign to the function.
@@ -188,6 +193,7 @@ class Function(pulumi.CustomResource):
         __props__ = dict()
 
         __props__["available_memory_mb"] = available_memory_mb
+        __props__["build_environment_variables"] = build_environment_variables
         __props__["description"] = description
         __props__["entry_point"] = entry_point
         __props__["environment_variables"] = environment_variables
@@ -217,6 +223,14 @@ class Function(pulumi.CustomResource):
         Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, and 2048MB.
         """
         return pulumi.get(self, "available_memory_mb")
+
+    @property
+    @pulumi.getter(name="buildEnvironmentVariables")
+    def build_environment_variables(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        A set of key/value environment variable pairs available during build time.
+        """
+        return pulumi.get(self, "build_environment_variables")
 
     @property
     @pulumi.getter

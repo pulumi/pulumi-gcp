@@ -619,10 +619,8 @@ github.com/pulumi/pulumi/sdk/v2 v2.12.0 h1:d2BQnOvRWCbxDG5DO0bz5FkhFbymABmOxlsx0
 github.com/pulumi/pulumi/sdk/v2 v2.12.0/go.mod h1:WQ4WaHMA7mduVHAJi87iIqbWvqsuBUYccBiKK+FrayI=
 github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20200910230100-328eb4ff41df h1:kXSvfAz43o0D0gfxUqVCOP3NrfnGbptJBshVsqZlBqA=
 github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20200910230100-328eb4ff41df/go.mod h1:pVZLnLuSe/yv0XqTHFPb8xRGWPwgANT77jHeHqjXS5o=
-github.com/pulumi/terraform-provider-google-beta v0.0.0-20201023112941-491b533eacaf h1:IoQGiuoTlA5MJlEHCut553gckrCbkyN43YgF7bvpKJU=
-github.com/pulumi/terraform-provider-google-beta v0.0.0-20201023112941-491b533eacaf/go.mod h1:3sy4+oUxheS1xI3xBqTfal4Vn17eRRt+eKD/G2XTjeg=
-github.com/pulumi/terraform-provider-google-beta v0.0.0-20201029141205-9b8585a89633 h1:zc57VBc3AEKnHicPvzf0VKztBwKEUZ/wcbMvrlF6Q1c=
-github.com/pulumi/terraform-provider-google-beta v0.0.0-20201029141205-9b8585a89633/go.mod h1:Z4imeRC92u/mFlgqurHv50G9QZtu2oWiCEveptISeW0=
+github.com/pulumi/terraform-provider-google-beta v0.0.0-20201103114204-794ae93e8c5c h1:tgUcZCOuhuknHFCSlJjZws1mZj8VDQP/5/8XhR9mrbE=
+github.com/pulumi/terraform-provider-google-beta v0.0.0-20201103114204-794ae93e8c5c/go.mod h1:Z4imeRC92u/mFlgqurHv50G9QZtu2oWiCEveptISeW0=
 github.com/quasilyte/go-consistent v0.0.0-20190521200055-c6f3937de18c/go.mod h1:5STLWrekHfjyYwxBRVRXNOSewLJ3PWfDJd1VyTS21fI=
 github.com/rjeczalik/notify v0.9.2/go.mod h1:aErll2f0sUX9PXZnVNyeiObbmTlk5jnMoCa4QEjJeqM=
 github.com/rogpeppe/fastuuid v0.0.0-20150106093220-6724a57986af/go.mod h1:XWv6SoW27p1b0cqNHllgS5HIMJraePCO15w5zCzIWYg=
@@ -1018,8 +1016,6 @@ google.golang.org/api v0.26.0/go.mod h1:lIXQywCXRcnZPGlsd8NbLnOjtAoL6em04bJ9+z0M
 google.golang.org/api v0.28.0/go.mod h1:lIXQywCXRcnZPGlsd8NbLnOjtAoL6em04bJ9+z0MncE=
 google.golang.org/api v0.29.0/go.mod h1:Lcubydp8VUV7KeIHD9z2Bys/sm/vGKnG1UHuDBSrHWM=
 google.golang.org/api v0.30.0/go.mod h1:QGmEvQ87FHZNiUVJkT14jQNYJ4ZJjdRF23ZXz5138Fc=
-google.golang.org/api v0.31.1-0.20200914161323-7b3b1fe2dc94 h1:5GJhDA5qxdFI7Yr3Ci9fPYLcj46slmTnkkCIW0OZAYM=
-google.golang.org/api v0.31.1-0.20200914161323-7b3b1fe2dc94/go.mod h1:/XrVsuzM0rZmrsbjJutiuftIzeuTQcEeaYcSk/mQ1dg=
 google.golang.org/api v0.33.0 h1:+gL0XvACeMIvpwLZ5rQZzLn5cwOsgg8dIcfJ2SYfBVw=
 google.golang.org/api v0.33.0/go.mod h1:/XrVsuzM0rZmrsbjJutiuftIzeuTQcEeaYcSk/mQ1dg=
 google.golang.org/appengine v1.1.0/go.mod h1:EbEs0AVv82hx2wNQdGPgUI5lhzA/G0D9YwlJXL52JkM=

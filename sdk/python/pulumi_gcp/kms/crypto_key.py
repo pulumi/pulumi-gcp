@@ -22,6 +22,7 @@ class CryptoKey(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  purpose: Optional[pulumi.Input[str]] = None,
                  rotation_period: Optional[pulumi.Input[str]] = None,
+                 skip_initial_version_creation: Optional[pulumi.Input[bool]] = None,
                  version_template: Optional[pulumi.Input[pulumi.InputType['CryptoKeyVersionTemplateArgs']]] = None,
                  __props__=None,
                  __name__=None,
@@ -32,7 +33,7 @@ class CryptoKey(pulumi.CustomResource):
         > **Note:** CryptoKeys cannot be deleted from Google Cloud Platform.
         Destroying a provider-managed CryptoKey will remove it from state
         and delete all CryptoKeyVersions, rendering the key unusable, but *will
-        not delete the resource on the server.* When the provider destroys these keys,
+        not delete the resource from the project.* When the provider destroys these keys,
         any data previously encrypted with these keys will be irrecoverable.
         For this reason, it is strongly recommended that you add lifecycle hooks
         to the resource to prevent accidental destruction.
@@ -60,6 +61,8 @@ class CryptoKey(pulumi.CustomResource):
                The first rotation will take place after the specified period. The rotation period has
                the format of a decimal number with up to 9 fractional digits, followed by the
                letter `s` (seconds). It must be greater than a day (ie, 86400).
+        :param pulumi.Input[bool] skip_initial_version_creation: If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
+               You must use the `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
         :param pulumi.Input[pulumi.InputType['CryptoKeyVersionTemplateArgs']] version_template: A template describing settings for new crypto key versions.
                Structure is documented below.
         """
@@ -87,6 +90,7 @@ class CryptoKey(pulumi.CustomResource):
             __props__['name'] = name
             __props__['purpose'] = purpose
             __props__['rotation_period'] = rotation_period
+            __props__['skip_initial_version_creation'] = skip_initial_version_creation
             __props__['version_template'] = version_template
             __props__['self_link'] = None
         super(CryptoKey, __self__).__init__(
@@ -105,6 +109,7 @@ class CryptoKey(pulumi.CustomResource):
             purpose: Optional[pulumi.Input[str]] = None,
             rotation_period: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
+            skip_initial_version_creation: Optional[pulumi.Input[bool]] = None,
             version_template: Optional[pulumi.Input[pulumi.InputType['CryptoKeyVersionTemplateArgs']]] = None) -> 'CryptoKey':
         """
         Get an existing CryptoKey resource's state with the given name, id, and optional extra
@@ -126,6 +131,8 @@ class CryptoKey(pulumi.CustomResource):
                The first rotation will take place after the specified period. The rotation period has
                the format of a decimal number with up to 9 fractional digits, followed by the
                letter `s` (seconds). It must be greater than a day (ie, 86400).
+        :param pulumi.Input[bool] skip_initial_version_creation: If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
+               You must use the `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
         :param pulumi.Input[pulumi.InputType['CryptoKeyVersionTemplateArgs']] version_template: A template describing settings for new crypto key versions.
                Structure is documented below.
         """
@@ -139,6 +146,7 @@ class CryptoKey(pulumi.CustomResource):
         __props__["purpose"] = purpose
         __props__["rotation_period"] = rotation_period
         __props__["self_link"] = self_link
+        __props__["skip_initial_version_creation"] = skip_initial_version_creation
         __props__["version_template"] = version_template
         return CryptoKey(resource_name, opts=opts, __props__=__props__)
 
@@ -194,6 +202,15 @@ class CryptoKey(pulumi.CustomResource):
     @pulumi.getter(name="selfLink")
     def self_link(self) -> pulumi.Output[str]:
         return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="skipInitialVersionCreation")
+    def skip_initial_version_creation(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
+        You must use the `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+        """
+        return pulumi.get(self, "skip_initial_version_creation")
 
     @property
     @pulumi.getter(name="versionTemplate")

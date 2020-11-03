@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Represents a MachineImage resource. Machine images store all the configuration,
+// Represents a Machine Image resource. Machine images store all the configuration,
 // metadata, permissions, and data from one or more disks required to create a
 // Virtual machine (VM) instance.
 //
@@ -26,6 +26,15 @@ type MachineImage struct {
 
 	// A text description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Specify this to create an application consistent machine image by informing the OS to prepare for the snapshot process.
+	// Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+	GuestFlush pulumi.BoolPtrOutput `pulumi:"guestFlush"`
+	// Encrypts the machine image using a customer-supplied encryption key.
+	// After you encrypt a machine image with a customer-supplied key, you must
+	// provide the same key if you use the machine image later (e.g. to create a
+	// instance from the image)
+	// Structure is documented below.
+	MachineImageEncryptionKey MachineImageMachineImageEncryptionKeyPtrOutput `pulumi:"machineImageEncryptionKey"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -35,6 +44,8 @@ type MachineImage struct {
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
 	SourceInstance pulumi.StringOutput `pulumi:"sourceInstance"`
+	// The regional or multi-regional Cloud Storage bucket location where the machine image is stored.
+	StorageLocations pulumi.StringArrayOutput `pulumi:"storageLocations"`
 }
 
 // NewMachineImage registers a new resource with the given unique name, arguments, and options.
@@ -70,6 +81,15 @@ func GetMachineImage(ctx *pulumi.Context,
 type machineImageState struct {
 	// A text description of the resource.
 	Description *string `pulumi:"description"`
+	// Specify this to create an application consistent machine image by informing the OS to prepare for the snapshot process.
+	// Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+	GuestFlush *bool `pulumi:"guestFlush"`
+	// Encrypts the machine image using a customer-supplied encryption key.
+	// After you encrypt a machine image with a customer-supplied key, you must
+	// provide the same key if you use the machine image later (e.g. to create a
+	// instance from the image)
+	// Structure is documented below.
+	MachineImageEncryptionKey *MachineImageMachineImageEncryptionKey `pulumi:"machineImageEncryptionKey"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -79,11 +99,22 @@ type machineImageState struct {
 	SelfLink *string `pulumi:"selfLink"`
 	// The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
 	SourceInstance *string `pulumi:"sourceInstance"`
+	// The regional or multi-regional Cloud Storage bucket location where the machine image is stored.
+	StorageLocations []string `pulumi:"storageLocations"`
 }
 
 type MachineImageState struct {
 	// A text description of the resource.
 	Description pulumi.StringPtrInput
+	// Specify this to create an application consistent machine image by informing the OS to prepare for the snapshot process.
+	// Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+	GuestFlush pulumi.BoolPtrInput
+	// Encrypts the machine image using a customer-supplied encryption key.
+	// After you encrypt a machine image with a customer-supplied key, you must
+	// provide the same key if you use the machine image later (e.g. to create a
+	// instance from the image)
+	// Structure is documented below.
+	MachineImageEncryptionKey MachineImageMachineImageEncryptionKeyPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -93,6 +124,8 @@ type MachineImageState struct {
 	SelfLink pulumi.StringPtrInput
 	// The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
 	SourceInstance pulumi.StringPtrInput
+	// The regional or multi-regional Cloud Storage bucket location where the machine image is stored.
+	StorageLocations pulumi.StringArrayInput
 }
 
 func (MachineImageState) ElementType() reflect.Type {
@@ -102,6 +135,15 @@ func (MachineImageState) ElementType() reflect.Type {
 type machineImageArgs struct {
 	// A text description of the resource.
 	Description *string `pulumi:"description"`
+	// Specify this to create an application consistent machine image by informing the OS to prepare for the snapshot process.
+	// Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+	GuestFlush *bool `pulumi:"guestFlush"`
+	// Encrypts the machine image using a customer-supplied encryption key.
+	// After you encrypt a machine image with a customer-supplied key, you must
+	// provide the same key if you use the machine image later (e.g. to create a
+	// instance from the image)
+	// Structure is documented below.
+	MachineImageEncryptionKey *MachineImageMachineImageEncryptionKey `pulumi:"machineImageEncryptionKey"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -115,6 +157,15 @@ type machineImageArgs struct {
 type MachineImageArgs struct {
 	// A text description of the resource.
 	Description pulumi.StringPtrInput
+	// Specify this to create an application consistent machine image by informing the OS to prepare for the snapshot process.
+	// Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+	GuestFlush pulumi.BoolPtrInput
+	// Encrypts the machine image using a customer-supplied encryption key.
+	// After you encrypt a machine image with a customer-supplied key, you must
+	// provide the same key if you use the machine image later (e.g. to create a
+	// instance from the image)
+	// Structure is documented below.
+	MachineImageEncryptionKey MachineImageMachineImageEncryptionKeyPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.

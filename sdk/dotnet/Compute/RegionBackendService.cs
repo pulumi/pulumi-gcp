@@ -109,7 +109,7 @@ namespace Pulumi.Gcp.Compute
         /// will be used for. A backend service created for one type of load
         /// balancing cannot be used with the other(s).
         /// Default value is `INTERNAL`.
-        /// Possible values are `INTERNAL` and `INTERNAL_MANAGED`.
+        /// Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
         /// </summary>
         [Output("loadBalancingScheme")]
         public Output<string?> LoadBalancingScheme { get; private set; } = null!;
@@ -354,7 +354,7 @@ namespace Pulumi.Gcp.Compute
         /// will be used for. A backend service created for one type of load
         /// balancing cannot be used with the other(s).
         /// Default value is `INTERNAL`.
-        /// Possible values are `INTERNAL` and `INTERNAL_MANAGED`.
+        /// Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
         /// </summary>
         [Input("loadBalancingScheme")]
         public Input<string>? LoadBalancingScheme { get; set; }
@@ -566,7 +566,7 @@ namespace Pulumi.Gcp.Compute
         /// will be used for. A backend service created for one type of load
         /// balancing cannot be used with the other(s).
         /// Default value is `INTERNAL`.
-        /// Possible values are `INTERNAL` and `INTERNAL_MANAGED`.
+        /// Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
         /// </summary>
         [Input("loadBalancingScheme")]
         public Input<string>? LoadBalancingScheme { get; set; }

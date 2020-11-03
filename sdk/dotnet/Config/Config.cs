@@ -16,6 +16,8 @@ namespace Pulumi.Gcp
 
         public static string? ActiveDirectoryCustomEndpoint { get; set; } = __config.Get("activeDirectoryCustomEndpoint");
 
+        public static string? ApiGatewayCustomEndpoint { get; set; } = __config.Get("apiGatewayCustomEndpoint");
+
         public static string? AppEngineCustomEndpoint { get; set; } = __config.Get("appEngineCustomEndpoint");
 
         public static string? ArtifactRegistryCustomEndpoint { get; set; } = __config.Get("artifactRegistryCustomEndpoint");

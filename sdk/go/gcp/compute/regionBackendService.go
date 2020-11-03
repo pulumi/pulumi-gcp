@@ -67,7 +67,7 @@ type RegionBackendService struct {
 	// will be used for. A backend service created for one type of load
 	// balancing cannot be used with the other(s).
 	// Default value is `INTERNAL`.
-	// Possible values are `INTERNAL` and `INTERNAL_MANAGED`.
+	// Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrOutput `pulumi:"loadBalancingScheme"`
 	// The load balancing algorithm used within the scope of the locality.
 	// The possible values are -
@@ -210,7 +210,7 @@ type regionBackendServiceState struct {
 	// will be used for. A backend service created for one type of load
 	// balancing cannot be used with the other(s).
 	// Default value is `INTERNAL`.
-	// Possible values are `INTERNAL` and `INTERNAL_MANAGED`.
+	// Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// The load balancing algorithm used within the scope of the locality.
 	// The possible values are -
@@ -326,7 +326,7 @@ type RegionBackendServiceState struct {
 	// will be used for. A backend service created for one type of load
 	// balancing cannot be used with the other(s).
 	// Default value is `INTERNAL`.
-	// Possible values are `INTERNAL` and `INTERNAL_MANAGED`.
+	// Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrInput
 	// The load balancing algorithm used within the scope of the locality.
 	// The possible values are -
@@ -442,7 +442,7 @@ type regionBackendServiceArgs struct {
 	// will be used for. A backend service created for one type of load
 	// balancing cannot be used with the other(s).
 	// Default value is `INTERNAL`.
-	// Possible values are `INTERNAL` and `INTERNAL_MANAGED`.
+	// Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// The load balancing algorithm used within the scope of the locality.
 	// The possible values are -
@@ -553,7 +553,7 @@ type RegionBackendServiceArgs struct {
 	// will be used for. A backend service created for one type of load
 	// balancing cannot be used with the other(s).
 	// Default value is `INTERNAL`.
-	// Possible values are `INTERNAL` and `INTERNAL_MANAGED`.
+	// Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrInput
 	// The load balancing algorithm used within the scope of the locality.
 	// The possible values are -

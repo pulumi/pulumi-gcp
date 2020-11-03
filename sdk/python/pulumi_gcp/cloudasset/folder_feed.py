@@ -20,6 +20,7 @@ class FolderFeed(pulumi.CustomResource):
                  asset_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  asset_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  billing_project: Optional[pulumi.Input[str]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['FolderFeedConditionArgs']]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  feed_id: Optional[pulumi.Input[str]] = None,
                  feed_output_config: Optional[pulumi.Input[pulumi.InputType['FolderFeedFeedOutputConfigArgs']]] = None,
@@ -52,6 +53,12 @@ class FolderFeed(pulumi.CustomResource):
         :param pulumi.Input[str] billing_project: The project whose identity will be used when sending messages to the
                destination pubsub topic. It also specifies the project for API
                enablement check, quota, and billing.
+        :param pulumi.Input[pulumi.InputType['FolderFeedConditionArgs']] condition: A condition which determines whether an asset update should be published. If specified, an asset
+               will be returned only when the expression evaluates to true. When set, expression field
+               must be a valid CEL expression on a TemporalAsset with name temporal_asset. Example: a Feed with
+               expression "temporal_asset.deleted == true" will only publish Asset deletions. Other fields of
+               condition are optional.
+               Structure is documented below.
         :param pulumi.Input[str] content_type: Asset content type. If not specified, no content but the asset name and type will be returned.
                Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
         :param pulumi.Input[str] feed_id: This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
@@ -81,6 +88,7 @@ class FolderFeed(pulumi.CustomResource):
             if billing_project is None:
                 raise TypeError("Missing required property 'billing_project'")
             __props__['billing_project'] = billing_project
+            __props__['condition'] = condition
             __props__['content_type'] = content_type
             if feed_id is None:
                 raise TypeError("Missing required property 'feed_id'")
@@ -106,6 +114,7 @@ class FolderFeed(pulumi.CustomResource):
             asset_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             asset_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             billing_project: Optional[pulumi.Input[str]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['FolderFeedConditionArgs']]] = None,
             content_type: Optional[pulumi.Input[str]] = None,
             feed_id: Optional[pulumi.Input[str]] = None,
             feed_output_config: Optional[pulumi.Input[pulumi.InputType['FolderFeedFeedOutputConfigArgs']]] = None,
@@ -131,6 +140,12 @@ class FolderFeed(pulumi.CustomResource):
         :param pulumi.Input[str] billing_project: The project whose identity will be used when sending messages to the
                destination pubsub topic. It also specifies the project for API
                enablement check, quota, and billing.
+        :param pulumi.Input[pulumi.InputType['FolderFeedConditionArgs']] condition: A condition which determines whether an asset update should be published. If specified, an asset
+               will be returned only when the expression evaluates to true. When set, expression field
+               must be a valid CEL expression on a TemporalAsset with name temporal_asset. Example: a Feed with
+               expression "temporal_asset.deleted == true" will only publish Asset deletions. Other fields of
+               condition are optional.
+               Structure is documented below.
         :param pulumi.Input[str] content_type: Asset content type. If not specified, no content but the asset name and type will be returned.
                Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
         :param pulumi.Input[str] feed_id: This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
@@ -147,6 +162,7 @@ class FolderFeed(pulumi.CustomResource):
         __props__["asset_names"] = asset_names
         __props__["asset_types"] = asset_types
         __props__["billing_project"] = billing_project
+        __props__["condition"] = condition
         __props__["content_type"] = content_type
         __props__["feed_id"] = feed_id
         __props__["feed_output_config"] = feed_output_config
@@ -187,6 +203,19 @@ class FolderFeed(pulumi.CustomResource):
         enablement check, quota, and billing.
         """
         return pulumi.get(self, "billing_project")
+
+    @property
+    @pulumi.getter
+    def condition(self) -> pulumi.Output[Optional['outputs.FolderFeedCondition']]:
+        """
+        A condition which determines whether an asset update should be published. If specified, an asset
+        will be returned only when the expression evaluates to true. When set, expression field
+        must be a valid CEL expression on a TemporalAsset with name temporal_asset. Example: a Feed with
+        expression "temporal_asset.deleted == true" will only publish Asset deletions. Other fields of
+        condition are optional.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "condition")
 
     @property
     @pulumi.getter(name="contentType")

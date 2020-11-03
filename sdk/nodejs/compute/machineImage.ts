@@ -2,10 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Represents a MachineImage resource. Machine images store all the configuration,
+ * Represents a Machine Image resource. Machine images store all the configuration,
  * metadata, permissions, and data from one or more disks required to create a
  * Virtual machine (VM) instance.
  *
@@ -50,6 +52,19 @@ export class MachineImage extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * Specify this to create an application consistent machine image by informing the OS to prepare for the snapshot process.
+     * Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+     */
+    public readonly guestFlush!: pulumi.Output<boolean | undefined>;
+    /**
+     * Encrypts the machine image using a customer-supplied encryption key.
+     * After you encrypt a machine image with a customer-supplied key, you must
+     * provide the same key if you use the machine image later (e.g. to create a
+     * instance from the image)
+     * Structure is documented below.
+     */
+    public readonly machineImageEncryptionKey!: pulumi.Output<outputs.compute.MachineImageMachineImageEncryptionKey | undefined>;
+    /**
      * Name of the resource.
      */
     public readonly name!: pulumi.Output<string>;
@@ -66,6 +81,10 @@ export class MachineImage extends pulumi.CustomResource {
      * The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
      */
     public readonly sourceInstance!: pulumi.Output<string>;
+    /**
+     * The regional or multi-regional Cloud Storage bucket location where the machine image is stored.
+     */
+    public /*out*/ readonly storageLocations!: pulumi.Output<string[]>;
 
     /**
      * Create a MachineImage resource with the given unique name, arguments, and options.
@@ -80,20 +99,26 @@ export class MachineImage extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as MachineImageState | undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["guestFlush"] = state ? state.guestFlush : undefined;
+            inputs["machineImageEncryptionKey"] = state ? state.machineImageEncryptionKey : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
             inputs["sourceInstance"] = state ? state.sourceInstance : undefined;
+            inputs["storageLocations"] = state ? state.storageLocations : undefined;
         } else {
             const args = argsOrState as MachineImageArgs | undefined;
             if (!args || args.sourceInstance === undefined) {
                 throw new Error("Missing required property 'sourceInstance'");
             }
             inputs["description"] = args ? args.description : undefined;
+            inputs["guestFlush"] = args ? args.guestFlush : undefined;
+            inputs["machineImageEncryptionKey"] = args ? args.machineImageEncryptionKey : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["sourceInstance"] = args ? args.sourceInstance : undefined;
             inputs["selfLink"] = undefined /*out*/;
+            inputs["storageLocations"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -115,6 +140,19 @@ export interface MachineImageState {
      */
     readonly description?: pulumi.Input<string>;
     /**
+     * Specify this to create an application consistent machine image by informing the OS to prepare for the snapshot process.
+     * Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+     */
+    readonly guestFlush?: pulumi.Input<boolean>;
+    /**
+     * Encrypts the machine image using a customer-supplied encryption key.
+     * After you encrypt a machine image with a customer-supplied key, you must
+     * provide the same key if you use the machine image later (e.g. to create a
+     * instance from the image)
+     * Structure is documented below.
+     */
+    readonly machineImageEncryptionKey?: pulumi.Input<inputs.compute.MachineImageMachineImageEncryptionKey>;
+    /**
      * Name of the resource.
      */
     readonly name?: pulumi.Input<string>;
@@ -131,6 +169,10 @@ export interface MachineImageState {
      * The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
      */
     readonly sourceInstance?: pulumi.Input<string>;
+    /**
+     * The regional or multi-regional Cloud Storage bucket location where the machine image is stored.
+     */
+    readonly storageLocations?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -141,6 +183,19 @@ export interface MachineImageArgs {
      * A text description of the resource.
      */
     readonly description?: pulumi.Input<string>;
+    /**
+     * Specify this to create an application consistent machine image by informing the OS to prepare for the snapshot process.
+     * Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+     */
+    readonly guestFlush?: pulumi.Input<boolean>;
+    /**
+     * Encrypts the machine image using a customer-supplied encryption key.
+     * After you encrypt a machine image with a customer-supplied key, you must
+     * provide the same key if you use the machine image later (e.g. to create a
+     * instance from the image)
+     * Structure is documented below.
+     */
+    readonly machineImageEncryptionKey?: pulumi.Input<inputs.compute.MachineImageMachineImageEncryptionKey>;
     /**
      * Name of the resource.
      */

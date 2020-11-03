@@ -74,6 +74,12 @@ export class DataTransferConfig extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
+     * Email notifications will be sent according to these preferences to the
+     * email address of the user who owns this transfer config.
+     * Structure is documented below.
+     */
+    public readonly emailPreferences!: pulumi.Output<outputs.bigquery.DataTransferConfigEmailPreferences | undefined>;
+    /**
      * The geographic location where the transfer config should reside.
      * Examples: US, EU, asia-northeast1. The default value is US.
      */
@@ -110,6 +116,11 @@ export class DataTransferConfig extends pulumi.CustomResource {
      */
     public readonly schedule!: pulumi.Output<string | undefined>;
     /**
+     * Options customizing the data transfer schedule.
+     * Structure is documented below.
+     */
+    public readonly scheduleOptions!: pulumi.Output<outputs.bigquery.DataTransferConfigScheduleOptions | undefined>;
+    /**
      * Different parameters are configured primarily using the the `params` field on this
      * resource. This block contains the parameters which contain secrets or passwords so that they can be marked
      * sensitive and hidden from plan output. The name of the field, eg: secret_access_key, will be the key
@@ -143,12 +154,14 @@ export class DataTransferConfig extends pulumi.CustomResource {
             inputs["destinationDatasetId"] = state ? state.destinationDatasetId : undefined;
             inputs["disabled"] = state ? state.disabled : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
+            inputs["emailPreferences"] = state ? state.emailPreferences : undefined;
             inputs["location"] = state ? state.location : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["notificationPubsubTopic"] = state ? state.notificationPubsubTopic : undefined;
             inputs["params"] = state ? state.params : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["schedule"] = state ? state.schedule : undefined;
+            inputs["scheduleOptions"] = state ? state.scheduleOptions : undefined;
             inputs["sensitiveParams"] = state ? state.sensitiveParams : undefined;
             inputs["serviceAccountName"] = state ? state.serviceAccountName : undefined;
         } else {
@@ -170,11 +183,13 @@ export class DataTransferConfig extends pulumi.CustomResource {
             inputs["destinationDatasetId"] = args ? args.destinationDatasetId : undefined;
             inputs["disabled"] = args ? args.disabled : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
+            inputs["emailPreferences"] = args ? args.emailPreferences : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["notificationPubsubTopic"] = args ? args.notificationPubsubTopic : undefined;
             inputs["params"] = args ? args.params : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["schedule"] = args ? args.schedule : undefined;
+            inputs["scheduleOptions"] = args ? args.scheduleOptions : undefined;
             inputs["sensitiveParams"] = args ? args.sensitiveParams : undefined;
             inputs["serviceAccountName"] = args ? args.serviceAccountName : undefined;
             inputs["name"] = undefined /*out*/;
@@ -219,6 +234,12 @@ export interface DataTransferConfigState {
      */
     readonly displayName?: pulumi.Input<string>;
     /**
+     * Email notifications will be sent according to these preferences to the
+     * email address of the user who owns this transfer config.
+     * Structure is documented below.
+     */
+    readonly emailPreferences?: pulumi.Input<inputs.bigquery.DataTransferConfigEmailPreferences>;
+    /**
      * The geographic location where the transfer config should reside.
      * Examples: US, EU, asia-northeast1. The default value is US.
      */
@@ -254,6 +275,11 @@ export interface DataTransferConfigState {
      * NOTE: the granularity should be at least 8 hours, or less frequent.
      */
     readonly schedule?: pulumi.Input<string>;
+    /**
+     * Options customizing the data transfer schedule.
+     * Structure is documented below.
+     */
+    readonly scheduleOptions?: pulumi.Input<inputs.bigquery.DataTransferConfigScheduleOptions>;
     /**
      * Different parameters are configured primarily using the the `params` field on this
      * resource. This block contains the parameters which contain secrets or passwords so that they can be marked
@@ -301,6 +327,12 @@ export interface DataTransferConfigArgs {
      */
     readonly displayName: pulumi.Input<string>;
     /**
+     * Email notifications will be sent according to these preferences to the
+     * email address of the user who owns this transfer config.
+     * Structure is documented below.
+     */
+    readonly emailPreferences?: pulumi.Input<inputs.bigquery.DataTransferConfigEmailPreferences>;
+    /**
      * The geographic location where the transfer config should reside.
      * Examples: US, EU, asia-northeast1. The default value is US.
      */
@@ -330,6 +362,11 @@ export interface DataTransferConfigArgs {
      * NOTE: the granularity should be at least 8 hours, or less frequent.
      */
     readonly schedule?: pulumi.Input<string>;
+    /**
+     * Options customizing the data transfer schedule.
+     * Structure is documented below.
+     */
+    readonly scheduleOptions?: pulumi.Input<inputs.bigquery.DataTransferConfigScheduleOptions>;
     /**
      * Different parameters are configured primarily using the the `params` field on this
      * resource. This block contains the parameters which contain secrets or passwords so that they can be marked

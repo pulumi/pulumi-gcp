@@ -50,6 +50,17 @@ namespace Pulumi.Gcp.CloudAsset
         public Output<string> BillingProject { get; private set; } = null!;
 
         /// <summary>
+        /// A condition which determines whether an asset update should be published. If specified, an asset
+        /// will be returned only when the expression evaluates to true. When set, expression field
+        /// must be a valid CEL expression on a TemporalAsset with name temporal_asset. Example: a Feed with
+        /// expression "temporal_asset.deleted == true" will only publish Asset deletions. Other fields of
+        /// condition are optional.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("condition")]
+        public Output<Outputs.FolderFeedCondition?> Condition { get; private set; } = null!;
+
+        /// <summary>
         /// Asset content type. If not specified, no content but the asset name and type will be returned.
         /// Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
         /// </summary>
@@ -173,6 +184,17 @@ namespace Pulumi.Gcp.CloudAsset
         public Input<string> BillingProject { get; set; } = null!;
 
         /// <summary>
+        /// A condition which determines whether an asset update should be published. If specified, an asset
+        /// will be returned only when the expression evaluates to true. When set, expression field
+        /// must be a valid CEL expression on a TemporalAsset with name temporal_asset. Example: a Feed with
+        /// expression "temporal_asset.deleted == true" will only publish Asset deletions. Other fields of
+        /// condition are optional.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("condition")]
+        public Input<Inputs.FolderFeedConditionArgs>? Condition { get; set; }
+
+        /// <summary>
         /// Asset content type. If not specified, no content but the asset name and type will be returned.
         /// Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
         /// </summary>
@@ -243,6 +265,17 @@ namespace Pulumi.Gcp.CloudAsset
         /// </summary>
         [Input("billingProject")]
         public Input<string>? BillingProject { get; set; }
+
+        /// <summary>
+        /// A condition which determines whether an asset update should be published. If specified, an asset
+        /// will be returned only when the expression evaluates to true. When set, expression field
+        /// must be a valid CEL expression on a TemporalAsset with name temporal_asset. Example: a Feed with
+        /// expression "temporal_asset.deleted == true" will only publish Asset deletions. Other fields of
+        /// condition are optional.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("condition")]
+        public Input<Inputs.FolderFeedConditionGetArgs>? Condition { get; set; }
 
         /// <summary>
         /// Asset content type. If not specified, no content but the asset name and type will be returned.

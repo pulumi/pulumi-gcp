@@ -514,6 +514,350 @@ func (o ConnectionCloudSqlCredentialPtrOutput) Username() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+type DataTransferConfigEmailPreferences struct {
+	// If true, email notifications will be sent on transfer run failures.
+	EnableFailureEmail bool `pulumi:"enableFailureEmail"`
+}
+
+// DataTransferConfigEmailPreferencesInput is an input type that accepts DataTransferConfigEmailPreferencesArgs and DataTransferConfigEmailPreferencesOutput values.
+// You can construct a concrete instance of `DataTransferConfigEmailPreferencesInput` via:
+//
+//          DataTransferConfigEmailPreferencesArgs{...}
+type DataTransferConfigEmailPreferencesInput interface {
+	pulumi.Input
+
+	ToDataTransferConfigEmailPreferencesOutput() DataTransferConfigEmailPreferencesOutput
+	ToDataTransferConfigEmailPreferencesOutputWithContext(context.Context) DataTransferConfigEmailPreferencesOutput
+}
+
+type DataTransferConfigEmailPreferencesArgs struct {
+	// If true, email notifications will be sent on transfer run failures.
+	EnableFailureEmail pulumi.BoolInput `pulumi:"enableFailureEmail"`
+}
+
+func (DataTransferConfigEmailPreferencesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataTransferConfigEmailPreferences)(nil)).Elem()
+}
+
+func (i DataTransferConfigEmailPreferencesArgs) ToDataTransferConfigEmailPreferencesOutput() DataTransferConfigEmailPreferencesOutput {
+	return i.ToDataTransferConfigEmailPreferencesOutputWithContext(context.Background())
+}
+
+func (i DataTransferConfigEmailPreferencesArgs) ToDataTransferConfigEmailPreferencesOutputWithContext(ctx context.Context) DataTransferConfigEmailPreferencesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataTransferConfigEmailPreferencesOutput)
+}
+
+func (i DataTransferConfigEmailPreferencesArgs) ToDataTransferConfigEmailPreferencesPtrOutput() DataTransferConfigEmailPreferencesPtrOutput {
+	return i.ToDataTransferConfigEmailPreferencesPtrOutputWithContext(context.Background())
+}
+
+func (i DataTransferConfigEmailPreferencesArgs) ToDataTransferConfigEmailPreferencesPtrOutputWithContext(ctx context.Context) DataTransferConfigEmailPreferencesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataTransferConfigEmailPreferencesOutput).ToDataTransferConfigEmailPreferencesPtrOutputWithContext(ctx)
+}
+
+// DataTransferConfigEmailPreferencesPtrInput is an input type that accepts DataTransferConfigEmailPreferencesArgs, DataTransferConfigEmailPreferencesPtr and DataTransferConfigEmailPreferencesPtrOutput values.
+// You can construct a concrete instance of `DataTransferConfigEmailPreferencesPtrInput` via:
+//
+//          DataTransferConfigEmailPreferencesArgs{...}
+//
+//  or:
+//
+//          nil
+type DataTransferConfigEmailPreferencesPtrInput interface {
+	pulumi.Input
+
+	ToDataTransferConfigEmailPreferencesPtrOutput() DataTransferConfigEmailPreferencesPtrOutput
+	ToDataTransferConfigEmailPreferencesPtrOutputWithContext(context.Context) DataTransferConfigEmailPreferencesPtrOutput
+}
+
+type dataTransferConfigEmailPreferencesPtrType DataTransferConfigEmailPreferencesArgs
+
+func DataTransferConfigEmailPreferencesPtr(v *DataTransferConfigEmailPreferencesArgs) DataTransferConfigEmailPreferencesPtrInput {
+	return (*dataTransferConfigEmailPreferencesPtrType)(v)
+}
+
+func (*dataTransferConfigEmailPreferencesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataTransferConfigEmailPreferences)(nil)).Elem()
+}
+
+func (i *dataTransferConfigEmailPreferencesPtrType) ToDataTransferConfigEmailPreferencesPtrOutput() DataTransferConfigEmailPreferencesPtrOutput {
+	return i.ToDataTransferConfigEmailPreferencesPtrOutputWithContext(context.Background())
+}
+
+func (i *dataTransferConfigEmailPreferencesPtrType) ToDataTransferConfigEmailPreferencesPtrOutputWithContext(ctx context.Context) DataTransferConfigEmailPreferencesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataTransferConfigEmailPreferencesPtrOutput)
+}
+
+type DataTransferConfigEmailPreferencesOutput struct{ *pulumi.OutputState }
+
+func (DataTransferConfigEmailPreferencesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataTransferConfigEmailPreferences)(nil)).Elem()
+}
+
+func (o DataTransferConfigEmailPreferencesOutput) ToDataTransferConfigEmailPreferencesOutput() DataTransferConfigEmailPreferencesOutput {
+	return o
+}
+
+func (o DataTransferConfigEmailPreferencesOutput) ToDataTransferConfigEmailPreferencesOutputWithContext(ctx context.Context) DataTransferConfigEmailPreferencesOutput {
+	return o
+}
+
+func (o DataTransferConfigEmailPreferencesOutput) ToDataTransferConfigEmailPreferencesPtrOutput() DataTransferConfigEmailPreferencesPtrOutput {
+	return o.ToDataTransferConfigEmailPreferencesPtrOutputWithContext(context.Background())
+}
+
+func (o DataTransferConfigEmailPreferencesOutput) ToDataTransferConfigEmailPreferencesPtrOutputWithContext(ctx context.Context) DataTransferConfigEmailPreferencesPtrOutput {
+	return o.ApplyT(func(v DataTransferConfigEmailPreferences) *DataTransferConfigEmailPreferences {
+		return &v
+	}).(DataTransferConfigEmailPreferencesPtrOutput)
+}
+
+// If true, email notifications will be sent on transfer run failures.
+func (o DataTransferConfigEmailPreferencesOutput) EnableFailureEmail() pulumi.BoolOutput {
+	return o.ApplyT(func(v DataTransferConfigEmailPreferences) bool { return v.EnableFailureEmail }).(pulumi.BoolOutput)
+}
+
+type DataTransferConfigEmailPreferencesPtrOutput struct{ *pulumi.OutputState }
+
+func (DataTransferConfigEmailPreferencesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataTransferConfigEmailPreferences)(nil)).Elem()
+}
+
+func (o DataTransferConfigEmailPreferencesPtrOutput) ToDataTransferConfigEmailPreferencesPtrOutput() DataTransferConfigEmailPreferencesPtrOutput {
+	return o
+}
+
+func (o DataTransferConfigEmailPreferencesPtrOutput) ToDataTransferConfigEmailPreferencesPtrOutputWithContext(ctx context.Context) DataTransferConfigEmailPreferencesPtrOutput {
+	return o
+}
+
+func (o DataTransferConfigEmailPreferencesPtrOutput) Elem() DataTransferConfigEmailPreferencesOutput {
+	return o.ApplyT(func(v *DataTransferConfigEmailPreferences) DataTransferConfigEmailPreferences { return *v }).(DataTransferConfigEmailPreferencesOutput)
+}
+
+// If true, email notifications will be sent on transfer run failures.
+func (o DataTransferConfigEmailPreferencesPtrOutput) EnableFailureEmail() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DataTransferConfigEmailPreferences) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnableFailureEmail
+	}).(pulumi.BoolPtrOutput)
+}
+
+type DataTransferConfigScheduleOptions struct {
+	// If true, automatic scheduling of data transfer runs for this
+	// configuration will be disabled. The runs can be started on ad-hoc
+	// basis using transferConfigs.startManualRuns API. When automatic
+	// scheduling is disabled, the TransferConfig.schedule field will
+	// be ignored.
+	DisableAutoScheduling *bool `pulumi:"disableAutoScheduling"`
+	// Defines time to stop scheduling transfer runs. A transfer run cannot be
+	// scheduled at or after the end time. The end time can be changed at any
+	// moment. The time when a data transfer can be triggered manually is not
+	// limited by this option.
+	EndTime *string `pulumi:"endTime"`
+	// Specifies time to start scheduling transfer runs. The first run will be
+	// scheduled at or after the start time according to a recurrence pattern
+	// defined in the schedule string. The start time can be changed at any
+	// moment. The time when a data transfer can be triggered manually is not
+	// limited by this option.
+	StartTime *string `pulumi:"startTime"`
+}
+
+// DataTransferConfigScheduleOptionsInput is an input type that accepts DataTransferConfigScheduleOptionsArgs and DataTransferConfigScheduleOptionsOutput values.
+// You can construct a concrete instance of `DataTransferConfigScheduleOptionsInput` via:
+//
+//          DataTransferConfigScheduleOptionsArgs{...}
+type DataTransferConfigScheduleOptionsInput interface {
+	pulumi.Input
+
+	ToDataTransferConfigScheduleOptionsOutput() DataTransferConfigScheduleOptionsOutput
+	ToDataTransferConfigScheduleOptionsOutputWithContext(context.Context) DataTransferConfigScheduleOptionsOutput
+}
+
+type DataTransferConfigScheduleOptionsArgs struct {
+	// If true, automatic scheduling of data transfer runs for this
+	// configuration will be disabled. The runs can be started on ad-hoc
+	// basis using transferConfigs.startManualRuns API. When automatic
+	// scheduling is disabled, the TransferConfig.schedule field will
+	// be ignored.
+	DisableAutoScheduling pulumi.BoolPtrInput `pulumi:"disableAutoScheduling"`
+	// Defines time to stop scheduling transfer runs. A transfer run cannot be
+	// scheduled at or after the end time. The end time can be changed at any
+	// moment. The time when a data transfer can be triggered manually is not
+	// limited by this option.
+	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
+	// Specifies time to start scheduling transfer runs. The first run will be
+	// scheduled at or after the start time according to a recurrence pattern
+	// defined in the schedule string. The start time can be changed at any
+	// moment. The time when a data transfer can be triggered manually is not
+	// limited by this option.
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+}
+
+func (DataTransferConfigScheduleOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataTransferConfigScheduleOptions)(nil)).Elem()
+}
+
+func (i DataTransferConfigScheduleOptionsArgs) ToDataTransferConfigScheduleOptionsOutput() DataTransferConfigScheduleOptionsOutput {
+	return i.ToDataTransferConfigScheduleOptionsOutputWithContext(context.Background())
+}
+
+func (i DataTransferConfigScheduleOptionsArgs) ToDataTransferConfigScheduleOptionsOutputWithContext(ctx context.Context) DataTransferConfigScheduleOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataTransferConfigScheduleOptionsOutput)
+}
+
+func (i DataTransferConfigScheduleOptionsArgs) ToDataTransferConfigScheduleOptionsPtrOutput() DataTransferConfigScheduleOptionsPtrOutput {
+	return i.ToDataTransferConfigScheduleOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i DataTransferConfigScheduleOptionsArgs) ToDataTransferConfigScheduleOptionsPtrOutputWithContext(ctx context.Context) DataTransferConfigScheduleOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataTransferConfigScheduleOptionsOutput).ToDataTransferConfigScheduleOptionsPtrOutputWithContext(ctx)
+}
+
+// DataTransferConfigScheduleOptionsPtrInput is an input type that accepts DataTransferConfigScheduleOptionsArgs, DataTransferConfigScheduleOptionsPtr and DataTransferConfigScheduleOptionsPtrOutput values.
+// You can construct a concrete instance of `DataTransferConfigScheduleOptionsPtrInput` via:
+//
+//          DataTransferConfigScheduleOptionsArgs{...}
+//
+//  or:
+//
+//          nil
+type DataTransferConfigScheduleOptionsPtrInput interface {
+	pulumi.Input
+
+	ToDataTransferConfigScheduleOptionsPtrOutput() DataTransferConfigScheduleOptionsPtrOutput
+	ToDataTransferConfigScheduleOptionsPtrOutputWithContext(context.Context) DataTransferConfigScheduleOptionsPtrOutput
+}
+
+type dataTransferConfigScheduleOptionsPtrType DataTransferConfigScheduleOptionsArgs
+
+func DataTransferConfigScheduleOptionsPtr(v *DataTransferConfigScheduleOptionsArgs) DataTransferConfigScheduleOptionsPtrInput {
+	return (*dataTransferConfigScheduleOptionsPtrType)(v)
+}
+
+func (*dataTransferConfigScheduleOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataTransferConfigScheduleOptions)(nil)).Elem()
+}
+
+func (i *dataTransferConfigScheduleOptionsPtrType) ToDataTransferConfigScheduleOptionsPtrOutput() DataTransferConfigScheduleOptionsPtrOutput {
+	return i.ToDataTransferConfigScheduleOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *dataTransferConfigScheduleOptionsPtrType) ToDataTransferConfigScheduleOptionsPtrOutputWithContext(ctx context.Context) DataTransferConfigScheduleOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataTransferConfigScheduleOptionsPtrOutput)
+}
+
+type DataTransferConfigScheduleOptionsOutput struct{ *pulumi.OutputState }
+
+func (DataTransferConfigScheduleOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataTransferConfigScheduleOptions)(nil)).Elem()
+}
+
+func (o DataTransferConfigScheduleOptionsOutput) ToDataTransferConfigScheduleOptionsOutput() DataTransferConfigScheduleOptionsOutput {
+	return o
+}
+
+func (o DataTransferConfigScheduleOptionsOutput) ToDataTransferConfigScheduleOptionsOutputWithContext(ctx context.Context) DataTransferConfigScheduleOptionsOutput {
+	return o
+}
+
+func (o DataTransferConfigScheduleOptionsOutput) ToDataTransferConfigScheduleOptionsPtrOutput() DataTransferConfigScheduleOptionsPtrOutput {
+	return o.ToDataTransferConfigScheduleOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o DataTransferConfigScheduleOptionsOutput) ToDataTransferConfigScheduleOptionsPtrOutputWithContext(ctx context.Context) DataTransferConfigScheduleOptionsPtrOutput {
+	return o.ApplyT(func(v DataTransferConfigScheduleOptions) *DataTransferConfigScheduleOptions {
+		return &v
+	}).(DataTransferConfigScheduleOptionsPtrOutput)
+}
+
+// If true, automatic scheduling of data transfer runs for this
+// configuration will be disabled. The runs can be started on ad-hoc
+// basis using transferConfigs.startManualRuns API. When automatic
+// scheduling is disabled, the TransferConfig.schedule field will
+// be ignored.
+func (o DataTransferConfigScheduleOptionsOutput) DisableAutoScheduling() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DataTransferConfigScheduleOptions) *bool { return v.DisableAutoScheduling }).(pulumi.BoolPtrOutput)
+}
+
+// Defines time to stop scheduling transfer runs. A transfer run cannot be
+// scheduled at or after the end time. The end time can be changed at any
+// moment. The time when a data transfer can be triggered manually is not
+// limited by this option.
+func (o DataTransferConfigScheduleOptionsOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataTransferConfigScheduleOptions) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+}
+
+// Specifies time to start scheduling transfer runs. The first run will be
+// scheduled at or after the start time according to a recurrence pattern
+// defined in the schedule string. The start time can be changed at any
+// moment. The time when a data transfer can be triggered manually is not
+// limited by this option.
+func (o DataTransferConfigScheduleOptionsOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataTransferConfigScheduleOptions) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+type DataTransferConfigScheduleOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (DataTransferConfigScheduleOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataTransferConfigScheduleOptions)(nil)).Elem()
+}
+
+func (o DataTransferConfigScheduleOptionsPtrOutput) ToDataTransferConfigScheduleOptionsPtrOutput() DataTransferConfigScheduleOptionsPtrOutput {
+	return o
+}
+
+func (o DataTransferConfigScheduleOptionsPtrOutput) ToDataTransferConfigScheduleOptionsPtrOutputWithContext(ctx context.Context) DataTransferConfigScheduleOptionsPtrOutput {
+	return o
+}
+
+func (o DataTransferConfigScheduleOptionsPtrOutput) Elem() DataTransferConfigScheduleOptionsOutput {
+	return o.ApplyT(func(v *DataTransferConfigScheduleOptions) DataTransferConfigScheduleOptions { return *v }).(DataTransferConfigScheduleOptionsOutput)
+}
+
+// If true, automatic scheduling of data transfer runs for this
+// configuration will be disabled. The runs can be started on ad-hoc
+// basis using transferConfigs.startManualRuns API. When automatic
+// scheduling is disabled, the TransferConfig.schedule field will
+// be ignored.
+func (o DataTransferConfigScheduleOptionsPtrOutput) DisableAutoScheduling() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DataTransferConfigScheduleOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableAutoScheduling
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Defines time to stop scheduling transfer runs. A transfer run cannot be
+// scheduled at or after the end time. The end time can be changed at any
+// moment. The time when a data transfer can be triggered manually is not
+// limited by this option.
+func (o DataTransferConfigScheduleOptionsPtrOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataTransferConfigScheduleOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies time to start scheduling transfer runs. The first run will be
+// scheduled at or after the start time according to a recurrence pattern
+// defined in the schedule string. The start time can be changed at any
+// moment. The time when a data transfer can be triggered manually is not
+// limited by this option.
+func (o DataTransferConfigScheduleOptionsPtrOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataTransferConfigScheduleOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartTime
+	}).(pulumi.StringPtrOutput)
+}
+
 type DataTransferConfigSensitiveParams struct {
 	// The Secret Access Key of the AWS account transferring data from.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -7853,6 +8197,10 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionCloudSqlPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionCloudSqlCredentialOutput{})
 	pulumi.RegisterOutputType(ConnectionCloudSqlCredentialPtrOutput{})
+	pulumi.RegisterOutputType(DataTransferConfigEmailPreferencesOutput{})
+	pulumi.RegisterOutputType(DataTransferConfigEmailPreferencesPtrOutput{})
+	pulumi.RegisterOutputType(DataTransferConfigScheduleOptionsOutput{})
+	pulumi.RegisterOutputType(DataTransferConfigScheduleOptionsPtrOutput{})
 	pulumi.RegisterOutputType(DataTransferConfigSensitiveParamsOutput{})
 	pulumi.RegisterOutputType(DataTransferConfigSensitiveParamsPtrOutput{})
 	pulumi.RegisterOutputType(DatasetAccessTypeOutput{})

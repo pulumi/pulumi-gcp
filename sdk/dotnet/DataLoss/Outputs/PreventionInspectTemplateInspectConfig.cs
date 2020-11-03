@@ -19,6 +19,11 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// </summary>
         public readonly ImmutableArray<string> ContentOptions;
         /// <summary>
+        /// Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.PreventionInspectTemplateInspectConfigCustomInfoType> CustomInfoTypes;
+        /// <summary>
         /// Set of infoTypes for which findings would affect this rule.
         /// Structure is documented below.
         /// </summary>
@@ -54,6 +59,8 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         private PreventionInspectTemplateInspectConfig(
             ImmutableArray<string> contentOptions,
 
+            ImmutableArray<Outputs.PreventionInspectTemplateInspectConfigCustomInfoType> customInfoTypes,
+
             bool? excludeInfoTypes,
 
             bool? includeQuote,
@@ -67,6 +74,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
             ImmutableArray<Outputs.PreventionInspectTemplateInspectConfigRuleSet> ruleSets)
         {
             ContentOptions = contentOptions;
+            CustomInfoTypes = customInfoTypes;
             ExcludeInfoTypes = excludeInfoTypes;
             IncludeQuote = includeQuote;
             InfoTypes = infoTypes;

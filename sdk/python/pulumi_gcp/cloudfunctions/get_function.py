@@ -20,10 +20,13 @@ class GetFunctionResult:
     """
     A collection of values returned by getFunction.
     """
-    def __init__(__self__, available_memory_mb=None, description=None, entry_point=None, environment_variables=None, event_triggers=None, https_trigger_url=None, id=None, ingress_settings=None, labels=None, max_instances=None, name=None, project=None, region=None, runtime=None, service_account_email=None, source_archive_bucket=None, source_archive_object=None, source_repositories=None, timeout=None, trigger_http=None, vpc_connector=None, vpc_connector_egress_settings=None):
+    def __init__(__self__, available_memory_mb=None, build_environment_variables=None, description=None, entry_point=None, environment_variables=None, event_triggers=None, https_trigger_url=None, id=None, ingress_settings=None, labels=None, max_instances=None, name=None, project=None, region=None, runtime=None, service_account_email=None, source_archive_bucket=None, source_archive_object=None, source_repositories=None, timeout=None, trigger_http=None, vpc_connector=None, vpc_connector_egress_settings=None):
         if available_memory_mb and not isinstance(available_memory_mb, int):
             raise TypeError("Expected argument 'available_memory_mb' to be a int")
         pulumi.set(__self__, "available_memory_mb", available_memory_mb)
+        if build_environment_variables and not isinstance(build_environment_variables, dict):
+            raise TypeError("Expected argument 'build_environment_variables' to be a dict")
+        pulumi.set(__self__, "build_environment_variables", build_environment_variables)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -95,6 +98,11 @@ class GetFunctionResult:
         Available memory (in MB) to the function.
         """
         return pulumi.get(self, "available_memory_mb")
+
+    @property
+    @pulumi.getter(name="buildEnvironmentVariables")
+    def build_environment_variables(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "build_environment_variables")
 
     @property
     @pulumi.getter
@@ -263,6 +271,7 @@ class AwaitableGetFunctionResult(GetFunctionResult):
             yield self
         return GetFunctionResult(
             available_memory_mb=self.available_memory_mb,
+            build_environment_variables=self.build_environment_variables,
             description=self.description,
             entry_point=self.entry_point,
             environment_variables=self.environment_variables,
@@ -314,6 +323,7 @@ def get_function(name: Optional[str] = None,
 
     return AwaitableGetFunctionResult(
         available_memory_mb=__ret__.available_memory_mb,
+        build_environment_variables=__ret__.build_environment_variables,
         description=__ret__.description,
         entry_point=__ret__.entry_point,
         environment_variables=__ret__.environment_variables,

@@ -14,6 +14,7 @@ __all__ = [
     'access_context_manager_custom_endpoint',
     'access_token',
     'active_directory_custom_endpoint',
+    'api_gateway_custom_endpoint',
     'app_engine_custom_endpoint',
     'artifact_registry_custom_endpoint',
     'batching',
@@ -110,6 +111,8 @@ access_context_manager_custom_endpoint = __config__.get('accessContextManagerCus
 access_token = __config__.get('accessToken')
 
 active_directory_custom_endpoint = __config__.get('activeDirectoryCustomEndpoint')
+
+api_gateway_custom_endpoint = __config__.get('apiGatewayCustomEndpoint')
 
 app_engine_custom_endpoint = __config__.get('appEngineCustomEndpoint')
 

@@ -27,6 +27,8 @@ type Function struct {
 
 	// Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, and 2048MB.
 	AvailableMemoryMb pulumi.IntPtrOutput `pulumi:"availableMemoryMb"`
+	// A set of key/value environment variable pairs available during build time.
+	BuildEnvironmentVariables pulumi.MapOutput `pulumi:"buildEnvironmentVariables"`
 	// Description of the function.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Name of the function that will be executed when the Google Cloud Function is triggered.
@@ -104,6 +106,8 @@ func GetFunction(ctx *pulumi.Context,
 type functionState struct {
 	// Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, and 2048MB.
 	AvailableMemoryMb *int `pulumi:"availableMemoryMb"`
+	// A set of key/value environment variable pairs available during build time.
+	BuildEnvironmentVariables map[string]interface{} `pulumi:"buildEnvironmentVariables"`
 	// Description of the function.
 	Description *string `pulumi:"description"`
 	// Name of the function that will be executed when the Google Cloud Function is triggered.
@@ -151,6 +155,8 @@ type functionState struct {
 type FunctionState struct {
 	// Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, and 2048MB.
 	AvailableMemoryMb pulumi.IntPtrInput
+	// A set of key/value environment variable pairs available during build time.
+	BuildEnvironmentVariables pulumi.MapInput
 	// Description of the function.
 	Description pulumi.StringPtrInput
 	// Name of the function that will be executed when the Google Cloud Function is triggered.
@@ -202,6 +208,8 @@ func (FunctionState) ElementType() reflect.Type {
 type functionArgs struct {
 	// Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, and 2048MB.
 	AvailableMemoryMb *int `pulumi:"availableMemoryMb"`
+	// A set of key/value environment variable pairs available during build time.
+	BuildEnvironmentVariables map[string]interface{} `pulumi:"buildEnvironmentVariables"`
 	// Description of the function.
 	Description *string `pulumi:"description"`
 	// Name of the function that will be executed when the Google Cloud Function is triggered.
@@ -250,6 +258,8 @@ type functionArgs struct {
 type FunctionArgs struct {
 	// Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, and 2048MB.
 	AvailableMemoryMb pulumi.IntPtrInput
+	// A set of key/value environment variable pairs available during build time.
+	BuildEnvironmentVariables pulumi.MapInput
 	// Description of the function.
 	Description pulumi.StringPtrInput
 	// Name of the function that will be executed when the Google Cloud Function is triggered.

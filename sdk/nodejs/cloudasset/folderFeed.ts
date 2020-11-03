@@ -67,6 +67,15 @@ export class FolderFeed extends pulumi.CustomResource {
      */
     public readonly billingProject!: pulumi.Output<string>;
     /**
+     * A condition which determines whether an asset update should be published. If specified, an asset
+     * will be returned only when the expression evaluates to true. When set, expression field
+     * must be a valid CEL expression on a TemporalAsset with name temporal_asset. Example: a Feed with
+     * expression "temporal_asset.deleted == true" will only publish Asset deletions. Other fields of
+     * condition are optional.
+     * Structure is documented below.
+     */
+    public readonly condition!: pulumi.Output<outputs.cloudasset.FolderFeedCondition | undefined>;
+    /**
      * Asset content type. If not specified, no content but the asset name and type will be returned.
      * Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
      */
@@ -108,6 +117,7 @@ export class FolderFeed extends pulumi.CustomResource {
             inputs["assetNames"] = state ? state.assetNames : undefined;
             inputs["assetTypes"] = state ? state.assetTypes : undefined;
             inputs["billingProject"] = state ? state.billingProject : undefined;
+            inputs["condition"] = state ? state.condition : undefined;
             inputs["contentType"] = state ? state.contentType : undefined;
             inputs["feedId"] = state ? state.feedId : undefined;
             inputs["feedOutputConfig"] = state ? state.feedOutputConfig : undefined;
@@ -131,6 +141,7 @@ export class FolderFeed extends pulumi.CustomResource {
             inputs["assetNames"] = args ? args.assetNames : undefined;
             inputs["assetTypes"] = args ? args.assetTypes : undefined;
             inputs["billingProject"] = args ? args.billingProject : undefined;
+            inputs["condition"] = args ? args.condition : undefined;
             inputs["contentType"] = args ? args.contentType : undefined;
             inputs["feedId"] = args ? args.feedId : undefined;
             inputs["feedOutputConfig"] = args ? args.feedOutputConfig : undefined;
@@ -174,6 +185,15 @@ export interface FolderFeedState {
      * enablement check, quota, and billing.
      */
     readonly billingProject?: pulumi.Input<string>;
+    /**
+     * A condition which determines whether an asset update should be published. If specified, an asset
+     * will be returned only when the expression evaluates to true. When set, expression field
+     * must be a valid CEL expression on a TemporalAsset with name temporal_asset. Example: a Feed with
+     * expression "temporal_asset.deleted == true" will only publish Asset deletions. Other fields of
+     * condition are optional.
+     * Structure is documented below.
+     */
+    readonly condition?: pulumi.Input<inputs.cloudasset.FolderFeedCondition>;
     /**
      * Asset content type. If not specified, no content but the asset name and type will be returned.
      * Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
@@ -227,6 +247,15 @@ export interface FolderFeedArgs {
      * enablement check, quota, and billing.
      */
     readonly billingProject: pulumi.Input<string>;
+    /**
+     * A condition which determines whether an asset update should be published. If specified, an asset
+     * will be returned only when the expression evaluates to true. When set, expression field
+     * must be a valid CEL expression on a TemporalAsset with name temporal_asset. Example: a Feed with
+     * expression "temporal_asset.deleted == true" will only publish Asset deletions. Other fields of
+     * condition are optional.
+     * Structure is documented below.
+     */
+    readonly condition?: pulumi.Input<inputs.cloudasset.FolderFeedCondition>;
     /**
      * Asset content type. If not specified, no content but the asset name and type will be returned.
      * Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.

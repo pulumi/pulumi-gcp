@@ -23,6 +23,7 @@ class Subnetwork(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  private_ip_google_access: Optional[pulumi.Input[bool]] = None,
+                 private_ipv6_google_access: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  purpose: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -88,6 +89,7 @@ class Subnetwork(pulumi.CustomResource):
                Only networks that are in the distributed mode can have subnetworks.
         :param pulumi.Input[bool] private_ip_google_access: When enabled, VMs in this subnetwork without external IP addresses can
                access Google APIs and services by using Private Google Access.
+        :param pulumi.Input[str] private_ipv6_google_access: The private IPv6 google access type for the VMs in this subnet.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] purpose: The purpose of the resource. This field can be either PRIVATE
@@ -136,6 +138,7 @@ class Subnetwork(pulumi.CustomResource):
                 raise TypeError("Missing required property 'network'")
             __props__['network'] = network
             __props__['private_ip_google_access'] = private_ip_google_access
+            __props__['private_ipv6_google_access'] = private_ipv6_google_access
             __props__['project'] = project
             __props__['purpose'] = purpose
             __props__['region'] = region
@@ -164,6 +167,7 @@ class Subnetwork(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
             private_ip_google_access: Optional[pulumi.Input[bool]] = None,
+            private_ipv6_google_access: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             purpose: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
@@ -202,6 +206,7 @@ class Subnetwork(pulumi.CustomResource):
                Only networks that are in the distributed mode can have subnetworks.
         :param pulumi.Input[bool] private_ip_google_access: When enabled, VMs in this subnetwork without external IP addresses can
                access Google APIs and services by using Private Google Access.
+        :param pulumi.Input[str] private_ipv6_google_access: The private IPv6 google access type for the VMs in this subnet.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] purpose: The purpose of the resource. This field can be either PRIVATE
@@ -237,6 +242,7 @@ class Subnetwork(pulumi.CustomResource):
         __props__["name"] = name
         __props__["network"] = network
         __props__["private_ip_google_access"] = private_ip_google_access
+        __props__["private_ipv6_google_access"] = private_ipv6_google_access
         __props__["project"] = project
         __props__["purpose"] = purpose
         __props__["region"] = region
@@ -332,6 +338,14 @@ class Subnetwork(pulumi.CustomResource):
         access Google APIs and services by using Private Google Access.
         """
         return pulumi.get(self, "private_ip_google_access")
+
+    @property
+    @pulumi.getter(name="privateIpv6GoogleAccess")
+    def private_ipv6_google_access(self) -> pulumi.Output[str]:
+        """
+        The private IPv6 google access type for the VMs in this subnet.
+        """
+        return pulumi.get(self, "private_ipv6_google_access")
 
     @property
     @pulumi.getter

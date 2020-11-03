@@ -22,6 +22,7 @@ class Cluster(pulumi.CustomResource):
                  cluster_autoscaling: Optional[pulumi.Input[pulumi.InputType['ClusterClusterAutoscalingArgs']]] = None,
                  cluster_ipv4_cidr: Optional[pulumi.Input[str]] = None,
                  cluster_telemetry: Optional[pulumi.Input[pulumi.InputType['ClusterClusterTelemetryArgs']]] = None,
+                 confidential_nodes: Optional[pulumi.Input[pulumi.InputType['ClusterConfidentialNodesArgs']]] = None,
                  database_encryption: Optional[pulumi.Input[pulumi.InputType['ClusterDatabaseEncryptionArgs']]] = None,
                  datapath_provider: Optional[pulumi.Input[str]] = None,
                  default_max_pods_per_node: Optional[pulumi.Input[int]] = None,
@@ -94,6 +95,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ClusterClusterTelemetryArgs']] cluster_telemetry: Configuration for
                [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
                Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ClusterConfidentialNodesArgs']] confidential_nodes: Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration
+               can't be changed (or added/removed) after cluster creation without deleting and recreating the entire cluster.
         :param pulumi.Input[pulumi.InputType['ClusterDatabaseEncryptionArgs']] database_encryption: Structure is documented below.
         :param pulumi.Input[str] datapath_provider: The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
         :param pulumi.Input[int] default_max_pods_per_node: The default maximum number of pods
@@ -250,6 +253,7 @@ class Cluster(pulumi.CustomResource):
             __props__['cluster_autoscaling'] = cluster_autoscaling
             __props__['cluster_ipv4_cidr'] = cluster_ipv4_cidr
             __props__['cluster_telemetry'] = cluster_telemetry
+            __props__['confidential_nodes'] = confidential_nodes
             __props__['database_encryption'] = database_encryption
             __props__['datapath_provider'] = datapath_provider
             __props__['default_max_pods_per_node'] = default_max_pods_per_node
@@ -312,6 +316,7 @@ class Cluster(pulumi.CustomResource):
             cluster_autoscaling: Optional[pulumi.Input[pulumi.InputType['ClusterClusterAutoscalingArgs']]] = None,
             cluster_ipv4_cidr: Optional[pulumi.Input[str]] = None,
             cluster_telemetry: Optional[pulumi.Input[pulumi.InputType['ClusterClusterTelemetryArgs']]] = None,
+            confidential_nodes: Optional[pulumi.Input[pulumi.InputType['ClusterConfidentialNodesArgs']]] = None,
             database_encryption: Optional[pulumi.Input[pulumi.InputType['ClusterDatabaseEncryptionArgs']]] = None,
             datapath_provider: Optional[pulumi.Input[str]] = None,
             default_max_pods_per_node: Optional[pulumi.Input[int]] = None,
@@ -383,6 +388,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ClusterClusterTelemetryArgs']] cluster_telemetry: Configuration for
                [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
                Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ClusterConfidentialNodesArgs']] confidential_nodes: Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration
+               can't be changed (or added/removed) after cluster creation without deleting and recreating the entire cluster.
         :param pulumi.Input[pulumi.InputType['ClusterDatabaseEncryptionArgs']] database_encryption: Structure is documented below.
         :param pulumi.Input[str] datapath_provider: The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
         :param pulumi.Input[int] default_max_pods_per_node: The default maximum number of pods
@@ -541,6 +548,7 @@ class Cluster(pulumi.CustomResource):
         __props__["cluster_autoscaling"] = cluster_autoscaling
         __props__["cluster_ipv4_cidr"] = cluster_ipv4_cidr
         __props__["cluster_telemetry"] = cluster_telemetry
+        __props__["confidential_nodes"] = confidential_nodes
         __props__["database_encryption"] = database_encryption
         __props__["datapath_provider"] = datapath_provider
         __props__["default_max_pods_per_node"] = default_max_pods_per_node
@@ -641,6 +649,15 @@ class Cluster(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "cluster_telemetry")
+
+    @property
+    @pulumi.getter(name="confidentialNodes")
+    def confidential_nodes(self) -> pulumi.Output['outputs.ClusterConfidentialNodes']:
+        """
+        Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration
+        can't be changed (or added/removed) after cluster creation without deleting and recreating the entire cluster.
+        """
+        return pulumi.get(self, "confidential_nodes")
 
     @property
     @pulumi.getter(name="databaseEncryption")

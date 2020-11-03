@@ -649,6 +649,79 @@ export namespace accesscontextmanager {
     }
 }
 
+export namespace apigateway {
+    export interface ApiConfigGatewayConfig {
+        /**
+         * Backend settings that are applied to all backends of the Gateway.
+         * Structure is documented below.
+         */
+        backendConfig: pulumi.Input<inputs.apigateway.ApiConfigGatewayConfigBackendConfig>;
+    }
+
+    export interface ApiConfigGatewayConfigBackendConfig {
+        /**
+         * Google Cloud IAM service account used to sign OIDC tokens for backends that have authentication configured
+         * (https://cloud.google.com/service-infrastructure/docs/service-management/reference/rest/v1/services.configs#backend).
+         */
+        googleServiceAccount: pulumi.Input<string>;
+    }
+
+    export interface ApiConfigIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface ApiConfigIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface ApiConfigOpenapiDocument {
+        /**
+         * The OpenAPI Specification document file.
+         * Structure is documented below.
+         */
+        document: pulumi.Input<inputs.apigateway.ApiConfigOpenapiDocumentDocument>;
+    }
+
+    export interface ApiConfigOpenapiDocumentDocument {
+        /**
+         * Base64 encoded content of the file.
+         */
+        contents: pulumi.Input<string>;
+        /**
+         * The file path (full or relative path). This is typically the path of the file when it is uploaded.
+         */
+        path: pulumi.Input<string>;
+    }
+
+    export interface ApiIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface ApiIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface GatewayIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface GatewayIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+}
+
 export namespace appengine {
     export interface ApplicationFeatureSettings {
         /**
@@ -1502,6 +1575,39 @@ export namespace bigquery {
          * Username for database.
          */
         username: pulumi.Input<string>;
+    }
+
+    export interface DataTransferConfigEmailPreferences {
+        /**
+         * If true, email notifications will be sent on transfer run failures.
+         */
+        enableFailureEmail: pulumi.Input<boolean>;
+    }
+
+    export interface DataTransferConfigScheduleOptions {
+        /**
+         * If true, automatic scheduling of data transfer runs for this
+         * configuration will be disabled. The runs can be started on ad-hoc
+         * basis using transferConfigs.startManualRuns API. When automatic
+         * scheduling is disabled, the TransferConfig.schedule field will
+         * be ignored.
+         */
+        disableAutoScheduling?: pulumi.Input<boolean>;
+        /**
+         * Defines time to stop scheduling transfer runs. A transfer run cannot be
+         * scheduled at or after the end time. The end time can be changed at any
+         * moment. The time when a data transfer can be triggered manually is not
+         * limited by this option.
+         */
+        endTime?: pulumi.Input<string>;
+        /**
+         * Specifies time to start scheduling transfer runs. The first run will be
+         * scheduled at or after the start time according to a recurrence pattern
+         * defined in the schedule string. The start time can be changed at any
+         * moment. The time when a data transfer can be triggered manually is not
+         * limited by this option.
+         */
+        startTime?: pulumi.Input<string>;
     }
 
     export interface DataTransferConfigSensitiveParams {
@@ -2746,6 +2852,28 @@ export namespace binaryauthorization {
 }
 
 export namespace cloudasset {
+    export interface FolderFeedCondition {
+        /**
+         * Description of the expression. This is a longer text which describes the expression,
+         * e.g. when hovered over it in a UI.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: pulumi.Input<string>;
+        /**
+         * String indicating the location of the expression for error reporting, e.g. a file
+         * name and a position in the file.
+         */
+        location?: pulumi.Input<string>;
+        /**
+         * Title for the expression, i.e. a short string describing its purpose.
+         * This can be used e.g. in UIs which allow to enter the expression.
+         */
+        title?: pulumi.Input<string>;
+    }
+
     export interface FolderFeedFeedOutputConfig {
         /**
          * Destination on Cloud Pubsub.
@@ -2761,6 +2889,28 @@ export namespace cloudasset {
         topic: pulumi.Input<string>;
     }
 
+    export interface OrganizationFeedCondition {
+        /**
+         * Description of the expression. This is a longer text which describes the expression,
+         * e.g. when hovered over it in a UI.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: pulumi.Input<string>;
+        /**
+         * String indicating the location of the expression for error reporting, e.g. a file
+         * name and a position in the file.
+         */
+        location?: pulumi.Input<string>;
+        /**
+         * Title for the expression, i.e. a short string describing its purpose.
+         * This can be used e.g. in UIs which allow to enter the expression.
+         */
+        title?: pulumi.Input<string>;
+    }
+
     export interface OrganizationFeedFeedOutputConfig {
         /**
          * Destination on Cloud Pubsub.
@@ -2774,6 +2924,28 @@ export namespace cloudasset {
          * Destination on Cloud Pubsub topic.
          */
         topic: pulumi.Input<string>;
+    }
+
+    export interface ProjectFeedCondition {
+        /**
+         * Description of the expression. This is a longer text which describes the expression,
+         * e.g. when hovered over it in a UI.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: pulumi.Input<string>;
+        /**
+         * String indicating the location of the expression for error reporting, e.g. a file
+         * name and a position in the file.
+         */
+        location?: pulumi.Input<string>;
+        /**
+         * Title for the expression, i.e. a short string describing its purpose.
+         * This can be used e.g. in UIs which allow to enter the expression.
+         */
+        title?: pulumi.Input<string>;
     }
 
     export interface ProjectFeedFeedOutputConfig {
@@ -5796,6 +5968,96 @@ export namespace compute {
         enableConfidentialCompute: pulumi.Input<boolean>;
     }
 
+    export interface InstanceFromMachineImageAttachedDisk {
+        deviceName?: pulumi.Input<string>;
+        diskEncryptionKeyRaw?: pulumi.Input<string>;
+        diskEncryptionKeySha256?: pulumi.Input<string>;
+        kmsKeySelfLink?: pulumi.Input<string>;
+        mode?: pulumi.Input<string>;
+        source: pulumi.Input<string>;
+    }
+
+    export interface InstanceFromMachineImageBootDisk {
+        autoDelete?: pulumi.Input<boolean>;
+        deviceName?: pulumi.Input<string>;
+        diskEncryptionKeyRaw?: pulumi.Input<string>;
+        diskEncryptionKeySha256?: pulumi.Input<string>;
+        initializeParams?: pulumi.Input<inputs.compute.InstanceFromMachineImageBootDiskInitializeParams>;
+        kmsKeySelfLink?: pulumi.Input<string>;
+        mode?: pulumi.Input<string>;
+        source?: pulumi.Input<string>;
+    }
+
+    export interface InstanceFromMachineImageBootDiskInitializeParams {
+        image?: pulumi.Input<string>;
+        labels?: pulumi.Input<{[key: string]: any}>;
+        size?: pulumi.Input<number>;
+        type?: pulumi.Input<string>;
+    }
+
+    export interface InstanceFromMachineImageConfidentialInstanceConfig {
+        enableConfidentialCompute: pulumi.Input<boolean>;
+    }
+
+    export interface InstanceFromMachineImageGuestAccelerator {
+        count: pulumi.Input<number>;
+        type: pulumi.Input<string>;
+    }
+
+    export interface InstanceFromMachineImageNetworkInterface {
+        accessConfigs?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromMachineImageNetworkInterfaceAccessConfig>[]>;
+        aliasIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromMachineImageNetworkInterfaceAliasIpRange>[]>;
+        /**
+         * A unique name for the resource, required by GCE.
+         * Changing this forces a new resource to be created.
+         */
+        name?: pulumi.Input<string>;
+        network?: pulumi.Input<string>;
+        networkIp?: pulumi.Input<string>;
+        subnetwork?: pulumi.Input<string>;
+        subnetworkProject?: pulumi.Input<string>;
+    }
+
+    export interface InstanceFromMachineImageNetworkInterfaceAccessConfig {
+        natIp?: pulumi.Input<string>;
+        networkTier?: pulumi.Input<string>;
+        publicPtrDomainName?: pulumi.Input<string>;
+    }
+
+    export interface InstanceFromMachineImageNetworkInterfaceAliasIpRange {
+        ipCidrRange: pulumi.Input<string>;
+        subnetworkRangeName?: pulumi.Input<string>;
+    }
+
+    export interface InstanceFromMachineImageScheduling {
+        automaticRestart?: pulumi.Input<boolean>;
+        minNodeCpus?: pulumi.Input<number>;
+        nodeAffinities?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromMachineImageSchedulingNodeAffinity>[]>;
+        onHostMaintenance?: pulumi.Input<string>;
+        preemptible?: pulumi.Input<boolean>;
+    }
+
+    export interface InstanceFromMachineImageSchedulingNodeAffinity {
+        key: pulumi.Input<string>;
+        operator: pulumi.Input<string>;
+        values: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface InstanceFromMachineImageScratchDisk {
+        interface: pulumi.Input<string>;
+    }
+
+    export interface InstanceFromMachineImageServiceAccount {
+        email?: pulumi.Input<string>;
+        scopes: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface InstanceFromMachineImageShieldedInstanceConfig {
+        enableIntegrityMonitoring?: pulumi.Input<boolean>;
+        enableSecureBoot?: pulumi.Input<boolean>;
+        enableVtpm?: pulumi.Input<boolean>;
+    }
+
     export interface InstanceFromTemplateAttachedDisk {
         deviceName?: pulumi.Input<string>;
         diskEncryptionKeyRaw?: pulumi.Input<string>;
@@ -6452,6 +6714,60 @@ export namespace compute {
 
     export interface InterconnectAttachmentPrivateInterconnectInfo {
         tag8021q?: pulumi.Input<number>;
+    }
+
+    export interface MachineImageIamBindingCondition {
+        /**
+         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: pulumi.Input<string>;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
+        title: pulumi.Input<string>;
+    }
+
+    export interface MachineImageIamMemberCondition {
+        /**
+         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: pulumi.Input<string>;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
+        title: pulumi.Input<string>;
+    }
+
+    export interface MachineImageMachineImageEncryptionKey {
+        /**
+         * -
+         * The name of the encryption key that is stored in Google Cloud KMS.
+         */
+        kmsKeyName?: pulumi.Input<string>;
+        /**
+         * The service account used for the encryption request for the given KMS key.
+         * If absent, the Compute Engine Service Agent service account is used.
+         */
+        kmsKeyServiceAccount?: pulumi.Input<string>;
+        /**
+         * Specifies a 256-bit customer-supplied encryption key, encoded in
+         * RFC 4648 base64 to either encrypt or decrypt this resource.
+         */
+        rawKey?: pulumi.Input<string>;
+        /**
+         * -
+         * The RFC 4648 base64 encoded SHA-256 hash of the
+         * customer-supplied encryption key that protects this resource.
+         */
+        sha256?: pulumi.Input<string>;
     }
 
     export interface ManagedSslCertificateManaged {
@@ -9510,6 +9826,7 @@ export namespace compute {
         /**
          * Export filter used to define which VPC flow logs should be logged, as as CEL expression. See
          * https://cloud.google.com/vpc/docs/flow-logs#filtering for details on how to format this field.
+         * The default value is 'true', which evaluates to include everything.
          */
         filterExpr?: pulumi.Input<string>;
         /**
@@ -11717,6 +12034,14 @@ export namespace container {
         type: pulumi.Input<string>;
     }
 
+    export interface ClusterConfidentialNodes {
+        /**
+         * Enable the PodSecurityPolicy controller for this cluster.
+         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         */
+        enabled: pulumi.Input<boolean>;
+    }
+
     export interface ClusterDatabaseEncryption {
         /**
          * the key to use to encrypt/decrypt secrets.  See the [DatabaseEncryption definition](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#Cluster.DatabaseEncryption) for more information.
@@ -13013,6 +13338,11 @@ export namespace dataloss {
          */
         contentOptions?: pulumi.Input<pulumi.Input<string>[]>;
         /**
+         * Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
+         * Structure is documented below.
+         */
+        customInfoTypes?: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfigCustomInfoType>[]>;
+        /**
          * Set of infoTypes for which findings would affect this rule.
          * Structure is documented below.
          */
@@ -13045,10 +13375,104 @@ export namespace dataloss {
         ruleSets?: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfigRuleSet>[]>;
     }
 
+    export interface PreventionInspectTemplateInspectConfigCustomInfoType {
+        /**
+         * Dictionary which defines the rule.
+         * Structure is documented below.
+         */
+        dictionary?: pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary>;
+        /**
+         * If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching.
+         * Possible values are `EXCLUSION_TYPE_EXCLUDE`.
+         */
+        exclusionType?: pulumi.Input<string>;
+        /**
+         * CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
+         * infoTypes and that infoType is specified in `infoTypes` field. Specifying the latter adds findings to the
+         * one detected by the system. If built-in info type is not specified in `infoTypes` list then the name is
+         * treated as a custom info type.
+         * Structure is documented below.
+         */
+        infoType: pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeInfoType>;
+        /**
+         * Likelihood to return for this CustomInfoType. This base value can be altered by a detection rule if the finding meets the criteria
+         * specified by the rule.
+         * Default value is `VERY_LIKELY`.
+         * Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
+         */
+        likelihood?: pulumi.Input<string>;
+        /**
+         * Regular expression which defines the rule.
+         * Structure is documented below.
+         */
+        regex?: pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeRegex>;
+        /**
+         * A reference to a StoredInfoType to use with scanning.
+         * Structure is documented below.
+         */
+        storedType?: pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType>;
+    }
+
+    export interface PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary {
+        /**
+         * Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
+         * Structure is documented below.
+         */
+        cloudStoragePath?: pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath>;
+        /**
+         * List of words or phrases to search for.
+         * Structure is documented below.
+         */
+        wordList?: pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList>;
+    }
+
+    export interface PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath {
+        /**
+         * A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
+         */
+        path: pulumi.Input<string>;
+    }
+
+    export interface PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList {
+        /**
+         * Words or phrases defining the dictionary. The dictionary must contain at least one
+         * phrase and every phrase must contain at least 2 characters that are letters or digits.
+         */
+        words: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface PreventionInspectTemplateInspectConfigCustomInfoTypeInfoType {
+        /**
+         * Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+         * or `projects/project-id/storedInfoTypes/432452342`.
+         */
+        name: pulumi.Input<string>;
+    }
+
+    export interface PreventionInspectTemplateInspectConfigCustomInfoTypeRegex {
+        /**
+         * The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+         */
+        groupIndexes?: pulumi.Input<pulumi.Input<number>[]>;
+        /**
+         * Pattern defining the regular expression.
+         * Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+         */
+        pattern: pulumi.Input<string>;
+    }
+
+    export interface PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType {
+        /**
+         * Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+         * or `projects/project-id/storedInfoTypes/432452342`.
+         */
+        name: pulumi.Input<string>;
+    }
+
     export interface PreventionInspectTemplateInspectConfigInfoType {
         /**
-         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-         * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+         * or `projects/project-id/storedInfoTypes/432452342`.
          */
         name: pulumi.Input<string>;
     }
@@ -13071,9 +13495,10 @@ export namespace dataloss {
 
     export interface PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType {
         /**
-         * Type of information the findings limit applies to. Only one limit per infoType should be provided. If InfoTypeLimit does
-         * not have an infoType, the DLP API applies the limit against all infoTypes that are found but not
-         * specified in another InfoTypeLimit.
+         * CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
+         * infoTypes and that infoType is specified in `infoTypes` field. Specifying the latter adds findings to the
+         * one detected by the system. If built-in info type is not specified in `infoTypes` list then the name is
+         * treated as a custom info type.
          * Structure is documented below.
          */
         infoType: pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType>;
@@ -13085,8 +13510,8 @@ export namespace dataloss {
 
     export interface PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType {
         /**
-         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-         * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+         * or `projects/project-id/storedInfoTypes/432452342`.
          */
         name: pulumi.Input<string>;
     }
@@ -13106,8 +13531,8 @@ export namespace dataloss {
 
     export interface PreventionInspectTemplateInspectConfigRuleSetInfoType {
         /**
-         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-         * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+         * or `projects/project-id/storedInfoTypes/432452342`.
          */
         name: pulumi.Input<string>;
     }
@@ -13186,8 +13611,8 @@ export namespace dataloss {
 
     export interface PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType {
         /**
-         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-         * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+         * or `projects/project-id/storedInfoTypes/432452342`.
          */
         name: pulumi.Input<string>;
     }
@@ -15293,6 +15718,36 @@ export namespace iap {
         title: pulumi.Input<string>;
     }
 
+    export interface TunnelIamBindingCondition {
+        /**
+         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: pulumi.Input<string>;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
+        title: pulumi.Input<string>;
+    }
+
+    export interface TunnelIamMemberCondition {
+        /**
+         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: pulumi.Input<string>;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
+        title: pulumi.Input<string>;
+    }
+
     export interface TunnelInstanceIAMBindingCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -16018,6 +16473,11 @@ export namespace monitoring {
          */
         conditionAbsent?: pulumi.Input<inputs.monitoring.AlertPolicyConditionConditionAbsent>;
         /**
+         * A Monitoring Query Language query that outputs a boolean stream
+         * Structure is documented below.
+         */
+        conditionMonitoringQueryLanguage?: pulumi.Input<inputs.monitoring.AlertPolicyConditionConditionMonitoringQueryLanguage>;
+        /**
          * A condition that compares a time series against a
          * threshold.
          * Structure is documented below.
@@ -16199,6 +16659,58 @@ export namespace monitoring {
     }
 
     export interface AlertPolicyConditionConditionAbsentTrigger {
+        /**
+         * The absolute number of time series
+         * that must fail the predicate for the
+         * condition to be triggered.
+         */
+        count?: pulumi.Input<number>;
+        /**
+         * The percentage of time series that
+         * must fail the predicate for the
+         * condition to be triggered.
+         */
+        percent?: pulumi.Input<number>;
+    }
+
+    export interface AlertPolicyConditionConditionMonitoringQueryLanguage {
+        /**
+         * The amount of time that a time series must
+         * violate the threshold to be considered
+         * failing. Currently, only values that are a
+         * multiple of a minute--e.g., 0, 60, 120, or
+         * 300 seconds--are supported. If an invalid
+         * value is given, an error will be returned.
+         * When choosing a duration, it is useful to
+         * keep in mind the frequency of the underlying
+         * time series data (which may also be affected
+         * by any alignments specified in the
+         * aggregations field); a good duration is long
+         * enough so that a single outlier does not
+         * generate spurious alerts, but short enough
+         * that unhealthy states are detected and
+         * alerted on quickly.
+         */
+        duration: pulumi.Input<string>;
+        /**
+         * Monitoring Query Language query that outputs a boolean stream.
+         */
+        query: pulumi.Input<string>;
+        /**
+         * The number/percent of time series for which
+         * the comparison must hold in order for the
+         * condition to trigger. If unspecified, then
+         * the condition will trigger if the comparison
+         * is true for any of the time series that have
+         * been identified by filter and aggregations,
+         * or by the ratio, if denominatorFilter and
+         * denominatorAggregations are specified.
+         * Structure is documented below.
+         */
+        trigger?: pulumi.Input<inputs.monitoring.AlertPolicyConditionConditionMonitoringQueryLanguageTrigger>;
+    }
+
+    export interface AlertPolicyConditionConditionMonitoringQueryLanguageTrigger {
         /**
          * The absolute number of time series
          * that must fail the predicate for the

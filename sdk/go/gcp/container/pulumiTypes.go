@@ -2446,6 +2446,141 @@ func (o ClusterClusterTelemetryPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ClusterConfidentialNodes struct {
+	// Enable the PodSecurityPolicy controller for this cluster.
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// ClusterConfidentialNodesInput is an input type that accepts ClusterConfidentialNodesArgs and ClusterConfidentialNodesOutput values.
+// You can construct a concrete instance of `ClusterConfidentialNodesInput` via:
+//
+//          ClusterConfidentialNodesArgs{...}
+type ClusterConfidentialNodesInput interface {
+	pulumi.Input
+
+	ToClusterConfidentialNodesOutput() ClusterConfidentialNodesOutput
+	ToClusterConfidentialNodesOutputWithContext(context.Context) ClusterConfidentialNodesOutput
+}
+
+type ClusterConfidentialNodesArgs struct {
+	// Enable the PodSecurityPolicy controller for this cluster.
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (ClusterConfidentialNodesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterConfidentialNodes)(nil)).Elem()
+}
+
+func (i ClusterConfidentialNodesArgs) ToClusterConfidentialNodesOutput() ClusterConfidentialNodesOutput {
+	return i.ToClusterConfidentialNodesOutputWithContext(context.Background())
+}
+
+func (i ClusterConfidentialNodesArgs) ToClusterConfidentialNodesOutputWithContext(ctx context.Context) ClusterConfidentialNodesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterConfidentialNodesOutput)
+}
+
+func (i ClusterConfidentialNodesArgs) ToClusterConfidentialNodesPtrOutput() ClusterConfidentialNodesPtrOutput {
+	return i.ToClusterConfidentialNodesPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterConfidentialNodesArgs) ToClusterConfidentialNodesPtrOutputWithContext(ctx context.Context) ClusterConfidentialNodesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterConfidentialNodesOutput).ToClusterConfidentialNodesPtrOutputWithContext(ctx)
+}
+
+// ClusterConfidentialNodesPtrInput is an input type that accepts ClusterConfidentialNodesArgs, ClusterConfidentialNodesPtr and ClusterConfidentialNodesPtrOutput values.
+// You can construct a concrete instance of `ClusterConfidentialNodesPtrInput` via:
+//
+//          ClusterConfidentialNodesArgs{...}
+//
+//  or:
+//
+//          nil
+type ClusterConfidentialNodesPtrInput interface {
+	pulumi.Input
+
+	ToClusterConfidentialNodesPtrOutput() ClusterConfidentialNodesPtrOutput
+	ToClusterConfidentialNodesPtrOutputWithContext(context.Context) ClusterConfidentialNodesPtrOutput
+}
+
+type clusterConfidentialNodesPtrType ClusterConfidentialNodesArgs
+
+func ClusterConfidentialNodesPtr(v *ClusterConfidentialNodesArgs) ClusterConfidentialNodesPtrInput {
+	return (*clusterConfidentialNodesPtrType)(v)
+}
+
+func (*clusterConfidentialNodesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterConfidentialNodes)(nil)).Elem()
+}
+
+func (i *clusterConfidentialNodesPtrType) ToClusterConfidentialNodesPtrOutput() ClusterConfidentialNodesPtrOutput {
+	return i.ToClusterConfidentialNodesPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterConfidentialNodesPtrType) ToClusterConfidentialNodesPtrOutputWithContext(ctx context.Context) ClusterConfidentialNodesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterConfidentialNodesPtrOutput)
+}
+
+type ClusterConfidentialNodesOutput struct{ *pulumi.OutputState }
+
+func (ClusterConfidentialNodesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterConfidentialNodes)(nil)).Elem()
+}
+
+func (o ClusterConfidentialNodesOutput) ToClusterConfidentialNodesOutput() ClusterConfidentialNodesOutput {
+	return o
+}
+
+func (o ClusterConfidentialNodesOutput) ToClusterConfidentialNodesOutputWithContext(ctx context.Context) ClusterConfidentialNodesOutput {
+	return o
+}
+
+func (o ClusterConfidentialNodesOutput) ToClusterConfidentialNodesPtrOutput() ClusterConfidentialNodesPtrOutput {
+	return o.ToClusterConfidentialNodesPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterConfidentialNodesOutput) ToClusterConfidentialNodesPtrOutputWithContext(ctx context.Context) ClusterConfidentialNodesPtrOutput {
+	return o.ApplyT(func(v ClusterConfidentialNodes) *ClusterConfidentialNodes {
+		return &v
+	}).(ClusterConfidentialNodesPtrOutput)
+}
+
+// Enable the PodSecurityPolicy controller for this cluster.
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+func (o ClusterConfidentialNodesOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterConfidentialNodes) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type ClusterConfidentialNodesPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterConfidentialNodesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterConfidentialNodes)(nil)).Elem()
+}
+
+func (o ClusterConfidentialNodesPtrOutput) ToClusterConfidentialNodesPtrOutput() ClusterConfidentialNodesPtrOutput {
+	return o
+}
+
+func (o ClusterConfidentialNodesPtrOutput) ToClusterConfidentialNodesPtrOutputWithContext(ctx context.Context) ClusterConfidentialNodesPtrOutput {
+	return o
+}
+
+func (o ClusterConfidentialNodesPtrOutput) Elem() ClusterConfidentialNodesOutput {
+	return o.ApplyT(func(v *ClusterConfidentialNodes) ClusterConfidentialNodes { return *v }).(ClusterConfidentialNodesOutput)
+}
+
+// Enable the PodSecurityPolicy controller for this cluster.
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+func (o ClusterConfidentialNodesPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterConfidentialNodes) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type ClusterDatabaseEncryption struct {
 	// the key to use to encrypt/decrypt secrets.  See the [DatabaseEncryption definition](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#Cluster.DatabaseEncryption) for more information.
 	KeyName *string `pulumi:"keyName"`
@@ -12962,6 +13097,100 @@ func (o GetClusterClusterTelemetryArrayOutput) Index(i pulumi.IntInput) GetClust
 	}).(GetClusterClusterTelemetryOutput)
 }
 
+type GetClusterConfidentialNode struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClusterConfidentialNodeInput is an input type that accepts GetClusterConfidentialNodeArgs and GetClusterConfidentialNodeOutput values.
+// You can construct a concrete instance of `GetClusterConfidentialNodeInput` via:
+//
+//          GetClusterConfidentialNodeArgs{...}
+type GetClusterConfidentialNodeInput interface {
+	pulumi.Input
+
+	ToGetClusterConfidentialNodeOutput() GetClusterConfidentialNodeOutput
+	ToGetClusterConfidentialNodeOutputWithContext(context.Context) GetClusterConfidentialNodeOutput
+}
+
+type GetClusterConfidentialNodeArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClusterConfidentialNodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterConfidentialNode)(nil)).Elem()
+}
+
+func (i GetClusterConfidentialNodeArgs) ToGetClusterConfidentialNodeOutput() GetClusterConfidentialNodeOutput {
+	return i.ToGetClusterConfidentialNodeOutputWithContext(context.Background())
+}
+
+func (i GetClusterConfidentialNodeArgs) ToGetClusterConfidentialNodeOutputWithContext(ctx context.Context) GetClusterConfidentialNodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterConfidentialNodeOutput)
+}
+
+// GetClusterConfidentialNodeArrayInput is an input type that accepts GetClusterConfidentialNodeArray and GetClusterConfidentialNodeArrayOutput values.
+// You can construct a concrete instance of `GetClusterConfidentialNodeArrayInput` via:
+//
+//          GetClusterConfidentialNodeArray{ GetClusterConfidentialNodeArgs{...} }
+type GetClusterConfidentialNodeArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterConfidentialNodeArrayOutput() GetClusterConfidentialNodeArrayOutput
+	ToGetClusterConfidentialNodeArrayOutputWithContext(context.Context) GetClusterConfidentialNodeArrayOutput
+}
+
+type GetClusterConfidentialNodeArray []GetClusterConfidentialNodeInput
+
+func (GetClusterConfidentialNodeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterConfidentialNode)(nil)).Elem()
+}
+
+func (i GetClusterConfidentialNodeArray) ToGetClusterConfidentialNodeArrayOutput() GetClusterConfidentialNodeArrayOutput {
+	return i.ToGetClusterConfidentialNodeArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterConfidentialNodeArray) ToGetClusterConfidentialNodeArrayOutputWithContext(ctx context.Context) GetClusterConfidentialNodeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterConfidentialNodeArrayOutput)
+}
+
+type GetClusterConfidentialNodeOutput struct{ *pulumi.OutputState }
+
+func (GetClusterConfidentialNodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterConfidentialNode)(nil)).Elem()
+}
+
+func (o GetClusterConfidentialNodeOutput) ToGetClusterConfidentialNodeOutput() GetClusterConfidentialNodeOutput {
+	return o
+}
+
+func (o GetClusterConfidentialNodeOutput) ToGetClusterConfidentialNodeOutputWithContext(ctx context.Context) GetClusterConfidentialNodeOutput {
+	return o
+}
+
+func (o GetClusterConfidentialNodeOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterConfidentialNode) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterConfidentialNodeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterConfidentialNodeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterConfidentialNode)(nil)).Elem()
+}
+
+func (o GetClusterConfidentialNodeArrayOutput) ToGetClusterConfidentialNodeArrayOutput() GetClusterConfidentialNodeArrayOutput {
+	return o
+}
+
+func (o GetClusterConfidentialNodeArrayOutput) ToGetClusterConfidentialNodeArrayOutputWithContext(ctx context.Context) GetClusterConfidentialNodeArrayOutput {
+	return o
+}
+
+func (o GetClusterConfidentialNodeArrayOutput) Index(i pulumi.IntInput) GetClusterConfidentialNodeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterConfidentialNode {
+		return vs[0].([]GetClusterConfidentialNode)[vs[1].(int)]
+	}).(GetClusterConfidentialNodeOutput)
+}
+
 type GetClusterDatabaseEncryption struct {
 	KeyName string `pulumi:"keyName"`
 	State   string `pulumi:"state"`
@@ -17406,6 +17635,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterClusterAutoscalingResourceLimitArrayOutput{})
 	pulumi.RegisterOutputType(ClusterClusterTelemetryOutput{})
 	pulumi.RegisterOutputType(ClusterClusterTelemetryPtrOutput{})
+	pulumi.RegisterOutputType(ClusterConfidentialNodesOutput{})
+	pulumi.RegisterOutputType(ClusterConfidentialNodesPtrOutput{})
 	pulumi.RegisterOutputType(ClusterDatabaseEncryptionOutput{})
 	pulumi.RegisterOutputType(ClusterDatabaseEncryptionPtrOutput{})
 	pulumi.RegisterOutputType(ClusterDefaultSnatStatusOutput{})
@@ -17540,6 +17771,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterClusterAutoscalingResourceLimitArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterTelemetryOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterTelemetryArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterConfidentialNodeOutput{})
+	pulumi.RegisterOutputType(GetClusterConfidentialNodeArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterDatabaseEncryptionOutput{})
 	pulumi.RegisterOutputType(GetClusterDatabaseEncryptionArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterDefaultSnatStatusOutput{})

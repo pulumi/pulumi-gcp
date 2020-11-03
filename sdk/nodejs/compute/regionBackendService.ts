@@ -112,7 +112,7 @@ export class RegionBackendService extends pulumi.CustomResource {
      * will be used for. A backend service created for one type of load
      * balancing cannot be used with the other(s).
      * Default value is `INTERNAL`.
-     * Possible values are `INTERNAL` and `INTERNAL_MANAGED`.
+     * Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
      */
     public readonly loadBalancingScheme!: pulumi.Output<string | undefined>;
     /**
@@ -348,7 +348,7 @@ export interface RegionBackendServiceState {
      * will be used for. A backend service created for one type of load
      * balancing cannot be used with the other(s).
      * Default value is `INTERNAL`.
-     * Possible values are `INTERNAL` and `INTERNAL_MANAGED`.
+     * Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
      */
     readonly loadBalancingScheme?: pulumi.Input<string>;
     /**
@@ -505,7 +505,7 @@ export interface RegionBackendServiceArgs {
      * will be used for. A backend service created for one type of load
      * balancing cannot be used with the other(s).
      * Default value is `INTERNAL`.
-     * Possible values are `INTERNAL` and `INTERNAL_MANAGED`.
+     * Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
      */
     readonly loadBalancingScheme?: pulumi.Input<string>;
     /**

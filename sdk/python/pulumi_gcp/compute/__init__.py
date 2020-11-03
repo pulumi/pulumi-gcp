@@ -58,6 +58,7 @@ from .image_iam_binding import *
 from .image_iam_member import *
 from .image_iam_policy import *
 from .instance import *
+from .instance_from_machine_image import *
 from .instance_from_template import *
 from .instance_group import *
 from .instance_group_manager import *
@@ -68,6 +69,9 @@ from .instance_iam_policy import *
 from .instance_template import *
 from .interconnect_attachment import *
 from .machine_image import *
+from .machine_image_iam_binding import *
+from .machine_image_iam_member import *
+from .machine_image_iam_policy import *
 from .managed_ssl_certificate import *
 from .manged_ssl_certificate import *
 from .network import *

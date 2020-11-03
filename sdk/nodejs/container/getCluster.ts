@@ -54,6 +54,7 @@ export interface GetClusterResult {
     readonly clusterAutoscalings: outputs.container.GetClusterClusterAutoscaling[];
     readonly clusterIpv4Cidr: string;
     readonly clusterTelemetries: outputs.container.GetClusterClusterTelemetry[];
+    readonly confidentialNodes: outputs.container.GetClusterConfidentialNode[];
     readonly databaseEncryptions: outputs.container.GetClusterDatabaseEncryption[];
     readonly datapathProvider: string;
     readonly defaultMaxPodsPerNode: number;

@@ -115,6 +115,12 @@ namespace Pulumi.Gcp.Compute
         public Output<bool?> PrivateIpGoogleAccess { get; private set; } = null!;
 
         /// <summary>
+        /// The private IPv6 google access type for the VMs in this subnet.
+        /// </summary>
+        [Output("privateIpv6GoogleAccess")]
+        public Output<string> PrivateIpv6GoogleAccess { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -264,6 +270,12 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? PrivateIpGoogleAccess { get; set; }
 
         /// <summary>
+        /// The private IPv6 google access type for the VMs in this subnet.
+        /// </summary>
+        [Input("privateIpv6GoogleAccess")]
+        public Input<string>? PrivateIpv6GoogleAccess { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -390,6 +402,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("privateIpGoogleAccess")]
         public Input<bool>? PrivateIpGoogleAccess { get; set; }
+
+        /// <summary>
+        /// The private IPv6 google access type for the VMs in this subnet.
+        /// </summary>
+        [Input("privateIpv6GoogleAccess")]
+        public Input<string>? PrivateIpv6GoogleAccess { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

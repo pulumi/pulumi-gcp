@@ -61,6 +61,14 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// Email notifications will be sent according to these preferences to the
+        /// email address of the user who owns this transfer config.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("emailPreferences")]
+        public Output<Outputs.DataTransferConfigEmailPreferences?> EmailPreferences { get; private set; } = null!;
+
+        /// <summary>
         /// The geographic location where the transfer config should reside.
         /// Examples: US, EU, asia-northeast1. The default value is US.
         /// </summary>
@@ -107,6 +115,13 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Output("schedule")]
         public Output<string?> Schedule { get; private set; } = null!;
+
+        /// <summary>
+        /// Options customizing the data transfer schedule.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("scheduleOptions")]
+        public Output<Outputs.DataTransferConfigScheduleOptions?> ScheduleOptions { get; private set; } = null!;
 
         /// <summary>
         /// Different parameters are configured primarily using the the `params` field on this
@@ -209,6 +224,14 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
+        /// Email notifications will be sent according to these preferences to the
+        /// email address of the user who owns this transfer config.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("emailPreferences")]
+        public Input<Inputs.DataTransferConfigEmailPreferencesArgs>? EmailPreferences { get; set; }
+
+        /// <summary>
         /// The geographic location where the transfer config should reside.
         /// Examples: US, EU, asia-northeast1. The default value is US.
         /// </summary>
@@ -253,6 +276,13 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("schedule")]
         public Input<string>? Schedule { get; set; }
+
+        /// <summary>
+        /// Options customizing the data transfer schedule.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("scheduleOptions")]
+        public Input<Inputs.DataTransferConfigScheduleOptionsArgs>? ScheduleOptions { get; set; }
 
         /// <summary>
         /// Different parameters are configured primarily using the the `params` field on this
@@ -316,6 +346,14 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
+        /// Email notifications will be sent according to these preferences to the
+        /// email address of the user who owns this transfer config.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("emailPreferences")]
+        public Input<Inputs.DataTransferConfigEmailPreferencesGetArgs>? EmailPreferences { get; set; }
+
+        /// <summary>
         /// The geographic location where the transfer config should reside.
         /// Examples: US, EU, asia-northeast1. The default value is US.
         /// </summary>
@@ -368,6 +406,13 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("schedule")]
         public Input<string>? Schedule { get; set; }
+
+        /// <summary>
+        /// Options customizing the data transfer schedule.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("scheduleOptions")]
+        public Input<Inputs.DataTransferConfigScheduleOptionsGetArgs>? ScheduleOptions { get; set; }
 
         /// <summary>
         /// Different parameters are configured primarily using the the `params` field on this

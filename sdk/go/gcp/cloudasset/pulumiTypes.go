@@ -10,6 +10,206 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+type FolderFeedCondition struct {
+	// Description of the expression. This is a longer text which describes the expression,
+	// e.g. when hovered over it in a UI.
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// String indicating the location of the expression for error reporting, e.g. a file
+	// name and a position in the file.
+	Location *string `pulumi:"location"`
+	// Title for the expression, i.e. a short string describing its purpose.
+	// This can be used e.g. in UIs which allow to enter the expression.
+	Title *string `pulumi:"title"`
+}
+
+// FolderFeedConditionInput is an input type that accepts FolderFeedConditionArgs and FolderFeedConditionOutput values.
+// You can construct a concrete instance of `FolderFeedConditionInput` via:
+//
+//          FolderFeedConditionArgs{...}
+type FolderFeedConditionInput interface {
+	pulumi.Input
+
+	ToFolderFeedConditionOutput() FolderFeedConditionOutput
+	ToFolderFeedConditionOutputWithContext(context.Context) FolderFeedConditionOutput
+}
+
+type FolderFeedConditionArgs struct {
+	// Description of the expression. This is a longer text which describes the expression,
+	// e.g. when hovered over it in a UI.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// String indicating the location of the expression for error reporting, e.g. a file
+	// name and a position in the file.
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// Title for the expression, i.e. a short string describing its purpose.
+	// This can be used e.g. in UIs which allow to enter the expression.
+	Title pulumi.StringPtrInput `pulumi:"title"`
+}
+
+func (FolderFeedConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FolderFeedCondition)(nil)).Elem()
+}
+
+func (i FolderFeedConditionArgs) ToFolderFeedConditionOutput() FolderFeedConditionOutput {
+	return i.ToFolderFeedConditionOutputWithContext(context.Background())
+}
+
+func (i FolderFeedConditionArgs) ToFolderFeedConditionOutputWithContext(ctx context.Context) FolderFeedConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FolderFeedConditionOutput)
+}
+
+func (i FolderFeedConditionArgs) ToFolderFeedConditionPtrOutput() FolderFeedConditionPtrOutput {
+	return i.ToFolderFeedConditionPtrOutputWithContext(context.Background())
+}
+
+func (i FolderFeedConditionArgs) ToFolderFeedConditionPtrOutputWithContext(ctx context.Context) FolderFeedConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FolderFeedConditionOutput).ToFolderFeedConditionPtrOutputWithContext(ctx)
+}
+
+// FolderFeedConditionPtrInput is an input type that accepts FolderFeedConditionArgs, FolderFeedConditionPtr and FolderFeedConditionPtrOutput values.
+// You can construct a concrete instance of `FolderFeedConditionPtrInput` via:
+//
+//          FolderFeedConditionArgs{...}
+//
+//  or:
+//
+//          nil
+type FolderFeedConditionPtrInput interface {
+	pulumi.Input
+
+	ToFolderFeedConditionPtrOutput() FolderFeedConditionPtrOutput
+	ToFolderFeedConditionPtrOutputWithContext(context.Context) FolderFeedConditionPtrOutput
+}
+
+type folderFeedConditionPtrType FolderFeedConditionArgs
+
+func FolderFeedConditionPtr(v *FolderFeedConditionArgs) FolderFeedConditionPtrInput {
+	return (*folderFeedConditionPtrType)(v)
+}
+
+func (*folderFeedConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FolderFeedCondition)(nil)).Elem()
+}
+
+func (i *folderFeedConditionPtrType) ToFolderFeedConditionPtrOutput() FolderFeedConditionPtrOutput {
+	return i.ToFolderFeedConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *folderFeedConditionPtrType) ToFolderFeedConditionPtrOutputWithContext(ctx context.Context) FolderFeedConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FolderFeedConditionPtrOutput)
+}
+
+type FolderFeedConditionOutput struct{ *pulumi.OutputState }
+
+func (FolderFeedConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FolderFeedCondition)(nil)).Elem()
+}
+
+func (o FolderFeedConditionOutput) ToFolderFeedConditionOutput() FolderFeedConditionOutput {
+	return o
+}
+
+func (o FolderFeedConditionOutput) ToFolderFeedConditionOutputWithContext(ctx context.Context) FolderFeedConditionOutput {
+	return o
+}
+
+func (o FolderFeedConditionOutput) ToFolderFeedConditionPtrOutput() FolderFeedConditionPtrOutput {
+	return o.ToFolderFeedConditionPtrOutputWithContext(context.Background())
+}
+
+func (o FolderFeedConditionOutput) ToFolderFeedConditionPtrOutputWithContext(ctx context.Context) FolderFeedConditionPtrOutput {
+	return o.ApplyT(func(v FolderFeedCondition) *FolderFeedCondition {
+		return &v
+	}).(FolderFeedConditionPtrOutput)
+}
+
+// Description of the expression. This is a longer text which describes the expression,
+// e.g. when hovered over it in a UI.
+func (o FolderFeedConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FolderFeedCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o FolderFeedConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v FolderFeedCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// String indicating the location of the expression for error reporting, e.g. a file
+// name and a position in the file.
+func (o FolderFeedConditionOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FolderFeedCondition) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Title for the expression, i.e. a short string describing its purpose.
+// This can be used e.g. in UIs which allow to enter the expression.
+func (o FolderFeedConditionOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FolderFeedCondition) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type FolderFeedConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (FolderFeedConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FolderFeedCondition)(nil)).Elem()
+}
+
+func (o FolderFeedConditionPtrOutput) ToFolderFeedConditionPtrOutput() FolderFeedConditionPtrOutput {
+	return o
+}
+
+func (o FolderFeedConditionPtrOutput) ToFolderFeedConditionPtrOutputWithContext(ctx context.Context) FolderFeedConditionPtrOutput {
+	return o
+}
+
+func (o FolderFeedConditionPtrOutput) Elem() FolderFeedConditionOutput {
+	return o.ApplyT(func(v *FolderFeedCondition) FolderFeedCondition { return *v }).(FolderFeedConditionOutput)
+}
+
+// Description of the expression. This is a longer text which describes the expression,
+// e.g. when hovered over it in a UI.
+func (o FolderFeedConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FolderFeedCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o FolderFeedConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FolderFeedCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// String indicating the location of the expression for error reporting, e.g. a file
+// name and a position in the file.
+func (o FolderFeedConditionPtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FolderFeedCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// Title for the expression, i.e. a short string describing its purpose.
+// This can be used e.g. in UIs which allow to enter the expression.
+func (o FolderFeedConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FolderFeedCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type FolderFeedFeedOutputConfig struct {
 	// Destination on Cloud Pubsub.
 	// Structure is documented below.
@@ -280,6 +480,206 @@ func (o FolderFeedFeedOutputConfigPubsubDestinationPtrOutput) Topic() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+type OrganizationFeedCondition struct {
+	// Description of the expression. This is a longer text which describes the expression,
+	// e.g. when hovered over it in a UI.
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// String indicating the location of the expression for error reporting, e.g. a file
+	// name and a position in the file.
+	Location *string `pulumi:"location"`
+	// Title for the expression, i.e. a short string describing its purpose.
+	// This can be used e.g. in UIs which allow to enter the expression.
+	Title *string `pulumi:"title"`
+}
+
+// OrganizationFeedConditionInput is an input type that accepts OrganizationFeedConditionArgs and OrganizationFeedConditionOutput values.
+// You can construct a concrete instance of `OrganizationFeedConditionInput` via:
+//
+//          OrganizationFeedConditionArgs{...}
+type OrganizationFeedConditionInput interface {
+	pulumi.Input
+
+	ToOrganizationFeedConditionOutput() OrganizationFeedConditionOutput
+	ToOrganizationFeedConditionOutputWithContext(context.Context) OrganizationFeedConditionOutput
+}
+
+type OrganizationFeedConditionArgs struct {
+	// Description of the expression. This is a longer text which describes the expression,
+	// e.g. when hovered over it in a UI.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// String indicating the location of the expression for error reporting, e.g. a file
+	// name and a position in the file.
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// Title for the expression, i.e. a short string describing its purpose.
+	// This can be used e.g. in UIs which allow to enter the expression.
+	Title pulumi.StringPtrInput `pulumi:"title"`
+}
+
+func (OrganizationFeedConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationFeedCondition)(nil)).Elem()
+}
+
+func (i OrganizationFeedConditionArgs) ToOrganizationFeedConditionOutput() OrganizationFeedConditionOutput {
+	return i.ToOrganizationFeedConditionOutputWithContext(context.Background())
+}
+
+func (i OrganizationFeedConditionArgs) ToOrganizationFeedConditionOutputWithContext(ctx context.Context) OrganizationFeedConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationFeedConditionOutput)
+}
+
+func (i OrganizationFeedConditionArgs) ToOrganizationFeedConditionPtrOutput() OrganizationFeedConditionPtrOutput {
+	return i.ToOrganizationFeedConditionPtrOutputWithContext(context.Background())
+}
+
+func (i OrganizationFeedConditionArgs) ToOrganizationFeedConditionPtrOutputWithContext(ctx context.Context) OrganizationFeedConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationFeedConditionOutput).ToOrganizationFeedConditionPtrOutputWithContext(ctx)
+}
+
+// OrganizationFeedConditionPtrInput is an input type that accepts OrganizationFeedConditionArgs, OrganizationFeedConditionPtr and OrganizationFeedConditionPtrOutput values.
+// You can construct a concrete instance of `OrganizationFeedConditionPtrInput` via:
+//
+//          OrganizationFeedConditionArgs{...}
+//
+//  or:
+//
+//          nil
+type OrganizationFeedConditionPtrInput interface {
+	pulumi.Input
+
+	ToOrganizationFeedConditionPtrOutput() OrganizationFeedConditionPtrOutput
+	ToOrganizationFeedConditionPtrOutputWithContext(context.Context) OrganizationFeedConditionPtrOutput
+}
+
+type organizationFeedConditionPtrType OrganizationFeedConditionArgs
+
+func OrganizationFeedConditionPtr(v *OrganizationFeedConditionArgs) OrganizationFeedConditionPtrInput {
+	return (*organizationFeedConditionPtrType)(v)
+}
+
+func (*organizationFeedConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationFeedCondition)(nil)).Elem()
+}
+
+func (i *organizationFeedConditionPtrType) ToOrganizationFeedConditionPtrOutput() OrganizationFeedConditionPtrOutput {
+	return i.ToOrganizationFeedConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *organizationFeedConditionPtrType) ToOrganizationFeedConditionPtrOutputWithContext(ctx context.Context) OrganizationFeedConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationFeedConditionPtrOutput)
+}
+
+type OrganizationFeedConditionOutput struct{ *pulumi.OutputState }
+
+func (OrganizationFeedConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationFeedCondition)(nil)).Elem()
+}
+
+func (o OrganizationFeedConditionOutput) ToOrganizationFeedConditionOutput() OrganizationFeedConditionOutput {
+	return o
+}
+
+func (o OrganizationFeedConditionOutput) ToOrganizationFeedConditionOutputWithContext(ctx context.Context) OrganizationFeedConditionOutput {
+	return o
+}
+
+func (o OrganizationFeedConditionOutput) ToOrganizationFeedConditionPtrOutput() OrganizationFeedConditionPtrOutput {
+	return o.ToOrganizationFeedConditionPtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationFeedConditionOutput) ToOrganizationFeedConditionPtrOutputWithContext(ctx context.Context) OrganizationFeedConditionPtrOutput {
+	return o.ApplyT(func(v OrganizationFeedCondition) *OrganizationFeedCondition {
+		return &v
+	}).(OrganizationFeedConditionPtrOutput)
+}
+
+// Description of the expression. This is a longer text which describes the expression,
+// e.g. when hovered over it in a UI.
+func (o OrganizationFeedConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OrganizationFeedCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o OrganizationFeedConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v OrganizationFeedCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// String indicating the location of the expression for error reporting, e.g. a file
+// name and a position in the file.
+func (o OrganizationFeedConditionOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OrganizationFeedCondition) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Title for the expression, i.e. a short string describing its purpose.
+// This can be used e.g. in UIs which allow to enter the expression.
+func (o OrganizationFeedConditionOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OrganizationFeedCondition) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type OrganizationFeedConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (OrganizationFeedConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationFeedCondition)(nil)).Elem()
+}
+
+func (o OrganizationFeedConditionPtrOutput) ToOrganizationFeedConditionPtrOutput() OrganizationFeedConditionPtrOutput {
+	return o
+}
+
+func (o OrganizationFeedConditionPtrOutput) ToOrganizationFeedConditionPtrOutputWithContext(ctx context.Context) OrganizationFeedConditionPtrOutput {
+	return o
+}
+
+func (o OrganizationFeedConditionPtrOutput) Elem() OrganizationFeedConditionOutput {
+	return o.ApplyT(func(v *OrganizationFeedCondition) OrganizationFeedCondition { return *v }).(OrganizationFeedConditionOutput)
+}
+
+// Description of the expression. This is a longer text which describes the expression,
+// e.g. when hovered over it in a UI.
+func (o OrganizationFeedConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OrganizationFeedCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o OrganizationFeedConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OrganizationFeedCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// String indicating the location of the expression for error reporting, e.g. a file
+// name and a position in the file.
+func (o OrganizationFeedConditionPtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OrganizationFeedCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// Title for the expression, i.e. a short string describing its purpose.
+// This can be used e.g. in UIs which allow to enter the expression.
+func (o OrganizationFeedConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OrganizationFeedCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type OrganizationFeedFeedOutputConfig struct {
 	// Destination on Cloud Pubsub.
 	// Structure is documented below.
@@ -547,6 +947,206 @@ func (o OrganizationFeedFeedOutputConfigPubsubDestinationPtrOutput) Topic() pulu
 			return nil
 		}
 		return &v.Topic
+	}).(pulumi.StringPtrOutput)
+}
+
+type ProjectFeedCondition struct {
+	// Description of the expression. This is a longer text which describes the expression,
+	// e.g. when hovered over it in a UI.
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// String indicating the location of the expression for error reporting, e.g. a file
+	// name and a position in the file.
+	Location *string `pulumi:"location"`
+	// Title for the expression, i.e. a short string describing its purpose.
+	// This can be used e.g. in UIs which allow to enter the expression.
+	Title *string `pulumi:"title"`
+}
+
+// ProjectFeedConditionInput is an input type that accepts ProjectFeedConditionArgs and ProjectFeedConditionOutput values.
+// You can construct a concrete instance of `ProjectFeedConditionInput` via:
+//
+//          ProjectFeedConditionArgs{...}
+type ProjectFeedConditionInput interface {
+	pulumi.Input
+
+	ToProjectFeedConditionOutput() ProjectFeedConditionOutput
+	ToProjectFeedConditionOutputWithContext(context.Context) ProjectFeedConditionOutput
+}
+
+type ProjectFeedConditionArgs struct {
+	// Description of the expression. This is a longer text which describes the expression,
+	// e.g. when hovered over it in a UI.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// String indicating the location of the expression for error reporting, e.g. a file
+	// name and a position in the file.
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// Title for the expression, i.e. a short string describing its purpose.
+	// This can be used e.g. in UIs which allow to enter the expression.
+	Title pulumi.StringPtrInput `pulumi:"title"`
+}
+
+func (ProjectFeedConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectFeedCondition)(nil)).Elem()
+}
+
+func (i ProjectFeedConditionArgs) ToProjectFeedConditionOutput() ProjectFeedConditionOutput {
+	return i.ToProjectFeedConditionOutputWithContext(context.Background())
+}
+
+func (i ProjectFeedConditionArgs) ToProjectFeedConditionOutputWithContext(ctx context.Context) ProjectFeedConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectFeedConditionOutput)
+}
+
+func (i ProjectFeedConditionArgs) ToProjectFeedConditionPtrOutput() ProjectFeedConditionPtrOutput {
+	return i.ToProjectFeedConditionPtrOutputWithContext(context.Background())
+}
+
+func (i ProjectFeedConditionArgs) ToProjectFeedConditionPtrOutputWithContext(ctx context.Context) ProjectFeedConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectFeedConditionOutput).ToProjectFeedConditionPtrOutputWithContext(ctx)
+}
+
+// ProjectFeedConditionPtrInput is an input type that accepts ProjectFeedConditionArgs, ProjectFeedConditionPtr and ProjectFeedConditionPtrOutput values.
+// You can construct a concrete instance of `ProjectFeedConditionPtrInput` via:
+//
+//          ProjectFeedConditionArgs{...}
+//
+//  or:
+//
+//          nil
+type ProjectFeedConditionPtrInput interface {
+	pulumi.Input
+
+	ToProjectFeedConditionPtrOutput() ProjectFeedConditionPtrOutput
+	ToProjectFeedConditionPtrOutputWithContext(context.Context) ProjectFeedConditionPtrOutput
+}
+
+type projectFeedConditionPtrType ProjectFeedConditionArgs
+
+func ProjectFeedConditionPtr(v *ProjectFeedConditionArgs) ProjectFeedConditionPtrInput {
+	return (*projectFeedConditionPtrType)(v)
+}
+
+func (*projectFeedConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectFeedCondition)(nil)).Elem()
+}
+
+func (i *projectFeedConditionPtrType) ToProjectFeedConditionPtrOutput() ProjectFeedConditionPtrOutput {
+	return i.ToProjectFeedConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *projectFeedConditionPtrType) ToProjectFeedConditionPtrOutputWithContext(ctx context.Context) ProjectFeedConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectFeedConditionPtrOutput)
+}
+
+type ProjectFeedConditionOutput struct{ *pulumi.OutputState }
+
+func (ProjectFeedConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectFeedCondition)(nil)).Elem()
+}
+
+func (o ProjectFeedConditionOutput) ToProjectFeedConditionOutput() ProjectFeedConditionOutput {
+	return o
+}
+
+func (o ProjectFeedConditionOutput) ToProjectFeedConditionOutputWithContext(ctx context.Context) ProjectFeedConditionOutput {
+	return o
+}
+
+func (o ProjectFeedConditionOutput) ToProjectFeedConditionPtrOutput() ProjectFeedConditionPtrOutput {
+	return o.ToProjectFeedConditionPtrOutputWithContext(context.Background())
+}
+
+func (o ProjectFeedConditionOutput) ToProjectFeedConditionPtrOutputWithContext(ctx context.Context) ProjectFeedConditionPtrOutput {
+	return o.ApplyT(func(v ProjectFeedCondition) *ProjectFeedCondition {
+		return &v
+	}).(ProjectFeedConditionPtrOutput)
+}
+
+// Description of the expression. This is a longer text which describes the expression,
+// e.g. when hovered over it in a UI.
+func (o ProjectFeedConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectFeedCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o ProjectFeedConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v ProjectFeedCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// String indicating the location of the expression for error reporting, e.g. a file
+// name and a position in the file.
+func (o ProjectFeedConditionOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectFeedCondition) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Title for the expression, i.e. a short string describing its purpose.
+// This can be used e.g. in UIs which allow to enter the expression.
+func (o ProjectFeedConditionOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectFeedCondition) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type ProjectFeedConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (ProjectFeedConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectFeedCondition)(nil)).Elem()
+}
+
+func (o ProjectFeedConditionPtrOutput) ToProjectFeedConditionPtrOutput() ProjectFeedConditionPtrOutput {
+	return o
+}
+
+func (o ProjectFeedConditionPtrOutput) ToProjectFeedConditionPtrOutputWithContext(ctx context.Context) ProjectFeedConditionPtrOutput {
+	return o
+}
+
+func (o ProjectFeedConditionPtrOutput) Elem() ProjectFeedConditionOutput {
+	return o.ApplyT(func(v *ProjectFeedCondition) ProjectFeedCondition { return *v }).(ProjectFeedConditionOutput)
+}
+
+// Description of the expression. This is a longer text which describes the expression,
+// e.g. when hovered over it in a UI.
+func (o ProjectFeedConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectFeedCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o ProjectFeedConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectFeedCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// String indicating the location of the expression for error reporting, e.g. a file
+// name and a position in the file.
+func (o ProjectFeedConditionPtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectFeedCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// Title for the expression, i.e. a short string describing its purpose.
+// This can be used e.g. in UIs which allow to enter the expression.
+func (o ProjectFeedConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectFeedCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Title
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -821,14 +1421,20 @@ func (o ProjectFeedFeedOutputConfigPubsubDestinationPtrOutput) Topic() pulumi.St
 }
 
 func init() {
+	pulumi.RegisterOutputType(FolderFeedConditionOutput{})
+	pulumi.RegisterOutputType(FolderFeedConditionPtrOutput{})
 	pulumi.RegisterOutputType(FolderFeedFeedOutputConfigOutput{})
 	pulumi.RegisterOutputType(FolderFeedFeedOutputConfigPtrOutput{})
 	pulumi.RegisterOutputType(FolderFeedFeedOutputConfigPubsubDestinationOutput{})
 	pulumi.RegisterOutputType(FolderFeedFeedOutputConfigPubsubDestinationPtrOutput{})
+	pulumi.RegisterOutputType(OrganizationFeedConditionOutput{})
+	pulumi.RegisterOutputType(OrganizationFeedConditionPtrOutput{})
 	pulumi.RegisterOutputType(OrganizationFeedFeedOutputConfigOutput{})
 	pulumi.RegisterOutputType(OrganizationFeedFeedOutputConfigPtrOutput{})
 	pulumi.RegisterOutputType(OrganizationFeedFeedOutputConfigPubsubDestinationOutput{})
 	pulumi.RegisterOutputType(OrganizationFeedFeedOutputConfigPubsubDestinationPtrOutput{})
+	pulumi.RegisterOutputType(ProjectFeedConditionOutput{})
+	pulumi.RegisterOutputType(ProjectFeedConditionPtrOutput{})
 	pulumi.RegisterOutputType(ProjectFeedFeedOutputConfigOutput{})
 	pulumi.RegisterOutputType(ProjectFeedFeedOutputConfigPtrOutput{})
 	pulumi.RegisterOutputType(ProjectFeedFeedOutputConfigPubsubDestinationOutput{})
