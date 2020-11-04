@@ -70,6 +70,7 @@ namespace Pulumi.Gcp.Kms
         /// The self link of the created CryptoKey. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}/cryptoKeys/{cryptoKeyName}`.
         /// </summary>
         public readonly string SelfLink;
+        public readonly bool SkipInitialVersionCreation;
         public readonly ImmutableArray<Outputs.GetKMSCryptoKeyVersionTemplateResult> VersionTemplates;
 
         [OutputConstructor]
@@ -88,6 +89,8 @@ namespace Pulumi.Gcp.Kms
 
             string selfLink,
 
+            bool skipInitialVersionCreation,
+
             ImmutableArray<Outputs.GetKMSCryptoKeyVersionTemplateResult> versionTemplates)
         {
             Id = id;
@@ -97,6 +100,7 @@ namespace Pulumi.Gcp.Kms
             Purpose = purpose;
             RotationPeriod = rotationPeriod;
             SelfLink = selfLink;
+            SkipInitialVersionCreation = skipInitialVersionCreation;
             VersionTemplates = versionTemplates;
         }
     }

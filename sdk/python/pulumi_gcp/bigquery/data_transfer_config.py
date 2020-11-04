@@ -22,11 +22,13 @@ class DataTransferConfig(pulumi.CustomResource):
                  destination_dataset_id: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 email_preferences: Optional[pulumi.Input[pulumi.InputType['DataTransferConfigEmailPreferencesArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  notification_pubsub_topic: Optional[pulumi.Input[str]] = None,
                  params: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[str]] = None,
+                 schedule_options: Optional[pulumi.Input[pulumi.InputType['DataTransferConfigScheduleOptionsArgs']]] = None,
                  sensitive_params: Optional[pulumi.Input[pulumi.InputType['DataTransferConfigSensitiveParamsArgs']]] = None,
                  service_account_name: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -58,6 +60,9 @@ class DataTransferConfig(pulumi.CustomResource):
         :param pulumi.Input[str] destination_dataset_id: The BigQuery target dataset id.
         :param pulumi.Input[bool] disabled: When set to true, no runs are scheduled for a given transfer.
         :param pulumi.Input[str] display_name: The user specified display name for the transfer config.
+        :param pulumi.Input[pulumi.InputType['DataTransferConfigEmailPreferencesArgs']] email_preferences: Email notifications will be sent according to these preferences to the
+               email address of the user who owns this transfer config.
+               Structure is documented below.
         :param pulumi.Input[str] location: The geographic location where the transfer config should reside.
                Examples: US, EU, asia-northeast1. The default value is US.
         :param pulumi.Input[str] notification_pubsub_topic: Pub/Sub topic where notifications will be sent after transfer runs
@@ -73,6 +78,8 @@ class DataTransferConfig(pulumi.CustomResource):
                about the format here:
                https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
                NOTE: the granularity should be at least 8 hours, or less frequent.
+        :param pulumi.Input[pulumi.InputType['DataTransferConfigScheduleOptionsArgs']] schedule_options: Options customizing the data transfer schedule.
+               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['DataTransferConfigSensitiveParamsArgs']] sensitive_params: Different parameters are configured primarily using the the `params` field on this
                resource. This block contains the parameters which contain secrets or passwords so that they can be marked
                sensitive and hidden from plan output. The name of the field, eg: secret_access_key, will be the key
@@ -112,6 +119,7 @@ class DataTransferConfig(pulumi.CustomResource):
             if display_name is None:
                 raise TypeError("Missing required property 'display_name'")
             __props__['display_name'] = display_name
+            __props__['email_preferences'] = email_preferences
             __props__['location'] = location
             __props__['notification_pubsub_topic'] = notification_pubsub_topic
             if params is None:
@@ -119,6 +127,7 @@ class DataTransferConfig(pulumi.CustomResource):
             __props__['params'] = params
             __props__['project'] = project
             __props__['schedule'] = schedule
+            __props__['schedule_options'] = schedule_options
             __props__['sensitive_params'] = sensitive_params
             __props__['service_account_name'] = service_account_name
             __props__['name'] = None
@@ -137,12 +146,14 @@ class DataTransferConfig(pulumi.CustomResource):
             destination_dataset_id: Optional[pulumi.Input[str]] = None,
             disabled: Optional[pulumi.Input[bool]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
+            email_preferences: Optional[pulumi.Input[pulumi.InputType['DataTransferConfigEmailPreferencesArgs']]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             notification_pubsub_topic: Optional[pulumi.Input[str]] = None,
             params: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
             schedule: Optional[pulumi.Input[str]] = None,
+            schedule_options: Optional[pulumi.Input[pulumi.InputType['DataTransferConfigScheduleOptionsArgs']]] = None,
             sensitive_params: Optional[pulumi.Input[pulumi.InputType['DataTransferConfigSensitiveParamsArgs']]] = None,
             service_account_name: Optional[pulumi.Input[str]] = None) -> 'DataTransferConfig':
         """
@@ -161,6 +172,9 @@ class DataTransferConfig(pulumi.CustomResource):
         :param pulumi.Input[str] destination_dataset_id: The BigQuery target dataset id.
         :param pulumi.Input[bool] disabled: When set to true, no runs are scheduled for a given transfer.
         :param pulumi.Input[str] display_name: The user specified display name for the transfer config.
+        :param pulumi.Input[pulumi.InputType['DataTransferConfigEmailPreferencesArgs']] email_preferences: Email notifications will be sent according to these preferences to the
+               email address of the user who owns this transfer config.
+               Structure is documented below.
         :param pulumi.Input[str] location: The geographic location where the transfer config should reside.
                Examples: US, EU, asia-northeast1. The default value is US.
         :param pulumi.Input[str] name: The resource name of the transfer config. Transfer config names have the form
@@ -179,6 +193,8 @@ class DataTransferConfig(pulumi.CustomResource):
                about the format here:
                https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
                NOTE: the granularity should be at least 8 hours, or less frequent.
+        :param pulumi.Input[pulumi.InputType['DataTransferConfigScheduleOptionsArgs']] schedule_options: Options customizing the data transfer schedule.
+               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['DataTransferConfigSensitiveParamsArgs']] sensitive_params: Different parameters are configured primarily using the the `params` field on this
                resource. This block contains the parameters which contain secrets or passwords so that they can be marked
                sensitive and hidden from plan output. The name of the field, eg: secret_access_key, will be the key
@@ -199,12 +215,14 @@ class DataTransferConfig(pulumi.CustomResource):
         __props__["destination_dataset_id"] = destination_dataset_id
         __props__["disabled"] = disabled
         __props__["display_name"] = display_name
+        __props__["email_preferences"] = email_preferences
         __props__["location"] = location
         __props__["name"] = name
         __props__["notification_pubsub_topic"] = notification_pubsub_topic
         __props__["params"] = params
         __props__["project"] = project
         __props__["schedule"] = schedule
+        __props__["schedule_options"] = schedule_options
         __props__["sensitive_params"] = sensitive_params
         __props__["service_account_name"] = service_account_name
         return DataTransferConfig(resource_name, opts=opts, __props__=__props__)
@@ -252,6 +270,16 @@ class DataTransferConfig(pulumi.CustomResource):
         The user specified display name for the transfer config.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="emailPreferences")
+    def email_preferences(self) -> pulumi.Output[Optional['outputs.DataTransferConfigEmailPreferences']]:
+        """
+        Email notifications will be sent according to these preferences to the
+        email address of the user who owns this transfer config.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "email_preferences")
 
     @property
     @pulumi.getter
@@ -312,6 +340,15 @@ class DataTransferConfig(pulumi.CustomResource):
         NOTE: the granularity should be at least 8 hours, or less frequent.
         """
         return pulumi.get(self, "schedule")
+
+    @property
+    @pulumi.getter(name="scheduleOptions")
+    def schedule_options(self) -> pulumi.Output[Optional['outputs.DataTransferConfigScheduleOptions']]:
+        """
+        Options customizing the data transfer schedule.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "schedule_options")
 
     @property
     @pulumi.getter(name="sensitiveParams")

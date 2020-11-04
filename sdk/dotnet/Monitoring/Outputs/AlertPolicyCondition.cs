@@ -20,6 +20,11 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         /// </summary>
         public readonly Outputs.AlertPolicyConditionConditionAbsent? ConditionAbsent;
         /// <summary>
+        /// A Monitoring Query Language query that outputs a boolean stream
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.AlertPolicyConditionConditionMonitoringQueryLanguage? ConditionMonitoringQueryLanguage;
+        /// <summary>
         /// A condition that compares a time series against a
         /// threshold.
         /// Structure is documented below.
@@ -48,6 +53,8 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         private AlertPolicyCondition(
             Outputs.AlertPolicyConditionConditionAbsent? conditionAbsent,
 
+            Outputs.AlertPolicyConditionConditionMonitoringQueryLanguage? conditionMonitoringQueryLanguage,
+
             Outputs.AlertPolicyConditionConditionThreshold? conditionThreshold,
 
             string displayName,
@@ -55,6 +62,7 @@ namespace Pulumi.Gcp.Monitoring.Outputs
             string? name)
         {
             ConditionAbsent = conditionAbsent;
+            ConditionMonitoringQueryLanguage = conditionMonitoringQueryLanguage;
             ConditionThreshold = conditionThreshold;
             DisplayName = displayName;
             Name = name;

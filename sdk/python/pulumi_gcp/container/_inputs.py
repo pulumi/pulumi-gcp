@@ -24,6 +24,7 @@ __all__ = [
     'ClusterClusterAutoscalingAutoProvisioningDefaultsArgs',
     'ClusterClusterAutoscalingResourceLimitArgs',
     'ClusterClusterTelemetryArgs',
+    'ClusterConfidentialNodesArgs',
     'ClusterDatabaseEncryptionArgs',
     'ClusterDefaultSnatStatusArgs',
     'ClusterIpAllocationPolicyArgs',
@@ -776,6 +777,30 @@ class ClusterClusterTelemetryArgs:
     @type.setter
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class ClusterConfidentialNodesArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool]):
+        """
+        :param pulumi.Input[bool] enabled: Enable the PodSecurityPolicy controller for this cluster.
+               If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Enable the PodSecurityPolicy controller for this cluster.
+        If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
 
 
 @pulumi.input_type

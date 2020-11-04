@@ -10,13 +10,79 @@ from .. import _utilities, _tables
 from . import outputs
 
 __all__ = [
+    'FolderFeedCondition',
     'FolderFeedFeedOutputConfig',
     'FolderFeedFeedOutputConfigPubsubDestination',
+    'OrganizationFeedCondition',
     'OrganizationFeedFeedOutputConfig',
     'OrganizationFeedFeedOutputConfigPubsubDestination',
+    'ProjectFeedCondition',
     'ProjectFeedFeedOutputConfig',
     'ProjectFeedFeedOutputConfigPubsubDestination',
 ]
+
+@pulumi.output_type
+class FolderFeedCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 description: Optional[str] = None,
+                 location: Optional[str] = None,
+                 title: Optional[str] = None):
+        """
+        :param str expression: Textual representation of an expression in Common Expression Language syntax.
+        :param str description: Description of the expression. This is a longer text which describes the expression,
+               e.g. when hovered over it in a UI.
+        :param str location: String indicating the location of the expression for error reporting, e.g. a file
+               name and a position in the file.
+        :param str title: Title for the expression, i.e. a short string describing its purpose.
+               This can be used e.g. in UIs which allow to enter the expression.
+        """
+        pulumi.set(__self__, "expression", expression)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Description of the expression. This is a longer text which describes the expression,
+        e.g. when hovered over it in a UI.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[str]:
+        """
+        String indicating the location of the expression for error reporting, e.g. a file
+        name and a position in the file.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[str]:
+        """
+        Title for the expression, i.e. a short string describing its purpose.
+        This can be used e.g. in UIs which allow to enter the expression.
+        """
+        return pulumi.get(self, "title")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
 
 @pulumi.output_type
 class FolderFeedFeedOutputConfig(dict):
@@ -63,6 +129,69 @@ class FolderFeedFeedOutputConfigPubsubDestination(dict):
 
 
 @pulumi.output_type
+class OrganizationFeedCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 description: Optional[str] = None,
+                 location: Optional[str] = None,
+                 title: Optional[str] = None):
+        """
+        :param str expression: Textual representation of an expression in Common Expression Language syntax.
+        :param str description: Description of the expression. This is a longer text which describes the expression,
+               e.g. when hovered over it in a UI.
+        :param str location: String indicating the location of the expression for error reporting, e.g. a file
+               name and a position in the file.
+        :param str title: Title for the expression, i.e. a short string describing its purpose.
+               This can be used e.g. in UIs which allow to enter the expression.
+        """
+        pulumi.set(__self__, "expression", expression)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Description of the expression. This is a longer text which describes the expression,
+        e.g. when hovered over it in a UI.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[str]:
+        """
+        String indicating the location of the expression for error reporting, e.g. a file
+        name and a position in the file.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[str]:
+        """
+        Title for the expression, i.e. a short string describing its purpose.
+        This can be used e.g. in UIs which allow to enter the expression.
+        """
+        return pulumi.get(self, "title")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
 class OrganizationFeedFeedOutputConfig(dict):
     def __init__(__self__, *,
                  pubsub_destination: 'outputs.OrganizationFeedFeedOutputConfigPubsubDestination'):
@@ -101,6 +230,69 @@ class OrganizationFeedFeedOutputConfigPubsubDestination(dict):
         Destination on Cloud Pubsub topic.
         """
         return pulumi.get(self, "topic")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ProjectFeedCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 description: Optional[str] = None,
+                 location: Optional[str] = None,
+                 title: Optional[str] = None):
+        """
+        :param str expression: Textual representation of an expression in Common Expression Language syntax.
+        :param str description: Description of the expression. This is a longer text which describes the expression,
+               e.g. when hovered over it in a UI.
+        :param str location: String indicating the location of the expression for error reporting, e.g. a file
+               name and a position in the file.
+        :param str title: Title for the expression, i.e. a short string describing its purpose.
+               This can be used e.g. in UIs which allow to enter the expression.
+        """
+        pulumi.set(__self__, "expression", expression)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Description of the expression. This is a longer text which describes the expression,
+        e.g. when hovered over it in a UI.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[str]:
+        """
+        String indicating the location of the expression for error reporting, e.g. a file
+        name and a position in the file.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[str]:
+        """
+        Title for the expression, i.e. a short string describing its purpose.
+        This can be used e.g. in UIs which allow to enter the expression.
+        """
+        return pulumi.get(self, "title")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

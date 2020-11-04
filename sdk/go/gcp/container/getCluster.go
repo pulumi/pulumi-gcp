@@ -37,6 +37,7 @@ type LookupClusterResult struct {
 	ClusterAutoscalings        []GetClusterClusterAutoscaling        `pulumi:"clusterAutoscalings"`
 	ClusterIpv4Cidr            string                                `pulumi:"clusterIpv4Cidr"`
 	ClusterTelemetries         []GetClusterClusterTelemetry          `pulumi:"clusterTelemetries"`
+	ConfidentialNodes          []GetClusterConfidentialNode          `pulumi:"confidentialNodes"`
 	DatabaseEncryptions        []GetClusterDatabaseEncryption        `pulumi:"databaseEncryptions"`
 	DatapathProvider           string                                `pulumi:"datapathProvider"`
 	DefaultMaxPodsPerNode      int                                   `pulumi:"defaultMaxPodsPerNode"`

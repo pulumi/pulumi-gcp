@@ -20,6 +20,9 @@ func GetAccessToken(ctx *pulumi.Context) string {
 func GetActiveDirectoryCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:activeDirectoryCustomEndpoint")
 }
+func GetApiGatewayCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:apiGatewayCustomEndpoint")
+}
 func GetAppEngineCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:appEngineCustomEndpoint")
 }

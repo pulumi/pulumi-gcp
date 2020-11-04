@@ -32,6 +32,12 @@ namespace Pulumi.Gcp.CloudFunctions
         public Output<int?> AvailableMemoryMb { get; private set; } = null!;
 
         /// <summary>
+        /// A set of key/value environment variable pairs available during build time.
+        /// </summary>
+        [Output("buildEnvironmentVariables")]
+        public Output<ImmutableDictionary<string, object>?> BuildEnvironmentVariables { get; private set; } = null!;
+
+        /// <summary>
         /// Description of the function.
         /// </summary>
         [Output("description")]
@@ -205,6 +211,18 @@ namespace Pulumi.Gcp.CloudFunctions
         [Input("availableMemoryMb")]
         public Input<int>? AvailableMemoryMb { get; set; }
 
+        [Input("buildEnvironmentVariables")]
+        private InputMap<object>? _buildEnvironmentVariables;
+
+        /// <summary>
+        /// A set of key/value environment variable pairs available during build time.
+        /// </summary>
+        public InputMap<object> BuildEnvironmentVariables
+        {
+            get => _buildEnvironmentVariables ?? (_buildEnvironmentVariables = new InputMap<object>());
+            set => _buildEnvironmentVariables = value;
+        }
+
         /// <summary>
         /// Description of the function.
         /// </summary>
@@ -351,6 +369,18 @@ namespace Pulumi.Gcp.CloudFunctions
         /// </summary>
         [Input("availableMemoryMb")]
         public Input<int>? AvailableMemoryMb { get; set; }
+
+        [Input("buildEnvironmentVariables")]
+        private InputMap<object>? _buildEnvironmentVariables;
+
+        /// <summary>
+        /// A set of key/value environment variable pairs available during build time.
+        /// </summary>
+        public InputMap<object> BuildEnvironmentVariables
+        {
+            get => _buildEnvironmentVariables ?? (_buildEnvironmentVariables = new InputMap<object>());
+            set => _buildEnvironmentVariables = value;
+        }
 
         /// <summary>
         /// Description of the function.

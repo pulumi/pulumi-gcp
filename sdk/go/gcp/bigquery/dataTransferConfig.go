@@ -40,6 +40,10 @@ type DataTransferConfig struct {
 	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
 	// The user specified display name for the transfer config.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// Email notifications will be sent according to these preferences to the
+	// email address of the user who owns this transfer config.
+	// Structure is documented below.
+	EmailPreferences DataTransferConfigEmailPreferencesPtrOutput `pulumi:"emailPreferences"`
 	// The geographic location where the transfer config should reside.
 	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
@@ -64,6 +68,9 @@ type DataTransferConfig struct {
 	// https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
 	// NOTE: the granularity should be at least 8 hours, or less frequent.
 	Schedule pulumi.StringPtrOutput `pulumi:"schedule"`
+	// Options customizing the data transfer schedule.
+	// Structure is documented below.
+	ScheduleOptions DataTransferConfigScheduleOptionsPtrOutput `pulumi:"scheduleOptions"`
 	// Different parameters are configured primarily using the the `params` field on this
 	// resource. This block contains the parameters which contain secrets or passwords so that they can be marked
 	// sensitive and hidden from plan output. The name of the field, eg: secret_access_key, will be the key
@@ -132,6 +139,10 @@ type dataTransferConfigState struct {
 	Disabled *bool `pulumi:"disabled"`
 	// The user specified display name for the transfer config.
 	DisplayName *string `pulumi:"displayName"`
+	// Email notifications will be sent according to these preferences to the
+	// email address of the user who owns this transfer config.
+	// Structure is documented below.
+	EmailPreferences *DataTransferConfigEmailPreferences `pulumi:"emailPreferences"`
 	// The geographic location where the transfer config should reside.
 	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location *string `pulumi:"location"`
@@ -156,6 +167,9 @@ type dataTransferConfigState struct {
 	// https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
 	// NOTE: the granularity should be at least 8 hours, or less frequent.
 	Schedule *string `pulumi:"schedule"`
+	// Options customizing the data transfer schedule.
+	// Structure is documented below.
+	ScheduleOptions *DataTransferConfigScheduleOptions `pulumi:"scheduleOptions"`
 	// Different parameters are configured primarily using the the `params` field on this
 	// resource. This block contains the parameters which contain secrets or passwords so that they can be marked
 	// sensitive and hidden from plan output. The name of the field, eg: secret_access_key, will be the key
@@ -185,6 +199,10 @@ type DataTransferConfigState struct {
 	Disabled pulumi.BoolPtrInput
 	// The user specified display name for the transfer config.
 	DisplayName pulumi.StringPtrInput
+	// Email notifications will be sent according to these preferences to the
+	// email address of the user who owns this transfer config.
+	// Structure is documented below.
+	EmailPreferences DataTransferConfigEmailPreferencesPtrInput
 	// The geographic location where the transfer config should reside.
 	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location pulumi.StringPtrInput
@@ -209,6 +227,9 @@ type DataTransferConfigState struct {
 	// https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
 	// NOTE: the granularity should be at least 8 hours, or less frequent.
 	Schedule pulumi.StringPtrInput
+	// Options customizing the data transfer schedule.
+	// Structure is documented below.
+	ScheduleOptions DataTransferConfigScheduleOptionsPtrInput
 	// Different parameters are configured primarily using the the `params` field on this
 	// resource. This block contains the parameters which contain secrets or passwords so that they can be marked
 	// sensitive and hidden from plan output. The name of the field, eg: secret_access_key, will be the key
@@ -242,6 +263,10 @@ type dataTransferConfigArgs struct {
 	Disabled *bool `pulumi:"disabled"`
 	// The user specified display name for the transfer config.
 	DisplayName string `pulumi:"displayName"`
+	// Email notifications will be sent according to these preferences to the
+	// email address of the user who owns this transfer config.
+	// Structure is documented below.
+	EmailPreferences *DataTransferConfigEmailPreferences `pulumi:"emailPreferences"`
 	// The geographic location where the transfer config should reside.
 	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location *string `pulumi:"location"`
@@ -262,6 +287,9 @@ type dataTransferConfigArgs struct {
 	// https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
 	// NOTE: the granularity should be at least 8 hours, or less frequent.
 	Schedule *string `pulumi:"schedule"`
+	// Options customizing the data transfer schedule.
+	// Structure is documented below.
+	ScheduleOptions *DataTransferConfigScheduleOptions `pulumi:"scheduleOptions"`
 	// Different parameters are configured primarily using the the `params` field on this
 	// resource. This block contains the parameters which contain secrets or passwords so that they can be marked
 	// sensitive and hidden from plan output. The name of the field, eg: secret_access_key, will be the key
@@ -292,6 +320,10 @@ type DataTransferConfigArgs struct {
 	Disabled pulumi.BoolPtrInput
 	// The user specified display name for the transfer config.
 	DisplayName pulumi.StringInput
+	// Email notifications will be sent according to these preferences to the
+	// email address of the user who owns this transfer config.
+	// Structure is documented below.
+	EmailPreferences DataTransferConfigEmailPreferencesPtrInput
 	// The geographic location where the transfer config should reside.
 	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location pulumi.StringPtrInput
@@ -312,6 +344,9 @@ type DataTransferConfigArgs struct {
 	// https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
 	// NOTE: the granularity should be at least 8 hours, or less frequent.
 	Schedule pulumi.StringPtrInput
+	// Options customizing the data transfer schedule.
+	// Structure is documented below.
+	ScheduleOptions DataTransferConfigScheduleOptionsPtrInput
 	// Different parameters are configured primarily using the the `params` field on this
 	// resource. This block contains the parameters which contain secrets or passwords so that they can be marked
 	// sensitive and hidden from plan output. The name of the field, eg: secret_access_key, will be the key

@@ -12,6 +12,8 @@ __all__ = [
     'AppProfileSingleClusterRoutingArgs',
     'ConnectionCloudSqlArgs',
     'ConnectionCloudSqlCredentialArgs',
+    'DataTransferConfigEmailPreferencesArgs',
+    'DataTransferConfigScheduleOptionsArgs',
     'DataTransferConfigSensitiveParamsArgs',
     'DatasetAccessArgs',
     'DatasetAccessViewArgs',
@@ -198,6 +200,105 @@ class ConnectionCloudSqlCredentialArgs:
     @username.setter
     def username(self, value: pulumi.Input[str]):
         pulumi.set(self, "username", value)
+
+
+@pulumi.input_type
+class DataTransferConfigEmailPreferencesArgs:
+    def __init__(__self__, *,
+                 enable_failure_email: pulumi.Input[bool]):
+        """
+        :param pulumi.Input[bool] enable_failure_email: If true, email notifications will be sent on transfer run failures.
+        """
+        pulumi.set(__self__, "enable_failure_email", enable_failure_email)
+
+    @property
+    @pulumi.getter(name="enableFailureEmail")
+    def enable_failure_email(self) -> pulumi.Input[bool]:
+        """
+        If true, email notifications will be sent on transfer run failures.
+        """
+        return pulumi.get(self, "enable_failure_email")
+
+    @enable_failure_email.setter
+    def enable_failure_email(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enable_failure_email", value)
+
+
+@pulumi.input_type
+class DataTransferConfigScheduleOptionsArgs:
+    def __init__(__self__, *,
+                 disable_auto_scheduling: Optional[pulumi.Input[bool]] = None,
+                 end_time: Optional[pulumi.Input[str]] = None,
+                 start_time: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] disable_auto_scheduling: If true, automatic scheduling of data transfer runs for this
+               configuration will be disabled. The runs can be started on ad-hoc
+               basis using transferConfigs.startManualRuns API. When automatic
+               scheduling is disabled, the TransferConfig.schedule field will
+               be ignored.
+        :param pulumi.Input[str] end_time: Defines time to stop scheduling transfer runs. A transfer run cannot be
+               scheduled at or after the end time. The end time can be changed at any
+               moment. The time when a data transfer can be triggered manually is not
+               limited by this option.
+        :param pulumi.Input[str] start_time: Specifies time to start scheduling transfer runs. The first run will be
+               scheduled at or after the start time according to a recurrence pattern
+               defined in the schedule string. The start time can be changed at any
+               moment. The time when a data transfer can be triggered manually is not
+               limited by this option.
+        """
+        if disable_auto_scheduling is not None:
+            pulumi.set(__self__, "disable_auto_scheduling", disable_auto_scheduling)
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="disableAutoScheduling")
+    def disable_auto_scheduling(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, automatic scheduling of data transfer runs for this
+        configuration will be disabled. The runs can be started on ad-hoc
+        basis using transferConfigs.startManualRuns API. When automatic
+        scheduling is disabled, the TransferConfig.schedule field will
+        be ignored.
+        """
+        return pulumi.get(self, "disable_auto_scheduling")
+
+    @disable_auto_scheduling.setter
+    def disable_auto_scheduling(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_auto_scheduling", value)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defines time to stop scheduling transfer runs. A transfer run cannot be
+        scheduled at or after the end time. The end time can be changed at any
+        moment. The time when a data transfer can be triggered manually is not
+        limited by this option.
+        """
+        return pulumi.get(self, "end_time")
+
+    @end_time.setter
+    def end_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "end_time", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies time to start scheduling transfer runs. The first run will be
+        scheduled at or after the start time according to a recurrence pattern
+        defined in the schedule string. The start time can be changed at any
+        moment. The time when a data transfer can be triggered manually is not
+        limited by this option.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "start_time", value)
 
 
 @pulumi.input_type

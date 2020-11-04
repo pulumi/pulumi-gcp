@@ -14,7 +14,7 @@ import (
 //
 // > **Note:** KeyRings cannot be deleted from Google Cloud Platform.
 // Destroying a provider-managed KeyRing will remove it from state but
-// *will not delete the resource on the server.*
+// *will not delete the resource from the project.*
 //
 // To get more information about KeyRing, see:
 //

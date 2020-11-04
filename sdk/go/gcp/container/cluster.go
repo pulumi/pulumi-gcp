@@ -43,6 +43,9 @@ type Cluster struct {
 	// [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
 	// Structure is documented below.
 	ClusterTelemetry ClusterClusterTelemetryOutput `pulumi:"clusterTelemetry"`
+	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration
+	// can't be changed (or added/removed) after cluster creation without deleting and recreating the entire cluster.
+	ConfidentialNodes ClusterConfidentialNodesOutput `pulumi:"confidentialNodes"`
 	// Structure is documented below.
 	DatabaseEncryption ClusterDatabaseEncryptionOutput `pulumi:"databaseEncryption"`
 	// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
@@ -290,6 +293,9 @@ type clusterState struct {
 	// [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
 	// Structure is documented below.
 	ClusterTelemetry *ClusterClusterTelemetry `pulumi:"clusterTelemetry"`
+	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration
+	// can't be changed (or added/removed) after cluster creation without deleting and recreating the entire cluster.
+	ConfidentialNodes *ClusterConfidentialNodes `pulumi:"confidentialNodes"`
 	// Structure is documented below.
 	DatabaseEncryption *ClusterDatabaseEncryption `pulumi:"databaseEncryption"`
 	// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
@@ -510,6 +516,9 @@ type ClusterState struct {
 	// [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
 	// Structure is documented below.
 	ClusterTelemetry ClusterClusterTelemetryPtrInput
+	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration
+	// can't be changed (or added/removed) after cluster creation without deleting and recreating the entire cluster.
+	ConfidentialNodes ClusterConfidentialNodesPtrInput
 	// Structure is documented below.
 	DatabaseEncryption ClusterDatabaseEncryptionPtrInput
 	// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
@@ -734,6 +743,9 @@ type clusterArgs struct {
 	// [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
 	// Structure is documented below.
 	ClusterTelemetry *ClusterClusterTelemetry `pulumi:"clusterTelemetry"`
+	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration
+	// can't be changed (or added/removed) after cluster creation without deleting and recreating the entire cluster.
+	ConfidentialNodes *ClusterConfidentialNodes `pulumi:"confidentialNodes"`
 	// Structure is documented below.
 	DatabaseEncryption *ClusterDatabaseEncryption `pulumi:"databaseEncryption"`
 	// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
@@ -932,6 +944,9 @@ type ClusterArgs struct {
 	// [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
 	// Structure is documented below.
 	ClusterTelemetry ClusterClusterTelemetryPtrInput
+	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration
+	// can't be changed (or added/removed) after cluster creation without deleting and recreating the entire cluster.
+	ConfidentialNodes ClusterConfidentialNodesPtrInput
 	// Structure is documented below.
 	DatabaseEncryption ClusterDatabaseEncryptionPtrInput
 	// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.

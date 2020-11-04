@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute
 {
     /// <summary>
-    /// Represents a MachineImage resource. Machine images store all the configuration,
+    /// Represents a Machine Image resource. Machine images store all the configuration,
     /// metadata, permissions, and data from one or more disks required to create a
     /// Virtual machine (VM) instance.
     /// 
@@ -29,6 +29,23 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Specify this to create an application consistent machine image by informing the OS to prepare for the snapshot process.
+        /// Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+        /// </summary>
+        [Output("guestFlush")]
+        public Output<bool?> GuestFlush { get; private set; } = null!;
+
+        /// <summary>
+        /// Encrypts the machine image using a customer-supplied encryption key.
+        /// After you encrypt a machine image with a customer-supplied key, you must
+        /// provide the same key if you use the machine image later (e.g. to create a
+        /// instance from the image)
+        /// Structure is documented below.
+        /// </summary>
+        [Output("machineImageEncryptionKey")]
+        public Output<Outputs.MachineImageMachineImageEncryptionKey?> MachineImageEncryptionKey { get; private set; } = null!;
 
         /// <summary>
         /// Name of the resource.
@@ -54,6 +71,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("sourceInstance")]
         public Output<string> SourceInstance { get; private set; } = null!;
+
+        /// <summary>
+        /// The regional or multi-regional Cloud Storage bucket location where the machine image is stored.
+        /// </summary>
+        [Output("storageLocations")]
+        public Output<ImmutableArray<string>> StorageLocations { get; private set; } = null!;
 
 
         /// <summary>
@@ -108,6 +131,23 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Specify this to create an application consistent machine image by informing the OS to prepare for the snapshot process.
+        /// Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+        /// </summary>
+        [Input("guestFlush")]
+        public Input<bool>? GuestFlush { get; set; }
+
+        /// <summary>
+        /// Encrypts the machine image using a customer-supplied encryption key.
+        /// After you encrypt a machine image with a customer-supplied key, you must
+        /// provide the same key if you use the machine image later (e.g. to create a
+        /// instance from the image)
+        /// Structure is documented below.
+        /// </summary>
+        [Input("machineImageEncryptionKey")]
+        public Input<Inputs.MachineImageMachineImageEncryptionKeyArgs>? MachineImageEncryptionKey { get; set; }
+
+        /// <summary>
         /// Name of the resource.
         /// </summary>
         [Input("name")]
@@ -140,6 +180,23 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Specify this to create an application consistent machine image by informing the OS to prepare for the snapshot process.
+        /// Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+        /// </summary>
+        [Input("guestFlush")]
+        public Input<bool>? GuestFlush { get; set; }
+
+        /// <summary>
+        /// Encrypts the machine image using a customer-supplied encryption key.
+        /// After you encrypt a machine image with a customer-supplied key, you must
+        /// provide the same key if you use the machine image later (e.g. to create a
+        /// instance from the image)
+        /// Structure is documented below.
+        /// </summary>
+        [Input("machineImageEncryptionKey")]
+        public Input<Inputs.MachineImageMachineImageEncryptionKeyGetArgs>? MachineImageEncryptionKey { get; set; }
+
+        /// <summary>
         /// Name of the resource.
         /// </summary>
         [Input("name")]
@@ -163,6 +220,18 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("sourceInstance")]
         public Input<string>? SourceInstance { get; set; }
+
+        [Input("storageLocations")]
+        private InputList<string>? _storageLocations;
+
+        /// <summary>
+        /// The regional or multi-regional Cloud Storage bucket location where the machine image is stored.
+        /// </summary>
+        public InputList<string> StorageLocations
+        {
+            get => _storageLocations ?? (_storageLocations = new InputList<string>());
+            set => _storageLocations = value;
+        }
 
         public MachineImageState()
         {

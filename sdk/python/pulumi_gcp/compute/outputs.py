@@ -63,6 +63,19 @@ __all__ = [
     'InstanceBootDisk',
     'InstanceBootDiskInitializeParams',
     'InstanceConfidentialInstanceConfig',
+    'InstanceFromMachineImageAttachedDisk',
+    'InstanceFromMachineImageBootDisk',
+    'InstanceFromMachineImageBootDiskInitializeParams',
+    'InstanceFromMachineImageConfidentialInstanceConfig',
+    'InstanceFromMachineImageGuestAccelerator',
+    'InstanceFromMachineImageNetworkInterface',
+    'InstanceFromMachineImageNetworkInterfaceAccessConfig',
+    'InstanceFromMachineImageNetworkInterfaceAliasIpRange',
+    'InstanceFromMachineImageScheduling',
+    'InstanceFromMachineImageSchedulingNodeAffinity',
+    'InstanceFromMachineImageScratchDisk',
+    'InstanceFromMachineImageServiceAccount',
+    'InstanceFromMachineImageShieldedInstanceConfig',
     'InstanceFromTemplateAttachedDisk',
     'InstanceFromTemplateBootDisk',
     'InstanceFromTemplateBootDiskInitializeParams',
@@ -106,6 +119,9 @@ __all__ = [
     'InstanceTemplateServiceAccount',
     'InstanceTemplateShieldedInstanceConfig',
     'InterconnectAttachmentPrivateInterconnectInfo',
+    'MachineImageIamBindingCondition',
+    'MachineImageIamMemberCondition',
+    'MachineImageMachineImageEncryptionKey',
     'ManagedSslCertificateManaged',
     'MangedSslCertificateManaged',
     'NodeGroupAutoscalingPolicy',
@@ -4114,6 +4130,484 @@ class InstanceConfidentialInstanceConfig(dict):
 
 
 @pulumi.output_type
+class InstanceFromMachineImageAttachedDisk(dict):
+    def __init__(__self__, *,
+                 source: str,
+                 device_name: Optional[str] = None,
+                 disk_encryption_key_raw: Optional[str] = None,
+                 disk_encryption_key_sha256: Optional[str] = None,
+                 kms_key_self_link: Optional[str] = None,
+                 mode: Optional[str] = None):
+        pulumi.set(__self__, "source", source)
+        if device_name is not None:
+            pulumi.set(__self__, "device_name", device_name)
+        if disk_encryption_key_raw is not None:
+            pulumi.set(__self__, "disk_encryption_key_raw", disk_encryption_key_raw)
+        if disk_encryption_key_sha256 is not None:
+            pulumi.set(__self__, "disk_encryption_key_sha256", disk_encryption_key_sha256)
+        if kms_key_self_link is not None:
+            pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+
+    @property
+    @pulumi.getter
+    def source(self) -> str:
+        return pulumi.get(self, "source")
+
+    @property
+    @pulumi.getter(name="deviceName")
+    def device_name(self) -> Optional[str]:
+        return pulumi.get(self, "device_name")
+
+    @property
+    @pulumi.getter(name="diskEncryptionKeyRaw")
+    def disk_encryption_key_raw(self) -> Optional[str]:
+        return pulumi.get(self, "disk_encryption_key_raw")
+
+    @property
+    @pulumi.getter(name="diskEncryptionKeySha256")
+    def disk_encryption_key_sha256(self) -> Optional[str]:
+        return pulumi.get(self, "disk_encryption_key_sha256")
+
+    @property
+    @pulumi.getter(name="kmsKeySelfLink")
+    def kms_key_self_link(self) -> Optional[str]:
+        return pulumi.get(self, "kms_key_self_link")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[str]:
+        return pulumi.get(self, "mode")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class InstanceFromMachineImageBootDisk(dict):
+    def __init__(__self__, *,
+                 auto_delete: Optional[bool] = None,
+                 device_name: Optional[str] = None,
+                 disk_encryption_key_raw: Optional[str] = None,
+                 disk_encryption_key_sha256: Optional[str] = None,
+                 initialize_params: Optional['outputs.InstanceFromMachineImageBootDiskInitializeParams'] = None,
+                 kms_key_self_link: Optional[str] = None,
+                 mode: Optional[str] = None,
+                 source: Optional[str] = None):
+        if auto_delete is not None:
+            pulumi.set(__self__, "auto_delete", auto_delete)
+        if device_name is not None:
+            pulumi.set(__self__, "device_name", device_name)
+        if disk_encryption_key_raw is not None:
+            pulumi.set(__self__, "disk_encryption_key_raw", disk_encryption_key_raw)
+        if disk_encryption_key_sha256 is not None:
+            pulumi.set(__self__, "disk_encryption_key_sha256", disk_encryption_key_sha256)
+        if initialize_params is not None:
+            pulumi.set(__self__, "initialize_params", initialize_params)
+        if kms_key_self_link is not None:
+            pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
+
+    @property
+    @pulumi.getter(name="autoDelete")
+    def auto_delete(self) -> Optional[bool]:
+        return pulumi.get(self, "auto_delete")
+
+    @property
+    @pulumi.getter(name="deviceName")
+    def device_name(self) -> Optional[str]:
+        return pulumi.get(self, "device_name")
+
+    @property
+    @pulumi.getter(name="diskEncryptionKeyRaw")
+    def disk_encryption_key_raw(self) -> Optional[str]:
+        return pulumi.get(self, "disk_encryption_key_raw")
+
+    @property
+    @pulumi.getter(name="diskEncryptionKeySha256")
+    def disk_encryption_key_sha256(self) -> Optional[str]:
+        return pulumi.get(self, "disk_encryption_key_sha256")
+
+    @property
+    @pulumi.getter(name="initializeParams")
+    def initialize_params(self) -> Optional['outputs.InstanceFromMachineImageBootDiskInitializeParams']:
+        return pulumi.get(self, "initialize_params")
+
+    @property
+    @pulumi.getter(name="kmsKeySelfLink")
+    def kms_key_self_link(self) -> Optional[str]:
+        return pulumi.get(self, "kms_key_self_link")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[str]:
+        return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[str]:
+        return pulumi.get(self, "source")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class InstanceFromMachineImageBootDiskInitializeParams(dict):
+    def __init__(__self__, *,
+                 image: Optional[str] = None,
+                 labels: Optional[Mapping[str, Any]] = None,
+                 size: Optional[int] = None,
+                 type: Optional[str] = None):
+        if image is not None:
+            pulumi.set(__self__, "image", image)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def image(self) -> Optional[str]:
+        return pulumi.get(self, "image")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[Mapping[str, Any]]:
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[int]:
+        return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        return pulumi.get(self, "type")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class InstanceFromMachineImageConfidentialInstanceConfig(dict):
+    def __init__(__self__, *,
+                 enable_confidential_compute: bool):
+        pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
+
+    @property
+    @pulumi.getter(name="enableConfidentialCompute")
+    def enable_confidential_compute(self) -> bool:
+        return pulumi.get(self, "enable_confidential_compute")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class InstanceFromMachineImageGuestAccelerator(dict):
+    def __init__(__self__, *,
+                 count: int,
+                 type: str):
+        pulumi.set(__self__, "count", count)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def count(self) -> int:
+        return pulumi.get(self, "count")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class InstanceFromMachineImageNetworkInterface(dict):
+    def __init__(__self__, *,
+                 access_configs: Optional[Sequence['outputs.InstanceFromMachineImageNetworkInterfaceAccessConfig']] = None,
+                 alias_ip_ranges: Optional[Sequence['outputs.InstanceFromMachineImageNetworkInterfaceAliasIpRange']] = None,
+                 name: Optional[str] = None,
+                 network: Optional[str] = None,
+                 network_ip: Optional[str] = None,
+                 subnetwork: Optional[str] = None,
+                 subnetwork_project: Optional[str] = None):
+        """
+        :param str name: A unique name for the resource, required by GCE.
+               Changing this forces a new resource to be created.
+        """
+        if access_configs is not None:
+            pulumi.set(__self__, "access_configs", access_configs)
+        if alias_ip_ranges is not None:
+            pulumi.set(__self__, "alias_ip_ranges", alias_ip_ranges)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if network_ip is not None:
+            pulumi.set(__self__, "network_ip", network_ip)
+        if subnetwork is not None:
+            pulumi.set(__self__, "subnetwork", subnetwork)
+        if subnetwork_project is not None:
+            pulumi.set(__self__, "subnetwork_project", subnetwork_project)
+
+    @property
+    @pulumi.getter(name="accessConfigs")
+    def access_configs(self) -> Optional[Sequence['outputs.InstanceFromMachineImageNetworkInterfaceAccessConfig']]:
+        return pulumi.get(self, "access_configs")
+
+    @property
+    @pulumi.getter(name="aliasIpRanges")
+    def alias_ip_ranges(self) -> Optional[Sequence['outputs.InstanceFromMachineImageNetworkInterfaceAliasIpRange']]:
+        return pulumi.get(self, "alias_ip_ranges")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        A unique name for the resource, required by GCE.
+        Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[str]:
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="networkIp")
+    def network_ip(self) -> Optional[str]:
+        return pulumi.get(self, "network_ip")
+
+    @property
+    @pulumi.getter
+    def subnetwork(self) -> Optional[str]:
+        return pulumi.get(self, "subnetwork")
+
+    @property
+    @pulumi.getter(name="subnetworkProject")
+    def subnetwork_project(self) -> Optional[str]:
+        return pulumi.get(self, "subnetwork_project")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class InstanceFromMachineImageNetworkInterfaceAccessConfig(dict):
+    def __init__(__self__, *,
+                 nat_ip: Optional[str] = None,
+                 network_tier: Optional[str] = None,
+                 public_ptr_domain_name: Optional[str] = None):
+        if nat_ip is not None:
+            pulumi.set(__self__, "nat_ip", nat_ip)
+        if network_tier is not None:
+            pulumi.set(__self__, "network_tier", network_tier)
+        if public_ptr_domain_name is not None:
+            pulumi.set(__self__, "public_ptr_domain_name", public_ptr_domain_name)
+
+    @property
+    @pulumi.getter(name="natIp")
+    def nat_ip(self) -> Optional[str]:
+        return pulumi.get(self, "nat_ip")
+
+    @property
+    @pulumi.getter(name="networkTier")
+    def network_tier(self) -> Optional[str]:
+        return pulumi.get(self, "network_tier")
+
+    @property
+    @pulumi.getter(name="publicPtrDomainName")
+    def public_ptr_domain_name(self) -> Optional[str]:
+        return pulumi.get(self, "public_ptr_domain_name")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class InstanceFromMachineImageNetworkInterfaceAliasIpRange(dict):
+    def __init__(__self__, *,
+                 ip_cidr_range: str,
+                 subnetwork_range_name: Optional[str] = None):
+        pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
+        if subnetwork_range_name is not None:
+            pulumi.set(__self__, "subnetwork_range_name", subnetwork_range_name)
+
+    @property
+    @pulumi.getter(name="ipCidrRange")
+    def ip_cidr_range(self) -> str:
+        return pulumi.get(self, "ip_cidr_range")
+
+    @property
+    @pulumi.getter(name="subnetworkRangeName")
+    def subnetwork_range_name(self) -> Optional[str]:
+        return pulumi.get(self, "subnetwork_range_name")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class InstanceFromMachineImageScheduling(dict):
+    def __init__(__self__, *,
+                 automatic_restart: Optional[bool] = None,
+                 min_node_cpus: Optional[int] = None,
+                 node_affinities: Optional[Sequence['outputs.InstanceFromMachineImageSchedulingNodeAffinity']] = None,
+                 on_host_maintenance: Optional[str] = None,
+                 preemptible: Optional[bool] = None):
+        if automatic_restart is not None:
+            pulumi.set(__self__, "automatic_restart", automatic_restart)
+        if min_node_cpus is not None:
+            pulumi.set(__self__, "min_node_cpus", min_node_cpus)
+        if node_affinities is not None:
+            pulumi.set(__self__, "node_affinities", node_affinities)
+        if on_host_maintenance is not None:
+            pulumi.set(__self__, "on_host_maintenance", on_host_maintenance)
+        if preemptible is not None:
+            pulumi.set(__self__, "preemptible", preemptible)
+
+    @property
+    @pulumi.getter(name="automaticRestart")
+    def automatic_restart(self) -> Optional[bool]:
+        return pulumi.get(self, "automatic_restart")
+
+    @property
+    @pulumi.getter(name="minNodeCpus")
+    def min_node_cpus(self) -> Optional[int]:
+        return pulumi.get(self, "min_node_cpus")
+
+    @property
+    @pulumi.getter(name="nodeAffinities")
+    def node_affinities(self) -> Optional[Sequence['outputs.InstanceFromMachineImageSchedulingNodeAffinity']]:
+        return pulumi.get(self, "node_affinities")
+
+    @property
+    @pulumi.getter(name="onHostMaintenance")
+    def on_host_maintenance(self) -> Optional[str]:
+        return pulumi.get(self, "on_host_maintenance")
+
+    @property
+    @pulumi.getter
+    def preemptible(self) -> Optional[bool]:
+        return pulumi.get(self, "preemptible")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class InstanceFromMachineImageSchedulingNodeAffinity(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 operator: str,
+                 values: Sequence[str]):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        return pulumi.get(self, "values")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class InstanceFromMachineImageScratchDisk(dict):
+    def __init__(__self__, *,
+                 interface: str):
+        pulumi.set(__self__, "interface", interface)
+
+    @property
+    @pulumi.getter
+    def interface(self) -> str:
+        return pulumi.get(self, "interface")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class InstanceFromMachineImageServiceAccount(dict):
+    def __init__(__self__, *,
+                 scopes: Sequence[str],
+                 email: Optional[str] = None):
+        pulumi.set(__self__, "scopes", scopes)
+        if email is not None:
+            pulumi.set(__self__, "email", email)
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> Sequence[str]:
+        return pulumi.get(self, "scopes")
+
+    @property
+    @pulumi.getter
+    def email(self) -> Optional[str]:
+        return pulumi.get(self, "email")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class InstanceFromMachineImageShieldedInstanceConfig(dict):
+    def __init__(__self__, *,
+                 enable_integrity_monitoring: Optional[bool] = None,
+                 enable_secure_boot: Optional[bool] = None,
+                 enable_vtpm: Optional[bool] = None):
+        if enable_integrity_monitoring is not None:
+            pulumi.set(__self__, "enable_integrity_monitoring", enable_integrity_monitoring)
+        if enable_secure_boot is not None:
+            pulumi.set(__self__, "enable_secure_boot", enable_secure_boot)
+        if enable_vtpm is not None:
+            pulumi.set(__self__, "enable_vtpm", enable_vtpm)
+
+    @property
+    @pulumi.getter(name="enableIntegrityMonitoring")
+    def enable_integrity_monitoring(self) -> Optional[bool]:
+        return pulumi.get(self, "enable_integrity_monitoring")
+
+    @property
+    @pulumi.getter(name="enableSecureBoot")
+    def enable_secure_boot(self) -> Optional[bool]:
+        return pulumi.get(self, "enable_secure_boot")
+
+    @property
+    @pulumi.getter(name="enableVtpm")
+    def enable_vtpm(self) -> Optional[bool]:
+        return pulumi.get(self, "enable_vtpm")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
 class InstanceFromTemplateAttachedDisk(dict):
     def __init__(__self__, *,
                  source: str,
@@ -6207,6 +6701,162 @@ class InterconnectAttachmentPrivateInterconnectInfo(dict):
     @pulumi.getter
     def tag8021q(self) -> Optional[int]:
         return pulumi.get(self, "tag8021q")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class MachineImageIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        """
+        :param str expression: Textual representation of an expression in Common Expression Language syntax.
+        :param str title: A title for the expression, i.e. a short string describing its purpose.
+        :param str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        """
+        return pulumi.get(self, "description")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class MachineImageIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        """
+        :param str expression: Textual representation of an expression in Common Expression Language syntax.
+        :param str title: A title for the expression, i.e. a short string describing its purpose.
+        :param str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        """
+        return pulumi.get(self, "description")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class MachineImageMachineImageEncryptionKey(dict):
+    def __init__(__self__, *,
+                 kms_key_name: Optional[str] = None,
+                 kms_key_service_account: Optional[str] = None,
+                 raw_key: Optional[str] = None,
+                 sha256: Optional[str] = None):
+        """
+        :param str kms_key_name: -
+               The name of the encryption key that is stored in Google Cloud KMS.
+        :param str kms_key_service_account: The service account used for the encryption request for the given KMS key.
+               If absent, the Compute Engine Service Agent service account is used.
+        :param str raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in
+               RFC 4648 base64 to either encrypt or decrypt this resource.
+        :param str sha256: -
+               The RFC 4648 base64 encoded SHA-256 hash of the
+               customer-supplied encryption key that protects this resource.
+        """
+        if kms_key_name is not None:
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
+        if kms_key_service_account is not None:
+            pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
+        if raw_key is not None:
+            pulumi.set(__self__, "raw_key", raw_key)
+        if sha256 is not None:
+            pulumi.set(__self__, "sha256", sha256)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> Optional[str]:
+        """
+        -
+        The name of the encryption key that is stored in Google Cloud KMS.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @property
+    @pulumi.getter(name="kmsKeyServiceAccount")
+    def kms_key_service_account(self) -> Optional[str]:
+        """
+        The service account used for the encryption request for the given KMS key.
+        If absent, the Compute Engine Service Agent service account is used.
+        """
+        return pulumi.get(self, "kms_key_service_account")
+
+    @property
+    @pulumi.getter(name="rawKey")
+    def raw_key(self) -> Optional[str]:
+        """
+        Specifies a 256-bit customer-supplied encryption key, encoded in
+        RFC 4648 base64 to either encrypt or decrypt this resource.
+        """
+        return pulumi.get(self, "raw_key")
+
+    @property
+    @pulumi.getter
+    def sha256(self) -> Optional[str]:
+        """
+        -
+        The RFC 4648 base64 encoded SHA-256 hash of the
+        customer-supplied encryption key that protects this resource.
+        """
+        return pulumi.get(self, "sha256")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -14454,6 +15104,7 @@ class SubnetworkLogConfig(dict):
                Possible values are `INTERVAL_5_SEC`, `INTERVAL_30_SEC`, `INTERVAL_1_MIN`, `INTERVAL_5_MIN`, `INTERVAL_10_MIN`, and `INTERVAL_15_MIN`.
         :param str filter_expr: Export filter used to define which VPC flow logs should be logged, as as CEL expression. See
                https://cloud.google.com/vpc/docs/flow-logs#filtering for details on how to format this field.
+               The default value is 'true', which evaluates to include everything.
         :param float flow_sampling: Can only be specified if VPC flow logging for this subnetwork is enabled.
                The value of the field must be in [0, 1]. Set the sampling rate of VPC
                flow logs within the subnetwork where 1.0 means all collected logs are
@@ -14497,6 +15148,7 @@ class SubnetworkLogConfig(dict):
         """
         Export filter used to define which VPC flow logs should be logged, as as CEL expression. See
         https://cloud.google.com/vpc/docs/flow-logs#filtering for details on how to format this field.
+        The default value is 'true', which evaluates to include everything.
         """
         return pulumi.get(self, "filter_expr")
 

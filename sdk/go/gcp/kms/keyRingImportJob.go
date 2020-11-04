@@ -16,8 +16,8 @@ import (
 // was wrapped with the `KeyRingImportJob`'s public key.
 //
 // > **Note:** KeyRingImportJobs cannot be deleted from Google Cloud Platform.
-// Destroying a KeyRingImportJob will remove it from state but
-// *will not delete the resource on the server.*
+// Destroying a provider-managed KeyRingImportJob will remove it from state but
+// *will not delete the resource from the project.*
 //
 // To get more information about KeyRingImportJob, see:
 //

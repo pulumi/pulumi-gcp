@@ -10764,6 +10764,1702 @@ func (o InstanceConfidentialInstanceConfigPtrOutput) EnableConfidentialCompute()
 	}).(pulumi.BoolPtrOutput)
 }
 
+type InstanceFromMachineImageAttachedDisk struct {
+	DeviceName              *string `pulumi:"deviceName"`
+	DiskEncryptionKeyRaw    *string `pulumi:"diskEncryptionKeyRaw"`
+	DiskEncryptionKeySha256 *string `pulumi:"diskEncryptionKeySha256"`
+	KmsKeySelfLink          *string `pulumi:"kmsKeySelfLink"`
+	Mode                    *string `pulumi:"mode"`
+	Source                  string  `pulumi:"source"`
+}
+
+// InstanceFromMachineImageAttachedDiskInput is an input type that accepts InstanceFromMachineImageAttachedDiskArgs and InstanceFromMachineImageAttachedDiskOutput values.
+// You can construct a concrete instance of `InstanceFromMachineImageAttachedDiskInput` via:
+//
+//          InstanceFromMachineImageAttachedDiskArgs{...}
+type InstanceFromMachineImageAttachedDiskInput interface {
+	pulumi.Input
+
+	ToInstanceFromMachineImageAttachedDiskOutput() InstanceFromMachineImageAttachedDiskOutput
+	ToInstanceFromMachineImageAttachedDiskOutputWithContext(context.Context) InstanceFromMachineImageAttachedDiskOutput
+}
+
+type InstanceFromMachineImageAttachedDiskArgs struct {
+	DeviceName              pulumi.StringPtrInput `pulumi:"deviceName"`
+	DiskEncryptionKeyRaw    pulumi.StringPtrInput `pulumi:"diskEncryptionKeyRaw"`
+	DiskEncryptionKeySha256 pulumi.StringPtrInput `pulumi:"diskEncryptionKeySha256"`
+	KmsKeySelfLink          pulumi.StringPtrInput `pulumi:"kmsKeySelfLink"`
+	Mode                    pulumi.StringPtrInput `pulumi:"mode"`
+	Source                  pulumi.StringInput    `pulumi:"source"`
+}
+
+func (InstanceFromMachineImageAttachedDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFromMachineImageAttachedDisk)(nil)).Elem()
+}
+
+func (i InstanceFromMachineImageAttachedDiskArgs) ToInstanceFromMachineImageAttachedDiskOutput() InstanceFromMachineImageAttachedDiskOutput {
+	return i.ToInstanceFromMachineImageAttachedDiskOutputWithContext(context.Background())
+}
+
+func (i InstanceFromMachineImageAttachedDiskArgs) ToInstanceFromMachineImageAttachedDiskOutputWithContext(ctx context.Context) InstanceFromMachineImageAttachedDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromMachineImageAttachedDiskOutput)
+}
+
+// InstanceFromMachineImageAttachedDiskArrayInput is an input type that accepts InstanceFromMachineImageAttachedDiskArray and InstanceFromMachineImageAttachedDiskArrayOutput values.
+// You can construct a concrete instance of `InstanceFromMachineImageAttachedDiskArrayInput` via:
+//
+//          InstanceFromMachineImageAttachedDiskArray{ InstanceFromMachineImageAttachedDiskArgs{...} }
+type InstanceFromMachineImageAttachedDiskArrayInput interface {
+	pulumi.Input
+
+	ToInstanceFromMachineImageAttachedDiskArrayOutput() InstanceFromMachineImageAttachedDiskArrayOutput
+	ToInstanceFromMachineImageAttachedDiskArrayOutputWithContext(context.Context) InstanceFromMachineImageAttachedDiskArrayOutput
+}
+
+type InstanceFromMachineImageAttachedDiskArray []InstanceFromMachineImageAttachedDiskInput
+
+func (InstanceFromMachineImageAttachedDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceFromMachineImageAttachedDisk)(nil)).Elem()
+}
+
+func (i InstanceFromMachineImageAttachedDiskArray) ToInstanceFromMachineImageAttachedDiskArrayOutput() InstanceFromMachineImageAttachedDiskArrayOutput {
+	return i.ToInstanceFromMachineImageAttachedDiskArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceFromMachineImageAttachedDiskArray) ToInstanceFromMachineImageAttachedDiskArrayOutputWithContext(ctx context.Context) InstanceFromMachineImageAttachedDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromMachineImageAttachedDiskArrayOutput)
+}
+
+type InstanceFromMachineImageAttachedDiskOutput struct{ *pulumi.OutputState }
+
+func (InstanceFromMachineImageAttachedDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFromMachineImageAttachedDisk)(nil)).Elem()
+}
+
+func (o InstanceFromMachineImageAttachedDiskOutput) ToInstanceFromMachineImageAttachedDiskOutput() InstanceFromMachineImageAttachedDiskOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageAttachedDiskOutput) ToInstanceFromMachineImageAttachedDiskOutputWithContext(ctx context.Context) InstanceFromMachineImageAttachedDiskOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageAttachedDiskOutput) DeviceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageAttachedDisk) *string { return v.DeviceName }).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceFromMachineImageAttachedDiskOutput) DiskEncryptionKeyRaw() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageAttachedDisk) *string { return v.DiskEncryptionKeyRaw }).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceFromMachineImageAttachedDiskOutput) DiskEncryptionKeySha256() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageAttachedDisk) *string { return v.DiskEncryptionKeySha256 }).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceFromMachineImageAttachedDiskOutput) KmsKeySelfLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageAttachedDisk) *string { return v.KmsKeySelfLink }).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceFromMachineImageAttachedDiskOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageAttachedDisk) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceFromMachineImageAttachedDiskOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageAttachedDisk) string { return v.Source }).(pulumi.StringOutput)
+}
+
+type InstanceFromMachineImageAttachedDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceFromMachineImageAttachedDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceFromMachineImageAttachedDisk)(nil)).Elem()
+}
+
+func (o InstanceFromMachineImageAttachedDiskArrayOutput) ToInstanceFromMachineImageAttachedDiskArrayOutput() InstanceFromMachineImageAttachedDiskArrayOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageAttachedDiskArrayOutput) ToInstanceFromMachineImageAttachedDiskArrayOutputWithContext(ctx context.Context) InstanceFromMachineImageAttachedDiskArrayOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageAttachedDiskArrayOutput) Index(i pulumi.IntInput) InstanceFromMachineImageAttachedDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceFromMachineImageAttachedDisk {
+		return vs[0].([]InstanceFromMachineImageAttachedDisk)[vs[1].(int)]
+	}).(InstanceFromMachineImageAttachedDiskOutput)
+}
+
+type InstanceFromMachineImageBootDisk struct {
+	AutoDelete              *bool                                             `pulumi:"autoDelete"`
+	DeviceName              *string                                           `pulumi:"deviceName"`
+	DiskEncryptionKeyRaw    *string                                           `pulumi:"diskEncryptionKeyRaw"`
+	DiskEncryptionKeySha256 *string                                           `pulumi:"diskEncryptionKeySha256"`
+	InitializeParams        *InstanceFromMachineImageBootDiskInitializeParams `pulumi:"initializeParams"`
+	KmsKeySelfLink          *string                                           `pulumi:"kmsKeySelfLink"`
+	Mode                    *string                                           `pulumi:"mode"`
+	Source                  *string                                           `pulumi:"source"`
+}
+
+// InstanceFromMachineImageBootDiskInput is an input type that accepts InstanceFromMachineImageBootDiskArgs and InstanceFromMachineImageBootDiskOutput values.
+// You can construct a concrete instance of `InstanceFromMachineImageBootDiskInput` via:
+//
+//          InstanceFromMachineImageBootDiskArgs{...}
+type InstanceFromMachineImageBootDiskInput interface {
+	pulumi.Input
+
+	ToInstanceFromMachineImageBootDiskOutput() InstanceFromMachineImageBootDiskOutput
+	ToInstanceFromMachineImageBootDiskOutputWithContext(context.Context) InstanceFromMachineImageBootDiskOutput
+}
+
+type InstanceFromMachineImageBootDiskArgs struct {
+	AutoDelete              pulumi.BoolPtrInput                                      `pulumi:"autoDelete"`
+	DeviceName              pulumi.StringPtrInput                                    `pulumi:"deviceName"`
+	DiskEncryptionKeyRaw    pulumi.StringPtrInput                                    `pulumi:"diskEncryptionKeyRaw"`
+	DiskEncryptionKeySha256 pulumi.StringPtrInput                                    `pulumi:"diskEncryptionKeySha256"`
+	InitializeParams        InstanceFromMachineImageBootDiskInitializeParamsPtrInput `pulumi:"initializeParams"`
+	KmsKeySelfLink          pulumi.StringPtrInput                                    `pulumi:"kmsKeySelfLink"`
+	Mode                    pulumi.StringPtrInput                                    `pulumi:"mode"`
+	Source                  pulumi.StringPtrInput                                    `pulumi:"source"`
+}
+
+func (InstanceFromMachineImageBootDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFromMachineImageBootDisk)(nil)).Elem()
+}
+
+func (i InstanceFromMachineImageBootDiskArgs) ToInstanceFromMachineImageBootDiskOutput() InstanceFromMachineImageBootDiskOutput {
+	return i.ToInstanceFromMachineImageBootDiskOutputWithContext(context.Background())
+}
+
+func (i InstanceFromMachineImageBootDiskArgs) ToInstanceFromMachineImageBootDiskOutputWithContext(ctx context.Context) InstanceFromMachineImageBootDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromMachineImageBootDiskOutput)
+}
+
+// InstanceFromMachineImageBootDiskArrayInput is an input type that accepts InstanceFromMachineImageBootDiskArray and InstanceFromMachineImageBootDiskArrayOutput values.
+// You can construct a concrete instance of `InstanceFromMachineImageBootDiskArrayInput` via:
+//
+//          InstanceFromMachineImageBootDiskArray{ InstanceFromMachineImageBootDiskArgs{...} }
+type InstanceFromMachineImageBootDiskArrayInput interface {
+	pulumi.Input
+
+	ToInstanceFromMachineImageBootDiskArrayOutput() InstanceFromMachineImageBootDiskArrayOutput
+	ToInstanceFromMachineImageBootDiskArrayOutputWithContext(context.Context) InstanceFromMachineImageBootDiskArrayOutput
+}
+
+type InstanceFromMachineImageBootDiskArray []InstanceFromMachineImageBootDiskInput
+
+func (InstanceFromMachineImageBootDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceFromMachineImageBootDisk)(nil)).Elem()
+}
+
+func (i InstanceFromMachineImageBootDiskArray) ToInstanceFromMachineImageBootDiskArrayOutput() InstanceFromMachineImageBootDiskArrayOutput {
+	return i.ToInstanceFromMachineImageBootDiskArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceFromMachineImageBootDiskArray) ToInstanceFromMachineImageBootDiskArrayOutputWithContext(ctx context.Context) InstanceFromMachineImageBootDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromMachineImageBootDiskArrayOutput)
+}
+
+type InstanceFromMachineImageBootDiskOutput struct{ *pulumi.OutputState }
+
+func (InstanceFromMachineImageBootDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFromMachineImageBootDisk)(nil)).Elem()
+}
+
+func (o InstanceFromMachineImageBootDiskOutput) ToInstanceFromMachineImageBootDiskOutput() InstanceFromMachineImageBootDiskOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageBootDiskOutput) ToInstanceFromMachineImageBootDiskOutputWithContext(ctx context.Context) InstanceFromMachineImageBootDiskOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageBootDiskOutput) AutoDelete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageBootDisk) *bool { return v.AutoDelete }).(pulumi.BoolPtrOutput)
+}
+
+func (o InstanceFromMachineImageBootDiskOutput) DeviceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageBootDisk) *string { return v.DeviceName }).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceFromMachineImageBootDiskOutput) DiskEncryptionKeyRaw() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageBootDisk) *string { return v.DiskEncryptionKeyRaw }).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceFromMachineImageBootDiskOutput) DiskEncryptionKeySha256() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageBootDisk) *string { return v.DiskEncryptionKeySha256 }).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceFromMachineImageBootDiskOutput) InitializeParams() InstanceFromMachineImageBootDiskInitializeParamsPtrOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageBootDisk) *InstanceFromMachineImageBootDiskInitializeParams {
+		return v.InitializeParams
+	}).(InstanceFromMachineImageBootDiskInitializeParamsPtrOutput)
+}
+
+func (o InstanceFromMachineImageBootDiskOutput) KmsKeySelfLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageBootDisk) *string { return v.KmsKeySelfLink }).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceFromMachineImageBootDiskOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageBootDisk) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceFromMachineImageBootDiskOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageBootDisk) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+type InstanceFromMachineImageBootDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceFromMachineImageBootDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceFromMachineImageBootDisk)(nil)).Elem()
+}
+
+func (o InstanceFromMachineImageBootDiskArrayOutput) ToInstanceFromMachineImageBootDiskArrayOutput() InstanceFromMachineImageBootDiskArrayOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageBootDiskArrayOutput) ToInstanceFromMachineImageBootDiskArrayOutputWithContext(ctx context.Context) InstanceFromMachineImageBootDiskArrayOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageBootDiskArrayOutput) Index(i pulumi.IntInput) InstanceFromMachineImageBootDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceFromMachineImageBootDisk {
+		return vs[0].([]InstanceFromMachineImageBootDisk)[vs[1].(int)]
+	}).(InstanceFromMachineImageBootDiskOutput)
+}
+
+type InstanceFromMachineImageBootDiskInitializeParams struct {
+	Image  *string                `pulumi:"image"`
+	Labels map[string]interface{} `pulumi:"labels"`
+	Size   *int                   `pulumi:"size"`
+	Type   *string                `pulumi:"type"`
+}
+
+// InstanceFromMachineImageBootDiskInitializeParamsInput is an input type that accepts InstanceFromMachineImageBootDiskInitializeParamsArgs and InstanceFromMachineImageBootDiskInitializeParamsOutput values.
+// You can construct a concrete instance of `InstanceFromMachineImageBootDiskInitializeParamsInput` via:
+//
+//          InstanceFromMachineImageBootDiskInitializeParamsArgs{...}
+type InstanceFromMachineImageBootDiskInitializeParamsInput interface {
+	pulumi.Input
+
+	ToInstanceFromMachineImageBootDiskInitializeParamsOutput() InstanceFromMachineImageBootDiskInitializeParamsOutput
+	ToInstanceFromMachineImageBootDiskInitializeParamsOutputWithContext(context.Context) InstanceFromMachineImageBootDiskInitializeParamsOutput
+}
+
+type InstanceFromMachineImageBootDiskInitializeParamsArgs struct {
+	Image  pulumi.StringPtrInput `pulumi:"image"`
+	Labels pulumi.MapInput       `pulumi:"labels"`
+	Size   pulumi.IntPtrInput    `pulumi:"size"`
+	Type   pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (InstanceFromMachineImageBootDiskInitializeParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFromMachineImageBootDiskInitializeParams)(nil)).Elem()
+}
+
+func (i InstanceFromMachineImageBootDiskInitializeParamsArgs) ToInstanceFromMachineImageBootDiskInitializeParamsOutput() InstanceFromMachineImageBootDiskInitializeParamsOutput {
+	return i.ToInstanceFromMachineImageBootDiskInitializeParamsOutputWithContext(context.Background())
+}
+
+func (i InstanceFromMachineImageBootDiskInitializeParamsArgs) ToInstanceFromMachineImageBootDiskInitializeParamsOutputWithContext(ctx context.Context) InstanceFromMachineImageBootDiskInitializeParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromMachineImageBootDiskInitializeParamsOutput)
+}
+
+func (i InstanceFromMachineImageBootDiskInitializeParamsArgs) ToInstanceFromMachineImageBootDiskInitializeParamsPtrOutput() InstanceFromMachineImageBootDiskInitializeParamsPtrOutput {
+	return i.ToInstanceFromMachineImageBootDiskInitializeParamsPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceFromMachineImageBootDiskInitializeParamsArgs) ToInstanceFromMachineImageBootDiskInitializeParamsPtrOutputWithContext(ctx context.Context) InstanceFromMachineImageBootDiskInitializeParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromMachineImageBootDiskInitializeParamsOutput).ToInstanceFromMachineImageBootDiskInitializeParamsPtrOutputWithContext(ctx)
+}
+
+// InstanceFromMachineImageBootDiskInitializeParamsPtrInput is an input type that accepts InstanceFromMachineImageBootDiskInitializeParamsArgs, InstanceFromMachineImageBootDiskInitializeParamsPtr and InstanceFromMachineImageBootDiskInitializeParamsPtrOutput values.
+// You can construct a concrete instance of `InstanceFromMachineImageBootDiskInitializeParamsPtrInput` via:
+//
+//          InstanceFromMachineImageBootDiskInitializeParamsArgs{...}
+//
+//  or:
+//
+//          nil
+type InstanceFromMachineImageBootDiskInitializeParamsPtrInput interface {
+	pulumi.Input
+
+	ToInstanceFromMachineImageBootDiskInitializeParamsPtrOutput() InstanceFromMachineImageBootDiskInitializeParamsPtrOutput
+	ToInstanceFromMachineImageBootDiskInitializeParamsPtrOutputWithContext(context.Context) InstanceFromMachineImageBootDiskInitializeParamsPtrOutput
+}
+
+type instanceFromMachineImageBootDiskInitializeParamsPtrType InstanceFromMachineImageBootDiskInitializeParamsArgs
+
+func InstanceFromMachineImageBootDiskInitializeParamsPtr(v *InstanceFromMachineImageBootDiskInitializeParamsArgs) InstanceFromMachineImageBootDiskInitializeParamsPtrInput {
+	return (*instanceFromMachineImageBootDiskInitializeParamsPtrType)(v)
+}
+
+func (*instanceFromMachineImageBootDiskInitializeParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceFromMachineImageBootDiskInitializeParams)(nil)).Elem()
+}
+
+func (i *instanceFromMachineImageBootDiskInitializeParamsPtrType) ToInstanceFromMachineImageBootDiskInitializeParamsPtrOutput() InstanceFromMachineImageBootDiskInitializeParamsPtrOutput {
+	return i.ToInstanceFromMachineImageBootDiskInitializeParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceFromMachineImageBootDiskInitializeParamsPtrType) ToInstanceFromMachineImageBootDiskInitializeParamsPtrOutputWithContext(ctx context.Context) InstanceFromMachineImageBootDiskInitializeParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromMachineImageBootDiskInitializeParamsPtrOutput)
+}
+
+type InstanceFromMachineImageBootDiskInitializeParamsOutput struct{ *pulumi.OutputState }
+
+func (InstanceFromMachineImageBootDiskInitializeParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFromMachineImageBootDiskInitializeParams)(nil)).Elem()
+}
+
+func (o InstanceFromMachineImageBootDiskInitializeParamsOutput) ToInstanceFromMachineImageBootDiskInitializeParamsOutput() InstanceFromMachineImageBootDiskInitializeParamsOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageBootDiskInitializeParamsOutput) ToInstanceFromMachineImageBootDiskInitializeParamsOutputWithContext(ctx context.Context) InstanceFromMachineImageBootDiskInitializeParamsOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageBootDiskInitializeParamsOutput) ToInstanceFromMachineImageBootDiskInitializeParamsPtrOutput() InstanceFromMachineImageBootDiskInitializeParamsPtrOutput {
+	return o.ToInstanceFromMachineImageBootDiskInitializeParamsPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceFromMachineImageBootDiskInitializeParamsOutput) ToInstanceFromMachineImageBootDiskInitializeParamsPtrOutputWithContext(ctx context.Context) InstanceFromMachineImageBootDiskInitializeParamsPtrOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageBootDiskInitializeParams) *InstanceFromMachineImageBootDiskInitializeParams {
+		return &v
+	}).(InstanceFromMachineImageBootDiskInitializeParamsPtrOutput)
+}
+func (o InstanceFromMachineImageBootDiskInitializeParamsOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageBootDiskInitializeParams) *string { return v.Image }).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceFromMachineImageBootDiskInitializeParamsOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageBootDiskInitializeParams) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+}
+
+func (o InstanceFromMachineImageBootDiskInitializeParamsOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageBootDiskInitializeParams) *int { return v.Size }).(pulumi.IntPtrOutput)
+}
+
+func (o InstanceFromMachineImageBootDiskInitializeParamsOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageBootDiskInitializeParams) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type InstanceFromMachineImageBootDiskInitializeParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceFromMachineImageBootDiskInitializeParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceFromMachineImageBootDiskInitializeParams)(nil)).Elem()
+}
+
+func (o InstanceFromMachineImageBootDiskInitializeParamsPtrOutput) ToInstanceFromMachineImageBootDiskInitializeParamsPtrOutput() InstanceFromMachineImageBootDiskInitializeParamsPtrOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageBootDiskInitializeParamsPtrOutput) ToInstanceFromMachineImageBootDiskInitializeParamsPtrOutputWithContext(ctx context.Context) InstanceFromMachineImageBootDiskInitializeParamsPtrOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageBootDiskInitializeParamsPtrOutput) Elem() InstanceFromMachineImageBootDiskInitializeParamsOutput {
+	return o.ApplyT(func(v *InstanceFromMachineImageBootDiskInitializeParams) InstanceFromMachineImageBootDiskInitializeParams {
+		return *v
+	}).(InstanceFromMachineImageBootDiskInitializeParamsOutput)
+}
+
+func (o InstanceFromMachineImageBootDiskInitializeParamsPtrOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceFromMachineImageBootDiskInitializeParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Image
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceFromMachineImageBootDiskInitializeParamsPtrOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *InstanceFromMachineImageBootDiskInitializeParams) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(pulumi.MapOutput)
+}
+
+func (o InstanceFromMachineImageBootDiskInitializeParamsPtrOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceFromMachineImageBootDiskInitializeParams) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Size
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o InstanceFromMachineImageBootDiskInitializeParamsPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceFromMachineImageBootDiskInitializeParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceFromMachineImageConfidentialInstanceConfig struct {
+	EnableConfidentialCompute bool `pulumi:"enableConfidentialCompute"`
+}
+
+// InstanceFromMachineImageConfidentialInstanceConfigInput is an input type that accepts InstanceFromMachineImageConfidentialInstanceConfigArgs and InstanceFromMachineImageConfidentialInstanceConfigOutput values.
+// You can construct a concrete instance of `InstanceFromMachineImageConfidentialInstanceConfigInput` via:
+//
+//          InstanceFromMachineImageConfidentialInstanceConfigArgs{...}
+type InstanceFromMachineImageConfidentialInstanceConfigInput interface {
+	pulumi.Input
+
+	ToInstanceFromMachineImageConfidentialInstanceConfigOutput() InstanceFromMachineImageConfidentialInstanceConfigOutput
+	ToInstanceFromMachineImageConfidentialInstanceConfigOutputWithContext(context.Context) InstanceFromMachineImageConfidentialInstanceConfigOutput
+}
+
+type InstanceFromMachineImageConfidentialInstanceConfigArgs struct {
+	EnableConfidentialCompute pulumi.BoolInput `pulumi:"enableConfidentialCompute"`
+}
+
+func (InstanceFromMachineImageConfidentialInstanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFromMachineImageConfidentialInstanceConfig)(nil)).Elem()
+}
+
+func (i InstanceFromMachineImageConfidentialInstanceConfigArgs) ToInstanceFromMachineImageConfidentialInstanceConfigOutput() InstanceFromMachineImageConfidentialInstanceConfigOutput {
+	return i.ToInstanceFromMachineImageConfidentialInstanceConfigOutputWithContext(context.Background())
+}
+
+func (i InstanceFromMachineImageConfidentialInstanceConfigArgs) ToInstanceFromMachineImageConfidentialInstanceConfigOutputWithContext(ctx context.Context) InstanceFromMachineImageConfidentialInstanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromMachineImageConfidentialInstanceConfigOutput)
+}
+
+func (i InstanceFromMachineImageConfidentialInstanceConfigArgs) ToInstanceFromMachineImageConfidentialInstanceConfigPtrOutput() InstanceFromMachineImageConfidentialInstanceConfigPtrOutput {
+	return i.ToInstanceFromMachineImageConfidentialInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceFromMachineImageConfidentialInstanceConfigArgs) ToInstanceFromMachineImageConfidentialInstanceConfigPtrOutputWithContext(ctx context.Context) InstanceFromMachineImageConfidentialInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromMachineImageConfidentialInstanceConfigOutput).ToInstanceFromMachineImageConfidentialInstanceConfigPtrOutputWithContext(ctx)
+}
+
+// InstanceFromMachineImageConfidentialInstanceConfigPtrInput is an input type that accepts InstanceFromMachineImageConfidentialInstanceConfigArgs, InstanceFromMachineImageConfidentialInstanceConfigPtr and InstanceFromMachineImageConfidentialInstanceConfigPtrOutput values.
+// You can construct a concrete instance of `InstanceFromMachineImageConfidentialInstanceConfigPtrInput` via:
+//
+//          InstanceFromMachineImageConfidentialInstanceConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type InstanceFromMachineImageConfidentialInstanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToInstanceFromMachineImageConfidentialInstanceConfigPtrOutput() InstanceFromMachineImageConfidentialInstanceConfigPtrOutput
+	ToInstanceFromMachineImageConfidentialInstanceConfigPtrOutputWithContext(context.Context) InstanceFromMachineImageConfidentialInstanceConfigPtrOutput
+}
+
+type instanceFromMachineImageConfidentialInstanceConfigPtrType InstanceFromMachineImageConfidentialInstanceConfigArgs
+
+func InstanceFromMachineImageConfidentialInstanceConfigPtr(v *InstanceFromMachineImageConfidentialInstanceConfigArgs) InstanceFromMachineImageConfidentialInstanceConfigPtrInput {
+	return (*instanceFromMachineImageConfidentialInstanceConfigPtrType)(v)
+}
+
+func (*instanceFromMachineImageConfidentialInstanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceFromMachineImageConfidentialInstanceConfig)(nil)).Elem()
+}
+
+func (i *instanceFromMachineImageConfidentialInstanceConfigPtrType) ToInstanceFromMachineImageConfidentialInstanceConfigPtrOutput() InstanceFromMachineImageConfidentialInstanceConfigPtrOutput {
+	return i.ToInstanceFromMachineImageConfidentialInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceFromMachineImageConfidentialInstanceConfigPtrType) ToInstanceFromMachineImageConfidentialInstanceConfigPtrOutputWithContext(ctx context.Context) InstanceFromMachineImageConfidentialInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromMachineImageConfidentialInstanceConfigPtrOutput)
+}
+
+type InstanceFromMachineImageConfidentialInstanceConfigOutput struct{ *pulumi.OutputState }
+
+func (InstanceFromMachineImageConfidentialInstanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFromMachineImageConfidentialInstanceConfig)(nil)).Elem()
+}
+
+func (o InstanceFromMachineImageConfidentialInstanceConfigOutput) ToInstanceFromMachineImageConfidentialInstanceConfigOutput() InstanceFromMachineImageConfidentialInstanceConfigOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageConfidentialInstanceConfigOutput) ToInstanceFromMachineImageConfidentialInstanceConfigOutputWithContext(ctx context.Context) InstanceFromMachineImageConfidentialInstanceConfigOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageConfidentialInstanceConfigOutput) ToInstanceFromMachineImageConfidentialInstanceConfigPtrOutput() InstanceFromMachineImageConfidentialInstanceConfigPtrOutput {
+	return o.ToInstanceFromMachineImageConfidentialInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceFromMachineImageConfidentialInstanceConfigOutput) ToInstanceFromMachineImageConfidentialInstanceConfigPtrOutputWithContext(ctx context.Context) InstanceFromMachineImageConfidentialInstanceConfigPtrOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageConfidentialInstanceConfig) *InstanceFromMachineImageConfidentialInstanceConfig {
+		return &v
+	}).(InstanceFromMachineImageConfidentialInstanceConfigPtrOutput)
+}
+func (o InstanceFromMachineImageConfidentialInstanceConfigOutput) EnableConfidentialCompute() pulumi.BoolOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageConfidentialInstanceConfig) bool { return v.EnableConfidentialCompute }).(pulumi.BoolOutput)
+}
+
+type InstanceFromMachineImageConfidentialInstanceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceFromMachineImageConfidentialInstanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceFromMachineImageConfidentialInstanceConfig)(nil)).Elem()
+}
+
+func (o InstanceFromMachineImageConfidentialInstanceConfigPtrOutput) ToInstanceFromMachineImageConfidentialInstanceConfigPtrOutput() InstanceFromMachineImageConfidentialInstanceConfigPtrOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageConfidentialInstanceConfigPtrOutput) ToInstanceFromMachineImageConfidentialInstanceConfigPtrOutputWithContext(ctx context.Context) InstanceFromMachineImageConfidentialInstanceConfigPtrOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageConfidentialInstanceConfigPtrOutput) Elem() InstanceFromMachineImageConfidentialInstanceConfigOutput {
+	return o.ApplyT(func(v *InstanceFromMachineImageConfidentialInstanceConfig) InstanceFromMachineImageConfidentialInstanceConfig {
+		return *v
+	}).(InstanceFromMachineImageConfidentialInstanceConfigOutput)
+}
+
+func (o InstanceFromMachineImageConfidentialInstanceConfigPtrOutput) EnableConfidentialCompute() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceFromMachineImageConfidentialInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnableConfidentialCompute
+	}).(pulumi.BoolPtrOutput)
+}
+
+type InstanceFromMachineImageGuestAccelerator struct {
+	Count int    `pulumi:"count"`
+	Type  string `pulumi:"type"`
+}
+
+// InstanceFromMachineImageGuestAcceleratorInput is an input type that accepts InstanceFromMachineImageGuestAcceleratorArgs and InstanceFromMachineImageGuestAcceleratorOutput values.
+// You can construct a concrete instance of `InstanceFromMachineImageGuestAcceleratorInput` via:
+//
+//          InstanceFromMachineImageGuestAcceleratorArgs{...}
+type InstanceFromMachineImageGuestAcceleratorInput interface {
+	pulumi.Input
+
+	ToInstanceFromMachineImageGuestAcceleratorOutput() InstanceFromMachineImageGuestAcceleratorOutput
+	ToInstanceFromMachineImageGuestAcceleratorOutputWithContext(context.Context) InstanceFromMachineImageGuestAcceleratorOutput
+}
+
+type InstanceFromMachineImageGuestAcceleratorArgs struct {
+	Count pulumi.IntInput    `pulumi:"count"`
+	Type  pulumi.StringInput `pulumi:"type"`
+}
+
+func (InstanceFromMachineImageGuestAcceleratorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFromMachineImageGuestAccelerator)(nil)).Elem()
+}
+
+func (i InstanceFromMachineImageGuestAcceleratorArgs) ToInstanceFromMachineImageGuestAcceleratorOutput() InstanceFromMachineImageGuestAcceleratorOutput {
+	return i.ToInstanceFromMachineImageGuestAcceleratorOutputWithContext(context.Background())
+}
+
+func (i InstanceFromMachineImageGuestAcceleratorArgs) ToInstanceFromMachineImageGuestAcceleratorOutputWithContext(ctx context.Context) InstanceFromMachineImageGuestAcceleratorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromMachineImageGuestAcceleratorOutput)
+}
+
+// InstanceFromMachineImageGuestAcceleratorArrayInput is an input type that accepts InstanceFromMachineImageGuestAcceleratorArray and InstanceFromMachineImageGuestAcceleratorArrayOutput values.
+// You can construct a concrete instance of `InstanceFromMachineImageGuestAcceleratorArrayInput` via:
+//
+//          InstanceFromMachineImageGuestAcceleratorArray{ InstanceFromMachineImageGuestAcceleratorArgs{...} }
+type InstanceFromMachineImageGuestAcceleratorArrayInput interface {
+	pulumi.Input
+
+	ToInstanceFromMachineImageGuestAcceleratorArrayOutput() InstanceFromMachineImageGuestAcceleratorArrayOutput
+	ToInstanceFromMachineImageGuestAcceleratorArrayOutputWithContext(context.Context) InstanceFromMachineImageGuestAcceleratorArrayOutput
+}
+
+type InstanceFromMachineImageGuestAcceleratorArray []InstanceFromMachineImageGuestAcceleratorInput
+
+func (InstanceFromMachineImageGuestAcceleratorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceFromMachineImageGuestAccelerator)(nil)).Elem()
+}
+
+func (i InstanceFromMachineImageGuestAcceleratorArray) ToInstanceFromMachineImageGuestAcceleratorArrayOutput() InstanceFromMachineImageGuestAcceleratorArrayOutput {
+	return i.ToInstanceFromMachineImageGuestAcceleratorArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceFromMachineImageGuestAcceleratorArray) ToInstanceFromMachineImageGuestAcceleratorArrayOutputWithContext(ctx context.Context) InstanceFromMachineImageGuestAcceleratorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromMachineImageGuestAcceleratorArrayOutput)
+}
+
+type InstanceFromMachineImageGuestAcceleratorOutput struct{ *pulumi.OutputState }
+
+func (InstanceFromMachineImageGuestAcceleratorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFromMachineImageGuestAccelerator)(nil)).Elem()
+}
+
+func (o InstanceFromMachineImageGuestAcceleratorOutput) ToInstanceFromMachineImageGuestAcceleratorOutput() InstanceFromMachineImageGuestAcceleratorOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageGuestAcceleratorOutput) ToInstanceFromMachineImageGuestAcceleratorOutputWithContext(ctx context.Context) InstanceFromMachineImageGuestAcceleratorOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageGuestAcceleratorOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageGuestAccelerator) int { return v.Count }).(pulumi.IntOutput)
+}
+
+func (o InstanceFromMachineImageGuestAcceleratorOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageGuestAccelerator) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type InstanceFromMachineImageGuestAcceleratorArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceFromMachineImageGuestAcceleratorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceFromMachineImageGuestAccelerator)(nil)).Elem()
+}
+
+func (o InstanceFromMachineImageGuestAcceleratorArrayOutput) ToInstanceFromMachineImageGuestAcceleratorArrayOutput() InstanceFromMachineImageGuestAcceleratorArrayOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageGuestAcceleratorArrayOutput) ToInstanceFromMachineImageGuestAcceleratorArrayOutputWithContext(ctx context.Context) InstanceFromMachineImageGuestAcceleratorArrayOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageGuestAcceleratorArrayOutput) Index(i pulumi.IntInput) InstanceFromMachineImageGuestAcceleratorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceFromMachineImageGuestAccelerator {
+		return vs[0].([]InstanceFromMachineImageGuestAccelerator)[vs[1].(int)]
+	}).(InstanceFromMachineImageGuestAcceleratorOutput)
+}
+
+type InstanceFromMachineImageNetworkInterface struct {
+	AccessConfigs []InstanceFromMachineImageNetworkInterfaceAccessConfig `pulumi:"accessConfigs"`
+	AliasIpRanges []InstanceFromMachineImageNetworkInterfaceAliasIpRange `pulumi:"aliasIpRanges"`
+	// A unique name for the resource, required by GCE.
+	// Changing this forces a new resource to be created.
+	Name              *string `pulumi:"name"`
+	Network           *string `pulumi:"network"`
+	NetworkIp         *string `pulumi:"networkIp"`
+	Subnetwork        *string `pulumi:"subnetwork"`
+	SubnetworkProject *string `pulumi:"subnetworkProject"`
+}
+
+// InstanceFromMachineImageNetworkInterfaceInput is an input type that accepts InstanceFromMachineImageNetworkInterfaceArgs and InstanceFromMachineImageNetworkInterfaceOutput values.
+// You can construct a concrete instance of `InstanceFromMachineImageNetworkInterfaceInput` via:
+//
+//          InstanceFromMachineImageNetworkInterfaceArgs{...}
+type InstanceFromMachineImageNetworkInterfaceInput interface {
+	pulumi.Input
+
+	ToInstanceFromMachineImageNetworkInterfaceOutput() InstanceFromMachineImageNetworkInterfaceOutput
+	ToInstanceFromMachineImageNetworkInterfaceOutputWithContext(context.Context) InstanceFromMachineImageNetworkInterfaceOutput
+}
+
+type InstanceFromMachineImageNetworkInterfaceArgs struct {
+	AccessConfigs InstanceFromMachineImageNetworkInterfaceAccessConfigArrayInput `pulumi:"accessConfigs"`
+	AliasIpRanges InstanceFromMachineImageNetworkInterfaceAliasIpRangeArrayInput `pulumi:"aliasIpRanges"`
+	// A unique name for the resource, required by GCE.
+	// Changing this forces a new resource to be created.
+	Name              pulumi.StringPtrInput `pulumi:"name"`
+	Network           pulumi.StringPtrInput `pulumi:"network"`
+	NetworkIp         pulumi.StringPtrInput `pulumi:"networkIp"`
+	Subnetwork        pulumi.StringPtrInput `pulumi:"subnetwork"`
+	SubnetworkProject pulumi.StringPtrInput `pulumi:"subnetworkProject"`
+}
+
+func (InstanceFromMachineImageNetworkInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFromMachineImageNetworkInterface)(nil)).Elem()
+}
+
+func (i InstanceFromMachineImageNetworkInterfaceArgs) ToInstanceFromMachineImageNetworkInterfaceOutput() InstanceFromMachineImageNetworkInterfaceOutput {
+	return i.ToInstanceFromMachineImageNetworkInterfaceOutputWithContext(context.Background())
+}
+
+func (i InstanceFromMachineImageNetworkInterfaceArgs) ToInstanceFromMachineImageNetworkInterfaceOutputWithContext(ctx context.Context) InstanceFromMachineImageNetworkInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromMachineImageNetworkInterfaceOutput)
+}
+
+// InstanceFromMachineImageNetworkInterfaceArrayInput is an input type that accepts InstanceFromMachineImageNetworkInterfaceArray and InstanceFromMachineImageNetworkInterfaceArrayOutput values.
+// You can construct a concrete instance of `InstanceFromMachineImageNetworkInterfaceArrayInput` via:
+//
+//          InstanceFromMachineImageNetworkInterfaceArray{ InstanceFromMachineImageNetworkInterfaceArgs{...} }
+type InstanceFromMachineImageNetworkInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToInstanceFromMachineImageNetworkInterfaceArrayOutput() InstanceFromMachineImageNetworkInterfaceArrayOutput
+	ToInstanceFromMachineImageNetworkInterfaceArrayOutputWithContext(context.Context) InstanceFromMachineImageNetworkInterfaceArrayOutput
+}
+
+type InstanceFromMachineImageNetworkInterfaceArray []InstanceFromMachineImageNetworkInterfaceInput
+
+func (InstanceFromMachineImageNetworkInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceFromMachineImageNetworkInterface)(nil)).Elem()
+}
+
+func (i InstanceFromMachineImageNetworkInterfaceArray) ToInstanceFromMachineImageNetworkInterfaceArrayOutput() InstanceFromMachineImageNetworkInterfaceArrayOutput {
+	return i.ToInstanceFromMachineImageNetworkInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceFromMachineImageNetworkInterfaceArray) ToInstanceFromMachineImageNetworkInterfaceArrayOutputWithContext(ctx context.Context) InstanceFromMachineImageNetworkInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromMachineImageNetworkInterfaceArrayOutput)
+}
+
+type InstanceFromMachineImageNetworkInterfaceOutput struct{ *pulumi.OutputState }
+
+func (InstanceFromMachineImageNetworkInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFromMachineImageNetworkInterface)(nil)).Elem()
+}
+
+func (o InstanceFromMachineImageNetworkInterfaceOutput) ToInstanceFromMachineImageNetworkInterfaceOutput() InstanceFromMachineImageNetworkInterfaceOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageNetworkInterfaceOutput) ToInstanceFromMachineImageNetworkInterfaceOutputWithContext(ctx context.Context) InstanceFromMachineImageNetworkInterfaceOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageNetworkInterfaceOutput) AccessConfigs() InstanceFromMachineImageNetworkInterfaceAccessConfigArrayOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageNetworkInterface) []InstanceFromMachineImageNetworkInterfaceAccessConfig {
+		return v.AccessConfigs
+	}).(InstanceFromMachineImageNetworkInterfaceAccessConfigArrayOutput)
+}
+
+func (o InstanceFromMachineImageNetworkInterfaceOutput) AliasIpRanges() InstanceFromMachineImageNetworkInterfaceAliasIpRangeArrayOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageNetworkInterface) []InstanceFromMachineImageNetworkInterfaceAliasIpRange {
+		return v.AliasIpRanges
+	}).(InstanceFromMachineImageNetworkInterfaceAliasIpRangeArrayOutput)
+}
+
+// A unique name for the resource, required by GCE.
+// Changing this forces a new resource to be created.
+func (o InstanceFromMachineImageNetworkInterfaceOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageNetworkInterface) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceFromMachineImageNetworkInterfaceOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageNetworkInterface) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceFromMachineImageNetworkInterfaceOutput) NetworkIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageNetworkInterface) *string { return v.NetworkIp }).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceFromMachineImageNetworkInterfaceOutput) Subnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageNetworkInterface) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceFromMachineImageNetworkInterfaceOutput) SubnetworkProject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageNetworkInterface) *string { return v.SubnetworkProject }).(pulumi.StringPtrOutput)
+}
+
+type InstanceFromMachineImageNetworkInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceFromMachineImageNetworkInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceFromMachineImageNetworkInterface)(nil)).Elem()
+}
+
+func (o InstanceFromMachineImageNetworkInterfaceArrayOutput) ToInstanceFromMachineImageNetworkInterfaceArrayOutput() InstanceFromMachineImageNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageNetworkInterfaceArrayOutput) ToInstanceFromMachineImageNetworkInterfaceArrayOutputWithContext(ctx context.Context) InstanceFromMachineImageNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) InstanceFromMachineImageNetworkInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceFromMachineImageNetworkInterface {
+		return vs[0].([]InstanceFromMachineImageNetworkInterface)[vs[1].(int)]
+	}).(InstanceFromMachineImageNetworkInterfaceOutput)
+}
+
+type InstanceFromMachineImageNetworkInterfaceAccessConfig struct {
+	NatIp               *string `pulumi:"natIp"`
+	NetworkTier         *string `pulumi:"networkTier"`
+	PublicPtrDomainName *string `pulumi:"publicPtrDomainName"`
+}
+
+// InstanceFromMachineImageNetworkInterfaceAccessConfigInput is an input type that accepts InstanceFromMachineImageNetworkInterfaceAccessConfigArgs and InstanceFromMachineImageNetworkInterfaceAccessConfigOutput values.
+// You can construct a concrete instance of `InstanceFromMachineImageNetworkInterfaceAccessConfigInput` via:
+//
+//          InstanceFromMachineImageNetworkInterfaceAccessConfigArgs{...}
+type InstanceFromMachineImageNetworkInterfaceAccessConfigInput interface {
+	pulumi.Input
+
+	ToInstanceFromMachineImageNetworkInterfaceAccessConfigOutput() InstanceFromMachineImageNetworkInterfaceAccessConfigOutput
+	ToInstanceFromMachineImageNetworkInterfaceAccessConfigOutputWithContext(context.Context) InstanceFromMachineImageNetworkInterfaceAccessConfigOutput
+}
+
+type InstanceFromMachineImageNetworkInterfaceAccessConfigArgs struct {
+	NatIp               pulumi.StringPtrInput `pulumi:"natIp"`
+	NetworkTier         pulumi.StringPtrInput `pulumi:"networkTier"`
+	PublicPtrDomainName pulumi.StringPtrInput `pulumi:"publicPtrDomainName"`
+}
+
+func (InstanceFromMachineImageNetworkInterfaceAccessConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFromMachineImageNetworkInterfaceAccessConfig)(nil)).Elem()
+}
+
+func (i InstanceFromMachineImageNetworkInterfaceAccessConfigArgs) ToInstanceFromMachineImageNetworkInterfaceAccessConfigOutput() InstanceFromMachineImageNetworkInterfaceAccessConfigOutput {
+	return i.ToInstanceFromMachineImageNetworkInterfaceAccessConfigOutputWithContext(context.Background())
+}
+
+func (i InstanceFromMachineImageNetworkInterfaceAccessConfigArgs) ToInstanceFromMachineImageNetworkInterfaceAccessConfigOutputWithContext(ctx context.Context) InstanceFromMachineImageNetworkInterfaceAccessConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromMachineImageNetworkInterfaceAccessConfigOutput)
+}
+
+// InstanceFromMachineImageNetworkInterfaceAccessConfigArrayInput is an input type that accepts InstanceFromMachineImageNetworkInterfaceAccessConfigArray and InstanceFromMachineImageNetworkInterfaceAccessConfigArrayOutput values.
+// You can construct a concrete instance of `InstanceFromMachineImageNetworkInterfaceAccessConfigArrayInput` via:
+//
+//          InstanceFromMachineImageNetworkInterfaceAccessConfigArray{ InstanceFromMachineImageNetworkInterfaceAccessConfigArgs{...} }
+type InstanceFromMachineImageNetworkInterfaceAccessConfigArrayInput interface {
+	pulumi.Input
+
+	ToInstanceFromMachineImageNetworkInterfaceAccessConfigArrayOutput() InstanceFromMachineImageNetworkInterfaceAccessConfigArrayOutput
+	ToInstanceFromMachineImageNetworkInterfaceAccessConfigArrayOutputWithContext(context.Context) InstanceFromMachineImageNetworkInterfaceAccessConfigArrayOutput
+}
+
+type InstanceFromMachineImageNetworkInterfaceAccessConfigArray []InstanceFromMachineImageNetworkInterfaceAccessConfigInput
+
+func (InstanceFromMachineImageNetworkInterfaceAccessConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceFromMachineImageNetworkInterfaceAccessConfig)(nil)).Elem()
+}
+
+func (i InstanceFromMachineImageNetworkInterfaceAccessConfigArray) ToInstanceFromMachineImageNetworkInterfaceAccessConfigArrayOutput() InstanceFromMachineImageNetworkInterfaceAccessConfigArrayOutput {
+	return i.ToInstanceFromMachineImageNetworkInterfaceAccessConfigArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceFromMachineImageNetworkInterfaceAccessConfigArray) ToInstanceFromMachineImageNetworkInterfaceAccessConfigArrayOutputWithContext(ctx context.Context) InstanceFromMachineImageNetworkInterfaceAccessConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromMachineImageNetworkInterfaceAccessConfigArrayOutput)
+}
+
+type InstanceFromMachineImageNetworkInterfaceAccessConfigOutput struct{ *pulumi.OutputState }
+
+func (InstanceFromMachineImageNetworkInterfaceAccessConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFromMachineImageNetworkInterfaceAccessConfig)(nil)).Elem()
+}
+
+func (o InstanceFromMachineImageNetworkInterfaceAccessConfigOutput) ToInstanceFromMachineImageNetworkInterfaceAccessConfigOutput() InstanceFromMachineImageNetworkInterfaceAccessConfigOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageNetworkInterfaceAccessConfigOutput) ToInstanceFromMachineImageNetworkInterfaceAccessConfigOutputWithContext(ctx context.Context) InstanceFromMachineImageNetworkInterfaceAccessConfigOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageNetworkInterfaceAccessConfigOutput) NatIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageNetworkInterfaceAccessConfig) *string { return v.NatIp }).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceFromMachineImageNetworkInterfaceAccessConfigOutput) NetworkTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageNetworkInterfaceAccessConfig) *string { return v.NetworkTier }).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceFromMachineImageNetworkInterfaceAccessConfigOutput) PublicPtrDomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageNetworkInterfaceAccessConfig) *string { return v.PublicPtrDomainName }).(pulumi.StringPtrOutput)
+}
+
+type InstanceFromMachineImageNetworkInterfaceAccessConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceFromMachineImageNetworkInterfaceAccessConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceFromMachineImageNetworkInterfaceAccessConfig)(nil)).Elem()
+}
+
+func (o InstanceFromMachineImageNetworkInterfaceAccessConfigArrayOutput) ToInstanceFromMachineImageNetworkInterfaceAccessConfigArrayOutput() InstanceFromMachineImageNetworkInterfaceAccessConfigArrayOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageNetworkInterfaceAccessConfigArrayOutput) ToInstanceFromMachineImageNetworkInterfaceAccessConfigArrayOutputWithContext(ctx context.Context) InstanceFromMachineImageNetworkInterfaceAccessConfigArrayOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageNetworkInterfaceAccessConfigArrayOutput) Index(i pulumi.IntInput) InstanceFromMachineImageNetworkInterfaceAccessConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceFromMachineImageNetworkInterfaceAccessConfig {
+		return vs[0].([]InstanceFromMachineImageNetworkInterfaceAccessConfig)[vs[1].(int)]
+	}).(InstanceFromMachineImageNetworkInterfaceAccessConfigOutput)
+}
+
+type InstanceFromMachineImageNetworkInterfaceAliasIpRange struct {
+	IpCidrRange         string  `pulumi:"ipCidrRange"`
+	SubnetworkRangeName *string `pulumi:"subnetworkRangeName"`
+}
+
+// InstanceFromMachineImageNetworkInterfaceAliasIpRangeInput is an input type that accepts InstanceFromMachineImageNetworkInterfaceAliasIpRangeArgs and InstanceFromMachineImageNetworkInterfaceAliasIpRangeOutput values.
+// You can construct a concrete instance of `InstanceFromMachineImageNetworkInterfaceAliasIpRangeInput` via:
+//
+//          InstanceFromMachineImageNetworkInterfaceAliasIpRangeArgs{...}
+type InstanceFromMachineImageNetworkInterfaceAliasIpRangeInput interface {
+	pulumi.Input
+
+	ToInstanceFromMachineImageNetworkInterfaceAliasIpRangeOutput() InstanceFromMachineImageNetworkInterfaceAliasIpRangeOutput
+	ToInstanceFromMachineImageNetworkInterfaceAliasIpRangeOutputWithContext(context.Context) InstanceFromMachineImageNetworkInterfaceAliasIpRangeOutput
+}
+
+type InstanceFromMachineImageNetworkInterfaceAliasIpRangeArgs struct {
+	IpCidrRange         pulumi.StringInput    `pulumi:"ipCidrRange"`
+	SubnetworkRangeName pulumi.StringPtrInput `pulumi:"subnetworkRangeName"`
+}
+
+func (InstanceFromMachineImageNetworkInterfaceAliasIpRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFromMachineImageNetworkInterfaceAliasIpRange)(nil)).Elem()
+}
+
+func (i InstanceFromMachineImageNetworkInterfaceAliasIpRangeArgs) ToInstanceFromMachineImageNetworkInterfaceAliasIpRangeOutput() InstanceFromMachineImageNetworkInterfaceAliasIpRangeOutput {
+	return i.ToInstanceFromMachineImageNetworkInterfaceAliasIpRangeOutputWithContext(context.Background())
+}
+
+func (i InstanceFromMachineImageNetworkInterfaceAliasIpRangeArgs) ToInstanceFromMachineImageNetworkInterfaceAliasIpRangeOutputWithContext(ctx context.Context) InstanceFromMachineImageNetworkInterfaceAliasIpRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromMachineImageNetworkInterfaceAliasIpRangeOutput)
+}
+
+// InstanceFromMachineImageNetworkInterfaceAliasIpRangeArrayInput is an input type that accepts InstanceFromMachineImageNetworkInterfaceAliasIpRangeArray and InstanceFromMachineImageNetworkInterfaceAliasIpRangeArrayOutput values.
+// You can construct a concrete instance of `InstanceFromMachineImageNetworkInterfaceAliasIpRangeArrayInput` via:
+//
+//          InstanceFromMachineImageNetworkInterfaceAliasIpRangeArray{ InstanceFromMachineImageNetworkInterfaceAliasIpRangeArgs{...} }
+type InstanceFromMachineImageNetworkInterfaceAliasIpRangeArrayInput interface {
+	pulumi.Input
+
+	ToInstanceFromMachineImageNetworkInterfaceAliasIpRangeArrayOutput() InstanceFromMachineImageNetworkInterfaceAliasIpRangeArrayOutput
+	ToInstanceFromMachineImageNetworkInterfaceAliasIpRangeArrayOutputWithContext(context.Context) InstanceFromMachineImageNetworkInterfaceAliasIpRangeArrayOutput
+}
+
+type InstanceFromMachineImageNetworkInterfaceAliasIpRangeArray []InstanceFromMachineImageNetworkInterfaceAliasIpRangeInput
+
+func (InstanceFromMachineImageNetworkInterfaceAliasIpRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceFromMachineImageNetworkInterfaceAliasIpRange)(nil)).Elem()
+}
+
+func (i InstanceFromMachineImageNetworkInterfaceAliasIpRangeArray) ToInstanceFromMachineImageNetworkInterfaceAliasIpRangeArrayOutput() InstanceFromMachineImageNetworkInterfaceAliasIpRangeArrayOutput {
+	return i.ToInstanceFromMachineImageNetworkInterfaceAliasIpRangeArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceFromMachineImageNetworkInterfaceAliasIpRangeArray) ToInstanceFromMachineImageNetworkInterfaceAliasIpRangeArrayOutputWithContext(ctx context.Context) InstanceFromMachineImageNetworkInterfaceAliasIpRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromMachineImageNetworkInterfaceAliasIpRangeArrayOutput)
+}
+
+type InstanceFromMachineImageNetworkInterfaceAliasIpRangeOutput struct{ *pulumi.OutputState }
+
+func (InstanceFromMachineImageNetworkInterfaceAliasIpRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFromMachineImageNetworkInterfaceAliasIpRange)(nil)).Elem()
+}
+
+func (o InstanceFromMachineImageNetworkInterfaceAliasIpRangeOutput) ToInstanceFromMachineImageNetworkInterfaceAliasIpRangeOutput() InstanceFromMachineImageNetworkInterfaceAliasIpRangeOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageNetworkInterfaceAliasIpRangeOutput) ToInstanceFromMachineImageNetworkInterfaceAliasIpRangeOutputWithContext(ctx context.Context) InstanceFromMachineImageNetworkInterfaceAliasIpRangeOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageNetworkInterfaceAliasIpRangeOutput) IpCidrRange() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageNetworkInterfaceAliasIpRange) string { return v.IpCidrRange }).(pulumi.StringOutput)
+}
+
+func (o InstanceFromMachineImageNetworkInterfaceAliasIpRangeOutput) SubnetworkRangeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageNetworkInterfaceAliasIpRange) *string { return v.SubnetworkRangeName }).(pulumi.StringPtrOutput)
+}
+
+type InstanceFromMachineImageNetworkInterfaceAliasIpRangeArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceFromMachineImageNetworkInterfaceAliasIpRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceFromMachineImageNetworkInterfaceAliasIpRange)(nil)).Elem()
+}
+
+func (o InstanceFromMachineImageNetworkInterfaceAliasIpRangeArrayOutput) ToInstanceFromMachineImageNetworkInterfaceAliasIpRangeArrayOutput() InstanceFromMachineImageNetworkInterfaceAliasIpRangeArrayOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageNetworkInterfaceAliasIpRangeArrayOutput) ToInstanceFromMachineImageNetworkInterfaceAliasIpRangeArrayOutputWithContext(ctx context.Context) InstanceFromMachineImageNetworkInterfaceAliasIpRangeArrayOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageNetworkInterfaceAliasIpRangeArrayOutput) Index(i pulumi.IntInput) InstanceFromMachineImageNetworkInterfaceAliasIpRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceFromMachineImageNetworkInterfaceAliasIpRange {
+		return vs[0].([]InstanceFromMachineImageNetworkInterfaceAliasIpRange)[vs[1].(int)]
+	}).(InstanceFromMachineImageNetworkInterfaceAliasIpRangeOutput)
+}
+
+type InstanceFromMachineImageScheduling struct {
+	AutomaticRestart  *bool                                            `pulumi:"automaticRestart"`
+	MinNodeCpus       *int                                             `pulumi:"minNodeCpus"`
+	NodeAffinities    []InstanceFromMachineImageSchedulingNodeAffinity `pulumi:"nodeAffinities"`
+	OnHostMaintenance *string                                          `pulumi:"onHostMaintenance"`
+	Preemptible       *bool                                            `pulumi:"preemptible"`
+}
+
+// InstanceFromMachineImageSchedulingInput is an input type that accepts InstanceFromMachineImageSchedulingArgs and InstanceFromMachineImageSchedulingOutput values.
+// You can construct a concrete instance of `InstanceFromMachineImageSchedulingInput` via:
+//
+//          InstanceFromMachineImageSchedulingArgs{...}
+type InstanceFromMachineImageSchedulingInput interface {
+	pulumi.Input
+
+	ToInstanceFromMachineImageSchedulingOutput() InstanceFromMachineImageSchedulingOutput
+	ToInstanceFromMachineImageSchedulingOutputWithContext(context.Context) InstanceFromMachineImageSchedulingOutput
+}
+
+type InstanceFromMachineImageSchedulingArgs struct {
+	AutomaticRestart  pulumi.BoolPtrInput                                      `pulumi:"automaticRestart"`
+	MinNodeCpus       pulumi.IntPtrInput                                       `pulumi:"minNodeCpus"`
+	NodeAffinities    InstanceFromMachineImageSchedulingNodeAffinityArrayInput `pulumi:"nodeAffinities"`
+	OnHostMaintenance pulumi.StringPtrInput                                    `pulumi:"onHostMaintenance"`
+	Preemptible       pulumi.BoolPtrInput                                      `pulumi:"preemptible"`
+}
+
+func (InstanceFromMachineImageSchedulingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFromMachineImageScheduling)(nil)).Elem()
+}
+
+func (i InstanceFromMachineImageSchedulingArgs) ToInstanceFromMachineImageSchedulingOutput() InstanceFromMachineImageSchedulingOutput {
+	return i.ToInstanceFromMachineImageSchedulingOutputWithContext(context.Background())
+}
+
+func (i InstanceFromMachineImageSchedulingArgs) ToInstanceFromMachineImageSchedulingOutputWithContext(ctx context.Context) InstanceFromMachineImageSchedulingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromMachineImageSchedulingOutput)
+}
+
+func (i InstanceFromMachineImageSchedulingArgs) ToInstanceFromMachineImageSchedulingPtrOutput() InstanceFromMachineImageSchedulingPtrOutput {
+	return i.ToInstanceFromMachineImageSchedulingPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceFromMachineImageSchedulingArgs) ToInstanceFromMachineImageSchedulingPtrOutputWithContext(ctx context.Context) InstanceFromMachineImageSchedulingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromMachineImageSchedulingOutput).ToInstanceFromMachineImageSchedulingPtrOutputWithContext(ctx)
+}
+
+// InstanceFromMachineImageSchedulingPtrInput is an input type that accepts InstanceFromMachineImageSchedulingArgs, InstanceFromMachineImageSchedulingPtr and InstanceFromMachineImageSchedulingPtrOutput values.
+// You can construct a concrete instance of `InstanceFromMachineImageSchedulingPtrInput` via:
+//
+//          InstanceFromMachineImageSchedulingArgs{...}
+//
+//  or:
+//
+//          nil
+type InstanceFromMachineImageSchedulingPtrInput interface {
+	pulumi.Input
+
+	ToInstanceFromMachineImageSchedulingPtrOutput() InstanceFromMachineImageSchedulingPtrOutput
+	ToInstanceFromMachineImageSchedulingPtrOutputWithContext(context.Context) InstanceFromMachineImageSchedulingPtrOutput
+}
+
+type instanceFromMachineImageSchedulingPtrType InstanceFromMachineImageSchedulingArgs
+
+func InstanceFromMachineImageSchedulingPtr(v *InstanceFromMachineImageSchedulingArgs) InstanceFromMachineImageSchedulingPtrInput {
+	return (*instanceFromMachineImageSchedulingPtrType)(v)
+}
+
+func (*instanceFromMachineImageSchedulingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceFromMachineImageScheduling)(nil)).Elem()
+}
+
+func (i *instanceFromMachineImageSchedulingPtrType) ToInstanceFromMachineImageSchedulingPtrOutput() InstanceFromMachineImageSchedulingPtrOutput {
+	return i.ToInstanceFromMachineImageSchedulingPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceFromMachineImageSchedulingPtrType) ToInstanceFromMachineImageSchedulingPtrOutputWithContext(ctx context.Context) InstanceFromMachineImageSchedulingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromMachineImageSchedulingPtrOutput)
+}
+
+type InstanceFromMachineImageSchedulingOutput struct{ *pulumi.OutputState }
+
+func (InstanceFromMachineImageSchedulingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFromMachineImageScheduling)(nil)).Elem()
+}
+
+func (o InstanceFromMachineImageSchedulingOutput) ToInstanceFromMachineImageSchedulingOutput() InstanceFromMachineImageSchedulingOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageSchedulingOutput) ToInstanceFromMachineImageSchedulingOutputWithContext(ctx context.Context) InstanceFromMachineImageSchedulingOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageSchedulingOutput) ToInstanceFromMachineImageSchedulingPtrOutput() InstanceFromMachineImageSchedulingPtrOutput {
+	return o.ToInstanceFromMachineImageSchedulingPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceFromMachineImageSchedulingOutput) ToInstanceFromMachineImageSchedulingPtrOutputWithContext(ctx context.Context) InstanceFromMachineImageSchedulingPtrOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageScheduling) *InstanceFromMachineImageScheduling {
+		return &v
+	}).(InstanceFromMachineImageSchedulingPtrOutput)
+}
+func (o InstanceFromMachineImageSchedulingOutput) AutomaticRestart() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageScheduling) *bool { return v.AutomaticRestart }).(pulumi.BoolPtrOutput)
+}
+
+func (o InstanceFromMachineImageSchedulingOutput) MinNodeCpus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageScheduling) *int { return v.MinNodeCpus }).(pulumi.IntPtrOutput)
+}
+
+func (o InstanceFromMachineImageSchedulingOutput) NodeAffinities() InstanceFromMachineImageSchedulingNodeAffinityArrayOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageScheduling) []InstanceFromMachineImageSchedulingNodeAffinity {
+		return v.NodeAffinities
+	}).(InstanceFromMachineImageSchedulingNodeAffinityArrayOutput)
+}
+
+func (o InstanceFromMachineImageSchedulingOutput) OnHostMaintenance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageScheduling) *string { return v.OnHostMaintenance }).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceFromMachineImageSchedulingOutput) Preemptible() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageScheduling) *bool { return v.Preemptible }).(pulumi.BoolPtrOutput)
+}
+
+type InstanceFromMachineImageSchedulingPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceFromMachineImageSchedulingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceFromMachineImageScheduling)(nil)).Elem()
+}
+
+func (o InstanceFromMachineImageSchedulingPtrOutput) ToInstanceFromMachineImageSchedulingPtrOutput() InstanceFromMachineImageSchedulingPtrOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageSchedulingPtrOutput) ToInstanceFromMachineImageSchedulingPtrOutputWithContext(ctx context.Context) InstanceFromMachineImageSchedulingPtrOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageSchedulingPtrOutput) Elem() InstanceFromMachineImageSchedulingOutput {
+	return o.ApplyT(func(v *InstanceFromMachineImageScheduling) InstanceFromMachineImageScheduling { return *v }).(InstanceFromMachineImageSchedulingOutput)
+}
+
+func (o InstanceFromMachineImageSchedulingPtrOutput) AutomaticRestart() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceFromMachineImageScheduling) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutomaticRestart
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o InstanceFromMachineImageSchedulingPtrOutput) MinNodeCpus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceFromMachineImageScheduling) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinNodeCpus
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o InstanceFromMachineImageSchedulingPtrOutput) NodeAffinities() InstanceFromMachineImageSchedulingNodeAffinityArrayOutput {
+	return o.ApplyT(func(v *InstanceFromMachineImageScheduling) []InstanceFromMachineImageSchedulingNodeAffinity {
+		if v == nil {
+			return nil
+		}
+		return v.NodeAffinities
+	}).(InstanceFromMachineImageSchedulingNodeAffinityArrayOutput)
+}
+
+func (o InstanceFromMachineImageSchedulingPtrOutput) OnHostMaintenance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceFromMachineImageScheduling) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OnHostMaintenance
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceFromMachineImageSchedulingPtrOutput) Preemptible() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceFromMachineImageScheduling) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Preemptible
+	}).(pulumi.BoolPtrOutput)
+}
+
+type InstanceFromMachineImageSchedulingNodeAffinity struct {
+	Key      string   `pulumi:"key"`
+	Operator string   `pulumi:"operator"`
+	Values   []string `pulumi:"values"`
+}
+
+// InstanceFromMachineImageSchedulingNodeAffinityInput is an input type that accepts InstanceFromMachineImageSchedulingNodeAffinityArgs and InstanceFromMachineImageSchedulingNodeAffinityOutput values.
+// You can construct a concrete instance of `InstanceFromMachineImageSchedulingNodeAffinityInput` via:
+//
+//          InstanceFromMachineImageSchedulingNodeAffinityArgs{...}
+type InstanceFromMachineImageSchedulingNodeAffinityInput interface {
+	pulumi.Input
+
+	ToInstanceFromMachineImageSchedulingNodeAffinityOutput() InstanceFromMachineImageSchedulingNodeAffinityOutput
+	ToInstanceFromMachineImageSchedulingNodeAffinityOutputWithContext(context.Context) InstanceFromMachineImageSchedulingNodeAffinityOutput
+}
+
+type InstanceFromMachineImageSchedulingNodeAffinityArgs struct {
+	Key      pulumi.StringInput      `pulumi:"key"`
+	Operator pulumi.StringInput      `pulumi:"operator"`
+	Values   pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (InstanceFromMachineImageSchedulingNodeAffinityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFromMachineImageSchedulingNodeAffinity)(nil)).Elem()
+}
+
+func (i InstanceFromMachineImageSchedulingNodeAffinityArgs) ToInstanceFromMachineImageSchedulingNodeAffinityOutput() InstanceFromMachineImageSchedulingNodeAffinityOutput {
+	return i.ToInstanceFromMachineImageSchedulingNodeAffinityOutputWithContext(context.Background())
+}
+
+func (i InstanceFromMachineImageSchedulingNodeAffinityArgs) ToInstanceFromMachineImageSchedulingNodeAffinityOutputWithContext(ctx context.Context) InstanceFromMachineImageSchedulingNodeAffinityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromMachineImageSchedulingNodeAffinityOutput)
+}
+
+// InstanceFromMachineImageSchedulingNodeAffinityArrayInput is an input type that accepts InstanceFromMachineImageSchedulingNodeAffinityArray and InstanceFromMachineImageSchedulingNodeAffinityArrayOutput values.
+// You can construct a concrete instance of `InstanceFromMachineImageSchedulingNodeAffinityArrayInput` via:
+//
+//          InstanceFromMachineImageSchedulingNodeAffinityArray{ InstanceFromMachineImageSchedulingNodeAffinityArgs{...} }
+type InstanceFromMachineImageSchedulingNodeAffinityArrayInput interface {
+	pulumi.Input
+
+	ToInstanceFromMachineImageSchedulingNodeAffinityArrayOutput() InstanceFromMachineImageSchedulingNodeAffinityArrayOutput
+	ToInstanceFromMachineImageSchedulingNodeAffinityArrayOutputWithContext(context.Context) InstanceFromMachineImageSchedulingNodeAffinityArrayOutput
+}
+
+type InstanceFromMachineImageSchedulingNodeAffinityArray []InstanceFromMachineImageSchedulingNodeAffinityInput
+
+func (InstanceFromMachineImageSchedulingNodeAffinityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceFromMachineImageSchedulingNodeAffinity)(nil)).Elem()
+}
+
+func (i InstanceFromMachineImageSchedulingNodeAffinityArray) ToInstanceFromMachineImageSchedulingNodeAffinityArrayOutput() InstanceFromMachineImageSchedulingNodeAffinityArrayOutput {
+	return i.ToInstanceFromMachineImageSchedulingNodeAffinityArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceFromMachineImageSchedulingNodeAffinityArray) ToInstanceFromMachineImageSchedulingNodeAffinityArrayOutputWithContext(ctx context.Context) InstanceFromMachineImageSchedulingNodeAffinityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromMachineImageSchedulingNodeAffinityArrayOutput)
+}
+
+type InstanceFromMachineImageSchedulingNodeAffinityOutput struct{ *pulumi.OutputState }
+
+func (InstanceFromMachineImageSchedulingNodeAffinityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFromMachineImageSchedulingNodeAffinity)(nil)).Elem()
+}
+
+func (o InstanceFromMachineImageSchedulingNodeAffinityOutput) ToInstanceFromMachineImageSchedulingNodeAffinityOutput() InstanceFromMachineImageSchedulingNodeAffinityOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageSchedulingNodeAffinityOutput) ToInstanceFromMachineImageSchedulingNodeAffinityOutputWithContext(ctx context.Context) InstanceFromMachineImageSchedulingNodeAffinityOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageSchedulingNodeAffinityOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageSchedulingNodeAffinity) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o InstanceFromMachineImageSchedulingNodeAffinityOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageSchedulingNodeAffinity) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+func (o InstanceFromMachineImageSchedulingNodeAffinityOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageSchedulingNodeAffinity) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type InstanceFromMachineImageSchedulingNodeAffinityArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceFromMachineImageSchedulingNodeAffinityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceFromMachineImageSchedulingNodeAffinity)(nil)).Elem()
+}
+
+func (o InstanceFromMachineImageSchedulingNodeAffinityArrayOutput) ToInstanceFromMachineImageSchedulingNodeAffinityArrayOutput() InstanceFromMachineImageSchedulingNodeAffinityArrayOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageSchedulingNodeAffinityArrayOutput) ToInstanceFromMachineImageSchedulingNodeAffinityArrayOutputWithContext(ctx context.Context) InstanceFromMachineImageSchedulingNodeAffinityArrayOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageSchedulingNodeAffinityArrayOutput) Index(i pulumi.IntInput) InstanceFromMachineImageSchedulingNodeAffinityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceFromMachineImageSchedulingNodeAffinity {
+		return vs[0].([]InstanceFromMachineImageSchedulingNodeAffinity)[vs[1].(int)]
+	}).(InstanceFromMachineImageSchedulingNodeAffinityOutput)
+}
+
+type InstanceFromMachineImageScratchDisk struct {
+	Interface string `pulumi:"interface"`
+}
+
+// InstanceFromMachineImageScratchDiskInput is an input type that accepts InstanceFromMachineImageScratchDiskArgs and InstanceFromMachineImageScratchDiskOutput values.
+// You can construct a concrete instance of `InstanceFromMachineImageScratchDiskInput` via:
+//
+//          InstanceFromMachineImageScratchDiskArgs{...}
+type InstanceFromMachineImageScratchDiskInput interface {
+	pulumi.Input
+
+	ToInstanceFromMachineImageScratchDiskOutput() InstanceFromMachineImageScratchDiskOutput
+	ToInstanceFromMachineImageScratchDiskOutputWithContext(context.Context) InstanceFromMachineImageScratchDiskOutput
+}
+
+type InstanceFromMachineImageScratchDiskArgs struct {
+	Interface pulumi.StringInput `pulumi:"interface"`
+}
+
+func (InstanceFromMachineImageScratchDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFromMachineImageScratchDisk)(nil)).Elem()
+}
+
+func (i InstanceFromMachineImageScratchDiskArgs) ToInstanceFromMachineImageScratchDiskOutput() InstanceFromMachineImageScratchDiskOutput {
+	return i.ToInstanceFromMachineImageScratchDiskOutputWithContext(context.Background())
+}
+
+func (i InstanceFromMachineImageScratchDiskArgs) ToInstanceFromMachineImageScratchDiskOutputWithContext(ctx context.Context) InstanceFromMachineImageScratchDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromMachineImageScratchDiskOutput)
+}
+
+// InstanceFromMachineImageScratchDiskArrayInput is an input type that accepts InstanceFromMachineImageScratchDiskArray and InstanceFromMachineImageScratchDiskArrayOutput values.
+// You can construct a concrete instance of `InstanceFromMachineImageScratchDiskArrayInput` via:
+//
+//          InstanceFromMachineImageScratchDiskArray{ InstanceFromMachineImageScratchDiskArgs{...} }
+type InstanceFromMachineImageScratchDiskArrayInput interface {
+	pulumi.Input
+
+	ToInstanceFromMachineImageScratchDiskArrayOutput() InstanceFromMachineImageScratchDiskArrayOutput
+	ToInstanceFromMachineImageScratchDiskArrayOutputWithContext(context.Context) InstanceFromMachineImageScratchDiskArrayOutput
+}
+
+type InstanceFromMachineImageScratchDiskArray []InstanceFromMachineImageScratchDiskInput
+
+func (InstanceFromMachineImageScratchDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceFromMachineImageScratchDisk)(nil)).Elem()
+}
+
+func (i InstanceFromMachineImageScratchDiskArray) ToInstanceFromMachineImageScratchDiskArrayOutput() InstanceFromMachineImageScratchDiskArrayOutput {
+	return i.ToInstanceFromMachineImageScratchDiskArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceFromMachineImageScratchDiskArray) ToInstanceFromMachineImageScratchDiskArrayOutputWithContext(ctx context.Context) InstanceFromMachineImageScratchDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromMachineImageScratchDiskArrayOutput)
+}
+
+type InstanceFromMachineImageScratchDiskOutput struct{ *pulumi.OutputState }
+
+func (InstanceFromMachineImageScratchDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFromMachineImageScratchDisk)(nil)).Elem()
+}
+
+func (o InstanceFromMachineImageScratchDiskOutput) ToInstanceFromMachineImageScratchDiskOutput() InstanceFromMachineImageScratchDiskOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageScratchDiskOutput) ToInstanceFromMachineImageScratchDiskOutputWithContext(ctx context.Context) InstanceFromMachineImageScratchDiskOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageScratchDiskOutput) Interface() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageScratchDisk) string { return v.Interface }).(pulumi.StringOutput)
+}
+
+type InstanceFromMachineImageScratchDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceFromMachineImageScratchDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceFromMachineImageScratchDisk)(nil)).Elem()
+}
+
+func (o InstanceFromMachineImageScratchDiskArrayOutput) ToInstanceFromMachineImageScratchDiskArrayOutput() InstanceFromMachineImageScratchDiskArrayOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageScratchDiskArrayOutput) ToInstanceFromMachineImageScratchDiskArrayOutputWithContext(ctx context.Context) InstanceFromMachineImageScratchDiskArrayOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageScratchDiskArrayOutput) Index(i pulumi.IntInput) InstanceFromMachineImageScratchDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceFromMachineImageScratchDisk {
+		return vs[0].([]InstanceFromMachineImageScratchDisk)[vs[1].(int)]
+	}).(InstanceFromMachineImageScratchDiskOutput)
+}
+
+type InstanceFromMachineImageServiceAccount struct {
+	Email  *string  `pulumi:"email"`
+	Scopes []string `pulumi:"scopes"`
+}
+
+// InstanceFromMachineImageServiceAccountInput is an input type that accepts InstanceFromMachineImageServiceAccountArgs and InstanceFromMachineImageServiceAccountOutput values.
+// You can construct a concrete instance of `InstanceFromMachineImageServiceAccountInput` via:
+//
+//          InstanceFromMachineImageServiceAccountArgs{...}
+type InstanceFromMachineImageServiceAccountInput interface {
+	pulumi.Input
+
+	ToInstanceFromMachineImageServiceAccountOutput() InstanceFromMachineImageServiceAccountOutput
+	ToInstanceFromMachineImageServiceAccountOutputWithContext(context.Context) InstanceFromMachineImageServiceAccountOutput
+}
+
+type InstanceFromMachineImageServiceAccountArgs struct {
+	Email  pulumi.StringPtrInput   `pulumi:"email"`
+	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
+}
+
+func (InstanceFromMachineImageServiceAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFromMachineImageServiceAccount)(nil)).Elem()
+}
+
+func (i InstanceFromMachineImageServiceAccountArgs) ToInstanceFromMachineImageServiceAccountOutput() InstanceFromMachineImageServiceAccountOutput {
+	return i.ToInstanceFromMachineImageServiceAccountOutputWithContext(context.Background())
+}
+
+func (i InstanceFromMachineImageServiceAccountArgs) ToInstanceFromMachineImageServiceAccountOutputWithContext(ctx context.Context) InstanceFromMachineImageServiceAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromMachineImageServiceAccountOutput)
+}
+
+func (i InstanceFromMachineImageServiceAccountArgs) ToInstanceFromMachineImageServiceAccountPtrOutput() InstanceFromMachineImageServiceAccountPtrOutput {
+	return i.ToInstanceFromMachineImageServiceAccountPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceFromMachineImageServiceAccountArgs) ToInstanceFromMachineImageServiceAccountPtrOutputWithContext(ctx context.Context) InstanceFromMachineImageServiceAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromMachineImageServiceAccountOutput).ToInstanceFromMachineImageServiceAccountPtrOutputWithContext(ctx)
+}
+
+// InstanceFromMachineImageServiceAccountPtrInput is an input type that accepts InstanceFromMachineImageServiceAccountArgs, InstanceFromMachineImageServiceAccountPtr and InstanceFromMachineImageServiceAccountPtrOutput values.
+// You can construct a concrete instance of `InstanceFromMachineImageServiceAccountPtrInput` via:
+//
+//          InstanceFromMachineImageServiceAccountArgs{...}
+//
+//  or:
+//
+//          nil
+type InstanceFromMachineImageServiceAccountPtrInput interface {
+	pulumi.Input
+
+	ToInstanceFromMachineImageServiceAccountPtrOutput() InstanceFromMachineImageServiceAccountPtrOutput
+	ToInstanceFromMachineImageServiceAccountPtrOutputWithContext(context.Context) InstanceFromMachineImageServiceAccountPtrOutput
+}
+
+type instanceFromMachineImageServiceAccountPtrType InstanceFromMachineImageServiceAccountArgs
+
+func InstanceFromMachineImageServiceAccountPtr(v *InstanceFromMachineImageServiceAccountArgs) InstanceFromMachineImageServiceAccountPtrInput {
+	return (*instanceFromMachineImageServiceAccountPtrType)(v)
+}
+
+func (*instanceFromMachineImageServiceAccountPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceFromMachineImageServiceAccount)(nil)).Elem()
+}
+
+func (i *instanceFromMachineImageServiceAccountPtrType) ToInstanceFromMachineImageServiceAccountPtrOutput() InstanceFromMachineImageServiceAccountPtrOutput {
+	return i.ToInstanceFromMachineImageServiceAccountPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceFromMachineImageServiceAccountPtrType) ToInstanceFromMachineImageServiceAccountPtrOutputWithContext(ctx context.Context) InstanceFromMachineImageServiceAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromMachineImageServiceAccountPtrOutput)
+}
+
+type InstanceFromMachineImageServiceAccountOutput struct{ *pulumi.OutputState }
+
+func (InstanceFromMachineImageServiceAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFromMachineImageServiceAccount)(nil)).Elem()
+}
+
+func (o InstanceFromMachineImageServiceAccountOutput) ToInstanceFromMachineImageServiceAccountOutput() InstanceFromMachineImageServiceAccountOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageServiceAccountOutput) ToInstanceFromMachineImageServiceAccountOutputWithContext(ctx context.Context) InstanceFromMachineImageServiceAccountOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageServiceAccountOutput) ToInstanceFromMachineImageServiceAccountPtrOutput() InstanceFromMachineImageServiceAccountPtrOutput {
+	return o.ToInstanceFromMachineImageServiceAccountPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceFromMachineImageServiceAccountOutput) ToInstanceFromMachineImageServiceAccountPtrOutputWithContext(ctx context.Context) InstanceFromMachineImageServiceAccountPtrOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageServiceAccount) *InstanceFromMachineImageServiceAccount {
+		return &v
+	}).(InstanceFromMachineImageServiceAccountPtrOutput)
+}
+func (o InstanceFromMachineImageServiceAccountOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageServiceAccount) *string { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceFromMachineImageServiceAccountOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageServiceAccount) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+type InstanceFromMachineImageServiceAccountPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceFromMachineImageServiceAccountPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceFromMachineImageServiceAccount)(nil)).Elem()
+}
+
+func (o InstanceFromMachineImageServiceAccountPtrOutput) ToInstanceFromMachineImageServiceAccountPtrOutput() InstanceFromMachineImageServiceAccountPtrOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageServiceAccountPtrOutput) ToInstanceFromMachineImageServiceAccountPtrOutputWithContext(ctx context.Context) InstanceFromMachineImageServiceAccountPtrOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageServiceAccountPtrOutput) Elem() InstanceFromMachineImageServiceAccountOutput {
+	return o.ApplyT(func(v *InstanceFromMachineImageServiceAccount) InstanceFromMachineImageServiceAccount { return *v }).(InstanceFromMachineImageServiceAccountOutput)
+}
+
+func (o InstanceFromMachineImageServiceAccountPtrOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceFromMachineImageServiceAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Email
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceFromMachineImageServiceAccountPtrOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *InstanceFromMachineImageServiceAccount) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Scopes
+	}).(pulumi.StringArrayOutput)
+}
+
+type InstanceFromMachineImageShieldedInstanceConfig struct {
+	EnableIntegrityMonitoring *bool `pulumi:"enableIntegrityMonitoring"`
+	EnableSecureBoot          *bool `pulumi:"enableSecureBoot"`
+	EnableVtpm                *bool `pulumi:"enableVtpm"`
+}
+
+// InstanceFromMachineImageShieldedInstanceConfigInput is an input type that accepts InstanceFromMachineImageShieldedInstanceConfigArgs and InstanceFromMachineImageShieldedInstanceConfigOutput values.
+// You can construct a concrete instance of `InstanceFromMachineImageShieldedInstanceConfigInput` via:
+//
+//          InstanceFromMachineImageShieldedInstanceConfigArgs{...}
+type InstanceFromMachineImageShieldedInstanceConfigInput interface {
+	pulumi.Input
+
+	ToInstanceFromMachineImageShieldedInstanceConfigOutput() InstanceFromMachineImageShieldedInstanceConfigOutput
+	ToInstanceFromMachineImageShieldedInstanceConfigOutputWithContext(context.Context) InstanceFromMachineImageShieldedInstanceConfigOutput
+}
+
+type InstanceFromMachineImageShieldedInstanceConfigArgs struct {
+	EnableIntegrityMonitoring pulumi.BoolPtrInput `pulumi:"enableIntegrityMonitoring"`
+	EnableSecureBoot          pulumi.BoolPtrInput `pulumi:"enableSecureBoot"`
+	EnableVtpm                pulumi.BoolPtrInput `pulumi:"enableVtpm"`
+}
+
+func (InstanceFromMachineImageShieldedInstanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFromMachineImageShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (i InstanceFromMachineImageShieldedInstanceConfigArgs) ToInstanceFromMachineImageShieldedInstanceConfigOutput() InstanceFromMachineImageShieldedInstanceConfigOutput {
+	return i.ToInstanceFromMachineImageShieldedInstanceConfigOutputWithContext(context.Background())
+}
+
+func (i InstanceFromMachineImageShieldedInstanceConfigArgs) ToInstanceFromMachineImageShieldedInstanceConfigOutputWithContext(ctx context.Context) InstanceFromMachineImageShieldedInstanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromMachineImageShieldedInstanceConfigOutput)
+}
+
+func (i InstanceFromMachineImageShieldedInstanceConfigArgs) ToInstanceFromMachineImageShieldedInstanceConfigPtrOutput() InstanceFromMachineImageShieldedInstanceConfigPtrOutput {
+	return i.ToInstanceFromMachineImageShieldedInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceFromMachineImageShieldedInstanceConfigArgs) ToInstanceFromMachineImageShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) InstanceFromMachineImageShieldedInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromMachineImageShieldedInstanceConfigOutput).ToInstanceFromMachineImageShieldedInstanceConfigPtrOutputWithContext(ctx)
+}
+
+// InstanceFromMachineImageShieldedInstanceConfigPtrInput is an input type that accepts InstanceFromMachineImageShieldedInstanceConfigArgs, InstanceFromMachineImageShieldedInstanceConfigPtr and InstanceFromMachineImageShieldedInstanceConfigPtrOutput values.
+// You can construct a concrete instance of `InstanceFromMachineImageShieldedInstanceConfigPtrInput` via:
+//
+//          InstanceFromMachineImageShieldedInstanceConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type InstanceFromMachineImageShieldedInstanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToInstanceFromMachineImageShieldedInstanceConfigPtrOutput() InstanceFromMachineImageShieldedInstanceConfigPtrOutput
+	ToInstanceFromMachineImageShieldedInstanceConfigPtrOutputWithContext(context.Context) InstanceFromMachineImageShieldedInstanceConfigPtrOutput
+}
+
+type instanceFromMachineImageShieldedInstanceConfigPtrType InstanceFromMachineImageShieldedInstanceConfigArgs
+
+func InstanceFromMachineImageShieldedInstanceConfigPtr(v *InstanceFromMachineImageShieldedInstanceConfigArgs) InstanceFromMachineImageShieldedInstanceConfigPtrInput {
+	return (*instanceFromMachineImageShieldedInstanceConfigPtrType)(v)
+}
+
+func (*instanceFromMachineImageShieldedInstanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceFromMachineImageShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (i *instanceFromMachineImageShieldedInstanceConfigPtrType) ToInstanceFromMachineImageShieldedInstanceConfigPtrOutput() InstanceFromMachineImageShieldedInstanceConfigPtrOutput {
+	return i.ToInstanceFromMachineImageShieldedInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceFromMachineImageShieldedInstanceConfigPtrType) ToInstanceFromMachineImageShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) InstanceFromMachineImageShieldedInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromMachineImageShieldedInstanceConfigPtrOutput)
+}
+
+type InstanceFromMachineImageShieldedInstanceConfigOutput struct{ *pulumi.OutputState }
+
+func (InstanceFromMachineImageShieldedInstanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFromMachineImageShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (o InstanceFromMachineImageShieldedInstanceConfigOutput) ToInstanceFromMachineImageShieldedInstanceConfigOutput() InstanceFromMachineImageShieldedInstanceConfigOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageShieldedInstanceConfigOutput) ToInstanceFromMachineImageShieldedInstanceConfigOutputWithContext(ctx context.Context) InstanceFromMachineImageShieldedInstanceConfigOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageShieldedInstanceConfigOutput) ToInstanceFromMachineImageShieldedInstanceConfigPtrOutput() InstanceFromMachineImageShieldedInstanceConfigPtrOutput {
+	return o.ToInstanceFromMachineImageShieldedInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceFromMachineImageShieldedInstanceConfigOutput) ToInstanceFromMachineImageShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) InstanceFromMachineImageShieldedInstanceConfigPtrOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageShieldedInstanceConfig) *InstanceFromMachineImageShieldedInstanceConfig {
+		return &v
+	}).(InstanceFromMachineImageShieldedInstanceConfigPtrOutput)
+}
+func (o InstanceFromMachineImageShieldedInstanceConfigOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageShieldedInstanceConfig) *bool { return v.EnableIntegrityMonitoring }).(pulumi.BoolPtrOutput)
+}
+
+func (o InstanceFromMachineImageShieldedInstanceConfigOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageShieldedInstanceConfig) *bool { return v.EnableSecureBoot }).(pulumi.BoolPtrOutput)
+}
+
+func (o InstanceFromMachineImageShieldedInstanceConfigOutput) EnableVtpm() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageShieldedInstanceConfig) *bool { return v.EnableVtpm }).(pulumi.BoolPtrOutput)
+}
+
+type InstanceFromMachineImageShieldedInstanceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceFromMachineImageShieldedInstanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceFromMachineImageShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (o InstanceFromMachineImageShieldedInstanceConfigPtrOutput) ToInstanceFromMachineImageShieldedInstanceConfigPtrOutput() InstanceFromMachineImageShieldedInstanceConfigPtrOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageShieldedInstanceConfigPtrOutput) ToInstanceFromMachineImageShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) InstanceFromMachineImageShieldedInstanceConfigPtrOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageShieldedInstanceConfigPtrOutput) Elem() InstanceFromMachineImageShieldedInstanceConfigOutput {
+	return o.ApplyT(func(v *InstanceFromMachineImageShieldedInstanceConfig) InstanceFromMachineImageShieldedInstanceConfig {
+		return *v
+	}).(InstanceFromMachineImageShieldedInstanceConfigOutput)
+}
+
+func (o InstanceFromMachineImageShieldedInstanceConfigPtrOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceFromMachineImageShieldedInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableIntegrityMonitoring
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o InstanceFromMachineImageShieldedInstanceConfigPtrOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceFromMachineImageShieldedInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableSecureBoot
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o InstanceFromMachineImageShieldedInstanceConfigPtrOutput) EnableVtpm() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceFromMachineImageShieldedInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableVtpm
+	}).(pulumi.BoolPtrOutput)
+}
+
 type InstanceFromTemplateAttachedDisk struct {
 	DeviceName              *string `pulumi:"deviceName"`
 	DiskEncryptionKeyRaw    *string `pulumi:"diskEncryptionKeyRaw"`
@@ -17110,6 +18806,552 @@ func (o InterconnectAttachmentPrivateInterconnectInfoArrayOutput) Index(i pulumi
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InterconnectAttachmentPrivateInterconnectInfo {
 		return vs[0].([]InterconnectAttachmentPrivateInterconnectInfo)[vs[1].(int)]
 	}).(InterconnectAttachmentPrivateInterconnectInfoOutput)
+}
+
+type MachineImageIamBindingCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
+}
+
+// MachineImageIamBindingConditionInput is an input type that accepts MachineImageIamBindingConditionArgs and MachineImageIamBindingConditionOutput values.
+// You can construct a concrete instance of `MachineImageIamBindingConditionInput` via:
+//
+//          MachineImageIamBindingConditionArgs{...}
+type MachineImageIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToMachineImageIamBindingConditionOutput() MachineImageIamBindingConditionOutput
+	ToMachineImageIamBindingConditionOutputWithContext(context.Context) MachineImageIamBindingConditionOutput
+}
+
+type MachineImageIamBindingConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (MachineImageIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MachineImageIamBindingCondition)(nil)).Elem()
+}
+
+func (i MachineImageIamBindingConditionArgs) ToMachineImageIamBindingConditionOutput() MachineImageIamBindingConditionOutput {
+	return i.ToMachineImageIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i MachineImageIamBindingConditionArgs) ToMachineImageIamBindingConditionOutputWithContext(ctx context.Context) MachineImageIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MachineImageIamBindingConditionOutput)
+}
+
+func (i MachineImageIamBindingConditionArgs) ToMachineImageIamBindingConditionPtrOutput() MachineImageIamBindingConditionPtrOutput {
+	return i.ToMachineImageIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i MachineImageIamBindingConditionArgs) ToMachineImageIamBindingConditionPtrOutputWithContext(ctx context.Context) MachineImageIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MachineImageIamBindingConditionOutput).ToMachineImageIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// MachineImageIamBindingConditionPtrInput is an input type that accepts MachineImageIamBindingConditionArgs, MachineImageIamBindingConditionPtr and MachineImageIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `MachineImageIamBindingConditionPtrInput` via:
+//
+//          MachineImageIamBindingConditionArgs{...}
+//
+//  or:
+//
+//          nil
+type MachineImageIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToMachineImageIamBindingConditionPtrOutput() MachineImageIamBindingConditionPtrOutput
+	ToMachineImageIamBindingConditionPtrOutputWithContext(context.Context) MachineImageIamBindingConditionPtrOutput
+}
+
+type machineImageIamBindingConditionPtrType MachineImageIamBindingConditionArgs
+
+func MachineImageIamBindingConditionPtr(v *MachineImageIamBindingConditionArgs) MachineImageIamBindingConditionPtrInput {
+	return (*machineImageIamBindingConditionPtrType)(v)
+}
+
+func (*machineImageIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MachineImageIamBindingCondition)(nil)).Elem()
+}
+
+func (i *machineImageIamBindingConditionPtrType) ToMachineImageIamBindingConditionPtrOutput() MachineImageIamBindingConditionPtrOutput {
+	return i.ToMachineImageIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *machineImageIamBindingConditionPtrType) ToMachineImageIamBindingConditionPtrOutputWithContext(ctx context.Context) MachineImageIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MachineImageIamBindingConditionPtrOutput)
+}
+
+type MachineImageIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (MachineImageIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MachineImageIamBindingCondition)(nil)).Elem()
+}
+
+func (o MachineImageIamBindingConditionOutput) ToMachineImageIamBindingConditionOutput() MachineImageIamBindingConditionOutput {
+	return o
+}
+
+func (o MachineImageIamBindingConditionOutput) ToMachineImageIamBindingConditionOutputWithContext(ctx context.Context) MachineImageIamBindingConditionOutput {
+	return o
+}
+
+func (o MachineImageIamBindingConditionOutput) ToMachineImageIamBindingConditionPtrOutput() MachineImageIamBindingConditionPtrOutput {
+	return o.ToMachineImageIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o MachineImageIamBindingConditionOutput) ToMachineImageIamBindingConditionPtrOutputWithContext(ctx context.Context) MachineImageIamBindingConditionPtrOutput {
+	return o.ApplyT(func(v MachineImageIamBindingCondition) *MachineImageIamBindingCondition {
+		return &v
+	}).(MachineImageIamBindingConditionPtrOutput)
+}
+
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+func (o MachineImageIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineImageIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o MachineImageIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v MachineImageIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o MachineImageIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v MachineImageIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type MachineImageIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (MachineImageIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MachineImageIamBindingCondition)(nil)).Elem()
+}
+
+func (o MachineImageIamBindingConditionPtrOutput) ToMachineImageIamBindingConditionPtrOutput() MachineImageIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o MachineImageIamBindingConditionPtrOutput) ToMachineImageIamBindingConditionPtrOutputWithContext(ctx context.Context) MachineImageIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o MachineImageIamBindingConditionPtrOutput) Elem() MachineImageIamBindingConditionOutput {
+	return o.ApplyT(func(v *MachineImageIamBindingCondition) MachineImageIamBindingCondition { return *v }).(MachineImageIamBindingConditionOutput)
+}
+
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+func (o MachineImageIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineImageIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o MachineImageIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineImageIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o MachineImageIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineImageIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type MachineImageIamMemberCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
+}
+
+// MachineImageIamMemberConditionInput is an input type that accepts MachineImageIamMemberConditionArgs and MachineImageIamMemberConditionOutput values.
+// You can construct a concrete instance of `MachineImageIamMemberConditionInput` via:
+//
+//          MachineImageIamMemberConditionArgs{...}
+type MachineImageIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToMachineImageIamMemberConditionOutput() MachineImageIamMemberConditionOutput
+	ToMachineImageIamMemberConditionOutputWithContext(context.Context) MachineImageIamMemberConditionOutput
+}
+
+type MachineImageIamMemberConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (MachineImageIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MachineImageIamMemberCondition)(nil)).Elem()
+}
+
+func (i MachineImageIamMemberConditionArgs) ToMachineImageIamMemberConditionOutput() MachineImageIamMemberConditionOutput {
+	return i.ToMachineImageIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i MachineImageIamMemberConditionArgs) ToMachineImageIamMemberConditionOutputWithContext(ctx context.Context) MachineImageIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MachineImageIamMemberConditionOutput)
+}
+
+func (i MachineImageIamMemberConditionArgs) ToMachineImageIamMemberConditionPtrOutput() MachineImageIamMemberConditionPtrOutput {
+	return i.ToMachineImageIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i MachineImageIamMemberConditionArgs) ToMachineImageIamMemberConditionPtrOutputWithContext(ctx context.Context) MachineImageIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MachineImageIamMemberConditionOutput).ToMachineImageIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// MachineImageIamMemberConditionPtrInput is an input type that accepts MachineImageIamMemberConditionArgs, MachineImageIamMemberConditionPtr and MachineImageIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `MachineImageIamMemberConditionPtrInput` via:
+//
+//          MachineImageIamMemberConditionArgs{...}
+//
+//  or:
+//
+//          nil
+type MachineImageIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToMachineImageIamMemberConditionPtrOutput() MachineImageIamMemberConditionPtrOutput
+	ToMachineImageIamMemberConditionPtrOutputWithContext(context.Context) MachineImageIamMemberConditionPtrOutput
+}
+
+type machineImageIamMemberConditionPtrType MachineImageIamMemberConditionArgs
+
+func MachineImageIamMemberConditionPtr(v *MachineImageIamMemberConditionArgs) MachineImageIamMemberConditionPtrInput {
+	return (*machineImageIamMemberConditionPtrType)(v)
+}
+
+func (*machineImageIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MachineImageIamMemberCondition)(nil)).Elem()
+}
+
+func (i *machineImageIamMemberConditionPtrType) ToMachineImageIamMemberConditionPtrOutput() MachineImageIamMemberConditionPtrOutput {
+	return i.ToMachineImageIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *machineImageIamMemberConditionPtrType) ToMachineImageIamMemberConditionPtrOutputWithContext(ctx context.Context) MachineImageIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MachineImageIamMemberConditionPtrOutput)
+}
+
+type MachineImageIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (MachineImageIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MachineImageIamMemberCondition)(nil)).Elem()
+}
+
+func (o MachineImageIamMemberConditionOutput) ToMachineImageIamMemberConditionOutput() MachineImageIamMemberConditionOutput {
+	return o
+}
+
+func (o MachineImageIamMemberConditionOutput) ToMachineImageIamMemberConditionOutputWithContext(ctx context.Context) MachineImageIamMemberConditionOutput {
+	return o
+}
+
+func (o MachineImageIamMemberConditionOutput) ToMachineImageIamMemberConditionPtrOutput() MachineImageIamMemberConditionPtrOutput {
+	return o.ToMachineImageIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o MachineImageIamMemberConditionOutput) ToMachineImageIamMemberConditionPtrOutputWithContext(ctx context.Context) MachineImageIamMemberConditionPtrOutput {
+	return o.ApplyT(func(v MachineImageIamMemberCondition) *MachineImageIamMemberCondition {
+		return &v
+	}).(MachineImageIamMemberConditionPtrOutput)
+}
+
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+func (o MachineImageIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineImageIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o MachineImageIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v MachineImageIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o MachineImageIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v MachineImageIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type MachineImageIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (MachineImageIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MachineImageIamMemberCondition)(nil)).Elem()
+}
+
+func (o MachineImageIamMemberConditionPtrOutput) ToMachineImageIamMemberConditionPtrOutput() MachineImageIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o MachineImageIamMemberConditionPtrOutput) ToMachineImageIamMemberConditionPtrOutputWithContext(ctx context.Context) MachineImageIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o MachineImageIamMemberConditionPtrOutput) Elem() MachineImageIamMemberConditionOutput {
+	return o.ApplyT(func(v *MachineImageIamMemberCondition) MachineImageIamMemberCondition { return *v }).(MachineImageIamMemberConditionOutput)
+}
+
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+func (o MachineImageIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineImageIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o MachineImageIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineImageIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o MachineImageIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineImageIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type MachineImageMachineImageEncryptionKey struct {
+	// -
+	// The name of the encryption key that is stored in Google Cloud KMS.
+	KmsKeyName *string `pulumi:"kmsKeyName"`
+	// The service account used for the encryption request for the given KMS key.
+	// If absent, the Compute Engine Service Agent service account is used.
+	KmsKeyServiceAccount *string `pulumi:"kmsKeyServiceAccount"`
+	// Specifies a 256-bit customer-supplied encryption key, encoded in
+	// RFC 4648 base64 to either encrypt or decrypt this resource.
+	RawKey *string `pulumi:"rawKey"`
+	// -
+	// The RFC 4648 base64 encoded SHA-256 hash of the
+	// customer-supplied encryption key that protects this resource.
+	Sha256 *string `pulumi:"sha256"`
+}
+
+// MachineImageMachineImageEncryptionKeyInput is an input type that accepts MachineImageMachineImageEncryptionKeyArgs and MachineImageMachineImageEncryptionKeyOutput values.
+// You can construct a concrete instance of `MachineImageMachineImageEncryptionKeyInput` via:
+//
+//          MachineImageMachineImageEncryptionKeyArgs{...}
+type MachineImageMachineImageEncryptionKeyInput interface {
+	pulumi.Input
+
+	ToMachineImageMachineImageEncryptionKeyOutput() MachineImageMachineImageEncryptionKeyOutput
+	ToMachineImageMachineImageEncryptionKeyOutputWithContext(context.Context) MachineImageMachineImageEncryptionKeyOutput
+}
+
+type MachineImageMachineImageEncryptionKeyArgs struct {
+	// -
+	// The name of the encryption key that is stored in Google Cloud KMS.
+	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
+	// The service account used for the encryption request for the given KMS key.
+	// If absent, the Compute Engine Service Agent service account is used.
+	KmsKeyServiceAccount pulumi.StringPtrInput `pulumi:"kmsKeyServiceAccount"`
+	// Specifies a 256-bit customer-supplied encryption key, encoded in
+	// RFC 4648 base64 to either encrypt or decrypt this resource.
+	RawKey pulumi.StringPtrInput `pulumi:"rawKey"`
+	// -
+	// The RFC 4648 base64 encoded SHA-256 hash of the
+	// customer-supplied encryption key that protects this resource.
+	Sha256 pulumi.StringPtrInput `pulumi:"sha256"`
+}
+
+func (MachineImageMachineImageEncryptionKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MachineImageMachineImageEncryptionKey)(nil)).Elem()
+}
+
+func (i MachineImageMachineImageEncryptionKeyArgs) ToMachineImageMachineImageEncryptionKeyOutput() MachineImageMachineImageEncryptionKeyOutput {
+	return i.ToMachineImageMachineImageEncryptionKeyOutputWithContext(context.Background())
+}
+
+func (i MachineImageMachineImageEncryptionKeyArgs) ToMachineImageMachineImageEncryptionKeyOutputWithContext(ctx context.Context) MachineImageMachineImageEncryptionKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MachineImageMachineImageEncryptionKeyOutput)
+}
+
+func (i MachineImageMachineImageEncryptionKeyArgs) ToMachineImageMachineImageEncryptionKeyPtrOutput() MachineImageMachineImageEncryptionKeyPtrOutput {
+	return i.ToMachineImageMachineImageEncryptionKeyPtrOutputWithContext(context.Background())
+}
+
+func (i MachineImageMachineImageEncryptionKeyArgs) ToMachineImageMachineImageEncryptionKeyPtrOutputWithContext(ctx context.Context) MachineImageMachineImageEncryptionKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MachineImageMachineImageEncryptionKeyOutput).ToMachineImageMachineImageEncryptionKeyPtrOutputWithContext(ctx)
+}
+
+// MachineImageMachineImageEncryptionKeyPtrInput is an input type that accepts MachineImageMachineImageEncryptionKeyArgs, MachineImageMachineImageEncryptionKeyPtr and MachineImageMachineImageEncryptionKeyPtrOutput values.
+// You can construct a concrete instance of `MachineImageMachineImageEncryptionKeyPtrInput` via:
+//
+//          MachineImageMachineImageEncryptionKeyArgs{...}
+//
+//  or:
+//
+//          nil
+type MachineImageMachineImageEncryptionKeyPtrInput interface {
+	pulumi.Input
+
+	ToMachineImageMachineImageEncryptionKeyPtrOutput() MachineImageMachineImageEncryptionKeyPtrOutput
+	ToMachineImageMachineImageEncryptionKeyPtrOutputWithContext(context.Context) MachineImageMachineImageEncryptionKeyPtrOutput
+}
+
+type machineImageMachineImageEncryptionKeyPtrType MachineImageMachineImageEncryptionKeyArgs
+
+func MachineImageMachineImageEncryptionKeyPtr(v *MachineImageMachineImageEncryptionKeyArgs) MachineImageMachineImageEncryptionKeyPtrInput {
+	return (*machineImageMachineImageEncryptionKeyPtrType)(v)
+}
+
+func (*machineImageMachineImageEncryptionKeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MachineImageMachineImageEncryptionKey)(nil)).Elem()
+}
+
+func (i *machineImageMachineImageEncryptionKeyPtrType) ToMachineImageMachineImageEncryptionKeyPtrOutput() MachineImageMachineImageEncryptionKeyPtrOutput {
+	return i.ToMachineImageMachineImageEncryptionKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *machineImageMachineImageEncryptionKeyPtrType) ToMachineImageMachineImageEncryptionKeyPtrOutputWithContext(ctx context.Context) MachineImageMachineImageEncryptionKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MachineImageMachineImageEncryptionKeyPtrOutput)
+}
+
+type MachineImageMachineImageEncryptionKeyOutput struct{ *pulumi.OutputState }
+
+func (MachineImageMachineImageEncryptionKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MachineImageMachineImageEncryptionKey)(nil)).Elem()
+}
+
+func (o MachineImageMachineImageEncryptionKeyOutput) ToMachineImageMachineImageEncryptionKeyOutput() MachineImageMachineImageEncryptionKeyOutput {
+	return o
+}
+
+func (o MachineImageMachineImageEncryptionKeyOutput) ToMachineImageMachineImageEncryptionKeyOutputWithContext(ctx context.Context) MachineImageMachineImageEncryptionKeyOutput {
+	return o
+}
+
+func (o MachineImageMachineImageEncryptionKeyOutput) ToMachineImageMachineImageEncryptionKeyPtrOutput() MachineImageMachineImageEncryptionKeyPtrOutput {
+	return o.ToMachineImageMachineImageEncryptionKeyPtrOutputWithContext(context.Background())
+}
+
+func (o MachineImageMachineImageEncryptionKeyOutput) ToMachineImageMachineImageEncryptionKeyPtrOutputWithContext(ctx context.Context) MachineImageMachineImageEncryptionKeyPtrOutput {
+	return o.ApplyT(func(v MachineImageMachineImageEncryptionKey) *MachineImageMachineImageEncryptionKey {
+		return &v
+	}).(MachineImageMachineImageEncryptionKeyPtrOutput)
+}
+
+// -
+// The name of the encryption key that is stored in Google Cloud KMS.
+func (o MachineImageMachineImageEncryptionKeyOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineImageMachineImageEncryptionKey) *string { return v.KmsKeyName }).(pulumi.StringPtrOutput)
+}
+
+// The service account used for the encryption request for the given KMS key.
+// If absent, the Compute Engine Service Agent service account is used.
+func (o MachineImageMachineImageEncryptionKeyOutput) KmsKeyServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineImageMachineImageEncryptionKey) *string { return v.KmsKeyServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+// Specifies a 256-bit customer-supplied encryption key, encoded in
+// RFC 4648 base64 to either encrypt or decrypt this resource.
+func (o MachineImageMachineImageEncryptionKeyOutput) RawKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineImageMachineImageEncryptionKey) *string { return v.RawKey }).(pulumi.StringPtrOutput)
+}
+
+// -
+// The RFC 4648 base64 encoded SHA-256 hash of the
+// customer-supplied encryption key that protects this resource.
+func (o MachineImageMachineImageEncryptionKeyOutput) Sha256() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineImageMachineImageEncryptionKey) *string { return v.Sha256 }).(pulumi.StringPtrOutput)
+}
+
+type MachineImageMachineImageEncryptionKeyPtrOutput struct{ *pulumi.OutputState }
+
+func (MachineImageMachineImageEncryptionKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MachineImageMachineImageEncryptionKey)(nil)).Elem()
+}
+
+func (o MachineImageMachineImageEncryptionKeyPtrOutput) ToMachineImageMachineImageEncryptionKeyPtrOutput() MachineImageMachineImageEncryptionKeyPtrOutput {
+	return o
+}
+
+func (o MachineImageMachineImageEncryptionKeyPtrOutput) ToMachineImageMachineImageEncryptionKeyPtrOutputWithContext(ctx context.Context) MachineImageMachineImageEncryptionKeyPtrOutput {
+	return o
+}
+
+func (o MachineImageMachineImageEncryptionKeyPtrOutput) Elem() MachineImageMachineImageEncryptionKeyOutput {
+	return o.ApplyT(func(v *MachineImageMachineImageEncryptionKey) MachineImageMachineImageEncryptionKey { return *v }).(MachineImageMachineImageEncryptionKeyOutput)
+}
+
+// -
+// The name of the encryption key that is stored in Google Cloud KMS.
+func (o MachineImageMachineImageEncryptionKeyPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineImageMachineImageEncryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The service account used for the encryption request for the given KMS key.
+// If absent, the Compute Engine Service Agent service account is used.
+func (o MachineImageMachineImageEncryptionKeyPtrOutput) KmsKeyServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineImageMachineImageEncryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies a 256-bit customer-supplied encryption key, encoded in
+// RFC 4648 base64 to either encrypt or decrypt this resource.
+func (o MachineImageMachineImageEncryptionKeyPtrOutput) RawKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineImageMachineImageEncryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RawKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// -
+// The RFC 4648 base64 encoded SHA-256 hash of the
+// customer-supplied encryption key that protects this resource.
+func (o MachineImageMachineImageEncryptionKeyPtrOutput) Sha256() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineImageMachineImageEncryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sha256
+	}).(pulumi.StringPtrOutput)
 }
 
 type ManagedSslCertificateManaged struct {
@@ -41745,6 +43987,7 @@ type SubnetworkLogConfig struct {
 	AggregationInterval *string `pulumi:"aggregationInterval"`
 	// Export filter used to define which VPC flow logs should be logged, as as CEL expression. See
 	// https://cloud.google.com/vpc/docs/flow-logs#filtering for details on how to format this field.
+	// The default value is 'true', which evaluates to include everything.
 	FilterExpr *string `pulumi:"filterExpr"`
 	// Can only be specified if VPC flow logging for this subnetwork is enabled.
 	// The value of the field must be in [0, 1]. Set the sampling rate of VPC
@@ -41784,6 +44027,7 @@ type SubnetworkLogConfigArgs struct {
 	AggregationInterval pulumi.StringPtrInput `pulumi:"aggregationInterval"`
 	// Export filter used to define which VPC flow logs should be logged, as as CEL expression. See
 	// https://cloud.google.com/vpc/docs/flow-logs#filtering for details on how to format this field.
+	// The default value is 'true', which evaluates to include everything.
 	FilterExpr pulumi.StringPtrInput `pulumi:"filterExpr"`
 	// Can only be specified if VPC flow logging for this subnetwork is enabled.
 	// The value of the field must be in [0, 1]. Set the sampling rate of VPC
@@ -41891,6 +44135,7 @@ func (o SubnetworkLogConfigOutput) AggregationInterval() pulumi.StringPtrOutput 
 
 // Export filter used to define which VPC flow logs should be logged, as as CEL expression. See
 // https://cloud.google.com/vpc/docs/flow-logs#filtering for details on how to format this field.
+// The default value is 'true', which evaluates to include everything.
 func (o SubnetworkLogConfigOutput) FilterExpr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubnetworkLogConfig) *string { return v.FilterExpr }).(pulumi.StringPtrOutput)
 }
@@ -41954,6 +44199,7 @@ func (o SubnetworkLogConfigPtrOutput) AggregationInterval() pulumi.StringPtrOutp
 
 // Export filter used to define which VPC flow logs should be logged, as as CEL expression. See
 // https://cloud.google.com/vpc/docs/flow-logs#filtering for details on how to format this field.
+// The default value is 'true', which evaluates to include everything.
 func (o SubnetworkLogConfigPtrOutput) FilterExpr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SubnetworkLogConfig) *string {
 		if v == nil {
@@ -61644,6 +63890,32 @@ func init() {
 	pulumi.RegisterOutputType(InstanceBootDiskInitializeParamsPtrOutput{})
 	pulumi.RegisterOutputType(InstanceConfidentialInstanceConfigOutput{})
 	pulumi.RegisterOutputType(InstanceConfidentialInstanceConfigPtrOutput{})
+	pulumi.RegisterOutputType(InstanceFromMachineImageAttachedDiskOutput{})
+	pulumi.RegisterOutputType(InstanceFromMachineImageAttachedDiskArrayOutput{})
+	pulumi.RegisterOutputType(InstanceFromMachineImageBootDiskOutput{})
+	pulumi.RegisterOutputType(InstanceFromMachineImageBootDiskArrayOutput{})
+	pulumi.RegisterOutputType(InstanceFromMachineImageBootDiskInitializeParamsOutput{})
+	pulumi.RegisterOutputType(InstanceFromMachineImageBootDiskInitializeParamsPtrOutput{})
+	pulumi.RegisterOutputType(InstanceFromMachineImageConfidentialInstanceConfigOutput{})
+	pulumi.RegisterOutputType(InstanceFromMachineImageConfidentialInstanceConfigPtrOutput{})
+	pulumi.RegisterOutputType(InstanceFromMachineImageGuestAcceleratorOutput{})
+	pulumi.RegisterOutputType(InstanceFromMachineImageGuestAcceleratorArrayOutput{})
+	pulumi.RegisterOutputType(InstanceFromMachineImageNetworkInterfaceOutput{})
+	pulumi.RegisterOutputType(InstanceFromMachineImageNetworkInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(InstanceFromMachineImageNetworkInterfaceAccessConfigOutput{})
+	pulumi.RegisterOutputType(InstanceFromMachineImageNetworkInterfaceAccessConfigArrayOutput{})
+	pulumi.RegisterOutputType(InstanceFromMachineImageNetworkInterfaceAliasIpRangeOutput{})
+	pulumi.RegisterOutputType(InstanceFromMachineImageNetworkInterfaceAliasIpRangeArrayOutput{})
+	pulumi.RegisterOutputType(InstanceFromMachineImageSchedulingOutput{})
+	pulumi.RegisterOutputType(InstanceFromMachineImageSchedulingPtrOutput{})
+	pulumi.RegisterOutputType(InstanceFromMachineImageSchedulingNodeAffinityOutput{})
+	pulumi.RegisterOutputType(InstanceFromMachineImageSchedulingNodeAffinityArrayOutput{})
+	pulumi.RegisterOutputType(InstanceFromMachineImageScratchDiskOutput{})
+	pulumi.RegisterOutputType(InstanceFromMachineImageScratchDiskArrayOutput{})
+	pulumi.RegisterOutputType(InstanceFromMachineImageServiceAccountOutput{})
+	pulumi.RegisterOutputType(InstanceFromMachineImageServiceAccountPtrOutput{})
+	pulumi.RegisterOutputType(InstanceFromMachineImageShieldedInstanceConfigOutput{})
+	pulumi.RegisterOutputType(InstanceFromMachineImageShieldedInstanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceFromTemplateAttachedDiskOutput{})
 	pulumi.RegisterOutputType(InstanceFromTemplateAttachedDiskArrayOutput{})
 	pulumi.RegisterOutputType(InstanceFromTemplateBootDiskOutput{})
@@ -61730,6 +64002,12 @@ func init() {
 	pulumi.RegisterOutputType(InstanceTemplateShieldedInstanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(InterconnectAttachmentPrivateInterconnectInfoOutput{})
 	pulumi.RegisterOutputType(InterconnectAttachmentPrivateInterconnectInfoArrayOutput{})
+	pulumi.RegisterOutputType(MachineImageIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(MachineImageIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(MachineImageIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(MachineImageIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(MachineImageMachineImageEncryptionKeyOutput{})
+	pulumi.RegisterOutputType(MachineImageMachineImageEncryptionKeyPtrOutput{})
 	pulumi.RegisterOutputType(ManagedSslCertificateManagedOutput{})
 	pulumi.RegisterOutputType(ManagedSslCertificateManagedPtrOutput{})
 	pulumi.RegisterOutputType(MangedSslCertificateManagedOutput{})

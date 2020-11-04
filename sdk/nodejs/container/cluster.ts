@@ -78,6 +78,11 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly clusterTelemetry!: pulumi.Output<outputs.container.ClusterClusterTelemetry>;
     /**
+     * Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration
+     * can't be changed (or added/removed) after cluster creation without deleting and recreating the entire cluster.
+     */
+    public readonly confidentialNodes!: pulumi.Output<outputs.container.ClusterConfidentialNodes>;
+    /**
      * Structure is documented below.
      */
     public readonly databaseEncryption!: pulumi.Output<outputs.container.ClusterDatabaseEncryption>;
@@ -382,6 +387,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["clusterAutoscaling"] = state ? state.clusterAutoscaling : undefined;
             inputs["clusterIpv4Cidr"] = state ? state.clusterIpv4Cidr : undefined;
             inputs["clusterTelemetry"] = state ? state.clusterTelemetry : undefined;
+            inputs["confidentialNodes"] = state ? state.confidentialNodes : undefined;
             inputs["databaseEncryption"] = state ? state.databaseEncryption : undefined;
             inputs["datapathProvider"] = state ? state.datapathProvider : undefined;
             inputs["defaultMaxPodsPerNode"] = state ? state.defaultMaxPodsPerNode : undefined;
@@ -436,6 +442,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["clusterAutoscaling"] = args ? args.clusterAutoscaling : undefined;
             inputs["clusterIpv4Cidr"] = args ? args.clusterIpv4Cidr : undefined;
             inputs["clusterTelemetry"] = args ? args.clusterTelemetry : undefined;
+            inputs["confidentialNodes"] = args ? args.confidentialNodes : undefined;
             inputs["databaseEncryption"] = args ? args.databaseEncryption : undefined;
             inputs["datapathProvider"] = args ? args.datapathProvider : undefined;
             inputs["defaultMaxPodsPerNode"] = args ? args.defaultMaxPodsPerNode : undefined;
@@ -531,6 +538,11 @@ export interface ClusterState {
      * Structure is documented below.
      */
     readonly clusterTelemetry?: pulumi.Input<inputs.container.ClusterClusterTelemetry>;
+    /**
+     * Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration
+     * can't be changed (or added/removed) after cluster creation without deleting and recreating the entire cluster.
+     */
+    readonly confidentialNodes?: pulumi.Input<inputs.container.ClusterConfidentialNodes>;
     /**
      * Structure is documented below.
      */
@@ -856,6 +868,11 @@ export interface ClusterArgs {
      * Structure is documented below.
      */
     readonly clusterTelemetry?: pulumi.Input<inputs.container.ClusterClusterTelemetry>;
+    /**
+     * Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration
+     * can't be changed (or added/removed) after cluster creation without deleting and recreating the entire cluster.
+     */
+    readonly confidentialNodes?: pulumi.Input<inputs.container.ClusterConfidentialNodes>;
     /**
      * Structure is documented below.
      */

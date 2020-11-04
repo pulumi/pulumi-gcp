@@ -80,6 +80,8 @@ type Subnetwork struct {
 	// When enabled, VMs in this subnetwork without external IP addresses can
 	// access Google APIs and services by using Private Google Access.
 	PrivateIpGoogleAccess pulumi.BoolPtrOutput `pulumi:"privateIpGoogleAccess"`
+	// The private IPv6 google access type for the VMs in this subnet.
+	PrivateIpv6GoogleAccess pulumi.StringOutput `pulumi:"privateIpv6GoogleAccess"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -179,6 +181,8 @@ type subnetworkState struct {
 	// When enabled, VMs in this subnetwork without external IP addresses can
 	// access Google APIs and services by using Private Google Access.
 	PrivateIpGoogleAccess *bool `pulumi:"privateIpGoogleAccess"`
+	// The private IPv6 google access type for the VMs in this subnet.
+	PrivateIpv6GoogleAccess *string `pulumi:"privateIpv6GoogleAccess"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -245,6 +249,8 @@ type SubnetworkState struct {
 	// When enabled, VMs in this subnetwork without external IP addresses can
 	// access Google APIs and services by using Private Google Access.
 	PrivateIpGoogleAccess pulumi.BoolPtrInput
+	// The private IPv6 google access type for the VMs in this subnet.
+	PrivateIpv6GoogleAccess pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -307,6 +313,8 @@ type subnetworkArgs struct {
 	// When enabled, VMs in this subnetwork without external IP addresses can
 	// access Google APIs and services by using Private Google Access.
 	PrivateIpGoogleAccess *bool `pulumi:"privateIpGoogleAccess"`
+	// The private IPv6 google access type for the VMs in this subnet.
+	PrivateIpv6GoogleAccess *string `pulumi:"privateIpv6GoogleAccess"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -364,6 +372,8 @@ type SubnetworkArgs struct {
 	// When enabled, VMs in this subnetwork without external IP addresses can
 	// access Google APIs and services by using Private Google Access.
 	PrivateIpGoogleAccess pulumi.BoolPtrInput
+	// The private IPv6 google access type for the VMs in this subnet.
+	PrivateIpv6GoogleAccess pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput

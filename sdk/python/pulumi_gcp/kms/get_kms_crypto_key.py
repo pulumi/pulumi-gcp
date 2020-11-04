@@ -20,7 +20,7 @@ class GetKMSCryptoKeyResult:
     """
     A collection of values returned by getKMSCryptoKey.
     """
-    def __init__(__self__, id=None, key_ring=None, labels=None, name=None, purpose=None, rotation_period=None, self_link=None, version_templates=None):
+    def __init__(__self__, id=None, key_ring=None, labels=None, name=None, purpose=None, rotation_period=None, self_link=None, skip_initial_version_creation=None, version_templates=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -42,6 +42,9 @@ class GetKMSCryptoKeyResult:
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
+        if skip_initial_version_creation and not isinstance(skip_initial_version_creation, bool):
+            raise TypeError("Expected argument 'skip_initial_version_creation' to be a bool")
+        pulumi.set(__self__, "skip_initial_version_creation", skip_initial_version_creation)
         if version_templates and not isinstance(version_templates, list):
             raise TypeError("Expected argument 'version_templates' to be a list")
         pulumi.set(__self__, "version_templates", version_templates)
@@ -96,6 +99,11 @@ class GetKMSCryptoKeyResult:
         return pulumi.get(self, "self_link")
 
     @property
+    @pulumi.getter(name="skipInitialVersionCreation")
+    def skip_initial_version_creation(self) -> bool:
+        return pulumi.get(self, "skip_initial_version_creation")
+
+    @property
     @pulumi.getter(name="versionTemplates")
     def version_templates(self) -> Sequence['outputs.GetKMSCryptoKeyVersionTemplateResult']:
         return pulumi.get(self, "version_templates")
@@ -114,6 +122,7 @@ class AwaitableGetKMSCryptoKeyResult(GetKMSCryptoKeyResult):
             purpose=self.purpose,
             rotation_period=self.rotation_period,
             self_link=self.self_link,
+            skip_initial_version_creation=self.skip_initial_version_creation,
             version_templates=self.version_templates)
 
 
@@ -151,4 +160,5 @@ def get_kms_crypto_key(key_ring: Optional[str] = None,
         purpose=__ret__.purpose,
         rotation_period=__ret__.rotation_period,
         self_link=__ret__.self_link,
+        skip_initial_version_creation=__ret__.skip_initial_version_creation,
         version_templates=__ret__.version_templates)

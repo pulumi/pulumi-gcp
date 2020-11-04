@@ -12,7 +12,7 @@ import * as utilities from "../utilities";
  * > **Note:** CryptoKeys cannot be deleted from Google Cloud Platform.
  * Destroying a provider-managed CryptoKey will remove it from state
  * and delete all CryptoKeyVersions, rendering the key unusable, but *will
- * not delete the resource on the server.* When the provider destroys these keys,
+ * not delete the resource from the project.* When the provider destroys these keys,
  * any data previously encrypted with these keys will be irrecoverable.
  * For this reason, it is strongly recommended that you add lifecycle hooks
  * to the resource to prevent accidental destruction.
@@ -83,6 +83,11 @@ export class CryptoKey extends pulumi.CustomResource {
     public readonly rotationPeriod!: pulumi.Output<string | undefined>;
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
+     * If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
+     * You must use the `gcp.kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+     */
+    public readonly skipInitialVersionCreation!: pulumi.Output<boolean | undefined>;
+    /**
      * A template describing settings for new crypto key versions.
      * Structure is documented below.
      */
@@ -106,6 +111,7 @@ export class CryptoKey extends pulumi.CustomResource {
             inputs["purpose"] = state ? state.purpose : undefined;
             inputs["rotationPeriod"] = state ? state.rotationPeriod : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
+            inputs["skipInitialVersionCreation"] = state ? state.skipInitialVersionCreation : undefined;
             inputs["versionTemplate"] = state ? state.versionTemplate : undefined;
         } else {
             const args = argsOrState as CryptoKeyArgs | undefined;
@@ -117,6 +123,7 @@ export class CryptoKey extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["purpose"] = args ? args.purpose : undefined;
             inputs["rotationPeriod"] = args ? args.rotationPeriod : undefined;
+            inputs["skipInitialVersionCreation"] = args ? args.skipInitialVersionCreation : undefined;
             inputs["versionTemplate"] = args ? args.versionTemplate : undefined;
             inputs["selfLink"] = undefined /*out*/;
         }
@@ -165,6 +172,11 @@ export interface CryptoKeyState {
     readonly rotationPeriod?: pulumi.Input<string>;
     readonly selfLink?: pulumi.Input<string>;
     /**
+     * If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
+     * You must use the `gcp.kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+     */
+    readonly skipInitialVersionCreation?: pulumi.Input<boolean>;
+    /**
      * A template describing settings for new crypto key versions.
      * Structure is documented below.
      */
@@ -203,6 +215,11 @@ export interface CryptoKeyArgs {
      * letter `s` (seconds). It must be greater than a day (ie, 86400).
      */
     readonly rotationPeriod?: pulumi.Input<string>;
+    /**
+     * If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
+     * You must use the `gcp.kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+     */
+    readonly skipInitialVersionCreation?: pulumi.Input<boolean>;
     /**
      * A template describing settings for new crypto key versions.
      * Structure is documented below.

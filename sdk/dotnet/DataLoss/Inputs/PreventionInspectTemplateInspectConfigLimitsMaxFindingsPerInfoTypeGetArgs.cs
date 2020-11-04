@@ -13,9 +13,10 @@ namespace Pulumi.Gcp.DataLoss.Inputs
     public sealed class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Type of information the findings limit applies to. Only one limit per infoType should be provided. If InfoTypeLimit does
-        /// not have an infoType, the DLP API applies the limit against all infoTypes that are found but not
-        /// specified in another InfoTypeLimit.
+        /// CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
+        /// infoTypes and that infoType is specified in `info_types` field. Specifying the latter adds findings to the
+        /// one detected by the system. If built-in info type is not specified in `info_types` list then the name is
+        /// treated as a custom info type.
         /// Structure is documented below.
         /// </summary>
         [Input("infoType", required: true)]

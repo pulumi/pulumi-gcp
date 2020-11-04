@@ -26,7 +26,7 @@ type BillingAccountBucketConfig struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
 	LifecycleState pulumi.StringOutput `pulumi:"lifecycleState"`
-	// The location of the bucket. The supported locations are: "global" "us-central1"
+	// The location of the bucket.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -79,7 +79,7 @@ type billingAccountBucketConfigState struct {
 	Description *string `pulumi:"description"`
 	// The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
 	LifecycleState *string `pulumi:"lifecycleState"`
-	// The location of the bucket. The supported locations are: "global" "us-central1"
+	// The location of the bucket.
 	Location *string `pulumi:"location"`
 	// The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
 	Name *string `pulumi:"name"`
@@ -96,7 +96,7 @@ type BillingAccountBucketConfigState struct {
 	Description pulumi.StringPtrInput
 	// The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
 	LifecycleState pulumi.StringPtrInput
-	// The location of the bucket. The supported locations are: "global" "us-central1"
+	// The location of the bucket.
 	Location pulumi.StringPtrInput
 	// The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
 	Name pulumi.StringPtrInput
@@ -115,7 +115,7 @@ type billingAccountBucketConfigArgs struct {
 	BucketId string `pulumi:"bucketId"`
 	// Describes this bucket.
 	Description *string `pulumi:"description"`
-	// The location of the bucket. The supported locations are: "global" "us-central1"
+	// The location of the bucket.
 	Location string `pulumi:"location"`
 	// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
 	RetentionDays *int `pulumi:"retentionDays"`
@@ -129,7 +129,7 @@ type BillingAccountBucketConfigArgs struct {
 	BucketId pulumi.StringInput
 	// Describes this bucket.
 	Description pulumi.StringPtrInput
-	// The location of the bucket. The supported locations are: "global" "us-central1"
+	// The location of the bucket.
 	Location pulumi.StringInput
 	// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
 	RetentionDays pulumi.IntPtrInput

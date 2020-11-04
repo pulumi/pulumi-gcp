@@ -59,8 +59,8 @@ export class PreventionInspectTemplate extends pulumi.CustomResource {
      */
     public readonly inspectConfig!: pulumi.Output<outputs.dataloss.PreventionInspectTemplateInspectConfig | undefined>;
     /**
-     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-     * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+     * or `projects/project-id/storedInfoTypes/432452342`.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -129,8 +129,8 @@ export interface PreventionInspectTemplateState {
      */
     readonly inspectConfig?: pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfig>;
     /**
-     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-     * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+     * or `projects/project-id/storedInfoTypes/432452342`.
      */
     readonly name?: pulumi.Input<string>;
     /**

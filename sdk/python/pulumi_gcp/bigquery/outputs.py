@@ -13,6 +13,8 @@ __all__ = [
     'AppProfileSingleClusterRouting',
     'ConnectionCloudSql',
     'ConnectionCloudSqlCredential',
+    'DataTransferConfigEmailPreferences',
+    'DataTransferConfigScheduleOptions',
     'DataTransferConfigSensitiveParams',
     'DatasetAccess',
     'DatasetAccessView',
@@ -173,6 +175,95 @@ class ConnectionCloudSqlCredential(dict):
         Username for database.
         """
         return pulumi.get(self, "username")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class DataTransferConfigEmailPreferences(dict):
+    def __init__(__self__, *,
+                 enable_failure_email: bool):
+        """
+        :param bool enable_failure_email: If true, email notifications will be sent on transfer run failures.
+        """
+        pulumi.set(__self__, "enable_failure_email", enable_failure_email)
+
+    @property
+    @pulumi.getter(name="enableFailureEmail")
+    def enable_failure_email(self) -> bool:
+        """
+        If true, email notifications will be sent on transfer run failures.
+        """
+        return pulumi.get(self, "enable_failure_email")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class DataTransferConfigScheduleOptions(dict):
+    def __init__(__self__, *,
+                 disable_auto_scheduling: Optional[bool] = None,
+                 end_time: Optional[str] = None,
+                 start_time: Optional[str] = None):
+        """
+        :param bool disable_auto_scheduling: If true, automatic scheduling of data transfer runs for this
+               configuration will be disabled. The runs can be started on ad-hoc
+               basis using transferConfigs.startManualRuns API. When automatic
+               scheduling is disabled, the TransferConfig.schedule field will
+               be ignored.
+        :param str end_time: Defines time to stop scheduling transfer runs. A transfer run cannot be
+               scheduled at or after the end time. The end time can be changed at any
+               moment. The time when a data transfer can be triggered manually is not
+               limited by this option.
+        :param str start_time: Specifies time to start scheduling transfer runs. The first run will be
+               scheduled at or after the start time according to a recurrence pattern
+               defined in the schedule string. The start time can be changed at any
+               moment. The time when a data transfer can be triggered manually is not
+               limited by this option.
+        """
+        if disable_auto_scheduling is not None:
+            pulumi.set(__self__, "disable_auto_scheduling", disable_auto_scheduling)
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="disableAutoScheduling")
+    def disable_auto_scheduling(self) -> Optional[bool]:
+        """
+        If true, automatic scheduling of data transfer runs for this
+        configuration will be disabled. The runs can be started on ad-hoc
+        basis using transferConfigs.startManualRuns API. When automatic
+        scheduling is disabled, the TransferConfig.schedule field will
+        be ignored.
+        """
+        return pulumi.get(self, "disable_auto_scheduling")
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[str]:
+        """
+        Defines time to stop scheduling transfer runs. A transfer run cannot be
+        scheduled at or after the end time. The end time can be changed at any
+        moment. The time when a data transfer can be triggered manually is not
+        limited by this option.
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[str]:
+        """
+        Specifies time to start scheduling transfer runs. The first run will be
+        scheduled at or after the start time according to a recurrence pattern
+        defined in the schedule string. The start time can be changed at any
+        moment. The time when a data transfer can be triggered manually is not
+        limited by this option.
+        """
+        return pulumi.get(self, "start_time")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

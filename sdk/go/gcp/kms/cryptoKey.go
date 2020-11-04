@@ -15,7 +15,7 @@ import (
 // > **Note:** CryptoKeys cannot be deleted from Google Cloud Platform.
 // Destroying a provider-managed CryptoKey will remove it from state
 // and delete all CryptoKeyVersions, rendering the key unusable, but *will
-// not delete the resource on the server.* When the provider destroys these keys,
+// not delete the resource from the project.* When the provider destroys these keys,
 // any data previously encrypted with these keys will be irrecoverable.
 // For this reason, it is strongly recommended that you add lifecycle hooks
 // to the resource to prevent accidental destruction.
@@ -49,6 +49,9 @@ type CryptoKey struct {
 	// letter `s` (seconds). It must be greater than a day (ie, 86400).
 	RotationPeriod pulumi.StringPtrOutput `pulumi:"rotationPeriod"`
 	SelfLink       pulumi.StringOutput    `pulumi:"selfLink"`
+	// If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
+	// You must use the `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+	SkipInitialVersionCreation pulumi.BoolPtrOutput `pulumi:"skipInitialVersionCreation"`
 	// A template describing settings for new crypto key versions.
 	// Structure is documented below.
 	VersionTemplate CryptoKeyVersionTemplateOutput `pulumi:"versionTemplate"`
@@ -104,6 +107,9 @@ type cryptoKeyState struct {
 	// letter `s` (seconds). It must be greater than a day (ie, 86400).
 	RotationPeriod *string `pulumi:"rotationPeriod"`
 	SelfLink       *string `pulumi:"selfLink"`
+	// If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
+	// You must use the `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+	SkipInitialVersionCreation *bool `pulumi:"skipInitialVersionCreation"`
 	// A template describing settings for new crypto key versions.
 	// Structure is documented below.
 	VersionTemplate *CryptoKeyVersionTemplate `pulumi:"versionTemplate"`
@@ -129,6 +135,9 @@ type CryptoKeyState struct {
 	// letter `s` (seconds). It must be greater than a day (ie, 86400).
 	RotationPeriod pulumi.StringPtrInput
 	SelfLink       pulumi.StringPtrInput
+	// If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
+	// You must use the `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+	SkipInitialVersionCreation pulumi.BoolPtrInput
 	// A template describing settings for new crypto key versions.
 	// Structure is documented below.
 	VersionTemplate CryptoKeyVersionTemplatePtrInput
@@ -157,6 +166,9 @@ type cryptoKeyArgs struct {
 	// the format of a decimal number with up to 9 fractional digits, followed by the
 	// letter `s` (seconds). It must be greater than a day (ie, 86400).
 	RotationPeriod *string `pulumi:"rotationPeriod"`
+	// If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
+	// You must use the `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+	SkipInitialVersionCreation *bool `pulumi:"skipInitialVersionCreation"`
 	// A template describing settings for new crypto key versions.
 	// Structure is documented below.
 	VersionTemplate *CryptoKeyVersionTemplate `pulumi:"versionTemplate"`
@@ -182,6 +194,9 @@ type CryptoKeyArgs struct {
 	// the format of a decimal number with up to 9 fractional digits, followed by the
 	// letter `s` (seconds). It must be greater than a day (ie, 86400).
 	RotationPeriod pulumi.StringPtrInput
+	// If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
+	// You must use the `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+	SkipInitialVersionCreation pulumi.BoolPtrInput
 	// A template describing settings for new crypto key versions.
 	// Structure is documented below.
 	VersionTemplate CryptoKeyVersionTemplatePtrInput

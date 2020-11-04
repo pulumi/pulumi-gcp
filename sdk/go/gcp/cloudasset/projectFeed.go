@@ -38,6 +38,13 @@ type ProjectFeed struct {
 	// enablement check, quota, and billing. If not specified, the resource's
 	// project will be used.
 	BillingProject pulumi.StringPtrOutput `pulumi:"billingProject"`
+	// A condition which determines whether an asset update should be published. If specified, an asset
+	// will be returned only when the expression evaluates to true. When set, expression field
+	// must be a valid CEL expression on a TemporalAsset with name temporal_asset. Example: a Feed with
+	// expression "temporal_asset.deleted == true" will only publish Asset deletions. Other fields of
+	// condition are optional.
+	// Structure is documented below.
+	Condition ProjectFeedConditionPtrOutput `pulumi:"condition"`
 	// Asset content type. If not specified, no content but the asset name and type will be returned.
 	// Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
 	ContentType pulumi.StringPtrOutput `pulumi:"contentType"`
@@ -103,6 +110,13 @@ type projectFeedState struct {
 	// enablement check, quota, and billing. If not specified, the resource's
 	// project will be used.
 	BillingProject *string `pulumi:"billingProject"`
+	// A condition which determines whether an asset update should be published. If specified, an asset
+	// will be returned only when the expression evaluates to true. When set, expression field
+	// must be a valid CEL expression on a TemporalAsset with name temporal_asset. Example: a Feed with
+	// expression "temporal_asset.deleted == true" will only publish Asset deletions. Other fields of
+	// condition are optional.
+	// Structure is documented below.
+	Condition *ProjectFeedCondition `pulumi:"condition"`
 	// Asset content type. If not specified, no content but the asset name and type will be returned.
 	// Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
 	ContentType *string `pulumi:"contentType"`
@@ -135,6 +149,13 @@ type ProjectFeedState struct {
 	// enablement check, quota, and billing. If not specified, the resource's
 	// project will be used.
 	BillingProject pulumi.StringPtrInput
+	// A condition which determines whether an asset update should be published. If specified, an asset
+	// will be returned only when the expression evaluates to true. When set, expression field
+	// must be a valid CEL expression on a TemporalAsset with name temporal_asset. Example: a Feed with
+	// expression "temporal_asset.deleted == true" will only publish Asset deletions. Other fields of
+	// condition are optional.
+	// Structure is documented below.
+	Condition ProjectFeedConditionPtrInput
 	// Asset content type. If not specified, no content but the asset name and type will be returned.
 	// Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
 	ContentType pulumi.StringPtrInput
@@ -171,6 +192,13 @@ type projectFeedArgs struct {
 	// enablement check, quota, and billing. If not specified, the resource's
 	// project will be used.
 	BillingProject *string `pulumi:"billingProject"`
+	// A condition which determines whether an asset update should be published. If specified, an asset
+	// will be returned only when the expression evaluates to true. When set, expression field
+	// must be a valid CEL expression on a TemporalAsset with name temporal_asset. Example: a Feed with
+	// expression "temporal_asset.deleted == true" will only publish Asset deletions. Other fields of
+	// condition are optional.
+	// Structure is documented below.
+	Condition *ProjectFeedCondition `pulumi:"condition"`
 	// Asset content type. If not specified, no content but the asset name and type will be returned.
 	// Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
 	ContentType *string `pulumi:"contentType"`
@@ -202,6 +230,13 @@ type ProjectFeedArgs struct {
 	// enablement check, quota, and billing. If not specified, the resource's
 	// project will be used.
 	BillingProject pulumi.StringPtrInput
+	// A condition which determines whether an asset update should be published. If specified, an asset
+	// will be returned only when the expression evaluates to true. When set, expression field
+	// must be a valid CEL expression on a TemporalAsset with name temporal_asset. Example: a Feed with
+	// expression "temporal_asset.deleted == true" will only publish Asset deletions. Other fields of
+	// condition are optional.
+	// Structure is documented below.
+	Condition ProjectFeedConditionPtrInput
 	// Asset content type. If not specified, no content but the asset name and type will be returned.
 	// Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
 	ContentType pulumi.StringPtrInput

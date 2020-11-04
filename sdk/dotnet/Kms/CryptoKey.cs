@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Kms
     /// &gt; **Note:** CryptoKeys cannot be deleted from Google Cloud Platform.
     /// Destroying a provider-managed CryptoKey will remove it from state
     /// and delete all CryptoKeyVersions, rendering the key unusable, but *will
-    /// not delete the resource on the server.* When the provider destroys these keys,
+    /// not delete the resource from the project.* When the provider destroys these keys,
     /// any data previously encrypted with these keys will be irrecoverable.
     /// For this reason, it is strongly recommended that you add lifecycle hooks
     /// to the resource to prevent accidental destruction.
@@ -70,6 +70,13 @@ namespace Pulumi.Gcp.Kms
 
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
+
+        /// <summary>
+        /// If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
+        /// You must use the `gcp.kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+        /// </summary>
+        [Output("skipInitialVersionCreation")]
+        public Output<bool?> SkipInitialVersionCreation { get; private set; } = null!;
 
         /// <summary>
         /// A template describing settings for new crypto key versions.
@@ -169,6 +176,13 @@ namespace Pulumi.Gcp.Kms
         public Input<string>? RotationPeriod { get; set; }
 
         /// <summary>
+        /// If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
+        /// You must use the `gcp.kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+        /// </summary>
+        [Input("skipInitialVersionCreation")]
+        public Input<bool>? SkipInitialVersionCreation { get; set; }
+
+        /// <summary>
         /// A template describing settings for new crypto key versions.
         /// Structure is documented below.
         /// </summary>
@@ -228,6 +242,13 @@ namespace Pulumi.Gcp.Kms
 
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
+
+        /// <summary>
+        /// If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
+        /// You must use the `gcp.kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+        /// </summary>
+        [Input("skipInitialVersionCreation")]
+        public Input<bool>? SkipInitialVersionCreation { get; set; }
 
         /// <summary>
         /// A template describing settings for new crypto key versions.

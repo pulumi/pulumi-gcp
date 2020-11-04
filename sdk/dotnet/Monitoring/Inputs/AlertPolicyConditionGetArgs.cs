@@ -21,6 +21,13 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public Input<Inputs.AlertPolicyConditionConditionAbsentGetArgs>? ConditionAbsent { get; set; }
 
         /// <summary>
+        /// A Monitoring Query Language query that outputs a boolean stream
+        /// Structure is documented below.
+        /// </summary>
+        [Input("conditionMonitoringQueryLanguage")]
+        public Input<Inputs.AlertPolicyConditionConditionMonitoringQueryLanguageGetArgs>? ConditionMonitoringQueryLanguage { get; set; }
+
+        /// <summary>
         /// A condition that compares a time series against a
         /// threshold.
         /// Structure is documented below.

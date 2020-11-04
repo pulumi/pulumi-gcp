@@ -56,6 +56,7 @@ namespace Pulumi.Gcp.CloudFunctions
         /// Available memory (in MB) to the function.
         /// </summary>
         public readonly int AvailableMemoryMb;
+        public readonly ImmutableDictionary<string, object> BuildEnvironmentVariables;
         /// <summary>
         /// Description of the function.
         /// </summary>
@@ -136,6 +137,8 @@ namespace Pulumi.Gcp.CloudFunctions
         private GetFunctionResult(
             int availableMemoryMb,
 
+            ImmutableDictionary<string, object> buildEnvironmentVariables,
+
             string description,
 
             string entryPoint,
@@ -179,6 +182,7 @@ namespace Pulumi.Gcp.CloudFunctions
             string vpcConnectorEgressSettings)
         {
             AvailableMemoryMb = availableMemoryMb;
+            BuildEnvironmentVariables = buildEnvironmentVariables;
             Description = description;
             EntryPoint = entryPoint;
             EnvironmentVariables = environmentVariables;

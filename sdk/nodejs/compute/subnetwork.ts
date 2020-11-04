@@ -122,6 +122,10 @@ export class Subnetwork extends pulumi.CustomResource {
      */
     public readonly privateIpGoogleAccess!: pulumi.Output<boolean | undefined>;
     /**
+     * The private IPv6 google access type for the VMs in this subnet.
+     */
+    public readonly privateIpv6GoogleAccess!: pulumi.Output<string>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -182,6 +186,7 @@ export class Subnetwork extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["network"] = state ? state.network : undefined;
             inputs["privateIpGoogleAccess"] = state ? state.privateIpGoogleAccess : undefined;
+            inputs["privateIpv6GoogleAccess"] = state ? state.privateIpv6GoogleAccess : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["purpose"] = state ? state.purpose : undefined;
             inputs["region"] = state ? state.region : undefined;
@@ -202,6 +207,7 @@ export class Subnetwork extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["network"] = args ? args.network : undefined;
             inputs["privateIpGoogleAccess"] = args ? args.privateIpGoogleAccess : undefined;
+            inputs["privateIpv6GoogleAccess"] = args ? args.privateIpv6GoogleAccess : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["purpose"] = args ? args.purpose : undefined;
             inputs["region"] = args ? args.region : undefined;
@@ -281,6 +287,10 @@ export interface SubnetworkState {
      * access Google APIs and services by using Private Google Access.
      */
     readonly privateIpGoogleAccess?: pulumi.Input<boolean>;
+    /**
+     * The private IPv6 google access type for the VMs in this subnet.
+     */
+    readonly privateIpv6GoogleAccess?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -366,6 +376,10 @@ export interface SubnetworkArgs {
      * access Google APIs and services by using Private Google Access.
      */
     readonly privateIpGoogleAccess?: pulumi.Input<boolean>;
+    /**
+     * The private IPv6 google access type for the VMs in this subnet.
+     */
+    readonly privateIpv6GoogleAccess?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

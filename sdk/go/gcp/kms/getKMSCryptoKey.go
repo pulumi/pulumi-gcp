@@ -46,6 +46,7 @@ type GetKMSCryptoKeyResult struct {
 	// of a decimal number with up to 9 fractional digits, followed by the letter s (seconds).
 	RotationPeriod string `pulumi:"rotationPeriod"`
 	// The self link of the created CryptoKey. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}/cryptoKeys/{cryptoKeyName}`.
-	SelfLink         string                           `pulumi:"selfLink"`
-	VersionTemplates []GetKMSCryptoKeyVersionTemplate `pulumi:"versionTemplates"`
+	SelfLink                   string                           `pulumi:"selfLink"`
+	SkipInitialVersionCreation bool                             `pulumi:"skipInitialVersionCreation"`
+	VersionTemplates           []GetKMSCryptoKeyVersionTemplate `pulumi:"versionTemplates"`
 }

@@ -53,6 +53,10 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly availableMemoryMb!: pulumi.Output<number | undefined>;
     /**
+     * A set of key/value environment variable pairs available during build time.
+     */
+    public readonly buildEnvironmentVariables!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
      * Description of the function.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -148,6 +152,7 @@ export class Function extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as FunctionState | undefined;
             inputs["availableMemoryMb"] = state ? state.availableMemoryMb : undefined;
+            inputs["buildEnvironmentVariables"] = state ? state.buildEnvironmentVariables : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["entryPoint"] = state ? state.entryPoint : undefined;
             inputs["environmentVariables"] = state ? state.environmentVariables : undefined;
@@ -174,6 +179,7 @@ export class Function extends pulumi.CustomResource {
                 throw new Error("Missing required property 'runtime'");
             }
             inputs["availableMemoryMb"] = args ? args.availableMemoryMb : undefined;
+            inputs["buildEnvironmentVariables"] = args ? args.buildEnvironmentVariables : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["entryPoint"] = args ? args.entryPoint : undefined;
             inputs["environmentVariables"] = args ? args.environmentVariables : undefined;
@@ -214,6 +220,10 @@ export interface FunctionState {
      * Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, and 2048MB.
      */
     readonly availableMemoryMb?: pulumi.Input<number>;
+    /**
+     * A set of key/value environment variable pairs available during build time.
+     */
+    readonly buildEnvironmentVariables?: pulumi.Input<{[key: string]: any}>;
     /**
      * Description of the function.
      */
@@ -306,6 +316,10 @@ export interface FunctionArgs {
      * Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, and 2048MB.
      */
     readonly availableMemoryMb?: pulumi.Input<number>;
+    /**
+     * A set of key/value environment variable pairs available during build time.
+     */
+    readonly buildEnvironmentVariables?: pulumi.Input<{[key: string]: any}>;
     /**
      * Description of the function.
      */

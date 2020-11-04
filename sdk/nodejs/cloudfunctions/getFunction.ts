@@ -54,6 +54,7 @@ export interface GetFunctionResult {
      * Available memory (in MB) to the function.
      */
     readonly availableMemoryMb: number;
+    readonly buildEnvironmentVariables: {[key: string]: any};
     /**
      * Description of the function.
      */

@@ -25,6 +25,7 @@ __all__ = [
     'ClusterClusterAutoscalingAutoProvisioningDefaults',
     'ClusterClusterAutoscalingResourceLimit',
     'ClusterClusterTelemetry',
+    'ClusterConfidentialNodes',
     'ClusterDatabaseEncryption',
     'ClusterDefaultSnatStatus',
     'ClusterIpAllocationPolicy',
@@ -92,6 +93,7 @@ __all__ = [
     'GetClusterClusterAutoscalingAutoProvisioningDefaultResult',
     'GetClusterClusterAutoscalingResourceLimitResult',
     'GetClusterClusterTelemetryResult',
+    'GetClusterConfidentialNodeResult',
     'GetClusterDatabaseEncryptionResult',
     'GetClusterDefaultSnatStatusResult',
     'GetClusterIpAllocationPolicyResult',
@@ -747,6 +749,29 @@ class ClusterClusterTelemetry(dict):
         The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
         """
         return pulumi.get(self, "type")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ClusterConfidentialNodes(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        :param bool enabled: Enable the PodSecurityPolicy controller for this cluster.
+               If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Enable the PodSecurityPolicy controller for this cluster.
+        If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        """
+        return pulumi.get(self, "enabled")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -3609,6 +3634,18 @@ class GetClusterClusterTelemetryResult(dict):
     @pulumi.getter
     def type(self) -> str:
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetClusterConfidentialNodeResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type

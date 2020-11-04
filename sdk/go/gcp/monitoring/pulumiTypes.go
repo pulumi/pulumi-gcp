@@ -15,6 +15,9 @@ type AlertPolicyCondition struct {
 	// continues to receive new data points.
 	// Structure is documented below.
 	ConditionAbsent *AlertPolicyConditionConditionAbsent `pulumi:"conditionAbsent"`
+	// A Monitoring Query Language query that outputs a boolean stream
+	// Structure is documented below.
+	ConditionMonitoringQueryLanguage *AlertPolicyConditionConditionMonitoringQueryLanguage `pulumi:"conditionMonitoringQueryLanguage"`
 	// A condition that compares a time series against a
 	// threshold.
 	// Structure is documented below.
@@ -51,6 +54,9 @@ type AlertPolicyConditionArgs struct {
 	// continues to receive new data points.
 	// Structure is documented below.
 	ConditionAbsent AlertPolicyConditionConditionAbsentPtrInput `pulumi:"conditionAbsent"`
+	// A Monitoring Query Language query that outputs a boolean stream
+	// Structure is documented below.
+	ConditionMonitoringQueryLanguage AlertPolicyConditionConditionMonitoringQueryLanguagePtrInput `pulumi:"conditionMonitoringQueryLanguage"`
 	// A condition that compares a time series against a
 	// threshold.
 	// Structure is documented below.
@@ -127,6 +133,14 @@ func (o AlertPolicyConditionOutput) ToAlertPolicyConditionOutputWithContext(ctx 
 // Structure is documented below.
 func (o AlertPolicyConditionOutput) ConditionAbsent() AlertPolicyConditionConditionAbsentPtrOutput {
 	return o.ApplyT(func(v AlertPolicyCondition) *AlertPolicyConditionConditionAbsent { return v.ConditionAbsent }).(AlertPolicyConditionConditionAbsentPtrOutput)
+}
+
+// A Monitoring Query Language query that outputs a boolean stream
+// Structure is documented below.
+func (o AlertPolicyConditionOutput) ConditionMonitoringQueryLanguage() AlertPolicyConditionConditionMonitoringQueryLanguagePtrOutput {
+	return o.ApplyT(func(v AlertPolicyCondition) *AlertPolicyConditionConditionMonitoringQueryLanguage {
+		return v.ConditionMonitoringQueryLanguage
+	}).(AlertPolicyConditionConditionMonitoringQueryLanguagePtrOutput)
 }
 
 // A condition that compares a time series against a
@@ -1050,6 +1064,435 @@ func (o AlertPolicyConditionConditionAbsentTriggerPtrOutput) Count() pulumi.IntP
 // condition to be triggered.
 func (o AlertPolicyConditionConditionAbsentTriggerPtrOutput) Percent() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *AlertPolicyConditionConditionAbsentTrigger) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Percent
+	}).(pulumi.Float64PtrOutput)
+}
+
+type AlertPolicyConditionConditionMonitoringQueryLanguage struct {
+	// The amount of time that a time series must
+	// violate the threshold to be considered
+	// failing. Currently, only values that are a
+	// multiple of a minute--e.g., 0, 60, 120, or
+	// 300 seconds--are supported. If an invalid
+	// value is given, an error will be returned.
+	// When choosing a duration, it is useful to
+	// keep in mind the frequency of the underlying
+	// time series data (which may also be affected
+	// by any alignments specified in the
+	// aggregations field); a good duration is long
+	// enough so that a single outlier does not
+	// generate spurious alerts, but short enough
+	// that unhealthy states are detected and
+	// alerted on quickly.
+	Duration string `pulumi:"duration"`
+	// Monitoring Query Language query that outputs a boolean stream.
+	Query string `pulumi:"query"`
+	// The number/percent of time series for which
+	// the comparison must hold in order for the
+	// condition to trigger. If unspecified, then
+	// the condition will trigger if the comparison
+	// is true for any of the time series that have
+	// been identified by filter and aggregations,
+	// or by the ratio, if denominatorFilter and
+	// denominatorAggregations are specified.
+	// Structure is documented below.
+	Trigger *AlertPolicyConditionConditionMonitoringQueryLanguageTrigger `pulumi:"trigger"`
+}
+
+// AlertPolicyConditionConditionMonitoringQueryLanguageInput is an input type that accepts AlertPolicyConditionConditionMonitoringQueryLanguageArgs and AlertPolicyConditionConditionMonitoringQueryLanguageOutput values.
+// You can construct a concrete instance of `AlertPolicyConditionConditionMonitoringQueryLanguageInput` via:
+//
+//          AlertPolicyConditionConditionMonitoringQueryLanguageArgs{...}
+type AlertPolicyConditionConditionMonitoringQueryLanguageInput interface {
+	pulumi.Input
+
+	ToAlertPolicyConditionConditionMonitoringQueryLanguageOutput() AlertPolicyConditionConditionMonitoringQueryLanguageOutput
+	ToAlertPolicyConditionConditionMonitoringQueryLanguageOutputWithContext(context.Context) AlertPolicyConditionConditionMonitoringQueryLanguageOutput
+}
+
+type AlertPolicyConditionConditionMonitoringQueryLanguageArgs struct {
+	// The amount of time that a time series must
+	// violate the threshold to be considered
+	// failing. Currently, only values that are a
+	// multiple of a minute--e.g., 0, 60, 120, or
+	// 300 seconds--are supported. If an invalid
+	// value is given, an error will be returned.
+	// When choosing a duration, it is useful to
+	// keep in mind the frequency of the underlying
+	// time series data (which may also be affected
+	// by any alignments specified in the
+	// aggregations field); a good duration is long
+	// enough so that a single outlier does not
+	// generate spurious alerts, but short enough
+	// that unhealthy states are detected and
+	// alerted on quickly.
+	Duration pulumi.StringInput `pulumi:"duration"`
+	// Monitoring Query Language query that outputs a boolean stream.
+	Query pulumi.StringInput `pulumi:"query"`
+	// The number/percent of time series for which
+	// the comparison must hold in order for the
+	// condition to trigger. If unspecified, then
+	// the condition will trigger if the comparison
+	// is true for any of the time series that have
+	// been identified by filter and aggregations,
+	// or by the ratio, if denominatorFilter and
+	// denominatorAggregations are specified.
+	// Structure is documented below.
+	Trigger AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrInput `pulumi:"trigger"`
+}
+
+func (AlertPolicyConditionConditionMonitoringQueryLanguageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertPolicyConditionConditionMonitoringQueryLanguage)(nil)).Elem()
+}
+
+func (i AlertPolicyConditionConditionMonitoringQueryLanguageArgs) ToAlertPolicyConditionConditionMonitoringQueryLanguageOutput() AlertPolicyConditionConditionMonitoringQueryLanguageOutput {
+	return i.ToAlertPolicyConditionConditionMonitoringQueryLanguageOutputWithContext(context.Background())
+}
+
+func (i AlertPolicyConditionConditionMonitoringQueryLanguageArgs) ToAlertPolicyConditionConditionMonitoringQueryLanguageOutputWithContext(ctx context.Context) AlertPolicyConditionConditionMonitoringQueryLanguageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionMonitoringQueryLanguageOutput)
+}
+
+func (i AlertPolicyConditionConditionMonitoringQueryLanguageArgs) ToAlertPolicyConditionConditionMonitoringQueryLanguagePtrOutput() AlertPolicyConditionConditionMonitoringQueryLanguagePtrOutput {
+	return i.ToAlertPolicyConditionConditionMonitoringQueryLanguagePtrOutputWithContext(context.Background())
+}
+
+func (i AlertPolicyConditionConditionMonitoringQueryLanguageArgs) ToAlertPolicyConditionConditionMonitoringQueryLanguagePtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionMonitoringQueryLanguagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionMonitoringQueryLanguageOutput).ToAlertPolicyConditionConditionMonitoringQueryLanguagePtrOutputWithContext(ctx)
+}
+
+// AlertPolicyConditionConditionMonitoringQueryLanguagePtrInput is an input type that accepts AlertPolicyConditionConditionMonitoringQueryLanguageArgs, AlertPolicyConditionConditionMonitoringQueryLanguagePtr and AlertPolicyConditionConditionMonitoringQueryLanguagePtrOutput values.
+// You can construct a concrete instance of `AlertPolicyConditionConditionMonitoringQueryLanguagePtrInput` via:
+//
+//          AlertPolicyConditionConditionMonitoringQueryLanguageArgs{...}
+//
+//  or:
+//
+//          nil
+type AlertPolicyConditionConditionMonitoringQueryLanguagePtrInput interface {
+	pulumi.Input
+
+	ToAlertPolicyConditionConditionMonitoringQueryLanguagePtrOutput() AlertPolicyConditionConditionMonitoringQueryLanguagePtrOutput
+	ToAlertPolicyConditionConditionMonitoringQueryLanguagePtrOutputWithContext(context.Context) AlertPolicyConditionConditionMonitoringQueryLanguagePtrOutput
+}
+
+type alertPolicyConditionConditionMonitoringQueryLanguagePtrType AlertPolicyConditionConditionMonitoringQueryLanguageArgs
+
+func AlertPolicyConditionConditionMonitoringQueryLanguagePtr(v *AlertPolicyConditionConditionMonitoringQueryLanguageArgs) AlertPolicyConditionConditionMonitoringQueryLanguagePtrInput {
+	return (*alertPolicyConditionConditionMonitoringQueryLanguagePtrType)(v)
+}
+
+func (*alertPolicyConditionConditionMonitoringQueryLanguagePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertPolicyConditionConditionMonitoringQueryLanguage)(nil)).Elem()
+}
+
+func (i *alertPolicyConditionConditionMonitoringQueryLanguagePtrType) ToAlertPolicyConditionConditionMonitoringQueryLanguagePtrOutput() AlertPolicyConditionConditionMonitoringQueryLanguagePtrOutput {
+	return i.ToAlertPolicyConditionConditionMonitoringQueryLanguagePtrOutputWithContext(context.Background())
+}
+
+func (i *alertPolicyConditionConditionMonitoringQueryLanguagePtrType) ToAlertPolicyConditionConditionMonitoringQueryLanguagePtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionMonitoringQueryLanguagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionMonitoringQueryLanguagePtrOutput)
+}
+
+type AlertPolicyConditionConditionMonitoringQueryLanguageOutput struct{ *pulumi.OutputState }
+
+func (AlertPolicyConditionConditionMonitoringQueryLanguageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertPolicyConditionConditionMonitoringQueryLanguage)(nil)).Elem()
+}
+
+func (o AlertPolicyConditionConditionMonitoringQueryLanguageOutput) ToAlertPolicyConditionConditionMonitoringQueryLanguageOutput() AlertPolicyConditionConditionMonitoringQueryLanguageOutput {
+	return o
+}
+
+func (o AlertPolicyConditionConditionMonitoringQueryLanguageOutput) ToAlertPolicyConditionConditionMonitoringQueryLanguageOutputWithContext(ctx context.Context) AlertPolicyConditionConditionMonitoringQueryLanguageOutput {
+	return o
+}
+
+func (o AlertPolicyConditionConditionMonitoringQueryLanguageOutput) ToAlertPolicyConditionConditionMonitoringQueryLanguagePtrOutput() AlertPolicyConditionConditionMonitoringQueryLanguagePtrOutput {
+	return o.ToAlertPolicyConditionConditionMonitoringQueryLanguagePtrOutputWithContext(context.Background())
+}
+
+func (o AlertPolicyConditionConditionMonitoringQueryLanguageOutput) ToAlertPolicyConditionConditionMonitoringQueryLanguagePtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionMonitoringQueryLanguagePtrOutput {
+	return o.ApplyT(func(v AlertPolicyConditionConditionMonitoringQueryLanguage) *AlertPolicyConditionConditionMonitoringQueryLanguage {
+		return &v
+	}).(AlertPolicyConditionConditionMonitoringQueryLanguagePtrOutput)
+}
+
+// The amount of time that a time series must
+// violate the threshold to be considered
+// failing. Currently, only values that are a
+// multiple of a minute--e.g., 0, 60, 120, or
+// 300 seconds--are supported. If an invalid
+// value is given, an error will be returned.
+// When choosing a duration, it is useful to
+// keep in mind the frequency of the underlying
+// time series data (which may also be affected
+// by any alignments specified in the
+// aggregations field); a good duration is long
+// enough so that a single outlier does not
+// generate spurious alerts, but short enough
+// that unhealthy states are detected and
+// alerted on quickly.
+func (o AlertPolicyConditionConditionMonitoringQueryLanguageOutput) Duration() pulumi.StringOutput {
+	return o.ApplyT(func(v AlertPolicyConditionConditionMonitoringQueryLanguage) string { return v.Duration }).(pulumi.StringOutput)
+}
+
+// Monitoring Query Language query that outputs a boolean stream.
+func (o AlertPolicyConditionConditionMonitoringQueryLanguageOutput) Query() pulumi.StringOutput {
+	return o.ApplyT(func(v AlertPolicyConditionConditionMonitoringQueryLanguage) string { return v.Query }).(pulumi.StringOutput)
+}
+
+// The number/percent of time series for which
+// the comparison must hold in order for the
+// condition to trigger. If unspecified, then
+// the condition will trigger if the comparison
+// is true for any of the time series that have
+// been identified by filter and aggregations,
+// or by the ratio, if denominatorFilter and
+// denominatorAggregations are specified.
+// Structure is documented below.
+func (o AlertPolicyConditionConditionMonitoringQueryLanguageOutput) Trigger() AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutput {
+	return o.ApplyT(func(v AlertPolicyConditionConditionMonitoringQueryLanguage) *AlertPolicyConditionConditionMonitoringQueryLanguageTrigger {
+		return v.Trigger
+	}).(AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutput)
+}
+
+type AlertPolicyConditionConditionMonitoringQueryLanguagePtrOutput struct{ *pulumi.OutputState }
+
+func (AlertPolicyConditionConditionMonitoringQueryLanguagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertPolicyConditionConditionMonitoringQueryLanguage)(nil)).Elem()
+}
+
+func (o AlertPolicyConditionConditionMonitoringQueryLanguagePtrOutput) ToAlertPolicyConditionConditionMonitoringQueryLanguagePtrOutput() AlertPolicyConditionConditionMonitoringQueryLanguagePtrOutput {
+	return o
+}
+
+func (o AlertPolicyConditionConditionMonitoringQueryLanguagePtrOutput) ToAlertPolicyConditionConditionMonitoringQueryLanguagePtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionMonitoringQueryLanguagePtrOutput {
+	return o
+}
+
+func (o AlertPolicyConditionConditionMonitoringQueryLanguagePtrOutput) Elem() AlertPolicyConditionConditionMonitoringQueryLanguageOutput {
+	return o.ApplyT(func(v *AlertPolicyConditionConditionMonitoringQueryLanguage) AlertPolicyConditionConditionMonitoringQueryLanguage {
+		return *v
+	}).(AlertPolicyConditionConditionMonitoringQueryLanguageOutput)
+}
+
+// The amount of time that a time series must
+// violate the threshold to be considered
+// failing. Currently, only values that are a
+// multiple of a minute--e.g., 0, 60, 120, or
+// 300 seconds--are supported. If an invalid
+// value is given, an error will be returned.
+// When choosing a duration, it is useful to
+// keep in mind the frequency of the underlying
+// time series data (which may also be affected
+// by any alignments specified in the
+// aggregations field); a good duration is long
+// enough so that a single outlier does not
+// generate spurious alerts, but short enough
+// that unhealthy states are detected and
+// alerted on quickly.
+func (o AlertPolicyConditionConditionMonitoringQueryLanguagePtrOutput) Duration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertPolicyConditionConditionMonitoringQueryLanguage) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Duration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Monitoring Query Language query that outputs a boolean stream.
+func (o AlertPolicyConditionConditionMonitoringQueryLanguagePtrOutput) Query() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertPolicyConditionConditionMonitoringQueryLanguage) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Query
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number/percent of time series for which
+// the comparison must hold in order for the
+// condition to trigger. If unspecified, then
+// the condition will trigger if the comparison
+// is true for any of the time series that have
+// been identified by filter and aggregations,
+// or by the ratio, if denominatorFilter and
+// denominatorAggregations are specified.
+// Structure is documented below.
+func (o AlertPolicyConditionConditionMonitoringQueryLanguagePtrOutput) Trigger() AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutput {
+	return o.ApplyT(func(v *AlertPolicyConditionConditionMonitoringQueryLanguage) *AlertPolicyConditionConditionMonitoringQueryLanguageTrigger {
+		if v == nil {
+			return nil
+		}
+		return v.Trigger
+	}).(AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutput)
+}
+
+type AlertPolicyConditionConditionMonitoringQueryLanguageTrigger struct {
+	// The absolute number of time series
+	// that must fail the predicate for the
+	// condition to be triggered.
+	Count *int `pulumi:"count"`
+	// The percentage of time series that
+	// must fail the predicate for the
+	// condition to be triggered.
+	Percent *float64 `pulumi:"percent"`
+}
+
+// AlertPolicyConditionConditionMonitoringQueryLanguageTriggerInput is an input type that accepts AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs and AlertPolicyConditionConditionMonitoringQueryLanguageTriggerOutput values.
+// You can construct a concrete instance of `AlertPolicyConditionConditionMonitoringQueryLanguageTriggerInput` via:
+//
+//          AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs{...}
+type AlertPolicyConditionConditionMonitoringQueryLanguageTriggerInput interface {
+	pulumi.Input
+
+	ToAlertPolicyConditionConditionMonitoringQueryLanguageTriggerOutput() AlertPolicyConditionConditionMonitoringQueryLanguageTriggerOutput
+	ToAlertPolicyConditionConditionMonitoringQueryLanguageTriggerOutputWithContext(context.Context) AlertPolicyConditionConditionMonitoringQueryLanguageTriggerOutput
+}
+
+type AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs struct {
+	// The absolute number of time series
+	// that must fail the predicate for the
+	// condition to be triggered.
+	Count pulumi.IntPtrInput `pulumi:"count"`
+	// The percentage of time series that
+	// must fail the predicate for the
+	// condition to be triggered.
+	Percent pulumi.Float64PtrInput `pulumi:"percent"`
+}
+
+func (AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertPolicyConditionConditionMonitoringQueryLanguageTrigger)(nil)).Elem()
+}
+
+func (i AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs) ToAlertPolicyConditionConditionMonitoringQueryLanguageTriggerOutput() AlertPolicyConditionConditionMonitoringQueryLanguageTriggerOutput {
+	return i.ToAlertPolicyConditionConditionMonitoringQueryLanguageTriggerOutputWithContext(context.Background())
+}
+
+func (i AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs) ToAlertPolicyConditionConditionMonitoringQueryLanguageTriggerOutputWithContext(ctx context.Context) AlertPolicyConditionConditionMonitoringQueryLanguageTriggerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionMonitoringQueryLanguageTriggerOutput)
+}
+
+func (i AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs) ToAlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutput() AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutput {
+	return i.ToAlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutputWithContext(context.Background())
+}
+
+func (i AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs) ToAlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionMonitoringQueryLanguageTriggerOutput).ToAlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutputWithContext(ctx)
+}
+
+// AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrInput is an input type that accepts AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs, AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtr and AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutput values.
+// You can construct a concrete instance of `AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrInput` via:
+//
+//          AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs{...}
+//
+//  or:
+//
+//          nil
+type AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrInput interface {
+	pulumi.Input
+
+	ToAlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutput() AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutput
+	ToAlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutputWithContext(context.Context) AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutput
+}
+
+type alertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrType AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs
+
+func AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtr(v *AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs) AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrInput {
+	return (*alertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrType)(v)
+}
+
+func (*alertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertPolicyConditionConditionMonitoringQueryLanguageTrigger)(nil)).Elem()
+}
+
+func (i *alertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrType) ToAlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutput() AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutput {
+	return i.ToAlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutputWithContext(context.Background())
+}
+
+func (i *alertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrType) ToAlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutput)
+}
+
+type AlertPolicyConditionConditionMonitoringQueryLanguageTriggerOutput struct{ *pulumi.OutputState }
+
+func (AlertPolicyConditionConditionMonitoringQueryLanguageTriggerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertPolicyConditionConditionMonitoringQueryLanguageTrigger)(nil)).Elem()
+}
+
+func (o AlertPolicyConditionConditionMonitoringQueryLanguageTriggerOutput) ToAlertPolicyConditionConditionMonitoringQueryLanguageTriggerOutput() AlertPolicyConditionConditionMonitoringQueryLanguageTriggerOutput {
+	return o
+}
+
+func (o AlertPolicyConditionConditionMonitoringQueryLanguageTriggerOutput) ToAlertPolicyConditionConditionMonitoringQueryLanguageTriggerOutputWithContext(ctx context.Context) AlertPolicyConditionConditionMonitoringQueryLanguageTriggerOutput {
+	return o
+}
+
+func (o AlertPolicyConditionConditionMonitoringQueryLanguageTriggerOutput) ToAlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutput() AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutput {
+	return o.ToAlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutputWithContext(context.Background())
+}
+
+func (o AlertPolicyConditionConditionMonitoringQueryLanguageTriggerOutput) ToAlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutput {
+	return o.ApplyT(func(v AlertPolicyConditionConditionMonitoringQueryLanguageTrigger) *AlertPolicyConditionConditionMonitoringQueryLanguageTrigger {
+		return &v
+	}).(AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutput)
+}
+
+// The absolute number of time series
+// that must fail the predicate for the
+// condition to be triggered.
+func (o AlertPolicyConditionConditionMonitoringQueryLanguageTriggerOutput) Count() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlertPolicyConditionConditionMonitoringQueryLanguageTrigger) *int { return v.Count }).(pulumi.IntPtrOutput)
+}
+
+// The percentage of time series that
+// must fail the predicate for the
+// condition to be triggered.
+func (o AlertPolicyConditionConditionMonitoringQueryLanguageTriggerOutput) Percent() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AlertPolicyConditionConditionMonitoringQueryLanguageTrigger) *float64 { return v.Percent }).(pulumi.Float64PtrOutput)
+}
+
+type AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutput struct{ *pulumi.OutputState }
+
+func (AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertPolicyConditionConditionMonitoringQueryLanguageTrigger)(nil)).Elem()
+}
+
+func (o AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutput) ToAlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutput() AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutput {
+	return o
+}
+
+func (o AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutput) ToAlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutput {
+	return o
+}
+
+func (o AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutput) Elem() AlertPolicyConditionConditionMonitoringQueryLanguageTriggerOutput {
+	return o.ApplyT(func(v *AlertPolicyConditionConditionMonitoringQueryLanguageTrigger) AlertPolicyConditionConditionMonitoringQueryLanguageTrigger {
+		return *v
+	}).(AlertPolicyConditionConditionMonitoringQueryLanguageTriggerOutput)
+}
+
+// The absolute number of time series
+// that must fail the predicate for the
+// condition to be triggered.
+func (o AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutput) Count() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlertPolicyConditionConditionMonitoringQueryLanguageTrigger) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Count
+	}).(pulumi.IntPtrOutput)
+}
+
+// The percentage of time series that
+// must fail the predicate for the
+// condition to be triggered.
+func (o AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutput) Percent() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AlertPolicyConditionConditionMonitoringQueryLanguageTrigger) *float64 {
 		if v == nil {
 			return nil
 		}
@@ -8317,6 +8760,10 @@ func init() {
 	pulumi.RegisterOutputType(AlertPolicyConditionConditionAbsentAggregationArrayOutput{})
 	pulumi.RegisterOutputType(AlertPolicyConditionConditionAbsentTriggerOutput{})
 	pulumi.RegisterOutputType(AlertPolicyConditionConditionAbsentTriggerPtrOutput{})
+	pulumi.RegisterOutputType(AlertPolicyConditionConditionMonitoringQueryLanguageOutput{})
+	pulumi.RegisterOutputType(AlertPolicyConditionConditionMonitoringQueryLanguagePtrOutput{})
+	pulumi.RegisterOutputType(AlertPolicyConditionConditionMonitoringQueryLanguageTriggerOutput{})
+	pulumi.RegisterOutputType(AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutput{})
 	pulumi.RegisterOutputType(AlertPolicyConditionConditionThresholdOutput{})
 	pulumi.RegisterOutputType(AlertPolicyConditionConditionThresholdPtrOutput{})
 	pulumi.RegisterOutputType(AlertPolicyConditionConditionThresholdAggregationOutput{})

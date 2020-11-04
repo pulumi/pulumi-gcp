@@ -56,7 +56,7 @@ export class BillingAccountBucketConfig extends pulumi.CustomResource {
      */
     public /*out*/ readonly lifecycleState!: pulumi.Output<string>;
     /**
-     * The location of the bucket. The supported locations are: "global" "us-central1"
+     * The location of the bucket.
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -138,7 +138,7 @@ export interface BillingAccountBucketConfigState {
      */
     readonly lifecycleState?: pulumi.Input<string>;
     /**
-     * The location of the bucket. The supported locations are: "global" "us-central1"
+     * The location of the bucket.
      */
     readonly location?: pulumi.Input<string>;
     /**
@@ -168,7 +168,7 @@ export interface BillingAccountBucketConfigArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * The location of the bucket. The supported locations are: "global" "us-central1"
+     * The location of the bucket.
      */
     readonly location: pulumi.Input<string>;
     /**

@@ -21,6 +21,7 @@ const (
 	// https://github.com/GoogleCloudPlatform/google-cloud-go
 	gcpAccessContextManager = "AccessContextManager" // Access Context Manager resources
 	gcpActiveDirectory      = "ActiveDirectory"      // Active Directory resources
+	gcpApiGateway           = "ApiGateway"           // ApiGateway resources
 	gcpAppEngine            = "AppEngine"            // AppEngine resources
 	gcpArtifactRegistry     = "ArtifactRegistry"     // ArtifactRegistry resources
 	gcpBigQuery             = "BigQuery"             // BigQuery resources
@@ -660,6 +661,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_compute_instance_from_template":        {Tok: gcpResource(gcpCompute, "InstanceFromTemplate")},
 			"google_compute_instance_group":                {Tok: gcpResource(gcpCompute, "InstanceGroup")},
 			"google_compute_instance_group_manager":        {Tok: gcpResource(gcpCompute, "InstanceGroupManager")},
+			"google_compute_instance_from_machine_image":   {Tok: gcpResource(gcpCompute, "InstanceFromMachineImage")},
 			"google_compute_instance_iam_binding": {
 				Tok: gcpResource(gcpCompute, "InstanceIAMBinding"),
 				Docs: &tfbridge.DocInfo{
@@ -680,9 +682,27 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"google_compute_instance_template":       {Tok: gcpResource(gcpCompute, "InstanceTemplate")},
 			"google_compute_interconnect_attachment": {Tok: gcpResource(gcpCompute, "InterconnectAttachment")},
-			"google_compute_node_group":              {Tok: gcpResource(gcpCompute, "NodeGroup")},
-			"google_compute_node_template":           {Tok: gcpResource(gcpCompute, "NodeTemplate")},
-			"google_compute_network_endpoint":        {Tok: gcpResource(gcpCompute, "NetworkEndpoint")},
+			"google_compute_machine_image_iam_binding": {
+				Tok: gcpResource(gcpCompute, "MachineImageIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "compute_machine_image_iam.html.markdown",
+				},
+			},
+			"google_compute_machine_image_iam_member": {
+				Tok: gcpResource(gcpCompute, "MachineImageIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "compute_machine_image_iam.html.markdown",
+				},
+			},
+			"google_compute_machine_image_iam_policy": {
+				Tok: gcpResource(gcpCompute, "MachineImageIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "compute_machine_image_iam.html.markdown",
+				},
+			},
+			"google_compute_node_group":       {Tok: gcpResource(gcpCompute, "NodeGroup")},
+			"google_compute_node_template":    {Tok: gcpResource(gcpCompute, "NodeTemplate")},
+			"google_compute_network_endpoint": {Tok: gcpResource(gcpCompute, "NetworkEndpoint")},
 			"google_compute_network_endpoint_group": {
 				Tok: gcpResource(gcpCompute, "NetworkEndpointGroup"),
 				Docs: &tfbridge.DocInfo{
@@ -1245,6 +1265,24 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "iap_tunnel_instance_iam.html.markdown",
 				},
 			},
+			"google_iap_tunnel_iam_binding": {
+				Tok: gcpResource(gcpIAP, "TunnelIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "iap_tunnel_iam.html.markdown",
+				},
+			},
+			"google_iap_tunnel_iam_member": {
+				Tok: gcpResource(gcpIAP, "TunnelIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "iap_tunnel_iam.html.markdown",
+				},
+			},
+			"google_iap_tunnel_iam_policy": {
+				Tok: gcpResource(gcpIAP, "TunnelIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "iap_tunnel_iam.html.markdown",
+				},
+			},
 			"google_iap_web_backend_service_iam_binding": {
 				Tok: gcpResource(gcpIAP, "WebBackendServiceIamBinding"),
 				Docs: &tfbridge.DocInfo{
@@ -1764,6 +1802,65 @@ func Provider() tfbridge.ProviderInfo {
 
 			// IAM
 			"google_iam_workload_identity_pool": {Tok: gcpResource(gcpIAM, "WorkloadIdentityPool")},
+
+			// API Gateway
+			"google_api_gateway_api_config_iam_binding": {
+				Tok: gcpResource(gcpApiGateway, "ApiConfigIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "api_gateway_api_config_iam.html.markdown",
+				},
+			},
+			"google_api_gateway_api_config_iam_member": {
+				Tok: gcpResource(gcpApiGateway, "ApiConfigIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "api_gateway_api_config_iam.html.markdown",
+				},
+			},
+			"google_api_gateway_api_config_iam_policy": {
+				Tok: gcpResource(gcpApiGateway, "ApiConfigIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "api_gateway_api_config_iam.html.markdown",
+				},
+			},
+			"google_api_gateway_api_config": {Tok: gcpResource(gcpApiGateway, "ApiConfig")},
+			"google_api_gateway_api_iam_binding": {
+				Tok: gcpResource(gcpApiGateway, "ApiIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "api_gateway_api_iam.html.markdown",
+				},
+			},
+			"google_api_gateway_api_iam_member": {
+				Tok: gcpResource(gcpApiGateway, "ApiIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "api_gateway_api_iam.html.markdown",
+				},
+			},
+			"google_api_gateway_api_iam_policy": {
+				Tok: gcpResource(gcpApiGateway, "ApiIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "api_gateway_api_iam.html.markdown",
+				},
+			},
+			"google_api_gateway_api": {Tok: gcpResource(gcpApiGateway, "Api")},
+			"google_api_gateway_gateway_iam_binding": {
+				Tok: gcpResource(gcpApiGateway, "GatewayIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "api_gateway_gateway_iam.html.markdown",
+				},
+			},
+			"google_api_gateway_gateway_iam_member": {
+				Tok: gcpResource(gcpApiGateway, "GatewayIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "api_gateway_gateway_iam.html.markdown",
+				},
+			},
+			"google_api_gateway_gateway_iam_policy": {
+				Tok: gcpResource(gcpApiGateway, "GatewayIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "api_gateway_gateway_iam.html.markdown",
+				},
+			},
+			"google_api_gateway_gateway": {Tok: gcpResource(gcpApiGateway, "Gateway")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"google_billing_account": {
