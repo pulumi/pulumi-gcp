@@ -10,27 +10,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Allows management of the entire IAM policy for an existing Google Cloud Platform Billing Account.
-//
-// > **Warning:** Billing accounts have a default user that can be **overwritten**
-// by use of this resource. The safest alternative is to use multiple `billing.AccountIamBinding`
-//    resources. If you do use this resource, the best way to be sure that you are
-//    not making dangerous changes is to start by importing your existing policy,
-//    and examining the diff very closely.
-//
-// > **Note:** This resource __must not__ be used in conjunction with
-//    `billing.AccountIamMember` or `billing.AccountIamBinding`
-//    or they will fight over what your policy should be.
 type AccountIamPolicy struct {
 	pulumi.CustomResourceState
 
-	// The billing account id.
 	BillingAccountId pulumi.StringOutput `pulumi:"billingAccountId"`
 	Etag             pulumi.StringOutput `pulumi:"etag"`
-	// The `organizations.getIAMPolicy` data source that represents
-	// the IAM policy that will be applied to the billing account. This policy overrides any existing
-	// policy applied to the billing account.
-	PolicyData pulumi.StringOutput `pulumi:"policyData"`
+	PolicyData       pulumi.StringOutput `pulumi:"policyData"`
 }
 
 // NewAccountIamPolicy registers a new resource with the given unique name, arguments, and options.
@@ -67,23 +52,15 @@ func GetAccountIamPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccountIamPolicy resources.
 type accountIamPolicyState struct {
-	// The billing account id.
 	BillingAccountId *string `pulumi:"billingAccountId"`
 	Etag             *string `pulumi:"etag"`
-	// The `organizations.getIAMPolicy` data source that represents
-	// the IAM policy that will be applied to the billing account. This policy overrides any existing
-	// policy applied to the billing account.
-	PolicyData *string `pulumi:"policyData"`
+	PolicyData       *string `pulumi:"policyData"`
 }
 
 type AccountIamPolicyState struct {
-	// The billing account id.
 	BillingAccountId pulumi.StringPtrInput
 	Etag             pulumi.StringPtrInput
-	// The `organizations.getIAMPolicy` data source that represents
-	// the IAM policy that will be applied to the billing account. This policy overrides any existing
-	// policy applied to the billing account.
-	PolicyData pulumi.StringPtrInput
+	PolicyData       pulumi.StringPtrInput
 }
 
 func (AccountIamPolicyState) ElementType() reflect.Type {
@@ -91,22 +68,14 @@ func (AccountIamPolicyState) ElementType() reflect.Type {
 }
 
 type accountIamPolicyArgs struct {
-	// The billing account id.
 	BillingAccountId string `pulumi:"billingAccountId"`
-	// The `organizations.getIAMPolicy` data source that represents
-	// the IAM policy that will be applied to the billing account. This policy overrides any existing
-	// policy applied to the billing account.
-	PolicyData string `pulumi:"policyData"`
+	PolicyData       string `pulumi:"policyData"`
 }
 
 // The set of arguments for constructing a AccountIamPolicy resource.
 type AccountIamPolicyArgs struct {
-	// The billing account id.
 	BillingAccountId pulumi.StringInput
-	// The `organizations.getIAMPolicy` data source that represents
-	// the IAM policy that will be applied to the billing account. This policy overrides any existing
-	// policy applied to the billing account.
-	PolicyData pulumi.StringInput
+	PolicyData       pulumi.StringInput
 }
 
 func (AccountIamPolicyArgs) ElementType() reflect.Type {

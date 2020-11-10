@@ -32,7 +32,8 @@ namespace Pulumi.Gcp.Iam
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// The resource name of the pool as 'projects/&lt;projectnumber&gt;/locations/global/workloadIdentityPools/&lt;id&gt;'.
+        /// The resource name of the pool as
+        /// 'projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}'.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -45,11 +46,11 @@ namespace Pulumi.Gcp.Iam
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The state of the pool. STATE_UNSPECIFIED: State unspecified. ACTIVE: The pool is active, and may be used in Google Cloud
-        /// policies. DELETED: The pool is soft-deleted. Soft-deleted pools are permanently deleted after approximately 30 days. You
-        /// can restore a soft-deleted pool using UndeleteWorkloadIdentityPool. You cannot reuse the ID of a soft-deleted pool until
-        /// it is permanently deleted. While a pool is deleted, you cannot use it to exchange tokens, or use existing tokens to
-        /// access resources. If the pool is undeleted, existing tokens grant access again.
+        /// The state of the pool. * STATE_UNSPECIFIED: State unspecified. * ACTIVE: The pool is active, and may be used in Google
+        /// Cloud policies. * DELETED: The pool is soft-deleted. Soft-deleted pools are permanently deleted after approximately 30
+        /// days. You can restore a soft-deleted pool using UndeleteWorkloadIdentityPool. You cannot reuse the ID of a soft-deleted
+        /// pool until it is permanently deleted. While a pool is deleted, you cannot use it to exchange tokens, or use existing
+        /// tokens to access resources. If the pool is undeleted, existing tokens grant access again.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -171,7 +172,8 @@ namespace Pulumi.Gcp.Iam
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// The resource name of the pool as 'projects/&lt;projectnumber&gt;/locations/global/workloadIdentityPools/&lt;id&gt;'.
+        /// The resource name of the pool as
+        /// 'projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}'.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -184,11 +186,11 @@ namespace Pulumi.Gcp.Iam
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The state of the pool. STATE_UNSPECIFIED: State unspecified. ACTIVE: The pool is active, and may be used in Google Cloud
-        /// policies. DELETED: The pool is soft-deleted. Soft-deleted pools are permanently deleted after approximately 30 days. You
-        /// can restore a soft-deleted pool using UndeleteWorkloadIdentityPool. You cannot reuse the ID of a soft-deleted pool until
-        /// it is permanently deleted. While a pool is deleted, you cannot use it to exchange tokens, or use existing tokens to
-        /// access resources. If the pool is undeleted, existing tokens grant access again.
+        /// The state of the pool. * STATE_UNSPECIFIED: State unspecified. * ACTIVE: The pool is active, and may be used in Google
+        /// Cloud policies. * DELETED: The pool is soft-deleted. Soft-deleted pools are permanently deleted after approximately 30
+        /// days. You can restore a soft-deleted pool using UndeleteWorkloadIdentityPool. You cannot reuse the ID of a soft-deleted
+        /// pool until it is permanently deleted. While a pool is deleted, you cannot use it to exchange tokens, or use existing
+        /// tokens to access resources. If the pool is undeleted, existing tokens grant access again.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

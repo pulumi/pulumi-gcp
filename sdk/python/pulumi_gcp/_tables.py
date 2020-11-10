@@ -55,6 +55,8 @@ SNAKE_TO_CAMEL_CASE_TABLE = {
     "attempt_deadline": "attemptDeadline",
     "attestation_authority": "attestationAuthority",
     "attestation_authority_note": "attestationAuthorityNote",
+    "attribute_condition": "attributeCondition",
+    "attribute_mapping": "attributeMapping",
     "audit_log_configs": "auditLogConfigs",
     "auth_domain": "authDomain",
     "auth_enabled": "authEnabled",
@@ -726,6 +728,7 @@ SNAKE_TO_CAMEL_CASE_TABLE = {
     "service_account_email_address": "serviceAccountEmailAddress",
     "service_account_id": "serviceAccountId",
     "service_account_name": "serviceAccountName",
+    "service_accounts": "serviceAccounts",
     "service_config_id": "serviceConfigId",
     "service_directory_config": "serviceDirectoryConfig",
     "service_directory_custom_endpoint": "serviceDirectoryCustomEndpoint",
@@ -885,6 +888,7 @@ SNAKE_TO_CAMEL_CASE_TABLE = {
     "worker_config": "workerConfig",
     "workload_identity_config": "workloadIdentityConfig",
     "workload_identity_pool_id": "workloadIdentityPoolId",
+    "workload_identity_pool_provider_id": "workloadIdentityPoolProviderId",
     "writer_identity": "writerIdentity",
 }
 
@@ -941,6 +945,8 @@ CAMEL_TO_SNAKE_CASE_TABLE = {
     "attemptDeadline": "attempt_deadline",
     "attestationAuthority": "attestation_authority",
     "attestationAuthorityNote": "attestation_authority_note",
+    "attributeCondition": "attribute_condition",
+    "attributeMapping": "attribute_mapping",
     "auditLogConfigs": "audit_log_configs",
     "authDomain": "auth_domain",
     "authEnabled": "auth_enabled",
@@ -1612,6 +1618,7 @@ CAMEL_TO_SNAKE_CASE_TABLE = {
     "serviceAccountEmailAddress": "service_account_email_address",
     "serviceAccountId": "service_account_id",
     "serviceAccountName": "service_account_name",
+    "serviceAccounts": "service_accounts",
     "serviceConfigId": "service_config_id",
     "serviceDirectoryConfig": "service_directory_config",
     "serviceDirectoryCustomEndpoint": "service_directory_custom_endpoint",
@@ -1771,5 +1778,6 @@ CAMEL_TO_SNAKE_CASE_TABLE = {
     "workerConfig": "worker_config",
     "workloadIdentityConfig": "workload_identity_config",
     "workloadIdentityPoolId": "workload_identity_pool_id",
+    "workloadIdentityPoolProviderId": "workload_identity_pool_provider_id",
     "writerIdentity": "writer_identity",
 }

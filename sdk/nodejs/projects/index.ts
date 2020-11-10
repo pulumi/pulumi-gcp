@@ -3,6 +3,7 @@
 
 // Export members:
 export * from "./accessApprovalSettings";
+export * from "./defaultServiceAccounts";
 export * from "./getOrganizationPolicy";
 export * from "./getProject";
 export * from "./iamauditConfig";

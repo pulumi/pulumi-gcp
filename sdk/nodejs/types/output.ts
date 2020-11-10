@@ -2316,7 +2316,7 @@ export namespace bigquery {
         /**
          * The data format. Supported values are:
          * "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET",
-         * and "DATSTORE_BACKUP". To use "GOOGLE_SHEETS"
+         * and "DATASTORE_BACKUP". To use "GOOGLE_SHEETS"
          * the `scopes` must include
          * "https://www.googleapis.com/auth/drive.readonly".
          */
@@ -16764,6 +16764,33 @@ export namespace iam {
          */
         title: string;
     }
+
+    export interface WorkloadIdentityPoolProviderAws {
+        /**
+         * The AWS account ID.
+         */
+        accountId: string;
+    }
+
+    export interface WorkloadIdentityPoolProviderOidc {
+        /**
+         * Acceptable values for the `aud` field (audience) in the OIDC token. Token exchange
+         * requests are rejected if the token audience does not match one of the configured
+         * values. Each audience may be at most 256 characters. A maximum of 10 audiences may
+         * be configured.
+         * If this list is empty, the OIDC token audience must be equal to the full canonical
+         * resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix.
+         * For example:
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
+         */
+        allowedAudiences?: string[];
+        /**
+         * The OIDC issuer URL.
+         */
+        issuerUri: string;
+    }
 }
 
 export namespace iap {
@@ -20808,8 +20835,7 @@ export namespace sql {
          */
         privateNetwork?: string;
         /**
-         * True if mysqld should default to `REQUIRE X509`
-         * for users connecting over IP.
+         * Whether SSL connections over IP are enforced or not.
          */
         requireSsl?: boolean;
     }

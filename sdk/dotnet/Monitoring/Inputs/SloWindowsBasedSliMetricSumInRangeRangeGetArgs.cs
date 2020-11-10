@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         /// "&gt;= range.min"
         /// </summary>
         [Input("max")]
-        public Input<int>? Max { get; set; }
+        public Input<double>? Max { get; set; }
 
         /// <summary>
         /// Min value for the range (inclusive). If not given,
@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         /// "&lt; range.max"
         /// </summary>
         [Input("min")]
-        public Input<int>? Min { get; set; }
+        public Input<double>? Min { get; set; }
 
         public SloWindowsBasedSliMetricSumInRangeRangeGetArgs()
         {

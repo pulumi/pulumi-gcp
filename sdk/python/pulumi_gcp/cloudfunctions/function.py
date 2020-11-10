@@ -58,7 +58,7 @@ class Function(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] available_memory_mb: Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, and 2048MB.
+        :param pulumi.Input[int] available_memory_mb: Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, 2048MB and 4096MB.
         :param pulumi.Input[Mapping[str, Any]] build_environment_variables: A set of key/value environment variable pairs available during build time.
         :param pulumi.Input[str] description: Description of the function.
         :param pulumi.Input[str] entry_point: Name of the function that will be executed when the Google Cloud Function is triggered.
@@ -163,7 +163,7 @@ class Function(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] available_memory_mb: Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, and 2048MB.
+        :param pulumi.Input[int] available_memory_mb: Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, 2048MB and 4096MB.
         :param pulumi.Input[Mapping[str, Any]] build_environment_variables: A set of key/value environment variable pairs available during build time.
         :param pulumi.Input[str] description: Description of the function.
         :param pulumi.Input[str] entry_point: Name of the function that will be executed when the Google Cloud Function is triggered.
@@ -220,7 +220,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter(name="availableMemoryMb")
     def available_memory_mb(self) -> pulumi.Output[Optional[int]]:
         """
-        Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, and 2048MB.
+        Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, 2048MB and 4096MB.
         """
         return pulumi.get(self, "available_memory_mb")
 

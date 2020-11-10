@@ -4,6 +4,7 @@
 
 # Export this package's modules as members:
 from .access_approval_settings import *
+from .default_service_accounts import *
 from .get_organization_policy import *
 from .get_project import *
 from .iam_audit_config import *

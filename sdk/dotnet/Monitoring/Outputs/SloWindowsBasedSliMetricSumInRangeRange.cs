@@ -18,19 +18,19 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         /// will be set to "infinity", defining an open range
         /// "&gt;= range.min"
         /// </summary>
-        public readonly int? Max;
+        public readonly double? Max;
         /// <summary>
         /// Min value for the range (inclusive). If not given,
         /// will be set to "-infinity", defining an open range
         /// "&lt; range.max"
         /// </summary>
-        public readonly int? Min;
+        public readonly double? Min;
 
         [OutputConstructor]
         private SloWindowsBasedSliMetricSumInRangeRange(
-            int? max,
+            double? max,
 
-            int? min)
+            double? min)
         {
             Max = max;
             Min = min;

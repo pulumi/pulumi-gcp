@@ -775,8 +775,7 @@ class DatabaseInstanceSettingsIpConfigurationArgs:
                Specifying a network enables private IP.
                Either `ipv4_enabled` must be enabled or a `private_network` must be configured.
                This setting can be updated, but it cannot be removed after it is set.
-        :param pulumi.Input[bool] require_ssl: True if mysqld should default to `REQUIRE X509`
-               for users connecting over IP.
+        :param pulumi.Input[bool] require_ssl: Whether SSL connections over IP are enforced or not.
         """
         if authorized_networks is not None:
             pulumi.set(__self__, "authorized_networks", authorized_networks)
@@ -830,8 +829,7 @@ class DatabaseInstanceSettingsIpConfigurationArgs:
     @pulumi.getter(name="requireSsl")
     def require_ssl(self) -> Optional[pulumi.Input[bool]]:
         """
-        True if mysqld should default to `REQUIRE X509`
-        for users connecting over IP.
+        Whether SSL connections over IP are enforced or not.
         """
         return pulumi.get(self, "require_ssl")
 

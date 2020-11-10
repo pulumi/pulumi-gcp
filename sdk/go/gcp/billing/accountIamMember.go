@@ -10,24 +10,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Allows creation and management of a single member for a single binding within
-// the IAM policy for an existing Google Cloud Platform Billing Account.
-//
-// > **Note:** This resource __must not__ be used in conjunction with
-//    `billing.AccountIamBinding` for the __same role__ or they will fight over
-//    what your policy should be.
 type AccountIamMember struct {
 	pulumi.CustomResourceState
 
-	// The billing account id.
 	BillingAccountId pulumi.StringOutput                `pulumi:"billingAccountId"`
 	Condition        AccountIamMemberConditionPtrOutput `pulumi:"condition"`
-	// (Computed) The etag of the billing account's IAM policy.
-	Etag pulumi.StringOutput `pulumi:"etag"`
-	// The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-	Member pulumi.StringOutput `pulumi:"member"`
-	// The role that should be applied.
-	Role pulumi.StringOutput `pulumi:"role"`
+	Etag             pulumi.StringOutput                `pulumi:"etag"`
+	Member           pulumi.StringOutput                `pulumi:"member"`
+	Role             pulumi.StringOutput                `pulumi:"role"`
 }
 
 // NewAccountIamMember registers a new resource with the given unique name, arguments, and options.
@@ -67,27 +57,19 @@ func GetAccountIamMember(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccountIamMember resources.
 type accountIamMemberState struct {
-	// The billing account id.
 	BillingAccountId *string                    `pulumi:"billingAccountId"`
 	Condition        *AccountIamMemberCondition `pulumi:"condition"`
-	// (Computed) The etag of the billing account's IAM policy.
-	Etag *string `pulumi:"etag"`
-	// The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-	Member *string `pulumi:"member"`
-	// The role that should be applied.
-	Role *string `pulumi:"role"`
+	Etag             *string                    `pulumi:"etag"`
+	Member           *string                    `pulumi:"member"`
+	Role             *string                    `pulumi:"role"`
 }
 
 type AccountIamMemberState struct {
-	// The billing account id.
 	BillingAccountId pulumi.StringPtrInput
 	Condition        AccountIamMemberConditionPtrInput
-	// (Computed) The etag of the billing account's IAM policy.
-	Etag pulumi.StringPtrInput
-	// The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-	Member pulumi.StringPtrInput
-	// The role that should be applied.
-	Role pulumi.StringPtrInput
+	Etag             pulumi.StringPtrInput
+	Member           pulumi.StringPtrInput
+	Role             pulumi.StringPtrInput
 }
 
 func (AccountIamMemberState) ElementType() reflect.Type {
@@ -95,24 +77,18 @@ func (AccountIamMemberState) ElementType() reflect.Type {
 }
 
 type accountIamMemberArgs struct {
-	// The billing account id.
 	BillingAccountId string                     `pulumi:"billingAccountId"`
 	Condition        *AccountIamMemberCondition `pulumi:"condition"`
-	// The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-	Member string `pulumi:"member"`
-	// The role that should be applied.
-	Role string `pulumi:"role"`
+	Member           string                     `pulumi:"member"`
+	Role             string                     `pulumi:"role"`
 }
 
 // The set of arguments for constructing a AccountIamMember resource.
 type AccountIamMemberArgs struct {
-	// The billing account id.
 	BillingAccountId pulumi.StringInput
 	Condition        AccountIamMemberConditionPtrInput
-	// The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-	Member pulumi.StringInput
-	// The role that should be applied.
-	Role pulumi.StringInput
+	Member           pulumi.StringInput
+	Role             pulumi.StringInput
 }
 
 func (AccountIamMemberArgs) ElementType() reflect.Type {

@@ -39,8 +39,7 @@ namespace Pulumi.Gcp.Sql.Inputs
         public Input<string>? PrivateNetwork { get; set; }
 
         /// <summary>
-        /// True if mysqld should default to `REQUIRE X509`
-        /// for users connecting over IP.
+        /// Whether SSL connections over IP are enforced or not.
         /// </summary>
         [Input("requireSsl")]
         public Input<bool>? RequireSsl { get; set; }

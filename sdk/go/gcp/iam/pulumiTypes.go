@@ -10,6 +10,363 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+type WorkloadIdentityPoolProviderAws struct {
+	// The AWS account ID.
+	AccountId string `pulumi:"accountId"`
+}
+
+// WorkloadIdentityPoolProviderAwsInput is an input type that accepts WorkloadIdentityPoolProviderAwsArgs and WorkloadIdentityPoolProviderAwsOutput values.
+// You can construct a concrete instance of `WorkloadIdentityPoolProviderAwsInput` via:
+//
+//          WorkloadIdentityPoolProviderAwsArgs{...}
+type WorkloadIdentityPoolProviderAwsInput interface {
+	pulumi.Input
+
+	ToWorkloadIdentityPoolProviderAwsOutput() WorkloadIdentityPoolProviderAwsOutput
+	ToWorkloadIdentityPoolProviderAwsOutputWithContext(context.Context) WorkloadIdentityPoolProviderAwsOutput
+}
+
+type WorkloadIdentityPoolProviderAwsArgs struct {
+	// The AWS account ID.
+	AccountId pulumi.StringInput `pulumi:"accountId"`
+}
+
+func (WorkloadIdentityPoolProviderAwsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadIdentityPoolProviderAws)(nil)).Elem()
+}
+
+func (i WorkloadIdentityPoolProviderAwsArgs) ToWorkloadIdentityPoolProviderAwsOutput() WorkloadIdentityPoolProviderAwsOutput {
+	return i.ToWorkloadIdentityPoolProviderAwsOutputWithContext(context.Background())
+}
+
+func (i WorkloadIdentityPoolProviderAwsArgs) ToWorkloadIdentityPoolProviderAwsOutputWithContext(ctx context.Context) WorkloadIdentityPoolProviderAwsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadIdentityPoolProviderAwsOutput)
+}
+
+func (i WorkloadIdentityPoolProviderAwsArgs) ToWorkloadIdentityPoolProviderAwsPtrOutput() WorkloadIdentityPoolProviderAwsPtrOutput {
+	return i.ToWorkloadIdentityPoolProviderAwsPtrOutputWithContext(context.Background())
+}
+
+func (i WorkloadIdentityPoolProviderAwsArgs) ToWorkloadIdentityPoolProviderAwsPtrOutputWithContext(ctx context.Context) WorkloadIdentityPoolProviderAwsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadIdentityPoolProviderAwsOutput).ToWorkloadIdentityPoolProviderAwsPtrOutputWithContext(ctx)
+}
+
+// WorkloadIdentityPoolProviderAwsPtrInput is an input type that accepts WorkloadIdentityPoolProviderAwsArgs, WorkloadIdentityPoolProviderAwsPtr and WorkloadIdentityPoolProviderAwsPtrOutput values.
+// You can construct a concrete instance of `WorkloadIdentityPoolProviderAwsPtrInput` via:
+//
+//          WorkloadIdentityPoolProviderAwsArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkloadIdentityPoolProviderAwsPtrInput interface {
+	pulumi.Input
+
+	ToWorkloadIdentityPoolProviderAwsPtrOutput() WorkloadIdentityPoolProviderAwsPtrOutput
+	ToWorkloadIdentityPoolProviderAwsPtrOutputWithContext(context.Context) WorkloadIdentityPoolProviderAwsPtrOutput
+}
+
+type workloadIdentityPoolProviderAwsPtrType WorkloadIdentityPoolProviderAwsArgs
+
+func WorkloadIdentityPoolProviderAwsPtr(v *WorkloadIdentityPoolProviderAwsArgs) WorkloadIdentityPoolProviderAwsPtrInput {
+	return (*workloadIdentityPoolProviderAwsPtrType)(v)
+}
+
+func (*workloadIdentityPoolProviderAwsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkloadIdentityPoolProviderAws)(nil)).Elem()
+}
+
+func (i *workloadIdentityPoolProviderAwsPtrType) ToWorkloadIdentityPoolProviderAwsPtrOutput() WorkloadIdentityPoolProviderAwsPtrOutput {
+	return i.ToWorkloadIdentityPoolProviderAwsPtrOutputWithContext(context.Background())
+}
+
+func (i *workloadIdentityPoolProviderAwsPtrType) ToWorkloadIdentityPoolProviderAwsPtrOutputWithContext(ctx context.Context) WorkloadIdentityPoolProviderAwsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadIdentityPoolProviderAwsPtrOutput)
+}
+
+type WorkloadIdentityPoolProviderAwsOutput struct{ *pulumi.OutputState }
+
+func (WorkloadIdentityPoolProviderAwsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadIdentityPoolProviderAws)(nil)).Elem()
+}
+
+func (o WorkloadIdentityPoolProviderAwsOutput) ToWorkloadIdentityPoolProviderAwsOutput() WorkloadIdentityPoolProviderAwsOutput {
+	return o
+}
+
+func (o WorkloadIdentityPoolProviderAwsOutput) ToWorkloadIdentityPoolProviderAwsOutputWithContext(ctx context.Context) WorkloadIdentityPoolProviderAwsOutput {
+	return o
+}
+
+func (o WorkloadIdentityPoolProviderAwsOutput) ToWorkloadIdentityPoolProviderAwsPtrOutput() WorkloadIdentityPoolProviderAwsPtrOutput {
+	return o.ToWorkloadIdentityPoolProviderAwsPtrOutputWithContext(context.Background())
+}
+
+func (o WorkloadIdentityPoolProviderAwsOutput) ToWorkloadIdentityPoolProviderAwsPtrOutputWithContext(ctx context.Context) WorkloadIdentityPoolProviderAwsPtrOutput {
+	return o.ApplyT(func(v WorkloadIdentityPoolProviderAws) *WorkloadIdentityPoolProviderAws {
+		return &v
+	}).(WorkloadIdentityPoolProviderAwsPtrOutput)
+}
+
+// The AWS account ID.
+func (o WorkloadIdentityPoolProviderAwsOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkloadIdentityPoolProviderAws) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
+type WorkloadIdentityPoolProviderAwsPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkloadIdentityPoolProviderAwsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkloadIdentityPoolProviderAws)(nil)).Elem()
+}
+
+func (o WorkloadIdentityPoolProviderAwsPtrOutput) ToWorkloadIdentityPoolProviderAwsPtrOutput() WorkloadIdentityPoolProviderAwsPtrOutput {
+	return o
+}
+
+func (o WorkloadIdentityPoolProviderAwsPtrOutput) ToWorkloadIdentityPoolProviderAwsPtrOutputWithContext(ctx context.Context) WorkloadIdentityPoolProviderAwsPtrOutput {
+	return o
+}
+
+func (o WorkloadIdentityPoolProviderAwsPtrOutput) Elem() WorkloadIdentityPoolProviderAwsOutput {
+	return o.ApplyT(func(v *WorkloadIdentityPoolProviderAws) WorkloadIdentityPoolProviderAws { return *v }).(WorkloadIdentityPoolProviderAwsOutput)
+}
+
+// The AWS account ID.
+func (o WorkloadIdentityPoolProviderAwsPtrOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkloadIdentityPoolProviderAws) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AccountId
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkloadIdentityPoolProviderOidc struct {
+	// Acceptable values for the `aud` field (audience) in the OIDC token. Token exchange
+	// requests are rejected if the token audience does not match one of the configured
+	// values. Each audience may be at most 256 characters. A maximum of 10 audiences may
+	// be configured.
+	// If this list is empty, the OIDC token audience must be equal to the full canonical
+	// resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix.
+	// For example:
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
+	AllowedAudiences []string `pulumi:"allowedAudiences"`
+	// The OIDC issuer URL.
+	IssuerUri string `pulumi:"issuerUri"`
+}
+
+// WorkloadIdentityPoolProviderOidcInput is an input type that accepts WorkloadIdentityPoolProviderOidcArgs and WorkloadIdentityPoolProviderOidcOutput values.
+// You can construct a concrete instance of `WorkloadIdentityPoolProviderOidcInput` via:
+//
+//          WorkloadIdentityPoolProviderOidcArgs{...}
+type WorkloadIdentityPoolProviderOidcInput interface {
+	pulumi.Input
+
+	ToWorkloadIdentityPoolProviderOidcOutput() WorkloadIdentityPoolProviderOidcOutput
+	ToWorkloadIdentityPoolProviderOidcOutputWithContext(context.Context) WorkloadIdentityPoolProviderOidcOutput
+}
+
+type WorkloadIdentityPoolProviderOidcArgs struct {
+	// Acceptable values for the `aud` field (audience) in the OIDC token. Token exchange
+	// requests are rejected if the token audience does not match one of the configured
+	// values. Each audience may be at most 256 characters. A maximum of 10 audiences may
+	// be configured.
+	// If this list is empty, the OIDC token audience must be equal to the full canonical
+	// resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix.
+	// For example:
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
+	AllowedAudiences pulumi.StringArrayInput `pulumi:"allowedAudiences"`
+	// The OIDC issuer URL.
+	IssuerUri pulumi.StringInput `pulumi:"issuerUri"`
+}
+
+func (WorkloadIdentityPoolProviderOidcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadIdentityPoolProviderOidc)(nil)).Elem()
+}
+
+func (i WorkloadIdentityPoolProviderOidcArgs) ToWorkloadIdentityPoolProviderOidcOutput() WorkloadIdentityPoolProviderOidcOutput {
+	return i.ToWorkloadIdentityPoolProviderOidcOutputWithContext(context.Background())
+}
+
+func (i WorkloadIdentityPoolProviderOidcArgs) ToWorkloadIdentityPoolProviderOidcOutputWithContext(ctx context.Context) WorkloadIdentityPoolProviderOidcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadIdentityPoolProviderOidcOutput)
+}
+
+func (i WorkloadIdentityPoolProviderOidcArgs) ToWorkloadIdentityPoolProviderOidcPtrOutput() WorkloadIdentityPoolProviderOidcPtrOutput {
+	return i.ToWorkloadIdentityPoolProviderOidcPtrOutputWithContext(context.Background())
+}
+
+func (i WorkloadIdentityPoolProviderOidcArgs) ToWorkloadIdentityPoolProviderOidcPtrOutputWithContext(ctx context.Context) WorkloadIdentityPoolProviderOidcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadIdentityPoolProviderOidcOutput).ToWorkloadIdentityPoolProviderOidcPtrOutputWithContext(ctx)
+}
+
+// WorkloadIdentityPoolProviderOidcPtrInput is an input type that accepts WorkloadIdentityPoolProviderOidcArgs, WorkloadIdentityPoolProviderOidcPtr and WorkloadIdentityPoolProviderOidcPtrOutput values.
+// You can construct a concrete instance of `WorkloadIdentityPoolProviderOidcPtrInput` via:
+//
+//          WorkloadIdentityPoolProviderOidcArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkloadIdentityPoolProviderOidcPtrInput interface {
+	pulumi.Input
+
+	ToWorkloadIdentityPoolProviderOidcPtrOutput() WorkloadIdentityPoolProviderOidcPtrOutput
+	ToWorkloadIdentityPoolProviderOidcPtrOutputWithContext(context.Context) WorkloadIdentityPoolProviderOidcPtrOutput
+}
+
+type workloadIdentityPoolProviderOidcPtrType WorkloadIdentityPoolProviderOidcArgs
+
+func WorkloadIdentityPoolProviderOidcPtr(v *WorkloadIdentityPoolProviderOidcArgs) WorkloadIdentityPoolProviderOidcPtrInput {
+	return (*workloadIdentityPoolProviderOidcPtrType)(v)
+}
+
+func (*workloadIdentityPoolProviderOidcPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkloadIdentityPoolProviderOidc)(nil)).Elem()
+}
+
+func (i *workloadIdentityPoolProviderOidcPtrType) ToWorkloadIdentityPoolProviderOidcPtrOutput() WorkloadIdentityPoolProviderOidcPtrOutput {
+	return i.ToWorkloadIdentityPoolProviderOidcPtrOutputWithContext(context.Background())
+}
+
+func (i *workloadIdentityPoolProviderOidcPtrType) ToWorkloadIdentityPoolProviderOidcPtrOutputWithContext(ctx context.Context) WorkloadIdentityPoolProviderOidcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadIdentityPoolProviderOidcPtrOutput)
+}
+
+type WorkloadIdentityPoolProviderOidcOutput struct{ *pulumi.OutputState }
+
+func (WorkloadIdentityPoolProviderOidcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadIdentityPoolProviderOidc)(nil)).Elem()
+}
+
+func (o WorkloadIdentityPoolProviderOidcOutput) ToWorkloadIdentityPoolProviderOidcOutput() WorkloadIdentityPoolProviderOidcOutput {
+	return o
+}
+
+func (o WorkloadIdentityPoolProviderOidcOutput) ToWorkloadIdentityPoolProviderOidcOutputWithContext(ctx context.Context) WorkloadIdentityPoolProviderOidcOutput {
+	return o
+}
+
+func (o WorkloadIdentityPoolProviderOidcOutput) ToWorkloadIdentityPoolProviderOidcPtrOutput() WorkloadIdentityPoolProviderOidcPtrOutput {
+	return o.ToWorkloadIdentityPoolProviderOidcPtrOutputWithContext(context.Background())
+}
+
+func (o WorkloadIdentityPoolProviderOidcOutput) ToWorkloadIdentityPoolProviderOidcPtrOutputWithContext(ctx context.Context) WorkloadIdentityPoolProviderOidcPtrOutput {
+	return o.ApplyT(func(v WorkloadIdentityPoolProviderOidc) *WorkloadIdentityPoolProviderOidc {
+		return &v
+	}).(WorkloadIdentityPoolProviderOidcPtrOutput)
+}
+
+// Acceptable values for the `aud` field (audience) in the OIDC token. Token exchange
+// requests are rejected if the token audience does not match one of the configured
+// values. Each audience may be at most 256 characters. A maximum of 10 audiences may
+// be configured.
+// If this list is empty, the OIDC token audience must be equal to the full canonical
+// resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix.
+// For example:
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		return nil
+// 	})
+// }
+// ```
+func (o WorkloadIdentityPoolProviderOidcOutput) AllowedAudiences() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkloadIdentityPoolProviderOidc) []string { return v.AllowedAudiences }).(pulumi.StringArrayOutput)
+}
+
+// The OIDC issuer URL.
+func (o WorkloadIdentityPoolProviderOidcOutput) IssuerUri() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkloadIdentityPoolProviderOidc) string { return v.IssuerUri }).(pulumi.StringOutput)
+}
+
+type WorkloadIdentityPoolProviderOidcPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkloadIdentityPoolProviderOidcPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkloadIdentityPoolProviderOidc)(nil)).Elem()
+}
+
+func (o WorkloadIdentityPoolProviderOidcPtrOutput) ToWorkloadIdentityPoolProviderOidcPtrOutput() WorkloadIdentityPoolProviderOidcPtrOutput {
+	return o
+}
+
+func (o WorkloadIdentityPoolProviderOidcPtrOutput) ToWorkloadIdentityPoolProviderOidcPtrOutputWithContext(ctx context.Context) WorkloadIdentityPoolProviderOidcPtrOutput {
+	return o
+}
+
+func (o WorkloadIdentityPoolProviderOidcPtrOutput) Elem() WorkloadIdentityPoolProviderOidcOutput {
+	return o.ApplyT(func(v *WorkloadIdentityPoolProviderOidc) WorkloadIdentityPoolProviderOidc { return *v }).(WorkloadIdentityPoolProviderOidcOutput)
+}
+
+// Acceptable values for the `aud` field (audience) in the OIDC token. Token exchange
+// requests are rejected if the token audience does not match one of the configured
+// values. Each audience may be at most 256 characters. A maximum of 10 audiences may
+// be configured.
+// If this list is empty, the OIDC token audience must be equal to the full canonical
+// resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix.
+// For example:
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		return nil
+// 	})
+// }
+// ```
+func (o WorkloadIdentityPoolProviderOidcPtrOutput) AllowedAudiences() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkloadIdentityPoolProviderOidc) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedAudiences
+	}).(pulumi.StringArrayOutput)
+}
+
+// The OIDC issuer URL.
+func (o WorkloadIdentityPoolProviderOidcPtrOutput) IssuerUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkloadIdentityPoolProviderOidc) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IssuerUri
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetTestablePermissionsPermission struct {
 	// Whether the corresponding API has been enabled for the resource.
 	ApiDisabled bool `pulumi:"apiDisabled"`
@@ -144,6 +501,10 @@ func (o GetTestablePermissionsPermissionArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 func init() {
+	pulumi.RegisterOutputType(WorkloadIdentityPoolProviderAwsOutput{})
+	pulumi.RegisterOutputType(WorkloadIdentityPoolProviderAwsPtrOutput{})
+	pulumi.RegisterOutputType(WorkloadIdentityPoolProviderOidcOutput{})
+	pulumi.RegisterOutputType(WorkloadIdentityPoolProviderOidcPtrOutput{})
 	pulumi.RegisterOutputType(GetTestablePermissionsPermissionOutput{})
 	pulumi.RegisterOutputType(GetTestablePermissionsPermissionArrayOutput{})
 }

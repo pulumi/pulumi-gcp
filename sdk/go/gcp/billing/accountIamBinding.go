@@ -10,28 +10,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Allows creation and management of a single binding within IAM policy for
-// an existing Google Cloud Platform Billing Account.
-//
-// > **Note:** This resource __must not__ be used in conjunction with
-//    `billing.AccountIamMember` for the __same role__ or they will fight over
-//    what your policy should be.
-//
-// > **Note:** On create, this resource will overwrite members of any existing roles.
-//     Use `pulumi import` and inspect the output to ensure
-//     your existing members are preserved.
 type AccountIamBinding struct {
 	pulumi.CustomResourceState
 
-	// The billing account id.
 	BillingAccountId pulumi.StringOutput                 `pulumi:"billingAccountId"`
 	Condition        AccountIamBindingConditionPtrOutput `pulumi:"condition"`
-	// (Computed) The etag of the billing account's IAM policy.
-	Etag pulumi.StringOutput `pulumi:"etag"`
-	// A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-	Members pulumi.StringArrayOutput `pulumi:"members"`
-	// The role that should be applied.
-	Role pulumi.StringOutput `pulumi:"role"`
+	Etag             pulumi.StringOutput                 `pulumi:"etag"`
+	Members          pulumi.StringArrayOutput            `pulumi:"members"`
+	Role             pulumi.StringOutput                 `pulumi:"role"`
 }
 
 // NewAccountIamBinding registers a new resource with the given unique name, arguments, and options.
@@ -71,27 +57,19 @@ func GetAccountIamBinding(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccountIamBinding resources.
 type accountIamBindingState struct {
-	// The billing account id.
 	BillingAccountId *string                     `pulumi:"billingAccountId"`
 	Condition        *AccountIamBindingCondition `pulumi:"condition"`
-	// (Computed) The etag of the billing account's IAM policy.
-	Etag *string `pulumi:"etag"`
-	// A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-	Members []string `pulumi:"members"`
-	// The role that should be applied.
-	Role *string `pulumi:"role"`
+	Etag             *string                     `pulumi:"etag"`
+	Members          []string                    `pulumi:"members"`
+	Role             *string                     `pulumi:"role"`
 }
 
 type AccountIamBindingState struct {
-	// The billing account id.
 	BillingAccountId pulumi.StringPtrInput
 	Condition        AccountIamBindingConditionPtrInput
-	// (Computed) The etag of the billing account's IAM policy.
-	Etag pulumi.StringPtrInput
-	// A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-	Members pulumi.StringArrayInput
-	// The role that should be applied.
-	Role pulumi.StringPtrInput
+	Etag             pulumi.StringPtrInput
+	Members          pulumi.StringArrayInput
+	Role             pulumi.StringPtrInput
 }
 
 func (AccountIamBindingState) ElementType() reflect.Type {
@@ -99,24 +77,18 @@ func (AccountIamBindingState) ElementType() reflect.Type {
 }
 
 type accountIamBindingArgs struct {
-	// The billing account id.
 	BillingAccountId string                      `pulumi:"billingAccountId"`
 	Condition        *AccountIamBindingCondition `pulumi:"condition"`
-	// A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-	Members []string `pulumi:"members"`
-	// The role that should be applied.
-	Role string `pulumi:"role"`
+	Members          []string                    `pulumi:"members"`
+	Role             string                      `pulumi:"role"`
 }
 
 // The set of arguments for constructing a AccountIamBinding resource.
 type AccountIamBindingArgs struct {
-	// The billing account id.
 	BillingAccountId pulumi.StringInput
 	Condition        AccountIamBindingConditionPtrInput
-	// A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-	Members pulumi.StringArrayInput
-	// The role that should be applied.
-	Role pulumi.StringInput
+	Members          pulumi.StringArrayInput
+	Role             pulumi.StringInput
 }
 
 func (AccountIamBindingArgs) ElementType() reflect.Type {

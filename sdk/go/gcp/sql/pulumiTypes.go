@@ -1443,8 +1443,7 @@ type DatabaseInstanceSettingsIpConfiguration struct {
 	// Either `ipv4Enabled` must be enabled or a `privateNetwork` must be configured.
 	// This setting can be updated, but it cannot be removed after it is set.
 	PrivateNetwork *string `pulumi:"privateNetwork"`
-	// True if mysqld should default to `REQUIRE X509`
-	// for users connecting over IP.
+	// Whether SSL connections over IP are enforced or not.
 	RequireSsl *bool `pulumi:"requireSsl"`
 }
 
@@ -1471,8 +1470,7 @@ type DatabaseInstanceSettingsIpConfigurationArgs struct {
 	// Either `ipv4Enabled` must be enabled or a `privateNetwork` must be configured.
 	// This setting can be updated, but it cannot be removed after it is set.
 	PrivateNetwork pulumi.StringPtrInput `pulumi:"privateNetwork"`
-	// True if mysqld should default to `REQUIRE X509`
-	// for users connecting over IP.
+	// Whether SSL connections over IP are enforced or not.
 	RequireSsl pulumi.BoolPtrInput `pulumi:"requireSsl"`
 }
 
@@ -1574,8 +1572,7 @@ func (o DatabaseInstanceSettingsIpConfigurationOutput) PrivateNetwork() pulumi.S
 	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfiguration) *string { return v.PrivateNetwork }).(pulumi.StringPtrOutput)
 }
 
-// True if mysqld should default to `REQUIRE X509`
-// for users connecting over IP.
+// Whether SSL connections over IP are enforced or not.
 func (o DatabaseInstanceSettingsIpConfigurationOutput) RequireSsl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfiguration) *bool { return v.RequireSsl }).(pulumi.BoolPtrOutput)
 }
@@ -1633,8 +1630,7 @@ func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) PrivateNetwork() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
-// True if mysqld should default to `REQUIRE X509`
-// for users connecting over IP.
+// Whether SSL connections over IP are enforced or not.
 func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) RequireSsl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettingsIpConfiguration) *bool {
 		if v == nil {

@@ -9,8 +9,82 @@ from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
+    'WorkloadIdentityPoolProviderAws',
+    'WorkloadIdentityPoolProviderOidc',
     'GetTestablePermissionsPermissionResult',
 ]
+
+@pulumi.output_type
+class WorkloadIdentityPoolProviderAws(dict):
+    def __init__(__self__, *,
+                 account_id: str):
+        """
+        :param str account_id: The AWS account ID.
+        """
+        pulumi.set(__self__, "account_id", account_id)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> str:
+        """
+        The AWS account ID.
+        """
+        return pulumi.get(self, "account_id")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class WorkloadIdentityPoolProviderOidc(dict):
+    def __init__(__self__, *,
+                 issuer_uri: str,
+                 allowed_audiences: Optional[Sequence[str]] = None):
+        """
+        :param str issuer_uri: The OIDC issuer URL.
+        :param Sequence[str] allowed_audiences: Acceptable values for the `aud` field (audience) in the OIDC token. Token exchange
+               requests are rejected if the token audience does not match one of the configured
+               values. Each audience may be at most 256 characters. A maximum of 10 audiences may
+               be configured.
+               If this list is empty, the OIDC token audience must be equal to the full canonical
+               resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix.
+               For example:
+               ```python
+               import pulumi
+               ```
+        """
+        pulumi.set(__self__, "issuer_uri", issuer_uri)
+        if allowed_audiences is not None:
+            pulumi.set(__self__, "allowed_audiences", allowed_audiences)
+
+    @property
+    @pulumi.getter(name="issuerUri")
+    def issuer_uri(self) -> str:
+        """
+        The OIDC issuer URL.
+        """
+        return pulumi.get(self, "issuer_uri")
+
+    @property
+    @pulumi.getter(name="allowedAudiences")
+    def allowed_audiences(self) -> Optional[Sequence[str]]:
+        """
+        Acceptable values for the `aud` field (audience) in the OIDC token. Token exchange
+        requests are rejected if the token audience does not match one of the configured
+        values. Each audience may be at most 256 characters. A maximum of 10 audiences may
+        be configured.
+        If this list is empty, the OIDC token audience must be equal to the full canonical
+        resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix.
+        For example:
+        ```python
+        import pulumi
+        ```
+        """
+        return pulumi.get(self, "allowed_audiences")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
 
 @pulumi.output_type
 class GetTestablePermissionsPermissionResult(dict):

@@ -21,16 +21,17 @@ type WorkloadIdentityPool struct {
 	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
 	// A display name for the pool. Cannot exceed 32 characters.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// The resource name of the pool as 'projects/<projectnumber>/locations/global/workloadIdentityPools/<id>'.
+	// The resource name of the pool as
+	// 'projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}'.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The state of the pool. STATE_UNSPECIFIED: State unspecified. ACTIVE: The pool is active, and may be used in Google Cloud
-	// policies. DELETED: The pool is soft-deleted. Soft-deleted pools are permanently deleted after approximately 30 days. You
-	// can restore a soft-deleted pool using UndeleteWorkloadIdentityPool. You cannot reuse the ID of a soft-deleted pool until
-	// it is permanently deleted. While a pool is deleted, you cannot use it to exchange tokens, or use existing tokens to
-	// access resources. If the pool is undeleted, existing tokens grant access again.
+	// The state of the pool. * STATE_UNSPECIFIED: State unspecified. * ACTIVE: The pool is active, and may be used in Google
+	// Cloud policies. * DELETED: The pool is soft-deleted. Soft-deleted pools are permanently deleted after approximately 30
+	// days. You can restore a soft-deleted pool using UndeleteWorkloadIdentityPool. You cannot reuse the ID of a soft-deleted
+	// pool until it is permanently deleted. While a pool is deleted, you cannot use it to exchange tokens, or use existing
+	// tokens to access resources. If the pool is undeleted, existing tokens grant access again.
 	State pulumi.StringOutput `pulumi:"state"`
 	// The ID to use for the pool, which becomes the final component of the resource name. This
 	// value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
@@ -77,16 +78,17 @@ type workloadIdentityPoolState struct {
 	Disabled *bool `pulumi:"disabled"`
 	// A display name for the pool. Cannot exceed 32 characters.
 	DisplayName *string `pulumi:"displayName"`
-	// The resource name of the pool as 'projects/<projectnumber>/locations/global/workloadIdentityPools/<id>'.
+	// The resource name of the pool as
+	// 'projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}'.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The state of the pool. STATE_UNSPECIFIED: State unspecified. ACTIVE: The pool is active, and may be used in Google Cloud
-	// policies. DELETED: The pool is soft-deleted. Soft-deleted pools are permanently deleted after approximately 30 days. You
-	// can restore a soft-deleted pool using UndeleteWorkloadIdentityPool. You cannot reuse the ID of a soft-deleted pool until
-	// it is permanently deleted. While a pool is deleted, you cannot use it to exchange tokens, or use existing tokens to
-	// access resources. If the pool is undeleted, existing tokens grant access again.
+	// The state of the pool. * STATE_UNSPECIFIED: State unspecified. * ACTIVE: The pool is active, and may be used in Google
+	// Cloud policies. * DELETED: The pool is soft-deleted. Soft-deleted pools are permanently deleted after approximately 30
+	// days. You can restore a soft-deleted pool using UndeleteWorkloadIdentityPool. You cannot reuse the ID of a soft-deleted
+	// pool until it is permanently deleted. While a pool is deleted, you cannot use it to exchange tokens, or use existing
+	// tokens to access resources. If the pool is undeleted, existing tokens grant access again.
 	State *string `pulumi:"state"`
 	// The ID to use for the pool, which becomes the final component of the resource name. This
 	// value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
@@ -103,16 +105,17 @@ type WorkloadIdentityPoolState struct {
 	Disabled pulumi.BoolPtrInput
 	// A display name for the pool. Cannot exceed 32 characters.
 	DisplayName pulumi.StringPtrInput
-	// The resource name of the pool as 'projects/<projectnumber>/locations/global/workloadIdentityPools/<id>'.
+	// The resource name of the pool as
+	// 'projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}'.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The state of the pool. STATE_UNSPECIFIED: State unspecified. ACTIVE: The pool is active, and may be used in Google Cloud
-	// policies. DELETED: The pool is soft-deleted. Soft-deleted pools are permanently deleted after approximately 30 days. You
-	// can restore a soft-deleted pool using UndeleteWorkloadIdentityPool. You cannot reuse the ID of a soft-deleted pool until
-	// it is permanently deleted. While a pool is deleted, you cannot use it to exchange tokens, or use existing tokens to
-	// access resources. If the pool is undeleted, existing tokens grant access again.
+	// The state of the pool. * STATE_UNSPECIFIED: State unspecified. * ACTIVE: The pool is active, and may be used in Google
+	// Cloud policies. * DELETED: The pool is soft-deleted. Soft-deleted pools are permanently deleted after approximately 30
+	// days. You can restore a soft-deleted pool using UndeleteWorkloadIdentityPool. You cannot reuse the ID of a soft-deleted
+	// pool until it is permanently deleted. While a pool is deleted, you cannot use it to exchange tokens, or use existing
+	// tokens to access resources. If the pool is undeleted, existing tokens grant access again.
 	State pulumi.StringPtrInput
 	// The ID to use for the pool, which becomes the final component of the resource name. This
 	// value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix

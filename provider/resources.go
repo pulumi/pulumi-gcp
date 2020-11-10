@@ -551,6 +551,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_project_service_identity": {
 				Tok: gcpResource(gcpProject, "ServiceIdentity"),
 			},
+			"google_project_default_service_accounts": {Tok: gcpResource(gcpProject, "DefaultServiceAccounts")},
 			"google_project_usage_export_bucket": {
 				Tok: gcpResource(gcpProject, "UsageExportBucket"),
 				Docs: &tfbridge.DocInfo{
@@ -1801,7 +1802,8 @@ func Provider() tfbridge.ProviderInfo {
 			},
 
 			// IAM
-			"google_iam_workload_identity_pool": {Tok: gcpResource(gcpIAM, "WorkloadIdentityPool")},
+			"google_iam_workload_identity_pool":          {Tok: gcpResource(gcpIAM, "WorkloadIdentityPool")},
+			"google_iam_workload_identity_pool_provider": {Tok: gcpResource(gcpIAM, "WorkloadIdentityPoolProvider")},
 
 			// API Gateway
 			"google_api_gateway_api_config_iam_binding": {
@@ -1980,6 +1982,7 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "datasource_iam_testable_permissions.html.markdown",
 				},
 			},
+			"google_iam_workload_identity_pool": {Tok: gcpDataSource(gcpIAM, "getWorkloadIdentityPool")},
 			"google_netblock_ip_ranges": {
 				Tok: gcpDataSource(gcpCompute, "getNetblockIPRanges"),
 				Docs: &tfbridge.DocInfo{

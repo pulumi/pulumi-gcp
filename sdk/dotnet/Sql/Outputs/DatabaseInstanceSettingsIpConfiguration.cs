@@ -29,8 +29,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly string? PrivateNetwork;
         /// <summary>
-        /// True if mysqld should default to `REQUIRE X509`
-        /// for users connecting over IP.
+        /// Whether SSL connections over IP are enforced or not.
         /// </summary>
         public readonly bool? RequireSsl;
 
