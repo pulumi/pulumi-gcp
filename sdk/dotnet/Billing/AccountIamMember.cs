@@ -9,40 +9,20 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Billing
 {
-    /// <summary>
-    /// Allows creation and management of a single member for a single binding within
-    /// the IAM policy for an existing Google Cloud Platform Billing Account.
-    /// 
-    /// &gt; **Note:** This resource __must not__ be used in conjunction with
-    ///    `gcp.billing.AccountIamBinding` for the __same role__ or they will fight over
-    ///    what your policy should be.
-    /// </summary>
     public partial class AccountIamMember : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The billing account id.
-        /// </summary>
         [Output("billingAccountId")]
         public Output<string> BillingAccountId { get; private set; } = null!;
 
         [Output("condition")]
         public Output<Outputs.AccountIamMemberCondition?> Condition { get; private set; } = null!;
 
-        /// <summary>
-        /// (Computed) The etag of the billing account's IAM policy.
-        /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
-        /// <summary>
-        /// The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-        /// </summary>
         [Output("member")]
         public Output<string> Member { get; private set; } = null!;
 
-        /// <summary>
-        /// The role that should be applied.
-        /// </summary>
         [Output("role")]
         public Output<string> Role { get; private set; } = null!;
 
@@ -92,24 +72,15 @@ namespace Pulumi.Gcp.Billing
 
     public sealed class AccountIamMemberArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The billing account id.
-        /// </summary>
         [Input("billingAccountId", required: true)]
         public Input<string> BillingAccountId { get; set; } = null!;
 
         [Input("condition")]
         public Input<Inputs.AccountIamMemberConditionArgs>? Condition { get; set; }
 
-        /// <summary>
-        /// The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-        /// </summary>
         [Input("member", required: true)]
         public Input<string> Member { get; set; } = null!;
 
-        /// <summary>
-        /// The role that should be applied.
-        /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
 
@@ -120,30 +91,18 @@ namespace Pulumi.Gcp.Billing
 
     public sealed class AccountIamMemberState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The billing account id.
-        /// </summary>
         [Input("billingAccountId")]
         public Input<string>? BillingAccountId { get; set; }
 
         [Input("condition")]
         public Input<Inputs.AccountIamMemberConditionGetArgs>? Condition { get; set; }
 
-        /// <summary>
-        /// (Computed) The etag of the billing account's IAM policy.
-        /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
-        /// <summary>
-        /// The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-        /// </summary>
         [Input("member")]
         public Input<string>? Member { get; set; }
 
-        /// <summary>
-        /// The role that should be applied.
-        /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
 

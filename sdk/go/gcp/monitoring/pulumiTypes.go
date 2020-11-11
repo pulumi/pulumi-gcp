@@ -4584,11 +4584,11 @@ type SloRequestBasedSliDistributionCutRange struct {
 	// max value for the range (inclusive). If not given,
 	// will be set to "infinity", defining an open range
 	// ">= range.min"
-	Max *int `pulumi:"max"`
+	Max *float64 `pulumi:"max"`
 	// Min value for the range (inclusive). If not given,
 	// will be set to "-infinity", defining an open range
 	// "< range.max"
-	Min *int `pulumi:"min"`
+	Min *float64 `pulumi:"min"`
 }
 
 // SloRequestBasedSliDistributionCutRangeInput is an input type that accepts SloRequestBasedSliDistributionCutRangeArgs and SloRequestBasedSliDistributionCutRangeOutput values.
@@ -4606,11 +4606,11 @@ type SloRequestBasedSliDistributionCutRangeArgs struct {
 	// max value for the range (inclusive). If not given,
 	// will be set to "infinity", defining an open range
 	// ">= range.min"
-	Max pulumi.IntPtrInput `pulumi:"max"`
+	Max pulumi.Float64PtrInput `pulumi:"max"`
 	// Min value for the range (inclusive). If not given,
 	// will be set to "-infinity", defining an open range
 	// "< range.max"
-	Min pulumi.IntPtrInput `pulumi:"min"`
+	Min pulumi.Float64PtrInput `pulumi:"min"`
 }
 
 func (SloRequestBasedSliDistributionCutRangeArgs) ElementType() reflect.Type {
@@ -4693,15 +4693,15 @@ func (o SloRequestBasedSliDistributionCutRangeOutput) ToSloRequestBasedSliDistri
 // max value for the range (inclusive). If not given,
 // will be set to "infinity", defining an open range
 // ">= range.min"
-func (o SloRequestBasedSliDistributionCutRangeOutput) Max() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SloRequestBasedSliDistributionCutRange) *int { return v.Max }).(pulumi.IntPtrOutput)
+func (o SloRequestBasedSliDistributionCutRangeOutput) Max() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SloRequestBasedSliDistributionCutRange) *float64 { return v.Max }).(pulumi.Float64PtrOutput)
 }
 
 // Min value for the range (inclusive). If not given,
 // will be set to "-infinity", defining an open range
 // "< range.max"
-func (o SloRequestBasedSliDistributionCutRangeOutput) Min() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SloRequestBasedSliDistributionCutRange) *int { return v.Min }).(pulumi.IntPtrOutput)
+func (o SloRequestBasedSliDistributionCutRangeOutput) Min() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SloRequestBasedSliDistributionCutRange) *float64 { return v.Min }).(pulumi.Float64PtrOutput)
 }
 
 type SloRequestBasedSliDistributionCutRangePtrOutput struct{ *pulumi.OutputState }
@@ -4725,25 +4725,25 @@ func (o SloRequestBasedSliDistributionCutRangePtrOutput) Elem() SloRequestBasedS
 // max value for the range (inclusive). If not given,
 // will be set to "infinity", defining an open range
 // ">= range.min"
-func (o SloRequestBasedSliDistributionCutRangePtrOutput) Max() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SloRequestBasedSliDistributionCutRange) *int {
+func (o SloRequestBasedSliDistributionCutRangePtrOutput) Max() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SloRequestBasedSliDistributionCutRange) *float64 {
 		if v == nil {
 			return nil
 		}
 		return v.Max
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.Float64PtrOutput)
 }
 
 // Min value for the range (inclusive). If not given,
 // will be set to "-infinity", defining an open range
 // "< range.max"
-func (o SloRequestBasedSliDistributionCutRangePtrOutput) Min() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SloRequestBasedSliDistributionCutRange) *int {
+func (o SloRequestBasedSliDistributionCutRangePtrOutput) Min() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SloRequestBasedSliDistributionCutRange) *float64 {
 		if v == nil {
 			return nil
 		}
 		return v.Min
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.Float64PtrOutput)
 }
 
 type SloRequestBasedSliGoodTotalRatio struct {
@@ -6268,11 +6268,11 @@ type SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange st
 	// max value for the range (inclusive). If not given,
 	// will be set to "infinity", defining an open range
 	// ">= range.min"
-	Max *int `pulumi:"max"`
+	Max *float64 `pulumi:"max"`
 	// Min value for the range (inclusive). If not given,
 	// will be set to "-infinity", defining an open range
 	// "< range.max"
-	Min *int `pulumi:"min"`
+	Min *float64 `pulumi:"min"`
 }
 
 // SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeInput is an input type that accepts SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgs and SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeOutput values.
@@ -6290,11 +6290,11 @@ type SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArg
 	// max value for the range (inclusive). If not given,
 	// will be set to "infinity", defining an open range
 	// ">= range.min"
-	Max pulumi.IntPtrInput `pulumi:"max"`
+	Max pulumi.Float64PtrInput `pulumi:"max"`
 	// Min value for the range (inclusive). If not given,
 	// will be set to "-infinity", defining an open range
 	// "< range.max"
-	Min pulumi.IntPtrInput `pulumi:"min"`
+	Min pulumi.Float64PtrInput `pulumi:"min"`
 }
 
 func (SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgs) ElementType() reflect.Type {
@@ -6377,15 +6377,19 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange
 // max value for the range (inclusive). If not given,
 // will be set to "infinity", defining an open range
 // ">= range.min"
-func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeOutput) Max() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange) *int { return v.Max }).(pulumi.IntPtrOutput)
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeOutput) Max() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange) *float64 {
+		return v.Max
+	}).(pulumi.Float64PtrOutput)
 }
 
 // Min value for the range (inclusive). If not given,
 // will be set to "-infinity", defining an open range
 // "< range.max"
-func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeOutput) Min() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange) *int { return v.Min }).(pulumi.IntPtrOutput)
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeOutput) Min() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange) *float64 {
+		return v.Min
+	}).(pulumi.Float64PtrOutput)
 }
 
 type SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutput struct{ *pulumi.OutputState }
@@ -6411,25 +6415,25 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange
 // max value for the range (inclusive). If not given,
 // will be set to "infinity", defining an open range
 // ">= range.min"
-func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutput) Max() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange) *int {
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutput) Max() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange) *float64 {
 		if v == nil {
 			return nil
 		}
 		return v.Max
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.Float64PtrOutput)
 }
 
 // Min value for the range (inclusive). If not given,
 // will be set to "-infinity", defining an open range
 // "< range.max"
-func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutput) Min() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange) *int {
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutput) Min() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange) *float64 {
 		if v == nil {
 			return nil
 		}
 		return v.Min
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.Float64PtrOutput)
 }
 
 type SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio struct {
@@ -6879,11 +6883,11 @@ type SloWindowsBasedSliMetricMeanInRangeRange struct {
 	// max value for the range (inclusive). If not given,
 	// will be set to "infinity", defining an open range
 	// ">= range.min"
-	Max *int `pulumi:"max"`
+	Max *float64 `pulumi:"max"`
 	// Min value for the range (inclusive). If not given,
 	// will be set to "-infinity", defining an open range
 	// "< range.max"
-	Min *int `pulumi:"min"`
+	Min *float64 `pulumi:"min"`
 }
 
 // SloWindowsBasedSliMetricMeanInRangeRangeInput is an input type that accepts SloWindowsBasedSliMetricMeanInRangeRangeArgs and SloWindowsBasedSliMetricMeanInRangeRangeOutput values.
@@ -6901,11 +6905,11 @@ type SloWindowsBasedSliMetricMeanInRangeRangeArgs struct {
 	// max value for the range (inclusive). If not given,
 	// will be set to "infinity", defining an open range
 	// ">= range.min"
-	Max pulumi.IntPtrInput `pulumi:"max"`
+	Max pulumi.Float64PtrInput `pulumi:"max"`
 	// Min value for the range (inclusive). If not given,
 	// will be set to "-infinity", defining an open range
 	// "< range.max"
-	Min pulumi.IntPtrInput `pulumi:"min"`
+	Min pulumi.Float64PtrInput `pulumi:"min"`
 }
 
 func (SloWindowsBasedSliMetricMeanInRangeRangeArgs) ElementType() reflect.Type {
@@ -6988,15 +6992,15 @@ func (o SloWindowsBasedSliMetricMeanInRangeRangeOutput) ToSloWindowsBasedSliMetr
 // max value for the range (inclusive). If not given,
 // will be set to "infinity", defining an open range
 // ">= range.min"
-func (o SloWindowsBasedSliMetricMeanInRangeRangeOutput) Max() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SloWindowsBasedSliMetricMeanInRangeRange) *int { return v.Max }).(pulumi.IntPtrOutput)
+func (o SloWindowsBasedSliMetricMeanInRangeRangeOutput) Max() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SloWindowsBasedSliMetricMeanInRangeRange) *float64 { return v.Max }).(pulumi.Float64PtrOutput)
 }
 
 // Min value for the range (inclusive). If not given,
 // will be set to "-infinity", defining an open range
 // "< range.max"
-func (o SloWindowsBasedSliMetricMeanInRangeRangeOutput) Min() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SloWindowsBasedSliMetricMeanInRangeRange) *int { return v.Min }).(pulumi.IntPtrOutput)
+func (o SloWindowsBasedSliMetricMeanInRangeRangeOutput) Min() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SloWindowsBasedSliMetricMeanInRangeRange) *float64 { return v.Min }).(pulumi.Float64PtrOutput)
 }
 
 type SloWindowsBasedSliMetricMeanInRangeRangePtrOutput struct{ *pulumi.OutputState }
@@ -7020,25 +7024,25 @@ func (o SloWindowsBasedSliMetricMeanInRangeRangePtrOutput) Elem() SloWindowsBase
 // max value for the range (inclusive). If not given,
 // will be set to "infinity", defining an open range
 // ">= range.min"
-func (o SloWindowsBasedSliMetricMeanInRangeRangePtrOutput) Max() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SloWindowsBasedSliMetricMeanInRangeRange) *int {
+func (o SloWindowsBasedSliMetricMeanInRangeRangePtrOutput) Max() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSliMetricMeanInRangeRange) *float64 {
 		if v == nil {
 			return nil
 		}
 		return v.Max
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.Float64PtrOutput)
 }
 
 // Min value for the range (inclusive). If not given,
 // will be set to "-infinity", defining an open range
 // "< range.max"
-func (o SloWindowsBasedSliMetricMeanInRangeRangePtrOutput) Min() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SloWindowsBasedSliMetricMeanInRangeRange) *int {
+func (o SloWindowsBasedSliMetricMeanInRangeRangePtrOutput) Min() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSliMetricMeanInRangeRange) *float64 {
 		if v == nil {
 			return nil
 		}
 		return v.Min
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.Float64PtrOutput)
 }
 
 type SloWindowsBasedSliMetricSumInRange struct {
@@ -7243,11 +7247,11 @@ type SloWindowsBasedSliMetricSumInRangeRange struct {
 	// max value for the range (inclusive). If not given,
 	// will be set to "infinity", defining an open range
 	// ">= range.min"
-	Max *int `pulumi:"max"`
+	Max *float64 `pulumi:"max"`
 	// Min value for the range (inclusive). If not given,
 	// will be set to "-infinity", defining an open range
 	// "< range.max"
-	Min *int `pulumi:"min"`
+	Min *float64 `pulumi:"min"`
 }
 
 // SloWindowsBasedSliMetricSumInRangeRangeInput is an input type that accepts SloWindowsBasedSliMetricSumInRangeRangeArgs and SloWindowsBasedSliMetricSumInRangeRangeOutput values.
@@ -7265,11 +7269,11 @@ type SloWindowsBasedSliMetricSumInRangeRangeArgs struct {
 	// max value for the range (inclusive). If not given,
 	// will be set to "infinity", defining an open range
 	// ">= range.min"
-	Max pulumi.IntPtrInput `pulumi:"max"`
+	Max pulumi.Float64PtrInput `pulumi:"max"`
 	// Min value for the range (inclusive). If not given,
 	// will be set to "-infinity", defining an open range
 	// "< range.max"
-	Min pulumi.IntPtrInput `pulumi:"min"`
+	Min pulumi.Float64PtrInput `pulumi:"min"`
 }
 
 func (SloWindowsBasedSliMetricSumInRangeRangeArgs) ElementType() reflect.Type {
@@ -7352,15 +7356,15 @@ func (o SloWindowsBasedSliMetricSumInRangeRangeOutput) ToSloWindowsBasedSliMetri
 // max value for the range (inclusive). If not given,
 // will be set to "infinity", defining an open range
 // ">= range.min"
-func (o SloWindowsBasedSliMetricSumInRangeRangeOutput) Max() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SloWindowsBasedSliMetricSumInRangeRange) *int { return v.Max }).(pulumi.IntPtrOutput)
+func (o SloWindowsBasedSliMetricSumInRangeRangeOutput) Max() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SloWindowsBasedSliMetricSumInRangeRange) *float64 { return v.Max }).(pulumi.Float64PtrOutput)
 }
 
 // Min value for the range (inclusive). If not given,
 // will be set to "-infinity", defining an open range
 // "< range.max"
-func (o SloWindowsBasedSliMetricSumInRangeRangeOutput) Min() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SloWindowsBasedSliMetricSumInRangeRange) *int { return v.Min }).(pulumi.IntPtrOutput)
+func (o SloWindowsBasedSliMetricSumInRangeRangeOutput) Min() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SloWindowsBasedSliMetricSumInRangeRange) *float64 { return v.Min }).(pulumi.Float64PtrOutput)
 }
 
 type SloWindowsBasedSliMetricSumInRangeRangePtrOutput struct{ *pulumi.OutputState }
@@ -7384,25 +7388,25 @@ func (o SloWindowsBasedSliMetricSumInRangeRangePtrOutput) Elem() SloWindowsBased
 // max value for the range (inclusive). If not given,
 // will be set to "infinity", defining an open range
 // ">= range.min"
-func (o SloWindowsBasedSliMetricSumInRangeRangePtrOutput) Max() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SloWindowsBasedSliMetricSumInRangeRange) *int {
+func (o SloWindowsBasedSliMetricSumInRangeRangePtrOutput) Max() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSliMetricSumInRangeRange) *float64 {
 		if v == nil {
 			return nil
 		}
 		return v.Max
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.Float64PtrOutput)
 }
 
 // Min value for the range (inclusive). If not given,
 // will be set to "-infinity", defining an open range
 // "< range.max"
-func (o SloWindowsBasedSliMetricSumInRangeRangePtrOutput) Min() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SloWindowsBasedSliMetricSumInRangeRange) *int {
+func (o SloWindowsBasedSliMetricSumInRangeRangePtrOutput) Min() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSliMetricSumInRangeRange) *float64 {
 		if v == nil {
 			return nil
 		}
 		return v.Min
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.Float64PtrOutput)
 }
 
 type UptimeCheckConfigContentMatcher struct {

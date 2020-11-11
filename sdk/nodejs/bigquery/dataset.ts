@@ -6,17 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Datasets allow you to organize and control access to your tables.
- *
- * To get more information about Dataset, see:
- *
- * * [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets)
- * * How-to Guides
- *     * [Datasets Intro](https://cloud.google.com/bigquery/docs/datasets-intro)
- *
- * ## Example Usage
- */
 export class Dataset extends pulumi.CustomResource {
     /**
      * Get an existing Dataset resource's state with the given name, ID, and optional extra

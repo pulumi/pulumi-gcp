@@ -4,19 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Allows management of the entire IAM policy for an existing Google Cloud Platform Billing Account.
- *
- * > **Warning:** Billing accounts have a default user that can be **overwritten**
- * by use of this resource. The safest alternative is to use multiple `gcp.billing.AccountIamBinding`
- *    resources. If you do use this resource, the best way to be sure that you are
- *    not making dangerous changes is to start by importing your existing policy,
- *    and examining the diff very closely.
- *
- * > **Note:** This resource __must not__ be used in conjunction with
- *    `gcp.billing.AccountIamMember` or `gcp.billing.AccountIamBinding`
- *    or they will fight over what your policy should be.
- */
 export class AccountIamPolicy extends pulumi.CustomResource {
     /**
      * Get an existing AccountIamPolicy resource's state with the given name, ID, and optional extra
@@ -45,16 +32,8 @@ export class AccountIamPolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === AccountIamPolicy.__pulumiType;
     }
 
-    /**
-     * The billing account id.
-     */
     public readonly billingAccountId!: pulumi.Output<string>;
     public /*out*/ readonly etag!: pulumi.Output<string>;
-    /**
-     * The `gcp.organizations.getIAMPolicy` data source that represents
-     * the IAM policy that will be applied to the billing account. This policy overrides any existing
-     * policy applied to the billing account.
-     */
     public readonly policyData!: pulumi.Output<string>;
 
     /**
@@ -99,16 +78,8 @@ export class AccountIamPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AccountIamPolicy resources.
  */
 export interface AccountIamPolicyState {
-    /**
-     * The billing account id.
-     */
     readonly billingAccountId?: pulumi.Input<string>;
     readonly etag?: pulumi.Input<string>;
-    /**
-     * The `gcp.organizations.getIAMPolicy` data source that represents
-     * the IAM policy that will be applied to the billing account. This policy overrides any existing
-     * policy applied to the billing account.
-     */
     readonly policyData?: pulumi.Input<string>;
 }
 
@@ -116,14 +87,6 @@ export interface AccountIamPolicyState {
  * The set of arguments for constructing a AccountIamPolicy resource.
  */
 export interface AccountIamPolicyArgs {
-    /**
-     * The billing account id.
-     */
     readonly billingAccountId: pulumi.Input<string>;
-    /**
-     * The `gcp.organizations.getIAMPolicy` data source that represents
-     * the IAM policy that will be applied to the billing account. This policy overrides any existing
-     * policy applied to the billing account.
-     */
     readonly policyData: pulumi.Input<string>;
 }

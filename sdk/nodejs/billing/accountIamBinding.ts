@@ -6,18 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Allows creation and management of a single binding within IAM policy for
- * an existing Google Cloud Platform Billing Account.
- *
- * > **Note:** This resource __must not__ be used in conjunction with
- *    `gcp.billing.AccountIamMember` for the __same role__ or they will fight over
- *    what your policy should be.
- *
- * > **Note:** On create, this resource will overwrite members of any existing roles.
- *     Use `pulumi import` and inspect the output to ensure
- *     your existing members are preserved.
- */
 export class AccountIamBinding extends pulumi.CustomResource {
     /**
      * Get an existing AccountIamBinding resource's state with the given name, ID, and optional extra
@@ -46,22 +34,10 @@ export class AccountIamBinding extends pulumi.CustomResource {
         return obj['__pulumiType'] === AccountIamBinding.__pulumiType;
     }
 
-    /**
-     * The billing account id.
-     */
     public readonly billingAccountId!: pulumi.Output<string>;
     public readonly condition!: pulumi.Output<outputs.billing.AccountIamBindingCondition | undefined>;
-    /**
-     * (Computed) The etag of the billing account's IAM policy.
-     */
     public /*out*/ readonly etag!: pulumi.Output<string>;
-    /**
-     * A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-     */
     public readonly members!: pulumi.Output<string[]>;
-    /**
-     * The role that should be applied.
-     */
     public readonly role!: pulumi.Output<string>;
 
     /**
@@ -113,22 +89,10 @@ export class AccountIamBinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AccountIamBinding resources.
  */
 export interface AccountIamBindingState {
-    /**
-     * The billing account id.
-     */
     readonly billingAccountId?: pulumi.Input<string>;
     readonly condition?: pulumi.Input<inputs.billing.AccountIamBindingCondition>;
-    /**
-     * (Computed) The etag of the billing account's IAM policy.
-     */
     readonly etag?: pulumi.Input<string>;
-    /**
-     * A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-     */
     readonly members?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The role that should be applied.
-     */
     readonly role?: pulumi.Input<string>;
 }
 
@@ -136,17 +100,8 @@ export interface AccountIamBindingState {
  * The set of arguments for constructing a AccountIamBinding resource.
  */
 export interface AccountIamBindingArgs {
-    /**
-     * The billing account id.
-     */
     readonly billingAccountId: pulumi.Input<string>;
     readonly condition?: pulumi.Input<inputs.billing.AccountIamBindingCondition>;
-    /**
-     * A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-     */
     readonly members: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The role that should be applied.
-     */
     readonly role: pulumi.Input<string>;
 }

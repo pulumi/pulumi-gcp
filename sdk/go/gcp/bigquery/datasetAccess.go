@@ -10,21 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Gives dataset access for a single entity. This resource is intended to be used in cases where
-// it is not possible to compile a full list of access blocks to include in a
-// `bigquery.Dataset` resource, to enable them to be added separately.
-//
-// > **Note:** If this resource is used alongside a `bigquery.Dataset` resource, the
-// dataset resource must either have no defined `access` blocks or a `lifecycle` block with
-// `ignoreChanges = [access]` so they don't fight over which accesses should be on the dataset.
-//
-// To get more information about DatasetAccess, see:
-//
-// * [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets)
-// * How-to Guides
-//     * [Controlling access to datasets](https://cloud.google.com/bigquery/docs/dataset-access-controls)
-//
-// ## Example Usage
 type DatasetAccess struct {
 	pulumi.CustomResourceState
 

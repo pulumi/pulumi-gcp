@@ -13,6 +13,12 @@ import (
 // Jobs are actions that BigQuery runs on your behalf to load data, export data, query data, or copy data.
 // Once a BigQuery job is created, it cannot be changed or deleted.
 //
+// To get more information about Job, see:
+//
+// * [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs)
+// * How-to Guides
+//     * [BigQuery Jobs Intro](https://cloud.google.com/bigquery/docs/jobs-overview)
+//
 // ## Example Usage
 type Job struct {
 	pulumi.CustomResourceState

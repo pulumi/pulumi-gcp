@@ -2478,7 +2478,7 @@ class TableExternalDataConfigurationArgs:
                and format of the table.
         :param pulumi.Input[str] source_format: The data format. Supported values are:
                "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET",
-               and "DATSTORE_BACKUP". To use "GOOGLE_SHEETS"
+               and "DATASTORE_BACKUP". To use "GOOGLE_SHEETS"
                the `scopes` must include
                "https://www.googleapis.com/auth/drive.readonly".
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_uris: A list of the fully-qualified URIs that point to
@@ -2551,7 +2551,7 @@ class TableExternalDataConfigurationArgs:
         """
         The data format. Supported values are:
         "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET",
-        and "DATSTORE_BACKUP". To use "GOOGLE_SHEETS"
+        and "DATASTORE_BACKUP". To use "GOOGLE_SHEETS"
         the `scopes` must include
         "https://www.googleapis.com/auth/drive.readonly".
         """

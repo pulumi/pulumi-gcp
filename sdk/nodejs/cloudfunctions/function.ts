@@ -49,7 +49,7 @@ export class Function extends pulumi.CustomResource {
     }
 
     /**
-     * Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, and 2048MB.
+     * Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, 2048MB and 4096MB.
      */
     public readonly availableMemoryMb!: pulumi.Output<number | undefined>;
     /**
@@ -217,7 +217,7 @@ export class Function extends pulumi.CustomResource {
  */
 export interface FunctionState {
     /**
-     * Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, and 2048MB.
+     * Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, 2048MB and 4096MB.
      */
     readonly availableMemoryMb?: pulumi.Input<number>;
     /**
@@ -313,7 +313,7 @@ export interface FunctionState {
  */
 export interface FunctionArgs {
     /**
-     * Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, and 2048MB.
+     * Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, 2048MB and 4096MB.
      */
     readonly availableMemoryMb?: pulumi.Input<number>;
     /**

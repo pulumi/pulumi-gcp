@@ -1839,13 +1839,13 @@ class SloRequestBasedSliDistributionCut(dict):
 @pulumi.output_type
 class SloRequestBasedSliDistributionCutRange(dict):
     def __init__(__self__, *,
-                 max: Optional[int] = None,
-                 min: Optional[int] = None):
+                 max: Optional[float] = None,
+                 min: Optional[float] = None):
         """
-        :param int max: max value for the range (inclusive). If not given,
+        :param float max: max value for the range (inclusive). If not given,
                will be set to "infinity", defining an open range
                ">= range.min"
-        :param int min: Min value for the range (inclusive). If not given,
+        :param float min: Min value for the range (inclusive). If not given,
                will be set to "-infinity", defining an open range
                "< range.max"
         """
@@ -1856,7 +1856,7 @@ class SloRequestBasedSliDistributionCutRange(dict):
 
     @property
     @pulumi.getter
-    def max(self) -> Optional[int]:
+    def max(self) -> Optional[float]:
         """
         max value for the range (inclusive). If not given,
         will be set to "infinity", defining an open range
@@ -1866,7 +1866,7 @@ class SloRequestBasedSliDistributionCutRange(dict):
 
     @property
     @pulumi.getter
-    def min(self) -> Optional[int]:
+    def min(self) -> Optional[float]:
         """
         Min value for the range (inclusive). If not given,
         will be set to "-infinity", defining an open range
@@ -2351,13 +2351,13 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut(dict):
 @pulumi.output_type
 class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange(dict):
     def __init__(__self__, *,
-                 max: Optional[int] = None,
-                 min: Optional[int] = None):
+                 max: Optional[float] = None,
+                 min: Optional[float] = None):
         """
-        :param int max: max value for the range (inclusive). If not given,
+        :param float max: max value for the range (inclusive). If not given,
                will be set to "infinity", defining an open range
                ">= range.min"
-        :param int min: Min value for the range (inclusive). If not given,
+        :param float min: Min value for the range (inclusive). If not given,
                will be set to "-infinity", defining an open range
                "< range.max"
         """
@@ -2368,7 +2368,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange(d
 
     @property
     @pulumi.getter
-    def max(self) -> Optional[int]:
+    def max(self) -> Optional[float]:
         """
         max value for the range (inclusive). If not given,
         will be set to "infinity", defining an open range
@@ -2378,7 +2378,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange(d
 
     @property
     @pulumi.getter
-    def min(self) -> Optional[int]:
+    def min(self) -> Optional[float]:
         """
         Min value for the range (inclusive). If not given,
         will be set to "-infinity", defining an open range
@@ -2529,13 +2529,13 @@ class SloWindowsBasedSliMetricMeanInRange(dict):
 @pulumi.output_type
 class SloWindowsBasedSliMetricMeanInRangeRange(dict):
     def __init__(__self__, *,
-                 max: Optional[int] = None,
-                 min: Optional[int] = None):
+                 max: Optional[float] = None,
+                 min: Optional[float] = None):
         """
-        :param int max: max value for the range (inclusive). If not given,
+        :param float max: max value for the range (inclusive). If not given,
                will be set to "infinity", defining an open range
                ">= range.min"
-        :param int min: Min value for the range (inclusive). If not given,
+        :param float min: Min value for the range (inclusive). If not given,
                will be set to "-infinity", defining an open range
                "< range.max"
         """
@@ -2546,7 +2546,7 @@ class SloWindowsBasedSliMetricMeanInRangeRange(dict):
 
     @property
     @pulumi.getter
-    def max(self) -> Optional[int]:
+    def max(self) -> Optional[float]:
         """
         max value for the range (inclusive). If not given,
         will be set to "infinity", defining an open range
@@ -2556,7 +2556,7 @@ class SloWindowsBasedSliMetricMeanInRangeRange(dict):
 
     @property
     @pulumi.getter
-    def min(self) -> Optional[int]:
+    def min(self) -> Optional[float]:
         """
         Min value for the range (inclusive). If not given,
         will be set to "-infinity", defining an open range
@@ -2627,13 +2627,13 @@ class SloWindowsBasedSliMetricSumInRange(dict):
 @pulumi.output_type
 class SloWindowsBasedSliMetricSumInRangeRange(dict):
     def __init__(__self__, *,
-                 max: Optional[int] = None,
-                 min: Optional[int] = None):
+                 max: Optional[float] = None,
+                 min: Optional[float] = None):
         """
-        :param int max: max value for the range (inclusive). If not given,
+        :param float max: max value for the range (inclusive). If not given,
                will be set to "infinity", defining an open range
                ">= range.min"
-        :param int min: Min value for the range (inclusive). If not given,
+        :param float min: Min value for the range (inclusive). If not given,
                will be set to "-infinity", defining an open range
                "< range.max"
         """
@@ -2644,7 +2644,7 @@ class SloWindowsBasedSliMetricSumInRangeRange(dict):
 
     @property
     @pulumi.getter
-    def max(self) -> Optional[int]:
+    def max(self) -> Optional[float]:
         """
         max value for the range (inclusive). If not given,
         will be set to "infinity", defining an open range
@@ -2654,7 +2654,7 @@ class SloWindowsBasedSliMetricSumInRangeRange(dict):
 
     @property
     @pulumi.getter
-    def min(self) -> Optional[int]:
+    def min(self) -> Optional[float]:
         """
         Min value for the range (inclusive). If not given,
         will be set to "-infinity", defining an open range

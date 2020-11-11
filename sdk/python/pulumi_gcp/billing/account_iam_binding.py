@@ -25,22 +25,9 @@ class AccountIamBinding(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Allows creation and management of a single binding within IAM policy for
-        an existing Google Cloud Platform Billing Account.
-
-        > **Note:** This resource __must not__ be used in conjunction with
-           `billing.AccountIamMember` for the __same role__ or they will fight over
-           what your policy should be.
-
-        > **Note:** On create, this resource will overwrite members of any existing roles.
-            Use `pulumi import` and inspect the output to ensure
-            your existing members are preserved.
-
+        Create a AccountIamBinding resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] billing_account_id: The billing account id.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-        :param pulumi.Input[str] role: The role that should be applied.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -92,10 +79,6 @@ class AccountIamBinding(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] billing_account_id: The billing account id.
-        :param pulumi.Input[str] etag: (Computed) The etag of the billing account's IAM policy.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-        :param pulumi.Input[str] role: The role that should be applied.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -111,9 +94,6 @@ class AccountIamBinding(pulumi.CustomResource):
     @property
     @pulumi.getter(name="billingAccountId")
     def billing_account_id(self) -> pulumi.Output[str]:
-        """
-        The billing account id.
-        """
         return pulumi.get(self, "billing_account_id")
 
     @property
@@ -124,25 +104,16 @@ class AccountIamBinding(pulumi.CustomResource):
     @property
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
-        """
-        (Computed) The etag of the billing account's IAM policy.
-        """
         return pulumi.get(self, "etag")
 
     @property
     @pulumi.getter
     def members(self) -> pulumi.Output[Sequence[str]]:
-        """
-        A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-        """
         return pulumi.get(self, "members")
 
     @property
     @pulumi.getter
     def role(self) -> pulumi.Output[str]:
-        """
-        The role that should be applied.
-        """
         return pulumi.get(self, "role")
 
     def translate_output_property(self, prop):

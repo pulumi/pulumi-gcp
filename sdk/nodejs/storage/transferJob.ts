@@ -70,7 +70,7 @@ export class TransferJob extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Schedule specification defining when the Transfer Job should be scheduled to start, end and and what time to run. Structure documented below.
+     * Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
      */
     public readonly schedule!: pulumi.Output<outputs.storage.TransferJobSchedule>;
     /**
@@ -165,7 +165,7 @@ export interface TransferJobState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * Schedule specification defining when the Transfer Job should be scheduled to start, end and and what time to run. Structure documented below.
+     * Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
      */
     readonly schedule?: pulumi.Input<inputs.storage.TransferJobSchedule>;
     /**
@@ -192,7 +192,7 @@ export interface TransferJobArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * Schedule specification defining when the Transfer Job should be scheduled to start, end and and what time to run. Structure documented below.
+     * Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
      */
     readonly schedule: pulumi.Input<inputs.storage.TransferJobSchedule>;
     /**

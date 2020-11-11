@@ -2015,13 +2015,13 @@ class SloRequestBasedSliDistributionCutArgs:
 @pulumi.input_type
 class SloRequestBasedSliDistributionCutRangeArgs:
     def __init__(__self__, *,
-                 max: Optional[pulumi.Input[int]] = None,
-                 min: Optional[pulumi.Input[int]] = None):
+                 max: Optional[pulumi.Input[float]] = None,
+                 min: Optional[pulumi.Input[float]] = None):
         """
-        :param pulumi.Input[int] max: max value for the range (inclusive). If not given,
+        :param pulumi.Input[float] max: max value for the range (inclusive). If not given,
                will be set to "infinity", defining an open range
                ">= range.min"
-        :param pulumi.Input[int] min: Min value for the range (inclusive). If not given,
+        :param pulumi.Input[float] min: Min value for the range (inclusive). If not given,
                will be set to "-infinity", defining an open range
                "< range.max"
         """
@@ -2032,7 +2032,7 @@ class SloRequestBasedSliDistributionCutRangeArgs:
 
     @property
     @pulumi.getter
-    def max(self) -> Optional[pulumi.Input[int]]:
+    def max(self) -> Optional[pulumi.Input[float]]:
         """
         max value for the range (inclusive). If not given,
         will be set to "infinity", defining an open range
@@ -2041,12 +2041,12 @@ class SloRequestBasedSliDistributionCutRangeArgs:
         return pulumi.get(self, "max")
 
     @max.setter
-    def max(self, value: Optional[pulumi.Input[int]]):
+    def max(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "max", value)
 
     @property
     @pulumi.getter
-    def min(self) -> Optional[pulumi.Input[int]]:
+    def min(self) -> Optional[pulumi.Input[float]]:
         """
         Min value for the range (inclusive). If not given,
         will be set to "-infinity", defining an open range
@@ -2055,7 +2055,7 @@ class SloRequestBasedSliDistributionCutRangeArgs:
         return pulumi.get(self, "min")
 
     @min.setter
-    def min(self, value: Optional[pulumi.Input[int]]):
+    def min(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "min", value)
 
 
@@ -2591,13 +2591,13 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs:
 @pulumi.input_type
 class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgs:
     def __init__(__self__, *,
-                 max: Optional[pulumi.Input[int]] = None,
-                 min: Optional[pulumi.Input[int]] = None):
+                 max: Optional[pulumi.Input[float]] = None,
+                 min: Optional[pulumi.Input[float]] = None):
         """
-        :param pulumi.Input[int] max: max value for the range (inclusive). If not given,
+        :param pulumi.Input[float] max: max value for the range (inclusive). If not given,
                will be set to "infinity", defining an open range
                ">= range.min"
-        :param pulumi.Input[int] min: Min value for the range (inclusive). If not given,
+        :param pulumi.Input[float] min: Min value for the range (inclusive). If not given,
                will be set to "-infinity", defining an open range
                "< range.max"
         """
@@ -2608,7 +2608,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeAr
 
     @property
     @pulumi.getter
-    def max(self) -> Optional[pulumi.Input[int]]:
+    def max(self) -> Optional[pulumi.Input[float]]:
         """
         max value for the range (inclusive). If not given,
         will be set to "infinity", defining an open range
@@ -2617,12 +2617,12 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeAr
         return pulumi.get(self, "max")
 
     @max.setter
-    def max(self, value: Optional[pulumi.Input[int]]):
+    def max(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "max", value)
 
     @property
     @pulumi.getter
-    def min(self) -> Optional[pulumi.Input[int]]:
+    def min(self) -> Optional[pulumi.Input[float]]:
         """
         Min value for the range (inclusive). If not given,
         will be set to "-infinity", defining an open range
@@ -2631,7 +2631,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeAr
         return pulumi.get(self, "min")
 
     @min.setter
-    def min(self, value: Optional[pulumi.Input[int]]):
+    def min(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "min", value)
 
 
@@ -2788,13 +2788,13 @@ class SloWindowsBasedSliMetricMeanInRangeArgs:
 @pulumi.input_type
 class SloWindowsBasedSliMetricMeanInRangeRangeArgs:
     def __init__(__self__, *,
-                 max: Optional[pulumi.Input[int]] = None,
-                 min: Optional[pulumi.Input[int]] = None):
+                 max: Optional[pulumi.Input[float]] = None,
+                 min: Optional[pulumi.Input[float]] = None):
         """
-        :param pulumi.Input[int] max: max value for the range (inclusive). If not given,
+        :param pulumi.Input[float] max: max value for the range (inclusive). If not given,
                will be set to "infinity", defining an open range
                ">= range.min"
-        :param pulumi.Input[int] min: Min value for the range (inclusive). If not given,
+        :param pulumi.Input[float] min: Min value for the range (inclusive). If not given,
                will be set to "-infinity", defining an open range
                "< range.max"
         """
@@ -2805,7 +2805,7 @@ class SloWindowsBasedSliMetricMeanInRangeRangeArgs:
 
     @property
     @pulumi.getter
-    def max(self) -> Optional[pulumi.Input[int]]:
+    def max(self) -> Optional[pulumi.Input[float]]:
         """
         max value for the range (inclusive). If not given,
         will be set to "infinity", defining an open range
@@ -2814,12 +2814,12 @@ class SloWindowsBasedSliMetricMeanInRangeRangeArgs:
         return pulumi.get(self, "max")
 
     @max.setter
-    def max(self, value: Optional[pulumi.Input[int]]):
+    def max(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "max", value)
 
     @property
     @pulumi.getter
-    def min(self) -> Optional[pulumi.Input[int]]:
+    def min(self) -> Optional[pulumi.Input[float]]:
         """
         Min value for the range (inclusive). If not given,
         will be set to "-infinity", defining an open range
@@ -2828,7 +2828,7 @@ class SloWindowsBasedSliMetricMeanInRangeRangeArgs:
         return pulumi.get(self, "min")
 
     @min.setter
-    def min(self, value: Optional[pulumi.Input[int]]):
+    def min(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "min", value)
 
 
@@ -2896,13 +2896,13 @@ class SloWindowsBasedSliMetricSumInRangeArgs:
 @pulumi.input_type
 class SloWindowsBasedSliMetricSumInRangeRangeArgs:
     def __init__(__self__, *,
-                 max: Optional[pulumi.Input[int]] = None,
-                 min: Optional[pulumi.Input[int]] = None):
+                 max: Optional[pulumi.Input[float]] = None,
+                 min: Optional[pulumi.Input[float]] = None):
         """
-        :param pulumi.Input[int] max: max value for the range (inclusive). If not given,
+        :param pulumi.Input[float] max: max value for the range (inclusive). If not given,
                will be set to "infinity", defining an open range
                ">= range.min"
-        :param pulumi.Input[int] min: Min value for the range (inclusive). If not given,
+        :param pulumi.Input[float] min: Min value for the range (inclusive). If not given,
                will be set to "-infinity", defining an open range
                "< range.max"
         """
@@ -2913,7 +2913,7 @@ class SloWindowsBasedSliMetricSumInRangeRangeArgs:
 
     @property
     @pulumi.getter
-    def max(self) -> Optional[pulumi.Input[int]]:
+    def max(self) -> Optional[pulumi.Input[float]]:
         """
         max value for the range (inclusive). If not given,
         will be set to "infinity", defining an open range
@@ -2922,12 +2922,12 @@ class SloWindowsBasedSliMetricSumInRangeRangeArgs:
         return pulumi.get(self, "max")
 
     @max.setter
-    def max(self, value: Optional[pulumi.Input[int]]):
+    def max(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "max", value)
 
     @property
     @pulumi.getter
-    def min(self) -> Optional[pulumi.Input[int]]:
+    def min(self) -> Optional[pulumi.Input[float]]:
         """
         Min value for the range (inclusive). If not given,
         will be set to "-infinity", defining an open range
@@ -2936,7 +2936,7 @@ class SloWindowsBasedSliMetricSumInRangeRangeArgs:
         return pulumi.get(self, "min")
 
     @min.setter
-    def min(self, value: Optional[pulumi.Input[int]]):
+    def min(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "min", value)
 
 

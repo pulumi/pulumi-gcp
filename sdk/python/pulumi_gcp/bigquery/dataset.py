@@ -32,16 +32,7 @@ class Dataset(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Datasets allow you to organize and control access to your tables.
-
-        To get more information about Dataset, see:
-
-        * [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets)
-        * How-to Guides
-            * [Datasets Intro](https://cloud.google.com/bigquery/docs/datasets-intro)
-
-        ## Example Usage
-
+        Create a Dataset resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetAccessArgs']]]] accesses: An array of objects that define dataset access for one or more entities.

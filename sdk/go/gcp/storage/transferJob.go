@@ -34,7 +34,7 @@ type TransferJob struct {
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Schedule specification defining when the Transfer Job should be scheduled to start, end and and what time to run. Structure documented below.
+	// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
 	Schedule TransferJobScheduleOutput `pulumi:"schedule"`
 	// Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
 	Status pulumi.StringPtrOutput `pulumi:"status"`
@@ -92,7 +92,7 @@ type transferJobState struct {
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Schedule specification defining when the Transfer Job should be scheduled to start, end and and what time to run. Structure documented below.
+	// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
 	Schedule *TransferJobSchedule `pulumi:"schedule"`
 	// Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
 	Status *string `pulumi:"status"`
@@ -114,7 +114,7 @@ type TransferJobState struct {
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Schedule specification defining when the Transfer Job should be scheduled to start, end and and what time to run. Structure documented below.
+	// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
 	Schedule TransferJobSchedulePtrInput
 	// Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
 	Status pulumi.StringPtrInput
@@ -132,7 +132,7 @@ type transferJobArgs struct {
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Schedule specification defining when the Transfer Job should be scheduled to start, end and and what time to run. Structure documented below.
+	// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
 	Schedule TransferJobSchedule `pulumi:"schedule"`
 	// Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
 	Status *string `pulumi:"status"`
@@ -147,7 +147,7 @@ type TransferJobArgs struct {
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Schedule specification defining when the Transfer Job should be scheduled to start, end and and what time to run. Structure documented below.
+	// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
 	Schedule TransferJobScheduleInput
 	// Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
 	Status pulumi.StringPtrInput

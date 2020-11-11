@@ -6299,7 +6299,7 @@ type TableExternalDataConfiguration struct {
 	Schema *string `pulumi:"schema"`
 	// The data format. Supported values are:
 	// "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET",
-	// and "DATSTORE_BACKUP". To use "GOOGLE_SHEETS"
+	// and "DATASTORE_BACKUP". To use "GOOGLE_SHEETS"
 	// the `scopes` must include
 	// "https://www.googleapis.com/auth/drive.readonly".
 	SourceFormat string `pulumi:"sourceFormat"`
@@ -6362,7 +6362,7 @@ type TableExternalDataConfigurationArgs struct {
 	Schema pulumi.StringPtrInput `pulumi:"schema"`
 	// The data format. Supported values are:
 	// "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET",
-	// and "DATSTORE_BACKUP". To use "GOOGLE_SHEETS"
+	// and "DATASTORE_BACKUP". To use "GOOGLE_SHEETS"
 	// the `scopes` must include
 	// "https://www.googleapis.com/auth/drive.readonly".
 	SourceFormat pulumi.StringInput `pulumi:"sourceFormat"`
@@ -6518,7 +6518,7 @@ func (o TableExternalDataConfigurationOutput) Schema() pulumi.StringPtrOutput {
 
 // The data format. Supported values are:
 // "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET",
-// and "DATSTORE_BACKUP". To use "GOOGLE_SHEETS"
+// and "DATASTORE_BACKUP". To use "GOOGLE_SHEETS"
 // the `scopes` must include
 // "https://www.googleapis.com/auth/drive.readonly".
 func (o TableExternalDataConfigurationOutput) SourceFormat() pulumi.StringOutput {
@@ -6655,7 +6655,7 @@ func (o TableExternalDataConfigurationPtrOutput) Schema() pulumi.StringPtrOutput
 
 // The data format. Supported values are:
 // "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET",
-// and "DATSTORE_BACKUP". To use "GOOGLE_SHEETS"
+// and "DATASTORE_BACKUP". To use "GOOGLE_SHEETS"
 // the `scopes` must include
 // "https://www.googleapis.com/auth/drive.readonly".
 func (o TableExternalDataConfigurationPtrOutput) SourceFormat() pulumi.StringPtrOutput {
